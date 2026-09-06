@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>__TITLE__</title>
+<meta name="description" content="__DESC__">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="__CANONICAL__">
+__HREFLANG__
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='9' cy='9' r='6' fill='%23C9453D'/%3E%3Ccircle cx='23' cy='9' r='6' fill='%23D6961F'/%3E%3Ccircle cx='9' cy='23' r='6' fill='%233A9A69'/%3E%3Ccircle cx='23' cy='23' r='6' fill='%233B6FB6'/%3E%3C/svg%3E">
+<script>
+(function(){
+  var LANGS = __LANGS_JSON__, DEF = '__DEFAULT__';
+  var pick = null;
+  try{ var s = JSON.parse(localStorage.getItem('disc.lang')); if(LANGS.indexOf(s)>=0) pick = s; }catch(e){}
+  if(!pick){
+    var prefs = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language||''];
+    for(var i=0;i<prefs.length && !pick;i++){ var p = String(prefs[i]).toLowerCase().split('-')[0]; if(LANGS.indexOf(p)>=0) pick = p; }
+  }
+  location.replace('./'+(pick||DEF)+'/'+location.hash);
+})();
+</script>
+<style>
+:root{color-scheme:light dark;--paper:#F3F4F6;--surface:#fff;--ink:#1B2027;--muted:#5B6470;--line:#D9DDE3}
+@media (prefers-color-scheme:dark){:root{--paper:#14171B;--surface:#1C2026;--ink:#ECEEF1;--muted:#9AA3AE;--line:#2C323A}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:16px;line-height:1.5}
+.wrap{max-width:560px;margin:0 auto;padding:48px 20px}
+.dots{display:inline-flex;gap:4px;margin-bottom:18px}.dots i{width:10px;height:10px;border-radius:50%;display:block}
+h1{font-size:28px;margin:0 0 8px}p{color:var(--muted);margin:0 0 24px}
+ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+a{display:block;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);text-decoration:none;font-weight:500}
+a:hover{border-color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="dots"><i style="background:#C9453D"></i><i style="background:#D6961F"></i><i style="background:#3A9A69"></i><i style="background:#3B6FB6"></i></div>
+  <h1>DISC Test</h1>
+  <p>__LEAD__</p>
+  <ul>__LANG_LIST__</ul>
+</div>
+</body>
+</html>
