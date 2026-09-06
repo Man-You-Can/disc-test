@@ -1,0 +1,12 @@
+{
+  "name": "disc-test",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Free multilingual DISC behavioral style test — static site",
+  "scripts": {
+    "build": "node build.js",
+    "validate": "node scripts/validate-locale.js",
+    "serve": "node scripts/serve.js",
+    "deploy": "node scripts/validate-locale.js && node build.js && git add -A && git commit -m \"Rebuild site\" && git push"
+  }
+}

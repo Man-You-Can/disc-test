@@ -22,8 +22,9 @@ disc-test/index.html  исходная одноязычная версия (дл
 ## Как собрать
 
 ```bash
-node build.js            # пересобирает docs/ для всех языков из site.config.json
-node scripts/serve.js    # открыть http://localhost:8765 для проверки
+node build.js            # (или npm run build) пересобирает docs/ для всех языков
+node scripts/serve.js    # (или npm run serve) открыть http://localhost:8765 для проверки
+npm run deploy           # проверить локали, собрать, закоммитить и запушить
 ```
 
 После сборки закоммитьте изменения в `docs/` и запушьте в `main` — GitHub Pages опубликует их автоматически (обычно за 1–2 минуты).
