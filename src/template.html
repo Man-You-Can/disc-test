@@ -126,7 +126,7 @@ input:focus-visible,textarea:focus-visible,button:focus-visible,select:focus-vis
 .qhead{display:grid;grid-template-columns:64px 1fr 64px;align-items:end;gap:6px;padding-bottom:10px}
 .qhead span{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);text-align:center;line-height:1.25}
 html[lang=ar] .qhead span,html[lang=hi] .qhead span,html[lang=zh] .qhead span,html[lang=ja] .qhead span{letter-spacing:0;font-size:12px}
-.qhead .n{font-family:var(--font-mono);font-size:13px;color:var(--muted);text-align:start;text-transform:none;letter-spacing:0;font-weight:400;direction:ltr}
+.qhead .n{font-family:var(--font-mono);font-size:13px;color:var(--muted);text-align:center;text-transform:none;letter-spacing:0;font-weight:400;direction:ltr;padding-bottom:2px}
 .row{display:grid;grid-template-columns:64px 1fr 64px;align-items:center;min-height:60px;border-top:1px solid var(--line);gap:6px}
 .row .txt{font-size:17px;padding:12px 6px;line-height:1.35}
 .row.is-most .txt{font-weight:600}
@@ -382,7 +382,7 @@ function renderTest(){
   var both = S.m[i]>=0 && S.l[i]>=0, lastBlock = i===23;
   view.innerHTML =
     '<div class="card testcard">'+
-      '<div class="qhead"><span class="n">'+t('test.counter',{n:i+1})+'</span><span>'+t('test.mostHead')+'</span><span>'+t('test.leastHead')+'</span></div>'+
+      '<div class="qhead"><span>'+t('test.mostHead')+'</span><span class="n">'+t('test.counter',{n:i+1})+'</span><span>'+t('test.leastHead')+'</span></div>'+
       rows+
       '<div class="testnav">'+
         '<button class="btn secondary small" type="button" id="prev" '+(i===0?'disabled':'')+'>'+t('test.prev')+'</button>'+
