@@ -12,7 +12,7 @@ src/apps-script.template.js  шаблон серверного скрипта о
 backend/apps-script/Code.gs  сгенерированный скрипт — вставляется в script.google.com
 scripts/test-apps-script.js  проверка скрипта без Google
 src/template.html     шаблон страницы теста (вёрстка + логика), общий для всех языков
-src/root.html         корневая страница: определяет язык браузера и перенаправляет на /xx/
+src/root.html         корневая страница: список языков; язык браузера подсвечивается, редиректа нет
 src/404.html          страница «не найдено» (перенаправляет на главную)
 src/locales/xx.json   все тексты одного языка (ru.json — эталон)
 build.js              сборка: src → docs/
@@ -46,7 +46,7 @@ node build.js
 ## Как добавить язык
 
 1. Скопируйте `src/locales/en.json` в `src/locales/<код>.json`, переведите, укажите `lang`, `name`, `dir` (`rtl` для арабского/иврита) и `dateLocale`.
-2. Добавьте код в `languages` в `site.config.json`. Если нужны особые шрифты (не латиница/кириллица), добавьте запись в `FONTS` в `build.js`.
+2. Добавьте код в `languages` в `site.config.json`. Если нужны особые шрифты (не латиница/кириллица), добавьте запись в `FONTS` в `build.js`. Пустой `link` означает «без Google Fonts, только системные шрифты» (так сделано для `zh`).
 3. `node scripts/validate-locale.js <код>.json && node build.js`.
 
 ## Свой домен

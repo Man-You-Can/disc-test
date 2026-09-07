@@ -19,11 +19,19 @@ const FONTS = {
     head: "'Unbounded','Noto Kufi Arabic',sans-serif", body: "'IBM Plex Sans Arabic','Golos Text',system-ui,'Segoe UI',Tahoma,sans-serif" },
   hi: { link: G + BASE_FONTS + '&family=Noto+Sans+Devanagari:wght@400;500;600&display=swap',
     head: "'Unbounded','Noto Sans Devanagari',sans-serif", body: "'Golos Text','Noto Sans Devanagari',system-ui,sans-serif" },
-  zh: { link: G + BASE_FONTS + '&family=Noto+Sans+SC:wght@400;500;600&display=swap',
-    head: "'Unbounded','Noto Sans SC','PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif", body: "'Golos Text','Noto Sans SC','PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" },
+  // zh: без Google Fonts. В материковом Китае fonts.googleapis.com заблокирован, и запрос стилей
+  // подвешивал бы отрисовку страницы. Используются системные шрифты: PingFang (macOS/iOS),
+  // Microsoft YaHei (Windows), Noto Sans CJK / Source Han Sans (Android, Linux).
+  zh: { link: '',
+    head: "'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC','Source Han Sans SC',system-ui,sans-serif",
+    body: "'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC','Source Han Sans SC',system-ui,sans-serif" },
   ja: { link: G + BASE_FONTS + '&family=Noto+Sans+JP:wght@400;500;600&display=swap',
     head: "'Unbounded','Noto Sans JP','Hiragino Sans','Yu Gothic',Meiryo,sans-serif", body: "'Golos Text','Noto Sans JP','Hiragino Sans','Yu Gothic',Meiryo,sans-serif" }
 };
+// Теги подключения Google Fonts; пустая строка для языков без внешних шрифтов.
+const fontsHead = f => f.link
+  ? `<link rel="preconnect" href="https://fonts.googleapis.com">\n<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n<link rel="stylesheet" href="${f.link}">`
+  : '';
 const OG_LOCALE = { en: 'en_US', ru: 'ru_RU', es: 'es_ES', zh: 'zh_CN', ar: 'ar_AR', pt: 'pt_BR', fr: 'fr_FR', de: 'de_DE', ja: 'ja_JP', hi: 'hi_IN' };
 
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -77,7 +85,7 @@ for (const L of locales) {
     .replace(/__TITLE__/g, esc(L.title)).replace(/__DESC__/g, esc(L.description))
     .replace(/__CANONICAL__/g, `${siteUrl}/${L.lang}/`).replace(/__OG_LOCALE__/g, OG_LOCALE[L.lang] || L.lang)
     .replace(/__HREFLANG__/g, hreflangTags)
-    .replace(/__FONTS_LINK__/g, f.link).replace(/__FONT_HEAD__/g, f.head).replace(/__FONT_BODY__/g, f.body)
+    .replace(/__FONTS_HEAD__/g, () => fontsHead(f)).replace(/__FONT_HEAD__/g, f.head).replace(/__FONT_BODY__/g, f.body)
     .replace(/__BRAND__/g, esc(L.brand)).replace(/__LANG_LABEL__/g, esc(L.ui.langLabel))
     .replace('__LANG_SWITCHER__', () => switcher).replace('__LANG_LINKS__', () => links).replace('__FLAG_SPRITE__', () => flagSprite(locales.map(x => x.lang)))
     .replace(/__FOOTER__/g, esc(L.ui.footer)).replace(/__ADMIN_LINK__/g, esc(L.ui.adminLink)).replace(/__PRIVACY__/g, esc(L.ui.privacy))
@@ -89,15 +97,15 @@ for (const L of locales) {
   fs.writeFileSync(path.join(OUT, L.lang, 'index.html'), html);
 }
 
-// Корневая страница: автоопределение языка + список языков
+// Корневая страница: список всех языков; определённый по браузеру язык подсвечивается скриптом, без редиректа
 const def = locales.find(L => L.lang === cfg.defaultLang) || locales[0];
 const rootHtml = rootTpl
   .replace(/__TITLE__/g, esc(def.ui['root.title'])).replace(/__DESC__/g, esc(def.description))
-  .replace(/__LEAD__/g, esc(def.ui['root.lead'])).replace(/__CANONICAL__/g, siteUrl + '/')
+  .replace(/__LEAD__/g, esc(def.ui['root.lead'])).replace(/__CHOOSE__/g, esc(def.ui['root.h1'])).replace(/__CANONICAL__/g, siteUrl + '/')
   .replace(/__HREFLANG__/g, hreflangTags)
   .replace('__LANGS_JSON__', JSON.stringify(locales.map(L => L.lang))).replace(/__DEFAULT__/g, def.lang)
   .replace('__FLAG_SPRITE__', () => flagSprite(locales.map(x => x.lang)))
-  .replace('__LANG_LIST__', () => locales.map(L => `<li><a href="./${L.lang}/" hreflang="${hl(L.lang)}" lang="${L.lang}">${flag(L.lang)}<span>${esc(L.name)}</span></a></li>`).join(''));
+  .replace('__LANG_LIST__', () => locales.map(L => `<li><a href="./${L.lang}/" hreflang="${hl(L.lang)}" lang="${L.lang}" data-lang="${L.lang}" data-continue="${esc(L.ui['root.continue'])}">${flag(L.lang)}<span>${esc(L.name)}</span></a></li>`).join(''));
 fs.writeFileSync(path.join(OUT, 'index.html'), rootHtml);
 fs.writeFileSync(path.join(OUT, '404.html'), nfTpl.replace(/__BASE__/g, basePath));
 fs.writeFileSync(path.join(OUT, '.nojekyll'), '');
