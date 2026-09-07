@@ -54,7 +54,7 @@ node build.js
 ## Свой домен
 
 1. В `site.config.json` укажите `"siteUrl": "https://ваш-домен.com"` и `"customDomain": "ваш-домен.com"` — сборка создаст файл `docs/CNAME` и правильные canonical/hreflang.
-   Для подтверждения сайта в Google Search Console (ресурс с префиксом в URL, способ «HTML-тег») впишите токен из тега `<meta name="google-site-verification" content="…">` в `"googleSiteVerification"` и пересоберите; пустое значение — тег не выводится. Ресурс уровня домена подтверждается только TXT-записью DNS у регистратора.
+   Для подтверждения сайта в Google Search Console (ресурс с префиксом в URL, способ «HTML-тег») впишите токен из тега `<meta name="google-site-verification" content="…">` в `"googleSiteVerification"` и пересоберите; пустое значение — тег не выводится. Ресурс уровня домена подтверждается только TXT-записью DNS у регистратора. Для Яндекс Вебмастера (способ «Метатег») аналогично впишите значение `content` в `"yandexVerification"`.
 2. У регистратора домена создайте запись `CNAME` для `www` (или поддомена) на `man-you-can.github.io`, а для корневого домена — записи `A` на адреса GitHub Pages: 185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153.
 3. В настройках репозитория (Settings → Pages) введите домен и включите «Enforce HTTPS».
 4. `node build.js`, коммит, пуш.

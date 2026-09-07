@@ -4,8 +4,9 @@
 const fs = require('fs'), path = require('path'), { execSync } = require('child_process');
 const ROOT = __dirname, SRC = path.join(ROOT, 'src'), OUT = path.join(ROOT, 'docs');
 const cfg = JSON.parse(fs.readFileSync(path.join(ROOT, 'site.config.json'), 'utf8'));
-// Мета-тег подтверждения Google Search Console (site.config.json → googleSiteVerification); пусто — тег не выводится
-const verifyHead = cfg.googleSiteVerification ? `<meta name="google-site-verification" content="${String(cfg.googleSiteVerification).replace(/["<>&]/g, "")}">` : "";
+// Мета-теги подтверждения сайта в Google Search Console и Яндекс Вебмастере (site.config.json → googleSiteVerification, yandexVerification); пустое значение — тег не выводится
+const verifyHead = [["google-site-verification", cfg.googleSiteVerification], ["yandex-verification", cfg.yandexVerification]]
+  .filter(([, v]) => v).map(([n, v]) => `<meta name="${n}" content="${String(v).replace(/["<>&]/g, "")}">`).join("\n");
 const siteUrl = cfg.siteUrl.replace(/\/+$/, '');
 const basePath = new URL(siteUrl + '/').pathname; // например "/disc-test/" или "/"
 const tpl = fs.readFileSync(path.join(SRC, 'template.html'), 'utf8');
