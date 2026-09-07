@@ -185,6 +185,10 @@ html[lang=ar] .qhead span,html[lang=hi] .qhead span,html[lang=zh] .qhead span,ht
 .share{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:var(--shadow)}
 .codebox{font-family:var(--font-mono);font-size:12px;line-height:1.5;word-break:break-all;background:var(--paper);border:1px dashed var(--line-strong);padding:10px 12px;border-radius:8px;margin:12px 0;color:var(--ink);width:100%;min-height:0;resize:none;direction:ltr;text-align:left}
 .notice{background:var(--soft);border-radius:10px;padding:12px 14px;font-size:14px}
+.sendstatus{margin:-4px 0 10px;padding:8px 12px;border-radius:8px;background:var(--soft)}
+.sendstatus.ok{color:var(--s)}
+.sendstatus.err{color:var(--d)}
+.sendstatus .link{color:inherit}
 /* admin */
 .tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
 table{border-collapse:collapse;width:100%;font-size:14px;min-width:720px}
@@ -245,6 +249,9 @@ __FLAG_SPRITE__
 /* ====== локаль и настройки ====== */
 var L = __LOCALE_JSON__;
 var CONTACT_EMAIL = '__EMAIL__'; // адрес получателя для кнопки «Отправить по почте»; пустой — участник вводит сам
+var SEND_ENDPOINT = '__SEND_ENDPOINT__'; // URL веб-приложения Google Apps Script (см. README); пустой — письма не отправляются
+var SEND_TOKEN = '__SEND_TOKEN__';
+var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 var VERSION = 'DISC1';
 
 var KEYS = ['D','I','S','C'];
@@ -286,7 +293,7 @@ function b64d(s){ s=s.replace(/-/g,'+').replace(/_/g,'/'); while(s.length%4) s+=
 function pageURL(){ return location.href.split('#')[0]; }
 
 /* ====== результат: кодирование, подсчёт ====== */
-function encodeResult(r){ return VERSION+'.'+b64e(JSON.stringify({n:r.name, p:r.pos||'', t:r.t, m:r.m.join(''), l:r.l.join('')})); }
+function encodeResult(r){ return VERSION+'.'+b64e(JSON.stringify({n:r.name, e:r.email||'', p:r.pos||'', t:r.t, m:r.m.join(''), l:r.l.join('')})); }
 function decodeResult(str){
   var m = String(str||'').match(new RegExp(VERSION+'\\.([A-Za-z0-9_-]+)'));
   if(!m) return null;
@@ -295,7 +302,7 @@ function decodeResult(str){
     if(typeof o.n!=='string' || !/^[0-3]{24}$/.test(o.m) || !/^[0-3]{24}$/.test(o.l)) return null;
     var mm = o.m.split('').map(Number), ll = o.l.split('').map(Number);
     for(var i=0;i<24;i++) if(mm[i]===ll[i]) return null;
-    return {name:o.n.slice(0,80), pos:String(o.p||'').slice(0,80), t:String(o.t||''), m:mm, l:ll};
+    return {name:o.n.slice(0,80), email:String(o.e||'').slice(0,120), pos:String(o.p||'').slice(0,80), t:String(o.t||''), m:mm, l:ll};
   }catch(e){ return null; }
 }
 function findCodes(text){ return String(text||'').match(new RegExp(VERSION+'\\.[A-Za-z0-9_-]+','g')) || []; }
@@ -343,7 +350,7 @@ function renderIntro(){
       '<p>'+t('intro.howText')+'</p>'+
       '<form class="form" id="startForm" autocomplete="on">'+
         '<div class="field"><label for="nm">'+t('intro.nameLabel')+'</label><input type="text" id="nm" name="name" autocomplete="name" required maxlength="80" value="'+esc(who.name||'')+'"></div>'+
-        '<div class="field"><label for="ps">'+t('intro.posLabel')+' <span class="muted">'+t('intro.optional')+'</span></label><input type="text" id="ps" name="pos" autocomplete="organization-title" maxlength="80" value="'+esc(who.pos||'')+'"></div>'+
+        '<div class="field"><label for="em">'+t('intro.emailLabel')+'</label><input type="email" id="em" name="email" autocomplete="email" inputmode="email" required maxlength="120" value="'+esc(who.email||'')+'"><span class="hint">'+t('intro.emailHint')+'</span></div>'+
         '<div class="actions"><button class="btn" type="submit">'+t('intro.start')+'</button>'+
           (progDone ? '<button class="link" type="button" id="resume">'+t('intro.resume',{n:progDone})+'</button>' : '')+
         '</div>'+
@@ -352,10 +359,11 @@ function renderIntro(){
     (last ? '<p class="small muted" style="margin-top:14px"><button class="link" id="showLast" type="button">'+t('intro.showLast',{date:esc(fmtDate(last.t))})+'</button></p>' : '');
   $('#startForm').addEventListener('submit', function(e){
     e.preventDefault();
-    var name = $('#nm').value.trim().replace(/\s+/g,' '), pos = $('#ps').value.trim();
+    var name = $('#nm').value.trim().replace(/\s+/g,' '), email = $('#em').value.trim();
     if(name.length<2){ $('#nm').focus(); toast(t('intro.nameRequired')); return; }
-    lsSet('disc.who',{name:name,pos:pos});
-    S = {name:name, pos:pos, i:0, m:[], l:[]};
+    if(!EMAIL_RE.test(email) || email.length>120){ $('#em').focus(); toast(t('intro.emailRequired')); return; }
+    lsSet('disc.who',{name:name,email:email});
+    S = {name:name, email:email, i:0, m:[], l:[]};
     for(var k=0;k<24;k++){ S.m.push(-1); S.l.push(-1); }
     lsSet('disc.progress', S);
     renderTest();
@@ -405,9 +413,9 @@ function renderTest(){
     if(i<23){ S.i=i+1; lsSet('disc.progress', S); renderTest(); return; }
     var missing = -1; for(var k=0;k<24;k++){ if(S.m[k]<0||S.l[k]<0){ missing=k; break; } }
     if(missing>=0){ S.i=missing; lsSet('disc.progress', S); toast(t('test.missing',{n:missing+1})); renderTest(); return; }
-    var r = {name:S.name, pos:S.pos, t:new Date().toISOString(), m:S.m.slice(), l:S.l.slice()};
+    var r = {name:S.name, email:S.email||'', pos:S.pos||'', t:new Date().toISOString(), m:S.m.slice(), l:S.l.slice()};
     lsSet('disc.last', r); lsDel('disc.progress'); S=null;
-    renderReport(r, {own:true});
+    renderReport(r, {own:true, send:true});
     window.scrollTo(0,0);
   });
 }
@@ -448,10 +456,11 @@ function renderReport(r, opts){
   var code = encodeResult(r);
   var link = pageURL()+'#r='+code;
   var show = {most:false, least:false, net:true};
-  var meta = [esc(r.name), r.pos?esc(r.pos):'', fmtDate(r.t)].filter(Boolean).join(' · ');
+  var meta = [esc(r.name), esc(r.email||r.pos||''), fmtDate(r.t)].filter(Boolean).join(' · ');
+  var canSend = !!SEND_ENDPOINT && !!r.email;
   var label = cls.key+' · '+prof.name;
   var lines = KEYS.map(function(k){ return k+': '+signed(sc.net[k])+' ('+pct(sc.net[k])+'%)'; }).join(', ');
-  var mailBody = t('mail.title')+'\r\n'+t('mail.name')+': '+r.name+'\r\n'+(r.pos?t('mail.pos')+': '+r.pos+'\r\n':'')+t('mail.date')+': '+fmtDate(r.t)+'\r\n'+t('mail.profile')+': '+label+'\r\n'+lines+'\r\n\r\n'+t('mail.link')+':\r\n'+link+'\r\n\r\n'+t('mail.code')+':\r\n'+code+'\r\n';
+  var mailBody = t('mail.title')+'\r\n'+t('mail.name')+': '+r.name+'\r\n'+(r.email?t('mail.email')+': '+r.email+'\r\n':'')+t('mail.date')+': '+fmtDate(r.t)+'\r\n'+t('mail.profile')+': '+label+'\r\n'+lines+'\r\n\r\n'+t('mail.link')+':\r\n'+link+'\r\n\r\n'+t('mail.code')+':\r\n'+code+'\r\n';
   var mailto = 'mailto:'+(CONTACT_EMAIL?encodeURIComponent(CONTACT_EMAIL):'')+'?subject='+encodeURIComponent(t('mail.subject',{name:r.name,label:label}))+'&body='+encodeURIComponent(mailBody);
 
   function list(arr){ return '<ul>'+arr.map(function(x){ return '<li>'+esc(x)+'</li>'; }).join('')+'</ul>'; }
@@ -494,6 +503,7 @@ function renderReport(r, opts){
     (opts.own ?
       '<div class="share no-print" style="margin-top:16px"><h2>'+t('share.title')+'</h2>'+
         '<p class="small">'+t('share.text')+'</p>'+
+        (canSend ? '<p class="small sendstatus" id="sendStatus" aria-live="polite"></p>' : '')+
         '<textarea class="codebox" id="code" readonly rows="3" aria-label="'+t('share.codeAria')+'">'+esc(code)+'</textarea>'+
         '<div class="actions"><button class="btn" type="button" id="copyLink">'+t('share.copyLink')+'</button>'+
           '<a class="btn secondary" id="mail" href="'+mailto.replace(/"/g,'&quot;')+'">'+t('share.mail')+'</a>'+
@@ -514,6 +524,38 @@ function renderReport(r, opts){
   $('#print').addEventListener('click', function(){ try{ window.print(); }catch(e){ toast(t('toast.printNA')); } });
   if($('#restart')) $('#restart').addEventListener('click', function(){ if(location.hash) history.replaceState(null,'',pageURL()); renderIntro(); window.scrollTo(0,0); });
   if($('#backAdmin')) $('#backAdmin').addEventListener('click', function(){ renderAdmin(); window.scrollTo(0,0); });
+  if(opts.own && canSend){ if(opts.send && !r.sent) sendResult(r, code); else showSendStatus(r, code); }
+}
+
+/* ====== отправка письма с результатом ====== */
+function postJSON(url, data){
+  return new Promise(function(resolve, reject){
+    var ctrl = window.AbortController ? new AbortController() : null, done = false;
+    var tm = setTimeout(function(){ if(done) return; done = true; if(ctrl) ctrl.abort(); reject(new Error('timeout')); }, 25000);
+    // Content-Type не задаём: «простой» запрос без preflight, который принимает Google Apps Script
+    fetch(url, {method:'POST', body:JSON.stringify(data), signal: ctrl ? ctrl.signal : undefined, redirect:'follow'})
+      .then(function(res){ return res.text(); })
+      .then(function(txt){ if(done) return; done = true; clearTimeout(tm); var j = null; try{ j = JSON.parse(txt); }catch(e){}
+        if(j && j.ok) resolve(j); else reject(new Error((j && j.error) || 'bad response')); })
+      .catch(function(err){ if(done) return; done = true; clearTimeout(tm); reject(err); });
+  });
+}
+function showSendStatus(r, code, state){
+  var el = $('#sendStatus'); if(!el) return;
+  var st = state || (r.sent ? 'sent' : 'failed');
+  if(st==='sending'){ el.className='small sendstatus muted'; el.textContent = t('share.sending',{email:r.email}); return; }
+  if(st==='sent'){ el.className='small sendstatus ok'; el.textContent = t('share.sent',{email:r.email}); return; }
+  el.className='small sendstatus err';
+  el.innerHTML = esc(t('share.sendFailed',{email:r.email}))+' <button class="link" type="button" id="resend">'+t('share.retry')+'</button>';
+  $('#resend').addEventListener('click', function(){ sendResult(r, code); });
+}
+function sendResult(r, code){
+  showSendStatus(r, code, 'sending');
+  postJSON(SEND_ENDPOINT, {token:SEND_TOKEN, to:r.email, lang:L.lang, code:code}).then(function(){
+    r.sent = new Date().toISOString();
+    var last = lsGet('disc.last'); if(last && last.t===r.t){ last.sent = r.sent; lsSet('disc.last', last); }
+    showSendStatus(r, code, 'sent');
+  }, function(){ showSendStatus(r, code, 'failed'); });
 }
 
 /* ====== экран 4: панель администратора ====== */
@@ -525,7 +567,7 @@ function renderAdmin(){
   var rows = items.map(function(it, idx){
     var sc=it.a.sc, cls=it.a.cls;
     return '<tr>'+
-      '<td><b>'+esc(it.r.name)+'</b>'+(it.r.pos?'<br><span class="muted small">'+esc(it.r.pos)+'</span>':'')+'</td>'+
+      '<td><b>'+esc(it.r.name)+'</b>'+((it.r.email||it.r.pos)?'<br><span class="muted small">'+esc(it.r.email||it.r.pos)+'</span>':'')+'</td>'+
       '<td>'+esc(fmtDateShort(it.r.t))+'</td>'+
       '<td>'+badgeHTML(cls,'pill')+'<small>'+esc(it.a.profile.name)+'</small></td>'+
       KEYS.map(function(k){ return '<td class="num">'+signed(sc.net[k])+'</td>'; }).join('')+
@@ -573,7 +615,7 @@ function renderAdmin(){
   if($('#csv')) $('#csv').addEventListener('click', function(){
     var head = L.ui['admin.csvHead'];
     var tsv = [head.join('\t')].concat(items.map(function(it){
-      var sc=it.a.sc; return [it.r.name, it.r.pos, fmtDateShort(it.r.t), it.a.cls.key, it.a.profile.name,
+      var sc=it.a.sc; return [it.r.name, it.r.email||it.r.pos||'', fmtDateShort(it.r.t), it.a.cls.key, it.a.profile.name,
         sc.net.D, sc.net.I, sc.net.S, sc.net.C, sc.most.D, sc.most.I, sc.most.S, sc.most.C, sc.least.D, sc.least.I, sc.least.S, sc.least.C, it.code]
         .map(function(v){ return String(v).replace(/[\t\r\n]+/g,' '); }).join('\t');
     })).join('\n');

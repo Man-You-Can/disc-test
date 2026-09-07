@@ -82,6 +82,8 @@ for (const L of locales) {
     .replace('__LANG_SWITCHER__', () => switcher).replace('__LANG_LINKS__', () => links).replace('__FLAG_SPRITE__', () => flagSprite(locales.map(x => x.lang)))
     .replace(/__FOOTER__/g, esc(L.ui.footer)).replace(/__ADMIN_LINK__/g, esc(L.ui.adminLink)).replace(/__PRIVACY__/g, esc(L.ui.privacy))
     .replace(/__EMAIL__/g, String(cfg.contactEmail || '').replace(/['\\]/g, ''))
+    .replace(/__SEND_ENDPOINT__/g, String(cfg.sendEndpoint || '').replace(/['\\]/g, ''))
+    .replace(/__SEND_TOKEN__/g, String(cfg.sendToken || '').replace(/['\\]/g, ''))
     .replace('__LOCALE_JSON__', () => JSON.stringify(L).replace(/</g, '\\u003c').replace(/\u2028|\u2029/g, ''));
   fs.mkdirSync(path.join(OUT, L.lang), { recursive: true });
   fs.writeFileSync(path.join(OUT, L.lang, 'index.html'), html);
@@ -104,4 +106,20 @@ const today = new Date().toISOString().slice(0, 10);
 const urls = locales.map(L => `  <url><loc>${siteUrl}/${L.lang}/</loc><lastmod>${today}</lastmod>${locales.map(x => `<xhtml:link rel="alternate" hreflang="${hl(x.lang)}" href="${siteUrl}/${x.lang}/"/>`).join('')}<xhtml:link rel="alternate" hreflang="x-default" href="${siteUrl}/"/></url>`);
 fs.writeFileSync(path.join(OUT, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${urls.join('\n')}\n</urlset>\n`);
 if (cfg.customDomain) fs.writeFileSync(path.join(OUT, 'CNAME'), cfg.customDomain + '\n');
-console.log(`Built ${locales.length} languages → docs/ (${locales.map(L => L.lang).join(', ')})`);
+
+// Google Apps Script для отправки писем: шаблон + данные из локалей (названия стилей, профили, тексты письма)
+const BLOCK_KEYS = (tpl.match(/var BLOCK_KEYS = (\[[^\]]+\]);/) || [])[1];
+if (!BLOCK_KEYS) throw new Error('BLOCK_KEYS not found in template');
+const mailData = {};
+for (const L of locales) {
+  const email = {};
+  for (const k of Object.keys(L.ui)) if (k.startsWith('email.')) email[k.slice(6)] = L.ui[k];
+  mailData[L.lang] = { name: L.name, dir: L.dir, keys: L.keys, profiles: L.profiles, email };
+}
+const gsTpl = fs.readFileSync(path.join(SRC, 'apps-script.template.js'), 'utf8');
+const gs = gsTpl
+  .replace('__SITE_URL__', siteUrl).replace('__SEND_TOKEN__', String(cfg.sendToken || '').replace(/['\\]/g, ''))
+  .replace('__BLOCK_KEYS__', BLOCK_KEYS).replace('__DATA__', () => JSON.stringify(mailData));
+fs.mkdirSync(path.join(ROOT, 'backend', 'apps-script'), { recursive: true });
+fs.writeFileSync(path.join(ROOT, 'backend', 'apps-script', 'Code.gs'), gs);
+console.log(`Built ${locales.length} languages → docs/ (${locales.map(L => L.lang).join(', ')}); backend/apps-script/Code.gs${cfg.sendEndpoint ? '' : ' (sendEndpoint не задан: письма не отправляются)'}`);
