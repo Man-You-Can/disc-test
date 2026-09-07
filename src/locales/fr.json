@@ -241,14 +241,14 @@
         {
           "h": "Quelles données nous utilisons",
           "p": [
-            "Avant le test, vous saisissez votre nom et votre e-mail. Pendant le test, vos réponses sont enregistrées, puis, une fois terminé, le résultat, la langue choisie et votre réponse à l’avis sur les cookies. Tout cela est conservé dans le stockage local de votre navigateur, pas sur un serveur : le site n’a pas de base de données."
+            "Avant le test, vous saisissez votre nom et votre adresse e-mail. Pendant le test, vos réponses sont enregistrées ; ensuite, le résultat, la langue choisie et une mention indiquant que vous avez vu l'avis relatif aux cookies. Tout cela est conservé dans le stockage local de votre navigateur, pas sur un serveur : le site n'a pas de base de données."
           ]
         },
         {
           "h": "Où les données sont transmises",
           "p": [
             "À la fin du test, votre nom, votre adresse e-mail et vos réponses (sous forme de code de résultat) sont transmis au service d'envoi d'e-mails, un script Google Apps Script qui fonctionne dans le compte Google du propriétaire du site et vous envoie l'e-mail avec le résultat. Ces données ne servent à rien d'autre et ne sont pas transmises à des tiers.",
-            "L’hébergeur (GitHub Pages) reçoit les données techniques habituelles de la requête : adresse IP, type de navigateur, adresse de la page. Les polices sont servies par ce site lui-même et ne sont pas chargées depuis les serveurs de Google. Avec votre consentement (bouton « Accepter » de l’avis sur les cookies), le site utilise Yandex Metrica (Yandex LLC) : elle reçoit des données de visite anonymisées — l’adresse de la page sans le code du résultat, la provenance, le type d’appareil et de navigateur — et un enregistrement des actions sur la page (Webvisor) ; les champs nom et e-mail, le lien et le code du résultat sont exclus de l’enregistrement. Sans consentement, le compteur n’est pas chargé. Vous pouvez retirer votre consentement en effaçant les données du site dans le navigateur : l’avis s’affichera de nouveau. Aucun traceur publicitaire n’est utilisé."
+            "L’hébergeur (GitHub Pages) reçoit les données techniques habituelles de la requête : adresse IP, type de navigateur, adresse de la page. Les polices sont servies par ce site lui-même et ne sont pas chargées depuis les serveurs de Google. Les statistiques de visite sont collectées par Yandex Metrica (Yandex LLC) : elle reçoit des données de visite anonymisées — l’adresse de la page sans le code du résultat, la provenance, le type d’appareil et de navigateur — et un enregistrement des actions sur la page (Webvisor) ; les champs nom et e-mail, le lien et le code du résultat sont exclus de l’enregistrement. Les données sont traitées selon les conditions de Yandex ; vous pouvez arrêter la collecte dans les paramètres du navigateur ou avec un bloqueur de traceurs. Aucun traceur publicitaire n’est utilisé."
           ]
         },
         {
@@ -266,7 +266,7 @@
         {
           "h": "Cookies",
           "p": [
-            "Le site lui-même ne dépose aucun cookie : pour ce qui précède, il utilise le stockage local du navigateur, une technologie ayant la même finalité. Après votre consentement, Yandex Metrica dépose ses propres cookies (par exemple _ym_uid et _ym_d) pour distinguer les visiteurs ; sans consentement, ils ne sont pas déposés. C’est pourquoi l’avis s’affiche lors de la première visite et de nouveau après l’effacement des données du site."
+            "Le site lui-même ne dépose aucun cookie : pour ce qui précède, il utilise le stockage local du navigateur, une technologie ayant la même finalité. Yandex Metrica dépose ses propres cookies (par exemple _ym_uid et _ym_d) pour distinguer les visiteurs. C’est pourquoi l’avis s’affiche une seule fois, lors de la première visite."
           ]
         },
         {
@@ -424,9 +424,9 @@
     "cta.button": "Passer le test",
 
     "consent.label": "Avis relatif aux cookies",
-    "consent.text": "Ce site conserve votre progression, votre résultat et la langue choisie dans le stockage local du navigateur. Si vous acceptez, Yandex Metrica collectera des statistiques de visite anonymisées et un enregistrement des actions sur la page pour nous aider à améliorer le site ; votre nom, votre e-mail et votre résultat ne lui sont pas transmis.",
+    "consent.text": "Ce site conserve votre progression, votre résultat et la langue choisie dans le stockage local du navigateur, et Yandex Metrica collecte des statistiques de visite anonymisées et un enregistrement des actions sur la page pour nous aider à améliorer le site. Votre nom, votre e-mail et votre résultat ne sont pas transmis à Metrica.",
     "consent.more": "En savoir plus",
-    "consent.details": "Conservés dans le navigateur : le nom et l’e-mail saisis avant le test ; vos réponses et la progression inachevée ; votre dernier résultat ; la langue choisie ; votre réponse à cet avis. Ces données restent sur votre appareil et sont supprimées lorsque vous effacez les données du site. L’hébergeur (GitHub Pages) reçoit les données techniques habituelles de la requête. À la fin du test, le nom, l’e-mail et les réponses sont transmis au service d’envoi d’e-mails (Google Apps Script) pour vous envoyer votre résultat. Yandex Metrica (Yandex LLC) ne se charge qu’après un clic sur « Accepter » : elle reçoit l’adresse de la page sans le code du résultat, la provenance, le type d’appareil et de navigateur, un enregistrement anonymisé des actions sur la page (les champs nom et e-mail, le lien et le code du résultat en sont exclus) et dépose ses propres cookies. Vous pouvez retirer votre consentement en effaçant les données du site dans le navigateur. Aucun traceur publicitaire n’est utilisé.",
+    "consent.details": "Conservés dans le navigateur : le nom et l’e-mail saisis avant le test ; vos réponses et la progression inachevée ; votre dernier résultat ; la langue choisie ; une marque indiquant que vous avez vu cet avis. Ces données restent sur votre appareil et sont supprimées lorsque vous effacez les données du site. L’hébergeur (GitHub Pages) reçoit les données techniques habituelles de la requête. À la fin du test, le nom, l’e-mail et les réponses sont transmis au service d’envoi d’e-mails (Google Apps Script) pour vous envoyer votre résultat. Yandex Metrica (Yandex LLC) reçoit l’adresse de la page sans le code du résultat, la provenance, le type d’appareil et de navigateur, un enregistrement anonymisé des actions sur la page (les champs nom et e-mail, le lien et le code du résultat en sont exclus) et dépose ses propres cookies. Vous pouvez la bloquer dans les paramètres du navigateur ou avec un bloqueur de traceurs. Aucun traceur publicitaire n’est utilisé.",
     "consent.accept": "Accepter",
     "consent.decline": "Essentiel uniquement",
     "consent.ok": "Compris",

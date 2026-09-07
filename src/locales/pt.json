@@ -241,14 +241,14 @@
         {
           "h": "Quais dados usamos",
           "p": [
-            "Antes do teste introduz o seu nome e e-mail. Durante o teste as suas respostas são guardadas e, ao concluir, o resultado, o idioma escolhido e a sua resposta ao aviso de cookies. Tudo isto fica no armazenamento local do seu navegador, não num servidor: o site não tem base de dados."
+            "Antes do teste você informa nome e e-mail. Durante o teste, suas respostas são salvas; ao final, o resultado, o idioma escolhido e uma marcação de que você viu o aviso de cookies. Tudo isso fica no armazenamento local do seu navegador, não em um servidor: o site não tem banco de dados."
           ]
         },
         {
           "h": "Para onde os dados são transmitidos",
           "p": [
             "Ao concluir o teste, nome, e-mail e respostas (na forma de código de resultado) são transmitidos ao serviço de envio de e-mails, um script do Google Apps Script que roda na conta Google do responsável pelo site e envia a você o e-mail com o resultado. Esses dados não são usados para outros fins nem repassados a terceiros.",
-            "O alojamento (GitHub Pages) recebe os dados técnicos habituais do pedido: endereço IP, tipo de navegador, endereço da página. As fontes são servidas a partir deste próprio site e não são carregadas dos servidores da Google. Com o seu consentimento (botão «Aceitar» no aviso de cookies) o site usa a Yandex Metrica (Yandex LLC): recebe dados de visita anonimizados — o endereço da página sem o código do resultado, a origem da visita, o tipo de dispositivo e navegador — e uma gravação das ações na página (Webvisor); os campos de nome e e-mail, o link e o código do resultado ficam excluídos da gravação. Sem consentimento o contador não é carregado. Pode retirar o consentimento limpando os dados do site no navegador: o aviso voltará a aparecer. Não são usados rastreadores publicitários."
+            "O alojamento (GitHub Pages) recebe os dados técnicos habituais do pedido: endereço IP, tipo de navegador, endereço da página. As fontes são servidas a partir deste próprio site e não são carregadas dos servidores da Google. As estatísticas de visitas são recolhidas pela Yandex Metrica (Yandex LLC): recebe dados de visita anonimizados — o endereço da página sem o código do resultado, a origem da visita, o tipo de dispositivo e navegador — e uma gravação das ações na página (Webvisor); os campos de nome e e-mail, o link e o código do resultado ficam excluídos da gravação. Os dados são tratados segundo as condições da Yandex; pode parar a recolha nas definições do navegador ou com um bloqueador de rastreadores. Não são usados rastreadores publicitários."
           ]
         },
         {
@@ -266,7 +266,7 @@
         {
           "h": "Cookies",
           "p": [
-            "O site em si não define cookies: para o que foi descrito usa o armazenamento local do navegador, uma tecnologia com a mesma finalidade. Após o seu consentimento, a Yandex Metrica define os seus próprios cookies (por exemplo _ym_uid e _ym_d) para distinguir visitantes; sem consentimento não são definidos. Por isso o aviso aparece na primeira visita e novamente depois de limpar os dados do site."
+            "O site em si não define cookies: para o que foi descrito usa o armazenamento local do navegador, uma tecnologia com a mesma finalidade. A Yandex Metrica define os seus próprios cookies (por exemplo _ym_uid e _ym_d) para distinguir visitantes. Por isso o aviso aparece uma vez, na primeira visita."
           ]
         },
         {
@@ -424,9 +424,9 @@
     "cta.button": "Fazer o teste",
 
     "consent.label": "Aviso de cookies",
-    "consent.text": "Este site guarda o seu progresso, o resultado e o idioma escolhido no armazenamento local do navegador. Se concordar, a Yandex Metrica recolherá estatísticas de visitas anonimizadas e uma gravação das ações na página para nos ajudar a melhorar o site; o seu nome, e-mail e resultado não lhe são enviados.",
+    "consent.text": "Este site guarda o seu progresso, o resultado e o idioma escolhido no armazenamento local do navegador, e a Yandex Metrica recolhe estatísticas de visitas anonimizadas e uma gravação das ações na página para nos ajudar a melhorar o site. O seu nome, e-mail e resultado não são enviados à Metrica.",
     "consent.more": "Saiba mais",
-    "consent.details": "No navegador ficam guardados: o nome e o e-mail que introduz antes do teste; as suas respostas e o progresso por concluir; o último resultado; o idioma escolhido; a sua resposta a este aviso. Estes dados permanecem no seu dispositivo e são apagados ao limpar os dados do site. O alojamento (GitHub Pages) recebe os dados técnicos habituais do pedido. Ao concluir o teste, o nome, o e-mail e as respostas são transmitidos ao serviço de envio de e-mails (Google Apps Script) para lhe enviar o resultado. A Yandex Metrica (Yandex LLC) só é carregada depois de premir «Aceitar»: recebe o endereço da página sem o código do resultado, a origem da visita, o tipo de dispositivo e navegador e uma gravação anonimizada das ações na página (os campos de nome e e-mail, o link e o código do resultado ficam excluídos), e define os seus próprios cookies. Pode retirar o consentimento limpando os dados do site no navegador. Não são usados rastreadores publicitários.",
+    "consent.details": "No navegador ficam guardados: o nome e o e-mail que introduz antes do teste; as suas respostas e o progresso por concluir; o último resultado; o idioma escolhido; uma marca de que viu este aviso. Estes dados permanecem no seu dispositivo e são apagados ao limpar os dados do site. O alojamento (GitHub Pages) recebe os dados técnicos habituais do pedido. Ao concluir o teste, o nome, o e-mail e as respostas são transmitidos ao serviço de envio de e-mails (Google Apps Script) para lhe enviar o resultado. A Yandex Metrica (Yandex LLC) recebe o endereço da página sem o código do resultado, a origem da visita, o tipo de dispositivo e navegador e uma gravação anonimizada das ações na página (os campos de nome e e-mail, o link e o código do resultado ficam excluídos), e define os seus próprios cookies. Pode bloqueá-la nas definições do navegador ou com um bloqueador de rastreadores. Não são usados rastreadores publicitários.",
     "consent.accept": "Aceitar",
     "consent.decline": "Só o essencial",
     "consent.ok": "Entendi",

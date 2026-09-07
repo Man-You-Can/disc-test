@@ -241,14 +241,14 @@
         {
           "h": "Welche Daten wir verwenden",
           "p": [
-            "Vor dem Test geben Sie Ihren Namen und Ihre E-Mail-Adresse ein. Während des Tests werden Ihre Antworten gespeichert, nach dem Abschluss das Ergebnis, die gewählte Sprache und Ihre Antwort auf den Cookie-Hinweis. All das liegt im lokalen Speicher Ihres Browsers, nicht auf einem Server: Die Website hat keine Datenbank."
+            "Vor dem Test geben Sie Ihren Namen und Ihre E-Mail-Adresse ein. Während des Tests werden Ihre Antworten gespeichert, danach das Ergebnis, die gewählte Sprache und ein Vermerk, dass Sie den Cookie-Hinweis gesehen haben. All das liegt im lokalen Speicher Ihres Browsers, nicht auf einem Server: Die Seite hat keine Datenbank."
           ]
         },
         {
           "h": "Wohin die Daten übermittelt werden",
           "p": [
             "Nach Abschluss des Tests werden Name, E-Mail-Adresse und Antworten (als Ergebniscode) an den E-Mail-Versanddienst übermittelt, ein Google-Apps-Script im Google-Konto des Seitenbetreibers, das Ihnen die E-Mail mit dem Ergebnis sendet. Für andere Zwecke werden diese Daten nicht verwendet und nicht an Dritte weitergegeben.",
-            "Der Hoster (GitHub Pages) erhält die üblichen technischen Anfragedaten: IP-Adresse, Browsertyp, Seitenadresse. Die Schriften werden von dieser Website selbst ausgeliefert und nicht von Google-Servern geladen. Mit Ihrer Einwilligung (Schaltfläche „Akzeptieren“ im Cookie-Hinweis) läuft auf der Website Yandex Metrica (Yandex LLC): Sie erhält anonymisierte Besuchsdaten – die Seitenadresse ohne den Ergebniscode, die Herkunft des Besuchs, Geräte- und Browsertyp – sowie eine Aufzeichnung der Aktionen auf der Seite (Webvisor); die Felder für Name und E-Mail, der Ergebnislink und der Code sind von der Aufzeichnung ausgenommen. Ohne Einwilligung wird der Zähler nicht geladen. Sie können die Einwilligung widerrufen, indem Sie die Website-Daten im Browser löschen: Der Hinweis erscheint dann erneut. Werbe-Tracker werden nicht verwendet."
+            "Der Hoster (GitHub Pages) erhält die üblichen technischen Anfragedaten: IP-Adresse, Browsertyp, Seitenadresse. Die Schriften werden von dieser Website selbst ausgeliefert und nicht von Google-Servern geladen. Besuchsstatistiken erfasst Yandex Metrica (Yandex LLC): Sie erhält anonymisierte Besuchsdaten – die Seitenadresse ohne den Ergebniscode, die Herkunft des Besuchs, Geräte- und Browsertyp – sowie eine Aufzeichnung der Aktionen auf der Seite (Webvisor); die Felder für Name und E-Mail, der Ergebnislink und der Code sind von der Aufzeichnung ausgenommen. Die Daten werden nach den Bedingungen von Yandex verarbeitet; Sie können die Erfassung in den Browsereinstellungen oder mit einem Tracker-Blocker unterbinden. Werbe-Tracker werden nicht verwendet."
           ]
         },
         {
@@ -266,7 +266,7 @@
         {
           "h": "Cookies",
           "p": [
-            "Die Website selbst setzt keine Cookies: Für das oben Genannte nutzt sie den lokalen Speicher des Browsers, eine Technologie mit demselben Zweck. Nach Ihrer Einwilligung setzt Yandex Metrica eigene Cookies (zum Beispiel _ym_uid und _ym_d), um Besucher zu unterscheiden; ohne Einwilligung werden sie nicht gesetzt. Deshalb wird der Hinweis beim ersten Besuch und erneut nach dem Löschen der Website-Daten angezeigt."
+            "Die Website selbst setzt keine Cookies: Für das oben Genannte nutzt sie den lokalen Speicher des Browsers, eine Technologie mit demselben Zweck. Yandex Metrica setzt eigene Cookies (zum Beispiel _ym_uid und _ym_d), um Besucher zu unterscheiden. Deshalb wird der Hinweis einmal beim ersten Besuch angezeigt."
           ]
         },
         {
@@ -424,9 +424,9 @@
     "cta.button": "Test starten",
 
     "consent.label": "Cookie-Hinweis",
-    "consent.text": "Diese Website speichert Ihren Fortschritt, Ihr Ergebnis und die gewählte Sprache im lokalen Speicher des Browsers. Wenn Sie zustimmen, erfasst Yandex Metrica anonymisierte Besuchsstatistiken und eine Aufzeichnung der Aktionen auf der Seite, damit wir die Website verbessern können; Ihr Name, Ihre E-Mail-Adresse und Ihr Ergebnis werden nicht an sie übermittelt.",
+    "consent.text": "Diese Website speichert Ihren Fortschritt, Ihr Ergebnis und die gewählte Sprache im lokalen Speicher des Browsers, und Yandex Metrica erfasst anonymisierte Besuchsstatistiken und eine Aufzeichnung der Aktionen auf der Seite, damit wir die Website verbessern können. Ihr Name, Ihre E-Mail-Adresse und Ihr Ergebnis werden nicht an Metrica übermittelt.",
     "consent.more": "Mehr erfahren",
-    "consent.details": "Im Browser gespeichert werden: der vor dem Test eingegebene Name und die E-Mail-Adresse; Ihre Antworten und der unvollendete Fortschritt; Ihr letztes Ergebnis; die gewählte Sprache; Ihre Antwort auf diesen Hinweis. Diese Daten bleiben auf Ihrem Gerät und werden beim Löschen der Website-Daten entfernt. Der Hoster (GitHub Pages) erhält die üblichen technischen Anfragedaten. Beim Abschluss des Tests werden Name, E-Mail-Adresse und Antworten an den E-Mail-Versanddienst (Google Apps Script) übergeben, um Ihnen das Ergebnis zu senden. Yandex Metrica (Yandex LLC) wird erst nach einem Klick auf „Akzeptieren“ geladen: Sie erhält die Seitenadresse ohne den Ergebniscode, die Herkunft des Besuchs, Geräte- und Browsertyp sowie eine anonymisierte Aufzeichnung der Aktionen auf der Seite (die Felder für Name und E-Mail, der Ergebnislink und der Code sind ausgenommen) und setzt eigene Cookies. Sie können die Einwilligung widerrufen, indem Sie die Website-Daten im Browser löschen. Werbe-Tracker werden nicht verwendet.",
+    "consent.details": "Im Browser gespeichert werden: der vor dem Test eingegebene Name und die E-Mail-Adresse; Ihre Antworten und der unvollendete Fortschritt; Ihr letztes Ergebnis; die gewählte Sprache; ein Vermerk, dass Sie diesen Hinweis gesehen haben. Diese Daten bleiben auf Ihrem Gerät und werden beim Löschen der Website-Daten entfernt. Der Hoster (GitHub Pages) erhält die üblichen technischen Anfragedaten. Beim Abschluss des Tests werden Name, E-Mail-Adresse und Antworten an den E-Mail-Versanddienst (Google Apps Script) übergeben, um Ihnen das Ergebnis zu senden. Yandex Metrica (Yandex LLC) erhält die Seitenadresse ohne den Ergebniscode, die Herkunft des Besuchs, Geräte- und Browsertyp sowie eine anonymisierte Aufzeichnung der Aktionen auf der Seite (die Felder für Name und E-Mail, der Ergebnislink und der Code sind ausgenommen) und setzt eigene Cookies. Sie können sie in den Browsereinstellungen oder mit einem Tracker-Blocker blockieren. Werbe-Tracker werden nicht verwendet.",
     "consent.accept": "Akzeptieren",
     "consent.decline": "Nur Notwendiges",
     "consent.ok": "Verstanden",
