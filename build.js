@@ -12,7 +12,9 @@ const introHTML = require(path.join(SRC, 'intro.js'));
 const commonJs = fs.readFileSync(path.join(SRC, 'common.js'), 'utf8').replace(/\nif \(typeof module[^\n]*\n?$/, '\n');
 const pageTpl = fs.readFileSync(path.join(SRC, 'page.html'), 'utf8');
 const styleBlock = (tpl.match(/<style>[\s\S]*?<\/style>/) || [''])[0];
-const NAV_ITEMS = [['nav.test', ''], ['nav.styles', 'styles/'], ['nav.profiles', 'profiles/']];
+const NAV_ITEMS = [['nav.test', ''], ['nav.disc', 'disc/'], ['nav.styles', 'styles/'], ['nav.profiles', 'profiles/'], ['nav.faq', 'faq/']];
+const FOOT_ITEMS = [['nav.about', 'about/'], ['nav.privacy', 'privacy/']];
+const footLinks = (L, base) => FOOT_ITEMS.map(([k, sub]) => `<a href="${base + sub}">${esc(L.ui[k])}</a>`).join(' · ');
 const PROFILE_KEYS = ['D', 'DI', 'DC', 'DS', 'I', 'ID', 'IS', 'IC', 'S', 'SI', 'SC', 'SD', 'C', 'CD', 'CS', 'CI'];
 const pages = []; // для sitemap: {lang, sub, files}
 const ASSETS = path.join(SRC, 'assets');
@@ -102,6 +104,7 @@ for (const L of locales) {
   const isRoot = L.lang === def.lang, rootRel = isRoot ? './' : '../';
   const href = x => rootRel + pathOf(x.lang);
   const navHtml = NAV_ITEMS.map(([k, sub]) => `<a href="${rootRel + pathOf(L.lang) + sub}"${sub === '' ? ' aria-current="page"' : ''}>${esc(L.ui[k])}</a>`).join('');
+  const footHtml = footLinks(L, rootRel + pathOf(L.lang));
   pages.push({ lang: L.lang, sub: '', files: [`src/locales/${L.lang}.json`, 'src/template.html', 'src/intro.js'] });
   const chevron = `<svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5l3.5 3.5 3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
   const switcher = `<div class="langsel" id="langSel">` +
@@ -121,7 +124,7 @@ for (const L of locales) {
     .replace('__JSON_LD__', () => jsonLd(L))
     .replace('__INTRO_JS__', () => introJs.replace(/\nif \(typeof module[^\n]*\n?$/, '\n'))
     .replace('__COMMON_JS__', () => commonJs)
-    .replace('__NAV__', () => navHtml)
+    .replace('__NAV__', () => navHtml).replace('__FOOT_LINKS__', () => footHtml)
     .replace('__INTRO_HTML__', () => introHTML({ L, t: tFor(L), esc: escFull, KEYS, colorVar: k => 'var(--' + k.toLowerCase() + ')', who: {}, progDone: 0, lastDate: '',
       links: { styles: rootRel + pathOf(L.lang) + 'styles/', profiles: rootRel + pathOf(L.lang) + 'profiles/', profile: k => rootRel + pathOf(L.lang) + 'profiles/' + k.toLowerCase() + '/' } }))
     .replace(/__HREFLANG__/g, hreflangTags)
@@ -166,13 +169,16 @@ function writeContentPage(L, sub, opts) {
     locales.map(x => `<li role="none"><a role="option" href="${rootRel + pathOf(x.lang) + sub}" hreflang="${hl(x.lang)}" lang="${x.lang}" data-lang="${x.lang}" aria-selected="${x.lang === L.lang}" tabindex="-1">${flag(x.lang)}<span>${esc(x.name)}</span></a></li>`).join('') + `</ul></div>`;
   const links = locales.map(x => `<a href="${rootRel + pathOf(x.lang) + sub}" hreflang="${hl(x.lang)}" lang="${x.lang}" data-lang="${x.lang}"${x.lang === L.lang ? ' aria-current="page"' : ''}>${flag(x.lang)}<span>${esc(x.name)}</span></a>`).join('');
   const navHtml = NAV_ITEMS.map(([k, s2]) => `<a href="${base + s2}"${opts.navKey === k ? ' aria-current="page"' : ''}>${esc(L.ui[k])}</a>`).join('');
+  const footHtml = footLinks(L, base);
   const crumbs = [{ name: L.ui['nav.home'], href: homeHref }].concat(opts.crumbs || []);
   const crumbsHtml = crumbs.map((c, i) => i === crumbs.length - 1 ? `<span aria-current="page">${esc(c.name)}</span>` : `<a href="${c.href}">${esc(c.name)}</a><span>›</span>`).join('');
   const hreflang = locales.flatMap(x => hls(x.lang).map(h => `<link rel="alternate" hreflang="${h}" href="${urlOf(x.lang) + sub}">`)).concat([`<link rel="alternate" hreflang="x-default" href="${siteUrl}/${sub}">`]).join('\n');
   const ld = JSON.stringify([
-    { '@context': 'https://schema.org', '@type': 'WebPage', name: opts.title, description: opts.description, url: urlOf(L.lang) + sub, inLanguage: L.lang, isPartOf: { '@type': 'WebSite', name: 'DISC Test', url: siteUrl + '/' } },
+    { '@context': 'https://schema.org', '@type': opts.article ? 'Article' : 'WebPage', headline: opts.article ? opts.title : undefined, name: opts.title, description: opts.description, url: urlOf(L.lang) + sub, inLanguage: L.lang,
+      dateModified: opts.article ? (lastmod([`src/locales/${L.lang}.json`]) || today) : undefined, author: opts.article ? { '@type': 'Organization', name: 'DISC Test', url: siteUrl + '/' } : undefined,
+      isPartOf: { '@type': 'WebSite', name: 'DISC Test', url: siteUrl + '/' } },
     { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: crumbs.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.name, item: i === 0 ? urlOf(L.lang) : urlOf(L.lang) + (c.sub || sub) })) }
-  ]).replace(/</g, '\\u003c');
+  ].concat(opts.ldExtra || [])).replace(/</g, '\\u003c');
   const miniL = { lang: L.lang, name: L.name, dir: L.dir, ui: Object.fromEntries(Object.entries(L.ui).filter(([k]) => k === 'langLabel' || k === 'root.continue' || k.startsWith('consent.'))) };
   const html = pageTpl
     .replace(/__LANG__/g, L.lang).replace(/__DIR__/g, L.dir)
@@ -184,7 +190,7 @@ function writeContentPage(L, sub, opts) {
     .replace(/__FONTS_HEAD__/g, () => fontsHead(f)).replace('__STYLE__', () => styleBlock.replace(/__FONT_HEAD__/g, f.head).replace(/__FONT_BODY__/g, f.body))
     .replace('__FLAG_SPRITE__', () => flagSprite(locales.map(x => x.lang)))
     .replace(/__BRAND__/g, esc(L.brand)).replace(/__HOME_HREF__/g, homeHref).replace(/__LANG_LABEL__/g, esc(L.ui.langLabel))
-    .replace('__LANG_SWITCHER__', () => switcher).replace('__NAV__', () => navHtml).replace('__CRUMBS__', () => crumbsHtml)
+    .replace('__LANG_SWITCHER__', () => switcher).replace('__NAV__', () => navHtml).replace('__CRUMBS__', () => crumbsHtml).replace('__FOOT_LINKS__', () => footHtml)
     .replace('__CONTENT__', () => opts.content)
     .replace(/__FOOTER__/g, esc(L.ui.footer)).replace(/__PRIVACY__/g, esc(L.ui.privacy)).replace('__LANG_LINKS__', () => links)
     .replace('__LOCALE_JSON__', () => JSON.stringify(miniL).replace(/</g, '\\u003c'))
@@ -224,6 +230,26 @@ for (const L of locales) {
       description: truncate(t('pages.profile.description', { name: pr.name, key, summary: pr.summary }), 155),
       crumbs: [{ name: t('nav.profiles'), href: '../', sub: 'profiles/' }, { name: pr.name }], content });
   }
+}
+
+// ---------- Текстовые страницы: что такое DISC, FAQ, о проекте, конфиденциальность ----------
+const sectionsHtml = secs => secs.map(sec => `<h2>${escFull(sec.h)}</h2>` + sec.p.map(par => `<p>${escFull(par)}</p>`).join('')).join('');
+for (const L of locales) {
+  const t = tFor(L), C = L.content;
+  const seeAlso = (base, cur) => `<p class="seealso">${[['nav.disc', 'disc/'], ['nav.styles', 'styles/'], ['nav.profiles', 'profiles/'], ['nav.faq', 'faq/']].filter(([k]) => k !== cur).map(([k, sub]) => `<a href="${base + sub}">${esc(L.ui[k])} →</a>`).join(' · ')}</p>`;
+  const d = C.disc;
+  writeContentPage(L, 'disc/', { navKey: 'nav.disc', article: true, title: d.title, description: d.description, crumbs: [{ name: t('nav.disc') }],
+    content: `<div class="eyebrow">DISC</div><h1>${escFull(d.h1)}</h1><p class="lead">${escFull(d.lead)}</p>` + sectionsHtml(d.sections) + ctaBlock(L, t, '../') + seeAlso('../', 'nav.disc') });
+  const f = C.faq;
+  writeContentPage(L, 'faq/', { navKey: 'nav.faq', title: f.title, description: f.description, crumbs: [{ name: t('nav.faq') }],
+    content: `<div class="eyebrow">DISC</div><h1>${escFull(f.h1)}</h1><p class="lead">${escFull(f.lead)}</p>` + f.items.map(it => `<h2>${escFull(it.q)}</h2><p>${escFull(it.a)}</p>`).join('') + ctaBlock(L, t, '../') + seeAlso('../', 'nav.faq'),
+    ldExtra: [{ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: f.items.map(it => ({ '@type': 'Question', name: it.q, acceptedAnswer: { '@type': 'Answer', text: it.a } })) }] });
+  const a = C.about;
+  writeContentPage(L, 'about/', { navKey: 'nav.about', title: a.title, description: a.description, crumbs: [{ name: t('nav.about') }],
+    content: `<div class="eyebrow">DISC</div><h1>${escFull(a.h1)}</h1>` + sectionsHtml(a.sections).replace('github.com/Man-You-Can/disc-test', '<a href="https://github.com/Man-You-Can/disc-test" rel="noopener">github.com/Man-You-Can/disc-test</a>') + ctaBlock(L, t, '../') });
+  const pv = C.privacy;
+  writeContentPage(L, 'privacy/', { navKey: 'nav.privacy', title: pv.title, description: pv.description, crumbs: [{ name: t('nav.privacy') }],
+    content: `<div class="eyebrow">DISC</div><h1>${escFull(pv.h1)}</h1>` + sectionsHtml(pv.sections) });
 }
 
 // /en/ (язык по умолчанию) перенаправляет в корень: адрес существовал раньше и мог быть сохранён

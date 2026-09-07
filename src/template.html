@@ -177,6 +177,11 @@ input:focus-visible,textarea:focus-visible,button:focus-visible,select:focus-vis
 .foot{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
 .foot .row2{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .foot .privacy{margin-top:6px}
+.footlinks a{color:var(--muted)}
+.footlinks a:hover{color:var(--ink)}
+.content .seealso{margin-top:26px;font-size:14px}
+.content .seealso a{color:var(--ink)}
+.content h2+p{margin-top:0}
 .langs{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:14px}
 .langs a{color:var(--muted);text-decoration:none;display:inline-flex;align-items:center;gap:6px}
 .langs a:hover{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
@@ -296,7 +301,7 @@ __FLAG_SPRITE__
   <div class="progress" id="progress" hidden></div>
   <main id="view">__INTRO_HTML__</main>
   <footer class="foot">
-    <div class="row2"><span>__FOOTER__</span><button class="link" id="adminLink" type="button">__ADMIN_LINK__</button></div>
+    <div class="row2"><span>__FOOTER__</span><span class="footlinks">__FOOT_LINKS__ · <button class="link" id="adminLink" type="button">__ADMIN_LINK__</button></span></div>
     <div class="privacy">__PRIVACY__</div>
     <nav class="langs" aria-label="__LANG_LABEL__">__LANG_LINKS__</nav>
   </footer>
