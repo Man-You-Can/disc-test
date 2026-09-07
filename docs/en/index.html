@@ -75,8 +75,18 @@ html[lang=ar] body,html[lang=hi] body{font-size:17px;line-height:1.65}
 .brand .dots i{width:8px;height:8px;border-radius:50%;display:block}
 .tools{display:flex;align-items:center;gap:12px;min-width:0}
 .step{font-family:var(--font-mono);font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
-select.lang{font:inherit;font-size:13px;line-height:1.2;padding:7px 28px 7px 10px;border:1px solid var(--line-strong);border-radius:8px;background:var(--surface) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'><path d='M2.5 4.5l3.5 3.5 3.5-3.5' fill='none' stroke='%237F8894' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/></svg>") no-repeat right 9px center;color:var(--ink);appearance:none;-webkit-appearance:none;cursor:pointer;max-width:160px}
-[dir=rtl] select.lang{padding:7px 10px 7px 28px;background-position:left 9px center}
+.flag{width:20px;height:13.5px;border-radius:2.5px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.14);flex:none;display:inline-block;vertical-align:-2px}
+.langsel{position:relative}
+.langbtn{display:inline-flex;align-items:center;gap:8px;font:inherit;font-size:13px;line-height:1.2;padding:6px 10px;border:1px solid var(--line-strong);border-radius:8px;background:var(--surface);color:var(--ink);cursor:pointer;white-space:nowrap}
+.langbtn:hover{border-color:var(--muted)}
+.langbtn .chev{width:12px;height:12px;color:var(--muted);flex:none}
+.langbtn[aria-expanded=true] .chev{transform:rotate(180deg)}
+@media (max-width:380px){.langbtn .langname{display:none}}
+.langmenu{position:absolute;top:calc(100% + 6px);inset-inline-end:0;margin:0;padding:6px;list-style:none;background:var(--surface);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);min-width:190px;z-index:20}
+.langmenu a{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:8px;color:var(--ink);text-decoration:none;font-size:14px;white-space:nowrap}
+.langmenu a:hover,.langmenu a:focus-visible{background:var(--soft)}
+.langmenu a[aria-selected=true]{font-weight:600}
+.langmenu a[aria-selected=true]::after{content:"✓";margin-inline-start:auto;padding-inline-start:10px;color:var(--muted);font-size:12px}
 .progress{display:grid;grid-template-columns:repeat(24,1fr);gap:3px;height:6px;margin:0 0 28px}
 .progress i{display:block;background:var(--line);border-radius:2px;transition:background .2s}
 .progress i.done{background:var(--ink)}
@@ -117,8 +127,8 @@ input:focus-visible,textarea:focus-visible,button:focus-visible,select:focus-vis
 .foot{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
 .foot .row2{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .foot .privacy{margin-top:6px}
-.langs{display:flex;flex-wrap:wrap;gap:4px 14px;margin-top:14px}
-.langs a{color:var(--muted);text-decoration:none}
+.langs{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:14px}
+.langs a{color:var(--muted);text-decoration:none;display:inline-flex;align-items:center;gap:6px}
 .langs a:hover{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
 .langs a[aria-current]{color:var(--ink);font-weight:600}
 /* test */
@@ -209,18 +219,19 @@ th.num{text-align:end}
 </style>
 </head>
 <body>
+<svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true"><symbol id="flag-en" viewBox="0 0 30 20"><rect width="30" height="20" fill="#012169"/><path d="M0 0L30 20M30 0L0 20" stroke="#fff" stroke-width="4"/><path d="M0 0L30 20M30 0L0 20" stroke="#C8102E" stroke-width="1.6"/><path d="M15 0V20M0 10H30" stroke="#fff" stroke-width="6"/><path d="M15 0V20M0 10H30" stroke="#C8102E" stroke-width="3.6"/></symbol><symbol id="flag-ru" viewBox="0 0 30 20"><rect width="30" height="20" fill="#fff"/><rect y="6.67" width="30" height="6.67" fill="#0039A6"/><rect y="13.33" width="30" height="6.67" fill="#D52B1E"/></symbol><symbol id="flag-es" viewBox="0 0 30 20"><rect width="30" height="20" fill="#AA151B"/><rect y="5" width="30" height="10" fill="#F1BF00"/></symbol><symbol id="flag-zh" viewBox="0 0 30 20"><rect width="30" height="20" fill="#EE1C25"/><polygon points="5.00,2.00 5.67,4.07 7.85,4.07 6.09,5.35 6.76,7.43 5.00,6.15 3.24,7.43 3.91,5.35 2.15,4.07 4.33,4.07" fill="#FFDE00"/><polygon points="10.00,1.00 10.22,1.69 10.95,1.69 10.36,2.12 10.59,2.81 10.00,2.38 9.41,2.81 9.64,2.12 9.05,1.69 9.78,1.69" fill="#FFDE00"/><polygon points="12.00,3.20 12.22,3.89 12.95,3.89 12.36,4.32 12.59,5.01 12.00,4.58 11.41,5.01 11.64,4.32 11.05,3.89 11.78,3.89" fill="#FFDE00"/><polygon points="12.00,6.00 12.22,6.69 12.95,6.69 12.36,7.12 12.59,7.81 12.00,7.38 11.41,7.81 11.64,7.12 11.05,6.69 11.78,6.69" fill="#FFDE00"/><polygon points="10.00,8.00 10.22,8.69 10.95,8.69 10.36,9.12 10.59,9.81 10.00,9.38 9.41,9.81 9.64,9.12 9.05,8.69 9.78,8.69" fill="#FFDE00"/></symbol><symbol id="flag-ar" viewBox="0 0 30 20"><rect width="30" height="20" fill="#006C35"/><path d="M7 8.5c1.5-2.2 3-2.2 4 0s2.5 2.2 4 0 3-2.2 4 0 2.5 2.2 4 0" fill="none" stroke="#fff" stroke-width="1.3" stroke-linecap="round"/><path d="M7.5 13.5H21.5" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/><path d="M21.2 12.2v2.6" stroke="#fff" stroke-width="1.2" stroke-linecap="round"/></symbol><symbol id="flag-pt" viewBox="0 0 30 20"><rect width="30" height="20" fill="#009C3B"/><polygon points="15,2.5 27,10 15,17.5 3,10" fill="#FFDF00"/><circle cx="15" cy="10" r="4.6" fill="#002776"/><path d="M10.7 9.3c2.9-1.5 5.9-1.3 8.6.4" fill="none" stroke="#fff" stroke-width=".9"/></symbol><symbol id="flag-fr" viewBox="0 0 30 20"><rect width="10" height="20" fill="#0055A4"/><rect x="10" width="10" height="20" fill="#fff"/><rect x="20" width="10" height="20" fill="#EF4135"/></symbol><symbol id="flag-de" viewBox="0 0 30 20"><rect width="30" height="6.67" fill="#000"/><rect y="6.67" width="30" height="6.67" fill="#DD0000"/><rect y="13.33" width="30" height="6.67" fill="#FFCE00"/></symbol><symbol id="flag-ja" viewBox="0 0 30 20"><rect width="30" height="20" fill="#fff"/><circle cx="15" cy="10" r="6" fill="#BC002D"/></symbol><symbol id="flag-hi" viewBox="0 0 30 20"><rect width="30" height="6.67" fill="#FF9933"/><rect y="6.67" width="30" height="6.67" fill="#fff"/><rect y="13.33" width="30" height="6.67" fill="#138808"/><circle cx="15" cy="10" r="2.6" fill="none" stroke="#000080" stroke-width=".8"/><circle cx="15" cy="10" r=".6" fill="#000080"/></symbol></svg>
 <div class="wrap" id="app">
   <header class="topbar">
     <div class="brand"><span class="dots"><i style="background:var(--d)"></i><i style="background:var(--i)"></i><i style="background:var(--s)"></i><i style="background:var(--c)"></i></span>DISC Test</div>
     <div class="tools"><div class="step" id="step"></div>
-      <select class="lang" id="langSel" aria-label="Language"><option value="en" selected>English</option><option value="ru">Русский</option><option value="es">Español</option><option value="zh">简体中文</option><option value="ar">العربية</option><option value="pt">Português</option><option value="fr">Français</option><option value="de">Deutsch</option><option value="ja">日本語</option><option value="hi">हिन्दी</option></select></div>
+      <div class="langsel" id="langSel"><button type="button" class="langbtn" id="langBtn" aria-haspopup="listbox" aria-expanded="false" aria-label="Language"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-en"/></svg><span class="langname">English</span><svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5l3.5 3.5 3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><ul class="langmenu" id="langMenu" role="listbox" aria-label="Language" hidden><li role="none"><a role="option" href="../en/" hreflang="en" lang="en" data-lang="en" aria-selected="true" tabindex="-1"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-en"/></svg><span>English</span></a></li><li role="none"><a role="option" href="../ru/" hreflang="ru" lang="ru" data-lang="ru" aria-selected="false" tabindex="-1"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-ru"/></svg><span>Русский</span></a></li><li role="none"><a role="option" href="../es/" hreflang="es" lang="es" data-lang="es" aria-selected="false" tabindex="-1"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-es"/></svg><span>Español</span></a></li><li role="none"><a role="option" href="../zh/" hreflang="zh-Hans" lang="zh" data-lang="zh" aria-selected="false" tabindex="-1"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-zh"/></svg><span>简体中文</span></a></li><li role="none"><a role="option" href="../ar/" hreflang="ar" lang="ar" data-lang="ar" aria-selected="false" tabindex="-1"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-ar"/></svg><span>العربية</span></a></li><li role="none"><a role="option" href="../pt/" hreflang="pt" lang="pt" data-lang="pt" aria-selected="false" tabindex="-1"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-pt"/></svg><span>Português</span></a></li><li role="none"><a role="option" href="../fr/" hreflang="fr" lang="fr" data-lang="fr" aria-selected="false" tabindex="-1"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-fr"/></svg><span>Français</span></a></li><li role="none"><a role="option" href="../de/" hreflang="de" lang="de" data-lang="de" aria-selected="false" tabindex="-1"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-de"/></svg><span>Deutsch</span></a></li><li role="none"><a role="option" href="../ja/" hreflang="ja" lang="ja" data-lang="ja" aria-selected="false" tabindex="-1"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-ja"/></svg><span>日本語</span></a></li><li role="none"><a role="option" href="../hi/" hreflang="hi" lang="hi" data-lang="hi" aria-selected="false" tabindex="-1"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-hi"/></svg><span>हिन्दी</span></a></li></ul></div></div>
   </header>
   <div class="progress" id="progress" hidden></div>
   <main id="view"></main>
   <footer class="foot">
     <div class="row2"><span>24 blocks · about 10 minutes · no right or wrong answers</span><button class="link" id="adminLink" type="button">Admin panel</button></div>
     <div class="privacy">Your answers and results stay in your browser and are never sent anywhere.</div>
-    <nav class="langs" aria-label="Language"><a href="../en/" hreflang="en" lang="en" aria-current="page">English</a><a href="../ru/" hreflang="ru" lang="ru">Русский</a><a href="../es/" hreflang="es" lang="es">Español</a><a href="../zh/" hreflang="zh-Hans" lang="zh">简体中文</a><a href="../ar/" hreflang="ar" lang="ar">العربية</a><a href="../pt/" hreflang="pt" lang="pt">Português</a><a href="../fr/" hreflang="fr" lang="fr">Français</a><a href="../de/" hreflang="de" lang="de">Deutsch</a><a href="../ja/" hreflang="ja" lang="ja">日本語</a><a href="../hi/" hreflang="hi" lang="hi">हिन्दी</a></nav>
+    <nav class="langs" aria-label="Language"><a href="../en/" hreflang="en" lang="en" data-lang="en" aria-current="page"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-en"/></svg><span>English</span></a><a href="../ru/" hreflang="ru" lang="ru" data-lang="ru"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-ru"/></svg><span>Русский</span></a><a href="../es/" hreflang="es" lang="es" data-lang="es"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-es"/></svg><span>Español</span></a><a href="../zh/" hreflang="zh-Hans" lang="zh" data-lang="zh"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-zh"/></svg><span>简体中文</span></a><a href="../ar/" hreflang="ar" lang="ar" data-lang="ar"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-ar"/></svg><span>العربية</span></a><a href="../pt/" hreflang="pt" lang="pt" data-lang="pt"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-pt"/></svg><span>Português</span></a><a href="../fr/" hreflang="fr" lang="fr" data-lang="fr"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-fr"/></svg><span>Français</span></a><a href="../de/" hreflang="de" lang="de" data-lang="de"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-de"/></svg><span>Deutsch</span></a><a href="../ja/" hreflang="ja" lang="ja" data-lang="ja"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-ja"/></svg><span>日本語</span></a><a href="../hi/" hreflang="hi" lang="hi" data-lang="hi"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-hi"/></svg><span>हिन्दी</span></a></nav>
   </footer>
 </div>
 <div class="toast" id="toast" hidden></div>
@@ -573,11 +584,33 @@ function renderAdmin(){
 
 /* ====== переключение языка ====== */
 lsSet('disc.lang', L.lang);
-$('#langSel').addEventListener('change', function(){
-  var code = this.value; if(code===L.lang) return;
-  lsSet('disc.lang', code);
-  location.href = '../'+code+'/'+location.hash;
+function langHref(code){ return '../'+code+'/'+location.hash; }
+document.querySelectorAll('a[data-lang]').forEach(function(a){
+  a.addEventListener('click', function(){ var code=a.getAttribute('data-lang'); lsSet('disc.lang', code); a.href=langHref(code); });
 });
+(function(){
+  var box=$('#langSel'), btn=$('#langBtn'), menu=$('#langMenu');
+  if(!box||!btn||!menu) return;
+  var items=[].slice.call(menu.querySelectorAll('a[data-lang]'));
+  function open(){
+    items.forEach(function(a){ a.href=langHref(a.getAttribute('data-lang')); });
+    menu.hidden=false; btn.setAttribute('aria-expanded','true');
+    var cur=menu.querySelector('a[aria-selected="true"]')||items[0]; try{ cur.focus({preventScroll:true}); }catch(e){ cur.focus(); }
+  }
+  function close(focusBtn){ if(menu.hidden) return; menu.hidden=true; btn.setAttribute('aria-expanded','false'); if(focusBtn) btn.focus(); }
+  btn.addEventListener('click', function(){ menu.hidden ? open() : close(false); });
+  btn.addEventListener('keydown', function(e){ if(e.key==='ArrowDown'||e.key==='ArrowUp'){ e.preventDefault(); open(); } });
+  menu.addEventListener('keydown', function(e){
+    var i=items.indexOf(document.activeElement), n=items.length;
+    if(e.key==='Escape'){ e.preventDefault(); close(true); }
+    else if(e.key==='ArrowDown'){ e.preventDefault(); items[(i+1)%n].focus(); }
+    else if(e.key==='ArrowUp'){ e.preventDefault(); items[(i-1+n)%n].focus(); }
+    else if(e.key==='Home'){ e.preventDefault(); items[0].focus(); }
+    else if(e.key==='End'){ e.preventDefault(); items[n-1].focus(); }
+    else if(e.key==='Tab'){ close(false); }
+  });
+  document.addEventListener('click', function(e){ if(!box.contains(e.target)) close(false); });
+})();
 
 /* ====== маршрутизация ====== */
 $('#adminLink').addEventListener('click', function(){ renderAdmin(); window.scrollTo(0,0); });

@@ -65,8 +65,18 @@ html[lang=ar] body,html[lang=hi] body{font-size:17px;line-height:1.65}
 .brand .dots i{width:8px;height:8px;border-radius:50%;display:block}
 .tools{display:flex;align-items:center;gap:12px;min-width:0}
 .step{font-family:var(--font-mono);font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
-select.lang{font:inherit;font-size:13px;line-height:1.2;padding:7px 28px 7px 10px;border:1px solid var(--line-strong);border-radius:8px;background:var(--surface) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'><path d='M2.5 4.5l3.5 3.5 3.5-3.5' fill='none' stroke='%237F8894' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/></svg>") no-repeat right 9px center;color:var(--ink);appearance:none;-webkit-appearance:none;cursor:pointer;max-width:160px}
-[dir=rtl] select.lang{padding:7px 10px 7px 28px;background-position:left 9px center}
+.flag{width:20px;height:13.5px;border-radius:2.5px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.14);flex:none;display:inline-block;vertical-align:-2px}
+.langsel{position:relative}
+.langbtn{display:inline-flex;align-items:center;gap:8px;font:inherit;font-size:13px;line-height:1.2;padding:6px 10px;border:1px solid var(--line-strong);border-radius:8px;background:var(--surface);color:var(--ink);cursor:pointer;white-space:nowrap}
+.langbtn:hover{border-color:var(--muted)}
+.langbtn .chev{width:12px;height:12px;color:var(--muted);flex:none}
+.langbtn[aria-expanded=true] .chev{transform:rotate(180deg)}
+@media (max-width:380px){.langbtn .langname{display:none}}
+.langmenu{position:absolute;top:calc(100% + 6px);inset-inline-end:0;margin:0;padding:6px;list-style:none;background:var(--surface);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);min-width:190px;z-index:20}
+.langmenu a{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:8px;color:var(--ink);text-decoration:none;font-size:14px;white-space:nowrap}
+.langmenu a:hover,.langmenu a:focus-visible{background:var(--soft)}
+.langmenu a[aria-selected=true]{font-weight:600}
+.langmenu a[aria-selected=true]::after{content:"✓";margin-inline-start:auto;padding-inline-start:10px;color:var(--muted);font-size:12px}
 .progress{display:grid;grid-template-columns:repeat(24,1fr);gap:3px;height:6px;margin:0 0 28px}
 .progress i{display:block;background:var(--line);border-radius:2px;transition:background .2s}
 .progress i.done{background:var(--ink)}
@@ -107,8 +117,8 @@ input:focus-visible,textarea:focus-visible,button:focus-visible,select:focus-vis
 .foot{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
 .foot .row2{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .foot .privacy{margin-top:6px}
-.langs{display:flex;flex-wrap:wrap;gap:4px 14px;margin-top:14px}
-.langs a{color:var(--muted);text-decoration:none}
+.langs{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:14px}
+.langs a{color:var(--muted);text-decoration:none;display:inline-flex;align-items:center;gap:6px}
 .langs a:hover{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
 .langs a[aria-current]{color:var(--ink);font-weight:600}
 /* test */
@@ -199,11 +209,12 @@ th.num{text-align:end}
 </style>
 </head>
 <body>
+__FLAG_SPRITE__
 <div class="wrap" id="app">
   <header class="topbar">
     <div class="brand"><span class="dots"><i style="background:var(--d)"></i><i style="background:var(--i)"></i><i style="background:var(--s)"></i><i style="background:var(--c)"></i></span>__BRAND__</div>
     <div class="tools"><div class="step" id="step"></div>
-      <select class="lang" id="langSel" aria-label="__LANG_LABEL__">__LANG_OPTIONS__</select></div>
+      __LANG_SWITCHER__</div>
   </header>
   <div class="progress" id="progress" hidden></div>
   <main id="view"></main>
@@ -563,11 +574,33 @@ function renderAdmin(){
 
 /* ====== переключение языка ====== */
 lsSet('disc.lang', L.lang);
-$('#langSel').addEventListener('change', function(){
-  var code = this.value; if(code===L.lang) return;
-  lsSet('disc.lang', code);
-  location.href = '../'+code+'/'+location.hash;
+function langHref(code){ return '../'+code+'/'+location.hash; }
+document.querySelectorAll('a[data-lang]').forEach(function(a){
+  a.addEventListener('click', function(){ var code=a.getAttribute('data-lang'); lsSet('disc.lang', code); a.href=langHref(code); });
 });
+(function(){
+  var box=$('#langSel'), btn=$('#langBtn'), menu=$('#langMenu');
+  if(!box||!btn||!menu) return;
+  var items=[].slice.call(menu.querySelectorAll('a[data-lang]'));
+  function open(){
+    items.forEach(function(a){ a.href=langHref(a.getAttribute('data-lang')); });
+    menu.hidden=false; btn.setAttribute('aria-expanded','true');
+    var cur=menu.querySelector('a[aria-selected="true"]')||items[0]; try{ cur.focus({preventScroll:true}); }catch(e){ cur.focus(); }
+  }
+  function close(focusBtn){ if(menu.hidden) return; menu.hidden=true; btn.setAttribute('aria-expanded','false'); if(focusBtn) btn.focus(); }
+  btn.addEventListener('click', function(){ menu.hidden ? open() : close(false); });
+  btn.addEventListener('keydown', function(e){ if(e.key==='ArrowDown'||e.key==='ArrowUp'){ e.preventDefault(); open(); } });
+  menu.addEventListener('keydown', function(e){
+    var i=items.indexOf(document.activeElement), n=items.length;
+    if(e.key==='Escape'){ e.preventDefault(); close(true); }
+    else if(e.key==='ArrowDown'){ e.preventDefault(); items[(i+1)%n].focus(); }
+    else if(e.key==='ArrowUp'){ e.preventDefault(); items[(i-1+n)%n].focus(); }
+    else if(e.key==='Home'){ e.preventDefault(); items[0].focus(); }
+    else if(e.key==='End'){ e.preventDefault(); items[n-1].focus(); }
+    else if(e.key==='Tab'){ close(false); }
+  });
+  document.addEventListener('click', function(e){ if(!box.contains(e.target)) close(false); });
+})();
 
 /* ====== маршрутизация ====== */
 $('#adminLink').addEventListener('click', function(){ renderAdmin(); window.scrollTo(0,0); });
