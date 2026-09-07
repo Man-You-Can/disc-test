@@ -18,6 +18,12 @@ const tpl = fs.readFileSync(path.join(SRC, 'template.html'), 'utf8');
 const introJs = fs.readFileSync(path.join(SRC, 'intro.js'), 'utf8');
 const introHTML = require(path.join(SRC, 'intro.js'));
 const commonJs = fs.readFileSync(path.join(SRC, 'common.js'), 'utf8').replace(/\nif \(typeof module[^\n]*\n?$/, '\n');
+// Форма обратной связи: письма уходят на feedbackEmail через Apps Script; пустой адрес — страницы /contact/ и ссылки на неё нет
+const contactJs = fs.readFileSync(path.join(SRC, 'contact.js'), 'utf8').replace(/\nif \(typeof module[^\n]*\n?$/, '\n');
+const contactHTML = require(path.join(SRC, 'contact.js'));
+const feedbackEmail = String(cfg.feedbackEmail || '').trim().replace(/['\\<>"]/g, '');
+const MAX_CONTACT_BYTES = 10 * 1024 * 1024; // общий размер вложений одного сообщения (проверяется и в браузере, и в Apps Script)
+const jsStr = s => JSON.stringify(String(s == null ? '' : s)).replace(/</g, '\\u003c');
 const graphJs = fs.readFileSync(path.join(SRC, 'graph.js'), 'utf8').replace(/\nif \(typeof module[^\n]*\n?$/, '\n');
 const graphSVG = require(path.join(SRC, 'graph.js'));
 // Типичный итоговый профиль (net, от −24 до +24, сумма 0) для примера результата на странице каждого профиля
@@ -33,7 +39,7 @@ const pct = net => Math.round((net + 24) / 48 * 100);
 const pageTpl = fs.readFileSync(path.join(SRC, 'page.html'), 'utf8');
 const styleBlock = (tpl.match(/<style>[\s\S]*?<\/style>/) || [''])[0];
 const NAV_ITEMS = [['nav.test', ''], ['nav.disc', 'disc/'], ['nav.styles', 'styles/'], ['nav.profiles', 'profiles/'], ['nav.faq', 'faq/']];
-const FOOT_ITEMS = [['nav.about', 'about/'], ['nav.privacy', 'privacy/']];
+const FOOT_ITEMS = [['nav.about', 'about/']].concat(feedbackEmail ? [['nav.contact', 'contact/']] : []).concat([['nav.privacy', 'privacy/']]);
 const footLinks = (L, base) => FOOT_ITEMS.map(([k, sub]) => `<a href="${base + sub}">${esc(L.ui[k])}</a>`).join(' · ');
 const PROFILE_KEYS = ['D', 'DI', 'DC', 'DS', 'I', 'ID', 'IS', 'IC', 'S', 'SI', 'SC', 'SD', 'C', 'CD', 'CS', 'CI'];
 const pages = []; // для sitemap: {lang, sub, files}
@@ -202,12 +208,12 @@ function writeContentPage(L, sub, opts) {
   const crumbsHtml = crumbs.map((c, i) => i === crumbs.length - 1 ? `<span aria-current="page">${esc(c.name)}</span>` : `<a href="${c.href}">${esc(c.name)}</a><span>›</span>`).join('');
   const hreflang = locales.flatMap(x => hls(x.lang).map(h => `<link rel="alternate" hreflang="${h}" href="${urlOf(x.lang) + sub}">`)).concat([`<link rel="alternate" hreflang="x-default" href="${siteUrl}/${sub}">`]).join('\n');
   const ld = JSON.stringify([
-    { '@context': 'https://schema.org', '@type': opts.article ? 'Article' : 'WebPage', headline: opts.article ? opts.title : undefined, name: opts.title, description: opts.description, url: urlOf(L.lang) + sub, inLanguage: L.lang,
+    { '@context': 'https://schema.org', '@type': opts.ldType || (opts.article ? 'Article' : 'WebPage'), headline: opts.article ? opts.title : undefined, name: opts.title, description: opts.description, url: urlOf(L.lang) + sub, inLanguage: L.lang,
       dateModified: opts.article ? (lastmod([`src/locales/${L.lang}.json`]) || today) : undefined, author: opts.article ? { '@type': 'Organization', name: 'DISC Test', url: siteUrl + '/' } : undefined,
       isPartOf: { '@type': 'WebSite', name: 'DISC Test', url: siteUrl + '/' } },
     { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: crumbs.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.name, item: i === 0 ? urlOf(L.lang) : urlOf(L.lang) + (c.sub || sub) })) }
   ].concat(opts.ldExtra || [])).replace(/</g, '\\u003c');
-  const miniL = { lang: L.lang, name: L.name, dir: L.dir, ui: Object.fromEntries(Object.entries(L.ui).filter(([k]) => k === 'langLabel' || k === 'root.continue' || k.startsWith('consent.'))) };
+  const miniL = { lang: L.lang, name: L.name, dir: L.dir, dateLocale: L.dateLocale, ui: Object.fromEntries(Object.entries(L.ui).filter(([k]) => k === 'langLabel' || k === 'root.continue' || k.startsWith('consent.') || (opts.uiKeys && opts.uiKeys.test(k)))) };
   const html = pageTpl
     .replace(/__LANG__/g, L.lang).replace(/__DIR__/g, L.dir)
     .replace(/__TITLE__/g, esc(opts.title)).replace(/__DESC__/g, esc(opts.description))
@@ -224,10 +230,10 @@ function writeContentPage(L, sub, opts) {
     .replace('__LOCALE_JSON__', () => JSON.stringify(miniL).replace(/</g, '\\u003c'))
     .replace(/__SUBPATH__/g, sub)
     .replace('__LANG_PATH_JSON__', () => JSON.stringify(LANG_PATH)).replace('__LANG_META_JSON__', () => JSON.stringify(LANG_META).replace(/</g, '\\u003c'))
-    .replace('__COMMON_JS__', () => commonJs);
+    .replace('__COMMON_JS__', () => commonJs).replace('__PAGE_JS__', () => opts.pageJs || '');
   fs.mkdirSync(path.join(OUT, pathOf(L.lang), sub), { recursive: true });
   fs.writeFileSync(path.join(OUT, pathOf(L.lang), sub, 'index.html'), html);
-  pages.push({ lang: L.lang, sub, files: [`src/locales/${L.lang}.json`, 'src/page.html', 'build.js'] });
+  pages.push({ lang: L.lang, sub, files: [`src/locales/${L.lang}.json`, 'src/page.html', 'build.js'].concat(opts.files || []) });
 }
 
 for (const L of locales) {
@@ -278,10 +284,19 @@ for (const L of locales) {
     ldExtra: [{ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: f.items.map(it => ({ '@type': 'Question', name: it.q, acceptedAnswer: { '@type': 'Answer', text: it.a } })) }] });
   const a = C.about;
   writeContentPage(L, 'about/', { navKey: 'nav.about', title: a.title, description: a.description, crumbs: [{ name: t('nav.about') }],
-    content: `<div class="eyebrow">DISC</div><h1>${escFull(a.h1)}</h1>` + sectionsHtml(a.sections).replace('github.com/Man-You-Can/disc-test', '<a href="https://github.com/Man-You-Can/disc-test" rel="noopener">github.com/Man-You-Can/disc-test</a>') + ctaBlock(L, t, '../') });
+    content: `<div class="eyebrow">DISC</div><h1>${escFull(a.h1)}</h1>` + sectionsHtml(a.sections).replace('github.com/Man-You-Can/disc-test', '<a href="https://github.com/Man-You-Can/disc-test" rel="noopener">github.com/Man-You-Can/disc-test</a>')
+      .replace('{contact}', feedbackEmail ? `<a href="../contact/">${escFull(t('nav.contact'))}</a>` : escFull(t('nav.contact'))) + ctaBlock(L, t, '../') });
   const pv = C.privacy;
   writeContentPage(L, 'privacy/', { navKey: 'nav.privacy', title: pv.title, description: pv.description, crumbs: [{ name: t('nav.privacy') }],
-    content: `<div class="eyebrow">DISC</div><h1>${escFull(pv.h1)}</h1>` + sectionsHtml(pv.sections) });
+    content: `<div class="eyebrow">DISC</div><h1>${escFull(pv.h1)}</h1>` + sectionsHtml(pv.sections).replace(/\{email\}/g, feedbackEmail ? `<a href="mailto:${escFull(feedbackEmail)}">${escFull(feedbackEmail)}</a>` : '—') });
+  // /contact/ — форма обратной связи (только при заданном feedbackEmail); разметка из src/contact.js, там же логика страницы
+  if (feedbackEmail) {
+    const ct = C.contact, maxLabel = '10 ' + (L.ui['contact.mb'] || 'MB');
+    writeContentPage(L, 'contact/', { navKey: 'nav.contact', ldType: 'ContactPage', title: ct.title, description: ct.description, crumbs: [{ name: t('nav.contact') }],
+      content: contactHTML({ t, esc: escFull, email: feedbackEmail, maxLabel, h1: ct.h1, lead: ct.lead }),
+      uiKeys: /^(contact\.|intro\.(nameRequired|emailRequired)$)/, files: ['src/contact.js'],
+      pageJs: contactJs + `initContact({L:L, t:t, esc:esc, $:$, endpoint:${jsStr(cfg.sendEndpoint)}, token:${jsStr(cfg.sendToken)}, email:${jsStr(feedbackEmail)}, maxBytes:${MAX_CONTACT_BYTES}});` });
+  }
 }
 
 // /en/ (язык по умолчанию) перенаправляет в корень: адрес существовал раньше и мог быть сохранён
@@ -324,7 +339,8 @@ for (const L of locales) {
 const gsTpl = fs.readFileSync(path.join(SRC, 'apps-script.template.js'), 'utf8');
 const gs = gsTpl
   .replace('__SITE_URL__', siteUrl).replace('__SEND_TOKEN__', String(cfg.sendToken || '').replace(/['\\]/g, ''))
+  .replace('__CONTACT_TO__', feedbackEmail).replace('__MAX_CONTACT_BYTES__', String(MAX_CONTACT_BYTES))
   .replace('__BLOCK_KEYS__', BLOCK_KEYS).replace('__DATA__', () => JSON.stringify(mailData));
 fs.mkdirSync(path.join(ROOT, 'backend', 'apps-script'), { recursive: true });
 fs.writeFileSync(path.join(ROOT, 'backend', 'apps-script', 'Code.gs'), gs);
-console.log(`Built ${locales.length} languages, ${pages.length} pages (root = ${def.lang}) → docs/ (${locales.map(L => L.lang).join(', ')}); backend/apps-script/Code.gs${cfg.sendEndpoint ? '' : ' (sendEndpoint не задан: письма не отправляются)'}`);
+console.log(`Built ${locales.length} languages, ${pages.length} pages (root = ${def.lang}) → docs/ (${locales.map(L => L.lang).join(', ')}); backend/apps-script/Code.gs${cfg.sendEndpoint ? '' : ' (sendEndpoint не задан: письма не отправляются)'}${feedbackEmail ? '' : ' (feedbackEmail не задан: страницы /contact/ нет)'}`);

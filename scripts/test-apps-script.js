@@ -28,7 +28,8 @@ function makeBook(title) {
 const ctx = {
   Utilities: {
     base64DecodeWebSafe: s => [...Buffer.from(s.replace(/-/g, '+').replace(/_/g, '/'), 'base64')],
-    newBlob: bytes => ({ getDataAsString: () => Buffer.from(bytes).toString('utf8') }),
+    base64Decode: s => { if (!/^[A-Za-z0-9+/=]*$/.test(s)) throw new Error('bad base64'); return [...Buffer.from(s, 'base64')]; },
+    newBlob: (bytes, type, name) => ({ getDataAsString: () => Buffer.from(bytes).toString('utf8'), getBytes: () => bytes, getContentType: () => type, getName: () => name }),
     formatDate: (d, tz, fmt) => /H/.test(fmt) ? '2026-09-07 12:00' : '2026-09-07'
   },
   CacheService: { getScriptCache: () => ({ get: k => store[k] || null, put: (k, v) => { store[k] = v; } }) },
@@ -109,6 +110,34 @@ ctx.SAVE_RESULTS = false;
 const before = rows().length;
 check('SAVE_RESULTS=false: mail only', post({ to: 'q@b.co', lang: 'en', code: mk('Q', 'q@b.co') }).saved === false && rows().length === before);
 ctx.SAVE_RESULTS = true;
+
+// ---- форма обратной связи ----
+const CONTACT_TO = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'site.config.json'), 'utf8')).feedbackEmail || '';
+const rowsBefore = rows().length, sentBefore = sent.length;
+const longName = 'очень-длинное-имя-файла-со-скриншотом-ошибки-в-переводе-2026-09-07.pdf';
+const cr = post({ action: 'contact', name: '  Мария   Иванова ', email: 'maria@example.com', lang: 'ru', page: 'https://disc-test.org/ru/contact/', message: 'Здравствуйте!\r\nВ переводе <b>опечатка</b>.',
+  files: [{ name: longName, type: 'application/pdf', data: Buffer.from('%PDF-1.4 test').toString('base64') }, { name: 'note.txt', type: 'text/plain', data: Buffer.from('hi').toString('base64') }] });
+check('contact: ok, one mail, nothing saved to sheet', !CONTACT_TO || (cr.ok === true && sent.length === sentBefore + 1 && rows().length === rowsBefore));
+const cm = sent[sent.length - 1];
+check('contact: to feedback address, replyTo sender', !CONTACT_TO || (cm.to === CONTACT_TO && cm.replyTo === 'maria@example.com' && cm.name === 'DISC Test'));
+check('contact: subject has site and normalized name', !CONTACT_TO || cm.subject === 'Сообщение с сайта disc-test.org: Мария Иванова');
+check('contact: text body has message and meta', !CONTACT_TO || (cm.body.includes('В переводе <b>опечатка</b>.') && cm.body.includes('E-mail: maria@example.com') && cm.body.includes('Язык: ru') && cm.body.includes('Вложения: ' + longName + ', note.txt')));
+check('contact: html body escaped with line breaks', !CONTACT_TO || cm.htmlBody.includes('Здравствуйте!<br>В переводе &lt;b&gt;опечатка&lt;/b&gt;.'));
+check('contact: attachments decoded', !CONTACT_TO || (cm.attachments.length === 2 && cm.attachments[0].getName() === longName && cm.attachments[0].getContentType() === 'application/pdf' && Buffer.from(cm.attachments[0].getBytes()).toString() === '%PDF-1.4 test'));
+check('contact: honeypot filled → fake ok, no mail', post({ action: 'contact', hp: 'http://spam', name: 'Bot', email: 'bot@example.com', message: 'buy' }).ok === true && sent.length === sentBefore + (CONTACT_TO ? 1 : 0));
+check('contact: bad email', post({ action: 'contact', name: 'X', email: 'nope', message: 'm' }).error === (CONTACT_TO ? 'bad email' : 'contact disabled'));
+check('contact: empty message', post({ action: 'contact', name: 'X', email: 'x@example.com', message: '   ' }).error === (CONTACT_TO ? 'bad message' : 'contact disabled'));
+check('contact: missing name', post({ action: 'contact', name: '', email: 'x@example.com', message: 'm' }).error === (CONTACT_TO ? 'bad name' : 'contact disabled'));
+const big = Buffer.alloc(ctx.MAX_CONTACT_BYTES + 1, 1).toString('base64'), half = Buffer.alloc(Math.floor(ctx.MAX_CONTACT_BYTES / 2) + 1, 1).toString('base64');
+check('contact: one file over limit rejected', post({ action: 'contact', name: 'X', email: 'big@example.com', message: 'm', files: [{ name: 'big.bin', data: big }] }).error === (CONTACT_TO ? 'files too big' : 'contact disabled'));
+check('contact: two files over limit in total rejected', post({ action: 'contact', name: 'X', email: 'big@example.com', message: 'm', files: [{ name: 'a.bin', data: half }, { name: 'b.bin', data: half }] }).error === (CONTACT_TO ? 'files too big' : 'contact disabled'));
+check('contact: broken base64 rejected', post({ action: 'contact', name: 'X', email: 'big@example.com', message: 'm', files: [{ name: 'a.bin', data: '***' }] }).error === (CONTACT_TO ? 'bad file' : 'contact disabled'));
+check('contact: nothing sent for rejected requests', sent.length === sentBefore + (CONTACT_TO ? 1 : 0));
+check('contact: 3 per sender per hour', !CONTACT_TO || (post({ action: 'contact', name: 'M', email: 'maria@example.com', message: '2' }).ok && post({ action: 'contact', name: 'M', email: 'maria@example.com', message: '3' }).ok && post({ action: 'contact', name: 'M', email: 'maria@example.com', message: '4' }).error === 'too many'));
+check('contact: wrong token rejected', !TOKEN || JSON.parse(ctx.doPost({ postData: { contents: JSON.stringify({ token: 'nope', action: 'contact', name: 'X', email: 'x@example.com', message: 'm' }) } }).text).error === 'forbidden');
+const savedTo = ctx.CONTACT_TO; ctx.CONTACT_TO = '';
+check('contact: disabled without address', post({ action: 'contact', name: 'X', email: 'x@example.com', message: 'm' }).error === 'contact disabled');
+ctx.CONTACT_TO = savedTo;
 
 check('setup returns sheet url', ctx.setup() === 'https://docs.google.com/spreadsheets/d/book1/edit' && Object.keys(books).length === 1);
 check('doGet ok', JSON.parse(ctx.doGet().text).ok === true);

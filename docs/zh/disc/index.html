@@ -278,6 +278,23 @@ html[lang=ar] .qhead span,html[lang=hi] .qhead span,html[lang=zh] .qhead span,ht
 .sendstatus.ok{color:var(--s)}
 .sendstatus.err{color:var(--d)}
 .sendstatus .link{color:inherit}
+/* форма обратной связи (/contact/): список файлов, обрезка длинных имён «начало…конец» на CSS */
+.contactcard{max-width:640px}
+.msgbox{font-family:var(--font-body);font-size:16px;line-height:1.5;min-height:140px}
+.dropzone{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;padding:12px 14px;border:1px dashed var(--line-strong);border-radius:10px;background:var(--paper);cursor:pointer}
+.dropzone.over{border-color:var(--focus);background:var(--soft)}
+.dropzone .hint{flex:1 1 200px}
+.filelist{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:6px}
+.filelist li{display:flex;align-items:center;gap:10px;padding:8px 12px;padding-inline-end:6px;border:1px solid var(--line);border-radius:8px;background:var(--surface);font-size:14px;min-width:0}
+.fname{display:flex;flex:1 1 auto;min-width:0}
+.fname .a{flex:0 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.fname .b{flex:0 0 auto;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.fsize{flex:none;color:var(--muted);font-size:13px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.fdel{flex:none;background:none;border:0;color:var(--muted);font:inherit;font-size:20px;line-height:1;cursor:pointer;padding:2px 8px;border-radius:6px}
+.fdel:hover{color:var(--d);background:var(--soft)}
+.hp{position:absolute;left:-9999px;top:0;width:1px;height:1px;overflow:hidden}
+.contactdirect{margin-top:14px}
+.contactdirect a,.contactcard .hint a,.sendstatus a{color:inherit}
 /* admin */
 .tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
 table{border-collapse:collapse;width:100%;font-size:14px;min-width:720px}
@@ -326,7 +343,7 @@ body.has-consent{padding-bottom:160px}
   <nav class="crumbs"><a href="../../zh/">首页</a><span>›</span><span aria-current="page">什么是 DISC</span></nav>
   <main class="content"><div class="eyebrow">DISC</div><h1>什么是 DISC</h1><p class="lead">DISC 是一种行为模型，从四个维度描述一个人如何行动、沟通和做决定：支配、影响、稳健和谨慎。它不是智力测试，也不是诊断，而是一套用来谈论行为风格的共同语言。</p><h2>模型的由来</h2><p>这一模型由美国心理学家威廉·马斯顿在《正常人的情绪》（1928）一书中提出。他描述了四种反应类型，取决于一个人把环境看作有利还是敌对，以及觉得自己比环境更强还是更弱。由此产生了四个维度：Dominance（支配）、Inducement（后称 Influence，影响）、Submission（后称 Steadiness，稳健）和 Compliance（Conscientiousness，谨慎）。</p><p>马斯顿本人并没有编制问卷。基于该模型的第一批测评工具出现在 20 世纪 50 至 70 年代（沃尔特·克拉克、约翰·盖尔），如今已有几十个版本。带小写“i”的 DiSC® 是 Wiley 出版社的注册商标；本站的测试是基于同一四因素模型的独立开放版本。</p><h2>DISC 测量什么</h2><p>可以把模型想象成两条轴。第一条是节奏：有的人行动快速果断，有的人稳重谨慎。第二条是关注点：有的人专注于任务和结果，有的人专注于人和关系。两条轴交叉形成四种风格：D 是快节奏、关注任务；I 是快节奏、关注人；S 是慢节奏、关注人；C 是慢节奏、关注任务。</p><p>每个人都具备这四种风格，差别只在比例。类型报告显示哪些风格在你的日常工作行为中出现得更多，哪些则需要刻意努力。</p><h2>四种风格简述</h2><p>D 支配型：结果、控制、速度、不惧冲突。I 影响型：沟通、热情、感染他人的能力。S 稳健型：支持、可靠、耐心、稳定。C 谨慎型：精确、质量、规则、以事实为依据。</p><p>每种风格的详细说明（特质、优势、成长空间、动机以及最佳沟通方式）见“四种风格”页面。主导风格与次要风格的组合形成 16 种类型，每种类型都有单独的页面。</p><h2>测试如何进行，结果如何计算</h2><p>测试包含 24 组题，每组四条陈述。在每一组中，你要选出最像自己的一条和最不像自己的一条。每条陈述都对应四种风格之一。</p><p>对每种风格，计算“最像”标记数与“最不像”标记数之差：范围从 −24 到 +24。数值最高的风格为主导风格。若第二高的风格数值为正且不低于主导风格的 40%（至少 3 分），则计为次要风格。图表中有三条线：“外在形象”（“最像”标记）、“本真自我”（“最不像”标记，反向）和综合风格。</p><h2>如何解读类型</h2><p>主导风格是你习惯性的、自动启动的行为方式。次要风格为其增添色彩：例如，主导 D 加次要 I 的人靠魄力和热情说服别人，而主导 D 加次要 C 的人靠高要求和论据说服别人。高于中位线（50%）的数值被视为明显。</p><p>类型没有好坏之分：每种风格都有优势和成长空间。它也不是定论：行为取决于情境、角色和经历，所以工作中和家中的结果可能不同，一两年后类型也可能变化。若没有任何风格突出，即“均衡型”，通常说明行为灵活，少数情况下是作答不够确定。</p><h2>DISC 的应用场景</h2><p>团队用 DISC 来理解为什么同事的反应各不相同，并约定沟通规则。管理者可以据此调整领导方式：有的人需要自由和挑战，有的人需要明确的期望和适应时间。在销售和谈判中，DISC 能提示你如何用对方的语言交流。</p><p>在招聘中，DISC 适合作为面试话题和参考，但不应成为决策的唯一依据：它描述的是行为偏好，而不是能力或岗位匹配度。</p><h2>方法的局限</h2><p>DISC 是自我评估：结果反映你如何看待自己，受诚实程度和当时心情的影响。简短的问卷给出的是方向性参考，而非精确测量，因此请把类型当作反思和交流的起点，而不是诊断。如果觉得结果不准，可以再测一次，快速作答并以工作情境为准。</p><aside class="cta"><div><h2>了解您的 DISC 类型</h2><p>免费测试：24 组题，约 10 分钟，结果即时显示并发送到邮箱。</p></div><a class="btn" href="../">开始测试</a></aside><p class="seealso"><a href="../styles/">四种风格 →</a> · <a href="../profiles/">16 种类型 →</a> · <a href="../faq/">常见问题 →</a></p></main>
   <footer class="foot">
-    <div class="row2"><span>24 组题 · 约 10 分钟 · 没有对错之分</span><span class="footlinks"><a href="../../zh/about/">关于</a> · <a href="../../zh/privacy/">隐私</a></span></div>
+    <div class="row2"><span>24 组题 · 约 10 分钟 · 没有对错之分</span><span class="footlinks"><a href="../../zh/about/">关于</a> · <a href="../../zh/contact/">联系我们</a> · <a href="../../zh/privacy/">隐私</a></span></div>
     <div class="privacy">您的答案保存在浏览器中；结果会发送至您填写的邮箱，并保存在网站所有者的结果数据库中。</div>
     <nav class="langs" aria-label="语言"><a href="../../disc/" hreflang="en" lang="en" data-lang="en"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-en"/></svg><span>English</span></a><a href="../../ru/disc/" hreflang="ru" lang="ru" data-lang="ru"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-ru"/></svg><span>Русский</span></a><a href="../../es/disc/" hreflang="es" lang="es" data-lang="es"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-es"/></svg><span>Español</span></a><a href="../../zh/disc/" hreflang="zh-Hans" lang="zh" data-lang="zh" aria-current="page"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-zh"/></svg><span>简体中文</span></a><a href="../../ar/disc/" hreflang="ar" lang="ar" data-lang="ar"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-ar"/></svg><span>العربية</span></a><a href="../../pt/disc/" hreflang="pt" lang="pt" data-lang="pt"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-pt"/></svg><span>Português</span></a><a href="../../fr/disc/" hreflang="fr" lang="fr" data-lang="fr"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-fr"/></svg><span>Français</span></a><a href="../../de/disc/" hreflang="de" lang="de" data-lang="de"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-de"/></svg><span>Deutsch</span></a><a href="../../ja/disc/" hreflang="ja" lang="ja" data-lang="ja"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-ja"/></svg><span>日本語</span></a><a href="../../hi/disc/" hreflang="hi" lang="hi" data-lang="hi"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-hi"/></svg><span>हिन्दी</span></a></nav>
   </footer>
@@ -335,7 +352,7 @@ body.has-consent{padding-bottom:160px}
 <script>
 (function(){
 'use strict';
-var L = {"lang":"zh","name":"简体中文","dir":"ltr","ui":{"langLabel":"语言","consent.label":"Cookie 提示","consent.text":"本网站将你的进度、结果和所选语言保存在浏览器的本地存储中；Yandex Metrica 会收集匿名访问统计和页面操作记录，帮助我们改进网站。你的姓名、电子邮箱和结果不会发送给 Metrica。","consent.more":"了解详情","consent.details":"浏览器中保存的内容：测试前输入的姓名和电子邮箱；你的答案和未完成的进度；最近一次结果；所选语言；你已看过本提示的标记。这些数据仅保留在你的设备上，清除网站数据后即被删除。托管服务 GitHub Pages 会收到标准的技术请求数据。完成测试后，姓名、电子邮箱和答案会传给邮件发送服务（Google Apps Script），由它向你发送结果，并将姓名、邮箱、日期和结果保存到网站所有者的结果数据库（Google 表格）中。Yandex Metrica（Yandex LLC）会收到不含结果代码的页面地址、来源、设备和浏览器类型、匿名的页面操作记录（姓名和邮箱输入框、结果链接和代码不在记录范围内），并设置自己的 Cookie。你可以在浏览器设置中或使用跟踪拦截器将其屏蔽。不使用广告跟踪器。","consent.accept":"接受","consent.decline":"仅必要项","consent.ok":"知道了","root.continue":"继续"}};
+var L = {"lang":"zh","name":"简体中文","dir":"ltr","dateLocale":"zh-CN","ui":{"langLabel":"语言","consent.label":"Cookie 提示","consent.text":"本网站将你的进度、结果和所选语言保存在浏览器的本地存储中；Yandex Metrica 会收集匿名访问统计和页面操作记录，帮助我们改进网站。你的姓名、电子邮箱和结果不会发送给 Metrica。","consent.more":"了解详情","consent.details":"浏览器中保存的内容：测试前输入的姓名和电子邮箱；你的答案和未完成的进度；最近一次结果；所选语言；你已看过本提示的标记。这些数据仅保留在你的设备上，清除网站数据后即被删除。托管服务 GitHub Pages 会收到标准的技术请求数据。完成测试后，姓名、电子邮箱和答案会传给邮件发送服务（Google Apps Script），由它向你发送结果，并将姓名、邮箱、日期和结果保存到网站所有者的结果数据库（Google 表格）中。Yandex Metrica（Yandex LLC）会收到不含结果代码的页面地址、来源、设备和浏览器类型、匿名的页面操作记录（姓名和邮箱输入框、结果链接和代码不在记录范围内），并设置自己的 Cookie。你可以在浏览器设置中或使用跟踪拦截器将其屏蔽。不使用广告跟踪器。","consent.accept":"接受","consent.decline":"仅必要项","consent.ok":"知道了","root.continue":"继续"}};
 var ROOT_REL = '../../', SUBPATH = 'disc/';
 var LANG_PATH = {"en":"","ru":"ru/","es":"es/","zh":"zh/","ar":"ar/","pt":"pt/","fr":"fr/","de":"de/","ja":"ja/","hi":"hi/"}, LANG_META = {"en":{"name":"English","cont":"Continue","dir":"ltr"},"ru":{"name":"Русский","cont":"Продолжить","dir":"ltr"},"es":{"name":"Español","cont":"Continuar","dir":"ltr"},"zh":{"name":"简体中文","cont":"继续","dir":"ltr"},"ar":{"name":"العربية","cont":"متابعة","dir":"rtl"},"pt":{"name":"Português","cont":"Continuar","dir":"ltr"},"fr":{"name":"Français","cont":"Continuer","dir":"ltr"},"de":{"name":"Deutsch","cont":"Weiter","dir":"ltr"},"ja":{"name":"日本語","cont":"続ける","dir":"ltr"},"hi":{"name":"हिन्दी","cont":"जारी रखें","dir":"ltr"}};
 function $(s){ return document.querySelector(s); }
@@ -433,6 +450,7 @@ function initCommon(c){
 }
 
 initCommon({L:L, t:t, esc:esc, lsGet:lsGet, lsSet:lsSet, langHref:langHref, $:$, langMeta:LANG_META, langPath:LANG_PATH, privacyHref:ROOT_REL+(LANG_PATH[L.lang]||'')+'privacy/'});
+
 })();
 </script>
 </body>

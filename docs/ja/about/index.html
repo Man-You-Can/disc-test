@@ -278,6 +278,23 @@ html[lang=ar] .qhead span,html[lang=hi] .qhead span,html[lang=zh] .qhead span,ht
 .sendstatus.ok{color:var(--s)}
 .sendstatus.err{color:var(--d)}
 .sendstatus .link{color:inherit}
+/* форма обратной связи (/contact/): список файлов, обрезка длинных имён «начало…конец» на CSS */
+.contactcard{max-width:640px}
+.msgbox{font-family:var(--font-body);font-size:16px;line-height:1.5;min-height:140px}
+.dropzone{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;padding:12px 14px;border:1px dashed var(--line-strong);border-radius:10px;background:var(--paper);cursor:pointer}
+.dropzone.over{border-color:var(--focus);background:var(--soft)}
+.dropzone .hint{flex:1 1 200px}
+.filelist{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:6px}
+.filelist li{display:flex;align-items:center;gap:10px;padding:8px 12px;padding-inline-end:6px;border:1px solid var(--line);border-radius:8px;background:var(--surface);font-size:14px;min-width:0}
+.fname{display:flex;flex:1 1 auto;min-width:0}
+.fname .a{flex:0 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.fname .b{flex:0 0 auto;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.fsize{flex:none;color:var(--muted);font-size:13px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.fdel{flex:none;background:none;border:0;color:var(--muted);font:inherit;font-size:20px;line-height:1;cursor:pointer;padding:2px 8px;border-radius:6px}
+.fdel:hover{color:var(--d);background:var(--soft)}
+.hp{position:absolute;left:-9999px;top:0;width:1px;height:1px;overflow:hidden}
+.contactdirect{margin-top:14px}
+.contactdirect a,.contactcard .hint a,.sendstatus a{color:inherit}
 /* admin */
 .tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
 table{border-collapse:collapse;width:100%;font-size:14px;min-width:720px}
@@ -324,9 +341,9 @@ body.has-consent{padding-bottom:160px}
   </header>
   <nav class="sitenav no-print"><a href="../../ja/">診断</a><a href="../../ja/disc/">DISCとは</a><a href="../../ja/styles/">4つのスタイル</a><a href="../../ja/profiles/">16のタイプ</a><a href="../../ja/faq/">よくある質問</a></nav>
   <nav class="crumbs"><a href="../../ja/">ホーム</a><span>›</span><span aria-current="page">このサイトについて</span></nav>
-  <main class="content"><div class="eyebrow">DISC</div><h1>このサイトについて</h1><h2>このサイトを作った理由</h2><p>登録も支払いもなしに10分で受けられ、自分の言語で分かりやすいレポートを受け取り、チームと共有できるDISC診断を作りたいと考えました。サイトは10言語に対応し、結果はすぐに表示されてメールでも届きます。マネージャーや人事担当者向けには、参加者の結果を表にまとめる管理者パネルがあります。</p><h2>診断の根拠</h2><p>この診断はウィリアム・マーストンの4因子モデル（1928年）と、その後の「最もあてはまる／最もあてはまらない」形式の質問紙に基づいています。4つの文からなる24のブロックで、各文が1つのスタイルに対応します。スタイルと16タイプの説明は、一般に認められたDISCの特徴をもとにサイトの制作者が執筆し、自然な言葉遣いになるよう確認しています。</p><p>このプロジェクトは独立したもので、Wiley（DiSC®）、TTI Success Insights、その他の商標権者とは関係ありません。DISCという語はモデルの一般名称として使用しています。</p><h2>この診断が約束しないこと</h2><p>この診断は臨床的・診断的なツールではなく、知能や能力、職務適性を測るものではありません。採用判断の唯一の根拠にすべきでもありません。自己観察とチームでの対話の出発点としてお使いください。</p><h2>フィードバック</h2><p>サイトのソースコードはGitHubで公開しています：<a href="https://github.com/Man-You-Can/disc-test" rel="noopener">github.com/Man-You-Can/disc-test</a>。翻訳の誤りの報告や改善の提案もそちらからお寄せください。</p><aside class="cta"><div><h2>あなたのDISCタイプを知る</h2><p>無料診断：全24問、約10分。結果はすぐに表示され、メールでも届きます。</p></div><a class="btn" href="../">診断を受ける</a></aside></main>
+  <main class="content"><div class="eyebrow">DISC</div><h1>このサイトについて</h1><h2>このサイトを作った理由</h2><p>登録も支払いもなしに10分で受けられ、自分の言語で分かりやすいレポートを受け取り、チームと共有できるDISC診断を作りたいと考えました。サイトは10言語に対応し、結果はすぐに表示されてメールでも届きます。マネージャーや人事担当者向けには、参加者の結果を表にまとめる管理者パネルがあります。</p><h2>診断の根拠</h2><p>この診断はウィリアム・マーストンの4因子モデル（1928年）と、その後の「最もあてはまる／最もあてはまらない」形式の質問紙に基づいています。4つの文からなる24のブロックで、各文が1つのスタイルに対応します。スタイルと16タイプの説明は、一般に認められたDISCの特徴をもとにサイトの制作者が執筆し、自然な言葉遣いになるよう確認しています。</p><p>このプロジェクトは独立したもので、Wiley（DiSC®）、TTI Success Insights、その他の商標権者とは関係ありません。DISCという語はモデルの一般名称として使用しています。</p><h2>この診断が約束しないこと</h2><p>この診断は臨床的・診断的なツールではなく、知能や能力、職務適性を測るものではありません。採用判断の唯一の根拠にすべきでもありません。自己観察とチームでの対話の出発点としてお使いください。</p><h2>フィードバック</h2><p>「<a href="../contact/">お問い合わせ</a>」フォームからご連絡いただけます。サイトのソースコードはGitHubで公開しています：<a href="https://github.com/Man-You-Can/disc-test" rel="noopener">github.com/Man-You-Can/disc-test</a>。翻訳の誤りの報告や改善の提案もそちらからお寄せいただけます。</p><aside class="cta"><div><h2>あなたのDISCタイプを知る</h2><p>無料診断：全24問、約10分。結果はすぐに表示され、メールでも届きます。</p></div><a class="btn" href="../">診断を受ける</a></aside></main>
   <footer class="foot">
-    <div class="row2"><span>全24ブロック · 約10分 · 正解・不正解はありません</span><span class="footlinks"><a href="../../ja/about/">このサイトについて</a> · <a href="../../ja/privacy/">プライバシー</a></span></div>
+    <div class="row2"><span>全24ブロック · 約10分 · 正解・不正解はありません</span><span class="footlinks"><a href="../../ja/about/">このサイトについて</a> · <a href="../../ja/contact/">お問い合わせ</a> · <a href="../../ja/privacy/">プライバシー</a></span></div>
     <div class="privacy">回答はブラウザ内に保存されます。結果は入力されたメールアドレスに送信され、サイト運営者の結果データベースに保存されます。</div>
     <nav class="langs" aria-label="言語"><a href="../../about/" hreflang="en" lang="en" data-lang="en"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-en"/></svg><span>English</span></a><a href="../../ru/about/" hreflang="ru" lang="ru" data-lang="ru"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-ru"/></svg><span>Русский</span></a><a href="../../es/about/" hreflang="es" lang="es" data-lang="es"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-es"/></svg><span>Español</span></a><a href="../../zh/about/" hreflang="zh-Hans" lang="zh" data-lang="zh"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-zh"/></svg><span>简体中文</span></a><a href="../../ar/about/" hreflang="ar" lang="ar" data-lang="ar"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-ar"/></svg><span>العربية</span></a><a href="../../pt/about/" hreflang="pt" lang="pt" data-lang="pt"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-pt"/></svg><span>Português</span></a><a href="../../fr/about/" hreflang="fr" lang="fr" data-lang="fr"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-fr"/></svg><span>Français</span></a><a href="../../de/about/" hreflang="de" lang="de" data-lang="de"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-de"/></svg><span>Deutsch</span></a><a href="../../ja/about/" hreflang="ja" lang="ja" data-lang="ja" aria-current="page"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-ja"/></svg><span>日本語</span></a><a href="../../hi/about/" hreflang="hi" lang="hi" data-lang="hi"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-hi"/></svg><span>हिन्दी</span></a></nav>
   </footer>
@@ -335,7 +352,7 @@ body.has-consent{padding-bottom:160px}
 <script>
 (function(){
 'use strict';
-var L = {"lang":"ja","name":"日本語","dir":"ltr","ui":{"langLabel":"言語","consent.label":"Cookieに関するお知らせ","consent.text":"このサイトは、進行状況、結果、選択した言語をブラウザのローカルストレージに保存し、サイト改善のために Yandex Metrica が匿名化された訪問統計とページ上の操作の記録を収集します。お名前、メールアドレス、結果は Metrica に送信されません。","consent.more":"詳細","consent.details":"ブラウザに保存されるもの：テスト前に入力したお名前とメールアドレス、回答と未完了の進行状況、最新の結果、選択した言語、この通知を確認済みという記録。これらのデータはお使いの端末にのみ残り、サイトデータを消去すると削除されます。ホスティング（GitHub Pages）は通常の技術的なリクエストデータを受け取ります。テスト完了時に、お名前、メールアドレス、回答はメール送信サービス（Google Apps Script）へ渡されます。このサービスが結果のメールを送信し、お名前、メールアドレス、日付、結果をサイト運営者の結果データベース（Google スプレッドシート）に保存します。Yandex Metrica（Yandex LLC）は、結果コードを除いたページアドレス、参照元、端末とブラウザの種類、匿名化されたページ上の操作の記録（お名前とメールアドレスの入力欄、結果のリンクとコードは記録対象外）を受け取り、独自の Cookie を設定します。ブラウザの設定やトラッカーブロッカーでブロックできます。広告トラッカーは使用していません。","consent.accept":"同意する","consent.decline":"必要なもののみ","consent.ok":"わかりました","root.continue":"続ける"}};
+var L = {"lang":"ja","name":"日本語","dir":"ltr","dateLocale":"ja-JP","ui":{"langLabel":"言語","consent.label":"Cookieに関するお知らせ","consent.text":"このサイトは、進行状況、結果、選択した言語をブラウザのローカルストレージに保存し、サイト改善のために Yandex Metrica が匿名化された訪問統計とページ上の操作の記録を収集します。お名前、メールアドレス、結果は Metrica に送信されません。","consent.more":"詳細","consent.details":"ブラウザに保存されるもの：テスト前に入力したお名前とメールアドレス、回答と未完了の進行状況、最新の結果、選択した言語、この通知を確認済みという記録。これらのデータはお使いの端末にのみ残り、サイトデータを消去すると削除されます。ホスティング（GitHub Pages）は通常の技術的なリクエストデータを受け取ります。テスト完了時に、お名前、メールアドレス、回答はメール送信サービス（Google Apps Script）へ渡されます。このサービスが結果のメールを送信し、お名前、メールアドレス、日付、結果をサイト運営者の結果データベース（Google スプレッドシート）に保存します。Yandex Metrica（Yandex LLC）は、結果コードを除いたページアドレス、参照元、端末とブラウザの種類、匿名化されたページ上の操作の記録（お名前とメールアドレスの入力欄、結果のリンクとコードは記録対象外）を受け取り、独自の Cookie を設定します。ブラウザの設定やトラッカーブロッカーでブロックできます。広告トラッカーは使用していません。","consent.accept":"同意する","consent.decline":"必要なもののみ","consent.ok":"わかりました","root.continue":"続ける"}};
 var ROOT_REL = '../../', SUBPATH = 'about/';
 var LANG_PATH = {"en":"","ru":"ru/","es":"es/","zh":"zh/","ar":"ar/","pt":"pt/","fr":"fr/","de":"de/","ja":"ja/","hi":"hi/"}, LANG_META = {"en":{"name":"English","cont":"Continue","dir":"ltr"},"ru":{"name":"Русский","cont":"Продолжить","dir":"ltr"},"es":{"name":"Español","cont":"Continuar","dir":"ltr"},"zh":{"name":"简体中文","cont":"继续","dir":"ltr"},"ar":{"name":"العربية","cont":"متابعة","dir":"rtl"},"pt":{"name":"Português","cont":"Continuar","dir":"ltr"},"fr":{"name":"Français","cont":"Continuer","dir":"ltr"},"de":{"name":"Deutsch","cont":"Weiter","dir":"ltr"},"ja":{"name":"日本語","cont":"続ける","dir":"ltr"},"hi":{"name":"हिन्दी","cont":"जारी रखें","dir":"ltr"}};
 function $(s){ return document.querySelector(s); }
@@ -433,6 +450,7 @@ function initCommon(c){
 }
 
 initCommon({L:L, t:t, esc:esc, lsGet:lsGet, lsSet:lsSet, langHref:langHref, $:$, langMeta:LANG_META, langPath:LANG_PATH, privacyHref:ROOT_REL+(LANG_PATH[L.lang]||'')+'privacy/'});
+
 })();
 </script>
 </body>

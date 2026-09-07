@@ -228,7 +228,7 @@
         {
           "h": "Rückmeldungen",
           "p": [
-            "Der Quellcode der Seite ist auf GitHub offen: github.com/Man-You-Can/disc-test. Dort können Sie Übersetzungsfehler melden oder Verbesserungen vorschlagen."
+            "Sie können uns über das Formular „{contact}“ schreiben. Der Quellcode der Seite ist auf GitHub offen: github.com/Man-You-Can/disc-test – auch dort können Sie Übersetzungsfehler melden oder Verbesserungen vorschlagen."
           ]
         }
       ]
@@ -258,9 +258,15 @@
           ]
         },
         {
+          "h": "Kontaktformular",
+          "p": [
+            "Nachrichten aus dem Kontaktformular – Name, E-Mail-Adresse, Text und angehängte Dateien – werden über dasselbe Google-Apps-Script per E-Mail an {email} gesendet und nur für die Antwort an Sie verwendet. Sie werden nicht in die Ergebnisdatenbank eingetragen, und die angehängten Dateien werden nirgends außer in dieser E-Mail gespeichert."
+          ]
+        },
+        {
           "h": "Wie Sie Ihre Daten löschen",
           "p": [
-            "Um die Daten auf Ihrem Gerät zu löschen, löschen Sie die Website-Daten in den Browsereinstellungen oder klicken Sie auf „Test erneut machen“. Die Ergebnis-E-Mail liegt in Ihrem Postfach. Um die Löschung Ihres Eintrags in der Ergebnisdatenbank und der Kopie auf Absenderseite zu beantragen, schreiben Sie uns über GitHub (Link auf der Seite „Über das Projekt“)."
+            "Um die Daten auf Ihrem Gerät zu löschen, löschen Sie die Website-Daten in den Browsereinstellungen oder klicken Sie auf „Test erneut machen“. Die Ergebnis-E-Mail liegt in Ihrem Postfach. Um die Löschung Ihres Eintrags in der Ergebnisdatenbank und der Kopie auf Absenderseite zu beantragen, schreiben Sie uns über das Kontaktformular."
           ]
         },
         {
@@ -276,6 +282,12 @@
           ]
         }
       ]
+    },
+    "contact": {
+      "title": "Kontakt — den Autoren des DISC-Tests schreiben",
+      "description": "Eine Frage, ein Übersetzungsfehler oder ein Vorschlag? Schreiben Sie uns über das Kontaktformular und hängen Sie bei Bedarf Dateien an.",
+      "h1": "Kontakt",
+      "lead": "Haben Sie einen Fehler oder eine Ungenauigkeit in der Übersetzung gefunden oder möchten Sie eine Verbesserung vorschlagen? Schreiben Sie uns – wir antworten an die angegebene E-Mail-Adresse."
     }
   },
   "ui": {
@@ -402,6 +414,7 @@
     "nav.disc": "Was ist DISG",
     "nav.faq": "Häufige Fragen",
     "nav.about": "Über das Projekt",
+    "nav.contact": "Kontakt",
     "nav.privacy": "Datenschutz",
     "pages.styles.title": "Die vier DISG-Stile: D, I, S, C — Merkmale, Stärken, Motivation",
     "pages.styles.description": "Ausführliche Beschreibung der vier DISG-Verhaltensstile (DISC): Dominanz, Initiative, Stetigkeit, Gewissenhaftigkeit. Merkmale, Stärken, Entwicklungsfelder, Motivation und Verhalten unter Stress.",
@@ -423,6 +436,28 @@
     "cta.title": "Finden Sie Ihr DISG-Profil",
     "cta.text": "Kostenloser Test: 24 Blöcke, etwa 10 Minuten, Ergebnis sofort und per E-Mail.",
     "cta.button": "Test starten",
+
+    "contact.emailLabel": "E-Mail-Adresse für die Antwort",
+    "contact.messageLabel": "Nachricht",
+    "contact.filesLabel": "Dateien",
+    "contact.filesAdd": "Dateien anhängen",
+    "contact.filesHint": "Sie können mehrere Dateien mit insgesamt bis zu {max} anhängen oder sie hierher ziehen.",
+    "contact.fileRemove": "Datei {name} entfernen",
+    "contact.filesTotal": "Gesamt {size} von {max}",
+    "contact.fileSkipped": "Die Datei „{name}“ wurde nicht hinzugefügt: Die Gesamtgröße der Dateien darf {max} nicht überschreiten.",
+    "contact.send": "Senden",
+    "contact.sending": "Ihre Nachricht wird gesendet …",
+    "contact.sent": "Ihre Nachricht wurde gesendet. Wir antworten an {email}.",
+    "contact.sendFailed": "Die Nachricht konnte nicht gesendet werden ({error}). Versuchen Sie es erneut oder schreiben Sie uns direkt: {contact}.",
+    "contact.tooMany": "Von dieser Adresse wurden bereits mehrere Nachrichten gesendet. Versuchen Sie es später erneut oder schreiben Sie uns direkt: {contact}.",
+    "contact.messageRequired": "Bitte schreiben Sie eine Nachricht",
+    "contact.direct": "Oder schreiben Sie uns direkt: {email}",
+    "contact.privacyNote": "Name, E-Mail-Adresse, Nachricht und Dateien werden per E-Mail an {email} gesendet und nur für die Antwort an Sie verwendet.",
+    "contact.mailtoNote": "Der Versanddienst ist noch nicht angebunden: Die Schaltfläche „Senden“ öffnet Ihr E-Mail-Programm mit der vorbereiteten Nachricht; angehängte Dateien müssen Sie der E-Mail selbst hinzufügen.",
+    "contact.mailSubject": "Nachricht von der Website: {name}",
+    "contact.mailFiles": "Angehängte Dateien (bitte der E-Mail hinzufügen): {list}",
+    "contact.kb": "KB",
+    "contact.mb": "MB",
 
     "consent.label": "Cookie-Hinweis",
     "consent.text": "Diese Website speichert Ihren Fortschritt, Ihr Ergebnis und die gewählte Sprache im lokalen Speicher des Browsers, und Yandex Metrica erfasst anonymisierte Besuchsstatistiken und eine Aufzeichnung der Aktionen auf der Seite, damit wir die Website verbessern können. Ihr Name, Ihre E-Mail-Adresse und Ihr Ergebnis werden nicht an Metrica übermittelt.",

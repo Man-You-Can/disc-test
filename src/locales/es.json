@@ -228,7 +228,7 @@
         {
           "h": "Comentarios",
           "p": [
-            "El código fuente del sitio está abierto en GitHub: github.com/Man-You-Can/disc-test. Allí puede informar de un error de traducción o proponer una mejora."
+            "Puede escribirnos a través del formulario «{contact}». El código fuente del sitio está abierto en GitHub: github.com/Man-You-Can/disc-test; allí también puede informar de un error de traducción o proponer una mejora."
           ]
         }
       ]
@@ -258,9 +258,15 @@
           ]
         },
         {
+          "h": "Formulario de contacto",
+          "p": [
+            "Los mensajes del formulario de contacto —nombre, correo electrónico, texto y archivos adjuntos— se envían por correo a {email} mediante el mismo script de Google Apps Script y se usan solo para responderle. No se registran en la base de resultados, y los archivos adjuntos no se almacenan en ningún otro lugar aparte de ese correo."
+          ]
+        },
+        {
           "h": "Cómo eliminar los datos",
           "p": [
-            "Para eliminar los datos de su dispositivo, borre los datos del sitio en la configuración del navegador o pulse «Repetir el test». El correo con el resultado está en su buzón. Para solicitar la eliminación de su registro en la base de resultados y de la copia del correo en el lado del remitente, escríbanos a través de GitHub (enlace en la página «Sobre el proyecto»)."
+            "Para eliminar los datos de su dispositivo, borre los datos del sitio en la configuración del navegador o pulse «Repetir el test». El correo con el resultado está en su buzón. Para solicitar la eliminación de su registro en la base de resultados y de la copia del correo en el lado del remitente, escríbanos a través del formulario de contacto."
           ]
         },
         {
@@ -276,6 +282,12 @@
           ]
         }
       ]
+    },
+    "contact": {
+      "title": "Contacto — escribir a los autores del test DISC",
+      "description": "¿Una pregunta, un error de traducción o una sugerencia? Escríbanos a través del formulario de contacto y adjunte archivos si lo necesita.",
+      "h1": "Contacto",
+      "lead": "¿Ha encontrado un error, una imprecisión en la traducción o quiere proponer una mejora? Escríbanos y responderemos al correo electrónico que indique."
     }
   },
   "ui": {
@@ -402,6 +414,7 @@
     "nav.disc": "Qué es DISC",
     "nav.faq": "Preguntas frecuentes",
     "nav.about": "Sobre el proyecto",
+    "nav.contact": "Contacto",
     "nav.privacy": "Privacidad",
     "pages.styles.title": "Los cuatro estilos DISC: D, I, S, C — rasgos, puntos fuertes, motivación",
     "pages.styles.description": "Descripción detallada de los cuatro estilos de comportamiento DISC: dominancia, influencia, estabilidad y cumplimiento. Rasgos, puntos fuertes, áreas de mejora, motivación y comportamiento bajo estrés.",
@@ -423,6 +436,28 @@
     "cta.title": "Descubra su perfil DISC",
     "cta.text": "Test gratuito: 24 bloques, unos 10 minutos, resultado al instante y por e-mail.",
     "cta.button": "Hacer el test",
+
+    "contact.emailLabel": "Correo electrónico para la respuesta",
+    "contact.messageLabel": "Mensaje",
+    "contact.filesLabel": "Archivos",
+    "contact.filesAdd": "Adjuntar archivos",
+    "contact.filesHint": "Puede adjuntar varios archivos de hasta {max} en total o arrastrarlos aquí.",
+    "contact.fileRemove": "Quitar el archivo {name}",
+    "contact.filesTotal": "Total {size} de {max}",
+    "contact.fileSkipped": "El archivo «{name}» no se ha añadido: el tamaño total de los archivos no debe superar {max}.",
+    "contact.send": "Enviar",
+    "contact.sending": "Enviando su mensaje…",
+    "contact.sent": "Su mensaje se ha enviado. Responderemos a {email}.",
+    "contact.sendFailed": "No se pudo enviar el mensaje ({error}). Inténtelo de nuevo o escríbanos directamente: {contact}.",
+    "contact.tooMany": "Ya se han enviado varios mensajes desde esta dirección. Inténtelo más tarde o escríbanos directamente: {contact}.",
+    "contact.messageRequired": "Escriba un mensaje",
+    "contact.direct": "O escríbanos directamente: {email}",
+    "contact.privacyNote": "Su nombre, correo electrónico, mensaje y archivos se enviarán por correo a {email} y se usarán solo para responderle.",
+    "contact.mailtoNote": "El servicio de envío aún no está conectado: el botón «Enviar» abrirá su cliente de correo con el mensaje preparado, y tendrá que añadir los archivos adjuntos al correo manualmente.",
+    "contact.mailSubject": "Mensaje desde el sitio web: {name}",
+    "contact.mailFiles": "Archivos adjuntos (añádalos al correo): {list}",
+    "contact.kb": "KB",
+    "contact.mb": "MB",
 
     "consent.label": "Aviso de cookies",
     "consent.text": "Este sitio guarda tu progreso, tu resultado y el idioma elegido en el almacenamiento local del navegador, y Yandex Metrica recopila estadísticas de visitas anonimizadas y una grabación de las acciones en la página para ayudarnos a mejorar el sitio. Tu nombre, tu correo y tu resultado no se envían a Metrica.",

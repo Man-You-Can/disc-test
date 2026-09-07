@@ -228,7 +228,7 @@
         {
           "h": "Feedback",
           "p": [
-            "The site's source code is open on GitHub: github.com/Man-You-Can/disc-test. That is also the place to report a translation error or suggest an improvement."
+            "You can write to us via the “{contact}” form. The site's source code is open on GitHub: github.com/Man-You-Can/disc-test — that is also the place to report a translation error or suggest an improvement."
           ]
         }
       ]
@@ -258,9 +258,15 @@
           ]
         },
         {
+          "h": "Contact form",
+          "p": [
+            "Messages from the contact form — name, email address, text and attached files — are emailed to {email} via the same Google Apps Script and are used only to reply to you. They are not written to the results database, and the attached files are not stored anywhere except in that email."
+          ]
+        },
+        {
           "h": "How to delete your data",
           "p": [
-            "To delete the data on your device, clear the site's data in your browser settings or press “Take the test again”. The result email is in your mailbox. To ask for your record in the results database and the sender-side copy of the email to be deleted, contact us via GitHub (link on the About page)."
+            "To delete the data on your device, clear the site's data in your browser settings or press “Take the test again”. The result email is in your mailbox. To ask for your record in the results database and the sender-side copy of the email to be deleted, contact us via the contact form."
           ]
         },
         {
@@ -276,6 +282,12 @@
           ]
         }
       ]
+    },
+    "contact": {
+      "title": "Contact us — write to the authors of the DISC test",
+      "description": "A question, a translation issue or a suggestion? Write to us via the contact form and attach files if needed.",
+      "h1": "Contact us",
+      "lead": "Found a mistake, a translation issue or want to suggest an improvement? Write to us and we will reply to the email address you provide."
     }
   },
   "ui": {
@@ -402,6 +414,7 @@
     "nav.disc": "What is DISC",
     "nav.faq": "FAQ",
     "nav.about": "About",
+    "nav.contact": "Contact",
     "nav.privacy": "Privacy",
     "pages.styles.title": "The Four DISC Styles: D, I, S, C — Traits, Strengths, Motivation",
     "pages.styles.description": "A detailed description of the four DISC behavioral styles: Dominance, Influence, Steadiness, Conscientiousness. Traits, strengths, growth areas, motivation and behavior under stress.",
@@ -423,6 +436,28 @@
     "cta.title": "Discover your DISC profile",
     "cta.text": "Free test: 24 blocks, about 10 minutes, instant result and a copy by email.",
     "cta.button": "Take the test",
+
+    "contact.emailLabel": "Email address for our reply",
+    "contact.messageLabel": "Message",
+    "contact.filesLabel": "Files",
+    "contact.filesAdd": "Attach files",
+    "contact.filesHint": "You can attach several files up to {max} in total, or drop them here.",
+    "contact.fileRemove": "Remove file {name}",
+    "contact.filesTotal": "Total {size} of {max}",
+    "contact.fileSkipped": "File “{name}” was not added: the total size of the files must not exceed {max}.",
+    "contact.send": "Send",
+    "contact.sending": "Sending your message…",
+    "contact.sent": "Your message has been sent. We will reply to {email}.",
+    "contact.sendFailed": "The message could not be sent ({error}). Try again or write to us directly: {contact}.",
+    "contact.tooMany": "Several messages have already been sent from this address. Try again later or write to us directly: {contact}.",
+    "contact.messageRequired": "Please write a message",
+    "contact.direct": "Or write to us directly: {email}",
+    "contact.privacyNote": "Your name, email address, message and files will be emailed to {email} and used only to reply to you.",
+    "contact.mailtoNote": "The sending service is not connected yet: the “Send” button will open your email client with the message filled in, and you will need to add the attached files to the email yourself.",
+    "contact.mailSubject": "Message from the website: {name}",
+    "contact.mailFiles": "Attached files (please add them to the email): {list}",
+    "contact.kb": "KB",
+    "contact.mb": "MB",
 
     "consent.label": "Cookie notice",
     "consent.text": "This site keeps your progress, result and chosen language in your browser's local storage, and Yandex Metrica collects anonymised visit statistics and a recording of on-page actions to help us improve the site. Your name, email and result are not sent to Metrica.",

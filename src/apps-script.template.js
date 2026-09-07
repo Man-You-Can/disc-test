@@ -12,6 +12,10 @@
  * а обновляет статус письма. Таблица создаётся сама при первом результате
  * (её ID запоминается в свойствах скрипта); можно указать свою в SHEET_ID.
  *
+ * Второй тип запроса — {action: 'contact'} с формы обратной связи (/contact/): письмо с текстом
+ * сообщения и вложениями (общим размером до MAX_CONTACT_BYTES) уходит на CONTACT_TO, адрес
+ * отправителя подставляется в replyTo; в таблицу такие сообщения не записываются.
+ *
  * Защита от злоупотреблений: токен (совпадает с sendToken в site.config.json),
  * e-mail получателя должен совпадать с e-mail внутри кода результата, письмо
  * собирается только из шаблона (клиент не может передать произвольный текст),
@@ -22,6 +26,10 @@ var SITE_URL = '__SITE_URL__';
 var TOKEN = '__SEND_TOKEN__';        // '' — без проверки токена
 var OWNER_COPY = '';                 // e-mail для скрытой копии каждого результата; '' — не отправлять
 var SENDER_NAME = 'DISC Test';       // имя отправителя в письме
+var CONTACT_TO = '__CONTACT_TO__';   // адрес формы обратной связи (feedbackEmail в site.config.json); '' — форма отключена
+var MAX_CONTACT_BYTES = __MAX_CONTACT_BYTES__;  // общий размер вложений одного сообщения (то же число проверяет браузер)
+var MAX_CONTACT_FILES = 20;
+var MAX_CONTACT_PER_SENDER_PER_HOUR = 3;  // сообщений с одного e-mail в час; суточный лимит MAX_PER_DAY общий с письмами о результатах
 var MAX_PER_RECIPIENT_PER_HOUR = 3;
 var MAX_PER_DAY = 90;                // лимит Gmail для обычного аккаунта — 100 писем в сутки
 var SAVE_RESULTS = true;             // false — не вести базу результатов
@@ -36,13 +44,14 @@ var COLORS = { D: '#C9453D', I: '#D6961F', S: '#3A9A69', C: '#3B6FB6' };
 var BLOCK_KEYS = __BLOCK_KEYS__;
 var DATA = __DATA__;
 
-function doGet() { return out({ ok: true, service: 'disc-mailer', quota: MailApp.getRemainingDailyQuota(), results: SAVE_RESULTS }); }
+function doGet() { return out({ ok: true, service: 'disc-mailer', quota: MailApp.getRemainingDailyQuota(), results: SAVE_RESULTS, contact: !!CONTACT_TO }); }
 
 function doPost(e) {
   try {
     var body = {};
     try { body = JSON.parse((e && e.postData && e.postData.contents) || '{}'); } catch (err) { return out({ ok: false, error: 'bad json' }); }
     if (TOKEN && body.token !== TOKEN) return out({ ok: false, error: 'forbidden' });
+    if (body.action === 'contact') return sendContact(body);
     var to = String(body.to || '').trim();
     if (to.length > 120 || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(to)) return out({ ok: false, error: 'bad email' });
     var lang = DATA[body.lang] ? body.lang : 'en';
@@ -69,16 +78,56 @@ function doPost(e) {
 
 function out(obj) { return ContentService.createTextOutput(JSON.stringify(obj)).setMimeType(ContentService.MimeType.JSON); }
 
-function checkLimits(to) {
+/** Лимиты: суточный счётчик общий для всех писем; счётчик на адрес в час — свой для результатов ('r:') и для формы ('c:'). */
+function checkLimits(to, perHour, prefix) {
   var cache = CacheService.getScriptCache();
   var dayKey = 'day:' + Utilities.formatDate(new Date(), 'UTC', 'yyyy-MM-dd');
-  var rcKey = 'r:' + to.toLowerCase();
+  var rcKey = (prefix || 'r:') + to.toLowerCase();
   var day = +(cache.get(dayKey) || 0), rc = +(cache.get(rcKey) || 0);
   if (day >= MAX_PER_DAY) return 'daily limit';
-  if (rc >= MAX_PER_RECIPIENT_PER_HOUR) return 'too many';
+  if (rc >= (perHour || MAX_PER_RECIPIENT_PER_HOUR)) return 'too many';
   cache.put(dayKey, String(day + 1), 86400);
   cache.put(rcKey, String(rc + 1), 3600);
   return null;
+}
+
+/* ====== форма обратной связи ====== */
+/** Письмо на CONTACT_TO с текстом сообщения и вложениями; ответ уходит отправителю (replyTo). В таблицу не пишется. */
+function sendContact(b) {
+  if (!CONTACT_TO) return out({ ok: false, error: 'contact disabled' });
+  if (String(b.hp || '')) return out({ ok: true });   // скрытое поле-ловушку заполняют только боты: делаем вид, что отправили
+  var name = String(b.name || '').replace(/\s+/g, ' ').trim().slice(0, 80);
+  var email = String(b.email || '').trim();
+  var msg = String(b.message || '').replace(/\r\n?/g, '\n').trim();
+  if (!name) return out({ ok: false, error: 'bad name' });
+  if (email.length > 120 || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) return out({ ok: false, error: 'bad email' });
+  if (!msg || msg.length > 5000) return out({ ok: false, error: 'bad message' });
+  var files = Array.isArray(b.files) ? b.files : [];
+  if (files.length > MAX_CONTACT_FILES) return out({ ok: false, error: 'too many files' });
+  var blobs = [], total = 0;
+  for (var i = 0; i < files.length; i++) {
+    var f = files[i] || {}, data = String(f.data || '');
+    if (data.length > Math.ceil(MAX_CONTACT_BYTES / 3) * 4 + 4) return out({ ok: false, error: 'files too big' });   // до декодирования: base64 длиннее исходных байтов на треть
+    var bytes;
+    try { bytes = Utilities.base64Decode(data); } catch (err) { return out({ ok: false, error: 'bad file' }); }
+    total += bytes.length;
+    if (total > MAX_CONTACT_BYTES) return out({ ok: false, error: 'files too big' });
+    var fname = String(f.name || '').replace(/[\r\n\t]+/g, ' ').trim().slice(0, 200) || ('file' + (i + 1));
+    blobs.push(Utilities.newBlob(bytes, String(f.type || 'application/octet-stream').slice(0, 100), fname));
+  }
+  var limit = checkLimits(email, MAX_CONTACT_PER_SENDER_PER_HOUR, 'c:');
+  if (limit) return out({ ok: false, error: limit });
+  var lang = String(b.lang || '').replace(/[^a-z-]/gi, '').slice(0, 5), page = String(b.page || '').slice(0, 300);
+  var meta = 'Имя: ' + name + '\nE-mail: ' + email + (lang ? '\nЯзык: ' + lang : '') + (page ? '\nСтраница: ' + page : '') + '\nПолучено: ' + stamp() +
+    (blobs.length ? '\nВложения: ' + blobs.map(function (x) { return x.getName(); }).join(', ') : '');
+  var subject = 'Сообщение с сайта ' + SITE_URL.replace(/^https?:\/\//, '') + ': ' + name;
+  var html = '<div style="font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.5;color:#1B2027">' +
+    '<p style="margin:0 0 18px">' + esc(msg).replace(/\n/g, '<br>') + '</p>' +
+    '<p style="margin:0;padding-top:12px;border-top:1px solid #D9DDE3;font-size:13px;color:#5B6470">' + esc(meta).replace(/\n/g, '<br>') + '</p></div>';
+  var opts = { to: CONTACT_TO, replyTo: email, subject: subject, body: msg + '\n\n---\n' + meta + '\n', htmlBody: html, name: SENDER_NAME };
+  if (blobs.length) opts.attachments = blobs;
+  try { MailApp.sendEmail(opts); } catch (err) { return out({ ok: false, error: String((err && err.message) || err) }); }
+  return out({ ok: true });
 }
 
 /* ====== база результатов (Google Таблица) ====== */

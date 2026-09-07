@@ -64,6 +64,7 @@ function lsSet(k,v){ MEM[k]=v; try{ localStorage.setItem(k, JSON.stringify(v)); 
 function langHref(code){ return ROOT_REL + (LANG_PATH[code]||'') + SUBPATH + location.hash; }
 __COMMON_JS__
 initCommon({L:L, t:t, esc:esc, lsGet:lsGet, lsSet:lsSet, langHref:langHref, $:$, langMeta:LANG_META, langPath:LANG_PATH, privacyHref:ROOT_REL+(LANG_PATH[L.lang]||'')+'privacy/'});
+__PAGE_JS__
 })();
 </script>
 </body>

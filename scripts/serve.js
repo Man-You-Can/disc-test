@@ -6,7 +6,9 @@ http.createServer((req, res) => {
   let p = decodeURIComponent(req.url.split('?')[0]);
   if (req.method === 'POST' && (p === '/mock-send' || p === '/mock-fail')) { // заглушка для локальной проверки отправки результата (письмо + база)
     let body = ''; req.on('data', c => body += c); req.on('end', () => {
-      console.log('mock-send:', body.slice(0, 200));
+      let j = null; try { j = JSON.parse(body); } catch (e) {}
+      if (j && j.action === 'contact') console.log('mock-send contact:', j.name, '<' + j.email + '>', (j.files || []).map(f => f.name + ' (' + Math.round((f.data || '').length * 3 / 4 / 1024) + ' KB)').join(', ') || 'no files', 'hp=' + JSON.stringify(j.hp || ''));
+      else console.log('mock-send:', body.slice(0, 200));
       res.writeHead(200, { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' });
       res.end(JSON.stringify(p === '/mock-send' ? { ok: true, saved: true } : { ok: false, error: 'mock failure', saved: true }));
     }); return;
@@ -17,7 +19,7 @@ http.createServer((req, res) => {
     if (!p.endsWith('/')) { res.writeHead(301, { Location: p + '/' }); return res.end(); }
     file = path.join(file, 'index.html');
   }
-  if (!fs.existsSync(file)) { res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' }); return res.end(fs.readFileSync(path.join(root, '404.html'))); }
+  if (!fs.existsSync(file)) { res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' }); const nf = path.join(root, '404.html'); return res.end(fs.existsSync(nf) ? fs.readFileSync(nf) : 'Not found'); } // 404.html может отсутствовать в момент пересборки docs/
   res.writeHead(200, { 'Content-Type': types[path.extname(file)] || 'application/octet-stream' });
   res.end(fs.readFileSync(file));
 }).listen(port, () => console.log('serving docs/ on http://localhost:' + port));

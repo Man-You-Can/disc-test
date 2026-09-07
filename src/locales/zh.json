@@ -228,7 +228,7 @@
         {
           "h": "反馈",
           "p": [
-            "网站源代码在 GitHub 上公开：github.com/Man-You-Can/disc-test。你可以在那里报告翻译错误或提出改进建议。"
+            "你可以通过“{contact}”表单给我们留言。网站源代码在 GitHub 上公开：github.com/Man-You-Can/disc-test，也可以在那里报告翻译错误或提出改进建议。"
           ]
         }
       ]
@@ -258,9 +258,15 @@
           ]
         },
         {
+          "h": "联系表单",
+          "p": [
+            "联系表单中的留言（名字、电子邮箱、内容和附件）通过同一个 Google Apps Script 脚本以邮件形式发送至 {email}，仅用于回复你。这些留言不会写入结果数据库，附件除该邮件外不会保存在任何其他地方。"
+          ]
+        },
+        {
           "h": "如何删除数据",
           "p": [
-            "要删除设备上的数据，请在浏览器设置中清除本站数据，或点击“重新测试”。结果邮件保存在你的邮箱中。如需删除你在结果数据库中的记录以及发送方的邮件副本，请通过 GitHub 联系我们（“关于”页面有链接）。"
+            "要删除设备上的数据，请在浏览器设置中清除本站数据，或点击“重新测试”。结果邮件保存在你的邮箱中。如需删除你在结果数据库中的记录以及发送方的邮件副本，请通过联系表单联系我们。"
           ]
         },
         {
@@ -276,6 +282,12 @@
           ]
         }
       ]
+    },
+    "contact": {
+      "title": "联系我们 — 给 DISC 测试作者留言",
+      "description": "有问题、翻译错误或建议？通过联系表单给我们留言，需要时可以添加附件。",
+      "h1": "联系我们",
+      "lead": "发现错误、翻译不准确，或想提出改进建议？给我们留言，我们会回复到你填写的邮箱。"
     }
   },
   "ui": {
@@ -402,6 +414,7 @@
     "nav.disc": "什么是 DISC",
     "nav.faq": "常见问题",
     "nav.about": "关于",
+    "nav.contact": "联系我们",
     "nav.privacy": "隐私",
     "pages.styles.title": "DISC 的四种风格：D、I、S、C — 特质、优势与动机",
     "pages.styles.description": "详细介绍 DISC 的四种行为风格：支配型、影响型、稳健型、谨慎型。特质、优势、成长空间、动机以及压力下的表现。",
@@ -423,6 +436,28 @@
     "cta.title": "了解您的 DISC 类型",
     "cta.text": "免费测试：24 组题，约 10 分钟，结果即时显示并发送到邮箱。",
     "cta.button": "开始测试",
+
+    "contact.emailLabel": "用于回复的电子邮箱",
+    "contact.messageLabel": "留言",
+    "contact.filesLabel": "文件",
+    "contact.filesAdd": "添加附件",
+    "contact.filesHint": "可以添加多个文件，总大小不超过 {max}，也可以将文件拖到这里。",
+    "contact.fileRemove": "移除文件 {name}",
+    "contact.filesTotal": "共 {size}，上限 {max}",
+    "contact.fileSkipped": "文件“{name}”未添加：文件总大小不能超过 {max}。",
+    "contact.send": "发送",
+    "contact.sending": "正在发送留言…",
+    "contact.sent": "留言已发送。我们会回复到 {email}。",
+    "contact.sendFailed": "留言发送失败（{error}）。请重试，或直接写信给我们：{contact}。",
+    "contact.tooMany": "该地址已发送多条留言。请稍后再试，或直接写信给我们：{contact}。",
+    "contact.messageRequired": "请填写留言",
+    "contact.direct": "或直接写信给我们：{email}",
+    "contact.privacyNote": "名字、电子邮箱、留言和文件将通过邮件发送至 {email}，仅用于回复你。",
+    "contact.mailtoNote": "发送服务尚未接入：点击“发送”会打开你的邮件客户端并填好内容，附件需要你在邮件中手动添加。",
+    "contact.mailSubject": "来自网站的留言：{name}",
+    "contact.mailFiles": "已选择的文件（请在邮件中添加）：{list}",
+    "contact.kb": "KB",
+    "contact.mb": "MB",
 
     "consent.label": "Cookie 提示",
     "consent.text": "本网站将你的进度、结果和所选语言保存在浏览器的本地存储中；Yandex Metrica 会收集匿名访问统计和页面操作记录，帮助我们改进网站。你的姓名、电子邮箱和结果不会发送给 Metrica。",
