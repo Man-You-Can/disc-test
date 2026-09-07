@@ -19,7 +19,7 @@
  * похожий на формулу, в ячейки не попадает.
  */
 var SITE_URL = 'https://disc-test.org';
-var TOKEN = '';        // '' — без проверки токена
+var TOKEN = 'kR7UiShTyG7Wws7t16NkgKN3';        // '' — без проверки токена
 var OWNER_COPY = '';                 // e-mail для скрытой копии каждого результата; '' — не отправлять
 var SENDER_NAME = 'DISC Test';       // имя отправителя в письме
 var MAX_PER_RECIPIENT_PER_HOUR = 3;

@@ -48,7 +48,8 @@ const BK = ['IDCS','CSDI','SCID','DSIC','ICSD','SDCI','CIDS','DCSI','ISDC','CDIS
 const m = [], l = []; BK.forEach((ks, i) => { m.push(ks.indexOf(i % 3 === 0 ? 'I' : 'D')); l.push(ks.indexOf(i % 2 ? 'S' : 'C')); });
 const mk = (n, e, t) => 'DISC1.' + b64e(JSON.stringify({ n, e, p: '', t: t || '2026-09-07T10:00:00Z', m: m.join(''), l: l.join('') }));
 const code = mk('Иван Петров', 'ivan@example.com');
-const post = body => JSON.parse(ctx.doPost({ postData: { contents: JSON.stringify(body) } }).text);
+const TOKEN = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'site.config.json'), 'utf8')).sendToken || ''; // тот же токен, что попал в Code.gs при сборке
+const post = body => JSON.parse(ctx.doPost({ postData: { contents: JSON.stringify(Object.assign({ token: TOKEN }, body)) } }).text);
 const rows = () => Object.values(books)[0].getSheetByName('Результаты').rows;
 const isDate = v => Object.prototype.toString.call(v) === '[object Date]'; // Date из другого realm (vm)
 let fails = 0; const check = (name, cond) => { console.log((cond ? '✓ ' : '✗ ') + name); if (!cond) fails++; };
@@ -87,6 +88,7 @@ check('row: mail status after limit', rows()[1][15] === 'не отправлен
 check('email mismatch rejected, not saved', post({ to: 'other@example.com', lang: 'en', code }).error === 'email mismatch' && rows().length === 2);
 check('bad email rejected', post({ to: 'not-an-email', lang: 'en', code }).error === 'bad email');
 check('bad code rejected, not saved', post({ to: 'ivan@example.com', lang: 'en', code: 'DISC1.xxxx' }).error === 'bad code' && rows().length === 2);
+check('wrong token rejected, not saved', !TOKEN || (JSON.parse(ctx.doPost({ postData: { contents: JSON.stringify({ token: 'nope', to: 'ivan@example.com', lang: 'en', code }) } }).text).error === 'forbidden' && rows().length === 2));
 check('bad json handled', JSON.parse(ctx.doPost({ postData: { contents: '{oops' } }).text).error === 'bad json');
 
 mailFail = 'Service invoked too many times';
