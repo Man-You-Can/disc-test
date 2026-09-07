@@ -241,14 +241,14 @@
         {
           "h": "What data we use",
           "p": [
-            "Before the test you enter your name and email address. During the test your answers are saved, and after it your result, chosen language and a note that you have seen the cookie notice. All of this is kept in your browser's local storage, not on a server: the site has no database."
+            "Before the test you enter your name and email address. During the test your answers are saved, and after it your result, chosen language and your answer to the cookie notice. All of this is kept in your browser's local storage, not on a server: the site has no database."
           ]
         },
         {
           "h": "Where the data goes",
           "p": [
             "When you finish the test, your name, email address and answers (as a result code) are passed to the email-sending service, a Google Apps Script running in the site owner's Google account, which sends you your result. The data is not used for any other purpose and is not passed to third parties.",
-            "The hosting provider (GitHub Pages) receives standard technical request data: IP address, browser type, page address. Fonts are served from this site itself and are not loaded from Google's servers. The site uses no analytics or advertising trackers; if that changes, this page and the cookie notice will be updated."
+            "The hosting provider (GitHub Pages) receives standard technical request data: IP address, browser type, page address. Fonts are served from this site itself and are not loaded from Google's servers. With your consent (the “Accept” button in the cookie notice) the site runs Yandex Metrica (Yandex LLC): it receives anonymised visit data, namely the page address without the result code, the referrer, device and browser type, and a recording of on-page actions (Webvisor); the name and email fields, the result link and code are excluded from the recording. Without consent the counter is not loaded. You can withdraw consent by clearing the site's data in your browser: the notice will appear again. No advertising trackers are used."
           ]
         },
         {
@@ -266,7 +266,7 @@
         {
           "h": "Cookies",
           "p": [
-            "The site sets no cookies. For the items above it uses the browser's local storage, a technology with the same purpose, which is why a notice about it is shown once on your first visit."
+            "The site itself sets no cookies: for the items above it uses the browser's local storage, a technology with the same purpose. After your consent, Yandex Metrica sets its own cookies (for example _ym_uid and _ym_d) to tell visitors apart; without consent they are not set. That is why the notice is shown on your first visit and again after you clear the site's data."
           ]
         },
         {
@@ -424,10 +424,12 @@
     "cta.button": "Take the test",
 
     "consent.label": "Cookie notice",
-    "consent.text": "This site uses cookies and similar technologies: your browser's local storage keeps your progress, result and chosen language. The hosting provider (GitHub Pages) receives technical data such as your IP address and browser type. Your test result is sent only to the email address you provide.",
+    "consent.text": "This site keeps your progress, result and chosen language in your browser's local storage. If you agree, Yandex Metrica will collect anonymised visit statistics and a recording of on-page actions to help us improve the site; your name, email and result are not sent to it.",
     "consent.more": "Learn more",
-    "consent.details": "Stored in your browser: the name and job title you enter before the test; your answers and unfinished progress; your latest result; your chosen language; a note that you have seen this notice. The data stays on your device only and is removed when you clear the site's data in your browser. Third-party service: GitHub Pages (hosting) receives standard technical request data. No analytics or advertising trackers are used. When you finish the test, your name, email address and answers are passed to the email-sending service (Google Apps Script) in order to send you your result; they are not used for anything else.",
-    "consent.accept": "Got it",
+    "consent.details": "Stored in your browser: the name and email you enter before the test; your answers and unfinished progress; your latest result; your chosen language; your answer to this notice. This data stays on your device and is removed when you clear the site's data. The hosting provider (GitHub Pages) receives standard technical request data. When you finish the test, your name, email and answers are passed to the email-sending service (Google Apps Script) to send you your result. Yandex Metrica (Yandex LLC) loads only after you press “Accept”: it receives the page address without the result code, the referrer, device and browser type, an anonymised recording of on-page actions (the name and email fields, the result link and code are excluded), and sets its own cookies. You can withdraw consent by clearing the site's data in your browser. No advertising trackers are used.",
+    "consent.accept": "Accept",
+    "consent.decline": "Essential only",
+    "consent.ok": "Got it",
 
     "root.continue": "Continue"
   }

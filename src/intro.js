@@ -12,8 +12,8 @@ function introHTML(c){
       '<h2>'+t('intro.howTitle')+'</h2>'+
       '<p>'+t('intro.howText')+'</p>'+
       '<form class="form" id="startForm" autocomplete="on">'+
-        '<div class="field"><label for="nm">'+t('intro.nameLabel')+'</label><input type="text" id="nm" name="name" autocomplete="name" required maxlength="80" value="'+esc(who.name||'')+'"></div>'+
-        '<div class="field"><label for="em">'+t('intro.emailLabel')+'</label><input type="email" id="em" name="email" autocomplete="email" inputmode="email" required maxlength="120" value="'+esc(who.email||'')+'"><span class="hint">'+t('intro.emailHint')+'</span></div>'+
+        '<div class="field"><label for="nm">'+t('intro.nameLabel')+'</label><input type="text" id="nm" name="name" class="ym-disable-keys" autocomplete="name" required maxlength="80" value="'+esc(who.name||'')+'"></div>'+
+        '<div class="field"><label for="em">'+t('intro.emailLabel')+'</label><input type="email" id="em" name="email" class="ym-disable-keys" autocomplete="email" inputmode="email" required maxlength="120" value="'+esc(who.email||'')+'"><span class="hint">'+t('intro.emailHint')+'</span></div>'+
         '<div class="actions"><button class="btn" type="submit">'+t('intro.start')+'</button>'+
           (progDone ? '<button class="link" type="button" id="resume">'+t('intro.resume',{n:progDone})+'</button>' : '')+
         '</div>'+

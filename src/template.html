@@ -11,7 +11,7 @@
 <meta property="og:url" content="__CANONICAL__">
 <meta property="og:locale" content="__OG_LOCALE__">
 <meta name="robots" content="index, follow, max-image-preview:large">
-__VERIFY_HEAD__
+__HEAD_EXTRA__
 <meta property="og:site_name" content="__BRAND__">
 __OG_ALTERNATES__
 <meta property="og:image" content="__OG_IMAGE__">
@@ -272,6 +272,7 @@ th.num{text-align:end}
 .consent-in{max-width:760px;margin:0 auto;background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:14px 16px;display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;font-size:13px;line-height:1.5}
 .consent-in>p{margin:0;flex:1 1 320px;color:var(--ink)}
 .consent-in .btn{flex:none}
+.consent-btns{display:flex;flex-wrap:wrap;gap:8px;flex:none}
 .consent-in details{flex:1 1 100%;color:var(--muted)}
 .consent-in summary{cursor:pointer;display:inline;list-style:none;text-decoration:underline;text-underline-offset:3px}
 .consent-in summary::-webkit-details-marker{display:none}
@@ -420,6 +421,7 @@ function renderIntro(){
     lsSet('disc.who',{name:name,email:email});
     S = {name:name, email:email, i:0, m:[], l:[]};
     for(var k=0;k<24;k++){ S.m.push(-1); S.l.push(-1); }
+    if(window.discTrack) window.discTrack('start'); // цель Метрики: тест начат
     lsSet('disc.progress', S);
     renderTest();
   });
@@ -470,6 +472,7 @@ function renderTest(){
     if(missing>=0){ S.i=missing; lsSet('disc.progress', S); toast(t('test.missing',{n:missing+1})); renderTest(); return; }
     var r = {name:S.name, email:S.email||'', pos:S.pos||'', t:new Date().toISOString(), m:S.m.slice(), l:S.l.slice()};
     lsSet('disc.last', r); lsDel('disc.progress'); S=null;
+    if(window.discTrack) window.discTrack('finish'); // цель Метрики: тест завершён
     renderReport(r, {own:true, send:true});
     window.scrollTo(0,0);
   });
@@ -501,7 +504,7 @@ function renderReport(r, opts){
       badgeHTML(cls)+
       '<div class="rtitle"><div class="eyebrow">'+esc(cls.s ? L.keys[cls.p]+' + '+L.keys[cls.s] : L.keys[cls.p])+'</div>'+
         '<h1>'+esc(prof.name)+'</h1>'+
-        '<div class="meta">'+meta+'</div></div>'+
+        '<div class="meta ym-hide-content">'+meta+'</div></div>'+
     '</div>'+
     '<p class="lead">'+esc(prof.summary)+'</p>'+
     (cls.flat ? '<p class="notice">'+t('report.flat')+'</p>' : '')+
@@ -534,7 +537,7 @@ function renderReport(r, opts){
       '<div class="share no-print" style="margin-top:16px"><h2>'+t('share.title')+'</h2>'+
         '<p class="small">'+t('share.text')+'</p>'+
         (canSend ? '<p class="small sendstatus" id="sendStatus" aria-live="polite"></p>' : '')+
-        '<textarea class="codebox" id="code" readonly rows="3" aria-label="'+t('share.codeAria')+'">'+esc(code)+'</textarea>'+
+        '<textarea class="codebox ym-hide-content" id="code" readonly rows="3" aria-label="'+t('share.codeAria')+'">'+esc(code)+'</textarea>'+
         '<div class="actions"><button class="btn" type="button" id="copyLink">'+t('share.copyLink')+'</button>'+
           '<a class="btn secondary" id="mail" href="'+mailto.replace(/"/g,'&quot;')+'">'+t('share.mail')+'</a>'+
           '<button class="btn secondary" type="button" id="copyCode">'+t('share.copyCode')+'</button>'+
@@ -542,7 +545,7 @@ function renderReport(r, opts){
       '</div>'+
       '<div class="actions no-print" style="margin-top:18px"><button class="link" id="restart" type="button">'+t('share.restart')+'</button></div>'
     :
-      '<div class="card no-print" style="margin-top:16px"><h3>'+t('share.codeTitle')+'</h3><textarea class="codebox" id="code" readonly rows="3" aria-label="'+t('share.codeAria')+'">'+esc(code)+'</textarea>'+
+      '<div class="card no-print" style="margin-top:16px"><h3>'+t('share.codeTitle')+'</h3><textarea class="codebox ym-hide-content" id="code" readonly rows="3" aria-label="'+t('share.codeAria')+'">'+esc(code)+'</textarea>'+
         '<div class="actions"><button class="btn secondary small" type="button" id="copyLink">'+t('share.copyLink')+'</button><button class="btn secondary small" type="button" id="copyCode">'+t('share.copyCode')+'</button><button class="btn secondary small" type="button" id="print">'+t('share.pdf')+'</button></div></div>'
     );
 
@@ -614,7 +617,7 @@ function renderAdmin(){
     '</form></div>'+
     '<div class="stack" style="margin-top:16px">'+
       '<div class="tablewrap">'+(items.length ?
-        '<table><thead><tr><th>'+t('admin.thName')+'</th><th>'+t('admin.thDate')+'</th><th>'+t('admin.thProfile')+'</th><th class="num">D</th><th class="num">I</th><th class="num">S</th><th class="num">C</th><th></th></tr></thead><tbody>'+rows+'</tbody></table>'
+        '<table class="ym-hide-content"><thead><tr><th>'+t('admin.thName')+'</th><th>'+t('admin.thDate')+'</th><th>'+t('admin.thProfile')+'</th><th class="num">D</th><th class="num">I</th><th class="num">S</th><th class="num">C</th><th></th></tr></thead><tbody>'+rows+'</tbody></table>'
         : '<div class="empty">'+t('admin.empty')+'</div>')+'</div>'+
       (items.length ? '<div class="actions between"><button class="btn secondary small" type="button" id="csv">'+t('admin.csv')+'</button><button class="link" type="button" id="clear">'+t('admin.clear')+'</button></div>' : '')+
     '</div>'+
@@ -659,7 +662,7 @@ function langHref(code){ return ROOT_REL + (LANG_PATH[code]||'') + location.hash
 // Root page: a language chosen explicitly earlier opens right away (search bots have no stored choice)
 (function(){ if(!IS_ROOT) return; var st = lsGet('disc.lang'); if(st && st!==L.lang && LANG_PATH[st]!=null && !location.hash) location.replace(langHref(st)); })();
 __COMMON_JS__
-initCommon({L:L, t:t, esc:esc, lsGet:lsGet, lsSet:lsSet, langHref:langHref, $:$, langMeta:LANG_META, langPath:LANG_PATH});
+initCommon({L:L, t:t, esc:esc, lsGet:lsGet, lsSet:lsSet, langHref:langHref, $:$, langMeta:LANG_META, langPath:LANG_PATH, privacyHref:ROOT_REL+(LANG_PATH[L.lang]||'')+'privacy/'});
 
 /* ====== маршрутизация ====== */
 $('#adminLink').addEventListener('click', function(){ renderAdmin(); window.scrollTo(0,0); });

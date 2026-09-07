@@ -241,14 +241,14 @@
         {
           "h": "Quais dados usamos",
           "p": [
-            "Antes do teste você informa nome e e-mail. Durante o teste, suas respostas são salvas; ao final, o resultado, o idioma escolhido e uma marcação de que você viu o aviso de cookies. Tudo isso fica no armazenamento local do seu navegador, não em um servidor: o site não tem banco de dados."
+            "Antes do teste introduz o seu nome e e-mail. Durante o teste as suas respostas são guardadas e, ao concluir, o resultado, o idioma escolhido e a sua resposta ao aviso de cookies. Tudo isto fica no armazenamento local do seu navegador, não num servidor: o site não tem base de dados."
           ]
         },
         {
           "h": "Para onde os dados são transmitidos",
           "p": [
             "Ao concluir o teste, nome, e-mail e respostas (na forma de código de resultado) são transmitidos ao serviço de envio de e-mails, um script do Google Apps Script que roda na conta Google do responsável pelo site e envia a você o e-mail com o resultado. Esses dados não são usados para outros fins nem repassados a terceiros.",
-            "O provedor de hospedagem (GitHub Pages) recebe os dados técnicos padrão da requisição: endereço IP, tipo de navegador, endereço da página. As fontes são servidas pelo próprio site e não são carregadas de servidores do Google. O site não usa análise de tráfego nem rastreadores de publicidade; se isso mudar, esta página e o aviso de cookies serão atualizados."
+            "O alojamento (GitHub Pages) recebe os dados técnicos habituais do pedido: endereço IP, tipo de navegador, endereço da página. As fontes são servidas a partir deste próprio site e não são carregadas dos servidores da Google. Com o seu consentimento (botão «Aceitar» no aviso de cookies) o site usa a Yandex Metrica (Yandex LLC): recebe dados de visita anonimizados — o endereço da página sem o código do resultado, a origem da visita, o tipo de dispositivo e navegador — e uma gravação das ações na página (Webvisor); os campos de nome e e-mail, o link e o código do resultado ficam excluídos da gravação. Sem consentimento o contador não é carregado. Pode retirar o consentimento limpando os dados do site no navegador: o aviso voltará a aparecer. Não são usados rastreadores publicitários."
           ]
         },
         {
@@ -266,7 +266,7 @@
         {
           "h": "Cookies",
           "p": [
-            "O site não instala cookies. Para os itens acima, usa o armazenamento local do navegador, uma tecnologia com a mesma finalidade; por isso o aviso é mostrado uma vez na primeira visita."
+            "O site em si não define cookies: para o que foi descrito usa o armazenamento local do navegador, uma tecnologia com a mesma finalidade. Após o seu consentimento, a Yandex Metrica define os seus próprios cookies (por exemplo _ym_uid e _ym_d) para distinguir visitantes; sem consentimento não são definidos. Por isso o aviso aparece na primeira visita e novamente depois de limpar os dados do site."
           ]
         },
         {
@@ -424,10 +424,12 @@
     "cta.button": "Fazer o teste",
 
     "consent.label": "Aviso de cookies",
-    "consent.text": "Este site usa cookies e tecnologias semelhantes: o armazenamento local do seu navegador guarda seu progresso, seu resultado e o idioma escolhido. O provedor de hospedagem (GitHub Pages) recebe dados técnicos, como endereço IP e tipo de navegador. O resultado do teste é enviado apenas para o e-mail que você informar.",
+    "consent.text": "Este site guarda o seu progresso, o resultado e o idioma escolhido no armazenamento local do navegador. Se concordar, a Yandex Metrica recolherá estatísticas de visitas anonimizadas e uma gravação das ações na página para nos ajudar a melhorar o site; o seu nome, e-mail e resultado não lhe são enviados.",
     "consent.more": "Saiba mais",
-    "consent.details": "Guardado no seu navegador: o nome e o cargo informados antes do teste; suas respostas e o progresso não concluído; seu último resultado; o idioma escolhido; uma marcação de que você viu este aviso. Os dados ficam apenas no seu dispositivo e são apagados ao limpar os dados do site no navegador. Serviço de terceiros: GitHub Pages (hospedagem) recebe os dados técnicos padrão da requisição. Não usamos análise de tráfego nem rastreadores de publicidade. Ao concluir o teste, seu nome, e-mail e respostas são transmitidos ao serviço de envio de e-mails (Google Apps Script) para lhe enviar o resultado; não são usados para nenhum outro fim.",
-    "consent.accept": "Entendi",
+    "consent.details": "No navegador ficam guardados: o nome e o e-mail que introduz antes do teste; as suas respostas e o progresso por concluir; o último resultado; o idioma escolhido; a sua resposta a este aviso. Estes dados permanecem no seu dispositivo e são apagados ao limpar os dados do site. O alojamento (GitHub Pages) recebe os dados técnicos habituais do pedido. Ao concluir o teste, o nome, o e-mail e as respostas são transmitidos ao serviço de envio de e-mails (Google Apps Script) para lhe enviar o resultado. A Yandex Metrica (Yandex LLC) só é carregada depois de premir «Aceitar»: recebe o endereço da página sem o código do resultado, a origem da visita, o tipo de dispositivo e navegador e uma gravação anonimizada das ações na página (os campos de nome e e-mail, o link e o código do resultado ficam excluídos), e define os seus próprios cookies. Pode retirar o consentimento limpando os dados do site no navegador. Não são usados rastreadores publicitários.",
+    "consent.accept": "Aceitar",
+    "consent.decline": "Só o essencial",
+    "consent.ok": "Entendi",
 
     "root.continue": "Continuar"
   }

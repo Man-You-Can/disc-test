@@ -8,6 +8,7 @@
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="google-site-verification" content="q9-P14KEm3Bl0iw-lP3zITeLv0EESmjJcPRee30aAsw">
 <meta name="yandex-verification" content="028b85ace16c85fc">
+<script>window.DISC_ANALYTICS={"ym":"112347000","mode":"optin"};</script>
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Teste DISC">
 <meta property="og:title" content="Diplomata (SI) — perfil DISC: descrição, pontos fortes, áreas de desenvolvimento">
@@ -322,6 +323,7 @@ th.num{text-align:end}
 .consent-in{max-width:760px;margin:0 auto;background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:14px 16px;display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;font-size:13px;line-height:1.5}
 .consent-in>p{margin:0;flex:1 1 320px;color:var(--ink)}
 .consent-in .btn{flex:none}
+.consent-btns{display:flex;flex-wrap:wrap;gap:8px;flex:none}
 .consent-in details{flex:1 1 100%;color:var(--muted)}
 .consent-in summary{cursor:pointer;display:inline;list-style:none;text-decoration:underline;text-underline-offset:3px}
 .consent-in summary::-webkit-details-marker{display:none}
@@ -360,7 +362,7 @@ body.has-consent{padding-bottom:160px}
 <script>
 (function(){
 'use strict';
-var L = {"lang":"pt","name":"Português","dir":"ltr","ui":{"langLabel":"Idioma","consent.label":"Aviso de cookies","consent.text":"Este site usa cookies e tecnologias semelhantes: o armazenamento local do seu navegador guarda seu progresso, seu resultado e o idioma escolhido. O provedor de hospedagem (GitHub Pages) recebe dados técnicos, como endereço IP e tipo de navegador. O resultado do teste é enviado apenas para o e-mail que você informar.","consent.more":"Saiba mais","consent.details":"Guardado no seu navegador: o nome e o cargo informados antes do teste; suas respostas e o progresso não concluído; seu último resultado; o idioma escolhido; uma marcação de que você viu este aviso. Os dados ficam apenas no seu dispositivo e são apagados ao limpar os dados do site no navegador. Serviço de terceiros: GitHub Pages (hospedagem) recebe os dados técnicos padrão da requisição. Não usamos análise de tráfego nem rastreadores de publicidade. Ao concluir o teste, seu nome, e-mail e respostas são transmitidos ao serviço de envio de e-mails (Google Apps Script) para lhe enviar o resultado; não são usados para nenhum outro fim.","consent.accept":"Entendi","root.continue":"Continuar"}};
+var L = {"lang":"pt","name":"Português","dir":"ltr","ui":{"langLabel":"Idioma","consent.label":"Aviso de cookies","consent.text":"Este site guarda o seu progresso, o resultado e o idioma escolhido no armazenamento local do navegador. Se concordar, a Yandex Metrica recolherá estatísticas de visitas anonimizadas e uma gravação das ações na página para nos ajudar a melhorar o site; o seu nome, e-mail e resultado não lhe são enviados.","consent.more":"Saiba mais","consent.details":"No navegador ficam guardados: o nome e o e-mail que introduz antes do teste; as suas respostas e o progresso por concluir; o último resultado; o idioma escolhido; a sua resposta a este aviso. Estes dados permanecem no seu dispositivo e são apagados ao limpar os dados do site. O alojamento (GitHub Pages) recebe os dados técnicos habituais do pedido. Ao concluir o teste, o nome, o e-mail e as respostas são transmitidos ao serviço de envio de e-mails (Google Apps Script) para lhe enviar o resultado. A Yandex Metrica (Yandex LLC) só é carregada depois de premir «Aceitar»: recebe o endereço da página sem o código do resultado, a origem da visita, o tipo de dispositivo e navegador e uma gravação anonimizada das ações na página (os campos de nome e e-mail, o link e o código do resultado ficam excluídos), e define os seus próprios cookies. Pode retirar o consentimento limpando os dados do site no navegador. Não são usados rastreadores publicitários.","consent.accept":"Aceitar","consent.decline":"Só o essencial","consent.ok":"Entendi","root.continue":"Continuar"}};
 var ROOT_REL = '../../../', SUBPATH = 'profiles/si/';
 var LANG_PATH = {"en":"","ru":"ru/","es":"es/","zh":"zh/","ar":"ar/","pt":"pt/","fr":"fr/","de":"de/","ja":"ja/","hi":"hi/"}, LANG_META = {"en":{"name":"English","cont":"Continue","dir":"ltr"},"ru":{"name":"Русский","cont":"Продолжить","dir":"ltr"},"es":{"name":"Español","cont":"Continuar","dir":"ltr"},"zh":{"name":"简体中文","cont":"继续","dir":"ltr"},"ar":{"name":"العربية","cont":"متابعة","dir":"rtl"},"pt":{"name":"Português","cont":"Continuar","dir":"ltr"},"fr":{"name":"Français","cont":"Continuer","dir":"ltr"},"de":{"name":"Deutsch","cont":"Weiter","dir":"ltr"},"ja":{"name":"日本語","cont":"続ける","dir":"ltr"},"hi":{"name":"हिन्दी","cont":"जारी रखें","dir":"ltr"}};
 function $(s){ return document.querySelector(s); }
@@ -371,7 +373,7 @@ function lsGet(k){ try{ var v = localStorage.getItem(k); if(v!=null) return JSON
 function lsSet(k,v){ MEM[k]=v; try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
 function langHref(code){ return ROOT_REL + (LANG_PATH[code]||'') + SUBPATH + location.hash; }
 /* Общие элементы всех страниц сайта (тест и контентные страницы): выпадающий список языков,
-   запоминание выбранного языка, подсказка «Продолжить на …» и уведомление о cookie.
+   запоминание выбранного языка, подсказка «Продолжить на …», уведомление о cookie и загрузка Яндекс.Метрики после согласия.
    Вставляется сборкой в каждую страницу; вызывается как initCommon({L, t, esc, lsGet, lsSet, langHref, $}). */
 function initCommon(c){
   var L=c.L, t=c.t, esc=c.esc, lsGet=c.lsGet, lsSet=c.lsSet, langHref=c.langHref, $=c.$;
@@ -422,17 +424,42 @@ function initCommon(c){
     bar.querySelector('button').addEventListener('click', function(){ lsSet('disc.lang', L.lang); bar.remove(); });
   })();
 
-  /* уведомление о cookie */
+  /* уведомление о cookie и согласие на аналитику.
+     window.DISC_ANALYTICS задаётся сборкой из site.config.json: {ym: номер счётчика Яндекс.Метрики, mode: "optin"|"always"}.
+     optin — счётчик загружается только после кнопки «Принять»; always — сразу, уведомление лишь информирует.
+     В localStorage disc.consent: "analytics" (согласие), "essential" (отказ), "noted" (режим always или счётчик не задан);
+     старая отметка-дата означает, что человек видел прежний текст без аналитики, — уведомление показывается снова. */
   (function(){
-    if(lsGet('disc.consent')) return;
-    var el=document.createElement('div'); el.className='consent no-print'; el.id='consent'; el.setAttribute('role','region'); el.setAttribute('aria-label', t('consent.label'));
-    el.innerHTML='<div class="consent-in"><p>'+t('consent.text')+'</p><button class="btn small" type="button" id="consentOk">'+t('consent.accept')+'</button><details><summary>'+t('consent.more')+'</summary><p>'+t('consent.details')+'</p></details></div>';
-    document.body.appendChild(el); document.body.classList.add('has-consent');
-    $('#consentOk').addEventListener('click', function(){ lsSet('disc.consent', new Date().toISOString()); el.remove(); document.body.classList.remove('has-consent'); });
+    var A = window.DISC_ANALYTICS||{}, ym = A.ym ? String(A.ym) : "", optin = A.mode!=="always", ask = optin && !!ym;
+    function loadYm(){
+      if(!ym || window.ym) return;
+      (function(m,e,t,r,i,k,a){ m[i]=m[i]||function(){ (m[i].a=m[i].a||[]).push(arguments); }; m[i].l=1*new Date();
+        for(var j=0;j<document.scripts.length;j++){ if(document.scripts[j].src===r) return; }
+        k=e.createElement(t); a=e.getElementsByTagName(t)[0]; k.async=1; k.src=r; a.parentNode.insertBefore(k,a);
+      })(window,document,"script","https://mc.yandex.ru/metrika/tag.js?id="+ym,"ym");
+      /* defer: первый просмотр отправляем сами — без #r=…, в котором закодированы имя и e-mail участника */
+      window.ym(ym,"init",{ssr:true,webvisor:true,clickmap:true,ecommerce:"dataLayer",accurateTrackBounce:true,trackLinks:true,defer:true});
+      window.ym(ym,"hit", location.origin+location.pathname+location.search, {referer:document.referrer});
+    }
+    /* цели Метрики: страница теста вызывает discTrack("start") и discTrack("finish") */
+    window.discTrack = function(goal){ if(ym && window.ym) window.ym(ym,"reachGoal",goal); };
+    var st = lsGet("disc.consent");
+    if(!optin) loadYm();
+    if(st==="analytics"||st==="essential"||(st==="noted"&&!ask)){ if(ask && st==="analytics") loadYm(); return; }
+    var el=document.createElement("div"); el.className="consent no-print"; el.id="consent"; el.setAttribute("role","region"); el.setAttribute("aria-label", t("consent.label"));
+    var more = t("consent.details") + (c.privacyHref ? " <a href=\""+esc(c.privacyHref)+"\">"+esc(t("nav.privacy"))+"</a>" : "");
+    el.innerHTML="<div class=\"consent-in\"><p>"+t("consent.text")+"</p>"+
+      (ask ? "<span class=\"consent-btns\"><button class=\"btn small\" type=\"button\" id=\"consentOk\">"+t("consent.accept")+"</button><button class=\"btn small secondary\" type=\"button\" id=\"consentNo\">"+t("consent.decline")+"</button></span>"
+           : "<button class=\"btn small\" type=\"button\" id=\"consentOk\">"+t("consent.ok")+"</button>")+
+      "<details><summary>"+t("consent.more")+"</summary><p>"+more+"</p></details></div>";
+    document.body.appendChild(el); document.body.classList.add("has-consent");
+    function close(v){ lsSet("disc.consent", v); el.remove(); document.body.classList.remove("has-consent"); }
+    $("#consentOk").addEventListener("click", function(){ close(ask ? "analytics" : "noted"); if(ask) loadYm(); });
+    if($("#consentNo")) $("#consentNo").addEventListener("click", function(){ close("essential"); });
   })();
 }
 
-initCommon({L:L, t:t, esc:esc, lsGet:lsGet, lsSet:lsSet, langHref:langHref, $:$, langMeta:LANG_META, langPath:LANG_PATH});
+initCommon({L:L, t:t, esc:esc, lsGet:lsGet, lsSet:lsSet, langHref:langHref, $:$, langMeta:LANG_META, langPath:LANG_PATH, privacyHref:ROOT_REL+(LANG_PATH[L.lang]||'')+'privacy/'});
 })();
 </script>
 </body>

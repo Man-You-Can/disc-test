@@ -6,7 +6,7 @@
 <title>__TITLE__</title>
 <meta name="description" content="__DESC__">
 <meta name="robots" content="index, follow, max-image-preview:large">
-__VERIFY_HEAD__
+__HEAD_EXTRA__
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="__BRAND__">
 <meta property="og:title" content="__TITLE__">
@@ -63,7 +63,7 @@ function lsGet(k){ try{ var v = localStorage.getItem(k); if(v!=null) return JSON
 function lsSet(k,v){ MEM[k]=v; try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
 function langHref(code){ return ROOT_REL + (LANG_PATH[code]||'') + SUBPATH + location.hash; }
 __COMMON_JS__
-initCommon({L:L, t:t, esc:esc, lsGet:lsGet, lsSet:lsSet, langHref:langHref, $:$, langMeta:LANG_META, langPath:LANG_PATH});
+initCommon({L:L, t:t, esc:esc, lsGet:lsGet, lsSet:lsSet, langHref:langHref, $:$, langMeta:LANG_META, langPath:LANG_PATH, privacyHref:ROOT_REL+(LANG_PATH[L.lang]||'')+'privacy/'});
 })();
 </script>
 </body>
