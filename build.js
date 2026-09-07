@@ -10,6 +10,18 @@ const tpl = fs.readFileSync(path.join(SRC, 'template.html'), 'utf8');
 const introJs = fs.readFileSync(path.join(SRC, 'intro.js'), 'utf8');
 const introHTML = require(path.join(SRC, 'intro.js'));
 const commonJs = fs.readFileSync(path.join(SRC, 'common.js'), 'utf8').replace(/\nif \(typeof module[^\n]*\n?$/, '\n');
+const graphJs = fs.readFileSync(path.join(SRC, 'graph.js'), 'utf8').replace(/\nif \(typeof module[^\n]*\n?$/, '\n');
+const graphSVG = require(path.join(SRC, 'graph.js'));
+// Типичный итоговый профиль (net, от −24 до +24, сумма 0) для примера результата на странице каждого профиля
+const SAMPLE_NET = {
+  D: { D: 16, I: -2, S: -10, C: -4 }, DI: { D: 14, I: 8, S: -12, C: -10 }, DC: { D: 14, I: -8, S: -14, C: 8 }, DS: { D: 12, I: -6, S: 6, C: -12 },
+  I: { D: -2, I: 16, S: -4, C: -10 }, ID: { D: 8, I: 14, S: -10, C: -12 }, IS: { D: -10, I: 14, S: 8, C: -12 }, IC: { D: -8, I: 12, S: -10, C: 6 },
+  S: { D: -10, I: -2, S: 16, C: -4 }, SI: { D: -12, I: 8, S: 14, C: -10 }, SC: { D: -12, I: -10, S: 14, C: 8 }, SD: { D: 6, I: -8, S: 12, C: -10 },
+  C: { D: -8, I: -6, S: -2, C: 16 }, CD: { D: 8, I: -12, S: -10, C: 14 }, CS: { D: -12, I: -10, S: 8, C: 14 }, CI: { D: -8, I: 6, S: -10, C: 12 }
+};
+const sampleScore = net => { const most = {}, least = {}; const pos = Object.values(net).filter(v => v > 0).reduce((a, b) => a + b, 0), base = (24 - pos) / 4;
+  for (const k of Object.keys(net)) { most[k] = Math.max(0, net[k]) + base; least[k] = Math.max(0, -net[k]) + base; } return { most, least, net }; };
+const pct = net => Math.round((net + 24) / 48 * 100);
 const pageTpl = fs.readFileSync(path.join(SRC, 'page.html'), 'utf8');
 const styleBlock = (tpl.match(/<style>[\s\S]*?<\/style>/) || [''])[0];
 const NAV_ITEMS = [['nav.test', ''], ['nav.disc', 'disc/'], ['nav.styles', 'styles/'], ['nav.profiles', 'profiles/'], ['nav.faq', 'faq/']];
@@ -131,7 +143,7 @@ for (const L of locales) {
     .replace('__LANG_PATH_JSON__', () => JSON.stringify(LANG_PATH)).replace('__LANG_META_JSON__', () => JSON.stringify(LANG_META).replace(/</g, '\\u003c'))
     .replace('__JSON_LD__', () => jsonLd(L))
     .replace('__INTRO_JS__', () => introJs.replace(/\nif \(typeof module[^\n]*\n?$/, '\n'))
-    .replace('__COMMON_JS__', () => commonJs)
+    .replace('__COMMON_JS__', () => commonJs).replace('__GRAPH_JS__', () => graphJs)
     .replace('__NAV__', () => navHtml).replace('__FOOT_LINKS__', () => footHtml)
     .replace('__INTRO_HTML__', () => introHTML({ L, t: tFor(L), esc: escFull, KEYS, colorVar: k => 'var(--' + k.toLowerCase() + ')', who: {}, progDone: 0, lastDate: '',
       links: { styles: rootRel + pathOf(L.lang) + 'styles/', profiles: rootRel + pathOf(L.lang) + 'profiles/', profile: k => rootRel + pathOf(L.lang) + 'profiles/' + k.toLowerCase() + '/' } }))
@@ -230,6 +242,10 @@ for (const L of locales) {
     const content = `<div class="eyebrow">${t('pages.profile.eyebrow', { key })}</div>` +
       `<div class="rhead">${badge(key)}<div class="rtitle"><h1>${escFull(pr.name)}</h1><div class="meta">${escFull(s2 ? L.keys[p] + ' + ' + L.keys[s2] : L.keys[p])}</div></div></div>` +
       `<p class="lead">${escFull(pr.summary)}</p>` +
+      (() => { const sc = sampleScore(SAMPLE_NET[key]);
+        return `<section class="example"><h2>${t('pages.profile.exampleTitle')}</h2><p>${escFull(t('pages.profile.exampleText', { name: pr.name }))}</p>` +
+          `<div class="card graphcard"><div class="graph"><h3>${t('report.graphTitle')}</h3>${graphSVG(sc, { net: true }, { label: t('report.graphAria'), colorVar, keys: KEYS })}</div>` +
+          `<div><h3>${t('report.statsTitle')}</h3><div class="stats">` + KEYS.map(k => `<div class="stat" style="--k:${colorVar(k)}"><span class="k">${k}</span><span class="nm">${escFull(L.keys[k])}</span><span class="v">${pct(sc.net[k])}%</span><div class="bar"><i style="width:${pct(sc.net[k])}%"></i></div></div>`).join('') + `</div></div></div></section>`; })() +
       `<h2>${t('pages.profile.primary', { name: escFull(L.keys[p]), key: p })}</h2><div class="traits">${L.styles[p].traits.map(x => `<span>${escFull(x)}</span>`).join('')}</div>` + styleSections(L, p, t, true) +
       (s2 ? `<h2>${t('pages.profile.secondary', { name: escFull(L.keys[s2]), key: s2 })}</h2><p>${escFull(t('report.secondaryAddon', { addon: L.addon[s2] }))}</p><div class="traits">${L.styles[s2].traits.map(x => `<span>${escFull(x)}</span>`).join('')}</div>` + styleSections(L, s2, t, false) : '') +
       ctaBlock(L, t, b) +
