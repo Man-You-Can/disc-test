@@ -563,7 +563,7 @@ function renderReport(r, opts){
   if(opts.own && canSend){ if(opts.send && !r.sent) sendResult(r, code); else showSendStatus(r, code); }
 }
 
-/* ====== отправка письма с результатом ====== */
+/* ====== отправка результата на сервер: письмо участнику + запись в базу результатов (Google Таблица) ====== */
 function postJSON(url, data){
   return new Promise(function(resolve, reject){
     var ctrl = window.AbortController ? new AbortController() : null, done = false;
@@ -586,6 +586,7 @@ function showSendStatus(r, code, state){
   $('#resend').addEventListener('click', function(){ sendResult(r, code); });
 }
 function sendResult(r, code){
+  // Сервер сначала записывает результат в таблицу, потом шлёт письмо; повтор того же кода строку не дублирует
   showSendStatus(r, code, 'sending');
   postJSON(SEND_ENDPOINT, {token:SEND_TOKEN, to:r.email, lang:L.lang, code:code}).then(function(){
     r.sent = new Date().toISOString();

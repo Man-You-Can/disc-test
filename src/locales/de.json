@@ -241,13 +241,13 @@
         {
           "h": "Welche Daten wir verwenden",
           "p": [
-            "Vor dem Test geben Sie Ihren Namen und Ihre E-Mail-Adresse ein. Während des Tests werden Ihre Antworten gespeichert, danach das Ergebnis, die gewählte Sprache und ein Vermerk, dass Sie den Cookie-Hinweis gesehen haben. All das liegt im lokalen Speicher Ihres Browsers, nicht auf einem Server: Die Seite hat keine Datenbank."
+            "Vor dem Test geben Sie Ihren Namen und Ihre E-Mail-Adresse ein. Während des Tests werden Ihre Antworten gespeichert, danach das Ergebnis, die gewählte Sprache und ein Vermerk, dass Sie den Cookie-Hinweis gesehen haben. All das liegt im lokalen Speicher Ihres Browsers. Nach Abschluss des Tests werden Name, E-Mail-Adresse, Testdatum und Ergebnis zusätzlich in der Ergebnisdatenbank des Seitenbetreibers gespeichert."
           ]
         },
         {
           "h": "Wohin die Daten übermittelt werden",
           "p": [
-            "Nach Abschluss des Tests werden Name, E-Mail-Adresse und Antworten (als Ergebniscode) an den E-Mail-Versanddienst übermittelt, ein Google-Apps-Script im Google-Konto des Seitenbetreibers, das Ihnen die E-Mail mit dem Ergebnis sendet. Für andere Zwecke werden diese Daten nicht verwendet und nicht an Dritte weitergegeben.",
+            "Nach Abschluss des Tests werden Name, E-Mail-Adresse und Antworten (als Ergebniscode) an den E-Mail-Versanddienst übermittelt, ein Google-Apps-Script im Google-Konto des Seitenbetreibers. Es sendet Ihnen die E-Mail mit dem Ergebnis und trägt Name, E-Mail-Adresse, Testdatum und Ergebnis (Profil, Punkte, Link zum Bericht) in die Ergebnisdatenbank ein, eine Google-Tabelle im selben Konto. Für andere Zwecke werden diese Daten nicht verwendet und nicht an Dritte weitergegeben.",
             "Der Hoster (GitHub Pages) erhält die üblichen technischen Anfragedaten: IP-Adresse, Browsertyp, Seitenadresse. Die Schriften werden von dieser Website selbst ausgeliefert und nicht von Google-Servern geladen. Besuchsstatistiken erfasst Yandex Metrica (Yandex LLC): Sie erhält anonymisierte Besuchsdaten – die Seitenadresse ohne den Ergebniscode, die Herkunft des Besuchs, Geräte- und Browsertyp – sowie eine Aufzeichnung der Aktionen auf der Seite (Webvisor); die Felder für Name und E-Mail, der Ergebnislink und der Code sind von der Aufzeichnung ausgenommen. Die Daten werden nach den Bedingungen von Yandex verarbeitet; Sie können die Erfassung in den Browsereinstellungen oder mit einem Tracker-Blocker unterbinden. Werbe-Tracker werden nicht verwendet."
           ]
         },
@@ -260,7 +260,7 @@
         {
           "h": "Wie Sie Ihre Daten löschen",
           "p": [
-            "Um die Daten auf Ihrem Gerät zu löschen, löschen Sie die Website-Daten in den Browsereinstellungen oder klicken Sie auf „Test erneut machen“. Die Ergebnis-E-Mail liegt in Ihrem Postfach. Um die Löschung der Kopie auf Absenderseite zu beantragen, schreiben Sie uns über GitHub (Link auf der Seite „Über das Projekt“)."
+            "Um die Daten auf Ihrem Gerät zu löschen, löschen Sie die Website-Daten in den Browsereinstellungen oder klicken Sie auf „Test erneut machen“. Die Ergebnis-E-Mail liegt in Ihrem Postfach. Um die Löschung Ihres Eintrags in der Ergebnisdatenbank und der Kopie auf Absenderseite zu beantragen, schreiben Sie uns über GitHub (Link auf der Seite „Über das Projekt“)."
           ]
         },
         {
@@ -281,7 +281,7 @@
   "ui": {
     "langLabel": "Sprache",
     "footer": "24 Blöcke · etwa 10 Minuten · keine richtigen oder falschen Antworten",
-    "privacy": "Ihre Antworten bleiben in Ihrem Browser; das Ergebnis wird nur an die von Ihnen angegebene E-Mail-Adresse gesendet.",
+    "privacy": "Ihre Antworten bleiben in Ihrem Browser; das Ergebnis wird an die von Ihnen angegebene E-Mail-Adresse gesendet und in der Ergebnisdatenbank des Seitenbetreibers gespeichert.",
     "adminLink": "Admin-Bereich",
 
     "intro.eyebrow": "Fragebogen zu Verhaltensstilen",
@@ -292,7 +292,7 @@
     "intro.howText": "Jeder der 24 Blöcke enthält vier Aussagen. Markieren Sie die Aussage, die <b>am meisten</b> auf Sie zutrifft, und die, die <b>am wenigsten</b> auf Sie zutrifft. Antworten Sie so, wie Sie sich bei der Arbeit tatsächlich verhalten, nicht so, wie Sie es gern täten. Überlegen Sie nicht lange: Die erste Reaktion ist die genaueste.",
     "intro.nameLabel": "Name",
     "intro.emailLabel": "E-Mail-Adresse für das Ergebnis",
-    "intro.emailHint": "Nach Abschluss des Tests erhalten Sie Ihr Ergebnis an diese Adresse.",
+    "intro.emailHint": "Nach Abschluss des Tests erhalten Sie Ihr Ergebnis an diese Adresse. Name, E-Mail-Adresse und Ergebnis werden in der Ergebnisdatenbank des Seitenbetreibers gespeichert.",
     "intro.requiredNote": "Mit Sternchen (*) markierte Felder sind Pflichtfelder.",
     "intro.start": "Test starten",
     "intro.resume": "Letzten Durchgang fortsetzen ({n} von 24 ausgefüllt)",
@@ -427,7 +427,7 @@
     "consent.label": "Cookie-Hinweis",
     "consent.text": "Diese Website speichert Ihren Fortschritt, Ihr Ergebnis und die gewählte Sprache im lokalen Speicher des Browsers, und Yandex Metrica erfasst anonymisierte Besuchsstatistiken und eine Aufzeichnung der Aktionen auf der Seite, damit wir die Website verbessern können. Ihr Name, Ihre E-Mail-Adresse und Ihr Ergebnis werden nicht an Metrica übermittelt.",
     "consent.more": "Mehr erfahren",
-    "consent.details": "Im Browser gespeichert werden: der vor dem Test eingegebene Name und die E-Mail-Adresse; Ihre Antworten und der unvollendete Fortschritt; Ihr letztes Ergebnis; die gewählte Sprache; ein Vermerk, dass Sie diesen Hinweis gesehen haben. Diese Daten bleiben auf Ihrem Gerät und werden beim Löschen der Website-Daten entfernt. Der Hoster (GitHub Pages) erhält die üblichen technischen Anfragedaten. Beim Abschluss des Tests werden Name, E-Mail-Adresse und Antworten an den E-Mail-Versanddienst (Google Apps Script) übergeben, um Ihnen das Ergebnis zu senden. Yandex Metrica (Yandex LLC) erhält die Seitenadresse ohne den Ergebniscode, die Herkunft des Besuchs, Geräte- und Browsertyp sowie eine anonymisierte Aufzeichnung der Aktionen auf der Seite (die Felder für Name und E-Mail, der Ergebnislink und der Code sind ausgenommen) und setzt eigene Cookies. Sie können sie in den Browsereinstellungen oder mit einem Tracker-Blocker blockieren. Werbe-Tracker werden nicht verwendet.",
+    "consent.details": "Im Browser gespeichert werden: der vor dem Test eingegebene Name und die E-Mail-Adresse; Ihre Antworten und der unvollendete Fortschritt; Ihr letztes Ergebnis; die gewählte Sprache; ein Vermerk, dass Sie diesen Hinweis gesehen haben. Diese Daten bleiben auf Ihrem Gerät und werden beim Löschen der Website-Daten entfernt. Der Hoster (GitHub Pages) erhält die üblichen technischen Anfragedaten. Beim Abschluss des Tests werden Name, E-Mail-Adresse und Antworten an den E-Mail-Versanddienst (Google Apps Script) übergeben; er sendet Ihnen das Ergebnis und speichert Name, E-Mail-Adresse, Datum und Ergebnis in der Ergebnisdatenbank des Seitenbetreibers (einer Google-Tabelle). Yandex Metrica (Yandex LLC) erhält die Seitenadresse ohne den Ergebniscode, die Herkunft des Besuchs, Geräte- und Browsertyp sowie eine anonymisierte Aufzeichnung der Aktionen auf der Seite (die Felder für Name und E-Mail, der Ergebnislink und der Code sind ausgenommen) und setzt eigene Cookies. Sie können sie in den Browsereinstellungen oder mit einem Tracker-Blocker blockieren. Werbe-Tracker werden nicht verwendet.",
     "consent.accept": "Akzeptieren",
     "consent.decline": "Nur Notwendiges",
     "consent.ok": "Verstanden",

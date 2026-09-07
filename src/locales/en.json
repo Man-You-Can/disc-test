@@ -241,13 +241,13 @@
         {
           "h": "What data we use",
           "p": [
-            "Before the test you enter your name and email address. During the test your answers are saved, and after it your result, chosen language and a note that you have seen the cookie notice. All of this is kept in your browser's local storage, not on a server: the site has no database."
+            "Before the test you enter your name and email address. During the test your answers are saved, and after it your result, chosen language and a note that you have seen the cookie notice. All of this is kept in your browser's local storage. When you finish the test, your name, email address, test date and result are also stored in the site owner's results database."
           ]
         },
         {
           "h": "Where the data goes",
           "p": [
-            "When you finish the test, your name, email address and answers (as a result code) are passed to the email-sending service, a Google Apps Script running in the site owner's Google account, which sends you your result. The data is not used for any other purpose and is not passed to third parties.",
+            "When you finish the test, your name, email address and answers (as a result code) are passed to the email-sending service, a Google Apps Script running in the site owner's Google account. It sends you your result and records your name, email address, test date and result (profile, scores and report link) in the results database, a Google Sheet in the same account. The data is not used for any other purpose and is not passed to third parties.",
             "The hosting provider (GitHub Pages) receives standard technical request data: IP address, browser type, page address. Fonts are served from this site itself and are not loaded from Google's servers. Visit statistics are collected by Yandex Metrica (Yandex LLC): it receives anonymised visit data, namely the page address without the result code, the referrer, device and browser type, and a recording of on-page actions (Webvisor); the name and email fields, the result link and code are excluded from the recording. The data is processed under Yandex's terms; you can stop the collection in your browser settings or with a tracker blocker. No advertising trackers are used."
           ]
         },
@@ -260,7 +260,7 @@
         {
           "h": "How to delete your data",
           "p": [
-            "To delete the data on your device, clear the site's data in your browser settings or press “Take the test again”. The result email is in your mailbox. To ask for the sender-side copy of the email to be deleted, contact us via GitHub (link on the About page)."
+            "To delete the data on your device, clear the site's data in your browser settings or press “Take the test again”. The result email is in your mailbox. To ask for your record in the results database and the sender-side copy of the email to be deleted, contact us via GitHub (link on the About page)."
           ]
         },
         {
@@ -281,7 +281,7 @@
   "ui": {
     "langLabel": "Language",
     "footer": "24 blocks · about 10 minutes · no right or wrong answers",
-    "privacy": "Your answers stay in your browser; your result is sent only to the email address you provide.",
+    "privacy": "Your answers stay in your browser; your result is sent to the email address you provide and stored in the site owner's results database.",
     "adminLink": "Admin panel",
 
     "intro.eyebrow": "Behavioral style questionnaire",
@@ -292,7 +292,7 @@
     "intro.howText": "Each of the 24 blocks has four statements. Mark the one that describes you <b>most</b> and the one that describes you <b>least</b>. Answer the way you usually behave at work, not the way you would like to. Don't overthink it: your first reaction is the most accurate.",
     "intro.nameLabel": "Name",
     "intro.emailLabel": "Email address to send your result to",
-    "intro.emailHint": "When you finish the test, your result will be emailed to this address.",
+    "intro.emailHint": "When you finish the test, your result will be emailed to this address. Your name, email and result are stored in the site owner's results database.",
     "intro.requiredNote": "Fields marked with an asterisk (*) are required.",
     "intro.start": "Start the test",
     "intro.resume": "Continue previous attempt ({n} of 24 completed)",
@@ -427,7 +427,7 @@
     "consent.label": "Cookie notice",
     "consent.text": "This site keeps your progress, result and chosen language in your browser's local storage, and Yandex Metrica collects anonymised visit statistics and a recording of on-page actions to help us improve the site. Your name, email and result are not sent to Metrica.",
     "consent.more": "Learn more",
-    "consent.details": "Stored in your browser: the name and email you enter before the test; your answers and unfinished progress; your latest result; your chosen language; a note that you have seen this notice. This data stays on your device and is removed when you clear the site's data. The hosting provider (GitHub Pages) receives standard technical request data. When you finish the test, your name, email and answers are passed to the email-sending service (Google Apps Script) to send you your result. Yandex Metrica (Yandex LLC) receives the page address without the result code, the referrer, device and browser type, an anonymised recording of on-page actions (the name and email fields, the result link and code are excluded), and sets its own cookies. You can block it in your browser settings or with a tracker blocker. No advertising trackers are used.",
+    "consent.details": "Stored in your browser: the name and email you enter before the test; your answers and unfinished progress; your latest result; your chosen language; a note that you have seen this notice. This data stays on your device and is removed when you clear the site's data. The hosting provider (GitHub Pages) receives standard technical request data. When you finish the test, your name, email and answers are passed to the email-sending service (Google Apps Script), which emails you your result and stores your name, email, date and result in the site owner's results database (a Google Sheet). Yandex Metrica (Yandex LLC) receives the page address without the result code, the referrer, device and browser type, an anonymised recording of on-page actions (the name and email fields, the result link and code are excluded), and sets its own cookies. You can block it in your browser settings or with a tracker blocker. No advertising trackers are used.",
     "consent.accept": "Accept",
     "consent.decline": "Essential only",
     "consent.ok": "Got it",

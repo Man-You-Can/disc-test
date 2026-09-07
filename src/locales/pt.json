@@ -241,13 +241,13 @@
         {
           "h": "Quais dados usamos",
           "p": [
-            "Antes do teste você informa nome e e-mail. Durante o teste, suas respostas são salvas; ao final, o resultado, o idioma escolhido e uma marcação de que você viu o aviso de cookies. Tudo isso fica no armazenamento local do seu navegador, não em um servidor: o site não tem banco de dados."
+            "Antes do teste você informa nome e e-mail. Durante o teste, suas respostas são salvas; ao final, o resultado, o idioma escolhido e uma marcação de que você viu o aviso de cookies. Tudo isso fica no armazenamento local do seu navegador. Ao concluir o teste, nome, e-mail, data do teste e resultado também são guardados na base de resultados do responsável pelo site."
           ]
         },
         {
           "h": "Para onde os dados são transmitidos",
           "p": [
-            "Ao concluir o teste, nome, e-mail e respostas (na forma de código de resultado) são transmitidos ao serviço de envio de e-mails, um script do Google Apps Script que roda na conta Google do responsável pelo site e envia a você o e-mail com o resultado. Esses dados não são usados para outros fins nem repassados a terceiros.",
+            "Ao concluir o teste, nome, e-mail e respostas (na forma de código de resultado) são transmitidos ao serviço de envio de e-mails, um script do Google Apps Script que roda na conta Google do responsável pelo site. Ele envia a você o e-mail com o resultado e registra nome, e-mail, data do teste e resultado (perfil, pontuações e link do relatório) na base de resultados, uma planilha Google na mesma conta. Esses dados não são usados para outros fins nem repassados a terceiros.",
             "O alojamento (GitHub Pages) recebe os dados técnicos habituais do pedido: endereço IP, tipo de navegador, endereço da página. As fontes são servidas a partir deste próprio site e não são carregadas dos servidores da Google. As estatísticas de visitas são recolhidas pela Yandex Metrica (Yandex LLC): recebe dados de visita anonimizados — o endereço da página sem o código do resultado, a origem da visita, o tipo de dispositivo e navegador — e uma gravação das ações na página (Webvisor); os campos de nome e e-mail, o link e o código do resultado ficam excluídos da gravação. Os dados são tratados segundo as condições da Yandex; pode parar a recolha nas definições do navegador ou com um bloqueador de rastreadores. Não são usados rastreadores publicitários."
           ]
         },
@@ -260,7 +260,7 @@
         {
           "h": "Como excluir os dados",
           "p": [
-            "Para excluir os dados no seu dispositivo, limpe os dados do site nas configurações do navegador ou clique em “Refazer o teste”. O e-mail com o resultado está na sua caixa de entrada. Para pedir a exclusão da cópia do e-mail do lado do remetente, fale conosco pelo GitHub (link na página “Sobre”)."
+            "Para excluir os dados no seu dispositivo, limpe os dados do site nas configurações do navegador ou clique em “Refazer o teste”. O e-mail com o resultado está na sua caixa de entrada. Para pedir a exclusão do seu registro na base de resultados e da cópia do e-mail do lado do remetente, fale conosco pelo GitHub (link na página “Sobre”)."
           ]
         },
         {
@@ -281,7 +281,7 @@
   "ui": {
     "langLabel": "Idioma",
     "footer": "24 blocos · cerca de 10 minutos · não há respostas certas ou erradas",
-    "privacy": "Suas respostas ficam no seu navegador; o resultado é enviado apenas para o e-mail que você informar.",
+    "privacy": "Suas respostas ficam no seu navegador; o resultado é enviado para o e-mail que você informar e guardado na base de resultados do responsável pelo site.",
     "adminLink": "Painel do administrador",
 
     "intro.eyebrow": "Questionário de estilos de comportamento",
@@ -292,7 +292,7 @@
     "intro.howText": "Cada um dos 24 blocos tem quatro afirmações. Marque a que <b>mais</b> se parece com você e a que <b>menos</b> se parece. Responda como você costuma se comportar no trabalho, não como gostaria de ser. Não pense demais: a primeira reação é a mais precisa.",
     "intro.nameLabel": "Nome",
     "intro.emailLabel": "E-mail para envio do resultado",
-    "intro.emailHint": "Ao concluir o teste, você receberá o resultado neste endereço.",
+    "intro.emailHint": "Ao concluir o teste, você receberá o resultado neste endereço. Nome, e-mail e resultado ficam guardados na base de resultados do responsável pelo site.",
     "intro.requiredNote": "Os campos assinalados com asterisco (*) são obrigatórios.",
     "intro.start": "Começar o teste",
     "intro.resume": "Continuar o teste anterior ({n} de 24 preenchidos)",
@@ -427,7 +427,7 @@
     "consent.label": "Aviso de cookies",
     "consent.text": "Este site guarda o seu progresso, o resultado e o idioma escolhido no armazenamento local do navegador, e a Yandex Metrica recolhe estatísticas de visitas anonimizadas e uma gravação das ações na página para nos ajudar a melhorar o site. O seu nome, e-mail e resultado não são enviados à Metrica.",
     "consent.more": "Saiba mais",
-    "consent.details": "No navegador ficam guardados: o nome e o e-mail que introduz antes do teste; as suas respostas e o progresso por concluir; o último resultado; o idioma escolhido; uma marca de que viu este aviso. Estes dados permanecem no seu dispositivo e são apagados ao limpar os dados do site. O alojamento (GitHub Pages) recebe os dados técnicos habituais do pedido. Ao concluir o teste, o nome, o e-mail e as respostas são transmitidos ao serviço de envio de e-mails (Google Apps Script) para lhe enviar o resultado. A Yandex Metrica (Yandex LLC) recebe o endereço da página sem o código do resultado, a origem da visita, o tipo de dispositivo e navegador e uma gravação anonimizada das ações na página (os campos de nome e e-mail, o link e o código do resultado ficam excluídos), e define os seus próprios cookies. Pode bloqueá-la nas definições do navegador ou com um bloqueador de rastreadores. Não são usados rastreadores publicitários.",
+    "consent.details": "No navegador ficam guardados: o nome e o e-mail que introduz antes do teste; as suas respostas e o progresso por concluir; o último resultado; o idioma escolhido; uma marca de que viu este aviso. Estes dados permanecem no seu dispositivo e são apagados ao limpar os dados do site. O alojamento (GitHub Pages) recebe os dados técnicos habituais do pedido. Ao concluir o teste, o nome, o e-mail e as respostas são transmitidos ao serviço de envio de e-mails (Google Apps Script), que lhe envia o resultado e guarda o nome, o e-mail, a data e o resultado na base de resultados do responsável pelo site (uma planilha Google). A Yandex Metrica (Yandex LLC) recebe o endereço da página sem o código do resultado, a origem da visita, o tipo de dispositivo e navegador e uma gravação anonimizada das ações na página (os campos de nome e e-mail, o link e o código do resultado ficam excluídos), e define os seus próprios cookies. Pode bloqueá-la nas definições do navegador ou com um bloqueador de rastreadores. Não são usados rastreadores publicitários.",
     "consent.accept": "Aceitar",
     "consent.decline": "Só o essencial",
     "consent.ok": "Entendi",

@@ -241,13 +241,13 @@
         {
           "h": "Quelles données nous utilisons",
           "p": [
-            "Avant le test, vous saisissez votre nom et votre adresse e-mail. Pendant le test, vos réponses sont enregistrées ; ensuite, le résultat, la langue choisie et une mention indiquant que vous avez vu l'avis relatif aux cookies. Tout cela est conservé dans le stockage local de votre navigateur, pas sur un serveur : le site n'a pas de base de données."
+            "Avant le test, vous saisissez votre nom et votre adresse e-mail. Pendant le test, vos réponses sont enregistrées ; ensuite, le résultat, la langue choisie et une mention indiquant que vous avez vu l'avis relatif aux cookies. Tout cela est conservé dans le stockage local de votre navigateur. À la fin du test, votre nom, votre adresse e-mail, la date du test et le résultat sont également enregistrés dans la base de résultats du propriétaire du site."
           ]
         },
         {
           "h": "Où les données sont transmises",
           "p": [
-            "À la fin du test, votre nom, votre adresse e-mail et vos réponses (sous forme de code de résultat) sont transmis au service d'envoi d'e-mails, un script Google Apps Script qui fonctionne dans le compte Google du propriétaire du site et vous envoie l'e-mail avec le résultat. Ces données ne servent à rien d'autre et ne sont pas transmises à des tiers.",
+            "À la fin du test, votre nom, votre adresse e-mail et vos réponses (sous forme de code de résultat) sont transmis au service d'envoi d'e-mails, un script Google Apps Script qui fonctionne dans le compte Google du propriétaire du site. Il vous envoie l'e-mail avec le résultat et enregistre votre nom, votre adresse e-mail, la date du test et le résultat (profil, scores, lien vers le rapport) dans la base de résultats, une feuille Google Sheets dans le même compte. Ces données ne servent à rien d'autre et ne sont pas transmises à des tiers.",
             "L’hébergeur (GitHub Pages) reçoit les données techniques habituelles de la requête : adresse IP, type de navigateur, adresse de la page. Les polices sont servies par ce site lui-même et ne sont pas chargées depuis les serveurs de Google. Les statistiques de visite sont collectées par Yandex Metrica (Yandex LLC) : elle reçoit des données de visite anonymisées — l’adresse de la page sans le code du résultat, la provenance, le type d’appareil et de navigateur — et un enregistrement des actions sur la page (Webvisor) ; les champs nom et e-mail, le lien et le code du résultat sont exclus de l’enregistrement. Les données sont traitées selon les conditions de Yandex ; vous pouvez arrêter la collecte dans les paramètres du navigateur ou avec un bloqueur de traceurs. Aucun traceur publicitaire n’est utilisé."
           ]
         },
@@ -260,7 +260,7 @@
         {
           "h": "Comment supprimer vos données",
           "p": [
-            "Pour supprimer les données sur votre appareil, effacez les données du site dans les réglages du navigateur ou appuyez sur « Refaire le test ». L'e-mail contenant le résultat se trouve dans votre messagerie. Pour demander la suppression de la copie côté expéditeur, écrivez-nous via GitHub (lien sur la page « À propos »)."
+            "Pour supprimer les données sur votre appareil, effacez les données du site dans les réglages du navigateur ou appuyez sur « Refaire le test ». L'e-mail contenant le résultat se trouve dans votre messagerie. Pour demander la suppression de votre enregistrement dans la base de résultats et de la copie de l'e-mail côté expéditeur, écrivez-nous via GitHub (lien sur la page « À propos »)."
           ]
         },
         {
@@ -281,7 +281,7 @@
   "ui": {
     "langLabel": "Langue",
     "footer": "24 blocs · environ 10 minutes · pas de bonnes ou de mauvaises réponses",
-    "privacy": "Vos réponses restent dans votre navigateur ; le résultat n'est envoyé qu'à l'adresse e-mail que vous indiquez.",
+    "privacy": "Vos réponses restent dans votre navigateur ; le résultat est envoyé à l'adresse e-mail que vous indiquez et conservé dans la base de résultats du propriétaire du site.",
     "adminLink": "Espace administrateur",
 
     "intro.eyebrow": "Questionnaire de styles comportementaux",
@@ -292,7 +292,7 @@
     "intro.howText": "Chacun des 24 blocs contient quatre affirmations. Cochez celle qui vous décrit <b>le plus</b> et celle qui vous décrit <b>le moins</b>. Répondez selon votre comportement habituel au travail, pas selon ce que vous aimeriez être. Ne réfléchissez pas trop : la première réaction est la plus juste.",
     "intro.nameLabel": "Prénom",
     "intro.emailLabel": "Adresse e-mail pour recevoir le résultat",
-    "intro.emailHint": "À la fin du test, votre résultat sera envoyé à cette adresse.",
+    "intro.emailHint": "À la fin du test, votre résultat sera envoyé à cette adresse. Le nom, l'e-mail et le résultat sont conservés dans la base de résultats du propriétaire du site.",
     "intro.requiredNote": "Les champs marqués d’un astérisque (*) sont obligatoires.",
     "intro.start": "Commencer le test",
     "intro.resume": "Reprendre le test précédent ({n} blocs sur 24 remplis)",
@@ -427,7 +427,7 @@
     "consent.label": "Avis relatif aux cookies",
     "consent.text": "Ce site conserve votre progression, votre résultat et la langue choisie dans le stockage local du navigateur, et Yandex Metrica collecte des statistiques de visite anonymisées et un enregistrement des actions sur la page pour nous aider à améliorer le site. Votre nom, votre e-mail et votre résultat ne sont pas transmis à Metrica.",
     "consent.more": "En savoir plus",
-    "consent.details": "Conservés dans le navigateur : le nom et l’e-mail saisis avant le test ; vos réponses et la progression inachevée ; votre dernier résultat ; la langue choisie ; une marque indiquant que vous avez vu cet avis. Ces données restent sur votre appareil et sont supprimées lorsque vous effacez les données du site. L’hébergeur (GitHub Pages) reçoit les données techniques habituelles de la requête. À la fin du test, le nom, l’e-mail et les réponses sont transmis au service d’envoi d’e-mails (Google Apps Script) pour vous envoyer votre résultat. Yandex Metrica (Yandex LLC) reçoit l’adresse de la page sans le code du résultat, la provenance, le type d’appareil et de navigateur, un enregistrement anonymisé des actions sur la page (les champs nom et e-mail, le lien et le code du résultat en sont exclus) et dépose ses propres cookies. Vous pouvez la bloquer dans les paramètres du navigateur ou avec un bloqueur de traceurs. Aucun traceur publicitaire n’est utilisé.",
+    "consent.details": "Conservés dans le navigateur : le nom et l’e-mail saisis avant le test ; vos réponses et la progression inachevée ; votre dernier résultat ; la langue choisie ; une marque indiquant que vous avez vu cet avis. Ces données restent sur votre appareil et sont supprimées lorsque vous effacez les données du site. L’hébergeur (GitHub Pages) reçoit les données techniques habituelles de la requête. À la fin du test, le nom, l’e-mail et les réponses sont transmis au service d’envoi d’e-mails (Google Apps Script), qui vous envoie votre résultat et enregistre le nom, l’e-mail, la date et le résultat dans la base de résultats du propriétaire du site (une feuille Google Sheets). Yandex Metrica (Yandex LLC) reçoit l’adresse de la page sans le code du résultat, la provenance, le type d’appareil et de navigateur, un enregistrement anonymisé des actions sur la page (les champs nom et e-mail, le lien et le code du résultat en sont exclus) et dépose ses propres cookies. Vous pouvez la bloquer dans les paramètres du navigateur ou avec un bloqueur de traceurs. Aucun traceur publicitaire n’est utilisé.",
     "consent.accept": "Accepter",
     "consent.decline": "Essentiel uniquement",
     "consent.ok": "Compris",
