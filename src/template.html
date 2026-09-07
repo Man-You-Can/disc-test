@@ -105,7 +105,7 @@ p{margin:0 0 12px}
 input[type=text],textarea{font:inherit;padding:12px 14px;border:1px solid var(--line-strong);border-radius:10px;background:var(--surface);color:var(--ink);width:100%}
 textarea{resize:vertical;min-height:96px;font-family:var(--font-mono);font-size:13px;line-height:1.5}
 input:focus-visible,textarea:focus-visible,button:focus-visible,select:focus-visible,a:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
-.btn{font:inherit;font-weight:600;font-size:15px;padding:12px 20px;border-radius:10px;border:1px solid transparent;background:var(--btn);color:var(--btn-ink);cursor:pointer;display:inline-flex;align-items:center;gap:8px;text-decoration:none;line-height:1.2}
+.btn{font:inherit;font-weight:600;font-size:15px;padding:12px 20px;border-radius:10px;border:1px solid transparent;background:var(--btn);color:var(--btn-ink);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;line-height:1.2;white-space:nowrap;flex:none}
 .btn.secondary{background:transparent;color:var(--ink);border-color:var(--line-strong)}
 .btn.small{padding:8px 14px;font-size:14px}
 .btn:disabled{opacity:.4;cursor:not-allowed}
@@ -180,7 +180,7 @@ html[lang=ar] .qhead span,html[lang=hi] .qhead span,html[lang=zh] .qhead span,ht
 .sec.full{grid-column:1/-1}
 .traits{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:6px}
 .traits span{font-size:13px;padding:4px 10px;border-radius:999px;background:var(--soft);color:var(--ink)}
-.secondary{border-inline-start:4px solid var(--ks);padding:4px 0;padding-inline-start:14px;margin-top:4px}
+.substyle{border-inline-start:4px solid var(--ks);padding:4px 0;padding-inline-start:14px;margin-top:4px}
 .share{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:var(--shadow)}
 .codebox{font-family:var(--font-mono);font-size:12px;line-height:1.5;word-break:break-all;background:var(--paper);border:1px dashed var(--line-strong);padding:10px 12px;border-radius:8px;margin:12px 0;color:var(--ink);width:100%;min-height:0;resize:none;direction:ltr;text-align:left}
 .notice{background:var(--soft);border-radius:10px;padding:12px 14px;font-size:14px}
@@ -472,7 +472,7 @@ function renderReport(r, opts){
     '</div>'+
     '<div class="card"><div class="sections">'+
       '<div class="sec full"><h3>'+t('report.traits')+'</h3><div class="traits">'+st.traits.map(function(x){ return '<span>'+esc(x)+'</span>'; }).join('')+'</div>'+
-        (cls.s ? '<div class="secondary" style="--ks:'+colorVar(cls.s)+'"><b>'+t('report.secondary',{k:cls.s,name:esc(L.keys[cls.s])})+'</b> '+t('report.secondaryAddon',{addon:esc(L.addon[cls.s])})+'</div>' : '')+
+        (cls.s ? '<div class="substyle" style="--ks:'+colorVar(cls.s)+'"><b>'+t('report.secondary',{k:cls.s,name:esc(L.keys[cls.s])})+'</b> '+t('report.secondaryAddon',{addon:esc(L.addon[cls.s])})+'</div>' : '')+
       '</div>'+
       '<div class="sec"><h3>'+t('report.strengths')+'</h3>'+list(st.strengths)+'</div>'+
       '<div class="sec"><h3>'+t('report.growth')+'</h3>'+list(st.growth)+'</div>'+
