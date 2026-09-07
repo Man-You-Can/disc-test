@@ -162,8 +162,9 @@ p{margin:0 0 12px}
 .form{display:grid;gap:14px}
 .field{display:flex;flex-direction:column;gap:6px}
 .field label{font-size:14px;font-weight:500}
+.field .req{color:var(--d);margin-inline-start:3px;font-weight:600}
 .field .hint{font-size:13px;color:var(--muted)}
-input[type=text],textarea{font:inherit;padding:12px 14px;border:1px solid var(--line-strong);border-radius:10px;background:var(--surface);color:var(--ink);width:100%}
+input[type=text],input[type=email],textarea{font:inherit;padding:12px 14px;border:1px solid var(--line-strong);border-radius:10px;background:var(--surface);color:var(--ink);width:100%}
 textarea{resize:vertical;min-height:96px;font-family:var(--font-mono);font-size:13px;line-height:1.5}
 input:focus-visible,textarea:focus-visible,button:focus-visible,select:focus-visible,a:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
 .btn{font:inherit;font-weight:600;font-size:15px;padding:12px 20px;border-radius:10px;border:1px solid transparent;background:var(--btn);color:var(--btn-ink);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;line-height:1.2;white-space:nowrap;flex:none}
