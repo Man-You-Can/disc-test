@@ -4,6 +4,8 @@
 const fs = require('fs'), path = require('path'), { execSync } = require('child_process');
 const ROOT = __dirname, SRC = path.join(ROOT, 'src'), OUT = path.join(ROOT, 'docs');
 const cfg = JSON.parse(fs.readFileSync(path.join(ROOT, 'site.config.json'), 'utf8'));
+// Мета-тег подтверждения Google Search Console (site.config.json → googleSiteVerification); пусто — тег не выводится
+const verifyHead = cfg.googleSiteVerification ? `<meta name="google-site-verification" content="${String(cfg.googleSiteVerification).replace(/["<>&]/g, "")}">` : "";
 const siteUrl = cfg.siteUrl.replace(/\/+$/, '');
 const basePath = new URL(siteUrl + '/').pathname; // например "/disc-test/" или "/"
 const tpl = fs.readFileSync(path.join(SRC, 'template.html'), 'utf8');
@@ -147,7 +149,7 @@ for (const L of locales) {
     .replace('__NAV__', () => navHtml).replace('__FOOT_LINKS__', () => footHtml)
     .replace('__INTRO_HTML__', () => introHTML({ L, t: tFor(L), esc: escFull, KEYS, colorVar: k => 'var(--' + k.toLowerCase() + ')', who: {}, progDone: 0, lastDate: '',
       links: { styles: rootRel + pathOf(L.lang) + 'styles/', profiles: rootRel + pathOf(L.lang) + 'profiles/', profile: k => rootRel + pathOf(L.lang) + 'profiles/' + k.toLowerCase() + '/' } }))
-    .replace(/__HREFLANG__/g, hreflangTags)
+    .replace(/__HREFLANG__/g, hreflangTags).replace(/__VERIFY_HEAD__/g, () => verifyHead)
     .replace(/__FONTS_HEAD__/g, () => fontsHead(f, L)).replace(/__FONT_HEAD__/g, f.head).replace(/__FONT_BODY__/g, f.body)
     .replace(/__BRAND__/g, esc(L.brand)).replace(/__LANG_LABEL__/g, esc(L.ui.langLabel))
     .replace('__LANG_SWITCHER__', () => switcher).replace('__LANG_LINKS__', () => links).replace('__FLAG_SPRITE__', () => flagSprite(locales.map(x => x.lang)))
@@ -205,7 +207,7 @@ function writeContentPage(L, sub, opts) {
     .replace(/__TITLE__/g, esc(opts.title)).replace(/__DESC__/g, esc(opts.description))
     .replace(/__CANONICAL__/g, urlOf(L.lang) + sub).replace(/__OG_LOCALE__/g, OG_LOCALE[L.lang] || L.lang)
     .replace(/__OG_ALTERNATES__/g, () => locales.filter(x => x !== L).map(x => `<meta property="og:locale:alternate" content="${OG_LOCALE[x.lang] || x.lang}">`).join('\n'))
-    .replace(/__OG_IMAGE__/g, `${siteUrl}/og/${L.lang}.png`).replace(/__HREFLANG__/g, hreflang)
+    .replace(/__OG_IMAGE__/g, `${siteUrl}/og/${L.lang}.png`).replace(/__HREFLANG__/g, hreflang).replace(/__VERIFY_HEAD__/g, () => verifyHead)
     .replace(/__ROOT_REL__/g, rootRel).replace('__JSON_LD__', () => ld)
     .replace(/__FONTS_HEAD__/g, () => fontsHead(f, L)).replace('__STYLE__', () => styleBlock.replace(/__FONT_HEAD__/g, f.head).replace(/__FONT_BODY__/g, f.body))
     .replace('__FLAG_SPRITE__', () => flagSprite(locales.map(x => x.lang)))
