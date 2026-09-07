@@ -248,7 +248,7 @@
           "h": "Wohin die Daten übermittelt werden",
           "p": [
             "Nach Abschluss des Tests werden Name, E-Mail-Adresse und Antworten (als Ergebniscode) an den E-Mail-Versanddienst übermittelt, ein Google-Apps-Script im Google-Konto des Seitenbetreibers, das Ihnen die E-Mail mit dem Ergebnis sendet. Für andere Zwecke werden diese Daten nicht verwendet und nicht an Dritte weitergegeben.",
-            "Der Hosting-Anbieter (GitHub Pages) und der Schriftdienst (Google Fonts) erhalten die üblichen technischen Anfragedaten: IP-Adresse, Browsertyp, Seitenadresse. Analyse-Tools oder Werbe-Tracker werden nicht eingesetzt; sollte sich das ändern, werden diese Seite und der Cookie-Hinweis aktualisiert."
+            "Der Hosting-Anbieter (GitHub Pages) erhält die üblichen technischen Anfragedaten: IP-Adresse, Browsertyp, Seitenadresse. Die Schriften werden von dieser Website selbst geladen, nicht von Google-Servern. Analyse-Tools oder Werbe-Tracker werden nicht eingesetzt; sollte sich das ändern, werden diese Seite und der Cookie-Hinweis aktualisiert."
           ]
         },
         {
@@ -422,9 +422,9 @@
     "cta.button": "Test starten",
 
     "consent.label": "Cookie-Hinweis",
-    "consent.text": "Diese Website verwendet Cookies und ähnliche Technologien: Der lokale Speicher Ihres Browsers sichert Ihren Fortschritt, Ihr Ergebnis und die gewählte Sprache. Der Hosting-Anbieter (GitHub Pages) und der Schriftdienst (Google Fonts) erhalten technische Daten wie IP-Adresse und Browsertyp. Das Testergebnis wird nur an die von Ihnen angegebene E-Mail-Adresse gesendet.",
+    "consent.text": "Diese Website verwendet Cookies und ähnliche Technologien: Der lokale Speicher Ihres Browsers sichert Ihren Fortschritt, Ihr Ergebnis und die gewählte Sprache. Der Hosting-Anbieter (GitHub Pages) erhält technische Daten wie IP-Adresse und Browsertyp. Das Testergebnis wird nur an die von Ihnen angegebene E-Mail-Adresse gesendet.",
     "consent.more": "Mehr erfahren",
-    "consent.details": "Im Browser gespeichert: der vor dem Test eingegebene Name und die Position; Ihre Antworten und der unvollendete Fortschritt; Ihr letztes Ergebnis; die gewählte Sprache; ein Vermerk, dass Sie diesen Hinweis gesehen haben. Die Daten bleiben ausschließlich auf Ihrem Gerät und werden gelöscht, wenn Sie die Website-Daten im Browser löschen. Drittanbieter: GitHub Pages (Hosting) und Google Fonts (Schriften) erhalten die üblichen technischen Anfragedaten. Analyse-Tools oder Werbe-Tracker werden nicht eingesetzt. Beim Abschluss des Tests werden Name, E-Mail-Adresse und Antworten an den E-Mail-Versanddienst (Google Apps Script) übermittelt, um Ihnen das Ergebnis zu senden; sie werden für nichts anderes verwendet.",
+    "consent.details": "Im Browser gespeichert: der vor dem Test eingegebene Name und die Position; Ihre Antworten und der unvollendete Fortschritt; Ihr letztes Ergebnis; die gewählte Sprache; ein Vermerk, dass Sie diesen Hinweis gesehen haben. Die Daten bleiben ausschließlich auf Ihrem Gerät und werden gelöscht, wenn Sie die Website-Daten im Browser löschen. Drittanbieter: GitHub Pages (Hosting) erhält die üblichen technischen Anfragedaten. Analyse-Tools oder Werbe-Tracker werden nicht eingesetzt. Beim Abschluss des Tests werden Name, E-Mail-Adresse und Antworten an den E-Mail-Versanddienst (Google Apps Script) übermittelt, um Ihnen das Ergebnis zu senden; sie werden für nichts anderes verwendet.",
     "consent.accept": "Verstanden",
 
     "root.continue": "Weiter"

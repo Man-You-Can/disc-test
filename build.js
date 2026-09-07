@@ -20,28 +20,36 @@ const pages = []; // для sitemap: {lang, sub, files}
 const ASSETS = path.join(SRC, 'assets');
 const nfTpl = fs.readFileSync(path.join(SRC, '404.html'), 'utf8');
 
-const G = 'https://fonts.googleapis.com/css2?';
-const BASE_FONTS = 'family=Unbounded:wght@400;500;600&family=Golos+Text:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500';
+// Шрифты размещены на самом сайте (src/assets/fonts, скачиваются scripts/fetch-fonts.js): нет запросов к Google,
+// что важно для GDPR (Германия) и для надёжности там, где Google Fonts блокируется или тормозит.
+// Для китайского и японского используются системные шрифты: файлы CJK слишком велики.
+const FONT_CSS = fs.existsSync(path.join(ASSETS, 'fonts', 'fonts.css')) ? fs.readFileSync(path.join(ASSETS, 'fonts', 'fonts.css'), 'utf8') : '';
+if (!FONT_CSS) console.warn('WARNING: src/assets/fonts/fonts.css not found (run node scripts/fetch-fonts.js)');
+const LATIN_STACK = "'Golos Text',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif";
 const FONTS = {
-  default: { link: G + BASE_FONTS + '&display=swap',
-    head: "'Unbounded',sans-serif", body: "'Golos Text',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" },
-  ar: { link: G + BASE_FONTS + '&family=Noto+Kufi+Arabic:wght@500;600&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap',
-    head: "'Unbounded','Noto Kufi Arabic',sans-serif", body: "'IBM Plex Sans Arabic','Golos Text',system-ui,'Segoe UI',Tahoma,sans-serif" },
-  hi: { link: G + BASE_FONTS + '&family=Noto+Sans+Devanagari:wght@400;500;600&display=swap',
-    head: "'Unbounded','Noto Sans Devanagari',sans-serif", body: "'Golos Text','Noto Sans Devanagari',system-ui,sans-serif" },
-  // zh: без Google Fonts. В материковом Китае fonts.googleapis.com заблокирован, и запрос стилей
-  // подвешивал бы отрисовку страницы. Используются системные шрифты: PingFang (macOS/iOS),
-  // Microsoft YaHei (Windows), Noto Sans CJK / Source Han Sans (Android, Linux).
-  zh: { link: '',
+  default: { families: ['Unbounded', 'Golos Text', 'IBM Plex Mono'], head: "'Unbounded',sans-serif", body: LATIN_STACK,
+    preload: sub => [`golos-text-400-${sub}.woff2`, `unbounded-500-${sub}.woff2`] },
+  ar: { families: ['Unbounded', 'Golos Text', 'IBM Plex Mono', 'Noto Kufi Arabic', 'IBM Plex Sans Arabic'],
+    head: "'Unbounded','Noto Kufi Arabic',sans-serif", body: "'IBM Plex Sans Arabic','Golos Text',system-ui,'Segoe UI',Tahoma,sans-serif",
+    preload: () => ['ibm-plex-sans-arabic-400-arabic.woff2', 'noto-kufi-arabic-500-arabic.woff2'] },
+  hi: { families: ['Unbounded', 'Golos Text', 'IBM Plex Mono', 'Noto Sans Devanagari'],
+    head: "'Unbounded','Noto Sans Devanagari',sans-serif", body: "'Golos Text','Noto Sans Devanagari',system-ui,sans-serif",
+    preload: () => ['noto-sans-devanagari-400-devanagari.woff2', 'noto-sans-devanagari-500-devanagari.woff2'] },
+  zh: { families: [],
     head: "'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC','Source Han Sans SC',system-ui,sans-serif",
     body: "'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC','Source Han Sans SC',system-ui,sans-serif" },
-  ja: { link: G + BASE_FONTS + '&family=Noto+Sans+JP:wght@400;500;600&display=swap',
-    head: "'Unbounded','Noto Sans JP','Hiragino Sans','Yu Gothic',Meiryo,sans-serif", body: "'Golos Text','Noto Sans JP','Hiragino Sans','Yu Gothic',Meiryo,sans-serif" }
+  ja: { families: [],
+    head: "'Hiragino Sans','Hiragino Kaku Gothic ProN','Yu Gothic',Meiryo,'Noto Sans CJK JP',system-ui,sans-serif",
+    body: "'Hiragino Sans','Hiragino Kaku Gothic ProN','Yu Gothic',Meiryo,'Noto Sans CJK JP',system-ui,sans-serif" }
 };
-// Теги подключения Google Fonts; пустая строка для языков без внешних шрифтов.
-const fontsHead = f => f.link
-  ? `<link rel="preconnect" href="https://fonts.googleapis.com">\n<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n<link rel="stylesheet" href="${f.link}">`
-  : '';
+// @font-face только для семейств языка + preload двух основных файлов; пусто для языков на системных шрифтах
+const fontsHead = (f, L) => {
+  if (!f.families || !f.families.length || !FONT_CSS) return '';
+  const sub = L.lang === 'ru' ? 'cyrillic' : 'latin';
+  const faces = FONT_CSS.split('\n').filter(l => l.startsWith('@font-face') && f.families.some(fam => l.includes(`font-family:'${fam}'`))).join('\n').replace(/__FONTS__/g, basePath + 'fonts/');
+  const pre = (f.preload ? f.preload(sub) : []).filter(n => fs.existsSync(path.join(ASSETS, 'fonts', n))).map(n => `<link rel="preload" href="${basePath}fonts/${n}" as="font" type="font/woff2" crossorigin>`).join('\n');
+  return pre + '\n<style>' + faces + '</style>';
+};
 const OG_LOCALE = { en: 'en_US', ru: 'ru_RU', es: 'es_ES', zh: 'zh_CN', ar: 'ar_AR', pt: 'pt_BR', fr: 'fr_FR', de: 'de_DE', ja: 'ja_JP', hi: 'hi_IN' };
 
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -128,7 +136,7 @@ for (const L of locales) {
     .replace('__INTRO_HTML__', () => introHTML({ L, t: tFor(L), esc: escFull, KEYS, colorVar: k => 'var(--' + k.toLowerCase() + ')', who: {}, progDone: 0, lastDate: '',
       links: { styles: rootRel + pathOf(L.lang) + 'styles/', profiles: rootRel + pathOf(L.lang) + 'profiles/', profile: k => rootRel + pathOf(L.lang) + 'profiles/' + k.toLowerCase() + '/' } }))
     .replace(/__HREFLANG__/g, hreflangTags)
-    .replace(/__FONTS_HEAD__/g, () => fontsHead(f)).replace(/__FONT_HEAD__/g, f.head).replace(/__FONT_BODY__/g, f.body)
+    .replace(/__FONTS_HEAD__/g, () => fontsHead(f, L)).replace(/__FONT_HEAD__/g, f.head).replace(/__FONT_BODY__/g, f.body)
     .replace(/__BRAND__/g, esc(L.brand)).replace(/__LANG_LABEL__/g, esc(L.ui.langLabel))
     .replace('__LANG_SWITCHER__', () => switcher).replace('__LANG_LINKS__', () => links).replace('__FLAG_SPRITE__', () => flagSprite(locales.map(x => x.lang)))
     .replace(/__FOOTER__/g, esc(L.ui.footer)).replace(/__ADMIN_LINK__/g, esc(L.ui.adminLink)).replace(/__PRIVACY__/g, esc(L.ui.privacy))
@@ -187,7 +195,7 @@ function writeContentPage(L, sub, opts) {
     .replace(/__OG_ALTERNATES__/g, () => locales.filter(x => x !== L).map(x => `<meta property="og:locale:alternate" content="${OG_LOCALE[x.lang] || x.lang}">`).join('\n'))
     .replace(/__OG_IMAGE__/g, `${siteUrl}/og/${L.lang}.png`).replace(/__HREFLANG__/g, hreflang)
     .replace(/__ROOT_REL__/g, rootRel).replace('__JSON_LD__', () => ld)
-    .replace(/__FONTS_HEAD__/g, () => fontsHead(f)).replace('__STYLE__', () => styleBlock.replace(/__FONT_HEAD__/g, f.head).replace(/__FONT_BODY__/g, f.body))
+    .replace(/__FONTS_HEAD__/g, () => fontsHead(f, L)).replace('__STYLE__', () => styleBlock.replace(/__FONT_HEAD__/g, f.head).replace(/__FONT_BODY__/g, f.body))
     .replace('__FLAG_SPRITE__', () => flagSprite(locales.map(x => x.lang)))
     .replace(/__BRAND__/g, esc(L.brand)).replace(/__HOME_HREF__/g, homeHref).replace(/__LANG_LABEL__/g, esc(L.ui.langLabel))
     .replace('__LANG_SWITCHER__', () => switcher).replace('__NAV__', () => navHtml).replace('__CRUMBS__', () => crumbsHtml).replace('__FOOT_LINKS__', () => footHtml)
@@ -270,6 +278,8 @@ for (const f of ['favicon.svg', 'favicon.ico', 'apple-touch-icon.png', 'icon-192
   const src = path.join(ASSETS, f);
   if (fs.existsSync(src)) fs.copyFileSync(src, path.join(OUT, f)); else console.warn('WARNING: missing asset ' + f + ' (run node scripts/make-assets.js)');
 }
+fs.mkdirSync(path.join(OUT, 'fonts'), { recursive: true });
+for (const f of fs.existsSync(path.join(ASSETS, 'fonts')) ? fs.readdirSync(path.join(ASSETS, 'fonts')) : []) if (f.endsWith('.woff2')) fs.copyFileSync(path.join(ASSETS, 'fonts', f), path.join(OUT, 'fonts', f));
 fs.mkdirSync(path.join(OUT, 'og'), { recursive: true });
 for (const L of locales) {
   const src = path.join(ASSETS, 'og', L.lang + '.png');

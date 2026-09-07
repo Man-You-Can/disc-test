@@ -248,7 +248,7 @@
           "h": "Where the data goes",
           "p": [
             "When you finish the test, your name, email address and answers (as a result code) are passed to the email-sending service, a Google Apps Script running in the site owner's Google account, which sends you your result. The data is not used for any other purpose and is not passed to third parties.",
-            "The hosting provider (GitHub Pages) and the font service (Google Fonts) receive standard technical request data: IP address, browser type, page address. The site uses no analytics or advertising trackers; if that changes, this page and the cookie notice will be updated."
+            "The hosting provider (GitHub Pages) receives standard technical request data: IP address, browser type, page address. Fonts are served from this site itself and are not loaded from Google's servers. The site uses no analytics or advertising trackers; if that changes, this page and the cookie notice will be updated."
           ]
         },
         {
@@ -422,9 +422,9 @@
     "cta.button": "Take the test",
 
     "consent.label": "Cookie notice",
-    "consent.text": "This site uses cookies and similar technologies: your browser's local storage keeps your progress, result and chosen language. The hosting provider (GitHub Pages) and the font service (Google Fonts) receive technical data such as your IP address and browser type. Your test result is sent only to the email address you provide.",
+    "consent.text": "This site uses cookies and similar technologies: your browser's local storage keeps your progress, result and chosen language. The hosting provider (GitHub Pages) receives technical data such as your IP address and browser type. Your test result is sent only to the email address you provide.",
     "consent.more": "Learn more",
-    "consent.details": "Stored in your browser: the name and job title you enter before the test; your answers and unfinished progress; your latest result; your chosen language; a note that you have seen this notice. The data stays on your device only and is removed when you clear the site's data in your browser. Third-party services: GitHub Pages (hosting) and Google Fonts (fonts) receive standard technical request data. No analytics or advertising trackers are used. When you finish the test, your name, email address and answers are passed to the email-sending service (Google Apps Script) in order to send you your result; they are not used for anything else.",
+    "consent.details": "Stored in your browser: the name and job title you enter before the test; your answers and unfinished progress; your latest result; your chosen language; a note that you have seen this notice. The data stays on your device only and is removed when you clear the site's data in your browser. Third-party service: GitHub Pages (hosting) receives standard technical request data. No analytics or advertising trackers are used. When you finish the test, your name, email address and answers are passed to the email-sending service (Google Apps Script) in order to send you your result; they are not used for anything else.",
     "consent.accept": "Got it",
 
     "root.continue": "Continue"

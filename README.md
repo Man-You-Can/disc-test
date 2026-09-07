@@ -26,6 +26,7 @@ disc-test/index.html  исходная одноязычная версия (дл
 
 ```bash
 node scripts/make-assets.js  # один раз и после смены title в локалях: иконки и og-картинки в src/assets/
+node scripts/fetch-fonts.js  # только при смене набора шрифтов: woff2 в src/assets/fonts/
 node build.js            # (или npm run build) пересобирает docs/ для всех языков
 node scripts/serve.js    # (или npm run serve) открыть http://localhost:8765 для проверки
 npm run deploy           # проверить локали, собрать, закоммитить и запушить
