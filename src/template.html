@@ -60,7 +60,8 @@ html[lang=ar] body,html[lang=hi] body{font-size:17px;line-height:1.65}
 .wrap{max-width:760px;margin:0 auto;padding:0 20px 56px;transition:max-width .2s}
 .wrap.wide{max-width:960px}
 .topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 0 16px}
-.brand{font-family:var(--font-head);font-weight:500;font-size:15px;letter-spacing:.02em;display:flex;align-items:center;gap:10px}
+.brand{font-family:var(--font-head);font-weight:500;font-size:15px;letter-spacing:.02em;display:flex;align-items:center;gap:10px;color:inherit;text-decoration:none;border-radius:6px}
+.brand:hover{opacity:.75}
 .brand .dots{display:inline-flex;gap:3px;direction:ltr}
 .brand .dots i{width:8px;height:8px;border-radius:50%;display:block}
 .tools{display:flex;align-items:center;gap:12px;min-width:0}
@@ -212,7 +213,7 @@ th.num{text-align:end}
 __FLAG_SPRITE__
 <div class="wrap" id="app">
   <header class="topbar">
-    <div class="brand"><span class="dots"><i style="background:var(--d)"></i><i style="background:var(--i)"></i><i style="background:var(--s)"></i><i style="background:var(--c)"></i></span>__BRAND__</div>
+    <a class="brand" id="brand" href="./" aria-label="__BRAND__"><span class="dots"><i style="background:var(--d)"></i><i style="background:var(--i)"></i><i style="background:var(--s)"></i><i style="background:var(--c)"></i></span>__BRAND__</a>
     <div class="tools"><div class="step" id="step"></div>
       __LANG_SWITCHER__</div>
   </header>
@@ -604,6 +605,12 @@ document.querySelectorAll('a[data-lang]').forEach(function(a){
 
 /* ====== маршрутизация ====== */
 $('#adminLink').addEventListener('click', function(){ renderAdmin(); window.scrollTo(0,0); });
+$('#brand').addEventListener('click', function(e){
+  if(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||e.button!==0) return; // новая вкладка и т.п. — обычная ссылка
+  e.preventDefault(); clearTimeout(advanceT); S=null;
+  if(location.hash) history.replaceState(null,'',pageURL());
+  renderIntro(); window.scrollTo(0,0);
+});
 function route(){
   var h = location.hash||'';
   if(h==='#admin'){ renderAdmin(); return true; }
