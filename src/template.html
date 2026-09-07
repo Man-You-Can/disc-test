@@ -365,9 +365,8 @@ function renderIntro(){
 }
 
 /* ====== экран 2: тест ====== */
-var advanceT;
 function renderTest(){
-  setWide(false); clearTimeout(advanceT);
+  setWide(false);
   var i = S.i, b = BLOCKS[i];
   setStep(t('test.step',{n:i+1})); renderProgress(i);
   var checkIco = '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg>';
@@ -390,20 +389,18 @@ function renderTest(){
         '<button class="btn small" type="button" id="next" '+(both?'':'disabled')+'>'+(lastBlock?t('test.finish'):t('test.next'))+'</button>'+
       '</div>'+
     '</div>'+
-    '<p class="hintline">'+t('test.hint')+'</p>';
+    '<p class="hintline">'+t('test.hint',{next:t('test.next')})+'</p>';
   view.querySelectorAll('.pick').forEach(function(btn){
     btn.addEventListener('click', function(){
       var j = +btn.getAttribute('data-j'), which = btn.getAttribute('data-pick');
       if(which==='m'){ S.m[i] = (S.m[i]===j) ? -1 : j; if(S.l[i]===j) S.l[i]=-1; }
       else { S.l[i] = (S.l[i]===j) ? -1 : j; if(S.m[i]===j) S.m[i]=-1; }
       lsSet('disc.progress', S);
-      renderTest();
-      if(S.m[i]>=0 && S.l[i]>=0 && i<23){ advanceT = setTimeout(function(){ S.i=i+1; lsSet('disc.progress', S); renderTest(); }, 420); }
+      renderTest(); // переход к следующему блоку только по кнопке «Далее»
     });
   });
-  $('#prev').addEventListener('click', function(){ clearTimeout(advanceT); if(S.i>0){ S.i--; lsSet('disc.progress', S); renderTest(); } });
+  $('#prev').addEventListener('click', function(){ if(S.i>0){ S.i--; lsSet('disc.progress', S); renderTest(); } });
   $('#next').addEventListener('click', function(){
-    clearTimeout(advanceT);
     if(!(S.m[i]>=0 && S.l[i]>=0)) return;
     if(i<23){ S.i=i+1; lsSet('disc.progress', S); renderTest(); return; }
     var missing = -1; for(var k=0;k<24;k++){ if(S.m[k]<0||S.l[k]<0){ missing=k; break; } }
@@ -628,7 +625,7 @@ document.querySelectorAll('a[data-lang]').forEach(function(a){
 $('#adminLink').addEventListener('click', function(){ renderAdmin(); window.scrollTo(0,0); });
 $('#brand').addEventListener('click', function(e){
   if(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||e.button!==0) return; // новая вкладка и т.п. — обычная ссылка
-  e.preventDefault(); clearTimeout(advanceT); S=null;
+  e.preventDefault(); S=null;
   if(location.hash) history.replaceState(null,'',pageURL());
   renderIntro(); window.scrollTo(0,0);
 });
