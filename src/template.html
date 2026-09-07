@@ -88,6 +88,39 @@ html[lang=ar] body,html[lang=hi] body{font-size:17px;line-height:1.65}
 .langmenu a:hover,.langmenu a:focus-visible{background:var(--soft)}
 .langmenu a[aria-selected=true]{font-weight:600}
 .langmenu a[aria-selected=true]::after{content:"✓";margin-inline-start:auto;padding-inline-start:10px;color:var(--muted);font-size:12px}
+.sitenav{display:flex;flex-wrap:wrap;gap:2px 18px;margin:-6px 0 18px;font-size:14px}
+.sitenav a{color:var(--muted);text-decoration:none;padding:4px 0;border-bottom:2px solid transparent}
+.sitenav a:hover{color:var(--ink)}
+.sitenav a[aria-current]{color:var(--ink);font-weight:600;border-bottom-color:var(--ink)}
+.crumbs{font-size:13px;color:var(--muted);margin:0 0 16px}
+.crumbs a{color:var(--muted);text-decoration:none}
+.crumbs a:hover{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+.crumbs span{margin:0 6px}
+.content h2{font-size:22px;margin:32px 0 10px}
+.content h2 .k{color:var(--k);margin-inline-end:8px}
+.content .sections{margin-top:14px}
+.content .stylefull{padding:22px;background:var(--surface);border:1px solid var(--line);border-inline-start:4px solid var(--k);border-radius:14px;margin:18px 0}
+.content .stylefull h2{margin-top:0}
+.content .more{display:inline-block;margin-top:12px;font-weight:600;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line-strong)}
+.content .more:hover{border-bottom-color:var(--ink)}
+.pgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:16px 0}
+@media (max-width:640px){.pgrid{grid-template-columns:1fr}}
+.pcard{display:flex;gap:14px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;color:var(--ink);text-decoration:none}
+.pcard:hover{border-color:var(--line-strong)}
+.pcard .badge{font-size:26px;padding:8px 10px;border-radius:9px;flex:none}
+.pcard .badge .s{font-size:16px}
+.pcard strong{display:block;font-family:var(--font-head);font-weight:600;font-size:15px;margin-bottom:2px}
+.pcard small{display:block;color:var(--muted);font-size:12px;margin-bottom:6px}
+.pcard p{font-size:13px;color:var(--muted);margin:0}
+.cta{background:var(--btn);color:var(--btn-ink);border-radius:14px;padding:22px 24px;margin:30px 0;display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px}
+.cta div{flex:1 1 300px}
+.cta h2{margin:0 0 6px;font-size:20px;color:inherit}
+.cta p{margin:0;opacity:.85;font-size:14px}
+.cta .btn{background:var(--btn-ink);color:var(--btn);flex:none}
+.stylecard .more{display:inline-block;margin-top:10px;font-size:13px;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line-strong)}
+.stylecard .more:hover{border-bottom-color:var(--ink)}
+.styles-intro .all{margin-top:14px;font-size:14px}
+.styles-intro .all a{color:var(--ink)}
 .langbar{display:flex;align-items:center;gap:10px;margin:12px 0 0;padding:8px 10px 8px 14px;border:1px solid var(--line);border-radius:10px;background:var(--surface);font-size:14px}
 .langbar a{display:inline-flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;flex:1;min-width:0}
 .langbar a b{font-weight:600}
@@ -259,6 +292,7 @@ __FLAG_SPRITE__
     <div class="tools"><div class="step" id="step"></div>
       __LANG_SWITCHER__</div>
   </header>
+  <nav class="sitenav no-print" id="sitenav">__NAV__</nav>
   <div class="progress" id="progress" hidden></div>
   <main id="view">__INTRO_HTML__</main>
   <footer class="foot">
@@ -358,7 +392,7 @@ function badgeHTML(cls, cssClass){
 var view = $('#view'), stepEl = $('#step'), progEl = $('#progress'), wrap = $('#app');
 var S = null;
 
-function setStep(text){ stepEl.textContent = text||''; }
+function setStep(text){ stepEl.textContent = text||''; var nav=$('#sitenav'); if(nav) nav.hidden = !!text; }
 function setWide(w){ wrap.classList.toggle('wide', !!w); }
 function renderProgress(i){
   var h=''; for(var k=0;k<24;k++){ h+='<i class="'+(k<i?'done':(k===i?'cur':''))+'"></i>'; }
@@ -371,7 +405,7 @@ function renderIntro(){
   setWide(false); setStep(''); progEl.hidden=true;
   var last = lsGet('disc.last'), prog = lsGet('disc.progress'), who = lsGet('disc.who')||{};
   var progDone = prog && prog.m && prog.m.filter(function(x){return x>=0;}).length;
-  view.innerHTML = introHTML({L:L, t:t, esc:esc, KEYS:KEYS, colorVar:colorVar, who:who, progDone:progDone, lastDate: last ? fmtDate(last.t) : ''});
+  view.innerHTML = introHTML({L:L, t:t, esc:esc, KEYS:KEYS, colorVar:colorVar, who:who, progDone:progDone, lastDate: last ? fmtDate(last.t) : '', links:{styles: ROOT_REL+LANG_PATH[L.lang]+'styles/', profiles: ROOT_REL+LANG_PATH[L.lang]+'profiles/', profile: function(k){ return ROOT_REL+LANG_PATH[L.lang]+'profiles/'+k.toLowerCase()+'/'; }}});
   $('#startForm').addEventListener('submit', function(e){
     e.preventDefault();
     var name = $('#nm').value.trim().replace(/\s+/g,' '), email = $('#em').value.trim();
@@ -641,57 +675,10 @@ function renderAdmin(){
 
 /* ====== переключение языка ====== */
 function langHref(code){ return ROOT_REL + (LANG_PATH[code]||'') + location.hash; }
-// На главной: если язык выбран явно раньше — открываем его версию (робот поисковика сюда не попадает: у него нет сохранённого выбора)
+// Root page: a language chosen explicitly earlier opens right away (search bots have no stored choice)
 (function(){ if(!IS_ROOT) return; var st = lsGet('disc.lang'); if(st && st!==L.lang && LANG_PATH[st]!=null && !location.hash) location.replace(langHref(st)); })();
-// Подсказка «Продолжить на …», если язык браузера отличается и выбор ещё не делался
-(function(){
-  if(lsGet('disc.lang')) return;
-  var prefs = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language||''];
-  var pick = null;
-  for(var i=0;i<prefs.length && !pick;i++){ var p = String(prefs[i]).toLowerCase().split('-')[0]; if(LANG_PATH[p]!=null) pick = p; }
-  if(!pick || pick===L.lang || !LANG_META[pick]) return;
-  var m = LANG_META[pick], bar = document.createElement('div');
-  bar.className='langbar no-print'; bar.setAttribute('lang', pick); bar.setAttribute('dir', m.dir||'ltr');
-  bar.innerHTML = '<a href="'+esc(langHref(pick))+'"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-'+pick+'"/></svg><b>'+esc(m.name)+'</b><span>'+esc(m.cont)+' →</span></a><button type="button" class="langbar-x" aria-label="×">×</button>';
-  var app = $('#app'); app.insertBefore(bar, app.firstChild.nextSibling);
-  bar.querySelector('a').addEventListener('click', function(){ lsSet('disc.lang', pick); });
-  bar.querySelector('button').addEventListener('click', function(){ lsSet('disc.lang', L.lang); bar.remove(); });
-})();
-document.querySelectorAll('a[data-lang]').forEach(function(a){
-  a.addEventListener('click', function(){ var code=a.getAttribute('data-lang'); lsSet('disc.lang', code); a.href=langHref(code); });
-});
-(function(){
-  var box=$('#langSel'), btn=$('#langBtn'), menu=$('#langMenu');
-  if(!box||!btn||!menu) return;
-  var items=[].slice.call(menu.querySelectorAll('a[data-lang]'));
-  function open(){
-    items.forEach(function(a){ a.href=langHref(a.getAttribute('data-lang')); });
-    menu.hidden=false; btn.setAttribute('aria-expanded','true');
-    var cur=menu.querySelector('a[aria-selected="true"]')||items[0]; try{ cur.focus({preventScroll:true}); }catch(e){ cur.focus(); }
-  }
-  function close(focusBtn){ if(menu.hidden) return; menu.hidden=true; btn.setAttribute('aria-expanded','false'); if(focusBtn) btn.focus(); }
-  btn.addEventListener('click', function(){ menu.hidden ? open() : close(false); });
-  btn.addEventListener('keydown', function(e){ if(e.key==='ArrowDown'||e.key==='ArrowUp'){ e.preventDefault(); open(); } });
-  menu.addEventListener('keydown', function(e){
-    var i=items.indexOf(document.activeElement), n=items.length;
-    if(e.key==='Escape'){ e.preventDefault(); close(true); }
-    else if(e.key==='ArrowDown'){ e.preventDefault(); items[(i+1)%n].focus(); }
-    else if(e.key==='ArrowUp'){ e.preventDefault(); items[(i-1+n)%n].focus(); }
-    else if(e.key==='Home'){ e.preventDefault(); items[0].focus(); }
-    else if(e.key==='End'){ e.preventDefault(); items[n-1].focus(); }
-    else if(e.key==='Tab'){ close(false); }
-  });
-  document.addEventListener('click', function(e){ if(!box.contains(e.target)) close(false); });
-})();
-
-/* ====== уведомление о cookie ====== */
-(function(){
-  if(lsGet('disc.consent')) return;
-  var el=document.createElement('div'); el.className='consent no-print'; el.id='consent'; el.setAttribute('role','region'); el.setAttribute('aria-label', t('consent.label'));
-  el.innerHTML='<div class="consent-in"><p>'+t('consent.text')+'</p><button class="btn small" type="button" id="consentOk">'+t('consent.accept')+'</button><details><summary>'+t('consent.more')+'</summary><p>'+t('consent.details')+'</p></details></div>';
-  document.body.appendChild(el); document.body.classList.add('has-consent');
-  $('#consentOk').addEventListener('click', function(){ lsSet('disc.consent', new Date().toISOString()); el.remove(); document.body.classList.remove('has-consent'); });
-})();
+__COMMON_JS__
+initCommon({L:L, t:t, esc:esc, lsGet:lsGet, lsSet:lsSet, langHref:langHref, $:$, langMeta:LANG_META, langPath:LANG_PATH});
 
 /* ====== маршрутизация ====== */
 $('#adminLink').addEventListener('click', function(){ renderAdmin(); window.scrollTo(0,0); });

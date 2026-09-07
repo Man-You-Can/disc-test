@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="__LANG__" dir="__DIR__">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>__TITLE__</title>
+<meta name="description" content="__DESC__">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="__BRAND__">
+<meta property="og:title" content="__TITLE__">
+<meta property="og:description" content="__DESC__">
+<meta property="og:url" content="__CANONICAL__">
+<meta property="og:locale" content="__OG_LOCALE__">
+__OG_ALTERNATES__
+<meta property="og:image" content="__OG_IMAGE__">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="__TITLE__">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="__OG_IMAGE__">
+<meta name="theme-color" content="#F3F4F6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#14171B" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="__CANONICAL__">
+__HREFLANG__
+<link rel="icon" href="__ROOT_REL__favicon.ico" sizes="32x32">
+<link rel="icon" href="__ROOT_REL__favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="__ROOT_REL__apple-touch-icon.png">
+<link rel="manifest" href="__ROOT_REL__manifest.webmanifest">
+<script type="application/ld+json">__JSON_LD__</script>
+__FONTS_HEAD__
+__STYLE__
+</head>
+<body>
+__FLAG_SPRITE__
+<div class="wrap wide" id="app">
+  <header class="topbar">
+    <a class="brand" href="__HOME_HREF__" aria-label="__BRAND__"><span class="dots"><i style="background:var(--d)"></i><i style="background:var(--i)"></i><i style="background:var(--s)"></i><i style="background:var(--c)"></i></span>__BRAND__</a>
+    <div class="tools">__LANG_SWITCHER__</div>
+  </header>
+  <nav class="sitenav no-print">__NAV__</nav>
+  <nav class="crumbs">__CRUMBS__</nav>
+  <main class="content">__CONTENT__</main>
+  <footer class="foot">
+    <div class="row2"><span>__FOOTER__</span></div>
+    <div class="privacy">__PRIVACY__</div>
+    <nav class="langs" aria-label="__LANG_LABEL__">__LANG_LINKS__</nav>
+  </footer>
+</div>
+<div class="toast" id="toast" hidden></div>
+<script>
+(function(){
+'use strict';
+var L = __LOCALE_JSON__;
+var ROOT_REL = '__ROOT_REL__', SUBPATH = '__SUBPATH__';
+var LANG_PATH = __LANG_PATH_JSON__, LANG_META = __LANG_META_JSON__;
+function $(s){ return document.querySelector(s); }
+function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+function t(key, vars){ var s = L.ui[key]; if(s==null) s = key; if(vars) s = s.replace(/\{(\w+)\}/g, function(_, n){ return vars[n]!=null ? vars[n] : '{'+n+'}'; }); return s; }
+var MEM = {};
+function lsGet(k){ try{ var v = localStorage.getItem(k); if(v!=null) return JSON.parse(v); }catch(e){} return Object.prototype.hasOwnProperty.call(MEM,k) ? MEM[k] : null; }
+function lsSet(k,v){ MEM[k]=v; try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
+function langHref(code){ return ROOT_REL + (LANG_PATH[code]||'') + SUBPATH + location.hash; }
+__COMMON_JS__
+initCommon({L:L, t:t, esc:esc, lsGet:lsGet, lsSet:lsSet, langHref:langHref, $:$, langMeta:LANG_META, langPath:LANG_PATH});
+})();
+</script>
+</body>
+</html>
