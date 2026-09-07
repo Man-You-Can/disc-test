@@ -1,13 +1,15 @@
 #!/usr/bin/env node
 /* Сборка сайта: src/template.html + src/locales/*.json → docs/<lang>/index.html
    Запуск: node build.js */
-const fs = require('fs'), path = require('path');
+const fs = require('fs'), path = require('path'), { execSync } = require('child_process');
 const ROOT = __dirname, SRC = path.join(ROOT, 'src'), OUT = path.join(ROOT, 'docs');
 const cfg = JSON.parse(fs.readFileSync(path.join(ROOT, 'site.config.json'), 'utf8'));
 const siteUrl = cfg.siteUrl.replace(/\/+$/, '');
 const basePath = new URL(siteUrl + '/').pathname; // например "/disc-test/" или "/"
 const tpl = fs.readFileSync(path.join(SRC, 'template.html'), 'utf8');
-const rootTpl = fs.readFileSync(path.join(SRC, 'root.html'), 'utf8');
+const introJs = fs.readFileSync(path.join(SRC, 'intro.js'), 'utf8');
+const introHTML = require(path.join(SRC, 'intro.js'));
+const ASSETS = path.join(SRC, 'assets');
 const nfTpl = fs.readFileSync(path.join(SRC, '404.html'), 'utf8');
 
 const G = 'https://fonts.googleapis.com/css2?';
@@ -64,26 +66,53 @@ const locales = cfg.languages.filter(code => !missing.includes(code)).map(code =
   if (L.lang !== code) throw new Error(code + '.json: lang mismatch');
   return L;
 });
-const hl = code => (cfg.hreflang && cfg.hreflang[code]) || code;
-const hreflangTags = locales.map(L => `<link rel="alternate" hreflang="${hl(L.lang)}" href="${siteUrl}/${L.lang}/">`)
+const def = locales.find(L => L.lang === cfg.defaultLang) || locales[0];
+const pathOf = code => code === def.lang ? '' : code + '/';   // язык по умолчанию живёт в корне сайта
+const urlOf = code => siteUrl + '/' + pathOf(code);
+const hls = code => { const v = cfg.hreflang && cfg.hreflang[code]; return v ? (Array.isArray(v) ? v : [v]) : [code]; };
+const hl = code => hls(code)[0];
+const hreflangTags = locales.flatMap(L => hls(L.lang).map(h => `<link rel="alternate" hreflang="${h}" href="${urlOf(L.lang)}">`))
   .concat([`<link rel="alternate" hreflang="x-default" href="${siteUrl}/">`]).join('\n');
+const escFull = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const tFor = L => (key, vars) => { let v = L.ui[key]; if (v == null) v = key; if (vars) v = v.replace(/\{(\w+)\}/g, (_, n) => vars[n] != null ? vars[n] : '{' + n + '}'); return v; };
+const KEYS = ['D', 'I', 'S', 'C'];
+const LANG_PATH = Object.fromEntries(locales.map(L => [L.lang, pathOf(L.lang)]));
+const LANG_META = Object.fromEntries(locales.map(L => [L.lang, { name: L.name, cont: L.ui['root.continue'] || L.name, dir: L.dir }]));
+const lastmod = files => { try { return execSync('git log -1 --format=%cs -- ' + files.map(f => JSON.stringify(f)).join(' '), { cwd: ROOT, stdio: ['ignore', 'pipe', 'ignore'] }).toString().trim() || null; } catch (e) { return null; } };
+const today = new Date().toISOString().slice(0, 10);
+const jsonLd = L => JSON.stringify([
+  { '@context': 'https://schema.org', '@type': 'WebSite', name: 'DISC Test', alternateName: L.brand, url: siteUrl + '/', inLanguage: L.lang },
+  { '@context': 'https://schema.org', '@type': 'WebApplication', name: L.brand, url: urlOf(L.lang), description: L.description,
+    applicationCategory: 'Personality test', operatingSystem: 'Any', browserRequirements: 'Requires JavaScript', inLanguage: L.lang,
+    isAccessibleForFree: true, offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' }, image: `${siteUrl}/og/${L.lang}.png`,
+    publisher: { '@type': 'Organization', name: 'DISC Test', url: siteUrl + '/', logo: `${siteUrl}/icon-512.png` } }
+]).replace(/</g, '\\u003c');
 
 fs.rmSync(OUT, { recursive: true, force: true });
 fs.mkdirSync(OUT, { recursive: true });
 
 for (const L of locales) {
   const f = FONTS[L.lang] || FONTS.default;
+  const isRoot = L.lang === def.lang, rootRel = isRoot ? './' : '../';
+  const href = x => rootRel + pathOf(x.lang);
   const chevron = `<svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5l3.5 3.5 3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
   const switcher = `<div class="langsel" id="langSel">` +
     `<button type="button" class="langbtn" id="langBtn" aria-haspopup="listbox" aria-expanded="false" aria-label="${esc(L.ui.langLabel)}">${flag(L.lang)}<span class="langname">${esc(L.name)}</span>${chevron}</button>` +
     `<ul class="langmenu" id="langMenu" role="listbox" aria-label="${esc(L.ui.langLabel)}" hidden>` +
-    locales.map(x => `<li role="none"><a role="option" href="../${x.lang}/" hreflang="${hl(x.lang)}" lang="${x.lang}" data-lang="${x.lang}" aria-selected="${x.lang === L.lang}" tabindex="-1">${flag(x.lang)}<span>${esc(x.name)}</span></a></li>`).join('') +
+    locales.map(x => `<li role="none"><a role="option" href="${href(x)}" hreflang="${hl(x.lang)}" lang="${x.lang}" data-lang="${x.lang}" aria-selected="${x.lang === L.lang}" tabindex="-1">${flag(x.lang)}<span>${esc(x.name)}</span></a></li>`).join('') +
     `</ul></div>`;
-  const links = locales.map(x => `<a href="../${x.lang}/" hreflang="${hl(x.lang)}" lang="${x.lang}" data-lang="${x.lang}"${x.lang === L.lang ? ' aria-current="page"' : ''}>${flag(x.lang)}<span>${esc(x.name)}</span></a>`).join('');
+  const links = locales.map(x => `<a href="${href(x)}" hreflang="${hl(x.lang)}" lang="${x.lang}" data-lang="${x.lang}"${x.lang === L.lang ? ' aria-current="page"' : ''}>${flag(x.lang)}<span>${esc(x.name)}</span></a>`).join('');
   const html = tpl
     .replace(/__LANG__/g, L.lang).replace(/__DIR__/g, L.dir)
     .replace(/__TITLE__/g, esc(L.title)).replace(/__DESC__/g, esc(L.description))
-    .replace(/__CANONICAL__/g, `${siteUrl}/${L.lang}/`).replace(/__OG_LOCALE__/g, OG_LOCALE[L.lang] || L.lang)
+    .replace(/__CANONICAL__/g, urlOf(L.lang)).replace(/__OG_LOCALE__/g, OG_LOCALE[L.lang] || L.lang)
+    .replace(/__OG_ALTERNATES__/g, () => locales.filter(x => x !== L).map(x => `<meta property="og:locale:alternate" content="${OG_LOCALE[x.lang] || x.lang}">`).join('\n'))
+    .replace(/__OG_IMAGE__/g, `${siteUrl}/og/${L.lang}.png`)
+    .replace(/__ROOT_REL__/g, rootRel).replace(/__IS_ROOT__/g, isRoot ? '1' : '0')
+    .replace('__LANG_PATH_JSON__', () => JSON.stringify(LANG_PATH)).replace('__LANG_META_JSON__', () => JSON.stringify(LANG_META).replace(/</g, '\\u003c'))
+    .replace('__JSON_LD__', () => jsonLd(L))
+    .replace('__INTRO_JS__', () => introJs.replace(/\nif \(typeof module[^\n]*\n?$/, '\n'))
+    .replace('__INTRO_HTML__', () => introHTML({ L, t: tFor(L), esc: escFull, KEYS, colorVar: k => 'var(--' + k.toLowerCase() + ')', who: {}, progDone: 0, lastDate: '' }))
     .replace(/__HREFLANG__/g, hreflangTags)
     .replace(/__FONTS_HEAD__/g, () => fontsHead(f)).replace(/__FONT_HEAD__/g, f.head).replace(/__FONT_BODY__/g, f.body)
     .replace(/__BRAND__/g, esc(L.brand)).replace(/__LANG_LABEL__/g, esc(L.ui.langLabel))
@@ -93,27 +122,33 @@ for (const L of locales) {
     .replace(/__SEND_ENDPOINT__/g, String(cfg.sendEndpoint || '').replace(/['\\]/g, ''))
     .replace(/__SEND_TOKEN__/g, String(cfg.sendToken || '').replace(/['\\]/g, ''))
     .replace('__LOCALE_JSON__', () => JSON.stringify(L).replace(/</g, '\\u003c').replace(/\u2028|\u2029/g, ''));
-  fs.mkdirSync(path.join(OUT, L.lang), { recursive: true });
-  fs.writeFileSync(path.join(OUT, L.lang, 'index.html'), html);
+  fs.mkdirSync(path.join(OUT, pathOf(L.lang)), { recursive: true });
+  fs.writeFileSync(path.join(OUT, pathOf(L.lang), 'index.html'), html);
 }
+// /en/ (язык по умолчанию) перенаправляет в корень: адрес существовал раньше и мог быть сохранён
+fs.mkdirSync(path.join(OUT, def.lang), { recursive: true });
+fs.writeFileSync(path.join(OUT, def.lang, 'index.html'), `<!doctype html><html lang="${def.lang}"><head><meta charset="utf-8"><title>${esc(def.brand)}</title><meta http-equiv="refresh" content="0; url=../"><link rel="canonical" href="${siteUrl}/"><script>location.replace('../'+location.hash)</script></head><body><a href="../">${esc(def.brand)}</a></body></html>\n`);
 
-// Корневая страница: список всех языков; определённый по браузеру язык подсвечивается скриптом, без редиректа
-const def = locales.find(L => L.lang === cfg.defaultLang) || locales[0];
-const rootHtml = rootTpl
-  .replace(/__TITLE__/g, esc(def.ui['root.title'])).replace(/__DESC__/g, esc(def.description))
-  .replace(/__LEAD__/g, esc(def.ui['root.lead'])).replace(/__CHOOSE__/g, esc(def.ui['root.h1'])).replace(/__CANONICAL__/g, siteUrl + '/')
-  .replace(/__HREFLANG__/g, hreflangTags)
-  .replace('__LANGS_JSON__', JSON.stringify(locales.map(L => L.lang))).replace(/__DEFAULT__/g, def.lang)
-  .replace('__FLAG_SPRITE__', () => flagSprite(locales.map(x => x.lang)))
-  .replace('__LANG_LIST__', () => locales.map(L => `<li><a href="./${L.lang}/" hreflang="${hl(L.lang)}" lang="${L.lang}" data-lang="${L.lang}" data-continue="${esc(L.ui['root.continue'])}">${flag(L.lang)}<span>${esc(L.name)}</span></a></li>`).join(''));
-fs.writeFileSync(path.join(OUT, 'index.html'), rootHtml);
 fs.writeFileSync(path.join(OUT, '404.html'), nfTpl.replace(/__BASE__/g, basePath));
 fs.writeFileSync(path.join(OUT, '.nojekyll'), '');
 fs.writeFileSync(path.join(OUT, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: ${siteUrl}/sitemap.xml\n`);
-const today = new Date().toISOString().slice(0, 10);
-const urls = locales.map(L => `  <url><loc>${siteUrl}/${L.lang}/</loc><lastmod>${today}</lastmod>${locales.map(x => `<xhtml:link rel="alternate" hreflang="${hl(x.lang)}" href="${siteUrl}/${x.lang}/"/>`).join('')}<xhtml:link rel="alternate" hreflang="x-default" href="${siteUrl}/"/></url>`);
+const alt = locales.flatMap(x => hls(x.lang).map(h => `<xhtml:link rel="alternate" hreflang="${h}" href="${urlOf(x.lang)}"/>`)).join('') + `<xhtml:link rel="alternate" hreflang="x-default" href="${siteUrl}/"/>`;
+const urls = locales.map(L => `  <url><loc>${urlOf(L.lang)}</loc><lastmod>${lastmod([`src/locales/${L.lang}.json`, 'src/template.html', 'src/intro.js']) || today}</lastmod>${alt}</url>`);
 fs.writeFileSync(path.join(OUT, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${urls.join('\n')}\n</urlset>\n`);
 if (cfg.customDomain) fs.writeFileSync(path.join(OUT, 'CNAME'), cfg.customDomain + '\n');
+
+// Иконки, og-картинки, манифест (файлы готовятся заранее командой node scripts/make-assets.js)
+for (const f of ['favicon.svg', 'favicon.ico', 'apple-touch-icon.png', 'icon-192.png', 'icon-512.png']) {
+  const src = path.join(ASSETS, f);
+  if (fs.existsSync(src)) fs.copyFileSync(src, path.join(OUT, f)); else console.warn('WARNING: missing asset ' + f + ' (run node scripts/make-assets.js)');
+}
+fs.mkdirSync(path.join(OUT, 'og'), { recursive: true });
+for (const L of locales) {
+  const src = path.join(ASSETS, 'og', L.lang + '.png');
+  if (fs.existsSync(src)) fs.copyFileSync(src, path.join(OUT, 'og', L.lang + '.png')); else console.warn('WARNING: missing og image for ' + L.lang);
+}
+fs.writeFileSync(path.join(OUT, 'manifest.webmanifest'), JSON.stringify({ name: 'DISC Test', short_name: 'DISC', start_url: basePath, display: 'standalone', background_color: '#F3F4F6', theme_color: '#1B2027',
+  icons: [{ src: basePath + 'icon-192.png', sizes: '192x192', type: 'image/png' }, { src: basePath + 'icon-512.png', sizes: '512x512', type: 'image/png' }] }, null, 2) + '\n');
 
 // Google Apps Script для отправки писем: шаблон + данные из локалей (названия стилей, профили, тексты письма)
 const BLOCK_KEYS = (tpl.match(/var BLOCK_KEYS = (\[[^\]]+\]);/) || [])[1];
@@ -130,4 +165,4 @@ const gs = gsTpl
   .replace('__BLOCK_KEYS__', BLOCK_KEYS).replace('__DATA__', () => JSON.stringify(mailData));
 fs.mkdirSync(path.join(ROOT, 'backend', 'apps-script'), { recursive: true });
 fs.writeFileSync(path.join(ROOT, 'backend', 'apps-script', 'Code.gs'), gs);
-console.log(`Built ${locales.length} languages → docs/ (${locales.map(L => L.lang).join(', ')}); backend/apps-script/Code.gs${cfg.sendEndpoint ? '' : ' (sendEndpoint не задан: письма не отправляются)'}`);
+console.log(`Built ${locales.length} languages (root = ${def.lang}) → docs/ (${locales.map(L => L.lang).join(', ')}); backend/apps-script/Code.gs${cfg.sendEndpoint ? '' : ' (sendEndpoint не задан: письма не отправляются)'}`);

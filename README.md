@@ -18,13 +18,14 @@ src/locales/xx.json   все тексты одного языка (ru.json — �
 build.js              сборка: src → docs/
 scripts/validate-locale.js  проверка, что локаль структурно совпадает с ru.json
 scripts/serve.js      локальный просмотр собранного сайта
-docs/                 готовый сайт (это и публикуется на GitHub Pages)
+docs/                 готовый сайт (это и публикуется на GitHub Pages); язык по умолчанию (defaultLang) живёт в корне, остальные в /xx/, /en/ перенаправляет в корень
 disc-test/index.html  исходная одноязычная версия (для истории)
 ```
 
 ## Как собрать
 
 ```bash
+node scripts/make-assets.js  # один раз и после смены title в локалях: иконки и og-картинки в src/assets/
 node build.js            # (или npm run build) пересобирает docs/ для всех языков
 node scripts/serve.js    # (или npm run serve) открыть http://localhost:8765 для проверки
 npm run deploy           # проверить локали, собрать, закоммитить и запушить
@@ -46,7 +47,7 @@ node build.js
 ## Как добавить язык
 
 1. Скопируйте `src/locales/en.json` в `src/locales/<код>.json`, переведите, укажите `lang`, `name`, `dir` (`rtl` для арабского/иврита) и `dateLocale`.
-2. Добавьте код в `languages` в `site.config.json`. Если нужны особые шрифты (не латиница/кириллица), добавьте запись в `FONTS` в `build.js`. Пустой `link` означает «без Google Fonts, только системные шрифты» (так сделано для `zh`).
+2. Добавьте код в `languages` в `site.config.json` (при необходимости `hreflang`, например `"pt": ["pt", "pt-BR"]`). Если нужны особые шрифты (не латиница/кириллица), добавьте запись в `FONTS` в `build.js`. Выполните `node scripts/make-assets.js`, чтобы появилась og-картинка. Пустой `link` означает «без Google Fonts, только системные шрифты» (так сделано для `zh`).
 3. `node scripts/validate-locale.js <код>.json && node build.js`.
 
 ## Свой домен

@@ -10,12 +10,24 @@
 <meta property="og:description" content="__DESC__">
 <meta property="og:url" content="__CANONICAL__">
 <meta property="og:locale" content="__OG_LOCALE__">
-<meta name="twitter:card" content="summary">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta property="og:site_name" content="__BRAND__">
+__OG_ALTERNATES__
+<meta property="og:image" content="__OG_IMAGE__">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="__TITLE__">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="__OG_IMAGE__">
 <meta name="theme-color" content="#F3F4F6" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#14171B" media="(prefers-color-scheme: dark)">
 <link rel="canonical" href="__CANONICAL__">
 __HREFLANG__
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='9' cy='9' r='6' fill='%23C9453D'/%3E%3Ccircle cx='23' cy='9' r='6' fill='%23D6961F'/%3E%3Ccircle cx='9' cy='23' r='6' fill='%233A9A69'/%3E%3Ccircle cx='23' cy='23' r='6' fill='%233B6FB6'/%3E%3C/svg%3E">
+<link rel="icon" href="__ROOT_REL__favicon.ico" sizes="32x32">
+<link rel="icon" href="__ROOT_REL__favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="__ROOT_REL__apple-touch-icon.png">
+<link rel="manifest" href="__ROOT_REL__manifest.webmanifest">
+<script type="application/ld+json">__JSON_LD__</script>
 __FONTS_HEAD__
 <style>
 :root{
@@ -76,6 +88,22 @@ html[lang=ar] body,html[lang=hi] body{font-size:17px;line-height:1.65}
 .langmenu a:hover,.langmenu a:focus-visible{background:var(--soft)}
 .langmenu a[aria-selected=true]{font-weight:600}
 .langmenu a[aria-selected=true]::after{content:"✓";margin-inline-start:auto;padding-inline-start:10px;color:var(--muted);font-size:12px}
+.langbar{display:flex;align-items:center;gap:10px;margin:12px 0 0;padding:8px 10px 8px 14px;border:1px solid var(--line);border-radius:10px;background:var(--surface);font-size:14px}
+.langbar a{display:inline-flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;flex:1;min-width:0}
+.langbar a b{font-weight:600}
+.langbar a span{color:var(--muted)}
+.langbar a:hover span{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+.langbar-x{background:none;border:0;font:inherit;font-size:18px;line-height:1;color:var(--muted);cursor:pointer;padding:4px 6px;border-radius:6px}
+.langbar-x:hover{color:var(--ink);background:var(--soft)}
+.styles-intro{margin-top:34px}
+.styles-intro h2{font-size:22px;margin-bottom:14px}
+.stylegrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:640px){.stylegrid{grid-template-columns:1fr}}
+.stylecard{background:var(--surface);border:1px solid var(--line);border-inline-start:4px solid var(--k);border-radius:12px;padding:16px 18px}
+.stylecard h3{font-family:var(--font-head);font-size:15px;font-weight:600;text-transform:none;letter-spacing:0;color:var(--ink);margin:0 0 8px;display:flex;align-items:center;gap:8px;line-height:1.3}
+.stylecard h3 .k{color:var(--k);font-size:18px}
+.stylecard p{font-size:14px;margin-bottom:10px}
+.stylecard .traits span{font-size:12px}
 .progress{display:grid;grid-template-columns:repeat(24,1fr);gap:3px;height:6px;margin:0 0 28px}
 .progress i{display:block;background:var(--line);border-radius:2px;transition:background .2s}
 .progress i.done{background:var(--ink)}
@@ -232,7 +260,7 @@ __FLAG_SPRITE__
       __LANG_SWITCHER__</div>
   </header>
   <div class="progress" id="progress" hidden></div>
-  <main id="view"></main>
+  <main id="view">__INTRO_HTML__</main>
   <footer class="foot">
     <div class="row2"><span>__FOOTER__</span><button class="link" id="adminLink" type="button">__ADMIN_LINK__</button></div>
     <div class="privacy">__PRIVACY__</div>
@@ -249,6 +277,10 @@ var L = __LOCALE_JSON__;
 var CONTACT_EMAIL = '__EMAIL__'; // адрес получателя для кнопки «Отправить по почте»; пустой — участник вводит сам
 var SEND_ENDPOINT = '__SEND_ENDPOINT__'; // URL веб-приложения Google Apps Script (см. README); пустой — письма не отправляются
 var SEND_TOKEN = '__SEND_TOKEN__';
+var ROOT_REL = '__ROOT_REL__';           // относительный путь к корню сайта ('./' на главной, '../' в /xx/)
+var IS_ROOT = '__IS_ROOT__' === '1';      // главная страница (язык по умолчанию живёт в корне)
+var LANG_PATH = __LANG_PATH_JSON__;       // код языка → путь от корня ('' для языка по умолчанию, 'ru/' и т. д.)
+var LANG_META = __LANG_META_JSON__;       // код языка → {name, cont, dir} для подсказки «Продолжить на …»
 var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 var VERSION = 'DISC1';
 
@@ -334,27 +366,12 @@ function renderProgress(i){
 }
 
 /* ====== экран 1: вступление ====== */
+__INTRO_JS__
 function renderIntro(){
   setWide(false); setStep(''); progEl.hidden=true;
   var last = lsGet('disc.last'), prog = lsGet('disc.progress'), who = lsGet('disc.who')||{};
   var progDone = prog && prog.m && prog.m.filter(function(x){return x>=0;}).length;
-  view.innerHTML =
-    '<div class="eyebrow">'+t('intro.eyebrow')+'</div>'+
-    '<h1>'+t('intro.h1')+'</h1>'+
-    '<p class="lead">'+t('intro.lead')+'</p>'+
-    '<div class="tiles">'+KEYS.map(function(k){ return '<div class="tile" style="--k:'+colorVar(k)+'"><b>'+k+'</b><strong>'+esc(L.keys[k])+'</strong><span>'+esc(L.short[k])+'</span></div>'; }).join('')+'</div>'+
-    '<div class="card">'+
-      '<h2>'+t('intro.howTitle')+'</h2>'+
-      '<p>'+t('intro.howText')+'</p>'+
-      '<form class="form" id="startForm" autocomplete="on">'+
-        '<div class="field"><label for="nm">'+t('intro.nameLabel')+'</label><input type="text" id="nm" name="name" autocomplete="name" required maxlength="80" value="'+esc(who.name||'')+'"></div>'+
-        '<div class="field"><label for="em">'+t('intro.emailLabel')+'</label><input type="email" id="em" name="email" autocomplete="email" inputmode="email" required maxlength="120" value="'+esc(who.email||'')+'"><span class="hint">'+t('intro.emailHint')+'</span></div>'+
-        '<div class="actions"><button class="btn" type="submit">'+t('intro.start')+'</button>'+
-          (progDone ? '<button class="link" type="button" id="resume">'+t('intro.resume',{n:progDone})+'</button>' : '')+
-        '</div>'+
-      '</form>'+
-    '</div>'+
-    (last ? '<p class="small muted" style="margin-top:14px"><button class="link" id="showLast" type="button">'+t('intro.showLast',{date:esc(fmtDate(last.t))})+'</button></p>' : '');
+  view.innerHTML = introHTML({L:L, t:t, esc:esc, KEYS:KEYS, colorVar:colorVar, who:who, progDone:progDone, lastDate: last ? fmtDate(last.t) : ''});
   $('#startForm').addEventListener('submit', function(e){
     e.preventDefault();
     var name = $('#nm').value.trim().replace(/\s+/g,' '), email = $('#em').value.trim();
@@ -623,8 +640,23 @@ function renderAdmin(){
 }
 
 /* ====== переключение языка ====== */
-lsSet('disc.lang', L.lang);
-function langHref(code){ return '../'+code+'/'+location.hash; }
+function langHref(code){ return ROOT_REL + (LANG_PATH[code]||'') + location.hash; }
+// На главной: если язык выбран явно раньше — открываем его версию (робот поисковика сюда не попадает: у него нет сохранённого выбора)
+(function(){ if(!IS_ROOT) return; var st = lsGet('disc.lang'); if(st && st!==L.lang && LANG_PATH[st]!=null && !location.hash) location.replace(langHref(st)); })();
+// Подсказка «Продолжить на …», если язык браузера отличается и выбор ещё не делался
+(function(){
+  if(lsGet('disc.lang')) return;
+  var prefs = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language||''];
+  var pick = null;
+  for(var i=0;i<prefs.length && !pick;i++){ var p = String(prefs[i]).toLowerCase().split('-')[0]; if(LANG_PATH[p]!=null) pick = p; }
+  if(!pick || pick===L.lang || !LANG_META[pick]) return;
+  var m = LANG_META[pick], bar = document.createElement('div');
+  bar.className='langbar no-print'; bar.setAttribute('lang', pick); bar.setAttribute('dir', m.dir||'ltr');
+  bar.innerHTML = '<a href="'+esc(langHref(pick))+'"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-'+pick+'"/></svg><b>'+esc(m.name)+'</b><span>'+esc(m.cont)+' →</span></a><button type="button" class="langbar-x" aria-label="×">×</button>';
+  var app = $('#app'); app.insertBefore(bar, app.firstChild.nextSibling);
+  bar.querySelector('a').addEventListener('click', function(){ lsSet('disc.lang', pick); });
+  bar.querySelector('button').addEventListener('click', function(){ lsSet('disc.lang', L.lang); bar.remove(); });
+})();
 document.querySelectorAll('a[data-lang]').forEach(function(a){
   a.addEventListener('click', function(){ var code=a.getAttribute('data-lang'); lsSet('disc.lang', code); a.href=langHref(code); });
 });

@@ -3,8 +3,8 @@
   "dir": "ltr",
   "name": "Português",
   "dateLocale": "pt-BR",
-  "title": "Teste DISC — teste online gratuito de estilos de comportamento",
-  "description": "Teste DISC online gratuito: 24 blocos, 10 minutos. Descubra seu estilo predominante, pontos fortes e áreas de desenvolvimento. Resultado na hora, sem cadastro.",
+  "title": "Teste DISC gratuito — perfil comportamental online em 10 minutos",
+  "description": "Teste DISC gratuito: 24 blocos, 10 minutos, sem cadastro. Descubra seu perfil comportamental, pontos fortes e áreas a desenvolver. Resultado na hora e por e-mail.",
   "brand": "Teste DISC",
   "keys": { "D": "Dominância", "I": "Influência", "S": "Estabilidade", "C": "Conformidade" },
   "short": { "D": "Resultados e controle", "I": "Pessoas e entusiasmo", "S": "Apoio e estabilidade", "C": "Precisão e qualidade" },
@@ -103,8 +103,9 @@
     "adminLink": "Painel do administrador",
 
     "intro.eyebrow": "Questionário de estilos de comportamento",
-    "intro.h1": "Como você age, se comunica e toma decisões?",
+    "intro.h1": "Teste DISC gratuito: como você age, se comunica e toma decisões",
     "intro.lead": "O DISC descreve quatro estilos de comportamento. Todas as pessoas têm os quatro, mas em graus diferentes. O teste mostra o seu estilo predominante, seus pontos fortes, suas áreas de desenvolvimento e a melhor forma de trabalhar com você.",
+    "intro.stylesTitle": "Os quatro estilos DISC",
     "intro.howTitle": "Como funciona",
     "intro.howText": "Cada um dos 24 blocos tem quatro afirmações. Marque a que <b>mais</b> se parece com você e a que <b>menos</b> se parece. Responda como você costuma se comportar no trabalho, não como gostaria de ser. Não pense demais: a primeira reação é a mais precisa.",
     "intro.nameLabel": "Nome completo",
@@ -217,9 +218,6 @@
     "consent.details": "Guardado no seu navegador: o nome e o cargo informados antes do teste; suas respostas e o progresso não concluído; seu último resultado; o idioma escolhido; uma marcação de que você viu este aviso. Os dados ficam apenas no seu dispositivo e são apagados ao limpar os dados do site no navegador. Serviços de terceiros: GitHub Pages (hospedagem) e Google Fonts (fontes) recebem os dados técnicos padrão da requisição. Não usamos análise de tráfego nem rastreadores de publicidade. Ao concluir o teste, seu nome, e-mail e respostas são transmitidos ao serviço de envio de e-mails (Google Apps Script) para lhe enviar o resultado; não são usados para nenhum outro fim.",
     "consent.accept": "Entendi",
 
-    "root.title": "Teste DISC — escolha o idioma",
-    "root.h1": "Escolha o idioma",
-    "root.lead": "Teste DISC gratuito: 24 blocos, cerca de 10 minutos, resultado na hora.",
     "root.continue": "Continuar"
   }
 }

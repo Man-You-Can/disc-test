@@ -3,8 +3,8 @@
   "dir": "ltr",
   "name": "Español",
   "dateLocale": "es-ES",
-  "title": "Test DISC — test gratuito de estilos de comportamiento online",
-  "description": "Test DISC gratuito online: 24 bloques, unos 10 minutos. Descubra su estilo predominante, sus puntos fuertes y sus áreas de mejora. Resultado inmediato, sin registro.",
+  "title": "Test DISC gratis — prueba de personalidad online en 10 minutos",
+  "description": "Test DISC gratis: 24 bloques, 10 minutos, sin registro. Descubra su estilo predominante, puntos fuertes y áreas de mejora. Resultado al instante y por e-mail.",
   "brand": "Test DISC",
   "keys": { "D": "Dominancia", "I": "Influencia", "S": "Estabilidad", "C": "Cumplimiento" },
   "short": { "D": "Resultados y control", "I": "Personas y entusiasmo", "S": "Apoyo y estabilidad", "C": "Precisión y calidad" },
@@ -103,8 +103,9 @@
     "adminLink": "Panel de administración",
 
     "intro.eyebrow": "Cuestionario de estilos de comportamiento",
-    "intro.h1": "¿Cómo actúa, se comunica y toma decisiones?",
+    "intro.h1": "Test DISC gratis: cómo actúa, se comunica y toma decisiones",
     "intro.lead": "DISC describe cuatro estilos de comportamiento. Todas las personas tienen los cuatro, pero en distinta medida. El test le mostrará su estilo predominante, sus puntos fuertes, sus áreas de mejora y cómo trabajar mejor con usted.",
+    "intro.stylesTitle": "Los cuatro estilos DISC",
     "intro.howTitle": "Cómo funciona",
     "intro.howText": "Cada uno de los 24 bloques tiene cuatro afirmaciones. Marque la que <b>más</b> le describe y la que <b>menos</b> le describe. Responda según cómo se comporta habitualmente en el trabajo, no como le gustaría. No lo piense demasiado: la primera reacción es la más precisa.",
     "intro.nameLabel": "Nombre y apellidos",
@@ -217,9 +218,6 @@
     "consent.details": "Se guarda en su navegador: el nombre y el puesto que introduce antes del test; sus respuestas y el progreso sin terminar; su último resultado; el idioma elegido; una marca de que ha visto este aviso. Los datos permanecen solo en su dispositivo y se eliminan al borrar los datos del sitio en el navegador. Servicios de terceros: GitHub Pages (alojamiento) y Google Fonts (fuentes) reciben los datos técnicos estándar de la solicitud. No se utilizan analíticas ni rastreadores publicitarios. Al terminar el test, su nombre, correo electrónico y respuestas se transmiten al servicio de envío de correos (Google Apps Script) para enviarle su resultado; no se utilizan para ningún otro fin.",
     "consent.accept": "Entendido",
 
-    "root.title": "Test DISC — elija su idioma",
-    "root.h1": "Elija su idioma",
-    "root.lead": "Test DISC gratuito: 24 bloques, unos 10 minutos, resultado inmediato.",
     "root.continue": "Continuar"
   }
 }

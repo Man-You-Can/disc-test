@@ -1,81 +1,761 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>DISC Test — choose your language</title>
-<meta name="description" content="Free online DISC test: 24 blocks, about 10 minutes. Discover your dominant behavioral style, strengths, growth areas and how others can work with you best. Instant results, no sign-up.">
+<title>Free DISC Personality Test — Online, 10 Minutes, No Sign-Up</title>
+<meta name="description" content="Free DISC personality test: 24 questions, 10 minutes, no sign-up. Find your dominant style, strengths and growth areas. Instant result, also by email.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Free DISC Personality Test — Online, 10 Minutes, No Sign-Up">
+<meta property="og:description" content="Free DISC personality test: 24 questions, 10 minutes, no sign-up. Find your dominant style, strengths and growth areas. Instant result, also by email.">
+<meta property="og:url" content="https://disc-test.org/">
+<meta property="og:locale" content="en_US">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta property="og:site_name" content="DISC Test">
+<meta property="og:locale:alternate" content="ru_RU">
+<meta property="og:locale:alternate" content="es_ES">
+<meta property="og:locale:alternate" content="zh_CN">
+<meta property="og:locale:alternate" content="ar_AR">
+<meta property="og:locale:alternate" content="pt_BR">
+<meta property="og:locale:alternate" content="fr_FR">
+<meta property="og:locale:alternate" content="de_DE">
+<meta property="og:locale:alternate" content="ja_JP">
+<meta property="og:locale:alternate" content="hi_IN">
+<meta property="og:image" content="https://disc-test.org/og/en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Free DISC Personality Test — Online, 10 Minutes, No Sign-Up">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://disc-test.org/og/en.png">
+<meta name="theme-color" content="#F3F4F6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#14171B" media="(prefers-color-scheme: dark)">
 <link rel="canonical" href="https://disc-test.org/">
-<link rel="alternate" hreflang="en" href="https://disc-test.org/en/">
+<link rel="alternate" hreflang="en" href="https://disc-test.org/">
 <link rel="alternate" hreflang="ru" href="https://disc-test.org/ru/">
 <link rel="alternate" hreflang="es" href="https://disc-test.org/es/">
 <link rel="alternate" hreflang="zh-Hans" href="https://disc-test.org/zh/">
 <link rel="alternate" hreflang="ar" href="https://disc-test.org/ar/">
 <link rel="alternate" hreflang="pt" href="https://disc-test.org/pt/">
+<link rel="alternate" hreflang="pt-BR" href="https://disc-test.org/pt/">
 <link rel="alternate" hreflang="fr" href="https://disc-test.org/fr/">
 <link rel="alternate" hreflang="de" href="https://disc-test.org/de/">
 <link rel="alternate" hreflang="ja" href="https://disc-test.org/ja/">
 <link rel="alternate" hreflang="hi" href="https://disc-test.org/hi/">
 <link rel="alternate" hreflang="x-default" href="https://disc-test.org/">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='9' cy='9' r='6' fill='%23C9453D'/%3E%3Ccircle cx='23' cy='9' r='6' fill='%23D6961F'/%3E%3Ccircle cx='9' cy='23' r='6' fill='%233A9A69'/%3E%3Ccircle cx='23' cy='23' r='6' fill='%233B6FB6'/%3E%3C/svg%3E">
+<link rel="icon" href="./favicon.ico" sizes="32x32">
+<link rel="icon" href="./favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="./apple-touch-icon.png">
+<link rel="manifest" href="./manifest.webmanifest">
+<script type="application/ld+json">[{"@context":"https://schema.org","@type":"WebSite","name":"DISC Test","alternateName":"DISC Test","url":"https://disc-test.org/","inLanguage":"en"},{"@context":"https://schema.org","@type":"WebApplication","name":"DISC Test","url":"https://disc-test.org/","description":"Free DISC personality test: 24 questions, 10 minutes, no sign-up. Find your dominant style, strengths and growth areas. Instant result, also by email.","applicationCategory":"Personality test","operatingSystem":"Any","browserRequirements":"Requires JavaScript","inLanguage":"en","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"image":"https://disc-test.org/og/en.png","publisher":{"@type":"Organization","name":"DISC Test","url":"https://disc-test.org/","logo":"https://disc-test.org/icon-512.png"}}]</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600&family=Golos+Text:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
-:root{color-scheme:light dark;--paper:#F3F4F6;--surface:#fff;--ink:#1B2027;--muted:#5B6470;--line:#D9DDE3;--btn:#1B2027;--btn-ink:#F7F8FA;--focus:#3B6FB6}
-@media (prefers-color-scheme:dark){:root{--paper:#14171B;--surface:#1C2026;--ink:#ECEEF1;--muted:#9AA3AE;--line:#2C323A;--btn:#ECEEF1;--btn-ink:#14171B;--focus:#6390D4}}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:16px;line-height:1.5}
-.wrap{max-width:560px;margin:0 auto;padding:48px 20px}
-.dots{display:inline-flex;gap:4px;margin-bottom:18px}.dots i{width:10px;height:10px;border-radius:50%;display:block}
-h1{font-size:28px;margin:0 0 8px}p{color:var(--muted);margin:0 0 24px}
-h2{font-size:14px;font-weight:600;letter-spacing:.02em;color:var(--muted);margin:0 0 12px}
-.suggest{display:none;margin:0 0 28px}
-.suggest.on{display:block}
-.suggest a{display:flex;align-items:center;gap:12px;padding:16px 18px;border-radius:12px;background:var(--btn);color:var(--btn-ink);text-decoration:none;font-size:18px;font-weight:600}
-.suggest a .flag{box-shadow:inset 0 0 0 1px rgba(127,127,127,.35)}
-.suggest a small{font-size:15px;font-weight:500;opacity:.8}
-ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:8px}
-li a{display:flex;align-items:center;gap:10px;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);text-decoration:none;font-weight:500}
-li a:hover{border-color:var(--muted)}
-li.is-suggested a{border-color:var(--ink);box-shadow:0 0 0 1px var(--ink)}
-a:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
-.flag{width:22px;height:15px;border-radius:2.5px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.14);flex:none}
-@media (max-width:420px){ul{grid-template-columns:1fr}}
+:root{
+  color-scheme:light;
+  --paper:#F3F4F6; --surface:#FFFFFF; --ink:#1B2027; --muted:#5B6470;
+  --line:#D9DDE3; --line-strong:#B4BBC5; --soft:#E9EBEF;
+  --d:#C9453D; --i:#D6961F; --s:#3A9A69; --c:#3B6FB6;
+  --btn:#1B2027; --btn-ink:#F7F8FA; --focus:#3B6FB6;
+  --most:#1B2027; --least:#8A93A0;
+  --shadow:0 1px 2px rgba(27,32,39,.05),0 10px 30px -18px rgba(27,32,39,.25);
+  --font-head:'Unbounded',sans-serif;
+  --font-body:'Golos Text',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --font-mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --paper:#14171B; --surface:#1C2026; --ink:#ECEEF1; --muted:#9AA3AE;
+    --line:#2C323A; --line-strong:#4A525C; --soft:#242930;
+    --d:#E2665E; --i:#E8B048; --s:#55B382; --c:#6390D4;
+    --btn:#ECEEF1; --btn-ink:#14171B; --focus:#6390D4;
+    --most:#ECEEF1; --least:#7F8894;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px -18px rgba(0,0,0,.6);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --paper:#14171B; --surface:#1C2026; --ink:#ECEEF1; --muted:#9AA3AE;
+  --line:#2C323A; --line-strong:#4A525C; --soft:#242930;
+  --d:#E2665E; --i:#E8B048; --s:#55B382; --c:#6390D4;
+  --btn:#ECEEF1; --btn-ink:#14171B; --focus:#6390D4;
+  --most:#ECEEF1; --least:#7F8894;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px -18px rgba(0,0,0,.6);
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{background:var(--paper)}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+html[lang=ar] body,html[lang=hi] body{font-size:17px;line-height:1.65}
+.wrap{max-width:760px;margin:0 auto;padding:0 20px 56px;transition:max-width .2s}
+.wrap.wide{max-width:960px}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 0 16px}
+.brand{font-family:var(--font-head);font-weight:500;font-size:15px;letter-spacing:.02em;display:flex;align-items:center;gap:10px;color:inherit;text-decoration:none;border-radius:6px}
+.brand:hover{opacity:.75}
+.brand .dots{display:inline-flex;gap:3px;direction:ltr}
+.brand .dots i{width:8px;height:8px;border-radius:50%;display:block}
+.tools{display:flex;align-items:center;gap:12px;min-width:0}
+.step{font-family:var(--font-mono);font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.flag{width:20px;height:13.5px;border-radius:2.5px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.14);flex:none;display:inline-block;vertical-align:-2px}
+.langsel{position:relative}
+.langbtn{display:inline-flex;align-items:center;gap:8px;font:inherit;font-size:13px;line-height:1.2;padding:6px 10px;border:1px solid var(--line-strong);border-radius:8px;background:var(--surface);color:var(--ink);cursor:pointer;white-space:nowrap}
+.langbtn:hover{border-color:var(--muted)}
+.langbtn .chev{width:12px;height:12px;color:var(--muted);flex:none}
+.langbtn[aria-expanded=true] .chev{transform:rotate(180deg)}
+@media (max-width:380px){.langbtn .langname{display:none}}
+.langmenu{position:absolute;top:calc(100% + 6px);inset-inline-end:0;margin:0;padding:6px;list-style:none;background:var(--surface);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);min-width:190px;z-index:20}
+.langmenu a{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:8px;color:var(--ink);text-decoration:none;font-size:14px;white-space:nowrap}
+.langmenu a:hover,.langmenu a:focus-visible{background:var(--soft)}
+.langmenu a[aria-selected=true]{font-weight:600}
+.langmenu a[aria-selected=true]::after{content:"✓";margin-inline-start:auto;padding-inline-start:10px;color:var(--muted);font-size:12px}
+.langbar{display:flex;align-items:center;gap:10px;margin:12px 0 0;padding:8px 10px 8px 14px;border:1px solid var(--line);border-radius:10px;background:var(--surface);font-size:14px}
+.langbar a{display:inline-flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;flex:1;min-width:0}
+.langbar a b{font-weight:600}
+.langbar a span{color:var(--muted)}
+.langbar a:hover span{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+.langbar-x{background:none;border:0;font:inherit;font-size:18px;line-height:1;color:var(--muted);cursor:pointer;padding:4px 6px;border-radius:6px}
+.langbar-x:hover{color:var(--ink);background:var(--soft)}
+.styles-intro{margin-top:34px}
+.styles-intro h2{font-size:22px;margin-bottom:14px}
+.stylegrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:640px){.stylegrid{grid-template-columns:1fr}}
+.stylecard{background:var(--surface);border:1px solid var(--line);border-inline-start:4px solid var(--k);border-radius:12px;padding:16px 18px}
+.stylecard h3{font-family:var(--font-head);font-size:15px;font-weight:600;text-transform:none;letter-spacing:0;color:var(--ink);margin:0 0 8px;display:flex;align-items:center;gap:8px;line-height:1.3}
+.stylecard h3 .k{color:var(--k);font-size:18px}
+.stylecard p{font-size:14px;margin-bottom:10px}
+.stylecard .traits span{font-size:12px}
+.progress{display:grid;grid-template-columns:repeat(24,1fr);gap:3px;height:6px;margin:0 0 28px}
+.progress i{display:block;background:var(--line);border-radius:2px;transition:background .2s}
+.progress i.done{background:var(--ink)}
+.progress i.cur{background:var(--ink);opacity:.35}
+h1{font-family:var(--font-head);font-weight:500;font-size:clamp(26px,4.2vw,36px);line-height:1.2;letter-spacing:-.01em;margin:0 0 14px;text-wrap:balance}
+h2{font-family:var(--font-head);font-weight:500;font-size:17px;line-height:1.35;margin:0 0 12px;text-wrap:balance}
+h3{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin:0 0 8px}
+html[lang=ar] h3,html[lang=hi] h3,html[lang=zh] h3,html[lang=ja] h3,html[lang=ar] .eyebrow,html[lang=hi] .eyebrow,html[lang=zh] .eyebrow,html[lang=ja] .eyebrow{letter-spacing:.04em;font-size:13px}
+p{margin:0 0 12px}
+.eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:600;margin-bottom:12px}
+.lead{font-size:18px;max-width:62ch;margin-bottom:22px}
+.muted{color:var(--muted)}
+.small{font-size:14px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px}
+.card+.card,.stack>*+*{margin-top:16px}
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:22px 0 26px}
+@media (max-width:640px){.tiles{grid-template-columns:repeat(2,1fr)}}
+.tile{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--k);border-radius:10px;padding:12px 14px 12px}
+.tile b{font-family:var(--font-head);font-weight:600;font-size:24px;color:var(--k);display:block;line-height:1;margin-bottom:6px}
+.tile strong{display:block;font-weight:600;font-size:14px}
+.tile span{display:block;font-size:13px;color:var(--muted)}
+.form{display:grid;gap:14px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-size:14px;font-weight:500}
+.field .hint{font-size:13px;color:var(--muted)}
+input[type=text],textarea{font:inherit;padding:12px 14px;border:1px solid var(--line-strong);border-radius:10px;background:var(--surface);color:var(--ink);width:100%}
+textarea{resize:vertical;min-height:96px;font-family:var(--font-mono);font-size:13px;line-height:1.5}
+input:focus-visible,textarea:focus-visible,button:focus-visible,select:focus-visible,a:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.btn{font:inherit;font-weight:600;font-size:15px;padding:12px 20px;border-radius:10px;border:1px solid transparent;background:var(--btn);color:var(--btn-ink);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;line-height:1.2;white-space:nowrap;flex:none}
+.btn.secondary{background:transparent;color:var(--ink);border-color:var(--line-strong)}
+.btn.small{padding:8px 14px;font-size:14px}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.btn:not(:disabled):hover{filter:brightness(.92)}
+.link{background:none;border:0;padding:0;font:inherit;color:var(--muted);cursor:pointer;text-decoration:underline;text-underline-offset:3px;text-align:start}
+.link:hover{color:var(--ink)}
+.actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.actions.between{justify-content:space-between}
+.foot{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+.foot .row2{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.foot .privacy{margin-top:6px}
+.langs{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:14px}
+.langs a{color:var(--muted);text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.langs a:hover{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+.langs a[aria-current]{color:var(--ink);font-weight:600}
+/* test */
+.qhead{display:grid;grid-template-columns:64px 1fr 64px;align-items:end;gap:6px;padding-bottom:10px}
+.qhead span{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);text-align:center;line-height:1.25}
+html[lang=ar] .qhead span,html[lang=hi] .qhead span,html[lang=zh] .qhead span,html[lang=ja] .qhead span{letter-spacing:0;font-size:12px}
+.qhead .n{font-family:var(--font-mono);font-size:13px;color:var(--muted);text-align:center;text-transform:none;letter-spacing:0;font-weight:400;direction:ltr;padding-bottom:2px}
+.row{display:grid;grid-template-columns:64px 1fr 64px;align-items:center;min-height:60px;border-top:1px solid var(--line);gap:6px}
+.row .txt{font-size:17px;padding:12px 6px;line-height:1.35}
+.row.is-most .txt{font-weight:600}
+.row.is-least .txt{color:var(--muted)}
+.pick{width:36px;height:36px;border-radius:50%;border:2px solid var(--line-strong);background:transparent;margin:auto;cursor:pointer;display:grid;place-items:center;color:transparent;padding:0;transition:background .15s,border-color .15s}
+.pick svg{width:18px;height:18px;display:block}
+.pick.most:hover{border-color:var(--most)}
+.pick.least:hover{border-color:var(--least)}
+.pick.most.on{background:var(--most);border-color:var(--most);color:var(--paper)}
+.pick.least.on{background:var(--least);border-color:var(--least);color:var(--paper)}
+@media (max-width:480px){.qhead,.row{grid-template-columns:52px 1fr 52px}.row .txt{font-size:16px}}
+.testcard{padding:18px 22px 20px}
+.testnav{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:18px;padding-top:16px;border-top:1px solid var(--line)}
+.hintline{font-size:13px;color:var(--muted);margin-top:14px}
+/* report */
+.rhead{display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:center;margin-bottom:18px}
+@media (max-width:560px){.rhead{grid-template-columns:1fr}}
+.badge{display:inline-flex;align-items:baseline;gap:2px;direction:ltr;font-family:var(--font-head);font-weight:600;font-size:64px;line-height:1;padding:14px 20px;border-radius:14px;background:var(--surface);border:1px solid var(--line)}
+.badge .p{color:var(--kp)}
+.badge .s{font-size:36px;color:var(--ks)}
+.rtitle .eyebrow{margin-bottom:6px}
+.rtitle h1{margin-bottom:6px}
+.rtitle .meta{font-size:14px;color:var(--muted)}
+.graphcard{display:grid;grid-template-columns:1.25fr 1fr;gap:22px;align-items:start}
+@media (max-width:700px){.graphcard{grid-template-columns:1fr}}
+.graph svg{width:100%;height:auto;display:block;direction:ltr}
+.graph .ax{font-family:var(--font-mono);font-size:10px;fill:var(--muted)}
+.graph .kl{font-family:var(--font-head);font-size:14px;font-weight:600}
+.graph .s1{stroke:var(--muted);stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+.graph .s2{stroke:var(--muted);stroke-width:1.5;fill:none;stroke-dasharray:1.5 3.5;stroke-linecap:round}
+.graph .s3{stroke:var(--ink);stroke-width:2.5;fill:none;stroke-linejoin:round}
+.graph circle.s1,.graph circle.s2{stroke-dasharray:none;stroke-width:1.5}
+.graph circle.s3{stroke:var(--surface);stroke-width:2}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:8px;font-size:13px}
+.legend label{display:inline-flex;align-items:center;gap:6px;cursor:pointer}
+.legend .sw{width:22px;height:0;border-top:2.5px solid var(--ink);display:inline-block}
+.legend .sw.s1{border-top:1.5px dashed var(--muted)}
+.legend .sw.s2{border-top:1.5px dotted var(--muted)}
+.stats{display:grid;gap:8px}
+.stat{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;border-inline-start:4px solid var(--k);padding:6px 0;padding-inline-start:12px}
+.stat .k{font-family:var(--font-head);font-weight:600;font-size:18px;color:var(--k);width:22px}
+.stat .nm{font-size:14px}
+.stat .nm small{display:block;color:var(--muted);font-size:12px;font-family:var(--font-mono)}
+.stat .v{font-family:var(--font-mono);font-size:20px;font-weight:500;font-variant-numeric:tabular-nums;direction:ltr}
+.bar{height:6px;background:var(--soft);border-radius:3px;overflow:hidden;grid-column:1/-1}
+.bar i{display:block;height:100%;background:var(--k);border-radius:3px}
+.howto{font-size:13px;color:var(--muted);margin-top:14px;padding-top:12px;border-top:1px solid var(--line)}
+.sections{display:grid;grid-template-columns:1fr 1fr;gap:18px 26px}
+@media (max-width:680px){.sections{grid-template-columns:1fr}}
+.sec ul{margin:0;padding-inline-start:18px}
+.sec li{margin-bottom:6px}
+.sec.full{grid-column:1/-1}
+.traits{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:6px}
+.traits span{font-size:13px;padding:4px 10px;border-radius:999px;background:var(--soft);color:var(--ink)}
+.substyle{border-inline-start:4px solid var(--ks);padding:4px 0;padding-inline-start:14px;margin-top:4px}
+.share{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:var(--shadow)}
+.codebox{font-family:var(--font-mono);font-size:12px;line-height:1.5;word-break:break-all;background:var(--paper);border:1px dashed var(--line-strong);padding:10px 12px;border-radius:8px;margin:12px 0;color:var(--ink);width:100%;min-height:0;resize:none;direction:ltr;text-align:left}
+.notice{background:var(--soft);border-radius:10px;padding:12px 14px;font-size:14px}
+.sendstatus{margin:-4px 0 10px;padding:8px 12px;border-radius:8px;background:var(--soft)}
+.sendstatus.ok{color:var(--s)}
+.sendstatus.err{color:var(--d)}
+.sendstatus .link{color:inherit}
+/* admin */
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:720px}
+th,td{text-align:start;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:middle;white-space:nowrap}
+th{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:600;background:var(--paper)}
+tr:last-child td{border-bottom:0}
+td.num{font-family:var(--font-mono);font-variant-numeric:tabular-nums;text-align:end;direction:ltr}
+th.num{text-align:end}
+.pill{display:inline-flex;align-items:baseline;gap:1px;direction:ltr;font-family:var(--font-head);font-weight:600;font-size:15px}
+.pill .p{color:var(--kp)}.pill .s{color:var(--ks);font-size:12px}
+.pill+small{font-weight:400;color:var(--muted);margin-inline-start:6px;font-size:13px}
+.empty{padding:28px;text-align:center;color:var(--muted);font-size:14px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--btn);color:var(--btn-ink);padding:10px 16px;border-radius:10px;font-size:14px;box-shadow:var(--shadow);z-index:30;max-width:90vw;text-align:center}
+/* уведомление о cookie */
+.consent{position:fixed;left:0;right:0;bottom:0;z-index:20;padding:0 12px 12px}
+.consent-in{max-width:760px;margin:0 auto;background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:14px 16px;display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;font-size:13px;line-height:1.5}
+.consent-in>p{margin:0;flex:1 1 320px;color:var(--ink)}
+.consent-in .btn{flex:none}
+.consent-in details{flex:1 1 100%;color:var(--muted)}
+.consent-in summary{cursor:pointer;display:inline;list-style:none;text-decoration:underline;text-underline-offset:3px}
+.consent-in summary::-webkit-details-marker{display:none}
+.consent-in details p{margin:8px 0 0}
+body.has-consent{padding-bottom:160px}
+@media (max-width:640px){body.has-consent{padding-bottom:300px}}
+@media print{.consent{display:none!important}}
+@media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
+@media print{
+  @page{margin:16mm}
+  body{background:#fff;color:#111}
+  .topbar,.progress,.foot,.no-print,.toast,.legend{display:none!important}
+  .wrap{max-width:none;padding:0}
+  .card,.share,.badge{border:1px solid #ccc;box-shadow:none;break-inside:avoid}
+  .sections{grid-template-columns:1fr 1fr}
+}
 </style>
 </head>
 <body>
 <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true"><symbol id="flag-en" viewBox="0 0 30 20"><rect width="30" height="20" fill="#012169"/><path d="M0 0L30 20M30 0L0 20" stroke="#fff" stroke-width="4"/><path d="M0 0L30 20M30 0L0 20" stroke="#C8102E" stroke-width="1.6"/><path d="M15 0V20M0 10H30" stroke="#fff" stroke-width="6"/><path d="M15 0V20M0 10H30" stroke="#C8102E" stroke-width="3.6"/></symbol><symbol id="flag-ru" viewBox="0 0 30 20"><rect width="30" height="20" fill="#fff"/><rect y="6.67" width="30" height="6.67" fill="#0039A6"/><rect y="13.33" width="30" height="6.67" fill="#D52B1E"/></symbol><symbol id="flag-es" viewBox="0 0 30 20"><rect width="30" height="20" fill="#AA151B"/><rect y="5" width="30" height="10" fill="#F1BF00"/></symbol><symbol id="flag-zh" viewBox="0 0 30 20"><rect width="30" height="20" fill="#EE1C25"/><polygon points="5.00,2.00 5.67,4.07 7.85,4.07 6.09,5.35 6.76,7.43 5.00,6.15 3.24,7.43 3.91,5.35 2.15,4.07 4.33,4.07" fill="#FFDE00"/><polygon points="10.00,1.00 10.22,1.69 10.95,1.69 10.36,2.12 10.59,2.81 10.00,2.38 9.41,2.81 9.64,2.12 9.05,1.69 9.78,1.69" fill="#FFDE00"/><polygon points="12.00,3.20 12.22,3.89 12.95,3.89 12.36,4.32 12.59,5.01 12.00,4.58 11.41,5.01 11.64,4.32 11.05,3.89 11.78,3.89" fill="#FFDE00"/><polygon points="12.00,6.00 12.22,6.69 12.95,6.69 12.36,7.12 12.59,7.81 12.00,7.38 11.41,7.81 11.64,7.12 11.05,6.69 11.78,6.69" fill="#FFDE00"/><polygon points="10.00,8.00 10.22,8.69 10.95,8.69 10.36,9.12 10.59,9.81 10.00,9.38 9.41,9.81 9.64,9.12 9.05,8.69 9.78,8.69" fill="#FFDE00"/></symbol><symbol id="flag-ar" viewBox="0 0 30 20"><rect width="30" height="20" fill="#006C35"/><path d="M7 8.5c1.5-2.2 3-2.2 4 0s2.5 2.2 4 0 3-2.2 4 0 2.5 2.2 4 0" fill="none" stroke="#fff" stroke-width="1.3" stroke-linecap="round"/><path d="M7.5 13.5H21.5" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/><path d="M21.2 12.2v2.6" stroke="#fff" stroke-width="1.2" stroke-linecap="round"/></symbol><symbol id="flag-pt" viewBox="0 0 30 20"><rect width="30" height="20" fill="#009C3B"/><polygon points="15,2.5 27,10 15,17.5 3,10" fill="#FFDF00"/><circle cx="15" cy="10" r="4.6" fill="#002776"/><path d="M10.7 9.3c2.9-1.5 5.9-1.3 8.6.4" fill="none" stroke="#fff" stroke-width=".9"/></symbol><symbol id="flag-fr" viewBox="0 0 30 20"><rect width="10" height="20" fill="#0055A4"/><rect x="10" width="10" height="20" fill="#fff"/><rect x="20" width="10" height="20" fill="#EF4135"/></symbol><symbol id="flag-de" viewBox="0 0 30 20"><rect width="30" height="6.67" fill="#000"/><rect y="6.67" width="30" height="6.67" fill="#DD0000"/><rect y="13.33" width="30" height="6.67" fill="#FFCE00"/></symbol><symbol id="flag-ja" viewBox="0 0 30 20"><rect width="30" height="20" fill="#fff"/><circle cx="15" cy="10" r="6" fill="#BC002D"/></symbol><symbol id="flag-hi" viewBox="0 0 30 20"><rect width="30" height="6.67" fill="#FF9933"/><rect y="6.67" width="30" height="6.67" fill="#fff"/><rect y="13.33" width="30" height="6.67" fill="#138808"/><circle cx="15" cy="10" r="2.6" fill="none" stroke="#000080" stroke-width=".8"/><circle cx="15" cy="10" r=".6" fill="#000080"/></symbol></svg>
-<div class="wrap">
-  <div class="dots"><i style="background:#C9453D"></i><i style="background:#D6961F"></i><i style="background:#3A9A69"></i><i style="background:#3B6FB6"></i></div>
-  <h1>DISC Test</h1>
-  <p>Free DISC test: 24 blocks, about 10 minutes, instant results.</p>
-  <div class="suggest" id="suggest"></div>
-  <h2>Choose your language</h2>
-  <ul id="langs"><li><a href="./en/" hreflang="en" lang="en" data-lang="en" data-continue="Continue"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-en"/></svg><span>English</span></a></li><li><a href="./ru/" hreflang="ru" lang="ru" data-lang="ru" data-continue="Продолжить"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-ru"/></svg><span>Русский</span></a></li><li><a href="./es/" hreflang="es" lang="es" data-lang="es" data-continue="Continuar"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-es"/></svg><span>Español</span></a></li><li><a href="./zh/" hreflang="zh-Hans" lang="zh" data-lang="zh" data-continue="继续"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-zh"/></svg><span>简体中文</span></a></li><li><a href="./ar/" hreflang="ar" lang="ar" data-lang="ar" data-continue="متابعة"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-ar"/></svg><span>العربية</span></a></li><li><a href="./pt/" hreflang="pt" lang="pt" data-lang="pt" data-continue="Continuar"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-pt"/></svg><span>Português</span></a></li><li><a href="./fr/" hreflang="fr" lang="fr" data-lang="fr" data-continue="Continuer"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-fr"/></svg><span>Français</span></a></li><li><a href="./de/" hreflang="de" lang="de" data-lang="de" data-continue="Weiter"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-de"/></svg><span>Deutsch</span></a></li><li><a href="./ja/" hreflang="ja" lang="ja" data-lang="ja" data-continue="続ける"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-ja"/></svg><span>日本語</span></a></li><li><a href="./hi/" hreflang="hi" lang="hi" data-lang="hi" data-continue="जारी रखें"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-hi"/></svg><span>हिन्दी</span></a></li></ul>
+<div class="wrap" id="app">
+  <header class="topbar">
+    <a class="brand" id="brand" href="./" aria-label="DISC Test"><span class="dots"><i style="background:var(--d)"></i><i style="background:var(--i)"></i><i style="background:var(--s)"></i><i style="background:var(--c)"></i></span>DISC Test</a>
+    <div class="tools"><div class="step" id="step"></div>
+      <div class="langsel" id="langSel"><button type="button" class="langbtn" id="langBtn" aria-haspopup="listbox" aria-expanded="false" aria-label="Language"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-en"/></svg><span class="langname">English</span><svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5l3.5 3.5 3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><ul class="langmenu" id="langMenu" role="listbox" aria-label="Language" hidden><li role="none"><a role="option" href="./" hreflang="en" lang="en" data-lang="en" aria-selected="true" tabindex="-1"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-en"/></svg><span>English</span></a></li><li role="none"><a role="option" href="./ru/" hreflang="ru" lang="ru" data-lang="ru" aria-selected="false" tabindex="-1"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-ru"/></svg><span>Русский</span></a></li><li role="none"><a role="option" href="./es/" hreflang="es" lang="es" data-lang="es" aria-selected="false" tabindex="-1"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-es"/></svg><span>Español</span></a></li><li role="none"><a role="option" href="./zh/" hreflang="zh-Hans" lang="zh" data-lang="zh" aria-selected="false" tabindex="-1"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-zh"/></svg><span>简体中文</span></a></li><li role="none"><a role="option" href="./ar/" hreflang="ar" lang="ar" data-lang="ar" aria-selected="false" tabindex="-1"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-ar"/></svg><span>العربية</span></a></li><li role="none"><a role="option" href="./pt/" hreflang="pt" lang="pt" data-lang="pt" aria-selected="false" tabindex="-1"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-pt"/></svg><span>Português</span></a></li><li role="none"><a role="option" href="./fr/" hreflang="fr" lang="fr" data-lang="fr" aria-selected="false" tabindex="-1"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-fr"/></svg><span>Français</span></a></li><li role="none"><a role="option" href="./de/" hreflang="de" lang="de" data-lang="de" aria-selected="false" tabindex="-1"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-de"/></svg><span>Deutsch</span></a></li><li role="none"><a role="option" href="./ja/" hreflang="ja" lang="ja" data-lang="ja" aria-selected="false" tabindex="-1"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-ja"/></svg><span>日本語</span></a></li><li role="none"><a role="option" href="./hi/" hreflang="hi" lang="hi" data-lang="hi" aria-selected="false" tabindex="-1"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-hi"/></svg><span>हिन्दी</span></a></li></ul></div></div>
+  </header>
+  <div class="progress" id="progress" hidden></div>
+  <main id="view"><div class="eyebrow">Behavioral style questionnaire</div><h1>Free DISC test: how you act, communicate and make decisions</h1><p class="lead">DISC describes four styles of behavior. Everyone has all four, but to different degrees. The test will show your dominant style, your strengths, your growth areas and how others can work with you best.</p><div class="tiles"><div class="tile" style="--k:var(--d)"><b>D</b><strong>Dominance</strong><span>Results and control</span></div><div class="tile" style="--k:var(--i)"><b>I</b><strong>Influence</strong><span>People and enthusiasm</span></div><div class="tile" style="--k:var(--s)"><b>S</b><strong>Steadiness</strong><span>Support and stability</span></div><div class="tile" style="--k:var(--c)"><b>C</b><strong>Conscientiousness</strong><span>Accuracy and quality</span></div></div><div class="card"><h2>How it works</h2><p>Each of the 24 blocks has four statements. Mark the one that describes you <b>most</b> and the one that describes you <b>least</b>. Answer the way you usually behave at work, not the way you would like to. Don't overthink it: your first reaction is the most accurate.</p><form class="form" id="startForm" autocomplete="on"><div class="field"><label for="nm">First and last name</label><input type="text" id="nm" name="name" autocomplete="name" required maxlength="80" value=""></div><div class="field"><label for="em">Email address to send your result to</label><input type="email" id="em" name="email" autocomplete="email" inputmode="email" required maxlength="120" value=""><span class="hint">When you finish the test, your result will be emailed to this address.</span></div><div class="actions"><button class="btn" type="submit">Start the test</button></div></form></div><section class="styles-intro"><h2>The four DISC styles</h2><div class="stylegrid"><article class="stylecard" style="--k:var(--d)"><h3><span class="k">D</span>Dominance · Achiever</h3><p>You move toward the goal directly and fast: you take the initiative, decide without lengthy discussion and aren&#39;t afraid of resistance. Being in control and seeing measurable results matters to you.</p><div class="traits"><span>Direct</span><span>Decisive</span><span>Results-driven</span><span>Independent</span><span>Demanding</span></div></article><article class="stylecard" style="--k:var(--i)"><h3><span class="k">I</span>Influence · Inspirer</h3><p>You work through people: you make connections easily, spread enthusiasm and persuade with words and mood. Recognition and lively interaction matter to you, while formalities and routine wear you out quickly.</p><div class="traits"><span>Sociable</span><span>Optimistic</span><span>Emotional</span><span>Persuasive</span><span>Spontaneous</span></div></article><article class="stylecard" style="--k:var(--s)"><h3><span class="k">S</span>Steadiness · Anchor</h3><p>You create stability: you keep your word, finish what you start, support people and smooth over conflicts. Predictability, trust and time to get used to change matter to you.</p><div class="traits"><span>Patient</span><span>Reliable</span><span>Calm</span><span>Attentive to people</span><span>Consistent</span></div></article><article class="stylecard" style="--k:var(--c)"><h3><span class="k">C</span>Conscientiousness · Analyst</h3><p>You rely on facts and standards: you check, analyze, plan and dislike hasty decisions. Quality and being right matter to you more than speed and outward effect.</p><div class="traits"><span>Precise</span><span>Analytical</span><span>Cautious</span><span>Systematic</span><span>Reserved</span></div></article></div></section></main>
+  <footer class="foot">
+    <div class="row2"><span>24 blocks · about 10 minutes · no right or wrong answers</span><button class="link" id="adminLink" type="button">Admin panel</button></div>
+    <div class="privacy">Your answers stay in your browser; your result is sent only to the email address you provide.</div>
+    <nav class="langs" aria-label="Language"><a href="./" hreflang="en" lang="en" data-lang="en" aria-current="page"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-en"/></svg><span>English</span></a><a href="./ru/" hreflang="ru" lang="ru" data-lang="ru"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-ru"/></svg><span>Русский</span></a><a href="./es/" hreflang="es" lang="es" data-lang="es"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-es"/></svg><span>Español</span></a><a href="./zh/" hreflang="zh-Hans" lang="zh" data-lang="zh"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-zh"/></svg><span>简体中文</span></a><a href="./ar/" hreflang="ar" lang="ar" data-lang="ar"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-ar"/></svg><span>العربية</span></a><a href="./pt/" hreflang="pt" lang="pt" data-lang="pt"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-pt"/></svg><span>Português</span></a><a href="./fr/" hreflang="fr" lang="fr" data-lang="fr"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-fr"/></svg><span>Français</span></a><a href="./de/" hreflang="de" lang="de" data-lang="de"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-de"/></svg><span>Deutsch</span></a><a href="./ja/" hreflang="ja" lang="ja" data-lang="ja"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-ja"/></svg><span>日本語</span></a><a href="./hi/" hreflang="hi" lang="hi" data-lang="hi"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-hi"/></svg><span>हिन्दी</span></a></nav>
+  </footer>
 </div>
+<div class="toast" id="toast" hidden></div>
+
 <script>
 (function(){
-  // Автоперенаправления нет: страница показывает все языковые версии (так советует Google),
-  // а ранее выбранный или определённый по настройкам браузера язык выносится наверх кнопкой.
-  var links = document.querySelectorAll('#langs a'), hash = location.hash || '';
-  var LANGS = [], byLang = {};
-  for (var i = 0; i < links.length; i++) {
-    var l = links[i].getAttribute('data-lang'); LANGS.push(l); byLang[l] = links[i];
-    if (hash) links[i].setAttribute('href', links[i].getAttribute('href') + hash);
+'use strict';
+/* ====== локаль и настройки ====== */
+var L = {"lang":"en","dir":"ltr","name":"English","dateLocale":"en-US","title":"Free DISC Personality Test — Online, 10 Minutes, No Sign-Up","description":"Free DISC personality test: 24 questions, 10 minutes, no sign-up. Find your dominant style, strengths and growth areas. Instant result, also by email.","brand":"DISC Test","keys":{"D":"Dominance","I":"Influence","S":"Steadiness","C":"Conscientiousness"},"short":{"D":"Results and control","I":"People and enthusiasm","S":"Support and stability","C":"Accuracy and quality"},"addon":{"D":"more drive, speed and readiness to take responsibility","I":"more sociability, optimism and the ability to inspire people","S":"more patience, reliability and attention to the team","C":"more precision, caution and reliance on facts"},"blocks":[{"I":"Sociable","D":"Decisive","C":"Precise","S":"Patient"},{"C":"I check every detail","S":"I support others","D":"I take the initiative","I":"I make friends easily"},{"S":"I value stability","C":"I value order and rules","I":"I like being the center of attention","D":"I like to compete"},{"D":"Straightforward","S":"Calm","I":"Optimistic","C":"Cautious"},{"I":"I persuade people easily","C":"I rely on facts","S":"I know how to listen","D":"I make decisions quickly"},{"S":"Reliable","D":"Persistent","C":"Systematic","I":"Charming"},{"C":"I follow the plan","I":"I inspire those around me","D":"I set ambitious goals","S":"I keep my word"},{"D":"Independent","C":"Analytical","S":"Even-tempered","I":"Emotional"},{"I":"I enjoy meeting new people","S":"I enjoy a familiar routine","D":"I enjoy difficult challenges","C":"I enjoy digging into details"},{"C":"Disciplined","D":"Demanding","I":"Talkative","S":"Kind-hearted"},{"S":"I avoid conflict","I":"I express my feelings easily","C":"I weigh every word","D":"I say exactly what I think"},{"D":"Strong-willed","I":"Enthusiastic","S":"Modest","C":"Meticulous"},{"I":"I energize people","C":"I watch over quality","D":"I take responsibility","S":"I help the team"},{"C":"Level-headed","S":"Consistent","I":"Easy-going","D":"Bold"},{"S":"Team-oriented","D":"Results-oriented","C":"Quality-oriented","I":"People-oriented"},{"D":"Impatient","C":"Overly critical","S":"Slow to accept change","I":"Impulsive"},{"I":"I trust people","S":"I stay loyal","D":"I take risks","C":"I follow standards"},{"C":"Reserved","I":"Charismatic","S":"Gentle","D":"Energetic"},{"S":"I don't rush to conclusions","C":"I clarify all the conditions","D":"I get straight to the point","I":"I easily find common ground"},{"D":"Self-confident","S":"Tactful","I":"Eloquent","C":"Organized"},{"I":"I like to present","D":"I like to lead","C":"I like to analyze","S":"I like to help"},{"C":"Thorough","S":"Caring","I":"Outgoing","D":"Goal-driven"},{"S":"I accept things as they are","I":"I switch gears easily","D":"I argue when I disagree","C":"I insist on accuracy"},{"D":"Authoritative","C":"Logical","I":"Lively","S":"Predictable"}],"styles":{"D":{"traits":["Direct","Decisive","Results-driven","Independent","Demanding"],"strengths":["You make decisions quickly and take responsibility for them","You keep your footing in a crisis and act when others hesitate","You set ambitious goals and achieve them","You speak plainly, without ambiguity"],"growth":["Impatience with people who work more slowly or carefully","A tendency to push a decision through without hearing alternatives","Bluntness that others experience as pressure"],"motivation":["Authority and the ability to influence how things go","Difficult tasks and challenges","Freedom from micromanagement","Measurable results and wins"],"stress":"Under pressure you become harder and less tolerant: you interrupt, take everything on yourself and bypass rules for the sake of speed. Clear authority and room to act independently help.","communication":["Keep it short and to the point: results, deadlines, options","Don't drag out the introduction or beat around the bush","Offer a choice rather than a ready-made answer: deciding for themselves matters","Argue with facts, not emotions"],"environment":"A dynamic environment with a lot of autonomy, clear goals and a direct link between effort and results. Routine and tight supervision are demotivating."},"I":{"traits":["Sociable","Optimistic","Emotional","Persuasive","Spontaneous"],"strengths":["You connect with people easily and win them over","You inspire and motivate the team","You generate ideas and see opportunities where others see problems","You stay optimistic in difficult situations"],"growth":["Promises made in the heat of the moment that are hard to keep later","Not enough attention to details and deadlines","A tendency to talk more than listen"],"motivation":["Recognition and approval","Communication and teamwork","Freedom of self-expression","Novelty and variety of tasks"],"stress":"Under pressure you become scattered and impulsive, avoid unpleasant conversations and may overestimate how things stand. Open discussion and support from colleagues help.","communication":["Start with a personal connection, not the agenda","Give room to speak up and discuss ideas","Acknowledge contributions publicly","Put agreements in writing: it helps both sides"],"environment":"An open, friendly environment with plenty of contact, recognition and freedom from rigid procedures. Isolation and monotony drain the energy."},"S":{"traits":["Patient","Reliable","Calm","Attentive to people","Consistent"],"strengths":["You can be relied on over the long haul","You know how to listen to and support others","You work patiently and methodically","You bring the team together and defuse conflicts"],"growth":["Resistance to change, even beneficial change","Difficulty saying no and standing your ground","Keeping disagreement to yourself to preserve the peace"],"motivation":["Stability and predictability","Sincere appreciation for your contribution","Clear expectations and rules of the game","Working in a close-knit team"],"stress":"Under pressure you withdraw, become overly accommodating and put off decisions. Sudden change and open conflict are especially hard to bear. Time to adjust and a calm conversation help.","communication":["Give advance notice of changes and explain why they are needed","Ask for their opinion directly: they rarely volunteer it","Don't push or rush them for an answer","Thank them for specific contributions"],"environment":"A stable environment with clear processes, good relationships and a reasonable pace of change. Chaos, constant switching and aggressive competition are exhausting."},"C":{"traits":["Precise","Analytical","Cautious","Systematic","Reserved"],"strengths":["High quality of work and attention to detail","Logic and objectivity in judgment","The ability to think through risks and plan ahead","Discipline and sticking to agreements"],"growth":["Perfectionism and missed deadlines in pursuit of the ideal","Excessive criticism of yourself and others","Retreating into analysis instead of acting"],"motivation":["Clear standards and quality criteria","Time for analysis and preparation","Recognition of expertise","Logical, well-founded decisions"],"stress":"Under pressure you withdraw into yourself, become overly critical and get stuck in details. Having to act without data is irritating. Clear criteria and time to verify help.","communication":["Prepare facts, figures and arguments","Allow time to think it over; don't demand an answer right away","Respect procedures and agreements","Criticize specifically and on the merits, without emotion"],"environment":"A structured environment with clear standards, access to information and the ability to work with focus. Uncertainty, haste and emotional pressure reduce effectiveness."}},"profiles":{"D":{"name":"Achiever","summary":"You move toward the goal directly and fast: you take the initiative, decide without lengthy discussion and aren't afraid of resistance. Being in control and seeing measurable results matters to you."},"I":{"name":"Inspirer","summary":"You work through people: you make connections easily, spread enthusiasm and persuade with words and mood. Recognition and lively interaction matter to you, while formalities and routine wear you out quickly."},"S":{"name":"Anchor","summary":"You create stability: you keep your word, finish what you start, support people and smooth over conflicts. Predictability, trust and time to get used to change matter to you."},"C":{"name":"Analyst","summary":"You rely on facts and standards: you check, analyze, plan and dislike hasty decisions. Quality and being right matter to you more than speed and outward effect."},"DI":{"name":"Pioneer","summary":"Drive and charm: you lead quickly toward the goal and know how to bring people along. You persuade with momentum and enthusiasm and decide on the go, but patience for details and caution often run short."},"DC":{"name":"Strategist","summary":"Results through quality: you are demanding of yourself and others, think systematically and never decide without arguments. Strong on complex tasks, but you can come across as cold and overly critical."},"DS":{"name":"Practitioner","summary":"Persistence and reliability: you push steadily toward the goal without any fuss and finish what you start. You value independence and stability at the same time, which is a rare combination."},"ID":{"name":"Motivator","summary":"Energy and drive: you infect people with ideas and aren't afraid to take the initiative. You easily sell ideas and goals, but risk overestimating your strength and underestimating the details."},"IS":{"name":"Mentor","summary":"Warmth and involvement: you win people over, and know how to support and unite them. Relationships and atmosphere matter to you, while conflict and harsh demands are hard to take."},"IC":{"name":"Presenter","summary":"Eloquence and precision: you can convincingly present a well-thought-out position. You combine sociability with attention to facts, but may waver between spontaneity and caution."},"SI":{"name":"Diplomat","summary":"Calm and friendliness: you create an atmosphere of trust, smooth over rough edges and support the team. Saying no and defending an unpopular decision is hard for you."},"SC":{"name":"Specialist","summary":"Reliability and accuracy: you work methodically, follow the rules and see things through without haste. You value stability and clear expectations, while abrupt change and pressure are hard to bear."},"SD":{"name":"Implementer","summary":"Perseverance and patience: you calmly but firmly drive things to a result without getting caught up in needless discussion. Reliable over the long haul, though from the outside you may seem stubborn."},"CD":{"name":"Perfectionist","summary":"Standards and willpower: you demand precision from yourself and others, spot mistakes quickly and aren't afraid to point them out. Strong on complex expert tasks, but you can be too strict and closed off."},"CS":{"name":"Expert","summary":"Precision and consistency: you work thoughtfully, check the details and rely on proven methods. A dependable specialist who finds uncertainty and rapid change hard to handle."},"CI":{"name":"Consultant","summary":"Analysis and connection: you can get to the bottom of a question and explain it to others in plain terms. A rare combination: caution in conclusions and ease in communication. Sometimes the inner tug-of-war between \"verify\" and \"share\" gets in the way."}},"ui":{"langLabel":"Language","footer":"24 blocks · about 10 minutes · no right or wrong answers","privacy":"Your answers stay in your browser; your result is sent only to the email address you provide.","adminLink":"Admin panel","intro.eyebrow":"Behavioral style questionnaire","intro.h1":"Free DISC test: how you act, communicate and make decisions","intro.lead":"DISC describes four styles of behavior. Everyone has all four, but to different degrees. The test will show your dominant style, your strengths, your growth areas and how others can work with you best.","intro.stylesTitle":"The four DISC styles","intro.howTitle":"How it works","intro.howText":"Each of the 24 blocks has four statements. Mark the one that describes you \u003cb>most\u003c/b> and the one that describes you \u003cb>least\u003c/b>. Answer the way you usually behave at work, not the way you would like to. Don't overthink it: your first reaction is the most accurate.","intro.nameLabel":"First and last name","intro.emailLabel":"Email address to send your result to","intro.emailHint":"When you finish the test, your result will be emailed to this address.","intro.start":"Start the test","intro.resume":"Continue previous attempt ({n} of 24 completed)","intro.showLast":"Open my previous result from {date}","intro.nameRequired":"Please enter your first and last name","intro.emailRequired":"Please enter a valid email address","test.step":"Block {n} of 24","test.counter":"{n} / 24","test.mostHead":"Most\u003cbr>like me","test.leastHead":"Least\u003cbr>like me","test.mostAria":"Most like me: {t}","test.leastAria":"Least like me: {t}","test.prev":"Back","test.next":"Next","test.finish":"Show my result","test.hint":"Mark one statement in each column and press “{next}”. You can change your choice until you move on.","test.missing":"Block {n} is not complete","report.own":"Your result","report.other":"Participant's result","report.backAdmin":"← Back to the results list","report.flat":"Your profile is balanced: no single style stands out strongly. This usually means behavioral flexibility, but it can sometimes indicate uncertainty in the answers. The dominant style was determined by the highest score.","report.graphTitle":"DISC profile","report.graphAria":"DISC profile chart","report.legendNet":"Overall profile","report.legendMost":"Public self","report.legendLeast":"Natural self","report.statsTitle":"Style intensity","report.statMeta":"{most} most · {least} least · {net}","report.howto":"\u003cb>How to read this.\u003c/b> The overall profile is the difference between your \"most\" and \"least\" answers. The public self is how you try to behave at work. The natural self is how you behave when you're not thinking about it. Values above the midpoint (50%) are considered pronounced.","report.traits":"Key traits","report.secondary":"Secondary style: {k} · {name}.","report.secondaryAddon":"It adds {addon} to your dominant style.","report.strengths":"Strengths","report.growth":"Growth areas","report.motivation":"What motivates you","report.communication":"How to communicate with you","report.stress":"Under stress","report.environment":"Ideal environment","share.title":"Save your result","share.text":"Your result is saved in your browser. Copy the link to open the report later or on another device, or send it to the person who asked you to take the test.","share.codeAria":"Result code","share.codeTitle":"Result code","share.copyLink":"Copy link","share.mail":"Send by email","share.copyCode":"Copy code","share.pdf":"Save as PDF","share.restart":"Take the test again","share.sending":"Sending your result to {email}…","share.sent":"Your result has been emailed to {email}.","share.sendFailed":"We couldn't send the email to {email}. Copy the report link or try again.","share.retry":"Send again","mail.subject":"DISC: {name} — {label}","mail.title":"DISC test result","mail.name":"Name","mail.email":"Email","mail.date":"Date","mail.profile":"Profile","mail.link":"Report link","mail.code":"Result code","email.subject":"Your DISC test result: {label}","email.greeting":"Hello {name},","email.intro":"You have completed the DISC test. Your dominant profile:","email.open":"Open the full report","email.scores":"Style intensity","email.linkNote":"If the button doesn't work, copy this link into your browser:","email.footer":"This email was sent automatically because this address was entered when taking the test. The full report with strengths, growth areas and recommendations is available at the link above.","toast.copied":"Copied","toast.copyManual":"Select the text and copy it manually (Ctrl+C / ⌘C)","toast.printNA":"Printing is not available in this window","admin.step":"Admin","admin.eyebrow":"Admin panel","admin.h1":"Participant results","admin.lead":"A participant takes the test and receives a link and a code on the result screen. Ask them to send it to you and paste it below: the table is stored only in this browser.","admin.codesLabel":"Result codes or links","admin.placeholder":"DISC1.eyJuIjoi…  (you can paste several codes, links or the whole email)","admin.add":"Add to table","admin.total":"Total results: {n}","admin.thName":"Participant","admin.thDate":"Date","admin.thProfile":"Profile","admin.open":"Report","admin.delete":"Delete","admin.empty":"No results yet. Send participants the link to this page and wait for their codes.","admin.csv":"Copy table for Excel","admin.clear":"Clear list","admin.linkNote":"The link for participants is the address of this page.","admin.back":"← Back to the test","admin.noCode":"No code found: a code starts with \"{v}.\"","admin.added":"Added: {n}","admin.withErrors":", invalid: {n}","admin.broken":"The code is corrupted","admin.dup":"These results are already in the table","admin.confirmDel":"Delete the result for \"{name}\"?","admin.confirmClear":"Delete all results from the table?","admin.csvHead":["Name","Email","Date","Profile","Profile name","D","I","S","C","D most","I most","S most","C most","D least","I least","S least","C least","Code"],"consent.label":"Cookie notice","consent.text":"This site uses cookies and similar technologies: your browser's local storage keeps your progress, result and chosen language. The hosting provider (GitHub Pages) and the font service (Google Fonts) receive technical data such as your IP address and browser type. Your test result is sent only to the email address you provide.","consent.more":"Learn more","consent.details":"Stored in your browser: the name and job title you enter before the test; your answers and unfinished progress; your latest result; your chosen language; a note that you have seen this notice. The data stays on your device only and is removed when you clear the site's data in your browser. Third-party services: GitHub Pages (hosting) and Google Fonts (fonts) receive standard technical request data. No analytics or advertising trackers are used. When you finish the test, your name, email address and answers are passed to the email-sending service (Google Apps Script) in order to send you your result; they are not used for anything else.","consent.accept":"Got it","root.continue":"Continue"}};
+var CONTACT_EMAIL = ''; // адрес получателя для кнопки «Отправить по почте»; пустой — участник вводит сам
+var SEND_ENDPOINT = ''; // URL веб-приложения Google Apps Script (см. README); пустой — письма не отправляются
+var SEND_TOKEN = '';
+var ROOT_REL = './';           // относительный путь к корню сайта ('./' на главной, '../' в /xx/)
+var IS_ROOT = '1' === '1';      // главная страница (язык по умолчанию живёт в корне)
+var LANG_PATH = {"en":"","ru":"ru/","es":"es/","zh":"zh/","ar":"ar/","pt":"pt/","fr":"fr/","de":"de/","ja":"ja/","hi":"hi/"};       // код языка → путь от корня ('' для языка по умолчанию, 'ru/' и т. д.)
+var LANG_META = {"en":{"name":"English","cont":"Continue","dir":"ltr"},"ru":{"name":"Русский","cont":"Продолжить","dir":"ltr"},"es":{"name":"Español","cont":"Continuar","dir":"ltr"},"zh":{"name":"简体中文","cont":"继续","dir":"ltr"},"ar":{"name":"العربية","cont":"متابعة","dir":"rtl"},"pt":{"name":"Português","cont":"Continuar","dir":"ltr"},"fr":{"name":"Français","cont":"Continuer","dir":"ltr"},"de":{"name":"Deutsch","cont":"Weiter","dir":"ltr"},"ja":{"name":"日本語","cont":"続ける","dir":"ltr"},"hi":{"name":"हिन्दी","cont":"जारी रखें","dir":"ltr"}};       // код языка → {name, cont, dir} для подсказки «Продолжить на …»
+var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+var VERSION = 'DISC1';
+
+var KEYS = ['D','I','S','C'];
+/* Порядок стилей в каждом из 24 блоков. Менять нельзя: от него зависят коды результатов. */
+var BLOCK_KEYS = ['IDCS','CSDI','SCID','DSIC','ICSD','SDCI','CIDS','DCSI','ISDC','CDIS','SICD','DISC','ICDS','CSID','SDCI','DCSI','ISDC','CISD','SCDI','DSIC','IDCS','CSID','SIDC','DCIS'];
+var BLOCKS = BLOCK_KEYS.map(function(ks,i){ return ks.split('').map(function(k){ return {k:k, t:L.blocks[i][k]}; }); });
+
+function t(key, vars){
+  var s = L.ui[key]; if(s==null) s = key;
+  if(vars) s = s.replace(/\{(\w+)\}/g, function(_, n){ return vars[n]!=null ? vars[n] : '{'+n+'}'; });
+  return s;
+}
+
+/* ====== утилиты ====== */
+function $(s){ return document.querySelector(s); }
+function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+var MEM = {};
+function lsGet(k){ try{ var v = localStorage.getItem(k); if(v!=null) return JSON.parse(v); }catch(e){} return Object.prototype.hasOwnProperty.call(MEM,k) ? MEM[k] : null; }
+function lsSet(k,v){ MEM[k]=v; try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
+function lsDel(k){ delete MEM[k]; try{ localStorage.removeItem(k); }catch(e){} }
+function fmtDate(iso){ var d = iso ? new Date(iso) : new Date(); if(isNaN(d)) return ''; try{ return d.toLocaleDateString(L.dateLocale,{day:'numeric',month:'long',year:'numeric'}); }catch(e){ return d.toLocaleDateString(); } }
+function fmtDateShort(iso){ var d = iso ? new Date(iso) : new Date(); if(isNaN(d)) return ''; try{ return d.toLocaleDateString(L.dateLocale,{day:'2-digit',month:'2-digit',year:'numeric'}); }catch(e){ return d.toLocaleDateString(); } }
+function signed(n){ return (n>0?'+':'')+n; }
+function pct(net){ return Math.round((net+24)/48*100); }
+var toastT;
+function toast(msg){ var el=$('#toast'); el.textContent=msg; el.hidden=false; clearTimeout(toastT); toastT=setTimeout(function(){ el.hidden=true; }, 2400); }
+function copyText(text, el){
+  function fallback(){
+    if(el){ el.focus(); el.select(); }
+    try{ if(document.execCommand('copy')){ toast(t('toast.copied')); return; } }catch(e){}
+    toast(t('toast.copyManual'));
   }
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(function(){ toast(t('toast.copied')); }, fallback);
+  } else fallback();
+}
+function b64e(s){ return btoa(unescape(encodeURIComponent(s))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,''); }
+function b64d(s){ s=s.replace(/-/g,'+').replace(/_/g,'/'); while(s.length%4) s+='='; return decodeURIComponent(escape(atob(s))); }
+function pageURL(){ return location.href.split('#')[0]; }
+
+/* ====== результат: кодирование, подсчёт ====== */
+function encodeResult(r){ return VERSION+'.'+b64e(JSON.stringify({n:r.name, e:r.email||'', p:r.pos||'', t:r.t, m:r.m.join(''), l:r.l.join('')})); }
+function decodeResult(str){
+  var m = String(str||'').match(new RegExp(VERSION+'\\.([A-Za-z0-9_-]+)'));
+  if(!m) return null;
+  try{
+    var o = JSON.parse(b64d(m[1]));
+    if(typeof o.n!=='string' || !/^[0-3]{24}$/.test(o.m) || !/^[0-3]{24}$/.test(o.l)) return null;
+    var mm = o.m.split('').map(Number), ll = o.l.split('').map(Number);
+    for(var i=0;i<24;i++) if(mm[i]===ll[i]) return null;
+    return {name:o.n.slice(0,80), email:String(o.e||'').slice(0,120), pos:String(o.p||'').slice(0,80), t:String(o.t||''), m:mm, l:ll};
+  }catch(e){ return null; }
+}
+function findCodes(text){ return String(text||'').match(new RegExp(VERSION+'\\.[A-Za-z0-9_-]+','g')) || []; }
+function score(r){
+  var most={D:0,I:0,S:0,C:0}, least={D:0,I:0,S:0,C:0}, net={};
+  for(var i=0;i<24;i++){ most[BLOCKS[i][r.m[i]].k]++; least[BLOCKS[i][r.l[i]].k]++; }
+  KEYS.forEach(function(k){ net[k]=most[k]-least[k]; });
+  return {most:most, least:least, net:net};
+}
+function classify(sc){
+  var ord = KEYS.slice().sort(function(a,b){ return sc.net[b]-sc.net[a]; });
+  var p=ord[0], s=ord[1];
+  var sec = sc.net[s]>0 && sc.net[s] >= Math.max(3, Math.round(sc.net[p]*0.4));
+  return {p:p, s:sec?s:null, key:p+(sec?s:''), flat: sc.net[p]<=2};
+}
+function analyze(r){ var sc=score(r); var c=classify(sc); return {sc:sc, cls:c, profile:L.profiles[c.key]}; }
+function colorVar(k){ return 'var(--'+k.toLowerCase()+')'; }
+function badgeHTML(cls, cssClass){
+  return '<span class="'+(cssClass||'badge')+'" style="--kp:'+colorVar(cls.p)+';--ks:'+(cls.s?colorVar(cls.s):'inherit')+'"><span class="p">'+cls.p+'</span>'+(cls.s?'<span class="s">'+cls.s+'</span>':'')+'</span>';
+}
+
+/* ====== состояние ====== */
+var view = $('#view'), stepEl = $('#step'), progEl = $('#progress'), wrap = $('#app');
+var S = null;
+
+function setStep(text){ stepEl.textContent = text||''; }
+function setWide(w){ wrap.classList.toggle('wide', !!w); }
+function renderProgress(i){
+  var h=''; for(var k=0;k<24;k++){ h+='<i class="'+(k<i?'done':(k===i?'cur':''))+'"></i>'; }
+  progEl.innerHTML=h; progEl.hidden=false;
+}
+
+/* ====== экран 1: вступление ====== */
+/* Разметка стартового экрана. Один и тот же код используют сборка (build.js кладёт готовый HTML
+   в страницу, чтобы поисковики видели текст без JavaScript) и сама страница (перерисовка
+   с сохранёнными именем, e-mail, незавершённым прохождением и прошлым результатом). */
+function introHTML(c){
+  var L=c.L, t=c.t, esc=c.esc, KEYS=c.KEYS, colorVar=c.colorVar, who=c.who||{}, progDone=c.progDone||0, lastDate=c.lastDate||'';
+  return '<div class="eyebrow">'+t('intro.eyebrow')+'</div>'+
+    '<h1>'+t('intro.h1')+'</h1>'+
+    '<p class="lead">'+t('intro.lead')+'</p>'+
+    '<div class="tiles">'+KEYS.map(function(k){ return '<div class="tile" style="--k:'+colorVar(k)+'"><b>'+k+'</b><strong>'+esc(L.keys[k])+'</strong><span>'+esc(L.short[k])+'</span></div>'; }).join('')+'</div>'+
+    '<div class="card">'+
+      '<h2>'+t('intro.howTitle')+'</h2>'+
+      '<p>'+t('intro.howText')+'</p>'+
+      '<form class="form" id="startForm" autocomplete="on">'+
+        '<div class="field"><label for="nm">'+t('intro.nameLabel')+'</label><input type="text" id="nm" name="name" autocomplete="name" required maxlength="80" value="'+esc(who.name||'')+'"></div>'+
+        '<div class="field"><label for="em">'+t('intro.emailLabel')+'</label><input type="email" id="em" name="email" autocomplete="email" inputmode="email" required maxlength="120" value="'+esc(who.email||'')+'"><span class="hint">'+t('intro.emailHint')+'</span></div>'+
+        '<div class="actions"><button class="btn" type="submit">'+t('intro.start')+'</button>'+
+          (progDone ? '<button class="link" type="button" id="resume">'+t('intro.resume',{n:progDone})+'</button>' : '')+
+        '</div>'+
+      '</form>'+
+    '</div>'+
+    (lastDate ? '<p class="small muted" style="margin-top:14px"><button class="link" id="showLast" type="button">'+t('intro.showLast',{date:esc(lastDate)})+'</button></p>' : '')+
+    '<section class="styles-intro"><h2>'+t('intro.stylesTitle')+'</h2><div class="stylegrid">'+
+      KEYS.map(function(k){ var st=L.styles[k], pr=L.profiles[k];
+        return '<article class="stylecard" style="--k:'+colorVar(k)+'"><h3><span class="k">'+k+'</span>'+esc(L.keys[k])+' · '+esc(pr.name)+'</h3><p>'+esc(pr.summary)+'</p><div class="traits">'+st.traits.map(function(x){ return '<span>'+esc(x)+'</span>'; }).join('')+'</div></article>'; }).join('')+
+    '</div></section>';
+}
+
+function renderIntro(){
+  setWide(false); setStep(''); progEl.hidden=true;
+  var last = lsGet('disc.last'), prog = lsGet('disc.progress'), who = lsGet('disc.who')||{};
+  var progDone = prog && prog.m && prog.m.filter(function(x){return x>=0;}).length;
+  view.innerHTML = introHTML({L:L, t:t, esc:esc, KEYS:KEYS, colorVar:colorVar, who:who, progDone:progDone, lastDate: last ? fmtDate(last.t) : ''});
+  $('#startForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var name = $('#nm').value.trim().replace(/\s+/g,' '), email = $('#em').value.trim();
+    if(name.length<2){ $('#nm').focus(); toast(t('intro.nameRequired')); return; }
+    if(!EMAIL_RE.test(email) || email.length>120){ $('#em').focus(); toast(t('intro.emailRequired')); return; }
+    lsSet('disc.who',{name:name,email:email});
+    S = {name:name, email:email, i:0, m:[], l:[]};
+    for(var k=0;k<24;k++){ S.m.push(-1); S.l.push(-1); }
+    lsSet('disc.progress', S);
+    renderTest();
+  });
+  if($('#resume')) $('#resume').addEventListener('click', function(){ S = prog; var first = S.m.findIndex(function(x,i){ return x<0 || S.l[i]<0; }); S.i = first<0 ? 23 : first; renderTest(); });
+  if($('#showLast')) $('#showLast').addEventListener('click', function(){ renderReport(last, {own:true}); window.scrollTo(0,0); });
+}
+
+/* ====== экран 2: тест ====== */
+function renderTest(){
+  setWide(false);
+  var i = S.i, b = BLOCKS[i];
+  setStep(t('test.step',{n:i+1})); renderProgress(i);
+  var checkIco = '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg>';
+  var minusIco = '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M5 10h10"/></svg>';
+  var rows = b.map(function(it, j){
+    var isM = S.m[i]===j, isL = S.l[i]===j;
+    return '<div class="row'+(isM?' is-most':'')+(isL?' is-least':'')+'" data-j="'+j+'">'+
+      '<button type="button" class="pick most'+(isM?' on':'')+'" data-pick="m" data-j="'+j+'" aria-pressed="'+isM+'" aria-label="'+t('test.mostAria',{t:esc(it.t)})+'">'+checkIco+'</button>'+
+      '<div class="txt">'+esc(it.t)+'</div>'+
+      '<button type="button" class="pick least'+(isL?' on':'')+'" data-pick="l" data-j="'+j+'" aria-pressed="'+isL+'" aria-label="'+t('test.leastAria',{t:esc(it.t)})+'">'+minusIco+'</button>'+
+    '</div>';
+  }).join('');
+  var both = S.m[i]>=0 && S.l[i]>=0, lastBlock = i===23;
+  view.innerHTML =
+    '<div class="card testcard">'+
+      '<div class="qhead"><span>'+t('test.mostHead')+'</span><span class="n">'+t('test.counter',{n:i+1})+'</span><span>'+t('test.leastHead')+'</span></div>'+
+      rows+
+      '<div class="testnav">'+
+        '<button class="btn secondary small" type="button" id="prev" '+(i===0?'disabled':'')+'>'+t('test.prev')+'</button>'+
+        '<button class="btn small" type="button" id="next" '+(both?'':'disabled')+'>'+(lastBlock?t('test.finish'):t('test.next'))+'</button>'+
+      '</div>'+
+    '</div>'+
+    '<p class="hintline">'+t('test.hint',{next:t('test.next')})+'</p>';
+  view.querySelectorAll('.pick').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var j = +btn.getAttribute('data-j'), which = btn.getAttribute('data-pick');
+      if(which==='m'){ S.m[i] = (S.m[i]===j) ? -1 : j; if(S.l[i]===j) S.l[i]=-1; }
+      else { S.l[i] = (S.l[i]===j) ? -1 : j; if(S.m[i]===j) S.m[i]=-1; }
+      lsSet('disc.progress', S);
+      renderTest(); // переход к следующему блоку только по кнопке «Далее»
+    });
+  });
+  $('#prev').addEventListener('click', function(){ if(S.i>0){ S.i--; lsSet('disc.progress', S); renderTest(); } });
+  $('#next').addEventListener('click', function(){
+    if(!(S.m[i]>=0 && S.l[i]>=0)) return;
+    if(i<23){ S.i=i+1; lsSet('disc.progress', S); renderTest(); return; }
+    var missing = -1; for(var k=0;k<24;k++){ if(S.m[k]<0||S.l[k]<0){ missing=k; break; } }
+    if(missing>=0){ S.i=missing; lsSet('disc.progress', S); toast(t('test.missing',{n:missing+1})); renderTest(); return; }
+    var r = {name:S.name, email:S.email||'', pos:S.pos||'', t:new Date().toISOString(), m:S.m.slice(), l:S.l.slice()};
+    lsSet('disc.last', r); lsDel('disc.progress'); S=null;
+    renderReport(r, {own:true, send:true});
+    window.scrollTo(0,0);
+  });
+}
+
+/* ====== график ====== */
+function graphSVG(sc, show){
+  var W=380,H=252,Lm=34,R=14,T=14,B=32,pw=W-Lm-R,ph=H-T-B;
+  function x(i){ return (Lm+pw*(i+0.5)/4).toFixed(1); }
+  function y(v){ return (T+ph*(24-v)/24).toFixed(1); }
+  var g='';
+  [0,6,12,18,24].forEach(function(v){
+    var mid = v===12;
+    g+='<line x1="'+Lm+'" x2="'+(W-R)+'" y1="'+y(v)+'" y2="'+y(v)+'" stroke="'+(mid?'var(--line-strong)':'var(--line)')+'" stroke-width="'+(mid?1.5:1)+'"'+(mid?' stroke-dasharray="4 3"':'')+'/>';
+    g+='<text x="'+(Lm-7)+'" y="'+(+y(v)+3.5)+'" text-anchor="end" class="ax">'+v+'</text>';
+  });
+  KEYS.forEach(function(k,i){ g+='<text x="'+x(i)+'" y="'+(H-9)+'" text-anchor="middle" class="kl" fill="'+colorVar(k)+'">'+k+'</text>'; });
+  var series=[
+    {key:'most', cls:'s1', vals:KEYS.map(function(k){ return sc.most[k]; })},
+    {key:'least', cls:'s2', vals:KEYS.map(function(k){ return 24-sc.least[k]; })},
+    {key:'net', cls:'s3', vals:KEYS.map(function(k){ return (sc.net[k]+24)/2; })}
+  ];
+  series.forEach(function(s){
+    if(!show[s.key]) return;
+    g+='<polyline class="'+s.cls+'" points="'+s.vals.map(function(v,i){ return x(i)+','+y(v); }).join(' ')+'"/>';
+    s.vals.forEach(function(v,i){
+      var main = s.key==='net';
+      g+='<circle class="'+s.cls+'" cx="'+x(i)+'" cy="'+y(v)+'" r="'+(main?5.5:3.5)+'" fill="'+(main?colorVar(KEYS[i]):'var(--surface)')+'"'+(main?'':' stroke="var(--muted)"')+'/>';
+    });
+  });
+  return '<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="'+t('report.graphAria')+'">'+g+'</svg>';
+}
+
+/* ====== экран 3: отчёт ====== */
+function renderReport(r, opts){
+  opts = opts||{};
+  setWide(true); progEl.hidden=true; setStep(opts.own ? t('report.own') : t('report.other'));
+  var a = analyze(r), sc=a.sc, cls=a.cls, st=L.styles[cls.p], prof=a.profile;
+  var code = encodeResult(r);
+  var link = pageURL()+'#r='+code;
+  var show = {most:false, least:false, net:true};
+  var meta = [esc(r.name), esc(r.email||r.pos||''), fmtDate(r.t)].filter(Boolean).join(' · ');
+  var canSend = !!SEND_ENDPOINT && !!r.email;
+  var label = cls.key+' · '+prof.name;
+  var lines = KEYS.map(function(k){ return k+': '+signed(sc.net[k])+' ('+pct(sc.net[k])+'%)'; }).join(', ');
+  var mailBody = t('mail.title')+'\r\n'+t('mail.name')+': '+r.name+'\r\n'+(r.email?t('mail.email')+': '+r.email+'\r\n':'')+t('mail.date')+': '+fmtDate(r.t)+'\r\n'+t('mail.profile')+': '+label+'\r\n'+lines+'\r\n\r\n'+t('mail.link')+':\r\n'+link+'\r\n\r\n'+t('mail.code')+':\r\n'+code+'\r\n';
+  var mailto = 'mailto:'+(CONTACT_EMAIL?encodeURIComponent(CONTACT_EMAIL):'')+'?subject='+encodeURIComponent(t('mail.subject',{name:r.name,label:label}))+'&body='+encodeURIComponent(mailBody);
+
+  function list(arr){ return '<ul>'+arr.map(function(x){ return '<li>'+esc(x)+'</li>'; }).join('')+'</ul>'; }
+
+  view.innerHTML =
+    (opts.fromAdmin ? '<p class="no-print"><button class="link" id="backAdmin" type="button">'+t('report.backAdmin')+'</button></p>' : '')+
+    '<div class="rhead">'+
+      badgeHTML(cls)+
+      '<div class="rtitle"><div class="eyebrow">'+esc(cls.s ? L.keys[cls.p]+' + '+L.keys[cls.s] : L.keys[cls.p])+'</div>'+
+        '<h1>'+esc(prof.name)+'</h1>'+
+        '<div class="meta">'+meta+'</div></div>'+
+    '</div>'+
+    '<p class="lead">'+esc(prof.summary)+'</p>'+
+    (cls.flat ? '<p class="notice">'+t('report.flat')+'</p>' : '')+
+    '<div class="card graphcard">'+
+      '<div class="graph"><h3>'+t('report.graphTitle')+'</h3><div id="graph">'+graphSVG(sc, show)+'</div>'+
+        '<div class="legend no-print">'+
+          '<label><input type="checkbox" data-s="net" checked> <span class="sw"></span> '+t('report.legendNet')+'</label>'+
+          '<label><input type="checkbox" data-s="most"> <span class="sw s1"></span> '+t('report.legendMost')+'</label>'+
+          '<label><input type="checkbox" data-s="least"> <span class="sw s2"></span> '+t('report.legendLeast')+'</label>'+
+        '</div>'+
+      '</div>'+
+      '<div><h3>'+t('report.statsTitle')+'</h3><div class="stats">'+
+        KEYS.map(function(k){ return '<div class="stat" style="--k:'+colorVar(k)+'"><span class="k">'+k+'</span><span class="nm">'+esc(L.keys[k])+'<small>'+t('report.statMeta',{most:sc.most[k],least:sc.least[k],net:signed(sc.net[k])})+'</small></span><span class="v">'+pct(sc.net[k])+'%</span><div class="bar"><i style="width:'+pct(sc.net[k])+'%"></i></div></div>'; }).join('')+
+      '</div>'+
+      '<p class="howto">'+t('report.howto')+'</p>'+
+      '</div>'+
+    '</div>'+
+    '<div class="card"><div class="sections">'+
+      '<div class="sec full"><h3>'+t('report.traits')+'</h3><div class="traits">'+st.traits.map(function(x){ return '<span>'+esc(x)+'</span>'; }).join('')+'</div>'+
+        (cls.s ? '<div class="substyle" style="--ks:'+colorVar(cls.s)+'"><b>'+t('report.secondary',{k:cls.s,name:esc(L.keys[cls.s])})+'</b> '+t('report.secondaryAddon',{addon:esc(L.addon[cls.s])})+'</div>' : '')+
+      '</div>'+
+      '<div class="sec"><h3>'+t('report.strengths')+'</h3>'+list(st.strengths)+'</div>'+
+      '<div class="sec"><h3>'+t('report.growth')+'</h3>'+list(st.growth)+'</div>'+
+      '<div class="sec"><h3>'+t('report.motivation')+'</h3>'+list(st.motivation)+'</div>'+
+      '<div class="sec"><h3>'+t('report.communication')+'</h3>'+list(st.communication)+'</div>'+
+      '<div class="sec"><h3>'+t('report.stress')+'</h3><p>'+esc(st.stress)+'</p></div>'+
+      '<div class="sec"><h3>'+t('report.environment')+'</h3><p>'+esc(st.environment)+'</p></div>'+
+    '</div></div>'+
+    (opts.own ?
+      '<div class="share no-print" style="margin-top:16px"><h2>'+t('share.title')+'</h2>'+
+        '<p class="small">'+t('share.text')+'</p>'+
+        (canSend ? '<p class="small sendstatus" id="sendStatus" aria-live="polite"></p>' : '')+
+        '<textarea class="codebox" id="code" readonly rows="3" aria-label="'+t('share.codeAria')+'">'+esc(code)+'</textarea>'+
+        '<div class="actions"><button class="btn" type="button" id="copyLink">'+t('share.copyLink')+'</button>'+
+          '<a class="btn secondary" id="mail" href="'+mailto.replace(/"/g,'&quot;')+'">'+t('share.mail')+'</a>'+
+          '<button class="btn secondary" type="button" id="copyCode">'+t('share.copyCode')+'</button>'+
+          '<button class="btn secondary" type="button" id="print">'+t('share.pdf')+'</button></div>'+
+      '</div>'+
+      '<div class="actions no-print" style="margin-top:18px"><button class="link" id="restart" type="button">'+t('share.restart')+'</button></div>'
+    :
+      '<div class="card no-print" style="margin-top:16px"><h3>'+t('share.codeTitle')+'</h3><textarea class="codebox" id="code" readonly rows="3" aria-label="'+t('share.codeAria')+'">'+esc(code)+'</textarea>'+
+        '<div class="actions"><button class="btn secondary small" type="button" id="copyLink">'+t('share.copyLink')+'</button><button class="btn secondary small" type="button" id="copyCode">'+t('share.copyCode')+'</button><button class="btn secondary small" type="button" id="print">'+t('share.pdf')+'</button></div></div>'
+    );
+
+  view.querySelectorAll('.legend input').forEach(function(cb){
+    cb.addEventListener('change', function(){ show[cb.getAttribute('data-s')] = cb.checked; $('#graph').innerHTML = graphSVG(sc, show); });
+  });
+  $('#copyCode').addEventListener('click', function(){ copyText(code, $('#code')); });
+  $('#copyLink').addEventListener('click', function(){ copyText(link, null); });
+  $('#print').addEventListener('click', function(){ try{ window.print(); }catch(e){ toast(t('toast.printNA')); } });
+  if($('#restart')) $('#restart').addEventListener('click', function(){ if(location.hash) history.replaceState(null,'',pageURL()); renderIntro(); window.scrollTo(0,0); });
+  if($('#backAdmin')) $('#backAdmin').addEventListener('click', function(){ renderAdmin(); window.scrollTo(0,0); });
+  if(opts.own && canSend){ if(opts.send && !r.sent) sendResult(r, code); else showSendStatus(r, code); }
+}
+
+/* ====== отправка письма с результатом ====== */
+function postJSON(url, data){
+  return new Promise(function(resolve, reject){
+    var ctrl = window.AbortController ? new AbortController() : null, done = false;
+    var tm = setTimeout(function(){ if(done) return; done = true; if(ctrl) ctrl.abort(); reject(new Error('timeout')); }, 25000);
+    // Content-Type не задаём: «простой» запрос без preflight, который принимает Google Apps Script
+    fetch(url, {method:'POST', body:JSON.stringify(data), signal: ctrl ? ctrl.signal : undefined, redirect:'follow'})
+      .then(function(res){ return res.text(); })
+      .then(function(txt){ if(done) return; done = true; clearTimeout(tm); var j = null; try{ j = JSON.parse(txt); }catch(e){}
+        if(j && j.ok) resolve(j); else reject(new Error((j && j.error) || 'bad response')); })
+      .catch(function(err){ if(done) return; done = true; clearTimeout(tm); reject(err); });
+  });
+}
+function showSendStatus(r, code, state){
+  var el = $('#sendStatus'); if(!el) return;
+  var st = state || (r.sent ? 'sent' : 'failed');
+  if(st==='sending'){ el.className='small sendstatus muted'; el.textContent = t('share.sending',{email:r.email}); return; }
+  if(st==='sent'){ el.className='small sendstatus ok'; el.textContent = t('share.sent',{email:r.email}); return; }
+  el.className='small sendstatus err';
+  el.innerHTML = esc(t('share.sendFailed',{email:r.email}))+' <button class="link" type="button" id="resend">'+t('share.retry')+'</button>';
+  $('#resend').addEventListener('click', function(){ sendResult(r, code); });
+}
+function sendResult(r, code){
+  showSendStatus(r, code, 'sending');
+  postJSON(SEND_ENDPOINT, {token:SEND_TOKEN, to:r.email, lang:L.lang, code:code}).then(function(){
+    r.sent = new Date().toISOString();
+    var last = lsGet('disc.last'); if(last && last.t===r.t){ last.sent = r.sent; lsSet('disc.last', last); }
+    showSendStatus(r, code, 'sent');
+  }, function(){ showSendStatus(r, code, 'failed'); });
+}
+
+/* ====== экран 4: панель администратора ====== */
+function getResults(){ var a = lsGet('disc.admin'); return Array.isArray(a)?a:[]; }
+function renderAdmin(){
+  setWide(true); progEl.hidden=true; setStep(t('admin.step'));
+  var items = getResults().map(function(it){ var r = decodeResult(it.code); return r ? {code:it.code, added:it.added, r:r, a:analyze(r)} : null; }).filter(Boolean);
+  items.sort(function(a,b){ return (b.r.t||'').localeCompare(a.r.t||''); });
+  var rows = items.map(function(it, idx){
+    var sc=it.a.sc, cls=it.a.cls;
+    return '<tr>'+
+      '<td><b>'+esc(it.r.name)+'</b>'+((it.r.email||it.r.pos)?'<br><span class="muted small">'+esc(it.r.email||it.r.pos)+'</span>':'')+'</td>'+
+      '<td>'+esc(fmtDateShort(it.r.t))+'</td>'+
+      '<td>'+badgeHTML(cls,'pill')+'<small>'+esc(it.a.profile.name)+'</small></td>'+
+      KEYS.map(function(k){ return '<td class="num">'+signed(sc.net[k])+'</td>'; }).join('')+
+      '<td><button class="btn secondary small" type="button" data-open="'+idx+'">'+t('admin.open')+'</button> <button class="link" type="button" data-del="'+idx+'">'+t('admin.delete')+'</button></td>'+
+    '</tr>';
+  }).join('');
+  view.innerHTML =
+    '<div class="eyebrow">'+t('admin.eyebrow')+'</div>'+
+    '<h1>'+t('admin.h1')+'</h1>'+
+    '<p class="lead">'+t('admin.lead')+'</p>'+
+    '<div class="card"><form id="addForm" class="form">'+
+      '<div class="field"><label for="codes">'+t('admin.codesLabel')+'</label><textarea id="codes" placeholder="'+esc(t('admin.placeholder'))+'"></textarea></div>'+
+      '<div class="actions between"><button class="btn" type="submit">'+t('admin.add')+'</button><span class="small muted">'+t('admin.total',{n:items.length})+'</span></div>'+
+    '</form></div>'+
+    '<div class="stack" style="margin-top:16px">'+
+      '<div class="tablewrap">'+(items.length ?
+        '<table><thead><tr><th>'+t('admin.thName')+'</th><th>'+t('admin.thDate')+'</th><th>'+t('admin.thProfile')+'</th><th class="num">D</th><th class="num">I</th><th class="num">S</th><th class="num">C</th><th></th></tr></thead><tbody>'+rows+'</tbody></table>'
+        : '<div class="empty">'+t('admin.empty')+'</div>')+'</div>'+
+      (items.length ? '<div class="actions between"><button class="btn secondary small" type="button" id="csv">'+t('admin.csv')+'</button><button class="link" type="button" id="clear">'+t('admin.clear')+'</button></div>' : '')+
+    '</div>'+
+    '<p class="small muted" style="margin-top:20px">'+t('admin.linkNote')+' <b dir="ltr">'+esc(pageURL())+'</b></p>'+
+    '<p class="no-print"><button class="link" id="toIntro" type="button">'+t('admin.back')+'</button></p>';
+
+  $('#addForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var codes = findCodes($('#codes').value), list = getResults(), added=0, bad=0;
+    codes.forEach(function(c){
+      if(!decodeResult(c)){ bad++; return; }
+      if(list.some(function(x){ return x.code===c; })) return;
+      list.push({code:c, added:new Date().toISOString()}); added++;
+    });
+    lsSet('disc.admin', list);
+    if(!codes.length) toast(t('admin.noCode',{v:VERSION}));
+    else toast(added ? t('admin.added',{n:added})+(bad?t('admin.withErrors',{n:bad}):'') : (bad ? t('admin.broken') : t('admin.dup')));
+    renderAdmin();
+  });
+  view.querySelectorAll('[data-open]').forEach(function(b){ b.addEventListener('click', function(){ renderReport(items[+b.getAttribute('data-open')].r, {fromAdmin:true}); window.scrollTo(0,0); }); });
+  view.querySelectorAll('[data-del]').forEach(function(b){ b.addEventListener('click', function(){
+    var it = items[+b.getAttribute('data-del')];
+    if(!confirm(t('admin.confirmDel',{name:it.r.name}))) return;
+    lsSet('disc.admin', getResults().filter(function(x){ return x.code!==it.code; }));
+    renderAdmin();
+  }); });
+  if($('#clear')) $('#clear').addEventListener('click', function(){ if(confirm(t('admin.confirmClear'))){ lsDel('disc.admin'); renderAdmin(); } });
+  if($('#csv')) $('#csv').addEventListener('click', function(){
+    var head = L.ui['admin.csvHead'];
+    var tsv = [head.join('\t')].concat(items.map(function(it){
+      var sc=it.a.sc; return [it.r.name, it.r.email||it.r.pos||'', fmtDateShort(it.r.t), it.a.cls.key, it.a.profile.name,
+        sc.net.D, sc.net.I, sc.net.S, sc.net.C, sc.most.D, sc.most.I, sc.most.S, sc.most.C, sc.least.D, sc.least.I, sc.least.S, sc.least.C, it.code]
+        .map(function(v){ return String(v).replace(/[\t\r\n]+/g,' '); }).join('\t');
+    })).join('\n');
+    copyText(tsv, null);
+  });
+  $('#toIntro').addEventListener('click', function(){ if(location.hash) history.replaceState(null,'',pageURL()); renderIntro(); window.scrollTo(0,0); });
+}
+
+/* ====== переключение языка ====== */
+function langHref(code){ return ROOT_REL + (LANG_PATH[code]||'') + location.hash; }
+// На главной: если язык выбран явно раньше — открываем его версию (робот поисковика сюда не попадает: у него нет сохранённого выбора)
+(function(){ if(!IS_ROOT) return; var st = lsGet('disc.lang'); if(st && st!==L.lang && LANG_PATH[st]!=null && !location.hash) location.replace(langHref(st)); })();
+// Подсказка «Продолжить на …», если язык браузера отличается и выбор ещё не делался
+(function(){
+  if(lsGet('disc.lang')) return;
+  var prefs = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language||''];
   var pick = null;
-  try { var s = JSON.parse(localStorage.getItem('disc.lang')); if (LANGS.indexOf(s) >= 0) pick = s; } catch (e) {}
-  if (!pick) {
-    var prefs = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || ''];
-    for (var j = 0; j < prefs.length && !pick; j++) { var p = String(prefs[j]).toLowerCase().split('-')[0]; if (LANGS.indexOf(p) >= 0) pick = p; }
+  for(var i=0;i<prefs.length && !pick;i++){ var p = String(prefs[i]).toLowerCase().split('-')[0]; if(LANG_PATH[p]!=null) pick = p; }
+  if(!pick || pick===L.lang || !LANG_META[pick]) return;
+  var m = LANG_META[pick], bar = document.createElement('div');
+  bar.className='langbar no-print'; bar.setAttribute('lang', pick); bar.setAttribute('dir', m.dir||'ltr');
+  bar.innerHTML = '<a href="'+esc(langHref(pick))+'"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-'+pick+'"/></svg><b>'+esc(m.name)+'</b><span>'+esc(m.cont)+' →</span></a><button type="button" class="langbar-x" aria-label="×">×</button>';
+  var app = $('#app'); app.insertBefore(bar, app.firstChild.nextSibling);
+  bar.querySelector('a').addEventListener('click', function(){ lsSet('disc.lang', pick); });
+  bar.querySelector('button').addEventListener('click', function(){ lsSet('disc.lang', L.lang); bar.remove(); });
+})();
+document.querySelectorAll('a[data-lang]').forEach(function(a){
+  a.addEventListener('click', function(){ var code=a.getAttribute('data-lang'); lsSet('disc.lang', code); a.href=langHref(code); });
+});
+(function(){
+  var box=$('#langSel'), btn=$('#langBtn'), menu=$('#langMenu');
+  if(!box||!btn||!menu) return;
+  var items=[].slice.call(menu.querySelectorAll('a[data-lang]'));
+  function open(){
+    items.forEach(function(a){ a.href=langHref(a.getAttribute('data-lang')); });
+    menu.hidden=false; btn.setAttribute('aria-expanded','true');
+    var cur=menu.querySelector('a[aria-selected="true"]')||items[0]; try{ cur.focus({preventScroll:true}); }catch(e){ cur.focus(); }
   }
-  if (!pick) return;
-  var a = byLang[pick]; a.parentNode.className = 'is-suggested';
-  var btn = document.createElement('a');
-  btn.setAttribute('href', a.getAttribute('href')); btn.setAttribute('lang', pick); btn.setAttribute('hreflang', a.getAttribute('hreflang'));
-  var fl = a.querySelector('.flag'); if (fl) btn.appendChild(fl.cloneNode(true));
-  var span = document.createElement('span'); span.setAttribute('dir', 'auto');
-  span.appendChild(document.createTextNode(a.getAttribute('data-continue') + ' · '));
-  var sm = document.createElement('small'); sm.textContent = a.querySelector('span').textContent; span.appendChild(sm);
-  btn.appendChild(span);
-  var box = document.getElementById('suggest'); box.appendChild(btn); box.className = 'suggest on';
+  function close(focusBtn){ if(menu.hidden) return; menu.hidden=true; btn.setAttribute('aria-expanded','false'); if(focusBtn) btn.focus(); }
+  btn.addEventListener('click', function(){ menu.hidden ? open() : close(false); });
+  btn.addEventListener('keydown', function(e){ if(e.key==='ArrowDown'||e.key==='ArrowUp'){ e.preventDefault(); open(); } });
+  menu.addEventListener('keydown', function(e){
+    var i=items.indexOf(document.activeElement), n=items.length;
+    if(e.key==='Escape'){ e.preventDefault(); close(true); }
+    else if(e.key==='ArrowDown'){ e.preventDefault(); items[(i+1)%n].focus(); }
+    else if(e.key==='ArrowUp'){ e.preventDefault(); items[(i-1+n)%n].focus(); }
+    else if(e.key==='Home'){ e.preventDefault(); items[0].focus(); }
+    else if(e.key==='End'){ e.preventDefault(); items[n-1].focus(); }
+    else if(e.key==='Tab'){ close(false); }
+  });
+  document.addEventListener('click', function(e){ if(!box.contains(e.target)) close(false); });
+})();
+
+/* ====== уведомление о cookie ====== */
+(function(){
+  if(lsGet('disc.consent')) return;
+  var el=document.createElement('div'); el.className='consent no-print'; el.id='consent'; el.setAttribute('role','region'); el.setAttribute('aria-label', t('consent.label'));
+  el.innerHTML='<div class="consent-in"><p>'+t('consent.text')+'</p><button class="btn small" type="button" id="consentOk">'+t('consent.accept')+'</button><details><summary>'+t('consent.more')+'</summary><p>'+t('consent.details')+'</p></details></div>';
+  document.body.appendChild(el); document.body.classList.add('has-consent');
+  $('#consentOk').addEventListener('click', function(){ lsSet('disc.consent', new Date().toISOString()); el.remove(); document.body.classList.remove('has-consent'); });
+})();
+
+/* ====== маршрутизация ====== */
+$('#adminLink').addEventListener('click', function(){ renderAdmin(); window.scrollTo(0,0); });
+$('#brand').addEventListener('click', function(e){
+  if(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||e.button!==0) return; // новая вкладка и т.п. — обычная ссылка
+  e.preventDefault(); S=null;
+  if(location.hash) history.replaceState(null,'',pageURL());
+  renderIntro(); window.scrollTo(0,0);
+});
+function route(){
+  var h = location.hash||'';
+  if(h==='#admin'){ renderAdmin(); return true; }
+  if(h.indexOf('#r=')===0){ var r = decodeResult(decodeURIComponent(h.slice(3))); if(r){ renderReport(r, {own:false}); return true; } }
+  return false;
+}
+window.addEventListener('hashchange', function(){ if(!route() && !S) renderIntro(); });
+if(!route()) renderIntro();
 })();
 </script>
 </body>

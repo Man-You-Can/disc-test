@@ -3,8 +3,8 @@
   "dir": "ltr",
   "name": "English",
   "dateLocale": "en-US",
-  "title": "DISC Test — Free Online Behavioral Style Assessment",
-  "description": "Free online DISC test: 24 blocks, about 10 minutes. Discover your dominant behavioral style, strengths, growth areas and how others can work with you best. Instant results, no sign-up.",
+  "title": "Free DISC Personality Test — Online, 10 Minutes, No Sign-Up",
+  "description": "Free DISC personality test: 24 questions, 10 minutes, no sign-up. Find your dominant style, strengths and growth areas. Instant result, also by email.",
   "brand": "DISC Test",
   "keys": { "D": "Dominance", "I": "Influence", "S": "Steadiness", "C": "Conscientiousness" },
   "short": { "D": "Results and control", "I": "People and enthusiasm", "S": "Support and stability", "C": "Accuracy and quality" },
@@ -103,8 +103,9 @@
     "adminLink": "Admin panel",
 
     "intro.eyebrow": "Behavioral style questionnaire",
-    "intro.h1": "How do you act, communicate and make decisions?",
+    "intro.h1": "Free DISC test: how you act, communicate and make decisions",
     "intro.lead": "DISC describes four styles of behavior. Everyone has all four, but to different degrees. The test will show your dominant style, your strengths, your growth areas and how others can work with you best.",
+    "intro.stylesTitle": "The four DISC styles",
     "intro.howTitle": "How it works",
     "intro.howText": "Each of the 24 blocks has four statements. Mark the one that describes you <b>most</b> and the one that describes you <b>least</b>. Answer the way you usually behave at work, not the way you would like to. Don't overthink it: your first reaction is the most accurate.",
     "intro.nameLabel": "First and last name",
@@ -217,9 +218,6 @@
     "consent.details": "Stored in your browser: the name and job title you enter before the test; your answers and unfinished progress; your latest result; your chosen language; a note that you have seen this notice. The data stays on your device only and is removed when you clear the site's data in your browser. Third-party services: GitHub Pages (hosting) and Google Fonts (fonts) receive standard technical request data. No analytics or advertising trackers are used. When you finish the test, your name, email address and answers are passed to the email-sending service (Google Apps Script) in order to send you your result; they are not used for anything else.",
     "consent.accept": "Got it",
 
-    "root.title": "DISC Test — choose your language",
-    "root.h1": "Choose your language",
-    "root.lead": "Free DISC test: 24 blocks, about 10 minutes, instant results.",
     "root.continue": "Continue"
   }
 }

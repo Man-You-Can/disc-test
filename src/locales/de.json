@@ -3,8 +3,8 @@
   "dir": "ltr",
   "name": "Deutsch",
   "dateLocale": "de-DE",
-  "title": "DISC-Test — kostenloser Online-Test für Verhaltensstile",
-  "description": "Kostenloser DISC-Test online: 24 Blöcke, ca. 10 Minuten. Erfahren Sie Ihren Verhaltensstil, Stärken und Entwicklungsfelder. Ergebnis sofort, ohne Anmeldung.",
+  "title": "DISG-Test kostenlos — DISC-Persönlichkeitstest online",
+  "description": "Kostenloser DISG-Test: 24 Blöcke, 10 Minuten, ohne Anmeldung. Erfahren Sie Ihren Leitstil, Stärken und Entwicklungsfelder. Ergebnis sofort und per E-Mail.",
   "brand": "DISC-Test",
   "keys": { "D": "Dominanz", "I": "Initiative", "S": "Stetigkeit", "C": "Gewissenhaftigkeit" },
   "short": { "D": "Ergebnis und Kontrolle", "I": "Menschen und Begeisterung", "S": "Unterstützung und Stabilität", "C": "Genauigkeit und Qualität" },
@@ -103,8 +103,9 @@
     "adminLink": "Admin-Bereich",
 
     "intro.eyebrow": "Fragebogen zu Verhaltensstilen",
-    "intro.h1": "Wie handeln, kommunizieren und entscheiden Sie?",
-    "intro.lead": "DISC beschreibt vier Verhaltensstile. Jeder Mensch trägt alle vier in sich, aber unterschiedlich stark ausgeprägt. Der Test zeigt Ihren Leitstil, Ihre Stärken, Ihre Entwicklungsfelder und wie andere am besten mit Ihnen zusammenarbeiten.",
+    "intro.h1": "Kostenloser DISG-Test: Wie handeln, kommunizieren und entscheiden Sie?",
+    "intro.lead": "DISC (im Deutschen auch DISG) beschreibt vier Verhaltensstile. Jeder Mensch trägt alle vier in sich, aber unterschiedlich stark ausgeprägt. Der Test zeigt Ihren Leitstil, Ihre Stärken, Ihre Entwicklungsfelder und wie andere am besten mit Ihnen zusammenarbeiten.",
+    "intro.stylesTitle": "Die vier DISG-Stile",
     "intro.howTitle": "So funktioniert es",
     "intro.howText": "Jeder der 24 Blöcke enthält vier Aussagen. Markieren Sie die Aussage, die <b>am meisten</b> auf Sie zutrifft, und die, die <b>am wenigsten</b> auf Sie zutrifft. Antworten Sie so, wie Sie sich bei der Arbeit tatsächlich verhalten, nicht so, wie Sie es gern täten. Überlegen Sie nicht lange: Die erste Reaktion ist die genaueste.",
     "intro.nameLabel": "Vor- und Nachname",
@@ -217,9 +218,6 @@
     "consent.details": "Im Browser gespeichert: der vor dem Test eingegebene Name und die Position; Ihre Antworten und der unvollendete Fortschritt; Ihr letztes Ergebnis; die gewählte Sprache; ein Vermerk, dass Sie diesen Hinweis gesehen haben. Die Daten bleiben ausschließlich auf Ihrem Gerät und werden gelöscht, wenn Sie die Website-Daten im Browser löschen. Drittanbieter: GitHub Pages (Hosting) und Google Fonts (Schriften) erhalten die üblichen technischen Anfragedaten. Analyse-Tools oder Werbe-Tracker werden nicht eingesetzt. Beim Abschluss des Tests werden Name, E-Mail-Adresse und Antworten an den E-Mail-Versanddienst (Google Apps Script) übermittelt, um Ihnen das Ergebnis zu senden; sie werden für nichts anderes verwendet.",
     "consent.accept": "Verstanden",
 
-    "root.title": "DISC-Test — Sprache wählen",
-    "root.h1": "Sprache wählen",
-    "root.lead": "Kostenloser DISC-Test: 24 Blöcke, etwa 10 Minuten, Ergebnis sofort.",
     "root.continue": "Weiter"
   }
 }
