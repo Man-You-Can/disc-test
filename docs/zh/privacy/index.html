@@ -363,6 +363,12 @@ body.has-consent{padding-bottom:160px}
 .download{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:18px 0}
 .content ol{padding-inline-start:22px}
 .content ol li,.content ul li{margin-bottom:8px}
+.updated{margin-top:28px;padding-top:12px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+.sources{margin:14px 0 0;padding-inline-start:22px;font-size:14px}
+.sources li{margin-bottom:12px}
+.sources .kind{display:block;font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.sources a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line-strong)}
+.sources a:hover{border-bottom-color:var(--ink)}
 </style>
 </head>
 <body>
@@ -374,7 +380,7 @@ body.has-consent{padding-bottom:160px}
   </header>
   <nav class="sitenav no-print"><a href="../../zh/">测试</a><a href="../../zh/disc/">什么是 DISC</a><a href="../../zh/styles/">四种风格</a><a href="../../zh/profiles/">16 种类型</a><a href="../../zh/results/">结果解读</a><a href="../../zh/compatibility/">风格搭配</a><a href="../../zh/faq/">常见问题</a></nav>
   <nav class="crumbs"><a href="../../zh/">首页</a><span>›</span><span aria-current="page">隐私</span></nav>
-  <main class="content"><div class="eyebrow">DISC</div><h1>隐私</h1><h2>我们使用哪些数据</h2><p>测试前你需要输入姓名和邮箱。测试过程中保存你的答案，完成后保存结果、所选语言以及已阅读 Cookie 提示的标记。这些内容全部保存在你浏览器的本地存储中。完成测试后，姓名、邮箱、测试日期和结果还会保存到网站所有者的结果数据库中。</p><h2>数据传送到哪里</h2><p>完成测试后，姓名、邮箱和答案（以结果代码的形式）会传送给邮件发送服务——运行在网站所有者 Google 账户中的 Google Apps Script 脚本。它向你发送结果邮件，并将姓名、邮箱、测试日期和结果（类型、分数、报告链接）记录到结果数据库——同一账户中的 Google 表格。这些数据不用于其他目的，也不会提供给第三方。</p><p>托管服务 GitHub Pages 会收到标准的技术请求数据：IP 地址、浏览器类型、页面地址。字体由本网站自行提供，不从 Google 服务器加载。访问统计由 Yandex Metrica（Yandex LLC）收集：它会收到匿名的访问数据——不含结果代码的页面地址、来源、设备和浏览器类型——以及页面操作记录（Webvisor）；姓名和邮箱输入框、结果链接和代码不在记录范围内。数据按 Yandex 的条款处理；你可以在浏览器设置中或使用跟踪拦截器停止收集。不使用广告跟踪器。</p><h2>结果链接</h2><p>报告链接以编码形式包含你的姓名、邮箱和答案。任何拿到链接的人都能打开报告，因此请只分享给你信任的人。管理面板只在粘贴代码的那个人的浏览器中工作。</p><h2>联系表单</h2><p>联系表单中的留言（名字、电子邮箱、内容和附件）通过同一个 Google Apps Script 脚本以邮件形式发送至 <a href="mailto:info@disc-test.org">info@disc-test.org</a>，仅用于回复你。这些留言不会写入结果数据库，附件除该邮件外不会保存在任何其他地方。</p><h2>如何删除数据</h2><p>要删除设备上的数据，请在浏览器设置中清除本站数据，或点击“重新测试”。结果邮件保存在你的邮箱中。如需删除你在结果数据库中的记录以及发送方的邮件副本，请通过联系表单联系我们。</p><h2>Cookie</h2><p>网站本身不设置 Cookie：上述内容使用浏览器的本地存储，一种用途相同的技术。Yandex Metrica 会设置自己的 Cookie（例如 _ym_uid 和 _ym_d）以区分访问者。因此提示只在首次访问时显示一次。</p><h2>更新</h2><p>最近更新：2026 年 9 月 7 日。数据处理方式的变化会在本页面体现。</p></main>
+  <main class="content"><div class="eyebrow">DISC</div><h1>隐私</h1><h2>我们使用哪些数据</h2><p>测试前你需要输入姓名和邮箱。测试过程中保存你的答案，完成后保存结果、所选语言以及已阅读 Cookie 提示的标记。这些内容全部保存在你浏览器的本地存储中。完成测试后，姓名、邮箱、测试日期和结果还会保存到网站所有者的结果数据库中。</p><h2>数据传送到哪里</h2><p>完成测试后，姓名、邮箱和答案（以结果代码的形式）会传送给邮件发送服务——运行在网站所有者 Google 账户中的 Google Apps Script 脚本。它向你发送结果邮件，并将姓名、邮箱、测试日期和结果（类型、分数、报告链接）记录到结果数据库——同一账户中的 Google 表格。这些数据不用于其他目的，也不会提供给第三方。</p><p>托管服务 GitHub Pages 会收到标准的技术请求数据：IP 地址、浏览器类型、页面地址。字体由本网站自行提供，不从 Google 服务器加载。访问统计由 Yandex Metrica（Yandex LLC）收集：它会收到匿名的访问数据——不含结果代码的页面地址、来源、设备和浏览器类型——以及页面操作记录（Webvisor）；姓名和邮箱输入框、结果链接和代码不在记录范围内。数据按 Yandex 的条款处理；你可以在浏览器设置中或使用跟踪拦截器停止收集。不使用广告跟踪器。</p><h2>结果链接</h2><p>报告链接以编码形式包含你的姓名、邮箱和答案。任何拿到链接的人都能打开报告，因此请只分享给你信任的人。管理面板只在粘贴代码的那个人的浏览器中工作。</p><h2>联系表单</h2><p>联系表单中的留言（名字、电子邮箱、内容和附件）通过同一个 Google Apps Script 脚本以邮件形式发送至 <a href="mailto:info@disc-test.org">info@disc-test.org</a>，仅用于回复你。这些留言不会写入结果数据库，附件除该邮件外不会保存在任何其他地方。</p><h2>如何删除数据</h2><p>要删除设备上的数据，请在浏览器设置中清除本站数据，或点击“重新测试”。结果邮件保存在你的邮箱中。如需删除你在结果数据库中的记录以及发送方的邮件副本，请通过联系表单联系我们。</p><h2>Cookie</h2><p>网站本身不设置 Cookie：上述内容使用浏览器的本地存储，一种用途相同的技术。Yandex Metrica 会设置自己的 Cookie（例如 _ym_uid 和 _ym_d）以区分访问者。因此提示只在首次访问时显示一次。</p><h2>更新</h2><p>最近更新：2026 年 9 月 7 日。数据处理方式的变化会在本页面体现。</p><p class="updated"><time datetime="2026-09-08">更新于 2026年9月8日</time></p></main>
   <footer class="foot">
     <div class="row2"><span>24 组题 · 约 10 分钟 · 没有对错之分</span><span class="footlinks"><a href="../../zh/about/">关于</a> · <a href="../../zh/contact/">联系我们</a> · <a href="../../zh/privacy/">隐私</a></span></div>
     <nav class="materials" aria-label="DISC 资料"><span class="mlabel">DISC 资料</span><a href="../../zh/disc/">什么是 DISC</a><a href="../../zh/styles/">四种风格</a><a href="../../zh/profiles/">16 种类型</a><a href="../../zh/results/">结果解读</a><a href="../../zh/compatibility/">风格搭配</a><a href="../../zh/colors/">DISC 性格色彩</a><a href="../../zh/teams/">DISC 团队应用</a><a href="../../zh/disc-vs-mbti/">DISC 与 MBTI</a><a href="../../zh/pdf/">PDF 打印版</a><a href="../../zh/faq/">常见问题</a></nav>

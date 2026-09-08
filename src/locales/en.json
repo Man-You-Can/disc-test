@@ -325,7 +325,9 @@
           "h": "Limitations of the method",
           "p": ["DISC is a self-report: the result reflects how you see yourself and depends on honesty and mood. A short questionnaire gives an orientation, not a precise measurement, so treat the profile as a starting point for reflection and conversation rather than a diagnosis. If the result seems off, take the test again, answering quickly and with work situations in mind."]
         }
-      ]
+      ],
+      "sourcesTitle": "Sources and further reading",
+      "sourcesLead": "The statements about the method on this page rest on the works below: Marston's primary source, the early questionnaires, the publisher's manual for the modern version of DiSC® and independent research, including critical work. The links lead to the originals or to the article records in academic databases."
     },
     "faq": {
       "title": "DISC Test FAQ — Frequently Asked Questions",
@@ -874,6 +876,25 @@
           }
         }
       }
+    },
+    "editorial": {
+      "sections": [
+        {
+          "h": "Who runs the site",
+          "p": [
+            "The site is run by the disc-test.org editorial team: we write the texts, maintain the code and answer the mail. The project is independent and non-commercial: the test is free, with no sign-up, no ads and no paid “extended reports”, and the source code is open. We do not sell training or certifications, and we are not affiliated with Wiley (DiSC®), TTI Success Insights or other trademark holders.",
+            "We are responsible for everything published on the site. If you find a mistake in the text, an inaccurate translation or a discrepancy between the description of the method and the way the score is actually calculated, write to us: we will fix it and update the date of the change."
+          ]
+        },
+        {
+          "h": "How we write and check our texts",
+          "p": [
+            "The statements about the method rest on primary sources and peer-reviewed research, including critical work; the list of works is collected in the “{sources}” section. We do not paraphrase commercial reports: the descriptions of the four styles and the sixteen profiles were written by our editorial team on the basis of the generally accepted characteristics of the model.",
+            "The source language of the site is Russian. The translations into nine languages were produced with language models and are checked automatically: a script makes sure that the structure of the texts, the terms and the numbers match across all languages. Proofreading by native speakers is planned but has not been done yet, so the translations may still have rough edges.",
+            "Every page carries the date it was last updated. We revise the texts when the test itself changes or when readers point something out, and we do not publish anything we cannot back up with a source or with our own checking."
+          ]
+        }
+      ]
     }
   },
   "ui": {
@@ -1048,6 +1069,8 @@
     "pages.pdf.download": "Download PDF",
     "pages.pdf.meta": "A4 · {pages} pages · {size}",
     "pages.pdf.missing": "The file is being prepared. In the meantime, take the test online or save your result as a PDF from the result screen.",
+    "pages.updated": "Updated {date}",
+    "pages.sourcesLink": "Sources and further reading",
 
     "cta.title": "Discover your DISC profile",
     "cta.text": "Free test: 24 blocks, about 10 minutes, instant result and a copy by email.",
@@ -1103,6 +1126,12 @@
     "print.decodeText": "The dominant style is the one with the highest total. If the second-highest total is positive and at least 40% of the dominant one (minimum 3 points), it is the secondary style. A profile is written as one letter (for example, D) or two (for example, DI: dominant D, secondary I). If no total is above 2, the profile is balanced: the styles are expressed about equally.",
     "print.profilesTitle": "The 16 DISC profiles",
     "print.online": "Online version with automatic scoring, a chart and a detailed report: {url}",
+
+    "sources.kind.primary": "Primary source",
+    "sources.kind.history": "History of the method",
+    "sources.kind.manual": "Publisher's manual",
+    "sources.kind.research": "Study",
+    "sources.kind.review": "Critical review",
 
     "root.continue": "Continue"
   }

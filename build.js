@@ -48,6 +48,26 @@ const ltr = str => `<span dir="ltr">${str}</span>`; // латиница внут
 const FOOT_ITEMS = [['nav.about', 'about/']].concat(feedbackEmail ? [['nav.contact', 'contact/']] : []).concat([['nav.privacy', 'privacy/']]);
 const footLinks = (L, base) => FOOT_ITEMS.map(([k, sub]) => `<a href="${base + sub}">${esc(L.ui[k])}</a>`).join(' · ');
 const PROFILE_KEYS = ['D', 'DI', 'DC', 'DS', 'I', 'ID', 'IS', 'IC', 'S', 'SI', 'SC', 'SD', 'C', 'CD', 'CS', 'CI'];
+const REPO_URL = 'https://github.com/Man-You-Can/disc-test';
+// Источники к странице «Что такое DISC». Библиографические описания одинаковы во всех языках
+// (названия работ приводятся на языке оригинала), поэтому живут здесь, а не в локалях;
+// переводятся только заголовок раздела, вводка и подпись вида «Исследование» (ключи sources.kind.*).
+// Каждая запись сверена с карточкой издателя или научной базы; kind — ключ подписи.
+// Список выводится с dir="ltr": описания на латинице, и в арабской версии иначе съезжают знаки препинания.
+const SOURCES = [
+  { kind: 'primary', text: 'Marston W. M. Emotions of Normal People. — London: Kegan Paul, Trench, Trubner & Co., 1928.', url: 'https://archive.org/details/emotionsofnormal032195mbp' },
+  { kind: 'history', text: 'Clarke W. V. The Construction of an Industrial Selection Personality Test // The Journal of Psychology. — 1956. — Vol. 41, № 2. — P. 379–394.', url: 'https://doi.org/10.1080/00223980.1956.9713011' },
+  { kind: 'manual', text: 'Scullard M., Baum D. Everything DiSC Manual. — Hoboken: Wiley, 2015. — ISBN 978-1-119-08067-1.', url: 'https://www.wiley.com/en-us/Everything+DiSC+Manual-p-9781119080671' },
+  { kind: 'research', text: 'Meade A. W. Psychometric problems and issues involved with creating and using ipsative measures for selection // Journal of Occupational and Organizational Psychology. — 2004. — Vol. 77, № 4. — P. 531–552.', url: 'https://doi.org/10.1348/0963179042596504' },
+  { kind: 'research', text: 'Salgado J. F., Anderson N., Táuriz G. The validity of ipsative and quasi-ipsative forced-choice personality inventories for different occupational groups: A comprehensive meta-analysis // Journal of Occupational and Organizational Psychology. — 2015. — Vol. 88, № 4.', url: 'https://doi.org/10.1111/joop.12098' },
+  { kind: 'research', text: 'Jones C. S., Hartley N. T. Comparing Correlations Between Four-Quadrant and Five-Factor Personality Assessments // American Journal of Business Education. — 2013. — Vol. 6, № 4. — P. 459–470.', url: 'https://files.eric.ed.gov/fulltext/EJ1054970.pdf' },
+  { kind: 'research', text: 'McCrae R. R., John O. P. An Introduction to the Five-Factor Model and Its Applications // Journal of Personality. — 1992. — Vol. 60, № 2. — P. 175–215.', url: 'https://doi.org/10.1111/j.1467-6494.1992.tb00970.x' },
+  { kind: 'research', text: 'Barrick M. R., Mount M. K. The Big Five Personality Dimensions and Job Performance: A Meta-Analysis // Personnel Psychology. — 1991. — Vol. 44, № 1. — P. 1–26.', url: 'https://doi.org/10.1111/j.1744-6570.1991.tb00688.x' },
+  { kind: 'review', text: 'Pittenger D. J. Cautionary Comments Regarding the Myers-Briggs Type Indicator // Consulting Psychology Journal: Practice and Research. — 2005. — Vol. 57, № 3. — P. 210–221.', url: 'https://doi.org/10.1037/1065-9293.57.3.210' },
+  { kind: 'research', text: 'Roberts B. W., Walton K. E., Viechtbauer W. Patterns of Mean-Level Change in Personality Traits Across the Life Course: A Meta-Analysis of Longitudinal Studies // Psychological Bulletin. — 2006. — Vol. 132, № 1. — P. 1–25.', url: 'https://doi.org/10.1037/0033-2909.132.1.1' }
+];
+const sourcesHtml = (L, t) => `<h2 id="sources">${escFull(L.content.disc.sourcesTitle)}</h2><p>${escFull(L.content.disc.sourcesLead)}</p><ol class="sources" dir="ltr">` +
+  SOURCES.map(sc => `<li><span class="kind">${esc(t('sources.kind.' + sc.kind))}</span><a href="${sc.url}" rel="noopener nofollow" hreflang="en">${escFull(sc.text)}</a></li>`).join('') + `</ol>`;
 const pages = []; // для sitemap: {lang, sub, files}
 const extraUrls = []; // для sitemap: файлы без языковых версий (PDF)
 const ASSETS = path.join(SRC, 'assets');
@@ -129,12 +149,17 @@ const KEYS = ['D', 'I', 'S', 'C'];
 const LANG_PATH = Object.fromEntries(locales.map(L => [L.lang, pathOf(L.lang)]));
 const LANG_META = Object.fromEntries(locales.map(L => [L.lang, { name: L.name, cont: L.ui['root.continue'] || L.name, dir: L.dir }]));
 const today = new Date().toISOString().slice(0, 10);
+const fmtDate = (iso, L) => { try { return new Intl.DateTimeFormat(L.dateLocale, { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(iso + 'T12:00:00Z')); } catch (e) { return iso; } };
 // Файлы с незакоммиченными правками считаем изменёнными сегодня: иначе в sitemap попала бы дата прошлого коммита
 const dirty = (() => { try { return new Set(execSync('git status --porcelain -z', { cwd: ROOT, stdio: ['ignore', 'pipe', 'ignore'] }).toString().split('\0').filter(Boolean).map(l => l.slice(3))); } catch (e) { return new Set(); } })();
 const lastmod = files => { if (files.some(f => dirty.has(f))) return today;
   try { return execSync('git log -1 --format=%cs -- ' + files.map(f => JSON.stringify(f)).join(' '), { cwd: ROOT, stdio: ['ignore', 'pipe', 'ignore'] }).toString().trim() || null; } catch (e) { return null; } };
+// Организация-издатель: одна карточка на весь сайт, со ссылкой на открытый код и адресом для связи
+const orgLd = () => ({ '@context': 'https://schema.org', '@type': 'Organization', name: 'DISC Test', url: siteUrl + '/', logo: `${siteUrl}/icon-512.png`,
+  sameAs: [REPO_URL], email: feedbackEmail || undefined });
 const jsonLd = L => JSON.stringify([
   { '@context': 'https://schema.org', '@type': 'WebSite', name: 'DISC Test', alternateName: L.brand, url: siteUrl + '/', inLanguage: L.lang },
+  orgLd(),
   { '@context': 'https://schema.org', '@type': 'WebApplication', name: L.brand, url: urlOf(L.lang), description: L.description,
     applicationCategory: 'Personality test', operatingSystem: 'Any', browserRequirements: 'Requires JavaScript', inLanguage: L.lang,
     isAccessibleForFree: true, offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' }, image: `${siteUrl}/og/${L.lang}.png`,
@@ -215,6 +240,9 @@ function writeContentPage(L, sub, opts) {
   const links = locales.map(x => `<a href="${rootRel + pathOf(x.lang) + sub}" hreflang="${hl(x.lang)}" lang="${x.lang}" data-lang="${x.lang}"${x.lang === L.lang ? ' aria-current="page"' : ''}>${flag(x.lang)}<span>${esc(x.name)}</span></a>`).join('');
   const navHtml = NAV_ITEMS.map(([k, s2]) => `<a href="${base + s2}"${opts.navKey === k ? ' aria-current="page"' : ''}>${esc(L.ui[k])}</a>`).join('');
   const footHtml = footLinks(L, base);
+  const pageFiles = [`src/locales/${L.lang}.json`, 'src/page.html', 'build.js'].concat(opts.files || []);
+  const updated = lastmod(pageFiles) || today;
+  const updatedHtml = opts.noDate ? '' : `<p class="updated"><time datetime="${updated}">${esc(t('pages.updated', { date: fmtDate(updated, L) }))}</time></p>`;
   const crumbs = [{ name: L.ui['nav.home'], href: homeHref }].concat(opts.crumbs || []);
   const crumbsHtml = crumbs.map((c, i) => i === crumbs.length - 1 ? `<span aria-current="page">${esc(c.name)}</span>` : `<a href="${c.href}">${esc(c.name)}</a><span>›</span>`).join('');
   const hreflang = locales.flatMap(x => hls(x.lang).map(h => `<link rel="alternate" hreflang="${h}" href="${urlOf(x.lang) + sub}">`)).concat([`<link rel="alternate" hreflang="x-default" href="${siteUrl}/${sub}">`]).join('\n');
@@ -223,6 +251,7 @@ function writeContentPage(L, sub, opts) {
       dateModified: opts.article ? (lastmod([`src/locales/${L.lang}.json`]) || today) : undefined, author: opts.article ? { '@type': 'Organization', name: 'DISC Test', url: siteUrl + '/' } : undefined,
       image: opts.article ? `${siteUrl}/og/${L.lang}.png` : undefined, publisher: opts.article ? { '@type': 'Organization', name: 'DISC Test', url: siteUrl + '/', logo: `${siteUrl}/icon-512.png` } : undefined,
       isPartOf: { '@type': 'WebSite', name: 'DISC Test', url: siteUrl + '/' } },
+    ...(opts.article ? [orgLd()] : []),
     { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: crumbs.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.name, item: i === 0 ? urlOf(L.lang) : urlOf(L.lang) + (c.sub || sub) })) }
   ].concat(opts.ldExtra || [])).replace(/</g, '\\u003c');
   const miniL = { lang: L.lang, name: L.name, dir: L.dir, dateLocale: L.dateLocale, ui: Object.fromEntries(Object.entries(L.ui).filter(([k]) => k === 'langLabel' || k === 'root.continue' || k.startsWith('consent.') || (opts.uiKeys && opts.uiKeys.test(k)))) };
@@ -237,7 +266,7 @@ function writeContentPage(L, sub, opts) {
     .replace('__FLAG_SPRITE__', () => flagSprite(locales.map(x => x.lang)))
     .replace(/__BRAND__/g, esc(L.brand)).replace(/__HOME_HREF__/g, homeHref).replace(/__LANG_LABEL__/g, esc(L.ui.langLabel))
     .replace('__LANG_SWITCHER__', () => switcher).replace('__NAV__', () => navHtml).replace('__CRUMBS__', () => crumbsHtml).replace('__FOOT_LINKS__', () => footHtml).replace('__MATERIALS__', () => materialsHtml(L, base, sub))
-    .replace('__CONTENT__', () => opts.content)
+    .replace('__CONTENT__', () => opts.content + updatedHtml)
     .replace(/__FOOTER__/g, esc(L.ui.footer)).replace(/__PRIVACY__/g, esc(L.ui.privacy)).replace('__LANG_LINKS__', () => links)
     .replace('__LOCALE_JSON__', () => JSON.stringify(miniL).replace(/</g, '\\u003c'))
     .replace(/__SUBPATH__/g, sub)
@@ -245,7 +274,7 @@ function writeContentPage(L, sub, opts) {
     .replace('__COMMON_JS__', () => commonJs).replace('__PAGE_JS__', () => opts.pageJs || '');
   fs.mkdirSync(path.join(OUT, pathOf(L.lang), sub), { recursive: true });
   fs.writeFileSync(path.join(OUT, pathOf(L.lang), sub, 'index.html'), html);
-  pages.push({ lang: L.lang, sub, files: [`src/locales/${L.lang}.json`, 'src/page.html', 'build.js'].concat(opts.files || []) });
+  pages.push({ lang: L.lang, sub, files: pageFiles });
 }
 
 for (const L of locales) {
@@ -300,15 +329,19 @@ for (const L of locales) {
   const seeAlso = (base, cur) => `<p class="seealso">${MATERIALS.filter(([k]) => k !== cur).map(([k, sub]) => `<a href="${base + sub}">${esc(L.ui[k])} →</a>`).join(' · ')}</p>`;
   const d = C.disc;
   writeContentPage(L, 'disc/', { navKey: 'nav.disc', article: true, title: d.title, description: d.description, crumbs: [{ name: t('nav.disc') }],
-    content: `<div class="eyebrow">DISC</div><h1>${escFull(d.h1)}</h1><p class="lead">${escFull(d.lead)}</p>` + sectionsHtml(d.sections) + ctaBlock(L, t, '../') + seeAlso('../', 'nav.disc') });
+    content: `<div class="eyebrow">DISC</div><h1>${escFull(d.h1)}</h1><p class="lead">${escFull(d.lead)}</p>` + sectionsHtml(d.sections) + sourcesHtml(L, t) + ctaBlock(L, t, '../') + seeAlso('../', 'nav.disc'),
+    ldExtra: [{ '@context': 'https://schema.org', '@type': 'ItemList', name: d.sourcesTitle, itemListElement: SOURCES.map((sc, i) => ({ '@type': 'ListItem', position: i + 1, item: { '@type': 'CreativeWork', name: sc.text, url: sc.url } })) }] });
   const f = C.faq;
   writeContentPage(L, 'faq/', { navKey: 'nav.faq', title: f.title, description: f.description, crumbs: [{ name: t('nav.faq') }],
     content: `<div class="eyebrow">DISC</div><h1>${escFull(f.h1)}</h1><p class="lead">${escFull(f.lead)}</p>` + f.items.map(it => `<h2>${escFull(it.q)}</h2><p>${escFull(it.a).replace('{pdf}', `<a href="../pdf/">${escFull(t('nav.pdf'))}</a>`)}</p>`).join('') + ctaBlock(L, t, '../') + seeAlso('../', 'nav.faq'),
     ldExtra: [{ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: f.items.map(it => ({ '@type': 'Question', name: it.q, acceptedAnswer: { '@type': 'Answer', text: it.a.replace('{pdf}', t('nav.pdf')) } })) }] });
   const a = C.about;
   writeContentPage(L, 'about/', { navKey: 'nav.about', title: a.title, description: a.description, crumbs: [{ name: t('nav.about') }],
-    content: `<div class="eyebrow">DISC</div><h1>${escFull(a.h1)}</h1>` + sectionsHtml(a.sections).replace('github.com/Man-You-Can/disc-test', '<a href="https://github.com/Man-You-Can/disc-test" rel="noopener">github.com/Man-You-Can/disc-test</a>')
-      .replace('{contact}', feedbackEmail ? `<a href="../contact/">${escFull(t('nav.contact'))}</a>` : escFull(t('nav.contact'))) + ctaBlock(L, t, '../') });
+    content: (`<div class="eyebrow">DISC</div><h1>${escFull(a.h1)}</h1>` +
+      sectionsHtml(a.sections.slice(0, 2)) + sectionsHtml(C.editorial.sections) + sectionsHtml(a.sections.slice(2)))
+      .replace('github.com/Man-You-Can/disc-test', `<a href="${REPO_URL}" rel="noopener">github.com/Man-You-Can/disc-test</a>`)
+      .replace('{contact}', feedbackEmail ? `<a href="../contact/">${escFull(t('nav.contact'))}</a>` : escFull(t('nav.contact')))
+      .replace('{sources}', `<a href="../disc/#sources">${escFull(L.content.disc.sourcesTitle)}</a>`) + ctaBlock(L, t, '../') });
   const pv = C.privacy;
   writeContentPage(L, 'privacy/', { navKey: 'nav.privacy', title: pv.title, description: pv.description, crumbs: [{ name: t('nav.privacy') }],
     content: `<div class="eyebrow">DISC</div><h1>${escFull(pv.h1)}</h1>` + sectionsHtml(pv.sections).replace(/\{email\}/g, feedbackEmail ? `<a href="mailto:${escFull(feedbackEmail)}">${escFull(feedbackEmail)}</a>` : '—') });
@@ -358,7 +391,8 @@ for (const L of locales) {
   // /disc-vs-mbti/ — сравнение моделей: таблица после второй секции
   const mb = C.mbti;
   writeContentPage(L, 'disc-vs-mbti/', { navKey: 'nav.mbti', article: true, title: mb.title, description: mb.description, crumbs: [{ name: t('nav.mbti') }],
-    content: `<div class="eyebrow">DISC</div><h1>${escFull(mb.h1)}</h1><p class="lead">${escFull(mb.lead)}</p>` + sectionsHtml(mb.sections.slice(0, 2)) + tableHtml(mb.table) + sectionsHtml(mb.sections.slice(2)) + ctaBlock(L, t, '../') + seeAlso('../', 'nav.mbti') });
+    content: `<div class="eyebrow">DISC</div><h1>${escFull(mb.h1)}</h1><p class="lead">${escFull(mb.lead)}</p>` + sectionsHtml(mb.sections.slice(0, 2)) + tableHtml(mb.table) + sectionsHtml(mb.sections.slice(2)) +
+      `<p class="seealso"><a href="../disc/#sources">${esc(t('pages.sourcesLink'))} →</a></p>` + ctaBlock(L, t, '../') + seeAlso('../', 'nav.mbti') });
   // /pdf/ — печатная версия: кнопка скачивания файла из src/assets/pdf (готовится node scripts/make-pdf.js)
   const pd = C.pdf, pi = pdfInfo(L.lang), pdfRoot = relRoot(L, 'pdf/');
   const download = pi ? `<p class="download"><a class="btn" href="${pdfRoot}pdf/${pi.file}" download>${t('pages.pdf.download')}</a><span class="muted">${escFull(t('pages.pdf.meta', { pages: pi.pages, size: fmtSize(pi.size) }))}</span></p>` : `<p class="notice">${escFull(t('pages.pdf.missing'))}</p>`;

@@ -327,7 +327,9 @@
             "DISC es una autoevaluación: el resultado refleja cómo se ve usted mismo y depende de su sinceridad y de su estado de ánimo. Un cuestionario breve ofrece una orientación, no una medición exacta, así que tome el perfil como punto de partida para la reflexión y la conversación, no como un diagnóstico. Si el resultado le parece inexacto, repita el test respondiendo rápido y pensando en situaciones de trabajo."
           ]
         }
-      ]
+      ],
+      "sourcesTitle": "Fuentes y bibliografía",
+      "sourcesLead": "Las afirmaciones sobre el método que aparecen en esta página se apoyan en los trabajos que figuran a continuación: la fuente original de Marston, los primeros cuestionarios, el manual de la editorial de la versión moderna de DiSC® e investigaciones independientes, incluidas las críticas. Los enlaces llevan a los originales o a las fichas de los artículos en bases de datos científicas."
     },
     "faq": {
       "title": "Preguntas frecuentes sobre el test DISC",
@@ -878,6 +880,25 @@
           }
         }
       }
+    },
+    "editorial": {
+      "sections": [
+        {
+          "h": "Quién está detrás del sitio",
+          "p": [
+            "El sitio lo lleva la redacción de disc-test.org: escribimos los textos, mantenemos el código y respondemos a los correos. El proyecto es independiente y no comercial: el test es gratuito, sin registro, sin publicidad y sin «informes ampliados» de pago, y el código fuente es abierto. No vendemos cursos de formación ni certificados y no estamos vinculados a Wiley (DiSC®), TTI Success Insights ni a otros titulares de marcas.",
+            "De lo que se publica en el sitio respondemos nosotros. Si encuentra un error en un texto, una imprecisión en una traducción o una discrepancia entre la descripción del método y la forma en que se calcula el resultado, escríbanos: lo corregiremos y actualizaremos la fecha de modificación."
+          ]
+        },
+        {
+          "h": "Cómo escribimos y revisamos los textos",
+          "p": [
+            "Las afirmaciones sobre el método se apoyan en fuentes originales y en investigaciones revisadas por pares, incluidas las críticas; la lista de trabajos está reunida en la sección «{sources}». No parafraseamos informes comerciales: las descripciones de los cuatro estilos y de los dieciséis perfiles las ha escrito la redacción a partir de las características generalmente aceptadas del modelo.",
+            "El idioma de referencia del sitio es el ruso. Las traducciones a nueve idiomas se han hecho con ayuda de modelos de lenguaje y se comprueban de forma automática: un script vigila que en todos los idiomas coincidan la estructura de los textos, los términos y las cifras. La revisión por hablantes nativos está prevista, pero todavía no se ha realizado, así que en las traducciones puede haber imperfecciones.",
+            "En cada página figura la fecha de la última modificación. Corregimos los textos cuando cambia el propio test o cuando nos llegan observaciones, y no publicamos nada que no podamos respaldar con una fuente o con nuestra propia comprobación."
+          ]
+        }
+      ]
     }
   },
   "ui": {
@@ -1052,6 +1073,8 @@
     "pages.pdf.download": "Descargar PDF",
     "pages.pdf.meta": "A4 · páginas: {pages} · {size}",
     "pages.pdf.missing": "El archivo está en preparación. Mientras tanto, haga el test online o guarde el resultado en PDF desde la pantalla de resultado.",
+    "pages.updated": "Actualizado el {date}",
+    "pages.sourcesLink": "Fuentes y bibliografía",
 
     "cta.title": "Descubra su perfil DISC",
     "cta.text": "Test gratuito: 24 bloques, unos 10 minutos, resultado al instante y por e-mail.",
@@ -1107,6 +1130,12 @@
     "print.decodeText": "El estilo predominante es el que tiene el total más alto. Si el segundo total más alto es positivo y alcanza al menos el 40 % del predominante (mínimo 3 puntos), es el estilo secundario. El perfil se indica con una letra (por ejemplo, D) o con dos (por ejemplo, DI: predominante D, secundario I). Si ningún total supera 2, el perfil es equilibrado: los estilos están expresados de forma parecida.",
     "print.profilesTitle": "Los 16 perfiles DISC",
     "print.online": "Versión online con cálculo automático, gráfico e informe detallado: {url}",
+
+    "sources.kind.primary": "Fuente original",
+    "sources.kind.history": "Historia del método",
+    "sources.kind.manual": "Manual de la editorial",
+    "sources.kind.research": "Investigación",
+    "sources.kind.review": "Revisión crítica",
 
     "root.continue": "Continuar"
   }

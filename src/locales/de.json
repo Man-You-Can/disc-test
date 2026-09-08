@@ -327,7 +327,9 @@
             "DISG ist eine Selbsteinschätzung: Das Ergebnis spiegelt wider, wie Sie sich selbst sehen, und hängt von Ehrlichkeit und Stimmung ab. Ein kurzer Fragebogen liefert eine Orientierung, keine exakte Messung. Betrachten Sie das Profil daher als Ausgangspunkt für Reflexion und Gespräch, nicht als Diagnose. Wenn das Ergebnis unpassend wirkt, wiederholen Sie den Test, antworten Sie schnell und denken Sie an Situationen aus dem Arbeitsalltag."
           ]
         }
-      ]
+      ],
+      "sourcesTitle": "Quellen und Literatur",
+      "sourcesLead": "Die Aussagen zur Methode auf dieser Seite stützen sich auf die folgenden Arbeiten: Marstons Primärquelle, die frühen Fragebögen, das Handbuch des Verlags zur heutigen Fassung von DiSC® sowie unabhängige Studien, darunter kritische. Die Links führen zu den Originalen oder zu den Einträgen der Arbeiten in wissenschaftlichen Datenbanken."
     },
     "faq": {
       "title": "Häufige Fragen zum DISG-Test",
@@ -882,6 +884,25 @@
           }
         }
       }
+    },
+    "editorial": {
+      "sections": [
+        {
+          "h": "Wer die Seite betreibt",
+          "p": [
+            "Die Seite wird von der Redaktion von disc-test.org betreut: Wir schreiben die Texte, pflegen den Code und beantworten E-Mails. Das Projekt ist unabhängig und nicht kommerziell: Der Test ist kostenlos, ohne Anmeldung, ohne Werbung und ohne kostenpflichtige „erweiterte Berichte“, der Quellcode ist offen. Wir verkaufen keine Trainings und Zertifikate und stehen in keiner Verbindung zu Wiley (DiSC®), TTI Success Insights oder anderen Markeninhabern.",
+            "Für das, was auf der Seite veröffentlicht wird, sind wir verantwortlich. Wenn Sie einen Fehler im Text, eine Ungenauigkeit in der Übersetzung oder eine Abweichung zwischen der Beschreibung der Methode und der tatsächlichen Berechnung des Ergebnisses finden, schreiben Sie uns: Wir korrigieren das und aktualisieren das Änderungsdatum."
+          ]
+        },
+        {
+          "h": "Wie wir Texte schreiben und prüfen",
+          "p": [
+            "Die Aussagen zur Methode stützen sich auf Primärquellen und begutachtete Studien, darunter kritische; die Liste der Arbeiten finden Sie im Abschnitt „{sources}“. Wir geben keine kommerziellen Berichte wieder: Die Beschreibungen der vier Stile und der sechzehn Profile hat die Redaktion auf Grundlage der allgemein anerkannten Merkmale des Modells verfasst.",
+            "Die Ausgangssprache der Seite ist Russisch. Die Übersetzungen in neun Sprachen sind mit Hilfe von Sprachmodellen entstanden und werden automatisch geprüft: Ein Skript stellt sicher, dass Textstruktur, Fachbegriffe und Zahlen in allen Sprachen übereinstimmen. Eine Korrekturlesung durch Muttersprachler ist geplant, bislang aber nicht erfolgt; in den Übersetzungen sind daher sprachliche Unebenheiten möglich.",
+            "Auf jeder Seite steht das Datum der letzten Änderung. Wir überarbeiten die Texte, wenn sich der Test selbst ändert oder Hinweise eingehen, und veröffentlichen nichts, was wir nicht mit einer Quelle oder einer eigenen Prüfung belegen können."
+          ]
+        }
+      ]
     }
   },
   "ui": {
@@ -1056,6 +1077,8 @@
     "pages.pdf.download": "PDF herunterladen",
     "pages.pdf.meta": "A4 · {pages} Seiten · {size}",
     "pages.pdf.missing": "Die Datei wird gerade erstellt. Machen Sie den Test so lange online oder speichern Sie das Ergebnis auf dem Ergebnisbildschirm als PDF.",
+    "pages.updated": "Aktualisiert am {date}",
+    "pages.sourcesLink": "Quellen und Literatur",
 
     "cta.title": "Finden Sie Ihr DISG-Profil",
     "cta.text": "Kostenloser Test: 24 Blöcke, etwa 10 Minuten, Ergebnis sofort und per E-Mail.",
@@ -1111,6 +1134,12 @@
     "print.decodeText": "Der Leitstil ist der Stil mit dem höchsten Ergebnis. Ist das zweithöchste Ergebnis positiv und erreicht es mindestens 40 % des Leitstils (mindestens 3 Punkte), ist das der Nebenstil. Das Profil wird mit einem Buchstaben (z. B. D) oder mit zwei Buchstaben bezeichnet (z. B. DI: Leitstil D, Nebenstil I). Liegt kein Ergebnis über 2, ist das Profil ausgeglichen: Die Stile sind etwa gleich stark ausgeprägt.",
     "print.profilesTitle": "Die 16 DISG-Profile",
     "print.online": "Online-Version mit automatischer Auswertung, Diagramm und ausführlichem Bericht: {url}",
+
+    "sources.kind.primary": "Primärquelle",
+    "sources.kind.history": "Geschichte der Methode",
+    "sources.kind.manual": "Handbuch des Verlags",
+    "sources.kind.research": "Studie",
+    "sources.kind.review": "Kritische Auseinandersetzung",
 
     "root.continue": "Weiter"
   }
