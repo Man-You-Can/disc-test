@@ -89,8 +89,7 @@
 html{background:var(--paper)}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
 html[lang=ar] body,html[lang=hi] body{font-size:17px;line-height:1.65}
-.wrap{max-width:760px;margin:0 auto;padding:0 20px 56px;transition:max-width .2s}
-.wrap.wide{max-width:960px}
+.wrap{max-width:760px;margin:0 auto;padding:0 20px 56px}
 .topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 0 16px}
 .brand{font-family:var(--font-head);font-weight:500;font-size:15px;letter-spacing:.02em;display:flex;align-items:center;gap:10px;color:inherit;text-decoration:none;border-radius:6px}
 .brand:hover{opacity:.75}
@@ -477,11 +476,10 @@ function badgeHTML(cls, cssClass){
 }
 
 /* ====== состояние ====== */
-var view = $('#view'), stepEl = $('#step'), progEl = $('#progress'), wrap = $('#app');
+var view = $('#view'), stepEl = $('#step'), progEl = $('#progress');
 var S = null;
 
 function setStep(text){ stepEl.textContent = text||''; var nav=$('#sitenav'); if(nav) nav.hidden = !!text; }
-function setWide(w){ wrap.classList.toggle('wide', !!w); }
 function renderProgress(i){
   var h=''; for(var k=0;k<24;k++){ h+='<i class="'+(k<i?'done':(k===i?'cur':''))+'"></i>'; }
   progEl.innerHTML=h; progEl.hidden=false;
@@ -520,7 +518,7 @@ function introHTML(c){
 }
 
 function renderIntro(){
-  setWide(false); setStep(''); progEl.hidden=true;
+  setStep(''); progEl.hidden=true;
   var last = lsGet('disc.last'), prog = lsGet('disc.progress'), who = lsGet('disc.who')||{};
   var progDone = prog && prog.m && prog.m.filter(function(x){return x>=0;}).length;
   view.innerHTML = introHTML({L:L, t:t, esc:esc, KEYS:KEYS, colorVar:colorVar, who:who, progDone:progDone, lastDate: last ? fmtDate(last.t) : '', links:{styles: ROOT_REL+LANG_PATH[L.lang]+'styles/', profiles: ROOT_REL+LANG_PATH[L.lang]+'profiles/', pdf: ROOT_REL+LANG_PATH[L.lang]+'pdf/', profile: function(k){ return ROOT_REL+LANG_PATH[L.lang]+'profiles/'+k.toLowerCase()+'/'; }}});
@@ -542,7 +540,6 @@ function renderIntro(){
 
 /* ====== экран 2: тест ====== */
 function renderTest(){
-  setWide(false);
   var i = S.i, b = BLOCKS[i];
   setStep(t('test.step',{n:i+1})); renderProgress(i);
   var checkIco = '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg>';
@@ -625,7 +622,7 @@ function graphSVG(sc, show, o){
 /* ====== экран 3: отчёт ====== */
 function renderReport(r, opts){
   opts = opts||{};
-  setWide(true); progEl.hidden=true; setStep(opts.own ? t('report.own') : t('report.other'));
+  progEl.hidden=true; setStep(opts.own ? t('report.own') : t('report.other'));
   var a = analyze(r), sc=a.sc, cls=a.cls, st=L.styles[cls.p], prof=a.profile;
   var code = encodeResult(r);
   var link = pageURL()+'#r='+code;
@@ -736,7 +733,7 @@ function sendResult(r, code){
 /* ====== экран 4: панель администратора ====== */
 function getResults(){ var a = lsGet('disc.admin'); return Array.isArray(a)?a:[]; }
 function renderAdmin(){
-  setWide(true); progEl.hidden=true; setStep(t('admin.step'));
+  progEl.hidden=true; setStep(t('admin.step'));
   var items = getResults().map(function(it){ var r = decodeResult(it.code); return r ? {code:it.code, added:it.added, r:r, a:analyze(r)} : null; }).filter(Boolean);
   items.sort(function(a,b){ return (b.r.t||'').localeCompare(a.r.t||''); });
   var rows = items.map(function(it, idx){
