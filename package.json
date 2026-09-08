@@ -6,6 +6,7 @@
   "scripts": {
     "build": "node build.js",
     "validate": "node scripts/validate-locale.js",
+    "pdf": "node scripts/make-pdf.js",
     "serve": "node scripts/serve.js",
     "deploy": "node scripts/validate-locale.js && node build.js && git add -A && git commit -m \"Rebuild site\" && git push"
   }

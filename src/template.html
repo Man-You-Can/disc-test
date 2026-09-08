@@ -309,6 +309,39 @@ body.has-consent{padding-bottom:160px}
   .card,.share,.badge{border:1px solid #ccc;box-shadow:none;break-inside:avoid}
   .sections{grid-template-columns:1fr 1fr}
 }
+/* подвал: материалы о DISC; страницы расшифровки, цветов, совместимости, сравнения, PDF */
+.foot .materials{margin-top:10px;display:flex;flex-wrap:wrap;gap:4px 12px}
+.foot .materials .mlabel{color:var(--ink);font-weight:600}
+.foot .materials a{color:var(--muted)}
+.foot .materials a:hover{color:var(--ink)}
+.foot .materials span[aria-current]{color:var(--ink)}
+.examples{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin:18px 0}
+.example h3{margin-top:0}
+.example .stats{margin:10px 0 12px}
+.example .stat .v{font-size:16px}
+.example p{font-size:14px}
+.colorgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}
+@media (max-width:640px){.colorgrid{grid-template-columns:1fr}}
+.colorcard{background:var(--surface);border:1px solid var(--line);border-top:6px solid var(--k);border-radius:14px;padding:18px 20px}
+.colorcard h2{margin:10px 0 2px;color:var(--k)}
+.colorcard .swatch{width:44px;height:44px;border-radius:10px;background:var(--k);color:#14171B;display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-weight:600;font-size:22px}
+.colorcard .traits{margin:10px 0 4px}
+.tablewrap.plain{border:0;background:none;border-radius:0}
+.matrix{min-width:0;width:auto;margin:6px 0 20px;border-collapse:separate;border-spacing:6px}
+.matrix th,.matrix td{border:0;padding:0;background:none;white-space:nowrap}
+.matrix th{font-family:var(--font-head);font-weight:600;font-size:18px;text-align:center;padding:4px 8px}
+.matrix a{display:flex;align-items:center;justify-content:center;gap:2px;direction:ltr;min-width:64px;height:48px;border-radius:10px;background:var(--surface);border:1px solid var(--line);text-decoration:none;font-family:var(--font-head);font-weight:600;font-size:18px;color:var(--ink)}
+.matrix a:hover{border-color:var(--line-strong)}
+.matrix a b{color:var(--kp);font-weight:600}
+.matrix a i{font-style:normal;color:var(--ks)}
+.cmp{min-width:640px}
+.cmp th,.cmp td{white-space:normal;vertical-align:top}
+.cmp tbody th{font-weight:600}
+.sec.kcol h3{color:var(--k)}
+.sec.kcol{border-inline-start:3px solid var(--k);padding-inline-start:12px}
+.download{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:18px 0}
+.content ol{padding-inline-start:22px}
+.content ol li,.content ul li{margin-bottom:8px}
 </style>
 </head>
 <body>
@@ -324,6 +357,7 @@ __FLAG_SPRITE__
   <main id="view">__INTRO_HTML__</main>
   <footer class="foot">
     <div class="row2"><span>__FOOTER__</span><span class="footlinks">__FOOT_LINKS__ · <button class="link" id="adminLink" type="button">__ADMIN_LINK__</button></span></div>
+    __MATERIALS__
     <div class="privacy">__PRIVACY__</div>
     <nav class="langs" aria-label="__LANG_LABEL__">__LANG_LINKS__</nav>
   </footer>
@@ -432,7 +466,7 @@ function renderIntro(){
   setWide(false); setStep(''); progEl.hidden=true;
   var last = lsGet('disc.last'), prog = lsGet('disc.progress'), who = lsGet('disc.who')||{};
   var progDone = prog && prog.m && prog.m.filter(function(x){return x>=0;}).length;
-  view.innerHTML = introHTML({L:L, t:t, esc:esc, KEYS:KEYS, colorVar:colorVar, who:who, progDone:progDone, lastDate: last ? fmtDate(last.t) : '', links:{styles: ROOT_REL+LANG_PATH[L.lang]+'styles/', profiles: ROOT_REL+LANG_PATH[L.lang]+'profiles/', profile: function(k){ return ROOT_REL+LANG_PATH[L.lang]+'profiles/'+k.toLowerCase()+'/'; }}});
+  view.innerHTML = introHTML({L:L, t:t, esc:esc, KEYS:KEYS, colorVar:colorVar, who:who, progDone:progDone, lastDate: last ? fmtDate(last.t) : '', links:{styles: ROOT_REL+LANG_PATH[L.lang]+'styles/', profiles: ROOT_REL+LANG_PATH[L.lang]+'profiles/', pdf: ROOT_REL+LANG_PATH[L.lang]+'pdf/', profile: function(k){ return ROOT_REL+LANG_PATH[L.lang]+'profiles/'+k.toLowerCase()+'/'; }}});
   $('#startForm').addEventListener('submit', function(e){
     e.preventDefault();
     var name = $('#nm').value.trim().replace(/\s+/g,' '), email = $('#em').value.trim();
@@ -539,7 +573,7 @@ function renderReport(r, opts){
       '<div><h3>'+t('report.statsTitle')+'</h3><div class="stats">'+
         KEYS.map(function(k){ return '<div class="stat" style="--k:'+colorVar(k)+'"><span class="k">'+k+'</span><span class="nm">'+esc(L.keys[k])+'<small>'+t('report.statMeta',{most:sc.most[k],least:sc.least[k],net:signed(sc.net[k])})+'</small></span><span class="v">'+pct(sc.net[k])+'%</span><div class="bar"><i style="width:'+pct(sc.net[k])+'%"></i></div></div>'; }).join('')+
       '</div>'+
-      '<p class="howto">'+t('report.howto')+'</p>'+
+      '<p class="howto">'+t('report.howto')+' <a href="'+ROOT_REL+LANG_PATH[L.lang]+'results/">'+t('report.moreLink')+'</a></p>'+
       '</div>'+
     '</div>'+
     '<div class="card"><div class="sections">'+

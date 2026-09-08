@@ -330,6 +330,39 @@ body.has-consent{padding-bottom:160px}
   .card,.share,.badge{border:1px solid #ccc;box-shadow:none;break-inside:avoid}
   .sections{grid-template-columns:1fr 1fr}
 }
+/* подвал: материалы о DISC; страницы расшифровки, цветов, совместимости, сравнения, PDF */
+.foot .materials{margin-top:10px;display:flex;flex-wrap:wrap;gap:4px 12px}
+.foot .materials .mlabel{color:var(--ink);font-weight:600}
+.foot .materials a{color:var(--muted)}
+.foot .materials a:hover{color:var(--ink)}
+.foot .materials span[aria-current]{color:var(--ink)}
+.examples{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin:18px 0}
+.example h3{margin-top:0}
+.example .stats{margin:10px 0 12px}
+.example .stat .v{font-size:16px}
+.example p{font-size:14px}
+.colorgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}
+@media (max-width:640px){.colorgrid{grid-template-columns:1fr}}
+.colorcard{background:var(--surface);border:1px solid var(--line);border-top:6px solid var(--k);border-radius:14px;padding:18px 20px}
+.colorcard h2{margin:10px 0 2px;color:var(--k)}
+.colorcard .swatch{width:44px;height:44px;border-radius:10px;background:var(--k);color:#14171B;display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-weight:600;font-size:22px}
+.colorcard .traits{margin:10px 0 4px}
+.tablewrap.plain{border:0;background:none;border-radius:0}
+.matrix{min-width:0;width:auto;margin:6px 0 20px;border-collapse:separate;border-spacing:6px}
+.matrix th,.matrix td{border:0;padding:0;background:none;white-space:nowrap}
+.matrix th{font-family:var(--font-head);font-weight:600;font-size:18px;text-align:center;padding:4px 8px}
+.matrix a{display:flex;align-items:center;justify-content:center;gap:2px;direction:ltr;min-width:64px;height:48px;border-radius:10px;background:var(--surface);border:1px solid var(--line);text-decoration:none;font-family:var(--font-head);font-weight:600;font-size:18px;color:var(--ink)}
+.matrix a:hover{border-color:var(--line-strong)}
+.matrix a b{color:var(--kp);font-weight:600}
+.matrix a i{font-style:normal;color:var(--ks)}
+.cmp{min-width:640px}
+.cmp th,.cmp td{white-space:normal;vertical-align:top}
+.cmp tbody th{font-weight:600}
+.sec.kcol h3{color:var(--k)}
+.sec.kcol{border-inline-start:3px solid var(--k);padding-inline-start:12px}
+.download{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:18px 0}
+.content ol{padding-inline-start:22px}
+.content ol li,.content ul li{margin-bottom:8px}
 </style>
 </head>
 <body>
@@ -339,11 +372,12 @@ body.has-consent{padding-bottom:160px}
     <a class="brand" href="../../zh/" aria-label="DISC 测试"><span class="dots"><i style="background:var(--d)"></i><i style="background:var(--i)"></i><i style="background:var(--s)"></i><i style="background:var(--c)"></i></span>DISC 测试</a>
     <div class="tools"><div class="langsel" id="langSel"><button type="button" class="langbtn" id="langBtn" aria-haspopup="listbox" aria-expanded="false" aria-label="语言"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-zh"/></svg><span class="langname">简体中文</span><svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5l3.5 3.5 3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><ul class="langmenu" id="langMenu" role="listbox" aria-label="语言" hidden><li role="none"><a role="option" href="../../about/" hreflang="en" lang="en" data-lang="en" aria-selected="false" tabindex="-1"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-en"/></svg><span>English</span></a></li><li role="none"><a role="option" href="../../ru/about/" hreflang="ru" lang="ru" data-lang="ru" aria-selected="false" tabindex="-1"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-ru"/></svg><span>Русский</span></a></li><li role="none"><a role="option" href="../../es/about/" hreflang="es" lang="es" data-lang="es" aria-selected="false" tabindex="-1"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-es"/></svg><span>Español</span></a></li><li role="none"><a role="option" href="../../zh/about/" hreflang="zh-Hans" lang="zh" data-lang="zh" aria-selected="true" tabindex="-1"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-zh"/></svg><span>简体中文</span></a></li><li role="none"><a role="option" href="../../ar/about/" hreflang="ar" lang="ar" data-lang="ar" aria-selected="false" tabindex="-1"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-ar"/></svg><span>العربية</span></a></li><li role="none"><a role="option" href="../../pt/about/" hreflang="pt" lang="pt" data-lang="pt" aria-selected="false" tabindex="-1"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-pt"/></svg><span>Português</span></a></li><li role="none"><a role="option" href="../../fr/about/" hreflang="fr" lang="fr" data-lang="fr" aria-selected="false" tabindex="-1"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-fr"/></svg><span>Français</span></a></li><li role="none"><a role="option" href="../../de/about/" hreflang="de" lang="de" data-lang="de" aria-selected="false" tabindex="-1"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-de"/></svg><span>Deutsch</span></a></li><li role="none"><a role="option" href="../../ja/about/" hreflang="ja" lang="ja" data-lang="ja" aria-selected="false" tabindex="-1"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-ja"/></svg><span>日本語</span></a></li><li role="none"><a role="option" href="../../hi/about/" hreflang="hi" lang="hi" data-lang="hi" aria-selected="false" tabindex="-1"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-hi"/></svg><span>हिन्दी</span></a></li></ul></div></div>
   </header>
-  <nav class="sitenav no-print"><a href="../../zh/">测试</a><a href="../../zh/disc/">什么是 DISC</a><a href="../../zh/styles/">四种风格</a><a href="../../zh/profiles/">16 种类型</a><a href="../../zh/faq/">常见问题</a></nav>
+  <nav class="sitenav no-print"><a href="../../zh/">测试</a><a href="../../zh/disc/">什么是 DISC</a><a href="../../zh/styles/">四种风格</a><a href="../../zh/profiles/">16 种类型</a><a href="../../zh/results/">结果解读</a><a href="../../zh/compatibility/">风格搭配</a><a href="../../zh/faq/">常见问题</a></nav>
   <nav class="crumbs"><a href="../../zh/">首页</a><span>›</span><span aria-current="page">关于</span></nav>
   <main class="content"><div class="eyebrow">DISC</div><h1>关于本站</h1><h2>为什么要做这个网站</h2><p>我们希望做一个人人都能在十分钟内完成、无需注册和付费的 DISC 测试，用自己的语言得到清晰的报告，并能与团队分享。网站支持十种语言，结果即时显示并发送到邮箱；管理者和 HR 还可以使用管理面板，把参与者的结果汇总成表格。</p><h2>测试的依据</h2><p>测试基于威廉·马斯顿的四因素模型（1928）以及后来“最像—最不像”格式的问卷：24 组题，每组四条陈述，每条对应一种风格。各风格和十六种类型的描述由本站作者根据公认的 DISC 特征撰写，并经过语言润色。</p><p>本项目是独立项目，与 Wiley（DiSC®）、TTI Success Insights 或其他商标持有者无关。DISC 一词仅作为该模型的通用名称使用。</p><h2>测试不承诺什么</h2><p>本测试不是临床或诊断工具，不测量智力、能力或岗位匹配度，也不应作为招聘决策的唯一依据。它是自我观察和团队交流的起点。</p><h2>反馈</h2><p>你可以通过“<a href="../contact/">联系我们</a>”表单给我们留言。网站源代码在 GitHub 上公开：<a href="https://github.com/Man-You-Can/disc-test" rel="noopener">github.com/Man-You-Can/disc-test</a>，也可以在那里报告翻译错误或提出改进建议。</p><aside class="cta"><div><h2>了解您的 DISC 类型</h2><p>免费测试：24 组题，约 10 分钟，结果即时显示并发送到邮箱。</p></div><a class="btn" href="../">开始测试</a></aside></main>
   <footer class="foot">
     <div class="row2"><span>24 组题 · 约 10 分钟 · 没有对错之分</span><span class="footlinks"><a href="../../zh/about/">关于</a> · <a href="../../zh/contact/">联系我们</a> · <a href="../../zh/privacy/">隐私</a></span></div>
+    <nav class="materials" aria-label="DISC 资料"><span class="mlabel">DISC 资料</span><a href="../../zh/disc/">什么是 DISC</a><a href="../../zh/styles/">四种风格</a><a href="../../zh/profiles/">16 种类型</a><a href="../../zh/results/">结果解读</a><a href="../../zh/compatibility/">风格搭配</a><a href="../../zh/colors/">DISC 性格色彩</a><a href="../../zh/teams/">DISC 团队应用</a><a href="../../zh/disc-vs-mbti/">DISC 与 MBTI</a><a href="../../zh/pdf/">PDF 打印版</a><a href="../../zh/faq/">常见问题</a></nav>
     <div class="privacy">您的答案保存在浏览器中；结果会发送至您填写的邮箱，并保存在网站所有者的结果数据库中。</div>
     <nav class="langs" aria-label="语言"><a href="../../about/" hreflang="en" lang="en" data-lang="en"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-en"/></svg><span>English</span></a><a href="../../ru/about/" hreflang="ru" lang="ru" data-lang="ru"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-ru"/></svg><span>Русский</span></a><a href="../../es/about/" hreflang="es" lang="es" data-lang="es"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-es"/></svg><span>Español</span></a><a href="../../zh/about/" hreflang="zh-Hans" lang="zh" data-lang="zh" aria-current="page"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-zh"/></svg><span>简体中文</span></a><a href="../../ar/about/" hreflang="ar" lang="ar" data-lang="ar"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-ar"/></svg><span>العربية</span></a><a href="../../pt/about/" hreflang="pt" lang="pt" data-lang="pt"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-pt"/></svg><span>Português</span></a><a href="../../fr/about/" hreflang="fr" lang="fr" data-lang="fr"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-fr"/></svg><span>Français</span></a><a href="../../de/about/" hreflang="de" lang="de" data-lang="de"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-de"/></svg><span>Deutsch</span></a><a href="../../ja/about/" hreflang="ja" lang="ja" data-lang="ja"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-ja"/></svg><span>日本語</span></a><a href="../../hi/about/" hreflang="hi" lang="hi" data-lang="hi"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-hi"/></svg><span>हिन्दी</span></a></nav>
   </footer>

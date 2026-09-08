@@ -11,6 +11,7 @@ function introHTML(c){
     '<div class="card">'+
       '<h2>'+t('intro.howTitle')+'</h2>'+
       '<p>'+t('intro.howText')+'</p>'+
+      (links.pdf ? '<p class="small muted">'+t('intro.pdfNote',{link:'<a href="'+esc(links.pdf)+'">'+t('nav.pdf')+'</a>'})+'</p>' : '')+
       '<form class="form" id="startForm" autocomplete="on">'+
         '<p class="hint reqnote">'+t('intro.requiredNote').replace('*','<span class="req" aria-hidden="true">*</span>')+'</p>'+
         '<div class="field"><label for="nm">'+t('intro.nameLabel')+'<span class="req" aria-hidden="true">*</span></label><input type="text" id="nm" name="name" class="ym-disable-keys" autocomplete="name" required maxlength="80" value="'+esc(who.name||'')+'"></div>'+

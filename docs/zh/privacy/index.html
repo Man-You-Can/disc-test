@@ -330,6 +330,39 @@ body.has-consent{padding-bottom:160px}
   .card,.share,.badge{border:1px solid #ccc;box-shadow:none;break-inside:avoid}
   .sections{grid-template-columns:1fr 1fr}
 }
+/* подвал: материалы о DISC; страницы расшифровки, цветов, совместимости, сравнения, PDF */
+.foot .materials{margin-top:10px;display:flex;flex-wrap:wrap;gap:4px 12px}
+.foot .materials .mlabel{color:var(--ink);font-weight:600}
+.foot .materials a{color:var(--muted)}
+.foot .materials a:hover{color:var(--ink)}
+.foot .materials span[aria-current]{color:var(--ink)}
+.examples{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin:18px 0}
+.example h3{margin-top:0}
+.example .stats{margin:10px 0 12px}
+.example .stat .v{font-size:16px}
+.example p{font-size:14px}
+.colorgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}
+@media (max-width:640px){.colorgrid{grid-template-columns:1fr}}
+.colorcard{background:var(--surface);border:1px solid var(--line);border-top:6px solid var(--k);border-radius:14px;padding:18px 20px}
+.colorcard h2{margin:10px 0 2px;color:var(--k)}
+.colorcard .swatch{width:44px;height:44px;border-radius:10px;background:var(--k);color:#14171B;display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-weight:600;font-size:22px}
+.colorcard .traits{margin:10px 0 4px}
+.tablewrap.plain{border:0;background:none;border-radius:0}
+.matrix{min-width:0;width:auto;margin:6px 0 20px;border-collapse:separate;border-spacing:6px}
+.matrix th,.matrix td{border:0;padding:0;background:none;white-space:nowrap}
+.matrix th{font-family:var(--font-head);font-weight:600;font-size:18px;text-align:center;padding:4px 8px}
+.matrix a{display:flex;align-items:center;justify-content:center;gap:2px;direction:ltr;min-width:64px;height:48px;border-radius:10px;background:var(--surface);border:1px solid var(--line);text-decoration:none;font-family:var(--font-head);font-weight:600;font-size:18px;color:var(--ink)}
+.matrix a:hover{border-color:var(--line-strong)}
+.matrix a b{color:var(--kp);font-weight:600}
+.matrix a i{font-style:normal;color:var(--ks)}
+.cmp{min-width:640px}
+.cmp th,.cmp td{white-space:normal;vertical-align:top}
+.cmp tbody th{font-weight:600}
+.sec.kcol h3{color:var(--k)}
+.sec.kcol{border-inline-start:3px solid var(--k);padding-inline-start:12px}
+.download{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:18px 0}
+.content ol{padding-inline-start:22px}
+.content ol li,.content ul li{margin-bottom:8px}
 </style>
 </head>
 <body>
@@ -339,11 +372,12 @@ body.has-consent{padding-bottom:160px}
     <a class="brand" href="../../zh/" aria-label="DISC 测试"><span class="dots"><i style="background:var(--d)"></i><i style="background:var(--i)"></i><i style="background:var(--s)"></i><i style="background:var(--c)"></i></span>DISC 测试</a>
     <div class="tools"><div class="langsel" id="langSel"><button type="button" class="langbtn" id="langBtn" aria-haspopup="listbox" aria-expanded="false" aria-label="语言"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-zh"/></svg><span class="langname">简体中文</span><svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5l3.5 3.5 3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><ul class="langmenu" id="langMenu" role="listbox" aria-label="语言" hidden><li role="none"><a role="option" href="../../privacy/" hreflang="en" lang="en" data-lang="en" aria-selected="false" tabindex="-1"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-en"/></svg><span>English</span></a></li><li role="none"><a role="option" href="../../ru/privacy/" hreflang="ru" lang="ru" data-lang="ru" aria-selected="false" tabindex="-1"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-ru"/></svg><span>Русский</span></a></li><li role="none"><a role="option" href="../../es/privacy/" hreflang="es" lang="es" data-lang="es" aria-selected="false" tabindex="-1"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-es"/></svg><span>Español</span></a></li><li role="none"><a role="option" href="../../zh/privacy/" hreflang="zh-Hans" lang="zh" data-lang="zh" aria-selected="true" tabindex="-1"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-zh"/></svg><span>简体中文</span></a></li><li role="none"><a role="option" href="../../ar/privacy/" hreflang="ar" lang="ar" data-lang="ar" aria-selected="false" tabindex="-1"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-ar"/></svg><span>العربية</span></a></li><li role="none"><a role="option" href="../../pt/privacy/" hreflang="pt" lang="pt" data-lang="pt" aria-selected="false" tabindex="-1"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-pt"/></svg><span>Português</span></a></li><li role="none"><a role="option" href="../../fr/privacy/" hreflang="fr" lang="fr" data-lang="fr" aria-selected="false" tabindex="-1"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-fr"/></svg><span>Français</span></a></li><li role="none"><a role="option" href="../../de/privacy/" hreflang="de" lang="de" data-lang="de" aria-selected="false" tabindex="-1"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-de"/></svg><span>Deutsch</span></a></li><li role="none"><a role="option" href="../../ja/privacy/" hreflang="ja" lang="ja" data-lang="ja" aria-selected="false" tabindex="-1"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-ja"/></svg><span>日本語</span></a></li><li role="none"><a role="option" href="../../hi/privacy/" hreflang="hi" lang="hi" data-lang="hi" aria-selected="false" tabindex="-1"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-hi"/></svg><span>हिन्दी</span></a></li></ul></div></div>
   </header>
-  <nav class="sitenav no-print"><a href="../../zh/">测试</a><a href="../../zh/disc/">什么是 DISC</a><a href="../../zh/styles/">四种风格</a><a href="../../zh/profiles/">16 种类型</a><a href="../../zh/faq/">常见问题</a></nav>
+  <nav class="sitenav no-print"><a href="../../zh/">测试</a><a href="../../zh/disc/">什么是 DISC</a><a href="../../zh/styles/">四种风格</a><a href="../../zh/profiles/">16 种类型</a><a href="../../zh/results/">结果解读</a><a href="../../zh/compatibility/">风格搭配</a><a href="../../zh/faq/">常见问题</a></nav>
   <nav class="crumbs"><a href="../../zh/">首页</a><span>›</span><span aria-current="page">隐私</span></nav>
   <main class="content"><div class="eyebrow">DISC</div><h1>隐私</h1><h2>我们使用哪些数据</h2><p>测试前你需要输入姓名和邮箱。测试过程中保存你的答案，完成后保存结果、所选语言以及已阅读 Cookie 提示的标记。这些内容全部保存在你浏览器的本地存储中。完成测试后，姓名、邮箱、测试日期和结果还会保存到网站所有者的结果数据库中。</p><h2>数据传送到哪里</h2><p>完成测试后，姓名、邮箱和答案（以结果代码的形式）会传送给邮件发送服务——运行在网站所有者 Google 账户中的 Google Apps Script 脚本。它向你发送结果邮件，并将姓名、邮箱、测试日期和结果（类型、分数、报告链接）记录到结果数据库——同一账户中的 Google 表格。这些数据不用于其他目的，也不会提供给第三方。</p><p>托管服务 GitHub Pages 会收到标准的技术请求数据：IP 地址、浏览器类型、页面地址。字体由本网站自行提供，不从 Google 服务器加载。访问统计由 Yandex Metrica（Yandex LLC）收集：它会收到匿名的访问数据——不含结果代码的页面地址、来源、设备和浏览器类型——以及页面操作记录（Webvisor）；姓名和邮箱输入框、结果链接和代码不在记录范围内。数据按 Yandex 的条款处理；你可以在浏览器设置中或使用跟踪拦截器停止收集。不使用广告跟踪器。</p><h2>结果链接</h2><p>报告链接以编码形式包含你的姓名、邮箱和答案。任何拿到链接的人都能打开报告，因此请只分享给你信任的人。管理面板只在粘贴代码的那个人的浏览器中工作。</p><h2>联系表单</h2><p>联系表单中的留言（名字、电子邮箱、内容和附件）通过同一个 Google Apps Script 脚本以邮件形式发送至 <a href="mailto:info@disc-test.org">info@disc-test.org</a>，仅用于回复你。这些留言不会写入结果数据库，附件除该邮件外不会保存在任何其他地方。</p><h2>如何删除数据</h2><p>要删除设备上的数据，请在浏览器设置中清除本站数据，或点击“重新测试”。结果邮件保存在你的邮箱中。如需删除你在结果数据库中的记录以及发送方的邮件副本，请通过联系表单联系我们。</p><h2>Cookie</h2><p>网站本身不设置 Cookie：上述内容使用浏览器的本地存储，一种用途相同的技术。Yandex Metrica 会设置自己的 Cookie（例如 _ym_uid 和 _ym_d）以区分访问者。因此提示只在首次访问时显示一次。</p><h2>更新</h2><p>最近更新：2026 年 9 月 7 日。数据处理方式的变化会在本页面体现。</p></main>
   <footer class="foot">
     <div class="row2"><span>24 组题 · 约 10 分钟 · 没有对错之分</span><span class="footlinks"><a href="../../zh/about/">关于</a> · <a href="../../zh/contact/">联系我们</a> · <a href="../../zh/privacy/">隐私</a></span></div>
+    <nav class="materials" aria-label="DISC 资料"><span class="mlabel">DISC 资料</span><a href="../../zh/disc/">什么是 DISC</a><a href="../../zh/styles/">四种风格</a><a href="../../zh/profiles/">16 种类型</a><a href="../../zh/results/">结果解读</a><a href="../../zh/compatibility/">风格搭配</a><a href="../../zh/colors/">DISC 性格色彩</a><a href="../../zh/teams/">DISC 团队应用</a><a href="../../zh/disc-vs-mbti/">DISC 与 MBTI</a><a href="../../zh/pdf/">PDF 打印版</a><a href="../../zh/faq/">常见问题</a></nav>
     <div class="privacy">您的答案保存在浏览器中；结果会发送至您填写的邮箱，并保存在网站所有者的结果数据库中。</div>
     <nav class="langs" aria-label="语言"><a href="../../privacy/" hreflang="en" lang="en" data-lang="en"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-en"/></svg><span>English</span></a><a href="../../ru/privacy/" hreflang="ru" lang="ru" data-lang="ru"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-ru"/></svg><span>Русский</span></a><a href="../../es/privacy/" hreflang="es" lang="es" data-lang="es"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-es"/></svg><span>Español</span></a><a href="../../zh/privacy/" hreflang="zh-Hans" lang="zh" data-lang="zh" aria-current="page"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-zh"/></svg><span>简体中文</span></a><a href="../../ar/privacy/" hreflang="ar" lang="ar" data-lang="ar"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-ar"/></svg><span>العربية</span></a><a href="../../pt/privacy/" hreflang="pt" lang="pt" data-lang="pt"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-pt"/></svg><span>Português</span></a><a href="../../fr/privacy/" hreflang="fr" lang="fr" data-lang="fr"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-fr"/></svg><span>Français</span></a><a href="../../de/privacy/" hreflang="de" lang="de" data-lang="de"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-de"/></svg><span>Deutsch</span></a><a href="../../ja/privacy/" hreflang="ja" lang="ja" data-lang="ja"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-ja"/></svg><span>日本語</span></a><a href="../../hi/privacy/" hreflang="hi" lang="hi" data-lang="hi"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-hi"/></svg><span>हिन्दी</span></a></nav>
   </footer>

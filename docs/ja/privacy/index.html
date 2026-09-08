@@ -330,6 +330,39 @@ body.has-consent{padding-bottom:160px}
   .card,.share,.badge{border:1px solid #ccc;box-shadow:none;break-inside:avoid}
   .sections{grid-template-columns:1fr 1fr}
 }
+/* подвал: материалы о DISC; страницы расшифровки, цветов, совместимости, сравнения, PDF */
+.foot .materials{margin-top:10px;display:flex;flex-wrap:wrap;gap:4px 12px}
+.foot .materials .mlabel{color:var(--ink);font-weight:600}
+.foot .materials a{color:var(--muted)}
+.foot .materials a:hover{color:var(--ink)}
+.foot .materials span[aria-current]{color:var(--ink)}
+.examples{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin:18px 0}
+.example h3{margin-top:0}
+.example .stats{margin:10px 0 12px}
+.example .stat .v{font-size:16px}
+.example p{font-size:14px}
+.colorgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}
+@media (max-width:640px){.colorgrid{grid-template-columns:1fr}}
+.colorcard{background:var(--surface);border:1px solid var(--line);border-top:6px solid var(--k);border-radius:14px;padding:18px 20px}
+.colorcard h2{margin:10px 0 2px;color:var(--k)}
+.colorcard .swatch{width:44px;height:44px;border-radius:10px;background:var(--k);color:#14171B;display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-weight:600;font-size:22px}
+.colorcard .traits{margin:10px 0 4px}
+.tablewrap.plain{border:0;background:none;border-radius:0}
+.matrix{min-width:0;width:auto;margin:6px 0 20px;border-collapse:separate;border-spacing:6px}
+.matrix th,.matrix td{border:0;padding:0;background:none;white-space:nowrap}
+.matrix th{font-family:var(--font-head);font-weight:600;font-size:18px;text-align:center;padding:4px 8px}
+.matrix a{display:flex;align-items:center;justify-content:center;gap:2px;direction:ltr;min-width:64px;height:48px;border-radius:10px;background:var(--surface);border:1px solid var(--line);text-decoration:none;font-family:var(--font-head);font-weight:600;font-size:18px;color:var(--ink)}
+.matrix a:hover{border-color:var(--line-strong)}
+.matrix a b{color:var(--kp);font-weight:600}
+.matrix a i{font-style:normal;color:var(--ks)}
+.cmp{min-width:640px}
+.cmp th,.cmp td{white-space:normal;vertical-align:top}
+.cmp tbody th{font-weight:600}
+.sec.kcol h3{color:var(--k)}
+.sec.kcol{border-inline-start:3px solid var(--k);padding-inline-start:12px}
+.download{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:18px 0}
+.content ol{padding-inline-start:22px}
+.content ol li,.content ul li{margin-bottom:8px}
 </style>
 </head>
 <body>
@@ -339,11 +372,12 @@ body.has-consent{padding-bottom:160px}
     <a class="brand" href="../../ja/" aria-label="DISCテスト"><span class="dots"><i style="background:var(--d)"></i><i style="background:var(--i)"></i><i style="background:var(--s)"></i><i style="background:var(--c)"></i></span>DISCテスト</a>
     <div class="tools"><div class="langsel" id="langSel"><button type="button" class="langbtn" id="langBtn" aria-haspopup="listbox" aria-expanded="false" aria-label="言語"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-ja"/></svg><span class="langname">日本語</span><svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5l3.5 3.5 3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><ul class="langmenu" id="langMenu" role="listbox" aria-label="言語" hidden><li role="none"><a role="option" href="../../privacy/" hreflang="en" lang="en" data-lang="en" aria-selected="false" tabindex="-1"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-en"/></svg><span>English</span></a></li><li role="none"><a role="option" href="../../ru/privacy/" hreflang="ru" lang="ru" data-lang="ru" aria-selected="false" tabindex="-1"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-ru"/></svg><span>Русский</span></a></li><li role="none"><a role="option" href="../../es/privacy/" hreflang="es" lang="es" data-lang="es" aria-selected="false" tabindex="-1"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-es"/></svg><span>Español</span></a></li><li role="none"><a role="option" href="../../zh/privacy/" hreflang="zh-Hans" lang="zh" data-lang="zh" aria-selected="false" tabindex="-1"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-zh"/></svg><span>简体中文</span></a></li><li role="none"><a role="option" href="../../ar/privacy/" hreflang="ar" lang="ar" data-lang="ar" aria-selected="false" tabindex="-1"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-ar"/></svg><span>العربية</span></a></li><li role="none"><a role="option" href="../../pt/privacy/" hreflang="pt" lang="pt" data-lang="pt" aria-selected="false" tabindex="-1"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-pt"/></svg><span>Português</span></a></li><li role="none"><a role="option" href="../../fr/privacy/" hreflang="fr" lang="fr" data-lang="fr" aria-selected="false" tabindex="-1"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-fr"/></svg><span>Français</span></a></li><li role="none"><a role="option" href="../../de/privacy/" hreflang="de" lang="de" data-lang="de" aria-selected="false" tabindex="-1"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-de"/></svg><span>Deutsch</span></a></li><li role="none"><a role="option" href="../../ja/privacy/" hreflang="ja" lang="ja" data-lang="ja" aria-selected="true" tabindex="-1"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-ja"/></svg><span>日本語</span></a></li><li role="none"><a role="option" href="../../hi/privacy/" hreflang="hi" lang="hi" data-lang="hi" aria-selected="false" tabindex="-1"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-hi"/></svg><span>हिन्दी</span></a></li></ul></div></div>
   </header>
-  <nav class="sitenav no-print"><a href="../../ja/">診断</a><a href="../../ja/disc/">DISCとは</a><a href="../../ja/styles/">4つのスタイル</a><a href="../../ja/profiles/">16のタイプ</a><a href="../../ja/faq/">よくある質問</a></nav>
+  <nav class="sitenav no-print"><a href="../../ja/">診断</a><a href="../../ja/disc/">DISCとは</a><a href="../../ja/styles/">4つのスタイル</a><a href="../../ja/profiles/">16のタイプ</a><a href="../../ja/results/">結果の見方</a><a href="../../ja/compatibility/">スタイルの相性</a><a href="../../ja/faq/">よくある質問</a></nav>
   <nav class="crumbs"><a href="../../ja/">ホーム</a><span>›</span><span aria-current="page">プライバシー</span></nav>
   <main class="content"><div class="eyebrow">DISC</div><h1>プライバシー</h1><h2>扱うデータ</h2><p>診断前に氏名とメールアドレスを入力します。診断中は回答が、終了後は結果、選択した言語、Cookieのお知らせを確認済みであることの記録が保存されます。これらはすべてお使いのブラウザのローカルストレージに保存されます。診断を終えると、氏名、メールアドレス、診断日、結果はサイト運営者の結果データベースにも保存されます。</p><h2>データの送信先</h2><p>診断を終えると、氏名・メールアドレス・回答（結果コードの形）がメール送信サービスに送られます。これはサイト運営者のGoogleアカウントで動作するGoogle Apps Scriptで、あなたに結果のメールを送信し、氏名・メールアドレス・診断日・結果（タイプ、スコア、レポートへのリンク）を結果データベース（同じアカウント内のGoogle スプレッドシート）に記録します。これらのデータは他の目的には使わず、第三者にも渡しません。</p><p>ホスティング（GitHub Pages）は通常の技術的なリクエストデータ（IP アドレス、ブラウザの種類、ページアドレス）を受け取ります。フォントはこのサイト自身から配信され、Google のサーバーからは読み込まれません。訪問統計は Yandex Metrica（Yandex LLC）が収集し、匿名化された訪問データ（結果コードを除いたページアドレス、参照元、端末とブラウザの種類）とページ上の操作の記録（Webvisor）を受け取ります。お名前とメールアドレスの入力欄、結果のリンクとコードは記録対象外です。データは Yandex の規約に従って処理されます。収集はブラウザの設定やトラッカーブロッカーで停止できます。広告トラッカーは使用していません。</p><h2>結果のリンク</h2><p>レポートのリンクには、氏名・メールアドレス・回答が符号化された形で含まれています。リンクを知っている人は誰でもレポートを開けるため、信頼できる相手にだけ共有してください。管理者パネルは、コードを貼り付けた人のブラウザでのみ機能します。</p><h2>お問い合わせフォーム</h2><p>お問い合わせフォームからのメッセージ（お名前、メールアドレス、本文、添付ファイル）は、同じGoogle Apps Scriptを通じて <a href="mailto:info@disc-test.org">info@disc-test.org</a> 宛にメールで送信され、返信のためだけに使用します。結果データベースには記録されず、添付ファイルはそのメール以外の場所には保存されません。</p><h2>データの削除方法</h2><p>端末上のデータを削除するには、ブラウザの設定でこのサイトのデータを消去するか、「もう一度診断する」を押してください。結果のメールはあなたのメールボックスにあります。結果データベース内のあなたの記録と、送信側に残るメールのコピーの削除を希望する場合は、お問い合わせフォームからご連絡ください。</p><h2>Cookie</h2><p>サイト自体は Cookie を設定しません。上記の目的には、同じ役割を持つ技術であるブラウザのローカルストレージを使用します。Yandex Metrica は訪問者を区別するために独自の Cookie（例：_ym_uid、_ym_d）を設定します。そのため通知は初回訪問時に一度だけ表示されます。</p><h2>変更について</h2><p>最終更新：2026年9月7日。データの扱いに変更があった場合は、このページに反映します。</p></main>
   <footer class="foot">
     <div class="row2"><span>全24ブロック · 約10分 · 正解・不正解はありません</span><span class="footlinks"><a href="../../ja/about/">このサイトについて</a> · <a href="../../ja/contact/">お問い合わせ</a> · <a href="../../ja/privacy/">プライバシー</a></span></div>
+    <nav class="materials" aria-label="DISCの資料"><span class="mlabel">DISCの資料</span><a href="../../ja/disc/">DISCとは</a><a href="../../ja/styles/">4つのスタイル</a><a href="../../ja/profiles/">16のタイプ</a><a href="../../ja/results/">結果の見方</a><a href="../../ja/compatibility/">スタイルの相性</a><a href="../../ja/colors/">DISCの4色</a><a href="../../ja/teams/">チームでのDISC</a><a href="../../ja/disc-vs-mbti/">DISCとMBTI</a><a href="../../ja/pdf/">PDF版テスト</a><a href="../../ja/faq/">よくある質問</a></nav>
     <div class="privacy">回答はブラウザ内に保存されます。結果は入力されたメールアドレスに送信され、サイト運営者の結果データベースに保存されます。</div>
     <nav class="langs" aria-label="言語"><a href="../../privacy/" hreflang="en" lang="en" data-lang="en"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-en"/></svg><span>English</span></a><a href="../../ru/privacy/" hreflang="ru" lang="ru" data-lang="ru"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-ru"/></svg><span>Русский</span></a><a href="../../es/privacy/" hreflang="es" lang="es" data-lang="es"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-es"/></svg><span>Español</span></a><a href="../../zh/privacy/" hreflang="zh-Hans" lang="zh" data-lang="zh"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-zh"/></svg><span>简体中文</span></a><a href="../../ar/privacy/" hreflang="ar" lang="ar" data-lang="ar"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-ar"/></svg><span>العربية</span></a><a href="../../pt/privacy/" hreflang="pt" lang="pt" data-lang="pt"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-pt"/></svg><span>Português</span></a><a href="../../fr/privacy/" hreflang="fr" lang="fr" data-lang="fr"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-fr"/></svg><span>Français</span></a><a href="../../de/privacy/" hreflang="de" lang="de" data-lang="de"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-de"/></svg><span>Deutsch</span></a><a href="../../ja/privacy/" hreflang="ja" lang="ja" data-lang="ja" aria-current="page"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-ja"/></svg><span>日本語</span></a><a href="../../hi/privacy/" hreflang="hi" lang="hi" data-lang="hi"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-hi"/></svg><span>हिन्दी</span></a></nav>
   </footer>

@@ -1,7 +1,7 @@
 // Локальный просмотр собранного сайта: node scripts/serve.js [port]
 const http = require('http'), fs = require('fs'), path = require('path');
 const root = path.join(__dirname, '..', 'docs'), port = +(process.argv[2] || 8765);
-const types = { '.html': 'text/html; charset=utf-8', '.xml': 'application/xml', '.txt': 'text/plain; charset=utf-8', '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png' };
+const types = { '.html': 'text/html; charset=utf-8', '.xml': 'application/xml', '.txt': 'text/plain; charset=utf-8', '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png', '.pdf': 'application/pdf', '.woff2': 'font/woff2', '.ico': 'image/x-icon', '.webmanifest': 'application/manifest+json' };
 http.createServer((req, res) => {
   let p = decodeURIComponent(req.url.split('?')[0]);
   if (req.method === 'POST' && (p === '/mock-send' || p === '/mock-fail')) { // заглушка для локальной проверки отправки результата (письмо + база)
