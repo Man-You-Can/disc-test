@@ -29,7 +29,7 @@ fs.writeFileSync(path.join(OUTD, 'favicon.ico'), Buffer.concat([ico, png]));
 // og-картинки 1200×630 на каждом языке: точки + бренд, крупные буквы DISC, заголовок из title, домен
 for (const code of cfg.languages) {
   const L = JSON.parse(fs.readFileSync(path.join(SRC, 'locales', code + '.json'), 'utf8'));
-  const [t1, t2] = L.title.split(/\s*[—–]\s*|\s-\s/);
+  const [t1, t2] = L.title.split(/\s*[—–｜|]\s*|\s-\s/);
   // В SVG при direction="rtl" text-anchor="start" ставит начало строки в x и растит её влево — так текст прижат к правому краю
   const rtl = L.dir === 'rtl', x = rtl ? 1120 : 80, anchor = 'start', dirAttr = rtl ? 'rtl' : 'ltr';
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">

@@ -44,7 +44,7 @@ function initCommon(c){
     if(!pick || pick===L.lang || !LANG_META[pick]) return;
     var m = LANG_META[pick], bar = document.createElement('div');
     bar.className='langbar no-print'; bar.setAttribute('lang', pick); bar.setAttribute('dir', m.dir||'ltr');
-    bar.innerHTML = '<a href="'+esc(langHref(pick))+'"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-'+pick+'"/></svg><b>'+esc(m.name)+'</b><span>'+esc(m.cont)+' →</span></a><button type="button" class="langbar-x" aria-label="×">×</button>';
+    bar.innerHTML = '<a href="'+esc(langHref(pick))+'"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-'+pick+'"/></svg><b>'+esc(m.name)+'</b><span>'+esc(m.cont)+(m.dir==="rtl"?" ←":" →")+'</span></a><button type="button" class="langbar-x" aria-label="×">×</button>';
     var app = $('#app'); app.insertBefore(bar, app.firstChild.nextSibling);
     bar.querySelector('a').addEventListener('click', function(){ lsSet('disc.lang', pick); });
     bar.querySelector('button').addEventListener('click', function(){ lsSet('disc.lang', L.lang); bar.remove(); });

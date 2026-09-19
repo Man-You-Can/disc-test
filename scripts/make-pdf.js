@@ -30,7 +30,7 @@ fs.mkdirSync(OUTD, { recursive: true });
 const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'disc-pdf-'));
 const fontsUrl = 'file://' + encodeURI(fontsDir) + '/';
 for (const code of langs) {
-  const L = JSON.parse(fs.readFileSync(path.join(SRC, 'locales', code + '.json'), 'utf8')), f = FONTS[code] || FONTS.default;
+  const L = require(path.join(SRC, 'typo.js'))(JSON.parse(fs.readFileSync(path.join(SRC, 'locales', code + '.json'), 'utf8'))), f = FONTS[code] || FONTS.default;
   const fontsCss = fontsCssAll.split('\n').filter(l => l.startsWith('@font-face') && f.families.some(fam => l.includes(`font-family:'${fam}'`))).join('\n').replace(/__FONTS__/g, fontsUrl);
   const t = (key, vars) => { let v = L.ui[key]; if (v == null) v = key; if (vars) v = v.replace(/\{(\w+)\}/g, (_, n) => vars[n] != null ? vars[n] : '{' + n + '}'); return v; };
   const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));

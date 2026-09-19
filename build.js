@@ -4,6 +4,7 @@
 const fs = require('fs'), path = require('path'), { execSync } = require('child_process');
 const ROOT = __dirname, SRC = path.join(ROOT, 'src'), OUT = path.join(ROOT, 'docs');
 const cfg = JSON.parse(fs.readFileSync(path.join(ROOT, 'site.config.json'), 'utf8'));
+const typo = require('./src/typo.js');
 // Служебные теги в <head> (site.config.json): подтверждение сайта в Google Search Console и Яндекс Вебмастере
 // (googleSiteVerification, yandexVerification) и аналитика (yandexMetrikaId — номер счётчика Яндекс.Метрики,
 // analyticsMode — "optin": счётчик загружается после кнопки «Принять» в уведомлении о cookie, "always": сразу).
@@ -134,8 +135,9 @@ const ONLY = process.env.LANGS ? process.env.LANGS.split(',') : null; // лок�
 const locales = cfg.languages.filter(code => !missing.includes(code) && (!ONLY || ONLY.includes(code))).map(code => {
   const L = JSON.parse(fs.readFileSync(path.join(SRC, 'locales', code + '.json'), 'utf8'));
   if (L.lang !== code) throw new Error(code + '.json: lang mismatch');
-  return L;
+  return typo(L);   // src/typo.js: неразрывные пробелы во французском, знаки чисел в арабском
 });
+const arrow = L => L.dir === 'rtl' ? '←' : '→';   // стрелка «дальше» у ссылок; в арабском указывает влево
 const def = locales.find(L => L.lang === cfg.defaultLang) || locales[0];
 const pathOf = code => code === def.lang ? '' : code + '/';   // язык по умолчанию живёт в корне сайта
 const urlOf = code => siteUrl + '/' + pathOf(code);
@@ -281,7 +283,7 @@ for (const L of locales) {
   const t = tFor(L), base0 = pathOf(L.lang);
   // /styles/
   const stylesContent = `<div class="eyebrow">DISC</div><h1>${t('pages.styles.h1')}</h1><p class="lead">${escFull(t('pages.styles.lead'))}</p>` +
-    `<p class="seealso"><a href="../colors/">${esc(L.ui['nav.colors'])} →</a> · <a href="../compatibility/">${esc(L.ui['nav.compat'])} →</a> · <a href="../results/">${esc(L.ui['nav.results'])} →</a></p>` +
+    `<p class="seealso"><a href="../colors/">${esc(L.ui['nav.colors'])} ${arrow(L)}</a> · <a href="../compatibility/">${esc(L.ui['nav.compat'])} ${arrow(L)}</a> · <a href="../results/">${esc(L.ui['nav.results'])} ${arrow(L)}</a></p>` +
     KEYS.map(k => { const st = L.styles[k], pr = L.profiles[k], b = '../';
       return `<section class="stylefull" id="${k.toLowerCase()}" style="--k:${colorVar(k)}"><h2><span class="k">${k}</span>${escFull(L.keys[k])} · ${escFull(pr.name)}</h2><p class="muted">${escFull(L.short[k])}</p><p>${escFull(pr.summary)}</p>` +
         `<div class="traits">${st.traits.map(x => `<span>${escFull(x)}</span>`).join('')}</div>` + styleSections(L, k, t, true) +
@@ -326,7 +328,7 @@ const pdfInfo = code => { const f = path.join(ASSETS, 'pdf', `disc-test-${code}.
   const m = s.match(/\/Type\s*\/Pages[^>]*?\/Count\s+(\d+)/); return { file: `disc-test-${code}.pdf`, size: buf.length, pages: m ? +m[1] : (s.match(/\/Type\s*\/Page(?!s)/g) || []).length }; };
 for (const L of locales) {
   const t = tFor(L), C = L.content;
-  const seeAlso = (base, cur) => `<p class="seealso">${MATERIALS.filter(([k]) => k !== cur).map(([k, sub]) => `<a href="${base + sub}">${esc(L.ui[k])} →</a>`).join(' · ')}</p>`;
+  const seeAlso = (base, cur) => `<p class="seealso">${MATERIALS.filter(([k]) => k !== cur).map(([k, sub]) => `<a href="${base + sub}">${esc(L.ui[k])} ${arrow(L)}</a>`).join(' · ')}</p>`;
   const d = C.disc;
   writeContentPage(L, 'disc/', { navKey: 'nav.disc', article: true, title: d.title, description: d.description, crumbs: [{ name: t('nav.disc') }],
     content: `<div class="eyebrow">DISC</div><h1>${escFull(d.h1)}</h1><p class="lead">${escFull(d.lead)}</p>` + sectionsHtml(d.sections) + sourcesHtml(L, t) + ctaBlock(L, t, '../') + seeAlso('../', 'nav.disc'),
@@ -392,7 +394,7 @@ for (const L of locales) {
   const mb = C.mbti;
   writeContentPage(L, 'disc-vs-mbti/', { navKey: 'nav.mbti', article: true, title: mb.title, description: mb.description, crumbs: [{ name: t('nav.mbti') }],
     content: `<div class="eyebrow">DISC</div><h1>${escFull(mb.h1)}</h1><p class="lead">${escFull(mb.lead)}</p>` + sectionsHtml(mb.sections.slice(0, 2)) + tableHtml(mb.table) + sectionsHtml(mb.sections.slice(2)) +
-      `<p class="seealso"><a href="../disc/#sources">${esc(t('pages.sourcesLink'))} →</a></p>` + ctaBlock(L, t, '../') + seeAlso('../', 'nav.mbti') });
+      `<p class="seealso"><a href="../disc/#sources">${esc(t('pages.sourcesLink'))} ${arrow(L)}</a></p>` + ctaBlock(L, t, '../') + seeAlso('../', 'nav.mbti') });
   // /pdf/ — печатная версия: кнопка скачивания файла из src/assets/pdf (готовится node scripts/make-pdf.js)
   const pd = C.pdf, pi = pdfInfo(L.lang), pdfRoot = relRoot(L, 'pdf/');
   const download = pi ? `<p class="download"><a class="btn" href="${pdfRoot}pdf/${pi.file}" download>${t('pages.pdf.download')}</a><span class="muted">${escFull(t('pages.pdf.meta', { pages: pi.pages, size: fmtSize(pi.size) }))}</span></p>` : `<p class="notice">${escFull(t('pages.pdf.missing'))}</p>`;

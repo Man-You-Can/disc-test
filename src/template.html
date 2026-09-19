@@ -121,6 +121,8 @@ html[lang=ar] body,html[lang=hi] body{font-size:17px;line-height:1.65}
 .stylecard .more:hover{border-bottom-color:var(--ink)}
 .styles-intro .all{margin-top:14px;font-size:14px}
 .styles-intro .all a{color:var(--ink)}
+/* названия других языков на китайских и японских страницах: китайский шрифт рисует кириллицу и латиницу моноширинно, вразрядку */
+html[lang=zh] [lang]:not([lang|=zh]):not([lang|=ja]),html[lang=ja] [lang]:not([lang|=zh]):not([lang|=ja]){font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Noto Sans',sans-serif}
 .langbar{display:flex;align-items:center;gap:10px;margin:12px 0 0;padding:8px 10px 8px 14px;border:1px solid var(--line);border-radius:10px;background:var(--surface);font-size:14px}
 .langbar a{display:inline-flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;flex:1;min-width:0}
 .langbar a b{font-weight:600}
@@ -404,7 +406,7 @@ function lsSet(k,v){ MEM[k]=v; try{ localStorage.setItem(k, JSON.stringify(v)); 
 function lsDel(k){ delete MEM[k]; try{ localStorage.removeItem(k); }catch(e){} }
 function fmtDate(iso){ var d = iso ? new Date(iso) : new Date(); if(isNaN(d)) return ''; try{ return d.toLocaleDateString(L.dateLocale,{day:'numeric',month:'long',year:'numeric'}); }catch(e){ return d.toLocaleDateString(); } }
 function fmtDateShort(iso){ var d = iso ? new Date(iso) : new Date(); if(isNaN(d)) return ''; try{ return d.toLocaleDateString(L.dateLocale,{day:'2-digit',month:'2-digit',year:'numeric'}); }catch(e){ return d.toLocaleDateString(); } }
-function signed(n){ return (n>0?'+':'')+n; }
+function signed(n){ return (L.dir==='rtl'?'\u200E':'')+(n>0?'+':'')+n; } // LRM: в арабском знак иначе встаёт после числа
 function pct(net){ return Math.round((net+24)/48*100); }
 var toastT;
 function toast(msg){ var el=$('#toast'); el.textContent=msg; el.hidden=false; clearTimeout(toastT); toastT=setTimeout(function(){ el.hidden=true; }, 2400); }
