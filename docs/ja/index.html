@@ -867,7 +867,8 @@ function initCommon(c){
       })(window,document,"script","https://mc.yandex.ru/metrika/tag.js?id="+ym,"ym");
       /* defer: первый просмотр отправляем сами — без #r=…, в котором закодированы имя и e-mail участника */
       window.ym(ym,"init",{ssr:true,webvisor:true,clickmap:true,ecommerce:"dataLayer",accurateTrackBounce:true,trackLinks:true,defer:true});
-      window.ym(ym,"hit", location.origin+location.pathname+location.search, {referer:document.referrer});
+      /* параметр визита «Язык сайта»: в Метрике «Параметры визитов» и сегменты по языковой версии (en в корне сайта не отличить по адресу) */
+      window.ym(ym,"hit", location.origin+location.pathname+location.search, {referer:document.referrer, params:{"Язык сайта": L.lang}});
     }
     /* цели Метрики: страница теста вызывает discTrack("start") и discTrack("finish") */
     window.discTrack = function(goal){ if(ym && window.ym) window.ym(ym,"reachGoal",goal); };
