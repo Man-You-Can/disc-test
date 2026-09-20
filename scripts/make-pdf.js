@@ -19,9 +19,11 @@ const fontsCssAll = fs.existsSync(path.join(fontsDir, 'fonts.css')) ? fs.readFil
 // Для китайского и японского — системные шрифты macOS/Windows (PingFang в headless Chrome не встраивается, Hiragino — встраивается).
 const FONTS = {
   default: { families: ['Golos Text'], family: "'Golos Text',Helvetica,Arial,sans-serif" },
+  tr: { families: [], family: "'Helvetica Neue',Helvetica,Arial,sans-serif" }, // у Golos Text из Google Fonts буквы ğ и Ğ без бревиса
   ar: { families: ['IBM Plex Sans Arabic', 'Golos Text'], family: "'IBM Plex Sans Arabic','Golos Text',Tahoma,sans-serif" },
   hi: { families: ['Noto Sans Devanagari', 'Golos Text'], family: "'Noto Sans Devanagari','Golos Text',sans-serif" },
   zh: { families: [], family: "'Hiragino Sans GB','Heiti SC','STHeiti','Microsoft YaHei','Noto Sans CJK SC',sans-serif" },
+  'zh-hant': { families: [], family: "'Heiti TC','STHeiti','Hiragino Sans GB','Microsoft JhengHei','Noto Sans CJK TC',sans-serif" },
   ja: { families: [], family: "'Hiragino Sans','Hiragino Kaku Gothic ProN','Yu Gothic',Meiryo,'Noto Sans CJK JP',sans-serif" }
 };
 const siteUrl = cfg.siteUrl.replace(/\/+$/, ''), def = cfg.defaultLang;

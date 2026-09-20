@@ -83,7 +83,10 @@ html[lang=ar] body,html[lang=hi] body{font-size:17px;line-height:1.65}
 .langbtn .chev{width:12px;height:12px;color:var(--muted);flex:none}
 .langbtn[aria-expanded=true] .chev{transform:rotate(180deg)}
 @media (max-width:380px){.langbtn .langname{display:none}}
-.langmenu{position:absolute;top:calc(100% + 6px);inset-inline-end:0;margin:0;padding:6px;list-style:none;background:var(--surface);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);min-width:190px;z-index:20}
+.langmenu{position:absolute;top:calc(100% + 6px);inset-inline-end:0;margin:0;padding:6px;list-style:none;background:var(--surface);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);min-width:190px;z-index:25}
+/* длинный список языков: на широком экране две колонки (число строк --lrows задаёт сборка), на узком — прокрутка; z-index выше плашки cookie, иначе она закрывает нижние пункты */
+.langmenu{max-height:calc(100vh - 84px);overflow-y:auto;overscroll-behavior:contain}
+@media (min-width:600px){.langmenu:not([hidden]){display:grid;grid-auto-flow:column;grid-template-rows:repeat(var(--lrows,7),auto);column-gap:4px}}
 .langmenu a{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:8px;color:var(--ink);text-decoration:none;font-size:14px;white-space:nowrap}
 .langmenu a:hover,.langmenu a:focus-visible{background:var(--soft)}
 .langmenu a[aria-selected=true]{font-weight:600}
@@ -122,7 +125,7 @@ html[lang=ar] body,html[lang=hi] body{font-size:17px;line-height:1.65}
 .styles-intro .all{margin-top:14px;font-size:14px}
 .styles-intro .all a{color:var(--ink)}
 /* названия других языков на китайских и японских страницах: китайский шрифт рисует кириллицу и латиницу моноширинно, вразрядку */
-html[lang=zh] [lang]:not([lang|=zh]):not([lang|=ja]),html[lang=ja] [lang]:not([lang|=zh]):not([lang|=ja]){font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Noto Sans',sans-serif}
+html[lang|=zh] [lang]:not([lang|=zh]):not([lang|=ja]),html[lang=ja] [lang]:not([lang|=zh]):not([lang|=ja]){font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Noto Sans',sans-serif}
 .langbar{display:flex;align-items:center;gap:10px;margin:12px 0 0;padding:8px 10px 8px 14px;border:1px solid var(--line);border-radius:10px;background:var(--surface);font-size:14px}
 .langbar a{display:inline-flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;flex:1;min-width:0}
 .langbar a b{font-weight:600}

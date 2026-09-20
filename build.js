@@ -80,9 +80,14 @@ const nfTpl = fs.readFileSync(path.join(SRC, '404.html'), 'utf8');
 const FONT_CSS = fs.existsSync(path.join(ASSETS, 'fonts', 'fonts.css')) ? fs.readFileSync(path.join(ASSETS, 'fonts', 'fonts.css'), 'utf8') : '';
 if (!FONT_CSS) console.warn('WARNING: src/assets/fonts/fonts.css not found (run node scripts/fetch-fonts.js)');
 const LATIN_STACK = "'Golos Text',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif";
+const LATIN_EXT = ['pl']; // языки на основном наборе шрифтов, где буквы с диакритикой (ł, ą, ę, ż…) лежат в подмножестве latin-ext: его тоже грузим заранее
 const FONTS = {
   default: { families: ['Unbounded', 'Golos Text', 'IBM Plex Mono'], head: "'Unbounded',sans-serif", body: LATIN_STACK,
-    preload: sub => [`golos-text-400-${sub}.woff2`, `unbounded-500-${sub}.woff2`] },
+    preload: (sub, ext) => [`golos-text-400-${sub}.woff2`, `unbounded-500-${sub}.woff2`].concat(ext ? ['golos-text-400-latin-ext.woff2', 'unbounded-500-latin-ext.woff2'] : []) },
+  // Турецкий: у Golos Text в поставке Google Fonts буквы ğ и Ğ собраны без бревиса (рисуются как g и G),
+  // поэтому основной текст набирается системным шрифтом; у Unbounded и IBM Plex Mono эти буквы в порядке.
+  tr: { families: ['Unbounded', 'IBM Plex Mono'], head: "'Unbounded',sans-serif", body: "system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif",
+    preload: () => ['unbounded-500-latin.woff2', 'unbounded-500-latin-ext.woff2'] },
   ar: { families: ['Unbounded', 'Golos Text', 'IBM Plex Mono', 'Noto Kufi Arabic', 'IBM Plex Sans Arabic'],
     head: "'Unbounded','Noto Kufi Arabic',sans-serif", body: "'IBM Plex Sans Arabic','Golos Text',system-ui,'Segoe UI',Tahoma,sans-serif",
     preload: () => ['ibm-plex-sans-arabic-400-arabic.woff2', 'noto-kufi-arabic-500-arabic.woff2'] },
@@ -92,6 +97,9 @@ const FONTS = {
   zh: { families: [],
     head: "'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC','Source Han Sans SC',system-ui,sans-serif",
     body: "'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC','Source Han Sans SC',system-ui,sans-serif" },
+  'zh-hant': { families: [],
+    head: "'PingFang TC','PingFang HK','Microsoft JhengHei','Heiti TC','Noto Sans CJK TC','Source Han Sans TC',system-ui,sans-serif",
+    body: "'PingFang TC','PingFang HK','Microsoft JhengHei','Heiti TC','Noto Sans CJK TC','Source Han Sans TC',system-ui,sans-serif" },
   ja: { families: [],
     head: "'Hiragino Sans','Hiragino Kaku Gothic ProN','Yu Gothic',Meiryo,'Noto Sans CJK JP',system-ui,sans-serif",
     body: "'Hiragino Sans','Hiragino Kaku Gothic ProN','Yu Gothic',Meiryo,'Noto Sans CJK JP',system-ui,sans-serif" }
@@ -99,20 +107,26 @@ const FONTS = {
 // @font-face только для семейств языка + preload двух основных файлов; пусто для языков на системных шрифтах
 const fontsHead = (f, L) => {
   if (!f.families || !f.families.length || !FONT_CSS) return '';
-  const sub = L.lang === 'ru' ? 'cyrillic' : 'latin';
+  const sub = L.lang === 'ru' ? 'cyrillic' : 'latin', ext = LATIN_EXT.includes(L.lang);
   const faces = FONT_CSS.split('\n').filter(l => l.startsWith('@font-face') && f.families.some(fam => l.includes(`font-family:'${fam}'`))).join('\n').replace(/__FONTS__/g, basePath + 'fonts/');
-  const pre = (f.preload ? f.preload(sub) : []).filter(n => fs.existsSync(path.join(ASSETS, 'fonts', n))).map(n => `<link rel="preload" href="${basePath}fonts/${n}" as="font" type="font/woff2" crossorigin>`).join('\n');
+  const pre = (f.preload ? f.preload(sub, ext) : []).filter(n => fs.existsSync(path.join(ASSETS, 'fonts', n))).map(n => `<link rel="preload" href="${basePath}fonts/${n}" as="font" type="font/woff2" crossorigin>`).join('\n');
   return pre + '\n<style>' + faces + '</style>';
 };
-const OG_LOCALE = { en: 'en_US', ru: 'ru_RU', es: 'es_ES', zh: 'zh_CN', ar: 'ar_AR', pt: 'pt_BR', fr: 'fr_FR', de: 'de_DE', ja: 'ja_JP', hi: 'hi_IN' };
+const OG_LOCALE = { en: 'en_US', ru: 'ru_RU', es: 'es_ES', zh: 'zh_CN', ar: 'ar_AR', pt: 'pt_BR', fr: 'fr_FR', de: 'de_DE', ja: 'ja_JP', hi: 'hi_IN', 'zh-hant': 'zh_TW', id: 'id_ID', tr: 'tr_TR', pl: 'pl_PL' };
 
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
 // Упрощённые SVG-флаги (viewBox 0 0 30 20). Рисуются одинаково на всех платформах, в отличие от эмодзи.
-function star(cx, cy, r, fill) {
+function star(cx, cy, r, fill, rot) {
   const pts = [];
-  for (let i = 0; i < 10; i++) { const a = -Math.PI / 2 + i * Math.PI / 5, rr = i % 2 ? r * 0.382 : r; pts.push((cx + rr * Math.cos(a)).toFixed(2) + ',' + (cy + rr * Math.sin(a)).toFixed(2)); }
+  for (let i = 0; i < 10; i++) { const a = (rot == null ? -Math.PI / 2 : rot) + i * Math.PI / 5, rr = i % 2 ? r * 0.382 : r; pts.push((cx + rr * Math.cos(a)).toFixed(2) + ',' + (cy + rr * Math.sin(a)).toFixed(2)); }
   return `<polygon points="${pts.join(' ')}" fill="${fill}"/>`;
+}
+// Солнце с 12 лучами: звезда-многоугольник, поверх неё кольцо цвета фона и белый диск
+function sun(cx, cy, r, disc, fill, bg) {
+  const pts = [];
+  for (let i = 0; i < 24; i++) { const a = -Math.PI / 2 + i * Math.PI / 12, rr = i % 2 ? r * 0.62 : r; pts.push((cx + rr * Math.cos(a)).toFixed(2) + ',' + (cy + rr * Math.sin(a)).toFixed(2)); }
+  return `<polygon points="${pts.join(' ')}" fill="${fill}"/><circle cx="${cx}" cy="${cy}" r="${(disc * 1.18).toFixed(2)}" fill="${bg}"/><circle cx="${cx}" cy="${cy}" r="${disc}" fill="${fill}"/>`;
 }
 const FLAGS = {
   en: `<rect width="30" height="20" fill="#012169"/><path d="M0 0L30 20M30 0L0 20" stroke="#fff" stroke-width="4"/><path d="M0 0L30 20M30 0L0 20" stroke="#C8102E" stroke-width="1.6"/><path d="M15 0V20M0 10H30" stroke="#fff" stroke-width="6"/><path d="M15 0V20M0 10H30" stroke="#C8102E" stroke-width="3.6"/>`,
@@ -124,7 +138,12 @@ const FLAGS = {
   fr: `<rect width="10" height="20" fill="#0055A4"/><rect x="10" width="10" height="20" fill="#fff"/><rect x="20" width="10" height="20" fill="#EF4135"/>`,
   de: `<rect width="30" height="6.67" fill="#000"/><rect y="6.67" width="30" height="6.67" fill="#DD0000"/><rect y="13.33" width="30" height="6.67" fill="#FFCE00"/>`,
   ja: `<rect width="30" height="20" fill="#fff"/><circle cx="15" cy="10" r="6" fill="#BC002D"/>`,
-  hi: `<rect width="30" height="6.67" fill="#FF9933"/><rect y="6.67" width="30" height="6.67" fill="#fff"/><rect y="13.33" width="30" height="6.67" fill="#138808"/><circle cx="15" cy="10" r="2.6" fill="none" stroke="#000080" stroke-width=".8"/><circle cx="15" cy="10" r=".6" fill="#000080"/>`
+  hi: `<rect width="30" height="6.67" fill="#FF9933"/><rect y="6.67" width="30" height="6.67" fill="#fff"/><rect y="13.33" width="30" height="6.67" fill="#138808"/><circle cx="15" cy="10" r="2.6" fill="none" stroke="#000080" stroke-width=".8"/><circle cx="15" cy="10" r=".6" fill="#000080"/>`,
+  // Традиционный китайский — флаг Тайваня (крупнейшая аудитория версии), белое солнце упрощено до круга с лучами
+  'zh-hant': `<rect width="30" height="20" fill="#FE0000"/><rect width="15" height="10" fill="#000095"/>` + sun(7.5, 5, 3.6, 2.1, '#fff', '#000095'),
+  id: `<rect width="30" height="10" fill="#FF0000"/><rect y="10" width="30" height="10" fill="#fff"/>`,
+  tr: `<rect width="30" height="20" fill="#E30A17"/><circle cx="11" cy="10" r="5" fill="#fff"/><circle cx="12.25" cy="10" r="4" fill="#E30A17"/>` + star(17.2, 10, 2.5, '#fff', Math.PI),
+  pl: `<rect width="30" height="10" fill="#fff"/><rect y="10" width="30" height="10" fill="#DC143C"/>`
 };
 const flagSprite = codes => `<svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">` +
   codes.map(c => `<symbol id="flag-${c}" viewBox="0 0 30 20">${FLAGS[c] || `<rect width="30" height="20" fill="#888"/>`}</symbol>`).join('') + `</svg>`;
@@ -137,6 +156,7 @@ const locales = cfg.languages.filter(code => !missing.includes(code) && (!ONLY |
   if (L.lang !== code) throw new Error(code + '.json: lang mismatch');
   return typo(L);   // src/typo.js: неразрывные пробелы во французском, знаки чисел в арабском
 });
+const LANG_ROWS = Math.ceil(locales.length / 2); // меню языков в две колонки: число строк для CSS (--lrows)
 const arrow = L => L.dir === 'rtl' ? '←' : '→';   // стрелка «дальше» у ссылок; в арабском указывает влево
 const def = locales.find(L => L.lang === cfg.defaultLang) || locales[0];
 const pathOf = code => code === def.lang ? '' : code + '/';   // язык по умолчанию живёт в корне сайта
@@ -181,7 +201,7 @@ for (const L of locales) {
   const chevron = `<svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5l3.5 3.5 3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
   const switcher = `<div class="langsel" id="langSel">` +
     `<button type="button" class="langbtn" id="langBtn" aria-haspopup="listbox" aria-expanded="false" aria-label="${esc(L.ui.langLabel)}">${flag(L.lang)}<span class="langname">${esc(L.name)}</span>${chevron}</button>` +
-    `<ul class="langmenu" id="langMenu" role="listbox" aria-label="${esc(L.ui.langLabel)}" hidden>` +
+    `<ul class="langmenu" id="langMenu" role="listbox" aria-label="${esc(L.ui.langLabel)}" style="--lrows:${LANG_ROWS}" hidden>` +
     locales.map(x => `<li role="none"><a role="option" href="${href(x)}" hreflang="${hl(x.lang)}" lang="${x.lang}" data-lang="${x.lang}" aria-selected="${x.lang === L.lang}" tabindex="-1">${flag(x.lang)}<span>${esc(x.name)}</span></a></li>`).join('') +
     `</ul></div>`;
   const links = locales.map(x => `<a href="${href(x)}" hreflang="${hl(x.lang)}" lang="${x.lang}" data-lang="${x.lang}"${x.lang === L.lang ? ' aria-current="page"' : ''}>${flag(x.lang)}<span>${esc(x.name)}</span></a>`).join('');
@@ -237,7 +257,7 @@ function writeContentPage(L, sub, opts) {
   const base = rootRel + pathOf(L.lang), homeHref = base || './';
   const switcher = `<div class="langsel" id="langSel">` +
     `<button type="button" class="langbtn" id="langBtn" aria-haspopup="listbox" aria-expanded="false" aria-label="${esc(L.ui.langLabel)}">${flag(L.lang)}<span class="langname">${esc(L.name)}</span><svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5l3.5 3.5 3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>` +
-    `<ul class="langmenu" id="langMenu" role="listbox" aria-label="${esc(L.ui.langLabel)}" hidden>` +
+    `<ul class="langmenu" id="langMenu" role="listbox" aria-label="${esc(L.ui.langLabel)}" style="--lrows:${LANG_ROWS}" hidden>` +
     locales.map(x => `<li role="none"><a role="option" href="${rootRel + pathOf(x.lang) + sub}" hreflang="${hl(x.lang)}" lang="${x.lang}" data-lang="${x.lang}" aria-selected="${x.lang === L.lang}" tabindex="-1">${flag(x.lang)}<span>${esc(x.name)}</span></a></li>`).join('') + `</ul></div>`;
   const links = locales.map(x => `<a href="${rootRel + pathOf(x.lang) + sub}" hreflang="${hl(x.lang)}" lang="${x.lang}" data-lang="${x.lang}"${x.lang === L.lang ? ' aria-current="page"' : ''}>${flag(x.lang)}<span>${esc(x.name)}</span></a>`).join('');
   const navHtml = NAV_ITEMS.map(([k, s2]) => `<a href="${base + s2}"${opts.navKey === k ? ' aria-current="page"' : ''}>${esc(L.ui[k])}</a>`).join('');

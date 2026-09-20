@@ -40,7 +40,11 @@ function initCommon(c){
     var LANG_META = c.langMeta||{}, LANG_PATH = c.langPath||{};
     var prefs = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language||''];
     var pick = null;
-    for(var i=0;i<prefs.length && !pick;i++){ var p = String(prefs[i]).toLowerCase().split('-')[0]; if(LANG_PATH[p]!=null) pick = p; }
+    /* zh-TW, zh-HK, zh-MO и zh-Hant-* — традиционный китайский (zh-hant), остальные zh — упрощённый; «in» — старый код индонезийского */
+    for(var i=0;i<prefs.length && !pick;i++){ var full = String(prefs[i]).toLowerCase(), p = full.split('-')[0];
+      if(p==='zh' && /^zh-(hant|tw|hk|mo)\b/.test(full) && LANG_PATH['zh-hant']!=null) p = 'zh-hant';
+      if(p==='in') p = 'id';
+      if(LANG_PATH[p]!=null) pick = p; }
     if(!pick || pick===L.lang || !LANG_META[pick]) return;
     var m = LANG_META[pick], bar = document.createElement('div');
     bar.className='langbar no-print'; bar.setAttribute('lang', pick); bar.setAttribute('dir', m.dir||'ltr');

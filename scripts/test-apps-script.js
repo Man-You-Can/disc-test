@@ -106,6 +106,10 @@ check('no html injection in name', !sent[sent.length - 1].htmlBody.includes('<b>
 check('no formula injection in sheet', rows()[3][2] === ' =1+1');
 check('code with surrounding text is trimmed', (() => { const c5 = mk('Пётр', 'p@b.co'); post({ to: 'p@b.co', lang: 'ru', code: 'см. ' + c5 + ' конец' }); return rows()[rows().length - 1][17] === c5; })());
 
+// языки второй волны, в том числе код с дефисом (zh-hant): письмо на своём языке, ссылка ведёт в свою папку, язык попадает в таблицу
+check('new languages: zh-hant, id, tr, pl', ['zh-hant', 'id', 'tr', 'pl'].every(lg => { const to = lg + '@b.co', cc = mk('Lin', to); const r = post({ to, lang: lg, code: cc }), m = sent[sent.length - 1], row = rows()[rows().length - 1];
+  return r.ok === true && m.to === to && m.htmlBody.includes('<html lang="' + lg + '"') && m.htmlBody.includes('/' + lg + '/#r=' + cc) && row[4] === lg && row[16] === 'https://disc-test.org/' + lg + '/#r=' + cc; }));
+
 ctx.SAVE_RESULTS = false;
 const before = rows().length;
 check('SAVE_RESULTS=false: mail only', post({ to: 'q@b.co', lang: 'en', code: mk('Q', 'q@b.co') }).saved === false && rows().length === before);

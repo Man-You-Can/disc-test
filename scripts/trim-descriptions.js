@@ -8,7 +8,7 @@ const format = require('./format-locale.js');
 const dir = path.join(__dirname, '..', 'locales'), LOC = path.join(__dirname, '..', 'src', 'locales');
 const args = process.argv.slice(2), write = args.includes('--write');
 const langs = args.filter(a => a !== '--write');
-const MAX = { ja: 95, zh: 95 }, DEFAULT_MAX = 170, MIN = { ja: 45, zh: 45 }, DEFAULT_MIN = 120;
+const MAX = { ja: 95, zh: 95, 'zh-hant': 95 }, DEFAULT_MAX = 170, MIN = { ja: 45, zh: 45, 'zh-hant': 45 }, DEFAULT_MIN = 120;
 const files = (langs.length ? langs : fs.readdirSync(LOC).map(f => path.basename(f, '.json'))).sort();
 let changed = 0;
 for (const code of files) {

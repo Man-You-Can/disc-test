@@ -17,7 +17,9 @@ function printHTML(c){
   };
   var count='<table class="count"><thead><tr><th>'+esc(t('print.styleHead'))+'</th><th>'+esc(t('print.countMost'))+'</th><th>'+esc(t('print.countLeast'))+'</th><th>'+esc(t('print.countNet'))+'</th></tr></thead><tbody>'+
     KEYS.map(function(k){ return '<tr><td><b class="k">'+k+'</b> '+esc(L.keys[k])+'</td><td class="w"></td><td class="w"></td><td class="w"></td></tr>'; }).join('')+'</tbody></table>';
-  var profiles='<div class="profiles">'+PROFILE_KEYS.map(function(k){ var p=L.profiles[k]; return '<div class="prof"><b>'+k+'</b> <strong>'+esc(p.name)+'</strong><p>'+esc(p.summary)+'</p></div>'; }).join('')+'</div>';
+  // длинные описания (индонезийский) не помещаются на страницу: уплотняем набор, чтобы подвал не уезжал на отдельный лист
+  var profLen=PROFILE_KEYS.reduce(function(a,k){ return a+L.profiles[k].name.length+L.profiles[k].summary.length; },0);
+  var profiles='<div class="profiles'+(profLen>3700?' dense':'')+'">'+PROFILE_KEYS.map(function(k){ var p=L.profiles[k]; return '<div class="prof"><b>'+k+'</b> <strong>'+esc(p.name)+'</strong><p>'+esc(p.summary)+'</p></div>'; }).join('')+'</div>';
   return '<!doctype html><html lang="'+L.lang+'" dir="'+L.dir+'"><head><meta charset="utf-8"><title>'+esc(t('print.title'))+'</title><style>'+fontsCss+'\n'+CSS.replace('__FONT__',fontFamily)+'</style></head><body>'+
     '<header class="head"><div class="brand"><span class="dots"><i class="d"></i><i class="i"></i><i class="s"></i><i class="c"></i></span>'+esc(L.brand)+'</div><div class="url">'+esc(url)+'</div></header>'+
     '<h1>'+esc(t('print.title'))+'</h1><p class="sub">'+esc(L.ui.footer)+'</p>'+
@@ -48,6 +50,6 @@ var CSS='@page{size:A4;margin:13mm 13mm 15mm}*{box-sizing:border-box}body{font-f
   '.pb{break-before:page;page-break-before:always}'+
   '.keys{display:flex;gap:8mm;margin-bottom:3mm}.keys table{flex:1;border-collapse:collapse;font-size:10pt}.keys th,.keys td{border:1px solid #bbb;padding:0.8mm 1.5mm;text-align:center}.keys td.n{font-weight:600;background:#f2f2f2}'+
   '.count{border-collapse:collapse;width:100%;margin-bottom:3mm}.count th,.count td{border:1px solid #bbb;padding:1.8mm 2mm;text-align:start}.count th{background:#f2f2f2;font-weight:600;font-size:9.5pt}.count td.w{width:22%}.count .k{display:inline-block;min-width:5mm}'+
-  '.profiles{column-count:2;column-gap:6mm}.prof{break-inside:avoid;margin-bottom:2.8mm}.prof b{display:inline-block;min-width:8mm;font-weight:700;color:#3B6FB6}.prof p{font-size:9.5pt;color:#333;margin:0.5mm 0 0}'+
+  '.profiles{column-count:2;column-gap:6mm}.prof{break-inside:avoid;margin-bottom:2.8mm}.prof b{display:inline-block;min-width:8mm;font-weight:700;color:#3B6FB6}.prof p{font-size:9.5pt;color:#333;margin:0.5mm 0 0}.profiles.dense .prof{margin-bottom:2.2mm}.profiles.dense .prof p{font-size:9pt}'+
   '.online{margin-top:5mm;padding-top:2mm;border-top:1px solid #ccc;font-size:9.5pt;color:#555}';
 if (typeof module !== 'undefined' && module.exports) module.exports = printHTML;

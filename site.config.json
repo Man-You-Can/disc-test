@@ -10,16 +10,25 @@
     "ru",
     "es",
     "zh",
+    "zh-hant",
     "ar",
     "pt",
     "fr",
     "de",
     "ja",
-    "hi"
+    "hi",
+    "id",
+    "tr",
+    "pl"
   ],
   "defaultLang": "en",
   "hreflang": {
     "zh": "zh-Hans",
+    "zh-hant": [
+      "zh-Hant",
+      "zh-TW",
+      "zh-HK"
+    ],
     "pt": [
       "pt",
       "pt-BR"

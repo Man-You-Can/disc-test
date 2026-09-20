@@ -7,7 +7,9 @@ const domain = cfg.siteUrl.replace(/^https?:\/\//, '').replace(/\/$/, '');
 fs.mkdirSync(path.join(OUTD, 'og'), { recursive: true });
 const C = { d: '#C9453D', i: '#D6961F', s: '#3A9A69', c: '#3B6FB6', ink: '#1B2027', paper: '#F3F4F6', muted: '#5B6470', line: '#D9DDE3' };
 const esc = s => String(s).replace(/[&<>"]/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[ch]));
-const FONT = "'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Hiragino Sans', 'Geeza Pro', 'Kohinoor Devanagari', 'Devanagari Sangam MN', 'Noto Sans', sans-serif";
+const FONT_FOR = cjk => `'Helvetica Neue', Helvetica, Arial, ${cjk}, 'Hiragino Sans', 'Geeza Pro', 'Kohinoor Devanagari', 'Devanagari Sangam MN', 'Noto Sans', sans-serif`;
+// для традиционного китайского первым идёт шрифт с тайваньскими начертаниями иероглифов
+const CJK = { 'zh-hant': "'PingFang TC', 'Heiti TC', 'PingFang SC'" }, CJK_DEFAULT = "'PingFang SC'";
 const run = (svg, out, w, h) => { const tmp = path.join(OUTD, '.tmp.svg'); fs.writeFileSync(tmp, svg); execSync(`rsvg-convert -w ${w} -h ${h} "${tmp}" -o "${out}"`); fs.unlinkSync(tmp); };
 
 // favicon.svg — четыре точки на прозрачном фоне
@@ -30,6 +32,7 @@ fs.writeFileSync(path.join(OUTD, 'favicon.ico'), Buffer.concat([ico, png]));
 for (const code of cfg.languages) {
   const L = JSON.parse(fs.readFileSync(path.join(SRC, 'locales', code + '.json'), 'utf8'));
   const [t1, t2] = L.title.split(/\s*[—–｜|]\s*|\s-\s/);
+  const FONT = FONT_FOR(CJK[code] || CJK_DEFAULT);
   // В SVG при direction="rtl" text-anchor="start" ставит начало строки в x и растит её влево — так текст прижат к правому краю
   const rtl = L.dir === 'rtl', x = rtl ? 1120 : 80, anchor = 'start', dirAttr = rtl ? 'rtl' : 'ltr';
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">

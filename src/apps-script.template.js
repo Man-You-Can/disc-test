@@ -117,7 +117,7 @@ function sendContact(b) {
   }
   var limit = checkLimits(email, MAX_CONTACT_PER_SENDER_PER_HOUR, 'c:');
   if (limit) return out({ ok: false, error: limit });
-  var lang = String(b.lang || '').replace(/[^a-z-]/gi, '').slice(0, 5), page = String(b.page || '').slice(0, 300);
+  var lang = String(b.lang || '').replace(/[^a-z-]/gi, '').slice(0, 10), page = String(b.page || '').slice(0, 300);
   var meta = 'Имя: ' + name + '\nE-mail: ' + email + (lang ? '\nЯзык: ' + lang : '') + (page ? '\nСтраница: ' + page : '') + '\nПолучено: ' + stamp() +
     (blobs.length ? '\nВложения: ' + blobs.map(function (x) { return x.getName(); }).join(', ') : '');
   var subject = 'Сообщение с сайта ' + SITE_URL.replace(/^https?:\/\//, '') + ': ' + name;

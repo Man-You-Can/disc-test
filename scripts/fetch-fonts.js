@@ -20,9 +20,11 @@ const get = (url, binary) => new Promise((resolve, reject) => https.get(url, { h
   let cssOut = '/* Шрифты сайта. Сгенерировано scripts/fetch-fonts.js; лицензии: SIL OFL 1.1 */\n', files = 0, bytes = 0;
   for (const fam of FAMILIES) {
     const css = await get('https://fonts.googleapis.com/css2?family=' + fam.css + '&display=swap');
-    const blocks = css.split('@font-face').slice(1);
-    for (const b of blocks) {
-      const subset = (b.match(/\/\* ([a-z-]+) \*\//) || [])[1];
+    // Комментарий с названием подмножества стоит ПЕРЕД своим блоком @font-face, поэтому берём пару «комментарий + блок» целиком:
+    // при разбиении по '@font-face' подпись доставалась соседнему блоку, и файлы получали чужие имена.
+    const blocks = [...css.matchAll(/\/\* ([a-z-]+) \*\/\s*@font-face\s*\{([^}]*)\}/g)];
+    for (const m of blocks) {
+      const subset = m[1], b = m[2];
       if (!fam.subsets.includes(subset)) continue;
       const family = (b.match(/font-family: '([^']+)'/) || [])[1], weight = (b.match(/font-weight: (\d+)/) || [])[1];
       const url = (b.match(/url\((https:[^)]+\.woff2)\)/) || [])[1], range = (b.match(/unicode-range: ([^;]+);/) || [])[1];

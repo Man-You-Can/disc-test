@@ -1,0 +1,1140 @@
+{
+  "lang": "pl",
+  "dir": "ltr",
+  "name": "Polski",
+  "dateLocale": "pl-PL",
+  "title": "Darmowy test DISC online — typ osobowości w 10 minut",
+  "description": "Darmowy test DISC po polsku: 24 pytania, 10 minut, bez rejestracji. Poznaj swój styl wiodący, mocne strony i obszary rozwoju. Wynik od razu i na e-mail.",
+  "brand": "Test DISC",
+  "keys": { "D": "Dominacja", "I": "Wpływ", "S": "Stałość", "C": "Sumienność" },
+  "short": { "D": "Wyniki i kontrola", "I": "Ludzie i entuzjazm", "S": "Wsparcie i stabilność", "C": "Dokładność i jakość" },
+  "addon": {
+    "D": "więcej siły przebicia, tempa i gotowości do brania odpowiedzialności na siebie",
+    "I": "więcej towarzyskości, optymizmu i umiejętności porywania innych za sobą",
+    "S": "więcej cierpliwości, niezawodności i troski o zespół",
+    "C": "więcej dokładności, ostrożności i opierania się na faktach"
+  },
+  "blocks": [
+    { "I": "Towarzyski/a", "D": "Stanowczy/a", "C": "Dokładny/a", "S": "Cierpliwy/a" },
+    { "C": "Sprawdzam każdy szczegół", "S": "Wspieram innych", "D": "Przejmuję inicjatywę", "I": "Łatwo nawiązuję kontakty" },
+    { "S": "Cenię stabilność", "C": "Cenię porządek i zasady", "I": "Lubię być w centrum uwagi", "D": "Lubię rywalizować" },
+    { "D": "Bezpośredni/a", "S": "Spokojny/a", "I": "Optymistyczny/a", "C": "Ostrożny/a" },
+    { "I": "Łatwo przekonuję ludzi", "C": "Opieram się na faktach", "S": "Umiem słuchać", "D": "Szybko podejmuję decyzje" },
+    { "S": "Niezawodny/a", "D": "Nieustępliwy/a", "C": "Systematyczny/a", "I": "Czarujący/a" },
+    { "C": "Działam zgodnie z planem", "I": "Inspiruję innych", "D": "Stawiam sobie ambitne cele", "S": "Dotrzymuję słowa" },
+    { "D": "Niezależny/a", "C": "Analityczny/a", "S": "Zrównoważony/a", "I": "Ekspresyjny/a" },
+    { "I": "Lubię poznawać nowych ludzi", "S": "Lubię stały rytm pracy", "D": "Lubię trudne wyzwania", "C": "Lubię zgłębiać szczegóły" },
+    { "C": "Zdyscyplinowany/a", "D": "Wymagający/a", "I": "Rozmowny/a", "S": "Życzliwy/a" },
+    { "S": "Unikam konfliktów", "I": "Łatwo wyrażam uczucia", "C": "Ważę każde słowo", "D": "Mówię wprost, co myślę" },
+    { "D": "O silnej woli", "I": "Entuzjastyczny/a", "S": "Skromny/a", "C": "Drobiazgowy/a" },
+    { "I": "Zarażam energią", "C": "Pilnuję jakości", "D": "Biorę odpowiedzialność na siebie", "S": "Pomagam zespołowi" },
+    { "C": "Racjonalny/a", "S": "Konsekwentny/a", "I": "Spontaniczny/a", "D": "Odważny/a" },
+    { "S": "Stawiam na stabilność", "D": "Stawiam na wyniki", "C": "Stawiam na jakość", "I": "Stawiam na kontakt z ludźmi" },
+    { "D": "Niecierpliwy/a", "C": "Zbyt krytyczny/a", "S": "Nieskory/a do zmian", "I": "Impulsywny/a" },
+    { "I": "Ufam ludziom", "S": "Cenię lojalność", "D": "Podejmuję ryzyko", "C": "Przestrzegam standardów" },
+    { "C": "Powściągliwy/a", "I": "Charyzmatyczny/a", "S": "Łagodny/a", "D": "Przebojowy/a" },
+    { "S": "Nie spieszę się z wnioskami", "C": "Doprecyzowuję wszystkie warunki", "D": "Szybko przechodzę do rzeczy", "I": "Łatwo znajduję wspólny język" },
+    { "D": "Pewny/a siebie", "S": "Taktowny/a", "I": "Elokwentny/a", "C": "Zorganizowany/a" },
+    { "I": "Lubię występować publicznie", "D": "Lubię przewodzić", "C": "Lubię analizować", "S": "Lubię pomagać" },
+    { "C": "Skrupulatny/a", "S": "Troskliwy/a", "I": "Dusza towarzystwa", "D": "Zdeterminowany/a" },
+    { "S": "Przyjmuję rzeczy takimi, jakie są", "I": "Łatwo zapalam się do nowych pomysłów", "D": "Bronię swojego zdania", "C": "Wymagam precyzji" },
+    { "D": "Autorytatywny/a", "C": "Logiczny/a", "I": "Żywiołowy/a", "S": "Stabilny/a" }
+  ],
+  "styles": {
+    "D": {
+      "traits": ["Bezpośredniość", "Stanowczość", "Nastawienie na wyniki", "Niezależność", "Wysokie wymagania"],
+      "strengths": ["Szybko podejmujesz decyzje i bierzesz za nie odpowiedzialność", "Nie tracisz głowy w kryzysie i działasz, gdy inni się wahają", "Stawiasz sobie ambitne cele i je osiągasz", "Mówisz wprost, bez niedomówień"],
+      "growth": ["Niecierpliwość wobec osób, które pracują wolniej lub ostrożniej", "Skłonność do forsowania decyzji bez wysłuchania alternatyw", "Ostry ton w rozmowie, który inni odbierają jako presję"],
+      "motivation": ["Uprawnienia decyzyjne i wpływ na bieg spraw", "Trudne zadania i wyzwania", "Swoboda działania, bez mikrozarządzania", "Mierzalne wyniki i zwycięstwa"],
+      "stress": "Pod presją działasz ostrzej i masz mniej cierpliwości do innych: przerywasz, bierzesz wszystko na siebie, omijasz zasady, żeby było szybciej. Pomagają jasno określone uprawnienia i możliwość samodzielnego działania.",
+      "communication": ["Mówić krótko i na temat: wynik, terminy, warianty", "Nie przeciągać wstępu i nie owijać w bawełnę", "Dawać wybór zamiast gotowego rozwiązania: ważna jest możliwość samodzielnego decydowania", "Argumentować faktami, a nie emocjami"],
+      "environment": "Dynamiczne środowisko, które daje dużą samodzielność, jasne cele i bezpośrednie przełożenie wysiłku na wynik. Rutyna i ścisła kontrola demotywują."
+    },
+    "I": {
+      "traits": ["Towarzyskość", "Optymizm", "Ekspresyjność", "Siła przekonywania", "Spontaniczność"],
+      "strengths": ["Łatwo nawiązujesz kontakt i zjednujesz sobie ludzi", "Inspirujesz i motywujesz zespół", "Sypiesz pomysłami i dostrzegasz szanse tam, gdzie inni widzą problemy", "Zachowujesz optymizm w trudnych sytuacjach"],
+      "growth": ["Składane pod wpływem emocji obietnice, które potem trudno spełnić", "Zbyt mała dbałość o szczegóły i terminy", "Skłonność, by więcej mówić niż słuchać"],
+      "motivation": ["Uznanie i aprobata", "Kontakt z ludźmi i praca w zespole", "Swoboda wyrażania siebie", "Nowości i różnorodność zadań"],
+      "stress": "Pod presją łatwo się rozpraszasz i działasz impulsywnie, unikasz nieprzyjemnych rozmów i zdarza ci się zbyt optymistycznie oceniać sytuację. Pomagają otwarta rozmowa i wsparcie współpracowników.",
+      "communication": ["Zaczynać od osobistego kontaktu, a nie od agendy", "Dawać możliwość wypowiedzenia się i przedyskutowania pomysłów", "Doceniać wkład publicznie", "Spisywać ustalenia: to pomaga obu stronom"],
+      "environment": "Otwarte, przyjazne środowisko z wieloma kontaktami, uznaniem i swobodą, bez sztywnych procedur. Izolacja i monotonia odbierają energię."
+    },
+    "S": {
+      "traits": ["Cierpliwość", "Niezawodność", "Spokój", "Uważność na ludzi", "Konsekwencja"],
+      "strengths": ["Można na tobie polegać na dłuższą metę", "Umiesz słuchać i wspierać innych", "Pracujesz cierpliwie i metodycznie", "Spajasz zespół i łagodzisz konflikty"],
+      "growth": ["Opór wobec zmian, nawet korzystnych", "Trudność w odmawianiu i obronie własnego stanowiska", "Przemilczanie sprzeciwu dla świętego spokoju"],
+      "motivation": ["Stabilność i przewidywalność", "Szczere podziękowania za wkład", "Jasne oczekiwania i reguły gry", "Praca w zgranym zespole"],
+      "stress": "Pod presją zamykasz się w sobie, zbyt łatwo ustępujesz i odkładasz decyzje. Szczególnie ciężko znosisz nagłe zmiany i otwarte konflikty. Pomagają czas na adaptację i spokojna rozmowa.",
+      "communication": ["Zapowiadać zmiany z wyprzedzeniem i wyjaśniać, czemu służą", "Pytać o zdanie wprost: osoby o tym stylu rzadko wyrażają je z własnej inicjatywy", "Nie naciskać i nie ponaglać z odpowiedzią", "Dziękować za konkretny wkład"],
+      "environment": "Stabilne środowisko ze zrozumiałymi procesami, dobrymi relacjami i rozsądnym tempem zmian. Chaos, ciągłe przeskakiwanie między zadaniami i agresywna rywalizacja wyczerpują."
+    },
+    "C": {
+      "traits": ["Dokładność", "Analityczne myślenie", "Ostrożność", "Systematyczność", "Powściągliwość"],
+      "strengths": ["Wysoka jakość pracy i dbałość o szczegóły", "Logika i obiektywizm w ocenach", "Umiejętność przewidywania ryzyka i planowania", "Dyscyplina i dotrzymywanie ustaleń"],
+      "growth": ["Perfekcjonizm i przeciąganie terminów w pogoni za ideałem", "Nadmierny krytycyzm wobec siebie i innych", "Ucieczka w analizę zamiast działania"],
+      "motivation": ["Jasne standardy i kryteria jakości", "Czas na analizę i przygotowanie", "Uznanie dla wiedzy eksperckiej", "Logiczne, dobrze uzasadnione decyzje"],
+      "stress": "Pod presją wycofujesz się, oceniasz wszystko zbyt krytycznie i grzęźniesz w szczegółach. Irytuje cię konieczność działania bez danych. Pomagają jasne kryteria i czas na sprawdzenie.",
+      "communication": ["Przygotowywać fakty, liczby i argumenty", "Dawać czas do namysłu, nie wymagać natychmiastowej odpowiedzi", "Szanować procedury i ustalenia", "Krytykować konkretnie i merytorycznie, bez emocji"],
+      "environment": "Uporządkowane środowisko z jasnymi standardami, dostępem do informacji i możliwością pracy w skupieniu. Niepewność, pośpiech i granie na emocjach obniżają efektywność."
+    }
+  },
+  "profiles": {
+    "D": {
+      "name": "Zdobywca",
+      "summary": "Zmierzasz do celu szybko i najkrótszą drogą: przejmujesz inicjatywę, podejmujesz decyzje bez długich dyskusji i nie boisz się oporu. Ważne są dla ciebie kontrola nad sytuacją i mierzalne wyniki.",
+      "careers": ["Kierownik działu lub projektu", "Przedsiębiorca, założyciel firmy", "Menedżer kryzysowy", "Szef sprzedaży, negocjator", "Dyrektor operacyjny"],
+      "team": "Przejmuje przywództwo, nawet bez formalnej nominacji, wyznacza cele i popycha zespół ku wynikom. Nie do zastąpienia, gdy trzeba podjąć niepopularną decyzję albo wyciągnąć projekt z kryzysu. Z taką osobą zespół działa szybko, choć nie zawsze komfortowo: warto pilnować, by ostrożniejsze głosy też zostały wysłuchane.",
+      "with": {
+        "D": "Z drugim D zawczasu rozdzielcie obszary odpowiedzialności i spierajcie się o kryteria, a nie o to, kto tu rządzi.",
+        "I": "Poświęć dwie minuty człowiekowi, zanim przejdziesz do sprawy, i głośno doceniaj wkład.",
+        "S": "Zwolnij tempo, uprzedzaj o zmianach i czekaj na odpowiedź na pytanie, nie wypełniając ciszy.",
+        "C": "Popieraj decyzje faktami i dawaj czas na sprawdzenie: dla C to nie gra na zwłokę, tylko praca."
+      }
+    },
+    "I": {
+      "name": "Inspirator",
+      "summary": "Działasz poprzez ludzi: łatwo nawiązujesz znajomości, zarażasz entuzjazmem, przekonujesz słowem i nastrojem. Ważne są dla ciebie uznanie i żywy kontakt z innymi, a formalności i rutyna szybko cię męczą.",
+      "careers": ["Sprzedaż i rozwój biznesu", "Marketing, PR, współpraca z mediami", "Prowadzący wydarzenia, trener, prelegent", "HR: rekrutacja i onboarding", "Współpraca z klientami i partnerami"],
+      "team": "Tworzy nastrój i więzi: poznaje ludzi ze sobą, rozprasza zniechęcenie, najszybciej zgłasza pomysły i najchętniej opowiada o nich na zewnątrz. Z taką osobą zespół jest żywszy, a prezentacje – bardziej przekonujące. Przydaje się jej ktoś, kto pilnuje terminów i szczegółów, inaczej entuzjazm rozmija się z faktami.",
+      "with": {
+        "D": "Mów krótko i rzeczowo, zaczynaj od wyniku, a emocje zostaw na później.",
+        "I": "Umówcie się, kto notuje, i kończcie rozmowę listą zadań z terminami.",
+        "S": "Nie zmieniaj planów w biegu i pytaj o zdanie wprost: S rzadko wyraża je z własnej inicjatywy.",
+        "C": "Przygotuj fakty, daj czas do namysłu i nie bierz sprawdzania szczegółów za odmowę."
+      }
+    },
+    "S": {
+      "name": "Ostoja",
+      "summary": "Wnosisz stabilność: dotrzymujesz słowa, doprowadzasz sprawy do końca, wspierasz ludzi i łagodzisz konflikty. Ważne są dla ciebie przewidywalność, zaufanie i czas na oswojenie się ze zmianami.",
+      "careers": ["Opieka nad klientem, wsparcie", "Koordynator, administrator projektów", "Mentor, nauczyciel", "Medycyna, praca socjalna, opieka", "Role operacyjne i usługowe o stałych procesach"],
+      "team": "Osoba, na której można polegać: doprowadza sprawy do końca, pamięta o ustaleniach, pomaga nowym osobom w zespole i łagodzi konflikty. Często to ona spaja zespół, choć otoczenie tego nie zauważa. Grozi jej brak uznania i przeciążenie cudzymi zadaniami, bo nie umie odmawiać.",
+      "with": {
+        "D": "O sprzeciwie mów od razu i krótko, proś o jasne priorytety, zamiast się domyślać.",
+        "I": "Stawiaj granice na głos i proś o plan: sam pomysł to dla ciebie za mało.",
+        "S": "Wyznaczajcie sobie nawzajem terminy i na zmianę bierzcie na siebie rolę osoby, która decyduje.",
+        "C": "Przyjmuj uwagi jako troskę o jakość i proponuj zmiany małymi krokami."
+      }
+    },
+    "C": {
+      "name": "Analityk",
+      "summary": "Opierasz się na faktach i standardach: sprawdzasz, analizujesz, planujesz i nie lubisz pochopnych decyzji. Jakość i poprawność są dla ciebie ważniejsze niż szybkość i efektowność.",
+      "careers": ["Analityk, badacz", "Finanse, audyt, księgowość", "Inżynier, programista, tester", "Prawnik, compliance, kontrola jakości", "Architekt procesów i systemów"],
+      "team": "Pilnuje, żeby to, co zrobione, naprawdę działało: sprawdza, znajduje błędy, zanim znajdą je klienci, i przewiduje ryzyka. Z taką osobą zespół pracuje dokładniej, ale wolniej. Warto, by wyjaśniała współpracownikom logikę swoich wymagań i czasem zgadzała się na „wystarczająco dobrze”.",
+      "with": {
+        "D": "Proponuj wariant „wystarczająco dobrze na teraz” i informuj o ryzykach krótko, wraz ze skutkami.",
+        "I": "Zaczynaj od docenienia pomysłu i wyjaśniaj wnioski prostymi słowami.",
+        "S": "Łagodź krytykę i głośno doceniaj wkład: dla S atmosfera jest częścią wyniku.",
+        "C": "Ustalcie zawczasu wystarczający poziom jakości i ograniczcie czas na analizę."
+      }
+    },
+    "DI": {
+      "name": "Pionier",
+      "summary": "Przebojowość i urok osobisty: szybko prowadzisz do celu i umiesz porwać innych za sobą. Przekonujesz impetem i entuzjazmem, decyzje podejmujesz w biegu, za to często brakuje ci cierpliwości do szczegółów i ostrożności.",
+      "careers": ["Założyciel, szef start-upu", "Dyrektor sprzedaży", "Wprowadzanie nowych produktów i ekspansja na nowe rynki", "Lider publiczny, mówca", "Negocjator handlowy"],
+      "team": "Uruchamia projekty: stawia ambitny cel, znajduje sojuszników i prowadzi ich za sobą. Nie do zastąpienia na starcie projektu i w negocjacjach, w których potrzeba jednocześnie impetu i uroku osobistego. Na długim dystansie potrzebuje w zespole osób o stylach S i C, które doprowadzą sprawy do końca i sprawdzą szczegóły.",
+      "with": {
+        "D": "Podzielcie strefy wpływów i nie rywalizujcie o uwagę: dwójce liderów potrzebne są osobne fronty.",
+        "I": "Korzystaj ze wspólnego entuzjazmu, ale kończ rozmowę listą zadań z osobami odpowiedzialnymi i terminami.",
+        "S": "Zmniejsz nacisk, uprzedzaj o zmianach i nie bierz milczenia za zgodę.",
+        "C": "Daj fakty i czas: C nie hamuje, tylko zabezpiecza twoje tempo przed błędami."
+      }
+    },
+    "DC": {
+      "name": "Strateg",
+      "summary": "Wynik dzięki jakości: dużo wymagasz od siebie i innych, myślisz systemowo i nie podejmujesz decyzji bez argumentów. Dobrze radzisz sobie ze złożonymi zadaniami, ale możesz sprawiać wrażenie osoby chłodnej i zbyt krytycznej.",
+      "careers": ["Kierownik złożonych projektów", "Dyrektor ds. rozwoju, strateg", "Szef zespołu inżynierskiego lub analitycznego", "Konsultant ds. zarządzania", "Dyrektor finansowy"],
+      "team": "Łączy impet z jakością: wysoko zawiesza poprzeczkę i ją pokonuje, myśli systemowo, dostrzega ryzyka wcześniej niż inni. Z taką osobą zespół jest zdyscyplinowany i skuteczny, ale może odczuwać chłód i ciągłe ocenianie. Warto, by częściej doceniała wkład ludzi i wyjaśniała decyzje, a nie tylko wymagała.",
+      "with": {
+        "D": "Spierajcie się o fakty i kryteria; ustalcie, do kogo należy ostatnie słowo w spornych obszarach.",
+        "I": "Wysłuchaj pomysłów do końca, zanim zaczniesz je rozbierać na części, i chwal publicznie.",
+        "S": "Wyjaśniaj, po co są zmiany, i dziękuj za niezawodność: S nie upomni się o to z własnej inicjatywy.",
+        "C": "Ustal z C, gdzie liczy się szybkość, a gdzie dokładność, i nie naciskaj na terminy tam, gdzie chodzi o jakość."
+      }
+    },
+    "DS": {
+      "name": "Praktyk",
+      "summary": "Determinacja i niezawodność: wytrwale zmierzasz do celu, ale robisz to bez zbędnego szumu i doprowadzasz sprawy do końca. Cenisz jednocześnie samodzielność i stabilność, a to rzadkie połączenie.",
+      "careers": ["Kierownik produkcji lub działu operacyjnego", "Kierownik projektów wdrożeniowych", "Kierownik działu serwisu", "Przedsiębiorca w stabilnej branży", "Menedżer średniego szczebla w dużej firmie"],
+      "team": "Ciągnie pracę do przodu: bierze zadanie i doprowadza je do wyniku bez zbędnego szumu, nie porzuca w pół drogi, dotrzymuje słowa. Rzadkie połączenie samodzielności i niezawodności sprawia, że przełożony ma w takiej osobie oparcie. Z boku może wydawać się uparta i zamknięta; warto, by częściej mówiła o swoich planach i wysłuchiwała innych propozycji.",
+      "with": {
+        "D": "Ustal z D cel i termin, a wybór drogi zostaw sobie: mikrozarządzanie cię demotywuje.",
+        "I": "Nie zbywaj pomysłów jako gadaniny, ale proś o konkretny plan.",
+        "S": "Bierz decyzję na siebie, ale ją wyjaśniaj i dawaj czas na oswojenie się z nią.",
+        "C": "Doceniaj wartość sprawdzania i zawczasu uzgadniaj kryteria ukończenia pracy."
+      }
+    },
+    "ID": {
+      "name": "Motywator",
+      "summary": "Energia i siła przebicia: zarażasz ludzi pomysłami i nie boisz się przejmować inicjatywy. Z łatwością „sprzedajesz” pomysły i cele, ale łatwo ci przecenić własne siły i nie docenić szczegółów.",
+      "careers": ["Sprzedaż i negocjacje na wysokim szczeblu", "Szef zespołu sprzedaży lub marketingu", "Organizator wydarzeń i społeczności", "Trener, mówca motywacyjny", "Rozwój partnerstw"],
+      "team": "Dodaje energii i prowadzi: zaraża pomysłami, poprawia nastrój, nie boi się inicjatywy ani publicznych wystąpień. Sprawdza się tam, gdzie trzeba przekonać i zainspirować wiele osób naraz. Może przecenić siły i obiecać więcej, niż to możliwe, dlatego potrzebuje u boku kogoś, kto odpowiada za realia: terminy, zasoby, szczegóły.",
+      "with": {
+        "D": "Mów krótko, zaczynając od wyniku; impet D to nie wrogość, tylko szybkość.",
+        "I": "Kończ spotkanie pisemnymi ustaleniami, inaczej entuzjazm rozminie się z działaniem.",
+        "S": "Uprzedzaj o zmianach i nie decyduj za S: pytaj o zdanie wprost.",
+        "C": "Przygotuj liczby i daj czas na odpowiedź: milczenie C to namysł, a nie odmowa."
+      }
+    },
+    "IS": {
+      "name": "Mentor",
+      "summary": "Ciepło i troska: łatwo zjednujesz sobie ludzi, umiesz ich wesprzeć i zintegrować. Ważne są dla ciebie relacje i atmosfera, a konflikty i twarde wymagania przychodzą ci z trudem.",
+      "careers": ["Mentor, coach, nauczyciel", "HR business partner, onboarding i szkolenia", "Opieka nad kluczowymi klientami", "Lider zespołu obsługi lub zgranego zespołu", "Mediator, facylitator"],
+      "team": "Osoba, do której przychodzi się porozmawiać: słucha, wspiera, łączy ludzi i dba o atmosferę. Z nią zespół jest życzliwszy i stabilniejszy. Trudno jej przychodzą twarde decyzje i nieprzyjemne rozmowy; warto, by pamiętała, że szczera informacja zwrotna to też troska.",
+      "with": {
+        "D": "O sprawach mów krótko i nie obrażaj się o bezpośredniość; o sprzeciwie – od razu.",
+        "I": "Wspieraj pomysły, ale proś o plan i terminy, inaczej wspólnie dacie się ponieść.",
+        "S": "Nazywajcie problemy na głos i wyznaczajcie sobie nawzajem terminy: bez tego sprawy stoją w miejscu.",
+        "C": "Traktuj krytykę szczegółów jako troskę o jakość, a nie ocenę twojej osoby."
+      }
+    },
+    "IC": {
+      "name": "Prezenter",
+      "summary": "Elokwencja i dokładność: umiesz przekonująco przedstawić dobrze przemyślane stanowisko. Łączysz towarzyskość z dbałością o fakty, ale zdarza ci się wahać między spontanicznością a ostrożnością.",
+      "careers": ["Marketing i prezentacje produktowe", "Nauczyciel, wykładowca, autor materiałów szkoleniowych", "Konsultant ds. sprzedaży złożonych produktów", "Analityk prezentujący wyniki", "Komunikacja i public relations"],
+      "team": "Umie wyjaśniać: zamienia złożone w zrozumiałe i przekonująco przedstawia przemyślane stanowisko. Przydaje się na styku ekspertów i odbiorców. Waha się między „powiedzieć” a „sprawdzić”, przez co decyzje mogą się przeciągać; pomaga jasne ustalenie, kiedy liczy się szybkość, a kiedy dokładność.",
+      "with": {
+        "D": "Zaczynaj od wniosku; szczegóły i uzasadnienie miej w pogotowiu, ale nie od nich zaczynaj.",
+        "I": "Ciesz się wspólnym językiem, ale zapisuj, kto co robi i na kiedy.",
+        "S": "Nie zmieniaj planów w biegu i pytaj o zdanie wprost, dając czas na odpowiedź.",
+        "C": "Mów językiem danych i zgadzaj się na „wystarczająco dobrze” tam, gdzie cena błędu jest niska."
+      }
+    },
+    "SI": {
+      "name": "Dyplomata",
+      "summary": "Spokój i życzliwość: tworzysz atmosferę zaufania, łagodzisz napięcia i wspierasz zespół. Trudno ci mówić „nie” i bronić niepopularnej decyzji.",
+      "careers": ["Współpraca z klientami i partnerami", "Koordynator zespołu, office manager", "HR: rekrutacja, onboarding, komunikacja wewnętrzna", "Nauczyciel, wychowawca, praca socjalna", "Obsługa projektów z wieloma uczestnikami"],
+      "team": "Buduje zaufanie: ze spokojem i życzliwością poświęca uwagę każdemu, łagodzi napięcia i pomaga dojść do porozumienia. Z taką osobą w zespole jest mniej konfliktów. Trudno jej mówić „nie” i bronić niepopularnej decyzji; warto, by uczyła się wyrażać sprzeciw, zanim się nagromadzi.",
+      "with": {
+        "D": "O sprzeciwie mów od razu i krótko: D bardziej szanuje bezpośredniość niż uległość.",
+        "I": "Stawiaj granice i proś o konkrety: sam pomysł to za mało.",
+        "S": "Na zmianę przejmujcie inicjatywę i nie odkładajcie trudnych rozmów.",
+        "C": "Proś o wyjaśnienie logiki zasady i proponuj zmiany małymi krokami."
+      }
+    },
+    "SC": {
+      "name": "Specjalista",
+      "summary": "Niezawodność i staranność: pracujesz metodycznie, przestrzegasz zasad i doprowadzasz sprawy do końca bez pośpiechu. Cenisz stabilność i jasne oczekiwania, a gwałtowne zmiany i presję znosisz z trudem.",
+      "careers": ["Księgowość, obieg dokumentów, administracja biurowa", "Kontrola jakości, standaryzacja", "Wsparcie techniczne i serwis", "Laboratorium, badania według ustalonej metodyki", "Administrowanie systemami i procesami"],
+      "team": "Stoi na straży porządku: pracuje metodycznie, przestrzega zasad, doprowadza sprawy do końca, pamięta, jak coś zrobiono poprzednim razem. To na takiej osobie opierają się procesy. Gwałtowne zmiany i presję znosi z trudem; zespół powinien włączać ją w zmiany z wyprzedzeniem, a ona sama – mówić o przeciążeniu, zamiast znosić je w milczeniu.",
+      "with": {
+        "D": "Proś o jasne priorytety i informuj o ryzykach krótko, wraz ze skutkami.",
+        "I": "Nie bierz entuzjazmu za plan: proś o terminy i osoby odpowiedzialne.",
+        "S": "Wyznaczajcie sobie nawzajem terminy i nazywajcie problemy na głos, nawet drobne.",
+        "C": "Ustalcie zawczasu wystarczający poziom jakości, inaczej razem utoniecie w szczegółach."
+      }
+    },
+    "SD": {
+      "name": "Realizator",
+      "summary": "Wytrwałość i cierpliwość: spokojnie, ale stanowczo prowadzisz sprawy do wyniku, nie tracąc czasu na zbędne dyskusje. Na długim dystansie można na tobie polegać, choć z boku może to wyglądać na upór.",
+      "careers": ["Kierownik wydziału, zmiany, produkcji", "Kierownik projektów o długim cyklu", "Logistyka, zaopatrzenie, eksploatacja", "Zawody rzemieślnicze i inżynierskie", "Właściciel małej, stabilnej firmy"],
+      "team": "Doprowadza do wyniku spokojnie i stanowczo: bez pośpiechu, bez zbędnych dyskusji, ale i bez wycofywania się. Taka osoba sprawdza się na długim dystansie i nie boi się odpowiedzialności. Z boku może wydawać się uparta; warto, by wyjaśniała swoje decyzje i dawała współpracownikom możliwość wpływu na nie.",
+      "with": {
+        "D": "Ustal z D cel i termin; sposób wybierz po swojemu i nie znoś mikrozarządzania w milczeniu.",
+        "I": "Słuchaj pomysłów, ale proś o plan: twoja stanowczość pomoże osobie o stylu I doprowadzić sprawę do końca.",
+        "S": "Weź decyzję na siebie, ale ją wyjaśnij i daj czas na oswojenie się z nią.",
+        "C": "Uzgodnij zawczasu kryteria ukończenia pracy i szanuj czas potrzebny na sprawdzenie."
+      }
+    },
+    "CD": {
+      "name": "Perfekcjonista",
+      "summary": "Standardy i siła woli: wymagasz dokładności od siebie i innych, szybko dostrzegasz błędy i nie boisz się ich wskazać. Dobrze radzisz sobie ze złożonymi zadaniami eksperckimi, ale zdarza ci się przesadzać z surowością i zamykać się w sobie.",
+      "careers": ["Audyt, kontrola, inspekcja", "Architekt systemów, główny inżynier", "Praca naukowa, ekspertyzy", "Analiza finansowa, zarządzanie ryzykiem", "Szef działu eksperckiego"],
+      "team": "Gwarancja jakości: dostrzega błędy wcześniej niż inni, wymaga dokładności i nie boi się o tym mówić. Z taką osobą zespół pracuje lepiej, ale może czuć się stale kontrolowany. Warto, by zaczynała od tego, co zrobiono dobrze, i wyjaśniała kryteria z góry, a nie po fakcie.",
+      "with": {
+        "D": "O ryzykach informuj krótko, z oceną skutków; proponuj wariant „na teraz wystarczy”.",
+        "I": "Zaczynaj od docenienia pomysłu; krytykę podawaj konkretnie i bez ostrego tonu.",
+        "S": "Łagodź uwagi i głośno doceniaj wkład: chłód rani S mocniej, niż się wydaje.",
+        "C": "Ograniczcie czas na analizę i zawczasu ustalcie, gdzie się zatrzymać."
+      }
+    },
+    "CS": {
+      "name": "Ekspert",
+      "summary": "Dokładność i konsekwencja: pracujesz z namysłem, weryfikujesz szczegóły i opierasz się na sprawdzonych metodach. Można na tobie polegać w sprawach merytorycznych, za to niepewność i szybkie zmiany przychodzą ci z trudem.",
+      "careers": ["Inżynier, programista, tester", "Analityk danych, badacz", "Księgowy, audytor, specjalista ds. procedur", "Diagnostyka medyczna, laboratorium", "Technical writer, dokumentacja techniczna"],
+      "team": "Osoba, na której wiedzy można polegać: pracuje z namysłem, weryfikuje szczegóły, opiera się na sprawdzonych metodach i nie zawodzi. Zespół ufa jej wnioskom. Niepewność i szybkie zmiany przychodzą jej z trudem; pomaga, gdy zmiany wyjaśnia się z wyprzedzeniem, a zamiast natychmiastowej reakcji oczekuje się od niej wyważonej odpowiedzi.",
+      "with": {
+        "D": "Proś o czas na sprawdzenie, ale podawaj termin, w którym dasz odpowiedź.",
+        "I": "Wyjaśniaj wnioski prostymi słowami i nie bierz emocjonalności stylu I za lekkomyślność.",
+        "S": "Omawiaj zmiany małymi krokami i nie krytykuj przy innych.",
+        "C": "Ustalcie zawczasu, jaki poziom szczegółowości wystarczy."
+      }
+    },
+    "CI": {
+      "name": "Doradca",
+      "summary": "Analiza i kontakt z ludźmi: umiesz zgłębić temat i przystępnie wyjaśnić go innym. To rzadkie połączenie: ostrożność we wnioskach i swoboda w rozmowie. Czasem przeszkadza wewnętrzny konflikt między „sprawdzić” a „podzielić się”.",
+      "careers": ["Konsultant, analityk prezentujący wyniki", "Nauczyciel, metodyk", "Analityk produktowy, badacz UX", "Sprzedaż techniczna, presales", "Autor materiałów szkoleniowych i dokumentacji"],
+      "team": "Tłumaczy z języka ekspertów na ludzki: zgłębia temat i umie wyjaśnić go tak, żeby inni zrozumieli. Najwięcej wnosi tam, gdzie trzeba zarazem zweryfikować i przekonać. Wewnętrzny konflikt między „sprawdzić” a „podzielić się” czasem spowalnia działanie; pomaga ustalenie, w jakich sytuacjach wystarczy wstępny wniosek.",
+      "with": {
+        "D": "Zaczynaj od wniosku; uzasadnienie miej w pogotowiu, ale nie zaczynaj od niego.",
+        "I": "Wspólny język znajdziecie łatwo; pilnuj, żeby z rozmowy wyniknął plan.",
+        "S": "Nie zmieniaj wniosków w biegu i dawaj czas: S potrzebuje przewidywalności.",
+        "C": "Mów językiem danych, ale nie spieraj się o każdy szczegół."
+      }
+    }
+  },
+  "content": {
+    "disc": {
+      "title": "Co to jest DISC? Model, 4 style zachowania i jak czytać profil",
+      "description": "Model DISC prostym językiem: skąd się wziął, co mierzy, cztery style D, I, S, C, jak liczy się wynik i jak czytać profil. Zrób darmowy test DISC online.",
+      "h1": "Co to jest DISC?",
+      "lead": "DISC to model zachowania, który opisuje, jak człowiek działa, komunikuje się i podejmuje decyzje, na czterech skalach: dominacja, wpływ, stałość i sumienność. To nie test inteligencji ani diagnoza, lecz wspólny język do rozmowy o stylach zachowania.",
+      "sections": [
+        {
+          "h": "Skąd się wziął model",
+          "p": [
+            "Podstawy modelu przedstawił amerykański psycholog William Marston w książce „Emotions of Normal People” (1928). Opisał cztery typy reakcji, które zależą od tego, czy człowiek postrzega otoczenie jako sprzyjające, czy wrogie, oraz czy czuje się silniejszy, czy słabszy od okoliczności. Tak powstały cztery wymiary: Dominance, Inducement (później Influence), Submission (później Steadiness) i Compliance (Conscientiousness).",
+            "Sam Marston nie stworzył kwestionariusza. Pierwsze narzędzia oparte na jego modelu pojawiły się w latach 50.–70. XX wieku (Walter Clarke, John Geier), a dziś istnieją dziesiątki wersji testu. Nazwa DiSC® z małym „i” to znak towarowy wydawnictwa Wiley; nasz test jest niezależną, otwartą wersją zbudowaną na tym samym modelu czteroczynnikowym."
+          ]
+        },
+        {
+          "h": "Co mierzy DISC",
+          "p": [
+            "Model najłatwiej wyobrazić sobie jako dwie osie. Pierwsza to tempo: jedni działają szybko i stanowczo, inni – spokojnie i ostrożnie. Druga to orientacja: jedni skupiają się na zadaniach i wynikach, inni – na ludziach i relacjach. Przecięcie osi daje cztery style: D – szybkie tempo i orientacja na zadania, I – szybkie tempo i orientacja na ludzi, S – spokojne tempo i orientacja na ludzi, C – spokojne tempo i orientacja na zadania.",
+            "Każdy człowiek ma w sobie wszystkie cztery style, różnią się tylko proporcje. Profil pokazuje, które z nich częściej ujawniają się w codziennym zachowaniu w pracy, a które wymagają wysiłku."
+          ]
+        },
+        {
+          "h": "Cztery style w skrócie",
+          "p": [
+            "D – dominacja: wyniki, kontrola, szybkość, gotowość do konfrontacji. I – wpływ: kontakt z ludźmi, entuzjazm, umiejętność porywania innych. S – stałość: wsparcie, niezawodność, cierpliwość, stabilność. C – sumienność: dokładność, jakość, zasady, opieranie się na faktach.",
+            "Szczegółowy opis każdego stylu – cechy, mocne strony, obszary rozwoju, motywacja i wskazówki, jak komunikować się z osobą o tym stylu – znajdziesz na stronie „Cztery style”. Połączenia stylu wiodącego i uzupełniającego dają 16 profili, a każdy z nich ma własną stronę."
+          ]
+        },
+        {
+          "h": "Jak przebiega test i jak liczony jest wynik",
+          "p": [
+            "Test składa się z 24 pytań po cztery stwierdzenia. W każdym pytaniu zaznaczasz jedno stwierdzenie, które pasuje do ciebie najbardziej, i jedno, które pasuje najmniej. Każde stwierdzenie odnosi się do jednego z czterech stylów.",
+            "Dla każdego stylu liczona jest różnica między liczbą odpowiedzi „najbardziej” i „najmniej”: od −24 do +24. Styl z najwyższą wartością staje się stylem wiodącym. Styl uzupełniający jest uwzględniany, jeśli jego wartość jest dodatnia i wynosi co najmniej 40% wartości stylu wiodącego (minimum 3 punkty). Na wykresie są trzy linie: „styl adaptowany” (odpowiedzi „najbardziej”), „styl naturalny” (odpowiedzi „najmniej”, odwrócone) i profil wynikowy."
+          ]
+        },
+        {
+          "h": "Jak czytać profil",
+          "p": [
+            "Styl wiodący to nawykowy sposób działania, który włącza się automatycznie. Styl uzupełniający nadaje mu dodatkowy odcień: na przykład D ze stylem uzupełniającym I (profil DI) przekonuje siłą przebicia i entuzjazmem, a D ze stylem uzupełniającym C (profil DC) – wysokimi wymaganiami i argumentami. Wartości powyżej środka skali (50%) uznaje się za wyraźnie zaznaczone.",
+            "Profil nie jest ani dobry, ani zły: każdy styl ma mocne strony i obszary rozwoju. Nie jest też wyrokiem: zachowanie zależy od kontekstu, roli i doświadczenia, dlatego wynik w pracy i w domu może się różnić, a po roku czy dwóch profil może się przesunąć. Profil zrównoważony, w którym żaden styl się nie wyróżnia, zwykle świadczy o elastyczności, rzadziej – o niepewnych odpowiedziach."
+          ]
+        },
+        {
+          "h": "Gdzie stosuje się DISC",
+          "p": [
+            "Zespoły korzystają z DISC, żeby zrozumieć, dlaczego współpracownicy reagują różnie, i ustalić zasady komunikacji. Menedżerom model pomaga dopasować styl zarządzania: jednym potrzeba swobody i wyzwań, innym – jasnych oczekiwań i czasu na adaptację. W sprzedaży i negocjacjach DISC podpowiada, jak mówić językiem rozmówcy.",
+            "W rekrutacji DISC sprawdza się jako temat rozmowy kwalifikacyjnej i punkt odniesienia, ale nie jako jedyna podstawa decyzji: model opisuje preferencje w zachowaniu, a nie kompetencje ani dopasowanie do stanowiska."
+          ]
+        },
+        {
+          "h": "Ograniczenia metody",
+          "p": ["DISC opiera się na samoocenie: wynik odzwierciedla to, jak widzisz siebie, i zależy od szczerości oraz nastroju. Krótki kwestionariusz daje orientację, a nie precyzyjny pomiar, dlatego traktuj profil jako punkt wyjścia do przemyśleń i rozmowy, a nie jako diagnozę. Jeśli wynik wydaje się nietrafny, zrób test jeszcze raz, odpowiadając szybko i z myślą o sytuacjach w pracy."]
+        }
+      ],
+      "sourcesTitle": "Źródła i literatura",
+      "sourcesLead": "Twierdzenia o metodzie na tej stronie opierają się na pracach wymienionych poniżej: źródłowej pracy Marstona, wczesnych kwestionariuszach, podręczniku wydawcy współczesnej wersji DiSC® oraz niezależnych badaniach, w tym krytycznych. Linki prowadzą do oryginałów albo do opisów artykułów w bazach naukowych."
+    },
+    "faq": {
+      "title": "Test DISC: pytania i odpowiedzi (FAQ)",
+      "description": "Częste pytania o test DISC: ile trwa, czy jest darmowy, na ile jest dokładny, co oznaczają litery D, I, S, C, czy można go zrobić z zespołem i dokąd trafia wynik.",
+      "h1": "Pytania i odpowiedzi",
+      "lead": "Krótko o tym, o co najczęściej pytają użytkownicy przed testem i po otrzymaniu wyniku.",
+      "items": [
+        {
+          "q": "Ile czasu zajmuje test?",
+          "a": "Test ma 24 pytania po cztery stwierdzenia. Zwykle zajmuje 8–12 minut. Lepiej nie zastanawiać się zbyt długo: pierwsza reakcja jest trafniejsza, a wybór można zmienić, dopóki nie klikniesz „Dalej”."
+        },
+        {
+          "q": "Czy test jest naprawdę darmowy?",
+          "a": "Tak, całkowicie: bez rejestracji, ukrytych opłat i płatnych „raportów rozszerzonych”. Wynik pojawia się na ekranie od razu po ostatnim pytaniu i przychodzi e-mailem na podany adres."
+        },
+        {
+          "q": "Co oznaczają litery D, I, S, C?",
+          "a": "D to dominacja (wyniki i kontrola), I – wpływ (ludzie i entuzjazm), S – stałość (wsparcie i stabilność), C – sumienność (dokładność i jakość). Każdy ma w sobie wszystkie cztery style, ale w różnym nasileniu."
+        },
+        {
+          "q": "Na ile dokładny jest wynik?",
+          "a": "DISC opiera się na samoocenie, więc dokładność zależy od tego, na ile szczerze odpowiadasz i czy myślisz o swoim rzeczywistym zachowaniu w pracy, a nie o pożądanym. Krótki kwestionariusz daje wiarygodną orientację co do stylu wiodącego, ale nie precyzyjny pomiar. Jeśli wynik budzi wątpliwości, zrób test jeszcze raz za kilka dni."
+        },
+        {
+          "q": "Czym jest styl uzupełniający i profile takie jak DI czy SC?",
+          "a": "Styl wiodący to ten, który zdobył najwięcej punktów. Jeśli drugi pod względem wartości styl też jest wyraźnie zaznaczony (co najmniej 40% wartości stylu wiodącego), uznaje się go za styl uzupełniający, który nadaje profilowi własny odcień. Tak powstaje 16 profili: cztery czyste (D, I, S, C) i dwanaście połączeń, na przykład DI lub SC."
+        },
+        {
+          "q": "Co oznacza „profil zrównoważony”?",
+          "a": "Żaden styl wyraźnie się nie wyróżnia. Najczęściej świadczy to o elastyczności zachowania: łatwo przełączasz się między stylami w zależności od sytuacji. Czasem tak wygląda niepewność w odpowiedziach. Spróbuj zrobić test jeszcze raz, odpowiadając szybciej i z myślą o konkretnej roli zawodowej."
+        },
+        {
+          "q": "Czy test można zrobić całym zespołem?",
+          "a": "Tak. Wyślij współpracownikom link do serwisu. Na ekranie wyniku każda osoba dostanie link i kod – poproś o ich przesłanie. W panelu administratora (link w stopce) kody trafiają do tabeli, którą można skopiować do Excela. Tabela jest przechowywana wyłącznie w twojej przeglądarce."
+        },
+        {
+          "q": "Dokąd trafia wynik i kto go widzi?",
+          "a": "Wynik wyświetla się na ekranie, zapisuje się w twojej przeglądarce i jest wysyłany na adres e-mail podany przed testem. Imię, adres e-mail i wynik są też zapisywane w bazie wyników właściciela serwisu; nie są wykorzystywane do innych celów ani przekazywane osobom trzecim. Osoby postronne zobaczą twój raport tylko wtedy, gdy samodzielnie udostępnisz do niego link. Więcej na stronie „Prywatność”."
+        },
+        {
+          "q": "Czy test można powtórzyć?",
+          "a": "Tak, w dowolnej chwili: kliknij „Zrób test ponownie” na ekranie wyniku. Profil może się zmieniać wraz z rolą, doświadczeniem i okolicznościami, dlatego warto porównać wyniki po roku."
+        },
+        {
+          "q": "Czym DISC różni się od MBTI i Wielkiej Piątki?",
+          "a": "DISC opisuje obserwowalne zachowanie w pracy na czterech skalach i dobrze sprawdza się w rozmowie w zespole. MBTI przypisuje ludzi do 16 typów preferencji. Wielka Piątka to naukowy standard pomiaru cech osobowości, ale jej wyniki trudniej przełożyć na praktyczne wskazówki. Modele nie są ze sobą sprzeczne – odpowiadają na różne pytania."
+        },
+        {
+          "q": "Czy to pełna wersja testu DISC?",
+          "a": "Tak. To klasyczna pełna forma „najbardziej – najmniej”: 24 pytania po cztery stwierdzenia, łącznie 96, w każdym pytaniu po jednym na każdy styl. Spotyka się też wersje z 28 takimi pytaniami albo z 40 pytaniami ocenianymi na skali: różnią się formą, ale model i cztery style są te same. Skróconych wersji „demo” w serwisie nie ma, wynik jest liczony ze wszystkich 24 pytań."
+        },
+        {
+          "q": "Czy są poprawne odpowiedzi?",
+          "a": "Nie. Test nie sprawdza wiedzy i nie ocenia, czy ktoś jest „dobrym” pracownikiem: opisuje nawykowy styl zachowania. Każda próba odpowiadania „tak, jak trzeba” tylko zniekształca profil. Jedyny właściwy sposób to zaznaczać to, co naprawdę do ciebie pasuje w sytuacjach zawodowych."
+        },
+        {
+          "q": "Czy można pobrać test DISC w PDF i wypełnić go na papierze?",
+          "a": "Tak. Na stronie „{pdf}” jest darmowy plik do druku: 24 pytania ze stwierdzeniami, klucz i tabela do obliczania wyniku, opis 16 profili. Wynik trzeba będzie policzyć ręcznie; wersja online robi to sama i rysuje wykres."
+        }
+      ]
+    },
+    "about": {
+      "title": "O projekcie – darmowy test DISC w 14 językach",
+      "description": "Kto i po co stworzył ten darmowy test DISC online, na czym się on opiera, co potrafi i czego nie obiecuje. Projekt niezależny, z otwartym kodem.",
+      "h1": "O projekcie",
+      "sections": [
+        {
+          "h": "Po co powstał ten serwis",
+          "p": ["Chcieliśmy stworzyć test DISC, który da się zrobić w dziesięć minut, bez rejestracji i opłat, i który daje zrozumiały raport w twoim języku – taki, którym można podzielić się z zespołem. Serwis działa w czternastu językach, wynik pojawia się od razu i przychodzi na e-mail, a dla menedżerów i działów HR jest panel, w którym wyniki uczestników trafiają do jednej tabeli."]
+        },
+        {
+          "h": "Na czym opiera się test",
+          "p": [
+            "Test jest zbudowany na czteroczynnikowym modelu Williama Marstona (1928) i późniejszych kwestionariuszach w formacie „najbardziej – najmniej”: 24 pytania po cztery stwierdzenia, po jednym na każdy styl. Opisy stylów i szesnastu profili napisali autorzy serwisu na podstawie ogólnie przyjętych charakterystyk DISC. O tym, jak powstały i jak zostały sprawdzone tłumaczenia, piszemy niżej.",
+            "Projekt jest niezależny i nie jest powiązany z Wiley (DiSC®), TTI Success Insights ani innymi właścicielami znaków towarowych. Słowo DISC jest używane jako ogólna nazwa modelu."
+          ]
+        },
+        {
+          "h": "Czego test nie obiecuje",
+          "p": ["Test nie jest narzędziem klinicznym ani diagnostycznym, nie mierzy inteligencji, kompetencji ani dopasowania do stanowiska i nie powinien być jedyną podstawą decyzji kadrowych. To punkt wyjścia do samoobserwacji i rozmowy w zespole."]
+        },
+        {
+          "h": "Kontakt",
+          "p": ["Możesz do nas napisać przez formularz „{contact}”. Kod źródłowy serwisu jest otwarty na GitHubie: github.com/Man-You-Can/disc-test – tam też można zgłosić nieścisłość w tłumaczeniu albo zaproponować ulepszenie."]
+        }
+      ]
+    },
+    "privacy": {
+      "title": "Prywatność – jakie dane wykorzystuje test DISC",
+      "description": "Prywatność w teście DISC: jakie dane zapisuje serwis, gdzie są przechowywane, komu są przekazywane i jak możesz je usunąć.",
+      "h1": "Prywatność",
+      "sections": [
+        {
+          "h": "Jakie dane wykorzystujemy",
+          "p": [
+            "Przed testem podajesz imię i adres e-mail. W trakcie testu zapisywane są twoje odpowiedzi, a po jego zakończeniu – wynik, wybrany język i informacja, że komunikat o plikach cookie został ci już wyświetlony. Wszystko to jest przechowywane w pamięci lokalnej twojej przeglądarki. Po zakończeniu testu imię, adres e-mail, data wykonania testu i wynik są zapisywane także w bazie wyników właściciela serwisu."
+          ]
+        },
+        {
+          "h": "Dokąd przekazywane są dane",
+          "p": [
+            "Po zakończeniu testu imię, adres e-mail i odpowiedzi (w postaci kodu wyniku) są przekazywane do usługi wysyłającej e-maile – skryptu Google Apps Script, który działa na koncie Google właściciela serwisu. Skrypt wysyła ci e-mail z wynikiem i zapisuje imię, adres e-mail, datę wykonania testu oraz wynik (profil, punkty, link do raportu) w bazie wyników – arkuszu Google na tym samym koncie. Dane te nie są wykorzystywane do innych celów ani przekazywane osobom trzecim.",
+            "Hosting GitHub Pages otrzymuje standardowe dane techniczne żądania: adres IP, typ przeglądarki, adres strony. Czcionki są przechowywane w samym serwisie i nie są pobierane z serwerów Google. Statystyki odwiedzin zbiera Yandex Metrica (Yandex LLC): otrzymuje zanonimizowane dane o wizycie – adres strony bez kodu wyniku, źródło wejścia, typ urządzenia i przeglądarki – oraz zapis działań na stronie (Webvisor); pola z imieniem i adresem e-mail, link i kod wyniku są z tego zapisu wyłączone. Dane są przetwarzane na warunkach firmy Yandex; ich zbieranie można wyłączyć w ustawieniach przeglądarki albo za pomocą narzędzia blokującego skrypty śledzące. Reklamowe skrypty śledzące nie są używane."
+          ]
+        },
+        {
+          "h": "Link do wyniku",
+          "p": ["Link do raportu zawiera imię, adres e-mail i odpowiedzi w postaci zakodowanej. Każdy, kto ma link, może otworzyć raport, dlatego udostępniaj go tylko osobom, którym ufasz. Panel administratora działa wyłącznie w przeglądarce osoby, która wkleiła do niego kody."]
+        },
+        {
+          "h": "Formularz kontaktowy",
+          "p": ["Wiadomości z formularza kontaktowego – imię, adres e-mail, treść i załączone pliki – są wysyłane e-mailem na adres {email} za pośrednictwem tego samego skryptu Google Apps Script i służą wyłącznie do udzielenia ci odpowiedzi. Nie są zapisywane w bazie wyników, a załączone pliki nie są przechowywane nigdzie poza tą wiadomością."]
+        },
+        {
+          "h": "Jak usunąć dane",
+          "p": ["Aby usunąć dane ze swojego urządzenia, wyczyść dane witryny w ustawieniach przeglądarki albo kliknij „Zrób test ponownie”. E-mail z wynikiem jest przechowywany w twojej skrzynce pocztowej. Aby poprosić o usunięcie twojego wpisu z bazy wyników oraz kopii wiadomości po stronie nadawcy, napisz do nas przez formularz kontaktowy."]
+        },
+        {
+          "h": "Pliki cookie",
+          "p": ["Sam serwis nie zapisuje plików cookie: do celów wymienionych wyżej wykorzystuje pamięć lokalną przeglądarki – technologię o tym samym przeznaczeniu. Yandex Metrica zapisuje własne pliki cookie (na przykład _ym_uid i _ym_d), aby rozróżniać odwiedzających. Dlatego komunikat wyświetla się jeden raz, przy pierwszej wizycie."]
+        },
+        {
+          "h": "Zmiany",
+          "p": ["Ostatnia aktualizacja: 7 września 2026 r. Zmiany w sposobie przetwarzania danych będą odnotowywane na tej stronie."]
+        }
+      ]
+    },
+    "contact": {
+      "title": "Kontakt – napisz do autorów testu DISC",
+      "description": "Masz pytanie, uwagę do tłumaczenia albo propozycję? Napisz do nas przez formularz kontaktowy, w razie potrzeby dołączając pliki.",
+      "h1": "Kontakt",
+      "lead": "Widzisz błąd, nieścisłość w tłumaczeniu albo masz pomysł na ulepszenie? Napisz do nas – odpowiedź przyjdzie na podany adres e-mail."
+    },
+    "results": {
+      "title": "Interpretacja wyników testu DISC: jak czytać wykres i profil",
+      "description": "Jak czytać wynik testu DISC: trzy linie wykresu, procenty, styl wiodący i uzupełniający, profil zrównoważony. Przykłady interpretacji i typowe błędy.",
+      "h1": "Interpretacja wyników testu DISC",
+      "lead": "Wynik testu DISC to nie jedna litera, lecz wykres z trzema liniami, procenty dla czterech stylów i profil złożony z jednej lub dwóch liter. Poniżej pokazujemy na przykładach, co oznacza każdy element raportu i jak nie pomylić się przy jego czytaniu.",
+      "sections": [
+        {
+          "h": "Z czego składa się wynik",
+          "p": [
+            "Po ostatnim pytaniu widzisz cztery elementy: nazwę profilu z jedną lub dwiema literami (na przykład „Pionier, DI”), wykres z trzema liniami, cztery skale z procentami i opis tekstowy: cechy, mocne strony, obszary rozwoju, motywacja, zachowanie w stresie i wskazówki, jak najlepiej się z tobą komunikować. Ten sam raport przychodzi na e-mail i jest dostępny pod linkiem.",
+            "Wszystkie liczby w raporcie wynikają z twoich odpowiedzi w 24 pytaniach. W każdym pytaniu wybierasz jedno stwierdzenie „najbardziej do mnie pasuje” i jedno „najmniej do mnie pasuje”, a każde stwierdzenie odnosi się do jednego ze stylów: D, I, S lub C. Dlatego każdy styl ma dwie liczby: ile razy został wybrany jako „najbardziej” i ile razy jako „najmniej”."
+          ]
+        },
+        {
+          "h": "Trzy linie wykresu",
+          "p": [
+            "Profil wynikowy (gruba linia z kolorowymi punktami) jest najważniejszy. To różnica między odpowiedziami „najbardziej” i „najmniej” dla każdego stylu, przeliczona na skalę od 0 do 24. Środek skali to 12, na wykresie zaznaczony linią przerywaną. Styl powyżej środka uznaje się za wyraźnie zaznaczony, poniżej – za słabo zaznaczony.",
+            "Styl adaptowany to linia oparta na odpowiedziach „najbardziej”. Pokazuje, jak starasz się zachowywać w pracy, jaki wizerunek świadomie utrzymujesz. Styl naturalny to linia oparta na odpowiedziach „najmniej”, odwrócona: im rzadziej dany styl był odrzucany, tym wyżej leży punkt. Ta linia jest bliższa zachowaniu, które nie wymaga wysiłku, „na autopilocie” – na przykład pod presją albo w nieznanej sytuacji.",
+            "Jeśli wszystkie trzy linie przebiegają podobnie, zachowujesz się mniej więcej tak samo w każdych okolicznościach. Jeśli styl adaptowany i styl naturalny się rozchodzą, to nie problem, lecz wskazówka: któryś styl włączasz siłą woli. Najczęściej oznacza to, że rola wymaga zachowania, które nie jest dla ciebie naturalne i pochłania energię."
+          ]
+        },
+        {
+          "h": "Styl wiodący i styl uzupełniający",
+          "p": [
+            "Styl wiodący to ten, który ma najwyższą wartość wynikową. To pierwsza litera profilu i podstawa opisu. Styl uzupełniający jest uwzględniany, jeśli jego wartość jest dodatnia i wynosi co najmniej 40% wartości stylu wiodącego (minimum 3 punkty na „surowej” skali od −24 do +24). Staje się drugą literą i nadaje opisowi dodatkowy odcień: D ze stylem uzupełniającym I (DI) przekonuje siłą przebicia i entuzjazmem, D ze stylem uzupełniającym C (DC) – wysokimi wymaganiami i argumentami.",
+            "Kolejność liter ma znaczenie: DI i ID to różne profile. W DI stylem wiodącym jest dominacja, a wpływ ją wspiera; w ID mamy przede wszystkim osobę towarzyską i inspirującą, a stanowczość włącza się w razie potrzeby. Jeśli wartość drugiego stylu jest ujemna albo wyraźnie niższa od wartości stylu wiodącego, profil pozostaje „czysty”: D, I, S lub C."
+          ]
+        },
+        {
+          "h": "Co oznaczają procenty",
+          "p": [
+            "Procenty na czterech skalach to ta sama wartość wynikowa przeliczona na skalę od 0 do 100: −24 odpowiada 0%, 0 – 50%, a +24 – 100%. Wartość powyżej 50% oznacza, że styl był wybierany częściej niż odrzucany; poniżej 50% – odwrotnie. To nie „ile procent D jest we mnie”, lecz miara tego, na ile dany styl jest dla ciebie charakterystyczny w porównaniu z pozostałymi trzema.",
+            "Suma „surowych” wartości czterech stylów zawsze wynosi zero: test porównuje style między sobą, a nie mierzy każdego z osobna. Dlatego wysoki wynik w jednym stylu nieuchronnie oznacza niski w innym. Zwykle przeciwstawne okazują się style w parach D–S oraz I–C: leżą na przeciwnych końcach osi tempa i orientacji."
+          ]
+        },
+        {
+          "h": "Profil zrównoważony",
+          "p": [
+            "Jeśli żadna wartość nie wychodzi wyraźnie ponad środek skali, raport nazywa profil zrównoważonym, a mimo to wskazuje styl wiodący na podstawie najwyższej liczby. Taki wynik najczęściej oznacza elastyczność: przełączasz się między stylami w zależności od sytuacji, a współpracownikom o różnych stylach pracuje się z tobą równie dobrze.",
+            "Rzadziej płaski wykres świadczy o niepewnych odpowiedziach, zbyt długim namyśle albo próbach wybierania „właściwych” odpowiedzi. Łatwo to sprawdzić: zrób test jeszcze raz za kilka dni, odpowiadając szybko i wyobrażając sobie konkretną rolę zawodową. Jeśli profil znów będzie płaski, elastyczność jest po prostu twoją cechą."
+          ]
+        },
+        {
+          "h": "Co zrobić z wynikiem",
+          "p": [
+            "Zacznij od opisu mocnych stron i obszarów rozwoju: zaznacz, co u siebie rozpoznajesz, a co wydaje się nietrafne. Potem przeczytaj sekcję „Jak najlepiej się z tobą komunikować” i zastanów się, czy wiedzą o tym twoi współpracownicy. Najlepszy użytek z wyniku to rozmowa: porównajcie profile w zespole na stronie o dopasowaniu stylów i ustalcie, jak uwzględniać różnice.",
+            "Profil nie jest wyrokiem ani granicą twoich możliwości. Opisuje nawykowe zachowanie tu i teraz, a wraz z nową rolą, doświadczeniem i okolicznościami może się przesunąć. Warto zachować link do raportu i powtórzyć test po roku: zmiany pokażą, jak wpłynęła na ciebie praca."
+          ]
+        },
+        {
+          "h": "Typowe błędy przy czytaniu wyniku",
+          "ul": [
+            "Uznawanie jednego stylu za „najlepszy”. Każdy styl ma mocne strony i swoją cenę: siła przebicia D przeradza się w niecierpliwość, a skrupulatność C – w przeciąganie terminów.",
+            "Mylenie kolejności liter. DI i ID, SC i CS to różne profile z innym stylem wiodącym.",
+            "Czytanie procentów jak udziałów. 70% dla D nie znaczy, że ktoś jest „w 70% dominujący”, tylko że styl D był wybierany wyraźnie częściej niż odrzucany.",
+            "Wyciąganie wniosków o kompetencjach. DISC opisuje styl zachowania, a nie zdolności, inteligencję czy przydatność na stanowisku.",
+            "Ocenianie człowieka na podstawie cudzego wyniku. Raport to samoocena, a sama osoba najlepiej wie, gdzie opis jest trafny, a gdzie nie."
+          ]
+        }
+      ],
+      "examples": [
+        {
+          "key": "DI",
+          "text": "W profilu wynikowym style D oraz I są wysoko, a S i C – nisko. Styl wiodący to dominacja (D), wpływ (I) jest wyraźnie zaznaczony i uznany za styl uzupełniający: profil DI, „Pionier”. Taka osoba szybko podejmuje decyzje i porywa innych za sobą, ale często brakuje jej cierpliwości do szczegółów i ostrożności."
+        },
+        {
+          "key": "SC",
+          "text": "Lustrzane odbicie: S i C powyżej środka skali, D oraz I poniżej. Styl wiodący to stałość (S), uzupełniający – sumienność (C): profil SC, „Specjalista”. To metodyczność, niezawodność i przestrzeganie zasad, za to gwałtowne zmiany i presję taka osoba znosi z trudem."
+        },
+        {
+          "key": "flat",
+          "text": "Wszystkie cztery wartości są bliskie środka skali. Styl wiodący jest formalnie wyznaczony na podstawie najwyższej liczby, ale raport zaznacza, że profil jest zrównoważony. Najprawdopodobniej taka osoba elastycznie zmienia styl w zależności od sytuacji; jeśli odpowiedzi były niepewne, warto zrobić test jeszcze raz."
+        }
+      ]
+    },
+    "colors": {
+      "title": "Test DISC – kolory osobowości: czerwony, żółty, zielony, niebieski",
+      "description": "Czerwony (D), żółty (I), zielony (S), niebieski (C): co oznaczają kolory DISC, jak poznać swój i czym testy kolorów różnią się od DISC. Darmowy test DISC online.",
+      "h1": "Kolory DISC: czerwony, żółty, zielony, niebieski",
+      "lead": "Cztery style DISC często oznacza się kolorami: czerwony to dominacja, żółty – wpływ, zielony – stałość, niebieski – sumienność. Kolory niczego do modelu nie dodają, ale pomagają szybko zapamiętać style i rozmawiać o nich w zespole. Wyjaśniamy, co kryje się za każdym kolorem i jak poznać swój.",
+      "colors": {
+        "D": {
+          "name": "Czerwony",
+          "tagline": "Dominacja (D): wyniki i kontrola",
+          "text": "Czerwony to kolor szybkości i siły przebicia. „Czerwoni” wyznaczają cel i zmierzają do niego najkrótszą drogą, szybko podejmują decyzje, spierają się, biorą na siebie odpowiedzialność i nie boją się konfliktu. W zespole pchają sprawy do przodu, ale potrafią zbyt mocno naciskać i tracić cierpliwość do osób, które pracują ostrożniej."
+        },
+        "I": {
+          "name": "Żółty",
+          "tagline": "Wpływ (I): ludzie i entuzjazm",
+          "text": "Żółty to kolor energii i towarzyskości. „Żółci” łatwo nawiązują znajomości, inspirują, sypią pomysłami i zarażają optymizmem. Ważne są dla nich uznanie i żywy kontakt z ludźmi; ze szczegółami, terminami i rutyną radzą sobie gorzej, a obietnice czasem wyprzedzają możliwości."
+        },
+        "S": {
+          "name": "Zielony",
+          "tagline": "Stałość (S): wsparcie i stabilność",
+          "text": "Zielony to kolor spokoju i niezawodności. „Zieloni” umieją słuchać, wspierają innych, doprowadzają sprawy do końca i dbają o relacje w zespole. Potrzebują przewidywalności i czasu na oswojenie się ze zmianą; otwarty konflikt i presję znoszą źle."
+        },
+        "C": {
+          "name": "Niebieski",
+          "tagline": "Sumienność (C): dokładność i jakość",
+          "text": "Niebieski to kolor analizy i porządku. „Niebiescy” opierają się na faktach, sprawdzają szczegóły, planują i trzymają się standardów. Stoją na straży jakości, ale potrafią ugrzęznąć w analizach, przeciągać terminy w pogoni za ideałem i sprawiać wrażenie chłodnych."
+        }
+      },
+      "sections": [
+        {
+          "h": "Skąd się wzięły kolory",
+          "p": [
+            "William Marston, twórca modelu czteroczynnikowego, kolorów nie używał: jego cztery wymiary nazywały się Dominance, Inducement, Submission i Compliance. Kolory pojawiły się później, gdy model zaczęto objaśniać na szkoleniach: cztery litery zapamiętuje się trudniej niż cztery kolory, a kolorowy schemat dobrze sprawdza się na plakatach, kartach i w dyskusji grupowej.",
+            "Jednego standardu nie ma, ale najbardziej rozpowszechniony schemat pokrywa się z tym, który stosujemy w tym serwisie: czerwony D, żółty I, zielony S, niebieski C. Logika jest prosta: „ciepłe” kolory przypadają stylom szybkim i przebojowym, „zimne” – spokojniejszym i bardziej wyważonym. W niektórych systemach żółty i zielony zamieniają się miejscami, dlatego przy porównywaniu wyników z różnych źródeł patrz na litery, a nie na kolory."
+          ]
+        },
+        {
+          "h": "Dwie osie zamiast czterech kolorów",
+          "p": [
+            "Kolory łatwiej zrozumieć dzięki dwóm osiom. Pierwsza to tempo: czerwony i żółty działają szybko i zdecydowanie, zielony i niebieski – spokojnie i ostrożnie. Druga to orientacja: czerwony i niebieski skupiają się na zadaniach i wynikach, żółty i zielony – na ludziach i relacjach. Każdy kolor to miejsce na przecięciu dwóch osi, a nie osobny „gatunek” ludzi.",
+            "Dlatego sąsiednie kolory są do siebie podobne, a przeciwległe różnią się najbardziej: czerwony i zielony (D–S), żółty i niebieski (I–C). To właśnie między nimi najczęściej dochodzi w zespole do nieporozumień i to właśnie one najlepiej się uzupełniają, jeśli uzgodnią zasady współpracy."
+          ]
+        },
+        {
+          "h": "Jak poznać swój kolor",
+          "p": [
+            "Czyste kolory prawie się nie zdarzają: u większości osób wyraźnie zaznaczają się dwa style, wiodący i uzupełniający, a wynik testu brzmi „czerwony z żółtym” (profil DI) albo „zielony z niebieskim” (SC). Test w tym serwisie pokazuje nasilenie wszystkich czterech stylów w procentach oraz wykres, a nie tylko przypisuje kolor.",
+            "Swój kolor można wstępnie określić i bez testu. Szybko decydujesz i walczysz o wynik – raczej czerwony. Łatwo nawiązujesz znajomości i dodajesz ludziom energii – żółty. Masz cierpliwość, można na tobie polegać i unikasz konfliktów – zielony. Sprawdzasz każdy szczegół i nie lubisz pośpiechu – niebieski. Ale samoocena „na oko” często rozmija się z testem: ludzie chętnie przypisują sobie ten styl, który jest ceniony w ich otoczeniu."
+          ]
+        },
+        {
+          "h": "Testy kolorów a DISC: na czym polega różnica",
+          "p": [
+            "Istnieją odrębne typologie „kolorowe”, z których najbardziej znana to Insights Discovery z tym samym zestawem: czerwony, żółty, zielony i niebieski. Wyrosły one z prac Junga i w szczegółach różnią się od DISC: inne pytania, inna skala, inna interpretacja odcieni. Podobne nazwy kolorów nie oznaczają takiego samego wyniku.",
+            "Są też popularne testy w rodzaju „jakim jesteś kolorem”, złożone z dziesięciu pytań. Sprawdzają się jako rozrywka, ale nie odróżniają stylu wiodącego od uzupełniającego, nie pokazują nasilenia stylów i nie mówią, co zrobić z wynikiem. Test DISC z 24 pytaniami daje to wszystko i pozostaje darmowy."
+          ]
+        },
+        {
+          "h": "Kolory w zespole",
+          "p": [
+            "Kolorowa mapa zespołu to szybki sposób, by dostrzec dysproporcje. Zespół złożony z samych „czerwonych” szybko podejmuje decyzje i równie szybko się kłóci; zespół „zielonych” jest zgrany, ale unika trudnych rozmów i odkłada zmiany. Mieszany zespół pracuje lepiej, jeśli każdy rozumie, czego się spodziewać po innym kolorze: jak zlecać zadania, jak przekazywać informację zwrotną, jak się spierać.",
+            "Na stronie o dopasowaniu stylów omawiamy wszystkie pary: co je łączy, gdzie pojawiają się tarcia i co może zrobić każda ze stron. A dla menedżerów i HR jest osobny materiał o tym, jak przeprowadzić test w zespole i omówić wyniki."
+          ]
+        },
+        {
+          "h": "Ograniczenia",
+          "p": ["Kolor to etykieta, a etykiety upraszczają. „Ty przecież jesteś czerwony” brzmi jak usprawiedliwienie szorstkości, a „zielona, czego od niej wymagać” – jak rezygnacja z oczekiwań. DISC opisuje typowe zachowanie, a nie charakter, wartości czy zdolności, i każdy styl można rozwijać. Korzystaj z kolorów po to, by lepiej się rozumieć, a nie po to, by szufladkować ludzi."]
+        }
+      ]
+    },
+    "pdf": {
+      "title": "Test DISC PDF – darmowy arkusz do druku z kluczem i interpretacją",
+      "description": "Darmowy test DISC w PDF: 24 pytania, klucz, tabela do obliczania wyniku i opis 16 profili. Pobierz, wydrukuj, wypełnij na papierze. Wersja online liczy wynik sama.",
+      "h1": "Test DISC w PDF: pobierz i wydrukuj",
+      "lead": "Ta sama pełna wersja testu co online, ale w pliku do druku: 24 pytania po cztery stwierdzenia, klucz do stylów, tabela do obliczania wyniku i opis wszystkich 16 profili. Plik jest darmowy i nie wymaga rejestracji.",
+      "sections": [
+        {
+          "h": "Co zawiera plik",
+          "ul": ["Instrukcja wypełniania oraz pola na imię i datę", "24 pytania po cztery stwierdzenia z kolumnami „najbardziej do mnie pasuje” i „najmniej do mnie pasuje”, łącznie 96 stwierdzeń", "Klucz: do którego stylu należy każde stwierdzenie w każdym pytaniu", "Tabela do obliczania wyniku dla stylów D, I, S, C", "Zasada wyznaczania stylu wiodącego i uzupełniającego", "Krótki opis 16 profili DISC"],
+          "after": ["Plik ma format A4 i jest w języku tej strony. Można go drukować w czerni i bieli: w arkuszu nie używamy kolorów."]
+        },
+        {
+          "h": "Kiedy przydaje się wersja papierowa",
+          "p": [
+            "Test na papierze jest wygodny na szkoleniu lub sesji strategicznej, gdzie nie każdy uczestnik ma komputer, na zajęciach w grupie, a także tam, gdzie nie wolno korzystać z telefonu. Niektórym łatwiej skupić się nad kartką: zaznaczasz, przewracasz stronę i nie rozpraszają cię powiadomienia.",
+            "Jeśli jednak uczestnicy mają przy sobie telefony, wersja online jest prostsza: sama liczy wynik, rysuje wykres, wysyła raport e-mailem i daje link, którym można się podzielić. Dla zespołów jest też panel administratora, który zbiera wyniki wszystkich uczestników."
+          ]
+        },
+        {
+          "h": "Jak wypełniać i liczyć wynik",
+          "p": [
+            "W każdym pytaniu zaznacz jedno stwierdzenie, które pasuje do ciebie najbardziej, i jedno, które pasuje najmniej. Odpowiadaj, myśląc o swoim zwykłym zachowaniu w pracy, i nie zastanawiaj się długo. Następnie według klucza wpisz litery stylów obok zaznaczeń i policz dla każdego stylu liczbę zaznaczeń „najbardziej” i „najmniej”.",
+            "Różnica między nimi to wynik dla danego stylu, od −24 do +24. Styl z najwyższym wynikiem jest wiodący; jeśli drugi co do wielkości wynik jest dodatni i wynosi co najmniej 40% wyniku stylu wiodącego (minimum 3), jest to styl uzupełniający. Tak powstaje profil z jednej lub dwóch liter, na przykład D albo DI; jego opis znajdziesz w pliku, a szczegółową interpretację z przykładami – na osobnej stronie."
+          ]
+        },
+        {
+          "h": "Szczegółowy raport do wyniku z wersji papierowej",
+          "p": ["Wersja papierowa daje profil i krótki opis. Aby otrzymać pełny raport z wykresem, mocnymi stronami, obszarami rozwoju i wskazówkami dotyczącymi komunikacji, otwórz stronę swojego profilu z listy 16 profili albo zrób test online: zajmie to około dziesięciu minut."]
+        }
+      ]
+    },
+    "teams": {
+      "title": "Test DISC dla zespołu, menedżera i HR: jak go używać w pracy",
+      "description": "DISC w zespole: mapa stylów, podział ról, konflikty, onboarding, informacja zwrotna, sprzedaż. Jak przeprowadzić darmowy test w całym zespole i omówić wyniki.",
+      "h1": "DISC dla zespołu i HR",
+      "lead": "Test DISC najczęściej robi się nie w pojedynkę, lecz całym zespołem: żeby zrozumieć, dlaczego współpracownicy reagują tak różnie, uzgodnić zasady komunikacji i rozsądnie podzielić role. Tutaj zebraliśmy wskazówki, jak menedżer lub HR może przeprowadzić test, odczytać mapę zespołu i omówić wyniki bez przyklejania etykiet.",
+      "sections": [
+        {
+          "h": "Po co zespołom DISC",
+          "p": [
+            "Większość tarć w pracy nie dotyczy kompetencji, tylko stylu: jedna osoba chce zdecydować szybko, druga – najpierw sprawdzić; jedna mówi wprost, druga uważa bezpośredniość za nieuprzejmość. DISC daje wspólny język do rozmowy o takich różnicach: zamiast „on jest nie do zniesienia” pojawia się „ma wysokie D, potrzebuje krótkich odpowiedzi i wyników”. Różnice nie znikają, ale przestają być odbierane jako osobista niechęć.",
+            "Drugi efekt to jasność oczekiwań. Kiedy wiadomo, jak najlepiej komunikować się z każdą osobą, i jest to zapisane w jej raporcie, menedżer nie musi zgadywać: komu dać swobodę, komu – jasne kryteria, kogo uprzedzić o zmianach z wyprzedzeniem, a komu publicznie podziękować."
+          ]
+        },
+        {
+          "h": "Mapa zespołu: co pokazuje rozkład stylów",
+          "p": [
+            "Zbierz profile uczestników i przyjrzyj się proporcjom. Zespół z przewagą D szybko decyduje i podejmuje ryzyko, ale często się kłóci i nie słyszy głosu ostrożnych. Przewaga stylu I daje energię i pomysły, ale cierpią na tym terminy i szczegóły. Zespół złożony z S jest zgrany i niezawodny, ale unika trudnych rozmów i odkłada zmiany. Przewaga C zapewnia jakość, ale decyzje się przeciągają, a nowości spotykają się ze sceptycyzmem.",
+            "Puste pola są ważniejsze niż dysproporcje. Jeśli w zespole nie ma nikogo z wyraźnym C, nie ma komu sprawdzać i szacować ryzyka; jeśli brakuje stylu I, nie ma komu sprzedawać pomysłów na zewnątrz i dbać o atmosferę. To nie powód, by przy rekrutacji szukać „brakującego typu”, tylko powód, by świadomie wypełnić lukę: wyznaczyć osobę odpowiedzialną za sprawdzanie albo za komunikację i dać jej na to czas."
+          ]
+        },
+        {
+          "h": "Typowe sytuacje",
+          "ul": [
+            "Konflikt dwojga współpracowników. Najczęściej to para przeciwstawnych stylów: D–S albo I–C. Sprawdź ją na stronie o dopasowaniu stylów i zaproponuj obu stronom po jednej konkretnej zmianie w komunikacji.",
+            "Nowy pracownik. Test zrobiony podczas onboardingu podpowiada opiekunowi, jak wdrażać nową osobę: S potrzebuje jasnych zasad i czasu, D – samodzielnego zadania od pierwszego dnia.",
+            "Podział ról w projekcie. Start i negocjacje – tam, gdzie wyraźne są D oraz I; bieżące prowadzenie i jakość – tam, gdzie S i C. To wskazówka, a nie zakaz: ludzie radzą sobie także z „nie swoimi” zadaniami, tyle że kosztuje ich to więcej sił.",
+            "Informacja zwrotna. C potrzebuje faktów i czasu do namysłu, I – docenienia wkładu przed krytyką, S – spokojnej rozmowy w cztery oczy, D – krótkiej, rzeczowej informacji bez wstępów.",
+            "Sprzedaż i negocjacje. Rozpoznaj styl klienta po zachowaniu i mów jego językiem: wynik i terminy dla D, relacje i emocje dla I, gwarancje i niezawodność dla S, dane i porównania dla C."
+          ]
+        },
+        {
+          "h": "Jak przeprowadzić test w zespole w tym serwisie",
+          "ol": [
+            "Najpierw zrób test samodzielnie: dowiesz się, co zobaczą uczestnicy, i będziesz mieć przykładowy raport do pokazania.",
+            "Wyślij współpracownikom link do serwisu w odpowiedniej wersji językowej. Rejestracja nie jest potrzebna, test zajmuje około dziesięciu minut; każdy podaje imię i adres e-mail, a raport otrzymuje na ekranie i e-mailem.",
+            "Poproś każdą osobę o przesłanie ci linku do wyniku albo kodu z raportu. Wynik widzi tylko ten, kto ma link; żadne dane nie trafiają automatycznie do menedżera.",
+            "Otwórz panel administratora (link w stopce strony) i wklej otrzymane kody. Panel utworzy tabelę z imionami, profilami i punktami; można ją skopiować do Excela. Tabela jest przechowywana wyłącznie w twojej przeglądarce.",
+            "Zaplanuj wspólne spotkanie: opowiedz o czterech stylach, pokaż mapę zespołu i pozwól każdemu powiedzieć, co w raporcie trafiło w sedno, a co nie."
+          ]
+        },
+        {
+          "h": "Jak omawiać wyniki",
+          "p": [
+            "Pierwsza zasada: wynik należy do uczestnika. Nikt nie ma obowiązku pokazywać swojego raportu, a rozmowa zaczyna się od tego, co dana osoba sama o sobie mówi. Druga: nie ma stylów dobrych i złych. Za każdym razem, gdy pada „D jest lepsze dla menedżera”, przypominaj o cenie każdego stylu i o tym, że zespół potrzebuje wszystkich czterech.",
+            "Praktyczna formuła to po jednej prośbie od każdej osoby: „Pomaga mi, kiedy…” i „Przeszkadza mi, kiedy…”. Takie zdania, wypowiedziane na głos i zapisane, dają zespołowi więcej niż jakakolwiek typologia. Po dwóch, trzech miesiącach wróć do nich i sprawdź, co się zmieniło."
+          ]
+        },
+        {
+          "h": "Rekrutacja: gdzie leży granica",
+          "p": [
+            "DISC sprawdza się na rozmowie kwalifikacyjnej jako punkt wyjścia do rozmowy o stylu pracy i jako podpowiedź, jakie pytania zadać: na przykład jak kandydat z wysokim C radzi sobie z niepewnością. Nie wolno jednak podejmować decyzji o zatrudnieniu na podstawie profilu: metoda opisuje preferencje w zachowaniu, a nie kompetencje, motywację, doświadczenie czy dopasowanie do stanowiska, i każdy styl z powodzeniem sprawdza się w niemal każdej roli.",
+            "Osobno o etyce: prosić kandydata o zrobienie testu warto tylko wtedy, gdy wyjaśnisz, po co to jest potrzebne i kto zobaczy wynik. Test nie jest narzędziem diagnostycznym, a używanie go do odsiewania kandydatów oznacza utratę dobrych ludzi i ryzyko dla reputacji."
+          ]
+        },
+        {
+          "h": "Błędy, których warto unikać",
+          "ul": [
+            "Przyklejanie etykiet: „przecież jesteś S, tobie jest wszystko jedno” zamienia narzędzie zrozumienia w usprawiedliwienie lekceważenia.",
+            "Wymaganie takiego samego profilu od wszystkich w dziale. Jednorodne zespoły są ślepe na to, czego nie potrafią.",
+            "Przeprowadzanie testu bez omówienia. Raport, którego nikt nie omówił, idzie w zapomnienie po tygodniu.",
+            "Publikowanie wyników bez zgody. Profil to informacja osobista, nawet jeśli nie zawiera niczego przykrego.",
+            "Uznawanie profilu za niezmienny. Po roku w nowej roli wynik może się przesunąć i to jest normalne."
+          ]
+        }
+      ]
+    },
+    "mbti": {
+      "title": "DISC czy MBTI: czym się różnią, który test wybrać i co z Big Five",
+      "description": "Porównanie DISC, MBTI i Wielkiej Piątki: co mierzy każdy model, ile ma typów, jak jest rzetelny, gdzie się go stosuje i który test wybrać. Darmowy test DISC online.",
+      "h1": "DISC a MBTI: na czym polega różnica",
+      "lead": "DISC i MBTI to dwie najbardziej znane typologie w pracy z zespołami i ciągle się je myli. Obie posługują się czterema literami, obie mówią o „typach”, ale mierzą co innego i odpowiadają na inne pytania. Poniżej krótkie porównanie, także z Wielką Piątką, i praktyczna rada, co wybrać.",
+      "sections": [
+        {
+          "h": "Co mierzy każdy model",
+          "p": [
+            "DISC opisuje obserwowalne zachowanie: jak człowiek działa, komunikuje się i podejmuje decyzje, na czterech skalach – dominacja, wpływ, stałość, sumienność. Wynik to styl wiodący i uzupełniający, łącznie 16 profili. Model jest celowo prosty i skupiony na pracy: czego potrzebujesz od współpracowników i czego oni potrzebują od ciebie.",
+            "MBTI (Myers–Briggs Type Indicator) przypisuje ludzi do 16 typów na podstawie czterech dychotomii: ekstrawersja – introwersja, poznanie zmysłowe – intuicja, myślenie – odczuwanie, osądzanie – postrzeganie. To model preferencji w postrzeganiu świata i podejmowaniu decyzji, wyrosły z typologii Junga. Typ taki jak INTJ czy ESFP mówi o tym, jak człowiek zbiera informacje i co jest dla niego ważne, a nie o tym, jak zachowuje się na zebraniu.",
+            "Wielka Piątka (Big Five) to nie typologia, lecz pięć ciągłych cech: otwartość na doświadczenie, sumienność, ekstrawersja, ugodowość, neurotyczność. To naukowy standard psychologii osobowości: ma najlepszą rzetelność i moc predykcyjną, ale wynik w postaci pięciu skal trudniej przełożyć na praktyczne wskazówki."
+          ]
+        },
+        {
+          "h": "Porównanie w jednej tabeli",
+          "p": ["Tabela upraszcza, ale pomaga dostrzec najważniejsze: DISC dotyczy zachowania, MBTI – preferencji, Big Five – cech."]
+        },
+        {
+          "h": "Czy MBTI da się przełożyć na DISC?",
+          "p": [
+            "Dokładnej odpowiedniości nie ma, bo modele mierzą co innego, ale zależności statystyczne istnieją. Ekstrawersja w MBTI częściej łączy się z wysokimi D oraz I, introwersja – z S i C. Preferencja „myślenie” (T) ciąży ku D i C, „odczuwanie” (F) – ku I oraz S. Na przykład ENTJ nierzadko otrzymuje profil D lub DC, ESFP – I lub IS, ISFJ – S lub SC, INTP – C lub CD.",
+            "Warto traktować to jako orientacyjną wskazówkę: osoba o tym samym typie MBTI może mieć różne profile DISC w zależności od roli, a profil DISC prędzej przesunie się po zmianie pracy niż typ MBTI. Jeśli chcesz zrozumieć, jak współpracownik zachowa się w konkretnej sytuacji, bardziej przyda się jego raport DISC niż cztery litery MBTI."
+          ]
+        },
+        {
+          "h": "Co wiadomo o rzetelności",
+          "p": [
+            "MBTI jest krytykowany za to, że jego dychotomie są sztuczne: większość ludzi plasuje się w pobliżu środka skali i niewielka zmiana odpowiedzi przenosi ich do innego typu. DISC częściowo unika tego problemu, bo pokazuje nasilenie stylów, zamiast przypisywać człowieka do jednego z dwóch biegunów, ale i on pozostaje samooceną o umiarkowanej rzetelności. Wielka Piątka jest rzetelniejsza od obu, bo nie próbuje dzielić ludzi na typy.",
+            "Wniosek praktyczny: ani DISC, ani MBTI nie nadają się na jedyną podstawę decyzji o zatrudnieniu czy awansie. Oba za to sprawdzają się jako język do rozmowy o różnicach i tutaj DISC wygrywa prostotą: cztery style da się zapamiętać podczas jednego spotkania, szesnastu typów MBTI – nie."
+          ]
+        },
+        {
+          "h": "Który test wybrać",
+          "ul": [
+            "Chcesz usprawnić komunikację w zespole, podzielić role, przygotować się do negocjacji – DISC: dotyczy zachowania, które widać z zewnątrz, i daje gotowe wskazówki „jak się ze mną komunikować”.",
+            "Chcesz lepiej zrozumieć siebie, dowiedzieć się, skąd biorą się twoje preferencje i w którą stronę się rozwijać – MBTI lub Big Five: głębiej opisują wewnętrzne nastawienia.",
+            "Potrzebujesz danych do badania albo prognozy, na przykład solidności pracownika – Big Five: ma najmocniejsze podstawy naukowe.",
+            "Masz wątpliwości – zrób test DISC: to dziesięć minut, za darmo i bez rejestracji, a wynik od razu przydaje się w pracy."
+          ]
+        },
+        {
+          "h": "Czy można zrobić oba testy?",
+          "p": ["Tak, i warto: modele nie są ze sobą sprzeczne, tylko się uzupełniają. MBTI wyjaśni, dlaczego wolisz pracować z ideami niż z ludźmi, a DISC pokaże, jak to wygląda w oczach współpracowników i co z tym zrobić. Zachowaj oba wyniki i porównaj je: rozbieżności często okazują się najciekawszymi odkryciami."]
+        }
+      ],
+      "table": {
+        "head": ["Kryterium", "DISC", "MBTI", "Big Five"],
+        "rows": [
+          ["Co opisuje", "Styl zachowania w pracy", "Preferencje w postrzeganiu świata i podejmowaniu decyzji", "Cechy osobowości"],
+          ["Wynik", "Styl wiodący i uzupełniający, 16 profili", "Jeden z 16 typów, na przykład INTJ", "Pięć skal w procentach"],
+          ["Format testu", "24 pytania „najbardziej – najmniej”, około 10 minut", "60–90 pytań, 15–25 minut", "Od 10 do 120 pytań z oceną na skali"],
+          ["Główne zastosowanie", "Zespoły, zarządzanie, sprzedaż, informacja zwrotna", "Samopoznanie, doradztwo zawodowe", "Badania, selekcja, prognozowanie zachowań"],
+          ["Podstawy naukowe", "Model Marstona (1928); umiarkowana rzetelność, duża praktyczność", "Jung (1921), Myers i Briggs (lata 40.); krytykowany za niską powtarzalność typu", "Podejście leksykalne i analiza czynnikowa; najlepiej zweryfikowany model"],
+          ["Stabilność wyniku", "Może się zmieniać wraz z rolą i otoczeniem", "Nawet połowa osób przy powtórnym teście otrzymuje inny typ", "Wysoka na przestrzeni lat"]
+        ]
+      }
+    },
+    "compatibility": {
+      "title": "Dopasowanie stylów DISC: jak D, I, S i C współpracują ze sobą",
+      "description": "Kompatybilność typów DISC w każdej parze: D–I, D–S, D–C, I–S, I–C, S–C i pary tych samych stylów. Co je łączy, gdzie pojawiają się tarcia i co robić. Darmowy test.",
+      "h1": "Dopasowanie stylów DISC",
+      "lead": "W DISC nie ma par, które do siebie nie pasują: dowolne dwa style mogą ze sobą współpracować, o ile rozumieją, czym się różnią. Każda para ma jednak swoje mocne strony i swoje typowe konflikty. Wybierz dwa style w tabeli par, aby sprawdzić, co je łączy, gdzie pojawiają się tarcia i co może zrobić każda ze stron.",
+      "sections": [
+        {
+          "h": "Co oznacza dopasowanie w DISC",
+          "p": [
+            "Dopasowanie nie oznacza tu odpowiedzi na pytanie „czy do siebie pasujecie”, lecz to, jak łatwo dwa style rozumieją się bez dodatkowego wysiłku. Sąsiednie style (D–I, I–S, S–C, C–D) mają jedną wspólną oś – tempo albo orientację – i zwykle szybko znajdują wspólny język. Style przeciwstawne (D–S, I–C) różnią się na obu osiach: jest im najtrudniej, ale to właśnie one najmocniej się uzupełniają.",
+            "Takie same style rozumieją się w pół słowa, za to wzmacniają wspólne słabości: dwie osoby o stylu D walczą o ster, dwie o stylu S latami nie mogą się zdecydować na zmiany. Dlatego „łatwa” para nie zawsze jest „mocna”, a trudna para, która umówi się co do zasad, daje lepszy wynik."
+          ]
+        },
+        {
+          "h": "Jak korzystać z opisów par",
+          "p": [
+            "Ustal style wiodące obu osób: swój – na podstawie testu, drugiej osoby – na podstawie testu albo obserwacji. Otwórz stronę pary i przeczytaj oba zestawy wskazówek: dla siebie i dla rozmówcy. Najwięcej daje wspólne omówienie strony i wybranie po jednej zasadzie, której każda ze stron jest gotowa przestrzegać. Jeśli u kogoś wyraźnie zaznacza się styl uzupełniający, sprawdź także parę dla tego stylu: wyjaśni ona tę część zachowań, która nie mieści się w stylu wiodącym."
+          ]
+        }
+      ],
+      "pairs": {
+        "DD": {
+          "summary": "Dwie osoby przyzwyczajone do decydowania i przewodzenia. Razem szybko popychają sprawy do przodu, ale walczą o kontrolę i rzadko ustępują.",
+          "text": "Para D–D to szybkość i jasność: obie strony mówią wprost, nie obrażają się o bezpośredniość drugiej strony, szybko podejmują decyzje i nie znoszą przeciągających się dyskusji. Problem zaczyna się wtedy, gdy decyzja może być tylko jedna. Każda ze stron jest pewna swego, obie przywykły do wygrywania, a spór merytoryczny łatwo przeradza się w walkę o to, kto tu rządzi. Żeby ta para działała, trzeba zawczasu podzielić obszary odpowiedzialności.",
+          "common": ["Nastawienie na wynik i terminy", "Mówienie wprost, bez aluzji i obrażania się", "Gotowość do brania odpowiedzialności i podejmowania ryzyka"],
+          "friction": ["Walka o kontrolę i ostatnie słowo", "Niecierpliwość: obie strony przerywają i ponaglają", "Nikt nie sprawdza szczegółów ani nie słucha ostrożniejszych"],
+          "tips": {
+            "D": ["Ustalcie, kto za co odpowiada, i nie wchodźcie na cudzy teren", "Spierajcie się o kryteria wyniku, a nie o to, kto ma rację", "Zapraszajcie do dyskusji osoby o stylu S lub C: widzą to, co wam umyka"]
+          }
+        },
+        "DI": {
+          "summary": "Najbardziej energiczna para: D wyznacza cel i tempo, a I porywa ludzi. Razem uruchamiają projekty, ale mają skłonność do niedoceniania szczegółów i ostrożności.",
+          "text": "Style D oraz I łączy szybkie tempo: oba style decydują w biegu, lubią wyzwania i nie znoszą rutyny. Różni je orientacja: D myśli o wyniku, I – o ludziach i wrażeniu. To udane uzupełnienie: D daje kierunek i twardość, I – kontakty, dobry nastrój i umiejętność sprzedania pomysłu. Tarcia pojawiają się, gdy D odbiera rozmowność I jako stratę czasu, a I widzi w D chłód i szorstkość. Obie strony powinny pamiętać, że przy całej tej energii ktoś musi pilnować szczegółów.",
+          "common": ["Szybkie tempo i gotowość do działania bez długich przygotowań", "Optymizm i apetyt na nowe zadania", "Niechęć do rutyny i mikrozarządzania"],
+          "friction": ["D żąda konkretów, a I daje się ponieść rozmowie", "Szorstkość rani I, emocje drażnią D", "Oba style zbyt optymistycznie podchodzą do terminów i gubią szczegóły"],
+          "tips": {
+            "D": ["Zaczynaj rozmowę od dwóch minut o człowieku, dopiero potem przechodź do sprawy", "Głośno doceniaj wkład I: dla tego stylu to paliwo", "Nie ucinaj pomysłów w locie: daj dokończyć, a potem wybieraj"],
+            "I": ["Z D rozmawiaj krótko: wynik, termin i to, czego potrzebujesz od D", "Spisuj ustalenia, żeby entuzjazm nie rozminął się z faktami", "Nie bierz bezpośredniości D do siebie: to styl, a nie ocena"]
+          }
+        },
+        "DS": {
+          "summary": "Przeciwieństwa na obu osiach: D to szybkie tempo i nastawienie na wynik, S – spokojne tempo i dbałość o relacje. Najtrudniejsza para i jedna z najcenniejszych.",
+          "text": "Style D i S różnią się we wszystkim: tempem, stosunkiem do konfliktu, tym, co uznają za ważne. D widzi w S powolność i niezdecydowanie, S widzi w D presję i brak szacunku. Zarazem ta para idealnie się uzupełnia: D przebija się i uruchamia sprawy, S podtrzymuje je, doprowadza do końca i spaja zespół. Działa to tylko przy jasno ustalonych zasadach: D zmniejsza nacisk i uprzedza o zmianach, S uczy się mówić „nie” i wyrażać sprzeciw słowami, a nie milczeniem.",
+          "common": ["Praktyczne podejście: obu stronom zależy, żeby praca została wykonana", "Wierność podjętym zobowiązaniom", "Niechęć do pustej gadaniny i pozerstwa"],
+          "friction": ["Tempo: D ponagla, S potrzebuje czasu", "Konflikt: D wchodzi w niego bez oporów, S unika go za wszelką cenę", "S zgadza się w milczeniu, a potem nie robi; D odbiera to jako sabotaż"],
+          "tips": {
+            "D": ["Uprzedzaj o zmianach z wyprzedzeniem i wyjaśniaj, czemu służą", "Pytaj o zdanie wprost i czekaj na odpowiedź, nie wypełniając ciszy", "Dziękuj za niezawodność: osoba o stylu S sama nie upomni się o uznanie"],
+            "S": ["O sprzeciwie mów od razu, krótko i rzeczowo: D to szanuje", "Proś o jasne terminy i priorytety, zamiast się domyślać", "Nie odbieraj impetu D jako wrogości: to po prostu normalna prędkość tego stylu"]
+          }
+        },
+        "DC": {
+          "summary": "Oba style są nastawione na zadanie i wynik, ale D chce szybko, a C – jak należy. Mocna para do złożonych projektów, o ile uzgodni tempo.",
+          "text": "Style D i C łączy orientacja na zadania: dla obu stylów praca jest ważniejsza niż atmosfera, oba cenią kompetencje i nie tracą czasu na rozmowy towarzyskie. Różni je tempo: D podejmuje decyzję, mając połowę danych, C chce zebrać wszystkie i je sprawdzić. D widzi w C hamulec i asekuranctwo, C w D – nieodpowiedzialność. W złożonym projekcie to najlepszy duet: D zapewnia ruch, C – jakość i ochronę przed błędami. Klucz to ustalić zawczasu, gdzie potrzebna jest szybkość, a gdzie dokładność.",
+          "common": ["Koncentracja na zadaniu i wyniku, a nie na relacjach", "Szacunek dla kompetencji i logiki", "Bezpośredniość: oba style wolą fakty od emocji"],
+          "friction": ["D decyduje szybko, C domaga się danych i czasu", "C odbiera impet jako presję, D ostrożność – jako sabotaż", "Oba style są krytyczne i skąpią uznania"],
+          "tips": {
+            "D": ["Dawaj C czas na analizę i z góry mów, na kiedy potrzebujesz odpowiedzi", "Popieraj decyzje faktami, a nie argumentem „bo ja tak mówię”", "Rozdzielaj zadania: tam, gdzie cena błędu jest wysoka, ostatnie słowo należy do C"],
+            "C": ["Proponuj D wariant „wystarczająco dobrze teraz” zamiast „idealnie później”", "O ryzykach informuj krótko, z oceną skutków, bez długich uzasadnień", "Nie czekaj na pochwałę od D: brak krytyki jest u tego stylu formą aprobaty"]
+          }
+        },
+        "II": {
+          "summary": "Dwie osoby, które lubią ludzi, pomysły i uwagę otoczenia. Razem jest im wesoło i lekko, ale ktoś musi pilnować terminów i szczegółów.",
+          "text": "Para I–I to energia, optymizm i strumień pomysłów. Szybko znajdują wspólny język, wspierają się nawzajem i tworzą wokół siebie atmosferę, w której chce się pracować. Problemy przychodzą z zewnątrz: obietnice złożone, terminy zapomniane, szczegółów nikt nie sprawdził. Kolejna pułapka to rywalizacja o uwagę: każda ze stron chce być w centrum i rozmowa zamienia się w dwa monologi. Takiej parze potrzebna jest zewnętrzna kotwica: pisemne ustalenia, kalendarz i ktoś z zespołu z wyraźnie zaznaczonym stylem C lub S.",
+          "common": ["Towarzyskość i łatwość nawiązywania kontaktów", "Optymizm i wiara w pomysły", "Niechęć do formalności i rutyny"],
+          "friction": ["Obie strony mówią, nikt nie słucha", "Obietnice bez planu: terminy i szczegóły kuleją", "Konflikty przemilcza się w imię dobrego nastroju"],
+          "tips": {
+            "I": ["Kończcie każde spotkanie listą: kto, co, do kiedy", "Podzielcie role: kto prowadzi rozmowę, a kto notuje", "Poproście osobę o stylu C lub S o sprawdzenie planu, zanim go ogłosicie"]
+          }
+        },
+        "IS": {
+          "summary": "Ciepła i życzliwa para: styl I inspiruje, styl S wspiera. Dobra dla atmosfery i klientów, gorsza, gdy trzeba podjąć trudne decyzje.",
+          "text": "Style I oraz S łączy orientacja na ludzi: dla obu stylów ważne są relacje, atmosfera i uznanie. Różni je tempo: styl I to szybkość, spontaniczność i zamiłowanie do nowości, styl S – spokojne tempo i przywiązanie do ustalonego porządku. Razem tworzą najbardziej życzliwe środowisko w zespole, ale z trudem podejmują twarde decyzje, unikają nieprzyjemnych rozmów i potrafią przeciągać problem, byle nikogo nie urazić. Przy tym I potrafi namówić S do zmian, a S – powstrzymać I przed pochopnymi obietnicami.",
+          "common": ["Uważność na ludzi i relacje", "Dążenie do zgody i dobrej atmosfery", "Gotowość do pomocy i wsparcia"],
+          "friction": ["Zmiany planów w biegu, typowe dla I, wytrącają S z równowagi", "Oba style unikają konfliktu, więc problemy narastają", "Osoba o stylu I dużo mówi, a S ustępuje i przemilcza własne potrzeby"],
+          "tips": {
+            "I": ["Uprzedzaj S o zmianach z wyprzedzeniem i nie zmieniaj decyzji bez powodu", "Pytaj S o zdanie wprost: osoba o tym stylu sama go nie narzuci", "Doprowadzaj sprawy do końca: S ceni niezawodność wyżej niż pomysły"],
+            "S": ["Mów o swoich granicach na głos: osoba o stylu I sama się nie domyśli", "Wspieraj pomysły I, ale proś o plan i terminy", "Nie bój się szczerej informacji zwrotnej: osoba o stylu I zniesie ją lepiej, niż ci się wydaje"]
+          }
+        },
+        "IC": {
+          "summary": "Przeciwieństwa: styl I żyje ludźmi i wrażeniami, styl C – faktami i dokładnością. Trudna para, która przy wzajemnym zaufaniu staje się mocna.",
+          "text": "Style I oraz C różnią się na obu osiach: tempem i orientacją. Osoba o stylu I dużo mówi, decyduje szybko i kieruje się wyczuciem; osoba o stylu C mówi mało, decyduje po sprawdzeniu i opiera się na danych. W oczach C styl I jest powierzchowny, w oczach I styl C – przesadnie drobiazgowy i chłodny. Za to razem w pełni się uzupełniają: styl I sprzedaje, inspiruje i dogaduje się z ludźmi, styl C dba, by to, co obiecane, naprawdę działało. Warunkiem jest wzajemny szacunek: styl I docenia wartość sprawdzania, styl C – wartość kontaktu.",
+          "common": ["Zainteresowanie pomysłami, choć z różnych stron", "Chęć zrobienia rzeczy dobrze: I – efektownie, C – poprawnie", "Brak walki o władzę: żadnej ze stron nie zależy na kontroli dla samej kontroli"],
+          "friction": ["Styl I obiecuje, styl C sprawdza i znajduje rozbieżności", "C potrzebuje ciszy i czasu, I – rozmowy i szybkości", "Emocjonalność I drażni C, powściągliwość C rani I"],
+          "tips": {
+            "I": ["Przygotuj fakty i liczby przed rozmową z C", "Daj czas na odpowiedź: milczenie C to namysł, a nie odmowa", "Nie traktuj krytyki szczegółów jako odrzucenia pomysłu"],
+            "C": ["Zacznij od docenienia pomysłu, potem przejdź do ryzyk", "Wyjaśniaj wnioski prostymi słowami, bez wyliczania wszystkich danych", "Czasem zgódź się na „wystarczająco dobrze”: nie każdy szczegół jest wart sporu"]
+          }
+        },
+        "SS": {
+          "summary": "Najspokojniejsza para: niezawodność, cierpliwość i wzajemne wsparcie. Zagrożeniem są zastój i niechęć do poruszania trudnych tematów.",
+          "text": "Dwie osoby o stylu S rozumieją się bez słów: obie cenią stabilność, dotrzymują obietnic, słuchają i nie naciskają. Taka para latami pracuje równo i bez konfliktów. Druga strona medalu to unikanie wszystkiego, co zakłóca spokój: zmian, sporów, nieprzyjemnych rozmów. Problemów się nie rozwiązuje, tylko się je znosi; decyzje są odkładane, bo nikt nie chce pierwszy przejąć inicjatywy. Parze S–S przydaje się impuls z zewnątrz: jasne terminy, przełożony o stylu D albo ktoś z zespołu o stylu I, kto ją rozrusza.",
+          "common": ["Niezawodność i konsekwencja", "Cierpliwość i umiejętność słuchania", "Lojalność wobec zespołu i przywiązanie do ustalonego porządku"],
+          "friction": ["Nikt nie zaczyna zmian i nie wychodzi z inicjatywą", "Sprzeciw jest przemilczany, urazy narastają", "Decyzje są odkładane w oczekiwaniu, że zdecyduje ktoś inny"],
+          "tips": {
+            "S": ["Wyznaczajcie sobie nawzajem terminy: bez nich sprawa nie ruszy z miejsca", "Umówcie się, że nazywacie problemy na głos, nawet drobne", "Na zmianę bierzcie na siebie rolę „osoby, która decyduje”"]
+          }
+        },
+        "SC": {
+          "summary": "Spokojna i solidna para: S dba o relacje, C – o jakość. Świetna do bieżącej obsługi i procesów, gorzej radzi sobie ze zmianami.",
+          "text": "Style S i C łączy spokojne tempo: oba style nie lubią pośpiechu, cenią porządek i przewidywalność, starannie planują kolejne kroki. Różni je orientacja: S myśli o ludziach i zgodzie, C – o zasadach i faktach. Razem tworzą najstabilniejsze procesy w zespole, ale z trudem przyjmują to, co nowe, a zmiany przechodzą wspólnie i powoli. Typowy konflikt jest cichy: C krytykuje błędy i w oczach S wypada oschle, S łagodzi zasady ze względu na ludzi i w oczach C wypada zbyt pobłażliwie.",
+          "common": ["Ostrożność i przemyślane decyzje", "Szacunek dla porządku i ustaleń", "Niechęć do pośpiechu, chaosu i presji"],
+          "friction": ["C stawia zasady ponad relacjami, S – odwrotnie", "Oba style opierają się zmianom, a zespół stoi w miejscu", "S odbiera krytykę ze strony C jako osobisty chłód"],
+          "tips": {
+            "S": ["Traktuj uwagi C jako troskę o jakość, a nie ocenę twojej osoby", "Proś o wyjaśnienie logiki zasady, zamiast spierać się z samą zasadą", "Proponuj zmiany małymi krokami: tak jest łatwiej i tobie, i C"],
+            "C": ["Łagodź krytykę: najpierw to, co dobre, potem to, co trzeba poprawić", "Pamiętaj, że dla S atmosfera jest częścią wyniku", "Głośno doceniaj wkład S: osoba o tym stylu sama nie poprosi o uznanie"]
+          }
+        },
+        "CC": {
+          "summary": "Para ekspertów: dokładność, logika i wysokie standardy. Razem pracują bez zarzutu, ale długo, i mają skłonność do sporów o drobiazgi.",
+          "text": "Dwie osoby o stylu C mówią tym samym językiem: fakty, kryteria, ryzyka. Szanują nawzajem swoje kompetencje i wykonują pracę, do której nie sposób się przyczepić. Problemem są tempo i perfekcjonizm: każdy szczegół jest omawiany, każda decyzja czeka na całkowitą pewność, a spór o przecinek potrafi ciągnąć się tydzień. Kolejna pułapka to powściągliwość: żadna ze stron nie mówi o napięciu, a różnice zdań przechodzą w chłodne milczenie. Takiej parze potrzebny jest termin narzucony z zewnątrz i ustalenie, że „wystarczająco dobrze” też jest do przyjęcia.",
+          "common": ["Wysokie standardy jakości", "Opieranie się na danych i logice", "Dyscyplina i dotrzymywanie ustaleń"],
+          "friction": ["Perfekcjonizm się podwaja, terminy uciekają", "Spory o szczegóły bez rozstrzygnięcia sedna sprawy", "O napięciu się nie mówi, więc narasta"],
+          "tips": {
+            "C": ["Ustalcie zawczasu, jaki poziom jakości wystarczy, i na nim poprzestańcie", "Ograniczajcie czas na analizę: decyzja w terminie jest lepsza niż idealna bez terminu", "O różnicach zdań mówcie wprost: milczenie niczego nie rozwiązuje"]
+          }
+        }
+      }
+    },
+    "editorial": {
+      "sections": [
+        {
+          "h": "Kto prowadzi serwis",
+          "p": [
+            "Serwis prowadzi redakcja disc-test.org: piszemy teksty, utrzymujemy kod i odpowiadamy na wiadomości. Projekt jest niezależny i niekomercyjny: test jest darmowy, bez rejestracji, reklam i płatnych „raportów rozszerzonych”, a kod źródłowy jest otwarty. Nie sprzedajemy szkoleń ani certyfikatów i nie jesteśmy powiązani z Wiley (DiSC®), TTI Success Insights ani innymi właścicielami znaków towarowych.",
+            "Za to, co jest opublikowane w serwisie, odpowiadamy my. Jeśli widzisz błąd w tekście, nieścisłość w tłumaczeniu albo rozbieżność między opisem metody a tym, jak liczony jest wynik, napisz do nas: poprawimy to i zaktualizujemy datę zmiany."
+          ]
+        },
+        {
+          "h": "Jak piszemy i sprawdzamy teksty",
+          "p": [
+            "Twierdzenia o metodzie opierają się na źródłach pierwotnych i recenzowanych badaniach, w tym krytycznych; lista prac znajduje się w sekcji „{sources}”. Nie streszczamy komercyjnych raportów: opisy czterech stylów i szesnastu profili napisała redakcja na podstawie ogólnie przyjętych charakterystyk modelu.",
+            "Językiem źródłowym serwisu jest rosyjski. Tłumaczenia na trzynaście języków powstały przy użyciu modeli językowych i są sprawdzane automatycznie: skrypt pilnuje, żeby we wszystkich językach zgadzały się struktura tekstów, terminy i liczby. We wrześniu 2026 roku każde tłumaczenie zostało dodatkowo zredagowane przez model językowy występujący w roli redaktora: poprawiono nieprecyzyjne stwierdzenia testu, kalki językowe i niespójności terminologiczne. Korekta przez rodzimych użytkowników języka jest zaplanowana, ale jeszcze nie została przeprowadzona, dlatego w tłumaczeniach mogą się zdarzać niezręczności.",
+            "Na każdej stronie podajemy datę ostatniej zmiany. Poprawiamy teksty, gdy zmienia się sam test albo gdy dostajemy uwagi, i nie publikujemy niczego, czego nie możemy poprzeć źródłem albo własną weryfikacją."
+          ]
+        }
+      ]
+    }
+  },
+  "ui": {
+    "langLabel": "Język",
+    "footer": "24 pytania · około 10 minut · nie ma dobrych ani złych odpowiedzi",
+    "privacy": "Odpowiedzi pozostają w twojej przeglądarce; wynik jest wysyłany na podany przez ciebie adres e-mail i zapisywany w bazie wyników właściciela serwisu.",
+    "adminLink": "Panel administratora",
+
+    "intro.eyebrow": "Kwestionariusz stylów zachowania",
+    "intro.h1": "Darmowy test osobowości DISC: jak działasz, komunikujesz się i podejmujesz decyzje",
+    "intro.lead": "DISC opisuje cztery style zachowania. Każdy człowiek ma w sobie wszystkie cztery, ale w różnym nasileniu. Test pokaże twój styl wiodący, mocne strony, obszary rozwoju oraz to, jak najlepiej z tobą współpracować.",
+    "intro.stylesTitle": "Cztery style DISC",
+    "intro.howTitle": "Jak wypełniać test",
+    "intro.howText": "Test składa się z 24 pytań, w każdym są cztery stwierdzenia – łącznie 96. W każdym pytaniu zaznacz jedno stwierdzenie, które pasuje do ciebie <b>najbardziej</b>, i jedno, które pasuje do ciebie <b>najmniej</b>. Odpowiadaj tak, jak zwykle zachowujesz się w pracy, a nie tak, jak chcesz się zachowywać. Nie zastanawiaj się długo: pierwsza reakcja jest najtrafniejsza.",
+    "intro.nameLabel": "Imię",
+    "intro.emailLabel": "Adres e-mail, na który wysłać wynik",
+    "intro.emailHint": "Po zakończeniu testu na ten adres przyjdzie wiadomość z wynikiem. Imię, e-mail i wynik są zapisywane w bazie wyników właściciela serwisu.",
+    "intro.requiredNote": "Pola oznaczone gwiazdką (*) są wymagane.",
+    "intro.start": "Rozpocznij test",
+    "intro.resume": "Dokończ rozpoczęty test (wypełniono {n} z 24 pytań)",
+    "intro.showLast": "Otwórz mój poprzedni wynik z {date}",
+    "intro.nameRequired": "Podaj imię",
+    "intro.emailRequired": "Podaj poprawny adres e-mail",
+    "intro.pdfNote": "Wersja papierowa do druku: {link}.",
+
+    "test.step": "Pytanie {n} z 24",
+    "test.counter": "{n} / 24",
+    "test.mostHead": "Najbardziej<br>do mnie pasuje",
+    "test.leastHead": "Najmniej<br>do mnie pasuje",
+    "test.mostAria": "Najbardziej do mnie pasuje: {t}",
+    "test.leastAria": "Najmniej do mnie pasuje: {t}",
+    "test.prev": "Wstecz",
+    "test.next": "Dalej",
+    "test.finish": "Pokaż wynik",
+    "test.hint": "Zaznacz po jednym stwierdzeniu w każdej kolumnie i kliknij „{next}”. Dopóki nie przejdziesz dalej, wybór można zmienić.",
+    "test.missing": "Pytanie {n} nie zostało wypełnione",
+
+    "report.own": "Twój wynik",
+    "report.other": "Wynik uczestnika",
+    "report.backAdmin": "← Do listy wyników",
+    "report.flat": "Profil jest zrównoważony: żaden styl nie wybija się wyraźnie. Zwykle oznacza to elastyczność zachowania, ale czasem świadczy o niepewności przy udzielaniu odpowiedzi. Styl wiodący określono na podstawie najwyższej wartości.",
+    "report.graphTitle": "Profil DISC",
+    "report.graphAria": "Wykres profilu DISC",
+    "report.legendNet": "Profil wynikowy",
+    "report.legendMost": "Styl adaptowany",
+    "report.legendLeast": "Styl naturalny",
+    "report.statsTitle": "Nasilenie stylów",
+    "report.statMeta": "{most} najbardziej · {least} najmniej · {net}",
+    "report.howto": "<b>Jak czytać wykres.</b> Profil wynikowy to różnica między odpowiedziami „najbardziej” i „najmniej”. Styl adaptowany pokazuje, jak starasz się zachowywać w pracy. Styl naturalny – jak zachowujesz się, kiedy się nad tym nie zastanawiasz. Wartości powyżej środka skali (50%) uznaje się za wyraźnie zaznaczone.",
+    "report.traits": "Kluczowe cechy",
+    "report.secondary": "Styl uzupełniający: {k} · {name}.",
+    "report.secondaryAddon": "Do stylu wiodącego wnosi {addon}.",
+    "report.strengths": "Mocne strony",
+    "report.growth": "Obszary rozwoju",
+    "report.motivation": "Co cię motywuje",
+    "report.communication": "Jak najlepiej się z tobą komunikować",
+    "report.stress": "W stresie",
+    "report.environment": "Sprzyjające środowisko",
+    "report.moreLink": "Więcej o tym, jak czytać profil DISC →",
+
+    "share.title": "Zapisz wynik",
+    "share.text": "Wynik jest zapisany w twojej przeglądarce. Skopiuj link, aby otworzyć raport później lub na innym urządzeniu, albo prześlij go osobie, która poprosiła cię o wypełnienie testu.",
+    "share.codeAria": "Kod wyniku",
+    "share.codeTitle": "Kod wyniku",
+    "share.copyLink": "Kopiuj link",
+    "share.mail": "Wyślij e-mailem",
+    "share.copyCode": "Kopiuj kod",
+    "share.pdf": "Zapisz jako PDF",
+    "share.restart": "Zrób test ponownie",
+    "share.sending": "Wysyłamy wiadomość z wynikiem na adres {email}…",
+    "share.sent": "Wiadomość z wynikiem została wysłana na adres {email}.",
+    "share.sendFailed": "Nie udało się wysłać wiadomości na adres {email}. Skopiuj link do raportu lub spróbuj ponownie.",
+    "share.retry": "Wyślij ponownie",
+
+    "mail.subject": "DISC: {name} – {label}",
+    "mail.title": "Wynik testu DISC",
+    "mail.name": "Imię",
+    "mail.email": "E-mail",
+    "mail.date": "Data",
+    "mail.profile": "Profil",
+    "mail.link": "Link do raportu",
+    "mail.code": "Kod wyniku",
+
+    "email.subject": "Twój wynik testu DISC: {label}",
+    "email.greeting": "Cześć, {name}!",
+    "email.intro": "Test DISC już za tobą. Twój profil:",
+    "email.open": "Otwórz pełny raport",
+    "email.scores": "Nasilenie stylów",
+    "email.linkNote": "Jeśli przycisk nie działa, skopiuj link do przeglądarki:",
+    "email.footer": "Ta wiadomość została wysłana automatycznie: ten adres podano podczas wypełniania testu. Pełny raport z opisem mocnych stron i obszarów rozwoju oraz ze wskazówkami jest dostępny pod linkiem powyżej.",
+
+    "toast.copied": "Skopiowano",
+    "toast.copyManual": "Zaznacz tekst i skopiuj go ręcznie (Ctrl+C / ⌘C)",
+    "toast.printNA": "Drukowanie nie jest dostępne w tym oknie",
+
+    "admin.step": "Administrator",
+    "admin.eyebrow": "Panel administratora",
+    "admin.h1": "Wyniki uczestników",
+    "admin.lead": "Uczestnik wypełnia test i na ekranie wyniku otrzymuje link oraz kod. Poproś o ich przesłanie i wklej je poniżej: tabela jest przechowywana wyłącznie w tej przeglądarce.",
+    "admin.codesLabel": "Kody lub linki do wyników",
+    "admin.placeholder": "DISC1.eyJuIjoi…  (można wkleić kilka kodów, linków albo całą treść wiadomości)",
+    "admin.add": "Dodaj do tabeli",
+    "admin.total": "Wyników łącznie: {n}",
+    "admin.thName": "Uczestnik",
+    "admin.thDate": "Data",
+    "admin.thProfile": "Profil",
+    "admin.open": "Raport",
+    "admin.delete": "Usuń",
+    "admin.empty": "Nie ma jeszcze żadnych wyników. Wyślij uczestnikom link do tej strony i poczekaj na kody.",
+    "admin.csv": "Kopiuj tabelę do Excela",
+    "admin.clear": "Wyczyść listę",
+    "admin.linkNote": "Link dla uczestników to adres tej strony.",
+    "admin.back": "← Wróć do testu",
+    "admin.noCode": "Nie znaleziono kodu: kod zaczyna się od „{v}.”",
+    "admin.added": "Dodano: {n}",
+    "admin.withErrors": ", z błędem: {n}",
+    "admin.broken": "Kod jest uszkodzony",
+    "admin.dup": "Te wyniki są już w tabeli",
+    "admin.confirmDel": "Usunąć wynik „{name}”?",
+    "admin.confirmClear": "Usunąć wszystkie wyniki z tabeli?",
+    "admin.csvHead": ["Imię", "E-mail", "Data", "Profil", "Nazwa profilu", "D", "I", "S", "C", "D najbardziej", "I najbardziej", "S najbardziej", "C najbardziej", "D najmniej", "I najmniej", "S najmniej", "C najmniej", "Kod"],
+
+    "nav.home": "Strona główna",
+    "nav.test": "Test",
+    "nav.styles": "Cztery style",
+    "nav.profiles": "16 profili",
+    "nav.disc": "Czym jest DISC",
+    "nav.faq": "Pytania i odpowiedzi",
+    "nav.about": "O projekcie",
+    "nav.contact": "Kontakt",
+    "nav.privacy": "Prywatność",
+    "nav.results": "Interpretacja wyników",
+    "nav.compat": "Dopasowanie stylów",
+    "nav.colors": "Kolory DISC",
+    "nav.teams": "DISC dla zespołu",
+    "nav.mbti": "DISC a MBTI",
+    "nav.pdf": "Test w PDF",
+    "nav.materials": "Materiały o DISC",
+
+    "pages.styles.title": "Typy osobowości DISC: D, I, S, C – cechy, mocne strony, motywacja",
+    "pages.styles.description": "Cztery typy osobowości (style zachowania) DISC: dominacja, wpływ, stałość, sumienność. Cechy, mocne strony, obszary rozwoju, motywacja i zachowanie w stresie.",
+    "pages.styles.h1": "Typy osobowości DISC: cztery style",
+    "pages.styles.lead": "DISC opisuje zachowanie na czterech skalach. Każdy ma w sobie wszystkie cztery style, ale jeden lub dwa są wyraźniejsze od pozostałych. Poniżej opisujemy, co jest typowe dla każdego stylu, co go motywuje i jak najlepiej komunikować się z osobami o tym stylu.",
+    "pages.profiles.title": "16 typów osobowości DISC – wszystkie profile testu z opisem",
+    "pages.profiles.description": "Wszystkie 16 profili testu DISC: cztery czyste style i dwanaście kombinacji. Krótki opis każdego typu osobowości i link do strony ze szczegółami.",
+    "pages.profiles.h1": "16 profili i typów osobowości DISC",
+    "pages.profiles.lead": "Wynik testu to styl wiodący oraz styl uzupełniający, o ile ten drugi jest wyraźnie zaznaczony. W ten sposób powstaje 16 profili: cztery „czyste” i dwanaście kombinacji. Znajdź swój albo zrób test, żeby go poznać.",
+    "pages.profile.title": "{name} ({key}) – profil DISC: opis, mocne strony, obszary rozwoju",
+    "pages.profile.description": "Profil DISC {key} „{name}”: {summary}",
+    "pages.profile.eyebrow": "Profil DISC · {key}",
+    "pages.profile.primary": "Styl wiodący: {name} ({key})",
+    "pages.profile.secondary": "Styl uzupełniający: {name} ({key})",
+    "pages.profile.others": "Inne profile DISC",
+    "pages.profile.exampleTitle": "Jak wygląda wynik",
+    "pages.profile.exampleText": "Przykładowy wykres osoby o profilu „{name}”: nasilenie czterech stylów w procentach; wartości powyżej 50% uznaje się za wyraźnie zaznaczone. Twój wykres będzie się różnił szczegółami, ale jego kształt będzie podobny.",
+    "pages.profile.more": "Więcej o profilu „{name}”",
+    "pages.profile.careers": "Pasujące role i zadania",
+    "pages.profile.team": "W zespole",
+    "pages.profile.with": "Jak komunikować się z innymi stylami",
+    "pages.profile.withKey": "{name} ({key})",
+    "pages.profile.compatLink": "Dopasowanie stylów DISC: wszystkie pary →",
+    "pages.compat.title": "{a} i {b}: dopasowanie stylów DISC w pracy i komunikacji",
+    "pages.compat.description": "Jak style {a} i {b} współpracują ze sobą: co je łączy, gdzie dochodzi do tarć i co może zrobić każda ze stron. Darmowy test DISC na stronie.",
+    "pages.compat.h1": "{a} i {b}: dopasowanie",
+    "pages.compat.common": "Co łączy te style",
+    "pages.compat.friction": "Gdzie dochodzi do tarć",
+    "pages.compat.tips": "Wskazówki dla stylu {name} ({key})",
+    "pages.compat.other": "Inne pary stylów",
+    "pages.compat.matrix": "Tabela par: wybierz dwa style",
+    "pages.compat.pairLink": "Więcej o parze {a} i {b}",
+    "pages.results.flatTitle": "Profil zrównoważony",
+    "pages.pdf.download": "Pobierz PDF",
+    "pages.pdf.meta": "A4 · liczba stron: {pages} · {size}",
+    "pages.pdf.missing": "Plik jest w przygotowaniu. Tymczasem zrób test online albo zapisz wynik jako PDF na ekranie wyniku.",
+    "pages.updated": "Aktualizacja: {date}",
+    "pages.sourcesLink": "Źródła i literatura",
+
+    "cta.title": "Poznaj swój profil DISC",
+    "cta.text": "Darmowy test: 24 pytania, około 10 minut, wynik od razu i na e-mail.",
+    "cta.button": "Zrób test",
+
+    "contact.emailLabel": "Adres e-mail do odpowiedzi",
+    "contact.messageLabel": "Wiadomość",
+    "contact.filesLabel": "Pliki",
+    "contact.filesAdd": "Załącz pliki",
+    "contact.filesHint": "Możesz załączyć kilka plików o łącznym rozmiarze do {max} albo przeciągnąć je tutaj.",
+    "contact.fileRemove": "Usuń plik {name}",
+    "contact.filesTotal": "Łącznie {size} z {max}",
+    "contact.fileSkipped": "Plik „{name}” nie został dodany: łączny rozmiar plików nie może przekraczać {max}.",
+    "contact.send": "Wyślij",
+    "contact.sending": "Wysyłamy wiadomość…",
+    "contact.sent": "Wiadomość wysłana. Odpowiedź przyjdzie na adres {email}.",
+    "contact.sendFailed": "Nie udało się wysłać wiadomości ({error}). Spróbuj ponownie lub napisz do nas bezpośrednio: {contact}.",
+    "contact.tooMany": "Z tego adresu wysłano już kilka wiadomości. Spróbuj później lub napisz do nas bezpośrednio: {contact}.",
+    "contact.messageRequired": "Wpisz wiadomość",
+    "contact.direct": "Albo napisz do nas bezpośrednio: {email}",
+    "contact.privacyNote": "Imię, e-mail, wiadomość i pliki zostaną wysłane e-mailem na adres {email} i posłużą wyłącznie do udzielenia ci odpowiedzi.",
+    "contact.mailtoNote": "Usługa wysyłki nie jest jeszcze podłączona: przycisk „Wyślij” otworzy twój program pocztowy z wypełnioną wiadomością, a załączone pliki trzeba będzie dodać do niej ręcznie.",
+    "contact.mailSubject": "Wiadomość ze strony: {name}",
+    "contact.mailFiles": "Załączone pliki (dodaj je do wiadomości): {list}",
+    "contact.kb": "KB",
+    "contact.mb": "MB",
+
+    "consent.label": "Informacja o plikach cookie",
+    "consent.text": "Serwis przechowuje twoje postępy, wynik i wybrany język w pamięci lokalnej przeglądarki, a Yandex Metrica zbiera zanonimizowane statystyki odwiedzin oraz zapis działań na stronie, abyśmy mogli ulepszać serwis. Imię, e-mail i wynik nie są przekazywane do usługi Metrica.",
+    "consent.more": "Więcej informacji",
+    "consent.details": "W przeglądarce przechowywane są: imię i e-mail podane przed testem; odpowiedzi i nieukończone postępy; ostatni wynik; wybrany język; informacja, że ten komunikat został już wyświetlony. Te dane pozostają na twoim urządzeniu i są usuwane przy czyszczeniu danych witryny. Hosting GitHub Pages otrzymuje standardowe dane techniczne żądania. Po zakończeniu testu imię, e-mail i odpowiedzi są przekazywane do usługi wysyłki wiadomości (Google Apps Script): wysyła ona do ciebie wiadomość z wynikiem i zapisuje imię, e-mail, datę oraz wynik w bazie wyników właściciela serwisu (Arkusz Google). Yandex Metrica (Yandex LLC) otrzymuje adres strony bez kodu wyniku, źródło wejścia, typ urządzenia i przeglądarki, zanonimizowany zapis działań na stronie (pola z imieniem i e-mailem oraz link i kod wyniku są z zapisu wyłączone) i zapisuje własne pliki cookie. Możesz ją zablokować w ustawieniach przeglądarki lub za pomocą programu blokującego skrypty śledzące. Reklamowe skrypty śledzące nie są używane.",
+    "consent.accept": "Akceptuję",
+    "consent.decline": "Tylko niezbędne",
+    "consent.ok": "Rozumiem",
+
+    "print.title": "Test DISC – wersja do druku",
+    "print.name": "Imię",
+    "print.date": "Data",
+    "print.howTitle": "Jak wypełniać",
+    "print.howText": "W każdym pytaniu są cztery stwierdzenia. W kolumnie „+” zaznacz jedno stwierdzenie, które pasuje do ciebie najbardziej, a w kolumnie „−” – jedno, które pasuje do ciebie najmniej. Odpowiadaj, myśląc o swoim zwykłym zachowaniu w pracy, i nie zastanawiaj się długo: pierwsza reakcja jest najtrafniejsza. Nie ma dobrych ani złych odpowiedzi.",
+    "print.block": "Pytanie {n}",
+    "print.keyTitle": "Klucz: do którego stylu należy każde stwierdzenie",
+    "print.keyText": "Dla każdego pytania podano, do którego stylu należą stwierdzenia 1, 2, 3 i 4 w kolejności, w jakiej występują. Przy każdym swoim zaznaczeniu wpisz literę stylu.",
+    "print.keyBlock": "Pytanie",
+    "print.keyRows": "Stwierdzenia 1–4",
+    "print.countTitle": "Obliczanie wyniku",
+    "print.countText": "Dla każdego stylu policz zaznaczenia „najbardziej” i zaznaczenia „najmniej”, a następnie odejmij drugą liczbę od pierwszej. Wynik mieści się w przedziale od −24 do +24, a suma wyników czterech stylów wynosi zero.",
+    "print.styleHead": "Styl",
+    "print.countMost": "Zaznaczenia „najbardziej”",
+    "print.countLeast": "Zaznaczenia „najmniej”",
+    "print.countNet": "Wynik (różnica)",
+    "print.decodeTitle": "Jak określić profil",
+    "print.decodeText": "Styl wiodący to ten z najwyższym wynikiem. Jeśli drugi co do wielkości wynik jest dodatni i wynosi co najmniej 40% wyniku stylu wiodącego (minimum 3 punkty), jest to styl uzupełniający. Profil oznacza się jedną literą (na przykład D) lub dwiema (na przykład DI: wiodący D, uzupełniający I). Jeśli żaden wynik nie przekracza 2, profil jest zrównoważony: style są wyrażone mniej więcej jednakowo.",
+    "print.profilesTitle": "16 profili DISC",
+    "print.online": "Wersja online z automatycznym obliczaniem wyniku, wykresem i szczegółowym raportem: {url}",
+
+    "sources.kind.primary": "Źródło pierwotne",
+    "sources.kind.history": "Historia metody",
+    "sources.kind.manual": "Podręcznik wydawcy",
+    "sources.kind.research": "Badanie",
+    "sources.kind.review": "Przegląd krytyczny",
+
+    "root.continue": "Kontynuuj"
+  }
+}
