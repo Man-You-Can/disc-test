@@ -4,7 +4,7 @@
   "name": "Deutsch",
   "dateLocale": "de-DE",
   "title": "DISG-Test kostenlos – Persönlichkeitstest online ohne Anmeldung",
-  "description": "Kostenloser DISG-Persönlichkeitstest: 24 Blöcke, 10 Minuten, ohne Anmeldung. Welcher DISG-Typ sind Sie? Hauptstil, Stärken, Entwicklungsfelder – sofort und per E-Mail.",
+  "description": "Kostenloser DISG-Persönlichkeitstest: 24 Blöcke, 10 Minuten, ohne Anmeldung. Welcher DISG-Typ sind Sie? Hauptstil, Stärken und Entwicklungsfelder sofort.",
   "brand": "DISG-Test",
   "keys": { "D": "Dominanz", "I": "Initiative", "S": "Stetigkeit", "C": "Gewissenhaftigkeit" },
   "short": { "D": "Ergebnis und Kontrolle", "I": "Menschen und Begeisterung", "S": "Unterstützung und Stabilität", "C": "Genauigkeit und Qualität" },
@@ -89,6 +89,16 @@
         "I": "Nehmen Sie sich zwei Minuten für den Menschen, bevor Sie zur Sache kommen, und würdigen Sie den Beitrag ausdrücklich.",
         "S": "Drosseln Sie das Tempo, kündigen Sie Veränderungen an und warten Sie die Antwort auf eine Frage ab, ohne die Pause zu füllen.",
         "C": "Untermauern Sie Entscheidungen mit Fakten und geben Sie Zeit zur Prüfung: Für C ist das keine Verzögerung, sondern Teil der Arbeit."
+      },
+      "deep": {
+        "vs": "Der reine D-Typ unterscheidet sich von den Mischprofilen dadurch, dass ihm ein „Dämpfer“ fehlt. Beim Typ Pionier (DI) wird der Tatendrang durch Charme abgefedert, beim Typ Stratege (DC) durch Kalkül, beim Typ Praktiker (DS) durch Geduld. Menschen vom Typ Macher dagegen handeln direkt: sie sehen das Ziel, wählen den kürzesten Weg und verschwenden keine Kraft darauf, zu gefallen oder alles noch einmal zu prüfen. Von den Typen Umsetzer (SD) und Perfektionist (CD), bei denen D an zweiter Stelle steht, unterscheidet sie das Tempo: sie warten nicht, bis die Bedingungen reif sind, sondern schaffen sie selbst.",
+        "work": "Im Beruf fallen Macher sofort auf: sie sagen als Erste, was zu tun ist, übernehmen die schwierigste Aufgabe und fragen nach dem Termin, bevor sie nach Details fragen. Am besten arbeiten sie dort, wo es ein messbares Ziel und Freiheit bei der Wahl des Weges gibt: Umsatzziele, Produktstarts, Krisen, Verhandlungen. Routine und Abstimmungsschleifen ermüden sie, und sie beginnen schnell, sie zu umgehen. Läuft alles nach Plan, wird ihnen langweilig – deshalb suchen sie oft selbst die nächste Herausforderung.",
+        "lead": "Als Führungskraft setzen Macher ehrgeizige Ziele, entscheiden schnell und übernehmen die Verantwortung für Misserfolge selbst. Das Team weiß, wohin es geht, und kommt zügig voran. Die Schwachstelle: Macher entscheiden für alle, fragen nicht nach Meinungen, fallen anderen ins Wort und halten Schweigen für Zustimmung. In ihrer Abteilung wachsen selbstständige und durchsetzungsstarke Leute, während vorsichtige und nachdenkliche Mitarbeitende in den Hintergrund geraten oder ganz gehen.",
+        "managed": "Macher brauchen eine Führungskraft, die das Ziel vorgibt und sich nicht in den Weg dorthin einmischt. Wichtig sind ihnen Direktheit, schnelle Antworten und Anerkennung für das Ergebnis, nicht für die Mühe. Mikromanagement, lange Abstimmungen und vage Aufträge lösen bei ihnen Ärger aus und den Drang, den Dienstweg zu umgehen. Gut funktioniert eine klare Absprache: „Hier ist das Ziel, hier sind die Grenzen, hier ist der Termin – der Rest liegt bei dir.“",
+        "pressure": "Unter Druck werden Macher schneller und härter: sie sprechen knapper und schärfer, fangen an, die Arbeit anderer zu erledigen, und ziehen Entscheidungen an sich. Im Konflikt gehen sie zum Frontalangriff über und erleben den Streit als Wettkampf, den es zu gewinnen gilt. Macher beruhigen sich schnell und sind selten nachtragend, doch ihr Umfeld erinnert sich an das Gesagte länger als sie selbst.",
+        "develop": ["Die Frage „Was meinen Sie?“ stellen, bevor die eigene Entscheidung verkündet wird", "Die Vorsicht von Kolleginnen und Kollegen von Sabotage unterscheiden", "Den Beitrag anderer Menschen wahrnehmen und benennen, nicht nur das Ergebnis", "Den langweiligen Teil der Arbeit zu Ende bringen oder ihn offen delegieren"],
+        "agree": "Mit Machern einigen Sie sich kurz und sachlich: Ziel, Nutzen, Optionen, Termin. Streiten Sie nicht emotional, sondern mit Fakten, und bieten Sie eine Auswahl statt einer einzigen Lösung an. Wenn Sie bremsen müssen, zeigen Sie, wie die Eile das Ergebnis gefährdet – dieses Argument wird gehört.",
+        "example": "Ein Projekt liegt einen Monat hinter dem Plan. Die Person vom Typ Macher ruft das Team zusammen, verteilt die Aufgaben in zehn Minuten neu, streicht zwei Abstimmungsrunden und ruft den Kunden selbst an. Nach einer Woche ist das Projekt wieder im Zeitplan, aber zwei Mitarbeitende beschweren sich, dass niemand sie gefragt hat, und in der Eile ist ein Fehler im Vertrag übersehen worden. Dasselbe Ergebnis ohne Verluste wäre möglich gewesen, hätte sie noch eine halbe Stunde in die Frage investiert: „Welche Risiken sehe ich nicht?“"
       }
     },
     "I": {
@@ -101,6 +111,16 @@
         "I": "Vereinbaren Sie, wer mitschreibt, und beenden Sie das Gespräch mit einer Aufgabenliste samt Terminen.",
         "S": "Ändern Sie Pläne nicht kurzfristig und fragen Sie direkt nach der Meinung: Von sich aus drängt S sie niemandem auf.",
         "C": "Bereiten Sie Fakten vor, geben Sie Zeit zum Nachdenken und halten Sie die Prüfung von Details nicht für eine Absage."
+      },
+      "deep": {
+        "vs": "Der Typ Impulsgeber ist der reine I-Typ: Alles dreht sich um den Kontakt zu Menschen. Beim Typ Motivator (ID) kommen zum Charme Durchsetzungskraft und der Wunsch zu führen hinzu, beim Typ Mentor (IS) Sanftheit und Fürsorge, beim Typ Kommunikator (IC) die Liebe zu Fakten. Impulsgeber wollen vor allem, dass es spannend ist und Menschen um sie herum sind. Von den Typen Diplomat (SI) und Berater (CI), bei denen I an zweiter Stelle steht, unterscheiden sie sich durch Lautstärke und Tempo: sie warten nicht, bis man sie ins Gespräch holt.",
+        "work": "Im Beruf sind Impulsgeber diejenigen, die alle kennen: sie lernen neue Kolleginnen und Kollegen als Erste kennen, trommeln Leute zu Treffen zusammen und finden auch mit schwierigen Kunden einen Draht. Am stärksten sind sie bei Aufgaben, bei denen es ums Überzeugen, Präsentieren, Ideenfinden und Zusammenbringen geht. Schwerer fallen ihnen lange Projekte mit Berichten, Tabellen und wiederkehrenden Abläufen: Das Interesse erlischt, und Wichtiges wird „auf später“ verschoben.",
+        "lead": "Als Führungskraft schaffen Impulsgeber Atmosphäre: sie loben, feiern Erfolge, stecken mit Ideen an und lassen den Menschen Freiraum. Das Team mag sie und arbeitet gern über das Übliche hinaus, solange es an das Ziel glaubt. Die Schwachstelle ist die Beständigkeit: Impulsgeber ändern Prioritäten für jede neue Idee, weichen unangenehmen Gesprächen aus und vergessen mitunter, was sie letzte Woche versprochen haben.",
+        "managed": "Impulsgeber brauchen eine Führungskraft, die ihre Erfolge laut anerkennt und ihnen Kontakt zu Menschen ermöglicht. Allein und unter nüchterner Kontrolle arbeiten sie schlecht. Hilfreich ist, wenn die Führungskraft beim Strukturieren hilft – Absprachen festhält, Zwischentermine setzt – und dabei als Partner auftritt, nicht als Aufseher.",
+        "pressure": "Unter Druck reden Impulsgeber mehr und schneller, suchen Rückhalt und Verbündete und versprechen mitunter, was sie nicht schaffen können. Kritik vor anderen trifft sie hart und fühlt sich für sie wie entzogene Sympathie an. Im Konflikt glätten sie lieber oder retten sich in einen Scherz; sind sie ernsthaft getroffen, brausen sie auf, beruhigen sich aber schnell wieder.",
+        "develop": ["Absprachen und Termine sofort notieren, statt sie im Kopf zu behalten", "Eine Idee bis zum Ergebnis bringen, bevor die nächste angefangen wird", "Fakten prüfen, bevor sie weitererzählt werden", "Unangenehmes direkt ansprechen, bevor das Problem wächst"],
+        "agree": "Wenn Sie sich mit Impulsgebern einigen wollen, beginnen Sie mit einem lebendigen Gespräch und ihren Ideen und besprechen Sie die Details am Ende. Zeigen Sie, wie sich die Entscheidung auf Menschen auswirkt und wie Erfolg aussehen wird. Schicken Sie die Ergebnisse des Treffens schriftlich mit konkreten Terminen: Mündlich stimmen Impulsgeber bereitwillig zu, ohne Notiz vergessen sie es aber leicht.",
+        "example": "Eine Person vom Typ Impulsgeber vereinbart an einem einzigen Abend eine gemeinsame Aktion mit einem Partner und erzählt schon am nächsten Tag dem ganzen Unternehmen davon. Die Marketingabteilung erfährt die Termine aus dem allgemeinen Chat, das Budget ist nicht abgestimmt. Die Aktion wird trotzdem ein Erfolg – dank ihrer Energie –, aber nur mit einer Hauruck-Aktion. Hätte sie gleich eine Kollegin oder einen Kollegen mit hohem C dazugeholt, hätte diese Person in einer Stunde einen Plan erstellt, und die Begeisterung wäre dieselbe geblieben."
       }
     },
     "S": {
@@ -113,6 +133,16 @@
         "I": "Benennen Sie Ihre Grenzen und bitten Sie um einen Plan: Eine Idee allein reicht Ihnen nicht.",
         "S": "Setzen Sie sich gegenseitig Fristen und entscheiden Sie abwechselnd.",
         "C": "Verstehen Sie Anmerkungen als Sorge um die Qualität und schlagen Sie Veränderungen in kleinen Schritten vor."
+      },
+      "deep": {
+        "vs": "Der Typ Anker ist der reine S-Typ: Am wichtigsten sind Stabilität und Beziehungen. Beim Typ Diplomat (SI) verbindet sich die Ruhe mit Geselligkeit, beim Typ Spezialist (SC) mit der Liebe zu Regeln, beim Typ Umsetzer (SD) mit Beharrlichkeit auf dem Weg zum Ziel. Menschen vom Typ Anker halten die Mitte: sie drängen nicht nach vorn, suchen keine Aufmerksamkeit und bauen keine Systeme, sondern sorgen einfach dafür, dass alles funktioniert und sich die Menschen sicher fühlen. Von den Typen Experte (CS) und Mentor (IS) unterscheidet sie, dass ihnen Stabilität wichtiger ist als Genauigkeit und als Austausch.",
+        "work": "Im Beruf fallen Menschen vom Typ Anker oft erst auf, wenn sie in Urlaub gehen. Diese Menschen wissen, wer was versprochen hat, helfen Neuen, beantworten die Fragen, mit denen sich niemand befassen will, und bringen Projekte zu Ende, die andere längst vergessen haben. Am wohlsten fühlen sie sich, wo Abläufe klar sind, das Team stabil ist und das Ergebnis an Verlässlichkeit gemessen wird, nicht an Tempo. Häufige Umstrukturierungen und Dauer-Feuerwehreinsätze zehren sie aus.",
+        "lead": "Als Führungskraft sind Menschen vom Typ Anker aufmerksam und gerecht: sie kennen alle Mitarbeitenden, stellen sich vor das Team und lassen niemanden in schwierigen Zeiten allein. Die Fluktuation ist niedrig, die Atmosphäre ruhig. Die Schwachstellen: Unpopuläre Entscheidungen werden aufgeschoben, harte Rückmeldungen gibt es selten, und Arbeit des Teams wird lieber selbst übernommen, als jemanden zu überlasten.",
+        "managed": "Menschen vom Typ Anker brauchen eine Führungskraft, die Veränderungen rechtzeitig ankündigt, ihre Gründe erklärt und Zeit zum Eingewöhnen lässt. Wichtig sind ihnen ein ruhiger Ton, klare Erwartungen und Dank für die unauffällige Arbeit. Plötzliche Kurswechsel, Anschreien und öffentlicher Druck untergraben ihr Vertrauen auf lange Zeit, auch wenn sie nichts sagen.",
+        "pressure": "Unter Druck werden Menschen vom Typ Anker langsamer und stiller. Diese Menschen stimmen zu, um nicht zu streiten, laden sich noch mehr auf und sammeln Unmut an, den ihr Umfeld nicht bemerkt. Im Konflikt weichen sie aus oder geben nach; hält der Druck lange an, können sie zur Überraschung aller plötzlich auf stur schalten oder kündigen – „aus heiterem Himmel“, obwohl die Entscheidung für sie längst gefallen war.",
+        "develop": ["„Nein“ zu neuen Aufgaben sagen, wenn die Belastung schon zu hoch ist", "Widerspruch sofort äußern, solange er noch klein ist", "Neues in kleinen Schritten ausprobieren, ohne auf völlige Sicherheit zu warten", "Von den eigenen Ergebnissen erzählen, statt zu warten, dass sie von selbst bemerkt werden"],
+        "agree": "Mit Menschen vom Typ Anker einigen Sie sich in Ruhe und rechtzeitig. Erklären Sie, was sich ändert und warum, was gleich bleibt und wie Sie unterstützen werden. Verlangen Sie keine Antwort auf der Stelle: Geben Sie einen Tag Bedenkzeit und fragen Sie unter vier Augen nach der Meinung, nicht in der großen Runde. Ein „Ja“ nach einer Pause ist verlässlicher als ein schnelles „Ja“ unter Druck.",
+        "example": "Das Unternehmen stellt auf ein neues Buchhaltungssystem um. Eine Person vom Typ Anker arbeitet sich still abends ein, hilft den Kolleginnen und Kollegen und beklagt sich bei niemandem. Einen Monat später stellt sich heraus, dass sie die Arbeit von anderthalb Leuten erledigt und kündigen will. Hätte die Führungskraft früher gefragt: „Wie läuft die Umstellung für dich, was hakt?“, hätte sie drei Wochen vor der Kündigung von dem Problem erfahren."
       }
     },
     "C": {
@@ -125,6 +155,16 @@
         "I": "Beginnen Sie mit der Anerkennung der Idee und erklären Sie Ihre Schlüsse in einfachen Worten.",
         "S": "Formulieren Sie Kritik behutsam und würdigen Sie den Beitrag ausdrücklich: Für S ist die Atmosphäre Teil des Ergebnisses.",
         "C": "Legen Sie vorab das ausreichende Qualitätsniveau fest und begrenzen Sie die Zeit für die Analyse."
+      },
+      "deep": {
+        "vs": "Der Typ Analytiker ist der reine C-Typ: Logik und Qualität geben die Richtung vor. Beim Typ Perfektionist (CD) kommen zur Genauigkeit Anspruch und Durchsetzungskraft hinzu, beim Typ Experte (CS) Geduld und Methodik, beim Typ Berater (CI) der Wunsch, zu erklären und Wissen zu teilen. Analytiker wollen vor allem verstehen und es richtig machen. Von den Typen Stratege (DC) und Kommunikator (IC), bei denen C an zweiter Stelle steht, unterscheidet sie, dass ihnen Richtigkeit wichtiger ist als Tempo und als Wirkung.",
+        "work": "Im Beruf sind Analytiker diejenigen, die Unterlagen bis zum Ende lesen, unbequeme Fragen stellen und den Fehler finden, den alle übersehen haben. Am besten arbeiten sie mit Daten, Systemen, Standards und Aufgaben, bei denen ein Fehler teuer ist. Analytiker brauchen Zeit, Ruhe und klare Kriterien. Arbeit „nach Augenmaß“, ständige Unterbrechungen und Entscheidungen ohne Begründung lösen bei ihnen inneren Widerstand aus.",
+        "lead": "Als Führungskraft bauen Analytiker Prozesse auf, setzen klare Standards und treffen begründete Entscheidungen. In ihrem Team gibt es wenig Chaos und wenig Nacharbeit. Die Schwachstellen: sie entscheiden langsam, kontrollieren Details, kritisieren mehr, als sie loben, und übersehen mitunter, dass es den Menschen an Wärme und Anerkennung fehlt.",
+        "managed": "Analytiker brauchen eine Führungskraft, die Aufgaben klar und schriftlich formuliert, Qualitätskriterien erklärt und keine Antwort „sofort“ verlangt. Wichtig sind ihnen Kompetenz und Logik, nicht Charisma. Vage Aufträge, geänderte Anforderungen ohne Erklärung und Kritik ohne Konkretes zerstören ihr Vertrauen am schnellsten.",
+        "pressure": "Unter Druck verlieren sich Analytiker in Details: sie prüfen erneut, sammeln weitere Daten, schieben Entscheidungen auf, werden verschlossen und kritisch. Im Konflikt argumentieren sie mit Gründen und zitieren Regeln; wirken die Argumente nicht, verstummen sie und bleiben bei ihrer Meinung. Emotionalen Druck des Gegenübers werten sie als Zeichen einer schwachen Position.",
+        "develop": ["Auch bei unvollständigen Informationen entscheiden, wenn ein Fehler wenig kostet", "Wichtiges von Nebensächlichem trennen und nicht weiter feilen, was schon gut genug ist", "Feedback mit dem beginnen, was gut gelungen ist", "Zwischenergebnisse teilen, nicht nur fertige"],
+        "agree": "Mit Analytikern einigen Sie sich mit Zahlen, Unterlagen und nachvollziehbarer Logik. Schicken Sie die Materialien vorab, damit genug Zeit zum Durcharbeiten bleibt. Beantworten Sie ihre Fragen, auch wenn sie kleinlich wirken: So prüfen Analytiker, ob eine Entscheidung durchdacht ist. Wenn Sie drängen, erklären Sie, warum Tempo hier wichtiger ist als eine vollständige Prüfung.",
+        "example": "Vor dem Versand eines Berichts an einen Kunden entdeckt eine Person vom Typ Analytiker eine Abweichung von 3 % in den Daten. Die Projektleitung bittet: „Schick es so raus, das merkt keiner.“ Die Person sucht drei Stunden nach der Ursache und findet einen Fehler im Datenexport, der alle folgenden Berichte verfälscht hätte. Der Termin verschiebt sich um einen halben Tag – und in diesem Streit hatte sie recht. Beim nächsten Mal kann dieselbe Gewohnheit aber ein Projekt wegen eines Kommas im Anhang aufhalten."
       }
     },
     "DI": {
@@ -137,6 +177,16 @@
         "I": "Genießen Sie die gemeinsame Begeisterung, aber schließen Sie mit einer Aufgabenliste samt Verantwortlichen und Terminen ab.",
         "S": "Nehmen Sie den Druck zurück, kündigen Sie Veränderungen an und deuten Sie Schweigen nicht als Zustimmung.",
         "C": "Liefern Sie Fakten und lassen Sie Zeit: C bremst nicht, sondern sichert Ihr Tempo gegen Fehler ab."
+      },
+      "deep": {
+        "vs": "Der Typ Pionier unterscheidet sich vom Typ Motivator (ID) durch die Reihenfolge der Buchstaben: Hier steht der Tatendrang vor dem Charme. Motivatoren wollen zuerst Menschen begeistern und dann das Ziel erreichen, Pioniere wollen das Ziel erreichen und reißen unterwegs Menschen mit. Vom reinen Typ Macher (D) unterscheidet Pioniere die Fähigkeit, zu verhandeln und andere für sich zu gewinnen, vom Typ Stratege (DC) das Tempo und die Bereitschaft, ohne vollständige Analyse Risiken einzugehen.",
+        "work": "Im Beruf sind Pioniere Menschen für den Start: neue Produkte, Märkte, Kunden, Projekte bei null. Pioniere finden schnell Verbündete, verkaufen die Idee an die Geschäftsleitung und übernehmen Verhandlungen, vor denen sich andere drücken. Sobald ein Projekt in die Phase von Betrieb und Berichten übergeht, lässt ihr Interesse nach, und sie suchen den nächsten Start.",
+        "lead": "Als Führungskraft gehen Pioniere mit Beispiel und Energie voran: sie setzen mutige Ziele, entscheiden schnell und loben öffentlich. Die Leute folgen ihnen gern. Die Schwachstellen: sie ändern Pläne im Laufen, unterschätzen den Aufwand und überlassen die Details mitunter dem Team, während sie selbst schon dem nächsten Ziel nachjagen.",
+        "managed": "Pioniere brauchen eine Führungskraft, die ihnen Eigenständigkeit und Sichtbarkeit gibt: ein anspruchsvolles Ziel, Handlungsfreiheit und die Möglichkeit, das Ergebnis selbst zu präsentieren. Langsame Abläufe und ausführliche Berichte ertragen sie schlecht. Gut funktioniert das Tandem mit einer Führungskraft oder einer Kollegin, einem Kollegen, die Risiken und Details übernehmen und offen sagen, wo der Plan unrealistisch ist.",
+        "pressure": "Unter Druck werden Pioniere schneller und überzeugen lauter: sie versprechen mehr, argumentieren energischer und wechseln zu dem Teil der Aufgabe, bei dem sie rasch Ergebnisse zeigen können. Im Konflikt versuchen sie zuerst zu bezaubern, und wenn das nicht klappt, üben sie Druck aus. Einen öffentlich verlorenen Streit verkraften sie schwer.",
+        "develop": ["Den Aufwand nüchtern einschätzen, bevor Versprechen gemacht werden", "Projekte mit einem klaren Plan übergeben, nicht einfach mit „ab hier macht ihr allein weiter“", "Einwände vorsichtiger Kolleginnen und Kollegen als Prüfung verstehen, nicht als Bremse", "Nebenbei gegebene Versprechen im Kalender festhalten"],
+        "agree": "Mit Pionieren einigen Sie sich schnell und mit einem Bild vom Ergebnis: wozu, was wir davon haben, wie es aussehen wird. Bieten Sie eine Rolle an, in der sie sichtbar sind. Nennen Sie die Grenzen gleich zu Beginn – Budget, Termine, Risiken – und halten Sie sie schriftlich fest, sonst gehen sie in der Begeisterung unter.",
+        "example": "Eine Person vom Typ Pionier überzeugt in zwei Terminen einen Großkunden von einem Pilotprojekt und verspricht den Start in einem Monat. Das Team erfährt vom Termin erst nach der Unterschrift. Der Pilot startet zwei Wochen zu spät, aber der Kunde bleibt – nicht zuletzt dank des persönlichen Charmes der Person. Beim nächsten Mal kommt sie mit der Projektleitung zum Termin, und der Zeitplan wird gemeinsam genannt."
       }
     },
     "DC": {
@@ -149,6 +199,16 @@
         "I": "Hören Sie sich Ideen bis zum Ende an, bevor Sie sie zerlegen, und loben Sie öffentlich.",
         "S": "Erklären Sie, wozu Veränderungen nötig sind, und danken Sie für die Verlässlichkeit: S wird nicht selbst darum bitten.",
         "C": "Legen Sie fest, wo Tempo gefragt ist und wo Genauigkeit, und drängen Sie im Qualitätsbereich nicht auf Termine."
+      },
+      "deep": {
+        "vs": "Der Typ Stratege verbindet den Tatendrang von D mit der Genauigkeit von C und unterscheidet sich dadurch von seinen Nachbarn. Perfektionisten (CD) beginnen bei der Qualität und machen erst dann Druck, Strategen beginnen beim Ziel und verlangen auf dem Weg dorthin Qualität. Vom Typ Macher (D) unterscheidet Strategen das Kalkül: sie stürzen sich nicht ins Gefecht, solange sie keinen Plan sehen. Vom Typ Pionier (DI) weniger Charme und mehr Argumente: sie überzeugen mit Logik, nicht mit Begeisterung.",
+        "work": "Im Beruf übernehmen Strategen komplexe Aufgaben, bei denen viel auf dem Spiel steht: eine Umstrukturierung, die Einführung eines Systems, schwierige Verhandlungen, ein Projekt, das schnell und zugleich fehlerfrei sein muss. Strategen erstellen einen Plan, kalkulieren Risiken und halten die Messlatte für sich und andere hoch. Inkompetenz und Arbeit „auf gut Glück“ sind ihnen zuwider. Gerede ohne Ergebnis und Entscheidungen nach Laune ärgern sie.",
+        "lead": "Als Führungskraft sind Strategen anspruchsvoll, gerecht und berechenbar: Die Ziele sind klar, die Standards hoch, Fehler werden aufgearbeitet. Unter ihrer Leitung wachsen Teams fachlich. Die Schwachstellen sind Kühle und ständige Bewertung: Strategen loben selten, bemerken Fehler schnell und können den Eindruck erwecken, dass das Erreichte nie genügt.",
+        "managed": "Strategen brauchen eine kompetente Führungskraft, die sie respektieren: mit klarer Strategie, nachvollziehbaren Entscheidungen und der Bereitschaft, in der Sache zu streiten. Wichtig sind ihnen Eigenständigkeit und Zugang zu allen Informationen. Entscheidungen ohne Begründung, inkompetente Einmischung und „Das macht man hier so“ rufen bei ihnen offenen Widerstand hervor.",
+        "pressure": "Unter Druck werden Strategen härter und kritischer: sie weisen scharf auf Fehler hin, reißen die Kontrolle an sich und hören auf zu erklären. Im Konflikt argumentieren sie logisch und hartnäckig, geben ohne Argumente nicht nach und können einen Streit auf Kosten der Beziehung gewinnen. Emotionale Argumente weisen sie in solchen Momenten zurück.",
+        "develop": ["Den Beitrag von Menschen laut würdigen, nicht nur Fehler korrigieren", "Bei Entscheidungen nicht nur das „Was“, sondern auch das „Warum“ erklären", "Verschiedene Wege zum Ziel zulassen, wenn das Ergebnis dasselbe ist", "Bemerken, wann der eigene Anspruch das Team zu demotivieren beginnt"],
+        "agree": "Mit Strategen einigen Sie sich gut vorbereitet: Ziel, Daten, Optionen mit Vor- und Nachteilen, Risiken. Strategen respektieren alle, die mit Argumenten streiten, und verlieren das Interesse an denen, die nur überreden wollen. Wenn Sie anderer Meinung sind, sagen Sie es direkt und begründen Sie es – das bringt Ihnen mehr Respekt ein als ein Nachgeben.",
+        "example": "Eine Person vom Typ Stratege soll in einer Abteilung Ordnung schaffen, in der ständig Termine platzen. Innerhalb eines Monats führt sie einen Arbeitsplan, eine wöchentliche Auswertung und Qualitätskriterien ein. Die Termine werden eingehalten, doch zwei starke Mitarbeitende bitten um Versetzung: „Hier wird nur geschimpft.“ Als die Person beginnt, in denselben wöchentlichen Auswertungen auch Erfolge zu würdigen, hört die Fluktuation auf, und das Ergebnis bleibt."
       }
     },
     "DS": {
@@ -161,6 +221,16 @@
         "I": "Tun Sie Ideen nicht als Geplauder ab, aber bitten Sie um einen konkreten Plan.",
         "S": "Übernehmen Sie die Entscheidung, aber erklären Sie sie und geben Sie Zeit, sich daran zu gewöhnen.",
         "C": "Erkennen Sie den Wert der Prüfung an und vereinbaren Sie vorab die Kriterien für „fertig“."
+      },
+      "deep": {
+        "vs": "Der Typ Praktiker verbindet den Tatendrang von D mit der Geduld von S – das unterscheidet ihn von allen Nachbarn. Der Typ Macher (D) stürmt schneller und lauter auf das Ziel zu, Praktiker gehen beharrlich und ohne großen Auftritt darauf zu. Vom Typ Umsetzer (SD) unterscheidet Praktiker die Reihenfolge: Bei ihnen stehen Ziel und Initiative vorn, beim Umsetzer Verlässlichkeit und Ruhe. Vom Typ Pionier (DI) das fehlende Bedürfnis nach Publikum: Praktiker müssen nicht von allen bei der Arbeit gesehen werden.",
+        "work": "Im Beruf bekommen Praktiker die Aufträge nach dem Motto „Mach das“: eine Linie in Betrieb nehmen, einen Problembereich in Ordnung bringen, eine Einführung zu Ende bringen. Praktiker arbeiten selbstständig, halten Wort und werfen bei den ersten Schwierigkeiten nicht hin. Am besten passt ein Umfeld mit konkretem Ergebnis und klarer Verantwortung. Endlose Diskussionen, Machtspiele und Besprechungen ohne Beschluss ermüden sie.",
+        "lead": "Als Führungskraft sind Praktiker ruhig, bestimmt und konsequent: sie verteilen Aufgaben, kontrollieren die Umsetzung und packen selbst mit an wie alle im Team. Die Leute wissen, woran sie sind. Die Schwachstellen sind Sturheit und Verschlossenheit: Praktiker erklären ihre Pläne selten, ändern Entscheidungen nur ungern und übersehen mitunter, dass das Team Austausch und Anerkennung braucht.",
+        "managed": "Praktiker brauchen eine Führungskraft, die eine klare Aufgabe stellt und ihnen die Umsetzung anvertraut. Wichtig sind ihnen verlässliche Absprachen: Ändert sich das Ziel, wollen sie den Grund verstehen. Häufige Kurswechsel, Kontrolle jedes Schritts und Aufgaben ohne greifbares Ergebnis senken ihre Motivation.",
+        "pressure": "Unter Druck werden Praktiker stur: sie arbeiten mehr, reden weniger und halten am eingeschlagenen Weg fest, auch wenn sich die Lage geändert hat. Im Konflikt werden sie nicht laut, geben aber auch nicht nach; manchmal machen sie stillschweigend weiter wie geplant. Von außen wirkt das wie Sturheit, von innen wie Treue zur eigenen Entscheidung.",
+        "develop": ["Pläne laut aussprechen, damit das Team die Logik versteht", "Entscheidungen überprüfen, wenn sich die Bedingungen ändern", "Kolleginnen und Kollegen nach ihrer Meinung fragen, bevor es losgeht", "Delegieren, auch wenn es schneller ginge, die Sache selbst zu erledigen"],
+        "agree": "Mit Praktikern einigen Sie sich konkret: was zu tun ist, bis wann und mit welchen Ressourcen. Überfrachten Sie sie nicht mit Begründungen und ändern Sie Absprachen nicht ohne Grund. Wenn Sie wollen, dass sie ihr Vorgehen ändern, legen Sie Fakten vor und lassen Sie Zeit zum Nachdenken – auf der Stelle lehnen Praktiker eher ab.",
+        "example": "Eine Person vom Typ Praktiker übernimmt eine Systemeinführung, die schon zweimal gescheitert ist. Statt Präsentationen zu halten, erstellt sie eine Liste der Probleme und arbeitet sie eines nach dem anderen ab. Nach drei Monaten läuft das System. Die Geschäftsleitung erfährt vom Fortschritt erst aus dem Abschlussbericht – und bittet beim nächsten Mal um einen kurzen wöchentlichen Statusbericht, damit der Erfolg früher sichtbar wird."
       }
     },
     "ID": {
@@ -173,6 +243,16 @@
         "I": "Beenden Sie das Treffen mit schriftlichen Vereinbarungen, sonst verliert die Begeisterung den Bezug zur Sache.",
         "S": "Kündigen Sie Veränderungen an und entscheiden Sie nicht über den Kopf von S hinweg: Fragen Sie direkt nach der Meinung.",
         "C": "Bereiten Sie Zahlen vor und geben Sie Zeit für die Antwort: Das Schweigen von C ist Nachdenken, keine Absage."
+      },
+      "deep": {
+        "vs": "Der Typ Motivator unterscheidet sich vom Typ Pionier (DI) dadurch, dass bei ihm die Menschen vor dem Ziel stehen: Motivatoren begeistern zuerst das Team und führen es dann zum Ergebnis. Vom reinen Typ Impulsgeber (I) unterscheiden sie Durchsetzungskraft und die Bereitschaft, Verantwortung zu übernehmen, vom Typ Mentor (IS) weniger Sanftheit und mehr Ehrgeiz, vom Typ Kommunikator (IC) Tempo und Spontaneität statt gründlicher Vorbereitung.",
+        "work": "Im Beruf sind Motivatoren das Gesicht des Teams: sie treten auf, verkaufen, sammeln Menschen um eine Idee und ergreifen in Besprechungen die Initiative. Stark sind sie dort, wo viele überzeugt werden müssen: Vertrieb, Produktstarts, Veranstaltungen, Partnerschaften. Viel Energie fließt in den Start; in der Mitte eines Projekts, wenn kleinteilige Arbeit gefragt ist, können sie an Tempo verlieren.",
+        "lead": "Als Führungskraft reißen Motivatoren mit: sie setzen leuchtende Ziele, feiern Siege öffentlich, glauben an Menschen und geben ihnen eine Chance. Das Team arbeitet mit Schwung. Die Schwachstellen sind Unbeständigkeit und Optimismus: Motivatoren versprechen mehr, als das Team leisten kann, vergessen Details und bemerken nicht immer, dass die Leute vom Dauer-Ausnahmezustand erschöpft sind.",
+        "managed": "Motivatoren brauchen eine Führungskraft, die ihnen Bühne und Freiheit gibt: die Möglichkeit, Vorschläge zu machen, aufzutreten und Menschen zu führen. Wichtig sind ihnen Anerkennung und lebendiges Feedback. Hilfreich ist eine Führungskraft, die sie ruhig in die Realität zurückholt – Ressourcen, Termine, Zahlen –, ohne die Begeisterung zu ersticken.",
+        "pressure": "Unter Druck werden Motivatoren noch lauter: sie überzeugen energischer, verteilen Versprechen und laden sich zu viel auf. Klappt es nicht, können sie aufbrausen oder die Umstände verantwortlich machen. Im Konflikt wollen sie das Gegenüber umstimmen und die Mehrheit hinter sich bringen.",
+        "develop": ["Ressourcen durchrechnen, bevor ein Termin genannt wird", "Begonnenes zu Ende bringen, nicht nur anstoßen", "In Besprechungen anderen das Wort überlassen", "Sich auf Zahlen stützen, nicht nur auf den Eindruck"],
+        "agree": "Mit Motivatoren einigen Sie sich mit Energie: Beginnen Sie mit der Idee und der Wirkung, die sie auf Menschen hat. Geben Sie ihnen eine Rolle, in der sie im Namen des Teams sprechen. Besprechen Sie Zahlen und Termine separat und halten Sie sie schriftlich fest – im Gedächtnis bleibt Motivatoren eher die Stimmung eines Treffens als seine Beschlüsse.",
+        "example": "Auf der Jahresversammlung verspricht eine Person vom Typ Motivator, dass die Abteilung den Umsatz verdoppeln wird – der Saal applaudiert. Einen Monat später zeigt sich, dass es für den Plan weder Leute noch Budget gibt. Die Person gewinnt zwei Partner und erreicht ein Wachstum um das Anderthalbfache, was ebenfalls ein Erfolg ist, doch das Team hat ein halbes Jahr am Limit gearbeitet. Ein nüchterner Plan vor dem Auftritt hätte erlaubt, das Anderthalbfache zu versprechen und zu übertreffen."
       }
     },
     "IS": {
@@ -185,6 +265,16 @@
         "I": "Unterstützen Sie Ideen, aber bitten Sie um Plan und Termine, sonst lassen Sie sich beide mitreißen.",
         "S": "Sprechen Sie Probleme aus und setzen Sie sich gegenseitig Fristen, sonst steht die Sache still.",
         "C": "Verstehen Sie Kritik an Details als Sorge um die Qualität, nicht als Kritik an Ihrer Person."
+      },
+      "deep": {
+        "vs": "Der Typ Mentor unterscheidet sich vom Typ Diplomat (SI) durch die Reihenfolge: Hier stehen Kontakt und Wärme vor der Ruhe, deshalb sind Mentoren aktiver – sie gehen selbst auf Menschen zu, bringen sie zusammen und führen das Gespräch. Vom Typ Impulsgeber (I) unterscheidet sie Fürsorge statt Glanz: Ihnen ist wichtiger, dass es den Menschen gut geht, als dass es spannend ist. Vom Typ Motivator (ID) das Fehlen von Druck: Mentoren führen über Unterstützung, nicht über das Ziel.",
+        "work": "Im Beruf sind Mentoren diejenigen, zu denen man mit Fragen und Problemen kommt. Mentoren arbeiten Neue ein, glätten die Beziehungen zwischen Abteilungen und wissen, wer Geburtstag hat und wer im Urlaub ist. Am wohlsten fühlen sie sich in der Arbeit mit Menschen: Schulung, Onboarding, Kundenbetreuung, ein Team, in dem Beziehungen zählen. Harte Entscheidungen, Konkurrenz und Arbeit ohne Austausch fallen ihnen schwer.",
+        "lead": "Als Führungskraft entwickeln Mentoren Menschen: sie sehen Potenzial, unterstützen und geben eine zweite Chance. In ihrem Team darf man Fehler machen und lernen. Die Schwachstellen: sie meiden harte Rückmeldungen und unpopuläre Entscheidungen, dulden schwache Leistungen lange und stellen sich mitunter länger vor Mitarbeitende, als es angebracht ist.",
+        "managed": "Mentoren brauchen eine wohlwollende Führungskraft, die ihren Beitrag zu Klima und Menschen schätzt, nicht nur die Zahlen. Gut arbeiten sie, wenn sie Vertrauen spüren und Entscheidungen mitdiskutieren können. Ein kühler Ton, Kritik vor anderen und Druck ohne Erklärung rauben ihnen schneller die Kraft als die Arbeitsmenge.",
+        "pressure": "Unter Druck suchen Mentoren Rückhalt und versuchen, alle zu versöhnen. Mentoren stimmen zu, um niemanden zu enttäuschen, und versprechen mitunter verschiedenen Seiten Gegensätzliches. Zieht sich ein Konflikt hin, nehmen sie ihn sich zu Herzen und verlieren Energie; offener Konfrontation weichen sie bis zuletzt aus.",
+        "develop": ["Ehrliches Feedback geben – im Bewusstsein, dass auch das Fürsorge ist", "Entscheidungen treffen, die nicht allen gefallen", "Den Wunsch zu helfen von der Pflicht trennen, fremde Probleme zu lösen", "Sich auf Fakten stützen, nicht nur auf den Eindruck von einem Menschen"],
+        "agree": "Mit Mentoren einigen Sie sich in warmem Ton: Zeigen Sie, wie sich die Entscheidung auf Menschen auswirkt und wie Sie sie unterstützen werden. Fragen Sie nach ihrer Meinung – Mentoren sehen oft, wie das Team Veränderungen aufnehmen wird. Ist eine harte Entscheidung nötig, erklären Sie, warum sie gerecht ist, und helfen Sie zu formulieren, wie man sie den Leuten mitteilt.",
+        "example": "Ein Mitglied im Team einer Person vom Typ Mentor hält seit drei Monaten keine Termine ein. Die Person hilft, übernimmt einen Teil der Aufgaben und nimmt das Teammitglied gegenüber der Geschäftsleitung in Schutz. Als das Problem beim Kunden sichtbar wird, zeigt sich, dass das Teammitglied mit der Rolle schlicht überfordert ist. Ein ehrliches Gespräch schon im ersten Monat hätte geholfen, früher eine passende Aufgabe zu finden – ohne Schaden für das Team."
       }
     },
     "IC": {
@@ -197,6 +287,16 @@
         "I": "Genießen Sie den guten Draht zueinander, aber halten Sie fest, wer was bis wann macht.",
         "S": "Ändern Sie Pläne nicht kurzfristig und fragen Sie direkt nach der Meinung, mit Zeit für die Antwort.",
         "C": "Sprechen Sie die Sprache der Daten und geben Sie sich mit „gut genug“ zufrieden, wo der Preis eines Fehlers gering ist."
+      },
+      "deep": {
+        "vs": "Der Typ Kommunikator unterscheidet sich vom Typ Berater (CI) durch die Reihenfolge: Hier steht der Austausch vor der Analyse, deshalb tritt ein Kommunikator eher erst auf und prüft danach, während Berater zuerst prüfen und dann erklären. Vom Typ Impulsgeber (I) unterscheidet Kommunikatoren die Liebe zu Fakten und Vorbereitung, vom Typ Motivator (ID) das Fehlen von Druck: sie überzeugen mit Argumenten und gelungener Darstellung, nicht mit Nachdruck.",
+        "work": "Im Beruf machen Kommunikatoren Kompliziertes verständlich: sie bereiten Vorträge vor, schreiben Texte, erklären Kunden das Produkt und stellen der Geschäftsleitung die Ergebnisse der Analyse vor. Ihre Stärke liegt an der Schnittstelle zwischen Fachwissen und Publikum. Schwer wird es, wenn sie zwischen Tempo und Genauigkeit wählen müssen: sie wollen schnell auftreten und zugleich alles prüfen.",
+        "lead": "Als Führungskraft erklären Kommunikatoren Ziele gut, halten den Austausch lebendig und achten auf Qualität. Das Team versteht, was es tut und wozu. Die Schwachstelle ist das Schwanken: sie wägen lange zwischen Varianten ab, überdenken Entscheidungen nach neuen Daten und schieben unangenehme Gespräche auf.",
+        "managed": "Kommunikatoren brauchen eine Führungskraft, die sie auftreten lässt und die Qualität ihrer Arbeit würdigt. Wichtig sind ihnen klare Kriterien und die Möglichkeit, sich vorzubereiten. Hilfreich ist, wenn im Voraus feststeht, wo Tempo und wo Genauigkeit wichtiger ist – das löst den inneren Konflikt.",
+        "pressure": "Unter Druck schwanken Kommunikatoren: Mal reden sie zu viel und zu spontan, mal verlieren sie sich im Nachprüfen. Kritik an der Form statt am Inhalt kann sie kränken. Im Konflikt versuchen sie zuerst, mit Worten zu überzeugen, und wenn das nicht gelingt, ziehen sie sich zurück und bereiten gewichtigere Argumente vor.",
+        "develop": ["Vorab klären, wann Tempo und wann Genauigkeit gefragt ist", "Entscheidungen rechtzeitig treffen, auch wenn noch eine Prüfung verlockt", "Kritik an einer Idee von Kritik an der eigenen Person trennen", "Sich kürzer fassen, wo das Publikum ein Fazit braucht und keine Geschichte"],
+        "agree": "Mit Kommunikatoren einigen Sie sich im Dialog: Besprechen Sie die Idee, lassen Sie sie ausreden und untermauern Sie die Entscheidung mit Fakten. Bieten Sie eine Rolle an, in der sie das Ergebnis präsentieren. Nennen Sie klar den Termin und den nötigen Grad an Genauigkeit – das hilft, nicht zwischen „sagen“ und „prüfen“ festzustecken.",
+        "example": "Eine Person vom Typ Kommunikator soll dem Vorstand die Ergebnisse einer Studie vorstellen. Drei Tage lang überarbeitet sie die Folien und fügt neue Daten hinzu, der Vortrag gelingt glänzend – doch die Unterlagen gehen zu spät raus, und der Vorstand kommt nicht mehr dazu, einen Teil seiner Fragen zu stellen. Beim nächsten Mal vereinbart sie mit der Analyse: Die Daten werden zwei Tage vor dem Vortrag eingefroren."
       }
     },
     "SI": {
@@ -209,6 +309,16 @@
         "I": "Benennen Sie Grenzen und bitten Sie um Konkretes: Eine Idee allein reicht nicht.",
         "S": "Machen Sie abwechselnd den ersten Schritt und schieben Sie schwierige Gespräche nicht auf.",
         "C": "Bitten Sie um die Logik hinter einer Regel und schlagen Sie Veränderungen in kleinen Schritten vor."
+      },
+      "deep": {
+        "vs": "Der Typ Diplomat unterscheidet sich vom Typ Mentor (IS) durch die Reihenfolge: Hier steht die Ruhe vor dem Austausch, deshalb führen Diplomaten weniger das Gespräch, als dass sie Bedingungen schaffen, unter denen sich Menschen leicht einigen. Vom Typ Anker (S) unterscheiden sie Offenheit und Freundlichkeit, vom Typ Spezialist (SC) die Ausrichtung auf Menschen statt auf Regeln. Vom Typ Umsetzer (SD) das Fehlen von Druck: Diplomaten erreichen ihr Ziel über Zustimmung, nicht über Beharrlichkeit.",
+        "work": "Im Beruf sind Diplomaten Menschen, mit denen es leicht ist: ruhig, freundlich, hilfsbereit. Gut sind sie dort, wo lange und behutsam mit Menschen gearbeitet werden muss: Kunden, Partner, Teamkoordination, interne Kommunikation. Harte Verhandlungen, öffentliche Auseinandersetzungen und dauernder Konkurrenzdruck fallen ihnen schwer.",
+        "lead": "Als Führungskraft schaffen Diplomaten Vertrauen: sie hören zu, berücksichtigen Meinungen und lösen Konflikte leise. In ihrem Team gibt es wenig Streit und viel gegenseitige Hilfe. Die Schwachstellen sind langsame Entscheidungen und Nachgiebigkeit: Diplomaten warten auf allgemeine Zustimmung, schieben schwierige Gespräche auf und vertreten ihre Position gegenüber der nächsthöheren Ebene nicht immer.",
+        "managed": "Diplomaten brauchen eine ruhige und wohlwollende Führungskraft, die Veränderungen rechtzeitig erklärt und ihren Beitrag zu guten Beziehungen schätzt. Gut arbeiten sie in einem stabilen Team mit klaren Rollen. Druck, ein scharfer Ton und die Notwendigkeit, schnell auf strittige Fragen zu antworten, werfen sie aus der Bahn.",
+        "pressure": "Unter Druck geben Diplomaten nach: sie stimmen zu, um die Spannung zu lösen, und nehmen zu viel auf sich. Widerspruch behalten sie für sich, und er staut sich an. Im Konflikt suchen sie um jeden Preis einen Kompromiss; gelingt das nicht, gehen sie auf Abstand zu dem Menschen, statt mit ihm zu streiten.",
+        "develop": ["Widerspruch sofort und ruhig äußern", "„Nein“ sagen, wenn eine Bitte über die eigenen Aufgaben hinausgeht", "Entscheidungen treffen, ohne auf die Zustimmung aller zu warten", "Die Interessen des Teams gegenüber der Leitung vertreten"],
+        "agree": "Mit Diplomaten einigen Sie sich ohne Eile und freundlich. Zeigen Sie, dass ihre Meinung zählt, und fragen Sie unter vier Augen, nicht vor allen. Erklären Sie, wie sich die Entscheidung auf Menschen auswirkt. Halten Sie ein „Gut“ nicht für die endgültige Zustimmung: Fragen Sie einen Tag später nach, ob noch Zweifel bestehen.",
+        "example": "Bei einem Termin mit einem Partner sagt eine Person vom Typ Diplomat unbezahlte Zusatzleistungen zu – um die Beziehung nicht zu belasten. Das Team erfährt erst im Nachhinein davon und ist verärgert. Als die Führungskraft den Satz „Lassen Sie mich das mit dem Team klären, ich melde mich dann“ vorschlägt, beginnt die Person ihn zu nutzen und bewahrt so sowohl die Beziehung zum Partner als auch das Vertrauen des Teams."
       }
     },
     "SC": {
@@ -221,6 +331,16 @@
         "I": "Halten Sie Enthusiasmus nicht für einen Plan: Bitten Sie um Termine und Verantwortliche.",
         "S": "Setzen Sie sich gegenseitig Fristen und sprechen Sie Probleme an, auch kleine.",
         "C": "Legen Sie das ausreichende Qualitätsniveau vorab fest, sonst versinken Sie beide in Details."
+      },
+      "deep": {
+        "vs": "Der Typ Spezialist unterscheidet sich vom Typ Experte (CS) durch die Reihenfolge: Hier stehen Stabilität und Verlässlichkeit vor der Genauigkeit. Experten suchen die richtige Antwort, Spezialisten achten darauf, dass der Prozess so läuft wie vereinbart. Vom Typ Anker (S) unterscheidet Spezialisten die Liebe zu Regeln und Ordnung, vom Typ Diplomat (SI) weniger Austausch und mehr Aufmerksamkeit für die Sache. Vom Typ Analytiker (C) weniger Kritik: Spezialisten setzen einen Standard eher sorgfältig um, als ihn infrage zu stellen.",
+        "work": "Im Beruf hüten Spezialisten die Prozesse: sie wissen, wie alles funktioniert, führen die Dokumentation, halten Termine und Regeln ein und erinnern sich, wie es beim letzten Mal gemacht wurde. Stark sind sie in Aufgaben, bei denen Sorgfalt, Wiederholbarkeit und Verantwortung zählen: Buchhaltung, Qualitätskontrolle, Support, Verwaltung. Abrupte Veränderungen und Aufgaben ohne Anleitung fallen ihnen schwer.",
+        "lead": "Als Führungskraft sind Spezialisten organisiert und verlässlich: klare Prozesse, eindeutige Zuständigkeiten, wenig Überraschungen. Die Menschen kennen die Regeln und fühlen sich geschützt. Die Schwachstellen sind Vorsicht gegenüber Veränderungen und übertriebene Kontrolle der Ordnung: Neue Ideen setzen sich in ihrer Abteilung nur langsam durch.",
+        "managed": "Spezialisten brauchen eine Führungskraft, die verständliche Anweisungen gibt, Veränderungen rechtzeitig ankündigt und sorgfältige Arbeit schätzt. Gut arbeiten sie in einem stabilen Umfeld mit klaren Erwartungen. Hektik, Improvisation und widersprüchliche Aufträge setzen sie unter Stress, über den sie selten offen sprechen.",
+        "pressure": "Unter Druck klammern sich Spezialisten an Regeln und gewohnte Abläufe, werden langsamer und prüfen alles doppelt. Überlastung ertragen sie schweigend, bis sie völlig erschöpft sind. Im Konflikt berufen sie sich auf Absprachen und Vorschriften; offen streiten mögen sie nicht, doch von der „richtigen“ Vorgehensweise abzurücken, fällt ihnen schwer.",
+        "develop": ["Überlastung sofort melden, statt sie auszuhalten", "Neue Arbeitsweisen an kleinen Aufgaben ausprobieren", "Regeln, die wichtig sind, von Gewohnheiten unterscheiden, die sich ändern lassen", "Verbesserungen vorschlagen, nicht nur Bestehendes bewahren"],
+        "agree": "Mit Spezialisten einigen Sie sich rechtzeitig und ausführlich: was sich ändert, nach welchen Regeln, bis wann und was gleich bleibt. Geben Sie eine schriftliche Anleitung und Zeit zur Vorbereitung. Fragen Sie, welche Risiken sie sehen – Spezialisten bemerken oft, was bei der Umstellung kaputtgehen wird.",
+        "example": "Eine Abteilung soll innerhalb von zwei Wochen auf ein neues CRM umsteigen. Eine Person vom Typ Spezialist arbeitet bis zuletzt nach dem alten Verfahren, und die Führungskraft ärgert sich. Dann stellt sich heraus, dass niemand erklärt hat, wie die alten Daten übertragen werden. Als die Person den Auftrag bekommt, eine Anleitung für den Umstieg zu schreiben, ist sie in drei Tagen fertig, und die Abteilung zieht ohne Verluste um."
       }
     },
     "SD": {
@@ -233,6 +353,16 @@
         "I": "Hören Sie sich Ideen an, aber bitten Sie um einen Plan: Ihre Beharrlichkeit hilft I, die Sache zu Ende zu bringen.",
         "S": "Übernehmen Sie die Entscheidung, aber erklären Sie sie und geben Sie Zeit, sich daran zu gewöhnen.",
         "C": "Vereinbaren Sie die Kriterien für „fertig“ im Voraus und respektieren Sie die Zeit für die Prüfung."
+      },
+      "deep": {
+        "vs": "Der Typ Umsetzer unterscheidet sich vom Typ Praktiker (DS) durch die Reihenfolge: Hier stehen Ruhe und Verlässlichkeit vor dem Tatendrang. Praktiker drängen zum Ziel, Umsetzer gehen gleichmäßigen Schrittes darauf zu und kommen nicht vom Weg ab. Vom Typ Anker (S) unterscheidet Umsetzer die Bestimmtheit und die Bereitschaft, Verantwortung für das Ergebnis zu übernehmen, vom Typ Spezialist (SC) weniger Blick auf Regeln und mehr auf das Resultat. Vom Typ Macher (D) die fehlende Hast.",
+        "work": "Im Beruf führen Umsetzer lange Projekte und Bereiche, in denen nichts aus dem Ruder laufen darf: Produktion, Logistik, Betrieb, Einführungen. Umsetzer übernehmen gelassen Verantwortung, halten das Tempo über Monate und geraten in der Krise nicht in Panik. Unwohl fühlen sie sich bei ständigem Wandel, im Rampenlicht und in langen Diskussionen ohne Entscheidung.",
+        "lead": "Als Führungskraft sind Umsetzer verlässlich und bestimmt: sie stellen klare Aufgaben, bestehen auf deren Erfüllung und packen selbst mit an wie alle im Team. Die Leute vertrauen ihrem Wort. Die Schwachstellen sind Sturheit und Wortkargheit: Umsetzer erklären Entscheidungen selten, ändern den Kurs nur ungern und übersehen mitunter, dass das Team mehr Austausch braucht.",
+        "managed": "Umsetzer brauchen eine Führungskraft, die ein klares Ziel setzt, ihnen die Umsetzung anvertraut und Absprachen nicht ohne Grund ändert. Wichtig sind ihnen Direktheit und Respekt vor ihrer Erfahrung. Hektik, häufig wechselnde Prioritäten und Kontrolle um der Kontrolle willen rufen bei ihnen stillen Widerstand hervor.",
+        "pressure": "Unter Druck werden Umsetzer noch bestimmter und schweigsamer: sie halten an ihrem Plan fest, lehnen Änderungen ab und arbeiten mehr. Im Konflikt werden sie nicht laut, weichen aber auch nicht zurück. Ein einmal ausgesprochenes „Nein“ ist schwer zu ändern.",
+        "develop": ["Entscheidungen erklären, nicht nur mitteilen", "Kolleginnen und Kollegen Einfluss auf den Plan ermöglichen", "Den Kurs überprüfen, wenn sich die Bedingungen ändern", "Über Fortschritte berichten, nicht nur über das Ergebnis"],
+        "agree": "Mit Umsetzern einigen Sie sich ruhig und sachlich: Ziel, Ressourcen, Termine, Verantwortung. Machen Sie keinen Druck und drängen Sie nicht auf eine schnelle Antwort. Wenn Sie eine Entscheidung ändern möchten, kommen Sie mit Fakten und rechtzeitig – einen Vorschlag „zwischen Tür und Angel“ lehnen Umsetzer höchstwahrscheinlich ab.",
+        "example": "Eine Person vom Typ Umsetzer leitet den Bau eines Lagers, und mitten im Projekt bittet der Auftraggeber, den Grundriss zu ändern. Die Antwort ist Nein: Die Termine würden platzen. Eine Woche später, nachdem der Auftraggeber eine Nutzenrechnung vorgelegt hat, stimmt die Person zu und stellt den Plan so um, dass sich der Termin nur um zehn Tage verschiebt. Das „Nein“ war keine Sturheit, sondern Schutz des Ergebnisses – doch das Gespräch mit Zahlen hätte man gleich beginnen sollen."
       }
     },
     "CD": {
@@ -245,6 +375,16 @@
         "I": "Beginnen Sie mit der Anerkennung der Idee; üben Sie Kritik konkret und ohne Schärfe.",
         "S": "Formulieren Sie Anmerkungen behutsam und würdigen Sie den Beitrag ausdrücklich: Kälte verletzt S mehr, als es scheint.",
         "C": "Begrenzen Sie die Zeit für die Analyse und legen Sie vorab fest, wo Sie aufhören."
+      },
+      "deep": {
+        "vs": "Der Typ Perfektionist unterscheidet sich vom Typ Stratege (DC) durch die Reihenfolge: Hier steht die Qualität vor dem Ziel. Strategen wollen ein Ergebnis und verlangen dafür Qualität, Perfektionisten wollen, dass es richtig ist, und sind bereit, dafür zu kämpfen. Vom Typ Analytiker (C) unterscheidet Perfektionisten der Nachdruck: sie sehen einen Fehler nicht nur, sondern bestehen auf seiner Korrektur. Vom Typ Experte (CS) weniger Geduld und mehr Bereitschaft zu streiten.",
+        "work": "Im Beruf sind Perfektionisten die letzte Instanz vor dem Kunden: sie prüfen, finden Fehler, fordern Korrekturen und unterschreiben nichts, bei dem sie nicht sicher sind. Stark sind sie in fachlich anspruchsvollen Aufgaben: Audit, Systemarchitektur, Kontrolle, wissenschaftliche Arbeit. Schwer fällt es ihnen, wenn Qualität Terminen geopfert wird – und das sagen sie offen.",
+        "lead": "Als Führungskraft setzen Perfektionisten hohe Standards und halten sich selbst daran. Das Team arbeitet professionell und macht wenig Fehler. Die Schwachstellen sind Kritik und Kontrolle: Perfektionisten bemerken Fehler schneller als Erfolge, machen die Arbeit anderer noch einmal selbst und können den Eindruck erwecken, dass man es ihnen nie recht machen kann.",
+        "managed": "Perfektionisten brauchen eine kompetente Führungskraft, die Qualität schätzt und erklärt, warum manchmal „gut“ genügt. Gut arbeiten sie, wenn die Kriterien vorher klar und die Entscheidungen begründet sind. Eile ohne Grund, Schlamperei und inkompetente Anmerkungen lösen bei ihnen harten Widerstand aus.",
+        "pressure": "Unter Druck werden Perfektionisten schärfer und fordernder: sie weisen hart auf Fehler hin, trauen der Arbeit anderer nicht mehr und machen alles selbst. Im Konflikt argumentieren sie mit Gründen und weichen nicht zurück, bis sie selbst vom Gegenteil überzeugt sind. Perfektionisten können in der Sache recht haben und dabei die Beziehung verlieren.",
+        "develop": ["Feedback mit dem beginnen, was gut gelungen ist", "Qualitätskriterien vor Beginn der Arbeit erklären, nicht danach", "Fehler, die wichtig sind, von solchen unterscheiden, die man durchgehen lassen kann", "Kolleginnen und Kollegen Teile der Arbeit ohne vollständige Nachprüfung anvertrauen"],
+        "agree": "Mit Perfektionisten einigen Sie sich gut vorbereitet: Fakten, Kriterien, Logik. Streiten Sie nicht emotional. Muss die Arbeit abgegeben werden, bevor sie aus Sicht des Perfektionisten fertig ist, vereinbaren Sie ein Mindestmaß an Qualität und was später nachgebessert wird – das löst den inneren Widerstand.",
+        "example": "Vor einem Release findet eine Person vom Typ Perfektionist zwölf Mängel und verlangt, die Veröffentlichung zu verschieben. Die Projektleitung bittet, die drei wichtigsten auszuwählen. Die Person willigt ein, das Release erscheint pünktlich, und die übrigen neun werden in der nächsten Version behoben. Die wichtigste Änderung: Das Kriterium „Was blockiert das Release?“ wird jetzt vor Beginn der Prüfung abgestimmt."
       }
     },
     "CS": {
@@ -257,6 +397,16 @@
         "I": "Erklären Sie Ihre Schlüsse in einfachen Worten und halten Sie die Emotionen von I nicht für Leichtsinn.",
         "S": "Besprechen Sie Veränderungen in kleinen Schritten und kritisieren Sie nicht vor allen.",
         "C": "Vereinbaren Sie vorab, welcher Detaillierungsgrad ausreicht."
+      },
+      "deep": {
+        "vs": "Der Typ Experte unterscheidet sich vom Typ Spezialist (SC) durch die Reihenfolge: Hier steht die Genauigkeit vor der Stabilität. Spezialisten achten darauf, dass der Prozess läuft, Experten darauf, dass er richtig läuft. Vom Typ Analytiker (C) unterscheidet Experten Geduld und Sanftheit: sie streiten weniger und machen mehr. Vom Typ Perfektionist (CD) das Fehlen von Druck: sie weisen auf einen Fehler hin, drängen aber nicht.",
+        "work": "Im Beruf sind Experten die Fachleute, denen man komplexe Aufgaben anvertraut: Entwicklung, Berechnungen, Diagnose, Dokumentation. Experten arbeiten bedacht, prüfen Details und stützen sich auf bewährte Methoden. Das Team vertraut ihren Schlüssen. Schwer fallen ihnen Ungewissheit, Hektik und häufige Wechsel zwischen Aufgaben.",
+        "lead": "Als Führungskraft sind Experten eher erfahrene Fachleute als Vorgesetzte: sie helfen beim Verstehen, teilen Wissen und achten auf Qualität. In ihrem Team geht es ruhig und professionell zu. Die Schwachstellen sind Vorsicht und Unentschlossenheit in Konflikten: Experten meiden harte Gespräche und vertreten das Team gegenüber der Leitung nicht immer.",
+        "managed": "Experten brauchen eine Führungskraft, die klare Aufgaben stellt, Zeit für gründliche Arbeit lässt und Veränderungen vorab erklärt. Wichtig sind ihnen Kompetenz und Ruhe. Druck, die Forderung nach sofortigen Antworten und ständig wechselnde Prioritäten bringen sie aus dem Arbeitsrhythmus.",
+        "pressure": "Unter Druck ziehen sich Experten zurück: sie prüfen erneut, schieben Entscheidungen auf und meiden Kontakt. Offen streiten sie selten, arbeiten aber mitunter still so weiter, wie sie es für richtig halten. Konflikte beschäftigen sie lange und belasten sie stark.",
+        "develop": ["Die eigene Meinung in der Besprechung äußern, nicht erst danach", "Auch bei unvollständigen Informationen entscheiden, wenn ein Fehler wenig kostet", "Um Bedenkzeit bitten, statt einem unerfüllbaren Termin zuzustimmen", "Wissen aktiver teilen, nicht nur auf Anfrage"],
+        "agree": "Mit Experten einigen Sie sich schriftlich und rechtzeitig: Aufgabe, Kriterien, Termine, Datenquellen. Lassen Sie Bedenkzeit und fragen Sie unter vier Augen nach ihrer Meinung – in der großen Runde schweigen Experten womöglich. Sie schätzen es, wenn ihre Fachkompetenz respektiert wird und niemand verlangt, es „irgendwie schnell“ zu machen.",
+        "example": "In einer Besprechung wird eine neue Systemarchitektur diskutiert, die Person vom Typ Experte schweigt. Zwei Tage später schickt sie eine E-Mail mit drei Risiken, die niemand bedacht hat. Die Führungskraft führt eine Regel ein: Wichtige Entscheidungen fallen einen Tag nach der Diskussion, damit alle Zeit zum Nachdenken haben. Die Vorschläge der Person kommen jetzt vor den Entscheidungen, nicht danach."
       }
     },
     "CI": {
@@ -269,6 +419,16 @@
         "I": "Einen Draht zueinander finden Sie leicht; achten Sie darauf, dass aus dem Gespräch ein Plan entsteht.",
         "S": "Werfen Sie Ihre Schlüsse nicht kurzfristig um und lassen Sie Zeit: S braucht Planbarkeit.",
         "C": "Sprechen Sie die Sprache der Daten, aber streiten Sie nicht über jedes Detail."
+      },
+      "deep": {
+        "vs": "Der Typ Berater unterscheidet sich vom Typ Kommunikator (IC) durch die Reihenfolge: Hier steht die Analyse vor dem Austausch. Kommunikatoren treten eher erst auf und prüfen danach, Berater arbeiten sich zuerst ein und erklären erst dann. Vom Typ Analytiker (C) unterscheidet Berater die Leichtigkeit im Umgang und der Wunsch, Wissen zu teilen, vom Typ Experte (CS) die Offenheit und das Interesse an Menschen, nicht nur an der Aufgabe.",
+        "work": "Im Beruf übersetzen Berater zwischen Fachleuten und allen anderen: sie durchdringen eine komplizierte Frage und erklären sie verständlich. Stark sind sie in Analysen mit Ergebnispräsentation, in der Beratung, in Schulungen und im technischen Vertrieb. Schwer fällt es ihnen, ohne Vorbereitung aufzutreten oder eine Analyse zugunsten des Tempos zu kürzen.",
+        "lead": "Als Führungskraft erklären Berater Entscheidungen, bilden das Team weiter und achten auf Qualität. Die Menschen verstehen die Logik der Aufgaben und wachsen fachlich. Die Schwachstellen: langes Abwägen vor Entscheidungen und die Scheu, ein Fazit zu teilen, bevor es vollständig geprüft ist.",
+        "managed": "Berater brauchen eine Führungskraft, die sowohl die Tiefe der Analyse als auch die Fähigkeit zu erklären schätzt. Gut arbeiten sie, wenn sie sich vorbereiten und das Ergebnis selbst vorstellen können. Hilfreich ist eine Absprache, wann ein vorläufiges Fazit genügt – das löst ihren inneren Konflikt zwischen „prüfen“ und „teilen“.",
+        "pressure": "Unter Druck schwanken Berater: Mal ziehen sie die Prüfung in die Länge, mal teilen sie hastig ein unfertiges Fazit. Berater können verschlossen und formell werden. Im Konflikt stützen sie sich auf Argumente und versuchen, ihre Position zu erklären; werden sie nicht gehört, ziehen sie sich zurück.",
+        "develop": ["Vorläufige Schlüsse mit dem Vermerk „Entwurf“ teilen", "Entscheidungen rechtzeitig treffen, auch ohne völlige Sicherheit", "Erklärungen vereinfachen für alle, die ein Fazit brauchen und nicht die Methode", "Die eigene Position vertreten, wenn die Daten sicher sind"],
+        "agree": "Mit Beratern einigen Sie sich im Dialog: Besprechen Sie die Aufgabe, lassen Sie Zeit zum Einarbeiten und bitten Sie darum, das Fazit mit eigenen Worten zu erklären. Sagen Sie klar, welcher Grad an Genauigkeit bis wann nötig ist. Berater schätzen Interesse an ihren Schlüssen und Fragen, die in die Tiefe gehen.",
+        "example": "Ein Kunde bittet eine Person vom Typ Berater, ein Projekt „schnell einzuschätzen“. Die Person sammelt eine Woche lang Daten und schickt einen ausführlichen Bericht, als die Entscheidung längst ohne sie gefallen ist. Beim nächsten Projekt vereinbart sie zwei Stufen: eine vorläufige Einschätzung in zwei Tagen und den vollständigen Bericht nach einer Woche. Der Kunde bekommt rechtzeitig eine Antwort und die Person Zeit für Tiefe."
       }
     }
   },
@@ -333,7 +493,7 @@
     },
     "faq": {
       "title": "Häufige Fragen zum DISG-Test",
-      "description": "Antworten auf häufige Fragen: Wie lange dauert der DISG-Test, ist er kostenlos, wie genau ist er, wofür stehen D, I, S, C, kann ein ganzes Team teilnehmen und wohin geht das Ergebnis?",
+      "description": "Häufige Fragen zum DISG-Test: Dauer, Kosten, Genauigkeit, Bedeutung von D, I, S, C, Einsatz im Team und wohin das Ergebnis geht.",
       "h1": "Häufige Fragen",
       "lead": "Kurze Antworten auf das, was vor dem Test und nach dem Ergebnis am häufigsten gefragt wird – von „Wie lange dauert der Test?“ bis „Welcher DISG-Typ bin ich?“.",
       "items": [
@@ -642,7 +802,7 @@
     },
     "pdf": {
       "title": "DISG-Test PDF kostenlos: Fragebogen zum Ausdrucken mit Auswertung",
-      "description": "DISG-Test als PDF kostenlos: 24 Blöcke, Schlüssel, Auswertungstabelle, 16 Profile. Herunterladen, ausdrucken, auf Papier ausfüllen. Online-Version wertet automatisch aus.",
+      "description": "DISG-Test als PDF kostenlos: 24 Blöcke, Schlüssel, Auswertungstabelle, 16 Profile. Herunterladen, ausdrucken, auf Papier ausfüllen.",
       "h1": "DISG-Test als PDF: herunterladen und ausdrucken",
       "lead": "Dieselbe Vollversion des Tests wie online, nur als Datei zum Ausdrucken: 24 Blöcke mit je vier Aussagen, Schlüssel zu den Stilen, Auswertungstabelle und Beschreibung aller 16 Profile. Die Datei ist kostenlos und erfordert keine Anmeldung.",
       "sections": [
@@ -673,7 +833,7 @@
     },
     "teams": {
       "title": "DISG für Teams, Führungskräfte und HR: so nutzen Sie den Test",
-      "description": "DISG im Team: Stilkarte, Rollenverteilung, Konflikte, Onboarding, Feedback, Vertrieb. So führen Sie den kostenlosen Test im Team durch und besprechen die Ergebnisse.",
+      "description": "DISG im Team: Stilkarte, Rollen, Konflikte, Onboarding, Feedback, Vertrieb. So führen Sie den kostenlosen Test im Team durch und besprechen die Ergebnisse.",
       "h1": "DISG für Teams und HR",
       "lead": "DISG wird meist nicht allein gemacht, sondern im Team: um zu verstehen, warum Kolleginnen und Kollegen unterschiedlich reagieren, Regeln für die Kommunikation zu vereinbaren und Rollen sinnvoll zu verteilen. Hier finden Führungskräfte und HR, wie sie den Test durchführen, die Teamkarte lesen und die Ergebnisse ohne Schubladen besprechen.",
       "sections": [
@@ -739,7 +899,7 @@
     },
     "mbti": {
       "title": "DISG oder MBTI: Unterschiede, Testwahl und die Rolle der Big Five",
-      "description": "DISG, MBTI und Big Five im Vergleich: Was jedes Modell misst, wie viele Typen, wie zuverlässig, wo es eingesetzt wird und welcher Test passt. Kostenloser DISG-Test.",
+      "description": "DISG, MBTI und Big Five im Vergleich: Was jedes Modell misst, wie viele Typen, wie zuverlässig, wo es eingesetzt wird und welcher Test passt.",
       "h1": "DISG oder MBTI: der Unterschied",
       "lead": "DISG und MBTI sind die beiden bekanntesten Typologien in der Teamarbeit, und sie werden ständig verwechselt. Beide liefern vier Buchstaben, beide sprechen von „Typen“, aber sie messen Verschiedenes und beantworten verschiedene Fragen. Im Folgenden ein kurzer Vergleich, auch mit den Big Five, und ein praktischer Rat, was Sie wählen sollten.",
       "sections": [
@@ -797,7 +957,7 @@
     },
     "compatibility": {
       "title": "DISG-Typen im Team: So arbeiten D, I, S und C zusammen",
-      "description": "Zusammenarbeit der DISG-Typen, alle Paare: D–I, D–S, D–C, I–S, I–C, S–C und gleiche Stile. Was jedes Paar verbindet, wo Reibung entsteht, was hilft. Kostenloser Test.",
+      "description": "Zusammenarbeit der DISG-Typen, alle Paare: D–I, D–S, D–C, I–S, I–C, S–C und gleiche Stile. Was jedes Paar verbindet, wo Reibung entsteht, was hilft.",
       "h1": "DISG-Typen: Zusammenarbeit im Team",
       "lead": "In DISG gibt es keine unvereinbaren Paare: Zwei beliebige Stile können zusammenarbeiten, wenn sie die Unterschiede verstehen. Aber jedes Paar hat seine eigenen Stärken und seine typischen Konflikte. Wählen Sie in der Matrix zwei Stile, um zu erfahren, was sie verbindet, wo Reibung entsteht und was jeder tun kann.",
       "sections": [
@@ -1081,7 +1241,7 @@
     "nav.materials": "Mehr über DISG",
 
     "pages.styles.title": "Die vier DISG-Typen D, I, S, C – Merkmale, Stärken, Motivation",
-    "pages.styles.description": "Die vier DISG-Typen (Verhaltensstile): Dominanz, Initiative, Stetigkeit, Gewissenhaftigkeit. Merkmale, Stärken, Entwicklungsfelder, Motivation, Verhalten unter Stress.",
+    "pages.styles.description": "Die vier DISG-Typen: Dominanz, Initiative, Stetigkeit, Gewissenhaftigkeit. Merkmale, Stärken, Entwicklungsfelder, Motivation, Verhalten unter Stress.",
     "pages.styles.h1": "DISG-Persönlichkeitstypen: die vier Stile",
     "pages.styles.lead": "DISG (DISC) beschreibt Verhalten auf vier Skalen. Jeder Mensch trägt alle vier Stile in sich, ein bis zwei sind jedoch stärker ausgeprägt. Im Folgenden: Was jeden Stil auszeichnet, was ihn motiviert und wie man mit ihm am besten kommuniziert.",
     "pages.profiles.title": "16 DISG-Persönlichkeitstypen: alle Profile des Tests mit Beschreibung",
@@ -1089,6 +1249,7 @@
     "pages.profiles.h1": "16 DISG-Profile und Persönlichkeitstypen",
     "pages.profiles.lead": "Das Testergebnis ist Ihr Hauptstil und, falls ausgeprägt, ein Nebenstil. So ergeben sich 16 Profile: vier „reine“ und zwölf Kombinationen. Finden Sie Ihres oder machen Sie den Test, um es herauszufinden.",
     "pages.profile.title": "{name} ({key}) – DISG-Profil: Beschreibung, Stärken, Entwicklungsfelder",
+    "pages.profile.h1": "{name} ({key}) – DISG-Profil",
     "pages.profile.description": "DISG-Profil {key} „{name}“: {summary}",
     "pages.profile.eyebrow": "DISG-Profil · {key}",
     "pages.profile.primary": "Hauptstil: {name} ({key})",
@@ -1102,6 +1263,16 @@
     "pages.profile.with": "So kommunizieren Sie mit anderen Stilen",
     "pages.profile.withKey": "Mit dem Stil {name} ({key})",
     "pages.profile.compatLink": "Zusammenarbeit der DISG-Typen: alle Paare →",
+    "pages.profile.vs": "Abgrenzung zu ähnlichen Profilen",
+    "pages.profile.work": "{name} im Beruf",
+    "pages.profile.lead": "{name} als Führungskraft",
+    "pages.profile.managed": "Was dieser Typ von der Führungskraft braucht",
+    "pages.profile.pressure": "Unter Druck und im Konflikt",
+    "pages.profile.develop": "Woran sich arbeiten lässt",
+    "pages.profile.agree": "So finden Sie eine Einigung",
+    "pages.profile.example": "Ein Beispiel aus der Praxis",
+    "pages.profile.styleMore": "Mehr zum Stil {key}: {name}",
+    "pages.profile.related": "Ähnliche Profile",
     "pages.compat.title": "{a} und {b}: Zusammenarbeit der DISG-Typen im Beruf",
     "pages.compat.description": "So arbeiten die Stile {a} und {b} zusammen: was sie verbindet, wo Reibung entsteht und was jeder tun kann. Kostenloser DISG-Test auf dieser Seite.",
     "pages.compat.h1": "{a} und {b}: Zusammenarbeit im Team",

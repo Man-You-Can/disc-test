@@ -4,7 +4,7 @@
   "name": "Türkçe",
   "dateLocale": "tr-TR",
   "title": "Ücretsiz DISC kişilik testi — 10 dakikada sonuç",
-  "description": "Ücretsiz Türkçe DISC kişilik testi: 24 soru, 10 dakika, kayıt yok. Ana stilinizi, güçlü yönlerinizi ve gelişim alanlarınızı öğrenin. Sonuç anında ve e-postanızda.",
+  "description": "Ücretsiz Türkçe DISC kişilik testi: 24 soru, 10 dakika, kayıt yok. Ana stilinizi, güçlü yönlerinizi ve gelişim alanlarınızı hemen öğrenin.",
   "brand": "DISC Testi",
   "keys": { "D": "Baskınlık", "I": "Etkileyicilik", "S": "İstikrar", "C": "Titizlik" },
   "short": { "D": "Sonuç ve kontrol", "I": "İnsanlar ve coşku", "S": "Destek ve denge", "C": "Doğruluk ve kalite" },
@@ -89,6 +89,16 @@
         "I": "İşe geçmeden önce karşınızdaki insana iki dakika ayırın ve katkısını açıkça takdir edin.",
         "S": "Temponuzu düşürün, değişiklikleri önceden haber verin ve soru sorduğunuzda sessizliği doldurmadan yanıtı bekleyin.",
         "C": "Kararlarınızı verilerle destekleyin ve kontrol için zaman tanıyın: C için bu, işi uzatmak değil, işin kendisidir."
+      },
+      "deep": {
+        "vs": "Saf D, karma profillerden “yumuşatıcı” bir unsuru olmamasıyla ayrılır. Öncü (DI) profilinde kararlılığı çekicilik, Stratejist (DC) profilinde hesap, Pragmatist (DS) profilinde sabır dengeler. Hedef Avcısı ise dolaysız hareket eder: hedefi görür, en kısa yolu seçer ve sevilmek ya da her şeyi yeniden kontrol etmek için enerji harcamaz. D’nin ikinci sırada olduğu Uygulayıcı (SD) ve Mükemmeliyetçi (CD) profillerinden temposuyla ayrılır: koşulların olgunlaşmasını beklemez, onları kendisi yaratır.",
+        "work": "Hedef Avcısı iş yerinde hemen fark edilir: ne yapılacağını ilk o söyler, en zor görevi üstlenir ve ayrıntılardan önce tarihleri sorar. En iyi, ölçülebilir bir hedefin ve ona ulaşma yolunu seçme özgürlüğünün olduğu yerde çalışır: satış hedefi, lansman, kriz, müzakere. Rutin işler ve onay süreçleri onu yorar, bunları kolayca atlamaya başlar. Her şey plana göre gittiğinde canı sıkılır; bu yüzden bir sonraki meydan okumayı çoğu zaman kendisi arar.",
+        "lead": "Hedef Avcısı yönetici olarak iddialı hedefler koyar, hızlı karar verir ve başarısızlıkların sorumluluğunu üstlenir. Ekip nereye gittiğini bilir ve hızla ilerler. Zayıf noktası herkes adına karar vermesidir: fikir sormaz, sözü keser, sessizliği onay sayar. Onun ekibinde bağımsız ve atak çalışanlar yükselir; temkinli ve düşünceli olanlar ise gölgede kalır ya da tamamen ayrılır.",
+        "managed": "Hedef Avcısı, hedefi koyan ama ona nasıl ulaşılacağına karışmayan bir yöneticiyle en iyi çalışır. Açık sözlülüğe, hızlı yanıtlara ve çabanın değil sonucun takdir edilmesine değer verir. Mikro yönetim, uzun onay süreçleri ve belirsiz görevler onu sinirlendirir ve işi dolambaçlı yoldan halletme isteği uyandırır. İşe yarayan anlaşma şudur: hedef bu, sınırlar bunlar, son tarih bu; gerisi sizde.",
+        "pressure": "Baskı altında Hedef Avcısı hızlanır ve sertleşir: daha kısa ve daha keskin konuşur, başkalarının işini yapmaya başlar, kararları başkalarının elinden alır. Çatışmada doğrudan saldırıya geçer ve tartışmayı kazanılması gereken bir yarış olarak görür. Çabuk yatışır ve genellikle kin tutmaz, ama söylediklerini çevresindekiler ondan daha uzun süre hatırlar.",
+        "develop": ["Kararını açıklamadan önce “Siz ne düşünüyorsunuz?” diye sormak", "İş arkadaşlarının temkinliliğini sabotajdan ayırt etmek", "Yalnızca sonucu değil, başkalarının katkısını da fark edip dile getirmek", "İşin sıkıcı kısmını sonuna kadar götürmek ya da açıkça başkasına devretmek"],
+        "agree": "Hedef Avcısı ile kısa ve öz anlaşılır: hedef, fayda, seçenekler, süre. Onunla duygularla değil, olgularla tartışın ve tek bir çözüm yerine seçenekler sunun. Onu durdurmanız gerekiyorsa aceleciliğin sonucu nasıl tehlikeye attığını gösterin: bu, kulak vereceği bir argümandır.",
+        "example": "Proje bir ay gecikmiş. Hedef Avcısı ekibi toplar, on dakikada görevleri yeniden dağıtır, iki onay adımını iptal eder ve müşteriyi kendisi arar. Bir hafta sonra proje takvimi yakalar, ama iki çalışan fikirlerinin sorulmadığından yakınır ve acele içinde sözleşmedeki bir hata gözden kaçar. “Hangi riskleri görmüyorum?” sorusuna yarım saat daha ayırsaydı, aynı sonuca kayıpsız ulaşılabilirdi."
       }
     },
     "I": {
@@ -101,6 +111,16 @@
         "I": "Notları kimin tutacağını kararlaştırın ve konuşmayı tarihleri belli bir yapılacaklar listesiyle bitirin.",
         "S": "Planları yolda değiştirmeyin ve fikrini doğrudan sorun: S fikrini kendiliğinden öne sürmez.",
         "C": "Verilerinizi hazırlayın, düşünmesi için zaman tanıyın ve ayrıntıları kontrol etmesini ret olarak yorumlamayın."
+      },
+      "deep": {
+        "vs": "İlham Veren saf I’dır: her şey insanlarla kurulan bağa dayanır. Motivatör (ID) profilinde çekiciliğe kararlılık ve önderlik isteği, Mentor (IS) profilinde yumuşaklık ve ilgi, İletişimci (IC) profilinde olgulara duyulan sevgi eklenir. İlham Veren ise her şeyden önce işin ilginç olmasını ve insanların yanında olmasını ister. I’nın ikinci planda kaldığı Diplomat (SI) ve Danışman (CI) profillerinden sesinin gürlüğü ve hızıyla ayrılır: sohbete davet edilmeyi beklemez.",
+        "work": "İlham Veren iş yerinde herkesi tanıyan kişidir: yeni gelenle ilk o tanışır, insanları toplantıya o toplar, zor müşteriyle ortak dili o bulur. En çok ikna etmenin, sunum yapmanın, fikir üretmenin ve insanları bir araya getirmenin gerektiği işlerde parlar. Raporlu, tablolu ve tekrarlayan işlerin olduğu uzun projelerde ise zorlanır: ilgisi söner ve önemli işler “sonraya” kalır.",
+        "lead": "İlham Veren yönetici olarak bir atmosfer yaratır: över, başarıları kutlar, fikrini herkese bulaştırır ve insanlara özgürlük tanır. Ekip onu sever ve hedefe inandığı sürece fazlasıyla çalışmaya hazırdır. Zayıf noktası tutarlılıktır: yeni bir fikir için öncelikleri değiştirir, tatsız konuşmalardan kaçar ve geçen hafta verdiği sözü unutabilir.",
+        "managed": "İlham Veren, başarılarını yüksek sesle takdir eden ve insanlarla iletişim kurmasına alan tanıyan bir yöneticiyle iyi çalışır. Yalnız başına ve kuru bir denetim altında verimi düşer. İşini yapılandırmasına yardım eden (anlaşmaları yazıya döken, ara tarihler koyan), ama bunu bir gözetmen gibi değil, bir ortak gibi yapan yönetici ona iyi gelir.",
+        "pressure": "Baskı altında İlham Veren daha çok ve daha hızlı konuşur, destek ve müttefik arar, yetiştiremeyeceği sözler verebilir. Herkesin önünde eleştirilmeyi zor kaldırır ve bunu sempatinin geri çekilmesi olarak algılar. Çatışmada ortamı yumuşatmayı ya da işi şakaya vurmayı tercih eder; ciddi biçimde incinirse duygusal olarak parlar, ama çabuk yatışır.",
+        "develop": ["Anlaşmaları ve tarihleri akılda tutmak yerine hemen yazıya dökmek", "Bir sonrakine geçmeden önce bir fikri sonuca ulaştırmak", "Bilgileri insanlarla paylaşmadan önce doğruluğunu kontrol etmek", "Tatsız şeyleri, sorun büyümeden açıkça söylemek"],
+        "agree": "İlham Veren ile anlaşırken canlı bir sohbetle ve onun fikirleriyle başlayın, ayrıntıları sona bırakın. Kararın insanlara nasıl yansıyacağını ve başarının neye benzeyeceğini gösterin. Toplantının sonuçlarını somut tarihlerle yazılı olarak gönderin: sözlü olarak seve seve kabul eder, ama yazılı kayıt olmadan unutabilir.",
+        "example": "İlham Veren bir akşamda bir iş ortağıyla ortak kampanya üzerinde anlaşır ve ertesi gün bunu tüm şirkete duyurur. Pazarlama ekibi tarihleri genel sohbet grubundan öğrenir, bütçe de onaylanmamıştır. Kampanya yine de onun enerjisi sayesinde başarılı geçer, ama son dakika telaşıyla. Yüksek C’li bir iş arkadaşını hemen işin içine katsaydı, o bir saatte bir plan çıkarırdı ve coşku yine aynı kalırdı."
       }
     },
     "S": {
@@ -113,6 +133,16 @@
         "I": "Sınırlarınızı açıkça söyleyin ve plan isteyin: tek başına fikir sizin için yeterli değildir.",
         "S": "Birbirinize son tarih koyun ve karar veren kişi rolünü sırayla üstlenin.",
         "C": "Eleştirilerini kaliteye gösterilen özen olarak görün ve değişiklikleri küçük adımlarla önerin."
+      },
+      "deep": {
+        "vs": "Dayanak saf S’dir: onun için en önemlisi istikrar ve ilişkilerdir. Diplomat (SI) profilinde sakinlik girişkenlikle, Usta (SC) profilinde kurallara bağlılıkla, Uygulayıcı (SD) profilinde hedefe ulaşmadaki azimle birleşir. Dayanak ise orta yolu tutar: öne atılmaz, ilgi aramaz, sistem kurmaya uğraşmaz; sadece her şeyin işlemesini ve insanların kendilerini güvende hissetmesini sağlar. Uzman (CS) ve Mentor (IS) profillerinden, istikrarı hem doğruluktan hem iletişimden daha önemli saymasıyla ayrılır.",
+        "work": "Dayanak iş yerinde çoğu zaman izne çıkana kadar fark edilmez. Kimin ne söz verdiğini hatırlar, yeni gelenlere yardım eder, kimsenin uğraşmak istemediği soruları yanıtlar ve başkalarının unuttuğu projeleri sonuna kadar götürür. En rahat olduğu yer, süreçlerin anlaşılır, ekibin istikrarlı olduğu ve sonucun hızla değil güvenilirlikle ölçüldüğü ortamlardır. Sık yeniden yapılanmalar ve “yangın söndürme” modunda çalışmak onu tüketir.",
+        "lead": "Dayanak yönetici olarak ilgili ve adildir: her çalışanını tanır, ekibini korur, zor anda kimseyi yalnız bırakmaz. Ekibinde işten ayrılma oranı düşük, ortam sakindir. Zayıf noktaları: sevilmeyecek kararları erteler, nadiren sert geri bildirim verir ve ekibine fazla yük bindirmemek için onların işini kendisi üstlenir.",
+        "managed": "Dayanak, değişiklikleri önceden haber veren, nedenlerini açıklayan ve alışması için zaman tanıyan bir yöneticiye ihtiyaç duyar. Sakin bir üsluba, net beklentilere ve göze batmayan emeğine teşekkür edilmesine değer verir. Ani rota değişiklikleri, bağırma ve herkesin önünde baskı, hiçbir şey söylemese bile güvenini uzun süre sarsar.",
+        "pressure": "Baskı altında Dayanak yavaşlar ve susar. Tartışmamak için kabul eder, daha da fazla iş üstlenir ve çevresinin fark etmediği bir hoşnutsuzluk biriktirir. Çatışmada kenara çekilir ya da geri adım atar; baskı uzun sürerse herkesi şaşırtarak direnebilir ya da istifa edebilir. Dışarıdan “birdenbire” gibi görünür, oysa bu karar onun için çoktan verilmiştir.",
+        "develop": ["Zaten yükü ağırken yeni görevlere “hayır” demek", "Katılmadığını, mesele henüz küçükken hemen dile getirmek", "Tam emin olmayı beklemeden yeni şeyleri küçük adımlarla denemek", "Başkalarının fark etmesini beklemek yerine kendi sonuçlarından söz etmek"],
+        "agree": "Dayanak ile sakin bir şekilde ve önceden anlaşın. Neyin ve neden değiştiğini, neyin aynı kalacağını ve ona nasıl destek olacağınızı açıklayın. Hemen yanıt beklemeyin: düşünmesi için bir gün tanıyın ve fikrini genel toplantıda değil, birebir sorun. Bir süre düşündükten sonra verdiği “evet”, baskı altında hızla verilen “evet”ten daha güvenilirdir.",
+        "example": "Şirket yeni bir muhasebe sistemine geçiyor. Dayanak sistemi akşamları sessizce öğrenir, iş arkadaşlarına yardım eder ve kimseye şikâyet etmez. Bir ay sonra bir buçuk kişilik iş yaptığı ve ayrılmayı düşündüğü ortaya çıkar. Yönetici erkenden “Geçiş nasıl gidiyor, sizi zorlayan ne?” diye sorsaydı, sorunu istifa dilekçesinden üç hafta önce öğrenirdi."
       }
     },
     "C": {
@@ -125,6 +155,16 @@
         "I": "Önce fikrin değerini teslim edin, vardığınız sonuçları da sade bir dille anlatın.",
         "S": "Eleştirinizi yumuşatın ve katkısını açıkça dile getirin: S için ortamın havası sonucun bir parçasıdır.",
         "C": "Yeterli kalite düzeyini baştan belirleyin ve analize ayrılan süreyi sınırlayın."
+      },
+      "deep": {
+        "vs": "Analist saf C’dir: onu mantık ve kalite yönlendirir. Mükemmeliyetçi (CD) profilinde titizliğe talepkârlık ve kararlılık, Uzman (CS) profilinde sabır ve yöntemlilik, Danışman (CI) profilinde açıklama ve paylaşma isteği eklenir. Analist ise her şeyden önce konuyu iyice anlamak ve işi doğru yapmak ister. C’nin ikinci planda olduğu Stratejist (DC) ve İletişimci (IC) profillerinden, doğruluğu hem hızdan hem bıraktığı izlenimden daha önemli saymasıyla ayrılır.",
+        "work": "Analist iş yerinde belgeleri sonuna kadar okuyan, rahatsız edici sorular soran ve herkesin gözünden kaçan hatayı bulan kişidir. En iyi verilerle, sistemlerle, standartlarla ve hatanın bedelinin yüksek olduğu görevlerle çalışır. Zamana, sessizliğe ve net kriterlere ihtiyaç duyar. “Göz kararı” yapılan işler, sürekli görev değiştirmek ve gerekçesiz kararlar içinde bir itiraz uyandırır.",
+        "lead": "Analist yönetici olarak süreçleri kurar, net standartlar koyar ve gerekçeli kararlar alır. Ekibinde kaos da, baştan yapılan iş de azdır. Zayıf noktaları: karar vermesi uzun sürer, ayrıntıları denetler, övdüğünden çok eleştirir ve insanların sıcaklığa ve takdire ihtiyaç duyduğunu fark etmeyebilir.",
+        "managed": "Analist, görevi açıkça ve yazılı olarak veren, kalite kriterlerini açıklayan ve “hemen şimdi” yanıt beklemeyen bir yöneticiye ihtiyaç duyar. Karizmaya değil, yetkinliğe ve mantığa değer verir. Belirsiz talimatlar, açıklamasız değişen talepler ve somut olmayan eleştiriler güvenini en hızlı sarsan şeylerdir.",
+        "pressure": "Baskı altında Analist ayrıntılara gömülür: yeniden kontrol eder, daha fazla veri toplar, kararı erteler, içine kapanır ve eleştirel olur. Çatışmada argümanlarla ve kurallardan alıntılarla tartışır; argümanlar işe yaramazsa susar ama fikrinden vazgeçmez. Karşı tarafın duygusal baskısını zayıf bir pozisyonun işareti olarak görür.",
+        "develop": ["Hatanın bedeli düşükken eksik bilgiyle de karar verebilmek", "Önemliyi önemsizden ayırmak ve zaten yeterince iyi olanı cilalamaya devam etmemek", "Geri bildirime iyi yapılanlarla başlamak", "Yalnızca bitmiş sonuçları değil, ara sonuçları da paylaşmak"],
+        "agree": "Analist ile rakamlar, belgeler ve anlaşılır bir mantıkla anlaşın. İnceleyebilmesi için materyalleri önceden gönderin. Önemsiz görünse bile sorularını yanıtlayın: kararın iyi düşünülüp düşünülmediğini böyle sınar. Onu acele ettiriyorsanız burada hızın neden tam kontrolden daha önemli olduğunu açıklayın.",
+        "example": "Müşteriye gidecek bir raporu göndermeden önce Analist verilerde %3’lük bir tutarsızlık bulur. Yönetici “Olduğu gibi gönderelim, kimse fark etmez” der. Analist üç saat boyunca nedenini arar ve sonraki tüm raporları da bozacak bir veri aktarımı hatası bulur. Teslim yarım gün kayar ve bu, haklı çıktığı bir tartışmadır. Ama başka bir sefer aynı alışkanlık, ekteki bir virgül yüzünden projeyi geciktirebilir."
       }
     },
     "DI": {
@@ -137,6 +177,16 @@
         "I": "Ortak coşkunun tadını çıkarın, ama sorumluları ve tarihleri belli bir yapılacaklar listesiyle bitirin.",
         "S": "Baskıyı azaltın, değişiklikleri önceden haber verin ve sessizliği onay saymayın.",
         "C": "Veri ve zaman verin: C sizi yavaşlatmıyor, hızınızı hatalara karşı sigortalıyor."
+      },
+      "deep": {
+        "vs": "Öncü, Motivatör (ID) profilinden harflerin sırasıyla ayrılır: onda kararlılık çekiciliğin önündedir. Motivatör önce insanları peşinden sürükler, sonra hedefe ulaşır; Öncü ise hedefe ulaşmak ister ve insanları yol üstünde peşine takar. Saf Hedef Avcısı (D) profilinden anlaşma kurma ve insanları kendine ısındırma becerisiyle, Stratejist (DC) profilinden ise hızı ve tam bir analiz yapmadan risk almaya hazır olmasıyla ayrılır.",
+        "work": "Öncü iş yerinde başlangıçların insanıdır: yeni ürünler, pazarlar, müşteriler, sıfırdan projeler. Hızla müttefik bulur, fikri üst yönetime satar ve başkalarının kaçındığı müzakereleri üstlenir. Proje bakım ve raporlama aşamasına geçince ilgisi azalır ve bir sonraki başlangıcı aramaya başlar.",
+        "lead": "Öncü yönetici olarak örnekliği ve enerjisiyle önden gider: cesur hedefler koyar, hızlı karar verir, herkesin önünde över. İnsanlar onu seve seve izler. Zayıf noktaları: planları yolda değiştirir, iş yükünü hafife alır ve kendisi bir sonraki hedefe koşarken ayrıntıları ekibe bırakabilir.",
+        "managed": "Öncü, ona bağımsızlık ve görünürlük tanıyan bir yöneticiye ihtiyaç duyar: zorlu bir hedef, hareket özgürlüğü ve sonucu kendisinin sunma imkânı. Yavaş süreçlere ve ayrıntılı raporlara tahammül edemez. Riskleri ve ayrıntıları üstlenen, planın nerede gerçekçi olmadığını dürüstçe söyleyen bir yönetici ya da iş arkadaşıyla kurduğu ikili iyi işler.",
+        "pressure": "Baskı altında Öncü hızlanır ve daha yüksek sesle ikna etmeye çalışır: daha çok söz verir, daha ısrarla tartışır, görevin hızlı sonuç gösterebileceği kısmına yönelir. Çatışmada önce karşısındakinin gönlünü kazanmaya çalışır, olmazsa baskı kurar. Herkesin önünde bir tartışmayı kaybetmeyi ağır yaşar.",
+        "develop": ["Söz vermeden önce iş yükünü gerçekçi biçimde değerlendirmek", "Projeyi “gerisi sizde” diyerek değil, anlaşılır bir planla devretmek", "Temkinli iş arkadaşlarının itirazlarını fren değil, bir kontrol olarak dinlemek", "Ayaküstü verilen sözleri takvime not etmek"],
+        "agree": "Öncü ile hızlı ve sonucun resmini çizerek anlaşın: neden, ne kazanacağız, nasıl görünecek. Ona göz önünde olacağı bir rol önerin. Sınırları (bütçe, süre, riskler) baştan belirtin ve yazıya dökün, yoksa coşkunun içinde kaybolurlar.",
+        "example": "Öncü iki toplantıda büyük bir müşteriyi pilot projeye ikna eder ve bir ay içinde başlatma sözü verir. Ekip bu tarihi sözleşme imzalandıktan sonra öğrenir. Pilot iki hafta gecikmeyle başlar, ama müşteri kalır; bu da büyük ölçüde onun kişisel çekiciliği sayesinde olur. Bir dahaki sefere Öncü toplantıya proje yöneticisiyle gider ve tarihi birlikte belirlerler."
       }
     },
     "DC": {
@@ -149,6 +199,16 @@
         "I": "Fikirleri didiklemeden önce sonuna kadar dinleyin ve övgüyü herkesin önünde yapın.",
         "S": "Değişikliğin neden gerektiğini açıklayın ve güvenilirliği için teşekkür edin: S bunu kendisi istemez.",
         "C": "Nerede hızın, nerede doğruluğun gerektiğini belirleyin; kalitenin öncelikli olduğu yerde süre konusunda baskı yapmayın."
+      },
+      "deep": {
+        "vs": "Stratejist, D’nin kararlılığını C’nin titizliğiyle birleştirir ve komşularından bununla ayrılır. Mükemmeliyetçi (CD) kaliteden başlar ve ancak sonra bastırır; Stratejist hedeften başlar ve oraya giden yolda kalite ister. Hedef Avcısı (D) profilinden hesapçılığıyla ayrılır: planı görmeden savaşa atılmaz. Öncü (DI) profilinden ise daha az çekicilik ve daha çok argümanla: coşkuyla değil, mantıkla ikna eder.",
+        "work": "Stratejist iş yerinde riskin yüksek olduğu zor görevleri üstlenir: yeniden yapılanma, bir sistemin devreye alınması, çetin müzakereler, hem hızlı hem hatasız olması gereken projeler. Plan kurar, riskleri hesaplar ve hem kendisi hem başkaları için çıtayı yüksek tutar. Beceriksizliğe ve “kısmetse olur” mantığıyla yapılan işe tahammül edemez. Sonuca varmayan konuşmalar ve keyfe göre alınan kararlar onu sinirlendirir.",
+        "lead": "Stratejist yönetici olarak talepkâr, adil ve öngörülebilirdir: hedefler nettir, standartlar yüksektir, hatalar analiz edilir. Onun yönetiminde ekipler mesleki olarak gelişir. Zayıf noktaları soğukluk ve sürekli değerlendirmedir: nadiren över, hataları çabuk fark eder ve yapılanın hiçbir zaman yeterli olmadığı hissini yaratabilir.",
+        "managed": "Stratejist, saygı duyduğu yetkin bir yöneticiye ihtiyaç duyar: net bir stratejisi olan, kararlarında mantık bulunan ve işin özü üzerine tartışmaya hazır olan. Bağımsızlığa ve bilginin tamamına erişebilmeye değer verir. Gerekçesiz kararlar, yetkin olmayan müdahaleler ve “burada böyle yapılır” yaklaşımı onda açık bir direniş uyandırır.",
+        "pressure": "Baskı altında Stratejist daha sert ve daha eleştirel olur: hataları sert bir dille gösterir, kontrolü ele alır, açıklama yapmayı bırakır. Çatışmada mantıklı ve ısrarlı tartışır, argüman olmadan geri adım atmaz ve tartışmayı ilişkiler pahasına kazanabilir. Böyle anlarda duygusal argümanları reddeder.",
+        "develop": ["Yalnızca hataları düzeltmekle kalmayıp insanların katkısını yüksek sesle takdir etmek", "Kararların yalnızca “ne”sini değil, “neden”ini de açıklamak", "Sonuç aynıysa hedefe farklı yollardan ulaşılmasına izin vermek", "Talepkârlığın ekibin motivasyonunu düşürmeye başladığı anı fark etmek"],
+        "agree": "Stratejist ile hazırlıklı gelerek anlaşın: hedef, veriler, artıları ve eksileriyle seçenekler, riskler. Argümanla tartışanlara saygı duyar, dil dökenlere ise ilgisini kaybeder. Katılmıyorsanız bunu açıkça söyleyin ve nedenini açıklayın: bu, geri adım atmaktan daha çok saygı uyandırır.",
+        "example": "Stratejist, tarihlerin sürekli kaçırıldığı bir departmanı toparlamakla görevlendirilir. Bir ay içinde iş planı, haftalık değerlendirme toplantıları ve kalite kriterleri getirir. Tarihlere uyulmaya başlanır, ama iki güçlü çalışan “burada sadece azar işitiyoruz” diyerek başka bir birime geçmek ister. Stratejist aynı haftalık toplantılarda başarıları da vurgulamaya başladığında ayrılmalar durur, sonuçlar da korunur."
       }
     },
     "DS": {
@@ -161,6 +221,16 @@
         "I": "Fikirleri boş laf diye geçiştirmeyin, ama somut bir plan isteyin.",
         "S": "Karar verme işini siz üstlenin, ama kararınızı açıklayın ve alışması için zaman tanıyın.",
         "C": "Kontrolün değerini kabul edin ve işin hangi kriterlerle tamamlanmış sayılacağını baştan kararlaştırın."
+      },
+      "deep": {
+        "vs": "Pragmatist, D’nin kararlılığını S’nin sabrıyla birleştirir; onu tüm komşularından ayıran budur. Hedef Avcısı (D) hedefe daha hızlı ve daha gürültülü atılır, Pragmatist ise oraya inatla ve gösterişsizce yürür. Uygulayıcı (SD) profilinden harflerin sırasıyla ayrılır: Pragmatist profilinde hedef ve inisiyatif, Uygulayıcı profilinde güvenilirlik ve sakinlik öndedir. Öncü (DI) profilinden ise seyirciye ihtiyaç duymamasıyla: nasıl çalıştığını herkesin görmesine gerek yoktur.",
+        "work": "Pragmatist iş yerinde “halledilmesi” gereken işlerin verildiği kişidir: bir üretim hattını çalıştırmak, sorunlu bir birimi toparlamak, bir sistemin devreye alınmasını sonuna kadar götürmek. Bağımsız çalışır, sözünü tutar ve ilk zorlukta görevi bırakmaz. En rahat olduğu yer somut bir sonucun ve net bir sorumluluğun olduğu işlerdir. Bitmeyen tartışmalar, ofis politikası ve karar çıkmayan toplantılar onu yorar.",
+        "lead": "Pragmatist yönetici olarak sakin, kararlı ve tutarlıdır: görev verir, yerine getirilip getirilmediğini kontrol eder ve ekiple omuz omuza çalışır. İnsanlar ondan ne bekleyeceklerini bilir. Zayıf noktaları inatçılık ve içine kapanıklıktır: planlarını nadiren açıklar, kararını değiştirmekte isteksizdir ve ekibin tartışmaya ve takdire ihtiyaç duyduğunu fark etmeyebilir.",
+        "managed": "Pragmatist, net bir görev veren ve onu yerine getirmesi için ona güvenen bir yöneticiye ihtiyaç duyar. Anlaşmaların kalıcı olmasına değer verir: hedef değiştiyse nedenini anlamak onun için önemlidir. Sık rota değişiklikleri, her adımın denetlenmesi ve somut sonucu olmayan görevler motivasyonunu düşürür.",
+        "pressure": "Baskı altında Pragmatist direnir: daha çok çalışır, daha az konuşur, koşullar değişmiş olsa bile seçtiği yoldan şaşmaz. Çatışmada ortalığı karıştırmaz ama geri de adım atmaz; sessizce bildiğini okuyabilir. Dışarıdan inatçılık gibi görünen şey, içeriden bakınca karara sadakattir.",
+        "develop": ["Ekip mantığını anlasın diye planlarını yüksek sesle dile getirmek", "Koşullar değiştiğinde kararını gözden geçirmek", "Harekete geçmeden önce iş arkadaşlarının fikrini sormak", "Kendi yapması daha hızlı olan işleri bile kendisi yapmak yerine devretmek"],
+        "agree": "Pragmatist ile somut konuşarak anlaşın: ne yapılması gerekiyor, hangi tarihe kadar, hangi kaynaklar var. Onu gerekçelere boğmayın ve anlaşmayı nedensiz değiştirmeyin. Yaklaşımını değiştirmesini istiyorsanız olguları gösterin ve düşünmesi için zaman tanıyın: anında sorarsanız büyük olasılıkla reddeder.",
+        "example": "Pragmatist, daha önce iki kez başarısız olmuş bir sistem geçişini devralır. Sunum yapmaz; sorunların bir listesini çıkarır ve onları tek tek çözer. Üç ay sonra sistem çalışır durumdadır. Üst yönetim ilerlemeyi ancak son rapordan öğrenir ve bir dahaki sefere başarı daha erken görünsün diye ondan haftada bir kısa durum özeti göndermesini ister."
       }
     },
     "ID": {
@@ -173,6 +243,16 @@
         "I": "Toplantıyı yazılı kararlarla bitirin, yoksa coşku işe dönüşmez.",
         "S": "Değişiklikleri önceden haber verin ve S adına karar vermeyin: fikrini doğrudan sorun.",
         "C": "Rakamlarınızı hazırlayın ve yanıt için zaman tanıyın: C’nin sessizliği ret değil, düşünme payıdır."
+      },
+      "deep": {
+        "vs": "Motivatör, Öncü (DI) profilinden insanları hedefin önüne koymasıyla ayrılır: önce ekibi ateşler, sonra onu sonuca götürür. Saf İlham Veren (I) profilinden kararlılığı ve sorumluluk almaya hazır olmasıyla, Mentor (IS) profilinden daha az yumuşaklık ve daha çok hırsla, İletişimci (IC) profilinden ise titiz hazırlık yerine hız ve kendiliğindenlikle ayrılır.",
+        "work": "Motivatör iş yerinde ekibin yüzüdür: konuşma yapar, satar, insanları bir fikrin etrafında toplar, toplantılarda inisiyatifi alır. Çok sayıda insanı ikna etmenin gerektiği yerlerde güçlüdür: satış, lansmanlar, etkinlikler, iş ortaklıklarının geliştirilmesi. Enerjisinin çoğu başlangıca gider; projenin ortasında, sabırlı ve titiz çalışma gerektiğinde temposunu kaybedebilir.",
+        "lead": "Motivatör yönetici olarak enerji verir: parlak hedefler koyar, zaferleri herkesin önünde kutlar, insanlara inanır ve onlara şans tanır. Ekip coşkuyla çalışır. Zayıf noktaları değişkenlik ve iyimserliktir: ekibin yapabileceğinden fazlasını vaat eder, ayrıntıları unutur ve insanların sürekli son dakika telaşından yorulduğunu her zaman fark etmez.",
+        "managed": "Motivatör, ona sahne ve özgürlük tanıyan bir yöneticiye ihtiyaç duyar: öneride bulunma, konuşma yapma, insanlara önderlik etme imkânı. Takdire ve canlı geri bildirime değer verir. Coşkusunu söndürmeden onu sakin bir şekilde gerçeklere (kaynaklara, tarihlere, rakamlara) döndüren bir yönetici ona iyi gelir.",
+        "pressure": "Baskı altında Motivatör daha da gürültülü olur: daha hararetle ikna etmeye çalışır, sağa sola söz verir, fazlasını üstlenir. İşler yolunda gitmezse parlayabilir ya da suçu koşullara atabilir. Çatışmada karşısındakini ikna etmeye ve çoğunluğun desteğini kazanmaya çalışır.",
+        "develop": ["Bir tarih söylemeden önce kaynakları hesaplamak", "Yalnızca başlatmakla kalmayıp başladığı işi sonuna kadar götürmek", "Toplantılarda başkalarına da söz hakkı vermek", "Yalnızca izlenime değil, rakamlara da dayanmak"],
+        "agree": "Motivatör ile enerjik bir şekilde anlaşın: fikirle ve bunun insanlar üzerinde yaratacağı etkiyle başlayın. Ona ekip adına konuşacağı bir rol verin. Rakamları ve tarihleri ayrıca konuşun ve yazıya dökün: kendisi toplantının kararlarından çok havasını hatırlar.",
+        "example": "Yıllık toplantıda Motivatör, departmanın satışları ikiye katlayacağını söyler ve salon alkışlar. Bir ay sonra bu plan için ne insan ne de bütçe olduğu ortaya çıkar. Motivatör iki iş ortağı bulur ve satışları bir buçuk katına çıkarır; bu da bir başarıdır, ama ekip altı ay boyunca tükenircesine çalışmıştır. Konuşmadan önce yapılmış gerçekçi bir plan, bir buçuk kat vaat edip hedefi aşmayı mümkün kılardı."
       }
     },
     "IS": {
@@ -185,6 +265,16 @@
         "I": "Fikirleri destekleyin, ama plan ve tarih isteyin; yoksa ikiniz de kendinizi kaptırırsınız.",
         "S": "Sorunları açıkça dile getirin ve birbirinize son tarih koyun: bunlar olmadan iş yerinde sayar.",
         "C": "Ayrıntılarla ilgili eleştiriyi üzerinize alınmayın: konu siz değil, işin kalitesidir."
+      },
+      "deep": {
+        "vs": "Mentor, Diplomat (SI) profilinden harflerin sırasıyla ayrılır: onda iletişim ve sıcaklık sakinliğin önündedir, bu yüzden daha etkindir; kendisi tanışır, insanları bir araya getirir, sohbeti yönlendirir. İlham Veren (I) profilinden parlaklık yerine özen göstermesiyle ayrılır: onun için ortamın ilginç olmasından çok insanların iyi hissetmesi önemlidir. Motivatör (ID) profilinden ise baskı kurmamasıyla: insanlara hedef üzerinden değil, destek üzerinden önderlik eder.",
+        "work": "Mentor iş yerinde sorularla ve sorunlarla kapısı çalınan kişidir. Yeni gelenlerin uyum sürecini üstlenir, departmanlar arasındaki ilişkileri yumuşatır, kimin doğum günü olduğunu ve kimin izinde olduğunu hatırlar. En rahat olduğu yer insanlarla çalışmaktır: eğitim, işe uyum, müşteri ilişkileri, ilişkilere değer veren bir ekip. Sert kararlar, rekabet ve iletişimsiz çalışma ona zor gelir.",
+        "lead": "Mentor yönetici olarak insanları geliştirir: potansiyeli görür, destek olur, ikinci şans verir. Ekibinde hata yapmak ve öğrenmek güvenlidir. Zayıf noktaları sert geri bildirimden ve sevilmeyecek kararlardan kaçınmasıdır: zayıf performansa uzun süre katlanır ve bir çalışanı gerektiğinden uzun süre koruyabilir.",
+        "managed": "Mentor, yalnızca rakamlara değil, ortama ve insanlara yaptığı katkıya da değer veren iyi niyetli bir yöneticiye ihtiyaç duyar. Güvenildiğini hissettiğinde ve kararları tartışabildiğinde iyi çalışır. Soğuk bir üslup, herkesin önünde eleştiri ve açıklamasız baskı, enerjisini iş yükünden daha hızlı tüketir.",
+        "pressure": "Baskı altında Mentor destek arar ve herkesi uzlaştırmaya çalışır. İnsanları üzmemek için kabul eder ve farklı taraflara birbirine zıt sözler verebilir. Çatışma uzarsa bunu fazlasıyla kişisel algılar ve enerjisini kaybeder; açık bir yüzleşmeden sonuna kadar kaçınır.",
+        "develop": ["Bunun da bir ilgi göstergesi olduğunu unutmadan dürüst geri bildirim vermek", "Herkesin hoşuna gitmeyecek kararlar almak", "Yardım etme isteğini başkasının sorununu çözme zorunluluğundan ayırmak", "Yalnızca kişi hakkındaki izlenime değil, olgulara da dayanmak"],
+        "agree": "Mentor ile sıcak bir üslupla anlaşın: kararın insanlara nasıl yansıyacağını ve onlara nasıl destek olacağınızı gösterin. Fikrini sorun: ekibin değişikliği nasıl karşılayacağını çoğu zaman önceden görür. Sert bir karar gerekiyorsa neden adil olduğunu açıklayın ve bunu insanlara nasıl söyleyeceğini birlikte formüle edin.",
+        "example": "Ekipteki bir çalışan üç aydır tarihleri kaçırıyor. Mentor ona yardım eder, görevlerinin bir kısmını üstlenir ve onu üst yönetim karşısında savunur. Sorun müşteri düzeyinde patlak verdiğinde, çalışanın bu rolün altından kalkamadığı ortaya çıkar. Daha ilk ayda yapılacak dürüst bir konuşma, ona uygun bir görevi daha erken ve ekibe zarar vermeden bulmaya yardımcı olurdu."
       }
     },
     "IC": {
@@ -197,6 +287,16 @@
         "I": "Aynı dili konuşmanın keyfini çıkarın, ama kimin neyi hangi tarihe kadar yapacağını yazıya dökün.",
         "S": "Planları yolda değiştirmeyin; fikrini doğrudan sorun ve yanıtlaması için zaman tanıyın.",
         "C": "Verilerin diliyle konuşun ve hatanın bedelinin düşük olduğu yerde “yeterince iyi”ye razı olun."
+      },
+      "deep": {
+        "vs": "İletişimci, Danışman (CI) profilinden harflerin sırasıyla ayrılır: onda iletişim analizin önündedir; bu yüzden önce konuşup sonra kontrol etmeye yatkındır, Danışman ise önce kontrol eder, sonra anlatır. İlham Veren (I) profilinden olgulara ve hazırlığa olan düşkünlüğüyle, Motivatör (ID) profilinden ise baskı kurmamasıyla ayrılır: baskıyla değil, argümanlarla ve sunumun biçimiyle ikna eder.",
+        "work": "İletişimci iş yerinde karmaşık olanı anlaşılır kılan kişidir: sunumlar hazırlar, metinler yazar, ürünü müşterilere anlatır, analistlerin vardığı sonuçları üst yönetime sunar. Uzmanlık ile dinleyicinin buluştuğu noktada güçlüdür. Hız ile doğruluk arasında seçim yapması gerektiğinde zorlanır: hem hızla sunmak hem her şeyi kontrol etmek ister.",
+        "lead": "İletişimci yönetici olarak hedefleri iyi açıklar, iletişimi canlı tutar ve kaliteyi gözetir. Ekip neyi ve neden yaptığını bilir. Zayıf noktası kararsızlıktır: seçenekler arasında uzun süre gidip gelebilir, yeni veriler geldikçe kararlarını değiştirebilir ve tatsız konuşmaları erteleyebilir.",
+        "managed": "İletişimci, ona sunum yapma fırsatı veren ve işinin kalitesini takdir eden bir yöneticiye ihtiyaç duyar. Net kriterlere ve hazırlanma imkânına değer verir. Nerede hızın, nerede doğruluğun daha önemli olduğunun baştan belli olması ona yardımcı olur: bu, içindeki çelişkiyi ortadan kaldırır.",
+        "pressure": "Baskı altında İletişimci iki uç arasında gidip gelir: kimi zaman fazla ve hazırlıksız konuşur, kimi zaman yeniden kontrole gömülür. İçerikten çok biçime yönelik eleştirilere alınabilir. Çatışmada önce sözle ikna etmeye çalışır; olmazsa geri çekilir ve daha güçlü argümanlar hazırlar.",
+        "develop": ["Ne zaman hızın, ne zaman doğruluğun gerektiği konusunda önceden anlaşmak", "Bir kontrol daha yapmak istese de kararları zamanında vermek", "Fikrin eleştirisini kendisine yönelik eleştiriden ayırmak", "Dinleyicilerin hikâyeye değil sonuca ihtiyaç duyduğu yerde daha kısa konuşmak"],
+        "agree": "İletişimci ile diyalog içinde anlaşın: fikri tartışın, onun da söz almasına izin verin ve kararı olgularla destekleyin. Ona sonucu sunacağı bir rol önerin. Tarihi ve gereken doğruluk düzeyini açıkça belirtin: bu, “söylemek” ile “kontrol etmek” arasında sıkışıp kalmamasına yardım eder.",
+        "example": "İletişimci, bir araştırmanın sonuçlarını yönetim kuruluna sunmakla görevlendirilir. Üç gün boyunca yeni veriler ekleyerek slaytları baştan yapar ve parlak bir sunum yapar, ama materyalleri geç gönderdiği için kurul sorularının bir kısmını sormaya fırsat bulamaz. Bir dahaki sefere analistle anlaşır: veriler sunumdan iki gün önce dondurulur."
       }
     },
     "SI": {
@@ -209,6 +309,16 @@
         "I": "Sınırlarınızı belirtin ve somut ayrıntı isteyin: tek başına fikir yetmez.",
         "S": "İnisiyatifi sırayla alın ve zor konuşmaları ertelemeyin.",
         "C": "Kuralın mantığını açıklamasını isteyin ve değişiklikleri küçük adımlarla önerin."
+      },
+      "deep": {
+        "vs": "Diplomat, Mentor (IS) profilinden harflerin sırasıyla ayrılır: onda sakinlik iletişimin önündedir; bu yüzden sohbeti yönetmekten çok insanların kolayca anlaşabileceği bir ortam yaratır. Dayanak (S) profilinden açıklığı ve cana yakınlığıyla, Usta (SC) profilinden kurallar yerine insanlara odaklanmasıyla ayrılır. Uygulayıcı (SD) profilinden ise baskı kurmamasıyla: istediğini ısrarla değil, uzlaşmayla elde eder.",
+        "work": "Diplomat iş yerinde birlikte çalışması kolay biridir: sakin, güler yüzlü, yardıma hazır. İnsanlarla uzun süre ve özenle çalışmanın gerektiği yerlerde iyidir: müşteriler, iş ortakları, ekip koordinasyonu, iç iletişim. Sert müzakereler, açık tartışmalar ve sürekli rekabet ortamında çalışmak ona ağır gelir.",
+        "lead": "Diplomat yönetici olarak güven yaratır: dinler, görüşleri dikkate alır, çatışmaları sessizce çözer. Ekibinde kavga az, yardımlaşma çoktur. Zayıf noktaları yavaş kararlar ve yumuşaklıktır: herkesin onay vermesini bekler, zor konuşmaları erteler ve üst yönetim karşısında kendi pozisyonunu her zaman savunmaz.",
+        "managed": "Diplomat, değişiklikleri önceden açıklayan ve ilişkilere yaptığı katkıyı takdir eden sakin, iyi niyetli bir yöneticiye ihtiyaç duyar. Rolleri net, istikrarlı bir ekipte iyi çalışır. Baskı, sert bir üslup ve çatışmalı sorulara hızla yanıt verme zorunluluğu onu dengesinden çıkarır.",
+        "pressure": "Baskı altında Diplomat geri adım atar: gerginliği azaltmak için kabul eder ve fazladan iş üstlenir. İtirazını içinde tutar ve bu birikir. Çatışmada ne pahasına olursa olsun bir orta yol bulmaya çalışır; bu olmazsa kişiyle tartışmak yerine ondan uzaklaşır.",
+        "develop": ["Katılmadığını hemen ve sakin bir şekilde söylemek", "Bir rica kendi görev tanımının dışına çıktığında “hayır” demek", "Herkesin onayını beklemeden karar vermek", "Üst yönetim karşısında ekibinin çıkarlarını savunmak"],
+        "agree": "Diplomat ile acele etmeden ve iyi niyetle anlaşın. Fikrinin önemli olduğunu gösterin ve onu herkesin önünde değil, birebir sorun. Kararın insanları nasıl etkileyeceğini açıklayın. Onun “tamam”ını kesin onay saymayın: bir gün sonra aklında bir şüphe kalıp kalmadığını sorun.",
+        "example": "Bir iş ortağıyla yapılan toplantıda Diplomat, ilişkiyi bozmamak için ek işleri ücretsiz yapmayı kabul eder. Ekip bunu olup bittikten sonra öğrenir ve memnun kalmaz. Yönetici ona “Ekiple bir konuşayım, size yanıtla döneyim” cümlesini önerdiğinde Diplomat bunu kullanmaya başlar ve hem iş ortağıyla ilişkisini hem ekibin güvenini korur."
       }
     },
     "SC": {
@@ -221,6 +331,16 @@
         "I": "Coşkuyu plan sanmayın: tarih ve sorumlu isteyin.",
         "S": "Birbirinize son tarih koyun ve küçük de olsa sorunları açıkça dile getirin.",
         "C": "Yeterli kalite düzeyini baştan belirleyin, yoksa ikiniz de ayrıntılarda boğulursunuz."
+      },
+      "deep": {
+        "vs": "Usta, Uzman (CS) profilinden harflerin sırasıyla ayrılır: onda istikrar ve güvenilirlik titizliğin önündedir. Uzman doğru yanıtı arar, Usta ise sürecin kararlaştırıldığı gibi işlemesine dikkat eder. Dayanak (S) profilinden kurallara ve düzene bağlılığıyla, Diplomat (SI) profilinden daha az iletişim ve işe daha çok dikkatle ayrılır. Analist (C) profilinden ise daha az eleştirelliğiyle: standardı sorgulamaktansa özenle uygulamayı tercih eder.",
+        "work": "Usta iş yerinde süreçlerin bekçisidir: her şeyin nasıl işlediğini bilir, dokümantasyonu tutar, tarihlere ve kurallara uyar, geçen sefer nasıl yapıldığını hatırlar. Özenin, tekrarlanabilirliğin ve sorumluluğun önemli olduğu işlerde güçlüdür: muhasebe, kalite kontrol, destek, idari işler. Ani değişiklikler ve talimatı olmayan görevler ona zor gelir.",
+        "lead": "Usta yönetici olarak düzenli ve güvenilirdir: süreçleri net, sorumlulukları anlaşılırdır, sürprizler azdır. İnsanlar kuralları bilir ve kendilerini güvende hisseder. Zayıf noktaları değişime karşı temkinliliği ve düzeni aşırı denetlemesidir: yeni fikirler onun biriminde yavaş kök salar.",
+        "managed": "Usta, anlaşılır talimatlar veren, değişiklikleri önceden haber veren ve özenli çalışmaya değer veren bir yöneticiye ihtiyaç duyar. Beklentilerin net olduğu istikrarlı bir ortamda iyi çalışır. Acele, doğaçlama ve çelişkili talimatlar onda, nadiren dile getirdiği bir stres yaratır.",
+        "pressure": "Baskı altında Usta kurallara ve alışılmış düzene sıkıca tutunur, yavaşlar, her şeyi yeniden kontrol etmeye başlar. Aşırı yüke tamamen tükenene kadar sessizce katlanır. Çatışmada anlaşmalara ve yönetmeliklere başvurur; açıkça tartışmayı sevmez, ama “doğru” düzenden vazgeçmek de ona zor gelir.",
+        "develop": ["Aşırı yükü sineye çekmek yerine hemen dile getirmek", "Yeni çalışma yöntemlerini küçük görevlerde denemek", "Önemli kuralları değiştirilebilecek alışkanlıklardan ayırmak", "Yalnızca mevcut olanı sürdürmekle kalmayıp iyileştirmeler önermek"],
+        "agree": "Usta ile önceden ve ayrıntılı olarak anlaşın: ne değişiyor, hangi kurallara göre, hangi takvimle ve ne aynı kalacak. Yazılı bir talimat ve hazırlanması için zaman verin. Hangi riskleri gördüğünü sorun: geçiş sırasında neyin bozulacağını çoğu zaman o fark eder.",
+        "example": "Departman iki hafta içinde yeni bir CRM’e geçirilecek. Usta son ana kadar eski düzenle çalışmaya devam eder ve yönetici sinirlenir. Sonra eski verilerin nasıl aktarılacağını kimsenin açıklamadığı ortaya çıkar. Yönetici geçiş talimatını hazırlama işini ona verdiğinde, Usta talimatı üç günde hazırlar ve departman kayıpsız geçiş yapar."
       }
     },
     "SD": {
@@ -233,6 +353,16 @@
         "I": "Fikirleri dinleyin, ama plan isteyin: kararlılığınız I’nın işi sonuna kadar götürmesine yardım eder.",
         "S": "Kararı siz verin, ama gerekçesini açıklayın ve alışması için zaman bırakın.",
         "C": "İşin hangi kriterlerle tamamlanmış sayılacağını baştan kararlaştırın ve kontrole ayrılan zamana saygı gösterin."
+      },
+      "deep": {
+        "vs": "Uygulayıcı, Pragmatist (DS) profilinden harflerin sırasıyla ayrılır: onda sakinlik ve güvenilirlik kararlılığın önündedir. Pragmatist hedefe atılır, Uygulayıcı ise oraya düzenli adımlarla yürür ve yolundan sapmaz. Dayanak (S) profilinden kararlılığı ve sonucun sorumluluğunu almaya hazır olmasıyla, Usta (SC) profilinden kurallara daha az, sonuca daha çok dikkat etmesiyle ayrılır. Hedef Avcısı (D) profilinden ise aceleci olmamasıyla.",
+        "work": "Uygulayıcı iş yerinde aksamaması gereken uzun projeleri ve alanları yürütür: üretim, lojistik, tesis işletmesi, sistemlerin devreye alınması. Sorumluluğu sakin bir şekilde üstlenir, temposunu aylarca korur ve krizde paniğe kapılmaz. Sürekli değişimin, göz önünde olmanın ve karar çıkmayan uzun tartışmaların olduğu ortamlarda kendini rahat hissetmez.",
+        "lead": "Uygulayıcı yönetici olarak güvenilir ve kararlıdır: anlaşılır görevler verir, yerine getirilmesini ister, ekiple omuz omuza çalışır. İnsanlar sözüne güvenir. Zayıf noktaları inatçılık ve az konuşmasıdır: kararlarını nadiren açıklar, rotayı değiştirmekte isteksizdir ve ekibin daha fazla iletişime ihtiyaç duyduğunu fark etmeyebilir.",
+        "managed": "Uygulayıcı, net bir hedef koyan, uygulamayı ona emanet eden ve anlaşmaları nedensiz değiştirmeyen bir yöneticiye ihtiyaç duyar. Açık sözlülüğe ve deneyimine gösterilen saygıya değer verir. Telaş, önceliklerin sık değişmesi ve denetim için denetim onda sessiz bir direniş uyandırır.",
+        "pressure": "Baskı altında Uygulayıcı daha da kararlı ve sessiz olur: planına sıkı sıkıya bağlı kalır, değişiklikleri reddeder, daha çok çalışır. Çatışmada sesini yükseltmez, ama geri de adım atmaz. Bir kez söylenmiş “hayır”ını değiştirmek zordur.",
+        "develop": ["Kararlarını yalnızca bildirmekle kalmayıp açıklamak", "İş arkadaşlarına plan üzerinde söz hakkı tanımak", "Koşullar değiştiğinde rotayı gözden geçirmek", "Yalnızca sonuçtan değil, ilerlemeden de söz etmek"],
+        "agree": "Uygulayıcı ile sakin ve işe odaklı anlaşın: hedef, kaynaklar, tarihler, sorumluluk. Baskı kurmayın ve yanıt için acele ettirmeyin. Kararını değiştirmesini istiyorsanız olgularla ve önceden gelin: “ayaküstü” bir öneriyi büyük olasılıkla reddeder.",
+        "example": "Uygulayıcı bir depo inşaatını yürütür ve müşteri işin yarısında yerleşim planını değiştirmek ister. Uygulayıcı reddeder: tarihler kayacaktır. Bir hafta sonra müşteriden kazancın hesabını alınca kabul eder ve planı öyle yeniden kurar ki teslim yalnızca on gün kayar. Onun “hayır”ı inatçılık değil, sonucu korumaktı; ama rakamlarla konuşmaya en baştan başlamak gerekirdi."
       }
     },
     "CD": {
@@ -245,6 +375,16 @@
         "I": "Önce fikrin değerini teslim edin; eleştirinizi somut ve kırıcı olmayan bir dille yapın.",
         "S": "Eleştirilerinizi yumuşatın ve katkısını açıkça dile getirin: soğukluk S’yi sanıldığından çok daha fazla yaralar.",
         "C": "Analiz süresini sınırlayın ve nerede duracağınıza baştan karar verin."
+      },
+      "deep": {
+        "vs": "Mükemmeliyetçi, Stratejist (DC) profilinden harflerin sırasıyla ayrılır: onda kalite hedefin önündedir. Stratejist sonuç ister ve bunun için kalite talep eder; Mükemmeliyetçi işin doğru olmasını ister ve bunun için mücadele etmeye hazırdır. Analist (C) profilinden kararlılığıyla ayrılır: hatayı yalnızca görmekle kalmaz, düzeltilmesinde ısrar eder. Uzman (CS) profilinden ise daha az sabrı ve tartışmaya daha hazır olmasıyla.",
+        "work": "Mükemmeliyetçi iş yerinde müşteriden önceki son savunma hattıdır: kontrol eder, hataları bulur, düzeltme ister ve emin olmadığı şeyi onaylamaz. Yüksek gerekliliklerin olduğu uzmanlık işlerinde güçlüdür: denetim, sistem mimarisi, kontrol, bilimsel çalışma. Kalitenin tarihlere kurban edilmesi ona zor gelir ve bunu açıkça söyler.",
+        "lead": "Mükemmeliyetçi yönetici olarak yüksek standartlar koyar ve kendisi de onlara uyar. Ekip profesyonel çalışır ve az hata yapar. Zayıf noktaları eleştiri ve denetimdir: hataları başarılardan daha çabuk fark eder, başkalarının işini yeniden yapar ve onu memnun etmenin imkânsız olduğu hissini yaratabilir.",
+        "managed": "Mükemmeliyetçi, kaliteye değer veren ve bazen “iyi”nin neden yeterli olduğunu açıklayan yetkin bir yöneticiye ihtiyaç duyar. Kriterler baştan net ve kararlar gerekçeli olduğunda iyi çalışır. Nedensiz acele, özensizlik ve yetkin olmayan eleştiriler onda sert bir direniş uyandırır.",
+        "pressure": "Baskı altında Mükemmeliyetçi daha keskin ve daha talepkâr olur: hataları sert bir dille gösterir, başkalarının işine güvenmeyi bırakır ve her şeyi kendisi yapar. Çatışmada argümanlarla tartışır ve yanıldığına ikna olana kadar geri adım atmaz. Özünde haklı olup ilişkiler açısından kaybedebilir.",
+        "develop": ["Geri bildirime iyi yapılanlarla başlamak", "Kalite kriterlerini iş bittikten sonra değil, başlamadan önce açıklamak", "Önemli hataları göz ardı edilebilecek olanlardan ayırmak", "İşin bazı bölümlerini baştan sona yeniden kontrol etmeden iş arkadaşlarına emanet etmek"],
+        "agree": "Mükemmeliyetçi ile hazırlıklı gelerek anlaşın: olgular, kriterler, mantık. Onunla duygusal bir tartışmaya girmeyin. İşi, onun hazır saydığından önce teslim etmeniz gerekiyorsa asgari kalite düzeyi ve sonradan neyin tamamlanacağı üzerinde anlaşın: bu, içindeki itirazı ortadan kaldırır.",
+        "example": "Yayından önce Mükemmeliyetçi on iki sorun bulur ve sürümün ertelenmesini ister. Proje yöneticisi ondan en önemli üçünü seçmesini ister. Mükemmeliyetçi kabul eder, sürüm zamanında çıkar, kalan dokuzu bir sonraki sürümde düzeltilir. Değişen en önemli şey şudur: “sürümü neyin engellediği” kriteri artık kontrol başlamadan önce kararlaştırılıyor."
       }
     },
     "CS": {
@@ -257,6 +397,16 @@
         "I": "Vardığınız sonuçları sade bir dille anlatın ve I’nın duygusallığını ciddiyetsizlik sanmayın.",
         "S": "Değişiklikleri adım adım konuşun ve başkalarının önünde eleştirmeyin.",
         "C": "Hangi ayrıntı düzeyinin yeterli olduğunu baştan kararlaştırın."
+      },
+      "deep": {
+        "vs": "Uzman, Usta (SC) profilinden harflerin sırasıyla ayrılır: onda titizlik istikrarın önündedir. Usta sürecin işlemesine dikkat eder, Uzman ise doğru işlemesine. Analist (C) profilinden sabrı ve yumuşaklığıyla ayrılır: daha az tartışır, daha çok iş yapar. Mükemmeliyetçi (CD) profilinden ise baskı kurmamasıyla: hatayı gösterir, ama üstüne gitmez.",
+        "work": "Uzman iş yerinde zor görevlerin emanet edildiği kişidir: geliştirme, hesaplamalar, teşhis, dokümantasyon. Düşünerek çalışır, ayrıntıları kontrol eder ve denenmiş yöntemlere dayanır. Ekip onun vardığı sonuçlara güvenir. Belirsizlik, acele ve görevler arasında sık geçiş ona zor gelir.",
+        "lead": "Uzman yönetici olarak bir amirden çok kıdemli bir uzmandır: konuyu anlamaya yardım eder, bilgisini paylaşır ve kaliteyi gözetir. Ekibinde sakin ve profesyonel bir ortam vardır. Zayıf noktaları temkinlilik ve çatışmalardaki kararsızlıktır: sert konuşmalardan kaçınır ve ekibini üst yönetim karşısında her zaman savunmaz.",
+        "managed": "Uzman, net görevler veren, nitelikli iş için zaman tanıyan ve değişiklikleri önceden açıklayan bir yöneticiye ihtiyaç duyar. Yetkinliğe ve sakinliğe değer verir. Baskı, anında yanıt beklenmesi ve önceliklerin sürekli değişmesi onu çalışma ritminden çıkarır.",
+        "pressure": "Baskı altında Uzman içine kapanır: yeniden kontrol eder, kararları erteler, temastan kaçınır. Nadiren açıkça tartışır, ama doğru bildiği şekilde sessizce çalışmaya devam edebilir. Çatışmaları uzun süre ve derinden yaşar.",
+        "develop": ["Görüşünü toplantıdan sonra değil, toplantı sırasında dile getirmek", "Hatanın bedeli düşükken eksik bilgiyle de karar verebilmek", "Yetişmesi imkânsız bir tarihe razı olmak yerine yanıt için zaman istemek", "Bilgisini yalnızca istendiğinde değil, kendiliğinden de paylaşmak"],
+        "agree": "Uzman ile yazılı olarak ve önceden anlaşın: görev, kriterler, tarihler, veri kaynakları. Düşünmesi için zaman tanıyın ve fikrini birebir sorun: genel toplantıda sessiz kalabilir. Uzmanlığına saygı gösterilmesine ve kendisinden “şöyle bir çırpıda, hızlıca” yapması istenmemesine değer verir.",
+        "example": "Toplantıda yeni sistem mimarisi tartışılır, Uzman sessiz kalır. İki gün sonra kimsenin hesaba katmadığı üç riski içeren bir e-posta gönderir. Yönetici bir kural getirir: önemli kararlar tartışmadan bir gün sonra alınır, böylece herkesin düşünmeye zamanı olur. Artık Uzman önerilerini kararlardan sonra değil, önce iletmeye başlar."
       }
     },
     "CI": {
@@ -269,13 +419,23 @@
         "I": "Ortak dili kolayca bulursunuz; sohbetin bir plana bağlanmasına dikkat edin.",
         "S": "Vardığınız sonuçları yolda değiştirmeyin ve zaman tanıyın: S öngörülebilirliğe ihtiyaç duyar.",
         "C": "Verilerin diliyle konuşun, ama her ayrıntıyı tartışma konusu yapmayın."
+      },
+      "deep": {
+        "vs": "Danışman, İletişimci (IC) profilinden harflerin sırasıyla ayrılır: onda analiz iletişimin önündedir. İletişimci önce konuşup sonra kontrol etmeye yatkındır; Danışman ise önce konuyu çözümler, ancak sonra anlatır. Analist (C) profilinden iletişimdeki rahatlığı ve paylaşma isteğiyle, Uzman (CS) profilinden ise açıklığı ve yalnızca işe değil insanlara da duyduğu ilgiyle ayrılır.",
+        "work": "Danışman iş yerinde uzmanlar ile diğer herkes arasında bir çevirmendir: karmaşık bir konuyu çözümler ve anlaşılır biçimde anlatır. Sonuçların sunulduğu analiz işlerinde, danışmanlıkta, eğitimde, teknik satışta güçlüdür. Hazırlıksız konuşması gerektiğinde ya da hız uğruna analizi kısaltmak zorunda kaldığında zorlanır.",
+        "lead": "Danışman yönetici olarak kararlarını açıklar, ekibine öğretir ve kaliteyi gözetir. İnsanlar görevlerin mantığını anlar ve mesleki olarak gelişir. Zayıf noktaları karar vermeden önce uzun süre düşünmesi ve bir sonucu tamamen doğrulanmadan paylaşmak istememesidir.",
+        "managed": "Danışman, hem analizin derinliğine hem de anlatma becerisine değer veren bir yöneticiye ihtiyaç duyar. Hazırlanabildiğinde ve sonucu kendisi sunabildiğinde iyi çalışır. Ön sonucun ne zaman yeterli olduğu konusunda bir anlaşma ona yardımcı olur: bu, “kontrol etmek” ile “paylaşmak” arasındaki iç çelişkisini ortadan kaldırır.",
+        "pressure": "Baskı altında Danışman iki uç arasında gidip gelir: kimi zaman kontrolü uzatır, kimi zaman hazır olmayan bir sonucu aceleyle paylaşır. İçine kapanık ve resmî bir tavır takınabilir. Çatışmada argümanlara dayanır ve pozisyonunu açıklamaya çalışır; dinlenmediğini hissederse geri çekilir.",
+        "develop": ["Ön sonuçları “taslak” notuyla paylaşmak", "Tam emin olmasa da kararları zamanında vermek", "Yöntemi değil sonucu bilmek isteyenler için açıklamaları sadeleştirmek", "Verilerinden emin olduğunda pozisyonunu savunmak"],
+        "agree": "Danışman ile diyalog içinde anlaşın: görevi konuşun, konuyu çözümlemesi için zaman tanıyın ve vardığı sonucu kendi sözleriyle açıklamasını isteyin. Hangi doğruluk düzeyinin hangi tarihe kadar gerektiğini açıkça söyleyin. Vardığı sonuçlara gösterilen ilgiye ve konunun özüne dair sorulara değer verir.",
+        "example": "Bir müşteri, bir projenin “hızlıca değerlendirilmesini” ister. Danışman bir hafta veri toplar ve ayrıntılı raporunu gönderdiğinde karar onsuz çoktan alınmıştır. Bir sonraki projede iki aşama üzerinde anlaşır: iki günde ön değerlendirme, bir hafta sonra tam rapor. Müşteri yanıtını zamanında alır, Danışman da derinlemesine çalışmak için zaman kazanır."
       }
     }
   },
   "content": {
     "disc": {
       "title": "DISC nedir? Model, dört davranış stili ve profil nasıl okunur",
-      "description": "DISC modeli sade bir dille: nereden geldiği, neyi ölçtüğü, D, I, S, C stilleri, sonucun nasıl hesaplandığı ve profilin nasıl okunduğu. Ücretsiz DISC testi sitede.",
+      "description": "DISC modeli sade bir dille: nereden geldiği, neyi ölçtüğü, D, I, S, C stilleri, sonucun nasıl hesaplandığı ve profilin nasıl okunduğu.",
       "h1": "DISC nedir?",
       "lead": "DISC, bir insanın nasıl davrandığını, nasıl iletişim kurduğunu ve nasıl karar verdiğini dört ölçekte tanımlayan bir davranış modelidir: Baskınlık (Dominance), Etkileyicilik (Influence), İstikrar (Steadiness) ve Titizlik (Conscientiousness). Bir zekâ testi ya da tanı değil, davranış stilleri hakkında konuşmak için ortak bir dildir.",
       "sections": [
@@ -636,7 +796,7 @@
     },
     "pdf": {
       "title": "DISC testi PDF: soruları, anahtarı ve yorumuyla ücretsiz indirin",
-      "description": "Ücretsiz DISC testi PDF’i: 24 soru, anahtar, puanlama tablosu ve 16 profilin açıklaması. İndirin, yazdırın, kâğıtta doldurun. Online sürüm sonucu kendisi hesaplar.",
+      "description": "Ücretsiz DISC testi PDF’i: 24 soru, anahtar, puanlama tablosu ve 16 profilin açıklaması. İndirin, yazdırın, kâğıtta doldurun.",
       "h1": "DISC testi PDF: indirin ve yazdırın",
       "lead": "Online testle aynı tam sürüm, ama yazdırılabilir bir dosyada: dörder ifadeli 24 soru, stil anahtarı, puanlama tablosu ve 16 profilin tamamının açıklaması. Dosya ücretsizdir, kayıt gerektirmez.",
       "sections": [
@@ -733,7 +893,7 @@
     },
     "mbti": {
       "title": "DISC mi, MBTI mi? Farkları, hangisini seçmeli ve Big Five’ın yeri",
-      "description": "DISC, MBTI ve Büyük Beşli karşılaştırması: her model neyi ölçer, kaç tip var, ne kadar güvenilir, nerede kullanılır, hangisini seçmeli? Ücretsiz online DISC testi.",
+      "description": "DISC, MBTI ve Büyük Beşli karşılaştırması: her model neyi ölçer, kaç tip var, ne kadar güvenilir, nerede kullanılır, hangisini seçmeli?",
       "h1": "DISC ve MBTI: aralarındaki fark nedir?",
       "lead": "DISC ve MBTI, ekiplerle yapılan çalışmalarda en çok bilinen iki tipolojidir ve sürekli birbirine karıştırılır. İkisi de dört harf verir, ikisi de “tiplerden” söz eder, ama farklı şeyleri ölçer ve farklı sorulara yanıt verir. Aşağıda Büyük Beşli’yi de kapsayan kısa bir karşılaştırma ve hangisini seçeceğinize dair pratik bir öneri bulacaksınız.",
       "sections": [
@@ -791,7 +951,7 @@
     },
     "compatibility": {
       "title": "DISC stillerinin uyumu: D, I, S ve C birlikte nasıl çalışır?",
-      "description": "DISC kişilik tiplerinin uyumu: D ve I, D ve S, D ve C, I ve S, I ve C, S ve C ile aynı stildeki ikililer. Ortak noktalar, sürtüşmeler ve öneriler. Ücretsiz test.",
+      "description": "DISC kişilik tiplerinin uyumu: D ve I, D ve S, D ve C, I ve S, I ve C, S ve C ile aynı stildeki ikililer. Ortak noktalar, sürtüşmeler ve öneriler.",
       "h1": "DISC stillerinin uyumu",
       "lead": "DISC’te uyumsuz ikili yoktur: farklılıklarını anladıkları sürece herhangi iki stil birlikte çalışabilir. Yine de her ikilinin kendine özgü güçlü yönleri ve tipik çatışmaları vardır. Onları neyin birleştirdiğini, nerede sürtüşme çıktığını ve her birinin ne yapabileceğini öğrenmek için tablodan iki stil seçin.",
       "sections": [
@@ -1075,7 +1235,7 @@
     "nav.materials": "DISC kaynakları",
 
     "pages.styles.title": "DISC kişilik tipleri: D, I, S, C — özellikler ve güçlü yönler",
-    "pages.styles.description": "DISC’e göre dört kişilik tipi: Baskınlık, Etkileyicilik, İstikrar ve Titizlik. Özellikler, güçlü yönler, gelişim alanları, motivasyon ve stres altındaki davranış.",
+    "pages.styles.description": "DISC’e göre dört kişilik tipi: Baskınlık, Etkileyicilik, İstikrar ve Titizlik. Özellikler, güçlü yönler, gelişim alanları, motivasyon ve stres.",
     "pages.styles.h1": "DISC kişilik tipleri: dört stil",
     "pages.styles.lead": "DISC, davranışı dört ölçekte tanımlar. Dört stilin hepsi herkeste bulunur, ancak bir ya da ikisi daha belirgindir. Aşağıda her stilin tipik özelliklerini, onu neyin motive ettiğini ve onunla en iyi nasıl iletişim kurulacağını bulacaksınız.",
     "pages.profiles.title": "16 DISC kişilik tipi — testin tüm profilleri ve açıklamaları",
@@ -1083,6 +1243,7 @@
     "pages.profiles.h1": "16 DISC profili ve kişilik tipi",
     "pages.profiles.lead": "Testin sonucu, ana stiliniz ve yeterince belirginse ikincil stilinizdir. Böylece 16 profil ortaya çıkar: dört “saf” stil ve on iki kombinasyon. Kendi profilinizi bulun ya da öğrenmek için testi çözün.",
     "pages.profile.title": "{name} ({key}) — DISC profili: güçlü yönler, gelişim alanları",
+    "pages.profile.h1": "{name} ({key}) — DISC profili",
     "pages.profile.description": "{key} “{name}” DISC profili: {summary}",
     "pages.profile.eyebrow": "DISC profili · {key}",
     "pages.profile.primary": "Ana stil: {name} ({key})",
@@ -1096,6 +1257,16 @@
     "pages.profile.with": "Diğer stillerle nasıl iletişim kurulmalı",
     "pages.profile.withKey": "{name} ({key})",
     "pages.profile.compatLink": "DISC stillerinin uyumu: tüm ikililer →",
+    "pages.profile.vs": "Benzer profillerden farkı",
+    "pages.profile.work": "{name} iş hayatında",
+    "pages.profile.lead": "{name} yönetici olarak",
+    "pages.profile.managed": "Yöneticisinden beklentileri",
+    "pages.profile.pressure": "Baskı altında ve çatışmada",
+    "pages.profile.develop": "Neleri geliştirmeli",
+    "pages.profile.agree": "Nasıl anlaşılır",
+    "pages.profile.example": "Uygulamadan bir örnek",
+    "pages.profile.styleMore": "{key} stili hakkında ayrıntılar: {name}",
+    "pages.profile.related": "Benzer profiller",
     "pages.compat.title": "{a} ve {b}: işte ve iletişimde DISC stillerinin uyumu",
     "pages.compat.description": "{a} ve {b} stilleri birlikte nasıl çalışır: onları ne birleştirir, sürtüşme nerede çıkar ve her biri ne yapabilir? Ücretsiz DISC testi sitede.",
     "pages.compat.h1": "{a} ve {b}: uyum",

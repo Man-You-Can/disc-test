@@ -4,7 +4,7 @@
   "name": "Bahasa Indonesia",
   "dateLocale": "id-ID",
   "title": "Tes DISC Online Gratis — Tipe Kepribadian Anda dalam 10 Menit",
-  "description": "Tes DISC online gratis, cocok untuk latihan psikotes kerja: 24 soal, 10 menit, tanpa pendaftaran. Kenali gaya utama, kekuatan, dan area pengembangan Anda. Hasil langsung tampil dan dikirim ke email.",
+  "description": "Tes DISC online gratis untuk latihan psikotes kerja: 24 soal, 10 menit, tanpa pendaftaran. Kenali gaya utama, kekuatan, dan area pengembangan Anda.",
   "brand": "Tes DISC",
   "keys": { "D": "Dominasi", "I": "Pengaruh", "S": "Kestabilan", "C": "Ketelitian" },
   "short": { "D": "Hasil dan kendali", "I": "Orang dan antusiasme", "S": "Dukungan dan konsistensi", "C": "Akurasi dan kualitas" },
@@ -89,6 +89,16 @@
         "I": "Luangkan dua menit untuk berbincang secara pribadi sebelum masuk ke urusan pekerjaan, dan sampaikan apresiasi atas kontribusinya.",
         "S": "Perlambat tempo, beri tahu lebih dulu bila akan ada perubahan, dan tunggu jawaban atas pertanyaan Anda tanpa buru-buru mengisi keheningan.",
         "C": "Dukung keputusan Anda dengan fakta dan beri waktu untuk memeriksa, karena bagi C itu bukan mengulur waktu, melainkan bagian dari pekerjaan."
+      },
+      "deep": {
+        "vs": "D murni berbeda dari profil campuran karena tidak memiliki “peredam”. Pada Perintis (DI), daya dorong dilunakkan oleh pesona; pada Ahli Strategi (DC), oleh perhitungan; pada Penuntas (DS), oleh kesabaran. Pencapai bertindak langsung: melihat tujuan, memilih jalan tersingkat, dan tidak membuang tenaga untuk disukai orang atau memeriksa ulang segala hal. Dari Pelaksana (SD) dan Perfeksionis (CD), yang huruf D-nya berada di urutan kedua, ia dibedakan oleh temponya: ia tidak menunggu keadaan matang, tetapi menciptakannya sendiri.",
+        "work": "Di tempat kerja, Pencapai langsung terlihat: dialah yang pertama mengatakan apa yang harus dilakukan, mengambil tugas tersulit, dan menanyakan tenggat sebelum menanyakan detail. Ia bekerja paling baik ketika ada tujuan yang terukur dan kebebasan memilih cara mencapainya: target penjualan, peluncuran, krisis, negosiasi. Rutinitas dan birokrasi persetujuan membuatnya lelah, dan ia mudah tergoda untuk melangkahinya. Ia bosan bila semuanya berjalan sesuai rencana, sehingga sering kali mencari tantangan berikutnya sendiri.",
+        "lead": "Sebagai pemimpin, Pencapai memasang target ambisius, cepat mengambil keputusan, dan memikul tanggung jawab atas kegagalan. Tim tahu ke mana arahnya dan bergerak cepat. Titik lemahnya: ia memutuskan untuk semua orang, tidak meminta pendapat, memotong pembicaraan, dan menganggap diam sebagai tanda setuju. Di bagiannya, orang yang mandiri dan tegas berkembang, sedangkan yang berhati-hati dan reflektif tersisih atau keluar sama sekali.",
+        "managed": "Pencapai membutuhkan atasan yang menetapkan tujuan dan tidak ikut campur dalam cara mencapainya. Ia menghargai keterusterangan, jawaban yang cepat, dan pengakuan atas hasil, bukan atas usaha. Pengawasan yang terlalu mendetail, persetujuan yang berbelit, dan tugas yang kabur membuatnya jengkel dan ingin mengambil jalan pintas. Kesepakatan yang berhasil: ini tujuannya, ini batasnya, ini tenggatnya, selebihnya Anda yang memutuskan.",
+        "pressure": "Di bawah tekanan, Pencapai makin cepat dan makin keras: bicaranya lebih pendek dan tajam, ia mulai mengerjakan tugas orang lain dan mengambil alih keputusan mereka. Dalam konflik, ia menyerang secara frontal dan memperlakukan perdebatan sebagai kompetisi yang harus dimenangkan. Amarahnya cepat reda dan biasanya ia tidak menyimpan dendam, tetapi orang di sekitarnya mengingat ucapannya lebih lama daripada dirinya sendiri.",
+        "develop": ["Bertanya “bagaimana pendapat Anda?” sebelum menyampaikan keputusannya sendiri", "Membedakan sikap hati-hati rekan kerja dari sabotase", "Memperhatikan dan menyebut kontribusi orang lain, bukan hanya hasilnya", "Menuntaskan bagian pekerjaan yang membosankan atau mendelegasikannya secara terbuka"],
+        "agree": "Dengan Pencapai, bicaralah singkat dan langsung ke pokok persoalan: tujuan, manfaat, pilihan, tenggat. Jangan berdebat dengannya secara emosional; berdebatlah dengan fakta dan tawarkan beberapa pilihan, bukan satu solusi saja. Bila perlu menahannya, tunjukkan bagaimana ketergesaan bisa membahayakan hasil. Argumen seperti itulah yang akan ia dengar.",
+        "example": "Sebuah proyek terlambat sebulan. Pencapai mengumpulkan tim, dalam sepuluh menit membagi ulang tugas, membatalkan dua tahap persetujuan, dan menelepon klien sendiri. Seminggu kemudian proyek kembali sesuai jadwal, tetapi dua anggota tim mengeluh karena tidak dimintai pendapat, dan dalam ketergesaan sebuah kesalahan dalam kontrak terlewat. Hasil yang sama bisa dicapai tanpa kerugian seandainya ia meluangkan setengah jam lagi untuk bertanya: “Risiko apa yang belum saya lihat?”"
       }
     },
     "I": {
@@ -101,6 +111,16 @@
         "I": "Sepakati siapa yang mencatat, dan akhiri pembicaraan dengan daftar tugas beserta tenggatnya.",
         "S": "Jangan mengubah rencana secara mendadak, dan tanyakan pendapatnya secara langsung karena S tidak akan menyodorkannya sendiri.",
         "C": "Siapkan fakta, beri waktu untuk berpikir, dan jangan menganggap pemeriksaan detail sebagai penolakan."
+      },
+      "deep": {
+        "vs": "Inspirator adalah I murni: segalanya bertumpu pada hubungan dengan orang. Pada Motivator (ID), pesona ditambah daya dorong dan keinginan memimpin; pada Mentor (IS), kelembutan dan kepedulian; pada Komunikator (IC), kecintaan pada fakta. Inspirator terutama ingin agar semuanya menarik dan ada orang di sekitarnya. Dari Diplomat (SI) dan Konsultan (CI), yang huruf I-nya sekunder, ia dibedakan oleh suaranya yang lantang dan kecepatannya: ia tidak menunggu diajak bicara.",
+        "work": "Di tempat kerja, Inspirator adalah orang yang mengenal semua orang: dialah yang pertama berkenalan dengan karyawan baru, mengumpulkan orang untuk bertemu, dan bisa akrab dengan klien yang sulit. Ia paling bersinar dalam tugas yang menuntut kemampuan meyakinkan, presentasi, menggagas ide, dan menyatukan orang. Ia kurang bersinar dalam proyek panjang yang penuh laporan, tabel, dan pekerjaan berulang: minatnya padam, dan hal penting ditunda “nanti saja”.",
+        "lead": "Sebagai pemimpin, Inspirator menciptakan suasana: memuji, merayakan keberhasilan, menularkan ide, dan memberi orang kebebasan. Timnya menyukainya dan siap bekerja lebih dari biasanya selama masih percaya pada tujuannya. Titik lemahnya adalah konsistensi: ia mengubah prioritas demi ide baru, menghindari percakapan yang tidak menyenangkan, dan bisa lupa apa yang dijanjikannya minggu lalu.",
+        "managed": "Inspirator membutuhkan atasan yang menyebut keberhasilannya secara terbuka dan memberinya kesempatan berinteraksi dengan orang. Ia sulit bekerja sendirian dan di bawah pengawasan yang kaku. Ia terbantu bila atasannya membantu menata pekerjaan, seperti mencatat kesepakatan dan menetapkan tenggat antara, tetapi melakukannya sebagai mitra, bukan sebagai mandor.",
+        "pressure": "Di bawah tekanan, Inspirator berbicara lebih banyak dan lebih cepat, mencari dukungan dan sekutu, dan bisa menjanjikan hal yang tidak sempat ia kerjakan. Kritik di depan orang lain sangat berat baginya dan ia rasakan sebagai penolakan. Dalam konflik, ia lebih suka meredakan suasana atau bercanda; bila benar-benar tersinggung, emosinya meledak, tetapi cepat reda.",
+        "develop": ["Mencatat kesepakatan dan tenggat saat itu juga, bukan hanya mengingatnya", "Membawa satu ide sampai membuahkan hasil sebelum beralih ke ide berikutnya", "Memeriksa fakta sebelum membagikannya kepada orang lain", "Menyampaikan hal yang tidak menyenangkan secara langsung, tanpa menunggu masalahnya membesar"],
+        "agree": "Saat membuat kesepakatan dengan Inspirator, mulailah dengan obrolan yang hidup dan ide-idenya, lalu bahas detailnya di akhir. Tunjukkan dampak keputusan itu bagi orang-orang dan seperti apa keberhasilannya nanti. Kirimkan hasil pertemuan secara tertulis dengan tanggal yang konkret: secara lisan ia akan setuju dengan senang hati, tetapi tanpa catatan ia bisa lupa.",
+        "example": "Dalam satu malam, Inspirator menyepakati promosi bersama dengan seorang mitra, dan keesokan harinya sudah menceritakannya kepada seluruh perusahaan. Bagian pemasaran mengetahui tenggatnya dari grup obrolan umum, sementara anggarannya belum disetujui. Promosi tetap berjalan sukses berkat energinya, tetapi dengan kerja lembur yang serba mendadak. Seandainya ia langsung mengajak rekan dengan C yang menonjol, rekan itu bisa menyusun rencana dalam satu jam, dan antusiasmenya tetap sama."
       }
     },
     "S": {
@@ -113,6 +133,16 @@
         "I": "Nyatakan batasan Anda dengan jelas dan mintalah rencana, karena ide saja tidak cukup bagi Anda.",
         "S": "Saling tetapkan tenggat dan bergantianlah menjadi pihak yang mengambil keputusan.",
         "C": "Terimalah koreksinya sebagai bentuk kepedulian pada kualitas, dan usulkan perubahan dalam langkah-langkah kecil."
+      },
+      "deep": {
+        "vs": "Penopang adalah S murni: yang terpenting baginya adalah stabilitas dan hubungan. Pada Diplomat (SI), ketenangan berpadu dengan keramahan; pada Spesialis (SC), dengan kecintaan pada aturan; pada Pelaksana (SD), dengan kegigihan mencapai tujuan. Penopang berada di tengah: tidak bergegas maju, tidak mencari perhatian, dan tidak membangun sistem, tetapi memastikan semuanya berjalan dan orang merasa aman. Dari Pakar (CS) dan Mentor (IS), ia dibedakan oleh hal ini: stabilitas lebih penting baginya daripada ketelitian maupun pergaulan.",
+        "work": "Di tempat kerja, Penopang sering kali tidak terlihat sampai ia cuti. Ia ingat siapa menjanjikan apa, membantu karyawan baru, menjawab pertanyaan yang enggan diurus orang lain, dan menuntaskan proyek yang sudah dilupakan orang. Ia paling nyaman di tempat yang prosesnya jelas, timnya stabil, dan hasilnya diukur dari keandalan, bukan kecepatan. Reorganisasi yang sering dan kerja dalam “mode pemadam kebakaran” menguras tenaganya.",
+        "lead": "Sebagai pemimpin, Penopang penuh perhatian dan adil: mengenal setiap anggota tim, melindungi timnya, dan tidak meninggalkan mereka di saat sulit. Pergantian karyawan di timnya rendah dan suasananya tenang. Titik lemahnya: ia menunda keputusan yang tidak populer, jarang memberi umpan balik yang tegas, dan mengambil alih pekerjaan bawahannya agar mereka tidak terbebani.",
+        "managed": "Penopang membutuhkan atasan yang memberi tahu soal perubahan jauh-jauh hari, menjelaskan alasannya, dan memberi waktu untuk menyesuaikan diri. Ia menghargai nada yang tenang, harapan yang jelas, dan ucapan terima kasih atas pekerjaan yang tidak terlihat. Perubahan arah yang mendadak, bentakan, dan tekanan di depan umum merusak kepercayaannya untuk waktu lama, meskipun ia tidak mengatakan apa-apa.",
+        "pressure": "Di bawah tekanan, Penopang melambat dan terdiam. Ia mengiyakan agar tidak berdebat, memikul lebih banyak lagi, dan memendam ketidakpuasan yang tidak disadari orang di sekitarnya. Dalam konflik, ia menghindar atau mengalah; bila tekanan berlangsung lama, ia bisa tiba-tiba bersikukuh atau mengundurkan diri, “mendadak” bagi semua orang, padahal baginya keputusan itu sudah lama diambil.",
+        "develop": ["Berkata “tidak” pada tugas baru ketika bebannya sudah berlebih", "Menyampaikan ketidaksetujuan saat itu juga, selagi masih kecil", "Mencoba hal baru selangkah demi selangkah, tanpa menunggu yakin sepenuhnya", "Menceritakan hasil kerjanya sendiri, bukan menunggu orang lain menyadarinya"],
+        "agree": "Dengan Penopang, buatlah kesepakatan dengan tenang dan jauh-jauh hari. Jelaskan apa yang berubah dan mengapa, apa yang tetap sama, dan bagaimana Anda akan mendukungnya. Jangan menuntut jawaban saat itu juga: beri waktu sehari untuk berpikir dan tanyakan pendapatnya secara pribadi, bukan di rapat bersama. “Ya” darinya setelah jeda lebih bisa dipegang daripada “ya” yang cepat di bawah tekanan.",
+        "example": "Perusahaan beralih ke sistem akuntansi baru. Penopang diam-diam mempelajarinya pada malam hari, membantu rekan-rekannya, dan tidak mengeluh kepada siapa pun. Sebulan kemudian ketahuan bahwa ia bekerja seperti satu setengah orang dan berniat keluar. Seandainya atasannya bertanya lebih awal, “Bagaimana peralihannya, apa yang menghambat?”, masalah itu sudah diketahui tiga minggu sebelum surat pengunduran diri."
       }
     },
     "C": {
@@ -125,6 +155,16 @@
         "I": "Mulailah dengan mengapresiasi idenya, lalu jelaskan kesimpulan Anda dengan bahasa yang sederhana.",
         "S": "Perhalus kritik dan sampaikan apresiasi atas kontribusinya, karena bagi S suasana kerja adalah bagian dari hasil.",
         "C": "Tentukan sejak awal tingkat kualitas yang dianggap cukup, dan batasi waktu untuk analisis."
+      },
+      "deep": {
+        "vs": "Analis adalah C murni: ia digerakkan oleh logika dan kualitas. Pada Perfeksionis (CD), ketelitian ditambah tuntutan tinggi dan daya dorong; pada Pakar (CS), kesabaran dan kerja yang metodis; pada Konsultan (CI), keinginan untuk menjelaskan dan berbagi. Analis terutama ingin memahami persoalan dan mengerjakannya dengan benar. Dari Ahli Strategi (DC) dan Komunikator (IC), yang huruf C-nya sekunder, ia dibedakan oleh hal ini: kebenaran lebih penting baginya daripada kecepatan maupun kesan.",
+        "work": "Di tempat kerja, Analis adalah orang yang membaca dokumen sampai habis, mengajukan pertanyaan yang tidak nyaman, dan menemukan kesalahan yang terlewat oleh semua orang. Ia bekerja paling baik dengan data, sistem, standar, dan tugas yang taruhannya tinggi bila salah. Ia butuh waktu, ketenangan, dan kriteria yang jelas. Pekerjaan “kira-kira”, peralihan tugas yang terus-menerus, dan keputusan tanpa dasar membuatnya berontak dalam hati.",
+        "lead": "Sebagai pemimpin, Analis menata proses, menetapkan standar yang jelas, dan mengambil keputusan yang berdasar. Di timnya jarang ada kekacauan dan jarang ada pekerjaan yang harus diulang. Titik lemahnya: ia lama memutuskan, mengawasi detail, lebih banyak mengkritik daripada memuji, dan bisa tidak menyadari bahwa timnya kekurangan kehangatan dan pengakuan.",
+        "managed": "Analis membutuhkan atasan yang memberi tugas secara jelas dan tertulis, menjelaskan kriteria kualitas, dan tidak menuntut jawaban “sekarang juga”. Ia menghargai kompetensi dan logika, bukan karisma. Perintah yang kabur, perubahan persyaratan tanpa penjelasan, dan kritik yang tidak spesifik paling cepat mengikis kepercayaannya.",
+        "pressure": "Di bawah tekanan, Analis tenggelam dalam detail: memeriksa ulang, mengumpulkan data tambahan, menunda keputusan, menjadi tertutup dan kritis. Dalam konflik, ia berdebat dengan argumen dan kutipan aturan; bila argumen tidak berhasil, ia diam dan tetap pada pendapatnya. Desakan emosional lawan bicaranya ia anggap sebagai tanda posisi yang lemah.",
+        "develop": ["Mengambil keputusan dengan informasi yang belum lengkap bila risiko kesalahannya kecil", "Memisahkan yang pokok dari yang sampingan, dan tidak memoles apa yang sudah cukup baik", "Memulai umpan balik dari apa yang sudah dikerjakan dengan baik", "Membagikan hasil sementara, bukan hanya hasil akhir"],
+        "agree": "Dengan Analis, buatlah kesepakatan dengan angka, dokumen, dan logika yang jelas. Kirimkan bahannya lebih dulu agar ia sempat mempelajarinya. Jawab pertanyaannya meskipun terasa remeh: dengan cara itulah ia menguji apakah keputusannya sudah dipikirkan matang. Bila Anda mendesaknya, jelaskan mengapa di sini kecepatan lebih penting daripada pemeriksaan menyeluruh.",
+        "example": "Sebelum laporan untuk klien dirilis, Analis menemukan selisih data sebesar 3%. Manajernya meminta, “Kirim saja apa adanya, tidak ada yang akan sadar.” Analis menghabiskan tiga jam mencari penyebabnya dan menemukan kesalahan ekspor data yang akan merusak semua laporan berikutnya. Tenggat mundur setengah hari, dan dalam perdebatan ini ia benar. Namun lain kali, kebiasaan yang sama akan menahan proyek gara-gara satu koma di lampiran."
       }
     },
     "DI": {
@@ -137,6 +177,16 @@
         "I": "Nikmati antusiasme bersama, tetapi akhiri dengan daftar tugas lengkap dengan penanggung jawab dan tenggatnya.",
         "S": "Kurangi tekanan, beri tahu lebih dulu soal perubahan, dan jangan menganggap diam sebagai tanda setuju.",
         "C": "Berikan fakta dan waktu. C tidak menghambat Anda, melainkan menjaga laju Anda dari kesalahan."
+      },
+      "deep": {
+        "vs": "Perintis berbeda dari Motivator (ID) dalam urutan hurufnya: daya dorongnya berada di depan pesonanya. Motivator ingin memikat orang lalu bersama mereka mencapai tujuan; Perintis ingin mencapai tujuan dan memikat orang sepanjang jalan. Dari Pencapai (D) yang murni, ia dibedakan oleh kemampuan bernegosiasi dan merebut simpati; dari Ahli Strategi (DC), oleh kecepatan dan kesiapan mengambil risiko tanpa analisis lengkap.",
+        "work": "Di tempat kerja, Perintis adalah orang peluncuran: produk baru, pasar baru, klien baru, proyek dari nol. Ia cepat menemukan sekutu, meyakinkan pimpinan tentang idenya, dan mengambil alih negosiasi yang ditolak orang lain. Ketika proyek memasuki tahap pemeliharaan dan pelaporan, minatnya menurun dan ia mulai mencari awal yang baru.",
+        "lead": "Sebagai pemimpin, Perintis memimpin dengan teladan dan energi: memasang target berani, cepat memutuskan, dan memuji di depan umum. Orang mengikutinya dengan senang hati. Titik lemahnya: ia mengubah rencana di tengah jalan, meremehkan besarnya pekerjaan, dan bisa meninggalkan timnya mengurus detail sementara ia sendiri berlari ke tujuan berikutnya.",
+        "managed": "Perintis membutuhkan atasan yang memberinya kemandirian dan panggung: tujuan yang menantang, kebebasan bertindak, dan kesempatan mempresentasikan hasilnya. Ia sulit menerima proses yang lambat dan laporan yang rinci. Yang berhasil adalah pasangan dengan atasan atau rekan yang memegang urusan risiko dan detail, serta berterus terang ketika rencananya tidak realistis.",
+        "pressure": "Di bawah tekanan, Perintis makin cepat dan makin keras meyakinkan orang: menjanjikan lebih banyak, berdebat lebih ngotot, dan beralih ke bagian tugas yang hasilnya bisa cepat ditunjukkan. Dalam konflik, ia mula-mula mencoba memikat; bila tidak berhasil, ia menekan. Kalah dalam perdebatan di depan umum sangat berat baginya.",
+        "develop": ["Menilai besarnya pekerjaan secara realistis sebelum berjanji", "Menyerahkan proyek dengan rencana yang jelas, bukan sekadar “selanjutnya silakan urus sendiri”", "Mendengarkan keberatan rekan yang berhati-hati sebagai pengujian, bukan sebagai rem", "Mencatat di kalender janji yang dibuat secara spontan"],
+        "agree": "Dengan Perintis, buatlah kesepakatan dengan cepat dan dengan gambaran hasil yang jelas: untuk apa, apa yang akan didapat, seperti apa wujudnya. Tawarkan peran yang membuatnya terlihat. Sebutkan batasannya sejak awal, yaitu anggaran, tenggat, dan risiko, lalu tuangkan secara tertulis; kalau tidak, semuanya akan hilang di tengah antusiasme.",
+        "example": "Dalam dua pertemuan, Perintis meyakinkan klien besar untuk memulai proyek percontohan dan menjanjikan peluncuran dalam sebulan. Tim baru mengetahui tenggatnya setelah kontrak ditandatangani. Proyek percontohan diluncurkan dengan keterlambatan dua minggu, tetapi klien tetap bertahan, sebagian besar berkat pesona pribadi Perintis. Pada kesempatan berikutnya, ia datang ke pertemuan bersama manajer proyek, dan tenggat ditetapkan bersama."
       }
     },
     "DC": {
@@ -149,6 +199,16 @@
         "I": "Dengarkan idenya sampai tuntas sebelum membedahnya, dan berikan pujian di depan orang lain.",
         "S": "Jelaskan mengapa perubahan diperlukan dan berterima kasihlah atas keandalannya, karena S tidak akan memintanya sendiri.",
         "C": "Tentukan di mana perlu cepat dan di mana perlu teliti, dan jangan mendesak soal tenggat di area yang menuntut kualitas."
+      },
+      "deep": {
+        "vs": "Ahli Strategi memadukan daya dorong D dan ketelitian C, dan hal inilah yang membedakannya dari profil di sekitarnya. Perfeksionis (CD) berangkat dari kualitas lalu menekan; Ahli Strategi berangkat dari tujuan dan menuntut kualitas dalam perjalanan ke sana. Dari Pencapai (D), ia dibedakan oleh perhitungan: ia tidak terjun ke medan laga sebelum melihat rencananya. Dari Perintis (DI): lebih sedikit pesona dan lebih banyak argumen, karena ia meyakinkan dengan logika, bukan antusiasme.",
+        "work": "Di tempat kerja, Ahli Strategi mengambil tugas rumit dengan taruhan tinggi: reorganisasi, peluncuran sistem, negosiasi sulit, proyek yang harus cepat sekaligus tanpa kesalahan. Ia menyusun rencana, menghitung risiko, dan menjaga standar untuk dirinya dan orang lain. Ia tidak tahan terhadap ketidakbecusan dan kerja “untung-untungan”. Obrolan tanpa hasil dan keputusan yang mengikuti suasana hati membuatnya jengkel.",
+        "lead": "Sebagai pemimpin, Ahli Strategi menuntut, adil, dan dapat ditebak: tujuannya jelas, standarnya tinggi, kesalahan dibahas tuntas. Di bawah kepemimpinannya, tim berkembang secara profesional. Titik lemahnya adalah sikap dingin dan penilaian yang tak henti: ia jarang memuji, cepat melihat kekeliruan, dan bisa menimbulkan kesan bahwa apa pun yang dikerjakan tidak pernah cukup.",
+        "managed": "Ahli Strategi membutuhkan atasan yang kompeten dan ia hormati: dengan strategi yang jelas, keputusan yang logis, dan kesediaan berdebat secara substansial. Ia menghargai kemandirian dan akses ke informasi yang lengkap. Keputusan tanpa dasar, campur tangan yang tidak kompeten, dan alasan “memang begitu aturannya” memancing perlawanan terbuka darinya.",
+        "pressure": "Di bawah tekanan, Ahli Strategi menjadi lebih keras dan lebih kritis: menunjuk kesalahan dengan tajam, mengambil alih kendali, dan berhenti menjelaskan. Dalam konflik, ia berdebat secara logis dan gigih, tidak mengalah tanpa argumen, dan bisa memenangkan perdebatan dengan mengorbankan hubungan. Argumen emosional ia tolak pada saat seperti itu.",
+        "develop": ["Mengakui kontribusi orang secara terbuka, bukan hanya membetulkan kesalahan", "Menjelaskan bukan hanya “apa”, tetapi juga “mengapa” di balik keputusan", "Menerima cara yang berbeda untuk mencapai tujuan bila hasilnya sama", "Menyadari saat tuntutannya mulai melemahkan semangat tim"],
+        "agree": "Dengan Ahli Strategi, datanglah dalam keadaan siap: tujuan, data, pilihan beserta kelebihan dan kekurangannya, risiko. Ia menghormati orang yang berdebat dengan argumen dan kehilangan minat pada orang yang membujuk. Bila Anda tidak setuju, katakan terus terang dan jelaskan alasannya; itu akan lebih dihormatinya daripada sikap mengalah.",
+        "example": "Ahli Strategi ditugasi membenahi bagian yang terus-menerus meleset dari tenggat. Dalam sebulan, ia memperkenalkan rencana kerja, evaluasi mingguan, dan kriteria kualitas. Tenggat pun terpenuhi, tetapi dua karyawan terbaik minta dipindahkan: “Di sini kerjanya cuma dimarahi.” Ketika Ahli Strategi mulai menyebut keberhasilan dalam evaluasi mingguan yang sama, karyawan berhenti keluar, dan hasilnya tetap terjaga."
       }
     },
     "DS": {
@@ -161,6 +221,16 @@
         "I": "Jangan menepis idenya sebagai omong kosong, tetapi mintalah rencana yang konkret.",
         "S": "Ambil alih pengambilan keputusan, tetapi jelaskan alasannya dan beri waktu untuk menyesuaikan diri.",
         "C": "Akui nilai pemeriksaan dan sepakati sejak awal kriteria selesainya pekerjaan."
+      },
+      "deep": {
+        "vs": "Penuntas memadukan daya dorong D dan kesabaran S, dan inilah yang membedakannya dari semua profil di sekitarnya. Pencapai (D) melesat ke tujuan dengan lebih cepat dan lebih riuh; Penuntas menempuhnya dengan gigih dan tanpa gembar-gembor. Dari Pelaksana (SD), ia dibedakan oleh urutan hurufnya: pada Penuntas, tujuan dan inisiatif berada di depan; pada Pelaksana, keandalan dan ketenangan. Dari Perintis (DI): ia tidak butuh penonton dan tidak perlu semua orang melihat bagaimana ia bekerja.",
+        "work": "Di tempat kerja, Penuntas adalah orang yang diberi tugas untuk “membereskan”: menjalankan lini produksi, membenahi bagian yang bermasalah, menuntaskan implementasi. Ia bekerja mandiri, menepati janji, dan tidak meninggalkan tugas saat kesulitan pertama muncul. Ia paling nyaman di tempat yang hasilnya konkret dan tanggung jawabnya jelas. Diskusi tanpa ujung, politik kantor, dan rapat tanpa keputusan membuatnya lelah.",
+        "lead": "Sebagai pemimpin, Penuntas tenang, tegas, dan konsisten: memberi tugas, memeriksa pelaksanaannya, dan ikut bekerja sejajar dengan timnya. Orang tahu apa yang bisa diharapkan darinya. Titik lemahnya adalah sikap keras kepala dan tertutup: ia jarang menjelaskan rencananya, enggan mengubah keputusan, dan bisa tidak menyadari bahwa timnya butuh diskusi dan pengakuan.",
+        "managed": "Penuntas membutuhkan atasan yang memberi tugas yang jelas dan memercayakan pelaksanaannya kepadanya. Ia menghargai kesepakatan yang stabil: bila tujuan berubah, ia perlu memahami alasannya. Perubahan arah yang sering, pengawasan di setiap langkah, dan tugas tanpa hasil yang konkret menurunkan motivasinya.",
+        "pressure": "Di bawah tekanan, Penuntas bersikukuh: bekerja lebih banyak, bicara lebih sedikit, dan berpegang pada jalan yang sudah dipilih meskipun situasinya berubah. Dalam konflik, ia tidak ribut, tetapi juga tidak mengalah; ia bisa diam-diam tetap melakukan dengan caranya sendiri. Dari luar ini tampak sebagai keras kepala, dari dalam terasa sebagai kesetiaan pada keputusan.",
+        "develop": ["Mengutarakan rencana dengan jelas agar tim memahami logikanya", "Meninjau ulang keputusan ketika keadaan berubah", "Meminta pendapat rekan sebelum mulai bertindak", "Mendelegasikan, termasuk pekerjaan yang lebih cepat bila dikerjakan sendiri"],
+        "agree": "Dengan Penuntas, buatlah kesepakatan secara konkret: apa yang harus dikerjakan, sampai kapan, sumber daya apa yang tersedia. Jangan membebaninya dengan penjelasan panjang, dan jangan mengubah kesepakatan tanpa alasan. Bila Anda ingin ia mengubah pendekatannya, tunjukkan fakta dan beri waktu untuk mempertimbangkannya; bila diminta saat itu juga, kemungkinan besar ia akan menolak.",
+        "example": "Penuntas mendapat tugas implementasi yang sudah dua kali gagal. Ia tidak membuat presentasi, melainkan menyusun daftar masalah dan menyelesaikannya satu per satu. Tiga bulan kemudian sistemnya berjalan. Pimpinan baru mengetahui kemajuannya dari laporan akhir, dan pada kesempatan berikutnya memintanya mengirim laporan status singkat seminggu sekali agar keberhasilan terlihat lebih awal."
       }
     },
     "ID": {
@@ -173,6 +243,16 @@
         "I": "Akhiri pertemuan dengan kesepakatan tertulis; kalau tidak, antusiasme tidak akan sejalan dengan tindakan.",
         "S": "Beri tahu lebih dulu soal perubahan dan jangan memutuskan atas nama S; tanyakan pendapatnya secara langsung.",
         "C": "Siapkan angka dan beri waktu untuk menjawab. Diamnya C berarti sedang menimbang, bukan menolak."
+      },
+      "deep": {
+        "vs": "Motivator berbeda dari Perintis (DI) karena baginya orang berada di depan tujuan: ia lebih dulu membakar semangat tim, lalu membawanya menuju hasil. Dari Inspirator (I) yang murni, ia dibedakan oleh daya dorong dan kesiapan memikul tanggung jawab; dari Mentor (IS): kurang lembut dan lebih ambisius; dari Komunikator (IC): kecepatan dan spontanitas alih-alih persiapan yang cermat.",
+        "work": "Di tempat kerja, Motivator adalah wajah tim: berbicara di depan umum, menjual, mengumpulkan orang di sekitar sebuah ide, dan mengambil inisiatif dalam rapat. Ia kuat di tempat yang menuntut kemampuan meyakinkan banyak orang: penjualan, peluncuran, acara, pengembangan kemitraan. Banyak energinya tercurah di awal; di tengah proyek, saat dibutuhkan kerja yang tekun, ia bisa kehilangan tempo.",
+        "lead": "Sebagai pemimpin, Motivator membangkitkan semangat: memasang target yang mencolok, merayakan kemenangan secara terbuka, percaya pada orang, dan memberi mereka kesempatan. Timnya bekerja dengan penuh gairah. Titik lemahnya adalah ketidakkonsistenan dan optimisme berlebih: ia menjanjikan lebih dari yang sanggup dikerjakan tim, melupakan detail, dan tidak selalu menyadari bahwa orang sudah lelah dengan kerja serba mendesak yang tak kunjung usai.",
+        "managed": "Motivator membutuhkan atasan yang memberinya panggung dan kebebasan: kesempatan mengusulkan, tampil, dan memimpin orang. Ia menghargai pengakuan dan umpan balik yang hidup. Ia terbantu oleh atasan yang dengan tenang membawanya kembali ke kenyataan, yaitu sumber daya, tenggat, dan angka, tanpa memadamkan antusiasmenya.",
+        "pressure": "Di bawah tekanan, Motivator menjadi makin lantang: makin giat meyakinkan, menebar janji, dan memikul terlalu banyak. Bila tidak berhasil, ia bisa meledak atau menyalahkan keadaan. Dalam konflik, ia berusaha mengubah pendapat lawan bicaranya dan meraih dukungan mayoritas.",
+        "develop": ["Menghitung sumber daya sebelum menyebut tenggat", "Menuntaskan apa yang sudah dimulai, bukan hanya memulainya", "Memberi kesempatan bicara kepada orang lain dalam rapat", "Berpegang pada angka, bukan hanya pada kesan"],
+        "agree": "Dengan Motivator, buatlah kesepakatan dengan penuh energi: mulailah dari idenya dan dampaknya bagi orang-orang. Berikan peran yang membuatnya berbicara atas nama tim. Bahas angka dan tenggat secara terpisah dan tuangkan secara tertulis, karena ia lebih mungkin mengingat suasana pertemuan daripada keputusannya.",
+        "example": "Di rapat tahunan, Motivator menjanjikan bahwa bagiannya akan menggandakan penjualan, dan seisi ruangan bertepuk tangan. Sebulan kemudian ternyata target itu tidak didukung orang maupun anggaran. Motivator menemukan dua mitra dan mencapai kenaikan satu setengah kali lipat, yang juga merupakan keberhasilan, tetapi timnya bekerja habis-habisan selama setengah tahun. Rencana yang realistis sebelum berpidato akan memungkinkannya menjanjikan satu setengah kali lipat dan melampauinya."
       }
     },
     "IS": {
@@ -185,6 +265,16 @@
         "I": "Dukung idenya, tetapi mintalah rencana dan tenggat; kalau tidak, Anda berdua akan terbawa suasana.",
         "S": "Sebutkan masalah secara terang-terangan dan saling tetapkan tenggat, karena tanpa itu pekerjaan tidak bergerak.",
         "C": "Anggap kritik terhadap detail sebagai kepedulian pada kualitas, bukan penilaian terhadap diri Anda."
+      },
+      "deep": {
+        "vs": "Mentor berbeda dari Diplomat (SI) dalam urutan hurufnya: pergaulan dan kehangatan berada di depan ketenangan, sehingga ia lebih aktif, yakni berkenalan lebih dulu, mengumpulkan orang, dan memimpin percakapan. Dari Inspirator (I), ia dibedakan oleh kepedulian alih-alih gebyar: baginya lebih penting orang merasa nyaman daripada semuanya terasa seru. Dari Motivator (ID): ia tidak mendesak, karena ia memimpin orang lewat dukungan, bukan lewat target.",
+        "work": "Di tempat kerja, Mentor adalah orang yang didatangi untuk bertanya dan berbagi masalah. Ia membimbing karyawan baru, memperbaiki hubungan antarbagian, dan ingat siapa yang berulang tahun dan siapa yang sedang cuti. Ia paling nyaman dalam pekerjaan yang berhubungan dengan orang: pelatihan, orientasi karyawan baru, pendampingan klien, tim yang menghargai hubungan. Keputusan yang keras, persaingan, dan pekerjaan tanpa interaksi terasa berat baginya.",
+        "lead": "Sebagai pemimpin, Mentor mengembangkan orang: melihat potensi, mendukung, dan memberi kesempatan kedua. Di timnya, orang merasa aman untuk salah dan belajar. Titik lemahnya adalah menghindari umpan balik yang tegas dan keputusan yang tidak populer: ia lama menoleransi kinerja yang lemah dan bisa membela seorang karyawan lebih lama dari yang semestinya.",
+        "managed": "Mentor membutuhkan atasan yang ramah, yang menghargai kontribusinya bagi suasana dan bagi orang-orang, bukan hanya angka. Ia bekerja baik ketika merasa dipercaya dan bisa ikut membahas keputusan. Nada yang dingin, kritik di depan umum, dan tekanan tanpa penjelasan lebih cepat menguras tenaganya daripada beban kerja.",
+        "pressure": "Di bawah tekanan, Mentor mencari dukungan dan berusaha mendamaikan semua pihak. Ia mengiyakan agar tidak mengecewakan orang, dan bisa menjanjikan hal yang saling bertentangan kepada pihak yang berbeda. Bila konflik berlarut-larut, ia memasukkannya ke hati dan kehilangan energi; konfrontasi terbuka ia hindari sampai titik terakhir.",
+        "develop": ["Memberi umpan balik yang jujur, dengan mengingat bahwa itu juga bentuk kepedulian", "Mengambil keputusan yang tidak akan menyenangkan semua orang", "Memisahkan keinginan membantu dari kewajiban menyelesaikan masalah orang lain", "Berpegang pada fakta, bukan hanya pada kesannya tentang seseorang"],
+        "agree": "Dengan Mentor, buatlah kesepakatan dengan nada yang hangat: tunjukkan dampak keputusan bagi orang-orang dan bagaimana Anda akan mendukung mereka. Tanyakan pendapatnya, karena ia sering bisa melihat bagaimana tim akan menanggapi perubahan. Bila diperlukan keputusan yang keras, jelaskan mengapa keputusan itu adil, dan bantu ia merumuskan cara menyampaikannya kepada orang-orang.",
+        "example": "Seorang anggota tim Mentor sudah tiga bulan meleset dari tenggat. Mentor membantunya, mengambil alih sebagian tugasnya, dan membelanya di depan pimpinan. Ketika masalah itu sampai ke tingkat klien, ternyata orang tersebut memang tidak mampu menjalankan perannya. Percakapan jujur di bulan pertama akan membantu menemukan tugas yang lebih cocok baginya lebih awal, tanpa merugikan tim."
       }
     },
     "IC": {
@@ -197,6 +287,16 @@
         "I": "Nikmati mudahnya saling memahami, tetapi catat siapa mengerjakan apa dan kapan tenggatnya.",
         "S": "Jangan mengubah rencana secara mendadak; tanyakan pendapatnya secara langsung dan beri waktu untuk menjawab.",
         "C": "Bicaralah dengan bahasa data dan terimalah hasil yang “cukup baik” bila dampak kesalahannya kecil."
+      },
+      "deep": {
+        "vs": "Komunikator berbeda dari Konsultan (CI) dalam urutan hurufnya: pergaulan berada di depan analisis, sehingga ia cenderung tampil lebih dulu lalu memeriksa, sedangkan Konsultan memeriksa lebih dulu lalu menjelaskan. Dari Inspirator (I), ia dibedakan oleh kecintaannya pada fakta dan persiapan; dari Motivator (ID): ia tidak mendesak, karena ia meyakinkan dengan argumen dan cara penyampaian, bukan dengan tekanan.",
+        "work": "Di tempat kerja, Komunikator adalah orang yang mengubah hal rumit menjadi mudah dipahami: menyiapkan presentasi, menulis teks, menjelaskan produk kepada klien, dan menyampaikan hasil kerja para analis kepada pimpinan. Ia kuat di titik temu antara keahlian dan audiens. Ia kesulitan ketika harus memilih antara kecepatan dan ketelitian: ia ingin cepat tampil sekaligus memeriksa semuanya.",
+        "lead": "Sebagai pemimpin, Komunikator pandai menjelaskan tujuan, menjaga komunikasi, dan memperhatikan kualitas. Timnya paham apa yang dikerjakan dan untuk apa. Titik lemahnya adalah keraguan: ia bisa lama memilih di antara beberapa pilihan, meninjau ulang keputusan setelah ada data baru, dan menunda percakapan yang tidak menyenangkan.",
+        "managed": "Komunikator membutuhkan atasan yang memberinya kesempatan tampil dan menghargai kualitas kerjanya. Ia menghargai kriteria yang jelas dan kesempatan untuk bersiap. Ia terbantu bila sejak awal jelas di mana kecepatan lebih penting dan di mana ketelitian; itu meredakan tarik-menarik dalam dirinya.",
+        "pressure": "Di bawah tekanan, Komunikator bimbang: kadang bicara terlalu banyak dan spontan, kadang tenggelam dalam pemeriksaan ulang. Ia bisa mudah tersinggung oleh kritik terhadap cara penyampaian, bukan terhadap isinya. Dalam konflik, ia mula-mula mencoba meyakinkan dengan kata-kata; bila tidak berhasil, ia mundur dan menyiapkan argumen yang lebih kuat.",
+        "develop": ["Menyepakati sejak awal kapan dibutuhkan kecepatan dan kapan ketelitian", "Mengambil keputusan tepat waktu, meskipun ingin memeriksa sekali lagi", "Memisahkan kritik terhadap ide dari kritik terhadap dirinya", "Berbicara lebih ringkas ketika audiens butuh kesimpulan, bukan cerita"],
+        "agree": "Dengan Komunikator, buatlah kesepakatan lewat dialog: bahas idenya, beri ia kesempatan berbicara, dan perkuat keputusannya dengan fakta. Tawarkan peran untuk mempresentasikan hasilnya. Sebutkan dengan jelas tenggat dan tingkat ketelitian yang dibutuhkan; itu membantunya agar tidak terjebak di antara “menyampaikan” dan “memeriksa”.",
+        "example": "Komunikator ditugasi mempresentasikan hasil riset di depan dewan direksi. Selama tiga hari ia merombak slide dan menambahkan data baru, lalu tampil dengan gemilang, tetapi terlambat mengirim bahan presentasi sehingga dewan tidak sempat mengajukan sebagian pertanyaannya. Pada kesempatan berikutnya, ia bersepakat dengan analis: data dibekukan dua hari sebelum presentasi."
       }
     },
     "SI": {
@@ -209,6 +309,16 @@
         "I": "Tegaskan batasan Anda dan mintalah hal yang konkret, karena ide saja tidak cukup.",
         "S": "Bergantianlah mengambil inisiatif dan jangan menunda percakapan yang sulit.",
         "C": "Mintalah penjelasan tentang logika di balik aturan, dan usulkan perubahan dalam langkah-langkah kecil."
+      },
+      "deep": {
+        "vs": "Diplomat berbeda dari Mentor (IS) dalam urutan hurufnya: ketenangan berada di depan pergaulan, sehingga ia tidak terlalu memimpin percakapan, melainkan menciptakan suasana yang memudahkan orang mencapai kesepakatan. Dari Penopang (S), ia dibedakan oleh keterbukaan dan keramahannya; dari Spesialis (SC), oleh perhatiannya pada orang, bukan pada aturan. Dari Pelaksana (SD): ia tidak mendesak, karena ia mencapai tujuannya lewat kesepakatan, bukan lewat kegigihan.",
+        "work": "Di tempat kerja, Diplomat adalah orang yang menyenangkan untuk diajak bekerja sama: tenang, ramah, dan siap membantu. Ia unggul di tempat yang menuntut kerja panjang dan cermat dengan orang: klien, mitra, koordinasi tim, komunikasi internal. Negosiasi yang alot, perdebatan di depan umum, dan kerja dalam persaingan yang terus-menerus terasa berat baginya.",
+        "lead": "Sebagai pemimpin, Diplomat membangun kepercayaan: mendengarkan, mempertimbangkan pendapat, dan menyelesaikan konflik secara diam-diam. Di timnya jarang ada pertengkaran dan banyak saling bantu. Titik lemahnya adalah keputusan yang lambat dan sikap yang terlalu lunak: ia menunggu persetujuan semua orang, menunda percakapan yang sulit, dan tidak selalu mempertahankan posisinya di hadapan atasan.",
+        "managed": "Diplomat membutuhkan atasan yang tenang dan ramah, yang menjelaskan perubahan jauh-jauh hari dan menghargai kontribusinya dalam menjaga hubungan. Ia bekerja baik dalam tim yang stabil dengan peran yang jelas. Tekanan, nada yang kasar, dan keharusan menjawab pertanyaan yang memicu konflik secara cepat membuatnya kehilangan pijakan.",
+        "pressure": "Di bawah tekanan, Diplomat mengalah: mengiyakan untuk meredakan ketegangan dan memikul hal yang bukan bagiannya. Ketidaksetujuannya ia pendam, dan itu terus menumpuk. Dalam konflik, ia berusaha mencari kompromi dengan cara apa pun; bila tidak berhasil, ia menjauh dari orang tersebut alih-alih berdebat dengannya.",
+        "develop": ["Menyampaikan ketidaksetujuan saat itu juga dan dengan tenang", "Berkata “tidak” ketika permintaan berada di luar lingkup tugasnya", "Mengambil keputusan tanpa menunggu persetujuan semua orang", "Membela kepentingan tim di hadapan pimpinan"],
+        "agree": "Dengan Diplomat, buatlah kesepakatan tanpa terburu-buru dan dengan ramah. Tunjukkan bahwa pendapatnya penting, dan tanyakan secara pribadi, bukan di depan semua orang. Jelaskan dampak keputusan itu bagi orang-orang. Jangan menganggap “baiklah” darinya sebagai persetujuan akhir: tanyakan lagi keesokan harinya apakah masih ada keraguan.",
+        "example": "Dalam pertemuan dengan mitra, Diplomat menyetujui pekerjaan tambahan tanpa bayaran agar hubungan tidak rusak. Tim baru mengetahuinya setelah semuanya terjadi dan merasa tidak senang. Ketika atasannya menyarankan kalimat “Izinkan saya memastikannya dulu dengan tim, nanti saya kabari”, Diplomat mulai menggunakannya dan berhasil menjaga hubungan dengan mitra sekaligus kepercayaan timnya."
       }
     },
     "SC": {
@@ -221,6 +331,16 @@
         "I": "Jangan menganggap antusiasme sebagai rencana; mintalah tenggat dan penanggung jawab.",
         "S": "Saling tetapkan tenggat dan sebutkan masalah secara terang-terangan, sekecil apa pun.",
         "C": "Tentukan sejak awal tingkat kualitas yang dianggap cukup; kalau tidak, Anda berdua akan tenggelam dalam detail."
+      },
+      "deep": {
+        "vs": "Spesialis berbeda dari Pakar (CS) dalam urutan hurufnya: stabilitas dan keandalan berada di depan ketelitian. Pakar mencari jawaban yang benar; Spesialis memastikan proses berjalan sesuai kesepakatan. Dari Penopang (S), ia dibedakan oleh kecintaannya pada aturan dan keteraturan; dari Diplomat (SI): lebih sedikit bergaul dan lebih banyak memperhatikan pekerjaan. Dari Analis (C): ia kurang kritis dan lebih suka menjalankan standar dengan rapi daripada merombaknya.",
+        "work": "Di tempat kerja, Spesialis adalah penjaga proses: tahu bagaimana segala sesuatu diatur, mengelola dokumentasi, mematuhi tenggat dan aturan, serta ingat bagaimana hal itu dikerjakan sebelumnya. Ia kuat dalam pekerjaan yang menuntut kerapian, konsistensi, dan tanggung jawab: akuntansi, pengendalian mutu, layanan dukungan, administrasi. Perubahan mendadak dan tugas tanpa petunjuk terasa berat baginya.",
+        "lead": "Sebagai pemimpin, Spesialis terorganisasi dan dapat diandalkan: prosesnya jelas, tugas setiap orang terang, dan jarang ada kejutan. Orang tahu aturannya dan merasa terlindungi. Titik lemahnya adalah kehati-hatian terhadap perubahan dan pengawasan keteraturan yang berlebihan: ide baru lambat diterima di bagiannya.",
+        "managed": "Spesialis membutuhkan atasan yang memberi petunjuk yang jelas, memberi tahu soal perubahan jauh-jauh hari, dan menghargai pekerjaan yang rapi. Ia bekerja baik dalam lingkungan yang stabil dengan harapan yang jelas. Ketergesaan, improvisasi, dan perintah yang saling bertentangan membuatnya stres, dan ia jarang mengungkapkannya.",
+        "pressure": "Di bawah tekanan, Spesialis berpegang pada aturan dan kebiasaan yang sudah ada, melambat, dan mulai memeriksa ulang segala hal. Ia menanggung beban berlebih dalam diam sampai benar-benar kelelahan. Dalam konflik, ia merujuk pada kesepakatan dan prosedur; ia tidak suka berdebat terbuka, tetapi sulit baginya melepaskan cara yang “benar”.",
+        "develop": ["Menyampaikan bila bebannya berlebih saat itu juga, bukan memendamnya", "Mencoba cara kerja baru pada tugas-tugas kecil", "Membedakan aturan yang penting dari kebiasaan yang bisa diubah", "Mengusulkan perbaikan, bukan hanya mempertahankan yang sudah ada"],
+        "agree": "Dengan Spesialis, buatlah kesepakatan jauh-jauh hari dan secara rinci: apa yang berubah, dengan aturan apa, dalam tenggat berapa lama, dan apa yang tetap sama. Berikan petunjuk tertulis dan waktu untuk bersiap. Tanyakan risiko apa yang ia lihat, karena ia sering menyadari apa yang akan rusak saat peralihan.",
+        "example": "Sebuah bagian harus beralih ke CRM baru dalam dua minggu. Spesialis tetap bekerja dengan cara lama sampai detik terakhir, dan atasannya kesal. Ternyata tidak ada yang menjelaskan cara memindahkan data lama. Ketika Spesialis ditugasi menyusun panduan peralihan, ia menyelesaikannya dalam tiga hari, dan bagian itu pindah sistem tanpa kehilangan apa pun."
       }
     },
     "SD": {
@@ -233,6 +353,16 @@
         "I": "Dengarkan idenya, tetapi mintalah rencana. Keteguhan Anda akan membantu I menuntaskan pekerjaan.",
         "S": "Ambillah keputusan, tetapi jelaskan alasannya dan beri waktu untuk menyesuaikan diri.",
         "C": "Sepakati kriteria selesainya pekerjaan sejak awal dan hargai waktu yang dibutuhkan untuk memeriksa."
+      },
+      "deep": {
+        "vs": "Pelaksana berbeda dari Penuntas (DS) dalam urutan hurufnya: ketenangan dan keandalan berada di depan daya dorong. Penuntas melesat ke tujuan; Pelaksana menempuhnya dengan langkah yang mantap dan tidak berbelok. Dari Penopang (S), ia dibedakan oleh ketegasan dan kesiapan memikul tanggung jawab atas hasil; dari Spesialis (SC): lebih sedikit perhatian pada aturan dan lebih banyak pada hasil akhir. Dari Pencapai (D): ia tidak tergesa-gesa.",
+        "work": "Di tempat kerja, Pelaksana memegang proyek panjang dan bidang yang tidak boleh gagal: produksi, logistik, operasional, implementasi. Ia memikul tanggung jawab dengan tenang, menjaga tempo selama berbulan-bulan, dan tidak panik saat krisis. Ia tidak nyaman di lingkungan yang terus berubah, yang menuntut tampil di depan umum, dan yang penuh diskusi panjang tanpa keputusan.",
+        "lead": "Sebagai pemimpin, Pelaksana dapat diandalkan dan tegas: memberi tugas yang jelas, menuntut pelaksanaannya, dan ikut bekerja sejajar dengan timnya. Orang memercayai kata-katanya. Titik lemahnya adalah sikap keras kepala dan irit bicara: ia jarang menjelaskan keputusannya, enggan mengubah arah, dan bisa tidak menyadari bahwa timnya butuh lebih banyak komunikasi.",
+        "managed": "Pelaksana membutuhkan atasan yang menetapkan tujuan yang jelas, memercayakan pelaksanaannya kepadanya, dan tidak mengubah kesepakatan tanpa alasan. Ia menghargai keterusterangan dan penghargaan atas pengalamannya. Kesibukan yang tidak perlu, prioritas yang sering berganti, dan pengawasan demi pengawasan memicu perlawanan diam-diam darinya.",
+        "pressure": "Di bawah tekanan, Pelaksana menjadi makin teguh dan makin pendiam: berpegang pada rencananya, menolak perubahan, dan bekerja lebih banyak. Dalam konflik, ia tidak meninggikan suara, tetapi juga tidak mundur. “Tidak” darinya sulit diubah bila sudah terucap.",
+        "develop": ["Menjelaskan keputusan, bukan hanya mengumumkannya", "Memberi rekan kesempatan untuk memengaruhi rencana", "Meninjau ulang arah ketika keadaan berubah", "Menceritakan kemajuan, bukan hanya hasil akhir"],
+        "agree": "Dengan Pelaksana, buatlah kesepakatan dengan tenang dan langsung ke pokoknya: tujuan, sumber daya, tenggat, tanggung jawab. Jangan menekan dan jangan mendesaknya untuk segera menjawab. Bila Anda ingin mengubah keputusannya, datanglah dengan fakta dan jauh-jauh hari; usulan yang disodorkan secara dadakan kemungkinan besar akan ia tolak.",
+        "example": "Pelaksana memimpin pembangunan gudang, dan di tengah jalan klien meminta tata letaknya diubah. Pelaksana menolak karena tenggat akan meleset. Seminggu kemudian, setelah menerima perhitungan manfaat dari klien, ia setuju dan menyusun ulang rencana sehingga tenggat hanya mundur sepuluh hari. “Tidak” darinya bukan sikap keras kepala, melainkan upaya melindungi hasil, tetapi pembicaraan dengan angka sebaiknya dimulai sejak awal."
       }
     },
     "CD": {
@@ -245,6 +375,16 @@
         "I": "Mulailah dengan mengapresiasi idenya; sampaikan kritik secara spesifik dan tanpa nada tajam.",
         "S": "Perhalus koreksi Anda dan sampaikan apresiasi atas kontribusinya, karena sikap dingin melukai S lebih dalam daripada yang terlihat.",
         "C": "Batasi waktu analisis dan putuskan sejak awal di mana harus berhenti."
+      },
+      "deep": {
+        "vs": "Perfeksionis berbeda dari Ahli Strategi (DC) dalam urutan hurufnya: kualitas berada di depan tujuan. Ahli Strategi menginginkan hasil dan karena itu menuntut kualitas; Perfeksionis ingin semuanya benar dan siap memperjuangkannya. Dari Analis (C), ia dibedakan oleh daya dorongnya: ia tidak sekadar melihat kesalahan, tetapi bersikeras agar diperbaiki. Dari Pakar (CS): kurang sabar dan lebih siap berdebat.",
+        "work": "Di tempat kerja, Perfeksionis adalah benteng terakhir sebelum sampai ke klien: memeriksa, menemukan kesalahan, menuntut perbaikan, dan tidak mau menandatangani apa pun yang belum ia yakini. Ia kuat dalam tugas keahlian dengan tuntutan tinggi: audit, arsitektur sistem, pengawasan, penelitian ilmiah. Ia kesulitan ketika kualitas dikorbankan demi tenggat, dan ia mengatakannya secara terbuka.",
+        "lead": "Sebagai pemimpin, Perfeksionis menetapkan standar tinggi dan menaatinya sendiri. Timnya bekerja secara profesional dan jarang salah. Titik lemahnya adalah kritik dan pengawasan: ia melihat kekeliruan lebih cepat daripada keberhasilan, mengerjakan ulang pekerjaan orang lain, dan bisa menimbulkan kesan bahwa ia mustahil dipuaskan.",
+        "managed": "Perfeksionis membutuhkan atasan yang kompeten, yang menghargai kualitas dan menjelaskan mengapa kadang “cukup baik” sudah memadai. Ia bekerja baik ketika kriteria jelas sejak awal dan keputusan punya dasar. Ketergesaan tanpa alasan, kecerobohan, dan komentar yang tidak kompeten memicu perlawanan keras darinya.",
+        "pressure": "Di bawah tekanan, Perfeksionis menjadi lebih tajam dan lebih menuntut: menunjuk kesalahan dengan keras, berhenti memercayai pekerjaan orang lain, dan mengerjakan semuanya sendiri. Dalam konflik, ia berdebat dengan argumen dan tidak mundur sampai yakin bahwa dirinya keliru. Ia bisa benar secara substansi tetapi kalah dalam hal hubungan.",
+        "develop": ["Memulai umpan balik dari apa yang sudah dikerjakan dengan baik", "Menjelaskan kriteria kualitas sebelum pekerjaan dimulai, bukan sesudahnya", "Membedakan kesalahan yang penting dari yang bisa dibiarkan", "Memercayakan sebagian pekerjaan kepada rekan tanpa memeriksa ulang semuanya"],
+        "agree": "Dengan Perfeksionis, datanglah dalam keadaan siap: fakta, kriteria, logika. Jangan berdebat dengannya secara emosional. Bila pekerjaan harus diserahkan sebelum ia menganggapnya siap, sepakati tingkat kualitas minimum dan apa yang akan disempurnakan kemudian; itu meredakan penolakan dalam dirinya.",
+        "example": "Menjelang rilis, Perfeksionis menemukan dua belas catatan dan meminta rilis ditunda. Manajer proyek memintanya memilih tiga yang paling penting. Perfeksionis setuju, rilis berjalan tepat waktu, dan sembilan sisanya diperbaiki di versi berikutnya. Perubahan terpenting: kriteria “apa yang menghalangi rilis” kini disepakati sebelum pemeriksaan dimulai."
       }
     },
     "CS": {
@@ -257,6 +397,16 @@
         "I": "Jelaskan kesimpulan Anda dengan bahasa yang sederhana, dan jangan menganggap emosi I sebagai sikap tidak serius.",
         "S": "Bahas perubahan selangkah demi selangkah dan jangan mengkritik di depan orang lain.",
         "C": "Sepakati sejak awal tingkat kerincian yang dianggap cukup."
+      },
+      "deep": {
+        "vs": "Pakar berbeda dari Spesialis (SC) dalam urutan hurufnya: ketelitian berada di depan stabilitas. Spesialis memastikan proses berjalan; Pakar memastikan proses itu berjalan dengan benar. Dari Analis (C), ia dibedakan oleh kesabaran dan kelembutannya: ia lebih jarang berdebat dan lebih banyak bekerja. Dari Perfeksionis (CD): ia tidak mendesak, karena ia akan menunjukkan kesalahan, tetapi tidak menekan.",
+        "work": "Di tempat kerja, Pakar adalah profesional yang dipercaya menangani tugas rumit: pengembangan, perhitungan, diagnosis, dokumentasi. Ia bekerja dengan cermat, memeriksa detail, dan berpegang pada metode yang sudah teruji. Timnya memercayai kesimpulannya. Ia kesulitan dalam kondisi yang tidak pasti, serba tergesa, dan penuh peralihan antartugas.",
+        "lead": "Sebagai pemimpin, Pakar lebih mirip spesialis senior daripada atasan: ia membantu memahami persoalan, berbagi pengetahuan, dan menjaga kualitas. Timnya bekerja dengan tenang dan profesional. Titik lemahnya adalah kehati-hatian dan keraguan dalam konflik: ia menghindari percakapan yang keras dan tidak selalu membela timnya di hadapan pimpinan.",
+        "managed": "Pakar membutuhkan atasan yang memberi tugas yang jelas, waktu untuk bekerja dengan baik, dan menjelaskan perubahan jauh-jauh hari. Ia menghargai kompetensi dan ketenangan. Tekanan, tuntutan jawaban seketika, dan prioritas yang terus berganti mengacaukan ritme kerjanya.",
+        "pressure": "Di bawah tekanan, Pakar menarik diri: memeriksa ulang, menunda keputusan, dan menghindari kontak. Ia jarang berdebat secara terbuka, tetapi bisa diam-diam terus mengerjakan dengan cara yang ia anggap benar. Konflik membekas lama dan terasa berat baginya.",
+        "develop": ["Menyampaikan pendapatnya dalam rapat, bukan hanya sesudahnya", "Mengambil keputusan dengan informasi yang belum lengkap bila risiko kesalahannya kecil", "Meminta waktu untuk menjawab, alih-alih menyetujui tenggat yang mustahil", "Berbagi pengetahuan secara lebih aktif, bukan hanya bila diminta"],
+        "agree": "Dengan Pakar, buatlah kesepakatan secara tertulis dan jauh-jauh hari: tugas, kriteria, tenggat, sumber data. Beri waktu untuk berpikir dan tanyakan pendapatnya secara pribadi, karena dalam rapat bersama ia bisa diam saja. Ia menghargai bila keahliannya dihormati dan ia tidak diminta “mengerjakan secepatnya, asal jadi”.",
+        "example": "Dalam rapat dibahas arsitektur sistem yang baru, dan Pakar diam saja. Dua hari kemudian ia mengirim surel berisi tiga risiko yang tidak diperhitungkan siapa pun. Atasannya lalu menetapkan aturan: keputusan penting diambil sehari setelah dibahas, agar semua orang punya waktu berpikir. Usulan Pakar pun mulai datang sebelum keputusan diambil, bukan sesudahnya."
       }
     },
     "CI": {
@@ -269,13 +419,23 @@
         "I": "Anda berdua akan mudah saling memahami; pastikan saja percakapan itu berujung pada rencana.",
         "S": "Jangan mengubah kesimpulan secara mendadak dan beri waktu, karena S membutuhkan kepastian.",
         "C": "Bicaralah dengan bahasa data, tetapi jangan memperdebatkan setiap detail."
+      },
+      "deep": {
+        "vs": "Konsultan berbeda dari Komunikator (IC) dalam urutan hurufnya: analisis berada di depan pergaulan. Komunikator cenderung tampil lebih dulu lalu memeriksa; Konsultan memahami persoalan lebih dulu dan baru kemudian menjelaskan. Dari Analis (C), ia dibedakan oleh luwesnya dalam bergaul dan keinginannya untuk berbagi; dari Pakar (CS): keterbukaan dan minatnya pada orang, bukan hanya pada tugas.",
+        "work": "Di tempat kerja, Konsultan adalah penerjemah antara para ahli dan semua orang lainnya: ia memahami persoalan yang rumit dan menjelaskannya dengan gamblang. Ia kuat dalam analisis yang disertai presentasi hasil, konsultasi, pelatihan, dan penjualan teknis. Ia kesulitan ketika harus tampil tanpa persiapan atau ketika analisisnya harus dipangkas demi kecepatan.",
+        "lead": "Sebagai pemimpin, Konsultan menjelaskan keputusan, mengajari timnya, dan menjaga kualitas. Orang memahami logika di balik tugas mereka dan berkembang secara profesional. Titik lemahnya adalah terlalu lama berpikir sebelum memutuskan dan enggan membagikan kesimpulan sebelum benar-benar diperiksa.",
+        "managed": "Konsultan membutuhkan atasan yang menghargai kedalaman analisis sekaligus kemampuan menjelaskan. Ia bekerja baik ketika bisa bersiap dan mempresentasikan hasilnya sendiri. Ia terbantu oleh kesepakatan tentang kapan kesimpulan sementara sudah cukup; itu meredakan tarik-menarik dalam dirinya antara “memeriksa” dan “berbagi”.",
+        "pressure": "Di bawah tekanan, Konsultan bimbang: kadang memperpanjang pemeriksaan, kadang terburu-buru membagikan kesimpulan yang belum matang. Ia bisa menjadi tertutup dan formal. Dalam konflik, ia berpegang pada argumen dan berusaha menjelaskan posisinya; bila tidak didengar, ia mundur.",
+        "develop": ["Membagikan kesimpulan sementara dengan tanda “draf”", "Mengambil keputusan tepat waktu, meskipun belum sepenuhnya yakin", "Menyederhanakan penjelasan bagi orang yang butuh kesimpulan, bukan metode", "Mempertahankan posisinya bila yakin pada datanya"],
+        "agree": "Dengan Konsultan, buatlah kesepakatan lewat dialog: bahas tugasnya, beri ia waktu untuk memahaminya, dan mintalah ia menjelaskan kesimpulannya dengan kata-katanya sendiri. Katakan dengan jelas tingkat ketelitian yang dibutuhkan dan tenggatnya. Ia menghargai minat pada kesimpulannya dan pertanyaan yang substansial.",
+        "example": "Seorang klien meminta Konsultan “menilai dengan cepat” sebuah proyek. Konsultan menghabiskan seminggu mengumpulkan data dan mengirim laporan terperinci ketika keputusan sudah diambil tanpa dirinya. Pada proyek berikutnya, ia menyepakati dua tahap: penilaian awal dalam dua hari dan laporan lengkap dalam seminggu. Klien mendapat jawaban tepat waktu, dan Konsultan mendapat waktu untuk menggali lebih dalam."
       }
     }
   },
   "content": {
     "disc": {
       "title": "Apa Itu DISC: Metode, Empat Gaya Perilaku, dan Cara Membaca Profil",
-      "description": "Penjelasan sederhana metode DISC: asal-usul, apa yang diukur, empat gaya D, I, S, C, cara menghitung hasil, dan cara membaca profil. Tes gratis ada di situs ini.",
+      "description": "Penjelasan sederhana metode DISC: asal-usul, apa yang diukur, empat gaya D, I, S, C, cara menghitung hasil, dan cara membaca profil.",
       "h1": "Apa Itu DISC?",
       "lead": "DISC adalah model perilaku yang menggambarkan cara seseorang bertindak, berkomunikasi, dan mengambil keputusan berdasarkan empat skala: Dominasi (Dominance), Pengaruh (Influence), Kestabilan (Steadiness), dan Ketelitian (Conscientiousness). DISC bukan tes kecerdasan dan bukan diagnosis, melainkan bahasa bersama untuk membicarakan gaya perilaku.",
       "sections": [
@@ -333,7 +493,7 @@
     },
     "faq": {
       "title": "Tanya Jawab Seputar Tes DISC: Pertanyaan yang Sering Diajukan",
-      "description": "Jawaban atas pertanyaan umum: berapa lama tes DISC, apakah gratis, seberapa akurat, arti huruf D, I, S, C, bisakah diikuti satu tim, dan ke mana hasilnya dikirim.",
+      "description": "Tanya jawab tes DISC: berapa lama, apakah gratis, seberapa akurat, arti huruf D, I, S, C, bisakah diikuti satu tim, dan ke mana hasilnya dikirim.",
       "h1": "Tanya Jawab",
       "lead": "Jawaban singkat atas hal-hal yang paling sering ditanyakan sebelum tes dan setelah menerima hasil.",
       "items": [
@@ -678,7 +838,7 @@
     },
     "teams": {
       "title": "DISC untuk Tim, Manajer, dan HR: Cara Memakai Tes di Tempat Kerja",
-      "description": "Cara menerapkan DISC di tim: peta gaya, pembagian peran, konflik, onboarding, umpan balik, penjualan. Adakan tes DISC gratis untuk seluruh tim dan bahas hasilnya.",
+      "description": "DISC di tim: peta gaya, pembagian peran, konflik, onboarding, umpan balik, penjualan. Adakan tes DISC gratis untuk seluruh tim dan bahas hasilnya.",
       "h1": "DISC untuk Tim dan HR",
       "lead": "Tes DISC paling sering diikuti bukan sendirian, melainkan bersama tim: untuk memahami mengapa rekan kerja bereaksi berbeda-beda, menyepakati aturan berkomunikasi, dan membagi peran dengan bijak. Halaman ini merangkum cara manajer atau HR mengadakan tes, membaca peta tim, dan membahas hasilnya tanpa melabeli orang.",
       "sections": [
@@ -744,7 +904,7 @@
     },
     "mbti": {
       "title": "DISC vs MBTI vs Big Five: Apa Bedanya dan Tes Mana yang Dipilih",
-      "description": "Perbandingan DISC, MBTI, dan Big Five: apa yang diukur tiap model, jumlah tipe, keandalan, penggunaan, dan tes mana yang sebaiknya dipilih. Tes DISC online gratis.",
+      "description": "Perbandingan DISC, MBTI, dan Big Five: apa yang diukur tiap model, jumlah tipe, keandalan, penggunaan, dan tes mana yang sebaiknya dipilih.",
       "h1": "DISC dan MBTI: Apa Bedanya?",
       "lead": "DISC dan MBTI adalah dua tipologi paling terkenal dalam pengembangan tim, dan keduanya sering sekali dicampuradukkan. Sama-sama menghasilkan empat huruf, sama-sama berbicara tentang “tipe”, tetapi yang diukur berbeda dan pertanyaan yang dijawab pun berbeda. Di bawah ini ada perbandingan singkat, termasuk dengan Big Five, serta saran praktis tentang mana yang sebaiknya dipilih.",
       "sections": [
@@ -1096,6 +1256,7 @@
     "pages.profiles.h1": "16 Profil dan Tipe Kepribadian DISC",
     "pages.profiles.lead": "Hasil tes adalah gaya utama dan, jika cukup menonjol, gaya sekunder. Dari situ terbentuk 16 profil: empat gaya “murni” dan dua belas kombinasi. Temukan profil Anda atau ikuti tes untuk mengetahuinya.",
     "pages.profile.title": "{name} ({key}) — Profil DISC: Ciri, Kekuatan, Area Pengembangan",
+    "pages.profile.h1": "{name} ({key}) — Profil DISC",
     "pages.profile.description": "Profil DISC {key} “{name}”: {summary}",
     "pages.profile.eyebrow": "Profil DISC · {key}",
     "pages.profile.primary": "Gaya utama: {name} ({key})",
@@ -1109,6 +1270,16 @@
     "pages.profile.with": "Cara berkomunikasi dengan gaya lain",
     "pages.profile.withKey": "{name} ({key})",
     "pages.profile.compatLink": "Kecocokan gaya DISC: semua pasangan →",
+    "pages.profile.vs": "Perbedaan dengan profil yang mirip",
+    "pages.profile.work": "{name} di tempat kerja",
+    "pages.profile.lead": "{name} sebagai pemimpin",
+    "pages.profile.managed": "Yang dibutuhkan dari atasan",
+    "pages.profile.pressure": "Di bawah tekanan dan dalam konflik",
+    "pages.profile.develop": "Yang perlu dikembangkan",
+    "pages.profile.agree": "Cara mencapai kesepakatan",
+    "pages.profile.example": "Contoh dari praktik",
+    "pages.profile.styleMore": "Selengkapnya tentang gaya {key}: {name}",
+    "pages.profile.related": "Profil yang mirip",
     "pages.compat.title": "{a} dan {b}: Kecocokan Gaya DISC dalam Kerja dan Komunikasi",
     "pages.compat.description": "Cara gaya {a} dan {b} bekerja sama: apa yang menyatukan, di mana gesekan muncul, dan apa yang perlu dilakukan masing-masing. Tes DISC gratis di situs ini.",
     "pages.compat.h1": "{a} dan {b}: Kecocokan",
