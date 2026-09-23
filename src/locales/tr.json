@@ -3,7 +3,7 @@
   "dir": "ltr",
   "name": "Türkçe",
   "dateLocale": "tr-TR",
-  "title": "Ücretsiz online DISC testi — 10 dakikada kişilik tipinizi öğrenin",
+  "title": "Ücretsiz DISC kişilik testi — 10 dakikada sonuç",
   "description": "Ücretsiz Türkçe DISC kişilik testi: 24 soru, 10 dakika, kayıt yok. Ana stilinizi, güçlü yönlerinizi ve gelişim alanlarınızı öğrenin. Sonuç anında ve e-postanızda.",
   "brand": "DISC Testi",
   "keys": { "D": "Baskınlık", "I": "Etkileyicilik", "S": "İstikrar", "C": "Titizlik" },
@@ -31,14 +31,14 @@
     { "C": "Rasyonel", "S": "Tutarlı", "I": "Spontane", "D": "Cesur" },
     { "S": "İstikrar odaklı", "D": "Sonuç odaklı", "C": "Kalite odaklı", "I": "İletişim odaklı" },
     { "D": "Sabırsız", "C": "Aşırı eleştirel", "S": "Değişime geç alışan", "I": "Fevri" },
-    { "I": "İnsanlara güvenirim", "S": "Sadık kalırım", "D": "Risk alırım", "C": "Standartlara uyarım" },
+    { "I": "İnsanlara güvenirim", "S": "Sadakatimi korurum", "D": "Risk alırım", "C": "Standartlara uyarım" },
     { "C": "Ölçülü", "I": "Karizmatik", "S": "Yumuşak huylu", "D": "Atılgan" },
-    { "S": "Yargıya varmakta acele etmem", "C": "Tüm koşulları netleştiririm", "D": "Hemen işe koyulurum", "I": "İnsanlarla kolayca kaynaşırım" },
+    { "S": "Yargıya varmakta acele etmem", "C": "Tüm koşulları netleştiririm", "D": "Hemen sadede gelirim", "I": "İnsanlarla kolayca kaynaşırım" },
     { "D": "Kendinden emin", "S": "İnce düşünceli", "I": "Hitabeti güçlü", "C": "Düzenli" },
     { "I": "Topluluk önünde konuşmayı severim", "D": "Yönetmeyi severim", "C": "Analiz etmeyi severim", "S": "Yardım etmeyi severim" },
     { "C": "Özenli", "S": "Şefkatli", "I": "Dışa dönük", "D": "Hedef odaklı" },
     { "S": "Her şeyi olduğu gibi kabul ederim", "I": "Yeniliklere hemen heveslenirim", "D": "Görüşümü savunurum", "C": "Doğruluk ve kesinlikte ısrar ederim" },
-    { "D": "Otorite sahibi", "C": "Mantıklı", "I": "Hayat dolu", "S": "İstikrarlı" }
+    { "D": "Emir vermeye alışkın", "C": "Mantıklı", "I": "Hayat dolu", "S": "İstikrarlı" }
   ],
   "styles": {
     "D": {
@@ -47,7 +47,7 @@
       "growth": ["Daha yavaş ya da daha temkinli çalışanlara karşı sabırsızlık", "Alternatifleri dinlemeden kararı dayatma eğilimi", "İletişimde baskı olarak algılanan sertlik"],
       "motivation": ["Yetki ve işlerin gidişatını etkileme imkânı", "Zorlu görevler ve meydan okumalar", "Mikro yönetimden uzak çalışma özgürlüğü", "Ölçülebilir sonuçlar ve zaferler"],
       "stress": "Baskı altında daha sert ve daha tahammülsüz olursunuz: başkalarının sözünü keser, her işi kendiniz üstlenir, hız uğruna kuralları es geçersiniz. Net yetkiler ve bağımsız hareket etme imkânı yardımcı olur.",
-      "communication": ["Kısa ve öz konuşun: sonuç, süre, seçenekler", "Girişi uzatmayın, lafı dolandırmayın", "Hazır bir çözüm yerine seçenek sunun: kararı bizzat vermek bu stil için önemlidir", "Tartışırken duygulara değil, gerçeklere dayanın"],
+      "communication": ["Kısa ve öz mesajlar: sonuç, süre, seçenekler", "Uzun girizgâh yapılmadan, lafı dolandırmadan konuşulması", "Hazır bir çözüm yerine seçenekler: kararı kendiniz vermek istersiniz", "Duygulara değil, somut gerçeklere dayanan gerekçeler"],
       "environment": "Yüksek özerklik, net hedefler ve çaba ile sonuç arasında doğrudan bağ sunan dinamik bir ortam. Rutin ve sıkı denetim motivasyonu düşürür."
     },
     "I": {
@@ -56,7 +56,7 @@
       "growth": ["Duyguların etkisiyle verilen, sonradan tutması zor sözler", "Ayrıntılara ve teslim tarihlerine yeterince dikkat etmeme", "Dinlemekten çok konuşma eğilimi"],
       "motivation": ["Takdir ve onay", "İletişim ve ekip çalışması", "Kendini ifade etme özgürlüğü", "Yenilik ve görev çeşitliliği"],
       "stress": "Baskı altında dikkatiniz dağılır, fevri davranırsınız; tatsız konuşmalardan kaçınır ve durumu olduğundan iyi görebilirsiniz. Konuyu açıkça konuşmak ve ekip arkadaşlarının desteği yardımcı olur.",
-      "communication": ["Gündemle değil, kişisel bir sohbetle başlayın", "Söz hakkı tanıyın, fikirleri birlikte tartışın", "Katkıları herkesin önünde takdir edin", "Varılan anlaşmaları yazıya dökün: bu, iki tarafın da işine yarar"],
+      "communication": ["Önce kişisel bir sohbet, sonra gündem", "Söz alma ve fikirleri birlikte tartışma fırsatı", "Katkılarınızın herkesin önünde takdir edilmesi", "Varılan kararların yazıya dökülmesi; bu, iki tarafın da işine yarar"],
       "environment": "Bol insan ilişkisi, takdir ve katı kurallardan uzak bir serbestlik sunan açık, dostane bir ortam. Yalnız çalışmak ve tekdüzelik enerjiyi söndürür."
     },
     "S": {
@@ -65,7 +65,7 @@
       "growth": ["Yararlı olsa bile değişime direnç", "Hayır demekte ve kendi görüşünü savunmakta zorlanma", "Huzuru korumak uğruna aynı fikirde olmadığını söylememe"],
       "motivation": ["İstikrar ve öngörülebilirlik", "Katkılar için içten bir teşekkür", "Net beklentiler ve açık oyun kuralları", "Kenetlenmiş bir ekipte çalışmak"],
       "stress": "Baskı altında içinize kapanır, fazla uysallaşır ve kararları ertelersiniz. Ani değişikliklere ve açık çatışmalara katlanmak sizin için özellikle zordur. Uyum sağlamak için zaman ve sakin bir konuşma yardımcı olur.",
-      "communication": ["Değişiklikleri önceden haber verin ve neden gerekli olduklarını açıklayın", "Fikrini doğrudan sorun: bu stildeki kişi görüşünü kendiliğinden pek öne sürmez", "Baskı yapmayın, yanıt için acele ettirmeyin", "Somut katkılar için teşekkür edin"],
+      "communication": ["Değişikliklerin önceden haber verilmesi ve neden gerekli olduklarının açıklanması", "Fikrinizin doğrudan sorulması, çünkü görüşünüzü kendiliğinizden pek öne sürmezsiniz", "Baskı olmadan, acele ettirilmeden yanıt verebilmek için zaman", "Somut katkılarınız için teşekkür edilmesi"],
       "environment": "Anlaşılır süreçleri, iyi ilişkileri ve makul bir değişim temposu olan istikrarlı bir ortam. Kaos, sürekli bir işten ötekine geçmek ve saldırgan rekabet yıpratır."
     },
     "C": {
@@ -74,13 +74,13 @@
       "growth": ["Mükemmeliyetçilik ve kusursuzluk uğruna teslim tarihlerini geciktirme", "Kendine ve başkalarına karşı aşırı eleştirellik", "Harekete geçmek yerine analize gömülme"],
       "motivation": ["Net standartlar ve kalite kriterleri", "Analiz ve hazırlık için zaman", "Uzmanlığın takdir edilmesi", "Mantıklı, gerekçeli kararlar"],
       "stress": "Baskı altında kabuğunuza çekilir, aşırı eleştirel olur ve ayrıntılara takılıp kalırsınız. Veri olmadan hareket etmek zorunda kalmak sizi rahatsız eder. Net kriterler ve kontrol için ayrılan zaman yardımcı olur.",
-      "communication": ["Somut bilgiler, rakamlar ve gerekçeler hazırlayın", "Düşünmek için zaman tanıyın, hemen yanıt beklemeyin", "Prosedürlere ve varılan anlaşmalara saygı gösterin", "Eleştirinizi somut ve konuya bağlı tutun, duyguları karıştırmayın"],
+      "communication": ["Önceden hazırlanmış somut bilgiler, rakamlar ve gerekçeler", "Hemen yanıt beklenmek yerine düşünmek için zaman tanınması", "Prosedürlere ve varılan anlaşmalara saygı gösterilmesi", "Somut, konuya bağlı ve duygulardan arınmış eleştiri"],
       "environment": "Net standartları, bilgiye erişimi ve odaklanarak çalışma imkânı olan yapılandırılmış bir ortam. Belirsizlik, acele ve duygusal baskı verimi düşürür."
     }
   },
   "profiles": {
     "D": {
-      "name": "Sonuç Odaklı",
+      "name": "Hedef Avcısı",
       "summary": "Hedefe dolambaçsız ve hızlı gidersiniz: inisiyatif alır, uzun uzun tartışmadan karar verir, dirençle karşılaşmaktan çekinmezsiniz. Durumu kontrol etmek ve ölçülebilir sonuç görmek sizin için önemlidir.",
       "careers": ["Birim veya proje yöneticisi", "Girişimci, kurucu", "Kriz yöneticisi", "Satış yöneticisi, müzakereci", "Operasyon direktörü"],
       "team": "Kimse görevlendirmese bile liderliği üstlenir, hedef koyar ve ekibi sonuca doğru iter. Sevilmeyecek bir karar almak ya da bir projeyi krizden çıkarmak gerektiğinde yeri doldurulmaz. Onunla ekip hızlı ilerler ama her zaman rahat etmez: temkinli seslerin de duyulmasına dikkat etmek gerekir.",
@@ -119,7 +119,7 @@
       "name": "Analist",
       "summary": "Verilere ve standartlara dayanırsınız: kontrol eder, analiz eder, planlarsınız; aceleyle alınan kararlardan hoşlanmazsınız. Sizin için önemli olan hız ve gösteriş değil, kalite ve doğruluktur.",
       "careers": ["Analist, araştırmacı", "Finans, denetim, muhasebe", "Mühendis, yazılım geliştirici, test uzmanı", "Hukuk, mevzuata uyum, kalite kontrol", "Süreç ve sistem mimarı"],
-      "team": "Yapılan işin gerçekten çalışmasını o sağlar: kontrol eder, hataları müşterilerden önce bulur ve riskleri önceden planlar. Onunla ekip daha isabetli ama daha yavaş çalışır. Taleplerinin mantığını iş arkadaşlarına açıklaması ve zaman zaman “yeterince iyi”ye razı olması yerinde olur.",
+      "team": "Yapılan işin gerçekten çalışmasını o sağlar: kontrol eder, hataları müşterilerden önce bulur ve riskleri önceden hesaba katar. Onunla ekip daha isabetli ama daha yavaş çalışır. Taleplerinin mantığını iş arkadaşlarına açıklaması ve zaman zaman “yeterince iyi”ye razı olması yerinde olur.",
       "with": {
         "D": "“Şimdilik yeterince iyi” seçeneğini önerin ve riskleri kısaca, sonuçlarıyla birlikte bildirin.",
         "I": "Önce fikrin değerini teslim edin, vardığınız sonuçları da sade bir dille anlatın.",
@@ -129,8 +129,8 @@
     },
     "DI": {
       "name": "Öncü",
-      "summary": "Dinamizm ve karizma: hedefe hızla ilerler, insanları peşinizden sürüklemeyi bilirsiniz. Kararlılığınız ve coşkunuzla ikna eder, kararları yolda verirsiniz; ancak ayrıntılara ve temkinli davranmaya çoğu zaman sabrınız yetmez.",
-      "careers": ["Kurucu, startup yöneticisi", "Satış direktörü", "Yeni ürün ve pazar lansmanı yöneticisi", "Kamuoyu önündeki lider, konuşmacı", "Ticari müzakereci"],
+      "summary": "Dinamizmi karizmayla birleştirirsiniz: hedefe hızla ilerler, insanları peşinizden sürüklemeyi bilirsiniz. Kararlılığınız ve coşkunuzla ikna eder, kararları yolda verirsiniz; ancak ayrıntılara ve temkinli davranmaya çoğu zaman sabrınız yetmez.",
+      "careers": ["Kurucu, startup yöneticisi", "Satış direktörü", "Yeni ürün lansmanı ve yeni pazarlara açılma", "Kanaat önderi, konuşmacı", "Ticari müzakereci"],
       "team": "İşi başlatan odur: iddialı bir hedef koyar, müttefikler bulur ve herkesi peşinden sürükler. Projenin başlangıcında ve hem kararlılığın hem karizmanın gerektiği müzakerelerde yeri doldurulmaz. Uzun vadede, başlanan işi sonuna kadar götürecek ve ayrıntıları kontrol edecek S ve C stilindeki iş arkadaşlarına ihtiyaç duyar.",
       "with": {
         "D": "Etki alanlarınızı paylaşın ve ilgi için yarışmayın: iki lidere ayrı cepheler gerekir.",
@@ -141,7 +141,7 @@
     },
     "DC": {
       "name": "Stratejist",
-      "summary": "Kaliteyle gelen sonuç: kendinizden de başkalarından da çok şey beklersiniz, sistemli düşünür ve gerekçesiz karar almazsınız. Karmaşık işlerde güçlüsünüz, ancak soğuk ve fazla eleştirel görünebilirsiniz.",
+      "summary": "Sonuca kaliteyle ulaşırsınız: kendinizden de başkalarından da çok şey beklersiniz, sistemli düşünür ve gerekçesiz karar almazsınız. Karmaşık işlerde güçlüsünüz, ancak soğuk ve fazla eleştirel görünebilirsiniz.",
       "careers": ["Karmaşık projelerin yöneticisi", "Kurumsal gelişim direktörü, stratejist", "Mühendislik veya analitik ekibi yöneticisi", "Yönetim danışmanı", "Finans direktörü"],
       "team": "Kararlılığı kaliteyle birleştirir: çıtayı yükseğe koyar ve oraya ulaşır, sistemli düşünür, riskleri herkesten önce görür. Onunla ekip derli toplu ve verimli çalışır, ama bir soğukluk hissedebilir ve sürekli değerlendirildiğini düşünebilir. İnsanların katkısını daha sık takdir etmesi ve yalnızca talep etmek yerine kararlarını açıklaması ona fayda sağlar.",
       "with": {
@@ -152,8 +152,8 @@
       }
     },
     "DS": {
-      "name": "İş Bitirici",
-      "summary": "Azim ve güvenilirlik: hedefe kararlılıkla yürürsünüz, ama bunu gürültü koparmadan yapar ve başladığınız işi bitirirsiniz. Bağımsızlığa da istikrara da aynı anda değer verirsiniz; bu ender bir bileşimdir.",
+      "name": "Pragmatist",
+      "summary": "Azimli ve güvenilirsiniz: hedefe kararlılıkla yürürsünüz, ama bunu gürültü koparmadan yapar ve başladığınız işi bitirirsiniz. Bağımsızlığa da istikrara da aynı anda değer verirsiniz; bu ender bir bileşimdir.",
       "careers": ["Üretim veya operasyon yöneticisi", "Uygulama projeleri yöneticisi", "Hizmet birimi yöneticisi", "Oturmuş bir işi olan girişimci", "Büyük bir şirkette orta kademe yönetici"],
       "team": "Yükü sırtlayan odur: işi alır ve gürültü koparmadan sonuca ulaştırır, yarı yolda bırakmaz, sözünü tutar. Bağımsızlık ile güvenilirliğin bu ender bileşimi onu yöneticinin sağ kolu yapar. Dışarıdan inatçı ve içine kapalı görünebilir; planlarını daha sık dile getirmesi ve başka seçeneklere kulak vermesi yerinde olur.",
       "with": {
@@ -165,7 +165,7 @@
     },
     "ID": {
       "name": "Motivatör",
-      "summary": "Enerji ve atılganlık: fikirlerinizle insanları heyecanlandırır, inisiyatif almaktan çekinmezsiniz. Fikirleri ve hedefleri kolayca “satarsınız”, ama gücünüzü abartma ve ayrıntıları hafife alma riskiniz vardır.",
+      "summary": "Enerjik ve atılgansınız: fikirlerinizle insanları heyecanlandırır, inisiyatif almaktan çekinmezsiniz. Fikirleri ve hedefleri kolayca “satarsınız”, ama gücünüzü abartma ve ayrıntıları hafife alma riskiniz vardır.",
       "careers": ["Üst düzey satış ve müzakere", "Satış veya pazarlama ekibi yöneticisi", "Etkinlik ve topluluk organizatörü", "Eğitmen, motivasyon konuşmacısı", "İş ortaklıkları geliştirme"],
       "team": "Enerji verir ve yön gösterir: fikirleriyle heyecanlandırır, moralleri yükseltir, inisiyatif almaktan da göz önünde olmaktan da çekinmez. Aynı anda çok sayıda insanı ikna etmek ve onlara ilham vermek gereken yerde başarılıdır. Gücünü abartıp mümkün olandan fazlasını vaat edebilir; bu yüzden işin gerçekçi tarafından, yani tarihlerden, kaynaklardan ve ayrıntılardan sorumlu bir iş arkadaşına ihtiyacı vardır.",
       "with": {
@@ -177,7 +177,7 @@
     },
     "IS": {
       "name": "Mentor",
-      "summary": "Sıcaklık ve ilgi: insanların güvenini kolayca kazanır, onlara destek olmayı ve onları bir araya getirmeyi bilirsiniz. İlişkiler ve ortamın havası sizin için önemlidir; çatışmalar ve sert talepler ise size ağır gelir.",
+      "summary": "Sıcak ve ilgilisiniz: insanların güvenini kolayca kazanır, onlara destek olmayı ve onları bir araya getirmeyi bilirsiniz. İlişkiler ve ortamın havası sizin için önemlidir; çatışmalar ve sert talepler ise size ağır gelir.",
       "careers": ["Mentor, koç, öğretmen", "İK iş ortağı, oryantasyon ve eğitim", "Kilit müşteri yönetimi", "Hizmet ekibinin ya da kenetlenmiş bir ekibin yöneticisi", "Arabulucu, kolaylaştırıcı"],
       "team": "Dertleşmek için kapısı çalınan kişi odur: dinler, destek olur, insanları birbirine bağlar ve ortamın havasını korur. Onunla ekip daha sıcak ve daha dayanıklı olur. Sert kararlar ve tatsız konuşmalar ona zor gelir; dürüst geri bildirimin de bir ilgi göstergesi olduğunu hatırlaması ona iyi gelir.",
       "with": {
@@ -189,7 +189,7 @@
     },
     "IC": {
       "name": "İletişimci",
-      "summary": "Hitabet ve titizlik: iyi düşünülmüş bir görüşü ikna edici biçimde sunmayı bilirsiniz. Sosyalliği verilere gösterdiğiniz özenle birleştirirsiniz, ancak doğaçlama ile temkin arasında gidip gelebilirsiniz.",
+      "summary": "Güçlü hitabetinizi titizlikle birleştirirsiniz: iyi düşünülmüş bir görüşü ikna edici biçimde sunmayı bilirsiniz. Sosyalliği verilere gösterdiğiniz özenle birleştirirsiniz, ancak doğaçlama ile temkin arasında gidip gelebilirsiniz.",
       "careers": ["Pazarlama ve ürün sunumları", "Öğretmen, öğretim görevlisi, eğitim içeriği yazarı", "Karmaşık ürünlerde satış danışmanı", "Sonuçları sunan analist", "Kurumsal iletişim ve halkla ilişkiler"],
       "team": "Anlatmayı bilir: karmaşık olanı anlaşılır kılar ve iyi düşünülmüş bir görüşü ikna edici biçimde sunar. Uzmanlarla dinleyicilerin buluştuğu noktada çok işe yarar. “Söylemek” ile “kontrol etmek” arasında gidip gelir, bu yüzden kararlar uzayabilir; ne zaman hızın, ne zaman doğruluğun öncelikli olduğu konusunda net bir anlaşma ona yardımcı olur.",
       "with": {
@@ -201,7 +201,7 @@
     },
     "SI": {
       "name": "Diplomat",
-      "summary": "Sakinlik ve cana yakınlık: bir güven ortamı yaratır, gerginlikleri yumuşatır ve ekibe destek olursunuz. “Hayır” demek ve sevilmeyen bir kararı savunmak size zor gelir.",
+      "summary": "Sakin ve cana yakınsınız: bir güven ortamı yaratır, gerginlikleri yumuşatır ve ekibe destek olursunuz. “Hayır” demek ve sevilmeyen bir kararı savunmak size zor gelir.",
       "careers": ["Müşteri ve iş ortağı ilişkileri", "Ekip koordinatörü, ofis yöneticisi", "İK: işe alım, oryantasyon, iç iletişim", "Öğretmen, okul öncesi eğitimci, sosyal hizmet", "Çok katılımcılı projelerin koordinasyonu"],
       "team": "Güven ortamını o kurar: sakin, cana yakın ve herkese karşı özenlidir; gerginlikleri yumuşatır ve uzlaşmaya yardım eder. Onunla ekipte daha az çatışma çıkar. “Hayır” demek ve sevilmeyen bir kararı savunmak ona zor gelir; itirazlarını birikmeden dile getirmeyi öğrenmesi yerinde olur.",
       "with": {
@@ -213,8 +213,8 @@
     },
     "SC": {
       "name": "Usta",
-      "summary": "Güvenilirlik ve özen: yöntemli çalışır, kurallara uyar ve işi acele etmeden sonuna kadar götürürsünüz. İstikrara ve net beklentilere değer verirsiniz; ani değişiklikler ve baskı ise sizi zorlar.",
-      "careers": ["Muhasebe, belge yönetimi, yazı işleri", "Kalite kontrol, standardizasyon", "Teknik destek ve bakım", "Laboratuvar, protokole dayalı araştırma", "Sistem ve süreç yönetimi"],
+      "summary": "Güvenilir ve özenlisiniz: yöntemli çalışır, kurallara uyar ve işi acele etmeden sonuna kadar götürürsünüz. İstikrara ve net beklentilere değer verirsiniz; ani değişiklikler ve baskı ise sizi zorlar.",
+      "careers": ["Muhasebe, belge yönetimi, idari işler", "Kalite kontrol, standardizasyon", "Teknik destek ve bakım", "Laboratuvar, protokole dayalı araştırma", "Sistem ve süreç yönetimi"],
       "team": "Düzenin bekçisi: yöntemli çalışır, kurallara uyar, işi sonuna kadar götürür, geçen sefer nasıl yapıldığını hatırlar. Süreçler onun sayesinde ayakta durur. Ani değişiklikler ve baskı onu zorlar; ekibin onu değişim sürecine erkenden katması, onun da aşırı yükü sineye çekmek yerine dile getirmesi gerekir.",
       "with": {
         "D": "Net öncelikler isteyin ve riskleri kısaca, sonuçlarıyla birlikte bildirin.",
@@ -225,7 +225,7 @@
     },
     "SD": {
       "name": "Uygulayıcı",
-      "summary": "Sebat ve sabır: işi sakin ama kararlı biçimde sonuca götürür, gereksiz tartışmalarla vakit kaybetmezsiniz. Uzun vadede güvenilirsiniz, yine de dışarıdan inatçı görünebilirsiniz.",
+      "summary": "Sebatlı ve sabırlısınız: işi sakin ama kararlı biçimde sonuca götürür, gereksiz tartışmalarla vakit kaybetmezsiniz. Uzun vadede güvenilirsiniz, yine de dışarıdan inatçı görünebilirsiniz.",
       "careers": ["Bölüm şefi, vardiya amiri, üretim yöneticisi", "Uzun soluklu projelerin yöneticisi", "Lojistik, tedarik, işletme ve bakım", "Zanaat ve mühendislik meslekleri", "Küçük ve oturmuş bir işletmenin sahibi"],
       "team": "İşi sakin ve kararlı biçimde sonuca ulaştırır: acele etmeden, gereksiz tartışmalara girmeden, ama geri adım da atmadan. Uzun vadede güvenilirdir, sorumluluktan korkmaz. Dışarıdan inatçı görünebilir; kararlarını açıklaması ve iş arkadaşlarına bu kararları etkileme fırsatı vermesi ona fayda sağlar.",
       "with": {
@@ -237,7 +237,7 @@
     },
     "CD": {
       "name": "Mükemmeliyetçi",
-      "summary": "Standartlar ve irade: kendinizden de başkalarından da titizlik beklersiniz, hataları çabuk görür ve bunları söylemekten çekinmezsiniz. Uzmanlık gerektiren karmaşık işlerde güçlüsünüz, ancak fazla katı ve içine kapalı olabilirsiniz.",
+      "summary": "Standartlarınız yüksek, iradeniz güçlüdür: kendinizden de başkalarından da titizlik beklersiniz, hataları çabuk görür ve bunları söylemekten çekinmezsiniz. Uzmanlık gerektiren karmaşık işlerde güçlüsünüz, ancak fazla katı ve içine kapalı olabilirsiniz.",
       "careers": ["Denetim, kontrol, teftiş", "Sistem mimarı, baş mühendis", "Bilimsel araştırma, uzman değerlendirmesi", "Finansal analiz, risk yönetimi", "Uzmanlık birimi yöneticisi"],
       "team": "Kalitenin güvencesi: hataları herkesten önce görür, titizlik bekler ve bunu söylemekten çekinmez. Onunla ekip daha iyi iş çıkarır, ama kendini sürekli denetim altında hissedebilir. Söze iyi yapılanlarla başlaması ve kriterleri iş bittikten sonra değil, baştan açıklaması yerinde olur.",
       "with": {
@@ -249,8 +249,8 @@
     },
     "CS": {
       "name": "Uzman",
-      "summary": "Titizlik ve tutarlılık: düşünerek çalışır, ayrıntıları kontrol eder ve denenmiş yöntemlere dayanırsınız. Güvenilir bir uzmansınız; belirsizlik ve hızlı değişim ise size zor gelir.",
-      "careers": ["Mühendis, yazılım geliştirici, test uzmanı", "Veri analisti, araştırmacı", "Muhasebeci, denetçi, metodoloji uzmanı", "Tıbbi tanı, laboratuvar", "Teknik yazar, dokümantasyon"],
+      "summary": "Titiz ve tutarlısınız: düşünerek çalışır, ayrıntıları kontrol eder ve denenmiş yöntemlere dayanırsınız. Güvenilir bir uzmansınız; belirsizlik ve hızlı değişim ise size zor gelir.",
+      "careers": ["Mühendis, yazılım geliştirici, test uzmanı", "Veri analisti, araştırmacı", "Muhasebeci, denetçi, prosedür ve mevzuat uyum uzmanı", "Tıbbi tanı, laboratuvar", "Teknik yazar, dokümantasyon"],
       "team": "Güvenilir bir uzman: düşünerek çalışır, ayrıntıları kontrol eder, denenmiş yöntemlere dayanır ve kimseyi yarı yolda bırakmaz. Ekip onun vardığı sonuçlara güvenir. Belirsizlik ve hızlı değişim ona zor gelir; değişikliklerin önceden açıklanması ve ondan anlık tepki değil, ölçülüp tartılmış bir yanıt beklenmesi işini kolaylaştırır.",
       "with": {
         "D": "Kontrol için zaman isteyin, ama yanıtı hangi tarihte vereceğinizi de söyleyin.",
@@ -261,7 +261,7 @@
     },
     "CI": {
       "name": "Danışman",
-      "summary": "Analiz ve iletişim: bir konuyu derinlemesine kavramayı ve başkalarına anlaşılır biçimde anlatmayı bilirsiniz. Ender bir bileşim: sonuç çıkarırken temkin, iletişimde rahatlık. Zaman zaman “kontrol etmek” ile “paylaşmak” arasındaki iç çelişki size engel olur.",
+      "summary": "Analizi iletişimle birleştirirsiniz: bir konuyu derinlemesine kavramayı ve başkalarına anlaşılır biçimde anlatmayı bilirsiniz. Ender bir bileşim: sonuç çıkarırken temkin, iletişimde rahatlık. Zaman zaman “kontrol etmek” ile “paylaşmak” arasındaki iç çelişki size engel olur.",
       "careers": ["Danışman, sonuçlarını sunan analist", "Öğretmen, öğretim tasarımcısı", "Ürün analisti, UX araştırmacısı", "Teknik satış, satış öncesi destek", "Eğitim içeriği ve dokümantasyon yazarı"],
       "team": "Uzmanlar ile diğer herkes arasındaki çevirmen: konuya hâkimdir ve onu herkesin anlayacağı biçimde anlatmayı bilir. Hem kontrol etmenin hem ikna etmenin gerektiği yerde değerlidir. “Kontrol etmek” ile “paylaşmak” arasındaki iç çelişki onu zaman zaman yavaşlatır; hangi durumlarda ön sonucun yeterli olacağı konusunda anlaşmak işe yarar.",
       "with": {
@@ -679,7 +679,7 @@
         {
           "h": "Sonuçlar nasıl konuşulur?",
           "p": [
-            "Birinci kural: Sonuç katılımcıya aittir. Kimse raporunu göstermek zorunda değildir ve konuşma, kişinin kendisi hakkında söyledikleriyle başlar. İkinci kural: İyi ya da kötü stil yoktur. Biri “Yönetici için D daha iyidir” dediğinde, her stilin bir bedeli olduğunu ve ekibin dördüne de ihtiyaç duyduğunu hatırlatın.",
+            "Birinci kural: sonuç katılımcıya aittir. Kimse raporunu göstermek zorunda değildir ve konuşma, kişinin kendisi hakkında söyledikleriyle başlar. İkinci kural: iyi ya da kötü stil yoktur. Biri “Yönetici için D daha iyidir” dediğinde, her stilin bir bedeli olduğunu ve ekibin dördüne de ihtiyaç duyduğunu hatırlatın.",
             "Pratik bir yöntem, herkesten “Bana yardımcı olan şey…” ve “Beni zorlayan şey…” diye başlayan birer istek almaktır. Yüksek sesle söylenip yazıya geçirilen bu cümleler ekibe herhangi bir tipolojiden daha fazlasını kazandırır. İki üç ay sonra bunlara geri dönün ve nelerin değiştiğine bakın."
           ]
         },
@@ -731,7 +731,7 @@
           "h": "Güvenilirlik konusunda ne söyleniyor?",
           "p": [
             "MBTI, dikotomilerinin yapay olması nedeniyle eleştirilir. İnsanların çoğu ölçeğin ortalarında yer alır ve yanıtlardaki küçük bir değişiklik onları başka bir tipe taşır. DISC bu sorundan kısmen kurtulur, çünkü kişiyi iki kutuptan birine yerleştirmek yerine stillerin ne kadar belirgin olduğunu gösterir; yine de o da orta düzeyde güvenilirliğe sahip bir öz değerlendirmedir. Büyük Beşli her ikisinden de güvenilirdir, çünkü insanları tiplere ayırmaya çalışmaz.",
-            "Pratik sonuç şudur: Ne DISC ne de MBTI, işe alım ya da terfi kararlarının tek dayanağı olabilir. Buna karşılık ikisi de farklılıkları konuşmak için iyi bir dil sunar ve burada DISC sadeliğiyle öne çıkar; dört stil tek bir toplantıda akılda kalır, MBTI’nin on altı tipi ise kalmaz."
+            "Pratik sonuç şudur: ne DISC ne de MBTI, işe alım ya da terfi kararlarının tek dayanağı olabilir. Buna karşılık ikisi de farklılıkları konuşmak için iyi bir dil sunar ve burada DISC sadeliğiyle öne çıkar; dört stil tek bir toplantıda akılda kalır, MBTI’nin on altı tipi ise kalmaz."
           ]
         },
         {
@@ -985,7 +985,7 @@
     "email.open": "Tam raporu aç",
     "email.scores": "Stillerin belirginliği",
     "email.linkNote": "Düğme çalışmıyorsa bağlantıyı kopyalayıp tarayıcınıza yapıştırın:",
-    "email.footer": "Bu e-posta otomatik olarak gönderildi: test çözülürken bu adres belirtilmişti. Güçlü yönlerin, gelişim alanlarının ve önerilerin yer aldığı tam rapora yukarıdaki bağlantıdan ulaşabilirsiniz.",
+    "email.footer": "Bu e-posta, test sırasında bu adres belirtildiği için otomatik olarak gönderildi. Güçlü yönlerin, gelişim alanlarının ve önerilerin yer aldığı tam rapora yukarıdaki bağlantıdan ulaşabilirsiniz.",
 
     "toast.copied": "Kopyalandı",
     "toast.copyManual": "Metni seçip elle kopyalayın (Ctrl+C / ⌘C)",

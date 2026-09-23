@@ -33,8 +33,8 @@
     { "D": "Impaciente", "C": "Demasiado crítico/a", "S": "Lento/a para aceptar cambios", "I": "Impulsivo/a" },
     { "I": "Confío en la gente", "S": "Soy leal", "D": "Asumo riesgos", "C": "Cumplo las normas" },
     { "C": "Reservado/a", "I": "Carismático/a", "S": "Apacible", "D": "Con empuje" },
-    { "S": "No saco conclusiones precipitadas", "C": "Aclaro todas las condiciones", "D": "Voy al grano sin perder tiempo", "I": "Conecto fácilmente con los demás" },
-    { "D": "Confío en mí", "S": "Con tacto", "I": "Elocuente", "C": "Organizado/a" },
+    { "S": "No saco conclusiones precipitadas", "C": "Aclaro todos los detalles antes de empezar", "D": "Voy al grano sin perder tiempo", "I": "Conecto fácilmente con los demás" },
+    { "D": "Seguro/a de mí mismo/a", "S": "Con tacto", "I": "Elocuente", "C": "Organizado/a" },
     { "I": "Me gusta hablar en público", "D": "Me gusta dirigir", "C": "Me gusta analizar", "S": "Me gusta ayudar" },
     { "C": "Minucioso/a", "S": "Atento/a con los demás", "I": "Extrovertido/a", "D": "Con determinación" },
     { "S": "Acepto las cosas como son", "I": "Me entusiasmo fácilmente con lo nuevo", "D": "Defiendo mi opinión", "C": "Insisto en la exactitud" },
@@ -42,39 +42,39 @@
   ],
   "styles": {
     "D": {
-      "traits": ["Directo", "Decidido", "Orientado a resultados", "Independiente", "Exigente"],
+      "traits": ["Directo/a", "Decidido/a", "Orientado/a a resultados", "Independiente", "Exigente"],
       "strengths": ["Toma decisiones con rapidez y asume la responsabilidad de ellas", "No pierde el rumbo en una crisis y actúa cuando otros dudan", "Se fija metas ambiciosas y las alcanza", "Habla claro, sin ambigüedades"],
       "growth": ["Impaciencia con quienes trabajan más despacio o con más cautela", "Tendencia a imponer una decisión sin escuchar alternativas", "Brusquedad en el trato, que los demás perciben como presión"],
       "motivation": ["Autoridad y capacidad de influir en el rumbo de las cosas", "Tareas difíciles y desafíos", "Libertad frente a la microgestión", "Resultados medibles y victorias"],
-      "stress": "Bajo presión se vuelve más duro e intolerante: interrumpe, lo asume todo y se salta las normas en aras de la rapidez. Le ayudan unas atribuciones claras y la posibilidad de actuar por su cuenta.",
-      "communication": ["Sea breve y vaya al grano: resultados, plazos, opciones", "No alargue la introducción ni se ande con rodeos", "Ofrezca opciones en lugar de una solución cerrada: le importa decidir por sí mismo", "Discuta con hechos, no con emociones"],
+      "stress": "Bajo presión muestra más dureza e intolerancia: interrumpe, quiere encargarse de todo personalmente y se salta las normas en aras de la rapidez. Le ayudan unas atribuciones claras y la posibilidad de actuar por su cuenta.",
+      "communication": ["Mensajes breves y al grano: resultados, plazos, opciones", "Sin introducciones largas ni rodeos", "Opciones en lugar de una solución cerrada: prefiere decidir por su cuenta", "Argumentos basados en hechos, no en emociones"],
       "environment": "Un entorno dinámico con mucha autonomía, metas claras y una relación directa entre esfuerzo y resultado. La rutina y el control estrecho desmotivan."
     },
     "I": {
-      "traits": ["Sociable", "Optimista", "Expresivo", "Persuasivo", "Espontáneo"],
+      "traits": ["Sociable", "Optimista", "Expresivo/a", "Persuasivo/a", "Espontáneo/a"],
       "strengths": ["Establece contacto con facilidad y se gana a la gente", "Inspira y motiva al equipo", "Genera ideas y ve oportunidades donde otros ven problemas", "Mantiene el optimismo en situaciones difíciles"],
       "growth": ["Promesas hechas en caliente que luego cuesta cumplir", "Falta de atención a los detalles y los plazos", "Tendencia a hablar más que a escuchar"],
       "motivation": ["Reconocimiento y aprobación", "Comunicación y trabajo en equipo", "Libertad para expresarse", "Novedad y variedad de tareas"],
-      "stress": "Bajo presión se dispersa y se vuelve impulsivo, evita las conversaciones incómodas y puede sobrestimar la situación. Le ayudan el diálogo abierto y el apoyo de los compañeros.",
-      "communication": ["Empiece por el contacto personal, no por la agenda", "Dé espacio para expresarse y debatir ideas", "Reconozca su aportación en público", "Deje los acuerdos por escrito: ayuda a ambas partes"],
+      "stress": "Bajo presión se dispersa y actúa por impulso, evita las conversaciones incómodas y puede ver la situación más optimista de lo que es. Le ayudan el diálogo abierto y el apoyo de los compañeros.",
+      "communication": ["Primero el contacto personal, después el orden del día", "Espacio para expresarse y debatir ideas", "Reconocimiento público de su aportación", "Acuerdos por escrito: ayudan a ambas partes"],
       "environment": "Un entorno abierto y cordial, con muchos contactos, reconocimiento y libertad frente a normas rígidas. El aislamiento y la monotonía apagan la energía."
     },
     "S": {
-      "traits": ["Paciente", "Confiable", "Tranquilo", "Atento a las personas", "Constante"],
+      "traits": ["Paciente", "Confiable", "Tranquilo/a", "Atento/a a las personas", "Constante"],
       "strengths": ["Se puede contar con usted a largo plazo", "Sabe escuchar y apoyar a los demás", "Trabaja con paciencia y método", "Une al equipo y apacigua los conflictos"],
       "growth": ["Resistencia a los cambios, incluso a los beneficiosos", "Dificultad para decir que no y defender su postura", "Callar el desacuerdo para mantener la paz"],
       "motivation": ["Estabilidad y previsibilidad", "Agradecimiento sincero por su aportación", "Expectativas claras y reglas del juego definidas", "Trabajo en un equipo unido"],
-      "stress": "Bajo presión se encierra en sí mismo, cede con facilidad y pospone las decisiones. Los cambios repentinos y los conflictos abiertos le resultan especialmente difíciles. Le ayudan tiempo para adaptarse y una conversación tranquila.",
-      "communication": ["Avise de los cambios con antelación y explique por qué son necesarios", "Pregúntele su opinión directamente: rara vez la da por iniciativa propia", "No presione ni apremie para obtener una respuesta", "Agradezca aportaciones concretas"],
+      "stress": "Bajo presión se cierra, cede con facilidad y pospone las decisiones. Los cambios repentinos y los conflictos abiertos le resultan especialmente difíciles. Le ayudan tiempo para adaptarse y una conversación tranquila.",
+      "communication": ["Aviso previo de los cambios y una explicación de por qué son necesarios", "Que le pidan su opinión directamente: rara vez la da por iniciativa propia", "Sin presiones y con tiempo para responder sin prisas", "Agradecimiento por sus aportaciones concretas"],
       "environment": "Un entorno estable, con procesos claros, buenas relaciones y un ritmo de cambio razonable. El caos, los cambios constantes de tarea y la competencia agresiva agotan."
     },
     "C": {
-      "traits": ["Preciso", "Analítico", "Prudente", "Sistemático", "Reservado"],
+      "traits": ["Preciso/a", "Analítico/a", "Prudente", "Sistemático/a", "Reservado/a"],
       "strengths": ["Alta calidad de trabajo y atención al detalle", "Lógica y objetividad en las valoraciones", "Capacidad de prever riesgos y planificar", "Disciplina y cumplimiento de los acuerdos"],
       "growth": ["Perfeccionismo y retrasos en los plazos en busca del ideal", "Exceso de crítica hacia sí mismo y hacia los demás", "Refugiarse en el análisis en lugar de actuar"],
       "motivation": ["Estándares y criterios de calidad claros", "Tiempo para analizar y prepararse", "Reconocimiento de su experiencia", "Decisiones lógicas y bien fundamentadas"],
-      "stress": "Bajo presión se retrae, se vuelve excesivamente crítico y se atasca en los detalles. Le irrita tener que actuar sin datos. Le ayudan criterios claros y tiempo para comprobar.",
-      "communication": ["Prepare hechos, cifras y argumentos", "Dé tiempo para reflexionar; no exija una respuesta inmediata", "Respete los procedimientos y los acuerdos", "Critique de forma concreta y sobre el fondo, sin emociones"],
+      "stress": "Bajo presión se retrae, critica en exceso y se atasca en los detalles. Le irrita tener que actuar sin datos. Le ayudan criterios claros y tiempo para comprobar.",
+      "communication": ["Hechos, cifras y argumentos preparados de antemano", "Tiempo para reflexionar, sin exigir una respuesta inmediata", "Respeto por los procedimientos y los acuerdos", "Críticas concretas, centradas en el fondo y sin emociones"],
       "environment": "Un entorno estructurado, con estándares claros, acceso a la información y posibilidad de trabajar con concentración. La incertidumbre, las prisas y la presión emocional reducen la eficacia."
     }
   },
@@ -117,7 +117,7 @@
     },
     "C": {
       "name": "Analista",
-      "summary": "Se apoya en los hechos y los estándares: comprueba, analiza, planifica y no le gustan las decisiones precipitadas. Le importan la calidad y tener razón, no la rapidez ni causar impresión.",
+      "summary": "Se apoya en los hechos y los estándares: comprueba, analiza, planifica y no le gustan las decisiones precipitadas. Le importan la calidad y hacer las cosas bien, no la rapidez ni causar impresión.",
       "careers": ["Analista, investigador", "Finanzas, auditoría, contabilidad", "Ingeniero, desarrollador, tester", "Abogado, cumplimiento normativo, control de calidad", "Arquitecto de procesos y sistemas"],
       "team": "Se encarga de que todo funcione: comprueba, encuentra los errores antes de que los encuentren los clientes y anticipa los riesgos. Con él, el equipo es más preciso, pero más lento. Le conviene explicar a los compañeros la lógica de sus exigencias y conformarse de vez en cuando con algo «suficientemente bueno».",
       "with": {
@@ -282,7 +282,7 @@
         {
           "h": "De dónde viene el modelo",
           "p": [
-            "La base la propuso el psicólogo estadounidense William Marston en su libro «Las emociones de las personas normales» (1928). Describió cuatro tipos de reacción que dependen de si la persona percibe el entorno como favorable u hostil y de si se siente más fuerte o más débil que las circunstancias. Así surgieron cuatro dimensiones: Dominance, Inducement (después Influence), Submission (después Steadiness) y Compliance (Conscientiousness).",
+            "La base la propuso el psicólogo estadounidense William Marston en su libro Emotions of Normal People («Las emociones de la gente normal», 1928). Describió cuatro tipos de reacción que dependen de si la persona percibe el entorno como favorable u hostil y de si se siente más fuerte o más débil que las circunstancias. Así surgieron cuatro dimensiones: Dominance, Inducement (después Influence), Submission (después Steadiness) y Compliance (Conscientiousness).",
             "Marston no creó ningún cuestionario. Los primeros instrumentos basados en su modelo aparecieron entre las décadas de 1950 y 1970 (Walter Clarke, John Geier), y hoy existen decenas de versiones. El nombre DiSC® con «i» minúscula es una marca registrada de la editorial Wiley; nuestro test es una versión gratuita e independiente construida sobre el mismo modelo de cuatro factores."
           ]
         },
@@ -363,7 +363,7 @@
         },
         {
           "q": "¿Puede hacer el test todo un equipo?",
-          "a": "Sí. Envíe a sus compañeros el enlace al sitio; en la pantalla de resultado cada uno recibe un enlace y un código, pídales que se los reenvíen. En el panel de administración (enlace en el pie de página) los códigos se reúnen en una tabla que puede copiar a Excel. La tabla se guarda solo en su navegador."
+          "a": "Sí. Envíe a sus compañeros el enlace al sitio; en la pantalla de resultado cada uno recibe un enlace y un código; pídales que se los reenvíen. En el panel de administración (enlace en el pie de página) los códigos se reúnen en una tabla que puede copiar a Excel. La tabla se guarda solo en su navegador."
         },
         {
           "q": "¿Adónde llega el resultado y quién puede verlo?",
@@ -425,7 +425,7 @@
         {
           "h": "Qué datos utilizamos",
           "p": [
-            "Antes del test, usted indica su nombre y su correo electrónico. Durante el test se guardan sus respuestas y, al terminar, el resultado, el idioma elegido y una marca de que ha visto el aviso de cookies. Todo esto se conserva en el almacenamiento local de su navegador. Al terminar el test, su nombre, correo, fecha del test y resultado se guardan además en la base de resultados del propietario del sitio."
+            "Antes del test, usted indica su nombre y su correo electrónico. Durante el test se guardan sus respuestas y, al terminar, el resultado, el idioma elegido y un indicador de que ha visto el aviso de cookies. Todo esto se conserva en el almacenamiento local de su navegador. Al terminar el test, su nombre, correo, fecha del test y resultado se guardan además en la base de resultados del propietario del sitio."
           ]
         },
         {
@@ -603,7 +603,7 @@
         },
         {
           "h": "Limitaciones",
-          "p": ["El color es una etiqueta, y las etiquetas simplifican. «Es que eres rojo» suena a excusa para la brusquedad, y «es verde, qué le vamos a hacer» a renuncia a cualquier expectativa. DISC describe el comportamiento habitual, no el carácter, los valores ni las capacidades, y cualquier estilo se puede desarrollar. Use los colores para entenderse, no para clasificar a las personas en casilleros."]
+          "p": ["El color es una etiqueta, y las etiquetas simplifican. «Es que eres rojo» suena a excusa para la brusquedad, y «es verde, qué le vamos a hacer» a renuncia a cualquier expectativa. DISC describe el comportamiento habitual, no el carácter, los valores ni las capacidades, y cualquier estilo se puede desarrollar. Use los colores para entenderse, no para encasillar a las personas."]
         }
       ]
     },
@@ -949,7 +949,7 @@
     "report.howto": "<b>Cómo leerlo.</b> El perfil general es la diferencia entre sus respuestas «más» y «menos». El estilo adaptado es cómo intenta comportarse en el trabajo. El estilo natural es cómo se comporta cuando no piensa en ello. Los valores por encima del punto medio (50 %) se consideran marcados.",
     "report.traits": "Rasgos clave",
     "report.secondary": "Estilo secundario: {k} · {name}.",
-    "report.secondaryAddon": "Al estilo principal se suma {addon}.",
+    "report.secondaryAddon": "El estilo secundario aporta {addon}.",
     "report.strengths": "Puntos fuertes",
     "report.growth": "Áreas de mejora",
     "report.motivation": "Qué le motiva",
@@ -1011,7 +1011,7 @@
     "admin.clear": "Vaciar la lista",
     "admin.linkNote": "El enlace para los participantes es la dirección de esta página.",
     "admin.back": "← Volver al test",
-    "admin.noCode": "No se ha encontrado ningún código: empieza por «{v}.»",
+    "admin.noCode": "No se ha encontrado ningún código (los códigos empiezan por «{v}.»)",
     "admin.added": "Añadidos: {n}",
     "admin.withErrors": ", con error: {n}",
     "admin.broken": "El código está dañado",
@@ -1104,7 +1104,7 @@
     "consent.label": "Aviso de cookies",
     "consent.text": "Este sitio guarda su progreso, su resultado y el idioma elegido en el almacenamiento local del navegador, y un servicio de analítica web recopila estadísticas de visitas anonimizadas y una grabación de las acciones en la página para ayudarnos a mejorar el sitio. Su nombre, su correo y su resultado no se envían al servicio de analítica.",
     "consent.more": "Más información",
-    "consent.details": "En el navegador se guardan: el nombre y el correo que usted indica antes del test; sus respuestas y el progreso sin terminar; su último resultado; el idioma elegido; una marca de que ha visto este aviso. Estos datos permanecen en su dispositivo y se eliminan al borrar los datos del sitio. El alojamiento (GitHub Pages) recibe los datos técnicos habituales de la solicitud. Al terminar el test, el nombre, el correo y las respuestas se transmiten al servicio de envío de correos (Google Apps Script), que le envía el resultado y guarda el nombre, el correo, la fecha y el resultado en la base de resultados del propietario del sitio (una hoja de cálculo de Google). El servicio de analítica web recibe la dirección de la página sin el código del resultado, la procedencia, el tipo de dispositivo y navegador y una grabación anonimizada de las acciones en la página (los campos de nombre y correo, el enlace y el código del resultado quedan excluidos), y establece sus propias cookies. Puede bloquearlo en la configuración del navegador o con un bloqueador de rastreadores. No se usan rastreadores publicitarios.",
+    "consent.details": "En el navegador se guardan: el nombre y el correo que usted indica antes del test; sus respuestas y el progreso sin terminar; su último resultado; el idioma elegido; un indicador de que ha visto este aviso. Estos datos permanecen en su dispositivo y se eliminan al borrar los datos del sitio. El alojamiento (GitHub Pages) recibe los datos técnicos habituales de la solicitud. Al terminar el test, el nombre, el correo y las respuestas se transmiten al servicio de envío de correos (Google Apps Script), que le envía el resultado y guarda el nombre, el correo, la fecha y el resultado en la base de resultados del propietario del sitio (una hoja de cálculo de Google). El servicio de analítica web recibe la dirección de la página sin el código del resultado, la procedencia, el tipo de dispositivo y navegador y una grabación anonimizada de las acciones en la página (los campos de nombre y correo, el enlace y el código del resultado quedan excluidos), y establece sus propias cookies. Puede bloquearlo en la configuración del navegador o con un bloqueador de rastreadores. No se usan rastreadores publicitarios.",
     "consent.accept": "Aceptar",
     "consent.decline": "Solo lo necesario",
     "consent.ok": "Entendido",

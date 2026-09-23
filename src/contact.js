@@ -40,7 +40,7 @@ function initContact(c){
   function fmtSize(b){
     var v, u;
     if(b>=1048576){ v=b/1048576; u=t('contact.mb'); } else { v=Math.max(1, b/1024); u=t('contact.kb'); }
-    var s; try{ s=v.toLocaleString(L.dateLocale+'-u-nu-latn',{maximumFractionDigits: v>=100?0:1}); }catch(e){ s=String(Math.round(v*10)/10); } // латинские цифры и локальный разделитель дробей
+    var s; try{ s=v.toLocaleString(/-u-/.test(L.dateLocale)?L.dateLocale:L.dateLocale+'-u-nu-latn',{maximumFractionDigits: v>=100?0:1}); }catch(e){ s=String(Math.round(v*10)/10); } // латинские цифры и локальный разделитель дробей
     return s+' '+u;
   }
   var maxLabel=fmtSize(MAX);

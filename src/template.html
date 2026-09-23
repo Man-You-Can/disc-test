@@ -149,7 +149,7 @@ html[lang|=zh] [lang]:not([lang|=zh]):not([lang|=ja]),html[lang=ja] [lang]:not([
 h1{font-family:var(--font-head);font-weight:500;font-size:clamp(26px,4.2vw,36px);line-height:1.2;letter-spacing:-.01em;margin:0 0 14px;text-wrap:balance}
 h2{font-family:var(--font-head);font-weight:500;font-size:17px;line-height:1.35;margin:0 0 12px;text-wrap:balance}
 h3{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin:0 0 8px}
-html[lang=ar] h3,html[lang=hi] h3,html[lang=zh] h3,html[lang=ja] h3,html[lang=ar] .eyebrow,html[lang=hi] .eyebrow,html[lang=zh] .eyebrow,html[lang=ja] .eyebrow{letter-spacing:.04em;font-size:13px}
+html[lang=ar] h3,html[lang=hi] h3,html[lang|=zh] h3,html[lang=ja] h3,html[lang=ar] .eyebrow,html[lang=hi] .eyebrow,html[lang|=zh] .eyebrow,html[lang=ja] .eyebrow{letter-spacing:.04em;font-size:13px}
 p{margin:0 0 12px}
 .eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:600;margin-bottom:12px}
 .lead{font-size:18px;max-width:62ch;margin-bottom:22px}
@@ -197,7 +197,7 @@ input:focus-visible,textarea:focus-visible,button:focus-visible,select:focus-vis
 /* test */
 .qhead{display:grid;grid-template-columns:64px 1fr 64px;align-items:end;gap:6px;padding-bottom:10px}
 .qhead span{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);text-align:center;line-height:1.25}
-html[lang=ar] .qhead span,html[lang=hi] .qhead span,html[lang=zh] .qhead span,html[lang=ja] .qhead span{letter-spacing:0;font-size:12px}
+html[lang=ar] .qhead span,html[lang=hi] .qhead span,html[lang|=zh] .qhead span,html[lang=ja] .qhead span{letter-spacing:0;font-size:12px}
 .qhead .n{font-family:var(--font-mono);font-size:13px;color:var(--muted);text-align:center;text-transform:none;letter-spacing:0;font-weight:400;direction:ltr;padding-bottom:2px}
 .row{display:grid;grid-template-columns:64px 1fr 64px;align-items:center;min-height:60px;border-top:1px solid var(--line);gap:6px}
 .row .txt{font-size:17px;padding:12px 6px;line-height:1.35}

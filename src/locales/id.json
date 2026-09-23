@@ -4,7 +4,7 @@
   "name": "Bahasa Indonesia",
   "dateLocale": "id-ID",
   "title": "Tes DISC Online Gratis — Tipe Kepribadian Anda dalam 10 Menit",
-  "description": "Tes DISC online gratis: 24 soal, 10 menit, tanpa pendaftaran. Kenali gaya utama, kekuatan, dan area pengembangan Anda. Hasil langsung tampil dan dikirim ke email.",
+  "description": "Tes DISC online gratis, cocok untuk latihan psikotes kerja: 24 soal, 10 menit, tanpa pendaftaran. Kenali gaya utama, kekuatan, dan area pengembangan Anda. Hasil langsung tampil dan dikirim ke email.",
   "brand": "Tes DISC",
   "keys": { "D": "Dominasi", "I": "Pengaruh", "S": "Kestabilan", "C": "Ketelitian" },
   "short": { "D": "Hasil dan kendali", "I": "Orang dan antusiasme", "S": "Dukungan dan konsistensi", "C": "Akurasi dan kualitas" },
@@ -23,7 +23,7 @@
     { "S": "Dapat diandalkan", "D": "Gigih", "C": "Sistematis", "I": "Memesona" },
     { "C": "Bertindak sesuai rencana", "I": "Menginspirasi orang sekitar", "D": "Memasang target tinggi", "S": "Menepati janji" },
     { "D": "Mandiri", "C": "Analitis", "S": "Kalem", "I": "Ekspresif" },
-    { "I": "Suka bertemu orang baru", "S": "Suka rutinitas", "D": "Suka tugas yang menantang", "C": "Suka mendalami detail" },
+    { "I": "Suka bertemu orang baru", "S": "Suka cara kerja yang sudah biasa", "D": "Suka tugas yang menantang", "C": "Suka mendalami detail" },
     { "C": "Disiplin", "D": "Menuntut kinerja tinggi", "I": "Suka mengobrol", "S": "Baik hati" },
     { "S": "Menghindari konflik", "I": "Mudah mengungkapkan perasaan", "C": "Menimbang setiap kata", "D": "Bicara lugas tanpa basa-basi" },
     { "D": "Berkemauan keras", "I": "Antusias", "S": "Rendah hati", "C": "Cermat" },
@@ -32,13 +32,13 @@
     { "S": "Berorientasi pada stabilitas", "D": "Berorientasi pada hasil", "C": "Berorientasi pada kualitas", "I": "Berorientasi pada komunikasi" },
     { "D": "Tidak sabaran", "C": "Terlalu kritis", "S": "Lambat menerima perubahan", "I": "Impulsif" },
     { "I": "Percaya pada orang lain", "S": "Tetap setia", "D": "Berani mengambil risiko", "C": "Mematuhi standar" },
-    { "C": "Pandai menahan diri", "I": "Karismatik", "S": "Lembut", "D": "Asertif" },
+    { "C": "Tidak mudah menunjukkan perasaan", "I": "Karismatik", "S": "Lembut", "D": "Asertif" },
     { "S": "Tidak terburu-buru menyimpulkan", "C": "Memastikan semua ketentuan jelas", "D": "Langsung bertindak", "I": "Cepat akrab dengan siapa saja" },
     { "D": "Percaya diri", "S": "Bertenggang rasa", "I": "Pandai berbicara", "C": "Teratur" },
     { "I": "Suka tampil di depan umum", "D": "Suka memimpin", "C": "Suka menganalisis", "S": "Suka membantu" },
     { "C": "Saksama", "S": "Peduli", "I": "Supel", "D": "Fokus pada tujuan" },
     { "S": "Menerima keadaan apa adanya", "I": "Cepat antusias pada hal baru", "D": "Mempertahankan pendapat", "C": "Menuntut ketepatan" },
-    { "D": "Berwibawa", "C": "Logis", "I": "Ceria", "S": "Stabil" }
+    { "D": "Suka memegang kendali", "C": "Logis", "I": "Ceria", "S": "Stabil" }
   ],
   "styles": {
     "D": {
@@ -46,8 +46,8 @@
       "strengths": ["Anda cepat mengambil keputusan dan bertanggung jawab atas keputusan itu", "Anda tidak panik saat krisis dan bertindak ketika orang lain masih ragu", "Anda memasang target yang ambisius dan mencapainya", "Anda berbicara lugas, tanpa makna ganda"],
       "growth": ["Kurang sabar terhadap orang yang bekerja lebih lambat atau lebih berhati-hati", "Cenderung memaksakan keputusan tanpa mendengarkan alternatif", "Cara bicara yang tajam, yang dirasakan orang lain sebagai tekanan"],
       "motivation": ["Wewenang dan kesempatan memengaruhi jalannya pekerjaan", "Tugas sulit dan tantangan", "Bebas dari pengawasan yang terlalu mendetail", "Hasil yang terukur dan kemenangan"],
-      "stress": "Di bawah tekanan, Anda menjadi lebih keras dan kurang toleran: memotong pembicaraan, mengambil alih semua pekerjaan, dan melangkahi aturan demi kecepatan. Yang membantu: wewenang yang jelas dan keleluasaan untuk bertindak mandiri.",
-      "communication": ["Bicaralah singkat dan langsung ke inti: hasil, tenggat, pilihan", "Jangan berlama-lama di pembukaan dan jangan bertele-tele", "Tawarkan pilihan, bukan keputusan yang sudah jadi: memutuskan sendiri itu penting", "Berargumenlah dengan fakta, bukan dengan emosi"],
+      "stress": "Di bawah tekanan, Anda menjadi lebih keras dan kurang toleran: memotong pembicaraan, ingin mengendalikan semuanya sendiri, dan melangkahi aturan demi kecepatan. Yang membantu: wewenang yang jelas dan keleluasaan untuk bertindak mandiri.",
+      "communication": ["Pesan yang singkat dan langsung ke inti: hasil, tenggat, pilihan", "Tanpa pembukaan panjang dan tanpa bertele-tele", "Beberapa pilihan, bukan keputusan yang sudah jadi, karena Anda ingin memutuskan sendiri", "Argumen yang bersandar pada fakta, bukan pada emosi"],
       "environment": "Lingkungan yang dinamis dengan otonomi besar, tujuan yang jelas, dan kaitan langsung antara usaha dan hasil. Rutinitas dan pengawasan ketat menurunkan motivasi."
     },
     "I": {
@@ -56,7 +56,7 @@
       "growth": ["Janji yang dibuat karena terbawa emosi dan kemudian sulit ditepati", "Kurang memperhatikan detail dan tenggat", "Cenderung lebih banyak berbicara daripada mendengarkan"],
       "motivation": ["Pengakuan dan apresiasi", "Interaksi dan kerja tim", "Kebebasan berekspresi", "Hal baru dan tugas yang beragam"],
       "stress": "Di bawah tekanan, Anda menjadi kurang fokus dan impulsif, menghindari pembicaraan yang tidak menyenangkan, dan bisa menilai keadaan lebih baik daripada kenyataannya. Yang membantu: diskusi terbuka dan dukungan rekan kerja.",
-      "communication": ["Mulailah dengan obrolan pribadi, bukan dengan agenda", "Beri kesempatan untuk berpendapat dan membahas ide", "Akui kontribusi secara terbuka di depan orang lain", "Catat kesepakatan secara tertulis: ini membantu kedua pihak"],
+      "communication": ["Obrolan pribadi lebih dulu, baru kemudian agenda", "Kesempatan untuk berpendapat dan membahas ide", "Pengakuan terbuka atas kontribusi Anda di depan orang lain", "Catatan tertulis tentang apa yang disepakati, karena itu membantu kedua pihak"],
       "environment": "Lingkungan yang terbuka dan ramah, dengan banyak interaksi, pengakuan, dan kebebasan dari aturan yang kaku. Isolasi dan pekerjaan yang monoton memadamkan semangat."
     },
     "S": {
@@ -65,7 +65,7 @@
       "growth": ["Sulit menerima perubahan, bahkan yang bermanfaat", "Sulit berkata tidak dan mempertahankan pendirian", "Memendam ketidaksetujuan demi menjaga suasana tetap damai"],
       "motivation": ["Stabilitas dan kepastian", "Ucapan terima kasih yang tulus atas kontribusi", "Ekspektasi dan aturan main yang jelas", "Bekerja dalam tim yang kompak"],
       "stress": "Di bawah tekanan, Anda menutup diri, menjadi terlalu mengalah, dan menunda keputusan. Perubahan mendadak dan konflik terbuka terasa sangat berat. Yang membantu: waktu untuk beradaptasi dan pembicaraan yang tenang.",
-      "communication": ["Beri tahu tentang perubahan jauh-jauh hari dan jelaskan mengapa perubahan itu diperlukan", "Tanyakan pendapat secara langsung: orang dengan gaya ini jarang mengutarakannya tanpa diminta", "Jangan menekan dan jangan mendesak agar segera menjawab", "Ucapkan terima kasih atas kontribusi yang spesifik"],
+      "communication": ["Pemberitahuan tentang perubahan jauh-jauh hari beserta alasannya", "Pertanyaan langsung tentang pendapat Anda, karena Anda jarang mengutarakannya tanpa diminta", "Tanpa tekanan, dan cukup waktu untuk menjawab tanpa didesak", "Ucapan terima kasih atas kontribusi Anda yang spesifik"],
       "environment": "Lingkungan yang stabil dengan proses yang jelas, hubungan yang baik, dan laju perubahan yang wajar. Kekacauan, pergantian tugas yang terus-menerus, dan persaingan yang agresif sangat menguras tenaga."
     },
     "C": {
@@ -74,7 +74,7 @@
       "growth": ["Perfeksionisme dan kebiasaan mengulur tenggat demi kesempurnaan", "Terlalu kritis terhadap diri sendiri dan orang lain", "Tenggelam dalam analisis alih-alih bertindak"],
       "motivation": ["Standar dan kriteria kualitas yang jelas", "Waktu untuk analisis dan persiapan", "Pengakuan atas keahlian", "Keputusan yang logis dan berdasar"],
       "stress": "Di bawah tekanan, Anda menarik diri, menjadi terlalu kritis, dan terjebak dalam detail. Keharusan bertindak tanpa data terasa menjengkelkan. Yang membantu: kriteria yang jelas dan waktu untuk memeriksa.",
-      "communication": ["Siapkan fakta, angka, dan argumen", "Beri waktu untuk berpikir, jangan menuntut jawaban saat itu juga", "Hormati prosedur dan kesepakatan", "Sampaikan kritik secara spesifik dan langsung pada pokoknya, tanpa emosi"],
+      "communication": ["Fakta, angka, dan argumen yang disiapkan lebih dulu", "Waktu untuk berpikir, bukan tuntutan menjawab saat itu juga", "Penghormatan terhadap prosedur dan kesepakatan", "Kritik yang spesifik, langsung pada pokoknya, dan tanpa emosi"],
       "environment": "Lingkungan yang terstruktur dengan standar yang jelas, akses ke informasi, dan kesempatan bekerja dengan fokus. Ketidakpastian, ketergesaan, dan tekanan emosional menurunkan efektivitas."
     }
   },
@@ -88,7 +88,7 @@
         "D": "Dengan sesama D, bagi wilayah tanggung jawab sejak awal dan berdebatlah soal kriteria, bukan soal siapa yang memimpin.",
         "I": "Luangkan dua menit untuk berbincang secara pribadi sebelum masuk ke urusan pekerjaan, dan sampaikan apresiasi atas kontribusinya.",
         "S": "Perlambat tempo, beri tahu lebih dulu bila akan ada perubahan, dan tunggu jawaban atas pertanyaan Anda tanpa buru-buru mengisi keheningan.",
-        "C": "Dukung keputusan Anda dengan fakta dan beri waktu untuk memeriksa: bagi C, itu bukan mengulur waktu, melainkan bagian dari pekerjaan."
+        "C": "Dukung keputusan Anda dengan fakta dan beri waktu untuk memeriksa, karena bagi C itu bukan mengulur waktu, melainkan bagian dari pekerjaan."
       }
     },
     "I": {
@@ -110,7 +110,7 @@
       "team": "Sosok yang bisa diandalkan: menuntaskan pekerjaan, mengingat kesepakatan, membantu anggota baru, dan meredakan konflik. Sering kali menjaga keutuhan tim tanpa disadari orang di sekitarnya. Berisiko tidak mendapat pengakuan dan kewalahan oleh tugas orang lain karena sulit menolak.",
       "with": {
         "D": "Sampaikan ketidaksetujuan saat itu juga dan secara singkat; mintalah prioritas yang jelas alih-alih menebak-nebak.",
-        "I": "Nyatakan batasan Anda dengan jelas dan mintalah rencana: ide saja tidak cukup bagi Anda.",
+        "I": "Nyatakan batasan Anda dengan jelas dan mintalah rencana, karena ide saja tidak cukup bagi Anda.",
         "S": "Saling tetapkan tenggat dan bergantianlah menjadi pihak yang mengambil keputusan.",
         "C": "Terimalah koreksinya sebagai bentuk kepedulian pada kualitas, dan usulkan perubahan dalam langkah-langkah kecil."
       }
@@ -123,41 +123,41 @@
       "with": {
         "D": "Tawarkan opsi “cukup baik sekarang” dan sampaikan risiko secara singkat, lengkap dengan konsekuensinya.",
         "I": "Mulailah dengan mengapresiasi idenya, lalu jelaskan kesimpulan Anda dengan bahasa yang sederhana.",
-        "S": "Perhalus kritik dan sampaikan apresiasi atas kontribusinya: bagi S, suasana kerja adalah bagian dari hasil.",
+        "S": "Perhalus kritik dan sampaikan apresiasi atas kontribusinya, karena bagi S suasana kerja adalah bagian dari hasil.",
         "C": "Tentukan sejak awal tingkat kualitas yang dianggap cukup, dan batasi waktu untuk analisis."
       }
     },
     "DI": {
       "name": "Perintis",
       "summary": "Daya dorong dan pesona: Anda bergerak cepat menuju tujuan dan pandai mengajak orang ikut serta. Anda meyakinkan lewat daya dobrak dan antusiasme serta memutuskan sambil jalan, tetapi sering kurang sabar terhadap detail dan kurang berhati-hati.",
-      "careers": ["Pendiri, pemimpin startup", "Direktur penjualan", "Pemimpin peluncuran produk dan pasar baru", "Pemimpin publik, pembicara", "Negosiator komersial"],
-      "team": "Penggerak awal: menetapkan tujuan yang ambisius, mencari sekutu, dan memimpin di depan. Tak tergantikan di awal proyek dan dalam negosiasi yang menuntut daya dobrak sekaligus pesona. Untuk jangka panjang, ia membutuhkan rekan dengan S dan C yang akan menuntaskan apa yang sudah dimulai dan memeriksa detailnya.",
+      "careers": ["Pendiri, pemimpin startup", "Direktur penjualan", "Pemimpin peluncuran produk dan pasar baru", "Tokoh publik, pembicara", "Negosiator komersial"],
+      "team": "Penggerak awal: menetapkan tujuan yang ambisius, mencari sekutu, dan memimpin di depan. Tak tergantikan di awal proyek dan dalam negosiasi yang menuntut daya dobrak sekaligus pesona. Untuk jangka panjang, ia membutuhkan rekan yang S dan C-nya menonjol untuk menuntaskan apa yang sudah dimulai dan memeriksa detailnya.",
       "with": {
-        "D": "Bagi wilayah pengaruh dan jangan berebut perhatian: dua pemimpin butuh medan yang berbeda.",
+        "D": "Bagi wilayah pengaruh dan jangan berebut perhatian, karena dua pemimpin butuh medan yang berbeda.",
         "I": "Nikmati antusiasme bersama, tetapi akhiri dengan daftar tugas lengkap dengan penanggung jawab dan tenggatnya.",
         "S": "Kurangi tekanan, beri tahu lebih dulu soal perubahan, dan jangan menganggap diam sebagai tanda setuju.",
-        "C": "Berikan fakta dan waktu: C tidak menghambat, melainkan menjaga laju Anda dari kesalahan."
+        "C": "Berikan fakta dan waktu. C tidak menghambat Anda, melainkan menjaga laju Anda dari kesalahan."
       }
     },
     "DC": {
       "name": "Ahli Strategi",
       "summary": "Hasil melalui kualitas: Anda menuntut banyak dari diri sendiri dan orang lain, berpikir sistematis, dan tidak mengambil keputusan tanpa argumen yang mendasarinya. Anda unggul dalam tugas yang kompleks, tetapi bisa terkesan dingin dan terlalu kritis.",
-      "careers": ["Pemimpin proyek yang kompleks", "Direktur pengembangan, ahli strategi", "Kepala tim teknik atau tim analitik", "Konsultan manajemen", "Direktur keuangan"],
+      "careers": ["Pemimpin proyek yang kompleks", "Direktur pengembangan bisnis, ahli strategi", "Kepala tim teknik atau tim analitik", "Konsultan manajemen", "Direktur keuangan"],
       "team": "Memadukan daya dorong dan kualitas: memasang standar tinggi dan mencapainya, berpikir sistematis, serta melihat risiko lebih awal daripada yang lain. Bersamanya tim fokus dan produktif, tetapi bisa merasakan sikap dingin dan merasa terus-menerus dinilai. Ada baiknya ia lebih sering mengakui kontribusi orang lain dan menjelaskan keputusannya, bukan hanya menuntut.",
       "with": {
         "D": "Berdebatlah soal fakta dan kriteria; sepakati siapa yang memegang kata terakhir di wilayah yang diperdebatkan.",
         "I": "Dengarkan idenya sampai tuntas sebelum membedahnya, dan berikan pujian di depan orang lain.",
-        "S": "Jelaskan mengapa perubahan diperlukan dan berterima kasihlah atas keandalannya: S tidak akan memintanya sendiri.",
+        "S": "Jelaskan mengapa perubahan diperlukan dan berterima kasihlah atas keandalannya, karena S tidak akan memintanya sendiri.",
         "C": "Tentukan di mana perlu cepat dan di mana perlu teliti, dan jangan mendesak soal tenggat di area yang menuntut kualitas."
       }
     },
     "DS": {
-      "name": "Praktisi",
+      "name": "Penuntas",
       "summary": "Kegigihan dan keandalan: Anda tekun mengejar tujuan, tetapi melakukannya tanpa banyak ribut dan menuntaskan apa yang sudah dimulai. Anda menghargai kemandirian sekaligus stabilitas, dan itu perpaduan yang langka.",
       "careers": ["Kepala produksi atau operasional", "Manajer proyek implementasi", "Kepala divisi layanan", "Pengusaha dengan bisnis yang stabil", "Manajer tingkat menengah di perusahaan besar"],
       "team": "Tulang punggung pekerjaan: mengambil tugas dan membawanya sampai hasil tanpa banyak ribut, tidak berhenti di tengah jalan, dan menepati janji. Perpaduan langka antara kemandirian dan keandalan menjadikannya tumpuan bagi atasan. Dari luar ia bisa tampak keras kepala dan tertutup; ada baiknya ia lebih sering mengutarakan rencananya dan mendengarkan pilihan lain.",
       "with": {
-        "D": "Sepakati tujuan dan tenggatnya, tetapi cara mencapainya biarlah Anda yang menentukan: pengawasan yang terlalu mendetail mematikan motivasi Anda.",
+        "D": "Sepakati tujuan dan tenggatnya, tetapi cara mencapainya biarlah Anda yang menentukan, karena pengawasan yang terlalu mendetail mematikan motivasi Anda.",
         "I": "Jangan menepis idenya sebagai omong kosong, tetapi mintalah rencana yang konkret.",
         "S": "Ambil alih pengambilan keputusan, tetapi jelaskan alasannya dan beri waktu untuk menyesuaikan diri.",
         "C": "Akui nilai pemeriksaan dan sepakati sejak awal kriteria selesainya pekerjaan."
@@ -171,8 +171,8 @@
       "with": {
         "D": "Bicaralah singkat dan dahulukan hasilnya; desakan D bukan permusuhan, melainkan kecepatan.",
         "I": "Akhiri pertemuan dengan kesepakatan tertulis; kalau tidak, antusiasme tidak akan sejalan dengan tindakan.",
-        "S": "Beri tahu lebih dulu soal perubahan dan jangan memutuskan atas nama S: tanyakan pendapatnya secara langsung.",
-        "C": "Siapkan angka dan beri waktu untuk menjawab: diamnya C berarti sedang menimbang, bukan menolak."
+        "S": "Beri tahu lebih dulu soal perubahan dan jangan memutuskan atas nama S; tanyakan pendapatnya secara langsung.",
+        "C": "Siapkan angka dan beri waktu untuk menjawab. Diamnya C berarti sedang menimbang, bukan menolak."
       }
     },
     "IS": {
@@ -183,7 +183,7 @@
       "with": {
         "D": "Bicarakan urusan pekerjaan secara singkat dan jangan tersinggung oleh sikapnya yang blak-blakan; bila tidak setuju, sampaikan saat itu juga.",
         "I": "Dukung idenya, tetapi mintalah rencana dan tenggat; kalau tidak, Anda berdua akan terbawa suasana.",
-        "S": "Sebutkan masalah secara terang-terangan dan saling tetapkan tenggat: tanpa itu pekerjaan tidak bergerak.",
+        "S": "Sebutkan masalah secara terang-terangan dan saling tetapkan tenggat, karena tanpa itu pekerjaan tidak bergerak.",
         "C": "Anggap kritik terhadap detail sebagai kepedulian pada kualitas, bukan penilaian terhadap diri Anda."
       }
     },
@@ -205,8 +205,8 @@
       "careers": ["Hubungan dengan klien dan mitra", "Koordinator tim, manajer kantor", "HR: rekrutmen, orientasi karyawan baru, komunikasi internal", "Pengajar, pendidik anak, pekerjaan sosial", "Pendampingan proyek dengan banyak pihak yang terlibat"],
       "team": "Membangun kepercayaan: tenang, ramah, perhatian kepada setiap orang, meredam gesekan, dan membantu mencapai kesepakatan. Bersamanya tim lebih jarang berkonflik. Sulit berkata “tidak” dan mempertahankan keputusan yang tidak populer; ia perlu belajar menyatakan ketidaksetujuan sebelum telanjur menumpuk.",
       "with": {
-        "D": "Sampaikan ketidaksetujuan saat itu juga dan secara singkat: D lebih menghargai keterusterangan daripada sikap mengalah.",
-        "I": "Tegaskan batasan Anda dan mintalah hal yang konkret: ide saja tidak cukup.",
+        "D": "Sampaikan ketidaksetujuan saat itu juga dan secara singkat, karena D lebih menghargai keterusterangan daripada sikap mengalah.",
+        "I": "Tegaskan batasan Anda dan mintalah hal yang konkret, karena ide saja tidak cukup.",
         "S": "Bergantianlah mengambil inisiatif dan jangan menunda percakapan yang sulit.",
         "C": "Mintalah penjelasan tentang logika di balik aturan, dan usulkan perubahan dalam langkah-langkah kecil."
       }
@@ -218,7 +218,7 @@
       "team": "Penjaga keteraturan: bekerja secara metodis, mematuhi aturan, menuntaskan pekerjaan, dan ingat bagaimana hal itu dikerjakan sebelumnya. Proses kerja bertumpu padanya. Perubahan mendadak dan tekanan terasa berat baginya; tim sebaiknya melibatkannya dalam perubahan sejak awal, dan ia sendiri perlu menyampaikan bila bebannya berlebih, bukan memendamnya.",
       "with": {
         "D": "Mintalah prioritas yang jelas dan sampaikan risiko secara singkat, lengkap dengan konsekuensinya.",
-        "I": "Jangan menganggap antusiasme sebagai rencana: mintalah tenggat dan penanggung jawab.",
+        "I": "Jangan menganggap antusiasme sebagai rencana; mintalah tenggat dan penanggung jawab.",
         "S": "Saling tetapkan tenggat dan sebutkan masalah secara terang-terangan, sekecil apa pun.",
         "C": "Tentukan sejak awal tingkat kualitas yang dianggap cukup; kalau tidak, Anda berdua akan tenggelam dalam detail."
       }
@@ -230,7 +230,7 @@
       "team": "Membawa pekerjaan sampai hasil dengan tenang dan tegas: tanpa terburu-buru, tanpa diskusi yang tidak perlu, tetapi juga tanpa mundur. Dapat diandalkan untuk jangka panjang dan tidak takut memikul tanggung jawab. Dari luar ia bisa tampak keras kepala; ada baiknya ia menjelaskan keputusannya dan memberi rekan kerja kesempatan untuk ikut memengaruhinya.",
       "with": {
         "D": "Sepakati tujuan dan tenggatnya; caranya Anda pilih sendiri, dan jangan diam saja bila diawasi terlalu mendetail.",
-        "I": "Dengarkan idenya, tetapi mintalah rencana: keteguhan Anda akan membantu I menuntaskan pekerjaan.",
+        "I": "Dengarkan idenya, tetapi mintalah rencana. Keteguhan Anda akan membantu I menuntaskan pekerjaan.",
         "S": "Ambillah keputusan, tetapi jelaskan alasannya dan beri waktu untuk menyesuaikan diri.",
         "C": "Sepakati kriteria selesainya pekerjaan sejak awal dan hargai waktu yang dibutuhkan untuk memeriksa."
       }
@@ -243,7 +243,7 @@
       "with": {
         "D": "Sampaikan risiko secara singkat beserta perkiraan dampaknya; tawarkan opsi “cukup untuk sekarang”.",
         "I": "Mulailah dengan mengapresiasi idenya; sampaikan kritik secara spesifik dan tanpa nada tajam.",
-        "S": "Perhalus koreksi Anda dan sampaikan apresiasi atas kontribusinya: sikap dingin melukai S lebih dalam daripada yang terlihat.",
+        "S": "Perhalus koreksi Anda dan sampaikan apresiasi atas kontribusinya, karena sikap dingin melukai S lebih dalam daripada yang terlihat.",
         "C": "Batasi waktu analisis dan putuskan sejak awal di mana harus berhenti."
       }
     },
@@ -267,7 +267,7 @@
       "with": {
         "D": "Mulailah dari kesimpulan; siapkan alasannya, tetapi jangan memulai dari situ.",
         "I": "Anda berdua akan mudah saling memahami; pastikan saja percakapan itu berujung pada rencana.",
-        "S": "Jangan mengubah kesimpulan secara mendadak dan beri waktu: S membutuhkan kepastian.",
+        "S": "Jangan mengubah kesimpulan secara mendadak dan beri waktu, karena S membutuhkan kepastian.",
         "C": "Bicaralah dengan bahasa data, tetapi jangan memperdebatkan setiap detail."
       }
     }
@@ -289,14 +289,14 @@
         {
           "h": "Apa yang diukur DISC",
           "p": [
-            "Model ini mudah dibayangkan sebagai dua sumbu. Sumbu pertama adalah tempo: ada orang yang bertindak cepat dan tegas, ada pula yang tenang dan berhati-hati. Sumbu kedua adalah fokus: sebagian orang berfokus pada tugas dan hasil, sebagian lagi pada orang dan hubungan. Persilangan kedua sumbu menghasilkan empat gaya: D — tempo cepat dan fokus pada tugas, I — tempo cepat dan fokus pada orang, S — tempo tenang dan fokus pada orang, C — tempo tenang dan fokus pada tugas.",
+            "Model ini mudah dibayangkan sebagai dua sumbu. Sumbu pertama adalah tempo: ada orang yang bertindak cepat dan tegas, ada pula yang tenang dan berhati-hati. Sumbu kedua adalah fokus: sebagian orang berfokus pada tugas dan hasil, sebagian lagi pada orang dan hubungan. Persilangan kedua sumbu menghasilkan empat gaya: D berarti tempo cepat dan fokus pada tugas, I berarti tempo cepat dan fokus pada orang, S berarti tempo tenang dan fokus pada orang, dan C berarti tempo tenang dan fokus pada tugas.",
             "Setiap orang memiliki keempat gaya; yang berbeda hanyalah kadarnya. Profil menunjukkan gaya mana yang lebih sering muncul dalam perilaku kerja sehari-hari dan gaya mana yang menuntut usaha lebih."
           ]
         },
         {
           "h": "Empat gaya secara singkat",
           "p": [
-            "D — Dominasi: hasil, kendali, kecepatan, kesiapan menghadapi konflik. I — Pengaruh: komunikasi, antusiasme, kemampuan menggerakkan orang lain. S — Kestabilan: dukungan, keandalan, kesabaran, konsistensi. C — Ketelitian: ketepatan, kualitas, aturan, berpegang pada fakta.",
+            "D (Dominasi): hasil, kendali, kecepatan, kesiapan menghadapi konflik. I (Pengaruh): komunikasi, antusiasme, kemampuan menggerakkan orang lain. S (Kestabilan): dukungan, keandalan, kesabaran, konsistensi. C (Ketelitian): ketepatan, kualitas, aturan, berpegang pada fakta.",
             "Uraian lengkap setiap gaya — ciri khas, kekuatan, area pengembangan, motivasi, dan cara terbaik berkomunikasi dengan pemilik gaya tersebut — ada di halaman “Empat gaya”. Kombinasi gaya utama dan gaya sekunder menghasilkan 16 profil, masing-masing dengan halamannya sendiri."
           ]
         },
@@ -347,7 +347,7 @@
         },
         {
           "q": "Apa arti huruf D, I, S, C?",
-          "a": "D — Dominasi (hasil dan kendali), I — Pengaruh (orang dan antusiasme), S — Kestabilan (dukungan dan konsistensi), C — Ketelitian (akurasi dan kualitas). Setiap orang memiliki keempat gaya, tetapi dengan kadar yang berbeda-beda."
+          "a": "D adalah Dominasi (hasil dan kendali), I adalah Pengaruh (orang dan antusiasme), S adalah Kestabilan (dukungan dan konsistensi), dan C adalah Ketelitian (akurasi dan kualitas). Setiap orang memiliki keempat gaya, tetapi dengan kadar yang berbeda-beda."
         },
         {
           "q": "Seberapa akurat hasilnya?",
@@ -732,7 +732,7 @@
         {
           "h": "Bisakah MBTI dikonversi ke DISC?",
           "p": [
-            "Padanan yang persis tidak ada karena kedua model mengukur hal yang berbeda, tetapi hubungan statistiknya ada. Ekstraversi dalam MBTI lebih sering berpasangan dengan D dan I yang tinggi, introversi dengan S dan C. Preferensi “pemikiran” (T) condong ke D dan C, “perasaan” (F) ke I dan S. Misalnya, ENTJ kerap mendapat profil D atau DC, ESFP — I atau IS, ISFJ — S atau SC, INTP — C atau CD.",
+            "Padanan yang persis tidak ada karena kedua model mengukur hal yang berbeda, tetapi hubungan statistiknya ada. Ekstraversi dalam MBTI lebih sering berpasangan dengan D dan I yang tinggi, introversi dengan S dan C. Preferensi “pemikiran” (T) condong ke D dan C, “perasaan” (F) ke I dan S. Misalnya, ENTJ kerap mendapat profil D atau DC, ESFP profil I atau IS, ISFJ profil S atau SC, dan INTP profil C atau CD.",
             "Anggaplah ini sebagai gambaran kasar saja: orang dengan tipe MBTI yang sama bisa menunjukkan profil DISC yang berbeda tergantung perannya, dan profil DISC lebih mungkin bergeser saat berganti pekerjaan dibandingkan tipe MBTI. Jika Anda ingin memahami bagaimana seorang rekan kerja akan bersikap dalam situasi tertentu, laporan DISC-nya lebih berguna daripada empat huruf MBTI."
           ]
         },
@@ -798,7 +798,7 @@
           "common": ["Berorientasi pada hasil dan tenggat", "Bicara lugas tanpa sindiran dan tanpa sakit hati", "Siap memikul tanggung jawab dan mengambil risiko"],
           "friction": ["Perebutan kendali dan kata terakhir", "Tidak sabar: keduanya saling memotong pembicaraan dan mendesak", "Tidak ada yang memeriksa detail dan mendengarkan suara yang berhati-hati"],
           "tips": {
-            "D": ["Sepakati siapa bertanggung jawab atas apa, dan jangan mencampuri wilayah satu sama lain", "Berdebatlah soal kriteria hasil, bukan soal siapa yang benar", "Libatkan S atau C dalam diskusi: mereka melihat hal yang luput dari perhatian Anda berdua"]
+            "D": ["Sepakati siapa bertanggung jawab atas apa, dan jangan mencampuri wilayah satu sama lain", "Berdebatlah soal kriteria hasil, bukan soal siapa yang benar", "Libatkan S atau C dalam diskusi, karena mereka melihat hal yang luput dari perhatian Anda berdua"]
           }
         },
         "DI": {
@@ -807,8 +807,8 @@
           "common": ["Tempo cepat dan kesiapan bertindak tanpa persiapan panjang", "Optimisme dan minat besar pada tugas baru", "Tidak suka rutinitas dan pengawasan yang terlalu mendetail"],
           "friction": ["D menuntut hal yang konkret, I asyik mengobrol", "I tersinggung oleh ucapan yang tajam, D terganggu oleh luapan emosi", "Keduanya terlalu optimistis soal tenggat dan melewatkan detail"],
           "tips": {
-            "D": ["Awali percakapan dengan dua menit obrolan pribadi, baru kemudian masuk ke pekerjaan", "Sampaikan apresiasi atas kontribusi I: baginya itu bahan bakar", "Jangan memotong ide di tengah jalan: biarkan I selesai bicara, baru kemudian pilih yang terbaik"],
-            "I": ["Bicaralah singkat dengan D: hasil, tenggat, dan apa yang Anda butuhkan darinya", "Catat kesepakatan secara tertulis agar antusiasme tidak melenceng dari fakta", "Jangan memasukkan keterusterangan D ke dalam hati: itu gaya, bukan penilaian"]
+            "D": ["Awali percakapan dengan dua menit obrolan pribadi, baru kemudian masuk ke pekerjaan", "Sampaikan apresiasi atas kontribusi I, karena baginya itu bahan bakar", "Jangan memotong ide di tengah jalan; biarkan I selesai bicara, baru kemudian pilih yang terbaik"],
+            "I": ["Bicaralah singkat dengan D: hasil, tenggat, dan apa yang Anda butuhkan darinya", "Catat kesepakatan secara tertulis agar antusiasme tidak melenceng dari fakta", "Jangan memasukkan keterusterangan D ke dalam hati, karena itu gaya, bukan penilaian"]
           }
         },
         "DS": {
@@ -817,8 +817,8 @@
           "common": ["Praktis: bagi keduanya, yang penting pekerjaan selesai", "Setia pada komitmen yang sudah diambil", "Tidak suka omong kosong dan pencitraan"],
           "friction": ["Tempo: D mendesak, S butuh waktu", "Konflik: D menghadapinya dengan enteng, S menghindarinya dengan segala cara", "S diam-diam mengiyakan tetapi tidak mengerjakan, D menganggapnya sabotase"],
           "tips": {
-            "D": ["Beri tahu soal perubahan jauh-jauh hari dan jelaskan alasannya", "Tanyakan pendapatnya secara langsung dan tunggu jawabannya tanpa buru-buru mengisi keheningan", "Berterima kasihlah atas keandalannya: S tidak akan menuntut pengakuan sendiri"],
-            "S": ["Sampaikan ketidaksetujuan saat itu juga, singkat, dan langsung ke pokoknya: D menghargai hal itu", "Mintalah tenggat dan prioritas yang jelas alih-alih menebak-nebak", "Jangan menganggap desakan D sebagai permusuhan: memang begitulah kecepatan normalnya"]
+            "D": ["Beri tahu soal perubahan jauh-jauh hari dan jelaskan alasannya", "Tanyakan pendapatnya secara langsung dan tunggu jawabannya tanpa buru-buru mengisi keheningan", "Berterima kasihlah atas keandalannya, karena S tidak akan menuntut pengakuan sendiri"],
+            "S": ["Sampaikan ketidaksetujuan saat itu juga, singkat, dan langsung ke pokoknya, karena D menghargai hal itu", "Mintalah tenggat dan prioritas yang jelas alih-alih menebak-nebak", "Jangan menganggap desakan D sebagai permusuhan, karena memang begitulah kecepatan normalnya"]
           }
         },
         "DC": {
@@ -828,7 +828,7 @@
           "friction": ["D memutuskan dengan cepat, C menuntut data dan waktu", "C menganggap desakan sebagai tekanan, D menganggap kehati-hatian sebagai sabotase", "Keduanya kritis dan pelit apresiasi"],
           "tips": {
             "D": ["Beri C waktu untuk menganalisis dan sampaikan sejak awal kapan jawaban dibutuhkan", "Dukung keputusan dengan fakta, bukan dengan “pokoknya saya bilang begitu”", "Pilah tugas: bila dampak kesalahannya besar, kata terakhir ada pada C"],
-            "C": ["Tawarkan kepada D opsi “cukup baik sekarang” alih-alih “sempurna nanti”", "Sampaikan risiko secara singkat beserta perkiraan dampaknya, tanpa penjelasan panjang lebar", "Jangan menunggu pujian dari D: tidak adanya kritik itulah tanda persetujuannya"]
+            "C": ["Tawarkan kepada D opsi “cukup baik sekarang” alih-alih “sempurna nanti”", "Sampaikan risiko secara singkat beserta perkiraan dampaknya, tanpa penjelasan panjang lebar", "Jangan menunggu pujian dari D, karena tidak adanya kritik itulah tanda persetujuannya"]
           }
         },
         "II": {
@@ -846,8 +846,8 @@
           "common": ["Perhatian pada orang dan hubungan", "Mengupayakan keharmonisan dan suasana yang baik", "Siap membantu dan mendukung"],
           "friction": ["I mengubah rencana secara mendadak, dan itu membuat S kehilangan pijakan", "Keduanya menghindari konflik, sehingga masalah menumpuk", "I banyak bicara, S mengalah dan memendam kebutuhannya sendiri"],
           "tips": {
-            "I": ["Beri tahu S soal perubahan jauh-jauh hari dan jangan mengubah keputusan tanpa alasan", "Tanyakan pendapat S secara langsung: ia tidak akan menyodorkannya sendiri", "Tuntaskan apa yang sudah dimulai: S lebih menghargai keandalan daripada ide"],
-            "S": ["Nyatakan batasan Anda dengan jelas: I tidak akan bisa menebaknya", "Dukung ide-ide I, tetapi mintalah rencana dan tenggat", "Jangan takut memberi umpan balik yang jujur: I akan menerimanya lebih mudah daripada yang Anda kira"]
+            "I": ["Beri tahu S soal perubahan jauh-jauh hari dan jangan mengubah keputusan tanpa alasan", "Tanyakan pendapat S secara langsung, karena ia tidak akan menyodorkannya sendiri", "Tuntaskan apa yang sudah dimulai, karena S lebih menghargai keandalan daripada ide"],
+            "S": ["Nyatakan batasan Anda dengan jelas, karena I tidak akan bisa menebaknya", "Dukung ide-ide I, tetapi mintalah rencana dan tenggat", "Jangan takut memberi umpan balik yang jujur, karena I akan menerimanya lebih mudah daripada yang Anda kira"]
           }
         },
         "IC": {
@@ -856,17 +856,17 @@
           "common": ["Ketertarikan pada ide, meski dari sudut yang berbeda", "Sama-sama ingin hasil yang baik: I ingin indah, C ingin benar", "Tidak ada perebutan kekuasaan: keduanya tidak butuh kendali demi kendali itu sendiri"],
           "friction": ["I berjanji, C memeriksa dan menemukan ketidaksesuaian", "C butuh ketenangan dan waktu, I butuh interaksi dan kecepatan", "Sikap emosional I menjengkelkan C, sikap C yang serba menahan diri melukai I"],
           "tips": {
-            "I": ["Siapkan fakta dan angka sebelum berbicara dengan C", "Beri waktu untuk menjawab: diamnya C berarti sedang menimbang, bukan menolak", "Jangan menganggap kritik terhadap detail sebagai penolakan terhadap ide"],
-            "C": ["Mulailah dengan mengapresiasi idenya, baru kemudian beralih ke risiko", "Jelaskan kesimpulan dengan bahasa yang sederhana, tanpa membeberkan semua data", "Sesekali terimalah hasil yang “cukup baik”: tidak setiap detail layak diperdebatkan"]
+            "I": ["Siapkan fakta dan angka sebelum berbicara dengan C", "Beri waktu untuk menjawab, karena diamnya C berarti sedang menimbang, bukan menolak", "Jangan menganggap kritik terhadap detail sebagai penolakan terhadap ide"],
+            "C": ["Mulailah dengan mengapresiasi idenya, baru kemudian beralih ke risiko", "Jelaskan kesimpulan dengan bahasa yang sederhana, tanpa membeberkan semua data", "Sesekali terimalah hasil yang “cukup baik”, karena tidak setiap detail layak diperdebatkan"]
           }
         },
         "SS": {
           "summary": "Pasangan paling tenang: keandalan, kesabaran, dan saling mendukung. Bahayanya adalah kemandekan dan keengganan mengangkat topik yang sulit.",
-          "text": "Dua S saling memahami tanpa kata-kata: keduanya menghargai stabilitas, menepati janji, mendengarkan, dan tidak menekan. Pasangan seperti ini bisa bekerja dengan mulus dan tanpa konflik selama bertahun-tahun. Sisi lainnya adalah kecenderungan menghindari apa pun yang mengusik ketenangan: perubahan, perdebatan, percakapan yang tidak menyenangkan. Masalah tidak diselesaikan, melainkan ditahan-tahan; keputusan ditunda karena tidak ada yang mau mengambil inisiatif lebih dulu. Pasangan S dan S terbantu oleh dorongan dari luar: tenggat yang jelas, atasan dengan D, atau rekan kerja dengan I yang mampu menggerakkan mereka.",
+          "text": "Dua S saling memahami tanpa kata-kata: keduanya menghargai stabilitas, menepati janji, mendengarkan, dan tidak menekan. Pasangan seperti ini bisa bekerja dengan mulus dan tanpa konflik selama bertahun-tahun. Sisi lainnya adalah kecenderungan menghindari apa pun yang mengusik ketenangan: perubahan, perdebatan, percakapan yang tidak menyenangkan. Masalah tidak diselesaikan, melainkan ditahan-tahan; keputusan ditunda karena tidak ada yang mau mengambil inisiatif lebih dulu. Pasangan S dan S terbantu oleh dorongan dari luar: tenggat yang jelas, atasan yang D-nya tinggi, atau rekan kerja yang I-nya menonjol dan mampu menggerakkan mereka.",
           "common": ["Keandalan dan konsistensi", "Kesabaran dan kemampuan mendengarkan", "Kesetiaan pada tim dan pada cara kerja yang sudah biasa"],
           "friction": ["Tidak ada yang memulai perubahan atau mengambil inisiatif", "Ketidaksetujuan dipendam, kekecewaan menumpuk", "Keputusan ditunda sambil berharap orang lain yang memutuskan"],
           "tips": {
-            "S": ["Saling tetapkan tenggat: tanpa itu pekerjaan tidak akan bergerak", "Sepakati untuk menyebutkan masalah secara terang-terangan, sekecil apa pun", "Bergantianlah memegang peran “pengambil keputusan”"]
+            "S": ["Saling tetapkan tenggat, karena tanpa itu pekerjaan tidak akan bergerak", "Sepakati untuk menyebutkan masalah secara terang-terangan, sekecil apa pun", "Bergantianlah memegang peran “pengambil keputusan”"]
           }
         },
         "SC": {
@@ -875,8 +875,8 @@
           "common": ["Kehati-hatian dan keputusan yang dipikirkan matang", "Menghargai keteraturan dan kesepakatan", "Tidak suka ketergesaan, kekacauan, dan tekanan"],
           "friction": ["C menempatkan aturan di atas hubungan, S sebaliknya", "Keduanya menolak perubahan, sehingga tim jalan di tempat", "Kritik dari C dirasakan S sebagai sikap dingin terhadap dirinya"],
           "tips": {
-            "S": ["Anggap koreksi dari C sebagai kepedulian pada kualitas, bukan penilaian terhadap diri Anda", "Mintalah penjelasan tentang logika di balik aturan, alih-alih membantah aturannya", "Usulkan perubahan dalam langkah-langkah kecil: itu lebih mudah bagi Anda maupun bagi C"],
-            "C": ["Perhalus kritik: sampaikan dulu apa yang sudah baik, baru apa yang perlu diperbaiki", "Ingatlah bahwa bagi S suasana kerja adalah bagian dari hasil", "Sampaikan apresiasi atas kontribusi S: ia tidak akan meminta pengakuan sendiri"]
+            "S": ["Anggap koreksi dari C sebagai kepedulian pada kualitas, bukan penilaian terhadap diri Anda", "Mintalah penjelasan tentang logika di balik aturan, alih-alih membantah aturannya", "Usulkan perubahan dalam langkah-langkah kecil, karena itu lebih mudah bagi Anda maupun bagi C"],
+            "C": ["Perhalus kritik: sampaikan dulu apa yang sudah baik, baru apa yang perlu diperbaiki", "Ingatlah bahwa bagi S suasana kerja adalah bagian dari hasil", "Sampaikan apresiasi atas kontribusi S, karena ia tidak akan meminta pengakuan sendiri"]
           }
         },
         "CC": {
@@ -885,7 +885,7 @@
           "common": ["Standar kualitas yang tinggi", "Berpegang pada data dan logika", "Disiplin dan taat pada kesepakatan"],
           "friction": ["Perfeksionisme berlipat ganda, tenggat terlewat", "Perdebatan soal detail tanpa keputusan atas pokok persoalan", "Ketegangan tidak dibicarakan dan terus menumpuk"],
           "tips": {
-            "C": ["Tentukan sejak awal tingkat kualitas yang dianggap cukup, lalu berhentilah di situ", "Batasi waktu analisis: keputusan yang tepat waktu lebih baik daripada keputusan sempurna tanpa tenggat", "Bicarakan perbedaan pendapat secara langsung: diam tidak menyelesaikan apa pun"]
+            "C": ["Tentukan sejak awal tingkat kualitas yang dianggap cukup, lalu berhentilah di situ", "Batasi waktu analisis, karena keputusan yang tepat waktu lebih baik daripada keputusan sempurna tanpa tenggat", "Bicarakan perbedaan pendapat secara langsung, karena diam tidak menyelesaikan apa pun"]
           }
         }
       }
@@ -928,8 +928,8 @@
     "intro.start": "Mulai tes",
     "intro.resume": "Lanjutkan tes sebelumnya ({n} dari 24 soal sudah diisi)",
     "intro.showLast": "Buka hasil saya sebelumnya, tertanggal {date}",
-    "intro.nameRequired": "Isi nama Anda",
-    "intro.emailRequired": "Isi alamat email yang valid",
+    "intro.nameRequired": "Mohon isi nama Anda",
+    "intro.emailRequired": "Mohon isi alamat email yang valid",
     "intro.pdfNote": "Versi kertas untuk dicetak: {link}.",
 
     "test.step": "Soal {n} dari 24",
@@ -1101,7 +1101,7 @@
     "contact.sent": "Pesan terkirim. Balasan akan dikirim ke {email}.",
     "contact.sendFailed": "Pesan tidak dapat dikirim ({error}). Coba lagi atau hubungi kami langsung: {contact}.",
     "contact.tooMany": "Beberapa pesan sudah dikirim dari alamat ini. Coba lagi nanti atau hubungi kami langsung: {contact}.",
-    "contact.messageRequired": "Tulis pesan Anda",
+    "contact.messageRequired": "Mohon tulis pesan Anda",
     "contact.direct": "Atau hubungi kami langsung: {email}",
     "contact.privacyNote": "Nama, email, pesan, dan file akan dikirim melalui email ke alamat {email} dan hanya digunakan untuk membalas Anda.",
     "contact.mailtoNote": "Layanan pengiriman belum terhubung: tombol “Kirim” akan membuka aplikasi email Anda dengan pesan yang sudah terisi, sedangkan file lampiran perlu Anda tambahkan ke email secara manual.",

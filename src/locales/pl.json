@@ -3,7 +3,7 @@
   "dir": "ltr",
   "name": "Polski",
   "dateLocale": "pl-PL",
-  "title": "Darmowy test DISC online — typ osobowości w 10 minut",
+  "title": "Darmowy test osobowości DISC online – wynik w 10 minut",
   "description": "Darmowy test DISC po polsku: 24 pytania, 10 minut, bez rejestracji. Poznaj swój styl wiodący, mocne strony i obszary rozwoju. Wynik od razu i na e-mail.",
   "brand": "Test DISC",
   "keys": { "D": "Dominacja", "I": "Wpływ", "S": "Stałość", "C": "Sumienność" },
@@ -28,17 +28,17 @@
     { "S": "Unikam konfliktów", "I": "Łatwo wyrażam uczucia", "C": "Ważę każde słowo", "D": "Mówię wprost, co myślę" },
     { "D": "O silnej woli", "I": "Entuzjastyczny/a", "S": "Skromny/a", "C": "Drobiazgowy/a" },
     { "I": "Zarażam energią", "C": "Pilnuję jakości", "D": "Biorę odpowiedzialność na siebie", "S": "Pomagam zespołowi" },
-    { "C": "Racjonalny/a", "S": "Konsekwentny/a", "I": "Spontaniczny/a", "D": "Odważny/a" },
+    { "C": "Racjonalny/a", "S": "Stateczny/a", "I": "Spontaniczny/a", "D": "Odważny/a" },
     { "S": "Stawiam na stabilność", "D": "Stawiam na wyniki", "C": "Stawiam na jakość", "I": "Stawiam na kontakt z ludźmi" },
-    { "D": "Niecierpliwy/a", "C": "Zbyt krytyczny/a", "S": "Nieskory/a do zmian", "I": "Impulsywny/a" },
+    { "D": "Niecierpliwy/a", "C": "Zbyt krytyczny/a", "S": "Niechętny/a zmianom", "I": "Impulsywny/a" },
     { "I": "Ufam ludziom", "S": "Cenię lojalność", "D": "Podejmuję ryzyko", "C": "Przestrzegam standardów" },
     { "C": "Powściągliwy/a", "I": "Charyzmatyczny/a", "S": "Łagodny/a", "D": "Przebojowy/a" },
-    { "S": "Nie spieszę się z wnioskami", "C": "Doprecyzowuję wszystkie warunki", "D": "Szybko przechodzę do rzeczy", "I": "Łatwo znajduję wspólny język" },
+    { "S": "Nie spieszę się z wnioskami", "C": "Z góry ustalam wszystkie warunki", "D": "Szybko przechodzę do rzeczy", "I": "Łatwo znajduję wspólny język" },
     { "D": "Pewny/a siebie", "S": "Taktowny/a", "I": "Elokwentny/a", "C": "Zorganizowany/a" },
     { "I": "Lubię występować publicznie", "D": "Lubię przewodzić", "C": "Lubię analizować", "S": "Lubię pomagać" },
     { "C": "Skrupulatny/a", "S": "Troskliwy/a", "I": "Dusza towarzystwa", "D": "Zdeterminowany/a" },
     { "S": "Przyjmuję rzeczy takimi, jakie są", "I": "Łatwo zapalam się do nowych pomysłów", "D": "Bronię swojego zdania", "C": "Wymagam precyzji" },
-    { "D": "Autorytatywny/a", "C": "Logiczny/a", "I": "Żywiołowy/a", "S": "Stabilny/a" }
+    { "D": "Władczy/a", "C": "Logiczny/a", "I": "Żywiołowy/a", "S": "Stabilny/a" }
   ],
   "styles": {
     "D": {
@@ -47,7 +47,7 @@
       "growth": ["Niecierpliwość wobec osób, które pracują wolniej lub ostrożniej", "Skłonność do forsowania decyzji bez wysłuchania alternatyw", "Ostry ton w rozmowie, który inni odbierają jako presję"],
       "motivation": ["Uprawnienia decyzyjne i wpływ na bieg spraw", "Trudne zadania i wyzwania", "Swoboda działania, bez mikrozarządzania", "Mierzalne wyniki i zwycięstwa"],
       "stress": "Pod presją działasz ostrzej i masz mniej cierpliwości do innych: przerywasz, bierzesz wszystko na siebie, omijasz zasady, żeby było szybciej. Pomagają jasno określone uprawnienia i możliwość samodzielnego działania.",
-      "communication": ["Mówić krótko i na temat: wynik, terminy, warianty", "Nie przeciągać wstępu i nie owijać w bawełnę", "Dawać wybór zamiast gotowego rozwiązania: ważna jest możliwość samodzielnego decydowania", "Argumentować faktami, a nie emocjami"],
+      "communication": ["Mówić krótko i na temat: wynik, terminy, warianty", "Nie przeciągać wstępu i nie owijać w bawełnę", "Dawać wybór zamiast gotowego rozwiązania, bo liczy się możliwość samodzielnej decyzji", "Argumentować faktami, a nie emocjami"],
       "environment": "Dynamiczne środowisko, które daje dużą samodzielność, jasne cele i bezpośrednie przełożenie wysiłku na wynik. Rutyna i ścisła kontrola demotywują."
     },
     "I": {
@@ -56,7 +56,7 @@
       "growth": ["Składane pod wpływem emocji obietnice, które potem trudno spełnić", "Zbyt mała dbałość o szczegóły i terminy", "Skłonność, by więcej mówić niż słuchać"],
       "motivation": ["Uznanie i aprobata", "Kontakt z ludźmi i praca w zespole", "Swoboda wyrażania siebie", "Nowości i różnorodność zadań"],
       "stress": "Pod presją łatwo się rozpraszasz i działasz impulsywnie, unikasz nieprzyjemnych rozmów i zdarza ci się zbyt optymistycznie oceniać sytuację. Pomagają otwarta rozmowa i wsparcie współpracowników.",
-      "communication": ["Zaczynać od osobistego kontaktu, a nie od agendy", "Dawać możliwość wypowiedzenia się i przedyskutowania pomysłów", "Doceniać wkład publicznie", "Spisywać ustalenia: to pomaga obu stronom"],
+      "communication": ["Zaczynać od osobistego kontaktu, a nie od agendy", "Dawać możliwość wypowiedzenia się i przedyskutowania pomysłów", "Doceniać wkład publicznie", "Spisywać ustalenia, bo to pomaga obu stronom"],
       "environment": "Otwarte, przyjazne środowisko z wieloma kontaktami, uznaniem i swobodą, bez sztywnych procedur. Izolacja i monotonia odbierają energię."
     },
     "S": {
@@ -88,29 +88,29 @@
         "D": "Z drugim D zawczasu rozdzielcie obszary odpowiedzialności i spierajcie się o kryteria, a nie o to, kto tu rządzi.",
         "I": "Poświęć dwie minuty człowiekowi, zanim przejdziesz do sprawy, i głośno doceniaj wkład.",
         "S": "Zwolnij tempo, uprzedzaj o zmianach i czekaj na odpowiedź na pytanie, nie wypełniając ciszy.",
-        "C": "Popieraj decyzje faktami i dawaj czas na sprawdzenie: dla C to nie gra na zwłokę, tylko praca."
+        "C": "Popieraj decyzje faktami i dawaj czas na sprawdzenie, bo dla C to nie gra na zwłokę, tylko praca."
       }
     },
     "I": {
       "name": "Inspirator",
       "summary": "Działasz poprzez ludzi: łatwo nawiązujesz znajomości, zarażasz entuzjazmem, przekonujesz słowem i nastrojem. Ważne są dla ciebie uznanie i żywy kontakt z innymi, a formalności i rutyna szybko cię męczą.",
       "careers": ["Sprzedaż i rozwój biznesu", "Marketing, PR, współpraca z mediami", "Prowadzący wydarzenia, trener, prelegent", "HR: rekrutacja i onboarding", "Współpraca z klientami i partnerami"],
-      "team": "Tworzy nastrój i więzi: poznaje ludzi ze sobą, rozprasza zniechęcenie, najszybciej zgłasza pomysły i najchętniej opowiada o nich na zewnątrz. Z taką osobą zespół jest żywszy, a prezentacje – bardziej przekonujące. Przydaje się jej ktoś, kto pilnuje terminów i szczegółów, inaczej entuzjazm rozmija się z faktami.",
+      "team": "Buduje atmosferę i więzi: zapoznaje ludzi ze sobą, rozprasza zniechęcenie, najszybciej zgłasza pomysły i najchętniej opowiada o nich na zewnątrz. Z taką osobą zespół jest żywszy, a prezentacje – bardziej przekonujące. Przydaje się jej ktoś, kto pilnuje terminów i szczegółów, inaczej entuzjazm rozmija się z faktami.",
       "with": {
         "D": "Mów krótko i rzeczowo, zaczynaj od wyniku, a emocje zostaw na później.",
         "I": "Umówcie się, kto notuje, i kończcie rozmowę listą zadań z terminami.",
-        "S": "Nie zmieniaj planów w biegu i pytaj o zdanie wprost: S rzadko wyraża je z własnej inicjatywy.",
+        "S": "Nie zmieniaj planów w biegu i pytaj o zdanie wprost, bo S rzadko wyraża je z własnej inicjatywy.",
         "C": "Przygotuj fakty, daj czas do namysłu i nie bierz sprawdzania szczegółów za odmowę."
       }
     },
     "S": {
       "name": "Ostoja",
       "summary": "Wnosisz stabilność: dotrzymujesz słowa, doprowadzasz sprawy do końca, wspierasz ludzi i łagodzisz konflikty. Ważne są dla ciebie przewidywalność, zaufanie i czas na oswojenie się ze zmianami.",
-      "careers": ["Opieka nad klientem, wsparcie", "Koordynator, administrator projektów", "Mentor, nauczyciel", "Medycyna, praca socjalna, opieka", "Role operacyjne i usługowe o stałych procesach"],
+      "careers": ["Opieka nad klientem, wsparcie", "Koordynator projektów, asystent projektu", "Mentor, nauczyciel", "Medycyna, praca socjalna, opieka", "Role operacyjne i usługowe o stałych procesach"],
       "team": "Osoba, na której można polegać: doprowadza sprawy do końca, pamięta o ustaleniach, pomaga nowym osobom w zespole i łagodzi konflikty. Często to ona spaja zespół, choć otoczenie tego nie zauważa. Grozi jej brak uznania i przeciążenie cudzymi zadaniami, bo nie umie odmawiać.",
       "with": {
         "D": "O sprzeciwie mów od razu i krótko, proś o jasne priorytety, zamiast się domyślać.",
-        "I": "Stawiaj granice na głos i proś o plan: sam pomysł to dla ciebie za mało.",
+        "I": "Jasno stawiaj granice i proś o plan: sam pomysł to dla ciebie za mało.",
         "S": "Wyznaczajcie sobie nawzajem terminy i na zmianę bierzcie na siebie rolę osoby, która decyduje.",
         "C": "Przyjmuj uwagi jako troskę o jakość i proponuj zmiany małymi krokami."
       }
@@ -123,41 +123,41 @@
       "with": {
         "D": "Proponuj wariant „wystarczająco dobrze na teraz” i informuj o ryzykach krótko, wraz ze skutkami.",
         "I": "Zaczynaj od docenienia pomysłu i wyjaśniaj wnioski prostymi słowami.",
-        "S": "Łagodź krytykę i głośno doceniaj wkład: dla S atmosfera jest częścią wyniku.",
+        "S": "Łagodź krytykę i głośno doceniaj wkład, bo dla S atmosfera jest częścią wyniku.",
         "C": "Ustalcie zawczasu wystarczający poziom jakości i ograniczcie czas na analizę."
       }
     },
     "DI": {
       "name": "Pionier",
-      "summary": "Przebojowość i urok osobisty: szybko prowadzisz do celu i umiesz porwać innych za sobą. Przekonujesz impetem i entuzjazmem, decyzje podejmujesz w biegu, za to często brakuje ci cierpliwości do szczegółów i ostrożności.",
-      "careers": ["Założyciel, szef start-upu", "Dyrektor sprzedaży", "Wprowadzanie nowych produktów i ekspansja na nowe rynki", "Lider publiczny, mówca", "Negocjator handlowy"],
+      "summary": "Masz w sobie przebojowość i urok osobisty: szybko prowadzisz do celu i umiesz porwać innych za sobą. Przekonujesz impetem i entuzjazmem, decyzje podejmujesz w biegu, za to często brakuje ci cierpliwości do szczegółów i ostrożności.",
+      "careers": ["Założyciel, szef start-upu", "Dyrektor sprzedaży", "Wprowadzanie nowych produktów i ekspansja na nowe rynki", "Lider opinii, mówca", "Negocjator handlowy"],
       "team": "Uruchamia projekty: stawia ambitny cel, znajduje sojuszników i prowadzi ich za sobą. Nie do zastąpienia na starcie projektu i w negocjacjach, w których potrzeba jednocześnie impetu i uroku osobistego. Na długim dystansie potrzebuje w zespole osób o stylach S i C, które doprowadzą sprawy do końca i sprawdzą szczegóły.",
       "with": {
         "D": "Podzielcie strefy wpływów i nie rywalizujcie o uwagę: dwójce liderów potrzebne są osobne fronty.",
         "I": "Korzystaj ze wspólnego entuzjazmu, ale kończ rozmowę listą zadań z osobami odpowiedzialnymi i terminami.",
         "S": "Zmniejsz nacisk, uprzedzaj o zmianach i nie bierz milczenia za zgodę.",
-        "C": "Daj fakty i czas: C nie hamuje, tylko zabezpiecza twoje tempo przed błędami."
+        "C": "Daj fakty i czas – C nie hamuje, tylko zabezpiecza twoje tempo przed błędami."
       }
     },
     "DC": {
       "name": "Strateg",
-      "summary": "Wynik dzięki jakości: dużo wymagasz od siebie i innych, myślisz systemowo i nie podejmujesz decyzji bez argumentów. Dobrze radzisz sobie ze złożonymi zadaniami, ale możesz sprawiać wrażenie osoby chłodnej i zbyt krytycznej.",
+      "summary": "Osiągasz wyniki dzięki jakości: dużo wymagasz od siebie i innych, myślisz systemowo i nie podejmujesz decyzji bez argumentów. Dobrze radzisz sobie ze złożonymi zadaniami, ale możesz sprawiać wrażenie osoby chłodnej i zbyt krytycznej.",
       "careers": ["Kierownik złożonych projektów", "Dyrektor ds. rozwoju, strateg", "Szef zespołu inżynierskiego lub analitycznego", "Konsultant ds. zarządzania", "Dyrektor finansowy"],
-      "team": "Łączy impet z jakością: wysoko zawiesza poprzeczkę i ją pokonuje, myśli systemowo, dostrzega ryzyka wcześniej niż inni. Z taką osobą zespół jest zdyscyplinowany i skuteczny, ale może odczuwać chłód i ciągłe ocenianie. Warto, by częściej doceniała wkład ludzi i wyjaśniała decyzje, a nie tylko wymagała.",
+      "team": "Łączy impet z jakością: wysoko zawiesza poprzeczkę i ją przeskakuje, myśli systemowo, dostrzega ryzyka wcześniej niż inni. Z taką osobą zespół jest zdyscyplinowany i skuteczny, ale może odczuwać chłód i ciągłe ocenianie. Warto, by częściej doceniała wkład ludzi i wyjaśniała decyzje, a nie tylko wymagała.",
       "with": {
         "D": "Spierajcie się o fakty i kryteria; ustalcie, do kogo należy ostatnie słowo w spornych obszarach.",
         "I": "Wysłuchaj pomysłów do końca, zanim zaczniesz je rozbierać na części, i chwal publicznie.",
-        "S": "Wyjaśniaj, po co są zmiany, i dziękuj za niezawodność: S nie upomni się o to z własnej inicjatywy.",
+        "S": "Wyjaśniaj, po co są zmiany, i dziękuj za niezawodność, bo S nie upomni się o to z własnej inicjatywy.",
         "C": "Ustal z C, gdzie liczy się szybkość, a gdzie dokładność, i nie naciskaj na terminy tam, gdzie chodzi o jakość."
       }
     },
     "DS": {
       "name": "Praktyk",
-      "summary": "Determinacja i niezawodność: wytrwale zmierzasz do celu, ale robisz to bez zbędnego szumu i doprowadzasz sprawy do końca. Cenisz jednocześnie samodzielność i stabilność, a to rzadkie połączenie.",
+      "summary": "Determinacja idzie u ciebie w parze z niezawodnością: wytrwale zmierzasz do celu, ale robisz to bez zbędnego szumu i doprowadzasz sprawy do końca. Cenisz jednocześnie samodzielność i stabilność, a to rzadkie połączenie.",
       "careers": ["Kierownik produkcji lub działu operacyjnego", "Kierownik projektów wdrożeniowych", "Kierownik działu serwisu", "Przedsiębiorca w stabilnej branży", "Menedżer średniego szczebla w dużej firmie"],
       "team": "Ciągnie pracę do przodu: bierze zadanie i doprowadza je do wyniku bez zbędnego szumu, nie porzuca w pół drogi, dotrzymuje słowa. Rzadkie połączenie samodzielności i niezawodności sprawia, że przełożony ma w takiej osobie oparcie. Z boku może wydawać się uparta i zamknięta; warto, by częściej mówiła o swoich planach i wysłuchiwała innych propozycji.",
       "with": {
-        "D": "Ustal z D cel i termin, a wybór drogi zostaw sobie: mikrozarządzanie cię demotywuje.",
+        "D": "Ustal z D cel i termin, a wybór drogi zostaw sobie, bo mikrozarządzanie cię demotywuje.",
         "I": "Nie zbywaj pomysłów jako gadaniny, ale proś o konkretny plan.",
         "S": "Bierz decyzję na siebie, ale ją wyjaśniaj i dawaj czas na oswojenie się z nią.",
         "C": "Doceniaj wartość sprawdzania i zawczasu uzgadniaj kryteria ukończenia pracy."
@@ -165,33 +165,33 @@
     },
     "ID": {
       "name": "Motywator",
-      "summary": "Energia i siła przebicia: zarażasz ludzi pomysłami i nie boisz się przejmować inicjatywy. Z łatwością „sprzedajesz” pomysły i cele, ale łatwo ci przecenić własne siły i nie docenić szczegółów.",
+      "summary": "Tryskasz energią i masz siłę przebicia: zarażasz ludzi pomysłami i nie boisz się przejmować inicjatywy. Z łatwością „sprzedajesz” pomysły i cele, ale łatwo ci przecenić własne siły i nie docenić szczegółów.",
       "careers": ["Sprzedaż i negocjacje na wysokim szczeblu", "Szef zespołu sprzedaży lub marketingu", "Organizator wydarzeń i społeczności", "Trener, mówca motywacyjny", "Rozwój partnerstw"],
       "team": "Dodaje energii i prowadzi: zaraża pomysłami, poprawia nastrój, nie boi się inicjatywy ani publicznych wystąpień. Sprawdza się tam, gdzie trzeba przekonać i zainspirować wiele osób naraz. Może przecenić siły i obiecać więcej, niż to możliwe, dlatego potrzebuje u boku kogoś, kto odpowiada za realia: terminy, zasoby, szczegóły.",
       "with": {
         "D": "Mów krótko, zaczynając od wyniku; impet D to nie wrogość, tylko szybkość.",
         "I": "Kończ spotkanie pisemnymi ustaleniami, inaczej entuzjazm rozminie się z działaniem.",
         "S": "Uprzedzaj o zmianach i nie decyduj za S: pytaj o zdanie wprost.",
-        "C": "Przygotuj liczby i daj czas na odpowiedź: milczenie C to namysł, a nie odmowa."
+        "C": "Przygotuj liczby i daj czas na odpowiedź – milczenie C to namysł, a nie odmowa."
       }
     },
     "IS": {
       "name": "Mentor",
-      "summary": "Ciepło i troska: łatwo zjednujesz sobie ludzi, umiesz ich wesprzeć i zintegrować. Ważne są dla ciebie relacje i atmosfera, a konflikty i twarde wymagania przychodzą ci z trudem.",
+      "summary": "Otaczasz ludzi ciepłem i troską: łatwo ich sobie zjednujesz, umiesz ich wesprzeć i zintegrować. Ważne są dla ciebie relacje i atmosfera, a konflikty i twarde wymagania przychodzą ci z trudem.",
       "careers": ["Mentor, coach, nauczyciel", "HR business partner, onboarding i szkolenia", "Opieka nad kluczowymi klientami", "Lider zespołu obsługi lub zgranego zespołu", "Mediator, facylitator"],
       "team": "Osoba, do której przychodzi się porozmawiać: słucha, wspiera, łączy ludzi i dba o atmosferę. Z nią zespół jest życzliwszy i stabilniejszy. Trudno jej przychodzą twarde decyzje i nieprzyjemne rozmowy; warto, by pamiętała, że szczera informacja zwrotna to też troska.",
       "with": {
         "D": "O sprawach mów krótko i nie obrażaj się o bezpośredniość; o sprzeciwie – od razu.",
         "I": "Wspieraj pomysły, ale proś o plan i terminy, inaczej wspólnie dacie się ponieść.",
-        "S": "Nazywajcie problemy na głos i wyznaczajcie sobie nawzajem terminy: bez tego sprawy stoją w miejscu.",
+        "S": "Nazywajcie problemy na głos i wyznaczajcie sobie nawzajem terminy, bo bez tego sprawy stoją w miejscu.",
         "C": "Traktuj krytykę szczegółów jako troskę o jakość, a nie ocenę twojej osoby."
       }
     },
     "IC": {
       "name": "Prezenter",
-      "summary": "Elokwencja i dokładność: umiesz przekonująco przedstawić dobrze przemyślane stanowisko. Łączysz towarzyskość z dbałością o fakty, ale zdarza ci się wahać między spontanicznością a ostrożnością.",
+      "summary": "Łączysz elokwencję z dokładnością: umiesz przekonująco przedstawić dobrze przemyślane stanowisko. Łączysz towarzyskość z dbałością o fakty, ale zdarza ci się wahać między spontanicznością a ostrożnością.",
       "careers": ["Marketing i prezentacje produktowe", "Nauczyciel, wykładowca, autor materiałów szkoleniowych", "Konsultant ds. sprzedaży złożonych produktów", "Analityk prezentujący wyniki", "Komunikacja i public relations"],
-      "team": "Umie wyjaśniać: zamienia złożone w zrozumiałe i przekonująco przedstawia przemyślane stanowisko. Przydaje się na styku ekspertów i odbiorców. Waha się między „powiedzieć” a „sprawdzić”, przez co decyzje mogą się przeciągać; pomaga jasne ustalenie, kiedy liczy się szybkość, a kiedy dokładność.",
+      "team": "Umie wyjaśniać: przekłada skomplikowane sprawy na prosty język i przekonująco przedstawia przemyślane stanowisko. Przydaje się na styku ekspertów i odbiorców. Waha się między „powiedzieć” a „sprawdzić”, przez co decyzje mogą się przeciągać; pomaga jasne ustalenie, kiedy liczy się szybkość, a kiedy dokładność.",
       "with": {
         "D": "Zaczynaj od wniosku; szczegóły i uzasadnienie miej w pogotowiu, ale nie od nich zaczynaj.",
         "I": "Ciesz się wspólnym językiem, ale zapisuj, kto co robi i na kiedy.",
@@ -201,11 +201,11 @@
     },
     "SI": {
       "name": "Dyplomata",
-      "summary": "Spokój i życzliwość: tworzysz atmosferę zaufania, łagodzisz napięcia i wspierasz zespół. Trudno ci mówić „nie” i bronić niepopularnej decyzji.",
+      "summary": "Wnosisz spokój i życzliwość: tworzysz atmosferę zaufania, łagodzisz napięcia i wspierasz zespół. Trudno ci mówić „nie” i bronić niepopularnej decyzji.",
       "careers": ["Współpraca z klientami i partnerami", "Koordynator zespołu, office manager", "HR: rekrutacja, onboarding, komunikacja wewnętrzna", "Nauczyciel, wychowawca, praca socjalna", "Obsługa projektów z wieloma uczestnikami"],
       "team": "Buduje zaufanie: ze spokojem i życzliwością poświęca uwagę każdemu, łagodzi napięcia i pomaga dojść do porozumienia. Z taką osobą w zespole jest mniej konfliktów. Trudno jej mówić „nie” i bronić niepopularnej decyzji; warto, by uczyła się wyrażać sprzeciw, zanim się nagromadzi.",
       "with": {
-        "D": "O sprzeciwie mów od razu i krótko: D bardziej szanuje bezpośredniość niż uległość.",
+        "D": "O sprzeciwie mów od razu i krótko, bo D bardziej szanuje bezpośredniość niż uległość.",
         "I": "Stawiaj granice i proś o konkrety: sam pomysł to za mało.",
         "S": "Na zmianę przejmujcie inicjatywę i nie odkładajcie trudnych rozmów.",
         "C": "Proś o wyjaśnienie logiki zasady i proponuj zmiany małymi krokami."
@@ -213,7 +213,7 @@
     },
     "SC": {
       "name": "Specjalista",
-      "summary": "Niezawodność i staranność: pracujesz metodycznie, przestrzegasz zasad i doprowadzasz sprawy do końca bez pośpiechu. Cenisz stabilność i jasne oczekiwania, a gwałtowne zmiany i presję znosisz z trudem.",
+      "summary": "Stawiasz na niezawodność i staranność: pracujesz metodycznie, przestrzegasz zasad i doprowadzasz sprawy do końca bez pośpiechu. Cenisz stabilność i jasne oczekiwania, a gwałtowne zmiany i presję znosisz z trudem.",
       "careers": ["Księgowość, obieg dokumentów, administracja biurowa", "Kontrola jakości, standaryzacja", "Wsparcie techniczne i serwis", "Laboratorium, badania według ustalonej metodyki", "Administrowanie systemami i procesami"],
       "team": "Stoi na straży porządku: pracuje metodycznie, przestrzega zasad, doprowadza sprawy do końca, pamięta, jak coś zrobiono poprzednim razem. To na takiej osobie opierają się procesy. Gwałtowne zmiany i presję znosi z trudem; zespół powinien włączać ją w zmiany z wyprzedzeniem, a ona sama – mówić o przeciążeniu, zamiast znosić je w milczeniu.",
       "with": {
@@ -225,8 +225,8 @@
     },
     "SD": {
       "name": "Realizator",
-      "summary": "Wytrwałość i cierpliwość: spokojnie, ale stanowczo prowadzisz sprawy do wyniku, nie tracąc czasu na zbędne dyskusje. Na długim dystansie można na tobie polegać, choć z boku może to wyglądać na upór.",
-      "careers": ["Kierownik wydziału, zmiany, produkcji", "Kierownik projektów o długim cyklu", "Logistyka, zaopatrzenie, eksploatacja", "Zawody rzemieślnicze i inżynierskie", "Właściciel małej, stabilnej firmy"],
+      "summary": "Cechują cię wytrwałość i cierpliwość: spokojnie, ale stanowczo prowadzisz sprawy do wyniku, nie tracąc czasu na zbędne dyskusje. Na długim dystansie można na tobie polegać, choć z boku może to wyglądać na upór.",
+      "careers": ["Kierownik wydziału, zmiany, produkcji", "Kierownik projektów o długim cyklu", "Logistyka, zaopatrzenie, utrzymanie ruchu", "Zawody rzemieślnicze i inżynierskie", "Właściciel małej, stabilnej firmy"],
       "team": "Doprowadza do wyniku spokojnie i stanowczo: bez pośpiechu, bez zbędnych dyskusji, ale i bez wycofywania się. Taka osoba sprawdza się na długim dystansie i nie boi się odpowiedzialności. Z boku może wydawać się uparta; warto, by wyjaśniała swoje decyzje i dawała współpracownikom możliwość wpływu na nie.",
       "with": {
         "D": "Ustal z D cel i termin; sposób wybierz po swojemu i nie znoś mikrozarządzania w milczeniu.",
@@ -237,19 +237,19 @@
     },
     "CD": {
       "name": "Perfekcjonista",
-      "summary": "Standardy i siła woli: wymagasz dokładności od siebie i innych, szybko dostrzegasz błędy i nie boisz się ich wskazać. Dobrze radzisz sobie ze złożonymi zadaniami eksperckimi, ale zdarza ci się przesadzać z surowością i zamykać się w sobie.",
+      "summary": "Masz wysokie standardy i silną wolę: wymagasz dokładności od siebie i innych, szybko dostrzegasz błędy i nie boisz się ich wskazać. Dobrze radzisz sobie ze złożonymi zadaniami eksperckimi, ale zdarza ci się przesadzać z surowością i zamykać się w sobie.",
       "careers": ["Audyt, kontrola, inspekcja", "Architekt systemów, główny inżynier", "Praca naukowa, ekspertyzy", "Analiza finansowa, zarządzanie ryzykiem", "Szef działu eksperckiego"],
       "team": "Gwarancja jakości: dostrzega błędy wcześniej niż inni, wymaga dokładności i nie boi się o tym mówić. Z taką osobą zespół pracuje lepiej, ale może czuć się stale kontrolowany. Warto, by zaczynała od tego, co zrobiono dobrze, i wyjaśniała kryteria z góry, a nie po fakcie.",
       "with": {
         "D": "O ryzykach informuj krótko, z oceną skutków; proponuj wariant „na teraz wystarczy”.",
         "I": "Zaczynaj od docenienia pomysłu; krytykę podawaj konkretnie i bez ostrego tonu.",
-        "S": "Łagodź uwagi i głośno doceniaj wkład: chłód rani S mocniej, niż się wydaje.",
+        "S": "Łagodź uwagi i głośno doceniaj wkład, bo chłód rani S mocniej, niż się wydaje.",
         "C": "Ograniczcie czas na analizę i zawczasu ustalcie, gdzie się zatrzymać."
       }
     },
     "CS": {
       "name": "Ekspert",
-      "summary": "Dokładność i konsekwencja: pracujesz z namysłem, weryfikujesz szczegóły i opierasz się na sprawdzonych metodach. Można na tobie polegać w sprawach merytorycznych, za to niepewność i szybkie zmiany przychodzą ci z trudem.",
+      "summary": "Stawiasz na dokładność i konsekwencję: pracujesz z namysłem, weryfikujesz szczegóły i opierasz się na sprawdzonych metodach. Można na tobie polegać w sprawach merytorycznych, za to niepewność i szybkie zmiany przychodzą ci z trudem.",
       "careers": ["Inżynier, programista, tester", "Analityk danych, badacz", "Księgowy, audytor, specjalista ds. procedur", "Diagnostyka medyczna, laboratorium", "Technical writer, dokumentacja techniczna"],
       "team": "Osoba, na której wiedzy można polegać: pracuje z namysłem, weryfikuje szczegóły, opiera się na sprawdzonych metodach i nie zawodzi. Zespół ufa jej wnioskom. Niepewność i szybkie zmiany przychodzą jej z trudem; pomaga, gdy zmiany wyjaśnia się z wyprzedzeniem, a zamiast natychmiastowej reakcji oczekuje się od niej wyważonej odpowiedzi.",
       "with": {
@@ -261,13 +261,13 @@
     },
     "CI": {
       "name": "Doradca",
-      "summary": "Analiza i kontakt z ludźmi: umiesz zgłębić temat i przystępnie wyjaśnić go innym. To rzadkie połączenie: ostrożność we wnioskach i swoboda w rozmowie. Czasem przeszkadza wewnętrzny konflikt między „sprawdzić” a „podzielić się”.",
+      "summary": "Łączysz zmysł analityczny z łatwością nawiązywania kontaktu: umiesz zgłębić temat i przystępnie wyjaśnić go innym. To rzadkie połączenie: ostrożność we wnioskach i swoboda w rozmowie. Czasem przeszkadza wewnętrzny konflikt między „sprawdzić” a „podzielić się”.",
       "careers": ["Konsultant, analityk prezentujący wyniki", "Nauczyciel, metodyk", "Analityk produktowy, badacz UX", "Sprzedaż techniczna, presales", "Autor materiałów szkoleniowych i dokumentacji"],
       "team": "Tłumaczy z języka ekspertów na ludzki: zgłębia temat i umie wyjaśnić go tak, żeby inni zrozumieli. Najwięcej wnosi tam, gdzie trzeba zarazem zweryfikować i przekonać. Wewnętrzny konflikt między „sprawdzić” a „podzielić się” czasem spowalnia działanie; pomaga ustalenie, w jakich sytuacjach wystarczy wstępny wniosek.",
       "with": {
         "D": "Zaczynaj od wniosku; uzasadnienie miej w pogotowiu, ale nie zaczynaj od niego.",
         "I": "Wspólny język znajdziecie łatwo; pilnuj, żeby z rozmowy wyniknął plan.",
-        "S": "Nie zmieniaj wniosków w biegu i dawaj czas: S potrzebuje przewidywalności.",
+        "S": "Nie zmieniaj wniosków w biegu i dawaj czas, bo S potrzebuje przewidywalności.",
         "C": "Mów językiem danych, ale nie spieraj się o każdy szczegół."
       }
     }
@@ -391,7 +391,7 @@
     },
     "about": {
       "title": "O projekcie – darmowy test DISC w 14 językach",
-      "description": "Kto i po co stworzył ten darmowy test DISC online, na czym się on opiera, co potrafi i czego nie obiecuje. Projekt niezależny, z otwartym kodem.",
+      "description": "Kto i po co stworzył ten darmowy test DISC online, na czym się on opiera, co potrafi i czego nie obiecuje.",
       "h1": "O projekcie",
       "sections": [
         {
@@ -601,7 +601,7 @@
         },
         {
           "h": "Ograniczenia",
-          "p": ["Kolor to etykieta, a etykiety upraszczają. „Ty przecież jesteś czerwony” brzmi jak usprawiedliwienie szorstkości, a „zielona, czego od niej wymagać” – jak rezygnacja z oczekiwań. DISC opisuje typowe zachowanie, a nie charakter, wartości czy zdolności, i każdy styl można rozwijać. Korzystaj z kolorów po to, by lepiej się rozumieć, a nie po to, by szufladkować ludzi."]
+          "p": ["Kolor to etykieta, a etykiety upraszczają. „Ty przecież jesteś czerwony” brzmi jak usprawiedliwienie szorstkości, a „jest zielona, więc czego od niej chcieć” – jak rezygnacja z oczekiwań. DISC opisuje typowe zachowanie, a nie charakter, wartości czy zdolności, i każdy styl można rozwijać. Korzystaj z kolorów po to, by lepiej się rozumieć, a nie po to, by szufladkować ludzi."]
         }
       ]
     },
@@ -831,12 +831,12 @@
         },
         "IS": {
           "summary": "Ciepła i życzliwa para: styl I inspiruje, styl S wspiera. Dobra dla atmosfery i klientów, gorsza, gdy trzeba podjąć trudne decyzje.",
-          "text": "Style I oraz S łączy orientacja na ludzi: dla obu stylów ważne są relacje, atmosfera i uznanie. Różni je tempo: styl I to szybkość, spontaniczność i zamiłowanie do nowości, styl S – spokojne tempo i przywiązanie do ustalonego porządku. Razem tworzą najbardziej życzliwe środowisko w zespole, ale z trudem podejmują twarde decyzje, unikają nieprzyjemnych rozmów i potrafią przeciągać problem, byle nikogo nie urazić. Przy tym I potrafi namówić S do zmian, a S – powstrzymać I przed pochopnymi obietnicami.",
+          "text": "Style I oraz S łączy orientacja na ludzi: dla obu stylów ważne są relacje, atmosfera i uznanie. Różni je tempo: styl I to szybkość, spontaniczność i zamiłowanie do nowości, styl S – spokojne tempo i przywiązanie do ustalonego porządku. Razem tworzą najbardziej życzliwe środowisko w zespole, ale z trudem podejmują twarde decyzje, unikają nieprzyjemnych rozmów i potrafią odwlekać rozwiązanie problemu, byle nikogo nie urazić. Przy tym I potrafi namówić S do zmian, a S – powstrzymać I przed pochopnymi obietnicami.",
           "common": ["Uważność na ludzi i relacje", "Dążenie do zgody i dobrej atmosfery", "Gotowość do pomocy i wsparcia"],
           "friction": ["Zmiany planów w biegu, typowe dla I, wytrącają S z równowagi", "Oba style unikają konfliktu, więc problemy narastają", "Osoba o stylu I dużo mówi, a S ustępuje i przemilcza własne potrzeby"],
           "tips": {
             "I": ["Uprzedzaj S o zmianach z wyprzedzeniem i nie zmieniaj decyzji bez powodu", "Pytaj S o zdanie wprost: osoba o tym stylu sama go nie narzuci", "Doprowadzaj sprawy do końca: S ceni niezawodność wyżej niż pomysły"],
-            "S": ["Mów o swoich granicach na głos: osoba o stylu I sama się nie domyśli", "Wspieraj pomysły I, ale proś o plan i terminy", "Nie bój się szczerej informacji zwrotnej: osoba o stylu I zniesie ją lepiej, niż ci się wydaje"]
+            "S": ["Otwarcie mów o swoich granicach: osoba o stylu I sama się nie domyśli", "Wspieraj pomysły I, ale proś o plan i terminy", "Nie bój się szczerej informacji zwrotnej: osoba o stylu I zniesie ją lepiej, niż ci się wydaje"]
           }
         },
         "IC": {
@@ -981,11 +981,11 @@
 
     "email.subject": "Twój wynik testu DISC: {label}",
     "email.greeting": "Cześć, {name}!",
-    "email.intro": "Test DISC już za tobą. Twój profil:",
+    "email.intro": "Test DISC już za Tobą. Twój profil:",
     "email.open": "Otwórz pełny raport",
     "email.scores": "Nasilenie stylów",
     "email.linkNote": "Jeśli przycisk nie działa, skopiuj link do przeglądarki:",
-    "email.footer": "Ta wiadomość została wysłana automatycznie: ten adres podano podczas wypełniania testu. Pełny raport z opisem mocnych stron i obszarów rozwoju oraz ze wskazówkami jest dostępny pod linkiem powyżej.",
+    "email.footer": "Ta wiadomość została wysłana automatycznie, ponieważ ten adres podano podczas wypełniania testu. Pełny raport z opisem mocnych stron i obszarów rozwoju oraz ze wskazówkami jest dostępny pod linkiem powyżej.",
 
     "toast.copied": "Skopiowano",
     "toast.copyManual": "Zaznacz tekst i skopiuj go ręcznie (Ctrl+C / ⌘C)",

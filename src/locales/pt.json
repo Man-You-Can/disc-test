@@ -26,55 +26,55 @@
     { "I": "Gosto de conhecer gente nova", "S": "Gosto da minha rotina", "D": "Gosto de grandes desafios", "C": "Gosto de me aprofundar nos detalhes" },
     { "C": "Disciplinado(a)", "D": "Exigente", "I": "Comunicativo(a)", "S": "Amável" },
     { "S": "Evito conflitos", "I": "Expresso meus sentimentos com facilidade", "C": "Meço cada palavra", "D": "Falo o que penso, sem rodeios" },
-    { "D": "Determinado(a)", "I": "Entusiasta", "S": "Modesto(a)", "C": "Perfeccionista" },
+    { "D": "Determinado(a)", "I": "Entusiasta", "S": "Modesto(a)", "C": "Meticuloso(a)" },
     { "I": "Contagio as pessoas com minha energia", "C": "Zelo pela qualidade", "D": "Assumo a responsabilidade", "S": "Ajudo a equipe" },
     { "C": "Racional", "S": "Constante", "I": "Espontâneo(a)", "D": "Corajoso(a)" },
     { "S": "Foco na estabilidade", "D": "Foco em resultados", "C": "Foco na qualidade", "I": "Foco na comunicação" },
     { "D": "Impaciente", "C": "Crítico(a) demais", "S": "Lento(a) para aceitar mudanças", "I": "Impulsivo(a)" },
     { "I": "Confio nas pessoas", "S": "Sou leal", "D": "Corro riscos", "C": "Respeito as normas" },
-    { "C": "Reservado(a)", "I": "Carismático(a)", "S": "Gentil", "D": "Incisivo(a)" },
+    { "C": "Reservado(a)", "I": "Carismático(a)", "S": "Gentil", "D": "Assertivo(a)" },
     { "S": "Não tiro conclusões precipitadas", "C": "Confirmo todos os detalhes antes", "D": "Vou direto ao ponto", "I": "Tenho facilidade para me relacionar" },
     { "D": "Autoconfiante", "S": "Diplomático(a)", "I": "Eloquente", "C": "Organizado(a)" },
     { "I": "Gosto de falar em público", "D": "Gosto de liderar", "C": "Gosto de analisar", "S": "Gosto de ajudar" },
     { "C": "Minucioso(a)", "S": "Atencioso(a)", "I": "Extrovertido(a)", "D": "Focado(a) em objetivos" },
     { "S": "Aceito as coisas como são", "I": "Me empolgo facilmente com novidades", "D": "Defendo minha opinião", "C": "Insisto na precisão" },
-    { "D": "Firme", "C": "Lógico(a)", "I": "Animado(a)", "S": "Estável" }
+    { "D": "Líder nato(a)", "C": "Lógico(a)", "I": "Animado(a)", "S": "Estável" }
   ],
   "styles": {
     "D": {
-      "traits": ["Direto", "Decidido", "Focado em resultados", "Independente", "Exigente"],
+      "traits": ["Direto(a)", "Decidido(a)", "Focado(a) em resultados", "Independente", "Exigente"],
       "strengths": ["Você toma decisões com rapidez e assume a responsabilidade por elas", "Você não perde o rumo em uma crise e age quando os outros hesitam", "Você estabelece metas ambiciosas e as alcança", "Você fala de forma direta, sem meias-palavras"],
       "growth": ["Impaciência com quem trabalha mais devagar ou com mais cautela", "Tendência a impor a decisão sem ouvir alternativas", "Rispidez na comunicação, que os outros sentem como pressão"],
       "motivation": ["Autoridade e poder de influenciar o rumo das coisas", "Tarefas difíceis e desafios", "Liberdade, sem microgerenciamento", "Resultados mensuráveis e vitórias"],
       "stress": "Sob pressão, você endurece e perde a paciência: interrompe, chama tudo para si e passa por cima das regras para ganhar tempo. O que ajuda: autonomia clara e espaço para agir por conta própria.",
-      "communication": ["Seja breve e vá direto ao assunto: resultados, prazos, opções", "Não alongue a introdução nem fique fazendo rodeios", "Ofereça opções, não uma solução pronta: é importante poder decidir por conta própria", "Argumente com fatos, não com emoções"],
+      "communication": ["Mensagens curtas e diretas: resultados, prazos, opções", "Sem introduções longas nem rodeios", "Opções em vez de uma solução pronta: você quer decidir por conta própria", "Argumentos com fatos, não com emoções"],
       "environment": "Ambiente dinâmico, com muita autonomia, metas claras e ligação direta entre esforço e resultado. Rotina e controle rígido desmotivam."
     },
     "I": {
-      "traits": ["Sociável", "Otimista", "Expressivo", "Persuasivo", "Espontâneo"],
+      "traits": ["Sociável", "Otimista", "Expressivo(a)", "Persuasivo(a)", "Espontâneo(a)"],
       "strengths": ["Você cria vínculos com facilidade e conquista a simpatia das pessoas", "Você inspira e motiva a equipe", "Você gera ideias e enxerga oportunidades onde os outros veem problemas", "Você mantém o otimismo em situações difíceis"],
       "growth": ["Promessas feitas no calor da emoção que depois são difíceis de cumprir", "Pouca atenção a detalhes e prazos", "Tendência a falar mais do que ouvir"],
       "motivation": ["Reconhecimento e aprovação", "Convívio e trabalho em equipe", "Liberdade para se expressar", "Novidade e variedade de tarefas"],
       "stress": "Sob pressão, você perde o foco e age por impulso, evita conversas desagradáveis e pode enxergar a situação com otimismo demais. O que ajuda: conversar abertamente e contar com o apoio dos colegas.",
-      "communication": ["Comece pelo contato pessoal, não pela pauta", "Dê espaço para falar e discutir ideias", "Reconheça as contribuições publicamente", "Registre os acordos por escrito: isso ajuda os dois lados"],
+      "communication": ["Primeiro o contato pessoal, depois a pauta", "Espaço para falar e discutir ideias", "Reconhecimento público das suas contribuições", "Acordos registrados por escrito: isso ajuda os dois lados"],
       "environment": "Ambiente aberto e amigável, com muito contato, reconhecimento e liberdade em relação a normas rígidas. Isolamento e monotonia esgotam a energia."
     },
     "S": {
-      "traits": ["Paciente", "Confiável", "Calmo", "Atento às pessoas", "Constante"],
+      "traits": ["Paciente", "Confiável", "Calmo(a)", "Atento(a) às pessoas", "Constante"],
       "strengths": ["As pessoas podem contar com você no longo prazo", "Você sabe ouvir e apoiar os outros", "Você trabalha com paciência e método", "Você une a equipe e apazigua os conflitos"],
       "growth": ["Resistência a mudanças, mesmo às que trazem benefícios", "Dificuldade de dizer não e de defender a própria posição", "Guardar a discordância para si em nome da paz"],
       "motivation": ["Estabilidade e previsibilidade", "Gratidão sincera pela contribuição", "Expectativas e regras do jogo claras", "Trabalho em uma equipe unida"],
       "stress": "Sob pressão, você se fecha, cede demais e adia decisões. Mudanças repentinas e conflitos abertos são especialmente difíceis de suportar. O que ajuda: tempo para se adaptar e uma conversa tranquila.",
-      "communication": ["Avise sobre mudanças com antecedência e explique por que são necessárias", "Pergunte a opinião diretamente: dificilmente ela virá por conta própria", "Não pressione nem apresse a resposta", "Agradeça por contribuições específicas"],
+      "communication": ["Aviso prévio sobre mudanças e uma explicação de por que são necessárias", "Que perguntem sua opinião diretamente: você raramente a dá por iniciativa própria", "Nada de pressão, e tempo para responder com calma", "Agradecimento por contribuições específicas"],
       "environment": "Ambiente estável, com processos claros, boas relações e um ritmo razoável de mudanças. Caos, trocas constantes de contexto e competição agressiva desgastam."
     },
     "C": {
-      "traits": ["Preciso", "Analítico", "Cauteloso", "Sistemático", "Reservado"],
+      "traits": ["Preciso(a)", "Analítico(a)", "Cauteloso(a)", "Sistemático(a)", "Reservado(a)"],
       "strengths": ["Alta qualidade do trabalho e atenção aos detalhes", "Lógica e objetividade nas avaliações", "Capacidade de prever riscos e planejar", "Disciplina e respeito aos acordos"],
       "growth": ["Perfeccionismo e atrasos em busca do ideal", "Crítica excessiva a si e aos outros", "Mergulhar na análise em vez de agir"],
       "motivation": ["Padrões e critérios de qualidade claros", "Tempo para analisar e se preparar", "Reconhecimento como especialista", "Decisões lógicas e bem fundamentadas"],
       "stress": "Sob pressão, você se retrai, passa a criticar tudo e se perde nos detalhes. Ter de agir sem dados irrita. O que ajuda: critérios claros e tempo para conferir.",
-      "communication": ["Traga fatos, números e argumentos", "Dê tempo para pensar; não exija resposta na hora", "Respeite os procedimentos e os acordos", "Critique de forma específica e objetiva, sem emoção"],
+      "communication": ["Fatos, números e argumentos preparados com antecedência", "Tempo para pensar, em vez da cobrança de uma resposta imediata", "Respeito aos procedimentos e aos acordos", "Críticas específicas e objetivas, sem emoção"],
       "environment": "Ambiente estruturado, com padrões claros, acesso à informação e possibilidade de trabalhar com concentração. Incerteza, pressa e pressão emocional reduzem a eficiência."
     }
   },
@@ -99,7 +99,7 @@
       "with": {
         "D": "Fale de forma curta e objetiva, comece pelo resultado e deixe as emoções para depois.",
         "I": "Combine quem faz as anotações e termine a conversa com uma lista de tarefas com prazos.",
-        "S": "Não mude os planos no meio do caminho e pergunte a opinião diretamente: o S não vai impô-la por conta própria.",
+        "S": "Não mude os planos no meio do caminho e pergunte a opinião diretamente: o S raramente a dá por iniciativa própria.",
         "C": "Prepare os fatos, dê tempo para pensar e não tome a verificação dos detalhes como recusa."
       }
     },
@@ -117,8 +117,8 @@
     },
     "C": {
       "name": "Analista",
-      "summary": "Você se apoia em fatos e padrões: verifica, analisa, planeja e não gosta de decisões precipitadas. Para você, qualidade e ter razão importam mais do que rapidez e aparências.",
-      "careers": ["Analista, pesquisador", "Finanças, auditoria, contabilidade", "Engenheiro, desenvolvedor, testador", "Advogado, compliance, controle de qualidade", "Arquiteto de processos e sistemas"],
+      "summary": "Você se apoia em fatos e padrões: verifica, analisa, planeja e não gosta de decisões precipitadas. Para você, qualidade e fazer certo importam mais do que rapidez e aparências.",
+      "careers": ["Analista, pesquisador", "Finanças, auditoria, contabilidade", "Engenheiro, desenvolvedor, analista de testes", "Advogado, compliance, controle de qualidade", "Arquiteto de processos e sistemas"],
       "team": "Garante que o que foi feito funcione: confere, encontra os erros antes que os clientes os encontrem e se antecipa aos riscos. Com ele, a equipe é mais precisa, porém mais lenta. Vale a pena explicar aos colegas a lógica das suas exigências e, às vezes, aceitar o “bom o suficiente”.",
       "with": {
         "D": "Ofereça a opção “bom o suficiente agora” e comunique os riscos de forma curta, com as consequências.",
@@ -130,7 +130,7 @@
     "DI": {
       "name": "Pioneiro",
       "summary": "Garra e carisma: você avança rápido rumo ao objetivo e sabe fazer as pessoas embarcarem com você. Convence pela energia e pelo entusiasmo, decide na hora, mas nem sempre tem paciência para detalhes e cautela.",
-      "careers": ["Fundador, líder de startup", "Diretor de vendas", "Líder de lançamento de novos produtos e mercados", "Líder de opinião, palestrante", "Negociador comercial"],
+      "careers": ["Fundador, líder de startup", "Diretor de vendas", "Líder de lançamento de novos produtos e mercados", "Porta-voz, palestrante", "Negociador comercial"],
       "team": "É quem dá a largada: define uma meta ambiciosa, encontra aliados e lidera. Insubstituível no início de um projeto e em negociações que exigem garra e carisma ao mesmo tempo. No longo prazo, precisa de colegas com S e C, que levem o que foi começado até o fim e confiram os detalhes.",
       "with": {
         "D": "Dividam as áreas de influência e não compitam pela atenção: dois líderes precisam de frentes diferentes.",
@@ -178,13 +178,13 @@
     "IS": {
       "name": "Mentor",
       "summary": "Calor humano e envolvimento: você cativa as pessoas, sabe dar apoio e unir a equipe. Você valoriza as relações e o clima, e conflitos e exigências duras são difíceis para você.",
-      "careers": ["Mentor, coach, professor", "HR business partner, integração e treinamento", "Acompanhamento de clientes-chave", "Líder de equipe de atendimento ou de equipe coesa", "Mediador, facilitador"],
+      "careers": ["Mentor, coach, professor", "Business partner de RH (HRBP), integração e treinamento", "Acompanhamento de clientes-chave", "Líder de equipe de atendimento ou de equipe coesa", "Mediador, facilitador"],
       "team": "Aquele que as pessoas procuram para conversar: ouve, apoia, conecta as pessoas e mantém o clima. Com ele, a equipe é mais acolhedora e mais estável. Tem dificuldade com decisões duras e conversas desagradáveis; faz bem a ele lembrar que um feedback honesto também é cuidado.",
       "with": {
         "D": "Fale do trabalho de forma breve, sem se ofender com a franqueza, e manifeste o desacordo na hora.",
         "I": "Apoie as ideias, mas peça plano e prazos; senão, os dois se deixam levar pelo entusiasmo.",
         "S": "Nomeiem os problemas em voz alta e estabeleçam prazos um para o outro: sem isso, nada anda.",
-        "C": "Receba a crítica aos detalhes como cuidado com a qualidade, não com você."
+        "C": "Receba a crítica aos detalhes como cuidado com a qualidade, não como algo pessoal."
       }
     },
     "IC": {
@@ -250,12 +250,12 @@
     "CS": {
       "name": "Metódico",
       "summary": "Precisão e constância: você trabalha com atenção, confere os detalhes e se apoia em métodos comprovados. Especialista de confiança, para quem incerteza e mudanças rápidas são difíceis.",
-      "careers": ["Engenheiro, desenvolvedor, testador", "Analista de dados, pesquisador", "Contador, auditor, analista de normas e procedimentos", "Diagnóstico médico, laboratório", "Redator técnico, documentação"],
+      "careers": ["Engenheiro, desenvolvedor, analista de testes", "Analista de dados, pesquisador", "Contador, auditor, analista de normas e procedimentos", "Diagnóstico médico, laboratório", "Redator técnico, documentação"],
       "team": "Profissional confiável: trabalha com cuidado, confere os detalhes, se apoia em métodos comprovados e não decepciona. A equipe confia nas suas conclusões. Tem dificuldade com incerteza e mudanças rápidas; ajuda quando as mudanças são explicadas com antecedência e quando esperam dele não uma reação imediata, mas uma resposta ponderada.",
       "with": {
         "D": "Peça tempo para conferir, mas diga o prazo em que dará a resposta.",
         "I": "Explique as conclusões com palavras simples e não tome as emoções do I por leviandade.",
-        "S": "Discuta as mudanças em passos pequenos e não critique na frente de todos.",
+        "S": "Introduza as mudanças aos poucos e não critique na frente de todos.",
         "C": "Combinem com antecedência qual nível de detalhe é suficiente."
       }
     },
@@ -345,7 +345,7 @@
         },
         {
           "q": "O que significam as letras D, I, S, C?",
-          "a": "D é dominância (resultados e controle), I é influência (pessoas e entusiasmo), S é estabilidade (apoio e constância), C é conformidade (precisão e qualidade). Todas as pessoas têm os quatro estilos, mas em graus diferentes. Algumas plataformas brasileiras chamam os quatro perfis de Executor (D), Comunicador (I), Planejador (S) e Analista (C)."
+          "a": "D é dominância (resultados e controle), I é influência (pessoas e entusiasmo), S é estabilidade (apoio e constância), C é conformidade (precisão e qualidade). Todas as pessoas têm os quatro estilos, mas em graus diferentes. Algumas plataformas brasileiras chamam os quatro estilos de Executor (D), Comunicador (I), Planejador (S) e Analista (C); neste site, os nomes dos 16 perfis são outros (aqui, por exemplo, “Comunicador” é o perfil IC)."
         },
         {
           "q": "Qual é a precisão do resultado?",
@@ -422,7 +422,7 @@
       "sections": [
         {
           "h": "Quais dados usamos",
-          "p": ["Antes do teste você informa nome e e-mail. Durante o teste, suas respostas são salvas; ao final, o resultado, o idioma escolhido e uma marcação de que você viu o aviso de cookies. Tudo isso fica no armazenamento local do seu navegador. Ao concluir o teste, nome, e-mail, data do teste e resultado também são guardados na base de resultados do responsável pelo site."]
+          "p": ["Antes do teste você informa nome e e-mail. Durante o teste, suas respostas são salvas; ao final, o resultado, o idioma escolhido e um registro de que você já viu o aviso de cookies. Tudo isso fica no armazenamento local do seu navegador. Ao concluir o teste, nome, e-mail, data do teste e resultado também são guardados na base de resultados do responsável pelo site."]
         },
         {
           "h": "Para onde os dados são transmitidos",
@@ -572,7 +572,7 @@
         {
           "h": "Dois eixos em vez de quatro cores",
           "p": [
-            "As cores ficam mais fáceis de entender com dois eixos. O primeiro é o ritmo: vermelho e amarelo agem rápido e com firmeza; verde e azul, com calma e cautela. O segundo é o foco: vermelho e azul se concentram em tarefas e resultados; amarelo e verde, em pessoas e relacionamentos. Cada cor é o cruzamento de dois eixos, não uma “raça” separada de pessoas.",
+            "As cores ficam mais fáceis de entender com dois eixos. O primeiro é o ritmo: vermelho e amarelo agem rápido e com firmeza; verde e azul, com calma e cautela. O segundo é o foco: vermelho e azul se concentram em tarefas e resultados; amarelo e verde, em pessoas e relacionamentos. Cada cor é o cruzamento de dois eixos, não uma “categoria” separada de pessoas.",
             "Por isso, cores vizinhas se parecem, e as opostas são as que mais diferem: vermelho e verde (D e S), amarelo e azul (I e C). É entre elas que surgem com mais frequência os mal-entendidos na equipe, e são elas que melhor se complementam quando combinam regras."
           ]
         },
@@ -792,7 +792,7 @@
         },
         "DI": {
           "summary": "O par mais enérgico: o D define a meta e o ritmo, o I contagia as pessoas. Juntos, lançam projetos, mas tendem a subestimar detalhes e cautela.",
-          "text": "D e I compartilham o ritmo rápido: os dois decidem na hora, gostam de desafios e não suportam rotina. A diferença está no foco: o D pensa no resultado; o I, nas pessoas e na impressão que causa. É uma complementação feliz: o D dá direção e firmeza; o I, contatos, ânimo e a capacidade de vender a ideia. Os atritos surgem quando o D vê a conversa do I como perda de tempo, e o I acha o D frio e ríspido. Os dois devem lembrar que, por trás da energia deles, alguém precisa cuidar dos detalhes.",
+          "text": "D e I compartilham o ritmo rápido: os dois decidem na hora, gostam de desafios e não suportam rotina. A diferença está no foco: o D pensa no resultado; o I, nas pessoas e na impressão que causa. É uma complementação feliz: o D dá direção e firmeza; o I, contatos, ânimo e a capacidade de vender a ideia. Os atritos surgem quando o D vê a conversa do I como perda de tempo, e o I acha o D frio e ríspido. Os dois devem lembrar que, com tanta energia, alguém precisa cuidar dos detalhes.",
           "common": ["Ritmo rápido e disposição para agir sem longa preparação", "Otimismo e gosto por tarefas novas", "Aversão à rotina e ao microgerenciamento"],
           "friction": ["O D exige objetividade, o I se empolga com a conversa", "O I se ofende com a rispidez, o D se irrita com as emoções", "Os dois subestimam os prazos e deixam passar detalhes"],
           "tips": {
@@ -835,7 +835,7 @@
           "common": ["Atenção às pessoas e às relações", "Busca de consenso e de um bom clima", "Disposição para ajudar e apoiar"],
           "friction": ["O I muda os planos no meio do caminho, e isso tira o S do eixo", "Os dois evitam o conflito, e os problemas se acumulam", "O I fala muito; o S cede e cala sobre as próprias necessidades"],
           "tips": {
-            "I": ["Avise o S das mudanças com antecedência e não troque de decisão sem motivo", "Pergunte a opinião do S diretamente: ele não vai impô-la por conta própria", "Leve até o fim o que começou: o S valoriza a confiabilidade mais do que as ideias"],
+            "I": ["Avise o S das mudanças com antecedência e não troque de decisão sem motivo", "Pergunte a opinião do S diretamente: ele raramente a dá por iniciativa própria", "Leve até o fim o que começou: o S valoriza a confiabilidade mais do que as ideias"],
             "S": ["Fale dos seus limites em voz alta: o I não vai adivinhar", "Apoie as ideias do I, mas peça plano e prazos", "Não tenha medo de dar um feedback honesto: o I aguenta melhor do que você imagina"]
           }
         },
@@ -864,7 +864,7 @@
           "common": ["Cautela e decisões bem pensadas", "Respeito pela ordem e pelos acordos", "Aversão a pressa, caos e pressão"],
           "friction": ["O C coloca as regras acima das relações; o S, o contrário", "Os dois resistem às mudanças, e a equipe fica parada", "A crítica do C é sentida pelo S como frieza pessoal"],
           "tips": {
-            "S": ["Receba as observações do C como cuidado com a qualidade, não com você", "Peça ao C que explique a lógica da regra, em vez de discutir a regra em si", "Proponha as mudanças em passos pequenos: assim fica mais fácil para você e para o C"],
+            "S": ["Receba as observações do C como cuidado com a qualidade, não como algo pessoal", "Peça ao C que explique a lógica da regra, em vez de discutir a regra em si", "Proponha as mudanças em passos pequenos: assim fica mais fácil para você e para o C"],
             "C": ["Suavize a crítica: primeiro o que está bom, depois o que corrigir", "Lembre-se de que, para o S, o clima faz parte do resultado", "Mencione em voz alta a contribuição do S: ele não vai pedir reconhecimento por conta própria"]
           }
         },
@@ -1009,7 +1009,7 @@
     "admin.clear": "Limpar lista",
     "admin.linkNote": "O link para os participantes é o endereço desta página.",
     "admin.back": "← Voltar ao teste",
-    "admin.noCode": "Código não encontrado: ele começa com “{v}.”",
+    "admin.noCode": "Nenhum código encontrado. Os códigos começam com “{v}.”",
     "admin.added": "Adicionados: {n}",
     "admin.withErrors": ", com erro: {n}",
     "admin.broken": "Código corrompido",
@@ -1035,10 +1035,10 @@
     "nav.pdf": "Teste em PDF",
     "nav.materials": "Materiais sobre DISC",
 
-    "pages.styles.title": "Os 4 perfis comportamentais DISC: estilos D, I, S, C — traços, pontos fortes, motivação",
-    "pages.styles.description": "Os quatro perfis comportamentais DISC: dominância, influência, estabilidade e conformidade. Traços, pontos fortes, áreas de desenvolvimento, motivação e comportamento sob pressão.",
-    "pages.styles.h1": "Os quatro perfis comportamentais DISC",
-    "pages.styles.lead": "O DISC descreve o comportamento em quatro escalas. Todas as pessoas têm os quatro estilos, mas um ou dois são mais acentuados. Algumas plataformas brasileiras chamam os quatro perfis de Executor (D), Comunicador (I), Planejador (S) e Analista (C). A seguir: o que caracteriza cada estilo, o que o motiva e como se comunicar com ele.",
+    "pages.styles.title": "Os 4 estilos DISC (perfis comportamentais): D, I, S, C — traços, pontos fortes, motivação",
+    "pages.styles.description": "Os quatro estilos DISC (perfis comportamentais): dominância, influência, estabilidade e conformidade. Traços, pontos fortes, áreas de desenvolvimento, motivação e comportamento sob pressão.",
+    "pages.styles.h1": "Os quatro estilos DISC (perfis comportamentais)",
+    "pages.styles.lead": "O DISC descreve o comportamento em quatro escalas. Todas as pessoas têm os quatro estilos, mas um ou dois são mais acentuados. Algumas plataformas brasileiras chamam os quatro estilos de Executor (D), Comunicador (I), Planejador (S) e Analista (C); neste site, os nomes dos 16 perfis são outros (aqui, por exemplo, “Comunicador” é o perfil IC). A seguir: o que caracteriza cada estilo, o que o motiva e como se comunicar com ele.",
     "pages.profiles.title": "16 perfis comportamentais DISC — todos os tipos do teste com descrição",
     "pages.profiles.description": "Todos os 16 perfis do teste DISC: quatro estilos puros e doze combinações. Breve descrição de cada tipo e link para a página detalhada.",
     "pages.profiles.h1": "16 perfis e tipos comportamentais DISC",
@@ -1102,7 +1102,7 @@
     "consent.label": "Aviso de cookies",
     "consent.text": "Este site guarda seu progresso, o resultado e o idioma escolhido no armazenamento local do navegador, e um serviço de análise da web coleta estatísticas anônimas de visitas e uma gravação das ações na página para nos ajudar a melhorar o site. Seu nome, e-mail e resultado não são enviados ao serviço de análise.",
     "consent.more": "Saiba mais",
-    "consent.details": "No navegador ficam guardados: o nome e o e-mail que você informa antes do teste; suas respostas e o progresso de um teste não concluído; o último resultado; o idioma escolhido; uma marcação de que você viu este aviso. Esses dados permanecem no seu dispositivo e são apagados quando você limpa os dados do site. A hospedagem (GitHub Pages) recebe os dados técnicos habituais da requisição. Ao concluir o teste, o nome, o e-mail e as respostas são transmitidos ao serviço de envio de e-mails (Google Apps Script), que envia o resultado a você e guarda o nome, o e-mail, a data e o resultado na base de resultados do responsável pelo site (uma planilha do Google). O serviço de análise da web recebe o endereço da página sem o código do resultado, a origem da visita, o tipo de dispositivo e navegador e uma gravação anonimizada das ações na página (os campos de nome e e-mail, o link e o código do resultado ficam excluídos), e define os próprios cookies. Você pode bloqueá-lo nas configurações do navegador ou com um bloqueador de rastreadores. Não são usados rastreadores publicitários.",
+    "consent.details": "No navegador ficam guardados: o nome e o e-mail que você informa antes do teste; suas respostas e o progresso de um teste não concluído; o último resultado; o idioma escolhido; um registro de que você já viu este aviso. Esses dados permanecem no seu dispositivo e são apagados quando você limpa os dados do site. A hospedagem (GitHub Pages) recebe os dados técnicos habituais da requisição. Ao concluir o teste, o nome, o e-mail e as respostas são transmitidos ao serviço de envio de e-mails (Google Apps Script), que envia o resultado a você e guarda o nome, o e-mail, a data e o resultado na base de resultados do responsável pelo site (uma planilha do Google). O serviço de análise da web recebe o endereço da página sem o código do resultado, a origem da visita, o tipo de dispositivo e navegador e uma gravação anonimizada das ações na página (os campos de nome e e-mail, o link e o código do resultado ficam excluídos), e define os próprios cookies. Você pode bloqueá-lo nas configurações do navegador ou com um bloqueador de rastreadores. Não são usados rastreadores publicitários.",
     "consent.accept": "Aceitar",
     "consent.decline": "Só o essencial",
     "consent.ok": "Entendi",

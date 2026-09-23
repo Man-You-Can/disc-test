@@ -178,10 +178,10 @@ const lastmod = files => { if (files.some(f => dirty.has(f))) return today;
 // Организация-издатель: одна карточка на весь сайт, с адресом для связи
 const orgLd = () => ({ '@context': 'https://schema.org', '@type': 'Organization', name: 'DISC Test', url: siteUrl + '/', logo: `${siteUrl}/icon-512.png`, email: feedbackEmail || undefined });
 const jsonLd = L => JSON.stringify([
-  { '@context': 'https://schema.org', '@type': 'WebSite', name: 'DISC Test', alternateName: L.brand, url: siteUrl + '/', inLanguage: L.lang },
+  { '@context': 'https://schema.org', '@type': 'WebSite', name: 'DISC Test', alternateName: L.brand, url: siteUrl + '/', inLanguage: hl(L.lang) },
   orgLd(),
   { '@context': 'https://schema.org', '@type': 'WebApplication', name: L.brand, url: urlOf(L.lang), description: L.description,
-    applicationCategory: 'Personality test', operatingSystem: 'Any', browserRequirements: 'Requires JavaScript', inLanguage: L.lang,
+    applicationCategory: 'Personality test', operatingSystem: 'Any', browserRequirements: 'Requires JavaScript', inLanguage: hl(L.lang),
     isAccessibleForFree: true, offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' }, image: `${siteUrl}/og/${L.lang}.png`,
     publisher: { '@type': 'Organization', name: 'DISC Test', url: siteUrl + '/', logo: `${siteUrl}/icon-512.png` } }
 ]).replace(/</g, '\\u003c');
@@ -200,11 +200,11 @@ for (const L of locales) {
   const switcher = `<div class="langsel" id="langSel">` +
     `<button type="button" class="langbtn" id="langBtn" aria-haspopup="listbox" aria-expanded="false" aria-label="${esc(L.ui.langLabel)}">${flag(L.lang)}<span class="langname">${esc(L.name)}</span>${chevron}</button>` +
     `<ul class="langmenu" id="langMenu" role="listbox" aria-label="${esc(L.ui.langLabel)}" style="--lrows:${LANG_ROWS}" hidden>` +
-    locales.map(x => `<li role="none"><a role="option" href="${href(x)}" hreflang="${hl(x.lang)}" lang="${x.lang}" data-lang="${x.lang}" aria-selected="${x.lang === L.lang}" tabindex="-1">${flag(x.lang)}<span>${esc(x.name)}</span></a></li>`).join('') +
+    locales.map(x => `<li role="none"><a role="option" href="${href(x)}" hreflang="${hl(x.lang)}" lang="${hl(x.lang)}" data-lang="${x.lang}" aria-selected="${x.lang === L.lang}" tabindex="-1">${flag(x.lang)}<span>${esc(x.name)}</span></a></li>`).join('') +
     `</ul></div>`;
-  const links = locales.map(x => `<a href="${href(x)}" hreflang="${hl(x.lang)}" lang="${x.lang}" data-lang="${x.lang}"${x.lang === L.lang ? ' aria-current="page"' : ''}>${flag(x.lang)}<span>${esc(x.name)}</span></a>`).join('');
+  const links = locales.map(x => `<a href="${href(x)}" hreflang="${hl(x.lang)}" lang="${hl(x.lang)}" data-lang="${x.lang}"${x.lang === L.lang ? ' aria-current="page"' : ''}>${flag(x.lang)}<span>${esc(x.name)}</span></a>`).join('');
   const html = tpl
-    .replace(/__LANG__/g, L.lang).replace(/__DIR__/g, L.dir)
+    .replace(/__LANG__/g, hl(L.lang)).replace(/__DIR__/g, L.dir)
     .replace(/__TITLE__/g, esc(L.title)).replace(/__DESC__/g, esc(L.description))
     .replace(/__CANONICAL__/g, urlOf(L.lang)).replace(/__OG_LOCALE__/g, OG_LOCALE[L.lang] || L.lang)
     .replace(/__OG_ALTERNATES__/g, () => locales.filter(x => x !== L).map(x => `<meta property="og:locale:alternate" content="${OG_LOCALE[x.lang] || x.lang}">`).join('\n'))
@@ -256,8 +256,8 @@ function writeContentPage(L, sub, opts) {
   const switcher = `<div class="langsel" id="langSel">` +
     `<button type="button" class="langbtn" id="langBtn" aria-haspopup="listbox" aria-expanded="false" aria-label="${esc(L.ui.langLabel)}">${flag(L.lang)}<span class="langname">${esc(L.name)}</span><svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5l3.5 3.5 3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>` +
     `<ul class="langmenu" id="langMenu" role="listbox" aria-label="${esc(L.ui.langLabel)}" style="--lrows:${LANG_ROWS}" hidden>` +
-    locales.map(x => `<li role="none"><a role="option" href="${rootRel + pathOf(x.lang) + sub}" hreflang="${hl(x.lang)}" lang="${x.lang}" data-lang="${x.lang}" aria-selected="${x.lang === L.lang}" tabindex="-1">${flag(x.lang)}<span>${esc(x.name)}</span></a></li>`).join('') + `</ul></div>`;
-  const links = locales.map(x => `<a href="${rootRel + pathOf(x.lang) + sub}" hreflang="${hl(x.lang)}" lang="${x.lang}" data-lang="${x.lang}"${x.lang === L.lang ? ' aria-current="page"' : ''}>${flag(x.lang)}<span>${esc(x.name)}</span></a>`).join('');
+    locales.map(x => `<li role="none"><a role="option" href="${rootRel + pathOf(x.lang) + sub}" hreflang="${hl(x.lang)}" lang="${hl(x.lang)}" data-lang="${x.lang}" aria-selected="${x.lang === L.lang}" tabindex="-1">${flag(x.lang)}<span>${esc(x.name)}</span></a></li>`).join('') + `</ul></div>`;
+  const links = locales.map(x => `<a href="${rootRel + pathOf(x.lang) + sub}" hreflang="${hl(x.lang)}" lang="${hl(x.lang)}" data-lang="${x.lang}"${x.lang === L.lang ? ' aria-current="page"' : ''}>${flag(x.lang)}<span>${esc(x.name)}</span></a>`).join('');
   const navHtml = NAV_ITEMS.map(([k, s2]) => `<a href="${base + s2}"${opts.navKey === k ? ' aria-current="page"' : ''}>${esc(L.ui[k])}</a>`).join('');
   const footHtml = footLinks(L, base);
   const pageFiles = [`src/locales/${L.lang}.json`, 'src/page.html', 'build.js'].concat(opts.files || []);
@@ -267,7 +267,7 @@ function writeContentPage(L, sub, opts) {
   const crumbsHtml = crumbs.map((c, i) => i === crumbs.length - 1 ? `<span aria-current="page">${esc(c.name)}</span>` : `<a href="${c.href}">${esc(c.name)}</a><span>›</span>`).join('');
   const hreflang = locales.flatMap(x => hls(x.lang).map(h => `<link rel="alternate" hreflang="${h}" href="${urlOf(x.lang) + sub}">`)).concat([`<link rel="alternate" hreflang="x-default" href="${siteUrl}/${sub}">`]).join('\n');
   const ld = JSON.stringify([
-    { '@context': 'https://schema.org', '@type': opts.ldType || (opts.article ? 'Article' : 'WebPage'), headline: opts.article ? opts.title : undefined, name: opts.title, description: opts.description, url: urlOf(L.lang) + sub, inLanguage: L.lang,
+    { '@context': 'https://schema.org', '@type': opts.ldType || (opts.article ? 'Article' : 'WebPage'), headline: opts.article ? opts.title : undefined, name: opts.title, description: opts.description, url: urlOf(L.lang) + sub, inLanguage: hl(L.lang),
       dateModified: opts.article ? (lastmod([`src/locales/${L.lang}.json`]) || today) : undefined, author: opts.article ? { '@type': 'Organization', name: 'DISC Test', url: siteUrl + '/' } : undefined,
       image: opts.article ? `${siteUrl}/og/${L.lang}.png` : undefined, publisher: opts.article ? { '@type': 'Organization', name: 'DISC Test', url: siteUrl + '/', logo: `${siteUrl}/icon-512.png` } : undefined,
       isPartOf: { '@type': 'WebSite', name: 'DISC Test', url: siteUrl + '/' } },
@@ -276,7 +276,7 @@ function writeContentPage(L, sub, opts) {
   ].concat(opts.ldExtra || [])).replace(/</g, '\\u003c');
   const miniL = { lang: L.lang, name: L.name, dir: L.dir, dateLocale: L.dateLocale, ui: Object.fromEntries(Object.entries(L.ui).filter(([k]) => k === 'langLabel' || k === 'root.continue' || k.startsWith('consent.') || (opts.uiKeys && opts.uiKeys.test(k)))) };
   const html = pageTpl
-    .replace(/__LANG__/g, L.lang).replace(/__DIR__/g, L.dir)
+    .replace(/__LANG__/g, hl(L.lang)).replace(/__DIR__/g, L.dir)
     .replace(/__TITLE__/g, esc(opts.title)).replace(/__DESC__/g, esc(opts.description))
     .replace(/__CANONICAL__/g, urlOf(L.lang) + sub).replace(/__OG_LOCALE__/g, OG_LOCALE[L.lang] || L.lang)
     .replace(/__OG_ALTERNATES__/g, () => locales.filter(x => x !== L).map(x => `<meta property="og:locale:alternate" content="${OG_LOCALE[x.lang] || x.lang}">`).join('\n'))
@@ -418,7 +418,7 @@ for (const L of locales) {
   if (!pi) console.warn('WARNING: no PDF for ' + L.lang + ' (run node scripts/make-pdf.js)');
   writeContentPage(L, 'pdf/', { navKey: 'nav.pdf', title: pd.title, description: pd.description, crumbs: [{ name: t('nav.pdf') }],
     content: `<div class="eyebrow">DISC</div><h1>${escFull(pd.h1)}</h1><p class="lead">${escFull(pd.lead)}</p>` + download + sectionsHtml(pd.sections) + download + ctaBlock(L, t, '../') + seeAlso('../', 'nav.pdf'),
-    ldExtra: pi ? [{ '@context': 'https://schema.org', '@type': 'DigitalDocument', name: pd.title, url: `${siteUrl}/pdf/${pi.file}`, encodingFormat: 'application/pdf', inLanguage: L.lang, isAccessibleForFree: true }] : [] });
+    ldExtra: pi ? [{ '@context': 'https://schema.org', '@type': 'DigitalDocument', name: pd.title, url: `${siteUrl}/pdf/${pi.file}`, encodingFormat: 'application/pdf', inLanguage: hl(L.lang), isAccessibleForFree: true }] : [] });
   if (pi) extraUrls.push({ loc: `${siteUrl}/pdf/${pi.file}`, files: [`src/assets/pdf/${pi.file}`] });
   // /contact/ — форма обратной связи (только при заданном feedbackEmail); разметка из src/contact.js, там же логика страницы
   if (feedbackEmail) {
