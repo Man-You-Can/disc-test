@@ -343,7 +343,7 @@
         },
         {
           "q": "Ist der Test wirklich kostenlos?",
-          "a": "Ja, vollständig: ohne Anmeldung, ohne versteckte Kosten und ohne kostenpflichtige „erweiterte Berichte“. Das Ergebnis erscheint direkt nach dem letzten Block auf dem Bildschirm und wird an die angegebene E-Mail-Adresse gesendet."
+          "a": "Ja, vollständig: ohne Anmeldung, ohne versteckte Kosten und ohne kostenpflichtige „erweiterte Berichte“. Das Ergebnis erscheint direkt nach dem letzten Block auf dem Bildschirm; auf Wunsch können Sie es sich per E-Mail zusenden lassen."
         },
         {
           "q": "Wofür stehen die Buchstaben D, I, S, C?",
@@ -367,7 +367,7 @@
         },
         {
           "q": "Wohin geht das Ergebnis, und wer kann es sehen?",
-          "a": "Das Ergebnis wird auf dem Bildschirm angezeigt, in Ihrem Browser gespeichert und an die vor dem Test eingegebene E-Mail-Adresse gesendet. Name, E-Mail-Adresse und Ergebnis werden außerdem in der Ergebnisdatenbank des Seitenbetreibers gespeichert; für andere Zwecke werden sie nicht verwendet und nicht an Dritte weitergegeben. Andere Personen sehen Ihren Bericht nur, wenn Sie den Link dazu selbst weitergeben. Details auf der Seite „Datenschutz“."
+          "a": "Das Ergebnis wird auf dem Bildschirm angezeigt und in Ihrem Browser gespeichert. Wenn Sie auf dem Ergebnisbildschirm Namen und E-Mail-Adresse angeben, erhalten Sie den Bericht per E-Mail an diese Adresse, und Name, E-Mail-Adresse und Ergebnis werden in der Ergebnisdatenbank des Seitenbetreibers gespeichert; für andere Zwecke werden sie nicht verwendet und nicht an Dritte weitergegeben. Andere Personen sehen Ihren Bericht nur, wenn Sie den Link dazu selbst weitergeben. Details auf der Seite „Datenschutz“."
         },
         {
           "q": "Kann ich den Test wiederholen?",
@@ -399,7 +399,7 @@
         {
           "h": "Warum es diese Seite gibt",
           "p": [
-            "Wir wollten einen DISG-Test, den jeder in zehn Minuten ohne Anmeldung und Bezahlung machen kann, mit einem verständlichen Bericht in der eigenen Sprache, den man mit dem Team teilen kann. Die Seite funktioniert in 14 Sprachen, das Ergebnis erscheint sofort und kommt per E-Mail, und Führungskräfte und HR haben einen Bereich, in dem die Ergebnisse der Teilnehmenden in einer Tabelle gesammelt werden."
+            "Wir wollten einen DISG-Test, den jeder in zehn Minuten ohne Anmeldung und Bezahlung machen kann, mit einem verständlichen Bericht in der eigenen Sprache, den man mit dem Team teilen kann. Die Seite funktioniert in 14 Sprachen, das Ergebnis erscheint sofort und kommt auf Wunsch per E-Mail, und Führungskräfte und HR haben einen Bereich, in dem die Ergebnisse der Teilnehmenden in einer Tabelle gesammelt werden."
           ]
         },
         {
@@ -427,19 +427,19 @@
         {
           "h": "Welche Daten wir verwenden",
           "p": [
-            "Vor dem Test geben Sie Ihren Namen und Ihre E-Mail-Adresse ein. Während des Tests werden Ihre Antworten gespeichert, danach das Ergebnis, die gewählte Sprache und ein Vermerk, dass Sie den Cookie-Hinweis gesehen haben. All das liegt im lokalen Speicher Ihres Browsers. Nach Abschluss des Tests werden Name, E-Mail-Adresse, Testdatum und Ergebnis zusätzlich in der Ergebnisdatenbank des Seitenbetreibers gespeichert."
+            "Für den Test müssen Sie nichts eingeben. Während des Tests werden Ihre Antworten gespeichert, danach das Ergebnis, die gewählte Sprache und ein Vermerk, dass Sie den Cookie-Hinweis gesehen haben. Namen und E-Mail-Adresse geben Sie freiwillig auf dem Ergebnisbildschirm an, wenn Sie den Bericht per E-Mail erhalten möchten. All das liegt im lokalen Speicher Ihres Browsers. Wenn Sie das Ergebnis per E-Mail senden lassen, werden Name, E-Mail-Adresse, Testdatum und Ergebnis zusätzlich in der Ergebnisdatenbank des Seitenbetreibers gespeichert."
           ]
         },
         {
           "h": "Wohin die Daten übermittelt werden",
           "p": [
-            "Nach Abschluss des Tests werden Name, E-Mail-Adresse und Antworten (als Ergebniscode) an den E-Mail-Versanddienst übermittelt, ein Google-Apps-Script im Google-Konto des Seitenbetreibers. Es sendet Ihnen die E-Mail mit dem Ergebnis und trägt Name, E-Mail-Adresse, Testdatum und Ergebnis (Profil, Punkte, Link zum Bericht) in die Ergebnisdatenbank ein, eine Google-Tabelle im selben Konto. Für andere Zwecke werden diese Daten nicht verwendet und nicht an Dritte weitergegeben.",
+            "Wenn Sie auf „Per E-Mail zusenden“ klicken, werden Name, E-Mail-Adresse und Antworten (als Ergebniscode) an den E-Mail-Versanddienst übermittelt, ein Google-Apps-Script im Google-Konto des Seitenbetreibers. Es sendet Ihnen die E-Mail mit dem Ergebnis und trägt Name, E-Mail-Adresse, Testdatum und Ergebnis (Profil, Punkte, Link zum Bericht) in die Ergebnisdatenbank ein, eine Google-Tabelle im selben Konto. Für andere Zwecke werden diese Daten nicht verwendet und nicht an Dritte weitergegeben.",
             "Der Hoster (GitHub Pages) erhält die üblichen technischen Anfragedaten: IP-Adresse, Browsertyp, Seitenadresse. Die Schriften werden von dieser Website selbst ausgeliefert und nicht von Google-Servern geladen. Besuchsstatistiken erfasst ein Webanalysedienst: Er erhält anonymisierte Besuchsdaten – die Seitenadresse ohne den Ergebniscode, die Herkunft des Besuchs, Geräte- und Browsertyp – sowie eine Aufzeichnung der Aktionen auf der Seite; die Felder für Name und E-Mail, der Ergebnislink und der Code sind von der Aufzeichnung ausgenommen. Sie können die Erfassung in den Browsereinstellungen oder mit einem Tracker-Blocker unterbinden. Werbe-Tracker werden nicht verwendet."
           ]
         },
         {
           "h": "Der Link zum Ergebnis",
-          "p": ["Der Link zum Bericht enthält Namen, E-Mail-Adresse und Antworten in kodierter Form. Jeder, der den Link hat, kann den Bericht öffnen; teilen Sie ihn deshalb nur mit Menschen, denen Sie vertrauen. Der Admin-Bereich funktioniert nur im Browser der Person, die die Codes dort eingefügt hat."]
+          "p": ["Der Link zum Bericht enthält Ihre Antworten in kodierter Form und, falls Sie sie angegeben haben, auch Namen und E-Mail-Adresse. Jeder, der den Link hat, kann den Bericht öffnen; teilen Sie ihn deshalb nur mit Menschen, denen Sie vertrauen. Der Admin-Bereich funktioniert nur im Browser der Person, die die Codes dort eingefügt hat."]
         },
         {
           "h": "Kontaktformular",
@@ -455,7 +455,7 @@
         },
         {
           "h": "Änderungen",
-          "p": ["Letzte Aktualisierung: 23. September 2026. Änderungen im Umgang mit Daten werden auf dieser Seite dokumentiert."]
+          "p": ["Letzte Aktualisierung: 24. September 2026. Änderungen im Umgang mit Daten werden auf dieser Seite dokumentiert."]
         }
       ]
     },
@@ -474,7 +474,7 @@
         {
           "h": "Woraus das Ergebnis besteht",
           "p": [
-            "Nach dem letzten Block sehen Sie vier Elemente: den Profilnamen mit einem oder zwei Buchstaben (zum Beispiel „Pionier, DI“), ein Diagramm mit drei Linien, vier Skalen mit Prozentwerten und eine Textbeschreibung: Kernmerkmale, Stärken, Entwicklungsfelder, Motivation, Verhalten unter Stress und Empfehlungen, wie man am besten mit Ihnen kommuniziert. Derselbe Bericht kommt per E-Mail und lässt sich über den Link öffnen.",
+            "Nach dem letzten Block sehen Sie vier Elemente: den Profilnamen mit einem oder zwei Buchstaben (zum Beispiel „Pionier, DI“), ein Diagramm mit drei Linien, vier Skalen mit Prozentwerten und eine Textbeschreibung: Kernmerkmale, Stärken, Entwicklungsfelder, Motivation, Verhalten unter Stress und Empfehlungen, wie man am besten mit Ihnen kommuniziert. Denselben Bericht können Sie sich per E-Mail zusenden lassen und über den Link öffnen.",
             "Alle Zahlen im Bericht ergeben sich aus Ihren Markierungen in den 24 Blöcken. In jedem Block haben Sie eine Aussage als „trifft am meisten zu“ und eine als „trifft am wenigsten zu“ gewählt, und jede Aussage gehört zu einem der Stile D, I, S oder C. Deshalb gibt es für jeden Stil zwei Zahlen: wie oft Sie ihn als „am meisten“ und wie oft als „am wenigsten“ gewählt haben."
           ]
         },
@@ -541,32 +541,49 @@
       ]
     },
     "colors": {
-      "title": "Farben im Persönlichkeitstest: Rot, Gelb, Grün, Blau – die vier DISG-Typen erklärt",
-      "description": "DISG-Farben: Rot (D), Gelb (I), Grün (S), Blau (C). Was jede Farbe bedeutet, wie Sie Ihre finden und wie sich Farbtests von DISG unterscheiden. Kostenloser Test.",
+      "title": "DISG-Farben: Rot, Gelb, Grün, Blau – die vier Persönlichkeitstypen erklärt",
+      "description": "Rote, gelbe, grüne, blaue Typen nach DISG: woran Sie jede Farbe erkennen, wie Sie mit ihr umgehen und was „Überall Idioten“ damit zu tun hat. Kostenloser Test.",
       "h1": "DISG-Farben: Rot, Gelb, Grün, Blau",
       "lead": "Die vier DISG-Stile werden oft mit Farben bezeichnet: Rot steht für Dominanz, Gelb für Initiative, Grün für Stetigkeit, Blau für Gewissenhaftigkeit. Die Farben fügen dem Modell nichts hinzu, aber sie helfen, sich die Stile schnell zu merken und im Team über sie zu sprechen. Wir erklären, was hinter jeder Farbe steckt und wie Sie Ihre eigene herausfinden.",
       "colors": {
         "D": {
           "name": "Rot",
           "tagline": "Dominanz (D): Ergebnis und Kontrolle",
-          "text": "Rot ist die Farbe von Tempo und Durchsetzungskraft. „Rote“ setzen sich ein Ziel und gehen geradewegs darauf zu, entscheiden schnell, streiten, übernehmen Verantwortung und scheuen keinen Konflikt. Im Team treiben sie die Sache voran, können aber Druck ausüben und die Geduld mit denen verlieren, die vorsichtiger arbeiten."
+          "text": "Rot ist die Farbe von Tempo und Durchsetzungskraft. „Rote“ setzen sich ein Ziel und gehen geradewegs darauf zu, entscheiden schnell, streiten, übernehmen Verantwortung und scheuen keinen Konflikt. Im Team treiben sie die Sache voran, können aber Druck ausüben und die Geduld mit denen verlieren, die vorsichtiger arbeiten.",
+          "h": "Der rote Persönlichkeitstyp",
+          "signs": ["Spricht kurz und sachlich und kommt sofort zum Punkt.", "Entscheidet schnell und mag es nicht, wenn Entscheidungen vertagt werden.", "Ergreift in Besprechungen das Wort, diskutiert und gibt das Tempo vor.", "Schreibt Nachrichten in zwei Zeilen – ohne Anrede und ohne Smileys.", "Wird unter Druck schroffer und entscheidet alles allein."],
+          "blind": "Die Stärke der „Roten“: Sie bringen eine Sache in Gang, während andere noch diskutieren. Der blinde Fleck ist der Preis dieses Tempos: Rote merken nicht, dass die anderen noch gar nicht zugestimmt haben, halten Vorsicht für Schwäche und Fragen für Widerstand. Am meisten ärgern sie Langsamkeit, leeres Gerede und Kontrollverlust.",
+          "talk": ["Beginnen Sie mit Ziel und Ergebnis; Details nur auf Nachfrage.", "Bieten Sie Optionen statt einer fertigen Lösung an – die Wahl treffen Rote lieber selbst.", "Widersprechen Sie direkt und mit Fakten: Andeutungen und Kränkungen kommen bei Roten nicht an."]
         },
         "I": {
           "name": "Gelb",
           "tagline": "Initiative (I): Menschen und Begeisterung",
-          "text": "Gelb ist die Farbe von Energie und Kommunikation. „Gelbe“ knüpfen leicht Kontakte, begeistern, haben Ideen und stecken mit ihrem Optimismus an. Ihnen sind Anerkennung und lebendiger Austausch wichtig; Details, Termine und Routine fallen ihnen schwerer, und Versprechen eilen den Möglichkeiten manchmal voraus."
+          "text": "Gelb ist die Farbe von Energie und Kommunikation. „Gelbe“ knüpfen leicht Kontakte, begeistern, haben Ideen und stecken mit ihrem Optimismus an. Ihnen sind Anerkennung und lebendiger Austausch wichtig; Details, Termine und Routine fallen ihnen schwerer, und Versprechen eilen den Möglichkeiten manchmal voraus.",
+          "h": "Der gelbe Persönlichkeitstyp",
+          "signs": ["Kommt mit Fremden mühelos ins Gespräch und ist schnell beim Du.", "Erzählt in Geschichten, gestikuliert viel und steckt andere mit seiner Stimmung an.", "Hat Ideen aus dem Stegreif und meldet sich als Erster freiwillig.", "Schreibt lebhaft: Ausrufezeichen, Smileys, Sprachnachrichten.", "Redet unter Druck viel, verspricht zu viel und sucht Rückhalt."],
+          "blind": "Die Stärke der „Gelben“: Sie bringen Menschen zusammen und begeistern sie für eine Idee. Der blinde Fleck ist die Umsetzung: Das Interesse erlischt, sobald Routine einsetzt, Termine und Details geraten ins Hintertreffen, und Versprechen eilen den Möglichkeiten voraus. Am meisten verletzen sie Gleichgültigkeit, Kritik vor anderen und Arbeit im Alleingang.",
+          "talk": ["Beginnen Sie mit persönlichem Kontakt: erst ein paar Worte zum Menschen, dann zur Sache.", "Loben Sie sichtbar und aufrichtig – Anerkennung motiviert Gelbe am stärksten.", "Halten Sie Absprachen schriftlich und mit Terminen fest: Gelbe vergessen sie sonst leicht."]
         },
         "S": {
           "name": "Grün",
           "tagline": "Stetigkeit (S): Unterstützung und Stabilität",
-          "text": "Grün ist die Farbe von Ruhe und Verlässlichkeit. „Grüne“ können zuhören, unterstützen, bringen Begonnenes zu Ende und pflegen die Beziehungen im Team. Sie brauchen Planbarkeit und Zeit für Veränderungen; offener Konflikt und Druck belasten sie stark."
+          "text": "Grün ist die Farbe von Ruhe und Verlässlichkeit. „Grüne“ können zuhören, unterstützen, bringen Begonnenes zu Ende und pflegen die Beziehungen im Team. Sie brauchen Planbarkeit und Zeit für Veränderungen; offener Konflikt und Druck belasten sie stark.",
+          "h": "Der grüne Persönlichkeitstyp",
+          "signs": ["Hört mehr zu, als selbst zu reden, und fragt, wie es Ihnen geht.", "Antwortet nicht vorschnell und nimmt sich Zeit zum Nachdenken.", "Hilft gern und sagt selten Nein, selbst wenn die Arbeit überhandnimmt.", "Bleibt beim Gewohnten: derselbe Weg, dieselben Werkzeuge, dasselbe Team.", "Verstummt unter Druck, stimmt nach außen hin zu und staut Unmut an."],
+          "blind": "Die Stärke der „Grünen“ ist Verlässlichkeit: Grüne bringen Begonnenes zu Ende und erhalten Beziehungen, wo andere sich zerstreiten. Der blinde Fleck ist das Schweigen: Grüne sagen nicht Nein, streiten nicht offen und willigen in Veränderungen ein, mit denen sie innerlich nicht einverstanden sind. Am meisten aus dem Gleichgewicht bringen sie plötzliche Veränderungen, ein harter Ton und Konflikte.",
+          "talk": ["Kündigen Sie Veränderungen frühzeitig an und erklären Sie, wozu sie nötig sind.", "Fragen Sie Grüne einzeln nach ihrer Meinung, nicht mitten in einer Diskussion in großer Runde.", "Halten Sie Schweigen nicht für Zustimmung: Fragen Sie nach, was Ihr Gegenüber wirklich denkt."]
         },
         "C": {
           "name": "Blau",
           "tagline": "Gewissenhaftigkeit (C): Genauigkeit und Qualität",
-          "text": "Blau ist die Farbe von Analyse und Ordnung. „Blaue“ stützen sich auf Fakten, prüfen Details, planen und halten sich an Standards. Sie stehen für Qualität, können sich aber in der Analyse verlieren, Termine um des Ideals willen hinauszögern und kühl wirken."
+          "text": "Blau ist die Farbe von Analyse und Ordnung. „Blaue“ stützen sich auf Fakten, prüfen Details, planen und halten sich an Standards. Sie stehen für Qualität, können sich aber in der Analyse verlieren, Termine um des Ideals willen hinauszögern und kühl wirken.",
+          "h": "Der blaue Persönlichkeitstyp",
+          "signs": ["Stellt Rückfragen und will Zahlen, Quellen und Beispiele sehen.", "Sammelt vor einer Entscheidung Informationen und vergleicht Optionen.", "Bemerkt Fehler, Tippfehler und Unstimmigkeiten, die andere übersehen.", "Schreibt ausführlich, in Stichpunkten, mit Anhängen und Links.", "Zieht sich unter Druck in die Analyse zurück, vertagt Entscheidungen und wird kritisch."],
+          "blind": "Die Stärke der „Blauen“ ist Qualität: Was Blaue abliefern, muss selten nachgebessert werden. Der blinde Fleck ist der Preis des Perfektionismus: Blaue prüfen noch, was längst gut genug ist, schieben Entscheidungen auf, bis alles restlos geklärt ist, und wirken kühl, wo Unterstützung gefragt wäre. Am meisten ärgern sie Schlamperei, unnötige Hektik und vage Formulierungen.",
+          "talk": ["Kommen Sie mit Fakten und Struktur: Ziel, Daten, Optionen, Termine.", "Geben Sie Zeit, das Material vor der Besprechung durchzuarbeiten, nicht erst im Meeting.", "Formulieren Sie Kritik konkret: was genau nicht stimmt und nach welchem Kriterium."]
         }
       },
+      "labels": { "signs": "Woran Sie ihn erkennen", "blind": "Stärke und blinder Fleck", "talk": "So kommunizieren Sie mit ihm" },
       "sections": [
         {
           "h": "Woher die Farben kommen",
@@ -597,6 +614,13 @@
           ]
         },
         {
+          "h": "Die Farben in Thomas Eriksons Buch „Überall Idioten“",
+          "p": [
+            "Einem breiten Publikum sind die vier Farben vor allem durch das Buch „Überall Idioten“ des schwedischen Autors Thomas Erikson bekannt (Originaltitel: Omgiven av idioter, 2014). Es hat sich millionenfach verkauft und wurde in Dutzende Sprachen übersetzt. Erikson beschreibt dieselben vier Typen wie DISG: den entschlossenen, ungeduldigen Roten, den geselligen, begeisterungsfähigen Gelben, den ruhigen, nachgiebigen Grünen und den genauen, zurückhaltenden Blauen. Der Titel ist ironisch gemeint: Menschen einer anderen Farbe halten wir für Idioten, solange wir nicht verstehen, wie sie ticken.",
+            "Erikson stützt sich ausdrücklich auf DISG, deshalb entsprechen sein Rot, Gelb, Grün und Blau den Stilen D, I, S und C auf dieser Seite. Der Unterschied liegt in der Darstellung: Das Buch erklärt das Modell anhand von Alltagsgeschichten und Typen, der Test misst, wie stark jeder Stil ausgeprägt ist. In Schweden wurde das Buch von Psychologen und vom Skeptikerverein Vetenskap och Folkbildning kritisiert – wegen seiner Vereinfachungen und weil ein populärer Text als wissenschaftlich fundiert dargestellt wird. Diese Warnung gilt für jedes Farbschema: Nutzen Sie es als gemeinsame Sprache für Gespräche, nicht als Diagnose."
+          ]
+        },
+        {
           "h": "Farben im Team",
           "p": [
             "Eine Farbkarte des Teams zeigt Schieflagen auf einen Blick. Ein Team nur aus „Roten“ entscheidet schnell und streitet ebenso schnell; ein Team aus „Grünen“ ist harmonisch, meidet aber schwierige Gespräche und schiebt Veränderungen auf. Ein gemischtes Team arbeitet besser, wenn jeder weiß, was er von der anderen Farbe erwarten kann: wie man eine Aufgabe stellt, wie man Feedback gibt, wie man streitet.",
@@ -609,7 +633,12 @@
             "Eine Farbe ist ein Etikett, und Etiketten vereinfachen. „Du bist eben rot“ klingt wie eine Entschuldigung für Grobheit, und „sie ist grün, was will man erwarten“ wie ein Verzicht auf Erwartungen. DISG beschreibt gewohntes Verhalten, nicht Charakter, Werte oder Fähigkeiten, und jeder Stil lässt sich entwickeln. Nutzen Sie die Farben, um einander zu verstehen, nicht um Menschen in Schubladen zu stecken."
           ]
         }
-      ]
+      ],
+      "cta": {
+        "title": "Finden Sie Ihre DISG-Farbe heraus",
+        "text": "Der Test zeigt Ihre Haupt- und Nebenfarbe, ihre Ausprägung in Prozent und was Sie damit anfangen können. 24 Blöcke, etwa 10 Minuten, ohne Anmeldung.",
+        "button": "Meine Farbe herausfinden"
+      }
     },
     "pdf": {
       "title": "DISG-Test PDF kostenlos: Fragebogen zum Ausdrucken mit Auswertung",
@@ -676,7 +705,7 @@
           "h": "So führen Sie den Test auf dieser Seite im Team durch",
           "ol": [
             "Machen Sie den Test zuerst selbst: So wissen Sie, was die Teilnehmenden sehen, und können einen Beispielbericht zeigen.",
-            "Schicken Sie den Kolleginnen und Kollegen den Link zur Seite in der passenden Sprache. Eine Anmeldung ist nicht nötig, der Test dauert etwa zehn Minuten; jeder gibt Name und E-Mail-Adresse an und erhält den Bericht auf dem Bildschirm und per E-Mail.",
+            "Schicken Sie den Kolleginnen und Kollegen den Link zur Seite in der passenden Sprache. Eine Anmeldung ist nicht nötig, der Test dauert etwa zehn Minuten; der Bericht erscheint auf dem Bildschirm, und dort kann jeder Name und E-Mail-Adresse angeben, um ihn zusätzlich per E-Mail zu erhalten.",
             "Bitten Sie jeden, Ihnen den Link zum Ergebnis oder den Code aus dem Bericht weiterzuleiten. Das Ergebnis sieht nur, wer den Link hat; an die Führungskraft werden keine Daten automatisch übermittelt.",
             "Öffnen Sie den Admin-Bereich (Link in der Fußzeile) und fügen Sie die erhaltenen Codes ein. Der Bereich erstellt eine Tabelle mit Namen, Profilen und Punkten; sie lässt sich nach Excel kopieren. Die Tabelle wird nur in Ihrem Browser gespeichert.",
             "Setzen Sie ein gemeinsames Treffen an: Erklären Sie die vier Stile, zeigen Sie die Teamkarte und lassen Sie jeden erzählen, was im Bericht ins Schwarze getroffen hat und was nicht."
@@ -907,7 +936,7 @@
   "ui": {
     "langLabel": "Sprache",
     "footer": "24 Blöcke · etwa 10 Minuten · keine richtigen oder falschen Antworten",
-    "privacy": "Ihre Antworten bleiben in Ihrem Browser; das Ergebnis wird an die von Ihnen angegebene E-Mail-Adresse gesendet und in der Ergebnisdatenbank des Seitenbetreibers gespeichert.",
+    "privacy": "Ihre Antworten bleiben in Ihrem Browser; wenn Sie Ihre E-Mail-Adresse angeben, wird das Ergebnis dorthin gesendet und in der Ergebnisdatenbank des Seitenbetreibers gespeichert.",
     "adminLink": "Admin-Bereich",
 
     "intro.eyebrow": "Fragebogen zu Verhaltensstilen",
@@ -918,9 +947,10 @@
     "intro.howText": "Der Test besteht aus 24 Blöcken mit je vier Aussagen, insgesamt 96. Markieren Sie in jedem Block die Aussage, die <b>am meisten</b> auf Sie zutrifft, und die, die <b>am wenigsten</b> auf Sie zutrifft. Antworten Sie so, wie Sie sich bei der Arbeit tatsächlich verhalten, nicht so, wie Sie es gern täten. Überlegen Sie nicht lange: Die erste Reaktion ist die genaueste.",
     "intro.nameLabel": "Name",
     "intro.emailLabel": "E-Mail-Adresse für das Ergebnis",
-    "intro.emailHint": "Nach Abschluss des Tests erhalten Sie Ihr Ergebnis an diese Adresse. Name, E-Mail-Adresse und Ergebnis werden in der Ergebnisdatenbank des Seitenbetreibers gespeichert.",
+    "intro.emailHint": "An diese Adresse erhalten Sie eine E-Mail mit dem Link zum vollständigen Bericht. Name, E-Mail-Adresse und Ergebnis werden in der Ergebnisdatenbank des Seitenbetreibers gespeichert.",
     "intro.requiredNote": "Mit Sternchen (*) markierte Felder sind Pflichtfelder.",
     "intro.start": "Test starten",
+    "intro.startNote": "24 Blöcke · etwa 10 Minuten · ohne Anmeldung",
     "intro.resume": "Letzten Durchgang fortsetzen ({n} von 24 ausgefüllt)",
     "intro.showLast": "Mein letztes Ergebnis vom {date} öffnen",
     "intro.nameRequired": "Bitte geben Sie Ihren Namen an",
@@ -961,6 +991,7 @@
     "report.stress": "Unter Stress",
     "report.environment": "Ideales Umfeld",
     "report.moreLink": "Mehr dazu, wie Sie Ihr DISG-Profil lesen →",
+    "report.color": "Ihre DISG-Farbe: {color}",
 
     "share.title": "Ergebnis speichern",
     "share.text": "Ihr Ergebnis ist in Ihrem Browser gespeichert. Kopieren Sie den Link, um den Bericht später oder auf einem anderen Gerät zu öffnen, oder senden Sie ihn an die Person, die Sie um den Test gebeten hat.",
@@ -975,6 +1006,14 @@
     "share.sent": "Ihr Ergebnis wurde an {email} gesendet.",
     "share.sendFailed": "Die E-Mail an {email} konnte nicht gesendet werden. Kopieren Sie den Link zum Bericht oder versuchen Sie es erneut.",
     "share.retry": "Erneut senden",
+    "share.emailTitle": "Ergebnis per E-Mail erhalten",
+    "share.send": "Per E-Mail zusenden",
+    "share.mailtoHint": "Ihr E-Mail-Programm öffnet sich mit einer fertigen Nachricht an diese Adresse – Sie müssen nur noch auf „Senden“ klicken.",
+    "share.mailtoOpened": "Die E-Mail mit Ihrem Ergebnis ist in Ihrem E-Mail-Programm geöffnet – senden Sie sie an {email}.",
+    "share.typeTitle": "Teilen Sie Ihren Typ",
+    "share.typeText": "Der Link führt zur öffentlichen Beschreibung des Profils „{name}“; er enthält weder Ihren Namen noch Ihre E-Mail-Adresse oder Ihre Antworten.",
+    "share.type": "Typ teilen",
+    "share.typeMsg": "Mein DISG-Typ ist {name} ({key}). Und welcher Typ sind Sie?",
 
     "mail.subject": "DISG: {name} – {label}",
     "mail.title": "Ergebnis des DISG-Tests",
@@ -1108,7 +1147,7 @@
     "consent.label": "Cookie-Hinweis",
     "consent.text": "Diese Website speichert Ihren Fortschritt, Ihr Ergebnis und die gewählte Sprache im lokalen Speicher des Browsers, und ein Webanalysedienst erfasst anonymisierte Besuchsstatistiken und eine Aufzeichnung der Aktionen auf der Seite, damit wir die Website verbessern können. Ihr Name, Ihre E-Mail-Adresse und Ihr Ergebnis werden nicht an den Analysedienst übermittelt.",
     "consent.more": "Mehr erfahren",
-    "consent.details": "Im Browser gespeichert werden: der vor dem Test eingegebene Name und die E-Mail-Adresse; Ihre Antworten und der unvollendete Fortschritt; Ihr letztes Ergebnis; die gewählte Sprache; ein Vermerk, dass Sie diesen Hinweis gesehen haben. Diese Daten bleiben auf Ihrem Gerät und werden beim Löschen der Website-Daten entfernt. Der Hoster (GitHub Pages) erhält die üblichen technischen Anfragedaten. Beim Abschluss des Tests werden Name, E-Mail-Adresse und Antworten an den E-Mail-Versanddienst (Google Apps Script) übergeben; er sendet Ihnen das Ergebnis und speichert Name, E-Mail-Adresse, Datum und Ergebnis in der Ergebnisdatenbank des Seitenbetreibers (einer Google-Tabelle). Der Webanalysedienst erhält die Seitenadresse ohne den Ergebniscode, die Herkunft des Besuchs, Geräte- und Browsertyp sowie eine anonymisierte Aufzeichnung der Aktionen auf der Seite (die Felder für Name und E-Mail, der Ergebnislink und der Code sind ausgenommen) und setzt eigene Cookies. Sie können ihn in den Browsereinstellungen oder mit einem Tracker-Blocker blockieren. Werbe-Tracker werden nicht verwendet.",
+    "consent.details": "Im Browser gespeichert werden: Name und E-Mail-Adresse, falls Sie sie angegeben haben; Ihre Antworten und der unvollendete Fortschritt; Ihr letztes Ergebnis; die gewählte Sprache; ein Vermerk, dass Sie diesen Hinweis gesehen haben. Diese Daten bleiben auf Ihrem Gerät und werden beim Löschen der Website-Daten entfernt. Der Hoster (GitHub Pages) erhält die üblichen technischen Anfragedaten. Wenn Sie das Ergebnis per E-Mail senden lassen, werden Name, E-Mail-Adresse und Antworten an den E-Mail-Versanddienst (Google Apps Script) übergeben; er sendet Ihnen das Ergebnis und speichert Name, E-Mail-Adresse, Datum und Ergebnis in der Ergebnisdatenbank des Seitenbetreibers (einer Google-Tabelle). Der Webanalysedienst erhält die Seitenadresse ohne den Ergebniscode, die Herkunft des Besuchs, Geräte- und Browsertyp sowie eine anonymisierte Aufzeichnung der Aktionen auf der Seite (die Felder für Name und E-Mail, der Ergebnislink und der Code sind ausgenommen) und setzt eigene Cookies. Sie können ihn in den Browsereinstellungen oder mit einem Tracker-Blocker blockieren. Werbe-Tracker werden nicht verwendet.",
     "consent.accept": "Akzeptieren",
     "consent.decline": "Nur Notwendiges",
     "consent.ok": "Verstanden",

@@ -27,13 +27,8 @@ const MAX_CONTACT_BYTES = 10 * 1024 * 1024; // общий размер влож�
 const jsStr = s => JSON.stringify(String(s == null ? '' : s)).replace(/</g, '\\u003c');
 const graphJs = fs.readFileSync(path.join(SRC, 'graph.js'), 'utf8').replace(/\nif \(typeof module[^\n]*\n?$/, '\n');
 const graphSVG = require(path.join(SRC, 'graph.js'));
-// Типичный итоговый профиль (net, от −24 до +24, сумма 0) для примера результата на странице каждого профиля
-const SAMPLE_NET = {
-  D: { D: 16, I: -2, S: -10, C: -4 }, DI: { D: 14, I: 8, S: -12, C: -10 }, DC: { D: 14, I: -8, S: -14, C: 8 }, DS: { D: 12, I: -6, S: 6, C: -12 },
-  I: { D: -2, I: 16, S: -4, C: -10 }, ID: { D: 8, I: 14, S: -10, C: -12 }, IS: { D: -10, I: 14, S: 8, C: -12 }, IC: { D: -8, I: 12, S: -10, C: 6 },
-  S: { D: -10, I: -2, S: 16, C: -4 }, SI: { D: -12, I: 8, S: 14, C: -10 }, SC: { D: -12, I: -10, S: 14, C: 8 }, SD: { D: 6, I: -8, S: 12, C: -10 },
-  C: { D: -8, I: -6, S: -2, C: 16 }, CD: { D: 8, I: -12, S: -10, C: 14 }, CS: { D: -12, I: -10, S: 8, C: 14 }, CI: { D: -8, I: 6, S: -10, C: 12 }
-};
+// Типичный итоговый профиль (net, от −24 до +24, сумма 0) для примера результата на странице профиля и для его og-картинки
+const SAMPLE_NET = require(path.join(SRC, 'samples.js'));
 const sampleScore = net => { const most = {}, least = {}; const pos = Object.values(net).filter(v => v > 0).reduce((a, b) => a + b, 0), base = (24 - pos) / 4;
   for (const k of Object.keys(net)) { most[k] = Math.max(0, net[k]) + base; least[k] = Math.max(0, -net[k]) + base; } return { most, least, net }; };
 const pct = net => Math.round((net + 24) / 48 * 100);
@@ -280,7 +275,7 @@ function writeContentPage(L, sub, opts) {
     .replace(/__TITLE__/g, esc(opts.title)).replace(/__DESC__/g, esc(opts.description))
     .replace(/__CANONICAL__/g, urlOf(L.lang) + sub).replace(/__OG_LOCALE__/g, OG_LOCALE[L.lang] || L.lang)
     .replace(/__OG_ALTERNATES__/g, () => locales.filter(x => x !== L).map(x => `<meta property="og:locale:alternate" content="${OG_LOCALE[x.lang] || x.lang}">`).join('\n'))
-    .replace(/__OG_IMAGE__/g, `${siteUrl}/og/${L.lang}.png`).replace(/__HREFLANG__/g, hreflang).replace(/__HEAD_EXTRA__/g, () => headExtra)
+    .replace(/__OG_IMAGE__/g, opts.ogImage || `${siteUrl}/og/${L.lang}.png`).replace(/__HREFLANG__/g, hreflang).replace(/__HEAD_EXTRA__/g, () => headExtra)
     .replace(/__ROOT_REL__/g, rootRel).replace('__JSON_LD__', () => ld)
     .replace(/__FONTS_HEAD__/g, () => fontsHead(f, L)).replace('__STYLE__', () => styleBlock.replace(/__FONT_HEAD__/g, f.head).replace(/__FONT_BODY__/g, f.body))
     .replace('__FLAG_SPRITE__', () => flagSprite(locales.map(x => x.lang)))
@@ -332,7 +327,8 @@ for (const L of locales) {
       `<h2>${t('pages.profile.others')}</h2><div class="pgrid">${PROFILE_KEYS.filter(k => k !== key).map(k => profileCard(L, k, b)).join('')}</div>`;
     writeContentPage(L, `profiles/${key.toLowerCase()}/`, { navKey: 'nav.profiles', title: t('pages.profile.title', { name: pr.name, key }),
       description: truncate(t('pages.profile.description', { name: pr.name, key, summary: pr.summary }), 155),
-      crumbs: [{ name: t('nav.profiles'), href: '../', sub: 'profiles/' }, { name: pr.name }], content });
+      crumbs: [{ name: t('nav.profiles'), href: '../', sub: 'profiles/' }, { name: pr.name }], content,
+      ogImage: fs.existsSync(path.join(ASSETS, 'og', 'profiles', `${L.lang}-${key.toLowerCase()}.png`)) ? `${siteUrl}/og/profiles/${L.lang}-${key.toLowerCase()}.png` : null });
   }
 }
 
@@ -374,12 +370,18 @@ for (const L of locales) {
   writeContentPage(L, 'results/', { navKey: 'nav.results', article: true, title: rs.title, description: rs.description, crumbs: [{ name: t('nav.results') }],
     content: `<div class="eyebrow">DISC</div><h1>${escFull(rs.h1)}</h1><p class="lead">${escFull(rs.lead)}</p>` + sectionsHtml(rs.sections.slice(0, 3)) +
       `<div class="examples">${rs.examples.map(exampleHtml).join('')}</div>` + sectionsHtml(rs.sections.slice(3)) + ctaBlock(L, t, '../') + seeAlso('../', 'nav.results') });
-  // /colors/ — DISC по цветам: четыре цветные карточки + текст
+  // /colors/ — DISC по цветам: четыре цветные карточки, подробный разбор каждого цвета, текст и свой призыв «Узнать свой цвет»
   const co = C.colors;
+  const colorType = k => { const c = co.colors[k];
+    return `<section class="colortype" id="type-${k.toLowerCase()}" style="--k:${colorVar(k)}"><h2><span class="k">${k}</span>${escFull(c.h)}</h2>` +
+      `<h3>${escFull(co.labels.signs)}</h3>${ul(c.signs)}<h3>${escFull(co.labels.blind)}</h3><p>${escFull(c.blind)}</p><h3>${escFull(co.labels.talk)}</h3>${ul(c.talk)}` +
+      `<a class="more" href="../profiles/${k.toLowerCase()}/">${t('pages.profile.more', { name: escFull(L.profiles[k].name) })}</a></section>`; };
   writeContentPage(L, 'colors/', { navKey: 'nav.colors', article: true, title: co.title, description: co.description, crumbs: [{ name: t('nav.colors') }],
     content: `<div class="eyebrow">DISC</div><h1>${escFull(co.h1)}</h1><p class="lead">${escFull(co.lead)}</p><div class="colorgrid">` +
-      KEYS.map(k => { const c = co.colors[k]; return `<section class="colorcard" id="${k.toLowerCase()}" style="--k:${colorVar(k)}"><div class="swatch">${k}</div><h2>${escFull(c.name)}</h2><p class="muted">${escFull(c.tagline)}</p><p>${escFull(c.text)}</p><div class="traits">${L.styles[k].traits.map(x => `<span>${escFull(x)}</span>`).join('')}</div><a class="more" href="../profiles/${k.toLowerCase()}/">${t('pages.profile.more', { name: escFull(L.profiles[k].name) })}</a></section>`; }).join('') +
-      `</div>` + sectionsHtml(co.sections) + ctaBlock(L, t, '../') + seeAlso('../', 'nav.colors') });
+      KEYS.map(k => { const c = co.colors[k]; return `<section class="colorcard" id="${k.toLowerCase()}" style="--k:${colorVar(k)}"><div class="swatch">${k}</div><h2>${escFull(c.name)}</h2><p class="muted">${escFull(c.tagline)}</p><p>${escFull(c.text)}</p><div class="traits">${L.styles[k].traits.map(x => `<span>${escFull(x)}</span>`).join('')}</div><a class="more" href="#type-${k.toLowerCase()}">${escFull(c.h)} ↓</a></section>`; }).join('') +
+      `</div>` + `<aside class="cta"><div><h2>${escFull(co.cta.title)}</h2><p>${escFull(co.cta.text)}</p></div><a class="btn" href="../">${escFull(co.cta.button)}</a></aside>` +
+      KEYS.map(colorType).join('') + sectionsHtml(co.sections) +
+      `<aside class="cta"><div><h2>${escFull(co.cta.title)}</h2><p>${escFull(co.cta.text)}</p></div><a class="btn" href="../">${escFull(co.cta.button)}</a></aside>` + seeAlso('../', 'nav.colors') });
   // /compatibility/ — матрица пар и 10 страниц пар стилей
   const cp = C.compatibility;
   const pairNames = k => k[0] === k[1] ? { a: k[0], b: k[1] } : { a: L.keys[k[0]], b: L.keys[k[1]] };
@@ -443,6 +445,9 @@ const urls = pages.map(pg => `  <url><loc>${urlOf(pg.lang) + pg.sub}</loc><lastm
   .concat(extraUrls.map(u => `  <url><loc>${u.loc}</loc><lastmod>${lastmod(u.files) || today}</lastmod></url>`));
 fs.writeFileSync(path.join(OUT, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${urls.join('\n')}\n</urlset>\n`);
 if (cfg.customDomain) fs.writeFileSync(path.join(OUT, 'CNAME'), cfg.customDomain + '\n');
+// IndexNow (Bing, Яндекс, Seznam, Naver): файл-ключ в корне сайта подтверждает, что уведомления шлёт владелец; отправка — scripts/indexnow.js
+const indexNowKey = String(cfg.indexNowKey || '').replace(/[^A-Za-z0-9-]/g, '');
+if (indexNowKey) fs.writeFileSync(path.join(OUT, indexNowKey + '.txt'), indexNowKey + '\n');
 
 // Иконки, og-картинки, манифест (файлы готовятся заранее командой node scripts/make-assets.js)
 for (const f of ['favicon.svg', 'favicon.ico', 'apple-touch-icon.png', 'icon-192.png', 'icon-512.png']) {
@@ -458,6 +463,10 @@ for (const L of locales) {
   const src = path.join(ASSETS, 'og', L.lang + '.png');
   if (fs.existsSync(src)) fs.copyFileSync(src, path.join(OUT, 'og', L.lang + '.png')); else console.warn('WARNING: missing og image for ' + L.lang);
 }
+// og-картинки 16 профилей на каждом языке (для «Поделиться типом»): src/assets/og/profiles/<язык>-<код>.png
+const ogProfiles = path.join(ASSETS, 'og', 'profiles');
+if (fs.existsSync(ogProfiles)) { fs.mkdirSync(path.join(OUT, 'og', 'profiles'), { recursive: true });
+  for (const f of fs.readdirSync(ogProfiles)) if (f.endsWith('.png') && locales.some(L => f.startsWith(L.lang + '-') && /^[a-z]{1,2}\.png$/.test(f.slice(L.lang.length + 1)))) fs.copyFileSync(path.join(ogProfiles, f), path.join(OUT, 'og', 'profiles', f)); }
 fs.writeFileSync(path.join(OUT, 'manifest.webmanifest'), JSON.stringify({ name: 'DISC Test', short_name: 'DISC', start_url: basePath, display: 'standalone', background_color: '#F3F4F6', theme_color: '#1B2027',
   icons: [{ src: basePath + 'icon-192.png', sizes: '192x192', type: 'image/png' }, { src: basePath + 'icon-512.png', sizes: '512x512', type: 'image/png' }] }, null, 2) + '\n');
 

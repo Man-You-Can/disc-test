@@ -341,7 +341,7 @@
         },
         {
           "q": "Test gerçekten ücretsiz mi?",
-          "a": "Evet, tamamen: kayıt, gizli ödeme ya da ücretli “genişletilmiş rapor” yok. Sonuç, son sorunun hemen ardından ekranda görünür ve belirttiğiniz e-posta adresine gönderilir."
+          "a": "Evet, tamamen: kayıt, gizli ödeme ya da ücretli “genişletilmiş rapor” yok. Sonuç, son sorunun hemen ardından ekranda görünür; isterseniz e-postayla da alabilirsiniz."
         },
         {
           "q": "D, I, S, C harfleri ne anlama gelir?",
@@ -365,7 +365,7 @@
         },
         {
           "q": "Sonuç nereye gider ve onu kim görür?",
-          "a": "Sonuç ekranda gösterilir, tarayıcınıza kaydedilir ve testten önce belirttiğiniz e-posta adresine gönderilir. Adınız, e-posta adresiniz ve sonucunuz ayrıca site sahibinin sonuç veri tabanına kaydedilir; bu veriler başka amaçlarla kullanılmaz ve üçüncü kişilere aktarılmaz. Başkaları raporunuzu ancak bağlantısını siz paylaşırsanız görebilir. Ayrıntılar “Gizlilik” sayfasındadır."
+          "a": "Sonuç ekranda gösterilir ve tarayıcınıza kaydedilir. Sonuç ekranında adınızı ve e-posta adresinizi belirtirseniz rapor bu adrese e-postayla gönderilir, adınız, e-posta adresiniz ve sonucunuz da site sahibinin sonuç veri tabanına kaydedilir; bu veriler başka amaçlarla kullanılmaz ve üçüncü kişilere aktarılmaz. Başkaları raporunuzu ancak bağlantısını siz paylaşırsanız görebilir. Ayrıntılar “Gizlilik” sayfasındadır."
         },
         {
           "q": "Testi yeniden çözebilir miyim?",
@@ -396,7 +396,7 @@
       "sections": [
         {
           "h": "Bu site neden var",
-          "p": ["Kayıt olmadan ve ödeme yapmadan on dakikada çözülebilen, kendi dilinizde anlaşılır bir rapor veren ve sonucu ekiple paylaşmaya imkân tanıyan bir DISC testi hazırlamak istedik. Site 14 dilde çalışır; sonuç hemen görünür ve e-postayla gelir; yöneticiler ve İK için de katılımcıların sonuçlarının tek bir tabloda toplandığı bir panel vardır."]
+          "p": ["Kayıt olmadan ve ödeme yapmadan on dakikada çözülebilen, kendi dilinizde anlaşılır bir rapor veren ve sonucu ekiple paylaşmaya imkân tanıyan bir DISC testi hazırlamak istedik. Site 14 dilde çalışır; sonuç hemen görünür ve isterseniz e-postayla gelir; yöneticiler ve İK için de katılımcıların sonuçlarının tek bir tabloda toplandığı bir panel vardır."]
         },
         {
           "h": "Test neye dayanıyor",
@@ -423,19 +423,19 @@
         {
           "h": "Hangi verileri kullanıyoruz",
           "p": [
-            "Testten önce adınızı ve e-posta adresinizi girersiniz. Test sırasında yanıtlarınız, test bittikten sonra da sonucunuz, seçtiğiniz dil ve çerez bildirimini gördüğünüzü belirten bir işaret kaydedilir. Bunların tümü tarayıcınızın yerel depolama alanında tutulur. Test tamamlandıktan sonra adınız, e-posta adresiniz, testi çözdüğünüz tarih ve sonucunuz ayrıca site sahibinin sonuç veri tabanına da kaydedilir."
+            "Testi çözmek için hiçbir bilgi girmeniz gerekmez. Test sırasında yanıtlarınız, test bittikten sonra da sonucunuz, seçtiğiniz dil ve çerez bildirimini gördüğünüzü belirten bir işaret kaydedilir. Raporu e-postayla almak isterseniz adınızı ve e-posta adresinizi sonuç ekranında girebilirsiniz; bu isteğe bağlıdır. Bunların tümü tarayıcınızın yerel depolama alanında tutulur. Sonucu e-postanıza gönderdiyseniz adınız, e-posta adresiniz, testi çözdüğünüz tarih ve sonucunuz ayrıca site sahibinin sonuç veri tabanına da kaydedilir."
           ]
         },
         {
           "h": "Veriler nereye aktarılır",
           "p": [
-            "Test tamamlandıktan sonra adınız, e-posta adresiniz ve yanıtlarınız (sonuç kodu biçiminde) e-posta gönderim hizmetine, yani site sahibinin Google hesabında çalışan bir Google Apps Script betiğine aktarılır. Bu betik size sonucu içeren bir e-posta gönderir ve adınızı, e-posta adresinizi, testi çözdüğünüz tarihi ve sonucunuzu (profil, puanlar, rapor bağlantısı) sonuç veri tabanına, yani aynı hesaptaki bir Google E-Tablolar dosyasına kaydeder. Bu veriler başka amaçlarla kullanılmaz ve üçüncü kişilere aktarılmaz.",
+            "“E-postama gönder” düğmesine bastığınızda adınız, e-posta adresiniz ve yanıtlarınız (sonuç kodu biçiminde) e-posta gönderim hizmetine, yani site sahibinin Google hesabında çalışan bir Google Apps Script betiğine aktarılır. Bu betik size sonucu içeren bir e-posta gönderir ve adınızı, e-posta adresinizi, testi çözdüğünüz tarihi ve sonucunuzu (profil, puanlar, rapor bağlantısı) sonuç veri tabanına, yani aynı hesaptaki bir Google E-Tablolar dosyasına kaydeder. Bu veriler başka amaçlarla kullanılmaz ve üçüncü kişilere aktarılmaz.",
             "Barındırma hizmeti GitHub Pages, isteğe ilişkin standart teknik verileri alır: IP adresi, tarayıcı türü, sayfa adresi. Yazı tipleri sitenin kendisinde barındırılır ve Google sunucularından yüklenmez. Ziyaret istatistiklerini bir web analiz hizmeti toplar: ziyarete ilişkin anonimleştirilmiş verileri — sonuç kodu içermeyen sayfa adresi, ziyaretin geldiği kaynak, cihaz ve tarayıcı türü — ve sayfadaki hareketlerin kaydını alır; ad ve e-posta alanları, sonuç bağlantısı ve sonuç kodu bu kaydın dışında tutulur. Veri toplamayı tarayıcı ayarlarınızdan ya da bir izleyici engelleyiciyle devre dışı bırakabilirsiniz. Reklam amaçlı izleyiciler kullanılmaz."
           ]
         },
         {
           "h": "Sonuç bağlantısı",
-          "p": ["Rapor bağlantısı adınızı, e-posta adresinizi ve yanıtlarınızı kodlanmış biçimde içerir. Bağlantıya sahip olan herkes raporu açabilir; bu yüzden onu yalnızca güvendiğiniz kişilerle paylaşın. Yönetici paneli yalnızca kodları panele yapıştıran kişinin tarayıcısında çalışır."]
+          "p": ["Rapor bağlantısı yanıtlarınızı kodlanmış biçimde içerir; adınızı ve e-posta adresinizi belirttiyseniz onları da. Bağlantıya sahip olan herkes raporu açabilir; bu yüzden onu yalnızca güvendiğiniz kişilerle paylaşın. Yönetici paneli yalnızca kodları panele yapıştıran kişinin tarayıcısında çalışır."]
         },
         {
           "h": "İletişim formu",
@@ -451,7 +451,7 @@
         },
         {
           "h": "Değişiklikler",
-          "p": ["Son güncelleme: 23 Eylül 2026. Verilerin işlenmesindeki değişiklikler bu sayfaya yansıtılacaktır."]
+          "p": ["Son güncelleme: 24 Eylül 2026. Verilerin işlenmesindeki değişiklikler bu sayfaya yansıtılacaktır."]
         }
       ]
     },
@@ -470,7 +470,7 @@
         {
           "h": "Sonuç nelerden oluşur",
           "p": [
-            "Son sorudan sonra dört öğe görürsünüz: bir ya da iki harfli profil adı (örneğin “Öncü, DI”), üç çizgili bir grafik, yüzdeleri gösteren dört ölçek ve yazılı bir açıklama: özellikler, güçlü yönler, gelişim alanları, motivasyon, stres altındaki davranış ve sizinle nasıl iletişim kurulması gerektiğine dair öneriler. Aynı rapor e-posta adresinize de gelir ve bağlantısı üzerinden yeniden açılabilir.",
+            "Son sorudan sonra dört öğe görürsünüz: bir ya da iki harfli profil adı (örneğin “Öncü, DI”), üç çizgili bir grafik, yüzdeleri gösteren dört ölçek ve yazılı bir açıklama: özellikler, güçlü yönler, gelişim alanları, motivasyon, stres altındaki davranış ve sizinle nasıl iletişim kurulması gerektiğine dair öneriler. Aynı raporu e-postayla da alabilir ve bağlantısı üzerinden yeniden açabilirsiniz.",
             "Rapordaki bütün sayılar, 24 soruda yaptığınız işaretlemelerden türetilir. Her soruda “Beni en çok tanımlayan” bir ifade ve “Beni en az tanımlayan” bir ifade seçtiniz; her ifade de D, I, S ya da C stillerinden birine aittir. Bu yüzden her stilin iki sayısı vardır: onu kaç kez “en çok”, kaç kez “en az” olarak seçtiğiniz."
           ]
         },
@@ -537,32 +537,49 @@
       ]
     },
     "colors": {
-      "title": "DISC renkleri: kırmızı, sarı, yeşil ve mavi kişilik tipleri",
-      "description": "DISC renkleri: kırmızı (D), sarı (I), yeşil (S), mavi (C). Her rengin anlamı, renginizi bulmanın yolu ve renk testlerinin DISC’ten farkı. Ücretsiz online test.",
+      "title": "Renklere göre kişilik: kırmızı, sarı, yeşil ve mavi tipler (DISC renkleri)",
+      "description": "DISC’te kırmızı, sarı, yeşil ve mavi kişilik: her rengi nasıl tanırsınız, onunla nasıl iletişim kurarsınız ve “Etrafım Aptallarla Dolu” ile bağı. Ücretsiz test.",
       "h1": "DISC renkleri: kırmızı, sarı, yeşil, mavi",
       "lead": "DISC’in dört stili çoğu zaman renklerle gösterilir: kırmızı — Baskınlık, sarı — Etkileyicilik, yeşil — İstikrar, mavi — Titizlik. Renkler modele yeni bir şey katmaz, ama stilleri çabucak akılda tutmayı ve ekip içinde konuşmayı kolaylaştırır. Bu sayfada her rengin ardında ne olduğunu ve kendi renginizi nasıl öğreneceğinizi anlatıyoruz.",
       "colors": {
         "D": {
           "name": "Kırmızı",
           "tagline": "Baskınlık (D): sonuç ve kontrol",
-          "text": "Kırmızı, hızın ve atılganlığın rengidir. “Kırmızılar” hedef koyar ve dosdoğru ona yürür; hızlı karar verir, tartışmaktan çekinmez, sorumluluk alır ve çatışmadan korkmaz. Ekipte işi ileri taşıyan onlardır, ancak baskı kurabilir ve daha temkinli çalışanlara karşı sabırsızlanabilirler."
+          "text": "Kırmızı, hızın ve atılganlığın rengidir. “Kırmızılar” hedef koyar ve dosdoğru ona yürür; hızlı karar verir, tartışmaktan çekinmez, sorumluluk alır ve çatışmadan korkmaz. Ekipte işi ileri taşıyan onlardır, ancak baskı kurabilir ve daha temkinli çalışanlara karşı sabırsızlanabilirler.",
+          "h": "Kırmızı kişilik tipi",
+          "signs": ["Kısa ve net konuşur, hemen konunun özüne ve sonuca geçer.", "Hızlı karar verir, kararların ertelenmesinden hoşlanmaz.", "Toplantılarda söz alır, tartışır ve tempoyu belirler.", "Yazışmalarda selamsız, emojisiz iki satır yazar.", "Baskı altında sertleşir ve her şeye tek başına karar vermeye başlar."],
+          "blind": "“Kırmızının” güçlü yanı, başkaları hâlâ tartışırken işi harekete geçirebilmesidir. Kör noktası ise bu temponun bedelidir: insanların henüz ikna olmadığını fark etmez, temkinliliği zayıflık, soruları da direnç sanır. Onu en çok yavaşlık, boş laf ve kontrolü kaybetmek rahatsız eder.",
+          "talk": ["Hedef ve sonuçla başlayın; ayrıntıları o isterse verin.", "Tek bir çözüm değil, seçenekler sunun: seçimi kendisi yapmak ister.", "Açıkça ve verilerle tartışın: imaları ve alınganlıkları fark etmez."]
         },
         "I": {
           "name": "Sarı",
           "tagline": "Etkileyicilik (I): insanlar ve coşku",
-          "text": "Sarı, enerjinin ve iletişimin rengidir. “Sarılar” kolayca tanışır, ilham verir, fikir üretir ve iyimserliklerini çevrelerine yayar. Onlar için takdir görmek ve canlı, yüz yüze iletişim önemlidir; ayrıntılar, teslim tarihleri ve rutin işler onları daha çok zorlar; bazen de yerine getirebileceklerinden fazlasını vaat ederler."
+          "text": "Sarı, enerjinin ve iletişimin rengidir. “Sarılar” kolayca tanışır, ilham verir, fikir üretir ve iyimserliklerini çevrelerine yayar. Onlar için takdir görmek ve canlı, yüz yüze iletişim önemlidir; ayrıntılar, teslim tarihleri ve rutin işler onları daha çok zorlar; bazen de yerine getirebileceklerinden fazlasını vaat ederler.",
+          "h": "Sarı kişilik tipi",
+          "signs": ["Yabancılarla kolayca sohbete başlar ve çabucak samimi olur.", "Hikâyelerle anlatır, bol bol el kol hareketi yapar, coşkusunu çevresine bulaştırır.", "Anında fikir üretir ve katılmak için ilk gönüllü olan odur.", "Canlı yazar: ünlemler, emojiler, sesli mesajlar.", "Baskı altında çok konuşur, gereğinden fazla söz verir ve destek arar."],
+          "blind": "“Sarının” güçlü yanı, insanları bir araya getirip bir fikir etrafında heyecanlandırabilmesidir. Kör noktası ise uygulamadır: rutin başlayınca ilgisi söner, teslim tarihleri ve ayrıntılar ikinci plana düşer, vaatleri imkânlarının önüne geçer. Onu en çok ilgisizlik, herkesin önünde eleştirilmek ve tek başına çalışmak incitir.",
+          "talk": ["Önce samimi bir temas kurun: kendisi hakkında birkaç söz, sonra iş.", "Açık açık ve içtenlikle övün: takdir onun için en iyi motivasyondur.", "Anlaşmaları tarihleriyle birlikte yazıya dökün: kendisi unutabilir."]
         },
         "S": {
           "name": "Yeşil",
           "tagline": "İstikrar (S): destek ve denge",
-          "text": "Yeşil, sakinliğin ve güvenilirliğin rengidir. “Yeşiller” dinlemeyi bilir, destek olur, başladıkları işi bitirir ve ekip içindeki ilişkileri korur. Öngörülebilirliğe ve değişime alışmak için zamana ihtiyaç duyarlar; açık çatışma ve baskı onları çok yıpratır."
+          "text": "Yeşil, sakinliğin ve güvenilirliğin rengidir. “Yeşiller” dinlemeyi bilir, destek olur, başladıkları işi bitirir ve ekip içindeki ilişkileri korur. Öngörülebilirliğe ve değişime alışmak için zamana ihtiyaç duyarlar; açık çatışma ve baskı onları çok yıpratır.",
+          "h": "Yeşil kişilik tipi",
+          "signs": ["Konuşmaktan çok dinler, size nasıl olduğunuzu sorar.", "Yanıt vermekte acele etmez, düşünmek için zaman ister.", "Seve seve yardım eder; iş yükü ağır olsa bile nadiren hayır der.", "Alışık olduğuna bağlı kalır: aynı yol, aynı araçlar, aynı ekip.", "Baskı altında susar, görünürde kabul eder ve içinde hoşnutsuzluk biriktirir."],
+          "blind": "“Yeşilin” güçlü yanı güvenilirliktir: başladığı işi bitirir, başkalarının kavgaya tutuşacağı yerde ilişkileri korur. Kör noktası ise sessizliktir: “hayır” demez, açıkça itiraz etmez ve içten içe katılmadığı değişikliklere razı olur. Onu en çok ani değişiklikler, sert bir üslup ve çatışmalar dengesinden çıkarır.",
+          "talk": ["Değişiklikleri önceden haber verin ve neden gerektiğini açıklayın.", "Fikrini genel tartışmada değil, ayrıca sorun.", "Sessizliğini onay saymayın: gerçekte ne düşündüğünü sorun."]
         },
         "C": {
           "name": "Mavi",
           "tagline": "Titizlik (C): doğruluk ve kalite",
-          "text": "Mavi, analizin ve düzenin rengidir. “Maviler” somut gerçeklere dayanır, ayrıntıları kontrol eder, plan yapar ve standartlara uyar. Kalitenin güvencesi onlardır, ancak analize saplanıp kalabilir, mükemmeli ararken işi uzatabilir ve soğuk görünebilirler."
+          "text": "Mavi, analizin ve düzenin rengidir. “Maviler” somut gerçeklere dayanır, ayrıntıları kontrol eder, plan yapar ve standartlara uyar. Kalitenin güvencesi onlardır, ancak analize saplanıp kalabilir, mükemmeli ararken işi uzatabilir ve soğuk görünebilirler.",
+          "h": "Mavi kişilik tipi",
+          "signs": ["Netleştirici sorular sorar; rakam, kaynak ve örnek ister.", "Karar vermeden önce bilgi toplar ve seçenekleri karşılaştırır.", "Başkalarının gözden kaçırdığı hataları, yazım yanlışlarını ve tutarsızlıkları fark eder.", "Ayrıntılı, madde madde, ekler ve bağlantılarla yazar.", "Baskı altında analize gömülür, kararı erteler ve daha eleştirel olur."],
+          "blind": "“Mavinin” güçlü yanı kalitedir: yaptığı işin yeniden yapılması nadiren gerekir. Kör noktası ise mükemmeliyetin bedelidir: zaten yeterince iyi olanı kontrol etmeye zaman harcar, her şey tam netleşene kadar kararı erteler ve destek beklenen yerde soğuk görünür. Onu en çok özensizlik, sebepsiz acele ve muğlak ifadeler rahatsız eder.",
+          "talk": ["Somut verilerle ve derli toplu gelin: hedef, veriler, seçenekler, süreler.", "Materyali toplantıda değil, görüşmeden önce incelemesi için zaman tanıyın.", "Eleştiriyi somutlaştırın: tam olarak ne yanlış ve hangi ölçüte göre."]
         }
       },
+      "labels": { "signs": "Nasıl tanınır", "blind": "Güçlü yanı ve kör noktası", "talk": "Nasıl iletişim kurulur" },
       "sections": [
         {
           "h": "Renkler nereden geldi?",
@@ -593,6 +610,13 @@
           ]
         },
         {
+          "h": "Thomas Erikson’un “Etrafım Aptallarla Dolu” kitabında renkler",
+          "p": [
+            "Dört renk geniş kitlelerce her şeyden önce İsveçli yazar Thomas Erikson’un “Etrafım Aptallarla Dolu” (Omgiven av idioter, 2014) kitabıyla tanındı. Kitap milyonlarca sattı ve onlarca dile çevrildi. Erikson, DISC’teki dört karakterin aynısını anlatır: kararlı ve sabırsız kırmızı, sosyal ve çabuk heyecanlanan sarı, sakin ve uzlaşmacı yeşil, titiz ve ölçülü mavi. Başlık ironiktir: başka renkten insanlar, nasıl işlediklerini anlayana kadar bize “aptal” gibi görünür.",
+            "Erikson doğrudan DISC’e dayanır; bu yüzden onun kırmızısı, sarısı, yeşili ve mavisi bu sitedeki D, I, S ve C stilleriyle örtüşür. Fark anlatım biçimindedir: kitap modeli gündelik hikâyeler ve tiplemelerle açıklar, test ise her stilin ne kadar belirgin olduğunu ölçer. İsveç’te kitap, psikologlar ve bilimi yaygınlaştırma derneği Vetenskap och Folkbildning tarafından eleştirildi: basitleştirmeleri ve popüler bir metnin bilimsel temelli gibi sunulması nedeniyle. Bu, tüm renk şemaları için yerinde bir uyarıdır: onları teşhis olarak değil, konuşmak için ortak bir dil olarak kullanın."
+          ]
+        },
+        {
           "h": "Ekipte renkler",
           "p": [
             "Ekibin renk haritası, dengesizlikleri hızlıca görmenin bir yoludur. Baştan sona “kırmızılardan” oluşan bir ekip hızlı karar verir, aynı hızla da birbirine düşer; “yeşillerden” oluşan bir ekip kaynaşmıştır, ama zor konuşmalardan kaçınır ve değişimi erteler. Karma bir ekip, herkes diğer renkten ne bekleyeceğini bildiğinde daha iyi çalışır: görev nasıl verilir, geri bildirim nasıl iletilir, nasıl tartışılır.",
@@ -603,7 +627,12 @@
           "h": "Sınırlılıklar",
           "p": ["Renk bir etikettir, etiketler ise basitleştirir. “Ne de olsa kırmızısın” sözü kulağa kabalığın bahanesi gibi, “O yeşil, ondan ne beklenir ki” sözü ise o kişiden beklentiyi kesmek gibi gelir. DISC karakteri, değerleri ya da yetenekleri değil, alışılmış davranışı tanımlar ve her stil geliştirilebilir. Renkleri insanları kalıplara sokmak için değil, birbirinizi anlamak için kullanın."]
         }
-      ]
+      ],
+      "cta": {
+        "title": "DISC renginizi öğrenin",
+        "text": "Test, ana ve ikincil renginizi, bunların yüzde kaç belirgin olduğunu ve bununla ne yapabileceğinizi gösterir. 24 soru, yaklaşık 10 dakika, kayıt yok.",
+        "button": "Rengini öğren"
+      }
     },
     "pdf": {
       "title": "DISC testi PDF: soruları, anahtarı ve yorumuyla ücretsiz indirin",
@@ -670,7 +699,7 @@
           "h": "Bu sitede test ekibe nasıl uygulanır?",
           "ol": [
             "Önce testi kendiniz çözün; böylece katılımcıların ne göreceğini bilir ve örnek bir rapor gösterebilirsiniz.",
-            "İş arkadaşlarınıza sitenin uygun dildeki bağlantısını gönderin. Kayıt gerekmez, test yaklaşık on dakika sürer; herkes adını ve e-posta adresini yazar, raporu hem ekranda görür hem de e-postayla alır.",
+            "İş arkadaşlarınıza sitenin uygun dildeki bağlantısını gönderin. Kayıt gerekmez, test yaklaşık on dakika sürer; rapor ekranda görünür, herkes sonuç ekranında adını ve e-posta adresini yazarak raporu e-postayla da alır.",
             "Herkesten sonuç bağlantısını ya da rapordaki kodu size iletmesini isteyin. Sonucu yalnızca bağlantıya sahip olanlar görebilir; yöneticiye hiçbir veri otomatik olarak gönderilmez.",
             "Yönetici panelini açın (bağlantısı sitenin en altında) ve aldığınız kodları yapıştırın. Panel adları, profilleri ve puanları içeren bir tablo oluşturur; tabloyu Excel’e kopyalayabilirsiniz. Tablo yalnızca sizin tarayıcınızda saklanır.",
             "Ortak bir toplantı planlayın. Dört stili anlatın, ekip haritasını gösterin ve herkese raporunda neyin tam isabet olduğunu, neyin olmadığını anlatma fırsatı verin."
@@ -901,7 +930,7 @@
   "ui": {
     "langLabel": "Dil",
     "footer": "24 soru · yaklaşık 10 dakika · doğru ya da yanlış yanıt yok",
-    "privacy": "Yanıtlarınız tarayıcınızda kalır; sonucunuz belirttiğiniz e-posta adresine gönderilir ve site sahibinin sonuç veri tabanına kaydedilir.",
+    "privacy": "Yanıtlarınız tarayıcınızda kalır; e-posta adresinizi belirtirseniz sonucunuz bu adrese gönderilir ve site sahibinin sonuç veri tabanına kaydedilir.",
     "adminLink": "Yönetici paneli",
 
     "intro.eyebrow": "DISC kişilik envanteri",
@@ -912,9 +941,10 @@
     "intro.howText": "Testte her biri dört ifadeden oluşan 24 soru, toplam 96 ifade vardır. Her soruda sizi <b>en çok</b> tanımlayan bir ifadeyi ve sizi <b>en az</b> tanımlayan bir ifadeyi işaretleyin. Olmak istediğiniz gibi değil, iş yerinde genellikle nasıl davranıyorsanız öyle yanıt verin. Uzun uzun düşünmeyin: ilk tepki daha isabetlidir.",
     "intro.nameLabel": "Adınız",
     "intro.emailLabel": "Sonucun gönderileceği e-posta adresi",
-    "intro.emailHint": "Testi tamamladığınızda sonucunuz bu adrese e-postayla gönderilir. Adınız, e-posta adresiniz ve sonucunuz site sahibinin sonuç veri tabanına kaydedilir.",
+    "intro.emailHint": "Bu adrese tam raporun bağlantısını içeren bir e-posta gönderilir. Adınız, e-posta adresiniz ve sonucunuz site sahibinin sonuç veri tabanına kaydedilir.",
     "intro.requiredNote": "Yıldız (*) ile işaretli alanların doldurulması zorunludur.",
     "intro.start": "Teste başla",
+    "intro.startNote": "24 soru · yaklaşık 10 dakika · kayıt yok",
     "intro.resume": "Yarım kalan teste devam et (24 sorudan {n} tanesi tamamlandı)",
     "intro.showLast": "{date} tarihli önceki sonucumu aç",
     "intro.nameRequired": "Adınızı yazın",
@@ -955,6 +985,7 @@
     "report.stress": "Stres altında",
     "report.environment": "İdeal ortam",
     "report.moreLink": "DISC profilinin nasıl okunacağına dair ayrıntılar →",
+    "report.color": "DISC renginiz: {color}",
 
     "share.title": "Sonucunuzu kaydedin",
     "share.text": "Sonuç tarayıcınıza kaydedildi. Raporu daha sonra ya da başka bir cihazda açmak için bağlantıyı kopyalayın veya testi çözmenizi isteyen kişiye iletin.",
@@ -969,6 +1000,14 @@
     "share.sent": "Sonucunuz {email} adresine e-postayla gönderildi.",
     "share.sendFailed": "{email} adresine e-posta gönderilemedi. Rapor bağlantısını kopyalayın veya tekrar deneyin.",
     "share.retry": "Tekrar gönder",
+    "share.emailTitle": "Sonucunuzu e-postayla alın",
+    "share.send": "E-postama gönder",
+    "share.mailtoHint": "E-posta programınız bu adrese hazırlanmış bir e-postayla açılır; size yalnızca “Gönder”e basmak kalır.",
+    "share.mailtoOpened": "Sonucunuzu içeren e-posta, e-posta programınızda açıldı; {email} adresine gönderin.",
+    "share.typeTitle": "Tipinizi paylaşın",
+    "share.typeText": "Bağlantı, “{name}” profilinin herkese açık açıklamasına gider: adınız, e-posta adresiniz ya da yanıtlarınız bu bağlantıda yer almaz.",
+    "share.type": "Tipimi paylaş",
+    "share.typeMsg": "DISC tipim: {name} ({key}). Peki sizinki hangisi?",
 
     "mail.subject": "DISC: {name} — {label}",
     "mail.title": "DISC testi sonucu",
@@ -1102,7 +1141,7 @@
     "consent.label": "Çerez bildirimi",
     "consent.text": "Site; ilerlemenizi, sonucunuzu ve seçtiğiniz dili tarayıcının yerel depolama alanında saklar. Bir web analiz hizmeti ise siteyi geliştirebilmemiz için anonimleştirilmiş ziyaret istatistiklerini ve sayfadaki hareketlerin kaydını toplar. Adınız, e-posta adresiniz ve sonucunuz analiz hizmetine aktarılmaz.",
     "consent.more": "Ayrıntılar",
-    "consent.details": "Tarayıcıda saklananlar: testten önce girdiğiniz ad ve e-posta adresi; yanıtlarınız ve tamamlanmamış ilerlemeniz; son sonucunuz; seçtiğiniz dil; bu bildirimi gördüğünüze dair işaret. Bu veriler cihazınızda kalır ve site verilerini temizlediğinizde silinir. Barındırma hizmeti GitHub Pages, isteğe ilişkin standart teknik verileri alır. Testi tamamladığınızda adınız, e-posta adresiniz ve yanıtlarınız e-posta gönderim hizmetine (Google Apps Script) aktarılır: bu hizmet size sonucunuzu içeren bir e-posta gönderir ve adınızı, e-posta adresinizi, tarihi ve sonucu site sahibinin sonuç veri tabanına (Google E-Tablolar’daki bir tablo) kaydeder. Web analiz hizmeti şunları alır: sonuç kodu içermeyen sayfa adresi, ziyaretin geldiği kaynak, cihaz ve tarayıcı türü, sayfadaki hareketlerin anonimleştirilmiş kaydı (ad ve e-posta alanları ile sonuç bağlantısı ve kodu kayda dahil edilmez); ayrıca kendi çerezlerini yerleştirir. Bu hizmeti tarayıcı ayarlarından ya da bir izleyici engelleyiciyle engelleyebilirsiniz. Reklam amaçlı izleyiciler kullanılmaz.",
+    "consent.details": "Tarayıcıda saklananlar: belirttiyseniz adınız ve e-posta adresiniz; yanıtlarınız ve tamamlanmamış ilerlemeniz; son sonucunuz; seçtiğiniz dil; bu bildirimi gördüğünüze dair işaret. Bu veriler cihazınızda kalır ve site verilerini temizlediğinizde silinir. Barındırma hizmeti GitHub Pages, isteğe ilişkin standart teknik verileri alır. Sonucunuzu e-postanıza gönderdiğinizde adınız, e-posta adresiniz ve yanıtlarınız e-posta gönderim hizmetine (Google Apps Script) aktarılır: bu hizmet size sonucunuzu içeren bir e-posta gönderir ve adınızı, e-posta adresinizi, tarihi ve sonucu site sahibinin sonuç veri tabanına (Google E-Tablolar’daki bir tablo) kaydeder. Web analiz hizmeti şunları alır: sonuç kodu içermeyen sayfa adresi, ziyaretin geldiği kaynak, cihaz ve tarayıcı türü, sayfadaki hareketlerin anonimleştirilmiş kaydı (ad ve e-posta alanları ile sonuç bağlantısı ve kodu kayda dahil edilmez); ayrıca kendi çerezlerini yerleştirir. Bu hizmeti tarayıcı ayarlarından ya da bir izleyici engelleyiciyle engelleyebilirsiniz. Reklam amaçlı izleyiciler kullanılmaz.",
     "consent.accept": "Kabul et",
     "consent.decline": "Yalnızca gerekli olanlar",
     "consent.ok": "Anladım",

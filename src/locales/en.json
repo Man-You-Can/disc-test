@@ -341,7 +341,7 @@
         },
         {
           "q": "Is the test really free?",
-          "a": "Yes, completely: no sign-up, no hidden charges and no paid “extended reports.” The result appears on screen right after the last block and is emailed to the address you provide."
+          "a": "Yes, completely: no sign-up, no hidden charges and no paid “extended reports.” The result appears on screen right after the last block, and you can also have it emailed to you if you like."
         },
         {
           "q": "What do the letters D, I, S, C mean?",
@@ -365,7 +365,7 @@
         },
         {
           "q": "Where does the result go and who can see it?",
-          "a": "The result is shown on screen, saved in your browser and sent to the email address you entered before the test. Your name, email address and result are also recorded in the site owner’s results database; they are not used for any other purpose and are not passed to third parties. Other people will see your report only if you share the link to it yourself. See the Privacy page for details."
+          "a": "The result is shown on screen and saved in your browser. If you enter your name and email address on the result screen, the report is emailed to that address, and your name, email address and result are recorded in the site owner’s results database; they are not used for any other purpose and are not passed to third parties. Other people will see your report only if you share the link to it yourself. See the Privacy page for details."
         },
         {
           "q": "Can I take the test again?",
@@ -396,7 +396,7 @@
       "sections": [
         {
           "h": "Why this site exists",
-          "p": ["We wanted a DISC test that anyone can take in ten minutes without signing up or paying, that gives them a clear report in their own language and that they can share with their team. The site works in 14 languages, the result appears instantly and arrives by email, and managers and HR have a panel where participants’ results are collected into a table."]
+          "p": ["We wanted a DISC test that anyone can take in ten minutes without signing up or paying, that gives them a clear report in their own language and that they can share with their team. The site works in 14 languages, the result appears instantly and can be emailed to you on request, and managers and HR have a panel where participants’ results are collected into a table."]
         },
         {
           "h": "What the test is based on",
@@ -422,18 +422,20 @@
       "sections": [
         {
           "h": "What data we use",
-          "p": ["Before the test you enter your name and email address. During the test your answers are saved, and after it your result, chosen language and a note that you have seen the cookie notice. All of this is kept in your browser’s local storage. When you finish the test, your name, email address, test date and result are also stored in the site owner’s results database."]
+          "p": [
+            "You don’t need to enter anything to take the test. During the test your answers are saved, and after it your result, chosen language and a note that you have seen the cookie notice. If you want the report by email, you can optionally enter your name and email address on the result screen. All of this is kept in your browser’s local storage. If you send your result by email, your name, email address, test date and result are also stored in the site owner’s results database."
+          ]
         },
         {
           "h": "Where the data goes",
           "p": [
-            "When you finish the test, your name, email address and answers (as a result code) are passed to the email-sending service, a Google Apps Script running in the site owner’s Google account. It sends you your result and records your name, email address, test date and result (profile, scores and report link) in the results database, a Google Sheet in the same account. The data is not used for any other purpose and is not passed to third parties.",
+            "When you press “Email my result,” your name, email address and answers (as a result code) are passed to the email-sending service, a Google Apps Script running in the site owner’s Google account. It sends you your result and records your name, email address, test date and result (profile, scores and report link) in the results database, a Google Sheet in the same account. The data is not used for any other purpose and is not passed to third parties.",
             "The hosting provider (GitHub Pages) receives standard technical request data: IP address, browser type, page address. Fonts are served from this site itself and are not loaded from Google’s servers. Visit statistics are collected by a web analytics service: it receives anonymized visit data, namely the page address without the result code, the referrer, device and browser type, and a recording of on-page actions; the name and email fields, the result link and code are excluded from the recording. You can stop the collection in your browser settings or with a tracker blocker. No advertising trackers are used."
           ]
         },
         {
           "h": "The result link",
-          "p": ["The report link contains your name, email address and answers in encoded form. Anyone with the link can open the report, so share it only with people you trust. The admin panel works only in the browser of the person who pasted the codes into it."]
+          "p": ["The report link contains your answers in encoded form, plus your name and email address if you entered them. Anyone with the link can open the report, so share it only with people you trust. The admin panel works only in the browser of the person who pasted the codes into it."]
         },
         {
           "h": "Contact form",
@@ -449,7 +451,7 @@
         },
         {
           "h": "Changes",
-          "p": ["Last updated: September 23, 2026. Changes in how data is handled will be reflected on this page."]
+          "p": ["Last updated: September 24, 2026. Changes in how data is handled will be reflected on this page."]
         }
       ]
     },
@@ -468,7 +470,7 @@
         {
           "h": "What the result consists of",
           "p": [
-            "After the last block you see four elements: the profile name with one or two letters (for example, “Pioneer, DI”), a chart with three lines, four scales with percentages, and a written description: traits, strengths, growth areas, motivation, behavior under stress and recommendations on how others can best communicate with you. The same report is emailed to you, and you can reopen it at any time from its link.",
+            "After the last block you see four elements: the profile name with one or two letters (for example, “Pioneer, DI”), a chart with three lines, four scales with percentages, and a written description: traits, strengths, growth areas, motivation, behavior under stress and recommendations on how others can best communicate with you. You can also have the same report emailed to you and reopen it at any time from its link.",
             "Every number in the report is derived from your marks in the 24 blocks. In each block you chose one statement as “most like me” and one as “least like me,” and each statement belongs to one of the styles D, I, S or C. So each style has two numbers: how many times you chose it as “most” and how many times as “least.”"
           ]
         },
@@ -536,31 +538,48 @@
     },
     "colors": {
       "title": "DISC Colors: Red, Yellow, Green and Blue Personality Types",
-      "description": "Four DISC colors: red (D), yellow (I), green (S), blue (C). What each color means, how to find yours and how color tests differ from DISC. Free online test.",
+      "description": "Red, yellow, green and blue DISC personality types: how to spot each color, how to work with it and where Surrounded by Idiots fits in. Free test.",
       "h1": "DISC colors: red, yellow, green, blue",
       "lead": "The four DISC styles are often labeled with colors: red for Dominance, yellow for Influence, green for Steadiness, blue for Conscientiousness. The colors add nothing to the model, but they make the styles easy to remember and to talk about on a team. Here is what stands behind each color and how to find yours.",
       "colors": {
         "D": {
           "name": "Red",
           "tagline": "Dominance (D): results and control",
-          "text": "Red is the color of speed and drive. “Reds” set a goal and go straight for it, decide quickly, argue, take responsibility and aren’t afraid of conflict. On a team they push things forward, but they can be overbearing and lose patience with those who work more carefully."
+          "text": "Red is the color of speed and drive. “Reds” set a goal and go straight for it, decide quickly, argue, take responsibility and aren’t afraid of conflict. On a team they push things forward, but they can be overbearing and lose patience with those who work more carefully.",
+          "h": "The red personality type",
+          "signs": ["Keeps it short and to the point, going straight to the bottom line.", "Makes decisions fast and hates it when they get put off.", "Takes the floor in meetings, argues and sets the pace.", "Sends two-line messages with no greeting and no emoji.", "Under pressure, gets curt and starts making every call alone."],
+          "blind": "The strength of a “red” is getting things moving while others are still talking. The blind spot is the cost of that pace: they don’t notice that people haven’t had time to agree, and they mistake caution for weakness and questions for pushback. What irritates them most is slowness, idle talk and losing control.",
+          "talk": ["Lead with the goal and the conclusion; give details only when asked.", "Offer options, not a single solution: they want to make the choice themselves.", "Disagree directly and back it up with facts: hints and hurt feelings go right past them."]
         },
         "I": {
           "name": "Yellow",
           "tagline": "Influence (I): people and enthusiasm",
-          "text": "Yellow is the color of energy and communication. “Yellows” make friends easily, inspire, come up with ideas and spread optimism. Recognition and personal contact matter to them; details, deadlines and routine come harder, and promises sometimes outrun what’s possible."
+          "text": "Yellow is the color of energy and communication. “Yellows” make friends easily, inspire, come up with ideas and spread optimism. Recognition and personal contact matter to them; details, deadlines and routine come harder, and promises sometimes outrun what’s possible.",
+          "h": "The yellow personality type",
+          "signs": ["Strikes up conversations with strangers easily and is on a first-name basis in no time.", "Tells stories, gestures a lot and gets everyone caught up in the mood.", "Comes up with ideas on the fly and is the first to volunteer.", "Writes with flair: exclamation points, emoji, voice messages.", "Under pressure, talks a lot, overpromises and looks for support."],
+          "blind": "The strength of a “yellow” is bringing people together and firing them up with an idea. The blind spot is follow-through: interest fades once routine sets in, deadlines and details slip, and promises outrun what’s possible. What hurts them most is indifference, criticism in front of others and working alone.",
+          "talk": ["Start with personal contact: a few words about them, then get down to business.", "Give praise that is visible and sincere: recognition motivates them more than anything.", "Put agreements in writing, with dates: otherwise they may forget them."]
         },
         "S": {
           "name": "Green",
           "tagline": "Steadiness (S): support and stability",
-          "text": "Green is the color of calm and reliability. “Greens” know how to listen, support others, finish what they start and protect relationships on the team. They need predictability and time to adjust to change; open conflict and pressure are hard for them to bear."
+          "text": "Green is the color of calm and reliability. “Greens” know how to listen, support others, finish what they start and protect relationships on the team. They need predictability and time to adjust to change; open conflict and pressure are hard for them to bear.",
+          "h": "The green personality type",
+          "signs": ["Listens more than they talk and asks how you’re doing.", "Doesn’t rush to answer and takes time to think things over.", "Is glad to help and rarely says no, even when overloaded.", "Sticks to the familiar: the same route, the same tools, the same team.", "Under pressure, goes quiet, seems to agree and lets resentment build."],
+          "blind": "The strength of a “green” is reliability: they finish what they start and keep relationships intact where others would fall out. The blind spot is silence: they don’t say no, don’t argue openly and go along with changes they privately disagree with. What throws them off most is sudden change, a harsh tone and conflict.",
+          "talk": ["Give advance notice of changes and explain why they’re needed.", "Ask for their opinion one-on-one, not in the middle of a group debate.", "Don’t take silence for agreement: check what they really think."]
         },
         "C": {
           "name": "Blue",
           "tagline": "Conscientiousness (C): accuracy and quality",
-          "text": "Blue is the color of analysis and order. “Blues” rely on facts, check details, plan and follow standards. They are responsible for quality, but they can get stuck in analysis, stretch deadlines in pursuit of perfection and come across as cold."
+          "text": "Blue is the color of analysis and order. “Blues” rely on facts, check details, plan and follow standards. They are responsible for quality, but they can get stuck in analysis, stretch deadlines in pursuit of perfection and come across as cold.",
+          "h": "The blue personality type",
+          "signs": ["Asks follow-up questions and wants numbers, sources and examples.", "Gathers information and compares options before making a decision.", "Spots errors, typos and inconsistencies that others miss.", "Writes in detail, in bullet points, with attachments and links.", "Under pressure, retreats into analysis, puts off decisions and turns critical."],
+          "blind": "The strength of a “blue” is quality: their work rarely has to be redone. The blind spot is the price of perfection: they spend time checking what is already good enough, hold off on decisions until everything is clear and sound cold when support is what’s needed. What irritates them most is sloppiness, needless rushing and vague wording.",
+          "talk": ["Come with facts and structure: goal, data, options, deadlines.", "Give them time to study the material before the discussion, not during the meeting.", "Make criticism specific: what exactly is wrong and by what standard."]
         }
       },
+      "labels": { "signs": "How to spot them", "blind": "Strength and blind spot", "talk": "How to talk to them" },
       "sections": [
         {
           "h": "Where the colors come from",
@@ -591,6 +610,13 @@
           ]
         },
         {
+          "h": "The colors in Thomas Erikson’s Surrounded by Idiots",
+          "p": [
+            "Most people know the four colors from Surrounded by Idiots by the Swedish author Thomas Erikson (original title Omgiven av idioter, 2014). The book has sold millions of copies and has been translated into dozens of languages. Erikson describes the same four characters as DISC: the decisive, impatient red; the sociable, enthusiastic yellow; the calm, accommodating green; and the precise, reserved blue. The title is ironic: people of a different color seem like idiots to us until we understand what makes them tick.",
+            "Erikson builds directly on DISC, so his red, yellow, green and blue match the D, I, S and C styles on this site. The difference is in the approach: the book explains the model through everyday stories and familiar types, while the test measures how strong each style is. In Sweden the book was criticized by psychologists and by the skeptics’ association Vetenskap och Folkbildning for oversimplifying and for presenting a popular text as if it were scientifically grounded. That is a fair warning for any color scheme: use it as a shared language for conversation, not as a diagnosis."
+          ]
+        },
+        {
           "h": "Colors on a team",
           "p": [
             "A color map of the team is a quick way to spot imbalances. A team made up entirely of “reds” makes decisions fast and falls out just as fast; a team of “greens” is close-knit but avoids difficult conversations and puts off change. A mixed team works better when everyone understands what to expect from another color: how to assign a task, how to give feedback, how to argue.",
@@ -601,7 +627,12 @@
           "h": "Limitations",
           "p": ["A color is a label, and labels oversimplify. “Well, you’re red” sounds like an excuse for rudeness, and “they’re green, what do you expect” like giving up on expectations. DISC describes habitual behavior, not character, values or abilities, and any style can be developed. Use the colors to understand each other, not to put people in boxes."]
         }
-      ]
+      ],
+      "cta": {
+        "title": "Find your DISC color",
+        "text": "The test shows your primary and secondary colors, how strong each one is in percent and what to do with that. 24 blocks, about 10 minutes, no sign-up.",
+        "button": "Find my color"
+      }
     },
     "pdf": {
       "title": "Free Printable DISC Assessment PDF With Answer Key and Scoring",
@@ -668,7 +699,7 @@
           "h": "How to run the test with your team on this site",
           "ol": [
             "Take the test yourself: that way you’ll know what participants will see and can show a sample report.",
-            "Send your colleagues the link to the site in the language they need. No sign-up is required and the test takes about ten minutes; each person enters their name and email and gets the report on screen and by email.",
+            "Send your colleagues the link to the site in the language they need. No sign-up is required and the test takes about ten minutes; the report appears on screen right away, and there each person enters their name and email to get a copy by email.",
             "Ask each person to forward you the link to their result or the code from the report. The result is visible only to whoever has the link; no data is sent to the manager automatically.",
             "Open the admin panel (link in the site footer) and paste in the codes you received. The panel compiles a table with names, profiles and scores; you can copy it into Excel. The table is stored only in your browser.",
             "Schedule a joint meeting: explain the four styles, show the team map and let everyone say what in their report hit the mark and what didn’t."
@@ -899,7 +930,7 @@
   "ui": {
     "langLabel": "Language",
     "footer": "24 blocks · about 10 minutes · no right or wrong answers",
-    "privacy": "Your answers stay in your browser; your result is sent to the email address you provide and stored in the site owner’s results database.",
+    "privacy": "Your answers stay in your browser; if you enter your email address, your result is sent to it and stored in the site owner’s results database.",
     "adminLink": "Admin panel",
 
     "intro.eyebrow": "Behavioral style questionnaire",
@@ -910,9 +941,10 @@
     "intro.howText": "The test has 24 blocks of four statements, 96 in total. In each block, mark the one statement that describes you <b>most</b> and the one that describes you <b>least</b>. Answer the way you usually behave at work, not the way you would like to. Don’t overthink it: your first reaction is the most accurate.",
     "intro.nameLabel": "Name",
     "intro.emailLabel": "Email address to send your result to",
-    "intro.emailHint": "When you finish the test, your result will be emailed to this address. Your name, email and result are stored in the site owner’s results database.",
+    "intro.emailHint": "We’ll send an email with a link to your full report to this address. Your name, email and result are stored in the site owner’s results database.",
     "intro.requiredNote": "Fields marked with an asterisk (*) are required.",
     "intro.start": "Start the test",
+    "intro.startNote": "24 blocks · about 10 minutes · no sign-up",
     "intro.resume": "Continue previous attempt ({n} of 24 completed)",
     "intro.showLast": "Open my previous result from {date}",
     "intro.nameRequired": "Please enter your name",
@@ -953,6 +985,7 @@
     "report.stress": "Under stress",
     "report.environment": "Ideal environment",
     "report.moreLink": "More on how to read your DISC profile →",
+    "report.color": "Your DISC color: {color}",
 
     "share.title": "Save your result",
     "share.text": "Your result is saved in your browser. Copy the link to open the report later or on another device, or send it to the person who asked you to take the test.",
@@ -967,6 +1000,14 @@
     "share.sent": "Your result has been emailed to {email}.",
     "share.sendFailed": "We couldn’t send the email to {email}. Copy the report link or try again.",
     "share.retry": "Send again",
+    "share.emailTitle": "Get your result by email",
+    "share.send": "Email my result",
+    "share.mailtoHint": "Your email app will open with a ready-made message to this address; just press “Send.”",
+    "share.mailtoOpened": "The email with your result is open in your email app. Send it to {email}.",
+    "share.typeTitle": "Share your type",
+    "share.typeText": "The link opens the public description of the {name} profile. It doesn’t include your name, email or answers.",
+    "share.type": "Share my type",
+    "share.typeMsg": "My DISC type is {name} ({key}). What’s yours?",
 
     "mail.subject": "DISC: {name} — {label}",
     "mail.title": "DISC test result",
@@ -1100,7 +1141,7 @@
     "consent.label": "Cookie notice",
     "consent.text": "This site keeps your progress, result and chosen language in your browser’s local storage, and a web analytics service collects anonymized visit statistics and a recording of on-page actions to help us improve the site. Your name, email and result are not sent to the analytics service.",
     "consent.more": "Learn more",
-    "consent.details": "Stored in your browser: the name and email you enter before the test; your answers and unfinished progress; your latest result; your chosen language; a note that you have seen this notice. This data stays on your device and is removed when you clear the site’s data. The hosting provider (GitHub Pages) receives standard technical request data. When you finish the test, your name, email and answers are passed to the email-sending service (Google Apps Script), which emails you your result and stores your name, email, date and result in the site owner’s results database (a Google Sheet). The web analytics service receives the page address without the result code, the referrer, device and browser type, an anonymized recording of on-page actions (the name and email fields, the result link and code are excluded), and sets its own cookies. You can block it in your browser settings or with a tracker blocker. No advertising trackers are used.",
+    "consent.details": "Stored in your browser: your name and email, if you entered them; your answers and unfinished progress; your latest result; your chosen language; a note that you have seen this notice. This data stays on your device and is removed when you clear the site’s data. The hosting provider (GitHub Pages) receives standard technical request data. When you send your result by email, your name, email and answers are passed to the email-sending service (Google Apps Script), which emails you your result and stores your name, email, date and result in the site owner’s results database (a Google Sheet). The web analytics service receives the page address without the result code, the referrer, device and browser type, an anonymized recording of on-page actions (the name and email fields, the result link and code are excluded), and sets its own cookies. You can block it in your browser settings or with a tracker blocker. No advertising trackers are used.",
     "consent.accept": "Accept",
     "consent.decline": "Essential only",
     "consent.ok": "Got it",

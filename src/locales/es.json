@@ -343,7 +343,7 @@
         },
         {
           "q": "¿El test es realmente gratis?",
-          "a": "Sí, por completo: sin registro, sin pagos ocultos y sin «informes ampliados» de pago. El resultado aparece en pantalla justo después del último bloque y llega por correo a la dirección indicada."
+          "a": "Sí, por completo: sin registro, sin pagos ocultos y sin «informes ampliados» de pago. El resultado aparece en pantalla justo después del último bloque y, si lo desea, también puede recibirlo por correo."
         },
         {
           "q": "¿Qué significan las letras D, I, S, C?",
@@ -367,7 +367,7 @@
         },
         {
           "q": "¿Adónde llega el resultado y quién puede verlo?",
-          "a": "El resultado se muestra en pantalla, se guarda en su navegador y se envía al correo que indicó antes del test. El nombre, el correo y el resultado también se registran en la base de resultados del propietario del sitio; no se usan con otros fines ni se ceden a terceros. Otras personas solo verán su informe si usted decide compartir el enlace. Más detalles en la página «Privacidad»."
+          "a": "El resultado se muestra en pantalla y se guarda en su navegador. Si en la pantalla del resultado indica su nombre y su correo, recibirá el informe en esa dirección, y el nombre, el correo y el resultado se registrarán en la base de resultados del propietario del sitio; no se usan con otros fines ni se ceden a terceros. Otras personas solo verán su informe si usted decide compartir el enlace. Más detalles en la página «Privacidad»."
         },
         {
           "q": "¿Puedo repetir el test?",
@@ -398,7 +398,7 @@
       "sections": [
         {
           "h": "Por qué existe este sitio",
-          "p": ["Queríamos un test DISC que cualquiera pudiera hacer en diez minutos sin registrarse ni pagar, recibir un informe claro en su idioma y compartirlo con su equipo. El sitio funciona en catorce idiomas, el resultado aparece al instante y llega por correo, y los directivos y responsables de Recursos Humanos disponen de un panel donde los resultados de los participantes se reúnen en una tabla."]
+          "p": ["Queríamos un test DISC que cualquiera pudiera hacer en diez minutos sin registrarse ni pagar, recibir un informe claro en su idioma y compartirlo con su equipo. El sitio funciona en catorce idiomas, el resultado aparece al instante y, si lo desea, llega por correo, y los directivos y responsables de Recursos Humanos disponen de un panel donde los resultados de los participantes se reúnen en una tabla."]
         },
         {
           "h": "En qué se basa el test",
@@ -425,19 +425,19 @@
         {
           "h": "Qué datos utilizamos",
           "p": [
-            "Antes del test, usted indica su nombre y su correo electrónico. Durante el test se guardan sus respuestas y, al terminar, el resultado, el idioma elegido y un indicador de que ha visto el aviso de cookies. Todo esto se conserva en el almacenamiento local de su navegador. Al terminar el test, su nombre, correo, fecha del test y resultado se guardan además en la base de resultados del propietario del sitio."
+            "Para hacer el test no hace falta ingresar ningún dato. Durante el test se guardan sus respuestas y, al terminar, el resultado, el idioma elegido y un indicador de que ha visto el aviso de cookies. Si desea recibir el informe por correo, puede indicar su nombre y su correo electrónico en la pantalla del resultado. Todo esto se conserva en el almacenamiento local de su navegador. Si envió el resultado por correo, su nombre, correo, fecha del test y resultado se guardan además en la base de resultados del propietario del sitio."
           ]
         },
         {
           "h": "Adónde se transmiten los datos",
           "p": [
-            "Al terminar el test, su nombre, correo y respuestas (en forma de código de resultado) se transmiten al servicio de envío de correos, un script de Google Apps Script que funciona en la cuenta de Google del propietario del sitio. Este le envía el correo con el resultado y registra su nombre, correo, fecha del test y resultado (perfil, puntuaciones y enlace al informe) en la base de resultados, una hoja de cálculo de Google en la misma cuenta. Estos datos no se usan con otros fines ni se ceden a terceros.",
+            "Cuando hace clic en «Recibir por correo», su nombre, correo y respuestas (en forma de código de resultado) se transmiten al servicio de envío de correos, un script de Google Apps Script que funciona en la cuenta de Google del propietario del sitio. Este le envía el correo con el resultado y registra su nombre, correo, fecha del test y resultado (perfil, puntuaciones y enlace al informe) en la base de resultados, una hoja de cálculo de Google en la misma cuenta. Estos datos no se usan con otros fines ni se ceden a terceros.",
             "El alojamiento (GitHub Pages) recibe los datos técnicos habituales de la solicitud: dirección IP, tipo de navegador, dirección de la página. Las fuentes se sirven desde este mismo sitio y no se cargan desde los servidores de Google. Las estadísticas de visitas las recopila un servicio de analítica web: recibe datos de visita anonimizados —la dirección de la página sin el código del resultado, la procedencia, el tipo de dispositivo y navegador— y una grabación de las acciones en la página; los campos de nombre y correo, el enlace y el código del resultado quedan excluidos de la grabación. Puede detener la recopilación en la configuración del navegador o con un bloqueador de rastreadores. No se usan rastreadores publicitarios."
           ]
         },
         {
           "h": "El enlace al resultado",
-          "p": ["El enlace al informe contiene su nombre, su correo y sus respuestas en forma codificada. Cualquiera que tenga el enlace puede abrir el informe, así que compártalo solo con personas de confianza. El panel de administración funciona únicamente en el navegador de quien pegó los códigos en él."]
+          "p": ["El enlace al informe contiene sus respuestas en forma codificada y, si indicó su nombre y su correo, también estos datos. Cualquiera que tenga el enlace puede abrir el informe, así que compártalo solo con personas de confianza. El panel de administración funciona únicamente en el navegador de quien pegó los códigos en él."]
         },
         {
           "h": "Formulario de contacto",
@@ -453,7 +453,7 @@
         },
         {
           "h": "Cambios",
-          "p": ["Última actualización: 23 de septiembre de 2026. Los cambios en el tratamiento de datos se reflejarán en esta página."]
+          "p": ["Última actualización: 24 de septiembre de 2026. Los cambios en el tratamiento de datos se reflejarán en esta página."]
         }
       ]
     },
@@ -472,7 +472,7 @@
         {
           "h": "De qué se compone el resultado",
           "p": [
-            "Tras el último bloque verá cuatro elementos: el nombre del perfil con una o dos letras (por ejemplo, «Pionero, DI»), un gráfico con tres líneas, cuatro escalas con porcentajes y una descripción en texto: rasgos, puntos fuertes, áreas de mejora, motivación, comportamiento bajo estrés y recomendaciones sobre cómo comunicarse con usted. El mismo informe llega por correo y se abre desde el enlace.",
+            "Tras el último bloque verá cuatro elementos: el nombre del perfil con una o dos letras (por ejemplo, «Pionero, DI»), un gráfico con tres líneas, cuatro escalas con porcentajes y una descripción en texto: rasgos, puntos fuertes, áreas de mejora, motivación, comportamiento bajo estrés y recomendaciones sobre cómo comunicarse con usted. El mismo informe puede recibirse por correo y abrirse desde el enlace.",
             "Todos los números del informe se derivan de sus marcas en los 24 bloques. En cada bloque eligió una afirmación como «lo que más se parece a mí» y otra como «lo que menos se parece a mí», y cada afirmación pertenece a uno de los estilos D, I, S o C. Por eso cada estilo tiene dos números: cuántas veces lo eligió como «más» y cuántas como «menos»."
           ]
         },
@@ -539,32 +539,49 @@
       ]
     },
     "colors": {
-      "title": "Test DISC de colores: rojo, amarillo, verde y azul",
-      "description": "Colores DISC: rojo (D), amarillo (I), verde (S), azul (C). Qué significa cada uno, cómo saber el suyo y en qué difieren los tests de colores. Test gratis.",
+      "title": "Test de colores de personalidad: rojo, amarillo, verde y azul (DISC)",
+      "description": "Rojo, amarillo, verde y azul según DISC: cómo reconocer cada color, cómo tratarlo y qué tiene que ver «Rodeado de idiotas». Test gratis.",
       "h1": "DISC por colores: rojo, amarillo, verde y azul",
       "lead": "Los cuatro estilos DISC se designan a menudo con colores: rojo, dominancia; amarillo, influencia; verde, estabilidad; azul, cumplimiento. Los colores no añaden nada al modelo, pero ayudan a recordar los estilos con rapidez y a hablar de ellos en el equipo. Veamos qué hay detrás de cada color y cómo saber cuál es el suyo.",
       "colors": {
         "D": {
           "name": "Rojo",
           "tagline": "Dominancia (D): resultados y control",
-          "text": "El rojo es el color de la rapidez y el empuje. Los «rojos» se fijan una meta y van directos a ella, deciden rápido, discuten, asumen la responsabilidad y no temen el conflicto. En el equipo hacen avanzar las cosas, pero pueden presionar y perder la paciencia con quienes trabajan con más cautela."
+          "text": "El rojo es el color de la rapidez y el empuje. Los «rojos» se fijan una meta y van directos a ella, deciden rápido, discuten, asumen la responsabilidad y no temen el conflicto. En el equipo hacen avanzar las cosas, pero pueden presionar y perder la paciencia con quienes trabajan con más cautela.",
+          "h": "Tipo de personalidad rojo",
+          "signs": ["Habla poco y sin rodeos, va directo al grano y a las conclusiones.", "Decide rápido y no le gusta que se posterguen las decisiones.", "En las reuniones toma la palabra, discute y marca el ritmo.", "Por escrito: un par de líneas, sin saludos ni emojis.", "Bajo presión se vuelve más tajante y empieza a decidirlo todo solo."],
+          "blind": "El punto fuerte del «rojo» es poner las cosas en marcha mientras los demás todavía están discutiendo. Su punto ciego es el precio de ese ritmo: no nota que los demás no alcanzaron a ponerse de acuerdo, confunde la cautela con debilidad y las preguntas con resistencia. Lo que más lo irrita: la lentitud, la charla vacía y perder el control.",
+          "talk": ["Empiece por el objetivo y la conclusión; los detalles, si los pide.", "Ofrezca opciones, no una sola solución: quiere elegir él mismo.", "Discrepe de frente y con datos: las indirectas y los resentimientos no los capta."]
         },
         "I": {
           "name": "Amarillo",
           "tagline": "Influencia (I): personas y entusiasmo",
-          "text": "El amarillo es el color de la energía y la comunicación. Los «amarillos» conectan con facilidad, inspiran, generan ideas y contagian optimismo. Necesitan reconocimiento y trato cercano; los detalles, los plazos y la rutina les cuestan más, y a veces las promesas van por delante de las posibilidades."
+          "text": "El amarillo es el color de la energía y la comunicación. Los «amarillos» conectan con facilidad, inspiran, generan ideas y contagian optimismo. Necesitan reconocimiento y trato cercano; los detalles, los plazos y la rutina les cuestan más, y a veces las promesas van por delante de las posibilidades.",
+          "h": "Tipo de personalidad amarillo",
+          "signs": ["Entabla conversación con desconocidos sin esfuerzo y enseguida pasa al tuteo.", "Cuenta historias, gesticula mucho y contagia sus emociones.", "Propone ideas sobre la marcha y es el primero en ofrecerse.", "Escribe con entusiasmo: signos de exclamación, emojis, mensajes de voz.", "Bajo presión habla mucho, promete de más y busca apoyo."],
+          "blind": "El punto fuerte del «amarillo» es unir a la gente y entusiasmarla con una idea. Su punto ciego es la ejecución: el interés se apaga cuando empieza la rutina, los plazos y los detalles pasan a segundo plano y las promesas van por delante de las posibilidades. Lo que más le duele: la indiferencia, las críticas en público y trabajar solo.",
+          "talk": ["Empiece por el trato personal: unas palabras sobre él y luego el tema.", "Elógielo de forma visible y sincera: el reconocimiento es su mejor estímulo.", "Deje los acuerdos por escrito y con fechas: él mismo puede olvidarlos."]
         },
         "S": {
           "name": "Verde",
           "tagline": "Estabilidad (S): apoyo y constancia",
-          "text": "El verde es el color de la calma y la confiabilidad. Los «verdes» saben escuchar, apoyan, terminan lo que empiezan y cuidan las relaciones en el equipo. Necesitan previsibilidad y tiempo para los cambios; el conflicto abierto y la presión les pesan."
+          "text": "El verde es el color de la calma y la confiabilidad. Los «verdes» saben escuchar, apoyan, terminan lo que empiezan y cuidan las relaciones en el equipo. Necesitan previsibilidad y tiempo para los cambios; el conflicto abierto y la presión les pesan.",
+          "h": "Tipo de personalidad verde",
+          "signs": ["Escucha más de lo que habla y se interesa por cómo está usted.", "No se apresura a responder y se toma tiempo para pensar.", "Ayuda con gusto y rara vez dice que no, aunque esté sobrecargado.", "Se aferra a lo conocido: la misma ruta, las mismas herramientas, el mismo equipo.", "Bajo presión se calla, aparenta estar de acuerdo y acumula malestar."],
+          "blind": "El punto fuerte del «verde» es la confiabilidad: termina lo que empieza y cuida las relaciones donde otros acabarían peleados. Su punto ciego es el silencio: no dice que no, no discute abiertamente y acepta cambios con los que, en el fondo, no está de acuerdo. Lo que más lo desestabiliza: los cambios repentinos, el tono brusco y los conflictos.",
+          "talk": ["Avise de los cambios con antelación y explique para qué son necesarios.", "Pregúntele su opinión en privado, no en medio de una discusión general.", "No tome su silencio por conformidad: pregúntele qué piensa en realidad."]
         },
         "C": {
           "name": "Azul",
           "tagline": "Cumplimiento (C): precisión y calidad",
-          "text": "El azul es el color del análisis y el orden. Los «azules» se apoyan en los hechos, revisan los detalles, planifican y siguen los estándares. Velan por la calidad, pero pueden atascarse en el análisis, alargar los plazos en busca del ideal y parecer fríos."
+          "text": "El azul es el color del análisis y el orden. Los «azules» se apoyan en los hechos, revisan los detalles, planifican y siguen los estándares. Velan por la calidad, pero pueden atascarse en el análisis, alargar los plazos en busca del ideal y parecer fríos.",
+          "h": "Tipo de personalidad azul",
+          "signs": ["Hace preguntas para precisar y pide cifras, fuentes y ejemplos.", "Antes de decidir, reúne información y compara opciones.", "Detecta errores, erratas e incoherencias que a otros se les escapan.", "Escribe con detalle, por puntos, con archivos adjuntos y enlaces.", "Bajo presión se refugia en el análisis, aplaza la decisión y se vuelve crítico."],
+          "blind": "El punto fuerte del «azul» es la calidad: rara vez hay que rehacer su trabajo. Su punto ciego es el precio de la perfección: dedica tiempo a revisar lo que ya está suficientemente bien, aplaza las decisiones hasta tenerlo todo claro y suena frío cuando hace falta apoyo. Lo que más lo irrita: el descuido, las prisas sin motivo y las formulaciones vagas.",
+          "talk": ["Llegue con hechos y una estructura: objetivo, datos, opciones, plazos.", "Dele tiempo para estudiar el material antes de la reunión, no durante ella.", "Formule las críticas de manera concreta: qué falla exactamente y según qué criterio."]
         }
       },
+      "labels": { "signs": "Cómo reconocerlo", "blind": "Punto fuerte y punto ciego", "talk": "Cómo tratarlo" },
       "sections": [
         {
           "h": "De dónde vienen los colores",
@@ -595,6 +612,13 @@
           ]
         },
         {
+          "h": "Los colores en «Rodeado de idiotas», de Thomas Erikson",
+          "p": [
+            "El gran público conoce los cuatro colores sobre todo por el libro del autor sueco Thomas Erikson «Rodeado de idiotas» (Omgiven av idioter, 2014). Ha vendido millones de ejemplares y se ha traducido a decenas de idiomas. Erikson describe los mismos cuatro personajes que DISC: el rojo, decidido e impaciente; el amarillo, sociable y entusiasta; el verde, tranquilo y complaciente; el azul, preciso y reservado. El título es irónico: las personas de otro color nos parecen «idiotas» mientras no entendemos cómo funcionan.",
+            "Erikson se basa abiertamente en DISC, por lo que su rojo, amarillo, verde y azul coinciden con los estilos D, I, S y C de este sitio. La diferencia está en el enfoque: el libro explica el modelo con historias cotidianas y personajes tipo, mientras que el test mide la intensidad de cada estilo. En Suecia, el libro recibió críticas de psicólogos y de la asociación de divulgación científica Vetenskap och Folkbildning por sus simplificaciones y por presentar un texto divulgativo como si tuviera base científica. Es una advertencia válida para cualquier esquema de colores: úselos como un lenguaje para conversar, no como un diagnóstico."
+          ]
+        },
+        {
           "h": "Los colores en el equipo",
           "p": [
             "El mapa de colores del equipo es una forma rápida de ver los desequilibrios. Un equipo formado solo por «rojos» decide rápido y discute igual de rápido; un equipo de «verdes» está unido, pero evita las conversaciones difíciles y pospone los cambios. Un equipo mixto funciona mejor si cada uno sabe qué esperar del otro color: cómo asignar una tarea, cómo dar feedback, cómo discutir.",
@@ -605,7 +629,12 @@
           "h": "Limitaciones",
           "p": ["El color es una etiqueta, y las etiquetas simplifican. «Es que eres rojo» suena a excusa para la brusquedad, y «es verde, qué le vamos a hacer» a renuncia a cualquier expectativa. DISC describe el comportamiento habitual, no el carácter, los valores ni las capacidades, y cualquier estilo se puede desarrollar. Use los colores para entenderse, no para encasillar a las personas."]
         }
-      ]
+      ],
+      "cta": {
+        "title": "Descubra su color DISC",
+        "text": "El test muestra su color predominante y el secundario, su intensidad en porcentaje y qué hacer con ello. 24 bloques, unos 10 minutos, sin registro.",
+        "button": "Descubrir mi color"
+      }
     },
     "pdf": {
       "title": "Test DISC PDF gratis para descargar e imprimir: clave y perfiles",
@@ -672,7 +701,7 @@
           "h": "Cómo hacer el test en equipo en este sitio",
           "ol": [
             "Haga el test usted primero: así sabrá qué verán los participantes y podrá mostrar un informe de ejemplo.",
-            "Envíe a sus compañeros el enlace al sitio en el idioma que corresponda. No hace falta registro y el test lleva unos diez minutos; cada uno indica su nombre y su correo y recibe el informe en pantalla y por correo.",
+            "Envíe a sus compañeros el enlace al sitio en el idioma que corresponda. No hace falta registro y el test lleva unos diez minutos; el informe aparece en pantalla, y cada uno indica allí su nombre y su dirección para recibirlo también por correo.",
             "Pida a cada uno que le reenvíe el enlace a su resultado o el código del informe. El resultado solo lo ve quien tiene el enlace; ningún dato llega al directivo de forma automática.",
             "Abra el panel de administración (enlace en el pie de página) y pegue los códigos recibidos. El panel formará una tabla con nombres, perfiles y puntuaciones que puede copiar a Excel. La tabla se guarda solo en su navegador.",
             "Convoque una reunión conjunta: explique los cuatro estilos, muestre el mapa del equipo y deje que cada uno cuente qué del informe ha dado en el clavo y qué no."
@@ -903,7 +932,7 @@
   "ui": {
     "langLabel": "Idioma",
     "footer": "24 bloques · unos 10 minutos · no hay respuestas correctas ni incorrectas",
-    "privacy": "Sus respuestas se quedan en su navegador; el resultado se envía al correo electrónico que usted indique y se guarda en la base de resultados del propietario del sitio.",
+    "privacy": "Sus respuestas se quedan en su navegador; si usted indica su correo electrónico, el resultado se envía a esa dirección y se guarda en la base de resultados del propietario del sitio.",
     "adminLink": "Panel de administración",
 
     "intro.eyebrow": "Cuestionario de estilos de comportamiento",
@@ -914,9 +943,10 @@
     "intro.howText": "El test tiene 24 bloques de cuatro afirmaciones, 96 en total. En cada bloque marque la afirmación que <b>más</b> lo describe y la que <b>menos</b> lo describe. Responda según cómo se comporta habitualmente en el trabajo, no como le gustaría. No lo piense demasiado: la primera reacción es la más precisa.",
     "intro.nameLabel": "Nombre",
     "intro.emailLabel": "Correo electrónico al que enviar el resultado",
-    "intro.emailHint": "Al terminar el test, recibirá en esta dirección un correo con su resultado. El nombre, el correo y el resultado se guardan en la base de resultados del propietario del sitio.",
+    "intro.emailHint": "En esta dirección recibirá un correo con el enlace al informe completo. El nombre, el correo y el resultado se guardan en la base de resultados del propietario del sitio.",
     "intro.requiredNote": "Los campos marcados con asterisco (*) son obligatorios.",
     "intro.start": "Empezar el test",
+    "intro.startNote": "24 bloques · unos 10 minutos · sin registro",
     "intro.resume": "Continuar el intento anterior ({n} de 24 completados)",
     "intro.showLast": "Abrir mi resultado anterior del {date}",
     "intro.nameRequired": "Indique su nombre",
@@ -957,6 +987,7 @@
     "report.stress": "Bajo estrés",
     "report.environment": "Entorno ideal",
     "report.moreLink": "Más sobre cómo leer el perfil DISC →",
+    "report.color": "Su color DISC: {color}",
 
     "share.title": "Guarde su resultado",
     "share.text": "Su resultado se guarda en su navegador. Copie el enlace para abrir el informe más tarde o en otro dispositivo, o envíelo a la persona que le pidió hacer el test.",
@@ -971,6 +1002,14 @@
     "share.sent": "Su resultado se ha enviado a {email}.",
     "share.sendFailed": "No se pudo enviar el correo a {email}. Copie el enlace al informe o inténtelo de nuevo.",
     "share.retry": "Enviar de nuevo",
+    "share.emailTitle": "Reciba su resultado por correo",
+    "share.send": "Recibir por correo",
+    "share.mailtoHint": "Se abrirá su cliente de correo con un mensaje listo para esta dirección; solo tendrá que hacer clic en «Enviar».",
+    "share.mailtoOpened": "El correo con su resultado se abrió en su cliente de correo: envíelo a {email}.",
+    "share.typeTitle": "Comparta su tipo",
+    "share.typeText": "El enlace lleva a la descripción pública del perfil «{name}»: no contiene su nombre, su correo ni sus respuestas.",
+    "share.type": "Compartir mi tipo",
+    "share.typeMsg": "Mi tipo DISC es {name} ({key}). ¿Y el tuyo?",
 
     "mail.subject": "DISC: {name} — {label}",
     "mail.title": "Resultado del test DISC",
@@ -1104,7 +1143,7 @@
     "consent.label": "Aviso de cookies",
     "consent.text": "Este sitio guarda su progreso, su resultado y el idioma elegido en el almacenamiento local del navegador, y un servicio de analítica web recopila estadísticas de visitas anonimizadas y una grabación de las acciones en la página para ayudarnos a mejorar el sitio. Su nombre, su correo y su resultado no se envían al servicio de analítica.",
     "consent.more": "Más información",
-    "consent.details": "En el navegador se guardan: el nombre y el correo que usted indica antes del test; sus respuestas y el progreso sin terminar; su último resultado; el idioma elegido; un indicador de que ha visto este aviso. Estos datos permanecen en su dispositivo y se eliminan al borrar los datos del sitio. El alojamiento (GitHub Pages) recibe los datos técnicos habituales de la solicitud. Al terminar el test, el nombre, el correo y las respuestas se transmiten al servicio de envío de correos (Google Apps Script), que le envía el resultado y guarda el nombre, el correo, la fecha y el resultado en la base de resultados del propietario del sitio (una hoja de cálculo de Google). El servicio de analítica web recibe la dirección de la página sin el código del resultado, la procedencia, el tipo de dispositivo y navegador y una grabación anonimizada de las acciones en la página (los campos de nombre y correo, el enlace y el código del resultado quedan excluidos), y establece sus propias cookies. Puede bloquearlo en la configuración del navegador o con un bloqueador de rastreadores. No se usan rastreadores publicitarios.",
+    "consent.details": "En el navegador se guardan: el nombre y el correo, si usted los indicó; sus respuestas y el progreso sin terminar; su último resultado; el idioma elegido; un indicador de que ha visto este aviso. Estos datos permanecen en su dispositivo y se eliminan al borrar los datos del sitio. El alojamiento (GitHub Pages) recibe los datos técnicos habituales de la solicitud. Cuando envía el resultado por correo, el nombre, el correo y las respuestas se transmiten al servicio de envío de correos (Google Apps Script), que le envía el resultado y guarda el nombre, el correo, la fecha y el resultado en la base de resultados del propietario del sitio (una hoja de cálculo de Google). El servicio de analítica web recibe la dirección de la página sin el código del resultado, la procedencia, el tipo de dispositivo y navegador y una grabación anonimizada de las acciones en la página (los campos de nombre y correo, el enlace y el código del resultado quedan excluidos), y establece sus propias cookies. Puede bloquearlo en la configuración del navegador o con un bloqueador de rastreadores. No se usan rastreadores publicitarios.",
     "consent.accept": "Aceptar",
     "consent.decline": "Solo lo necesario",
     "consent.ok": "Entendido",

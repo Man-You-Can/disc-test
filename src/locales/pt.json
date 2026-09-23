@@ -341,7 +341,7 @@
         },
         {
           "q": "O teste é realmente gratuito?",
-          "a": "Sim, totalmente: sem cadastro, sem cobranças escondidas e sem “relatórios completos” pagos. O resultado aparece na tela logo após o último bloco e chega por e-mail no endereço informado."
+          "a": "Sim, totalmente: sem cadastro, sem cobranças escondidas e sem “relatórios completos” pagos. O resultado aparece na tela logo após o último bloco; se quiser, você também pode recebê-lo por e-mail."
         },
         {
           "q": "O que significam as letras D, I, S, C?",
@@ -365,7 +365,7 @@
         },
         {
           "q": "Para onde vai o resultado e quem pode vê-lo?",
-          "a": "O resultado aparece na tela, fica salvo no seu navegador e é enviado ao e-mail informado antes do teste. Nome, e-mail e resultado também são registrados na base de resultados do responsável pelo site; eles não são usados para outros fins nem repassados a terceiros. Outras pessoas só verão o seu relatório se você compartilhar o link dele. Mais detalhes na página “Privacidade”."
+          "a": "O resultado aparece na tela e fica salvo no seu navegador. Se você informar nome e e-mail na tela de resultado, o relatório será enviado para esse endereço, e nome, e-mail e resultado serão registrados na base de resultados do responsável pelo site; eles não são usados para outros fins nem repassados a terceiros. Outras pessoas só verão o seu relatório se você compartilhar o link dele. Mais detalhes na página “Privacidade”."
         },
         {
           "q": "Posso refazer o teste?",
@@ -396,7 +396,7 @@
       "sections": [
         {
           "h": "Por que este site existe",
-          "p": ["Queríamos um teste DISC que qualquer pessoa pudesse fazer em dez minutos, sem cadastro nem pagamento, receber um relatório claro no próprio idioma e compartilhá-lo com a equipe. O site funciona em 14 idiomas, o resultado aparece na hora e chega por e-mail, e gestores e RH têm um painel em que os resultados dos participantes são reunidos em uma tabela."]
+          "p": ["Queríamos um teste DISC que qualquer pessoa pudesse fazer em dez minutos, sem cadastro nem pagamento, receber um relatório claro no próprio idioma e compartilhá-lo com a equipe. O site funciona em 14 idiomas, o resultado aparece na hora e, se você quiser, chega por e-mail, e gestores e RH têm um painel em que os resultados dos participantes são reunidos em uma tabela."]
         },
         {
           "h": "Em que o teste se baseia",
@@ -422,18 +422,20 @@
       "sections": [
         {
           "h": "Quais dados usamos",
-          "p": ["Antes do teste você informa nome e e-mail. Durante o teste, suas respostas são salvas; ao final, o resultado, o idioma escolhido e um registro de que você já viu o aviso de cookies. Tudo isso fica no armazenamento local do seu navegador. Ao concluir o teste, nome, e-mail, data do teste e resultado também são guardados na base de resultados do responsável pelo site."]
+          "p": [
+            "Para fazer o teste, você não precisa informar nada. Durante o teste, suas respostas são salvas; ao final, o resultado, o idioma escolhido e um registro de que você já viu o aviso de cookies. Nome e e-mail são opcionais: você os informa na tela de resultado se quiser receber o relatório por e-mail. Tudo isso fica no armazenamento local do seu navegador. Se você enviou o resultado por e-mail, nome, e-mail, data do teste e resultado também são guardados na base de resultados do responsável pelo site."
+          ]
         },
         {
           "h": "Para onde os dados são transmitidos",
           "p": [
-            "Ao concluir o teste, nome, e-mail e respostas (na forma de código de resultado) são transmitidos ao serviço de envio de e-mails, um script do Google Apps Script que roda na conta do Google do responsável pelo site. Ele envia a você o e-mail com o resultado e registra nome, e-mail, data do teste e resultado (perfil, pontuações e link do relatório) na base de resultados, uma planilha do Google na mesma conta. Esses dados não são usados para outros fins nem repassados a terceiros.",
+            "Quando você clica em “Enviar para meu e-mail”, nome, e-mail e respostas (na forma de código de resultado) são transmitidos ao serviço de envio de e-mails, um script do Google Apps Script que roda na conta do Google do responsável pelo site. Ele envia a você o e-mail com o resultado e registra nome, e-mail, data do teste e resultado (perfil, pontuações e link do relatório) na base de resultados, uma planilha do Google na mesma conta. Esses dados não são usados para outros fins nem repassados a terceiros.",
             "A hospedagem (GitHub Pages) recebe os dados técnicos habituais da requisição: endereço IP, tipo de navegador, endereço da página. As fontes são servidas pelo próprio site e não são carregadas dos servidores do Google. As estatísticas de visitas são coletadas por um serviço de análise da web, que recebe dados de visita anonimizados — o endereço da página sem o código do resultado, a origem da visita, o tipo de dispositivo e navegador — e uma gravação das ações na página; os campos de nome e e-mail, o link e o código do resultado ficam excluídos da gravação. Você pode impedir a coleta nas configurações do navegador ou com um bloqueador de rastreadores. Não são usados rastreadores publicitários."
           ]
         },
         {
           "h": "O link do resultado",
-          "p": ["O link do relatório contém seu nome, e-mail e respostas de forma codificada. Qualquer pessoa com o link pode abrir o relatório; por isso, compartilhe-o apenas com pessoas em quem você confia. O painel de administração funciona apenas no navegador de quem colou os códigos nele."]
+          "p": ["O link do relatório contém suas respostas de forma codificada e, se você informou nome e e-mail, também eles. Qualquer pessoa com o link pode abrir o relatório; por isso, compartilhe-o apenas com pessoas em quem você confia. O painel de administração funciona apenas no navegador de quem colou os códigos nele."]
         },
         {
           "h": "Formulário de contato",
@@ -449,7 +451,7 @@
         },
         {
           "h": "Alterações",
-          "p": ["Última atualização: 23 de setembro de 2026. Mudanças no tratamento de dados serão refletidas nesta página."]
+          "p": ["Última atualização: 24 de setembro de 2026. Mudanças no tratamento de dados serão refletidas nesta página."]
         }
       ]
     },
@@ -468,7 +470,7 @@
         {
           "h": "Do que é feito o resultado",
           "p": [
-            "Depois do último bloco, você vê quatro elementos: o nome do perfil com uma ou duas letras (por exemplo, “Pioneiro, DI”), um gráfico com três linhas, quatro escalas com porcentagens e uma descrição em texto: características principais, pontos fortes, áreas de desenvolvimento, motivação, comportamento sob pressão e recomendações sobre como se comunicar com você. O mesmo relatório chega por e-mail e abre pelo link.",
+            "Depois do último bloco, você vê quatro elementos: o nome do perfil com uma ou duas letras (por exemplo, “Pioneiro, DI”), um gráfico com três linhas, quatro escalas com porcentagens e uma descrição em texto: características principais, pontos fortes, áreas de desenvolvimento, motivação, comportamento sob pressão e recomendações sobre como se comunicar com você. O mesmo relatório pode ser recebido por e-mail e aberto pelo link.",
             "Todos os números do relatório vêm das suas marcações nos 24 blocos. Em cada bloco, você escolheu uma afirmação “mais parecida comigo” e uma “menos parecida comigo”, e cada afirmação pertence a um dos estilos D, I, S ou C. Por isso, cada estilo tem dois números: quantas vezes você o escolheu como “mais” e quantas como “menos”."
           ]
         },
@@ -535,32 +537,49 @@
       ]
     },
     "colors": {
-      "title": "Teste DISC por cores: vermelho, amarelo, verde e azul",
-      "description": "As cores do DISC: vermelho (D), amarelo (I), verde (S) e azul (C). O que cada cor significa, como descobrir a sua e a diferença para os testes de cores.",
+      "title": "Cores DISC: perfil comportamental vermelho, amarelo, verde e azul",
+      "description": "Perfis vermelho, amarelo, verde e azul no DISC: como reconhecer cada cor, como lidar com ela e o que o livro “Cercado de idiotas” tem a ver. Teste grátis.",
       "h1": "DISC por cores: vermelho, amarelo, verde, azul",
       "lead": "Os quatro estilos DISC costumam ser representados por cores: vermelho é dominância, amarelo é influência, verde é estabilidade, azul é conformidade. As cores não acrescentam nada ao modelo, mas ajudam a memorizar os estilos rapidamente e a falar sobre eles na equipe. Veja o que está por trás de cada cor e como descobrir a sua.",
       "colors": {
         "D": {
           "name": "Vermelho",
           "tagline": "Dominância (D): resultados e controle",
-          "text": "Vermelho é a cor da velocidade e da garra. Os “vermelhos” definem uma meta e vão direto até ela, decidem rápido, discutem, assumem responsabilidades e não têm medo de conflito. Na equipe, fazem as coisas andarem, mas podem pressionar e perder a paciência com quem trabalha com mais cautela."
+          "text": "Vermelho é a cor da velocidade e da garra. Os “vermelhos” definem uma meta e vão direto até ela, decidem rápido, discutem, assumem responsabilidades e não têm medo de conflito. Na equipe, fazem as coisas andarem, mas podem pressionar e perder a paciência com quem trabalha com mais cautela.",
+          "h": "Perfil vermelho",
+          "signs": ["Fala pouco e de forma objetiva, vai direto ao ponto e às conclusões.", "Decide rápido e não gosta quando as decisões ficam para depois.", "Na reunião, toma a palavra, discute e dita o ritmo.", "Nas mensagens, duas linhas sem cumprimentos nem emojis.", "Sob pressão, fica mais ríspido e passa a decidir tudo sozinho."],
+          "blind": "O ponto forte do “vermelho” é tirar as coisas do lugar enquanto os outros ainda estão discutindo. O ponto cego é o preço desse ritmo: ele não percebe que as pessoas ainda não concordaram, confunde cautela com fraqueza e perguntas com resistência. O que mais o irrita é lentidão, conversa fiada e perda de controle.",
+          "talk": ["Comece pelo objetivo e pela conclusão; detalhes, só se ele pedir.", "Ofereça opções, não uma solução única: ele quer escolher sozinho.", "Discorde de forma direta e com fatos: indiretas e mágoas passam despercebidas para ele."]
         },
         "I": {
           "name": "Amarelo",
           "tagline": "Influência (I): pessoas e entusiasmo",
-          "text": "Amarelo é a cor da energia e da comunicação. Os “amarelos” fazem amizade com facilidade, inspiram, têm ideias e contagiam com otimismo. Precisam de reconhecimento e de contato vivo; detalhes, prazos e rotina são mais difíceis para eles, e às vezes as promessas vão além das possibilidades."
+          "text": "Amarelo é a cor da energia e da comunicação. Os “amarelos” fazem amizade com facilidade, inspiram, têm ideias e contagiam com otimismo. Precisam de reconhecimento e de contato vivo; detalhes, prazos e rotina são mais difíceis para eles, e às vezes as promessas vão além das possibilidades.",
+          "h": "Perfil amarelo",
+          "signs": ["Puxa conversa com desconhecidos com facilidade e logo cria intimidade.", "Conta tudo em forma de história, gesticula muito e contagia com as emoções.", "Tem ideias na hora e é o primeiro a se oferecer para participar.", "Escreve com animação: pontos de exclamação, emojis, áudios.", "Sob pressão, fala demais, promete além da conta e busca apoio."],
+          "blind": "O ponto forte do “amarelo” é unir as pessoas e empolgá-las com uma ideia. O ponto cego é a execução: o interesse se apaga quando começa a rotina, prazos e detalhes ficam em segundo plano, e as promessas vão além das possibilidades. O que mais o magoa é indiferença, crítica na frente dos outros e trabalho solitário.",
+          "talk": ["Comece pelo contato pessoal: algumas palavras sobre a pessoa, depois o assunto.", "Elogie de forma visível e sincera: reconhecimento é o melhor estímulo para ele.", "Registre os combinados por escrito e com datas: ele mesmo pode esquecê-los."]
         },
         "S": {
           "name": "Verde",
           "tagline": "Estabilidade (S): apoio e constância",
-          "text": "Verde é a cor da calma e da confiabilidade. Os “verdes” sabem ouvir, apoiam, levam até o fim o que começaram e cuidam das relações na equipe. Precisam de previsibilidade e de tempo para as mudanças; conflito aberto e pressão são difíceis de suportar."
+          "text": "Verde é a cor da calma e da confiabilidade. Os “verdes” sabem ouvir, apoiam, levam até o fim o que começaram e cuidam das relações na equipe. Precisam de previsibilidade e de tempo para as mudanças; conflito aberto e pressão são difíceis de suportar.",
+          "h": "Perfil verde",
+          "signs": ["Ouve mais do que fala e se interessa em saber como você está.", "Não tem pressa para responder e pede um tempo para pensar.", "Ajuda de boa vontade e raramente diz não, mesmo sobrecarregado.", "Prefere o que é conhecido: o mesmo caminho, as mesmas ferramentas, a mesma equipe.", "Sob pressão, se cala, concorda por fora e acumula insatisfação."],
+          "blind": "O ponto forte do “verde” é a confiabilidade: ele leva até o fim o que começou e preserva as relações onde outros brigariam. O ponto cego é o silêncio: ele não diz “não”, não discorda abertamente e aceita mudanças com as quais, por dentro, não concorda. O que mais o desestabiliza são mudanças repentinas, tom ríspido e conflitos.",
+          "talk": ["Avise sobre mudanças com antecedência e explique por que são necessárias.", "Pergunte a opinião dele em particular, não no meio da discussão geral.", "Não confunda silêncio com concordância: pergunte o que ele realmente pensa."]
         },
         "C": {
           "name": "Azul",
           "tagline": "Conformidade (C): precisão e qualidade",
-          "text": "Azul é a cor da análise e da ordem. Os “azuis” se apoiam em fatos, conferem os detalhes, planejam e seguem padrões. São responsáveis pela qualidade, mas podem travar na análise, atrasar prazos em busca do ideal e parecer frios."
+          "text": "Azul é a cor da análise e da ordem. Os “azuis” se apoiam em fatos, conferem os detalhes, planejam e seguem padrões. São responsáveis pela qualidade, mas podem travar na análise, atrasar prazos em busca do ideal e parecer frios.",
+          "h": "Perfil azul",
+          "signs": ["Faz perguntas de esclarecimento e pede números, fontes e exemplos.", "Antes de decidir, reúne informações e compara as opções.", "Percebe erros, erros de digitação e incoerências que os outros deixam passar.", "Escreve de forma detalhada, em tópicos, com anexos e links.", "Sob pressão, mergulha na análise, adia a decisão e fica mais crítico."],
+          "blind": "O ponto forte do “azul” é a qualidade: raramente é preciso refazer o trabalho dele. O ponto cego é o preço do ideal: ele gasta tempo conferindo o que já está bom o suficiente, adia a decisão até ter clareza total e soa frio quando o momento pede apoio. O que mais o irrita é descuido, pressa sem motivo e formulações vagas.",
+          "talk": ["Chegue com fatos e estrutura: objetivo, dados, opções, prazos.", "Dê tempo para ele estudar o material antes da conversa, não durante a reunião.", "Faça críticas concretas: o que exatamente está errado e por qual critério."]
         }
       },
+      "labels": { "signs": "Como reconhecer", "blind": "Ponto forte e ponto cego", "talk": "Como se comunicar" },
       "sections": [
         {
           "h": "De onde vêm as cores",
@@ -591,6 +610,13 @@
           ]
         },
         {
+          "h": "As cores no livro “Cercado de idiotas”, de Thomas Erikson",
+          "p": [
+            "O grande público conhece as quatro cores principalmente pelo livro do sueco Thomas Erikson “Cercado de idiotas” (Omgiven av idioter, 2014). O livro vendeu milhões de exemplares e foi traduzido para dezenas de idiomas. Erikson descreve os mesmos quatro personagens do DISC: o vermelho, decidido e impaciente; o amarelo, comunicativo e empolgado; o verde, calmo e conciliador; o azul, preciso e reservado. O título é irônico: as pessoas de outra cor parecem “idiotas” para nós até entendermos como elas funcionam.",
+            "Erikson se baseia abertamente no DISC, por isso seus vermelho, amarelo, verde e azul correspondem aos estilos D, I, S e C deste site. A diferença está na abordagem: o livro explica o modelo com histórias do dia a dia e tipos reconhecíveis, enquanto o teste mede a intensidade de cada estilo. Na Suécia, o livro foi criticado por psicólogos e pela associação de divulgação científica Vetenskap och Folkbildning, pelas simplificações e por apresentar um texto popular como se tivesse base científica. É um alerta justo para qualquer esquema de cores: use-os como uma linguagem para conversar, não como um diagnóstico."
+          ]
+        },
+        {
           "h": "As cores na equipe",
           "p": [
             "O mapa de cores da equipe é uma forma rápida de enxergar desequilíbrios. Uma equipe só de “vermelhos” decide rápido e briga na mesma velocidade; uma equipe de “verdes” é unida, mas evita conversas difíceis e adia mudanças. Uma equipe mista funciona melhor quando cada um entende o que esperar da outra cor: como passar uma tarefa, como dar feedback, como discutir.",
@@ -603,7 +629,12 @@
             "A cor é um rótulo, e rótulos simplificam. “Você é vermelho mesmo” soa como desculpa para a grosseria, e “ela é verde, o que se pode esperar” soa como desistência de qualquer expectativa. O DISC descreve o comportamento habitual, não o caráter, os valores ou as capacidades, e qualquer estilo pode ser desenvolvido. Use as cores para entender uns aos outros, não para colocar as pessoas em caixinhas."
           ]
         }
-      ]
+      ],
+      "cta": {
+        "title": "Descubra sua cor DISC",
+        "text": "O teste mostra sua cor predominante e a secundária, a intensidade de cada uma em porcentagem e o que fazer com isso. 24 blocos, cerca de 10 minutos, sem cadastro.",
+        "button": "Descobrir minha cor"
+      }
     },
     "pdf": {
       "title": "Teste DISC PDF gratuito para imprimir, com gabarito e interpretação",
@@ -670,7 +701,7 @@
           "h": "Como aplicar o teste na equipe usando este site",
           "ol": [
             "Faça o teste você mesmo: assim vai entender o que os participantes verão e poderá mostrar um exemplo de relatório.",
-            "Envie aos colegas o link do site no idioma desejado. Não é preciso cadastro, e o teste leva cerca de dez minutos; cada um informa nome e e-mail e recebe o relatório na tela e por e-mail.",
+            "Envie aos colegas o link do site no idioma desejado. Não é preciso cadastro, e o teste leva cerca de dez minutos; o relatório aparece na tela, e na tela de resultado cada um informa nome e e-mail para recebê-lo também por e-mail.",
             "Peça a cada um que encaminhe a você o link do resultado ou o código do relatório. O resultado só é visível para quem tem o link; nenhum dado é enviado automaticamente ao gestor.",
             "Abra o painel do administrador (link no rodapé do site) e cole os códigos recebidos. O painel monta uma tabela com nomes, perfis e pontuações, que pode ser copiada para o Excel. A tabela fica armazenada apenas no seu navegador.",
             "Marque uma reunião com todos: apresente os quatro estilos, mostre o mapa da equipe e deixe cada um contar o que no relatório acertou em cheio e o que não."
@@ -901,7 +932,7 @@
   "ui": {
     "langLabel": "Idioma",
     "footer": "24 blocos · cerca de 10 minutos · não há respostas certas ou erradas",
-    "privacy": "Suas respostas ficam no seu navegador; o resultado é enviado para o e-mail que você informar e guardado na base de resultados do responsável pelo site.",
+    "privacy": "Suas respostas ficam no seu navegador; se você informar um e-mail, o resultado será enviado para ele e guardado na base de resultados do responsável pelo site.",
     "adminLink": "Painel do administrador",
 
     "intro.eyebrow": "Questionário de perfil comportamental",
@@ -912,9 +943,10 @@
     "intro.howText": "O teste tem 24 blocos de quatro afirmações, 96 no total. Em cada bloco, marque a afirmação que <b>mais</b> se parece com você e a que <b>menos</b> se parece. Responda como você costuma se comportar no trabalho, não como gostaria de ser. Não pense demais: a primeira reação é a mais precisa.",
     "intro.nameLabel": "Nome",
     "intro.emailLabel": "E-mail para envio do resultado",
-    "intro.emailHint": "Ao concluir o teste, você receberá o resultado neste endereço. Nome, e-mail e resultado ficam guardados na base de resultados do responsável pelo site.",
+    "intro.emailHint": "Você receberá neste endereço um e-mail com o link para o relatório completo. Nome, e-mail e resultado ficam guardados na base de resultados do responsável pelo site.",
     "intro.requiredNote": "Os campos marcados com asterisco (*) são obrigatórios.",
     "intro.start": "Começar o teste",
+    "intro.startNote": "24 blocos · cerca de 10 minutos · sem cadastro",
     "intro.resume": "Continuar o teste anterior ({n} de 24 preenchidos)",
     "intro.showLast": "Abrir meu resultado anterior de {date}",
     "intro.nameRequired": "Informe seu nome",
@@ -955,6 +987,7 @@
     "report.stress": "Sob pressão",
     "report.environment": "Ambiente ideal",
     "report.moreLink": "Mais sobre como ler o perfil DISC →",
+    "report.color": "Sua cor DISC: {color}",
 
     "share.title": "Guarde seu resultado",
     "share.text": "Seu resultado está salvo no seu navegador. Copie o link para abrir o relatório mais tarde ou em outro dispositivo, ou envie-o para quem pediu que você fizesse o teste.",
@@ -969,6 +1002,14 @@
     "share.sent": "Seu resultado foi enviado para {email}.",
     "share.sendFailed": "Não foi possível enviar o e-mail para {email}. Copie o link do relatório ou tente novamente.",
     "share.retry": "Enviar novamente",
+    "share.emailTitle": "Receba o resultado por e-mail",
+    "share.send": "Enviar para meu e-mail",
+    "share.mailtoHint": "Seu programa de e-mail vai abrir com a mensagem pronta para este endereço — é só clicar em “Enviar”.",
+    "share.mailtoOpened": "O e-mail com o resultado foi aberto no seu programa de e-mail — envie-o para {email}.",
+    "share.typeTitle": "Compartilhe seu perfil",
+    "share.typeText": "O link leva à descrição pública do perfil “{name}”: nele não há seu nome, seu e-mail nem suas respostas.",
+    "share.type": "Compartilhar perfil",
+    "share.typeMsg": "Meu perfil DISC é {name} ({key}). E o seu?",
 
     "mail.subject": "DISC: {name} — {label}",
     "mail.title": "Resultado do teste DISC",
@@ -1102,7 +1143,7 @@
     "consent.label": "Aviso de cookies",
     "consent.text": "Este site guarda seu progresso, o resultado e o idioma escolhido no armazenamento local do navegador, e um serviço de análise da web coleta estatísticas anônimas de visitas e uma gravação das ações na página para nos ajudar a melhorar o site. Seu nome, e-mail e resultado não são enviados ao serviço de análise.",
     "consent.more": "Saiba mais",
-    "consent.details": "No navegador ficam guardados: o nome e o e-mail que você informa antes do teste; suas respostas e o progresso de um teste não concluído; o último resultado; o idioma escolhido; um registro de que você já viu este aviso. Esses dados permanecem no seu dispositivo e são apagados quando você limpa os dados do site. A hospedagem (GitHub Pages) recebe os dados técnicos habituais da requisição. Ao concluir o teste, o nome, o e-mail e as respostas são transmitidos ao serviço de envio de e-mails (Google Apps Script), que envia o resultado a você e guarda o nome, o e-mail, a data e o resultado na base de resultados do responsável pelo site (uma planilha do Google). O serviço de análise da web recebe o endereço da página sem o código do resultado, a origem da visita, o tipo de dispositivo e navegador e uma gravação anonimizada das ações na página (os campos de nome e e-mail, o link e o código do resultado ficam excluídos), e define os próprios cookies. Você pode bloqueá-lo nas configurações do navegador ou com um bloqueador de rastreadores. Não são usados rastreadores publicitários.",
+    "consent.details": "No navegador ficam guardados: o nome e o e-mail, se você os informou; suas respostas e o progresso de um teste não concluído; o último resultado; o idioma escolhido; um registro de que você já viu este aviso. Esses dados permanecem no seu dispositivo e são apagados quando você limpa os dados do site. A hospedagem (GitHub Pages) recebe os dados técnicos habituais da requisição. Quando você envia o resultado por e-mail, o nome, o e-mail e as respostas são transmitidos ao serviço de envio de e-mails (Google Apps Script), que envia o resultado a você e guarda o nome, o e-mail, a data e o resultado na base de resultados do responsável pelo site (uma planilha do Google). O serviço de análise da web recebe o endereço da página sem o código do resultado, a origem da visita, o tipo de dispositivo e navegador e uma gravação anonimizada das ações na página (os campos de nome e e-mail, o link e o código do resultado ficam excluídos), e define os próprios cookies. Você pode bloqueá-lo nas configurações do navegador ou com um bloqueador de rastreadores. Não são usados rastreadores publicitários.",
     "consent.accept": "Aceitar",
     "consent.decline": "Só o essencial",
     "consent.ok": "Entendi",

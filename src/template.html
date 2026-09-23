@@ -95,6 +95,13 @@ html[lang=ar] body,html[lang=hi] body{font-size:17px;line-height:1.65}
 .sitenav a{color:var(--muted);text-decoration:none;padding:4px 0;border-bottom:2px solid transparent}
 .sitenav a:hover{color:var(--ink)}
 .sitenav a[aria-current]{color:var(--ink);font-weight:600;border-bottom-color:var(--ink)}
+/* телефон: меню разделов в одну строку с горизонтальной прокруткой, чтобы тест оставался на первом экране */
+@media (max-width:640px){
+  .sitenav{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;margin-inline:-20px;padding-inline:20px;mask-image:linear-gradient(to right,#000 85%,transparent);-webkit-mask-image:linear-gradient(to right,#000 85%,transparent)}
+  html[dir=rtl] .sitenav{mask-image:linear-gradient(to left,#000 85%,transparent);-webkit-mask-image:linear-gradient(to left,#000 85%,transparent)}
+  .sitenav::-webkit-scrollbar{display:none}
+  .sitenav a{white-space:nowrap;flex:none}
+}
 .crumbs{font-size:13px;color:var(--muted);margin:0 0 16px}
 .crumbs a{color:var(--muted);text-decoration:none}
 .crumbs a:hover{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
@@ -182,6 +189,9 @@ input:focus-visible,textarea:focus-visible,button:focus-visible,select:focus-vis
 .link:hover{color:var(--ink)}
 .actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
 .actions.between{justify-content:space-between}
+.btn.big{font-size:17px;padding:15px 28px;border-radius:12px}
+.startrow{gap:10px 16px;margin:0 0 6px}
+@media (max-width:480px){.startrow .btn.big{flex:1 1 100%}}
 .foot{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
 .foot .row2{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .foot .privacy{margin-top:6px}
@@ -302,7 +312,15 @@ th.num{text-align:end}
 .consent-in summary::-webkit-details-marker{display:none}
 .consent-in details p{margin:8px 0 0}
 body.has-consent{padding-bottom:160px}
-@media (max-width:640px){body.has-consent{padding-bottom:300px}}
+/* телефон: плашка только информирует, поэтому компактная — одна строка текста и кнопка, подробности свёрнуты */
+@media (max-width:640px){
+  body.has-consent{padding-bottom:120px}
+  .consent{padding:0 8px 8px}
+  .consent-in{padding:10px 12px;gap:4px 10px;font-size:12px;line-height:1.4;display:grid;grid-template-columns:1fr auto;align-items:start}
+  .consent-in>p{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+  .consent-in:has(details[open])>p{display:block}
+  .consent-in details{grid-column:1/-1}
+}
 @media print{.consent{display:none!important}}
 @media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
 @media print{
@@ -330,6 +348,10 @@ body.has-consent{padding-bottom:160px}
 .colorcard h2{margin:10px 0 2px;color:var(--k)}
 .colorcard .swatch{width:44px;height:44px;border-radius:10px;background:var(--k);color:#14171B;display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-weight:600;font-size:22px}
 .colorcard .traits{margin:10px 0 4px}
+.colortype{margin:26px 0;padding:4px 0 4px;padding-inline-start:18px;border-inline-start:4px solid var(--k)}
+.colortype h2{margin-top:0}
+.colortype h3{margin:16px 0 6px}
+.colortype ul{margin:0 0 8px}
 .tablewrap.plain{border:0;background:none;border-radius:0}
 .matrix{min-width:0;width:auto;margin:6px 0 20px;border-collapse:separate;border-spacing:6px}
 .matrix th,.matrix td{border:0;padding:0;background:none;white-space:nowrap}
@@ -473,22 +495,20 @@ function renderProgress(i){
 __INTRO_JS__
 function renderIntro(){
   setStep(''); progEl.hidden=true;
-  var last = lsGet('disc.last'), prog = lsGet('disc.progress'), who = lsGet('disc.who')||{};
+  var last = lsGet('disc.last'), prog = lsGet('disc.progress');
   var progDone = prog && prog.m && prog.m.filter(function(x){return x>=0;}).length;
-  view.innerHTML = introHTML({L:L, t:t, esc:esc, KEYS:KEYS, colorVar:colorVar, who:who, progDone:progDone, lastDate: last ? fmtDate(last.t) : '', links:{styles: ROOT_REL+LANG_PATH[L.lang]+'styles/', profiles: ROOT_REL+LANG_PATH[L.lang]+'profiles/', pdf: ROOT_REL+LANG_PATH[L.lang]+'pdf/', profile: function(k){ return ROOT_REL+LANG_PATH[L.lang]+'profiles/'+k.toLowerCase()+'/'; }}});
-  $('#startForm').addEventListener('submit', function(e){
-    e.preventDefault();
-    var name = $('#nm').value.trim().replace(/\s+/g,' '), email = $('#em').value.trim();
-    if(name.length<2){ $('#nm').focus(); toast(t('intro.nameRequired')); return; }
-    if(!EMAIL_RE.test(email) || email.length>120){ $('#em').focus(); toast(t('intro.emailRequired')); return; }
-    lsSet('disc.who',{name:name,email:email});
-    S = {name:name, email:email, i:0, m:[], l:[]};
+  view.innerHTML = introHTML({L:L, t:t, esc:esc, KEYS:KEYS, colorVar:colorVar, progDone:progDone, lastDate: last ? fmtDate(last.t) : '', links:{styles: ROOT_REL+LANG_PATH[L.lang]+'styles/', profiles: ROOT_REL+LANG_PATH[L.lang]+'profiles/', pdf: ROOT_REL+LANG_PATH[L.lang]+'pdf/', profile: function(k){ return ROOT_REL+LANG_PATH[L.lang]+'profiles/'+k.toLowerCase()+'/'; }}});
+  // Тест начинается сразу, без регистрации: имя и e-mail участник по желанию вводит на экране результата
+  function start(){
+    S = {name:'', email:'', i:0, m:[], l:[]};
     for(var k=0;k<24;k++){ S.m.push(-1); S.l.push(-1); }
     if(window.discTrack) window.discTrack('start'); // цель Метрики: тест начат
     lsSet('disc.progress', S);
-    renderTest();
-  });
-  if($('#resume')) $('#resume').addEventListener('click', function(){ S = prog; var first = S.m.findIndex(function(x,i){ return x<0 || S.l[i]<0; }); S.i = first<0 ? 23 : first; renderTest(); });
+    renderTest(); window.scrollTo(0,0);
+  }
+  $('#start').addEventListener('click', start);
+  $('#start2').addEventListener('click', start);
+  if($('#resume')) $('#resume').addEventListener('click', function(){ S = prog; var first = S.m.findIndex(function(x,i){ return x<0 || S.l[i]<0; }); S.i = first<0 ? 23 : first; renderTest(); window.scrollTo(0,0); });
   if($('#showLast')) $('#showLast').addEventListener('click', function(){ renderReport(last, {own:true}); window.scrollTo(0,0); });
 }
 
@@ -535,7 +555,7 @@ function renderTest(){
     var r = {name:S.name, email:S.email||'', pos:S.pos||'', t:new Date().toISOString(), m:S.m.slice(), l:S.l.slice()};
     lsSet('disc.last', r); lsDel('disc.progress'); S=null;
     if(window.discTrack) window.discTrack('finish'); // цель Метрики: тест завершён
-    renderReport(r, {own:true, send:true});
+    renderReport(r, {own:true});
     window.scrollTo(0,0);
   });
 }
@@ -552,11 +572,16 @@ function renderReport(r, opts){
   var link = pageURL()+'#r='+code;
   var show = {most:false, least:false, net:true};
   var meta = [esc(r.name), esc(r.email||r.pos||''), fmtDate(r.t)].filter(Boolean).join(' · ');
-  var canSend = !!SEND_ENDPOINT && !!r.email;
+  var who = lsGet('disc.who')||{};
   var label = cls.key+' · '+prof.name;
   var lines = KEYS.map(function(k){ return k+': '+signed(sc.net[k])+' ('+pct(sc.net[k])+'%)'; }).join(', ');
-  var mailBody = t('mail.title')+'\r\n'+t('mail.name')+': '+r.name+'\r\n'+(r.email?t('mail.email')+': '+r.email+'\r\n':'')+t('mail.date')+': '+fmtDate(r.t)+'\r\n'+t('mail.profile')+': '+label+'\r\n'+lines+'\r\n\r\n'+t('mail.link')+':\r\n'+link+'\r\n\r\n'+t('mail.code')+':\r\n'+code+'\r\n';
-  var mailto = 'mailto:'+(CONTACT_EMAIL?encodeURIComponent(CONTACT_EMAIL):'')+'?subject='+encodeURIComponent(t('mail.subject',{name:r.name,label:label}))+'&body='+encodeURIComponent(mailBody);
+  var mailBody = t('mail.title')+'\r\n'+(r.name?t('mail.name')+': '+r.name+'\r\n':'')+(r.email?t('mail.email')+': '+r.email+'\r\n':'')+t('mail.date')+': '+fmtDate(r.t)+'\r\n'+t('mail.profile')+': '+label+'\r\n'+lines+'\r\n\r\n'+t('mail.link')+':\r\n'+link+'\r\n\r\n'+t('mail.code')+':\r\n'+code+'\r\n';
+  var mailSubject = r.name ? t('mail.subject',{name:r.name,label:label}) : 'DISC: '+label;
+  var mailto = function(to){ return 'mailto:'+(to?encodeURIComponent(to):'')+'?subject='+encodeURIComponent(mailSubject)+'&body='+encodeURIComponent(mailBody); };
+  var base = ROOT_REL+LANG_PATH[L.lang];
+  var profileHref = base+'profiles/'+cls.key.toLowerCase()+'/';
+  var co = L.content && L.content.colors;
+  var colorName = co ? [cls.p].concat(cls.s?[cls.s]:[]).map(function(k){ return co.colors[k].name; }).join(' + ') : '';
 
   function list(arr){ return '<ul>'+arr.map(function(x){ return '<li>'+esc(x)+'</li>'; }).join('')+'</ul>'; }
 
@@ -595,13 +620,26 @@ function renderReport(r, opts){
       '<div class="sec"><h3>'+t('report.stress')+'</h3><p>'+esc(st.stress)+'</p></div>'+
       '<div class="sec"><h3>'+t('report.environment')+'</h3><p>'+esc(st.environment)+'</p></div>'+
     '</div></div>'+
+    '<p class="seealso no-print"><a href="'+profileHref+'">'+t('pages.profile.more',{name:esc(prof.name)})+' '+arrowR()+'</a> · <a href="'+base+'compatibility/">'+t('nav.compat')+' '+arrowR()+'</a>'+
+      (colorName ? ' · <a href="'+base+'colors/#'+cls.p.toLowerCase()+'">'+t('report.color',{color:esc(colorName)})+' '+arrowR()+'</a>' : '')+'</p>'+
     (opts.own ?
+      '<div class="share no-print" id="sendBox" style="margin-top:16px"><h2>'+t('share.emailTitle')+'</h2>'+
+        '<form class="form" id="sendForm" autocomplete="on" novalidate>'+
+          '<div class="field"><label for="nm">'+t('intro.nameLabel')+'</label><input type="text" id="nm" name="name" class="ym-disable-keys" autocomplete="name" maxlength="80" value="'+esc(r.name||who.name||'')+'"></div>'+
+          '<div class="field"><label for="em">'+t('intro.emailLabel')+'</label><input type="email" id="em" name="email" class="ym-disable-keys" autocomplete="email" inputmode="email" maxlength="120" value="'+esc(r.email||who.email||'')+'"><span class="hint">'+t(SEND_ENDPOINT ? 'intro.emailHint' : 'share.mailtoHint')+'</span></div>'+
+          '<p class="small sendstatus" id="sendStatus" aria-live="polite" hidden></p>'+
+          '<div class="actions"><button class="btn" type="submit">'+t('share.send')+'</button></div>'+
+        '</form>'+
+      '</div>'+
+      '<div class="share no-print" style="margin-top:16px"><h2>'+t('share.typeTitle')+'</h2>'+
+        '<p class="small">'+t('share.typeText',{name:esc(prof.name)})+'</p>'+
+        '<div class="actions"><button class="btn" type="button" id="shareType">'+t('share.type')+'</button></div>'+
+      '</div>'+
       '<div class="share no-print" style="margin-top:16px"><h2>'+t('share.title')+'</h2>'+
         '<p class="small">'+t('share.text')+'</p>'+
-        (canSend ? '<p class="small sendstatus" id="sendStatus" aria-live="polite"></p>' : '')+
         '<textarea class="codebox ym-hide-content" id="code" readonly rows="3" aria-label="'+t('share.codeAria')+'">'+esc(code)+'</textarea>'+
-        '<div class="actions"><button class="btn" type="button" id="copyLink">'+t('share.copyLink')+'</button>'+
-          '<a class="btn secondary" id="mail" href="'+mailto.replace(/"/g,'&quot;')+'">'+t('share.mail')+'</a>'+
+        '<div class="actions"><button class="btn secondary" type="button" id="copyLink">'+t('share.copyLink')+'</button>'+
+          '<a class="btn secondary" id="mail" href="'+mailto(CONTACT_EMAIL).replace(/"/g,'&quot;')+'">'+t('share.mail')+'</a>'+
           '<button class="btn secondary" type="button" id="copyCode">'+t('share.copyCode')+'</button>'+
           '<button class="btn secondary" type="button" id="print">'+t('share.pdf')+'</button></div>'+
       '</div>'+
@@ -619,8 +657,35 @@ function renderReport(r, opts){
   $('#print').addEventListener('click', function(){ try{ window.print(); }catch(e){ toast(t('toast.printNA')); } });
   if($('#restart')) $('#restart').addEventListener('click', function(){ if(location.hash) history.replaceState(null,'',pageURL()); renderIntro(); window.scrollTo(0,0); });
   if($('#backAdmin')) $('#backAdmin').addEventListener('click', function(){ renderAdmin(); window.scrollTo(0,0); });
-  if(opts.own && canSend){ if(opts.send && !r.sent) sendResult(r, code); else showSendStatus(r, code); }
+  if(opts.own){
+    if(r.email && r.sent) showSendStatus(r, code, 'sent');
+    $('#sendForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      var name = $('#nm').value.trim().replace(/\s+/g,' '), email = $('#em').value.trim();
+      if(name.length<2){ $('#nm').focus(); toast(t('intro.nameRequired')); return; }
+      if(!EMAIL_RE.test(email) || email.length>120){ $('#em').focus(); toast(t('intro.emailRequired')); return; }
+      lsSet('disc.who',{name:name,email:email});
+      // имя и e-mail входят в код результата и ссылку: сервер сверяет адрес письма с кодом
+      if(name!==r.name || email!==r.email){ r.name=name; r.email=email; delete r.sent; }
+      var last = lsGet('disc.last'); if(last && last.t===r.t){ lsSet('disc.last', r); }
+      if(window.discTrack) window.discTrack('email');
+      renderReport(r, {own:true, send:true});
+      var box = $('#sendBox'); if(box) box.scrollIntoView({block:'center'});
+    });
+    if(opts.send){
+      if(SEND_ENDPOINT){ if(r.sent) showSendStatus(r, code, 'sent'); else sendResult(r, code); }
+      else { showSendStatus(r, code, 'mailto'); location.href = mailto(r.email); }
+    }
+    $('#shareType').addEventListener('click', function(){
+      // публичная страница профиля: ни имени, ни e-mail, ни ответов в ссылке нет
+      var url = new URL(profileHref, location.href).href, text = t('share.typeMsg',{name:prof.name, key:cls.key});
+      if(window.discTrack) window.discTrack('share');
+      if(navigator.share){ navigator.share({title:text, text:text, url:url}).catch(function(){}); }
+      else copyText(text+' '+url, null);
+    });
+  }
 }
+function arrowR(){ return L.dir==='rtl' ? '←' : '→'; }
 
 /* ====== отправка результата на сервер: письмо участнику + запись в базу результатов (Google Таблица) ====== */
 function postJSON(url, data){
@@ -638,6 +703,8 @@ function postJSON(url, data){
 function showSendStatus(r, code, state){
   var el = $('#sendStatus'); if(!el) return;
   var st = state || (r.sent ? 'sent' : 'failed');
+  el.hidden = false;
+  if(st==='mailto'){ el.className='small sendstatus muted'; el.textContent = t('share.mailtoOpened',{email:r.email}); return; }
   if(st==='sending'){ el.className='small sendstatus muted'; el.textContent = t('share.sending',{email:r.email}); return; }
   if(st==='sent'){ el.className='small sendstatus ok'; el.textContent = t('share.sent',{email:r.email}); return; }
   el.className='small sendstatus err';
@@ -663,7 +730,7 @@ function renderAdmin(){
   var rows = items.map(function(it, idx){
     var sc=it.a.sc, cls=it.a.cls;
     return '<tr>'+
-      '<td><b>'+esc(it.r.name)+'</b>'+((it.r.email||it.r.pos)?'<br><span class="muted small">'+esc(it.r.email||it.r.pos)+'</span>':'')+'</td>'+
+      '<td><b>'+(esc(it.r.name)||'—')+'</b>'+((it.r.email||it.r.pos)?'<br><span class="muted small">'+esc(it.r.email||it.r.pos)+'</span>':'')+'</td>'+
       '<td>'+esc(fmtDateShort(it.r.t))+'</td>'+
       '<td>'+badgeHTML(cls,'pill')+'<small>'+esc(it.a.profile.name)+'</small></td>'+
       KEYS.map(function(k){ return '<td class="num">'+signed(sc.net[k])+'</td>'; }).join('')+

@@ -343,7 +343,7 @@
         },
         {
           "q": "Le test est-il vraiment gratuit ?",
-          "a": "Oui, entièrement : sans inscription, sans frais cachés et sans « rapport détaillé » payant. Le résultat s'affiche à l'écran juste après le dernier bloc et vous est envoyé par e-mail à l'adresse indiquée."
+          "a": "Oui, entièrement : sans inscription, sans frais cachés et sans « rapport détaillé » payant. Le résultat s'affiche à l'écran juste après le dernier bloc ; si vous le souhaitez, vous pouvez aussi le recevoir par e-mail."
         },
         {
           "q": "Que signifient les lettres D, I, S, C ?",
@@ -367,7 +367,7 @@
         },
         {
           "q": "Où va le résultat et qui peut le voir ?",
-          "a": "Le résultat s'affiche à l'écran, est enregistré dans votre navigateur et envoyé à l'adresse e-mail saisie avant le test. Votre nom, votre adresse e-mail et le résultat sont également enregistrés dans la base de résultats du propriétaire du site ; ils ne servent à rien d'autre et ne sont pas transmis à des tiers. Personne d'autre ne verra votre rapport, sauf si vous en partagez vous-même le lien. Détails sur la page « Confidentialité »."
+          "a": "Le résultat s'affiche à l'écran et est enregistré dans votre navigateur. Si vous indiquez votre nom et votre adresse e-mail sur l'écran du résultat, le rapport vous est envoyé à cette adresse, et votre nom, votre adresse e-mail et le résultat sont enregistrés dans la base de résultats du propriétaire du site ; ils ne servent à rien d'autre et ne sont pas transmis à des tiers. Personne d'autre ne verra votre rapport, sauf si vous en partagez vous-même le lien. Détails sur la page « Confidentialité »."
         },
         {
           "q": "Puis-je refaire le test ?",
@@ -398,7 +398,7 @@
       "sections": [
         {
           "h": "Pourquoi ce site existe",
-          "p": ["Nous voulions un test DISC que chacun puisse passer en dix minutes, sans inscription ni paiement, avec un rapport clair dans sa langue, à partager avec son équipe. Le site fonctionne en quatorze langues, le résultat apparaît immédiatement et arrive par e-mail, et les managers et les RH disposent d'un espace où les résultats des participants sont réunis dans un tableau."]
+          "p": ["Nous voulions un test DISC que chacun puisse passer en dix minutes, sans inscription ni paiement, avec un rapport clair dans sa langue, à partager avec son équipe. Le site fonctionne en quatorze langues, le résultat apparaît immédiatement et, si vous le souhaitez, arrive par e-mail, et les managers et les RH disposent d'un espace où les résultats des participants sont réunis dans un tableau."]
         },
         {
           "h": "Sur quoi repose le test",
@@ -425,19 +425,19 @@
         {
           "h": "Quelles données nous utilisons",
           "p": [
-            "Avant le test, vous saisissez votre nom et votre adresse e-mail. Pendant le test, vos réponses sont enregistrées ; ensuite, le résultat, la langue choisie et une mention indiquant que vous avez vu l'avis relatif aux cookies. Tout cela est conservé dans le stockage local de votre navigateur. À la fin du test, votre nom, votre adresse e-mail, la date du test et le résultat sont également enregistrés dans la base de résultats du propriétaire du site."
+            "Aucune saisie n'est nécessaire pour passer le test. Pendant le test, vos réponses sont enregistrées ; ensuite, le résultat, la langue choisie et une mention indiquant que vous avez vu l'avis relatif aux cookies. Si vous souhaitez recevoir le rapport par e-mail, vous pouvez indiquer votre nom et votre adresse e-mail sur l'écran du résultat. Tout cela est conservé dans le stockage local de votre navigateur. Si vous avez envoyé le résultat par e-mail, votre nom, votre adresse e-mail, la date du test et le résultat sont également enregistrés dans la base de résultats du propriétaire du site."
           ]
         },
         {
           "h": "Où les données sont transmises",
           "p": [
-            "À la fin du test, votre nom, votre adresse e-mail et vos réponses (sous forme de code de résultat) sont transmis au service d'envoi d'e-mails, un script Google Apps Script qui fonctionne dans le compte Google du propriétaire du site. Il vous envoie l'e-mail avec le résultat et enregistre votre nom, votre adresse e-mail, la date du test et le résultat (profil, scores, lien vers le rapport) dans la base de résultats, une feuille Google Sheets dans le même compte. Ces données ne servent à rien d'autre et ne sont pas transmises à des tiers.",
+            "Lorsque vous appuyez sur « Recevoir par e-mail », votre nom, votre adresse e-mail et vos réponses (sous forme de code de résultat) sont transmis au service d'envoi d'e-mails, un script Google Apps Script qui fonctionne dans le compte Google du propriétaire du site. Il vous envoie l'e-mail avec le résultat et enregistre votre nom, votre adresse e-mail, la date du test et le résultat (profil, scores, lien vers le rapport) dans la base de résultats, une feuille Google Sheets dans le même compte. Ces données ne servent à rien d'autre et ne sont pas transmises à des tiers.",
             "L'hébergeur (GitHub Pages) reçoit les données techniques habituelles de la requête : adresse IP, type de navigateur, adresse de la page. Les polices sont servies par ce site lui-même et ne sont pas chargées depuis les serveurs de Google. Les statistiques de visite sont collectées par un service d'analyse d'audience : il reçoit des données de visite anonymisées — l'adresse de la page sans le code du résultat, la provenance, le type d'appareil et de navigateur — et un enregistrement des actions sur la page ; les champs nom et e-mail, le lien et le code du résultat sont exclus de l'enregistrement. Vous pouvez arrêter la collecte dans les paramètres du navigateur ou avec un bloqueur de traceurs. Aucun traceur publicitaire n'est utilisé."
           ]
         },
         {
           "h": "Le lien vers le résultat",
-          "p": ["Le lien vers le rapport contient votre nom, votre adresse e-mail et vos réponses sous forme codée. Toute personne disposant du lien peut ouvrir le rapport ; ne le partagez donc qu'avec des personnes de confiance. L'espace administrateur ne fonctionne que dans le navigateur de la personne qui y a collé les codes."]
+          "p": ["Le lien vers le rapport contient vos réponses sous forme codée, ainsi que votre nom et votre adresse e-mail si vous les avez indiqués. Toute personne disposant du lien peut ouvrir le rapport ; ne le partagez donc qu'avec des personnes de confiance. L'espace administrateur ne fonctionne que dans le navigateur de la personne qui y a collé les codes."]
         },
         {
           "h": "Formulaire de contact",
@@ -453,7 +453,7 @@
         },
         {
           "h": "Modifications",
-          "p": ["Dernière mise à jour : 23 septembre 2026. Les changements dans le traitement des données seront reflétés sur cette page."]
+          "p": ["Dernière mise à jour : 24 septembre 2026. Les changements dans le traitement des données seront reflétés sur cette page."]
         }
       ]
     },
@@ -472,7 +472,7 @@
         {
           "h": "De quoi se compose le résultat",
           "p": [
-            "Après le dernier bloc, vous voyez quatre éléments : le nom du profil avec une ou deux lettres (par exemple « Pionnier, DI »), un graphique à trois courbes, quatre échelles en pourcentage et une description textuelle : traits clés, points forts, axes de progression, motivation, comportement sous stress et conseils sur la façon de communiquer avec vous. Le même rapport vous est envoyé par e-mail et s'ouvre par un lien.",
+            "Après le dernier bloc, vous voyez quatre éléments : le nom du profil avec une ou deux lettres (par exemple « Pionnier, DI »), un graphique à trois courbes, quatre échelles en pourcentage et une description textuelle : traits clés, points forts, axes de progression, motivation, comportement sous stress et conseils sur la façon de communiquer avec vous. Vous pouvez aussi recevoir ce rapport par e-mail et l'ouvrir par un lien.",
             "Tous les chiffres du rapport découlent de vos réponses dans les 24 blocs. Dans chaque bloc, vous avez choisi une affirmation qui vous « ressemble le plus » et une qui vous « ressemble le moins », et chaque affirmation correspond à l'un des styles D, I, S ou C. Chaque style a donc deux nombres : combien de fois vous l'avez choisi comme « le plus » et combien de fois comme « le moins »."
           ]
         },
@@ -539,32 +539,49 @@
       ]
     },
     "colors": {
-      "title": "Test DISC couleurs : rouge, jaune, vert et bleu expliqués",
-      "description": "Les couleurs DISC : rouge (D), jaune (I), vert (S), bleu (C). Ce que signifie chaque couleur, comment trouver la vôtre, différences avec les tests de couleurs.",
+      "title": "Test des 4 couleurs de personnalité : rouge, jaune, vert et bleu (DISC)",
+      "description": "Rouge, jaune, vert et bleu selon le DISC : reconnaître chaque couleur, communiquer avec elle et le lien avec « Entouré d'idiots ». Test gratuit.",
       "h1": "Les couleurs DISC : rouge, jaune, vert, bleu",
       "lead": "Les quatre styles DISC sont souvent désignés par des couleurs : rouge pour la dominance, jaune pour l'influence, vert pour la stabilité, bleu pour la conformité. Les couleurs n'ajoutent rien au modèle, mais elles aident à mémoriser les styles rapidement et à en parler en équipe. Voyons ce qui se cache derrière chaque couleur et comment connaître la vôtre.",
       "colors": {
         "D": {
           "name": "Rouge",
           "tagline": "Dominance (D) : résultats et contrôle",
-          "text": "Le rouge est la couleur de la vitesse et de l'allant. Les « rouges » fixent un objectif et vont droit au but, décident vite, débattent, prennent leurs responsabilités et ne craignent pas le conflit. En équipe, ils font avancer les choses, mais peuvent mettre la pression et perdre patience envers ceux qui travaillent avec plus de prudence."
+          "text": "Le rouge est la couleur de la vitesse et de l'allant. Les « rouges » fixent un objectif et vont droit au but, décident vite, débattent, prennent leurs responsabilités et ne craignent pas le conflit. En équipe, ils font avancer les choses, mais peuvent mettre la pression et perdre patience envers ceux qui travaillent avec plus de prudence.",
+          "h": "Type de personnalité rouge",
+          "signs": ["Parle brièvement et sans détour, va droit à l'essentiel et aux conclusions.", "Décide vite et n'aime pas qu'on repousse les décisions.", "En réunion, prend la parole, débat et impose le rythme.", "Par écrit : deux lignes, sans formule de politesse ni émoji.", "Sous pression, devient plus cassant et se met à tout décider seul."],
+          "blind": "Le point fort du « rouge » : faire bouger les choses pendant que les autres discutent encore. Son angle mort : le prix de ce rythme. Il ne voit pas que les autres n'ont pas eu le temps d'adhérer, prend la prudence pour de la faiblesse et les questions pour de la résistance. Ce qui l'agace le plus : la lenteur, les discussions creuses et la perte de contrôle.",
+          "talk": ["Commencez par l'objectif et la conclusion ; les détails, s'il les demande.", "Proposez plusieurs options plutôt qu'une seule solution : il veut choisir lui-même.", "Contredisez-le franchement, faits à l'appui : il ne perçoit ni les sous-entendus ni les vexations."]
         },
         "I": {
           "name": "Jaune",
           "tagline": "Influence (I) : relations et enthousiasme",
-          "text": "Le jaune est la couleur de l'énergie et de la communication. Les « jaunes » nouent facilement des contacts, inspirent, ont des idées et communiquent leur optimisme. Ils ont besoin de reconnaissance et de contact humain ; les détails, les délais et la routine leur pèsent, et leurs promesses dépassent parfois leurs moyens."
+          "text": "Le jaune est la couleur de l'énergie et de la communication. Les « jaunes » nouent facilement des contacts, inspirent, ont des idées et communiquent leur optimisme. Ils ont besoin de reconnaissance et de contact humain ; les détails, les délais et la routine leur pèsent, et leurs promesses dépassent parfois leurs moyens.",
+          "h": "Type de personnalité jaune",
+          "signs": ["Engage facilement la conversation avec des inconnus et passe vite au tutoiement.", "Raconte des histoires, gesticule beaucoup, transmet ses émotions.", "Lance des idées au pied levé et se porte volontaire le premier.", "Écrit avec entrain : points d'exclamation, émojis, messages vocaux.", "Sous pression, parle beaucoup, promet trop et cherche du soutien."],
+          "blind": "Le point fort du « jaune » : rassembler les gens et les enthousiasmer pour une idée. Son angle mort : la mise en œuvre. Son intérêt retombe dès que la routine s'installe, les délais et les détails passent au second plan, et ses promesses dépassent ses moyens. Ce qui le blesse le plus : l'indifférence, la critique en public et le travail en solitaire.",
+          "talk": ["Commencez par le contact humain : quelques mots sur lui, puis le sujet.", "Complimentez-le de façon visible et sincère : la reconnaissance est sa meilleure motivation.", "Consignez les accords par écrit, avec des dates : lui-même risque de les oublier."]
         },
         "S": {
           "name": "Vert",
           "tagline": "Stabilité (S) : soutien et constance",
-          "text": "Le vert est la couleur du calme et de la fiabilité. Les « verts » savent écouter, soutiennent, mènent à terme ce qu'ils ont commencé et préservent les relations dans l'équipe. Ils ont besoin de prévisibilité et de temps pour s'adapter aux changements ; le conflit ouvert et la pression sont difficiles à supporter."
+          "text": "Le vert est la couleur du calme et de la fiabilité. Les « verts » savent écouter, soutiennent, mènent à terme ce qu'ils ont commencé et préservent les relations dans l'équipe. Ils ont besoin de prévisibilité et de temps pour s'adapter aux changements ; le conflit ouvert et la pression sont difficiles à supporter.",
+          "h": "Type de personnalité vert",
+          "signs": ["Écoute plus qu'il ne parle et vous demande comment vous allez.", "Ne se précipite pas pour répondre et prend le temps de réfléchir.", "Aide volontiers et dit rarement non, même quand il est débordé.", "Tient à ses habitudes : le même trajet, les mêmes outils, la même équipe.", "Sous pression, se tait, acquiesce en apparence et accumule le mécontentement."],
+          "blind": "Le point fort du « vert » : la fiabilité. Il mène à terme ce qu'il a commencé et préserve les relations là où d'autres se brouilleraient. Son angle mort : le silence. Il ne dit pas non, ne conteste pas ouvertement et accepte des changements qu'il désapprouve intérieurement. Ce qui le déstabilise le plus : les changements soudains, le ton brusque et les conflits.",
+          "talk": ["Annoncez les changements à l'avance et expliquez pourquoi ils sont nécessaires.", "Demandez-lui son avis en tête-à-tête, pas au milieu d'un débat collectif.", "Ne prenez pas son silence pour un accord : vérifiez ce qu'il pense vraiment."]
         },
         "C": {
           "name": "Bleu",
           "tagline": "Conformité (C) : précision et qualité",
-          "text": "Le bleu est la couleur de l'analyse et de l'ordre. Les « bleus » s'appuient sur les faits, vérifient les détails, planifient et suivent les normes. Ils garantissent la qualité, mais peuvent s'enliser dans l'analyse, repousser les délais au nom de la perfection et paraître froids."
+          "text": "Le bleu est la couleur de l'analyse et de l'ordre. Les « bleus » s'appuient sur les faits, vérifient les détails, planifient et suivent les normes. Ils garantissent la qualité, mais peuvent s'enliser dans l'analyse, repousser les délais au nom de la perfection et paraître froids.",
+          "h": "Type de personnalité bleu",
+          "signs": ["Pose des questions de précision et demande des chiffres, des sources, des exemples.", "Avant de décider, rassemble des informations et compare les options.", "Repère les erreurs, les coquilles et les incohérences que les autres laissent passer.", "Écrit de façon détaillée, point par point, avec pièces jointes et liens.", "Sous pression, se réfugie dans l'analyse, reporte la décision et devient critique."],
+          "blind": "Le point fort du « bleu » : la qualité, son travail doit rarement être refait. Son angle mort : le prix de la perfection. Il passe du temps à vérifier ce qui est déjà assez bon, repousse la décision jusqu'à ce que tout soit clair et paraît froid là où l'on attend du soutien. Ce qui l'agace le plus : la négligence, la précipitation sans raison et les formulations floues.",
+          "talk": ["Venez avec des faits et une structure : objectif, données, options, délais.", "Laissez-lui le temps d'étudier le dossier avant la discussion, pas pendant la réunion.", "Formulez vos critiques précisément : ce qui ne va pas et selon quel critère."]
         }
       },
+      "labels": { "signs": "Comment le reconnaître", "blind": "Point fort et angle mort", "talk": "Comment communiquer" },
       "sections": [
         {
           "h": "D'où viennent les couleurs",
@@ -595,6 +612,13 @@
           ]
         },
         {
+          "h": "Les couleurs dans « Entouré d'idiots » de Thomas Erikson",
+          "p": [
+            "Le grand public connaît surtout les quatre couleurs grâce au livre de l'auteur suédois Thomas Erikson, « Entouré d'idiots » (Omgiven av idioter, 2014). Vendu à des millions d'exemplaires, il a été traduit dans des dizaines de langues. Erikson décrit les quatre mêmes personnages que le DISC : le rouge, décidé et impatient ; le jaune, sociable et enthousiaste ; le vert, calme et conciliant ; le bleu, précis et réservé. Le titre est ironique : les gens d'une autre couleur nous semblent des « idiots » tant que nous ne comprenons pas comment ils fonctionnent.",
+            "Erikson s'appuie explicitement sur le DISC : son rouge, son jaune, son vert et son bleu correspondent donc aux styles D, I, S et C de ce site. La différence tient à la présentation : le livre explique le modèle à travers des anecdotes du quotidien et des portraits types, tandis que le test mesure l'intensité de chaque style. En Suède, le livre a été critiqué par des psychologues et par l'association Vetenskap och Folkbildning, qui lui reprochent ses simplifications et le fait de présenter un texte de vulgarisation comme scientifiquement fondé. La mise en garde vaut pour tout système de couleurs : servez-vous-en comme d'un langage pour échanger, pas comme d'un diagnostic."
+          ]
+        },
+        {
           "h": "Les couleurs en équipe",
           "p": [
             "La carte des couleurs d'une équipe est un moyen rapide de repérer les déséquilibres. Une équipe composée uniquement de « rouges » décide vite et se dispute tout aussi vite ; une équipe de « verts » est soudée, mais évite les conversations difficiles et repousse les changements. Une équipe mixte fonctionne mieux si chacun sait à quoi s'attendre de la part de l'autre couleur : comment confier une tâche, comment donner un retour, comment débattre.",
@@ -607,7 +631,12 @@
             "Une couleur est une étiquette, et les étiquettes simplifient. « C'est un rouge, que veux-tu » sonne comme une excuse à la brusquerie, et « elle est verte, on n'en tirera rien » comme un renoncement à toute attente. Le DISC décrit un comportement habituel, pas le caractère, les valeurs ou les capacités, et tout style peut se développer. Servez-vous des couleurs pour vous comprendre, pas pour ranger les gens dans des cases."
           ]
         }
-      ]
+      ],
+      "cta": {
+        "title": "Découvrez votre couleur DISC",
+        "text": "Le test révèle votre couleur dominante et votre couleur secondaire, leur intensité en pourcentage et ce que vous pouvez en faire. 24 blocs, environ 10 minutes, sans inscription.",
+        "button": "Découvrir ma couleur"
+      }
     },
     "pdf": {
       "title": "Test DISC PDF gratuit à imprimer : questionnaire, clé et profils",
@@ -681,7 +710,7 @@
           "h": "Comment faire passer le test à votre équipe sur ce site",
           "ol": [
             "Passez d'abord le test vous-même : vous saurez ce que verront les participants et pourrez montrer un exemple de rapport.",
-            "Envoyez à vos collègues le lien du site dans la langue voulue. Aucune inscription n'est nécessaire, le test prend une dizaine de minutes ; chacun indique son nom et son e-mail et reçoit le rapport à l'écran et par e-mail.",
+            "Envoyez à vos collègues le lien du site dans la langue voulue. Aucune inscription n'est nécessaire, le test prend une dizaine de minutes ; le rapport s'affiche à l'écran, et sur l'écran du résultat chacun indique son nom et son e-mail pour le recevoir par e-mail.",
             "Demandez à chacun de vous transmettre le lien vers son résultat ou le code du rapport. Le résultat n'est visible que par ceux qui ont le lien ; aucune donnée n'est envoyée automatiquement au manager.",
             "Ouvrez l'espace administrateur (lien en pied de page) et collez les codes reçus. L'espace constitue un tableau avec les noms, les profils et les scores, que vous pouvez copier dans Excel. Le tableau n'est conservé que dans votre navigateur.",
             "Organisez une réunion commune : présentez les quatre styles, montrez la carte de l'équipe et laissez chacun dire ce qui, dans son rapport, tombe juste et ce qui ne colle pas."
@@ -912,7 +941,7 @@
   "ui": {
     "langLabel": "Langue",
     "footer": "24 blocs · environ 10 minutes · pas de bonnes ou de mauvaises réponses",
-    "privacy": "Vos réponses restent dans votre navigateur ; le résultat est envoyé à l'adresse e-mail que vous indiquez et conservé dans la base de résultats du propriétaire du site.",
+    "privacy": "Vos réponses restent dans votre navigateur ; si vous indiquez une adresse e-mail, le résultat y est envoyé et conservé dans la base de résultats du propriétaire du site.",
     "adminLink": "Espace administrateur",
 
     "intro.eyebrow": "Questionnaire de styles comportementaux",
@@ -923,9 +952,10 @@
     "intro.howText": "Le test comporte 24 blocs de quatre affirmations, soit 96 au total. Dans chaque bloc, cochez celle qui vous décrit <b>le plus</b> et celle qui vous décrit <b>le moins</b>. Répondez selon votre comportement habituel au travail, pas selon ce que vous aimeriez être. Ne réfléchissez pas trop : la première réaction est la plus juste.",
     "intro.nameLabel": "Nom",
     "intro.emailLabel": "Adresse e-mail pour recevoir le résultat",
-    "intro.emailHint": "À la fin du test, votre résultat sera envoyé à cette adresse. Votre nom, votre e-mail et votre résultat sont conservés dans la base de résultats du propriétaire du site.",
+    "intro.emailHint": "Un e-mail contenant le lien vers le rapport complet sera envoyé à cette adresse. Votre nom, votre e-mail et votre résultat sont conservés dans la base de résultats du propriétaire du site.",
     "intro.requiredNote": "Les champs marqués d'un astérisque (*) sont obligatoires.",
     "intro.start": "Commencer le test",
+    "intro.startNote": "24 blocs · environ 10 minutes · sans inscription",
     "intro.resume": "Reprendre le test précédent ({n} blocs sur 24 remplis)",
     "intro.showLast": "Ouvrir mon résultat précédent du {date}",
     "intro.nameRequired": "Indiquez votre nom",
@@ -966,6 +996,7 @@
     "report.stress": "Sous stress",
     "report.environment": "Environnement idéal",
     "report.moreLink": "En savoir plus sur la lecture d'un profil DISC →",
+    "report.color": "Votre couleur DISC : {color}",
 
     "share.title": "Conservez votre résultat",
     "share.text": "Votre résultat est enregistré dans votre navigateur. Copiez le lien pour rouvrir le rapport plus tard ou sur un autre appareil, ou envoyez-le à la personne qui vous a demandé de passer le test.",
@@ -980,6 +1011,14 @@
     "share.sent": "Votre résultat a été envoyé à {email}.",
     "share.sendFailed": "L'e-mail n'a pas pu être envoyé à {email}. Copiez le lien du rapport ou réessayez.",
     "share.retry": "Renvoyer",
+    "share.emailTitle": "Recevez votre résultat par e-mail",
+    "share.send": "Recevoir par e-mail",
+    "share.mailtoHint": "Votre messagerie s'ouvrira avec un e-mail prêt à partir vers cette adresse : il ne restera plus qu'à cliquer sur « Envoyer ».",
+    "share.mailtoOpened": "L'e-mail contenant votre résultat est ouvert dans votre messagerie : envoyez-le à {email}.",
+    "share.typeTitle": "Partagez votre type",
+    "share.typeText": "Le lien mène à la description publique du profil « {name} » : il ne contient ni votre nom, ni votre e-mail, ni vos réponses.",
+    "share.type": "Partager mon type",
+    "share.typeMsg": "Mon type DISC : {name} ({key}). Et vous, c'est lequel ?",
 
     "mail.subject": "DISC : {name} — {label}",
     "mail.title": "Résultat du test DISC",
@@ -1113,7 +1152,7 @@
     "consent.label": "Avis relatif aux cookies",
     "consent.text": "Ce site conserve votre progression, votre résultat et la langue choisie dans le stockage local du navigateur, et un service d'analyse d'audience collecte des statistiques de visite anonymisées et un enregistrement des actions sur la page pour nous aider à améliorer le site. Votre nom, votre e-mail et votre résultat ne sont pas transmis au service d'analyse.",
     "consent.more": "En savoir plus",
-    "consent.details": "Conservés dans le navigateur : le nom et l'e-mail saisis avant le test ; vos réponses et la progression inachevée ; votre dernier résultat ; la langue choisie ; une marque indiquant que vous avez vu cet avis. Ces données restent sur votre appareil et sont supprimées lorsque vous effacez les données du site. L'hébergeur (GitHub Pages) reçoit les données techniques habituelles de la requête. À la fin du test, le nom, l'e-mail et les réponses sont transmis au service d'envoi d'e-mails (Google Apps Script), qui vous envoie votre résultat et enregistre le nom, l'e-mail, la date et le résultat dans la base de résultats du propriétaire du site (une feuille Google Sheets). Le service d'analyse d'audience reçoit l'adresse de la page sans le code du résultat, la provenance, le type d'appareil et de navigateur, un enregistrement anonymisé des actions sur la page (les champs nom et e-mail, le lien et le code du résultat en sont exclus) et dépose ses propres cookies. Vous pouvez le bloquer dans les paramètres du navigateur ou avec un bloqueur de traceurs. Aucun traceur publicitaire n'est utilisé.",
+    "consent.details": "Conservés dans le navigateur : le nom et l'e-mail, si vous les avez indiqués ; vos réponses et la progression inachevée ; votre dernier résultat ; la langue choisie ; une marque indiquant que vous avez vu cet avis. Ces données restent sur votre appareil et sont supprimées lorsque vous effacez les données du site. L'hébergeur (GitHub Pages) reçoit les données techniques habituelles de la requête. Lorsque vous envoyez le résultat par e-mail, le nom, l'e-mail et les réponses sont transmis au service d'envoi d'e-mails (Google Apps Script), qui vous envoie votre résultat et enregistre le nom, l'e-mail, la date et le résultat dans la base de résultats du propriétaire du site (une feuille Google Sheets). Le service d'analyse d'audience reçoit l'adresse de la page sans le code du résultat, la provenance, le type d'appareil et de navigateur, un enregistrement anonymisé des actions sur la page (les champs nom et e-mail, le lien et le code du résultat en sont exclus) et dépose ses propres cookies. Vous pouvez le bloquer dans les paramètres du navigateur ou avec un bloqueur de traceurs. Aucun traceur publicitaire n'est utilisé.",
     "consent.accept": "Accepter",
     "consent.decline": "Cookies essentiels uniquement",
     "consent.ok": "Compris",

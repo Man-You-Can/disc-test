@@ -28,12 +28,12 @@
 <meta property="og:locale:alternate" content="id_ID">
 <meta property="og:locale:alternate" content="tr_TR">
 <meta property="og:locale:alternate" content="pl_PL">
-<meta property="og:image" content="https://disc-test.org/og/zh-hant.png">
+<meta property="og:image" content="https://disc-test.org/og/profiles/zh-hant-si.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="DISC SI 型人格（外交家）：特質、優勢與成長空間">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://disc-test.org/og/zh-hant.png">
+<meta name="twitter:image" content="https://disc-test.org/og/profiles/zh-hant-si.png">
 <meta name="theme-color" content="#F3F4F6" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#14171B" media="(prefers-color-scheme: dark)">
 <link rel="canonical" href="https://disc-test.org/zh-hant/profiles/si/">
@@ -126,6 +126,13 @@ html[lang=ar] body,html[lang=hi] body{font-size:17px;line-height:1.65}
 .sitenav a{color:var(--muted);text-decoration:none;padding:4px 0;border-bottom:2px solid transparent}
 .sitenav a:hover{color:var(--ink)}
 .sitenav a[aria-current]{color:var(--ink);font-weight:600;border-bottom-color:var(--ink)}
+/* телефон: меню разделов в одну строку с горизонтальной прокруткой, чтобы тест оставался на первом экране */
+@media (max-width:640px){
+  .sitenav{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;margin-inline:-20px;padding-inline:20px;mask-image:linear-gradient(to right,#000 85%,transparent);-webkit-mask-image:linear-gradient(to right,#000 85%,transparent)}
+  html[dir=rtl] .sitenav{mask-image:linear-gradient(to left,#000 85%,transparent);-webkit-mask-image:linear-gradient(to left,#000 85%,transparent)}
+  .sitenav::-webkit-scrollbar{display:none}
+  .sitenav a{white-space:nowrap;flex:none}
+}
 .crumbs{font-size:13px;color:var(--muted);margin:0 0 16px}
 .crumbs a{color:var(--muted);text-decoration:none}
 .crumbs a:hover{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
@@ -213,6 +220,9 @@ input:focus-visible,textarea:focus-visible,button:focus-visible,select:focus-vis
 .link:hover{color:var(--ink)}
 .actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
 .actions.between{justify-content:space-between}
+.btn.big{font-size:17px;padding:15px 28px;border-radius:12px}
+.startrow{gap:10px 16px;margin:0 0 6px}
+@media (max-width:480px){.startrow .btn.big{flex:1 1 100%}}
 .foot{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
 .foot .row2{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .foot .privacy{margin-top:6px}
@@ -333,7 +343,15 @@ th.num{text-align:end}
 .consent-in summary::-webkit-details-marker{display:none}
 .consent-in details p{margin:8px 0 0}
 body.has-consent{padding-bottom:160px}
-@media (max-width:640px){body.has-consent{padding-bottom:300px}}
+/* телефон: плашка только информирует, поэтому компактная — одна строка текста и кнопка, подробности свёрнуты */
+@media (max-width:640px){
+  body.has-consent{padding-bottom:120px}
+  .consent{padding:0 8px 8px}
+  .consent-in{padding:10px 12px;gap:4px 10px;font-size:12px;line-height:1.4;display:grid;grid-template-columns:1fr auto;align-items:start}
+  .consent-in>p{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+  .consent-in:has(details[open])>p{display:block}
+  .consent-in details{grid-column:1/-1}
+}
 @media print{.consent{display:none!important}}
 @media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
 @media print{
@@ -361,6 +379,10 @@ body.has-consent{padding-bottom:160px}
 .colorcard h2{margin:10px 0 2px;color:var(--k)}
 .colorcard .swatch{width:44px;height:44px;border-radius:10px;background:var(--k);color:#14171B;display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-weight:600;font-size:22px}
 .colorcard .traits{margin:10px 0 4px}
+.colortype{margin:26px 0;padding:4px 0 4px;padding-inline-start:18px;border-inline-start:4px solid var(--k)}
+.colortype h2{margin-top:0}
+.colortype h3{margin:16px 0 6px}
+.colortype ul{margin:0 0 8px}
 .tablewrap.plain{border:0;background:none;border-radius:0}
 .matrix{min-width:0;width:auto;margin:6px 0 20px;border-collapse:separate;border-spacing:6px}
 .matrix th,.matrix td{border:0;padding:0;background:none;white-space:nowrap}
@@ -398,7 +420,7 @@ body.has-consent{padding-bottom:160px}
   <footer class="foot">
     <div class="row2"><span>24 題 · 約 10 分鐘 · 沒有對錯之分</span><span class="footlinks"><a href="../../../zh-hant/about/">關於本站</a> · <a href="../../../zh-hant/contact/">聯絡我們</a> · <a href="../../../zh-hant/privacy/">隱私權政策</a></span></div>
     <nav class="materials" aria-label="DISC 相關資源"><span class="mlabel">DISC 相關資源</span><a href="../../../zh-hant/disc/">什麼是 DISC</a><a href="../../../zh-hant/styles/">四種風格</a><a href="../../../zh-hant/profiles/">16 種類型</a><a href="../../../zh-hant/results/">結果解讀</a><a href="../../../zh-hant/compatibility/">風格搭配</a><a href="../../../zh-hant/colors/">DISC 人格色彩</a><a href="../../../zh-hant/teams/">DISC 團隊應用</a><a href="../../../zh-hant/disc-vs-mbti/">DISC 與 MBTI</a><a href="../../../zh-hant/pdf/">PDF 列印版</a><a href="../../../zh-hant/faq/">常見問題</a></nav>
-    <div class="privacy">你的答案儲存在瀏覽器中；結果會寄到你填寫的電子郵件信箱，並儲存在網站擁有者的結果資料庫中。</div>
+    <div class="privacy">你的答案儲存在瀏覽器中；如果你填寫電子郵件，結果會寄到這個信箱，並儲存在網站擁有者的結果資料庫中。</div>
     <nav class="langs" aria-label="語言"><a href="../../../profiles/si/" hreflang="en" lang="en" data-lang="en"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-en"/></svg><span>English</span></a><a href="../../../ru/profiles/si/" hreflang="ru" lang="ru" data-lang="ru"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-ru"/></svg><span>Русский</span></a><a href="../../../es/profiles/si/" hreflang="es" lang="es" data-lang="es"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-es"/></svg><span>Español</span></a><a href="../../../zh/profiles/si/" hreflang="zh-Hans" lang="zh-Hans" data-lang="zh"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-zh"/></svg><span>简体中文</span></a><a href="../../../zh-hant/profiles/si/" hreflang="zh-Hant" lang="zh-Hant" data-lang="zh-hant" aria-current="page"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-zh-hant"/></svg><span>繁體中文</span></a><a href="../../../ar/profiles/si/" hreflang="ar" lang="ar" data-lang="ar"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-ar"/></svg><span>العربية</span></a><a href="../../../pt/profiles/si/" hreflang="pt" lang="pt" data-lang="pt"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-pt"/></svg><span>Português</span></a><a href="../../../fr/profiles/si/" hreflang="fr" lang="fr" data-lang="fr"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-fr"/></svg><span>Français</span></a><a href="../../../de/profiles/si/" hreflang="de" lang="de" data-lang="de"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-de"/></svg><span>Deutsch</span></a><a href="../../../ja/profiles/si/" hreflang="ja" lang="ja" data-lang="ja"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-ja"/></svg><span>日本語</span></a><a href="../../../hi/profiles/si/" hreflang="hi" lang="hi" data-lang="hi"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-hi"/></svg><span>हिन्दी</span></a><a href="../../../id/profiles/si/" hreflang="id" lang="id" data-lang="id"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-id"/></svg><span>Bahasa Indonesia</span></a><a href="../../../tr/profiles/si/" hreflang="tr" lang="tr" data-lang="tr"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-tr"/></svg><span>Türkçe</span></a><a href="../../../pl/profiles/si/" hreflang="pl" lang="pl" data-lang="pl"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-pl"/></svg><span>Polski</span></a></nav>
   </footer>
 </div>
@@ -406,7 +428,7 @@ body.has-consent{padding-bottom:160px}
 <script>
 (function(){
 'use strict';
-var L = {"lang":"zh-hant","name":"繁體中文","dir":"ltr","dateLocale":"zh-TW","ui":{"langLabel":"語言","consent.label":"Cookie 通知","consent.text":"本網站將你的進度、結果和所選語言儲存在瀏覽器的本機儲存空間中；一項網站分析服務會收集匿名的造訪統計和頁面操作紀錄，協助我們改善網站。你的姓名、電子郵件和結果不會傳送給該分析服務。","consent.more":"了解詳情","consent.details":"瀏覽器中儲存的內容：測驗前輸入的姓名和電子郵件；你的答案和未完成的進度；最近一次結果；所選語言；你已看過本通知的標記。這些資料只保留在你的裝置上，清除網站資料後即會刪除。網站代管服務 GitHub Pages 會收到標準的技術性請求資料。完成測驗後，姓名、電子郵件和答案會傳給郵件寄送服務（Google Apps Script），由它把結果寄給你，並將姓名、電子郵件、日期和結果儲存到網站擁有者的結果資料庫（Google 試算表）中。網站分析服務會收到不含結果代碼的頁面網址、造訪來源、裝置和瀏覽器類型、匿名的頁面操作紀錄（姓名和電子郵件輸入欄位、結果連結和代碼不在記錄範圍內），並設定自己的 Cookie。你可以透過瀏覽器設定或追蹤封鎖工具將其封鎖。本站不使用廣告追蹤器。","consent.accept":"接受","consent.decline":"僅限必要項目","consent.ok":"知道了","root.continue":"繼續"}};
+var L = {"lang":"zh-hant","name":"繁體中文","dir":"ltr","dateLocale":"zh-TW","ui":{"langLabel":"語言","consent.label":"Cookie 通知","consent.text":"本網站將你的進度、結果和所選語言儲存在瀏覽器的本機儲存空間中；一項網站分析服務會收集匿名的造訪統計和頁面操作紀錄，協助我們改善網站。你的姓名、電子郵件和結果不會傳送給該分析服務。","consent.more":"了解詳情","consent.details":"瀏覽器中儲存的內容：你填寫的姓名和電子郵件（如有）；你的答案和未完成的進度；最近一次結果；所選語言；你已看過本通知的標記。這些資料只保留在你的裝置上，清除網站資料後即會刪除。網站代管服務 GitHub Pages 會收到標準的技術性請求資料。當你把結果寄到電子郵件信箱時，姓名、電子郵件和答案會傳給郵件寄送服務（Google Apps Script），由它把結果寄給你，並將姓名、電子郵件、日期和結果儲存到網站擁有者的結果資料庫（Google 試算表）中。網站分析服務會收到不含結果代碼的頁面網址、造訪來源、裝置和瀏覽器類型、匿名的頁面操作紀錄（姓名和電子郵件輸入欄位、結果連結和代碼不在記錄範圍內），並設定自己的 Cookie。你可以透過瀏覽器設定或追蹤封鎖工具將其封鎖。本站不使用廣告追蹤器。","consent.accept":"接受","consent.decline":"僅限必要項目","consent.ok":"知道了","root.continue":"繼續"}};
 var ROOT_REL = '../../../', SUBPATH = 'profiles/si/';
 var LANG_PATH = {"en":"","ru":"ru/","es":"es/","zh":"zh/","zh-hant":"zh-hant/","ar":"ar/","pt":"pt/","fr":"fr/","de":"de/","ja":"ja/","hi":"hi/","id":"id/","tr":"tr/","pl":"pl/"}, LANG_META = {"en":{"name":"English","cont":"Continue","dir":"ltr"},"ru":{"name":"Русский","cont":"Продолжить","dir":"ltr"},"es":{"name":"Español","cont":"Continuar","dir":"ltr"},"zh":{"name":"简体中文","cont":"继续","dir":"ltr"},"zh-hant":{"name":"繁體中文","cont":"繼續","dir":"ltr"},"ar":{"name":"العربية","cont":"متابعة","dir":"rtl"},"pt":{"name":"Português","cont":"Continuar","dir":"ltr"},"fr":{"name":"Français","cont":"Continuer","dir":"ltr"},"de":{"name":"Deutsch","cont":"Weiter","dir":"ltr"},"ja":{"name":"日本語","cont":"続ける","dir":"ltr"},"hi":{"name":"हिन्दी","cont":"जारी रखें","dir":"ltr"},"id":{"name":"Bahasa Indonesia","cont":"Lanjutkan","dir":"ltr"},"tr":{"name":"Türkçe","cont":"Devam et","dir":"ltr"},"pl":{"name":"Polski","cont":"Kontynuuj","dir":"ltr"}};
 function $(s){ return document.querySelector(s); }

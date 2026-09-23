@@ -343,7 +343,7 @@
         },
         {
           "q": "Apakah tes ini benar-benar gratis?",
-          "a": "Ya, sepenuhnya: tanpa pendaftaran, tanpa biaya tersembunyi, dan tanpa “laporan lengkap” berbayar. Hasil muncul di layar segera setelah soal terakhir dan dikirim ke alamat email yang Anda masukkan."
+          "a": "Ya, sepenuhnya: tanpa pendaftaran, tanpa biaya tersembunyi, dan tanpa “laporan lengkap” berbayar. Hasil muncul di layar segera setelah soal terakhir; jika mau, Anda juga bisa menerimanya lewat email."
         },
         {
           "q": "Apa arti huruf D, I, S, C?",
@@ -367,7 +367,7 @@
         },
         {
           "q": "Ke mana hasil dikirim dan siapa yang bisa melihatnya?",
-          "a": "Hasil ditampilkan di layar, disimpan di browser Anda, dan dikirim ke email yang Anda masukkan sebelum tes. Nama, email, dan hasil Anda juga dicatat dalam basis data hasil milik pemilik situs; data itu tidak digunakan untuk tujuan lain dan tidak diteruskan kepada pihak ketiga. Orang lain hanya dapat melihat laporan Anda jika Anda sendiri membagikan tautannya. Selengkapnya ada di halaman “Privasi”."
+          "a": "Hasil ditampilkan di layar dan disimpan di browser Anda. Jika Anda mengisi nama dan email di layar hasil, email berisi laporan akan dikirim ke alamat itu, sedangkan nama, email, dan hasil Anda akan dicatat dalam basis data hasil milik pemilik situs; data itu tidak digunakan untuk tujuan lain dan tidak diteruskan kepada pihak ketiga. Orang lain hanya dapat melihat laporan Anda jika Anda sendiri membagikan tautannya. Selengkapnya ada di halaman “Privasi”."
         },
         {
           "q": "Bolehkah mengulang tes?",
@@ -398,7 +398,7 @@
       "sections": [
         {
           "h": "Mengapa situs ini dibuat",
-          "p": ["Kami ingin membuat tes DISC yang bisa dikerjakan dalam sepuluh menit tanpa pendaftaran dan tanpa biaya, dengan laporan yang mudah dipahami dalam bahasa sendiri dan bisa dibagikan kepada tim. Situs ini tersedia dalam empat belas bahasa, hasil langsung muncul dan dikirim ke email, dan bagi manajer serta HR tersedia panel tempat hasil para peserta dihimpun dalam satu tabel."]
+          "p": ["Kami ingin membuat tes DISC yang bisa dikerjakan dalam sepuluh menit tanpa pendaftaran dan tanpa biaya, dengan laporan yang mudah dipahami dalam bahasa sendiri dan bisa dibagikan kepada tim. Situs ini tersedia dalam empat belas bahasa, hasil langsung muncul dan, jika Anda mau, dikirim ke email, dan bagi manajer serta HR tersedia panel tempat hasil para peserta dihimpun dalam satu tabel."]
         },
         {
           "h": "Dasar tes ini",
@@ -424,18 +424,20 @@
       "sections": [
         {
           "h": "Data apa yang kami gunakan",
-          "p": ["Sebelum tes, Anda memasukkan nama dan email. Selama tes berlangsung, jawaban Anda disimpan, dan setelah tes selesai disimpan pula hasil, bahasa yang dipilih, serta penanda bahwa Anda sudah melihat pemberitahuan cookie. Semua ini disimpan di penyimpanan lokal browser Anda. Setelah tes selesai, nama, email, tanggal tes, dan hasil juga disimpan di basis data hasil milik pemilik situs."]
+          "p": [
+            "Untuk mengerjakan tes, Anda tidak perlu mengisi apa pun. Selama tes berlangsung, jawaban Anda disimpan, dan setelah tes selesai disimpan pula hasil, bahasa yang dipilih, serta penanda bahwa Anda sudah melihat pemberitahuan cookie. Nama dan email bersifat opsional: Anda mengisinya di layar hasil jika ingin menerima laporan lewat email. Semua ini disimpan di penyimpanan lokal browser Anda. Jika Anda mengirim hasil ke email, nama, email, tanggal tes, dan hasil juga disimpan di basis data hasil milik pemilik situs."
+          ]
         },
         {
           "h": "Ke mana data dikirim",
           "p": [
-            "Setelah tes selesai, nama, email, dan jawaban Anda (dalam bentuk kode hasil) dikirim ke layanan pengirim email — sebuah skrip Google Apps Script yang berjalan di akun Google pemilik situs. Skrip itu mengirimkan email berisi hasil kepada Anda dan mencatat nama, email, tanggal tes, serta hasil (profil, skor, tautan ke laporan) ke basis data hasil — sebuah Google Spreadsheet di akun yang sama. Data ini tidak digunakan untuk tujuan lain dan tidak diteruskan kepada pihak ketiga.",
+            "Saat Anda menekan “Kirim ke email”, nama, email, dan jawaban Anda (dalam bentuk kode hasil) dikirim ke layanan pengirim email — sebuah skrip Google Apps Script yang berjalan di akun Google pemilik situs. Skrip itu mengirimkan email berisi hasil kepada Anda dan mencatat nama, email, tanggal tes, serta hasil (profil, skor, tautan ke laporan) ke basis data hasil — sebuah Google Spreadsheet di akun yang sama. Data ini tidak digunakan untuk tujuan lain dan tidak diteruskan kepada pihak ketiga.",
             "Layanan hosting GitHub Pages menerima data teknis standar dari setiap permintaan: alamat IP, jenis browser, alamat halaman. Font disimpan di situs ini sendiri dan tidak dimuat dari server Google. Statistik kunjungan dikumpulkan oleh layanan analitik web: layanan ini menerima data kunjungan yang dianonimkan — alamat halaman tanpa kode hasil, sumber kunjungan, jenis perangkat dan browser — serta rekaman tindakan di halaman; kolom isian nama dan email, tautan, serta kode hasil dikecualikan dari rekaman tersebut. Pengumpulan data dapat dinonaktifkan melalui pengaturan browser atau dengan pemblokir pelacak. Pelacak iklan tidak digunakan."
           ]
         },
         {
           "h": "Tautan ke hasil",
-          "p": ["Tautan ke laporan memuat nama, email, dan jawaban Anda dalam bentuk yang dikodekan. Siapa pun yang memegang tautan itu dapat membuka laporan, jadi bagikan hanya kepada orang yang Anda percayai. Panel admin hanya bekerja di browser orang yang menempelkan kode-kode ke dalamnya."]
+          "p": ["Tautan ke laporan memuat jawaban Anda dalam bentuk yang dikodekan, dan jika Anda mengisi nama dan email, keduanya juga ikut dimuat. Siapa pun yang memegang tautan itu dapat membuka laporan, jadi bagikan hanya kepada orang yang Anda percayai. Panel admin hanya bekerja di browser orang yang menempelkan kode-kode ke dalamnya."]
         },
         {
           "h": "Formulir kontak",
@@ -451,7 +453,7 @@
         },
         {
           "h": "Perubahan",
-          "p": ["Pembaruan terakhir: 23 September 2026. Perubahan dalam pemrosesan data akan dicantumkan di halaman ini."]
+          "p": ["Pembaruan terakhir: 24 September 2026. Perubahan dalam pemrosesan data akan dicantumkan di halaman ini."]
         }
       ]
     },
@@ -470,7 +472,7 @@
         {
           "h": "Apa saja isi hasil tes",
           "p": [
-            "Setelah soal terakhir, Anda melihat empat unsur: nama profil dengan satu atau dua huruf (misalnya “Perintis, DI”), grafik dengan tiga garis, empat skala dengan persentase, dan uraian tertulis: ciri khas, kekuatan, area pengembangan, motivasi, perilaku saat stres, dan saran cara berkomunikasi dengan Anda. Laporan yang sama dikirim ke email Anda dan dapat dibuka melalui tautan.",
+            "Setelah soal terakhir, Anda melihat empat unsur: nama profil dengan satu atau dua huruf (misalnya “Perintis, DI”), grafik dengan tiga garis, empat skala dengan persentase, dan uraian tertulis: ciri khas, kekuatan, area pengembangan, motivasi, perilaku saat stres, dan saran cara berkomunikasi dengan Anda. Laporan yang sama bisa Anda terima lewat email dan buka melalui tautan.",
             "Semua angka dalam laporan diturunkan dari pilihan Anda di 24 soal. Di setiap soal Anda memilih satu pernyataan sebagai “Paling menggambarkan saya” dan satu sebagai “Paling tidak menggambarkan saya”, dan setiap pernyataan mewakili salah satu gaya: D, I, S, atau C. Karena itu, setiap gaya memiliki dua angka: berapa kali Anda memilihnya sebagai “paling menggambarkan” dan berapa kali sebagai “paling tidak menggambarkan”."
           ]
         },
@@ -537,32 +539,49 @@
       ]
     },
     "colors": {
-      "title": "Warna DISC: Tipe Kepribadian Merah, Kuning, Hijau, dan Biru",
-      "description": "Empat warna DISC: merah (D), kuning (I), hijau (S), biru (C). Arti tiap warna, cara mengetahui warna Anda, dan beda tes warna dengan DISC. Tes online gratis.",
+      "title": "Tipe Kepribadian Warna DISC: Merah, Kuning, Hijau, dan Biru",
+      "description": "Tipe merah, kuning, hijau, dan biru dalam DISC: cara mengenali tiap warna, cara berkomunikasi, dan kaitannya dengan buku Surrounded by Idiots. Tes gratis.",
       "h1": "Warna DISC: Merah, Kuning, Hijau, Biru",
       "lead": "Empat gaya DISC sering dilambangkan dengan warna: merah untuk Dominasi, kuning untuk Pengaruh, hijau untuk Kestabilan, biru untuk Ketelitian. Warna tidak menambahkan apa pun pada model ini, tetapi memudahkan kita mengingat keempat gaya dan membicarakannya di dalam tim. Berikut penjelasan tentang apa yang ada di balik tiap warna dan cara mengetahui warna Anda.",
       "colors": {
         "D": {
           "name": "Merah",
           "tagline": "Dominasi (D): hasil dan kendali",
-          "text": "Merah adalah warna kecepatan dan daya dorong. Orang “merah” menetapkan tujuan lalu langsung mengejarnya, cepat mengambil keputusan, berani berdebat, mengambil tanggung jawab, dan tidak takut konflik. Di dalam tim, merekalah yang mendorong pekerjaan maju, tetapi bisa menekan orang lain dan kehilangan kesabaran terhadap rekan yang bekerja lebih hati-hati."
+          "text": "Merah adalah warna kecepatan dan daya dorong. Orang “merah” menetapkan tujuan lalu langsung mengejarnya, cepat mengambil keputusan, berani berdebat, mengambil tanggung jawab, dan tidak takut konflik. Di dalam tim, merekalah yang mendorong pekerjaan maju, tetapi bisa menekan orang lain dan kehilangan kesabaran terhadap rekan yang bekerja lebih hati-hati.",
+          "h": "Tipe kepribadian merah",
+          "signs": ["Bicara singkat dan lugas, langsung ke pokok persoalan dan kesimpulan.", "Cepat mengambil keputusan dan tidak suka jika keputusan ditunda.", "Dalam rapat, ia mengambil alih pembicaraan, berdebat, dan menentukan tempo.", "Pesannya hanya beberapa baris, tanpa salam dan tanpa emoji.", "Di bawah tekanan, ia menjadi lebih ketus dan mulai memutuskan semuanya sendiri."],
+          "blind": "Kekuatan orang “merah” adalah kemampuannya menggerakkan pekerjaan selagi orang lain masih berdiskusi. Titik butanya adalah harga dari tempo itu: ia tidak menyadari bahwa orang lain belum sempat setuju, menganggap kehati-hatian sebagai kelemahan dan pertanyaan sebagai perlawanan. Yang paling membuatnya kesal adalah kelambanan, obrolan yang tidak ada ujungnya, dan kehilangan kendali.",
+          "talk": ["Mulailah dari tujuan dan kesimpulan; detail diberikan kalau ia memintanya.", "Tawarkan beberapa pilihan, bukan satu solusi: ia ingin memilih sendiri.", "Berdebatlah secara terbuka dan dengan fakta: ia tidak menangkap sindiran maupun rasa tersinggung."]
         },
         "I": {
           "name": "Kuning",
           "tagline": "Pengaruh (I): orang dan antusiasme",
-          "text": "Kuning adalah warna energi dan komunikasi. Orang “kuning” mudah berkenalan, menginspirasi, mencetuskan ide, dan menularkan optimisme. Bagi mereka, pengakuan dan interaksi langsung itu penting; detail, tenggat, dan rutinitas terasa lebih berat, dan janji mereka kadang melampaui apa yang sanggup dipenuhi."
+          "text": "Kuning adalah warna energi dan komunikasi. Orang “kuning” mudah berkenalan, menginspirasi, mencetuskan ide, dan menularkan optimisme. Bagi mereka, pengakuan dan interaksi langsung itu penting; detail, tenggat, dan rutinitas terasa lebih berat, dan janji mereka kadang melampaui apa yang sanggup dipenuhi.",
+          "h": "Tipe kepribadian kuning",
+          "signs": ["Mudah memulai obrolan dengan orang yang baru dikenal dan cepat akrab.", "Bercerita dengan banyak kisah dan gerakan tangan, serta menularkan emosinya.", "Mencetuskan ide secara spontan dan menjadi yang pertama menawarkan diri untuk ikut.", "Pesannya hidup: penuh tanda seru, emoji, dan pesan suara.", "Di bawah tekanan, ia banyak bicara, menjanjikan terlalu banyak, dan mencari dukungan."],
+          "blind": "Kekuatan orang “kuning” adalah kemampuannya menyatukan orang dan membakar semangat mereka dengan sebuah ide. Titik butanya adalah pelaksanaan: minatnya meredup begitu rutinitas dimulai, tenggat dan detail terabaikan, dan janjinya melampaui apa yang sanggup dipenuhi. Yang paling menyakitinya adalah sikap acuh tak acuh, kritik di depan orang banyak, dan bekerja sendirian.",
+          "talk": ["Mulailah dengan kontak yang hangat: sedikit tentang dirinya, baru kemudian soal pekerjaan.", "Pujilah dengan jelas dan tulus: pengakuan adalah pendorong terbaik baginya.", "Catat kesepakatan secara tertulis beserta tanggalnya: ia sendiri bisa saja lupa."]
         },
         "S": {
           "name": "Hijau",
           "tagline": "Kestabilan (S): dukungan dan konsistensi",
-          "text": "Hijau adalah warna ketenangan dan keandalan. Orang “hijau” pandai mendengarkan, memberi dukungan, menuntaskan apa yang sudah dimulai, dan menjaga hubungan baik di dalam tim. Mereka membutuhkan kepastian dan waktu untuk menyesuaikan diri dengan perubahan; konflik terbuka dan tekanan terasa berat bagi mereka."
+          "text": "Hijau adalah warna ketenangan dan keandalan. Orang “hijau” pandai mendengarkan, memberi dukungan, menuntaskan apa yang sudah dimulai, dan menjaga hubungan baik di dalam tim. Mereka membutuhkan kepastian dan waktu untuk menyesuaikan diri dengan perubahan; konflik terbuka dan tekanan terasa berat bagi mereka.",
+          "h": "Tipe kepribadian hijau",
+          "signs": ["Lebih banyak mendengarkan daripada berbicara, dan menanyakan kabar Anda.", "Tidak terburu-buru menjawab dan meminta waktu untuk berpikir.", "Senang membantu dan jarang menolak, bahkan saat bebannya sudah berlebihan.", "Berpegang pada yang sudah biasa: rute yang sama, alat yang sama, tim yang sama.", "Di bawah tekanan, ia diam, tampak setuju, tetapi memendam rasa tidak puas."],
+          "blind": "Kekuatan orang “hijau” adalah keandalannya: ia akan menuntaskan apa yang sudah dimulai dan menjaga hubungan tetap baik ketika orang lain sudah bertengkar. Titik butanya adalah diam: ia tidak berkata “tidak”, tidak membantah secara terbuka, dan menerima perubahan yang dalam hati tidak ia setujui. Yang paling mengguncangnya adalah perubahan mendadak, nada yang kasar, dan konflik.",
+          "talk": ["Beri tahu tentang perubahan jauh-jauh hari dan jelaskan mengapa perubahan itu perlu.", "Tanyakan pendapatnya secara pribadi, bukan di tengah perdebatan bersama.", "Jangan anggap diamnya sebagai persetujuan: tanyakan apa yang sebenarnya ia pikirkan."]
         },
         "C": {
           "name": "Biru",
           "tagline": "Ketelitian (C): akurasi dan kualitas",
-          "text": "Biru adalah warna analisis dan keteraturan. Orang “biru” berpegang pada fakta, memeriksa detail, membuat rencana, dan mengikuti standar. Merekalah penjaga kualitas, tetapi bisa terjebak dalam analisis, mengulur tenggat demi hasil yang sempurna, dan terkesan dingin."
+          "text": "Biru adalah warna analisis dan keteraturan. Orang “biru” berpegang pada fakta, memeriksa detail, membuat rencana, dan mengikuti standar. Merekalah penjaga kualitas, tetapi bisa terjebak dalam analisis, mengulur tenggat demi hasil yang sempurna, dan terkesan dingin.",
+          "h": "Tipe kepribadian biru",
+          "signs": ["Mengajukan pertanyaan klarifikasi dan meminta angka, sumber, serta contoh.", "Sebelum memutuskan, ia mengumpulkan informasi dan membandingkan pilihan.", "Melihat kesalahan, salah ketik, dan ketidaksesuaian yang terlewat oleh orang lain.", "Menulis dengan rinci, per poin, lengkap dengan lampiran dan tautan.", "Di bawah tekanan, ia tenggelam dalam analisis, menunda keputusan, dan menjadi kritis."],
+          "blind": "Kekuatan orang “biru” adalah kualitas: pekerjaannya jarang perlu diulang. Titik butanya adalah harga dari kesempurnaan: ia menghabiskan waktu untuk memeriksa hal yang sebenarnya sudah cukup baik, menunda keputusan sampai semuanya jelas, dan terdengar dingin ketika yang dibutuhkan adalah dukungan. Yang paling membuatnya kesal adalah kecerobohan, terburu-buru tanpa alasan, dan rumusan yang kabur.",
+          "talk": ["Datanglah dengan fakta dan struktur: tujuan, data, pilihan, tenggat.", "Beri ia waktu untuk mempelajari materi sebelum pembahasan, bukan saat rapat.", "Sampaikan kritik secara spesifik: apa tepatnya yang salah dan menurut kriteria apa."]
         }
       },
+      "labels": { "signs": "Cara mengenali", "blind": "Kekuatan dan titik buta", "talk": "Cara berkomunikasi" },
       "sections": [
         {
           "h": "Dari mana asal warna-warna ini",
@@ -593,6 +612,13 @@
           ]
         },
         {
+          "h": "Warna dalam buku Thomas Erikson, Surrounded by Idiots",
+          "p": [
+            "Masyarakat luas mengenal empat warna ini terutama dari buku penulis Swedia Thomas Erikson, Surrounded by Idiots (judul aslinya Omgiven av idioter, 2014). Buku ini terjual jutaan eksemplar dan diterjemahkan ke puluhan bahasa. Erikson menggambarkan empat tokoh yang sama dengan DISC: si merah yang tegas dan tidak sabaran, si kuning yang supel dan mudah antusias, si hijau yang tenang dan suka mengalah, serta si biru yang teliti dan pendiam. Judulnya ironis: orang dengan warna lain tampak seperti “idiot” bagi kita sampai kita memahami cara mereka berpikir.",
+            "Erikson secara terang-terangan berpijak pada DISC, sehingga merah, kuning, hijau, dan biru versinya sama dengan gaya D, I, S, dan C di situs ini. Bedanya ada pada cara penyajian: buku itu menjelaskan model lewat kisah sehari-hari dan tokoh-tokoh khas, sedangkan tes mengukur seberapa kuat tiap gaya. Di Swedia, buku ini dikritik oleh para psikolog dan oleh perhimpunan Vetenskap och Folkbildning karena penyederhanaannya dan karena teks populer disajikan seolah-olah berdasar ilmiah. Ini peringatan yang layak untuk skema warna apa pun: gunakan warna sebagai bahasa untuk berdiskusi, bukan sebagai diagnosis."
+          ]
+        },
+        {
           "h": "Warna di dalam tim",
           "p": [
             "Peta warna tim adalah cara cepat untuk melihat ketimpangan. Tim yang seluruhnya “merah” cepat mengambil keputusan dan sama cepatnya bertengkar; tim “hijau” kompak, tetapi menghindari pembicaraan yang sulit dan menunda perubahan. Tim campuran bekerja lebih baik bila setiap orang paham apa yang bisa diharapkan dari warna lain: bagaimana memberi tugas, bagaimana memberi umpan balik, bagaimana berdebat.",
@@ -605,7 +631,12 @@
             "Warna adalah label, dan label selalu menyederhanakan. “Namanya juga orang merah” terdengar seperti pembenaran atas sikap kasar, sedangkan “dia kan hijau, mau bagaimana lagi” terdengar seperti alasan untuk tidak lagi berharap apa pun darinya. DISC menggambarkan perilaku yang sudah menjadi kebiasaan, bukan karakter, nilai-nilai, atau kemampuan, dan gaya apa pun bisa dikembangkan. Gunakan warna untuk saling memahami, bukan untuk mengotak-ngotakkan orang."
           ]
         }
-      ]
+      ],
+      "cta": {
+        "title": "Ketahui warna DISC Anda",
+        "text": "Tes ini menunjukkan warna utama dan warna sekunder Anda, seberapa kuat masing-masing dalam persen, dan apa artinya bagi Anda. 24 soal, sekitar 10 menit, tanpa pendaftaran.",
+        "button": "Ketahui warna Anda"
+      }
     },
     "pdf": {
       "title": "Tes DISC PDF Gratis: Soal, Kunci Jawaban, dan Cara Membaca Hasil",
@@ -679,7 +710,7 @@
           "h": "Cara mengadakan tes untuk tim di situs ini",
           "ol": [
             "Ikuti tesnya sendiri terlebih dahulu: dengan begitu Anda tahu apa yang akan dilihat peserta dan bisa menunjukkan contoh laporan.",
-            "Kirimkan tautan situs dalam bahasa yang sesuai kepada rekan-rekan Anda. Tidak perlu mendaftar, dan tes hanya memakan waktu sekitar sepuluh menit; setiap orang mengisi nama dan email, lalu menerima laporan di layar dan lewat email.",
+            "Kirimkan tautan situs dalam bahasa yang sesuai kepada rekan-rekan Anda. Tidak perlu mendaftar, dan tes hanya memakan waktu sekitar sepuluh menit; laporan langsung muncul di layar, lalu di layar hasil setiap orang mengisi nama dan email untuk menerima laporan lewat email.",
             "Minta setiap orang mengirimkan tautan hasilnya atau kode dari laporannya kepada Anda. Hasil hanya dapat dilihat oleh orang yang memiliki tautannya; tidak ada data yang otomatis terkirim kepada manajer.",
             "Buka panel admin (tautannya ada di bagian bawah situs) dan tempelkan kode-kode yang Anda terima. Panel akan menyusun tabel berisi nama, profil, dan skor; tabel itu bisa disalin ke Excel. Tabel hanya tersimpan di browser Anda.",
             "Jadwalkan pertemuan bersama: jelaskan keempat gaya, tampilkan peta tim, dan beri setiap orang kesempatan menceritakan bagian laporan mana yang tepat sasaran dan mana yang tidak."
@@ -912,7 +943,7 @@
   "ui": {
     "langLabel": "Bahasa",
     "footer": "24 soal · sekitar 10 menit · tidak ada jawaban benar atau salah",
-    "privacy": "Jawaban Anda tetap berada di browser; hasil dikirim ke alamat email yang Anda berikan dan disimpan di basis data hasil milik pemilik situs.",
+    "privacy": "Jawaban Anda tetap berada di browser; jika Anda mengisi email, hasil akan dikirim ke alamat itu dan disimpan di basis data hasil milik pemilik situs.",
     "adminLink": "Panel admin",
 
     "intro.eyebrow": "Kuesioner gaya perilaku",
@@ -923,9 +954,10 @@
     "intro.howText": "Tes ini terdiri atas 24 soal, masing-masing berisi empat pernyataan, sehingga totalnya 96 pernyataan. Pada setiap soal, pilih satu pernyataan yang <b>paling</b> menggambarkan Anda dan satu pernyataan yang <b>paling tidak</b> menggambarkan Anda. Jawablah sesuai perilaku Anda yang biasa di tempat kerja, bukan perilaku yang Anda inginkan. Jangan berpikir terlalu lama: reaksi pertama biasanya lebih tepat.",
     "intro.nameLabel": "Nama",
     "intro.emailLabel": "Email untuk menerima hasil",
-    "intro.emailHint": "Setelah tes selesai, email berisi hasil akan dikirim ke alamat ini. Nama, email, dan hasil Anda disimpan di basis data hasil milik pemilik situs.",
+    "intro.emailHint": "Email berisi tautan ke laporan lengkap akan dikirim ke alamat ini. Nama, email, dan hasil Anda disimpan di basis data hasil milik pemilik situs.",
     "intro.requiredNote": "Kolom bertanda bintang (*) wajib diisi.",
     "intro.start": "Mulai tes",
+    "intro.startNote": "24 soal · sekitar 10 menit · tanpa pendaftaran",
     "intro.resume": "Lanjutkan tes sebelumnya ({n} dari 24 soal sudah diisi)",
     "intro.showLast": "Buka hasil saya sebelumnya, tertanggal {date}",
     "intro.nameRequired": "Mohon isi nama Anda",
@@ -966,6 +998,7 @@
     "report.stress": "Saat stres",
     "report.environment": "Lingkungan yang nyaman",
     "report.moreLink": "Selengkapnya tentang cara membaca profil DISC →",
+    "report.color": "Warna DISC Anda: {color}",
 
     "share.title": "Simpan hasil Anda",
     "share.text": "Hasil tersimpan di browser Anda. Salin tautan untuk membuka laporan nanti atau di perangkat lain, atau kirimkan tautan itu kepada orang yang meminta Anda mengikuti tes.",
@@ -980,6 +1013,14 @@
     "share.sent": "Email berisi hasil telah dikirim ke {email}.",
     "share.sendFailed": "Email tidak dapat dikirim ke {email}. Salin tautan laporan atau coba lagi.",
     "share.retry": "Kirim lagi",
+    "share.emailTitle": "Terima hasil lewat email",
+    "share.send": "Kirim ke email",
+    "share.mailtoHint": "Aplikasi email Anda akan terbuka dengan pesan yang sudah siap untuk alamat ini — tinggal tekan “Kirim”.",
+    "share.mailtoOpened": "Email berisi hasil sudah terbuka di aplikasi email Anda — kirimkan ke {email}.",
+    "share.typeTitle": "Bagikan tipe Anda",
+    "share.typeText": "Tautan ini mengarah ke deskripsi publik profil “{name}”: tidak ada nama, email, ataupun jawaban Anda di dalamnya.",
+    "share.type": "Bagikan tipe",
+    "share.typeMsg": "Tipe DISC saya adalah {name} ({key}). Bagaimana dengan Anda?",
 
     "mail.subject": "DISC: {name} — {label}",
     "mail.title": "Hasil tes DISC",
@@ -1113,7 +1154,7 @@
     "consent.label": "Pemberitahuan cookie",
     "consent.text": "Situs ini menyimpan progres, hasil, dan bahasa pilihan Anda di penyimpanan lokal browser, sedangkan layanan analitik web mengumpulkan statistik kunjungan yang dianonimkan dan rekaman aktivitas di halaman agar kami dapat menyempurnakan situs. Nama, email, dan hasil Anda tidak dikirim ke layanan analitik.",
     "consent.more": "Selengkapnya",
-    "consent.details": "Yang disimpan di browser: nama dan email yang dimasukkan sebelum tes; jawaban dan progres yang belum selesai; hasil terakhir; bahasa yang dipilih; penanda bahwa Anda sudah melihat pemberitahuan ini. Data ini tetap berada di perangkat Anda dan terhapus saat Anda menghapus data situs. Hosting GitHub Pages menerima data teknis standar dari setiap permintaan. Saat tes selesai, nama, email, dan jawaban diteruskan ke layanan pengiriman email (Google Apps Script): layanan ini mengirimkan email berisi hasil kepada Anda dan menyimpan nama, email, tanggal, dan hasil di basis data hasil milik pemilik situs (Google Spreadsheet). Layanan analitik web menerima alamat halaman tanpa kode hasil, sumber kunjungan, jenis perangkat dan browser, serta rekaman anonim aktivitas di halaman (kolom nama dan email, tautan, dan kode hasil dikecualikan dari rekaman); layanan ini juga memasang cookie miliknya sendiri. Anda dapat memblokirnya melalui pengaturan browser atau dengan pemblokir pelacak. Pelacak iklan tidak digunakan.",
+    "consent.details": "Yang disimpan di browser: nama dan email, jika Anda mengisinya; jawaban dan progres yang belum selesai; hasil terakhir; bahasa yang dipilih; penanda bahwa Anda sudah melihat pemberitahuan ini. Data ini tetap berada di perangkat Anda dan terhapus saat Anda menghapus data situs. Hosting GitHub Pages menerima data teknis standar dari setiap permintaan. Saat Anda mengirim hasil ke email, nama, email, dan jawaban diteruskan ke layanan pengiriman email (Google Apps Script): layanan ini mengirimkan email berisi hasil kepada Anda dan menyimpan nama, email, tanggal, dan hasil di basis data hasil milik pemilik situs (Google Spreadsheet). Layanan analitik web menerima alamat halaman tanpa kode hasil, sumber kunjungan, jenis perangkat dan browser, serta rekaman anonim aktivitas di halaman (kolom nama dan email, tautan, dan kode hasil dikecualikan dari rekaman); layanan ini juga memasang cookie miliknya sendiri. Anda dapat memblokirnya melalui pengaturan browser atau dengan pemblokir pelacak. Pelacak iklan tidak digunakan.",
     "consent.accept": "Terima",
     "consent.decline": "Hanya yang diperlukan",
     "consent.ok": "Mengerti",

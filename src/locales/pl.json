@@ -341,7 +341,7 @@
         },
         {
           "q": "Czy test jest naprawdę darmowy?",
-          "a": "Tak, całkowicie: bez rejestracji, ukrytych opłat i płatnych „raportów rozszerzonych”. Wynik pojawia się na ekranie od razu po ostatnim pytaniu i przychodzi e-mailem na podany adres."
+          "a": "Tak, całkowicie: bez rejestracji, ukrytych opłat i płatnych „raportów rozszerzonych”. Wynik pojawia się na ekranie od razu po ostatnim pytaniu; jeśli chcesz, możesz go też otrzymać e-mailem."
         },
         {
           "q": "Co oznaczają litery D, I, S, C?",
@@ -365,7 +365,7 @@
         },
         {
           "q": "Dokąd trafia wynik i kto go widzi?",
-          "a": "Wynik wyświetla się na ekranie, zapisuje się w twojej przeglądarce i jest wysyłany na adres e-mail podany przed testem. Imię, adres e-mail i wynik są też zapisywane w bazie wyników właściciela serwisu; nie są wykorzystywane do innych celów ani przekazywane osobom trzecim. Osoby postronne zobaczą twój raport tylko wtedy, gdy samodzielnie udostępnisz do niego link. Więcej na stronie „Prywatność”."
+          "a": "Wynik wyświetla się na ekranie i zapisuje się w twojej przeglądarce. Jeśli na ekranie wyniku podasz imię i adres e-mail, raport przyjdzie na ten adres, a imię, adres e-mail i wynik zostaną zapisane w bazie wyników właściciela serwisu; nie są wykorzystywane do innych celów ani przekazywane osobom trzecim. Osoby postronne zobaczą twój raport tylko wtedy, gdy samodzielnie udostępnisz do niego link. Więcej na stronie „Prywatność”."
         },
         {
           "q": "Czy test można powtórzyć?",
@@ -396,7 +396,7 @@
       "sections": [
         {
           "h": "Po co powstał ten serwis",
-          "p": ["Chcieliśmy stworzyć test DISC, który da się zrobić w dziesięć minut, bez rejestracji i opłat, i który daje zrozumiały raport w twoim języku – taki, którym można podzielić się z zespołem. Serwis działa w czternastu językach, wynik pojawia się od razu i przychodzi na e-mail, a dla menedżerów i działów HR jest panel, w którym wyniki uczestników trafiają do jednej tabeli."]
+          "p": ["Chcieliśmy stworzyć test DISC, który da się zrobić w dziesięć minut, bez rejestracji i opłat, i który daje zrozumiały raport w twoim języku – taki, którym można podzielić się z zespołem. Serwis działa w czternastu językach, wynik pojawia się od razu i na życzenie przychodzi na e-mail, a dla menedżerów i działów HR jest panel, w którym wyniki uczestników trafiają do jednej tabeli."]
         },
         {
           "h": "Na czym opiera się test",
@@ -423,19 +423,19 @@
         {
           "h": "Jakie dane wykorzystujemy",
           "p": [
-            "Przed testem podajesz imię i adres e-mail. W trakcie testu zapisywane są twoje odpowiedzi, a po jego zakończeniu – wynik, wybrany język i informacja, że komunikat o plikach cookie został ci już wyświetlony. Wszystko to jest przechowywane w pamięci lokalnej twojej przeglądarki. Po zakończeniu testu imię, adres e-mail, data wykonania testu i wynik są zapisywane także w bazie wyników właściciela serwisu."
+            "Aby zrobić test, nie musisz niczego podawać. W trakcie testu zapisywane są twoje odpowiedzi, a po jego zakończeniu – wynik, wybrany język i informacja, że komunikat o plikach cookie został ci już wyświetlony. Imię i adres e-mail podajesz dobrowolnie na ekranie wyniku, jeśli chcesz otrzymać raport e-mailem. Wszystko to jest przechowywane w pamięci lokalnej twojej przeglądarki. Jeśli wyślesz wynik na e-mail, imię, adres e-mail, data wykonania testu i wynik zostaną zapisane także w bazie wyników właściciela serwisu."
           ]
         },
         {
           "h": "Dokąd przekazywane są dane",
           "p": [
-            "Po zakończeniu testu imię, adres e-mail i odpowiedzi (w postaci kodu wyniku) są przekazywane do usługi wysyłającej e-maile – skryptu Google Apps Script, który działa na koncie Google właściciela serwisu. Skrypt wysyła ci e-mail z wynikiem i zapisuje imię, adres e-mail, datę wykonania testu oraz wynik (profil, punkty, link do raportu) w bazie wyników – arkuszu Google na tym samym koncie. Dane te nie są wykorzystywane do innych celów ani przekazywane osobom trzecim.",
+            "Gdy klikasz „Wyślij na mój e-mail”, imię, adres e-mail i odpowiedzi (w postaci kodu wyniku) są przekazywane do usługi wysyłającej e-maile – skryptu Google Apps Script, który działa na koncie Google właściciela serwisu. Skrypt wysyła ci e-mail z wynikiem i zapisuje imię, adres e-mail, datę wykonania testu oraz wynik (profil, punkty, link do raportu) w bazie wyników – arkuszu Google na tym samym koncie. Dane te nie są wykorzystywane do innych celów ani przekazywane osobom trzecim.",
             "Hosting GitHub Pages otrzymuje standardowe dane techniczne żądania: adres IP, typ przeglądarki, adres strony. Czcionki są przechowywane w samym serwisie i nie są pobierane z serwerów Google. Statystyki odwiedzin zbiera usługa analityki internetowej: otrzymuje zanonimizowane dane o wizycie – adres strony bez kodu wyniku, źródło wejścia, typ urządzenia i przeglądarki – oraz zapis działań na stronie; pola z imieniem i adresem e-mail, link i kod wyniku są z tego zapisu wyłączone. Zbieranie danych można wyłączyć w ustawieniach przeglądarki albo za pomocą narzędzia blokującego skrypty śledzące. Reklamowe skrypty śledzące nie są używane."
           ]
         },
         {
           "h": "Link do wyniku",
-          "p": ["Link do raportu zawiera imię, adres e-mail i odpowiedzi w postaci zakodowanej. Każdy, kto ma link, może otworzyć raport, dlatego udostępniaj go tylko osobom, którym ufasz. Panel administratora działa wyłącznie w przeglądarce osoby, która wkleiła do niego kody."]
+          "p": ["Link do raportu zawiera w postaci zakodowanej twoje odpowiedzi, a jeśli podano imię i adres e-mail – także je. Każdy, kto ma link, może otworzyć raport, dlatego udostępniaj go tylko osobom, którym ufasz. Panel administratora działa wyłącznie w przeglądarce osoby, która wkleiła do niego kody."]
         },
         {
           "h": "Formularz kontaktowy",
@@ -451,7 +451,7 @@
         },
         {
           "h": "Zmiany",
-          "p": ["Ostatnia aktualizacja: 23 września 2026 r. Zmiany w sposobie przetwarzania danych będą odnotowywane na tej stronie."]
+          "p": ["Ostatnia aktualizacja: 24 września 2026 r. Zmiany w sposobie przetwarzania danych będą odnotowywane na tej stronie."]
         }
       ]
     },
@@ -470,7 +470,7 @@
         {
           "h": "Z czego składa się wynik",
           "p": [
-            "Po ostatnim pytaniu widzisz cztery elementy: nazwę profilu z jedną lub dwiema literami (na przykład „Pionier, DI”), wykres z trzema liniami, cztery skale z procentami i opis tekstowy: cechy, mocne strony, obszary rozwoju, motywacja, zachowanie w stresie i wskazówki, jak najlepiej się z tobą komunikować. Ten sam raport przychodzi na e-mail i jest dostępny pod linkiem.",
+            "Po ostatnim pytaniu widzisz cztery elementy: nazwę profilu z jedną lub dwiema literami (na przykład „Pionier, DI”), wykres z trzema liniami, cztery skale z procentami i opis tekstowy: cechy, mocne strony, obszary rozwoju, motywacja, zachowanie w stresie i wskazówki, jak najlepiej się z tobą komunikować. Ten sam raport możesz otrzymać e-mailem i otworzyć pod linkiem.",
             "Wszystkie liczby w raporcie wynikają z twoich odpowiedzi w 24 pytaniach. W każdym pytaniu wybierasz jedno stwierdzenie „najbardziej do mnie pasuje” i jedno „najmniej do mnie pasuje”, a każde stwierdzenie odnosi się do jednego ze stylów: D, I, S lub C. Dlatego każdy styl ma dwie liczby: ile razy został wybrany jako „najbardziej” i ile razy jako „najmniej”."
           ]
         },
@@ -537,32 +537,49 @@
       ]
     },
     "colors": {
-      "title": "Test DISC – kolory osobowości: czerwony, żółty, zielony, niebieski",
-      "description": "Czerwony (D), żółty (I), zielony (S), niebieski (C): co oznaczają kolory DISC, jak poznać swój i czym testy kolorów różnią się od DISC. Darmowy test DISC online.",
+      "title": "Kolory DISC, test osobowości: czerwony, żółty, zielony i niebieski typ",
+      "description": "Czerwony, żółty, zielony i niebieski typ w DISC: jak rozpoznać każdy kolor, jak się z nim dogadać i co ma z tym wspólnego książka „Otoczeni przez idiotów”.",
       "h1": "Kolory DISC: czerwony, żółty, zielony, niebieski",
       "lead": "Cztery style DISC często oznacza się kolorami: czerwony to dominacja, żółty – wpływ, zielony – stałość, niebieski – sumienność. Kolory niczego do modelu nie dodają, ale pomagają szybko zapamiętać style i rozmawiać o nich w zespole. Wyjaśniamy, co kryje się za każdym kolorem i jak poznać swój.",
       "colors": {
         "D": {
           "name": "Czerwony",
           "tagline": "Dominacja (D): wyniki i kontrola",
-          "text": "Czerwony to kolor szybkości i siły przebicia. „Czerwoni” wyznaczają cel i zmierzają do niego najkrótszą drogą, szybko podejmują decyzje, spierają się, biorą na siebie odpowiedzialność i nie boją się konfliktu. W zespole pchają sprawy do przodu, ale potrafią zbyt mocno naciskać i tracić cierpliwość do osób, które pracują ostrożniej."
+          "text": "Czerwony to kolor szybkości i siły przebicia. „Czerwoni” wyznaczają cel i zmierzają do niego najkrótszą drogą, szybko podejmują decyzje, spierają się, biorą na siebie odpowiedzialność i nie boją się konfliktu. W zespole pchają sprawy do przodu, ale potrafią zbyt mocno naciskać i tracić cierpliwość do osób, które pracują ostrożniej.",
+          "h": "Czerwony typ osobowości",
+          "signs": ["Mówi krótko i konkretnie, od razu przechodzi do sedna i wniosków.", "Szybko podejmuje decyzje i nie lubi, gdy się je odkłada.", "Na zebraniu zabiera głos, spiera się i nadaje tempo.", "W wiadomościach – dwie linijki bez powitań i emotikonów.", "Pod presją mówi ostrzej i przejmuje wszystkie decyzje."],
+          "blind": "Mocną stroną „czerwonych” jest umiejętność ruszenia sprawy z miejsca, gdy inni jeszcze dyskutują. Martwym polem jest cena tego tempa: nie zauważają, że inni nie zdążyli się zgodzić, biorą ostrożność za słabość, a pytania – za opór. Najbardziej irytują ich powolność, puste gadanie i utrata kontroli.",
+          "talk": ["Zaczynaj od celu i wniosku, szczegóły – na życzenie.", "Proponuj kilka opcji, a nie jedno rozwiązanie – wybór ma należeć do nich.", "Spieraj się otwarcie i na faktach: aluzji i urazów nie odczytują."]
         },
         "I": {
           "name": "Żółty",
           "tagline": "Wpływ (I): ludzie i entuzjazm",
-          "text": "Żółty to kolor energii i towarzyskości. „Żółci” łatwo nawiązują znajomości, inspirują, sypią pomysłami i zarażają optymizmem. Ważne są dla nich uznanie i żywy kontakt z ludźmi; ze szczegółami, terminami i rutyną radzą sobie gorzej, a obietnice czasem wyprzedzają możliwości."
+          "text": "Żółty to kolor energii i towarzyskości. „Żółci” łatwo nawiązują znajomości, inspirują, sypią pomysłami i zarażają optymizmem. Ważne są dla nich uznanie i żywy kontakt z ludźmi; ze szczegółami, terminami i rutyną radzą sobie gorzej, a obietnice czasem wyprzedzają możliwości.",
+          "h": "Żółty typ osobowości",
+          "signs": ["Łatwo zagaduje nieznajomych i szybko przechodzi na „ty”.", "Opowiada historiami, dużo gestykuluje i zaraża emocjami.", "Wymyśla pomysły w biegu i od razu zgłasza chęć udziału.", "Pisze z energią: wykrzykniki, emotikony, wiadomości głosowe.", "Pod presją dużo mówi, obiecuje za dużo i szuka wsparcia."],
+          "blind": "Mocną stroną „żółtych” jest umiejętność łączenia ludzi i zapalania ich do pomysłu. Martwym polem jest realizacja: zapał gaśnie, gdy zaczyna się rutyna, terminy i szczegóły schodzą na dalszy plan, a obietnice wyprzedzają możliwości. Najbardziej ranią ich obojętność, krytyka przy innych i praca w pojedynkę.",
+          "talk": ["Zacznij od żywego kontaktu: parę słów o człowieku, potem o sprawie.", "Chwal wyraźnie i szczerze – uznanie to dla nich najlepsza motywacja.", "Ustalenia zapisuj, najlepiej z datami: łatwo o nich zapominają."]
         },
         "S": {
           "name": "Zielony",
           "tagline": "Stałość (S): wsparcie i stabilność",
-          "text": "Zielony to kolor spokoju i niezawodności. „Zieloni” umieją słuchać, wspierają innych, doprowadzają sprawy do końca i dbają o relacje w zespole. Potrzebują przewidywalności i czasu na oswojenie się ze zmianą; otwarty konflikt i presję znoszą źle."
+          "text": "Zielony to kolor spokoju i niezawodności. „Zieloni” umieją słuchać, wspierają innych, doprowadzają sprawy do końca i dbają o relacje w zespole. Potrzebują przewidywalności i czasu na oswojenie się ze zmianą; otwarty konflikt i presję znoszą źle.",
+          "h": "Zielony typ osobowości",
+          "signs": ["Więcej słucha, niż mówi, i pyta, co u ciebie słychać.", "Nie spieszy się z odpowiedzią i bierze czas do namysłu.", "Chętnie pomaga i rzadko odmawia, nawet gdy ma za dużo na głowie.", "Trzyma się tego, co znane: ta sama trasa, te same narzędzia, ten sam zespół.", "Pod presją milknie, na zewnątrz się zgadza, a w środku zbiera niezadowolenie."],
+          "blind": "Mocną stroną „zielonych” jest niezawodność: doprowadzą sprawę do końca i zachowają dobre relacje tam, gdzie inni by się pokłócili. Martwym polem jest milczenie: nie mówią „nie”, nie spierają się otwarcie i godzą się na zmiany, z którymi w głębi ducha się nie zgadzają. Najbardziej wytrącają ich z równowagi nagłe zmiany, ostry ton i konflikty.",
+          "talk": ["Uprzedzaj o zmianach z wyprzedzeniem i wyjaśniaj, po co są potrzebne.", "Pytaj o zdanie na osobności, a nie w ogólnej dyskusji.", "Nie bierz milczenia za zgodę: dopytaj, co naprawdę myślą."]
         },
         "C": {
           "name": "Niebieski",
           "tagline": "Sumienność (C): dokładność i jakość",
-          "text": "Niebieski to kolor analizy i porządku. „Niebiescy” opierają się na faktach, sprawdzają szczegóły, planują i trzymają się standardów. Stoją na straży jakości, ale potrafią ugrzęznąć w analizach, przeciągać terminy w pogoni za ideałem i sprawiać wrażenie chłodnych."
+          "text": "Niebieski to kolor analizy i porządku. „Niebiescy” opierają się na faktach, sprawdzają szczegóły, planują i trzymają się standardów. Stoją na straży jakości, ale potrafią ugrzęznąć w analizach, przeciągać terminy w pogoni za ideałem i sprawiać wrażenie chłodnych.",
+          "h": "Niebieski typ osobowości",
+          "signs": ["Zadaje pytania doprecyzowujące i prosi o liczby, źródła, przykłady.", "Zanim zdecyduje, zbiera informacje i porównuje warianty.", "Wyłapuje błędy, literówki i niespójności, które inni przeoczają.", "Pisze szczegółowo, w punktach, z załącznikami i linkami.", "Pod presją ucieka w analizę, odkłada decyzję i wszystko krytykuje."],
+          "blind": "Mocną stroną „niebieskich” jest jakość: ich pracy rzadko trzeba poprawiać. Martwym polem jest cena ideału: tracą czas na sprawdzanie tego, co już jest wystarczająco dobre, odkładają decyzję do pełnej jasności i brzmią chłodno tam, gdzie potrzebne jest wsparcie. Najbardziej irytują ich niedbałość, pośpiech bez powodu i mgliste sformułowania.",
+          "talk": ["Przychodź z faktami i strukturą: cel, dane, opcje, terminy.", "Daj czas na zapoznanie się z materiałem przed rozmową, a nie na spotkaniu.", "Krytykuj konkretnie: co dokładnie jest nie tak i według jakiego kryterium."]
         }
       },
+      "labels": { "signs": "Jak rozpoznać", "blind": "Mocna strona i martwe pole", "talk": "Jak się komunikować" },
       "sections": [
         {
           "h": "Skąd się wzięły kolory",
@@ -593,6 +610,13 @@
           ]
         },
         {
+          "h": "Kolory w książce Thomasa Eriksona „Otoczeni przez idiotów”",
+          "p": [
+            "Szerokiej publiczności cztery kolory są znane przede wszystkim z książki szwedzkiego autora Thomasa Eriksona „Otoczeni przez idiotów” (Omgiven av idioter, 2014). Książka sprzedała się w milionach egzemplarzy i została przetłumaczona na kilkadziesiąt języków. Erikson opisuje te same cztery postacie co DISC: czerwonego – zdecydowanego i niecierpliwego, żółtego – towarzyskiego i łatwo się zapalającego, zielonego – spokojnego i ustępliwego, niebieskiego – dokładnego i powściągliwego. Tytuł jest ironiczny: ludzie w innym kolorze wydają nam się „idiotami”, dopóki nie zrozumiemy, jak działają.",
+            "Erikson otwarcie opiera się na DISC, dlatego jego czerwony, żółty, zielony i niebieski odpowiadają stylom D, I, S i C w tym serwisie. Różnica tkwi w sposobie przedstawienia: książka tłumaczy model na przykładach z codzienności i wyrazistych typach, a test mierzy nasilenie każdego stylu. W Szwecji książkę krytykowali psycholodzy oraz stowarzyszenie popularyzujące naukę Vetenskap och Folkbildning – za uproszczenia i za przedstawianie popularnego tekstu jako naukowo uzasadnionego. To słuszne ostrzeżenie wobec wszelkich schematów kolorów: traktuj je jako język do rozmowy, a nie jako diagnozę."
+          ]
+        },
+        {
           "h": "Kolory w zespole",
           "p": [
             "Kolorowa mapa zespołu to szybki sposób, by dostrzec dysproporcje. Zespół złożony z samych „czerwonych” szybko podejmuje decyzje i równie szybko się kłóci; zespół „zielonych” jest zgrany, ale unika trudnych rozmów i odkłada zmiany. Mieszany zespół pracuje lepiej, jeśli każdy rozumie, czego się spodziewać po innym kolorze: jak zlecać zadania, jak przekazywać informację zwrotną, jak się spierać.",
@@ -603,7 +627,12 @@
           "h": "Ograniczenia",
           "p": ["Kolor to etykieta, a etykiety upraszczają. „Ty przecież jesteś czerwony” brzmi jak usprawiedliwienie szorstkości, a „jest zielona, więc czego od niej chcieć” – jak rezygnacja z oczekiwań. DISC opisuje typowe zachowanie, a nie charakter, wartości czy zdolności, i każdy styl można rozwijać. Korzystaj z kolorów po to, by lepiej się rozumieć, a nie po to, by szufladkować ludzi."]
         }
-      ]
+      ],
+      "cta": {
+        "title": "Poznaj swój kolor DISC",
+        "text": "Test pokaże twój kolor wiodący i uzupełniający, ich nasilenie w procentach i to, co z tym zrobić. 24 pytania, około 10 minut, bez rejestracji.",
+        "button": "Poznaj swój kolor"
+      }
     },
     "pdf": {
       "title": "Test DISC PDF – darmowy arkusz do druku z kluczem i interpretacją",
@@ -670,7 +699,7 @@
           "h": "Jak przeprowadzić test w zespole w tym serwisie",
           "ol": [
             "Najpierw zrób test samodzielnie: dowiesz się, co zobaczą uczestnicy, i będziesz mieć przykładowy raport do pokazania.",
-            "Wyślij współpracownikom link do serwisu w odpowiedniej wersji językowej. Rejestracja nie jest potrzebna, test zajmuje około dziesięciu minut; każdy podaje imię i adres e-mail, a raport otrzymuje na ekranie i e-mailem.",
+            "Wyślij współpracownikom link do serwisu w odpowiedniej wersji językowej. Rejestracja nie jest potrzebna, test zajmuje około dziesięciu minut; raport pojawia się na ekranie, a na ekranie wyniku każdy podaje imię i adres e-mail i otrzymuje raport także e-mailem.",
             "Poproś każdą osobę o przesłanie ci linku do wyniku albo kodu z raportu. Wynik widzi tylko ten, kto ma link; żadne dane nie trafiają automatycznie do menedżera.",
             "Otwórz panel administratora (link w stopce strony) i wklej otrzymane kody. Panel utworzy tabelę z imionami, profilami i punktami; można ją skopiować do Excela. Tabela jest przechowywana wyłącznie w twojej przeglądarce.",
             "Zaplanuj wspólne spotkanie: opowiedz o czterech stylach, pokaż mapę zespołu i pozwól każdemu powiedzieć, co w raporcie trafiło w sedno, a co nie."
@@ -901,7 +930,7 @@
   "ui": {
     "langLabel": "Język",
     "footer": "24 pytania · około 10 minut · nie ma dobrych ani złych odpowiedzi",
-    "privacy": "Odpowiedzi pozostają w twojej przeglądarce; wynik jest wysyłany na podany przez ciebie adres e-mail i zapisywany w bazie wyników właściciela serwisu.",
+    "privacy": "Odpowiedzi pozostają w twojej przeglądarce; jeśli podasz adres e-mail, wynik zostanie na niego wysłany i zapisany w bazie wyników właściciela serwisu.",
     "adminLink": "Panel administratora",
 
     "intro.eyebrow": "Kwestionariusz stylów zachowania",
@@ -912,9 +941,10 @@
     "intro.howText": "Test składa się z 24 pytań, w każdym są cztery stwierdzenia – łącznie 96. W każdym pytaniu zaznacz jedno stwierdzenie, które pasuje do ciebie <b>najbardziej</b>, i jedno, które pasuje do ciebie <b>najmniej</b>. Odpowiadaj tak, jak zwykle zachowujesz się w pracy, a nie tak, jak chcesz się zachowywać. Nie zastanawiaj się długo: pierwsza reakcja jest najtrafniejsza.",
     "intro.nameLabel": "Imię",
     "intro.emailLabel": "Adres e-mail, na który wysłać wynik",
-    "intro.emailHint": "Po zakończeniu testu na ten adres przyjdzie wiadomość z wynikiem. Imię, e-mail i wynik są zapisywane w bazie wyników właściciela serwisu.",
+    "intro.emailHint": "Na ten adres przyjdzie wiadomość z linkiem do pełnego raportu. Imię, e-mail i wynik są zapisywane w bazie wyników właściciela serwisu.",
     "intro.requiredNote": "Pola oznaczone gwiazdką (*) są wymagane.",
     "intro.start": "Rozpocznij test",
+    "intro.startNote": "24 pytania · około 10 minut · bez rejestracji",
     "intro.resume": "Dokończ rozpoczęty test (wypełniono {n} z 24 pytań)",
     "intro.showLast": "Otwórz mój poprzedni wynik z {date}",
     "intro.nameRequired": "Podaj imię",
@@ -955,6 +985,7 @@
     "report.stress": "W stresie",
     "report.environment": "Sprzyjające środowisko",
     "report.moreLink": "Więcej o tym, jak czytać profil DISC →",
+    "report.color": "Twój kolor DISC: {color}",
 
     "share.title": "Zapisz wynik",
     "share.text": "Wynik jest zapisany w twojej przeglądarce. Skopiuj link, aby otworzyć raport później lub na innym urządzeniu, albo prześlij go osobie, która poprosiła cię o wypełnienie testu.",
@@ -969,6 +1000,14 @@
     "share.sent": "Wiadomość z wynikiem została wysłana na adres {email}.",
     "share.sendFailed": "Nie udało się wysłać wiadomości na adres {email}. Skopiuj link do raportu lub spróbuj ponownie.",
     "share.retry": "Wyślij ponownie",
+    "share.emailTitle": "Otrzymaj wynik e-mailem",
+    "share.send": "Wyślij na mój e-mail",
+    "share.mailtoHint": "Otworzy się twój program pocztowy z gotową wiadomością na ten adres – wystarczy kliknąć „Wyślij”.",
+    "share.mailtoOpened": "Wiadomość z wynikiem otworzyła się w twoim programie pocztowym – wyślij ją na adres {email}.",
+    "share.typeTitle": "Udostępnij swój typ",
+    "share.typeText": "Link prowadzi do publicznego opisu profilu „{name}”: nie ma w nim twojego imienia, adresu e-mail ani odpowiedzi.",
+    "share.type": "Udostępnij typ",
+    "share.typeMsg": "Mój typ DISC to {name} ({key}). A jaki jest twój?",
 
     "mail.subject": "DISC: {name} – {label}",
     "mail.title": "Wynik testu DISC",
@@ -1102,7 +1141,7 @@
     "consent.label": "Informacja o plikach cookie",
     "consent.text": "Serwis przechowuje twoje postępy, wynik i wybrany język w pamięci lokalnej przeglądarki, a usługa analityki internetowej zbiera zanonimizowane statystyki odwiedzin oraz zapis działań na stronie, abyśmy mogli ulepszać serwis. Imię, e-mail i wynik nie są przekazywane do usługi analitycznej.",
     "consent.more": "Więcej informacji",
-    "consent.details": "W przeglądarce przechowywane są: imię i e-mail podane przed testem; odpowiedzi i nieukończone postępy; ostatni wynik; wybrany język; informacja, że ten komunikat został już wyświetlony. Te dane pozostają na twoim urządzeniu i są usuwane przy czyszczeniu danych witryny. Hosting GitHub Pages otrzymuje standardowe dane techniczne żądania. Po zakończeniu testu imię, e-mail i odpowiedzi są przekazywane do usługi wysyłki wiadomości (Google Apps Script): wysyła ona do ciebie wiadomość z wynikiem i zapisuje imię, e-mail, datę oraz wynik w bazie wyników właściciela serwisu (Arkusz Google). Usługa analityki internetowej otrzymuje adres strony bez kodu wyniku, źródło wejścia, typ urządzenia i przeglądarki, zanonimizowany zapis działań na stronie (pola z imieniem i e-mailem oraz link i kod wyniku są z zapisu wyłączone) i zapisuje własne pliki cookie. Możesz ją zablokować w ustawieniach przeglądarki lub za pomocą programu blokującego skrypty śledzące. Reklamowe skrypty śledzące nie są używane.",
+    "consent.details": "W przeglądarce przechowywane są: imię i e-mail, jeśli je podano; odpowiedzi i nieukończone postępy; ostatni wynik; wybrany język; informacja, że ten komunikat został już wyświetlony. Te dane pozostają na twoim urządzeniu i są usuwane przy czyszczeniu danych witryny. Hosting GitHub Pages otrzymuje standardowe dane techniczne żądania. Gdy wysyłasz wynik na e-mail, imię, e-mail i odpowiedzi są przekazywane do usługi wysyłki wiadomości (Google Apps Script): wysyła ona do ciebie wiadomość z wynikiem i zapisuje imię, e-mail, datę oraz wynik w bazie wyników właściciela serwisu (Arkusz Google). Usługa analityki internetowej otrzymuje adres strony bez kodu wyniku, źródło wejścia, typ urządzenia i przeglądarki, zanonimizowany zapis działań na stronie (pola z imieniem i e-mailem oraz link i kod wyniku są z zapisu wyłączone) i zapisuje własne pliki cookie. Możesz ją zablokować w ustawieniach przeglądarki lub za pomocą programu blokującego skrypty śledzące. Reklamowe skrypty śledzące nie są używane.",
     "consent.accept": "Akceptuję",
     "consent.decline": "Tylko niezbędne",
     "consent.ok": "Rozumiem",

@@ -28,12 +28,12 @@
 <meta property="og:locale:alternate" content="hi_IN">
 <meta property="og:locale:alternate" content="tr_TR">
 <meta property="og:locale:alternate" content="pl_PL">
-<meta property="og:image" content="https://disc-test.org/og/id.png">
+<meta property="og:image" content="https://disc-test.org/og/profiles/id-cd.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Perfeksionis (CD) — Profil DISC: Ciri, Kekuatan, Area Pengembangan">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://disc-test.org/og/id.png">
+<meta name="twitter:image" content="https://disc-test.org/og/profiles/id-cd.png">
 <meta name="theme-color" content="#F3F4F6" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#14171B" media="(prefers-color-scheme: dark)">
 <link rel="canonical" href="https://disc-test.org/id/profiles/cd/">
@@ -159,6 +159,13 @@ html[lang=ar] body,html[lang=hi] body{font-size:17px;line-height:1.65}
 .sitenav a{color:var(--muted);text-decoration:none;padding:4px 0;border-bottom:2px solid transparent}
 .sitenav a:hover{color:var(--ink)}
 .sitenav a[aria-current]{color:var(--ink);font-weight:600;border-bottom-color:var(--ink)}
+/* телефон: меню разделов в одну строку с горизонтальной прокруткой, чтобы тест оставался на первом экране */
+@media (max-width:640px){
+  .sitenav{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;margin-inline:-20px;padding-inline:20px;mask-image:linear-gradient(to right,#000 85%,transparent);-webkit-mask-image:linear-gradient(to right,#000 85%,transparent)}
+  html[dir=rtl] .sitenav{mask-image:linear-gradient(to left,#000 85%,transparent);-webkit-mask-image:linear-gradient(to left,#000 85%,transparent)}
+  .sitenav::-webkit-scrollbar{display:none}
+  .sitenav a{white-space:nowrap;flex:none}
+}
 .crumbs{font-size:13px;color:var(--muted);margin:0 0 16px}
 .crumbs a{color:var(--muted);text-decoration:none}
 .crumbs a:hover{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
@@ -246,6 +253,9 @@ input:focus-visible,textarea:focus-visible,button:focus-visible,select:focus-vis
 .link:hover{color:var(--ink)}
 .actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
 .actions.between{justify-content:space-between}
+.btn.big{font-size:17px;padding:15px 28px;border-radius:12px}
+.startrow{gap:10px 16px;margin:0 0 6px}
+@media (max-width:480px){.startrow .btn.big{flex:1 1 100%}}
 .foot{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
 .foot .row2{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .foot .privacy{margin-top:6px}
@@ -366,7 +376,15 @@ th.num{text-align:end}
 .consent-in summary::-webkit-details-marker{display:none}
 .consent-in details p{margin:8px 0 0}
 body.has-consent{padding-bottom:160px}
-@media (max-width:640px){body.has-consent{padding-bottom:300px}}
+/* телефон: плашка только информирует, поэтому компактная — одна строка текста и кнопка, подробности свёрнуты */
+@media (max-width:640px){
+  body.has-consent{padding-bottom:120px}
+  .consent{padding:0 8px 8px}
+  .consent-in{padding:10px 12px;gap:4px 10px;font-size:12px;line-height:1.4;display:grid;grid-template-columns:1fr auto;align-items:start}
+  .consent-in>p{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+  .consent-in:has(details[open])>p{display:block}
+  .consent-in details{grid-column:1/-1}
+}
 @media print{.consent{display:none!important}}
 @media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
 @media print{
@@ -394,6 +412,10 @@ body.has-consent{padding-bottom:160px}
 .colorcard h2{margin:10px 0 2px;color:var(--k)}
 .colorcard .swatch{width:44px;height:44px;border-radius:10px;background:var(--k);color:#14171B;display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-weight:600;font-size:22px}
 .colorcard .traits{margin:10px 0 4px}
+.colortype{margin:26px 0;padding:4px 0 4px;padding-inline-start:18px;border-inline-start:4px solid var(--k)}
+.colortype h2{margin-top:0}
+.colortype h3{margin:16px 0 6px}
+.colortype ul{margin:0 0 8px}
 .tablewrap.plain{border:0;background:none;border-radius:0}
 .matrix{min-width:0;width:auto;margin:6px 0 20px;border-collapse:separate;border-spacing:6px}
 .matrix th,.matrix td{border:0;padding:0;background:none;white-space:nowrap}
@@ -431,7 +453,7 @@ body.has-consent{padding-bottom:160px}
   <footer class="foot">
     <div class="row2"><span>24 soal · sekitar 10 menit · tidak ada jawaban benar atau salah</span><span class="footlinks"><a href="../../../id/about/">Tentang proyek</a> · <a href="../../../id/contact/">Kontak</a> · <a href="../../../id/privacy/">Privasi</a></span></div>
     <nav class="materials" aria-label="Materi tentang DISC"><span class="mlabel">Materi tentang DISC</span><a href="../../../id/disc/">Apa itu DISC</a><a href="../../../id/styles/">Empat gaya</a><a href="../../../id/profiles/">16 profil</a><a href="../../../id/results/">Cara membaca hasil</a><a href="../../../id/compatibility/">Kecocokan gaya</a><a href="../../../id/colors/">Warna DISC</a><a href="../../../id/teams/">DISC untuk tim</a><a href="../../../id/disc-vs-mbti/">DISC dan MBTI</a><a href="../../../id/pdf/">Tes DISC PDF</a><a href="../../../id/faq/">Tanya jawab</a></nav>
-    <div class="privacy">Jawaban Anda tetap berada di browser; hasil dikirim ke alamat email yang Anda berikan dan disimpan di basis data hasil milik pemilik situs.</div>
+    <div class="privacy">Jawaban Anda tetap berada di browser; jika Anda mengisi email, hasil akan dikirim ke alamat itu dan disimpan di basis data hasil milik pemilik situs.</div>
     <nav class="langs" aria-label="Bahasa"><a href="../../../profiles/cd/" hreflang="en" lang="en" data-lang="en"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-en"/></svg><span>English</span></a><a href="../../../ru/profiles/cd/" hreflang="ru" lang="ru" data-lang="ru"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-ru"/></svg><span>Русский</span></a><a href="../../../es/profiles/cd/" hreflang="es" lang="es" data-lang="es"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-es"/></svg><span>Español</span></a><a href="../../../zh/profiles/cd/" hreflang="zh-Hans" lang="zh-Hans" data-lang="zh"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-zh"/></svg><span>简体中文</span></a><a href="../../../zh-hant/profiles/cd/" hreflang="zh-Hant" lang="zh-Hant" data-lang="zh-hant"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-zh-hant"/></svg><span>繁體中文</span></a><a href="../../../ar/profiles/cd/" hreflang="ar" lang="ar" data-lang="ar"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-ar"/></svg><span>العربية</span></a><a href="../../../pt/profiles/cd/" hreflang="pt" lang="pt" data-lang="pt"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-pt"/></svg><span>Português</span></a><a href="../../../fr/profiles/cd/" hreflang="fr" lang="fr" data-lang="fr"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-fr"/></svg><span>Français</span></a><a href="../../../de/profiles/cd/" hreflang="de" lang="de" data-lang="de"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-de"/></svg><span>Deutsch</span></a><a href="../../../ja/profiles/cd/" hreflang="ja" lang="ja" data-lang="ja"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-ja"/></svg><span>日本語</span></a><a href="../../../hi/profiles/cd/" hreflang="hi" lang="hi" data-lang="hi"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-hi"/></svg><span>हिन्दी</span></a><a href="../../../id/profiles/cd/" hreflang="id" lang="id" data-lang="id" aria-current="page"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-id"/></svg><span>Bahasa Indonesia</span></a><a href="../../../tr/profiles/cd/" hreflang="tr" lang="tr" data-lang="tr"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-tr"/></svg><span>Türkçe</span></a><a href="../../../pl/profiles/cd/" hreflang="pl" lang="pl" data-lang="pl"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-pl"/></svg><span>Polski</span></a></nav>
   </footer>
 </div>
@@ -439,7 +461,7 @@ body.has-consent{padding-bottom:160px}
 <script>
 (function(){
 'use strict';
-var L = {"lang":"id","name":"Bahasa Indonesia","dir":"ltr","dateLocale":"id-ID","ui":{"langLabel":"Bahasa","consent.label":"Pemberitahuan cookie","consent.text":"Situs ini menyimpan progres, hasil, dan bahasa pilihan Anda di penyimpanan lokal browser, sedangkan layanan analitik web mengumpulkan statistik kunjungan yang dianonimkan dan rekaman aktivitas di halaman agar kami dapat menyempurnakan situs. Nama, email, dan hasil Anda tidak dikirim ke layanan analitik.","consent.more":"Selengkapnya","consent.details":"Yang disimpan di browser: nama dan email yang dimasukkan sebelum tes; jawaban dan progres yang belum selesai; hasil terakhir; bahasa yang dipilih; penanda bahwa Anda sudah melihat pemberitahuan ini. Data ini tetap berada di perangkat Anda dan terhapus saat Anda menghapus data situs. Hosting GitHub Pages menerima data teknis standar dari setiap permintaan. Saat tes selesai, nama, email, dan jawaban diteruskan ke layanan pengiriman email (Google Apps Script): layanan ini mengirimkan email berisi hasil kepada Anda dan menyimpan nama, email, tanggal, dan hasil di basis data hasil milik pemilik situs (Google Spreadsheet). Layanan analitik web menerima alamat halaman tanpa kode hasil, sumber kunjungan, jenis perangkat dan browser, serta rekaman anonim aktivitas di halaman (kolom nama dan email, tautan, dan kode hasil dikecualikan dari rekaman); layanan ini juga memasang cookie miliknya sendiri. Anda dapat memblokirnya melalui pengaturan browser atau dengan pemblokir pelacak. Pelacak iklan tidak digunakan.","consent.accept":"Terima","consent.decline":"Hanya yang diperlukan","consent.ok":"Mengerti","root.continue":"Lanjutkan"}};
+var L = {"lang":"id","name":"Bahasa Indonesia","dir":"ltr","dateLocale":"id-ID","ui":{"langLabel":"Bahasa","consent.label":"Pemberitahuan cookie","consent.text":"Situs ini menyimpan progres, hasil, dan bahasa pilihan Anda di penyimpanan lokal browser, sedangkan layanan analitik web mengumpulkan statistik kunjungan yang dianonimkan dan rekaman aktivitas di halaman agar kami dapat menyempurnakan situs. Nama, email, dan hasil Anda tidak dikirim ke layanan analitik.","consent.more":"Selengkapnya","consent.details":"Yang disimpan di browser: nama dan email, jika Anda mengisinya; jawaban dan progres yang belum selesai; hasil terakhir; bahasa yang dipilih; penanda bahwa Anda sudah melihat pemberitahuan ini. Data ini tetap berada di perangkat Anda dan terhapus saat Anda menghapus data situs. Hosting GitHub Pages menerima data teknis standar dari setiap permintaan. Saat Anda mengirim hasil ke email, nama, email, dan jawaban diteruskan ke layanan pengiriman email (Google Apps Script): layanan ini mengirimkan email berisi hasil kepada Anda dan menyimpan nama, email, tanggal, dan hasil di basis data hasil milik pemilik situs (Google Spreadsheet). Layanan analitik web menerima alamat halaman tanpa kode hasil, sumber kunjungan, jenis perangkat dan browser, serta rekaman anonim aktivitas di halaman (kolom nama dan email, tautan, dan kode hasil dikecualikan dari rekaman); layanan ini juga memasang cookie miliknya sendiri. Anda dapat memblokirnya melalui pengaturan browser atau dengan pemblokir pelacak. Pelacak iklan tidak digunakan.","consent.accept":"Terima","consent.decline":"Hanya yang diperlukan","consent.ok":"Mengerti","root.continue":"Lanjutkan"}};
 var ROOT_REL = '../../../', SUBPATH = 'profiles/cd/';
 var LANG_PATH = {"en":"","ru":"ru/","es":"es/","zh":"zh/","zh-hant":"zh-hant/","ar":"ar/","pt":"pt/","fr":"fr/","de":"de/","ja":"ja/","hi":"hi/","id":"id/","tr":"tr/","pl":"pl/"}, LANG_META = {"en":{"name":"English","cont":"Continue","dir":"ltr"},"ru":{"name":"Русский","cont":"Продолжить","dir":"ltr"},"es":{"name":"Español","cont":"Continuar","dir":"ltr"},"zh":{"name":"简体中文","cont":"继续","dir":"ltr"},"zh-hant":{"name":"繁體中文","cont":"繼續","dir":"ltr"},"ar":{"name":"العربية","cont":"متابعة","dir":"rtl"},"pt":{"name":"Português","cont":"Continuar","dir":"ltr"},"fr":{"name":"Français","cont":"Continuer","dir":"ltr"},"de":{"name":"Deutsch","cont":"Weiter","dir":"ltr"},"ja":{"name":"日本語","cont":"続ける","dir":"ltr"},"hi":{"name":"हिन्दी","cont":"जारी रखें","dir":"ltr"},"id":{"name":"Bahasa Indonesia","cont":"Lanjutkan","dir":"ltr"},"tr":{"name":"Türkçe","cont":"Devam et","dir":"ltr"},"pl":{"name":"Polski","cont":"Kontynuuj","dir":"ltr"}};
 function $(s){ return document.querySelector(s); }
