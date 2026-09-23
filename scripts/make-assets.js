@@ -84,4 +84,26 @@ ${bars}
     run(svg, path.join(OUTD, 'og', 'profiles', `${code}-${key.toLowerCase()}.png`), 1200, 630);
   }
 }
-console.log('assets written to src/assets/: favicon.svg, favicon.ico, apple-touch-icon.png, icon-192.png, icon-512.png, og/*.png, og/profiles/*.png');
+// og-картинки 10 пар совместимости (страницы /compatibility/d-s/ и т. п.): две буквы в цветах стилей, заголовок пары, раздел сайта
+const PAIRS = ['DD', 'DI', 'DS', 'DC', 'II', 'IS', 'IC', 'SS', 'SC', 'CC'];
+fs.mkdirSync(path.join(OUTD, 'og', 'pairs'), { recursive: true });
+for (const code of cfg.languages) {
+  const L = JSON.parse(fs.readFileSync(path.join(SRC, 'locales', code + '.json'), 'utf8'));
+  const FONT = FONT_FOR(CJK[code] || CJK_DEFAULT), rtl = L.dir === 'rtl', dirAttr = rtl ? 'rtl' : 'ltr', tx = rtl ? 1120 : 80;
+  for (const k of PAIRS) {
+    const names = k[0] === k[1] ? { a: k[0], b: k[1] } : { a: L.keys[k[0]], b: L.keys[k[1]] };
+    const title = L.ui['pages.compat.h1'].replace('{a}', names.a).replace('{b}', names.b), size = fit(title, 56, 1040);
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+<rect width="1200" height="630" fill="${C.paper}"/>
+<rect x="40" y="40" width="1120" height="550" rx="28" fill="#fff" stroke="${C.line}"/>
+<g transform="translate(${rtl ? 1070 : 80},96)">${dots(0, 0, 9, 11)}</g>
+<text x="${rtl ? 1040 : 112}" y="107" font-family="${FONT}" font-size="30" font-weight="600" fill="${C.ink}" direction="${dirAttr}">${esc(L.brand)}</text>
+<text x="${tx}" y="180" font-family="${FONT}" font-size="28" fill="${C.muted}" direction="${dirAttr}">${esc(L.ui['nav.compat'])}</text>
+<text x="600" y="360" font-family="${FONT}" font-size="170" font-weight="700" text-anchor="middle" direction="ltr"><tspan fill="${COL[k[0]]}">${k[0]}</tspan><tspan fill="${C.muted}" font-size="110" dx="30" dy="-15">+</tspan><tspan fill="${COL[k[1]]}" dx="30" dy="15">${k[1]}</tspan></text>
+<text x="600" y="470" font-family="${FONT}" font-size="${size}" font-weight="700" fill="${C.ink}" text-anchor="middle" direction="${dirAttr}">${esc(title)}</text>
+<text x="${rtl ? 80 : 1120}" y="548" font-family="${FONT}" font-size="26" fill="${C.muted}" text-anchor="${rtl ? 'start' : 'end'}">${esc(domain)}</text>
+</svg>`;
+    run(svg, path.join(OUTD, 'og', 'pairs', `${code}-${k[0].toLowerCase()}-${k[1].toLowerCase()}.png`), 1200, 630);
+  }
+}
+console.log('assets written to src/assets/: favicon.svg, favicon.ico, apple-touch-icon.png, icon-192.png, icon-512.png, og/*.png, og/profiles/*.png, og/pairs/*.png');

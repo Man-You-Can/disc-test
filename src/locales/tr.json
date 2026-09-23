@@ -977,6 +977,13 @@
           "friction": ["Kontrol ve son söz için çekişme", "Sabırsızlık: ikisi de söz keser ve acele ettirir", "Ayrıntıları kontrol eden de temkinlileri dinleyen de yok"],
           "tips": {
             "D": ["Kimin neden sorumlu olduğunu kararlaştırın ve birbirinizin alanına girmeyin", "Kimin haklı olduğunu değil, sonucun kriterlerini tartışın", "Tartışmaya bir S ya da C davet edin: ikinizin de gözden kaçırdığını onlar görür"]
+          },
+          "deep": {
+            "lead": "D yönetici ile D çalışan en önemli konularda çabucak anlaşır: hedef, süre, sonuç. Sorunlar, çalışan kararı kendisi vermek istediğinde ve yönetici herkes adına karar vermeye alışkın olduğunda başlar. En iyi işleyen şey net bir sınırdır: yönetici “ne” ve “ne zamana kadar” sorularından, çalışan ise “nasıl” sorusundan sorumludur. Sınır bulanıklaşırsa her görev bir yetki tartışmasına dönüşür.",
+            "meeting": "Toplantıda iki D hızla konuya girer ve aynı hızla tartışmaya başlar. İkisi de kendinden emin konuşur, söz keser ve meseleyi kendi kararıyla kapatmak ister. Yazışmalarda selamsız kısa mesajlar dışarıdan kavga gibi görünür, oysa ikisi için bu olağan bir tondur. Kararı kayda geçiren ve yeniden açılmasına izin vermeyen bir toplantı yöneticisi işe yarar.",
+            "conflict": "Tipik çatışma son söz kavgasıdır: ikisi de kendi seçeneğinden emindir ve herkesin önünde geri adım atmaya hazır değildir. Çıkış yolu, ölçütte önceden anlaşmak (“hangisi daha hızlı gelir getiriyorsa onu seçiyoruz”) ve iki tarafın da yüzünü kurtarmasına fırsat vermektir. Ekibin gözü önünde kazanılan bir tartışma, ikiliye baş başa kaybedilen bir tartışmadan daha pahalıya patlar.",
+            "life": "İş dışında iki D, sıkılmayı bilmeyen enerjik bir ikilidir: ortak hedefler, spor, rekabet, hızlı kararlar. Kavgaları gürültülü ama kısadır. Sorumluluk alanlarını paylaşmaları ve her ev meselesini bir düelloya çevirmemeleri önemlidir.",
+            "rules": ["Yetkileri önceden paylaşmak: kim neye karar verir", "Ekibin önünde değil, baş başa tartışmak", "Seçim ölçütünde tartışma sırasında değil, tartışmadan önce anlaşmak"]
           }
         },
         "DI": {
@@ -987,6 +994,14 @@
           "tips": {
             "D": ["Konuşmanın ilk iki dakikasını karşınızdaki insana ayırın, sonra işe geçin", "I’nın katkısını açıkça takdir edin: bu onun yakıtıdır", "Fikirleri hemen geri çevirmeyin: bırakın sözünü bitirsin, elemeyi sonra yapın"],
             "I": ["D ile kısa konuşun: sonuç, tarih ve ondan ne beklediğiniz", "Coşku gerçeklerden kopmasın diye varılan kararları yazıya dökün", "D’nin açık sözlülüğünü üzerinize alınmayın: bu bir değerlendirme değil, bir stildir"]
+          },
+          "deep": {
+            "lead": "D yönetici I çalışana bir hedef koyar ve sonuç bekler; karşılığında enerji, bağlantılar ve hızlı tepki alır. Ancak I kuru talimatlara ve takdir görmemeye zor dayanır: D yöneticinin onu açıkça övmesi ve insanlarla yüz yüze gelen görevler vermesi iyi olur. Ayrıntıları ve raporları sona bırakmak yerine süreç içinde kontrol etmek daha doğrudur.",
+            "leadRev": "I yönetici, D çalışanı bir fikirle heyecanlandırır ve ona özgürlük tanır; D bunu takdir eder. Sürtüşme, hedefler her yeni fikirle birlikte değiştiğinde ortaya çıkar: tutarsızlık D’yi rahatsız eder. I yöneticinin öncelikleri sabitlemesi ve sebepsiz yere değiştirmemesi, D çalışanın da itirazını ekibin önünde tartışarak değil, baş başa dile getirmesi iyi olur.",
+            "meeting": "Toplantıda D ve I en yüksek sesli katılımcılardır: D karara doğru çeker, I ise fikirleri ve insanları konuşmaya. Birlikte bir fikri diğerlerine hızla benimsetirler. Yazışmalarda D kısa yazar, I ise duygulu ve uzun uzun; D, I’nın mesajlarını boş, I da D’nin mesajlarını kaba bulabilir.",
+            "conflict": "Tipik çatışma: I müşteriye ekibin yetiştirebileceğinden fazlasını vaat eder, D bunu en son öğrenir ve patlar. Konuşulması gereken “kim suçlu” değil, kuraldır: süreye dair her söz, işi yapacak kişiyle önceden kararlaştırılır. D de herkesin önünde gösterdiği sertliği I’nın bir ihanet gibi yaşadığını unutmamalıdır.",
+            "life": "İş dışında D ve I renkli ve hareketli bir ikilidir: seyahatler, kalabalık arkadaş grupları, yeni projeler. İkisi de harekete geçmeyi sever, sıkılmaktan hoşlanmaz. Riskler, ilgi için rekabet ve dürtüsel kararlardır; birinin bütçeden ve takvimden sorumlu olması iyi olur.",
+            "rules": ["Süreye dair söz ancak anlaştıktan sonra verilir", "Açıkça takdir: I için yakıt, D için saygı işaretidir", "Kararları konuşmanın hemen ardından yazıya dökmek"]
           }
         },
         "DS": {
@@ -997,6 +1012,14 @@
           "tips": {
             "D": ["Değişiklikleri önceden haber verin ve neden gerektiğini açıklayın", "Fikrini doğrudan sorun ve sessizliği doldurmadan yanıtı bekleyin", "Güvenilirliği için teşekkür edin: S takdiri kendisi talep etmez"],
             "S": ["Katılmadığınızı hemen, kısaca ve sadede gelerek söyleyin: D buna saygı duyar", "Tahmin yürütmek yerine net tarihler ve öncelikler isteyin", "D’nin baskısını düşmanlık saymayın: bu onun olağan hızıdır"]
+          },
+          "deep": {
+            "lead": "D yönetici ve S çalışan en sık görülen ve en kırılgan ikilidir. D görevleri hızla verir ve yolda değiştirir; S her şeyi yetiştirmeye çalışır ve sessizce aşırı yüklenir. D yöneticinin değişiklikleri önceden haber vermesi ve “Neden hazır değil?” yerine “Önünde ne engel var?” diye sorması iyi olur. O zaman S, ekibindeki en güvenilir kişi olur.",
+            "leadRev": "S yönetici, D çalışana sakin ve öngörülebilir bir ortam sunar; ancak D bu ortamda sıkılabilir ve yöneticisinin üzerinden iş yapmaya başlayabilir. S yöneticinin D’ye ölçülebilir bir hedef ve hareket serbestliği vermesi, D çalışanın da yöneticisinin yumuşaklığını zayıflık sanmaması ve atacağı adımları önceden bildirmesi iyi olur.",
+            "meeting": "Toplantıda D ilk ve çok konuşur, S ise en son konuşur ya da hiç konuşmaz. D, S’nin görüşünü doğrudan sormazsa ekip risklere dair en gerçekçi değerlendirmeyi kaybeder. Yazışmalarda D hemen yanıt bekler, S ise düşünerek ve daha geç yanıtlar; D beklemeyi sabotaj, S de ısrarı kabalık sayar.",
+            "conflict": "Tipik çatışma: D acil değişiklikler duyurur, S kabul eder ama işi eski usulde sürdürür. D kızar, S kırılır. Çıkış yolu, S’ye “Bu mevcut işi nasıl etkileyecek?” diye sorması için zaman tanımak ve yeni görev uğruna nelerden vazgeçileceğinde anlaşmaktır. D hız, S de netlik kazanır.",
+            "life": "İş dışında D ve S çoğu zaman birbirini tamamlar: biri önerir ve karar verir, diğeri yuvayı ve istikrarı kurar. Tehlike, S’nin yıllarca taviz verip kırgınlık biriktirmesi ve D’nin bunu fark etmemesidir. Bu ikilinin, her birine neyin önemli olduğunu düzenli ve sakin biçimde konuşmaya ihtiyacı vardır.",
+            "rules": ["Değişiklikleri önceden haber vermek ve açıklamak", "S’nin görüşünü ayrıca sormak ve yanıtı beklemek", "S “hayır”ı susarak değil, sözle söyler"]
           }
         },
         "DC": {
@@ -1007,6 +1030,14 @@
           "tips": {
             "D": ["C’ye analiz için zaman tanıyın ve yanıtın ne zaman gerektiğini önceden söyleyin", "Kararlarınızı “ben öyle dedim” diyerek değil, verilerle destekleyin", "İşleri ayırın: hatanın bedelinin yüksek olduğu yerde son söz C’nindir"],
             "C": ["D’ye “sonra mükemmel” yerine “şimdilik yeterince iyi” seçeneğini önerin", "Riskleri kısaca, olası sonuçlarını belirterek ve uzun gerekçelere girmeden bildirin", "D’den övgü beklemeyin: eleştirmemesi, onun onay verme biçimidir"]
+          },
+          "deep": {
+            "lead": "D yönetici C çalışandan hızlı sonuç bekler, C ise net ölçütler ve kalite için zaman. D açıklama yapmadan acele ettirirse C daha da yavaşlar. İşe yarayan bir anlaşmadır: D süreyi ve kabul edilebilir kalite düzeyini söyler, C de riskleri hemen dile getirir. Böylece D sürprizsiz bir sonuç, C de işi doğru yapma imkânı elde eder.",
+            "leadRev": "C yönetici süreçler ve standartlar kurar, D çalışan ise sonuca koşar ve kuralları dolanır. C yöneticinin hangi kuralların zorunlu olduğunu ve nedenini açıklaması, geri kalanında D’ye serbestlik tanıması iyi olur. D ise C’nin karşısına baskıyla değil, rakamlarla çıkarsa kazançlı çıkar.",
+            "meeting": "Toplantıda D hemen karar vermek, C önce meseleyi anlamak ister. D, C’nin sorularını kılı kırk yarmak, C de D’nin kararlarını aceleci bulur. “Karar + kontrol tarihi” formatı işe yarar: bugün karar veriyoruz, bir hafta sonra verilere bakıyoruz. Yazışmalarda ikisi de kısa ve öz yazar; burada işleri toplantılardan daha kolaydır.",
+            "conflict": "Tipik çatışma: D, C’nin henüz kontrol etmediği bir çözümü müşteriye gönderir ve hata müşteride ortaya çıkar. C “Ben uyarmıştım” der, D “Daha hızlı olmalıydın”. Çıkış yolu, hangi işlerin C’nin kontrolü olmadan dışarı çıkmayacağını, hangilerinin hemen gönderilebileceğini önceden kararlaştırmaktır.",
+            "life": "İş dışında D ve C, duygulara değil göreve odaklanan iki güçlü karakterin ikilisidir. Birbirlerinin yetkinliğine saygı duyarlar ama sıcaklığı unutabilirler. Ortak planları iyi düşünülmüştür; anlaşmazlıkları baskıyla değil, olgularla çözmek daha iyidir.",
+            "rules": ["Hız ve kaliteyi işe başlamadan önce kararlaştırmak", "Baskıyla ya da kural alıntılayarak değil, olgularla tartışmak", "Neyin kontrolsüz dışarı çıkmayacağını ayrıca belirlemek"]
           }
         },
         "II": {
@@ -1016,6 +1047,13 @@
           "friction": ["İkisi de konuşur, dinleyen yoktur", "Plansız vaatler: tarihler ve ayrıntılar ortada kalır", "Keyifler kaçmasın diye çatışmalar geçiştirilir"],
           "tips": {
             "I": ["Her toplantıyı bir listeyle bitirin: kim, neyi, hangi tarihe kadar", "Rolleri paylaşın: konuşmayı kim yönetecek, notları kim tutacak", "Planı duyurmadan önce bir C ya da S’den kontrol etmesini isteyin"]
+          },
+          "deep": {
+            "lead": "I yönetici ve I çalışan aynı dalga boyundadır: bol fikir, övgü ve canlı iletişim. Zorluk uygulamadadır: yönetici hangi görevi verdiğini, çalışan da ne söz verdiğini unutur. Bu ikilinin dış dayanaklara ihtiyacı vardır: yazılı görevler, ortak takvim ve süreler üzerine kısa, düzenli bir kontrol.",
+            "meeting": "Toplantıda iki I tartışmayı beyin fırtınasına çevirir: ilginç, eğlenceli ama sonuçsuz. İkisi de konuşmak ister ve daha az dinler. Belirli bir akış işe yarar: önce fikirlere ayrılan süre, sonra kimin ne yapacağı. Yazışmalarda bol duygu, emoji ve sesli mesaj vardır; önemli anlaşmalar bunların arasında kaybolur.",
+            "conflict": "Tipik çatışma söylenmemiş kırgınlıktır: ikisi de güzel havayı bozmamak için tatsız konuşmadan kaçınır, ta ki sorun büyüyene dek. Çıkış yolu, sorunların hemen ve baş başa konuşulacağında anlaşmak ve işin eleştirisini kişiye duyulan tutumla karıştırmamaktır.",
+            "life": "İş dışında iki I her ortamın neşesidir: arkadaşlar, kutlamalar, geziler. Birlikte zaman geçirmek onlar için kolaydır, ama ev işleri, para ve planlar çoğu zaman sahipsiz kalır. Sıkıcı görevleri açıkça paylaşmaları yararlı olur; yoksa onları kimse yapmaz.",
+            "rules": ["Her toplantı bir listeyle biter: kim, ne, ne zaman", "Tatsız şeyleri hemen ve baş başa söylemek", "Planı duyurmadan önce bir C’ye veya S’ye kontrol ettirmek"]
           }
         },
         "IS": {
@@ -1026,6 +1064,14 @@
           "tips": {
             "I": ["S’ye değişiklikleri önceden haber verin ve kararları sebepsiz yere değiştirmeyin", "S’nin fikrini doğrudan sorun: kendiliğinden öne sürmez", "Başladığınız işi bitirin: S güvenilirliği fikirlerden üstün tutar"],
             "S": ["Sınırlarınızı açıkça söyleyin: I kendiliğinden anlamaz", "I’nın fikirlerini destekleyin, ama plan ve tarih isteyin", "Dürüst geri bildirim vermekten korkmayın: I bunu sandığınızdan daha kolay kaldırır"]
+          },
+          "deep": {
+            "lead": "I yönetici ilham verir ve över, S çalışan işi güvenilir biçimde yapar. I planları her hafta değiştirmediği sürece bu iyi bir ikilidir. S sürekli değişikliklere zor dayanır ve bunu kendiliğinden söylemez. I yöneticinin S’ye işlerin nasıl gittiğini sorması ve öncelikleri sabit tutması iyi olur.",
+            "leadRev": "S yönetici, I çalışanın rahat ettiği sakin bir ortam yaratır, ama ona yeterince takdir ve görünürlük sağlamayabilir. S yöneticinin I’nın başarılarını açıkça dile getirmesi, I’nın da S’nin tutarlılığa değer verdiğini ve sürprizlerden hoşlanmadığını unutmaması iyi olur.",
+            "meeting": "Toplantıda I konuşur, S dinler ve destekler. Toplantı hoş geçer, ama tartışmalı konular çoğu zaman atlanır: ikisi de çatışmayı sevmez. Yazışmalarda I hızlı ve çok yazar, S ise özenle ve daha geç; I, S’nin ilgisiz olduğunu düşünebilir.",
+            "conflict": "Tipik çatışma: I planı son anda değiştirir, S sessizce uyum sağlar ama güvenini kaybeder. Çıkış yolu, değişikliklerin önceden konuşulacağında anlaşmak ve S’nin rahatsızlığını açıkça dile getirmesidir. İkisinin de ilişkiyi bozmaktan korkmadan tartışmayı öğrenmesi gerekir.",
+            "life": "İş dışında I ve S, bol iletişimin ve karşılıklı ilginin olduğu sıcak ve dostane bir ikilidir. I yeni deneyimler, S ise huzur ve istikrar getirir. Risk, zor konuşmaların yıllarca ertelenmesidir. Bu ikilinin ara sıra, bilinçli olarak onları neyin rahatsız ettiğini konuşması iyi olur.",
+            "rules": ["Değişiklikleri olup bittikten sonra değil, önceden konuşmak", "S rahatsızlığını sözle dile getirir", "Tartışmaktan korkmamak: tartışma ilişkiyi yıkmaz"]
           }
         },
         "IC": {
@@ -1036,6 +1082,14 @@
           "tips": {
             "I": ["C ile konuşmadan önce verilerinizi ve rakamlarınızı hazırlayın", "Yanıt için zaman tanıyın: C’nin sessizliği ret değil, düşünme payıdır", "Ayrıntılara yönelik eleştiriyi fikrin reddi olarak görmeyin"],
             "C": ["Önce fikrin değerini teslim edin, sonra risklere geçin", "Vardığınız sonuçları bütün verileri sıralamadan, sade bir dille anlatın", "Zaman zaman “yeterince iyi”ye razı olun: her ayrıntı tartışmaya değmez"]
+          },
+          "deep": {
+            "lead": "I yönetici görevleri genel hatlarıyla ve coşkuyla tarif eder, C çalışan ise kesin bir tanım bekler. I ölçütleri netleştirmezse C ya tekrar tekrar soru sorar ya da istenmeyen bir şey yapar. I yöneticinin görevleri yazılı olarak, örneklerle ve sürelerle vermesi, C’nin de sorularını iş bittikten sonra değil, hemen sorması iyi olur.",
+            "leadRev": "C yönetici I çalışana ayrıntılı talimatlar verir ve ayrıntıları kontrol eder; I ise özgürlük ve takdir ister. C yöneticinin geri bildirime iyi gidenlerle başlaması ve I’ya insanlarla iletişim için alan bırakması iyi olur. I de C’ye yalnızca izlenimlerini değil, olguları iletirse kazançlı çıkar.",
+            "meeting": "Toplantıda I fikir önerir, C bu fikirlerin zayıf noktalarını arar. I, C’nin sorularını ret olarak algılar; C de I’nın coşkusunu yüzeysel bulur. Aşamaları ayırmak yararlıdır: önce eleştirisiz fikirler, sonra değerlendirme. Yazışmalarda I duygulu, C ise düzenli ve yapılandırılmış yazar; her birinin diğerinin tarzına uyum sağlaması iyi olur.",
+            "conflict": "Tipik çatışma: I müşterinin karşısına C’nin henüz kontrol etmediği rakamlarla çıkar ve bunlardan biri yanlış çıkar. C sinirlenir, I herkesin önünde yapılan hatadan incinir. Çıkış yolu bir kuraldır: dış sunumlardaki rakamlar C’nin kontrolünden geçer, C de bu kontrolü hızlı yapar.",
+            "life": "İş dışında I ve C iki zıt kutuptur: I insanlara ve kendiliğindenliğe, C planlara ve sessizliğe yönelir. I, C’nin kendi alanına duyduğu ihtiyaca saygı gösterir ve C de I’nın coşkusunu eleştiriyle söndürmezse birlikte çok dengeli bir ikili olabilirler.",
+            "rules": ["Önce fikirler, sonra eleştiri: ayrı aşamalarda", "Dışarıya verilen rakamlar C’nin kontrolünden geçer", "Eleştiriye iyi gidenlerle başlamak"]
           }
         },
         "SS": {
@@ -1045,6 +1099,13 @@
           "friction": ["Değişikliği başlatan da inisiyatif alan da çıkmaz", "İtirazlar dile getirilmez, kırgınlıklar birikir", "Başka biri karar versin diye beklenirken kararlar ertelenir"],
           "tips": {
             "S": ["Birbirinize son tarih koyun: onlar olmadan iş yerinden kıpırdamaz", "Küçük de olsa sorunları açıkça dile getirmek konusunda anlaşın", "“Karar veren kişi” rolünü sırayla üstlenin"]
+          },
+          "deep": {
+            "lead": "S yönetici ve S çalışan sakin, güvenilir ve çatışmasız bir çalışma düzeni kurar. Zayıf nokta değişiklikler ve zor kararlardır: ikisi de bunları erteler. S yöneticinin kararlar için süre koyması ve ekibi değişikliklere önceden hazırlaması, çalışanın da sorunları sorulmasını beklemeden dile getirmesi iyi olur.",
+            "meeting": "Toplantıda iki S nazik, dikkatli ve az konuşur. Kararlar yavaş alınır, tartışmalı konular atlanır. Ekip bu ikiliyle huzurludur ama değişim için doğru anı kaçırabilir. Net bir süre işe yarar: “Kararı cumaya kadar veriyoruz.”",
+            "conflict": "Tipik çatışma görünmezdir: ikisi de memnun değildir ama susar ve gerginlik aylarca birikir. Çıkış yolu, “Önünde ne engel var?” sorusuyla kısa ve düzenli birebir görüşmeler yapmak ve farklı düşünmenin normal olduğunda anlaşmaktır.",
+            "life": "İş dışında iki S, geleneklere, yuvaya ve istikrara değer veren güvenilir ve sıcak bir ikilidir. Birbirlerinden nadiren bunalırlar. Risk durgunluktur: ikisi de değişiklikleri, gerekli olanları bile erteler. Ara sıra bilinçli olarak birlikte yeni şeyler denemek yararlı olur.",
+            "rules": ["Sonsuz bekleyiş yerine kararlar için süre koymak", "Farklı düşünmek normaldir ve açıkça söylenir", "Değişiklikleri küçük adımlarla planlamak"]
           }
         },
         "SC": {
@@ -1055,6 +1116,14 @@
           "tips": {
             "S": ["C’nin eleştirilerini üzerinize alınmayın: konu siz değil, işin kalitesidir", "Kuralın kendisiyle tartışmak yerine mantığını açıklamasını isteyin", "Değişiklikleri küçük adımlarla önerin: böylesi hem sizin hem C için daha kolaydır"],
             "C": ["Eleştirinizi yumuşatın: önce iyi olanı, sonra düzeltilecek olanı söyleyin", "S için ortamın havasının sonucun bir parçası olduğunu unutmayın", "S’nin katkısını açıkça dile getirin: takdiri kendisi istemez"]
+          },
+          "deep": {
+            "lead": "S yönetici ve C çalışan sakin ve titiz bir ikilidir. S, C’nin güvenilirliğine; C de S’nin öngörülebilirliğine değer verir. Riskler yavaş kararlar ve çatışmadan kaçınmaktır: sertlik gerektiren konular ertelenir. S yöneticinin süreler koyması ve C’ye net ölçütler vermesi iyi olur.",
+            "leadRev": "C yönetici S çalışana, içinde kendini güvende hissedeceği anlaşılır kurallar ve süreçler sunar. Ancak C fazla eleştirel ve soğuk olabilir, S de sessizce kırılabilir. C yöneticinin S’nin güvenilirliğini açıkça takdir etmesi, S’nin de ölçütleri önceden sorması iyi olur.",
+            "meeting": "Toplantıda S ve C acele etmez: konular ayrıntılı ele alınır, kararlar tartılır. Toplantı uzayabilir ve sonuç bulanıklaşabilir. Yazışmalarda ikisi de özenli ve naziktir; önemli olan, karar gerektiren sorulara yanıtı ertelememektir.",
+            "conflict": "Tipik çatışma: C, S’nin işini madde madde eleştirir; S eleştiriyi sessizce kabul eder ve motivasyonunu kaybeder. Çıkış yolu, C’nin iyi yapılanlarla başlaması ve ölçütleri önceden açıklaması, S’nin de eleştiri haksız görünüyorsa bunu söylemesidir.",
+            "life": "İş dışında S ve C sakin ve düşünceli bir ikilidir: planlar, düzen, ayrıntılara özen. Birlikte rahattırlar ama kendiliğindenlikleri eksiktir. Ara sıra alışılmış düzenin dışına çıkmak onlara iyi gelir.",
+            "rules": ["Ölçütleri işten sonra değil, önce açıklamak", "Önce iyi olanlar, sonra eleştiriler", "Kararlar için kendine süre koymak"]
           }
         },
         "CC": {
@@ -1064,6 +1133,13 @@
           "friction": ["Mükemmeliyetçilik ikiye katlanır, tarihler kaçar", "İşin özünde karar çıkmadan ayrıntı tartışmaları", "Gerginlik konuşulmaz ve birikir"],
           "tips": {
             "C": ["Hangi kalite düzeyinin yeterli olduğunu baştan belirleyin ve orada durun", "Analiz süresini sınırlayın: zamanında verilen karar, tarihi belirsiz mükemmel karardan iyidir", "Görüş ayrılıklarını açıkça konuşun: susmak hiçbir şeyi çözmez"]
+          },
+          "deep": {
+            "lead": "C yönetici ve C çalışan birbirini çok az sözle anlar: standartlar, veriler, titizlik. Zorluklar hızda ve eleştiridedir: ikisi de tekrar tekrar kontrol etmeye ve kusur bulmaya yatkındır. C yöneticinin “yeterince iyi”nin sınırını belirlemesi ve yalnızca hataları değil, başarıları da dile getirmesi iyi olur.",
+            "meeting": "Toplantıda iki C konuyu ayrıntısıyla ele alır, kesin sorular sorar ve nadiren hızlı bir karara varır. Toplantılar nitelikli ama uzun olur. Yazışmalarda ekli, ayrıntılı e-postalar gidip gelir; bunlara analizle değil, sonuçla başlamak yararlıdır.",
+            "conflict": "Tipik çatışma yöntem tartışmasıdır: ikisi de kendi yolunun doğru olduğundan emindir ve bitmek bilmeyen argümanlar sıralar. Çıkış yolu, değerlendirme ölçütünde ve bir süre sınırında anlaşmaktır; bu süreden sonra, tam emin olunmasa bile karar verilir.",
+            "life": "İş dışında iki C, kişisel alana, düzene ve dürüstlüğe değer veren sakin ve düşünceli bir ikilidir. Nadiren yüksek sesle kavga ederler ama birbirlerine karşı fazla eleştirel olabilirler. Yalnızca neyin yolunda gitmediğini değil, neyin onları sevindirdiğini de daha sık konuşmaları önemlidir.",
+            "rules": ["“Yeterince iyi”yi önceden tanımlamak", "Yazışmalara ve konuşmalara sonuçla başlamak", "Yalnızca hataları değil, başarıları da dile getirmek"]
           }
         }
       }
@@ -1085,6 +1161,26 @@
           ]
         }
       ]
+    },
+    "home": {
+      "getTitle": "Neler elde edeceksiniz",
+      "get": [
+        "Ana ve ikincil stiliniz ile 16 profilden hangisine sahip olduğunuz",
+        "Üç çizgili bir grafik ve her stilin yüzde olarak ne kadar belirgin olduğu",
+        "Güçlü yönleriniz, gelişim alanlarınız, motivasyonunuz ve stres altındaki davranışınız",
+        "Sizinle en iyi nasıl iletişim kurulacağına ve çalışılacağına dair öneriler",
+        "Rapor bağlantısı, PDF olarak kaydetme ve isterseniz e-postayla gönderim; kayıt ve ücretli sürüm yok"
+      ],
+      "calcTitle": "Sonuç nasıl hesaplanır",
+      "calc": "24 sorunun her birinde size en çok benzeyen bir ifadeyi ve en az benzeyen bir ifadeyi işaretlersiniz. Her ifade D, I, S veya C stillerinden birine aittir. Her stil için “en çok” işaretlerinin sayısından “en az” işaretlerinin sayısı çıkarılır; −24 ile +24 arasındaki bu değer yüzdeye dönüştürülür. Ana stil, değeri en yüksek olan stildir; ikincil stil ise o da belirgin biçimde öne çıkıyorsa sayılır.",
+      "faqTitle": "Test hakkında kısaca",
+      "faq": [
+        { "q": "Test ne kadar sürer?", "a": "Yaklaşık on dakika: her biri dört ifadeden oluşan 24 soru." },
+        { "q": "Ücretsiz mi?", "a": "Evet, tamamen: kayıt, reklam ya da ücretli “genişletilmiş rapor” yok." },
+        { "q": "Doğru cevaplar var mı?", "a": "Hayır. Her profil normaldir; olmak istediğiniz gibi değil, işte genellikle nasıl davranıyorsanız öyle yanıtlayın." },
+        { "q": "Testi bütün ekip çözebilir mi?", "a": "Evet: herkes testi bağlantı üzerinden çözer, sonuçlar yönetici panelinde toplanır." }
+      ],
+      "profilesTitle": "16 DISC profili"
     }
   },
   "ui": {
@@ -1276,6 +1372,11 @@
     "pages.compat.other": "Diğer stil ikilileri",
     "pages.compat.matrix": "Uyum matrisi: iki stil seçin",
     "pages.compat.pairLink": "{a} ve {b} ikilisi hakkında ayrıntılar",
+    "pages.compat.lead": "Yönetici {a}, çalışan {b}",
+    "pages.compat.meeting": "Toplantıda ve yazışmalarda",
+    "pages.compat.conflict": "Tipik çatışma ve çıkış yolu",
+    "pages.compat.life": "İş dışında: arkadaşlık, ilişkiler, aile",
+    "pages.compat.rules": "Bu ikili için üç kural",
     "pages.results.flatTitle": "Dengeli profil",
     "pages.pdf.download": "PDF’i indir",
     "pages.pdf.meta": "A4 · {pages} sayfa · {size}",

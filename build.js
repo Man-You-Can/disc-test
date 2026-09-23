@@ -199,7 +199,7 @@ for (const L of locales) {
   const navHtml = NAV_ITEMS.map(([k, sub]) => `<a href="${rootRel + pathOf(L.lang) + sub}"${sub === '' ? ' aria-current="page"' : ''}>${esc(L.ui[k])}</a>`).join('');
   const footHtml = footLinks(L, rootRel + pathOf(L.lang));
   const introBuilt = introHTML({ L, t: tFor(L), esc: escFull, KEYS, colorVar: k => 'var(--' + k.toLowerCase() + ')', progDone: 0, lastDate: '',
-    links: { styles: rootRel + pathOf(L.lang) + 'styles/', profiles: rootRel + pathOf(L.lang) + 'profiles/', pdf: rootRel + pathOf(L.lang) + 'pdf/', profile: k => rootRel + pathOf(L.lang) + 'profiles/' + k.toLowerCase() + '/' } });
+    links: { styles: rootRel + pathOf(L.lang) + 'styles/', profiles: rootRel + pathOf(L.lang) + 'profiles/', pdf: rootRel + pathOf(L.lang) + 'pdf/', results: rootRel + pathOf(L.lang) + 'results/', faq: rootRel + pathOf(L.lang) + 'faq/', profile: k => rootRel + pathOf(L.lang) + 'profiles/' + k.toLowerCase() + '/' } });
   pages.push({ lang: L.lang, sub: '', date: contentDate(L.lang + ':', [L.title, L.description, introBuilt.split(rootRel + pathOf(L.lang)).join('~/')].join('\n'), [`src/locales/${L.lang}.json`, 'src/template.html', 'src/intro.js']) });
   const chevron = `<svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5l3.5 3.5 3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
   const switcher = `<div class="langsel" id="langSel">` +
@@ -427,10 +427,16 @@ for (const L of locales) {
       `<p class="lead">${escFull(pr.summary)}</p><p>${escFull(pr.text)}</p>` +
       `<div class="sections"><div class="sec"><h3>${t('pages.compat.common')}</h3>${ul(pr.common)}</div><div class="sec"><h3>${t('pages.compat.friction')}</h3>${ul(pr.friction)}</div>` +
       Object.keys(pr.tips).map(s => `<div class="sec kcol" style="--k:${colorVar(s)}"><h3>${escFull(t('pages.compat.tips', { name: L.keys[s], key: s }))}</h3>${ul(pr.tips[s])}</div>`).join('') + `</div>` +
+      // свой текст пары (pairs.<код>.deep): руководитель и подчинённый в обе стороны, совещания, конфликт, вне работы, правила
+      (pr.deep ? `<h2>${escFull(t('pages.compat.lead', { a, b: b2 }))}</h2><p>${escFull(pr.deep.lead)}</p>` +
+        (pr.deep.leadRev ? `<h2>${escFull(t('pages.compat.lead', { a: b2, b: a }))}</h2><p>${escFull(pr.deep.leadRev)}</p>` : '') +
+        `<h2>${t('pages.compat.meeting')}</h2><p>${escFull(pr.deep.meeting)}</p><h2>${t('pages.compat.conflict')}</h2><p>${escFull(pr.deep.conflict)}</p>` +
+        `<h2>${t('pages.compat.life')}</h2><p>${escFull(pr.deep.life)}</p><h2>${t('pages.compat.rules')}</h2>${listHtml('ol', pr.deep.rules)}` : '') +
       `<p class="seealso">${[...new Set([a, b2])].map(s => `<a href="${base}profiles/${s.toLowerCase()}/">${t('pages.profile.more', { name: escFull(L.profiles[s].name) })}</a>`).join(' · ')}</p>` +
-      ctaBlock(L, t, base) + `<h2>${t('pages.compat.other')}</h2><div class="pgrid">${PAIRS.filter(x => x !== k).map(x => pairCard(x, '../')).join('')}</div>`;
+      ctaBlock(L, t, base) + `<h2>${t('pages.compat.other')}</h2><p class="chips">${PAIRS.filter(x => x !== k).map(x => { const n2 = pairNames(x); return `<a href="../${pairSlug(x)}/">${badge(x, 'pill')} ${escFull(n2.a)} + ${escFull(n2.b)}</a>`; }).join('')}</p>`;
     writeContentPage(L, `compatibility/${pairSlug(k)}/`, { navKey: 'nav.compat', article: true, title: t('pages.compat.title', names), description: truncDesc(L, t('pages.compat.description', names)),
-      crumbs: [{ name: t('nav.compat'), href: '../', sub: 'compatibility/' }, { name: a + b2 }], content });
+      crumbs: [{ name: t('nav.compat'), href: '../', sub: 'compatibility/' }, { name: a + b2 }], content,
+      ogImage: fs.existsSync(path.join(ASSETS, 'og', 'pairs', `${L.lang}-${pairSlug(k)}.png`)) ? `${siteUrl}/og/pairs/${L.lang}-${pairSlug(k)}.png` : null });
   }
   // /teams/ — DISC для команды и HR
   const tm = C.teams;
@@ -500,6 +506,10 @@ for (const L of locales) {
   const src = path.join(ASSETS, 'og', L.lang + '.png');
   if (fs.existsSync(src)) fs.copyFileSync(src, path.join(OUT, 'og', L.lang + '.png')); else console.warn('WARNING: missing og image for ' + L.lang);
 }
+// og-картинки 10 пар совместимости: src/assets/og/pairs/<язык>-<пара>.png
+const ogPairs = path.join(ASSETS, 'og', 'pairs');
+if (fs.existsSync(ogPairs)) { fs.mkdirSync(path.join(OUT, 'og', 'pairs'), { recursive: true });
+  for (const f of fs.readdirSync(ogPairs)) if (f.endsWith('.png') && locales.some(L => f.startsWith(L.lang + '-') && /^[a-z]-[a-z]\.png$/.test(f.slice(L.lang.length + 1)))) fs.copyFileSync(path.join(ogPairs, f), path.join(OUT, 'og', 'pairs', f)); }
 // og-картинки 16 профилей на каждом языке (для «Поделиться типом»): src/assets/og/profiles/<язык>-<код>.png
 const ogProfiles = path.join(ASSETS, 'og', 'profiles');
 if (fs.existsSync(ogProfiles)) { fs.mkdirSync(path.join(OUT, 'og', 'profiles'), { recursive: true });
