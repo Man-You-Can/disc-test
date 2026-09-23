@@ -403,7 +403,7 @@
         {
           "h": "Dasar tes ini",
           "p": [
-            "Tes ini dibangun di atas model empat faktor William Marston (1928) dan kuesioner-kuesioner sesudahnya yang berformat “paling menggambarkan — paling tidak menggambarkan”: 24 soal berisi empat pernyataan, satu untuk setiap gaya. Uraian gaya dan enam belas profil ditulis oleh tim penulis situs berdasarkan karakteristik DISC yang diterima secara umum. Cara terjemahan dibuat dan diperiksa dijelaskan di bawah.",
+            "Tes ini dibangun di atas model empat faktor William Marston (1928) dan kuesioner-kuesioner sesudahnya yang berformat “paling menggambarkan — paling tidak menggambarkan”: 24 soal berisi empat pernyataan, satu untuk setiap gaya. Uraian gaya dan enam belas profil ditulis oleh tim penulis situs berdasarkan karakteristik DISC yang diterima secara umum.",
             "Proyek ini independen dan tidak berafiliasi dengan Wiley (DiSC®), TTI Success Insights, maupun pemilik merek dagang lainnya. Kata DISC digunakan sebagai nama umum model tersebut."
           ]
         },
@@ -430,7 +430,7 @@
           "h": "Ke mana data dikirim",
           "p": [
             "Setelah tes selesai, nama, email, dan jawaban Anda (dalam bentuk kode hasil) dikirim ke layanan pengirim email — sebuah skrip Google Apps Script yang berjalan di akun Google pemilik situs. Skrip itu mengirimkan email berisi hasil kepada Anda dan mencatat nama, email, tanggal tes, serta hasil (profil, skor, tautan ke laporan) ke basis data hasil — sebuah Google Spreadsheet di akun yang sama. Data ini tidak digunakan untuk tujuan lain dan tidak diteruskan kepada pihak ketiga.",
-            "Layanan hosting GitHub Pages menerima data teknis standar dari setiap permintaan: alamat IP, jenis browser, alamat halaman. Font disimpan di situs ini sendiri dan tidak dimuat dari server Google. Statistik kunjungan dikumpulkan oleh Yandex Metrica (Yandex LLC): layanan ini menerima data kunjungan yang dianonimkan — alamat halaman tanpa kode hasil, sumber kunjungan, jenis perangkat dan browser — serta rekaman tindakan di halaman (Webvisor); kolom isian nama dan email, tautan, serta kode hasil dikecualikan dari rekaman tersebut. Data diproses sesuai ketentuan Yandex; pengumpulan data dapat dinonaktifkan melalui pengaturan browser atau dengan pemblokir pelacak. Pelacak iklan tidak digunakan."
+            "Layanan hosting GitHub Pages menerima data teknis standar dari setiap permintaan: alamat IP, jenis browser, alamat halaman. Font disimpan di situs ini sendiri dan tidak dimuat dari server Google. Statistik kunjungan dikumpulkan oleh layanan analitik web: layanan ini menerima data kunjungan yang dianonimkan — alamat halaman tanpa kode hasil, sumber kunjungan, jenis perangkat dan browser — serta rekaman tindakan di halaman; kolom isian nama dan email, tautan, serta kode hasil dikecualikan dari rekaman tersebut. Pengumpulan data dapat dinonaktifkan melalui pengaturan browser atau dengan pemblokir pelacak. Pelacak iklan tidak digunakan."
           ]
         },
         {
@@ -447,11 +447,11 @@
         },
         {
           "h": "Cookie",
-          "p": ["Situs ini sendiri tidak memasang cookie: untuk hal-hal yang disebutkan di atas digunakan penyimpanan lokal browser — teknologi dengan fungsi yang sama. Yandex Metrica memasang cookie miliknya sendiri (misalnya _ym_uid dan _ym_d) untuk membedakan pengunjung. Karena itu, pemberitahuan ditampilkan satu kali pada kunjungan pertama."]
+          "p": ["Situs ini sendiri tidak memasang cookie: untuk hal-hal yang disebutkan di atas digunakan penyimpanan lokal browser — teknologi dengan fungsi yang sama. Layanan analitik memasang cookie miliknya sendiri untuk membedakan pengunjung. Karena itu, pemberitahuan ditampilkan satu kali pada kunjungan pertama."]
         },
         {
           "h": "Perubahan",
-          "p": ["Pembaruan terakhir: 7 September 2026. Perubahan dalam pemrosesan data akan dicantumkan di halaman ini."]
+          "p": ["Pembaruan terakhir: 23 September 2026. Perubahan dalam pemrosesan data akan dicantumkan di halaman ini."]
         }
       ]
     },
@@ -903,7 +903,6 @@
           "h": "Cara kami menulis dan memeriksa teks",
           "p": [
             "Pernyataan tentang metode bersandar pada sumber primer dan penelitian yang telah ditelaah sejawat (peer-reviewed), termasuk yang kritis; daftar karyanya dihimpun di bagian “{sources}”. Kami tidak menyadur laporan komersial: uraian empat gaya dan enam belas profil ditulis oleh redaksi berdasarkan karakteristik model yang diterima secara umum.",
-            "Bahasa acuan situs ini adalah bahasa Rusia. Terjemahan ke tiga belas bahasa dibuat dengan bantuan model bahasa (AI) dan diperiksa secara otomatis: sebuah skrip memastikan struktur teks, istilah, dan angka sama di semua bahasa. Pada September 2026, setiap terjemahan juga disunting oleh model bahasa yang berperan sebagai editor: pernyataan tes yang kurang tepat, terjemahan harfiah yang kaku, dan istilah yang tidak seragam telah diperbaiki. Penyuntingan oleh penutur asli sudah direncanakan tetapi belum dilakukan, sehingga terjemahan mungkin masih terasa kurang luwes di beberapa bagian.",
             "Setiap halaman mencantumkan tanggal perubahan terakhir. Kami merevisi teks ketika tesnya sendiri berubah atau ketika ada masukan, dan kami tidak memublikasikan apa pun yang tidak dapat kami dukung dengan sumber atau dengan pemeriksaan kami sendiri."
           ]
         }
@@ -1112,9 +1111,9 @@
     "contact.mb": "MB",
 
     "consent.label": "Pemberitahuan cookie",
-    "consent.text": "Situs ini menyimpan progres, hasil, dan bahasa pilihan Anda di penyimpanan lokal browser, sedangkan Yandex Metrica mengumpulkan statistik kunjungan yang dianonimkan dan rekaman aktivitas di halaman agar kami dapat menyempurnakan situs. Nama, email, dan hasil Anda tidak dikirim ke Metrica.",
+    "consent.text": "Situs ini menyimpan progres, hasil, dan bahasa pilihan Anda di penyimpanan lokal browser, sedangkan layanan analitik web mengumpulkan statistik kunjungan yang dianonimkan dan rekaman aktivitas di halaman agar kami dapat menyempurnakan situs. Nama, email, dan hasil Anda tidak dikirim ke layanan analitik.",
     "consent.more": "Selengkapnya",
-    "consent.details": "Yang disimpan di browser: nama dan email yang dimasukkan sebelum tes; jawaban dan progres yang belum selesai; hasil terakhir; bahasa yang dipilih; penanda bahwa Anda sudah melihat pemberitahuan ini. Data ini tetap berada di perangkat Anda dan terhapus saat Anda menghapus data situs. Hosting GitHub Pages menerima data teknis standar dari setiap permintaan. Saat tes selesai, nama, email, dan jawaban diteruskan ke layanan pengiriman email (Google Apps Script): layanan ini mengirimkan email berisi hasil kepada Anda dan menyimpan nama, email, tanggal, dan hasil di basis data hasil milik pemilik situs (Google Spreadsheet). Yandex Metrica (Yandex LLC) menerima alamat halaman tanpa kode hasil, sumber kunjungan, jenis perangkat dan browser, serta rekaman anonim aktivitas di halaman (kolom nama dan email, tautan, dan kode hasil dikecualikan dari rekaman); layanan ini juga memasang cookie miliknya sendiri. Anda dapat memblokirnya melalui pengaturan browser atau dengan pemblokir pelacak. Pelacak iklan tidak digunakan.",
+    "consent.details": "Yang disimpan di browser: nama dan email yang dimasukkan sebelum tes; jawaban dan progres yang belum selesai; hasil terakhir; bahasa yang dipilih; penanda bahwa Anda sudah melihat pemberitahuan ini. Data ini tetap berada di perangkat Anda dan terhapus saat Anda menghapus data situs. Hosting GitHub Pages menerima data teknis standar dari setiap permintaan. Saat tes selesai, nama, email, dan jawaban diteruskan ke layanan pengiriman email (Google Apps Script): layanan ini mengirimkan email berisi hasil kepada Anda dan menyimpan nama, email, tanggal, dan hasil di basis data hasil milik pemilik situs (Google Spreadsheet). Layanan analitik web menerima alamat halaman tanpa kode hasil, sumber kunjungan, jenis perangkat dan browser, serta rekaman anonim aktivitas di halaman (kolom nama dan email, tautan, dan kode hasil dikecualikan dari rekaman); layanan ini juga memasang cookie miliknya sendiri. Anda dapat memblokirnya melalui pengaturan browser atau dengan pemblokir pelacak. Pelacak iklan tidak digunakan.",
     "consent.accept": "Terima",
     "consent.decline": "Hanya yang diperlukan",
     "consent.ok": "Mengerti",

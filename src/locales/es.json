@@ -403,7 +403,7 @@
         {
           "h": "En qué se basa el test",
           "p": [
-            "El test se apoya en el modelo de cuatro factores de William Marston (1928) y en los cuestionarios posteriores de formato «más – menos»: 24 bloques de cuatro afirmaciones, una por estilo. Las descripciones de los estilos y de los dieciséis perfiles fueron escritas por los autores del sitio a partir de las características generalmente aceptadas de DISC. Más abajo explicamos cómo se hicieron y revisaron las traducciones.",
+            "El test se apoya en el modelo de cuatro factores de William Marston (1928) y en los cuestionarios posteriores de formato «más – menos»: 24 bloques de cuatro afirmaciones, una por estilo. Las descripciones de los estilos y de los dieciséis perfiles fueron escritas por los autores del sitio a partir de las características generalmente aceptadas de DISC.",
             "El proyecto es independiente y no está vinculado a Wiley (DiSC®), TTI Success Insights ni a otros titulares de marcas. La palabra DISC se usa como nombre genérico del modelo."
           ]
         },
@@ -432,7 +432,7 @@
           "h": "Adónde se transmiten los datos",
           "p": [
             "Al terminar el test, su nombre, correo y respuestas (en forma de código de resultado) se transmiten al servicio de envío de correos, un script de Google Apps Script que funciona en la cuenta de Google del propietario del sitio. Este le envía el correo con el resultado y registra su nombre, correo, fecha del test y resultado (perfil, puntuaciones y enlace al informe) en la base de resultados, una hoja de cálculo de Google en la misma cuenta. Estos datos no se usan con otros fines ni se ceden a terceros.",
-            "El alojamiento (GitHub Pages) recibe los datos técnicos habituales de la solicitud: dirección IP, tipo de navegador, dirección de la página. Las fuentes se sirven desde este mismo sitio y no se cargan desde los servidores de Google. Las estadísticas de visitas las recopila Yandex Metrica (Yandex LLC): recibe datos de visita anonimizados —la dirección de la página sin el código del resultado, la procedencia, el tipo de dispositivo y navegador— y una grabación de las acciones en la página (Webvisor); los campos de nombre y correo, el enlace y el código del resultado quedan excluidos de la grabación. Los datos se tratan según las condiciones de Yandex; puede detener la recopilación en la configuración del navegador o con un bloqueador de rastreadores. No se usan rastreadores publicitarios."
+            "El alojamiento (GitHub Pages) recibe los datos técnicos habituales de la solicitud: dirección IP, tipo de navegador, dirección de la página. Las fuentes se sirven desde este mismo sitio y no se cargan desde los servidores de Google. Las estadísticas de visitas las recopila un servicio de analítica web: recibe datos de visita anonimizados —la dirección de la página sin el código del resultado, la procedencia, el tipo de dispositivo y navegador— y una grabación de las acciones en la página; los campos de nombre y correo, el enlace y el código del resultado quedan excluidos de la grabación. Puede detener la recopilación en la configuración del navegador o con un bloqueador de rastreadores. No se usan rastreadores publicitarios."
           ]
         },
         {
@@ -449,11 +449,11 @@
         },
         {
           "h": "Cookies",
-          "p": ["El sitio en sí no instala cookies: para lo anterior usa el almacenamiento local del navegador, una tecnología con el mismo fin. Yandex Metrica instala sus propias cookies (por ejemplo _ym_uid y _ym_d) para distinguir a los visitantes. Por eso el aviso se muestra una vez en la primera visita."]
+          "p": ["El sitio en sí no instala cookies: para lo anterior usa el almacenamiento local del navegador, una tecnología con el mismo fin. El servicio de analítica instala sus propias cookies para distinguir a los visitantes. Por eso el aviso se muestra una vez en la primera visita."]
         },
         {
           "h": "Cambios",
-          "p": ["Última actualización: 7 de septiembre de 2026. Los cambios en el tratamiento de datos se reflejarán en esta página."]
+          "p": ["Última actualización: 23 de septiembre de 2026. Los cambios en el tratamiento de datos se reflejarán en esta página."]
         }
       ]
     },
@@ -894,7 +894,6 @@
           "h": "Cómo escribimos y revisamos los textos",
           "p": [
             "Las afirmaciones sobre el método se apoyan en fuentes originales y en investigaciones revisadas por pares, incluidas las críticas; la lista de trabajos está reunida en la sección «{sources}». No parafraseamos informes comerciales: las descripciones de los cuatro estilos y de los dieciséis perfiles las ha escrito la redacción a partir de las características generalmente aceptadas del modelo.",
-            "El idioma de referencia del sitio es el ruso. Las traducciones a trece idiomas se han hecho con ayuda de modelos de lenguaje y se comprueban de forma automática: un script vigila que en todos los idiomas coincidan la estructura de los textos, los términos y las cifras. En septiembre de 2026, además, cada traducción fue revisada por un modelo de lenguaje en el papel de editor: se corrigieron afirmaciones imprecisas del test, calcos y términos usados de forma incoherente. La revisión por hablantes nativos está prevista, pero todavía no se ha realizado, así que en las traducciones puede haber imperfecciones.",
             "En cada página figura la fecha de la última modificación. Corregimos los textos cuando cambia el propio test o cuando nos llegan observaciones, y no publicamos nada que no podamos respaldar con una fuente o con nuestra propia comprobación."
           ]
         }
@@ -1103,9 +1102,9 @@
     "contact.mb": "MB",
 
     "consent.label": "Aviso de cookies",
-    "consent.text": "Este sitio guarda su progreso, su resultado y el idioma elegido en el almacenamiento local del navegador, y Yandex Metrica recopila estadísticas de visitas anonimizadas y una grabación de las acciones en la página para ayudarnos a mejorar el sitio. Su nombre, su correo y su resultado no se envían a Metrica.",
+    "consent.text": "Este sitio guarda su progreso, su resultado y el idioma elegido en el almacenamiento local del navegador, y un servicio de analítica web recopila estadísticas de visitas anonimizadas y una grabación de las acciones en la página para ayudarnos a mejorar el sitio. Su nombre, su correo y su resultado no se envían al servicio de analítica.",
     "consent.more": "Más información",
-    "consent.details": "En el navegador se guardan: el nombre y el correo que usted indica antes del test; sus respuestas y el progreso sin terminar; su último resultado; el idioma elegido; una marca de que ha visto este aviso. Estos datos permanecen en su dispositivo y se eliminan al borrar los datos del sitio. El alojamiento (GitHub Pages) recibe los datos técnicos habituales de la solicitud. Al terminar el test, el nombre, el correo y las respuestas se transmiten al servicio de envío de correos (Google Apps Script), que le envía el resultado y guarda el nombre, el correo, la fecha y el resultado en la base de resultados del propietario del sitio (una hoja de cálculo de Google). Yandex Metrica (Yandex LLC) recibe la dirección de la página sin el código del resultado, la procedencia, el tipo de dispositivo y navegador y una grabación anonimizada de las acciones en la página (los campos de nombre y correo, el enlace y el código del resultado quedan excluidos), y establece sus propias cookies. Puede bloquearla en la configuración del navegador o con un bloqueador de rastreadores. No se usan rastreadores publicitarios.",
+    "consent.details": "En el navegador se guardan: el nombre y el correo que usted indica antes del test; sus respuestas y el progreso sin terminar; su último resultado; el idioma elegido; una marca de que ha visto este aviso. Estos datos permanecen en su dispositivo y se eliminan al borrar los datos del sitio. El alojamiento (GitHub Pages) recibe los datos técnicos habituales de la solicitud. Al terminar el test, el nombre, el correo y las respuestas se transmiten al servicio de envío de correos (Google Apps Script), que le envía el resultado y guarda el nombre, el correo, la fecha y el resultado en la base de resultados del propietario del sitio (una hoja de cálculo de Google). El servicio de analítica web recibe la dirección de la página sin el código del resultado, la procedencia, el tipo de dispositivo y navegador y una grabación anonimizada de las acciones en la página (los campos de nombre y correo, el enlace y el código del resultado quedan excluidos), y establece sus propias cookies. Puede bloquearlo en la configuración del navegador o con un bloqueador de rastreadores. No se usan rastreadores publicitarios.",
     "consent.accept": "Aceptar",
     "consent.decline": "Solo lo necesario",
     "consent.ok": "Entendido",

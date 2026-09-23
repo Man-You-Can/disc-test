@@ -405,7 +405,7 @@
         {
           "h": "Worauf der Test beruht",
           "p": [
-            "Der Test basiert auf dem Vier-Faktoren-Modell von William Marston (1928) und den späteren Fragebögen im Format „am meisten – am wenigsten“: 24 Blöcke mit je vier Aussagen, eine pro Stil. Die Beschreibungen der Stile und der sechzehn Profile hat die Redaktion der Seite auf Grundlage der allgemein anerkannten DISG-Merkmale verfasst. Wie die Übersetzungen entstanden sind und geprüft wurden, lesen Sie weiter unten.",
+            "Der Test basiert auf dem Vier-Faktoren-Modell von William Marston (1928) und den späteren Fragebögen im Format „am meisten – am wenigsten“: 24 Blöcke mit je vier Aussagen, eine pro Stil. Die Beschreibungen der Stile und der sechzehn Profile hat die Redaktion der Seite auf Grundlage der allgemein anerkannten DISG-Merkmale verfasst.",
             "Das Projekt ist unabhängig und steht in keiner Verbindung zu Wiley (DiSC®), TTI Success Insights oder anderen Markeninhabern. Die Bezeichnung DISG (international DISC) wird als allgemeiner Name des Modells verwendet."
           ]
         },
@@ -434,7 +434,7 @@
           "h": "Wohin die Daten übermittelt werden",
           "p": [
             "Nach Abschluss des Tests werden Name, E-Mail-Adresse und Antworten (als Ergebniscode) an den E-Mail-Versanddienst übermittelt, ein Google-Apps-Script im Google-Konto des Seitenbetreibers. Es sendet Ihnen die E-Mail mit dem Ergebnis und trägt Name, E-Mail-Adresse, Testdatum und Ergebnis (Profil, Punkte, Link zum Bericht) in die Ergebnisdatenbank ein, eine Google-Tabelle im selben Konto. Für andere Zwecke werden diese Daten nicht verwendet und nicht an Dritte weitergegeben.",
-            "Der Hoster (GitHub Pages) erhält die üblichen technischen Anfragedaten: IP-Adresse, Browsertyp, Seitenadresse. Die Schriften werden von dieser Website selbst ausgeliefert und nicht von Google-Servern geladen. Besuchsstatistiken erfasst Yandex Metrica (Yandex LLC): Sie erhält anonymisierte Besuchsdaten – die Seitenadresse ohne den Ergebniscode, die Herkunft des Besuchs, Geräte- und Browsertyp – sowie eine Aufzeichnung der Aktionen auf der Seite (Webvisor); die Felder für Name und E-Mail, der Ergebnislink und der Code sind von der Aufzeichnung ausgenommen. Die Daten werden nach den Bedingungen von Yandex verarbeitet; Sie können die Erfassung in den Browsereinstellungen oder mit einem Tracker-Blocker unterbinden. Werbe-Tracker werden nicht verwendet."
+            "Der Hoster (GitHub Pages) erhält die üblichen technischen Anfragedaten: IP-Adresse, Browsertyp, Seitenadresse. Die Schriften werden von dieser Website selbst ausgeliefert und nicht von Google-Servern geladen. Besuchsstatistiken erfasst ein Webanalysedienst: Er erhält anonymisierte Besuchsdaten – die Seitenadresse ohne den Ergebniscode, die Herkunft des Besuchs, Geräte- und Browsertyp – sowie eine Aufzeichnung der Aktionen auf der Seite; die Felder für Name und E-Mail, der Ergebnislink und der Code sind von der Aufzeichnung ausgenommen. Sie können die Erfassung in den Browsereinstellungen oder mit einem Tracker-Blocker unterbinden. Werbe-Tracker werden nicht verwendet."
           ]
         },
         {
@@ -451,11 +451,11 @@
         },
         {
           "h": "Cookies",
-          "p": ["Die Website selbst setzt keine Cookies: Für das oben Genannte nutzt sie den lokalen Speicher des Browsers, eine Technologie mit demselben Zweck. Yandex Metrica setzt eigene Cookies (zum Beispiel _ym_uid und _ym_d), um Besucher zu unterscheiden. Deshalb wird der Hinweis einmal beim ersten Besuch angezeigt."]
+          "p": ["Die Website selbst setzt keine Cookies: Für das oben Genannte nutzt sie den lokalen Speicher des Browsers, eine Technologie mit demselben Zweck. Der Analysedienst setzt eigene Cookies, um Besucher zu unterscheiden. Deshalb wird der Hinweis einmal beim ersten Besuch angezeigt."]
         },
         {
           "h": "Änderungen",
-          "p": ["Letzte Aktualisierung: 7. September 2026. Änderungen im Umgang mit Daten werden auf dieser Seite dokumentiert."]
+          "p": ["Letzte Aktualisierung: 23. September 2026. Änderungen im Umgang mit Daten werden auf dieser Seite dokumentiert."]
         }
       ]
     },
@@ -898,7 +898,6 @@
           "h": "Wie wir Texte schreiben und prüfen",
           "p": [
             "Die Aussagen zur Methode stützen sich auf Primärquellen und begutachtete Studien, darunter kritische; die Liste der Arbeiten finden Sie im Abschnitt „{sources}“. Wir geben keine kommerziellen Berichte wieder: Die Beschreibungen der vier Stile und der sechzehn Profile hat die Redaktion auf Grundlage der allgemein anerkannten Merkmale des Modells verfasst.",
-            "Die Ausgangssprache der Seite ist Russisch. Die Übersetzungen in 13 Sprachen sind mit Hilfe von Sprachmodellen entstanden und werden automatisch geprüft: Ein Skript stellt sicher, dass Textstruktur, Fachbegriffe und Zahlen in allen Sprachen übereinstimmen. Im September 2026 wurde jede Übersetzung zusätzlich von einem Sprachmodell lektoriert: Ungenaue Testaussagen, Lehnübersetzungen und uneinheitliche Begriffe wurden korrigiert. Eine Korrekturlesung durch Muttersprachlerinnen und Muttersprachler ist geplant, bislang aber nicht erfolgt; in den Übersetzungen sind daher sprachliche Unebenheiten möglich.",
             "Auf jeder Seite steht das Datum der letzten Änderung. Wir überarbeiten die Texte, wenn sich der Test selbst ändert oder Hinweise eingehen, und veröffentlichen nichts, was wir nicht mit einer Quelle oder einer eigenen Prüfung belegen können."
           ]
         }
@@ -1107,9 +1106,9 @@
     "contact.mb": "MB",
 
     "consent.label": "Cookie-Hinweis",
-    "consent.text": "Diese Website speichert Ihren Fortschritt, Ihr Ergebnis und die gewählte Sprache im lokalen Speicher des Browsers, und Yandex Metrica erfasst anonymisierte Besuchsstatistiken und eine Aufzeichnung der Aktionen auf der Seite, damit wir die Website verbessern können. Ihr Name, Ihre E-Mail-Adresse und Ihr Ergebnis werden nicht an Metrica übermittelt.",
+    "consent.text": "Diese Website speichert Ihren Fortschritt, Ihr Ergebnis und die gewählte Sprache im lokalen Speicher des Browsers, und ein Webanalysedienst erfasst anonymisierte Besuchsstatistiken und eine Aufzeichnung der Aktionen auf der Seite, damit wir die Website verbessern können. Ihr Name, Ihre E-Mail-Adresse und Ihr Ergebnis werden nicht an den Analysedienst übermittelt.",
     "consent.more": "Mehr erfahren",
-    "consent.details": "Im Browser gespeichert werden: der vor dem Test eingegebene Name und die E-Mail-Adresse; Ihre Antworten und der unvollendete Fortschritt; Ihr letztes Ergebnis; die gewählte Sprache; ein Vermerk, dass Sie diesen Hinweis gesehen haben. Diese Daten bleiben auf Ihrem Gerät und werden beim Löschen der Website-Daten entfernt. Der Hoster (GitHub Pages) erhält die üblichen technischen Anfragedaten. Beim Abschluss des Tests werden Name, E-Mail-Adresse und Antworten an den E-Mail-Versanddienst (Google Apps Script) übergeben; er sendet Ihnen das Ergebnis und speichert Name, E-Mail-Adresse, Datum und Ergebnis in der Ergebnisdatenbank des Seitenbetreibers (einer Google-Tabelle). Yandex Metrica (Yandex LLC) erhält die Seitenadresse ohne den Ergebniscode, die Herkunft des Besuchs, Geräte- und Browsertyp sowie eine anonymisierte Aufzeichnung der Aktionen auf der Seite (die Felder für Name und E-Mail, der Ergebnislink und der Code sind ausgenommen) und setzt eigene Cookies. Sie können sie in den Browsereinstellungen oder mit einem Tracker-Blocker blockieren. Werbe-Tracker werden nicht verwendet.",
+    "consent.details": "Im Browser gespeichert werden: der vor dem Test eingegebene Name und die E-Mail-Adresse; Ihre Antworten und der unvollendete Fortschritt; Ihr letztes Ergebnis; die gewählte Sprache; ein Vermerk, dass Sie diesen Hinweis gesehen haben. Diese Daten bleiben auf Ihrem Gerät und werden beim Löschen der Website-Daten entfernt. Der Hoster (GitHub Pages) erhält die üblichen technischen Anfragedaten. Beim Abschluss des Tests werden Name, E-Mail-Adresse und Antworten an den E-Mail-Versanddienst (Google Apps Script) übergeben; er sendet Ihnen das Ergebnis und speichert Name, E-Mail-Adresse, Datum und Ergebnis in der Ergebnisdatenbank des Seitenbetreibers (einer Google-Tabelle). Der Webanalysedienst erhält die Seitenadresse ohne den Ergebniscode, die Herkunft des Besuchs, Geräte- und Browsertyp sowie eine anonymisierte Aufzeichnung der Aktionen auf der Seite (die Felder für Name und E-Mail, der Ergebnislink und der Code sind ausgenommen) und setzt eigene Cookies. Sie können ihn in den Browsereinstellungen oder mit einem Tracker-Blocker blockieren. Werbe-Tracker werden nicht verwendet.",
     "consent.accept": "Akzeptieren",
     "consent.decline": "Nur Notwendiges",
     "consent.ok": "Verstanden",

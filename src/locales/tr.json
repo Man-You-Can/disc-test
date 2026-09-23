@@ -401,7 +401,7 @@
         {
           "h": "Test neye dayanıyor",
           "p": [
-            "Test, William Marston’ın dört faktörlü modeline (1928) ve ardından geliştirilen “en çok – en az” biçimindeki envanterlere dayanır: her biri dört ifadeli 24 soru, her stil için bir ifade. Stillerin ve on altı profilin açıklamalarını, DISC’in genel kabul görmüş özelliklerinden yola çıkarak sitenin yazarları kaleme aldı. Çevirilerin nasıl yapıldığı ve denetlendiği aşağıda anlatılıyor.",
+            "Test, William Marston’ın dört faktörlü modeline (1928) ve ardından geliştirilen “en çok – en az” biçimindeki envanterlere dayanır: her biri dört ifadeli 24 soru, her stil için bir ifade. Stillerin ve on altı profilin açıklamalarını, DISC’in genel kabul görmüş özelliklerinden yola çıkarak sitenin yazarları kaleme aldı.",
             "Proje bağımsızdır; Wiley (DiSC®), TTI Success Insights ve diğer marka sahipleriyle hiçbir bağı yoktur. DISC sözcüğü modelin genel adı olarak kullanılmaktadır."
           ]
         },
@@ -430,7 +430,7 @@
           "h": "Veriler nereye aktarılır",
           "p": [
             "Test tamamlandıktan sonra adınız, e-posta adresiniz ve yanıtlarınız (sonuç kodu biçiminde) e-posta gönderim hizmetine, yani site sahibinin Google hesabında çalışan bir Google Apps Script betiğine aktarılır. Bu betik size sonucu içeren bir e-posta gönderir ve adınızı, e-posta adresinizi, testi çözdüğünüz tarihi ve sonucunuzu (profil, puanlar, rapor bağlantısı) sonuç veri tabanına, yani aynı hesaptaki bir Google E-Tablolar dosyasına kaydeder. Bu veriler başka amaçlarla kullanılmaz ve üçüncü kişilere aktarılmaz.",
-            "Barındırma hizmeti GitHub Pages, isteğe ilişkin standart teknik verileri alır: IP adresi, tarayıcı türü, sayfa adresi. Yazı tipleri sitenin kendisinde barındırılır ve Google sunucularından yüklenmez. Ziyaret istatistiklerini Yandex Metrica (Yandex LLC) toplar: ziyarete ilişkin anonimleştirilmiş verileri — sonuç kodu içermeyen sayfa adresi, ziyaretin geldiği kaynak, cihaz ve tarayıcı türü — ve sayfadaki hareketlerin kaydını (Webvisor) alır; ad ve e-posta alanları, sonuç bağlantısı ve sonuç kodu bu kaydın dışında tutulur. Veriler Yandex’in koşullarına göre işlenir; veri toplamayı tarayıcı ayarlarınızdan ya da bir izleyici engelleyiciyle devre dışı bırakabilirsiniz. Reklam amaçlı izleyiciler kullanılmaz."
+            "Barındırma hizmeti GitHub Pages, isteğe ilişkin standart teknik verileri alır: IP adresi, tarayıcı türü, sayfa adresi. Yazı tipleri sitenin kendisinde barındırılır ve Google sunucularından yüklenmez. Ziyaret istatistiklerini bir web analiz hizmeti toplar: ziyarete ilişkin anonimleştirilmiş verileri — sonuç kodu içermeyen sayfa adresi, ziyaretin geldiği kaynak, cihaz ve tarayıcı türü — ve sayfadaki hareketlerin kaydını alır; ad ve e-posta alanları, sonuç bağlantısı ve sonuç kodu bu kaydın dışında tutulur. Veri toplamayı tarayıcı ayarlarınızdan ya da bir izleyici engelleyiciyle devre dışı bırakabilirsiniz. Reklam amaçlı izleyiciler kullanılmaz."
           ]
         },
         {
@@ -447,11 +447,11 @@
         },
         {
           "h": "Çerezler",
-          "p": ["Sitenin kendisi çerez yerleştirmez: yukarıda sayılanlar için tarayıcının yerel depolama alanı kullanılır; bu, aynı amaca hizmet eden bir teknolojidir. Yandex Metrica ise ziyaretçileri birbirinden ayırt etmek için kendi çerezlerini (örneğin _ym_uid ve _ym_d) yerleştirir. Bildirimin ilk ziyaretinizde bir kez gösterilmesinin nedeni budur."]
+          "p": ["Sitenin kendisi çerez yerleştirmez: yukarıda sayılanlar için tarayıcının yerel depolama alanı kullanılır; bu, aynı amaca hizmet eden bir teknolojidir. Analiz hizmeti ise ziyaretçileri birbirinden ayırt etmek için kendi çerezlerini yerleştirir. Bildirimin ilk ziyaretinizde bir kez gösterilmesinin nedeni budur."]
         },
         {
           "h": "Değişiklikler",
-          "p": ["Son güncelleme: 7 Eylül 2026. Verilerin işlenmesindeki değişiklikler bu sayfaya yansıtılacaktır."]
+          "p": ["Son güncelleme: 23 Eylül 2026. Verilerin işlenmesindeki değişiklikler bu sayfaya yansıtılacaktır."]
         }
       ]
     },
@@ -892,7 +892,6 @@
           "h": "Metinleri nasıl yazıyor ve denetliyoruz",
           "p": [
             "Yöntemle ilgili söylenenler birincil kaynaklara ve aralarında eleştirel olanların da bulunduğu hakemli araştırmalara dayanır; çalışmaların listesi “{sources}” bölümünde toplanmıştır. Ticari raporları yeniden anlatmıyoruz: dört stilin ve on altı profilin açıklamalarını, modelin genel kabul görmüş özelliklerinden yola çıkarak editör ekibimiz yazdı.",
-            "Sitenin kaynak dili Rusçadır. On üç dile yapılan çeviriler dil modelleri yardımıyla hazırlanmıştır ve otomatik olarak denetlenir: bir betik, metinlerin yapısının, terimlerin ve sayıların bütün dillerde birbirini tutmasını gözetir. Eylül 2026’da her çeviri ayrıca editör rolündeki bir dil modeli tarafından gözden geçirildi: isabetsiz test ifadeleri, birebir çeviri kokan kalıplar ve terim tutarsızlıkları düzeltildi. Çevirilerin, o dili ana dili olarak konuşan kişilerce okunması planlanıyor, ancak bu henüz yapılmadı; bu nedenle çevirilerde pürüzler olabilir.",
             "Her sayfada son değişiklik tarihi yer alır. Metinleri, testin kendisi değiştiğinde ya da bize düzeltme önerileri ulaştığında güncelliyoruz; bir kaynakla ya da kendi denetimimizle destekleyemediğimiz hiçbir şeyi yayımlamıyoruz."
           ]
         }
@@ -1101,9 +1100,9 @@
     "contact.mb": "MB",
 
     "consent.label": "Çerez bildirimi",
-    "consent.text": "Site; ilerlemenizi, sonucunuzu ve seçtiğiniz dili tarayıcının yerel depolama alanında saklar. Yandex Metrica ise siteyi geliştirebilmemiz için anonimleştirilmiş ziyaret istatistiklerini ve sayfadaki hareketlerin kaydını toplar. Adınız, e-posta adresiniz ve sonucunuz Metrica’ya aktarılmaz.",
+    "consent.text": "Site; ilerlemenizi, sonucunuzu ve seçtiğiniz dili tarayıcının yerel depolama alanında saklar. Bir web analiz hizmeti ise siteyi geliştirebilmemiz için anonimleştirilmiş ziyaret istatistiklerini ve sayfadaki hareketlerin kaydını toplar. Adınız, e-posta adresiniz ve sonucunuz analiz hizmetine aktarılmaz.",
     "consent.more": "Ayrıntılar",
-    "consent.details": "Tarayıcıda saklananlar: testten önce girdiğiniz ad ve e-posta adresi; yanıtlarınız ve tamamlanmamış ilerlemeniz; son sonucunuz; seçtiğiniz dil; bu bildirimi gördüğünüze dair işaret. Bu veriler cihazınızda kalır ve site verilerini temizlediğinizde silinir. Barındırma hizmeti GitHub Pages, isteğe ilişkin standart teknik verileri alır. Testi tamamladığınızda adınız, e-posta adresiniz ve yanıtlarınız e-posta gönderim hizmetine (Google Apps Script) aktarılır: bu hizmet size sonucunuzu içeren bir e-posta gönderir ve adınızı, e-posta adresinizi, tarihi ve sonucu site sahibinin sonuç veri tabanına (Google E-Tablolar’daki bir tablo) kaydeder. Yandex Metrica (Yandex LLC) şunları alır: sonuç kodu içermeyen sayfa adresi, ziyaretin geldiği kaynak, cihaz ve tarayıcı türü, sayfadaki hareketlerin anonimleştirilmiş kaydı (ad ve e-posta alanları ile sonuç bağlantısı ve kodu kayda dahil edilmez); ayrıca kendi çerezlerini yerleştirir. Metrica’yı tarayıcı ayarlarından ya da bir izleyici engelleyiciyle engelleyebilirsiniz. Reklam amaçlı izleyiciler kullanılmaz.",
+    "consent.details": "Tarayıcıda saklananlar: testten önce girdiğiniz ad ve e-posta adresi; yanıtlarınız ve tamamlanmamış ilerlemeniz; son sonucunuz; seçtiğiniz dil; bu bildirimi gördüğünüze dair işaret. Bu veriler cihazınızda kalır ve site verilerini temizlediğinizde silinir. Barındırma hizmeti GitHub Pages, isteğe ilişkin standart teknik verileri alır. Testi tamamladığınızda adınız, e-posta adresiniz ve yanıtlarınız e-posta gönderim hizmetine (Google Apps Script) aktarılır: bu hizmet size sonucunuzu içeren bir e-posta gönderir ve adınızı, e-posta adresinizi, tarihi ve sonucu site sahibinin sonuç veri tabanına (Google E-Tablolar’daki bir tablo) kaydeder. Web analiz hizmeti şunları alır: sonuç kodu içermeyen sayfa adresi, ziyaretin geldiği kaynak, cihaz ve tarayıcı türü, sayfadaki hareketlerin anonimleştirilmiş kaydı (ad ve e-posta alanları ile sonuç bağlantısı ve kodu kayda dahil edilmez); ayrıca kendi çerezlerini yerleştirir. Bu hizmeti tarayıcı ayarlarından ya da bir izleyici engelleyiciyle engelleyebilirsiniz. Reklam amaçlı izleyiciler kullanılmaz.",
     "consent.accept": "Kabul et",
     "consent.decline": "Yalnızca gerekli olanlar",
     "consent.ok": "Anladım",

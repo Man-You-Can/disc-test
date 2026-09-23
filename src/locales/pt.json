@@ -401,7 +401,7 @@
         {
           "h": "Em que o teste se baseia",
           "p": [
-            "O teste se apoia no modelo de quatro fatores de William Marston (1928) e nos questionários posteriores no formato “mais — menos”: 24 blocos de quatro afirmações, uma por estilo. As descrições dos estilos e dos dezesseis perfis foram escritas pelos autores do site com base nas características geralmente aceitas do DISC. Mais abaixo, explicamos como as traduções foram feitas e revisadas.",
+            "O teste se apoia no modelo de quatro fatores de William Marston (1928) e nos questionários posteriores no formato “mais — menos”: 24 blocos de quatro afirmações, uma por estilo. As descrições dos estilos e dos dezesseis perfis foram escritas pelos autores do site com base nas características geralmente aceitas do DISC.",
             "O projeto é independente e não tem vínculo com a Wiley (DiSC®), a TTI Success Insights nem outros detentores de marcas. A palavra DISC é usada como nome genérico do modelo."
           ]
         },
@@ -428,7 +428,7 @@
           "h": "Para onde os dados são transmitidos",
           "p": [
             "Ao concluir o teste, nome, e-mail e respostas (na forma de código de resultado) são transmitidos ao serviço de envio de e-mails, um script do Google Apps Script que roda na conta do Google do responsável pelo site. Ele envia a você o e-mail com o resultado e registra nome, e-mail, data do teste e resultado (perfil, pontuações e link do relatório) na base de resultados, uma planilha do Google na mesma conta. Esses dados não são usados para outros fins nem repassados a terceiros.",
-            "A hospedagem (GitHub Pages) recebe os dados técnicos habituais da requisição: endereço IP, tipo de navegador, endereço da página. As fontes são servidas pelo próprio site e não são carregadas dos servidores do Google. As estatísticas de visitas são coletadas pelo Yandex Metrica (Yandex LLC), que recebe dados de visita anonimizados — o endereço da página sem o código do resultado, a origem da visita, o tipo de dispositivo e navegador — e uma gravação das ações na página (Webvisor); os campos de nome e e-mail, o link e o código do resultado ficam excluídos da gravação. Os dados são tratados de acordo com os termos da Yandex; você pode impedir a coleta nas configurações do navegador ou com um bloqueador de rastreadores. Não são usados rastreadores publicitários."
+            "A hospedagem (GitHub Pages) recebe os dados técnicos habituais da requisição: endereço IP, tipo de navegador, endereço da página. As fontes são servidas pelo próprio site e não são carregadas dos servidores do Google. As estatísticas de visitas são coletadas por um serviço de análise da web, que recebe dados de visita anonimizados — o endereço da página sem o código do resultado, a origem da visita, o tipo de dispositivo e navegador — e uma gravação das ações na página; os campos de nome e e-mail, o link e o código do resultado ficam excluídos da gravação. Você pode impedir a coleta nas configurações do navegador ou com um bloqueador de rastreadores. Não são usados rastreadores publicitários."
           ]
         },
         {
@@ -445,11 +445,11 @@
         },
         {
           "h": "Cookies",
-          "p": ["O site em si não define cookies: para o que foi descrito, usa o armazenamento local do navegador, uma tecnologia com a mesma finalidade. O Yandex Metrica define os próprios cookies (por exemplo, _ym_uid e _ym_d) para distinguir visitantes. Por isso, o aviso aparece uma vez, na primeira visita."]
+          "p": ["O site em si não define cookies: para o que foi descrito, usa o armazenamento local do navegador, uma tecnologia com a mesma finalidade. O serviço de análise define os próprios cookies para distinguir visitantes. Por isso, o aviso aparece uma vez, na primeira visita."]
         },
         {
           "h": "Alterações",
-          "p": ["Última atualização: 7 de setembro de 2026. Mudanças no tratamento de dados serão refletidas nesta página."]
+          "p": ["Última atualização: 23 de setembro de 2026. Mudanças no tratamento de dados serão refletidas nesta página."]
         }
       ]
     },
@@ -892,7 +892,6 @@
           "h": "Como escrevemos e verificamos os textos",
           "p": [
             "As afirmações sobre o método se apoiam em fontes originais e em pesquisas revisadas por pares, inclusive críticas; a lista dos trabalhos está reunida na seção “{sources}”. Não reproduzimos relatórios comerciais: as descrições dos quatro estilos e dos dezesseis perfis foram escritas pela redação com base nas características geralmente aceitas do modelo.",
-            "O idioma de referência do site é o russo. As traduções para 13 idiomas foram feitas com a ajuda de modelos de linguagem e são verificadas automaticamente: um script confere se a estrutura dos textos, os termos e os números coincidem em todos os idiomas. Em setembro de 2026, cada tradução passou também pela revisão de um modelo de linguagem no papel de editor: foram corrigidas afirmações imprecisas do teste, traduções literais demais e inconsistências de terminologia. A revisão por falantes nativos está planejada, mas ainda não foi feita; por isso, as traduções ainda podem ter trechos pouco naturais.",
             "Cada página traz a data da última alteração. Corrigimos os textos quando o próprio teste muda ou quando recebemos observações, e não publicamos nada que não possamos sustentar com uma fonte ou com nossa própria verificação."
           ]
         }
@@ -1101,9 +1100,9 @@
     "contact.mb": "MB",
 
     "consent.label": "Aviso de cookies",
-    "consent.text": "Este site guarda seu progresso, o resultado e o idioma escolhido no armazenamento local do navegador, e o Yandex Metrica coleta estatísticas anônimas de visitas e uma gravação das ações na página para nos ajudar a melhorar o site. Seu nome, e-mail e resultado não são enviados ao Metrica.",
+    "consent.text": "Este site guarda seu progresso, o resultado e o idioma escolhido no armazenamento local do navegador, e um serviço de análise da web coleta estatísticas anônimas de visitas e uma gravação das ações na página para nos ajudar a melhorar o site. Seu nome, e-mail e resultado não são enviados ao serviço de análise.",
     "consent.more": "Saiba mais",
-    "consent.details": "No navegador ficam guardados: o nome e o e-mail que você informa antes do teste; suas respostas e o progresso de um teste não concluído; o último resultado; o idioma escolhido; uma marcação de que você viu este aviso. Esses dados permanecem no seu dispositivo e são apagados quando você limpa os dados do site. A hospedagem (GitHub Pages) recebe os dados técnicos habituais da requisição. Ao concluir o teste, o nome, o e-mail e as respostas são transmitidos ao serviço de envio de e-mails (Google Apps Script), que envia o resultado a você e guarda o nome, o e-mail, a data e o resultado na base de resultados do responsável pelo site (uma planilha do Google). O Yandex Metrica (Yandex LLC) recebe o endereço da página sem o código do resultado, a origem da visita, o tipo de dispositivo e navegador e uma gravação anonimizada das ações na página (os campos de nome e e-mail, o link e o código do resultado ficam excluídos), e define os próprios cookies. Você pode bloqueá-lo nas configurações do navegador ou com um bloqueador de rastreadores. Não são usados rastreadores publicitários.",
+    "consent.details": "No navegador ficam guardados: o nome e o e-mail que você informa antes do teste; suas respostas e o progresso de um teste não concluído; o último resultado; o idioma escolhido; uma marcação de que você viu este aviso. Esses dados permanecem no seu dispositivo e são apagados quando você limpa os dados do site. A hospedagem (GitHub Pages) recebe os dados técnicos habituais da requisição. Ao concluir o teste, o nome, o e-mail e as respostas são transmitidos ao serviço de envio de e-mails (Google Apps Script), que envia o resultado a você e guarda o nome, o e-mail, a data e o resultado na base de resultados do responsável pelo site (uma planilha do Google). O serviço de análise da web recebe o endereço da página sem o código do resultado, a origem da visita, o tipo de dispositivo e navegador e uma gravação anonimizada das ações na página (os campos de nome e e-mail, o link e o código do resultado ficam excluídos), e define os próprios cookies. Você pode bloqueá-lo nas configurações do navegador ou com um bloqueador de rastreadores. Não são usados rastreadores publicitários.",
     "consent.accept": "Aceitar",
     "consent.decline": "Só o essencial",
     "consent.ok": "Entendi",

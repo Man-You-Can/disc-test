@@ -29,16 +29,16 @@
     { "D": "Strong-willed", "I": "Enthusiastic", "S": "Modest", "C": "Meticulous" },
     { "I": "I energize people", "C": "I keep a close eye on quality", "D": "I take charge", "S": "I help the team" },
     { "C": "Rational", "S": "Consistent", "I": "Spontaneous", "D": "Bold" },
-    { "S": "Stability-oriented", "D": "Results-oriented", "C": "Quality-oriented", "I": "Communication-oriented" },
+    { "S": "Stability-oriented", "D": "Results-oriented", "C": "Quality-oriented", "I": "People-oriented" },
     { "D": "Impatient", "C": "Overly critical", "S": "Slow to accept change", "I": "Impulsive" },
     { "I": "I trust people", "S": "I stay loyal", "D": "I take risks", "C": "I follow standards" },
     { "C": "Reserved", "I": "Charismatic", "S": "Gentle", "D": "Assertive" },
-    { "S": "I don’t rush to conclusions", "C": "I pin down all the requirements", "D": "I get straight to the point", "I": "I easily find common ground" },
+    { "S": "I don’t rush to conclusions", "C": "I clarify every requirement", "D": "I get straight to the point", "I": "I easily find common ground" },
     { "D": "Self-confident", "S": "Tactful", "I": "Eloquent", "C": "Organized" },
     { "I": "I like to speak in public", "D": "I like to lead", "C": "I like to analyze", "S": "I like to help" },
     { "C": "Thorough", "S": "Caring", "I": "Outgoing", "D": "Goal-driven" },
     { "S": "I accept things as they are", "I": "I quickly get excited about new ideas", "D": "I stand my ground", "C": "I insist on accuracy" },
-    { "D": "Authoritative", "C": "Logical", "I": "Lively", "S": "Steady" }
+    { "D": "Commanding", "C": "Logical", "I": "Lively", "S": "Steady" }
   ],
   "styles": {
     "D": {
@@ -46,8 +46,8 @@
       "strengths": ["You make decisions quickly and take responsibility for them", "You keep your head in a crisis and act when others hesitate", "You set ambitious goals and achieve them", "You speak plainly, without ambiguity"],
       "growth": ["Impatience with people who work more slowly or carefully", "A tendency to push a decision through without hearing alternatives", "Bluntness that others experience as pressure"],
       "motivation": ["Authority and the ability to influence how things go", "Difficult tasks and challenges", "Freedom from micromanagement", "Measurable results and wins"],
-      "stress": "Under pressure you become tougher and less tolerant: you interrupt, take everything into your own hands and bend the rules for the sake of speed. Clear authority and room to act independently help.",
-      "communication": ["Keep it short and to the point: results, deadlines, options", "Don’t drag out the introduction or beat around the bush", "Give you options rather than a ready-made answer — you want to make the call yourself", "Use facts, not emotions, to make a case"],
+      "stress": "Under pressure you become tougher and less tolerant: you interrupt, try to control everything yourself and bend the rules for the sake of speed. Clear authority and room to act independently help.",
+      "communication": ["Short, to-the-point messages: results, deadlines, options", "No long introductions and no beating around the bush", "Options rather than a ready-made answer — you want to make the call yourself", "Arguments built on facts, not emotions"],
       "environment": "A dynamic environment with a lot of autonomy, clear goals and a direct link between effort and results. Routine and tight supervision are demotivating."
     },
     "I": {
@@ -56,25 +56,25 @@
       "growth": ["Promises made in the heat of the moment that are hard to keep later", "Not enough attention to details and deadlines", "A tendency to talk more than listen"],
       "motivation": ["Recognition and approval", "Communication and teamwork", "Freedom of self-expression", "Novelty and variety of tasks"],
       "stress": "Under pressure you become scattered and impulsive, avoid unpleasant conversations and may see the situation as rosier than it is. Open discussion and support from colleagues help.",
-      "communication": ["Start with a personal connection, not the agenda", "Give you room to speak up and talk ideas through", "Acknowledge your contributions publicly", "Put agreements in writing — it helps both sides"],
+      "communication": ["A personal connection first, the agenda second", "Room to speak up and talk ideas through", "Public recognition of your contributions", "A written recap of what was agreed — it helps both sides"],
       "environment": "An open, friendly environment with plenty of contact, recognition and freedom from rigid procedures. Isolation and monotony drain your energy."
     },
     "S": {
       "traits": ["Patient", "Reliable", "Calm", "Attentive to people", "Consistent"],
       "strengths": ["You can be relied on over the long haul", "You know how to listen to and support others", "You work patiently and methodically", "You bring the team together and defuse conflicts"],
       "growth": ["Resistance to change, even beneficial change", "Difficulty saying no and standing your ground", "Keeping disagreement to yourself to preserve the peace"],
-      "motivation": ["Stability and predictability", "Sincere appreciation for your contribution", "Clear expectations and rules of the game", "Working in a close-knit team"],
+      "motivation": ["Stability and predictability", "Sincere appreciation for your contribution", "Clear expectations and ground rules", "Working in a close-knit team"],
       "stress": "Under pressure you withdraw, become overly accommodating and put off decisions. Sudden change and open conflict are especially hard to bear. Time to adjust and a calm conversation help.",
-      "communication": ["Give you advance notice of changes and explain why they’re needed", "Ask for your opinion directly — you rarely volunteer it", "Don’t pressure you or rush you for an answer", "Show appreciation for your specific contributions"],
+      "communication": ["Advance notice of changes and an explanation of why they’re needed", "Being asked for your opinion directly — you rarely volunteer it", "No pressure, and time to answer without being rushed", "Appreciation for your specific contributions"],
       "environment": "A stable environment with clear processes, good relationships and a reasonable pace of change. Chaos, constant switching and aggressive competition are exhausting."
     },
     "C": {
       "traits": ["Precise", "Analytical", "Cautious", "Systematic", "Reserved"],
-      "strengths": ["High quality of work and attention to detail", "Logic and objectivity in judgment", "The ability to think through risks and plan ahead", "Discipline and sticking to agreements"],
+      "strengths": ["High quality of work and attention to detail", "Logic and objectivity in judgment", "The ability to think through risks and plan ahead", "Discipline and sticking to commitments"],
       "growth": ["Perfectionism and missed deadlines in pursuit of the ideal", "Excessive criticism of yourself and others", "Retreating into analysis instead of acting"],
       "motivation": ["Clear standards and quality criteria", "Time for analysis and preparation", "Recognition of expertise", "Logical, well-founded decisions"],
       "stress": "Under pressure you withdraw into yourself, become overly critical and get stuck in details. Having to act without data is irritating. Clear criteria and time to verify help.",
-      "communication": ["Come prepared with facts, figures and arguments", "Give you time to think things over rather than demanding an answer right away", "Respect procedures and agreements", "Keep criticism specific, factual and free of emotion"],
+      "communication": ["Facts, figures and arguments prepared in advance", "Time to think things over instead of a demand for an instant answer", "Respect for procedures and for what was agreed", "Criticism that is specific, factual and free of emotion"],
       "environment": "A structured environment with clear standards, access to information and the ability to work with focus. Uncertainty, haste and emotional pressure reduce effectiveness."
     }
   },
@@ -86,7 +86,7 @@
       "team": "Takes the lead even when nobody appointed them, sets goals and pushes the team toward results. Indispensable when an unpopular decision has to be made or a project pulled out of a crisis. With them the team moves fast, though not always comfortably, so make sure the cautious voices are heard too.",
       "with": {
         "D": "With another D, divide areas of responsibility in advance and argue about criteria, not about who’s in charge.",
-        "I": "Spend a couple of minutes on the person before getting down to business, and acknowledge their contribution out loud.",
+        "I": "Spend a couple of minutes on small talk before getting down to business, and acknowledge their contribution out loud.",
         "S": "Slow down, give advance notice of changes, and wait for the answer to your question without filling the pause.",
         "C": "Back your decisions with facts and allow time for checking. For a C, that isn’t stalling; it’s the job."
       }
@@ -107,12 +107,12 @@
       "name": "Anchor",
       "summary": "You create stability: you keep your word, finish what you start, support people and smooth over conflicts. Predictability, trust and time to get used to change matter to you.",
       "careers": ["Client support and account management", "Coordinator, project administrator", "Mentor, teacher", "Medicine, social work, caregiving", "Operational and service roles with steady processes"],
-      "team": "The person everyone relies on: sees things through, remembers agreements, helps newcomers and smooths over conflicts. Often holds the team together without anyone noticing. Risks going unrecognized and being overloaded with other people’s tasks because they find it hard to say no.",
+      "team": "The person everyone relies on: sees things through, remembers what was agreed, helps newcomers and smooths over conflicts. Often holds the team together without anyone noticing. Risks going unrecognized and being overloaded with other people’s tasks because they find it hard to say no.",
       "with": {
         "D": "Voice disagreement right away and keep it brief; ask for clear priorities instead of guessing.",
         "I": "State your boundaries out loud and ask for a plan — an idea alone isn’t enough for you.",
         "S": "Set deadlines for each other and take turns being the one who decides.",
-        "C": "See their remarks as a commitment to quality, and propose changes in small steps."
+        "C": "Read their critical feedback as a commitment to quality, and propose changes in small steps."
       }
     },
     "C": {
@@ -129,9 +129,9 @@
     },
     "DI": {
       "name": "Pioneer",
-      "summary": "Drive and charm: you move quickly toward the goal and know how to bring people along. You persuade with momentum and enthusiasm and make decisions on the fly, but you often run short of patience for details and caution.",
-      "careers": ["Founder, startup CEO", "Sales director", "Head of new product and market launches", "Public-facing leader, speaker", "Commercial negotiator"],
-      "team": "Gets things off the ground: sets an ambitious goal, finds allies and leads the way. Indispensable at the start of a project and in negotiations that call for drive and charm at once. Over the long haul they need colleagues with S and C who will see things through and check the details.",
+      "summary": "Drive and charm: you move quickly toward the goal and know how to bring people along. You win people over with energy and enthusiasm and make decisions on the fly, but you often run short of patience for details and caution.",
+      "careers": ["Founder, startup CEO", "Sales director", "Head of new product launches and market entry", "Public-facing leader, speaker", "Commercial negotiator"],
+      "team": "Gets things off the ground: sets an ambitious goal, finds allies and leads the way. Indispensable at the start of a project and in negotiations that call for drive and charm at once. Over the long haul they need high-S and high-C colleagues who will see things through and check the details.",
       "with": {
         "D": "Divide up areas of influence and don’t compete for the spotlight — two leaders need separate fronts.",
         "I": "Ride the shared enthusiasm, but finish with a to-do list that has owners and deadlines.",
@@ -142,7 +142,7 @@
     "DC": {
       "name": "Strategist",
       "summary": "Results through quality: you are demanding of yourself and others, think systematically and never decide without solid reasoning. You excel at complex tasks, but can come across as cold and overly critical.",
-      "careers": ["Manager of complex projects", "Director of development, strategist", "Head of an engineering or analytics team", "Management consultant", "Chief financial officer"],
+      "careers": ["Manager of complex projects", "Business development director, strategist", "Head of an engineering or analytics team", "Management consultant", "Chief financial officer"],
       "team": "Combines drive and quality: sets a high bar and reaches it, thinks in systems, sees risks before others do. With them the team is focused and productive, but people may sense a certain coldness and feel constantly evaluated. They should acknowledge people’s contributions more often and explain decisions rather than only make demands.",
       "with": {
         "D": "Debate facts and criteria, and agree on who has the last word in contested areas.",
@@ -152,10 +152,10 @@
       }
     },
     "DS": {
-      "name": "Practitioner",
+      "name": "Doer",
       "summary": "Persistence and reliability: you push steadily toward the goal without any fuss and finish what you start. You value independence and stability at the same time, which is a rare combination.",
       "careers": ["Head of production or operations", "Implementation project manager", "Head of a service department", "Entrepreneur in a stable business", "Middle manager in a large company"],
-      "team": "The workhorse: takes on a task and carries it through to the result without fuss, doesn’t abandon it halfway, keeps their word. A rare combination of independence and reliability makes them a manager’s mainstay. To others they can seem stubborn and closed off; they should talk through their plans more often and hear out other options.",
+      "team": "The workhorse: takes on a task and sees it through to the end without fuss, doesn’t abandon it halfway, keeps their word. A rare combination of independence and reliability makes them someone a manager can always count on. To others they can seem stubborn and closed off; they should talk through their plans more often and hear out other options.",
       "with": {
         "D": "Agree on the goal and the deadline, but keep the choice of route for yourself — micromanagement kills your motivation.",
         "I": "Don’t dismiss their ideas as idle talk, but do ask for a concrete plan.",
@@ -170,16 +170,16 @@
       "team": "Energizes and leads: spreads ideas, lifts the mood, isn’t afraid of initiative or the spotlight. Great where many people need to be persuaded and inspired at once. Risks overestimating what they can take on and promising more than is possible, so they need a partner who keeps them grounded in reality: deadlines, resources, details.",
       "with": {
         "D": "Keep it short, with the result up front; a D’s drive isn’t hostility, it’s speed.",
-        "I": "End the meeting with written agreements, or enthusiasm will drift away from the work.",
+        "I": "End the meeting with written action items, or enthusiasm will drift away from the work.",
         "S": "Give advance notice of changes and don’t decide for an S; ask for their opinion directly.",
         "C": "Prepare the numbers and allow time for an answer. When a C goes quiet, they’re thinking, not refusing."
       }
     },
     "IS": {
       "name": "Mentor",
-      "summary": "Warmth and involvement: you win people over, and you know how to support them and bring them together. Relationships and atmosphere matter to you, while conflict and harsh demands are hard to take.",
+      "summary": "Warmth and engagement: you win people over, and you know how to support them and bring them together. Relationships and atmosphere matter to you, while conflict and harsh demands are hard to take.",
       "careers": ["Mentor, coach, teacher", "HR business partner, onboarding and training", "Key account management", "Head of a service or close-knit team", "Mediator, facilitator"],
-      "team": "The person people come to for a talk: listens, supports, connects people and keeps the atmosphere warm. With them the team is friendlier and more resilient. Tough decisions and unpleasant conversations come hard; they should remember that honest feedback is a form of care too.",
+      "team": "The one people go to when they need to talk: listens, supports, connects people and keeps the atmosphere warm. With them the team is friendlier and more resilient. Tough decisions and unpleasant conversations come hard; they should remember that honest feedback is a form of care too.",
       "with": {
         "D": "Keep business talk brief, don’t take their directness to heart, and voice disagreement right away.",
         "I": "Support the ideas, but ask for a plan and deadlines, or you’ll both get carried away.",
@@ -214,7 +214,7 @@
     "SC": {
       "name": "Specialist",
       "summary": "Reliability and accuracy: you work methodically, follow the rules and see things through without haste. You value stability and clear expectations, while abrupt change and pressure are hard to bear.",
-      "careers": ["Accounting, document management, records", "Quality control, standardization", "Technical support and maintenance", "Laboratory work, research by protocol", "Systems and process administration"],
+      "careers": ["Accounting, document management, records", "Quality control, standardization", "Technical support and maintenance", "Laboratory work, protocol-driven research", "Systems and process administration"],
       "team": "The keeper of order: works methodically, follows the rules, sees things through, remembers how it was done last time. Processes run smoothly thanks to them. Abrupt change and pressure are hard to take; the team should involve them in changes early, and they themselves should speak up about overload rather than quietly endure it.",
       "with": {
         "D": "Ask for clear priorities and report risks briefly, with consequences.",
@@ -225,9 +225,9 @@
     },
     "SD": {
       "name": "Implementer",
-      "summary": "Perseverance and patience: you calmly but firmly drive things to a result without getting caught up in needless discussion. Reliable over the long haul, though to others you may seem stubborn.",
+      "summary": "Perseverance and patience: you calmly but firmly see things through without getting caught up in needless discussion. Reliable over the long haul, though to others you may seem stubborn.",
       "careers": ["Site, shift or production supervisor", "Manager of long-cycle projects", "Logistics, procurement, facilities", "Skilled trades and engineering professions", "Owner of a small, stable business"],
-      "team": "Gets to the result calmly and firmly: no rush, no needless discussion, but no retreat either. Reliable over the long haul, not afraid of responsibility. To others they can seem stubborn; they should explain their decisions and let colleagues have a say in them.",
+      "team": "Sees things through calmly and firmly: no rush, no needless discussion, but no retreat either. Reliable over the long haul, not afraid of responsibility. To others they can seem stubborn; they should explain their decisions and let colleagues have a say in them.",
       "with": {
         "D": "Agree on the goal and the deadline; choose the method yourself, and don’t put up with micromanagement in silence.",
         "I": "Listen to the ideas, but ask for a plan. Your firmness will help an I see things through.",
@@ -243,14 +243,14 @@
       "with": {
         "D": "Report risks briefly, with an assessment of the consequences, and offer a “good enough for now” option.",
         "I": "Start by acknowledging the idea, and keep criticism specific rather than harsh.",
-        "S": "Soften your remarks and acknowledge their contribution out loud — coldness hurts an S more than you might think.",
+        "S": "Soften your criticism and acknowledge their contribution out loud — coldness hurts an S more than you might think.",
         "C": "Limit the time for analysis and decide in advance where to stop."
       }
     },
     "CS": {
       "name": "Expert",
       "summary": "Precision and consistency: you work thoughtfully, check the details and rely on proven methods. A dependable specialist who finds uncertainty and rapid change hard to handle.",
-      "careers": ["Engineer, developer, tester", "Data analyst, researcher", "Accountant, auditor, methods and standards specialist", "Medical diagnostics, laboratory", "Technical writer, documentation"],
+      "careers": ["Engineer, developer, tester", "Data analyst, researcher", "Accountant, auditor, standards and compliance specialist", "Medical diagnostics, laboratory", "Technical writer, documentation"],
       "team": "The reliable specialist: works thoughtfully, checks details, relies on proven methods and doesn’t let people down. The team trusts their conclusions. Uncertainty and rapid change are hard on them; it helps when changes are explained in advance and when a considered answer, not an instant reaction, is expected of them.",
       "with": {
         "D": "Ask for time to check, but name the date by which you’ll give an answer.",
@@ -296,7 +296,7 @@
         {
           "h": "The four styles in brief",
           "p": [
-            "D, Dominance: results, control, speed, readiness for conflict. I, Influence: communication, enthusiasm, the ability to bring people along. S, Steadiness: support, reliability, patience, stability. C, Conscientiousness: accuracy, quality, rules, reliance on facts.",
+            "D, Dominance: results, control, speed, willingness to confront. I, Influence: communication, enthusiasm, the ability to bring people along. S, Steadiness: support, reliability, patience, stability. C, Conscientiousness: accuracy, quality, rules, reliance on facts.",
             "A detailed description of each style, with traits, strengths, growth areas, motivation and the best way to communicate with people who have it, is on the Four Styles page. Combinations of a primary and a secondary style produce 16 profiles, each with its own page."
           ]
         },
@@ -310,7 +310,7 @@
         {
           "h": "How to read a profile",
           "p": [
-            "The primary style is your habitual way of acting, the one that switches on automatically. The secondary style adds nuance: for example, a D with a secondary I persuades with momentum and enthusiasm, while a D with a secondary C persuades with demands and arguments. Values above the midline (50%) are considered high.",
+            "The primary style is your habitual way of acting, the one that switches on automatically. The secondary style adds nuance: for example, a D with a secondary I persuades with drive and enthusiasm, while a D with a secondary C persuades with demands and arguments. Values above the midline (50%) are considered high.",
             "No profile is good or bad: every style has strengths and growth areas. Nor is it a verdict: behavior depends on context, role and experience, so results at work and at home may differ, and a profile can shift in a year or two. A balanced profile, where no style stands out, usually indicates flexibility and, less often, uncertain answers."
           ]
         },
@@ -401,7 +401,7 @@
         {
           "h": "What the test is based on",
           "p": [
-            "The test is built on William Marston’s four-factor model (1928) and later most/least questionnaires: 24 blocks of four statements, one per style. The descriptions of the styles and the sixteen profiles were written by the site’s authors on the basis of the generally accepted DISC characteristics. How the translations were made and checked is explained below.",
+            "The test is built on William Marston’s four-factor model (1928) and later most/least questionnaires: 24 blocks of four statements, one per style. The descriptions of the styles and the sixteen profiles were written by the site’s authors on the basis of the generally accepted DISC characteristics.",
             "The project is independent and not affiliated with Wiley (DiSC®), TTI Success Insights or other trademark holders. The word DISC is used as the generic name of the model."
           ]
         },
@@ -428,7 +428,7 @@
           "h": "Where the data goes",
           "p": [
             "When you finish the test, your name, email address and answers (as a result code) are passed to the email-sending service, a Google Apps Script running in the site owner’s Google account. It sends you your result and records your name, email address, test date and result (profile, scores and report link) in the results database, a Google Sheet in the same account. The data is not used for any other purpose and is not passed to third parties.",
-            "The hosting provider (GitHub Pages) receives standard technical request data: IP address, browser type, page address. Fonts are served from this site itself and are not loaded from Google’s servers. Visit statistics are collected by Yandex Metrica (Yandex LLC): it receives anonymized visit data, namely the page address without the result code, the referrer, device and browser type, and a recording of on-page actions (Webvisor); the name and email fields, the result link and code are excluded from the recording. The data is processed under Yandex’s terms; you can stop the collection in your browser settings or with a tracker blocker. No advertising trackers are used."
+            "The hosting provider (GitHub Pages) receives standard technical request data: IP address, browser type, page address. Fonts are served from this site itself and are not loaded from Google’s servers. Visit statistics are collected by a web analytics service: it receives anonymized visit data, namely the page address without the result code, the referrer, device and browser type, and a recording of on-page actions; the name and email fields, the result link and code are excluded from the recording. You can stop the collection in your browser settings or with a tracker blocker. No advertising trackers are used."
           ]
         },
         {
@@ -445,11 +445,11 @@
         },
         {
           "h": "Cookies",
-          "p": ["The site itself sets no cookies: for the items above it uses the browser’s local storage, a technology with the same purpose. Yandex Metrica sets its own cookies (for example _ym_uid and _ym_d) to tell visitors apart. That is why the notice is shown once on your first visit."]
+          "p": ["The site itself sets no cookies: for the items above it uses the browser’s local storage, a technology with the same purpose. The analytics service sets its own cookies to tell visitors apart. That is why the notice is shown once on your first visit."]
         },
         {
           "h": "Changes",
-          "p": ["Last updated: September 7, 2026. Changes in how data is handled will be reflected on this page."]
+          "p": ["Last updated: September 23, 2026. Changes in how data is handled will be reflected on this page."]
         }
       ]
     },
@@ -483,7 +483,7 @@
         {
           "h": "Primary and secondary style",
           "p": [
-            "The primary style is the one with the highest overall value. It is the first letter of your profile and the basis of the description. A secondary style counts if its value is positive and at least 40% of the primary one (minimum 3 points on the “raw” scale from −24 to +24). It becomes the second letter and adds nuance to the description: a D with a secondary I (DI) persuades with momentum and enthusiasm, a D with a secondary C (DC) with demands and arguments.",
+            "The primary style is the one with the highest overall value. It is the first letter of your profile and the basis of the description. A secondary style counts if its value is positive and at least 40% of the primary one (minimum 3 points on the “raw” scale from −24 to +24). It becomes the second letter and adds nuance to the description: a D with a secondary I (DI) persuades with drive and enthusiasm, a D with a secondary C (DC) with demands and arguments.",
             "The order of the letters matters: DI and ID are different profiles. In DI the primary style is Dominance and Influence supports it; in ID the person is first of all sociable and inspiring, and assertiveness switches on when needed. If the second style’s value is negative or noticeably lower than the primary one, the profile stays “pure”: D, I, S or C."
           ]
         },
@@ -497,7 +497,7 @@
         {
           "h": "Balanced profile",
           "p": [
-            "If no value rises noticeably above the midline, the report calls the profile balanced but still names a primary style based on the highest number. Such a result most often means flexibility: you switch between styles depending on the situation, and colleagues with different styles all find you equally easy to work with.",
+            "If no value rises noticeably above the midline, the report calls the profile balanced but still names a primary style based on the highest number. This kind of result most often means flexibility: you switch between styles depending on the situation, and colleagues with different styles all find you equally easy to work with.",
             "Less often, a flat chart means you answered hesitantly, thought too long or tried to pick the “right” answers. It is easy to check: take the test again in a few days, answering quickly and with a specific work role in mind. If the profile is flat again, flexibility really is your distinctive trait."
           ]
         },
@@ -538,7 +538,7 @@
       "title": "DISC Colors: Red, Yellow, Green and Blue Personality Types",
       "description": "Four DISC colors: red (D), yellow (I), green (S), blue (C). What each color means, how to find yours and how color tests differ from DISC. Free online test.",
       "h1": "DISC colors: red, yellow, green, blue",
-      "lead": "The four DISC styles are often labeled with colors: red for Dominance, yellow for Influence, green for Steadiness, blue for Conscientiousness. The colors add nothing to the model, but they make the styles easy to remember and to talk about in a team. Here is what stands behind each color and how to find yours.",
+      "lead": "The four DISC styles are often labeled with colors: red for Dominance, yellow for Influence, green for Steadiness, blue for Conscientiousness. The colors add nothing to the model, but they make the styles easy to remember and to talk about on a team. Here is what stands behind each color and how to find yours.",
       "colors": {
         "D": {
           "name": "Red",
@@ -573,7 +573,7 @@
           "h": "Two axes instead of four colors",
           "p": [
             "The colors are easier to understand through two axes. The first is pace: red and yellow act fast and decisively, green and blue deliberately and cautiously. The second is focus: red and blue concentrate on tasks and results, yellow and green on people and relationships. Each color is the intersection of two axes, not a separate “breed” of people.",
-            "That is why neighboring colors resemble each other while opposites differ the most: red and green (D and S), yellow and blue (I and C). It is between these that misunderstandings arise most often on a team, and it is these that complement each other best once they have agreed on the rules."
+            "That is why neighboring colors resemble each other while opposites differ the most: red and green (D and S), yellow and blue (I and C). These pairs clash most often on a team, yet they also complement each other best once they have agreed on ground rules."
           ]
         },
         {
@@ -659,7 +659,7 @@
           "ul": [
             "A conflict between two colleagues. Most often it is a pair of opposite styles: D and S or I and C. Look the pair up on the compatibility page and suggest one specific change in communication to each of them.",
             "A new hire. A test taken during onboarding tells the mentor how to bring the person into the work: an S needs clear rules and time, a D needs an independent task from day one.",
-            "Assigning roles in a project. Launches and negotiations go to those with high D and I; support and quality to those with S and C. This is a guide, not a ban: people cope with “foreign” tasks too, they just spend more energy on them.",
+            "Assigning roles in a project. Launches and negotiations go to people high in D and I; support and quality to those high in S and C. This is a guide, not a ban: people can handle tasks outside their comfort zone too; it just takes more energy.",
             "Feedback. A C needs facts and time to think, an I needs their contribution acknowledged before any criticism, an S needs a calm one-on-one conversation, a D needs it short and to the point with no preamble.",
             "Sales and negotiation. Identify the client’s style from their behavior and speak their language: results and deadlines for a D, relationships and emotions for an I, guarantees and reliability for an S, data and comparisons for a C."
           ]
@@ -678,20 +678,20 @@
           "h": "How to discuss the results",
           "p": [
             "The first rule: the result belongs to the participant. Nobody is obliged to show their report, and the discussion starts with the person speaking about themselves. The second: there are no good or bad styles. Every time someone says “D is better for a manager,” remind them of the price of each style and that a team needs all four.",
-            "A practical format is one request from each person, completing two sentences: “It helps me when…” and “It gets in my way when…” Such sentences, said out loud and written down, give a team more than any typology. Come back to them in two or three months and check what has changed."
+            "A practical format is one request from each person, completing two sentences: “It helps me when…” and “It gets in my way when…” Said out loud and written down, these sentences give a team more than any typology. Come back to them in two or three months and check what has changed."
           ]
         },
         {
           "h": "Hiring: where the line is",
           "p": [
-            "DISC is appropriate in an interview as a topic for talking about work style and as a hint about which questions to ask: for example, how a candidate with a high C copes with uncertainty. But a hiring decision must not be based on a profile: the method describes behavioral preferences, not competence, motivation, experience or fit for the job, and any style can succeed in almost any role.",
+            "DISC is appropriate in an interview as a topic for talking about work style and as a hint about which questions to ask: for example, how a high-C candidate copes with uncertainty. But a hiring decision must not be based on a profile: the method describes behavioral preferences, not competence, motivation, experience or fit for the job, and any style can succeed in almost any role.",
             "A separate note on ethics: ask a candidate to take the test only after explaining why it is needed and who will see the result. The test is not a diagnostic tool, and using it to screen people out means losing good people and risking your reputation."
           ]
         },
         {
           "h": "Mistakes to avoid",
           "ul": [
-            "Labeling people: “you’re an S, you don’t care anyway” turns a tool for understanding into an excuse for neglect.",
+            "Labeling people: “you’re an S, you won’t mind anyway” turns a tool for understanding into an excuse for neglect.",
             "Expecting the same profile from everyone in a department. Homogeneous teams are blind to what they can’t do.",
             "Running the test without a discussion. A report nobody discussed is forgotten within a week.",
             "Publishing results without consent. A profile is personal information, even if it contains nothing hurtful.",
@@ -795,7 +795,7 @@
           "friction": ["D demands specifics, I gets carried away with conversation", "I is hurt by bluntness, D is irritated by emotions", "Both are overoptimistic about deadlines and miss details"],
           "tips": {
             "D": ["Start with a couple of minutes of personal conversation, then get down to business", "Acknowledge I’s contribution out loud — for them it’s fuel", "Don’t cut ideas off mid-flight: let them finish, then pick the best"],
-            "I": ["Keep it short with a D: the result, the deadline, what you need from them", "Put agreements in writing so enthusiasm doesn’t drift away from the facts", "Don’t take D’s directness personally — it’s a style, not a judgment"]
+            "I": ["Keep it short with a D: the result, the deadline, what you need from them", "Write down what you agreed on so enthusiasm doesn’t drift away from the facts", "Don’t take D’s directness personally — it’s a style, not a judgment"]
           }
         },
         "DS": {
@@ -820,7 +820,7 @@
         },
         "II": {
           "summary": "Two people who love people, ideas and attention. Together they have fun and things come easily, but someone has to watch the deadlines and details.",
-          "text": "An I and I pair means energy, optimism and a stream of ideas. They find common ground quickly, support each other and create an atmosphere around them that people want to work in. The problems come from outside: promises made, deadlines forgotten, details nobody checked. Another trap is competing for attention: both want to be center stage, and the conversation turns into two monologues. Such a pair needs an external anchor: written agreements, a calendar and a colleague with a high C or S.",
+          "text": "An I and I pair means energy, optimism and a stream of ideas. They find common ground quickly, support each other and create an atmosphere around them that people want to work in. The problems come from outside: promises made, deadlines forgotten, details nobody checked. Another trap is competing for attention: both want to be center stage, and the conversation turns into two monologues. This pair needs an external anchor: written action items, a calendar and a high-C or high-S colleague.",
           "common": ["Sociability and ease of contact", "Optimism and faith in ideas", "A dislike of formalities and routine"],
           "friction": ["Both talk, nobody listens", "Promises without a plan: deadlines and details slip", "Conflicts are hushed up to keep the mood good"],
           "tips": {
@@ -838,7 +838,7 @@
           }
         },
         "IC": {
-          "summary": "Opposites: I lives on people and impressions, C on facts and precision. A difficult pair that becomes a strong one once there is trust.",
+          "summary": "Opposites: I thrives on people and impressions, C on facts and precision. A difficult pair that becomes a strong one once there is trust.",
           "text": "I and C differ on both axes: pace and focus. I talks a lot, decides fast and relies on feeling; C talks little, decides after checking and relies on data. To C, I seems superficial; to I, C seems tedious and cold. Yet together they cover each other’s blind spots: I sells, inspires and negotiates, C makes sure what was promised actually works. The condition is mutual respect: I acknowledges the value of checking, C acknowledges the value of personal contact.",
           "common": ["An interest in ideas, even if from different angles", "A desire to do things well: I beautifully, C correctly", "No power struggle: neither needs control for its own sake"],
           "friction": ["I promises, C checks and finds discrepancies", "C needs quiet and time, I needs interaction and speed", "I’s emotionality irritates C, C’s reserve wounds I"],
@@ -849,7 +849,7 @@
         },
         "SS": {
           "summary": "The calmest pair: reliability, patience and mutual support. The danger is stagnation and a reluctance to raise difficult topics.",
-          "text": "Two Ss understand each other without words: both value stability, keep their promises, listen and don’t push. Such a pair can work steadily and without conflict for years. The flip side is avoiding anything that disturbs the peace: change, arguments, unpleasant conversations. Problems aren’t solved but endured; decisions are postponed because nobody wants to take the initiative first. An S and S pair benefits from an outside push: firm deadlines, a manager with D or a colleague with I who will stir things up.",
+          "text": "Two Ss understand each other without words: both value stability, keep their promises, listen and don’t push. This pair can work steadily and without conflict for years. The flip side is avoiding anything that disturbs the peace: change, arguments, unpleasant conversations. Problems aren’t solved but endured; decisions are postponed because nobody wants to take the initiative first. An S and S pair benefits from an outside push: firm deadlines, a high-D manager or a high-I colleague who will stir things up.",
           "common": ["Reliability and consistency", "Patience and the ability to listen", "Loyalty to the team and the familiar way of doing things"],
           "friction": ["Nobody starts changes or takes the initiative", "Disagreement is hushed up, resentment builds", "Decisions are postponed while each waits for the other to decide"],
           "tips": {
@@ -859,17 +859,17 @@
         "SC": {
           "summary": "A measured and thorough pair: S holds the relationships, C holds the quality. Excellent for support work and processes, hard on change.",
           "text": "S and C share a measured pace: neither likes rushing, both value order and predictability and think their steps through. The difference is focus: S thinks about people and harmony, C about rules and facts. Together they build the most stable processes on the team, but they struggle to accept anything new, and when change comes, they go through it slowly, together. The typical conflict is a quiet one: C criticizes mistakes and seems callous to S; S bends the rules for people’s sake and seems lax to C.",
-          "common": ["Caution and well-considered decisions", "Respect for order and agreements", "An aversion to haste, chaos and pressure"],
+          "common": ["Caution and well-considered decisions", "Respect for order and commitments", "An aversion to haste, chaos and pressure"],
           "friction": ["C puts rules above relationships, S the other way around", "Both resist change, and the team stands still", "S takes C’s criticism as personal coldness"],
           "tips": {
-            "S": ["See C’s remarks as a commitment to quality, not a judgment of you", "Ask them to explain the logic of a rule rather than arguing with the rule itself", "Propose changes in small steps — it’s easier for both you and C"],
+            "S": ["Read C’s critical feedback as a commitment to quality, not a judgment of you", "Ask them to explain the logic of a rule rather than arguing with the rule itself", "Propose changes in small steps — it’s easier for both you and C"],
             "C": ["Soften criticism: first what’s good, then what to fix", "Remember that for an S, the atmosphere is part of the result", "Notice S’s contribution out loud, since they won’t ask for recognition"]
           }
         },
         "CC": {
           "summary": "A pair of experts: precision, logic and high standards. Together they do flawless work, but slowly, and they tend to argue over trifles.",
-          "text": "Two Cs speak the same language: facts, criteria, risks. They respect each other’s competence and produce work nobody can fault. The problem is pace and perfectionism: every detail gets discussed, every decision is postponed until there is complete certainty, and an argument over a comma can drag on for a week. Another trap is reserve: neither talks about tension, and disagreements turn into cold silence. Such a pair needs an external deadline and an agreement that “good enough” is acceptable too.",
-          "common": ["High quality standards", "Reliance on data and logic", "Discipline and keeping to agreements"],
+          "text": "Two Cs speak the same language: facts, criteria, risks. They respect each other’s competence and produce work nobody can fault. The problem is pace and perfectionism: every detail gets discussed, every decision is postponed until there is complete certainty, and an argument over a comma can drag on for a week. Another trap is reserve: neither talks about tension, and disagreements turn into cold silence. This pair needs an external deadline and a shared understanding that “good enough” is acceptable too.",
+          "common": ["High quality standards", "Reliance on data and logic", "Discipline and keeping commitments"],
           "friction": ["Perfectionism doubles, deadlines slip away", "Arguments about details with no decision on the substance", "Tension goes unspoken and builds up"],
           "tips": {
             "C": ["Decide in advance what level of quality is sufficient, and stop there", "Limit the time for analysis — a timely decision beats a perfect one with no deadline", "Talk about disagreements directly, because silence doesn’t resolve anything"]
@@ -890,7 +890,6 @@
           "h": "How we write and check our texts",
           "p": [
             "The statements about the method are based on primary sources and peer-reviewed research, including critical work; the list of works is collected in the “{sources}” section. We do not paraphrase commercial reports: the descriptions of the four styles and the sixteen profiles were written by our editorial team on the basis of the generally accepted characteristics of the model.",
-            "The source language of the site is Russian. The translations into thirteen languages were produced with language models and are checked automatically: a script makes sure that the structure of the texts, the terms and the numbers match across all languages. In September 2026, each translation was also proofread by a language model acting as an editor: inaccurate test statements, overly literal phrasing and inconsistent terminology were corrected. Proofreading by native speakers is planned but has not been done yet, so the translations may still have rough edges.",
             "Every page carries the date it was last updated. We revise the texts when the test itself changes or when readers point something out, and we do not publish anything we cannot back up with a source or with our own checking."
           ]
         }
@@ -1099,9 +1098,9 @@
     "contact.mb": "MB",
 
     "consent.label": "Cookie notice",
-    "consent.text": "This site keeps your progress, result and chosen language in your browser’s local storage, and Yandex Metrica collects anonymized visit statistics and a recording of on-page actions to help us improve the site. Your name, email and result are not sent to Metrica.",
+    "consent.text": "This site keeps your progress, result and chosen language in your browser’s local storage, and a web analytics service collects anonymized visit statistics and a recording of on-page actions to help us improve the site. Your name, email and result are not sent to the analytics service.",
     "consent.more": "Learn more",
-    "consent.details": "Stored in your browser: the name and email you enter before the test; your answers and unfinished progress; your latest result; your chosen language; a note that you have seen this notice. This data stays on your device and is removed when you clear the site’s data. The hosting provider (GitHub Pages) receives standard technical request data. When you finish the test, your name, email and answers are passed to the email-sending service (Google Apps Script), which emails you your result and stores your name, email, date and result in the site owner’s results database (a Google Sheet). Yandex Metrica (Yandex LLC) receives the page address without the result code, the referrer, device and browser type, an anonymized recording of on-page actions (the name and email fields, the result link and code are excluded), and sets its own cookies. You can block it in your browser settings or with a tracker blocker. No advertising trackers are used.",
+    "consent.details": "Stored in your browser: the name and email you enter before the test; your answers and unfinished progress; your latest result; your chosen language; a note that you have seen this notice. This data stays on your device and is removed when you clear the site’s data. The hosting provider (GitHub Pages) receives standard technical request data. When you finish the test, your name, email and answers are passed to the email-sending service (Google Apps Script), which emails you your result and stores your name, email, date and result in the site owner’s results database (a Google Sheet). The web analytics service receives the page address without the result code, the referrer, device and browser type, an anonymized recording of on-page actions (the name and email fields, the result link and code are excluded), and sets its own cookies. You can block it in your browser settings or with a tracker blocker. No advertising trackers are used.",
     "consent.accept": "Accept",
     "consent.decline": "Essential only",
     "consent.ok": "Got it",

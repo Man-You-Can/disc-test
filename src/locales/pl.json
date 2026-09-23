@@ -401,7 +401,7 @@
         {
           "h": "Na czym opiera się test",
           "p": [
-            "Test jest zbudowany na czteroczynnikowym modelu Williama Marstona (1928) i późniejszych kwestionariuszach w formacie „najbardziej – najmniej”: 24 pytania po cztery stwierdzenia, po jednym na każdy styl. Opisy stylów i szesnastu profili napisali autorzy serwisu na podstawie ogólnie przyjętych charakterystyk DISC. O tym, jak powstały i jak zostały sprawdzone tłumaczenia, piszemy niżej.",
+            "Test jest zbudowany na czteroczynnikowym modelu Williama Marstona (1928) i późniejszych kwestionariuszach w formacie „najbardziej – najmniej”: 24 pytania po cztery stwierdzenia, po jednym na każdy styl. Opisy stylów i szesnastu profili napisali autorzy serwisu na podstawie ogólnie przyjętych charakterystyk DISC.",
             "Projekt jest niezależny i nie jest powiązany z Wiley (DiSC®), TTI Success Insights ani innymi właścicielami znaków towarowych. Słowo DISC jest używane jako ogólna nazwa modelu."
           ]
         },
@@ -430,7 +430,7 @@
           "h": "Dokąd przekazywane są dane",
           "p": [
             "Po zakończeniu testu imię, adres e-mail i odpowiedzi (w postaci kodu wyniku) są przekazywane do usługi wysyłającej e-maile – skryptu Google Apps Script, który działa na koncie Google właściciela serwisu. Skrypt wysyła ci e-mail z wynikiem i zapisuje imię, adres e-mail, datę wykonania testu oraz wynik (profil, punkty, link do raportu) w bazie wyników – arkuszu Google na tym samym koncie. Dane te nie są wykorzystywane do innych celów ani przekazywane osobom trzecim.",
-            "Hosting GitHub Pages otrzymuje standardowe dane techniczne żądania: adres IP, typ przeglądarki, adres strony. Czcionki są przechowywane w samym serwisie i nie są pobierane z serwerów Google. Statystyki odwiedzin zbiera Yandex Metrica (Yandex LLC): otrzymuje zanonimizowane dane o wizycie – adres strony bez kodu wyniku, źródło wejścia, typ urządzenia i przeglądarki – oraz zapis działań na stronie (Webvisor); pola z imieniem i adresem e-mail, link i kod wyniku są z tego zapisu wyłączone. Dane są przetwarzane na warunkach firmy Yandex; ich zbieranie można wyłączyć w ustawieniach przeglądarki albo za pomocą narzędzia blokującego skrypty śledzące. Reklamowe skrypty śledzące nie są używane."
+            "Hosting GitHub Pages otrzymuje standardowe dane techniczne żądania: adres IP, typ przeglądarki, adres strony. Czcionki są przechowywane w samym serwisie i nie są pobierane z serwerów Google. Statystyki odwiedzin zbiera usługa analityki internetowej: otrzymuje zanonimizowane dane o wizycie – adres strony bez kodu wyniku, źródło wejścia, typ urządzenia i przeglądarki – oraz zapis działań na stronie; pola z imieniem i adresem e-mail, link i kod wyniku są z tego zapisu wyłączone. Zbieranie danych można wyłączyć w ustawieniach przeglądarki albo za pomocą narzędzia blokującego skrypty śledzące. Reklamowe skrypty śledzące nie są używane."
           ]
         },
         {
@@ -447,11 +447,11 @@
         },
         {
           "h": "Pliki cookie",
-          "p": ["Sam serwis nie zapisuje plików cookie: do celów wymienionych wyżej wykorzystuje pamięć lokalną przeglądarki – technologię o tym samym przeznaczeniu. Yandex Metrica zapisuje własne pliki cookie (na przykład _ym_uid i _ym_d), aby rozróżniać odwiedzających. Dlatego komunikat wyświetla się jeden raz, przy pierwszej wizycie."]
+          "p": ["Sam serwis nie zapisuje plików cookie: do celów wymienionych wyżej wykorzystuje pamięć lokalną przeglądarki – technologię o tym samym przeznaczeniu. Usługa analityczna zapisuje własne pliki cookie, aby rozróżniać odwiedzających. Dlatego komunikat wyświetla się jeden raz, przy pierwszej wizycie."]
         },
         {
           "h": "Zmiany",
-          "p": ["Ostatnia aktualizacja: 7 września 2026 r. Zmiany w sposobie przetwarzania danych będą odnotowywane na tej stronie."]
+          "p": ["Ostatnia aktualizacja: 23 września 2026 r. Zmiany w sposobie przetwarzania danych będą odnotowywane na tej stronie."]
         }
       ]
     },
@@ -892,7 +892,6 @@
           "h": "Jak piszemy i sprawdzamy teksty",
           "p": [
             "Twierdzenia o metodzie opierają się na źródłach pierwotnych i recenzowanych badaniach, w tym krytycznych; lista prac znajduje się w sekcji „{sources}”. Nie streszczamy komercyjnych raportów: opisy czterech stylów i szesnastu profili napisała redakcja na podstawie ogólnie przyjętych charakterystyk modelu.",
-            "Językiem źródłowym serwisu jest rosyjski. Tłumaczenia na trzynaście języków powstały przy użyciu modeli językowych i są sprawdzane automatycznie: skrypt pilnuje, żeby we wszystkich językach zgadzały się struktura tekstów, terminy i liczby. We wrześniu 2026 roku każde tłumaczenie zostało dodatkowo zredagowane przez model językowy występujący w roli redaktora: poprawiono nieprecyzyjne stwierdzenia testu, kalki językowe i niespójności terminologiczne. Korekta przez rodzimych użytkowników języka jest zaplanowana, ale jeszcze nie została przeprowadzona, dlatego w tłumaczeniach mogą się zdarzać niezręczności.",
             "Na każdej stronie podajemy datę ostatniej zmiany. Poprawiamy teksty, gdy zmienia się sam test albo gdy dostajemy uwagi, i nie publikujemy niczego, czego nie możemy poprzeć źródłem albo własną weryfikacją."
           ]
         }
@@ -1101,9 +1100,9 @@
     "contact.mb": "MB",
 
     "consent.label": "Informacja o plikach cookie",
-    "consent.text": "Serwis przechowuje twoje postępy, wynik i wybrany język w pamięci lokalnej przeglądarki, a Yandex Metrica zbiera zanonimizowane statystyki odwiedzin oraz zapis działań na stronie, abyśmy mogli ulepszać serwis. Imię, e-mail i wynik nie są przekazywane do usługi Metrica.",
+    "consent.text": "Serwis przechowuje twoje postępy, wynik i wybrany język w pamięci lokalnej przeglądarki, a usługa analityki internetowej zbiera zanonimizowane statystyki odwiedzin oraz zapis działań na stronie, abyśmy mogli ulepszać serwis. Imię, e-mail i wynik nie są przekazywane do usługi analitycznej.",
     "consent.more": "Więcej informacji",
-    "consent.details": "W przeglądarce przechowywane są: imię i e-mail podane przed testem; odpowiedzi i nieukończone postępy; ostatni wynik; wybrany język; informacja, że ten komunikat został już wyświetlony. Te dane pozostają na twoim urządzeniu i są usuwane przy czyszczeniu danych witryny. Hosting GitHub Pages otrzymuje standardowe dane techniczne żądania. Po zakończeniu testu imię, e-mail i odpowiedzi są przekazywane do usługi wysyłki wiadomości (Google Apps Script): wysyła ona do ciebie wiadomość z wynikiem i zapisuje imię, e-mail, datę oraz wynik w bazie wyników właściciela serwisu (Arkusz Google). Yandex Metrica (Yandex LLC) otrzymuje adres strony bez kodu wyniku, źródło wejścia, typ urządzenia i przeglądarki, zanonimizowany zapis działań na stronie (pola z imieniem i e-mailem oraz link i kod wyniku są z zapisu wyłączone) i zapisuje własne pliki cookie. Możesz ją zablokować w ustawieniach przeglądarki lub za pomocą programu blokującego skrypty śledzące. Reklamowe skrypty śledzące nie są używane.",
+    "consent.details": "W przeglądarce przechowywane są: imię i e-mail podane przed testem; odpowiedzi i nieukończone postępy; ostatni wynik; wybrany język; informacja, że ten komunikat został już wyświetlony. Te dane pozostają na twoim urządzeniu i są usuwane przy czyszczeniu danych witryny. Hosting GitHub Pages otrzymuje standardowe dane techniczne żądania. Po zakończeniu testu imię, e-mail i odpowiedzi są przekazywane do usługi wysyłki wiadomości (Google Apps Script): wysyła ona do ciebie wiadomość z wynikiem i zapisuje imię, e-mail, datę oraz wynik w bazie wyników właściciela serwisu (Arkusz Google). Usługa analityki internetowej otrzymuje adres strony bez kodu wyniku, źródło wejścia, typ urządzenia i przeglądarki, zanonimizowany zapis działań na stronie (pola z imieniem i e-mailem oraz link i kod wyniku są z zapisu wyłączone) i zapisuje własne pliki cookie. Możesz ją zablokować w ustawieniach przeglądarki lub za pomocą programu blokującego skrypty śledzące. Reklamowe skrypty śledzące nie są używane.",
     "consent.accept": "Akceptuję",
     "consent.decline": "Tylko niezbędne",
     "consent.ok": "Rozumiem",
