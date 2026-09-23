@@ -49,7 +49,6 @@ const ltr = str => `<span dir="ltr">${str}</span>`; // латиница внут
 const FOOT_ITEMS = [['nav.about', 'about/']].concat(feedbackEmail ? [['nav.contact', 'contact/']] : []).concat([['nav.privacy', 'privacy/']]);
 const footLinks = (L, base) => FOOT_ITEMS.map(([k, sub]) => `<a href="${base + sub}">${esc(L.ui[k])}</a>`).join(' · ');
 const PROFILE_KEYS = ['D', 'DI', 'DC', 'DS', 'I', 'ID', 'IS', 'IC', 'S', 'SI', 'SC', 'SD', 'C', 'CD', 'CS', 'CI'];
-const REPO_URL = 'https://github.com/Man-You-Can/disc-test';
 // Источники к странице «Что такое DISC». Библиографические описания одинаковы во всех языках
 // (названия работ приводятся на языке оригинала), поэтому живут здесь, а не в локалях;
 // переводятся только заголовок раздела, вводка и подпись вида «Исследование» (ключи sources.kind.*).
@@ -176,9 +175,8 @@ const fmtDate = (iso, L) => { try { return new Intl.DateTimeFormat(L.dateLocale,
 const dirty = (() => { try { return new Set(execSync('git status --porcelain -z', { cwd: ROOT, stdio: ['ignore', 'pipe', 'ignore'] }).toString().split('\0').filter(Boolean).map(l => l.slice(3))); } catch (e) { return new Set(); } })();
 const lastmod = files => { if (files.some(f => dirty.has(f))) return today;
   try { return execSync('git log -1 --format=%cs -- ' + files.map(f => JSON.stringify(f)).join(' '), { cwd: ROOT, stdio: ['ignore', 'pipe', 'ignore'] }).toString().trim() || null; } catch (e) { return null; } };
-// Организация-издатель: одна карточка на весь сайт, со ссылкой на открытый код и адресом для связи
-const orgLd = () => ({ '@context': 'https://schema.org', '@type': 'Organization', name: 'DISC Test', url: siteUrl + '/', logo: `${siteUrl}/icon-512.png`,
-  sameAs: [REPO_URL], email: feedbackEmail || undefined });
+// Организация-издатель: одна карточка на весь сайт, с адресом для связи
+const orgLd = () => ({ '@context': 'https://schema.org', '@type': 'Organization', name: 'DISC Test', url: siteUrl + '/', logo: `${siteUrl}/icon-512.png`, email: feedbackEmail || undefined });
 const jsonLd = L => JSON.stringify([
   { '@context': 'https://schema.org', '@type': 'WebSite', name: 'DISC Test', alternateName: L.brand, url: siteUrl + '/', inLanguage: L.lang },
   orgLd(),
@@ -361,7 +359,6 @@ for (const L of locales) {
   writeContentPage(L, 'about/', { navKey: 'nav.about', title: a.title, description: a.description, crumbs: [{ name: t('nav.about') }],
     content: (`<div class="eyebrow">DISC</div><h1>${escFull(a.h1)}</h1>` +
       sectionsHtml(a.sections.slice(0, 2)) + sectionsHtml(C.editorial.sections) + sectionsHtml(a.sections.slice(2)))
-      .replace('github.com/Man-You-Can/disc-test', `<a href="${REPO_URL}" rel="noopener">github.com/Man-You-Can/disc-test</a>`)
       .replace('{contact}', feedbackEmail ? `<a href="../contact/">${escFull(t('nav.contact'))}</a>` : escFull(t('nav.contact')))
       .replace('{sources}', `<a href="../disc/#sources">${escFull(L.content.disc.sourcesTitle)}</a>`) + ctaBlock(L, t, '../') });
   const pv = C.privacy;
