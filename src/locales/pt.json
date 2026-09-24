@@ -450,7 +450,7 @@
   },
   "content": {
     "disc": {
-      "title": "O que é DISC: o modelo, os quatro estilos de comportamento e como ler o perfil",
+      "title": "O que é DISC: o modelo e os quatro estilos de comportamento",
       "description": "Explicação simples da metodologia DISC: de onde ela vem, o que mede, os quatro estilos D, I, S, C, como o resultado é calculado e como ler o seu perfil.",
       "h1": "O que é DISC",
       "lead": "DISC é um modelo de comportamento que descreve como uma pessoa age, se comunica e toma decisões em quatro escalas: dominância, influência, estabilidade e conformidade. Não é um teste de inteligência nem um diagnóstico, mas uma linguagem comum para falar sobre estilos de comportamento.",
@@ -713,7 +713,7 @@
       ]
     },
     "colors": {
-      "title": "Cores DISC: perfil comportamental vermelho, amarelo, verde e azul",
+      "title": "Cores DISC: perfil comportamental vermelho, amarelo, verde, azul",
       "description": "Perfis vermelho, amarelo, verde e azul no DISC: como reconhecer cada cor, como lidar com ela e o que o livro “Cercado de idiotas” tem a ver. Teste grátis.",
       "h1": "DISC por cores: vermelho, amarelo, verde, azul",
       "lead": "Os quatro estilos DISC costumam ser representados por cores: vermelho é dominância, amarelo é influência, verde é estabilidade, azul é conformidade. As cores não acrescentam nada ao modelo, mas ajudam a memorizar os estilos rapidamente e a falar sobre eles na equipe. Veja o que está por trás de cada cor e como descobrir a sua.",
@@ -813,7 +813,7 @@
       }
     },
     "pdf": {
-      "title": "Teste DISC PDF gratuito para imprimir, com gabarito e interpretação",
+      "title": "Teste DISC PDF gratuito para imprimir: gabarito e interpretação",
       "description": "Teste DISC gratuito em PDF: 24 blocos de afirmações, gabarito, tabela de cálculo e descrição dos 16 perfis. Baixe, imprima e responda no papel.",
       "h1": "Teste DISC em PDF: baixar e imprimir",
       "lead": "A mesma versão completa do teste online, mas em um arquivo para impressão: 24 blocos de quatro afirmações, gabarito dos estilos, tabela de cálculo e descrição de todos os 16 perfis. O arquivo é gratuito e não exige cadastro.",
@@ -968,7 +968,7 @@
       }
     },
     "compatibility": {
-      "title": "Compatibilidade DISC entre perfis: como D, I, S e C trabalham juntos",
+      "title": "Compatibilidade DISC entre perfis: D, I, S e C trabalhando juntos",
       "description": "Compatibilidade DISC em todas as combinações: D e I, D e S, D e C, I e S, I e C, S e C e estilos iguais. O que une cada par, onde há atritos e o que fazer.",
       "h1": "Compatibilidade dos estilos DISC",
       "lead": "No DISC não existem pares incompatíveis: quaisquer dois estilos podem trabalhar juntos se entenderem as diferenças. Mas cada par tem os próprios pontos fortes e os próprios conflitos típicos. Escolha dois estilos na matriz para saber o que têm em comum, onde surgem atritos e o que cada um pode fazer.",
@@ -1193,6 +1193,28 @@
         { "q": "Uma equipe inteira pode fazer o teste?", "a": "Sim: cada pessoa faz o teste pelo link, e os resultados são reunidos no painel do administrador." }
       ],
       "profilesTitle": "Os 16 perfis DISC"
+    },
+    "profiles": {
+      "sections": [
+        {
+          "h": "Como quatro estilos formam 16 perfis",
+          "p": [
+            "Para cada estilo, o teste calcula a diferença entre as marcações “mais parecido comigo” e “menos parecido comigo”: de −24 a +24. O estilo com o maior total se torna o predominante, a primeira letra do perfil. O estilo em segundo lugar conta como secundário se o total for positivo, chegar a pelo menos 40% do predominante e não ficar abaixo de 3 pontos. Nesse caso, ele vira a segunda letra.",
+            "Se o segundo estilo não atingir esse limite, o perfil é “puro”: D, I, S ou C. Se atingir, surge uma das doze combinações. Os quatro perfis puros e as doze combinações formam os 16 perfis da tabela acima."
+          ]
+        },
+        {
+          "h": "Qual é a diferença entre perfil e estilo",
+          "p": [
+            "O estilo é uma das quatro escalas do DISC: dominância, influência, estabilidade ou conformidade. O perfil descreve como elas se combinam em uma pessoa específica: o estilo predominante define a base do comportamento, e o secundário dá a nuance. Por isso, DI e ID têm as mesmas letras, mas são perfis diferentes. O Pioneiro (DI) vai antes de tudo atrás do resultado e, no caminho, leva as pessoas junto; o Motivador (ID) antes de tudo envolve as pessoas e, por meio delas, chega ao resultado.",
+            "O perfil não é um rótulo nem uma nota. Todas as pessoas têm os quatro estilos; o perfil mostra apenas quais deles aparecem com mais força no ambiente de trabalho habitual."
+          ]
+        },
+        {
+          "h": "Como descobrir o seu perfil",
+          "p": ["Faça o teste gratuito: 24 blocos de quatro afirmações, cerca de 10 minutos. Na tela de resultado, você verá o gráfico, os estilos predominante e secundário e um link para a página do seu perfil: compatibilidade com os outros estilos e dicas de como é melhor você trabalhar e se comunicar."]
+        }
+      ]
     }
   },
   "ui": {
@@ -1346,15 +1368,15 @@
     "nav.pdf": "Teste em PDF",
     "nav.materials": "Materiais sobre DISC",
 
-    "pages.styles.title": "Os 4 estilos DISC (perfis comportamentais): D, I, S, C — traços, pontos fortes, motivação",
+    "pages.styles.title": "Os 4 estilos DISC (perfis comportamentais): D, I, S e C",
     "pages.styles.description": "Os quatro perfis comportamentais DISC: dominância, influência, estabilidade e conformidade. Traços, pontos fortes, motivação e comportamento sob pressão.",
     "pages.styles.h1": "Os quatro estilos DISC (perfis comportamentais)",
     "pages.styles.lead": "O DISC descreve o comportamento em quatro escalas. Todas as pessoas têm os quatro estilos, mas um ou dois são mais acentuados. Algumas plataformas brasileiras chamam os quatro estilos de Executor (D), Comunicador (I), Planejador (S) e Analista (C); neste site, os nomes dos 16 perfis são outros (aqui, por exemplo, “Comunicador” é o perfil IC). A seguir: o que caracteriza cada estilo, o que o motiva e como se comunicar com ele.",
-    "pages.profiles.title": "16 perfis comportamentais DISC — todos os tipos do teste com descrição",
+    "pages.profiles.title": "16 perfis DISC: todas as combinações de estilos explicadas",
     "pages.profiles.description": "Todos os 16 perfis do teste DISC: quatro estilos puros e doze combinações. Breve descrição de cada tipo e link para a página detalhada.",
-    "pages.profiles.h1": "16 perfis e tipos comportamentais DISC",
+    "pages.profiles.h1": "16 perfis DISC",
     "pages.profiles.lead": "O resultado do teste é o seu estilo predominante e, se for acentuado, um secundário. Assim surgem 16 perfis: quatro “puros” e doze combinações. Encontre o seu ou faça o teste para descobri-lo.",
-    "pages.profile.title": "{name} ({key}) — perfil DISC: descrição, pontos fortes, áreas de desenvolvimento",
+    "pages.profile.title": "{name} ({key}): perfil comportamental DISC, traços e dicas",
     "pages.profile.h1": "{name} ({key}): perfil DISC",
     "pages.profile.description": "Perfil DISC {key} “{name}”: {summary}",
     "pages.profile.descCta": "Faça o teste grátis em 10 minutos.",
@@ -1380,7 +1402,7 @@
     "pages.profile.example": "Exemplo prático",
     "pages.profile.styleMore": "Mais sobre o estilo {key}: {name}",
     "pages.profile.related": "Perfis parecidos",
-    "pages.compat.title": "{a} e {b}: compatibilidade dos estilos DISC no trabalho e na comunicação",
+    "pages.compat.title": "{a} e {b}: compatibilidade DISC no trabalho",
     "pages.compat.description": "Como os estilos {a} e {b} trabalham juntos: o que têm em comum, onde surgem atritos e o que cada um pode fazer. Teste DISC gratuito no site.",
     "pages.compat.h1": "{a} e {b}: compatibilidade",
     "pages.compat.common": "O que têm em comum",
@@ -1400,6 +1422,10 @@
     "pages.pdf.missing": "O arquivo está sendo preparado. Enquanto isso, faça o teste online ou salve o resultado em PDF na tela de resultado.",
     "pages.updated": "Atualizado em {date}",
     "pages.sourcesLink": "Fontes e bibliografia",
+    "pages.compat.together": "Como trabalham juntos",
+    "pages.profiles.tableTitle": "Os 16 perfis: estilo predominante e secundário",
+    "pages.profiles.colLead": "Estilo predominante",
+    "pages.profiles.colPure": "Sem secundário",
 
     "cta.title": "Descubra seu perfil DISC",
     "cta.text": "Teste gratuito: 24 blocos, cerca de 10 minutos, resultado na hora e por e-mail.",

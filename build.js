@@ -176,8 +176,14 @@ const lastmod = files => { if (files.some(f => dirty.has(f))) return today;
 // Новый адрес получает дату последнего коммита своих файлов, изменённый — сегодняшнюю, неизменный сохраняет прежнюю.
 const LASTMOD_FILE = path.join(SRC, 'lastmod.json');
 const lmOld = fs.existsSync(LASTMOD_FILE) ? JSON.parse(fs.readFileSync(LASTMOD_FILE, 'utf8')) : {}, lmNew = {};
+// p — дата первой публикации (datePublished в разметке Article): у страниц, опубликованных до появления поля, — по журналу
+// работ (PROJECT.md): сайт и первые разделы — 7 сентября 2026, расшифровка, цвета, совместимость, команда, MBTI и PDF — 8 сентября,
+// четыре языка второй волны — 20 сентября; у новых страниц — дата первой сборки. История git для этого не годится: клоны бывают неполными.
+const WAVE2 = ['id', 'tr', 'pl', 'zh-hant'];
+const firstPublished = key => { const [lang, sub] = [key.slice(0, key.indexOf(':')), key.slice(key.indexOf(':') + 1)];
+  return WAVE2.includes(lang) ? '2026-09-20' : /^(results|colors|compatibility|teams|disc-vs-mbti|pdf)/.test(sub) ? '2026-09-08' : '2026-09-07'; };
 const contentDate = (key, text, files) => { const h = crypto.createHash('sha1').update(text).digest('hex').slice(0, 16), old = lmOld[key];
-  const d = old ? (old.h === h ? old.d : today) : (lastmod(files) || today); lmNew[key] = { h, d }; return d; };
+  const d = old ? (old.h === h ? old.d : today) : (lastmod(files) || today); lmNew[key] = { h, d, p: old ? (old.p || firstPublished(key)) : today }; return d; };
 // Локаль для скрипта главной — только то, что нужно тесту, отчёту и блоку под тестом: у профилей название и краткое описание,
 // из статей — content.home и названия цветов (ссылка «Ваш цвет DISC» в отчёте). Тексты статей и страниц профилей
 // (profiles.*.deep, careers, team, with, content.*) раньше попадали в скрипт целиком — ~150 КБ лишнего на главной (аудит 3, п. 4).
@@ -188,10 +194,10 @@ const homeLocale = L => Object.assign({}, L, {
 // Организация-издатель: одна карточка на весь сайт, с адресом для связи
 const orgLd = () => ({ '@context': 'https://schema.org', '@type': 'Organization', name: 'DISC Test', url: siteUrl + '/', logo: `${siteUrl}/icon-512.png`, email: feedbackEmail || undefined });
 const jsonLd = L => JSON.stringify([
-  { '@context': 'https://schema.org', '@type': 'WebSite', name: 'DISC Test', alternateName: L.brand, url: siteUrl + '/', inLanguage: hl(L.lang) },
+  { '@context': 'https://schema.org', '@type': 'WebSite', name: 'DISC Test', alternateName: [...new Set([L.brand, 'disc-test.org'])].filter(x => x !== 'DISC Test'), url: siteUrl + '/', inLanguage: hl(L.lang) },
   orgLd(),
   { '@context': 'https://schema.org', '@type': 'WebApplication', name: L.brand, url: urlOf(L.lang), description: L.description,
-    applicationCategory: 'Personality test', operatingSystem: 'Any', browserRequirements: 'Requires JavaScript', inLanguage: hl(L.lang),
+    applicationCategory: 'BusinessApplication', applicationSubCategory: 'Personality test', operatingSystem: 'Any', browserRequirements: 'Requires JavaScript', inLanguage: hl(L.lang),
     isAccessibleForFree: true, offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' }, image: `${siteUrl}/og/${L.lang}.png`,
     publisher: { '@type': 'Organization', name: 'DISC Test', url: siteUrl + '/', logo: `${siteUrl}/icon-512.png` } }
 ]).replace(/</g, '\\u003c');
@@ -210,7 +216,7 @@ for (const L of locales) {
   pages.push({ lang: L.lang, sub: '', date: contentDate(L.lang + ':', [L.title, L.description, introBuilt.split(rootRel + pathOf(L.lang)).join('~/')].join('\n'), [`src/locales/${L.lang}.json`, 'src/template.html', 'src/intro.js']) });
   const chevron = `<svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5l3.5 3.5 3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
   const switcher = `<div class="langsel" id="langSel">` +
-    `<button type="button" class="langbtn" id="langBtn" aria-haspopup="listbox" aria-expanded="false" aria-label="${esc(L.ui.langLabel)}">${flag(L.lang)}<span class="langname">${esc(L.name)}</span>${chevron}</button>` +
+    `<button type="button" class="langbtn" id="langBtn" aria-haspopup="listbox" aria-expanded="false" aria-label="${esc(L.ui.langLabel)}: ${esc(L.name)}">${flag(L.lang)}<span class="langname">${esc(L.name)}</span>${chevron}</button>` +
     `<ul class="langmenu" id="langMenu" role="listbox" aria-label="${esc(L.ui.langLabel)}" style="--lrows:${LANG_ROWS}" hidden>` +
     locales.map(x => `<li role="none"><a role="option" href="${href(x)}" hreflang="${hl(x.lang)}" lang="${hl(x.lang)}" data-lang="${x.lang}" aria-selected="${x.lang === L.lang}" tabindex="-1">${flag(x.lang)}<span>${esc(x.name)}</span></a></li>`).join('') +
     `</ul></div>`;
@@ -244,6 +250,9 @@ for (const L of locales) {
 const colorVar = k => 'var(--' + k.toLowerCase() + ')';
 const badge = (key, cls) => `<span class="${cls || 'badge'}" style="--kp:${colorVar(key[0])};--ks:${key[1] ? colorVar(key[1]) : 'inherit'}"><span class="p">${key[0]}</span>${key[1] ? `<span class="s">${key[1]}</span>` : ''}</span>`;
 const ul = arr => '<ul>' + arr.map(x => `<li>${escFull(x)}</li>`).join('') + '</ul>';
+// Секция текстовой страницы: {h, p:[абзацы], ul|ol:[пункты], after:[абзацы после списка]}
+const listHtml = (tag, arr) => `<${tag}>` + arr.map(x => `<li>${escFull(x)}</li>`).join('') + `</${tag}>`;
+const sectionsHtml = secs => secs.map(sec => `<h2>${escFull(sec.h)}</h2>` + (sec.p || []).map(par => `<p>${escFull(par)}</p>`).join('') + (sec.ul ? listHtml('ul', sec.ul) : '') + (sec.ol ? listHtml('ol', sec.ol) : '') + (sec.after || []).map(par => `<p>${escFull(par)}</p>`).join('')).join('');
 const truncate = (str, n) => str.length <= n ? str : str.slice(0, n).replace(/\s+\S*$/, '') + '…';
 // предел description для шаблонных описаний (профили, пары): в японском и китайском выдача показывает около 95 знаков, и пробелов для обрезки там нет
 const descMax = L => /^(ja|zh)/.test(L.lang) ? 90 : 155;
@@ -271,6 +280,15 @@ const ctaBlock = (L, t, homeHref) => `<aside class="cta"><div><h2>${t('cta.title
 // Призыв сразу после вводного абзаца: с поиска приходят на профили, расшифровку, PDF, а кнопка теста была только в конце
 // страницы (на телефоне — через 4–10 экранов). data-goal — цели Метрики cta-top / cta-bottom / cta-float (аудит 3, п. 1)
 const ctaTop = (t, homeHref, key, btn) => `<aside class="cta cta-top no-print"><p>${escFull(t(key || 'cta.inline'))}</p><a class="btn" href="${homeHref}" data-goal="cta-top">${escFull(btn || t('cta.button'))}</a></aside>`;
+// Карточка профиля или пары (та же картинка, что og:image) картинкой в тексте страницы: её индексируют Google Картинки,
+// встроенный SVG и метатеги — нет (аудит 3, п. 10). Ставится после верхнего призыва, первый экран не удлиняет.
+const ogFigure = (src, alt) => `<figure class="ogfig"><img src="${src}" width="1200" height="630" alt="${escFull(alt)}" loading="lazy" decoding="async"></figure>`;
+// Таблица всех 16 профилей: строки — ведущий стиль, столбцы — без вторичного и вторичный D, I, S, C (аудит 3, п. 9)
+const profilesTable = (L, t, base) => `<h2>${escFull(t('pages.profiles.tableTitle'))}</h2><div class="tablewrap"><table class="cmp ptable"><thead><tr><th>${escFull(t('pages.profiles.colLead'))}</th><th>${escFull(t('pages.profiles.colPure'))}</th>` +
+  KEYS.map(k => `<th>${ltr('+ ' + k)}</th>`).join('') + `</tr></thead><tbody>` +
+  KEYS.map(p => `<tr><th scope="row"><span class="k" style="color:${colorVar(p)}">${p}</span> ${escFull(L.keys[p])}</th>` +
+    [''].concat(KEYS).map(s2 => s2 === p ? `<td class="na">—</td>` : `<td><a href="${base}profiles/${(p + s2).toLowerCase()}/">${escFull(L.profiles[p + s2].name)}</a> <small>${ltr(p + s2)}</small></td>`).join('') + `</tr>`).join('') +
+  `</tbody></table></div>`;
 // description страницы профиля: profiles.<код>.metaDesc и призыв pages.profile.descCta, если он помещается целиком
 const profileDesc = (L, key, t) => { const pr = L.profiles[key], cta = t('pages.profile.descCta'), sep = /^(ja|zh)/.test(L.lang) ? '' : ' ';
   if (!pr.metaDesc) return truncDesc(L, t('pages.profile.description', { name: pr.name, key, summary: pr.summary }), descMax(L) - cta.length - sep.length) + sep + cta;
@@ -287,22 +305,23 @@ function writeContentPage(L, sub, opts) {
   const depth = (pathOf(L.lang) + sub).split('/').length - 1, rootRel = depth ? '../'.repeat(depth) : './';
   const base = rootRel + pathOf(L.lang), homeHref = base || './';
   const switcher = `<div class="langsel" id="langSel">` +
-    `<button type="button" class="langbtn" id="langBtn" aria-haspopup="listbox" aria-expanded="false" aria-label="${esc(L.ui.langLabel)}">${flag(L.lang)}<span class="langname">${esc(L.name)}</span><svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5l3.5 3.5 3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>` +
+    `<button type="button" class="langbtn" id="langBtn" aria-haspopup="listbox" aria-expanded="false" aria-label="${esc(L.ui.langLabel)}: ${esc(L.name)}">${flag(L.lang)}<span class="langname">${esc(L.name)}</span><svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5l3.5 3.5 3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>` +
     `<ul class="langmenu" id="langMenu" role="listbox" aria-label="${esc(L.ui.langLabel)}" style="--lrows:${LANG_ROWS}" hidden>` +
     locales.map(x => `<li role="none"><a role="option" href="${rootRel + pathOf(x.lang) + sub}" hreflang="${hl(x.lang)}" lang="${hl(x.lang)}" data-lang="${x.lang}" aria-selected="${x.lang === L.lang}" tabindex="-1">${flag(x.lang)}<span>${esc(x.name)}</span></a></li>`).join('') + `</ul></div>`;
   const links = locales.map(x => `<a href="${rootRel + pathOf(x.lang) + sub}" hreflang="${hl(x.lang)}" lang="${hl(x.lang)}" data-lang="${x.lang}"${x.lang === L.lang ? ' aria-current="page"' : ''}>${flag(x.lang)}<span>${esc(x.name)}</span></a>`).join('');
   const navHtml = NAV_ITEMS.map(([k, s2]) => `<a href="${base + s2}"${opts.navKey === k ? ' aria-current="page"' : ''}>${esc(L.ui[k])}</a>`).join('');
   const footHtml = footLinks(L, base);
   const pageFiles = [`src/locales/${L.lang}.json`, 'src/page.html', 'build.js'].concat(opts.files || []);
-  const updated = contentDate(L.lang + ':' + sub, [opts.title, opts.description, opts.content].join('\n'), pageFiles);
+  const updated = contentDate(L.lang + ':' + sub, [opts.title, opts.description, opts.content].join('\n'), pageFiles), published = lmNew[L.lang + ':' + sub].p;
   const updatedHtml = opts.noDate ? '' : `<p class="updated"><time datetime="${updated}">${esc(t('pages.updated', { date: fmtDate(updated, L) }))}</time></p>`;
   const crumbs = [{ name: L.ui['nav.home'], href: homeHref }].concat(opts.crumbs || []);
   const crumbsHtml = crumbs.map((c, i) => i === crumbs.length - 1 ? `<span aria-current="page">${esc(c.name)}</span>` : `<a href="${c.href}">${esc(c.name)}</a><span>›</span>`).join('');
   const hreflang = locales.flatMap(x => hls(x.lang).map(h => `<link rel="alternate" hreflang="${h}" href="${urlOf(x.lang) + sub}">`)).concat([`<link rel="alternate" hreflang="x-default" href="${siteUrl}/${sub}">`]).join('\n');
   const ld = JSON.stringify([
     { '@context': 'https://schema.org', '@type': opts.ldType || (opts.article ? 'Article' : 'WebPage'), headline: opts.article ? opts.title : undefined, name: opts.title, description: opts.description, url: urlOf(L.lang) + sub, inLanguage: hl(L.lang),
-      dateModified: opts.article ? updated : undefined, author: opts.article ? { '@type': 'Organization', name: 'DISC Test', url: siteUrl + '/' } : undefined,
-      image: opts.article ? `${siteUrl}/og/${L.lang}.png` : undefined, publisher: opts.article ? { '@type': 'Organization', name: 'DISC Test', url: siteUrl + '/', logo: `${siteUrl}/icon-512.png` } : undefined,
+      datePublished: opts.article ? (published < updated ? published : updated) : undefined, dateModified: opts.article ? updated : undefined, author: opts.article ? { '@type': 'Organization', name: 'DISC Test', url: siteUrl + '/' } : undefined,
+      image: opts.article ? (opts.ogImage || `${siteUrl}/og/${L.lang}.png`) : undefined,
+      primaryImageOfPage: !opts.article && opts.ogImage ? { '@type': 'ImageObject', url: opts.ogImage, width: 1200, height: 630 } : undefined, publisher: opts.article ? { '@type': 'Organization', name: 'DISC Test', url: siteUrl + '/', logo: `${siteUrl}/icon-512.png` } : undefined,
       isPartOf: { '@type': 'WebSite', name: 'DISC Test', url: siteUrl + '/' } },
     ...(opts.article ? [orgLd()] : []),
     { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: crumbs.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.name, item: i === 0 ? urlOf(L.lang) : urlOf(L.lang) + (c.sub || sub) })) }
@@ -311,6 +330,7 @@ function writeContentPage(L, sub, opts) {
   const html = pageTpl
     .replace(/__LANG__/g, hl(L.lang)).replace(/__DIR__/g, L.dir)
     .replace(/__TITLE__/g, esc(opts.title)).replace(/__DESC__/g, esc(opts.description))
+    .replace('__ROBOTS__', opts.noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large')
     .replace(/__CANONICAL__/g, urlOf(L.lang) + sub).replace(/__OG_LOCALE__/g, OG_LOCALE[L.lang] || L.lang)
     .replace(/__OG_ALTERNATES__/g, () => locales.filter(x => x !== L).map(x => `<meta property="og:locale:alternate" content="${OG_LOCALE[x.lang] || x.lang}">`).join('\n'))
     .replace(/__OG_IMAGE__/g, opts.ogImage || `${siteUrl}/og/${L.lang}.png`).replace(/__HREFLANG__/g, hreflang).replace(/__HEAD_EXTRA__/g, () => headExtra)
@@ -328,7 +348,7 @@ function writeContentPage(L, sub, opts) {
     .replace('__COMMON_JS__', () => commonJs).replace('__PAGE_JS__', () => opts.pageJs || '');
   fs.mkdirSync(path.join(OUT, pathOf(L.lang), sub), { recursive: true });
   fs.writeFileSync(path.join(OUT, pathOf(L.lang), sub, 'index.html'), html);
-  pages.push({ lang: L.lang, sub, date: updated });
+  if (!opts.noindex) pages.push({ lang: L.lang, sub, date: updated });
 }
 
 for (const L of locales) {
@@ -344,7 +364,7 @@ for (const L of locales) {
   writeContentPage(L, 'styles/', { navKey: 'nav.styles', title: t('pages.styles.title'), description: t('pages.styles.description'), crumbs: [{ name: t('nav.styles') }], content: stylesContent });
   // /profiles/
   const profilesContent = `<div class="eyebrow">DISC</div><h1>${t('pages.profiles.h1')}</h1><p class="lead">${escFull(t('pages.profiles.lead'))}</p>` + ctaTop(t, '../') +
-    `<div class="pgrid">${PROFILE_KEYS.map(k => profileCard(L, k, '../')).join('')}</div>` + ctaBlock(L, t, '../');
+    `<div class="pgrid">${PROFILE_KEYS.map(k => profileCard(L, k, '../')).join('')}</div>` + profilesTable(L, t, '../') + sectionsHtml(L.content.profiles.sections) + ctaBlock(L, t, '../');
   writeContentPage(L, 'profiles/', { navKey: 'nav.profiles', title: t('pages.profiles.title'), description: t('pages.profiles.description'), crumbs: [{ name: t('nav.profiles') }], content: profilesContent });
   // /profiles/<key>/
   for (const key of PROFILE_KEYS) {
@@ -352,6 +372,8 @@ for (const L of locales) {
     const content = `<div class="eyebrow">${t('pages.profile.eyebrow', { key })}</div>` +
       `<div class="rhead">${badge(key)}<div class="rtitle"><h1>${escFull(t('pages.profile.h1', { name: pr.name, key: '\u0000' })).replace('\u0000', ltr(key))}</h1><div class="meta">${escFull(s2 ? L.keys[p] + ' + ' + L.keys[s2] : L.keys[p])}</div></div></div>` +
       `<p class="lead">${escFull(pr.summary)}</p>` + ctaTop(t, b, 'cta.inlineProfile') +
+      (fs.existsSync(path.join(ASSETS, 'og', 'profiles', `${L.lang}-${key.toLowerCase()}.png`)) ? ogFigure(`${b}${pathOf(L.lang) ? '../' : ''}og/profiles/${L.lang}-${key.toLowerCase()}.png`,
+        `${t('pages.profile.h1', { name: pr.name, key })} · ${s2 ? L.keys[p] + ' + ' + L.keys[s2] : L.keys[p]}`) : '') +
       (() => { const sc = sampleScore(SAMPLE_NET[key]);
         return `<section class="example"><h2>${t('pages.profile.exampleTitle')}</h2><p>${escFull(t('pages.profile.exampleText', { name: pr.name }))}</p>` +
           `<div class="card graphcard"><div class="graph"><h3>${t('report.graphTitle')}</h3>${graphSVG(sc, { net: true }, { label: t('report.graphAria'), colorVar, keys: KEYS })}</div>` +
@@ -391,9 +413,6 @@ for (const L of locales) {
 }
 
 // ---------- Текстовые страницы: что такое DISC, FAQ, о проекте, конфиденциальность ----------
-// Секция текстовой страницы: {h, p:[абзацы], ul|ol:[пункты], after:[абзацы после списка]}
-const listHtml = (tag, arr) => `<${tag}>` + arr.map(x => `<li>${escFull(x)}</li>`).join('') + `</${tag}>`;
-const sectionsHtml = secs => secs.map(sec => `<h2>${escFull(sec.h)}</h2>` + (sec.p || []).map(par => `<p>${escFull(par)}</p>`).join('') + (sec.ul ? listHtml('ul', sec.ul) : '') + (sec.ol ? listHtml('ol', sec.ol) : '') + (sec.after || []).map(par => `<p>${escFull(par)}</p>`).join('')).join('');
 const tableHtml = tb => `<div class="tablewrap"><table class="cmp"><thead><tr>${tb.head.map(h => `<th>${escFull(h)}</th>`).join('')}</tr></thead><tbody>${tb.rows.map(r => `<tr>${r.map((c, i) => i ? `<td>${escFull(c)}</td>` : `<th scope="row">${escFull(c)}</th>`).join('')}</tr>`).join('')}</tbody></table></div>`;
 const fmtSize = n => n >= 1048576 ? (n / 1048576).toFixed(1) + ' MB' : Math.round(n / 1024) + ' KB';
 const pdfInfo = code => { const f = path.join(ASSETS, 'pdf', `disc-test-${code}.pdf`); if (!fs.existsSync(f)) return null; const buf = fs.readFileSync(f), s = buf.toString('latin1');
@@ -430,6 +449,18 @@ for (const L of locales) {
       `<div class="examples">${rs.examples.map(exampleHtml).join('')}</div>` + sectionsHtml(rs.sections.slice(3)) + ctaBlock(L, t, '../') + seeAlso('../', 'nav.results') });
   // /colors/ — DISC по цветам: четыре цветные карточки, подробный разбор каждого цвета, текст и свой призыв «Узнать свой цвет»
   const co = C.colors;
+  // Схема четырёх цветов картинкой (docs/img/disc-colors-<язык>.svg) для Google Картинок: D слева вверху, I справа, S справа внизу,
+  // C слева внизу, как в круге DISC. Шрифт системный: в <img> веб-шрифты страницы недоступны (аудит 3, п. 10)
+  const xmlEsc = x => String(x).replace(/[&<>"]/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[ch]));
+  const QUAD = { D: [0, 0, '#C9453D', '#fff'], I: [1, 0, '#D6961F', '#1B2027'], S: [1, 1, '#3A9A69', '#fff'], C: [0, 1, '#3B6FB6', '#fff'] };
+  const colorsSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630"${L.dir === 'rtl' ? ' direction="rtl"' : ''}><title>${xmlEsc(co.h1)}</title>` +
+    `<rect width="1200" height="630" fill="#F3F4F6"/>` + KEYS.map(k => { const [cx, cy, bg, ink] = QUAD[k], x = 24 + cx * 588, y = 24 + cy * 303, mx = x + 282;
+      return `<rect x="${x}" y="${y}" width="564" height="279" rx="22" fill="${bg}"/>` +
+        `<text x="${mx}" y="${y + 128}" text-anchor="middle" fill="${ink}" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="108" direction="ltr">${k}</text>` +
+        `<text x="${mx}" y="${y + 196}" text-anchor="middle" fill="${ink}" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans', sans-serif" font-weight="700" font-size="40">${xmlEsc(co.colors[k].name)}</text>` +
+        `<text x="${mx}" y="${y + 240}" text-anchor="middle" fill="${ink}" fill-opacity=".85" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans', sans-serif" font-size="28">${xmlEsc(L.keys[k])}</text>`; }).join('') + `</svg>\n`;
+  fs.mkdirSync(path.join(OUT, 'img'), { recursive: true });
+  fs.writeFileSync(path.join(OUT, 'img', `disc-colors-${L.lang}.svg`), colorsSvg);
   const colorType = k => { const c = co.colors[k];
     return `<section class="colortype" id="type-${k.toLowerCase()}" style="--k:${colorVar(k)}"><h2><span class="k">${k}</span>${escFull(c.h)}</h2>` +
       `<h3>${escFull(co.labels.signs)}</h3>${ul(c.signs)}<h3>${escFull(co.labels.blind)}</h3><p>${escFull(c.blind)}</p><h3>${escFull(co.labels.talk)}</h3>${ul(c.talk)}` +
@@ -438,7 +469,7 @@ for (const L of locales) {
     content: `<div class="eyebrow">DISC</div><h1>${escFull(co.h1)}</h1><p class="lead">${escFull(co.lead)}</p>` + ctaTop(t, '../', 'cta.inlineColors', co.cta.button) + `<div class="colorgrid">` +
       KEYS.map(k => { const c = co.colors[k]; return `<section class="colorcard" id="${k.toLowerCase()}" style="--k:${colorVar(k)}"><div class="swatch">${k}</div><h2>${escFull(c.name)}</h2><p class="muted">${escFull(c.tagline)}</p><p>${escFull(c.text)}</p><div class="traits">${L.styles[k].traits.map(x => `<span>${escFull(x)}</span>`).join('')}</div><a class="more" href="#type-${k.toLowerCase()}">${escFull(c.h)} ↓</a></section>`; }).join('') +
       `</div>` + `<aside class="cta"><div><h2>${escFull(co.cta.title)}</h2><p>${escFull(co.cta.text)}</p></div><a class="btn" href="../" data-goal="cta-bottom">${escFull(co.cta.button)}</a></aside>` +
-      KEYS.map(colorType).join('') + sectionsHtml(co.sections) +
+      KEYS.map(colorType).join('') + `<figure class="ogfig"><img src="${relRoot(L, 'colors/')}img/disc-colors-${L.lang}.svg" width="1200" height="630" alt="${escFull(co.h1)}" loading="lazy" decoding="async"></figure>` + sectionsHtml(co.sections) +
       `<aside class="cta"><div><h2>${escFull(co.cta.title)}</h2><p>${escFull(co.cta.text)}</p></div><a class="btn" href="../" data-goal="cta-bottom">${escFull(co.cta.button)}</a></aside>` + seeAlso('../', 'nav.colors') });
   // /compatibility/ — матрица пар и 10 страниц пар стилей
   const cp = C.compatibility;
@@ -456,7 +487,9 @@ for (const L of locales) {
     const content = `<div class="eyebrow">${t('nav.compat')} · ${ltr(a + ' + ' + b2)}</div>` +
       `<div class="rhead">${badge(k)}<div class="rtitle"><h1>${escFull(t('pages.compat.h1', names))}</h1><div class="meta">${ltr(a + ' · ' + b2)}</div></div></div>` +
       `<p class="lead">${escFull(pr.summary)}</p><p>${escFull(pr.text)}</p>` + ctaTop(t, base, 'cta.inlinePair') +
-      `<div class="sections"><div class="sec"><h3>${t('pages.compat.common')}</h3>${ul(pr.common)}</div><div class="sec"><h3>${t('pages.compat.friction')}</h3>${ul(pr.friction)}</div>` +
+      (fs.existsSync(path.join(ASSETS, 'og', 'pairs', `${L.lang}-${pairSlug(k)}.png`)) ? ogFigure(`${base}${pathOf(L.lang) ? '../' : ''}og/pairs/${L.lang}-${pairSlug(k)}.png`, t('pages.compat.h1', names)) : '') +
+      // H2 над карточками «Что объединяет / Где трения / Советы»: раньше после H1 сразу шли H3 (аудит 3, п. 12)
+      `<h2>${escFull(t('pages.compat.together'))}</h2><div class="sections"><div class="sec"><h3>${t('pages.compat.common')}</h3>${ul(pr.common)}</div><div class="sec"><h3>${t('pages.compat.friction')}</h3>${ul(pr.friction)}</div>` +
       Object.keys(pr.tips).map(s => `<div class="sec kcol" style="--k:${colorVar(s)}"><h3>${escFull(t('pages.compat.tips', { name: L.keys[s], key: s }))}</h3>${ul(pr.tips[s])}</div>`).join('') + `</div>` +
       // свой текст пары (pairs.<код>.deep): руководитель и подчинённый в обе стороны, совещания, конфликт, вне работы, правила
       (pr.deep ? `<h2>${escFull(t('pages.compat.lead', { a, b: b2 }))}</h2><p>${escFull(pr.deep.lead)}</p>` +
@@ -489,7 +522,8 @@ for (const L of locales) {
   // /contact/ — форма обратной связи (только при заданном feedbackEmail); разметка из src/contact.js, там же логика страницы
   if (feedbackEmail) {
     const ct = C.contact, maxLabel = '10 ' + (L.ui['contact.mb'] || 'MB');
-    writeContentPage(L, 'contact/', { navKey: 'nav.contact', ldType: 'ContactPage', title: ct.title, description: ct.description, crumbs: [{ name: t('nav.contact') }],
+    // обратная связь: служебная страница без своего текста — в индекс не нужна и в sitemap не идёт, ссылки с неё учитываются (аудит 3, п. 12)
+    writeContentPage(L, 'contact/', { navKey: 'nav.contact', ldType: 'ContactPage', noindex: true, title: ct.title, description: ct.description, crumbs: [{ name: t('nav.contact') }],
       content: contactHTML({ t, esc: escFull, email: feedbackEmail, maxLabel, h1: ct.h1, lead: ct.lead }),
       uiKeys: /^(contact\.|intro\.(nameRequired|emailRequired)$)/, files: ['src/contact.js'],
       pageJs: contactJs + `initContact({L:L, t:t, esc:esc, $:$, endpoint:${jsStr(cfg.sendEndpoint)}, token:${jsStr(cfg.sendToken)}, email:${jsStr(feedbackEmail)}, maxBytes:${MAX_CONTACT_BYTES}});` });

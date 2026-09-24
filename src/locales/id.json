@@ -450,7 +450,7 @@
   },
   "content": {
     "disc": {
-      "title": "Apa Itu DISC: Metode, Empat Gaya Perilaku, dan Cara Membaca Profil",
+      "title": "Apa Itu DISC: Metode, Empat Gaya Perilaku, dan Penerapannya",
       "description": "Penjelasan sederhana metode DISC: asal-usul, apa yang diukur, empat gaya D, I, S, C, cara menghitung hasil, dan cara membaca profil.",
       "h1": "Apa Itu DISC?",
       "lead": "DISC adalah model perilaku yang menggambarkan cara seseorang bertindak, berkomunikasi, dan mengambil keputusan berdasarkan empat skala: Dominasi (Dominance), Pengaruh (Influence), Kestabilan (Steadiness), dan Ketelitian (Conscientiousness). DISC bukan tes kecerdasan dan bukan diagnosis, melainkan bahasa bersama untuk membicarakan gaya perilaku.",
@@ -815,7 +815,7 @@
       }
     },
     "pdf": {
-      "title": "Tes DISC PDF Gratis: Soal, Kunci Jawaban, dan Cara Membaca Hasil",
+      "title": "Tes DISC PDF Gratis: Soal, Kunci Jawaban, Cara Menghitung",
       "description": "Tes DISC PDF gratis: 24 soal, kunci jawaban, tabel skor, dan uraian 16 profil. Unduh, cetak, lalu isi di kertas. Versi online menghitung hasilnya otomatis.",
       "h1": "Tes DISC PDF: Unduh dan Cetak",
       "lead": "Versi lengkap yang sama dengan tes online, tetapi dalam bentuk file siap cetak: 24 soal yang masing-masing berisi empat pernyataan, kunci jawaban (gaya di balik tiap pernyataan), tabel penghitungan skor, dan uraian ke-16 profil. File ini gratis dan tidak memerlukan pendaftaran.",
@@ -853,7 +853,7 @@
       ]
     },
     "teams": {
-      "title": "DISC untuk Tim, Manajer, dan HR: Cara Memakai Tes di Tempat Kerja",
+      "title": "DISC untuk Tim, Manajer, dan HR: Cara Memakai Tes di Kantor",
       "description": "DISC di tim: peta gaya, pembagian peran, konflik, onboarding, umpan balik, penjualan. Adakan tes DISC gratis untuk seluruh tim dan bahas hasilnya.",
       "h1": "DISC untuk Tim dan HR",
       "lead": "Tes DISC paling sering diikuti bukan sendirian, melainkan bersama tim: untuk memahami mengapa rekan kerja bereaksi berbeda-beda, menyepakati aturan berkomunikasi, dan membagi peran dengan bijak. Halaman ini merangkum cara manajer atau HR mengadakan tes, membaca peta tim, dan membahas hasilnya tanpa melabeli orang.",
@@ -919,7 +919,7 @@
       ]
     },
     "mbti": {
-      "title": "DISC vs MBTI vs Big Five: Apa Bedanya dan Tes Mana yang Dipilih",
+      "title": "DISC vs MBTI vs Big Five: Apa Bedanya dan Mana yang Dipilih",
       "description": "Perbandingan DISC, MBTI, dan Big Five: apa yang diukur tiap model, jumlah tipe, keandalan, penggunaan, dan tes mana yang sebaiknya dipilih.",
       "h1": "DISC dan MBTI: Apa Bedanya?",
       "lead": "DISC dan MBTI adalah dua tipologi paling terkenal dalam pengembangan tim, dan keduanya sering sekali dicampuradukkan. Sama-sama menghasilkan empat huruf, sama-sama berbicara tentang “tipe”, tetapi yang diukur berbeda dan pertanyaan yang dijawab pun berbeda. Di bawah ini ada perbandingan singkat, termasuk dengan Big Five, serta saran praktis tentang mana yang sebaiknya dipilih.",
@@ -1204,6 +1204,28 @@
         { "q": "Bisakah tes ini diikuti oleh seluruh tim?", "a": "Bisa: setiap orang mengerjakan tes melalui tautan, lalu hasilnya dihimpun di panel admin." }
       ],
       "profilesTitle": "16 profil DISC"
+    },
+    "profiles": {
+      "sections": [
+        {
+          "h": "Bagaimana empat gaya membentuk 16 profil",
+          "p": [
+            "Untuk setiap gaya, tes menghitung selisih antara jawaban “paling menggambarkan saya” dan “paling tidak menggambarkan saya”: dari −24 sampai +24. Gaya dengan nilai tertinggi menjadi gaya utama, yaitu huruf pertama profil. Gaya dengan nilai tertinggi kedua diperhitungkan sebagai gaya sekunder jika nilainya positif, sekurang-kurangnya 40% dari nilai gaya utama, dan tidak kurang dari 3 poin. Gaya itu kemudian menjadi huruf kedua.",
+            "Jika gaya kedua tidak mencapai ambang tersebut, profilnya “murni”: D, I, S, atau C. Jika mencapainya, terbentuklah salah satu dari dua belas kombinasi. Empat profil murni dan dua belas kombinasi inilah yang menghasilkan 16 profil dalam tabel di atas."
+          ]
+        },
+        {
+          "h": "Apa bedanya profil dengan gaya",
+          "p": [
+            "Gaya adalah salah satu dari empat skala DISC: Dominasi, Pengaruh, Kestabilan, atau Ketelitian. Profil menggambarkan bagaimana gaya-gaya itu berpadu dalam diri seseorang: gaya utama menentukan dasar perilakunya, sedangkan gaya sekunder memberi nuansa. Karena itu, DI dan ID tersusun dari huruf yang sama, tetapi merupakan profil yang berbeda. Perintis (DI) terutama mengejar hasil dan dalam prosesnya mengajak orang lain ikut bergerak, sedangkan Motivator (ID) terutama menggerakkan orang lain dan melalui merekalah mencapai hasil.",
+            "Profil bukan label dan bukan penilaian. Setiap orang memiliki keempat gaya; profil hanya menunjukkan gaya mana yang paling kuat muncul dalam suasana kerja sehari-hari."
+          ]
+        },
+        {
+          "h": "Cara mengetahui profil Anda",
+          "p": ["Ikuti tes gratis: 24 soal yang masing-masing berisi empat pernyataan, sekitar 10 menit. Di layar hasil, Anda akan melihat grafik, gaya utama dan gaya sekunder, serta tautan ke halaman profil Anda, lengkap dengan kecocokan dengan gaya lain dan saran tentang cara terbaik Anda bekerja dan berkomunikasi."]
+        }
+      ]
     }
   },
   "ui": {
@@ -1357,15 +1379,15 @@
     "nav.pdf": "Tes DISC PDF",
     "nav.materials": "Materi tentang DISC",
 
-    "pages.styles.title": "Tipe Kepribadian DISC: 4 Gaya D, I, S, C — Ciri, Kekuatan, Motivasi",
+    "pages.styles.title": "Tipe Kepribadian DISC: 4 Gaya D, I, S, C — Ciri dan Kekuatan",
     "pages.styles.description": "Empat tipe kepribadian (gaya perilaku) DISC: Dominasi, Pengaruh, Kestabilan, Ketelitian. Ciri, kekuatan, area pengembangan, motivasi, dan perilaku saat stres.",
     "pages.styles.h1": "Tipe Kepribadian DISC: Empat Gaya",
     "pages.styles.lead": "DISC menggambarkan perilaku dalam empat skala. Setiap orang memiliki keempat gaya, tetapi satu atau dua di antaranya lebih menonjol. Di bawah ini: ciri khas setiap gaya, hal yang memotivasinya, dan cara terbaik berkomunikasi dengan pemilik gaya tersebut.",
-    "pages.profiles.title": "16 Tipe Kepribadian DISC — Semua Profil Tes beserta Penjelasannya",
+    "pages.profiles.title": "16 Profil DISC: Semua Kombinasi Gaya beserta Penjelasannya",
     "pages.profiles.description": "Semua 16 profil tes DISC: empat gaya murni dan dua belas kombinasi. Penjelasan singkat setiap tipe kepribadian dan tautan ke halaman lengkapnya.",
-    "pages.profiles.h1": "16 Profil dan Tipe Kepribadian DISC",
+    "pages.profiles.h1": "16 Profil DISC",
     "pages.profiles.lead": "Hasil tes adalah gaya utama dan, jika cukup menonjol, gaya sekunder. Dari situ terbentuk 16 profil: empat gaya “murni” dan dua belas kombinasi. Temukan profil Anda atau ikuti tes untuk mengetahuinya.",
-    "pages.profile.title": "{name} ({key}) — Profil DISC: Ciri, Kekuatan, Area Pengembangan",
+    "pages.profile.title": "{name} ({key}) — Profil DISC: Ciri dan Saran",
     "pages.profile.h1": "{name} ({key}) — Profil DISC",
     "pages.profile.description": "Profil DISC {key} “{name}”: {summary}",
     "pages.profile.descCta": "Ikuti tes gratis 10 menit.",
@@ -1391,7 +1413,7 @@
     "pages.profile.example": "Contoh dari praktik",
     "pages.profile.styleMore": "Selengkapnya tentang gaya {key}: {name}",
     "pages.profile.related": "Profil yang mirip",
-    "pages.compat.title": "{a} dan {b}: Kecocokan Gaya DISC dalam Kerja dan Komunikasi",
+    "pages.compat.title": "{a} dan {b}: Kecocokan DISC di Tempat Kerja",
     "pages.compat.description": "Cara gaya {a} dan {b} bekerja sama: apa yang menyatukan, di mana gesekan muncul, dan apa yang perlu dilakukan masing-masing. Tes DISC gratis di situs ini.",
     "pages.compat.h1": "{a} dan {b}: Kecocokan",
     "pages.compat.common": "Yang menyatukan",
@@ -1411,6 +1433,10 @@
     "pages.pdf.missing": "File sedang disiapkan. Sementara itu, ikuti tes secara online atau simpan hasil sebagai PDF di layar hasil.",
     "pages.updated": "Diperbarui {date}",
     "pages.sourcesLink": "Sumber dan referensi",
+    "pages.compat.together": "Cara mereka bekerja sama",
+    "pages.profiles.tableTitle": "Semua 16 profil: gaya utama dan gaya sekunder",
+    "pages.profiles.colLead": "Gaya utama",
+    "pages.profiles.colPure": "Tanpa gaya sekunder",
 
     "cta.title": "Kenali profil DISC Anda",
     "cta.text": "Tes gratis: 24 soal, sekitar 10 menit, hasil langsung tampil dan dikirim ke email.",
