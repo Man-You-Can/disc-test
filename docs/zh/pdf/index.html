@@ -162,6 +162,11 @@ html[lang=ar] body,html[lang=hi] body{font-size:17px;line-height:1.65}
 .cta p{margin:0;opacity:.85;font-size:14px}
 .cta .btn{background:var(--btn-ink);color:var(--btn);flex:none}
 .cta.invite{margin:0 0 24px}
+/* призыв сразу после вводного абзаца контентных страниц и плавающая кнопка на телефоне (аудит 3, п. 1) */
+.cta.cta-top{padding:14px 18px;margin:18px 0 26px;gap:10px 18px}
+.cta.cta-top p{flex:1 1 240px;font-size:15px;opacity:.9}
+.btn.ctafloat{display:none}
+@media (max-width:640px){.btn.ctafloat.show{display:flex;position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:15;box-shadow:0 8px 24px -6px rgba(0,0,0,.35)}body.has-consent .btn.ctafloat{display:none}}
 .stylecard .more{display:inline-block;margin-top:10px;font-size:13px;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line-strong)}
 .stylecard .more:hover{border-bottom-color:var(--ink)}
 .styles-intro .all{margin-top:14px;font-size:14px}
@@ -266,7 +271,7 @@ html[lang=ar] .qhead span,html[lang=hi] .qhead span,html[lang|=zh] .qhead span,h
 .hintline{font-size:13px;color:var(--muted);margin-top:14px}
 /* report */
 .rhead{display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:center;margin-bottom:18px}
-@media (max-width:560px){.rhead{grid-template-columns:1fr}}
+@media (max-width:560px){.rhead{grid-template-columns:1fr;gap:12px;justify-items:start}.rhead .badge{font-size:44px;padding:10px 14px}.rhead .badge .s{font-size:26px}}
 .badge{display:inline-flex;align-items:baseline;gap:2px;direction:ltr;font-family:var(--font-head);font-weight:600;font-size:64px;line-height:1;padding:14px 20px;border-radius:14px;background:var(--surface);border:1px solid var(--line)}
 .badge .p{color:var(--kp)}
 .badge .s{font-size:36px;color:var(--ks)}
@@ -434,7 +439,7 @@ body.has-consent{padding-bottom:160px}
   </header>
   <nav class="sitenav no-print"><a href="../../zh/">测试</a><a href="../../zh/disc/">什么是 DISC</a><a href="../../zh/styles/">四种风格</a><a href="../../zh/profiles/">16 种类型</a><a href="../../zh/results/">结果解读</a><a href="../../zh/compatibility/">风格搭配</a><a href="../../zh/faq/">常见问题</a></nav>
   <nav class="crumbs"><a href="../../zh/">首页</a><span>›</span><span aria-current="page">PDF 打印版</span></nav>
-  <main class="content"><div class="eyebrow">DISC</div><h1>DISC 性格测试题 PDF：下载并打印</h1><p class="lead">与在线版完全相同的完整测试，只是做成了可打印的文件：24 组题，每组四条陈述，风格计分对照表、计分表，以及全部 16 种类型的说明。文件免费，无需注册。</p><p class="download"><a class="btn" href="../../pdf/disc-test-zh.pdf" download>下载 PDF</a><span class="muted">A4 · 5 页 · 1011 KB</span></p><h2>文件里有什么</h2><ul><li>填写说明，以及姓名和日期栏</li><li>24 组题，每组四条陈述，附“最像”和“最不像”两栏，共 96 条陈述</li><li>计分对照表：每一组中每条陈述各自对应哪种风格</li><li>按 D、I、S、C 四种风格计分的表格</li><li>确定主导风格和次要风格的规则</li><li>DISC 16 种类型的简要说明</li></ul><p>文件为 A4 版式，语言与本页面相同。问卷没有用到颜色，黑白打印即可。</p><h2>什么时候需要纸质版</h2><p>纸质测试适合在培训或战略研讨会上使用，那里并非每位参与者都有电脑；也适合课堂小组，以及不允许使用手机的场合。有些人在纸上更容易集中注意力：勾一笔，翻一页，不会被通知打断。</p><p>如果参与者手边有手机，那么在线版更省事：它会自动计分、绘制图表、把报告发到邮箱，并给出一个可以分享的链接。面向团队还有一个管理面板，可以把所有参与者的结果汇总起来。</p><h2>如何填写和计分</h2><p>在每一组中，勾选一条最像你的陈述和一条最不像你的陈述。请按照你在工作中的惯常表现作答，不必想太久。然后查看计分对照表，在每个勾选旁边写上对应的风格字母，再分别数出每种风格的“最像”和“最不像”勾选数量。</p><p>两者之差就是该风格的结果，范围在 −24 到 +24 之间。结果最高的风格为主导风格；若第二高的结果为正，且不低于主导风格的 40%（至少 3 分），则为次要风格。这样就得到一个由一个或两个字母组成的类型，例如 D 或 DI；文件里有它的说明，而带示例的详细解读在单独的页面上。</p><h2>根据纸质结果获取详细报告</h2><p>纸质版只给出类型和简要说明。若想得到包含图表、优势、成长空间和沟通建议的完整报告，请从 16 种类型列表中打开你所属类型的页面，或者在线测试一次：大约需要十分钟。</p><p class="download"><a class="btn" href="../../pdf/disc-test-zh.pdf" download>下载 PDF</a><span class="muted">A4 · 5 页 · 1011 KB</span></p><aside class="cta"><div><h2>了解你的 DISC 类型</h2><p>免费测试：24 组题，约 10 分钟，结果即时显示并发送到邮箱。</p></div><a class="btn" href="../">开始测试</a></aside><p class="seealso"><a href="../disc/">什么是 DISC →</a> · <a href="../styles/">四种风格 →</a> · <a href="../profiles/">16 种类型 →</a> · <a href="../results/">结果解读 →</a> · <a href="../compatibility/">风格搭配 →</a> · <a href="../colors/">DISC 性格色彩 →</a> · <a href="../teams/">DISC 团队应用 →</a> · <a href="../disc-vs-mbti/">DISC 与 MBTI →</a> · <a href="../faq/">常见问题 →</a></p><p class="updated"><time datetime="2026-09-24">更新于 2026年9月24日</time></p></main>
+  <main class="content"><div class="eyebrow">DISC</div><h1>DISC 性格测试题 PDF：下载并打印</h1><p class="lead">与在线版完全相同的完整测试，只是做成了可打印的文件：24 组题，每组四条陈述，风格计分对照表、计分表，以及全部 16 种类型的说明。文件免费，无需注册。</p><p class="download"><a class="btn" href="../../pdf/disc-test-zh.pdf" download>下载 PDF</a><span class="muted">A4 · 5 页 · 1021 KB</span></p><aside class="cta cta-top no-print"><p>不想手动计分？在线版会自动算好：约 10 分钟，免费。</p><a class="btn" href="../" data-goal="cta-top">开始测试</a></aside><h2>文件里有什么</h2><ul><li>填写说明，以及姓名和日期栏</li><li>24 组题，每组四条陈述，附“最像”和“最不像”两栏，共 96 条陈述</li><li>计分对照表：每一组中每条陈述各自对应哪种风格</li><li>按 D、I、S、C 四种风格计分的表格</li><li>确定主导风格和次要风格的规则</li><li>DISC 16 种类型的简要说明</li></ul><p>文件为 A4 版式，语言与本页面相同。问卷没有用到颜色，黑白打印即可。</p><h2>什么时候需要纸质版</h2><p>纸质测试适合在培训或战略研讨会上使用，那里并非每位参与者都有电脑；也适合课堂小组，以及不允许使用手机的场合。有些人在纸上更容易集中注意力：勾一笔，翻一页，不会被通知打断。</p><p>如果参与者手边有手机，那么在线版更省事：它会自动计分、绘制图表、把报告发到邮箱，并给出一个可以分享的链接。面向团队还有一个管理面板，可以把所有参与者的结果汇总起来。</p><h2>如何填写和计分</h2><p>在每一组中，勾选一条最像你的陈述和一条最不像你的陈述。请按照你在工作中的惯常表现作答，不必想太久。然后查看计分对照表，在每个勾选旁边写上对应的风格字母，再分别数出每种风格的“最像”和“最不像”勾选数量。</p><p>两者之差就是该风格的结果，范围在 −24 到 +24 之间。结果最高的风格为主导风格；若第二高的结果为正，且不低于主导风格的 40%（至少 3 分），则为次要风格。这样就得到一个由一个或两个字母组成的类型，例如 D 或 DI；文件里有它的说明，而带示例的详细解读在单独的页面上。</p><h2>根据纸质结果获取详细报告</h2><p>纸质版只给出类型和简要说明。若想得到包含图表、优势、成长空间和沟通建议的完整报告，请从 16 种类型列表中打开你所属类型的页面，或者在线测试一次：大约需要十分钟。</p><p class="download"><a class="btn" href="../../pdf/disc-test-zh.pdf" download>下载 PDF</a><span class="muted">A4 · 5 页 · 1021 KB</span></p><aside class="cta"><div><h2>了解你的 DISC 类型</h2><p>免费测试：24 组题，约 10 分钟，结果即时显示并发送到邮箱。</p></div><a class="btn" href="../" data-goal="cta-bottom">开始测试</a></aside><p class="seealso"><a href="../disc/">什么是 DISC →</a> · <a href="../styles/">四种风格 →</a> · <a href="../profiles/">16 种类型 →</a> · <a href="../results/">结果解读 →</a> · <a href="../compatibility/">风格搭配 →</a> · <a href="../colors/">DISC 性格色彩 →</a> · <a href="../teams/">DISC 团队应用 →</a> · <a href="../disc-vs-mbti/">DISC 与 MBTI →</a> · <a href="../faq/">常见问题 →</a></p><p class="updated"><time datetime="2026-09-24">更新于 2026年9月24日</time></p></main>
   <footer class="foot">
     <div class="row2"><span>24 组题 · 约 10 分钟 · 没有对错之分</span><span class="footlinks"><a href="../../zh/about/">关于本站</a> · <a href="../../zh/contact/">联系我们</a> · <a href="../../zh/privacy/">隐私政策</a></span></div>
     <nav class="materials" aria-label="DISC 资料"><span class="mlabel">DISC 资料</span><a href="../../zh/disc/">什么是 DISC</a><a href="../../zh/styles/">四种风格</a><a href="../../zh/profiles/">16 种类型</a><a href="../../zh/results/">结果解读</a><a href="../../zh/compatibility/">风格搭配</a><a href="../../zh/colors/">DISC 性格色彩</a><a href="../../zh/teams/">DISC 团队应用</a><a href="../../zh/disc-vs-mbti/">DISC 与 MBTI</a><span aria-current="page">PDF 打印版</span><a href="../../zh/faq/">常见问题</a></nav>
@@ -442,6 +447,7 @@ body.has-consent{padding-bottom:160px}
     <nav class="langs" aria-label="语言"><a href="../../pdf/" hreflang="en" lang="en" data-lang="en"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-en"/></svg><span>English</span></a><a href="../../es/pdf/" hreflang="es" lang="es" data-lang="es"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-es"/></svg><span>Español</span></a><a href="../../zh/pdf/" hreflang="zh-Hans" lang="zh-Hans" data-lang="zh" aria-current="page"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-zh"/></svg><span>简体中文</span></a><a href="../../zh-hant/pdf/" hreflang="zh-Hant" lang="zh-Hant" data-lang="zh-hant"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-zh-hant"/></svg><span>繁體中文</span></a><a href="../../ru/pdf/" hreflang="ru" lang="ru" data-lang="ru"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-ru"/></svg><span>Русский</span></a><a href="../../ar/pdf/" hreflang="ar" lang="ar" data-lang="ar"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-ar"/></svg><span>العربية</span></a><a href="../../pt/pdf/" hreflang="pt" lang="pt" data-lang="pt"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-pt"/></svg><span>Português</span></a><a href="../../fr/pdf/" hreflang="fr" lang="fr" data-lang="fr"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-fr"/></svg><span>Français</span></a><a href="../../de/pdf/" hreflang="de" lang="de" data-lang="de"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-de"/></svg><span>Deutsch</span></a><a href="../../ja/pdf/" hreflang="ja" lang="ja" data-lang="ja"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-ja"/></svg><span>日本語</span></a><a href="../../hi/pdf/" hreflang="hi" lang="hi" data-lang="hi"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-hi"/></svg><span>हिन्दी</span></a><a href="../../id/pdf/" hreflang="id" lang="id" data-lang="id"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-id"/></svg><span>Bahasa Indonesia</span></a><a href="../../tr/pdf/" hreflang="tr" lang="tr" data-lang="tr"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-tr"/></svg><span>Türkçe</span></a><a href="../../pl/pdf/" hreflang="pl" lang="pl" data-lang="pl"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-pl"/></svg><span>Polski</span></a></nav>
   </footer>
 </div>
+<a class="btn ctafloat no-print" id="ctaFloat" href="../../zh/" data-goal="cta-float">开始测试</a>
 <div class="toast" id="toast" hidden></div>
 <script>
 (function(){
@@ -550,6 +556,18 @@ function initCommon(c){
 
 initCommon({L:L, t:t, esc:esc, lsGet:lsGet, lsSet:lsSet, langHref:langHref, $:$, langMeta:LANG_META, langPath:LANG_PATH, privacyHref:ROOT_REL+(LANG_PATH[L.lang]||'')+'privacy/'});
 
+/* цели Метрики у кнопок теста (cta-top, cta-bottom, cta-float) и плавающая кнопка на телефоне: видна, когда призыв
+   после вводного абзаца уже прокручен вверх, а нижний призыв и подвал ещё не на экране (аудит 3, п. 1) */
+(function(){
+  document.querySelectorAll('a[data-goal]').forEach(function(a){ a.addEventListener('click', function(){ if(window.discTrack) window.discTrack(a.getAttribute('data-goal')); }); });
+  var fl = $('#ctaFloat'), top = $('.cta-top') || $('.cta.invite');
+  if(!fl || !top || !('IntersectionObserver' in window)) return;
+  var passed = false, near = false, ends = [].slice.call(document.querySelectorAll('main .cta:not(.cta-top):not(.invite), .foot'));
+  function upd(){ fl.classList.toggle('show', passed && !near); }
+  new IntersectionObserver(function(es){ es.forEach(function(e){ passed = !e.isIntersecting && e.boundingClientRect.top < 0; }); upd(); }).observe(top);
+  var io = new IntersectionObserver(function(es){ es.forEach(function(e){ e.target._vis = e.isIntersecting; }); near = ends.some(function(x){ return x._vis; }); upd(); });
+  ends.forEach(function(x){ io.observe(x); });
+})();
 })();
 </script>
 </body>

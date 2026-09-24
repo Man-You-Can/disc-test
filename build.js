@@ -178,6 +178,13 @@ const LASTMOD_FILE = path.join(SRC, 'lastmod.json');
 const lmOld = fs.existsSync(LASTMOD_FILE) ? JSON.parse(fs.readFileSync(LASTMOD_FILE, 'utf8')) : {}, lmNew = {};
 const contentDate = (key, text, files) => { const h = crypto.createHash('sha1').update(text).digest('hex').slice(0, 16), old = lmOld[key];
   const d = old ? (old.h === h ? old.d : today) : (lastmod(files) || today); lmNew[key] = { h, d }; return d; };
+// Локаль для скрипта главной — только то, что нужно тесту, отчёту и блоку под тестом: у профилей название и краткое описание,
+// из статей — content.home и названия цветов (ссылка «Ваш цвет DISC» в отчёте). Тексты статей и страниц профилей
+// (profiles.*.deep, careers, team, with, content.*) раньше попадали в скрипт целиком — ~150 КБ лишнего на главной (аудит 3, п. 4).
+const homeLocale = L => Object.assign({}, L, {
+  profiles: Object.fromEntries(Object.entries(L.profiles).map(([k, p]) => [k, { name: p.name, summary: p.summary }])),
+  content: { home: L.content.home, colors: { colors: Object.fromEntries(KEYS.map(k => [k, { name: L.content.colors.colors[k].name }])) } }
+});
 // Организация-издатель: одна карточка на весь сайт, с адресом для связи
 const orgLd = () => ({ '@context': 'https://schema.org', '@type': 'Organization', name: 'DISC Test', url: siteUrl + '/', logo: `${siteUrl}/icon-512.png`, email: feedbackEmail || undefined });
 const jsonLd = L => JSON.stringify([
@@ -229,7 +236,7 @@ for (const L of locales) {
     .replace(/__EMAIL__/g, String(cfg.contactEmail || '').replace(/['\\]/g, ''))
     .replace(/__SEND_ENDPOINT__/g, String(cfg.sendEndpoint || '').replace(/['\\]/g, ''))
     .replace(/__SEND_TOKEN__/g, String(cfg.sendToken || '').replace(/['\\]/g, ''))
-    .replace('__LOCALE_JSON__', () => JSON.stringify(L).replace(/</g, '\\u003c').replace(/\u2028|\u2029/g, ''));
+    .replace('__LOCALE_JSON__', () => JSON.stringify(homeLocale(L)).replace(/</g, '\\u003c').replace(/\u2028|\u2029/g, ''));
   fs.mkdirSync(path.join(OUT, pathOf(L.lang)), { recursive: true });
   fs.writeFileSync(path.join(OUT, pathOf(L.lang), 'index.html'), html);
 }
@@ -240,8 +247,15 @@ const ul = arr => '<ul>' + arr.map(x => `<li>${escFull(x)}</li>`).join('') + '</
 const truncate = (str, n) => str.length <= n ? str : str.slice(0, n).replace(/\s+\S*$/, '') + '…';
 // предел description для шаблонных описаний (профили, пары): в японском и китайском выдача показывает около 95 знаков, и пробелов для обрезки там нет
 const descMax = L => /^(ja|zh)/.test(L.lang) ? 90 : 155;
-const truncDesc = (L, str, max) => { const n = max || descMax(L); if (str.length <= n) return str; const cut = str.slice(0, n), sp = cut.replace(/\s+\S*$/, '');
-  return (/^(ja|zh)/.test(L.lang) || sp.length < n * 0.6 ? cut.replace(/[、，。,：:\s]+$/, '') : sp) + '…'; };
+// Обрезка description: по концу последнего влезающего предложения, если остаётся не меньше 60 % предела, — без многоточия,
+// так что призыв в конце шаблона либо помещается целиком, либо отбрасывается; иначе по слову с «…» без знака препинания
+// перед ним (раньше обрыв «…на сайте…» и «.…» были у 43 пар и почти всех профилей — аудит 3, п. 2)
+const truncDesc = (L, str, max) => { const n = max || descMax(L); if (str.length <= n) return str;
+  const cjk = /^(ja|zh)/.test(L.lang); let end = -1;
+  for (let i = 0; i < n; i++) if ((cjk ? /[。！？]/ : /[.!?।؟]/).test(str[i]) && (cjk || i + 1 === str.length || /\s/.test(str[i + 1]))) end = i + 1;
+  if (end >= n * 0.6) return str.slice(0, end);
+  const cut = str.slice(0, n);
+  return (cjk ? cut : cut.replace(/\s+\S*$/, '')).replace(/[\s.,;:!?।؟،、，。：—–-]+$/, '') + '…'; };
 const styleSections = (L, k, t, full) => {
   const st = L.styles[k];
   return `<div class="sections">` +
@@ -253,7 +267,16 @@ const styleSections = (L, k, t, full) => {
       `<div class="sec"><h3>${t('report.environment')}</h3><p>${escFull(st.environment)}</p></div>` : '') +
     `</div>`;
 };
-const ctaBlock = (L, t, homeHref) => `<aside class="cta"><div><h2>${t('cta.title')}</h2><p>${escFull(t('cta.text'))}</p></div><a class="btn" href="${homeHref}">${t('cta.button')}</a></aside>`;
+const ctaBlock = (L, t, homeHref) => `<aside class="cta"><div><h2>${t('cta.title')}</h2><p>${escFull(t('cta.text'))}</p></div><a class="btn" href="${homeHref}" data-goal="cta-bottom">${t('cta.button')}</a></aside>`;
+// Призыв сразу после вводного абзаца: с поиска приходят на профили, расшифровку, PDF, а кнопка теста была только в конце
+// страницы (на телефоне — через 4–10 экранов). data-goal — цели Метрики cta-top / cta-bottom / cta-float (аудит 3, п. 1)
+const ctaTop = (t, homeHref, key, btn) => `<aside class="cta cta-top no-print"><p>${escFull(t(key || 'cta.inline'))}</p><a class="btn" href="${homeHref}" data-goal="cta-top">${escFull(btn || t('cta.button'))}</a></aside>`;
+// description страницы профиля: profiles.<код>.metaDesc и призыв pages.profile.descCta, если он помещается целиком
+const profileDesc = (L, key, t) => { const pr = L.profiles[key], cta = t('pages.profile.descCta'), sep = /^(ja|zh)/.test(L.lang) ? '' : ' ';
+  if (!pr.metaDesc) return truncDesc(L, t('pages.profile.description', { name: pr.name, key, summary: pr.summary }), descMax(L) - cta.length - sep.length) + sep + cta;
+  if (pr.metaDesc.length + sep.length + cta.length <= descMax(L)) return pr.metaDesc + sep + cta;
+  console.warn(`WARNING: ${L.lang} profiles.${key}.metaDesc длиннее ${descMax(L) - cta.length - sep.length} знаков — призыв не добавлен`);
+  return truncDesc(L, pr.metaDesc); };
 // похожие профили: обратный порядок букв (DI ↔ ID), чистый ведущий стиль и смешанные профили с тем же ведущим стилем; не больше четырёх
 const related = key => [...new Set([key.length === 2 ? key[1] + key[0] : null, key.length === 2 ? key[0] : null].concat(PROFILE_KEYS.filter(k => k[0] === key[0] && k.length === 2)))].filter(k => k && k !== key).slice(0, 4);
 const profileCard = (L, key, base) => { const pr = L.profiles[key]; const names = key.split('').map(k => L.keys[k]).join(' + ');
@@ -297,6 +320,7 @@ function writeContentPage(L, sub, opts) {
     .replace(/__BRAND__/g, esc(L.brand)).replace(/__HOME_HREF__/g, homeHref).replace(/__LANG_LABEL__/g, esc(L.ui.langLabel))
     .replace('__LANG_SWITCHER__', () => switcher).replace('__NAV__', () => navHtml).replace('__CRUMBS__', () => crumbsHtml).replace('__FOOT_LINKS__', () => footHtml).replace('__MATERIALS__', () => materialsHtml(L, base, sub))
     .replace('__CONTENT__', () => opts.content + updatedHtml)
+    .replace('__CTA_FLOAT__', () => opts.content.includes('class="cta cta-top') ? `<a class="btn ctafloat no-print" id="ctaFloat" href="${homeHref}" data-goal="cta-float">${esc(t('cta.button'))}</a>` : '')
     .replace(/__FOOTER__/g, esc(L.ui.footer)).replace(/__PRIVACY__/g, esc(L.ui.privacy)).replace('__LANG_LINKS__', () => links)
     .replace('__LOCALE_JSON__', () => JSON.stringify(miniL).replace(/</g, '\\u003c'))
     .replace(/__SUBPATH__/g, sub)
@@ -310,7 +334,7 @@ function writeContentPage(L, sub, opts) {
 for (const L of locales) {
   const t = tFor(L), base0 = pathOf(L.lang);
   // /styles/
-  const stylesContent = `<div class="eyebrow">DISC</div><h1>${t('pages.styles.h1')}</h1><p class="lead">${escFull(t('pages.styles.lead'))}</p>` +
+  const stylesContent = `<div class="eyebrow">DISC</div><h1>${t('pages.styles.h1')}</h1><p class="lead">${escFull(t('pages.styles.lead'))}</p>` + ctaTop(t, '../') +
     `<p class="seealso"><a href="../colors/">${esc(L.ui['nav.colors'])} ${arrow(L)}</a> · <a href="../compatibility/">${esc(L.ui['nav.compat'])} ${arrow(L)}</a> · <a href="../results/">${esc(L.ui['nav.results'])} ${arrow(L)}</a></p>` +
     KEYS.map(k => { const st = L.styles[k], pr = L.profiles[k], b = '../';
       return `<section class="stylefull" id="${k.toLowerCase()}" style="--k:${colorVar(k)}"><h2><span class="k">${k}</span>${escFull(L.keys[k])} · ${escFull(pr.name)}</h2><p class="muted">${escFull(L.short[k])}</p><p>${escFull(pr.summary)}</p>` +
@@ -319,7 +343,7 @@ for (const L of locales) {
     ctaBlock(L, t, '../') + `<h2>${t('pages.profiles.h1')}</h2><div class="pgrid">${PROFILE_KEYS.map(k => profileCard(L, k, '../')).join('')}</div>`;
   writeContentPage(L, 'styles/', { navKey: 'nav.styles', title: t('pages.styles.title'), description: t('pages.styles.description'), crumbs: [{ name: t('nav.styles') }], content: stylesContent });
   // /profiles/
-  const profilesContent = `<div class="eyebrow">DISC</div><h1>${t('pages.profiles.h1')}</h1><p class="lead">${escFull(t('pages.profiles.lead'))}</p>` +
+  const profilesContent = `<div class="eyebrow">DISC</div><h1>${t('pages.profiles.h1')}</h1><p class="lead">${escFull(t('pages.profiles.lead'))}</p>` + ctaTop(t, '../') +
     `<div class="pgrid">${PROFILE_KEYS.map(k => profileCard(L, k, '../')).join('')}</div>` + ctaBlock(L, t, '../');
   writeContentPage(L, 'profiles/', { navKey: 'nav.profiles', title: t('pages.profiles.title'), description: t('pages.profiles.description'), crumbs: [{ name: t('nav.profiles') }], content: profilesContent });
   // /profiles/<key>/
@@ -327,7 +351,7 @@ for (const L of locales) {
     const pr = L.profiles[key], dp = pr.deep, p = key[0], s2 = key[1] || null, b = '../../';
     const content = `<div class="eyebrow">${t('pages.profile.eyebrow', { key })}</div>` +
       `<div class="rhead">${badge(key)}<div class="rtitle"><h1>${escFull(t('pages.profile.h1', { name: pr.name, key: '\u0000' })).replace('\u0000', ltr(key))}</h1><div class="meta">${escFull(s2 ? L.keys[p] + ' + ' + L.keys[s2] : L.keys[p])}</div></div></div>` +
-      `<p class="lead">${escFull(pr.summary)}</p>` +
+      `<p class="lead">${escFull(pr.summary)}</p>` + ctaTop(t, b, 'cta.inlineProfile') +
       (() => { const sc = sampleScore(SAMPLE_NET[key]);
         return `<section class="example"><h2>${t('pages.profile.exampleTitle')}</h2><p>${escFull(t('pages.profile.exampleText', { name: pr.name }))}</p>` +
           `<div class="card graphcard"><div class="graph"><h3>${t('report.graphTitle')}</h3>${graphSVG(sc, { net: true }, { label: t('report.graphAria'), colorVar, keys: KEYS })}</div>` +
@@ -354,13 +378,14 @@ for (const L of locales) {
       `<h2>${t('pages.profile.others')}</h2><p class="chips">${PROFILE_KEYS.filter(k => k !== key && !related(key).includes(k)).map(k => `<a href="${b}profiles/${k.toLowerCase()}/">${badge(k, 'pill')} ${escFull(L.profiles[k].name)}</a>`).join('')}</p>`;
     writeContentPage(L, `profiles/${key.toLowerCase()}/`, { navKey: 'nav.profiles', title: t('pages.profile.title', { name: pr.name, key }),
       // в конце — призыв пройти тест: description видна в выдаче и в карточке ссылки в соцсетях (Facebook и LinkedIn берут текст только оттуда)
-      description: (cta => truncDesc(L, t('pages.profile.description', { name: pr.name, key, summary: pr.summary }), descMax(L) - cta.length - 1) + (/^(ja|zh)/.test(L.lang) ? '' : ' ') + cta)(t('pages.profile.descCta')),
+      // своё описание профиля (profiles.<код>.metaDesc) + призыв; шаблон из summary давал два двоеточия и обрыв на полуслове (аудит 3, п. 2)
+      description: profileDesc(L, key, t),
       crumbs: [{ name: t('nav.profiles'), href: '../', sub: 'profiles/' }, { name: pr.name }], content,
       // пришли по ссылке «Поделиться типом» (?ref=<сеть>, см. shareNetLinks в template.html) — вверху баннер-приглашение пройти тест
       pageJs: `if(/[?&]ref=/.test(location.search)){ var inv = document.createElement('aside'); inv.className = 'cta invite'; inv.innerHTML = ${jsStr(
         `<div><h2>${escFull(t('invite.title', { name: pr.name }))}</h2><p>${escFull(t('invite.text'))}</p></div><a class="btn" href="${b}">${escFull(t('cta.button'))}</a>`)};` +
         `inv.querySelector('a').addEventListener('click', function(){ if(window.discTrack) window.discTrack('invite'); });` +
-        `var m = $('main.content'); m.insertBefore(inv, m.firstChild); if(window.discTrack) window.discTrack('invite-view'); }`,
+        `var m = $('main.content'); m.insertBefore(inv, m.firstChild); var ct = $('.cta-top'); if(ct) ct.remove(); if(window.discTrack) window.discTrack('invite-view'); }`,
       ogImage: fs.existsSync(path.join(ASSETS, 'og', 'profiles', `${L.lang}-${key.toLowerCase()}.png`)) ? `${siteUrl}/og/profiles/${L.lang}-${key.toLowerCase()}.png` : null });
   }
 }
@@ -378,11 +403,11 @@ for (const L of locales) {
   const seeAlso = (base, cur) => `<p class="seealso">${MATERIALS.filter(([k]) => k !== cur).map(([k, sub]) => `<a href="${base + sub}">${esc(L.ui[k])} ${arrow(L)}</a>`).join(' · ')}</p>`;
   const d = C.disc;
   writeContentPage(L, 'disc/', { navKey: 'nav.disc', article: true, title: d.title, description: d.description, crumbs: [{ name: t('nav.disc') }],
-    content: `<div class="eyebrow">DISC</div><h1>${escFull(d.h1)}</h1><p class="lead">${escFull(d.lead)}</p>` + sectionsHtml(d.sections) + sourcesHtml(L, t) + ctaBlock(L, t, '../') + seeAlso('../', 'nav.disc'),
+    content: `<div class="eyebrow">DISC</div><h1>${escFull(d.h1)}</h1><p class="lead">${escFull(d.lead)}</p>` + ctaTop(t, '../') + sectionsHtml(d.sections) + sourcesHtml(L, t) + ctaBlock(L, t, '../') + seeAlso('../', 'nav.disc'),
     ldExtra: [{ '@context': 'https://schema.org', '@type': 'ItemList', name: d.sourcesTitle, itemListElement: SOURCES.map((sc, i) => ({ '@type': 'ListItem', position: i + 1, item: { '@type': 'CreativeWork', name: sc.text, url: sc.url } })) }] });
   const f = C.faq;
   writeContentPage(L, 'faq/', { navKey: 'nav.faq', title: f.title, description: f.description, crumbs: [{ name: t('nav.faq') }],
-    content: `<div class="eyebrow">DISC</div><h1>${escFull(f.h1)}</h1><p class="lead">${escFull(f.lead)}</p>` + f.items.map(it => `<h2>${escFull(it.q)}</h2><p>${escFull(it.a).replace('{pdf}', `<a href="../pdf/">${escFull(t('nav.pdf'))}</a>`)}</p>`).join('') + ctaBlock(L, t, '../') + seeAlso('../', 'nav.faq'),
+    content: `<div class="eyebrow">DISC</div><h1>${escFull(f.h1)}</h1><p class="lead">${escFull(f.lead)}</p>` + ctaTop(t, '../') + f.items.map(it => `<h2>${escFull(it.q)}</h2><p>${escFull(it.a).replace('{pdf}', `<a href="../pdf/">${escFull(t('nav.pdf'))}</a>`)}</p>`).join('') + ctaBlock(L, t, '../') + seeAlso('../', 'nav.faq'),
     ldExtra: [{ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: f.items.map(it => ({ '@type': 'Question', name: it.q, acceptedAnswer: { '@type': 'Answer', text: it.a.replace('{pdf}', t('nav.pdf')) } })) }] });
   const a = C.about;
   writeContentPage(L, 'about/', { navKey: 'nav.about', title: a.title, description: a.description, crumbs: [{ name: t('nav.about') }],
@@ -401,7 +426,7 @@ for (const L of locales) {
       KEYS.map(k => `<div class="stat" style="--k:${colorVar(k)}"><span class="k">${k}</span><span class="nm">${escFull(L.keys[k])}</span><span class="v">${pct(sc.net[k])}%</span><div class="bar"><i style="width:${pct(sc.net[k])}%"></i></div></div>`).join('') +
       `</div><p>${escFull(ex.text)}</p>` + (key !== 'flat' ? `<a class="more" href="../profiles/${key.toLowerCase()}/">${t('pages.profile.more', { name: escFull(L.profiles[key].name) })}</a>` : '') + `</div>`; };
   writeContentPage(L, 'results/', { navKey: 'nav.results', article: true, title: rs.title, description: rs.description, crumbs: [{ name: t('nav.results') }],
-    content: `<div class="eyebrow">DISC</div><h1>${escFull(rs.h1)}</h1><p class="lead">${escFull(rs.lead)}</p>` + sectionsHtml(rs.sections.slice(0, 3)) +
+    content: `<div class="eyebrow">DISC</div><h1>${escFull(rs.h1)}</h1><p class="lead">${escFull(rs.lead)}</p>` + ctaTop(t, '../', 'cta.inlineResults') + sectionsHtml(rs.sections.slice(0, 3)) +
       `<div class="examples">${rs.examples.map(exampleHtml).join('')}</div>` + sectionsHtml(rs.sections.slice(3)) + ctaBlock(L, t, '../') + seeAlso('../', 'nav.results') });
   // /colors/ — DISC по цветам: четыре цветные карточки, подробный разбор каждого цвета, текст и свой призыв «Узнать свой цвет»
   const co = C.colors;
@@ -410,11 +435,11 @@ for (const L of locales) {
       `<h3>${escFull(co.labels.signs)}</h3>${ul(c.signs)}<h3>${escFull(co.labels.blind)}</h3><p>${escFull(c.blind)}</p><h3>${escFull(co.labels.talk)}</h3>${ul(c.talk)}` +
       `<a class="more" href="../profiles/${k.toLowerCase()}/">${t('pages.profile.more', { name: escFull(L.profiles[k].name) })}</a></section>`; };
   writeContentPage(L, 'colors/', { navKey: 'nav.colors', article: true, title: co.title, description: co.description, crumbs: [{ name: t('nav.colors') }],
-    content: `<div class="eyebrow">DISC</div><h1>${escFull(co.h1)}</h1><p class="lead">${escFull(co.lead)}</p><div class="colorgrid">` +
+    content: `<div class="eyebrow">DISC</div><h1>${escFull(co.h1)}</h1><p class="lead">${escFull(co.lead)}</p>` + ctaTop(t, '../', 'cta.inlineColors', co.cta.button) + `<div class="colorgrid">` +
       KEYS.map(k => { const c = co.colors[k]; return `<section class="colorcard" id="${k.toLowerCase()}" style="--k:${colorVar(k)}"><div class="swatch">${k}</div><h2>${escFull(c.name)}</h2><p class="muted">${escFull(c.tagline)}</p><p>${escFull(c.text)}</p><div class="traits">${L.styles[k].traits.map(x => `<span>${escFull(x)}</span>`).join('')}</div><a class="more" href="#type-${k.toLowerCase()}">${escFull(c.h)} ↓</a></section>`; }).join('') +
-      `</div>` + `<aside class="cta"><div><h2>${escFull(co.cta.title)}</h2><p>${escFull(co.cta.text)}</p></div><a class="btn" href="../">${escFull(co.cta.button)}</a></aside>` +
+      `</div>` + `<aside class="cta"><div><h2>${escFull(co.cta.title)}</h2><p>${escFull(co.cta.text)}</p></div><a class="btn" href="../" data-goal="cta-bottom">${escFull(co.cta.button)}</a></aside>` +
       KEYS.map(colorType).join('') + sectionsHtml(co.sections) +
-      `<aside class="cta"><div><h2>${escFull(co.cta.title)}</h2><p>${escFull(co.cta.text)}</p></div><a class="btn" href="../">${escFull(co.cta.button)}</a></aside>` + seeAlso('../', 'nav.colors') });
+      `<aside class="cta"><div><h2>${escFull(co.cta.title)}</h2><p>${escFull(co.cta.text)}</p></div><a class="btn" href="../" data-goal="cta-bottom">${escFull(co.cta.button)}</a></aside>` + seeAlso('../', 'nav.colors') });
   // /compatibility/ — матрица пар и 10 страниц пар стилей
   const cp = C.compatibility;
   const pairNames = k => k[0] === k[1] ? { a: k[0], b: k[1] } : { a: L.keys[k[0]], b: L.keys[k[1]] };
@@ -424,13 +449,13 @@ for (const L of locales) {
     KEYS.map(a => `<tr><th style="color:${colorVar(a)}">${a}</th>` + KEYS.map(b => { const k = KEYS.indexOf(a) <= KEYS.indexOf(b) ? a + b : b + a;
       return `<td><a href="./${pairSlug(k)}/" style="--kp:${colorVar(k[0])};--ks:${colorVar(k[1])}" aria-label="${escFull(t('pages.compat.pairLink', { a: L.keys[k[0]], b: L.keys[k[1]] }))}"><b>${k[0]}</b><i>${k[1]}</i></a></td>`; }).join('') + `</tr>`).join('') + `</tbody></table></div>`;
   writeContentPage(L, 'compatibility/', { navKey: 'nav.compat', article: true, title: cp.title, description: cp.description, crumbs: [{ name: t('nav.compat') }],
-    content: `<div class="eyebrow">DISC</div><h1>${escFull(cp.h1)}</h1><p class="lead">${escFull(cp.lead)}</p>` + matrix + `<div class="pgrid">${PAIRS.map(k => pairCard(k, './')).join('')}</div>` +
+    content: `<div class="eyebrow">DISC</div><h1>${escFull(cp.h1)}</h1><p class="lead">${escFull(cp.lead)}</p>` + ctaTop(t, '../', 'cta.inlinePair') + matrix + `<div class="pgrid">${PAIRS.map(k => pairCard(k, './')).join('')}</div>` +
       sectionsHtml(cp.sections) + ctaBlock(L, t, '../') + seeAlso('../', 'nav.compat') });
   for (const k of PAIRS) {
     const a = k[0], b2 = k[1], pr = cp.pairs[k], names = pairNames(k), base = '../../';
     const content = `<div class="eyebrow">${t('nav.compat')} · ${ltr(a + ' + ' + b2)}</div>` +
       `<div class="rhead">${badge(k)}<div class="rtitle"><h1>${escFull(t('pages.compat.h1', names))}</h1><div class="meta">${ltr(a + ' · ' + b2)}</div></div></div>` +
-      `<p class="lead">${escFull(pr.summary)}</p><p>${escFull(pr.text)}</p>` +
+      `<p class="lead">${escFull(pr.summary)}</p><p>${escFull(pr.text)}</p>` + ctaTop(t, base, 'cta.inlinePair') +
       `<div class="sections"><div class="sec"><h3>${t('pages.compat.common')}</h3>${ul(pr.common)}</div><div class="sec"><h3>${t('pages.compat.friction')}</h3>${ul(pr.friction)}</div>` +
       Object.keys(pr.tips).map(s => `<div class="sec kcol" style="--k:${colorVar(s)}"><h3>${escFull(t('pages.compat.tips', { name: L.keys[s], key: s }))}</h3>${ul(pr.tips[s])}</div>`).join('') + `</div>` +
       // свой текст пары (pairs.<код>.deep): руководитель и подчинённый в обе стороны, совещания, конфликт, вне работы, правила
@@ -447,18 +472,18 @@ for (const L of locales) {
   // /teams/ — DISC для команды и HR
   const tm = C.teams;
   writeContentPage(L, 'teams/', { navKey: 'nav.teams', article: true, title: tm.title, description: tm.description, crumbs: [{ name: t('nav.teams') }],
-    content: `<div class="eyebrow">DISC</div><h1>${escFull(tm.h1)}</h1><p class="lead">${escFull(tm.lead)}</p>` + sectionsHtml(tm.sections) + ctaBlock(L, t, '../') + seeAlso('../', 'nav.teams') });
+    content: `<div class="eyebrow">DISC</div><h1>${escFull(tm.h1)}</h1><p class="lead">${escFull(tm.lead)}</p>` + ctaTop(t, '../') + sectionsHtml(tm.sections) + ctaBlock(L, t, '../') + seeAlso('../', 'nav.teams') });
   // /disc-vs-mbti/ — сравнение моделей: таблица после второй секции
   const mb = C.mbti;
   writeContentPage(L, 'disc-vs-mbti/', { navKey: 'nav.mbti', article: true, title: mb.title, description: mb.description, crumbs: [{ name: t('nav.mbti') }],
-    content: `<div class="eyebrow">DISC</div><h1>${escFull(mb.h1)}</h1><p class="lead">${escFull(mb.lead)}</p>` + sectionsHtml(mb.sections.slice(0, 2)) + tableHtml(mb.table) + sectionsHtml(mb.sections.slice(2)) +
+    content: `<div class="eyebrow">DISC</div><h1>${escFull(mb.h1)}</h1><p class="lead">${escFull(mb.lead)}</p>` + ctaTop(t, '../') + sectionsHtml(mb.sections.slice(0, 2)) + tableHtml(mb.table) + sectionsHtml(mb.sections.slice(2)) +
       `<p class="seealso"><a href="../disc/#sources">${esc(t('pages.sourcesLink'))} ${arrow(L)}</a></p>` + ctaBlock(L, t, '../') + seeAlso('../', 'nav.mbti') });
   // /pdf/ — печатная версия: кнопка скачивания файла из src/assets/pdf (готовится node scripts/make-pdf.js)
   const pd = C.pdf, pi = pdfInfo(L.lang), pdfRoot = relRoot(L, 'pdf/');
   const download = pi ? `<p class="download"><a class="btn" href="${pdfRoot}pdf/${pi.file}" download>${t('pages.pdf.download')}</a><span class="muted">${escFull(t('pages.pdf.meta', { pages: pi.pages, size: fmtSize(pi.size) }))}</span></p>` : `<p class="notice">${escFull(t('pages.pdf.missing'))}</p>`;
   if (!pi) console.warn('WARNING: no PDF for ' + L.lang + ' (run node scripts/make-pdf.js)');
   writeContentPage(L, 'pdf/', { navKey: 'nav.pdf', title: pd.title, description: pd.description, crumbs: [{ name: t('nav.pdf') }],
-    content: `<div class="eyebrow">DISC</div><h1>${escFull(pd.h1)}</h1><p class="lead">${escFull(pd.lead)}</p>` + download + sectionsHtml(pd.sections) + download + ctaBlock(L, t, '../') + seeAlso('../', 'nav.pdf'),
+    content: `<div class="eyebrow">DISC</div><h1>${escFull(pd.h1)}</h1><p class="lead">${escFull(pd.lead)}</p>` + download + ctaTop(t, '../', 'cta.inlinePdf') + sectionsHtml(pd.sections) + download + ctaBlock(L, t, '../') + seeAlso('../', 'nav.pdf'),
     ldExtra: pi ? [{ '@context': 'https://schema.org', '@type': 'DigitalDocument', name: pd.title, url: `${siteUrl}/pdf/${pi.file}`, encodingFormat: 'application/pdf', inLanguage: hl(L.lang), isAccessibleForFree: true }] : [] });
   if (pi) extraUrls.push({ lang: L.lang, loc: `${siteUrl}/pdf/${pi.file}`, date: contentDate(L.lang + ':pdf-file', fs.readFileSync(path.join(ASSETS, 'pdf', pi.file)).toString('base64'), [`src/assets/pdf/${pi.file}`]) });
   // /contact/ — форма обратной связи (только при заданном feedbackEmail); разметка из src/contact.js, там же логика страницы
@@ -475,9 +500,19 @@ for (const L of locales) {
 fs.mkdirSync(path.join(OUT, def.lang), { recursive: true });
 fs.writeFileSync(path.join(OUT, def.lang, 'index.html'), `<!doctype html><html lang="${def.lang}"><head><meta charset="utf-8"><title>${esc(def.brand)}</title><meta http-equiv="refresh" content="0; url=../"><link rel="canonical" href="${siteUrl}/"><script>location.replace('../'+location.hash)</script></head><body><a href="../">${esc(def.brand)}</a></body></html>\n`);
 
-fs.writeFileSync(path.join(OUT, '404.html'), nfTpl.replace(/__BASE__/g, basePath));
+// 404: тексты на всех языках, язык выбирает скрипт страницы (по началу пути, прежнему выбору или языку браузера);
+// без JavaScript — язык по умолчанию. Старые ссылки #r=… и #admin перенаправляются на главную (аудит 3, п. 6)
+const NF_LINKS = [['nav.home', ''], ['nav.disc', 'disc/'], ['nav.profiles', 'profiles/'], ['nav.results', 'results/'], ['nav.faq', 'faq/']];
+const nfData = Object.fromEntries(locales.map(L => [L.lang, { lang: hl(L.lang), dir: L.dir, path: pathOf(L.lang), title: L.ui['notFound.title'], text: L.ui['notFound.text'], cta: L.ui['cta.button'],
+  links: NF_LINKS.map(([k, sub]) => [L.ui[k], sub]) }]));
+fs.writeFileSync(path.join(OUT, '404.html'), nfTpl.replace(/__BASE__/g, basePath).replace('__NF_JSON__', () => JSON.stringify(nfData).replace(/</g, '\\u003c'))
+  .replace(/__DEF_LANG_CODE__/g, def.lang).replace(/__DEF_LANG__/g, hl(def.lang))
+  .replace(/__NF_TITLE__/g, () => esc(def.ui['notFound.title'])).replace('__NF_TEXT__', () => esc(def.ui['notFound.text'])).replace('__NF_CTA__', () => esc(def.ui['cta.button']))
+  .replace('__NF_LINKS__', () => NF_LINKS.map(([k, sub]) => `<li><a href="${basePath + sub}">${esc(def.ui[k])}</a></li>`).join('')));
 fs.writeFileSync(path.join(OUT, '.nojekyll'), '');
-fs.writeFileSync(path.join(OUT, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: ${siteUrl}/sitemap.xml\n`);
+// Clean-param (Яндекс): метка ?ref=<сеть> в ссылках «Поделиться типом» не меняет страницу — робот не обходит такие адреса
+// как отдельные; Google директиву игнорирует, ему хватает canonical (аудит 3, п. 5)
+fs.writeFileSync(path.join(OUT, 'robots.txt'), `User-agent: *\nAllow: /\nClean-param: ref\nSitemap: ${siteUrl}/sitemap.xml\n`);
 const altFor = sub => locales.flatMap(x => hls(x.lang).map(h => `<xhtml:link rel="alternate" hreflang="${h}" href="${urlOf(x.lang) + sub}"/>`)).join('') + `<xhtml:link rel="alternate" hreflang="x-default" href="${siteUrl}/${sub}"/>`;
 // Sitemap по языкам: sitemap.xml — индекс, sitemap-<язык>.xml — страницы и PDF одного языка.
 // В Search Console по каждому файлу видно, сколько адресов языка проиндексировано.

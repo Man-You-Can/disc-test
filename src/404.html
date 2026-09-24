@@ -1,12 +1,62 @@
 <!doctype html>
-<html lang="en">
+<html lang="__DEF_LANG__">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>DISC Test</title>
+<title>__NF_TITLE__</title>
 <meta name="robots" content="noindex">
-<script>location.replace('__BASE__' + location.hash);</script>
-<style>body{margin:0;font-family:system-ui,sans-serif;padding:48px 20px;text-align:center;color:#5B6470}a{color:#1B2027}</style>
+<link rel="icon" href="__BASE__favicon.svg" type="image/svg+xml">
+<script>
+/* Старые ссылки на результат (#r=…) и на панель администратора (#admin) — на главную того же языка с тем же хешем:
+   так продолжают работать адреса вида man-you-can.github.io/disc-test/#r=…. Остальные несуществующие адреса
+   показывают эту страницу на языке из начала пути (/ru/… → русский), иначе — на выбранном ранее языке или языке браузера. */
+(function(){
+  var NF = __NF_JSON__, BASE = '__BASE__', DEF = '__DEF_LANG_CODE__';
+  var seg = location.pathname.slice(BASE.length).split('/')[0], lang = seg && NF[seg] ? seg : null;
+  var h = location.hash || '';
+  if (h.indexOf('#r=') === 0 || h === '#admin') { location.replace(BASE + (lang ? NF[lang].path : '') + h); return; }
+  if (!lang) {
+    try { var st = JSON.parse(localStorage.getItem('disc.lang')); if (NF[st]) lang = st; } catch (e) {}
+    var prefs = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || ''];
+    for (var i = 0; i < prefs.length && !lang; i++) { var full = String(prefs[i]).toLowerCase(), p = full.split('-')[0];
+      if (p === 'zh' && /^zh-(hant|tw|hk|mo)\b/.test(full)) p = 'zh-hant';
+      if (p === 'in') p = 'id';
+      if (NF[p]) lang = p; }
+  }
+  window.__nf = NF[lang || DEF];
+})();
+</script>
+<style>
+:root{--bg:#F3F4F6;--ink:#1B2027;--muted:#5B6470;--line:#D9DDE3;--btn:#1B2027;--btn-ink:#F7F8FA}
+@media (prefers-color-scheme: dark){:root{--bg:#14171B;--ink:#ECEEF1;--muted:#9AA3AE;--line:#2C323A;--btn:#ECEEF1;--btn-ink:#14171B}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;line-height:1.5}
+main{max-width:560px;margin:0 auto;padding:64px 20px}
+.dots{display:inline-flex;gap:5px;margin-bottom:24px}.dots i{width:10px;height:10px;border-radius:50%}
+h1{font-size:28px;line-height:1.2;margin:0 0 12px}
+p{color:var(--muted);margin:0 0 24px}
+.btn{display:inline-block;background:var(--btn);color:var(--btn-ink);text-decoration:none;font-weight:600;padding:12px 22px;border-radius:10px}
+ul{list-style:none;padding:0;margin:28px 0 0;display:flex;flex-wrap:wrap;gap:8px 18px;border-top:1px solid var(--line);padding-top:18px}
+ul a{color:var(--ink)}
+</style>
 </head>
-<body><p>Page not found. <a href="__BASE__">DISC Test</a></p></body>
+<body>
+<main id="nf">
+  <span class="dots" aria-hidden="true"><i style="background:#C9453D"></i><i style="background:#D6961F"></i><i style="background:#3A9A69"></i><i style="background:#3B6FB6"></i></span>
+  <h1>__NF_TITLE__</h1>
+  <p>__NF_TEXT__</p>
+  <a class="btn" href="__BASE__">__NF_CTA__</a>
+  <ul>__NF_LINKS__</ul>
+</main>
+<script>
+(function(){
+  var d = window.__nf, m = document.getElementById('nf'); if (!d || !m) return;
+  var esc = function(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); };
+  var home = '__BASE__' + d.path;
+  document.documentElement.lang = d.lang; document.documentElement.dir = d.dir; document.title = d.title;
+  m.querySelector('h1').textContent = d.title; m.querySelector('p').textContent = d.text;
+  var b = m.querySelector('.btn'); b.textContent = d.cta; b.href = home;
+  m.querySelector('ul').innerHTML = d.links.map(function(l){ return '<li><a href="' + esc(home + l[1]) + '">' + esc(l[0]) + '</a></li>'; }).join('');
+})();
+</script>
+</body>
 </html>
