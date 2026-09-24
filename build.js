@@ -102,7 +102,8 @@ const FONTS = {
 const fontsHead = (f, L) => {
   if (!f.families || !f.families.length || !FONT_CSS) return '';
   const sub = L.lang === 'ru' ? 'cyrillic' : 'latin', ext = LATIN_EXT.includes(L.lang);
-  const faces = FONT_CSS.split('\n').filter(l => l.startsWith('@font-face') && f.families.some(fam => l.includes(`font-family:'${fam}'`))).join('\n').replace(/__FONTS__/g, basePath + 'fonts/');
+  // шрифт заголовков — один вес (500): файлы 600 Unbounded и Noto Kufi Arabic не подключаются — минус ~80 КБ на страницу, в арабской ~170 КБ (аудит 3, п. 11)
+  const faces = FONT_CSS.split('\n').filter(l => l.startsWith('@font-face') && f.families.some(fam => l.includes(`font-family:'${fam}'`)) && !/font-family:'(Unbounded|Noto Kufi Arabic)';[^}]*font-weight:600/.test(l)).join('\n').replace(/__FONTS__/g, basePath + 'fonts/');
   const pre = (f.preload ? f.preload(sub, ext) : []).filter(n => fs.existsSync(path.join(ASSETS, 'fonts', n))).map(n => `<link rel="preload" href="${basePath}fonts/${n}" as="font" type="font/woff2" crossorigin>`).join('\n');
   return pre + '\n<style>' + faces + '</style>';
 };
