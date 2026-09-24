@@ -194,6 +194,7 @@ html[lang=ar] body,html[lang=hi] body{font-size:17px;line-height:1.65}
 .cta h2{margin:0 0 6px;font-size:20px;color:inherit}
 .cta p{margin:0;opacity:.85;font-size:14px}
 .cta .btn{background:var(--btn-ink);color:var(--btn);flex:none}
+.cta.invite{margin:0 0 24px}
 .stylecard .more{display:inline-block;margin-top:10px;font-size:13px;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line-strong)}
 .stylecard .more:hover{border-bottom-color:var(--ink)}
 .styles-intro .all{margin-top:14px;font-size:14px}
@@ -574,7 +575,7 @@ function initCommon(c){
 }
 
 initCommon({L:L, t:t, esc:esc, lsGet:lsGet, lsSet:lsSet, langHref:langHref, $:$, langMeta:LANG_META, langPath:LANG_PATH, privacyHref:ROOT_REL+(LANG_PATH[L.lang]||'')+'privacy/'});
-
+if(/[?&]ref=/.test(location.search)){ var inv = document.createElement('aside'); inv.className = 'cta invite'; inv.innerHTML = "\u003cdiv>\u003ch2>Teman Anda bertipe “Motivator”. Bagaimana dengan Anda?\u003c/h2>\u003cp>Ikuti tes DISC gratis: 24 blok, sekitar 10 menit, tanpa daftar. Ketahui tipe Anda dan cara terbaik untuk bekerja sama dan berkomunikasi.\u003c/p>\u003c/div>\u003ca class=\"btn\" href=\"../../\">Ikuti tes\u003c/a>";inv.querySelector('a').addEventListener('click', function(){ if(window.discTrack) window.discTrack('invite'); });var m = $('main.content'); m.insertBefore(inv, m.firstChild); if(window.discTrack) window.discTrack('invite-view'); }
 })();
 </script>
 </body>

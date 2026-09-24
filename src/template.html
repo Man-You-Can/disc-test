@@ -131,6 +131,7 @@ html[lang=ar] body,html[lang=hi] body{font-size:17px;line-height:1.65}
 .cta h2{margin:0 0 6px;font-size:20px;color:inherit}
 .cta p{margin:0;opacity:.85;font-size:14px}
 .cta .btn{background:var(--btn-ink);color:var(--btn);flex:none}
+.cta.invite{margin:0 0 24px}
 .stylecard .more{display:inline-block;margin-top:10px;font-size:13px;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line-strong)}
 .stylecard .more:hover{border-bottom-color:var(--ink)}
 .styles-intro .all{margin-top:14px;font-size:14px}
@@ -691,8 +692,8 @@ function renderReport(r, opts){
     }
     $('#shareType').addEventListener('click', function(){
       if(window.discTrack) window.discTrack('share');
-      if(navigator.share){ navigator.share({title:shareMsg, text:shareMsg, url:profileURL}).catch(function(){}); }
-      else copyText(shareMsg+' '+profileURL, null);
+      if(navigator.share){ navigator.share({title:shareMsg, text:shareMsg, url:profileURL+"?ref=share"}).catch(function(){}); }
+      else copyText(shareMsg+' '+profileURL+"?ref=share", null);
     });
     Array.prototype.forEach.call(document.querySelectorAll('.sharenet'), function(a){
       a.addEventListener('click', function(){ if(window.discTrack){ window.discTrack('share'); window.discTrack('share-'+a.getAttribute('data-net')); } });
@@ -727,7 +728,8 @@ var SHARE_BY_LANG = {ru:["telegram","vk","whatsapp","linkedin"], en:["facebook",
 function shareNetLinks(url, text){
   return (SHARE_BY_LANG[L.lang]||SHARE_BY_LANG.en).map(function(id){
     var n = SHARE_NETS[id], e = encodeURIComponent;
-    var href = n.url.replace("{u}", e(url)).replace("{t}", e(text)).replace("{tu}", e(text+" "+url));
+    var u = url+"?ref="+id; // ?ref=<сеть>: страница профиля покажет пришедшему баннер-приглашение пройти тест (см. build.js)
+    var href = n.url.replace("{u}", e(u)).replace("{t}", e(text)).replace("{tu}", e(text+" "+u));
     return '<a class="btn secondary small sharenet" data-net="'+id+'" href="'+esc(href)+'" target="_blank" rel="noopener noreferrer" title="'+esc(t("share.via",{net:n.name}))+'">'+
       '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="'+n.color+'"><path d="'+n.icon+'"/></svg>'+esc(n.name)+'</a>';
   }).join("");

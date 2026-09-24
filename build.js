@@ -355,6 +355,11 @@ for (const L of locales) {
     writeContentPage(L, `profiles/${key.toLowerCase()}/`, { navKey: 'nav.profiles', title: t('pages.profile.title', { name: pr.name, key }),
       description: truncDesc(L, t('pages.profile.description', { name: pr.name, key, summary: pr.summary })),
       crumbs: [{ name: t('nav.profiles'), href: '../', sub: 'profiles/' }, { name: pr.name }], content,
+      // пришли по ссылке «Поделиться типом» (?ref=<сеть>, см. shareNetLinks в template.html) — вверху баннер-приглашение пройти тест
+      pageJs: `if(/[?&]ref=/.test(location.search)){ var inv = document.createElement('aside'); inv.className = 'cta invite'; inv.innerHTML = ${jsStr(
+        `<div><h2>${escFull(t('invite.title', { name: pr.name }))}</h2><p>${escFull(t('invite.text'))}</p></div><a class="btn" href="${b}">${escFull(t('cta.button'))}</a>`)};` +
+        `inv.querySelector('a').addEventListener('click', function(){ if(window.discTrack) window.discTrack('invite'); });` +
+        `var m = $('main.content'); m.insertBefore(inv, m.firstChild); if(window.discTrack) window.discTrack('invite-view'); }`,
       ogImage: fs.existsSync(path.join(ASSETS, 'og', 'profiles', `${L.lang}-${key.toLowerCase()}.png`)) ? `${siteUrl}/og/profiles/${L.lang}-${key.toLowerCase()}.png` : null });
   }
 }
