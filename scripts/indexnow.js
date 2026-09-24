@@ -17,8 +17,10 @@ const since = args.find(a => !a.startsWith('--')) || 'HEAD~1';
 
 let urls;
 if (all) {
-  const xml = fs.readFileSync(path.join(ROOT, 'docs', 'sitemap.xml'), 'utf8');
-  urls = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1]);
+  // sitemap.xml — индекс файлов sitemap-<язык>.xml (с 24.09.2026): адреса страниц берём из каждого файла, а не адреса самих файлов
+  const read = f => fs.readFileSync(path.join(ROOT, 'docs', f), 'utf8'), locs = xml => [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1]);
+  const top = read('sitemap.xml');
+  urls = /<sitemapindex/.test(top) ? locs(top).flatMap(u => locs(read(u.split('/').pop()))) : locs(top);
 } else {
   const files = execSync(`git diff --name-only ${since} HEAD -- docs`, { cwd: ROOT }).toString().split('\n').filter(Boolean);
   urls = files.filter(f => /\.(html|pdf)$/.test(f) && !/(^|\/)404\.html$/.test(f) && fs.existsSync(path.join(ROOT, f)))
