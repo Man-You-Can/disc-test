@@ -450,7 +450,7 @@
   },
   "content": {
     "disc": {
-      "title": "Was ist DISG (DISC): das Modell, die vier Verhaltensstile und wie man ein Profil liest",
+      "title": "Was ist DISG (DISC): das Modell und die vier Verhaltensstile",
       "description": "Verständlich erklärt: Woher das DISG-Modell (DISC) kommt, was es misst, die vier Stile D, I, S, C, wie das Ergebnis berechnet wird und wie Sie Ihr Profil lesen.",
       "h1": "Was ist DISG",
       "lead": "DISG (international DISC) ist ein Verhaltensmodell, das beschreibt, wie ein Mensch handelt, kommuniziert und entscheidet, und zwar auf vier Skalen: Dominanz, Initiative, Stetigkeit und Gewissenhaftigkeit. Es ist weder ein Intelligenztest noch eine Diagnose, sondern eine gemeinsame Sprache, um über Verhaltensstile zu sprechen.",
@@ -717,7 +717,7 @@
       ]
     },
     "colors": {
-      "title": "DISG-Farben: Rot, Gelb, Grün, Blau – die vier Persönlichkeitstypen erklärt",
+      "title": "DISG-Farben: Rot, Gelb, Grün, Blau – vier Persönlichkeitstypen",
       "description": "Rote, gelbe, grüne, blaue Typen nach DISG: woran Sie jede Farbe erkennen, wie Sie mit ihr umgehen und was „Überall Idioten“ damit zu tun hat. Kostenloser Test.",
       "h1": "DISG-Farben: Rot, Gelb, Grün, Blau",
       "lead": "Die vier DISG-Stile werden oft mit Farben bezeichnet: Rot steht für Dominanz, Gelb für Initiative, Grün für Stetigkeit, Blau für Gewissenhaftigkeit. Die Farben fügen dem Modell nichts hinzu, aber sie helfen, sich die Stile schnell zu merken und im Team über sie zu sprechen. Wir erklären, was hinter jeder Farbe steckt und wie Sie Ihre eigene herausfinden.",
@@ -817,7 +817,7 @@
       }
     },
     "pdf": {
-      "title": "DISG-Test PDF kostenlos: Fragebogen zum Ausdrucken mit Auswertung",
+      "title": "DISG-Test PDF kostenlos: zum Ausdrucken mit Auswertung",
       "description": "DISG-Test als PDF kostenlos: 24 Blöcke, Schlüssel, Auswertungstabelle, 16 Profile. Herunterladen, ausdrucken, auf Papier ausfüllen.",
       "h1": "DISG-Test als PDF: herunterladen und ausdrucken",
       "lead": "Dieselbe Vollversion des Tests wie online, nur als Datei zum Ausdrucken: 24 Blöcke mit je vier Aussagen, Schlüssel zu den Stilen, Auswertungstabelle und Beschreibung aller 16 Profile. Die Datei ist kostenlos und erfordert keine Anmeldung.",
@@ -1203,6 +1203,28 @@
         { "q": "Kann ein ganzes Team den Test machen?", "a": "Ja: Alle machen den Test über einen Link, und die Ergebnisse werden im Admin-Bereich gesammelt." }
       ],
       "profilesTitle": "16 DISG-Profile"
+    },
+    "profiles": {
+      "sections": [
+        {
+          "h": "Wie aus vier Stilen 16 Profile werden",
+          "p": [
+            "Für jeden Stil berechnet der Test die Differenz zwischen den Antworten „trifft am meisten auf mich zu“ und „trifft am wenigsten auf mich zu“: von −24 bis +24. Der Stil mit dem höchsten Wert wird zum Hauptstil – das ist der erste Buchstabe des Profils. Der zweitstärkste Stil zählt als Nebenstil, wenn sein Wert positiv ist, mindestens 40 % des Hauptstils erreicht und nicht unter 3 Punkten liegt. Dann wird er zum zweiten Buchstaben.",
+            "Erreicht der zweite Stil diese Schwelle nicht, ist das Profil „rein“: D, I, S oder C. Erreicht er sie, entsteht eine von zwölf Kombinationen. Vier reine Profile und zwölf Kombinationen ergeben zusammen die 16 Profile aus der Tabelle oben."
+          ]
+        },
+        {
+          "h": "Worin sich Profil und Stil unterscheiden",
+          "p": [
+            "Ein Stil ist eine der vier DISG-Skalen: Dominanz, Initiative, Stetigkeit oder Gewissenhaftigkeit. Das Profil beschreibt, wie sie sich bei einem bestimmten Menschen verbinden: Der Hauptstil bildet die Grundlage des Verhaltens, der Nebenstil gibt ihr eine Nuance. Deshalb bestehen DI und ID aus denselben Buchstaben und sind doch verschiedene Profile. Der Pionier (DI) steuert vor allem auf das Ergebnis zu und reißt unterwegs andere mit, der Motivator (ID) begeistert vor allem Menschen und erreicht das Ergebnis über sie.",
+            "Ein Profil ist kein Etikett und keine Bewertung. Jeder Mensch trägt alle vier Stile in sich; das Profil zeigt nur, welche davon im gewohnten Arbeitsumfeld am stärksten hervortreten."
+          ]
+        },
+        {
+          "h": "So finden Sie Ihr Profil",
+          "p": ["Machen Sie den kostenlosen Test: 24 Blöcke mit je vier Aussagen, etwa 10 Minuten. Auf dem Ergebnisbildschirm sehen Sie ein Diagramm, Ihren Haupt- und Nebenstil und einen Link zur Seite Ihres Profils – mit Hinweisen zur Zusammenarbeit mit anderen Stilen und Tipps, wie Sie am besten arbeiten und kommunizieren."]
+        }
+      ]
     }
   },
   "ui": {
@@ -1360,11 +1382,11 @@
     "pages.styles.description": "Die vier DISG-Typen: Dominanz, Initiative, Stetigkeit, Gewissenhaftigkeit. Merkmale, Stärken, Entwicklungsfelder, Motivation, Verhalten unter Stress.",
     "pages.styles.h1": "DISG-Persönlichkeitstypen: die vier Stile",
     "pages.styles.lead": "DISG (DISC) beschreibt Verhalten auf vier Skalen. Jeder Mensch trägt alle vier Stile in sich, ein bis zwei sind jedoch stärker ausgeprägt. Im Folgenden: Was jeden Stil auszeichnet, was ihn motiviert und wie man mit ihm am besten kommuniziert.",
-    "pages.profiles.title": "16 DISG-Persönlichkeitstypen: alle Profile des Tests mit Beschreibung",
+    "pages.profiles.title": "16 DISG-Profile: alle Stilkombinationen mit Beschreibung",
     "pages.profiles.description": "Alle 16 Profile des DISG-Tests: vier reine Stile und zwölf Kombinationen. Kurzbeschreibung jedes Typs mit Link zur ausführlichen Seite.",
-    "pages.profiles.h1": "16 DISG-Profile und Persönlichkeitstypen",
+    "pages.profiles.h1": "16 DISG-Profile",
     "pages.profiles.lead": "Das Testergebnis ist Ihr Hauptstil und, falls ausgeprägt, ein Nebenstil. So ergeben sich 16 Profile: vier „reine“ und zwölf Kombinationen. Finden Sie Ihres oder machen Sie den Test, um es herauszufinden.",
-    "pages.profile.title": "{name} ({key}) – DISG-Profil: Beschreibung, Stärken, Entwicklungsfelder",
+    "pages.profile.title": "{name} ({key}) – DISG-Persönlichkeitstyp: Stärken und Tipps",
     "pages.profile.h1": "{name} ({key}) – DISG-Profil",
     "pages.profile.description": "DISG-Profil {key} „{name}“: {summary}",
     "pages.profile.descCta": "Machen Sie den kostenlosen Test in 10 Minuten.",
@@ -1390,7 +1412,7 @@
     "pages.profile.example": "Ein Beispiel aus der Praxis",
     "pages.profile.styleMore": "Mehr zum Stil {key}: {name}",
     "pages.profile.related": "Ähnliche Profile",
-    "pages.compat.title": "{a} und {b}: Zusammenarbeit der DISG-Typen im Beruf",
+    "pages.compat.title": "{a} und {b}: DISG-Kompatibilität im Beruf",
     "pages.compat.description": "So arbeiten die Stile {a} und {b} zusammen: was sie verbindet, wo Reibung entsteht und was jeder tun kann. Kostenloser DISG-Test auf dieser Seite.",
     "pages.compat.h1": "{a} und {b}: Zusammenarbeit im Team",
     "pages.compat.common": "Was sie verbindet",
@@ -1410,6 +1432,10 @@
     "pages.pdf.missing": "Die Datei wird gerade erstellt. Machen Sie den Test so lange online oder speichern Sie das Ergebnis auf dem Ergebnisbildschirm als PDF.",
     "pages.updated": "Aktualisiert am {date}",
     "pages.sourcesLink": "Quellen und Literatur",
+    "pages.compat.together": "So arbeiten sie zusammen",
+    "pages.profiles.tableTitle": "Alle 16 Profile: Haupt- und Nebenstil",
+    "pages.profiles.colLead": "Hauptstil",
+    "pages.profiles.colPure": "Ohne Nebenstil",
 
     "cta.title": "Finden Sie Ihr DISG-Profil",
     "cta.text": "Kostenloser Test: 24 Blöcke, etwa 10 Minuten, Ergebnis sofort und per E-Mail.",

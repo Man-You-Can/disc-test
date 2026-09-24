@@ -369,7 +369,7 @@ body.has-consent{padding-bottom:160px}
 .colorgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}
 @media (max-width:640px){.colorgrid{grid-template-columns:1fr}}
 .colorcard{background:var(--surface);border:1px solid var(--line);border-top:6px solid var(--k);border-radius:14px;padding:18px 20px}
-.colorcard h2{margin:10px 0 2px;color:var(--k)}
+.colorcard h2{margin:10px 0 2px;color:var(--ink)} /* цвет — полоса сверху и квадрат: жёлтый и зелёный текст не проходил по контрасту */
 .colorcard .swatch{width:44px;height:44px;border-radius:10px;background:var(--k);color:#14171B;display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-weight:600;font-size:22px}
 .colorcard .traits{margin:10px 0 4px}
 .colortype{margin:26px 0;padding:4px 0 4px;padding-inline-start:18px;border-inline-start:4px solid var(--k)}
@@ -387,7 +387,17 @@ body.has-consent{padding-bottom:160px}
 .cmp{min-width:640px}
 .cmp th,.cmp td{white-space:normal;vertical-align:top}
 .cmp tbody th{font-weight:600}
-.sec.kcol h3{color:var(--k)}
+.sec.kcol h3{color:var(--ink)} /* цвет стиля — полосой слева: жёлтый и зелёный текст 12 px не проходил по контрасту (аудит 3, п. 12) */
+/* карточка профиля/пары и схема цветов картинкой в тексте; таблица 16 профилей (аудит 3, пп. 9–10) */
+.ogfig{margin:22px 0 28px}
+.ogfig img{display:block;width:100%;max-width:560px;height:auto;border-radius:14px}
+.ptable{min-width:560px;table-layout:fixed}
+.ptable td,.ptable th{white-space:normal;padding:10px 8px}
+.ptable thead th:first-child{width:24%}
+.ptable tbody th{text-transform:none;letter-spacing:0;font-size:14px;color:var(--ink)}
+.ptable .k{font-family:var(--font-head);font-weight:600}
+.ptable td small{color:var(--muted);font-family:var(--font-mono)}
+.ptable td.na{color:var(--muted)}
 .sec.kcol{border-inline-start:3px solid var(--k);padding-inline-start:12px}
 .download{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:18px 0}
 .content ol{padding-inline-start:22px}

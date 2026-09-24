@@ -713,7 +713,7 @@
       ]
     },
     "colors": {
-      "title": "Renklere göre kişilik: kırmızı, sarı, yeşil ve mavi tipler (DISC renkleri)",
+      "title": "Renklere göre kişilik: kırmızı, sarı, yeşil, mavi tipler (DISC renkleri)",
       "description": "DISC’te kırmızı, sarı, yeşil ve mavi kişilik: her rengi nasıl tanırsınız, onunla nasıl iletişim kurarsınız ve “Etrafım Aptallarla Dolu” ile bağı. Ücretsiz test.",
       "h1": "DISC renkleri: kırmızı, sarı, yeşil, mavi",
       "lead": "DISC’in dört stili çoğu zaman renklerle gösterilir: kırmızı — Baskınlık, sarı — Etkileyicilik, yeşil — İstikrar, mavi — Titizlik. Renkler modele yeni bir şey katmaz, ama stilleri çabucak akılda tutmayı ve ekip içinde konuşmayı kolaylaştırır. Bu sayfada her rengin ardında ne olduğunu ve kendi renginizi nasıl öğreneceğinizi anlatıyoruz.",
@@ -1197,6 +1197,28 @@
         { "q": "Testi bütün ekip çözebilir mi?", "a": "Evet: herkes testi bağlantı üzerinden çözer, sonuçlar yönetici panelinde toplanır." }
       ],
       "profilesTitle": "16 DISC profili"
+    },
+    "profiles": {
+      "sections": [
+        {
+          "h": "Dört stilden 16 profil nasıl ortaya çıkar",
+          "p": [
+            "Test, her stil için “Beni en çok tanımlayan” ve “Beni en az tanımlayan” yanıtlarınız arasındaki farkı hesaplar; bu fark −24 ile +24 arasındadır. En yüksek değeri alan stil ana stil olur: profilin ilk harfi odur. İkinci en yüksek stil, değeri pozitifse, ana stilin değerinin en az %40’ı kadarsa ve en az 3 puansa ikincil stil sayılır. Bu durumda profilin ikinci harfi olur.",
+            "İkinci stil bu eşiğe ulaşmazsa profil “saf” kalır: D, I, S ya da C. Ulaşırsa on iki kombinasyondan biri ortaya çıkar. Dört saf profil ve on iki kombinasyon, yukarıdaki tablodaki 16 profili oluşturur."
+          ]
+        },
+        {
+          "h": "Profil ile stil arasındaki fark",
+          "p": [
+            "Stil, DISC’in dört ölçeğinden biridir: Baskınlık, Etkileyicilik, İstikrar ya da Titizlik. Profil ise bu stillerin belirli bir kişide nasıl birleştiğini anlatır: ana stil davranışın temelini belirler, ikincil stil ona kendi rengini katar. Bu yüzden DI ve ID aynı harflerden oluşur, ama farklı profillerdir. Öncü (DI) her şeyden önce sonuca yönelir ve yol boyunca insanları da peşinden sürükler; Motivatör (ID) ise her şeyden önce insanları heveslendirir ve sonuca onlar aracılığıyla ulaşır.",
+            "Profil bir etiket ya da değerlendirme değildir. Dört stilin hepsi herkeste vardır; profil yalnızca bunlardan hangilerinin alışılmış iş ortamında en belirgin biçimde ortaya çıktığını gösterir."
+          ]
+        },
+        {
+          "h": "Profilinizi nasıl öğrenirsiniz",
+          "p": ["Ücretsiz testi çözün: her biri dört ifadeden oluşan 24 soru, yaklaşık 10 dakika. Sonuç ekranında bir grafik, ana ve ikincil stiliniz ve profil sayfanızın bağlantısı yer alır. Bu sayfada diğer stillerle uyumunuzu ve en iyi nasıl çalışıp iletişim kuracağınıza dair önerileri bulursunuz."]
+        }
+      ]
     }
   },
   "ui": {
@@ -1354,9 +1376,9 @@
     "pages.styles.description": "DISC’e göre dört kişilik tipi: Baskınlık, Etkileyicilik, İstikrar ve Titizlik. Özellikler, güçlü yönler, gelişim alanları, motivasyon ve stres.",
     "pages.styles.h1": "DISC kişilik tipleri: dört stil",
     "pages.styles.lead": "DISC, davranışı dört ölçekte tanımlar. Dört stilin hepsi herkeste bulunur, ancak bir ya da ikisi daha belirgindir. Aşağıda her stilin tipik özelliklerini, onu neyin motive ettiğini ve onunla en iyi nasıl iletişim kurulacağını bulacaksınız.",
-    "pages.profiles.title": "16 DISC kişilik tipi — testin tüm profilleri ve açıklamaları",
+    "pages.profiles.title": "16 DISC profili: tüm stil kombinasyonları ve açıklamaları",
     "pages.profiles.description": "DISC testinin 16 profilinin tamamı: dört saf stil ve on iki kombinasyon. Her tipin kısa açıklaması ve ayrıntılı sayfasının bağlantısı.",
-    "pages.profiles.h1": "16 DISC profili ve kişilik tipi",
+    "pages.profiles.h1": "16 DISC profili",
     "pages.profiles.lead": "Testin sonucu, ana stiliniz ve yeterince belirginse ikincil stilinizdir. Böylece 16 profil ortaya çıkar: dört “saf” stil ve on iki kombinasyon. Kendi profilinizi bulun ya da öğrenmek için testi çözün.",
     "pages.profile.title": "{name} ({key}) — DISC profili: güçlü yönler, gelişim alanları",
     "pages.profile.h1": "{name} ({key}) — DISC profili",
@@ -1404,6 +1426,10 @@
     "pages.pdf.missing": "Dosya hazırlanıyor. Bu arada testi online çözebilir ya da sonucunuzu sonuç ekranından PDF olarak kaydedebilirsiniz.",
     "pages.updated": "Güncelleme: {date}",
     "pages.sourcesLink": "Kaynaklar ve literatür",
+    "pages.compat.together": "Birlikte nasıl çalışırlar",
+    "pages.profiles.tableTitle": "16 profilin tamamı: ana ve ikincil stil",
+    "pages.profiles.colLead": "Ana stil",
+    "pages.profiles.colPure": "İkincil stil yok",
 
     "cta.title": "DISC profilinizi öğrenin",
     "cta.text": "Ücretsiz test: 24 soru, yaklaşık 10 dakika; sonuç anında ekranda ve e-postanızda.",

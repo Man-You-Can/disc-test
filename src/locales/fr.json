@@ -450,7 +450,7 @@
   },
   "content": {
     "disc": {
-      "title": "Qu'est-ce que la méthode DISC ? Le modèle, les quatre styles et la lecture d'un profil",
+      "title": "Qu'est-ce que la méthode DISC ? Le modèle et les quatre styles",
       "description": "La méthode DISC expliquée simplement : son origine, ce qu'elle mesure, les quatre styles D, I, S, C, le calcul du résultat et la lecture de votre profil.",
       "h1": "Qu'est-ce que la méthode DISC ?",
       "lead": "Le DISC est un modèle comportemental qui décrit comment une personne agit, communique et prend des décisions selon quatre échelles : dominance, influence, stabilité et conformité. Ce n'est ni un test d'intelligence ni un diagnostic, mais un langage commun pour parler des styles de comportement.",
@@ -715,7 +715,7 @@
       ]
     },
     "colors": {
-      "title": "Test des 4 couleurs de personnalité : rouge, jaune, vert et bleu (DISC)",
+      "title": "Test des 4 couleurs de personnalité DISC : rouge, jaune, vert, bleu",
       "description": "Rouge, jaune, vert et bleu selon le DISC : reconnaître chaque couleur, communiquer avec elle et le lien avec « Entouré d'idiots ». Test gratuit.",
       "h1": "Les couleurs DISC : rouge, jaune, vert, bleu",
       "lead": "Les quatre styles DISC sont souvent désignés par des couleurs : rouge pour la dominance, jaune pour l'influence, vert pour la stabilité, bleu pour la conformité. Les couleurs n'ajoutent rien au modèle, mais elles aident à mémoriser les styles rapidement et à en parler en équipe. Voyons ce qui se cache derrière chaque couleur et comment connaître la vôtre.",
@@ -1214,6 +1214,28 @@
         { "q": "Toute une équipe peut-elle passer le test ?", "a": "Oui : chacun passe le test via le lien, et les résultats sont réunis dans l'espace administrateur." }
       ],
       "profilesTitle": "Les 16 profils DISC"
+    },
+    "profiles": {
+      "sections": [
+        {
+          "h": "Comment quatre styles donnent 16 profils",
+          "p": [
+            "Pour chaque style, le test calcule la différence entre les réponses « me ressemble le plus » et « me ressemble le moins » : de −24 à +24. Le style au total le plus élevé devient le style dominant, c'est-à-dire la première lettre du profil. Le style arrivé en deuxième position est retenu comme secondaire si son total est positif, atteint au moins 40 % de celui du dominant et n'est pas inférieur à 3 points. Il devient alors la deuxième lettre.",
+            "Si le deuxième style n'atteint pas ce seuil, le profil est « pur » : D, I, S ou C. S'il l'atteint, on obtient l'une des douze combinaisons. Les quatre profils purs et les douze combinaisons forment les 16 profils du tableau ci-dessus."
+          ]
+        },
+        {
+          "h": "Ce qui distingue un profil d'un style",
+          "p": [
+            "Un style est l'une des quatre échelles du DISC : dominance, influence, stabilité ou conformité. Un profil décrit la façon dont elles se combinent chez une personne donnée : le style dominant pose la base du comportement, le style secondaire lui apporte sa nuance. C'est pourquoi DI et ID s'écrivent avec les mêmes lettres, mais sont deux profils différents. Le Pionnier (DI) vise d'abord le résultat et entraîne les autres en chemin, tandis que le Fédérateur (ID) mobilise d'abord les autres et obtient le résultat grâce à eux.",
+            "Un profil n'est ni une étiquette ni une note. Chacun possède les quatre styles ; le profil montre seulement lesquels s'expriment le plus nettement dans un cadre de travail familier."
+          ]
+        },
+        {
+          "h": "Comment découvrir votre profil",
+          "p": ["Passez le test gratuit : 24 blocs de quatre affirmations, environ 10 minutes. L'écran de résultat affiche le graphique, vos styles dominant et secondaire, ainsi qu'un lien vers la page de votre profil : compatibilité avec les autres styles et conseils pour travailler et communiquer au mieux."]
+        }
+      ]
     }
   },
   "ui": {
@@ -1371,11 +1393,11 @@
     "pages.styles.description": "Les quatre types de personnalité DISC : dominance, influence, stabilité, conformité. Traits, points forts, axes de progression, motivation, stress.",
     "pages.styles.h1": "Types de personnalité DISC : les quatre styles",
     "pages.styles.lead": "Le DISC décrit le comportement selon quatre échelles. Chacun possède les quatre styles, mais un ou deux sont plus marqués. Ci-dessous : ce qui caractérise chaque style, ce qui le motive et comment communiquer avec lui.",
-    "pages.profiles.title": "16 types de personnalité DISC — tous les profils du test décrits",
+    "pages.profiles.title": "16 profils DISC : toutes les combinaisons de styles expliquées",
     "pages.profiles.description": "Les 16 profils du test DISC : quatre styles purs et douze combinaisons. Brève description de chaque type et lien vers sa page détaillée.",
-    "pages.profiles.h1": "Les 16 profils et types de personnalité DISC",
+    "pages.profiles.h1": "Les 16 profils DISC",
     "pages.profiles.lead": "Le résultat du test est votre style dominant et, s'il est marqué, un style secondaire. On obtient ainsi 16 profils : quatre « purs » et douze combinaisons. Trouvez le vôtre ou passez le test pour le découvrir.",
-    "pages.profile.title": "{name} ({key}) — profil DISC : description, points forts, axes de progression",
+    "pages.profile.title": "{name} ({key}) — type de personnalité DISC et ses atouts",
     "pages.profile.h1": "{name} ({key}) : profil DISC",
     "pages.profile.description": "Profil DISC {key} « {name} » : {summary}",
     "pages.profile.descCta": "Faites le test gratuit en 10 minutes.",
@@ -1401,7 +1423,7 @@
     "pages.profile.example": "Un cas concret",
     "pages.profile.styleMore": "En savoir plus sur le style {key} : {name}",
     "pages.profile.related": "Profils proches",
-    "pages.compat.title": "{a} et {b} : compatibilité des styles DISC au travail et en communication",
+    "pages.compat.title": "{a} et {b} : compatibilité DISC au travail",
     "pages.compat.description": "Comment les styles {a} et {b} travaillent ensemble : ce qui les rapproche, où naissent les frictions et que faire de chaque côté. Test DISC gratuit sur le site.",
     "pages.compat.h1": "{a} et {b} : compatibilité",
     "pages.compat.common": "Ce qui les rapproche",
@@ -1421,6 +1443,10 @@
     "pages.pdf.missing": "Le fichier est en préparation. En attendant, passez le test en ligne ou enregistrez votre résultat en PDF depuis l'écran de résultat.",
     "pages.updated": "Mis à jour le {date}",
     "pages.sourcesLink": "Sources et bibliographie",
+    "pages.compat.together": "Comment ils travaillent ensemble",
+    "pages.profiles.tableTitle": "Les 16 profils : style dominant et style secondaire",
+    "pages.profiles.colLead": "Style dominant",
+    "pages.profiles.colPure": "Sans secondaire",
 
     "cta.title": "Découvrez votre profil DISC",
     "cta.text": "Test gratuit : 24 blocs, environ 10 minutes, résultat immédiat et par e-mail.",

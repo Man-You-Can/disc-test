@@ -3,7 +3,7 @@
   "dir": "ltr",
   "name": "English",
   "dateLocale": "en-US",
-  "title": "Free DISC Personality Test — DISC Assessment in 10 Minutes, No Sign-Up",
+  "title": "Free DISC Personality Test & Assessment — No Sign-Up",
   "description": "Free online DISC assessment: 24 questions, 10 minutes, no sign-up. Find your primary DISC style, strengths and growth areas. Instant results, also by email.",
   "brand": "DISC Test",
   "keys": { "D": "Dominance", "I": "Influence", "S": "Steadiness", "C": "Conscientiousness" },
@@ -450,7 +450,7 @@
   },
   "content": {
     "disc": {
-      "title": "What Is DISC? The Model, the Four Behavioral Styles and How to Read a Profile",
+      "title": "What Is DISC? The Model and the Four Behavioral Styles",
       "description": "A plain-language guide to DISC: where the model comes from, what it measures, the four styles D, I, S, C, how scoring works and how to read your profile.",
       "h1": "What is DISC?",
       "lead": "DISC is a behavioral model that describes how a person acts, communicates and makes decisions on four scales: Dominance, Influence, Steadiness and Conscientiousness. It is neither an IQ test nor a diagnosis, but a shared language for talking about behavioral styles.",
@@ -811,7 +811,7 @@
       }
     },
     "pdf": {
-      "title": "Free Printable DISC Assessment PDF With Answer Key and Scoring",
+      "title": "Free Printable DISC Assessment PDF With Answer Key",
       "description": "Free printable DISC assessment PDF: 24 blocks of statements, answer key, scoring table and all 16 profiles. Fill it in on paper or take it online.",
       "h1": "DISC test PDF: download and print",
       "lead": "The same full version of the test as online, but as a printable file: 24 blocks of four statements, the style key, a scoring table and descriptions of all 16 profiles. The file is free and requires no sign-up.",
@@ -842,7 +842,7 @@
       ]
     },
     "teams": {
-      "title": "DISC Assessment for Teams, Managers and HR: How to Use It at Work",
+      "title": "DISC Assessment for Teams and HR: How to Use It at Work",
       "description": "How to use DISC with a team: style map, role assignment, conflicts, onboarding, feedback, sales. Run the free test for your whole team and discuss the results.",
       "h1": "DISC for teams and HR",
       "lead": "DISC is usually taken not alone but as a team: to understand why colleagues react differently, agree on communication rules and assign roles sensibly. This page covers how a manager or HR can run the test, read the team map and discuss the results without labels.",
@@ -1191,6 +1191,28 @@
         { "q": "Can a whole team take the test?", "a": "Yes: everyone takes the test via a link, and the results are collected in the admin panel." }
       ],
       "profilesTitle": "16 DISC profiles"
+    },
+    "profiles": {
+      "sections": [
+        {
+          "h": "How four styles make 16 profiles",
+          "p": [
+            "For each style, the test counts the difference between your “most like me” and “least like me” answers, from −24 to +24. The style with the highest total becomes your primary style, the first letter of your profile. The second-highest style counts as secondary if its total is positive, at least 40% of the primary one and no less than 3 points. It then becomes the second letter.",
+            "If the second style falls short of that threshold, the profile is pure: D, I, S or C. If it reaches it, you get one of twelve combinations. Four pure profiles plus twelve combinations make the 16 profiles in the table above."
+          ]
+        },
+        {
+          "h": "Profile vs. style",
+          "p": [
+            "A style is one of the four DISC scales: Dominance, Influence, Steadiness or Conscientiousness. A profile describes how they combine in a particular person: the primary style sets the core of their behavior and the secondary one adds a shade. That is why DI and ID share the same letters but are different profiles. The Pioneer (DI) drives toward results first and brings people along on the way, while the Motivator (ID) engages people first and gets results through them.",
+            "A profile is not a label or a grade. Everyone has all four styles; the profile only shows which of them come through most strongly in a familiar work setting."
+          ]
+        },
+        {
+          "h": "How to find your profile",
+          "p": ["Take the free test: 24 blocks of four statements, about 10 minutes. Your result screen shows a chart, your primary and secondary style and a link to your profile page, with compatibility with other styles and tips on how you work and communicate best."]
+        }
+      ]
     }
   },
   "ui": {
@@ -1348,11 +1370,11 @@
     "pages.styles.description": "The four DISC personality types: Dominance, Influence, Steadiness, Conscientiousness. Traits, strengths, growth areas, motivation and behavior under stress.",
     "pages.styles.h1": "DISC personality types: the four styles",
     "pages.styles.lead": "DISC describes behavior on four scales. Everyone has all four styles, but one or two are stronger than the rest. Below you’ll find what is typical of each style, what motivates it and how best to communicate with people who have it.",
-    "pages.profiles.title": "16 DISC Personality Types — All Test Profiles With Descriptions",
+    "pages.profiles.title": "16 DISC Profiles: All Style Combinations Explained",
     "pages.profiles.description": "All 16 profiles of the DISC test: four pure styles and twelve combinations. A short description of each type and a link to its detailed page.",
-    "pages.profiles.h1": "16 DISC profiles and personality types",
+    "pages.profiles.h1": "16 DISC profiles",
     "pages.profiles.lead": "Your test result is your primary style and, if it is strong enough, a secondary one. That gives 16 profiles: four pure styles and twelve combinations. Find yours, or take the test to discover it.",
-    "pages.profile.title": "{key} Personality Type ({name}): DISC Profile, Strengths, Growth Areas",
+    "pages.profile.title": "{key} Personality Type ({name}): DISC Traits and Tips",
     "pages.profile.h1": "{name} ({key}): DISC Personality Type",
     "pages.profile.description": "{key} DISC profile ({name}): {summary}",
     "pages.profile.descCta": "Take the free 10-minute test.",
@@ -1378,7 +1400,7 @@
     "pages.profile.example": "A real-world example",
     "pages.profile.styleMore": "More about the {key} style: {name}",
     "pages.profile.related": "Similar profiles",
-    "pages.compat.title": "{a} and {b}: DISC Style Compatibility at Work and Beyond",
+    "pages.compat.title": "{a} and {b}: DISC Compatibility at Work",
     "pages.compat.description": "How the {a} and {b} styles work together: what they have in common, where friction arises and what each of them can do. Free DISC test on this site.",
     "pages.compat.h1": "{a} and {b}: compatibility",
     "pages.compat.common": "What they have in common",
@@ -1398,6 +1420,10 @@
     "pages.pdf.missing": "The file is being prepared. In the meantime, take the test online or save your result as a PDF from the result screen.",
     "pages.updated": "Updated {date}",
     "pages.sourcesLink": "Sources and further reading",
+    "pages.compat.together": "How they work together",
+    "pages.profiles.tableTitle": "All 16 profiles: primary and secondary style",
+    "pages.profiles.colLead": "Primary style",
+    "pages.profiles.colPure": "No secondary",
 
     "cta.title": "Discover your DISC profile",
     "cta.text": "Free test: 24 blocks, about 10 minutes, instant result and a copy by email.",
