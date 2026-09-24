@@ -5,6 +5,8 @@ function printHTML(c){
   var L=c.L, t=c.t, esc=c.esc, KEYS=c.KEYS, PROFILE_KEYS=c.PROFILE_KEYS, BLOCK_KEYS=c.BLOCK_KEYS, url=c.url, fontsCss=c.fontsCss||'', fontFamily=c.fontFamily||'sans-serif';
   var strip=function(s){ return String(s).replace(/<br\s*\/?>/g,' ').replace(/<[^>]+>/g,''); };
   var most=strip(t('test.mostHead')), least=strip(t('test.leastHead'));
+  // призыв пройти тест онлайн: заметный блок на первой странице и строка в конце; адрес — ссылка
+  var online=function(cls){ var u=esc(url); return '<p'+(cls?' class="'+cls+'"':'')+'>'+esc(t('print.online',{url:url})).replace(u,'<a href="'+u+'">'+u+'</a>')+'</p>'; };
   var box='<span class="box"></span>';
   var blocks=L.blocks.map(function(b,i){
     var order=BLOCK_KEYS[i].split('');
@@ -23,6 +25,7 @@ function printHTML(c){
   return '<!doctype html><html lang="'+L.lang+'" dir="'+L.dir+'"><head><meta charset="utf-8"><title>'+esc(t('print.title'))+'</title><style>'+fontsCss+'\n'+CSS.replace('__FONT__',fontFamily)+'</style></head><body>'+
     '<header class="head"><div class="brand"><span class="dots"><i class="d"></i><i class="i"></i><i class="s"></i><i class="c"></i></span>'+esc(L.brand)+'</div><div class="url">'+esc(url)+'</div></header>'+
     '<h1>'+esc(t('print.title'))+'</h1><p class="sub">'+esc(L.ui.footer)+'</p>'+
+    '<div class="ctatop"><b>'+esc(t('cta.title'))+'</b>'+online('')+'</div>'+
     '<div class="fields"><div><span>'+esc(t('print.name'))+':</span><i></i></div><div><span>'+esc(t('print.date'))+':</span><i></i></div></div>'+
     '<div class="how"><h2>'+esc(t('print.howTitle'))+'</h2><p>'+esc(t('print.howText'))+'</p><p class="legend"><b>+</b> '+esc(most)+' &nbsp;&nbsp;&nbsp; <b>−</b> '+esc(least)+'</p></div>'+
     '<div class="blocks">'+blocks+'</div>'+
@@ -32,7 +35,7 @@ function printHTML(c){
     '<h2>'+esc(t('print.decodeTitle'))+'</h2><p>'+esc(t('print.decodeText'))+'</p>'+
     '<div class="pb"></div>'+
     '<h2 class="first">'+esc(t('print.profilesTitle'))+'</h2>'+profiles+
-    '<p class="online">'+esc(t('print.online',{url:url}))+'</p>'+
+    online('online')+
     '</body></html>';
 }
 var CSS='@page{size:A4;margin:13mm 13mm 15mm}*{box-sizing:border-box}body{font-family:__FONT__;font-size:10.5pt;line-height:1.35;color:#111;margin:0}'+
@@ -51,5 +54,6 @@ var CSS='@page{size:A4;margin:13mm 13mm 15mm}*{box-sizing:border-box}body{font-f
   '.keys{display:flex;gap:8mm;margin-bottom:3mm}.keys table{flex:1;border-collapse:collapse;font-size:10pt}.keys th,.keys td{border:1px solid #bbb;padding:0.8mm 1.5mm;text-align:center}.keys td.n{font-weight:600;background:#f2f2f2}'+
   '.count{border-collapse:collapse;width:100%;margin-bottom:3mm}.count th,.count td{border:1px solid #bbb;padding:1.8mm 2mm;text-align:start}.count th{background:#f2f2f2;font-weight:600;font-size:9.5pt}.count td.w{width:22%}.count .k{display:inline-block;min-width:5mm}'+
   '.profiles{column-count:2;column-gap:6mm}.prof{break-inside:avoid;margin-bottom:2.8mm}.prof b{display:inline-block;min-width:8mm;font-weight:700;color:#3B6FB6}.prof p{font-size:9.5pt;color:#333;margin:0.5mm 0 0}.profiles.dense .prof{margin-bottom:2.2mm}.profiles.dense .prof p{font-size:9pt}'+
+  '.ctatop{border:1.5px solid #3B6FB6;background:#EEF3FA;border-radius:2mm;padding:2.5mm 4mm;margin-bottom:4mm;-webkit-print-color-adjust:exact;print-color-adjust:exact}.ctatop b{font-size:11.5pt}.ctatop p{margin:0.8mm 0 0}a{color:#3B6FB6;white-space:nowrap;direction:ltr;unicode-bidi:isolate}'+
   '.online{margin-top:5mm;padding-top:2mm;border-top:1px solid #ccc;font-size:9.5pt;color:#555}';
 if (typeof module !== 'undefined' && module.exports) module.exports = printHTML;

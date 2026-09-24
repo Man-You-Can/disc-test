@@ -240,7 +240,7 @@ const ul = arr => '<ul>' + arr.map(x => `<li>${escFull(x)}</li>`).join('') + '</
 const truncate = (str, n) => str.length <= n ? str : str.slice(0, n).replace(/\s+\S*$/, '') + '…';
 // предел description для шаблонных описаний (профили, пары): в японском и китайском выдача показывает около 95 знаков, и пробелов для обрезки там нет
 const descMax = L => /^(ja|zh)/.test(L.lang) ? 90 : 155;
-const truncDesc = (L, str) => { const n = descMax(L); if (str.length <= n) return str; const cut = str.slice(0, n), sp = cut.replace(/\s+\S*$/, '');
+const truncDesc = (L, str, max) => { const n = max || descMax(L); if (str.length <= n) return str; const cut = str.slice(0, n), sp = cut.replace(/\s+\S*$/, '');
   return (/^(ja|zh)/.test(L.lang) || sp.length < n * 0.6 ? cut.replace(/[、，。,：:\s]+$/, '') : sp) + '…'; };
 const styleSections = (L, k, t, full) => {
   const st = L.styles[k];
@@ -353,7 +353,8 @@ for (const L of locales) {
       `<h2>${t('pages.profile.related')}</h2><div class="pgrid">${related(key).map(k => profileCard(L, k, b)).join('')}</div>` +
       `<h2>${t('pages.profile.others')}</h2><p class="chips">${PROFILE_KEYS.filter(k => k !== key && !related(key).includes(k)).map(k => `<a href="${b}profiles/${k.toLowerCase()}/">${badge(k, 'pill')} ${escFull(L.profiles[k].name)}</a>`).join('')}</p>`;
     writeContentPage(L, `profiles/${key.toLowerCase()}/`, { navKey: 'nav.profiles', title: t('pages.profile.title', { name: pr.name, key }),
-      description: truncDesc(L, t('pages.profile.description', { name: pr.name, key, summary: pr.summary })),
+      // в конце — призыв пройти тест: description видна в выдаче и в карточке ссылки в соцсетях (Facebook и LinkedIn берут текст только оттуда)
+      description: (cta => truncDesc(L, t('pages.profile.description', { name: pr.name, key, summary: pr.summary }), descMax(L) - cta.length - 1) + (/^(ja|zh)/.test(L.lang) ? '' : ' ') + cta)(t('pages.profile.descCta')),
       crumbs: [{ name: t('nav.profiles'), href: '../', sub: 'profiles/' }, { name: pr.name }], content,
       // пришли по ссылке «Поделиться типом» (?ref=<сеть>, см. shareNetLinks в template.html) — вверху баннер-приглашение пройти тест
       pageJs: `if(/[?&]ref=/.test(location.search)){ var inv = document.createElement('aside'); inv.className = 'cta invite'; inv.innerHTML = ${jsStr(

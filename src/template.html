@@ -335,9 +335,16 @@ body.has-consent{padding-bottom:160px}
 }
 @media print{.consent{display:none!important}}
 @media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
+.print-only{display:none}
 @media print{
   @page{margin:16mm}
-  body{background:#fff;color:#111}
+  .print-only{display:block}
+  .printhead{display:flex;justify-content:space-between;font-size:12px;color:#555;border-bottom:1px solid #ccc;padding-bottom:6px;margin-bottom:14px}
+  .printhead b{color:#111}
+  .printcta{border:2px solid #111;border-radius:10px;padding:12px 16px;margin:18px 0;break-inside:avoid}
+  .printcta p{margin:4px 0 0;font-size:14px}
+  html,body{background:#fff}
+  body{color:#111}
   .topbar,.progress,.foot,.no-print,.toast,.legend{display:none!important}
   .wrap{max-width:none;padding:0}
   .card,.share,.badge{border:1px solid #ccc;box-shadow:none;break-inside:avoid}
@@ -593,7 +600,7 @@ function renderReport(r, opts){
   var base = ROOT_REL+LANG_PATH[L.lang];
   var profileHref = base+'profiles/'+cls.key.toLowerCase()+'/';
   // публичная страница профиля: ни имени, ни e-mail, ни ответов в ссылке нет
-  var profileURL = new URL(profileHref, location.href).href, shareMsg = t('share.typeMsg',{name:prof.name, key:cls.key});
+  var homeURL = new URL(base, location.href).href, profileURL = new URL(profileHref, location.href).href, shareMsg = t('share.typeMsg',{name:prof.name, key:cls.key});
   var co = L.content && L.content.colors;
   var colorName = co ? [cls.p].concat(cls.s?[cls.s]:[]).map(function(k){ return co.colors[k].name; }).join(' + ') : '';
 
@@ -601,6 +608,8 @@ function renderReport(r, opts){
 
   view.innerHTML =
     (opts.fromAdmin ? '<p class="no-print"><button class="link" id="backAdmin" type="button">'+t('report.backAdmin')+'</button></p>' : '')+
+    // только в печати («Сохранить в PDF»): адрес сайта сверху и призыв пройти тест под описанием — PDF с результатом пересылают другим
+    '<div class="print-only printhead"><b>'+esc(L.brand)+'</b><span>'+esc(t('pages.profile.descCta'))+' <b>'+esc(homeURL)+'</b></span></div>'+
     '<div class="rhead">'+
       badgeHTML(cls)+
       '<div class="rtitle"><div class="eyebrow">'+esc(cls.s ? L.keys[cls.p]+' + '+L.keys[cls.s] : L.keys[cls.p])+'</div>'+
@@ -634,6 +643,7 @@ function renderReport(r, opts){
       '<div class="sec"><h3>'+t('report.stress')+'</h3><p>'+esc(st.stress)+'</p></div>'+
       '<div class="sec"><h3>'+t('report.environment')+'</h3><p>'+esc(st.environment)+'</p></div>'+
     '</div></div>'+
+    '<div class="print-only printcta"><b>'+t('cta.title')+'</b><p>'+esc(t('cta.text'))+' <b>'+esc(homeURL)+'</b></p></div>'+
     '<p class="seealso no-print"><a href="'+profileHref+'">'+t('pages.profile.more',{name:esc(prof.name)})+' '+arrowR()+'</a> · <a href="'+base+'compatibility/">'+t('nav.compat')+' '+arrowR()+'</a>'+
       (colorName ? ' · <a href="'+base+'colors/#'+cls.p.toLowerCase()+'">'+t('report.color',{color:esc(colorName)})+' '+arrowR()+'</a>' : '')+'</p>'+
     (opts.own ?
