@@ -275,6 +275,7 @@ html[lang=ar] .qhead span,html[lang=hi] .qhead span,html[lang|=zh] .qhead span,h
 .traits span{font-size:13px;padding:4px 10px;border-radius:999px;background:var(--soft);color:var(--ink)}
 .substyle{border-inline-start:4px solid var(--ks);padding:4px 0;padding-inline-start:14px;margin-top:4px}
 .share{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:var(--shadow)}
+.sharenet svg{flex:none}
 .codebox{font-family:var(--font-mono);font-size:12px;line-height:1.5;word-break:break-all;background:var(--paper);border:1px dashed var(--line-strong);padding:10px 12px;border-radius:8px;margin:12px 0;color:var(--ink);width:100%;min-height:0;resize:none;direction:ltr;text-align:left}
 .notice{background:var(--soft);border-radius:10px;padding:12px 14px;font-size:14px}
 .sendstatus{margin:-4px 0 10px;padding:8px 12px;border-radius:8px;background:var(--soft)}
@@ -590,6 +591,8 @@ function renderReport(r, opts){
   var mailto = function(to){ return 'mailto:'+(to?encodeURIComponent(to):'')+'?subject='+encodeURIComponent(mailSubject)+'&body='+encodeURIComponent(mailBody); };
   var base = ROOT_REL+LANG_PATH[L.lang];
   var profileHref = base+'profiles/'+cls.key.toLowerCase()+'/';
+  // публичная страница профиля: ни имени, ни e-mail, ни ответов в ссылке нет
+  var profileURL = new URL(profileHref, location.href).href, shareMsg = t('share.typeMsg',{name:prof.name, key:cls.key});
   var co = L.content && L.content.colors;
   var colorName = co ? [cls.p].concat(cls.s?[cls.s]:[]).map(function(k){ return co.colors[k].name; }).join(' + ') : '';
 
@@ -643,7 +646,7 @@ function renderReport(r, opts){
       '</div>'+
       '<div class="share no-print" style="margin-top:16px"><h2>'+t('share.typeTitle')+'</h2>'+
         '<p class="small">'+t('share.typeText',{name:esc(prof.name)})+'</p>'+
-        '<div class="actions"><button class="btn" type="button" id="shareType">'+t('share.type')+'</button></div>'+
+        '<div class="actions">'+shareNetLinks(profileURL, shareMsg)+'<button class="btn secondary small" type="button" id="shareType">'+t('share.type')+'</button></div>'+
       '</div>'+
       '<div class="share no-print" style="margin-top:16px"><h2>'+t('share.title')+'</h2>'+
         '<p class="small">'+t('share.text')+'</p>'+
@@ -687,13 +690,47 @@ function renderReport(r, opts){
       else { showSendStatus(r, code, 'mailto'); location.href = mailto(r.email); }
     }
     $('#shareType').addEventListener('click', function(){
-      // публичная страница профиля: ни имени, ни e-mail, ни ответов в ссылке нет
-      var url = new URL(profileHref, location.href).href, text = t('share.typeMsg',{name:prof.name, key:cls.key});
       if(window.discTrack) window.discTrack('share');
-      if(navigator.share){ navigator.share({title:text, text:text, url:url}).catch(function(){}); }
-      else copyText(text+' '+url, null);
+      if(navigator.share){ navigator.share({title:shareMsg, text:shareMsg, url:profileURL}).catch(function(){}); }
+      else copyText(shareMsg+' '+profileURL, null);
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('.sharenet'), function(a){
+      a.addEventListener('click', function(){ if(window.discTrack){ window.discTrack('share'); window.discTrack('share-'+a.getAttribute('data-net')); } });
     });
   }
+}
+/* ====== кнопки соцсетей в блоке «Поделитесь своим типом»: набор сетей под аудиторию каждого языка; иконки — Simple Icons (CC0) ====== */
+var SHARE_NETS = {
+  "telegram": {name:"Telegram", color:"#26A5E4", url:"https://t.me/share/url?url={u}&text={t}",
+    icon:"M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"},
+  "whatsapp": {name:"WhatsApp", color:"#25D366", url:"https://wa.me/?text={tu}",
+    icon:"M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"},
+  "vk": {name:"VK", color:"#0077FF", url:"https://vk.com/share.php?url={u}&title={t}",
+    icon:"m9.489.004.729-.003h3.564l.73.003.914.01.433.007.418.011.403.014.388.016.374.021.36.025.345.03.333.033c1.74.196 2.933.616 3.833 1.516.9.9 1.32 2.092 1.516 3.833l.034.333.029.346.025.36.02.373.025.588.012.41.013.644.009.915.004.98-.001 3.313-.003.73-.01.914-.007.433-.011.418-.014.403-.016.388-.021.374-.025.36-.03.345-.033.333c-.196 1.74-.616 2.933-1.516 3.833-.9.9-2.092 1.32-3.833 1.516l-.333.034-.346.029-.36.025-.373.02-.588.025-.41.012-.644.013-.915.009-.98.004-3.313-.001-.73-.003-.914-.01-.433-.007-.418-.011-.403-.014-.388-.016-.374-.021-.36-.025-.345-.03-.333-.033c-1.74-.196-2.933-.616-3.833-1.516-.9-.9-1.32-2.092-1.516-3.833l-.034-.333-.029-.346-.025-.36-.02-.373-.025-.588-.012-.41-.013-.644-.009-.915-.004-.98.001-3.313.003-.73.01-.914.007-.433.011-.418.014-.403.016-.388.021-.374.025-.36.03-.345.033-.333c.196-1.74.616-2.933 1.516-3.833.9-.9 2.092-1.32 3.833-1.516l.333-.034.346-.029.36-.025.373-.02.588-.025.41-.012.644-.013.915-.009ZM6.79 7.3H4.05c.13 6.24 3.25 9.99 8.72 9.99h.31v-3.57c2.01.2 3.53 1.67 4.14 3.57h2.84c-.78-2.84-2.83-4.41-4.11-5.01 1.28-.74 3.08-2.54 3.51-4.98h-2.58c-.56 1.98-2.22 3.78-3.8 3.95V7.3H10.5v6.92c-1.6-.4-3.62-2.34-3.71-6.92Z"},
+  "ok": {name:"OK", color:"#EE8208", url:"https://connect.ok.ru/offer?url={u}&title={t}",
+    icon:"M12 0a6.2 6.2 0 0 0-6.194 6.195 6.2 6.2 0 0 0 6.195 6.192 6.2 6.2 0 0 0 6.193-6.192A6.2 6.2 0 0 0 12.001 0zm0 3.63a2.567 2.567 0 0 1 2.565 2.565 2.568 2.568 0 0 1-2.564 2.564 2.568 2.568 0 0 1-2.565-2.564 2.567 2.567 0 0 1 2.565-2.564zM6.807 12.6a1.814 1.814 0 0 0-.91 3.35 11.611 11.611 0 0 0 3.597 1.49l-3.462 3.463a1.815 1.815 0 0 0 2.567 2.566L12 20.066l3.405 3.403a1.813 1.813 0 0 0 2.564 0c.71-.709.71-1.858 0-2.566l-3.462-3.462a11.593 11.593 0 0 0 3.596-1.49 1.814 1.814 0 1 0-1.932-3.073 7.867 7.867 0 0 1-8.34 0c-.318-.2-.674-.29-1.024-.278z"},
+  "facebook": {name:"Facebook", color:"#0866FF", url:"https://www.facebook.com/sharer/sharer.php?u={u}",
+    icon:"M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"},
+  "x": {name:"X", color:"currentColor", url:"https://x.com/intent/post?text={t}&url={u}",
+    icon:"M14.234 10.162 22.977 0h-2.072l-7.591 8.824L7.251 0H.258l9.168 13.343L.258 24H2.33l8.016-9.318L16.749 24h6.993zm-2.837 3.299-.929-1.329L3.076 1.56h3.182l5.965 8.532.929 1.329 7.754 11.09h-3.182z"},
+  "linkedin": {name:"LinkedIn", color:"#0A66C2", url:"https://www.linkedin.com/sharing/share-offsite/?url={u}",
+    icon:"M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"},
+  "line": {name:"LINE", color:"#00C300", url:"https://social-plugins.line.me/lineit/share?url={u}&text={t}",
+    icon:"M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"},
+  "weibo": {name:"微博", color:"#E6162D", url:"https://service.weibo.com/share/share.php?url={u}&title={t}",
+    icon:"M10.098 20.323c-3.977.391-7.414-1.406-7.672-4.02-.259-2.609 2.759-5.047 6.74-5.441 3.979-.394 7.413 1.404 7.671 4.018.259 2.6-2.759 5.049-6.737 5.439l-.002.004zM9.05 17.219c-.384.616-1.208.884-1.829.602-.612-.279-.793-.991-.406-1.593.379-.595 1.176-.861 1.793-.601.622.263.82.972.442 1.592zm1.27-1.627c-.141.237-.449.353-.689.253-.236-.09-.313-.361-.177-.586.138-.227.436-.346.672-.24.239.09.315.36.18.601l.014-.028zm.176-2.719c-1.893-.493-4.033.45-4.857 2.118-.836 1.704-.026 3.591 1.886 4.21 1.983.64 4.318-.341 5.132-2.179.8-1.793-.201-3.642-2.161-4.149zm7.563-1.224c-.346-.105-.57-.18-.405-.615.375-.977.42-1.804 0-2.404-.781-1.112-2.915-1.053-5.364-.03 0 0-.766.331-.571-.271.376-1.217.315-2.224-.27-2.809-1.338-1.337-4.869.045-7.888 3.08C1.309 10.87 0 13.273 0 15.348c0 3.981 5.099 6.395 10.086 6.395 6.536 0 10.888-3.801 10.888-6.82 0-1.822-1.547-2.854-2.915-3.284v.01zm1.908-5.092c-.766-.856-1.908-1.187-2.96-.962-.436.09-.706.511-.616.932.09.42.511.691.932.602.511-.105 1.067.044 1.442.465.376.421.466.977.316 1.473-.136.406.089.856.51.992.405.119.857-.105.992-.512.33-1.021.12-2.178-.646-3.035l.03.045zm2.418-2.195c-1.576-1.757-3.905-2.419-6.054-1.968-.496.104-.812.587-.706 1.081.104.496.586.813 1.082.707 1.532-.331 3.185.15 4.296 1.383 1.112 1.246 1.429 2.943.947 4.416-.165.48.106 1.007.586 1.157.479.165.991-.104 1.157-.586.675-2.088.241-4.478-1.338-6.235l.03.045z"}
+};
+var SHARE_BY_LANG = {ru:["telegram","vk","whatsapp","ok"], en:["facebook","x","linkedin","whatsapp"], es:["whatsapp","facebook","x","linkedin"], pt:["whatsapp","facebook","x","linkedin"],
+  fr:["whatsapp","facebook","x","linkedin"], de:["whatsapp","facebook","x","linkedin"], pl:["facebook","whatsapp","x","linkedin"], tr:["whatsapp","x","facebook","linkedin"],
+  ar:["whatsapp","x","facebook","telegram"], hi:["whatsapp","facebook","x","linkedin"], id:["whatsapp","facebook","x","telegram"],
+  ja:["line","x","facebook"], "zh-hant":["line","facebook","x"], zh:["weibo"]};
+function shareNetLinks(url, text){
+  return (SHARE_BY_LANG[L.lang]||SHARE_BY_LANG.en).map(function(id){
+    var n = SHARE_NETS[id], e = encodeURIComponent;
+    var href = n.url.replace("{u}", e(url)).replace("{t}", e(text)).replace("{tu}", e(text+" "+url));
+    return '<a class="btn secondary small sharenet" data-net="'+id+'" href="'+esc(href)+'" target="_blank" rel="noopener noreferrer" title="'+esc(t("share.via",{net:n.name}))+'">'+
+      '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="'+n.color+'"><path d="'+n.icon+'"/></svg>'+esc(n.name)+'</a>';
+  }).join("");
 }
 function arrowR(){ return L.dir==='rtl' ? '←' : '→'; }
 
