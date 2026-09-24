@@ -493,7 +493,7 @@ const indexNowKey = String(cfg.indexNowKey || '').replace(/[^A-Za-z0-9-]/g, '');
 if (indexNowKey) fs.writeFileSync(path.join(OUT, indexNowKey + '.txt'), indexNowKey + '\n');
 
 // Иконки, og-картинки, манифест (файлы готовятся заранее командой node scripts/make-assets.js)
-for (const f of ['favicon.svg', 'favicon.ico', 'apple-touch-icon.png', 'icon-192.png', 'icon-512.png']) {
+for (const f of ['favicon.svg', 'favicon.ico', 'favicon-120.png', 'apple-touch-icon.png', 'icon-192.png', 'icon-512.png']) {
   const src = path.join(ASSETS, f);
   if (fs.existsSync(src)) fs.copyFileSync(src, path.join(OUT, f)); else console.warn('WARNING: missing asset ' + f + ' (run node scripts/make-assets.js)');
 }

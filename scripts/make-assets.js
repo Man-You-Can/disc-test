@@ -21,12 +21,33 @@ const appIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><
 run(appIcon, path.join(OUTD, 'apple-touch-icon.png'), 180, 180);
 run(appIcon, path.join(OUTD, 'icon-192.png'), 192, 192);
 run(appIcon, path.join(OUTD, 'icon-512.png'), 512, 512);
-// favicon.ico — контейнер ICO с одним PNG 32×32
-run(favicon, path.join(OUTD, '.fav32.png'), 32, 32);
-const png = fs.readFileSync(path.join(OUTD, '.fav32.png')); fs.unlinkSync(path.join(OUTD, '.fav32.png'));
-const ico = Buffer.alloc(22); ico.writeUInt16LE(0, 0); ico.writeUInt16LE(1, 2); ico.writeUInt16LE(1, 4);
-ico[6] = 32; ico[7] = 32; ico[8] = 0; ico[9] = 0; ico.writeUInt16LE(1, 10); ico.writeUInt16LE(32, 12); ico.writeUInt32LE(png.length, 14); ico.writeUInt32LE(22, 18);
-fs.writeFileSync(path.join(OUTD, 'favicon.ico'), Buffer.concat([ico, png]));
+// favicon-120.png — Яндекс рекомендует PNG 120×120 для показа в поиске
+run(favicon, path.join(OUTD, 'favicon-120.png'), 120, 120);
+// favicon.ico — классический ICO с BMP-картинками 16, 32 и 48 px: PNG внутри ICO робот Яндекса не читал («Файл favicon не найден»)
+const zlib = require('zlib');
+const readRGBA = file => { // PNG от rsvg-convert: 8 бит, RGBA, без чересстрочности
+  const b = fs.readFileSync(file); let p = 8, w, h; const idat = [];
+  while (p < b.length) { const len = b.readUInt32BE(p), type = b.toString('ascii', p + 4, p + 8), d = b.subarray(p + 8, p + 8 + len);
+    if (type === 'IHDR') { w = d.readUInt32BE(0); h = d.readUInt32BE(4); if (d[8] !== 8 || d[9] !== 6 || d[12] !== 0) throw new Error('unexpected PNG format ' + file); }
+    if (type === 'IDAT') idat.push(d); p += 12 + len; }
+  const raw = zlib.inflateSync(Buffer.concat(idat)), px = Buffer.alloc(w * h * 4), st = w * 4;
+  for (let y = 0; y < h; y++) { const f = raw[y * (st + 1)];
+    for (let x = 0; x < st; x++) { const v = raw[y * (st + 1) + 1 + x], a = x >= 4 ? px[y * st + x - 4] : 0, up = y ? px[(y - 1) * st + x] : 0, c = x >= 4 && y ? px[(y - 1) * st + x - 4] : 0;
+      const pa = Math.abs(up - c), pb = Math.abs(a - c), pc = Math.abs(a + up - 2 * c);
+      px[y * st + x] = (v + [0, a, up, (a + up) >> 1, pa <= pb && pa <= pc ? a : pb <= pc ? up : c][f]) & 255; } }
+  return { w, h, px };
+};
+const bmps = [16, 32, 48].map(s => { const tmp = path.join(OUTD, `.fav${s}.png`); run(favicon, tmp, s, s); const { px } = readRGBA(tmp); fs.unlinkSync(tmp);
+  const mask = Math.ceil(s / 32) * 4, img = Buffer.alloc(40 + s * s * 4 + mask * s); // BITMAPINFOHEADER + BGRA снизу вверх + маска прозрачности
+  img.writeUInt32LE(40, 0); img.writeInt32LE(s, 4); img.writeInt32LE(s * 2, 8); img.writeUInt16LE(1, 12); img.writeUInt16LE(32, 14); img.writeUInt32LE(s * s * 4 + mask * s, 20);
+  for (let y = 0; y < s; y++) for (let x = 0; x < s; x++) { const i = (y * s + x) * 4, o = 40 + ((s - 1 - y) * s + x) * 4;
+    img[o] = px[i + 2]; img[o + 1] = px[i + 1]; img[o + 2] = px[i]; img[o + 3] = px[i + 3];
+    if (!px[i + 3]) img[40 + s * s * 4 + (s - 1 - y) * mask + (x >> 3)] |= 0x80 >> (x & 7); }
+  return { s, img }; });
+const icoHead = Buffer.alloc(6 + 16 * bmps.length); icoHead.writeUInt16LE(1, 2); icoHead.writeUInt16LE(bmps.length, 4);
+let icoOff = icoHead.length;
+bmps.forEach(({ s, img }, k) => { const e = 6 + 16 * k; icoHead[e] = s; icoHead[e + 1] = s; icoHead.writeUInt16LE(1, e + 4); icoHead.writeUInt16LE(32, e + 6); icoHead.writeUInt32LE(img.length, e + 8); icoHead.writeUInt32LE(icoOff, e + 12); icoOff += img.length; });
+fs.writeFileSync(path.join(OUTD, 'favicon.ico'), Buffer.concat([icoHead, ...bmps.map(b => b.img)]));
 
 // og-картинки 1200×630 на каждом языке: точки + бренд, крупные буквы DISC, заголовок из title, домен
 for (const code of cfg.languages) {
@@ -106,4 +127,4 @@ for (const code of cfg.languages) {
     run(svg, path.join(OUTD, 'og', 'pairs', `${code}-${k[0].toLowerCase()}-${k[1].toLowerCase()}.png`), 1200, 630);
   }
 }
-console.log('assets written to src/assets/: favicon.svg, favicon.ico, apple-touch-icon.png, icon-192.png, icon-512.png, og/*.png, og/profiles/*.png, og/pairs/*.png');
+console.log('assets written to src/assets/: favicon.svg, favicon.ico, favicon-120.png, apple-touch-icon.png, icon-192.png, icon-512.png, og/*.png, og/profiles/*.png, og/pairs/*.png');
