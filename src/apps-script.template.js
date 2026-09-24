@@ -12,6 +12,10 @@
  * а обновляет статус письма. Таблица создаётся сама при первом результате
  * (её ID запоминается в свойствах скрипта); можно указать свою в SHEET_ID.
  *
+ * Письмо уходит через сервис рассылки (Brevo или Resend; MAIL_PROVIDER, ключ — свойство скрипта MAIL_API_KEY)
+ * с адреса на своём домене (MAIL_FROM); если ключа нет или сервис вернул ошибку — через Gmail аккаунта скрипта.
+ * Способ отправки и номер письма в сервисе записываются в столбец «Письмо».
+ *
  * Второй тип запроса — {action: 'contact'} с формы обратной связи (/contact/): письмо с текстом
  * сообщения и вложениями (общим размером до MAX_CONTACT_BYTES) уходит на CONTACT_TO, адрес
  * отправителя подставляется в replyTo; в таблицу такие сообщения не записываются.
@@ -31,7 +35,14 @@ var MAX_CONTACT_BYTES = __MAX_CONTACT_BYTES__;  // общий размер вл�
 var MAX_CONTACT_FILES = 20;
 var MAX_CONTACT_PER_SENDER_PER_HOUR = 3;  // сообщений с одного e-mail в час; суточный лимит MAX_PER_DAY общий с письмами о результатах
 var MAX_PER_RECIPIENT_PER_HOUR = 3;
-var MAX_PER_DAY = 90;                // лимит Gmail для обычного аккаунта — 100 писем в сутки
+// Сервис рассылки для писем с результатом: 'brevo', 'resend' или '' (только Gmail). Ключ API — в свойствах скрипта
+// (⚙ Настройки проекта → Свойства скрипта → MAIL_API_KEY), не в коде: без ключа письма уходят через Gmail, как раньше.
+var MAIL_PROVIDER = '__MAIL_PROVIDER__';   // mailProvider в site.config.json
+var MAIL_FROM = '__MAIL_FROM__';           // адрес отправителя на своём домене, подтверждённом в сервисе (mailFrom)
+var MAIL_REPLY_TO = '__MAIL_REPLY_TO__';   // куда уходят ответы участников (mailReplyTo); '' — без адреса для ответа
+var GMAIL_FALLBACK = true;                 // сервис рассылки не ответил или вернул ошибку — отправить то же письмо через Gmail
+var DAILY_LIMITS = { brevo: 290, resend: 95, gmail: 90 };  // бесплатные лимиты с запасом: Brevo — 300 в сутки, Resend и Gmail — 100
+var MAX_PER_DAY = DAILY_LIMITS[MAIL_PROVIDER || 'gmail'] || 90;  // на платном тарифе сервиса число можно увеличить
 var SAVE_RESULTS = true;             // false — не вести базу результатов
 var SHEET_ID = '';                   // ID своей Google Таблицы (из адреса …/spreadsheets/d/<ID>/edit); '' — таблица создаётся сама при первом результате
 var SHEET_TITLE = 'DISC Test — результаты';  // название создаваемой таблицы
@@ -44,7 +55,7 @@ var COLORS = { D: '#C9453D', I: '#D6961F', S: '#3A9A69', C: '#3B6FB6' };
 var BLOCK_KEYS = __BLOCK_KEYS__;
 var DATA = __DATA__;
 
-function doGet() { return out({ ok: true, service: 'disc-mailer', quota: MailApp.getRemainingDailyQuota(), results: SAVE_RESULTS, contact: !!CONTACT_TO }); }
+function doGet() { return out({ ok: true, service: 'disc-mailer', quota: MailApp.getRemainingDailyQuota(), results: SAVE_RESULTS, contact: !!CONTACT_TO, mail: providerKey() ? MAIL_PROVIDER : 'gmail' }); }
 
 function doPost(e) {
   try {
@@ -61,15 +72,13 @@ function doPost(e) {
     var saved = SAVE_RESULTS ? saveResult(r, lang) : null;   // строка в таблице; null — база выключена или сохранить не удалось
     var limit = checkLimits(to);
     if (limit) { noteMail(saved, 'не отправлено: ' + limit); return out({ ok: false, error: limit, saved: !!saved }); }
-    var mail = composeMail(r, lang, r.code);
-    var opts = { to: to, subject: mail.subject, htmlBody: mail.html, body: mail.text, name: SENDER_NAME };
-    if (OWNER_COPY) opts.bcc = OWNER_COPY;
-    try { MailApp.sendEmail(opts); } catch (err) {
+    var mail = composeMail(r, lang, r.code), res;
+    try { res = deliver({ to: to, subject: mail.subject, html: mail.html, text: mail.text }); } catch (err) {
       var msg = String((err && err.message) || err);
       noteMail(saved, 'ошибка: ' + msg);
       return out({ ok: false, error: msg, saved: !!saved });
     }
-    noteMail(saved, 'отправлено ' + stamp());
+    noteMail(saved, 'отправлено ' + stamp() + ' (' + res.via + (res.id ? ', ' + res.id : '') + ')' + (res.note ? '; ' + res.note : ''));
     return out({ ok: true, saved: !!saved });
   } catch (err) {
     return out({ ok: false, error: String((err && err.message) || err) });
@@ -89,6 +98,60 @@ function checkLimits(to, perHour, prefix) {
   cache.put(dayKey, String(day + 1), 86400);
   cache.put(rcKey, String(rc + 1), 3600);
   return null;
+}
+
+/* ====== отправка письма с результатом: сервис рассылки, при сбое — Gmail ====== */
+function providerKey() {
+  if (!MAIL_PROVIDER || !MAIL_FROM) return '';
+  try { return String(PropertiesService.getScriptProperties().getProperty('MAIL_API_KEY') || '').trim(); } catch (err) { return ''; }
+}
+/** m: {to, subject, html, text}. Возвращает {via, id, note}; бросает ошибку, если письмо не ушло ни одним способом. */
+function deliver(m) {
+  var key = providerKey(), perr = '';
+  if (key) {
+    try { return { via: MAIL_PROVIDER, id: providerSend(key, m) }; }
+    catch (err) { perr = MAIL_PROVIDER + ': ' + String((err && err.message) || err); if (!GMAIL_FALLBACK) throw new Error(perr); }
+  }
+  var opts = { to: m.to, subject: m.subject, htmlBody: m.html, body: m.text, name: SENDER_NAME };
+  if (OWNER_COPY) opts.bcc = OWNER_COPY;
+  if (MAIL_REPLY_TO) opts.replyTo = MAIL_REPLY_TO;
+  try { MailApp.sendEmail(opts); } catch (err) { throw new Error((perr ? perr + '; ' : '') + 'gmail: ' + String((err && err.message) || err)); }
+  return { via: 'gmail', id: '', note: perr };
+}
+/** Запрос к API сервиса рассылки; возвращает номер письма в сервисе. */
+function providerSend(key, m) {
+  var url, headers, payload;
+  if (MAIL_PROVIDER === 'brevo') {
+    url = 'https://api.brevo.com/v3/smtp/email';
+    headers = { 'api-key': key, accept: 'application/json' };
+    payload = { sender: { name: SENDER_NAME, email: MAIL_FROM }, to: [{ email: m.to }], subject: m.subject, htmlContent: m.html, textContent: m.text };
+    if (MAIL_REPLY_TO) payload.replyTo = { email: MAIL_REPLY_TO };
+    if (OWNER_COPY) payload.bcc = [{ email: OWNER_COPY }];
+  } else if (MAIL_PROVIDER === 'resend') {
+    url = 'https://api.resend.com/emails';
+    headers = { Authorization: 'Bearer ' + key };
+    payload = { from: SENDER_NAME + ' <' + MAIL_FROM + '>', to: [m.to], subject: m.subject, html: m.html, text: m.text };
+    if (MAIL_REPLY_TO) payload.reply_to = MAIL_REPLY_TO;
+    if (OWNER_COPY) payload.bcc = [OWNER_COPY];
+  } else throw new Error('unknown provider');
+  var res = UrlFetchApp.fetch(url, { method: 'post', contentType: 'application/json', headers: headers, payload: JSON.stringify(payload), muteHttpExceptions: true });
+  var code = res.getResponseCode(), txt = String(res.getContentText() || ''), j = null;
+  try { j = JSON.parse(txt); } catch (err) {}
+  if (code < 200 || code >= 300) throw new Error('HTTP ' + code + ' ' + ((j && (j.message || j.code)) || txt).toString().slice(0, 200));
+  return String((j && (j.messageId || j.id)) || '').replace(/[<>]/g, '');
+}
+/** Запустите вручную в редакторе (Выполнить → testMail): пробное письмо с результатом на адрес аккаунта скрипта
+ *  через сервис рассылки, без запасного Gmail — в журнале выполнения будет результат или точная ошибка сервиса. */
+function testMail() {
+  var to = Session.getEffectiveUser().getEmail(), key = providerKey();
+  if (!key) throw new Error(!MAIL_PROVIDER || !MAIL_FROM ? 'mailProvider/mailFrom не заданы в site.config.json' : 'нет свойства скрипта MAIL_API_KEY');
+  var m = [], l = [];
+  for (var i = 0; i < 24; i++) { m.push(0); l.push(1); }
+  var lang = DATA.ru ? 'ru' : 'en', r = { code: VERSION + '.test', name: 'Test', email: to, m: m, l: l };
+  var mail = composeMail(r, lang, r.code);
+  var id = providerSend(key, { to: to, subject: '[test] ' + mail.subject, html: mail.html, text: mail.text });
+  Logger.log('Отправлено через ' + MAIL_PROVIDER + ' на ' + to + (id ? ', id ' + id : ''));
+  return id;
 }
 
 /* ====== форма обратной связи ====== */

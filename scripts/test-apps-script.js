@@ -3,6 +3,7 @@
 const fs = require('fs'), path = require('path'), vm = require('vm');
 const store = {}, sent = [], props = {}, books = {};
 let mailFail = null; // текст ошибки, которую бросит MailApp.sendEmail (null — письма уходят)
+const fetched = []; let fetchReply = { code: 201, body: '{"messageId":"<202609071200.123@smtp-relay.mailin.fr>"}' }; // ответ сервиса рассылки
 function makeSheet(ss, name) {
   const rows = [];
   const sh = {
@@ -38,7 +39,8 @@ const ctx = {
   SpreadsheetApp: { create: makeBook, openById: id => { if (!books[id]) throw new Error('not found'); return books[id]; } },
   PropertiesService: { getScriptProperties: () => ({ getProperty: k => props[k] || null, setProperty: (k, v) => { props[k] = v; } }) },
   LockService: { getScriptLock: () => ({ waitLock: () => {}, releaseLock: () => {} }) },
-  Session: { getScriptTimeZone: () => 'UTC' },
+  UrlFetchApp: { fetch: (url, o) => { fetched.push({ url, o, payload: JSON.parse(o.payload) }); return { getResponseCode: () => fetchReply.code, getContentText: () => fetchReply.body }; } },
+  Session: { getScriptTimeZone: () => 'UTC', getEffectiveUser: () => ({ getEmail: () => 'owner@example.com' }) },
   Logger: { log: () => {} },
   console: { log: console.log, error: () => {} }
 };
@@ -77,7 +79,7 @@ check('row: name, email, lang', row[2] === 'Иван Петров' && row[3] ===
 check('row: profile', row[5] === 'DI' && row[6] === 'Первопроходец');
 check('row: net scores', row[7] === 16 && row[8] === 8 && row[9] === -12 && row[10] === -12);
 check('row: percents', row[11] === 83 && row[12] === 67 && row[13] === 25 && row[14] === 25);
-check('row: mail status sent', /^отправлено 2026-09-07 12:00$/.test(row[15]));
+check('row: mail status sent (no API key → gmail)', row[15] === 'отправлено 2026-09-07 12:00 (gmail)' && fetched.length === 0);
 check('row: link and code', row[16] === 'https://disc-test.org/ru/#r=' + code && row[17] === code);
 
 check('ja works', post({ to: 'ivan@example.com', lang: 'ja', code }).ok === true && /開拓者/.test(sent[1].subject));
@@ -109,6 +111,44 @@ check('code with surrounding text is trimmed', (() => { const c5 = mk('Пётр'
 // языки второй волны, в том числе код с дефисом (zh-hant): письмо на своём языке, ссылка ведёт в свою папку, язык попадает в таблицу
 check('new languages: zh-hant, id, tr, pl', ['zh-hant', 'id', 'tr', 'pl'].every(lg => { const to = lg + '@b.co', cc = mk('Lin', to); const r = post({ to, lang: lg, code: cc }), m = sent[sent.length - 1], row = rows()[rows().length - 1];
   return r.ok === true && m.to === to && m.htmlBody.includes('<html lang="' + lg + '"') && m.htmlBody.includes('/' + lg + '/#r=' + cc) && row[4] === lg && row[16] === 'https://disc-test.org/' + lg + '/#r=' + cc; }));
+
+// ---- сервис рассылки ----
+const CFG = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'site.config.json'), 'utf8'));
+if (ctx.MAIL_PROVIDER === 'brevo' && ctx.MAIL_FROM) {
+  props.MAIL_API_KEY = 'xkeysib-test';
+  const gBefore = sent.length, cb = mk('Brevo User', 'b1@example.com');
+  const rb = post({ to: 'b1@example.com', lang: 'de', code: cb });
+  const f = fetched[fetched.length - 1], rowB = rows()[rows().length - 1];
+  check('brevo: ok, API called, gmail not used', rb.ok === true && fetched.length === 1 && sent.length === gBefore);
+  check('brevo: url and key header', f.url === 'https://api.brevo.com/v3/smtp/email' && f.o.headers['api-key'] === 'xkeysib-test' && f.o.muteHttpExceptions === true);
+  check('brevo: payload', f.payload.sender.email === CFG.mailFrom && f.payload.sender.name === 'DISC Test' && f.payload.to[0].email === 'b1@example.com' &&
+    f.payload.htmlContent.includes('/de/#r=' + cb) && f.payload.textContent.includes(cb) && !!f.payload.subject && (CFG.mailReplyTo ? f.payload.replyTo.email === CFG.mailReplyTo : !f.payload.replyTo));
+  check('brevo: row status with message id', rowB[15] === 'отправлено 2026-09-07 12:00 (brevo, 202609071200.123@smtp-relay.mailin.fr)');
+  check('doGet reports provider', JSON.parse(ctx.doGet().text).mail === 'brevo');
+  fetchReply = { code: 401, body: '{"code":"unauthorized","message":"Key not found"}' };
+  const cf = mk('Fallback', 'b2@example.com'), rf = post({ to: 'b2@example.com', lang: 'en', code: cf });
+  check('brevo error → gmail fallback', rf.ok === true && sent.length === gBefore + 1 && sent[sent.length - 1].to === 'b2@example.com' &&
+    rows()[rows().length - 1][15] === 'отправлено 2026-09-07 12:00 (gmail); brevo: HTTP 401 Key not found');
+  mailFail = 'Service invoked too many times';
+  const cx = mk('Both', 'b3@example.com'), rx = post({ to: 'b3@example.com', lang: 'en', code: cx });
+  check('brevo and gmail both fail → error, saved', rx.ok === false && rx.saved === true && /^ошибка: brevo: HTTP 401 .*; gmail: Service invoked/.test(rows()[rows().length - 1][15]));
+  mailFail = null;
+  ctx.GMAIL_FALLBACK = false;
+  const cn = mk('NoFallback', 'b4@example.com'), rn = post({ to: 'b4@example.com', lang: 'en', code: cn });
+  check('GMAIL_FALLBACK=false: error, gmail not used', rn.ok === false && /^brevo: HTTP 401/.test(rn.error) && !sent.some(x => x.to === 'b4@example.com'));
+  ctx.GMAIL_FALLBACK = true;
+  fetchReply = { code: 201, body: '{"messageId":"<t1@relay>"}' };
+  check('testMail sends to script owner via provider', ctx.testMail() === 't1@relay' && fetched[fetched.length - 1].payload.to[0].email === 'owner@example.com' && /^\[test\] /.test(fetched[fetched.length - 1].payload.subject));
+  ctx.MAIL_PROVIDER = 'resend';
+  const cr2 = mk('Resend User', 'r1@example.com');
+  fetchReply = { code: 200, body: '{"id":"re_123"}' };
+  const rr = post({ to: 'r1@example.com', lang: 'en', code: cr2 }), fr = fetched[fetched.length - 1];
+  check('resend: bearer, from, status', rr.ok === true && fr.url === 'https://api.resend.com/emails' && fr.o.headers.Authorization === 'Bearer xkeysib-test' &&
+    fr.payload.from === 'DISC Test <' + CFG.mailFrom + '>' && fr.payload.to[0] === 'r1@example.com' && /\(resend, re_123\)$/.test(rows()[rows().length - 1][15]));
+  ctx.MAIL_PROVIDER = 'brevo';
+  delete props.MAIL_API_KEY;
+  check('no key again → gmail, doGet reports gmail', JSON.parse(ctx.doGet().text).mail === 'gmail');
+} else console.log('(mailProvider не brevo — проверки сервиса рассылки пропущены)');
 
 ctx.SAVE_RESULTS = false;
 const before = rows().length;

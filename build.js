@@ -605,10 +605,15 @@ for (const L of locales) {
   for (const k of Object.keys(L.profiles)) profiles[k] = { name: L.profiles[k].name, summary: L.profiles[k].summary };
   mailData[L.lang] = { name: L.name, dir: L.dir, keys: L.keys, profiles, email };
 }
+// Сервис рассылки для писем с результатом (README → «Письма через сервис рассылки»); ключ API в репозиторий не попадает
+const mailProvider = ['brevo', 'resend'].includes(cfg.mailProvider) ? cfg.mailProvider : '';
+if (cfg.mailProvider && !mailProvider) console.warn(`mailProvider "${cfg.mailProvider}" не поддерживается (brevo, resend): письма пойдут через Gmail`);
+const cleanEmail = v => String(v || '').trim().replace(/['\\<>"\s]/g, '');
 const gsTpl = fs.readFileSync(path.join(SRC, 'apps-script.template.js'), 'utf8');
 const gs = gsTpl
   .replace('__SITE_URL__', siteUrl).replace('__SEND_TOKEN__', String(cfg.sendToken || '').replace(/['\\]/g, ''))
   .replace('__CONTACT_TO__', feedbackEmail).replace('__MAX_CONTACT_BYTES__', String(MAX_CONTACT_BYTES))
+  .replace('__MAIL_PROVIDER__', mailProvider).replace('__MAIL_FROM__', cleanEmail(cfg.mailFrom)).replace('__MAIL_REPLY_TO__', cleanEmail(cfg.mailReplyTo))
   .replace('__BLOCK_KEYS__', BLOCK_KEYS).replace('__DATA__', () => JSON.stringify(mailData));
 fs.mkdirSync(path.join(ROOT, 'backend', 'apps-script'), { recursive: true });
 fs.writeFileSync(path.join(ROOT, 'backend', 'apps-script', 'Code.gs'), gs);
