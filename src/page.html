@@ -49,6 +49,7 @@ __FLAG_SPRITE__
     <nav class="langs" aria-label="__LANG_LABEL__">__LANG_LINKS__</nav>
   </footer>
 </div>
+__CTA_FLOAT__
 <div class="toast" id="toast" hidden></div>
 <script>
 (function(){
@@ -66,6 +67,18 @@ function langHref(code){ return ROOT_REL + (LANG_PATH[code]||'') + SUBPATH + loc
 __COMMON_JS__
 initCommon({L:L, t:t, esc:esc, lsGet:lsGet, lsSet:lsSet, langHref:langHref, $:$, langMeta:LANG_META, langPath:LANG_PATH, privacyHref:ROOT_REL+(LANG_PATH[L.lang]||'')+'privacy/'});
 __PAGE_JS__
+/* цели Метрики у кнопок теста (cta-top, cta-bottom, cta-float) и плавающая кнопка на телефоне: видна, когда призыв
+   после вводного абзаца уже прокручен вверх, а нижний призыв и подвал ещё не на экране (аудит 3, п. 1) */
+(function(){
+  document.querySelectorAll('a[data-goal]').forEach(function(a){ a.addEventListener('click', function(){ if(window.discTrack) window.discTrack(a.getAttribute('data-goal')); }); });
+  var fl = $('#ctaFloat'), top = $('.cta-top') || $('.cta.invite');
+  if(!fl || !top || !('IntersectionObserver' in window)) return;
+  var passed = false, near = false, ends = [].slice.call(document.querySelectorAll('main .cta:not(.cta-top):not(.invite), .foot'));
+  function upd(){ fl.classList.toggle('show', passed && !near); }
+  new IntersectionObserver(function(es){ es.forEach(function(e){ passed = !e.isIntersecting && e.boundingClientRect.top < 0; }); upd(); }).observe(top);
+  var io = new IntersectionObserver(function(es){ es.forEach(function(e){ e.target._vis = e.isIntersecting; }); near = ends.some(function(x){ return x._vis; }); upd(); });
+  ends.forEach(function(x){ io.observe(x); });
+})();
 })();
 </script>
 </body>

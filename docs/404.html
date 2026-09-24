@@ -3,10 +3,60 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>DISC Test</title>
+<title>Page not found</title>
 <meta name="robots" content="noindex">
-<script>location.replace('/' + location.hash);</script>
-<style>body{margin:0;font-family:system-ui,sans-serif;padding:48px 20px;text-align:center;color:#5B6470}a{color:#1B2027}</style>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<script>
+/* Старые ссылки на результат (#r=…) и на панель администратора (#admin) — на главную того же языка с тем же хешем:
+   так продолжают работать адреса вида man-you-can.github.io/disc-test/#r=…. Остальные несуществующие адреса
+   показывают эту страницу на языке из начала пути (/ru/… → русский), иначе — на выбранном ранее языке или языке браузера. */
+(function(){
+  var NF = {"en":{"lang":"en","dir":"ltr","path":"","title":"Page not found","text":"There is no such page on this site: the link may be outdated or the address may contain a typo.","cta":"Take the test","links":[["Home",""],["What is DISC?","disc/"],["16 profiles","profiles/"],["Results explained","results/"],["FAQ","faq/"]]},"es":{"lang":"es","dir":"ltr","path":"es/","title":"Página no encontrada","text":"Esta página no existe en el sitio: puede que el enlace esté desactualizado o que haya un error en la dirección.","cta":"Hacer el test","links":[["Inicio",""],["Qué es DISC","disc/"],["16 perfiles","profiles/"],["Interpretación de resultados","results/"],["Preguntas frecuentes","faq/"]]},"zh":{"lang":"zh-Hans","dir":"ltr","path":"zh/","title":"找不到该页面","text":"本站没有这个页面：链接可能已失效，或者网址中有拼写错误。","cta":"开始测试","links":[["首页",""],["什么是 DISC","disc/"],["16 种类型","profiles/"],["结果解读","results/"],["常见问题","faq/"]]},"zh-hant":{"lang":"zh-Hant","dir":"ltr","path":"zh-hant/","title":"找不到這個頁面","text":"本站沒有這個頁面：可能是連結已失效，或網址有錯字。","cta":"開始測驗","links":[["首頁",""],["什麼是 DISC","disc/"],["16 種類型","profiles/"],["結果解讀","results/"],["常見問題","faq/"]]},"ru":{"lang":"ru","dir":"ltr","path":"ru/","title":"Страница не найдена","text":"Такой страницы на сайте нет: возможно, ссылка устарела или в адресе опечатка.","cta":"Пройти тест","links":[["Главная",""],["Что такое DISC","disc/"],["16 профилей","profiles/"],["Расшифровка результатов","results/"],["Вопросы и ответы","faq/"]]},"ar":{"lang":"ar","dir":"rtl","path":"ar/","title":"الصفحة غير موجودة","text":"لا توجد صفحة بهذا العنوان على الموقع: ربما أصبح الرابط قديمًا أو وقع خطأ مطبعي في العنوان.","cta":"ابدأ الاختبار","links":[["الرئيسية",""],["ما هو DISC","disc/"],["16 ملفًا سلوكيًا","profiles/"],["تفسير النتائج","results/"],["الأسئلة الشائعة","faq/"]]},"pt":{"lang":"pt","dir":"ltr","path":"pt/","title":"Página não encontrada","text":"Esta página não existe no site: talvez o link esteja desatualizado ou haja um erro de digitação no endereço.","cta":"Fazer o teste","links":[["Início",""],["O que é DISC","disc/"],["16 perfis","profiles/"],["Como ler o resultado","results/"],["Perguntas frequentes","faq/"]]},"fr":{"lang":"fr","dir":"ltr","path":"fr/","title":"Page introuvable","text":"Cette page n'existe pas sur le site : le lien est peut-être obsolète ou l'adresse contient une faute de frappe.","cta":"Passer le test","links":[["Accueil",""],["Qu'est-ce que le DISC ?","disc/"],["16 profils","profiles/"],["Interpréter les résultats","results/"],["Questions fréquentes","faq/"]]},"de":{"lang":"de","dir":"ltr","path":"de/","title":"Seite nicht gefunden","text":"Diese Seite gibt es auf der Website nicht: Vielleicht ist der Link veraltet oder die Adresse enthält einen Tippfehler.","cta":"Test starten","links":[["Startseite",""],["Was ist DISG","disc/"],["16 Profile","profiles/"],["Ergebnis verstehen","results/"],["Häufige Fragen","faq/"]]},"ja":{"lang":"ja","dir":"ltr","path":"ja/","title":"ページが見つかりません","text":"このサイトにそのページはありません。リンクが古くなっているか、アドレスに入力ミスがある可能性があります。","cta":"診断を受ける","links":[["ホーム",""],["DISC理論とは","disc/"],["16のタイプ","profiles/"],["結果の見方","results/"],["よくある質問","faq/"]]},"hi":{"lang":"hi","dir":"ltr","path":"hi/","title":"पेज नहीं मिला","text":"साइट पर ऐसा कोई पेज नहीं है: हो सकता है लिंक पुराना हो या पते में टाइपिंग की ग़लती हो।","cta":"टेस्ट दें","links":[["होम",""],["DISC क्या है","disc/"],["16 प्रोफ़ाइल","profiles/"],["नतीजे कैसे समझें","results/"],["सामान्य प्रश्न","faq/"]]},"id":{"lang":"id","dir":"ltr","path":"id/","title":"Halaman tidak ditemukan","text":"Halaman ini tidak ada di situs kami: mungkin tautannya sudah usang atau ada salah ketik di alamatnya.","cta":"Ikuti tes","links":[["Beranda",""],["Apa itu DISC","disc/"],["16 profil","profiles/"],["Cara membaca hasil","results/"],["Tanya jawab","faq/"]]},"tr":{"lang":"tr","dir":"ltr","path":"tr/","title":"Sayfa bulunamadı","text":"Sitede böyle bir sayfa yok: bağlantı eskimiş ya da adres yanlış yazılmış olabilir.","cta":"Testi çöz","links":[["Ana sayfa",""],["DISC nedir?","disc/"],["16 profil","profiles/"],["Sonuçların yorumlanması","results/"],["Sık sorulan sorular","faq/"]]},"pl":{"lang":"pl","dir":"ltr","path":"pl/","title":"Nie znaleziono strony","text":"Takiej strony nie ma w serwisie: być może link jest nieaktualny albo w adresie jest literówka.","cta":"Zrób test","links":[["Strona główna",""],["Czym jest DISC","disc/"],["16 profili","profiles/"],["Interpretacja wyników","results/"],["Pytania i odpowiedzi","faq/"]]}}, BASE = '/', DEF = 'en';
+  var seg = location.pathname.slice(BASE.length).split('/')[0], lang = seg && NF[seg] ? seg : null;
+  var h = location.hash || '';
+  if (h.indexOf('#r=') === 0 || h === '#admin') { location.replace(BASE + (lang ? NF[lang].path : '') + h); return; }
+  if (!lang) {
+    try { var st = JSON.parse(localStorage.getItem('disc.lang')); if (NF[st]) lang = st; } catch (e) {}
+    var prefs = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || ''];
+    for (var i = 0; i < prefs.length && !lang; i++) { var full = String(prefs[i]).toLowerCase(), p = full.split('-')[0];
+      if (p === 'zh' && /^zh-(hant|tw|hk|mo)\b/.test(full)) p = 'zh-hant';
+      if (p === 'in') p = 'id';
+      if (NF[p]) lang = p; }
+  }
+  window.__nf = NF[lang || DEF];
+})();
+</script>
+<style>
+:root{--bg:#F3F4F6;--ink:#1B2027;--muted:#5B6470;--line:#D9DDE3;--btn:#1B2027;--btn-ink:#F7F8FA}
+@media (prefers-color-scheme: dark){:root{--bg:#14171B;--ink:#ECEEF1;--muted:#9AA3AE;--line:#2C323A;--btn:#ECEEF1;--btn-ink:#14171B}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;line-height:1.5}
+main{max-width:560px;margin:0 auto;padding:64px 20px}
+.dots{display:inline-flex;gap:5px;margin-bottom:24px}.dots i{width:10px;height:10px;border-radius:50%}
+h1{font-size:28px;line-height:1.2;margin:0 0 12px}
+p{color:var(--muted);margin:0 0 24px}
+.btn{display:inline-block;background:var(--btn);color:var(--btn-ink);text-decoration:none;font-weight:600;padding:12px 22px;border-radius:10px}
+ul{list-style:none;padding:0;margin:28px 0 0;display:flex;flex-wrap:wrap;gap:8px 18px;border-top:1px solid var(--line);padding-top:18px}
+ul a{color:var(--ink)}
+</style>
 </head>
-<body><p>Page not found. <a href="/">DISC Test</a></p></body>
+<body>
+<main id="nf">
+  <span class="dots" aria-hidden="true"><i style="background:#C9453D"></i><i style="background:#D6961F"></i><i style="background:#3A9A69"></i><i style="background:#3B6FB6"></i></span>
+  <h1>Page not found</h1>
+  <p>There is no such page on this site: the link may be outdated or the address may contain a typo.</p>
+  <a class="btn" href="/">Take the test</a>
+  <ul><li><a href="/">Home</a></li><li><a href="/disc/">What is DISC?</a></li><li><a href="/profiles/">16 profiles</a></li><li><a href="/results/">Results explained</a></li><li><a href="/faq/">FAQ</a></li></ul>
+</main>
+<script>
+(function(){
+  var d = window.__nf, m = document.getElementById('nf'); if (!d || !m) return;
+  var esc = function(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); };
+  var home = '/' + d.path;
+  document.documentElement.lang = d.lang; document.documentElement.dir = d.dir; document.title = d.title;
+  m.querySelector('h1').textContent = d.title; m.querySelector('p').textContent = d.text;
+  var b = m.querySelector('.btn'); b.textContent = d.cta; b.href = home;
+  m.querySelector('ul').innerHTML = d.links.map(function(l){ return '<li><a href="' + esc(home + l[1]) + '">' + esc(l[0]) + '</a></li>'; }).join('');
+})();
+</script>
+</body>
 </html>

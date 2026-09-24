@@ -201,6 +201,11 @@ html[lang=ar] body,html[lang=hi] body{font-size:17px;line-height:1.65}
 .cta p{margin:0;opacity:.85;font-size:14px}
 .cta .btn{background:var(--btn-ink);color:var(--btn);flex:none}
 .cta.invite{margin:0 0 24px}
+/* призыв сразу после вводного абзаца контентных страниц и плавающая кнопка на телефоне (аудит 3, п. 1) */
+.cta.cta-top{padding:14px 18px;margin:18px 0 26px;gap:10px 18px}
+.cta.cta-top p{flex:1 1 240px;font-size:15px;opacity:.9}
+.btn.ctafloat{display:none}
+@media (max-width:640px){.btn.ctafloat.show{display:flex;position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:15;box-shadow:0 8px 24px -6px rgba(0,0,0,.35)}body.has-consent .btn.ctafloat{display:none}}
 .stylecard .more{display:inline-block;margin-top:10px;font-size:13px;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line-strong)}
 .stylecard .more:hover{border-bottom-color:var(--ink)}
 .styles-intro .all{margin-top:14px;font-size:14px}
@@ -305,7 +310,7 @@ html[lang=ar] .qhead span,html[lang=hi] .qhead span,html[lang|=zh] .qhead span,h
 .hintline{font-size:13px;color:var(--muted);margin-top:14px}
 /* report */
 .rhead{display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:center;margin-bottom:18px}
-@media (max-width:560px){.rhead{grid-template-columns:1fr}}
+@media (max-width:560px){.rhead{grid-template-columns:1fr;gap:12px;justify-items:start}.rhead .badge{font-size:44px;padding:10px 14px}.rhead .badge .s{font-size:26px}}
 .badge{display:inline-flex;align-items:baseline;gap:2px;direction:ltr;font-family:var(--font-head);font-weight:600;font-size:64px;line-height:1;padding:14px 20px;border-radius:14px;background:var(--surface);border:1px solid var(--line)}
 .badge .p{color:var(--kp)}
 .badge .s{font-size:36px;color:var(--ks)}
@@ -481,6 +486,7 @@ body.has-consent{padding-bottom:160px}
     <nav class="langs" aria-label="भाषा"><a href="../../privacy/" hreflang="en" lang="en" data-lang="en"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-en"/></svg><span>English</span></a><a href="../../es/privacy/" hreflang="es" lang="es" data-lang="es"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-es"/></svg><span>Español</span></a><a href="../../zh/privacy/" hreflang="zh-Hans" lang="zh-Hans" data-lang="zh"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-zh"/></svg><span>简体中文</span></a><a href="../../zh-hant/privacy/" hreflang="zh-Hant" lang="zh-Hant" data-lang="zh-hant"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-zh-hant"/></svg><span>繁體中文</span></a><a href="../../ru/privacy/" hreflang="ru" lang="ru" data-lang="ru"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-ru"/></svg><span>Русский</span></a><a href="../../ar/privacy/" hreflang="ar" lang="ar" data-lang="ar"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-ar"/></svg><span>العربية</span></a><a href="../../pt/privacy/" hreflang="pt" lang="pt" data-lang="pt"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-pt"/></svg><span>Português</span></a><a href="../../fr/privacy/" hreflang="fr" lang="fr" data-lang="fr"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-fr"/></svg><span>Français</span></a><a href="../../de/privacy/" hreflang="de" lang="de" data-lang="de"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-de"/></svg><span>Deutsch</span></a><a href="../../ja/privacy/" hreflang="ja" lang="ja" data-lang="ja"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-ja"/></svg><span>日本語</span></a><a href="../../hi/privacy/" hreflang="hi" lang="hi" data-lang="hi" aria-current="page"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-hi"/></svg><span>हिन्दी</span></a><a href="../../id/privacy/" hreflang="id" lang="id" data-lang="id"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-id"/></svg><span>Bahasa Indonesia</span></a><a href="../../tr/privacy/" hreflang="tr" lang="tr" data-lang="tr"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-tr"/></svg><span>Türkçe</span></a><a href="../../pl/privacy/" hreflang="pl" lang="pl" data-lang="pl"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-pl"/></svg><span>Polski</span></a></nav>
   </footer>
 </div>
+
 <div class="toast" id="toast" hidden></div>
 <script>
 (function(){
@@ -589,6 +595,18 @@ function initCommon(c){
 
 initCommon({L:L, t:t, esc:esc, lsGet:lsGet, lsSet:lsSet, langHref:langHref, $:$, langMeta:LANG_META, langPath:LANG_PATH, privacyHref:ROOT_REL+(LANG_PATH[L.lang]||'')+'privacy/'});
 
+/* цели Метрики у кнопок теста (cta-top, cta-bottom, cta-float) и плавающая кнопка на телефоне: видна, когда призыв
+   после вводного абзаца уже прокручен вверх, а нижний призыв и подвал ещё не на экране (аудит 3, п. 1) */
+(function(){
+  document.querySelectorAll('a[data-goal]').forEach(function(a){ a.addEventListener('click', function(){ if(window.discTrack) window.discTrack(a.getAttribute('data-goal')); }); });
+  var fl = $('#ctaFloat'), top = $('.cta-top') || $('.cta.invite');
+  if(!fl || !top || !('IntersectionObserver' in window)) return;
+  var passed = false, near = false, ends = [].slice.call(document.querySelectorAll('main .cta:not(.cta-top):not(.invite), .foot'));
+  function upd(){ fl.classList.toggle('show', passed && !near); }
+  new IntersectionObserver(function(es){ es.forEach(function(e){ passed = !e.isIntersecting && e.boundingClientRect.top < 0; }); upd(); }).observe(top);
+  var io = new IntersectionObserver(function(es){ es.forEach(function(e){ e.target._vis = e.isIntersecting; }); near = ends.some(function(x){ return x._vis; }); upd(); });
+  ends.forEach(function(x){ io.observe(x); });
+})();
 })();
 </script>
 </body>
