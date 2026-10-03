@@ -519,7 +519,7 @@
         },
         {
           "q": "¿El test es realmente gratis?",
-          "a": "Sí, por completo: sin registro, sin pagos ocultos y sin «informes ampliados» de pago. El resultado aparece en pantalla justo después del último bloque y, si lo desea, también puede recibirlo por correo."
+          "a": "Sí: el test y el resultado son gratuitos, sin registro y sin pagos ocultos. El resultado aparece en pantalla justo después del último bloque y, si lo desea, también puede recibirlo por correo. En el sitio hay un único servicio de pago, el perfil DISC ampliado: se describe en la sección «Servicios» y es totalmente opcional."
         },
         {
           "q": "¿Qué significan las letras D, I, S, C?",
@@ -632,6 +632,31 @@
         {
           "h": "Cambios",
           "p": ["Última actualización: 24 de septiembre de 2026. Los cambios en el tratamiento de datos se reflejarán en esta página."]
+        }
+      ]
+    },
+    "services": {
+      "title": "Servicios: perfil DISC ampliado",
+      "description": "Servicio de pago de disc-test.org: perfil DISC ampliado por {price} USD. El test y el resultado siguen siendo gratuitos.",
+      "h1": "Servicios",
+      "lead": "El test DISC y su resultado son gratuitos en este sitio. Para quien necesite un análisis más detallado, hay disponible una versión ampliada de pago.",
+      "name": "Perfil DISC ampliado",
+      "text": "Un análisis más detallado de su perfil DISC a partir del test realizado. El perfil ampliado está disponible para los usuarios que hayan pagado el servicio.",
+      "priceLabel": "Precio",
+      "price": "{price} USD",
+      "currency": "USD",
+      "sections": [
+        {
+          "h": "Cómo se recibe",
+          "p": ["El perfil ampliado se envía por correo electrónico a la dirección indicada al pagar, en un plazo máximo de 24 horas desde el pago."]
+        },
+        {
+          "h": "Qué sigue siendo gratuito",
+          "p": ["El test, el resultado en pantalla y el correo con el resultado, las páginas de los dieciséis perfiles y la versión imprimible del test en PDF siguen siendo gratuitos y no requieren registro. El perfil ampliado se adquiere solo si usted lo desea."]
+        },
+        {
+          "h": "Preguntas sobre el servicio",
+          "p": ["Si tiene alguna pregunta sobre el perfil ampliado o sobre el pago, escríbanos mediante el formulario «{contact}»: la respuesta llegará al correo que indique. Los datos del titular del sitio figuran al pie de cada página."]
         }
       ]
     },
@@ -1169,7 +1194,7 @@
         {
           "h": "Quién está detrás del sitio",
           "p": [
-            "El sitio lo lleva la redacción de disc-test.org: escribimos los textos, mantenemos el código y respondemos a los correos. El proyecto es independiente y no comercial: el test es gratuito, sin registro, sin publicidad y sin «informes ampliados» de pago. No vendemos cursos de formación ni certificados y no estamos vinculados a Wiley (DiSC®), TTI Success Insights ni a otros titulares de marcas.",
+            "El sitio lo lleva la redacción de disc-test.org: escribimos los textos, mantenemos el código y respondemos a los correos. El proyecto es independiente: el test y el resultado son gratuitos, sin registro y sin publicidad. El único servicio de pago es el perfil DISC ampliado (sección «Servicios»). No vendemos cursos de formación ni certificados y no estamos vinculados a Wiley (DiSC®), TTI Success Insights ni a otros titulares de marcas.",
             "Nos hacemos responsables de todo lo que se publica en el sitio. Si encuentra un error en un texto, una imprecisión en una traducción o una discrepancia entre la descripción del método y la forma en que se calcula el resultado, escríbanos: lo corregiremos y actualizaremos la fecha de modificación."
           ]
         },
@@ -1196,7 +1221,7 @@
       "faqTitle": "El test en pocas palabras",
       "faq": [
         { "q": "¿Cuánto dura el test?", "a": "Unos diez minutos: 24 bloques de cuatro afirmaciones." },
-        { "q": "¿Es gratis?", "a": "Sí, por completo: sin registro, sin publicidad y sin «informes ampliados» de pago." },
+        { "q": "¿Es gratis?", "a": "Sí: el test y el resultado son gratuitos, sin registro y sin publicidad. Solo es de pago el perfil DISC ampliado, y es opcional." },
         { "q": "¿Hay respuestas correctas?", "a": "No. Cualquier perfil es normal; responda según cómo se comporta habitualmente en el trabajo, no según cómo le gustaría comportarse." },
         { "q": "¿Puede hacer el test todo un equipo?", "a": "Sí: cada persona hace el test desde el enlace, y los resultados se reúnen en el panel de administración." }
       ],
@@ -1369,6 +1394,7 @@
     "nav.about": "Sobre el proyecto",
     "nav.contact": "Contacto",
     "nav.privacy": "Privacidad",
+    "nav.services": "Servicios",
     "nav.results": "Interpretación de resultados",
     "nav.compat": "Compatibilidad de estilos",
     "nav.colors": "DISC por colores",

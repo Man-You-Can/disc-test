@@ -517,7 +517,7 @@
         },
         {
           "q": "Is the test really free?",
-          "a": "Yes, completely: no sign-up, no hidden charges and no paid “extended reports.” The result appears on screen right after the last block, and you can also have it emailed to you if you like."
+          "a": "Yes: the test and the result are free, with no sign-up and no hidden charges. The result appears on screen right after the last block, and you can also have it emailed to you if you like. The site has one paid service — the in-depth DISC profile; it is described in the “Services” section and is entirely optional."
         },
         {
           "q": "What do the letters D, I, S, C mean?",
@@ -628,6 +628,31 @@
         {
           "h": "Changes",
           "p": ["Last updated: September 24, 2026. Changes in how data is handled will be reflected on this page."]
+        }
+      ]
+    },
+    "services": {
+      "title": "Services — in-depth DISC profile",
+      "description": "Paid service on disc-test.org: an in-depth DISC profile for {price} USD. The test and its result remain free.",
+      "h1": "Services",
+      "lead": "The DISC test and its result are free on this site. For those who want a more detailed analysis, a paid in-depth version is available.",
+      "name": "In-depth DISC profile",
+      "text": "A more detailed analysis of your DISC profile based on the test you took. The in-depth profile is available to users who have paid for the service.",
+      "priceLabel": "Price",
+      "price": "{price} USD",
+      "currency": "USD",
+      "sections": [
+        {
+          "h": "How to get it",
+          "p": ["The in-depth profile is sent by email to the address given at payment, no later than 24 hours after payment."]
+        },
+        {
+          "h": "What stays free",
+          "p": ["The test itself, the on-screen result and the result email, the pages of the sixteen profiles and the printable PDF version of the test remain free and require no sign-up. The in-depth profile is purchased only if you want it."]
+        },
+        {
+          "h": "Questions about the service",
+          "p": ["If you have a question about the in-depth profile or about payment, write to us via the “{contact}” form — the reply will come to the email address you provide. The site owner’s details are at the bottom of every page."]
         }
       ]
     },
@@ -1165,7 +1190,7 @@
         {
           "h": "Who runs the site",
           "p": [
-            "The site is run by the disc-test.org editorial team: we write the texts, maintain the code and answer the mail. The project is independent and non-commercial: the test is free, with no sign-up, no ads and no paid “extended reports.” We do not sell training or certifications, and we are not affiliated with Wiley (DiSC®), TTI Success Insights or other trademark holders.",
+            "The site is run by the disc-test.org editorial team: we write the texts, maintain the code and answer the mail. The project is independent: the test and the result are free, with no sign-up and no ads. The only paid service is the in-depth DISC profile (see “Services”). We do not sell training or certifications, and we are not affiliated with Wiley (DiSC®), TTI Success Insights or other trademark holders.",
             "We are responsible for everything published on the site. If you find a mistake in the text, an inaccurate translation or a discrepancy between the description of the method and the way the score is actually calculated, write to us: we will fix it and update the date of the change."
           ]
         },
@@ -1186,7 +1211,7 @@
       "faqTitle": "The test in brief",
       "faq": [
         { "q": "How long does the test take?", "a": "About ten minutes: 24 blocks of four statements each." },
-        { "q": "Is it free?", "a": "Yes, completely: no sign-up, no ads and no paid “extended reports.”" },
+        { "q": "Is it free?", "a": "Yes: the test and the result are free, with no sign-up and no ads. Only the in-depth DISC profile is paid, and it is optional." },
         { "q": "Are there right answers?", "a": "No. Every profile is normal; answer the way you usually behave at work, not the way you’d like to." },
         { "q": "Can a whole team take the test?", "a": "Yes: everyone takes the test via a link, and the results are collected in the admin panel." }
       ],
@@ -1359,6 +1384,7 @@
     "nav.about": "About",
     "nav.contact": "Contact",
     "nav.privacy": "Privacy",
+    "nav.services": "Services",
     "nav.results": "Results explained",
     "nav.compat": "Style compatibility",
     "nav.colors": "DISC colors",

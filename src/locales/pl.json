@@ -517,7 +517,7 @@
         },
         {
           "q": "Czy test jest naprawdę darmowy?",
-          "a": "Tak, całkowicie: bez rejestracji, ukrytych opłat i płatnych „raportów rozszerzonych”. Wynik pojawia się na ekranie od razu po ostatnim pytaniu; jeśli chcesz, możesz go też otrzymać e-mailem."
+          "a": "Tak: test i wynik są bezpłatne, bez rejestracji i ukrytych opłat. Wynik pojawia się na ekranie od razu po ostatnim pytaniu; jeśli chcesz, możesz go też otrzymać e-mailem. W serwisie jest jedna płatna usługa — rozszerzony profil DISC; opisujemy ją w dziale „Usługi” i jest w pełni dobrowolna."
         },
         {
           "q": "Co oznaczają litery D, I, S, C?",
@@ -628,6 +628,31 @@
         {
           "h": "Zmiany",
           "p": ["Ostatnia aktualizacja: 24 września 2026 r. Zmiany w sposobie przetwarzania danych będą odnotowywane na tej stronie."]
+        }
+      ]
+    },
+    "services": {
+      "title": "Usługi — rozszerzony profil DISC",
+      "description": "Płatna usługa serwisu disc-test.org: rozszerzony profil DISC za {price} USD. Test i wynik pozostają bezpłatne.",
+      "h1": "Usługi",
+      "lead": "Test DISC i jego wynik są w tym serwisie bezpłatne. Dla osób, które chcą bardziej szczegółowej analizy, dostępna jest płatna wersja rozszerzona.",
+      "name": "Rozszerzony profil DISC",
+      "text": "Bardziej szczegółowa analiza Twojego profilu DISC na podstawie wypełnionego testu. Profil rozszerzony jest dostępny dla użytkowników, którzy opłacili usługę.",
+      "priceLabel": "Cena",
+      "price": "{price} USD",
+      "currency": "USD",
+      "sections": [
+        {
+          "h": "Jak go otrzymać",
+          "p": ["Profil rozszerzony wysyłamy e-mailem na adres podany przy płatności, nie później niż 24 godziny po dokonaniu płatności."]
+        },
+        {
+          "h": "Co pozostaje bezpłatne",
+          "p": ["Sam test, wynik na ekranie i e-mail z wynikiem, strony szesnastu profili oraz wersja testu w PDF do wydruku pozostają bezpłatne i nie wymagają rejestracji. Profil rozszerzony kupujesz tylko wtedy, gdy chcesz."]
+        },
+        {
+          "h": "Pytania dotyczące usługi",
+          "p": ["Jeśli masz pytanie o profil rozszerzony lub o płatność, napisz do nas przez formularz „{contact}” — odpowiedź przyjdzie na podany adres e-mail. Dane właściciela serwisu znajdują się na dole każdej strony."]
         }
       ]
     },
@@ -1165,7 +1190,7 @@
         {
           "h": "Kto prowadzi serwis",
           "p": [
-            "Serwis prowadzi redakcja disc-test.org: piszemy teksty, utrzymujemy kod i odpowiadamy na wiadomości. Projekt jest niezależny i niekomercyjny: test jest darmowy, bez rejestracji, reklam i płatnych „raportów rozszerzonych”. Nie sprzedajemy szkoleń ani certyfikatów i nie jesteśmy powiązani z Wiley (DiSC®), TTI Success Insights ani innymi właścicielami znaków towarowych.",
+            "Serwis prowadzi redakcja disc-test.org: piszemy teksty, utrzymujemy kod i odpowiadamy na wiadomości. Projekt jest niezależny: test i wynik są bezpłatne, bez rejestracji i reklam. Jedyną płatną usługą jest rozszerzony profil DISC (dział „Usługi”). Nie sprzedajemy szkoleń ani certyfikatów i nie jesteśmy powiązani z Wiley (DiSC®), TTI Success Insights ani innymi właścicielami znaków towarowych.",
             "Za to, co jest opublikowane w serwisie, odpowiadamy my. Jeśli widzisz błąd w tekście, nieścisłość w tłumaczeniu albo rozbieżność między opisem metody a tym, jak liczony jest wynik, napisz do nas: poprawimy to i zaktualizujemy datę zmiany."
           ]
         },
@@ -1186,7 +1211,7 @@
       "faqTitle": "Krótko o teście",
       "faq": [
         { "q": "Ile trwa test?", "a": "Około dziesięciu minut: 24 pytania po cztery stwierdzenia." },
-        { "q": "Czy test jest darmowy?", "a": "Tak, całkowicie: bez rejestracji, reklam i płatnych „raportów rozszerzonych”." },
+        { "q": "Czy test jest darmowy?", "a": "Tak: test i wynik są bezpłatne, bez rejestracji i reklam. Płatny jest tylko rozszerzony profil DISC — dla chętnych." },
         { "q": "Czy są dobre odpowiedzi?", "a": "Nie. Każdy profil jest w porządku; odpowiadaj tak, jak zwykle zachowujesz się w pracy, a nie tak, jak chcesz się widzieć." },
         { "q": "Czy test można zrobić całym zespołem?", "a": "Tak: każda osoba wypełnia test przez link, a wyniki trafiają do panelu administratora." }
       ],
@@ -1359,6 +1384,7 @@
     "nav.about": "O projekcie",
     "nav.contact": "Kontakt",
     "nav.privacy": "Prywatność",
+    "nav.services": "Usługi",
     "nav.results": "Interpretacja wyników",
     "nav.compat": "Dopasowanie stylów",
     "nav.colors": "Kolory DISC",

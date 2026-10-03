@@ -519,7 +519,7 @@
         },
         {
           "q": "Le test est-il vraiment gratuit ?",
-          "a": "Oui, entièrement : sans inscription, sans frais cachés et sans « rapport détaillé » payant. Le résultat s'affiche à l'écran juste après le dernier bloc ; si vous le souhaitez, vous pouvez aussi le recevoir par e-mail."
+          "a": "Oui : le test et le résultat sont gratuits, sans inscription et sans frais cachés. Le résultat s'affiche à l'écran juste après le dernier bloc ; si vous le souhaitez, vous pouvez aussi le recevoir par e-mail. Le site propose un seul service payant, le profil DISC détaillé : il est décrit dans la rubrique « Services » et reste entièrement facultatif."
         },
         {
           "q": "Que signifient les lettres D, I, S, C ?",
@@ -630,6 +630,31 @@
         {
           "h": "Modifications",
           "p": ["Dernière mise à jour : 24 septembre 2026. Les changements dans le traitement des données seront reflétés sur cette page."]
+        }
+      ]
+    },
+    "services": {
+      "title": "Services — profil DISC détaillé",
+      "description": "Service payant de disc-test.org : profil DISC détaillé pour {price} USD. Le test et le résultat restent gratuits.",
+      "h1": "Services",
+      "lead": "Le test DISC et son résultat sont gratuits sur ce site. Pour ceux qui souhaitent une analyse plus approfondie, une version détaillée payante est disponible.",
+      "name": "Profil DISC détaillé",
+      "text": "Une analyse plus approfondie de votre profil DISC, à partir du test que vous avez passé. Le profil détaillé est accessible aux utilisateurs ayant payé le service.",
+      "priceLabel": "Prix",
+      "price": "{price} USD",
+      "currency": "USD",
+      "sections": [
+        {
+          "h": "Comment le recevoir",
+          "p": ["Le profil détaillé est envoyé par e-mail à l'adresse indiquée lors du paiement, au plus tard 24 heures après le paiement."]
+        },
+        {
+          "h": "Ce qui reste gratuit",
+          "p": ["Le test, le résultat à l'écran et l'e-mail de résultat, les pages des seize profils et la version imprimable du test en PDF restent gratuits et sans inscription. Le profil détaillé ne s'achète que si vous le souhaitez."]
+        },
+        {
+          "h": "Questions sur le service",
+          "p": ["Pour toute question sur le profil détaillé ou sur le paiement, écrivez-nous via le formulaire « {contact} » : la réponse arrivera à l'adresse e-mail indiquée. Les coordonnées du propriétaire du site figurent en bas de chaque page."]
         }
       ]
     },
@@ -1182,7 +1207,7 @@
         {
           "h": "Qui édite le site",
           "p": [
-            "Le site est édité par la rédaction de disc-test.org : nous écrivons les textes, maintenons le code et répondons aux messages. Le projet est indépendant et non commercial : le test est gratuit, sans inscription, sans publicité ni « rapports détaillés » payants. Nous ne vendons ni formations ni certifications, et nous n'avons aucun lien avec Wiley (DiSC®), TTI Success Insights ou d'autres titulaires de marques.",
+            "Le site est édité par la rédaction de disc-test.org : nous écrivons les textes, maintenons le code et répondons aux messages. Le projet est indépendant : le test et le résultat sont gratuits, sans inscription et sans publicité. Le seul service payant est le profil DISC détaillé (rubrique « Services »). Nous ne vendons ni formations ni certifications, et nous n'avons aucun lien avec Wiley (DiSC®), TTI Success Insights ou d'autres titulaires de marques.",
             "Nous sommes responsables de ce qui est publié sur le site. Si vous repérez une erreur dans un texte, une imprécision de traduction ou un écart entre la description de la méthode et la façon dont le résultat est calculé, écrivez-nous : nous corrigerons et mettrons à jour la date de modification."
           ]
         },
@@ -1209,7 +1234,7 @@
       "faqTitle": "Le test en bref",
       "faq": [
         { "q": "Combien de temps dure le test ?", "a": "Une dizaine de minutes : 24 blocs de quatre affirmations." },
-        { "q": "Est-ce gratuit ?", "a": "Oui, entièrement : sans inscription, sans publicité ni « rapports détaillés » payants." },
+        { "q": "Est-ce gratuit ?", "a": "Oui : le test et le résultat sont gratuits, sans inscription et sans publicité. Seul le profil DISC détaillé est payant, et il est facultatif." },
         { "q": "Y a-t-il de bonnes réponses ?", "a": "Non. Tous les profils sont normaux ; répondez selon votre comportement habituel au travail, pas selon celui que vous aimeriez avoir." },
         { "q": "Toute une équipe peut-elle passer le test ?", "a": "Oui : chacun passe le test via le lien, et les résultats sont réunis dans l'espace administrateur." }
       ],
@@ -1382,6 +1407,7 @@
     "nav.about": "À propos",
     "nav.contact": "Contact",
     "nav.privacy": "Confidentialité",
+    "nav.services": "Services",
     "nav.results": "Interpréter les résultats",
     "nav.compat": "Compatibilité des styles",
     "nav.colors": "Couleurs DISC",

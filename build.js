@@ -26,11 +26,14 @@ const feedbackEmail = String(cfg.feedbackEmail || '').trim().replace(/['\\<>"]/g
 // Реквизиты владельца в подвале (требование платёжной системы): имя и подпись к ИНН — в локали (ui.legal), номер — в legalInn; пустой номер — строки нет
 const legalInn = String(cfg.legalInn || '').replace(/\D/g, '');
 const legalHtml = L => legalInn ? `<div class="legal">${esc(L.ui.legal.replace('{inn}', legalInn))}</div>` : '';
-// Платная услуга (страницы /services/, /offer/, /refund/): строятся только для языков, в локали которых есть content.services,
-// content.offer и content.refund (сейчас — русский);
-// цена — servicePriceRub в site.config.json, пустое значение или 0 убирает страницу и пункт меню
-const servicePrice = Math.round(Number(cfg.servicePriceRub) || 0);
-const hasServices = L => !!(servicePrice && L.content.services && L.content.offer && L.content.refund && L.ui['nav.services']);
+// Платная услуга. Страница /services/ есть во всех языках; цена берётся по валюте локали (content.services.currency):
+// servicePriceRub или servicePriceUsd в site.config.json, пустое значение или 0 убирает страницу и пункт меню в языках с этой валютой.
+// Оферта и условия возврата (/offer/, /refund/) — только в языках, где есть content.offer и content.refund (сейчас — русский)
+const servicePrices = { RUB: Number(cfg.servicePriceRub) || 0, USD: Number(cfg.servicePriceUsd) || 0 };
+const servicePrice = L => { const v = L.content.services ? servicePrices[L.content.services.currency] || 0 : 0;
+  return v ? new Intl.NumberFormat(L.dateLocale, Number.isInteger(v) ? {} : { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(v) : ''; };
+const hasServices = L => !!(servicePrice(L) && L.ui['nav.services']);
+const hasOffer = L => !!(hasServices(L) && L.content.offer && L.content.refund && L.ui['nav.offer']);
 const MAX_CONTACT_BYTES = 10 * 1024 * 1024; // общий размер вложений одного сообщения (проверяется и в браузере, и в Apps Script)
 const jsStr = s => JSON.stringify(String(s == null ? '' : s)).replace(/</g, '\\u003c');
 const graphJs = fs.readFileSync(path.join(SRC, 'graph.js'), 'utf8').replace(/\nif \(typeof module[^\n]*\n?$/, '\n');
@@ -51,7 +54,7 @@ const relRoot = (L, sub) => { const depth = (pathOf(L.lang) + sub).split('/').le
 const PAIRS = ['DD', 'DI', 'DS', 'DC', 'II', 'IS', 'IC', 'SS', 'SC', 'CC'], pairSlug = k => (k[0] + '-' + k[1]).toLowerCase();
 const ltr = str => `<span dir="ltr">${str}</span>`; // латиница внутри арабского текста: без изоляции «D · I» читается как «I · D»
 const FOOT_ITEMS = [['nav.about', 'about/']].concat(feedbackEmail ? [['nav.contact', 'contact/']] : []).concat([['nav.privacy', 'privacy/']]);
-const footLinks = (L, base) => FOOT_ITEMS.slice(0, 1).concat(hasServices(L) ? [['nav.services', 'services/'], ['nav.offer', 'offer/']] : [], FOOT_ITEMS.slice(1)).map(([k, sub]) => `<a href="${base + sub}">${esc(L.ui[k])}</a>`).join(' · ');
+const footLinks = (L, base) => FOOT_ITEMS.slice(0, 1).concat(hasServices(L) ? [['nav.services', 'services/']] : [], hasOffer(L) ? [['nav.offer', 'offer/']] : [], FOOT_ITEMS.slice(1)).map(([k, sub]) => `<a href="${base + sub}">${esc(L.ui[k])}</a>`).join(' · ');
 const PROFILE_KEYS = ['D', 'DI', 'DC', 'DS', 'I', 'ID', 'IS', 'IC', 'S', 'SI', 'SC', 'SD', 'C', 'CD', 'CS', 'CI'];
 // Источники к странице «Что такое DISC». Библиографические описания одинаковы во всех языках
 // (названия работ приводятся на языке оригинала), поэтому живут здесь, а не в локалях;
@@ -531,27 +534,30 @@ for (const L of locales) {
     content: `<div class="eyebrow">DISC</div><h1>${escFull(pd.h1)}</h1><p class="lead">${escFull(pd.lead)}</p>` + download + ctaTop(t, '../', 'cta.inlinePdf') + sectionsHtml(pd.sections) + download + ctaBlock(L, t, '../') + seeAlso('../', 'nav.pdf'),
     ldExtra: pi ? [{ '@context': 'https://schema.org', '@type': 'DigitalDocument', name: pd.title, url: `${siteUrl}/pdf/${pi.file}`, encodingFormat: 'application/pdf', inLanguage: hl(L.lang), isAccessibleForFree: true }] : [] });
   if (pi) extraUrls.push({ lang: L.lang, loc: `${siteUrl}/pdf/${pi.file}`, date: contentDate(L.lang + ':pdf-file', fs.readFileSync(path.join(ASSETS, 'pdf', pi.file)).toString('base64'), [`src/assets/pdf/${pi.file}`]) });
-  // /services/, /offer/, /refund/ — платная услуга, публичная оферта и условия возврата: только в языках, где эти разделы есть (hasServices).
+  // /services/ — платная услуга (все языки); /offer/ и /refund/ — публичная оферта и условия возврата, только в языках, где эти разделы есть (hasOffer).
   // В текстах подставляются {price}, {inn}, {seller} (исполнитель с ИНН), {email}, {site} и ссылки {contact}, {privacy}, {offer}, {refund}
   if (hasServices(L)) {
-    const sv = C.services, of = C.offer, rf = C.refund, own = locales.filter(hasServices), fill = str => String(str).replace(/\{price\}/g, servicePrice);
+    const sv = C.services, of = C.offer, rf = C.refund, docs = hasOffer(L), own = locales.filter(hasOffer), price = servicePrice(L), fill = str => String(str).replace(/\{price\}/g, price);
     const link = (sub2, text) => `<a href="../${sub2}">${escFull(text)}</a>`;
-    const vars = { price: servicePrice, inn: legalInn, site: escFull(siteUrl), seller: escFull(of.seller.replace('{inn}', legalInn)),
+    const vars = Object.assign({ price, site: escFull(siteUrl),
       email: feedbackEmail ? `<a href="mailto:${escFull(feedbackEmail)}">${escFull(feedbackEmail)}</a>` : '—',
-      contact: feedbackEmail ? link('contact/', t('nav.contact')) : escFull(t('nav.contact')), privacy: link('privacy/', t('nav.privacy')),
-      offer: link('offer/', of.linkText), refund: link('refund/', rf.linkText) };
+      contact: feedbackEmail ? link('contact/', t('nav.contact')) : escFull(t('nav.contact')), privacy: link('privacy/', t('nav.privacy')) },
+      docs ? { inn: legalInn, seller: escFull(of.seller.replace('{inn}', legalInn)), offer: link('offer/', of.linkText), refund: link('refund/', rf.linkText) } : {});
     const fillHtml = html => html.replace(/\{(\w+)\}/g, (m, k) => k in vars ? vars[k] : m);
     const svcCrumb = { name: t('nav.services'), href: '../services/', sub: 'services/' }, docLink = (sub2, d) => `<a href="../${sub2}">${escFull(d.h1)} ${arrow(L)}</a>`;
-    writeContentPage(L, 'services/', { navKey: 'nav.services', langs: own, title: fill(sv.title), description: fill(sv.description), crumbs: [{ name: t('nav.services') }],
+    writeContentPage(L, 'services/', { navKey: 'nav.services', langs: locales.filter(hasServices), title: fill(sv.title), description: fill(sv.description), crumbs: [{ name: t('nav.services') }],
       content: fillHtml(`<div class="eyebrow">DISC</div><h1>${escFull(sv.h1)}</h1><p class="lead">${escFull(sv.lead)}</p>` +
         `<section class="service"><div><h2>${escFull(sv.name)}</h2><p>${escFull(sv.text)}</p></div><p class="price"><small>${escFull(sv.priceLabel)}</small>${escFull(sv.price)}</p></section>` +
-        sectionsHtml(sv.sections)) + `<p class="seealso">${docLink('offer/', of)} · ${docLink('refund/', rf)}</p>` });
+        sectionsHtml(sv.sections.slice(0, 1)) + (docs && sv.docs ? `<p>${escFull(sv.docs)}</p>` : '') + sectionsHtml(sv.sections.slice(1))) +
+        (docs ? `<p class="seealso">${docLink('offer/', of)} · ${docLink('refund/', rf)}</p>` : '') });
+    if (docs) {
     writeContentPage(L, 'offer/', { navKey: 'nav.services', langs: own, title: of.title, description: of.description, crumbs: [svcCrumb, { name: of.h1 }],
       content: fillHtml(`<div class="eyebrow">${escFull(t('nav.services'))}</div><h1>${escFull(of.h1)}</h1><p class="muted">${escFull(of.edition)}</p><p>${escFull(of.lead)}</p>` + sectionsHtml(of.sections)) +
         `<p class="seealso">${docLink('refund/', rf)} · ${docLink('services/', sv)}</p>` });
     writeContentPage(L, 'refund/', { navKey: 'nav.services', langs: own, title: rf.title, description: rf.description, crumbs: [svcCrumb, { name: rf.h1 }],
       content: fillHtml(`<div class="eyebrow">${escFull(t('nav.services'))}</div><h1>${escFull(rf.h1)}</h1><p class="lead">${escFull(rf.lead)}</p>` + sectionsHtml(rf.sections)) +
         `<p class="seealso">${docLink('offer/', of)} · ${docLink('services/', sv)}</p>` });
+    }
   }
   // /contact/ — форма обратной связи (только при заданном feedbackEmail); разметка из src/contact.js, там же логика страницы
   if (feedbackEmail) {

@@ -519,7 +519,7 @@
         },
         {
           "q": "Ist der Test wirklich kostenlos?",
-          "a": "Ja, vollständig: ohne Anmeldung, ohne versteckte Kosten und ohne kostenpflichtige „erweiterte Berichte“. Das Ergebnis erscheint direkt nach dem letzten Block auf dem Bildschirm; auf Wunsch können Sie es sich per E-Mail zusenden lassen."
+          "a": "Ja: Test und Ergebnis sind kostenlos, ohne Anmeldung und ohne versteckte Kosten. Das Ergebnis erscheint direkt nach dem letzten Block auf dem Bildschirm; auf Wunsch können Sie es sich per E-Mail zusenden lassen. Auf der Seite gibt es eine einzige kostenpflichtige Leistung – das ausführliche DISG-Profil; sie ist unter „Leistungen“ beschrieben und völlig freiwillig."
         },
         {
           "q": "Wofür stehen die Buchstaben D, I, S, C?",
@@ -632,6 +632,31 @@
         {
           "h": "Änderungen",
           "p": ["Letzte Aktualisierung: 24. September 2026. Änderungen im Umgang mit Daten werden auf dieser Seite dokumentiert."]
+        }
+      ]
+    },
+    "services": {
+      "title": "Leistungen – ausführliches DISG-Profil",
+      "description": "Kostenpflichtige Leistung von disc-test.org: ausführliches DISG-Profil für {price} USD. Test und Ergebnis bleiben kostenlos.",
+      "h1": "Leistungen",
+      "lead": "Der DISG-Test und sein Ergebnis sind auf dieser Seite kostenlos. Wer eine genauere Auswertung wünscht, kann eine kostenpflichtige ausführliche Version erhalten.",
+      "name": "Ausführliches DISG-Profil",
+      "text": "Eine genauere Auswertung Ihres DISG-Profils auf Grundlage Ihres Tests. Das ausführliche Profil steht Nutzern zur Verfügung, die die Leistung bezahlt haben.",
+      "priceLabel": "Preis",
+      "price": "{price} USD",
+      "currency": "USD",
+      "sections": [
+        {
+          "h": "So erhalten Sie es",
+          "p": ["Das ausführliche Profil wird per E-Mail an die bei der Zahlung angegebene Adresse gesendet, spätestens 24 Stunden nach der Zahlung."]
+        },
+        {
+          "h": "Was kostenlos bleibt",
+          "p": ["Der Test selbst, das Ergebnis auf dem Bildschirm und die E-Mail mit dem Ergebnis, die Seiten der sechzehn Profile und die druckbare PDF-Version des Tests bleiben kostenlos und erfordern keine Anmeldung. Das ausführliche Profil erwerben Sie nur, wenn Sie es wünschen."]
+        },
+        {
+          "h": "Fragen zur Leistung",
+          "p": ["Wenn Sie eine Frage zum ausführlichen Profil oder zur Zahlung haben, schreiben Sie uns über das Formular „{contact}“ – die Antwort kommt an die angegebene E-Mail-Adresse. Die Angaben zum Inhaber der Website stehen am Ende jeder Seite."]
         }
       ]
     },
@@ -1171,7 +1196,7 @@
         {
           "h": "Wer die Seite betreibt",
           "p": [
-            "Die Seite wird von der Redaktion von disc-test.org betreut: Wir schreiben die Texte, pflegen den Code und beantworten E-Mails. Das Projekt ist unabhängig und nicht kommerziell: Der Test ist kostenlos, ohne Anmeldung, ohne Werbung und ohne kostenpflichtige „erweiterte Berichte“. Wir verkaufen keine Trainings und Zertifikate und stehen in keiner Verbindung zu Wiley (DiSC®), TTI Success Insights oder anderen Markeninhabern.",
+            "Die Seite wird von der Redaktion von disc-test.org betreut: Wir schreiben die Texte, pflegen den Code und beantworten E-Mails. Das Projekt ist unabhängig: Test und Ergebnis sind kostenlos, ohne Anmeldung und ohne Werbung. Die einzige kostenpflichtige Leistung ist das ausführliche DISG-Profil (siehe „Leistungen“). Wir verkaufen keine Trainings und Zertifikate und stehen in keiner Verbindung zu Wiley (DiSC®), TTI Success Insights oder anderen Markeninhabern.",
             "Für das, was auf der Seite veröffentlicht wird, sind wir verantwortlich. Wenn Sie einen Fehler im Text, eine Ungenauigkeit in der Übersetzung oder eine Abweichung zwischen der Beschreibung der Methode und der tatsächlichen Berechnung des Ergebnisses finden, schreiben Sie uns: Wir korrigieren das und aktualisieren das Änderungsdatum."
           ]
         },
@@ -1198,7 +1223,7 @@
       "faqTitle": "Der Test in Kürze",
       "faq": [
         { "q": "Wie lange dauert der Test?", "a": "Etwa zehn Minuten: 24 Blöcke mit je vier Aussagen." },
-        { "q": "Ist der Test kostenlos?", "a": "Ja, vollständig: ohne Anmeldung, ohne Werbung und ohne kostenpflichtige „erweiterte Berichte“." },
+        { "q": "Ist der Test kostenlos?", "a": "Ja: Test und Ergebnis sind kostenlos, ohne Anmeldung und ohne Werbung. Kostenpflichtig ist nur das ausführliche DISG-Profil – und das ist freiwillig." },
         { "q": "Gibt es richtige Antworten?", "a": "Nein. Jedes Profil ist normal; antworten Sie so, wie Sie sich bei der Arbeit gewöhnlich verhalten, nicht so, wie Sie es gern hätten." },
         { "q": "Kann ein ganzes Team den Test machen?", "a": "Ja: Alle machen den Test über einen Link, und die Ergebnisse werden im Admin-Bereich gesammelt." }
       ],
@@ -1371,6 +1396,7 @@
     "nav.about": "Über das Projekt",
     "nav.contact": "Kontakt",
     "nav.privacy": "Datenschutz",
+    "nav.services": "Leistungen",
     "nav.results": "Ergebnis verstehen",
     "nav.compat": "Zusammenarbeit der Stile",
     "nav.colors": "DISG-Farben",

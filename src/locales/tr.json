@@ -517,7 +517,7 @@
         },
         {
           "q": "Test gerçekten ücretsiz mi?",
-          "a": "Evet, tamamen: kayıt, gizli ödeme ya da ücretli “genişletilmiş rapor” yok. Sonuç, son sorunun hemen ardından ekranda görünür; isterseniz e-postayla da alabilirsiniz."
+          "a": "Evet: test ve sonuç ücretsizdir; kayıt ve gizli ödeme yoktur. Sonuç, son sorunun hemen ardından ekranda görünür; isterseniz e-postayla da alabilirsiniz. Sitede tek bir ücretli hizmet vardır: genişletilmiş DISC profili. “Hizmetler” bölümünde anlatılır ve tamamen isteğe bağlıdır."
         },
         {
           "q": "D, I, S, C harfleri ne anlama gelir?",
@@ -628,6 +628,31 @@
         {
           "h": "Değişiklikler",
           "p": ["Son güncelleme: 24 Eylül 2026. Verilerin işlenmesindeki değişiklikler bu sayfaya yansıtılacaktır."]
+        }
+      ]
+    },
+    "services": {
+      "title": "Hizmetler — genişletilmiş DISC profili",
+      "description": "disc-test.org sitesinin ücretli hizmeti: genişletilmiş DISC profili, {price} USD. Test ve sonuç ücretsiz kalır.",
+      "h1": "Hizmetler",
+      "lead": "DISC testi ve sonucu bu sitede ücretsizdir. Daha ayrıntılı bir değerlendirme isteyenler için ücretli genişletilmiş sürüm sunulur.",
+      "name": "Genişletilmiş DISC profili",
+      "text": "Çözdüğünüz teste dayanan, DISC profilinizin daha ayrıntılı bir değerlendirmesi. Genişletilmiş profil, hizmetin ücretini ödeyen kullanıcılara sunulur.",
+      "priceLabel": "Ücret",
+      "price": "{price} USD",
+      "currency": "USD",
+      "sections": [
+        {
+          "h": "Nasıl alınır",
+          "p": ["Genişletilmiş profil, ödeme sırasında belirtilen e-posta adresine, ödemeden sonra en geç 24 saat içinde gönderilir."]
+        },
+        {
+          "h": "Ücretsiz kalanlar",
+          "p": ["Testin kendisi, ekrandaki sonuç ve sonuç e-postası, on altı profilin sayfaları ve testin yazdırılabilir PDF sürümü ücretsiz kalır ve kayıt gerektirmez. Genişletilmiş profil yalnızca isteyenler içindir."]
+        },
+        {
+          "h": "Hizmetle ilgili sorular",
+          "p": ["Genişletilmiş profil veya ödeme hakkında bir sorunuz varsa bize “{contact}” formu üzerinden yazın; yanıt, belirttiğiniz e-posta adresine gelir. Site sahibinin bilgileri her sayfanın altında yer alır."]
         }
       ]
     },
@@ -1165,7 +1190,7 @@
         {
           "h": "Siteyi kim yürütüyor",
           "p": [
-            "Siteyi disc-test.org editör ekibi yürütür: metinleri biz yazıyor, kodun bakımını biz yapıyor, e-postaları biz yanıtlıyoruz. Proje bağımsızdır ve ticari amaç gütmez: test ücretsizdir; kayıt, reklam ve ücretli “genişletilmiş rapor” yoktur. Eğitim ya da sertifika satmıyoruz; Wiley (DiSC®), TTI Success Insights ve diğer marka sahipleriyle hiçbir bağımız yoktur.",
+            "Siteyi disc-test.org editör ekibi yürütür: metinleri biz yazıyor, kodun bakımını biz yapıyor, e-postaları biz yanıtlıyoruz. Proje bağımsızdır: test ve sonuç ücretsizdir; kayıt ve reklam yoktur. Tek ücretli hizmet genişletilmiş DISC profilidir (“Hizmetler” bölümü). Eğitim ya da sertifika satmıyoruz; Wiley (DiSC®), TTI Success Insights ve diğer marka sahipleriyle hiçbir bağımız yoktur.",
             "Sitede yayımlananların sorumluluğu bize aittir. Metinde bir hata, çeviride bir yanlışlık ya da yöntemin anlatımı ile sonucun hesaplanma biçimi arasında bir tutarsızlık bulursanız bize yazın: düzeltir ve değişiklik tarihini güncelleriz."
           ]
         },
@@ -1192,7 +1217,7 @@
       "faqTitle": "Test hakkında kısaca",
       "faq": [
         { "q": "Test ne kadar sürer?", "a": "Yaklaşık on dakika: her biri dört ifadeden oluşan 24 soru." },
-        { "q": "Ücretsiz mi?", "a": "Evet, tamamen: kayıt, reklam ya da ücretli “genişletilmiş rapor” yok." },
+        { "q": "Ücretsiz mi?", "a": "Evet: test ve sonuç ücretsizdir; kayıt ve reklam yoktur. Yalnızca genişletilmiş DISC profili ücretlidir ve isteğe bağlıdır." },
         { "q": "Doğru cevaplar var mı?", "a": "Hayır. Her profil normaldir; olmak istediğiniz gibi değil, işte genellikle nasıl davranıyorsanız öyle yanıtlayın." },
         { "q": "Testi bütün ekip çözebilir mi?", "a": "Evet: herkes testi bağlantı üzerinden çözer, sonuçlar yönetici panelinde toplanır." }
       ],
@@ -1365,6 +1390,7 @@
     "nav.about": "Proje hakkında",
     "nav.contact": "İletişim",
     "nav.privacy": "Gizlilik",
+    "nav.services": "Hizmetler",
     "nav.results": "Sonuçların yorumlanması",
     "nav.compat": "Stillerin uyumu",
     "nav.colors": "DISC renkleri",

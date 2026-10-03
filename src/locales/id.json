@@ -519,7 +519,7 @@
         },
         {
           "q": "Apakah tes ini benar-benar gratis?",
-          "a": "Ya, sepenuhnya: tanpa pendaftaran, tanpa biaya tersembunyi, dan tanpa “laporan lengkap” berbayar. Hasil muncul di layar segera setelah soal terakhir; jika mau, Anda juga bisa menerimanya lewat email."
+          "a": "Ya: tes dan hasilnya gratis, tanpa pendaftaran dan tanpa biaya tersembunyi. Hasil muncul di layar segera setelah soal terakhir; jika mau, Anda juga bisa menerimanya lewat email. Di situs ini hanya ada satu layanan berbayar, yaitu profil DISC lengkap; layanan ini dijelaskan di bagian “Layanan” dan sepenuhnya opsional."
         },
         {
           "q": "Apa arti huruf D, I, S, C?",
@@ -630,6 +630,31 @@
         {
           "h": "Perubahan",
           "p": ["Pembaruan terakhir: 24 September 2026. Perubahan dalam pemrosesan data akan dicantumkan di halaman ini."]
+        }
+      ]
+    },
+    "services": {
+      "title": "Layanan — profil DISC lengkap",
+      "description": "Layanan berbayar disc-test.org: profil DISC lengkap seharga {price} USD. Tes dan hasilnya tetap gratis.",
+      "h1": "Layanan",
+      "lead": "Tes DISC dan hasilnya gratis di situs ini. Bagi yang menginginkan analisis lebih mendalam, tersedia versi lengkap berbayar.",
+      "name": "Profil DISC lengkap",
+      "text": "Analisis yang lebih mendalam atas profil DISC Anda berdasarkan tes yang telah Anda kerjakan. Profil lengkap tersedia bagi pengguna yang telah membayar layanan ini.",
+      "priceLabel": "Harga",
+      "price": "{price} USD",
+      "currency": "USD",
+      "sections": [
+        {
+          "h": "Cara menerimanya",
+          "p": ["Profil lengkap dikirim lewat email ke alamat yang Anda cantumkan saat pembayaran, paling lambat 24 jam setelah pembayaran."]
+        },
+        {
+          "h": "Yang tetap gratis",
+          "p": ["Tes itu sendiri, hasil di layar dan email hasil, halaman enam belas profil, serta versi PDF tes untuk dicetak tetap gratis dan tidak memerlukan pendaftaran. Profil lengkap hanya dibeli jika Anda menginginkannya."]
+        },
+        {
+          "h": "Pertanyaan tentang layanan",
+          "p": ["Jika Anda punya pertanyaan tentang profil lengkap atau pembayaran, tulis kepada kami melalui formulir “{contact}” — balasan akan dikirim ke email yang Anda cantumkan. Data pemilik situs tercantum di bagian bawah setiap halaman."]
         }
       ]
     },
@@ -1178,7 +1203,7 @@
         {
           "h": "Siapa pengelola situs ini",
           "p": [
-            "Situs ini dikelola oleh redaksi disc-test.org: kami menulis teks, memelihara kode, dan membalas email yang masuk. Proyek ini independen dan nonkomersial: tesnya gratis, tanpa pendaftaran, tanpa iklan, dan tanpa “laporan lengkap” berbayar. Kami tidak menjual pelatihan ataupun sertifikat dan tidak berafiliasi dengan Wiley (DiSC®), TTI Success Insights, maupun pemilik merek dagang lainnya.",
+            "Situs ini dikelola oleh redaksi disc-test.org: kami menulis teks, memelihara kode, dan membalas email yang masuk. Proyek ini independen: tes dan hasilnya gratis, tanpa pendaftaran dan tanpa iklan. Satu-satunya layanan berbayar adalah profil DISC lengkap (bagian “Layanan”). Kami tidak menjual pelatihan ataupun sertifikat dan tidak berafiliasi dengan Wiley (DiSC®), TTI Success Insights, maupun pemilik merek dagang lainnya.",
             "Kami bertanggung jawab atas semua yang dipublikasikan di situs ini. Jika Anda menemukan kesalahan dalam teks, terjemahan yang kurang tepat, atau ketidaksesuaian antara uraian metode dan cara hasil dihitung, hubungi kami: kami akan memperbaikinya dan memperbarui tanggal perubahan."
           ]
         },
@@ -1199,7 +1224,7 @@
       "faqTitle": "Sekilas tentang tes",
       "faq": [
         { "q": "Berapa lama tes ini?", "a": "Sekitar sepuluh menit: 24 soal, masing-masing berisi empat pernyataan." },
-        { "q": "Apakah tes ini gratis?", "a": "Ya, sepenuhnya: tanpa pendaftaran, tanpa iklan, dan tanpa “laporan lengkap” berbayar." },
+        { "q": "Apakah tes ini gratis?", "a": "Ya: tes dan hasilnya gratis, tanpa pendaftaran dan tanpa iklan. Hanya profil DISC lengkap yang berbayar, dan itu opsional." },
         { "q": "Apakah ada jawaban yang benar?", "a": "Tidak. Setiap profil itu wajar; jawablah sesuai cara Anda biasanya bersikap di tempat kerja, bukan seperti yang Anda inginkan." },
         { "q": "Bisakah tes ini diikuti oleh seluruh tim?", "a": "Bisa: setiap orang mengerjakan tes melalui tautan, lalu hasilnya dihimpun di panel admin." }
       ],
@@ -1372,6 +1397,7 @@
     "nav.about": "Tentang proyek",
     "nav.contact": "Kontak",
     "nav.privacy": "Privasi",
+    "nav.services": "Layanan",
     "nav.results": "Cara membaca hasil",
     "nav.compat": "Kecocokan gaya",
     "nav.colors": "Warna DISC",
