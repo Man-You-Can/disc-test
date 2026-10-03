@@ -21,6 +21,9 @@ const appIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><
 run(appIcon, path.join(OUTD, 'apple-touch-icon.png'), 180, 180);
 run(appIcon, path.join(OUTD, 'icon-192.png'), 192, 192);
 run(appIcon, path.join(OUTD, 'icon-512.png'), 512, 512);
+// Картинка профиля бота в Telegram: квадрат без прозрачных углов (Telegram сам обрезает его по кругу), точки чуть мельче, чтобы до края круга оставался запас
+const botAvatar = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024"><rect width="1024" height="1024" fill="${C.ink}"/>${dots(512, 512, 131, 168)}</svg>`;
+run(botAvatar, path.join(ROOT, 'backend', 'telegram-bot', 'avatar.png'), 1024, 1024);
 // favicon-120.png — Яндекс рекомендует PNG 120×120 для показа в поиске
 run(favicon, path.join(OUTD, 'favicon-120.png'), 120, 120);
 // favicon.ico — классический ICO с BMP-картинками 16, 32 и 48 px: PNG внутри ICO робот Яндекса не читал («Файл favicon не найден»)

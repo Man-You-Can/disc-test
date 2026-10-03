@@ -13,6 +13,7 @@ backend/apps-script/Code.gs  сгенерированный скрипт — в�
 scripts/test-apps-script.js  проверка скрипта без Google
 src/telegram-bot.template.js  шаблон бота в Telegram (отдельный проект Google Apps Script, только русский)
 backend/telegram-bot/Code.gs  сгенерированный скрипт бота — вставляется в script.google.com
+backend/telegram-bot/avatar.png  картинка профиля бота (1024×1024, рисует scripts/make-assets.js)
 scripts/test-telegram-bot.js  проверка бота без Google и Telegram
 src/template.html     шаблон страницы теста (вёрстка + логика), общий для всех языков
 src/page.html         шаблон контентных страниц («Что такое DISC», профили, расшифровка, совместимость, цвета, команда, DISC и MBTI, PDF, FAQ, «О проекте», «Конфиденциальность», «Обратная связь»)
@@ -179,7 +180,7 @@ node scripts/make-pdf.js ru de    # только указанные
 
 ### Как развернуть (один раз, около 10 минут)
 
-1. В Telegram откройте [@BotFather](https://t.me/BotFather) → `/newbot`. Имя — например `DISC Test`, адрес — любой свободный, оканчивающийся на `bot` (например `disc_test_org_bot`). BotFather пришлёт **токен** вида `1234567890:AA…` — это пароль от бота, не публикуйте его и не вставляйте в код. Картинку можно поставить командой `/setuserpic` (подойдёт `docs/icon-512.png`).
+1. В Telegram откройте [@BotFather](https://t.me/BotFather) → `/newbot`. Имя — например `DISC Test`, адрес — любой свободный, оканчивающийся на `bot` (например `disc_test_org_bot`). BotFather пришлёт **токен** вида `1234567890:AA…` — это пароль от бота, не публикуйте его и не вставляйте в код. Картинка профиля — `backend/telegram-bot/avatar.png`: команда `/setuserpic`, выбрать бота, отправить файл как фото (рисуется в `scripts/make-assets.js`).
 2. Откройте https://script.google.com → **Новый проект** (отдельный от проекта с письмами). Замените содержимое `Code.gs` содержимым `backend/telegram-bot/Code.gs`, сохраните (⌘S).
 3. **Настройки проекта** (шестерёнка слева) → **Свойства скрипта** → добавьте свойство `BOT_TOKEN` со значением-токеном.
 4. **Развернуть → Новое развёртывание → тип «Веб-приложение»**: «Выполнять от имени» — *Я*; «У кого есть доступ» — *Все*. Нажмите **Развернуть**, разрешите скрипту обращаться к внешним сервисам, скопируйте **URL веб-приложения** (`https://script.google.com/macros/s/…/exec`).
