@@ -15,12 +15,14 @@
 - Иконки и og-картинки: `node scripts/make-assets.js` (после смены `title` в локалях); шрифты: `node scripts/fetch-fonts.js` (только при смене набора шрифтов).
 - Локальный просмотр: `node scripts/serve.js` (http://localhost:8765) или конфигурация `disc-static` в `.claude/launch.json`. У сервера есть заглушки `POST /mock-send` и `/mock-fail` для проверки отправки писем.
 - Серверный скрипт (письмо с результатом + база результатов в Google Таблице): `node scripts/test-apps-script.js` проверяет `backend/apps-script/Code.gs` без Google.
+- Бот в Telegram (справочный, только русский; отдельный проект Apps Script): шаблон `src/telegram-bot.template.js` → `backend/telegram-bot/Code.gs` при сборке; `node scripts/test-telegram-bot.js` проверяет его без Google и Telegram. Токен бота в репозиторий не попадает (свойства скрипта).
 - Проверка перед публикацией: валидатор локалей, сборка, проверка внутренних ссылок (скрипт в журнале от 2026-09-07 в PROJECT.md), просмотр в браузере.
 - Коммиты от имени `Man-You-Can <armenman@gmail.com>`, в конце сообщения `Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>`.
 - Не вести две сессии Claude в этой папке одновременно: они затирают правки друг друга.
 
 ## Что требует действий заказчика (нельзя сделать без его аккаунтов)
 - Развернуть Google Apps Script (письма с результатом, база результатов в Google Таблице, письма с формы обратной связи) и вписать `sendEndpoint`/`sendToken` в `site.config.json` (README → «Письмо с результатом и база результатов»). Пока они пусты, письма не отправляются, результаты в базу не записываются, а форма обратной связи открывает почтовый клиент посетителя.
+- Создать бота в @BotFather и развернуть `backend/telegram-bot/Code.gs` (README → «Бот в Telegram»); после смены цены или реквизитов — обновить код и снова выполнить `setup`.
 - Завести почтовый ящик `info@disc-test.org` (адрес формы обратной связи, ключ `feedbackEmail` в `site.config.json`).
 - Google Search Console, Яндекс Вебмастер, Bing Webmaster: подтвердить домен, отправить `https://disc-test.org/sitemap.xml`.
 - Аналитика (Яндекс.Метрика или GA4); после подключения обновить тексты `consent.*` и страницу «Конфиденциальность» на 14 языках.

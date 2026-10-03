@@ -651,4 +651,16 @@ const gs = gsTpl
   .replace('__BLOCK_KEYS__', BLOCK_KEYS).replace('__DATA__', () => JSON.stringify(mailData));
 fs.mkdirSync(path.join(ROOT, 'backend', 'apps-script'), { recursive: true });
 fs.writeFileSync(path.join(ROOT, 'backend', 'apps-script', 'Code.gs'), gs);
-console.log(`Built ${locales.length} languages, ${pages.length} pages (root = ${def.lang}) → docs/ (${locales.map(L => L.lang).join(', ')}); backend/apps-script/Code.gs${cfg.sendEndpoint ? '' : ' (sendEndpoint не задан: письма не отправляются)'}${feedbackEmail ? '' : ' (feedbackEmail не задан: страницы /contact/ нет)'}`);
+// Бот в Telegram (отдельный проект Apps Script, только русский): цена, реквизиты и адрес для вопросов — из тех же настроек, что и сайт.
+// Собирается, когда есть всё, на что бот ссылается: русская версия с офертой, цена в рублях, ИНН и страница обратной связи.
+const ruL = locales.find(L => L.lang === 'ru');
+const hasBot = !!(ruL && hasOffer(ruL) && servicePrices.RUB && legalInn && feedbackEmail);
+if (hasBot) {
+  const bot = fs.readFileSync(path.join(SRC, 'telegram-bot.template.js'), 'utf8')
+    .replace('__SITE_URL__', siteUrl).replace('__PRICE_RUB__', String(servicePrices.RUB)).replace('__CONTACT_EMAIL__', feedbackEmail)
+    .replace('__SERVICE_NAME__', () => JSON.stringify(ruL.content.services.name))
+    .replace('__LEGAL__', () => JSON.stringify(ruL.ui.legal.replace('{inn}', legalInn).split(' · ').join('\n')));
+  fs.mkdirSync(path.join(ROOT, 'backend', 'telegram-bot'), { recursive: true });
+  fs.writeFileSync(path.join(ROOT, 'backend', 'telegram-bot', 'Code.gs'), bot);
+}
+console.log(`Built ${locales.length} languages, ${pages.length} pages (root = ${def.lang}) → docs/ (${locales.map(L => L.lang).join(', ')}); backend/apps-script/Code.gs${hasBot ? ', backend/telegram-bot/Code.gs' : ''}${cfg.sendEndpoint ? '' : ' (sendEndpoint не задан: письма не отправляются)'}${feedbackEmail ? '' : ' (feedbackEmail не задан: страницы /contact/ нет)'}`);
