@@ -64,7 +64,8 @@ function t(key, vars){ var s = L.ui[key]; if(s==null) s = key; if(vars) s = s.re
 var MEM = {};
 function lsGet(k){ try{ var v = localStorage.getItem(k); if(v!=null) return JSON.parse(v); }catch(e){} return Object.prototype.hasOwnProperty.call(MEM,k) ? MEM[k] : null; }
 function lsSet(k,v){ MEM[k]=v; try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
-function langHref(code){ return ROOT_REL + (LANG_PATH[code]||'') + SUBPATH + location.hash; }
+var PAGE_LANGS = __PAGE_LANGS_JSON__; /* языки, в которых есть эта страница (null — во всех); в остальных ссылка ведёт на главную языка */
+function langHref(code){ return ROOT_REL + (LANG_PATH[code]||'') + (PAGE_LANGS && PAGE_LANGS.indexOf(code)<0 ? '' : SUBPATH) + location.hash; }
 __COMMON_JS__
 initCommon({L:L, t:t, esc:esc, lsGet:lsGet, lsSet:lsSet, langHref:langHref, $:$, langMeta:LANG_META, langPath:LANG_PATH, privacyHref:ROOT_REL+(LANG_PATH[L.lang]||'')+'privacy/'});
 __PAGE_JS__

@@ -5,6 +5,9 @@ const fs = require('fs'), path = require('path');
 const dir = path.join(__dirname, '..', 'src', 'locales');
 const ref = JSON.parse(fs.readFileSync(path.join(dir, 'ru.json'), 'utf8'));
 const files = process.argv.slice(2).length ? process.argv.slice(2) : fs.readdirSync(dir).filter(f => f.endsWith('.json') && f !== 'ru.json');
+// Разделы, которые есть не во всех языках: в эталоне они есть, в остальных локалях могут отсутствовать
+// (страница «Услуги» строится только там, где есть content.services). Если раздел в локали есть — проверяется как обычно.
+const OPTIONAL = ['.content.services', '.ui.nav.services'];
 let failed = 0;
 function ph(s){ return (String(s).match(/\{[a-z]+\}|<\/?b>|<br>|%/g) || []).sort().join(' '); }
 function walk(a, b, p, errs){
@@ -14,7 +17,7 @@ function walk(a, b, p, errs){
     a.forEach((x, i) => walk(x, b[i], p + '[' + i + ']', errs));
   } else if (a && typeof a === 'object') {
     if (!b || typeof b !== 'object' || Array.isArray(b)) return errs.push(p + ': expected object');
-    for (const k of Object.keys(a)) { if (!(k in b)) errs.push(p + '.' + k + ': missing'); else walk(a[k], b[k], p + '.' + k, errs); }
+    for (const k of Object.keys(a)) { if (!(k in b)) { if (!OPTIONAL.includes(p + '.' + k)) errs.push(p + '.' + k + ': missing'); } else walk(a[k], b[k], p + '.' + k, errs); }
     for (const k of Object.keys(b)) if (!(k in a)) errs.push(p + '.' + k + ': unexpected key');
   } else if (typeof a === 'string') {
     if (typeof b !== 'string') return errs.push(p + ': expected string');

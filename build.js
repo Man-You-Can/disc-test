@@ -26,6 +26,10 @@ const feedbackEmail = String(cfg.feedbackEmail || '').trim().replace(/['\\<>"]/g
 // Реквизиты владельца в подвале (требование платёжной системы): имя и подпись к ИНН — в локали (ui.legal), номер — в legalInn; пустой номер — строки нет
 const legalInn = String(cfg.legalInn || '').replace(/\D/g, '');
 const legalHtml = L => legalInn ? `<div class="legal">${esc(L.ui.legal.replace('{inn}', legalInn))}</div>` : '';
+// Платная услуга (страница /services/): строится только для языков, в локали которых есть content.services (сейчас — русский);
+// цена — servicePriceRub в site.config.json, пустое значение или 0 убирает страницу и пункт меню
+const servicePrice = Math.round(Number(cfg.servicePriceRub) || 0);
+const hasServices = L => !!(servicePrice && L.content.services && L.ui['nav.services']);
 const MAX_CONTACT_BYTES = 10 * 1024 * 1024; // общий размер вложений одного сообщения (проверяется и в браузере, и в Apps Script)
 const jsStr = s => JSON.stringify(String(s == null ? '' : s)).replace(/</g, '\\u003c');
 const graphJs = fs.readFileSync(path.join(SRC, 'graph.js'), 'utf8').replace(/\nif \(typeof module[^\n]*\n?$/, '\n');
@@ -40,12 +44,13 @@ const styleBlock = (tpl.match(/<style>[\s\S]*?<\/style>/) || [''])[0];
 const NAV_ITEMS = [['nav.test', ''], ['nav.disc', 'disc/'], ['nav.styles', 'styles/'], ['nav.profiles', 'profiles/'], ['nav.results', 'results/'], ['nav.compat', 'compatibility/'], ['nav.faq', 'faq/']];
 // Подвал: ссылки на все материалы о DISC (сквозная перелинковка контентных страниц)
 const MATERIALS = [['nav.disc', 'disc/'], ['nav.styles', 'styles/'], ['nav.profiles', 'profiles/'], ['nav.results', 'results/'], ['nav.compat', 'compatibility/'], ['nav.colors', 'colors/'], ['nav.teams', 'teams/'], ['nav.mbti', 'disc-vs-mbti/'], ['nav.pdf', 'pdf/'], ['nav.faq', 'faq/']];
+const navItems = L => NAV_ITEMS.concat(hasServices(L) ? [['nav.services', 'services/']] : []);
 const materialsHtml = (L, base, cur) => `<nav class="materials" aria-label="${esc(L.ui['nav.materials'])}"><span class="mlabel">${esc(L.ui['nav.materials'])}</span>` + MATERIALS.map(([k, sub]) => sub === cur ? `<span aria-current="page">${esc(L.ui[k])}</span>` : `<a href="${base + sub}">${esc(L.ui[k])}</a>`).join('') + `</nav>`;
 const relRoot = (L, sub) => { const depth = (pathOf(L.lang) + sub).split('/').length - 1; return depth ? '../'.repeat(depth) : './'; };
 const PAIRS = ['DD', 'DI', 'DS', 'DC', 'II', 'IS', 'IC', 'SS', 'SC', 'CC'], pairSlug = k => (k[0] + '-' + k[1]).toLowerCase();
 const ltr = str => `<span dir="ltr">${str}</span>`; // латиница внутри арабского текста: без изоляции «D · I» читается как «I · D»
 const FOOT_ITEMS = [['nav.about', 'about/']].concat(feedbackEmail ? [['nav.contact', 'contact/']] : []).concat([['nav.privacy', 'privacy/']]);
-const footLinks = (L, base) => FOOT_ITEMS.map(([k, sub]) => `<a href="${base + sub}">${esc(L.ui[k])}</a>`).join(' · ');
+const footLinks = (L, base) => FOOT_ITEMS.slice(0, 1).concat(hasServices(L) ? [['nav.services', 'services/']] : [], FOOT_ITEMS.slice(1)).map(([k, sub]) => `<a href="${base + sub}">${esc(L.ui[k])}</a>`).join(' · ');
 const PROFILE_KEYS = ['D', 'DI', 'DC', 'DS', 'I', 'ID', 'IS', 'IC', 'S', 'SI', 'SC', 'SD', 'C', 'CD', 'CS', 'CI'];
 // Источники к странице «Что такое DISC». Библиографические описания одинаковы во всех языках
 // (названия работ приводятся на языке оригинала), поэтому живут здесь, а не в локалях;
@@ -213,7 +218,7 @@ for (const L of locales) {
   const f = FONTS[L.lang] || FONTS.default;
   const isRoot = L.lang === def.lang, rootRel = isRoot ? './' : '../';
   const href = x => rootRel + pathOf(x.lang);
-  const navHtml = NAV_ITEMS.map(([k, sub]) => `<a href="${rootRel + pathOf(L.lang) + sub}"${sub === '' ? ' aria-current="page"' : ''}>${esc(L.ui[k])}</a>`).join('');
+  const navHtml = navItems(L).map(([k, sub]) => `<a href="${rootRel + pathOf(L.lang) + sub}"${sub === '' ? ' aria-current="page"' : ''}>${esc(L.ui[k])}</a>`).join('');
   const footHtml = footLinks(L, rootRel + pathOf(L.lang));
   const introBuilt = introHTML({ L, t: tFor(L), esc: escFull, KEYS, colorVar: k => 'var(--' + k.toLowerCase() + ')', progDone: 0, lastDate: '',
     links: { styles: rootRel + pathOf(L.lang) + 'styles/', profiles: rootRel + pathOf(L.lang) + 'profiles/', pdf: rootRel + pathOf(L.lang) + 'pdf/', results: rootRel + pathOf(L.lang) + 'results/', faq: rootRel + pathOf(L.lang) + 'faq/', profile: k => rootRel + pathOf(L.lang) + 'profiles/' + k.toLowerCase() + '/' } });
@@ -308,19 +313,21 @@ function writeContentPage(L, sub, opts) {
   const t = tFor(L), f = FONTS[L.lang] || FONTS.default;
   const depth = (pathOf(L.lang) + sub).split('/').length - 1, rootRel = depth ? '../'.repeat(depth) : './';
   const base = rootRel + pathOf(L.lang), homeHref = base || './';
+  // opts.langs — локали, в которых есть эта страница (по умолчанию все): в остальных языках переключатель ведёт на главную, hreflang на них не ставится
+  const own = opts.langs || locales, subOf = x => own.includes(x) ? sub : '';
   const switcher = `<div class="langsel" id="langSel">` +
     `<button type="button" class="langbtn" id="langBtn" aria-haspopup="listbox" aria-expanded="false" aria-label="${esc(L.ui.langLabel)}: ${esc(L.name)}">${flag(L.lang)}<span class="langname">${esc(L.name)}</span><svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5l3.5 3.5 3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>` +
     `<ul class="langmenu" id="langMenu" role="listbox" aria-label="${esc(L.ui.langLabel)}" style="--lrows:${LANG_ROWS}" hidden>` +
-    locales.map(x => `<li role="none"><a role="option" href="${rootRel + pathOf(x.lang) + sub}" hreflang="${hl(x.lang)}" lang="${hl(x.lang)}" data-lang="${x.lang}" aria-selected="${x.lang === L.lang}" tabindex="-1">${flag(x.lang)}<span>${esc(x.name)}</span></a></li>`).join('') + `</ul></div>`;
-  const links = locales.map(x => `<a href="${rootRel + pathOf(x.lang) + sub}" hreflang="${hl(x.lang)}" lang="${hl(x.lang)}" data-lang="${x.lang}"${x.lang === L.lang ? ' aria-current="page"' : ''}>${flag(x.lang)}<span>${esc(x.name)}</span></a>`).join('');
-  const navHtml = NAV_ITEMS.map(([k, s2]) => `<a href="${base + s2}"${opts.navKey === k ? ' aria-current="page"' : ''}>${esc(L.ui[k])}</a>`).join('');
+    locales.map(x => `<li role="none"><a role="option" href="${rootRel + pathOf(x.lang) + subOf(x)}" hreflang="${hl(x.lang)}" lang="${hl(x.lang)}" data-lang="${x.lang}" aria-selected="${x.lang === L.lang}" tabindex="-1">${flag(x.lang)}<span>${esc(x.name)}</span></a></li>`).join('') + `</ul></div>`;
+  const links = locales.map(x => `<a href="${rootRel + pathOf(x.lang) + subOf(x)}" hreflang="${hl(x.lang)}" lang="${hl(x.lang)}" data-lang="${x.lang}"${x.lang === L.lang ? ' aria-current="page"' : ''}>${flag(x.lang)}<span>${esc(x.name)}</span></a>`).join('');
+  const navHtml = navItems(L).map(([k, s2]) => `<a href="${base + s2}"${opts.navKey === k ? ' aria-current="page"' : ''}>${esc(L.ui[k])}</a>`).join('');
   const footHtml = footLinks(L, base);
   const pageFiles = [`src/locales/${L.lang}.json`, 'src/page.html', 'build.js'].concat(opts.files || []);
   const updated = contentDate(L.lang + ':' + sub, [opts.title, opts.description, opts.content].join('\n'), pageFiles), published = lmNew[L.lang + ':' + sub].p;
   const updatedHtml = opts.noDate ? '' : `<p class="updated"><time datetime="${updated}">${esc(t('pages.updated', { date: fmtDate(updated, L) }))}</time></p>`;
   const crumbs = [{ name: L.ui['nav.home'], href: homeHref }].concat(opts.crumbs || []);
   const crumbsHtml = crumbs.map((c, i) => i === crumbs.length - 1 ? `<span aria-current="page">${esc(c.name)}</span>` : `<a href="${c.href}">${esc(c.name)}</a><span>›</span>`).join('');
-  const hreflang = locales.flatMap(x => hls(x.lang).map(h => `<link rel="alternate" hreflang="${h}" href="${urlOf(x.lang) + sub}">`)).concat([`<link rel="alternate" hreflang="x-default" href="${siteUrl}/${sub}">`]).join('\n');
+  const hreflang = own.length < 2 ? '' : own.flatMap(x => hls(x.lang).map(h => `<link rel="alternate" hreflang="${h}" href="${urlOf(x.lang) + sub}">`)).concat(own.includes(def) ? [`<link rel="alternate" hreflang="x-default" href="${siteUrl}/${sub}">`] : []).join('\n');
   const ld = JSON.stringify([
     { '@context': 'https://schema.org', '@type': opts.ldType || (opts.article ? 'Article' : 'WebPage'), headline: opts.article ? opts.title : undefined, name: opts.title, description: opts.description, url: urlOf(L.lang) + sub, inLanguage: hl(L.lang),
       datePublished: opts.article ? (published < updated ? published : updated) : undefined, dateModified: opts.article ? updated : undefined, author: opts.article ? { '@type': 'Organization', name: 'DISC Test', url: siteUrl + '/' } : undefined,
@@ -336,7 +343,7 @@ function writeContentPage(L, sub, opts) {
     .replace(/__TITLE__/g, esc(opts.title)).replace(/__DESC__/g, esc(opts.description))
     .replace('__ROBOTS__', opts.noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large')
     .replace(/__CANONICAL__/g, urlOf(L.lang) + sub).replace(/__OG_LOCALE__/g, OG_LOCALE[L.lang] || L.lang)
-    .replace(/__OG_ALTERNATES__/g, () => locales.filter(x => x !== L).map(x => `<meta property="og:locale:alternate" content="${OG_LOCALE[x.lang] || x.lang}">`).join('\n'))
+    .replace(/__OG_ALTERNATES__/g, () => own.filter(x => x !== L).map(x => `<meta property="og:locale:alternate" content="${OG_LOCALE[x.lang] || x.lang}">`).join('\n'))
     .replace(/__OG_IMAGE__/g, opts.ogImage || `${siteUrl}/og/${L.lang}.png`).replace(/__HREFLANG__/g, hreflang).replace(/__HEAD_EXTRA__/g, () => headExtra)
     .replace(/__ROOT_REL__/g, rootRel).replace('__JSON_LD__', () => ld)
     .replace(/__FONTS_HEAD__/g, () => fontsHead(f, L)).replace('__STYLE__', () => styleBlock.replace(/__FONT_HEAD__/g, f.head).replace(/__FONT_BODY__/g, f.body))
@@ -347,12 +354,12 @@ function writeContentPage(L, sub, opts) {
     .replace('__CTA_FLOAT__', () => opts.content.includes('class="cta cta-top') ? `<a class="btn ctafloat no-print" id="ctaFloat" href="${homeHref}" data-goal="cta-float">${esc(t('cta.button'))}</a>` : '')
     .replace(/__FOOTER__/g, esc(L.ui.footer)).replace(/__PRIVACY__/g, esc(L.ui.privacy)).replace('__LEGAL__', () => legalHtml(L)).replace('__LANG_LINKS__', () => links)
     .replace('__LOCALE_JSON__', () => JSON.stringify(miniL).replace(/</g, '\\u003c'))
-    .replace(/__SUBPATH__/g, sub)
+    .replace(/__SUBPATH__/g, sub).replace('__PAGE_LANGS_JSON__', () => opts.langs ? JSON.stringify(own.map(x => x.lang)) : 'null')
     .replace('__LANG_PATH_JSON__', () => JSON.stringify(LANG_PATH)).replace('__LANG_META_JSON__', () => JSON.stringify(LANG_META).replace(/</g, '\\u003c'))
     .replace('__COMMON_JS__', () => commonJs).replace('__PAGE_JS__', () => opts.pageJs || '');
   fs.mkdirSync(path.join(OUT, pathOf(L.lang), sub), { recursive: true });
   fs.writeFileSync(path.join(OUT, pathOf(L.lang), sub, 'index.html'), html);
-  if (!opts.noindex) pages.push({ lang: L.lang, sub, date: updated });
+  if (!opts.noindex) pages.push({ lang: L.lang, sub, date: updated, langs: own });
 }
 
 for (const L of locales) {
@@ -523,6 +530,14 @@ for (const L of locales) {
     content: `<div class="eyebrow">DISC</div><h1>${escFull(pd.h1)}</h1><p class="lead">${escFull(pd.lead)}</p>` + download + ctaTop(t, '../', 'cta.inlinePdf') + sectionsHtml(pd.sections) + download + ctaBlock(L, t, '../') + seeAlso('../', 'nav.pdf'),
     ldExtra: pi ? [{ '@context': 'https://schema.org', '@type': 'DigitalDocument', name: pd.title, url: `${siteUrl}/pdf/${pi.file}`, encodingFormat: 'application/pdf', inLanguage: hl(L.lang), isAccessibleForFree: true }] : [] });
   if (pi) extraUrls.push({ lang: L.lang, loc: `${siteUrl}/pdf/${pi.file}`, date: contentDate(L.lang + ':pdf-file', fs.readFileSync(path.join(ASSETS, 'pdf', pi.file)).toString('base64'), [`src/assets/pdf/${pi.file}`]) });
+  // /services/ — платная услуга: только в языках, где есть content.services (hasServices)
+  if (hasServices(L)) {
+    const sv = C.services, fill = str => String(str).replace('{price}', servicePrice);
+    writeContentPage(L, 'services/', { navKey: 'nav.services', langs: locales.filter(hasServices), title: fill(sv.title), description: fill(sv.description), crumbs: [{ name: t('nav.services') }],
+      content: (`<div class="eyebrow">DISC</div><h1>${escFull(sv.h1)}</h1><p class="lead">${escFull(sv.lead)}</p>` +
+        `<section class="service"><div><h2>${escFull(sv.name)}</h2><p>${escFull(sv.text)}</p></div><p class="price"><small>${escFull(sv.priceLabel)}</small>${escFull(fill(sv.price))}</p></section>` +
+        sectionsHtml(sv.sections)).replace('{contact}', feedbackEmail ? `<a href="../contact/">${escFull(t('nav.contact'))}</a>` : escFull(t('nav.contact'))) });
+  }
   // /contact/ — форма обратной связи (только при заданном feedbackEmail); разметка из src/contact.js, там же логика страницы
   if (feedbackEmail) {
     const ct = C.contact, maxLabel = '10 ' + (L.ui['contact.mb'] || 'MB');
@@ -551,14 +566,14 @@ fs.writeFileSync(path.join(OUT, '.nojekyll'), '');
 // Clean-param (Яндекс): метка ?ref=<сеть> в ссылках «Поделиться типом» не меняет страницу — робот не обходит такие адреса
 // как отдельные; Google директиву игнорирует, ему хватает canonical (аудит 3, п. 5)
 fs.writeFileSync(path.join(OUT, 'robots.txt'), `User-agent: *\nAllow: /\nClean-param: ref\nSitemap: ${siteUrl}/sitemap.xml\n`);
-const altFor = sub => locales.flatMap(x => hls(x.lang).map(h => `<xhtml:link rel="alternate" hreflang="${h}" href="${urlOf(x.lang) + sub}"/>`)).join('') + `<xhtml:link rel="alternate" hreflang="x-default" href="${siteUrl}/${sub}"/>`;
+const altFor = (sub, own = locales) => own.length < 2 ? '' : own.flatMap(x => hls(x.lang).map(h => `<xhtml:link rel="alternate" hreflang="${h}" href="${urlOf(x.lang) + sub}"/>`)).join('') + (own.includes(def) ? `<xhtml:link rel="alternate" hreflang="x-default" href="${siteUrl}/${sub}"/>` : '');
 // Sitemap по языкам: sitemap.xml — индекс, sitemap-<язык>.xml — страницы и PDF одного языка.
 // В Search Console по каждому файлу видно, сколько адресов языка проиндексировано.
 const maxDate = ds => ds.reduce((a, b) => (b > a ? b : a), '');
 const smIndex = [];
 for (const L of locales) {
   const own = pages.filter(pg => pg.lang === L.lang), files = extraUrls.filter(u => u.lang === L.lang);
-  const urls = own.map(pg => `  <url><loc>${urlOf(pg.lang) + pg.sub}</loc><lastmod>${pg.date}</lastmod>${altFor(pg.sub)}</url>`)
+  const urls = own.map(pg => `  <url><loc>${urlOf(pg.lang) + pg.sub}</loc><lastmod>${pg.date}</lastmod>${altFor(pg.sub, pg.langs)}</url>`)
     .concat(files.map(u => `  <url><loc>${u.loc}</loc><lastmod>${u.date}</lastmod></url>`));
   fs.writeFileSync(path.join(OUT, `sitemap-${L.lang}.xml`), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${urls.join('\n')}\n</urlset>\n`);
   smIndex.push(`  <sitemap><loc>${siteUrl}/sitemap-${L.lang}.xml</loc><lastmod>${maxDate(own.map(p => p.date).concat(files.map(u => u.date)))}</lastmod></sitemap>`);

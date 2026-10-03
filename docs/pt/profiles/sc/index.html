@@ -191,6 +191,12 @@ html[lang=ar] body,html[lang=hi] body{font-size:17px;line-height:1.65}
 .cta p{margin:0;opacity:.85;font-size:14px}
 .cta .btn{background:var(--btn-ink);color:var(--btn);flex:none}
 .cta.invite{margin:0 0 24px}
+.service{display:flex;flex-wrap:wrap;align-items:center;gap:14px 28px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px 24px;margin:8px 0 30px}
+.service div{flex:1 1 300px}
+.service h2{margin:0 0 6px;font-size:20px}
+.service p{margin:0;color:var(--muted)}
+.service .price{flex:none;color:var(--ink);font-family:var(--font-head);font-weight:500;font-size:28px;line-height:1.1}
+.service .price small{display:block;font-family:var(--font-body);font-weight:400;font-size:13px;color:var(--muted);margin-bottom:4px}
 /* призыв сразу после вводного абзаца контентных страниц и плавающая кнопка на телефоне (аудит 3, п. 1) */
 .cta.cta-top{padding:14px 18px;margin:18px 0 26px;gap:10px 18px}
 .cta.cta-top p{flex:1 1 240px;font-size:15px;opacity:.9}
@@ -501,7 +507,8 @@ function t(key, vars){ var s = L.ui[key]; if(s==null) s = key; if(vars) s = s.re
 var MEM = {};
 function lsGet(k){ try{ var v = localStorage.getItem(k); if(v!=null) return JSON.parse(v); }catch(e){} return Object.prototype.hasOwnProperty.call(MEM,k) ? MEM[k] : null; }
 function lsSet(k,v){ MEM[k]=v; try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
-function langHref(code){ return ROOT_REL + (LANG_PATH[code]||'') + SUBPATH + location.hash; }
+var PAGE_LANGS = null; /* языки, в которых есть эта страница (null — во всех); в остальных ссылка ведёт на главную языка */
+function langHref(code){ return ROOT_REL + (LANG_PATH[code]||'') + (PAGE_LANGS && PAGE_LANGS.indexOf(code)<0 ? '' : SUBPATH) + location.hash; }
 /* Общие элементы всех страниц сайта (тест и контентные страницы): выпадающий список языков,
    запоминание выбранного языка, подсказка «Продолжить на …», уведомление о cookie и загрузка Яндекс.Метрики после согласия.
    Вставляется сборкой в каждую страницу; вызывается как initCommon({L, t, esc, lsGet, lsSet, langHref, $}). */
