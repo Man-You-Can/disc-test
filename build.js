@@ -27,10 +27,9 @@ const feedbackEmail = String(cfg.feedbackEmail || '').trim().replace(/['\\<>"]/g
 const legalInn = String(cfg.legalInn || '').replace(/\D/g, '');
 const legalHtml = L => legalInn ? `<div class="legal">${esc(L.ui.legal.replace('{inn}', legalInn))}</div>` : '';
 // Платная услуга (страницы /services/, /offer/, /refund/): строятся только для языков, в локали которых есть content.services,
-// content.offer и content.refund (сейчас — русский); legalOgrnip — ОГРНИП для оферты, пустое значение убирает его из текста;
+// content.offer и content.refund (сейчас — русский);
 // цена — servicePriceRub в site.config.json, пустое значение или 0 убирает страницу и пункт меню
 const servicePrice = Math.round(Number(cfg.servicePriceRub) || 0);
-const legalOgrnip = String(cfg.legalOgrnip || '').replace(/\D/g, '');
 const hasServices = L => !!(servicePrice && L.content.services && L.content.offer && L.content.refund && L.ui['nav.services']);
 const MAX_CONTACT_BYTES = 10 * 1024 * 1024; // общий размер вложений одного сообщения (проверяется и в браузере, и в Apps Script)
 const jsStr = s => JSON.stringify(String(s == null ? '' : s)).replace(/</g, '\\u003c');
@@ -533,25 +532,22 @@ for (const L of locales) {
     ldExtra: pi ? [{ '@context': 'https://schema.org', '@type': 'DigitalDocument', name: pd.title, url: `${siteUrl}/pdf/${pi.file}`, encodingFormat: 'application/pdf', inLanguage: hl(L.lang), isAccessibleForFree: true }] : [] });
   if (pi) extraUrls.push({ lang: L.lang, loc: `${siteUrl}/pdf/${pi.file}`, date: contentDate(L.lang + ':pdf-file', fs.readFileSync(path.join(ASSETS, 'pdf', pi.file)).toString('base64'), [`src/assets/pdf/${pi.file}`]) });
   // /services/, /offer/, /refund/ — платная услуга, публичная оферта и условия возврата: только в языках, где эти разделы есть (hasServices).
-  // В текстах подставляются {price}, {inn}, {seller} (исполнитель с ИНН и, если задан, ОГРНИП), {email}, {site} и ссылки {contact}, {privacy}, {offer}, {refund}
+  // В текстах подставляются {price}, {inn}, {seller} (исполнитель с ИНН), {email}, {site} и ссылки {contact}, {privacy}, {offer}, {refund}
   if (hasServices(L)) {
     const sv = C.services, of = C.offer, rf = C.refund, own = locales.filter(hasServices), fill = str => String(str).replace(/\{price\}/g, servicePrice);
     const link = (sub2, text) => `<a href="../${sub2}">${escFull(text)}</a>`;
-    const vars = { price: servicePrice, inn: legalInn, ogrnip: legalOgrnip, site: escFull(siteUrl),
-      seller: escFull(of.seller.replace('{inn}', legalInn) + (legalOgrnip ? of.sellerOgrnip.replace('{ogrnip}', legalOgrnip) : '')),
+    const vars = { price: servicePrice, inn: legalInn, site: escFull(siteUrl), seller: escFull(of.seller.replace('{inn}', legalInn)),
       email: feedbackEmail ? `<a href="mailto:${escFull(feedbackEmail)}">${escFull(feedbackEmail)}</a>` : '—',
       contact: feedbackEmail ? link('contact/', t('nav.contact')) : escFull(t('nav.contact')), privacy: link('privacy/', t('nav.privacy')),
       offer: link('offer/', of.linkText), refund: link('refund/', rf.linkText) };
     const fillHtml = html => html.replace(/\{(\w+)\}/g, (m, k) => k in vars ? vars[k] : m);
-    // без ОГРНИП строка с ним в списке реквизитов не выводится
-    const offerSecs = of.sections.map(sec => sec.ul ? Object.assign({}, sec, { ul: sec.ul.filter(x => legalOgrnip || !x.includes('{ogrnip}')) }) : sec);
     const svcCrumb = { name: t('nav.services'), href: '../services/', sub: 'services/' }, docLink = (sub2, d) => `<a href="../${sub2}">${escFull(d.h1)} ${arrow(L)}</a>`;
     writeContentPage(L, 'services/', { navKey: 'nav.services', langs: own, title: fill(sv.title), description: fill(sv.description), crumbs: [{ name: t('nav.services') }],
       content: fillHtml(`<div class="eyebrow">DISC</div><h1>${escFull(sv.h1)}</h1><p class="lead">${escFull(sv.lead)}</p>` +
         `<section class="service"><div><h2>${escFull(sv.name)}</h2><p>${escFull(sv.text)}</p></div><p class="price"><small>${escFull(sv.priceLabel)}</small>${escFull(sv.price)}</p></section>` +
         sectionsHtml(sv.sections)) + `<p class="seealso">${docLink('offer/', of)} · ${docLink('refund/', rf)}</p>` });
     writeContentPage(L, 'offer/', { navKey: 'nav.services', langs: own, title: of.title, description: of.description, crumbs: [svcCrumb, { name: of.h1 }],
-      content: fillHtml(`<div class="eyebrow">${escFull(t('nav.services'))}</div><h1>${escFull(of.h1)}</h1><p class="muted">${escFull(of.edition)}</p><p>${escFull(of.lead)}</p>` + sectionsHtml(offerSecs)) +
+      content: fillHtml(`<div class="eyebrow">${escFull(t('nav.services'))}</div><h1>${escFull(of.h1)}</h1><p class="muted">${escFull(of.edition)}</p><p>${escFull(of.lead)}</p>` + sectionsHtml(of.sections)) +
         `<p class="seealso">${docLink('refund/', rf)} · ${docLink('services/', sv)}</p>` });
     writeContentPage(L, 'refund/', { navKey: 'nav.services', langs: own, title: rf.title, description: rf.description, crumbs: [svcCrumb, { name: rf.h1 }],
       content: fillHtml(`<div class="eyebrow">${escFull(t('nav.services'))}</div><h1>${escFull(rf.h1)}</h1><p class="lead">${escFull(rf.lead)}</p>` + sectionsHtml(rf.sections)) +
