@@ -44,7 +44,8 @@ var SHEET_ID = '';                   // ID своей Google Таблицы (и�
 var SHEET_TITLE = 'DISC Test — результаты';  // название создаваемой таблицы
 var SHEET_NAME = 'Результаты';       // название листа
 var MAX_SAVES_PER_DAY = 2000;        // защита от заливки таблицы мусором
-var HEADERS = ['Получено', 'Дата теста', 'Имя', 'E-mail', 'Язык', 'Профиль', 'Название профиля', 'D', 'I', 'S', 'C', 'D %', 'I %', 'S %', 'C %', 'Письмо', 'Ссылка на отчёт', 'Код результата'];
+var HEADERS = ['Дата получения', 'Время получения', 'Дата теста', 'Время теста', 'Имя', 'E-mail', 'Язык', 'Профиль', 'Название профиля', 'D', 'I', 'S', 'C', 'D %', 'I %', 'S %', 'C %', 'Письмо', 'Ссылка на отчёт', 'Код результата'];
+var DATE_FORMAT = 'dd.mm.yyyy', TIME_FORMAT = 'hh:mm:ss';  // вид даты и времени в таблице (первые четыре столбца)
 var VERSION = 'DISC1';
 var KEYS = ['D', 'I', 'S', 'C'];
 var COLORS = { D: '#C9453D', I: '#D6961F', S: '#3A9A69', C: '#3B6FB6' };
@@ -183,9 +184,35 @@ function resultsSheet() {
     sheet.appendRow(HEADERS);
     sheet.getRange(1, 1, 1, HEADERS.length).setFontWeight('bold');
     sheet.setFrozenRows(1);
-    sheet.getRange('A:B').setNumberFormat('yyyy-mm-dd hh:mm');
-  }
+    formatDateColumns(sheet);
+  } else splitDateColumns(sheet);
   return sheet;
+}
+function formatDateColumns(sheet) {
+  sheet.getRange('A:A').setNumberFormat(DATE_FORMAT); sheet.getRange('B:B').setNumberFormat(TIME_FORMAT);
+  sheet.getRange('C:C').setNumberFormat(DATE_FORMAT); sheet.getRange('D:D').setNumberFormat(TIME_FORMAT);
+}
+/** Момент времени для таблицы: [дата, время] двумя числами (день и доля суток) в часовом поясе таблицы; не дата — как есть, время пустое. */
+function dateTimeCells(d, tz) {
+  if (Object.prototype.toString.call(d) !== '[object Date]' || isNaN(d.getTime())) return [d, ''];
+  var p = Utilities.formatDate(d, tz, 'yyyy-MM-dd-HH-mm-ss').split('-');
+  return [Date.UTC(+p[0], p[1] - 1, +p[2]) / 86400000 + 25569, (p[3] * 3600 + p[4] * 60 + +p[5]) / 86400];
+}
+/**
+ * Таблица, заведённая до 8 октября 2026: «Получено» и «Дата теста» занимали по одному столбцу (дата и время вместе).
+ * Делит каждый на дату и время. Вызывается при каждом обращении к листу; уже разделённую таблицу не трогает.
+ */
+function splitDateColumns(sheet) {
+  var h = sheet.getRange(1, 1, 1, 18).getValues()[0];
+  if (String(h[1]) !== 'Дата теста' && !(String(h[17]) === 'Код результата' && String(h[2]) !== 'Дата теста')) return false;
+  var n = sheet.getLastRow() - 1, tz = sheet.getParent().getSpreadsheetTimeZone();
+  var old = n > 0 ? sheet.getRange(2, 1, n, 2).getValues() : [];
+  sheet.insertColumnAfter(2); sheet.insertColumnAfter(1);
+  formatDateColumns(sheet);
+  if (n > 0) sheet.getRange(2, 1, n, 4).setValues(old.map(function (r) { return dateTimeCells(r[0], tz).concat(dateTimeCells(r[1], tz)); }));
+  sheet.getRange(1, 1, 1, 4).setValues([HEADERS.slice(0, 4)]);
+  sheet.getRange(1, 1, 1, HEADERS.length).setFontWeight('bold');
+  return true;
 }
 
 /** Записывает результат в таблицу; тот же код второй раз не дублируется. Возвращает {sheet, row, isNew} или null. */
@@ -203,10 +230,13 @@ function saveResult(r, lang) {
     cache.put(key, String(n + 1), 86400);
     var sc = score(r), c = classify(sc);
     var when = new Date(r.t); if (isNaN(when.getTime())) when = new Date();
-    sheet.appendRow([new Date(), when, cell(r.name), cell(r.email), lang, c.key, sheetProfileName(c.key, lang),
+    var tz = sheet.getParent().getSpreadsheetTimeZone();
+    sheet.appendRow(dateTimeCells(new Date(), tz).concat(dateTimeCells(when, tz), [cell(r.name), cell(r.email), lang, c.key, sheetProfileName(c.key, lang),
       sc.net.D, sc.net.I, sc.net.S, sc.net.C, pct(sc.net.D), pct(sc.net.I), pct(sc.net.S), pct(sc.net.C),
-      '', SITE_URL + '/' + lang + '/#r=' + r.code, r.code]);
-    return { sheet: sheet, row: sheet.getLastRow(), isNew: true };
+      '', SITE_URL + '/' + lang + '/#r=' + r.code, r.code]));
+    var row = sheet.getLastRow();
+    sheet.getRange(row, 1, 1, 4).setNumberFormats([[DATE_FORMAT, TIME_FORMAT, DATE_FORMAT, TIME_FORMAT]]);
+    return { sheet: sheet, row: row, isNew: true };
   } catch (err) { console.error('saveResult: ' + ((err && err.message) || err)); return null; }
   finally { try { lock.releaseLock(); } catch (e) {} }
 }
@@ -214,7 +244,7 @@ function saveResult(r, lang) {
 function sheetProfileName(key, lang) { var p = (DATA.en || DATA[lang] || {}).profiles; return (p && p[key] && p[key].name) || ''; }
 function noteMail(saved, text) { if (saved) try { saved.sheet.getRange(saved.row, HEADERS.indexOf('Письмо') + 1).setValue(text); } catch (err) {} }
 
-/** Запустите вручную в редакторе (Выполнить → setup): создаст таблицу заранее, покажет её адрес и адрес отправителя в журнале выполнения. */
+/** Запустите вручную в редакторе (Выполнить → setup): создаст таблицу заранее (а таблицу старого вида приведёт к нынешнему), покажет её адрес и адрес отправителя в журнале выполнения. */
 function setup() {
   var url = resultsSheet().getParent().getUrl();
   Logger.log('Таблица результатов: ' + url);

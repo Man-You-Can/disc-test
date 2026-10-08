@@ -14,21 +14,26 @@ function makeSheet(ss, name) {
   const sh = {
     rows, getName: () => name, setName: n => { name = n; return sh; }, getParent: () => ss, setFrozenRows: () => sh,
     appendRow: r => { rows.push(r.slice()); return sh; }, getLastRow: () => rows.length,
+    insertColumnAfter: n => { rows.forEach(r => r.splice(n, 0, '')); return sh; },
+    colFormats: {}, rowFormats: {},
     getRange: (row, col, nRows, nCols) => {
-      if (typeof row === 'string') return { setNumberFormat: () => {}, setFontWeight: () => {} };
-      return {
+      if (typeof row === 'string') return { setNumberFormat: f => { sh.colFormats[row] = f; }, setFontWeight: () => {} };
+      const range = {
+        getValue: () => (rows[row - 1] || [])[col - 1] ?? '',
         getValues: () => Array.from({ length: nRows || 1 }, (_, i) => Array.from({ length: nCols || 1 }, (_, j) => (rows[row - 1 + i] || [])[col - 1 + j] ?? '')),
         setValue: v => { while (rows.length < row) rows.push([]); rows[row - 1][col - 1] = v; },
-        setValues: vs => vs.forEach((r, i) => r.forEach((v, j) => { rows[row - 1 + i][col - 1 + j] = v; })),
-        setNumberFormat: () => {}, setFontWeight: () => {}
+        setValues: vs => { vs.forEach((r, i) => r.forEach((v, j) => { rows[row - 1 + i][col - 1 + j] = v; })); return range; },
+        setNumberFormats: fs => { sh.rowFormats[row] = fs[0].join(' | '); return range; },
+        setNumberFormat: () => range, setFontWeight: () => range
       };
+      return range;
     }
   };
   return sh;
 }
 function makeBook(title) {
   const id = 'book' + (Object.keys(books).length + 1), ss = { id, title, sheets: [] };
-  Object.assign(ss, { getId: () => id, getUrl: () => 'https://docs.google.com/spreadsheets/d/' + id + '/edit', getSheets: () => ss.sheets,
+  Object.assign(ss, { getId: () => id, getSpreadsheetTimeZone: () => 'Asia/Yerevan', getUrl: () => 'https://docs.google.com/spreadsheets/d/' + id + '/edit', getSheets: () => ss.sheets,
     getSheetByName: n => ss.sheets.find(s => s.getName() === n) || null, insertSheet: n => { const s = makeSheet(ss, n); ss.sheets.push(s); return s; } });
   ss.sheets.push(makeSheet(ss, 'Лист1')); books[id] = ss; return ss;
 }
@@ -38,7 +43,11 @@ const ctx = {
     base64Decode: s => { if (!/^[A-Za-z0-9+/=]*$/.test(s)) throw new Error('bad base64'); return [...Buffer.from(s, 'base64')]; },
     newBlob: blob, Charset: { UTF_8: 'utf8' },
     base64EncodeWebSafe: s => Buffer.from(s, 'utf8').toString('base64').replace(/\+/g, '-').replace(/\//g, '_'),
-    formatDate: (d, tz, fmt) => /H/.test(fmt) ? '2026-09-07 12:00' : '2026-09-07'
+    formatDate: (d, tz, fmt) => {
+      if (fmt !== 'yyyy-MM-dd-HH-mm-ss') return /H/.test(fmt) ? '2026-09-07 12:00' : '2026-09-07';
+      const p = {}; new Intl.DateTimeFormat('en-CA', { timeZone: tz, hourCycle: 'h23', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' }).formatToParts(new Date(+d)).forEach(x => { p[x.type] = x.value; });
+      return [p.year, p.month, p.day, p.hour, p.minute, p.second].join('-');
+    }
   },
   CacheService: { getScriptCache: () => ({ get: k => store[k] || null, put: (k, v) => { store[k] = v; }, remove: k => { delete store[k]; } }) },
   MailApp: { getRemainingDailyQuota: () => 100 },
@@ -61,6 +70,9 @@ const code = mk('Иван Петров', 'ivan@example.com');
 const TOKEN = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'site.config.json'), 'utf8')).sendToken || ''; // тот же токен, что попал в Code.gs при сборке
 const post = body => JSON.parse(ctx.doPost({ postData: { contents: JSON.stringify(Object.assign({ token: TOKEN }, body)) } }).text);
 const rows = () => Object.values(books)[0].getSheetByName('Результаты').rows;
+const sheet1 = () => Object.values(books)[0].getSheetByName('Результаты');
+const serial = (y, mo, d) => Date.UTC(y, mo - 1, d) / 864e5 + 25569; // дата в таблице — число дней от 30.12.1899
+const isDay = v => typeof v === 'number' && Number.isInteger(v) && v > 46000, isTime = v => typeof v === 'number' && v >= 0 && v < 1;
 const isDate = v => Object.prototype.toString.call(v) === '[object Date]'; // Date из другого realm (vm)
 let fails = 0; const check = (name, cond) => { console.log((cond ? '✓ ' : '✗ ') + name); if (!cond) fails++; };
 
@@ -85,23 +97,25 @@ check('mail mentions attachment', mail.htmlBody.includes('во вложении'
 
 // ---- база результатов ----
 check('sheet created and remembered', Object.keys(books).length === 1 && props.sheetId === 'book1');
-check('header row', rows()[0][0] === 'Получено' && rows()[0][17] === 'Код результата');
+check('header row', rows()[0].length === 20 && rows()[0].slice(0, 5).join('|') === 'Дата получения|Время получения|Дата теста|Время теста|Имя' && rows()[0][19] === 'Код результата');
 const row = rows()[1];
 check('one data row', rows().length === 2);
-check('row: dates', isDate(row[0]) && isDate(row[1]) && row[1].toISOString() === '2026-09-07T10:00:00.000Z');
-check('row: name, email, lang', row[2] === 'Иван Петров' && row[3] === 'ivan@example.com' && row[4] === 'ru');
-check('row: profile, name in English whatever the language', row[5] === 'DI' && row[6] === 'Pioneer');
-check('row: net scores', row[7] === 16 && row[8] === 8 && row[9] === -12 && row[10] === -12);
-check('row: percents', row[11] === 83 && row[12] === 67 && row[13] === 25 && row[14] === 25);
-check('row: mail status sent', /^отправлено 2026-09-07 12:00$/.test(row[15]));
-check('row: link and code', row[16] === 'https://disc-test.org/ru/#r=' + code && row[17] === code);
+// таблица в поясе Asia/Yerevan (UTC+4): тест в 10:00 UTC — это 14:00 по времени таблицы
+check('row: date and time in separate cells, table time zone', row.length === 20 && isDay(row[0]) && isTime(row[1]) && row[2] === serial(2026, 9, 7) && Math.abs(row[3] - 14 / 24) < 1e-9);
+check('row: day-first date format, time format', sheet1().rowFormats[2] === 'dd.mm.yyyy | hh:mm:ss | dd.mm.yyyy | hh:mm:ss' && sheet1().colFormats['A:A'] === 'dd.mm.yyyy' && sheet1().colFormats['D:D'] === 'hh:mm:ss');
+check('row: name, email, lang', row[4] === 'Иван Петров' && row[5] === 'ivan@example.com' && row[6] === 'ru');
+check('row: profile, name in English whatever the language', row[7] === 'DI' && row[8] === 'Pioneer');
+check('row: net scores', row[9] === 16 && row[10] === 8 && row[11] === -12 && row[12] === -12);
+check('row: percents', row[13] === 83 && row[14] === 67 && row[15] === 25 && row[16] === 25);
+check('row: mail status sent', /^отправлено 2026-09-07 12:00$/.test(row[17]));
+check('row: link and code', row[18] === 'https://disc-test.org/ru/#r=' + code && row[19] === code);
 
 check('ja works', post({ to: 'ivan@example.com', lang: 'ja', code }).ok === true && /開拓者/.test(sent[1].subject) && sent[1].name === 'DISC診断 · disc-test.org');
 check('same code not duplicated', rows().length === 2);
 check('ar rtl', post({ to: 'ivan@example.com', lang: 'ar', code }).ok === true && sent[2].htmlBody.includes('dir="rtl"') && sent[2].attachments[0].source.includes('<html lang="ar" dir="rtl">'));
 const r4 = post({ to: 'ivan@example.com', lang: 'xx', code });
 check('per-recipient limit (3/hour) still reports saved', r4.error === 'too many' && r4.saved === true);
-check('row: mail status after limit', rows()[1][15] === 'не отправлено: too many');
+check('row: mail status after limit', rows()[1][17] === 'не отправлено: too many');
 check('email mismatch rejected, not saved', post({ to: 'other@example.com', lang: 'en', code }).error === 'email mismatch' && rows().length === 2);
 check('bad email rejected', post({ to: 'not-an-email', lang: 'en', code }).error === 'bad email');
 check('bad code rejected, not saved', post({ to: 'ivan@example.com', lang: 'en', code: 'DISC1.xxxx' }).error === 'bad code' && rows().length === 2);
@@ -112,24 +126,24 @@ mailFail = 'Service invoked too many times';
 const c2 = mk('Anna Lee', 'anna@example.com', 'not-a-date');
 const r5 = post({ to: 'anna@example.com', lang: 'en', code: c2 });
 check('mail failure: saved, ok=false', r5.ok === false && r5.saved === true && /too many times/.test(r5.error));
-check('mail failure row: status error, date fallback', rows().length === 3 && /^ошибка: /.test(rows()[2][15]) && isDate(rows()[2][1]) && rows()[2][6] === 'Pioneer');
+check('mail failure row: status error, date fallback', rows().length === 3 && /^ошибка: /.test(rows()[2][17]) && isDay(rows()[2][2]) && isTime(rows()[2][3]) && rows()[2][8] === 'Pioneer');
 mailFail = null;
-check('retry after failure: same row, status sent', post({ to: 'anna@example.com', lang: 'en', code: c2 }).ok === true && rows().length === 3 && /^отправлено/.test(rows()[2][15]));
+check('retry after failure: same row, status sent', post({ to: 'anna@example.com', lang: 'en', code: c2 }).ok === true && rows().length === 3 && /^отправлено/.test(rows()[2][17]));
 
 const c3 = mk('=1+1', 'a@b.co');
 post({ to: 'a@b.co', lang: 'en', code: c3 });
 check('no html injection in name', !sent[sent.length - 1].htmlBody.includes('<b>x</b>') && (() => { const c4 = mk('<b>x</b>', 'x@b.co'); post({ to: 'x@b.co', lang: 'en', code: c4 }); const h = sent[sent.length - 1].htmlBody; return !h.includes('<b>x</b>') && h.includes('&lt;b&gt;x&lt;/b&gt;'); })());
-check('no formula injection in sheet', rows()[3][2] === ' =1+1');
-check('code with surrounding text is trimmed', (() => { const c5 = mk('Пётр', 'p@b.co'); post({ to: 'p@b.co', lang: 'ru', code: 'см. ' + c5 + ' конец' }); return rows()[rows().length - 1][17] === c5; })());
+check('no formula injection in sheet', rows()[3][4] === ' =1+1');
+check('code with surrounding text is trimmed', (() => { const c5 = mk('Пётр', 'p@b.co'); post({ to: 'p@b.co', lang: 'ru', code: 'см. ' + c5 + ' конец' }); return rows()[rows().length - 1][19] === c5; })());
 
 // языки второй волны, в том числе код с дефисом (zh-hant): письмо на своём языке, ссылка ведёт в свою папку, язык попадает в таблицу
 check('new languages: zh-hant, id, tr, pl', ['zh-hant', 'id', 'tr', 'pl'].every(lg => { const to = lg + '@b.co', cc = mk('Lin', to); const r = post({ to, lang: lg, code: cc }), m = sent[sent.length - 1], row = rows()[rows().length - 1];
-  return r.ok === true && m.to === to && m.htmlBody.includes('<html lang="' + lg + '"') && m.htmlBody.includes('/' + lg + '/#r=' + cc) && row[4] === lg && /^[A-Za-z ]+$/.test(row[6]) && row[16] === 'https://disc-test.org/' + lg + '/#r=' + cc; }));
+  return r.ok === true && m.to === to && m.htmlBody.includes('<html lang="' + lg + '"') && m.htmlBody.includes('/' + lg + '/#r=' + cc) && row[6] === lg && /^[A-Za-z ]+$/.test(row[8]) && row[18] === 'https://disc-test.org/' + lg + '/#r=' + cc; }));
 
 // PDF: сбой конвертера не мешает письму; имя участника экранируется; английская версия ссылается на корень сайта
 pdfFail = 'conversion failed';
 const cp = mk('Pat <i>', 'pat@b.co'), rp = post({ to: 'pat@b.co', lang: 'en', code: cp }), mp = sent[sent.length - 1];
-check('pdf failure: mail still sent without attachment', rp.ok === true && rp.pdf === false && !mp.attachments && !/attached/.test(mp.htmlBody) && /\(без PDF: conversion failed\)$/.test(rows()[rows().length - 1][15]));
+check('pdf failure: mail still sent without attachment', rp.ok === true && rp.pdf === false && !mp.attachments && !/attached/.test(mp.htmlBody) && /\(без PDF: conversion failed\)$/.test(rows()[rows().length - 1][17]));
 pdfFail = null;
 const cq = mk('Pat <i>', 'pat2@b.co'); post({ to: 'pat2@b.co', lang: 'en', code: cq });
 const pq = sent[sent.length - 1].attachments[0].source;
@@ -189,9 +203,26 @@ const savedTo = ctx.CONTACT_TO; ctx.CONTACT_TO = '';
 check('contact: disabled without address', post({ action: 'contact', name: 'X', email: 'x@example.com', message: 'm' }).error === 'contact disabled');
 ctx.CONTACT_TO = savedTo;
 
+// таблица, заведённая до разделения дат (18 столбцов, дата и время в одной ячейке): делится при первом же обращении, один раз
+const newRows = JSON.stringify(rows());
+const toDate = (day, time) => typeof day === 'number' ? new Date(Math.round((day - 25569 + time) * 864e5) - 4 * 3600e3) : day; // обратно в момент времени (UTC+4)
+rows().forEach((r, i) => { r.splice(0, 4, i ? toDate(r[0], r[1]) : 'Получено', i ? toDate(r[2], r[3]) : 'Дата теста'); });
+rows()[3][0] = 'вручную'; // не дата: остаётся как есть, время пустое
+check('old layout prepared', rows().every(r => r.length === 18) && rows()[0][17] === 'Код результата' && isDate(rows()[1][1]));
+ctx.setup();
+const want = JSON.parse(newRows); want[3][0] = 'вручную'; want[3][1] = '';
+check('old sheet: date columns split, other cells intact', rows().every(r => r.length === 20) && JSON.stringify(rows().map(r => r.map(v => typeof v === 'number' ? +v.toFixed(9) : v))) === JSON.stringify(want.map(r => r.map(v => typeof v === 'number' ? +v.toFixed(9) : v))));
+const split = JSON.stringify(rows()); ctx.setup();
+check('old sheet: second call changes nothing', JSON.stringify(rows()) === split);
+rows()[0][1] = 'Gjkextyj'; ctx.setup();
+check('new sheet with a retyped header is not split again', rows().every(r => r.length === 20));
+rows()[0][1] = 'Время получения';
+const cOld = mk('Olga', 'olga@b.co'); post({ to: 'olga@b.co', lang: 'ru', code: cOld });
+check('row after split: 20 cells, code in the last column, no duplicates on resend', (() => { const n = rows().length, last = rows()[n - 1]; post({ to: 'olga@b.co', lang: 'ru', code: cOld }); return last.length === 20 && last[19] === cOld && last[4] === 'Olga' && rows().length === n; })());
+
 // строки, записанные до перехода на английские названия: englishProfileNames правит их по столбцу «Профиль», остальное не трогает
-rows()[1][6] = 'Первопроходец'; const others = JSON.stringify(rows().map(r => r.filter((_, j) => j !== 6)));
-check('englishProfileNames: old rows fixed, nothing else touched', ctx.englishProfileNames() === 1 && rows()[1][6] === 'Pioneer' && rows()[0][6] === 'Название профиля' && JSON.stringify(rows().map(r => r.filter((_, j) => j !== 6))) === others);
+rows()[1][8] = 'Первопроходец'; const others = JSON.stringify(rows().map(r => r.filter((_, j) => j !== 8)));
+check('englishProfileNames: old rows fixed, nothing else touched', ctx.englishProfileNames() === 1 && rows()[1][8] === 'Pioneer' && rows()[0][8] === 'Название профиля' && JSON.stringify(rows().map(r => r.filter((_, j) => j !== 8))) === others);
 check('englishProfileNames: second run changes nothing', ctx.englishProfileNames() === 0);
 check('setup returns sheet url', ctx.setup() === 'https://docs.google.com/spreadsheets/d/book1/edit' && Object.keys(books).length === 1);
 check('doGet ok', JSON.parse(ctx.doGet().text).ok === true);
