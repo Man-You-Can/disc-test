@@ -541,7 +541,7 @@
         },
         {
           "q": "Where does the result go and who can see it?",
-          "a": "The result is shown on screen and saved in your browser. If you enter your name and email address on the result screen, the report is emailed to that address, and your name, email address and result are recorded in the site owner’s results database; they are not used for any other purpose and are not passed to third parties. Other people will see your report only if you share the link to it yourself. See the Privacy page for details."
+          "a": "The result is shown on screen and saved in your browser. If you enter your name and email address on the result screen, the report is emailed to that address, and your name, email address and result are recorded in the site owner’s results database; without your consent they are not used for any other purpose and are not passed to third parties. Other people will see your report only if you share the link to it yourself. See the Privacy page for details."
         },
         {
           "q": "Can I take the test again?",
@@ -605,7 +605,8 @@
         {
           "h": "Where the data goes",
           "p": [
-            "When you press “Email my result,” your name, email address and answers (as a result code) are passed to the email-sending service, a Google Apps Script running in the site owner’s Google account. It sends you your result and records your name, email address, test date and result (profile, scores and report link) in the results database, a Google Sheet in the same account. The data is not used for any other purpose and is not passed to third parties.",
+            "When you press “Email my result,” your name, email address and answers (as a result code) are passed to the email-sending service, a Google Apps Script running in the site owner’s Google account. It sends you your result and records your name, email address, test date and result (profile, scores and report link) in the results database, a Google Sheet in the same account. Without your consent, the data is not used for any other purpose and is not passed to third parties.",
+            "Only people who ticked the consent box in the result form receive our newsletter. In that case the results database also stores the fact of consent, its date and its wording, and your email address, name and language are used to send you emails from disc-test.org: DISC materials, site news and promotional offers. To send these emails, your address may be passed to an email delivery service acting on our behalf. You can unsubscribe at any time, using the link in any email or by writing to {email}.",
             "The hosting provider (GitHub Pages) receives standard technical request data: IP address, browser type, page address. Fonts are served from this site itself and are not loaded from Google’s servers. Visit statistics are collected by a web analytics service: it receives anonymized visit data, namely the page address without the result code, the referrer, device and browser type, and a recording of on-page actions; the name and email fields, the result link and code are excluded from the recording. You can stop the collection in your browser settings or with a tracker blocker. No advertising trackers are used."
           ]
         },
@@ -627,7 +628,7 @@
         },
         {
           "h": "Changes",
-          "p": ["Last updated: September 24, 2026. Changes in how data is handled will be reflected on this page."]
+          "p": ["Last updated: October 8, 2026. Changes in how data is handled will be reflected on this page."]
         }
       ]
     },
@@ -661,6 +662,12 @@
       "description": "A question, a translation issue or a suggestion? Write to us via the contact form and attach files if needed.",
       "h1": "Contact us",
       "lead": "Found a mistake, a translation issue or want to suggest an improvement? Write to us and we will reply to the email address you provide."
+    },
+    "unsubscribe": {
+      "title": "Unsubscribe — Stop Emails From the DISC Test",
+      "description": "Unsubscribe from disc-test.org emails with one button: no login or password needed.",
+      "h1": "Unsubscribe from emails",
+      "lead": "Press the button and disc-test.org will stop sending its newsletter to the address that received the email with this link. This does not affect the email with your test result: that one is sent only when you request it yourself."
     },
     "results": {
       "title": "DISC Test Results Explained: How to Read Your Chart and Profile",
@@ -1315,6 +1322,9 @@
     "share.sent": "Your result has been emailed to {email}.",
     "share.sendFailed": "We couldn’t send the email to {email}. Copy the report link or try again.",
     "share.retry": "Send again",
+    "share.subscribe": "I agree to receive emails from disc-test.org at this address: DISC materials, site news and promotional offers. You can unsubscribe at any time using the link in any email.",
+    "share.subscribed": "You are subscribed to emails from disc-test.org. You can unsubscribe using the link in any of those emails.",
+    "share.subscribeFailed": "We couldn’t save your subscription. Please try again later.",
     "share.emailTitle": "Get your result by email",
     "share.send": "Email my result",
     "share.mailtoHint": "Your email app will open with a ready-made message to this address; just press “Send.”",
@@ -1345,6 +1355,8 @@
     "email.linkNote": "If the button doesn’t work, copy this link into your browser:",
     "email.attached": "Your full report is attached to this email as a PDF.",
     "email.footer": "This email was sent automatically because this address was entered when taking the test. The full report with strengths, growth areas and recommendations is available at the link above.",
+    "email.subscribed": "You agreed to receive emails from disc-test.org at this address.",
+    "email.unsubscribe": "Unsubscribe",
 
     "toast.copied": "Copied",
     "toast.copyManual": "Select the text and copy it manually (Ctrl+C / ⌘C)",
@@ -1479,6 +1491,10 @@
     "contact.tooMany": "Several messages have already been sent from this address. Try again later or write to us directly: {contact}.",
     "contact.messageRequired": "Please write a message",
     "contact.direct": "Or write to us directly: {email}",
+    "unsub.button": "Unsubscribe",
+    "unsub.done": "Done: disc-test.org will no longer send its newsletter to this address.",
+    "unsub.failed": "We couldn’t unsubscribe you. Please try again or write to us: {email}.",
+    "unsub.bad": "This link has no unsubscribe code. Open the full link from the email or write to us: {email}.",
     "contact.privacyNote": "Your name, email address, message and files will be emailed to {email} and used only to reply to you.",
     "contact.mailtoNote": "The sending service is not connected yet: the “Send” button will open your email client with the message filled in, and you will need to add the attached files to the email yourself.",
     "contact.mailSubject": "Message from the website: {name}",

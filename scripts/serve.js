@@ -10,7 +10,8 @@ http.createServer((req, res) => {
       if (j && j.action === 'contact') console.log('mock-send contact:', j.name, '<' + j.email + '>', (j.files || []).map(f => f.name + ' (' + Math.round((f.data || '').length * 3 / 4 / 1024) + ' KB)').join(', ') || 'no files', 'hp=' + JSON.stringify(j.hp || ''));
       else console.log('mock-send:', body.slice(0, 200));
       res.writeHead(200, { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' });
-      res.end(JSON.stringify(p === '/mock-send' ? { ok: true, saved: true } : { ok: false, error: 'mock failure', saved: true }));
+      // subscribed — как у настоящего скрипта: согласие на рассылку записано (в запросе subscribe:true или action:'subscribe')
+      res.end(JSON.stringify(p === '/mock-send' ? { ok: true, saved: true, subscribed: !!(j && (j.subscribe === true || j.action === 'subscribe')) } : { ok: false, error: 'mock failure', saved: true }));
     }); return;
   }
   let file = path.normalize(path.join(root, p));

@@ -541,7 +541,7 @@
         },
         {
           "q": "Dokąd trafia wynik i kto go widzi?",
-          "a": "Wynik wyświetla się na ekranie i zapisuje się w twojej przeglądarce. Jeśli na ekranie wyniku podasz imię i adres e-mail, raport przyjdzie na ten adres, a imię, adres e-mail i wynik zostaną zapisane w bazie wyników właściciela serwisu; nie są wykorzystywane do innych celów ani przekazywane osobom trzecim. Osoby postronne zobaczą twój raport tylko wtedy, gdy samodzielnie udostępnisz do niego link. Więcej na stronie „Prywatność”."
+          "a": "Wynik wyświetla się na ekranie i zapisuje się w twojej przeglądarce. Jeśli na ekranie wyniku podasz imię i adres e-mail, raport przyjdzie na ten adres, a imię, adres e-mail i wynik zostaną zapisane w bazie wyników właściciela serwisu; bez twojej zgody nie są wykorzystywane do innych celów ani przekazywane osobom trzecim. Osoby postronne zobaczą twój raport tylko wtedy, gdy samodzielnie udostępnisz do niego link. Więcej na stronie „Prywatność”."
         },
         {
           "q": "Czy test można powtórzyć?",
@@ -605,7 +605,8 @@
         {
           "h": "Dokąd przekazywane są dane",
           "p": [
-            "Gdy klikasz „Wyślij na mój e-mail”, imię, adres e-mail i odpowiedzi (w postaci kodu wyniku) są przekazywane do usługi wysyłającej e-maile – skryptu Google Apps Script, który działa na koncie Google właściciela serwisu. Skrypt wysyła ci e-mail z wynikiem i zapisuje imię, adres e-mail, datę wykonania testu oraz wynik (profil, punkty, link do raportu) w bazie wyników – arkuszu Google na tym samym koncie. Dane te nie są wykorzystywane do innych celów ani przekazywane osobom trzecim.",
+            "Gdy klikasz „Wyślij na mój e-mail”, imię, adres e-mail i odpowiedzi (w postaci kodu wyniku) są przekazywane do usługi wysyłającej e-maile – skryptu Google Apps Script, który działa na koncie Google właściciela serwisu. Skrypt wysyła ci e-mail z wynikiem i zapisuje imię, adres e-mail, datę wykonania testu oraz wynik (profil, punkty, link do raportu) w bazie wyników – arkuszu Google na tym samym koncie. Bez twojej zgody dane te nie są wykorzystywane do innych celów ani przekazywane osobom trzecim.",
+            "Newsletter otrzymują tylko osoby, które zaznaczyły zgodę w formularzu wysyłki wyniku. W takim przypadku w bazie wyników zapisywane są także zgoda, jej data i treść, a twój adres e-mail, imię i język służą do wysyłania e-maili od disc-test.org: materiałów o DISC, nowości z serwisu i ofert promocyjnych. Aby wysyłać takie wiadomości, adres może zostać przekazany usłudze do wysyłki e-maili, która działa na nasze zlecenie. W każdej chwili możesz zrezygnować: klikając link w dowolnej wiadomości albo pisząc na {email}.",
             "Hosting GitHub Pages otrzymuje standardowe dane techniczne żądania: adres IP, typ przeglądarki, adres strony. Czcionki są przechowywane w samym serwisie i nie są pobierane z serwerów Google. Statystyki odwiedzin zbiera usługa analityki internetowej: otrzymuje zanonimizowane dane o wizycie – adres strony bez kodu wyniku, źródło wejścia, typ urządzenia i przeglądarki – oraz zapis działań na stronie; pola z imieniem i adresem e-mail, link i kod wyniku są z tego zapisu wyłączone. Zbieranie danych można wyłączyć w ustawieniach przeglądarki albo za pomocą narzędzia blokującego skrypty śledzące. Reklamowe skrypty śledzące nie są używane."
           ]
         },
@@ -627,7 +628,7 @@
         },
         {
           "h": "Zmiany",
-          "p": ["Ostatnia aktualizacja: 24 września 2026 r. Zmiany w sposobie przetwarzania danych będą odnotowywane na tej stronie."]
+          "p": ["Ostatnia aktualizacja: 8 października 2026 r. Zmiany w sposobie przetwarzania danych będą odnotowywane na tej stronie."]
         }
       ]
     },
@@ -661,6 +662,12 @@
       "description": "Masz pytanie, uwagę do tłumaczenia albo propozycję? Napisz do nas przez formularz kontaktowy, w razie potrzeby dołączając pliki.",
       "h1": "Kontakt",
       "lead": "Widzisz błąd, nieścisłość w tłumaczeniu albo masz pomysł na ulepszenie? Napisz do nas – odpowiedź przyjdzie na podany adres e-mail."
+    },
+    "unsubscribe": {
+      "title": "Rezygnacja z newslettera – test DISC",
+      "description": "Zrezygnuj z newslettera disc-test.org jednym przyciskiem, bez logowania i hasła.",
+      "h1": "Rezygnacja z newslettera",
+      "lead": "Kliknij przycisk, a disc-test.org przestanie wysyłać newsletter na adres, na który przyszła wiadomość z tym linkiem. Nie dotyczy to e-maila z wynikiem testu: jest on wysyłany tylko wtedy, gdy samodzielnie o niego poprosisz."
     },
     "results": {
       "title": "Interpretacja wyników testu DISC: jak czytać wykres i profil",
@@ -1315,6 +1322,9 @@
     "share.sent": "Wiadomość z wynikiem została wysłana na adres {email}.",
     "share.sendFailed": "Nie udało się wysłać wiadomości na adres {email}. Skopiuj link do raportu lub spróbuj ponownie.",
     "share.retry": "Wyślij ponownie",
+    "share.subscribe": "Zgadzam się otrzymywać na ten adres e-maile od disc-test.org: materiały o DISC, nowości z serwisu i oferty promocyjne. W każdej chwili możesz zrezygnować, klikając link w dowolnej wiadomości.",
+    "share.subscribed": "Subskrybujesz e-maile od disc-test.org. Możesz zrezygnować, klikając link w dowolnej z tych wiadomości.",
+    "share.subscribeFailed": "Nie udało się zapisać subskrypcji. Spróbuj ponownie później.",
     "share.emailTitle": "Otrzymaj wynik e-mailem",
     "share.send": "Wyślij na mój e-mail",
     "share.mailtoHint": "Otworzy się twój program pocztowy z gotową wiadomością na ten adres – wystarczy kliknąć „Wyślij”.",
@@ -1345,6 +1355,8 @@
     "email.linkNote": "Jeśli przycisk nie działa, skopiuj link do przeglądarki:",
     "email.attached": "Pełny raport w formacie PDF znajduje się w załączniku do tej wiadomości.",
     "email.footer": "Ta wiadomość została wysłana automatycznie, ponieważ ten adres podano podczas wypełniania testu. Pełny raport z opisem mocnych stron i obszarów rozwoju oraz ze wskazówkami jest dostępny pod linkiem powyżej.",
+    "email.subscribed": "Wyrażono zgodę na otrzymywanie e-maili od disc-test.org na ten adres.",
+    "email.unsubscribe": "Zrezygnuj z subskrypcji",
 
     "toast.copied": "Skopiowano",
     "toast.copyManual": "Zaznacz tekst i skopiuj go ręcznie (Ctrl+C / ⌘C)",
@@ -1479,6 +1491,10 @@
     "contact.tooMany": "Z tego adresu wysłano już kilka wiadomości. Spróbuj później lub napisz do nas bezpośrednio: {contact}.",
     "contact.messageRequired": "Wpisz wiadomość",
     "contact.direct": "Albo napisz do nas bezpośrednio: {email}",
+    "unsub.button": "Zrezygnuj z subskrypcji",
+    "unsub.done": "Gotowe: disc-test.org nie będzie już wysyłać newslettera na ten adres.",
+    "unsub.failed": "Nie udało się anulować subskrypcji. Spróbuj ponownie albo napisz do nas: {email}.",
+    "unsub.bad": "W linku brakuje kodu rezygnacji. Otwórz pełny link z wiadomości albo napisz do nas: {email}.",
     "contact.privacyNote": "Imię, e-mail, wiadomość i pliki zostaną wysłane e-mailem na adres {email} i posłużą wyłącznie do udzielenia ci odpowiedzi.",
     "contact.mailtoNote": "Usługa wysyłki nie jest jeszcze podłączona: przycisk „Wyślij” otworzy twój program pocztowy z wypełnioną wiadomością, a załączone pliki trzeba będzie dodać do niej ręcznie.",
     "contact.mailSubject": "Wiadomość ze strony: {name}",

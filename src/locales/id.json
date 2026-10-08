@@ -543,7 +543,7 @@
         },
         {
           "q": "Ke mana hasil dikirim dan siapa yang bisa melihatnya?",
-          "a": "Hasil ditampilkan di layar dan disimpan di browser Anda. Jika Anda mengisi nama dan email di layar hasil, email berisi laporan akan dikirim ke alamat itu, sedangkan nama, email, dan hasil Anda akan dicatat dalam basis data hasil milik pemilik situs; data itu tidak digunakan untuk tujuan lain dan tidak diteruskan kepada pihak ketiga. Orang lain hanya dapat melihat laporan Anda jika Anda sendiri membagikan tautannya. Selengkapnya ada di halaman “Privasi”."
+          "a": "Hasil ditampilkan di layar dan disimpan di browser Anda. Jika Anda mengisi nama dan email di layar hasil, email berisi laporan akan dikirim ke alamat itu, sedangkan nama, email, dan hasil Anda akan dicatat dalam basis data hasil milik pemilik situs; tanpa persetujuan Anda, data itu tidak digunakan untuk tujuan lain dan tidak diteruskan kepada pihak ketiga. Orang lain hanya dapat melihat laporan Anda jika Anda sendiri membagikan tautannya. Selengkapnya ada di halaman “Privasi”."
         },
         {
           "q": "Bolehkah mengulang tes?",
@@ -607,7 +607,8 @@
         {
           "h": "Ke mana data dikirim",
           "p": [
-            "Saat Anda menekan “Kirim ke email”, nama, email, dan jawaban Anda (dalam bentuk kode hasil) dikirim ke layanan pengirim email — sebuah skrip Google Apps Script yang berjalan di akun Google pemilik situs. Skrip itu mengirimkan email berisi hasil kepada Anda dan mencatat nama, email, tanggal tes, serta hasil (profil, skor, tautan ke laporan) ke basis data hasil — sebuah Google Spreadsheet di akun yang sama. Data ini tidak digunakan untuk tujuan lain dan tidak diteruskan kepada pihak ketiga.",
+            "Saat Anda menekan “Kirim ke email”, nama, email, dan jawaban Anda (dalam bentuk kode hasil) dikirim ke layanan pengirim email — sebuah skrip Google Apps Script yang berjalan di akun Google pemilik situs. Skrip itu mengirimkan email berisi hasil kepada Anda dan mencatat nama, email, tanggal tes, serta hasil (profil, skor, tautan ke laporan) ke basis data hasil — sebuah Google Spreadsheet di akun yang sama. Tanpa persetujuan Anda, data ini tidak digunakan untuk tujuan lain dan tidak diteruskan kepada pihak ketiga.",
+            "Buletin hanya dikirim kepada orang yang mencentang kotak persetujuan di formulir pengiriman hasil. Dalam hal itu, basis data hasil juga menyimpan persetujuan, tanggalnya, dan teksnya, sedangkan email, nama, dan bahasa Anda digunakan untuk mengirim email dari disc-test.org: materi tentang DISC, kabar situs, dan penawaran promosi. Untuk mengirim email tersebut, alamat Anda dapat diteruskan kepada layanan pengiriman email yang bekerja atas nama kami. Anda dapat berhenti berlangganan kapan saja, melalui tautan di setiap email atau dengan menulis ke {email}.",
             "Layanan hosting GitHub Pages menerima data teknis standar dari setiap permintaan: alamat IP, jenis browser, alamat halaman. Font disimpan di situs ini sendiri dan tidak dimuat dari server Google. Statistik kunjungan dikumpulkan oleh layanan analitik web: layanan ini menerima data kunjungan yang dianonimkan — alamat halaman tanpa kode hasil, sumber kunjungan, jenis perangkat dan browser — serta rekaman tindakan di halaman; kolom isian nama dan email, tautan, serta kode hasil dikecualikan dari rekaman tersebut. Pengumpulan data dapat dinonaktifkan melalui pengaturan browser atau dengan pemblokir pelacak. Pelacak iklan tidak digunakan."
           ]
         },
@@ -629,7 +630,7 @@
         },
         {
           "h": "Perubahan",
-          "p": ["Pembaruan terakhir: 24 September 2026. Perubahan dalam pemrosesan data akan dicantumkan di halaman ini."]
+          "p": ["Pembaruan terakhir: 8 Oktober 2026. Perubahan dalam pemrosesan data akan dicantumkan di halaman ini."]
         }
       ]
     },
@@ -663,6 +664,12 @@
       "description": "Punya pertanyaan, catatan tentang terjemahan, atau usulan? Hubungi kami melalui formulir kontak dan lampirkan file bila diperlukan.",
       "h1": "Kontak dan Masukan",
       "lead": "Menemukan kesalahan, terjemahan yang kurang tepat, atau ingin mengusulkan perbaikan? Tulis pesan kepada kami — jawaban akan dikirim ke email yang Anda cantumkan."
+    },
+    "unsubscribe": {
+      "title": "Berhenti Berlangganan Buletin — Tes DISC",
+      "description": "Berhenti berlangganan buletin disc-test.org dengan satu tombol, tanpa login atau kata sandi.",
+      "h1": "Berhenti berlangganan buletin",
+      "lead": "Tekan tombol, dan disc-test.org akan berhenti mengirim buletin ke alamat yang menerima email berisi tautan ini. Hal ini tidak memengaruhi email hasil tes: email itu hanya dikirim saat Anda sendiri memintanya."
     },
     "results": {
       "title": "Cara Membaca Hasil Tes DISC: Memahami Grafik dan Profil",
@@ -1328,6 +1335,9 @@
     "share.sent": "Email berisi hasil telah dikirim ke {email}.",
     "share.sendFailed": "Email tidak dapat dikirim ke {email}. Salin tautan laporan atau coba lagi.",
     "share.retry": "Kirim lagi",
+    "share.subscribe": "Saya setuju menerima email dari disc-test.org di alamat ini: materi tentang DISC, kabar situs, dan penawaran promosi. Anda dapat berhenti berlangganan kapan saja melalui tautan di setiap email.",
+    "share.subscribed": "Anda telah berlangganan email dari disc-test.org. Anda dapat berhenti berlangganan melalui tautan di setiap email tersebut.",
+    "share.subscribeFailed": "Langganan tidak berhasil disimpan. Silakan coba lagi nanti.",
     "share.emailTitle": "Terima hasil lewat email",
     "share.send": "Kirim ke email",
     "share.mailtoHint": "Aplikasi email Anda akan terbuka dengan pesan yang sudah siap untuk alamat ini — tinggal tekan “Kirim”.",
@@ -1358,6 +1368,8 @@
     "email.linkNote": "Jika tombol tidak berfungsi, salin tautan ini ke browser Anda:",
     "email.attached": "Laporan lengkap terlampir pada email ini dalam format PDF.",
     "email.footer": "Email ini dikirim secara otomatis karena alamat ini dimasukkan saat mengikuti tes. Laporan lengkap berisi uraian kekuatan, area pengembangan, dan rekomendasi tersedia melalui tautan di atas.",
+    "email.subscribed": "Anda telah setuju menerima email dari disc-test.org di alamat ini.",
+    "email.unsubscribe": "Berhenti berlangganan",
 
     "toast.copied": "Tersalin",
     "toast.copyManual": "Pilih teks dan salin secara manual (Ctrl+C / ⌘C)",
@@ -1492,6 +1504,10 @@
     "contact.tooMany": "Beberapa pesan sudah dikirim dari alamat ini. Coba lagi nanti atau hubungi kami langsung: {contact}.",
     "contact.messageRequired": "Mohon tulis pesan Anda",
     "contact.direct": "Atau hubungi kami langsung: {email}",
+    "unsub.button": "Berhenti berlangganan",
+    "unsub.done": "Selesai: disc-test.org tidak akan lagi mengirim buletin ke alamat ini.",
+    "unsub.failed": "Gagal berhenti berlangganan. Coba lagi atau hubungi kami: {email}.",
+    "unsub.bad": "Tautan ini tidak memuat kode berhenti berlangganan. Buka tautan lengkap dari email atau hubungi kami: {email}.",
     "contact.privacyNote": "Nama, email, pesan, dan file akan dikirim melalui email ke alamat {email} dan hanya digunakan untuk membalas Anda.",
     "contact.mailtoNote": "Layanan pengiriman belum terhubung: tombol “Kirim” akan membuka aplikasi email Anda dengan pesan yang sudah terisi, sedangkan file lampiran perlu Anda tambahkan ke email secara manual.",
     "contact.mailSubject": "Pesan dari situs: {name}",

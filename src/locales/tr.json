@@ -541,7 +541,7 @@
         },
         {
           "q": "Sonuç nereye gider ve onu kim görür?",
-          "a": "Sonuç ekranda gösterilir ve tarayıcınıza kaydedilir. Sonuç ekranında adınızı ve e-posta adresinizi belirtirseniz rapor bu adrese e-postayla gönderilir, adınız, e-posta adresiniz ve sonucunuz da site sahibinin sonuç veri tabanına kaydedilir; bu veriler başka amaçlarla kullanılmaz ve üçüncü kişilere aktarılmaz. Başkaları raporunuzu ancak bağlantısını siz paylaşırsanız görebilir. Ayrıntılar “Gizlilik” sayfasındadır."
+          "a": "Sonuç ekranda gösterilir ve tarayıcınıza kaydedilir. Sonuç ekranında adınızı ve e-posta adresinizi belirtirseniz rapor bu adrese e-postayla gönderilir, adınız, e-posta adresiniz ve sonucunuz da site sahibinin sonuç veri tabanına kaydedilir; onayınız olmadan bu veriler başka amaçlarla kullanılmaz ve üçüncü kişilere aktarılmaz. Başkaları raporunuzu ancak bağlantısını siz paylaşırsanız görebilir. Ayrıntılar “Gizlilik” sayfasındadır."
         },
         {
           "q": "Testi yeniden çözebilir miyim?",
@@ -605,7 +605,8 @@
         {
           "h": "Veriler nereye aktarılır",
           "p": [
-            "“E-postama gönder” düğmesine bastığınızda adınız, e-posta adresiniz ve yanıtlarınız (sonuç kodu biçiminde) e-posta gönderim hizmetine, yani site sahibinin Google hesabında çalışan bir Google Apps Script betiğine aktarılır. Bu betik size sonucu içeren bir e-posta gönderir ve adınızı, e-posta adresinizi, testi çözdüğünüz tarihi ve sonucunuzu (profil, puanlar, rapor bağlantısı) sonuç veri tabanına, yani aynı hesaptaki bir Google E-Tablolar dosyasına kaydeder. Bu veriler başka amaçlarla kullanılmaz ve üçüncü kişilere aktarılmaz.",
+            "“E-postama gönder” düğmesine bastığınızda adınız, e-posta adresiniz ve yanıtlarınız (sonuç kodu biçiminde) e-posta gönderim hizmetine, yani site sahibinin Google hesabında çalışan bir Google Apps Script betiğine aktarılır. Bu betik size sonucu içeren bir e-posta gönderir ve adınızı, e-posta adresinizi, testi çözdüğünüz tarihi ve sonucunuzu (profil, puanlar, rapor bağlantısı) sonuç veri tabanına, yani aynı hesaptaki bir Google E-Tablolar dosyasına kaydeder. Onayınız olmadan bu veriler başka amaçlarla kullanılmaz ve üçüncü kişilere aktarılmaz.",
+            "Bülteni yalnızca sonuç gönderme formunda onay kutusunu işaretleyenler alır. Bu durumda sonuç veri tabanına onayınız, tarihi ve metni de kaydedilir; e-posta adresiniz, adınız ve diliniz size disc-test.org e-postalarını göndermek için kullanılır: DISC ile ilgili içerikler, site haberleri ve tanıtım teklifleri. Bu e-postaları göndermek için adresiniz, bizim adımıza çalışan bir e-posta gönderim hizmetine aktarılabilir. İstediğiniz zaman abonelikten çıkabilirsiniz: her e-postadaki bağlantıdan ya da {email} adresine yazarak.",
             "Barındırma hizmeti GitHub Pages, isteğe ilişkin standart teknik verileri alır: IP adresi, tarayıcı türü, sayfa adresi. Yazı tipleri sitenin kendisinde barındırılır ve Google sunucularından yüklenmez. Ziyaret istatistiklerini bir web analiz hizmeti toplar: ziyarete ilişkin anonimleştirilmiş verileri — sonuç kodu içermeyen sayfa adresi, ziyaretin geldiği kaynak, cihaz ve tarayıcı türü — ve sayfadaki hareketlerin kaydını alır; ad ve e-posta alanları, sonuç bağlantısı ve sonuç kodu bu kaydın dışında tutulur. Veri toplamayı tarayıcı ayarlarınızdan ya da bir izleyici engelleyiciyle devre dışı bırakabilirsiniz. Reklam amaçlı izleyiciler kullanılmaz."
           ]
         },
@@ -627,7 +628,7 @@
         },
         {
           "h": "Değişiklikler",
-          "p": ["Son güncelleme: 24 Eylül 2026. Verilerin işlenmesindeki değişiklikler bu sayfaya yansıtılacaktır."]
+          "p": ["Son güncelleme: 8 Ekim 2026. Verilerin işlenmesindeki değişiklikler bu sayfaya yansıtılacaktır."]
         }
       ]
     },
@@ -661,6 +662,12 @@
       "description": "Bir sorunuz, çeviriyle ilgili bir düzeltmeniz ya da bir öneriniz mi var? Bize iletişim formu üzerinden yazın; gerekirse dosya da ekleyebilirsiniz.",
       "h1": "İletişim",
       "lead": "Bir hata ya da çeviride bir yanlışlık mı buldunuz, yoksa bir iyileştirme mi önermek istiyorsunuz? Bize yazın; yanıtımız belirttiğiniz e-posta adresine gelir."
+    },
+    "unsubscribe": {
+      "title": "Bülten aboneliğinden çıkın — DISC testi",
+      "description": "disc-test.org bülten aboneliğinden tek düğmeyle çıkın; giriş ya da şifre gerekmez.",
+      "h1": "Bülten aboneliğinden çıkın",
+      "lead": "Düğmeye basın; disc-test.org, bu bağlantıyı içeren e-postanın geldiği adrese bülten göndermeyi bırakacak. Bu, test sonucu e-postasını etkilemez: o yalnızca siz istediğinizde gönderilir."
     },
     "results": {
       "title": "DISC testi sonuçlarının yorumlanması: grafiği ve profili okuma",
@@ -1321,6 +1328,9 @@
     "share.sent": "Sonucunuz {email} adresine e-postayla gönderildi.",
     "share.sendFailed": "{email} adresine e-posta gönderilemedi. Rapor bağlantısını kopyalayın veya tekrar deneyin.",
     "share.retry": "Tekrar gönder",
+    "share.subscribe": "Bu e-posta adresine disc-test.org’dan e-posta almayı kabul ediyorum: DISC ile ilgili içerikler, site haberleri ve tanıtım teklifleri. İstediğiniz zaman her e-postadaki bağlantıdan abonelikten çıkabilirsiniz.",
+    "share.subscribed": "disc-test.org e-postalarına abonesiniz. Bu e-postalardaki bağlantıdan abonelikten çıkabilirsiniz.",
+    "share.subscribeFailed": "Abonelik kaydedilemedi. Lütfen daha sonra tekrar deneyin.",
     "share.emailTitle": "Sonucunuzu e-postayla alın",
     "share.send": "E-postama gönder",
     "share.mailtoHint": "E-posta programınız bu adrese hazırlanmış bir e-postayla açılır; size yalnızca “Gönder”e basmak kalır.",
@@ -1351,6 +1361,8 @@
     "email.linkNote": "Düğme çalışmıyorsa bağlantıyı kopyalayıp tarayıcınıza yapıştırın:",
     "email.attached": "Tam rapor bu e-postanın ekinde PDF olarak yer alıyor.",
     "email.footer": "Bu e-posta, test sırasında bu adres belirtildiği için otomatik olarak gönderildi. Güçlü yönlerin, gelişim alanlarının ve önerilerin yer aldığı tam rapora yukarıdaki bağlantıdan ulaşabilirsiniz.",
+    "email.subscribed": "Bu adrese disc-test.org’dan e-posta almayı kabul ettiniz.",
+    "email.unsubscribe": "Abonelikten çık",
 
     "toast.copied": "Kopyalandı",
     "toast.copyManual": "Metni seçip elle kopyalayın (Ctrl+C / ⌘C)",
@@ -1485,6 +1497,10 @@
     "contact.tooMany": "Bu adresten zaten birkaç mesaj gönderildi. Daha sonra tekrar deneyin veya bize doğrudan yazın: {contact}.",
     "contact.messageRequired": "Mesajınızı yazın",
     "contact.direct": "Ya da bize doğrudan yazın: {email}",
+    "unsub.button": "Abonelikten çık",
+    "unsub.done": "Tamamlandı: disc-test.org bu adrese artık bülten göndermeyecek.",
+    "unsub.failed": "Abonelikten çıkılamadı. Tekrar deneyin ya da bize yazın: {email}.",
+    "unsub.bad": "Bağlantıda abonelikten çıkma kodu yok. E-postadaki bağlantının tamamını açın ya da bize yazın: {email}.",
     "contact.privacyNote": "Adınız, e-posta adresiniz, mesajınız ve dosyalarınız {email} adresine e-postayla gönderilir ve yalnızca size yanıt vermek için kullanılır.",
     "contact.mailtoNote": "Gönderim hizmeti henüz bağlanmadı: “Gönder” düğmesi, mesajınızın hazır olarak yer aldığı e-posta programınızı açar; eklediğiniz dosyaları ise e-postaya elle eklemeniz gerekir.",
     "contact.mailSubject": "Siteden mesaj: {name}",

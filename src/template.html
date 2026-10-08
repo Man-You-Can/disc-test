@@ -199,6 +199,10 @@ p{margin:0 0 12px}
 .field label .req{margin-inline-start:3px}
 .reqnote{margin:0;font-size:13px;color:var(--muted)}
 .field .hint{font-size:13px;color:var(--muted)}
+.check{display:flex;gap:10px;align-items:flex-start;font-size:13px;line-height:1.45;color:var(--muted);cursor:pointer}
+.check input{flex:none;width:18px;height:18px;margin:1px 0 0;accent-color:var(--ink)}
+.subbox .hint{margin:0;font-size:13px;color:var(--muted)}
+.subbox .hint.err{margin-top:6px;color:var(--d)}
 input[type=text],input[type=email],textarea{font:inherit;padding:12px 14px;border:1px solid var(--line-strong);border-radius:10px;background:var(--surface);color:var(--ink);width:100%}
 textarea{resize:vertical;min-height:96px;font-family:var(--font-mono);font-size:13px;line-height:1.5}
 input:focus-visible,textarea:focus-visible,button:focus-visible,select:focus-visible,a:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
@@ -446,6 +450,7 @@ var L = __LOCALE_JSON__;
 var CONTACT_EMAIL = '__EMAIL__'; // адрес получателя для кнопки «Отправить по почте»; пустой — участник вводит сам
 var SEND_ENDPOINT = '__SEND_ENDPOINT__'; // URL веб-приложения Google Apps Script (см. README); пустой — письма не отправляются
 var SEND_TOKEN = '__SEND_TOKEN__';
+var NEWSLETTER = '__NEWSLETTER__' === '1'; // галочка согласия на рассылку в форме отправки результата (newsletter в site.config.json)
 var ROOT_REL = '__ROOT_REL__';           // относительный путь к корню сайта ('./' на главной, '../' в /xx/)
 var IS_ROOT = '__IS_ROOT__' === '1';      // главная страница (язык по умолчанию живёт в корне)
 var LANG_PATH = __LANG_PATH_JSON__;       // код языка → путь от корня ('' для языка по умолчанию, 'ru/' и т. д.)
@@ -675,6 +680,7 @@ function renderReport(r, opts){
         '<form class="form" id="sendForm" autocomplete="on" novalidate>'+
           '<div class="field"><label for="nm">'+t('intro.nameLabel')+'</label><input type="text" id="nm" name="name" class="ym-disable-keys" autocomplete="name" maxlength="80" value="'+esc(r.name||who.name||'')+'"></div>'+
           '<div class="field"><label for="em">'+t('intro.emailLabel')+'</label><input type="email" id="em" name="email" class="ym-disable-keys" autocomplete="email" inputmode="email" maxlength="120" value="'+esc(r.email||who.email||'')+'"><span class="hint">'+t(SEND_ENDPOINT ? 'intro.emailHint' : 'share.mailtoHint')+'</span></div>'+
+          (NEWSLETTER && SEND_ENDPOINT ? '<div class="subbox" id="subBox"></div>' : '')+
           '<p class="small sendstatus" id="sendStatus" aria-live="polite" hidden></p>'+
           '<div class="actions"><button class="btn" type="submit">'+t('share.send')+'</button></div>'+
         '</form>'+
@@ -707,21 +713,23 @@ function renderReport(r, opts){
   if($('#backAdmin')) $('#backAdmin').addEventListener('click', function(){ renderAdmin(); window.scrollTo(0,0); });
   if(opts.own){
     if(r.email && r.sent) showSendStatus(r, code, 'sent');
+    renderSub(r);
     $('#sendForm').addEventListener('submit', function(e){
       e.preventDefault();
       var name = $('#nm').value.trim().replace(/\s+/g,' '), email = $('#em').value.trim();
+      if($('#sub')) r.sub = $('#sub').checked;
       if(name.length<2){ $('#nm').focus(); toast(t('intro.nameRequired')); return; }
       if(!EMAIL_RE.test(email) || email.length>120){ $('#em').focus(); toast(t('intro.emailRequired')); return; }
       lsSet('disc.who',{name:name,email:email});
       // имя и e-mail входят в код результата и ссылку: сервер сверяет адрес письма с кодом
-      if(name!==r.name || email!==r.email){ r.name=name; r.email=email; delete r.sent; }
+      if(name!==r.name || email!==r.email){ r.name=name; r.email=email; delete r.sent; delete r.subOk; }
       var last = lsGet('disc.last'); if(last && last.t===r.t){ lsSet('disc.last', r); }
       if(window.discTrack) window.discTrack('email');
       renderReport(r, {own:true, send:true});
       var box = $('#sendBox'); if(box) box.scrollIntoView({block:'center'});
     });
     if(opts.send){
-      if(SEND_ENDPOINT){ if(r.sent) showSendStatus(r, code, 'sent'); else sendResult(r, code); }
+      if(SEND_ENDPOINT){ if(!r.sent) sendResult(r, code); else { showSendStatus(r, code, 'sent'); if(wantsSub(r)) sendSubscribe(r, code); } }
       else { showSendStatus(r, code, 'mailto'); location.href = mailto(r.email); }
     }
     $('#shareType').addEventListener('click', function(){
@@ -797,11 +805,36 @@ function showSendStatus(r, code, state){
 function sendResult(r, code){
   // Сервер сначала записывает результат в таблицу, потом шлёт письмо; повтор того же кода строку не дублирует
   showSendStatus(r, code, 'sending');
-  postJSON(SEND_ENDPOINT, {token:SEND_TOKEN, to:r.email, lang:L.lang, code:code}).then(function(){
+  var data = {token:SEND_TOKEN, to:r.email, lang:L.lang, code:code}, sub = wantsSub(r);
+  if(sub) data.subscribe = true;
+  postJSON(SEND_ENDPOINT, data).then(function(j){
     r.sent = new Date().toISOString();
+    if(sub && j.subscribed) subscribed(r);
     var last = lsGet('disc.last'); if(last && last.t===r.t){ last.sent = r.sent; lsSet('disc.last', last); }
     showSendStatus(r, code, 'sent');
+    if(sub) renderSub(r, !j.subscribed);
   }, function(){ showSendStatus(r, code, 'failed'); });
+}
+/* ====== согласие на рассылку: галочка в форме отправки результата. Сервер отмечает согласие в строке результата
+   (дата, текст у галочки, ссылка для отписки) и отвечает subscribed:true; без этого ответа подписка не считается оформленной ====== */
+function wantsSub(r){ return NEWSLETTER && !!r.sub && !r.subOk; }
+function subscribed(r){
+  r.subOk = new Date().toISOString();
+  var last = lsGet('disc.last'); if(last && last.t===r.t){ last.sub = true; last.subOk = r.subOk; lsSet('disc.last', last); }
+  if(window.discTrack) window.discTrack('subscribe');
+}
+function renderSub(r, failed){
+  var el = $('#subBox'); if(!el) return;
+  el.innerHTML = r.subOk ? '<p class="hint">'+esc(t('share.subscribed'))+'</p>'
+    : '<label class="check"><input type="checkbox" id="sub" name="subscribe"'+(r.sub?' checked':'')+'><span>'+esc(t('share.subscribe'))+'</span></label>'+
+      (failed ? '<p class="hint err">'+esc(t('share.subscribeFailed'))+'</p>' : '');
+}
+function sendSubscribe(r, code){
+  // письмо уже отправлено, участник отметил согласие позже: сервер только дополняет строку результата, второго письма нет
+  postJSON(SEND_ENDPOINT, {token:SEND_TOKEN, action:'subscribe', to:r.email, lang:L.lang, code:code}).then(function(j){
+    if(j.subscribed) subscribed(r);
+    renderSub(r, !j.subscribed);
+  }, function(){ renderSub(r, true); });
 }
 
 /* ====== экран 4: панель администратора ====== */

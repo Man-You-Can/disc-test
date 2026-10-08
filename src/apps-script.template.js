@@ -21,6 +21,14 @@
  * сообщения и вложениями (общим размером до MAX_CONTACT_BYTES) уходит на CONTACT_TO, адрес
  * отправителя подставляется в replyTo; в таблицу такие сообщения не записываются.
  *
+ * Рассылка. Если участник отметил в форме согласие ({subscribe: true}), в строке его результата
+ * заполняются столбцы «Рассылка» («да»), «Согласие получено», «Текст согласия» (на языке участника) и
+ * «Ссылка для отписки», а в письмо с результатом добавляется строка со ссылкой отписки. Запрос
+ * {action: 'subscribe'} делает то же без письма (участник отметил согласие уже после отправки),
+ * {action: 'unsubscribe', u: код} — отписка со страницы /unsubscribe/: во всех строках с этой ссылкой
+ * «да» меняется на «отписка <дата>». Для рассылки берите только строки, где в столбце «Рассылка» стоит «да».
+ * Сам скрипт рассылку не отправляет: лимит Gmail (100 писем в сутки) общий с письмами о результатах.
+ *
  * Защита от злоупотреблений: токен (совпадает с sendToken в site.config.json),
  * e-mail получателя должен совпадать с e-mail внутри кода результата, письмо
  * собирается только из шаблона (клиент не может передать произвольный текст),
@@ -44,7 +52,9 @@ var SHEET_ID = '';                   // ID своей Google Таблицы (и�
 var SHEET_TITLE = 'DISC Test — результаты';  // название создаваемой таблицы
 var SHEET_NAME = 'Результаты';       // название листа
 var MAX_SAVES_PER_DAY = 2000;        // защита от заливки таблицы мусором
-var HEADERS = ['Дата получения', 'Время получения', 'Дата теста', 'Время теста', 'Имя', 'E-mail', 'Язык', 'Профиль', 'Название профиля', 'D', 'I', 'S', 'C', 'D %', 'I %', 'S %', 'C %', 'Письмо', 'Ссылка на отчёт', 'Код результата'];
+var HEADERS = ['Дата получения', 'Время получения', 'Дата теста', 'Время теста', 'Имя', 'E-mail', 'Язык', 'Профиль', 'Название профиля', 'D', 'I', 'S', 'C', 'D %', 'I %', 'S %', 'C %', 'Письмо', 'Ссылка на отчёт', 'Код результата',
+  'Рассылка', 'Согласие получено', 'Текст согласия', 'Ссылка для отписки'];   // четыре столбца согласия на рассылку: в таблице ищутся по заголовку «Рассылка» (см. subscribeColumn)
+var SUBSCRIBED = 'да';               // значение столбца «Рассылка» у согласившихся; после отписки — «отписка <дата>»
 var DATE_FORMAT = 'dd.mm.yyyy', TIME_FORMAT = 'hh:mm:ss';  // вид даты и времени в таблице (первые четыре столбца)
 var VERSION = 'DISC1';
 var KEYS = ['D', 'I', 'S', 'C'];
@@ -52,7 +62,7 @@ var COLORS = { D: '#C9453D', I: '#D6961F', S: '#3A9A69', C: '#3B6FB6' };
 var BLOCK_KEYS = __BLOCK_KEYS__;
 var DATA = __DATA__;
 
-function doGet() { return out({ ok: true, service: 'disc-mailer', quota: MailApp.getRemainingDailyQuota(), results: SAVE_RESULTS, contact: !!CONTACT_TO }); }
+function doGet() { return out({ ok: true, service: 'disc-mailer', quota: MailApp.getRemainingDailyQuota(), results: SAVE_RESULTS, contact: !!CONTACT_TO, newsletter: SAVE_RESULTS }); }
 
 function doPost(e) {
   try {
@@ -60,6 +70,7 @@ function doPost(e) {
     try { body = JSON.parse((e && e.postData && e.postData.contents) || '{}'); } catch (err) { return out({ ok: false, error: 'bad json' }); }
     if (TOKEN && body.token !== TOKEN) return out({ ok: false, error: 'forbidden' });
     if (body.action === 'contact') return sendContact(body);
+    if (body.action === 'unsubscribe') return unsubscribe(body);
     var to = String(body.to || '').trim();
     if (to.length > 120 || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(to)) return out({ ok: false, error: 'bad email' });
     var lang = DATA[body.lang] ? body.lang : 'en';
@@ -67,22 +78,25 @@ function doPost(e) {
     if (!r) return out({ ok: false, error: 'bad code' });
     if (r.email && r.email.toLowerCase() !== to.toLowerCase()) return out({ ok: false, error: 'email mismatch' });
     var saved = SAVE_RESULTS ? saveResult(r, lang) : null;   // строка в таблице; null — база выключена или сохранить не удалось
+    var wantSub = body.subscribe === true || body.action === 'subscribe';
+    var unsub = wantSub ? subscribe(saved, to, lang) : '';    // ссылка для отписки; '' — согласия нет или записать его не удалось
+    if (body.action === 'subscribe') return unsub ? out({ ok: true, saved: true, subscribed: true }) : out({ ok: false, error: 'not saved', saved: !!saved, subscribed: false });
     var limit = checkLimits(to);
-    if (limit) { noteMail(saved, 'не отправлено: ' + limit); return out({ ok: false, error: limit, saved: !!saved }); }
-    var res = sendResultMail(to, r, lang);
-    if (res.error) { noteMail(saved, 'ошибка: ' + res.error); return out({ ok: false, error: res.error, saved: !!saved }); }
+    if (limit) { noteMail(saved, 'не отправлено: ' + limit); return out({ ok: false, error: limit, saved: !!saved, subscribed: !!unsub }); }
+    var res = sendResultMail(to, r, lang, unsub);
+    if (res.error) { noteMail(saved, 'ошибка: ' + res.error); return out({ ok: false, error: res.error, saved: !!saved, subscribed: !!unsub }); }
     noteMail(saved, 'отправлено ' + stamp() + (res.pdfError ? ' (без PDF: ' + res.pdfError + ')' : ''));
-    return out({ ok: true, saved: !!saved, pdf: res.pdf });
+    return out({ ok: true, saved: !!saved, pdf: res.pdf, subscribed: !!unsub });
   } catch (err) {
     return out({ ok: false, error: String((err && err.message) || err) });
   }
 }
 
-/** Письмо с результатом и PDF-отчётом. Если PDF собрать не удалось, письмо уходит без вложения. Возвращает {pdf, pdfError} или {error}. */
-function sendResultMail(to, r, lang) {
+/** Письмо с результатом и PDF-отчётом. Если PDF собрать не удалось, письмо уходит без вложения. unsub — ссылка для отписки, если участник согласился на рассылку. Возвращает {pdf, pdfError} или {error}. */
+function sendResultMail(to, r, lang, unsub) {
   var pdf = null, pdfError = '';
   if (ATTACH_PDF) { try { pdf = reportPdf(r, lang); } catch (err) { pdfError = String((err && err.message) || err); console.error('reportPdf: ' + pdfError); } }
-  var mail = composeMail(r, lang, r.code, !!pdf);
+  var mail = composeMail(r, lang, r.code, !!pdf, unsub);
   var opts = { to: to, subject: mail.subject, htmlBody: mail.html, body: mail.text, name: senderName(lang) };
   if (OWNER_COPY) opts.bcc = OWNER_COPY;
   if (pdf) opts.attachments = [pdf];
@@ -185,7 +199,7 @@ function resultsSheet() {
     sheet.getRange(1, 1, 1, HEADERS.length).setFontWeight('bold');
     sheet.setFrozenRows(1);
     formatDateColumns(sheet);
-  } else splitDateColumns(sheet);
+  } else { splitDateColumns(sheet); subscribeColumn(sheet); }
   return sheet;
 }
 function formatDateColumns(sheet) {
@@ -215,12 +229,27 @@ function splitDateColumns(sheet) {
   return true;
 }
 
+/**
+ * Номер первого из четырёх столбцов согласия на рассылку («Рассылка»). В таблице, заведённой до появления рассылки
+ * (8 октября 2026), их нет: дописывает их справа от последнего занятого столбца — свои столбцы владельца остаются на месте.
+ */
+function subscribeColumn(sheet) {
+  var names = HEADERS.slice(HEADERS.indexOf('Рассылка')), width = Math.max(sheet.getLastColumn(), 1);
+  var c = sheet.getRange(1, 1, 1, width).getValues()[0].map(String).indexOf(names[0]) + 1;
+  if (c) return c;
+  c = Math.max(width, HEADERS.length - names.length) + 1;
+  var need = c + names.length - 1 - sheet.getMaxColumns();
+  if (need > 0) sheet.insertColumnsAfter(sheet.getMaxColumns(), need);
+  sheet.getRange(1, c, 1, names.length).setValues([names]).setFontWeight('bold');
+  return c;
+}
+
 /** Записывает результат в таблицу; тот же код второй раз не дублируется. Возвращает {sheet, row, isNew} или null. */
 function saveResult(r, lang) {
   var lock = LockService.getScriptLock();
   try {
     lock.waitLock(20000);
-    var sheet = resultsSheet(), last = sheet.getLastRow(), codeCol = HEADERS.length;
+    var sheet = resultsSheet(), last = sheet.getLastRow(), codeCol = HEADERS.indexOf('Код результата') + 1;
     if (last > 1) {
       var codes = sheet.getRange(2, codeCol, last - 1, 1).getValues();
       for (var i = 0; i < codes.length; i++) if (String(codes[i][0]) === r.code) return { sheet: sheet, row: i + 2, isNew: false };
@@ -243,6 +272,51 @@ function saveResult(r, lang) {
 /** Название профиля для таблицы: всегда английское, на каком бы языке ни проходили тест (в письме и PDF — на языке участника). */
 function sheetProfileName(key, lang) { var p = (DATA.en || DATA[lang] || {}).profiles; return (p && p[key] && p[key].name) || ''; }
 function noteMail(saved, text) { if (saved) try { saved.sheet.getRange(saved.row, HEADERS.indexOf('Письмо') + 1).setValue(text); } catch (err) {} }
+
+/* ====== рассылка: согласие и отписка ====== */
+/** Код отписки: подпись адреса ключом, который хранится только в свойствах скрипта (создаётся сам). У одного адреса код всегда один. */
+function unsubToken(email) {
+  var props = PropertiesService.getScriptProperties(), key = props.getProperty('unsubKey');
+  if (!key) { key = Utilities.getUuid() + Utilities.getUuid(); props.setProperty('unsubKey', key); }
+  return Utilities.base64EncodeWebSafe(Utilities.computeHmacSha256Signature(String(email).toLowerCase(), key)).replace(/=+$/, '').slice(0, 22);
+}
+/** Ссылка на страницу отписки на языке участника; код — после #, поэтому не попадает ни на хостинг, ни в аналитику. */
+function unsubUrl(email, lang) { return SITE_URL + '/' + (lang === 'en' ? '' : lang + '/') + 'unsubscribe/#u=' + unsubToken(email); }
+
+/**
+ * Отмечает в строке результата согласие на рассылку: «да», когда получено, текст согласия на языке участника
+ * (тот, что стоял у галочки) и ссылка для отписки. Повтор дату не меняет; согласие после отписки подписывает заново.
+ * Возвращает ссылку для отписки или '' (строки нет или записать не удалось).
+ */
+function subscribe(saved, email, lang) {
+  if (!saved) return '';
+  var lock = LockService.getScriptLock();
+  try {
+    lock.waitLock(20000);
+    var url = unsubUrl(email, lang), range = saved.sheet.getRange(saved.row, subscribeColumn(saved.sheet), 1, 4);
+    if (String(range.getValues()[0][0]) !== SUBSCRIBED) range.setValues([[SUBSCRIBED, stamp(), cell((DATA[lang] || DATA.en).consent || ''), url]]);
+    return url;
+  } catch (err) { console.error('subscribe: ' + ((err && err.message) || err)); return ''; }
+  finally { try { lock.releaseLock(); } catch (e) {} }
+}
+
+/** Отписка по коду из ссылки: во всех строках с этой ссылкой «да» меняется на «отписка <дата>». Неизвестный код — тоже ok: рассылка на адрес не идёт. */
+function unsubscribe(b) {
+  var u = String(b.u || '');
+  if (!/^[A-Za-z0-9_-]{22}$/.test(u)) return out({ ok: false, error: 'bad link' });
+  if (!SAVE_RESULTS) return out({ ok: false, error: 'no results base' });
+  var lock = LockService.getScriptLock();
+  try {
+    lock.waitLock(20000);
+    var sheet = resultsSheet(), last = sheet.getLastRow(), c = subscribeColumn(sheet), tail = '#u=' + u, n = 0;
+    if (last > 1) {
+      var v = sheet.getRange(2, c, last - 1, 4).getValues();
+      for (var i = 0; i < v.length; i++) if (String(v[i][0]) === SUBSCRIBED && String(v[i][3]).slice(-tail.length) === tail) { sheet.getRange(i + 2, c).setValue('отписка ' + stamp()); n++; }
+    }
+    return out({ ok: true, rows: n });
+  } catch (err) { return out({ ok: false, error: String((err && err.message) || err) }); }
+  finally { try { lock.releaseLock(); } catch (e) {} }
+}
 
 /** Запустите вручную в редакторе (Выполнить → setup): создаст таблицу заранее (а таблицу старого вида приведёт к нынешнему), покажет её адрес и адрес отправителя в журнале выполнения. */
 function setup() {
@@ -310,7 +384,7 @@ function pct(net) { return Math.round((net + 24) / 48 * 100); }
 function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
 function fmt(s, vars) { return String(s).replace(/\{(\w+)\}/g, function (_, n) { return vars[n] != null ? vars[n] : '{' + n + '}'; }); }
 
-function composeMail(r, lang, code, hasPdf) {
+function composeMail(r, lang, code, hasPdf, unsub) {
   var L = DATA[lang], E = L.email;
   var sc = score(r), c = classify(sc), prof = L.profiles[c.key];
   var label = c.key + ' · ' + prof.name;
@@ -342,10 +416,12 @@ function composeMail(r, lang, code, hasPdf) {
     '<p style="margin:0 0 18px"><a href="' + esc(link) + '" style="display:inline-block;background:#1B2027;color:#F7F8FA;padding:12px 20px;border-radius:10px;text-decoration:none;font-weight:bold">' + esc(E.open) + '</a></p>' +
     '<p style="margin:0 0 18px;font-size:13px;color:#5B6470">' + esc(E.linkNote) + '<br><a href="' + esc(link) + '" style="color:#3B6FB6;word-break:break-all">' + esc(link) + '</a></p>' +
     '<p style="margin:0;padding-top:12px;border-top:1px solid #D9DDE3;font-size:12px;color:#5B6470">' + esc(E.footer) + '</p>' +
+    (unsub ? '<p style="margin:8px 0 0;font-size:12px;color:#5B6470">' + esc(E.subscribed) + ' <a href="' + esc(unsub) + '" style="color:#5B6470">' + esc(E.unsubscribe) + '</a></p>' : '') +
     '</td></tr></table></td></tr></table></body></html>';
   var text = fmt(E.greeting, { name: r.name }) + '\n\n' + E.intro + ' ' + label + ' (' + styleName + ')\n\n' + prof.summary + '\n\n' + E.scores + ':\n' +
     KEYS.map(function (k) { return k + ' — ' + L.keys[k] + ': ' + pct(sc.net[k]) + '%'; }).join('\n') +
-    (attached ? '\n\n' + attached : '') + '\n\n' + E.open + ':\n' + link + '\n\n' + E.footer + '\n';
+    (attached ? '\n\n' + attached : '') + '\n\n' + E.open + ':\n' + link + '\n\n' + E.footer + '\n' +
+    (unsub ? '\n' + E.subscribed + '\n' + E.unsubscribe + ': ' + unsub + '\n' : '');
   return { subject: subject, html: html, text: text };
 }
 

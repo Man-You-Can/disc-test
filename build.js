@@ -38,6 +38,10 @@ const servicePrice = L => { const v = L.content.services ? servicePrices[L.conte
   return v ? new Intl.NumberFormat(L.dateLocale, Number.isInteger(v) ? {} : { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(v) : ''; };
 const hasServices = L => !!(servicePrice(L) && L.ui['nav.services']);
 const hasOffer = L => !!(hasServices(L) && L.content.offer && L.content.refund && L.ui['nav.offer']);
+// Рассылка: newsletter в site.config.json включает галочку согласия в форме отправки результата. Включать после того, как в Apps Script
+// развёрнута версия скрипта со столбцами согласия (GET на sendEndpoint отвечает newsletter:true): прежняя версия галочку молча игнорирует.
+// Страница отписки /unsubscribe/ строится всегда, когда задан sendEndpoint: ссылки из уже разосланных писем должны работать.
+const newsletter = !!(cfg.newsletter && cfg.sendEndpoint);
 const MAX_CONTACT_BYTES = 10 * 1024 * 1024; // общий размер вложений одного сообщения (проверяется и в браузере, и в Apps Script)
 const jsStr = s => JSON.stringify(String(s == null ? '' : s)).replace(/</g, '\\u003c');
 const graphJs = fs.readFileSync(path.join(SRC, 'graph.js'), 'utf8').replace(/\nif \(typeof module[^\n]*\n?$/, '\n');
@@ -258,7 +262,7 @@ for (const L of locales) {
     .replace(/__FOOTER__/g, esc(L.ui.footer)).replace(/__ADMIN_LINK__/g, esc(L.ui.adminLink)).replace(/__PRIVACY__/g, esc(L.ui.privacy)).replace('__LEGAL__', () => legalHtml(L) + rightsHtml(L))
     .replace(/__EMAIL__/g, String(cfg.contactEmail || '').replace(/['\\]/g, ''))
     .replace(/__SEND_ENDPOINT__/g, String(cfg.sendEndpoint || '').replace(/['\\]/g, ''))
-    .replace(/__SEND_TOKEN__/g, String(cfg.sendToken || '').replace(/['\\]/g, ''))
+    .replace(/__SEND_TOKEN__/g, String(cfg.sendToken || '').replace(/['\\]/g, '')).replace(/__NEWSLETTER__/g, newsletter ? '1' : '0')
     .replace('__LOCALE_JSON__', () => JSON.stringify(homeLocale(L)).replace(/</g, '\\u003c').replace(/\u2028|\u2029/g, ''));
   fs.mkdirSync(path.join(OUT, pathOf(L.lang)), { recursive: true });
   fs.writeFileSync(path.join(OUT, pathOf(L.lang), 'index.html'), html);
@@ -563,6 +567,28 @@ for (const L of locales) {
         `<p class="seealso">${docLink('offer/', of)} · ${docLink('services/', sv)}</p>` });
     }
   }
+  // /unsubscribe/ — отписка от рассылки: код берётся из ссылки в письме (#u=…), кнопка отправляет его в Apps Script ({action: 'unsubscribe'}).
+  // Отписывает кнопка, а не само открытие ссылки: почтовые сервисы и антивирусы открывают ссылки из писем автоматически.
+  if (cfg.sendEndpoint) {
+    const un = C.unsubscribe, mailLink = feedbackEmail ? `<a href="mailto:${escFull(feedbackEmail)}">${escFull(feedbackEmail)}</a>` : '';
+    writeContentPage(L, 'unsubscribe/', { noindex: true, noDate: true, title: un.title, description: un.description, crumbs: [{ name: un.h1 }],
+      content: `<div class="eyebrow">DISC</div><h1>${escFull(un.h1)}</h1><p class="lead">${escFull(un.lead)}</p>` +
+        `<div class="card contactcard"><p class="small sendstatus" id="uStatus" aria-live="polite" hidden></p><div class="actions"><button class="btn" type="button" id="uBtn">${escFull(t('unsub.button'))}</button></div></div>`,
+      uiKeys: /^unsub\./,
+      pageJs: `(function(){ var btn = $('#uBtn'), st = $('#uStatus'), m = /[#&]u=([A-Za-z0-9_-]{22})(?:&|$)/.exec(location.hash), mail = ${jsStr(mailLink)};
+  function status(kind, html){ st.hidden = false; st.className = 'small sendstatus ' + kind; st.innerHTML = html; }
+  if(!m){ btn.hidden = true; status('err', t('unsub.bad', {email: mail})); return; }
+  btn.addEventListener('click', function(){
+    btn.disabled = true;
+    // Content-Type не задаём: «простой» запрос без preflight, который принимает Google Apps Script
+    fetch(${jsStr(cfg.sendEndpoint)}, {method: 'POST', body: JSON.stringify({token: ${jsStr(cfg.sendToken)}, action: 'unsubscribe', u: m[1]}), redirect: 'follow'})
+      .then(function(res){ return res.text(); })
+      .then(function(txt){ var j = null; try{ j = JSON.parse(txt); }catch(e){} if(!j || !j.ok) throw new Error('failed');
+        btn.hidden = true; status('ok', esc(t('unsub.done'))); if(window.discTrack) window.discTrack('unsubscribe'); })
+      .catch(function(){ btn.disabled = false; status('err', t('unsub.failed', {email: mail})); });
+  });
+})();` });
+  }
   // /contact/ — форма обратной связи (только при заданном feedbackEmail); разметка из src/contact.js, там же логика страницы
   if (feedbackEmail) {
     const ct = C.contact, maxLabel = '10 ' + (L.ui['contact.mb'] || 'MB');
@@ -649,7 +675,8 @@ for (const L of locales) {
   for (const k of Object.keys(L.profiles)) profiles[k] = { name: L.profiles[k].name, summary: L.profiles[k].summary };
   const report = {};
   for (const k of ['flat', 'statsTitle', 'statMeta', 'traits', 'secondary', 'secondaryAddon', 'strengths', 'growth', 'motivation', 'communication', 'stress', 'environment']) report[k] = L.ui['report.' + k];
-  mailData[L.lang] = { name: L.name, dir: L.dir, brand: L.brand, keys: L.keys, addon: L.addon, styles: L.styles, profiles, email, report, rights: L.ui.rights,
+  // consent — текст у галочки согласия на рассылку: скрипт записывает его в таблицу рядом с отметкой о согласии
+  mailData[L.lang] = { name: L.name, dir: L.dir, brand: L.brand, keys: L.keys, addon: L.addon, styles: L.styles, profiles, email, report, rights: L.ui.rights, consent: L.ui['share.subscribe'],
     cta: { title: L.ui['cta.title'], text: L.ui['cta.text'], desc: L.ui['pages.profile.descCta'] } };
 }
 const gsTpl = fs.readFileSync(path.join(SRC, 'apps-script.template.js'), 'utf8');

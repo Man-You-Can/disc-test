@@ -1,6 +1,6 @@
 // Проверка backend/apps-script/Code.gs без Google: подменяем Utilities/CacheService/MailApp/GmailApp/ContentService,
 // а также SpreadsheetApp/PropertiesService/LockService/Session (база результатов в таблице).
-const fs = require('fs'), path = require('path'), vm = require('vm');
+const fs = require('fs'), path = require('path'), vm = require('vm'), crypto = require('crypto');
 const store = {}, sent = [], props = {}, books = {};
 let mailFail = null; // текст ошибки, которую бросит GmailApp.sendEmail (null — письма уходят)
 let pdfFail = null;  // текст ошибки конвертера HTML → PDF (null — PDF собирается)
@@ -15,6 +15,7 @@ function makeSheet(ss, name) {
     rows, getName: () => name, setName: n => { name = n; return sh; }, getParent: () => ss, setFrozenRows: () => sh,
     appendRow: r => { rows.push(r.slice()); return sh; }, getLastRow: () => rows.length,
     insertColumnAfter: n => { rows.forEach(r => r.splice(n, 0, '')); return sh; },
+    getMaxColumns: () => 26, insertColumnsAfter: () => sh, getLastColumn: () => rows.reduce((n, r) => Math.max(n, r.length), 0),
     colFormats: {}, rowFormats: {},
     getRange: (row, col, nRows, nCols) => {
       if (typeof row === 'string') return { setNumberFormat: f => { sh.colFormats[row] = f; }, setFontWeight: () => {} };
@@ -42,7 +43,8 @@ const ctx = {
     base64DecodeWebSafe: s => [...Buffer.from(s.replace(/-/g, '+').replace(/_/g, '/'), 'base64')],
     base64Decode: s => { if (!/^[A-Za-z0-9+/=]*$/.test(s)) throw new Error('bad base64'); return [...Buffer.from(s, 'base64')]; },
     newBlob: blob, Charset: { UTF_8: 'utf8' },
-    base64EncodeWebSafe: s => Buffer.from(s, 'utf8').toString('base64').replace(/\+/g, '-').replace(/\//g, '_'),
+    base64EncodeWebSafe: s => (typeof s === 'string' ? Buffer.from(s, 'utf8') : Buffer.from(s)).toString('base64').replace(/\+/g, '-').replace(/\//g, '_'),
+    computeHmacSha256Signature: (v, k) => [...crypto.createHmac('sha256', k).update(v).digest()], getUuid: () => crypto.randomUUID(),
     formatDate: (d, tz, fmt) => {
       if (fmt !== 'yyyy-MM-dd-HH-mm-ss') return /H/.test(fmt) ? '2026-09-07 12:00' : '2026-09-07';
       const p = {}; new Intl.DateTimeFormat('en-CA', { timeZone: tz, hourCycle: 'h23', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' }).formatToParts(new Date(+d)).forEach(x => { p[x.type] = x.value; });
@@ -97,7 +99,7 @@ check('mail mentions attachment', mail.htmlBody.includes('во вложении'
 
 // ---- база результатов ----
 check('sheet created and remembered', Object.keys(books).length === 1 && props.sheetId === 'book1');
-check('header row', rows()[0].length === 20 && rows()[0].slice(0, 5).join('|') === 'Дата получения|Время получения|Дата теста|Время теста|Имя' && rows()[0][19] === 'Код результата');
+check('header row', rows()[0].length === 24 && rows()[0].slice(20).join('|') === 'Рассылка|Согласие получено|Текст согласия|Ссылка для отписки' && rows()[0].slice(0, 5).join('|') === 'Дата получения|Время получения|Дата теста|Время теста|Имя' && rows()[0][19] === 'Код результата');
 const row = rows()[1];
 check('one data row', rows().length === 2);
 // таблица в поясе Asia/Yerevan (UTC+4): тест в 10:00 UTC — это 14:00 по времени таблицы
@@ -207,15 +209,16 @@ ctx.CONTACT_TO = savedTo;
 const newRows = JSON.stringify(rows());
 const toDate = (day, time) => typeof day === 'number' ? new Date(Math.round((day - 25569 + time) * 864e5) - 4 * 3600e3) : day; // обратно в момент времени (UTC+4)
 rows().forEach((r, i) => { r.splice(0, 4, i ? toDate(r[0], r[1]) : 'Получено', i ? toDate(r[2], r[3]) : 'Дата теста'); });
+rows()[0].length = 18; // и без четырёх столбцов согласия на рассылку
 rows()[3][0] = 'вручную'; // не дата: остаётся как есть, время пустое
 check('old layout prepared', rows().every(r => r.length === 18) && rows()[0][17] === 'Код результата' && isDate(rows()[1][1]));
 ctx.setup();
 const want = JSON.parse(newRows); want[3][0] = 'вручную'; want[3][1] = '';
-check('old sheet: date columns split, other cells intact', rows().every(r => r.length === 20) && JSON.stringify(rows().map(r => r.map(v => typeof v === 'number' ? +v.toFixed(9) : v))) === JSON.stringify(want.map(r => r.map(v => typeof v === 'number' ? +v.toFixed(9) : v))));
+check('old sheet: date columns split, subscription columns added, other cells intact', rows()[0].length === 24 && rows().slice(1).every(r => r.length === 20) && JSON.stringify(rows().map(r => r.map(v => typeof v === 'number' ? +v.toFixed(9) : v))) === JSON.stringify(want.map(r => r.map(v => typeof v === 'number' ? +v.toFixed(9) : v))));
 const split = JSON.stringify(rows()); ctx.setup();
 check('old sheet: second call changes nothing', JSON.stringify(rows()) === split);
 rows()[0][1] = 'Gjkextyj'; ctx.setup();
-check('new sheet with a retyped header is not split again', rows().every(r => r.length === 20));
+check('new sheet with a retyped header is not split again', rows()[0].length === 24 && rows().slice(1).every(r => r.length === 20));
 rows()[0][1] = 'Время получения';
 const cOld = mk('Olga', 'olga@b.co'); post({ to: 'olga@b.co', lang: 'ru', code: cOld });
 check('row after split: 20 cells, code in the last column, no duplicates on resend', (() => { const n = rows().length, last = rows()[n - 1]; post({ to: 'olga@b.co', lang: 'ru', code: cOld }); return last.length === 20 && last[19] === cOld && last[4] === 'Olga' && rows().length === n; })());
@@ -225,7 +228,39 @@ rows()[1][8] = 'Первопроходец'; const others = JSON.stringify(rows(
 check('englishProfileNames: old rows fixed, nothing else touched', ctx.englishProfileNames() === 1 && rows()[1][8] === 'Pioneer' && rows()[0][8] === 'Название профиля' && JSON.stringify(rows().map(r => r.filter((_, j) => j !== 8))) === others);
 check('englishProfileNames: second run changes nothing', ctx.englishProfileNames() === 0);
 check('setup returns sheet url', ctx.setup() === 'https://docs.google.com/spreadsheets/d/book1/edit' && Object.keys(books).length === 1);
-check('doGet ok', JSON.parse(ctx.doGet().text).ok === true);
+
+// ---- рассылка: согласие и отписка ----
+const subCell = r => r.slice(20, 24), lastRow = () => rows()[rows().length - 1];
+check('no consent: subscription cells stay empty, mail has no unsubscribe link', rows().slice(1).every(r => r.length === 20) && sent.every(x => !/unsubscribe\//.test(x.htmlBody || '')) && r1.subscribed === false);
+const cS = mk('Sub One', 'sub@b.co'), rS = post({ to: 'sub@b.co', lang: 'ru', code: cS, subscribe: true }), mS = sent[sent.length - 1], sS = subCell(lastRow());
+const linkS = sS[3], tokS = String(linkS).split('#u=')[1];
+check('subscribe with the result: ok, subscribed, one mail', rS.ok === true && rS.subscribed === true && mS.to === 'sub@b.co');
+check('subscribe: row marked, consent text in the participant language, link to the ru page', sS[0] === 'да' && sS[1] === '2026-09-07 12:00' && sS[2] === ctx.DATA.ru.consent && /^Соглашаюсь получать/.test(sS[2]) && /^https:\/\/disc-test\.org\/ru\/unsubscribe\/#u=[A-Za-z0-9_-]{22}$/.test(linkS));
+check('subscribe: mail has the consent line and the unsubscribe link (html and text)', mS.htmlBody.includes('Вы согласились получать рассылку') && mS.htmlBody.includes('href="' + linkS + '"') && mS.body.includes('Отписаться от рассылки: ' + linkS));
+check('subscribe: key kept in script properties, not in the link', typeof props.unsubKey === 'string' && props.unsubKey.length > 30 && !linkS.includes(props.unsubKey));
+const nBefore = sent.length, cL = mk('Late', 'late@b.co'); post({ to: 'late@b.co', lang: 'en', code: cL });
+check('result sent without consent: cells empty', lastRow().length === 20 && sent.length === nBefore + 1);
+const rL = post({ action: 'subscribe', to: 'late@b.co', lang: 'en', code: cL });
+check('consent given later: row marked, no second mail, en link at the site root', rL.ok === true && rL.subscribed === true && sent.length === nBefore + 1 && rows().filter(r => r[19] === cL).length === 1 && lastRow()[20] === 'да' && lastRow()[22] === ctx.DATA.en.consent && /^https:\/\/disc-test\.org\/unsubscribe\/#u=/.test(lastRow()[23]));
+check('same address in another language: same code, own page', (() => { const c = mk('Sub One', 'SUB@b.co', '2026-09-08T10:00:00Z'); const r = post({ action: 'subscribe', to: 'SUB@b.co', lang: 'de', code: c }); return r.subscribed === true && lastRow()[23] === 'https://disc-test.org/de/unsubscribe/#u=' + tokS; })());
+check('different addresses: different codes', String(rows().find(r => r[19] === cL)[23]).split('#u=')[1] !== tokS);
+check('repeat consent keeps the first date', (() => { const i = rows().findIndex(r => r[19] === cS); rows()[i][21] = 'раньше'; post({ action: 'subscribe', to: 'sub@b.co', lang: 'ru', code: cS }); return rows()[i][20] === 'да' && rows()[i][21] === 'раньше'; })());
+check('subscribe: address must match the code', post({ action: 'subscribe', to: 'other@b.co', lang: 'ru', code: cS }).error === 'email mismatch');
+check('unsubscribe: bad code rejected', post({ action: 'unsubscribe', u: 'short' }).error === 'bad link' && post({ action: 'unsubscribe' }).error === 'bad link');
+check('unsubscribe: unknown code is ok, nothing changes', (() => { const r = post({ action: 'unsubscribe', u: 'A'.repeat(22) }); return r.ok === true && r.rows === 0 && rows().filter(x => x[20] === 'да').length === 3; })());
+const rU = post({ action: 'unsubscribe', u: tokS });
+check('unsubscribe: every row of the address marked, others untouched, no mail', rU.ok === true && rU.rows === 2 && rows().filter(r => /^отписка 2026-09-07 12:00$/.test(r[20])).length === 2 && rows().find(r => r[19] === cL)[20] === 'да' && sent.length === nBefore + 1);
+check('unsubscribe twice: nothing left to change', post({ action: 'unsubscribe', u: tokS }).rows === 0);
+check('consent after unsubscribing subscribes again', post({ action: 'subscribe', to: 'sub@b.co', lang: 'ru', code: cS }).subscribed === true && rows().find(r => r[19] === cS)[20] === 'да' && rows().find(r => r[19] === cS)[21] === '2026-09-07 12:00');
+check('unsubscribe: wrong token rejected', !TOKEN || JSON.parse(ctx.doPost({ postData: { contents: JSON.stringify({ token: 'nope', action: 'unsubscribe', u: tokS }) } }).text).error === 'forbidden');
+check('consent text and mail lines exist in every language', Object.keys(ctx.DATA).every(lg => ctx.DATA[lg].consent && ctx.DATA[lg].email.subscribed && ctx.DATA[lg].email.unsubscribe && ctx.composeMail(ctx.decodeResult(code), lg, code, true, 'https://x/#u=1').html.includes('https://x/#u=1')));
+const own = makeSheet({}, 'x'); own.rows.push(ctx.HEADERS.slice(0, 20).concat(['Моя заметка']), new Array(20).fill('').concat(['важно']));
+check('owner columns on the right are kept: subscription columns go after them, once', ctx.subscribeColumn(own) === 22 && ctx.subscribeColumn(own) === 22 && own.rows[0].length === 25 && own.rows[0][20] === 'Моя заметка' && own.rows[0].slice(21).join('|') === 'Рассылка|Согласие получено|Текст согласия|Ссылка для отписки' && own.rows[1][20] === 'важно');
+ctx.SAVE_RESULTS = false;
+const rN = post({ to: 'nosave@b.co', lang: 'en', code: mk('N', 'nosave@b.co'), subscribe: true });
+check('SAVE_RESULTS=false: mail goes, subscription is not claimed', rN.ok === true && rN.subscribed === false && !/unsubscribe\//.test(sent[sent.length - 1].htmlBody) && post({ action: 'subscribe', to: 'nosave@b.co', lang: 'en', code: mk('N', 'nosave@b.co') }).error === 'not saved' && post({ action: 'unsubscribe', u: tokS }).ok === false);
+ctx.SAVE_RESULTS = true;
+check('doGet ok, reports newsletter support', JSON.parse(ctx.doGet().text).ok === true && JSON.parse(ctx.doGet().text).newsletter === true);
 fs.writeFileSync(path.join(process.env.OUT || '/tmp', 'disc-mail-preview.html'), mail.htmlBody);
 fs.writeFileSync(path.join(process.env.OUT || '/tmp', 'disc-pdf-preview.html'), pdf.source);
 fs.writeFileSync(path.join(process.env.OUT || '/tmp', 'disc-pdf-preview-ar.html'), sent[2].attachments[0].source);
