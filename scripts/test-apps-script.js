@@ -73,7 +73,7 @@ check('html has link with code', mail.htmlBody.includes('/ru/#r=' + code));
 check('html has greeting with name', mail.htmlBody.includes('Иван Петров'));
 check('html has scores 83%', mail.htmlBody.includes('83%') && mail.htmlBody.includes('25%'));
 check('text body present', /Первопроходец/.test(mail.body) && mail.body.includes(code));
-check('sender name', mail.name === 'DISC Test');
+check('sender name: brand in the mail language + domain', mail.name === 'Тест DISC · disc-test.org');
 check('sent from the domain address', mail.from === 'info@disc-test.org');
 const pdf = (mail.attachments || [])[0];
 check('pdf attached, named by profile', mail.attachments.length === 1 && pdf.getContentType() === 'application/pdf' && pdf.getName() === 'DISC-DI.pdf');
@@ -95,7 +95,7 @@ check('row: percents', row[11] === 83 && row[12] === 67 && row[13] === 25 && row
 check('row: mail status sent', /^отправлено 2026-09-07 12:00$/.test(row[15]));
 check('row: link and code', row[16] === 'https://disc-test.org/ru/#r=' + code && row[17] === code);
 
-check('ja works', post({ to: 'ivan@example.com', lang: 'ja', code }).ok === true && /開拓者/.test(sent[1].subject));
+check('ja works', post({ to: 'ivan@example.com', lang: 'ja', code }).ok === true && /開拓者/.test(sent[1].subject) && sent[1].name === 'DISC診断 · disc-test.org');
 check('same code not duplicated', rows().length === 2);
 check('ar rtl', post({ to: 'ivan@example.com', lang: 'ar', code }).ok === true && sent[2].htmlBody.includes('dir="rtl"') && sent[2].attachments[0].source.includes('<html lang="ar" dir="rtl">'));
 const r4 = post({ to: 'ivan@example.com', lang: 'xx', code });
@@ -138,6 +138,10 @@ ctx.ATTACH_PDF = false;
 post({ to: 'pat3@b.co', lang: 'en', code: mk('Pat', 'pat3@b.co') });
 check('ATTACH_PDF=false: no attachment', !sent[sent.length - 1].attachments && !/attached/.test(sent[sent.length - 1].body));
 ctx.ATTACH_PDF = true;
+ctx.SENDER_NAME = 'My Name';
+post({ to: 'pat4@b.co', lang: 'ru', code: mk('Pat', 'pat4@b.co') });
+check('SENDER_NAME overrides the default name', sent[sent.length - 1].name === 'My Name');
+ctx.SENDER_NAME = '';
 
 // адрес отправителя: если info@ не добавлен в Gmail как «Отправлять письма как», письмо уходит с основного адреса
 aliases = []; delete store['alias:info@disc-test.org'];
@@ -163,7 +167,7 @@ const cr = post({ action: 'contact', name: '  Мария   Иванова ', ema
   files: [{ name: longName, type: 'application/pdf', data: Buffer.from('%PDF-1.4 test').toString('base64') }, { name: 'note.txt', type: 'text/plain', data: Buffer.from('hi').toString('base64') }] });
 check('contact: ok, one mail, nothing saved to sheet', !CONTACT_TO || (cr.ok === true && sent.length === sentBefore + 1 && rows().length === rowsBefore));
 const cm = sent[sent.length - 1];
-check('contact: to feedback address, replyTo sender', !CONTACT_TO || (cm.to === CONTACT_TO && cm.replyTo === 'maria@example.com' && cm.name === 'DISC Test' && cm.from === 'info@disc-test.org'));
+check('contact: to feedback address, replyTo sender', !CONTACT_TO || (cm.to === CONTACT_TO && cm.replyTo === 'maria@example.com' && cm.name === 'DISC Test · disc-test.org' && cm.from === 'info@disc-test.org'));
 check('contact: subject has site and normalized name', !CONTACT_TO || cm.subject === 'Сообщение с сайта disc-test.org: Мария Иванова');
 check('contact: text body has message and meta', !CONTACT_TO || (cm.body.includes('В переводе <b>опечатка</b>.') && cm.body.includes('E-mail: maria@example.com') && cm.body.includes('Язык: ru') && cm.body.includes('Вложения: ' + longName + ', note.txt')));
 check('contact: html body escaped with line breaks', !CONTACT_TO || cm.htmlBody.includes('Здравствуйте!<br>В переводе &lt;b&gt;опечатка&lt;/b&gt;.'));

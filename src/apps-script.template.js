@@ -30,7 +30,7 @@
 var SITE_URL = '__SITE_URL__';
 var TOKEN = '__SEND_TOKEN__';        // '' — без проверки токена
 var OWNER_COPY = '';                 // e-mail для скрытой копии каждого результата; '' — не отправлять
-var SENDER_NAME = 'DISC Test';       // имя отправителя в письме
+var SENDER_NAME = '';                // имя отправителя; '' — название теста на языке участника и домен: «Тест DISC · disc-test.org»
 var SENDER_EMAIL = '__SENDER_EMAIL__';  // адрес отправителя: должен быть добавлен в Gmail → Настройки → Аккаунты → «Отправлять письма как»; '' — основной адрес аккаунта
 var ATTACH_PDF = true;               // прикладывать к письму PDF с полным отчётом
 var CONTACT_TO = '__CONTACT_TO__';   // адрес формы обратной связи (feedbackEmail в site.config.json); '' — форма отключена
@@ -82,7 +82,7 @@ function sendResultMail(to, r, lang) {
   var pdf = null, pdfError = '';
   if (ATTACH_PDF) { try { pdf = reportPdf(r, lang); } catch (err) { pdfError = String((err && err.message) || err); console.error('reportPdf: ' + pdfError); } }
   var mail = composeMail(r, lang, r.code, !!pdf);
-  var opts = { to: to, subject: mail.subject, htmlBody: mail.html, body: mail.text };
+  var opts = { to: to, subject: mail.subject, htmlBody: mail.html, body: mail.text, name: senderName(lang) };
   if (OWNER_COPY) opts.bcc = OWNER_COPY;
   if (pdf) opts.attachments = [pdf];
   try { sendMail(opts); } catch (err) { return { error: String((err && err.message) || err) }; }
@@ -99,8 +99,14 @@ function senderAlias() {
   cache.put(key, ok ? '1' : '0', 600);
   return ok ? SENDER_EMAIL : '';
 }
+/** Имя отправителя: SENDER_NAME, а если оно пустое — бренд на языке письма и домен сайта. */
+function senderName(lang) {
+  if (SENDER_NAME) return SENDER_NAME;
+  var L = DATA[lang] || DATA.en;
+  return ((L && L.brand) || 'DISC Test') + ' · ' + SITE_URL.replace(/^https?:\/\//, '');
+}
 function sendMail(o) {
-  var opts = { name: SENDER_NAME, htmlBody: o.htmlBody }, from = senderAlias();
+  var opts = { name: o.name || senderName('en'), htmlBody: o.htmlBody }, from = senderAlias();
   if (from) opts.from = from;
   if (o.replyTo) opts.replyTo = o.replyTo;
   if (o.bcc) opts.bcc = o.bcc;
