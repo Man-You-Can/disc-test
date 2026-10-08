@@ -360,5 +360,6 @@ function reportHtml(r, lang) {
     two(R.stress, para(st.stress), R.environment, para(st.environment)) +
     '<table width="100%" cellpadding="0" cellspacing="0" dir="' + (L.dir || 'ltr') + '" style="margin-top:22px;border:1px solid #C9CED6"><tr><td style="padding:10px 12px">' +
       '<b>' + esc(L.cta.title) + '</b><br>' + esc(L.cta.text) + ' <a href="' + esc(home) + '" dir="ltr" style="color:#1B2027;font-weight:bold;text-decoration:none">' + esc(home) + '</a></td></tr></table>' +
+    '<p style="margin:8px 0 0;font-size:8pt;color:#5B6470">' + esc(fmt(L.rights, { year: when.getFullYear() })) + '</p>' +
     '</body></html>';
 }

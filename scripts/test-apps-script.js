@@ -134,6 +134,7 @@ const cq = mk('Pat <i>', 'pat2@b.co'); post({ to: 'pat2@b.co', lang: 'en', code:
 const pq = sent[sent.length - 1].attachments[0].source;
 check('pdf: name escaped, en links to site root', pq.includes('Pat &lt;i&gt;') && !pq.includes('Pat <i>') && pq.includes('href="https://disc-test.org/"') && /attached/.test(sent[sent.length - 1].htmlBody));
 check('pdf: every language builds', Object.keys(ctx.DATA).every(lg => { const h = ctx.reportHtml(ctx.decodeResult(code), lg); return h.length > 3000 && !/undefined|\{\w+\}/.test(h); }));
+check('pdf: rights line with the year in every language', Object.keys(ctx.DATA).every(lg => ctx.reportHtml(ctx.decodeResult(code), lg).includes('© ' + new Date().getFullYear() + ' disc-test.org')));
 ctx.ATTACH_PDF = false;
 post({ to: 'pat3@b.co', lang: 'en', code: mk('Pat', 'pat3@b.co') });
 check('ATTACH_PDF=false: no attachment', !sent[sent.length - 1].attachments && !/attached/.test(sent[sent.length - 1].body));
