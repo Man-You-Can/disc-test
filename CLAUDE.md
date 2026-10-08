@@ -22,7 +22,6 @@
 
 ## Что требует действий заказчика (нельзя сделать без его аккаунтов)
 - Google Apps Script (письма с результатом и PDF, база результатов в Google Таблице, письма с формы обратной связи) развёрнут 2026-10-08, `sendEndpoint` вписан. После правки `src/apps-script.template.js` или текстов `email.*`/отчёта — вставить новый `backend/apps-script/Code.gs` в редактор и выпустить новую версию развёртывания (README → «Письмо с результатом и база результатов»); URL не меняется.
-- Добавить Google в SPF домена (Cloudflare DNS): `v=spf1 include:_spf.mx.cloudflare.net include:_spf.google.com ~all`.
 - Бот @disc_test_org_bot развёрнут 2026-10-03 (проект Apps Script «DISC — TG bot»). После смены цены, реквизитов или текстов бота — вставить новый `backend/telegram-bot/Code.gs`, выпустить новую версию развёртывания и снова выполнить `setup` (README → «Бот в Telegram»).
 - Google Search Console, Яндекс Вебмастер, Bing Webmaster: подтвердить домен, отправить `https://disc-test.org/sitemap.xml`.
 - Аналитика (Яндекс.Метрика или GA4); после подключения обновить тексты `consent.*` и страницу «Конфиденциальность» на 14 языках.
