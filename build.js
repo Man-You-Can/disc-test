@@ -23,6 +23,8 @@ const commonJs = fs.readFileSync(path.join(SRC, 'common.js'), 'utf8').replace(/\
 const contactJs = fs.readFileSync(path.join(SRC, 'contact.js'), 'utf8').replace(/\nif \(typeof module[^\n]*\n?$/, '\n');
 const contactHTML = require(path.join(SRC, 'contact.js'));
 const feedbackEmail = String(cfg.feedbackEmail || '').trim().replace(/['\\<>"]/g, '');
+// Адрес, с которого Apps Script шлёт письма (в Gmail он должен быть добавлен как «Отправлять письма как»); по умолчанию — feedbackEmail
+const senderEmail = String(cfg.senderEmail == null ? feedbackEmail : cfg.senderEmail).trim().replace(/['\\<>"]/g, '');
 // Реквизиты владельца в подвале (требование платёжной системы): имя и подпись к ИНН — в локали (ui.legal), номер — в legalInn; пустой номер — строки нет
 const legalInn = String(cfg.legalInn || '').replace(/\D/g, '');
 const legalHtml = L => legalInn ? `<div class="legal">${esc(L.ui.legal.replace('{inn}', legalInn))}</div>` : '';
@@ -639,15 +641,19 @@ const mailData = {};
 for (const L of locales) {
   const email = {};
   for (const k of Object.keys(L.ui)) if (k.startsWith('email.')) email[k.slice(6)] = L.ui[k];
-  // письму нужны только название профиля и краткое описание; роли, поведение в команде и советы по общению в скрипт не кладём
+  // письму и PDF-отчёту нужны название профиля и краткое описание, описания четырёх стилей и подписи разделов отчёта;
+  // роли, поведение в команде и советы по общению (страницы профилей) в скрипт не кладём
   const profiles = {};
   for (const k of Object.keys(L.profiles)) profiles[k] = { name: L.profiles[k].name, summary: L.profiles[k].summary };
-  mailData[L.lang] = { name: L.name, dir: L.dir, keys: L.keys, profiles, email };
+  const report = {};
+  for (const k of ['flat', 'statsTitle', 'statMeta', 'traits', 'secondary', 'secondaryAddon', 'strengths', 'growth', 'motivation', 'communication', 'stress', 'environment']) report[k] = L.ui['report.' + k];
+  mailData[L.lang] = { name: L.name, dir: L.dir, brand: L.brand, keys: L.keys, addon: L.addon, styles: L.styles, profiles, email, report,
+    cta: { title: L.ui['cta.title'], text: L.ui['cta.text'], desc: L.ui['pages.profile.descCta'] } };
 }
 const gsTpl = fs.readFileSync(path.join(SRC, 'apps-script.template.js'), 'utf8');
 const gs = gsTpl
   .replace('__SITE_URL__', siteUrl).replace('__SEND_TOKEN__', String(cfg.sendToken || '').replace(/['\\]/g, ''))
-  .replace('__CONTACT_TO__', feedbackEmail).replace('__MAX_CONTACT_BYTES__', String(MAX_CONTACT_BYTES))
+  .replace('__SENDER_EMAIL__', senderEmail).replace('__CONTACT_TO__', feedbackEmail).replace('__MAX_CONTACT_BYTES__', String(MAX_CONTACT_BYTES))
   .replace('__BLOCK_KEYS__', BLOCK_KEYS).replace('__DATA__', () => JSON.stringify(mailData));
 fs.mkdirSync(path.join(ROOT, 'backend', 'apps-script'), { recursive: true });
 fs.writeFileSync(path.join(ROOT, 'backend', 'apps-script', 'Code.gs'), gs);

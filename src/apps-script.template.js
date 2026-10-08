@@ -2,6 +2,11 @@
  * Тест DISC — серверная часть на Google Apps Script: письмо участнику с результатом
  * и база результатов в Google Таблице.
  *
+ * К письму прикладывается PDF с полным отчётом (ATTACH_PDF): он собирается здесь же из HTML.
+ * Письма уходят с адреса SENDER_EMAIL, если он добавлен в Gmail этого аккаунта как «Отправлять
+ * письма как»; иначе — с основного адреса аккаунта. Функция setup покажет, какой адрес используется,
+ * а testMail пришлёт вам образцы писем с PDF.
+ *
  * Файл backend/apps-script/Code.gs генерируется командой `node build.js` из
  * src/apps-script.template.js, site.config.json и локалей. Как развернуть — README.md,
  * раздел «Письмо с результатом и база результатов».
@@ -26,6 +31,8 @@ var SITE_URL = '__SITE_URL__';
 var TOKEN = '__SEND_TOKEN__';        // '' — без проверки токена
 var OWNER_COPY = '';                 // e-mail для скрытой копии каждого результата; '' — не отправлять
 var SENDER_NAME = 'DISC Test';       // имя отправителя в письме
+var SENDER_EMAIL = '__SENDER_EMAIL__';  // адрес отправителя: должен быть добавлен в Gmail → Настройки → Аккаунты → «Отправлять письма как»; '' — основной адрес аккаунта
+var ATTACH_PDF = true;               // прикладывать к письму PDF с полным отчётом
 var CONTACT_TO = '__CONTACT_TO__';   // адрес формы обратной связи (feedbackEmail в site.config.json); '' — форма отключена
 var MAX_CONTACT_BYTES = __MAX_CONTACT_BYTES__;  // общий размер вложений одного сообщения (то же число проверяет браузер)
 var MAX_CONTACT_FILES = 20;
@@ -61,19 +68,44 @@ function doPost(e) {
     var saved = SAVE_RESULTS ? saveResult(r, lang) : null;   // строка в таблице; null — база выключена или сохранить не удалось
     var limit = checkLimits(to);
     if (limit) { noteMail(saved, 'не отправлено: ' + limit); return out({ ok: false, error: limit, saved: !!saved }); }
-    var mail = composeMail(r, lang, r.code);
-    var opts = { to: to, subject: mail.subject, htmlBody: mail.html, body: mail.text, name: SENDER_NAME };
-    if (OWNER_COPY) opts.bcc = OWNER_COPY;
-    try { MailApp.sendEmail(opts); } catch (err) {
-      var msg = String((err && err.message) || err);
-      noteMail(saved, 'ошибка: ' + msg);
-      return out({ ok: false, error: msg, saved: !!saved });
-    }
-    noteMail(saved, 'отправлено ' + stamp());
-    return out({ ok: true, saved: !!saved });
+    var res = sendResultMail(to, r, lang);
+    if (res.error) { noteMail(saved, 'ошибка: ' + res.error); return out({ ok: false, error: res.error, saved: !!saved }); }
+    noteMail(saved, 'отправлено ' + stamp() + (res.pdfError ? ' (без PDF: ' + res.pdfError + ')' : ''));
+    return out({ ok: true, saved: !!saved, pdf: res.pdf });
   } catch (err) {
     return out({ ok: false, error: String((err && err.message) || err) });
   }
+}
+
+/** Письмо с результатом и PDF-отчётом. Если PDF собрать не удалось, письмо уходит без вложения. Возвращает {pdf, pdfError} или {error}. */
+function sendResultMail(to, r, lang) {
+  var pdf = null, pdfError = '';
+  if (ATTACH_PDF) { try { pdf = reportPdf(r, lang); } catch (err) { pdfError = String((err && err.message) || err); console.error('reportPdf: ' + pdfError); } }
+  var mail = composeMail(r, lang, r.code, !!pdf);
+  var opts = { to: to, subject: mail.subject, htmlBody: mail.html, body: mail.text };
+  if (OWNER_COPY) opts.bcc = OWNER_COPY;
+  if (pdf) opts.attachments = [pdf];
+  try { sendMail(opts); } catch (err) { return { error: String((err && err.message) || err) }; }
+  return { pdf: !!pdf, pdfError: pdfError };
+}
+
+/** Адрес отправителя: SENDER_EMAIL, если он есть среди «Отправлять письма как» в Gmail этого аккаунта; иначе '' (основной адрес). */
+function senderAlias() {
+  if (!SENDER_EMAIL) return '';
+  var cache = CacheService.getScriptCache(), key = 'alias:' + SENDER_EMAIL.toLowerCase(), hit = cache.get(key);
+  if (hit != null) return hit === '1' ? SENDER_EMAIL : '';
+  var ok = false;
+  try { ok = GmailApp.getAliases().some(function (a) { return String(a).toLowerCase() === SENDER_EMAIL.toLowerCase(); }); } catch (err) { console.error('getAliases: ' + ((err && err.message) || err)); return ''; }
+  cache.put(key, ok ? '1' : '0', 600);
+  return ok ? SENDER_EMAIL : '';
+}
+function sendMail(o) {
+  var opts = { name: SENDER_NAME, htmlBody: o.htmlBody }, from = senderAlias();
+  if (from) opts.from = from;
+  if (o.replyTo) opts.replyTo = o.replyTo;
+  if (o.bcc) opts.bcc = o.bcc;
+  if (o.attachments) opts.attachments = o.attachments;
+  GmailApp.sendEmail(o.to, o.subject, o.body, opts);
 }
 
 function out(obj) { return ContentService.createTextOutput(JSON.stringify(obj)).setMimeType(ContentService.MimeType.JSON); }
@@ -124,9 +156,9 @@ function sendContact(b) {
   var html = '<div style="font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.5;color:#1B2027">' +
     '<p style="margin:0 0 18px">' + esc(msg).replace(/\n/g, '<br>') + '</p>' +
     '<p style="margin:0;padding-top:12px;border-top:1px solid #D9DDE3;font-size:13px;color:#5B6470">' + esc(meta).replace(/\n/g, '<br>') + '</p></div>';
-  var opts = { to: CONTACT_TO, replyTo: email, subject: subject, body: msg + '\n\n---\n' + meta + '\n', htmlBody: html, name: SENDER_NAME };
+  var opts = { to: CONTACT_TO, replyTo: email, subject: subject, body: msg + '\n\n---\n' + meta + '\n', htmlBody: html };
   if (blobs.length) opts.attachments = blobs;
-  try { MailApp.sendEmail(opts); } catch (err) { return out({ ok: false, error: String((err && err.message) || err) }); }
+  try { sendMail(opts); } catch (err) { return out({ ok: false, error: String((err && err.message) || err) }); }
   return out({ ok: true });
 }
 
@@ -174,11 +206,30 @@ function saveResult(r, lang) {
 }
 function noteMail(saved, text) { if (saved) try { saved.sheet.getRange(saved.row, HEADERS.indexOf('Письмо') + 1).setValue(text); } catch (err) {} }
 
-/** Запустите вручную в редакторе (Выполнить → setup): создаст таблицу заранее и покажет её адрес в журнале выполнения. */
+/** Запустите вручную в редакторе (Выполнить → setup): создаст таблицу заранее, покажет её адрес и адрес отправителя в журнале выполнения. */
 function setup() {
   var url = resultsSheet().getParent().getUrl();
   Logger.log('Таблица результатов: ' + url);
+  if (SENDER_EMAIL) {
+    CacheService.getScriptCache().remove('alias:' + SENDER_EMAIL.toLowerCase());
+    Logger.log(senderAlias() ? 'Письма уходят с адреса ' + SENDER_EMAIL
+      : 'ВНИМАНИЕ: ' + SENDER_EMAIL + ' не найден среди адресов «Отправлять письма как» в Gmail этого аккаунта — письма уйдут с основного адреса. Добавьте его: Gmail → Настройки → Аккаунты и импорт → «Отправлять письма как».');
+  }
   return url;
+}
+
+/** Запустите вручную (Выполнить → testMail): пришлёт на адрес этого аккаунта образцы писем с PDF на нескольких языках. В таблицу не пишет. */
+function testMail() {
+  var to = Session.getEffectiveUser().getEmail();
+  var m = [], l = [];
+  for (var i = 0; i < 24; i++) { m.push(BLOCK_KEYS[i].indexOf(i % 3 === 0 ? 'I' : 'D')); l.push(BLOCK_KEYS[i].indexOf(i % 2 ? 'S' : 'C')); }
+  var json = JSON.stringify({ n: 'Test', e: to, p: '', t: new Date().toISOString(), m: m.join(''), l: l.join('') });
+  var r = decodeResult(VERSION + '.' + Utilities.base64EncodeWebSafe(json, Utilities.Charset.UTF_8).replace(/=+$/, ''));
+  ['ru', 'en', 'ar', 'ja', 'hi'].forEach(function (lang) {
+    if (!DATA[lang]) return;
+    var res = sendResultMail(to, r, lang);
+    Logger.log(lang + ': ' + (res.error ? 'ошибка: ' + res.error : 'отправлено на ' + to + (res.pdf ? ' с PDF' : ' без PDF: ' + res.pdfError)));
+  });
 }
 
 function decodeResult(str) {
@@ -210,7 +261,7 @@ function pct(net) { return Math.round((net + 24) / 48 * 100); }
 function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
 function fmt(s, vars) { return String(s).replace(/\{(\w+)\}/g, function (_, n) { return vars[n] != null ? vars[n] : '{' + n + '}'; }); }
 
-function composeMail(r, lang, code) {
+function composeMail(r, lang, code, hasPdf) {
   var L = DATA[lang], E = L.email;
   var sc = score(r), c = classify(sc), prof = L.profiles[c.key];
   var label = c.key + ' · ' + prof.name;
@@ -225,6 +276,7 @@ function composeMail(r, lang, code) {
       '<td style="padding:6px 0;width:140px"><div style="height:6px;background:#E9EBEF;border-radius:3px"><div style="height:6px;width:' + p + '%;background:' + COLORS[k] + ';border-radius:3px"></div></div></td>' +
       '<td style="padding:6px 0 6px 10px;font-size:14px;font-weight:bold;text-align:right;width:44px">' + p + '%</td></tr>';
   }).join('');
+  var attached = hasPdf && E.attached ? E.attached : '';
   var badge = '<span style="color:' + COLORS[c.p] + '">' + c.p + '</span>' + (c.s ? '<span style="color:' + COLORS[c.s] + ';font-size:22px">' + c.s + '</span>' : '');
   var html = '<!DOCTYPE html><html lang="' + lang + '" dir="' + (L.dir || 'ltr') + '"><body style="margin:0;background:#F3F4F6;font-family:Arial,Helvetica,sans-serif;color:#1B2027">' +
     '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F3F4F6"><tr><td align="center" style="padding:24px 12px">' +
@@ -237,12 +289,70 @@ function composeMail(r, lang, code) {
     '<p style="margin:0 0 18px">' + esc(prof.summary) + '</p>' +
     '<p style="margin:0 0 6px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#5B6470;font-weight:bold">' + esc(E.scores) + '</p>' +
     '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 22px">' + rows + '</table>' +
+    (attached ? '<p style="margin:0 0 18px;font-weight:bold">' + esc(attached) + '</p>' : '') +
     '<p style="margin:0 0 18px"><a href="' + esc(link) + '" style="display:inline-block;background:#1B2027;color:#F7F8FA;padding:12px 20px;border-radius:10px;text-decoration:none;font-weight:bold">' + esc(E.open) + '</a></p>' +
     '<p style="margin:0 0 18px;font-size:13px;color:#5B6470">' + esc(E.linkNote) + '<br><a href="' + esc(link) + '" style="color:#3B6FB6;word-break:break-all">' + esc(link) + '</a></p>' +
     '<p style="margin:0;padding-top:12px;border-top:1px solid #D9DDE3;font-size:12px;color:#5B6470">' + esc(E.footer) + '</p>' +
     '</td></tr></table></td></tr></table></body></html>';
   var text = fmt(E.greeting, { name: r.name }) + '\n\n' + E.intro + ' ' + label + ' (' + styleName + ')\n\n' + prof.summary + '\n\n' + E.scores + ':\n' +
     KEYS.map(function (k) { return k + ' — ' + L.keys[k] + ': ' + pct(sc.net[k]) + '%'; }).join('\n') +
-    '\n\n' + E.open + ':\n' + link + '\n\n' + E.footer + '\n';
+    (attached ? '\n\n' + attached : '') + '\n\n' + E.open + ':\n' + link + '\n\n' + E.footer + '\n';
   return { subject: subject, html: html, text: text };
+}
+
+/* ====== PDF с полным отчётом ====== */
+/**
+ * HTML → PDF встроенным конвертером Apps Script. Он понимает только простую вёрстку,
+ * поэтому здесь таблицы и строчные стили, без flex и внешних шрифтов.
+ */
+function reportPdf(r, lang) {
+  var c = classify(score(r));
+  return Utilities.newBlob(reportHtml(r, lang), 'text/html', 'report.html').getAs('application/pdf').setName('DISC-' + c.key + '.pdf');
+}
+
+function reportHtml(r, lang) {
+  var L = DATA[lang], R = L.report, sc = score(r), c = classify(sc), prof = L.profiles[c.key], st = L.styles[c.p];
+  var rtl = L.dir === 'rtl', start = rtl ? 'right' : 'left', end = rtl ? 'left' : 'right';
+  var home = SITE_URL + '/' + (lang === 'en' ? '' : lang + '/');
+  var when = new Date(r.t); if (isNaN(when.getTime())) when = new Date();
+  var meta = [r.name, Utilities.formatDate(when, Session.getScriptTimeZone(), 'dd.MM.yyyy')].filter(Boolean).join(' · ');
+  var styleName = c.s ? L.keys[c.p] + ' + ' + L.keys[c.s] : L.keys[c.p];
+  var h = function (t) { return '<p style="margin:16px 0 6px;font-size:10pt;font-weight:bold;text-transform:uppercase;color:#5B6470">' + esc(t) + '</p>'; };
+  var list = function (arr) { return '<ul style="margin:0;padding-' + start + ':18px">' + arr.map(function (x) { return '<li style="margin:0 0 3px">' + esc(x) + '</li>'; }).join('') + '</ul>'; };
+  var para = function (t) { return '<p style="margin:0">' + esc(t) + '</p>'; };
+  var bars = KEYS.map(function (k) {
+    var p = pct(sc.net[k]), net = (sc.net[k] > 0 ? '+' : '') + sc.net[k];
+    var bar = '<table width="100%" cellpadding="0" cellspacing="0" dir="' + (L.dir || 'ltr') + '"><tr>' +
+      (p > 0 ? '<td width="' + p + '%" bgcolor="' + COLORS[k] + '" style="height:8px;font-size:1px;line-height:1px">&nbsp;</td>' : '') +
+      (p < 100 ? '<td width="' + (100 - p) + '%" bgcolor="#E9EBEF" style="height:8px;font-size:1px;line-height:1px">&nbsp;</td>' : '') + '</tr></table>';
+    return '<tr>' +
+      '<td width="26" style="padding:5px 0;font-size:15pt;font-weight:bold;color:' + COLORS[k] + '">' + k + '</td>' +
+      '<td width="200" style="padding:5px 8px"><b>' + esc(L.keys[k]) + '</b><br><span style="font-size:8.5pt;color:#5B6470">' + esc(fmt(R.statMeta, { most: sc.most[k], least: sc.least[k], net: net })) + '</span></td>' +
+      '<td style="padding:5px 8px">' + bar + '</td>' +
+      '<td width="48" align="' + end + '" style="padding:5px 0;font-weight:bold">' + p + '%</td></tr>';
+  }).join('');
+  var two = function (t1, b1, t2, b2) {
+    return '<table width="100%" cellpadding="0" cellspacing="0" dir="' + (L.dir || 'ltr') + '"><tr>' +
+      '<td width="50%" valign="top" style="padding-' + end + ':12px">' + h(t1) + b1 + '</td>' +
+      '<td width="50%" valign="top" style="padding-' + start + ':12px">' + h(t2) + b2 + '</td></tr></table>';
+  };
+  return '<!DOCTYPE html><html lang="' + lang + '" dir="' + (L.dir || 'ltr') + '"><head><meta charset="utf-8"><title>' + esc('DISC — ' + c.key + ' · ' + prof.name) + '</title>' +
+    '<style>@page{size:A4;margin:16mm 15mm}body{font-family:Arial,Helvetica,sans-serif;font-size:10.5pt;line-height:1.45;color:#1B2027;text-align:' + start + '}</style></head><body>' +
+    '<table width="100%" cellpadding="0" cellspacing="0" dir="' + (L.dir || 'ltr') + '" style="border-bottom:1px solid #C9CED6"><tr>' +
+      '<td style="padding-bottom:6px;font-size:9pt;font-weight:bold">' + esc(L.brand) + '</td>' +
+      '<td align="' + end + '" style="padding-bottom:6px;font-size:9pt;color:#5B6470">' + esc(L.cta.desc) + ' <a href="' + esc(home) + '" dir="ltr" style="color:#1B2027;font-weight:bold;text-decoration:none">' + esc(home) + '</a></td></tr></table>' +
+    '<p style="margin:18px 0 0;font-size:9pt;font-weight:bold;text-transform:uppercase;color:#5B6470">' + esc(styleName) + '</p>' +
+    '<p style="margin:2px 0 0;font-size:26pt;font-weight:bold;line-height:1.15"><span style="color:' + COLORS[c.p] + '">' + c.p + '</span>' + (c.s ? '<span style="color:' + COLORS[c.s] + '">' + c.s + '</span>' : '') + ' &nbsp;' + esc(prof.name) + '</p>' +
+    (meta ? '<p style="margin:2px 0 0;font-size:9.5pt;color:#5B6470">' + esc(meta) + '</p>' : '') +
+    '<p style="margin:12px 0 0;font-size:11.5pt">' + esc(prof.summary) + '</p>' +
+    (sc.net[c.p] <= 2 ? '<p style="margin:10px 0 0;padding:8px 10px;background:#F3F4F6">' + esc(R.flat) + '</p>' : '') +
+    h(R.statsTitle) + '<table width="100%" cellpadding="0" cellspacing="0" dir="' + (L.dir || 'ltr') + '">' + bars + '</table>' +
+    h(R.traits) + '<p style="margin:0">' + st.traits.map(esc).join(' · ') + '</p>' +
+    (c.s ? '<p style="margin:8px 0 0"><b>' + esc(fmt(R.secondary, { k: c.s, name: L.keys[c.s] })) + '</b> ' + esc(fmt(R.secondaryAddon, { addon: L.addon[c.s] })) + '</p>' : '') +
+    two(R.strengths, list(st.strengths), R.growth, list(st.growth)) +
+    two(R.motivation, list(st.motivation), R.communication, list(st.communication)) +
+    two(R.stress, para(st.stress), R.environment, para(st.environment)) +
+    '<table width="100%" cellpadding="0" cellspacing="0" dir="' + (L.dir || 'ltr') + '" style="margin-top:22px;border:1px solid #C9CED6"><tr><td style="padding:10px 12px">' +
+      '<b>' + esc(L.cta.title) + '</b><br>' + esc(L.cta.text) + ' <a href="' + esc(home) + '" dir="ltr" style="color:#1B2027;font-weight:bold;text-decoration:none">' + esc(home) + '</a></td></tr></table>' +
+    '</body></html>';
 }

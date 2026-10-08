@@ -1,8 +1,14 @@
-// Проверка backend/apps-script/Code.gs без Google: подменяем Utilities/CacheService/MailApp/ContentService,
+// Проверка backend/apps-script/Code.gs без Google: подменяем Utilities/CacheService/MailApp/GmailApp/ContentService,
 // а также SpreadsheetApp/PropertiesService/LockService/Session (база результатов в таблице).
 const fs = require('fs'), path = require('path'), vm = require('vm');
 const store = {}, sent = [], props = {}, books = {};
-let mailFail = null; // текст ошибки, которую бросит MailApp.sendEmail (null — письма уходят)
+let mailFail = null; // текст ошибки, которую бросит GmailApp.sendEmail (null — письма уходят)
+let pdfFail = null;  // текст ошибки конвертера HTML → PDF (null — PDF собирается)
+let aliases = ['info@disc-test.org']; // адреса «Отправлять письма как» в Gmail
+const logs = [];
+const blob = (bytes, type, name) => ({ getDataAsString: () => Buffer.from(bytes).toString('utf8'), getBytes: () => bytes, getContentType: () => type, getName: () => name,
+  setName(n) { name = n; return this; },
+  getAs: t => { if (pdfFail) throw new Error(pdfFail); const b = blob(bytes, t, name); b.source = Buffer.from(bytes).toString('utf8'); return b; } });
 function makeSheet(ss, name) {
   const rows = [];
   const sh = {
@@ -29,17 +35,19 @@ const ctx = {
   Utilities: {
     base64DecodeWebSafe: s => [...Buffer.from(s.replace(/-/g, '+').replace(/_/g, '/'), 'base64')],
     base64Decode: s => { if (!/^[A-Za-z0-9+/=]*$/.test(s)) throw new Error('bad base64'); return [...Buffer.from(s, 'base64')]; },
-    newBlob: (bytes, type, name) => ({ getDataAsString: () => Buffer.from(bytes).toString('utf8'), getBytes: () => bytes, getContentType: () => type, getName: () => name }),
+    newBlob: blob, Charset: { UTF_8: 'utf8' },
+    base64EncodeWebSafe: s => Buffer.from(s, 'utf8').toString('base64').replace(/\+/g, '-').replace(/\//g, '_'),
     formatDate: (d, tz, fmt) => /H/.test(fmt) ? '2026-09-07 12:00' : '2026-09-07'
   },
-  CacheService: { getScriptCache: () => ({ get: k => store[k] || null, put: (k, v) => { store[k] = v; } }) },
-  MailApp: { sendEmail: o => { if (mailFail) throw new Error(mailFail); sent.push(o); }, getRemainingDailyQuota: () => 100 },
+  CacheService: { getScriptCache: () => ({ get: k => store[k] || null, put: (k, v) => { store[k] = v; }, remove: k => { delete store[k]; } }) },
+  MailApp: { getRemainingDailyQuota: () => 100 },
+  GmailApp: { getAliases: () => aliases, sendEmail: (to, subject, body, o) => { if (mailFail) throw new Error(mailFail); sent.push(Object.assign({ to, subject, body }, o)); } },
   ContentService: { MimeType: { JSON: 'json' }, createTextOutput: s => ({ setMimeType: () => ({ text: s }) }) },
   SpreadsheetApp: { create: makeBook, openById: id => { if (!books[id]) throw new Error('not found'); return books[id]; } },
   PropertiesService: { getScriptProperties: () => ({ getProperty: k => props[k] || null, setProperty: (k, v) => { props[k] = v; } }) },
   LockService: { getScriptLock: () => ({ waitLock: () => {}, releaseLock: () => {} }) },
-  Session: { getScriptTimeZone: () => 'UTC' },
-  Logger: { log: () => {} },
+  Session: { getScriptTimeZone: () => 'UTC', getEffectiveUser: () => ({ getEmail: () => 'owner@example.com' }) },
+  Logger: { log: x => logs.push(String(x)) },
   console: { log: console.log, error: () => {} }
 };
 vm.createContext(ctx);
@@ -66,6 +74,13 @@ check('html has greeting with name', mail.htmlBody.includes('Иван Петро
 check('html has scores 83%', mail.htmlBody.includes('83%') && mail.htmlBody.includes('25%'));
 check('text body present', /Первопроходец/.test(mail.body) && mail.body.includes(code));
 check('sender name', mail.name === 'DISC Test');
+check('sent from the domain address', mail.from === 'info@disc-test.org');
+const pdf = (mail.attachments || [])[0];
+check('pdf attached, named by profile', mail.attachments.length === 1 && pdf.getContentType() === 'application/pdf' && pdf.getName() === 'DISC-DI.pdf');
+check('pdf: profile, name, scores', /Первопроходец/.test(pdf.source) && pdf.source.includes('Иван Петров') && pdf.source.includes('83%') && pdf.source.includes('2026-09-07'));
+check('pdf: all report sections', ['Ключевые черты', 'Сильные стороны', 'Зоны роста', 'Что мотивирует', 'Как с вами лучше общаться', 'Под стрессом', 'Комфортная среда', 'Вторичный стиль: I'].every(x => pdf.source.includes(x)));
+check('pdf: site link, no result code', pdf.source.includes('https://disc-test.org/ru/') && !pdf.source.includes(code));
+check('mail mentions attachment', mail.htmlBody.includes('во вложении') && mail.body.includes('во вложении'));
 
 // ---- база результатов ----
 check('sheet created and remembered', Object.keys(books).length === 1 && props.sheetId === 'book1');
@@ -82,7 +97,7 @@ check('row: link and code', row[16] === 'https://disc-test.org/ru/#r=' + code &&
 
 check('ja works', post({ to: 'ivan@example.com', lang: 'ja', code }).ok === true && /開拓者/.test(sent[1].subject));
 check('same code not duplicated', rows().length === 2);
-check('ar rtl', post({ to: 'ivan@example.com', lang: 'ar', code }).ok === true && sent[2].htmlBody.includes('dir="rtl"'));
+check('ar rtl', post({ to: 'ivan@example.com', lang: 'ar', code }).ok === true && sent[2].htmlBody.includes('dir="rtl"') && sent[2].attachments[0].source.includes('<html lang="ar" dir="rtl">'));
 const r4 = post({ to: 'ivan@example.com', lang: 'xx', code });
 check('per-recipient limit (3/hour) still reports saved', r4.error === 'too many' && r4.saved === true);
 check('row: mail status after limit', rows()[1][15] === 'не отправлено: too many');
@@ -110,6 +125,31 @@ check('code with surrounding text is trimmed', (() => { const c5 = mk('Пётр'
 check('new languages: zh-hant, id, tr, pl', ['zh-hant', 'id', 'tr', 'pl'].every(lg => { const to = lg + '@b.co', cc = mk('Lin', to); const r = post({ to, lang: lg, code: cc }), m = sent[sent.length - 1], row = rows()[rows().length - 1];
   return r.ok === true && m.to === to && m.htmlBody.includes('<html lang="' + lg + '"') && m.htmlBody.includes('/' + lg + '/#r=' + cc) && row[4] === lg && row[16] === 'https://disc-test.org/' + lg + '/#r=' + cc; }));
 
+// PDF: сбой конвертера не мешает письму; имя участника экранируется; английская версия ссылается на корень сайта
+pdfFail = 'conversion failed';
+const cp = mk('Pat <i>', 'pat@b.co'), rp = post({ to: 'pat@b.co', lang: 'en', code: cp }), mp = sent[sent.length - 1];
+check('pdf failure: mail still sent without attachment', rp.ok === true && rp.pdf === false && !mp.attachments && !/attached/.test(mp.htmlBody) && /\(без PDF: conversion failed\)$/.test(rows()[rows().length - 1][15]));
+pdfFail = null;
+const cq = mk('Pat <i>', 'pat2@b.co'); post({ to: 'pat2@b.co', lang: 'en', code: cq });
+const pq = sent[sent.length - 1].attachments[0].source;
+check('pdf: name escaped, en links to site root', pq.includes('Pat &lt;i&gt;') && !pq.includes('Pat <i>') && pq.includes('href="https://disc-test.org/"') && /attached/.test(sent[sent.length - 1].htmlBody));
+check('pdf: every language builds', Object.keys(ctx.DATA).every(lg => { const h = ctx.reportHtml(ctx.decodeResult(code), lg); return h.length > 3000 && !/undefined|\{\w+\}/.test(h); }));
+ctx.ATTACH_PDF = false;
+post({ to: 'pat3@b.co', lang: 'en', code: mk('Pat', 'pat3@b.co') });
+check('ATTACH_PDF=false: no attachment', !sent[sent.length - 1].attachments && !/attached/.test(sent[sent.length - 1].body));
+ctx.ATTACH_PDF = true;
+
+// адрес отправителя: если info@ не добавлен в Gmail как «Отправлять письма как», письмо уходит с основного адреса
+aliases = []; delete store['alias:info@disc-test.org'];
+post({ to: 'al@b.co', lang: 'en', code: mk('Al', 'al@b.co') });
+check('no alias in Gmail: sent without from', sent[sent.length - 1].to === 'al@b.co' && !('from' in sent[sent.length - 1]));
+logs.length = 0; ctx.setup();
+check('setup warns about missing alias', logs.some(x => /ВНИМАНИЕ: info@disc-test\.org/.test(x)));
+aliases = ['Info@disc-test.org']; logs.length = 0; ctx.setup();
+check('setup confirms alias (case-insensitive)', logs.some(x => x === 'Письма уходят с адреса info@disc-test.org'));
+const nSent = sent.length, nRows = rows().length; logs.length = 0; ctx.testMail();
+check('testMail: 5 samples with pdf to the owner, nothing saved', sent.length === nSent + 5 && sent.slice(nSent).every(x => x.to === 'owner@example.com' && x.from === 'info@disc-test.org' && x.attachments.length === 1) && rows().length === nRows && logs.length === 5 && logs.every(x => /с PDF$/.test(x)));
+
 ctx.SAVE_RESULTS = false;
 const before = rows().length;
 check('SAVE_RESULTS=false: mail only', post({ to: 'q@b.co', lang: 'en', code: mk('Q', 'q@b.co') }).saved === false && rows().length === before);
@@ -123,7 +163,7 @@ const cr = post({ action: 'contact', name: '  Мария   Иванова ', ema
   files: [{ name: longName, type: 'application/pdf', data: Buffer.from('%PDF-1.4 test').toString('base64') }, { name: 'note.txt', type: 'text/plain', data: Buffer.from('hi').toString('base64') }] });
 check('contact: ok, one mail, nothing saved to sheet', !CONTACT_TO || (cr.ok === true && sent.length === sentBefore + 1 && rows().length === rowsBefore));
 const cm = sent[sent.length - 1];
-check('contact: to feedback address, replyTo sender', !CONTACT_TO || (cm.to === CONTACT_TO && cm.replyTo === 'maria@example.com' && cm.name === 'DISC Test'));
+check('contact: to feedback address, replyTo sender', !CONTACT_TO || (cm.to === CONTACT_TO && cm.replyTo === 'maria@example.com' && cm.name === 'DISC Test' && cm.from === 'info@disc-test.org'));
 check('contact: subject has site and normalized name', !CONTACT_TO || cm.subject === 'Сообщение с сайта disc-test.org: Мария Иванова');
 check('contact: text body has message and meta', !CONTACT_TO || (cm.body.includes('В переводе <b>опечатка</b>.') && cm.body.includes('E-mail: maria@example.com') && cm.body.includes('Язык: ru') && cm.body.includes('Вложения: ' + longName + ', note.txt')));
 check('contact: html body escaped with line breaks', !CONTACT_TO || cm.htmlBody.includes('Здравствуйте!<br>В переводе &lt;b&gt;опечатка&lt;/b&gt;.'));
@@ -146,4 +186,6 @@ ctx.CONTACT_TO = savedTo;
 check('setup returns sheet url', ctx.setup() === 'https://docs.google.com/spreadsheets/d/book1/edit' && Object.keys(books).length === 1);
 check('doGet ok', JSON.parse(ctx.doGet().text).ok === true);
 fs.writeFileSync(path.join(process.env.OUT || '/tmp', 'disc-mail-preview.html'), mail.htmlBody);
+fs.writeFileSync(path.join(process.env.OUT || '/tmp', 'disc-pdf-preview.html'), pdf.source);
+fs.writeFileSync(path.join(process.env.OUT || '/tmp', 'disc-pdf-preview-ar.html'), sent[2].attachments[0].source);
 console.log(fails ? `FAILED: ${fails}` : 'ALL OK'); process.exit(fails ? 1 : 0);
