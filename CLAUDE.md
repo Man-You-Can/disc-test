@@ -17,6 +17,7 @@
 - Серверный скрипт (письмо с результатом и PDF-отчётом с адреса `info@disc-test.org` + база результатов в Google Таблице): `node scripts/test-apps-script.js` проверяет `backend/apps-script/Code.gs` без Google.
 - Бот в Telegram (справочный, только русский; отдельный проект Apps Script): шаблон `src/telegram-bot.template.js` → `backend/telegram-bot/Code.gs` при сборке; `node scripts/test-telegram-bot.js` проверяет его без Google и Telegram. Токен бота в репозиторий не попадает (свойства скрипта).
 - Проверка перед публикацией: валидатор локалей, сборка, проверка внутренних ссылок (скрипт в журнале от 2026-09-07 в PROJECT.md), просмотр в браузере.
+- Расширенный отчёт (платная услуга): образец, исходник и правила — в `private/extended-report/` (папка вне git: в публичный репозиторий платный текст не попадает). Перед работой над отчётами прочитать `private/extended-report/EXTENDED-REPORT.md`; после каждой правки образца обновить этот файл в той же сессии (нужный раздел и «Историю правок»).
 - Коммиты от имени `Man-You-Can <armenman@gmail.com>`, в конце сообщения `Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>`.
 - Не вести две сессии Claude в этой папке одновременно: они затирают правки друг друга.
 
