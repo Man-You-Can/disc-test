@@ -19,6 +19,7 @@ function makeSheet(ss, name) {
       return {
         getValues: () => Array.from({ length: nRows || 1 }, (_, i) => Array.from({ length: nCols || 1 }, (_, j) => (rows[row - 1 + i] || [])[col - 1 + j] ?? '')),
         setValue: v => { while (rows.length < row) rows.push([]); rows[row - 1][col - 1] = v; },
+        setValues: vs => vs.forEach((r, i) => r.forEach((v, j) => { rows[row - 1 + i][col - 1 + j] = v; })),
         setNumberFormat: () => {}, setFontWeight: () => {}
       };
     }
@@ -89,7 +90,7 @@ const row = rows()[1];
 check('one data row', rows().length === 2);
 check('row: dates', isDate(row[0]) && isDate(row[1]) && row[1].toISOString() === '2026-09-07T10:00:00.000Z');
 check('row: name, email, lang', row[2] === 'Иван Петров' && row[3] === 'ivan@example.com' && row[4] === 'ru');
-check('row: profile', row[5] === 'DI' && row[6] === 'Первопроходец');
+check('row: profile, name in English whatever the language', row[5] === 'DI' && row[6] === 'Pioneer');
 check('row: net scores', row[7] === 16 && row[8] === 8 && row[9] === -12 && row[10] === -12);
 check('row: percents', row[11] === 83 && row[12] === 67 && row[13] === 25 && row[14] === 25);
 check('row: mail status sent', /^отправлено 2026-09-07 12:00$/.test(row[15]));
@@ -123,7 +124,7 @@ check('code with surrounding text is trimmed', (() => { const c5 = mk('Пётр'
 
 // языки второй волны, в том числе код с дефисом (zh-hant): письмо на своём языке, ссылка ведёт в свою папку, язык попадает в таблицу
 check('new languages: zh-hant, id, tr, pl', ['zh-hant', 'id', 'tr', 'pl'].every(lg => { const to = lg + '@b.co', cc = mk('Lin', to); const r = post({ to, lang: lg, code: cc }), m = sent[sent.length - 1], row = rows()[rows().length - 1];
-  return r.ok === true && m.to === to && m.htmlBody.includes('<html lang="' + lg + '"') && m.htmlBody.includes('/' + lg + '/#r=' + cc) && row[4] === lg && row[16] === 'https://disc-test.org/' + lg + '/#r=' + cc; }));
+  return r.ok === true && m.to === to && m.htmlBody.includes('<html lang="' + lg + '"') && m.htmlBody.includes('/' + lg + '/#r=' + cc) && row[4] === lg && /^[A-Za-z ]+$/.test(row[6]) && row[16] === 'https://disc-test.org/' + lg + '/#r=' + cc; }));
 
 // PDF: сбой конвертера не мешает письму; имя участника экранируется; английская версия ссылается на корень сайта
 pdfFail = 'conversion failed';
@@ -188,6 +189,10 @@ const savedTo = ctx.CONTACT_TO; ctx.CONTACT_TO = '';
 check('contact: disabled without address', post({ action: 'contact', name: 'X', email: 'x@example.com', message: 'm' }).error === 'contact disabled');
 ctx.CONTACT_TO = savedTo;
 
+// строки, записанные до перехода на английские названия: englishProfileNames правит их по столбцу «Профиль», остальное не трогает
+rows()[1][6] = 'Первопроходец'; const others = JSON.stringify(rows().map(r => r.filter((_, j) => j !== 6)));
+check('englishProfileNames: old rows fixed, nothing else touched', ctx.englishProfileNames() === 1 && rows()[1][6] === 'Pioneer' && rows()[0][6] === 'Название профиля' && JSON.stringify(rows().map(r => r.filter((_, j) => j !== 6))) === others);
+check('englishProfileNames: second run changes nothing', ctx.englishProfileNames() === 0);
 check('setup returns sheet url', ctx.setup() === 'https://docs.google.com/spreadsheets/d/book1/edit' && Object.keys(books).length === 1);
 check('doGet ok', JSON.parse(ctx.doGet().text).ok === true);
 fs.writeFileSync(path.join(process.env.OUT || '/tmp', 'disc-mail-preview.html'), mail.htmlBody);

@@ -201,15 +201,17 @@ function saveResult(r, lang) {
     var cache = CacheService.getScriptCache(), key = 'save:' + Utilities.formatDate(new Date(), 'UTC', 'yyyy-MM-dd'), n = +(cache.get(key) || 0);
     if (n >= MAX_SAVES_PER_DAY) return null;
     cache.put(key, String(n + 1), 86400);
-    var sc = score(r), c = classify(sc), prof = DATA[lang].profiles[c.key];
+    var sc = score(r), c = classify(sc);
     var when = new Date(r.t); if (isNaN(when.getTime())) when = new Date();
-    sheet.appendRow([new Date(), when, cell(r.name), cell(r.email), lang, c.key, prof.name,
+    sheet.appendRow([new Date(), when, cell(r.name), cell(r.email), lang, c.key, sheetProfileName(c.key, lang),
       sc.net.D, sc.net.I, sc.net.S, sc.net.C, pct(sc.net.D), pct(sc.net.I), pct(sc.net.S), pct(sc.net.C),
       '', SITE_URL + '/' + lang + '/#r=' + r.code, r.code]);
     return { sheet: sheet, row: sheet.getLastRow(), isNew: true };
   } catch (err) { console.error('saveResult: ' + ((err && err.message) || err)); return null; }
   finally { try { lock.releaseLock(); } catch (e) {} }
 }
+/** Название профиля для таблицы: всегда английское, на каком бы языке ни проходили тест (в письме и PDF — на языке участника). */
+function sheetProfileName(key, lang) { var p = (DATA.en || DATA[lang] || {}).profiles; return (p && p[key] && p[key].name) || ''; }
 function noteMail(saved, text) { if (saved) try { saved.sheet.getRange(saved.row, HEADERS.indexOf('Письмо') + 1).setValue(text); } catch (err) {} }
 
 /** Запустите вручную в редакторе (Выполнить → setup): создаст таблицу заранее, покажет её адрес и адрес отправителя в журнале выполнения. */
@@ -222,6 +224,17 @@ function setup() {
       : 'ВНИМАНИЕ: ' + SENDER_EMAIL + ' не найден среди адресов «Отправлять письма как» в Gmail этого аккаунта — письма уйдут с основного адреса. Добавьте его: Gmail → Настройки → Аккаунты и импорт → «Отправлять письма как».');
   }
   return url;
+}
+
+/** Запустите вручную один раз (Выполнить → englishProfileNames): заменит в уже записанных строках названия профилей на английские по столбцу «Профиль». */
+function englishProfileNames() {
+  var sheet = resultsSheet(), last = sheet.getLastRow(), n = 0;
+  if (last < 2) return 0;
+  var keyCol = HEADERS.indexOf('Профиль') + 1, range = sheet.getRange(2, keyCol, last - 1, 2), v = range.getValues();
+  for (var i = 0; i < v.length; i++) { var name = sheetProfileName(String(v[i][0]), 'en'); if (name && v[i][1] !== name) { v[i][1] = name; n++; } }
+  if (n) range.setValues(v);
+  Logger.log('Названия профилей заменены на английские: ' + n + ' из ' + v.length);
+  return n;
 }
 
 /** Запустите вручную (Выполнить → testMail): пришлёт на адрес этого аккаунта образцы писем с PDF на нескольких языках. В таблицу не пишет. */
