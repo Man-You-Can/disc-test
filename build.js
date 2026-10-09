@@ -457,9 +457,11 @@ for (const L of locales) {
       sectionsHtml(a.sections.slice(0, 2)) + sectionsHtml(C.editorial.sections) + sectionsHtml(a.sections.slice(2)))
       .replace('{contact}', feedbackEmail ? `<a href="../contact/">${escFull(t('nav.contact'))}</a>` : escFull(t('nav.contact')))
       .replace('{sources}', `<a href="../disc/#sources">${escFull(L.content.disc.sourcesTitle)}</a>`) + ctaBlock(L, t, '../') });
-  const pv = C.privacy;
+  // content.privacy.purchase — раздел о данных покупателя платной услуги: есть только в языках с офертой (сейчас — русский), встаёт перед «Как удалить данные»
+  const pv = C.privacy, pvSecs = pv.purchase && hasOffer(L) ? pv.sections.slice(0, 4).concat([pv.purchase], pv.sections.slice(4)) : pv.sections;
   writeContentPage(L, 'privacy/', { navKey: 'nav.privacy', title: pv.title, description: pv.description, crumbs: [{ name: t('nav.privacy') }],
-    content: `<div class="eyebrow">DISC</div><h1>${escFull(pv.h1)}</h1>` + sectionsHtml(pv.sections).replace(/\{email\}/g, feedbackEmail ? `<a href="mailto:${escFull(feedbackEmail)}">${escFull(feedbackEmail)}</a>` : '—') });
+    content: `<div class="eyebrow">DISC</div><h1>${escFull(pv.h1)}</h1>` + sectionsHtml(pvSecs).replace(/\{email\}/g, feedbackEmail ? `<a href="mailto:${escFull(feedbackEmail)}">${escFull(feedbackEmail)}</a>` : '—')
+      .replace(/\{offer\}/g, () => hasOffer(L) ? `<a href="../offer/">${escFull(C.offer.linkText)}</a>` : '') });
   // /results/ — расшифровка результатов: текст + три примера графика (DI, SC, сбалансированный)
   const rs = C.results, exNet = { D: 4, I: 2, S: -2, C: -4 };
   const exampleHtml = ex => { const key = ex.key, sc = sampleScore(key === 'flat' ? exNet : SAMPLE_NET[key]);
