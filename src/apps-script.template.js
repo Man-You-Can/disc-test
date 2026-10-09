@@ -265,9 +265,10 @@ function composeExtendedMail(r, lang) {
   var L = DATA[lang], X = L.extended;
   var c = classify(score(r)), prof = L.profiles[c.key];
   var label = c.key + ' · ' + prof.name;
-  var link = SITE_URL + '/' + lang + '/#r=' + r.code;
   var styleName = c.s ? L.keys[c.p] + ' + ' + L.keys[c.s] : L.keys[c.p];
-  var greeting = fmt(L.email.greeting, { name: r.name });
+  var greeting = fmt(L.email.greeting, { name: r.name });   // ссылки на результат в письме нет: по ней открывается краткий отчёт, его легко принять за купленный
+  // единственная ссылка — на тест, для пересылки друзьям и коллегам; метки те же, что у ссылок в самом отчёте (utm_campaign=full-<профиль>)
+  var test = SITE_URL + '/' + lang + '/', testLink = test + '?utm_source=report&utm_medium=email&utm_campaign=full-' + c.key.toLowerCase() + '&utm_content=invite';
   var badge = '<span style="color:' + COLORS[c.p] + '">' + c.p + '</span>' + (c.s ? '<span style="color:' + COLORS[c.s] + ';font-size:22px">' + c.s + '</span>' : '');
   var html = '<!DOCTYPE html><html lang="' + lang + '" dir="' + (L.dir || 'ltr') + '"><body style="margin:0;background:#F3F4F6;font-family:Arial,Helvetica,sans-serif;color:#1B2027">' +
     '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F3F4F6"><tr><td align="center" style="padding:24px 12px">' +
@@ -279,13 +280,16 @@ function composeExtendedMail(r, lang) {
     '<p style="margin:0 0 18px;font-size:13px;color:#5B6470">' + esc(styleName) + '</p>' +
     '<p style="margin:0 0 14px;font-weight:bold">' + esc(X.attached) + '</p>' +
     '<p style="margin:0 0 14px">' + esc(X.how) + '</p>' +
-    '<p style="margin:0 0 18px">' + esc(X.share) + '</p>' +
-    '<p style="margin:0 0 18px"><a href="' + esc(link) + '" style="display:inline-block;background:#1B2027;color:#F7F8FA;padding:12px 20px;border-radius:10px;text-decoration:none;font-weight:bold">' + esc(X.open) + '</a></p>' +
     '<p style="margin:0 0 18px">' + esc(X.help) + '</p>' +
+    '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 18px;background:#F3F4F6;border-radius:10px"><tr><td style="padding:16px 18px;font-size:15px;line-height:1.5">' +
+    '<p style="margin:0 0 6px;font-weight:bold">' + esc(X.inviteTitle) + '</p>' +
+    '<p style="margin:0 0 10px">' + esc(X.invite) + '</p>' +
+    '<p style="margin:0">' + esc(X.inviteLink) + ' <a href="' + esc(testLink) + '" style="color:#3B6FB6;font-weight:bold">' + esc(test.replace(/^https?:\/\//, '')) + '</a></p>' +
+    '</td></tr></table>' +
     '<p style="margin:0;padding-top:12px;border-top:1px solid #D9DDE3;font-size:12px;color:#5B6470">' + esc(X.footer) + '</p>' +
     '</td></tr></table></td></tr></table></body></html>';
-  var text = greeting + '\n\n' + X.intro + ' ' + label + ' (' + styleName + ')\n\n' + X.attached + '\n\n' + X.how + '\n\n' + X.share + '\n\n' +
-    X.open + ':\n' + link + '\n\n' + X.help + '\n\n' + X.footer + '\n';
+  var text = greeting + '\n\n' + X.intro + ' ' + label + ' (' + styleName + ')\n\n' + X.attached + '\n\n' + X.how + '\n\n' + X.help + '\n\n' +
+    X.inviteTitle + '\n' + X.invite + '\n' + X.inviteLink + ' ' + testLink + '\n\n' + X.footer + '\n';
   return { subject: fmt(X.subject, { label: label }), html: html, text: text };
 }
 
