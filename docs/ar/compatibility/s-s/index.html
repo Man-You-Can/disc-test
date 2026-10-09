@@ -205,6 +205,30 @@ html[lang=ar] body,html[lang=hi] body{font-size:17px;line-height:1.65}
 .service p{margin:0;color:var(--muted)}
 .service .price{flex:none;color:var(--ink);font-family:var(--font-head);font-weight:500;font-size:28px;line-height:1.1}
 .service .price small{display:block;font-family:var(--font-body);font-weight:400;font-size:13px;color:var(--muted);margin-bottom:4px}
+/* расширенный отчёт: блок на экране результата (.xoffer, .xanchor) и страница отчёта (.xfacts, .xsample, .xbuy) */
+.xanchor{margin:-10px 0 18px;font-size:14px}
+.xoffer{scroll-margin-top:76px}
+.xoffer h2{margin:0 0 12px;font-size:22px}
+.xoffer .xhook{background:var(--soft);border-radius:10px;padding:12px 14px;margin:0 0 16px}
+.xgrid{display:grid;grid-template-columns:1fr auto;gap:16px 28px;align-items:start}
+.xgrid ul{margin:0;padding-inline-start:20px}
+.xgrid li{margin-bottom:8px}
+.xthumbs{display:grid;grid-template-columns:repeat(3,96px);gap:8px}
+.xthumbs img,.xsample img{display:block;height:auto;border:1px solid var(--line);border-radius:6px;background:#fff}
+.xthumbs img{width:100%}
+.xside p{margin:6px 0 0;font-size:13px;color:var(--muted)}
+.xact{margin:16px 0 10px;gap:10px 16px}
+.xprice{font-weight:600}
+.xoffer .xfree{margin:0;font-size:13px;color:var(--muted)}
+.content .xfacts{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 22px;padding:0;list-style:none}
+.content .xfacts li{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:14px;margin:0}
+.xsample{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:14px 0 8px}
+.xsample figure{margin:0}
+.xsample img{width:100%}
+.xsample figcaption{font-size:13px;color:var(--muted);margin-top:6px}
+.service .more{margin-top:8px}
+.content .xq{font-family:var(--font-body);font-size:17px;font-weight:600;text-transform:none;letter-spacing:0;color:var(--ink);margin:20px 0 6px}
+@media (max-width:640px){.xgrid{grid-template-columns:1fr}.xthumbs{grid-template-columns:repeat(3,1fr)}.xoffer h2{font-size:19px}.xsample{grid-template-columns:repeat(2,1fr)}}
 /* призыв сразу после вводного абзаца контентных страниц и плавающая кнопка на телефоне (аудит 3, п. 1) */
 .cta.cta-top{padding:14px 18px;margin:18px 0 26px;gap:10px 18px}
 .cta.cta-top p{flex:1 1 240px;font-size:15px;opacity:.9}

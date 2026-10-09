@@ -38,6 +38,11 @@ const servicePrice = L => { const v = L.content.services ? servicePrices[L.conte
   return v ? new Intl.NumberFormat(L.dateLocale, Number.isInteger(v) ? {} : { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(v) : ''; };
 const hasServices = L => !!(servicePrice(L) && L.ui['nav.services']);
 const hasOffer = L => !!(hasServices(L) && L.content.offer && L.content.refund && L.ui['nav.offer']);
+// Расширенный отчёт: страница /extended-report/ и блок на экране результата — только в языках, где есть content.product, оферта
+// и картинки листов образца src/assets/extended/<язык>-i-<n>.webp (с уменьшенной копией -s). Сам отчёт в репозиторий не попадает.
+const sampleCount = L => { let n = 0; while (fs.existsSync(path.join(SRC, 'assets', 'extended', `${L.lang}-i-${n + 1}.webp`)) && fs.existsSync(path.join(SRC, 'assets', 'extended', `${L.lang}-i-${n + 1}-s.webp`))) n++; return n; };
+const hasProduct = L => !!(hasOffer(L) && L.content.product && sampleCount(L) >= L.content.product.sampleAlt.length);
+const withPrice = (L, obj) => JSON.parse(JSON.stringify(obj).replace(/\{price\}/g, servicePrice(L)));
 // Рассылка: newsletter в site.config.json включает галочку согласия в форме отправки результата. Включать после того, как в Apps Script
 // развёрнута версия скрипта со столбцами согласия (GET на sendEndpoint отвечает newsletter:true): прежняя версия галочку молча игнорирует.
 // Страница отписки /unsubscribe/ строится всегда, когда задан sendEndpoint: ссылки из уже разосланных писем должны работать.
@@ -210,7 +215,9 @@ const contentDate = (key, text, files) => { const h = crypto.createHash('sha1').
 // (profiles.*.deep, careers, team, with, content.*) раньше попадали в скрипт целиком — ~150 КБ лишнего на главной (аудит 3, п. 4).
 const homeLocale = L => Object.assign({}, L, {
   profiles: Object.fromEntries(Object.entries(L.profiles).map(([k, p]) => [k, { name: p.name, summary: p.summary }])),
-  content: { home: L.content.home, colors: { colors: Object.fromEntries(KEYS.map(k => [k, { name: L.content.colors.colors[k].name }])) } }
+  // product — тексты блока «Расширенный отчёт» на экране результата (цена уже подставлена); страница отчёта в скрипт не идёт
+  content: Object.assign({ home: L.content.home, colors: { colors: Object.fromEntries(KEYS.map(k => [k, { name: L.content.colors.colors[k].name }])) } },
+    hasProduct(L) ? { product: withPrice(L, L.content.product.block) } : {})
 });
 // Организация-издатель: одна карточка на весь сайт, с адресом для связи
 const orgLd = () => ({ '@context': 'https://schema.org', '@type': 'Organization', name: 'DISC Test', url: siteUrl + '/', logo: `${siteUrl}/icon-512.png`, email: feedbackEmail || undefined });
@@ -557,9 +564,45 @@ for (const L of locales) {
     const svcCrumb = { name: t('nav.services'), href: '../services/', sub: 'services/' }, docLink = (sub2, d) => `<a href="../${sub2}">${escFull(d.h1)} ${arrow(L)}</a>`;
     writeContentPage(L, 'services/', { navKey: 'nav.services', langs: locales.filter(hasServices), title: fill(sv.title), description: fill(sv.description), crumbs: [{ name: t('nav.services') }],
       content: fillHtml(`<div class="eyebrow">DISC</div><h1>${escFull(sv.h1)}</h1><p class="lead">${escFull(sv.lead)}</p>` +
-        `<section class="service"><div><h2>${escFull(sv.name)}</h2><p>${escFull(sv.text)}</p></div><p class="price"><small>${escFull(sv.priceLabel)}</small>${escFull(sv.price)}</p></section>` +
+        `<section class="service"><div><h2>${escFull(sv.name)}</h2><p>${escFull(sv.text)}</p>` + (hasProduct(L) ? `<p><a class="more" href="../extended-report/">${escFull(C.product.more)} ${arrow(L)}</a></p>` : '') +
+        `</div><p class="price"><small>${escFull(sv.priceLabel)}</small>${escFull(sv.price)}</p></section>` +
         sectionsHtml(sv.sections.slice(0, 1)) + (docs && sv.docs ? `<p>${escFull(sv.docs)}</p>` : '') + sectionsHtml(sv.sections.slice(1))) +
         (docs ? `<p class="seealso">${docLink('offer/', of)} · ${docLink('refund/', rf)}</p>` : '') });
+    // /extended-report/ — страница расширенного отчёта: что внутри, листы образца картинками, сравнение с кратким отчётом, цена.
+    // Оплаты на сайте пока нет: блок покупки ведёт на тест, а у кого результат сохранён на этом устройстве (disc.last), тому скрипт страницы
+    // меняет его на заявку — форма обратной связи с готовым текстом и ссылкой на результат (передаются через sessionStorage, см. src/contact.js)
+    if (hasProduct(L)) {
+      const pr = withPrice(L, C.product), root = '../' + (pathOf(L.lang) ? '../' : ''), rich = str => escFull(str).replace(/&lt;(\/?)b&gt;/g, '<$1b>');
+      const buyBox = `<section class="service xbuy"><div><h2>${escFull(pr.buy.testTitle)}</h2><p>${escFull(pr.buy.testText)}</p></div><p class="price"><small>${escFull(pr.priceLabel)}</small>${escFull(pr.price)}</p>` +
+        `<a class="btn" href="../" data-goal="ext-page-test">${escFull(pr.buy.testButton)}</a></section>`;
+      const sample = pr.sampleAlt.map((alt, i) => `<figure><a href="${root}extended/${L.lang}-i-${i + 1}.webp" target="_blank" rel="noopener" data-goal="ext-page-sample">` +
+        `<img src="${root}extended/${L.lang}-i-${i + 1}-s.webp" width="440" height="623" alt="${escFull(alt)}" loading="lazy" decoding="async"></a><figcaption>${escFull(pr.sampleCaption[i])}</figcaption></figure>`).join('');
+      const compare = `<div class="tablewrap"><table class="cmp"><thead><tr>${pr.compareHead.map(h => `<th scope="col">${escFull(h)}</th>`).join('')}</tr></thead><tbody>` +
+        pr.compare.map(r => `<tr><th scope="row">${escFull(r[0])}</th><td>${escFull(r[1])}</td><td>${escFull(r[2])}</td></tr>`).join('') + `</tbody></table></div>`;
+      writeContentPage(L, 'extended-report/', { navKey: 'nav.services', langs: locales.filter(hasProduct), title: pr.title, description: pr.description, crumbs: [svcCrumb, { name: pr.h1 }],
+        content: fillHtml(`<div class="eyebrow">${escFull(t('nav.services'))}</div><h1>${escFull(pr.h1)}</h1><p class="lead">${escFull(pr.lead)}</p>` +
+          `<ul class="xfacts">${pr.facts.map(x => `<li>${escFull(x)}</li>`).join('')}</ul>` + buyBox +
+          `<h2 id="sample">${escFull(pr.sampleTitle)}</h2><p>${escFull(pr.sampleNote)}</p><div class="xsample">${sample}</div>` +
+          `<h2>${escFull(pr.forTitle)}</h2>` + listHtml('ul', pr.for) +
+          `<h2>${escFull(pr.insideTitle)}</h2><p>${escFull(pr.insideLead)}</p><ol>${pr.inside.map(x => `<li>${rich(x)}</li>`).join('')}</ol>` +
+          `<h2>${escFull(pr.compareTitle)}</h2>` + compare + `<p class="small muted">${escFull(pr.compareNote)}</p>` +
+          `<h2>${escFull(pr.howTitle)}</h2>` + listHtml('ol', pr.how) + buyBox +
+          `<h2>${escFull(pr.faqTitle)}</h2>` + pr.faq.map(it => `<h3 class="xq">${escFull(it.q)}</h3><p>${escFull(it.a)}</p>`).join('') + `<p class="small muted">${escFull(pr.docs)}</p>`) +
+          `<p class="seealso">${docLink('services/', sv)} · ${docLink('offer/', of)} · ${docLink('refund/', rf)}</p>`,
+        files: [1, 2, 3, 4].map(i => `src/assets/extended/${L.lang}-i-${i}.webp`),
+        pageJs: `(function(){
+  var r = lsGet('disc.last'); if(!r || !r.t || !r.m || !r.l || !r.m.join) return;
+  var B = ${JSON.stringify(pr.buy).replace(/</g, '\\u003c')}, d = new Date(r.t), date = isNaN(d) ? '' : d.toLocaleDateString(L.dateLocale, {day:'numeric', month:'long', year:'numeric'});
+  function b64e(s){ return btoa(unescape(encodeURIComponent(s))).replace(/\\+/g,'-').replace(/\\//g,'_').replace(/=+$/,''); }
+  var link = new URL('../', location.href).href + '#r=DISC1.' + b64e(JSON.stringify({n:r.name||'', e:r.email||'', p:r.pos||'', t:r.t, m:r.m.join(''), l:r.l.join('')}));
+  document.querySelectorAll('.xbuy').forEach(function(box){
+    box.querySelector('h2').textContent = B.orderTitle.replace('{date}', date);
+    box.querySelector('div p').textContent = B.orderText;
+    var a = box.querySelector('a.btn'); a.textContent = B.orderButton; a.href = '../contact/'; a.setAttribute('data-goal', 'ext-page-order');
+    a.addEventListener('click', function(){ try{ sessionStorage.setItem('disc.order', JSON.stringify({name:r.name||'', email:r.email||'', message:B.orderMsg.replace('{link}', link)})); }catch(e){} });
+  });
+})();` });
+    }
     if (docs) {
     writeContentPage(L, 'offer/', { navKey: 'nav.services', langs: own, title: of.title, description: of.description, crumbs: [svcCrumb, { name: of.h1 }],
       content: fillHtml(`<div class="eyebrow">${escFull(t('nav.services'))}</div><h1>${escFull(of.h1)}</h1><p class="muted">${escFull(of.edition)}</p><p>${escFull(of.lead)}</p>` + sectionsHtml(of.sections)) +
@@ -646,6 +689,9 @@ for (const f of ['favicon.svg', 'favicon.ico', 'favicon-120.png', 'apple-touch-i
 }
 fs.mkdirSync(path.join(OUT, 'fonts'), { recursive: true });
 for (const f of fs.existsSync(path.join(ASSETS, 'fonts')) ? fs.readdirSync(path.join(ASSETS, 'fonts')) : []) if (f.endsWith('.woff2')) fs.copyFileSync(path.join(ASSETS, 'fonts', f), path.join(OUT, 'fonts', f));
+// листы образца расширенного отчёта (картинки; готовятся вручную из PDF образца, см. PROJECT.md от 2026-10-09)
+if (fs.existsSync(path.join(ASSETS, 'extended'))) { fs.mkdirSync(path.join(OUT, 'extended'), { recursive: true });
+  for (const f of fs.readdirSync(path.join(ASSETS, 'extended'))) if (f.endsWith('.webp')) fs.copyFileSync(path.join(ASSETS, 'extended', f), path.join(OUT, 'extended', f)); }
 fs.mkdirSync(path.join(OUT, 'pdf'), { recursive: true });
 for (const f of fs.existsSync(path.join(ASSETS, 'pdf')) ? fs.readdirSync(path.join(ASSETS, 'pdf')) : []) if (f.endsWith('.pdf')) fs.copyFileSync(path.join(ASSETS, 'pdf', f), path.join(OUT, 'pdf', f));
 fs.mkdirSync(path.join(OUT, 'og'), { recursive: true });

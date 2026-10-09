@@ -198,6 +198,30 @@ html[lang=ar] body,html[lang=hi] body{font-size:17px;line-height:1.65}
 .service p{margin:0;color:var(--muted)}
 .service .price{flex:none;color:var(--ink);font-family:var(--font-head);font-weight:500;font-size:28px;line-height:1.1}
 .service .price small{display:block;font-family:var(--font-body);font-weight:400;font-size:13px;color:var(--muted);margin-bottom:4px}
+/* расширенный отчёт: блок на экране результата (.xoffer, .xanchor) и страница отчёта (.xfacts, .xsample, .xbuy) */
+.xanchor{margin:-10px 0 18px;font-size:14px}
+.xoffer{scroll-margin-top:76px}
+.xoffer h2{margin:0 0 12px;font-size:22px}
+.xoffer .xhook{background:var(--soft);border-radius:10px;padding:12px 14px;margin:0 0 16px}
+.xgrid{display:grid;grid-template-columns:1fr auto;gap:16px 28px;align-items:start}
+.xgrid ul{margin:0;padding-inline-start:20px}
+.xgrid li{margin-bottom:8px}
+.xthumbs{display:grid;grid-template-columns:repeat(3,96px);gap:8px}
+.xthumbs img,.xsample img{display:block;height:auto;border:1px solid var(--line);border-radius:6px;background:#fff}
+.xthumbs img{width:100%}
+.xside p{margin:6px 0 0;font-size:13px;color:var(--muted)}
+.xact{margin:16px 0 10px;gap:10px 16px}
+.xprice{font-weight:600}
+.xoffer .xfree{margin:0;font-size:13px;color:var(--muted)}
+.content .xfacts{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 22px;padding:0;list-style:none}
+.content .xfacts li{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:14px;margin:0}
+.xsample{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:14px 0 8px}
+.xsample figure{margin:0}
+.xsample img{width:100%}
+.xsample figcaption{font-size:13px;color:var(--muted);margin-top:6px}
+.service .more{margin-top:8px}
+.content .xq{font-family:var(--font-body);font-size:17px;font-weight:600;text-transform:none;letter-spacing:0;color:var(--ink);margin:20px 0 6px}
+@media (max-width:640px){.xgrid{grid-template-columns:1fr}.xthumbs{grid-template-columns:repeat(3,1fr)}.xoffer h2{font-size:19px}.xsample{grid-template-columns:repeat(2,1fr)}}
 /* призыв сразу после вводного абзаца контентных страниц и плавающая кнопка на телефоне (аудит 3, п. 1) */
 .cta.cta-top{padding:14px 18px;margin:18px 0 26px;gap:10px 18px}
 .cta.cta-top p{flex:1 1 240px;font-size:15px;opacity:.9}
@@ -766,6 +790,24 @@ function renderReport(r, opts){
   var colorName = co ? [cls.p].concat(cls.s?[cls.s]:[]).map(function(k){ return co.colors[k].name; }).join(' + ') : '';
 
   function list(arr){ return '<ul>'+arr.map(function(x){ return '<li>'+esc(x)+'</li>'; }).join('')+'</ul>'; }
+  // блок «Расширенный отчёт» (только в языках, где отчёт есть: тексты в L.content.product): зацепка — самая низкая шкала участника,
+  // она определяется так же, как в самом отчёте (последняя по итогу; при равенстве — более поздняя в порядке D, I, S, C)
+  var PB = L.content && L.content.product, extHref = base+'extended-report/';
+  var low = KEYS.slice().sort(function(x,y){ return sc.net[y]-sc.net[x]; })[3];
+  function extOffer(){
+    if(!PB) return '';
+    var hook = PB.hook.replace('{k}', low).replace('{name}', L.keys[low]).replace('{pct}', pct(sc.net[low]));
+    return '<section class="share xoffer no-print" id="extOffer" style="margin-top:16px">'+
+      '<div class="eyebrow">'+esc(PB.eyebrow)+'</div><h2>'+esc(PB.title)+'</h2>'+
+      '<p class="xhook">'+esc(hook)+'</p>'+
+      '<div class="xgrid">'+list(PB.list)+
+        '<div class="xside"><a class="xthumbs" href="'+extHref+'#sample" aria-label="'+esc(PB.sample)+'">'+[1,2,4].map(function(n){ return '<img src="'+ROOT_REL+'extended/'+L.lang+'-i-'+n+'-s.webp" width="440" height="623" alt="" loading="lazy" decoding="async">'; }).join('')+'</a>'+
+          '<p>'+esc(PB.sample)+'</p></div>'+
+      '</div>'+
+      '<div class="actions xact"><a class="btn" href="'+extHref+'">'+esc(PB.button)+'</a><span class="xprice">'+esc(PB.price)+'</span></div>'+
+      '<p class="xfree">'+esc(PB.free)+'</p>'+
+    '</section>';
+  }
 
   view.innerHTML =
     (opts.fromAdmin ? '<p class="no-print"><button class="link" id="backAdmin" type="button">'+t('report.backAdmin')+'</button></p>' : '')+
@@ -778,6 +820,7 @@ function renderReport(r, opts){
         '<div class="meta ym-hide-content">'+meta+'</div></div>'+
     '</div>'+
     '<p class="lead">'+esc(prof.summary)+'</p>'+
+    (PB ? '<p class="xanchor no-print"><button class="link" type="button" id="extAnchor">'+esc(PB.anchor)+' ↓</button></p>' : '')+
     (cls.flat ? '<p class="notice">'+t('report.flat')+'</p>' : '')+
     '<div class="card graphcard">'+
       '<div class="graph"><h3>'+t('report.graphTitle')+'</h3><div id="graph">'+graphSVG(sc, show, {label:t('report.graphAria'), colorVar:colorVar, keys:KEYS})+'</div>'+
@@ -808,6 +851,7 @@ function renderReport(r, opts){
     '<p class="print-only printrights">'+esc(t('rights',{year:new Date().getFullYear()}))+'</p>'+
     '<p class="seealso no-print"><a href="'+profileHref+'">'+t('pages.profile.more',{name:esc(prof.name)})+' '+arrowR()+'</a> · <a href="'+base+'compatibility/">'+t('nav.compat')+' '+arrowR()+'</a>'+
       (colorName ? ' · <a href="'+base+'colors/#'+cls.p.toLowerCase()+'">'+t('report.color',{color:esc(colorName)})+' '+arrowR()+'</a>' : '')+'</p>'+
+    extOffer()+
     (opts.own ?
       '<div class="share no-print" id="sendBox" style="margin-top:16px"><h2>'+t('share.emailTitle')+'</h2>'+
         '<form class="form" id="sendForm" autocomplete="on" novalidate>'+
@@ -839,6 +883,13 @@ function renderReport(r, opts){
   view.querySelectorAll('.legend input').forEach(function(cb){
     cb.addEventListener('change', function(){ show[cb.getAttribute('data-s')] = cb.checked; $('#graph').innerHTML = graphSVG(sc, show, {label:t('report.graphAria'), colorVar:colorVar, keys:KEYS}); });
   });
+  // цели Метрики блока расширенного отчёта: ext-show — блок показан на экране, ext-anchor — строка под описанием профиля, ext-click — кнопка или листы образца
+  if(PB){
+    var xo = $('#extOffer');
+    $('#extAnchor').addEventListener('click', function(){ if(window.discTrack) window.discTrack('ext-anchor'); xo.scrollIntoView({behavior:'smooth', block:'start'}); });
+    xo.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ if(window.discTrack) window.discTrack('ext-click'); }); });
+    if('IntersectionObserver' in window){ var xio = new IntersectionObserver(function(es){ if(es[0].isIntersecting){ xio.disconnect(); if(window.discTrack) window.discTrack('ext-show'); } }, {threshold:.4}); xio.observe(xo); }
+  }
   $('#copyCode').addEventListener('click', function(){ copyText(code, $('#code')); });
   $('#copyLink').addEventListener('click', function(){ copyText(link, null); });
   $('#print').addEventListener('click', function(){ try{ window.print(); }catch(e){ toast(t('toast.printNA')); } });

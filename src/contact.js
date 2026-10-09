@@ -32,6 +32,9 @@ function contactHTML(c){
 function initContact(c){
   var t=c.t, esc=c.esc, $=c.$, L=c.L, endpoint=c.endpoint||'', token=c.token||'', email=c.email||'', MAX=c.maxBytes||10*1024*1024;
   var form=$('#contactForm'); if(!form) return;
+  /* заявка со страницы расширенного отчёта: имя, e-mail и текст со ссылкой на результат та страница кладёт в sessionStorage */
+  try{ var ord=JSON.parse(sessionStorage.getItem('disc.order')||'null'); if(ord){ sessionStorage.removeItem('disc.order');
+    if(ord.name) $('#cName').value=String(ord.name).slice(0,80); if(ord.email) $('#cEmail').value=String(ord.email).slice(0,120); if(ord.message) $('#cMsg').value=String(ord.message).slice(0,5000); } }catch(e){}
   var input=$('#cFiles'), list=$('#cList'), total=$('#cTotal'), drop=$('#cDrop'), status=$('#cStatus'), sendBtn=$('#cSend');
   var files=[]; // выбранные объекты File
   var EMAIL_RE=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
