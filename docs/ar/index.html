@@ -207,7 +207,10 @@ html[lang=ar] body,html[lang=hi] body{font-size:17px;line-height:1.65}
 .service .price{flex:none;color:var(--ink);font-family:var(--font-head);font-weight:500;font-size:28px;line-height:1.1}
 .service .price small{display:block;font-family:var(--font-body);font-weight:400;font-size:13px;color:var(--muted);margin-bottom:4px}
 /* расширенный отчёт: блок на экране результата (.xoffer, .xanchor) и страница отчёта (.xfacts, .xsample, .xbuy) */
-.xanchor{margin:-10px 0 18px;font-size:14px}
+.xtop{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;background:var(--surface);border:1px solid var(--line);border-inline-start:4px solid var(--k,var(--ink));border-radius:12px;padding:14px 18px;margin:0 0 18px}
+.xtop div{flex:1 1 280px}
+.xtop b{font-family:var(--font-head);font-weight:500;font-size:16px}
+.xtop p{margin:4px 0 0;font-size:14px;color:var(--muted)}
 .xoffer{scroll-margin-top:76px}
 .xoffer h2{margin:0 0 12px;font-size:22px}
 .xoffer .xhook{background:var(--soft);border-radius:10px;padding:12px 14px;margin:0 0 16px}
@@ -828,7 +831,8 @@ function renderReport(r, opts){
         '<div class="meta ym-hide-content">'+meta+'</div></div>'+
     '</div>'+
     '<p class="lead">'+esc(prof.summary)+'</p>'+
-    (PB ? '<p class="xanchor no-print"><button class="link" type="button" id="extAnchor">'+esc(PB.anchor)+' ↓</button></p>' : '')+
+    (PB ? '<aside class="xtop no-print" style="--k:'+colorVar(cls.p)+'"><div><b>'+esc(PB.topTitle)+'</b><p>'+esc(PB.topText)+' <button class="link" type="button" id="extAnchor">'+esc(PB.anchor)+' ↓</button></p></div>'+
+      '<a class="btn" id="extTop" href="'+extHref+'">'+esc(PB.topButton)+'</a></aside>' : '')+
     (cls.flat ? '<p class="notice">'+t('report.flat')+'</p>' : '')+
     '<div class="card graphcard">'+
       '<div class="graph"><h3>'+t('report.graphTitle')+'</h3><div id="graph">'+graphSVG(sc, show, {label:t('report.graphAria'), colorVar:colorVar, keys:KEYS})+'</div>'+
@@ -891,10 +895,12 @@ function renderReport(r, opts){
   view.querySelectorAll('.legend input').forEach(function(cb){
     cb.addEventListener('change', function(){ show[cb.getAttribute('data-s')] = cb.checked; $('#graph').innerHTML = graphSVG(sc, show, {label:t('report.graphAria'), colorVar:colorVar, keys:KEYS}); });
   });
-  // цели Метрики блока расширенного отчёта: ext-show — блок показан на экране, ext-anchor — строка под описанием профиля, ext-click — кнопка или листы образца
+  // цели Метрики расширенного отчёта: ext-top — кнопка в призыве под описанием профиля, ext-anchor — ссылка «Что внутри» там же,
+  // ext-show — нижний блок показан на экране, ext-click — кнопка или листы образца в нижнем блоке
   if(PB){
     var xo = $('#extOffer');
     $('#extAnchor').addEventListener('click', function(){ if(window.discTrack) window.discTrack('ext-anchor'); xo.scrollIntoView({behavior:'smooth', block:'start'}); });
+    $('#extTop').addEventListener('click', function(){ if(window.discTrack) window.discTrack('ext-top'); });
     xo.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ if(window.discTrack) window.discTrack('ext-click'); }); });
     if('IntersectionObserver' in window){ var xio = new IntersectionObserver(function(es){ if(es[0].isIntersecting){ xio.disconnect(); if(window.discTrack) window.discTrack('ext-show'); } }, {threshold:.4}); xio.observe(xo); }
   }
