@@ -29,6 +29,10 @@
  * «да» меняется на «отписка <дата>». Для рассылки берите только строки, где в столбце «Рассылка» стоит «да».
  * Сам скрипт рассылку не отправляет: лимит Gmail (100 писем в сутки) общий с письмами о результатах.
  *
+ * Расширенный отчёт (платная услуга). Запрос {action: 'extended'} приходит не с сайта, а с сервера сборки: в нём готовый PDF,
+ * адрес покупателя и код результата. Скрипт отправляет письмо с вложением и отмечает строку результата в столбце
+ * «Расширенный отчёт». Такой запрос проверяется не токеном сайта, а секретом из свойств скрипта (extendedSecret).
+ *
  * Защита от злоупотреблений: токен (совпадает с sendToken в site.config.json),
  * e-mail получателя должен совпадать с e-mail внутри кода результата, письмо
  * собирается только из шаблона (клиент не может передать произвольный текст),
@@ -47,6 +51,9 @@ var MAX_CONTACT_FILES = 20;
 var MAX_CONTACT_PER_SENDER_PER_HOUR = 3;  // сообщений с одного e-mail в час; суточный лимит MAX_PER_DAY общий с письмами о результатах
 var MAX_PER_RECIPIENT_PER_HOUR = 3;
 var MAX_PER_DAY = 90;                // лимит Gmail для обычного аккаунта — 100 писем в сутки
+var MAX_EXTENDED_BYTES = 15 * 1024 * 1024;     // наибольший размер PDF расширенного отчёта (обычный — около 1 МБ)
+var MAX_EXTENDED_PER_RECIPIENT_PER_HOUR = 5;   // расширенных отчётов на один адрес в час; в суточный счётчик MAX_PER_DAY они не входят: запас до лимита Gmail оставлен для них
+var EXT_HEADER = 'Расширенный отчёт';          // столбец таблицы с отметкой об отправке; ищется по заголовку, добавляется при первой отправке
 var SAVE_RESULTS = true;             // false — не вести базу результатов
 var SHEET_ID = '';                   // ID своей Google Таблицы (из адреса …/spreadsheets/d/<ID>/edit); '' — таблица создаётся сама при первом результате
 var SHEET_TITLE = 'DISC Test — результаты';  // название создаваемой таблицы
@@ -62,12 +69,14 @@ var COLORS = { D: '#C9453D', I: '#D6961F', S: '#3A9A69', C: '#3B6FB6' };
 var BLOCK_KEYS = __BLOCK_KEYS__;
 var DATA = __DATA__;
 
-function doGet() { return out({ ok: true, service: 'disc-mailer', quota: MailApp.getRemainingDailyQuota(), results: SAVE_RESULTS, contact: !!CONTACT_TO, newsletter: SAVE_RESULTS }); }
+function doGet() { return out({ ok: true, service: 'disc-mailer', quota: MailApp.getRemainingDailyQuota(), results: SAVE_RESULTS, contact: !!CONTACT_TO, newsletter: SAVE_RESULTS,
+  extended: !!PropertiesService.getScriptProperties().getProperty('extendedSecret') }); }   // extended: приём расширенных отчётов включён (секрет задан в свойствах скрипта)
 
 function doPost(e) {
   try {
     var body = {};
     try { body = JSON.parse((e && e.postData && e.postData.contents) || '{}'); } catch (err) { return out({ ok: false, error: 'bad json' }); }
+    if (body.action === 'extended') return sendExtended(body);   // с сервера сборки: свой секрет вместо токена сайта
     if (TOKEN && body.token !== TOKEN) return out({ ok: false, error: 'forbidden' });
     if (body.action === 'contact') return sendContact(body);
     if (body.action === 'unsubscribe') return unsubscribe(body);
@@ -181,6 +190,103 @@ function sendContact(b) {
   if (blobs.length) opts.attachments = blobs;
   try { sendMail(opts); } catch (err) { return out({ ok: false, error: String((err && err.message) || err) }); }
   return out({ ok: true });
+}
+
+/* ====== расширенный отчёт (платная услуга) ====== */
+/**
+ * Письмо покупателю с расширенным отчётом. PDF собирает сервер сборки (закрытый репозиторий, GitHub Actions) и передаёт сюда запросом
+ * {action: 'extended', secret, to, code, lang, pdf (base64), filename, order, notes}. Секрет лежит в свойствах скрипта (extendedSecret):
+ * этот файл попадает в открытый репозиторий, поэтому в коде секрета нет. Пока свойство не задано, такие запросы отклоняются.
+ * Результат записывается в таблицу, если его там ещё нет; в столбце EXT_HEADER — когда и на какой адрес ушёл отчёт.
+ * notes — замечания сборки (сбалансированный профиль, полупустой лист): покупателю отчёт уходит всё равно, а на CONTACT_TO — письмо с замечаниями.
+ */
+function sendExtended(b) {
+  var secret = PropertiesService.getScriptProperties().getProperty('extendedSecret');
+  if (!secret || String(b.secret || '') !== secret) return out({ ok: false, error: 'forbidden' });
+  var to = String(b.to || '').trim();
+  if (to.length > 120 || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(to)) return out({ ok: false, error: 'bad email' });
+  var lang = String(b.lang || 'ru'), L = DATA[lang];
+  if (!L || !L.extended) return out({ ok: false, error: 'no extended report in ' + lang.slice(0, 10) });
+  var r = decodeResult(b.code);
+  if (!r) return out({ ok: false, error: 'bad code' });
+  var data = String(b.pdf || ''), bytes;
+  if (data.length > Math.ceil(MAX_EXTENDED_BYTES / 3) * 4 + 4) return out({ ok: false, error: 'pdf too big' });
+  try { bytes = Utilities.base64Decode(data); } catch (err) { return out({ ok: false, error: 'bad pdf' }); }
+  if (bytes.length < 1000 || bytes[0] !== 37 || bytes[1] !== 80 || bytes[2] !== 68 || bytes[3] !== 70) return out({ ok: false, error: 'bad pdf' });   // «%PDF»
+  var fname = String(b.filename || '').replace(/[\r\n\t\\\/]+/g, ' ').trim().slice(0, 200);
+  if (!/\.pdf$/i.test(fname)) fname = 'DISC-extended.pdf';
+  var order = String(b.order || '').replace(/\s+/g, ' ').trim().slice(0, 60);
+  var notes = (Array.isArray(b.notes) ? b.notes : []).map(function (n) { return String(n).replace(/\s+/g, ' ').trim().slice(0, 300); }).filter(String).slice(0, 10);
+  var cache = CacheService.getScriptCache(), key = 'x:' + to.toLowerCase(), n = +(cache.get(key) || 0);
+  if (n >= MAX_EXTENDED_PER_RECIPIENT_PER_HOUR) return out({ ok: false, error: 'too many' });
+  cache.put(key, String(n + 1), 3600);
+  var saved = SAVE_RESULTS ? saveResult(r, lang) : null;
+  var mail = composeExtendedMail(r, lang);
+  var opts = { to: to, subject: mail.subject, htmlBody: mail.html, body: mail.text, name: senderName(lang), attachments: [Utilities.newBlob(bytes, 'application/pdf', fname)] };
+  try { sendMail(opts); } catch (err) {
+    var msg = String((err && err.message) || err);
+    noteExtended(saved, 'ошибка ' + stamp() + ': ' + msg);
+    return out({ ok: false, error: msg, saved: !!saved });
+  }
+  noteExtended(saved, 'отправлен ' + stamp() + ' на ' + to + (order ? ', заказ ' + order : ''));
+  var warned = false;
+  if (notes.length && CONTACT_TO) {
+    var text = 'Расширенный отчёт отправлен покупателю, но сборка оставила замечания. Прочитайте отчёт: если с ним что-то не так, покупателю стоит написать.\n\n' +
+      'Участник: ' + r.name + '\nАдрес: ' + to + (order ? '\nЗаказ: ' + order : '') + '\nФайл: ' + fname + '\n\nЗамечания:\n- ' + notes.join('\n- ') + '\n\nРезультат: ' + SITE_URL + '/' + lang + '/#r=' + r.code + '\n';
+    try {
+      sendMail({ to: CONTACT_TO, subject: 'Расширенный отчёт с замечаниями: ' + r.name, body: text,
+        htmlBody: '<div style="font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.5;color:#1B2027">' + esc(text).replace(/\n/g, '<br>') + '</div>' });
+      warned = true;
+    } catch (err) { console.error('extended notes: ' + ((err && err.message) || err)); }
+  }
+  return out({ ok: true, saved: !!saved, warned: warned });
+}
+
+/** Столбец с отметкой о расширенном отчёте: ищется по заголовку, при первой отправке добавляется справа от последнего. */
+function extendedColumn(sheet) {
+  var width = Math.max(sheet.getLastColumn(), 1);
+  var c = sheet.getRange(1, 1, 1, width).getValues()[0].map(String).indexOf(EXT_HEADER) + 1;
+  if (c) return c;
+  c = Math.max(width, HEADERS.length) + 1;
+  if (c > sheet.getMaxColumns()) sheet.insertColumnsAfter(sheet.getMaxColumns(), c - sheet.getMaxColumns());
+  sheet.getRange(1, c, 1, 1).setValues([[EXT_HEADER]]).setFontWeight('bold');
+  return c;
+}
+/** Отметка в строке результата; повторная отправка дописывается к прежней через «; ». */
+function noteExtended(saved, text) {
+  if (!saved) return;
+  try {
+    var range = saved.sheet.getRange(saved.row, extendedColumn(saved.sheet)), was = String(range.getValue() || '');
+    range.setValue(was ? was + '; ' + text : text);
+  } catch (err) { console.error('noteExtended: ' + ((err && err.message) || err)); }
+}
+
+function composeExtendedMail(r, lang) {
+  var L = DATA[lang], X = L.extended;
+  var c = classify(score(r)), prof = L.profiles[c.key];
+  var label = c.key + ' · ' + prof.name;
+  var link = SITE_URL + '/' + lang + '/#r=' + r.code;
+  var styleName = c.s ? L.keys[c.p] + ' + ' + L.keys[c.s] : L.keys[c.p];
+  var greeting = fmt(L.email.greeting, { name: r.name });
+  var badge = '<span style="color:' + COLORS[c.p] + '">' + c.p + '</span>' + (c.s ? '<span style="color:' + COLORS[c.s] + ';font-size:22px">' + c.s + '</span>' : '');
+  var html = '<!DOCTYPE html><html lang="' + lang + '" dir="' + (L.dir || 'ltr') + '"><body style="margin:0;background:#F3F4F6;font-family:Arial,Helvetica,sans-serif;color:#1B2027">' +
+    '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F3F4F6"><tr><td align="center" style="padding:24px 12px">' +
+    '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background:#ffffff;border:1px solid #D9DDE3;border-radius:14px"><tr><td style="padding:28px;font-size:16px;line-height:1.5">' +
+    '<p style="margin:0 0 16px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#5B6470;font-weight:bold">DISC</p>' +
+    '<p style="margin:0 0 8px">' + esc(greeting) + '</p>' +
+    '<p style="margin:0 0 14px">' + esc(X.intro) + '</p>' +
+    '<p style="margin:0 0 2px;font-size:34px;font-weight:bold;line-height:1">' + badge + '&nbsp; ' + esc(prof.name) + '</p>' +
+    '<p style="margin:0 0 18px;font-size:13px;color:#5B6470">' + esc(styleName) + '</p>' +
+    '<p style="margin:0 0 14px;font-weight:bold">' + esc(X.attached) + '</p>' +
+    '<p style="margin:0 0 14px">' + esc(X.how) + '</p>' +
+    '<p style="margin:0 0 18px">' + esc(X.share) + '</p>' +
+    '<p style="margin:0 0 18px"><a href="' + esc(link) + '" style="display:inline-block;background:#1B2027;color:#F7F8FA;padding:12px 20px;border-radius:10px;text-decoration:none;font-weight:bold">' + esc(X.open) + '</a></p>' +
+    '<p style="margin:0 0 18px">' + esc(X.help) + '</p>' +
+    '<p style="margin:0;padding-top:12px;border-top:1px solid #D9DDE3;font-size:12px;color:#5B6470">' + esc(X.footer) + '</p>' +
+    '</td></tr></table></td></tr></table></body></html>';
+  var text = greeting + '\n\n' + X.intro + ' ' + label + ' (' + styleName + ')\n\n' + X.attached + '\n\n' + X.how + '\n\n' + X.share + '\n\n' +
+    X.open + ':\n' + link + '\n\n' + X.help + '\n\n' + X.footer + '\n';
+  return { subject: fmt(X.subject, { label: label }), html: html, text: text };
 }
 
 /* ====== база результатов (Google Таблица) ====== */

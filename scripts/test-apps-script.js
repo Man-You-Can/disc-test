@@ -261,6 +261,41 @@ const rN = post({ to: 'nosave@b.co', lang: 'en', code: mk('N', 'nosave@b.co'), s
 check('SAVE_RESULTS=false: mail goes, subscription is not claimed', rN.ok === true && rN.subscribed === false && !/unsubscribe\//.test(sent[sent.length - 1].htmlBody) && post({ action: 'subscribe', to: 'nosave@b.co', lang: 'en', code: mk('N', 'nosave@b.co') }).error === 'not saved' && post({ action: 'unsubscribe', u: tokS }).ok === false);
 ctx.SAVE_RESULTS = true;
 check('doGet ok, reports newsletter support', JSON.parse(ctx.doGet().text).ok === true && JSON.parse(ctx.doGet().text).newsletter === true);
+// ---- расширенный отчёт: PDF приходит с сервера сборки, письмо уходит покупателю ----
+const raw = body => JSON.parse(ctx.doPost({ postData: { contents: JSON.stringify(body) } }).text); // без токена сайта: у запроса свой секрет
+const pdfB64 = Buffer.concat([Buffer.from('%PDF-1.4\n'), Buffer.alloc(3000, 32)]).toString('base64');
+const cX = mk('Пётр Буянов', '', '2026-10-01T10:00:00Z'), fX = 'Первопроходец (DI) — расширенный отчёт DISC — Пётр Буянов.pdf';
+const ext = o => raw(Object.assign({ action: 'extended', secret: 's3cret', to: 'buyer@b.co', lang: 'ru', code: cX, pdf: pdfB64, filename: fX }, o));
+const extCol = () => sheet1().rows[0].indexOf('Расширенный отчёт'), rowX = () => rows().find(r => r[19] === cX);
+let nX = sent.length;
+check('extended: off until the secret is set in script properties', ext({}).error === 'forbidden' && JSON.parse(ctx.doGet().text).extended === false);
+props.extendedSecret = 's3cret';
+check('extended: wrong or missing secret rejected, nothing sent', ext({ secret: 'nope' }).error === 'forbidden' && ext({ secret: '' }).error === 'forbidden' && ext({ secret: TOKEN }).error === 'forbidden' && sent.length === nX);
+check('extended: bad address, bad code, not a pdf, language without the report', ext({ to: 'nobody' }).error === 'bad email' && ext({ code: 'DISC1.zzz' }).error === 'bad code' &&
+  ext({ pdf: Buffer.alloc(3000, 65).toString('base64') }).error === 'bad pdf' && ext({ pdf: '***' }).error === 'bad pdf' && ext({ pdf: '' }).error === 'bad pdf' && /^no extended report/.test(ext({ lang: 'en' }).error) && sent.length === nX);
+const rX = ext({ order: '1042' }), mX = sent[sent.length - 1];
+check('extended: accepted without the site token, one mail to the buyer', rX.ok === true && rX.saved === true && rX.warned === false && sent.length === nX + 1 && mX.to === 'buyer@b.co');
+check('extended mail: subject with profile, from the domain address, brand name', mX.subject === 'Ваш расширенный отчёт DISC: DI · Первопроходец' && mX.from === 'info@disc-test.org' && mX.name === 'Тест DISC · disc-test.org');
+check('extended mail: pdf attached under the report name, bytes intact', mX.attachments.length === 1 && mX.attachments[0].getContentType() === 'application/pdf' && mX.attachments[0].getName() === fX && mX.attachments[0].getBytes().length === 3009);
+check('extended mail: greeting, texts and result link in html and text', [mX.htmlBody, mX.body].every(s => s.includes('Пётр Буянов') && s.includes('во вложении') && s.includes('Как со мной работать') && s.includes('/ru/#r=' + cX)) && !/\{\w+\}|undefined/.test(mX.htmlBody + mX.body));
+check('extended: result saved once, column added on the right, cell says when, where and the order', rows().filter(r => r[19] === cX).length === 1 && extCol() >= 24 && rowX()[extCol()] === 'отправлен 2026-09-07 12:00 на buyer@b.co, заказ 1042');
+const rX2 = ext({ to: 'other@b.co', notes: ['профиль сбалансированный', 'полупустые листы: 24  ← проверьте'] }), mN = sent[sent.length - 1];
+check('extended with build notes: buyer still gets the report, owner gets the notes', rX2.ok === true && rX2.warned === true && sent.length === nX + 3 && sent[sent.length - 2].to === 'other@b.co' && sent[sent.length - 2].attachments.length === 1 &&
+  mN.to === 'info@disc-test.org' && /с замечаниями: Пётр Буянов/.test(mN.subject) && mN.body.includes('профиль сбалансированный') && mN.body.includes('other@b.co') && !mN.attachments);
+check('extended: second sending is appended to the cell, row and column not duplicated', rows().filter(r => r[19] === cX).length === 1 && sheet1().rows[0].filter(h => h === 'Расширенный отчёт').length === 1 &&
+  rowX()[extCol()] === 'отправлен 2026-09-07 12:00 на buyer@b.co, заказ 1042; отправлен 2026-09-07 12:00 на other@b.co');
+const nRowsX = rows().length;
+check('extended for a result already in the table: same row marked', ext({ code, to: 'ivan@example.com' }).ok === true && rows().length === nRowsX && /^отправлен .* на ivan@example\.com$/.test(rows().find(r => r[19] === code)[extCol()]));
+check('extended: file name without .pdf or with a path is replaced', (() => { ext({ to: 'n1@b.co', filename: '../../etc/passwd' }); const a = sent[sent.length - 1].attachments[0].getName(); ext({ to: 'n2@b.co', filename: 'a/b\\c.pdf' }); return a === 'DISC-extended.pdf' && sent[sent.length - 1].attachments[0].getName() === 'a b c.pdf'; })());
+mailFail = 'Service invoked too many times';
+const rXF = ext({ to: 'fail@b.co' });
+mailFail = null;
+check('extended: mail error is returned and written to the cell', rXF.ok === false && /too many times/.test(rXF.error) && /ошибка 2026-09-07 12:00: Service invoked/.test(rowX()[extCol()]));
+check('extended: at most 5 reports per address per hour', (() => { let last; for (let i = 0; i < 6; i++) last = ext({ to: 'loop@b.co' }); return last.error === 'too many' && sent.filter(m => m.to === 'loop@b.co').length === 5; })());
+check('extended: reports do not use up the daily counter of result mails', (() => { const k = Object.keys(store).find(x => x.startsWith('day:')), was = store[k]; ext({ to: 'quota@b.co' }); return store[k] === was; })());
+check('extended texts exist only where the report is written', Object.keys(ctx.DATA).filter(lg => ctx.DATA[lg].extended).join() === 'ru' && Object.values(ctx.DATA.ru.extended).every(s => typeof s === 'string' && s.trim()));
+check('doGet reports that extended delivery is on', JSON.parse(ctx.doGet().text).extended === true);
+fs.writeFileSync(path.join(process.env.OUT || '/tmp', 'disc-extended-mail-preview.html'), mX.htmlBody);
 fs.writeFileSync(path.join(process.env.OUT || '/tmp', 'disc-mail-preview.html'), mail.htmlBody);
 fs.writeFileSync(path.join(process.env.OUT || '/tmp', 'disc-pdf-preview.html'), pdf.source);
 fs.writeFileSync(path.join(process.env.OUT || '/tmp', 'disc-pdf-preview-ar.html'), sent[2].attachments[0].source);

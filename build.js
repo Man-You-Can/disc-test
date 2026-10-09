@@ -680,6 +680,8 @@ for (const L of locales) {
   // consent — текст у галочки согласия на рассылку: скрипт записывает его в таблицу рядом с отметкой о согласии
   mailData[L.lang] = { name: L.name, dir: L.dir, brand: L.brand, keys: L.keys, addon: L.addon, styles: L.styles, profiles, email, report, rights: L.ui.rights, consent: L.ui['share.subscribe'],
     cta: { title: L.ui['cta.title'], text: L.ui['cta.text'], desc: L.ui['pages.profile.descCta'] } };
+  // письмо с расширенным отчётом (платная услуга): тексты есть только в языках, где отчёт написан
+  if (L.content.extendedMail) mailData[L.lang].extended = L.content.extendedMail;
 }
 const gsTpl = fs.readFileSync(path.join(SRC, 'apps-script.template.js'), 'utf8');
 const gs = gsTpl
