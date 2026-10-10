@@ -487,6 +487,7 @@ var L = __LOCALE_JSON__;
 var CONTACT_EMAIL = '__EMAIL__'; // адрес получателя для кнопки «Отправить по почте»; пустой — участник вводит сам
 var SEND_ENDPOINT = '__SEND_ENDPOINT__'; // URL веб-приложения Google Apps Script (см. README); пустой — письма не отправляются
 var SEND_TOKEN = '__SEND_TOKEN__';
+var PD = '__PD__' === '1', PD_VERSION = '__PD_VERSION__'; // отдельная галочка согласия на обработку данных в форме отправки результата (pdConsent в site.config.json)
 var NEWSLETTER = '__NEWSLETTER__' === '1'; // галочка согласия на рассылку в форме отправки результата (newsletter в site.config.json)
 var ROOT_REL = '__ROOT_REL__';           // относительный путь к корню сайта ('./' на главной, '../' в /xx/)
 var IS_ROOT = '__IS_ROOT__' === '1';      // главная страница (язык по умолчанию живёт в корне)
@@ -738,6 +739,8 @@ function renderReport(r, opts){
         '<form class="form" id="sendForm" autocomplete="on" novalidate>'+
           '<div class="field"><label for="nm">'+t('intro.nameLabel')+'</label><input type="text" id="nm" name="name" class="ym-disable-keys" autocomplete="name" maxlength="80" value="'+esc(r.name||who.name||'')+'"></div>'+
           '<div class="field"><label for="em">'+t('intro.emailLabel')+'</label><input type="email" id="em" name="email" class="ym-disable-keys" autocomplete="email" inputmode="email" maxlength="120" value="'+esc(r.email||who.email||'')+'"><span class="hint">'+t(SEND_ENDPOINT ? 'intro.emailHint' : 'share.mailtoHint')+'</span></div>'+
+          (PD ? '<div class="subbox"><label class="check"><input type="checkbox" id="pdOk" name="consent"'+(r.pd?' checked':'')+'><span>'+
+            esc(t('pd.consent')).replace('{consent}','<a href="'+base+'consent/" target="_blank" rel="noopener">'+esc(t('pd.consentLink'))+'</a>').replace('{privacy}','<a href="'+base+'privacy/" target="_blank" rel="noopener">'+esc(t('nav.privacy'))+'</a>')+'</span></label></div>' : '')+
           (NEWSLETTER && SEND_ENDPOINT ? '<div class="subbox" id="subBox"></div>' : '')+
           '<p class="small sendstatus" id="sendStatus" aria-live="polite" hidden></p>'+
           '<div class="actions"><button class="btn" type="submit">'+t('share.send')+'</button></div>'+
@@ -789,6 +792,8 @@ function renderReport(r, opts){
       if($('#sub')) r.sub = $('#sub').checked;
       if(name.length<2){ $('#nm').focus(); toast(t('intro.nameRequired')); return; }
       if(!EMAIL_RE.test(email) || email.length>120){ $('#em').focus(); toast(t('intro.emailRequired')); return; }
+      // согласие на обработку данных — отдельная галочка: без неё на сервер ничего не уходит
+      if(PD){ r.pd = $('#pdOk').checked; if(!r.pd){ $('#pdOk').focus(); toast(t('pd.required')); return; } }
       lsSet('disc.who',{name:name,email:email});
       // имя и e-mail входят в код результата и ссылку: сервер сверяет адрес письма с кодом
       if(name!==r.name || email!==r.email){ r.name=name; r.email=email; delete r.sent; delete r.subOk; }
@@ -876,6 +881,7 @@ function sendResult(r, code){
   showSendStatus(r, code, 'sending');
   var data = {token:SEND_TOKEN, to:r.email, lang:L.lang, code:code}, sub = wantsSub(r);
   if(sub) data.subscribe = true;
+  if(PD){ if(!r.pd){ showSendStatus(r, code, 'failed'); return; } data.consent = true; data.consentV = PD_VERSION; }
   postJSON(SEND_ENDPOINT, data).then(function(j){
     r.sent = new Date().toISOString();
     if(sub && j.subscribed) subscribed(r);

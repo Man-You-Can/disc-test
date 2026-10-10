@@ -7,7 +7,7 @@ const ref = JSON.parse(fs.readFileSync(path.join(dir, 'ru.json'), 'utf8'));
 const files = process.argv.slice(2).length ? process.argv.slice(2) : fs.readdirSync(dir).filter(f => f.endsWith('.json') && f !== 'ru.json');
 // Разделы, которые есть не во всех языках: в эталоне они есть, в остальных локалях могут отсутствовать
 // (страницы «Публичная оферта» и «Условия возврата» и ссылка на них со страницы «Услуги» строятся только там, где эти разделы есть). Если раздел в локали есть — проверяется как обычно.
-const OPTIONAL = ['.content.services.docs', '.content.offer', '.content.refund', '.content.privacy.purchase', '.ui.nav.offer', '.content.extendedMail', '.content.product'];
+const OPTIONAL = ['.content.services.docs', '.content.offer', '.content.refund', '.content.privacy.purchase', '.content.policy.purchase', '.content.policy.legal', '.ui.nav.offer', '.content.extendedMail', '.content.product'];
 let failed = 0;
 function ph(s){ return (String(s).match(/\{[a-z]+\}|<\/?b>|<br>|%/g) || []).sort().join(' '); }
 function walk(a, b, p, errs){

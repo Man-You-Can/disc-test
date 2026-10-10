@@ -9,10 +9,25 @@ const typo = require('./src/typo.js');
 // (googleSiteVerification, yandexVerification) и аналитика (yandexMetrikaId — номер счётчика Яндекс.Метрики,
 // analyticsMode — "optin": счётчик загружается после кнопки «Принять» в уведомлении о cookie, "always": сразу).
 // Пустое значение — тег не выводится. Сам код счётчика живёт в src/common.js.
-const headExtra = [["google-site-verification", cfg.googleSiteVerification], ["yandex-verification", cfg.yandexVerification]]
+// analyticsAlwaysLangs — языки, где счётчик загружается сразу, даже когда analyticsMode — "optin" (решение заказчика от 2026-10-10:
+// в русской версии сразу, в остальных — после согласия). Текст уведомления в режиме optin — ui["pd.cookieAsk"], в режиме always — ui["consent.text"].
+const analyticsMode = L => cfg.analyticsMode === "always" || (cfg.analyticsAlwaysLangs || []).includes(L.lang) ? "always" : "optin";
+const headExtraFor = L => [["google-site-verification", cfg.googleSiteVerification], ["yandex-verification", cfg.yandexVerification]]
   .filter(([, v]) => v).map(([n, v]) => `<meta name="${n}" content="${String(v).replace(/["<>&]/g, "")}">`)
-  .concat(cfg.yandexMetrikaId ? [`<script>window.DISC_ANALYTICS=${JSON.stringify({ ym: String(cfg.yandexMetrikaId).replace(/\D/g, ""), mode: cfg.analyticsMode === "always" ? "always" : "optin" })};</script>`] : [])
+  .concat(cfg.yandexMetrikaId ? [`<script>window.DISC_ANALYTICS=${JSON.stringify({ ym: String(cfg.yandexMetrikaId).replace(/\D/g, ""), mode: analyticsMode(L) })};</script>`] : [])
   .join("\n");
+// Персональные данные (план боевого режима, этап Д). pdConsent в site.config.json включает схему «свой сервер в России»:
+// отдельная галочка согласия на обработку данных в форме отправки результата и в форме обратной связи (без неё форма не отправляется,
+// запрос несёт consent: true и consentV — дату редакции), страница согласия /consent/, новая редакция страницы «Конфиденциальность»
+// (content.policy; в русской версии — с полным текстом политики) и подробности уведомления о cookie без названий прежних сервисов.
+// Включать вместе с переводом sendEndpoint на свой сервер: тексты описывают хранение в России, а прежний скрипт согласие не записывает.
+// pdVersion — дата редакции политики и согласия (ГГГГ-ММ-ДД): её показывают страницы и сохраняет сервер рядом с отметкой о согласии.
+// Локальная проверка без правки site.config.json: PD_CONSENT=1 SEND_ENDPOINT=https://api.disc-test.org/ node build.js (после проверки пересобрать без них).
+if (process.env.SEND_ENDPOINT) cfg.sendEndpoint = process.env.SEND_ENDPOINT;
+const pdOn = process.env.PD_CONSENT ? process.env.PD_CONSENT === '1' : !!cfg.pdConsent;
+const pdVersion = /^\d{4}-\d\d-\d\d$/.test(String(cfg.pdVersion || '')) ? cfg.pdVersion : '2026-10-11';
+// Тексты уведомления о cookie, которые видит страница: по режиму аналитики языка и по схеме обработки данных
+const noticeUi = L => ({ 'consent.text': cfg.yandexMetrikaId && analyticsMode(L) === 'optin' ? L.ui['pd.cookieAsk'] : L.ui['consent.text'], 'consent.details': pdOn ? L.ui['pd.cookieDetails'] : L.ui['consent.details'] });
 const siteUrl = cfg.siteUrl.replace(/\/+$/, '');
 const basePath = new URL(siteUrl + '/').pathname; // например "/disc-test/" или "/"
 const tpl = fs.readFileSync(path.join(SRC, 'template.html'), 'utf8');
@@ -43,6 +58,16 @@ const hasOffer = L => !!(hasServices(L) && L.content.offer && L.content.refund &
 const sampleCount = L => { let n = 0; while (fs.existsSync(path.join(SRC, 'assets', 'extended', `${L.lang}-i-${n + 1}.webp`)) && fs.existsSync(path.join(SRC, 'assets', 'extended', `${L.lang}-i-${n + 1}-s.webp`))) n++; return n; };
 const hasProduct = L => !!(hasOffer(L) && L.content.product && sampleCount(L) >= L.content.product.sampleAlt.length);
 const withPrice = (L, obj) => JSON.parse(JSON.stringify(obj).replace(/\{price\}/g, servicePrice(L)));
+// Оператор и дата редакции в политике и согласии: в языках с офертой — исполнитель из оферты (ИП с ИНН), в остальных — строка реквизитов из подвала
+const pdOwner = L => (hasOffer(L) ? L.content.offer.seller : L.ui.legal).replace('{inn}', legalInn);
+const pdDate = L => new Intl.DateTimeFormat(L.dateLocale, { dateStyle: 'long', timeZone: 'UTC' }).format(new Date(pdVersion + 'T00:00:00Z')).replace(/\s*г\.$/, ' года');   // «11 октября 2026 года»: после даты в тексте стоит точка
+// Галочка согласия на обработку данных: подпись со ссылками на страницу согласия и на «Конфиденциальность» (base — путь к корню языка)
+const pdLabelHtml = (L, base) => escFull(L.ui['pd.consent']).replace('{consent}', `<a href="${base}consent/" target="_blank" rel="noopener">${escFull(L.ui['pd.consentLink'])}</a>`)
+  .replace('{privacy}', `<a href="${base}privacy/" target="_blank" rel="noopener">${escFull(L.ui['nav.privacy'])}</a>`);
+// Текст согласия без разметки — его сервер сохраняет рядом с отметкой о согласии: подпись у галочки и сам документ
+const pdConsentText = L => { const cd = L.content.consentDoc, plain = str => String(str).replace(/\{email\}/g, feedbackEmail).replace(/\{contact\}/g, L.ui['nav.contact']).replace(/\{owner\}/g, pdOwner(L))
+    .replace(/\{date\}/g, pdDate(L)).replace(/\{consent\}/g, L.ui['pd.consentLink']).replace(/\{privacy\}/g, L.ui['nav.privacy']);
+  return [plain(L.ui['pd.consent']), '', cd.h1, plain(cd.lead)].concat(cd.sections.flatMap(sec => ['', sec.h].concat(sec.p.map(plain))), ['', plain(cd.edition)]).join('\n'); };
 // Рассылка: newsletter в site.config.json включает галочку согласия в форме отправки результата. Включать после того, как в Apps Script
 // развёрнута версия скрипта со столбцами согласия (GET на sendEndpoint отвечает newsletter:true): прежняя версия галочку молча игнорирует.
 // Страница отписки /unsubscribe/ строится всегда, когда задан sendEndpoint: ссылки из уже разосланных писем должны работать.
@@ -219,6 +244,8 @@ const contentDate = (key, text, files) => { const h = crypto.createHash('sha1').
 // из статей — content.home и названия цветов (ссылка «Ваш цвет DISC» в отчёте). Тексты статей и страниц профилей
 // (profiles.*.deep, careers, team, with, content.*) раньше попадали в скрипт целиком — ~150 КБ лишнего на главной (аудит 3, п. 4).
 const homeLocale = L => Object.assign({}, L, {
+  // ui: тексты уведомления о cookie — по режиму языка; ключи pd.* нужны главной только при включённой галочке согласия (pd.cookie* — никогда: они уже подставлены)
+  ui: Object.assign(Object.fromEntries(Object.entries(L.ui).filter(([k]) => !k.startsWith('pd.') || (pdOn && !k.startsWith('pd.cookie')))), noticeUi(L)),
   profiles: Object.fromEntries(Object.entries(L.profiles).map(([k, p]) => [k, { name: p.name, summary: p.summary }])),
   // product — тексты блока «Расширенный отчёт» на экране результата (цена уже подставлена); страница отчёта в скрипт не идёт
   content: Object.assign({ home: L.content.home, colors: { colors: Object.fromEntries(KEYS.map(k => [k, { name: L.content.colors.colors[k].name }])) } },
@@ -267,7 +294,7 @@ for (const L of locales) {
     .replace('__COMMON_JS__', () => commonJs).replace('__GRAPH_JS__', () => graphJs)
     .replace('__NAV__', () => navHtml).replace('__FOOT_LINKS__', () => footHtml).replace('__MATERIALS__', () => materialsHtml(L, rootRel + pathOf(L.lang), null))
     .replace('__INTRO_HTML__', () => introBuilt)
-    .replace(/__HREFLANG__/g, hreflangTags).replace(/__HEAD_EXTRA__/g, () => headExtra)
+    .replace(/__HREFLANG__/g, hreflangTags).replace(/__HEAD_EXTRA__/g, () => headExtraFor(L))
     .replace(/__FONTS_HEAD__/g, () => fontsHead(f, L)).replace(/__FONT_HEAD__/g, f.head).replace(/__FONT_BODY__/g, f.body)
     .replace(/__BRAND__/g, esc(L.brand)).replace(/__LANG_LABEL__/g, esc(L.ui.langLabel))
     .replace('__LANG_SWITCHER__', () => switcher).replace('__LANG_LINKS__', () => links).replace('__FLAG_SPRITE__', () => flagSprite(locales.map(x => x.lang)))
@@ -275,6 +302,7 @@ for (const L of locales) {
     .replace(/__EMAIL__/g, String(cfg.contactEmail || '').replace(/['\\]/g, ''))
     .replace(/__SEND_ENDPOINT__/g, String(cfg.sendEndpoint || '').replace(/['\\]/g, ''))
     .replace(/__SEND_TOKEN__/g, String(cfg.sendToken || '').replace(/['\\]/g, '')).replace(/__NEWSLETTER__/g, newsletter ? '1' : '0')
+    .replace(/__PD__/g, pdOn && cfg.sendEndpoint ? '1' : '0').replace(/__PD_VERSION__/g, pdVersion)
     .replace('__LOCALE_JSON__', () => JSON.stringify(homeLocale(L)).replace(/</g, '\\u003c').replace(/\u2028|\u2029/g, ''));
   fs.mkdirSync(path.join(OUT, pathOf(L.lang)), { recursive: true });
   fs.writeFileSync(path.join(OUT, pathOf(L.lang), 'index.html'), html);
@@ -362,13 +390,14 @@ function writeContentPage(L, sub, opts) {
     { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: crumbs.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.name, item: i === 0 ? urlOf(L.lang) : urlOf(L.lang) + (c.sub || sub) })) }
   ].concat(opts.ldExtra || [])).replace(/</g, '\\u003c');
   const miniL = { lang: L.lang, name: L.name, dir: L.dir, dateLocale: L.dateLocale, ui: Object.fromEntries(Object.entries(L.ui).filter(([k]) => k === 'langLabel' || k === 'root.continue' || k.startsWith('consent.') || (opts.uiKeys && opts.uiKeys.test(k)))) };
+  Object.assign(miniL.ui, noticeUi(L));
   const html = pageTpl
     .replace(/__LANG__/g, hl(L.lang)).replace(/__DIR__/g, L.dir)
     .replace(/__TITLE__/g, esc(opts.title)).replace(/__DESC__/g, esc(opts.description))
     .replace('__ROBOTS__', opts.noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large')
     .replace(/__CANONICAL__/g, urlOf(L.lang) + sub).replace(/__OG_LOCALE__/g, OG_LOCALE[L.lang] || L.lang)
     .replace(/__OG_ALTERNATES__/g, () => own.filter(x => x !== L).map(x => `<meta property="og:locale:alternate" content="${OG_LOCALE[x.lang] || x.lang}">`).join('\n'))
-    .replace(/__OG_IMAGE__/g, opts.ogImage || `${siteUrl}/og/${L.lang}.png`).replace(/__HREFLANG__/g, hreflang).replace(/__HEAD_EXTRA__/g, () => headExtra)
+    .replace(/__OG_IMAGE__/g, opts.ogImage || `${siteUrl}/og/${L.lang}.png`).replace(/__HREFLANG__/g, hreflang).replace(/__HEAD_EXTRA__/g, () => headExtraFor(L))
     .replace(/__ROOT_REL__/g, rootRel).replace('__JSON_LD__', () => ld)
     .replace(/__FONTS_HEAD__/g, () => fontsHead(f, L)).replace('__STYLE__', () => styleBlock.replace(/__FONT_HEAD__/g, f.head).replace(/__FONT_BODY__/g, f.body))
     .replace('__FLAG_SPRITE__', () => flagSprite(locales.map(x => x.lang)))
@@ -471,9 +500,28 @@ for (const L of locales) {
       .replace('{sources}', `<a href="../disc/#sources">${escFull(L.content.disc.sourcesTitle)}</a>`) + ctaBlock(L, t, '../') });
   // content.privacy.purchase — раздел о данных покупателя платной услуги: есть только в языках с офертой (сейчас — русский), встаёт перед «Как удалить данные»
   const pv = C.privacy, pvSecs = pv.purchase && hasOffer(L) ? pv.sections.slice(0, 4).concat([pv.purchase], pv.sections.slice(4)) : pv.sections;
-  writeContentPage(L, 'privacy/', { navKey: 'nav.privacy', title: pv.title, description: pv.description, crumbs: [{ name: t('nav.privacy') }],
+  if (!pdOn) writeContentPage(L, 'privacy/', { navKey: 'nav.privacy', title: pv.title, description: pv.description, crumbs: [{ name: t('nav.privacy') }],
     content: `<div class="eyebrow">DISC</div><h1>${escFull(pv.h1)}</h1>` + sectionsHtml(pvSecs).replace(/\{email\}/g, feedbackEmail ? `<a href="mailto:${escFull(feedbackEmail)}">${escFull(feedbackEmail)}</a>` : '—')
       .replace(/\{offer\}/g, () => hasOffer(L) ? `<a href="../offer/">${escFull(C.offer.linkText)}</a>` : '') });
+  // Новая редакция (pdConsent): content.policy — те же разделы на всех языках; policy.purchase (данные покупателя) встаёт перед «Ваши права»
+  // в языках с офертой; policy.legal — полный текст политики по статье 18.1 закона № 152-ФЗ, только в русской версии.
+  // /consent/ — согласие на обработку персональных данных отдельным документом (на него ведёт галочка в формах); в индекс не идёт.
+  else {
+    const po = C.policy, cd = C.consentDoc, poSecs = po.purchase && hasOffer(L) ? po.sections.slice(0, 6).concat([po.purchase], po.sections.slice(6)) : po.sections;
+    const pdFill = html => html.replace(/\{email\}/g, feedbackEmail ? `<a href="mailto:${escFull(feedbackEmail)}">${escFull(feedbackEmail)}</a>` : '—')
+      .replace(/\{contact\}/g, feedbackEmail ? `<a href="../contact/">${escFull(t('nav.contact'))}</a>` : escFull(t('nav.contact')))
+      .replace(/\{owner\}/g, escFull(pdOwner(L))).replace(/\{date\}/g, escFull(pdDate(L)))
+      .replace(/\{consent\}/g, `<a href="../consent/">${escFull(t('pd.consentLink'))}</a>`).replace(/\{privacy\}/g, `<a href="../privacy/">${escFull(t('nav.privacy'))}</a>`)
+      .replace(/\{offer\}/g, () => hasOffer(L) ? `<a href="../offer/">${escFull(C.offer.linkText)}</a>` : '')
+      .replace(/\s*\{reset\}/g, cfg.yandexMetrikaId && analyticsMode(L) === 'optin' ? ` <button class="link" type="button" id="cookieReset">${escFull(t('pd.cookieChange'))}</button>` : '');
+    writeContentPage(L, 'privacy/', { navKey: 'nav.privacy', title: po.title, description: po.description, crumbs: [{ name: t('nav.privacy') }],
+      content: pdFill(`<div class="eyebrow">DISC</div><h1>${escFull(po.h1)}</h1><p class="lead">${escFull(po.lead)}</p>` + sectionsHtml(poSecs) +
+        (po.legal ? `<h2 id="full">${escFull(po.legal.h1)}</h2>` + po.legal.sections.map(sec => `<h3 style="font-size:15px;text-transform:none;letter-spacing:0;color:var(--ink);margin:20px 0 6px">${escFull(sec.h)}</h3>` + sec.p.map(par => `<p>${escFull(par)}</p>`).join('')).join('') : '')),
+      // «Изменить выбор cookie»: отметка о выборе стирается, после перезагрузки уведомление спрашивает заново, счётчик без согласия не загружается
+      pageJs: `(function(){ var b = $('#cookieReset'); if(b) b.addEventListener('click', function(){ try{ localStorage.removeItem('disc.consent'); }catch(e){} location.reload(); }); })();` });
+    writeContentPage(L, 'consent/', { noindex: true, noDate: true, title: cd.title, description: cd.description, crumbs: [{ name: t('nav.privacy'), href: '../privacy/', sub: 'privacy/' }, { name: cd.h1 }],
+      content: pdFill(`<div class="eyebrow">DISC</div><h1>${escFull(cd.h1)}</h1><p class="lead">${escFull(cd.lead)}</p>` + sectionsHtml(cd.sections) + `<p class="small muted">${escFull(cd.edition)}</p>`) });
+  }
   // /results/ — расшифровка результатов: текст + три примера графика (DI, SC, сбалансированный)
   const rs = C.results, exNet = { D: 4, I: 2, S: -2, C: -4 };
   const exampleHtml = ex => { const key = ex.key, sc = sampleScore(key === 'flat' ? exNet : SAMPLE_NET[key]);
@@ -668,9 +716,9 @@ for (const L of locales) {
     const ct = C.contact, maxLabel = '10 ' + (L.ui['contact.mb'] || 'MB');
     // обратная связь: служебная страница без своего текста — в индекс не нужна и в sitemap не идёт, ссылки с неё учитываются (аудит 3, п. 12)
     writeContentPage(L, 'contact/', { navKey: 'nav.contact', ldType: 'ContactPage', noindex: true, title: ct.title, description: ct.description, crumbs: [{ name: t('nav.contact') }],
-      content: contactHTML({ t, esc: escFull, email: feedbackEmail, maxLabel, h1: ct.h1, lead: ct.lead }),
-      uiKeys: /^(contact\.|intro\.(nameRequired|emailRequired)$)/, files: ['src/contact.js'],
-      pageJs: contactJs + `initContact({L:L, t:t, esc:esc, $:$, endpoint:${jsStr(cfg.sendEndpoint)}, token:${jsStr(cfg.sendToken)}, email:${jsStr(feedbackEmail)}, maxBytes:${MAX_CONTACT_BYTES}});` });
+      content: contactHTML({ t, esc: escFull, email: feedbackEmail, maxLabel, h1: ct.h1, lead: ct.lead, pdLabel: pdOn && cfg.sendEndpoint ? pdLabelHtml(L, '../') : '' }),
+      uiKeys: /^(contact\.|intro\.(nameRequired|emailRequired)$|pd\.required$)/, files: ['src/contact.js'],
+      pageJs: contactJs + `initContact({L:L, t:t, esc:esc, $:$, endpoint:${jsStr(cfg.sendEndpoint)}, token:${jsStr(cfg.sendToken)}, email:${jsStr(feedbackEmail)}, maxBytes:${MAX_CONTACT_BYTES}, pdVersion:${jsStr(pdOn && cfg.sendEndpoint ? pdVersion : '')}});` });
   }
 }
 
@@ -754,6 +802,7 @@ for (const L of locales) {
   for (const k of ['flat', 'statsTitle', 'statMeta', 'traits', 'secondary', 'secondaryAddon', 'strengths', 'growth', 'motivation', 'communication', 'stress', 'environment']) report[k] = L.ui['report.' + k];
   // consent — текст у галочки согласия на рассылку: скрипт записывает его в таблицу рядом с отметкой о согласии
   mailData[L.lang] = { name: L.name, dir: L.dir, brand: L.brand, keys: L.keys, addon: L.addon, styles: L.styles, profiles, email, report, rights: L.ui.rights, consent: L.ui['share.subscribe'],
+    pd: { v: pdVersion, text: pdConsentText(L) },   // согласие на обработку данных: редакция и текст — свой сервер сохраняет их рядом с отметкой о согласии
     cta: { title: L.ui['cta.title'], text: L.ui['cta.text'], desc: L.ui['pages.profile.descCta'] } };
   // письмо с расширенным отчётом (платная услуга): тексты есть только в языках, где отчёт написан
   if (L.content.extendedMail) mailData[L.lang].extended = L.content.extendedMail;

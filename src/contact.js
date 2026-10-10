@@ -22,6 +22,7 @@ function contactHTML(c){
           '<ul class="filelist" id="cList" hidden></ul><span class="hint" id="cTotal" hidden></span></div>'+
         '<div class="hp" aria-hidden="true"><label for="cSite">Website</label><input type="text" id="cSite" name="website" tabindex="-1" autocomplete="off"></div>'+
         '<p class="hint">'+t('contact.privacyNote',{email:mailLink})+'</p>'+
+        (c.pdLabel ? '<div class="subbox"><label class="check"><input type="checkbox" id="cPd" name="consent"><span>'+c.pdLabel+'</span></label></div>' : '')+
         '<p class="small sendstatus" id="cStatus" aria-live="polite" hidden></p>'+
         '<div class="actions"><button class="btn" type="submit" id="cSend">'+t('contact.send')+'</button></div>'+
       '</form>'+
@@ -121,6 +122,8 @@ function initContact(c){
     if(name.length<2){ $('#cName').focus(); toast(t('intro.nameRequired')); return; }
     if(!EMAIL_RE.test(em)||em.length>120){ $('#cEmail').focus(); toast(t('intro.emailRequired')); return; }
     if(!msg){ $('#cMsg').focus(); toast(t('contact.messageRequired')); return; }
+    // согласие на обработку данных — отдельная галочка (есть, когда сборка включила pdConsent): без неё сообщение не отправляется
+    var pdBox=$('#cPd'); if(pdBox && !pdBox.checked){ pdBox.focus(); toast(t('pd.required')); return; }
     if(!endpoint){ // сервис отправки не подключён — открываем почтовый клиент
       var body=msg+(files.length ? '\r\n\r\n'+t('contact.mailFiles',{list:files.map(function(f){ return f.name; }).join(', ')}) : '')+'\r\n\r\n'+name+' <'+em+'>\r\n';
       location.href='mailto:'+encodeURIComponent(email)+'?subject='+encodeURIComponent(t('contact.mailSubject',{name:name}))+'&body='+encodeURIComponent(body);
@@ -128,7 +131,9 @@ function initContact(c){
     }
     sendBtn.disabled=true; setStatus('muted', esc(t('contact.sending')));
     Promise.all(files.map(readFile)).then(function(payload){
-      return postJSON(endpoint, {action:'contact', token:token, lang:L.lang, name:name, email:em, message:msg, page:location.href.split('#')[0], hp:$('#cSite').value, files:payload});
+      var data={action:'contact', token:token, lang:L.lang, name:name, email:em, message:msg, page:location.href.split('#')[0], hp:$('#cSite').value, files:payload};
+      if(pdBox){ data.consent=true; data.consentV=c.pdVersion||''; }
+      return postJSON(endpoint, data);
     }).then(function(){
       setStatus('ok', esc(t('contact.sent',{email:em})));
       $('#cMsg').value=''; files=[]; render();

@@ -634,6 +634,119 @@
         }
       ]
     },
+    "policy": {
+      "title": "Politique de traitement des données personnelles — test DISC",
+      "description": "Qui traite les données sur disc-test.org et pourquoi, où elles sont conservées, combien de temps et comment les faire supprimer.",
+      "h1": "Politique de traitement des données personnelles",
+      "lead": "En bref : vous pouvez passer le test sans rien communiquer sur vous. Le nom et l'adresse e-mail ne sont nécessaires que si vous souhaitez recevoir le résultat par e-mail ou si vous nous écrivez. Ces données sont conservées en Russie, servent à ce que vous avez demandé et sont supprimées à votre demande.",
+      "sections": [
+        {
+          "h": "Qui traite les données",
+          "p": [
+            "Les données des visiteurs du site disc-test.org sont traitées par son propriétaire : {owner}. Vous pouvez nous écrire à {email} ou via la page « {contact} »."
+          ]
+        },
+        {
+          "h": "Quelles données nous utilisons",
+          "p": [
+            "Aucune saisie n'est nécessaire pour passer le test. Pendant le test, vos réponses sont enregistrées ; ensuite, le résultat, la langue choisie et une mention indiquant que vous avez vu l'avis relatif aux cookies. Tout cela est conservé dans le stockage local de votre navigateur et n'est pas transmis au serveur.",
+            "Vous indiquez votre nom et votre adresse e-mail si vous le souhaitez, sur l'écran du résultat, pour recevoir le rapport par e-mail. Avant l'envoi du formulaire, nous vous demandons de cocher la case de {consent}. Ensuite, le nom, l'adresse e-mail, la langue, la date du test et le résultat sont transmis au serveur du site : il vous envoie l'e-mail avec le résultat et enregistre ces données dans la base de résultats."
+          ]
+        },
+        {
+          "h": "Où les données sont conservées et à qui elles sont transmises",
+          "p": [
+            "La base de résultats se trouve sur un serveur situé en Russie, que le propriétaire du site loue auprès d'un hébergeur. Les e-mails sont envoyés par un service de messagerie lui aussi situé en Russie. Ces sociétés traitent les données pour notre compte et uniquement pour le fonctionnement du site. Nous ne transmettons pas hors de Russie le nom, l'adresse e-mail, le résultat du test ni vos messages ; l'e-mail part à l'adresse que vous avez vous-même indiquée. Les données ne sont ni transmises ni vendues à des tiers pour leurs propres finalités.",
+            "Seules les personnes ayant coché la case de consentement distincte dans le formulaire d'envoi du résultat reçoivent la newsletter. Dans ce cas, la base conserve aussi le consentement, sa date et son texte, et votre adresse e-mail, votre nom et votre langue servent à vous envoyer des e-mails de disc-test.org : contenus sur le DISC, actualités du site et offres promotionnelles. Vous pouvez vous désabonner à tout moment, via le lien présent dans chaque e-mail ou en écrivant à {email}.",
+            "L'hébergeur reçoit les données techniques habituelles de la requête : adresse IP, type de navigateur, adresse de la page. Les polices sont servies par ce site lui-même. Les statistiques de visite sont collectées par un service d'analyse d'audience : il reçoit des données de visite anonymisées — l'adresse de la page sans le code du résultat, la provenance, le type d'appareil et de navigateur — et un enregistrement des actions sur la page ; les champs nom et e-mail, le lien et le code du résultat sont exclus de l'enregistrement. L'analyse d'audience n'est activée qu'après que vous avez appuyé sur « Accepter » dans l'avis relatif aux cookies ; sans cela, elle n'est pas chargée. Aucun traceur publicitaire n'est utilisé."
+          ]
+        },
+        {
+          "h": "Bases légales et durées de conservation",
+          "p": [
+            "Le résultat envoyé par e-mail est traité sur la base de votre consentement et conservé trois ans à compter de la date d'envoi ou jusqu'au retrait du consentement. Les données destinées à la newsletter le sont sur la base d'un consentement distinct, jusqu'au désabonnement. Les messages du formulaire de contact, sur la base du consentement, pendant un an après la réponse.",
+            "Lorsque la durée expire ou que vous retirez votre consentement, les données sont supprimées de la base. Elles disparaissent des copies de sauvegarde au fur et à mesure du renouvellement de celles-ci, au plus tard au bout de six mois."
+          ]
+        },
+        {
+          "h": "Le lien vers le résultat",
+          "p": [
+            "Le lien vers le rapport contient vos réponses sous forme codée, ainsi que votre nom et votre adresse e-mail si vous les avez indiqués. Toute personne disposant du lien peut ouvrir le rapport ; ne le partagez donc qu'avec des personnes de confiance."
+          ]
+        },
+        {
+          "h": "Formulaire de contact",
+          "p": [
+            "Le message du formulaire de contact — nom, adresse e-mail, texte et fichiers joints — est envoyé par le serveur du site par e-mail à {email} ; il sert uniquement à vous répondre. Les messages ne sont pas enregistrés dans la base de résultats : seule la trace de votre consentement — date, adresse e-mail et texte du consentement — reste sur le serveur. Les fichiers joints ne sont conservés nulle part ailleurs que dans cet e-mail."
+          ]
+        },
+        {
+          "h": "Vos droits et la suppression des données",
+          "p": [
+            "Vous pouvez à tout moment retirer votre consentement, savoir quelles données vous concernant nous détenons et demander leur rectification ou leur suppression. Écrivez à {email} ou via la page « {contact} » : nous répondrons dans un délai de dix jours ouvrés.",
+            "Pour supprimer les données sur votre appareil, effacez les données du site dans les réglages du navigateur ou appuyez sur « Refaire le test ». L'e-mail contenant le résultat reste dans votre messagerie."
+          ]
+        },
+        {
+          "h": "Cookies",
+          "p": [
+            "Le site lui-même ne dépose aucun cookie : pour ce qui précède, il utilise le stockage local du navigateur, une technologie ayant la même finalité. Le service d'analyse d'audience dépose ses propres cookies pour distinguer les visiteurs, mais seulement après que vous avez appuyé sur « Accepter ». C'est pourquoi l'avis vous demande votre choix lors de la première visite. Vous pouvez modifier ce choix à tout moment : {reset}"
+          ]
+        },
+        {
+          "h": "Modifications",
+          "p": [
+            "Version du {date}. Les changements dans le traitement des données seront reflétés sur cette page."
+          ]
+        }
+      ]
+    },
+    "consentDoc": {
+      "title": "Consentement au traitement des données personnelles — test DISC",
+      "description": "Texte du consentement au traitement des données personnelles que vous donnez en envoyant les formulaires de disc-test.org.",
+      "h1": "Consentement au traitement des données personnelles",
+      "lead": "En cochant, dans un formulaire du site disc-test.org, la case de consentement au traitement des données personnelles et en envoyant ce formulaire, je donne librement, de ma propre volonté et dans mon propre intérêt, mon consentement au responsable du traitement — {owner} — pour le traitement de mes données personnelles aux conditions exposées ci-dessous.",
+      "sections": [
+        {
+          "h": "Finalités du traitement et données traitées",
+          "p": [
+            "Formulaire « Recevez votre résultat par e-mail » : nom, adresse e-mail, langue de la version du site, date du test, réponses et résultat du test DISC. Finalité : m'envoyer un e-mail contenant le résultat du test et conserver ce résultat afin de me le renvoyer et de répondre à mes demandes.",
+            "Formulaire de contact : nom, adresse e-mail, texte du message et fichiers joints. Finalité : examiner ma demande et y répondre."
+          ]
+        },
+        {
+          "h": "Opérations effectuées sur les données",
+          "p": [
+            "Collecte, enregistrement, systématisation, accumulation, conservation, mise à jour, extraction, utilisation, transmission aux personnes indiquées dans la section suivante, blocage, suppression et destruction — à l'aide de moyens automatisés."
+          ]
+        },
+        {
+          "h": "À qui le traitement est confié",
+          "p": [
+            "Le responsable du traitement confie le traitement à l'hébergeur dont le serveur fait fonctionner le site et conserve la base de résultats, ainsi qu'aux services de messagerie par lesquels les e-mails sont envoyés et reçus. Ces sociétés sont situées en Russie et agissent pour le compte du responsable du traitement. Mes données ne sont pas transmises hors de Russie."
+          ]
+        },
+        {
+          "h": "Durée de validité du consentement",
+          "p": [
+            "Le consentement est valable trois ans à compter de la date d'envoi du formulaire « Recevez votre résultat par e-mail » et un an après la réponse à la demande envoyée via le formulaire de contact, ou jusqu'à son retrait."
+          ]
+        },
+        {
+          "h": "Comment retirer le consentement",
+          "p": [
+            "Je peux retirer mon consentement à tout moment en écrivant à {email} ou via la page « {contact} ». Après le retrait, le responsable du traitement cesse le traitement et supprime mes données dans un délai de trente jours, sauf s'il dispose d'une autre base légale pour les traiter."
+          ]
+        },
+        {
+          "h": "Ce que ce consentement ne couvre pas",
+          "p": [
+            "Le consentement à recevoir la newsletter est donné séparément, par une case distincte dans le formulaire. La manière dont le responsable du traitement traite les données dans les autres cas est décrite sur la page « {privacy} »."
+          ]
+        }
+      ],
+      "edition": "Version du {date}."
+    },
     "services": {
       "title": "Services — profil DISC détaillé",
       "description": "Service payant de disc-test.org : profil DISC détaillé pour {price} USD. Le test et le résultat restent gratuits.",
@@ -1532,6 +1645,12 @@
     "consent.accept": "Accepter",
     "consent.decline": "Cookies essentiels uniquement",
     "consent.ok": "Compris",
+    "pd.consent": "Je donne mon {consent}. La manière dont nous traitons les données est décrite sur la page « {privacy} ».",
+    "pd.consentLink": "consentement au traitement des données personnelles",
+    "pd.required": "Cochez la case de consentement au traitement des données personnelles : sans ce consentement, nous ne pouvons pas accepter vos données.",
+    "pd.cookieAsk": "Ce site conserve votre progression, votre résultat et la langue choisie dans le stockage local du navigateur. Avec votre consentement, un service d'analyse d'audience collectera des statistiques de visite anonymisées et un enregistrement des actions sur la page pour nous aider à améliorer le site. Votre nom, votre e-mail et votre résultat ne sont pas transmis au service d'analyse.",
+    "pd.cookieDetails": "Conservés dans le navigateur : le nom et l'e-mail, si vous les avez indiqués ; vos réponses et la progression inachevée ; votre dernier résultat ; la langue choisie ; une marque indiquant que vous avez vu cet avis. Ces données restent sur votre appareil et sont supprimées lorsque vous effacez les données du site. L'hébergeur reçoit les données techniques habituelles de la requête. Lorsque vous envoyez le résultat par e-mail, le nom, l'e-mail et les réponses sont transmis au serveur du site en Russie, qui vous envoie l'e-mail avec le résultat et enregistre le nom, l'e-mail, la date et le résultat dans la base de résultats du propriétaire du site. Le service d'analyse d'audience reçoit l'adresse de la page sans le code du résultat, la provenance, le type d'appareil et de navigateur, un enregistrement anonymisé des actions sur la page (les champs nom et e-mail, le lien et le code du résultat en sont exclus) et dépose ses propres cookies. Il n'est activé qu'après que vous avez appuyé sur « Accepter » ; vous pouvez modifier ce choix sur la page « Confidentialité ». Aucun traceur publicitaire n'est utilisé.",
+    "pd.cookieChange": "Modifier le choix des cookies",
 
     "print.title": "Test DISC à imprimer : questionnaire, clé et calcul du score",
     "print.name": "Nom",

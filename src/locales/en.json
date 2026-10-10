@@ -632,6 +632,119 @@
         }
       ]
     },
+    "policy": {
+      "title": "Personal Data Processing Policy — DISC Test",
+      "description": "Who processes data on disc-test.org and why, where it is stored, for how long, and how to have it deleted.",
+      "h1": "Personal Data Processing Policy",
+      "lead": "In short: you can take the test without telling us anything about yourself. Your name and email address are needed only if you want your result emailed to you or if you write to us. This data is stored in Russia, used for what you asked for, and deleted at your request.",
+      "sections": [
+        {
+          "h": "Who processes the data",
+          "p": [
+            "The data of visitors to disc-test.org is processed by the site’s owner: {owner}. You can write to us at {email} or via the “{contact}” page."
+          ]
+        },
+        {
+          "h": "What data we use",
+          "p": [
+            "You don’t need to enter anything to take the test. During the test your answers are saved, and after it your result, chosen language and a note that you have seen the cookie notice. All of this is kept in your browser’s local storage and is not sent to the server.",
+            "Entering your name and email address on the result screen is optional: you do so if you want the report by email. Before you send the form, we ask you to tick the box confirming your {consent}. After that, your name, email address, language, test date and result are passed to the site’s server: it emails you your result and stores this data in the results database."
+          ]
+        },
+        {
+          "h": "Where the data is stored and who receives it",
+          "p": [
+            "The results database is on a server in Russia that the site owner rents from a hosting provider. Emails are sent by a mail service that is also located in Russia. These companies process the data on our instructions and only to keep the site running. We do not transfer your name, email address, test result or messages outside Russia; the email goes to the address you entered yourself. The data is not passed or sold to third parties for their own purposes.",
+            "Only people who ticked the separate consent box in the result form receive our newsletter. In that case the database also stores the fact of consent, its date and its wording, and your email address, name and language are used to send you emails from disc-test.org: DISC materials, site news and promotional offers. You can unsubscribe at any time, using the link in any email or by writing to {email}.",
+            "The hosting provider receives standard technical request data: IP address, browser type, page address. Fonts are served from this site itself. Visit statistics are collected by a web analytics system: it receives anonymized visit data, namely the page address without the result code, the referrer, device and browser type, and a recording of on-page actions; the name and email fields, the result link and code are excluded from the recording. Analytics is switched on only after you click “Accept” in the cookie notice; without that, it is not loaded. No advertising trackers are used."
+          ]
+        },
+        {
+          "h": "Legal basis and retention periods",
+          "p": [
+            "We process a result sent by email on the basis of your consent and keep it for three years from the date it was sent or until you withdraw your consent. Newsletter data is processed on the basis of a separate consent, until you unsubscribe. Messages from the contact form are processed on the basis of consent and kept for one year after our reply.",
+            "When the period expires or you withdraw your consent, the data is deleted from the database. It disappears from backups as they are refreshed, no later than six months afterwards."
+          ]
+        },
+        {
+          "h": "The result link",
+          "p": [
+            "The report link contains your answers in encoded form, plus your name and email address if you entered them. Anyone with the link can open the report, so share it only with people you trust."
+          ]
+        },
+        {
+          "h": "Contact form",
+          "p": [
+            "Messages from the contact form — name, email address, text and attached files — are emailed by the site’s server to {email} and are used only to reply to you. They are not written to the results database: the server keeps only a record of your consent, namely its date, your email address and the wording of the consent. The attached files are not stored anywhere except in that email."
+          ]
+        },
+        {
+          "h": "Your rights and deleting your data",
+          "p": [
+            "You can withdraw your consent at any time, find out what data of yours we hold, and ask us to correct or delete it. Write to {email} or via the “{contact}” page: we will reply within ten working days.",
+            "To delete the data on your device, clear the site’s data in your browser settings or press “Take the test again.” The result email is kept in your mailbox."
+          ]
+        },
+        {
+          "h": "Cookies",
+          "p": [
+            "The site itself sets no cookies: for the items above it uses the browser’s local storage, a technology with the same purpose. The web analytics system sets its own cookies, which tell visitors apart, only after you click “Accept.” That is why the notice asks for your choice on your first visit. You can change your choice at any time: {reset}"
+          ]
+        },
+        {
+          "h": "Changes",
+          "p": [
+            "Last updated: {date}. Changes in how data is handled will be reflected on this page."
+          ]
+        }
+      ]
+    },
+    "consentDoc": {
+      "title": "Consent to the Processing of Personal Data — DISC Test",
+      "description": "The text of the consent to personal data processing that you give when you submit forms on disc-test.org.",
+      "h1": "Consent to the Processing of Personal Data",
+      "lead": "By ticking the box for consent to the processing of personal data in a form on disc-test.org and submitting that form, I freely, of my own will and in my own interest consent to the processing of my personal data, on the terms set out below, by the operator: {owner}.",
+      "sections": [
+        {
+          "h": "Purposes of processing and the data involved",
+          "p": [
+            "The “Get your result by email” form: name, email address, language version of the site, test date, answers and DISC test result. The purpose is to email me my test result and to keep the result so that it can be sent again and my enquiries can be answered.",
+            "The contact form: name, email address, message text and attached files. The purpose is to consider my enquiry and reply to it."
+          ]
+        },
+        {
+          "h": "Operations performed on the data",
+          "p": [
+            "Collection, recording, organization, accumulation, storage, updating, retrieval, use, transfer to the parties named in the next section, blocking, deletion and destruction, using automated means."
+          ]
+        },
+        {
+          "h": "Who is entrusted with processing",
+          "p": [
+            "The operator entrusts processing to the hosting provider on whose server the site runs and the results database is kept, and to the mail services through which emails are sent and received. These companies are located in Russia and act on the operator’s instructions. My data is not transferred outside Russia."
+          ]
+        },
+        {
+          "h": "How long the consent is valid",
+          "p": [
+            "The consent is valid for three years from the date the “Get your result by email” form is submitted, and for one year after the reply to an enquiry from the contact form, or until it is withdrawn."
+          ]
+        },
+        {
+          "h": "How to withdraw consent",
+          "p": [
+            "I can withdraw my consent at any time by writing to {email} or via the “{contact}” page. After withdrawal, the operator stops processing and deletes my data within thirty days, unless it has another legal basis for processing it."
+          ]
+        },
+        {
+          "h": "What this consent does not cover",
+          "p": [
+            "Consent to receive the newsletter is given separately, with its own checkbox in the form. How the operator processes data in other cases is described on the “{privacy}” page."
+          ]
+        }
+      ],
+      "edition": "Version dated {date}."
+    },
     "services": {
       "title": "Services — in-depth DISC profile",
       "description": "Paid service on disc-test.org: an in-depth DISC profile for {price} USD. The test and its result remain free.",
@@ -1509,6 +1622,12 @@
     "consent.accept": "Accept",
     "consent.decline": "Essential only",
     "consent.ok": "Got it",
+    "pd.consent": "I give my {consent}. How we process data is described on the “{privacy}” page.",
+    "pd.consentLink": "consent to the processing of personal data",
+    "pd.required": "Please tick the consent to the processing of personal data: without it we cannot accept your data.",
+    "pd.cookieAsk": "This site keeps your progress, result and chosen language in your browser’s local storage. With your consent, a web analytics system will collect anonymized visit statistics and a recording of on-page actions to help us improve the site. Your name, email and result are not sent to the analytics system.",
+    "pd.cookieDetails": "Stored in your browser: your name and email, if you entered them; your answers and unfinished progress; your latest result; your chosen language; a note that you have seen this notice. This data stays on your device and is removed when you clear the site’s data. The hosting provider receives standard technical request data. When you send your result by email, your name, email and answers are passed to the site’s server in Russia, which emails you your result and stores your name, email, date and result in the site owner’s results database. The web analytics system receives the page address without the result code, the referrer, device and browser type, an anonymized recording of on-page actions (the name and email fields, the result link and code are excluded), and sets its own cookies. It is switched on only after you click “Accept,” and you can change your choice on the “Privacy” page. No advertising trackers are used.",
+    "pd.cookieChange": "Change cookie choice",
 
     "print.title": "Printable DISC Test: Questionnaire, Answer Key and Scoring",
     "print.name": "Name",
