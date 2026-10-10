@@ -72,8 +72,8 @@ function initCommon(c){
       /* параметр визита «Язык сайта»: в Метрике «Параметры визитов» и сегменты по языковой версии (en в корне сайта не отличить по адресу) */
       window.ym(ym,"hit", location.origin+location.pathname+location.search, {referer:document.referrer, params:{"Язык сайта": L.lang}});
     }
-    /* цели Метрики: страница теста вызывает discTrack("start") и discTrack("finish") */
-    window.discTrack = function(goal){ if(ym && window.ym) window.ym(ym,"reachGoal",goal); };
+    /* цели Метрики: страница теста вызывает discTrack("start") и discTrack("finish"); params — параметры цели (сумма оплаты: order_price, currency) */
+    window.discTrack = function(goal, params){ if(ym && window.ym) window.ym(ym,"reachGoal",goal,params); };
     var st = lsGet("disc.consent");
     if(!optin) loadYm();
     if(st==="analytics"||st==="essential"||(st==="noted"&&!ask)){ if(ask && st==="analytics") loadYm(); return; }

@@ -224,6 +224,16 @@ html[lang=ar] body,html[lang=hi] body{font-size:17px;line-height:1.65}
 .xsample img{width:100%}
 .xsample figcaption{font-size:13px;color:var(--muted);margin-top:6px}
 .service .more{margin-top:8px}
+/* покупка расширенного отчёта (src/pay.js): форма с e-mail в блоке .xbuy, номер заказа на страницах «Спасибо» и «Оплата не прошла» */
+.xbuy{scroll-margin-top:76px}
+.xpay{flex:1 1 100%;display:flex;flex-wrap:wrap;align-items:flex-end;gap:12px 20px;margin:0}
+.xpay .field{flex:1 1 260px;min-width:0}
+.xpay .sendstatus,.xpay .xnote{flex:1 1 100%;margin:0}
+.xpay .sendstatus.err{color:var(--d)}
+.xpay .xnote{font-size:13px}
+.content .payorder{display:inline-block;margin:0 0 6px;font-weight:600}
+.content .payretry{margin:18px 0}
+@media (max-width:480px){.xpay .btn{flex:1 1 auto}}
 .content .xq{font-family:var(--font-body);font-size:17px;font-weight:600;text-transform:none;letter-spacing:0;color:var(--ink);margin:20px 0 6px}
 @media (max-width:640px){.xgrid{grid-template-columns:1fr}.xthumbs{grid-template-columns:repeat(3,1fr)}.xoffer h2{font-size:19px}.xsample{grid-template-columns:repeat(2,1fr)}}
 /* призыв сразу после вводного абзаца контентных страниц и плавающая кнопка на телефоне (аудит 3, п. 1) */
@@ -617,8 +627,8 @@ function initCommon(c){
       /* параметр визита «Язык сайта»: в Метрике «Параметры визитов» и сегменты по языковой версии (en в корне сайта не отличить по адресу) */
       window.ym(ym,"hit", location.origin+location.pathname+location.search, {referer:document.referrer, params:{"Язык сайта": L.lang}});
     }
-    /* цели Метрики: страница теста вызывает discTrack("start") и discTrack("finish") */
-    window.discTrack = function(goal){ if(ym && window.ym) window.ym(ym,"reachGoal",goal); };
+    /* цели Метрики: страница теста вызывает discTrack("start") и discTrack("finish"); params — параметры цели (сумма оплаты: order_price, currency) */
+    window.discTrack = function(goal, params){ if(ym && window.ym) window.ym(ym,"reachGoal",goal,params); };
     var st = lsGet("disc.consent");
     if(!optin) loadYm();
     if(st==="analytics"||st==="essential"||(st==="noted"&&!ask)){ if(ask && st==="analytics") loadYm(); return; }

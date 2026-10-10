@@ -47,6 +47,11 @@ const withPrice = (L, obj) => JSON.parse(JSON.stringify(obj).replace(/\{price\}/
 // развёрнута версия скрипта со столбцами согласия (GET на sendEndpoint отвечает newsletter:true): прежняя версия галочку молча игнорирует.
 // Страница отписки /unsubscribe/ строится всегда, когда задан sendEndpoint: ссылки из уже разосланных писем должны работать.
 const newsletter = !!(cfg.newsletter && cfg.sendEndpoint);
+// Оплата расширенного отчёта: payEndpoint — адрес сервера оплаты (README → «Оплата расширенного отчёта»). Пока он пустой, на странице
+// отчёта остаётся заявка через форму обратной связи, страниц «Спасибо» и «Оплата не прошла» нет. Для локальной проверки адрес можно
+// задать переменной PAY_ENDPOINT, не трогая site.config.json: PAY_ENDPOINT=http://localhost:8765/mock-pay LANGS=ru node build.js
+const payEndpoint = String(process.env.PAY_ENDPOINT || cfg.payEndpoint || '').trim().replace(/\/+$/, '');
+const payJs = fs.readFileSync(path.join(SRC, 'pay.js'), 'utf8');
 const MAX_CONTACT_BYTES = 10 * 1024 * 1024; // общий размер вложений одного сообщения (проверяется и в браузере, и в Apps Script)
 const jsStr = s => JSON.stringify(String(s == null ? '' : s)).replace(/</g, '\\u003c');
 const graphJs = fs.readFileSync(path.join(SRC, 'graph.js'), 'utf8').replace(/\nif \(typeof module[^\n]*\n?$/, '\n');
@@ -569,11 +574,13 @@ for (const L of locales) {
         sectionsHtml(sv.sections.slice(0, 1)) + (docs && sv.docs ? `<p>${escFull(sv.docs)}</p>` : '') + sectionsHtml(sv.sections.slice(1))) +
         (docs ? `<p class="seealso">${docLink('offer/', of)} · ${docLink('refund/', rf)}</p>` : '') });
     // /extended-report/ — страница расширенного отчёта: что внутри, листы образца картинками, сравнение с кратким отчётом, цена.
-    // Оплаты на сайте пока нет: блок покупки ведёт на тест, а у кого результат сохранён на этом устройстве (disc.last), тому скрипт страницы
-    // меняет его на заявку — форма обратной связи с готовым текстом и ссылкой на результат (передаются через sessionStorage, см. src/contact.js)
+    // Блок покупки по умолчанию ведёт на тест. У кого результат сохранён на этом устройстве (disc.last), тому скрипт страницы меняет его:
+    // при заданном payEndpoint — на форму с полем e-mail и кнопкой «Купить» (src/pay.js), без него — на заявку через форму обратной связи
+    // с готовым текстом и ссылкой на результат (передаются через sessionStorage, см. src/contact.js)
     if (hasProduct(L)) {
       const pr = withPrice(L, C.product), root = '../' + (pathOf(L.lang) ? '../' : ''), rich = str => escFull(str).replace(/&lt;(\/?)b&gt;/g, '<$1b>');
-      const buyBox = `<section class="service xbuy"><div><h2>${escFull(pr.buy.testTitle)}</h2><p>${escFull(pr.buy.testText)}</p></div><p class="price"><small>${escFull(pr.priceLabel)}</small>${escFull(pr.price)}</p>` +
+      const pay = payEndpoint && C.product.pay ? pr.pay : null;
+      const buyBox = id => `<section class="service xbuy"${pay && id ? ` id="${id}"` : ''}><div><h2>${escFull(pr.buy.testTitle)}</h2><p>${escFull(pr.buy.testText)}</p></div><p class="price"><small>${escFull(pr.priceLabel)}</small>${escFull(pr.price)}</p>` +
         `<a class="btn" href="../" data-goal="ext-page-test">${escFull(pr.buy.testButton)}</a></section>`;
       const sample = pr.sampleAlt.map((alt, i) => `<figure><a href="${root}extended/${L.lang}-i-${i + 1}.webp" target="_blank" rel="noopener" data-goal="ext-page-sample">` +
         `<img src="${root}extended/${L.lang}-i-${i + 1}-s.webp" width="440" height="623" alt="${escFull(alt)}" loading="lazy" decoding="async"></a><figcaption>${escFull(pr.sampleCaption[i])}</figcaption></figure>`).join('');
@@ -581,16 +588,17 @@ for (const L of locales) {
         pr.compare.map(r => `<tr><th scope="row">${escFull(r[0])}</th><td>${escFull(r[1])}</td><td>${escFull(r[2])}</td></tr>`).join('') + `</tbody></table></div>`;
       writeContentPage(L, 'extended-report/', { navKey: 'nav.services', langs: locales.filter(hasProduct), title: pr.title, description: pr.description, crumbs: [svcCrumb, { name: pr.h1 }],
         content: fillHtml(`<div class="eyebrow">${escFull(t('nav.services'))}</div><h1>${escFull(pr.h1)}</h1><p class="lead">${escFull(pr.lead)}</p>` +
-          `<ul class="xfacts">${pr.facts.map(x => `<li>${escFull(x)}</li>`).join('')}</ul>` + buyBox +
+          `<ul class="xfacts">${pr.facts.map(x => `<li>${escFull(x)}</li>`).join('')}</ul>` + buyBox('buy') +
           `<h2 id="sample">${escFull(pr.sampleTitle)}</h2><p>${escFull(pr.sampleNote)}</p><div class="xsample">${sample}</div>` +
           `<h2>${escFull(pr.forTitle)}</h2>` + listHtml('ul', pr.for) +
           `<h2>${escFull(pr.insideTitle)}</h2><p>${escFull(pr.insideLead)}</p><ol>${pr.inside.map(x => `<li>${rich(x)}</li>`).join('')}</ol>` +
           `<h2>${escFull(pr.compareTitle)}</h2>` + compare + `<p class="small muted">${escFull(pr.compareNote)}</p>` +
-          `<h2>${escFull(pr.howTitle)}</h2>` + listHtml('ol', pr.how) + buyBox +
+          `<h2>${escFull(pr.howTitle)}</h2>` + listHtml('ol', pay ? pay.how : pr.how) + buyBox() +
           `<h2>${escFull(pr.faqTitle)}</h2>` + pr.faq.map(it => `<h3 class="xq">${escFull(it.q)}</h3><p>${escFull(it.a)}</p>`).join('') + `<p class="small muted">${escFull(pr.docs)}</p>`) +
           `<p class="seealso">${docLink('services/', sv)} · ${docLink('offer/', of)} · ${docLink('refund/', rf)}</p>`,
         files: [1, 2, 3, 4].map(i => `src/assets/extended/${L.lang}-i-${i}.webp`),
-        pageJs: `(function(){
+        pageJs: pay ? payJs + `\ninitPayBuy({T: ${JSON.stringify(Object.assign({ noteHtml: fillHtml(escFull(pay.note)), errorHtml: fillHtml(escFull(pay.error)) },
+          Object.fromEntries(['title', 'text', 'emailLabel', 'button', 'badEmail', 'wait'].map(k => [k, pay[k]])))).replace(/</g, '\\u003c')}, endpoint: ${jsStr(payEndpoint)}, L: L, esc: esc, lsGet: lsGet, lsSet: lsSet});` : `(function(){
   var r = lsGet('disc.last'); if(!r || !r.t || !r.m || !r.l || !r.m.join) return;
   var B = ${JSON.stringify(pr.buy).replace(/</g, '\\u003c')}, d = new Date(r.t), date = isNaN(d) ? '' : d.toLocaleDateString(L.dateLocale, {day:'numeric', month:'long', year:'numeric'});
   function b64e(s){ return btoa(unescape(encodeURIComponent(s))).replace(/\\+/g,'-').replace(/\\//g,'_').replace(/=+$/,''); }
@@ -602,6 +610,27 @@ for (const L of locales) {
     a.addEventListener('click', function(){ try{ sessionStorage.setItem('disc.order', JSON.stringify({name:r.name||'', email:r.email||'', message:B.orderMsg.replace('{link}', link)})); }catch(e){} });
   });
 })();` });
+      // «Спасибо» и «Оплата не прошла»: на них банк возвращает покупателя после оплаты и после отказа (?order=<номер заказа>).
+      // Служебные страницы: закрыты от индексации, в sitemap не идут. Номер заказа, e-mail и статус подставляет скрипт (src/pay.js)
+      if (pay) {
+        const th = pay.thanks, fl = pay.fail, own2 = locales.filter(hasProduct);
+        const crumbs2 = h1 => [{ name: t('nav.services'), href: '../../services/', sub: 'services/' }, { name: pr.h1, href: '../', sub: 'extended-report/' }, { name: h1 }];
+        const fill2 = html => html.replace(/\{contact\}/g, () => `<a href="../../contact/">${escFull(t('nav.contact'))}</a>`).replace(/\{email\}/g, () => vars.email);
+        const pick = (o, keys) => JSON.stringify(Object.fromEntries(keys.map(k => [k, o[k]]))).replace(/</g, '\\u003c');
+        writeContentPage(L, 'extended-report/thanks/', { noindex: true, noDate: true, navKey: 'nav.services', langs: own2, title: th.title, description: th.description, crumbs: crumbs2(th.h1),
+          content: `<div class="eyebrow">${escFull(pr.h1)}</div><h1>${escFull(th.h1)}</h1><p class="lead" id="payLead">${escFull(th.lead)}</p>` +
+            `<p class="notice payorder ym-hide-content" id="payOrder" hidden></p><p class="small sendstatus" id="payStatus" aria-live="polite" hidden></p>` +
+            fill2(`<h2>${escFull(th.nextTitle)}</h2>` + listHtml('ul', th.next) + `<h2>${escFull(th.helpTitle)}</h2>` + th.help.map(x => `<p>${escFull(x)}</p>`).join('')) +
+            `<p class="seealso"><a href="../../">${escFull(th.back)} ${arrow(L)}</a> · <a href="../../refund/">${escFull(rf.h1)} ${arrow(L)}</a></p>`,
+          pageJs: payJs + `\ninitPayThanks({T: ${pick(th, ['leadEmail', 'order', 'statusWait', 'statusPaid', 'statusSent'])}, endpoint: ${jsStr(payEndpoint)}, price: ${servicePrices[sv.currency] || 0}, lsGet: lsGet, lsSet: lsSet, $: $});` });
+        writeContentPage(L, 'extended-report/failed/', { noindex: true, noDate: true, navKey: 'nav.services', langs: own2, title: fl.title, description: fl.description, crumbs: crumbs2(fl.h1),
+          content: `<div class="eyebrow">${escFull(pr.h1)}</div><h1>${escFull(fl.h1)}</h1><p class="lead">${escFull(fl.lead)}</p>` +
+            `<p class="notice payorder ym-hide-content" id="payOrder" hidden></p>` +
+            `<h2>${escFull(fl.tryTitle)}</h2>` + listHtml('ul', fl.try) + `<p class="payretry"><a class="btn" href="../#buy">${escFull(fl.button)}</a></p>` +
+            fill2(`<p class="small muted">${escFull(fl.charged)}</p>`) +
+            `<p class="seealso"><a href="../../refund/">${escFull(rf.h1)} ${arrow(L)}</a> · <a href="../../contact/">${escFull(t('nav.contact'))} ${arrow(L)}</a></p>`,
+          pageJs: payJs + `\ninitPayFail({T: ${pick(fl, ['order'])}, lsGet: lsGet, lsSet: lsSet, $: $});` });
+      }
     }
     if (docs) {
     writeContentPage(L, 'offer/', { navKey: 'nav.services', langs: own, title: of.title, description: of.description, crumbs: [svcCrumb, { name: of.h1 }],
