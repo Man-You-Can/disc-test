@@ -640,7 +640,7 @@
       "title": "Política de tratamiento de datos personales — test DISC",
       "description": "Quién trata los datos en disc-test.org y para qué, dónde se guardan, durante cuánto tiempo y cómo eliminarlos.",
       "h1": "Política de tratamiento de datos personales",
-      "lead": "En resumen: puede hacer el test sin facilitar ningún dato sobre usted. El nombre y el correo electrónico solo hacen falta si desea recibir el resultado por correo o si nos escribe. Estos datos se guardan en Rusia, se usan para lo que usted ha pedido y se eliminan a petición suya.",
+      "lead": "En resumen: puede hacer el test sin facilitar ningún dato sobre usted. El nombre y el correo electrónico solo hacen falta si desea recibir el resultado por correo o si nos escribe. Estos datos se usan para lo que usted ha pedido y se eliminan a petición suya.",
       "sections": [
         {
           "h": "Quién trata los datos",
@@ -658,7 +658,7 @@
         {
           "h": "Dónde se guardan los datos y a quién se transmiten",
           "p": [
-            "La base de resultados se encuentra en un servidor situado en Rusia, que el propietario del sitio alquila a un proveedor de alojamiento. Los correos los envía un servicio de correo ubicado también en Rusia. Estas empresas tratan los datos por encargo nuestro y únicamente para el funcionamiento del sitio. No transmitimos fuera de Rusia el nombre, el correo, el resultado del test ni los mensajes que usted nos envía; el correo sale hacia la dirección que usted mismo ha indicado. Los datos no se ceden ni se venden a terceros para sus propios fines.",
+            "La base de resultados se encuentra en un servidor que el propietario del sitio alquila a un proveedor de alojamiento. Los correos los envía un servicio de correo. Estas empresas tratan los datos por encargo nuestro y únicamente para el funcionamiento del sitio. El correo sale hacia la dirección que usted mismo ha indicado. Los datos no se ceden ni se venden a terceros para sus propios fines.",
             "El boletín solo lo reciben quienes marcaron la casilla de consentimiento específica en el formulario de envío del resultado. En ese caso, en la base se guardan también el consentimiento, su fecha y su texto, y su correo, nombre e idioma se usan para enviarle mensajes de disc-test.org: materiales sobre DISC, novedades del sitio y ofertas comerciales. Puede darse de baja en cualquier momento, desde el enlace de cada mensaje o escribiendo a {email}.",
             "El servicio de alojamiento recibe los datos técnicos habituales de la solicitud: dirección IP, tipo de navegador, dirección de la página. Las fuentes se sirven desde este mismo sitio. Las estadísticas de visitas las recopila un servicio de analítica web: recibe datos de visita anonimizados —la dirección de la página sin el código del resultado, la procedencia, el tipo de dispositivo y navegador— y una grabación de las acciones en la página; los campos de nombre y correo, el enlace y el código del resultado quedan excluidos de la grabación. Puede detener la recopilación en la configuración del navegador o con un bloqueador de rastreadores. No se usan rastreadores publicitarios."
           ]
@@ -725,7 +725,7 @@
         {
           "h": "A quién se encarga el tratamiento",
           "p": [
-            "El responsable encarga el tratamiento al proveedor de alojamiento en cuyo servidor funciona el sitio y se guarda la base de resultados, y a los servicios de correo a través de los cuales se envían y se reciben los mensajes. Estas empresas se encuentran en Rusia y actúan por encargo del responsable. Mis datos no se transmiten fuera de Rusia."
+            "El responsable encarga el tratamiento al proveedor de alojamiento en cuyo servidor funciona el sitio y se guarda la base de resultados, y a los servicios de correo a través de los cuales se envían y se reciben los mensajes. Estas empresas actúan por encargo del responsable."
           ]
         },
         {
@@ -1636,7 +1636,7 @@
     "pd.consentLink": "consentimiento para el tratamiento de datos personales",
     "pd.required": "Marque la casilla de consentimiento para el tratamiento de datos personales: sin él no podemos aceptar sus datos.",
     "pd.cookieAsk": "Este sitio guarda su progreso, su resultado y el idioma elegido en el almacenamiento local del navegador. Con su consentimiento, un servicio de analítica web recopilará estadísticas de visitas anonimizadas y una grabación de las acciones en la página para ayudarnos a mejorar el sitio. Su nombre, su correo y su resultado no se envían al servicio de analítica.",
-    "pd.cookieDetails": "En el navegador se guardan: el nombre y el correo, si usted los indicó; sus respuestas y el progreso sin terminar; su último resultado; el idioma elegido; un indicador de que ha visto este aviso. Estos datos permanecen en su dispositivo y se eliminan al borrar los datos del sitio. El servicio de alojamiento recibe los datos técnicos habituales de la solicitud. Cuando envía el resultado por correo, el nombre, el correo y las respuestas se transmiten al servidor del sitio en Rusia, que le envía el correo con el resultado y guarda el nombre, el correo, la fecha y el resultado en la base de resultados del propietario del sitio. El servicio de analítica web recibe la dirección de la página sin el código del resultado, la procedencia, el tipo de dispositivo y navegador y una grabación anonimizada de las acciones en la página (los campos de nombre y correo, el enlace y el código del resultado quedan excluidos), y establece sus propias cookies. Puede bloquearlo en la configuración del navegador o con un bloqueador de rastreadores. No se usan rastreadores publicitarios.",
+    "pd.cookieDetails": "En el navegador se guardan: el nombre y el correo, si usted los indicó; sus respuestas y el progreso sin terminar; su último resultado; el idioma elegido; un indicador de que ha visto este aviso. Estos datos permanecen en su dispositivo y se eliminan al borrar los datos del sitio. El servicio de alojamiento recibe los datos técnicos habituales de la solicitud. Cuando envía el resultado por correo, el nombre, el correo y las respuestas se transmiten al servidor del sitio, que le envía el correo con el resultado y guarda el nombre, el correo, la fecha y el resultado en la base de resultados del propietario del sitio. El servicio de analítica web recibe la dirección de la página sin el código del resultado, la procedencia, el tipo de dispositivo y navegador y una grabación anonimizada de las acciones en la página (los campos de nombre y correo, el enlace y el código del resultado quedan excluidos), y establece sus propias cookies. Puede bloquearlo en la configuración del navegador o con un bloqueador de rastreadores. No se usan rastreadores publicitarios.",
     "pd.cookieChange": "Cambiar la elección de cookies",
 
     "print.title": "Test DISC para imprimir: cuestionario con clave y puntuación",

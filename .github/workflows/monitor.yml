@@ -1,0 +1,53 @@
+name: Доступность сайта
+
+# Раз в 15 минут проверяет снаружи, что сайт, серверная часть и панель отвечают, а сертификаты не истекают.
+# Если проверка не прошла, запуск завершается ошибкой, и GitHub присылает письмо владельцу репозитория
+# (Settings → Notifications → Actions: «Send notifications for failed workflows only»).
+# Запуск вручную: Actions → «Доступность сайта» → Run workflow. Что проверяется и что делать при письме — README → «Наблюдение за доступностью».
+# Расписание GitHub неточное: запуск может опоздать на 5–20 минут.
+on:
+  schedule:
+    - cron: '7,22,37,52 * * * *'
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: monitor
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Проверки
+        run: |
+          set -u
+          fail=0
+          # три попытки с паузой: один сорвавшийся запрос — не повод для письма
+          check() {   # check "название" адрес "что должно быть в ответе"
+            for i in 1 2 3; do
+              if body="$(curl -sS -m 20 "$2" 2>/dev/null)" && printf '%s' "$body" | grep -q -- "$3"; then echo "ok   $1"; return 0; fi
+              sleep 25
+            done
+            echo "::error::$1: не отвечает или отвечает не так, как должен ($2)"
+            fail=1
+          }
+          check "Сайт, английская версия" "https://disc-test.org/" "DISC"
+          check "Сайт, русская версия" "https://disc-test.org/ru/" "DISC"
+          check "Серверная часть (письма, результаты, формы)" "https://api.disc-test.org/" '"ok":true'
+          check "Панель администратора" "https://admin.disc-test.org/health" '"ok":true'
+          # проверочный режим серверной части: письма не уходят — в работе его быть не должно
+          if curl -sS -m 20 "https://api.disc-test.org/" 2>/dev/null | grep -q '"dryrun":true'; then
+            echo "::error::Серверная часть в проверочном режиме: письма не отправляются"
+            fail=1
+          fi
+          # сертификаты: предупреждение за 10 дней до конца срока
+          for host in disc-test.org api.disc-test.org admin.disc-test.org; do
+            end="$(echo | openssl s_client -servername "$host" -connect "$host:443" 2>/dev/null | openssl x509 -noout -enddate 2>/dev/null | cut -d= -f2)"
+            if [ -z "$end" ]; then echo "::error::Сертификат $host: не удалось прочитать"; fail=1; continue; fi
+            days=$(( ( $(date -d "$end" +%s) - $(date +%s) ) / 86400 ))
+            if [ "$days" -ge 10 ]; then echo "ok   сертификат $host: ещё $days дн."; else echo "::error::Сертификат $host истекает через $days дн."; fail=1; fi
+          done
+          exit $fail

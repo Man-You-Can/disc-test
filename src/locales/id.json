@@ -638,7 +638,7 @@
       "title": "Kebijakan Pemrosesan Data Pribadi — Tes DISC",
       "description": "Siapa yang memproses data di disc-test.org dan untuk apa, di mana dan berapa lama data disimpan, serta cara menghapusnya.",
       "h1": "Kebijakan pemrosesan data pribadi",
-      "lead": "Singkatnya: tes ini dapat dikerjakan tanpa memberi tahu apa pun tentang diri Anda. Nama dan email hanya diperlukan jika Anda ingin menerima hasil lewat email atau menulis kepada kami. Data tersebut disimpan di Rusia, digunakan untuk hal yang Anda minta, dan dihapus atas permintaan Anda.",
+      "lead": "Singkatnya: tes ini dapat dikerjakan tanpa memberi tahu apa pun tentang diri Anda. Nama dan email hanya diperlukan jika Anda ingin menerima hasil lewat email atau menulis kepada kami. Data tersebut digunakan untuk hal yang Anda minta dan dihapus atas permintaan Anda.",
       "sections": [
         {
           "h": "Siapa yang memproses data",
@@ -656,7 +656,7 @@
         {
           "h": "Di mana data disimpan dan kepada siapa data diteruskan",
           "p": [
-            "Basis data hasil berada di server di Rusia yang disewa pemilik situs dari penyedia hosting. Email dikirim oleh layanan email yang juga berlokasi di Rusia. Perusahaan-perusahaan ini memproses data atas perintah kami dan hanya untuk keperluan operasional situs. Nama, email, hasil tes, dan pesan Anda tidak kami kirim ke luar Rusia; email dikirim ke alamat yang Anda isi sendiri. Data tidak diteruskan ataupun dijual kepada pihak ketiga untuk tujuan mereka sendiri.",
+            "Basis data hasil berada di server yang disewa pemilik situs dari penyedia hosting. Email dikirim oleh layanan email. Perusahaan-perusahaan ini memproses data atas perintah kami dan hanya untuk keperluan operasional situs. Email dikirim ke alamat yang Anda isi sendiri. Data tidak diteruskan ataupun dijual kepada pihak ketiga untuk tujuan mereka sendiri.",
             "Buletin hanya dikirim kepada orang yang mencentang persetujuan terpisah di formulir pengiriman hasil. Dalam hal itu, basis data juga menyimpan penanda persetujuan, tanggalnya, dan teksnya, sedangkan email, nama, dan bahasa Anda digunakan untuk mengirim email dari disc-test.org: materi tentang DISC, kabar situs, dan penawaran promosi. Anda dapat berhenti berlangganan kapan saja — melalui tautan di email atau dengan menulis ke {email}.",
             "Layanan hosting menerima data teknis standar dari setiap permintaan: alamat IP, jenis browser, alamat halaman. Font disimpan di situs ini sendiri. Statistik kunjungan dikumpulkan oleh layanan analitik web: layanan ini menerima data kunjungan yang dianonimkan — alamat halaman tanpa kode hasil, sumber kunjungan, jenis perangkat dan browser — serta rekaman tindakan di halaman; kolom isian nama dan email, tautan, serta kode hasil dikecualikan dari rekaman tersebut. Pengumpulan data dapat dinonaktifkan melalui pengaturan browser atau dengan pemblokir pelacak. Pelacak iklan tidak digunakan."
           ]
@@ -723,7 +723,7 @@
         {
           "h": "Kepada siapa pemrosesan dipercayakan",
           "p": [
-            "Pengendali data mempercayakan pemrosesan kepada penyedia hosting, yang servernya menjalankan situs dan menyimpan basis data hasil, serta kepada layanan email yang digunakan untuk mengirim dan menerima email. Perusahaan-perusahaan ini berada di Rusia dan bertindak atas perintah pengendali data. Data saya tidak dikirim ke luar Rusia."
+            "Pengendali data mempercayakan pemrosesan kepada penyedia hosting, yang servernya menjalankan situs dan menyimpan basis data hasil, serta kepada layanan email yang digunakan untuk mengirim dan menerima email. Perusahaan-perusahaan ini bertindak atas perintah pengendali data."
           ]
         },
         {
@@ -1639,7 +1639,7 @@
     "pd.consentLink": "persetujuan atas pemrosesan data pribadi",
     "pd.required": "Centang persetujuan atas pemrosesan data pribadi: tanpa persetujuan itu, kami tidak dapat menerima data Anda.",
     "pd.cookieAsk": "Situs ini menyimpan progres, hasil, dan bahasa pilihan Anda di penyimpanan lokal browser. Dengan persetujuan Anda, layanan analitik web akan mengumpulkan statistik kunjungan yang dianonimkan dan rekaman aktivitas di halaman agar kami dapat menyempurnakan situs. Nama, email, dan hasil Anda tidak dikirim ke layanan analitik.",
-    "pd.cookieDetails": "Yang disimpan di browser: nama dan email, jika Anda mengisinya; jawaban dan progres yang belum selesai; hasil terakhir; bahasa yang dipilih; penanda bahwa Anda sudah melihat pemberitahuan ini. Data ini tetap berada di perangkat Anda dan terhapus saat Anda menghapus data situs. Layanan hosting menerima data teknis standar dari setiap permintaan. Saat Anda mengirim hasil ke email, nama, email, dan jawaban diteruskan ke server situs di Rusia: server mengirimkan email berisi hasil kepada Anda dan menyimpan nama, email, tanggal, dan hasil di basis data hasil milik pemilik situs. Layanan analitik web menerima alamat halaman tanpa kode hasil, sumber kunjungan, jenis perangkat dan browser, serta rekaman anonim aktivitas di halaman (kolom nama dan email, tautan, dan kode hasil dikecualikan dari rekaman); layanan ini juga memasang cookie miliknya sendiri. Anda dapat memblokirnya melalui pengaturan browser atau dengan pemblokir pelacak. Pelacak iklan tidak digunakan.",
+    "pd.cookieDetails": "Yang disimpan di browser: nama dan email, jika Anda mengisinya; jawaban dan progres yang belum selesai; hasil terakhir; bahasa yang dipilih; penanda bahwa Anda sudah melihat pemberitahuan ini. Data ini tetap berada di perangkat Anda dan terhapus saat Anda menghapus data situs. Layanan hosting menerima data teknis standar dari setiap permintaan. Saat Anda mengirim hasil ke email, nama, email, dan jawaban diteruskan ke server situs: server mengirimkan email berisi hasil kepada Anda dan menyimpan nama, email, tanggal, dan hasil di basis data hasil milik pemilik situs. Layanan analitik web menerima alamat halaman tanpa kode hasil, sumber kunjungan, jenis perangkat dan browser, serta rekaman anonim aktivitas di halaman (kolom nama dan email, tautan, dan kode hasil dikecualikan dari rekaman); layanan ini juga memasang cookie miliknya sendiri. Anda dapat memblokirnya melalui pengaturan browser atau dengan pemblokir pelacak. Pelacak iklan tidak digunakan.",
     "pd.cookieChange": "Ubah pilihan cookie",
 
     "print.title": "Tes DISC untuk Dicetak: Soal, Kunci Jawaban, dan Cara Menghitung Skor",

@@ -636,7 +636,7 @@
       "title": "Polityka przetwarzania danych osobowych – test DISC",
       "description": "Kto i po co przetwarza dane w serwisie disc-test.org, gdzie i jak długo są przechowywane oraz jak je usunąć.",
       "h1": "Polityka przetwarzania danych osobowych",
-      "lead": "W skrócie: test możesz zrobić, nie podając żadnych informacji o sobie. Imię i adres e-mail są potrzebne tylko wtedy, gdy chcesz otrzymać wynik e-mailem albo piszesz do nas. Dane te są przechowywane w Rosji, służą do tego, o co prosisz, i są usuwane na twoją prośbę.",
+      "lead": "W skrócie: test możesz zrobić, nie podając żadnych informacji o sobie. Imię i adres e-mail są potrzebne tylko wtedy, gdy chcesz otrzymać wynik e-mailem albo piszesz do nas. Dane te służą do tego, o co prosisz, i są usuwane na twoją prośbę.",
       "sections": [
         {
           "h": "Kto przetwarza dane",
@@ -654,7 +654,7 @@
         {
           "h": "Gdzie dane są przechowywane i komu są przekazywane",
           "p": [
-            "Baza wyników znajduje się na serwerze w Rosji, który właściciel serwisu wynajmuje od dostawcy hostingu. E-maile wysyła usługa poczty elektronicznej, która również znajduje się w Rosji. Firmy te przetwarzają dane na nasze zlecenie i wyłącznie na potrzeby działania serwisu. Imienia, adresu e-mail, wyniku testu ani treści zgłoszeń nie przekazujemy poza Rosję; e-mail trafia na adres, który podajesz samodzielnie. Dane nie są przekazywane ani sprzedawane osobom trzecim do ich własnych celów.",
+            "Baza wyników znajduje się na serwerze, który właściciel serwisu wynajmuje od dostawcy hostingu. E-maile wysyła usługa poczty elektronicznej. Firmy te przetwarzają dane na nasze zlecenie i wyłącznie na potrzeby działania serwisu. E-mail trafia na adres, który podajesz samodzielnie. Dane nie są przekazywane ani sprzedawane osobom trzecim do ich własnych celów.",
             "Newsletter otrzymują tylko osoby, które zaznaczyły odrębną zgodę w formularzu wysyłki wyniku. W takim przypadku w bazie zapisywane są także zgoda, jej data i treść, a twój adres e-mail, imię i język służą do wysyłania e-maili od disc-test.org: materiałów o DISC, nowości z serwisu i ofert promocyjnych. W każdej chwili możesz zrezygnować: klikając link w dowolnej wiadomości albo pisząc na {email}.",
             "Dostawca hostingu otrzymuje standardowe dane techniczne żądania: adres IP, typ przeglądarki, adres strony. Czcionki są przechowywane w samym serwisie. Statystyki odwiedzin zbiera system analityki internetowej: otrzymuje zanonimizowane dane o wizycie – adres strony bez kodu wyniku, źródło wejścia, typ urządzenia i przeglądarki – oraz zapis działań na stronie; pola z imieniem i adresem e-mail, link i kod wyniku są z tego zapisu wyłączone. Zbieranie danych można wyłączyć w ustawieniach przeglądarki albo za pomocą narzędzia blokującego skrypty śledzące. Reklamowe skrypty śledzące nie są używane."
           ]
@@ -721,7 +721,7 @@
         {
           "h": "Komu powierzono przetwarzanie",
           "p": [
-            "Administrator powierza przetwarzanie dostawcy hostingu, na którego serwerze działa serwis i przechowywana jest baza wyników, oraz dostawcom usług poczty elektronicznej, za pośrednictwem których wysyłane i odbierane są wiadomości. Firmy te znajdują się w Rosji i działają na zlecenie administratora. Moje dane nie są przekazywane poza Rosję."
+            "Administrator powierza przetwarzanie dostawcy hostingu, na którego serwerze działa serwis i przechowywana jest baza wyników, oraz dostawcom usług poczty elektronicznej, za pośrednictwem których wysyłane i odbierane są wiadomości. Firmy te działają na zlecenie administratora."
           ]
         },
         {
@@ -1626,7 +1626,7 @@
     "pd.consentLink": "zgodę na przetwarzanie danych osobowych",
     "pd.required": "Zaznacz zgodę na przetwarzanie danych osobowych: bez niej nie możemy przyjąć twoich danych.",
     "pd.cookieAsk": "Serwis przechowuje twoje postępy, wynik i wybrany język w pamięci lokalnej przeglądarki. Za twoją zgodą system analityki internetowej będzie zbierać zanonimizowane statystyki odwiedzin oraz zapis działań na stronie, abyśmy mogli ulepszać serwis. Imię, e-mail i wynik nie są przekazywane do systemu analitycznego.",
-    "pd.cookieDetails": "W przeglądarce przechowywane są: imię i e-mail, jeśli je podano; odpowiedzi i nieukończone postępy; ostatni wynik; wybrany język; informacja, że ten komunikat został już wyświetlony. Te dane pozostają na twoim urządzeniu i są usuwane przy czyszczeniu danych witryny. Dostawca hostingu otrzymuje standardowe dane techniczne żądania. Gdy wysyłasz wynik na e-mail, imię, e-mail i odpowiedzi są przekazywane na serwer serwisu w Rosji: wysyła on do ciebie wiadomość z wynikiem i zapisuje imię, e-mail, datę oraz wynik w bazie wyników właściciela serwisu. System analityki internetowej otrzymuje adres strony bez kodu wyniku, źródło wejścia, typ urządzenia i przeglądarki, zanonimizowany zapis działań na stronie (pola z imieniem i e-mailem oraz link i kod wyniku są z zapisu wyłączone) i zapisuje własne pliki cookie. Możesz go zablokować w ustawieniach przeglądarki lub za pomocą programu blokującego skrypty śledzące. Reklamowe skrypty śledzące nie są używane.",
+    "pd.cookieDetails": "W przeglądarce przechowywane są: imię i e-mail, jeśli je podano; odpowiedzi i nieukończone postępy; ostatni wynik; wybrany język; informacja, że ten komunikat został już wyświetlony. Te dane pozostają na twoim urządzeniu i są usuwane przy czyszczeniu danych witryny. Dostawca hostingu otrzymuje standardowe dane techniczne żądania. Gdy wysyłasz wynik na e-mail, imię, e-mail i odpowiedzi są przekazywane na serwer serwisu: wysyła on do ciebie wiadomość z wynikiem i zapisuje imię, e-mail, datę oraz wynik w bazie wyników właściciela serwisu. System analityki internetowej otrzymuje adres strony bez kodu wyniku, źródło wejścia, typ urządzenia i przeglądarki, zanonimizowany zapis działań na stronie (pola z imieniem i e-mailem oraz link i kod wyniku są z zapisu wyłączone) i zapisuje własne pliki cookie. Możesz go zablokować w ustawieniach przeglądarki lub za pomocą programu blokującego skrypty śledzące. Reklamowe skrypty śledzące nie są używane.",
     "pd.cookieChange": "Zmień wybór dotyczący plików cookie",
 
     "print.title": "Test DISC do druku: kwestionariusz z kluczem i interpretacją",
