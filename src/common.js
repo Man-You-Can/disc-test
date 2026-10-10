@@ -75,7 +75,8 @@ function initCommon(c){
     /* цели Метрики: страница теста вызывает discTrack("start") и discTrack("finish"); params — параметры цели (сумма оплаты: order_price, currency) */
     window.discTrack = function(goal, params){ if(ym && window.ym) window.ym(ym,"reachGoal",goal,params); };
     var st = lsGet("disc.consent");
-    if(!optin) loadYm();
+    /* отказ «Только необходимое», данный в режиме optin, остаётся в силе и в режиме always: этому посетителю счётчик не загружается */
+    if(!optin && st!=="essential") loadYm();
     if(st==="analytics"||st==="essential"||(st==="noted"&&!ask)){ if(ask && st==="analytics") loadYm(); return; }
     var el=document.createElement("div"); el.className="consent no-print"; el.id="consent"; el.setAttribute("role","region"); el.setAttribute("aria-label", t("consent.label"));
     var more = t("consent.details") + (c.privacyHref ? " <a href=\""+esc(c.privacyHref)+"\">"+esc(t("nav.privacy"))+"</a>" : "");
