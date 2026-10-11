@@ -684,7 +684,7 @@ for (const L of locales) {
       // «Спасибо» и «Оплата не прошла»: на них банк возвращает покупателя после оплаты и после отказа (?order=<номер заказа>).
       // Служебные страницы: закрыты от индексации, в sitemap не идут. Номер заказа, e-mail и статус подставляет скрипт (src/pay.js)
       if (pay) {
-        const th = pay.thanks, fl = pay.fail, own2 = locales.filter(hasProduct);
+        const th = pay.thanks, fl = pay.fail, own2 = locales.filter(x => hasProduct(x) && x.content.product.pay);   // страницы есть только в языках с покупкой
         const crumbs2 = h1 => [{ name: t('nav.services'), href: '../../services/', sub: 'services/' }, { name: pr.h1, href: '../', sub: 'extended-report/' }, { name: h1 }];
         const fill2 = html => html.replace(/\{contact\}/g, () => `<a href="../../contact/">${escFull(t('nav.contact'))}</a>`).replace(/\{email\}/g, () => vars.email);
         const pick = (o, keys) => JSON.stringify(Object.fromEntries(keys.map(k => [k, o[k]]))).replace(/</g, '\\u003c');
