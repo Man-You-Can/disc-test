@@ -817,10 +817,12 @@ if (cfg.reportAd === true || process.env.REPORT_AD === '1') {
     const P = L.content.product, dir = path.join(SRC, 'assets', 'extended');
     // -p.jpg — листы образца для PDF: JPEG шириной 367 px (sips -s format jpeg -s formatOptions 62 -Z 520 из <язык>-i-<n>.webp); в docs/ не копируются.
     // Именно JPEG: его Chrome кладёт в PDF как есть, а WebP разворачивает в несжатую картинку — файл выходил втрое тяжелее
-    const files = [1, 2, 3, 4].map(n => path.join(dir, L.lang + '-i-' + n + '-p.jpg'));
+    // какие листы образца показать в блоке — content.product.pdf.sheets (номера листов образца со страницы отчёта)
+    const sheets = P && P.pdf && Array.isArray(P.pdf.sheets) ? P.pdf.sheets : [1, 2, 3, 4];
+    const files = sheets.map(n => path.join(dir, L.lang + '-i-' + n + '-p.jpg'));
     if (!P || !P.pdf || !P.block || !servicePrices[L.content.services.currency] || !files.every(f => fs.existsSync(f))) continue;
     const price = String(servicePrices[L.content.services.currency]);
-    mailData[L.lang].reportAd = { eyebrow: P.h1, title: P.block.title, lead: P.pdf.lead, hook: P.block.hook, list: P.block.list, sample: P.block.sample, captions: P.sampleCaption,
+    mailData[L.lang].reportAd = { eyebrow: P.h1, title: P.block.title, lead: P.pdf.lead, facts: P.pdf.facts, volume: P.pdf.volume, hook: P.block.hook, list: P.block.list, sample: P.block.sample, captions: sheets.map(n => P.sampleCaption[n - 1]),
       price: P.block.price.replace('{price}', price), button: P.block.button, free: P.block.free, where: P.pdf.where,
       images: files.map(f => 'data:image/jpeg;base64,' + fs.readFileSync(f).toString('base64')) };
   }

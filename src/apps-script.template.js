@@ -589,23 +589,32 @@ function reportAdHtml(L, r, lang, sc, start, end) {
   var page = SITE_URL + '/' + lang + '/extended-report/', href = page + '?src=pdf' + (r.code ? '#r=' + r.code : '');
   var dir = L.dir || 'ltr';
   var stripe = '<table width="100%" cellpadding="0" cellspacing="0"><tr>' + KEYS.map(function (k) { return '<td width="25%" bgcolor="' + COLORS[k] + '" style="height:4px;font-size:1px;line-height:1px">&nbsp;</td>'; }).join('') + '</tr></table>';
-  var item = function (t) { return '<td width="50%" valign="top" style="padding:0 0 5px"><table cellpadding="0" cellspacing="0" dir="' + dir + '"><tr><td valign="top" style="padding-' + end + ':7px;font-weight:bold;color:#3A9A69">✓</td><td valign="top" style="padding-' + end + ':12px">' + esc(t) + '</td></tr></table></td>'; };
-  var rows = '';
-  for (var i = 0; i < A.list.length; i += 2) rows += '<tr>' + item(A.list[i]) + (A.list[i + 1] ? item(A.list[i + 1]) : '<td></td>') + '</tr>';
+  var items = A.list.map(function (t) {
+    return '<tr><td valign="top" style="padding:0 7px 6px 0;font-weight:bold;color:#3A9A69">✓</td><td valign="top" style="padding:0 0 6px">' + esc(t) + '</td></tr>';
+  }).join('');
+  // объём отчёта: четыре числа цветами шкал и строка под ними
+  var facts = (A.facts || []).map(function (f, n) {
+    return '<td width="25%" valign="top" style="padding:0 4px"><span style="font-size:20pt;font-weight:bold;line-height:1.1;color:' + COLORS[KEYS[n % 4]] + '">' + esc(f[0]) + '</span><br><span style="font-size:9pt;color:#5B6470">' + esc(f[1]) + '</span></td>';
+  }).join('');
   var thumbs = A.images.map(function (src, n) {
-    return '<td width="25%" valign="top" align="center" style="padding:0 4px"><img src="' + src + '" alt="" style="display:block;width:100%;border:1px solid #C9CED6">' +
+    return '<td width="' + Math.floor(100 / A.images.length) + '%" valign="top" align="center" style="padding:0 4px"><img src="' + src + '" alt="" style="display:block;width:100%;border:1px solid #C9CED6">' +
       '<p style="margin:4px 0 0;font-size:7.5pt;line-height:1.25;color:#5B6470">' + esc(A.captions[n] || '') + '</p></td>';
   }).join('');
-  return '<div style="margin-top:20px;break-inside:avoid;page-break-inside:avoid">' + stripe +
-    '<div style="border:1px solid #C9CED6;border-top:0;padding:14px 16px 16px">' +
+  return '<div style="margin-top:14px;break-inside:avoid;page-break-inside:avoid">' + stripe +
+    '<div style="border:1px solid #C9CED6;border-top:0;padding:11px 16px 14px">' +
     '<p style="margin:0;font-size:9pt;font-weight:bold;text-transform:uppercase;color:#5B6470">' + esc(A.eyebrow) + '</p>' +
     '<p style="margin:3px 0 0;font-size:17pt;font-weight:bold;line-height:1.2;text-wrap:balance">' + esc(A.title) + '</p>' +
-    '<p style="margin:8px 0 0">' + esc(A.lead) + '</p>' +
-    '<p style="margin:10px 0 0;padding:8px 10px;background:#F3F4F6;border-' + start + ':3px solid ' + COLORS[low] + '">' + esc(fmt(A.hook, { k: low, name: L.keys[low], pct: pct(sc.net[low]) })) + '</p>' +
-    '<table width="100%" cellpadding="0" cellspacing="0" dir="' + dir + '" style="margin-top:12px">' + rows + '</table>' +
-    '<table width="100%" cellpadding="0" cellspacing="0" dir="' + dir + '" style="margin-top:8px"><tr>' + thumbs + '</tr></table>' +
-    '<p style="margin:6px 0 0;font-size:8pt;color:#5B6470;text-align:center">' + esc(A.sample) + '</p>' +
-    '<table width="100%" cellpadding="0" cellspacing="0" dir="' + dir + '" style="margin-top:12px"><tr><td bgcolor="#1B2027" style="padding:12px 16px;color:#ffffff">' +
+    '<p style="margin:8px 0 0;text-wrap:pretty">' + esc(A.lead) + '</p>' +
+    (facts ? '<table width="100%" cellpadding="0" cellspacing="0" dir="' + dir + '" style="margin-top:8px"><tr>' + facts + '</tr></table>' : '') +
+    (A.volume ? '<p style="margin:4px 0 0;padding:0 4px;font-size:9.5pt;color:#5B6470">' + esc(A.volume) + '</p>' : '') +
+    '<p style="margin:9px 0 0;padding:6px 10px;background:#F3F4F6;border-' + start + ':3px solid ' + COLORS[low] + '">' + esc(fmt(A.hook, { k: low, name: L.keys[low], pct: pct(sc.net[low]) })) + '</p>' +
+    // слева — что внутри, справа — листы образца
+    '<table width="100%" cellpadding="0" cellspacing="0" dir="' + dir + '" style="margin-top:10px"><tr>' +
+      '<td width="56%" valign="top" style="padding-' + end + ':14px"><table cellpadding="0" cellspacing="0" dir="' + dir + '">' + items + '</table></td>' +
+      '<td width="44%" valign="top"><table width="100%" cellpadding="0" cellspacing="0" dir="' + dir + '"><tr>' + thumbs + '</tr></table>' +
+        '<p style="margin:4px 0 0;font-size:7.5pt;color:#5B6470;text-align:center">' + esc(A.sample) + '</p></td>' +
+    '</tr></table>' +
+    '<table width="100%" cellpadding="0" cellspacing="0" dir="' + dir + '" style="margin-top:9px"><tr><td bgcolor="#1B2027" style="padding:10px 16px;color:#ffffff">' +
       '<table width="100%" cellpadding="0" cellspacing="0" dir="' + dir + '"><tr>' +
       '<td valign="middle" style="color:#ffffff"><span style="font-size:15pt;font-weight:bold">' + esc(A.price) + '</span><br><span style="font-size:8.5pt;color:#C9CED6">' + esc(A.free) + '</span></td>' +
       '<td valign="middle" align="' + end + '"><a href="' + esc(href) + '" style="display:inline-block;background:#ffffff;color:#1B2027;font-weight:bold;text-decoration:none;padding:8px 16px;border-radius:6px">' + esc(A.button) + '</a>' +
@@ -657,7 +666,7 @@ function reportHtml(r, lang) {
     two(R.motivation, list(st.motivation), R.communication, list(st.communication)) +
     two(R.stress, para(st.stress), R.environment, para(st.environment)) +
     reportAdHtml(L, r, lang, sc, start, end) +
-    '<table width="100%" cellpadding="0" cellspacing="0" dir="' + (L.dir || 'ltr') + '" style="margin-top:22px;border:1px solid #C9CED6"><tr><td style="padding:10px 12px">' +
+    '<table width="100%" cellpadding="0" cellspacing="0" dir="' + (L.dir || 'ltr') + '" style="margin-top:' + (L.reportAd ? 12 : 22) + 'px;border:1px solid #C9CED6"><tr><td style="padding:10px 12px">' +
       '<b>' + esc(L.cta.title) + '</b><br>' + esc(L.cta.text) + ' <a href="' + esc(home) + '" dir="ltr" style="color:#1B2027;font-weight:bold;text-decoration:none">' + esc(home) + '</a></td></tr></table>' +
     '<p style="margin:8px 0 0;font-size:8pt;color:#5B6470">' + esc(fmt(L.rights, { year: when.getFullYear() })) + '</p>' +
     '</body></html>';
