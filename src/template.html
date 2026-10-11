@@ -77,6 +77,21 @@ html[lang=ar] body,html[lang=hi] body{font-size:17px;line-height:1.65}
 .brand .dots i{width:8px;height:8px;border-radius:50%;display:block}
 .tools{display:flex;align-items:center;gap:12px;min-width:0}
 .step{font-family:var(--font-mono);font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+/* телефон: подпись экрана («Результат участника», «Администратор») вместе с названием и кнопкой языка шире экрана — ставим её отдельной строкой под названием */
+@media (max-width:600px){
+  .topbar.cap{flex-wrap:wrap;row-gap:6px}
+  .topbar.cap .tools{display:contents}
+  .topbar.cap .step{order:1;flex:0 0 100%;white-space:normal}
+}
+/* телефон, идёт тест: счётчик блоков остаётся в строке, место ему освобождает название языка в кнопке (остаётся флаг) */
+@media (max-width:480px){.topbar:not(.cap) .step:not(:empty)~.langsel .langname{display:none}}
+/* самые узкие экраны (320 px): в строку не помещается и счётчик блоков — он тоже уходит на свою строку */
+@media (max-width:359px){
+  .topbar{flex-wrap:wrap;row-gap:6px}
+  .tools{display:contents}
+  .step{order:1;flex:0 0 100%;white-space:normal}
+  .step:empty{display:none}
+}
 .flag{width:20px;height:13.5px;border-radius:2.5px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.14);flex:none;display:inline-block;vertical-align:-2px}
 .langsel{position:relative}
 .langbtn{display:inline-flex;align-items:center;gap:8px;font:inherit;font-size:13px;line-height:1.2;padding:6px 10px;border:1px solid var(--line-strong);border-radius:8px;background:var(--surface);color:var(--ink);cursor:pointer;white-space:nowrap}
@@ -571,7 +586,8 @@ function badgeHTML(cls, cssClass){
 var view = $('#view'), stepEl = $('#step'), progEl = $('#progress');
 var S = null;
 
-function setStep(text){ stepEl.textContent = text||''; var nav=$('#sitenav'); if(nav) nav.hidden = !!text; }
+// cap — подпись экрана, а не счётчик блоков: на телефоне она переносится на свою строку (см. .topbar.cap)
+function setStep(text, cap){ stepEl.textContent = text||''; $('.topbar').classList.toggle('cap', !!(text && cap)); var nav=$('#sitenav'); if(nav) nav.hidden = !!text; }
 function renderProgress(i){
   var h=''; for(var k=0;k<24;k++){ h+='<i class="'+(k<i?'done':(k===i?'cur':''))+'"></i>'; }
   progEl.innerHTML=h; progEl.hidden=false;
@@ -652,7 +668,7 @@ __GRAPH_JS__
 /* ====== экран 3: отчёт ====== */
 function renderReport(r, opts){
   opts = opts||{};
-  progEl.hidden=true; setStep(opts.own ? t('report.own') : t('report.other'));
+  progEl.hidden=true; setStep(opts.own ? t('report.own') : t('report.other'), true);
   var a = analyze(r), sc=a.sc, cls=a.cls, st=L.styles[cls.p], prof=a.profile;
   var code = encodeResult(r);
   var link = pageURL()+'#r='+code;
@@ -925,7 +941,7 @@ function sendSubscribe(r, code){
 /* ====== экран 4: панель администратора ====== */
 function getResults(){ var a = lsGet('disc.admin'); return Array.isArray(a)?a:[]; }
 function renderAdmin(){
-  progEl.hidden=true; setStep(t('admin.step'));
+  progEl.hidden=true; setStep(t('admin.step'), true);
   var items = getResults().map(function(it){ var r = decodeResult(it.code); return r ? {code:it.code, added:it.added, r:r, a:analyze(r)} : null; }).filter(Boolean);
   items.sort(function(a,b){ return (b.r.t||'').localeCompare(a.r.t||''); });
   var rows = items.map(function(it, idx){
