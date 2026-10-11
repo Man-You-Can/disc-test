@@ -94,7 +94,10 @@ const pdf = (mail.attachments || [])[0];
 check('pdf attached, named by profile', mail.attachments.length === 1 && pdf.getContentType() === 'application/pdf' && pdf.getName() === 'DISC-DI.pdf');
 check('pdf: profile, name, scores', /Первопроходец/.test(pdf.source) && pdf.source.includes('Иван Петров') && pdf.source.includes('83%') && pdf.source.includes('2026-09-07'));
 check('pdf: all report sections', ['Ключевые черты', 'Сильные стороны', 'Зоны роста', 'Что мотивирует', 'Как с вами лучше общаться', 'Под стрессом', 'Комфортная среда', 'Вторичный стиль: I'].every(x => pdf.source.includes(x)));
-check('pdf: site link, no result code', pdf.source.includes('https://disc-test.org/ru/') && !pdf.source.includes(code));
+// в PDF нет исходного кода результата (в нём e-mail участника): PDF пересылают другим. В ссылке блока о расширенном отчёте — код без адреса
+const pdfCodes = (pdf.source.match(/DISC1\.[A-Za-z0-9_-]+/g) || []).map(c => ctx.decodeResult(c));
+check('pdf: site link, no result code with the e-mail, no e-mail anywhere', pdf.source.includes('https://disc-test.org/ru/') && !pdf.source.includes(code) && !pdf.source.includes('ivan@example.com') &&
+  pdfCodes.every(r => r && r.email === '' && r.name === 'Иван Петров'));
 check('mail mentions attachment', mail.htmlBody.includes('во вложении') && mail.body.includes('во вложении'));
 
 // ---- база результатов ----
@@ -292,14 +295,20 @@ check('pay: price from site settings, service name and reminder texts only where
 check('pay reminder: subject, greeting, profile, price, order, link valid until the date, nothing unfilled', pR.subject === 'Ваш расширенный отчёт DISC ждёт оплаты' && [pR.html, pR.text].every(s => s.includes('Пётр Буянов') && s.includes('Первопроходец') &&
   s.includes('490 ₽') && s.includes('№ 261011-7K3QXM') && s.includes('действует до 2026-09-07')   /* дату здесь подставляет заглушка formatDate */ && !/\{\w+\}|undefined/.test(s)) && pR.html.includes('href="https://api.disc-test.org/pay/go?order=261011-7K3QXM&amp;key=k"') && (pR.html.match(/href=/g) || []).length === 1 &&
   pR.text.includes('https://api.disc-test.org/pay/go?order=261011-7K3QXM&key=k'));
-// блок о расширенном отчёте в PDF краткого отчёта: без данных reportAd отчёт прежний; с ними — блок с самой низкой шкалой участника и ссылкой с кодом результата
-const hNoAd = ctx.reportHtml(ctx.decodeResult(cX), 'ru');
-ctx.DATA.ru.reportAd = { eyebrow: 'Расширенный отчёт DISC', title: 'Заголовок блока', lead: 'Вводный текст', hook: 'Ваша самая низкая шкала — {k}, {name}: {pct} %.', list: ['один', 'два', 'три'], sample: 'Листы образца', captions: ['а', 'б'], price: '490 ₽ · PDF на e-mail', button: 'Получить', free: 'Бесплатно', where: 'Подробности:', images: ['data:image/jpeg;base64,AAAA', 'data:image/jpeg;base64,BBBB'] };
-const hAd = ctx.reportHtml(ctx.decodeResult(cX), 'ru'), scX = ctx.score(ctx.decodeResult(cX)), lowX = ['D', 'I', 'S', 'C'].slice().sort((x, y) => scX.net[y] - scX.net[x])[3];
+// блок о расширенном отчёте в PDF краткого отчёта: без данных reportAd отчёт без блока; с ними — блок с самой низкой шкалой участника и ссылкой с кодом результата без e-mail
+const realAd = ctx.DATA.ru.reportAd, cM = mk('Мария Котова', 'maria@example.com', '2026-10-01T10:00:00Z');
 delete ctx.DATA.ru.reportAd;
-check('short report: no extended-report block unless the build provides it', !ctx.DATA.ru.reportAd && !hNoAd.includes('extended-report') && ctx.reportHtml(ctx.decodeResult(cX), 'ru') === hNoAd);
-check('short report with the block: lowest scale of the participant, sample sheets, price, link with source mark and result code', hAd.length > hNoAd.length && hAd.includes('Ваша самая низкая шкала — ' + lowX + ', ' + ctx.DATA.ru.keys[lowX] + ': ' + ctx.pct(scX.net[lowX]) + ' %.') &&
-  (hAd.match(/<img /g) || []).length === 2 && hAd.includes('490 ₽ · PDF на e-mail') && hAd.includes('href="https://disc-test.org/ru/extended-report/?src=pdf#r=' + cX + '"') && hAd.includes('>disc-test.org/ru/extended-report/</a>') && !/\{\w+\}|undefined/.test(hAd));
+const hNoAd = ctx.reportHtml(ctx.decodeResult(cM), 'ru');
+ctx.DATA.ru.reportAd = { eyebrow: 'Расширенный отчёт DISC', title: 'Заголовок блока', lead: 'Вопрос «какой у меня тип».', facts: [['28', 'листов A4'], ['13', 'разделов']], hook: 'Ваша самая низкая шкала — {k}, {name}: {pct} %.', list: ['один', 'два', 'три'], sample: 'Листы образца', captions: ['а', 'б'], price: '490 ₽ · PDF на e-mail', button: 'Получить', free: 'Бесплатно', where: 'Подробности:', images: ['data:image/jpeg;base64,AAAA', 'data:image/jpeg;base64,BBBB'] };
+const hAd = ctx.reportHtml(ctx.decodeResult(cM), 'ru'), scM = ctx.score(ctx.decodeResult(cM)), lowM = ['D', 'I', 'S', 'C'].slice().sort((x, y) => scM.net[y] - scM.net[x])[3];
+const linkM = (/href="https:\/\/disc-test\.org\/ru\/extended-report\/\?src=pdf#r=(DISC1\.[A-Za-z0-9_-]+)"/.exec(hAd) || [])[1], rM = ctx.decodeResult(linkM), r0 = ctx.decodeResult(cM);
+if (realAd) ctx.DATA.ru.reportAd = realAd; else delete ctx.DATA.ru.reportAd;
+check('short report: no extended-report block without the build data', !hNoAd.includes('extended-report'));
+check('short report with the block: lowest scale of the participant, volume, sample sheets, price', hAd.length > hNoAd.length && hAd.includes('Ваша самая низкая шкала — ' + lowM + ', ' + ctx.DATA.ru.keys[lowM] + ': ' + ctx.pct(scM.net[lowM]) + ' %.') &&
+  hAd.includes('>28<') && hAd.includes('листов A4') && (hAd.match(/<img /g) || []).length === 2 && hAd.includes('490 ₽ · PDF на e-mail') && hAd.includes('«какой&nbsp;у&nbsp;меня&nbsp;тип»') && hAd.includes('>disc-test.org/ru/extended-report/</a>') && !/\{\w+\}|undefined/.test(hAd));
+check('short report with the block: link carries the result without the e-mail', !!rM && rM.email === '' && rM.name === r0.name && rM.t === r0.t && rM.m.join('') === r0.m.join('') && rM.l.join('') === r0.l.join('') && !hAd.includes(cM) && !hAd.includes('maria@example.com'));
+if (realAd) check('short report, real block data: texts, two sample sheets as JPEG, nothing unfilled', realAd.images.length === 2 && realAd.images.every(x => /^data:image\/jpeg;base64,/.test(x)) && realAd.captions.length === 2 && realAd.list.length === 3 &&
+  /^\d+ ₽/.test(realAd.price) && !/\{\w+\}|undefined/.test(ctx.reportHtml(ctx.decodeResult(cM), 'ru').replace(/data:image[^"]+/g, '')));
 const nRowsX = rows().length;
 check('extended for a result already in the table: same row marked', ext({ code, to: 'ivan@example.com' }).ok === true && rows().length === nRowsX && /^отправлен .* на ivan@example\.com$/.test(rows().find(r => r[19] === code)[extCol()]));
 check('extended: file name without .pdf or with a path is replaced', (() => { ext({ to: 'n1@b.co', filename: '../../etc/passwd' }); const a = sent[sent.length - 1].attachments[0].getName(); ext({ to: 'n2@b.co', filename: 'a/b\\c.pdf' }); return a === 'DISC-extended.pdf' && sent[sent.length - 1].attachments[0].getName() === 'a b c.pdf'; })());

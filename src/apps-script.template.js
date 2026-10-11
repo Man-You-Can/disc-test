@@ -580,13 +580,17 @@ function reportPdf(r, lang) {
  * Блок о расширенном отчёте в PDF краткого отчёта: зацепка — самая низкая шкала участника (как на экране результата и в самом отчёте:
  * последняя по итогу, при равенстве — более поздняя в порядке D, I, S, C), четыре листа образца, цена и ссылка на страницу отчёта.
  * Тексты и картинки — DATA[язык].reportAd (сборка кладёт их только там, где отчёт продаётся, и только при включённом ключе reportAd);
+ * ссылка несёт код результата без e-mail участника;
  * без них возвращает пустую строку. Блок не рвётся между листами: если не помещается под текстом, уходит на следующий лист целиком.
  */
 function reportAdHtml(L, r, lang, sc, start, end) {
   var A = L.reportAd;
   if (!A) return '';
   var low = KEYS.slice().sort(function (x, y) { return sc.net[y] - sc.net[x]; })[3];
-  var page = SITE_URL + '/' + lang + '/extended-report/', href = page + '?src=pdf' + (r.code ? '#r=' + r.code : '');
+  // В ссылке — код результата без адреса почты: PDF пересылают другим (в нём рамка «Узнайте свой профиль»), а в исходном коде зашит e-mail участника.
+  // Имя и ответы в PDF и так видны. Страница отчёта по такому коду знает результат и на устройстве, где тест не проходили.
+  var safe = VERSION + '.' + Utilities.base64EncodeWebSafe(JSON.stringify({ n: r.name, e: '', p: '', t: r.t, m: r.m.join(''), l: r.l.join('') })).replace(/=+$/, '');
+  var page = SITE_URL + '/' + lang + '/extended-report/', href = page + '?src=pdf#r=' + safe;
   var dir = L.dir || 'ltr';
   var stripe = '<table width="100%" cellpadding="0" cellspacing="0"><tr>' + KEYS.map(function (k) { return '<td width="25%" bgcolor="' + COLORS[k] + '" style="height:4px;font-size:1px;line-height:1px">&nbsp;</td>'; }).join('') + '</tr></table>';
   var items = A.list.map(function (t) {

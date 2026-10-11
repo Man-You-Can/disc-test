@@ -77,6 +77,22 @@ const newsletter = !!(cfg.newsletter && cfg.sendEndpoint);
 // задать переменной PAY_ENDPOINT, не трогая site.config.json: PAY_ENDPOINT=http://localhost:8765/mock-pay LANGS=ru node build.js
 const payEndpoint = String(process.env.PAY_ENDPOINT || cfg.payEndpoint || '').trim().replace(/\/+$/, '');
 const payJs = fs.readFileSync(path.join(SRC, 'pay.js'), 'utf8');
+// Результат из адреса страницы отчёта: ссылка из PDF краткого отчёта и из письма несёт код результата (…/extended-report/?src=pdf#r=DISC1.…).
+// Так страница знает результат и на устройстве, где тест не проходили (PDF открыт на телефоне, тест пройден на компьютере); без кода — результат,
+// сохранённый на устройстве (disc.last). Разбор тот же, что у decodeResult в src/template.html.
+const resultFromUrlJs = `function resultFromUrl(){
+  var m = /[#&]r=DISC1\\.([A-Za-z0-9_-]+)/.exec(location.hash || '');
+  if(!m) return null;
+  try{
+    var b = m[1].replace(/-/g,'+').replace(/_/g,'/'); while(b.length%4) b += '=';
+    var o = JSON.parse(decodeURIComponent(escape(atob(b))));
+    if(typeof o.n!=='string' || !/^[0-3]{24}$/.test(o.m) || !/^[0-3]{24}$/.test(o.l)) return null;
+    var mm = o.m.split('').map(Number), ll = o.l.split('').map(Number);
+    for(var i=0;i<24;i++) if(mm[i]===ll[i]) return null;
+    return {name:o.n.slice(0,80), email:String(o.e||'').slice(0,120), pos:String(o.p||'').slice(0,80), t:String(o.t||''), m:mm, l:ll};
+  }catch(e){ return null; }
+}
+`;
 const MAX_CONTACT_BYTES = 10 * 1024 * 1024; // общий размер вложений одного сообщения (проверяется и в браузере, и в Apps Script)
 const jsStr = s => JSON.stringify(String(s == null ? '' : s)).replace(/</g, '\\u003c');
 const graphJs = fs.readFileSync(path.join(SRC, 'graph.js'), 'utf8').replace(/\nif \(typeof module[^\n]*\n?$/, '\n');
@@ -645,9 +661,9 @@ for (const L of locales) {
           `<h2>${escFull(pr.faqTitle)}</h2>` + pr.faq.map(it => `<h3 class="xq">${escFull(it.q)}</h3><p>${escFull(it.a)}</p>`).join('') + `<p class="small muted">${escFull(pr.docs)}</p>`) +
           `<p class="seealso">${docLink('services/', sv)} · ${docLink('offer/', of)} · ${docLink('refund/', rf)}</p>`,
         files: [1, 2, 3, 4].map(i => `src/assets/extended/${L.lang}-i-${i}.webp`),
-        pageJs: pay ? payJs + `\ninitPayBuy({T: ${JSON.stringify(Object.assign({ noteHtml: fillHtml(escFull(pay.note)), errorHtml: fillHtml(escFull(pay.error)) },
+        pageJs: resultFromUrlJs + (pay ? payJs + `\ninitPayBuy({T: ${JSON.stringify(Object.assign({ noteHtml: fillHtml(escFull(pay.note)), errorHtml: fillHtml(escFull(pay.error)) },
           Object.fromEntries(['title', 'text', 'emailLabel', 'button', 'badEmail', 'wait'].map(k => [k, pay[k]])))).replace(/</g, '\\u003c')}, endpoint: ${jsStr(payEndpoint)}, L: L, esc: esc, lsGet: lsGet, lsSet: lsSet});` : `(function(){
-  var r = lsGet('disc.last'); if(!r || !r.t || !r.m || !r.l || !r.m.join) return;
+  var r = resultFromUrl() || lsGet('disc.last'); if(!r || !r.t || !r.m || !r.l || !r.m.join) return;
   var B = ${JSON.stringify(pr.buy).replace(/</g, '\\u003c')}, d = new Date(r.t), date = isNaN(d) ? '' : d.toLocaleDateString(L.dateLocale, {day:'numeric', month:'long', year:'numeric'});
   function b64e(s){ return btoa(unescape(encodeURIComponent(s))).replace(/\\+/g,'-').replace(/\\//g,'_').replace(/=+$/,''); }
   var link = new URL('../', location.href).href + '#r=DISC1.' + b64e(JSON.stringify({n:r.name||'', e:r.email||'', p:r.pos||'', t:r.t, m:r.m.join(''), l:r.l.join('')}));
@@ -657,7 +673,7 @@ for (const L of locales) {
     var a = box.querySelector('a.btn'); a.textContent = B.orderButton; a.href = '../contact/'; a.setAttribute('data-goal', 'ext-page-order');
     a.addEventListener('click', function(){ try{ sessionStorage.setItem('disc.order', JSON.stringify({name:r.name||'', email:r.email||'', message:B.orderMsg.replace('{link}', link)})); }catch(e){} });
   });
-})();` });
+})();`) });
       // «Спасибо» и «Оплата не прошла»: на них банк возвращает покупателя после оплаты и после отказа (?order=<номер заказа>).
       // Служебные страницы: закрыты от индексации, в sitemap не идут. Номер заказа, e-mail и статус подставляет скрипт (src/pay.js)
       if (pay) {

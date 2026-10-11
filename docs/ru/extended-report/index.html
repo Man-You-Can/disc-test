@@ -616,8 +616,20 @@ function initCommon(c){
 }
 
 initCommon({L:L, t:t, esc:esc, lsGet:lsGet, lsSet:lsSet, langHref:langHref, $:$, langMeta:LANG_META, langPath:LANG_PATH, privacyHref:ROOT_REL+(LANG_PATH[L.lang]||'')+'privacy/'});
+function resultFromUrl(){
+  var m = /[#&]r=DISC1\.([A-Za-z0-9_-]+)/.exec(location.hash || '');
+  if(!m) return null;
+  try{
+    var b = m[1].replace(/-/g,'+').replace(/_/g,'/'); while(b.length%4) b += '=';
+    var o = JSON.parse(decodeURIComponent(escape(atob(b))));
+    if(typeof o.n!=='string' || !/^[0-3]{24}$/.test(o.m) || !/^[0-3]{24}$/.test(o.l)) return null;
+    var mm = o.m.split('').map(Number), ll = o.l.split('').map(Number);
+    for(var i=0;i<24;i++) if(mm[i]===ll[i]) return null;
+    return {name:o.n.slice(0,80), email:String(o.e||'').slice(0,120), pos:String(o.p||'').slice(0,80), t:String(o.t||''), m:mm, l:ll};
+  }catch(e){ return null; }
+}
 (function(){
-  var r = lsGet('disc.last'); if(!r || !r.t || !r.m || !r.l || !r.m.join) return;
+  var r = resultFromUrl() || lsGet('disc.last'); if(!r || !r.t || !r.m || !r.l || !r.m.join) return;
   var B = {"testTitle":"Отчёт собирается по результату теста","testText":"Сначала пройдите бесплатный тест: 24 блока, около 10 минут. Результат и краткий отчёт вы увидите сразу.","testButton":"Пройти тест","orderTitle":"Отчёт соберём по вашему результату от {date}","orderText":"Оплата на сайте скоро откроется. Оставьте заявку — мы напишем на ваш e-mail, как только отчёт можно будет оплатить.","orderButton":"Оставить заявку","orderMsg":"Хочу получить расширенный отчёт DISC. Напишите мне, когда его можно будет оплатить.\n\nМой результат: {link}"}, d = new Date(r.t), date = isNaN(d) ? '' : d.toLocaleDateString(L.dateLocale, {day:'numeric', month:'long', year:'numeric'});
   function b64e(s){ return btoa(unescape(encodeURIComponent(s))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,''); }
   var link = new URL('../', location.href).href + '#r=DISC1.' + b64e(JSON.stringify({n:r.name||'', e:r.email||'', p:r.pos||'', t:r.t, m:r.m.join(''), l:r.l.join('')}));
