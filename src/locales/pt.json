@@ -656,7 +656,7 @@
         {
           "h": "Quais dados usamos",
           "p": [
-            "Para fazer o teste, você não precisa informar nada. Durante o teste, suas respostas são salvas; ao final, o resultado, o idioma escolhido e um registro de que você já viu o aviso de cookies. Tudo isso fica no armazenamento local do seu navegador e não é transmitido ao servidor.",
+            "Para fazer o teste, você não precisa informar nada. Durante o teste, suas respostas são salvas; ao final, o resultado, o idioma escolhido e um registro de que você já viu o aviso de cookies. Tudo isso fica no armazenamento local do seu navegador. Quando você conclui o teste, um único registro anônimo é enviado ao servidor do site: o perfil obtido e o idioma da versão do site, sem nome, e-mail, respostas nem código do resultado. Com esses registros contamos quais perfis aparecem com mais frequência; o registro não pode ser associado a você, e nenhum endereço IP é guardado com ele.",
             "Nome e e-mail são opcionais: você os informa na tela de resultado se quiser receber o relatório por e-mail. Antes do envio do formulário, pedimos que você marque a caixa de {consent}. Depois disso, nome, e-mail, idioma, data do teste e resultado são transmitidos ao servidor do site, que envia a você o e-mail com o resultado e guarda esses dados na base de resultados."
           ]
         },
@@ -1627,7 +1627,7 @@
   "ui": {
     "langLabel": "Idioma",
     "footer": "24 blocos · cerca de 10 minutos · não há respostas certas ou erradas",
-    "privacy": "Suas respostas ficam no seu navegador; se você informar um e-mail, o resultado será enviado para ele e guardado na base de resultados do responsável pelo site.",
+    "privacy": "Suas respostas ficam no seu navegador; para a estatística geral, o servidor do site recebe apenas o perfil obtido, sem nome nem respostas. Se você informar um e-mail, o resultado será enviado para ele e guardado na base de resultados do responsável pelo site.",
     "legal": "Manukyan Armen · N.º de identificação fiscal (INN) {inn}",
     "rights": "© {year} disc-test.org. É proibido copiar os textos do site e dos relatórios sem autorização por escrito.",
     "adminLink": "Painel do administrador",
@@ -1892,7 +1892,7 @@
     "pd.consentLink": "consentimento para o tratamento de dados pessoais",
     "pd.required": "Marque a caixa de consentimento para o tratamento de dados pessoais: sem ele, não podemos receber seus dados.",
     "pd.cookieAsk": "Este site guarda seu progresso, o resultado e o idioma escolhido no armazenamento local do navegador. Com o seu consentimento, um serviço de análise da web coletará estatísticas anônimas de visitas e uma gravação das ações na página para nos ajudar a melhorar o site. Seu nome, e-mail e resultado não são enviados ao serviço de análise.",
-    "pd.cookieDetails": "No navegador ficam guardados: o nome e o e-mail, se você os informou; suas respostas e o progresso de um teste não concluído; o último resultado; o idioma escolhido; um registro de que você já viu este aviso. Esses dados permanecem no seu dispositivo e são apagados quando você limpa os dados do site. O serviço de hospedagem recebe os dados técnicos habituais da requisição. Quando você envia o resultado por e-mail, o nome, o e-mail e as respostas são transmitidos ao servidor do site, que envia a você o e-mail com o resultado e guarda o nome, o e-mail, a data e o resultado na base de resultados do responsável pelo site. O serviço de análise da web recebe o endereço da página sem o código do resultado, a origem da visita, o tipo de dispositivo e navegador e uma gravação anonimizada das ações na página (os campos de nome e e-mail, o link e o código do resultado ficam excluídos), e define os próprios cookies. Você pode bloqueá-lo nas configurações do navegador ou com um bloqueador de rastreadores. Não são usados rastreadores publicitários.",
+    "pd.cookieDetails": "No navegador ficam guardados: o nome e o e-mail, se você os informou; suas respostas e o progresso de um teste não concluído; o último resultado; o idioma escolhido; um registro de que você já viu este aviso. Esses dados permanecem no seu dispositivo e são apagados quando você limpa os dados do site. O serviço de hospedagem recebe os dados técnicos habituais da requisição. Quando você conclui o teste, um registro anônimo para a estatística geral é enviado ao servidor do site: o perfil obtido e o idioma da versão do site, sem nome, e-mail nem respostas. Quando você envia o resultado por e-mail, o nome, o e-mail e as respostas são transmitidos ao servidor do site, que envia a você o e-mail com o resultado e guarda o nome, o e-mail, a data e o resultado na base de resultados do responsável pelo site. O serviço de análise da web recebe o endereço da página sem o código do resultado, a origem da visita, o tipo de dispositivo e navegador e uma gravação anonimizada das ações na página (os campos de nome e e-mail, o link e o código do resultado ficam excluídos), e define os próprios cookies. Você pode bloqueá-lo nas configurações do navegador ou com um bloqueador de rastreadores. Não são usados rastreadores publicitários.",
     "pd.cookieChange": "Alterar a escolha de cookies",
 
     "print.title": "Teste DISC para imprimir: questionário com gabarito e pontuação",
