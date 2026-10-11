@@ -292,6 +292,14 @@ check('pay: price from site settings, service name and reminder texts only where
 check('pay reminder: subject, greeting, profile, price, order, link valid until the date, nothing unfilled', pR.subject === 'Ваш расширенный отчёт DISC ждёт оплаты' && [pR.html, pR.text].every(s => s.includes('Пётр Буянов') && s.includes('Первопроходец') &&
   s.includes('490 ₽') && s.includes('№ 261011-7K3QXM') && s.includes('действует до 2026-09-07')   /* дату здесь подставляет заглушка formatDate */ && !/\{\w+\}|undefined/.test(s)) && pR.html.includes('href="https://api.disc-test.org/pay/go?order=261011-7K3QXM&amp;key=k"') && (pR.html.match(/href=/g) || []).length === 1 &&
   pR.text.includes('https://api.disc-test.org/pay/go?order=261011-7K3QXM&key=k'));
+// блок о расширенном отчёте в PDF краткого отчёта: без данных reportAd отчёт прежний; с ними — блок с самой низкой шкалой участника и ссылкой с кодом результата
+const hNoAd = ctx.reportHtml(ctx.decodeResult(cX), 'ru');
+ctx.DATA.ru.reportAd = { eyebrow: 'Расширенный отчёт DISC', title: 'Заголовок блока', lead: 'Вводный текст', hook: 'Ваша самая низкая шкала — {k}, {name}: {pct} %.', list: ['один', 'два', 'три'], sample: 'Листы образца', captions: ['а', 'б'], price: '490 ₽ · PDF на e-mail', button: 'Получить', free: 'Бесплатно', where: 'Подробности:', images: ['data:image/jpeg;base64,AAAA', 'data:image/jpeg;base64,BBBB'] };
+const hAd = ctx.reportHtml(ctx.decodeResult(cX), 'ru'), scX = ctx.score(ctx.decodeResult(cX)), lowX = ['D', 'I', 'S', 'C'].slice().sort((x, y) => scX.net[y] - scX.net[x])[3];
+delete ctx.DATA.ru.reportAd;
+check('short report: no extended-report block unless the build provides it', !ctx.DATA.ru.reportAd && !hNoAd.includes('extended-report') && ctx.reportHtml(ctx.decodeResult(cX), 'ru') === hNoAd);
+check('short report with the block: lowest scale of the participant, sample sheets, price, link with source mark and result code', hAd.length > hNoAd.length && hAd.includes('Ваша самая низкая шкала — ' + lowX + ', ' + ctx.DATA.ru.keys[lowX] + ': ' + ctx.pct(scX.net[lowX]) + ' %.') &&
+  (hAd.match(/<img /g) || []).length === 2 && hAd.includes('490 ₽ · PDF на e-mail') && hAd.includes('href="https://disc-test.org/ru/extended-report/?src=pdf#r=' + cX + '"') && hAd.includes('>disc-test.org/ru/extended-report/</a>') && !/\{\w+\}|undefined/.test(hAd));
 const nRowsX = rows().length;
 check('extended for a result already in the table: same row marked', ext({ code, to: 'ivan@example.com' }).ok === true && rows().length === nRowsX && /^отправлен .* на ivan@example\.com$/.test(rows().find(r => r[19] === code)[extCol()]));
 check('extended: file name without .pdf or with a path is replaced', (() => { ext({ to: 'n1@b.co', filename: '../../etc/passwd' }); const a = sent[sent.length - 1].attachments[0].getName(); ext({ to: 'n2@b.co', filename: 'a/b\\c.pdf' }); return a === 'DISC-extended.pdf' && sent[sent.length - 1].attachments[0].getName() === 'a b c.pdf'; })());

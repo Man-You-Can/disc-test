@@ -576,6 +576,44 @@ function reportPdf(r, lang) {
   return Utilities.newBlob(reportHtml(r, lang), 'text/html', 'report.html').getAs('application/pdf').setName('DISC-' + c.key + '.pdf');
 }
 
+/**
+ * Блок о расширенном отчёте в PDF краткого отчёта: зацепка — самая низкая шкала участника (как на экране результата и в самом отчёте:
+ * последняя по итогу, при равенстве — более поздняя в порядке D, I, S, C), четыре листа образца, цена и ссылка на страницу отчёта.
+ * Тексты и картинки — DATA[язык].reportAd (сборка кладёт их только там, где отчёт продаётся, и только при включённом ключе reportAd);
+ * без них возвращает пустую строку. Блок не рвётся между листами: если не помещается под текстом, уходит на следующий лист целиком.
+ */
+function reportAdHtml(L, r, lang, sc, start, end) {
+  var A = L.reportAd;
+  if (!A) return '';
+  var low = KEYS.slice().sort(function (x, y) { return sc.net[y] - sc.net[x]; })[3];
+  var page = SITE_URL + '/' + lang + '/extended-report/', href = page + '?src=pdf' + (r.code ? '#r=' + r.code : '');
+  var dir = L.dir || 'ltr';
+  var stripe = '<table width="100%" cellpadding="0" cellspacing="0"><tr>' + KEYS.map(function (k) { return '<td width="25%" bgcolor="' + COLORS[k] + '" style="height:4px;font-size:1px;line-height:1px">&nbsp;</td>'; }).join('') + '</tr></table>';
+  var item = function (t) { return '<td width="50%" valign="top" style="padding:0 0 5px"><table cellpadding="0" cellspacing="0" dir="' + dir + '"><tr><td valign="top" style="padding-' + end + ':7px;font-weight:bold;color:#3A9A69">✓</td><td valign="top" style="padding-' + end + ':12px">' + esc(t) + '</td></tr></table></td>'; };
+  var rows = '';
+  for (var i = 0; i < A.list.length; i += 2) rows += '<tr>' + item(A.list[i]) + (A.list[i + 1] ? item(A.list[i + 1]) : '<td></td>') + '</tr>';
+  var thumbs = A.images.map(function (src, n) {
+    return '<td width="25%" valign="top" align="center" style="padding:0 4px"><img src="' + src + '" alt="" style="display:block;width:100%;border:1px solid #C9CED6">' +
+      '<p style="margin:4px 0 0;font-size:7.5pt;line-height:1.25;color:#5B6470">' + esc(A.captions[n] || '') + '</p></td>';
+  }).join('');
+  return '<div style="margin-top:20px;break-inside:avoid;page-break-inside:avoid">' + stripe +
+    '<div style="border:1px solid #C9CED6;border-top:0;padding:14px 16px 16px">' +
+    '<p style="margin:0;font-size:9pt;font-weight:bold;text-transform:uppercase;color:#5B6470">' + esc(A.eyebrow) + '</p>' +
+    '<p style="margin:3px 0 0;font-size:17pt;font-weight:bold;line-height:1.2;text-wrap:balance">' + esc(A.title) + '</p>' +
+    '<p style="margin:8px 0 0">' + esc(A.lead) + '</p>' +
+    '<p style="margin:10px 0 0;padding:8px 10px;background:#F3F4F6;border-' + start + ':3px solid ' + COLORS[low] + '">' + esc(fmt(A.hook, { k: low, name: L.keys[low], pct: pct(sc.net[low]) })) + '</p>' +
+    '<table width="100%" cellpadding="0" cellspacing="0" dir="' + dir + '" style="margin-top:12px">' + rows + '</table>' +
+    '<table width="100%" cellpadding="0" cellspacing="0" dir="' + dir + '" style="margin-top:8px"><tr>' + thumbs + '</tr></table>' +
+    '<p style="margin:6px 0 0;font-size:8pt;color:#5B6470;text-align:center">' + esc(A.sample) + '</p>' +
+    '<table width="100%" cellpadding="0" cellspacing="0" dir="' + dir + '" style="margin-top:12px"><tr><td bgcolor="#1B2027" style="padding:12px 16px;color:#ffffff">' +
+      '<table width="100%" cellpadding="0" cellspacing="0" dir="' + dir + '"><tr>' +
+      '<td valign="middle" style="color:#ffffff"><span style="font-size:15pt;font-weight:bold">' + esc(A.price) + '</span><br><span style="font-size:8.5pt;color:#C9CED6">' + esc(A.free) + '</span></td>' +
+      '<td valign="middle" align="' + end + '"><a href="' + esc(href) + '" style="display:inline-block;background:#ffffff;color:#1B2027;font-weight:bold;text-decoration:none;padding:8px 16px;border-radius:6px">' + esc(A.button) + '</a>' +
+        '<br><span style="font-size:8.5pt;color:#C9CED6">' + esc(A.where) + ' <a href="' + esc(href) + '" dir="ltr" style="color:#ffffff;font-weight:bold;text-decoration:none">' + esc(page.replace(/^https?:\/\//, '')) + '</a></span></td>' +
+      '</tr></table></td></tr></table>' +
+    '</div></div>';
+}
+
 function reportHtml(r, lang) {
   var L = DATA[lang], R = L.report, sc = score(r), c = classify(sc), prof = L.profiles[c.key], st = L.styles[c.p];
   var rtl = L.dir === 'rtl', start = rtl ? 'right' : 'left', end = rtl ? 'left' : 'right';
@@ -618,6 +656,7 @@ function reportHtml(r, lang) {
     two(R.strengths, list(st.strengths), R.growth, list(st.growth)) +
     two(R.motivation, list(st.motivation), R.communication, list(st.communication)) +
     two(R.stress, para(st.stress), R.environment, para(st.environment)) +
+    reportAdHtml(L, r, lang, sc, start, end) +
     '<table width="100%" cellpadding="0" cellspacing="0" dir="' + (L.dir || 'ltr') + '" style="margin-top:22px;border:1px solid #C9CED6"><tr><td style="padding:10px 12px">' +
       '<b>' + esc(L.cta.title) + '</b><br>' + esc(L.cta.text) + ' <a href="' + esc(home) + '" dir="ltr" style="color:#1B2027;font-weight:bold;text-decoration:none">' + esc(home) + '</a></td></tr></table>' +
     '<p style="margin:8px 0 0;font-size:8pt;color:#5B6470">' + esc(fmt(L.rights, { year: when.getFullYear() })) + '</p>' +

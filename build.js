@@ -809,6 +809,22 @@ for (const L of locales) {
   // оплата расширенного отчёта на своём сервере: название услуги для платёжной страницы и чека, письмо-напоминание о неоконченной оплате
   if (L.content.product && L.content.product.pay && L.content.product.pay.remind) mailData[L.lang].pay = { name: L.content.services.name, remind: L.content.product.pay.remind };
 }
+// Блок о расширенном отчёте в PDF краткого отчёта (письмо с результатом): только в языках, где есть страница отчёта, её тексты `content.product.pdf`
+// и картинки листов образца. Листы вшиваются в данные ядра: при сборке PDF сеть закрыта. Включается ключом "reportAd": true в site.config.json;
+// для образца без включения — переменной REPORT_AD=1 (site.config.json не меняется).
+if (cfg.reportAd === true || process.env.REPORT_AD === '1') {
+  for (const L of locales) {
+    const P = L.content.product, dir = path.join(SRC, 'assets', 'extended');
+    // -p.jpg — листы образца для PDF: JPEG шириной 367 px (sips -s format jpeg -s formatOptions 62 -Z 520 из <язык>-i-<n>.webp); в docs/ не копируются.
+    // Именно JPEG: его Chrome кладёт в PDF как есть, а WebP разворачивает в несжатую картинку — файл выходил втрое тяжелее
+    const files = [1, 2, 3, 4].map(n => path.join(dir, L.lang + '-i-' + n + '-p.jpg'));
+    if (!P || !P.pdf || !P.block || !servicePrices[L.content.services.currency] || !files.every(f => fs.existsSync(f))) continue;
+    const price = String(servicePrices[L.content.services.currency]);
+    mailData[L.lang].reportAd = { eyebrow: P.h1, title: P.block.title, lead: P.pdf.lead, hook: P.block.hook, list: P.block.list, sample: P.block.sample, captions: P.sampleCaption,
+      price: P.block.price.replace('{price}', price), button: P.block.button, free: P.block.free, where: P.pdf.where,
+      images: files.map(f => 'data:image/jpeg;base64,' + fs.readFileSync(f).toString('base64')) };
+  }
+}
 const gsTpl = fs.readFileSync(path.join(SRC, 'apps-script.template.js'), 'utf8');
 const gs = gsTpl
   .replace('__SITE_URL__', siteUrl).replace('__SEND_TOKEN__', String(cfg.sendToken || '').replace(/['\\]/g, ''))
