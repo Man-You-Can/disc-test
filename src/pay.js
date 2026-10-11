@@ -23,7 +23,7 @@ function paySource(){
    с полем e-mail и кнопкой «Купить». c: {T (тексты content.product.pay, noteHtml и errorHtml — готовая разметка), endpoint, L, esc, lsGet, lsSet} */
 function initPayBuy(c){
   // результат — из адреса страницы (ссылка из PDF краткого отчёта или письма: #r=DISC1.…, функция resultFromUrl вставляется сборкой), иначе сохранённый на устройстве
-  var T = c.T, esc = c.esc, r = (window.resultFromUrl && resultFromUrl()) || c.lsGet('disc.last'); if(!r || !r.t || !r.m || !r.l || !r.m.join) return;
+  var T = c.T, esc = c.esc, r = (typeof resultFromUrl === 'function' && resultFromUrl()) || c.lsGet('disc.last'); if(!r || !r.t || !r.m || !r.l || !r.m.join) return;
   var d = new Date(r.t), date = isNaN(d) ? '' : d.toLocaleDateString(c.L.dateLocale, {day:'numeric', month:'long', year:'numeric'});
   function b64e(s){ return btoa(unescape(encodeURIComponent(s))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,''); }
   var code = 'DISC1.' + b64e(JSON.stringify({n:r.name||'', e:r.email||'', p:r.pos||'', t:r.t, m:r.m.join(''), l:r.l.join('')}));
