@@ -152,8 +152,18 @@ html[lang=ar] body,html[lang=hi] body{font-size:17px;line-height:1.65}
 }
 /* телефон, идёт тест: счётчик блоков остаётся в строке, место ему освобождает название языка в кнопке (остаётся флаг) */
 @media (max-width:480px){.topbar:not(.cap) .step:not(:empty)~.langsel .langname{display:none}}
-/* самые узкие экраны (320 px): в строку не помещается и счётчик блоков — он тоже уходит на свою строку */
-@media (max-width:359px){
+/* уже 390 px: счётчик с двузначным номером («Блок 10 из 24») в строку не помещается — название сайта переламывалось на две строки
+   посреди теста, в арабской версии страница становилась шире окна; счётчик уходит на свою строку. В арабской версии он длиннее — до 419 px.
+   390–419 px: промежутки в шапке чуть уже, чтобы строка помещалась с запасом */
+@media (max-width:419px){
+  .topbar{column-gap:10px}
+  .tools{gap:8px}
+  html[lang=ar] .topbar{flex-wrap:wrap;row-gap:6px}
+  html[lang=ar] .tools{display:contents}
+  html[lang=ar] .step{order:1;flex:0 0 100%;white-space:normal}
+  html[lang=ar] .step:empty{display:none}
+}
+@media (max-width:389px){
   .topbar{flex-wrap:wrap;row-gap:6px}
   .tools{display:contents}
   .step{order:1;flex:0 0 100%;white-space:normal}
@@ -236,6 +246,8 @@ html[lang=ar] body,html[lang=hi] body{font-size:17px;line-height:1.65}
 .xthumbs img{width:100%}
 .xside p{margin:6px 0 0;font-size:13px;color:var(--muted)}
 .xact{margin:16px 0 10px;gap:10px 16px}
+/* длинная подпись кнопки заявки (es при 320 px) переносится на вторую строку, а не выходит за край карточки */
+.xact .btn{white-space:normal;flex-shrink:1;text-align:center}
 .xprice{font-weight:600}
 .xoffer .xfree{margin:0;font-size:13px;color:var(--muted)}
 .xoffer .xsoon{margin:16px 0 0;padding:10px 14px;border:1px dashed var(--line-strong);border-radius:10px;font-size:14px;color:var(--muted)}
@@ -312,6 +324,8 @@ p{margin:0 0 12px}
 .tile b{font-family:var(--font-head);font-weight:500;font-size:24px;color:var(--k);display:block;line-height:1;margin-bottom:6px}
 .tile strong{display:block;font-weight:600;font-size:14px}
 .tile span{display:block;font-size:13px;color:var(--muted)}
+/* 320 px: два длинных названия стилей в ряд (ru) не помещались в плитки */
+@media (max-width:359px){.tiles{gap:8px}.tile{padding:12px 9px}.tile strong{font-size:13px}}
 .form{display:grid;gap:14px}
 .field{display:flex;flex-direction:column;gap:6px}
 .field label{font-size:14px;font-weight:500}
@@ -354,9 +368,13 @@ input:focus-visible,textarea:focus-visible,button:focus-visible,select:focus-vis
 .qhead{display:grid;grid-template-columns:64px 1fr 64px;align-items:end;gap:6px;padding-bottom:10px}
 .qhead span{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);text-align:center;line-height:1.25}
 html[lang=ar] .qhead span,html[lang=hi] .qhead span,html[lang|=zh] .qhead span,html[lang=ja] .qhead span{letter-spacing:0;font-size:12px}
+/* id: в подписи длинное слово с мягким переносом (menggam-barkan); подпись шире колонки и стоит по её оси, а не выступает за карточку */
+html[lang=id] .qhead span:not(.n){justify-self:center;width:min-content;min-width:100%}
 .qhead .n{font-family:var(--font-mono);font-size:13px;color:var(--muted);text-align:center;text-transform:none;letter-spacing:0;font-weight:400;direction:ltr;padding-bottom:2px}
-.row{display:grid;grid-template-columns:64px 1fr 64px;align-items:center;min-height:60px;border-top:1px solid var(--line);gap:6px}
+.row{display:grid;grid-template-columns:64px minmax(0,1fr) 64px;align-items:center;min-height:60px;border-top:1px solid var(--line);gap:6px}
 .row .txt{font-size:17px;padding:12px 6px;line-height:1.35}
+/* слово шире колонки (телефон: «Дисциплинированный», «Kommunikationsorientiert») переносится по слогам; класс ставит fitRows() только таким строкам */
+.row .txt.hy{-webkit-hyphens:auto;hyphens:auto;overflow-wrap:anywhere}
 .row.is-most .txt{font-weight:600}
 .row.is-least .txt{color:var(--muted)}
 .pick{width:36px;height:36px;border-radius:50%;border:2px solid var(--line-strong);background:transparent;margin:auto;cursor:pointer;display:grid;place-items:center;color:transparent;padding:0;transition:background .15s,border-color .15s}
@@ -365,7 +383,7 @@ html[lang=ar] .qhead span,html[lang=hi] .qhead span,html[lang|=zh] .qhead span,h
 .pick.least:hover{border-color:var(--least)}
 .pick.most.on{background:var(--most);border-color:var(--most);color:var(--paper)}
 .pick.least.on{background:var(--least);border-color:var(--least);color:var(--paper)}
-@media (max-width:480px){.qhead,.row{grid-template-columns:52px 1fr 52px}.row .txt{font-size:16px}}
+@media (max-width:480px){.qhead{grid-template-columns:52px 1fr 52px}.row{grid-template-columns:52px minmax(0,1fr) 52px}.row .txt{font-size:16px}}
 .testcard{padding:18px 22px 20px}
 .testnav{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:18px;padding-top:16px;border-top:1px solid var(--line)}
 .hintline{font-size:13px;color:var(--muted);margin-top:14px}
