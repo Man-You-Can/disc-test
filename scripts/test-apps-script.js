@@ -302,11 +302,21 @@ const hNoAd = ctx.reportHtml(ctx.decodeResult(cM), 'ru');
 ctx.DATA.ru.reportAd = { eyebrow: 'Расширенный отчёт DISC', title: 'Заголовок блока', lead: 'Вопрос «какой у меня тип».', facts: [['28', 'листов A4'], ['13', 'разделов']], hook: 'Ваша самая низкая шкала — {k}, {name}: {pct} %.', list: ['один', 'два', 'три'], sample: 'Листы образца', captions: ['а', 'б'], price: '490 ₽ · PDF на e-mail', button: 'Получить', free: 'Бесплатно', where: 'Подробности:', images: ['data:image/jpeg;base64,AAAA', 'data:image/jpeg;base64,BBBB'] };
 const hAd = ctx.reportHtml(ctx.decodeResult(cM), 'ru'), scM = ctx.score(ctx.decodeResult(cM)), lowM = ['D', 'I', 'S', 'C'].slice().sort((x, y) => scM.net[y] - scM.net[x])[3];
 const linkM = (/href="https:\/\/disc-test\.org\/ru\/extended-report\/\?src=pdf#r=(DISC1\.[A-Za-z0-9_-]+)"/.exec(hAd) || [])[1], rM = ctx.decodeResult(linkM), r0 = ctx.decodeResult(cM);
+// тот же блок в теле письма с результатом: с данными reportAd — после ссылки на краткий отчёт, перед подписью; без них письмо прежнее
+const mailAdOn = ctx.composeMail(r0, 'ru', cM, true, '');
+delete ctx.DATA.ru.reportAd;
+const mailAdOff = ctx.composeMail(r0, 'ru', cM, true, '');
 if (realAd) ctx.DATA.ru.reportAd = realAd; else delete ctx.DATA.ru.reportAd;
 check('short report: no extended-report block without the build data', !hNoAd.includes('extended-report'));
 check('short report with the block: lowest scale of the participant, volume, sample sheets, price', hAd.length > hNoAd.length && hAd.includes('Ваша самая низкая шкала — ' + lowM + ', ' + ctx.DATA.ru.keys[lowM] + ': ' + ctx.pct(scM.net[lowM]) + ' %.') &&
   hAd.includes('>28<') && hAd.includes('листов A4') && (hAd.match(/<img /g) || []).length === 2 && hAd.includes('490 ₽ · PDF на e-mail') && hAd.includes('«какой&nbsp;у&nbsp;меня&nbsp;тип»') && hAd.includes('>disc-test.org/ru/extended-report/</a>') && !/\{\w+\}|undefined/.test(hAd));
 check('short report with the block: link carries the result without the e-mail', !!rM && rM.email === '' && rM.name === r0.name && rM.t === r0.t && rM.m.join('') === r0.m.join('') && rM.l.join('') === r0.l.join('') && !hAd.includes(cM) && !hAd.includes('maria@example.com'));
+check('result mail without the block data: no word about the extended report', !/extended-report/.test(mailAdOff.html + mailAdOff.text) && mailAdOff.subject === mailAdOn.subject);
+check('result mail with the block: lowest scale, volume, three points, price, button link with source mark and the result code; no images', [mailAdOn.html, mailAdOn.text].every(x => x.includes('Ваша самая низкая шкала — ' + lowM + ', ' + ctx.DATA.ru.keys[lowM] + ': ' + ctx.pct(scM.net[lowM]) + ' %.') &&
+  x.includes('листов A4') && x.includes('один') && x.includes('три') && x.includes('490 ₽ · PDF на e-mail') && x.includes('Получить') && !/\{\w+\}|undefined/.test(x)) &&
+  mailAdOn.html.includes('href="https://disc-test.org/ru/extended-report/?src=mail#r=' + cM + '"') && mailAdOn.text.includes('https://disc-test.org/ru/extended-report/?src=mail#r=' + cM) && !/<img /.test(mailAdOn.html) &&
+  mailAdOn.html.indexOf('extended-report') > mailAdOn.html.indexOf('/ru/#r=' + cM) && mailAdOn.html.indexOf('extended-report') < mailAdOn.html.indexOf(ctx.DATA.ru.email.footer.slice(0, 20)));
+check('result mail in a language without the report: no block', !/extended-report/.test(ctx.composeMail(r0, 'en', cM, true, '').html));
 if (realAd) check('short report, real block data: texts, two sample sheets as JPEG, nothing unfilled', realAd.images.length === 2 && realAd.images.every(x => /^data:image\/jpeg;base64,/.test(x)) && realAd.captions.length === 2 && realAd.list.length === 3 &&
   /^\d+ ₽/.test(realAd.price) && !/\{\w+\}|undefined/.test(ctx.reportHtml(ctx.decodeResult(cM), 'ru').replace(/data:image[^"]+/g, '')));
 const nRowsX = rows().length;

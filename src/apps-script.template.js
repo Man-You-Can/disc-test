@@ -525,6 +525,44 @@ function pct(net) { return Math.round((net + 24) / 48 * 100); }
 function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
 function fmt(s, vars) { return String(s).replace(/\{(\w+)\}/g, function (_, n) { return vars[n] != null ? vars[n] : '{' + n + '}'; }); }
 
+/**
+ * Блок о расширенном отчёте в письме с результатом — тот же, что в PDF краткого отчёта (reportAdHtml), без листов образца: картинки в письмах
+ * почтовые программы по умолчанию не показывают, а листы есть во вложенном PDF. Данные — DATA[язык].reportAd; без них возвращает пустые строки.
+ * Ссылка несёт метку src=mail и код результата: письмо адресовано самому участнику, на странице отчёта его e-mail подставится в форму покупки.
+ * Возвращает {html, text}.
+ */
+function mailAd(L, r, lang, code, sc) {
+  var A = L.reportAd;
+  if (!A) return { html: '', text: '' };
+  var low = KEYS.slice().sort(function (x, y) { return sc.net[y] - sc.net[x]; })[3];
+  var page = SITE_URL + '/' + lang + '/extended-report/', href = page + '?src=mail#r=' + code;
+  var hook = fmt(A.hook, { k: low, name: L.keys[low], pct: pct(sc.net[low]) });
+  var stripe = '<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>' + KEYS.map(function (k) { return '<td width="25%" bgcolor="' + COLORS[k] + '" style="height:4px;font-size:1px;line-height:1px">&nbsp;</td>'; }).join('') + '</tr></table>';
+  var facts = (A.facts || []).map(function (f, n) {
+    return '<td width="25%" valign="top" style="padding:0 4px 0 0"><span style="font-size:24px;font-weight:bold;line-height:1.1;color:' + COLORS[KEYS[n % 4]] + '">' + esc(f[0]) + '</span><br><span style="font-size:12px;line-height:1.3;color:#5B6470">' + esc(f[1]) + '</span></td>';
+  }).join('');
+  var items = A.list.map(function (t) {
+    return '<tr><td valign="top" style="padding:4px 8px 4px 0;font-weight:bold;color:#3A9A69">✓</td><td valign="top" style="padding:4px 0">' + esc(t) + '</td></tr>';
+  }).join('');
+  var html = '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 20px"><tr><td>' + stripe +
+    '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #D9DDE3;border-top:0"><tr><td style="padding:16px 16px 18px;font-size:15px;line-height:1.5">' +
+    '<p style="margin:0 0 4px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#5B6470;font-weight:bold">' + esc(A.eyebrow) + '</p>' +
+    '<p style="margin:0 0 8px;font-size:20px;font-weight:bold;line-height:1.25">' + esc(A.title) + '</p>' +
+    '<p style="margin:0 0 12px">' + esc(A.lead) + '</p>' +
+    (facts ? '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 12px"><tr>' + facts + '</tr></table>' : '') +
+    '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 10px"><tr><td bgcolor="#F3F4F6" style="padding:8px 12px;border-left:3px solid ' + COLORS[low] + '">' + esc(hook) + '</td></tr></table>' +
+    '<table role="presentation" cellpadding="0" cellspacing="0" style="margin:0 0 14px">' + items + '</table>' +
+    '<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr><td bgcolor="#1B2027" style="padding:14px 16px;border-radius:8px">' +
+      '<p style="margin:0;font-size:19px;font-weight:bold;color:#ffffff">' + esc(A.price) + '</p>' +
+      '<p style="margin:2px 0 12px;font-size:12px;color:#C9CED6">' + esc(A.free) + '</p>' +
+      '<p style="margin:0"><a href="' + esc(href) + '" style="display:inline-block;background:#ffffff;color:#1B2027;padding:10px 18px;border-radius:8px;text-decoration:none;font-weight:bold">' + esc(A.button) + '</a></p>' +
+    '</td></tr></table>' +
+    '</td></tr></table></td></tr></table>';
+  var text = '\n\n' + A.eyebrow + '\n' + A.title + '\n\n' + A.lead + '\n' + (A.facts || []).map(function (f) { return f[0] + ' ' + f[1]; }).join(' · ') + '\n\n' + hook + '\n' +
+    A.list.map(function (t) { return '— ' + t; }).join('\n') + '\n\n' + A.price + '. ' + A.free + '\n' + A.button + ':\n' + href;
+  return { html: html, text: text };
+}
+
 function composeMail(r, lang, code, hasPdf, unsub) {
   var L = DATA[lang], E = L.email;
   var sc = score(r), c = classify(sc), prof = L.profiles[c.key];
@@ -542,6 +580,7 @@ function composeMail(r, lang, code, hasPdf, unsub) {
   }).join('');
   var attached = hasPdf && E.attached ? E.attached : '';
   var badge = '<span style="color:' + COLORS[c.p] + '">' + c.p + '</span>' + (c.s ? '<span style="color:' + COLORS[c.s] + ';font-size:22px">' + c.s + '</span>' : '');
+  var ad = mailAd(L, r, lang, code, sc);   // блок о расширенном отчёте: только там, где он продаётся
   var html = '<!DOCTYPE html><html lang="' + lang + '" dir="' + (L.dir || 'ltr') + '"><body style="margin:0;background:#F3F4F6;font-family:Arial,Helvetica,sans-serif;color:#1B2027">' +
     '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F3F4F6"><tr><td align="center" style="padding:24px 12px">' +
     '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background:#ffffff;border:1px solid #D9DDE3;border-radius:14px"><tr><td style="padding:28px;font-size:16px;line-height:1.5">' +
@@ -555,13 +594,13 @@ function composeMail(r, lang, code, hasPdf, unsub) {
     '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 22px">' + rows + '</table>' +
     (attached ? '<p style="margin:0 0 18px;font-weight:bold">' + esc(attached) + '</p>' : '') +
     '<p style="margin:0 0 18px"><a href="' + esc(link) + '" style="display:inline-block;background:#1B2027;color:#F7F8FA;padding:12px 20px;border-radius:10px;text-decoration:none;font-weight:bold">' + esc(E.open) + '</a></p>' +
-    '<p style="margin:0 0 18px;font-size:13px;color:#5B6470">' + esc(E.linkNote) + '<br><a href="' + esc(link) + '" style="color:#3B6FB6;word-break:break-all">' + esc(link) + '</a></p>' +
+    '<p style="margin:0 0 18px;font-size:13px;color:#5B6470">' + esc(E.linkNote) + '<br><a href="' + esc(link) + '" style="color:#3B6FB6;word-break:break-all">' + esc(link) + '</a></p>' + ad.html +
     '<p style="margin:0;padding-top:12px;border-top:1px solid #D9DDE3;font-size:12px;color:#5B6470">' + esc(E.footer) + '</p>' +
     (unsub ? '<p style="margin:8px 0 0;font-size:12px;color:#5B6470">' + esc(E.subscribed) + ' <a href="' + esc(unsub) + '" style="color:#5B6470">' + esc(E.unsubscribe) + '</a></p>' : '') +
     '</td></tr></table></td></tr></table></body></html>';
   var text = fmt(E.greeting, { name: r.name }) + '\n\n' + E.intro + ' ' + label + ' (' + styleName + ')\n\n' + prof.summary + '\n\n' + E.scores + ':\n' +
     KEYS.map(function (k) { return k + ' — ' + L.keys[k] + ': ' + pct(sc.net[k]) + '%'; }).join('\n') +
-    (attached ? '\n\n' + attached : '') + '\n\n' + E.open + ':\n' + link + '\n\n' + E.footer + '\n' +
+    (attached ? '\n\n' + attached : '') + '\n\n' + E.open + ':\n' + link + ad.text + '\n\n' + E.footer + '\n' +
     (unsub ? '\n' + E.subscribed + '\n' + E.unsubscribe + ': ' + unsub + '\n' : '');
   return { subject: subject, html: html, text: text };
 }
