@@ -161,7 +161,7 @@ html[lang=ar] body,html[lang=hi] body{font-size:17px;line-height:1.65}
   .sitenav::-webkit-scrollbar{display:none}
   .sitenav a{white-space:nowrap;flex:none}
 }
-.crumbs{font-size:13px;color:var(--muted);margin:0 0 16px}
+.crumbs{font-size:13px;color:var(--muted);margin:0 0 16px;overflow-wrap:anywhere}
 .crumbs a{color:var(--muted);text-decoration:none}
 .crumbs a:hover{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
 .crumbs span{margin:0 6px}
@@ -215,6 +215,7 @@ html[lang=ar] body,html[lang=hi] body{font-size:17px;line-height:1.65}
 .xact{margin:16px 0 10px;gap:10px 16px}
 .xprice{font-weight:600}
 .xoffer .xfree{margin:0;font-size:13px;color:var(--muted)}
+.xoffer .xsoon{margin:16px 0 0;padding:10px 14px;border:1px dashed var(--line-strong);border-radius:10px;font-size:14px;color:var(--muted)}
 .content .xfacts{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 22px;padding:0;list-style:none}
 .content .xfacts li{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:14px;margin:0}
 .xsample{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:14px 0 8px}
@@ -271,7 +272,7 @@ html[lang|=zh] [lang]:not([lang|=zh]):not([lang|=ja]),html[lang=ja] [lang]:not([
 .progress i{display:block;background:var(--line);border-radius:2px;transition:background .2s}
 .progress i.done{background:var(--ink)}
 .progress i.cur{background:var(--ink);opacity:.35}
-h1{font-family:var(--font-head);font-weight:500;font-size:clamp(26px,4.2vw,36px);line-height:1.2;letter-spacing:-.01em;margin:0 0 14px;text-wrap:balance}
+h1{font-family:var(--font-head);font-weight:500;font-size:clamp(26px,4.2vw,36px);line-height:1.2;letter-spacing:-.01em;margin:0 0 14px;text-wrap:balance;overflow-wrap:anywhere;hyphens:auto}   /* длинное слово в заголовке (нем. «Geschäftsbedingungen») переносится, а не раздвигает страницу на телефоне */
 h2{font-family:var(--font-head);font-weight:500;font-size:17px;line-height:1.35;margin:0 0 12px;text-wrap:balance}
 h3{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin:0 0 8px}
 html[lang=ar] h3,html[lang=hi] h3,html[lang|=zh] h3,html[lang=ja] h3,html[lang=ar] .eyebrow,html[lang=hi] .eyebrow,html[lang|=zh] .eyebrow,html[lang=ja] .eyebrow{letter-spacing:.04em;font-size:13px}
@@ -528,7 +529,7 @@ body.has-consent{padding-bottom:160px}
   <nav class="crumbs"><a href="../">Home</a><span>›</span><span aria-current="page">Contact</span></nav>
   <main class="content"><div class="eyebrow">DISC</div><h1>Contact us</h1><p class="lead">Found a mistake, a translation issue or want to suggest an improvement? Write to us and we will reply to the email address you provide.</p><div class="card contactcard"><form class="form" id="contactForm" novalidate><p class="hint reqnote">Fields marked with an asterisk (<span class="req" aria-hidden="true">*</span>) are required.</p><div class="field"><label for="cName">Name<span class="req" aria-hidden="true">*</span></label><input type="text" id="cName" name="name" class="ym-disable-keys" autocomplete="name" required maxlength="80"></div><div class="field"><label for="cEmail">Email address for our reply<span class="req" aria-hidden="true">*</span></label><input type="email" id="cEmail" name="email" class="ym-disable-keys" autocomplete="email" inputmode="email" required maxlength="120"></div><div class="field"><label for="cMsg">Message<span class="req" aria-hidden="true">*</span></label><textarea id="cMsg" name="message" class="msgbox ym-disable-keys" required maxlength="5000" rows="6"></textarea></div><div class="field" id="cFilesField"><label for="cFiles">Files</label><div class="dropzone" id="cDrop"><input type="file" id="cFiles" multiple hidden><button type="button" class="btn secondary small" id="cPick">Attach files</button><span class="hint">You can attach several files up to 10 MB in total, or drop them here.</span></div><ul class="filelist" id="cList" hidden></ul><span class="hint" id="cTotal" hidden></span></div><div class="hp" aria-hidden="true"><label for="cSite">Website</label><input type="text" id="cSite" name="website" tabindex="-1" autocomplete="off"></div><p class="hint">Your name, email address, message and files will be emailed to <a href="mailto:info@disc-test.org">info@disc-test.org</a> and used only to reply to you.</p><div class="subbox"><label class="check"><input type="checkbox" id="cPd" name="consent"><span>I give my <a href="../consent/" target="_blank" rel="noopener">consent to the processing of personal data</a>. How we process data is described on the “<a href="../privacy/" target="_blank" rel="noopener">Privacy</a>” page.</span></label></div><p class="small sendstatus" id="cStatus" aria-live="polite" hidden></p><div class="actions"><button class="btn" type="submit" id="cSend">Send</button></div></form></div><p class="small muted contactdirect">Or write to us directly: <a href="mailto:info@disc-test.org">info@disc-test.org</a></p><p class="updated"><time datetime="2026-10-11">Updated October 11, 2026</time></p></main>
   <footer class="foot">
-    <div class="row2"><span>24 blocks · about 10 minutes · no right or wrong answers</span><span class="footlinks"><a href="../about/">About</a> · <a href="../services/">Services</a> · <a href="../contact/">Contact</a> · <a href="../privacy/">Privacy</a></span></div>
+    <div class="row2"><span>24 blocks · about 10 minutes · no right or wrong answers</span><span class="footlinks"><a href="../about/">About</a> · <a href="../services/">Services</a> · <a href="../offer/">Terms of sale</a> · <a href="../contact/">Contact</a> · <a href="../privacy/">Privacy</a></span></div>
     <nav class="materials" aria-label="DISC resources"><span class="mlabel">DISC resources</span><a href="../disc/">What is DISC?</a><a href="../styles/">Four styles</a><a href="../profiles/">16 profiles</a><a href="../results/">Results explained</a><a href="../compatibility/">Style compatibility</a><a href="../colors/">DISC colors</a><a href="../teams/">DISC for teams</a><a href="../disc-vs-mbti/">DISC vs MBTI</a><a href="../pdf/">PDF test</a><a href="../faq/">FAQ</a></nav>
     <div class="privacy">Your answers stay in your browser; if you enter your email address, your result is sent to it and stored in the site owner’s results database.</div>
     <div class="legal">Manukyan Armen · Taxpayer ID (INN) 771583655604</div><div class="rights">© 2026 disc-test.org. Copying the texts of this site and its reports without written permission is prohibited.</div>
@@ -680,8 +681,10 @@ function contactHTML(c){
 function initContact(c){
   var t=c.t, esc=c.esc, $=c.$, L=c.L, endpoint=c.endpoint||'', token=c.token||'', email=c.email||'', MAX=c.maxBytes||10*1024*1024;
   var form=$('#contactForm'); if(!form) return;
-  /* заявка со страницы расширенного отчёта: имя, e-mail и текст со ссылкой на результат та страница кладёт в sessionStorage */
-  try{ var ord=JSON.parse(sessionStorage.getItem('disc.order')||'null'); if(ord){ sessionStorage.removeItem('disc.order');
+  /* заявка со страницы расширенного отчёта: имя, e-mail и текст со ссылкой на результат та страница кладёт в sessionStorage;
+     topic уходит на сервер вместе с сообщением — по нему письмо владельцу получает тему «Заявка на расширенный отчёт» с языком страницы */
+  var topic='', topicCode='';
+  try{ var ord=JSON.parse(sessionStorage.getItem('disc.order')||'null'); if(ord){ sessionStorage.removeItem('disc.order'); if(ord.topic==='extended'){ topic='extended'; topicCode=String(ord.code||'').slice(0,900); }
     if(ord.name) $('#cName').value=String(ord.name).slice(0,80); if(ord.email) $('#cEmail').value=String(ord.email).slice(0,120); if(ord.message) $('#cMsg').value=String(ord.message).slice(0,5000); } }catch(e){}
   var input=$('#cFiles'), list=$('#cList'), total=$('#cTotal'), drop=$('#cDrop'), status=$('#cStatus'), sendBtn=$('#cSend');
   var files=[]; // выбранные объекты File
@@ -779,11 +782,12 @@ function initContact(c){
     sendBtn.disabled=true; setStatus('muted', esc(t('contact.sending')));
     Promise.all(files.map(readFile)).then(function(payload){
       var data={action:'contact', token:token, lang:L.lang, name:name, email:em, message:msg, page:location.href.split('#')[0], hp:$('#cSite').value, files:payload};
+      if(topic){ data.topic=topic; if(topicCode) data.code=topicCode; }
       if(pdBox){ data.consent=true; data.consentV=c.pdVersion||''; }
       return postJSON(endpoint, data);
     }).then(function(){
       setStatus('ok', esc(t('contact.sent',{email:em})));
-      $('#cMsg').value=''; files=[]; render();
+      $('#cMsg').value=''; files=[]; topic=''; render();
       if(window.discTrack) window.discTrack('contact'); // цель Метрики: сообщение отправлено
     }, function(err){
       var m=String((err&&err.message)||err);

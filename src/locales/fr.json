@@ -632,7 +632,16 @@
           "h": "Modifications",
           "p": ["Dernière mise à jour : 9 octobre 2026. Les changements dans le traitement des données seront reflétés sur cette page."]
         }
-      ]
+      ],
+      "purchase": {
+        "h": "Achat du profil détaillé",
+        "p": [
+          "Si vous achetez le profil DISC détaillé, nous traitons votre adresse e-mail, votre nom (si vous l'avez indiqué), le résultat du test à partir duquel le rapport est établi et les informations relatives à la commande : date, montant, numéro et statut du paiement. Ces données nous servent à établir le rapport et à vous l'envoyer, à répondre à vos demandes et à procéder à un éventuel remboursement. Le traitement a pour base légale le contrat que vous concluez en payant le service conformément à nos {offer}.",
+          "Le paiement est encaissé par une banque, dont le nom est indiqué sur la page de paiement. Vous saisissez les données de votre moyen de paiement sur la page sécurisée de la banque : nous ne les recevons pas et ne les conservons pas. La banque reçoit le montant, le numéro de commande et votre adresse e-mail, à laquelle le reçu est envoyé.",
+          "Le rapport est généré sur un serveur exploité pour notre compte et vous est envoyé par e-mail depuis l'adresse {email}. Une copie du rapport et les informations relatives à la commande sont conservées par le propriétaire du site : elles permettent de renvoyer le rapport, de répondre à une demande, d'effectuer un remboursement et de tenir la comptabilité. Pour demander la suppression du rapport et des informations relatives à la commande, écrivez à {email}. Les informations de paiement que la loi impose de conserver sont supprimées à l'expiration du délai prescrit.",
+          "Si vous commencez un achat sans le payer, nous conservons votre adresse e-mail, le résultat du test et les informations relatives à la commande pendant 30 jours, puis nous les supprimons. Durant cette période, un seul e-mail de rappel contenant un lien de paiement peut être envoyé à l'adresse indiquée. Ce traitement a pour base légale les démarches que vous avez entreprises en vue de conclure le contrat."
+        ]
+      }
     },
     "policy": {
       "title": "Politique de traitement des données personnelles — test DISC",
@@ -699,7 +708,16 @@
             "Version du {date}. Les changements dans le traitement des données seront reflétés sur cette page."
           ]
         }
-      ]
+      ],
+      "purchase": {
+        "h": "Achat du profil détaillé",
+        "p": [
+          "Si vous achetez le profil DISC détaillé, nous traitons votre adresse e-mail, votre nom (si vous l'avez indiqué), le résultat du test à partir duquel le rapport est établi et les informations relatives à la commande : date, montant, numéro et statut du paiement. Ces données nous servent à établir le rapport et à vous l'envoyer, à répondre à vos demandes et à procéder à un éventuel remboursement. Le traitement a pour base légale le contrat que vous concluez en payant le service conformément à nos {offer} ; aucun consentement distinct n'est requis à cet effet.",
+          "Le paiement est encaissé par une banque, dont le nom est indiqué sur la page de paiement. Vous saisissez les données de votre moyen de paiement sur la page sécurisée de la banque : nous ne les recevons pas et ne les conservons pas. La banque reçoit le montant, le numéro de commande et votre adresse e-mail, à laquelle le reçu est envoyé.",
+          "Le rapport est généré sur le serveur du site et vous est envoyé par e-mail depuis l'adresse {email}. Une fois envoyé, le rapport n'est pas conservé sur le serveur : au besoin, il est généré de nouveau. Les informations relatives à la commande sont conservées cinq ans après le paiement : elles permettent de renvoyer le rapport, de répondre à une demande, d'effectuer un remboursement et de tenir la comptabilité. Les informations de paiement que la loi impose de conserver plus longtemps sont supprimées à l'expiration du délai prescrit.",
+          "Si vous commencez un achat sans le payer, nous conservons votre adresse e-mail, le résultat du test et les informations relatives à la commande pendant 30 jours, puis nous les supprimons. Durant cette période, un seul e-mail de rappel contenant un lien de paiement peut être envoyé à l'adresse indiquée. Ce traitement a pour base légale les démarches que vous avez entreprises en vue de conclure le contrat. Tant que le profil détaillé ne peut pas être commandé en français, si vous nous demandez, via le formulaire de contact, de vous prévenir de sa disponibilité, votre demande est traitée comme tout autre message de ce formulaire ; la trace de votre consentement est alors enregistrée comme une demande relative au profil détaillé."
+        ]
+      }
     },
     "consentDoc": {
       "title": "Consentement au traitement des données personnelles — test DISC",
@@ -757,10 +775,11 @@
       "priceLabel": "Prix",
       "price": "{price} USD",
       "currency": "USD",
+      "docs": "Le service est fourni conformément à nos {offer} ; notre {refund} précise dans quels cas et comment obtenir un remboursement.",
       "sections": [
         {
           "h": "Comment le recevoir",
-          "p": ["Le profil détaillé est envoyé par e-mail à l'adresse indiquée lors du paiement, au plus tard 24 heures après le paiement."]
+          "p": ["Le profil détaillé n'est pas encore disponible en français : sur la page du rapport, demandez-nous de vous prévenir et nous vous écrirons dès que vous pourrez le commander. Une fois commandé, il est envoyé par e-mail à l'adresse indiquée lors du paiement, au plus tard 24 heures après le paiement."]
         },
         {
           "h": "Ce qui reste gratuit",
@@ -771,6 +790,253 @@
           "p": ["Pour toute question sur le profil détaillé ou sur le paiement, écrivez-nous via le formulaire « {contact} » : la réponse arrivera à l'adresse e-mail indiquée. Les coordonnées du propriétaire du site figurent en bas de chaque page."]
         }
       ]
+    },
+    "offer": {
+      "title": "Conditions générales de vente — profil DISC détaillé",
+      "description": "Conditions générales de vente du service payant « Profil DISC détaillé » sur disc-test.org : prix, paiement et envoi, remboursement, droits sur les contenus.",
+      "h1": "Conditions générales de vente",
+      "linkText": "conditions générales de vente",
+      "edition": "Version du 9 octobre 2026. Traduction française publiée le 11 octobre 2026.",
+      "note": "Ce texte est la traduction française des conditions originales publiées à l'adresse {original}. En cas de divergence entre les deux textes, l'original prévaut, sauf pour le prix : pour la version française du Site, le prix applicable est celui indiqué à l'article 3.1. Le profil détaillé n'est pas encore disponible en français : il ne peut pas, pour l'instant, être commandé dans cette langue et aucun paiement n'est encaissé.",
+      "seller": "Manukyan Armen, entrepreneur individuel, N° d’identification fiscale (INN) {inn}",
+      "lead": "Le présent document constitue une offre officielle (offre au public) de conclure un contrat portant sur le service payant « Profil DISC détaillé » aux conditions énoncées ci-dessous. Cette offre émane de {seller} (ci-après « le Prestataire »). Le paiement du service vaut acceptation pleine, entière et sans réserve des présentes conditions (acceptation de l'offre).",
+      "sections": [
+        {
+          "h": "1. Définitions",
+          "ul": [
+            "Prestataire : {seller}.",
+            "Client : toute personne physique jouissant de la pleine capacité juridique qui a accepté les présentes conditions en payant le Service.",
+            "Site : {site} et l'ensemble de ses pages.",
+            "Test : le questionnaire DISC gratuit proposé sur le Site.",
+            "Profil détaillé : une analyse plus approfondie du profil DISC du Client, établie par le Prestataire sous forme électronique à partir du Test passé par le Client.",
+            "Service : l'établissement du Profil détaillé et son envoi au Client.",
+            "Banque : l'établissement de crédit par l'intermédiaire duquel le Client paie le Service ; son nom est indiqué sur la page de paiement."
+          ]
+        },
+        {
+          "h": "2. Objet du contrat",
+          "p": [
+            "2.1. Le Prestataire s'engage à fournir le Service au Client, et le Client s'engage à le payer, conformément aux présentes conditions.",
+            "2.2. Le Service est fourni à distance : le Profil détaillé est envoyé à l'adresse e-mail que le Client a indiquée lors du paiement.",
+            "2.3. Le Test et son résultat, proposés gratuitement sur le Site, ne font pas l'objet du contrat.",
+            "2.4. Le Profil détaillé a une valeur purement informative. Il décrit des styles de comportement selon le modèle DISC et ne constitue ni un diagnostic psychologique ou médical, ni un avis sur l'aptitude professionnelle, ni une recommandation à caractère obligatoire."
+          ]
+        },
+        {
+          "h": "3. Prix et modalités de paiement",
+          "p": [
+            "3.1. Le prix du Service est de {price} dollars américains. Ce prix est définitif : aucun autre paiement n'est dû au Prestataire.",
+            "3.2. Le Service est payé intégralement avant sa fourniture, par l'un des moyens de paiement proposés sur la page de paiement, à l'exclusion des espèces. Le paiement est encaissé par la Banque.",
+            "3.3. Le Service est réputé payé dès que le Prestataire reçoit de la Banque la confirmation du paiement.",
+            "3.4. Le Client saisit les données de son moyen de paiement sur la page sécurisée de la Banque. Le Prestataire ne reçoit pas ces données et ne les conserve pas.",
+            "3.5. Après le paiement, un reçu électronique est envoyé au Client à l'adresse e-mail indiquée lors du paiement.",
+            "3.6. Le Prestataire peut modifier le prix du Service. Le nouveau prix s'applique dès sa publication sur le Site et ne concerne pas les commandes déjà payées."
+          ]
+        },
+        {
+          "h": "4. Modalités de fourniture du Service",
+          "p": [
+            "4.1. Pour bénéficier du Service, le Client passe le Test sur le Site, indique une adresse e-mail et paie le Service. Le Profil détaillé est établi à partir du résultat du Test pour lequel le Client a procédé au paiement.",
+            "4.2. Le Prestataire envoie le Profil détaillé à l'adresse indiquée au plus tard 24 heures après le paiement (article 3.3). L'e-mail arrive généralement plus tôt ; 24 heures constituent le délai maximal.",
+            "4.3. Le Service est réputé fourni au moment de l'envoi du Profil détaillé. Si le Client ne signale aucun défaut dans les trois jours calendaires qui suivent, le Service est réputé accepté. Aucun acte constatant l'exécution du Service n'est établi.",
+            "4.4. Si l'e-mail n'arrive pas, le Client est invité à vérifier son dossier de courrier indésirable (spam) et à écrire au Prestataire à l'adresse {email} : le Profil détaillé lui sera renvoyé.",
+            "4.5. Le Client est responsable de l'exactitude de l'adresse e-mail qu'il indique."
+          ]
+        },
+        {
+          "h": "5. Annulation et remboursement",
+          "p": [
+            "5.1. Le Client peut annuler sa commande à tout moment tant que le Profil détaillé ne lui a pas été envoyé. La somme versée lui est alors intégralement remboursée.",
+            "5.2. Si le Profil détaillé n'est pas envoyé dans le délai prévu à l'article 4.2, le Client peut exiger le remboursement intégral de la somme versée.",
+            "5.3. Si le Profil détaillé reçu présente un défaut (l'e-mail ou le fichier ne s'ouvre pas, il contient le résultat d'une autre personne, son contenu ne correspond pas à la description du Service sur le Site), le Prestataire y remédie dans un délai de trois jours ouvrés à compter de la demande du Client. Si le défaut n'est pas corrigé dans ce délai, la somme versée est intégralement remboursée.",
+            "5.4. Une fois le Service dûment fourni, la somme versée n'est pas remboursée. Le fait que le Client ne soit pas d'accord avec la description de son profil ne constitue pas un défaut du Service.",
+            "5.5. Pour obtenir un remboursement, le Client adresse une demande à {email} en précisant l'adresse e-mail utilisée lors du paiement, la date et le montant du paiement ainsi que le motif du remboursement.",
+            "5.6. Le Prestataire répond à la demande dans un délai de trois jours ouvrés. Le remboursement est effectué par le même moyen que celui utilisé pour le paiement, au plus tard dix jours calendaires après la réception de la demande ; le délai dans lequel la somme est créditée dépend de la banque du Client.",
+            "5.7. Les dispositions du présent article ne limitent pas les droits que la législation sur la protection des consommateurs reconnaît au Client."
+          ]
+        },
+        {
+          "h": "6. Droits sur les contenus et interdiction de copie",
+          "p": [
+            "6.1. Les textes du Site, du Test, des rapports de résultat du Test (y compris le rapport au format PDF envoyé par e-mail) et du Profil détaillé, ainsi que leur présentation (ci-après « les Contenus »), appartiennent au Prestataire et sont protégés par le droit de la propriété intellectuelle.",
+            "6.2. Le Client peut utiliser le rapport de résultat du Test et le Profil détaillé à des fins personnelles : les enregistrer, les imprimer, les montrer à d'autres personnes et partager le lien vers son résultat au moyen des boutons du Site.",
+            "6.3. Sans l'accord écrit du Prestataire, il est interdit de copier les Contenus en tout ou en partie, de les reproduire et de les diffuser, de les publier sur d'autres sites, sur les réseaux sociaux, dans des messageries ou dans des publications imprimées, de les adapter et de les traduire, de les intégrer à d'autres tests, services, formations ou publications, ainsi que de les vendre ou de les publier sous son propre nom.",
+            "6.4. La citation des Contenus est autorisée dans les cas et les limites prévus par la loi, à condition d'en indiquer la source par un lien vers {site}.",
+            "6.5. L'autorisation d'utiliser les Contenus peut être demandée à l'adresse {email}.",
+            "6.6. Toute atteinte aux droits sur les Contenus engage la responsabilité de son auteur dans les conditions prévues par la loi."
+          ]
+        },
+        {
+          "h": "7. Responsabilité",
+          "p": [
+            "7.1. En cas d'inexécution du contrat, la responsabilité des parties est engagée conformément au droit applicable au contrat (article 9.4).",
+            "7.2. Le Client prend seul les décisions fondées sur le Profil détaillé. Le Prestataire ne garantit aucun résultat particulier lié à son utilisation.",
+            "7.3. Le Prestataire n'est pas responsable de la non-réception de l'e-mail pour des raisons indépendantes de sa volonté (adresse erronée, défaillance du service de messagerie du Client), mais il renvoie le Profil détaillé à la demande du Client."
+          ]
+        },
+        {
+          "h": "8. Données personnelles",
+          "p": [
+            "8.1. Pour fournir le Service, le Prestataire traite l'adresse e-mail du Client, son nom (s'il est indiqué), le résultat du Test et les informations de paiement, à l'exclusion des données de carte bancaire. Le traitement a pour base légale l'exécution d'un contrat auquel le Client est partie.",
+            "8.2. Les données ne sont transmises qu'à la Banque, pour l'encaissement du paiement et l'envoi du reçu, et aux services nécessaires à l'établissement et à l'envoi du Profil détaillé, ainsi que dans les cas prévus par la loi.",
+            "8.3. Pour en savoir plus sur le traitement des données, consultez la page « {privacy} »."
+          ]
+        },
+        {
+          "h": "9. Durée et modification des conditions",
+          "p": [
+            "9.1. Le contrat est réputé conclu au moment du paiement du Service et reste en vigueur jusqu'à ce que les parties aient exécuté leurs obligations.",
+            "9.2. Le Prestataire peut modifier les présentes conditions. La nouvelle version s'applique dès sa publication sur le Site et ne concerne pas les commandes déjà payées.",
+            "9.3. Les réclamations sont adressées à {email} ; le Prestataire y répond dans un délai de dix jours calendaires. Si le litige n'est pas réglé, il est porté devant les tribunaux, conformément au droit applicable au contrat.",
+            "9.4. Le contrat est régi par le droit du pays dans lequel le Prestataire est enregistré."
+          ]
+        },
+        {
+          "h": "10. Coordonnées du Prestataire",
+          "ul": ["Manukyan Armen, entrepreneur individuel", "N° d’identification fiscale (INN) {inn}", "Adresse e-mail : {email}", "Site web : {site}"]
+        }
+      ]
+    },
+    "refund": {
+      "title": "Politique de remboursement — profil DISC détaillé",
+      "description": "Quand et comment obtenir le remboursement du profil DISC détaillé sur disc-test.org : cas de remboursement, demande, délais.",
+      "h1": "Politique de remboursement",
+      "linkText": "politique de remboursement",
+      "lead": "L'essentiel sur les cas où le profil DISC détaillé vous est remboursé et sur la marche à suivre. Cette politique fait partie intégrante de nos {offer} (article 5).",
+      "note": "Ce texte est la traduction française de la politique de remboursement originale publiée à l'adresse {original}. En cas de divergence entre les deux textes, l'original prévaut. Le profil détaillé n'est pas encore disponible en français : il ne peut pas, pour l'instant, être commandé dans cette langue et aucun paiement n'est encaissé.",
+      "sections": [
+        {
+          "h": "Quand le remboursement est intégral",
+          "ul": [
+            "Vous annulez votre commande avant que le profil détaillé vous ait été envoyé.",
+            "Le profil détaillé ne vous est pas envoyé dans les 24 heures qui suivent le paiement.",
+            "Le profil détaillé reçu présente un défaut (l'e-mail ou le fichier ne s'ouvre pas, il contient le résultat d'une autre personne, son contenu ne correspond pas à la description du service sur le site) et nous n'y avons pas remédié dans les trois jours ouvrés suivant votre demande."
+          ]
+        },
+        {
+          "h": "Quand il n'y a pas de remboursement",
+          "p": ["Si le profil détaillé a été envoyé à temps et correspond à la description, le service est réputé fourni et la somme versée n'est pas remboursée. Le fait de ne pas être d'accord avec la description de votre profil ne constitue pas un défaut du service."]
+        },
+        {
+          "h": "Comment demander un remboursement",
+          "p": ["Écrivez à {email} en indiquant :"],
+          "ul": ["l'adresse e-mail que vous avez indiquée lors du paiement ;", "la date et le montant du paiement ;", "le motif du remboursement."]
+        },
+        {
+          "h": "Délais",
+          "p": ["Nous répondons à votre demande dans un délai de trois jours ouvrés. Le remboursement est effectué par le même moyen que celui utilisé pour le paiement, au plus tard dix jours calendaires après réception de la demande. Le délai dans lequel la somme est créditée dépend de votre banque."]
+        },
+        {
+          "h": "Si vous n'avez pas reçu l'e-mail contenant le profil détaillé",
+          "p": ["Vérifiez votre dossier de courrier indésirable (spam). S'il ne s'y trouve pas non plus, écrivez à {email} : nous vous renverrons le profil détaillé."]
+        },
+        {
+          "h": "Vos droits",
+          "p": ["Cette politique ne limite pas les droits que vous reconnaît la législation sur la protection des consommateurs."]
+        }
+      ]
+    },
+    "product": {
+      "title": "Rapport DISC détaillé — 13 sections fondées sur vos réponses",
+      "description": "Rapport DISC détaillé fondé sur vos réponses : chaque échelle expliquée, cinq exercices, plan sur 30 jours. PDF par e-mail, {price} USD. Bientôt en français.",
+      "h1": "Rapport DISC détaillé",
+      "lead": "Le rapport de synthèse que vous recevez après le test répond à une question : quel est mon type ? Le rapport détaillé répond à la suivante : qu'est-ce que j'en fais ? Il est établi à partir de vos propres réponses, avec vos scores, votre profil et votre nom sur chaque page.",
+      "facts": ["13 sections", "environ 28 pages", "trois fiches pratiques", "PDF par e-mail"],
+      "more": "Ce que contient le rapport détaillé",
+      "forTitle": "À qui s'adresse ce rapport ?",
+      "for": [
+        "Vous voulez comprendre vos scores : ce que signifie chacune des quatre échelles, pourquoi votre profil porte ce nom et que faire de votre échelle la plus basse.",
+        "Vous travaillez au contact des autres : le rapport vous fournit des techniques et des phrases toutes prêtes pour vous adresser à chacun des quatre styles.",
+        "Vous dirigez une équipe ou vous vous apprêtez à changer de rôle : plusieurs sections traitent de la prise de décision, des conflits, du stress, du management et de la relation avec votre propre responsable."
+      ],
+      "insideTitle": "Au sommaire",
+      "insideLead": "L'ordre et les titres des sections sont les mêmes pour les seize profils ; le texte, lui, est propre à chacun.",
+      "inside": [
+        "<b>Comment lire ce rapport.</b> Ce que le DISC décrit, ce qu'il ne décrit pas et où s'arrêtent les conclusions du rapport.",
+        "<b>Votre profil en détail.</b> Les quatre échelles avec vos pourcentages, l'analyse de chacune et la comparaison entre votre style adapté et votre style naturel.",
+        "<b>Comment les autres vous voient.</b> La première impression que vous laissez, ce que l'on remarque au bout d'un mois, cinq angles morts et la façon dont vous perçoivent les personnes de chaque style.",
+        "<b>Vos points forts et comment en tirer parti.</b> Cinq points forts et, pour chacun, une technique qui le renforce.",
+        "<b>Axes de progression : cinq exercices.</b> Ce qui se passe, ce qu'il faut faire et à quel signe on reconnaît que l'exercice porte ses fruits.",
+        "<b>Ce qui vous motive et ce qui vous démotive.</b> Ce qui vous donne de l'énergie, ce qui vous coupe dans votre élan et comment vous fixer des objectifs.",
+        "<b>Travail et carrière.</b> Les contextes où votre style donne toute sa mesure, les tâches qui vous piègent, votre façon de décider et les signes qu'un poste n'est pas fait pour vous.",
+        "<b>Communiquer avec chacun des quatre styles.</b> Comment reconnaître le style de votre interlocuteur, comment engager la conversation, d'où viennent les frictions, et une phrase toute prête pour chaque cas.",
+        "<b>Conflit et stress.</b> Trois scénarios types, les premiers signes de pression et ce qu'il faut faire sur le moment.",
+        "<b>Vous, comme manager et comme collaborateur.</b> Ce qui vous réussit, ce qui vous dessert, et comment, face à un responsable de chaque style, rendre compte, exprimer un désaccord ou formuler une demande.",
+        "<b>Plan sur 30 jours.</b> Fiche pratique : quatre semaines, trois étapes par semaine, avec des cases à cocher.",
+        "<b>L'essentiel sur une page.</b> Fiche pratique : le condensé du rapport, à garder sous les yeux.",
+        "<b>Comment travailler avec moi.</b> Fiche pratique destinée à votre responsable et à vos collègues : à imprimer ou à transmettre."
+      ],
+      "compareTitle": "Ce qui le distingue du rapport de synthèse",
+      "compareHead": ["", "Rapport de synthèse", "Rapport détaillé"],
+      "compare": [
+        ["Question", "Quel est mon type ?", "Qu'est-ce que j'en fais ?"],
+        [
+          "Point de départ",
+          "La description de votre profil",
+          "Vos scores : échelle par échelle, style adapté et style naturel, votre échelle la plus basse"
+        ],
+        ["Volume", "L'essentiel sur chaque thème", "13 sections, environ 28 pages"],
+        ["Mise en pratique", "Des recommandations générales", "Cinq exercices, un plan sur 30 jours, la fiche « L'essentiel sur une page »"],
+        ["À partager", "Le lien « Partagez votre type »", "La fiche « Comment travailler avec moi », pour votre responsable et vos collègues"],
+        ["Prix", "Gratuit", "{price} USD"]
+      ],
+      "compareNote": "Le test, le résultat à l'écran, l'e-mail de résultat et le rapport de synthèse en PDF restent gratuits. Le rapport détaillé est entièrement facultatif.",
+      "howTitle": "Comment obtenir le rapport",
+      "how": [
+        "Passez le test gratuit : 24 blocs, environ 10 minutes. Si vous l'avez déjà passé, inutile de recommencer : le rapport est établi à partir du résultat que vous avez déjà.",
+        "Demandez-nous de vous prévenir. Le rapport détaillé n'est pas encore disponible en français ; nous vous écrirons dès que vous pourrez le commander.",
+        "Une fois la commande passée, le rapport arrive par e-mail, en pièce jointe au format PDF, au plus tard 24 heures après le paiement."
+      ],
+      "faqTitle": "Questions fréquentes",
+      "faq": [
+        { "q": "Le rapport est-il rédigé pour moi ou s'agit-il d'un texte générique ?", "a": "Il est établi à partir de vos réponses. Le texte est écrit pour votre profil, l'un des seize. Toute la section 2 et certains passages des sections 3, 5, 11, 12 et 13 dépendent de vos chiffres : vos pourcentages sur les quatre échelles, le nombre de vos réponses « le plus » et « le moins » et votre échelle la plus basse. Votre nom figure sur chaque page." },
+        { "q": "Sous quelle forme le rapport arrive-t-il ?", "a": "Un fichier PDF d'environ 28 pages A4, joint à un e-mail. Il se lit aussi bien à l'écran que sur papier ; chacune des trois fiches pratiques tient sur une seule page." },
+        { "q": "Dans quelle langue le rapport est-il rédigé ?", "a": "Pour l'instant, le rapport n'existe qu'en russe. Demandez-nous de vous prévenir : nous vous écrirons dès que vous pourrez le commander en français." },
+        { "q": "Est-ce un diagnostic ou une évaluation des aptitudes ?", "a": "Non. Le rapport décrit votre style de comportement à partir de vos réponses. Il ne pose aucun diagnostic, ne mesure pas l'intelligence et ne prédit pas la réussite." },
+        { "q": "Peut-on se faire rembourser ?", "a": "Notre {refund} précise dans quels cas et comment obtenir un remboursement." }
+      ],
+      "priceLabel": "Prix",
+      "price": "{price} USD",
+      "docs": "Le service s'intitule « Profil DISC détaillé » ; il est fourni conformément à nos {offer}, et notre {refund} précise dans quels cas et comment obtenir un remboursement.",
+      "buy": {
+        "testTitle": "Le rapport est établi à partir du résultat de votre test",
+        "testText": "Commencez par passer le test gratuit : 24 blocs, environ 10 minutes. Vous verrez aussitôt votre résultat et votre rapport de synthèse. Le rapport détaillé n'est pas encore disponible en français ; une fois votre résultat obtenu, revenez sur cette page pour nous demander de vous prévenir de sa sortie.",
+        "testButton": "Passer le test",
+        "orderTitle": "Votre rapport sera établi à partir de votre test du {date}",
+        "orderText": "Le rapport détaillé n'est pas encore disponible en français. Demandez-nous de vous prévenir : nous vous écrirons dès que vous pourrez le commander.",
+        "orderButton": "Me prévenir dès sa sortie",
+        "orderMsg": "Je souhaite recevoir le rapport DISC détaillé en français. Merci de m'écrire dès qu'il pourra être commandé.\n\nMon résultat : {link}"
+      },
+      "pdf": {
+        "lead": "Le rapport de synthèse vous dit quel est votre type. Le rapport détaillé vous dit quoi en faire.",
+        "facts": [
+          ["28", "pages"],
+          ["13", "sections"],
+          ["5", "exercices"],
+          ["3", "fiches pratiques"]
+        ],
+        "list": ["Ce que signifient vos scores", "Comment interagir avec les autres profils", "Des conseils pour gagner en efficacité"],
+        "where": "En savoir plus :"
+      },
+      "block": {
+        "eyebrow": "Rapport détaillé",
+        "title": "Que faire de votre profil : 13 sections fondées sur vos réponses",
+        "hook": "Votre échelle la plus basse : {k} ({name}), {pct} %. Le rapport détaillé explique ce que cela signifie et propose un exercice adapté.",
+        "list": [
+          "Échelle par échelle : ce que signifie chacun de vos quatre scores",
+          "Cinq angles morts et cinq exercices, avec les signes qui montrent qu'ils portent leurs fruits",
+          "Comment parler à chacun des quatre styles : techniques et phrases toutes prêtes",
+          "Trois fiches pratiques : un plan sur 30 jours, l'essentiel sur une page, une fiche pour vos collègues"
+        ],
+        "price": "{price} USD · PDF par e-mail",
+        "button": "Me prévenir dès sa sortie",
+        "free": "Le test et le rapport de synthèse restent gratuits.",
+        "topTitle": "Un rapport détaillé fondé sur votre résultat",
+        "topText": "13 sections pour savoir que faire de votre profil : chaque échelle expliquée, cinq exercices, un plan sur 30 jours.",
+        "topButton": "En savoir plus — {price} USD",
+        "anchor": "Au sommaire",
+        "soon": "Le rapport détaillé n'existe pas encore en français. Demandez-nous de vous prévenir : nous vous écrirons dès que vous pourrez le commander."
+      }
     },
     "contact": {
       "title": "Contact — écrire aux auteurs du test DISC",
@@ -998,8 +1264,8 @@
           ]
         },
         {
-          "h": "Rapport détaillé à partir d'un résultat papier",
-          "p": ["La version papier donne le profil et une brève description. Pour obtenir le rapport complet, avec le graphique, les points forts, les axes de progression et les conseils de communication, ouvrez la page de votre profil dans la liste des 16 profils ou passez le test en ligne : cela prend une dizaine de minutes."]
+          "h": "Rapport à partir d'un résultat papier",
+          "p": ["La version papier donne le profil et une brève description. Pour obtenir le rapport de synthèse, avec le graphique, les points forts, les axes de progression et les conseils de communication, ouvrez la page de votre profil dans la liste des 16 profils ou passez le test en ligne : cela prend une dizaine de minutes."]
         }
       ]
     },
@@ -1399,7 +1665,7 @@
     "intro.howText": "Le test comporte 24 blocs de quatre affirmations, soit 96 au total. Dans chaque bloc, cochez celle qui vous décrit <b>le plus</b> et celle qui vous décrit <b>le moins</b>. Répondez selon votre comportement habituel au travail, pas selon ce que vous aimeriez être. Ne réfléchissez pas trop : la première réaction est la plus juste.",
     "intro.nameLabel": "Nom",
     "intro.emailLabel": "Adresse e-mail pour recevoir le résultat",
-    "intro.emailHint": "Un e-mail contenant le lien vers le rapport complet sera envoyé à cette adresse. Votre nom, votre e-mail et votre résultat sont conservés dans la base de résultats du propriétaire du site.",
+    "intro.emailHint": "Un e-mail contenant le lien vers le rapport de synthèse sera envoyé à cette adresse. Votre nom, votre e-mail et votre résultat sont conservés dans la base de résultats du propriétaire du site.",
     "intro.requiredNote": "Les champs marqués d'un astérisque (*) sont obligatoires.",
     "intro.start": "Commencer le test",
     "intro.startNote": "24 blocs · environ 10 minutes · sans inscription",
@@ -1487,11 +1753,11 @@
     "email.subject": "Votre résultat au test DISC : {label}",
     "email.greeting": "Bonjour {name},",
     "email.intro": "Vous avez terminé le test DISC. Votre profil dominant :",
-    "email.open": "Ouvrir le rapport complet",
+    "email.open": "Ouvrir le rapport de synthèse",
     "email.scores": "Intensité des styles",
     "email.linkNote": "Si le bouton ne fonctionne pas, copiez ce lien dans votre navigateur :",
-    "email.attached": "Le rapport complet est joint à cet e-mail au format PDF.",
-    "email.footer": "Cet e-mail a été envoyé automatiquement, car cette adresse a été saisie lors du test. Le rapport complet, avec les points forts, les axes de progression et les recommandations, est disponible via le lien ci-dessus.",
+    "email.attached": "Le rapport de synthèse est joint à cet e-mail au format PDF.",
+    "email.footer": "Cet e-mail a été envoyé automatiquement, car cette adresse a été saisie lors du test. Le rapport de synthèse, avec les points forts, les axes de progression et les recommandations, est disponible via le lien ci-dessus.",
     "email.subscribed": "Vous avez accepté de recevoir des e-mails de disc-test.org à cette adresse.",
     "email.unsubscribe": "Se désabonner",
 
@@ -1536,6 +1802,7 @@
     "nav.contact": "Contact",
     "nav.privacy": "Confidentialité",
     "nav.services": "Services",
+    "nav.offer": "Conditions de vente",
     "nav.results": "Interpréter les résultats",
     "nav.compat": "Compatibilité des styles",
     "nav.colors": "Couleurs DISC",

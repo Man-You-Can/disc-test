@@ -316,7 +316,35 @@ check('result mail with the block: lowest scale, volume, three points, price, bu
   x.includes('листов A4') && x.includes('один') && x.includes('три') && x.includes('490 ₽ · PDF на e-mail') && x.includes('Получить') && !/\{\w+\}|undefined/.test(x)) &&
   mailAdOn.html.includes('href="https://disc-test.org/ru/extended-report/?src=mail#r=' + cM + '"') && mailAdOn.text.includes('https://disc-test.org/ru/extended-report/?src=mail#r=' + cM) && !/<img /.test(mailAdOn.html) &&
   mailAdOn.html.indexOf('extended-report') > mailAdOn.html.indexOf('/ru/#r=' + cM) && mailAdOn.html.indexOf('extended-report') < mailAdOn.html.indexOf(ctx.DATA.ru.email.footer.slice(0, 20)));
-check('result mail in a language without the report: no block', !/extended-report/.test(ctx.composeMail(r0, 'en', cM, true, '').html));
+// Блок по языкам. Листы образца, покупка и письмо покупателю — только там, где расширенный отчёт написан (сейчас русский). В языках, где есть
+// страница отчёта, но самого отчёта ещё нет, блок строится без листов: на их месте строка о заявке, цена в валюте языка, ссылка на страницу отчёта
+// (английская версия живёт в корне сайта, не в /en/). Где страницы отчёта нет — в письме и PDF об отчёте ни слова.
+const locDir = path.join(__dirname, '..', 'src', 'locales'), locOf = lg => JSON.parse(fs.readFileSync(path.join(locDir, lg + '.json'), 'utf8'));
+const adLangs = Object.keys(ctx.DATA).filter(lg => ctx.DATA[lg].reportAd), sheetLangs = adLangs.filter(lg => ctx.DATA[lg].reportAd.images), soonLangs = adLangs.filter(lg => !ctx.DATA[lg].reportAd.images);
+const pageOf = lg => 'https://disc-test.org/' + (lg === 'en' ? '' : lg + '/') + 'extended-report/';
+if (realAd) {
+  check('report block: in all 14 languages, each with the terms of sale behind it', adLangs.length === 14 && adLangs.every(lg => { const C = locOf(lg).content; return C.offer && C.refund && C.policy.purchase && (lg === 'ru' || (/\{original\}/.test(C.offer.note) && /\{original\}/.test(C.refund.note))); }));
+  check('report block: built exactly where the locale has the report page', adLangs.join() === Object.keys(ctx.DATA).filter(lg => locOf(lg).content.product).join());
+  check('report block: sample sheets only where the report is written, a request line everywhere else', sheetLangs.join() === Object.keys(ctx.DATA).filter(lg => ctx.DATA[lg].extended).join() &&
+    soonLangs.every(lg => { const A = ctx.DATA[lg].reportAd; return typeof A.soon === 'string' && A.soon.trim() && !A.sample && !A.captions && !ctx.DATA[lg].pay && !ctx.DATA[lg].extended; }) &&
+    sheetLangs.every(lg => !ctx.DATA[lg].reportAd.soon));
+  check('report block without sheets: PDF and mail carry the request line, the price of the language, no images, nothing unfilled; link to the report page of the language', soonLangs.every(lg => {
+    const A = ctx.DATA[lg].reportAd, h = ctx.reportHtml(r0, lg), m = ctx.composeMail(r0, lg, cM, true, ''), link = (new RegExp('href="' + pageOf(lg).replace(/[.\/]/g, '\\$&') + '\\?src=pdf#r=(DISC1\\.[A-Za-z0-9_-]+)"').exec(h) || [])[1], rL = link && ctx.decodeResult(link);
+    return !/<img /.test(h) && !/<img /.test(m.html) && [h, m.html].every(x => x.includes(ctx.esc(A.soon)) && x.includes(ctx.esc(A.price)) && x.includes(ctx.esc(A.button)) && !/\{\w+\}|undefined/.test(x)) && m.text.includes(A.soon) &&
+      !!rL && rL.email === '' && rL.name === r0.name && !h.includes(cM) && !h.includes('maria@example.com') &&
+      m.html.includes('href="' + pageOf(lg) + '?src=mail#r=' + cM + '"') && m.text.includes(pageOf(lg) + '?src=mail#r=' + cM) && !/₽|[А-Яа-яЁё]/.test(JSON.stringify(A)) && !/\/en\/extended-report/.test(h + m.html + m.text);
+  }));
+}
+check('result mail in a language without the report page: no block', Object.keys(ctx.DATA).filter(lg => !ctx.DATA[lg].reportAd).every(lg => !/extended-report/.test(ctx.composeMail(r0, lg, cM, true, '').html + ctx.reportHtml(r0, lg))));
+// заявка на расширенный отчёт с формы обратной связи: своя тема письма с языком страницы; обычное сообщение — с прежней темой
+check('contact subject: request for the extended report names the language, an ordinary message does not', ctx.contactSubject('Ann Lee', 'en', 'extended') === 'Заявка на расширенный отчёт — English (en): Ann Lee' &&
+  ctx.contactSubject('Ken', 'ja', 'extended') === 'Заявка на расширенный отчёт — ' + ctx.DATA.ja.name + ' (ja): Ken' && ctx.contactSubject('X', '', 'extended') === 'Заявка на расширенный отчёт — язык не указан: X' &&
+  ctx.contactSubject('Ann Lee', 'en', '') === 'Сообщение с сайта disc-test.org: Ann Lee');
+if (CONTACT_TO) check('contact: request for the extended report arrives with its own subject and a first line about the language; unknown topic is ignored', (() => {
+  post({ action: 'contact', topic: 'extended', lang: 'de', name: 'Greta', email: 'greta-req@example.com', message: 'Ich möchte den Bericht.' }); const a = sent[sent.length - 1];
+  post({ action: 'contact', topic: 'spam', lang: 'de', name: 'Greta', email: 'greta-msg@example.com', message: 'Hallo' }); const b = sent[sent.length - 1];
+  return a.subject === 'Заявка на расширенный отчёт — ' + ctx.DATA.de.name + ' (de): Greta' && a.body.includes('Заявка на расширенный отчёт, язык: ' + ctx.DATA.de.name + ' (de)\nИмя: Greta') && a.replyTo === 'greta-req@example.com' &&
+    b.subject === 'Сообщение с сайта disc-test.org: Greta' && !/Заявка/.test(b.body); })());
 if (realAd) check('short report, real block data: texts, two sample sheets as JPEG, nothing unfilled', realAd.images.length === 2 && realAd.images.every(x => /^data:image\/jpeg;base64,/.test(x)) && realAd.captions.length === 2 && realAd.list.length === 3 &&
   /^\d+ ₽/.test(realAd.price) && !/\{\w+\}|undefined/.test(ctx.reportHtml(ctx.decodeResult(cM), 'ru').replace(/data:image[^"]+/g, '')));
 const nRowsX = rows().length;

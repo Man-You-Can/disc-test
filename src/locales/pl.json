@@ -630,7 +630,16 @@
           "h": "Zmiany",
           "p": ["Ostatnia aktualizacja: 9 października 2026 r. Zmiany w sposobie przetwarzania danych będą odnotowywane na tej stronie."]
         }
-      ]
+      ],
+      "purchase": {
+        "h": "Zakup profilu rozszerzonego",
+        "p": [
+          "Jeśli kupujesz rozszerzony profil DISC, przetwarzamy twój adres e-mail, imię (jeśli je podasz), wynik testu, na podstawie którego powstaje raport, oraz dane zamówienia: datę, kwotę, numer i status płatności. Dane te są potrzebne, aby przygotować raport i wysłać go do ciebie, odpowiedzieć na twoje zgłoszenie i dokonać zwrotu płatności. Podstawą przetwarzania jest umowa, którą zawierasz, opłacając usługę na warunkach {offer}.",
+          "Płatność przyjmuje bank; jego nazwa jest widoczna na stronie płatności. Dane płatnicze podajesz na zabezpieczonej stronie banku: nie otrzymujemy ich ani nie przechowujemy. Bank otrzymuje kwotę i numer zamówienia oraz twój adres e-mail, na który wysyłany jest dowód zakupu.",
+          "Raport jest generowany na serwerze działającym na nasze zlecenie i wysyłany do ciebie e-mailem z adresu {email}. Kopię raportu i dane zamówienia przechowuje właściciel serwisu: są potrzebne, aby ponownie wysłać raport, odpowiedzieć na zgłoszenie, dokonać zwrotu płatności i prowadzić ewidencję. Jeśli chcesz, abyśmy usunęli raport i dane zamówienia, napisz na {email}. Informacje o płatności, które przepisy nakazują przechowywać, są usuwane po upływie wymaganego okresu.",
+          "Jeśli rozpoczniesz zakup, ale nie dokonasz płatności, przechowujemy twój adres e-mail, wynik testu i dane zamówienia przez 30 dni, a następnie je usuwamy. W tym czasie na podany adres może przyjść jedna wiadomość z przypomnieniem i linkiem do płatności. Podstawą są twoje działania zmierzające do zawarcia umowy."
+        ]
+      }
     },
     "policy": {
       "title": "Polityka przetwarzania danych osobowych – test DISC",
@@ -697,7 +706,16 @@
             "Ostatnia aktualizacja: {date}. Zmiany w sposobie przetwarzania danych będą odnotowywane na tej stronie."
           ]
         }
-      ]
+      ],
+      "purchase": {
+        "h": "Zakup profilu rozszerzonego",
+        "p": [
+          "Jeśli kupujesz rozszerzony profil DISC, przetwarzamy twój adres e-mail, imię (jeśli je podasz), wynik testu, na podstawie którego powstaje raport, oraz dane zamówienia: datę, kwotę, numer i status płatności. Dane te są potrzebne, aby przygotować raport i wysłać go do ciebie, odpowiedzieć na twoje zgłoszenie i dokonać zwrotu płatności. Podstawą przetwarzania jest umowa, którą zawierasz, opłacając usługę na warunkach {offer}; odrębna zgoda nie jest do tego wymagana.",
+          "Płatność przyjmuje bank; jego nazwa jest widoczna na stronie płatności. Dane płatnicze podajesz na zabezpieczonej stronie banku: nie otrzymujemy ich ani nie przechowujemy. Bank otrzymuje kwotę i numer zamówienia oraz twój adres e-mail, na który wysyłany jest dowód zakupu.",
+          "Raport jest generowany na serwerze serwisu i wysyłany do ciebie e-mailem z adresu {email}. Gotowy raport nie jest przechowywany na serwerze: w razie potrzeby generujemy go ponownie. Dane zamówienia przechowujemy przez pięć lat od dnia płatności – są potrzebne, aby ponownie wysłać raport, odpowiedzieć na zgłoszenie, dokonać zwrotu płatności i prowadzić ewidencję. Informacje o płatności, które przepisy nakazują przechowywać dłużej, są usuwane po upływie wymaganego okresu.",
+          "Jeśli rozpoczniesz zakup, ale nie dokonasz płatności, przechowujemy twój adres e-mail, wynik testu i dane zamówienia przez 30 dni, a następnie je usuwamy. W tym czasie na podany adres może przyjść jedna wiadomość z przypomnieniem i linkiem do płatności. Podstawą są twoje działania zmierzające do zawarcia umowy. Dopóki profilu rozszerzonego nie można zamówić po polsku, prośbę o powiadomienie wysłaną przez formularz kontaktowy traktujemy jak każdą inną wiadomość z tego formularza; informacja o twojej zgodzie jest oznaczana jako zgłoszenie dotyczące profilu rozszerzonego."
+        ]
+      }
     },
     "consentDoc": {
       "title": "Zgoda na przetwarzanie danych osobowych – test DISC",
@@ -755,10 +773,11 @@
       "priceLabel": "Cena",
       "price": "{price} USD",
       "currency": "USD",
+      "docs": "Usługę świadczymy na podstawie {offer}, a o tym, kiedy i jak zwracamy pieniądze, przeczytasz w {refund}.",
       "sections": [
         {
           "h": "Jak go otrzymać",
-          "p": ["Profil rozszerzony wysyłamy e-mailem na adres podany przy płatności, nie później niż 24 godziny po dokonaniu płatności."]
+          "p": ["Profil rozszerzony nie jest jeszcze dostępny po polsku: na stronie raportu możesz poprosić o powiadomienie, a my damy znać e-mailem, gdy tylko będzie można go zamówić. Po zamówieniu profil rozszerzony wysyłamy e-mailem na adres podany przy płatności, nie później niż 24 godziny po dokonaniu płatności."]
         },
         {
           "h": "Co pozostaje bezpłatne",
@@ -769,6 +788,254 @@
           "p": ["Jeśli masz pytanie o profil rozszerzony lub o płatność, napisz do nas przez formularz „{contact}” — odpowiedź przyjdzie na podany adres e-mail. Dane właściciela serwisu znajdują się na dole każdej strony."]
         }
       ]
+    },
+    "offer": {
+      "title": "Regulamin sprzedaży – rozszerzony profil DISC",
+      "description": "Regulamin sprzedaży płatnej usługi „Rozszerzony profil DISC” w serwisie disc-test.org: cena, płatność i dostarczenie, zwroty, prawa do materiałów.",
+      "h1": "Regulamin sprzedaży",
+      "linkText": "regulaminu sprzedaży",
+      "edition": "Wersja z 9 października 2026 r. Tłumaczenie na język polski opublikowano 11 października 2026 r.",
+      "note": "Niniejszy tekst jest tłumaczeniem na język polski oryginalnej oferty opublikowanej pod adresem {original}. W razie rozbieżności między tekstami pierwszeństwo ma oryginał – z wyjątkiem ceny: w polskiej wersji Serwisu obowiązuje cena podana w punkcie 3.1. Profil rozszerzony nie jest jeszcze dostępny po polsku: na razie nie można go zamówić i nie są pobierane żadne płatności.",
+      "seller": "przedsiębiorca indywidualny Manukyan Armen, numer identyfikacji podatkowej (INN) {inn}",
+      "lead": "Niniejszy regulamin (dalej: Regulamin) jest oficjalną propozycją (ofertą publiczną) zawarcia umowy o świadczenie płatnej usługi „Rozszerzony profil DISC” na warunkach określonych poniżej. Ofertę składa {seller} (dalej: Usługodawca). Opłacenie usługi oznacza pełną i bezwarunkową akceptację tych warunków (przyjęcie oferty).",
+      "sections": [
+        {
+          "h": "1. Definicje",
+          "ul": [
+            "Usługodawca – {seller}.",
+            "Klient – osoba fizyczna mająca pełną zdolność do czynności prawnych, która zaakceptowała warunki Regulaminu, opłacając Usługę.",
+            "Serwis – {site} wraz ze wszystkimi podstronami.",
+            "Test – bezpłatny kwestionariusz DISC dostępny w Serwisie.",
+            "Profil Rozszerzony – bardziej szczegółowa analiza profilu DISC Klienta, przygotowana przez Usługodawcę w formie elektronicznej na podstawie wypełnionego przez Klienta Testu.",
+            "Usługa – przygotowanie Profilu Rozszerzonego i przesłanie go Klientowi.",
+            "Bank – instytucja kredytowa, za pośrednictwem której Klient opłaca Usługę; jej nazwa jest widoczna na stronie płatności."
+          ]
+        },
+        {
+          "h": "2. Przedmiot umowy",
+          "p": [
+            "2.1. Usługodawca zobowiązuje się wykonać Usługę na rzecz Klienta, a Klient – zapłacić za nią na warunkach Regulaminu.",
+            "2.2. Usługa jest świadczona na odległość: Profil Rozszerzony jest wysyłany na adres e-mail podany przez Klienta przy płatności.",
+            "2.3. Test i jego wynik w Serwisie są bezpłatne i nie stanowią przedmiotu umowy.",
+            "2.4. Profil Rozszerzony ma charakter wyłącznie informacyjny. Opisuje style zachowania według modelu DISC i nie stanowi diagnozy psychologicznej ani medycznej, opinii o przydatności zawodowej ani wiążącego zalecenia."
+          ]
+        },
+        {
+          "h": "3. Cena i płatność",
+          "p": [
+            "3.1. Cena Usługi, wyrażona w dolarach amerykańskich, wynosi {price}. Cena jest ostateczna: Klient nie ponosi żadnych dodatkowych opłat na rzecz Usługodawcy.",
+            "3.2. Klient opłaca Usługę w całości przed jej wykonaniem, jedną z bezgotówkowych metod płatności wskazanych na stronie płatności. Płatność przyjmuje Bank.",
+            "3.3. Usługę uznaje się za opłaconą z chwilą otrzymania przez Usługodawcę potwierdzenia płatności od Banku.",
+            "3.4. Dane płatnicze Klient podaje na zabezpieczonej stronie Banku. Usługodawca nie otrzymuje tych danych ani ich nie przechowuje.",
+            "3.5. Po dokonaniu płatności dowód zakupu w formie elektronicznej jest wysyłany na adres e-mail podany przez Klienta przy płatności.",
+            "3.6. Usługodawca może zmienić cenę Usługi. Nowa cena obowiązuje od chwili jej opublikowania w Serwisie i nie dotyczy zamówień już opłaconych."
+          ]
+        },
+        {
+          "h": "4. Sposób świadczenia Usługi",
+          "p": [
+            "4.1. Aby skorzystać z Usługi, Klient wypełnia Test w Serwisie, podaje adres e-mail i opłaca Usługę. Profil Rozszerzony jest przygotowywany na podstawie tego wyniku Testu, z którym Klient przeszedł do płatności.",
+            "4.2. Usługodawca wysyła Profil Rozszerzony na podany adres nie później niż w ciągu 24 godzin od opłacenia Usługi (punkt 3.3). Zwykle wiadomość dociera wcześniej; 24 godziny to termin maksymalny.",
+            "4.3. Usługę uznaje się za wykonaną z chwilą wysłania Profilu Rozszerzonego. Jeżeli w ciągu trzech dni kalendarzowych od tej chwili Klient nie zgłosi wad, Usługę uznaje się za przyjętą. Protokołu wykonania usługi nie sporządza się.",
+            "4.4. Jeżeli wiadomość nie dotarła, Klient powinien sprawdzić folder ze spamem i napisać do Usługodawcy na adres {email}: Profil Rozszerzony zostanie wysłany ponownie.",
+            "4.5. Klient odpowiada za poprawność podanego przez siebie adresu e-mail."
+          ]
+        },
+        {
+          "h": "5. Rezygnacja z Usługi i zwrot płatności",
+          "p": [
+            "5.1. Klient może zrezygnować z Usługi w dowolnej chwili przed wysłaniem mu Profilu Rozszerzonego. W takim przypadku płatność jest zwracana w całości.",
+            "5.2. Jeżeli Profil Rozszerzony nie zostanie wysłany w terminie określonym w punkcie 4.2, Klient może zażądać zwrotu całej płatności.",
+            "5.3. Jeżeli otrzymany Profil Rozszerzony ma wady (wiadomość lub plik się nie otwiera, zawiera wynik innej osoby, treść nie odpowiada opisowi Usługi w Serwisie), Usługodawca usuwa je w ciągu trzech dni roboczych od zgłoszenia Klienta. Jeżeli wada nie zostanie usunięta w tym terminie, płatność jest zwracana w całości.",
+            "5.4. Po należytym wykonaniu Usługi płatność nie podlega zwrotowi. To, że Klient nie zgadza się z treścią opisu swojego profilu, nie stanowi wady Usługi.",
+            "5.5. Aby otrzymać zwrot, Klient wysyła wniosek na adres {email}, podając adres e-mail użyty przy płatności, datę i kwotę płatności oraz powód zwrotu.",
+            "5.6. Usługodawca odpowiada na wniosek w ciągu trzech dni roboczych. Pieniądze są zwracane tą samą metodą, którą dokonano płatności, nie później niż w terminie dziesięciu dni kalendarzowych od otrzymania wniosku; termin zaksięgowania zwrotu zależy od banku Klienta.",
+            "5.7. Postanowienia niniejszego rozdziału nie ograniczają praw Klienta wynikających z przepisów o ochronie konsumentów."
+          ]
+        },
+        {
+          "h": "6. Prawa do materiałów i zakaz kopiowania",
+          "p": [
+            "6.1. Teksty Serwisu, Testu, raportów z wynikiem Testu (w tym raportu w formacie PDF wysyłanego e-mailem) i Profilu Rozszerzonego oraz ich szata graficzna (dalej: Materiały) należą do Usługodawcy i są chronione przepisami o własności intelektualnej.",
+            "6.2. Klient może korzystać z raportu z wynikiem Testu i z Profilu Rozszerzonego na własny użytek: zapisywać je, drukować, pokazywać innym osobom oraz udostępniać link do swojego wyniku za pomocą przycisków w Serwisie.",
+            "6.3. Bez pisemnej zgody Usługodawcy zabrania się kopiowania Materiałów w całości lub w części, ich zwielokrotniania i rozpowszechniania, zamieszczania na innych stronach internetowych, w mediach społecznościowych, komunikatorach i wydawnictwach drukowanych, opracowywania i tłumaczenia, włączania do innych testów, serwisów, kursów i publikacji, a także sprzedawania ich i publikowania pod własnym nazwiskiem.",
+            "6.4. Cytowanie Materiałów jest dozwolone w przypadkach i w zakresie przewidzianych przepisami prawa, z obowiązkowym podaniem źródła – linku do {site}.",
+            "6.5. O zgodę na wykorzystanie Materiałów można wystąpić, pisząc na adres {email}.",
+            "6.6. Naruszenie praw do Materiałów pociąga za sobą odpowiedzialność przewidzianą przepisami prawa."
+          ]
+        },
+        {
+          "h": "7. Odpowiedzialność",
+          "p": [
+            "7.1. Za niewykonanie umowy strony odpowiadają zgodnie z prawem właściwym dla umowy (punkt 9.4).",
+            "7.2. Decyzje na podstawie Profilu Rozszerzonego Klient podejmuje samodzielnie. Usługodawca nie gwarantuje, że korzystanie z Profilu Rozszerzonego przyniesie jakikolwiek rezultat.",
+            "7.3. Usługodawca nie odpowiada za niedoręczenie wiadomości z przyczyn od niego niezależnych (błędnie podany adres, awaria usługi pocztowej Klienta), jednak na prośbę Klienta wysyła Profil Rozszerzony ponownie."
+          ]
+        },
+        {
+          "h": "8. Dane osobowe",
+          "p": [
+            "8.1. Aby wykonać Usługę, Usługodawca przetwarza adres e-mail Klienta, imię (jeśli zostało podane), wynik Testu oraz informacje o płatności, z wyłączeniem danych karty płatniczej. Podstawą przetwarzania jest wykonanie umowy, której stroną jest Klient.",
+            "8.2. Dane są przekazywane wyłącznie Bankowi – w celu przyjęcia płatności i wysłania dowodu zakupu – oraz dostawcom usług niezbędnych do przygotowania i wysłania Profilu Rozszerzonego, a także w przypadkach przewidzianych przepisami prawa.",
+            "8.3. Więcej o przetwarzaniu danych można przeczytać na stronie „{privacy}”."
+          ]
+        },
+        {
+          "h": "9. Okres obowiązywania i zmiana Regulaminu",
+          "p": [
+            "9.1. Umowę uznaje się za zawartą z chwilą opłacenia Usługi; obowiązuje ona do czasu wykonania przez strony ich zobowiązań.",
+            "9.2. Usługodawca może zmienić Regulamin. Nowa wersja obowiązuje od chwili jej opublikowania w Serwisie i nie dotyczy zamówień już opłaconych.",
+            "9.3. Reklamacje należy kierować na adres {email}; Usługodawca odpowiada na nie w ciągu dziesięciu dni kalendarzowych. Spór, którego nie uda się rozwiązać polubownie, rozstrzyga sąd zgodnie z prawem właściwym dla umowy.",
+            "9.4. Prawem właściwym dla umowy jest prawo państwa, w którym zarejestrowany jest Usługodawca."
+          ]
+        },
+        {
+          "h": "10. Dane Usługodawcy",
+          "ul": [
+            "Przedsiębiorca indywidualny Manukyan Armen",
+            "Numer identyfikacji podatkowej (INN) {inn}",
+            "Adres e-mail: {email}",
+            "Strona internetowa: {site}"
+          ]
+        }
+      ]
+    },
+    "refund": {
+      "title": "Zasady zwrotu płatności – rozszerzony profil DISC",
+      "description": "Kiedy i jak odzyskać pieniądze za rozszerzony profil DISC w serwisie disc-test.org: przypadki zwrotu, wniosek, terminy.",
+      "h1": "Zasady zwrotu płatności",
+      "linkText": "zasadach zwrotu płatności",
+      "lead": "W skrócie: kiedy i jak można odzyskać pieniądze za rozszerzony profil DISC. Zasady te stanowią część {offer} (rozdział 5).",
+      "note": "Niniejszy tekst jest tłumaczeniem na język polski oryginalnych zasad zwrotu opublikowanych pod adresem {original}. W razie rozbieżności między tekstami pierwszeństwo ma oryginał. Profil rozszerzony nie jest jeszcze dostępny po polsku: na razie nie można go zamówić i nie są pobierane żadne płatności.",
+      "sections": [
+        {
+          "h": "Kiedy zwracamy całą kwotę",
+          "ul": [
+            "Gdy zrezygnujesz z usługi, zanim wyślemy ci profil rozszerzony.",
+            "Gdy profil rozszerzony nie zostanie wysłany w ciągu 24 godzin od płatności.",
+            "Gdy otrzymany profil rozszerzony ma wadę (wiadomość lub plik się nie otwiera, zawiera wynik innej osoby, treść nie odpowiada opisowi usługi w serwisie), a my nie usuniemy jej w ciągu trzech dni roboczych od twojego zgłoszenia."
+          ]
+        },
+        {
+          "h": "Kiedy płatność nie podlega zwrotowi",
+          "p": ["Jeśli profil rozszerzony został wysłany w terminie i odpowiada opisowi, usługę uznaje się za wykonaną, a płatność nie podlega zwrotowi. To, że nie zgadzasz się z treścią opisu swojego profilu, nie jest wadą usługi."]
+        },
+        {
+          "h": "Jak złożyć wniosek o zwrot",
+          "p": ["Napisz na {email} i podaj:"],
+          "ul": ["adres e-mail podany przy płatności;", "datę i kwotę płatności;", "powód zwrotu."]
+        },
+        {
+          "h": "Terminy",
+          "p": ["Na wniosek odpowiadamy w ciągu trzech dni roboczych. Pieniądze zwracamy tą samą metodą, którą dokonano płatności, najpóźniej w ciągu dziesięciu dni kalendarzowych od otrzymania wniosku. Termin zaksięgowania zwrotu zależy od twojego banku."]
+        },
+        {
+          "h": "Jeśli wiadomość z profilem rozszerzonym nie dotarła",
+          "p": ["Sprawdź folder ze spamem. Jeśli i tam jej nie ma, napisz na {email} – wyślemy profil rozszerzony ponownie."]
+        },
+        {
+          "h": "Twoje prawa",
+          "p": ["Zasady te nie ograniczają praw, które przysługują ci na podstawie przepisów o ochronie konsumentów."]
+        }
+      ]
+    },
+    "product": {
+      "title": "Rozszerzony raport DISC – 13 rozdziałów o twoim wyniku",
+      "description": "Rozszerzony raport DISC na podstawie twojego wyniku: skala po skali, pięć ćwiczeń, plan na 30 dni. PDF na e-mail, {price} USD. Wkrótce po polsku.",
+      "h1": "Rozszerzony raport DISC",
+      "lead": "Raport podstawowy, który dostajesz po teście, odpowiada na pytanie „jakim jestem typem?”. Raport rozszerzony – na kolejne: „co mam z tym zrobić?”. Powstaje na podstawie twoich odpowiedzi: z twoimi liczbami, dla twojego profilu, z twoim imieniem na każdej stronie.",
+      "facts": ["13 rozdziałów", "około 28 stron A4", "trzy karty pracy", "PDF na twój e-mail"],
+      "more": "Co zawiera raport rozszerzony",
+      "forTitle": "Komu się przyda",
+      "for": [
+        "Osobom, które chcą zrozumieć swoje liczby: co oznacza każda z czterech skal, skąd wzięła się nazwa profilu i co zrobić z najniższą skalą.",
+        "Osobom, które dużo pracują z ludźmi: w raporcie są techniki i gotowe sformułowania do rozmów z przedstawicielami każdego z czterech stylów.",
+        "Osobom, które kierują zespołem albo szykują się do nowej roli: są tu rozdziały o decyzjach, konfliktach i stresie, o kierowaniu ludźmi i o pracy z własnym szefem."
+      ],
+      "insideTitle": "Co jest w środku",
+      "insideLead": "Kolejność i tytuły rozdziałów są takie same dla wszystkich szesnastu profili, ale każdy profil ma własny tekst.",
+      "inside": [
+        "<b>Jak czytać ten raport.</b> Co opisuje DISC, czego nie opisuje i gdzie kończą się możliwości raportu.",
+        "<b>Twój profil w szczegółach.</b> Cztery skale z twoimi procentami, omówienie każdej z nich i porównanie dwóch warstw odpowiedzi: stylu adaptowanego i stylu naturalnego.",
+        "<b>Jak widzą cię inni.</b> Pierwsze wrażenie, co widać po miesiącu, pięć ślepych plamek i to, jak odbierają cię przedstawiciele każdego ze stylów.",
+        "<b>Mocne strony i jak z nich korzystać.</b> Pięć mocnych stron i sposób na wzmocnienie każdej z nich.",
+        "<b>Obszary rozwoju: pięć ćwiczeń.</b> Co się dzieje, co z tym robić i po czym poznać, że ćwiczenie działa.",
+        "<b>Co cię motywuje, a co zniechęca.</b> Co dodaje ci energii, co ją odbiera i jak wyznaczać sobie cele.",
+        "<b>Praca i kariera.</b> Gdzie twój styl sprawdza się najlepiej, które zadania są dla ciebie pułapką, jak podejmujesz decyzje i po czym poznać, że dana rola ci nie służy.",
+        "<b>Komunikacja z każdym z czterech stylów.</b> Jak rozpoznać styl rozmówcy, od czego zacząć rozmowę, gdzie pojawiają się tarcia – i gotowe sformułowanie na każdą z tych sytuacji.",
+        "<b>Konflikt i stres.</b> Trzy typowe scenariusze, wczesne oznaki presji i co robić tu i teraz.",
+        "<b>Ty w roli szefa i w roli pracownika.</b> Co ci wychodzi, a co cię zawodzi, oraz jak zdawać relację przełożonemu, jak się z nim nie zgadzać i jak go o coś prosić – zależnie od jego stylu.",
+        "<b>Plan na 30 dni.</b> Karta pracy: cztery tygodnie, na każdy trzy kroki do odhaczenia.",
+        "<b>Najważniejsze na jednej stronie.</b> Karta pracy: esencja raportu, którą dobrze mieć przed oczami.",
+        "<b>Jak ze mną pracować.</b> Karta pracy dla przełożonego i współpracowników: można ją wydrukować albo przesłać dalej."
+      ],
+      "compareTitle": "Czym się różni od raportu podstawowego",
+      "compareHead": ["", "Raport podstawowy", "Raport rozszerzony"],
+      "compare": [
+        ["Pytanie", "Jakim jestem typem?", "Co mam z tym zrobić?"],
+        ["Podstawa", "Opis profilu", "Twoje liczby: skala po skali, dwie warstwy odpowiedzi, najniższa skala"],
+        ["Objętość", "Krótko o każdym temacie", "13 rozdziałów, około 28 stron"],
+        ["Praktyka", "Ogólne wskazówki", "Pięć ćwiczeń, plan na 30 dni, karta „Najważniejsze na jednej stronie”"],
+        ["Dla innych", "Link „Udostępnij swój typ”", "Karta „Jak ze mną pracować” dla przełożonego i współpracowników"],
+        ["Cena", "Bezpłatnie", "{price} USD"]
+      ],
+      "compareNote": "Test, wynik na ekranie, e-mail z wynikiem i raport podstawowy w PDF pozostają bezpłatne. Raport rozszerzony to propozycja dla chętnych.",
+      "howTitle": "Jak otrzymać raport",
+      "how": [
+        "Zrób bezpłatny test: 24 pytania, około 10 minut. Jeśli masz go już za sobą, nie musisz go powtarzać – raport powstaje na podstawie gotowego wyniku.",
+        "Poproś o powiadomienie. Raport rozszerzony nie jest jeszcze dostępny po polsku; napiszemy do ciebie, gdy tylko będzie można go zamówić.",
+        "Po zamówieniu raport przyjdzie e-mailem jako załącznik PDF, nie później niż 24 godziny po płatności."
+      ],
+      "faqTitle": "Pytania i odpowiedzi",
+      "faq": [
+        { "q": "Czy raport jest pisany specjalnie dla mnie, czy to ogólny tekst?", "a": "Raport powstaje na podstawie twoich odpowiedzi. Tekst jest napisany dla twojego profilu – jednego z szesnastu. Cały rozdział 2 i fragmenty rozdziałów 3, 5, 11, 12 i 13 zależą od twoich liczb: procentów na czterech skalach, liczby zaznaczeń „najbardziej” i „najmniej” oraz najniższej skali. Na każdej stronie jest twoje imię." },
+        { "q": "W jakiej formie przyjdzie raport?", "a": "Jako plik PDF w załączniku do e-maila, około 28 stron A4. Wygodnie czyta się go na ekranie i dobrze wygląda w druku; każda z trzech kart pracy mieści się na jednej stronie." },
+        { "q": "W jakim języku jest raport?", "a": "Na razie raport jest dostępny tylko po rosyjsku. Poproś o powiadomienie, a napiszemy do ciebie, gdy tylko będzie można zamówić go po polsku." },
+        { "q": "Czy to diagnoza albo ocena zdolności?", "a": "Nie. Raport opisuje styl zachowania na podstawie twoich odpowiedzi. Nie stawia diagnoz, nie mierzy inteligencji i nie przewiduje sukcesu." },
+        { "q": "Czy mogę odzyskać pieniądze?", "a": "O tym, kiedy i jak zwracamy pieniądze, przeczytasz w {refund}." }
+      ],
+      "priceLabel": "Cena",
+      "price": "{price} USD",
+      "docs": "Usługa nosi nazwę „Rozszerzony profil DISC” i jest świadczona na podstawie {offer}; o tym, kiedy i jak zwracamy pieniądze, przeczytasz w {refund}.",
+      "buy": {
+        "testTitle": "Raport powstaje na podstawie wyniku testu",
+        "testText": "Najpierw zrób bezpłatny test: 24 pytania, około 10 minut. Wynik i raport podstawowy zobaczysz od razu. Raport rozszerzony nie jest jeszcze dostępny po polsku; gdy będziesz już mieć wynik, na tej stronie możesz poprosić o powiadomienie.",
+        "testButton": "Zrób test",
+        "orderTitle": "Raport przygotujemy na podstawie twojego wyniku z {date}",
+        "orderText": "Raport rozszerzony nie jest jeszcze dostępny po polsku. Poproś o powiadomienie – napiszemy na twój e-mail, gdy tylko będzie można go zamówić.",
+        "orderButton": "Powiadom mnie o dostępności",
+        "orderMsg": "Chcę otrzymać rozszerzony raport DISC po polsku. Proszę o wiadomość, gdy będzie można go zamówić.\n\nMój wynik: {link}"
+      },
+      "pdf": {
+        "lead": "Raport podstawowy mówi, jakim jesteś typem. Raport rozszerzony – co z tym zrobić.",
+        "facts": [
+          ["28", "stron A4"],
+          ["13", "rozdziałów"],
+          ["5", "ćwiczeń"],
+          ["3", "karty pracy"]
+        ],
+        "list": ["Co oznaczają liczby w twoim profilu", "Jak pracować z osobami o innych profilach", "Wskazówki, jak działać skuteczniej"],
+        "where": "Więcej informacji:"
+      },
+      "block": {
+        "eyebrow": "Raport rozszerzony",
+        "title": "Co zrobić ze swoim profilem: 13 rozdziałów na podstawie twoich odpowiedzi",
+        "hook": "Twoja najniższa skala to {k}, {name}: {pct}%. Raport rozszerzony wyjaśnia, co to oznacza, i proponuje ćwiczenie dobrane do tej skali.",
+        "list": [
+          "Skala po skali: co oznacza każda z twoich czterech liczb",
+          "Pięć ślepych plamek i pięć ćwiczeń, a przy każdym – po czym poznać, że działa",
+          "Jak rozmawiać z przedstawicielami każdego z czterech stylów: techniki i gotowe sformułowania",
+          "Trzy karty pracy: plan na 30 dni, najważniejsze na jednej stronie, karta dla współpracowników"
+        ],
+        "price": "{price} USD · PDF na e-mail",
+        "button": "Powiadom mnie o dostępności",
+        "free": "Test i raport podstawowy pozostają bezpłatne.",
+        "topTitle": "Raport rozszerzony na podstawie twojego wyniku",
+        "topText": "13 rozdziałów o tym, co zrobić ze swoim profilem: omówienie każdej skali, pięć ćwiczeń, plan na 30 dni.",
+        "topButton": "Dowiedz się więcej – {price} USD",
+        "anchor": "Co jest w środku",
+        "soon": "Raport rozszerzony nie jest jeszcze dostępny po polsku. Poproś o powiadomienie – napiszemy, gdy tylko będzie można go zamówić."
+      }
     },
     "contact": {
       "title": "Kontakt – napisz do autorów testu DISC",
@@ -981,8 +1248,8 @@
           ]
         },
         {
-          "h": "Szczegółowy raport do wyniku z wersji papierowej",
-          "p": ["Wersja papierowa daje profil i krótki opis. Aby otrzymać pełny raport z wykresem, mocnymi stronami, obszarami rozwoju i wskazówkami dotyczącymi komunikacji, otwórz stronę swojego profilu z listy 16 profili albo zrób test online: zajmie to około dziesięciu minut."]
+          "h": "Raport do wyniku z wersji papierowej",
+          "p": ["Wersja papierowa daje profil i krótki opis. Aby otrzymać raport podstawowy z wykresem, mocnymi stronami, obszarami rozwoju i wskazówkami dotyczącymi komunikacji, otwórz stronę swojego profilu z listy 16 profili albo zrób test online: zajmie to około dziesięciu minut."]
         }
       ]
     },
@@ -1376,7 +1643,7 @@
     "intro.howText": "Test składa się z 24 pytań, w każdym są cztery stwierdzenia – łącznie 96. W każdym pytaniu zaznacz jedno stwierdzenie, które pasuje do ciebie <b>najbardziej</b>, i jedno, które pasuje do ciebie <b>najmniej</b>. Odpowiadaj tak, jak zwykle zachowujesz się w pracy, a nie tak, jak chcesz się zachowywać. Nie zastanawiaj się długo: pierwsza reakcja jest najtrafniejsza.",
     "intro.nameLabel": "Imię",
     "intro.emailLabel": "Adres e-mail, na który wysłać wynik",
-    "intro.emailHint": "Na ten adres przyjdzie wiadomość z linkiem do pełnego raportu. Imię, e-mail i wynik są zapisywane w bazie wyników właściciela serwisu.",
+    "intro.emailHint": "Na ten adres przyjdzie wiadomość z linkiem do raportu podstawowego. Imię, e-mail i wynik są zapisywane w bazie wyników właściciela serwisu.",
     "intro.requiredNote": "Pola oznaczone gwiazdką (*) są wymagane.",
     "intro.start": "Rozpocznij test",
     "intro.startNote": "24 pytania · około 10 minut · bez rejestracji",
@@ -1464,11 +1731,11 @@
     "email.subject": "Twój wynik testu DISC: {label}",
     "email.greeting": "Cześć, {name}!",
     "email.intro": "Test DISC już za Tobą. Twój profil:",
-    "email.open": "Otwórz pełny raport",
+    "email.open": "Otwórz raport podstawowy",
     "email.scores": "Nasilenie stylów",
     "email.linkNote": "Jeśli przycisk nie działa, skopiuj link do przeglądarki:",
-    "email.attached": "Pełny raport w formacie PDF znajduje się w załączniku do tej wiadomości.",
-    "email.footer": "Ta wiadomość została wysłana automatycznie, ponieważ ten adres podano podczas wypełniania testu. Pełny raport z opisem mocnych stron i obszarów rozwoju oraz ze wskazówkami jest dostępny pod linkiem powyżej.",
+    "email.attached": "Raport podstawowy w formacie PDF znajduje się w załączniku do tej wiadomości.",
+    "email.footer": "Ta wiadomość została wysłana automatycznie, ponieważ ten adres podano podczas wypełniania testu. Raport podstawowy z opisem mocnych stron i obszarów rozwoju oraz ze wskazówkami jest dostępny pod linkiem powyżej.",
     "email.subscribed": "Wyrażono zgodę na otrzymywanie e-maili od disc-test.org na ten adres.",
     "email.unsubscribe": "Zrezygnuj z subskrypcji",
 
@@ -1513,6 +1780,7 @@
     "nav.contact": "Kontakt",
     "nav.privacy": "Prywatność",
     "nav.services": "Usługi",
+    "nav.offer": "Regulamin sprzedaży",
     "nav.results": "Interpretacja wyników",
     "nav.compat": "Dopasowanie stylów",
     "nav.colors": "Kolory DISC",

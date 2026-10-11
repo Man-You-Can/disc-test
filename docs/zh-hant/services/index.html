@@ -132,7 +132,7 @@ html[lang=ar] body,html[lang=hi] body{font-size:17px;line-height:1.65}
   .sitenav::-webkit-scrollbar{display:none}
   .sitenav a{white-space:nowrap;flex:none}
 }
-.crumbs{font-size:13px;color:var(--muted);margin:0 0 16px}
+.crumbs{font-size:13px;color:var(--muted);margin:0 0 16px;overflow-wrap:anywhere}
 .crumbs a{color:var(--muted);text-decoration:none}
 .crumbs a:hover{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
 .crumbs span{margin:0 6px}
@@ -186,6 +186,7 @@ html[lang=ar] body,html[lang=hi] body{font-size:17px;line-height:1.65}
 .xact{margin:16px 0 10px;gap:10px 16px}
 .xprice{font-weight:600}
 .xoffer .xfree{margin:0;font-size:13px;color:var(--muted)}
+.xoffer .xsoon{margin:16px 0 0;padding:10px 14px;border:1px dashed var(--line-strong);border-radius:10px;font-size:14px;color:var(--muted)}
 .content .xfacts{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 22px;padding:0;list-style:none}
 .content .xfacts li{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:14px;margin:0}
 .xsample{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:14px 0 8px}
@@ -242,7 +243,7 @@ html[lang|=zh] [lang]:not([lang|=zh]):not([lang|=ja]),html[lang=ja] [lang]:not([
 .progress i{display:block;background:var(--line);border-radius:2px;transition:background .2s}
 .progress i.done{background:var(--ink)}
 .progress i.cur{background:var(--ink);opacity:.35}
-h1{font-family:var(--font-head);font-weight:500;font-size:clamp(26px,4.2vw,36px);line-height:1.2;letter-spacing:-.01em;margin:0 0 14px;text-wrap:balance}
+h1{font-family:var(--font-head);font-weight:500;font-size:clamp(26px,4.2vw,36px);line-height:1.2;letter-spacing:-.01em;margin:0 0 14px;text-wrap:balance;overflow-wrap:anywhere;hyphens:auto}   /* длинное слово в заголовке (нем. «Geschäftsbedingungen») переносится, а не раздвигает страницу на телефоне */
 h2{font-family:var(--font-head);font-weight:500;font-size:17px;line-height:1.35;margin:0 0 12px;text-wrap:balance}
 h3{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin:0 0 8px}
 html[lang=ar] h3,html[lang=hi] h3,html[lang|=zh] h3,html[lang=ja] h3,html[lang=ar] .eyebrow,html[lang=hi] .eyebrow,html[lang|=zh] .eyebrow,html[lang=ja] .eyebrow{letter-spacing:.04em;font-size:13px}
@@ -497,9 +498,9 @@ body.has-consent{padding-bottom:160px}
   </header>
   <nav class="sitenav no-print"><a href="../../zh-hant/">測驗</a><a href="../../zh-hant/disc/">什麼是 DISC</a><a href="../../zh-hant/styles/">四種風格</a><a href="../../zh-hant/profiles/">16 種類型</a><a href="../../zh-hant/results/">結果解讀</a><a href="../../zh-hant/compatibility/">風格搭配</a><a href="../../zh-hant/faq/">常見問題</a><a href="../../zh-hant/services/" aria-current="page">服務</a></nav>
   <nav class="crumbs"><a href="../../zh-hant/">首頁</a><span>›</span><span aria-current="page">服務</span></nav>
-  <main class="content"><div class="eyebrow">DISC</div><h1>服務</h1><p class="lead">本站的 DISC 測驗及其結果免費。如果你需要更深入的解讀，可以購買付費的進階版。</p><section class="service"><div><h2>DISC 進階版報告</h2><p>根據你完成的測驗，對你的 DISC 類型作更詳細的解讀。進階版報告提供給已付費的使用者。</p></div><p class="price"><small>價格</small>6.99 美元</p></section><h2>如何取得</h2><p>進階版報告將在付款後 24 小時內，以電子郵件寄送到你付款時填寫的信箱。</p><h2>哪些內容仍然免費</h2><p>測驗本身、螢幕上的結果和結果郵件、十六種類型的頁面，以及可列印的 PDF 版測驗仍然免費，不用註冊。進階版報告完全自願購買。</p><h2>關於服務的問題</h2><p>如果你對進階版報告或付款有疑問，請透過「<a href="../contact/">聯絡我們</a>」表單與我們聯絡，我們會回覆到你填寫的信箱。網站所有者的資訊請見每個頁面底部。</p><p class="updated"><time datetime="2026-10-03">更新於 2026年10月3日</time></p></main>
+  <main class="content"><div class="eyebrow">DISC</div><h1>服務</h1><p class="lead">本站的 DISC 測驗及其結果免費。如果你需要更深入的解讀，可以購買付費的進階版。</p><section class="service"><div><h2>DISC 進階版報告</h2><p>根據你完成的測驗，對你的 DISC 類型作更詳細的解讀。進階版報告提供給已付費的使用者。</p><p><a class="more" href="../extended-report/">進階版報告有哪些內容 →</a></p></div><p class="price"><small>價格</small>6.99 美元</p></section><h2>如何取得</h2><p>進階版報告目前尚未推出繁體中文版，你可以先到報告頁面登記通知，一開放訂購，我們就會寄信告訴你。訂購後，進階版報告將在付款後 24 小時內，以電子郵件寄送到你付款時填寫的信箱。</p><p>本服務依<a href="../offer/">銷售條款</a>提供；退款的適用情形與申請方式請見<a href="../refund/">退款政策</a>。</p><h2>哪些內容仍然免費</h2><p>測驗本身、螢幕上的結果和結果郵件、十六種類型的頁面，以及可列印的 PDF 版測驗仍然免費，不用註冊。進階版報告完全自願購買。</p><h2>關於服務的問題</h2><p>如果你對進階版報告或付款有疑問，請透過「<a href="../contact/">聯絡我們</a>」表單與我們聯絡，我們會回覆到你填寫的信箱。網站所有者的資訊請見每個頁面底部。</p><p class="seealso"><a href="../offer/">銷售條款（公開要約） →</a> · <a href="../refund/">退款政策 →</a></p><p class="updated"><time datetime="2026-10-11">更新於 2026年10月11日</time></p></main>
   <footer class="foot">
-    <div class="row2"><span>24 題 · 約 10 分鐘 · 沒有對錯之分</span><span class="footlinks"><a href="../../zh-hant/about/">關於本站</a> · <a href="../../zh-hant/services/">服務</a> · <a href="../../zh-hant/contact/">聯絡我們</a> · <a href="../../zh-hant/privacy/">隱私權政策</a></span></div>
+    <div class="row2"><span>24 題 · 約 10 分鐘 · 沒有對錯之分</span><span class="footlinks"><a href="../../zh-hant/about/">關於本站</a> · <a href="../../zh-hant/services/">服務</a> · <a href="../../zh-hant/offer/">銷售條款</a> · <a href="../../zh-hant/contact/">聯絡我們</a> · <a href="../../zh-hant/privacy/">隱私權政策</a></span></div>
     <nav class="materials" aria-label="DISC 相關資源"><span class="mlabel">DISC 相關資源</span><a href="../../zh-hant/disc/">什麼是 DISC</a><a href="../../zh-hant/styles/">四種風格</a><a href="../../zh-hant/profiles/">16 種類型</a><a href="../../zh-hant/results/">結果解讀</a><a href="../../zh-hant/compatibility/">風格搭配</a><a href="../../zh-hant/colors/">DISC 人格色彩</a><a href="../../zh-hant/teams/">DISC 團隊應用</a><a href="../../zh-hant/disc-vs-mbti/">DISC 與 MBTI</a><a href="../../zh-hant/pdf/">PDF 列印版</a><a href="../../zh-hant/faq/">常見問題</a></nav>
     <div class="privacy">你的答案儲存在瀏覽器中；如果你填寫電子郵件，結果會寄到這個信箱，並儲存在網站擁有者的結果資料庫中。</div>
     <div class="legal">Manukyan Armen · 納稅人識別號碼（INN）771583655604</div><div class="rights">© 2026 disc-test.org。未經書面許可，禁止複製本站及報告中的文字內容。</div>

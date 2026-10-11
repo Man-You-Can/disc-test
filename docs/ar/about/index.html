@@ -169,7 +169,7 @@ html[lang=ar] body,html[lang=hi] body{font-size:17px;line-height:1.65}
   .sitenav::-webkit-scrollbar{display:none}
   .sitenav a{white-space:nowrap;flex:none}
 }
-.crumbs{font-size:13px;color:var(--muted);margin:0 0 16px}
+.crumbs{font-size:13px;color:var(--muted);margin:0 0 16px;overflow-wrap:anywhere}
 .crumbs a{color:var(--muted);text-decoration:none}
 .crumbs a:hover{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
 .crumbs span{margin:0 6px}
@@ -223,6 +223,7 @@ html[lang=ar] body,html[lang=hi] body{font-size:17px;line-height:1.65}
 .xact{margin:16px 0 10px;gap:10px 16px}
 .xprice{font-weight:600}
 .xoffer .xfree{margin:0;font-size:13px;color:var(--muted)}
+.xoffer .xsoon{margin:16px 0 0;padding:10px 14px;border:1px dashed var(--line-strong);border-radius:10px;font-size:14px;color:var(--muted)}
 .content .xfacts{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 22px;padding:0;list-style:none}
 .content .xfacts li{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:14px;margin:0}
 .xsample{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:14px 0 8px}
@@ -279,7 +280,7 @@ html[lang|=zh] [lang]:not([lang|=zh]):not([lang|=ja]),html[lang=ja] [lang]:not([
 .progress i{display:block;background:var(--line);border-radius:2px;transition:background .2s}
 .progress i.done{background:var(--ink)}
 .progress i.cur{background:var(--ink);opacity:.35}
-h1{font-family:var(--font-head);font-weight:500;font-size:clamp(26px,4.2vw,36px);line-height:1.2;letter-spacing:-.01em;margin:0 0 14px;text-wrap:balance}
+h1{font-family:var(--font-head);font-weight:500;font-size:clamp(26px,4.2vw,36px);line-height:1.2;letter-spacing:-.01em;margin:0 0 14px;text-wrap:balance;overflow-wrap:anywhere;hyphens:auto}   /* длинное слово в заголовке (нем. «Geschäftsbedingungen») переносится, а не раздвигает страницу на телефоне */
 h2{font-family:var(--font-head);font-weight:500;font-size:17px;line-height:1.35;margin:0 0 12px;text-wrap:balance}
 h3{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin:0 0 8px}
 html[lang=ar] h3,html[lang=hi] h3,html[lang|=zh] h3,html[lang=ja] h3,html[lang=ar] .eyebrow,html[lang=hi] .eyebrow,html[lang|=zh] .eyebrow,html[lang=ja] .eyebrow{letter-spacing:.04em;font-size:13px}
@@ -536,7 +537,7 @@ body.has-consent{padding-bottom:160px}
   <nav class="crumbs"><a href="../../ar/">الرئيسية</a><span>›</span><span aria-current="page">عن المشروع</span></nav>
   <main class="content"><div class="eyebrow">DISC</div><h1>عن المشروع</h1><h2>لماذا هذا الموقع</h2><p>أردنا اختبار DISC يمكن لأي شخص إجراؤه في عشر دقائق دون تسجيل أو دفع، والحصول على تقرير واضح بلغته ومشاركته مع فريقه. يعمل الموقع بأربع عشرة لغة، وتظهر النتيجة فورًا وتصل عبر البريد الإلكتروني إن رغبت، وللمديرين ومسؤولي الموارد البشرية لوحة تُجمع فيها نتائج المشاركين في جدول.</p><h2>علامَ يستند الاختبار</h2><p>يستند الاختبار إلى نموذج ويليام مارستون الرباعي (1928) والاستبيانات اللاحقة بصيغة «الأكثر – الأقل»: 24 مجموعة في كل منها أربع عبارات، عبارة لكل نمط. وقد كتب مؤلفو الموقع أوصاف الأنماط الأربعة والملفات السلوكية الستة عشر استنادًا إلى خصائص DISC المتعارف عليها.</p><p>المشروع مستقل ولا صلة له بشركة Wiley (DiSC®) ولا TTI Success Insights ولا غيرهما من أصحاب العلامات التجارية. وتُستخدم كلمة DISC اسمًا عامًا للنموذج.</p><h2>من يدير الموقع</h2><p>تدير الموقع هيئة تحرير disc-test.org: نكتب النصوص، ونتولى صيانة الشيفرة، ونرد على الرسائل. المشروع مستقل: الاختبار والنتيجة مجانيان، بلا تسجيل ولا إعلانات. الخدمة المدفوعة الوحيدة هي ملف DISC الموسّع (قسم «الخدمات»). ولا نبيع دورات تدريبية ولا شهادات، ولا صلة لنا بشركة Wiley (DiSC®) ولا TTI Success Insights ولا غيرهما من أصحاب العلامات التجارية.</p><p>نحن مسؤولون عمّا يُنشر على الموقع. فإذا وجدت خطأ في النص، أو عدم دقة في الترجمة، أو تعارضًا بين وصف المنهجية وطريقة احتساب النتيجة، فراسلنا: سنصحّحه ونحدّث تاريخ التعديل.</p><h2>كيف نكتب النصوص ونتحقق منها</h2><p>تستند العبارات المتعلقة بالمنهجية إلى المصادر الأصلية وإلى دراسات محكَّمة، من بينها دراسات نقدية؛ وقائمة الأعمال مجموعة في قسم «<a href="../disc/#sources">المصادر والمراجع</a>». ونحن لا نعيد صياغة التقارير التجارية، فأوصاف الأنماط الأربعة والملفات السلوكية الستة عشر كتبتها هيئة التحرير استنادًا إلى خصائص النموذج المتعارف عليها.</p><p>تحمل كل صفحة تاريخ آخر تعديل فيها. ونصحّح النصوص عند تغيّر الاختبار نفسه أو عند وصول ملاحظات، ولا ننشر ما لا نستطيع إسناده إلى مصدر أو إلى تحقّق أجريناه بأنفسنا.</p><h2>ما الذي لا يعِد به الاختبار</h2><p>الاختبار ليس أداة سريرية أو تشخيصية، ولا يقيس الذكاء أو الكفاءات أو الملاءمة للوظيفة، ولا ينبغي أن يكون الأساس الوحيد لقرارات التوظيف. إنه نقطة انطلاق للتأمل الذاتي والحوار داخل الفريق.</p><h2>الملاحظات</h2><p>يمكنك مراسلتنا عبر نموذج «<a href="../contact/">اتصل بنا</a>».</p><aside class="cta"><div><h2>اكتشف ملفك السلوكي في DISC</h2><p>اختبار مجاني: 24 مجموعة، نحو 10 دقائق، النتيجة فورًا وعبر البريد الإلكتروني.</p></div><a class="btn" href="../" data-goal="cta-bottom">ابدأ الاختبار</a></aside><p class="updated"><time datetime="2026-10-03">آخر تحديث: 3 أكتوبر 2026</time></p></main>
   <footer class="foot">
-    <div class="row2"><span>24 مجموعة · نحو 10 دقائق · لا توجد إجابات صحيحة أو خاطئة</span><span class="footlinks"><a href="../../ar/about/">عن المشروع</a> · <a href="../../ar/services/">الخدمات</a> · <a href="../../ar/contact/">اتصل بنا</a> · <a href="../../ar/privacy/">الخصوصية</a></span></div>
+    <div class="row2"><span>24 مجموعة · نحو 10 دقائق · لا توجد إجابات صحيحة أو خاطئة</span><span class="footlinks"><a href="../../ar/about/">عن المشروع</a> · <a href="../../ar/services/">الخدمات</a> · <a href="../../ar/offer/">شروط البيع</a> · <a href="../../ar/contact/">اتصل بنا</a> · <a href="../../ar/privacy/">الخصوصية</a></span></div>
     <nav class="materials" aria-label="مواد عن DISC"><span class="mlabel">مواد عن DISC</span><a href="../../ar/disc/">ما هو DISC</a><a href="../../ar/styles/">الأنماط الأربعة</a><a href="../../ar/profiles/">16 ملفًا سلوكيًا</a><a href="../../ar/results/">تفسير النتائج</a><a href="../../ar/compatibility/">التوافق بين الأنماط</a><a href="../../ar/colors/">DISC بالألوان</a><a href="../../ar/teams/">DISC للفرق</a><a href="../../ar/disc-vs-mbti/">DISC وMBTI</a><a href="../../ar/pdf/">الاختبار بصيغة PDF</a><a href="../../ar/faq/">الأسئلة الشائعة</a></nav>
     <div class="privacy">تبقى إجاباتك في متصفحك؛ وإذا أدخلت بريدك الإلكتروني، تُرسل النتيجة إليه وتُحفظ في قاعدة نتائج مالك الموقع.</div>
     <div class="legal">Manukyan Armen · الرقم الضريبي (INN) 771583655604</div><div class="rights">© 2026 disc-test.org. يُمنع نسخ نصوص الموقع والتقارير دون إذن كتابي.</div>

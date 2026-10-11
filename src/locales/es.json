@@ -634,7 +634,16 @@
           "h": "Cambios",
           "p": ["Última actualización: 9 de octubre de 2026. Los cambios en el tratamiento de datos se reflejarán en esta página."]
         }
-      ]
+      ],
+      "purchase": {
+        "h": "Compra del perfil ampliado",
+        "p": [
+          "Si compra el perfil DISC ampliado, tratamos su correo electrónico, su nombre (si lo indicó), el resultado del test a partir del cual se elabora el informe y los datos del pedido: fecha, importe, número y estado del pago. Necesitamos estos datos para elaborar el informe y enviárselo, responder a sus consultas y tramitar un reembolso. La base legal del tratamiento es el contrato que usted celebra al pagar el servicio conforme a las {offer}.",
+          "El pago lo procesa un banco, cuyo nombre figura en la página de pago. Usted introduce los datos del medio de pago en la página segura del banco: nosotros no los recibimos ni los guardamos. El banco recibe el importe, el número de pedido y su correo electrónico, al que se envía el comprobante de pago.",
+          "El informe se genera en un servidor gestionado por encargo nuestro y se le envía por correo desde la dirección {email}. El propietario del sitio conserva una copia del informe y los datos del pedido: son necesarios para volver a enviar el informe, responder a consultas, tramitar reembolsos y llevar los registros. Para solicitar que se eliminen el informe y los datos del pedido, escriba a {email}. La información sobre el pago que la ley obliga a conservar se elimina cuando vence el plazo establecido.",
+          "Si inicia una compra pero no llega a pagarla, conservamos su correo electrónico, el resultado del test y los datos del pedido durante 30 días y después los eliminamos. Durante ese plazo puede recibir, en la dirección indicada, un único correo de recordatorio con el enlace de pago. La base legal del tratamiento son los pasos que usted dio para celebrar el contrato."
+        ]
+      }
     },
     "policy": {
       "title": "Política de tratamiento de datos personales — test DISC",
@@ -701,7 +710,16 @@
             "Versión del {date}. Los cambios en el tratamiento de datos se reflejarán en esta página."
           ]
         }
-      ]
+      ],
+      "purchase": {
+        "h": "Compra del perfil ampliado",
+        "p": [
+          "Si compra el perfil DISC ampliado, tratamos su correo electrónico, su nombre (si lo indicó), el resultado del test a partir del cual se elabora el informe y los datos del pedido: fecha, importe, número y estado del pago. Necesitamos estos datos para elaborar el informe y enviárselo, responder a sus consultas y tramitar un reembolso. La base legal del tratamiento es el contrato que usted celebra al pagar el servicio conforme a las {offer}; para ello no se requiere un consentimiento aparte.",
+          "El pago lo procesa un banco, cuyo nombre figura en la página de pago. Usted introduce los datos del medio de pago en la página segura del banco: nosotros no los recibimos ni los guardamos. El banco recibe el importe, el número de pedido y su correo electrónico, al que se envía el comprobante de pago.",
+          "El informe se genera en el servidor del sitio y se le envía por correo desde la dirección {email}. El informe terminado no se guarda en el servidor: si hace falta, se genera de nuevo. Los datos del pedido se conservan durante cinco años desde el pago: son necesarios para volver a enviar el informe, responder a consultas, tramitar reembolsos y llevar los registros. La información sobre el pago que la ley obliga a conservar durante más tiempo se elimina cuando vence el plazo establecido.",
+          "Si inicia una compra pero no llega a pagarla, conservamos su correo electrónico, el resultado del test y los datos del pedido durante 30 días y después los eliminamos. Durante ese plazo puede recibir, en la dirección indicada, un único correo de recordatorio con el enlace de pago. La base legal del tratamiento son los pasos que usted dio para celebrar el contrato. Mientras el perfil ampliado no pueda pedirse en español, la solicitud de aviso enviada mediante el formulario de contacto se trata como cualquier otro mensaje de ese formulario; la constancia de su consentimiento se marca como solicitud del perfil ampliado."
+        ]
+      }
     },
     "consentDoc": {
       "title": "Consentimiento para el tratamiento de datos personales — test DISC",
@@ -759,10 +777,11 @@
       "priceLabel": "Precio",
       "price": "{price} USD",
       "currency": "USD",
+      "docs": "El servicio se presta conforme a las {offer}; la {refund} explica cuándo y cómo se devuelve el dinero.",
       "sections": [
         {
           "h": "Cómo se recibe",
-          "p": ["El perfil ampliado se envía por correo electrónico a la dirección indicada al pagar, en un plazo máximo de 24 horas desde el pago."]
+          "p": ["El perfil ampliado todavía no está disponible en español: en la página del informe puede pedir que le avisemos, y le escribiremos en cuanto lo esté. Una vez hecho el pedido, se envía por correo electrónico a la dirección indicada al pagar, en un plazo máximo de 24 horas desde el pago."]
         },
         {
           "h": "Qué sigue siendo gratuito",
@@ -773,6 +792,249 @@
           "p": ["Si tiene alguna pregunta sobre el perfil ampliado o sobre el pago, escríbanos mediante el formulario «{contact}»: la respuesta llegará al correo que indique. Los datos del titular del sitio figuran al pie de cada página."]
         }
       ]
+    },
+    "offer": {
+      "title": "Condiciones de venta (oferta pública) — perfil DISC ampliado",
+      "description": "Condiciones de venta (oferta pública) del servicio «Perfil DISC ampliado» de disc-test.org: precio, pago y entrega, reembolsos y derechos sobre los materiales.",
+      "h1": "Condiciones de venta (oferta pública)",
+      "linkText": "condiciones de venta",
+      "edition": "Versión del 9 de octubre de 2026. Traducción al español publicada el 11 de octubre de 2026.",
+      "note": "Este texto es una traducción al español de la oferta original publicada en {original}. En caso de discrepancia entre ambos textos, prevalece el original, salvo en lo relativo al precio: para la versión en español del Sitio rige el indicado en la cláusula 3.1. El perfil ampliado todavía no está disponible en español: aún no puede pedirse en este idioma y no se realiza ningún cobro.",
+      "seller": "empresario individual Manukyan Armen, N.º de identificación fiscal (INN) {inn}",
+      "lead": "Este documento es una propuesta formal (oferta pública) para celebrar un contrato de prestación del servicio de pago «Perfil DISC ampliado» en las condiciones que se exponen a continuación. La oferta la formula el {seller} (en adelante, el Prestador). El pago del servicio supone la aceptación plena e incondicional de estas condiciones (aceptación de la oferta).",
+      "sections": [
+        {
+          "h": "1. Definiciones",
+          "ul": [
+            "Prestador: {seller}.",
+            "Cliente: la persona física con plena capacidad legal que ha aceptado las condiciones de la oferta al pagar el Servicio.",
+            "Sitio: {site} y todas sus páginas.",
+            "Test: el cuestionario DISC gratuito disponible en el Sitio.",
+            "Perfil ampliado: un análisis más detallado del perfil DISC del Cliente, que el Prestador elabora en formato electrónico a partir del Test realizado por el Cliente.",
+            "Servicio: la elaboración del Perfil ampliado y su envío al Cliente.",
+            "Banco: la entidad de crédito a través de la cual el Cliente paga el Servicio y cuyo nombre figura en la página de pago."
+          ]
+        },
+        {
+          "h": "2. Objeto del contrato",
+          "p": [
+            "2.1. El Prestador se obliga a prestar el Servicio al Cliente, y el Cliente, a pagarlo en las condiciones de la oferta.",
+            "2.2. El Servicio se presta a distancia: el Perfil ampliado se envía a la dirección de correo electrónico que el Cliente indicó al pagar.",
+            "2.3. El Test y su resultado en el Sitio son gratuitos y no forman parte del objeto del contrato.",
+            "2.4. El Perfil ampliado tiene carácter informativo. Describe estilos de comportamiento según el modelo DISC y no constituye un diagnóstico psicológico o médico, un dictamen sobre la aptitud profesional ni una recomendación de cumplimiento obligatorio."
+          ]
+        },
+        {
+          "h": "3. Precio y forma de pago",
+          "p": [
+            "3.1. El precio del Servicio es de {price} dólares estadounidenses. El precio es definitivo: no hay pagos adicionales a favor del Prestador.",
+            "3.2. El Servicio se paga íntegramente antes de su prestación, por uno de los medios de pago distintos del efectivo que se muestran en la página de pago. El pago lo procesa el Banco.",
+            "3.3. El Servicio se considera pagado en el momento en que el Prestador recibe del Banco la confirmación del pago.",
+            "3.4. El Cliente introduce los datos del medio de pago en la página segura del Banco. El Prestador no recibe ni conserva esos datos.",
+            "3.5. Tras el pago, se envía al Cliente un comprobante de pago en formato electrónico, a la dirección de correo electrónico indicada al pagar.",
+            "3.6. El Prestador puede modificar el precio del Servicio. El nuevo precio se aplica desde su publicación en el Sitio y no afecta a los pedidos ya pagados."
+          ]
+        },
+        {
+          "h": "4. Prestación del servicio",
+          "p": [
+            "4.1. Para recibir el Servicio, el Cliente realiza el Test en el Sitio, indica una dirección de correo electrónico y paga el Servicio. El Perfil ampliado se elabora a partir del resultado del Test con el que el Cliente pasó al pago.",
+            "4.2. El Prestador envía el Perfil ampliado a la dirección indicada en un plazo máximo de 24 horas desde el pago (cláusula 3.3). Por lo general, el correo llega antes; 24 horas es el plazo límite.",
+            "4.3. El Servicio se considera prestado en el momento en que se envía el Perfil ampliado. Si en los tres días naturales siguientes el Cliente no comunica ningún defecto, el Servicio se considera aceptado. No se extiende acta de prestación del servicio.",
+            "4.4. Si el correo no llega, el Cliente debe revisar la carpeta de correo no deseado y escribir al Prestador a {email}: el Perfil ampliado se le enviará de nuevo.",
+            "4.5. El Cliente es responsable de que la dirección de correo electrónico que indica sea correcta."
+          ]
+        },
+        {
+          "h": "5. Cancelación del servicio y reembolso",
+          "p": [
+            "5.1. El Cliente puede cancelar el Servicio en cualquier momento antes de que se le envíe el Perfil ampliado. En ese caso, el pago se reembolsa íntegramente.",
+            "5.2. Si el Perfil ampliado no se envía en el plazo indicado en la cláusula 4.2, el Cliente puede exigir el reembolso íntegro del pago.",
+            "5.3. Si el Perfil ampliado recibido presenta defectos (el correo o el archivo no se abre, contiene el resultado de otra persona o su contenido no se corresponde con la descripción del Servicio en el Sitio), el Prestador los subsana en un plazo de tres días hábiles desde la solicitud del Cliente. Si el defecto no se subsana en ese plazo, el pago se reembolsa íntegramente.",
+            "5.4. Una vez prestado debidamente el Servicio, el pago no se reembolsa. El desacuerdo del Cliente con la descripción de su perfil no constituye un defecto del Servicio.",
+            "5.5. Para obtener el reembolso, el Cliente envía una solicitud a {email} e indica la dirección de correo electrónico utilizada al pagar, la fecha y el importe del pago y el motivo del reembolso.",
+            "5.6. El Prestador responde a la solicitud en un plazo de tres días hábiles. El dinero se devuelve por el mismo medio utilizado para el pago, a más tardar diez días naturales después de recibida la solicitud; el plazo de abono depende del banco del Cliente.",
+            "5.7. Las condiciones de esta sección no limitan los derechos que la legislación de protección de los consumidores reconoce al Cliente."
+          ]
+        },
+        {
+          "h": "6. Derechos sobre los materiales y prohibición de copia",
+          "p": [
+            "6.1. Los textos del Sitio, del Test, de los informes con el resultado del Test (incluido el informe en PDF que se envía por correo electrónico) y del Perfil ampliado, así como su diseño (en adelante, los Materiales), pertenecen al Prestador y están protegidos por la legislación sobre propiedad intelectual.",
+            "6.2. El Cliente puede utilizar el informe con el resultado del Test y el Perfil ampliado con fines personales: guardarlos, imprimirlos, mostrarlos a otras personas y compartir el enlace a su resultado mediante los botones del Sitio.",
+            "6.3. Sin el consentimiento por escrito del Prestador, queda prohibido copiar los Materiales total o parcialmente, reproducirlos y distribuirlos, publicarlos en otros sitios web, redes sociales, aplicaciones de mensajería y publicaciones impresas, adaptarlos y traducirlos, incluirlos en otros tests, servicios, cursos y publicaciones, así como venderlos o publicarlos en nombre propio.",
+            "6.4. Se permite citar los Materiales en los casos y con el alcance previstos por la ley, indicando obligatoriamente la fuente: un enlace a {site}.",
+            "6.5. El consentimiento para utilizar los Materiales puede solicitarse escribiendo a {email}.",
+            "6.6. La vulneración de los derechos sobre los Materiales da lugar a la responsabilidad prevista por la ley."
+          ]
+        },
+        {
+          "h": "7. Responsabilidad",
+          "p": [
+            "7.1. Las partes responden del incumplimiento del contrato conforme a la legislación que lo rige (cláusula 9.4).",
+            "7.2. El Cliente toma por su cuenta las decisiones basadas en el Perfil ampliado. El Prestador no garantiza ningún resultado concreto derivado de su uso.",
+            "7.3. El Prestador no responde de que el correo no se entregue por causas ajenas a él (una dirección incorrecta, un fallo del servicio de correo del Cliente), pero, a petición del Cliente, envía de nuevo el Perfil ampliado."
+          ]
+        },
+        {
+          "h": "8. Datos personales",
+          "p": [
+            "8.1. Para prestar el Servicio, el Prestador trata la dirección de correo electrónico del Cliente, su nombre (si lo indicó), el resultado del Test y la información sobre el pago, sin los datos de la tarjeta bancaria. La base legal del tratamiento es la ejecución de un contrato en el que el Cliente es parte.",
+            "8.2. Los datos se comunican únicamente al Banco, para procesar el pago y enviar el comprobante, y a los servicios necesarios para elaborar y enviar el Perfil ampliado, así como en los casos previstos por la ley.",
+            "8.3. El tratamiento de los datos se describe con más detalle en la página «{privacy}»."
+          ]
+        },
+        {
+          "h": "9. Vigencia y modificación de la oferta",
+          "p": [
+            "9.1. El contrato se considera celebrado desde el momento del pago del Servicio y permanece en vigor hasta que las partes hayan cumplido sus obligaciones.",
+            "9.2. El Prestador puede modificar la oferta. La nueva versión se aplica desde su publicación en el Sitio y no afecta a los pedidos ya pagados.",
+            "9.3. Las reclamaciones se envían a {email}; el Prestador responde en un plazo de diez días naturales. Si la controversia no se resuelve, se somete a los tribunales conforme a la legislación que rige el contrato.",
+            "9.4. El contrato se rige por la legislación del país en el que está registrado el Prestador."
+          ]
+        },
+        {
+          "h": "10. Datos del Prestador",
+          "ul": ["Empresario individual Manukyan Armen", "N.º de identificación fiscal (INN) {inn}", "Correo electrónico: {email}", "Sitio web: {site}"]
+        }
+      ]
+    },
+    "refund": {
+      "title": "Política de reembolso — perfil DISC ampliado",
+      "description": "Cuándo y cómo recuperar el dinero pagado por el perfil DISC ampliado de disc-test.org: casos de reembolso, solicitud y plazos.",
+      "h1": "Política de reembolso",
+      "linkText": "política de reembolso",
+      "lead": "En pocas palabras: cuándo y cómo puede recuperar el dinero pagado por el perfil DISC ampliado. Esta política forma parte de las {offer} (sección 5).",
+      "note": "Este texto es una traducción al español de la política de reembolso original publicada en {original}. En caso de discrepancia entre ambos textos, prevalece el original. El perfil ampliado todavía no está disponible en español: aún no puede pedirse en este idioma y no se realiza ningún cobro.",
+      "sections": [
+        {
+          "h": "Cuándo se devuelve todo el dinero",
+          "ul": [
+            "Usted cancela el servicio antes de que se le haya enviado el perfil ampliado.",
+            "El perfil ampliado no se envía en las 24 horas siguientes al pago.",
+            "El perfil ampliado que recibe tiene un defecto (el correo o el archivo no se abre, contiene el resultado de otra persona o su contenido no se corresponde con la descripción del servicio en el sitio) y no lo hemos subsanado en los tres días hábiles siguientes a su solicitud."
+          ]
+        },
+        {
+          "h": "Cuándo no se devuelve el dinero",
+          "p": ["Si el perfil ampliado se envió a tiempo y se corresponde con la descripción, el servicio se considera prestado y el pago no se reembolsa. No estar de acuerdo con la descripción de su perfil no constituye un defecto del servicio."]
+        },
+        {
+          "h": "Cómo solicitar el reembolso",
+          "p": ["Escriba a {email} e indique:"],
+          "ul": ["la dirección de correo electrónico que indicó al pagar;", "la fecha y el importe del pago;", "el motivo del reembolso."]
+        },
+        {
+          "h": "Plazos",
+          "p": ["Respondemos a la solicitud en un plazo de tres días hábiles. El dinero se devuelve por el mismo medio utilizado para el pago, a más tardar diez días naturales después de recibir la solicitud. El plazo de abono depende de su banco."]
+        },
+        {
+          "h": "Si no le ha llegado el correo con el perfil ampliado",
+          "p": ["Revise la carpeta de correo no deseado. Si tampoco está ahí, escriba a {email} y le enviaremos de nuevo el perfil ampliado."]
+        },
+        {
+          "h": "Sus derechos",
+          "p": ["Esta política no limita los derechos que le reconoce la legislación de protección de los consumidores."]
+        }
+      ]
+    },
+    "product": {
+      "title": "Informe DISC ampliado: 13 secciones sobre su resultado",
+      "description": "Informe DISC ampliado sobre su resultado: análisis de cada escala, cinco prácticas y un plan de 30 días. PDF por correo, {price} USD. Próximamente en español.",
+      "h1": "Informe DISC ampliado",
+      "lead": "El informe breve que recibe tras el test responde a una pregunta: «¿Cuál es mi tipo?». El informe ampliado responde a la siguiente: «¿Y qué hago con eso?». Se elabora a partir de sus respuestas: con sus puntuaciones, para su perfil y con su nombre en cada página.",
+      "facts": ["13 secciones", "unas 28 páginas", "tres hojas de trabajo", "PDF por correo"],
+      "more": "Qué incluye el informe ampliado",
+      "forTitle": "Para quién es",
+      "for": [
+        "Para quien quiere entender sus puntuaciones: qué significa cada una de las cuatro escalas, por qué su perfil se llama así y qué hacer con la escala más baja.",
+        "Para quien trabaja mucho con personas: el informe ofrece técnicas y frases listas para usar al hablar con alguien de cada uno de los cuatro estilos.",
+        "Para quien dirige un equipo o se prepara para un nuevo puesto: hay secciones sobre decisiones, conflictos y estrés, sobre cómo dirigir y cómo trabajar con el propio jefe."
+      ],
+      "insideTitle": "Qué contiene",
+      "insideLead": "El orden y los títulos de las secciones son los mismos para los dieciséis perfiles; el texto es distinto para cada uno.",
+      "inside": [
+        "<b>Cómo leer este informe.</b> Qué describe DISC, qué no describe y hasta dónde llega el informe.",
+        "<b>Su perfil en detalle.</b> Las cuatro escalas con sus porcentajes, el análisis de cada una y la comparación de las dos capas de sus respuestas: el estilo adaptado y el estilo natural.",
+        "<b>Cómo le ven los demás.</b> La primera impresión, lo que se nota al cabo de un mes, cinco puntos ciegos y cómo le perciben las personas de cada estilo.",
+        "<b>Sus puntos fuertes y cómo aprovecharlos.</b> Cinco puntos fuertes y una técnica para potenciar cada uno.",
+        "<b>Áreas de mejora: cinco prácticas.</b> Qué ocurre, qué hacer y cómo saber que la práctica funciona.",
+        "<b>Qué le motiva y qué le desmotiva.</b> Qué le da energía, qué se la quita y cómo fijarse objetivos.",
+        "<b>Trabajo y carrera.</b> Dónde rinde más su estilo, las tareas trampa, cómo toma decisiones y las señales de que un puesto no es para usted.",
+        "<b>La comunicación con cada uno de los cuatro estilos.</b> Cómo reconocer el estilo de su interlocutor, por dónde empezar la conversación, dónde surgen los roces y una frase lista para usar en cada caso.",
+        "<b>Conflicto y estrés.</b> Tres situaciones típicas, las primeras señales de presión y qué hacer en el momento.",
+        "<b>Usted como jefe y como miembro del equipo.</b> En qué destaca, dónde tropieza y cómo rendir cuentas, discrepar y pedir algo a un jefe de cada estilo.",
+        "<b>Plan de 30 días.</b> Hoja de trabajo: cuatro semanas, tres pasos por semana y casillas para ir marcándolos.",
+        "<b>Lo esencial en una página.</b> Hoja de trabajo: el informe condensado en una página para tenerla siempre a la vista.",
+        "<b>Cómo trabajar conmigo.</b> Hoja de trabajo para su jefe y sus compañeros: puede imprimirla o reenviarla."
+      ],
+      "compareTitle": "En qué se diferencia del informe breve",
+      "compareHead": ["", "Informe breve", "Informe ampliado"],
+      "compare": [
+        ["Pregunta", "¿Cuál es mi tipo?", "¿Y qué hago con eso?"],
+        ["Se basa en", "La descripción del perfil", "Sus puntuaciones: escala por escala, las dos capas de sus respuestas y su escala más baja"],
+        ["Extensión", "Lo esencial de cada tema", "13 secciones, unas 28 páginas"],
+        ["Aplicación práctica", "Recomendaciones generales", "Cinco prácticas, un plan de 30 días y la hoja «Lo esencial en una página»"],
+        ["Para los demás", "El enlace «Comparta su tipo»", "La hoja «Cómo trabajar conmigo», para su jefe y sus compañeros"],
+        ["Precio", "Gratis", "{price} USD"]
+      ],
+      "compareNote": "El test, el resultado en pantalla, el correo con el resultado y el informe breve en PDF siguen siendo gratuitos. El informe ampliado es totalmente opcional.",
+      "howTitle": "Cómo obtener el informe",
+      "how": [
+        "Haga el test gratuito: 24 bloques, unos 10 minutos. Si ya lo hizo, no tiene que repetirlo: el informe se elabora con el resultado que ya tiene.",
+        "Pida que le avisemos. El informe ampliado todavía no está disponible en español; le escribiremos en cuanto lo esté.",
+        "Una vez hecho el pedido, el informe le llegará por correo electrónico, como PDF adjunto, en un plazo máximo de 24 horas desde el pago."
+      ],
+      "faqTitle": "Preguntas frecuentes",
+      "faq": [
+        { "q": "¿El informe se escribe para mí o es un texto genérico?", "a": "Se elabora a partir de sus respuestas. El texto está escrito para su perfil, uno de los dieciséis. Toda la sección 2 y algunas partes de las secciones 3, 5, 11, 12 y 13 dependen de sus puntuaciones: los porcentajes de las cuatro escalas, el recuento de marcas «más» y «menos» y su escala más baja. Su nombre figura en cada página." },
+        { "q": "¿En qué formato llega el informe?", "a": "En un PDF adjunto al correo, de unas 28 páginas en tamaño A4. Se lee cómodamente en pantalla y se imprime bien; cada una de las tres hojas de trabajo cabe en una sola página." },
+        { "q": "¿En qué idioma está el informe?", "a": "Por ahora, el informe solo existe en ruso. Pida que le avisemos y le escribiremos en cuanto esté disponible en español." },
+        { "q": "¿Es un diagnóstico o una evaluación de capacidades?", "a": "No. El informe describe su estilo de comportamiento a partir de sus respuestas. No establece diagnósticos, no mide la inteligencia ni predice el éxito." },
+        { "q": "¿Puedo recuperar el dinero?", "a": "La {refund} explica cuándo y cómo se devuelve el dinero." }
+      ],
+      "priceLabel": "Precio",
+      "price": "{price} USD",
+      "docs": "El servicio se denomina «Perfil DISC ampliado» y se presta conforme a las {offer}; la {refund} explica cuándo y cómo se devuelve el dinero.",
+      "buy": {
+        "testTitle": "El informe se elabora a partir del resultado del test",
+        "testText": "Primero haga el test gratuito: 24 bloques, unos 10 minutos. Verá el resultado y el informe breve al instante. El informe ampliado todavía no está disponible en español; cuando tenga su resultado, podrá pedir desde esta página que le avisemos.",
+        "testButton": "Hacer el test",
+        "orderTitle": "Su informe se elaborará a partir del test que hizo el {date}",
+        "orderText": "El informe ampliado todavía no está disponible en español. Pida que le avisemos y le escribiremos en cuanto lo esté.",
+        "orderButton": "Avisarme cuando esté disponible",
+        "orderMsg": "Me gustaría recibir el informe DISC ampliado en español. Por favor, avísenme por correo cuando pueda pedirlo.\n\nMi resultado: {link}"
+      },
+      "pdf": {
+        "lead": "El informe breve le dice cuál es su tipo. El informe ampliado, qué hacer con él.",
+        "facts": [
+          ["28", "páginas"],
+          ["13", "secciones"],
+          ["5", "prácticas"],
+          ["3", "hojas de trabajo"]
+        ],
+        "list": ["Qué significan sus puntuaciones", "Cómo tratar con los demás perfiles", "Consejos prácticos para ser más eficaz"],
+        "where": "Más información:"
+      },
+      "block": {
+        "eyebrow": "Informe ampliado",
+        "title": "Qué hacer con su perfil: 13 secciones a partir de sus respuestas",
+        "hook": "Su escala más baja es {k}, {name}: {pct} %. El informe ampliado explica qué significa y le propone una práctica para trabajarla.",
+        "list": [
+          "Escala por escala: qué significa cada una de sus cuatro puntuaciones",
+          "Cinco puntos ciegos y cinco prácticas, con señales para saber que funcionan",
+          "Cómo hablar con una persona de cada uno de los cuatro estilos: técnicas y frases listas para usar",
+          "Tres hojas de trabajo: un plan de 30 días, lo esencial en una página y una hoja para sus compañeros"
+        ],
+        "price": "{price} USD · PDF por correo",
+        "button": "Avisarme cuando esté disponible",
+        "free": "El test y el informe breve siguen siendo gratuitos.",
+        "topTitle": "Un informe ampliado sobre su resultado",
+        "topText": "13 secciones sobre qué hacer con su perfil: el análisis de cada escala, cinco prácticas y un plan de 30 días.",
+        "topButton": "Más información — {price} USD",
+        "anchor": "Qué contiene",
+        "soon": "El informe ampliado todavía no está disponible en español. Pida que le avisemos y le escribiremos en cuanto lo esté."
+      }
     },
     "contact": {
       "title": "Contacto — escribir a los autores del test DISC",
@@ -985,8 +1247,8 @@
           ]
         },
         {
-          "h": "Informe detallado a partir del resultado en papel",
-          "p": ["La versión en papel da el perfil y una descripción breve. Para obtener el informe completo con el gráfico, los puntos fuertes, las áreas de mejora y las recomendaciones de comunicación, abra la página de su perfil en la lista de 16 perfiles o haga el test online: le llevará unos diez minutos."]
+          "h": "Informe a partir del resultado en papel",
+          "p": ["La versión en papel da el perfil y unas líneas de descripción. Para obtener el informe breve con el gráfico, los puntos fuertes, las áreas de mejora y las recomendaciones de comunicación, abra la página de su perfil en la lista de 16 perfiles o haga el test online: le llevará unos diez minutos."]
         }
       ]
     },
@@ -1386,7 +1648,7 @@
     "intro.howText": "El test tiene 24 bloques de cuatro afirmaciones, 96 en total. En cada bloque marque la afirmación que <b>más</b> lo describe y la que <b>menos</b> lo describe. Responda según cómo se comporta habitualmente en el trabajo, no como le gustaría. No lo piense demasiado: la primera reacción es la más precisa.",
     "intro.nameLabel": "Nombre",
     "intro.emailLabel": "Correo electrónico al que enviar el resultado",
-    "intro.emailHint": "En esta dirección recibirá un correo con el enlace al informe completo. El nombre, el correo y el resultado se guardan en la base de resultados del propietario del sitio.",
+    "intro.emailHint": "En esta dirección recibirá un correo con el enlace al informe breve. El nombre, el correo y el resultado se guardan en la base de resultados del propietario del sitio.",
     "intro.requiredNote": "Los campos marcados con asterisco (*) son obligatorios.",
     "intro.start": "Empezar el test",
     "intro.startNote": "24 bloques · unos 10 minutos · sin registro",
@@ -1474,11 +1736,11 @@
     "email.subject": "Su resultado del test DISC: {label}",
     "email.greeting": "Hola, {name}:",
     "email.intro": "Ha completado el test DISC. Su perfil predominante:",
-    "email.open": "Abrir el informe completo",
+    "email.open": "Abrir el informe breve",
     "email.scores": "Intensidad de los estilos",
     "email.linkNote": "Si el botón no funciona, copie este enlace en su navegador:",
-    "email.attached": "El informe completo va adjunto a este correo en PDF.",
-    "email.footer": "Este correo se ha enviado automáticamente porque esta dirección se indicó al realizar el test. El informe completo, con puntos fuertes, áreas de mejora y recomendaciones, está disponible en el enlace de arriba.",
+    "email.attached": "El informe breve va adjunto a este correo en PDF.",
+    "email.footer": "Este correo se ha enviado automáticamente porque esta dirección se indicó al realizar el test. El informe breve, con puntos fuertes, áreas de mejora y recomendaciones, está disponible en el enlace de arriba.",
     "email.subscribed": "Usted aceptó recibir mensajes de disc-test.org en esta dirección.",
     "email.unsubscribe": "Darse de baja",
 
@@ -1523,6 +1785,7 @@
     "nav.contact": "Contacto",
     "nav.privacy": "Privacidad",
     "nav.services": "Servicios",
+    "nav.offer": "Condiciones de venta",
     "nav.results": "Interpretación de resultados",
     "nav.compat": "Compatibilidad de estilos",
     "nav.colors": "DISC por colores",

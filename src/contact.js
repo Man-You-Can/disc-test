@@ -33,8 +33,10 @@ function contactHTML(c){
 function initContact(c){
   var t=c.t, esc=c.esc, $=c.$, L=c.L, endpoint=c.endpoint||'', token=c.token||'', email=c.email||'', MAX=c.maxBytes||10*1024*1024;
   var form=$('#contactForm'); if(!form) return;
-  /* заявка со страницы расширенного отчёта: имя, e-mail и текст со ссылкой на результат та страница кладёт в sessionStorage */
-  try{ var ord=JSON.parse(sessionStorage.getItem('disc.order')||'null'); if(ord){ sessionStorage.removeItem('disc.order');
+  /* заявка со страницы расширенного отчёта: имя, e-mail и текст со ссылкой на результат та страница кладёт в sessionStorage;
+     topic уходит на сервер вместе с сообщением — по нему письмо владельцу получает тему «Заявка на расширенный отчёт» с языком страницы */
+  var topic='', topicCode='';
+  try{ var ord=JSON.parse(sessionStorage.getItem('disc.order')||'null'); if(ord){ sessionStorage.removeItem('disc.order'); if(ord.topic==='extended'){ topic='extended'; topicCode=String(ord.code||'').slice(0,900); }
     if(ord.name) $('#cName').value=String(ord.name).slice(0,80); if(ord.email) $('#cEmail').value=String(ord.email).slice(0,120); if(ord.message) $('#cMsg').value=String(ord.message).slice(0,5000); } }catch(e){}
   var input=$('#cFiles'), list=$('#cList'), total=$('#cTotal'), drop=$('#cDrop'), status=$('#cStatus'), sendBtn=$('#cSend');
   var files=[]; // выбранные объекты File
@@ -132,11 +134,12 @@ function initContact(c){
     sendBtn.disabled=true; setStatus('muted', esc(t('contact.sending')));
     Promise.all(files.map(readFile)).then(function(payload){
       var data={action:'contact', token:token, lang:L.lang, name:name, email:em, message:msg, page:location.href.split('#')[0], hp:$('#cSite').value, files:payload};
+      if(topic){ data.topic=topic; if(topicCode) data.code=topicCode; }
       if(pdBox){ data.consent=true; data.consentV=c.pdVersion||''; }
       return postJSON(endpoint, data);
     }).then(function(){
       setStatus('ok', esc(t('contact.sent',{email:em})));
-      $('#cMsg').value=''; files=[]; render();
+      $('#cMsg').value=''; files=[]; topic=''; render();
       if(window.discTrack) window.discTrack('contact'); // цель Метрики: сообщение отправлено
     }, function(err){
       var m=String((err&&err.message)||err);

@@ -156,6 +156,18 @@ function checkLimits(to, perHour, prefix) {
 
 /* ====== форма обратной связи ====== */
 /** Письмо на CONTACT_TO с текстом сообщения и вложениями; ответ уходит отправителю (replyTo). В таблицу не пишется. */
+/**
+ * Тема и первая строка сведений письма с формы обратной связи. Заявка на расширенный отчёт (форма открыта кнопкой «Оставить заявку» со страницы
+ * отчёта, запрос несёт topic: 'extended') получает свою тему с языком страницы: по ней владелец сразу видит, что это заявка и на каком языке
+ * человек ждёт отчёт. Название языка — как в переключателе языков сайта (DATA[язык].name).
+ */
+function contactSubject(name, lang, topic) {
+  var site = SITE_URL.replace(/^https?:\/\//, '');
+  if (topic !== 'extended') return 'Сообщение с сайта ' + site + ': ' + name;
+  return 'Заявка на расширенный отчёт — ' + contactLang(lang) + ': ' + name;
+}
+function contactLang(lang) { var L = DATA[lang]; return lang ? (L && L.name ? L.name + ' (' + lang + ')' : lang) : 'язык не указан'; }
+
 function sendContact(b) {
   if (!CONTACT_TO) return out({ ok: false, error: 'contact disabled' });
   if (String(b.hp || '')) return out({ ok: true });   // скрытое поле-ловушку заполняют только боты: делаем вид, что отправили
@@ -181,9 +193,10 @@ function sendContact(b) {
   var limit = checkLimits(email, MAX_CONTACT_PER_SENDER_PER_HOUR, 'c:');
   if (limit) return out({ ok: false, error: limit });
   var lang = String(b.lang || '').replace(/[^a-z-]/gi, '').slice(0, 10), page = String(b.page || '').slice(0, 300);
-  var meta = 'Имя: ' + name + '\nE-mail: ' + email + (lang ? '\nЯзык: ' + lang : '') + (page ? '\nСтраница: ' + page : '') + '\nПолучено: ' + stamp() +
+  var topic = b.topic === 'extended' ? 'extended' : '';
+  var meta = (topic ? 'Заявка на расширенный отчёт, язык: ' + contactLang(lang) + '\n' : '') + 'Имя: ' + name + '\nE-mail: ' + email + (lang ? '\nЯзык: ' + lang : '') + (page ? '\nСтраница: ' + page : '') + '\nПолучено: ' + stamp() +
     (blobs.length ? '\nВложения: ' + blobs.map(function (x) { return x.getName(); }).join(', ') : '');
-  var subject = 'Сообщение с сайта ' + SITE_URL.replace(/^https?:\/\//, '') + ': ' + name;
+  var subject = contactSubject(name, lang, topic);
   var html = '<div style="font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.5;color:#1B2027">' +
     '<p style="margin:0 0 18px">' + esc(msg).replace(/\n/g, '<br>') + '</p>' +
     '<p style="margin:0;padding-top:12px;border-top:1px solid #D9DDE3;font-size:13px;color:#5B6470">' + esc(meta).replace(/\n/g, '<br>') + '</p></div>';
@@ -525,9 +538,13 @@ function pct(net) { return Math.round((net + 24) / 48 * 100); }
 function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
 function fmt(s, vars) { return String(s).replace(/\{(\w+)\}/g, function (_, n) { return vars[n] != null ? vars[n] : '{' + n + '}'; }); }
 
+/** Адрес языковой версии: английская живёт в корне сайта, остальные — в /<язык>/ (как pathOf в build.js). */
+function langHome(lang) { return SITE_URL + '/' + (lang === 'en' ? '' : lang + '/'); }
+
 /**
  * Блок о расширенном отчёте в письме с результатом — тот же, что в PDF краткого отчёта (reportAdHtml), без листов образца: картинки в письмах
  * почтовые программы по умолчанию не показывают, а листы есть во вложенном PDF. Данные — DATA[язык].reportAd; без них возвращает пустые строки.
+ * A.soon (языки, где отчёт ещё не написан) — строка о заявке перед плашкой с ценой.
  * Ссылка несёт метку src=mail и код результата: письмо адресовано самому участнику, на странице отчёта его e-mail подставится в форму покупки.
  * Возвращает {html, text}.
  */
@@ -535,14 +552,14 @@ function mailAd(L, r, lang, code, sc) {
   var A = L.reportAd;
   if (!A) return { html: '', text: '' };
   var low = KEYS.slice().sort(function (x, y) { return sc.net[y] - sc.net[x]; })[3];
-  var page = SITE_URL + '/' + lang + '/extended-report/', href = page + '?src=mail#r=' + code;
+  var page = langHome(lang) + 'extended-report/', href = page + '?src=mail#r=' + code, rtl = L.dir === 'rtl';
   var hook = fmt(A.hook, { k: low, name: L.keys[low], pct: pct(sc.net[low]) });
   var stripe = '<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>' + KEYS.map(function (k) { return '<td width="25%" bgcolor="' + COLORS[k] + '" style="height:4px;font-size:1px;line-height:1px">&nbsp;</td>'; }).join('') + '</tr></table>';
   var facts = (A.facts || []).map(function (f, n) {
-    return '<td width="25%" valign="top" style="padding:0 4px 0 0"><span style="font-size:24px;font-weight:bold;line-height:1.1;color:' + COLORS[KEYS[n % 4]] + '">' + esc(f[0]) + '</span><br><span style="font-size:12px;line-height:1.3;color:#5B6470">' + esc(f[1]) + '</span></td>';
+    return '<td width="25%" valign="top" style="padding:' + (rtl ? '0 0 0 4px' : '0 4px 0 0') + '"><span style="font-size:24px;font-weight:bold;line-height:1.1;color:' + COLORS[KEYS[n % 4]] + '">' + esc(f[0]) + '</span><br><span style="font-size:12px;line-height:1.3;color:#5B6470">' + esc(f[1]) + '</span></td>';
   }).join('');
   var items = A.list.map(function (t) {
-    return '<tr><td valign="top" style="padding:4px 8px 4px 0;font-weight:bold;color:#3A9A69">✓</td><td valign="top" style="padding:4px 0">' + esc(t) + '</td></tr>';
+    return '<tr><td valign="top" style="padding:' + (rtl ? '4px 0 4px 8px' : '4px 8px 4px 0') + ';font-weight:bold;color:#3A9A69">✓</td><td valign="top" style="padding:4px 0">' + esc(t) + '</td></tr>';
   }).join('');
   var html = '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 20px"><tr><td>' + stripe +
     '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #D9DDE3;border-top:0"><tr><td style="padding:16px 16px 18px;font-size:15px;line-height:1.5">' +
@@ -550,8 +567,9 @@ function mailAd(L, r, lang, code, sc) {
     '<p style="margin:0 0 8px;font-size:20px;font-weight:bold;line-height:1.25">' + esc(A.title) + '</p>' +
     '<p style="margin:0 0 12px">' + esc(A.lead) + '</p>' +
     (facts ? '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 12px"><tr>' + facts + '</tr></table>' : '') +
-    '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 10px"><tr><td bgcolor="#F3F4F6" style="padding:8px 12px;border-left:3px solid ' + COLORS[low] + '">' + esc(hook) + '</td></tr></table>' +
+    '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 10px"><tr><td bgcolor="#F3F4F6" style="padding:8px 12px;border-' + (rtl ? 'right' : 'left') + ':3px solid ' + COLORS[low] + '">' + esc(hook) + '</td></tr></table>' +
     '<table role="presentation" cellpadding="0" cellspacing="0" style="margin:0 0 14px">' + items + '</table>' +
+    (A.soon ? '<p style="margin:0 0 14px;font-size:14px;line-height:1.45;color:#5B6470">' + esc(A.soon) + '</p>' : '') +
     '<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr><td bgcolor="#1B2027" style="padding:14px 16px;border-radius:8px">' +
       '<p style="margin:0;font-size:19px;font-weight:bold;color:#ffffff">' + esc(A.price) + '</p>' +
       '<p style="margin:2px 0 12px;font-size:12px;color:#C9CED6">' + esc(A.free) + '</p>' +
@@ -559,7 +577,7 @@ function mailAd(L, r, lang, code, sc) {
     '</td></tr></table>' +
     '</td></tr></table></td></tr></table>';
   var text = '\n\n' + A.eyebrow + '\n' + A.title + '\n\n' + A.lead + '\n' + (A.facts || []).map(function (f) { return f[0] + ' ' + f[1]; }).join(' · ') + '\n\n' + hook + '\n' +
-    A.list.map(function (t) { return '— ' + t; }).join('\n') + '\n\n' + A.price + '. ' + A.free + '\n' + A.button + ':\n' + href;
+    A.list.map(function (t) { return '— ' + t; }).join('\n') + '\n\n' + (A.soon ? A.soon + '\n\n' : '') + A.price + '. ' + A.free + '\n' + A.button + ':\n' + href;
   return { html: html, text: text };
 }
 
@@ -617,7 +635,10 @@ function reportPdf(r, lang) {
 
 /**
  * Блок о расширенном отчёте в PDF краткого отчёта: зацепка — самая низкая шкала участника (как на экране результата и в самом отчёте:
- * последняя по итогу, при равенстве — более поздняя в порядке D, I, S, C), четыре листа образца, цена и ссылка на страницу отчёта.
+ * последняя по итогу, при равенстве — более поздняя в порядке D, I, S, C), листы образца, цена и ссылка на страницу отчёта.
+ * Листы образца (A.images) есть только в языках, где расширенный отчёт написан. В остальных на их месте, в правой колонке, стоит A.soon —
+ * строка о том, что отчёт на этом языке пока нельзя заказать и можно оставить заявку; остальная раскладка та же.
+ * Форма блока с листами утверждена заказчиком 2026-10-11: её не менять.
  * Тексты и картинки — DATA[язык].reportAd (сборка кладёт их только там, где отчёт продаётся, и только при включённом ключе reportAd);
  * ссылка несёт код результата без e-mail участника;
  * без них возвращает пустую строку. Блок не рвётся между листами: если не помещается под текстом, уходит на следующий лист целиком.
@@ -629,18 +650,18 @@ function reportAdHtml(L, r, lang, sc, start, end) {
   // В ссылке — код результата без адреса почты: PDF пересылают другим (в нём рамка «Узнайте свой профиль»), а в исходном коде зашит e-mail участника.
   // Имя и ответы в PDF и так видны. Страница отчёта по такому коду знает результат и на устройстве, где тест не проходили.
   var safe = VERSION + '.' + Utilities.base64EncodeWebSafe(JSON.stringify({ n: r.name, e: '', p: '', t: r.t, m: r.m.join(''), l: r.l.join('') })).replace(/=+$/, '');
-  var page = SITE_URL + '/' + lang + '/extended-report/', href = page + '?src=pdf#r=' + safe;
-  var dir = L.dir || 'ltr';
+  var page = langHome(lang) + 'extended-report/', href = page + '?src=pdf#r=' + safe, dir = L.dir || 'ltr';
   var stripe = '<table width="100%" cellpadding="0" cellspacing="0"><tr>' + KEYS.map(function (k) { return '<td width="25%" bgcolor="' + COLORS[k] + '" style="height:4px;font-size:1px;line-height:1px">&nbsp;</td>'; }).join('') + '</tr></table>';
   var items = A.list.map(function (t) {
-    return '<tr><td valign="top" style="padding:6px 9px 6px 0;font-size:12pt;font-weight:bold;color:#3A9A69">✓</td><td valign="top" style="padding:6px 0;font-size:12pt;line-height:1.35">' + esc(t) + '</td></tr>';
+    return '<tr><td valign="top" style="padding:' + (dir === 'rtl' ? '6px 0 6px 9px' : '6px 9px 6px 0') + ';font-size:12pt;font-weight:bold;color:#3A9A69">✓</td><td valign="top" style="padding:6px 0;font-size:12pt;line-height:1.35">' + esc(t) + '</td></tr>';
   }).join('');
   // объём отчёта: четыре числа цветами шкал
   var facts = (A.facts || []).map(function (f, n) {
     return '<td width="25%" valign="top" style="padding:0 4px"><span style="font-size:20pt;font-weight:bold;line-height:1.1;color:' + COLORS[KEYS[n % 4]] + '">' + esc(f[0]) + '</span><br><span style="font-size:9pt;color:#5B6470">' + esc(f[1]) + '</span></td>';
   }).join('');
-  var thumbs = A.images.map(function (src, n) {
-    return '<td width="' + Math.floor(100 / A.images.length) + '%" valign="top" align="center" style="padding:0 4px"><img src="' + src + '" alt="" style="display:block;width:100%;border:1px solid #C9CED6">' +
+  var images = A.images || [];
+  var thumbs = images.map(function (src, n) {
+    return '<td width="' + Math.floor(100 / images.length) + '%" valign="top" align="center" style="padding:0 4px"><img src="' + src + '" alt="" style="display:block;width:100%;border:1px solid #C9CED6">' +
       '<p style="margin:4px 0 0;font-size:7.5pt;line-height:1.25;color:#5B6470">' + esc(A.captions[n] || '') + '</p></td>';
   }).join('');
   return '<div style="margin-top:14px;break-inside:avoid;page-break-inside:avoid">' + stripe +
@@ -650,11 +671,12 @@ function reportAdHtml(L, r, lang, sc, start, end) {
     '<p style="margin:8px 0 0">' + esc(A.lead).replace(/«[^»]*»/g, function (m) { return m.replace(/ /g, '&nbsp;'); }) + '</p>' +
     (facts ? '<table width="100%" cellpadding="0" cellspacing="0" dir="' + dir + '" style="margin-top:8px"><tr>' + facts + '</tr></table>' : '') +
     '<p style="margin:9px 0 0;padding:6px 10px;background:#F3F4F6;border-' + start + ':3px solid ' + COLORS[low] + '">' + esc(fmt(A.hook, { k: low, name: L.keys[low], pct: pct(sc.net[low]) })) + '</p>' +
-    // слева — что внутри, справа — листы образца
+    // слева — что внутри, справа — листы образца (где их нет — строка о заявке)
     '<table width="100%" cellpadding="0" cellspacing="0" dir="' + dir + '" style="margin-top:10px"><tr>' +
       '<td width="56%" valign="middle" style="padding-' + end + ':14px"><table cellpadding="0" cellspacing="0" dir="' + dir + '">' + items + '</table></td>' +
-      '<td width="44%" valign="top"><table width="100%" cellpadding="0" cellspacing="0" dir="' + dir + '"><tr>' + thumbs + '</tr></table>' +
-        '<p style="margin:4px 0 0;font-size:7.5pt;color:#5B6470;text-align:center">' + esc(A.sample) + '</p></td>' +
+      (images.length ? '<td width="44%" valign="top"><table width="100%" cellpadding="0" cellspacing="0" dir="' + dir + '"><tr>' + thumbs + '</tr></table>' +
+        '<p style="margin:4px 0 0;font-size:7.5pt;color:#5B6470;text-align:center">' + esc(A.sample) + '</p></td>'
+      : '<td width="44%" valign="middle"><p style="margin:0;padding:10px 12px;border:1px dashed #C9CED6;font-size:10pt;line-height:1.4;color:#5B6470">' + esc(A.soon || '') + '</p></td>') +
     '</tr></table>' +
     '<table width="100%" cellpadding="0" cellspacing="0" dir="' + dir + '" style="margin-top:9px"><tr><td bgcolor="#1B2027" style="padding:10px 16px;color:#ffffff">' +
       '<table width="100%" cellpadding="0" cellspacing="0" dir="' + dir + '"><tr>' +
@@ -668,7 +690,7 @@ function reportAdHtml(L, r, lang, sc, start, end) {
 function reportHtml(r, lang) {
   var L = DATA[lang], R = L.report, sc = score(r), c = classify(sc), prof = L.profiles[c.key], st = L.styles[c.p];
   var rtl = L.dir === 'rtl', start = rtl ? 'right' : 'left', end = rtl ? 'left' : 'right';
-  var home = SITE_URL + '/' + (lang === 'en' ? '' : lang + '/');
+  var home = langHome(lang);
   var when = new Date(r.t); if (isNaN(when.getTime())) when = new Date();
   var meta = [r.name, Utilities.formatDate(when, Session.getScriptTimeZone(), 'dd.MM.yyyy')].filter(Boolean).join(' · ');
   var styleName = c.s ? L.keys[c.p] + ' + ' + L.keys[c.s] : L.keys[c.p];

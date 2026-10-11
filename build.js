@@ -53,13 +53,19 @@ const servicePrice = L => { const v = L.content.services ? servicePrices[L.conte
   return v ? new Intl.NumberFormat(L.dateLocale, Number.isInteger(v) ? {} : { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(v) : ''; };
 const hasServices = L => !!(servicePrice(L) && L.ui['nav.services']);
 const hasOffer = L => !!(hasServices(L) && L.content.offer && L.content.refund && L.ui['nav.offer']);
-// Расширенный отчёт: страница /extended-report/ и блок на экране результата — только в языках, где есть content.product, оферта
-// и картинки листов образца src/assets/extended/<язык>-i-<n>.webp (с уменьшенной копией -s). Сам отчёт в репозиторий не попадает.
+// Расширенный отчёт: страница /extended-report/ и блок на экране результата — в языках, где есть content.product и оферта.
+// Листы образца — картинки src/assets/extended/<язык>-i-<n>.webp (с уменьшенной копией -s) и подписи к ним в локали (sampleAlt, sampleCaption,
+// sampleTitle, sampleNote, block.sample): они есть только там, где расширенный отчёт на этом языке написан (сейчас — русский). В остальных
+// языках страница, блок на экране результата, блок в PDF и в письме строятся без листов; чтобы листы появились, достаточно положить
+// картинки и добавить эти ключи в локаль. Сам отчёт в репозиторий не попадает.
 const sampleCount = L => { let n = 0; while (fs.existsSync(path.join(SRC, 'assets', 'extended', `${L.lang}-i-${n + 1}.webp`)) && fs.existsSync(path.join(SRC, 'assets', 'extended', `${L.lang}-i-${n + 1}-s.webp`))) n++; return n; };
-const hasProduct = L => !!(hasOffer(L) && L.content.product && sampleCount(L) >= L.content.product.sampleAlt.length);
+const hasProduct = L => !!(hasOffer(L) && L.content.product);
+const hasSamples = L => { const P = L.content.product; return !!(hasProduct(L) && P.sampleTitle && P.sampleNote && P.block.sample && Array.isArray(P.sampleAlt) && Array.isArray(P.sampleCaption) && P.sampleAlt.length && sampleCount(L) >= P.sampleAlt.length); };
 const withPrice = (L, obj) => JSON.parse(JSON.stringify(obj).replace(/\{price\}/g, servicePrice(L)));
-// Оператор и дата редакции в политике и согласии: в языках с офертой — исполнитель из оферты (ИП с ИНН), в остальных — строка реквизитов из подвала
-const pdOwner = L => (hasOffer(L) ? L.content.offer.seller : L.ui.legal).replace('{inn}', legalInn);
+// Оператор и дата редакции в политике и согласии: в языке с полным текстом политики (policy.legal — русская версия) — исполнитель из оферты
+// (ИП с ИНН), в остальных — строка реквизитов из подвала. От наличия оферты не зависит: иначе её появление в языке меняло бы текст согласия,
+// на который люди уже согласились (после правки текста согласия нужна новая pdVersion)
+const pdOwner = L => (hasOffer(L) && L.content.policy && L.content.policy.legal ? L.content.offer.seller : L.ui.legal).replace('{inn}', legalInn);
 const pdDate = L => new Intl.DateTimeFormat(L.dateLocale, { dateStyle: 'long', timeZone: 'UTC' }).format(new Date(pdVersion + 'T00:00:00Z')).replace(/\s*г\.$/, ' года');   // «11 октября 2026 года»: после даты в тексте стоит точка
 // Галочка согласия на обработку данных: подпись со ссылками на страницу согласия и на «Конфиденциальность» (base — путь к корню языка)
 const pdLabelHtml = (L, base) => escFull(L.ui['pd.consent']).replace('{consent}', `<a href="${base}consent/" target="_blank" rel="noopener">${escFull(L.ui['pd.consentLink'])}</a>`)
@@ -265,7 +271,7 @@ const homeLocale = L => Object.assign({}, L, {
   profiles: Object.fromEntries(Object.entries(L.profiles).map(([k, p]) => [k, { name: p.name, summary: p.summary }])),
   // product — тексты блока «Расширенный отчёт» на экране результата (цена уже подставлена); страница отчёта в скрипт не идёт
   content: Object.assign({ home: L.content.home, colors: { colors: Object.fromEntries(KEYS.map(k => [k, { name: L.content.colors.colors[k].name }])) } },
-    hasProduct(L) ? { product: withPrice(L, L.content.product.block) } : {})
+    hasProduct(L) ? { product: Object.assign(withPrice(L, L.content.product.block), hasSamples(L) ? {} : { sample: '' }) } : {})
 });
 // Организация-издатель: одна карточка на весь сайт, с адресом для связи
 const orgLd = () => ({ '@context': 'https://schema.org', '@type': 'Organization', name: 'DISC Test', url: siteUrl + '/', logo: `${siteUrl}/icon-512.png`, email: feedbackEmail || undefined });
@@ -646,32 +652,33 @@ for (const L of locales) {
       const pay = payEndpoint && C.product.pay ? pr.pay : null;
       const buyBox = id => `<section class="service xbuy"${pay && id ? ` id="${id}"` : ''}><div><h2>${escFull(pr.buy.testTitle)}</h2><p>${escFull(pr.buy.testText)}</p></div><p class="price"><small>${escFull(pr.priceLabel)}</small>${escFull(pr.price)}</p>` +
         `<a class="btn" href="../" data-goal="ext-page-test">${escFull(pr.buy.testButton)}</a></section>`;
-      const sample = pr.sampleAlt.map((alt, i) => `<figure><a href="${root}extended/${L.lang}-i-${i + 1}.webp" target="_blank" rel="noopener" data-goal="ext-page-sample">` +
+      const samples = hasSamples(L);
+      const sample = !samples ? '' : pr.sampleAlt.map((alt, i) => `<figure><a href="${root}extended/${L.lang}-i-${i + 1}.webp" target="_blank" rel="noopener" data-goal="ext-page-sample">` +
         `<img src="${root}extended/${L.lang}-i-${i + 1}-s.webp" width="440" height="623" alt="${escFull(alt)}" loading="lazy" decoding="async"></a><figcaption>${escFull(pr.sampleCaption[i])}</figcaption></figure>`).join('');
       const compare = `<div class="tablewrap"><table class="cmp"><thead><tr>${pr.compareHead.map(h => `<th scope="col">${escFull(h)}</th>`).join('')}</tr></thead><tbody>` +
         pr.compare.map(r => `<tr><th scope="row">${escFull(r[0])}</th><td>${escFull(r[1])}</td><td>${escFull(r[2])}</td></tr>`).join('') + `</tbody></table></div>`;
       writeContentPage(L, 'extended-report/', { navKey: 'nav.services', langs: locales.filter(hasProduct), title: pr.title, description: pr.description, crumbs: [svcCrumb, { name: pr.h1 }],
         content: fillHtml(`<div class="eyebrow">${escFull(t('nav.services'))}</div><h1>${escFull(pr.h1)}</h1><p class="lead">${escFull(pr.lead)}</p>` +
           `<ul class="xfacts">${pr.facts.map(x => `<li>${escFull(x)}</li>`).join('')}</ul>` + buyBox('buy') +
-          `<h2 id="sample">${escFull(pr.sampleTitle)}</h2><p>${escFull(pr.sampleNote)}</p><div class="xsample">${sample}</div>` +
+          (samples ? `<h2 id="sample">${escFull(pr.sampleTitle)}</h2><p>${escFull(pr.sampleNote)}</p><div class="xsample">${sample}</div>` : '') +
           `<h2>${escFull(pr.forTitle)}</h2>` + listHtml('ul', pr.for) +
           `<h2>${escFull(pr.insideTitle)}</h2><p>${escFull(pr.insideLead)}</p><ol>${pr.inside.map(x => `<li>${rich(x)}</li>`).join('')}</ol>` +
           `<h2>${escFull(pr.compareTitle)}</h2>` + compare + `<p class="small muted">${escFull(pr.compareNote)}</p>` +
           `<h2>${escFull(pr.howTitle)}</h2>` + listHtml('ol', pay ? pay.how : pr.how) + buyBox() +
           `<h2>${escFull(pr.faqTitle)}</h2>` + pr.faq.map(it => `<h3 class="xq">${escFull(it.q)}</h3><p>${escFull(it.a)}</p>`).join('') + `<p class="small muted">${escFull(pr.docs)}</p>`) +
           `<p class="seealso">${docLink('services/', sv)} · ${docLink('offer/', of)} · ${docLink('refund/', rf)}</p>`,
-        files: [1, 2, 3, 4].map(i => `src/assets/extended/${L.lang}-i-${i}.webp`),
+        files: samples ? pr.sampleAlt.map((_, i) => `src/assets/extended/${L.lang}-i-${i + 1}.webp`) : [],
         pageJs: resultFromUrlJs + (pay ? payJs + `\ninitPayBuy({T: ${JSON.stringify(Object.assign({ noteHtml: fillHtml(escFull(pay.note)), errorHtml: fillHtml(escFull(pay.error)) },
           Object.fromEntries(['title', 'text', 'emailLabel', 'button', 'badEmail', 'wait'].map(k => [k, pay[k]])))).replace(/</g, '\\u003c')}, endpoint: ${jsStr(payEndpoint)}, L: L, esc: esc, lsGet: lsGet, lsSet: lsSet});` : `(function(){
   var r = resultFromUrl() || lsGet('disc.last'); if(!r || !r.t || !r.m || !r.l || !r.m.join) return;
   var B = ${JSON.stringify(pr.buy).replace(/</g, '\\u003c')}, d = new Date(r.t), date = isNaN(d) ? '' : d.toLocaleDateString(L.dateLocale, {day:'numeric', month:'long', year:'numeric'});
   function b64e(s){ return btoa(unescape(encodeURIComponent(s))).replace(/\\+/g,'-').replace(/\\//g,'_').replace(/=+$/,''); }
-  var link = new URL('../', location.href).href + '#r=DISC1.' + b64e(JSON.stringify({n:r.name||'', e:r.email||'', p:r.pos||'', t:r.t, m:r.m.join(''), l:r.l.join('')}));
+  var code = 'DISC1.' + b64e(JSON.stringify({n:r.name||'', e:r.email||'', p:r.pos||'', t:r.t, m:r.m.join(''), l:r.l.join('')})), link = new URL('../', location.href).href + '#r=' + code;
   document.querySelectorAll('.xbuy').forEach(function(box){
     box.querySelector('h2').textContent = B.orderTitle.replace('{date}', date);
     box.querySelector('div p').textContent = B.orderText;
     var a = box.querySelector('a.btn'); a.textContent = B.orderButton; a.href = '../contact/'; a.setAttribute('data-goal', 'ext-page-order');
-    a.addEventListener('click', function(){ try{ sessionStorage.setItem('disc.order', JSON.stringify({name:r.name||'', email:r.email||'', message:B.orderMsg.replace('{link}', link)})); }catch(e){} });
+    a.addEventListener('click', function(){ try{ sessionStorage.setItem('disc.order', JSON.stringify({topic:'extended', code:code, name:r.name||'', email:r.email||'', message:B.orderMsg.replace('{link}', link)})); }catch(e){} });
   });
 })();`) });
       // «Спасибо» и «Оплата не прошла»: на них банк возвращает покупателя после оплаты и после отказа (?order=<номер заказа>).
@@ -697,11 +704,13 @@ for (const L of locales) {
       }
     }
     if (docs) {
+    // note — оговорка в переводах оферты и условий возврата: при расхождении действует русский текст; {original} — ссылка на него
+    const docNote = (d, sub2) => d.note ? `<p class="notice">${escFull(d.note).replace(/\{original\}/g, () => `<a href="${'../' + (pathOf(L.lang) ? '../' : '')}ru/${sub2}" hreflang="ru" dir="ltr">${escFull(siteUrl.replace(/^https?:\/\//, ''))}/ru/${sub2}</a>`)}</p>` : '';
     writeContentPage(L, 'offer/', { navKey: 'nav.services', langs: own, title: of.title, description: of.description, crumbs: [svcCrumb, { name: of.h1 }],
-      content: fillHtml(`<div class="eyebrow">${escFull(t('nav.services'))}</div><h1>${escFull(of.h1)}</h1><p class="muted">${escFull(of.edition)}</p><p>${escFull(of.lead)}</p>` + sectionsHtml(of.sections)) +
+      content: fillHtml(`<div class="eyebrow">${escFull(t('nav.services'))}</div><h1>${escFull(of.h1)}</h1><p class="muted">${escFull(of.edition)}</p>${docNote(of, 'offer/')}<p>${escFull(of.lead)}</p>` + sectionsHtml(of.sections)) +
         `<p class="seealso">${docLink('refund/', rf)} · ${docLink('services/', sv)}</p>` });
     writeContentPage(L, 'refund/', { navKey: 'nav.services', langs: own, title: rf.title, description: rf.description, crumbs: [svcCrumb, { name: rf.h1 }],
-      content: fillHtml(`<div class="eyebrow">${escFull(t('nav.services'))}</div><h1>${escFull(rf.h1)}</h1><p class="lead">${escFull(rf.lead)}</p>` + sectionsHtml(rf.sections)) +
+      content: fillHtml(`<div class="eyebrow">${escFull(t('nav.services'))}</div><h1>${escFull(rf.h1)}</h1><p class="lead">${escFull(rf.lead)}</p>${docNote(rf, 'refund/')}` + sectionsHtml(rf.sections)) +
         `<p class="seealso">${docLink('offer/', of)} · ${docLink('services/', sv)}</p>` });
     }
   }
@@ -825,8 +834,9 @@ for (const L of locales) {
   // оплата расширенного отчёта на своём сервере: название услуги для платёжной страницы и чека, письмо-напоминание о неоконченной оплате
   if (L.content.product && L.content.product.pay && L.content.product.pay.remind) mailData[L.lang].pay = { name: L.content.services.name, remind: L.content.product.pay.remind };
 }
-// Блок о расширенном отчёте в PDF краткого отчёта (письмо с результатом): только в языках, где есть страница отчёта, её тексты `content.product.pdf`
-// и картинки листов образца. Листы вшиваются в данные ядра: при сборке PDF сеть закрыта. Включается ключом "reportAd": true в site.config.json;
+// Блок о расширенном отчёте в PDF краткого отчёта и в теле письма с результатом: в языках, где есть страница отчёта и тексты `content.product.pdf`.
+// Листы образца — только там, где есть и их картинки для PDF, и подписи (hasSamples): они вшиваются в данные ядра, при сборке PDF сеть закрыта.
+// В остальных языках блок без листов: на их месте строка о заявке (content.product.block.soon). Включается ключом "reportAd": true в site.config.json;
 // для образца без включения — переменной REPORT_AD=1 (site.config.json не меняется).
 if (cfg.reportAd === true || process.env.REPORT_AD === '1') {
   for (const L of locales) {
@@ -834,13 +844,15 @@ if (cfg.reportAd === true || process.env.REPORT_AD === '1') {
     // -p.jpg — листы образца для PDF: JPEG шириной 367 px (sips -s format jpeg -s formatOptions 62 -Z 520 из <язык>-i-<n>.webp); в docs/ не копируются.
     // Именно JPEG: его Chrome кладёт в PDF как есть, а WebP разворачивает в несжатую картинку — файл выходил втрое тяжелее
     // какие листы образца показать в блоке — content.product.pdf.sheets (номера листов образца со страницы отчёта)
-    const sheets = P && P.pdf && Array.isArray(P.pdf.sheets) ? P.pdf.sheets : [1, 2, 3, 4];
+    if (!hasProduct(L) || !P.pdf || !P.block) continue;
+    const sheets = hasSamples(L) ? (Array.isArray(P.pdf.sheets) ? P.pdf.sheets : [1, 2, 3, 4]) : [];
     const files = sheets.map(n => path.join(dir, L.lang + '-i-' + n + '-p.jpg'));
-    if (!P || !P.pdf || !P.block || !servicePrices[L.content.services.currency] || !files.every(f => fs.existsSync(f))) continue;
-    const price = String(servicePrices[L.content.services.currency]);
-    mailData[L.lang].reportAd = { eyebrow: P.h1, title: P.block.title, lead: P.pdf.lead, facts: P.pdf.facts, hook: P.block.hook, list: P.pdf.list || P.block.list, sample: P.block.sample, captions: sheets.map(n => P.sampleCaption[n - 1]),
-      price: P.block.price.replace('{price}', price), button: P.block.button, free: P.block.free, where: P.pdf.where,
-      images: files.map(f => 'data:image/jpeg;base64,' + fs.readFileSync(f).toString('base64')) };
+    const withSheets = sheets.length > 0 && files.every(f => fs.existsSync(f));
+    if (!withSheets && !P.block.soon) continue;   // ни листов, ни строки о заявке — блок не строим
+    mailData[L.lang].reportAd = Object.assign({ eyebrow: P.h1, title: P.block.title, lead: P.pdf.lead, facts: P.pdf.facts, hook: P.block.hook, list: P.pdf.list || P.block.list },
+      withSheets ? { sample: P.block.sample, captions: sheets.map(n => P.sampleCaption[n - 1]) } : {},
+      { price: P.block.price.replace('{price}', servicePrice(L)), button: P.block.button, free: P.block.free, where: P.pdf.where },
+      withSheets ? { images: files.map(f => 'data:image/jpeg;base64,' + fs.readFileSync(f).toString('base64')) } : { soon: P.block.soon });
   }
 }
 const gsTpl = fs.readFileSync(path.join(SRC, 'apps-script.template.js'), 'utf8');

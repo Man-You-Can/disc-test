@@ -132,7 +132,7 @@ html[lang=ar] body,html[lang=hi] body{font-size:17px;line-height:1.65}
   .sitenav::-webkit-scrollbar{display:none}
   .sitenav a{white-space:nowrap;flex:none}
 }
-.crumbs{font-size:13px;color:var(--muted);margin:0 0 16px}
+.crumbs{font-size:13px;color:var(--muted);margin:0 0 16px;overflow-wrap:anywhere}
 .crumbs a{color:var(--muted);text-decoration:none}
 .crumbs a:hover{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
 .crumbs span{margin:0 6px}
@@ -186,6 +186,7 @@ html[lang=ar] body,html[lang=hi] body{font-size:17px;line-height:1.65}
 .xact{margin:16px 0 10px;gap:10px 16px}
 .xprice{font-weight:600}
 .xoffer .xfree{margin:0;font-size:13px;color:var(--muted)}
+.xoffer .xsoon{margin:16px 0 0;padding:10px 14px;border:1px dashed var(--line-strong);border-radius:10px;font-size:14px;color:var(--muted)}
 .content .xfacts{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 22px;padding:0;list-style:none}
 .content .xfacts li{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:14px;margin:0}
 .xsample{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:14px 0 8px}
@@ -242,7 +243,7 @@ html[lang|=zh] [lang]:not([lang|=zh]):not([lang|=ja]),html[lang=ja] [lang]:not([
 .progress i{display:block;background:var(--line);border-radius:2px;transition:background .2s}
 .progress i.done{background:var(--ink)}
 .progress i.cur{background:var(--ink);opacity:.35}
-h1{font-family:var(--font-head);font-weight:500;font-size:clamp(26px,4.2vw,36px);line-height:1.2;letter-spacing:-.01em;margin:0 0 14px;text-wrap:balance}
+h1{font-family:var(--font-head);font-weight:500;font-size:clamp(26px,4.2vw,36px);line-height:1.2;letter-spacing:-.01em;margin:0 0 14px;text-wrap:balance;overflow-wrap:anywhere;hyphens:auto}   /* длинное слово в заголовке (нем. «Geschäftsbedingungen») переносится, а не раздвигает страницу на телефоне */
 h2{font-family:var(--font-head);font-weight:500;font-size:17px;line-height:1.35;margin:0 0 12px;text-wrap:balance}
 h3{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin:0 0 8px}
 html[lang=ar] h3,html[lang=hi] h3,html[lang|=zh] h3,html[lang=ja] h3,html[lang=ar] .eyebrow,html[lang=hi] .eyebrow,html[lang|=zh] .eyebrow,html[lang=ja] .eyebrow{letter-spacing:.04em;font-size:13px}
@@ -499,7 +500,7 @@ body.has-consent{padding-bottom:160px}
   <nav class="crumbs"><a href="../../ja/">ホーム</a><span>›</span><a href="../privacy/">プライバシー</a><span>›</span><span aria-current="page">個人データの取り扱いに関する同意</span></nav>
   <main class="content"><div class="eyebrow">DISC</div><h1>個人データの取り扱いに関する同意</h1><p class="lead">私は、disc-test.orgのフォームで個人データの取り扱いに関する同意のチェックを入れ、そのフォームを送信することにより、自由な意思に基づき、自らの利益のために、以下の条件で私の個人データを取り扱うことについて運営者に同意します。運営者：Manukyan Armen · 納税者番号（INN）771583655604。</p><h2>取り扱いの目的とデータの項目</h2><p>「結果をメールで受け取る」フォーム：氏名、メールアドレス、サイトの言語版、診断日、回答、DISC診断の結果。目的は、診断結果のメールを私に送信すること、および再送信や私からの問い合わせへの回答のために結果を保管することです。</p><p>お問い合わせフォーム：氏名、メールアドレス、メッセージの本文、添付ファイル。目的は、私の問い合わせを確認し、回答することです。</p><h2>データに対して行う操作</h2><p>収集、記録、整理、蓄積、保管、訂正、抽出、利用、次の項に記載する者への提供、利用停止、削除、破棄。これらは自動化された手段を用いて行われます。</p><h2>取り扱いの委託先</h2><p>運営者は、サイトが稼働し結果データベースが置かれているサーバーのホスティング事業者と、メールの送受信に用いるメールサービスに取り扱いを委託します。これらの事業者は、運営者の委託に基づいて業務を行います。</p><h2>同意の有効期間</h2><p>この同意は、「結果をメールで受け取る」フォームについては送信日から3年間、お問い合わせフォームからの問い合わせについては返信後1年間、または撤回されるまで有効です。</p><h2>同意の撤回方法</h2><p>私は、<a href="mailto:info@disc-test.org">info@disc-test.org</a>宛のメールまたは<a href="../contact/">お問い合わせ</a>フォームからの連絡により、いつでも同意を撤回できます。撤回後、運営者は取り扱いを停止し、取り扱いを続ける別の法的根拠がない限り、30日以内に私のデータを削除します。</p><h2>この同意の対象外となる事項</h2><p>メールマガジンの受信に関する同意は、フォーム内の専用のチェックボックスで別途行います。それ以外の場合に運営者がデータをどのように取り扱うかは、「<a href="../privacy/">プライバシー</a>」のページに記載されています。</p><p class="small muted">2026年10月11日改定。</p></main>
   <footer class="foot">
-    <div class="row2"><span>全24問｜約10分｜正解・不正解はありません</span><span class="footlinks"><a href="../../ja/about/">このサイトについて</a> · <a href="../../ja/services/">サービス</a> · <a href="../../ja/contact/">お問い合わせ</a> · <a href="../../ja/privacy/">プライバシー</a></span></div>
+    <div class="row2"><span>全24問｜約10分｜正解・不正解はありません</span><span class="footlinks"><a href="../../ja/about/">このサイトについて</a> · <a href="../../ja/services/">サービス</a> · <a href="../../ja/offer/">有料サービス規約</a> · <a href="../../ja/contact/">お問い合わせ</a> · <a href="../../ja/privacy/">プライバシー</a></span></div>
     <nav class="materials" aria-label="DISCの資料"><span class="mlabel">DISCの資料</span><a href="../../ja/disc/">DISC理論とは</a><a href="../../ja/styles/">4つのスタイル</a><a href="../../ja/profiles/">16のタイプ</a><a href="../../ja/results/">結果の見方</a><a href="../../ja/compatibility/">スタイルの相性</a><a href="../../ja/colors/">DISCの4色</a><a href="../../ja/teams/">チームでのDISC</a><a href="../../ja/disc-vs-mbti/">DISCとMBTI</a><a href="../../ja/pdf/">診断シート（PDF）</a><a href="../../ja/faq/">よくある質問</a></nav>
     <div class="privacy">回答はブラウザ内に保存されます。メールアドレスを入力した場合は、結果がそのアドレスに送信され、サイト運営者の結果データベースに保存されます。</div>
     <div class="legal">Manukyan Armen · 納税者番号（INN）771583655604</div><div class="rights">© 2026 disc-test.org　本サイトおよびレポートの文章を、書面による許可なく複製することを禁じます。</div>

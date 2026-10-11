@@ -630,7 +630,16 @@
           "h": "Değişiklikler",
           "p": ["Son güncelleme: 9 Ekim 2026. Verilerin işlenmesindeki değişiklikler bu sayfaya yansıtılacaktır."]
         }
-      ]
+      ],
+      "purchase": {
+        "h": "Genişletilmiş profilin satın alınması",
+        "p": [
+          "Genişletilmiş DISC profilini satın alırsanız e-posta adresinizi, adınızı (belirttiyseniz), raporun dayandığı test sonucunuzu ve sipariş bilgilerini (tarih, tutar, ödeme numarası ve ödeme durumu) işleriz. Bu veriler raporu hazırlayıp size göndermek, başvurunuzu yanıtlamak ve iade işlemini yapmak için gereklidir. İşlemenin hukuki dayanağı, hizmetin ücretini {offer} uyarınca ödeyerek kurduğunuz sözleşmedir.",
+          "Ödemeyi bir banka alır; bankanın adı ödeme sayfasında gösterilir. Ödeme yönteminize ait bilgileri bankanın güvenli sayfasında girersiniz: bu bilgiler bize ulaşmaz, biz de onları saklamayız. Banka; tutarı, sipariş numarasını ve e-posta adresinizi alır: ödeme makbuzu bu adrese gönderilir.",
+          "Rapor, bizim adımıza işletilen bir sunucuda oluşturulur ve size {email} adresinden e-postayla gönderilir. Raporun bir kopyasını ve sipariş bilgilerini site sahibi saklar: bunlar raporu yeniden göndermek, başvuruları yanıtlamak, iade yapmak ve kayıt tutmak için gereklidir. Raporun ve sipariş bilgilerinin silinmesini istiyorsanız {email} adresine yazın. Yasa gereği saklanması zorunlu olan ödeme bilgileri, öngörülen süre dolduğunda silinir.",
+          "Satın alma işlemine başlayıp ödeme yapmadıysanız e-posta adresinizi, test sonucunuzu ve sipariş bilgilerini 30 gün saklar, ardından sileriz. Bu süre içinde belirttiğiniz adrese, ödeme bağlantısı içeren tek bir hatırlatma e-postası gönderilebilir. Hukuki dayanak, sözleşmenin kurulmasına yönelik attığınız adımlardır."
+        ]
+      }
     },
     "policy": {
       "title": "Kişisel verilerin işlenmesi politikası — DISC testi",
@@ -697,7 +706,16 @@
             "Son güncelleme: {date}. Verilerin işlenmesindeki değişiklikler bu sayfaya yansıtılacaktır."
           ]
         }
-      ]
+      ],
+      "purchase": {
+        "h": "Genişletilmiş profilin satın alınması",
+        "p": [
+          "Genişletilmiş DISC profilini satın alırsanız e-posta adresinizi, adınızı (belirttiyseniz), raporun dayandığı test sonucunuzu ve sipariş bilgilerini (tarih, tutar, ödeme numarası ve ödeme durumu) işleriz. Bu veriler raporu hazırlayıp size göndermek, başvurunuzu yanıtlamak ve iade işlemini yapmak için gereklidir. İşlemenin hukuki dayanağı, hizmetin ücretini {offer} uyarınca ödeyerek kurduğunuz sözleşmedir; bunun için ayrı bir onay gerekmez.",
+          "Ödemeyi bir banka alır; bankanın adı ödeme sayfasında gösterilir. Ödeme yönteminize ait bilgileri bankanın güvenli sayfasında girersiniz: bu bilgiler bize ulaşmaz, biz de onları saklamayız. Banka; tutarı, sipariş numarasını ve e-posta adresinizi alır: ödeme makbuzu bu adrese gönderilir.",
+          "Rapor sitenin sunucusunda oluşturulur ve size {email} adresinden e-postayla gönderilir. Hazır rapor sunucuda saklanmaz: gerektiğinde yeniden oluşturulur. Sipariş bilgileri ödemeden sonra beş yıl saklanır: bunlar raporu yeniden göndermek, başvuruları yanıtlamak, iade yapmak ve kayıt tutmak için gereklidir. Yasa gereği daha uzun süre saklanması zorunlu olan ödeme bilgileri, öngörülen süre dolduğunda silinir.",
+          "Satın alma işlemine başlayıp ödeme yapmadıysanız e-posta adresinizi, test sonucunuzu ve sipariş bilgilerini 30 gün saklar, ardından sileriz. Bu süre içinde belirttiğiniz adrese, ödeme bağlantısı içeren tek bir hatırlatma e-postası gönderilebilir. Hukuki dayanak, sözleşmenin kurulmasına yönelik attığınız adımlardır. Genişletilmiş profil Türkçe sipariş edilemediği sürece, iletişim formundan gönderilen haber verme talebi formdan gelen diğer mesajlar gibi işlenir; onayınıza ilişkin kayıt, genişletilmiş profil talebi olarak işaretlenir."
+        ]
+      }
     },
     "consentDoc": {
       "title": "Kişisel verilerin işlenmesine ilişkin onay — DISC testi",
@@ -755,10 +773,11 @@
       "priceLabel": "Ücret",
       "price": "{price} USD",
       "currency": "USD",
+      "docs": "Hizmet, {offer} uyarınca sunulur; para iadesinin hangi durumlarda ve nasıl yapıldığı {refund} sayfasında açıklanır.",
       "sections": [
         {
           "h": "Nasıl alınır",
-          "p": ["Genişletilmiş profil, ödeme sırasında belirtilen e-posta adresine, ödemeden sonra en geç 24 saat içinde gönderilir."]
+          "p": ["Genişletilmiş profil henüz Türkçe sunulmuyor. Rapor sayfasından haber vermemizi isteyebilirsiniz; siparişe açıldığında size e-posta göndeririz. Sipariş verildiğinde genişletilmiş profil, ödeme sırasında belirtilen e-posta adresine, ödemeden sonra en geç 24 saat içinde gönderilir."]
         },
         {
           "h": "Ücretsiz kalanlar",
@@ -769,6 +788,249 @@
           "p": ["Genişletilmiş profil veya ödeme hakkında bir sorunuz varsa bize “{contact}” formu üzerinden yazın; yanıt, belirttiğiniz e-posta adresine gelir. Site sahibinin bilgileri her sayfanın altında yer alır."]
         }
       ]
+    },
+    "offer": {
+      "title": "Satış koşulları (kamuya açık teklif) — genişletilmiş DISC profili",
+      "description": "disc-test.org sitesindeki ücretli “Genişletilmiş DISC profili” hizmetinin satış koşulları (kamuya açık teklif): ücret, ödeme, teslim, iade, içerik hakları.",
+      "h1": "Satış koşulları (kamuya açık teklif)",
+      "linkText": "satış koşulları",
+      "edition": "9 Ekim 2026 tarihli sürüm. Türkçe çevirisi 11 Ekim 2026’da yayımlanmıştır.",
+      "note": "Bu metin, teklifin {original} adresinde yayımlanan asıl metninin Türkçe çevirisidir. İki metin arasında fark olması hâlinde asıl metin esas alınır; bunun tek istisnası ücrettir: Site’nin Türkçe sürümü için geçerli ücret, 3.1. maddede belirtilen ücrettir. Genişletilmiş profil henüz Türkçe sunulmamaktadır: Türkçe olarak sipariş edilemez ve herhangi bir ödeme alınmaz.",
+      "seller": "bireysel girişimci Manukyan Armen, vergi kimlik numarası (INN) {inn}",
+      "lead": "Bu belge, ücretli “Genişletilmiş DISC profili” hizmetine ilişkin sözleşmenin aşağıdaki koşullarla kurulması için yapılmış resmî bir tekliftir (kamuya açık teklif). Teklifi yapan: {seller} (bundan böyle “Hizmet Sağlayıcı” olarak anılır). Hizmetin ücretinin ödenmesi, bu koşulların tamamen ve kayıtsız şartsız kabul edildiği anlamına gelir (teklifin kabulü).",
+      "sections": [
+        {
+          "h": "1. Tanımlar",
+          "ul": [
+            "Hizmet Sağlayıcı: {seller}.",
+            "Müşteri: Hizmet’in ücretini ödeyerek bu teklifin koşullarını kabul eden, tam fiil ehliyetine sahip gerçek kişi.",
+            "Site: {site} ve tüm sayfaları.",
+            "Test: Site’de yer alan ücretsiz DISC anketi.",
+            "Genişletilmiş Profil: Müşteri’nin çözdüğü Test’in sonucuna dayanarak Hizmet Sağlayıcı’nın elektronik ortamda hazırladığı, Müşteri’nin DISC profiline ilişkin daha ayrıntılı değerlendirme.",
+            "Hizmet: Genişletilmiş Profil’in hazırlanması ve Müşteri’ye gönderilmesi.",
+            "Banka: Müşteri’nin Hizmet’in ücretini ödemesine aracılık eden kredi kuruluşu; adı ödeme sayfasında gösterilir."
+          ]
+        },
+        {
+          "h": "2. Sözleşmenin konusu",
+          "p": [
+            "2.1. Hizmet Sağlayıcı Müşteri’ye Hizmet’i sunmayı, Müşteri de Hizmet’in ücretini bu teklifin koşullarına göre ödemeyi üstlenir.",
+            "2.2. Hizmet uzaktan sunulur: Genişletilmiş Profil, Müşteri’nin ödeme sırasında belirttiği e-posta adresine gönderilir.",
+            "2.3. Site’deki Test ve Test’in sonucu ücretsizdir ve sözleşmenin konusu değildir.",
+            "2.4. Genişletilmiş Profil bilgilendirme amaçlıdır. DISC modeline göre davranış stillerini anlatır; psikolojik veya tıbbi bir teşhis, mesleki uygunluk değerlendirmesi ya da uyulması zorunlu bir tavsiye niteliği taşımaz."
+          ]
+        },
+        {
+          "h": "3. Ücret ve ödeme",
+          "p": [
+            "3.1. Hizmet’in ücreti {price} ABD dolarıdır. Bu ücret nihaidir: Hizmet Sağlayıcı’ya başka bir ödeme yapılmaz.",
+            "3.2. Hizmet’in ücretinin tamamı, Hizmet sunulmadan önce, ödeme sayfasında gösterilen nakitsiz ödeme yöntemlerinden biriyle ödenir. Ödemeyi Banka alır.",
+            "3.3. Hizmet’in ücreti, Hizmet Sağlayıcı’nın Banka’dan ödeme onayını aldığı anda ödenmiş sayılır.",
+            "3.4. Müşteri, ödeme yöntemine ait bilgileri Banka’nın güvenli sayfasında girer. Hizmet Sağlayıcı bu bilgileri almaz ve saklamaz.",
+            "3.5. Ödemeden sonra, Müşteri’nin ödeme sırasında belirttiği e-posta adresine elektronik bir ödeme makbuzu gönderilir.",
+            "3.6. Hizmet Sağlayıcı, Hizmet’in ücretini değiştirebilir. Yeni ücret Site’de yayımlandığı andan itibaren geçerlidir ve ücreti daha önce ödenmiş siparişlere uygulanmaz."
+          ]
+        },
+        {
+          "h": "4. Hizmetin sunulması",
+          "p": [
+            "4.1. Hizmet’i almak için Müşteri Site’de Test’i çözer, e-posta adresini belirtir ve Hizmet’in ücretini öder. Müşteri ödeme adımına hangi Test sonucuyla geçtiyse Genişletilmiş Profil o sonuca göre hazırlanır.",
+            "4.2. Hizmet Sağlayıcı, Genişletilmiş Profil’i belirtilen adrese ödeme anından (madde 3.3) itibaren en geç 24 saat içinde gönderir. E-posta genellikle daha erken ulaşır; 24 saat azami süredir.",
+            "4.3. Hizmet, Genişletilmiş Profil’in gönderildiği anda sunulmuş sayılır. Müşteri bunu izleyen üç takvim günü içinde bir ayıp bildirmezse Hizmet kabul edilmiş sayılır. Hizmet’in sunulduğuna ilişkin ayrı bir tutanak düzenlenmez.",
+            "4.4. E-posta ulaşmazsa Müşteri’nin istenmeyen e-posta (spam) klasörünü kontrol etmesi ve {email} adresine yazarak Hizmet Sağlayıcı’ya başvurması gerekir: Genişletilmiş Profil yeniden gönderilir.",
+            "4.5. Belirttiği e-posta adresinin doğruluğundan Müşteri sorumludur."
+          ]
+        },
+        {
+          "h": "5. İptal ve para iadesi",
+          "p": [
+            "5.1. Müşteri, Genişletilmiş Profil kendisine gönderilmeden önce dilediği zaman Hizmet’i iptal edebilir. Bu durumda ödediği ücretin tamamı iade edilir.",
+            "5.2. Genişletilmiş Profil 4.2. maddede belirtilen süre içinde gönderilmezse Müşteri, ödediği ücretin tamamının iadesini talep edebilir.",
+            "5.3. Alınan Genişletilmiş Profil ayıplıysa (e-posta veya dosya açılmıyorsa, içinde başka birinin sonucu yer alıyorsa ya da içerik Hizmet’in Site’deki tanımına uymuyorsa) Hizmet Sağlayıcı, Müşteri’nin başvurduğu günden itibaren üç iş günü içinde ayıbı giderir. Ayıp bu süre içinde giderilmezse ödenen ücretin tamamı iade edilir.",
+            "5.4. Hizmet gereği gibi sunulduktan sonra ödenen ücret iade edilmez. Müşteri’nin, profiline ilişkin açıklamanın içeriğine katılmaması Hizmet’te ayıp sayılmaz.",
+            "5.5. Para iadesi için Müşteri {email} adresine bir talep gönderir; talepte ödeme sırasında kullandığı e-posta adresini, ödemenin tarihini ve tutarını, ayrıca iade nedenini belirtir.",
+            "5.6. Hizmet Sağlayıcı talebi üç iş günü içinde yanıtlar. İade, ödemenin yapıldığı yöntemle, talebin alındığı günden itibaren en geç on takvim günü içinde yapılır; tutarın hesaba geçme süresi Müşteri’nin bankasına bağlıdır.",
+            "5.7. Bu bölümdeki koşullar, tüketicinin korunmasına ilişkin mevzuatın Müşteri’ye tanıdığı hakları sınırlamaz."
+          ]
+        },
+        {
+          "h": "6. Materyaller üzerindeki haklar ve kopyalama yasağı",
+          "p": [
+            "6.1. Site’nin, Test’in, Test sonucu raporlarının (e-postayla gönderilen PDF raporu dâhil) ve Genişletilmiş Profil’in metinleri ile bunların tasarımı (bundan böyle “Materyaller” olarak anılır) Hizmet Sağlayıcı’ya aittir ve fikrî mülkiyet mevzuatıyla korunur.",
+            "6.2. Müşteri, Test sonucu raporunu ve Genişletilmiş Profil’i kişisel amaçlarla kullanabilir: bunları kaydedebilir, yazdırabilir, başkalarına gösterebilir ve Site’deki düğmeler aracılığıyla sonucunun bağlantısını paylaşabilir.",
+            "6.3. Hizmet Sağlayıcı’nın yazılı izni olmadan Materyaller’in tamamen veya kısmen kopyalanması, çoğaltılması ve dağıtılması; başka sitelerde, sosyal ağlarda, mesajlaşma uygulamalarında ve basılı yayınlarda yayımlanması; işlenmesi ve çevrilmesi; başka testlere, hizmetlere, kurslara ve yayınlara dâhil edilmesi; ayrıca satılması ve bir başkasının adıyla yayımlanması yasaktır.",
+            "6.4. Materyaller’den alıntı yapılmasına, yasanın öngördüğü durumlarda ve ölçüde, kaynağın {site} bağlantısıyla belirtilmesi şartıyla izin verilir.",
+            "6.5. Materyaller’in kullanımı için izin, {email} adresine yazılarak istenebilir.",
+            "6.6. Materyaller üzerindeki hakların ihlali, yasada öngörülen sorumluluğu doğurur."
+          ]
+        },
+        {
+          "h": "7. Sorumluluk",
+          "p": [
+            "7.1. Sözleşmenin ifa edilmemesinden taraflar, sözleşmeye uygulanan hukuk (madde 9.4) uyarınca sorumludur.",
+            "7.2. Müşteri, Genişletilmiş Profil’e dayanan kararlarını kendisi verir. Hizmet Sağlayıcı, Genişletilmiş Profil’in kullanılmasından belirli bir sonuç doğacağını garanti etmez.",
+            "7.3. Hizmet Sağlayıcı, kendi elinde olmayan nedenlerle (adresin yanlış belirtilmesi, Müşteri’nin e-posta hizmetindeki bir aksaklık) e-postanın ulaşmamasından sorumlu değildir; ancak Müşteri’nin başvurusu üzerine Genişletilmiş Profil’i yeniden gönderir."
+          ]
+        },
+        {
+          "h": "8. Kişisel veriler",
+          "p": [
+            "8.1. Hizmet’i sunmak için Hizmet Sağlayıcı; Müşteri’nin e-posta adresini, adını (belirtilmişse), Test sonucunu ve banka kartı verileri hariç ödeme bilgilerini işler. İşlemenin hukuki dayanağı, Müşteri’nin taraf olduğu sözleşmenin ifasıdır.",
+            "8.2. Veriler yalnızca Banka’ya (ödemenin alınması ve ödeme makbuzunun gönderilmesi için) ve Genişletilmiş Profil’in hazırlanıp gönderilmesi için gereken hizmetlere, ayrıca yasanın öngördüğü durumlarda aktarılır.",
+            "8.3. Verilerin işlenmesine ilişkin ayrıntılı bilgi “{privacy}” sayfasında yer alır."
+          ]
+        },
+        {
+          "h": "9. Teklifin geçerlilik süresi ve değiştirilmesi",
+          "p": [
+            "9.1. Sözleşme, Hizmet’in ücretinin ödendiği anda kurulmuş sayılır ve taraflar yükümlülüklerini yerine getirene kadar yürürlükte kalır.",
+            "9.2. Hizmet Sağlayıcı teklifi değiştirebilir. Yeni sürüm Site’de yayımlandığı andan itibaren geçerlidir ve ücreti daha önce ödenmiş siparişlere uygulanmaz.",
+            "9.3. Şikâyetler {email} adresine gönderilir; Hizmet Sağlayıcı bunları on takvim günü içinde yanıtlar. Uyuşmazlık çözülemezse, sözleşmeye uygulanan hukuk uyarınca mahkemede görülür.",
+            "9.4. Sözleşmeye, Hizmet Sağlayıcı’nın kayıtlı olduğu ülkenin hukuku uygulanır."
+          ]
+        },
+        {
+          "h": "10. Hizmet Sağlayıcı’nın bilgileri",
+          "ul": ["Bireysel girişimci Manukyan Armen", "Vergi kimlik numarası (INN) {inn}", "E-posta: {email}", "İnternet sitesi: {site}"]
+        }
+      ]
+    },
+    "refund": {
+      "title": "İptal ve iade koşulları — genişletilmiş DISC profili",
+      "description": "disc-test.org sitesindeki genişletilmiş DISC profili için ödediğiniz ücreti ne zaman ve nasıl geri alabilirsiniz: iade durumları, talep, süreler.",
+      "h1": "İptal ve iade koşulları",
+      "linkText": "iptal ve iade koşulları",
+      "lead": "Genişletilmiş DISC profili için ödediğiniz ücreti ne zaman ve nasıl geri alabileceğinizi burada kısaca anlatıyoruz. Bu koşullar, {offer} metninin bir parçasıdır (5. bölüm).",
+      "note": "Bu metin, iade koşullarının {original} adresinde yayımlanan asıl metninin Türkçe çevirisidir. İki metin arasında fark olması hâlinde asıl metin esas alınır. Genişletilmiş profil henüz Türkçe sunulmamaktadır: Türkçe olarak sipariş edilemez ve herhangi bir ödeme alınmaz.",
+      "sections": [
+        {
+          "h": "Ücretin tamamı ne zaman iade edilir",
+          "ul": [
+            "Genişletilmiş profil size gönderilmeden önce hizmeti iptal ettiyseniz.",
+            "Genişletilmiş profil, ödemeden sonraki 24 saat içinde gönderilmediyse.",
+            "Aldığınız genişletilmiş profil ayıplıysa (e-posta veya dosya açılmıyor, içinde başka birinin sonucu yer alıyor ya da içerik hizmetin sitedeki tanımına uymuyor) ve başvurunuzdan sonraki üç iş günü içinde ayıbı gidermediysek."
+          ]
+        },
+        {
+          "h": "Ücret ne zaman iade edilmez",
+          "p": ["Genişletilmiş profil zamanında gönderildiyse ve tanımına uygunsa hizmet sunulmuş sayılır ve ödenen ücret iade edilmez. Profilinize ilişkin açıklamanın içeriğine katılmamanız hizmette ayıp sayılmaz."]
+        },
+        {
+          "h": "İade nasıl talep edilir",
+          "p": ["{email} adresine yazın ve şunları belirtin:"],
+          "ul": ["ödeme sırasında belirttiğiniz e-posta adresi;", "ödemenin tarihi ve tutarı;", "iade nedeni."]
+        },
+        {
+          "h": "Süreler",
+          "p": ["İade talebinizi üç iş günü içinde yanıtlarız. İade, ödemeyi yaptığınız yöntemle, talebinizi aldığımız günden itibaren en geç on takvim günü içinde yapılır. Tutarın hesabınıza geçme süresi bankanıza bağlıdır."]
+        },
+        {
+          "h": "Genişletilmiş profili içeren e-posta gelmediyse",
+          "p": ["İstenmeyen e-posta (spam) klasörünüze bakın. E-posta orada da yoksa {email} adresine yazın; genişletilmiş profili yeniden göndeririz."]
+        },
+        {
+          "h": "Haklarınız",
+          "p": ["Bu koşullar, tüketicinin korunmasına ilişkin mevzuatın size tanıdığı hakları sınırlamaz."]
+        }
+      ]
+    },
+    "product": {
+      "title": "Genişletilmiş DISC raporu — sonucunuza özel 13 bölüm",
+      "description": "Test sonucunuza özel genişletilmiş DISC raporu: her ölçeğin yorumu, beş alıştırma, 30 günlük plan. E-postayla PDF, {price} USD. Türkçesi yakında.",
+      "h1": "Genişletilmiş DISC raporu",
+      "lead": "Testten sonra aldığınız özet rapor tek bir soruyu yanıtlar: “Tipim ne?” Genişletilmiş rapor ise bir sonrakini: “Peki, bununla ne yapacağım?” Rapor sizin yanıtlarınıza göre hazırlanır: puanlar sizin, profil sizin, her sayfada da sizin adınız.",
+      "facts": ["13 bölüm", "yaklaşık 28 sayfa", "üç çalışma kâğıdı", "PDF olarak e-postanıza"],
+      "more": "Genişletilmiş raporda neler var",
+      "forTitle": "Kimler için",
+      "for": [
+        "Puanlarınızı anlamak istiyorsanız: dört ölçeğin her biri ne anlatıyor, profiliniz adını nereden alıyor ve en düşük ölçeğinizle ne yapabilirsiniz.",
+        "Gününüz insanlarla geçiyorsa: raporda, dört stilin her birinden insanlarla konuşurken işinize yarayacak yöntemler ve hazır cümleler var.",
+        "Bir ekibi yönetiyor ya da yeni bir role hazırlanıyorsanız: kararlar, çatışma ve stres üzerine bölümlerin yanında, yöneticilik ve kendi yöneticinizle çalışma üzerine bir bölüm de var."
+      ],
+      "insideTitle": "İçinde neler var",
+      "insideLead": "Bölümlerin sırası ve başlıkları on altı profilin hepsinde aynıdır; metin ise her profil için ayrı yazılmıştır.",
+      "inside": [
+        "<b>Bu rapor nasıl okunur.</b> DISC neyi anlatır, neyi anlatmaz ve raporun sınırları nerede.",
+        "<b>Ayrıntılarıyla profiliniz.</b> Yüzdelerinizle dört ölçek, her ölçeğin ayrı ayrı yorumu ve yanıtlarınızın iki katmanının karşılaştırması: uyarlanmış stil ve doğal stil.",
+        "<b>Başkaları sizi nasıl görüyor.</b> İlk izlenim, bir ay sonra fark edilenler, beş kör nokta ve her stilden insanın sizi nasıl algıladığı.",
+        "<b>Güçlü yönleriniz ve onlardan yararlanmanın yolları.</b> Beş güçlü yön ve her birini daha da güçlendiren bir yöntem.",
+        "<b>Gelişim alanları: beş alıştırma.</b> Ne oluyor, ne yapmalı ve alıştırmanın işe yaradığı nereden anlaşılır.",
+        "<b>Sizi motive edenler ve motivasyonunuzu düşürenler.</b> Size ne enerji verir, hevesinizi ne söndürür ve kendinize nasıl hedef koyarsınız.",
+        "<b>İş ve kariyer.</b> Stilinizin en iyi sonuç verdiği ortamlar, sizi tuzağa düşüren görevler, karar verme biçiminiz ve bir rolün size uymadığını gösteren işaretler.",
+        "<b>Dört stilin her biriyle iletişim.</b> Karşınızdakinin stilini nasıl tanırsınız, konuşmaya nereden başlarsınız, sürtüşme nerede çıkar; ayrıca her durum için hazır bir cümle.",
+        "<b>Çatışma ve stres.</b> Üç tipik senaryo, baskının erken belirtileri ve o anda yapılabilecekler.",
+        "<b>Yönetici ve çalışan olarak siz.</b> Nelerde iyisiniz, neler sizi yarı yolda bırakır; her stilden yöneticiye nasıl rapor verilir, nasıl itiraz edilir ve ondan nasıl bir şey istenir.",
+        "<b>30 günlük plan.</b> Çalışma kâğıdı: dört hafta, her hafta için onay kutulu üç adım.",
+        "<b>Tek sayfada işin özü.</b> Çalışma kâğıdı: raporun en önemli noktaları, hep göz önünde tutabileceğiniz tek bir sayfada.",
+        "<b>Benimle nasıl çalışılır.</b> Yöneticiniz ve iş arkadaşlarınız için çalışma kâğıdı: çıktısını alabilir ya da e-postayla iletebilirsiniz."
+      ],
+      "compareTitle": "Özet rapordan farkı ne",
+      "compareHead": ["", "Özet rapor", "Genişletilmiş rapor"],
+      "compare": [
+        ["Soru", "Tipim ne?", "Bununla ne yapacağım?"],
+        ["Neye dayanır", "Profil açıklaması", "Puanlarınız: ölçek ölçek, yanıtların iki katmanı, en düşük ölçek"],
+        ["Kapsam", "Her konuda kısa bir açıklama", "13 bölüm, yaklaşık 28 sayfa"],
+        ["Uygulama", "Genel öneriler", "Beş alıştırma, 30 günlük plan, “Tek sayfada işin özü” kâğıdı"],
+        ["Başkaları için", "“Tipinizi paylaşın” bağlantısı", "Yöneticiniz ve iş arkadaşlarınız için “Benimle nasıl çalışılır” kâğıdı"],
+        ["Ücret", "Ücretsiz", "{price} USD"]
+      ],
+      "compareNote": "Test, ekrandaki sonuç, sonuç e-postası ve PDF biçimindeki özet rapor ücretsiz kalır. Genişletilmiş rapor yalnızca isteyenler içindir.",
+      "howTitle": "Rapor nasıl alınır",
+      "how": [
+        "Ücretsiz testi çözün: 24 soru, yaklaşık 10 dakika. Testi daha önce çözdüyseniz yeniden çözmeniz gerekmez: rapor mevcut sonucunuza göre hazırlanır.",
+        "Haber vermemizi isteyin. Genişletilmiş rapor henüz Türkçe sunulmuyor; siparişe açıldığında size e-posta göndeririz.",
+        "Sipariş verdiğinizde rapor, ödemeden sonra en geç 24 saat içinde PDF eki olarak e-postanıza gelir."
+      ],
+      "faqTitle": "Sık sorulan sorular",
+      "faq": [
+        { "q": "Rapor bana özel mi yazılıyor, yoksa genel bir metin mi?", "a": "Rapor sizin yanıtlarınıza göre hazırlanır. Metin, on altı profilden biri olan sizin profiliniz için yazılmıştır. 2. bölümün tamamı ile 3, 5, 11, 12 ve 13. bölümlerin bazı kısımları sizin sonuçlarınıza göre değişir: dört ölçekteki yüzdelerinize, “en çok” ve “en az” işaretlerinizin sayısına ve en düşük ölçeğinize. Her sayfada adınız yer alır." },
+        { "q": "Rapor hangi biçimde gelir?", "a": "E-postaya ekli bir PDF dosyası olarak gelir; yaklaşık 28 A4 sayfadır. Ekrandan rahatça okunur, çıktısı da alınabilir; üç çalışma kâğıdının her biri tek sayfaya sığar." },
+        { "q": "Rapor hangi dilde?", "a": "Rapor şimdilik yalnızca Rusça hazırlanıyor. Haber vermemizi isteyin; Türkçesi siparişe açıldığında size e-posta göndeririz." },
+        { "q": "Bu bir teşhis ya da yetenek testi mi?", "a": "Hayır. Rapor, yanıtlarınıza dayanarak davranış stilinizi anlatır. Teşhis koymaz, zekâyı ölçmez, başarıyı öngörmez." },
+        { "q": "Para iadesi alabilir miyim?", "a": "İadenin hangi durumlarda ve nasıl yapıldığı {refund} sayfasında açıklanır." }
+      ],
+      "priceLabel": "Ücret",
+      "price": "{price} USD",
+      "docs": "Hizmet, “Genişletilmiş DISC profili” adını taşır ve {offer} uyarınca sunulur; para iadesinin hangi durumlarda ve nasıl yapıldığı {refund} sayfasında açıklanır.",
+      "buy": {
+        "testTitle": "Rapor test sonucunuza göre hazırlanır",
+        "testText": "Önce ücretsiz testi çözün: 24 soru, yaklaşık 10 dakika. Sonucunuzu ve özet raporunuzu hemen görürsünüz. Genişletilmiş rapor henüz Türkçe sunulmuyor; sonucunuz hazır olunca bu sayfadan haber vermemizi isteyebilirsiniz.",
+        "testButton": "Testi çöz",
+        "orderTitle": "Raporunuz {date} tarihli test sonucunuza göre hazırlanacak",
+        "orderText": "Genişletilmiş rapor henüz Türkçe sunulmuyor. Haber vermemizi isteyin; siparişe açıldığında size e-posta göndeririz.",
+        "orderButton": "Türkçesi çıkınca haber ver",
+        "orderMsg": "Genişletilmiş DISC raporunu Türkçe almak istiyorum. Siparişe açıldığında lütfen bana e-postayla haber verin.\n\nSonucum: {link}"
+      },
+      "pdf": {
+        "lead": "Özet rapor “Tipim ne?” sorusunu yanıtlar; genişletilmiş rapor ise “Bununla ne yapacağım?” sorusunu.",
+        "facts": [
+          ["28", "sayfa"],
+          ["13", "bölüm"],
+          ["5", "alıştırma"],
+          ["3", "çalışma kâğıdı"]
+        ],
+        "list": ["Puanlarınız ne anlama geliyor", "Diğer profillerle nasıl çalışılır", "Daha verimli olmak için pratik öneriler"],
+        "where": "Ayrıntılı bilgi:"
+      },
+      "block": {
+        "eyebrow": "Genişletilmiş rapor",
+        "title": "Profilinizle ne yapmalı: yanıtlarınıza özel 13 bölüm",
+        "hook": "En düşük ölçeğiniz {name} ({k}): %{pct}. Genişletilmiş rapor bunun ne anlama geldiğini açıklar ve bu ölçeğe özel bir alıştırma önerir.",
+        "list": [
+          "Ölçek ölçek: dört puanınızın her biri ne anlama geliyor",
+          "Beş kör nokta, beş alıştırma ve işe yaradıklarını gösteren işaretler",
+          "Dört stilin her biriyle nasıl konuşulur: yöntemler ve hazır cümleler",
+          "Üç çalışma kâğıdı: 30 günlük plan, tek sayfada işin özü, iş arkadaşlarınız için bir sayfa"
+        ],
+        "price": "{price} USD · e-postayla PDF",
+        "button": "Türkçesi çıkınca haber ver",
+        "free": "Test ve özet rapor ücretsiz kalır.",
+        "topTitle": "Sonucunuza özel genişletilmiş rapor",
+        "topText": "Profilinizle ne yapacağınıza dair 13 bölüm: her ölçeğin yorumu, beş alıştırma, 30 günlük plan.",
+        "topButton": "Ayrıntıları gör — {price} USD",
+        "anchor": "İçinde neler var",
+        "soon": "Genişletilmiş rapor henüz Türkçe sunulmuyor. Haber vermemizi isteyin; siparişe açıldığında size e-posta göndeririz."
+      }
     },
     "contact": {
       "title": "İletişim — DISC testini hazırlayanlara yazın",
@@ -981,8 +1243,8 @@
           ]
         },
         {
-          "h": "Kâğıt sonucunuz için ayrıntılı rapor",
-          "p": ["Kâğıt sürüm size profilinizi ve kısa bir açıklama verir. Grafiği, güçlü yönleri, gelişim alanlarını ve iletişim önerilerini içeren tam rapor için 16 profil listesinden kendi profilinizin sayfasını açın ya da testi online çözün; bu yaklaşık on dakikanızı alır."]
+          "h": "Kâğıt sonucunuz için rapor",
+          "p": ["Kâğıt sürüm size profilinizi ve kısa bir açıklama verir. Grafiği, güçlü yönleri, gelişim alanlarını ve iletişim önerilerini içeren özet rapor için 16 profil listesinden kendi profilinizin sayfasını açın ya da testi online çözün; bu yaklaşık on dakikanızı alır."]
         }
       ]
     },
@@ -1382,7 +1644,7 @@
     "intro.howText": "Testte her biri dört ifadeden oluşan 24 soru, toplam 96 ifade vardır. Her soruda sizi <b>en çok</b> tanımlayan bir ifadeyi ve sizi <b>en az</b> tanımlayan bir ifadeyi işaretleyin. Olmak istediğiniz gibi değil, iş yerinde genellikle nasıl davranıyorsanız öyle yanıt verin. Uzun uzun düşünmeyin: ilk tepki daha isabetlidir.",
     "intro.nameLabel": "Adınız",
     "intro.emailLabel": "Sonucun gönderileceği e-posta adresi",
-    "intro.emailHint": "Bu adrese tam raporun bağlantısını içeren bir e-posta gönderilir. Adınız, e-posta adresiniz ve sonucunuz site sahibinin sonuç veri tabanına kaydedilir.",
+    "intro.emailHint": "Bu adrese özet raporun bağlantısını içeren bir e-posta gönderilir. Adınız, e-posta adresiniz ve sonucunuz site sahibinin sonuç veri tabanına kaydedilir.",
     "intro.requiredNote": "Yıldız (*) ile işaretli alanların doldurulması zorunludur.",
     "intro.start": "Teste başla",
     "intro.startNote": "24 soru · yaklaşık 10 dakika · kayıt yok",
@@ -1470,11 +1732,11 @@
     "email.subject": "DISC testi sonucunuz: {label}",
     "email.greeting": "Merhaba {name},",
     "email.intro": "DISC testini tamamladınız. DISC profiliniz:",
-    "email.open": "Tam raporu aç",
+    "email.open": "Özet raporu aç",
     "email.scores": "Stillerin belirginliği",
     "email.linkNote": "Düğme çalışmıyorsa bağlantıyı kopyalayıp tarayıcınıza yapıştırın:",
-    "email.attached": "Tam rapor bu e-postanın ekinde PDF olarak yer alıyor.",
-    "email.footer": "Bu e-posta, test sırasında bu adres belirtildiği için otomatik olarak gönderildi. Güçlü yönlerin, gelişim alanlarının ve önerilerin yer aldığı tam rapora yukarıdaki bağlantıdan ulaşabilirsiniz.",
+    "email.attached": "Özet rapor bu e-postanın ekinde PDF olarak yer alıyor.",
+    "email.footer": "Bu e-posta, test sırasında bu adres belirtildiği için otomatik olarak gönderildi. Güçlü yönlerin, gelişim alanlarının ve önerilerin yer aldığı özet rapora yukarıdaki bağlantıdan ulaşabilirsiniz.",
     "email.subscribed": "Bu adrese disc-test.org’dan e-posta almayı kabul ettiniz.",
     "email.unsubscribe": "Abonelikten çık",
 
@@ -1519,6 +1781,7 @@
     "nav.contact": "İletişim",
     "nav.privacy": "Gizlilik",
     "nav.services": "Hizmetler",
+    "nav.offer": "Satış koşulları",
     "nav.results": "Sonuçların yorumlanması",
     "nav.compat": "Stillerin uyumu",
     "nav.colors": "DISC renkleri",

@@ -634,7 +634,16 @@
           "h": "Änderungen",
           "p": ["Letzte Aktualisierung: 9. Oktober 2026. Änderungen im Umgang mit Daten werden auf dieser Seite dokumentiert."]
         }
-      ]
+      ],
+      "purchase": {
+        "h": "Kauf des ausführlichen Profils",
+        "p": [
+          "Wenn Sie das ausführliche DISG-Profil kaufen, verarbeiten wir Ihre E-Mail-Adresse, Ihren Namen (sofern angegeben), das Testergebnis, aus dem der Bericht erstellt wird, und die Bestelldaten: Datum, Betrag, Nummer und Status der Zahlung. Wir benötigen diese Daten, um den Bericht zu erstellen und Ihnen zuzusenden, Ihre Anfragen zu beantworten und eine Rückerstattung abzuwickeln. Rechtsgrundlage der Verarbeitung ist der Vertrag, den Sie mit der Bezahlung der Leistung auf Grundlage der {offer} schließen.",
+          "Die Zahlung nimmt eine Bank entgegen; ihr Name wird auf der Zahlungsseite angezeigt. Die Daten Ihres Zahlungsmittels geben Sie auf der gesicherten Seite der Bank ein: Wir erhalten und speichern sie nicht. Die Bank erhält den Betrag, die Bestellnummer und Ihre E-Mail-Adresse, an die der Kaufbeleg gesendet wird.",
+          "Der Bericht wird auf einem Server erstellt, der in unserem Auftrag betrieben wird, und Ihnen per E-Mail von der Adresse {email} zugesandt. Eine Kopie des Berichts und die Bestelldaten bewahrt der Seitenbetreiber auf: Sie werden benötigt, um den Bericht erneut zu senden, Anfragen zu beantworten und Rückerstattungen abzuwickeln, sowie für die Buchführung. Wenn Sie möchten, dass der Bericht und die Bestelldaten gelöscht werden, schreiben Sie an {email}. Zahlungsdaten, die gesetzlich aufzubewahren sind, werden nach Ablauf der vorgeschriebenen Aufbewahrungsfrist gelöscht.",
+          "Wenn Sie einen Kauf beginnen, aber nicht bezahlen, speichern wir Ihre E-Mail-Adresse, Ihr Testergebnis und die Bestelldaten 30 Tage lang und löschen sie danach. In dieser Zeit kann an die angegebene Adresse eine einzige Erinnerungs-E-Mail mit einem Link zur Zahlung gesendet werden. Rechtsgrundlage sind die Schritte, die Sie zum Abschluss des Vertrags unternommen haben."
+        ]
+      }
     },
     "policy": {
       "title": "Richtlinie zur Verarbeitung personenbezogener Daten – DISG-Test",
@@ -701,7 +710,16 @@
             "Letzte Aktualisierung: {date}. Änderungen im Umgang mit Daten werden auf dieser Seite dokumentiert."
           ]
         }
-      ]
+      ],
+      "purchase": {
+        "h": "Kauf des ausführlichen Profils",
+        "p": [
+          "Wenn Sie das ausführliche DISG-Profil kaufen, verarbeiten wir Ihre E-Mail-Adresse, Ihren Namen (sofern angegeben), das Testergebnis, aus dem der Bericht erstellt wird, und die Bestelldaten: Datum, Betrag, Nummer und Status der Zahlung. Wir benötigen diese Daten, um den Bericht zu erstellen und Ihnen zuzusenden, Ihre Anfragen zu beantworten und eine Rückerstattung abzuwickeln. Rechtsgrundlage der Verarbeitung ist der Vertrag, den Sie mit der Bezahlung der Leistung auf Grundlage der {offer} schließen; eine gesonderte Einwilligung ist dafür nicht erforderlich.",
+          "Die Zahlung nimmt eine Bank entgegen; ihr Name wird auf der Zahlungsseite angezeigt. Die Daten Ihres Zahlungsmittels geben Sie auf der gesicherten Seite der Bank ein: Wir erhalten und speichern sie nicht. Die Bank erhält den Betrag, die Bestellnummer und Ihre E-Mail-Adresse, an die der Kaufbeleg gesendet wird.",
+          "Der Bericht wird auf dem Server der Website erstellt und Ihnen per E-Mail von der Adresse {email} zugesandt. Der fertige Bericht wird auf dem Server nicht gespeichert: Bei Bedarf wird er neu erstellt. Die Bestelldaten werden fünf Jahre ab der Zahlung aufbewahrt: Sie werden benötigt, um den Bericht erneut zu senden, Anfragen zu beantworten und Rückerstattungen abzuwickeln, sowie für die Buchführung. Zahlungsdaten, die gesetzlich länger aufzubewahren sind, werden nach Ablauf der vorgeschriebenen Aufbewahrungsfrist gelöscht.",
+          "Wenn Sie einen Kauf beginnen, aber nicht bezahlen, speichern wir Ihre E-Mail-Adresse, Ihr Testergebnis und die Bestelldaten 30 Tage lang und löschen sie danach. In dieser Zeit kann an die angegebene Adresse eine einzige Erinnerungs-E-Mail mit einem Link zur Zahlung gesendet werden. Rechtsgrundlage sind die Schritte, die Sie zum Abschluss des Vertrags unternommen haben. Solange das ausführliche Profil auf Deutsch noch nicht bestellt werden kann, wird eine über das Kontaktformular gesendete Bitte um Benachrichtigung wie jede andere Nachricht aus dem Kontaktformular behandelt; der Vermerk über Ihre Einwilligung wird als Anfrage zum ausführlichen Profil gekennzeichnet."
+        ]
+      }
     },
     "consentDoc": {
       "title": "Einwilligung in die Verarbeitung personenbezogener Daten – DISG-Test",
@@ -759,10 +777,11 @@
       "priceLabel": "Preis",
       "price": "{price} USD",
       "currency": "USD",
+      "docs": "Für die Leistung gelten unsere {offer}; wann und wie Sie Ihr Geld zurückerhalten, steht in den {refund}.",
       "sections": [
         {
           "h": "So erhalten Sie es",
-          "p": ["Das ausführliche Profil wird per E-Mail an die bei der Zahlung angegebene Adresse gesendet, spätestens 24 Stunden nach der Zahlung."]
+          "p": ["Das ausführliche Profil ist auf Deutsch noch nicht erhältlich. Auf der Seite zum ausführlichen Bericht können Sie sich benachrichtigen lassen: Wir schreiben Ihnen, sobald Sie es bestellen können. Nach der Bestellung wird es per E-Mail an die bei der Zahlung angegebene Adresse gesendet, spätestens 24 Stunden nach der Zahlung."]
         },
         {
           "h": "Was kostenlos bleibt",
@@ -773,6 +792,249 @@
           "p": ["Wenn Sie eine Frage zum ausführlichen Profil oder zur Zahlung haben, schreiben Sie uns über das Formular „{contact}“ – die Antwort kommt an die angegebene E-Mail-Adresse. Die Angaben zum Inhaber der Website stehen am Ende jeder Seite."]
         }
       ]
+    },
+    "offer": {
+      "title": "Allgemeine Geschäftsbedingungen – ausführliches DISG-Profil",
+      "description": "Allgemeine Geschäftsbedingungen für die Leistung „Ausführliches DISG-Profil“ auf disc-test.org: Preis, Zahlung und Zusendung, Erstattung, Rechte an den Inhalten.",
+      "h1": "Allgemeine Geschäftsbedingungen",
+      "linkText": "Allgemeinen Geschäftsbedingungen",
+      "edition": "Fassung vom 9. Oktober 2026. Deutsche Übersetzung veröffentlicht am 11. Oktober 2026.",
+      "note": "Dies ist die deutsche Übersetzung dieser Geschäftsbedingungen; das Original ist unter {original} veröffentlicht. Weichen die beiden Texte voneinander ab, gilt das Original – mit Ausnahme des Preises: Für die deutsche Version der Website gilt der in Ziffer 3.1 genannte Preis. Das ausführliche Profil ist auf Deutsch noch nicht erhältlich: Es kann noch nicht bestellt werden, und es wird keine Zahlung entgegengenommen.",
+      "seller": "Einzelunternehmer Manukyan Armen, Steuernummer (INN) {inn}",
+      "lead": "Dieses Dokument ist ein verbindliches Angebot (öffentliches Angebot) zum Abschluss eines Vertrags über die kostenpflichtige Leistung „Ausführliches DISG-Profil“ zu den nachstehenden Bedingungen. Das Angebot unterbreitet {seller} (im Folgenden „Anbieter“). Wer die Leistung bezahlt, stimmt diesen Bedingungen vollständig und vorbehaltlos zu (Annahme des Angebots).",
+      "sections": [
+        {
+          "h": "1. Begriffsbestimmungen",
+          "ul": [
+            "Anbieter – {seller}.",
+            "Kunde – eine unbeschränkt geschäftsfähige natürliche Person, die die Bedingungen dieses Angebots durch Bezahlung der Leistung angenommen hat.",
+            "Website – {site} mit allen ihren Seiten.",
+            "Test – der kostenlose DISG-Fragebogen auf der Website.",
+            "Ausführliches Profil – eine vom Anbieter in elektronischer Form erstellte genauere Auswertung des DISG-Profils des Kunden auf Grundlage des von ihm absolvierten Tests.",
+            "Leistung – die Erstellung des Ausführlichen Profils und dessen Zusendung an den Kunden.",
+            "Bank – das Kreditinstitut, über das der Kunde die Leistung bezahlt; sein Name wird auf der Zahlungsseite angezeigt."
+          ]
+        },
+        {
+          "h": "2. Vertragsgegenstand",
+          "p": [
+            "2.1. Der Anbieter verpflichtet sich, die Leistung für den Kunden zu erbringen, und der Kunde verpflichtet sich, sie zu den Bedingungen dieses Angebots zu bezahlen.",
+            "2.2. Die Leistung wird auf elektronischem Weg erbracht: Das Ausführliche Profil wird an die E-Mail-Adresse gesendet, die der Kunde bei der Zahlung angegeben hat.",
+            "2.3. Der Test und sein Ergebnis sind auf der Website kostenlos und nicht Gegenstand des Vertrags.",
+            "2.4. Das Ausführliche Profil dient ausschließlich der Information. Es beschreibt Verhaltensstile nach dem DISG-Modell und ist weder eine psychologische oder medizinische Diagnose noch ein Gutachten über die berufliche Eignung noch eine verbindliche Handlungsempfehlung."
+          ]
+        },
+        {
+          "h": "3. Preis und Zahlung",
+          "p": [
+            "3.1. Der Preis der Leistung beträgt {price} US-Dollar. Der Preis ist ein Endpreis: Weitere Zahlungen an den Anbieter fallen nicht an.",
+            "3.2. Die Leistung ist vor ihrer Erbringung vollständig zu bezahlen, und zwar mit einer der bargeldlosen Zahlungsarten, die auf der Zahlungsseite angezeigt werden. Die Zahlung nimmt die Bank entgegen.",
+            "3.3. Die Leistung gilt als bezahlt, sobald der Anbieter die Zahlungsbestätigung der Bank erhalten hat.",
+            "3.4. Die Daten des Zahlungsmittels gibt der Kunde auf der gesicherten Seite der Bank ein. Der Anbieter erhält und speichert diese Daten nicht.",
+            "3.5. Nach der Zahlung erhält der Kunde einen elektronischen Kaufbeleg an die E-Mail-Adresse, die er bei der Zahlung angegeben hat.",
+            "3.6. Der Anbieter kann den Preis der Leistung ändern. Der neue Preis gilt ab seiner Veröffentlichung auf der Website; für bereits bezahlte Bestellungen gilt er nicht."
+          ]
+        },
+        {
+          "h": "4. Erbringung der Leistung",
+          "p": [
+            "4.1. Um die Leistung zu erhalten, absolviert der Kunde den Test auf der Website, gibt eine E-Mail-Adresse an und bezahlt die Leistung. Das Ausführliche Profil wird aus dem Testergebnis erstellt, mit dem der Kunde den Zahlungsvorgang begonnen hat.",
+            "4.2. Der Anbieter sendet das Ausführliche Profil spätestens 24 Stunden nach der Zahlung (Ziffer 3.3) an die angegebene Adresse. In der Regel kommt die E-Mail früher an; 24 Stunden sind die Höchstfrist.",
+            "4.3. Die Leistung gilt mit dem Versand des Ausführlichen Profils als erbracht. Meldet der Kunde innerhalb von drei Kalendertagen danach keine Mängel, gilt die Leistung als abgenommen. Ein Abnahmeprotokoll wird nicht erstellt.",
+            "4.4. Kommt die E-Mail nicht an, sollte der Kunde den Spam-Ordner prüfen und dem Anbieter an {email} schreiben: Das Ausführliche Profil wird dann erneut gesendet.",
+            "4.5. Für die Richtigkeit der angegebenen E-Mail-Adresse ist der Kunde verantwortlich."
+          ]
+        },
+        {
+          "h": "5. Stornierung und Rückerstattung",
+          "p": [
+            "5.1. Der Kunde kann die Bestellung jederzeit stornieren, solange ihm das Ausführliche Profil noch nicht zugesandt wurde. In diesem Fall wird die Zahlung vollständig erstattet.",
+            "5.2. Wird das Ausführliche Profil nicht innerhalb der in Ziffer 4.2 genannten Frist gesendet, kann der Kunde die vollständige Erstattung der Zahlung verlangen.",
+            "5.3. Weist das erhaltene Ausführliche Profil Mängel auf (die E-Mail oder die Datei lässt sich nicht öffnen, sie enthält das Ergebnis einer anderen Person, der Inhalt entspricht nicht der Beschreibung der Leistung auf der Website), behebt der Anbieter sie innerhalb von drei Arbeitstagen nach der Mitteilung des Kunden. Wird ein Mangel in dieser Frist nicht behoben, wird die Zahlung vollständig erstattet.",
+            "5.4. Ist die Leistung ordnungsgemäß erbracht, wird die Zahlung nicht erstattet. Ist der Kunde mit der Beschreibung seines Profils inhaltlich nicht einverstanden, stellt dies keinen Mangel der Leistung dar.",
+            "5.5. Für eine Rückerstattung sendet der Kunde einen Antrag an {email} und nennt darin die bei der Zahlung verwendete E-Mail-Adresse, Datum und Betrag der Zahlung sowie den Grund für die Rückerstattung.",
+            "5.6. Der Anbieter beantwortet den Antrag innerhalb von drei Arbeitstagen. Das Geld wird auf demselben Weg erstattet, auf dem bezahlt wurde, spätestens zehn Kalendertage nach Eingang des Antrags; wann der Betrag gutgeschrieben wird, hängt von der Bank des Kunden ab.",
+            "5.7. Die gesetzlichen Verbraucherrechte des Kunden bleiben von den Bestimmungen dieses Abschnitts unberührt."
+          ]
+        },
+        {
+          "h": "6. Rechte an den Inhalten und Kopierverbot",
+          "p": [
+            "6.1. Die Texte der Website, des Tests, der Berichte mit dem Testergebnis (einschließlich des per E-Mail versandten PDF-Berichts) und des Ausführlichen Profils sowie deren Gestaltung (im Folgenden „Inhalte“) gehören dem Anbieter und sind durch das Recht des geistigen Eigentums geschützt.",
+            "6.2. Der Kunde darf den Bericht mit dem Testergebnis und das Ausführliche Profil für persönliche Zwecke nutzen: speichern, ausdrucken, anderen zeigen und den Link zu seinem Ergebnis über die Schaltflächen der Website teilen.",
+            "6.3. Ohne schriftliche Zustimmung des Anbieters ist es untersagt, die Inhalte ganz oder teilweise zu kopieren, zu vervielfältigen und zu verbreiten, sie auf anderen Websites, in sozialen Netzwerken, Messengern und Druckerzeugnissen zu veröffentlichen, sie zu bearbeiten und zu übersetzen, sie in andere Tests, Dienste, Kurse und Publikationen aufzunehmen sowie sie zu verkaufen oder unter eigenem Namen zu veröffentlichen.",
+            "6.4. Das Zitieren der Inhalte ist in den gesetzlich vorgesehenen Fällen und im gesetzlich vorgesehenen Umfang zulässig; die Quelle ist dabei mit einem Link auf {site} anzugeben.",
+            "6.5. Die Zustimmung zur Nutzung der Inhalte kann unter {email} angefragt werden.",
+            "6.6. Die Verletzung der Rechte an den Inhalten zieht die gesetzlich vorgesehene Haftung nach sich."
+          ]
+        },
+        {
+          "h": "7. Haftung",
+          "p": [
+            "7.1. Für die Nichterfüllung des Vertrags haften die Parteien nach dem auf den Vertrag anwendbaren Recht (Ziffer 9.4).",
+            "7.2. Entscheidungen auf Grundlage des Ausführlichen Profils trifft der Kunde eigenverantwortlich. Der Anbieter garantiert nicht, dass dessen Nutzung zu einem bestimmten Ergebnis führt.",
+            "7.3. Der Anbieter haftet nicht dafür, dass die E-Mail aus Gründen nicht zugestellt wird, die er nicht zu vertreten hat (falsch angegebene Adresse, Störung beim E-Mail-Dienst des Kunden), sendet das Ausführliche Profil aber auf Anfrage des Kunden erneut."
+          ]
+        },
+        {
+          "h": "8. Personenbezogene Daten",
+          "p": [
+            "8.1. Um die Leistung zu erbringen, verarbeitet der Anbieter die E-Mail-Adresse des Kunden, seinen Namen (sofern angegeben), das Testergebnis und die Zahlungsdaten mit Ausnahme der Daten des Zahlungsmittels. Rechtsgrundlage der Verarbeitung ist die Erfüllung eines Vertrags, dessen Partei der Kunde ist.",
+            "8.2. Die Daten werden nur an die Bank – zur Entgegennahme der Zahlung und zum Versand des Kaufbelegs – und an die Dienste weitergegeben, die für die Erstellung und den Versand des Ausführlichen Profils erforderlich sind, sowie in den gesetzlich vorgesehenen Fällen.",
+            "8.3. Näheres zur Datenverarbeitung steht auf der Seite „{privacy}“."
+          ]
+        },
+        {
+          "h": "9. Geltungsdauer und Änderung des Angebots",
+          "p": [
+            "9.1. Der Vertrag gilt mit der Bezahlung der Leistung als geschlossen und bleibt in Kraft, bis die Parteien ihre Pflichten erfüllt haben.",
+            "9.2. Der Anbieter kann das Angebot ändern. Die neue Fassung gilt ab ihrer Veröffentlichung auf der Website; für bereits bezahlte Bestellungen gilt sie nicht.",
+            "9.3. Beschwerden sind an {email} zu richten; der Anbieter beantwortet sie innerhalb von zehn Kalendertagen. Wird ein Streit nicht beigelegt, entscheidet darüber ein Gericht nach dem auf den Vertrag anwendbaren Recht.",
+            "9.4. Auf den Vertrag ist das Recht des Landes anwendbar, in dem der Anbieter registriert ist."
+          ]
+        },
+        {
+          "h": "10. Angaben zum Anbieter",
+          "ul": ["Einzelunternehmer Manukyan Armen", "Steuernummer (INN) {inn}", "E-Mail: {email}", "Website: {site}"]
+        }
+      ]
+    },
+    "refund": {
+      "title": "Rückerstattungsbedingungen – ausführliches DISG-Profil",
+      "description": "Wann und wie Sie Ihr Geld für das ausführliche DISG-Profil auf disc-test.org zurückerhalten: Erstattungsfälle, Antrag, Fristen.",
+      "h1": "Rückerstattungsbedingungen",
+      "linkText": "Rückerstattungsbedingungen",
+      "lead": "Hier steht in Kürze, wann und wie Sie Ihr Geld für das ausführliche DISG-Profil zurückerhalten. Diese Bedingungen sind Teil der {offer} (Abschnitt 5).",
+      "note": "Dies ist die deutsche Übersetzung der Rückerstattungsbedingungen; das Original ist unter {original} veröffentlicht. Weichen die beiden Texte voneinander ab, gilt das Original. Das ausführliche Profil ist auf Deutsch noch nicht erhältlich: Es kann noch nicht bestellt werden, und es wird keine Zahlung entgegengenommen.",
+      "sections": [
+        {
+          "h": "Wann Sie Ihr Geld vollständig zurückerhalten",
+          "ul": [
+            "Sie stornieren die Bestellung, bevor Ihnen das ausführliche Profil zugesandt wurde.",
+            "Das ausführliche Profil wurde nicht innerhalb von 24 Stunden nach der Zahlung gesendet.",
+            "Das erhaltene ausführliche Profil hat einen Mangel (die E-Mail oder die Datei lässt sich nicht öffnen, sie enthält das Ergebnis einer anderen Person, der Inhalt entspricht nicht der Beschreibung der Leistung auf der Website), und wir haben ihn nicht innerhalb von drei Arbeitstagen nach Ihrer Mitteilung behoben."
+          ]
+        },
+        {
+          "h": "Wann die Zahlung nicht erstattet wird",
+          "p": ["Wurde das ausführliche Profil rechtzeitig gesendet und entspricht es der Beschreibung, gilt die Leistung als erbracht, und die Zahlung wird nicht erstattet. Sind Sie mit der Beschreibung Ihres Profils inhaltlich nicht einverstanden, ist das kein Mangel der Leistung."]
+        },
+        {
+          "h": "So beantragen Sie eine Rückerstattung",
+          "p": ["Schreiben Sie an {email} und nennen Sie:"],
+          "ul": ["die E-Mail-Adresse, die Sie bei der Zahlung angegeben haben;", "Datum und Betrag der Zahlung;", "den Grund für die Rückerstattung."]
+        },
+        {
+          "h": "Fristen",
+          "p": ["Wir beantworten Ihren Antrag innerhalb von drei Arbeitstagen. Das Geld wird auf demselben Weg erstattet, auf dem Sie bezahlt haben, spätestens zehn Kalendertage nach Eingang des Antrags. Wann der Betrag gutgeschrieben wird, hängt von Ihrer Bank ab."]
+        },
+        {
+          "h": "Wenn die E-Mail mit dem ausführlichen Profil nicht angekommen ist",
+          "p": ["Prüfen Sie Ihren Spam-Ordner. Ist die E-Mail auch dort nicht, schreiben Sie an {email} – wir senden Ihnen das ausführliche Profil erneut."]
+        },
+        {
+          "h": "Ihre Rechte",
+          "p": ["Ihre gesetzlichen Verbraucherrechte bleiben von diesen Bedingungen unberührt."]
+        }
+      ]
+    },
+    "product": {
+      "title": "Ausführlicher DISG-Bericht – 13 Kapitel zu Ihrem Ergebnis",
+      "description": "Ausführlicher DISG-Bericht zu Ihrem Testergebnis: jede Skala erklärt, fünf Übungen, 30-Tage-Plan. PDF per E-Mail, {price} USD. Bald auch auf Deutsch.",
+      "h1": "Ausführlicher DISG-Bericht",
+      "lead": "Der Kurzbericht nach dem Test beantwortet die Frage „Welcher Typ bin ich?“. Der ausführliche Bericht beantwortet die nächste: „Was fange ich damit an?“ Er entsteht aus Ihren eigenen Antworten: mit Ihren Zahlen, für Ihr Profil, mit Ihrem Namen auf jeder Seite.",
+      "facts": ["13 Kapitel", "rund 28 Seiten", "drei Arbeitsblätter", "PDF per E-Mail"],
+      "more": "Was der ausführliche Bericht enthält",
+      "forTitle": "Für wen er gedacht ist",
+      "for": [
+        "Sie wollen Ihre Zahlen verstehen: was jede der vier Skalen bedeutet, warum Ihr Profil gerade diesen Namen trägt und was Sie mit Ihrem niedrigsten Wert anfangen können.",
+        "Sie haben viel mit Menschen zu tun: Der Bericht gibt Ihnen Gesprächstechniken und fertige Formulierungen für jeden der vier Stile an die Hand.",
+        "Sie führen ein Team oder stehen vor einer neuen Rolle: Es gibt Kapitel über Entscheidungen, Konflikte und Stress, über das Führen und über die Zusammenarbeit mit der eigenen Führungskraft."
+      ],
+      "insideTitle": "Was im Bericht steht",
+      "insideLead": "Reihenfolge und Titel der Kapitel sind für alle sechzehn Profile gleich; der Text ist für jedes Profil eigens geschrieben.",
+      "inside": [
+        "<b>So lesen Sie diesen Bericht.</b> Was DISG beschreibt, was nicht und wo die Grenzen des Berichts liegen.",
+        "<b>Ihr Profil im Detail.</b> Vier Skalen mit Ihren Prozentwerten, jede Skala einzeln erläutert, dazu der Vergleich der beiden Ebenen Ihrer Antworten: angepasstes und natürliches Verhalten.",
+        "<b>Wie andere Sie sehen.</b> Der erste Eindruck, was nach einem Monat auffällt, fünf blinde Flecken und wie Menschen jedes Stils Sie wahrnehmen.",
+        "<b>Ihre Stärken und wie Sie sie nutzen.</b> Fünf Stärken – und zu jeder eine Technik, mit der Sie mehr aus ihr herausholen.",
+        "<b>Entwicklungsfelder: fünf Übungen.</b> Was passiert, was Sie tun können und woran Sie erkennen, dass die Übung wirkt.",
+        "<b>Was Sie motiviert und was Sie bremst.</b> Was Ihnen Energie gibt, was sie Ihnen raubt und wie Sie sich Ziele setzen.",
+        "<b>Arbeit und Karriere.</b> Wo Ihr Stil am besten zur Geltung kommt, welche Aufgaben für Sie zur Falle werden, wie Sie Entscheidungen treffen und woran Sie merken, dass eine Rolle nicht zu Ihnen passt.",
+        "<b>Kommunikation mit jedem der vier Stile.</b> Wie Sie den Stil Ihres Gegenübers erkennen, wie Sie ins Gespräch einsteigen, wo es zu Reibungen kommt – und für jeden Fall eine fertige Formulierung.",
+        "<b>Konflikt und Stress.</b> Drei typische Szenarien, frühe Anzeichen von Druck und was in der Situation selbst hilft.",
+        "<b>Sie als Führungskraft und als Teammitglied.</b> Was Ihnen leichtfällt, was Ihnen im Weg steht und wie Sie einer Führungskraft jedes Stils berichten, widersprechen und Ihre Anliegen vortragen.",
+        "<b>30-Tage-Plan.</b> Arbeitsblatt: vier Wochen, pro Woche drei Schritte zum Abhaken.",
+        "<b>Das Wichtigste auf einer Seite.</b> Arbeitsblatt: die Essenz des Berichts, immer griffbereit.",
+        "<b>So arbeitet man am besten mit mir.</b> Arbeitsblatt für Ihre Führungskraft und Ihr Team: zum Ausdrucken oder Weiterleiten."
+      ],
+      "compareTitle": "Was ihn vom Kurzbericht unterscheidet",
+      "compareHead": ["", "Kurzbericht", "Ausführlicher Bericht"],
+      "compare": [
+        ["Frage", "Welcher Typ bin ich?", "Was fange ich damit an?"],
+        ["Grundlage", "Beschreibung Ihres Profils", "Ihre Zahlen: Skala für Skala, die beiden Ebenen Ihrer Antworten, Ihr niedrigster Wert"],
+        ["Umfang", "Jedes Thema in Kürze", "13 Kapitel, rund 28 Seiten"],
+        ["Praxis", "Allgemeine Empfehlungen", "Fünf Übungen, 30-Tage-Plan, Arbeitsblatt „Das Wichtigste auf einer Seite“"],
+        ["Für andere", "Link „Teilen Sie Ihren Typ“", "Arbeitsblatt „So arbeitet man am besten mit mir“ für Führungskraft und Team"],
+        ["Preis", "Kostenlos", "{price} USD"]
+      ],
+      "compareNote": "Der Test, das Ergebnis auf dem Bildschirm, die E-Mail mit dem Ergebnis und der Kurzbericht als PDF bleiben kostenlos. Den ausführlichen Bericht bestellen Sie nur, wenn Sie ihn möchten.",
+      "howTitle": "So erhalten Sie den Bericht",
+      "how": [
+        "Machen Sie den kostenlosen Test: 24 Blöcke, etwa 10 Minuten. Haben Sie ihn schon gemacht, brauchen Sie ihn nicht zu wiederholen: Der Bericht entsteht aus dem vorhandenen Ergebnis.",
+        "Lassen Sie sich benachrichtigen. Auf Deutsch gibt es den ausführlichen Bericht noch nicht; wir schreiben Ihnen, sobald Sie ihn bestellen können.",
+        "Nach der Bestellung kommt der Bericht per E-Mail: als PDF im Anhang, spätestens 24 Stunden nach der Zahlung."
+      ],
+      "faqTitle": "Fragen und Antworten",
+      "faq": [
+        { "q": "Wird der Bericht für mich geschrieben oder ist das ein Standardtext?", "a": "Der Bericht entsteht aus Ihren Antworten. Der Text ist für Ihr Profil geschrieben – eines von sechzehn. Das gesamte Kapitel 2 und einzelne Stellen in den Kapiteln 3, 5, 11, 12 und 13 hängen von Ihren Zahlen ab: von den Prozentwerten auf den vier Skalen, von der Zahl Ihrer Markierungen „am meisten“ und „am wenigsten“ und von Ihrem niedrigsten Wert. Auf jeder Seite steht Ihr Name." },
+        { "q": "In welcher Form kommt der Bericht?", "a": "Als PDF im Anhang einer E-Mail, rund 28 Seiten im Format A4. Er lässt sich gut am Bildschirm lesen und sauber ausdrucken; jedes der drei Arbeitsblätter passt auf eine Seite." },
+        { "q": "In welcher Sprache ist der Bericht?", "a": "Bisher gibt es den Bericht nur auf Russisch. Lassen Sie sich benachrichtigen – wir schreiben Ihnen, sobald Sie ihn auf Deutsch bestellen können." },
+        { "q": "Ist das eine Diagnose oder eine Beurteilung meiner Fähigkeiten?", "a": "Nein. Der Bericht beschreibt Ihren Verhaltensstil anhand Ihrer Antworten. Er stellt keine Diagnosen, misst keine Intelligenz und sagt keinen Erfolg voraus." },
+        { "q": "Kann ich mein Geld zurückbekommen?", "a": "Wann und wie Sie Ihr Geld zurückerhalten, steht in den {refund}." }
+      ],
+      "priceLabel": "Preis",
+      "price": "{price} USD",
+      "docs": "Die Leistung heißt „Ausführliches DISG-Profil“; für sie gelten unsere {offer}. Wann und wie Sie Ihr Geld zurückerhalten, steht in den {refund}.",
+      "buy": {
+        "testTitle": "Der Bericht entsteht aus Ihrem Testergebnis",
+        "testText": "Machen Sie zuerst den kostenlosen Test: 24 Blöcke, etwa 10 Minuten. Ihr Ergebnis und den Kurzbericht sehen Sie sofort. Den ausführlichen Bericht gibt es auf Deutsch noch nicht; sobald Ihr Ergebnis vorliegt, können Sie sich auf dieser Seite benachrichtigen lassen.",
+        "testButton": "Test starten",
+        "orderTitle": "Ihr Bericht entsteht aus Ihrem Testergebnis vom {date}",
+        "orderText": "Den ausführlichen Bericht gibt es auf Deutsch noch nicht. Lassen Sie sich benachrichtigen – wir schreiben Ihnen, sobald Sie ihn bestellen können.",
+        "orderButton": "Benachrichtigung anfordern",
+        "orderMsg": "Ich möchte den ausführlichen DISG-Bericht auf Deutsch erhalten. Bitte schreiben Sie mir, sobald ich ihn bestellen kann.\n\nMein Ergebnis: {link}"
+      },
+      "pdf": {
+        "lead": "Der Kurzbericht sagt Ihnen, welcher Typ Sie sind. Der ausführliche Bericht zeigt, was Sie damit anfangen können.",
+        "facts": [
+          ["28", "Seiten"],
+          ["13", "Kapitel"],
+          ["5", "Übungen"],
+          ["3", "Arbeitsblätter"]
+        ],
+        "list": ["Was die Zahlen Ihres Profils bedeuten", "So gehen Sie auf andere Profile ein", "Praktische Tipps für mehr Wirksamkeit"],
+        "where": "Mehr erfahren:"
+      },
+      "block": {
+        "eyebrow": "Ausführlicher Bericht",
+        "title": "Was tun mit Ihrem Profil? 13 Kapitel auf Basis Ihrer Antworten",
+        "hook": "Ihr niedrigster Wert: {k}, {name} – {pct} %. Der ausführliche Bericht erklärt, was das bedeutet, und enthält eine Übung dazu.",
+        "list": [
+          "Skala für Skala: was jede Ihrer vier Zahlen bedeutet",
+          "Fünf blinde Flecken und fünf Übungen – mit Anzeichen dafür, dass sie wirken",
+          "So sprechen Sie mit Menschen jedes Stils: Gesprächstechniken und fertige Formulierungen",
+          "Drei Arbeitsblätter: 30-Tage-Plan, das Wichtigste auf einer Seite, ein Blatt fürs Team"
+        ],
+        "price": "{price} USD · PDF per E-Mail",
+        "button": "Benachrichtigung anfordern",
+        "free": "Test und Kurzbericht bleiben kostenlos.",
+        "topTitle": "Ausführlicher Bericht zu Ihrem Ergebnis",
+        "topText": "13 Kapitel darüber, was Sie mit Ihrem Profil anfangen können: jede Skala erklärt, fünf Übungen, ein 30-Tage-Plan.",
+        "topButton": "Mehr erfahren – {price} USD",
+        "anchor": "Was im Bericht steht",
+        "soon": "Auf Deutsch gibt es den Bericht noch nicht. Lassen Sie sich benachrichtigen – wir schreiben Ihnen, sobald Sie ihn bestellen können."
+      }
     },
     "contact": {
       "title": "Kontakt – Nachricht an die Redaktion des DISG-Tests",
@@ -987,8 +1249,8 @@
           ]
         },
         {
-          "h": "Ausführlicher Bericht zum Papierergebnis",
-          "p": ["Die Papierversion liefert das Profil und eine Kurzbeschreibung. Für den vollständigen Bericht mit Diagramm, Stärken, Entwicklungsfeldern und Kommunikationsempfehlungen öffnen Sie die Seite Ihres Profils in der Liste der 16 Profile oder machen den Test online: Das dauert etwa zehn Minuten."]
+          "h": "Bericht zum Papierergebnis",
+          "p": ["Die Papierversion liefert das Profil und eine Beschreibung in wenigen Zeilen. Für den Kurzbericht mit Diagramm, Stärken, Entwicklungsfeldern und Kommunikationsempfehlungen öffnen Sie die Seite Ihres Profils in der Liste der 16 Profile oder machen den Test online: Das dauert etwa zehn Minuten."]
         }
       ]
     },
@@ -1388,7 +1650,7 @@
     "intro.howText": "Der Test besteht aus 24 Blöcken mit je vier Aussagen, insgesamt 96. Markieren Sie in jedem Block die Aussage, die <b>am meisten</b> auf Sie zutrifft, und die, die <b>am wenigsten</b> auf Sie zutrifft. Antworten Sie so, wie Sie sich bei der Arbeit tatsächlich verhalten, nicht so, wie Sie es gern täten. Überlegen Sie nicht lange: Die erste Reaktion ist die genaueste.",
     "intro.nameLabel": "Name",
     "intro.emailLabel": "E-Mail-Adresse für das Ergebnis",
-    "intro.emailHint": "An diese Adresse erhalten Sie eine E-Mail mit dem Link zum vollständigen Bericht. Name, E-Mail-Adresse und Ergebnis werden in der Ergebnisdatenbank des Seitenbetreibers gespeichert.",
+    "intro.emailHint": "An diese Adresse erhalten Sie eine E-Mail mit dem Link zum Kurzbericht. Name, E-Mail-Adresse und Ergebnis werden in der Ergebnisdatenbank des Seitenbetreibers gespeichert.",
     "intro.requiredNote": "Mit Sternchen (*) markierte Felder sind Pflichtfelder.",
     "intro.start": "Test starten",
     "intro.startNote": "24 Blöcke · etwa 10 Minuten · ohne Anmeldung",
@@ -1476,11 +1738,11 @@
     "email.subject": "Ihr DISG-Testergebnis: {label}",
     "email.greeting": "Hallo {name},",
     "email.intro": "Sie haben den DISG-Test abgeschlossen. Ihr Profil:",
-    "email.open": "Vollständigen Bericht öffnen",
+    "email.open": "Kurzbericht öffnen",
     "email.scores": "Ausprägung der Stile",
     "email.linkNote": "Falls die Schaltfläche nicht funktioniert, kopieren Sie diesen Link in Ihren Browser:",
-    "email.attached": "Der vollständige Bericht liegt dieser E-Mail als PDF bei.",
-    "email.footer": "Diese E-Mail wurde automatisch versendet, weil diese Adresse beim Test angegeben wurde. Der vollständige Bericht mit Stärken, Entwicklungsfeldern und Empfehlungen ist über den Link oben abrufbar.",
+    "email.attached": "Der Kurzbericht liegt dieser E-Mail als PDF bei.",
+    "email.footer": "Diese E-Mail wurde automatisch versendet, weil diese Adresse beim Test angegeben wurde. Der Kurzbericht mit Stärken, Entwicklungsfeldern und Empfehlungen ist über den Link oben abrufbar.",
     "email.subscribed": "Sie haben zugestimmt, an diese Adresse E-Mails von disc-test.org zu erhalten.",
     "email.unsubscribe": "Newsletter abbestellen",
 
@@ -1525,6 +1787,7 @@
     "nav.contact": "Kontakt",
     "nav.privacy": "Datenschutz",
     "nav.services": "Leistungen",
+    "nav.offer": "AGB",
     "nav.results": "Ergebnis verstehen",
     "nav.compat": "Zusammenarbeit der Stile",
     "nav.colors": "DISG-Farben",

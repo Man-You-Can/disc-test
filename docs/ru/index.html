@@ -162,7 +162,7 @@ html[lang=ar] body,html[lang=hi] body{font-size:17px;line-height:1.65}
   .sitenav::-webkit-scrollbar{display:none}
   .sitenav a{white-space:nowrap;flex:none}
 }
-.crumbs{font-size:13px;color:var(--muted);margin:0 0 16px}
+.crumbs{font-size:13px;color:var(--muted);margin:0 0 16px;overflow-wrap:anywhere}
 .crumbs a{color:var(--muted);text-decoration:none}
 .crumbs a:hover{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
 .crumbs span{margin:0 6px}
@@ -216,6 +216,7 @@ html[lang=ar] body,html[lang=hi] body{font-size:17px;line-height:1.65}
 .xact{margin:16px 0 10px;gap:10px 16px}
 .xprice{font-weight:600}
 .xoffer .xfree{margin:0;font-size:13px;color:var(--muted)}
+.xoffer .xsoon{margin:16px 0 0;padding:10px 14px;border:1px dashed var(--line-strong);border-radius:10px;font-size:14px;color:var(--muted)}
 .content .xfacts{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 22px;padding:0;list-style:none}
 .content .xfacts li{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:14px;margin:0}
 .xsample{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:14px 0 8px}
@@ -272,7 +273,7 @@ html[lang|=zh] [lang]:not([lang|=zh]):not([lang|=ja]),html[lang=ja] [lang]:not([
 .progress i{display:block;background:var(--line);border-radius:2px;transition:background .2s}
 .progress i.done{background:var(--ink)}
 .progress i.cur{background:var(--ink);opacity:.35}
-h1{font-family:var(--font-head);font-weight:500;font-size:clamp(26px,4.2vw,36px);line-height:1.2;letter-spacing:-.01em;margin:0 0 14px;text-wrap:balance}
+h1{font-family:var(--font-head);font-weight:500;font-size:clamp(26px,4.2vw,36px);line-height:1.2;letter-spacing:-.01em;margin:0 0 14px;text-wrap:balance;overflow-wrap:anywhere;hyphens:auto}   /* длинное слово в заголовке (нем. «Geschäftsbedingungen») переносится, а не раздвигает страницу на телефоне */
 h2{font-family:var(--font-head);font-weight:500;font-size:17px;line-height:1.35;margin:0 0 12px;text-wrap:balance}
 h3{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin:0 0 8px}
 html[lang=ar] h3,html[lang=hi] h3,html[lang|=zh] h3,html[lang=ja] h3,html[lang=ar] .eyebrow,html[lang=hi] .eyebrow,html[lang|=zh] .eyebrow,html[lang=ja] .eyebrow{letter-spacing:.04em;font-size:13px}
@@ -804,8 +805,10 @@ function renderReport(r, opts){
   var colorName = co ? [cls.p].concat(cls.s?[cls.s]:[]).map(function(k){ return co.colors[k].name; }).join(' + ') : '';
 
   function list(arr){ return '<ul>'+arr.map(function(x){ return '<li>'+esc(x)+'</li>'; }).join('')+'</ul>'; }
-  // блок «Расширенный отчёт» (только в языках, где отчёт есть: тексты в L.content.product): зацепка — самая низкая шкала участника,
-  // она определяется так же, как в самом отчёте (последняя по итогу; при равенстве — более поздняя в порядке D, I, S, C)
+  // блок «Расширенный отчёт» (тексты в L.content.product): зацепка — самая низкая шкала участника,
+  // она определяется так же, как в самом отчёте (последняя по итогу; при равенстве — более поздняя в порядке D, I, S, C).
+  // PB.sample — подпись к листам образца: сборка оставляет её только там, где листы есть (отчёт на этом языке написан);
+  // PB.soon — строка о заявке в языках, где отчёт пока нельзя заказать
   var PB = L.content && L.content.product, extHref = base+'extended-report/';
   var low = KEYS.slice().sort(function(x,y){ return sc.net[y]-sc.net[x]; })[3];
   function extOffer(){
@@ -815,9 +818,10 @@ function renderReport(r, opts){
       '<div class="eyebrow">'+esc(PB.eyebrow)+'</div><h2>'+esc(PB.title)+'</h2>'+
       '<p class="xhook">'+esc(hook)+'</p>'+
       '<div class="xgrid">'+list(PB.list)+
-        '<div class="xside"><a class="xthumbs" href="'+extHref+'#sample" aria-label="'+esc(PB.sample)+'">'+[1,2,4].map(function(n){ return '<img src="'+ROOT_REL+'extended/'+L.lang+'-i-'+n+'-s.webp" width="440" height="623" alt="" loading="lazy" decoding="async">'; }).join('')+'</a>'+
-          '<p>'+esc(PB.sample)+'</p></div>'+
+        (PB.sample ? '<div class="xside"><a class="xthumbs" href="'+extHref+'#sample" aria-label="'+esc(PB.sample)+'">'+[1,2,4].map(function(n){ return '<img src="'+ROOT_REL+'extended/'+L.lang+'-i-'+n+'-s.webp" width="440" height="623" alt="" loading="lazy" decoding="async">'; }).join('')+'</a>'+
+          '<p>'+esc(PB.sample)+'</p></div>' : '')+
       '</div>'+
+      (PB.soon ? '<p class="xsoon">'+esc(PB.soon)+'</p>' : '')+
       '<div class="actions xact"><a class="btn" href="'+extHref+'">'+esc(PB.button)+'</a><span class="xprice">'+esc(PB.price)+'</span></div>'+
       '<p class="xfree">'+esc(PB.free)+'</p>'+
     '</section>';
