@@ -304,6 +304,8 @@ html[lang|=zh] [lang]:not([lang|=zh]):not([lang|=ja]),html[lang=ja] [lang]:not([
 .progress i.cur{background:var(--ink);opacity:.35}
 h1{font-family:var(--font-head);font-weight:500;font-size:clamp(26px,4.2vw,36px);line-height:1.2;letter-spacing:-.01em;margin:0 0 14px;text-wrap:balance;overflow-wrap:anywhere;hyphens:auto}   /* длинное слово в заголовке (нем. «Geschäftsbedingungen») переносится, а не раздвигает страницу на телефоне */
 h2{font-family:var(--font-head);font-weight:500;font-size:17px;line-height:1.35;margin:0 0 12px;text-wrap:balance}
+/* 320–359 px: длинное слово в заголовке раздела («Добросовестность», «Verarbeitungsvorgänge») переносится, как в h1 */
+@media (max-width:359px){h2{overflow-wrap:anywhere;-webkit-hyphens:auto;hyphens:auto}}
 h3{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin:0 0 8px}
 html[lang=ar] h3,html[lang=hi] h3,html[lang|=zh] h3,html[lang=ja] h3,html[lang=ar] .eyebrow,html[lang=hi] .eyebrow,html[lang|=zh] .eyebrow,html[lang=ja] .eyebrow{letter-spacing:.04em;font-size:13px}
 p{margin:0 0 12px}
@@ -363,8 +365,8 @@ input:focus-visible,textarea:focus-visible,button:focus-visible,select:focus-vis
 .qhead{display:grid;grid-template-columns:64px 1fr 64px;align-items:end;gap:6px;padding-bottom:10px}
 .qhead span{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);text-align:center;line-height:1.25}
 html[lang=ar] .qhead span,html[lang=hi] .qhead span,html[lang|=zh] .qhead span,html[lang=ja] .qhead span{letter-spacing:0;font-size:12px}
-/* id: в подписи длинное слово с мягким переносом (menggam-barkan); подпись шире колонки и стоит по её оси, а не выступает за карточку */
-html[lang=id] .qhead span:not(.n){justify-self:center;width:min-content;min-width:100%}
+/* слово в подписи шире колонки (de «wenigsten», tr «tanımlayan», id «menggam-barkan» с мягким переносом): подпись стоит по оси колонки, а не выступает вправо за карточку */
+.qhead span:not(.n){justify-self:center;width:min-content;min-width:100%}
 .qhead .n{font-family:var(--font-mono);font-size:13px;color:var(--muted);text-align:center;text-transform:none;letter-spacing:0;font-weight:400;direction:ltr;padding-bottom:2px}
 .row{display:grid;grid-template-columns:64px minmax(0,1fr) 64px;align-items:center;min-height:60px;border-top:1px solid var(--line);gap:6px}
 .row .txt{font-size:17px;padding:12px 6px;line-height:1.35}
@@ -445,7 +447,7 @@ html[lang=id] .qhead span:not(.n){justify-self:center;width:min-content;min-widt
 .fsize{flex:none;color:var(--muted);font-size:13px;font-variant-numeric:tabular-nums;white-space:nowrap}
 .fdel{flex:none;background:none;border:0;color:var(--muted);font:inherit;font-size:20px;line-height:1;cursor:pointer;padding:2px 8px;border-radius:6px}
 .fdel:hover{color:var(--d);background:var(--soft)}
-.hp{position:absolute;left:-9999px;top:0;width:1px;height:1px;overflow:hidden}
+.hp{position:absolute;inset-inline-start:-9999px;top:0;width:1px;height:1px;overflow:hidden} /* не left: в арабской версии поле слева от страницы давало прокрутку вбок на 10 000 px */
 .contactdirect{margin-top:14px}
 .contactdirect a,.contactcard .hint a,.sendstatus a{color:inherit}
 /* admin */
