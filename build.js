@@ -822,7 +822,7 @@ if (cfg.reportAd === true || process.env.REPORT_AD === '1') {
     const files = sheets.map(n => path.join(dir, L.lang + '-i-' + n + '-p.jpg'));
     if (!P || !P.pdf || !P.block || !servicePrices[L.content.services.currency] || !files.every(f => fs.existsSync(f))) continue;
     const price = String(servicePrices[L.content.services.currency]);
-    mailData[L.lang].reportAd = { eyebrow: P.h1, title: P.block.title, lead: P.pdf.lead, facts: P.pdf.facts, volume: P.pdf.volume, hook: P.block.hook, list: P.block.list, sample: P.block.sample, captions: sheets.map(n => P.sampleCaption[n - 1]),
+    mailData[L.lang].reportAd = { eyebrow: P.h1, title: P.block.title, lead: P.pdf.lead, facts: P.pdf.facts, hook: P.block.hook, list: P.pdf.list || P.block.list, sample: P.block.sample, captions: sheets.map(n => P.sampleCaption[n - 1]),
       price: P.block.price.replace('{price}', price), button: P.block.button, free: P.block.free, where: P.pdf.where,
       images: files.map(f => 'data:image/jpeg;base64,' + fs.readFileSync(f).toString('base64')) };
   }

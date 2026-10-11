@@ -590,9 +590,9 @@ function reportAdHtml(L, r, lang, sc, start, end) {
   var dir = L.dir || 'ltr';
   var stripe = '<table width="100%" cellpadding="0" cellspacing="0"><tr>' + KEYS.map(function (k) { return '<td width="25%" bgcolor="' + COLORS[k] + '" style="height:4px;font-size:1px;line-height:1px">&nbsp;</td>'; }).join('') + '</tr></table>';
   var items = A.list.map(function (t) {
-    return '<tr><td valign="top" style="padding:0 7px 6px 0;font-weight:bold;color:#3A9A69">✓</td><td valign="top" style="padding:0 0 6px">' + esc(t) + '</td></tr>';
+    return '<tr><td valign="top" style="padding:6px 9px 6px 0;font-size:12pt;font-weight:bold;color:#3A9A69">✓</td><td valign="top" style="padding:6px 0;font-size:12pt;line-height:1.35">' + esc(t) + '</td></tr>';
   }).join('');
-  // объём отчёта: четыре числа цветами шкал и строка под ними
+  // объём отчёта: четыре числа цветами шкал
   var facts = (A.facts || []).map(function (f, n) {
     return '<td width="25%" valign="top" style="padding:0 4px"><span style="font-size:20pt;font-weight:bold;line-height:1.1;color:' + COLORS[KEYS[n % 4]] + '">' + esc(f[0]) + '</span><br><span style="font-size:9pt;color:#5B6470">' + esc(f[1]) + '</span></td>';
   }).join('');
@@ -604,13 +604,12 @@ function reportAdHtml(L, r, lang, sc, start, end) {
     '<div style="border:1px solid #C9CED6;border-top:0;padding:11px 16px 14px">' +
     '<p style="margin:0;font-size:9pt;font-weight:bold;text-transform:uppercase;color:#5B6470">' + esc(A.eyebrow) + '</p>' +
     '<p style="margin:3px 0 0;font-size:17pt;font-weight:bold;line-height:1.2;text-wrap:balance">' + esc(A.title) + '</p>' +
-    '<p style="margin:8px 0 0;text-wrap:pretty">' + esc(A.lead) + '</p>' +
+    '<p style="margin:8px 0 0;text-wrap:balance">' + esc(A.lead) + '</p>' +
     (facts ? '<table width="100%" cellpadding="0" cellspacing="0" dir="' + dir + '" style="margin-top:8px"><tr>' + facts + '</tr></table>' : '') +
-    (A.volume ? '<p style="margin:4px 0 0;padding:0 4px;font-size:9.5pt;color:#5B6470">' + esc(A.volume) + '</p>' : '') +
     '<p style="margin:9px 0 0;padding:6px 10px;background:#F3F4F6;border-' + start + ':3px solid ' + COLORS[low] + '">' + esc(fmt(A.hook, { k: low, name: L.keys[low], pct: pct(sc.net[low]) })) + '</p>' +
     // слева — что внутри, справа — листы образца
     '<table width="100%" cellpadding="0" cellspacing="0" dir="' + dir + '" style="margin-top:10px"><tr>' +
-      '<td width="56%" valign="top" style="padding-' + end + ':14px"><table cellpadding="0" cellspacing="0" dir="' + dir + '">' + items + '</table></td>' +
+      '<td width="56%" valign="middle" style="padding-' + end + ':14px"><table cellpadding="0" cellspacing="0" dir="' + dir + '">' + items + '</table></td>' +
       '<td width="44%" valign="top"><table width="100%" cellpadding="0" cellspacing="0" dir="' + dir + '"><tr>' + thumbs + '</tr></table>' +
         '<p style="margin:4px 0 0;font-size:7.5pt;color:#5B6470;text-align:center">' + esc(A.sample) + '</p></td>' +
     '</tr></table>' +
