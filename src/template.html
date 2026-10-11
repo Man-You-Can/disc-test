@@ -784,7 +784,7 @@ function renderReport(r, opts){
   if($('#restart')) $('#restart').addEventListener('click', function(){ if(location.hash) history.replaceState(null,'',pageURL()); renderIntro(); window.scrollTo(0,0); });
   if($('#backAdmin')) $('#backAdmin').addEventListener('click', function(){ renderAdmin(); window.scrollTo(0,0); });
   if(opts.own){
-    if(r.email && r.sent) showSendStatus(r, code, 'sent');
+    if(r.email && r.sent) showSendStatus(r, code, 'sent'); else if(r.email && r.queued) showSendStatus(r, code, 'queued');
     renderSub(r);
     $('#sendForm').addEventListener('submit', function(e){
       e.preventDefault();
@@ -861,7 +861,7 @@ function postJSON(url, data){
     fetch(url, {method:'POST', body:JSON.stringify(data), signal: ctrl ? ctrl.signal : undefined, redirect:'follow'})
       .then(function(res){ return res.text(); })
       .then(function(txt){ if(done) return; done = true; clearTimeout(tm); var j = null; try{ j = JSON.parse(txt); }catch(e){}
-        if(j && j.ok) resolve(j); else reject(new Error((j && j.error) || 'bad response')); })
+        if(j && j.ok) resolve(j); else { var er = new Error((j && j.error) || 'bad response'); er.queued = !!(j && j.queued); reject(er); } })
       .catch(function(err){ if(done) return; done = true; clearTimeout(tm); reject(err); });
   });
 }
@@ -872,6 +872,8 @@ function showSendStatus(r, code, state){
   if(st==='mailto'){ el.className='small sendstatus muted'; el.textContent = t('share.mailtoOpened',{email:r.email}); return; }
   if(st==='sending'){ el.className='small sendstatus muted'; el.textContent = t('share.sending',{email:r.email}); return; }
   if(st==='sent'){ el.className='small sendstatus ok'; el.textContent = t('share.sent',{email:r.email}); return; }
+  // почтовый сервис не ответил, сервер поставил письмо на повтор: письмо придёт само, кнопка «Отправить ещё раз» не нужна
+  if(st==='queued'){ el.className='small sendstatus muted'; el.textContent = t('share.sendQueued',{email:r.email}); return; }
   el.className='small sendstatus err';
   el.innerHTML = esc(t('share.sendFailed',{email:r.email}))+' <button class="link" type="button" id="resend">'+t('share.retry')+'</button>';
   $('#resend').addEventListener('click', function(){ sendResult(r, code); });
@@ -888,7 +890,11 @@ function sendResult(r, code){
     var last = lsGet('disc.last'); if(last && last.t===r.t){ last.sent = r.sent; lsSet('disc.last', last); }
     showSendStatus(r, code, 'sent');
     if(sub) renderSub(r, !j.subscribed);
-  }, function(){ showSendStatus(r, code, 'failed'); });
+  }, function(err){
+    // queued — сервер сохранил результат и сам отправит письмо, когда почтовый сервис заработает; отметка остаётся и после перезагрузки страницы
+    if(err && err.queued){ r.queued = true; var last = lsGet('disc.last'); if(last && last.t===r.t){ last.queued = true; lsSet('disc.last', last); } showSendStatus(r, code, 'queued'); }
+    else showSendStatus(r, code, 'failed');
+  });
 }
 /* ====== согласие на рассылку: галочка в форме отправки результата. Сервер отмечает согласие в строке результата
    (дата, текст у галочки, ссылка для отписки) и отвечает subscribed:true; без этого ответа подписка не считается оформленной ====== */
