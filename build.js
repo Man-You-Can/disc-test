@@ -688,14 +688,17 @@ for (const L of locales) {
         const crumbs2 = h1 => [{ name: t('nav.services'), href: '../../services/', sub: 'services/' }, { name: pr.h1, href: '../', sub: 'extended-report/' }, { name: h1 }];
         const fill2 = html => html.replace(/\{contact\}/g, () => `<a href="../../contact/">${escFull(t('nav.contact'))}</a>`).replace(/\{email\}/g, () => vars.email);
         const pick = (o, keys) => JSON.stringify(Object.fromEntries(keys.map(k => [k, o[k]]))).replace(/</g, '\\u003c');
+        // знак над заголовком: зелёная галочка на «Спасибо», красный «кирпич» на «Оплата не прошла» — исход виден сразу, до чтения текста
+        const payMark = kind => `<svg class="paymark ${kind}" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="32" fill="currentColor"/>` +
+          (kind === 'ok' ? '<path d="M18 33.5l9.5 9.5L46 24" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>' : '<rect x="13" y="26" width="38" height="12" rx="2" fill="#fff"/>') + '</svg>';
         writeContentPage(L, 'extended-report/thanks/', { noindex: true, noDate: true, navKey: 'nav.services', langs: own2, title: th.title, description: th.description, crumbs: crumbs2(th.h1),
-          content: `<div class="eyebrow">${escFull(pr.h1)}</div><h1>${escFull(th.h1)}</h1><p class="lead" id="payLead">${escFull(th.lead)}</p>` +
+          content: payMark('ok') + `<div class="eyebrow">${escFull(pr.h1)}</div><h1>${escFull(th.h1)}</h1><p class="lead" id="payLead">${escFull(th.lead)}</p>` +
             `<p class="notice payorder ym-hide-content" id="payOrder" hidden></p><p class="small sendstatus" id="payStatus" aria-live="polite" hidden></p>` +
             fill2(`<h2>${escFull(th.nextTitle)}</h2>` + listHtml('ul', th.next) + `<h2>${escFull(th.helpTitle)}</h2>` + th.help.map(x => `<p>${escFull(x)}</p>`).join('')) +
             `<p class="seealso"><a href="../../">${escFull(th.back)} ${arrow(L)}</a> · <a href="../../refund/">${escFull(rf.h1)} ${arrow(L)}</a></p>`,
           pageJs: payJs + `\ninitPayThanks({T: ${pick(th, ['leadEmail', 'order', 'statusWait', 'statusPaid', 'statusSent'])}, endpoint: ${jsStr(payEndpoint)}, price: ${servicePrices[sv.currency] || 0}, lsGet: lsGet, lsSet: lsSet, $: $});` });
         writeContentPage(L, 'extended-report/failed/', { noindex: true, noDate: true, navKey: 'nav.services', langs: own2, title: fl.title, description: fl.description, crumbs: crumbs2(fl.h1),
-          content: `<div class="eyebrow">${escFull(pr.h1)}</div><h1>${escFull(fl.h1)}</h1><p class="lead">${escFull(fl.lead)}</p>` +
+          content: payMark('fail') + `<div class="eyebrow">${escFull(pr.h1)}</div><h1>${escFull(fl.h1)}</h1><p class="lead">${escFull(fl.lead)}</p>` +
             `<p class="notice payorder ym-hide-content" id="payOrder" hidden></p>` +
             `<h2>${escFull(fl.tryTitle)}</h2>` + listHtml('ul', fl.try) + `<p class="payretry"><a class="btn" href="../#buy">${escFull(fl.button)}</a></p>` +
             fill2(`<p class="small muted">${escFull(fl.charged)}</p>`) +
