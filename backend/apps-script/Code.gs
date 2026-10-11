@@ -603,8 +603,8 @@ function reportAdHtml(L, r, lang, sc, start, end) {
   return '<div style="margin-top:14px;break-inside:avoid;page-break-inside:avoid">' + stripe +
     '<div style="border:1px solid #C9CED6;border-top:0;padding:11px 16px 14px">' +
     '<p style="margin:0;font-size:9pt;font-weight:bold;text-transform:uppercase;color:#5B6470">' + esc(A.eyebrow) + '</p>' +
-    '<p style="margin:3px 0 0;font-size:17pt;font-weight:bold;line-height:1.2;text-wrap:balance">' + esc(A.title) + '</p>' +
-    '<p style="margin:8px 0 0;text-wrap:balance">' + esc(A.lead) + '</p>' +
+    '<p style="margin:3px 0 0;font-size:14.5pt;font-weight:bold;line-height:1.2">' + esc(A.title) + '</p>' +
+    '<p style="margin:8px 0 0">' + esc(A.lead).replace(/«[^»]*»/g, function (m) { return m.replace(/ /g, '&nbsp;'); }) + '</p>' +
     (facts ? '<table width="100%" cellpadding="0" cellspacing="0" dir="' + dir + '" style="margin-top:8px"><tr>' + facts + '</tr></table>' : '') +
     '<p style="margin:9px 0 0;padding:6px 10px;background:#F3F4F6;border-' + start + ':3px solid ' + COLORS[low] + '">' + esc(fmt(A.hook, { k: low, name: L.keys[low], pct: pct(sc.net[low]) })) + '</p>' +
     // слева — что внутри, справа — листы образца
