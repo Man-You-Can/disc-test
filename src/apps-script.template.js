@@ -45,6 +45,7 @@ var OWNER_COPY = '';                 // e-mail для скрытой копии 
 var SENDER_NAME = '';                // имя отправителя; '' — название теста на языке участника и домен: «Тест DISC · disc-test.org»
 var SENDER_EMAIL = '__SENDER_EMAIL__';  // адрес отправителя: должен быть добавлен в Gmail → Настройки → Аккаунты → «Отправлять письма как»; '' — основной адрес аккаунта
 var ATTACH_PDF = true;               // прикладывать к письму PDF с полным отчётом
+var EXTENDED_PRICE_RUB = __PRICE_RUB__;  // цена расширенного отчёта в рублях (servicePriceRub в site.config.json): по ней свой сервер создаёт заказ; 0 — услуги нет
 var CONTACT_TO = '__CONTACT_TO__';   // адрес формы обратной связи (feedbackEmail в site.config.json); '' — форма отключена
 var MAX_CONTACT_BYTES = __MAX_CONTACT_BYTES__;  // общий размер вложений одного сообщения (то же число проверяет браузер)
 var MAX_CONTACT_FILES = 20;
@@ -252,6 +253,36 @@ function extendedColumn(sheet) {
   sheet.getRange(1, c, 1, 1).setValues([[EXT_HEADER]]).setFontWeight('bold');
   return c;
 }
+/**
+ * Письмо-напоминание о начатой и не завершённой оплате расширенного отчёта (отправляет свой сервер, один раз на заказ).
+ * o: {order — номер заказа, url — ссылка на оплату, until — дата, до которой она действует (Date), price — цена в рублях}.
+ */
+function composePayRemindMail(r, lang, o) {
+  var L = DATA[lang], X = L.pay.remind;
+  var c = classify(score(r)), prof = L.profiles[c.key];
+  var styleName = c.s ? L.keys[c.p] + ' + ' + L.keys[c.s] : L.keys[c.p];
+  var site = SITE_URL.replace(/^https?:\/\//, '');
+  var vars = { site: site, order: o.order, price: o.price, date: Utilities.formatDate(o.until, 'Europe/Moscow', 'dd.MM.yyyy') };
+  var greeting = fmt(L.email.greeting, { name: r.name });
+  var badge = '<span style="color:' + COLORS[c.p] + '">' + c.p + '</span>' + (c.s ? '<span style="color:' + COLORS[c.s] + ';font-size:22px">' + c.s + '</span>' : '');
+  var html = '<!DOCTYPE html><html lang="' + lang + '" dir="' + (L.dir || 'ltr') + '"><body style="margin:0;background:#F3F4F6;font-family:Arial,Helvetica,sans-serif;color:#1B2027">' +
+    '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F3F4F6"><tr><td align="center" style="padding:24px 12px">' +
+    '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background:#ffffff;border:1px solid #D9DDE3;border-radius:14px"><tr><td style="padding:28px;font-size:16px;line-height:1.5">' +
+    '<p style="margin:0 0 16px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#5B6470;font-weight:bold">DISC</p>' +
+    '<p style="margin:0 0 8px">' + esc(greeting) + '</p>' +
+    '<p style="margin:0 0 14px">' + esc(fmt(X.intro, vars)) + '</p>' +
+    '<p style="margin:0 0 2px;font-size:34px;font-weight:bold;line-height:1">' + badge + '&nbsp; ' + esc(prof.name) + '</p>' +
+    '<p style="margin:0 0 18px;font-size:13px;color:#5B6470">' + esc(styleName) + '</p>' +
+    '<p style="margin:0 0 18px">' + esc(fmt(X.price, vars)) + '</p>' +
+    '<p style="margin:0 0 14px"><a href="' + esc(o.url) + '" style="display:inline-block;background:#1B2027;color:#ffffff;text-decoration:none;font-weight:bold;padding:12px 22px;border-radius:8px">' + esc(X.button) + '</a></p>' +
+    '<p style="margin:0 0 18px;font-size:13px;color:#5B6470">' + esc(fmt(X.valid, vars)) + '</p>' +
+    '<p style="margin:0;padding-top:12px;border-top:1px solid #D9DDE3;font-size:12px;color:#5B6470">' + esc(fmt(X.footer, vars)) + '</p>' +
+    '</td></tr></table></td></tr></table></body></html>';
+  var text = greeting + '\n\n' + fmt(X.intro, vars) + '\n' + c.key + ' · ' + prof.name + ' (' + styleName + ')\n\n' + fmt(X.price, vars) + '\n\n' +
+    X.button + ': ' + o.url + '\n' + fmt(X.valid, vars) + '\n\n' + fmt(X.footer, vars) + '\n';
+  return { subject: X.subject, html: html, text: text };
+}
+
 /** Отметка в строке результата; повторная отправка дописывается к прежней через «; ». */
 function noteExtended(saved, text) {
   if (!saved) return;

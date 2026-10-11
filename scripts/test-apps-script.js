@@ -286,6 +286,12 @@ check('extended with build notes: buyer still gets the report, owner gets the no
   mN.to === 'info@disc-test.org' && /с замечаниями: Пётр Буянов/.test(mN.subject) && mN.body.includes('профиль сбалансированный') && mN.body.includes('other@b.co') && !mN.attachments);
 check('extended: second sending is appended to the cell, row and column not duplicated', rows().filter(r => r[19] === cX).length === 1 && sheet1().rows[0].filter(h => h === 'Расширенный отчёт').length === 1 &&
   rowX()[extCol()] === 'отправлен 2026-09-07 12:00 на buyer@b.co, заказ 1042; отправлен 2026-09-07 12:00 на other@b.co');
+// оплата расширенного отчёта на своём сервере: цена и письмо-напоминание о неоконченной оплате (отправляет сервер, тексты и вёрстка — здесь)
+const pR = ctx.composePayRemindMail(ctx.decodeResult(cX), 'ru', { order: '261011-7K3QXM', url: 'https://api.disc-test.org/pay/go?order=261011-7K3QXM&key=k', until: new Date('2026-10-14T09:00:00Z'), price: ctx.EXTENDED_PRICE_RUB });
+check('pay: price from site settings, service name and reminder texts only where the report is sold', ctx.EXTENDED_PRICE_RUB === 490 && ctx.DATA.ru.pay.name === 'Расширенная версия DISC' && Object.keys(ctx.DATA).filter(lg => ctx.DATA[lg].pay).join() === 'ru');
+check('pay reminder: subject, greeting, profile, price, order, link valid until the date, nothing unfilled', pR.subject === 'Ваш расширенный отчёт DISC ждёт оплаты' && [pR.html, pR.text].every(s => s.includes('Пётр Буянов') && s.includes('Первопроходец') &&
+  s.includes('490 ₽') && s.includes('№ 261011-7K3QXM') && s.includes('действует до 2026-09-07')   /* дату здесь подставляет заглушка formatDate */ && !/\{\w+\}|undefined/.test(s)) && pR.html.includes('href="https://api.disc-test.org/pay/go?order=261011-7K3QXM&amp;key=k"') && (pR.html.match(/href=/g) || []).length === 1 &&
+  pR.text.includes('https://api.disc-test.org/pay/go?order=261011-7K3QXM&key=k'));
 const nRowsX = rows().length;
 check('extended for a result already in the table: same row marked', ext({ code, to: 'ivan@example.com' }).ok === true && rows().length === nRowsX && /^отправлен .* на ivan@example\.com$/.test(rows().find(r => r[19] === code)[extCol()]));
 check('extended: file name without .pdf or with a path is replaced', (() => { ext({ to: 'n1@b.co', filename: '../../etc/passwd' }); const a = sent[sent.length - 1].attachments[0].getName(); ext({ to: 'n2@b.co', filename: 'a/b\\c.pdf' }); return a === 'DISC-extended.pdf' && sent[sent.length - 1].attachments[0].getName() === 'a b c.pdf'; })());

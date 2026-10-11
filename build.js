@@ -806,11 +806,13 @@ for (const L of locales) {
     cta: { title: L.ui['cta.title'], text: L.ui['cta.text'], desc: L.ui['pages.profile.descCta'] } };
   // письмо с расширенным отчётом (платная услуга): тексты есть только в языках, где отчёт написан
   if (L.content.extendedMail) mailData[L.lang].extended = L.content.extendedMail;
+  // оплата расширенного отчёта на своём сервере: название услуги для платёжной страницы и чека, письмо-напоминание о неоконченной оплате
+  if (L.content.product && L.content.product.pay && L.content.product.pay.remind) mailData[L.lang].pay = { name: L.content.services.name, remind: L.content.product.pay.remind };
 }
 const gsTpl = fs.readFileSync(path.join(SRC, 'apps-script.template.js'), 'utf8');
 const gs = gsTpl
   .replace('__SITE_URL__', siteUrl).replace('__SEND_TOKEN__', String(cfg.sendToken || '').replace(/['\\]/g, ''))
-  .replace('__SENDER_EMAIL__', senderEmail).replace('__CONTACT_TO__', feedbackEmail).replace('__MAX_CONTACT_BYTES__', String(MAX_CONTACT_BYTES))
+  .replace('__SENDER_EMAIL__', senderEmail).replace('__CONTACT_TO__', feedbackEmail).replace('__PRICE_RUB__', String(servicePrices.RUB || 0)).replace('__MAX_CONTACT_BYTES__', String(MAX_CONTACT_BYTES))
   .replace('__BLOCK_KEYS__', BLOCK_KEYS).replace('__DATA__', () => JSON.stringify(mailData));
 fs.mkdirSync(path.join(ROOT, 'backend', 'apps-script'), { recursive: true });
 fs.writeFileSync(path.join(ROOT, 'backend', 'apps-script', 'Code.gs'), gs);
