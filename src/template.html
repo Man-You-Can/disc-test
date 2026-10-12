@@ -572,7 +572,7 @@ var SEND_ENDPOINT = '__SEND_ENDPOINT__'; // URL веб-приложения Goog
 var SEND_TOKEN = '__SEND_TOKEN__';
 var PD = '__PD__' === '1', PD_VERSION = '__PD_VERSION__'; // отдельная галочка согласия на обработку данных в форме отправки результата (pdConsent в site.config.json)
 var NEWSLETTER = '__NEWSLETTER__' === '1'; // галочка согласия на рассылку в форме отправки результата (newsletter в site.config.json)
-var STATS = '__STATS__' === '1'; // обезличенный счёт прохождений: при завершении теста серверу уходят только профиль и язык (profileStats в site.config.json)
+var STATS = '__STATS__' === '1'; // обезличенный счёт: в начале теста серверу уходит только язык, при завершении — только профиль и язык (profileStats в site.config.json)
 var ROOT_REL = '__ROOT_REL__';         // относительный путь к корню сайта ('./' на главной, '../' в /xx/)
 var IS_ROOT = '__IS_ROOT__' === '1';      // главная страница (язык по умолчанию живёт в корне)
 var LANG_PATH = __LANG_PATH_JSON__;       // код языка → путь от корня ('' для языка по умолчанию, 'ru/' и т. д.)
@@ -686,6 +686,7 @@ function renderIntro(){
     S = {name:'', email:'', i:0, m:[], l:[]};
     for(var k=0;k<24;k++){ S.m.push(-1); S.l.push(-1); }
     if(window.discTrack) window.discTrack('start'); // цель Метрики: тест начат
+    sendStart();
     lsSet('disc.progress', S);
     renderTest(); window.scrollTo(0,0);
   }
@@ -980,11 +981,15 @@ function arrowR(){ return L.dir==='rtl' ? '←' : '→'; }
 
 /* ====== обезличенный счёт прохождений: один запрос в момент, когда тест пройден, — профиль и язык версии, без имени, адреса,
    ответов и кода результата. Просмотр готового результата (по ссылке, из памяти браузера, после перезагрузки) запрос не шлёт.
+   Второй запрос — по кнопке «Начать тест»: только язык версии; продолжение начатого теста его не шлёт. Между собой запросы не связаны.
    Ответ странице не нужен, сбой молча пропускается ====== */
-function sendStat(r){
+function statPost(data){
   if(!STATS || !SEND_ENDPOINT || !window.fetch) return;
-  try{ fetch(SEND_ENDPOINT, {method:'POST', body:JSON.stringify({token:SEND_TOKEN, action:'stat', lang:L.lang, profile:analyze(r).cls.key}), keepalive:true})['catch'](function(){}); }catch(e){}
+  data.token = SEND_TOKEN; data.lang = L.lang;
+  try{ fetch(SEND_ENDPOINT, {method:'POST', body:JSON.stringify(data), keepalive:true})['catch'](function(){}); }catch(e){}
 }
+function sendStat(r){ statPost({action:'stat', profile:analyze(r).cls.key}); }
+function sendStart(){ statPost({action:'start'}); }
 
 /* ====== отправка результата на сервер: письмо участнику + запись в базу результатов (Google Таблица) ====== */
 function postJSON(url, data){

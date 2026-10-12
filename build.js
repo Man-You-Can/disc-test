@@ -80,6 +80,7 @@ const pdConsentText = L => { const cd = L.content.consentDoc, plain = str => Str
 const newsletter = !!(cfg.newsletter && cfg.sendEndpoint);
 // Обезличенный счёт прохождений: profileStats в site.config.json — в момент, когда тест пройден, страница шлёт на sendEndpoint профиль и язык версии
 // (action: 'stat'), без имени, адреса, ответов и кода результата; сервер пишет их в таблицу счёта, панель показывает на странице «Профили».
+// По кнопке «Начать тест» уходит вторая запись — только язык версии (action: 'start'): панель показывает на странице «Прохождения», сколько раз тест начали.
 // Тексты о данных (ui.privacy, content.policy, pd.cookieDetails) об этой записи говорят: ключ и тексты меняются только вместе.
 const profileStats = !!(cfg.profileStats && cfg.sendEndpoint);
 // Оплата расширенного отчёта: payEndpoint — адрес сервера оплаты (README → «Оплата расширенного отчёта»). Пока он пустой, на странице
