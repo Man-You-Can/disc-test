@@ -352,6 +352,7 @@ input:focus-visible,textarea:focus-visible,button:focus-visible,select:focus-vis
 .btn.secondary{background:transparent;color:var(--ink);border-color:var(--line-strong)}
 .btn.small{padding:8px 14px;font-size:14px}
 .btn:disabled{opacity:.4;cursor:not-allowed}
+.btn.off{opacity:.4}
 .btn:not(:disabled):hover{filter:brightness(.92)}
 .link{background:none;border:0;padding:0;font:inherit;color:var(--muted);cursor:pointer;text-decoration:underline;text-underline-offset:3px;text-align:start}
 .link:hover{color:var(--ink)}
@@ -382,6 +383,10 @@ input:focus-visible,textarea:focus-visible,button:focus-visible,select:focus-vis
 .qrows::after{inset-inline-end:0}
 .qgrid.need-m .qrows::before,.qgrid.need-l .qrows::after{border-color:var(--line-strong)}
 .qrows .row:first-child{border-top:0}
+/* «Далее» нажата, а отмечена не каждая колонка: дорожка без отметки дважды вспыхивает своим цветом (см. подсказку test.need*) */
+@keyframes lanepulse{0%,50%,100%{border-color:var(--line-strong);box-shadow:none}25%,75%{border-color:var(--k);box-shadow:0 0 0 3px color-mix(in srgb,var(--k) 30%,transparent)}}
+.qgrid.nudge-m .qrows::before{--k:var(--most);animation:lanepulse 1.4s}
+.qgrid.nudge-l .qrows::after{--k:var(--least);animation:lanepulse 1.4s}
 .qhead{display:grid;grid-template-columns:var(--col) minmax(0,1fr) var(--col);align-items:end;gap:6px;padding:0 0 8px}
 .qhead span.h{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);text-align:center;line-height:1.25}
 html[lang=ar] .qhead span.h,html[lang=hi] .qhead span.h,html[lang|=zh] .qhead span.h,html[lang=ja] .qhead span.h{letter-spacing:0;font-size:12px}
@@ -506,7 +511,7 @@ th.num{text-align:end}
 .pill .p{color:var(--kp)}.pill .s{color:var(--ks);font-size:12px}
 .pill+small{font-weight:400;color:var(--muted);margin-inline-start:6px;font-size:13px}
 .empty{padding:28px;text-align:center;color:var(--muted);font-size:14px}
-.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--btn);color:var(--btn-ink);padding:10px 16px;border-radius:10px;font-size:14px;box-shadow:var(--shadow);z-index:30;max-width:90vw;text-align:center}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--btn);color:var(--btn-ink);padding:10px 16px;border-radius:10px;font-size:14px;box-shadow:var(--shadow);z-index:30;width:max-content;max-width:90vw;text-align:center}
 /* уведомление о cookie */
 .consent{position:fixed;left:0;right:0;bottom:0;z-index:20;padding:0 12px 12px}
 .consent-in{max-width:760px;margin:0 auto;background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:14px 16px;display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;font-size:13px;line-height:1.5}
