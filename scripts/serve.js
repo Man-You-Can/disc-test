@@ -8,7 +8,7 @@ http.createServer((req, res) => {
   if (req.method === 'POST' && (p === '/mock-send' || p === '/mock-fail' || p === '/mock-queued')) { // заглушка для локальной проверки отправки результата (письмо + база)
     let body = ''; req.on('data', c => body += c); req.on('end', () => {
       let j = null; try { j = JSON.parse(body); } catch (e) {}
-      if (j && j.action === 'contact') console.log('mock-send contact:', j.name, '<' + j.email + '>', (j.files || []).map(f => f.name + ' (' + Math.round((f.data || '').length * 3 / 4 / 1024) + ' KB)').join(', ') || 'no files', 'hp=' + JSON.stringify(j.hp || ''));
+      if (j && j.action === 'contact') console.log('mock-send contact:', j.name, '<' + j.email + '>', 'subject=' + JSON.stringify(j.subject || ''), (j.files || []).map(f => f.name + ' (' + Math.round((f.data || '').length * 3 / 4 / 1024) + ' KB)').join(', ') || 'no files', 'hp=' + JSON.stringify(j.hp || ''));
       else console.log('mock-send:', body.slice(0, 200));
       res.writeHead(200, { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' });
       // subscribed — как у настоящего скрипта: согласие на рассылку записано (в запросе subscribe:true или action:'subscribe')

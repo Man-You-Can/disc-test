@@ -160,10 +160,13 @@ function checkLimits(to, perHour, prefix) {
  * Тема и первая строка сведений письма с формы обратной связи. Заявка на расширенный отчёт (форма открыта кнопкой «Оставить заявку» со страницы
  * отчёта, запрос несёт topic: 'extended') получает свою тему с языком страницы: по ней владелец сразу видит, что это заявка и на каком языке
  * человек ждёт отчёт. Название языка — как в переключателе языков сайта (DATA[язык].name).
+ * subject — тема, которую человек указал в форме (обязательное поле с 12 октября 2026): в обычном сообщении она стоит в теме письма перед именем.
+ * Страница, открытая до появления поля, темы не присылает — тогда тема письма прежняя, только с именем.
  */
-function contactSubject(name, lang, topic) {
+function contactTopicLine(s) { return String(s || '').replace(/\s+/g, ' ').trim().slice(0, 120); }
+function contactSubject(name, lang, topic, subject) {
   var site = SITE_URL.replace(/^https?:\/\//, '');
-  if (topic !== 'extended') return 'Сообщение с сайта ' + site + ': ' + name;
+  if (topic !== 'extended') return 'Сообщение с сайта ' + site + ': ' + (subject ? subject + ' — ' : '') + name;
   return 'Заявка на расширенный отчёт — ' + contactLang(lang) + ': ' + name;
 }
 function contactLang(lang) { var L = DATA[lang]; return lang ? (L && L.name ? L.name + ' (' + lang + ')' : lang) : 'язык не указан'; }
@@ -193,10 +196,10 @@ function sendContact(b) {
   var limit = checkLimits(email, MAX_CONTACT_PER_SENDER_PER_HOUR, 'c:');
   if (limit) return out({ ok: false, error: limit });
   var lang = String(b.lang || '').replace(/[^a-z-]/gi, '').slice(0, 10), page = String(b.page || '').slice(0, 300);
-  var topic = b.topic === 'extended' ? 'extended' : '';
-  var meta = (topic ? 'Заявка на расширенный отчёт, язык: ' + contactLang(lang) + '\n' : '') + 'Имя: ' + name + '\nE-mail: ' + email + (lang ? '\nЯзык: ' + lang : '') + (page ? '\nСтраница: ' + page : '') + '\nПолучено: ' + stamp() +
+  var topic = b.topic === 'extended' ? 'extended' : '', subj = contactTopicLine(b.subject);
+  var meta = (topic ? 'Заявка на расширенный отчёт, язык: ' + contactLang(lang) + '\n' : '') + (subj ? 'Тема: ' + subj + '\n' : '') + 'Имя: ' + name + '\nE-mail: ' + email + (lang ? '\nЯзык: ' + lang : '') + (page ? '\nСтраница: ' + page : '') + '\nПолучено: ' + stamp() +
     (blobs.length ? '\nВложения: ' + blobs.map(function (x) { return x.getName(); }).join(', ') : '');
-  var subject = contactSubject(name, lang, topic);
+  var subject = contactSubject(name, lang, topic, subj);
   var html = '<div style="font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.5;color:#1B2027">' +
     '<p style="margin:0 0 18px">' + esc(msg).replace(/\n/g, '<br>') + '</p>' +
     '<p style="margin:0;padding-top:12px;border-top:1px solid #D9DDE3;font-size:13px;color:#5B6470">' + esc(meta).replace(/\n/g, '<br>') + '</p></div>';

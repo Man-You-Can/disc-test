@@ -118,7 +118,7 @@ const styleBlock = (tpl.match(/<style>[\s\S]*?<\/style>/) || [''])[0];
 const NAV_ITEMS = [['nav.test', ''], ['nav.disc', 'disc/'], ['nav.styles', 'styles/'], ['nav.profiles', 'profiles/'], ['nav.results', 'results/'], ['nav.compat', 'compatibility/'], ['nav.faq', 'faq/']];
 // Подвал: ссылки на все материалы о DISC (сквозная перелинковка контентных страниц)
 const MATERIALS = [['nav.disc', 'disc/'], ['nav.styles', 'styles/'], ['nav.profiles', 'profiles/'], ['nav.results', 'results/'], ['nav.compat', 'compatibility/'], ['nav.colors', 'colors/'], ['nav.teams', 'teams/'], ['nav.mbti', 'disc-vs-mbti/'], ['nav.pdf', 'pdf/'], ['nav.faq', 'faq/']];
-const navItems = L => NAV_ITEMS.concat(hasServices(L) ? [['nav.services', 'services/']] : []);
+const navItems = L => NAV_ITEMS.concat(hasServices(L) ? [['nav.services', 'services/']] : [], feedbackEmail ? [['nav.contact', 'contact/']] : []);
 const materialsHtml = (L, base, cur) => `<nav class="materials" aria-label="${esc(L.ui['nav.materials'])}"><span class="mlabel">${esc(L.ui['nav.materials'])}</span>` + MATERIALS.map(([k, sub]) => sub === cur ? `<span aria-current="page">${esc(L.ui[k])}</span>` : `<a href="${base + sub}">${esc(L.ui[k])}</a>`).join('') + `</nav>`;
 const relRoot = (L, sub) => { const depth = (pathOf(L.lang) + sub).split('/').length - 1; return depth ? '../'.repeat(depth) : './'; };
 const PAIRS = ['DD', 'DI', 'DS', 'DC', 'II', 'IS', 'IC', 'SS', 'SC', 'CC'], pairSlug = k => (k[0] + '-' + k[1]).toLowerCase();
@@ -683,7 +683,7 @@ for (const L of locales) {
     box.querySelector('h2').textContent = B.orderTitle.replace('{date}', date);
     box.querySelector('div p').textContent = B.orderText;
     var a = box.querySelector('a.btn'); a.textContent = B.orderButton; a.href = '../contact/'; a.setAttribute('data-goal', 'ext-page-order');
-    a.addEventListener('click', function(){ try{ sessionStorage.setItem('disc.order', JSON.stringify({topic:'extended', code:code, name:r.name||'', email:r.email||'', message:B.orderMsg.replace('{link}', link)})); }catch(e){} });
+    a.addEventListener('click', function(){ try{ sessionStorage.setItem('disc.order', JSON.stringify({topic:'extended', code:code, subject:(document.querySelector('h1')||{}).textContent||'', name:r.name||'', email:r.email||'', message:B.orderMsg.replace('{link}', link)})); }catch(e){} });
   });
 })();`) });
       // «Спасибо» и «Оплата не прошла»: на них банк возвращает покупателя после оплаты и после отказа (?order=<номер заказа>).

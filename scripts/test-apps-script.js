@@ -340,6 +340,15 @@ check('result mail in a language without the report page: no block', Object.keys
 check('contact subject: request for the extended report names the language, an ordinary message does not', ctx.contactSubject('Ann Lee', 'en', 'extended') === 'Заявка на расширенный отчёт — English (en): Ann Lee' &&
   ctx.contactSubject('Ken', 'ja', 'extended') === 'Заявка на расширенный отчёт — ' + ctx.DATA.ja.name + ' (ja): Ken' && ctx.contactSubject('X', '', 'extended') === 'Заявка на расширенный отчёт — язык не указан: X' &&
   ctx.contactSubject('Ann Lee', 'en', '') === 'Сообщение с сайта disc-test.org: Ann Lee');
+check('contact subject: the subject from the form goes before the name; a request for the extended report keeps its own subject',
+  ctx.contactSubject('Ann Lee', 'en', '', 'Typo on the FAQ page') === 'Сообщение с сайта disc-test.org: Typo on the FAQ page — Ann Lee' &&
+  ctx.contactSubject('Ann Lee', 'en', 'extended', 'Extended DISC report') === 'Заявка на расширенный отчёт — English (en): Ann Lee');
+check('contact: subject from the form in the mail subject and in the details, spaces collapsed, cut to 120 characters', !CONTACT_TO || (() => {
+  post({ action: 'contact', lang: 'ru', name: 'Олег', email: 'oleg-subj@example.com', subject: '  Предложение:\r\n сравнение   результатов ', message: 'Текст' }); const a = sent[sent.length - 1];
+  post({ action: 'contact', lang: 'ru', name: 'Олег', email: 'oleg-long@example.com', subject: 'я'.repeat(300), message: 'Текст' }); const b = sent[sent.length - 1];
+  post({ action: 'contact', lang: 'ru', name: 'Олег', email: 'oleg-none@example.com', message: 'Текст' }); const c = sent[sent.length - 1];
+  return a.subject === 'Сообщение с сайта disc-test.org: Предложение: сравнение результатов — Олег' && /(^|\n)Тема: Предложение: сравнение результатов\n/.test(a.body) &&
+    b.subject === 'Сообщение с сайта disc-test.org: ' + 'я'.repeat(120) + ' — Олег' && c.subject === 'Сообщение с сайта disc-test.org: Олег' && !/Тема:/.test(c.body); })());
 if (CONTACT_TO) check('contact: request for the extended report arrives with its own subject and a first line about the language; unknown topic is ignored', (() => {
   post({ action: 'contact', topic: 'extended', lang: 'de', name: 'Greta', email: 'greta-req@example.com', message: 'Ich möchte den Bericht.' }); const a = sent[sent.length - 1];
   post({ action: 'contact', topic: 'spam', lang: 'de', name: 'Greta', email: 'greta-msg@example.com', message: 'Hallo' }); const b = sent[sent.length - 1];

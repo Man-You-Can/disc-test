@@ -1,6 +1,6 @@
 /* Форма обратной связи (страница /contact/). Разметку contactHTML() использует сборка (build.js кладёт
    готовый HTML в страницу, чтобы форма была видна и поисковикам, и без JavaScript), логику initContact() —
-   сама страница: список файлов, ограничение общего размера, отправка на Google Apps Script, который шлёт
+   сама страница: обязательная тема сообщения (уходит в тему письма владельцу), список файлов, ограничение общего размера, отправка на Google Apps Script, который шлёт
    письмо на адрес feedbackEmail из site.config.json. Пока sendEndpoint не задан, кнопка «Отправить»
    открывает почтовый клиент (mailto:), а файлы участник прикладывает в письме сам.
    Длинные имена файлов показываются как «начало…конец»: имя разбито на два <span>, первый сжимается с
@@ -16,6 +16,7 @@ function contactHTML(c){
         '<p class="hint reqnote">'+t('intro.requiredNote').replace('*','<span class="req" aria-hidden="true">*</span>')+'</p>'+
         '<div class="field"><label for="cName">'+t('intro.nameLabel')+'<span class="req" aria-hidden="true">*</span></label><input type="text" id="cName" name="name" class="ym-disable-keys" autocomplete="name" required maxlength="80"></div>'+
         '<div class="field"><label for="cEmail">'+t('contact.emailLabel')+'<span class="req" aria-hidden="true">*</span></label><input type="email" id="cEmail" name="email" class="ym-disable-keys" autocomplete="email" inputmode="email" required maxlength="120"></div>'+
+        '<div class="field"><label for="cSubj">'+t('contact.subjectLabel')+'<span class="req" aria-hidden="true">*</span></label><input type="text" id="cSubj" name="subject" class="ym-disable-keys" autocomplete="off" required maxlength="120"></div>'+
         '<div class="field"><label for="cMsg">'+t('contact.messageLabel')+'<span class="req" aria-hidden="true">*</span></label><textarea id="cMsg" name="message" class="msgbox ym-disable-keys" required maxlength="5000" rows="6"></textarea></div>'+
         '<div class="field" id="cFilesField"><label for="cFiles">'+t('contact.filesLabel')+'</label>'+
           '<div class="dropzone" id="cDrop"><input type="file" id="cFiles" multiple hidden><button type="button" class="btn secondary small" id="cPick">'+t('contact.filesAdd')+'</button><span class="hint">'+t('contact.filesHint',{max:maxLabel})+'</span></div>'+
@@ -37,7 +38,7 @@ function initContact(c){
      topic уходит на сервер вместе с сообщением — по нему письмо владельцу получает тему «Заявка на расширенный отчёт» с языком страницы */
   var topic='', topicCode='';
   try{ var ord=JSON.parse(sessionStorage.getItem('disc.order')||'null'); if(ord){ sessionStorage.removeItem('disc.order'); if(ord.topic==='extended'){ topic='extended'; topicCode=String(ord.code||'').slice(0,900); }
-    if(ord.name) $('#cName').value=String(ord.name).slice(0,80); if(ord.email) $('#cEmail').value=String(ord.email).slice(0,120); if(ord.message) $('#cMsg').value=String(ord.message).slice(0,5000); } }catch(e){}
+    if(ord.name) $('#cName').value=String(ord.name).slice(0,80); if(ord.subject) $('#cSubj').value=String(ord.subject).slice(0,120); if(ord.email) $('#cEmail').value=String(ord.email).slice(0,120); if(ord.message) $('#cMsg').value=String(ord.message).slice(0,5000); } }catch(e){}
   var input=$('#cFiles'), list=$('#cList'), total=$('#cTotal'), drop=$('#cDrop'), status=$('#cStatus'), sendBtn=$('#cSend');
   var files=[]; // выбранные объекты File
   var EMAIL_RE=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -120,26 +121,27 @@ function initContact(c){
   if(!endpoint) setStatus('muted', t('contact.mailtoNote'));
   form.addEventListener('submit', function(e){
     e.preventDefault();
-    var name=$('#cName').value.trim().replace(/\s+/g,' '), em=$('#cEmail').value.trim(), msg=$('#cMsg').value.trim();
+    var name=$('#cName').value.trim().replace(/\s+/g,' '), em=$('#cEmail').value.trim(), subj=$('#cSubj').value.trim().replace(/\s+/g,' '), msg=$('#cMsg').value.trim();
     if(name.length<2){ $('#cName').focus(); toast(t('intro.nameRequired')); return; }
     if(!EMAIL_RE.test(em)||em.length>120){ $('#cEmail').focus(); toast(t('intro.emailRequired')); return; }
+    if(!subj){ $('#cSubj').focus(); toast(t('contact.subjectRequired')); return; }
     if(!msg){ $('#cMsg').focus(); toast(t('contact.messageRequired')); return; }
     // согласие на обработку данных — отдельная галочка (есть, когда сборка включила pdConsent): без неё сообщение не отправляется
     var pdBox=$('#cPd'); if(pdBox && !pdBox.checked){ pdBox.focus(); toast(t('pd.required')); return; }
     if(!endpoint){ // сервис отправки не подключён — открываем почтовый клиент
       var body=msg+(files.length ? '\r\n\r\n'+t('contact.mailFiles',{list:files.map(function(f){ return f.name; }).join(', ')}) : '')+'\r\n\r\n'+name+' <'+em+'>\r\n';
-      location.href='mailto:'+encodeURIComponent(email)+'?subject='+encodeURIComponent(t('contact.mailSubject',{name:name}))+'&body='+encodeURIComponent(body);
+      location.href='mailto:'+encodeURIComponent(email)+'?subject='+encodeURIComponent(t('contact.mailSubject',{name:subj+' \u2014 '+name}))+'&body='+encodeURIComponent(body);
       return;
     }
     sendBtn.disabled=true; setStatus('muted', esc(t('contact.sending')));
     Promise.all(files.map(readFile)).then(function(payload){
-      var data={action:'contact', token:token, lang:L.lang, name:name, email:em, message:msg, page:location.href.split('#')[0], hp:$('#cSite').value, files:payload};
+      var data={action:'contact', token:token, lang:L.lang, name:name, email:em, subject:subj, message:msg, page:location.href.split('#')[0], hp:$('#cSite').value, files:payload};
       if(topic){ data.topic=topic; if(topicCode) data.code=topicCode; }
       if(pdBox){ data.consent=true; data.consentV=c.pdVersion||''; }
       return postJSON(endpoint, data);
     }).then(function(){
       setStatus('ok', esc(t('contact.sent',{email:em})));
-      $('#cMsg').value=''; files=[]; topic=''; render();
+      $('#cSubj').value=''; $('#cMsg').value=''; files=[]; topic=''; render();
       if(window.discTrack) window.discTrack('contact'); // цель Метрики: сообщение отправлено
     }, function(err){
       var m=String((err&&err.message)||err);
