@@ -12,7 +12,9 @@ const files = process.argv.slice(2).length ? process.argv.slice(2) : fs.readdirS
 // и полный текст политики по российскому закону (policy.legal).
 // Оферта, условия возврата, страница отчёта, раздел о данных покупателя и ссылка «Оферта» обязательны во всех языках.
 const OPTIONAL = ['.content.policy.legal', '.content.extendedMail', '.content.product.pay', '.content.product.sampleTitle', '.content.product.sampleNote', '.content.product.sampleAlt',
-  '.content.product.sampleCaption', '.content.product.block.sample', '.content.product.pdf.sheets', '.content.product.promo'];
+  '.content.product.sampleCaption', '.content.product.block.sample', '.content.product.pdf.sheets', '.content.product.promo',
+  // страница «Как готовятся отчёты» и её пункт в шапке: есть в языках, где текст страницы написан (сейчас — русский); появляются только вместе
+  '.content.howMade', '.ui.nav.howMade'];
 // Ключи, которых в эталоне нет, а в остальных локалях они допустимы: оговорка о переводе в оферте и условиях возврата (при расхождении действует
 // русский текст) и строка о заявке в блоке расширенного отчёта (отчёт на этом языке пока нельзя заказать). Их обязательность — в проверке ниже.
 const EXTRA = ['.content.offer.note', '.content.refund.note', '.content.product.block.soon'];
@@ -54,6 +56,7 @@ for (const f of files) {
   if (P.promo && !P.pay) errs.push('.content.product.promo: only where the report is on sale (needs product.pay)');
   // Правило заказчика от 2026-10-14: всё, что сделано для продажи в русской версии, применяется в языке вместе с покупкой
   if (P.pay && !P.promo) errs.push('.content.product.promo: missing — the report is on sale in this language, so everything done for sales in the Russian version applies here (CLAUDE.md)');
+  if (!!C.howMade !== !!(j.ui && j.ui['nav.howMade'])) errs.push('.content.howMade and .ui["nav.howMade"] must come together');
   // В каждом блоке ровно 4 разных текста
   (j.blocks || []).forEach((b, i) => { const v = Object.values(b || {}); if (new Set(v).size !== v.length) errs.push('.blocks[' + i + ']: duplicate statements'); });
   // Буквы D I S C не переведены в csvHead

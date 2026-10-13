@@ -118,7 +118,9 @@ const styleBlock = (tpl.match(/<style>[\s\S]*?<\/style>/) || [''])[0];
 const NAV_ITEMS = [['nav.test', ''], ['nav.disc', 'disc/'], ['nav.styles', 'styles/'], ['nav.profiles', 'profiles/'], ['nav.results', 'results/'], ['nav.compat', 'compatibility/'], ['nav.faq', 'faq/']];
 // Подвал: ссылки на все материалы о DISC (сквозная перелинковка контентных страниц)
 const MATERIALS = [['nav.disc', 'disc/'], ['nav.styles', 'styles/'], ['nav.profiles', 'profiles/'], ['nav.results', 'results/'], ['nav.compat', 'compatibility/'], ['nav.colors', 'colors/'], ['nav.teams', 'teams/'], ['nav.mbti', 'disc-vs-mbti/'], ['nav.pdf', 'pdf/'], ['nav.faq', 'faq/']];
-const navItems = L => NAV_ITEMS.concat(hasServices(L) ? [['nav.services', 'services/']] : [], feedbackEmail ? [['nav.contact', 'contact/']] : []);
+// «Как готовятся отчёты» (/how-reports-are-made/): страница и пункт в шапке есть в языках, где в локали есть content.howMade и ui['nav.howMade'] (сейчас — русский)
+const HOWMADE_SUB = 'how-reports-are-made/', hasHowMade = L => !!(L.content.howMade && L.ui['nav.howMade']);
+const navItems = L => NAV_ITEMS.concat(hasHowMade(L) ? [['nav.howMade', HOWMADE_SUB]] : [], hasServices(L) ? [['nav.services', 'services/']] : [], feedbackEmail ? [['nav.contact', 'contact/']] : []);
 const materialsHtml = (L, base, cur) => `<nav class="materials" aria-label="${esc(L.ui['nav.materials'])}"><span class="mlabel">${esc(L.ui['nav.materials'])}</span>` + MATERIALS.map(([k, sub]) => sub === cur ? `<span aria-current="page">${esc(L.ui[k])}</span>` : `<a href="${base + sub}">${esc(L.ui[k])}</a>`).join('') + `</nav>`;
 const relRoot = (L, sub) => { const depth = (pathOf(L.lang) + sub).split('/').length - 1; return depth ? '../'.repeat(depth) : './'; };
 const PAIRS = ['DD', 'DI', 'DS', 'DC', 'II', 'IS', 'IC', 'SS', 'SC', 'CC'], pairSlug = k => (k[0] + '-' + k[1]).toLowerCase();
@@ -526,6 +528,25 @@ for (const L of locales) {
       sectionsHtml(a.sections.slice(0, 2)) + sectionsHtml(C.editorial.sections) + sectionsHtml(a.sections.slice(2)))
       .replace('{contact}', feedbackEmail ? `<a href="../contact/">${escFull(t('nav.contact'))}</a>` : escFull(t('nav.contact')))
       .replace('{sources}', `<a href="../disc/#sources">${escFull(L.content.disc.sourcesTitle)}</a>`) + ctaBlock(L, t, '../') });
+  // /how-reports-are-made/ — «Как готовятся отчёты»: тексты отчётов написал ИИ по правилам редакции, расчёт и сборку делает программа, правила и
+  // проверка — за человеком. Утверждения страницы описывают то, как отчёты готовятся на самом деле (сборщик расширенного отчёта, расчёт на сайте):
+  // после смены порядка подготовки отчётов текст страницы править вместе с ним. {results}, {contact}, {privacy} — ссылки, {price} — цена услуги
+  if (hasHowMade(L)) {
+    const hm = withPrice(L, C.howMade), rich = str => escFull(str).replace(/&lt;(\/?)b&gt;/g, '<$1b>'), link = (sub2, text) => `<a href="../${sub2}">${escFull(text)}</a>`;
+    const names = { results: t('nav.results'), contact: t('nav.contact'), privacy: t('nav.privacy') };
+    const links = { results: link('results/', names.results), contact: feedbackEmail ? link('contact/', names.contact) : escFull(names.contact), privacy: link('privacy/', names.privacy) };
+    const fillLinks = html => html.replace(/\{(\w+)\}/g, (m, k) => k in links ? links[k] : m), plain = str => String(str).replace(/<\/?b>/g, '').replace(/\{(\w+)\}/g, (m, k) => k in names ? names[k] : m);
+    const more = [hasProduct(L) ? ['extended-report/', C.product.h1] : null, ['results/', names.results], ['about/', t('nav.about')]].filter(Boolean);
+    writeContentPage(L, HOWMADE_SUB, { navKey: 'nav.howMade', langs: locales.filter(hasHowMade), title: hm.title, description: hm.description, crumbs: [{ name: t('nav.howMade') }],
+      content: fillLinks(`<div class="eyebrow">DISC</div><h1>${escFull(hm.h1)}</h1><p class="lead">${escFull(hm.lead)}</p>` +
+        `<ul class="xfacts">${hm.facts.map(x => `<li>${escFull(x)}</li>`).join('')}</ul>` +
+        `<h2>${escFull(hm.stepsTitle)}</h2><ol>${hm.steps.map(x => `<li>${rich(x)}</li>`).join('')}</ol>` + sectionsHtml(hm.sections) +
+        `<h2>${escFull(hm.benefitsTitle)}</h2><div class="hmgrid">${hm.benefits.map(b => `<div><h3>${escFull(b.h)}</h3><p>${escFull(b.p)}</p></div>`).join('')}</div>` +
+        `<h2>${escFull(hm.limitsTitle)}</h2><ul>${hm.limits.map(x => `<li>${rich(x)}</li>`).join('')}</ul>` +
+        `<h2>${escFull(hm.faqTitle)}</h2>` + hm.faq.map(it => `<h3 class="xq">${escFull(it.q)}</h3><p>${escFull(it.a)}</p>`).join('')) + ctaBlock(L, t, '../') +
+        `<p class="seealso">${more.map(([sub2, name]) => `<a href="../${sub2}">${escFull(name)} ${arrow(L)}</a>`).join(' · ')}</p>`,
+      ldExtra: [{ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: hm.faq.map(it => ({ '@type': 'Question', name: it.q, acceptedAnswer: { '@type': 'Answer', text: plain(it.a) } })) }] });
+  }
   // content.privacy.purchase — раздел о данных покупателя платной услуги: есть только в языках с офертой (сейчас — русский), встаёт перед «Как удалить данные»
   const pv = C.privacy, pvSecs = pv.purchase && hasOffer(L) ? pv.sections.slice(0, 4).concat([pv.purchase], pv.sections.slice(4)) : pv.sections;
   if (!pdOn) writeContentPage(L, 'privacy/', { navKey: 'nav.privacy', title: pv.title, description: pv.description, crumbs: [{ name: t('nav.privacy') }],
