@@ -168,6 +168,23 @@ html[lang=ar] body,html[lang=hi] body{font-size:17px;line-height:1.65}
 .xtop div{flex:1 1 280px}
 .xtop b{font-family:var(--font-head);font-weight:500;font-size:16px}
 .xtop p{margin:4px 0 0;font-size:14px;color:var(--muted)}
+/* личные зацепки в верхнем призыве (content.product.promo): что в отчёте разобрано по числам этого участника */
+.xtop .xhooks{margin:6px 0 4px;padding-inline-start:18px;font-size:14px}
+.xtop .xhooks li{margin-bottom:4px}
+/* закреплённая кнопка отчёта на экране результата (телефон): видна, пока верхний призыв и нижний блок за краем экрана */
+.xbar{display:none}
+@media (max-width:640px){
+  .xbar.show{display:flex;gap:8px;position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:15}
+  .xbar .btn{flex:1 1 auto;box-shadow:0 8px 24px -6px rgba(0,0,0,.35)}
+  .xbar-x{flex:none;width:46px;border:1px solid var(--line-strong);border-radius:12px;background:var(--surface);color:var(--muted);font-size:22px;line-height:1;cursor:pointer;box-shadow:0 8px 24px -6px rgba(0,0,0,.35)}
+  body.has-consent .xbar{display:none}
+  .xtop .xhooks li:nth-child(n+3){display:none}
+}
+/* вернувшийся посетитель: прошлый результат и кнопка отчёта над «Начать тест» */
+.lastcard{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;background:var(--surface);border:1px solid var(--line);border-inline-start:4px solid var(--k,var(--ink));border-radius:12px;padding:12px 16px;margin:0 0 20px}
+.lastcard>div{flex:1 1 220px;font-size:14px;color:var(--muted)}
+.lastname{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 14px;margin-top:4px}
+.lastcard b{display:inline-flex;align-items:baseline;gap:8px;font-family:var(--font-head);font-weight:500;font-size:18px;color:var(--ink)}
 .xoffer{scroll-margin-top:76px}
 .xoffer h2{margin:0 0 12px;font-size:22px}
 .xoffer .xhook{background:var(--soft);border-radius:10px;padding:12px 14px;margin:0 0 16px}
@@ -680,7 +697,11 @@ function renderIntro(){
   setStep(''); hideProgress();
   var last = lsGet('disc.last'), prog = lsGet('disc.progress');
   var progDone = prog && prog.m && prog.m.filter(function(x){return x>=0;}).length;
-  view.innerHTML = introHTML({L:L, t:t, esc:esc, KEYS:KEYS, colorVar:colorVar, progDone:progDone, lastDate: last ? fmtDate(last.t) : '', links:{styles: ROOT_REL+LANG_PATH[L.lang]+'styles/', profiles: ROOT_REL+LANG_PATH[L.lang]+'profiles/', pdf: ROOT_REL+LANG_PATH[L.lang]+'pdf/', results: ROOT_REL+LANG_PATH[L.lang]+'results/', faq: ROOT_REL+LANG_PATH[L.lang]+'faq/', profile: function(k){ return ROOT_REL+LANG_PATH[L.lang]+'profiles/'+k.toLowerCase()+'/'; }}});
+  // вернувшемуся посетителю — карточка с прошлым результатом и кнопкой расширенного отчёта (только там, где отчёт продаётся: content.product.promo;
+  // купившему отчёт в этом браузере — прежняя строка-ссылка)
+  var PM = L.content && L.content.product && L.content.product.promo, lastCard = null;
+  if(last && PM && !extBought()){ try{ var la = analyze(last); lastCard = {k:la.cls.p, badge:badgeHTML(la.cls, 'pill'), name:la.profile.name, label:PM.homeLabel.replace('{date}', fmtDate(last.t)), open:PM.homeOpen, button:PM.button, href:ROOT_REL+LANG_PATH[L.lang]+'extended-report/'}; }catch(e){ lastCard = null; } }
+  view.innerHTML = introHTML({L:L, t:t, esc:esc, KEYS:KEYS, colorVar:colorVar, progDone:progDone, lastDate: last ? fmtDate(last.t) : '', lastCard:lastCard, links:{styles: ROOT_REL+LANG_PATH[L.lang]+'styles/', profiles: ROOT_REL+LANG_PATH[L.lang]+'profiles/', pdf: ROOT_REL+LANG_PATH[L.lang]+'pdf/', results: ROOT_REL+LANG_PATH[L.lang]+'results/', faq: ROOT_REL+LANG_PATH[L.lang]+'faq/', profile: function(k){ return ROOT_REL+LANG_PATH[L.lang]+'profiles/'+k.toLowerCase()+'/'; }}});
   // Тест начинается сразу, без регистрации: имя и e-mail участник по желанию вводит на экране результата
   function start(){
     S = {name:'', email:'', i:0, m:[], l:[]};
@@ -694,6 +715,8 @@ function renderIntro(){
   $('#start2').addEventListener('click', start);
   if($('#resume')) $('#resume').addEventListener('click', function(){ S = prog; var first = S.m.findIndex(function(x,i){ return x<0 || S.l[i]<0; }); S.i = first<0 ? 23 : first; renderTest(); window.scrollTo(0,0); });
   if($('#showLast')) $('#showLast').addEventListener('click', function(){ renderReport(last, {own:true}); window.scrollTo(0,0); });
+  // источник покупки home и цель ext-home: кнопка отчёта в карточке прошлого результата
+  if($('#lastExt')) $('#lastExt').addEventListener('click', function(){ try{ sessionStorage.setItem('disc.src', 'home'); }catch(e){} if(window.discTrack) window.discTrack('ext-home'); });
 }
 
 /* ====== экран 2: тест ====== */
@@ -773,6 +796,33 @@ function renderTest(){
 __GRAPH_JS__
 
 /* ====== экран 3: отчёт ====== */
+// отчёт в этом браузере уже куплен (страница «Спасибо» отметила заказ): закреплённую кнопку и кнопку на главной не показываем
+function extBought(){ var p = lsGet('disc.pay'); return !!(p && p.done); }
+/* Личные зацепки верхнего призыва (content.product.promo.hooks): каждая строка называет то, что расширенный отчёт разбирает по числам
+   именно этого участника. Правила те же, что у сборщика отчёта (build-report.py в закрытом хранилище отчётов): самая низкая шкала,
+   два слоя ответов (same / diff), вторичный стиль (equal / close / edge / mid), второй по значению стиль чистого профиля выше 60 %,
+   умеренно выраженный ведущий стиль (не выше 70 %), сбалансированный профиль. Не больше трёх строк. */
+function extHooks(sc, cls, H){
+  var ord = KEYS.slice().sort(function(x,y){ return sc.net[y]-sc.net[x]; }), p = ord[0], s2 = ord[1], low = ord[3], out = [];
+  function add(key, v){ var s = H[key]; if(!s) return; Object.keys(v||{}).forEach(function(k){ s = s.split('{'+k+'}').join(v[k]); }); out.push(s); }
+  if(cls.flat) add('flat');
+  add('low', {k:low, name:L.keys[low], pct:pct(sc.net[low])});
+  if(!cls.flat){
+    // слои: стиль, который чаще всех выбран как «больше всего», и стиль, который реже всех выбран как «меньше всего»; при равенстве решает итог
+    var tm = KEYS[0], tl = KEYS[0];
+    KEYS.forEach(function(k){
+      if(sc.most[k]>sc.most[tm] || (sc.most[k]===sc.most[tm] && sc.net[k]>sc.net[tm])) tm = k;
+      if(sc.least[k]<sc.least[tl] || (sc.least[k]===sc.least[tl] && sc.net[k]>sc.net[tl])) tl = k;
+    });
+    if(tm===tl) add('layersSame', {k:tm}); else if(sc.least[tm]-sc.least[tl] >= 3) add('layersDiff', {a:tm, b:tl});
+    if(cls.s){ var d = sc.net[p]-sc.net[cls.s];
+      add(d===0 ? 'pairEqual' : (d<=2 ? 'pairClose' : (sc.net[cls.s]===Math.max(3, Math.round(sc.net[p]*0.4)) ? 'pairEdge' : 'pairMid')), {a:p, b:cls.s}); }
+    else if(pct(sc.net[s2])>60) add('pureHigh', {k:s2, pct:pct(sc.net[s2])});
+    if(pct(sc.net[p])<=70) add('moderate', {k:p, pct:pct(sc.net[p])});
+  }
+  return out.slice(0,3);
+}
+var xbarStop = null; // снимает слежение за прокруткой у закреплённой кнопки отчёта
 function renderReport(r, opts){
   opts = opts||{};
   hideProgress(); setStep(opts.own ? t('report.own') : t('report.other'), true);
@@ -799,7 +849,8 @@ function renderReport(r, opts){
   // она определяется так же, как в самом отчёте (последняя по итогу; при равенстве — более поздняя в порядке D, I, S, C).
   // PB.sample — подпись к листам образца: сборка оставляет её только там, где листы есть (отчёт на этом языке написан);
   // PB.soon — строка о заявке в языках, где отчёт пока нельзя заказать
-  var PB = L.content && L.content.product, extHref = base+'extended-report/';
+  var PB = L.content && L.content.product, PM = PB && PB.promo, extHref = base+'extended-report/';
+  function barOff(){ try{ return sessionStorage.getItem('disc.xbar') === 'off'; }catch(e){ return false; } }
   var low = KEYS.slice().sort(function(x,y){ return sc.net[y]-sc.net[x]; })[3];
   function extOffer(){
     if(!PB) return '';
@@ -828,7 +879,9 @@ function renderReport(r, opts){
         '<div class="meta ym-hide-content">'+meta+'</div></div>'+
     '</div>'+
     '<p class="lead">'+esc(prof.summary)+'</p>'+
-    (PB ? '<aside class="xtop no-print" style="--k:'+colorVar(cls.p)+'"><div><b>'+esc(PB.topTitle)+'</b><p>'+esc(PB.topText)+' <button class="link" type="button" id="extAnchor">'+esc(PB.anchor)+' ↓</button></p></div>'+
+    (PB ? '<aside class="xtop no-print" style="--k:'+colorVar(cls.p)+'"><div><b>'+esc(PB.topTitle)+'</b>'+
+        (PM ? '<p>'+esc(PM.lead)+'</p><ul class="xhooks">'+extHooks(sc, cls, PM.hooks).map(function(x){ return '<li>'+esc(x)+'</li>'; }).join('')+'</ul>' : '')+
+        '<p>'+esc(PM ? PM.tail : PB.topText)+' <button class="link" type="button" id="extAnchor">'+esc(PB.anchor)+' ↓</button></p></div>'+
       '<a class="btn" id="extTop" href="'+extHref+'">'+esc(PB.topButton)+'</a></aside>' : '')+
     (cls.flat ? '<p class="notice">'+t('report.flat')+'</p>' : '')+
     '<div class="card graphcard">'+
@@ -845,6 +898,19 @@ function renderReport(r, opts){
       '<p class="howto">'+t('report.howto')+' <a href="'+ROOT_REL+LANG_PATH[L.lang]+'results/">'+t('report.moreLink')+'</a></p>'+
       '</div>'+
     '</div>'+
+    // форма «краткий отчёт в PDF на e-mail» — сразу под графиком и числами, до описания профиля: так её видят почти все, кто прошёл тест
+    (opts.own ?
+      '<div class="share no-print" id="sendBox" style="margin:16px 0"><h2>'+t('share.emailTitle')+'</h2>'+
+        '<form class="form" id="sendForm" autocomplete="on" novalidate>'+
+          '<div class="field"><label for="nm">'+t('intro.nameLabel')+'</label><input type="text" id="nm" name="name" class="ym-disable-keys" autocomplete="name" maxlength="80" value="'+esc(r.name||who.name||'')+'"></div>'+
+          '<div class="field"><label for="em">'+t('intro.emailLabel')+'</label><input type="email" id="em" name="email" class="ym-disable-keys" autocomplete="email" inputmode="email" maxlength="120" value="'+esc(r.email||who.email||'')+'"><span class="hint">'+t(SEND_ENDPOINT ? 'intro.emailHint' : 'share.mailtoHint')+'</span></div>'+
+          (PD ? '<div class="subbox"><label class="check"><input type="checkbox" id="pdOk" name="consent"'+(r.pd?' checked':'')+'><span>'+
+            esc(t('pd.consent')).replace('{consent}','<a href="'+base+'consent/" target="_blank" rel="noopener">'+esc(t('pd.consentLink'))+'</a>').replace('{privacy}','<a href="'+base+'privacy/" target="_blank" rel="noopener">'+esc(t('nav.privacy'))+'</a>')+'</span></label></div>' : '')+
+          (NEWSLETTER && SEND_ENDPOINT ? '<div class="subbox" id="subBox"></div>' : '')+
+          '<p class="small sendstatus" id="sendStatus" aria-live="polite" hidden></p>'+
+          '<div class="actions"><button class="btn" type="submit">'+t('share.send')+'</button></div>'+
+        '</form>'+
+      '</div>' : '')+
     '<div class="card"><div class="sections">'+
       '<div class="sec full"><h3>'+t('report.traits')+'</h3><div class="traits">'+st.traits.map(function(x){ return '<span>'+esc(x)+'</span>'; }).join('')+'</div>'+
         (cls.s ? '<div class="substyle" style="--ks:'+colorVar(cls.s)+'"><b>'+t('report.secondary',{k:cls.s,name:esc(L.keys[cls.s])})+'</b> '+t('report.secondaryAddon',{addon:esc(L.addon[cls.s])})+'</div>' : '')+
@@ -862,17 +928,6 @@ function renderReport(r, opts){
       (colorName ? ' · <a href="'+base+'colors/#'+cls.p.toLowerCase()+'">'+t('report.color',{color:esc(colorName)})+' '+arrowR()+'</a>' : '')+'</p>'+
     extOffer()+
     (opts.own ?
-      '<div class="share no-print" id="sendBox" style="margin-top:16px"><h2>'+t('share.emailTitle')+'</h2>'+
-        '<form class="form" id="sendForm" autocomplete="on" novalidate>'+
-          '<div class="field"><label for="nm">'+t('intro.nameLabel')+'</label><input type="text" id="nm" name="name" class="ym-disable-keys" autocomplete="name" maxlength="80" value="'+esc(r.name||who.name||'')+'"></div>'+
-          '<div class="field"><label for="em">'+t('intro.emailLabel')+'</label><input type="email" id="em" name="email" class="ym-disable-keys" autocomplete="email" inputmode="email" maxlength="120" value="'+esc(r.email||who.email||'')+'"><span class="hint">'+t(SEND_ENDPOINT ? 'intro.emailHint' : 'share.mailtoHint')+'</span></div>'+
-          (PD ? '<div class="subbox"><label class="check"><input type="checkbox" id="pdOk" name="consent"'+(r.pd?' checked':'')+'><span>'+
-            esc(t('pd.consent')).replace('{consent}','<a href="'+base+'consent/" target="_blank" rel="noopener">'+esc(t('pd.consentLink'))+'</a>').replace('{privacy}','<a href="'+base+'privacy/" target="_blank" rel="noopener">'+esc(t('nav.privacy'))+'</a>')+'</span></label></div>' : '')+
-          (NEWSLETTER && SEND_ENDPOINT ? '<div class="subbox" id="subBox"></div>' : '')+
-          '<p class="small sendstatus" id="sendStatus" aria-live="polite" hidden></p>'+
-          '<div class="actions"><button class="btn" type="submit">'+t('share.send')+'</button></div>'+
-        '</form>'+
-      '</div>'+
       '<div class="share no-print" style="margin-top:16px"><h2>'+t('share.typeTitle')+'</h2>'+
         '<p class="small">'+t('share.typeText',{name:esc(prof.name)})+'</p>'+
         '<div class="actions">'+shareNetLinks(profileURL, shareMsg)+'<button class="btn secondary small" type="button" id="shareType">'+t('share.type')+'</button></div>'+
@@ -889,7 +944,10 @@ function renderReport(r, opts){
     :
       '<div class="card no-print" style="margin-top:16px"><h3>'+t('share.codeTitle')+'</h3><textarea class="codebox ym-hide-content" id="code" readonly rows="3" aria-label="'+t('share.codeAria')+'">'+esc(code)+'</textarea>'+
         '<div class="actions"><button class="btn secondary small" type="button" id="copyLink">'+t('share.copyLink')+'</button><button class="btn secondary small" type="button" id="copyCode">'+t('share.copyCode')+'</button><button class="btn secondary small" type="button" id="print">'+t('share.pdf')+'</button></div></div>'
-    );
+    )+
+    // закреплённая кнопка отчёта (телефон); скрытую крестиком не показываем до конца сеанса
+    (PM && !opts.fromAdmin && !extBought() && !barOff() ? '<div class="xbar no-print" id="extBar"><a class="btn" id="extBarGo" href="'+extHref+'">'+esc(PM.button)+'</a>'+
+      '<button class="xbar-x" type="button" id="extBarX" aria-label="'+esc(PM.close)+'" title="'+esc(PM.close)+'">×</button></div>' : '');
 
   view.querySelectorAll('.legend input').forEach(function(cb){
     cb.addEventListener('change', function(){ show[cb.getAttribute('data-s')] = cb.checked; $('#graph').innerHTML = graphSVG(sc, show, {label:t('report.graphAria'), colorVar:colorVar, keys:KEYS}); });
@@ -904,6 +962,21 @@ function renderReport(r, opts){
     $('#extTop').addEventListener('click', function(){ src('result-top'); if(window.discTrack) window.discTrack('ext-top'); });
     xo.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ src('result-block'); if(window.discTrack) window.discTrack('ext-click'); }); });
     if('IntersectionObserver' in window){ var xio = new IntersectionObserver(function(es){ if(es[0].isIntersecting){ xio.disconnect(); if(window.discTrack) window.discTrack('ext-show'); } }, {threshold:.4}); xio.observe(xo); }
+    // закреплённая кнопка: видна между формой e-mail (в чужом результате формы нет — тогда между верхним призывом) и нижним блоком,
+    // то есть пока человек читает описание профиля; у самих призывов и ниже нижнего блока её нет. Источник покупки result-bar, цель ext-bar
+    var bar = $('#extBar'), xt = view.querySelector('.xtop');
+    if(xbarStop){ xbarStop(); xbarStop = null; }
+    if(bar){
+      var anchor = $('#sendBox') || xt;
+      var barSync = function(){
+        if(!bar.parentNode){ if(xbarStop){ xbarStop(); xbarStop = null; } return; }   // экран сменился: кнопки уже нет
+        bar.classList.toggle('show', anchor.getBoundingClientRect().bottom < 0 && xo.getBoundingClientRect().top > window.innerHeight); };
+      window.addEventListener('scroll', barSync); window.addEventListener('resize', barSync);
+      xbarStop = function(){ window.removeEventListener('scroll', barSync); window.removeEventListener('resize', barSync); };
+      barSync();
+      $('#extBarGo').addEventListener('click', function(){ src('result-bar'); if(window.discTrack) window.discTrack('ext-bar'); });
+      $('#extBarX').addEventListener('click', function(){ bar.parentNode.removeChild(bar); xbarStop(); xbarStop = null; try{ sessionStorage.setItem('disc.xbar', 'off'); }catch(e){} });
+    }
   }
   $('#copyCode').addEventListener('click', function(){ copyText(code, $('#code')); });
   $('#copyLink').addEventListener('click', function(){ copyText(link, null); });

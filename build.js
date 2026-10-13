@@ -276,7 +276,8 @@ const homeLocale = L => Object.assign({}, L, {
   profiles: Object.fromEntries(Object.entries(L.profiles).map(([k, p]) => [k, { name: p.name, summary: p.summary }])),
   // product — тексты блока «Расширенный отчёт» на экране результата (цена уже подставлена); страница отчёта в скрипт не идёт
   content: Object.assign({ home: L.content.home, colors: { colors: Object.fromEntries(KEYS.map(k => [k, { name: L.content.colors.colors[k].name }])) } },
-    hasProduct(L) ? { product: Object.assign(withPrice(L, L.content.product.block), hasSamples(L) ? {} : { sample: '' }) } : {})
+    hasProduct(L) ? { product: Object.assign(withPrice(L, L.content.product.block), hasSamples(L) ? {} : { sample: '' },
+      L.content.product.promo ? { promo: withPrice(L, L.content.product.promo) } : {}) } : {})
 });
 // Организация-издатель: одна карточка на весь сайт, с адресом для связи
 const orgLd = () => ({ '@context': 'https://schema.org', '@type': 'Organization', name: 'DISC Test', url: siteUrl + '/', logo: `${siteUrl}/icon-512.png`, email: feedbackEmail || undefined });

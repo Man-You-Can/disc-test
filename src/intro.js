@@ -5,14 +5,19 @@
 function introHTML(c){
   var L=c.L, t=c.t, esc=c.esc, KEYS=c.KEYS, colorVar=c.colorVar, progDone=c.progDone||0, lastDate=c.lastDate||'';
   var links=c.links||{}, arr=L.dir==='rtl'?'←':'→';
+  // lc — карточка вернувшегося посетителя: прошлый результат и кнопка расширенного отчёта (её собирает сама страница, в сборке её нет)
+  var lc=c.lastCard||null;
   return '<div class="eyebrow">'+t('intro.eyebrow')+'</div>'+
     '<h1>'+t('intro.h1')+'</h1>'+
     '<p class="lead">'+t('intro.lead')+'</p>'+
+    (lc ? '<div class="lastcard" style="--k:'+colorVar(lc.k)+'"><div>'+esc(lc.label)+
+        '<span class="lastname"><b>'+lc.badge+' '+esc(lc.name)+'</b><button class="link" type="button" id="showLast">'+esc(lc.open)+'</button></span></div>'+
+      '<a class="btn small" id="lastExt" href="'+esc(lc.href)+'">'+esc(lc.button)+'</a></div>' : '')+
     '<div class="actions startrow"><button class="btn big" type="button" id="start">'+t('intro.start')+'</button>'+
       '<span class="small muted">'+t('intro.startNote')+'</span>'+
       (progDone ? '<button class="link" type="button" id="resume">'+t('intro.resume',{n:progDone})+'</button>' : '')+
     '</div>'+
-    (lastDate ? '<p class="small muted" style="margin-top:12px"><button class="link" id="showLast" type="button">'+t('intro.showLast',{date:esc(lastDate)})+'</button></p>' : '')+
+    (lastDate && !lc ? '<p class="small muted" style="margin-top:12px"><button class="link" id="showLast" type="button">'+t('intro.showLast',{date:esc(lastDate)})+'</button></p>' : '')+
     '<div class="tiles">'+KEYS.map(function(k){ return '<div class="tile" style="--k:'+colorVar(k)+'"><b>'+k+'</b><strong>'+esc(L.keys[k])+'</strong><span>'+esc(L.short[k])+'</span></div>'; }).join('')+'</div>'+
     '<div class="card">'+
       '<h2>'+t('intro.howTitle')+'</h2>'+

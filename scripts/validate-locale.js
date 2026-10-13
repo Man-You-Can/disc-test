@@ -8,10 +8,11 @@ const files = process.argv.slice(2).length ? process.argv.slice(2) : fs.readdirS
 // Разделы, которые есть не во всех языках: в эталоне они есть, в остальных локалях могут отсутствовать. Если раздел в локали есть — проверяется как обычно.
 // Это всё, что означает «расширенный отчёт на этом языке написан и продаётся»: письмо покупателю (extendedMail), покупка (product.pay: по этому ключу
 // при включённом payEndpoint появляется кнопка «Купить», а сервер оплаты принимает заказы), листы образца и подписи к ним (product.sample*, block.sample,
-// pdf.sheets) — и полный текст политики по российскому закону (policy.legal).
+// pdf.sheets), личные зацепки, закреплённая кнопка и строка вернувшемуся посетителю (product.promo — только там, где отчёт продаётся) —
+// и полный текст политики по российскому закону (policy.legal).
 // Оферта, условия возврата, страница отчёта, раздел о данных покупателя и ссылка «Оферта» обязательны во всех языках.
 const OPTIONAL = ['.content.policy.legal', '.content.extendedMail', '.content.product.pay', '.content.product.sampleTitle', '.content.product.sampleNote', '.content.product.sampleAlt',
-  '.content.product.sampleCaption', '.content.product.block.sample', '.content.product.pdf.sheets'];
+  '.content.product.sampleCaption', '.content.product.block.sample', '.content.product.pdf.sheets', '.content.product.promo'];
 // Ключи, которых в эталоне нет, а в остальных локалях они допустимы: оговорка о переводе в оферте и условиях возврата (при расхождении действует
 // русский текст) и строка о заявке в блоке расширенного отчёта (отчёт на этом языке пока нельзя заказать). Их обязательность — в проверке ниже.
 const EXTRA = ['.content.offer.note', '.content.refund.note', '.content.product.block.soon'];
@@ -50,6 +51,7 @@ for (const f of files) {
   const sm = [P.sampleTitle, P.sampleNote, P.sampleAlt, P.sampleCaption, B.sample, P.pdf && P.pdf.sheets].filter(x => x != null).length;
   if (sm && sm < 6) errs.push('.content.product: sample keys must come together (sampleTitle, sampleNote, sampleAlt, sampleCaption, block.sample, pdf.sheets)');
   if (!!P.pay !== !!C.extendedMail) errs.push('.content.product.pay and .content.extendedMail must come together');
+  if (P.promo && !P.pay) errs.push('.content.product.promo: only where the report is on sale (needs product.pay)');
   // В каждом блоке ровно 4 разных текста
   (j.blocks || []).forEach((b, i) => { const v = Object.values(b || {}); if (new Set(v).size !== v.length) errs.push('.blocks[' + i + ']: duplicate statements'); });
   // Буквы D I S C не переведены в csvHead
