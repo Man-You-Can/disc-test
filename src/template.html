@@ -908,7 +908,7 @@ function renderReport(r, opts){
   $('#copyCode').addEventListener('click', function(){ copyText(code, $('#code')); });
   $('#copyLink').addEventListener('click', function(){ copyText(link, null); });
   $('#print').addEventListener('click', function(){ try{ window.print(); }catch(e){ toast(t('toast.printNA')); } });
-  if($('#restart')) $('#restart').addEventListener('click', function(){ if(location.hash) history.replaceState(null,'',pageURL()); renderIntro(); window.scrollTo(0,0); });
+  if($('#restart')) $('#restart').addEventListener('click', function(){ dropHash(); renderIntro(); window.scrollTo(0,0); });
   if($('#backAdmin')) $('#backAdmin').addEventListener('click', function(){ renderAdmin(); window.scrollTo(0,0); });
   if(opts.own){
     if(r.email && r.sent) showSendStatus(r, code, 'sent'); else if(r.email && r.queued) showSendStatus(r, code, 'queued');
@@ -1120,13 +1120,13 @@ function renderAdmin(){
     })).join('\n');
     copyText(tsv, null);
   });
-  $('#toIntro').addEventListener('click', function(){ if(location.hash) history.replaceState(null,'',pageURL()); renderIntro(); window.scrollTo(0,0); });
+  $('#toIntro').addEventListener('click', function(){ dropHash(); renderIntro(); window.scrollTo(0,0); });
 }
 
 /* ====== переключение языка ====== */
 function langHref(code){ return ROOT_REL + (LANG_PATH[code]||'') + location.hash; }
 // Root page: a language chosen explicitly earlier opens right away (search bots have no stored choice)
-(function(){ if(!IS_ROOT) return; var st = lsGet('disc.lang'); if(st && st!==L.lang && LANG_PATH[st]!=null && !location.hash) location.replace(langHref(st)); })();
+(function(){ if(!IS_ROOT) return; var st = lsGet('disc.lang'); if(st && st!==L.lang && LANG_PATH[st]!=null && !pageHash()) location.replace(langHref(st)); })();
 __COMMON_JS__
 initCommon({L:L, t:t, esc:esc, lsGet:lsGet, lsSet:lsSet, langHref:langHref, $:$, langMeta:LANG_META, langPath:LANG_PATH, privacyHref:ROOT_REL+(LANG_PATH[L.lang]||'')+'privacy/'});
 
@@ -1135,11 +1135,11 @@ $('#adminLink').addEventListener('click', function(){ renderAdmin(); window.scro
 $('#brand').addEventListener('click', function(e){
   if(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||e.button!==0) return; // новая вкладка и т.п. — обычная ссылка
   e.preventDefault(); S=null;
-  if(location.hash) history.replaceState(null,'',pageURL());
+  dropHash();
   renderIntro(); window.scrollTo(0,0);
 });
 function route(){
-  var h = location.hash||'';
+  var h = pageHash(); // #r=… к этому времени убран из адресной строки и лежит в записи истории (dataHash в общем коде страниц)
   if(h==='#admin'){ renderAdmin(); return true; }
   if(h.indexOf('#r=')===0){ var r = decodeResult(decodeURIComponent(h.slice(3))); if(r){ renderReport(r, {own:false}); return true; } }
   return false;

@@ -1029,7 +1029,7 @@ function renderReport(r, opts){
   $('#copyCode').addEventListener('click', function(){ copyText(code, $('#code')); });
   $('#copyLink').addEventListener('click', function(){ copyText(link, null); });
   $('#print').addEventListener('click', function(){ try{ window.print(); }catch(e){ toast(t('toast.printNA')); } });
-  if($('#restart')) $('#restart').addEventListener('click', function(){ if(location.hash) history.replaceState(null,'',pageURL()); renderIntro(); window.scrollTo(0,0); });
+  if($('#restart')) $('#restart').addEventListener('click', function(){ dropHash(); renderIntro(); window.scrollTo(0,0); });
   if($('#backAdmin')) $('#backAdmin').addEventListener('click', function(){ renderAdmin(); window.scrollTo(0,0); });
   if(opts.own){
     if(r.email && r.sent) showSendStatus(r, code, 'sent'); else if(r.email && r.queued) showSendStatus(r, code, 'queued');
@@ -1241,23 +1241,60 @@ function renderAdmin(){
     })).join('\n');
     copyText(tsv, null);
   });
-  $('#toIntro').addEventListener('click', function(){ if(location.hash) history.replaceState(null,'',pageURL()); renderIntro(); window.scrollTo(0,0); });
+  $('#toIntro').addEventListener('click', function(){ dropHash(); renderIntro(); window.scrollTo(0,0); });
 }
 
 /* ====== переключение языка ====== */
 function langHref(code){ return ROOT_REL + (LANG_PATH[code]||'') + location.hash; }
 // Root page: a language chosen explicitly earlier opens right away (search bots have no stored choice)
-(function(){ if(!IS_ROOT) return; var st = lsGet('disc.lang'); if(st && st!==L.lang && LANG_PATH[st]!=null && !location.hash) location.replace(langHref(st)); })();
+(function(){ if(!IS_ROOT) return; var st = lsGet('disc.lang'); if(st && st!==L.lang && LANG_PATH[st]!=null && !pageHash()) location.replace(langHref(st)); })();
 /* Общие элементы всех страниц сайта (тест и контентные страницы): выпадающий список языков,
    запоминание выбранного языка, подсказка «Продолжить на …», уведомление о cookie и загрузка Яндекс.Метрики после согласия.
    Вставляется сборкой в каждую страницу; вызывается как initCommon({L, t, esc, lsGet, lsSet, langHref, $}). */
+/* Хэш адреса с личными данными: #r=… — код результата (в нём имя, e-mail и ответы участника), #u=… — ключ отписки от рассылки.
+   Счётчик веб-аналитики читает адрес страницы сам: в первом запросе (он уходит и при defer), в карте кликов, при переходе
+   по внешней ссылке, в записи посещения. Поэтому такой хэш убирается из адресной строки раньше, чем счётчик загружен, и
+   остаётся в записи истории браузера (history.state): обновление страницы и «Назад» открывают тот же экран, а новый переход
+   по тому же адресу (ссылка на эту же страницу) — страницу без данных.
+   Код страниц берёт хэш через dataHash() и pageHash(), а не из location.hash; в разметку страницы хэш с данными не пишется. */
+function dataHash(){
+  var re = /^#[ru]=/, h = location.hash || '';
+  try{
+    var first = !dataHash.seen; dataHash.seen = 1;
+    if(re.test(h)){ history.replaceState({discHash:h}, '', location.pathname + location.search); return h; }
+    var s = history.state;
+    if(s && typeof s.discHash === 'string' && re.test(s.discHash)){
+      if(first && navFresh()){ history.replaceState(null, '', location.href); return ''; }
+      return s.discHash;
+    }
+  }catch(e){}
+  return re.test(h) ? h : '';
+}
+/* страница открыта новым переходом, а не обновлением и не возвратом по истории */
+function navFresh(){
+  try{ var n = performance.getEntriesByType('navigation')[0]; return n ? n.type === 'navigate' : performance.navigation.type === 0; }catch(e){ return false; }
+}
+function pageHash(){ return dataHash() || location.hash || ''; }
+/* возврат к началу: адрес без хэша, запись истории без данных */
+function dropHash(){ try{ if(location.hash || history.state) history.replaceState(null, '', location.pathname + location.search); }catch(e){} }
+
 function initCommon(c){
   var L=c.L, t=c.t, esc=c.esc, lsGet=c.lsGet, lsSet=c.lsSet, langHref=c.langHref, $=c.$;
 
-  /* выбор языка запоминается только при явном действии пользователя */
-  document.querySelectorAll('a[data-lang]').forEach(function(a){
-    a.addEventListener('click', function(){ var code=a.getAttribute('data-lang'); lsSet('disc.lang', code); a.href=langHref(code); });
-  });
+  /* хэш с данными убирается из адреса до загрузки счётчика (ниже) и при каждой смене хэша: этот обработчик стоит раньше обработчиков счётчика */
+  dataHash();
+  window.addEventListener('hashchange', dataHash);
+
+  /* выбор языка запоминается только при явном действии пользователя. Хэш с данными в адрес ссылки не пишется (разметку видит
+     запись посещений): обычный щелчок переносит его сам, а ссылка, открытая в новой вкладке, ведёт на страницу языка без него */
+  function langClick(a, code){
+    a.addEventListener('click', function(e){
+      lsSet('disc.lang', code); a.href=langHref(code);
+      var h = dataHash();
+      if(h && !(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||e.button)){ e.preventDefault(); location.href = a.href.split('#')[0] + h; }
+    });
+  }
+  document.querySelectorAll('a[data-lang]').forEach(function(a){ langClick(a, a.getAttribute('data-lang')); });
 
   /* выпадающий список языков */
   (function(){
@@ -1300,7 +1337,7 @@ function initCommon(c){
     bar.className='langbar no-print'; bar.setAttribute('lang', pick); bar.setAttribute('dir', m.dir||'ltr');
     bar.innerHTML = '<a href="'+esc(langHref(pick))+'"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-'+pick+'"/></svg><b>'+esc(m.name)+'</b><span>'+esc(m.cont)+(m.dir==="rtl"?" ←":" →")+'</span></a><button type="button" class="langbar-x" aria-label="×">×</button>';
     var app = $('#app'); app.insertBefore(bar, app.firstChild.nextSibling);
-    bar.querySelector('a').addEventListener('click', function(){ lsSet('disc.lang', pick); });
+    langClick(bar.querySelector('a'), pick);
     bar.querySelector('button').addEventListener('click', function(){ lsSet('disc.lang', L.lang); bar.remove(); });
   })();
 
@@ -1312,12 +1349,14 @@ function initCommon(c){
   (function(){
     var A = window.DISC_ANALYTICS||{}, ym = A.ym ? String(A.ym) : "", optin = A.mode!=="always", ask = optin && !!ym;
     function loadYm(){
-      if(!ym || window.ym) return;
+      /* пока в адресе остаётся хэш с данными (убрать его не удалось), счётчик не загружается вовсе */
+      if(!ym || window.ym || /^#[ru]=/.test(location.hash)) return;
       (function(m,e,t,r,i,k,a){ m[i]=m[i]||function(){ (m[i].a=m[i].a||[]).push(arguments); }; m[i].l=1*new Date();
         for(var j=0;j<document.scripts.length;j++){ if(document.scripts[j].src===r) return; }
         k=e.createElement(t); a=e.getElementsByTagName(t)[0]; k.async=1; k.src=r; a.parentNode.insertBefore(k,a);
       })(window,document,"script","https://mc.yandex.ru/metrika/tag.js?id="+ym,"ym");
-      /* defer: первый просмотр отправляем сами — без #r=…, в котором закодированы имя и e-mail участника */
+      /* defer: первый просмотр отправляем сами. От передачи хэша это не защищает: первый запрос счётчика с адресом страницы
+         уходит и при defer (с отметкой «не считать просмотром»), — защищает dataHash() выше */
       window.ym(ym,"init",{ssr:true,webvisor:true,clickmap:true,ecommerce:"dataLayer",accurateTrackBounce:true,trackLinks:true,defer:true});
       /* параметр визита «Язык сайта»: в Метрике «Параметры визитов» и сегменты по языковой версии (en в корне сайта не отличить по адресу) */
       window.ym(ym,"hit", location.origin+location.pathname+location.search, {referer:document.referrer, params:{"Язык сайта": L.lang}});
@@ -1348,11 +1387,11 @@ $('#adminLink').addEventListener('click', function(){ renderAdmin(); window.scro
 $('#brand').addEventListener('click', function(e){
   if(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||e.button!==0) return; // новая вкладка и т.п. — обычная ссылка
   e.preventDefault(); S=null;
-  if(location.hash) history.replaceState(null,'',pageURL());
+  dropHash();
   renderIntro(); window.scrollTo(0,0);
 });
 function route(){
-  var h = location.hash||'';
+  var h = pageHash(); // #r=… к этому времени убран из адресной строки и лежит в записи истории (dataHash в общем коде страниц)
   if(h==='#admin'){ renderAdmin(); return true; }
   if(h.indexOf('#r=')===0){ var r = decodeResult(decodeURIComponent(h.slice(3))); if(r){ renderReport(r, {own:false}); return true; } }
   return false;

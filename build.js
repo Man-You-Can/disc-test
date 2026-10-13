@@ -92,7 +92,7 @@ const payJs = fs.readFileSync(path.join(SRC, 'pay.js'), 'utf8');
 // Так страница знает результат и на устройстве, где тест не проходили (PDF открыт на телефоне, тест пройден на компьютере); без кода — результат,
 // сохранённый на устройстве (disc.last). Разбор тот же, что у decodeResult в src/template.html.
 const resultFromUrlJs = `function resultFromUrl(){
-  var m = /[#&]r=DISC1\\.([A-Za-z0-9_-]+)/.exec(location.hash || '');
+  var m = /[#&]r=DISC1\\.([A-Za-z0-9_-]+)/.exec(dataHash());
   if(!m) return null;
   try{
     var b = m[1].replace(/-/g,'+').replace(/_/g,'/'); while(b.length%4) b += '=';
@@ -730,7 +730,7 @@ for (const L of locales) {
       content: `<div class="eyebrow">DISC</div><h1>${escFull(un.h1)}</h1><p class="lead">${escFull(un.lead)}</p>` +
         `<div class="card contactcard"><p class="small sendstatus" id="uStatus" aria-live="polite" hidden></p><div class="actions"><button class="btn" type="button" id="uBtn">${escFull(t('unsub.button'))}</button></div></div>`,
       uiKeys: /^unsub\./,
-      pageJs: `(function(){ var btn = $('#uBtn'), st = $('#uStatus'), m = /[#&]u=([A-Za-z0-9_-]{22})(?:&|$)/.exec(location.hash), mail = ${jsStr(mailLink)};
+      pageJs: `(function(){ var btn = $('#uBtn'), st = $('#uStatus'), m = /[#&]u=([A-Za-z0-9_-]{22})(?:&|$)/.exec(dataHash()), mail = ${jsStr(mailLink)};
   function status(kind, html){ st.hidden = false; st.className = 'small sendstatus ' + kind; st.innerHTML = html; }
   if(!m){ btn.hidden = true; status('err', t('unsub.bad', {email: mail})); return; }
   btn.addEventListener('click', function(){
