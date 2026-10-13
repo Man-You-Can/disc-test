@@ -579,7 +579,7 @@
         {
           "h": "Sur quoi repose le test",
           "p": [
-            "Le test s'appuie sur le modèle à quatre facteurs de William Marston (1928) et sur les questionnaires ultérieurs au format « le plus – le moins » : 24 blocs de quatre affirmations, une par style. Les descriptions des styles et des seize profils ont été rédigées par les auteurs du site à partir des caractéristiques DISC généralement admises.",
+            "Le test s'appuie sur le modèle à quatre facteurs de William Marston (1928) et sur les questionnaires ultérieurs au format « le plus – le moins » : 24 blocs de quatre affirmations, une par style. Les descriptions des styles et des seize profils ont été préparées par la rédaction avec l'aide de l'intelligence artificielle à partir des caractéristiques DISC généralement admises.",
             "Le projet est indépendant et sans lien avec Wiley (DiSC®), TTI Success Insights ou d'autres titulaires de marques. Le mot DISC est employé comme nom générique du modèle."
           ]
         },
@@ -1588,6 +1588,118 @@
         }
       }
     },
+    "howMade": {
+      "title": "Rapports DISC préparés par l'IA : automatiques et impartiaux",
+      "description": "Rapports DISC automatiques : textes écrits par une IA selon les règles de la rédaction, rapport assemblé d'après vos réponses, sans intervention humaine.",
+      "h1": "Comment sont préparés les rapports DISC",
+      "lead": "Sur ce site, le rapport de synthèse comme le rapport détaillé sont préparés automatiquement. Les textes sont écrits par une intelligence artificielle selon les règles de la rédaction, et votre rapport est assemblé par un programme à partir de vos réponses, sans intervention humaine. Il n'est donc influencé ni par une première impression, ni par l'humeur d'autrui, ni par les attentes de qui que ce soit.",
+      "facts": ["Textes rédigés par l'IA", "Rapport assemblé par un programme", "Règles fixées par l'humain", "Les mêmes règles pour tous"],
+      "stepsTitle": "Des réponses au rapport : trois étapes",
+      "steps": [
+        "<b>Vous répondez.</b> Le test comporte 24 blocs ; dans chacun, vous indiquez ce qui vous ressemble le plus et ce qui vous ressemble le moins. Rien d'autre que ces réponses n'entre dans le calcul.",
+        "<b>Le programme calcule.</b> Pour chacun des quatre styles, il soustrait le nombre de réponses « le moins » du nombre de réponses « le plus », puis déduit de ces chiffres votre profil, l'un des seize. La formule n'a rien de secret : elle est expliquée en détail sur la page « {results} ».",
+        "<b>Le programme assemble le rapport.</b> Parmi les textes rédigés à l'avance par l'IA, il retient ceux qui correspondent à votre profil et à vos chiffres. Le rapport de synthèse s'affiche aussitôt à l'écran. Le rapport détaillé, lui, n'est pas encore disponible en français : demandez-nous de vous prévenir et nous vous écrirons dès que vous pourrez le commander. Une fois commandé, il est assemblé puis envoyé par e-mail, au plus tard 24 heures après le paiement."
+      ],
+      "sections": [
+        {
+          "h": "Ce que fait l'intelligence artificielle",
+          "p": [
+            "Les textes des rapports sont rédigés par un grand modèle de langage, c'est-à-dire une intelligence artificielle qui travaille sur du texte. Pour le rapport de synthèse, il a écrit les descriptions des quatre styles et des seize profils. Pour le rapport détaillé, il rédige treize sections pour chaque profil, parmi lesquelles la façon dont les autres vous voient, vos points forts, vos axes de progression, la communication avec chacun des quatre styles, le conflit et le stress, et un plan sur 30 jours.",
+            "Pour le rapport détaillé, d'autres textes sont écrits à part, en fonction de vos chiffres : ce que signifie chacune des quatre échelles à chacun des cinq niveaux, de très bas à très élevé, et que faire de votre échelle la plus basse. Seuls ceux qui correspondent à vos réponses entrent dans votre rapport.",
+            "L'IA rédige les textes à l'avance, et non au moment de la commande. C'est un choix délibéré : un texte peut ainsi être vérifié avant de vous parvenir, et les mêmes réponses donnent toujours le même rapport."
+          ]
+        },
+        {
+          "h": "Ce que fait le programme",
+          "p": [
+            "Le programme calcule le résultat et assemble le rapport. Dans le rapport de synthèse, cela donne votre profil, le graphique, les pourcentages sur les quatre échelles et la description de votre profil.",
+            "Dans le rapport détaillé, toute la section consacrée à votre profil dépend de vos chiffres : vos pourcentages, l'analyse de chaque échelle et la comparaison entre vos réponses « le plus » et « le moins », c'est-à-dire entre votre style adapté et votre style naturel. Dans cinq autres sections, certains passages sont choisis en fonction de votre échelle la plus basse. Le reste du texte est écrit pour votre profil, et votre nom figure sur chaque page.",
+            "Le programme n'invente rien en cours de route : seul ce qui découle de vos réponses entre dans le rapport."
+          ]
+        },
+        {
+          "h": "Ce qui reste du ressort de l'humain",
+          "p": [
+            "Les règles que l'IA suit pour écrire les textes sont fixées par la rédaction du site. En voici les principales :"
+          ],
+          "ul": [
+            "Le rapport décrit des tendances, et non des aptitudes ou un destin : ni diagnostic, ni promesse.",
+            "Les styles se valent : aucun n'est présenté comme meilleur ou moins bon qu'un autre.",
+            "Le rapport détaillé ne contient ni chiffre ni terme catégorique que les données n'étayent pas, et chaque conseil y est une action que vous pouvez mener dans la semaine : une phrase toute prête, une règle, une échéance.",
+            "Le rapport détaillé s'adresse à vous sans formes masculines ni féminines : le programme ne sait pas qui vous êtes, et le texte ne cherche pas à le deviner."
+          ],
+          "after": [
+            "Pour chacun des seize profils, la rédaction relit la trame du rapport détaillé avant sa mise en vente. Votre rapport, en revanche, personne ne le prépare ni ne le lit avant l'envoi : c'est le programme qui l'assemble et l'expédie.",
+            "Si vous repérez une erreur ou une imprécision, écrivez-nous via le formulaire « {contact} »."
+          ]
+        }
+      ],
+      "benefitsTitle": "Ce que vous y gagnez",
+      "benefits": [
+        {
+          "h": "Impartialité",
+          "p": "Le rapport se construit uniquement à partir de vos réponses. Votre nom ne sert qu'à figurer sur les pages ; quant à votre genre, votre âge, votre poste ou votre apparence, le programme n'en sait rien. Il n'a ni première impression, ni types préférés, ni types qu'il apprécie moins."
+        },
+        {
+          "h": "Les mêmes règles pour tous",
+          "p": "Les mêmes réponses donnent toujours le même rapport. Les conclusions d'une personne peuvent dépendre de son expérience, de sa fatigue ou de son humeur ; celles du programme ne dépendent que de vos réponses."
+        },
+        {
+          "h": "Un résultat immédiat",
+          "p": "Le rapport de synthèse s'affiche dès que vous avez répondu au dernier bloc. Le rapport détaillé n'existe pas encore en français : vous ne pouvez donc pas le commander pour l'instant. Une fois la commande passée, il est assemblé sitôt payé, à toute heure du jour ou de la nuit, sans rendez-vous ni file d'attente, et arrive par e-mail au plus tard 24 heures après le paiement."
+        },
+        {
+          "h": "Un prix accessible",
+          "p": "La préparation automatique permet de garder le test et le rapport de synthèse gratuits, et de proposer le rapport détaillé à {price} USD."
+        },
+        {
+          "h": "Aucune réponse envoyée à une IA",
+          "p": "Pour préparer votre rapport, personne n'a besoin de lire vos réponses : c'est le programme qui les traite. Vos réponses, votre nom et votre adresse e-mail ne sont transmis à aucun service d'IA tiers, puisque les textes sont écrits à l'avance. Les données que le site conserve sont décrites sur la page « {privacy} »."
+        },
+        {
+          "h": "Une qualité constante",
+          "p": "Les seize profils sont décrits selon la même structure et avec le même degré de détail. L'IA ne se fatigue pas en fin de texte et ne consacre pas moins de lignes à un profil rare qu'à un profil répandu."
+        },
+        {
+          "h": "Ni flatterie ni étiquettes",
+          "p": "Le rapport n'a pas à vous plaire. Il parle de vos points faibles aussi franchement que de vos points forts, et ne classe pas les styles en bons et en mauvais."
+        },
+        {
+          "h": "Tout est vérifiable",
+          "p": "Les chiffres du rapport sont ceux de l'écran de résultat, et la méthode de calcul est publique. Vous pouvez refaire le test et comparer les résultats."
+        }
+      ],
+      "limitsTitle": "Ce que le rapport ne fait pas",
+      "limits": [
+        "<b>Il ne connaît pas votre vie.</b> Il s'appuie sur vos réponses au test et sur le portrait type de votre profil ; votre situation, votre parcours et vos valeurs n'entrent pas en ligne de compte. Vous vous reconnaîtrez tout de suite dans certains passages ; d'autres ne vous correspondront pas.",
+        "<b>Il ne corrige pas vos réponses.</b> Le test est une auto-évaluation : si vous répondez « comme il faut » plutôt que comme vous êtes, le rapport décrira l'image que vous souhaitez donner.",
+        "<b>Il ne pose pas de diagnostic et n'évalue pas vos aptitudes.</b> Le rapport ne remplace pas un psychologue et ne doit pas être le seul fondement d'une décision RH.",
+        "<b>Il n'est pas à l'abri d'une imprécision.</b> Nous relisons et corrigeons les textes écrits par l'IA, mais une erreur reste possible. Si vous en remarquez une, écrivez-nous."
+      ],
+      "faqTitle": "Questions fréquentes",
+      "faq": [
+        {
+          "q": "Mes réponses sont-elles envoyées à une IA ?",
+          "a": "Non. L'IA rédige les textes à l'avance et ne voit pas vos réponses. Le résultat est calculé et le rapport assemblé par un programme classique, dans votre navigateur et sur le serveur du site. Vos réponses ne sont transmises à aucun service d'IA tiers."
+        },
+        {
+          "q": "L'IA écrit-elle le rapport spécialement pour moi ?",
+          "a": "Le rapport est assemblé spécialement pour vous, mais il n'est pas réécrit à chaque fois. Le texte est écrit pour votre profil, l'un des seize ; les sections chiffrées et certains passages sont choisis d'après vos réponses. C'est pourquoi le rapport est vérifiable et ne doit rien au hasard."
+        },
+        {
+          "q": "Quelqu'un lit-il mon rapport avant l'envoi ?",
+          "a": "Non. La rédaction relit les trames des rapports en amont ; votre rapport, lui, est assemblé et envoyé automatiquement."
+        },
+        {
+          "q": "L'IA peut-elle se tromper ?",
+          "a": "Oui, comme un être humain. C'est pourquoi les chiffres sont calculés par une formule et non par une IA, les textes sont écrits selon des règles, et la rédaction les relit. Si quelque chose vous semble inexact dans votre rapport, écrivez-nous : nous vérifierons et corrigerons."
+        },
+        {
+          "q": "En quoi ce rapport diffère-t-il d'un débriefing avec un consultant ?",
+          "a": "Un consultant analyse votre situation au fil d'un échange et peut vous poser des questions pour préciser les choses. Le rapport ne le fait pas : il décrit votre style d'après vos réponses au test. C'est en revanche un bon support, à apporter aussi bien chez un consultant qu'à un entretien avec votre responsable."
+        }
+      ]
+    },
     "editorial": {
       "sections": [
         {
@@ -1600,7 +1712,7 @@
         {
           "h": "Comment nous écrivons et vérifions les textes",
           "p": [
-            "Les affirmations sur la méthode s'appuient sur les sources originales et sur des études évaluées par les pairs, y compris critiques ; la liste des travaux est réunie dans la section « {sources} ». Nous ne reprenons pas les rapports commerciaux : les descriptions des quatre styles et des seize profils ont été rédigées par la rédaction à partir des caractéristiques du modèle généralement admises.",
+            "Les affirmations sur la méthode s'appuient sur les sources originales et sur des études évaluées par les pairs, y compris critiques ; la liste des travaux est réunie dans la section « {sources} ». Nous ne reprenons pas les rapports commerciaux : les descriptions des quatre styles et des seize profils ont été préparées par la rédaction avec l'aide de l'intelligence artificielle à partir des caractéristiques du modèle généralement admises.",
             "Chaque page porte la date de sa dernière modification. Nous corrigeons les textes lorsque le test lui-même évolue ou que des remarques nous parviennent, et nous ne publions rien que nous ne puissions étayer par une source ou par notre propre vérification."
           ]
         }
@@ -1820,6 +1932,7 @@
     "nav.mbti": "DISC et MBTI",
     "nav.pdf": "Test en PDF",
     "nav.materials": "Ressources sur le DISC",
+    "nav.howMade": "Préparation des rapports",
 
     "pages.styles.title": "Types de personnalité DISC : les quatre styles D, I, S, C",
     "pages.styles.description": "Les quatre types de personnalité DISC : dominance, influence, stabilité, conformité. Traits, points forts, axes de progression, motivation, stress.",

@@ -577,7 +577,7 @@
         {
           "h": "What the test is based on",
           "p": [
-            "The test is built on William Marston’s four-factor model (1928) and later most/least questionnaires: 24 blocks of four statements, one per style. The descriptions of the styles and the sixteen profiles were written by the site’s authors on the basis of the generally accepted DISC characteristics.",
+            "The test is built on William Marston’s four-factor model (1928) and later most/least questionnaires: 24 blocks of four statements, one per style. The descriptions of the styles and the sixteen profiles were prepared by our editorial team with the help of artificial intelligence on the basis of the generally accepted DISC characteristics.",
             "The project is independent and not affiliated with Wiley (DiSC®), TTI Success Insights or other trademark holders. The word DISC is used as the generic name of the model."
           ]
         },
@@ -1567,6 +1567,118 @@
         }
       }
     },
+    "howMade": {
+      "title": "How AI Prepares DISC Reports — Automatically, Without Bias",
+      "description": "DISC reports are prepared automatically: AI writes the texts under our editorial rules, and your report is built from your answers with no human involved.",
+      "h1": "How DISC reports are made",
+      "lead": "Both the summary report and the in-depth report on this site are prepared automatically. The texts are written by artificial intelligence under rules set by our editorial team, and your own report is assembled by a program from your answers, with no human involved. That is why it isn’t colored by anyone’s first impressions, mood or expectations.",
+      "facts": ["Texts written by AI", "Report built by a program", "Rules set by people", "Same rules for everyone"],
+      "stepsTitle": "From answers to report in three steps",
+      "steps": [
+        "<b>You answer.</b> The test has 24 blocks; in each one you mark what is most like you and what is least like you. Nothing but these answers goes into the calculation.",
+        "<b>The program does the scoring.</b> For each of the four styles it subtracts your “least” marks from your “most” marks, and those numbers determine your profile — one of sixteen. The formula is public: the “{results}” page walks you through it.",
+        "<b>The program builds the report.</b> It picks the texts that fit your profile and your numbers from a set written by AI in advance. The summary report appears on screen right away. The in-depth report isn’t available in English yet: ask to be notified and we’ll email you as soon as you can order it. Once you’ve ordered, it is assembled and emailed to you no later than 24 hours after payment."
+      ],
+      "sections": [
+        {
+          "h": "What artificial intelligence does",
+          "p": [
+            "The texts in the reports are written by a large language model — a kind of artificial intelligence that works with text. For the summary report it wrote the descriptions of the four styles and the sixteen profiles. For the in-depth report it writes thirteen sections for each profile, including how others see you, your strengths, growth areas, communicating with each of the four styles, conflict and stress, and a 30-day plan.",
+            "For the in-depth report it also writes separate texts to go with your numbers: what each of the four scales means at each of five levels, from very low to very high, and what to do about your lowest scale. Only the ones that match your answers go into your report.",
+            "The AI writes the texts in advance, not at the moment you order. That is deliberate: the text can be checked before it ever reaches you, and the same answers always produce the same report."
+          ]
+        },
+        {
+          "h": "What the program does",
+          "p": [
+            "The program calculates your result and assembles the report. In the summary report that means your profile, the chart, your percentages on the four scales and the description of your profile.",
+            "In the in-depth report the whole section about your profile depends on your numbers: your percentages, a breakdown of each scale and a comparison of the two layers of your answers. In five other sections, individual passages are chosen according to your lowest scale. The rest of the text is written for your profile, and your name is on every page.",
+            "The program makes nothing up as it goes: only what follows from your answers ends up in the report."
+          ]
+        },
+        {
+          "h": "What stays in human hands",
+          "p": [
+            "The rules the AI writes by were set by our editorial team. The main ones:"
+          ],
+          "ul": [
+            "A report describes tendencies, not abilities and not destiny: no diagnoses and no promises.",
+            "The styles are equals: none is described as better or worse than another.",
+            "The in-depth report contains no numbers and no sweeping statements that aren’t backed by data, and every piece of advice is an action you can take this week: a ready-made phrase, a rule, a deadline.",
+            "The in-depth report makes no assumptions about your gender: the program doesn’t know who you are, and the text doesn’t try to guess."
+          ],
+          "after": [
+            "The editorial team reads the in-depth report template for each of the sixteen profiles before it goes on sale. Your own report isn’t prepared by a person, and nobody reads it before it is sent: a program assembles it and sends it.",
+            "If you find a mistake or an inaccuracy, write to us via the “{contact}” form."
+          ]
+        }
+      ],
+      "benefitsTitle": "What this means for you",
+      "benefits": [
+        {
+          "h": "No bias",
+          "p": "Your report is built from your answers and nothing else. Your name is needed only so it can appear on the pages; the program doesn’t know your gender, your age, your job title or what you look like. It has no first impressions and no favorite or least favorite types."
+        },
+        {
+          "h": "Same rules for everyone",
+          "p": "The same answers always produce the same report. A person’s conclusions can depend on experience, fatigue and mood; the program’s depend only on your answers."
+        },
+        {
+          "h": "Results right away",
+          "p": "The summary report appears on screen the moment you finish the last block. The in-depth report isn’t available in English yet: ask to be notified and we’ll email you as soon as you can order it. When you do order, it is assembled as soon as you pay, at any hour of the day or night, with no appointment and no waiting list; the email arrives no later than 24 hours after payment."
+        },
+        {
+          "h": "Affordable price",
+          "p": "Because the reports are prepared automatically, the test and the summary report can stay free and the in-depth report can be offered for US${price}."
+        },
+        {
+          "h": "Your answers don’t go to an AI",
+          "p": "No human needs to read your answers to prepare your report: a program processes them. Your answers, name and email address are not passed to third-party AI services, because the texts are written in advance. The “{privacy}” page describes what data the site stores."
+        },
+        {
+          "h": "Consistent quality",
+          "p": "All sixteen profiles follow the same structure and are described in the same detail. An AI doesn’t tire toward the end of a text, and it doesn’t write less about a rare profile than about a common one."
+        },
+        {
+          "h": "No flattery, no labels",
+          "p": "The report doesn’t need you to like it. It is as direct about your weaknesses as it is about your strengths, and it doesn’t sort the styles into good and bad."
+        },
+        {
+          "h": "Everything can be checked",
+          "p": "The numbers in the report are the same ones you see on the result screen, and the scoring method is described openly. You can retake the test and compare the results."
+        }
+      ],
+      "limitsTitle": "What the report doesn’t do",
+      "limits": [
+        "<b>It doesn’t know your life.</b> It draws on your test answers and on the typical picture of your profile; your circumstances, experience and values aren’t part of it. Some things you’ll recognize at once; others won’t sound like you.",
+        "<b>It doesn’t correct your answers.</b> The test is a self-report: if you answer the way you think you should rather than the way things are, the report will describe the person you’d like to be.",
+        "<b>It doesn’t diagnose anything or assess abilities.</b> The report is no substitute for a psychologist and should not be the sole basis for hiring or other personnel decisions.",
+        "<b>It isn’t error-proof.</b> We read and edit the texts the AI writes, but a mistake can still slip through. If you spot one, write to us."
+      ],
+      "faqTitle": "Questions and answers",
+      "faq": [
+        {
+          "q": "Are my answers sent to an AI?",
+          "a": "No. The AI writes the texts in advance and never sees your answers. Your result is calculated and your report assembled by an ordinary program — in your browser and on the site’s server. Your answers are not passed to third-party AI services."
+        },
+        {
+          "q": "Does the AI write the report for me personally?",
+          "a": "The report is assembled for you personally, but it isn’t written from scratch. The text is written for your profile, one of sixteen; the sections with numbers and certain individual passages are chosen to match your answers. That is why the report can be checked and doesn’t depend on chance."
+        },
+        {
+          "q": "Does anyone read my report before it’s sent?",
+          "a": "No. The editorial team reads the report templates in advance; your own report is assembled and sent automatically."
+        },
+        {
+          "q": "Can the AI get things wrong?",
+          "a": "It can, just as a person can. That is why the numbers are calculated by a formula rather than by AI, the texts are written to a set of rules, and the editorial team reads them. If anything in your report seems inaccurate, write to us: we’ll check it and fix it."
+        },
+        {
+          "q": "How is a report like this different from a session with a consultant?",
+          "a": "A consultant looks at your particular situation in conversation and can ask follow-up questions. The report doesn’t do that: it describes your style from your test answers. It is a useful thing to take with you, though, whether to a consultant or into a conversation with your manager."
+        }
+      ]
+    },
     "editorial": {
       "sections": [
         {
@@ -1579,7 +1691,7 @@
         {
           "h": "How we write and check our texts",
           "p": [
-            "The statements about the method are based on primary sources and peer-reviewed research, including critical work; the list of works is collected in the “{sources}” section. We do not paraphrase commercial reports: the descriptions of the four styles and the sixteen profiles were written by our editorial team on the basis of the generally accepted characteristics of the model.",
+            "The statements about the method are based on primary sources and peer-reviewed research, including critical work; the list of works is collected in the “{sources}” section. We do not paraphrase commercial reports: the descriptions of the four styles and the sixteen profiles were prepared by our editorial team with the help of artificial intelligence on the basis of the generally accepted characteristics of the model.",
             "Every page carries the date it was last updated. We revise the texts when the test itself changes or when readers point something out, and we do not publish anything we cannot back up with a source or with our own checking."
           ]
         }
@@ -1793,6 +1905,7 @@
     "nav.mbti": "DISC vs MBTI",
     "nav.pdf": "PDF test",
     "nav.materials": "DISC resources",
+    "nav.howMade": "How reports are made",
 
     "pages.styles.title": "DISC Personality Types: D, I, S, C — Traits, Strengths, Motivation",
     "pages.styles.description": "The four DISC personality types: Dominance, Influence, Steadiness, Conscientiousness. Traits, strengths, growth areas, motivation and behavior under stress.",

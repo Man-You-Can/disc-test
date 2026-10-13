@@ -579,7 +579,7 @@
         {
           "h": "Dasar tes ini",
           "p": [
-            "Tes ini dibangun di atas model empat faktor William Marston (1928) dan kuesioner-kuesioner sesudahnya yang berformat “paling menggambarkan — paling tidak menggambarkan”: 24 soal berisi empat pernyataan, satu untuk setiap gaya. Uraian gaya dan enam belas profil ditulis oleh tim penulis situs berdasarkan karakteristik DISC yang diterima secara umum.",
+            "Tes ini dibangun di atas model empat faktor William Marston (1928) dan kuesioner-kuesioner sesudahnya yang berformat “paling menggambarkan — paling tidak menggambarkan”: 24 soal berisi empat pernyataan, satu untuk setiap gaya. Uraian gaya dan enam belas profil disiapkan oleh redaksi dengan bantuan kecerdasan buatan berdasarkan karakteristik DISC yang diterima secara umum.",
             "Proyek ini independen dan tidak berafiliasi dengan Wiley (DiSC®), TTI Success Insights, maupun pemilik merek dagang lainnya. Kata DISC digunakan sebagai nama umum model tersebut."
           ]
         },
@@ -1580,6 +1580,118 @@
         }
       }
     },
+    "howMade": {
+      "title": "Cara AI Menyiapkan Laporan DISC — Otomatis dan Tanpa Bias",
+      "description": "Laporan DISC disiapkan otomatis: teks ditulis kecerdasan buatan menurut aturan redaksi, dan laporan disusun dari jawaban Anda tanpa campur tangan manusia.",
+      "h1": "Cara Laporan DISC Dibuat",
+      "lead": "Laporan ringkas dan laporan mendalam di situs ini disiapkan secara otomatis. Teksnya ditulis oleh kecerdasan buatan menurut aturan redaksi, sedangkan laporan Anda disusun oleh program dari jawaban Anda, tanpa campur tangan manusia. Karena itu, laporan tidak terpengaruh oleh kesan pertama, suasana hati orang lain, ataupun harapan siapa pun.",
+      "facts": ["Teks ditulis AI", "Laporan disusun program", "Aturan ditetapkan manusia", "Aturan yang sama untuk semua"],
+      "stepsTitle": "Dari jawaban ke laporan: tiga langkah",
+      "steps": [
+        "<b>Anda menjawab.</b> Tes ini terdiri atas 24 soal; di setiap soal Anda menandai pernyataan yang paling menggambarkan Anda dan yang paling tidak menggambarkan Anda. Selain jawaban itu, tidak ada hal lain yang ikut dihitung.",
+        "<b>Program menghitung.</b> Untuk tiap gaya dari keempat gaya, program mengurangi jumlah pilihan “paling menggambarkan” dengan jumlah pilihan “paling tidak menggambarkan”, lalu dari angka-angka itu menentukan profil Anda, satu dari enam belas profil. Rumusnya terbuka: penjelasannya ada di halaman “{results}”.",
+        "<b>Program menyusun laporan.</b> Dari teks yang ditulis AI terlebih dahulu, program memilih yang sesuai dengan profil dan angka Anda. Laporan ringkas langsung tampil di layar. Laporan mendalam belum tersedia dalam bahasa Indonesia. Anda bisa minta dikabari: kami akan mengirim email begitu laporan ini dapat dipesan. Setelah Anda memesan dan membayar, laporan disusun dan dikirim lewat email."
+      ],
+      "sections": [
+        {
+          "h": "Apa yang dikerjakan kecerdasan buatan",
+          "p": [
+            "Teks laporan ditulis oleh model bahasa besar, yakni kecerdasan buatan yang mengolah teks. Untuk laporan ringkas, model ini telah menulis uraian empat gaya dan enam belas profil. Untuk laporan mendalam, model ini menulis tiga belas bagian bagi tiap profil: bagaimana orang lain melihat Anda, kekuatan, area pengembangan, cara berbicara dengan orang dari tiap gaya, konflik dan stres, rencana 30 hari.",
+            "Untuk laporan mendalam, ada pula teks yang ditulis tersendiri untuk angka Anda: apa arti tiap skala dari keempat skala pada kelima tingkatnya, dari sangat rendah hingga sangat tinggi, dan bagaimana menyikapi skala terendah. Yang masuk ke laporan hanyalah teks yang sesuai dengan jawaban Anda.",
+            "AI menulis teks terlebih dahulu, bukan pada saat pesanan masuk. Ini memang disengaja: dengan begitu, teks bisa diperiksa sebelum sampai ke tangan Anda, dan jawaban yang sama selalu menghasilkan laporan yang sama."
+          ]
+        },
+        {
+          "h": "Apa yang dikerjakan program",
+          "p": [
+            "Program menghitung hasil dan menyusun laporan. Laporan ringkas memuat profil, grafik, persentase pada empat skala, dan uraian profil Anda.",
+            "Dalam laporan mendalam, seluruh bagian tentang profil bergantung pada angka Anda: persentase, ulasan tiap skala, dan perbandingan dua lapis jawaban Anda. Di lima bagian lain, teks di beberapa tempat dipilih berdasarkan skala terendah Anda. Selebihnya ditulis untuk profil Anda, dan nama Anda tercantum di setiap halaman.",
+            "Program tidak mengarang apa pun saat menyusun laporan: yang masuk ke laporan hanyalah apa yang memang ditentukan oleh jawaban Anda."
+          ]
+        },
+        {
+          "h": "Apa yang tetap di tangan manusia",
+          "p": [
+            "Aturan yang dipegang AI saat menulis teks ditetapkan oleh redaksi situs. Inilah yang terpenting:"
+          ],
+          "ul": [
+            "Laporan menggambarkan kecenderungan, bukan kemampuan dan bukan nasib: tanpa diagnosis dan tanpa janji.",
+            "Semua gaya setara: tidak ada yang digambarkan lebih baik atau lebih buruk daripada yang lain.",
+            "Dalam laporan mendalam tidak ada angka ataupun kata-kata mutlak yang tidak didukung data, dan setiap saran berupa tindakan yang bisa dilakukan minggu ini juga: kalimat siap pakai, aturan, tenggat.",
+            "Laporan mendalam tidak berasumsi apa pun tentang jenis kelamin Anda: program tidak tahu siapa Anda, dan teksnya tidak mencoba menebak."
+          ],
+          "after": [
+            "Redaksi membaca templat laporan mendalam untuk tiap profil dari keenam belas profil sebelum laporan itu mulai dijual. Laporan Anda sendiri tidak disiapkan oleh manusia dan tidak dibaca siapa pun sebelum dikirim: program yang menyusun dan mengirimkannya.",
+            "Jika Anda menemukan kesalahan atau hal yang kurang tepat, tulis kepada kami melalui formulir “{contact}”."
+          ]
+        }
+      ],
+      "benefitsTitle": "Apa manfaatnya bagi Anda",
+      "benefits": [
+        {
+          "h": "Tanpa bias",
+          "p": "Laporan disusun hanya dari jawaban Anda. Nama hanya diperlukan untuk dicantumkan di halaman-halaman laporan, sedangkan jenis kelamin, usia, jabatan, dan penampilan Anda tidak diketahui program. Program tidak punya kesan pertama, juga tidak punya tipe yang disukai atau tidak disukai."
+        },
+        {
+          "h": "Aturan yang sama untuk semua",
+          "p": "Jawaban yang sama selalu menghasilkan laporan yang sama. Kesimpulan manusia bisa dipengaruhi pengalaman, kelelahan, dan suasana hati; kesimpulan program hanya bergantung pada jawaban Anda."
+        },
+        {
+          "h": "Hasil seketika",
+          "p": "Laporan ringkas tampil di layar begitu Anda menjawab soal terakhir. Laporan mendalam belum tersedia dalam bahasa Indonesia, tetapi Anda bisa minta dikabari saat sudah dapat dipesan. Laporan ini disusun segera setelah Anda membayar, jam berapa pun, tanpa janji temu dan tanpa antrean; emailnya tiba paling lambat 24 jam setelah pembayaran."
+        },
+        {
+          "h": "Harga terjangkau",
+          "p": "Karena laporan disiapkan secara otomatis, tes dan laporan ringkas bisa tetap gratis, dan laporan mendalam bisa ditawarkan seharga US${price}."
+        },
+        {
+          "h": "Jawaban tidak dikirim ke AI",
+          "p": "Untuk menyiapkan laporan, tidak perlu ada orang yang membaca jawaban Anda: jawaban itu diolah oleh program. Jawaban, nama, dan email Anda tidak diteruskan ke layanan AI pihak ketiga, sebab teksnya ditulis terlebih dahulu. Data apa saja yang disimpan situs dijelaskan di halaman “{privacy}”."
+        },
+        {
+          "h": "Mutu yang merata",
+          "p": "Keenam belas profil diuraikan dengan struktur yang sama dan sama terperincinya. AI tidak kelelahan menjelang akhir teks dan tidak menulis lebih pendek tentang profil yang jarang muncul daripada tentang profil yang sering muncul."
+        },
+        {
+          "h": "Tanpa sanjungan, tanpa label",
+          "p": "Laporan tidak perlu mengambil hati Anda. Kelemahan dibahas sama lugasnya dengan kekuatan, dan gaya tidak dibagi menjadi yang baik dan yang buruk."
+        },
+        {
+          "h": "Semuanya bisa diperiksa",
+          "p": "Angka dalam laporan sama dengan angka di layar hasil, dan cara penghitungannya dijelaskan secara terbuka. Anda bisa mengulang tes dan membandingkan hasilnya."
+        }
+      ],
+      "limitsTitle": "Apa yang tidak dilakukan laporan",
+      "limits": [
+        "<b>Tidak mengenal hidup Anda.</b> Laporan bersandar pada jawaban tes dan gambaran khas profil; keadaan, pengalaman, dan nilai-nilai Anda tidak tercakup di dalamnya. Ada yang langsung Anda kenali, ada pula yang ternyata tidak cocok dengan Anda.",
+        "<b>Tidak mengoreksi jawaban.</b> Tes ini adalah penilaian diri: jika Anda menjawab “sesuai harapan” dan bukan apa adanya, laporan akan menggambarkan citra yang Anda inginkan.",
+        "<b>Tidak mendiagnosis dan tidak menilai kemampuan.</b> Laporan tidak menggantikan psikolog dan tidak boleh menjadi satu-satunya dasar keputusan terkait SDM.",
+        "<b>Tidak luput dari kekeliruan.</b> Teks yang ditulis AI kami baca dan kami sunting, tetapi kesalahan tetap mungkin terjadi. Jika Anda menemukannya, tulis kepada kami."
+      ],
+      "faqTitle": "Tanya jawab",
+      "faq": [
+        {
+          "q": "Apakah jawaban saya dikirim ke AI?",
+          "a": "Tidak. AI menulis teksnya terlebih dahulu dan tidak melihat jawaban Anda. Hasil dihitung dan laporan disusun oleh program biasa, di browser Anda dan di server situs. Jawaban tidak diteruskan ke layanan AI pihak ketiga."
+        },
+        {
+          "q": "Apakah AI menulis laporan khusus untuk saya?",
+          "a": "Laporan disusun khusus untuk Anda, tetapi tidak ditulis ulang dari awal. Teksnya ditulis untuk profil Anda, satu dari enam belas profil, sedangkan bagian yang memuat angka dan teks di beberapa tempat lain dipilih berdasarkan jawaban Anda. Karena itu, laporan bisa diperiksa dan tidak bergantung pada kebetulan."
+        },
+        {
+          "q": "Apakah ada yang membaca laporan saya sebelum dikirim?",
+          "a": "Tidak. Templat laporan dibaca redaksi terlebih dahulu, sedangkan laporan Anda disusun dan dikirim secara otomatis."
+        },
+        {
+          "q": "Bisakah AI keliru?",
+          "a": "Bisa, sama seperti manusia. Karena itu, angka dihitung dengan rumus, bukan oleh AI; teksnya ditulis menurut aturan dan dibaca redaksi. Jika ada bagian laporan yang menurut Anda kurang tepat, tulis kepada kami: kami akan memeriksa dan memperbaikinya."
+        },
+        {
+          "q": "Apa bedanya laporan ini dengan sesi bersama konsultan?",
+          "a": "Konsultan membedah situasi Anda lewat percakapan dan bisa mengajukan pertanyaan lanjutan. Laporan tidak melakukan itu: laporan menggambarkan gaya Anda berdasarkan jawaban tes. Laporan yang sudah jadi berguna sebagai bekal, baik saat menemui konsultan maupun saat berbicara dengan atasan."
+        }
+      ]
+    },
     "editorial": {
       "sections": [
         {
@@ -1592,7 +1704,7 @@
         {
           "h": "Cara kami menulis dan memeriksa teks",
           "p": [
-            "Pernyataan tentang metode bersandar pada sumber primer dan penelitian yang telah ditelaah sejawat (peer-reviewed), termasuk yang kritis; daftar karyanya dihimpun di bagian “{sources}”. Kami tidak menyadur laporan komersial: uraian empat gaya dan enam belas profil ditulis oleh redaksi berdasarkan karakteristik model yang diterima secara umum.",
+            "Pernyataan tentang metode bersandar pada sumber primer dan penelitian yang telah ditelaah sejawat (peer-reviewed), termasuk yang kritis; daftar karyanya dihimpun di bagian “{sources}”. Kami tidak menyadur laporan komersial: uraian empat gaya dan enam belas profil disiapkan oleh redaksi dengan bantuan kecerdasan buatan berdasarkan karakteristik model yang diterima secara umum.",
             "Setiap halaman mencantumkan tanggal perubahan terakhir. Kami merevisi teks ketika tesnya sendiri berubah atau ketika ada masukan, dan kami tidak memublikasikan apa pun yang tidak dapat kami dukung dengan sumber atau dengan pemeriksaan kami sendiri."
           ]
         }
@@ -1806,6 +1918,7 @@
     "nav.mbti": "DISC dan MBTI",
     "nav.pdf": "Tes DISC PDF",
     "nav.materials": "Materi tentang DISC",
+    "nav.howMade": "Cara laporan dibuat",
 
     "pages.styles.title": "Tipe Kepribadian DISC: 4 Gaya D, I, S, C — Ciri dan Kekuatan",
     "pages.styles.description": "Empat tipe kepribadian (gaya perilaku) DISC: Dominasi, Pengaruh, Kestabilan, Ketelitian. Ciri, kekuatan, area pengembangan, motivasi, dan perilaku saat stres.",

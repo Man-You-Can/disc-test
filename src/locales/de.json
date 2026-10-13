@@ -581,7 +581,7 @@
         {
           "h": "Worauf der Test beruht",
           "p": [
-            "Der Test basiert auf dem Vier-Faktoren-Modell von William Marston (1928) und den späteren Fragebögen im Format „am meisten – am wenigsten“: 24 Blöcke mit je vier Aussagen, eine pro Stil. Die Beschreibungen der Stile und der sechzehn Profile hat die Redaktion der Seite auf Grundlage der allgemein anerkannten DISG-Merkmale verfasst.",
+            "Der Test basiert auf dem Vier-Faktoren-Modell von William Marston (1928) und den späteren Fragebögen im Format „am meisten – am wenigsten“: 24 Blöcke mit je vier Aussagen, eine pro Stil. Die Beschreibungen der Stile und der sechzehn Profile hat die Redaktion der Seite mithilfe künstlicher Intelligenz auf Grundlage der allgemein anerkannten DISG-Merkmale erstellt.",
             "Das Projekt ist unabhängig und steht in keiner Verbindung zu Wiley (DiSC®), TTI Success Insights oder anderen Markeninhabern. Die Bezeichnung DISG (international DISC) wird als allgemeiner Name des Modells verwendet."
           ]
         },
@@ -1573,6 +1573,118 @@
         }
       }
     },
+    "howMade": {
+      "title": "DISG-Berichte mit KI – automatisch und unvoreingenommen",
+      "description": "DISG-Berichte automatisch erstellt: Die Texte schreibt eine KI nach Regeln der Redaktion, Ihr Bericht entsteht ohne menschliches Zutun aus Ihren Antworten.",
+      "h1": "So entstehen die DISG-Berichte",
+      "lead": "Kurzbericht und ausführlicher Bericht entstehen auf dieser Seite automatisch. Die Texte schreibt eine künstliche Intelligenz nach den Regeln der Redaktion, Ihren Bericht stellt ein Programm aus Ihren Antworten zusammen – ohne menschliches Zutun. Deshalb haben weder der erste Eindruck noch die Stimmung oder die Erwartungen anderer Einfluss auf ihn.",
+      "facts": ["KI schreibt die Texte", "Programm erstellt den Bericht", "Menschen legen die Regeln fest", "Gleiche Regeln für alle"],
+      "stepsTitle": "Von Ihren Antworten zum Bericht in drei Schritten",
+      "steps": [
+        "<b>Sie antworten.</b> Der Test hat 24 Blöcke; in jedem markieren Sie, was am meisten und was am wenigsten auf Sie zutrifft. Außer diesen Antworten fließt nichts in die Berechnung ein.",
+        "<b>Das Programm rechnet.</b> Für jeden der vier Stile zieht es die Markierungen „am wenigsten“ von den Markierungen „am meisten“ ab und bestimmt aus diesen Zahlen Ihr Profil – eines von sechzehn. Die Formel ist offengelegt: Auf der Seite „{results}“ wird sie im Einzelnen erklärt.",
+        "<b>Das Programm stellt den Bericht zusammen.</b> Zu Ihrem Profil und Ihren Zahlen wählt es aus den vorab von der KI geschriebenen Texten die passenden aus. Der Kurzbericht erscheint sofort auf dem Bildschirm; der ausführliche wird nach der Zahlung zusammengestellt und kommt per E-Mail. Auf Deutsch gibt es ihn noch nicht: Lassen Sie sich benachrichtigen – wir schreiben Ihnen, sobald Sie ihn bestellen können."
+      ],
+      "sections": [
+        {
+          "h": "Was die künstliche Intelligenz macht",
+          "p": [
+            "Die Texte der Berichte stammen von einem großen Sprachmodell – einer künstlichen Intelligenz, die mit Text arbeitet. Für den Kurzbericht hat es die Beschreibungen der vier Stile und der sechzehn Profile geschrieben. Für den ausführlichen Bericht schreibt es dreizehn Kapitel pro Profil, darunter: wie andere Sie sehen, Stärken, Entwicklungsfelder, Kommunikation mit jedem der vier Stile, Konflikt und Stress, 30-Tage-Plan.",
+            "Für den ausführlichen Bericht entstehen außerdem eigene Texte zu Ihren Zahlen: was jede der vier Skalen auf jeder der fünf Stufen bedeutet, von sehr niedrig bis sehr hoch, und was Sie mit Ihrem niedrigsten Wert anfangen können. In Ihren Bericht kommen davon die Texte, die zu Ihren Antworten passen.",
+            "Die KI schreibt die Texte vorab und nicht erst im Moment der Bestellung. Das ist Absicht: So lässt sich jeder Text prüfen, bevor er bei Ihnen ankommt, und gleiche Antworten ergeben immer den gleichen Bericht."
+          ]
+        },
+        {
+          "h": "Was das Programm macht",
+          "p": [
+            "Das Programm berechnet das Ergebnis und stellt den Bericht zusammen. Im Kurzbericht sind das Ihr Profil, das Diagramm, die Prozentwerte auf den vier Skalen und die Beschreibung Ihres Profils.",
+            "Im ausführlichen Bericht hängt das gesamte Kapitel über Ihr Profil von Ihren Zahlen ab: die Prozentwerte, die Erläuterung jeder Skala und der Vergleich der beiden Ebenen Ihrer Antworten. In fünf weiteren Kapiteln werden einzelne Stellen nach Ihrem niedrigsten Wert ausgewählt. Der übrige Text ist für Ihr Profil geschrieben, und auf jeder Seite steht Ihr Name.",
+            "Das Programm denkt sich nichts aus: In den Bericht kommt nur, was sich aus Ihren Antworten ergibt."
+          ]
+        },
+        {
+          "h": "Was in Menschenhand bleibt",
+          "p": [
+            "Die Regeln, nach denen die KI die Texte schreibt, legt die Redaktion der Seite fest. Die wichtigsten:"
+          ],
+          "ul": [
+            "Der Bericht beschreibt Neigungen, keine Fähigkeiten und kein Schicksal: ohne Diagnosen und ohne Versprechen.",
+            "Die Stile sind gleichwertig: Keiner wird als besser oder schlechter dargestellt.",
+            "Im ausführlichen Bericht stehen weder Zahlen noch kategorische Formulierungen, die nicht durch Daten gedeckt sind, und jeder Rat ist ein Schritt, den Sie noch in dieser Woche gehen können: eine fertige Formulierung, eine Regel, eine Frist.",
+            "Der ausführliche Bericht spricht Sie ohne männliche oder weibliche Formen an: Das Programm weiß nicht, wer Sie sind, und der Text versucht nicht, es zu erraten."
+          ],
+          "after": [
+            "Die Vorlage des ausführlichen Berichts liest die Redaktion für jedes der sechzehn Profile, bevor der Bericht in den Verkauf geht. Ihren Bericht selbst erstellt kein Mensch, und auch vor dem Versand liest ihn niemand: Zusammenstellen und Versenden übernimmt das Programm.",
+            "Wenn Sie einen Fehler oder eine Ungenauigkeit finden, schreiben Sie uns über das Formular „{contact}“."
+          ]
+        }
+      ],
+      "benefitsTitle": "Was Sie davon haben",
+      "benefits": [
+        {
+          "h": "Unvoreingenommen",
+          "p": "Der Bericht entsteht allein aus Ihren Antworten. Ihren Namen braucht das Programm nur, damit er auf den Seiten des Berichts steht; Geschlecht, Alter, Position und Aussehen kennt es nicht. Es hat keinen ersten Eindruck, keine Lieblingstypen und keine Typen, die es nicht mag."
+        },
+        {
+          "h": "Gleiche Regeln für alle",
+          "p": "Gleiche Antworten ergeben immer den gleichen Bericht. Das Urteil eines Menschen kann von Erfahrung, Müdigkeit und Stimmung abhängen – das des Programms nur von Ihren Antworten."
+        },
+        {
+          "h": "Ergebnis sofort",
+          "p": "Der Kurzbericht erscheint auf dem Bildschirm, sobald Sie den letzten Block beantwortet haben. Den ausführlichen Bericht gibt es auf Deutsch noch nicht. Sobald Sie ihn bestellen können, wird er direkt nach der Zahlung zusammengestellt – zu jeder Tages- und Nachtzeit, ohne Termin und ohne Warteschlange: Die E-Mail kommt spätestens 24 Stunden nach der Zahlung."
+        },
+        {
+          "h": "Günstiger Preis",
+          "p": "Weil die Berichte automatisch entstehen, können Test und Kurzbericht kostenlos bleiben und der ausführliche Bericht für {price} USD angeboten werden."
+        },
+        {
+          "h": "Ihre Antworten gehen an keine KI",
+          "p": "Um den Bericht zu erstellen, muss kein Mensch Ihre Antworten lesen: Das Programm verarbeitet sie. An KI-Dienste Dritter werden Antworten, Name und E-Mail-Adresse nicht weitergegeben, denn die Texte entstehen vorab. Welche Daten die Website speichert, lesen Sie auf der Seite „{privacy}“."
+        },
+        {
+          "h": "Gleichbleibende Qualität",
+          "p": "Alle sechzehn Profile werden nach demselben Aufbau und gleich ausführlich beschrieben. Die KI wird gegen Ende eines Textes nicht müde und schreibt über ein seltenes Profil nicht knapper als über ein häufiges."
+        },
+        {
+          "h": "Ohne Schmeichelei, ohne Schubladen",
+          "p": "Der Bericht muss sich bei Ihnen nicht beliebt machen. Über Schwächen spricht er so offen wie über Stärken, und er teilt die Stile nicht in gute und schlechte ein."
+        },
+        {
+          "h": "Alles lässt sich nachprüfen",
+          "p": "Die Zahlen im Bericht sind dieselben wie auf dem Ergebnisbildschirm, und die Berechnung ist offen beschrieben. Sie können den Test wiederholen und die Ergebnisse vergleichen."
+        }
+      ],
+      "limitsTitle": "Was der Bericht nicht leistet",
+      "limits": [
+        "<b>Er kennt Ihr Leben nicht.</b> Er stützt sich auf Ihre Testantworten und auf das typische Bild Ihres Profils; Ihre Lebensumstände, Erfahrungen und Werte fließen nicht ein. Manches werden Sie sofort wiedererkennen, anderes trifft auf Sie nicht zu.",
+        "<b>Er korrigiert Ihre Antworten nicht.</b> Der Test ist eine Selbsteinschätzung: Wer „wie erwartet“ antwortet statt so, wie es ist, bekommt im Bericht ein Wunschbild beschrieben.",
+        "<b>Er stellt keine Diagnosen und beurteilt keine Fähigkeiten.</b> Der Bericht ersetzt keine Psychologin und keinen Psychologen und sollte nicht die alleinige Grundlage für Personalentscheidungen sein.",
+        "<b>Er ist gegen Ungenauigkeiten nicht gefeit.</b> Von der KI geschriebene Texte lesen und überarbeiten wir; Fehler sind trotzdem möglich. Wenn Ihnen einer auffällt, schreiben Sie uns."
+      ],
+      "faqTitle": "Fragen und Antworten",
+      "faq": [
+        {
+          "q": "Werden meine Antworten an eine KI geschickt?",
+          "a": "Nein. Die KI schreibt die Texte vorab und bekommt Ihre Antworten nicht zu sehen. Ein gewöhnliches Programm berechnet das Ergebnis und stellt den Bericht zusammen – in Ihrem Browser und auf dem Server der Website. An KI-Dienste Dritter werden die Antworten nicht weitergegeben."
+        },
+        {
+          "q": "Schreibt die KI den Bericht eigens für mich?",
+          "a": "Der Bericht wird eigens für Sie zusammengestellt, aber nicht neu geschrieben. Der Text ist für Ihr Profil geschrieben – eines von sechzehn –, und die Teile mit Ihren Zahlen sowie einzelne Stellen richten sich nach Ihren Antworten. Deshalb lässt sich der Bericht überprüfen und hängt nicht vom Zufall ab."
+        },
+        {
+          "q": "Liest jemand meinen Bericht, bevor er verschickt wird?",
+          "a": "Nein. Die Redaktion liest die Vorlagen der Berichte vorab; Ihr Bericht wird automatisch zusammengestellt und verschickt."
+        },
+        {
+          "q": "Kann die KI Fehler machen?",
+          "a": "Ja, genau wie ein Mensch. Deshalb berechnet eine Formel die Zahlen und nicht die KI, die Texte entstehen nach festen Regeln, und die Redaktion liest sie. Wenn Ihnen etwas im Bericht ungenau vorkommt, schreiben Sie uns: Wir prüfen und korrigieren das."
+        },
+        {
+          "q": "Worin unterscheidet sich so ein Bericht von der Auswertung in einer Beratung?",
+          "a": "Eine Beraterin oder ein Berater geht im Gespräch auf Ihre Situation ein und kann nachfragen. Das tut der Bericht nicht: Er beschreibt Ihren Stil anhand Ihrer Testantworten. Der fertige Bericht ist aber eine gute Grundlage – für eine Beratung ebenso wie für das Gespräch mit Ihrer Führungskraft."
+        }
+      ]
+    },
     "editorial": {
       "sections": [
         {
@@ -1585,7 +1697,7 @@
         {
           "h": "Wie wir Texte schreiben und prüfen",
           "p": [
-            "Die Aussagen zur Methode stützen sich auf Primärquellen und begutachtete Studien, darunter kritische; die Liste der Arbeiten finden Sie im Abschnitt „{sources}“. Wir geben keine kommerziellen Berichte wieder: Die Beschreibungen der vier Stile und der sechzehn Profile hat die Redaktion auf Grundlage der allgemein anerkannten Merkmale des Modells verfasst.",
+            "Die Aussagen zur Methode stützen sich auf Primärquellen und begutachtete Studien, darunter kritische; die Liste der Arbeiten finden Sie im Abschnitt „{sources}“. Wir geben keine kommerziellen Berichte wieder: Die Beschreibungen der vier Stile und der sechzehn Profile hat die Redaktion mithilfe künstlicher Intelligenz auf Grundlage der allgemein anerkannten Merkmale des Modells erstellt.",
             "Auf jeder Seite steht das Datum der letzten Änderung. Wir überarbeiten die Texte, wenn sich der Test selbst ändert oder Hinweise eingehen, und veröffentlichen nichts, was wir nicht mit einer Quelle oder einer eigenen Prüfung belegen können."
           ]
         }
@@ -1805,6 +1917,7 @@
     "nav.mbti": "DISG und MBTI",
     "nav.pdf": "Test als PDF",
     "nav.materials": "Mehr über DISG",
+    "nav.howMade": "So entstehen die Berichte",
 
     "pages.styles.title": "Die vier DISG-Typen D, I, S, C – Merkmale, Stärken, Motivation",
     "pages.styles.description": "Die vier DISG-Typen: Dominanz, Initiative, Stetigkeit, Gewissenhaftigkeit. Merkmale, Stärken, Entwicklungsfelder, Motivation, Verhalten unter Stress.",

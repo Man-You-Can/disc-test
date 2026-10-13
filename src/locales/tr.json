@@ -577,7 +577,7 @@
         {
           "h": "Test neye dayanıyor",
           "p": [
-            "Test, William Marston’ın dört faktörlü modeline (1928) ve ardından geliştirilen “en çok – en az” biçimindeki envanterlere dayanır: her biri dört ifadeli 24 soru, her stil için bir ifade. Stillerin ve on altı profilin açıklamalarını, DISC’in genel kabul görmüş özelliklerinden yola çıkarak sitenin yazarları kaleme aldı.",
+            "Test, William Marston’ın dört faktörlü modeline (1928) ve ardından geliştirilen “en çok – en az” biçimindeki envanterlere dayanır: her biri dört ifadeli 24 soru, her stil için bir ifade. Stillerin ve on altı profilin açıklamalarını, DISC’in genel kabul görmüş özelliklerinden yola çıkarak editör ekibi yapay zekâ yardımıyla hazırladı.",
             "Proje bağımsızdır; Wiley (DiSC®), TTI Success Insights ve diğer marka sahipleriyle hiçbir bağı yoktur. DISC sözcüğü modelin genel adı olarak kullanılmaktadır."
           ]
         },
@@ -1567,6 +1567,118 @@
         }
       }
     },
+    "howMade": {
+      "title": "Yapay zekâ DISC raporunu nasıl hazırlar: otomatik, tarafsız",
+      "description": "DISC raporları otomatik hazırlanır: metinleri editör ekibinin kurallarıyla yapay zekâ yazar, raporunuz yanıtlarınıza göre, insan eli değmeden derlenir.",
+      "h1": "DISC raporları nasıl hazırlanır",
+      "lead": "Bu sitedeki özet rapor da genişletilmiş rapor da otomatik olarak hazırlanır. Metinleri, editör ekibinin koyduğu kurallara göre yapay zekâ yazar; sizin raporunuzu ise yazılım, yanıtlarınıza bakarak derler ve bu işe insan eli değmez. Bu yüzden rapora ne ilk izlenim karışır ne birinin o günkü ruh hâli ne de başkalarının beklentileri.",
+      "facts": ["Metinleri yapay zekâ yazar", "Raporu yazılım derler", "Kuralları insan koyar", "Herkese aynı kurallar"],
+      "stepsTitle": "Yanıtlardan rapora üç adım",
+      "steps": [
+        "<b>Siz yanıtlarsınız.</b> Testte 24 soru var; her birinde sizi en çok ve en az tanımlayan ifadeleri işaretlersiniz. Hesaba bu yanıtlardan başka hiçbir şey girmez.",
+        "<b>Yazılım hesaplar.</b> Dört stilin her biri için “en çok” işaretlerinin sayısından “en az” işaretlerinin sayısını çıkarır ve bu sayılara göre profilinizi, yani on altı profilden birini belirler. Formül gizli değildir: “{results}” sayfasında adım adım anlatılır.",
+        "<b>Yazılım raporu derler.</b> Profilinize ve puanlarınıza uyan metinleri, yapay zekânın önceden yazdıkları arasından seçer. Özet rapor hemen ekrana gelir. Genişletilmiş rapor henüz Türkçe sunulmuyor. Haber vermemizi isteyin; siparişe açıldığında size e-posta göndeririz. Sipariş verildiğinde rapor ödemeden sonra derlenir ve e-postanıza gelir."
+      ],
+      "sections": [
+        {
+          "h": "Yapay zekâ ne yapar",
+          "p": [
+            "Rapor metinlerini büyük bir dil modeli, yani metinle çalışan bir yapay zekâ yazar. Özet rapor için dört stilin ve on altı profilin açıklamalarını yazdı. Genişletilmiş rapor için ise her profile on üç bölüm yazar: başkaları sizi nasıl görüyor, güçlü yönleriniz, gelişim alanları, dört stilin her biriyle iletişim, çatışma ve stres, 30 günlük plan.",
+            "Genişletilmiş rapor için puanlarınıza göre seçilecek metinler de ayrıca yazılır: dört ölçeğin her biri, çok düşükten çok yükseğe kadar beş düzeyin her birinde ne anlama gelir ve en düşük ölçeğinizle ne yapabilirsiniz. Bunlardan rapora yalnızca sizin yanıtlarınıza karşılık gelenler girer.",
+            "Yapay zekâ metinleri sipariş anında değil, önceden yazar. Bu bilinçli bir tercihtir: böylece metin size ulaşmadan önce denetlenebilir, aynı yanıtlar da her zaman aynı raporu verir."
+          ]
+        },
+        {
+          "h": "Yazılım ne yapar",
+          "p": [
+            "Yazılım sonucu hesaplar ve raporu derler. Özet rapora profiliniz, grafik, dört ölçekteki yüzdeler ve profilinizin açıklaması girer.",
+            "Genişletilmiş raporda profilinizi anlatan bölümün tamamı puanlarınıza bağlıdır: yüzdeler, her ölçeğin ayrı ayrı yorumu ve yanıtlarınızın iki katmanının karşılaştırması. Diğer beş bölümde bazı kısımlar en düşük ölçeğinize göre seçilir. Metnin geri kalanı profiliniz için yazılır; her sayfada da adınız yer alır.",
+            "Yazılım o anda hiçbir şey uydurmaz: rapora yalnızca yanıtlarınızdan çıkanlar girer."
+          ]
+        },
+        {
+          "h": "İnsana ne kalır",
+          "p": [
+            "Yapay zekânın metinleri yazarken uyduğu kuralları sitenin editör ekibi belirler. Başlıcaları şunlar:"
+          ],
+          "ul": [
+            "Rapor yetenekleri ya da kaderi değil, eğilimleri anlatır: teşhis koymaz, vaatte bulunmaz.",
+            "Stiller eşit değerdedir: hiçbiri ötekilerden daha iyi ya da daha kötü diye anlatılmaz.",
+            "Genişletilmiş raporda veriye dayanmayan hiçbir sayı ya da kesin yargı bulunmaz; her öneri de bu hafta yapabileceğiniz bir iştir: hazır bir cümle, bir kural, bir son tarih.",
+            "Genişletilmiş rapor cinsiyetiniz hakkında hiçbir varsayımda bulunmaz: yazılım kim olduğunuzu bilmez, metin de bunu tahmin etmeye çalışmaz."
+          ],
+          "after": [
+            "Editör ekibi, on altı profilin her biri için genişletilmiş rapor şablonunu satışa çıkmadan önce okur. Raporun kendisini ise bir insan hazırlamaz, gönderilmeden önce de okumaz: onu yazılım derler ve gönderir.",
+            "Bir hata ya da yanlışlık fark ederseniz bize “{contact}” formu üzerinden yazın."
+          ]
+        }
+      ],
+      "benefitsTitle": "Bu size ne kazandırır",
+      "benefits": [
+        {
+          "h": "Ön yargı yok",
+          "p": "Raporu yalnızca yanıtlarınız belirler. Adınız sadece sayfalara yazılmak için gerekir; cinsiyetinizi, yaşınızı, unvanınızı ve dış görünüşünüzü ise yazılım bilmez. İlk izlenimi de, sevdiği ya da sevmediği tipleri de yoktur."
+        },
+        {
+          "h": "Herkese aynı kurallar",
+          "p": "Aynı yanıtlar her zaman aynı raporu verir. Bir insanın vardığı sonuç deneyimine, yorgunluğuna ve ruh hâline göre değişebilir; yazılımın vardığı sonuç ise yalnızca sizin yanıtlarınıza bağlıdır."
+        },
+        {
+          "h": "Anında sonuç",
+          "p": "Özet rapor, son soruyu yanıtladığınız anda ekrana gelir. Genişletilmiş rapor henüz Türkçe sunulmuyor; haber vermemizi isterseniz siparişe açıldığında size e-posta göndeririz. Sipariş verildiğinde rapor ödemenin hemen ardından, günün her saatinde, randevu almadan ve sıra beklemeden derlenir; e-postanıza ödemeden sonra en geç 24 saat içinde ulaşır."
+        },
+        {
+          "h": "Uygun fiyat",
+          "p": "Raporlar otomatik hazırlandığı için test ve özet rapor ücretsiz kalabiliyor, genişletilmiş raporun ücreti de {price} USD olarak belirlenebiliyor."
+        },
+        {
+          "h": "Yanıtlarınız yapay zekâya gitmez",
+          "p": "Raporun hazırlanması için bir insanın yanıtlarınızı okuması gerekmez: onları yazılım işler. Yanıtlarınız, adınız ve e-posta adresiniz üçüncü taraf yapay zekâ hizmetlerine aktarılmaz, çünkü metinler önceden yazılır. Sitenin hangi verileri sakladığı “{privacy}” sayfasında anlatılır."
+        },
+        {
+          "h": "Tutarlı kalite",
+          "p": "On altı profilin hepsi aynı yapıyla, aynı ayrıntı düzeyinde anlatılır. Yapay zekâ metnin sonuna doğru yorulmaz; az rastlanan bir profili de yaygın olanından daha kısa tutmaz."
+        },
+        {
+          "h": "İltifat da etiket de yok",
+          "p": "Raporun sizin gözünüze girmek gibi bir derdi yoktur. Zayıf yönlerinizi de güçlü yönleriniz kadar açık söyler, stilleri iyi ve kötü diye ayırmaz."
+        },
+        {
+          "h": "Her şeyi sınayabilirsiniz",
+          "p": "Rapordaki sayılar sonuç ekranındakilerle aynıdır; hesaplama yöntemi de açıkça anlatılmıştır. Testi yeniden çözüp sonuçları karşılaştırabilirsiniz."
+        }
+      ],
+      "limitsTitle": "Rapor ne yapmaz",
+      "limits": [
+        "<b>Hayatınızı bilmez.</b> Testteki yanıtlarınıza ve profilin tipik görünümüne dayanır; içinde bulunduğunuz koşullar, deneyiminiz ve değerleriniz rapora girmez. Bazı yerlerde kendinizi hemen tanırsınız, bazı yerler ise size uymaz.",
+        "<b>Yanıtlarınızı düzeltmez.</b> Test bir öz değerlendirmedir: olduğunuz gibi değil de “olması gerektiği gibi” yanıt verirseniz rapor, olmak istediğiniz kişiyi anlatır.",
+        "<b>Teşhis koymaz, yetenekleri ölçmez.</b> Rapor bir psikoloğun yerini tutmaz ve insan kaynakları kararlarının tek dayanağı olmamalıdır.",
+        "<b>Yanılmaz değildir.</b> Yapay zekânın yazdığı metinleri okuyor ve düzeltiyoruz, yine de hata olabilir. Bir hata görürseniz bize yazın."
+      ],
+      "faqTitle": "Sorular ve yanıtlar",
+      "faq": [
+        {
+          "q": "Yanıtlarım yapay zekâya gönderiliyor mu?",
+          "a": "Hayır. Yapay zekâ metinleri önceden yazar ve yanıtlarınızı görmez. Sonucu hesaplayan ve raporu derleyen, sıradan bir yazılımdır; tarayıcınızda ve sitenin sunucusunda çalışır. Yanıtlarınız üçüncü taraf yapay zekâ hizmetlerine aktarılmaz."
+        },
+        {
+          "q": "Yapay zekâ raporu bana özel mi yazıyor?",
+          "a": "Rapor size özel derlenir, ama her seferinde baştan yazılmaz. Metin, on altı profilden biri olan sizin profiliniz için yazılır; sayıların yer aldığı bölümler ve bazı kısımlar ise yanıtlarınıza göre seçilir. Bu sayede rapor denetlenebilir ve hiçbir şey şansa kalmaz."
+        },
+        {
+          "q": "Raporumu gönderilmeden önce biri okuyor mu?",
+          "a": "Hayır. Editör ekibi rapor şablonlarını önceden okur; sizin raporunuz ise otomatik olarak derlenir ve gönderilir."
+        },
+        {
+          "q": "Yapay zekâ yanılabilir mi?",
+          "a": "Yanılabilir, tıpkı insan gibi. Bu yüzden sayılar yapay zekâyla değil, bir formülle hesaplanır; metinler kurallara göre yazılır ve editör ekibi onları okur. Raporda size yanlış gelen bir şey olursa bize yazın: inceler ve düzeltiriz."
+        },
+        {
+          "q": "Böyle bir raporun bir danışmanla yapılan değerlendirmeden farkı ne?",
+          "a": "Danışman sizinle konuşarak durumunuzu ele alır ve gerektiğinde ek sorular sorabilir. Rapor bunu yapmaz: stilinizi test yanıtlarınıza dayanarak anlatır. Raporunuz elinizdeyken hem danışmana gitmek hem de yöneticinizle konuşmaya oturmak kolaylaşır."
+        }
+      ]
+    },
     "editorial": {
       "sections": [
         {
@@ -1579,7 +1691,7 @@
         {
           "h": "Metinleri nasıl yazıyor ve denetliyoruz",
           "p": [
-            "Yöntemle ilgili söylenenler birincil kaynaklara ve aralarında eleştirel olanların da bulunduğu hakemli araştırmalara dayanır; çalışmaların listesi “{sources}” bölümünde toplanmıştır. Ticari raporları yeniden anlatmıyoruz: dört stilin ve on altı profilin açıklamalarını, modelin genel kabul görmüş özelliklerinden yola çıkarak editör ekibimiz yazdı.",
+            "Yöntemle ilgili söylenenler birincil kaynaklara ve aralarında eleştirel olanların da bulunduğu hakemli araştırmalara dayanır; çalışmaların listesi “{sources}” bölümünde toplanmıştır. Ticari raporları yeniden anlatmıyoruz: dört stilin ve on altı profilin açıklamalarını, modelin genel kabul görmüş özelliklerinden yola çıkarak editör ekibimiz yapay zekâ yardımıyla hazırladı.",
             "Her sayfada son değişiklik tarihi yer alır. Metinleri, testin kendisi değiştiğinde ya da bize düzeltme önerileri ulaştığında güncelliyoruz; bir kaynakla ya da kendi denetimimizle destekleyemediğimiz hiçbir şeyi yayımlamıyoruz."
           ]
         }
@@ -1799,6 +1911,7 @@
     "nav.mbti": "DISC ve MBTI",
     "nav.pdf": "DISC testi PDF",
     "nav.materials": "DISC kaynakları",
+    "nav.howMade": "Raporların hazırlanışı",
 
     "pages.styles.title": "DISC kişilik tipleri: D, I, S, C — özellikler ve güçlü yönler",
     "pages.styles.description": "DISC’e göre dört kişilik tipi: Baskınlık, Etkileyicilik, İstikrar ve Titizlik. Özellikler, güçlü yönler, gelişim alanları, motivasyon ve stres.",

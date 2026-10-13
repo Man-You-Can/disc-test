@@ -118,7 +118,7 @@ const styleBlock = (tpl.match(/<style>[\s\S]*?<\/style>/) || [''])[0];
 const NAV_ITEMS = [['nav.test', ''], ['nav.disc', 'disc/'], ['nav.styles', 'styles/'], ['nav.profiles', 'profiles/'], ['nav.results', 'results/'], ['nav.compat', 'compatibility/'], ['nav.faq', 'faq/']];
 // Подвал: ссылки на все материалы о DISC (сквозная перелинковка контентных страниц)
 const MATERIALS = [['nav.disc', 'disc/'], ['nav.styles', 'styles/'], ['nav.profiles', 'profiles/'], ['nav.results', 'results/'], ['nav.compat', 'compatibility/'], ['nav.colors', 'colors/'], ['nav.teams', 'teams/'], ['nav.mbti', 'disc-vs-mbti/'], ['nav.pdf', 'pdf/'], ['nav.faq', 'faq/']];
-// «Как готовятся отчёты» (/how-reports-are-made/): страница и пункт в шапке есть в языках, где в локали есть content.howMade и ui['nav.howMade'] (сейчас — русский)
+// «Как готовятся отчёты» (/how-reports-are-made/): страница и пункт в шапке есть в языках, где в локали есть content.howMade и ui['nav.howMade'] (с 2026-10-14 — во всех 14: валидатор требует оба ключа)
 const HOWMADE_SUB = 'how-reports-are-made/', hasHowMade = L => !!(L.content.howMade && L.ui['nav.howMade']);
 const navItems = L => NAV_ITEMS.concat(hasHowMade(L) ? [['nav.howMade', HOWMADE_SUB]] : [], hasServices(L) ? [['nav.services', 'services/']] : [], feedbackEmail ? [['nav.contact', 'contact/']] : []);
 const materialsHtml = (L, base, cur) => `<nav class="materials" aria-label="${esc(L.ui['nav.materials'])}"><span class="mlabel">${esc(L.ui['nav.materials'])}</span>` + MATERIALS.map(([k, sub]) => sub === cur ? `<span aria-current="page">${esc(L.ui[k])}</span>` : `<a href="${base + sub}">${esc(L.ui[k])}</a>`).join('') + `</nav>`;

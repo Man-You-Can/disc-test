@@ -577,7 +577,7 @@
         {
           "h": "Na czym opiera się test",
           "p": [
-            "Test jest zbudowany na czteroczynnikowym modelu Williama Marstona (1928) i późniejszych kwestionariuszach w formacie „najbardziej – najmniej”: 24 pytania po cztery stwierdzenia, po jednym na każdy styl. Opisy stylów i szesnastu profili napisali autorzy serwisu na podstawie ogólnie przyjętych charakterystyk DISC.",
+            "Test jest zbudowany na czteroczynnikowym modelu Williama Marstona (1928) i późniejszych kwestionariuszach w formacie „najbardziej – najmniej”: 24 pytania po cztery stwierdzenia, po jednym na każdy styl. Opisy stylów i szesnastu profili przygotowała redakcja z pomocą sztucznej inteligencji na podstawie ogólnie przyjętych charakterystyk DISC.",
             "Projekt jest niezależny i nie jest powiązany z Wiley (DiSC®), TTI Success Insights ani innymi właścicielami znaków towarowych. Słowo DISC jest używane jako ogólna nazwa modelu."
           ]
         },
@@ -1572,6 +1572,118 @@
         }
       }
     },
+    "howMade": {
+      "title": "Jak AI tworzy raporty DISC – automatycznie i bezstronnie",
+      "description": "Raporty DISC powstają automatycznie: teksty pisze sztuczna inteligencja według zasad redakcji, a raport z twoich odpowiedzi składa program, nie człowiek.",
+      "h1": "Jak powstają raporty DISC",
+      "lead": "Raport podstawowy i raport rozszerzony powstają w tym serwisie automatycznie. Teksty pisze sztuczna inteligencja według zasad redakcji, a sam raport składa program na podstawie twoich odpowiedzi – bez udziału człowieka. Dlatego nie wpływa na niego ani pierwsze wrażenie, ani czyjś nastrój, ani czyjeś oczekiwania.",
+      "facts": ["Teksty pisze AI", "Raport składa program", "Zasady ustala człowiek", "Te same zasady dla wszystkich"],
+      "stepsTitle": "Od odpowiedzi do raportu: trzy kroki",
+      "steps": [
+        "<b>Odpowiadasz.</b> Test ma 24 pytania; w każdym zaznaczasz, co pasuje do ciebie najbardziej, a co najmniej. Obliczenia opierają się wyłącznie na tych odpowiedziach.",
+        "<b>Program liczy.</b> Dla każdego z czterech stylów odejmuje zaznaczenia „najmniej” od zaznaczeń „najbardziej” i na podstawie tych liczb ustala profil – jeden z szesnastu. Wzór jest jawny: omawiamy go na stronie „{results}”.",
+        "<b>Program składa raport.</b> Do twojego profilu i twoich liczb dobiera teksty napisane wcześniej przez AI. Raport podstawowy pojawia się na ekranie od razu. Raport rozszerzony jest składany po płatności i przychodzi e-mailem. Po polsku nie jest jeszcze dostępny: możesz poprosić o powiadomienie, a napiszemy, gdy tylko będzie można go zamówić."
+      ],
+      "sections": [
+        {
+          "h": "Co robi sztuczna inteligencja",
+          "p": [
+            "Teksty raportów pisze duży model językowy – sztuczna inteligencja, która pracuje z tekstem. Do raportu podstawowego napisał opisy czterech stylów i szesnastu profili. Do rozszerzonego pisze trzynaście rozdziałów dla każdego profilu: jak widzą cię inni, mocne strony, obszary rozwoju, komunikacja z każdym z czterech stylów, konflikt i stres, plan na 30 dni.",
+            "Do raportu rozszerzonego powstają też osobne teksty dobierane do twoich liczb: co oznacza każda z czterech skal na każdym z pięciu poziomów, od bardzo niskiego do bardzo wysokiego, i co zrobić z najniższą skalą. Do raportu trafiają te, które pasują do twoich odpowiedzi.",
+            "AI pisze teksty z wyprzedzeniem, a nie w chwili zamówienia. To celowe: tekst można sprawdzić, zanim do ciebie trafi, a takie same odpowiedzi zawsze dają taki sam raport."
+          ]
+        },
+        {
+          "h": "Co robi program",
+          "p": [
+            "Program oblicza wynik i składa raport. W raporcie podstawowym są to profil, wykres, procenty na czterech skalach i opis twojego profilu.",
+            "W raporcie rozszerzonym od twoich liczb zależy cały rozdział o profilu: procenty, omówienie każdej skali i porównanie dwóch warstw odpowiedzi. W pięciu innych rozdziałach poszczególne fragmenty są dobierane według twojej najniższej skali. Reszta tekstu jest napisana dla twojego profilu, a na każdej stronie jest twoje imię.",
+            "Program niczego nie wymyśla na poczekaniu: do raportu trafia tylko to, co wynika z twoich odpowiedzi."
+          ]
+        },
+        {
+          "h": "Co pozostaje w rękach człowieka",
+          "p": [
+            "Zasady, według których AI pisze teksty, ustaliła redakcja serwisu. Najważniejsze z nich:"
+          ],
+          "ul": [
+            "Raport opisuje skłonności, a nie zdolności ani przeznaczenie: bez diagnoz i obietnic.",
+            "Style są równorzędne: żaden nie jest opisany jako lepszy albo gorszy.",
+            "W raporcie rozszerzonym nie ma liczb ani kategorycznych sformułowań niepopartych danymi, a każda rada to działanie, które można podjąć jeszcze w tym tygodniu: gotowe sformułowanie, zasada, termin.",
+            "Raport rozszerzony zwraca się do ciebie bez form męskich i żeńskich: program nie wie, kim jesteś, a tekst nie próbuje tego zgadywać."
+          ],
+          "after": [
+            "Redakcja czyta szablon raportu rozszerzonego dla każdego z szesnastu profili, zanim trafi on do sprzedaży. Samego raportu człowiek nie przygotowuje i przed wysyłką nie czyta: składa go i wysyła program.",
+            "Jeśli zauważysz błąd albo nieścisłość, napisz do nas przez formularz „{contact}”."
+          ]
+        }
+      ],
+      "benefitsTitle": "Co ci to daje",
+      "benefits": [
+        {
+          "h": "Bezstronność",
+          "p": "Raport powstaje wyłącznie na podstawie twoich odpowiedzi. Imię jest potrzebne tylko po to, żeby podpisać strony raportu, a płci, wieku, stanowiska ani wyglądu program nie zna. Nie kieruje się pierwszym wrażeniem i nie ma ulubionych ani nielubianych typów."
+        },
+        {
+          "h": "Te same zasady dla wszystkich",
+          "p": "Takie same odpowiedzi zawsze dają taki sam raport. Wnioski człowieka mogą zależeć od doświadczenia, zmęczenia i nastroju, wnioski programu – tylko od twoich odpowiedzi."
+        },
+        {
+          "h": "Wynik od razu",
+          "p": "Raport podstawowy pojawia się na ekranie, gdy tylko odpowiesz na ostatnie pytanie. Raport rozszerzony jest składany od razu po opłaceniu zamówienia – o każdej porze dnia i nocy, bez zapisów i kolejek – a e-mail z nim przychodzi nie później niż 24 godziny po płatności. Po polsku nie można go jeszcze zamówić: poproś o powiadomienie, a damy znać e-mailem, gdy tylko będzie to możliwe."
+        },
+        {
+          "h": "Przystępna cena",
+          "p": "Ponieważ raporty powstają automatycznie, test i raport podstawowy mogą pozostać bezpłatne, a raport rozszerzony możemy zaoferować za {price} USD."
+        },
+        {
+          "h": "Odpowiedzi nie trafiają do AI",
+          "p": "Żeby przygotować raport, człowiek nie musi czytać twoich odpowiedzi: przetwarza je program. Zewnętrznym usługom AI nie przekazujemy odpowiedzi, imienia ani adresu e-mail: teksty powstają z wyprzedzeniem. O tym, jakie dane przechowuje serwis, przeczytasz na stronie „{privacy}”."
+        },
+        {
+          "h": "Równy poziom",
+          "p": "Każdy z szesnastu profili jest opisany według tego samego schematu i równie szczegółowo. AI nie męczy się pod koniec tekstu i o rzadkim profilu nie pisze krócej niż o częstym."
+        },
+        {
+          "h": "Bez pochlebstw i etykiet",
+          "p": "Raport nie musi ci się przypodobać. O słabych stronach mówi równie otwarcie jak o mocnych i nie dzieli stylów na dobre i złe."
+        },
+        {
+          "h": "Wszystko da się sprawdzić",
+          "p": "Liczby w raporcie są te same co na ekranie wyniku, a sposób liczenia jest jawny. Test można zrobić jeszcze raz i porównać wyniki."
+        }
+      ],
+      "limitsTitle": "Czego raport nie robi",
+      "limits": [
+        "<b>Nie zna twojego życia.</b> Opiera się na odpowiedziach z testu i na typowym obrazie profilu; twojej sytuacji, doświadczeń i wartości nie uwzględnia. W jednych fragmentach od razu rozpoznasz siebie, inne okażą się nie o tobie.",
+        "<b>Nie poprawia odpowiedzi.</b> Test opiera się na samoocenie: jeśli odpowiadasz „tak, jak trzeba”, a nie tak, jak jest naprawdę, raport opisze obraz pożądany, a nie rzeczywisty.",
+        "<b>Nie stawia diagnoz i nie ocenia zdolności.</b> Raport nie zastąpi psychologa i nie powinien być jedyną podstawą decyzji kadrowych.",
+        "<b>Nie jest nieomylny.</b> Teksty napisane przez AI czytamy i poprawiamy, ale błąd może się zdarzyć. Jeśli go zauważysz, napisz do nas."
+      ],
+      "faqTitle": "Pytania i odpowiedzi",
+      "faq": [
+        {
+          "q": "Czy moje odpowiedzi trafiają do AI?",
+          "a": "Nie. AI pisze teksty z wyprzedzeniem i twoich odpowiedzi nie widzi. Wynik oblicza, a raport składa zwykły program – w twojej przeglądarce i na naszym serwerze. Twoich odpowiedzi nie przekazujemy zewnętrznym usługom AI."
+        },
+        {
+          "q": "Czy AI pisze raport specjalnie dla mnie?",
+          "a": "Raport jest składany specjalnie dla ciebie, ale nie jest pisany od nowa. Tekst jest napisany dla twojego profilu – jednego z szesnastu, a rozdziały z liczbami i poszczególne fragmenty są dobierane według twoich odpowiedzi. Dzięki temu raport da się sprawdzić i nie zależy od przypadku."
+        },
+        {
+          "q": "Czy ktoś czyta mój raport przed wysyłką?",
+          "a": "Nie. Redakcja czyta szablony raportów z wyprzedzeniem, a twój raport jest składany i wysyłany automatycznie."
+        },
+        {
+          "q": "Czy AI może się pomylić?",
+          "a": "Może, tak jak człowiek. Dlatego liczby oblicza wzór, a nie AI, teksty powstają według ustalonych zasad, a redakcja je czyta. Jeśli coś w raporcie wyda ci się nieścisłe, napisz do nas: sprawdzimy i poprawimy."
+        },
+        {
+          "q": "Czym taki raport różni się od omówienia wyniku z konsultantem?",
+          "a": "Konsultant omawia twoją sytuację w rozmowie i może dopytać o szczegóły. Raport tego nie robi: opisuje twój styl na podstawie odpowiedzi z testu. Z gotowym raportem łatwiej pójść i do konsultanta, i na rozmowę z przełożonym."
+        }
+      ]
+    },
     "editorial": {
       "sections": [
         {
@@ -1584,7 +1696,7 @@
         {
           "h": "Jak piszemy i sprawdzamy teksty",
           "p": [
-            "Twierdzenia o metodzie opierają się na źródłach pierwotnych i recenzowanych badaniach, w tym krytycznych; lista prac znajduje się w sekcji „{sources}”. Nie streszczamy komercyjnych raportów: opisy czterech stylów i szesnastu profili napisała redakcja na podstawie ogólnie przyjętych charakterystyk modelu.",
+            "Twierdzenia o metodzie opierają się na źródłach pierwotnych i recenzowanych badaniach, w tym krytycznych; lista prac znajduje się w sekcji „{sources}”. Nie streszczamy komercyjnych raportów: opisy czterech stylów i szesnastu profili przygotowała redakcja z pomocą sztucznej inteligencji na podstawie ogólnie przyjętych charakterystyk modelu.",
             "Na każdej stronie podajemy datę ostatniej zmiany. Poprawiamy teksty, gdy zmienia się sam test albo gdy dostajemy uwagi, i nie publikujemy niczego, czego nie możemy poprzeć źródłem albo własną weryfikacją."
           ]
         }
@@ -1798,6 +1910,7 @@
     "nav.mbti": "DISC a MBTI",
     "nav.pdf": "Test w PDF",
     "nav.materials": "Materiały o DISC",
+    "nav.howMade": "Jak powstają raporty",
 
     "pages.styles.title": "Typy osobowości DISC: D, I, S, C – cechy i mocne strony",
     "pages.styles.description": "Cztery typy osobowości (style zachowania) DISC: dominacja, wpływ, stałość, sumienność. Cechy, mocne strony, obszary rozwoju, motywacja i zachowanie w stresie.",
