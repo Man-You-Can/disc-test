@@ -46,6 +46,7 @@ var SENDER_NAME = '';                // имя отправителя; '' — н
 var SENDER_EMAIL = '__SENDER_EMAIL__';  // адрес отправителя: должен быть добавлен в Gmail → Настройки → Аккаунты → «Отправлять письма как»; '' — основной адрес аккаунта
 var ATTACH_PDF = true;               // прикладывать к письму PDF с полным отчётом
 var EXTENDED_PRICE_RUB = __PRICE_RUB__;  // цена расширенного отчёта в рублях (servicePriceRub в site.config.json): по ней свой сервер создаёт заказ; 0 — услуги нет
+var EXTENDED_PRICE_USD = __PRICE_USD__;  // цена в долларах (servicePriceUsd) — для оплаты из нерусских версий через Prodamus; 0 — услуги нет
 var CONTACT_TO = '__CONTACT_TO__';   // адрес формы обратной связи (feedbackEmail в site.config.json); '' — форма отключена
 var MAX_CONTACT_BYTES = __MAX_CONTACT_BYTES__;  // общий размер вложений одного сообщения (то же число проверяет браузер)
 var MAX_CONTACT_FILES = 20;
