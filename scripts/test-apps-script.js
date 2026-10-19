@@ -275,7 +275,7 @@ check('extended: off until the secret is set in script properties', ext({}).erro
 props.extendedSecret = 's3cret';
 check('extended: wrong or missing secret rejected, nothing sent', ext({ secret: 'nope' }).error === 'forbidden' && ext({ secret: '' }).error === 'forbidden' && ext({ secret: TOKEN }).error === 'forbidden' && sent.length === nX);
 check('extended: bad address, bad code, not a pdf, language without the report', ext({ to: 'nobody' }).error === 'bad email' && ext({ code: 'DISC1.zzz' }).error === 'bad code' &&
-  ext({ pdf: Buffer.alloc(3000, 65).toString('base64') }).error === 'bad pdf' && ext({ pdf: '***' }).error === 'bad pdf' && ext({ pdf: '' }).error === 'bad pdf' && /^no extended report/.test(ext({ lang: 'en' }).error) && sent.length === nX);
+  ext({ pdf: Buffer.alloc(3000, 65).toString('base64') }).error === 'bad pdf' && ext({ pdf: '***' }).error === 'bad pdf' && ext({ pdf: '' }).error === 'bad pdf' && /^no extended report/.test(ext({ lang: 'de' }).error) && sent.length === nX);
 const rX = ext({ order: '1042' }), mX = sent[sent.length - 1];
 check('extended: accepted without the site token, one mail to the buyer', rX.ok === true && rX.saved === true && rX.warned === false && sent.length === nX + 1 && mX.to === 'buyer@b.co');
 check('extended mail: subject with profile, from the domain address, brand name', mX.subject === 'Ваш расширенный отчёт DISC: DI · Первопроходец' && mX.from === 'info@disc-test.org' && mX.name === 'Тест DISC · disc-test.org');
@@ -291,7 +291,15 @@ check('extended: second sending is appended to the cell, row and column not dupl
   rowX()[extCol()] === 'отправлен 2026-09-07 12:00 на buyer@b.co, заказ 1042; отправлен 2026-09-07 12:00 на other@b.co');
 // оплата расширенного отчёта на своём сервере: цена и письмо-напоминание о неоконченной оплате (отправляет сервер, тексты и вёрстка — здесь)
 const pR = ctx.composePayRemindMail(ctx.decodeResult(cX), 'ru', { order: '261011-7K3QXM', url: 'https://api.disc-test.org/pay/go?order=261011-7K3QXM&key=k', until: new Date('2026-10-14T09:00:00Z'), price: ctx.EXTENDED_PRICE_RUB });
-check('pay: price from site settings, service name and reminder texts only where the report is sold', ctx.EXTENDED_PRICE_RUB === 490 && ctx.DATA.ru.pay.name === 'Расширенная версия DISC' && Object.keys(ctx.DATA).filter(lg => ctx.DATA[lg].pay).join() === 'ru');
+const saleOf = lg => { const P = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'src', 'locales', lg + '.json'), 'utf8')).content.product; return !!(P && P.pay); };
+check('pay: price from site settings, service name and reminder texts only where the report is sold', ctx.EXTENDED_PRICE_RUB === 490 && ctx.DATA.ru.pay.name === 'Расширенная версия DISC' &&
+  Object.keys(ctx.DATA).filter(lg => ctx.DATA[lg].pay).join() === Object.keys(ctx.DATA).filter(saleOf).join() && Object.keys(ctx.DATA).filter(lg => ctx.DATA[lg].pay).includes('ru'));
+// напоминание в языке с оплатой через Prodamus: цена в долларах, дата в записи языка (не 21.10.2026), ничего русского
+if (ctx.DATA.en && ctx.DATA.en.pay) {
+  const pE = ctx.composePayRemindMail(ctx.decodeResult(cX), 'en', { order: '261019-AB12CD', url: 'https://api.disc-test.org/pay/go?order=261019-AB12CD&key=k', until: new Date('2026-10-21T09:00:00Z'), price: ctx.EXTENDED_PRICE_USD });
+  check('pay reminder in English: dollars, the date written out, Prodamus named, nothing unfilled, nothing Russian', ctx.EXTENDED_PRICE_USD === 6.99 && [pE.html, pE.text].every(s => s.includes('US$6.99') && s.includes('October 21, 2026') && s.includes('Prodamus') &&
+    s.includes('261019-AB12CD') && s.includes('Pioneer') && !/\{\w+\}|undefined|₽|[А-Яа-яЁё]/.test(s.replace(/Пётр Буянов/g, ''))) && pE.subject === ctx.DATA.en.pay.remind.subject);
+}
 check('pay reminder: subject, greeting, profile, price, order, link valid until the date, nothing unfilled', pR.subject === 'Ваш расширенный отчёт DISC ждёт оплаты' && [pR.html, pR.text].every(s => s.includes('Пётр Буянов') && s.includes('Первопроходец') &&
   s.includes('490 ₽') && s.includes('№ 261011-7K3QXM') && s.includes('действует до 2026-09-07')   /* дату здесь подставляет заглушка formatDate */ && !/\{\w+\}|undefined/.test(s)) && pR.html.includes('href="https://api.disc-test.org/pay/go?order=261011-7K3QXM&amp;key=k"') && (pR.html.match(/href=/g) || []).length === 1 &&
   pR.text.includes('https://api.disc-test.org/pay/go?order=261011-7K3QXM&key=k'));
@@ -320,12 +328,14 @@ check('result mail with the block: lowest scale, volume, three points, price, bu
 // страница отчёта, но самого отчёта ещё нет, блок строится без листов: на их месте строка о заявке, цена в валюте языка, ссылка на страницу отчёта
 // (английская версия живёт в корне сайта, не в /en/). Где страницы отчёта нет — в письме и PDF об отчёте ни слова.
 const locDir = path.join(__dirname, '..', 'src', 'locales'), locOf = lg => JSON.parse(fs.readFileSync(path.join(locDir, lg + '.json'), 'utf8'));
-const adLangs = Object.keys(ctx.DATA).filter(lg => ctx.DATA[lg].reportAd), sheetLangs = adLangs.filter(lg => ctx.DATA[lg].reportAd.images), soonLangs = adLangs.filter(lg => !ctx.DATA[lg].reportAd.images);
+const adLangs = Object.keys(ctx.DATA).filter(lg => ctx.DATA[lg].reportAd), sheetLangs = adLangs.filter(lg => ctx.DATA[lg].reportAd.images), soonLangs = adLangs.filter(lg => !ctx.DATA[lg].reportAd.images && !ctx.DATA[lg].pay),
+  bareLangs = adLangs.filter(lg => !ctx.DATA[lg].reportAd.images && ctx.DATA[lg].pay);   // отчёт продаётся, листов образца ещё нет
 const pageOf = lg => 'https://disc-test.org/' + (lg === 'en' ? '' : lg + '/') + 'extended-report/';
 if (realAd) {
   check('report block: in all 14 languages, each with the terms of sale behind it', adLangs.length === 14 && adLangs.every(lg => { const C = locOf(lg).content; return C.offer && C.refund && C.policy.purchase && (lg === 'ru' || (/\{original\}/.test(C.offer.note) && /\{original\}/.test(C.refund.note))); }));
   check('report block: built exactly where the locale has the report page', adLangs.join() === Object.keys(ctx.DATA).filter(lg => locOf(lg).content.product).join());
-  check('report block: sample sheets only where the report is written, a request line everywhere else', sheetLangs.join() === Object.keys(ctx.DATA).filter(lg => ctx.DATA[lg].extended).join() &&
+  check('report block: sample sheets only where the report is written, a request line where it is not sold', sheetLangs.every(lg => ctx.DATA[lg].extended && ctx.DATA[lg].pay) &&
+    bareLangs.every(lg => { const A = ctx.DATA[lg].reportAd; return !A.soon && !A.sample && !A.captions && ctx.DATA[lg].extended; }) &&
     soonLangs.every(lg => { const A = ctx.DATA[lg].reportAd; return typeof A.soon === 'string' && A.soon.trim() && !A.sample && !A.captions && !ctx.DATA[lg].pay && !ctx.DATA[lg].extended; }) &&
     sheetLangs.every(lg => !ctx.DATA[lg].reportAd.soon));
   check('report block without sheets: PDF and mail carry the request line, the price of the language, no images, nothing unfilled; link to the report page of the language', soonLangs.every(lg => {
@@ -335,6 +345,11 @@ if (realAd) {
       m.html.includes('href="' + pageOf(lg) + '?src=mail#r=' + cM + '"') && m.text.includes(pageOf(lg) + '?src=mail#r=' + cM) && !/₽|[А-Яа-яЁё]/.test(JSON.stringify(A)) && !/\/en\/extended-report/.test(h + m.html + m.text);
   }));
 }
+if (realAd) check('report block on sale without sheets: no request line, no empty column, price and button of the language, link to the report page', bareLangs.every(lg => {
+  const A = ctx.DATA[lg].reportAd, h = ctx.reportHtml(r0, lg), m = ctx.composeMail(r0, lg, cM, true, '');
+  return !/<img /.test(h) && !/border:1px dashed/.test(h) && h.includes('<td width="100%" valign="middle"') && [h, m.html].every(x => x.includes(ctx.esc(A.price)) && x.includes(ctx.esc(A.button)) && !/\{\w+\}|undefined/.test(x)) &&
+    h.includes('href="' + pageOf(lg) + '?src=pdf#r=') && m.html.includes('href="' + pageOf(lg) + '?src=mail#r=' + cM + '"') && !/₽|[А-Яа-яЁё]/.test(JSON.stringify(A)) && !/\/en\/extended-report/.test(h + m.html + m.text);
+}));
 check('result mail in a language without the report page: no block', Object.keys(ctx.DATA).filter(lg => !ctx.DATA[lg].reportAd).every(lg => !/extended-report/.test(ctx.composeMail(r0, lg, cM, true, '').html + ctx.reportHtml(r0, lg))));
 // заявка на расширенный отчёт с формы обратной связи: своя тема письма с языком страницы; обычное сообщение — с прежней темой
 check('contact subject: request for the extended report names the language, an ordinary message does not', ctx.contactSubject('Ann Lee', 'en', 'extended') === 'Заявка на расширенный отчёт — English (en): Ann Lee' &&
@@ -365,7 +380,14 @@ mailFail = null;
 check('extended: mail error is returned and written to the cell', rXF.ok === false && /too many times/.test(rXF.error) && /ошибка 2026-09-07 12:00: Service invoked/.test(rowX()[extCol()]));
 check('extended: at most 5 reports per address per hour', (() => { let last; for (let i = 0; i < 6; i++) last = ext({ to: 'loop@b.co' }); return last.error === 'too many' && sent.filter(m => m.to === 'loop@b.co').length === 5; })());
 check('extended: reports do not use up the daily counter of result mails', (() => { const k = Object.keys(store).find(x => x.startsWith('day:')), was = store[k]; ext({ to: 'quota@b.co' }); return store[k] === was; })());
-check('extended texts exist only where the report is written', Object.keys(ctx.DATA).filter(lg => ctx.DATA[lg].extended).join() === 'ru' && Object.values(ctx.DATA.ru.extended).every(s => typeof s === 'string' && s.trim()));
+check('extended texts exist only where the report is sold', Object.keys(ctx.DATA).filter(lg => ctx.DATA[lg].extended).join() === Object.keys(ctx.DATA).filter(saleOf).join() &&
+  Object.keys(ctx.DATA).filter(lg => ctx.DATA[lg].extended).every(lg => Object.values(ctx.DATA[lg].extended).every(s => typeof s === 'string' && s.trim())));
+// письмо покупателю на английском: ссылка-приглашение ведёт в корень сайта (адрес /en/ перенаправляет туда без меток кампании)
+if (ctx.DATA.en && ctx.DATA.en.extended) {
+  const mE = ctx.composeExtendedMail(ctx.decodeResult(cX), 'en');
+  check('extended mail in English: subject, texts, invite link at the site root with campaign tags, nothing unfilled', /^Your in-depth DISC report: DI · Pioneer$/.test(mE.subject) &&
+    mE.html.includes('href="https://disc-test.org/?utm_source=report&amp;utm_medium=email&amp;utm_campaign=full-di&amp;utm_content=invite"') && !/disc-test\.org\/en\//.test(mE.html + mE.text) && !/\{\w+\}|undefined/.test(mE.html + mE.text));
+}
 check('doGet reports that extended delivery is on', JSON.parse(ctx.doGet().text).extended === true);
 fs.writeFileSync(path.join(process.env.OUT || '/tmp', 'disc-extended-mail-preview.html'), mX.htmlBody);
 fs.writeFileSync(path.join(process.env.OUT || '/tmp', 'disc-mail-preview.html'), mail.htmlBody);

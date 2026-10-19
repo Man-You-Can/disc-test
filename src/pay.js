@@ -75,13 +75,13 @@ function payOrder(c){
 }
 
 /* «Спасибо»: e-mail покупателя в первом абзаце, номер заказа, статус (оплата получена → отчёт отправлен), цель ext-pay-done один раз на заказ.
-   c: {T (content.product.pay.thanks), endpoint, price, lsGet, lsSet, $} */
+   c: {T (content.product.pay.thanks), endpoint, price, currency (RUB или USD — валюта языка), lsGet, lsSet, $} */
 function initPayThanks(c){
   var T = c.T, $ = c.$, o = payOrder(c), rec = o.rec, lead = $('#payLead'), ord = $('#payOrder'), st = $('#payStatus');
   if(rec && rec.email){ lead.textContent = T.leadEmail.replace('{email}', rec.email); lead.classList.add('ym-hide-content'); }
   if(o.order){ ord.textContent = T.order.replace('{order}', o.order); ord.hidden = false; }
   if(!rec) return;
-  if(!rec.done){ rec.done = true; c.lsSet('disc.pay', rec); payTrack('ext-pay-done', {order_price: c.price, currency: 'RUB'}); }
+  if(!rec.done){ rec.done = true; c.lsSet('disc.pay', rec); payTrack('ext-pay-done', {order_price: c.price, currency: c.currency || 'RUB'}); }
   if(!rec.key || !c.endpoint) return;
   var TEXT = {'new': T.statusWait, paid: T.statusPaid, sent: T.statusSent}, tries = 0;
   (function ask(){

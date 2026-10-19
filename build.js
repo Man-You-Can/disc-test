@@ -723,7 +723,7 @@ for (const L of locales) {
             `<p class="notice payorder ym-hide-content" id="payOrder" hidden></p><p class="small sendstatus" id="payStatus" aria-live="polite" hidden></p>` +
             fill2(`<h2>${escFull(th.nextTitle)}</h2>` + listHtml('ul', th.next) + `<h2>${escFull(th.helpTitle)}</h2>` + th.help.map(x => `<p>${escFull(x)}</p>`).join('')) +
             `<p class="seealso"><a href="../../">${escFull(th.back)} ${arrow(L)}</a> · <a href="../../refund/">${escFull(rf.h1)} ${arrow(L)}</a></p>`,
-          pageJs: payJs + `\ninitPayThanks({T: ${pick(th, ['leadEmail', 'order', 'statusWait', 'statusPaid', 'statusSent'])}, endpoint: ${jsStr(payEndpoint)}, price: ${servicePrices[sv.currency] || 0}, lsGet: lsGet, lsSet: lsSet, $: $});` });
+          pageJs: payJs + `\ninitPayThanks({T: ${pick(th, ['leadEmail', 'order', 'statusWait', 'statusPaid', 'statusSent'])}, endpoint: ${jsStr(payEndpoint)}, price: ${servicePrices[sv.currency] || 0}, currency: ${jsStr(sv.currency)}, lsGet: lsGet, lsSet: lsSet, $: $});` });
         writeContentPage(L, 'extended-report/failed/', { noindex: true, noDate: true, navKey: 'nav.services', langs: own2, title: fl.title, description: fl.description, crumbs: crumbs2(fl.h1),
           content: payMark('fail') + `<div class="eyebrow">${escFull(pr.h1)}</div><h1>${escFull(fl.h1)}</h1><p class="lead">${escFull(fl.lead)}</p>` +
             `<p class="notice payorder ym-hide-content" id="payOrder" hidden></p>` +
@@ -862,7 +862,7 @@ for (const L of locales) {
   // письмо с расширенным отчётом (платная услуга): тексты есть только в языках, где отчёт написан
   if (L.content.extendedMail) mailData[L.lang].extended = L.content.extendedMail;
   // оплата расширенного отчёта на своём сервере: название услуги для платёжной страницы и чека, письмо-напоминание о неоконченной оплате
-  if (L.content.product && L.content.product.pay && L.content.product.pay.remind) mailData[L.lang].pay = { name: L.content.services.name, remind: L.content.product.pay.remind };
+  if (L.content.product && L.content.product.pay && L.content.product.pay.remind) mailData[L.lang].pay = { name: L.content.services.name, remind: L.content.product.pay.remind, dateLocale: L.dateLocale };
 }
 // Блок о расширенном отчёте в PDF краткого отчёта и в теле письма с результатом: в языках, где есть страница отчёта и тексты `content.product.pdf`.
 // Листы образца — только там, где есть и их картинки для PDF, и подписи (hasSamples): они вшиваются в данные ядра, при сборке PDF сеть закрыта.
@@ -878,11 +878,12 @@ if (cfg.reportAd === true || process.env.REPORT_AD === '1') {
     const sheets = hasSamples(L) ? (Array.isArray(P.pdf.sheets) ? P.pdf.sheets : [1, 2, 3, 4]) : [];
     const files = sheets.map(n => path.join(dir, L.lang + '-i-' + n + '-p.jpg'));
     const withSheets = sheets.length > 0 && files.every(f => fs.existsSync(f));
-    if (!withSheets && !P.block.soon) continue;   // ни листов, ни строки о заявке — блок не строим
+    // ни листов, ни строки о заявке — блок не строим; там, где отчёт продаётся (product.pay), он строится и без листов образца
+    if (!withSheets && !P.block.soon && !P.pay) continue;
     mailData[L.lang].reportAd = Object.assign({ eyebrow: P.h1, title: P.block.title, lead: P.pdf.lead, facts: P.pdf.facts, hook: P.block.hook, list: P.pdf.list || P.block.list },
       withSheets ? { sample: P.block.sample, captions: sheets.map(n => P.sampleCaption[n - 1]) } : {},
       { price: P.block.price.replace('{price}', servicePrice(L)), button: P.block.button, free: P.block.free, where: P.pdf.where },
-      withSheets ? { images: files.map(f => 'data:image/jpeg;base64,' + fs.readFileSync(f).toString('base64')) } : { soon: P.block.soon });
+      withSheets ? { images: files.map(f => 'data:image/jpeg;base64,' + fs.readFileSync(f).toString('base64')) } : P.block.soon ? { soon: P.block.soon } : {});
   }
 }
 const gsTpl = fs.readFileSync(path.join(SRC, 'apps-script.template.js'), 'utf8');

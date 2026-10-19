@@ -635,7 +635,7 @@
         "h": "Buying the in-depth profile",
         "p": [
           "If you buy the in-depth DISC profile, we process your email address, your name (if you gave it), the test result the report is prepared from, and order details: the date, amount, payment number and payment status. We need this data to prepare the report and send it to you, to answer your enquiries and to process a refund. The basis for processing is the contract you enter into when you pay for the service under the {offer}.",
-          "Payment is accepted by a bank; its name is shown on the payment page. You enter the details of your payment method on the bank’s secure page: we do not receive or store them. The bank receives the amount, the order number and your email address, to which the receipt is sent.",
+          "Payments are processed by Prodamus, our payment service provider. You enter your card details on its secure payment page: we do not receive or store them. Prodamus receives the amount, the order number and your email address, to which it sends the receipt.",
           "The report is generated on a server operated on our behalf and is emailed to you from {email}. A copy of the report and the order details are kept by the site owner: they are needed to resend the report, answer enquiries, make refunds and keep records. To ask for the report and the order details to be deleted, write to {email}. Payment information that the law requires to be kept is deleted when the required period ends.",
           "If you start a purchase but do not pay, we keep your email address, test result and order details for 30 days and then delete them. During that time one reminder email with a payment link may be sent to the address you gave. The basis is the steps you took toward entering into the contract."
         ]
@@ -711,9 +711,9 @@
         "h": "Buying the in-depth profile",
         "p": [
           "If you buy the in-depth DISC profile, we process your email address, your name (if you gave it), the test result the report is prepared from, and order details: the date, amount, payment number and payment status. We need this data to prepare the report and send it to you, to answer your enquiries and to process a refund. The basis for processing is the contract you enter into when you pay for the service under the {offer}; no separate consent is required for this.",
-          "Payment is accepted by a bank; its name is shown on the payment page. You enter the details of your payment method on the bank’s secure page: we do not receive or store them. The bank receives the amount, the order number and your email address, to which the receipt is sent.",
+          "Payments are processed by Prodamus, our payment service provider. You enter your card details on its secure payment page: we do not receive or store them. Prodamus receives the amount, the order number and your email address, to which it sends the receipt.",
           "The report is generated on the site’s server and emailed to you from {email}. The finished report is not kept on the server: if needed, it is generated again. Order details are kept for five years after payment: they are needed to resend the report, answer enquiries, make refunds and keep records. Payment information that the law requires to be kept longer is deleted when the required period ends.",
-          "If you start a purchase but do not pay, we keep your email address, test result and order details for 30 days and then delete them. During that time one reminder email with a payment link may be sent to the address you gave. The basis is the steps you took toward entering into the contract. While the in-depth profile cannot yet be ordered in English, a request to be notified, sent through the contact form, is handled like any other contact-form message; the record of your consent is marked as a request for the in-depth profile."
+          "If you start a purchase but do not pay, we keep your email address, test result and order details for 30 days and then delete them. During that time one reminder email with a payment link may be sent to the address you gave. The basis is the steps you took toward entering into the contract."
         ]
       }
     },
@@ -777,7 +777,7 @@
       "sections": [
         {
           "h": "How to get it",
-          "p": ["The in-depth profile isn’t available in English yet: ask to be notified on the report page and we’ll email you as soon as you can order it. Once ordered, it is sent by email to the address given at payment, no later than 24 hours after payment."]
+          "p": ["The in-depth profile is emailed to the address you give at payment, no later than 24 hours after payment."]
         },
         {
           "h": "What stays free",
@@ -794,8 +794,8 @@
       "description": "Terms of sale (public offer) for the paid service “In-depth DISC profile” on disc-test.org: price, payment and delivery, refunds, rights to materials.",
       "h1": "Terms of Sale (Public Offer)",
       "linkText": "terms of sale",
-      "edition": "Version of October 9, 2026. English translation published on October 11, 2026.",
-      "note": "This is an English translation of the original offer published at {original}. If the two texts differ, the original prevails, except for the price: for the English version of the Site it is the price stated in clause 3.1. The in-depth profile is not yet available in English: it cannot yet be ordered in English, and no payment is taken.",
+      "edition": "Version of October 9, 2026. English translation updated on October 19, 2026.",
+      "note": "This is an English translation of the original offer published at {original}. If the two texts differ, the original prevails, except for the price and the way payment is made: for the English version of the Site they are set out in sections 1 and 3.",
       "seller": "individual entrepreneur Manukyan Armen, Taxpayer ID (INN) {inn}",
       "lead": "This document is an official proposal (a public offer) to enter into a contract for the paid service “In-depth DISC profile” on the terms set out below. The offer is made by {seller} (hereinafter, the Provider). Paying for the service constitutes full and unconditional acceptance of these terms (acceptance of the offer).",
       "sections": [
@@ -808,7 +808,7 @@
             "Test — the free DISC questionnaire available on the Site.",
             "In-depth Profile — a more detailed analysis of the Customer’s DISC profile, prepared by the Provider in electronic form on the basis of the Test the Customer has taken.",
             "Service — preparing the In-depth Profile and sending it to the Customer.",
-            "Bank — the credit institution through which the Customer pays for the Service; its name is shown on the payment page."
+            "Payment Service — Prodamus, the payment service provider through which the Customer pays for the Service on its secure payment page."
           ]
         },
         {
@@ -824,9 +824,9 @@
           "h": "3. Price and payment",
           "p": [
             "3.1. The price of the Service is {price} US dollars. The price is final: there are no additional payments to the Provider.",
-            "3.2. The Service is paid for in full before it is provided, by one of the non-cash payment methods shown on the payment page. Payment is accepted by the Bank.",
-            "3.3. The Service is deemed paid at the moment the Provider receives confirmation of the payment from the Bank.",
-            "3.4. The Customer enters the details of the payment method on the Bank’s secure page. The Provider does not receive or store these details.",
+            "3.2. The Service is paid for in full before it is provided, by payment card or another non-cash method shown on the payment page. Payment is accepted by the Payment Service.",
+            "3.3. The Service is deemed paid at the moment the Provider receives confirmation of the payment from the Payment Service.",
+            "3.4. The Customer enters their card details on the Payment Service’s secure page. The Provider does not receive or store these details.",
             "3.5. After payment, an electronic sales receipt is sent to the email address the Customer gave at payment.",
             "3.6. The Provider may change the price of the Service. The new price applies from the moment it is published on the Site and does not apply to orders already paid for."
           ]
@@ -876,7 +876,7 @@
           "h": "8. Personal data",
           "p": [
             "8.1. To provide the Service, the Provider processes the Customer’s email address, name (if given), Test result and payment information, excluding bank card details. The basis for processing is the performance of a contract to which the Customer is a party.",
-            "8.2. The data is passed only to the Bank, to accept payment and send the receipt, and to the services needed to prepare and send the In-depth Profile, and in the cases provided by law.",
+            "8.2. The data is passed only to the Payment Service, to accept payment and send the receipt, and to the services needed to prepare and send the In-depth Profile, and in the cases provided by law.",
             "8.3. More about data processing can be found on the “{privacy}” page."
           ]
         },
@@ -901,7 +901,7 @@
       "h1": "Refund Policy",
       "linkText": "refund policy",
       "lead": "A short guide to when and how you can get your money back for the in-depth DISC profile. It forms part of the {offer} (section 5).",
-      "note": "This is an English translation of the original refund policy published at {original}. If the two texts differ, the original prevails. The in-depth profile is not yet available in English: it cannot yet be ordered in English, and no payment is taken.",
+      "note": "This is an English translation of the original refund policy published at {original}. If the two texts differ, the original prevails.",
       "sections": [
         {
           "h": "When you get a full refund",
@@ -934,13 +934,33 @@
         }
       ]
     },
+    "extendedMail": {
+      "subject": "Your in-depth DISC report: {label}",
+      "intro": "Thank you for your purchase. Your in-depth DISC report is ready. It was prepared for this profile:",
+      "attached": "Your in-depth report is attached to this email as a PDF.",
+      "how": "The report has 13 sections. Start with section 1: it explains how to read the rest.",
+      "help": "If the file won’t open or something in the report looks wrong, just reply to this email.",
+      "inviteTitle": "Invite your friends, colleagues and family to take the test",
+      "invite": "Section 8 of the report shows how to talk to people of each of the four styles. To find out the styles of the people around you, invite them to take the test: it’s free and takes about 10 minutes. Once you know each other’s styles, it’s easier to find common ground.",
+      "inviteLink": "Here’s a link to the test you can pass on:",
+      "footer": "You’re receiving this email because you paid for the “In-depth DISC profile” service on disc-test.org. The report is personalized and intended for your personal use only."
+    },
     "product": {
       "title": "In-Depth DISC Report — 13 Sections Built From Your Result",
-      "description": "An in-depth DISC report built from your test result: every scale explained, five practices, a 30-day plan. PDF by email, US${price}. Coming soon in English.",
+      "description": "An in-depth DISC report built from your test result: every scale explained, five practices, a 30-day plan, a sheet for your colleagues. PDF by email, US${price}.",
       "h1": "In-depth DISC report",
       "lead": "The summary report you get after the test answers one question: what’s my type? The in-depth report answers the next one: what do I do with it? It’s built from your own answers: your scores, your profile, your name on every page.",
-      "facts": ["13 sections", "about 28 pages", "three worksheets", "PDF by email"],
+      "facts": ["13 sections", "about 27 pages", "three worksheets", "PDF by email"],
       "more": "What’s in the in-depth report",
+      "sampleTitle": "What the report looks like",
+      "sampleNote": "Four pages from the report of a sample participant with the Enthusiast profile. Your report will have your name, your numbers and the text for your profile. Click a page to take a closer look.",
+      "sampleAlt": [
+        "A page from the in-depth DISC report: the cover with the participant’s profile and the contents of all 13 sections",
+        "A page from the in-depth DISC report: the “Your profile in detail” section with the four scales and what each one means",
+        "A page from the in-depth DISC report: the “Communicating with each of the four styles” section",
+        "A page from the in-depth DISC report: the “30-day plan” worksheet"
+      ],
+      "sampleCaption": ["Cover and contents", "Section 2: your scales", "Section 8: talking to each style", "Section 11: your 30-day plan"],
       "forTitle": "Who it’s for",
       "for": [
         "You want to make sense of your scores: what each of the four scales means, why your profile has its name, and what to do about your lowest scale.",
@@ -969,7 +989,7 @@
       "compare": [
         ["Question", "What’s my type?", "What do I do with it?"],
         ["Based on", "A description of your profile", "Your scores: scale by scale, the two layers of your answers, your lowest scale"],
-        ["Length", "A short take on each topic", "13 sections, about 28 pages"],
+        ["Length", "A short take on each topic", "13 sections, about 27 pages"],
         ["Practice", "General recommendations", "Five practices, a 30-day plan, the “Essentials on one page” sheet"],
         ["For others", "The “Share your type” link", "The “How to work with me” sheet for your manager and colleagues"],
         ["Price", "Free", "US${price}"]
@@ -978,14 +998,14 @@
       "howTitle": "How to get the report",
       "how": [
         "Take the free test: 24 blocks, about 10 minutes. If you’ve already taken it, there’s no need to retake it: the report is built from the result you already have.",
-        "Ask to be notified. The in-depth report isn’t available in English yet; we’ll email you as soon as you can order it.",
-        "Once you’ve ordered, the report arrives by email as a PDF attachment, within 24 hours of payment."
+        "Pay for the report on the secure page of Prodamus, our payment service.",
+        "The report arrives by email as a PDF attachment, no later than 24 hours after payment."
       ],
       "faqTitle": "Questions and answers",
       "faq": [
         { "q": "Is the report written for me, or is it generic text?", "a": "It’s built from your answers. The text is written for your profile, one of sixteen. All of section 2 and parts of sections 3, 5, 11, 12 and 13 depend on your numbers: your percentages on the four scales, your “most” and “least” counts and your lowest scale. Your name is on every page." },
-        { "q": "What format does it come in?", "a": "A PDF attached to an email, about 28 A4 pages. It reads well on screen and prints cleanly; each of the three worksheets fits on a single page." },
-        { "q": "What language is the report in?", "a": "For now the report is available only in Russian. Ask to be notified and we’ll email you as soon as you can order it in English." },
+        { "q": "What format does it come in?", "a": "A PDF attached to an email, about 27 A4 pages. It reads well on screen and prints cleanly; each of the three worksheets fits on a single page." },
+        { "q": "What language is the report in?", "a": "In English. The report was written in English from the start, not translated from another language." },
         { "q": "Is this a diagnosis or an ability test?", "a": "No. The report describes your behavioral style based on your answers. It doesn’t diagnose anything, measure intelligence or predict success." },
         { "q": "Can I get a refund?", "a": "See the {refund} for when and how refunds are made." }
       ],
@@ -994,23 +1014,85 @@
       "docs": "The service is called “In-depth DISC profile” and is provided under our {offer}; see the {refund} for when and how refunds are made.",
       "buy": {
         "testTitle": "The report is built from your test result",
-        "testText": "Take the free test first: 24 blocks, about 10 minutes. You’ll see your result and your summary report right away. The in-depth report isn’t available in English yet; once you have a result, you can ask to be notified from this page.",
+        "testText": "Take the free test first: 24 blocks, about 10 minutes. You’ll see your result and your summary report right away.",
         "testButton": "Take the test",
         "orderTitle": "Your report will be built from the test you took on {date}",
-        "orderText": "The in-depth report isn’t available in English yet. Ask to be notified and we’ll email you as soon as you can order it.",
-        "orderButton": "Notify me when it’s available",
-        "orderMsg": "I’d like to get the in-depth DISC report in English. Please email me when I can order it.\n\nMy result: {link}"
+        "orderText": "Online payment is temporarily unavailable. Leave a request and we’ll email you as soon as you can pay.",
+        "orderButton": "Leave a request",
+        "orderMsg": "I’d like to buy the in-depth DISC report. Please email me when I can pay for it.\n\nMy result: {link}"
+      },
+      "pay": {
+        "title": "Your report will be built from the test you took on {date}",
+        "text": "The report arrives by email as a PDF attachment, no later than 24 hours after payment. Your payment receipt goes to the same address.",
+        "emailLabel": "Email for your report and receipt",
+        "button": "Buy",
+        "note": "By clicking “Buy”, you accept our {offer}. Payment is handled by Prodamus: you enter your card details on its secure page, not on this site. Your statement may show the charge as simpleway.by.",
+        "badEmail": "Please check the address: your report and receipt will be sent there.",
+        "wait": "Taking you to payment…",
+        "error": "We couldn’t take you to payment. Please try again in a minute or write to us at {email}.",
+        "how": [
+          "Take the free test: 24 blocks, about 10 minutes. If you’ve already taken it, there’s no need to retake it: the report is built from the result you already have.",
+          "Enter your email and click “Buy”. You pay in US dollars on the secure page of Prodamus, our payment service. The charge may appear on your card statement as simpleway.by: that’s the card processor Prodamus works with.",
+          "The report arrives by email as a PDF attachment, no later than 24 hours after payment. Your payment receipt goes to the same address."
+        ],
+        "thanks": {
+          "title": "Thank You for Your Purchase — In-Depth DISC Report",
+          "description": "Your payment for the in-depth DISC report went through: where and when the report will arrive, and what to do if the email doesn’t come.",
+          "h1": "Thank you! Payment complete",
+          "lead": "Your report will arrive by email at the address you gave when you paid: a PDF attachment, no later than 24 hours after payment. It usually comes much sooner.",
+          "leadEmail": "Your report will arrive by email at {email}: a PDF attachment, no later than 24 hours after payment. It usually comes much sooner.",
+          "order": "Order number: {order}",
+          "statusWait": "Waiting for the payment service to confirm your payment.",
+          "statusPaid": "Payment received. Your report is being prepared.",
+          "statusSent": "Your report has been sent. Check your inbox.",
+          "nextTitle": "What happens next",
+          "next": [
+            "The email will come from {email}. Its subject line starts with “Your in-depth DISC report”.",
+            "Your payment receipt comes in a separate email from bePaid, the card processor Prodamus works with. The charge may appear on your card statement as simpleway.by rather than DISC Test.",
+            "The report has 13 sections. Start with section 1: it explains how to read the rest."
+          ],
+          "helpTitle": "If the email doesn’t arrive",
+          "help": [
+            "Check your spam and promotions folders.",
+            "If you still can’t find it, write to us at {email} or use the “{contact}” form, and include your order number. We’ll send the report again."
+          ],
+          "back": "Back to the site"
+        },
+        "fail": {
+          "title": "Payment Not Completed — In-Depth DISC Report",
+          "description": "Your payment for the in-depth DISC report didn’t go through: what you can do and how to reach us.",
+          "h1": "Your payment didn’t go through",
+          "lead": "The payment wasn’t completed: your order is unpaid, and no report has been sent.",
+          "order": "Order number: {order}",
+          "tryTitle": "What you can do",
+          "try": [
+            "Check your card details and make sure your card allows online and international payments.",
+            "Try a different card or payment method.",
+            "Try again in a few minutes."
+          ],
+          "button": "Try again",
+          "charged": "If you were charged anyway, write to us at {email} or use the “{contact}” form, and include your order number. We’ll look into it and reply within three business days."
+        },
+        "remind": {
+          "subject": "Your in-depth DISC report is waiting for payment",
+          "intro": "You started ordering the in-depth DISC report on {site}, but the payment wasn’t completed. Your order has been saved, and the report will be built from your result for this profile:",
+          "price": "The price is US${price}. Once you pay, the report will arrive at this address as a PDF attachment, and your receipt will follow in a separate email.",
+          "button": "Complete payment",
+          "valid": "The link takes you to the secure Prodamus payment page and works until {date}.",
+          "footer": "We’re sending this email only once: an order (no. {order}) with this address was placed on {site}. If you don’t need the report, or you didn’t place the order, there’s nothing you need to do: the order will be canceled automatically, and you won’t hear from us about it again."
+        }
       },
       "pdf": {
         "lead": "Your summary report tells you what type you are. The in-depth report tells you what to do with it.",
         "facts": [
-          ["28", "pages"],
+          ["27", "pages"],
           ["13", "sections"],
           ["5", "practices"],
           ["3", "worksheets"]
         ],
+        "sheets": [2, 4],
         "list": ["What your scores mean", "How to work with other profiles", "Practical advice on being more effective"],
-        "where": "Find out more:"
+        "where": "Learn more and order:"
       },
       "block": {
         "eyebrow": "In-depth report",
@@ -1022,14 +1104,34 @@
           "How to talk to each of the four styles: techniques and ready-made phrases",
           "Three worksheets: a 30-day plan, the essentials on one page, a sheet for your colleagues"
         ],
+        "sample": "Pages from a sample participant’s report",
         "price": "US${price} · PDF by email",
-        "button": "Notify me when it’s available",
+        "button": "Get the in-depth report",
         "free": "The test and the summary report stay free.",
         "topTitle": "An in-depth report on your result",
         "topText": "13 sections on what to do with your profile: every scale explained, five practices, a 30-day plan.",
-        "topButton": "Learn more — US${price}",
-        "anchor": "What’s inside",
-        "soon": "The in-depth report isn’t available in English yet. Ask to be notified and we’ll email you as soon as you can order it."
+        "topButton": "Get the report — US${price}",
+        "anchor": "What’s inside"
+      },
+      "promo": {
+        "lead": "Based on your answers, it covers:",
+        "hooks": {
+          "low": "{k}, {name}, your lowest scale at {pct}%: what it means",
+          "flat": "your balanced profile: what it means and how to read it",
+          "moderate": "your primary style, {k}, is only moderately strong at {pct}%: how to read the descriptions",
+          "pairMid": "your {a} + {b} combination: what it gives you and how it differs from a pure {a}",
+          "pairClose": "your {a} and {b} styles are nearly even: how reliable the order of the letters is",
+          "pairEqual": "your {a} and {b} styles are tied: why {a} comes first",
+          "pairEdge": "{b} became your secondary style by a single answer: what that means for you",
+          "pureHigh": "{k} is at {pct}% but isn’t your secondary style: what a “pure” profile means",
+          "layersDiff": "your adapted style ({a}) differs from your natural style ({b}): what that costs you",
+          "layersSame": "your adapted and natural styles match ({k}): the strength and the catch"
+        },
+        "tail": "13 sections in all, including five practices and a 30-day plan.",
+        "button": "In-depth report — US${price}",
+        "close": "Hide",
+        "homeLabel": "Your result from {date}",
+        "homeOpen": "Open result"
       }
     },
     "contact": {
@@ -1577,7 +1679,7 @@
       "steps": [
         "<b>You answer.</b> The test has 24 blocks; in each one you mark what is most like you and what is least like you. Nothing but these answers goes into the calculation.",
         "<b>The program does the scoring.</b> For each of the four styles it subtracts your “least” marks from your “most” marks, and those numbers determine your profile — one of sixteen. The formula is public: the “{results}” page walks you through it.",
-        "<b>The program builds the report.</b> It picks the texts that fit your profile and your numbers from a set written by AI in advance. The summary report appears on screen right away. The in-depth report isn’t available in English yet: ask to be notified and we’ll email you as soon as you can order it. Once you’ve ordered, it is assembled and emailed to you no later than 24 hours after payment."
+        "<b>The program builds the report.</b> It picks the texts that fit your profile and your numbers from a set written by AI in advance. The summary report appears on screen right away; the in-depth report is assembled after payment and emailed to you."
       ],
       "sections": [
         {
@@ -1625,7 +1727,7 @@
         },
         {
           "h": "Results right away",
-          "p": "The summary report appears on screen the moment you finish the last block. The in-depth report isn’t available in English yet: ask to be notified and we’ll email you as soon as you can order it. When you do order, it is assembled as soon as you pay, at any hour of the day or night, with no appointment and no waiting list; the email arrives no later than 24 hours after payment."
+          "p": "The summary report appears on screen the moment you finish the last block. The in-depth report is assembled as soon as you pay, at any hour of the day or night, with no appointment and no waiting list: the email usually arrives within a few minutes and no later than 24 hours after payment."
         },
         {
           "h": "Affordable price",
