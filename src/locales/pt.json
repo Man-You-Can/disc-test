@@ -950,7 +950,7 @@
       "description": "Relatório DISC ampliado com base no seu resultado: escala por escala, cinco práticas, plano de 30 dias, folha para compartilhar com os colegas. PDF por e-mail, US$ {price}.",
       "h1": "Relatório DISC ampliado",
       "lead": "O relatório resumido que você recebe depois do teste responde à pergunta “qual é o meu perfil?”. O ampliado responde à seguinte: “e o que eu faço com isso?”. Ele é montado a partir das suas respostas: com os seus números, para o seu perfil e com o seu nome em cada página.",
-      "facts": ["13 seções", "cerca de 28 páginas A4", "três folhas de trabalho", "PDF no seu e-mail"],
+      "facts": ["13 seções", "cerca de 29 páginas A4", "três folhas de trabalho", "PDF no seu e-mail"],
       "more": "O que o relatório ampliado traz",
       "sampleTitle": "Como é o relatório",
       "sampleNote": "Quatro páginas do relatório de uma participante fictícia com o perfil Inspirador. O seu relatório traz o seu nome, os seus números e o texto do seu perfil. Clique em uma página para vê-la em tamanho maior.",
@@ -994,7 +994,7 @@
       "compare": [
         ["Pergunta", "Qual é o meu perfil?", "O que eu faço com isso?"],
         ["Base", "A descrição do perfil", "Os seus números: escala por escala, as duas camadas de respostas, a escala mais baixa"],
-        ["Extensão", "Cada tema em poucas linhas", "13 seções, cerca de 28 páginas"],
+        ["Extensão", "Cada tema em poucas linhas", "13 seções, cerca de 29 páginas"],
         ["Na prática", "Recomendações gerais", "Cinco práticas, plano de 30 dias, a folha “O essencial em uma página”"],
         ["Para compartilhar", "O link “Compartilhe seu perfil”", "A folha “Como trabalhar comigo”, para o gestor e os colegas"],
         ["Preço", "Grátis", "US$ {price}"]
@@ -1009,7 +1009,7 @@
       "faqTitle": "Perguntas e respostas",
       "faq": [
         { "q": "O relatório é escrito para mim ou é um texto genérico?", "a": "Ele é montado a partir das suas respostas. O texto foi escrito para o seu perfil, um entre dezesseis. A seção 2 inteira e trechos das seções 3, 5, 11, 12 e 13 dependem dos seus números: as porcentagens nas quatro escalas, a contagem de marcações “mais” e “menos” e a escala mais baixa. Seu nome aparece em todas as páginas." },
-        { "q": "Em que formato o relatório chega?", "a": "Em um arquivo PDF anexado ao e-mail, com cerca de 28 páginas A4. Dá para ler bem na tela e para imprimir; cada uma das três folhas de trabalho cabe em uma única página." },
+        { "q": "Em que formato o relatório chega?", "a": "Em um arquivo PDF anexado ao e-mail, com cerca de 29 páginas A4. Dá para ler bem na tela e para imprimir; cada uma das três folhas de trabalho cabe em uma única página." },
         { "q": "Em que idioma está o relatório?", "a": "Em português do Brasil. O relatório foi escrito diretamente em português, e não traduzido de outro idioma." },
         { "q": "É um diagnóstico ou uma avaliação de habilidades?", "a": "Não. O relatório descreve o seu estilo de comportamento com base nas suas respostas. Ele não faz diagnósticos, não mede inteligência e não prevê sucesso." },
         { "q": "Posso pedir reembolso?", "a": "A {refund} explica quando e como o valor pago é devolvido." }
@@ -1031,13 +1031,13 @@
         "text": "O relatório chega ao seu e-mail em PDF, como anexo, em até 24 horas após o pagamento. O comprovante de pagamento vai para o mesmo endereço.",
         "emailLabel": "E-mail para o relatório e o comprovante",
         "button": "Comprar",
-        "note": "Ao clicar em “Comprar”, você aceita os {offer}. O pagamento é em dólares, na página segura da Prodamus: você informa os dados do cartão lá, e não neste site. Seu banco pode cobrar IOF sobre compras internacionais, e na fatura a cobrança pode aparecer como simpleway.by.",
+        "note": "Ao clicar em “Comprar”, você aceita os {offer}. O pagamento é em dólares, na página segura da Prodamus: você informa os dados do cartão lá, e não neste site. Na fatura, a cobrança pode aparecer como simpleway.by.",
         "badEmail": "Confira o endereço: o relatório e o comprovante serão enviados para ele.",
         "wait": "Redirecionando para o pagamento…",
         "error": "Não foi possível abrir a página de pagamento. Tente de novo em instantes ou escreva para {email}.",
         "how": [
           "Faça o teste gratuito: 24 blocos, cerca de 10 minutos. Se você já fez, não precisa repetir: o relatório é montado a partir do resultado que você já tem.",
-          "Informe seu e-mail e clique em “Comprar”. Você paga em dólares americanos na página segura da Prodamus, nossa prestadora de serviços de pagamento. Seu banco converte o valor para reais e pode cobrar IOF sobre compras internacionais. Na fatura, a cobrança pode aparecer como simpleway.by, nome usado pela bePaid, a processadora de cartões da Prodamus.",
+          "Informe seu e-mail e clique em “Comprar”. Você paga em dólares americanos na página segura da Prodamus, nossa prestadora de serviços de pagamento; a página é em inglês. Na fatura, a cobrança pode aparecer como simpleway.by, nome usado pela bePaid, a processadora de cartões da Prodamus.",
           "O relatório chega ao seu e-mail em PDF, como anexo, em até 24 horas após o pagamento. O comprovante de pagamento vai para o mesmo endereço."
         ],
         "thanks": {
@@ -1090,7 +1090,7 @@
       "pdf": {
         "lead": "O relatório resumido diz qual é o seu perfil. O ampliado mostra o que fazer com ele.",
         "facts": [
-          ["28", "páginas A4"],
+          ["29", "páginas A4"],
           ["13", "seções"],
           ["5", "práticas"],
           ["3", "folhas de trabalho"]

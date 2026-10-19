@@ -4,12 +4,12 @@
 
 Подстановки в фигурных скобках (`{price}`, `{date}`, `{email}`, `{offer}`, `{contact}`, `{order}`, `{site}`, `{k}`, `{name}`, `{pct}`, `{a}`, `{b}`, `{label}`, `{original}`) не переводятся и не удаляются: на их место сайт или сервер ставит значение. `{offer}` — ссылка «Termos de venda», `{contact}` — «Contato», `{email}` — info@disc-test.org, `{price}` — 6,99 (перед ним уже стоит «US$ »).
 
-## Что проверить по существу (вопросы к заказчику)
+## Что проверить по существу (решения и вопросы к заказчику)
 
-1. **IOF.** Бразильский банк берёт с покупки в долларах у иностранного продавца IOF — с 2025 года 3,5 % от суммы в реалах, плюс курс банка. Цена на сайте честная (6,99 USD), но в выписке покупатель увидит больше. Тексты предупреждают без числа (ставка менялась уже трижды): `pay.note` у кнопки и `pay.how[1]` — «Seu banco pode cobrar IOF sobre compras internacionais». Оставить, убрать или назвать ставку — решение заказчика.
-2. **Страница оплаты Prodamus только на английском** (`disc-test-eng.payform.ru`). Можно ли показать её по-португальски — вопрос к заказчику (в кабинете Prodamus или вторая платёжная форма). Пока тексты сайта говорят только «na página segura da Prodamus», без слова о языке страницы.
+1. **IOF** (решение заказчика 19 октября 2026: «убери»). Налог бразильского банка на покупку в долларах (с 2025 года 3,5 %) в текстах сайта не упоминается.
+2. **Страница оплаты Prodamus только на английском** (ответ заказчика 19 октября 2026). Поэтому `pay.how[1]` предупреждает: «a página é em inglês».
 3. **Квитанция и имя в выписке** — как в английской версии: квитанция приходит от bePaid, в выписке может стоять simpleway.by (`pay.note`, `pay.how[1]`, `pay.thanks.next[1]`).
-4. **Число листов.** На сайте остаётся «cerca de 28 páginas» (`facts`, `compare`, `faq[1]`, `pdf.facts`): у португальских образцов 28 листов (I, D, S, C, CD, DS) или 29 (остальные десять). Поменять на 29 — по слову заказчика.
+4. **Число листов** — «cerca de 29 páginas» (`facts`, `compare`, `faq[1]`, `pdf.facts`; решение на усмотрение сессии по слову заказчика 19 октября 2026): у 10 португальских профилей из 16 по 29 листов, у I, D, S, C, CD, DS — 28.
 5. **Раздел 10** на странице отчёта переименован как в самом отчёте: «Você como líder e como membro da equipe» (было «…e como liderado»: в слове `liderado` есть род, а отчёт обращается к читателю без мужских и женских форм). Вопрос и редактору отчёта.
 6. **Дата перевода оферты** — `offer.edition`: «atualizada em 19 de outubro de 2026». При вливании в `main` поставить дату публикации.
 7. **Цена в письме-напоминании** записывается по-бразильски, «US$ 6,99»: ядро (`composePayRemindMail`) теперь пишет цену в долларах в записи языка; в английском письме — по-прежнему «US$6.99».
@@ -23,12 +23,12 @@
 - `product.pay.text`: O relatório chega ao seu e-mail em PDF, como anexo, em até 24 horas após o pagamento. O comprovante de pagamento vai para o mesmo endereço.
 - `product.pay.emailLabel`: E-mail para o relatório e o comprovante
 - `product.pay.button`: Comprar
-- `product.pay.note`: Ao clicar em “Comprar”, você aceita os {offer}. O pagamento é em dólares, na página segura da Prodamus: você informa os dados do cartão lá, e não neste site. Seu banco pode cobrar IOF sobre compras internacionais, e na fatura a cobrança pode aparecer como simpleway.by.
+- `product.pay.note`: Ao clicar em “Comprar”, você aceita os {offer}. O pagamento é em dólares, na página segura da Prodamus: você informa os dados do cartão lá, e não neste site. Na fatura, a cobrança pode aparecer como simpleway.by.
 - `product.pay.badEmail`: Confira o endereço: o relatório e o comprovante serão enviados para ele.
 - `product.pay.wait`: Redirecionando para o pagamento…
 - `product.pay.error`: Não foi possível abrir a página de pagamento. Tente de novo em instantes ou escreva para {email}.
 - `product.pay.how[0]`: Faça o teste gratuito: 24 blocos, cerca de 10 minutos. Se você já fez, não precisa repetir: o relatório é montado a partir do resultado que você já tem.
-- `product.pay.how[1]`: Informe seu e-mail e clique em “Comprar”. Você paga em dólares americanos na página segura da Prodamus, nossa prestadora de serviços de pagamento. Seu banco converte o valor para reais e pode cobrar IOF sobre compras internacionais. Na fatura, a cobrança pode aparecer como simpleway.by, nome usado pela bePaid, a processadora de cartões da Prodamus.
+- `product.pay.how[1]`: Informe seu e-mail e clique em “Comprar”. Você paga em dólares americanos na página segura da Prodamus, nossa prestadora de serviços de pagamento; a página é em inglês. Na fatura, a cobrança pode aparecer como simpleway.by, nome usado pela bePaid, a processadora de cartões da Prodamus.
 - `product.pay.how[2]`: O relatório chega ao seu e-mail em PDF, como anexo, em até 24 horas após o pagamento. O comprovante de pagamento vai para o mesmo endereço.
 - `product.pay.thanks.title`: Obrigado pela compra — Relatório DISC ampliado
 - `product.pay.thanks.description`: O pagamento do relatório DISC ampliado foi aprovado: onde e quando o relatório chega e o que fazer se o e-mail não chegar.
@@ -115,14 +115,18 @@
 ## Изменённые тексты страницы отчёта и блока на экране результата — `content.product`
 
 - `product.description`: Relatório DISC ampliado com base no seu resultado: escala por escala, cinco práticas, plano de 30 dias, folha para compartilhar com os colegas. PDF por e-mail, US$ {price}.
+- `product.facts[1]`: cerca de 29 páginas A4
 - `product.inside[9]`: <b>Você como líder e como membro da equipe.</b> O que você faz bem, o que atrapalha e como lidar com um gestor de cada estilo: prestar contas, discordar, fazer pedidos.
+- `product.compare[2][2]`: 13 seções, cerca de 29 páginas
 - `product.how[1]`: Pague pelo relatório na página segura da Prodamus, nossa prestadora de serviços de pagamento.
 - `product.how[2]`: O relatório chega ao seu e-mail em PDF, como anexo, em até 24 horas após o pagamento.
+- `product.faq[1].a`: Em um arquivo PDF anexado ao e-mail, com cerca de 29 páginas A4. Dá para ler bem na tela e para imprimir; cada uma das três folhas de trabalho cabe em uma única página.
 - `product.faq[2].a`: Em português do Brasil. O relatório foi escrito diretamente em português, e não traduzido de outro idioma.
 - `product.buy.testText`: Primeiro, faça o teste gratuito: 24 blocos, cerca de 10 minutos. Você verá o resultado e o relatório resumido na hora.
 - `product.buy.orderText`: O pagamento on-line está temporariamente indisponível. Deixe seu contato e avisaremos por e-mail assim que for possível pagar.
 - `product.buy.orderButton`: Deixar meu contato
 - `product.buy.orderMsg`: Quero comprar o relatório DISC ampliado. Por favor, me avisem por e-mail quando for possível pagar. ⏎  ⏎ Meu resultado: {link}
+- `product.pdf.facts[0][0]`: 29
 - `product.pdf.where`: Saiba mais e compre:
 - `product.block.button`: Quero o relatório ampliado
 - `product.block.topButton`: Quero o relatório — US$ {price}
