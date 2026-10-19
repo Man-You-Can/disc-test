@@ -279,7 +279,10 @@ function composePayRemindMail(r, lang, o) {
   var c = classify(score(r)), prof = L.profiles[c.key];
   var styleName = c.s ? L.keys[c.p] + ' + ' + L.keys[c.s] : L.keys[c.p];
   var site = SITE_URL.replace(/^https?:\/\//, '');
-  var vars = { site: site, order: o.order, price: o.price, date: Utilities.formatDate(o.until, 'Europe/Moscow', 'dd.MM.yyyy') };
+  // дата: в русском письме — 21.10.2026, в остальных — запись языка (October 21, 2026), чтобы не путать день и месяц
+  var date = Utilities.formatDate(o.until, 'Europe/Moscow', 'dd.MM.yyyy');
+  if (lang !== 'ru' && L.pay.dateLocale) { try { date = new Intl.DateTimeFormat(L.pay.dateLocale, { timeZone: 'Europe/Moscow', day: 'numeric', month: 'long', year: 'numeric' }).format(o.until); } catch (e) {} }
+  var vars = { site: site, order: o.order, price: o.price, date: date };
   var greeting = fmt(L.email.greeting, { name: r.name });
   var badge = '<span style="color:' + COLORS[c.p] + '">' + c.p + '</span>' + (c.s ? '<span style="color:' + COLORS[c.s] + ';font-size:22px">' + c.s + '</span>' : '');
   var html = '<!DOCTYPE html><html lang="' + lang + '" dir="' + (L.dir || 'ltr') + '"><body style="margin:0;background:#F3F4F6;font-family:Arial,Helvetica,sans-serif;color:#1B2027">' +
@@ -316,7 +319,7 @@ function composeExtendedMail(r, lang) {
   var styleName = c.s ? L.keys[c.p] + ' + ' + L.keys[c.s] : L.keys[c.p];
   var greeting = fmt(L.email.greeting, { name: r.name });   // ссылки на результат в письме нет: по ней открывается краткий отчёт, его легко принять за купленный
   // единственная ссылка — на тест, для пересылки друзьям и коллегам; метки те же, что у ссылок в самом отчёте (utm_campaign=full-<профиль>)
-  var test = SITE_URL + '/' + lang + '/', testLink = test + '?utm_source=report&utm_medium=email&utm_campaign=full-' + c.key.toLowerCase() + '&utm_content=invite';
+  var test = langHome(lang), testLink = test + '?utm_source=report&utm_medium=email&utm_campaign=full-' + c.key.toLowerCase() + '&utm_content=invite';
   var badge = '<span style="color:' + COLORS[c.p] + '">' + c.p + '</span>' + (c.s ? '<span style="color:' + COLORS[c.s] + ';font-size:22px">' + c.s + '</span>' : '');
   var html = '<!DOCTYPE html><html lang="' + lang + '" dir="' + (L.dir || 'ltr') + '"><body style="margin:0;background:#F3F4F6;font-family:Arial,Helvetica,sans-serif;color:#1B2027">' +
     '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F3F4F6"><tr><td align="center" style="padding:24px 12px">' +
@@ -641,7 +644,8 @@ function reportPdf(r, lang) {
  * Блок о расширенном отчёте в PDF краткого отчёта: зацепка — самая низкая шкала участника (как на экране результата и в самом отчёте:
  * последняя по итогу, при равенстве — более поздняя в порядке D, I, S, C), листы образца, цена и ссылка на страницу отчёта.
  * Листы образца (A.images) есть только в языках, где расширенный отчёт написан. В остальных на их месте, в правой колонке, стоит A.soon —
- * строка о том, что отчёт на этом языке пока нельзя заказать и можно оставить заявку; остальная раскладка та же.
+ * строка о том, что отчёт на этом языке пока нельзя заказать и можно оставить заявку; остальная раскладка та же. Где отчёт продаётся,
+ * а листов образца ещё нет (ни A.images, ни A.soon), список «что внутри» занимает всю ширину.
  * Форма блока с листами утверждена заказчиком 2026-10-11: её не менять.
  * Тексты и картинки — DATA[язык].reportAd (сборка кладёт их только там, где отчёт продаётся, и только при включённом ключе reportAd);
  * ссылка несёт код результата без e-mail участника;
@@ -677,8 +681,8 @@ function reportAdHtml(L, r, lang, sc, start, end) {
     '<p style="margin:9px 0 0;padding:6px 10px;background:#F3F4F6;border-' + start + ':3px solid ' + COLORS[low] + '">' + esc(fmt(A.hook, { k: low, name: L.keys[low], pct: pct(sc.net[low]) })) + '</p>' +
     // слева — что внутри, справа — листы образца (где их нет — строка о заявке)
     '<table width="100%" cellpadding="0" cellspacing="0" dir="' + dir + '" style="margin-top:10px"><tr>' +
-      '<td width="56%" valign="middle" style="padding-' + end + ':14px"><table cellpadding="0" cellspacing="0" dir="' + dir + '">' + items + '</table></td>' +
-      (images.length ? '<td width="44%" valign="top"><table width="100%" cellpadding="0" cellspacing="0" dir="' + dir + '"><tr>' + thumbs + '</tr></table>' +
+      '<td width="' + (images.length || A.soon ? '56%' : '100%') + '" valign="middle" style="padding-' + end + ':' + (images.length || A.soon ? 14 : 0) + 'px"><table cellpadding="0" cellspacing="0" dir="' + dir + '">' + items + '</table></td>' +
+      (!images.length && !A.soon ? '' : images.length ? '<td width="44%" valign="top"><table width="100%" cellpadding="0" cellspacing="0" dir="' + dir + '"><tr>' + thumbs + '</tr></table>' +
         '<p style="margin:4px 0 0;font-size:7.5pt;color:#5B6470;text-align:center">' + esc(A.sample) + '</p></td>'
       : '<td width="44%" valign="middle"><p style="margin:0;padding:10px 12px;border:1px dashed #C9CED6;font-size:10pt;line-height:1.4;color:#5B6470">' + esc(A.soon || '') + '</p></td>') +
     '</tr></table>' +
