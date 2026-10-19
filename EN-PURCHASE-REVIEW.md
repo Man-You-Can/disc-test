@@ -6,7 +6,7 @@
 
 ## Что проверить по существу (вопросы к заказчику)
 
-1. **Чек Prodamus.** Тексты обещают «payment receipt» на e-mail покупателя отдельным письмом от Prodamus. По кабинету Prodamus чек выбивается в рублях (68.54 ₽ за 1 $ в проверке 19 октября). Стоит посмотреть, какое письмо с чеком получил заказчик при проверочной оплате (язык, валюта), и, если оно на русском и в рублях, предупредить об этом покупателя (например, в `pay.thanks.next[1]`).
+1. **Чек и имя в выписке.** Проверочная оплата 1 $ (19 октября) дала квитанцию bePaid «Payment receipt» в долларах; получатель в ней — simpleway.by (белорусский посредник Prodamus), ни Prodamus, ни disc-test.org там нет. Поэтому тексты предупреждают: квитанция придёт от bePaid, а в выписке по карте списание может называться simpleway.by (`pay.note`, `pay.how[1]`, `pay.thanks.next[1]`). Как именно списание записано в банковской выписке, не проверено — сверить по выписке карты заказчика за ту оплату и при необходимости поправить. Пробивает ли Prodamus фискальный чек в рублях (тумблер «Самостоятельное пробитие чеков» выключен — по подсказке кабинета, чеки полного прихода пробивает Prodamus) и на чей ИНН — уточнить у Prodamus или бухгалтера.
 2. **Число листов.** «About 27 pages» (было 28): английские образцы — 26–28 листов. Если число листов английского отчёта изменится до запуска, поправить `facts`, `compare`, `faq[1]`, `pdf.facts`.
 3. **«Usually within a few minutes»** (`howMade.benefits[2]`, как в русском тексте) и «It usually comes much sooner» (`pay.thanks.lead`) верны, только когда сервер собирает английский отчёт сам сразу после оплаты.
 4. **Дата перевода оферты** — `offer.edition`: «English translation updated on October 19, 2026». При вливании в `main` поставить дату публикации.
@@ -17,12 +17,12 @@
 - `product.pay.text`: The report arrives by email as a PDF attachment, no later than 24 hours after payment. Your payment receipt goes to the same address.
 - `product.pay.emailLabel`: Email for your report and receipt
 - `product.pay.button`: Buy
-- `product.pay.note`: By clicking “Buy”, you accept our {offer}. Payment is handled by Prodamus: you enter your card details on its secure page, not on this site.
+- `product.pay.note`: By clicking “Buy”, you accept our {offer}. Payment is handled by Prodamus: you enter your card details on its secure page, not on this site. Your statement may show the charge as simpleway.by.
 - `product.pay.badEmail`: Please check the address: your report and receipt will be sent there.
 - `product.pay.wait`: Taking you to payment…
 - `product.pay.error`: We couldn’t take you to payment. Please try again in a minute or write to us at {email}.
 - `product.pay.how[0]`: Take the free test: 24 blocks, about 10 minutes. If you’ve already taken it, there’s no need to retake it: the report is built from the result you already have.
-- `product.pay.how[1]`: Enter your email and click “Buy”. You pay in US dollars on the secure page of Prodamus, our payment service.
+- `product.pay.how[1]`: Enter your email and click “Buy”. You pay in US dollars on the secure page of Prodamus, our payment service. The charge may appear on your card statement as simpleway.by: that’s the card processor Prodamus works with.
 - `product.pay.how[2]`: The report arrives by email as a PDF attachment, no later than 24 hours after payment. Your payment receipt goes to the same address.
 - `product.pay.thanks.title`: Thank You for Your Purchase — In-Depth DISC Report
 - `product.pay.thanks.description`: Your payment for the in-depth DISC report went through: where and when the report will arrive, and what to do if the email doesn’t come.
@@ -35,7 +35,7 @@
 - `product.pay.thanks.statusSent`: Your report has been sent. Check your inbox.
 - `product.pay.thanks.nextTitle`: What happens next
 - `product.pay.thanks.next[0]`: The email will come from {email}. Its subject line starts with “Your in-depth DISC report”.
-- `product.pay.thanks.next[1]`: Your payment receipt comes in a separate email from Prodamus.
+- `product.pay.thanks.next[1]`: Your payment receipt comes in a separate email from bePaid, the card processor Prodamus works with. The charge may appear on your card statement as simpleway.by rather than DISC Test.
 - `product.pay.thanks.next[2]`: The report has 13 sections. Start with section 1: it explains how to read the rest.
 - `product.pay.thanks.helpTitle`: If the email doesn’t arrive
 - `product.pay.thanks.help[0]`: Check your spam and promotions folders.
