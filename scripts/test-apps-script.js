@@ -300,6 +300,12 @@ if (ctx.DATA.en && ctx.DATA.en.pay) {
   check('pay reminder in English: dollars, the date written out, Prodamus named, nothing unfilled, nothing Russian', ctx.EXTENDED_PRICE_USD === 6.99 && [pE.html, pE.text].every(s => s.includes('US$6.99') && s.includes('October 21, 2026') && s.includes('Prodamus') &&
     s.includes('261019-AB12CD') && s.includes('Pioneer') && !/\{\w+\}|undefined|₽|[А-Яа-яЁё]/.test(s.replace(/Пётр Буянов/g, ''))) && pE.subject === ctx.DATA.en.pay.remind.subject);
 }
+// напоминание на португальском: цена с запятой (US$ 6,99), дата словами, ничего русского и английского
+if (ctx.DATA.pt && ctx.DATA.pt.pay) {
+  const pP = ctx.composePayRemindMail(ctx.decodeResult(cX), 'pt', { order: '261019-AB12CD', url: 'https://api.disc-test.org/pay/go?order=261019-AB12CD&key=k', until: new Date('2026-10-21T09:00:00Z'), price: ctx.EXTENDED_PRICE_USD });
+  check('pay reminder in Portuguese: US$ 6,99, the date written out, Prodamus named, nothing unfilled, nothing Russian', [pP.html, pP.text].every(s => s.includes('US$ 6,99') && s.includes('21 de outubro de 2026') && s.includes('Prodamus') &&
+    s.includes('261019-AB12CD') && s.includes('Pioneiro') && !/\{\w+\}|undefined|₽|6\.99|[А-Яа-яЁё]/.test(s.replace(/Пётр Буянов/g, ''))) && pP.subject === ctx.DATA.pt.pay.remind.subject);
+}
 check('pay reminder: subject, greeting, profile, price, order, link valid until the date, nothing unfilled', pR.subject === 'Ваш расширенный отчёт DISC ждёт оплаты' && [pR.html, pR.text].every(s => s.includes('Пётр Буянов') && s.includes('Первопроходец') &&
   s.includes('490 ₽') && s.includes('№ 261011-7K3QXM') && s.includes('действует до 2026-09-07')   /* дату здесь подставляет заглушка formatDate */ && !/\{\w+\}|undefined/.test(s)) && pR.html.includes('href="https://api.disc-test.org/pay/go?order=261011-7K3QXM&amp;key=k"') && (pR.html.match(/href=/g) || []).length === 1 &&
   pR.text.includes('https://api.disc-test.org/pay/go?order=261011-7K3QXM&key=k'));
@@ -387,6 +393,12 @@ if (ctx.DATA.en && ctx.DATA.en.extended) {
   const mE = ctx.composeExtendedMail(ctx.decodeResult(cX), 'en');
   check('extended mail in English: subject, texts, invite link at the site root with campaign tags, nothing unfilled', /^Your in-depth DISC report: DI · Pioneer$/.test(mE.subject) &&
     mE.html.includes('href="https://disc-test.org/?utm_source=report&amp;utm_medium=email&amp;utm_campaign=full-di&amp;utm_content=invite"') && !/disc-test\.org\/en\//.test(mE.html + mE.text) && !/\{\w+\}|undefined/.test(mE.html + mE.text));
+}
+// письмо покупателю на португальском: приглашение ведёт на /pt/ с метками кампании
+if (ctx.DATA.pt && ctx.DATA.pt.extended) {
+  const mP = ctx.composeExtendedMail(ctx.decodeResult(cX), 'pt');
+  check('extended mail in Portuguese: subject, invite link to /pt/ with campaign tags, nothing unfilled', /^Seu relatório DISC ampliado: DI · Pioneiro$/.test(mP.subject) &&
+    mP.html.includes('href="https://disc-test.org/pt/?utm_source=report&amp;utm_medium=email&amp;utm_campaign=full-di&amp;utm_content=invite"') && !/\{\w+\}|undefined/.test(mP.html + mP.text));
 }
 check('doGet reports that extended delivery is on', JSON.parse(ctx.doGet().text).extended === true);
 fs.writeFileSync(path.join(process.env.OUT || '/tmp', 'disc-extended-mail-preview.html'), mX.htmlBody);
