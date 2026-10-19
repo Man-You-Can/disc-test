@@ -635,7 +635,7 @@
         "h": "Compra do perfil ampliado",
         "p": [
           "Se você comprar o perfil DISC ampliado, tratamos seu e-mail, seu nome (se informado), o resultado do teste que serve de base ao relatório e os dados do pedido: data, valor, número e status do pagamento. Precisamos desses dados para preparar o relatório e enviá-lo a você, responder às suas mensagens e processar reembolsos. A base legal do tratamento é o contrato que você celebra ao pagar pelo serviço conforme os {offer}.",
-          "O pagamento é processado por um banco, cujo nome aparece na página de pagamento. Você informa os dados do meio de pagamento na página segura do banco: nós não os recebemos nem armazenamos. O banco recebe o valor, o número do pedido e seu e-mail, para o qual é enviado o comprovante.",
+          "Os pagamentos são processados pela Prodamus, nossa prestadora de serviços de pagamento. Você informa os dados do cartão na página segura de pagamento dela: nós não os recebemos nem armazenamos. A Prodamus recebe o valor, o número do pedido e seu e-mail, para o qual o comprovante é enviado.",
           "O relatório é gerado em um servidor que opera por nossa conta e é enviado a você por e-mail a partir do endereço {email}. Uma cópia do relatório e os dados do pedido ficam com o responsável pelo site: são necessários para reenviar o relatório, responder a mensagens, fazer reembolsos e manter os registros. Para solicitar a exclusão do relatório e dos dados do pedido, escreva para {email}. Os dados de pagamento que a lei obriga a guardar são excluídos ao fim do prazo exigido.",
           "Se você iniciar uma compra, mas não pagar, guardamos seu e-mail, o resultado do teste e os dados do pedido por 30 dias e depois os excluímos. Nesse período, o endereço informado pode receber um único e-mail de lembrete com o link de pagamento. A base legal são as providências que você tomou para celebrar o contrato."
         ]
@@ -711,9 +711,9 @@
         "h": "Compra do perfil ampliado",
         "p": [
           "Se você comprar o perfil DISC ampliado, tratamos seu e-mail, seu nome (se informado), o resultado do teste que serve de base ao relatório e os dados do pedido: data, valor, número e status do pagamento. Precisamos desses dados para preparar o relatório e enviá-lo a você, responder às suas mensagens e processar reembolsos. A base legal do tratamento é o contrato que você celebra ao pagar pelo serviço conforme os {offer}; para isso, não é necessário consentimento específico.",
-          "O pagamento é processado por um banco, cujo nome aparece na página de pagamento. Você informa os dados do meio de pagamento na página segura do banco: nós não os recebemos nem armazenamos. O banco recebe o valor, o número do pedido e seu e-mail, para o qual é enviado o comprovante.",
+          "Os pagamentos são processados pela Prodamus, nossa prestadora de serviços de pagamento. Você informa os dados do cartão na página segura de pagamento dela: nós não os recebemos nem armazenamos. A Prodamus recebe o valor, o número do pedido e seu e-mail, para o qual o comprovante é enviado.",
           "O relatório é gerado no servidor do site e enviado a você por e-mail a partir do endereço {email}. O relatório pronto não fica armazenado no servidor: se necessário, é gerado novamente. Os dados do pedido são guardados por cinco anos após o pagamento: são necessários para reenviar o relatório, responder a mensagens, fazer reembolsos e manter os registros. Os dados de pagamento que a lei obriga a guardar por mais tempo são excluídos ao fim do prazo exigido.",
-          "Se você iniciar uma compra, mas não pagar, guardamos seu e-mail, o resultado do teste e os dados do pedido por 30 dias e depois os excluímos. Nesse período, o endereço informado pode receber um único e-mail de lembrete com o link de pagamento. A base legal são as providências que você tomou para celebrar o contrato. Enquanto o perfil ampliado não puder ser comprado em português, a solicitação de aviso enviada pelo formulário de contato recebe o mesmo tratamento dado a qualquer outra mensagem desse formulário; o registro do seu consentimento é marcado como solicitação do perfil ampliado."
+          "Se você iniciar uma compra, mas não pagar, guardamos seu e-mail, o resultado do teste e os dados do pedido por 30 dias e depois os excluímos. Nesse período, o endereço informado pode receber um único e-mail de lembrete com o link de pagamento. A base legal são as providências que você tomou para celebrar o contrato."
         ]
       }
     },
@@ -777,7 +777,7 @@
       "sections": [
         {
           "h": "Como receber",
-          "p": ["O perfil ampliado ainda não está disponível em português: na página do relatório, deixe seu contato e avisaremos por e-mail assim que for possível comprá-lo. Depois da compra, ele é enviado por e-mail para o endereço informado no pagamento, em até 24 horas após o pagamento."]
+          "p": ["O perfil ampliado é enviado por e-mail para o endereço informado no pagamento, em até 24 horas após o pagamento."]
         },
         {
           "h": "O que continua gratuito",
@@ -794,8 +794,8 @@
       "description": "Termos de venda (oferta ao público) do serviço “Perfil DISC ampliado” no disc-test.org: preço, pagamento e entrega, reembolso, direitos sobre os materiais.",
       "h1": "Termos de venda (oferta ao público)",
       "linkText": "termos de venda",
-      "edition": "Versão de 9 de outubro de 2026. Tradução para o português publicada em 11 de outubro de 2026.",
-      "note": "Este texto é a tradução para o português da oferta original publicada em {original}. Em caso de divergência entre os dois textos, prevalece o original, exceto quanto ao preço: na versão em português do Site, vale o preço indicado na cláusula 3.1. O perfil ampliado ainda não está disponível em português: por enquanto não é possível comprá-lo nesse idioma, e nenhum valor é cobrado.",
+      "edition": "Versão de 9 de outubro de 2026. Tradução para o português atualizada em 19 de outubro de 2026.",
+      "note": "Este texto é a tradução para o português da oferta original publicada em {original}. Em caso de divergência entre os dois textos, prevalece o original, exceto quanto ao preço e à forma de pagamento: na versão em português do Site, eles estão definidos nas seções 1 e 3.",
       "seller": "empresário individual Manukyan Armen, N.º de identificação fiscal (INN) {inn}",
       "lead": "Este documento é uma proposta formal (oferta ao público) para celebrar um contrato de prestação do serviço pago “Perfil DISC ampliado” nas condições descritas abaixo. A oferta é feita por {seller} (doravante, o Prestador). O pagamento do serviço implica concordância integral e incondicional com estas condições (aceitação da oferta).",
       "sections": [
@@ -808,7 +808,7 @@
             "Teste — o questionário DISC gratuito disponível no Site.",
             "Perfil Ampliado — análise mais detalhada do perfil DISC do Cliente, preparada pelo Prestador em formato eletrônico com base no Teste feito pelo Cliente.",
             "Serviço — a preparação do Perfil Ampliado e seu envio ao Cliente.",
-            "Banco — a instituição financeira por meio da qual o Cliente paga pelo Serviço; seu nome aparece na página de pagamento."
+            "Serviço de Pagamento — a Prodamus, prestadora de serviços de pagamento em cuja página segura o Cliente paga pelo Serviço."
           ]
         },
         {
@@ -824,9 +824,9 @@
           "h": "3. Preço e forma de pagamento",
           "p": [
             "3.1. O preço do Serviço é de {price} dólares americanos. O preço é final: o Prestador não cobra nenhum valor adicional.",
-            "3.2. O Serviço é pago integralmente antes da prestação, por um dos meios eletrônicos de pagamento exibidos na página de pagamento. O pagamento é processado pelo Banco.",
-            "3.3. O Serviço é considerado pago no momento em que o Prestador recebe do Banco a confirmação do pagamento.",
-            "3.4. O Cliente informa os dados do meio de pagamento na página segura do Banco. O Prestador não recebe nem armazena esses dados.",
+            "3.2. O Serviço é pago integralmente antes da prestação, por cartão de crédito ou débito ou outro meio eletrônico exibido na página de pagamento. O pagamento é processado pelo Serviço de Pagamento.",
+            "3.3. O Serviço é considerado pago no momento em que o Prestador recebe do Serviço de Pagamento a confirmação do pagamento.",
+            "3.4. O Cliente informa os dados do cartão na página segura do Serviço de Pagamento. O Prestador não recebe nem armazena esses dados.",
             "3.5. Após o pagamento, um comprovante eletrônico da compra é enviado para o endereço de e-mail que o Cliente informou no pagamento.",
             "3.6. O Prestador pode alterar o preço do Serviço. O novo preço vale a partir da publicação no Site e não se aplica aos pedidos já pagos."
           ]
@@ -876,7 +876,7 @@
           "h": "8. Dados pessoais",
           "p": [
             "8.1. Para prestar o Serviço, o Prestador trata o endereço de e-mail do Cliente, o nome (se informado), o resultado do Teste e os dados do pagamento, exceto os dados de cartão bancário. A base legal do tratamento é a execução de contrato do qual o Cliente é parte.",
-            "8.2. Os dados são transmitidos apenas ao Banco, para o processamento do pagamento e o envio do comprovante, e aos serviços necessários para preparar e enviar o Perfil Ampliado, além dos casos previstos em lei.",
+            "8.2. Os dados são transmitidos apenas ao Serviço de Pagamento, para o processamento do pagamento e o envio do comprovante, e aos serviços necessários para preparar e enviar o Perfil Ampliado, além dos casos previstos em lei.",
             "8.3. Mais informações sobre o tratamento de dados estão na página “{privacy}”."
           ]
         },
@@ -901,7 +901,7 @@
       "h1": "Política de reembolso",
       "linkText": "política de reembolso",
       "lead": "Um resumo de quando e como você pode receber de volta o valor pago pelo perfil DISC ampliado. Esta política faz parte dos {offer} (seção 5).",
-      "note": "Este texto é a tradução para o português da política de reembolso original publicada em {original}. Em caso de divergência entre os dois textos, prevalece o original. O perfil ampliado ainda não está disponível em português: por enquanto não é possível comprá-lo nesse idioma, e nenhum valor é cobrado.",
+      "note": "Este texto é a tradução para o português da política de reembolso original publicada em {original}. Em caso de divergência entre os dois textos, prevalece o original.",
       "sections": [
         {
           "h": "Quando o valor é devolvido integralmente",
@@ -934,13 +934,38 @@
         }
       ]
     },
+    "extendedMail": {
+      "subject": "Seu relatório DISC ampliado: {label}",
+      "intro": "Obrigado pela compra. Seu relatório DISC ampliado está pronto. Ele foi preparado para este perfil:",
+      "attached": "O relatório ampliado segue anexo a este e-mail, em PDF.",
+      "how": "O relatório tem 13 seções. Comece pela seção 1: ela explica como ler as demais.",
+      "help": "Se o arquivo não abrir ou algo no relatório parecer errado, é só responder a este e-mail.",
+      "inviteTitle": "Convide amigos, colegas e familiares para fazer o teste",
+      "invite": "A seção 8 do relatório mostra como falar com pessoas de cada um dos quatro estilos. Para descobrir o estilo de quem está à sua volta, convide essas pessoas para fazer o teste: é gratuito e leva cerca de 10 minutos. Quando cada um conhece o estilo do outro, fica mais fácil se entender.",
+      "inviteLink": "Este é o link do teste para compartilhar:",
+      "footer": "Você recebeu este e-mail porque pagou pelo serviço “Perfil DISC ampliado” em disc-test.org. O relatório é personalizado e destinado somente ao seu uso pessoal."
+    },
     "product": {
       "title": "Relatório DISC ampliado — 13 seções sobre o seu resultado",
-      "description": "Relatório DISC ampliado com base no seu resultado: escala por escala, cinco práticas, plano de 30 dias. PDF por e-mail, US$ {price}. Em breve em português.",
+      "description": "Relatório DISC ampliado com base no seu resultado: escala por escala, cinco práticas, plano de 30 dias, folha para compartilhar com os colegas. PDF por e-mail, US$ {price}.",
       "h1": "Relatório DISC ampliado",
       "lead": "O relatório resumido que você recebe depois do teste responde à pergunta “qual é o meu perfil?”. O ampliado responde à seguinte: “e o que eu faço com isso?”. Ele é montado a partir das suas respostas: com os seus números, para o seu perfil e com o seu nome em cada página.",
       "facts": ["13 seções", "cerca de 28 páginas A4", "três folhas de trabalho", "PDF no seu e-mail"],
       "more": "O que o relatório ampliado traz",
+      "sampleTitle": "Como é o relatório",
+      "sampleNote": "Quatro páginas do relatório de uma participante fictícia com o perfil Inspirador. O seu relatório traz o seu nome, os seus números e o texto do seu perfil. Clique em uma página para vê-la em tamanho maior.",
+      "sampleAlt": [
+        "Página do relatório DISC ampliado: a capa com o perfil da participante e o sumário das 13 seções",
+        "Página do relatório DISC ampliado: a seção “Seu perfil em detalhes”, com as quatro escalas e o que cada uma significa",
+        "Página do relatório DISC ampliado: a seção “Comunicação com cada um dos quatro estilos”",
+        "Página do relatório DISC ampliado: a folha de trabalho “Plano de 30 dias”"
+      ],
+      "sampleCaption": [
+        "Capa e sumário",
+        "Seção 2: as suas escalas",
+        "Seção 8: como falar com cada estilo",
+        "Seção 11: plano de 30 dias"
+      ],
       "forTitle": "Para quem é",
       "for": [
         "Para quem quer entender os próprios números: o que significa cada uma das quatro escalas, por que o perfil tem esse nome e o que fazer com a escala mais baixa.",
@@ -959,7 +984,7 @@
         "<b>Trabalho e carreira.</b> Onde o seu estilo rende mais, quais tarefas são armadilhas, como você toma decisões e os sinais de que um cargo não combina com você.",
         "<b>Comunicação com cada um dos quatro estilos.</b> Como reconhecer o estilo da outra pessoa, por onde começar a conversa, onde surgem os atritos e uma frase pronta para cada caso.",
         "<b>Conflito e estresse.</b> Três cenários típicos, os primeiros sinais de pressão e o que fazer na hora.",
-        "<b>Você como líder e como liderado.</b> O que você faz bem, o que atrapalha e como lidar com um gestor de cada estilo: prestar contas, discordar, fazer pedidos.",
+        "<b>Você como líder e como membro da equipe.</b> O que você faz bem, o que atrapalha e como lidar com um gestor de cada estilo: prestar contas, discordar, fazer pedidos.",
         "<b>Plano de 30 dias.</b> Folha de trabalho: quatro semanas, três passos em cada uma, com espaço para marcar o que já foi feito.",
         "<b>O essencial em uma página.</b> Folha de trabalho: o resumo do relatório, para deixar sempre à vista.",
         "<b>Como trabalhar comigo.</b> Folha de trabalho para o gestor e os colegas: dá para imprimir ou encaminhar."
@@ -978,14 +1003,14 @@
       "howTitle": "Como receber o relatório",
       "how": [
         "Faça o teste gratuito: 24 blocos, cerca de 10 minutos. Se você já fez, não precisa repetir: o relatório é montado a partir do resultado que você já tem.",
-        "Deixe seu contato. O relatório ampliado ainda não está disponível em português; avisaremos por e-mail assim que for possível comprá-lo.",
-        "Depois da compra, o relatório chega ao seu e-mail em PDF, como anexo, em até 24 horas após o pagamento."
+        "Pague pelo relatório na página segura da Prodamus, nossa prestadora de serviços de pagamento.",
+        "O relatório chega ao seu e-mail em PDF, como anexo, em até 24 horas após o pagamento."
       ],
       "faqTitle": "Perguntas e respostas",
       "faq": [
         { "q": "O relatório é escrito para mim ou é um texto genérico?", "a": "Ele é montado a partir das suas respostas. O texto foi escrito para o seu perfil, um entre dezesseis. A seção 2 inteira e trechos das seções 3, 5, 11, 12 e 13 dependem dos seus números: as porcentagens nas quatro escalas, a contagem de marcações “mais” e “menos” e a escala mais baixa. Seu nome aparece em todas as páginas." },
         { "q": "Em que formato o relatório chega?", "a": "Em um arquivo PDF anexado ao e-mail, com cerca de 28 páginas A4. Dá para ler bem na tela e para imprimir; cada uma das três folhas de trabalho cabe em uma única página." },
-        { "q": "Em que idioma está o relatório?", "a": "Por enquanto, o relatório está disponível apenas em russo. Deixe seu contato e avisaremos por e-mail assim que for possível comprá-lo em português." },
+        { "q": "Em que idioma está o relatório?", "a": "Em português do Brasil. O relatório foi escrito diretamente em português, e não traduzido de outro idioma." },
         { "q": "É um diagnóstico ou uma avaliação de habilidades?", "a": "Não. O relatório descreve o seu estilo de comportamento com base nas suas respostas. Ele não faz diagnósticos, não mede inteligência e não prevê sucesso." },
         { "q": "Posso pedir reembolso?", "a": "A {refund} explica quando e como o valor pago é devolvido." }
       ],
@@ -994,12 +1019,73 @@
       "docs": "O serviço se chama “Perfil DISC ampliado” e é prestado conforme os {offer}; a {refund} explica quando e como o valor pago é devolvido.",
       "buy": {
         "testTitle": "O relatório é montado a partir do resultado do teste",
-        "testText": "Primeiro, faça o teste gratuito: 24 blocos, cerca de 10 minutos. Você verá o resultado e o relatório resumido na hora. O relatório ampliado ainda não está disponível em português; com o resultado em mãos, você poderá deixar seu contato nesta página para ser avisado.",
+        "testText": "Primeiro, faça o teste gratuito: 24 blocos, cerca de 10 minutos. Você verá o resultado e o relatório resumido na hora.",
         "testButton": "Fazer o teste",
         "orderTitle": "Seu relatório será montado com base no teste que você fez em {date}",
-        "orderText": "O relatório ampliado ainda não está disponível em português. Deixe seu contato e avisaremos por e-mail assim que for possível comprá-lo.",
-        "orderButton": "Avise-me quando chegar",
-        "orderMsg": "Quero receber o relatório DISC ampliado em português. Por favor, me avisem por e-mail quando for possível comprá-lo.\n\nMeu resultado: {link}"
+        "orderText": "O pagamento on-line está temporariamente indisponível. Deixe seu contato e avisaremos por e-mail assim que for possível pagar.",
+        "orderButton": "Deixar meu contato",
+        "orderMsg": "Quero comprar o relatório DISC ampliado. Por favor, me avisem por e-mail quando for possível pagar.\n\nMeu resultado: {link}"
+      },
+      "pay": {
+        "title": "Seu relatório será montado com base no teste que você fez em {date}",
+        "text": "O relatório chega ao seu e-mail em PDF, como anexo, em até 24 horas após o pagamento. O comprovante de pagamento vai para o mesmo endereço.",
+        "emailLabel": "E-mail para o relatório e o comprovante",
+        "button": "Comprar",
+        "note": "Ao clicar em “Comprar”, você aceita os {offer}. O pagamento é em dólares, na página segura da Prodamus: você informa os dados do cartão lá, e não neste site. Seu banco pode cobrar IOF sobre compras internacionais, e na fatura a cobrança pode aparecer como simpleway.by.",
+        "badEmail": "Confira o endereço: o relatório e o comprovante serão enviados para ele.",
+        "wait": "Redirecionando para o pagamento…",
+        "error": "Não foi possível abrir a página de pagamento. Tente de novo em instantes ou escreva para {email}.",
+        "how": [
+          "Faça o teste gratuito: 24 blocos, cerca de 10 minutos. Se você já fez, não precisa repetir: o relatório é montado a partir do resultado que você já tem.",
+          "Informe seu e-mail e clique em “Comprar”. Você paga em dólares americanos na página segura da Prodamus, nossa prestadora de serviços de pagamento. Seu banco converte o valor para reais e pode cobrar IOF sobre compras internacionais. Na fatura, a cobrança pode aparecer como simpleway.by, nome usado pela bePaid, a processadora de cartões da Prodamus.",
+          "O relatório chega ao seu e-mail em PDF, como anexo, em até 24 horas após o pagamento. O comprovante de pagamento vai para o mesmo endereço."
+        ],
+        "thanks": {
+          "title": "Obrigado pela compra — Relatório DISC ampliado",
+          "description": "O pagamento do relatório DISC ampliado foi aprovado: onde e quando o relatório chega e o que fazer se o e-mail não chegar.",
+          "h1": "Obrigado! Pagamento concluído",
+          "lead": "O relatório chega ao e-mail que você informou no pagamento: um PDF anexado, em até 24 horas após o pagamento. Em geral, chega bem antes.",
+          "leadEmail": "O relatório chega ao e-mail {email}: um PDF anexado, em até 24 horas após o pagamento. Em geral, chega bem antes.",
+          "order": "Número do pedido: {order}",
+          "statusWait": "Aguardando a confirmação do pagamento pela Prodamus.",
+          "statusPaid": "Pagamento recebido. O relatório está sendo preparado.",
+          "statusSent": "O relatório foi enviado. Confira a sua caixa de entrada.",
+          "nextTitle": "O que acontece agora",
+          "next": [
+            "O e-mail será enviado por {email}, com um assunto que começa com “Seu relatório DISC ampliado”.",
+            "O comprovante de pagamento chega em outro e-mail, da bePaid, a processadora de cartões da Prodamus. Na fatura do cartão, a cobrança pode aparecer como simpleway.by, e não como DISC Test.",
+            "O relatório tem 13 seções. Comece pela seção 1: ela explica como ler as demais."
+          ],
+          "helpTitle": "Se o e-mail não chegar",
+          "help": [
+            "Confira as pastas Spam e Promoções.",
+            "Se mesmo assim não encontrar, escreva para {email} ou use o formulário “{contact}” e informe o número do pedido. Enviaremos o relatório de novo."
+          ],
+          "back": "Voltar ao site"
+        },
+        "fail": {
+          "title": "Pagamento não concluído — Relatório DISC ampliado",
+          "description": "O pagamento do relatório DISC ampliado não foi concluído: o que você pode fazer e como falar conosco.",
+          "h1": "O pagamento não foi concluído",
+          "lead": "Seu pedido continua em aberto, e o relatório ainda não foi enviado.",
+          "order": "Número do pedido: {order}",
+          "tryTitle": "O que você pode fazer",
+          "try": [
+            "Confira os dados do cartão e veja se ele está liberado para compras on-line e internacionais.",
+            "Tente outro cartão ou outro meio de pagamento.",
+            "Tente de novo daqui a alguns minutos."
+          ],
+          "button": "Tentar de novo",
+          "charged": "Se o valor foi cobrado mesmo assim, escreva para {email} ou use o formulário “{contact}” e informe o número do pedido. Vamos verificar e responder em até três dias úteis."
+        },
+        "remind": {
+          "subject": "Seu relatório DISC ampliado está aguardando o pagamento",
+          "intro": "Você iniciou a compra do relatório DISC ampliado em {site}, mas o pagamento não foi concluído. Seu pedido está salvo, e o relatório será montado a partir do seu resultado, para este perfil:",
+          "price": "O preço é US$ {price}. Depois do pagamento, o relatório chega a este endereço em PDF, como anexo, e o comprovante vem em outro e-mail.",
+          "button": "Concluir o pagamento",
+          "valid": "O link leva à página segura de pagamento da Prodamus e vale até {date}.",
+          "footer": "Enviamos este e-mail uma única vez porque um pedido (nº {order}) foi feito em {site} com este endereço. Se você não precisa do relatório ou não fez esse pedido, não é preciso fazer nada: o pedido será cancelado automaticamente, e você não receberá mais mensagens sobre ele."
+        }
       },
       "pdf": {
         "lead": "O relatório resumido diz qual é o seu perfil. O ampliado mostra o que fazer com ele.",
@@ -1010,7 +1096,8 @@
           ["3", "folhas de trabalho"]
         ],
         "list": ["O que significam os números do seu perfil", "Como lidar com os outros perfis", "Dicas práticas para ser mais eficaz"],
-        "where": "Saiba mais:"
+        "sheets": [2, 4],
+        "where": "Saiba mais e compre:"
       },
       "block": {
         "eyebrow": "Relatório ampliado",
@@ -1022,14 +1109,34 @@
           "Como falar com pessoas de cada um dos quatro estilos: técnicas e frases prontas",
           "Três folhas de trabalho: plano de 30 dias, o essencial em uma página, folha para os colegas"
         ],
+        "sample": "Páginas do relatório de uma participante fictícia",
         "price": "US$ {price} · PDF por e-mail",
-        "button": "Avise-me quando chegar",
+        "button": "Quero o relatório ampliado",
         "free": "O teste e o relatório resumido continuam gratuitos.",
         "topTitle": "Relatório ampliado sobre o seu resultado",
         "topText": "13 seções sobre o que fazer com o seu perfil: a análise de cada escala, cinco práticas, um plano de 30 dias.",
-        "topButton": "Saiba mais — US$ {price}",
-        "anchor": "O que tem dentro",
-        "soon": "O relatório ampliado ainda não está disponível em português. Deixe seu contato e avisaremos por e-mail assim que for possível comprá-lo."
+        "topButton": "Quero o relatório — US$ {price}",
+        "anchor": "O que tem dentro"
+      },
+      "promo": {
+        "lead": "Com base nas suas respostas, o relatório trata de:",
+        "hooks": {
+          "low": "{k}, {name}, a sua escala mais baixa, com {pct}%: o que isso significa",
+          "flat": "o seu perfil equilibrado: o que isso significa e como lê-lo",
+          "moderate": "o seu estilo predominante, {k}, tem só {pct}%, uma intensidade moderada: como ler as descrições",
+          "pairMid": "a sua combinação {a} + {b}: o que ela traz e em que difere do {a} puro",
+          "pairClose": "os seus estilos {a} e {b} estão quase empatados: até que ponto a ordem das letras é confiável",
+          "pairEqual": "os seus estilos {a} e {b} estão empatados: por que o {a} vem primeiro",
+          "pairEdge": "o {b} passou a ser o seu estilo secundário por uma resposta de diferença: o que isso significa para você",
+          "pureHigh": "o {k} tem {pct}%, mas não é o seu estilo secundário: o que significa um perfil “puro”",
+          "layersDiff": "o seu perfil adaptado ({a}) difere do natural ({b}): o que isso exige de você",
+          "layersSame": "o seu perfil adaptado e o natural coincidem ({k}): o ponto forte e o ponto de atenção"
+        },
+        "tail": "Ao todo, 13 seções, com cinco práticas e um plano de 30 dias.",
+        "button": "Relatório ampliado — US$ {price}",
+        "close": "Ocultar",
+        "homeLabel": "Seu resultado de {date}",
+        "homeOpen": "Ver o resultado"
       }
     },
     "contact": {
@@ -1579,7 +1686,7 @@
       "steps": [
         "<b>Você responde.</b> O teste tem 24 blocos; em cada um, você marca a afirmação que mais se parece com você e a que menos se parece. Fora essas respostas, nada mais entra no cálculo.",
         "<b>O programa calcula.</b> Para cada um dos quatro estilos, ele subtrai as marcações “menos” das marcações “mais” e, com esses números, define o perfil — um entre dezesseis. A fórmula é pública: está explicada em detalhes na página “{results}”.",
-        "<b>O programa monta o relatório.</b> De acordo com o seu perfil e os seus números, ele seleciona os textos escritos de antemão pela IA. O relatório resumido aparece na tela na hora. O ampliado ainda não está disponível em português: deixe seu contato na página do relatório e avisaremos por e-mail assim que for possível comprá-lo. Depois da compra, ele é montado e enviado por e-mail em até 24 horas após o pagamento."
+        "<b>O programa monta o relatório.</b> De acordo com o seu perfil e os seus números, ele seleciona os textos escritos de antemão pela IA. O relatório resumido aparece na tela na hora; o ampliado é montado depois do pagamento e enviado por e-mail."
       ],
       "sections": [
         {
@@ -1627,7 +1734,7 @@
         },
         {
           "h": "Resultado na hora",
-          "p": "O relatório resumido aparece na tela assim que você responde ao último bloco. O ampliado ainda não está disponível em português. Quando for possível comprá-lo, ele será montado logo após o pagamento, a qualquer hora do dia ou da noite, sem agendamento nem fila, e enviado por e-mail em até 24 horas."
+          "p": "O relatório resumido aparece na tela assim que você responde ao último bloco. O ampliado é montado logo após o pagamento, a qualquer hora do dia ou da noite, sem agendamento nem fila: o e-mail costuma chegar em poucos minutos e, no máximo, em 24 horas após o pagamento."
         },
         {
           "h": "Preço acessível",

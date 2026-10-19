@@ -282,7 +282,10 @@ function composePayRemindMail(r, lang, o) {
   // дата: в русском письме — 21.10.2026, в остальных — запись языка (October 21, 2026), чтобы не путать день и месяц
   var date = Utilities.formatDate(o.until, 'Europe/Moscow', 'dd.MM.yyyy');
   if (lang !== 'ru' && L.pay.dateLocale) { try { date = new Intl.DateTimeFormat(L.pay.dateLocale, { timeZone: 'Europe/Moscow', day: 'numeric', month: 'long', year: 'numeric' }).format(o.until); } catch (e) {} }
-  var vars = { site: site, order: o.order, price: o.price, date: date };
+  // цена в долларах — в записи языка (6.99 в английском, 6,99 в португальском); рубли в русском письме — как есть
+  var price = o.price;
+  if (lang !== 'ru' && L.pay.dateLocale && price % 1) { try { price = new Intl.NumberFormat(L.pay.dateLocale, { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(price); } catch (e) {} }
+  var vars = { site: site, order: o.order, price: price, date: date };
   var greeting = fmt(L.email.greeting, { name: r.name });
   var badge = '<span style="color:' + COLORS[c.p] + '">' + c.p + '</span>' + (c.s ? '<span style="color:' + COLORS[c.s] + ';font-size:22px">' + c.s + '</span>' : '');
   var html = '<!DOCTYPE html><html lang="' + lang + '" dir="' + (L.dir || 'ltr') + '"><body style="margin:0;background:#F3F4F6;font-family:Arial,Helvetica,sans-serif;color:#1B2027">' +
