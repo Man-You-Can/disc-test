@@ -15,6 +15,7 @@ const analyticsMode = L => cfg.analyticsMode === "always" || (cfg.analyticsAlway
 const headExtraFor = L => [["google-site-verification", cfg.googleSiteVerification], ["yandex-verification", cfg.yandexVerification]]
   .filter(([, v]) => v).map(([n, v]) => `<meta name="${n}" content="${String(v).replace(/["<>&]/g, "")}">`)
   .concat(cfg.yandexMetrikaId ? [`<script>window.DISC_ANALYTICS=${JSON.stringify({ ym: String(cfg.yandexMetrikaId).replace(/\D/g, ""), mode: analyticsMode(L) })};</script>`] : [])
+  .concat(visitStats ? [`<script>window.DISC_VISIT=${JSON.stringify({ url: String(cfg.sendEndpoint), token: String(cfg.sendToken || ''), host: new URL(cfg.siteUrl).hostname }).replace(/</g, "\\u003c")};</script>`] : [])
   .join("\n");
 // Персональные данные (план боевого режима, этап Д). pdConsent в site.config.json включает схему «свой сервер в России»:
 // отдельная галочка согласия на обработку данных в форме отправки результата и в форме обратной связи (без неё форма не отправляется,
@@ -88,6 +89,11 @@ const profileStats = !!(cfg.profileStats && cfg.sendEndpoint);
 // без имени и e-mail и сохраняет файл, который собрал сервер (тот же PDF, что в письме); без ключа или при сбое — окно печати браузера.
 // Тексты о данных (ui.privacy, content.policy, pd.cookieDetails, пункт 2.8 русской политики) об этом запросе говорят: ключ и тексты меняются только вместе.
 const pdfDownload = !!(cfg.pdfDownload && cfg.sendEndpoint);
+// Свой счёт посетителей: visitStats в site.config.json — раз в сутки по Москве каждая страница сайта шлёт на sendEndpoint отметку о посещении
+// (action: 'visit') — только язык версии; дату последней отметки браузер хранит в localStorage disc.visit (код — в src/common.js, window.DISC_VISIT).
+// Сервер пишет язык и время получения — «Сводка» панели сравнивает посетителей «к этому часу» без задержки системы веб-аналитики.
+// Тексты о данных (ui.privacy, content.policy, pd.cookieDetails, пункт 2.7 русской политики) об этой отметке говорят: ключ и тексты меняются только вместе.
+const visitStats = !!(cfg.visitStats && cfg.sendEndpoint);
 // Оплата расширенного отчёта: payEndpoint — адрес сервера оплаты (README → «Оплата расширенного отчёта»). Пока он пустой, на странице
 // отчёта остаётся заявка через форму обратной связи, страниц «Спасибо» и «Оплата не прошла» нет. Для локальной проверки адрес можно
 // задать переменной PAY_ENDPOINT, не трогая site.config.json: PAY_ENDPOINT=http://localhost:8765/mock-pay LANGS=ru node build.js

@@ -128,5 +128,16 @@ function initCommon(c){
     $("#consentOk").addEventListener("click", function(){ close(ask ? "analytics" : "noted"); if(ask) loadYm(); });
     if($("#consentNo")) $("#consentNo").addEventListener("click", function(){ close("essential"); });
   })();
+
+  /* отметка о посещении (visitStats в site.config.json, window.DISC_VISIT задаёт сборка): раз в сутки по Москве — один запрос на сервер сайта
+     с языком версии, без адресов, меток и ответов; сервер пишет её со временем получения (счёт посетителей на «Сводке» панели).
+     Дата последней отметки — в localStorage disc.visit; без localStorage отметка не шлётся (иначе ушла бы с каждой страницы).
+     Только на самом сайте (не на localhost) и не из автоматических браузеров. Об отметке говорят тексты о данных на 14 языках. */
+  (function(){
+    var V = window.DISC_VISIT, day = new Date(Date.now() + 3 * 3600000).toISOString().slice(0, 10);
+    if(!V || !V.url || !window.fetch || navigator.webdriver || location.hostname !== V.host) return;
+    try{ if(localStorage.getItem("disc.visit") === day) return; localStorage.setItem("disc.visit", day); if(localStorage.getItem("disc.visit") !== day) return; }catch(e){ return; }
+    try{ fetch(V.url, {method:"POST", body:JSON.stringify({action:"visit", token:V.token, lang:L.lang}), keepalive:true})["catch"](function(){}); }catch(e){}
+  })();
 }
 if (typeof module !== 'undefined' && module.exports) module.exports = initCommon;
