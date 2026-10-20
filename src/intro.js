@@ -5,15 +5,18 @@
 function introHTML(c){
   var L=c.L, t=c.t, esc=c.esc, KEYS=c.KEYS, colorVar=c.colorVar, progDone=c.progDone||0, lastDate=c.lastDate||'';
   var links=c.links||{}, arr=L.dir==='rtl'?'←':'→';
-  // lc — карточка вернувшегося посетителя: прошлый результат и кнопка расширенного отчёта (её собирает сама страница, в сборке её нет)
+  // lc — карточка вернувшегося посетителя (её собирает сама страница, в сборке её нет): прошлый результат, личные зацепки, ссылка на образец
+  // и крупная кнопка расширенного отчёта — сразу под заголовком; «Начать тест» становится неброской ссылкой «Пройти тест заново» под вводным абзацем
   var lc=c.lastCard||null;
   return '<div class="eyebrow">'+t('intro.eyebrow')+'</div>'+
     '<h1>'+t('intro.h1')+'</h1>'+
-    '<p class="lead">'+t('intro.lead')+'</p>'+
-    (lc ? '<div class="lastcard" style="--k:'+colorVar(lc.k)+'"><div>'+esc(lc.label)+
+    (lc ? '<div class="lastcard" style="--k:'+colorVar(lc.k)+'"><div class="lchead">'+esc(lc.label)+
         '<span class="lastname"><b>'+lc.badge+' '+esc(lc.name)+'</b><button class="link" type="button" id="showLast">'+esc(lc.open)+'</button></span></div>'+
-      '<a class="btn small" id="lastExt" href="'+esc(lc.href)+'">'+esc(lc.button)+'</a></div>' : '')+
-    '<div class="actions startrow"><button class="btn big" type="button" id="start">'+t('intro.start')+'</button>'+
+      '<p class="lclead">'+esc(lc.lead)+'</p><ul class="xhooks">'+lc.hooks.map(function(x){ return '<li>'+esc(x)+'</li>'; }).join('')+'</ul>'+
+      '<p class="lctail">'+esc(lc.tail)+' <a href="'+esc(lc.href)+'#sample" id="lastSample">'+esc(lc.sample)+'</a></p>'+
+      '<a class="btn big" id="lastExt" href="'+esc(lc.href)+'">'+esc(lc.button)+'</a></div>' : '')+
+    '<p class="lead">'+t('intro.lead')+'</p>'+
+    '<div class="actions startrow'+(lc ? ' again' : '')+'">'+(lc ? '<button class="link" type="button" id="start">'+esc(lc.retake)+'</button>' : '<button class="btn big" type="button" id="start">'+t('intro.start')+'</button>')+
       '<span class="small muted">'+t('intro.startNote')+'</span>'+
       (progDone ? '<button class="link" type="button" id="resume">'+t('intro.resume',{n:progDone})+'</button>' : '')+
     '</div>'+
@@ -23,7 +26,7 @@ function introHTML(c){
       '<h2>'+t('intro.howTitle')+'</h2>'+
       '<p>'+t('intro.howText')+'</p>'+
       (links.pdf ? '<p class="small muted">'+t('intro.pdfNote',{link:'<a href="'+esc(links.pdf)+'">'+t('nav.pdf')+'</a>'})+'</p>' : '')+
-      '<div class="actions"><button class="btn" type="button" id="start2">'+t('intro.start')+'</button></div>'+
+      '<div class="actions"><button class="btn'+(lc ? ' secondary' : '')+'" type="button" id="start2">'+(lc ? esc(lc.retake) : t('intro.start'))+'</button></div>'+
     '</div>'+
     '<section class="styles-intro"><h2>'+t('intro.stylesTitle')+'</h2><div class="stylegrid">'+
       KEYS.map(function(k){ var st=L.styles[k], pr=L.profiles[k];
