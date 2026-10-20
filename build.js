@@ -40,7 +40,8 @@ const contactHTML = require(path.join(SRC, 'contact.js'));
 const feedbackEmail = String(cfg.feedbackEmail || '').trim().replace(/['\\<>"]/g, '');
 // Адрес, с которого Apps Script шлёт письма (в Gmail он должен быть добавлен как «Отправлять письма как»); по умолчанию — feedbackEmail
 const senderEmail = String(cfg.senderEmail == null ? feedbackEmail : cfg.senderEmail).trim().replace(/['\\<>"]/g, '');
-// Реквизиты владельца в подвале (требование платёжной системы): имя и подпись к ИНН — в локали (ui.legal), номер — в legalInn; пустой номер — строки нет
+// Реквизиты владельца (требование платёжной системы: в подвале или на странице контактов): с 2026-10-20 по слову заказчика — только в подвале страницы
+// «Обратная связь» (contact/); в оферте (раздел о продавце) они есть отдельно. Имя и подпись к ИНН — в локали (ui.legal), номер — в legalInn; пустой номер — строки нет
 const legalInn = String(cfg.legalInn || '').replace(/\D/g, '');
 const legalHtml = L => legalInn ? `<div class="legal">${esc(L.ui.legal.replace('{inn}', legalInn))}</div>` : '';
 // Строка о правах на тексты (подвал каждой страницы, печатная версия результата, PDF-отчёт из письма): ui.rights, {year} — год сборки
@@ -332,7 +333,7 @@ for (const L of locales) {
     .replace(/__FONTS_HEAD__/g, () => fontsHead(f, L)).replace(/__FONT_HEAD__/g, f.head).replace(/__FONT_BODY__/g, f.body)
     .replace(/__BRAND__/g, esc(L.brand)).replace(/__LANG_LABEL__/g, esc(L.ui.langLabel))
     .replace('__LANG_SWITCHER__', () => switcher).replace('__LANG_LINKS__', () => links).replace('__FLAG_SPRITE__', () => flagSprite(locales.map(x => x.lang)))
-    .replace(/__FOOTER__/g, esc(L.ui.footer)).replace(/__ADMIN_LINK__/g, esc(L.ui.adminLink)).replace(/__PRIVACY__/g, esc(L.ui.privacy)).replace('__LEGAL__', () => legalHtml(L) + rightsHtml(L))
+    .replace(/__FOOTER__/g, esc(L.ui.footer)).replace(/__ADMIN_LINK__/g, esc(L.ui.adminLink)).replace(/__PRIVACY__/g, esc(L.ui.privacy)).replace('__LEGAL__', () => rightsHtml(L))
     .replace(/__EMAIL__/g, String(cfg.contactEmail || '').replace(/['\\]/g, ''))
     .replace(/__SEND_ENDPOINT__/g, String(cfg.sendEndpoint || '').replace(/['\\]/g, ''))
     .replace(/__SEND_TOKEN__/g, String(cfg.sendToken || '').replace(/['\\]/g, '')).replace(/__NEWSLETTER__/g, newsletter ? '1' : '0').replace(/__STATS__/g, profileStats ? '1' : '0').replace(/__PDF_DL__/g, pdfDownload ? '1' : '0')
@@ -439,7 +440,7 @@ function writeContentPage(L, sub, opts) {
     .replace('__LANG_SWITCHER__', () => switcher).replace('__NAV__', () => navHtml).replace('__CRUMBS__', () => crumbsHtml).replace('__FOOT_LINKS__', () => footHtml).replace('__MATERIALS__', () => materialsHtml(L, base, sub))
     .replace('__CONTENT__', () => opts.content + updatedHtml)
     .replace('__CTA_FLOAT__', () => opts.content.includes('class="cta cta-top') ? `<a class="btn ctafloat no-print" id="ctaFloat" href="${homeHref}" data-goal="cta-float">${esc(t('cta.button'))}</a>` : '')
-    .replace(/__FOOTER__/g, esc(L.ui.footer)).replace(/__PRIVACY__/g, esc(L.ui.privacy)).replace('__LEGAL__', () => legalHtml(L) + rightsHtml(L)).replace('__LANG_LINKS__', () => links)
+    .replace(/__FOOTER__/g, esc(L.ui.footer)).replace(/__PRIVACY__/g, esc(L.ui.privacy)).replace('__LEGAL__', () => (sub === 'contact/' ? legalHtml(L) : '') + rightsHtml(L)).replace('__LANG_LINKS__', () => links)
     .replace('__LOCALE_JSON__', () => JSON.stringify(miniL).replace(/</g, '\\u003c'))
     .replace(/__SUBPATH__/g, sub).replace('__PAGE_LANGS_JSON__', () => opts.langs ? JSON.stringify(own.map(x => x.lang)) : 'null')
     .replace('__LANG_PATH_JSON__', () => JSON.stringify(LANG_PATH)).replace('__LANG_META_JSON__', () => JSON.stringify(LANG_META).replace(/</g, '\\u003c'))
