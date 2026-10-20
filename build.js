@@ -83,6 +83,10 @@ const newsletter = !!(cfg.newsletter && cfg.sendEndpoint);
 // По кнопке «Начать тест» уходит вторая запись — только язык версии (action: 'start'): панель показывает на странице «Прохождения», сколько раз тест начали.
 // Тексты о данных (ui.privacy, content.policy, pd.cookieDetails) об этой записи говорят: ключ и тексты меняются только вместе.
 const profileStats = !!(cfg.profileStats && cfg.sendEndpoint);
+// Скачивание краткого отчёта: pdfDownload в site.config.json — кнопка «Сохранить в PDF» на экране результата шлёт на <sendEndpoint>pdf ответы и дату
+// без имени и e-mail и сохраняет файл, который собрал сервер (тот же PDF, что в письме); без ключа или при сбое — окно печати браузера.
+// Тексты о данных (ui.privacy, content.policy, pd.cookieDetails, пункт 2.8 русской политики) об этом запросе говорят: ключ и тексты меняются только вместе.
+const pdfDownload = !!(cfg.pdfDownload && cfg.sendEndpoint);
 // Оплата расширенного отчёта: payEndpoint — адрес сервера оплаты (README → «Оплата расширенного отчёта»). Пока он пустой, на странице
 // отчёта остаётся заявка через форму обратной связи, страниц «Спасибо» и «Оплата не прошла» нет. Для локальной проверки адрес можно
 // задать переменной PAY_ENDPOINT, не трогая site.config.json: PAY_ENDPOINT=http://localhost:8765/mock-pay LANGS=ru node build.js
@@ -331,7 +335,7 @@ for (const L of locales) {
     .replace(/__FOOTER__/g, esc(L.ui.footer)).replace(/__ADMIN_LINK__/g, esc(L.ui.adminLink)).replace(/__PRIVACY__/g, esc(L.ui.privacy)).replace('__LEGAL__', () => legalHtml(L) + rightsHtml(L))
     .replace(/__EMAIL__/g, String(cfg.contactEmail || '').replace(/['\\]/g, ''))
     .replace(/__SEND_ENDPOINT__/g, String(cfg.sendEndpoint || '').replace(/['\\]/g, ''))
-    .replace(/__SEND_TOKEN__/g, String(cfg.sendToken || '').replace(/['\\]/g, '')).replace(/__NEWSLETTER__/g, newsletter ? '1' : '0').replace(/__STATS__/g, profileStats ? '1' : '0')
+    .replace(/__SEND_TOKEN__/g, String(cfg.sendToken || '').replace(/['\\]/g, '')).replace(/__NEWSLETTER__/g, newsletter ? '1' : '0').replace(/__STATS__/g, profileStats ? '1' : '0').replace(/__PDF_DL__/g, pdfDownload ? '1' : '0')
     .replace(/__PD__/g, pdOn && cfg.sendEndpoint ? '1' : '0').replace(/__PD_VERSION__/g, pdVersion)
     .replace('__LOCALE_JSON__', () => JSON.stringify(homeLocale(L)).replace(/</g, '\\u003c').replace(/\u2028|\u2029/g, ''));
   fs.mkdirSync(path.join(OUT, pathOf(L.lang)), { recursive: true });

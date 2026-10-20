@@ -604,6 +604,7 @@ var SEND_ENDPOINT = '__SEND_ENDPOINT__'; // URL веб-приложения Goog
 var SEND_TOKEN = '__SEND_TOKEN__';
 var PD = '__PD__' === '1', PD_VERSION = '__PD_VERSION__'; // отдельная галочка согласия на обработку данных в форме отправки результата (pdConsent в site.config.json)
 var NEWSLETTER = '__NEWSLETTER__' === '1'; // галочка согласия на рассылку в форме отправки результата (newsletter в site.config.json)
+var PDF_DL = '__PDF_DL__' === '1'; // «Сохранить в PDF» скачивает краткий отчёт, собранный сервером (pdfDownload в site.config.json); иначе — печать браузера
 var STATS = '__STATS__' === '1'; // обезличенный счёт: в начале теста серверу уходит только язык, при завершении — только профиль и язык (profileStats в site.config.json)
 var ROOT_REL = '__ROOT_REL__';         // относительный путь к корню сайта ('./' на главной, '../' в /xx/)
 var IS_ROOT = '__IS_ROOT__' === '1';      // главная страница (язык по умолчанию живёт в корне)
@@ -998,7 +999,7 @@ function renderReport(r, opts){
   }
   $('#copyCode').addEventListener('click', function(){ copyText(code, $('#code')); });
   $('#copyLink').addEventListener('click', function(){ copyText(link, null); });
-  $('#print').addEventListener('click', function(){ try{ window.print(); }catch(e){ toast(t('toast.printNA')); } });
+  $('#print').addEventListener('click', function(){ savePdf(r, cls.key, this); });
   if($('#restart')) $('#restart').addEventListener('click', function(){ dropHash(); renderIntro(); window.scrollTo(0,0); });
   if($('#backAdmin')) $('#backAdmin').addEventListener('click', function(){ renderAdmin(); window.scrollTo(0,0); });
   if(opts.own){
@@ -1078,6 +1079,28 @@ function statPost(data){
   if(!STATS || !SEND_ENDPOINT || !window.fetch) return;
   data.token = SEND_TOKEN; data.lang = L.lang;
   try{ fetch(SEND_ENDPOINT, {method:'POST', body:JSON.stringify(data), keepalive:true})['catch'](function(){}); }catch(e){}
+}
+function printPage(){ try{ window.print(); }catch(e){ toast(t('toast.printNA')); } }
+// «Сохранить в PDF»: сервер собирает тот же краткий отчёт, что вкладывается в письмо, и отдаёт файл. Уходят только ответы и дата —
+// код результата пересобирается без имени, e-mail и должности; сервер ничего не сохраняет. Цель Метрики pdf-download — файл получен.
+// Без сервера (PDF_DL выключен, нет fetch) или при сбое — прежнее окно печати браузера.
+function savePdf(r, key, btn){
+  if(!PDF_DL || !SEND_ENDPOINT || !window.fetch || !window.Blob || !window.URL || !URL.createObjectURL){ printPage(); return; }
+  if(btn.disabled) return;
+  var label = btn.textContent; btn.disabled = true; btn.textContent = t('share.pdfWait');
+  var code = encodeResult({name:'', email:'', pos:'', t:r.t, m:r.m, l:r.l});
+  var done = function(){ btn.disabled = false; btn.textContent = label; };
+  fetch(SEND_ENDPOINT.replace(/\/*$/, '/')+'pdf', {method:'POST', body:JSON.stringify({token:SEND_TOKEN, lang:L.lang, code:code})}).then(function(res){
+    if(!res.ok || !/application\/pdf/.test(res.headers.get('Content-Type')||'')) throw new Error('pdf '+res.status);
+    return res.blob();
+  }).then(function(blob){
+    var url = URL.createObjectURL(blob), a = document.createElement('a');
+    a.href = url; a.download = 'DISC-'+key+'.pdf'; a.style.display = 'none';
+    document.body.appendChild(a); a.click();
+    setTimeout(function(){ URL.revokeObjectURL(url); if(a.parentNode) a.parentNode.removeChild(a); }, 60000);
+    done();
+    if(window.discTrack) window.discTrack('pdf-download');
+  })['catch'](function(){ done(); toast(t('share.pdfFail'), 5000); setTimeout(printPage, 1200); });
 }
 function sendStat(r){ statPost({action:'stat', profile:analyze(r).cls.key}); }
 function sendStart(){ statPost({action:'start'}); }
