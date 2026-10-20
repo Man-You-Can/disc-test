@@ -637,7 +637,7 @@
         "h": "Achat du profil détaillé",
         "p": [
           "Si vous achetez le profil DISC détaillé, nous traitons votre adresse e-mail, votre nom (si vous l'avez indiqué), le résultat du test à partir duquel le rapport est établi et les informations relatives à la commande : date, montant, numéro et statut du paiement. Ces données nous servent à établir le rapport et à vous l'envoyer, à répondre à vos demandes et à procéder à un éventuel remboursement. Le traitement a pour base légale le contrat que vous concluez en payant le service conformément à nos {offer}.",
-          "Le paiement est encaissé par une banque, dont le nom est indiqué sur la page de paiement. Vous saisissez les données de votre moyen de paiement sur la page sécurisée de la banque : nous ne les recevons pas et ne les conservons pas. La banque reçoit le montant, le numéro de commande et votre adresse e-mail, à laquelle le reçu est envoyé.",
+          "Les paiements sont traités par Prodamus, notre opérateur de paiement. Vous saisissez les données de votre carte sur la page de paiement sécurisée de Prodamus : nous ne les recevons pas et ne les conservons pas. Nous transmettons à Prodamus le montant, le numéro de commande et votre adresse e-mail, à laquelle le reçu de paiement est envoyé.",
           "Le rapport est généré sur un serveur exploité pour notre compte et vous est envoyé par e-mail depuis l'adresse {email}. Une copie du rapport et les informations relatives à la commande sont conservées par le propriétaire du site : elles permettent de renvoyer le rapport, de répondre à une demande, d'effectuer un remboursement et de tenir la comptabilité. Pour demander la suppression du rapport et des informations relatives à la commande, écrivez à {email}. Les informations de paiement que la loi impose de conserver sont supprimées à l'expiration du délai prescrit.",
           "Si vous commencez un achat sans le payer, nous conservons votre adresse e-mail, le résultat du test et les informations relatives à la commande pendant 30 jours, puis nous les supprimons. Durant cette période, un seul e-mail de rappel contenant un lien de paiement peut être envoyé à l'adresse indiquée. Ce traitement a pour base légale les démarches que vous avez entreprises en vue de conclure le contrat."
         ]
@@ -713,9 +713,9 @@
         "h": "Achat du profil détaillé",
         "p": [
           "Si vous achetez le profil DISC détaillé, nous traitons votre adresse e-mail, votre nom (si vous l'avez indiqué), le résultat du test à partir duquel le rapport est établi et les informations relatives à la commande : date, montant, numéro et statut du paiement. Ces données nous servent à établir le rapport et à vous l'envoyer, à répondre à vos demandes et à procéder à un éventuel remboursement. Le traitement a pour base légale le contrat que vous concluez en payant le service conformément à nos {offer} ; aucun consentement distinct n'est requis à cet effet.",
-          "Le paiement est encaissé par une banque, dont le nom est indiqué sur la page de paiement. Vous saisissez les données de votre moyen de paiement sur la page sécurisée de la banque : nous ne les recevons pas et ne les conservons pas. La banque reçoit le montant, le numéro de commande et votre adresse e-mail, à laquelle le reçu est envoyé.",
+          "Les paiements sont traités par Prodamus, notre opérateur de paiement. Vous saisissez les données de votre carte sur la page de paiement sécurisée de Prodamus : nous ne les recevons pas et ne les conservons pas. Nous transmettons à Prodamus le montant, le numéro de commande et votre adresse e-mail, à laquelle le reçu de paiement est envoyé.",
           "Le rapport est généré sur le serveur du site et vous est envoyé par e-mail depuis l'adresse {email}. Une fois envoyé, le rapport n'est pas conservé sur le serveur : au besoin, il est généré de nouveau. Les informations relatives à la commande sont conservées cinq ans après le paiement : elles permettent de renvoyer le rapport, de répondre à une demande, d'effectuer un remboursement et de tenir la comptabilité. Les informations de paiement que la loi impose de conserver plus longtemps sont supprimées à l'expiration du délai prescrit.",
-          "Si vous commencez un achat sans le payer, nous conservons votre adresse e-mail, le résultat du test et les informations relatives à la commande pendant 30 jours, puis nous les supprimons. Durant cette période, un seul e-mail de rappel contenant un lien de paiement peut être envoyé à l'adresse indiquée. Ce traitement a pour base légale les démarches que vous avez entreprises en vue de conclure le contrat. Tant que le profil détaillé ne peut pas être commandé en français, si vous nous demandez, via le formulaire de contact, de vous prévenir de sa disponibilité, votre demande est traitée comme tout autre message de ce formulaire ; la trace de votre consentement est alors enregistrée comme une demande relative au profil détaillé."
+          "Si vous commencez un achat sans le payer, nous conservons votre adresse e-mail, le résultat du test et les informations relatives à la commande pendant 30 jours, puis nous les supprimons. Durant cette période, un seul e-mail de rappel contenant un lien de paiement peut être envoyé à l'adresse indiquée. Ce traitement a pour base légale les démarches que vous avez entreprises en vue de conclure le contrat."
         ]
       }
     },
@@ -767,19 +767,19 @@
     },
     "services": {
       "title": "Services — profil DISC détaillé",
-      "description": "Service payant de disc-test.org : profil DISC détaillé pour {price} USD. Le test et le résultat restent gratuits.",
+      "description": "Service payant de disc-test.org : profil DISC détaillé pour {price} USD. Le test et le résultat restent gratuits.",
       "h1": "Services",
       "lead": "Le test DISC et son résultat sont gratuits sur ce site. Pour ceux qui souhaitent une analyse plus approfondie, une version détaillée payante est disponible.",
       "name": "Profil DISC détaillé",
       "text": "Une analyse plus approfondie de votre profil DISC, à partir du test que vous avez passé. Le profil détaillé est accessible aux utilisateurs ayant payé le service.",
       "priceLabel": "Prix",
-      "price": "{price} USD",
+      "price": "{price} USD",
       "currency": "USD",
       "docs": "Le service est fourni conformément à nos {offer} ; notre {refund} précise dans quels cas et comment obtenir un remboursement.",
       "sections": [
         {
           "h": "Comment le recevoir",
-          "p": ["Le profil détaillé n'est pas encore disponible en français : sur la page du rapport, demandez-nous de vous prévenir et nous vous écrirons dès que vous pourrez le commander. Une fois commandé, il est envoyé par e-mail à l'adresse indiquée lors du paiement, au plus tard 24 heures après le paiement."]
+          "p": ["Le profil détaillé est envoyé par e-mail à l'adresse indiquée lors du paiement, au plus tard 24 heures après le paiement."]
         },
         {
           "h": "Ce qui reste gratuit",
@@ -796,8 +796,8 @@
       "description": "Conditions générales de vente du service payant « Profil DISC détaillé » sur disc-test.org : prix, paiement et envoi, remboursement, droits sur les contenus.",
       "h1": "Conditions générales de vente",
       "linkText": "conditions générales de vente",
-      "edition": "Version du 9 octobre 2026. Traduction française publiée le 11 octobre 2026.",
-      "note": "Ce texte est la traduction française des conditions originales publiées à l'adresse {original}. En cas de divergence entre les deux textes, l'original prévaut, sauf pour le prix : pour la version française du Site, le prix applicable est celui indiqué à l'article 3.1. Le profil détaillé n'est pas encore disponible en français : il ne peut pas, pour l'instant, être commandé dans cette langue et aucun paiement n'est encaissé.",
+      "edition": "Version du 9 octobre 2026. Traduction française mise à jour le 20 octobre 2026.",
+      "note": "Ce texte est la traduction française des conditions originales publiées à l'adresse {original}. En cas de divergence entre les deux textes, l'original prévaut, sauf pour le prix et les modalités de paiement : pour la version française du Site, ceux-ci sont régis par les articles 1 et 3 de la présente traduction.",
       "seller": "Manukyan Armen, entrepreneur individuel, N° d’identification fiscale (INN) {inn}",
       "lead": "Le présent document constitue une offre officielle (offre au public) de conclure un contrat portant sur le service payant « Profil DISC détaillé » aux conditions énoncées ci-dessous. Cette offre émane de {seller} (ci-après « le Prestataire »). Le paiement du service vaut acceptation pleine, entière et sans réserve des présentes conditions (acceptation de l'offre).",
       "sections": [
@@ -810,7 +810,7 @@
             "Test : le questionnaire DISC gratuit proposé sur le Site.",
             "Profil détaillé : une analyse plus approfondie du profil DISC du Client, établie par le Prestataire sous forme électronique à partir du Test passé par le Client.",
             "Service : l'établissement du Profil détaillé et son envoi au Client.",
-            "Banque : l'établissement de crédit par l'intermédiaire duquel le Client paie le Service ; son nom est indiqué sur la page de paiement."
+            "Opérateur de paiement : Prodamus, la plateforme de paiement sur la page sécurisée de laquelle le Client paie le Service."
           ]
         },
         {
@@ -826,9 +826,9 @@
           "h": "3. Prix et modalités de paiement",
           "p": [
             "3.1. Le prix du Service est de {price} dollars américains. Ce prix est définitif : aucun autre paiement n'est dû au Prestataire.",
-            "3.2. Le Service est payé intégralement avant sa fourniture, par l'un des moyens de paiement proposés sur la page de paiement, à l'exclusion des espèces. Le paiement est encaissé par la Banque.",
-            "3.3. Le Service est réputé payé dès que le Prestataire reçoit de la Banque la confirmation du paiement.",
-            "3.4. Le Client saisit les données de son moyen de paiement sur la page sécurisée de la Banque. Le Prestataire ne reçoit pas ces données et ne les conserve pas.",
+            "3.2. Le Service est payé intégralement avant sa fourniture, par carte bancaire ou par un autre moyen de paiement électronique proposé sur la page de paiement. Le paiement est encaissé par l'Opérateur de paiement.",
+            "3.3. Le Service est réputé payé dès que le Prestataire reçoit de l'Opérateur de paiement la confirmation du paiement.",
+            "3.4. Le Client saisit les données de sa carte sur la page sécurisée de l'Opérateur de paiement. Le Prestataire ne reçoit pas ces données et ne les conserve pas.",
             "3.5. Après le paiement, un reçu électronique est envoyé au Client à l'adresse e-mail indiquée lors du paiement.",
             "3.6. Le Prestataire peut modifier le prix du Service. Le nouveau prix s'applique dès sa publication sur le Site et ne concerne pas les commandes déjà payées."
           ]
@@ -878,7 +878,7 @@
           "h": "8. Données personnelles",
           "p": [
             "8.1. Pour fournir le Service, le Prestataire traite l'adresse e-mail du Client, son nom (s'il est indiqué), le résultat du Test et les informations de paiement, à l'exclusion des données de carte bancaire. Le traitement a pour base légale l'exécution d'un contrat auquel le Client est partie.",
-            "8.2. Les données ne sont transmises qu'à la Banque, pour l'encaissement du paiement et l'envoi du reçu, et aux services nécessaires à l'établissement et à l'envoi du Profil détaillé, ainsi que dans les cas prévus par la loi.",
+            "8.2. Les données ne sont transmises qu'à l'Opérateur de paiement, pour l'encaissement du paiement et l'envoi du reçu, et aux services nécessaires à l'établissement et à l'envoi du Profil détaillé, ainsi qu'à des tiers dans les cas prévus par la loi.",
             "8.3. Pour en savoir plus sur le traitement des données, consultez la page « {privacy} »."
           ]
         },
@@ -903,7 +903,7 @@
       "h1": "Politique de remboursement",
       "linkText": "politique de remboursement",
       "lead": "L'essentiel sur les cas où le profil DISC détaillé vous est remboursé et sur la marche à suivre. Cette politique fait partie intégrante de nos {offer} (article 5).",
-      "note": "Ce texte est la traduction française de la politique de remboursement originale publiée à l'adresse {original}. En cas de divergence entre les deux textes, l'original prévaut. Le profil détaillé n'est pas encore disponible en français : il ne peut pas, pour l'instant, être commandé dans cette langue et aucun paiement n'est encaissé.",
+      "note": "Ce texte est la traduction française de la politique de remboursement originale publiée à l'adresse {original}. En cas de divergence entre les deux textes, l'original prévaut.",
       "sections": [
         {
           "h": "Quand le remboursement est intégral",
@@ -936,13 +936,38 @@
         }
       ]
     },
+    "extendedMail": {
+      "subject": "Votre rapport DISC détaillé : {label}",
+      "intro": "Merci pour votre achat. Votre rapport DISC détaillé est prêt. Il a été établi pour ce profil :",
+      "attached": "Vous trouverez le rapport détaillé en pièce jointe de cet e-mail, au format PDF.",
+      "how": "Le rapport compte 13 sections. Commencez par la section 1 : elle explique comment lire les autres.",
+      "help": "Si le fichier ne s'ouvre pas ou si quelque chose vous semble inexact dans le rapport, répondez simplement à cet e-mail.",
+      "inviteTitle": "Invitez vos amis, vos collègues et vos proches à passer le test",
+      "invite": "La section 8 du rapport explique comment communiquer avec les personnes de chacun des quatre styles. Pour connaître le style de votre entourage, proposez-leur de passer le test : il est gratuit et prend environ 10 minutes. Quand chacun connaît le style de l'autre, on se comprend plus facilement.",
+      "inviteLink": "Voici le lien vers le test, à partager :",
+      "footer": "Vous recevez cet e-mail parce que vous avez payé le service « Profil DISC détaillé » sur disc-test.org. Le rapport est nominatif et réservé à votre usage personnel."
+    },
     "product": {
       "title": "Rapport DISC détaillé — 13 sections fondées sur vos réponses",
-      "description": "Rapport DISC détaillé fondé sur vos réponses : chaque échelle expliquée, cinq exercices, plan sur 30 jours. PDF par e-mail, {price} USD. Bientôt en français.",
+      "description": "Rapport DISC détaillé fondé sur vos réponses : chaque échelle expliquée, cinq exercices, un plan sur 30 jours et une fiche pour vos collègues. PDF par e-mail, {price} USD.",
       "h1": "Rapport DISC détaillé",
       "lead": "Le rapport de synthèse que vous recevez après le test répond à une question : quel est mon type ? Le rapport détaillé répond à la suivante : qu'est-ce que j'en fais ? Il est établi à partir de vos propres réponses, avec vos scores, votre profil et votre nom sur chaque page.",
-      "facts": ["13 sections", "environ 28 pages", "trois fiches pratiques", "PDF par e-mail"],
+      "facts": ["13 sections", "environ 30 pages", "trois fiches pratiques", "PDF par e-mail"],
       "more": "Ce que contient le rapport détaillé",
+      "sampleTitle": "À quoi ressemble le rapport",
+      "sampleNote": "Quatre pages du rapport établi pour une participante fictive au profil Enthousiaste. Le vôtre porte votre nom, vos scores et le texte de votre profil. Touchez ou cliquez sur une page pour l'agrandir.",
+      "sampleAlt": [
+        "Page du rapport DISC détaillé : la couverture, avec le profil de la participante et le sommaire des 13 sections",
+        "Page du rapport DISC détaillé : la section « Votre profil en détail », avec les quatre échelles et ce que signifie chacune",
+        "Page du rapport DISC détaillé : la section « Communiquer avec chacun des quatre styles »",
+        "Page du rapport DISC détaillé : la fiche pratique « Plan sur 30 jours »"
+      ],
+      "sampleCaption": [
+        "Couverture et sommaire",
+        "Section 2 : vos échelles",
+        "Section 8 : parler à chaque style",
+        "Section 11 : plan sur 30 jours"
+      ],
       "forTitle": "À qui s'adresse ce rapport ?",
       "for": [
         "Vous voulez comprendre vos scores : ce que signifie chacune des quatre échelles, pourquoi votre profil porte ce nom et que faire de votre échelle la plus basse.",
@@ -961,7 +986,7 @@
         "<b>Travail et carrière.</b> Les contextes où votre style donne toute sa mesure, les tâches qui vous piègent, votre façon de décider et les signes qu'un poste n'est pas fait pour vous.",
         "<b>Communiquer avec chacun des quatre styles.</b> Comment reconnaître le style de votre interlocuteur, comment engager la conversation, d'où viennent les frictions, et une phrase toute prête pour chaque cas.",
         "<b>Conflit et stress.</b> Trois scénarios types, les premiers signes de pression et ce qu'il faut faire sur le moment.",
-        "<b>Vous, comme manager et comme collaborateur.</b> Ce qui vous réussit, ce qui vous dessert, et comment, face à un responsable de chaque style, rendre compte, exprimer un désaccord ou formuler une demande.",
+        "<b>Vous, comme manager et comme membre d'une équipe.</b> Ce qui vous réussit, ce qui vous dessert, et comment, face à un responsable de chaque style, rendre compte, exprimer un désaccord ou formuler une demande.",
         "<b>Plan sur 30 jours.</b> Fiche pratique : quatre semaines, trois étapes par semaine, avec des cases à cocher.",
         "<b>L'essentiel sur une page.</b> Fiche pratique : le condensé du rapport, à garder sous les yeux.",
         "<b>Comment travailler avec moi.</b> Fiche pratique destinée à votre responsable et à vos collègues : à imprimer ou à transmettre."
@@ -975,67 +1000,152 @@
           "La description de votre profil",
           "Vos scores : échelle par échelle, style adapté et style naturel, votre échelle la plus basse"
         ],
-        ["Volume", "L'essentiel sur chaque thème", "13 sections, environ 28 pages"],
+        ["Volume", "L'essentiel sur chaque thème", "13 sections, environ 30 pages"],
         ["Mise en pratique", "Des recommandations générales", "Cinq exercices, un plan sur 30 jours, la fiche « L'essentiel sur une page »"],
         ["À partager", "Le lien « Partagez votre type »", "La fiche « Comment travailler avec moi », pour votre responsable et vos collègues"],
-        ["Prix", "Gratuit", "{price} USD"]
+        ["Prix", "Gratuit", "{price} USD"]
       ],
       "compareNote": "Le test, le résultat à l'écran, l'e-mail de résultat et le rapport de synthèse en PDF restent gratuits. Le rapport détaillé est entièrement facultatif.",
       "howTitle": "Comment obtenir le rapport",
       "how": [
         "Passez le test gratuit : 24 blocs, environ 10 minutes. Si vous l'avez déjà passé, inutile de recommencer : le rapport est établi à partir du résultat que vous avez déjà.",
-        "Demandez-nous de vous prévenir. Le rapport détaillé n'est pas encore disponible en français ; nous vous écrirons dès que vous pourrez le commander.",
-        "Une fois la commande passée, le rapport arrive par e-mail, en pièce jointe au format PDF, au plus tard 24 heures après le paiement."
+        "Réglez le rapport sur la page de paiement sécurisée de Prodamus, notre opérateur de paiement.",
+        "Le rapport arrive par e-mail, en pièce jointe au format PDF, au plus tard 24 heures après le paiement."
       ],
       "faqTitle": "Questions fréquentes",
       "faq": [
         { "q": "Le rapport est-il rédigé pour moi ou s'agit-il d'un texte générique ?", "a": "Il est établi à partir de vos réponses. Le texte est écrit pour votre profil, l'un des seize. Toute la section 2 et certains passages des sections 3, 5, 11, 12 et 13 dépendent de vos chiffres : vos pourcentages sur les quatre échelles, le nombre de vos réponses « le plus » et « le moins » et votre échelle la plus basse. Votre nom figure sur chaque page." },
-        { "q": "Sous quelle forme le rapport arrive-t-il ?", "a": "Un fichier PDF d'environ 28 pages A4, joint à un e-mail. Il se lit aussi bien à l'écran que sur papier ; chacune des trois fiches pratiques tient sur une seule page." },
-        { "q": "Dans quelle langue le rapport est-il rédigé ?", "a": "Pour l'instant, le rapport n'existe qu'en russe. Demandez-nous de vous prévenir : nous vous écrirons dès que vous pourrez le commander en français." },
+        { "q": "Sous quelle forme le rapport arrive-t-il ?", "a": "Un fichier PDF d'environ 30 pages A4, joint à un e-mail. Il se lit aussi bien à l'écran que sur papier ; chacune des trois fiches pratiques tient sur une seule page." },
+        { "q": "Dans quelle langue le rapport est-il rédigé ?", "a": "En français. Le rapport a été écrit directement en français, pour des lecteurs francophones ; ce n'est pas la traduction d'une autre langue." },
         { "q": "Est-ce un diagnostic ou une évaluation des aptitudes ?", "a": "Non. Le rapport décrit votre style de comportement à partir de vos réponses. Il ne pose aucun diagnostic, ne mesure pas l'intelligence et ne prédit pas la réussite." },
         { "q": "Peut-on se faire rembourser ?", "a": "Notre {refund} précise dans quels cas et comment obtenir un remboursement." }
       ],
       "priceLabel": "Prix",
-      "price": "{price} USD",
+      "price": "{price} USD",
       "docs": "Le service s'intitule « Profil DISC détaillé » ; il est fourni conformément à nos {offer}, et notre {refund} précise dans quels cas et comment obtenir un remboursement.",
       "buy": {
         "testTitle": "Le rapport est établi à partir du résultat de votre test",
-        "testText": "Commencez par passer le test gratuit : 24 blocs, environ 10 minutes. Vous verrez aussitôt votre résultat et votre rapport de synthèse. Le rapport détaillé n'est pas encore disponible en français ; une fois votre résultat obtenu, revenez sur cette page pour nous demander de vous prévenir de sa sortie.",
+        "testText": "Commencez par passer le test gratuit : 24 blocs, environ 10 minutes. Vous verrez aussitôt votre résultat et votre rapport de synthèse.",
         "testButton": "Passer le test",
         "orderTitle": "Votre rapport sera établi à partir de votre test du {date}",
-        "orderText": "Le rapport détaillé n'est pas encore disponible en français. Demandez-nous de vous prévenir : nous vous écrirons dès que vous pourrez le commander.",
-        "orderButton": "Me prévenir dès sa sortie",
-        "orderMsg": "Je souhaite recevoir le rapport DISC détaillé en français. Merci de m'écrire dès qu'il pourra être commandé.\n\nMon résultat : {link}"
+        "orderText": "Le paiement en ligne est momentanément indisponible. Laissez-nous vos coordonnées : nous vous écrirons dès qu'il sera rétabli.",
+        "orderButton": "Laisser mes coordonnées",
+        "orderMsg": "Je souhaite acheter le rapport DISC détaillé. Merci de me prévenir par e-mail dès que le paiement sera possible.\n\nMon résultat : {link}"
+      },
+      "pay": {
+        "title": "Votre rapport sera établi à partir de votre test du {date}",
+        "text": "Le rapport arrive par e-mail, en pièce jointe au format PDF, au plus tard 24 heures après le paiement. Le reçu de paiement est envoyé à la même adresse.",
+        "emailLabel": "E-mail pour le rapport et le reçu",
+        "button": "Acheter",
+        "note": "En cliquant sur « Acheter », vous acceptez nos {offer}. Le paiement se fait en dollars américains sur la page sécurisée de Prodamus : c'est là, et non sur ce site, que vous saisissez les données de votre carte. Sur votre relevé bancaire, l'opération peut apparaître sous le nom simpleway.by.",
+        "badEmail": "Vérifiez l'adresse e-mail : c'est à elle que nous enverrons le rapport et le reçu.",
+        "wait": "Ouverture de la page de paiement…",
+        "error": "Impossible d'ouvrir la page de paiement. Réessayez dans quelques instants ou écrivez-nous à {email}.",
+        "how": [
+          "Passez le test gratuit : 24 blocs, environ 10 minutes. Si vous l'avez déjà passé, inutile de recommencer : le rapport est établi à partir du résultat que vous avez déjà.",
+          "Indiquez votre e-mail et cliquez sur « Acheter ». Vous payez en dollars américains sur la page sécurisée de Prodamus, notre opérateur de paiement ; cette page est en anglais. Sur votre relevé bancaire, l'opération peut apparaître sous le nom simpleway.by : c'est le nom qu'utilise bePaid, la société qui traite les paiements par carte pour Prodamus.",
+          "Le rapport arrive par e-mail, en pièce jointe au format PDF, au plus tard 24 heures après le paiement. Le reçu de paiement est envoyé à la même adresse."
+        ],
+        "thanks": {
+          "title": "Merci pour votre achat — Rapport DISC détaillé",
+          "description": "Paiement du rapport DISC détaillé : où et quand arrive le rapport, et que faire si l'e-mail n'arrive pas.",
+          "h1": "Merci pour votre achat !",
+          "lead": "Le rapport arrivera à l'adresse e-mail indiquée lors du paiement, en pièce jointe au format PDF, au plus tard 24 heures après le paiement. En général, il arrive bien plus tôt.",
+          "leadEmail": "Le rapport arrivera à l'adresse {email}, en pièce jointe au format PDF, au plus tard 24 heures après le paiement. En général, il arrive bien plus tôt.",
+          "order": "Numéro de commande : {order}",
+          "statusWait": "En attente de la confirmation du paiement par Prodamus.",
+          "statusPaid": "Paiement reçu. Nous préparons votre rapport.",
+          "statusSent": "Le rapport a été envoyé. Consultez votre boîte de réception.",
+          "nextTitle": "Et maintenant ?",
+          "next": [
+            "L'e-mail est envoyé depuis l'adresse {email}, avec un objet qui commence par « Votre rapport DISC détaillé ».",
+            "Le reçu de paiement arrive dans un e-mail séparé, envoyé par bePaid, la société qui traite les paiements par carte pour Prodamus. Sur votre relevé bancaire, l'opération peut apparaître sous le nom simpleway.by, et non DISC Test.",
+            "Le rapport compte 13 sections. Commencez par la section 1 : elle explique comment lire les autres."
+          ],
+          "helpTitle": "Si l'e-mail n'arrive pas",
+          "help": [
+            "Vérifiez vos dossiers de courrier indésirable (spam) et de promotions.",
+            "Si vous ne le trouvez toujours pas, écrivez-nous à {email} ou passez par le formulaire « {contact} » en indiquant votre numéro de commande. Nous vous renverrons le rapport."
+          ],
+          "back": "Retour au site"
+        },
+        "fail": {
+          "title": "Paiement non abouti — Rapport DISC détaillé",
+          "description": "Le paiement du rapport DISC détaillé n'a pas abouti : ce que vous pouvez faire et comment nous contacter.",
+          "h1": "Le paiement n'a pas abouti",
+          "lead": "Votre commande reste ouverte, et le rapport n'a pas encore été envoyé.",
+          "order": "Numéro de commande : {order}",
+          "tryTitle": "Ce que vous pouvez faire",
+          "try": [
+            "Vérifiez les données de votre carte et assurez-vous qu'elle permet les achats en ligne et à l'étranger.",
+            "Essayez avec une autre carte ou un autre moyen de paiement.",
+            "Réessayez dans quelques minutes."
+          ],
+          "button": "Réessayer",
+          "charged": "Si votre compte a malgré tout été débité, écrivez-nous à {email} ou passez par le formulaire « {contact} » en indiquant votre numéro de commande. Nous vérifierons et vous répondrons sous trois jours ouvrés."
+        },
+        "remind": {
+          "subject": "Votre rapport DISC détaillé attend son paiement",
+          "intro": "Vous avez commencé l'achat du rapport DISC détaillé sur {site}, mais le paiement n'a pas abouti. Votre commande est conservée : le rapport sera établi à partir de votre résultat, pour ce profil :",
+          "price": "Le prix est de {price} USD. Après le paiement, le rapport arrivera à cette adresse en pièce jointe au format PDF, et le reçu dans un e-mail séparé.",
+          "button": "Finaliser le paiement",
+          "valid": "Ce lien mène à la page de paiement sécurisée de Prodamus ; il reste valable jusqu'au {date}.",
+          "footer": "Nous vous envoyons cet e-mail une seule fois, parce qu'une commande (n° {order}) a été passée sur {site} avec cette adresse. Si vous n'avez plus besoin du rapport ou si vous n'avez pas passé cette commande, vous n'avez rien à faire : la commande sera annulée automatiquement et vous ne recevrez plus de message à son sujet."
+        }
       },
       "pdf": {
         "lead": "Le rapport de synthèse vous dit quel est votre type. Le rapport détaillé vous dit quoi en faire.",
         "facts": [
-          ["28", "pages"],
+          ["30", "pages"],
           ["13", "sections"],
           ["5", "exercices"],
           ["3", "fiches pratiques"]
         ],
         "list": ["Ce que signifient vos scores", "Comment interagir avec les autres profils", "Des conseils pour gagner en efficacité"],
-        "where": "En savoir plus :"
+        "sheets": [2, 4],
+        "where": "En savoir plus et commander :"
       },
       "block": {
         "eyebrow": "Rapport détaillé",
         "title": "Que faire de votre profil : 13 sections fondées sur vos réponses",
-        "hook": "Votre échelle la plus basse : {k} ({name}), {pct} %. Le rapport détaillé explique ce que cela signifie et propose un exercice adapté.",
+        "hook": "Votre échelle la plus basse : {k} ({name}), {pct} %. Le rapport détaillé explique ce que cela signifie et propose un exercice adapté.",
         "list": [
           "Échelle par échelle : ce que signifie chacun de vos quatre scores",
           "Cinq angles morts et cinq exercices, avec les signes qui montrent qu'ils portent leurs fruits",
           "Comment parler à chacun des quatre styles : techniques et phrases toutes prêtes",
           "Trois fiches pratiques : un plan sur 30 jours, l'essentiel sur une page, une fiche pour vos collègues"
         ],
-        "price": "{price} USD · PDF par e-mail",
-        "button": "Me prévenir dès sa sortie",
+        "sample": "Pages du rapport d'une participante fictive",
+        "price": "{price} USD · PDF par e-mail",
+        "button": "Je veux le rapport détaillé",
         "free": "Le test et le rapport de synthèse restent gratuits.",
         "topTitle": "Un rapport détaillé fondé sur votre résultat",
         "topText": "13 sections pour savoir que faire de votre profil : chaque échelle expliquée, cinq exercices, un plan sur 30 jours.",
-        "topButton": "En savoir plus — {price} USD",
-        "anchor": "Au sommaire",
-        "soon": "Le rapport détaillé n'existe pas encore en français. Demandez-nous de vous prévenir : nous vous écrirons dès que vous pourrez le commander."
+        "topButton": "Je veux le rapport — {price} USD",
+        "anchor": "Au sommaire"
+      },
+      "promo": {
+        "lead": "Établi à partir de vos réponses, le rapport aborde :",
+        "hooks": {
+          "low": "{k} ({name}), votre échelle la plus basse, à {pct} % : ce que cela signifie",
+          "flat": "votre profil équilibré : ce qu'il signifie et comment le lire",
+          "moderate": "votre style dominant, {k}, n'atteint que {pct} % (intensité modérée) : comment lire les descriptions",
+          "pairMid": "votre combinaison {a} + {b} : ce qu'elle vous apporte et en quoi elle diffère d'un {a} pur",
+          "pairClose": "vos styles {a} et {b} sont presque à égalité : quel crédit accorder à l'ordre des lettres",
+          "pairEqual": "vos styles {a} et {b} sont à égalité : pourquoi {a} passe en premier",
+          "pairEdge": "{b} est devenu votre style secondaire à une seule réponse près : ce que cela change pour vous",
+          "pureHigh": "{k} atteint {pct} % sans être votre style secondaire : ce que signifie un profil « pur »",
+          "layersDiff": "votre style adapté ({a}) diffère de votre style naturel ({b}) : ce que cela vous demande",
+          "layersSame": "votre style adapté et votre style naturel coïncident ({k}) : l'atout et le risque"
+        },
+        "tail": "Au total, 13 sections, dont cinq exercices et un plan sur 30 jours.",
+        "button": "Rapport détaillé — {price} USD",
+        "close": "Masquer",
+        "homeLabel": "Votre résultat du {date}",
+        "homeOpen": "Ouvrir le résultat",
+        "homeLead": "Établi à partir de vos réponses, le rapport détaillé aborde :",
+        "homeSample": "Voir des pages d'exemple",
+        "homeRetake": "Repasser le test"
       }
     },
     "contact": {
@@ -1598,7 +1708,7 @@
       "steps": [
         "<b>Vous répondez.</b> Le test comporte 24 blocs ; dans chacun, vous indiquez ce qui vous ressemble le plus et ce qui vous ressemble le moins. Rien d'autre que ces réponses n'entre dans le calcul.",
         "<b>Le programme calcule.</b> Pour chacun des quatre styles, il soustrait le nombre de réponses « le moins » du nombre de réponses « le plus », puis déduit de ces chiffres votre profil, l'un des seize. La formule n'a rien de secret : elle est expliquée en détail sur la page « {results} ».",
-        "<b>Le programme assemble le rapport.</b> Parmi les textes rédigés à l'avance par l'IA, il retient ceux qui correspondent à votre profil et à vos chiffres. Le rapport de synthèse s'affiche aussitôt à l'écran. Le rapport détaillé, lui, n'est pas encore disponible en français : demandez-nous de vous prévenir et nous vous écrirons dès que vous pourrez le commander. Une fois commandé, il est assemblé puis envoyé par e-mail, au plus tard 24 heures après le paiement."
+        "<b>Le programme assemble le rapport.</b> Parmi les textes rédigés à l'avance par l'IA, il retient ceux qui correspondent à votre profil et à vos chiffres. Le rapport de synthèse s'affiche aussitôt à l'écran ; le rapport détaillé est assemblé après le paiement et envoyé par e-mail."
       ],
       "sections": [
         {
@@ -1646,11 +1756,11 @@
         },
         {
           "h": "Un résultat immédiat",
-          "p": "Le rapport de synthèse s'affiche dès que vous avez répondu au dernier bloc. Le rapport détaillé n'existe pas encore en français : vous ne pouvez donc pas le commander pour l'instant. Une fois la commande passée, il est assemblé sitôt payé, à toute heure du jour ou de la nuit, sans rendez-vous ni file d'attente, et arrive par e-mail au plus tard 24 heures après le paiement."
+          "p": "Le rapport de synthèse s'affiche dès que vous avez répondu au dernier bloc. Le rapport détaillé est assemblé sitôt payé, à toute heure du jour ou de la nuit, sans rendez-vous ni file d'attente : l'e-mail arrive en général en quelques minutes, et au plus tard 24 heures après le paiement."
         },
         {
           "h": "Un prix accessible",
-          "p": "La préparation automatique permet de garder le test et le rapport de synthèse gratuits, et de proposer le rapport détaillé à {price} USD."
+          "p": "La préparation automatique permet de garder le test et le rapport de synthèse gratuits, et de proposer le rapport détaillé à {price} USD."
         },
         {
           "h": "Aucune réponse envoyée à une IA",
