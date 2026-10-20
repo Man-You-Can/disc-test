@@ -599,7 +599,7 @@ __FLAG_SPRITE__
 'use strict';
 /* ====== локаль и настройки ====== */
 var L = __LOCALE_JSON__;
-var CONTACT_EMAIL = '__EMAIL__'; // адрес получателя для кнопки «Отправить по почте»; пустой — участник вводит сам
+var CONTACT_EMAIL = '__EMAIL__'; // contactEmail из site.config.json; кнопка «Отправить по почте» убрана 2026-10-20, адрес на странице больше не используется
 var SEND_ENDPOINT = '__SEND_ENDPOINT__'; // URL веб-приложения Google Apps Script (см. README); пустой — письма не отправляются
 var SEND_TOKEN = '__SEND_TOKEN__';
 var PD = '__PD__' === '1', PD_VERSION = '__PD_VERSION__'; // отдельная галочка согласия на обработку данных в форме отправки результата (pdConsent в site.config.json)
@@ -952,11 +952,9 @@ function renderReport(r, opts){
         '<div class="actions">'+shareNetLinks(profileURL, shareMsg)+'<button class="btn secondary small" type="button" id="shareType">'+t('share.type')+'</button></div>'+
       '</div>'+
       '<div class="share no-print" style="margin-top:16px"><h2>'+t('share.title')+'</h2>'+
+        // свой результат: только ссылка и PDF — ссылка открывает отчёт в один клик и принимается «Панелью администратора» вместо кода (с 2026-10-20 код и письмо убраны)
         '<p class="small">'+t('share.text')+'</p>'+
-        '<textarea class="codebox ym-hide-content" id="code" readonly rows="3" aria-label="'+t('share.codeAria')+'">'+esc(code)+'</textarea>'+
         '<div class="actions"><button class="btn secondary" type="button" id="copyLink">'+t('share.copyLink')+'</button>'+
-          '<a class="btn secondary" id="mail" href="'+mailto(CONTACT_EMAIL).replace(/"/g,'&quot;')+'">'+t('share.mail')+'</a>'+
-          '<button class="btn secondary" type="button" id="copyCode">'+t('share.copyCode')+'</button>'+
           '<button class="btn secondary" type="button" id="print">'+t('share.pdf')+'</button></div>'+
       '</div>'+
       '<div class="actions no-print" style="margin-top:18px"><button class="link" id="restart" type="button">'+t('share.restart')+'</button></div>'
@@ -997,7 +995,7 @@ function renderReport(r, opts){
       $('#extBarX').addEventListener('click', function(){ bar.parentNode.removeChild(bar); xbarStop(); xbarStop = null; try{ sessionStorage.setItem('disc.xbar', 'off'); }catch(e){} });
     }
   }
-  $('#copyCode').addEventListener('click', function(){ copyText(code, $('#code')); });
+  if($('#copyCode')) $('#copyCode').addEventListener('click', function(){ copyText(code, $('#code')); });
   $('#copyLink').addEventListener('click', function(){ copyText(link, null); });
   $('#print').addEventListener('click', function(){ savePdf(r, cls.key, this); });
   if($('#restart')) $('#restart').addEventListener('click', function(){ dropHash(); renderIntro(); window.scrollTo(0,0); });
