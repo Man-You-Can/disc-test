@@ -436,6 +436,18 @@ if (ctx.DATA.de && ctx.DATA.de.extended) {
   check('extended mail in German: subject, invite link to /de/ with campaign tags, nothing unfilled', /^Ihr ausführlicher DISG-Bericht:\sDI · Pionier$/.test(mG.subject) &&
     mG.html.includes('href="https://disc-test.org/de/?utm_source=report&amp;utm_medium=email&amp;utm_campaign=full-di&amp;utm_content=invite"') && !/\{\w+\}|undefined/.test(mG.html + mG.text));
 }
+// напоминание на индонезийском: цена в записи языка (US$6,99), дата словами, ничего русского
+if (ctx.DATA.id && ctx.DATA.id.pay) {
+  const pN = ctx.composePayRemindMail(ctx.decodeResult(cX), 'id', { order: '261019-AB12CD', url: 'https://api.disc-test.org/pay/go?order=261019-AB12CD&key=k', until: new Date('2026-10-21T09:00:00Z'), price: ctx.EXTENDED_PRICE_USD });
+  check('pay reminder in Indonesian: US$6,99, the date written out, Prodamus named, nothing unfilled, nothing Russian', [pN.html, pN.text].every(s => s.includes('US$6,99') && s.includes('21 Oktober 2026') && s.includes('Prodamus') &&
+    s.includes('261019-AB12CD') && s.includes('Perintis') && !/\{\w+\}|undefined|₽|6\.99|[А-Яа-яЁё]/.test(s.replace(/Пётр Буянов/g, ''))) && pN.subject === ctx.DATA.id.pay.remind.subject);
+}
+// письмо покупателю на индонезийском: приглашение ведёт на /id/ с метками кампании
+if (ctx.DATA.id && ctx.DATA.id.extended) {
+  const mN = ctx.composeExtendedMail(ctx.decodeResult(cX), 'id');
+  check('extended mail in Indonesian: subject, invite link to /id/ with campaign tags, nothing unfilled', /^Laporan DISC mendalam Anda:\sDI · Perintis$/.test(mN.subject) &&
+    mN.html.includes('href="https://disc-test.org/id/?utm_source=report&amp;utm_medium=email&amp;utm_campaign=full-di&amp;utm_content=invite"') && !/\{\w+\}|undefined/.test(mN.html + mN.text));
+}
 check('doGet reports that extended delivery is on', JSON.parse(ctx.doGet().text).extended === true);
 fs.writeFileSync(path.join(process.env.OUT || '/tmp', 'disc-extended-mail-preview.html'), mX.htmlBody);
 fs.writeFileSync(path.join(process.env.OUT || '/tmp', 'disc-mail-preview.html'), mail.htmlBody);

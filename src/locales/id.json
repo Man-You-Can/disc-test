@@ -637,7 +637,7 @@
         "h": "Pembelian profil lengkap",
         "p": [
           "Jika Anda membeli profil DISC lengkap, kami memproses alamat email Anda, nama Anda (jika Anda mengisinya), hasil tes yang menjadi dasar penyusunan laporan, serta data pesanan: tanggal, jumlah, nomor, dan status pembayaran. Data ini diperlukan untuk menyusun laporan dan mengirimkannya kepada Anda, menjawab pertanyaan Anda, dan memproses pengembalian dana. Dasar pemrosesannya adalah perjanjian yang Anda adakan dengan membayar layanan berdasarkan {offer}.",
-          "Pembayaran diterima oleh bank; namanya ditampilkan di halaman pembayaran. Anda memasukkan data metode pembayaran di halaman aman milik bank: kami tidak menerima dan tidak menyimpannya. Bank menerima jumlah pembayaran, nomor pesanan, dan alamat email Anda; ke alamat itulah bukti pembayaran dikirim.",
+          "Pembayaran diproses oleh Prodamus, pemroses pembayaran kami. Anda memasukkan data kartu di halaman pembayaran aman Prodamus: kami tidak menerima dan tidak menyimpannya. Kami meneruskan kepada Prodamus jumlah pembayaran, nomor pesanan, dan alamat email Anda; ke alamat itulah bukti pembayaran dikirim.",
           "Laporan disusun di server yang beroperasi atas perintah kami dan dikirim kepada Anda lewat email dari alamat {email}. Salinan laporan dan data pesanan disimpan oleh pemilik situs: keduanya diperlukan untuk mengirim ulang laporan, menjawab pertanyaan, memproses pengembalian dana, dan menyelenggarakan pencatatan. Untuk meminta agar laporan dan data pesanan dihapus, tulislah ke {email}. Data pembayaran yang menurut hukum wajib disimpan akan dihapus setelah jangka waktu yang ditetapkan berakhir.",
           "Jika Anda memulai pembelian tetapi tidak membayar, kami menyimpan alamat email, hasil tes, dan data pesanan Anda selama 30 hari, lalu menghapusnya. Selama jangka waktu itu, satu email pengingat berisi tautan pembayaran dapat dikirim ke alamat yang Anda cantumkan. Dasarnya adalah langkah yang Anda ambil untuk mengadakan perjanjian."
         ]
@@ -713,9 +713,9 @@
         "h": "Pembelian profil lengkap",
         "p": [
           "Jika Anda membeli profil DISC lengkap, kami memproses alamat email Anda, nama Anda (jika Anda mengisinya), hasil tes yang menjadi dasar penyusunan laporan, serta data pesanan: tanggal, jumlah, nomor, dan status pembayaran. Data ini diperlukan untuk menyusun laporan dan mengirimkannya kepada Anda, menjawab pertanyaan Anda, dan memproses pengembalian dana. Dasar pemrosesannya adalah perjanjian yang Anda adakan dengan membayar layanan berdasarkan {offer}; persetujuan terpisah tidak diperlukan untuk itu.",
-          "Pembayaran diterima oleh bank; namanya ditampilkan di halaman pembayaran. Anda memasukkan data metode pembayaran di halaman aman milik bank: kami tidak menerima dan tidak menyimpannya. Bank menerima jumlah pembayaran, nomor pesanan, dan alamat email Anda; ke alamat itulah bukti pembayaran dikirim.",
+          "Pembayaran diproses oleh Prodamus, pemroses pembayaran kami. Anda memasukkan data kartu di halaman pembayaran aman Prodamus: kami tidak menerima dan tidak menyimpannya. Kami meneruskan kepada Prodamus jumlah pembayaran, nomor pesanan, dan alamat email Anda; ke alamat itulah bukti pembayaran dikirim.",
           "Laporan disusun di server situs dan dikirim kepada Anda lewat email dari alamat {email}. Laporan yang sudah jadi tidak disimpan di server: bila diperlukan, laporan disusun ulang. Data pesanan disimpan selama lima tahun setelah pembayaran: data ini diperlukan untuk mengirim ulang laporan, menjawab pertanyaan, memproses pengembalian dana, dan menyelenggarakan pencatatan. Data pembayaran yang menurut hukum wajib disimpan lebih lama akan dihapus setelah jangka waktu yang ditetapkan berakhir.",
-          "Jika Anda memulai pembelian tetapi tidak membayar, kami menyimpan alamat email, hasil tes, dan data pesanan Anda selama 30 hari, lalu menghapusnya. Selama jangka waktu itu, satu email pengingat berisi tautan pembayaran dapat dikirim ke alamat yang Anda cantumkan. Dasarnya adalah langkah yang Anda ambil untuk mengadakan perjanjian. Selama profil lengkap belum dapat dipesan dalam bahasa Indonesia, permintaan untuk dikabari yang dikirim melalui formulir kontak ditangani seperti pesan lain dari formulir kontak; catatan persetujuan Anda diberi tanda sebagai permintaan profil lengkap."
+          "Jika Anda memulai pembelian tetapi tidak membayar, kami menyimpan alamat email, hasil tes, dan data pesanan Anda selama 30 hari, lalu menghapusnya. Selama jangka waktu itu, satu email pengingat berisi tautan pembayaran dapat dikirim ke alamat yang Anda cantumkan. Dasarnya adalah langkah yang Anda ambil untuk mengadakan perjanjian."
         ]
       }
     },
@@ -779,7 +779,7 @@
       "sections": [
         {
           "h": "Cara menerimanya",
-          "p": ["Profil lengkap belum tersedia dalam bahasa Indonesia. Anda bisa minta dikabari di halaman “Laporan DISC mendalam”: kami akan mengirim email begitu profil ini dapat dipesan. Setelah dipesan, profil lengkap dikirim lewat email ke alamat yang Anda cantumkan saat pembayaran, paling lambat 24 jam setelah pembayaran."]
+          "p": ["Profil lengkap dikirim lewat email ke alamat yang Anda cantumkan saat pembayaran, paling lambat 24 jam setelah pembayaran."]
         },
         {
           "h": "Yang tetap gratis",
@@ -796,8 +796,8 @@
       "description": "Syarat dan ketentuan layanan berbayar “Profil DISC lengkap” di disc-test.org: harga, pembayaran dan pengiriman, pengembalian dana, hak atas materi.",
       "h1": "Syarat dan Ketentuan Layanan Berbayar",
       "linkText": "syarat dan ketentuan layanan berbayar",
-      "edition": "Versi tanggal 9 Oktober 2026. Terjemahan bahasa Indonesia diterbitkan pada 11 Oktober 2026.",
-      "note": "Teks ini adalah terjemahan bahasa Indonesia dari syarat dan ketentuan asli yang diterbitkan di {original}. Jika kedua teks berbeda, yang berlaku adalah teks asli, kecuali mengenai harga: untuk Situs versi bahasa Indonesia, yang berlaku adalah harga dalam butir 3.1. Profil lengkap belum tersedia dalam bahasa Indonesia: layanan ini belum dapat dipesan dalam bahasa Indonesia, dan tidak ada pembayaran yang diterima.",
+      "edition": "Versi tanggal 9 Oktober 2026. Terjemahan bahasa Indonesia diterbitkan pada 20 Oktober 2026.",
+      "note": "Teks ini adalah terjemahan bahasa Indonesia dari syarat dan ketentuan asli yang diterbitkan di {original}. Jika kedua teks berbeda, yang berlaku adalah teks asli, kecuali mengenai harga dan cara pembayaran: untuk Situs versi bahasa Indonesia, yang berlaku adalah bagian 1 dan 3 terjemahan ini.",
       "seller": "pengusaha perorangan Manukyan Armen, Nomor identitas wajib pajak (INN) {inn}",
       "lead": "Dokumen ini adalah penawaran resmi yang terbuka bagi siapa pun (penawaran terbuka) untuk mengadakan perjanjian penyediaan layanan berbayar “Profil DISC lengkap” dengan syarat dan ketentuan di bawah ini. Penawaran ini diajukan oleh {seller} (selanjutnya disebut “Penyedia”). Membayar layanan berarti menerima syarat dan ketentuan ini sepenuhnya dan tanpa syarat (penerimaan penawaran).",
       "sections": [
@@ -810,7 +810,7 @@
             "Tes adalah kuesioner DISC gratis yang tersedia di Situs.",
             "Profil Lengkap adalah analisis yang lebih mendalam atas profil DISC Pelanggan, yang disusun Penyedia dalam bentuk elektronik berdasarkan Tes yang telah dikerjakan Pelanggan.",
             "Layanan adalah penyusunan Profil Lengkap dan pengirimannya kepada Pelanggan.",
-            "Bank adalah lembaga keuangan yang memproses pembayaran Layanan dari Pelanggan; namanya ditampilkan di halaman pembayaran."
+            "Pemroses Pembayaran adalah Prodamus, platform pembayaran yang halaman amannya dipakai Pelanggan untuk membayar Layanan."
           ]
         },
         {
@@ -826,9 +826,9 @@
           "h": "3. Harga dan pembayaran",
           "p": [
             "3.1. Harga Layanan adalah {price} dolar Amerika Serikat. Harga ini final: tidak ada pembayaran tambahan kepada Penyedia.",
-            "3.2. Layanan dibayar lunas sebelum diberikan, dengan salah satu metode pembayaran nontunai yang ditampilkan di halaman pembayaran. Pembayaran diterima oleh Bank.",
-            "3.3. Layanan dianggap telah dibayar pada saat Penyedia menerima konfirmasi pembayaran dari Bank.",
-            "3.4. Pelanggan memasukkan data metode pembayaran di halaman aman milik Bank. Penyedia tidak menerima dan tidak menyimpan data tersebut.",
+            "3.2. Layanan dibayar lunas sebelum diberikan, dengan kartu bank atau metode pembayaran elektronik lain yang ditawarkan di halaman pembayaran. Pembayaran diterima oleh Pemroses Pembayaran.",
+            "3.3. Layanan dianggap telah dibayar pada saat Penyedia menerima konfirmasi pembayaran dari Pemroses Pembayaran.",
+            "3.4. Pelanggan memasukkan data kartu di halaman aman milik Pemroses Pembayaran. Penyedia tidak menerima dan tidak menyimpan data tersebut.",
             "3.5. Setelah pembayaran, bukti pembayaran elektronik dikirim ke alamat email yang dicantumkan Pelanggan saat pembayaran.",
             "3.6. Penyedia berhak mengubah harga Layanan. Harga baru berlaku sejak diterbitkan di Situs dan tidak berlaku bagi pesanan yang sudah dibayar."
           ]
@@ -878,7 +878,7 @@
           "h": "8. Data pribadi",
           "p": [
             "8.1. Untuk memberikan Layanan, Penyedia memproses alamat email Pelanggan, nama (jika dicantumkan), hasil Tes, dan data pembayaran tanpa data kartu bank. Dasar pemrosesannya adalah pelaksanaan perjanjian yang salah satu pihaknya adalah Pelanggan.",
-            "8.2. Data hanya diteruskan kepada Bank — untuk menerima pembayaran dan mengirim bukti pembayaran — dan kepada layanan yang diperlukan untuk menyusun dan mengirim Profil Lengkap, serta dalam hal-hal yang ditentukan oleh hukum.",
+            "8.2. Data hanya diteruskan kepada Pemroses Pembayaran — untuk menerima pembayaran dan mengirim bukti pembayaran — dan kepada layanan yang diperlukan untuk menyusun dan mengirim Profil Lengkap, serta dalam hal-hal yang ditentukan oleh hukum.",
             "8.3. Penjelasan lebih lanjut tentang pemrosesan data tersedia di halaman “{privacy}”."
           ]
         },
@@ -903,7 +903,7 @@
       "h1": "Kebijakan Pengembalian Dana",
       "linkText": "kebijakan pengembalian dana",
       "lead": "Ringkasan tentang kapan dan bagaimana uang yang Anda bayarkan untuk profil DISC lengkap dapat dikembalikan. Kebijakan ini merupakan bagian dari {offer} (bagian 5).",
-      "note": "Teks ini adalah terjemahan bahasa Indonesia dari kebijakan pengembalian dana asli yang diterbitkan di {original}. Jika kedua teks berbeda, yang berlaku adalah teks asli. Profil lengkap belum tersedia dalam bahasa Indonesia: layanan ini belum dapat dipesan dalam bahasa Indonesia, dan tidak ada pembayaran yang diterima.",
+      "note": "Teks ini adalah terjemahan bahasa Indonesia dari kebijakan pengembalian dana asli yang diterbitkan di {original}. Jika kedua teks berbeda, yang berlaku adalah teks asli.",
       "sections": [
         {
           "h": "Kapan dana dikembalikan sepenuhnya",
@@ -936,13 +936,28 @@
         }
       ]
     },
+    "extendedMail": {
+      "subject": "Laporan DISC mendalam Anda: {label}",
+      "intro": "Terima kasih atas pembelian Anda. Laporan DISC mendalam Anda sudah siap. Laporan ini disusun untuk profil:",
+      "attached": "Laporan mendalam terlampir dalam email ini sebagai file PDF.",
+      "how": "Laporan terdiri dari 13 bagian. Mulailah dari bagian 1: bagian ini menjelaskan cara membaca bagian lainnya.",
+      "help": "Jika file tidak bisa dibuka atau ada yang terasa kurang tepat dalam laporan, cukup balas email ini.",
+      "inviteTitle": "Ajak teman, rekan kerja, dan keluarga mengikuti tes",
+      "invite": "Bagian 8 laporan menjelaskan cara berbicara dengan orang dari tiap gaya. Gaya orang di sekitar Anda bisa diketahui kalau Anda mengajak mereka mengikuti tes: gratis dan hanya sekitar 10 menit. Orang yang tahu gaya lawan bicaranya lebih mudah memahaminya.",
+      "inviteLink": "Ini tautan tes untuk dibagikan:",
+      "footer": "Anda menerima email ini karena telah membayar layanan “Profil DISC lengkap” di disc-test.org. Laporan ini bersifat pribadi dan hanya untuk dipakai sendiri."
+    },
     "product": {
       "title": "Laporan DISC Mendalam — 13 Bagian dari Hasil Tes Anda",
-      "description": "Laporan DISC mendalam dari hasil tes Anda: ulasan tiap skala, lima latihan, rencana 30 hari. PDF lewat email, US${price}. Segera hadir dalam bahasa Indonesia.",
+      "description": "Laporan DISC mendalam dari hasil tes Anda: ulasan tiap skala, lima latihan, rencana 30 hari, dan lembar untuk tim Anda. PDF lewat email, US${price}.",
       "h1": "Laporan DISC mendalam",
       "lead": "Laporan ringkas yang Anda terima setelah tes menjawab satu pertanyaan: apa tipe saya? Laporan mendalam menjawab pertanyaan berikutnya: lalu saya harus bagaimana? Laporan ini disusun dari jawaban Anda sendiri: memakai angka Anda, ditulis untuk profil Anda, dan memuat nama Anda di setiap halaman.",
-      "facts": ["13 bagian", "sekitar 28 halaman A4", "tiga lembar kerja", "PDF lewat email"],
+      "facts": ["13 bagian", "sekitar 30 halaman A4", "tiga lembar kerja", "PDF lewat email"],
       "more": "Isi laporan mendalam",
+      "sampleTitle": "Seperti inilah laporannya",
+      "sampleNote": "Empat halaman dari laporan untuk peserta rekaan dengan profil Inspirator. Laporan Anda memuat nama Anda, angka Anda, dan teks untuk profil Anda. Ketuk atau klik halaman untuk memperbesarnya.",
+      "sampleAlt": ["Halaman laporan DISC mendalam: sampul dengan profil peserta dan daftar isi 13 bagian", "Halaman laporan DISC mendalam: bagian “Profil Anda secara terperinci” dengan empat skala dan artinya", "Halaman laporan DISC mendalam: bagian “Berkomunikasi dengan keempat gaya”", "Halaman laporan DISC mendalam: lembar kerja “Rencana 30 hari”"],
+      "sampleCaption": ["Sampul dan daftar isi", "Bagian 2: skala Anda", "Bagian 8: berbicara dengan tiap gaya", "Bagian 11: rencana 30 hari"],
       "forTitle": "Untuk siapa laporan ini",
       "for": [
         "Anda ingin memahami angka-angka Anda: apa arti tiap skala, mengapa profil Anda dinamai demikian, dan bagaimana menyikapi skala terendah Anda.",
@@ -971,7 +986,7 @@
       "compare": [
         ["Pertanyaan", "Apa tipe saya?", "Lalu saya harus bagaimana?"],
         ["Dasar", "Uraian profil", "Angka Anda: skala demi skala, dua lapis jawaban, skala terendah"],
-        ["Cakupan", "Tiap topik dibahas singkat", "13 bagian, sekitar 28 halaman"],
+        ["Cakupan", "Tiap topik dibahas singkat", "13 bagian, sekitar 30 halaman"],
         ["Latihan", "Rekomendasi umum", "Lima latihan, rencana 30 hari, lembar “Intisari dalam satu halaman”"],
         ["Untuk orang lain", "Tautan “Bagikan tipe Anda”", "Lembar “Cara bekerja sama dengan saya” untuk atasan dan rekan kerja"],
         ["Harga", "Gratis", "US${price}"]
@@ -980,14 +995,14 @@
       "howTitle": "Cara mendapatkan laporan",
       "how": [
         "Ikuti tes gratis: 24 soal, sekitar 10 menit. Jika sudah pernah mengikutinya, Anda tidak perlu mengulang: laporan disusun dari hasil yang sudah ada.",
-        "Minta dikabari. Laporan mendalam belum tersedia dalam bahasa Indonesia; kami akan mengirim email begitu laporan ini dapat dipesan.",
-        "Setelah Anda memesan, laporan dikirim lewat email sebagai lampiran PDF, paling lambat 24 jam setelah pembayaran."
+        "Bayar laporan di halaman pembayaran aman Prodamus, pemroses pembayaran kami.",
+        "Laporan dikirim lewat email sebagai lampiran PDF, paling lambat 24 jam setelah pembayaran."
       ],
       "faqTitle": "Tanya jawab",
       "faq": [
         { "q": "Apakah laporan ini ditulis khusus untuk saya, atau teksnya umum?", "a": "Laporan disusun dari jawaban Anda. Teksnya ditulis untuk profil Anda, satu dari enam belas profil. Seluruh bagian 2 dan beberapa tempat di bagian 3, 5, 11, 12, dan 13 bergantung pada angka Anda: persentase pada empat skala, jumlah pilihan “paling” dan “paling tidak”, serta skala terendah Anda. Nama Anda tercantum di setiap halaman." },
-        { "q": "Dalam bentuk apa laporan dikirim?", "a": "Berupa file PDF yang dilampirkan pada email, sekitar 28 halaman A4. Nyaman dibaca di layar dan mudah dicetak; tiap lembar kerja muat dalam satu halaman." },
-        { "q": "Laporan ini tersedia dalam bahasa apa?", "a": "Untuk saat ini laporan hanya tersedia dalam bahasa Rusia. Anda bisa minta dikabari: kami akan mengirim email begitu laporan dapat dipesan dalam bahasa Indonesia." },
+        { "q": "Dalam bentuk apa laporan dikirim?", "a": "Berupa file PDF yang dilampirkan pada email, sekitar 30 halaman A4. Nyaman dibaca di layar dan mudah dicetak; tiap lembar kerja muat dalam satu halaman." },
+        { "q": "Laporan ini tersedia dalam bahasa apa?", "a": "Dalam bahasa Indonesia. Laporan ini ditulis langsung dalam bahasa Indonesia untuk pembaca di Indonesia, bukan diterjemahkan." },
         { "q": "Apakah ini diagnosis atau tes kemampuan?", "a": "Bukan. Laporan ini menggambarkan gaya perilaku Anda berdasarkan jawaban Anda. Laporan ini tidak mendiagnosis apa pun, tidak mengukur kecerdasan, dan tidak meramalkan keberhasilan." },
         { "q": "Apakah uang saya bisa dikembalikan?", "a": "Kapan dan bagaimana dana dikembalikan dijelaskan dalam {refund}." }
       ],
@@ -996,23 +1011,74 @@
       "docs": "Nama resmi layanan ini adalah “Profil DISC lengkap”. Layanan diberikan berdasarkan {offer}; kapan dan bagaimana dana dikembalikan dijelaskan dalam {refund}.",
       "buy": {
         "testTitle": "Laporan disusun dari hasil tes Anda",
-        "testText": "Ikuti dulu tes gratisnya: 24 soal, sekitar 10 menit. Hasil dan laporan ringkas langsung tampil. Laporan mendalam belum tersedia dalam bahasa Indonesia; setelah punya hasil, Anda dapat minta dikabari dari halaman ini.",
+        "testText": "Ikuti dulu tes gratisnya: 24 soal, sekitar 10 menit. Hasil dan laporan ringkas langsung tampil.",
         "testButton": "Ikuti tes",
         "orderTitle": "Laporan akan disusun dari hasil tes Anda tanggal {date}",
-        "orderText": "Laporan mendalam belum tersedia dalam bahasa Indonesia. Anda bisa minta dikabari: kami akan mengirim email begitu laporan ini dapat dipesan.",
-        "orderButton": "Kabari saya saat tersedia",
-        "orderMsg": "Saya ingin mendapatkan laporan DISC mendalam dalam bahasa Indonesia. Mohon kabari saya lewat email begitu laporan ini dapat dipesan.\n\nHasil saya: {link}"
+        "orderText": "Pembayaran online sedang tidak tersedia. Tinggalkan kontak Anda: kami akan mengirim email begitu pembayaran berfungsi lagi.",
+        "orderButton": "Tinggalkan kontak",
+        "orderMsg": "Saya ingin membeli laporan DISC mendalam. Mohon kabari saya lewat email begitu pembayaran bisa dilakukan lagi.\n\nHasil saya: {link}"
+      },
+      "pay": {
+        "title": "Laporan disusun dari hasil tes Anda tanggal {date}",
+        "text": "Laporan dikirim lewat email sebagai lampiran PDF, paling lambat 24 jam setelah pembayaran. Bukti pembayaran dikirim ke alamat yang sama.",
+        "emailLabel": "Email untuk laporan dan bukti pembayaran",
+        "button": "Beli",
+        "note": "Dengan menekan “Beli”, Anda menerima {offer} kami. Anda membayar dalam dolar AS di halaman aman Prodamus: data kartu Anda masukkan di sana, bukan di situs ini. Di mutasi rekening, pembayaran bisa tercatat atas nama simpleway.by.",
+        "badEmail": "Periksa alamat email Anda: laporan dan bukti pembayaran dikirim ke alamat itu.",
+        "wait": "Membuka halaman pembayaran …",
+        "error": "Halaman pembayaran belum bisa dibuka. Coba lagi beberapa menit lagi atau tulis kepada kami di {email}.",
+        "how": [
+          "Ikuti tes gratis: 24 soal, sekitar 10 menit. Jika sudah pernah mengikutinya, Anda tidak perlu mengulang: laporan disusun dari hasil yang sudah ada.",
+          "Masukkan alamat email Anda dan tekan “Beli”. Anda membayar dalam dolar AS di halaman aman Prodamus, pemroses pembayaran kami; halaman ini berbahasa Inggris. Di mutasi rekening, pembayaran bisa tercatat atas nama simpleway.by: nama ini dipakai bePaid, perusahaan yang memproses pembayaran kartu untuk Prodamus.",
+          "Laporan dikirim lewat email sebagai lampiran PDF, paling lambat 24 jam setelah pembayaran. Bukti pembayaran dikirim ke alamat yang sama."
+        ],
+        "thanks": {
+          "title": "Terima kasih atas pembelian Anda — Laporan DISC mendalam",
+          "description": "Pembayaran laporan DISC mendalam: kapan dan ke mana laporan dikirim, dan apa yang perlu dilakukan jika email belum tiba.",
+          "h1": "Terima kasih atas pembelian Anda",
+          "lead": "Laporan dikirim ke alamat email yang Anda cantumkan saat pembayaran, sebagai lampiran PDF, paling lambat 24 jam setelah pembayaran. Biasanya jauh lebih cepat.",
+          "leadEmail": "Laporan dikirim ke {email}, sebagai lampiran PDF, paling lambat 24 jam setelah pembayaran. Biasanya jauh lebih cepat.",
+          "order": "Nomor pesanan: {order}",
+          "statusWait": "Kami menunggu konfirmasi pembayaran dari Prodamus.",
+          "statusPaid": "Pembayaran sudah diterima. Laporan Anda sedang disusun.",
+          "statusSent": "Laporan sudah dikirim. Periksa kotak masuk Anda.",
+          "nextTitle": "Langkah selanjutnya",
+          "next": ["Email dikirim dari alamat {email}; subjeknya diawali “Laporan DISC mendalam Anda”.", "Bukti pembayaran dikirim dalam email terpisah dari bePaid, perusahaan yang memproses pembayaran kartu untuk Prodamus. Di mutasi rekening, pembayaran bisa tercatat atas nama simpleway.by.", "Laporan terdiri dari 13 bagian. Mulailah dari bagian 1: bagian ini menjelaskan cara membaca bagian lainnya."],
+          "helpTitle": "Jika email tidak tiba",
+          "help": ["Periksa folder spam dan folder seperti “Promosi”.", "Jika email tetap tidak ada, tulis kepada kami di {email} atau lewat formulir “{contact}”, dan sebutkan nomor pesanan Anda. Kami akan mengirim ulang laporannya."],
+          "back": "Kembali ke situs"
+        },
+        "fail": {
+          "title": "Pembayaran tidak berhasil — Laporan DISC mendalam",
+          "description": "Pembayaran laporan DISC mendalam tidak berhasil: apa yang bisa Anda lakukan dan cara menghubungi kami.",
+          "h1": "Pembayaran tidak berhasil",
+          "lead": "Pesanan Anda tetap tersimpan; laporan belum dikirim.",
+          "order": "Nomor pesanan: {order}",
+          "tryTitle": "Yang bisa Anda lakukan",
+          "try": ["Periksa data kartu Anda, dan pastikan kartu itu bisa dipakai untuk pembayaran online dan pembayaran ke luar negeri.", "Coba kartu lain atau metode pembayaran lain.", "Coba lagi beberapa menit kemudian."],
+          "button": "Coba lagi",
+          "charged": "Jika dana Anda tetap terpotong, tulis kepada kami di {email} atau lewat formulir “{contact}”, dan sebutkan nomor pesanan Anda. Kami akan memeriksanya dan menjawab dalam tiga hari kerja."
+        },
+        "remind": {
+          "subject": "Laporan DISC mendalam Anda menunggu pembayaran",
+          "intro": "Anda mulai membeli laporan DISC mendalam di {site}, tetapi pembayarannya belum selesai. Pesanan Anda tersimpan: laporan disusun dari hasil Anda, untuk profil ini:",
+          "price": "Harganya US${price}. Setelah pembayaran, laporan dikirim ke alamat ini sebagai lampiran PDF, dan bukti pembayaran dalam email terpisah.",
+          "button": "Selesaikan pembayaran",
+          "valid": "Tautan ini membuka halaman pembayaran aman Prodamus dan berlaku sampai {date}.",
+          "footer": "Email ini hanya kami kirim satu kali, karena di {site} ada pesanan (No. {order}) dengan alamat ini. Jika Anda tidak lagi membutuhkan laporan ini atau tidak membuat pesanan itu, Anda tidak perlu melakukan apa pun: pesanan akan dibatalkan otomatis, dan Anda tidak akan menerima pesan lain tentangnya."
+        }
       },
       "pdf": {
         "lead": "Laporan ringkas menjawab: apa tipe saya? Laporan mendalam menjawab: lalu saya harus bagaimana?",
         "facts": [
-          ["28", "halaman A4"],
+          ["30", "halaman A4"],
           ["13", "bagian"],
           ["5", "latihan"],
           ["3", "lembar kerja"]
         ],
         "list": ["Arti angka-angka dalam profil Anda", "Cara berinteraksi dengan profil lain", "Saran praktis agar lebih efektif"],
-        "where": "Selengkapnya:"
+        "sheets": [2, 4],
+        "where": "Selengkapnya dan pemesanan:"
       },
       "block": {
         "eyebrow": "Laporan mendalam",
@@ -1024,14 +1090,37 @@
           "Cara berbicara dengan orang dari tiap gaya: kiat dan kalimat siap pakai",
           "Tiga lembar kerja: rencana 30 hari, intisari dalam satu halaman, lembar untuk rekan kerja"
         ],
+        "sample": "Halaman dari laporan untuk peserta rekaan",
         "price": "US${price} · PDF lewat email",
-        "button": "Kabari saya saat tersedia",
+        "button": "Tinggalkan kontak",
         "free": "Tes dan laporan ringkas tetap gratis.",
         "topTitle": "Laporan mendalam dari hasil tes Anda",
         "topText": "13 bagian tentang cara memanfaatkan profil Anda: ulasan tiap skala, lima latihan, rencana 30 hari.",
-        "topButton": "Selengkapnya — US${price}",
-        "anchor": "Apa saja isinya",
-        "soon": "Laporan mendalam belum tersedia dalam bahasa Indonesia. Anda bisa minta dikabari: kami akan mengirim email begitu laporan dapat dipesan."
+        "topButton": "Dapatkan laporan — US${price}",
+        "anchor": "Apa saja isinya"
+      },
+      "promo": {
+        "lead": "Laporan disusun dari jawaban Anda dan membahas:",
+        "hooks": {
+          "low": "{k} ({name}), skala terendah Anda, {pct}%: apa artinya",
+          "flat": "Profil Anda yang seimbang: apa artinya dan cara membacanya",
+          "moderate": "Gaya utama Anda, {k}, hanya {pct}% (tidak terlalu menonjol): cara membaca uraiannya",
+          "pairMid": "Perpaduan {a} + {b}: apa yang diberikannya dan apa bedanya dengan {a} murni",
+          "pairClose": "Gaya {a} dan {b} Anda hampir setara: seberapa kuat urutan hurufnya",
+          "pairEqual": "Gaya {a} dan {b} Anda setara: mengapa {a} disebut lebih dulu",
+          "pairEdge": "{b} menjadi gaya sekunder Anda dengan selisih satu jawaban: apa artinya bagi Anda",
+          "pureHigh": "{k} mencapai {pct}%, tetapi bukan gaya sekunder: arti profil “murni”",
+          "layersDiff": "Citra publik Anda ({a}) berbeda dari diri alami ({b}): apa ongkosnya bagi Anda",
+          "layersSame": "Citra publik dan diri alami Anda sejalan ({k}): keuntungan dan risikonya"
+        },
+        "tail": "Seluruhnya 13 bagian, termasuk lima latihan dan rencana 30 hari.",
+        "button": "Laporan mendalam — US${price}",
+        "close": "Sembunyikan",
+        "homeLabel": "Hasil Anda tanggal {date}",
+        "homeOpen": "Buka hasil",
+        "homeLead": "Laporan mendalam disusun dari jawaban Anda dan membahas:",
+        "homeSample": "Lihat contoh halaman",
+        "homeRetake": "Ikuti tes lagi"
       }
     },
     "contact": {
@@ -1590,7 +1679,7 @@
       "steps": [
         "<b>Anda menjawab.</b> Tes ini terdiri atas 24 soal; di setiap soal Anda menandai pernyataan yang paling menggambarkan Anda dan yang paling tidak menggambarkan Anda. Selain jawaban itu, tidak ada hal lain yang ikut dihitung.",
         "<b>Program menghitung.</b> Untuk tiap gaya dari keempat gaya, program mengurangi jumlah pilihan “paling menggambarkan” dengan jumlah pilihan “paling tidak menggambarkan”, lalu dari angka-angka itu menentukan profil Anda, satu dari enam belas profil. Rumusnya terbuka: penjelasannya ada di halaman “{results}”.",
-        "<b>Program menyusun laporan.</b> Dari teks yang ditulis AI terlebih dahulu, program memilih yang sesuai dengan profil dan angka Anda. Laporan ringkas langsung tampil di layar. Laporan mendalam belum tersedia dalam bahasa Indonesia. Anda bisa minta dikabari: kami akan mengirim email begitu laporan ini dapat dipesan. Setelah Anda memesan dan membayar, laporan disusun dan dikirim lewat email."
+        "<b>Program menyusun laporan.</b> Dari teks yang ditulis AI terlebih dahulu, program memilih yang sesuai dengan profil dan angka Anda. Laporan ringkas langsung tampil di layar; laporan mendalam disusun setelah pembayaran dan dikirim lewat email."
       ],
       "sections": [
         {
@@ -1638,7 +1727,7 @@
         },
         {
           "h": "Hasil seketika",
-          "p": "Laporan ringkas tampil di layar begitu Anda menjawab soal terakhir. Laporan mendalam belum tersedia dalam bahasa Indonesia, tetapi Anda bisa minta dikabari saat sudah dapat dipesan. Laporan ini disusun segera setelah Anda membayar, jam berapa pun, tanpa janji temu dan tanpa antrean; emailnya tiba paling lambat 24 jam setelah pembayaran."
+          "p": "Laporan ringkas tampil di layar begitu Anda menjawab soal terakhir. Laporan mendalam disusun segera setelah Anda membayar, jam berapa pun, tanpa janji temu dan tanpa antrean: emailnya biasanya tiba dalam beberapa menit, paling lambat 24 jam setelah pembayaran."
         },
         {
           "h": "Harga terjangkau",
