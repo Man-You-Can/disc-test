@@ -232,20 +232,17 @@ html[lang=ar] body,html[lang=hi] body{font-size:17px;line-height:1.65}
   .xbar-x{flex:none;width:46px;border:1px solid var(--line-strong);border-radius:12px;background:var(--surface);color:var(--muted);font-size:22px;line-height:1;cursor:pointer;box-shadow:0 8px 24px -6px rgba(0,0,0,.35)}
   body.has-consent .xbar{display:none}
 }
-/* вернувшийся посетитель: карточка прошлого результата с личными зацепками и крупной кнопкой отчёта под заголовком; «Пройти тест заново» — ссылка ниже */
+/* вернувшийся посетитель: карточка прошлого результата под заголовком; с 2026-10-22 — как блок «Расширенный отчёт» экрана результата
+   (класс share xoffer: фон в цвет стиля, заголовок, строка о самой низкой шкале, тезисы, листы образца, форма с e-mail и «Купить»); «Пройти тест заново» — ссылка ниже */
 .lastcard{background:var(--surface);border:1px solid var(--line);border-inline-start:4px solid var(--k,var(--ink));border-radius:14px;padding:16px 20px 18px;margin:4px 0 22px;box-shadow:0 10px 28px -18px rgba(0,0,0,.35)}
 .lchead{font-size:14px;color:var(--muted)}
+.lastcard .lchead{margin-bottom:16px}
 .lastname{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 14px;margin-top:4px}
 .lastcard b{display:inline-flex;align-items:baseline;gap:8px;font-family:var(--font-head);font-weight:500;font-size:20px;color:var(--ink)}
-.lclead{margin:14px 0 0;font-weight:600}
-.lastcard .xhooks{margin:6px 0 0;padding-inline-start:20px}
-.lastcard .xhooks li{margin-bottom:4px}
-.lctail{margin:8px 0 0;font-size:14px;color:var(--muted)}
-.lctail a{color:var(--ink);text-underline-offset:3px;white-space:nowrap}
-.lastcard .btn{margin-top:16px;font-size:18px;padding:16px 30px;box-shadow:0 8px 22px -10px rgba(0,0,0,.5)}
+.lastcard>.btn{margin-top:16px;font-size:18px;padding:16px 30px;box-shadow:0 8px 22px -10px rgba(0,0,0,.5)}
+.lastcard .xinline{margin-top:16px}
 .startrow.again{margin-top:-4px}
-@media (max-width:640px){.lastcard .xhooks li:nth-child(n+3){display:none}}
-@media (max-width:480px){.lastcard{padding:14px 16px 16px}.lclead{margin-top:12px}.lclead,.lastcard .xhooks{font-size:15px}.lastcard .btn{display:flex;width:100%;margin-top:14px}}
+@media (max-width:480px){.lastcard>.btn{display:flex;width:100%;margin-top:14px}}
 .xoffer{scroll-margin-top:76px}
 /* блок расширенного отчёта выделен фоном в цвет ведущего стиля участника (--k), чтобы бросался в глаза (решение заказчика от 2026-10-21);
    без color-mix — прежний фон карточки и цветная полоса слева */

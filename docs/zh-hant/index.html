@@ -204,20 +204,17 @@ html[lang=ar] body,html[lang=hi] body{font-size:17px;line-height:1.65}
   .xbar-x{flex:none;width:46px;border:1px solid var(--line-strong);border-radius:12px;background:var(--surface);color:var(--muted);font-size:22px;line-height:1;cursor:pointer;box-shadow:0 8px 24px -6px rgba(0,0,0,.35)}
   body.has-consent .xbar{display:none}
 }
-/* вернувшийся посетитель: карточка прошлого результата с личными зацепками и крупной кнопкой отчёта под заголовком; «Пройти тест заново» — ссылка ниже */
+/* вернувшийся посетитель: карточка прошлого результата под заголовком; с 2026-10-22 — как блок «Расширенный отчёт» экрана результата
+   (класс share xoffer: фон в цвет стиля, заголовок, строка о самой низкой шкале, тезисы, листы образца, форма с e-mail и «Купить»); «Пройти тест заново» — ссылка ниже */
 .lastcard{background:var(--surface);border:1px solid var(--line);border-inline-start:4px solid var(--k,var(--ink));border-radius:14px;padding:16px 20px 18px;margin:4px 0 22px;box-shadow:0 10px 28px -18px rgba(0,0,0,.35)}
 .lchead{font-size:14px;color:var(--muted)}
+.lastcard .lchead{margin-bottom:16px}
 .lastname{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 14px;margin-top:4px}
 .lastcard b{display:inline-flex;align-items:baseline;gap:8px;font-family:var(--font-head);font-weight:500;font-size:20px;color:var(--ink)}
-.lclead{margin:14px 0 0;font-weight:600}
-.lastcard .xhooks{margin:6px 0 0;padding-inline-start:20px}
-.lastcard .xhooks li{margin-bottom:4px}
-.lctail{margin:8px 0 0;font-size:14px;color:var(--muted)}
-.lctail a{color:var(--ink);text-underline-offset:3px;white-space:nowrap}
-.lastcard .btn{margin-top:16px;font-size:18px;padding:16px 30px;box-shadow:0 8px 22px -10px rgba(0,0,0,.5)}
+.lastcard>.btn{margin-top:16px;font-size:18px;padding:16px 30px;box-shadow:0 8px 22px -10px rgba(0,0,0,.5)}
+.lastcard .xinline{margin-top:16px}
 .startrow.again{margin-top:-4px}
-@media (max-width:640px){.lastcard .xhooks li:nth-child(n+3){display:none}}
-@media (max-width:480px){.lastcard{padding:14px 16px 16px}.lclead{margin-top:12px}.lclead,.lastcard .xhooks{font-size:15px}.lastcard .btn{display:flex;width:100%;margin-top:14px}}
+@media (max-width:480px){.lastcard>.btn{display:flex;width:100%;margin-top:14px}}
 .xoffer{scroll-margin-top:76px}
 /* блок расширенного отчёта выделен фоном в цвет ведущего стиля участника (--k), чтобы бросался в глаза (решение заказчика от 2026-10-21);
    без color-mix — прежний фон карточки и цветная полоса слева */
@@ -772,16 +769,20 @@ function hideProgress(){ progEl.hidden=true; metaEl.hidden=true; if(footEl){ foo
 function introHTML(c){
   var L=c.L, t=c.t, esc=c.esc, KEYS=c.KEYS, colorVar=c.colorVar, progDone=c.progDone||0, lastDate=c.lastDate||'';
   var links=c.links||{}, arr=L.dir==='rtl'?'←':'→';
-  // lc — карточка вернувшегося посетителя (её собирает сама страница, в сборке её нет): прошлый результат, личные зацепки, ссылка на образец
-  // и крупная кнопка расширенного отчёта — сразу под заголовком; «Начать тест» становится неброской ссылкой «Пройти тест заново» под вводным абзацем
+  // lc — карточка вернувшегося посетителя (её собирает сама страница, в сборке её нет): прошлый результат и под ним блок расширенного отчёта,
+  // как на экране результата (заголовок, строка о самой низкой шкале, тезисы, листы образца; форму покупки страница добавляет сама, где lc.pay;
+  // без неё — крупная кнопка отчёта) — сразу под заголовком; «Начать тест» становится неброской ссылкой «Пройти тест заново» под вводным абзацем
   var lc=c.lastCard||null;
   return '<div class="eyebrow">'+t('intro.eyebrow')+'</div>'+
     '<h1>'+t('intro.h1')+'</h1>'+
-    (lc ? '<div class="lastcard" style="--k:'+colorVar(lc.k)+'"><div class="lchead">'+esc(lc.label)+
+    (lc ? '<section class="share xoffer lastcard" id="lastOffer" style="--k:'+colorVar(lc.k)+'"><div class="lchead">'+esc(lc.label)+
         '<span class="lastname"><b>'+lc.badge+' '+esc(lc.name)+'</b><button class="link" type="button" id="showLast">'+esc(lc.open)+'</button></span></div>'+
-      '<p class="lclead">'+esc(lc.lead)+'</p><ul class="xhooks">'+lc.hooks.map(function(x){ return '<li>'+esc(x)+'</li>'; }).join('')+'</ul>'+
-      '<p class="lctail">'+esc(lc.tail)+' <a href="'+esc(lc.href)+'#sample" id="lastSample">'+esc(lc.sample)+'</a></p>'+
-      '<a class="btn big" id="lastExt" href="'+esc(lc.href)+'">'+esc(lc.button)+'</a></div>' : '')+
+      '<h2>'+esc(lc.title)+'</h2><p class="xhook">'+esc(lc.hook)+'</p>'+
+      '<div class="xgrid"><ul>'+lc.list.map(function(x){ return '<li>'+esc(x)+'</li>'; }).join('')+'</ul>'+
+        (lc.thumbs ? '<div class="xside"><a class="xthumbs" id="lastSample" href="'+esc(lc.href)+'#sample" aria-label="'+esc(lc.sample)+'">'+lc.thumbs.map(function(u){ return '<img src="'+esc(u)+'" width="440" height="623" alt="" loading="lazy" decoding="async">'; }).join('')+'</a>'+
+          '<p>'+esc(lc.sample)+'</p></div>' : '')+'</div>'+
+      (lc.soon ? '<p class="xsoon">'+esc(lc.soon)+'</p>' : '')+
+      (lc.pay ? '' : '<a class="btn big" id="lastExt" href="'+esc(lc.href)+'">'+esc(lc.button)+'</a>')+'</section>' : '')+
     '<p class="lead">'+t('intro.lead')+'</p>'+
     '<div class="actions startrow'+(lc ? ' again' : '')+'">'+(lc ? '<button class="link" type="button" id="start">'+esc(lc.retake)+'</button>' : '<button class="btn big" type="button" id="start">'+t('intro.start')+'</button>')+
       '<span class="small muted">'+t('intro.startNote')+'</span>'+
@@ -824,9 +825,15 @@ function renderIntro(){
   // вернувшемуся посетителю — карточка с прошлым результатом, личными зацепками (те же, что в верхнем призыве экрана результата)
   // и крупной кнопкой расширенного отчёта (только там, где отчёт продаётся: content.product.promo;
   // купившему отчёт в этом браузере — прежняя строка-ссылка)
-  var PM = L.content && L.content.product && L.content.product.promo, lastCard = null;
-  if(last && PM && !extBought()){ try{ var la = analyze(last); lastCard = {k:la.cls.p, badge:badgeHTML(la.cls, 'pill'), name:la.profile.name, label:PM.homeLabel.replace('{date}', fmtDate(last.t)), open:PM.homeOpen, button:PM.button, href:ROOT_REL+LANG_PATH[L.lang]+'extended-report/',
-    lead:PM.homeLead, hooks:extHooks(la.sc, la.cls, PM.hooks), tail:PM.tail, sample:PM.homeSample, retake:PM.homeRetake}; }catch(e){ lastCard = null; } }
+  // С 2026-10-22 (по просьбе заказчика) карточка устроена как блок «Расширенный отчёт» экрана результата: те же заголовок, строка о самой низкой
+  // шкале и тезисы (content.product.block), листы образца и сразу форма с e-mail, крупной ценой и «Купить» (источник заказа home).
+  // Личные зацепки (extHooks, promo.hooks) на стартовом экране больше не показываются
+  var PB = L.content && L.content.product, PM = PB && PB.promo, lastCard = null;
+  if(last && PM && !extBought()){ try{ var la = analyze(last), lowK = KEYS.slice().sort(function(x,y){ return la.sc.net[y]-la.sc.net[x]; })[3];
+    lastCard = {k:la.cls.p, badge:badgeHTML(la.cls, 'pill'), name:la.profile.name, label:PM.homeLabel.replace('{date}', fmtDate(last.t)), open:PM.homeOpen, button:PM.button, href:ROOT_REL+LANG_PATH[L.lang]+'extended-report/',
+      title:PB.title, hook:PB.hook.replace('{k}', lowK).replace('{name}', L.keys[lowK]).replace('{pct}', pct(la.sc.net[lowK])), list:PB.list,
+      thumbs: PB.sample ? [1,2,4].map(function(n){ return ROOT_REL+'extended/'+L.lang+'-i-'+n+'-s.webp'; }) : null, sample:PB.sample, soon:PB.soon,
+      pay: !!(PB.pay && PAY_ENDPOINT && typeof payForms === 'function'), retake:PM.homeRetake}; }catch(e){ lastCard = null; } }
   view.innerHTML = introHTML({L:L, t:t, esc:esc, KEYS:KEYS, colorVar:colorVar, progDone:progDone, lastDate: last ? fmtDate(last.t) : '', lastCard:lastCard, links:{styles: ROOT_REL+LANG_PATH[L.lang]+'styles/', profiles: ROOT_REL+LANG_PATH[L.lang]+'profiles/', pdf: ROOT_REL+LANG_PATH[L.lang]+'pdf/', results: ROOT_REL+LANG_PATH[L.lang]+'results/', faq: ROOT_REL+LANG_PATH[L.lang]+'faq/', profile: function(k){ return ROOT_REL+LANG_PATH[L.lang]+'profiles/'+k.toLowerCase()+'/'; }}});
   // Тест начинается сразу, без регистрации: имя и e-mail участник по желанию вводит на экране результата
   function start(){
@@ -843,7 +850,17 @@ function renderIntro(){
   if($('#showLast')) $('#showLast').addEventListener('click', function(){ renderReport(last, {own:true}); window.scrollTo(0,0); });
   // источник покупки home и цель ext-home: кнопка отчёта в карточке прошлого результата
   // ссылка на образец в той же карточке — тот же источник покупки, без цели
-  ['#lastExt', '#lastSample'].forEach(function(id){ if($(id)) $(id).addEventListener('click', function(){ try{ sessionStorage.setItem('disc.src', 'home'); }catch(e){} if(id==='#lastExt' && window.discTrack) window.discTrack('ext-home'); }); });
+  // форма покупки в карточке — та же, что на экране результата (payForms, src/pay.js): поле e-mail, крупная цена, «Купить»; цель ext-home — отправка формы
+  if(lastCard && lastCard.pay){
+    var PP = PB.pay, base = ROOT_REL+LANG_PATH[L.lang], who = lsGet('disc.who')||{};
+    var pf = payForms({T: Object.assign({}, PP, {guarantee: '', noteHtml: PP.noteHtml.replace(/\{base\}/g, base)}), endpoint: PAY_ENDPOINT, L: L, esc: esc, lsSet: lsSet});
+    var hf = pf.add({id: 'xpayHome', code: encodeResult(last), source: 'home', price: String(PB.price).split(' · ')[0], email: last.email || who.email || ''});
+    hf.form.addEventListener('submit', function(){ try{ sessionStorage.setItem('disc.src', 'home'); }catch(e){} if(window.discTrack) window.discTrack('ext-home'); });
+    var hw = document.createElement('div'); hw.className = 'xinline'; hw.appendChild(hf.form);
+    var hm = document.createElement('p'); hm.className = 'xmore'; hm.innerHTML = '<a href="'+lastCard.href+'" id="lastMore">'+esc(PP.more)+' '+arrowR()+'</a>'; hw.appendChild(hm);
+    $('#lastOffer').appendChild(hw);
+  }
+  ['#lastExt', '#lastSample', '#lastMore'].forEach(function(id){ if($(id)) $(id).addEventListener('click', function(){ try{ sessionStorage.setItem('disc.src', 'home'); }catch(e){} if(id==='#lastExt' && window.discTrack) window.discTrack('ext-home'); }); });
 }
 
 /* ====== экран 2: тест ====== */

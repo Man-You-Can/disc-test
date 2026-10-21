@@ -5,16 +5,20 @@
 function introHTML(c){
   var L=c.L, t=c.t, esc=c.esc, KEYS=c.KEYS, colorVar=c.colorVar, progDone=c.progDone||0, lastDate=c.lastDate||'';
   var links=c.links||{}, arr=L.dir==='rtl'?'←':'→';
-  // lc — карточка вернувшегося посетителя (её собирает сама страница, в сборке её нет): прошлый результат, личные зацепки, ссылка на образец
-  // и крупная кнопка расширенного отчёта — сразу под заголовком; «Начать тест» становится неброской ссылкой «Пройти тест заново» под вводным абзацем
+  // lc — карточка вернувшегося посетителя (её собирает сама страница, в сборке её нет): прошлый результат и под ним блок расширенного отчёта,
+  // как на экране результата (заголовок, строка о самой низкой шкале, тезисы, листы образца; форму покупки страница добавляет сама, где lc.pay;
+  // без неё — крупная кнопка отчёта) — сразу под заголовком; «Начать тест» становится неброской ссылкой «Пройти тест заново» под вводным абзацем
   var lc=c.lastCard||null;
   return '<div class="eyebrow">'+t('intro.eyebrow')+'</div>'+
     '<h1>'+t('intro.h1')+'</h1>'+
-    (lc ? '<div class="lastcard" style="--k:'+colorVar(lc.k)+'"><div class="lchead">'+esc(lc.label)+
+    (lc ? '<section class="share xoffer lastcard" id="lastOffer" style="--k:'+colorVar(lc.k)+'"><div class="lchead">'+esc(lc.label)+
         '<span class="lastname"><b>'+lc.badge+' '+esc(lc.name)+'</b><button class="link" type="button" id="showLast">'+esc(lc.open)+'</button></span></div>'+
-      '<p class="lclead">'+esc(lc.lead)+'</p><ul class="xhooks">'+lc.hooks.map(function(x){ return '<li>'+esc(x)+'</li>'; }).join('')+'</ul>'+
-      '<p class="lctail">'+esc(lc.tail)+' <a href="'+esc(lc.href)+'#sample" id="lastSample">'+esc(lc.sample)+'</a></p>'+
-      '<a class="btn big" id="lastExt" href="'+esc(lc.href)+'">'+esc(lc.button)+'</a></div>' : '')+
+      '<h2>'+esc(lc.title)+'</h2><p class="xhook">'+esc(lc.hook)+'</p>'+
+      '<div class="xgrid"><ul>'+lc.list.map(function(x){ return '<li>'+esc(x)+'</li>'; }).join('')+'</ul>'+
+        (lc.thumbs ? '<div class="xside"><a class="xthumbs" id="lastSample" href="'+esc(lc.href)+'#sample" aria-label="'+esc(lc.sample)+'">'+lc.thumbs.map(function(u){ return '<img src="'+esc(u)+'" width="440" height="623" alt="" loading="lazy" decoding="async">'; }).join('')+'</a>'+
+          '<p>'+esc(lc.sample)+'</p></div>' : '')+'</div>'+
+      (lc.soon ? '<p class="xsoon">'+esc(lc.soon)+'</p>' : '')+
+      (lc.pay ? '' : '<a class="btn big" id="lastExt" href="'+esc(lc.href)+'">'+esc(lc.button)+'</a>')+'</section>' : '')+
     '<p class="lead">'+t('intro.lead')+'</p>'+
     '<div class="actions startrow'+(lc ? ' again' : '')+'">'+(lc ? '<button class="link" type="button" id="start">'+esc(lc.retake)+'</button>' : '<button class="btn big" type="button" id="start">'+t('intro.start')+'</button>')+
       '<span class="small muted">'+t('intro.startNote')+'</span>'+
