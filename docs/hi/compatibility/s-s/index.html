@@ -397,6 +397,10 @@ input:focus-visible,textarea:focus-visible,button:focus-visible,select:focus-vis
 .foot{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
 .foot .row2{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .foot .privacy,.foot .legal,.foot .rights{margin-top:6px}
+/* короткий подвал на экране результата (класс short ставит renderReport): только оферта, конфиденциальность, обратная связь и строка © */
+.foot .footshort{display:none}
+.foot.short .row2,.foot.short .materials,.foot.short .privacy,.foot.short .langs{display:none}
+.foot.short .footshort{display:block}
 .footlinks a{color:var(--muted)}
 .footlinks a:hover{color:var(--ink)}
 .content .seealso{margin-top:26px;font-size:14px}

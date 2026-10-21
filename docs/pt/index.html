@@ -392,6 +392,10 @@ input:focus-visible,textarea:focus-visible,button:focus-visible,select:focus-vis
 .foot{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
 .foot .row2{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .foot .privacy,.foot .legal,.foot .rights{margin-top:6px}
+/* короткий подвал на экране результата (класс short ставит renderReport): только оферта, конфиденциальность, обратная связь и строка © */
+.foot .footshort{display:none}
+.foot.short .row2,.foot.short .materials,.foot.short .privacy,.foot.short .langs{display:none}
+.foot.short .footshort{display:block}
 .footlinks a{color:var(--muted)}
 .footlinks a:hover{color:var(--ink)}
 .content .seealso{margin-top:26px;font-size:14px}
@@ -648,6 +652,7 @@ body.has-consent{padding-bottom:160px}
     <div class="row2"><span>24 blocos · cerca de 10 minutos · não há respostas certas ou erradas</span><span class="footlinks"><a href="../pt/about/">Sobre</a> · <a href="../pt/services/">Serviços</a> · <a href="../pt/offer/">Termos de venda</a> · <a href="../pt/contact/">Contato</a> · <a href="../pt/privacy/">Privacidade</a> · <button class="link" id="adminLink" type="button">Painel do administrador</button></span></div>
     <nav class="materials" aria-label="Materiais sobre DISC"><span class="mlabel">Materiais sobre DISC</span><a href="../pt/disc/">O que é DISC</a><a href="../pt/styles/">Quatro estilos</a><a href="../pt/profiles/">16 perfis</a><a href="../pt/results/">Como ler o resultado</a><a href="../pt/compatibility/">Compatibilidade de estilos</a><a href="../pt/colors/">DISC por cores</a><a href="../pt/teams/">DISC para equipes</a><a href="../pt/disc-vs-mbti/">DISC e MBTI</a><a href="../pt/pdf/">Teste em PDF</a><a href="../pt/faq/">Perguntas frequentes</a></nav>
     <div class="privacy">Suas respostas ficam no seu navegador; para a estatística geral, o servidor do site recebe apenas marcas de visita e de início do teste e o perfil obtido, sem nome nem respostas. Quando você clica em “Salvar em PDF”, suas respostas e a data do teste — sem nome nem e-mail — são enviadas ao servidor do site, que gera o arquivo do relatório resumido, o devolve para você e não guarda nada.</div>
+    <div class="footshort footlinks"><a href="../pt/offer/">Termos de venda</a> · <a href="../pt/privacy/">Privacidade</a> · <a href="../pt/contact/">Contato</a></div>
     <div class="rights">© 2026 disc-test.org. É proibido copiar os textos do site e dos relatórios sem autorização por escrito.</div>
     <nav class="langs" aria-label="Idioma"><a href="../" hreflang="en" lang="en" data-lang="en"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-en"/></svg><span>English</span></a><a href="../es/" hreflang="es" lang="es" data-lang="es"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-es"/></svg><span>Español</span></a><a href="../zh/" hreflang="zh-Hans" lang="zh-Hans" data-lang="zh"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-zh"/></svg><span>简体中文</span></a><a href="../zh-hant/" hreflang="zh-Hant" lang="zh-Hant" data-lang="zh-hant"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-zh-hant"/></svg><span>繁體中文</span></a><a href="../ru/" hreflang="ru" lang="ru" data-lang="ru"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-ru"/></svg><span>Русский</span></a><a href="../ar/" hreflang="ar" lang="ar" data-lang="ar"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-ar"/></svg><span>العربية</span></a><a href="../pt/" hreflang="pt" lang="pt" data-lang="pt" aria-current="page"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-pt"/></svg><span>Português</span></a><a href="../fr/" hreflang="fr" lang="fr" data-lang="fr"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-fr"/></svg><span>Français</span></a><a href="../de/" hreflang="de" lang="de" data-lang="de"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-de"/></svg><span>Deutsch</span></a><a href="../ja/" hreflang="ja" lang="ja" data-lang="ja"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-ja"/></svg><span>日本語</span></a><a href="../hi/" hreflang="hi" lang="hi" data-lang="hi"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-hi"/></svg><span>हिन्दी</span></a><a href="../id/" hreflang="id" lang="id" data-lang="id"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-id"/></svg><span>Bahasa Indonesia</span></a><a href="../tr/" hreflang="tr" lang="tr" data-lang="tr"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-tr"/></svg><span>Türkçe</span></a><a href="../pl/" hreflang="pl" lang="pl" data-lang="pl"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-pl"/></svg><span>Polski</span></a></nav>
   </footer>
@@ -769,7 +774,7 @@ function renderProgress(i){
   if(footEl) footEl.hidden=true;
 }
 // Подвал сайта на экранах теста (блоки 1–24) скрыт, чтобы ссылки не уводили с теста; решение заказчика от 2026-10-21
-function hideProgress(){ progEl.hidden=true; metaEl.hidden=true; if(footEl) footEl.hidden=false; }
+function hideProgress(){ progEl.hidden=true; metaEl.hidden=true; if(footEl){ footEl.hidden=false; footEl.classList.remove('short'); } }
 
 /* ====== экран 1: вступление ====== */
 /* Разметка стартового экрана. Один и тот же код используют сборка (build.js кладёт готовый HTML
@@ -1116,6 +1121,8 @@ var xbarStop = null; // снимает слежение за прокрутко�
 function renderReport(r, opts){
   opts = opts||{};
   hideProgress(); setStep(opts.own ? t('report.own') : t('report.other'), true);
+  // на экране результата — короткий подвал, чтобы ссылки не уводили от покупки расширенного отчёта (решение заказчика от 2026-10-21)
+  if(footEl) footEl.classList.add('short');
   // свой результат (тест пройден в этом браузере): уведомление о cookie человек уже видел все 24 блока — убираем его,
   // чтобы на телефоне оно не закрывало кнопку отчёта (src/common.js, только в режиме, где уведомление лишь сообщает)
   if(opts.own && window.discNoticeSeen) window.discNoticeSeen();

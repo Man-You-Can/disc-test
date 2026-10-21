@@ -140,6 +140,8 @@ const relRoot = (L, sub) => { const depth = (pathOf(L.lang) + sub).split('/').le
 const PAIRS = ['DD', 'DI', 'DS', 'DC', 'II', 'IS', 'IC', 'SS', 'SC', 'CC'], pairSlug = k => (k[0] + '-' + k[1]).toLowerCase();
 const ltr = str => `<span dir="ltr">${str}</span>`; // латиница внутри арабского текста: без изоляции «D · I» читается как «I · D»
 const FOOT_ITEMS = [['nav.about', 'about/']].concat(feedbackEmail ? [['nav.contact', 'contact/']] : []).concat([['nav.privacy', 'privacy/']]);
+// Короткий подвал экрана результата (с 2026-10-21, решение заказчика): только оферта, конфиденциальность и обратная связь + строка ©
+const footShort = (L, base) => (hasOffer(L) ? [['nav.offer', 'offer/']] : []).concat([['nav.privacy', 'privacy/']], feedbackEmail ? [['nav.contact', 'contact/']] : []).map(([k, sub]) => `<a href="${base + sub}">${esc(L.ui[k])}</a>`).join(' · ');
 const footLinks = (L, base) => FOOT_ITEMS.slice(0, 1).concat(hasServices(L) ? [['nav.services', 'services/']] : [], hasOffer(L) ? [['nav.offer', 'offer/']] : [], FOOT_ITEMS.slice(1)).map(([k, sub]) => `<a href="${base + sub}">${esc(L.ui[k])}</a>`).join(' · ');
 const PROFILE_KEYS = ['D', 'DI', 'DC', 'DS', 'I', 'ID', 'IS', 'IC', 'S', 'SI', 'SC', 'SD', 'C', 'CD', 'CS', 'CI'];
 // Источники к странице «Что такое DISC». Библиографические описания одинаковы во всех языках
@@ -323,7 +325,7 @@ for (const L of locales) {
   const isRoot = L.lang === def.lang, rootRel = isRoot ? './' : '../';
   const href = x => rootRel + pathOf(x.lang);
   const navHtml = navItems(L).map(([k, sub]) => `<a href="${rootRel + pathOf(L.lang) + sub}"${sub === '' ? ' aria-current="page"' : ''}>${esc(L.ui[k])}</a>`).join('');
-  const footHtml = footLinks(L, rootRel + pathOf(L.lang));
+  const footHtml = footLinks(L, rootRel + pathOf(L.lang)), footShortHtml = footShort(L, rootRel + pathOf(L.lang));
   const introBuilt = introHTML({ L, t: tFor(L), esc: escFull, KEYS, colorVar: k => 'var(--' + k.toLowerCase() + ')', progDone: 0, lastDate: '',
     links: { styles: rootRel + pathOf(L.lang) + 'styles/', profiles: rootRel + pathOf(L.lang) + 'profiles/', pdf: rootRel + pathOf(L.lang) + 'pdf/', results: rootRel + pathOf(L.lang) + 'results/', faq: rootRel + pathOf(L.lang) + 'faq/', profile: k => rootRel + pathOf(L.lang) + 'profiles/' + k.toLowerCase() + '/' } });
   pages.push({ lang: L.lang, sub: '', date: contentDate(L.lang + ':', [L.title, L.description, introBuilt.split(rootRel + pathOf(L.lang)).join('~/')].join('\n'), [`src/locales/${L.lang}.json`, 'src/template.html', 'src/intro.js']) });
@@ -345,7 +347,7 @@ for (const L of locales) {
     .replace('__JSON_LD__', () => jsonLd(L))
     .replace('__INTRO_JS__', () => introJs.replace(/\nif \(typeof module[^\n]*\n?$/, '\n'))
     .replace('__COMMON_JS__', () => commonJs).replace('__GRAPH_JS__', () => graphJs)
-    .replace('__NAV__', () => navHtml).replace('__FOOT_LINKS__', () => footHtml).replace('__MATERIALS__', () => materialsHtml(L, rootRel + pathOf(L.lang), null))
+    .replace('__NAV__', () => navHtml).replace('__FOOT_LINKS__', () => footHtml).replace('__FOOT_SHORT__', () => footShortHtml).replace('__MATERIALS__', () => materialsHtml(L, rootRel + pathOf(L.lang), null))
     .replace('__INTRO_HTML__', () => introBuilt)
     .replace(/__HREFLANG__/g, hreflangTags).replace(/__HEAD_EXTRA__/g, () => headExtraFor(L))
     .replace(/__FONTS_HEAD__/g, () => fontsHead(f, L)).replace(/__FONT_HEAD__/g, f.head).replace(/__FONT_BODY__/g, f.body)

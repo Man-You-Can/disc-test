@@ -331,6 +331,10 @@ input:focus-visible,textarea:focus-visible,button:focus-visible,select:focus-vis
 .foot{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
 .foot .row2{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .foot .privacy,.foot .legal,.foot .rights{margin-top:6px}
+/* короткий подвал на экране результата (класс short ставит renderReport): только оферта, конфиденциальность, обратная связь и строка © */
+.foot .footshort{display:none}
+.foot.short .row2,.foot.short .materials,.foot.short .privacy,.foot.short .langs{display:none}
+.foot.short .footshort{display:block}
 .footlinks a{color:var(--muted)}
 .footlinks a:hover{color:var(--ink)}
 .content .seealso{margin-top:26px;font-size:14px}
@@ -587,6 +591,7 @@ __FLAG_SPRITE__
     <div class="row2"><span>__FOOTER__</span><span class="footlinks">__FOOT_LINKS__ · <button class="link" id="adminLink" type="button">__ADMIN_LINK__</button></span></div>
     __MATERIALS__
     <div class="privacy">__PRIVACY__</div>
+    <div class="footshort footlinks">__FOOT_SHORT__</div>
     __LEGAL__
     <nav class="langs" aria-label="__LANG_LABEL__">__LANG_LINKS__</nav>
   </footer>
@@ -708,7 +713,7 @@ function renderProgress(i){
   if(footEl) footEl.hidden=true;
 }
 // Подвал сайта на экранах теста (блоки 1–24) скрыт, чтобы ссылки не уводили с теста; решение заказчика от 2026-10-21
-function hideProgress(){ progEl.hidden=true; metaEl.hidden=true; if(footEl) footEl.hidden=false; }
+function hideProgress(){ progEl.hidden=true; metaEl.hidden=true; if(footEl){ footEl.hidden=false; footEl.classList.remove('short'); } }
 
 /* ====== экран 1: вступление ====== */
 __INTRO_JS__
@@ -850,6 +855,8 @@ var xbarStop = null; // снимает слежение за прокрутко�
 function renderReport(r, opts){
   opts = opts||{};
   hideProgress(); setStep(opts.own ? t('report.own') : t('report.other'), true);
+  // на экране результата — короткий подвал, чтобы ссылки не уводили от покупки расширенного отчёта (решение заказчика от 2026-10-21)
+  if(footEl) footEl.classList.add('short');
   // свой результат (тест пройден в этом браузере): уведомление о cookie человек уже видел все 24 блока — убираем его,
   // чтобы на телефоне оно не закрывало кнопку отчёта (src/common.js, только в режиме, где уведомление лишь сообщает)
   if(opts.own && window.discNoticeSeen) window.discNoticeSeen();
