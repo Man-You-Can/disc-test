@@ -636,7 +636,7 @@ body.has-consent{padding-bottom:160px}
 <script>
 (function(){
 'use strict';
-var L = {"lang":"zh-hant","name":"繁體中文","dir":"ltr","dateLocale":"zh-TW","ui":{"langLabel":"語言","consent.label":"Cookie 通知","consent.text":"本網站將你的進度、結果和所選語言儲存在瀏覽器的本機儲存空間中；一項網站分析服務會收集匿名的造訪統計和頁面操作紀錄，協助我們改善網站。你的姓名、電子郵件和結果不會傳送給該分析服務。","consent.more":"了解詳情","consent.details":"瀏覽器中儲存的內容：你填寫的姓名和電子郵件（如有）；你的答案和未完成的進度；最近一次結果；所選語言；你已看過本通知的標記。這些資料只保留在你的裝置上，清除網站資料後即會刪除。網站代管服務會收到標準的技術性請求資料。每天第一次開啟網站時，會有一筆匿名的造訪紀錄傳送到網站伺服器，僅包含網站語言版本；伺服器會連同收到的時間一併保存，瀏覽器會記下日期，以免當天重複傳送。我們用這些紀錄統計有多少人造訪網站。開始測驗時，會有一筆匿名的開始紀錄傳送到網站伺服器，僅包含網站語言版本。完成測驗時，會有一筆用於整體統計的匿名紀錄傳送到網站伺服器：你測出的類型和網站語言版本，不含姓名、電子郵件和答案。點選「儲存為 PDF」時，你的答案和測驗日期（不含姓名和電子郵件）會傳送到網站伺服器，伺服器據此產生基本版報告檔案並傳回給你，不會儲存任何內容。網站分析服務會收到不含結果代碼的頁面網址、造訪來源、裝置和瀏覽器類型、匿名的頁面操作紀錄（姓名和電子郵件輸入欄位、結果連結和代碼不在記錄範圍內），並設定自己的 Cookie。你可以透過瀏覽器設定或追蹤封鎖工具將其封鎖。本站不使用廣告追蹤器。","consent.accept":"接受","consent.decline":"僅限必要項目","consent.ok":"知道了","root.continue":"繼續"}};
+var L = {"lang":"zh-hant","name":"繁體中文","dir":"ltr","dateLocale":"zh-TW","ui":{"langLabel":"語言","consent.label":"Cookie 通知","consent.text":"本網站將你的進度、結果和所選語言儲存在瀏覽器的本機儲存空間中；一項網站分析服務會收集匿名的造訪統計和頁面操作紀錄，協助我們改善網站。你的姓名、電子郵件和結果不會傳送給該分析服務。","consent.more":"了解詳情","consent.details":"瀏覽器中儲存的內容：你填寫的姓名和電子郵件（如有）；你的答案和未完成的進度；最近一次結果；所選語言；你已看過本通知的標記。這些資料只保留在你的裝置上，清除網站資料後即會刪除。網站代管服務會收到標準的技術性請求資料。每天第一次開啟網站時，會有一筆匿名的造訪紀錄傳送到網站伺服器，僅包含網站語言版本；伺服器會連同收到的時間一併保存，瀏覽器會記下日期，以免當天重複傳送。我們用這些紀錄統計有多少人造訪網站。開始測驗時，會有一筆匿名的開始紀錄傳送到網站伺服器，僅包含網站語言版本。完成測驗時，會有一筆用於整體統計的匿名紀錄傳送到網站伺服器：你測出的類型和網站語言版本，不含姓名、電子郵件和答案。點選「儲存為 PDF」時，你的答案和測驗日期（不含姓名和電子郵件）會傳送到網站伺服器，伺服器據此產生基本版報告檔案並傳回給你，不會儲存任何內容。網站分析服務會收到頁面網址（在結果頁面上包含結果代碼：你的答案、測驗日期，以及你填寫過的姓名，但不含電子郵件）、造訪來源、裝置和瀏覽器類型、頁面操作紀錄（姓名和電子郵件輸入欄位不在記錄範圍內），並設定自己的 Cookie。你可以透過瀏覽器設定或追蹤封鎖工具將其封鎖。本站不使用廣告追蹤器。","consent.accept":"接受","consent.decline":"僅限必要項目","consent.ok":"知道了","root.continue":"繼續"}};
 var ROOT_REL = '../../', SUBPATH = 'disc-vs-mbti/';
 var LANG_PATH = {"en":"","es":"es/","zh":"zh/","zh-hant":"zh-hant/","ru":"ru/","ar":"ar/","pt":"pt/","fr":"fr/","de":"de/","ja":"ja/","hi":"hi/","id":"id/","tr":"tr/","pl":"pl/"}, LANG_META = {"en":{"name":"English","cont":"Continue","dir":"ltr"},"es":{"name":"Español","cont":"Continuar","dir":"ltr"},"zh":{"name":"简体中文","cont":"继续","dir":"ltr"},"zh-hant":{"name":"繁體中文","cont":"繼續","dir":"ltr"},"ru":{"name":"Русский","cont":"Продолжить","dir":"ltr"},"ar":{"name":"العربية","cont":"متابعة","dir":"rtl"},"pt":{"name":"Português","cont":"Continuar","dir":"ltr"},"fr":{"name":"Français","cont":"Continuer","dir":"ltr"},"de":{"name":"Deutsch","cont":"Weiter","dir":"ltr"},"ja":{"name":"日本語","cont":"続ける","dir":"ltr"},"hi":{"name":"हिन्दी","cont":"जारी रखें","dir":"ltr"},"id":{"name":"Bahasa Indonesia","cont":"Lanjutkan","dir":"ltr"},"tr":{"name":"Türkçe","cont":"Devam et","dir":"ltr"},"pl":{"name":"Polski","cont":"Kontynuuj","dir":"ltr"}};
 function $(s){ return document.querySelector(s); }
@@ -655,13 +655,18 @@ function langHref(code){ return ROOT_REL + (LANG_PATH[code]||'') + (PAGE_LANGS &
    по внешней ссылке, в записи посещения. Поэтому такой хэш убирается из адресной строки раньше, чем счётчик загружен, и
    остаётся в записи истории браузера (history.state): обновление страницы и «Назад» открывают тот же экран, а новый переход
    по тому же адресу (ссылка на эту же страницу) — страницу без данных.
-   Код страниц берёт хэш через dataHash() и pageHash(), а не из location.hash; в разметку страницы хэш с данными не пишется. */
+   Код страниц берёт хэш через dataHash() и pageHash(), а не из location.hash; в разметку страницы хэш с данными не пишется.
+   Исключение (решение заказчика от 2026-10-22): экран результата после загрузки сам кладёт в адресную строку ссылку на отчёт без e-mail
+   (showHash) — ту же, что копирует кнопка «Скопировать ссылку», чтобы адрес из строки браузера можно было переслать. Её счётчик видит;
+   о ней говорят тексты о данных на 14 языках. При открытии страницы любой #r=… (в старых ссылках из писем — с e-mail) всё равно сначала
+   убирается, до загрузки счётчика, и возвращается в строку уже без e-mail. */
 function dataHash(){
   var re = /^#[ru]=/, h = location.hash || '';
   try{
-    var first = !dataHash.seen; dataHash.seen = 1;
+    var first = !dataHash.seen, s = history.state; dataHash.seen = 1;
+    /* ссылка, которую страница сама показала в адресной строке (showHash), остаётся на месте; при открытии страницы (first) убирается и она */
+    if(!first && h && s && s.discShown === h) return h;
     if(re.test(h)){ history.replaceState({discHash:h}, '', location.pathname + location.search); return h; }
-    var s = history.state;
     if(s && typeof s.discHash === 'string' && re.test(s.discHash)){
       if(first && navFresh()){ history.replaceState(null, '', location.href); return ''; }
       return s.discHash;
@@ -674,6 +679,8 @@ function navFresh(){
   try{ var n = performance.getEntriesByType('navigation')[0]; return n ? n.type === 'navigate' : performance.navigation.type === 0; }catch(e){ return false; }
 }
 function pageHash(){ return dataHash() || location.hash || ''; }
+/* показать ссылку на результат в адресной строке (экран результата): без новой записи истории и без события hashchange */
+function showHash(h){ try{ history.replaceState({discHash:h, discShown:h}, '', location.pathname + location.search + h); }catch(e){} }
 /* возврат к началу: адрес без хэша, запись истории без данных */
 function dropHash(){ try{ if(location.hash || history.state) history.replaceState(null, '', location.pathname + location.search); }catch(e){} }
 

@@ -869,7 +869,9 @@ function renderReport(r, opts){
   if(opts.own && window.discNoticeSeen) window.discNoticeSeen();
   var a = analyze(r), sc=a.sc, cls=a.cls, st=L.styles[cls.p], prof=a.profile;
   var code = encodeResult(r);
-  var link = pageURL()+'#r='+code;
+  // ссылка на отчёт — без e-mail (решение заказчика от 2026-10-22): её копирует кнопка «Скопировать ссылку» и показывает адресная строка
+  var link = pageURL()+'#r='+encodeResult(Object.assign({}, r, {email:''}));
+  if(!opts.fromAdmin) showHash(link.slice(link.indexOf('#')));
   var show = {most:false, least:false, net:true};
   // дата с подписью «Тест пройден:» (ui["report.taken"], с 2026-10-21)
   var meta = [esc(r.name), esc(r.email||r.pos||''), r.t && fmtDate(r.t) ? esc(t('report.taken',{date:fmtDate(r.t)})) : ''].filter(Boolean).join(' · ');
