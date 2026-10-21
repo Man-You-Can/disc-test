@@ -635,7 +635,7 @@
         "h": "Genişletilmiş profilin satın alınması",
         "p": [
           "Genişletilmiş DISC profilini satın alırsanız e-posta adresinizi, adınızı (belirttiyseniz), raporun dayandığı test sonucunuzu ve sipariş bilgilerini (tarih, tutar, ödeme numarası ve ödeme durumu) işleriz. Bu veriler raporu hazırlayıp size göndermek, başvurunuzu yanıtlamak ve iade işlemini yapmak için gereklidir. İşlemenin hukuki dayanağı, hizmetin ücretini {offer} uyarınca ödeyerek kurduğunuz sözleşmedir.",
-          "Ödemeyi bir banka alır; bankanın adı ödeme sayfasında gösterilir. Ödeme yönteminize ait bilgileri bankanın güvenli sayfasında girersiniz: bu bilgiler bize ulaşmaz, biz de onları saklamayız. Banka; tutarı, sipariş numarasını ve e-posta adresinizi alır: ödeme makbuzu bu adrese gönderilir.",
+          "Ödemeyi, ödeme aracımız Prodamus işler. Kart bilgilerinizi Prodamus’un güvenli ödeme sayfasında girersiniz: bu bilgiler bize ulaşmaz, biz de onları saklamayız. Prodamus’a tutarı, sipariş numarasını ve e-posta adresinizi iletiriz: ödeme makbuzu bu adrese gönderilir.",
           "Rapor, bizim adımıza işletilen bir sunucuda oluşturulur ve size {email} adresinden e-postayla gönderilir. Raporun bir kopyasını ve sipariş bilgilerini site sahibi saklar: bunlar raporu yeniden göndermek, başvuruları yanıtlamak, iade yapmak ve kayıt tutmak için gereklidir. Raporun ve sipariş bilgilerinin silinmesini istiyorsanız {email} adresine yazın. Yasa gereği saklanması zorunlu olan ödeme bilgileri, öngörülen süre dolduğunda silinir.",
           "Satın alma işlemine başlayıp ödeme yapmadıysanız e-posta adresinizi, test sonucunuzu ve sipariş bilgilerini 30 gün saklar, ardından sileriz. Bu süre içinde belirttiğiniz adrese, ödeme bağlantısı içeren tek bir hatırlatma e-postası gönderilebilir. Hukuki dayanak, sözleşmenin kurulmasına yönelik attığınız adımlardır."
         ]
@@ -711,9 +711,9 @@
         "h": "Genişletilmiş profilin satın alınması",
         "p": [
           "Genişletilmiş DISC profilini satın alırsanız e-posta adresinizi, adınızı (belirttiyseniz), raporun dayandığı test sonucunuzu ve sipariş bilgilerini (tarih, tutar, ödeme numarası ve ödeme durumu) işleriz. Bu veriler raporu hazırlayıp size göndermek, başvurunuzu yanıtlamak ve iade işlemini yapmak için gereklidir. İşlemenin hukuki dayanağı, hizmetin ücretini {offer} uyarınca ödeyerek kurduğunuz sözleşmedir; bunun için ayrı bir onay gerekmez.",
-          "Ödemeyi bir banka alır; bankanın adı ödeme sayfasında gösterilir. Ödeme yönteminize ait bilgileri bankanın güvenli sayfasında girersiniz: bu bilgiler bize ulaşmaz, biz de onları saklamayız. Banka; tutarı, sipariş numarasını ve e-posta adresinizi alır: ödeme makbuzu bu adrese gönderilir.",
+          "Ödemeyi, ödeme aracımız Prodamus işler. Kart bilgilerinizi Prodamus’un güvenli ödeme sayfasında girersiniz: bu bilgiler bize ulaşmaz, biz de onları saklamayız. Prodamus’a tutarı, sipariş numarasını ve e-posta adresinizi iletiriz: ödeme makbuzu bu adrese gönderilir.",
           "Rapor sitenin sunucusunda oluşturulur ve size {email} adresinden e-postayla gönderilir. Hazır rapor sunucuda saklanmaz: gerektiğinde yeniden oluşturulur. Sipariş bilgileri ödemeden sonra beş yıl saklanır: bunlar raporu yeniden göndermek, başvuruları yanıtlamak, iade yapmak ve kayıt tutmak için gereklidir. Yasa gereği daha uzun süre saklanması zorunlu olan ödeme bilgileri, öngörülen süre dolduğunda silinir.",
-          "Satın alma işlemine başlayıp ödeme yapmadıysanız e-posta adresinizi, test sonucunuzu ve sipariş bilgilerini 30 gün saklar, ardından sileriz. Bu süre içinde belirttiğiniz adrese, ödeme bağlantısı içeren tek bir hatırlatma e-postası gönderilebilir. Hukuki dayanak, sözleşmenin kurulmasına yönelik attığınız adımlardır. Genişletilmiş profil Türkçe sipariş edilemediği sürece, iletişim formundan gönderilen haber verme talebi formdan gelen diğer mesajlar gibi işlenir; onayınıza ilişkin kayıt, genişletilmiş profil talebi olarak işaretlenir."
+          "Satın alma işlemine başlayıp ödeme yapmadıysanız e-posta adresinizi, test sonucunuzu ve sipariş bilgilerini 30 gün saklar, ardından sileriz. Bu süre içinde belirttiğiniz adrese, ödeme bağlantısı içeren tek bir hatırlatma e-postası gönderilebilir. Hukuki dayanak, sözleşmenin kurulmasına yönelik attığınız adımlardır."
         ]
       }
     },
@@ -777,7 +777,7 @@
       "sections": [
         {
           "h": "Nasıl alınır",
-          "p": ["Genişletilmiş profil henüz Türkçe sunulmuyor. Rapor sayfasından haber vermemizi isteyebilirsiniz; siparişe açıldığında size e-posta göndeririz. Sipariş verildiğinde genişletilmiş profil, ödeme sırasında belirtilen e-posta adresine, ödemeden sonra en geç 24 saat içinde gönderilir."]
+          "p": ["Genişletilmiş profil, ödeme sırasında belirtilen e-posta adresine, ödemeden sonra en geç 24 saat içinde gönderilir."]
         },
         {
           "h": "Ücretsiz kalanlar",
@@ -794,8 +794,8 @@
       "description": "disc-test.org sitesindeki ücretli “Genişletilmiş DISC profili” hizmetinin satış koşulları (kamuya açık teklif): ücret, ödeme, teslim, iade, içerik hakları.",
       "h1": "Satış koşulları (kamuya açık teklif)",
       "linkText": "satış koşulları",
-      "edition": "9 Ekim 2026 tarihli sürüm. Türkçe çevirisi 11 Ekim 2026’da yayımlanmıştır.",
-      "note": "Bu metin, teklifin {original} adresinde yayımlanan asıl metninin Türkçe çevirisidir. İki metin arasında fark olması hâlinde asıl metin esas alınır; bunun tek istisnası ücrettir: Site’nin Türkçe sürümü için geçerli ücret, 3.1. maddede belirtilen ücrettir. Genişletilmiş profil henüz Türkçe sunulmamaktadır: Türkçe olarak sipariş edilemez ve herhangi bir ödeme alınmaz.",
+      "edition": "9 Ekim 2026 tarihli sürüm. Türkçe çevirisi 21 Ekim 2026’da yayımlanmıştır.",
+      "note": "Bu metin, teklifin {original} adresinde yayımlanan asıl metninin Türkçe çevirisidir. İki metin arasında fark olması hâlinde asıl metin esas alınır; bunun istisnası ücret ve ödeme yöntemidir: Site’nin Türkçe sürümü için bu çevirinin 1. ve 3. bölümleri geçerlidir.",
       "seller": "bireysel girişimci Manukyan Armen, vergi kimlik numarası (INN) {inn}",
       "lead": "Bu belge, ücretli “Genişletilmiş DISC profili” hizmetine ilişkin sözleşmenin aşağıdaki koşullarla kurulması için yapılmış resmî bir tekliftir (kamuya açık teklif). Teklifi yapan: {seller} (bundan böyle “Hizmet Sağlayıcı” olarak anılır). Hizmetin ücretinin ödenmesi, bu koşulların tamamen ve kayıtsız şartsız kabul edildiği anlamına gelir (teklifin kabulü).",
       "sections": [
@@ -808,7 +808,7 @@
             "Test: Site’de yer alan ücretsiz DISC anketi.",
             "Genişletilmiş Profil: Müşteri’nin çözdüğü Test’in sonucuna dayanarak Hizmet Sağlayıcı’nın elektronik ortamda hazırladığı, Müşteri’nin DISC profiline ilişkin daha ayrıntılı değerlendirme.",
             "Hizmet: Genişletilmiş Profil’in hazırlanması ve Müşteri’ye gönderilmesi.",
-            "Banka: Müşteri’nin Hizmet’in ücretini ödemesine aracılık eden kredi kuruluşu; adı ödeme sayfasında gösterilir."
+            "Ödeme Aracısı: Müşteri’nin Hizmet’in ücretini güvenli ödeme sayfası üzerinden ödediği ödeme platformu Prodamus."
           ]
         },
         {
@@ -824,9 +824,9 @@
           "h": "3. Ücret ve ödeme",
           "p": [
             "3.1. Hizmet’in ücreti {price} ABD dolarıdır. Bu ücret nihaidir: Hizmet Sağlayıcı’ya başka bir ödeme yapılmaz.",
-            "3.2. Hizmet’in ücretinin tamamı, Hizmet sunulmadan önce, ödeme sayfasında gösterilen nakitsiz ödeme yöntemlerinden biriyle ödenir. Ödemeyi Banka alır.",
-            "3.3. Hizmet’in ücreti, Hizmet Sağlayıcı’nın Banka’dan ödeme onayını aldığı anda ödenmiş sayılır.",
-            "3.4. Müşteri, ödeme yöntemine ait bilgileri Banka’nın güvenli sayfasında girer. Hizmet Sağlayıcı bu bilgileri almaz ve saklamaz.",
+            "3.2. Hizmet’in ücretinin tamamı, Hizmet sunulmadan önce, banka kartıyla ya da ödeme sayfasında sunulan başka bir elektronik ödeme yöntemiyle ödenir. Ödemeyi Ödeme Aracısı alır.",
+            "3.3. Hizmet’in ücreti, Hizmet Sağlayıcı’nın Ödeme Aracısı’ndan ödeme onayını aldığı anda ödenmiş sayılır.",
+            "3.4. Müşteri, kart bilgilerini Ödeme Aracısı’nın güvenli sayfasında girer. Hizmet Sağlayıcı bu bilgileri almaz ve saklamaz.",
             "3.5. Ödemeden sonra, Müşteri’nin ödeme sırasında belirttiği e-posta adresine elektronik bir ödeme makbuzu gönderilir.",
             "3.6. Hizmet Sağlayıcı, Hizmet’in ücretini değiştirebilir. Yeni ücret Site’de yayımlandığı andan itibaren geçerlidir ve ücreti daha önce ödenmiş siparişlere uygulanmaz."
           ]
@@ -876,7 +876,7 @@
           "h": "8. Kişisel veriler",
           "p": [
             "8.1. Hizmet’i sunmak için Hizmet Sağlayıcı; Müşteri’nin e-posta adresini, adını (belirtilmişse), Test sonucunu ve banka kartı verileri hariç ödeme bilgilerini işler. İşlemenin hukuki dayanağı, Müşteri’nin taraf olduğu sözleşmenin ifasıdır.",
-            "8.2. Veriler yalnızca Banka’ya (ödemenin alınması ve ödeme makbuzunun gönderilmesi için) ve Genişletilmiş Profil’in hazırlanıp gönderilmesi için gereken hizmetlere, ayrıca yasanın öngördüğü durumlarda aktarılır.",
+            "8.2. Veriler yalnızca Ödeme Aracısı’na (ödemenin alınması ve ödeme makbuzunun gönderilmesi için) ve Genişletilmiş Profil’in hazırlanıp gönderilmesi için gereken hizmetlere, ayrıca yasanın öngördüğü durumlarda aktarılır.",
             "8.3. Verilerin işlenmesine ilişkin ayrıntılı bilgi “{privacy}” sayfasında yer alır."
           ]
         },
@@ -901,7 +901,7 @@
       "h1": "İptal ve iade koşulları",
       "linkText": "iptal ve iade koşulları",
       "lead": "Genişletilmiş DISC profili için ödediğiniz ücreti ne zaman ve nasıl geri alabileceğinizi burada kısaca anlatıyoruz. Bu koşullar, {offer} metninin bir parçasıdır (5. bölüm).",
-      "note": "Bu metin, iade koşullarının {original} adresinde yayımlanan asıl metninin Türkçe çevirisidir. İki metin arasında fark olması hâlinde asıl metin esas alınır. Genişletilmiş profil henüz Türkçe sunulmamaktadır: Türkçe olarak sipariş edilemez ve herhangi bir ödeme alınmaz.",
+      "note": "Bu metin, iade koşullarının {original} adresinde yayımlanan asıl metninin Türkçe çevirisidir. İki metin arasında fark olması hâlinde asıl metin esas alınır.",
       "sections": [
         {
           "h": "Ücretin tamamı ne zaman iade edilir",
@@ -934,13 +934,28 @@
         }
       ]
     },
+    "extendedMail": {
+      "subject": "Genişletilmiş DISC raporunuz: {label}",
+      "intro": "Satın aldığınız için teşekkürler. Genişletilmiş DISC raporunuz hazır. Rapor şu profil için hazırlandı:",
+      "attached": "Genişletilmiş rapor bu e-postaya PDF dosyası olarak eklidir.",
+      "how": "Rapor 13 bölümden oluşur. 1. bölümden başlayın: geri kalanının nasıl okunacağını o anlatır.",
+      "help": "Dosya açılmazsa ya da raporda size yanlış gelen bir şey olursa bu e-postayı yanıtlamanız yeterli.",
+      "inviteTitle": "Arkadaşlarınızı, iş arkadaşlarınızı ve yakınlarınızı teste davet edin",
+      "invite": "Raporun 8. bölümü, her stilden insanla nasıl konuşulacağını anlatır. Çevrenizdekilerin stilini, onları teste davet ederek öğrenebilirsiniz: test ücretsizdir ve yaklaşık 10 dakika sürer. Karşınızdakinin stilini bildiğinizde onu anlamak kolaylaşır.",
+      "inviteLink": "Paylaşabileceğiniz test bağlantısı:",
+      "footer": "Bu e-postayı, disc-test.org sitesinde “Genişletilmiş DISC profili” hizmetinin ücretini ödediğiniz için aldınız. Rapor kişiye özeldir ve yalnızca kişisel kullanım içindir."
+    },
     "product": {
       "title": "Genişletilmiş DISC raporu — sonucunuza özel 13 bölüm",
-      "description": "Test sonucunuza özel genişletilmiş DISC raporu: her ölçeğin yorumu, beş alıştırma, 30 günlük plan. E-postayla PDF, {price} USD. Türkçesi yakında.",
+      "description": "Test sonucunuza özel genişletilmiş DISC raporu: her ölçeğin yorumu, beş alıştırma, 30 günlük plan ve ekibiniz için bir sayfa. E-postayla PDF, {price} USD.",
       "h1": "Genişletilmiş DISC raporu",
       "lead": "Testten sonra aldığınız özet rapor tek bir soruyu yanıtlar: “Tipim ne?” Genişletilmiş rapor ise bir sonrakini: “Peki, bununla ne yapacağım?” Rapor sizin yanıtlarınıza göre hazırlanır: puanlar sizin, profil sizin, her sayfada da sizin adınız.",
       "facts": ["13 bölüm", "yaklaşık 28 sayfa", "üç çalışma kâğıdı", "PDF olarak e-postanıza"],
       "more": "Genişletilmiş raporda neler var",
+      "sampleTitle": "Rapor nasıl görünüyor",
+      "sampleNote": "Profili İlham Veren olan hayalî bir katılımcı için hazırlanmış rapordan dört sayfa. Sizin raporunuzda adınız, puanlarınız ve profilinize göre yazılmış metin yer alır. Büyütmek için sayfaya dokunun ya da tıklayın.",
+      "sampleAlt": ["Genişletilmiş DISC raporundan bir sayfa: katılımcının profilini ve 13 bölümlük içindekiler listesini gösteren kapak", "Genişletilmiş DISC raporundan bir sayfa: dört ölçeği ve anlamlarını anlatan “Ayrıntılarıyla profiliniz” bölümü", "Genişletilmiş DISC raporundan bir sayfa: “Dört stilin her biriyle iletişim” bölümü", "Genişletilmiş DISC raporundan bir sayfa: “30 günlük plan” çalışma kâğıdı"],
+      "sampleCaption": ["Kapak ve içindekiler", "2. bölüm: ölçekleriniz", "8. bölüm: her stille konuşmak", "11. bölüm: 30 günlük plan"],
       "forTitle": "Kimler için",
       "for": [
         "Puanlarınızı anlamak istiyorsanız: dört ölçeğin her biri ne anlatıyor, profiliniz adını nereden alıyor ve en düşük ölçeğinizle ne yapabilirsiniz.",
@@ -953,16 +968,16 @@
         "<b>Bu rapor nasıl okunur.</b> DISC neyi anlatır, neyi anlatmaz ve raporun sınırları nerede.",
         "<b>Ayrıntılarıyla profiliniz.</b> Yüzdelerinizle dört ölçek, her ölçeğin ayrı ayrı yorumu ve yanıtlarınızın iki katmanının karşılaştırması: uyarlanmış stil ve doğal stil.",
         "<b>Başkaları sizi nasıl görüyor.</b> İlk izlenim, bir ay sonra fark edilenler, beş kör nokta ve her stilden insanın sizi nasıl algıladığı.",
-        "<b>Güçlü yönleriniz ve onlardan yararlanmanın yolları.</b> Beş güçlü yön ve her birini daha da güçlendiren bir yöntem.",
+        "<b>Güçlü yönleriniz ve onları kullanmanın yolları.</b> Beş güçlü yön ve her birini daha da güçlendiren bir yöntem.",
         "<b>Gelişim alanları: beş alıştırma.</b> Ne oluyor, ne yapmalı ve alıştırmanın işe yaradığı nereden anlaşılır.",
-        "<b>Sizi motive edenler ve motivasyonunuzu düşürenler.</b> Size ne enerji verir, hevesinizi ne söndürür ve kendinize nasıl hedef koyarsınız.",
+        "<b>Sizi motive edenler ve hevesinizi kıranlar.</b> Size ne enerji verir, hevesinizi ne söndürür ve kendinize nasıl hedef koyarsınız.",
         "<b>İş ve kariyer.</b> Stilinizin en iyi sonuç verdiği ortamlar, sizi tuzağa düşüren görevler, karar verme biçiminiz ve bir rolün size uymadığını gösteren işaretler.",
         "<b>Dört stilin her biriyle iletişim.</b> Karşınızdakinin stilini nasıl tanırsınız, konuşmaya nereden başlarsınız, sürtüşme nerede çıkar; ayrıca her durum için hazır bir cümle.",
         "<b>Çatışma ve stres.</b> Üç tipik senaryo, baskının erken belirtileri ve o anda yapılabilecekler.",
         "<b>Yönetici ve çalışan olarak siz.</b> Nelerde iyisiniz, neler sizi yarı yolda bırakır; her stilden yöneticiye nasıl rapor verilir, nasıl itiraz edilir ve ondan nasıl bir şey istenir.",
         "<b>30 günlük plan.</b> Çalışma kâğıdı: dört hafta, her hafta için onay kutulu üç adım.",
         "<b>Tek sayfada işin özü.</b> Çalışma kâğıdı: raporun en önemli noktaları, hep göz önünde tutabileceğiniz tek bir sayfada.",
-        "<b>Benimle nasıl çalışılır.</b> Yöneticiniz ve iş arkadaşlarınız için çalışma kâğıdı: çıktısını alabilir ya da e-postayla iletebilirsiniz."
+        "<b>Benimle nasıl çalışılır.</b> Yöneticiniz ve iş arkadaşlarınız için bir sayfa: çıktısını alabilir ya da e-postayla iletebilirsiniz."
       ],
       "compareTitle": "Özet rapordan farkı ne",
       "compareHead": ["", "Özet rapor", "Genişletilmiş rapor"],
@@ -971,21 +986,21 @@
         ["Neye dayanır", "Profil açıklaması", "Puanlarınız: ölçek ölçek, yanıtların iki katmanı, en düşük ölçek"],
         ["Kapsam", "Her konuda kısa bir açıklama", "13 bölüm, yaklaşık 28 sayfa"],
         ["Uygulama", "Genel öneriler", "Beş alıştırma, 30 günlük plan, “Tek sayfada işin özü” kâğıdı"],
-        ["Başkaları için", "“Tipinizi paylaşın” bağlantısı", "Yöneticiniz ve iş arkadaşlarınız için “Benimle nasıl çalışılır” kâğıdı"],
+        ["Başkaları için", "“Tipinizi paylaşın” bağlantısı", "Yöneticiniz ve iş arkadaşlarınız için “Benimle nasıl çalışılır” sayfası"],
         ["Ücret", "Ücretsiz", "{price} USD"]
       ],
       "compareNote": "Test, ekrandaki sonuç, sonuç e-postası ve PDF biçimindeki özet rapor ücretsiz kalır. Genişletilmiş rapor yalnızca isteyenler içindir.",
       "howTitle": "Rapor nasıl alınır",
       "how": [
         "Ücretsiz testi çözün: 24 soru, yaklaşık 10 dakika. Testi daha önce çözdüyseniz yeniden çözmeniz gerekmez: rapor mevcut sonucunuza göre hazırlanır.",
-        "Haber vermemizi isteyin. Genişletilmiş rapor henüz Türkçe sunulmuyor; siparişe açıldığında size e-posta göndeririz.",
-        "Sipariş verdiğinizde rapor, ödemeden sonra en geç 24 saat içinde PDF eki olarak e-postanıza gelir."
+        "Raporu, ödeme aracımız Prodamus’un güvenli ödeme sayfasında satın alın.",
+        "Rapor, ödemeden sonra en geç 24 saat içinde PDF eki olarak e-postanıza gelir."
       ],
       "faqTitle": "Sık sorulan sorular",
       "faq": [
         { "q": "Rapor bana özel mi yazılıyor, yoksa genel bir metin mi?", "a": "Rapor sizin yanıtlarınıza göre hazırlanır. Metin, on altı profilden biri olan sizin profiliniz için yazılmıştır. 2. bölümün tamamı ile 3, 5, 11, 12 ve 13. bölümlerin bazı kısımları sizin sonuçlarınıza göre değişir: dört ölçekteki yüzdelerinize, “en çok” ve “en az” işaretlerinizin sayısına ve en düşük ölçeğinize. Her sayfada adınız yer alır." },
         { "q": "Rapor hangi biçimde gelir?", "a": "E-postaya ekli bir PDF dosyası olarak gelir; yaklaşık 28 A4 sayfadır. Ekrandan rahatça okunur, çıktısı da alınabilir; üç çalışma kâğıdının her biri tek sayfaya sığar." },
-        { "q": "Rapor hangi dilde?", "a": "Rapor şimdilik yalnızca Rusça hazırlanıyor. Haber vermemizi isteyin; Türkçesi siparişe açıldığında size e-posta göndeririz." },
+        { "q": "Rapor hangi dilde?", "a": "Türkçe. Rapor çeviri değildir: doğrudan Türkçe, Türkiye’deki okur için yazılmıştır." },
         { "q": "Bu bir teşhis ya da yetenek testi mi?", "a": "Hayır. Rapor, yanıtlarınıza dayanarak davranış stilinizi anlatır. Teşhis koymaz, zekâyı ölçmez, başarıyı öngörmez." },
         { "q": "Para iadesi alabilir miyim?", "a": "İadenin hangi durumlarda ve nasıl yapıldığı {refund} sayfasında açıklanır." }
       ],
@@ -994,12 +1009,62 @@
       "docs": "Hizmet, “Genişletilmiş DISC profili” adını taşır ve {offer} uyarınca sunulur; para iadesinin hangi durumlarda ve nasıl yapıldığı {refund} sayfasında açıklanır.",
       "buy": {
         "testTitle": "Rapor test sonucunuza göre hazırlanır",
-        "testText": "Önce ücretsiz testi çözün: 24 soru, yaklaşık 10 dakika. Sonucunuzu ve özet raporunuzu hemen görürsünüz. Genişletilmiş rapor henüz Türkçe sunulmuyor; sonucunuz hazır olunca bu sayfadan haber vermemizi isteyebilirsiniz.",
+        "testText": "Önce ücretsiz testi çözün: 24 soru, yaklaşık 10 dakika. Sonucunuzu ve özet raporunuzu hemen görürsünüz.",
         "testButton": "Testi çöz",
         "orderTitle": "Raporunuz {date} tarihli test sonucunuza göre hazırlanacak",
-        "orderText": "Genişletilmiş rapor henüz Türkçe sunulmuyor. Haber vermemizi isteyin; siparişe açıldığında size e-posta göndeririz.",
-        "orderButton": "Türkçesi çıkınca haber ver",
-        "orderMsg": "Genişletilmiş DISC raporunu Türkçe almak istiyorum. Siparişe açıldığında lütfen bana e-postayla haber verin.\n\nSonucum: {link}"
+        "orderText": "Çevrim içi ödeme şu anda kullanılamıyor. İletişim bilgilerinizi bırakın: ödeme yeniden çalışınca size e-posta göndeririz.",
+        "orderButton": "Bilgilerimi bırak",
+        "orderMsg": "Genişletilmiş DISC raporunu satın almak istiyorum. Ödeme yeniden yapılabildiğinde lütfen bana e-postayla haber verin.\n\nSonucum: {link}"
+      },
+      "pay": {
+        "title": "Rapor, {date} tarihli test sonucunuza göre hazırlanır",
+        "text": "Rapor, ödemeden sonra en geç 24 saat içinde PDF eki olarak e-postanıza gelir. Ödeme makbuzu da aynı adrese gönderilir.",
+        "emailLabel": "Rapor ve makbuz için e-posta adresi",
+        "button": "Satın al",
+        "note": "“Satın al” düğmesine bastığınızda {offer} kabul edilmiş olur. Ödemeyi ABD doları olarak Prodamus’un güvenli sayfasında yaparsınız: kart bilgilerinizi bu sitede değil, orada girersiniz. Hesap ekstrenizde ödeme simpleway.by adıyla görünebilir.",
+        "badEmail": "E-posta adresinizi kontrol edin: rapor ve makbuz bu adrese gönderilecek.",
+        "wait": "Ödeme sayfası açılıyor…",
+        "error": "Ödeme sayfası şu anda açılamadı. Birkaç dakika sonra yeniden deneyin ya da {email} adresine yazın.",
+        "how": [
+          "Ücretsiz testi çözün: 24 soru, yaklaşık 10 dakika. Testi daha önce çözdüyseniz yeniden çözmeniz gerekmez: rapor mevcut sonucunuza göre hazırlanır.",
+          "E-posta adresinizi yazıp “Satın al” düğmesine basın. Ödemeyi ABD doları olarak, ödeme aracımız Prodamus’un güvenli sayfasında yaparsınız; bu sayfa İngilizcedir. Hesap ekstrenizde ödeme simpleway.by adıyla görünebilir: Prodamus için kart ödemelerini işleyen bePaid şirketi bu adı kullanır.",
+          "Rapor, ödemeden sonra en geç 24 saat içinde PDF eki olarak e-postanıza gelir. Ödeme makbuzu da aynı adrese gönderilir."
+        ],
+        "thanks": {
+          "title": "Satın aldığınız için teşekkürler — Genişletilmiş DISC raporu",
+          "description": "Genişletilmiş DISC raporunun ödemesi: rapor ne zaman ve nereye gönderilir, e-posta gelmezse ne yapmalı.",
+          "h1": "Satın aldığınız için teşekkürler",
+          "lead": "Rapor, ödeme sırasında belirttiğiniz e-posta adresine, ödemeden sonra en geç 24 saat içinde PDF eki olarak gönderilir. Çoğu zaman çok daha erken gelir.",
+          "leadEmail": "Rapor {email} adresine, ödemeden sonra en geç 24 saat içinde PDF eki olarak gönderilir. Çoğu zaman çok daha erken gelir.",
+          "order": "Sipariş numarası: {order}",
+          "statusWait": "Prodamus’tan ödeme onayını bekliyoruz.",
+          "statusPaid": "Ödeme alındı. Raporunuz hazırlanıyor.",
+          "statusSent": "Rapor gönderildi. Gelen kutunuza bakın.",
+          "nextTitle": "Sırada ne var",
+          "next": ["E-posta {email} adresinden gelir; konusu “Genişletilmiş DISC raporunuz” diye başlar.", "Ödeme makbuzu, Prodamus için kart ödemelerini işleyen bePaid şirketinden ayrı bir e-postayla gelir. Hesap ekstrenizde ödeme simpleway.by adıyla görünebilir.", "Rapor 13 bölümden oluşur. 1. bölümden başlayın: geri kalanının nasıl okunacağını o anlatır."],
+          "helpTitle": "E-posta gelmezse",
+          "help": ["İstenmeyen e-posta (spam) klasörüne ve “Promosyonlar” gibi klasörlere bakın.", "E-posta yine de yoksa sipariş numaranızı belirterek {email} adresine ya da “{contact}” formu üzerinden bize yazın. Raporu yeniden göndeririz."],
+          "back": "Siteye dön"
+        },
+        "fail": {
+          "title": "Ödeme yapılamadı — Genişletilmiş DISC raporu",
+          "description": "Genişletilmiş DISC raporunun ödemesi yapılamadı: neler yapabilirsiniz ve bize nasıl ulaşabilirsiniz.",
+          "h1": "Ödeme yapılamadı",
+          "lead": "Siparişiniz duruyor; rapor gönderilmedi.",
+          "order": "Sipariş numarası: {order}",
+          "tryTitle": "Neler yapabilirsiniz",
+          "try": ["Kart bilgilerinizi kontrol edin; kartınızın internetten ve yurt dışına ödemeye açık olduğundan emin olun.", "Başka bir kartla ya da başka bir ödeme yöntemiyle deneyin.", "Birkaç dakika sonra yeniden deneyin."],
+          "button": "Yeniden dene",
+          "charged": "Paranız yine de çekildiyse sipariş numaranızı belirterek {email} adresine ya da “{contact}” formu üzerinden bize yazın. Kontrol edip üç iş günü içinde yanıt veririz."
+        },
+        "remind": {
+          "subject": "Genişletilmiş DISC raporunuz ödeme bekliyor",
+          "intro": "{site} sitesinde genişletilmiş DISC raporunu satın almaya başladınız, ancak ödeme tamamlanmadı. Siparişiniz duruyor: rapor sizin sonucunuza göre, şu profil için hazırlanacak:",
+          "price": "Ücreti {price} USD. Ödemeden sonra rapor PDF eki olarak bu adrese, ödeme makbuzu da ayrı bir e-postayla gelir.",
+          "button": "Ödemeyi tamamla",
+          "valid": "Bağlantı, Prodamus’un güvenli ödeme sayfasını açar ve {date} tarihine kadar geçerlidir.",
+          "footer": "Bu e-postayı yalnızca bir kez gönderiyoruz, çünkü {site} sitesinde bu adresle verilmiş bir sipariş (No. {order}) var. Rapora artık ihtiyacınız yoksa ya da bu siparişi siz vermediyseniz bir şey yapmanız gerekmez: sipariş kendiliğinden iptal edilir ve bununla ilgili başka e-posta almazsınız."
+        }
       },
       "pdf": {
         "lead": "Özet rapor “Tipim ne?” sorusunu yanıtlar; genişletilmiş rapor ise “Bununla ne yapacağım?” sorusunu.",
@@ -1010,7 +1075,8 @@
           ["3", "çalışma kâğıdı"]
         ],
         "list": ["Puanlarınız ne anlama geliyor", "Diğer profillerle nasıl çalışılır", "Daha verimli olmak için pratik öneriler"],
-        "where": "Ayrıntılı bilgi:"
+        "sheets": [2, 4],
+        "where": "Ayrıntılı bilgi ve sipariş:"
       },
       "block": {
         "eyebrow": "Genişletilmiş rapor",
@@ -1022,14 +1088,37 @@
           "Dört stilin her biriyle nasıl konuşulur: yöntemler ve hazır cümleler",
           "Üç çalışma kâğıdı: 30 günlük plan, tek sayfada işin özü, iş arkadaşlarınız için bir sayfa"
         ],
+        "sample": "Hayalî bir katılımcı için hazırlanmış rapordan sayfalar",
         "price": "{price} USD · e-postayla PDF",
-        "button": "Türkçesi çıkınca haber ver",
+        "button": "Genişletilmiş raporu al",
         "free": "Test ve özet rapor ücretsiz kalır.",
         "topTitle": "Sonucunuza özel genişletilmiş rapor",
         "topText": "Profilinizle ne yapacağınıza dair 13 bölüm: her ölçeğin yorumu, beş alıştırma, 30 günlük plan.",
-        "topButton": "Ayrıntıları gör — {price} USD",
-        "anchor": "İçinde neler var",
-        "soon": "Genişletilmiş rapor henüz Türkçe sunulmuyor. Haber vermemizi isteyin; siparişe açıldığında size e-posta göndeririz."
+        "topButton": "Raporu al — {price} USD",
+        "anchor": "İçinde neler var"
+      },
+      "promo": {
+        "lead": "Rapor yanıtlarınıza göre hazırlanır ve şunları ele alır:",
+        "hooks": {
+          "low": "{k} ({name}), en düşük ölçeğiniz, %{pct}: ne anlama geliyor",
+          "flat": "Dengeli profiliniz: ne anlama geliyor ve nasıl okunmalı",
+          "moderate": "Ana stiliniz {k} yalnızca %{pct} (belirgin ama güçlü değil): açıklama nasıl okunmalı",
+          "pairMid": "{a} + {b} birleşimi: size ne kazandırıyor ve saf {a} profilinden farkı ne",
+          "pairClose": "{a} ve {b} stilleriniz neredeyse eşit: harflerin sırası ne kadar kesin",
+          "pairEqual": "{a} ve {b} stilleriniz eşit: neden önce {a} yazılıyor",
+          "pairEdge": "{b} tek bir yanıt farkıyla ikincil stiliniz oldu: bu sizin için ne anlama geliyor",
+          "pureHigh": "{k} %{pct}, ama ikincil stil değil: “saf” profil ne demek",
+          "layersDiff": "Uyarlanmış stiliniz ({a}) doğal stilinizden ({b}) farklı: bunun size maliyeti ne",
+          "layersSame": "Uyarlanmış stiliniz ve doğal stiliniz örtüşüyor ({k}): avantajı ve riski"
+        },
+        "tail": "Toplam 13 bölüm; beş alıştırma ve 30 günlük plan da içinde.",
+        "button": "Genişletilmiş rapor — {price} USD",
+        "close": "Gizle",
+        "homeLabel": "{date} tarihli sonucunuz",
+        "homeOpen": "Sonucu aç",
+        "homeLead": "Genişletilmiş rapor yanıtlarınıza göre hazırlanır ve şunları ele alır:",
+        "homeSample": "Örnek sayfaları gör",
+        "homeRetake": "Testi yeniden çöz"
       }
     },
     "contact": {
@@ -1577,7 +1666,7 @@
       "steps": [
         "<b>Siz yanıtlarsınız.</b> Testte 24 soru var; her birinde sizi en çok ve en az tanımlayan ifadeleri işaretlersiniz. Hesaba bu yanıtlardan başka hiçbir şey girmez.",
         "<b>Yazılım hesaplar.</b> Dört stilin her biri için “en çok” işaretlerinin sayısından “en az” işaretlerinin sayısını çıkarır ve bu sayılara göre profilinizi, yani on altı profilden birini belirler. Formül gizli değildir: “{results}” sayfasında adım adım anlatılır.",
-        "<b>Yazılım raporu derler.</b> Profilinize ve puanlarınıza uyan metinleri, yapay zekânın önceden yazdıkları arasından seçer. Özet rapor hemen ekrana gelir. Genişletilmiş rapor henüz Türkçe sunulmuyor. Haber vermemizi isteyin; siparişe açıldığında size e-posta göndeririz. Sipariş verildiğinde rapor ödemeden sonra derlenir ve e-postanıza gelir."
+        "<b>Yazılım raporu derler.</b> Profilinize ve puanlarınıza uyan metinleri, yapay zekânın önceden yazdıkları arasından seçer. Özet rapor hemen ekrana gelir; genişletilmiş rapor ise ödemeden sonra derlenir ve e-postanıza gelir."
       ],
       "sections": [
         {
@@ -1625,7 +1714,7 @@
         },
         {
           "h": "Anında sonuç",
-          "p": "Özet rapor, son soruyu yanıtladığınız anda ekrana gelir. Genişletilmiş rapor henüz Türkçe sunulmuyor; haber vermemizi isterseniz siparişe açıldığında size e-posta göndeririz. Sipariş verildiğinde rapor ödemenin hemen ardından, günün her saatinde, randevu almadan ve sıra beklemeden derlenir; e-postanıza ödemeden sonra en geç 24 saat içinde ulaşır."
+          "p": "Özet rapor, son soruyu yanıtladığınız anda ekrana gelir. Genişletilmiş rapor ödemenin hemen ardından, günün her saatinde, randevu almadan ve sıra beklemeden derlenir: e-posta çoğu zaman birkaç dakika içinde, en geç 24 saat içinde gelir."
         },
         {
           "h": "Uygun fiyat",

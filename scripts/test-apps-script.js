@@ -448,6 +448,18 @@ if (ctx.DATA.id && ctx.DATA.id.extended) {
   check('extended mail in Indonesian: subject, invite link to /id/ with campaign tags, nothing unfilled', /^Laporan DISC mendalam Anda:\sDI · Perintis$/.test(mN.subject) &&
     mN.html.includes('href="https://disc-test.org/id/?utm_source=report&amp;utm_medium=email&amp;utm_campaign=full-di&amp;utm_content=invite"') && !/\{\w+\}|undefined/.test(mN.html + mN.text));
 }
+// напоминание на турецком: цена в записи языка (6,99 USD), дата словами, ничего русского
+if (ctx.DATA.tr && ctx.DATA.tr.pay) {
+  const pT = ctx.composePayRemindMail(ctx.decodeResult(cX), 'tr', { order: '261019-AB12CD', url: 'https://api.disc-test.org/pay/go?order=261019-AB12CD&key=k', until: new Date('2026-10-21T09:00:00Z'), price: ctx.EXTENDED_PRICE_USD });
+  check('pay reminder in Turkish: 6,99 USD, the date written out, Prodamus named, nothing unfilled, nothing Russian', [pT.html, pT.text].every(s => s.includes('6,99 USD') && s.includes('21 Ekim 2026') && s.includes('Prodamus') &&
+    s.includes('261019-AB12CD') && s.includes('Öncü') && !/\{\w+\}|undefined|₽|6\.99|[А-Яа-яЁё]/.test(s.replace(/Пётр Буянов/g, ''))) && pT.subject === ctx.DATA.tr.pay.remind.subject);
+}
+// письмо покупателю на турецком: приглашение ведёт на /tr/ с метками кампании
+if (ctx.DATA.tr && ctx.DATA.tr.extended) {
+  const mT = ctx.composeExtendedMail(ctx.decodeResult(cX), 'tr');
+  check('extended mail in Turkish: subject, invite link to /tr/ with campaign tags, nothing unfilled', /^Genişletilmiş DISC raporunuz:\sDI · Öncü$/.test(mT.subject) &&
+    mT.html.includes('href="https://disc-test.org/tr/?utm_source=report&amp;utm_medium=email&amp;utm_campaign=full-di&amp;utm_content=invite"') && !/\{\w+\}|undefined/.test(mT.html + mT.text));
+}
 check('doGet reports that extended delivery is on', JSON.parse(ctx.doGet().text).extended === true);
 fs.writeFileSync(path.join(process.env.OUT || '/tmp', 'disc-extended-mail-preview.html'), mX.htmlBody);
 fs.writeFileSync(path.join(process.env.OUT || '/tmp', 'disc-mail-preview.html'), mail.htmlBody);
