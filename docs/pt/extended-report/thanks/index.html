@@ -280,6 +280,14 @@ html[lang=ar] body,html[lang=hi] body{font-size:17px;line-height:1.65}
 .paymark.ok{color:var(--s)}
 .paymark.fail{color:var(--d)}
 @media (max-width:480px){.xpay .btn{flex:1 1 auto}}
+/* строка гарантии возврата у кнопки «Купить» (content.product.pay.guarantee): на странице отчёта и в форме на экране результата */
+p.xguar{flex:1 1 100%;margin:0;font-size:14px;font-weight:600;color:var(--ink)}
+.service p.xguar{margin-top:-6px}
+/* покупка на экране результата: кнопка призыва раскрывает на месте форму с e-mail (src/pay.js, payForms) */
+.xinline,.xtop .xinline{flex:1 1 100%;border-top:1px solid var(--line);padding-top:12px}
+.xoffer .xinline{margin:0 0 12px}
+.xinline>p.small{margin:0 0 12px}
+.xinline .xmore{margin:12px 0 0;font-size:14px}
 .content .xq{font-family:var(--font-body);font-size:17px;font-weight:600;text-transform:none;letter-spacing:0;color:var(--ink);margin:20px 0 6px}
 /* «Как готовятся отчёты»: плитки преимуществ */
 .content .hmgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:14px 0 8px}
@@ -631,7 +639,7 @@ body.has-consent{padding-bottom:160px}
   </header>
   <nav class="sitenav no-print"><a href="../../../pt/">Teste</a><a href="../../../pt/disc/">O que é DISC</a><a href="../../../pt/styles/">Quatro estilos</a><a href="../../../pt/profiles/">16 perfis</a><a href="../../../pt/results/">Como ler o resultado</a><a href="../../../pt/compatibility/">Compatibilidade de estilos</a><a href="../../../pt/faq/">Perguntas frequentes</a><a href="../../../pt/how-reports-are-made/">Como é feito o relatório</a><a href="../../../pt/services/" aria-current="page">Serviços</a><a href="../../../pt/contact/">Contato</a></nav>
   <nav class="crumbs"><a href="../../../pt/">Início</a><span>›</span><a href="../../services/">Serviços</a><span>›</span><a href="../">Relatório DISC ampliado</a><span>›</span><span aria-current="page">Obrigado! Pagamento concluído</span></nav>
-  <main class="content"><svg class="paymark ok" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="32" fill="currentColor"/><path d="M18 33.5l9.5 9.5L46 24" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg><div class="eyebrow">Relatório DISC ampliado</div><h1>Obrigado! Pagamento concluído</h1><p class="lead" id="payLead">O relatório chega ao e-mail que você informou no pagamento: um PDF anexado, em até 24 horas após o pagamento. Em geral, chega bem antes.</p><p class="notice payorder ym-hide-content" id="payOrder" hidden></p><p class="small sendstatus" id="payStatus" aria-live="polite" hidden></p><h2>O que acontece agora</h2><ul><li>O e-mail será enviado por <a href="mailto:info@disc-test.org">info@disc-test.org</a>, com um assunto que começa com “Seu relatório DISC ampliado”.</li><li>O comprovante de pagamento chega em outro e-mail, da bePaid, a processadora de cartões da Prodamus. Na fatura do cartão, a cobrança pode aparecer como simpleway.by, e não como DISC Test.</li><li>O relatório tem 13 seções. Comece pela seção 1: ela explica como ler as demais.</li></ul><h2>Se o e-mail não chegar</h2><p>Confira as pastas Spam e Promoções.</p><p>Se mesmo assim não encontrar, escreva para <a href="mailto:info@disc-test.org">info@disc-test.org</a> ou use o formulário “<a href="../../contact/">Contato</a>” e informe o número do pedido. Enviaremos o relatório de novo.</p><p class="seealso"><a href="../../">Voltar ao site →</a> · <a href="../../refund/">Política de reembolso →</a></p></main>
+  <main class="content"><svg class="paymark ok" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="32" fill="currentColor"/><path d="M18 33.5l9.5 9.5L46 24" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg><div class="eyebrow">Relatório DISC ampliado</div><h1>Obrigado! Pagamento concluído</h1><p class="lead" id="payLead">O relatório chega em instantes ao e-mail que você informou no pagamento: um PDF anexado.</p><p class="notice payorder ym-hide-content" id="payOrder" hidden></p><p class="small sendstatus" id="payStatus" aria-live="polite" hidden></p><h2>O que acontece agora</h2><ul><li>O e-mail será enviado por <a href="mailto:info@disc-test.org">info@disc-test.org</a>, com um assunto que começa com “Seu relatório DISC ampliado”.</li><li>O comprovante de pagamento chega em outro e-mail, da bePaid, a processadora de cartões da Prodamus. Na fatura do cartão, a cobrança pode aparecer como simpleway.by, e não como DISC Test.</li><li>O relatório tem 13 seções. Comece pela seção 1: ela explica como ler as demais.</li></ul><h2>Se o e-mail não chegar</h2><p>Confira as pastas Spam e Promoções.</p><p>Se mesmo assim não encontrar, escreva para <a href="mailto:info@disc-test.org">info@disc-test.org</a> ou use o formulário “<a href="../../contact/">Contato</a>” e informe o número do pedido. Enviaremos o relatório de novo.</p><p class="seealso"><a href="../../">Voltar ao site →</a> · <a href="../../refund/">Política de reembolso →</a></p></main>
   <footer class="foot">
     <div class="row2"><span>24 blocos · cerca de 10 minutos · não há respostas certas ou erradas</span><span class="footlinks"><a href="../../../pt/about/">Sobre</a> · <a href="../../../pt/services/">Serviços</a> · <a href="../../../pt/offer/">Termos de venda</a> · <a href="../../../pt/contact/">Contato</a> · <a href="../../../pt/privacy/">Privacidade</a></span></div>
     <nav class="materials" aria-label="Materiais sobre DISC"><span class="mlabel">Materiais sobre DISC</span><a href="../../../pt/disc/">O que é DISC</a><a href="../../../pt/styles/">Quatro estilos</a><a href="../../../pt/profiles/">16 perfis</a><a href="../../../pt/results/">Como ler o resultado</a><a href="../../../pt/compatibility/">Compatibilidade de estilos</a><a href="../../../pt/colors/">DISC por cores</a><a href="../../../pt/teams/">DISC para equipes</a><a href="../../../pt/disc-vs-mbti/">DISC e MBTI</a><a href="../../../pt/pdf/">Teste em PDF</a><a href="../../../pt/faq/">Perguntas frequentes</a></nav>
@@ -784,6 +792,9 @@ function initCommon(c){
     document.body.appendChild(el); document.body.classList.add("has-consent");
     function close(v){ lsSet("disc.consent", v); el.remove(); document.body.classList.remove("has-consent"); }
     $("#consentOk").addEventListener("click", function(){ close(ask ? "analytics" : "noted"); if(ask) loadYm(); });
+    /* тест пройден в этом браузере: уведомление было на экране все 24 блока. В режиме always оно только сообщает — считаем его прочитанным
+       и убираем, чтобы на телефоне оно не закрывало кнопку отчёта на экране результата. Согласие (режим optin) так не ставится никогда */
+    if(!ask) window.discNoticeSeen = function(){ if(el.parentNode) close("noted"); };
     if($("#consentNo")) $("#consentNo").addEventListener("click", function(){ close("essential"); });
   })();
 
@@ -821,41 +832,42 @@ function paySource(){
   return s || (/\/services\/(?:$|[?#])/.test(document.referrer) ? 'services' : 'page');
 }
 
-/* Страница отчёта: у кого результат сохранён на этом устройстве (disc.last), тому блок покупки (.xbuy) превращается в форму
-   с полем e-mail и кнопкой «Купить». c: {T (тексты content.product.pay, noteHtml и errorHtml — готовая разметка), endpoint, L, esc, lsGet, lsSet} */
-function initPayBuy(c){
-  // результат — из адреса страницы (ссылка из PDF краткого отчёта или письма: #r=DISC1.…, функция resultFromUrl вставляется сборкой), иначе сохранённый на устройстве
-  var T = c.T, esc = c.esc, r = (typeof resultFromUrl === 'function' && resultFromUrl()) || c.lsGet('disc.last'); if(!r || !r.t || !r.m || !r.l || !r.m.join) return;
-  var d = new Date(r.t), date = isNaN(d) ? '' : d.toLocaleDateString(c.L.dateLocale, {day:'numeric', month:'long', year:'numeric'});
+/* Код результата для заказа — тот же формат, что у encodeResult на странице теста */
+function payCode(r){
   function b64e(s){ return btoa(unescape(encodeURIComponent(s))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,''); }
-  var code = 'DISC1.' + b64e(JSON.stringify({n:r.name||'', e:r.email||'', p:r.pos||'', t:r.t, m:r.m.join(''), l:r.l.join('')}));
-  var source = paySource(), busy = false, forms = [];
-  function setBusy(on){ busy = on; forms.forEach(function(f){ f.btn.disabled = on; f.btn.textContent = on ? T.wait : T.button; }); }
+  return 'DISC1.' + b64e(JSON.stringify({n:r.name||'', e:r.email||'', p:r.pos||'', t:r.t, m:r.m.join(''), l:r.l.join('')}));
+}
+
+/* Формы покупки одной страницы: поле e-mail, кнопка «Купить», строка гарантии (T.guarantee) и условие оферты. Формы на странице
+   работают вместе: e-mail набирается в одной — появляется в остальных, на время перехода к оплате все кнопки заняты.
+   Ими пользуются страница отчёта (initPayBuy) и экран результата на главной (src/template.html: покупка без перехода на страницу отчёта).
+   c: {T (тексты content.product.pay, noteHtml и errorHtml — готовая разметка), endpoint, L, esc, lsSet}.
+   add({id, code, source, email}) → {form, input, btn, st}: форма ещё не вставлена в страницу. */
+function payForms(c){
+  var T = c.T, esc = c.esc, g = {busy:false, forms:[]};
+  g.setBusy = function(on){ g.busy = on; g.forms.forEach(function(f){ f.btn.disabled = on; f.btn.textContent = on ? T.wait : T.button; }); };
   // возврат со страницы банка кнопкой «Назад»: браузер показывает сохранённую страницу с нажатой кнопкой
-  window.addEventListener('pageshow', function(ev){ if(ev.persisted) setBusy(false); });
-  [].forEach.call(document.querySelectorAll('.xbuy'), function(box, i){
-    var id = 'payEmail' + i, old = box.querySelector('a.btn'), price = box.querySelector('.price');
-    box.querySelector('h2').textContent = T.title.replace('{date}', date);
-    box.querySelector('div p').textContent = T.text;
+  window.addEventListener('pageshow', function(ev){ if(ev.persisted) g.setBusy(false); });
+  g.add = function(o){
     var form = document.createElement('form'); form.className = 'xpay'; form.noValidate = true;
-    form.innerHTML = '<div class="field"><label for="'+id+'">'+esc(T.emailLabel)+'</label>'+
-      '<input type="email" id="'+id+'" class="ym-disable-keys" autocomplete="email" inputmode="email" maxlength="'+PAY_EMAIL_MAX+'" required></div>'+
+    form.innerHTML = '<div class="field"><label for="'+o.id+'">'+esc(T.emailLabel)+'</label>'+
+      '<input type="email" id="'+o.id+'" class="ym-disable-keys" autocomplete="email" inputmode="email" maxlength="'+PAY_EMAIL_MAX+'" required></div>'+
       '<button class="btn" type="submit">'+esc(T.button)+'</button>'+
+      (T.guarantee ? '<p class="xguar">'+esc(T.guarantee)+'</p>' : '')+
       '<p class="small sendstatus err" aria-live="polite" hidden></p><p class="xnote">'+T.noteHtml+'</p>';
-    var input = form.querySelector('input'), btn = form.querySelector('button'), st = form.querySelector('.sendstatus');
-    if(price) form.insertBefore(price, btn);
-    if(old) old.parentNode.removeChild(old);
-    box.appendChild(form);
-    if(r.email && String(r.email).length <= PAY_EMAIL_MAX) input.value = r.email;
-    forms.push({input:input, btn:btn, st:st});
-    input.addEventListener('input', function(){ st.hidden = true; forms.forEach(function(f){ if(f.input !== input) f.input.value = input.value; }); });
+    var f = {form:form, input:form.querySelector('input'), btn:form.querySelector('button'), st:form.querySelector('.sendstatus')}, input = f.input, st = f.st;
+    var other = g.forms.filter(function(x){ return x.input.value; })[0];
+    if(other) input.value = other.input.value;
+    else if(o.email && String(o.email).length <= PAY_EMAIL_MAX) input.value = o.email;
+    g.forms.push(f);
+    input.addEventListener('input', function(){ st.hidden = true; g.forms.forEach(function(x){ if(x.input !== input) x.input.value = input.value; }); });
     form.addEventListener('submit', function(ev){
-      ev.preventDefault(); if(busy) return;
+      ev.preventDefault(); if(g.busy) return;
       var email = input.value.trim();
       if(email.length > PAY_EMAIL_MAX || !PAY_EMAIL_RE.test(email)){ st.textContent = T.badEmail; st.hidden = false; input.focus(); return; }
-      st.hidden = true; setBusy(true); payTrack('ext-page-buy');
+      st.hidden = true; g.setBusy(true); payTrack('ext-page-buy');
       // Content-Type не задаём: «простой» запрос без предварительного OPTIONS
-      fetch(c.endpoint + '/order', {method:'POST', body: JSON.stringify({code:code, email:email, source:source, lang:c.L.lang})})
+      fetch(c.endpoint + '/order', {method:'POST', body: JSON.stringify({code:o.code, email:email, source:o.source, lang:c.L.lang})})
         .then(function(res){ return res.text(); })
         .then(function(txt){ var j = null; try{ j = JSON.parse(txt); }catch(e){}
           if(!j || !j.ok || !j.url || !j.order) throw new Error((j && j.error) || 'bad response');
@@ -863,10 +875,31 @@ function initPayBuy(c){
           if(u.protocol !== 'https:' && u.origin !== location.origin) throw new Error('bad url');
           c.lsSet('disc.pay', {order:String(j.order), key:String(j.key||''), email:email, t:Date.now()});
           payTrack('ext-pay-start'); location.href = u.href; })
-        .catch(function(err){ setBusy(false); st.hidden = false;
+        .catch(function(err){ g.setBusy(false); st.hidden = false;
           if(err && err.message === 'bad email'){ st.textContent = T.badEmail; input.focus(); }
           else { st.innerHTML = T.errorHtml; payTrack('ext-pay-error'); } });
     });
+    return f;
+  };
+  return g;
+}
+
+/* Страница отчёта: у кого результат сохранён на этом устройстве (disc.last), тому блок покупки (.xbuy) превращается в форму
+   с полем e-mail и кнопкой «Купить». c: {T (тексты content.product.pay, noteHtml и errorHtml — готовая разметка), endpoint, L, esc, lsGet, lsSet} */
+function initPayBuy(c){
+  // результат — из адреса страницы (ссылка из PDF краткого отчёта или письма: #r=DISC1.…, функция resultFromUrl вставляется сборкой), иначе сохранённый на устройстве
+  var T = c.T, r = (typeof resultFromUrl === 'function' && resultFromUrl()) || c.lsGet('disc.last'); if(!r || !r.t || !r.m || !r.l || !r.m.join) return;
+  var d = new Date(r.t), date = isNaN(d) ? '' : d.toLocaleDateString(c.L.dateLocale, {day:'numeric', month:'long', year:'numeric'});
+  var code = payCode(r), source = paySource(), g = payForms(c);
+  [].forEach.call(document.querySelectorAll('.xbuy'), function(box, i){
+    var old = box.querySelector('a.btn'), price = box.querySelector('.price'), guar = box.querySelector('.xguar');
+    box.querySelector('h2').textContent = T.title.replace('{date}', date);
+    box.querySelector('div p').textContent = T.text;
+    var f = g.add({id:'payEmail' + i, code:code, source:source, email:r.email});
+    if(price) f.form.insertBefore(price, f.btn);
+    if(old) old.parentNode.removeChild(old);
+    if(guar) guar.parentNode.removeChild(guar);   // строка гарантии без формы (сборка) — в форме она своя
+    box.appendChild(f.form);
   });
 }
 
@@ -903,7 +936,7 @@ function initPayFail(c){
   if(rec && !rec.fail){ rec.fail = true; c.lsSet('disc.pay', rec); payTrack('ext-pay-fail'); }
 }
 
-initPayThanks({T: {"leadEmail":"O relatório chega ao e-mail {email}: um PDF anexado, em até 24 horas após o pagamento. Em geral, chega bem antes.","order":"Número do pedido: {order}","statusWait":"Aguardando a confirmação do pagamento pela Prodamus.","statusPaid":"Pagamento recebido. O relatório está sendo preparado.","statusSent":"O relatório foi enviado. Confira a sua caixa de entrada."}, endpoint: "https://api.disc-test.org/pay", price: 6.99, currency: "USD", lsGet: lsGet, lsSet: lsSet, $: $});
+initPayThanks({T: {"leadEmail":"O relatório chega em instantes ao e-mail {email}: um PDF anexado.","order":"Número do pedido: {order}","statusWait":"Aguardando a confirmação do pagamento pela Prodamus.","statusPaid":"Pagamento recebido. O relatório está sendo preparado.","statusSent":"O relatório foi enviado. Confira a sua caixa de entrada."}, endpoint: "https://api.disc-test.org/pay", price: 6.99, currency: "USD", lsGet: lsGet, lsSet: lsSet, $: $});
 /* цели Метрики у кнопок теста (cta-top, cta-bottom, cta-float) и плавающая кнопка на телефоне: видна, когда призыв
    после вводного абзаца уже прокручен вверх, а нижний призыв и подвал ещё не на экране (аудит 3, п. 1) */
 (function(){

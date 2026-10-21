@@ -777,7 +777,7 @@
       "sections": [
         {
           "h": "Como receber",
-          "p": ["O perfil ampliado é enviado por e-mail para o endereço informado no pagamento, em até 24 horas após o pagamento."]
+          "p": ["O perfil ampliado é enviado por e-mail para o endereço informado no pagamento logo após a compra."]
         },
         {
           "h": "O que continua gratuito",
@@ -794,7 +794,7 @@
       "description": "Termos de venda (oferta ao público) do serviço “Perfil DISC ampliado” no disc-test.org: preço, pagamento e entrega, reembolso, direitos sobre os materiais.",
       "h1": "Termos de venda (oferta ao público)",
       "linkText": "termos de venda",
-      "edition": "Versão de 9 de outubro de 2026. Tradução para o português atualizada em 19 de outubro de 2026.",
+      "edition": "Versão de 21 de outubro de 2026. Tradução para o português atualizada em 21 de outubro de 2026.",
       "note": "Este texto é a tradução para o português da oferta original publicada em {original}. Em caso de divergência entre os dois textos, prevalece o original, exceto quanto ao preço e à forma de pagamento: na versão em português do Site, eles estão definidos nas seções 1 e 3.",
       "seller": "empresário individual Manukyan Armen, N.º de identificação fiscal (INN) {inn}",
       "lead": "Este documento é uma proposta formal (oferta ao público) para celebrar um contrato de prestação do serviço pago “Perfil DISC ampliado” nas condições descritas abaixo. A oferta é feita por {seller} (doravante, o Prestador). O pagamento do serviço implica concordância integral e incondicional com estas condições (aceitação da oferta).",
@@ -835,7 +835,7 @@
           "h": "4. Como o Serviço é prestado",
           "p": [
             "4.1. Para receber o Serviço, o Cliente faz o Teste no Site, informa um endereço de e-mail e paga pelo Serviço. O Perfil Ampliado é preparado com base no resultado do Teste com o qual o Cliente seguiu para o pagamento.",
-            "4.2. O Prestador envia o Perfil Ampliado para o endereço informado em até 24 horas após o pagamento (cláusula 3.3). Em geral, o e-mail chega antes; 24 horas é o prazo máximo.",
+            "4.2. O Prestador envia o Perfil Ampliado para o endereço informado em até 24 horas após o pagamento (cláusula 3.3). Em geral, o e-mail chega logo após o pagamento; 24 horas é o prazo máximo.",
             "4.3. O Serviço é considerado prestado no momento do envio do Perfil Ampliado. Se, nos três dias corridos seguintes, o Cliente não comunicar nenhum defeito, o Serviço é considerado aceito. Não é emitido termo de aceite do Serviço.",
             "4.4. Se o e-mail não chegar, o Cliente deve verificar a pasta de spam e escrever ao Prestador pelo endereço {email}: o Perfil Ampliado será enviado novamente.",
             "4.5. O Cliente é responsável pela exatidão do endereço de e-mail que informa."
@@ -847,8 +847,8 @@
             "5.1. O Cliente pode desistir do Serviço a qualquer momento antes do envio do Perfil Ampliado. Nesse caso, o valor pago é devolvido integralmente.",
             "5.2. Se o Perfil Ampliado não for enviado no prazo indicado na cláusula 4.2, o Cliente pode exigir a devolução integral do valor pago.",
             "5.3. Se o Perfil Ampliado recebido tiver defeitos (o e-mail ou o arquivo não abre, contém o resultado de outra pessoa ou o conteúdo não corresponde à descrição do Serviço no Site), o Prestador os corrige em até três dias úteis a contar do contato do Cliente. Se o defeito não for corrigido nesse prazo, o valor pago é devolvido integralmente.",
-            "5.4. Uma vez devidamente prestado o Serviço, o valor pago não é devolvido. A discordância do Cliente quanto ao conteúdo da descrição do seu perfil não constitui defeito do Serviço.",
-            "5.5. Para obter o reembolso, o Cliente deve enviar uma solicitação para {email}, informando o endereço de e-mail usado no pagamento, a data e o valor do pagamento e o motivo do reembolso.",
+            "5.4. Garantia de reembolso: no prazo de sete dias corridos a contar da data do pagamento, o Cliente tem o direito de solicitar o reembolso integral do valor pago, sem precisar justificar o pedido, inclusive após o recebimento do Perfil Ampliado. Decorrido esse prazo, o valor pago pelo Serviço devidamente prestado não é devolvido; a discordância do Cliente quanto ao conteúdo da descrição do seu perfil não constitui defeito do Serviço.",
+            "5.5. Para obter o reembolso, o Cliente deve enviar uma solicitação para {email}, informando o endereço de e-mail usado no pagamento, a data e o valor do pagamento e o motivo do reembolso; no reembolso com base na cláusula 5.4, não é obrigatório informar o motivo.",
             "5.6. O Prestador responde à solicitação em até três dias úteis. O valor é devolvido pelo mesmo meio usado no pagamento, em até dez dias corridos a contar do recebimento da solicitação; o prazo para o valor ser creditado depende do banco do Cliente.",
             "5.7. As condições desta seção não limitam os direitos do Cliente previstos na legislação de defesa do consumidor."
           ]
@@ -906,6 +906,7 @@
         {
           "h": "Quando o valor é devolvido integralmente",
           "ul": [
+            "O perfil ampliado não atendeu às suas expectativas: em até 7 dias após o pagamento, o valor é devolvido sem necessidade de justificativa.",
             "Você desistiu do serviço antes do envio do perfil ampliado.",
             "O perfil ampliado não foi enviado em até 24 horas após o pagamento.",
             "O perfil ampliado que você recebeu tem um defeito (o e-mail ou o arquivo não abre, contém o resultado de outra pessoa ou o conteúdo não corresponde à descrição do serviço no site), e nós não o corrigimos em até três dias úteis depois do seu contato."
@@ -913,12 +914,12 @@
         },
         {
           "h": "Quando o valor não é devolvido",
-          "p": ["Se o perfil ampliado foi enviado no prazo e corresponde à descrição, o serviço é considerado prestado e o valor pago não é devolvido. Discordar do conteúdo da descrição do seu perfil não constitui defeito do serviço."]
+          "p": ["Se já se passaram mais de 7 dias desde o pagamento e o perfil ampliado foi enviado no prazo e corresponde à descrição, o serviço é considerado prestado e o valor pago não é devolvido. Discordar do conteúdo da descrição do seu perfil não constitui defeito do serviço."]
         },
         {
           "h": "Como solicitar o reembolso",
           "p": ["Escreva para {email} e informe:"],
-          "ul": ["o endereço de e-mail usado no pagamento;", "a data e o valor do pagamento;", "o motivo do reembolso."]
+          "ul": ["o endereço de e-mail usado no pagamento;", "a data e o valor do pagamento;", "o motivo do reembolso (nos primeiros 7 dias após o pagamento, não é preciso informá-lo)."]
         },
         {
           "h": "Prazos",
@@ -1004,7 +1005,7 @@
       "how": [
         "Faça o teste gratuito: 24 blocos, cerca de 10 minutos. Se você já fez, não precisa repetir: o relatório é montado a partir do resultado que você já tem.",
         "Pague pelo relatório na página segura da Prodamus, nossa prestadora de serviços de pagamento.",
-        "O relatório chega ao seu e-mail em PDF, como anexo, em até 24 horas após o pagamento."
+        "O relatório chega ao seu e-mail logo após o pagamento, em PDF, como anexo."
       ],
       "faqTitle": "Perguntas e respostas",
       "faq": [
@@ -1012,7 +1013,7 @@
         { "q": "Em que formato o relatório chega?", "a": "Em um arquivo PDF anexado ao e-mail, com cerca de 29 páginas A4. Dá para ler bem na tela e para imprimir; cada uma das três folhas de trabalho cabe em uma única página." },
         { "q": "Em que idioma está o relatório?", "a": "Em português do Brasil. O relatório foi escrito diretamente em português, e não traduzido de outro idioma." },
         { "q": "É um diagnóstico ou uma avaliação de habilidades?", "a": "Não. O relatório descreve o seu estilo de comportamento com base nas suas respostas. Ele não faz diagnósticos, não mede inteligência e não prevê sucesso." },
-        { "q": "Posso pedir reembolso?", "a": "A {refund} explica quando e como o valor pago é devolvido." }
+        { "q": "Posso pedir reembolso?", "a": "Sim. Se o relatório não atender às suas expectativas, escreva para {email} em até 7 dias após o pagamento: devolvemos o valor integral, sem pedir justificativa. Os demais casos e o procedimento de reembolso estão na {refund}." }
       ],
       "priceLabel": "Preço",
       "price": "US$ {price}",
@@ -1028,7 +1029,8 @@
       },
       "pay": {
         "title": "Seu relatório será montado com base no teste que você fez em {date}",
-        "text": "O relatório chega ao seu e-mail em PDF, como anexo, em até 24 horas após o pagamento. O comprovante de pagamento vai para o mesmo endereço.",
+        "text": "O relatório chega ao seu e-mail logo após o pagamento, em PDF, como anexo. O comprovante de pagamento vai para o mesmo endereço.",
+        "guarantee": "Não gostou? Você tem 7 dias para pedir seu dinheiro de volta.",
         "emailLabel": "E-mail para o relatório e o comprovante",
         "button": "Comprar",
         "note": "Ao clicar em “Comprar”, você aceita os {offer}. O pagamento é em dólares, na página segura da Prodamus: você informa os dados do cartão lá, e não neste site. Na fatura, a cobrança pode aparecer como simpleway.by.",
@@ -1038,14 +1040,14 @@
         "how": [
           "Faça o teste gratuito: 24 blocos, cerca de 10 minutos. Se você já fez, não precisa repetir: o relatório é montado a partir do resultado que você já tem.",
           "Informe seu e-mail e clique em “Comprar”. Você paga em dólares americanos na página segura da Prodamus, nossa prestadora de serviços de pagamento; a página é em inglês. Na fatura, a cobrança pode aparecer como simpleway.by, nome usado pela bePaid, a processadora de cartões da Prodamus.",
-          "O relatório chega ao seu e-mail em PDF, como anexo, em até 24 horas após o pagamento. O comprovante de pagamento vai para o mesmo endereço."
+          "O relatório chega ao seu e-mail logo após o pagamento, em PDF, como anexo. O comprovante de pagamento vai para o mesmo endereço."
         ],
         "thanks": {
           "title": "Obrigado pela compra — Relatório DISC ampliado",
           "description": "O pagamento do relatório DISC ampliado foi aprovado: onde e quando o relatório chega e o que fazer se o e-mail não chegar.",
           "h1": "Obrigado! Pagamento concluído",
-          "lead": "O relatório chega ao e-mail que você informou no pagamento: um PDF anexado, em até 24 horas após o pagamento. Em geral, chega bem antes.",
-          "leadEmail": "O relatório chega ao e-mail {email}: um PDF anexado, em até 24 horas após o pagamento. Em geral, chega bem antes.",
+          "lead": "O relatório chega em instantes ao e-mail que você informou no pagamento: um PDF anexado.",
+          "leadEmail": "O relatório chega em instantes ao e-mail {email}: um PDF anexado.",
           "order": "Número do pedido: {order}",
           "statusWait": "Aguardando a confirmação do pagamento pela Prodamus.",
           "statusPaid": "Pagamento recebido. O relatório está sendo preparado.",
@@ -1737,7 +1739,7 @@
         },
         {
           "h": "Resultado na hora",
-          "p": "O relatório resumido aparece na tela assim que você responde ao último bloco. O ampliado é montado logo após o pagamento, a qualquer hora do dia ou da noite, sem agendamento nem fila: o e-mail costuma chegar em poucos minutos e, no máximo, em 24 horas após o pagamento."
+          "p": "O relatório resumido aparece na tela assim que você responde ao último bloco. O ampliado é montado a qualquer hora do dia ou da noite, sem agendamento nem fila: o e-mail com ele chega logo após o pagamento."
         },
         {
           "h": "Preço acessível",

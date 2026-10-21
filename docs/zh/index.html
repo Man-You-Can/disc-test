@@ -268,6 +268,14 @@ html[lang=ar] body,html[lang=hi] body{font-size:17px;line-height:1.65}
 .paymark.ok{color:var(--s)}
 .paymark.fail{color:var(--d)}
 @media (max-width:480px){.xpay .btn{flex:1 1 auto}}
+/* строка гарантии возврата у кнопки «Купить» (content.product.pay.guarantee): на странице отчёта и в форме на экране результата */
+p.xguar{flex:1 1 100%;margin:0;font-size:14px;font-weight:600;color:var(--ink)}
+.service p.xguar{margin-top:-6px}
+/* покупка на экране результата: кнопка призыва раскрывает на месте форму с e-mail (src/pay.js, payForms) */
+.xinline,.xtop .xinline{flex:1 1 100%;border-top:1px solid var(--line);padding-top:12px}
+.xoffer .xinline{margin:0 0 12px}
+.xinline>p.small{margin:0 0 12px}
+.xinline .xmore{margin:12px 0 0;font-size:14px}
 .content .xq{font-family:var(--font-body);font-size:17px;font-weight:600;text-transform:none;letter-spacing:0;color:var(--ink);margin:20px 0 6px}
 /* «Как готовятся отчёты»: плитки преимуществ */
 .content .hmgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:14px 0 8px}
@@ -640,6 +648,7 @@ var L = {"lang":"zh","dir":"ltr","name":"简体中文","dateLocale":"zh-CN","tit
 var CONTACT_EMAIL = ''; // contactEmail из site.config.json; кнопка «Отправить по почте» убрана 2026-10-20, адрес на странице больше не используется
 var SEND_ENDPOINT = 'https://api.disc-test.org/'; // URL веб-приложения Google Apps Script (см. README); пустой — письма не отправляются
 var SEND_TOKEN = 'kR7UiShTyG7Wws7t16NkgKN3';
+var PAY_ENDPOINT = ''; // сервер оплаты (payEndpoint) — только в языках, где отчёт продаётся; пустой — кнопки отчёта ведут на его страницу
 var PD = '1' === '1', PD_VERSION = '2026-10-20'; // отдельная галочка согласия на обработку данных в форме отправки результата (pdConsent в site.config.json)
 var NEWSLETTER = '1' === '1'; // галочка согласия на рассылку в форме отправки результата (newsletter в site.config.json)
 var PDF_DL = '1' === '1'; // «Сохранить в PDF» скачивает краткий отчёт, собранный сервером (pdfDownload в site.config.json); иначе — печать браузера
@@ -934,6 +943,8 @@ function graphSVG(sc, show, o){
 
 
 /* ====== экран 3: отчёт ====== */
+/* покупка расширенного отчёта: общий код форм (src/pay.js), вставляется только там, где отчёт продаётся */
+
 // отчёт в этом браузере уже куплен (страница «Спасибо» отметила заказ): закреплённую кнопку и кнопку на главной не показываем
 function extBought(){ var p = lsGet('disc.pay'); return !!(p && p.done); }
 /* Личные зацепки верхнего призыва (content.product.promo.hooks): каждая строка называет то, что расширенный отчёт разбирает по числам
@@ -964,6 +975,9 @@ var xbarStop = null; // снимает слежение за прокрутко�
 function renderReport(r, opts){
   opts = opts||{};
   hideProgress(); setStep(opts.own ? t('report.own') : t('report.other'), true);
+  // свой результат (тест пройден в этом браузере): уведомление о cookie человек уже видел все 24 блока — убираем его,
+  // чтобы на телефоне оно не закрывало кнопку отчёта (src/common.js, только в режиме, где уведомление лишь сообщает)
+  if(opts.own && window.discNoticeSeen) window.discNoticeSeen();
   var a = analyze(r), sc=a.sc, cls=a.cls, st=L.styles[cls.p], prof=a.profile;
   var code = encodeResult(r);
   var link = pageURL()+'#r='+code;
@@ -1094,16 +1108,38 @@ function renderReport(r, opts){
   // цели Метрики расширенного отчёта: ext-top — кнопка в призыве под описанием профиля, ext-anchor — ссылка «Что внутри» там же,
   // ext-show — нижний блок показан на экране, ext-click — кнопка или листы образца в нижнем блоке
   if(PB){
-    var xo = $('#extOffer');
+    var xo = $('#extOffer'), xt = view.querySelector('.xtop');
     $('#extAnchor').addEventListener('click', function(){ if(window.discTrack) window.discTrack('ext-anchor'); xo.scrollIntoView({behavior:'smooth', block:'start'}); });
     // источник покупки для таблицы заказов (читает страница отчёта, src/pay.js): какая кнопка экрана результата привела на неё
     function src(v){ try{ sessionStorage.setItem('disc.src', v); }catch(e){} }
-    $('#extTop').addEventListener('click', function(){ src('result-top'); if(window.discTrack) window.discTrack('ext-top'); });
-    xo.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ src('result-block'); if(window.discTrack) window.discTrack('ext-click'); }); });
+    // покупка прямо здесь (PB.pay — там, где отчёт продаётся и задан сервер оплаты): кнопки призывов раскрывают на месте форму с e-mail
+    // и кнопкой «Купить», без перехода на страницу отчёта. Источник заказа — какая кнопка раскрыла форму; без PB.pay кнопки ведут на страницу отчёта
+    var PP = PB.pay && PAY_ENDPOINT && typeof payForms === 'function' && !opts.fromAdmin ? PB.pay : null, pf = null, xb = xo.querySelector('.xact .btn');
+    var buyOpen = function(box, after, source, btn){
+      var w = box.querySelector('.xinline');
+      if(!w){
+        if(!pf) pf = payForms({T: Object.assign({}, PP, {noteHtml: PP.noteHtml.replace(/\{base\}/g, base)}), endpoint: PAY_ENDPOINT, L: L, esc: esc, lsSet: lsSet});
+        var em = $('#em'), f = pf.add({id: 'xpayE' + pf.forms.length, code: code, source: source, email: (em && em.value.trim()) || r.email || who.email || ''});
+        w = document.createElement('div'); w.className = 'xinline';
+        w.innerHTML = '<p class="small">'+esc(PP.text)+'</p>';
+        w.appendChild(f.form);
+        var more = document.createElement('p'); more.className = 'xmore'; more.innerHTML = '<a href="'+extHref+'">'+esc(PP.more)+' '+arrowR()+'</a>';
+        more.querySelector('a').addEventListener('click', function(){ src(source); });
+        w.appendChild(more);
+        after.parentNode.insertBefore(w, after.nextSibling);
+      }
+      if(btn) btn.hidden = true;
+      var i = w.querySelector('input'); if(!i.value){ try{ i.focus({preventScroll:true}); }catch(e){ i.focus(); } }
+      return w;
+    };
+    $('#extTop').addEventListener('click', function(ev){ src('result-top'); if(window.discTrack) window.discTrack('ext-top');
+      if(PP){ ev.preventDefault(); buyOpen(xt, this, 'result-top', this); } });
+    xo.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(ev){ src('result-block'); if(window.discTrack) window.discTrack('ext-click');
+      if(PP && a === xb){ ev.preventDefault(); buyOpen(xo, xb.parentNode, 'result-block', xb); } }); });
     if('IntersectionObserver' in window){ var xio = new IntersectionObserver(function(es){ if(es[0].isIntersecting){ xio.disconnect(); if(window.discTrack) window.discTrack('ext-show'); } }, {threshold:.4}); xio.observe(xo); }
     // закреплённая кнопка: видна между формой e-mail (в чужом результате формы нет — тогда между верхним призывом) и нижним блоком,
     // то есть пока человек читает описание профиля; у самих призывов и ниже нижнего блока её нет. Источник покупки result-bar, цель ext-bar
-    var bar = $('#extBar'), xt = view.querySelector('.xtop');
+    var bar = $('#extBar');
     if(xbarStop){ xbarStop(); xbarStop = null; }
     if(bar){
       var anchor = $('#sendBox') || xt;
@@ -1113,7 +1149,9 @@ function renderReport(r, opts){
       window.addEventListener('scroll', barSync); window.addEventListener('resize', barSync);
       xbarStop = function(){ window.removeEventListener('scroll', barSync); window.removeEventListener('resize', barSync); };
       barSync();
-      $('#extBarGo').addEventListener('click', function(){ src('result-bar'); if(window.discTrack) window.discTrack('ext-bar'); });
+      // с формой на месте закреплённая кнопка раскрывает её в нижнем блоке и прокручивает к ней
+      $('#extBarGo').addEventListener('click', function(ev){ src('result-bar'); if(window.discTrack) window.discTrack('ext-bar');
+        if(PP){ ev.preventDefault(); buyOpen(xo, xb.parentNode, 'result-bar', xb).scrollIntoView({behavior:'smooth', block:'center'}); } });
       $('#extBarX').addEventListener('click', function(){ bar.parentNode.removeChild(bar); xbarStop(); xbarStop = null; try{ sessionStorage.setItem('disc.xbar', 'off'); }catch(e){} });
     }
   }
@@ -1489,6 +1527,9 @@ function initCommon(c){
     document.body.appendChild(el); document.body.classList.add("has-consent");
     function close(v){ lsSet("disc.consent", v); el.remove(); document.body.classList.remove("has-consent"); }
     $("#consentOk").addEventListener("click", function(){ close(ask ? "analytics" : "noted"); if(ask) loadYm(); });
+    /* тест пройден в этом браузере: уведомление было на экране все 24 блока. В режиме always оно только сообщает — считаем его прочитанным
+       и убираем, чтобы на телефоне оно не закрывало кнопку отчёта на экране результата. Согласие (режим optin) так не ставится никогда */
+    if(!ask) window.discNoticeSeen = function(){ if(el.parentNode) close("noted"); };
     if($("#consentNo")) $("#consentNo").addEventListener("click", function(){ close("essential"); });
   })();
 

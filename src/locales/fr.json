@@ -779,7 +779,7 @@
       "sections": [
         {
           "h": "Comment le recevoir",
-          "p": ["Le profil détaillé est envoyé par e-mail à l'adresse indiquée lors du paiement, au plus tard 24 heures après le paiement."]
+          "p": ["Le profil détaillé est envoyé par e-mail à l'adresse indiquée lors du paiement, dès que le paiement est effectué."]
         },
         {
           "h": "Ce qui reste gratuit",
@@ -796,7 +796,7 @@
       "description": "Conditions générales de vente du service payant « Profil DISC détaillé » sur disc-test.org : prix, paiement et envoi, remboursement, droits sur les contenus.",
       "h1": "Conditions générales de vente",
       "linkText": "conditions générales de vente",
-      "edition": "Version du 9 octobre 2026. Traduction française mise à jour le 20 octobre 2026.",
+      "edition": "Version du 21 octobre 2026. Traduction française mise à jour le 21 octobre 2026.",
       "note": "Ce texte est la traduction française des conditions originales publiées à l'adresse {original}. En cas de divergence entre les deux textes, l'original prévaut, sauf pour le prix et les modalités de paiement : pour la version française du Site, ceux-ci sont régis par les articles 1 et 3 de la présente traduction.",
       "seller": "Manukyan Armen, entrepreneur individuel, N° d’identification fiscale (INN) {inn}",
       "lead": "Le présent document constitue une offre officielle (offre au public) de conclure un contrat portant sur le service payant « Profil DISC détaillé » aux conditions énoncées ci-dessous. Cette offre émane de {seller} (ci-après « le Prestataire »). Le paiement du service vaut acceptation pleine, entière et sans réserve des présentes conditions (acceptation de l'offre).",
@@ -837,7 +837,7 @@
           "h": "4. Modalités de fourniture du Service",
           "p": [
             "4.1. Pour bénéficier du Service, le Client passe le Test sur le Site, indique une adresse e-mail et paie le Service. Le Profil détaillé est établi à partir du résultat du Test pour lequel le Client a procédé au paiement.",
-            "4.2. Le Prestataire envoie le Profil détaillé à l'adresse indiquée au plus tard 24 heures après le paiement (article 3.3). L'e-mail arrive généralement plus tôt ; 24 heures constituent le délai maximal.",
+            "4.2. Le Prestataire envoie le Profil détaillé à l'adresse indiquée au plus tard 24 heures après le paiement (article 3.3). L'e-mail arrive généralement juste après le paiement ; 24 heures constituent le délai maximal.",
             "4.3. Le Service est réputé fourni au moment de l'envoi du Profil détaillé. Si le Client ne signale aucun défaut dans les trois jours calendaires qui suivent, le Service est réputé accepté. Aucun acte constatant l'exécution du Service n'est établi.",
             "4.4. Si l'e-mail n'arrive pas, le Client est invité à vérifier son dossier de courrier indésirable (spam) et à écrire au Prestataire à l'adresse {email} : le Profil détaillé lui sera renvoyé.",
             "4.5. Le Client est responsable de l'exactitude de l'adresse e-mail qu'il indique."
@@ -849,8 +849,8 @@
             "5.1. Le Client peut annuler sa commande à tout moment tant que le Profil détaillé ne lui a pas été envoyé. La somme versée lui est alors intégralement remboursée.",
             "5.2. Si le Profil détaillé n'est pas envoyé dans le délai prévu à l'article 4.2, le Client peut exiger le remboursement intégral de la somme versée.",
             "5.3. Si le Profil détaillé reçu présente un défaut (l'e-mail ou le fichier ne s'ouvre pas, il contient le résultat d'une autre personne, son contenu ne correspond pas à la description du Service sur le Site), le Prestataire y remédie dans un délai de trois jours ouvrés à compter de la demande du Client. Si le défaut n'est pas corrigé dans ce délai, la somme versée est intégralement remboursée.",
-            "5.4. Une fois le Service dûment fourni, la somme versée n'est pas remboursée. Le fait que le Client ne soit pas d'accord avec la description de son profil ne constitue pas un défaut du Service.",
-            "5.5. Pour obtenir un remboursement, le Client adresse une demande à {email} en précisant l'adresse e-mail utilisée lors du paiement, la date et le montant du paiement ainsi que le motif du remboursement.",
+            "5.4. Garantie de remboursement : dans un délai de sept jours calendaires à compter du paiement, le Client peut, sans avoir à motiver sa demande, exiger le remboursement intégral de la somme versée, y compris après réception du Profil détaillé. Passé ce délai, la somme versée pour un Service dûment fourni n'est pas remboursée ; le fait que le Client ne soit pas d'accord avec la description de son profil ne constitue pas un défaut du Service.",
+            "5.5. Pour obtenir un remboursement, le Client adresse une demande à {email} en précisant l'adresse e-mail utilisée lors du paiement, la date et le montant du paiement ainsi que le motif du remboursement ; pour un remboursement au titre de l'article 5.4, l'indication du motif est facultative.",
             "5.6. Le Prestataire répond à la demande dans un délai de trois jours ouvrés. Le remboursement est effectué par le même moyen que celui utilisé pour le paiement, au plus tard dix jours calendaires après la réception de la demande ; le délai dans lequel la somme est créditée dépend de la banque du Client.",
             "5.7. Les dispositions du présent article ne limitent pas les droits que la législation sur la protection des consommateurs reconnaît au Client."
           ]
@@ -908,6 +908,7 @@
         {
           "h": "Quand le remboursement est intégral",
           "ul": [
+            "Le profil détaillé ne vous convient pas : dans les 7 jours qui suivent le paiement, nous vous remboursons sans que vous ayez à vous justifier.",
             "Vous annulez votre commande avant que le profil détaillé vous ait été envoyé.",
             "Le profil détaillé ne vous est pas envoyé dans les 24 heures qui suivent le paiement.",
             "Le profil détaillé reçu présente un défaut (l'e-mail ou le fichier ne s'ouvre pas, il contient le résultat d'une autre personne, son contenu ne correspond pas à la description du service sur le site) et nous n'y avons pas remédié dans les trois jours ouvrés suivant votre demande."
@@ -915,12 +916,12 @@
         },
         {
           "h": "Quand il n'y a pas de remboursement",
-          "p": ["Si le profil détaillé a été envoyé à temps et correspond à la description, le service est réputé fourni et la somme versée n'est pas remboursée. Le fait de ne pas être d'accord avec la description de votre profil ne constitue pas un défaut du service."]
+          "p": ["Si plus de 7 jours se sont écoulés depuis le paiement et que le profil détaillé a été envoyé à temps et correspond à la description, le service est réputé fourni et la somme versée n'est pas remboursée. Le fait de ne pas être d'accord avec la description de votre profil ne constitue pas un défaut du service."]
         },
         {
           "h": "Comment demander un remboursement",
           "p": ["Écrivez à {email} en indiquant :"],
-          "ul": ["l'adresse e-mail que vous avez indiquée lors du paiement ;", "la date et le montant du paiement ;", "le motif du remboursement."]
+          "ul": ["l'adresse e-mail que vous avez indiquée lors du paiement ;", "la date et le montant du paiement ;", "le motif du remboursement (facultatif dans les 7 jours qui suivent le paiement)."]
         },
         {
           "h": "Délais",
@@ -1010,7 +1011,7 @@
       "how": [
         "Passez le test gratuit : 24 blocs, environ 10 minutes. Si vous l'avez déjà passé, inutile de recommencer : le rapport est établi à partir du résultat que vous avez déjà.",
         "Réglez le rapport sur la page de paiement sécurisée de Prodamus, notre opérateur de paiement.",
-        "Le rapport arrive par e-mail, en pièce jointe au format PDF, au plus tard 24 heures après le paiement."
+        "Le rapport arrive par e-mail juste après le paiement, en pièce jointe au format PDF."
       ],
       "faqTitle": "Questions fréquentes",
       "faq": [
@@ -1018,7 +1019,7 @@
         { "q": "Sous quelle forme le rapport arrive-t-il ?", "a": "Un fichier PDF d'environ 30 pages A4, joint à un e-mail. Il se lit aussi bien à l'écran que sur papier ; chacune des trois fiches pratiques tient sur une seule page." },
         { "q": "Dans quelle langue le rapport est-il rédigé ?", "a": "En français. Le rapport a été écrit directement en français, pour des lecteurs francophones ; ce n'est pas la traduction d'une autre langue." },
         { "q": "Est-ce un diagnostic ou une évaluation des aptitudes ?", "a": "Non. Le rapport décrit votre style de comportement à partir de vos réponses. Il ne pose aucun diagnostic, ne mesure pas l'intelligence et ne prédit pas la réussite." },
-        { "q": "Peut-on se faire rembourser ?", "a": "Notre {refund} précise dans quels cas et comment obtenir un remboursement." }
+        { "q": "Peut-on se faire rembourser ?", "a": "Oui. Si le rapport ne vous convient pas, écrivez à {email} dans les 7 jours qui suivent le paiement : nous vous remboursons intégralement, sans que vous ayez à vous justifier. Les autres cas et la marche à suivre sont précisés dans notre {refund}." }
       ],
       "priceLabel": "Prix",
       "price": "{price} USD",
@@ -1034,7 +1035,8 @@
       },
       "pay": {
         "title": "Votre rapport sera établi à partir de votre test du {date}",
-        "text": "Le rapport arrive par e-mail, en pièce jointe au format PDF, au plus tard 24 heures après le paiement. Le reçu de paiement est envoyé à la même adresse.",
+        "text": "Le rapport arrive par e-mail juste après le paiement, en pièce jointe au format PDF. Le reçu de paiement est envoyé à la même adresse.",
+        "guarantee": "Satisfait ou remboursé pendant 7 jours.",
         "emailLabel": "E-mail pour le rapport et le reçu",
         "button": "Acheter",
         "note": "En cliquant sur « Acheter », vous acceptez nos {offer}. Le paiement se fait en dollars américains sur la page sécurisée de Prodamus : c'est là, et non sur ce site, que vous saisissez les données de votre carte. Sur votre relevé bancaire, l'opération peut apparaître sous le nom simpleway.by.",
@@ -1044,14 +1046,14 @@
         "how": [
           "Passez le test gratuit : 24 blocs, environ 10 minutes. Si vous l'avez déjà passé, inutile de recommencer : le rapport est établi à partir du résultat que vous avez déjà.",
           "Indiquez votre e-mail et cliquez sur « Acheter ». Vous payez en dollars américains sur la page sécurisée de Prodamus, notre opérateur de paiement ; cette page est en anglais. Sur votre relevé bancaire, l'opération peut apparaître sous le nom simpleway.by : c'est le nom qu'utilise bePaid, la société qui traite les paiements par carte pour Prodamus.",
-          "Le rapport arrive par e-mail, en pièce jointe au format PDF, au plus tard 24 heures après le paiement. Le reçu de paiement est envoyé à la même adresse."
+          "Le rapport arrive par e-mail juste après le paiement, en pièce jointe au format PDF. Le reçu de paiement est envoyé à la même adresse."
         ],
         "thanks": {
           "title": "Merci pour votre achat — Rapport DISC détaillé",
           "description": "Paiement du rapport DISC détaillé : où et quand arrive le rapport, et que faire si l'e-mail n'arrive pas.",
           "h1": "Merci pour votre achat !",
-          "lead": "Le rapport arrivera à l'adresse e-mail indiquée lors du paiement, en pièce jointe au format PDF, au plus tard 24 heures après le paiement. En général, il arrive bien plus tôt.",
-          "leadEmail": "Le rapport arrivera à l'adresse {email}, en pièce jointe au format PDF, au plus tard 24 heures après le paiement. En général, il arrive bien plus tôt.",
+          "lead": "Le rapport arrive dans un instant à l'adresse e-mail indiquée lors du paiement, en pièce jointe au format PDF.",
+          "leadEmail": "Le rapport arrive dans un instant à l'adresse {email}, en pièce jointe au format PDF.",
           "order": "Numéro de commande : {order}",
           "statusWait": "En attente de la confirmation du paiement par Prodamus.",
           "statusPaid": "Paiement reçu. Nous préparons votre rapport.",
@@ -1756,7 +1758,7 @@
         },
         {
           "h": "Un résultat immédiat",
-          "p": "Le rapport de synthèse s'affiche dès que vous avez répondu au dernier bloc. Le rapport détaillé est assemblé sitôt payé, à toute heure du jour ou de la nuit, sans rendez-vous ni file d'attente : l'e-mail arrive en général en quelques minutes, et au plus tard 24 heures après le paiement."
+          "p": "Le rapport de synthèse s'affiche dès que vous avez répondu au dernier bloc. Le rapport détaillé est assemblé à toute heure du jour ou de la nuit, sans rendez-vous ni file d'attente : l'e-mail qui le contient arrive juste après le paiement."
         },
         {
           "h": "Un prix accessible",

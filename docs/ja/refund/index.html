@@ -267,6 +267,14 @@ html[lang=ar] body,html[lang=hi] body{font-size:17px;line-height:1.65}
 .paymark.ok{color:var(--s)}
 .paymark.fail{color:var(--d)}
 @media (max-width:480px){.xpay .btn{flex:1 1 auto}}
+/* строка гарантии возврата у кнопки «Купить» (content.product.pay.guarantee): на странице отчёта и в форме на экране результата */
+p.xguar{flex:1 1 100%;margin:0;font-size:14px;font-weight:600;color:var(--ink)}
+.service p.xguar{margin-top:-6px}
+/* покупка на экране результата: кнопка призыва раскрывает на месте форму с e-mail (src/pay.js, payForms) */
+.xinline,.xtop .xinline{flex:1 1 100%;border-top:1px solid var(--line);padding-top:12px}
+.xoffer .xinline{margin:0 0 12px}
+.xinline>p.small{margin:0 0 12px}
+.xinline .xmore{margin:12px 0 0;font-size:14px}
 .content .xq{font-family:var(--font-body);font-size:17px;font-weight:600;text-transform:none;letter-spacing:0;color:var(--ink);margin:20px 0 6px}
 /* «Как готовятся отчёты»: плитки преимуществ */
 .content .hmgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:14px 0 8px}
@@ -618,7 +626,7 @@ body.has-consent{padding-bottom:160px}
   </header>
   <nav class="sitenav no-print"><a href="../../ja/">診断</a><a href="../../ja/disc/">DISC理論とは</a><a href="../../ja/styles/">4つのスタイル</a><a href="../../ja/profiles/">16のタイプ</a><a href="../../ja/results/">結果の見方</a><a href="../../ja/compatibility/">スタイルの相性</a><a href="../../ja/faq/">よくある質問</a><a href="../../ja/how-reports-are-made/">レポートができるまで</a><a href="../../ja/services/" aria-current="page">サービス</a><a href="../../ja/contact/">お問い合わせ</a></nav>
   <nav class="crumbs"><a href="../../ja/">ホーム</a><span>›</span><a href="../services/">サービス</a><span>›</span><span aria-current="page">返金ポリシー</span></nav>
-  <main class="content"><div class="eyebrow">サービス</div><h1>返金ポリシー</h1><p class="lead">DISC詳細プロフィールの料金が、どのような場合に、どのような手続きで返金されるかを簡潔にまとめました。本ポリシーは<a href="../offer/">有料サービス利用規約</a>（第5条）の一部です。</p><p class="notice">本書は、<a href="../../ru/refund/" hreflang="ru" dir="ltr">disc-test.org/ru/refund/</a>で公開されている原文の日本語訳です。両者の内容に相違がある場合は、原文が優先されます。詳細プロフィールの日本語版は、まだ提供していません。現時点では日本語版のご注文はできず、お支払いも受け付けていません。</p><h2>全額を返金する場合</h2><ul><li>詳細プロフィールが送信される前に、サービスをキャンセルされた場合。</li><li>お支払いから24時間以内に詳細プロフィールが送信されなかった場合。</li><li>受け取った詳細プロフィールに不備（メールまたはファイルが開けない、他の人の結果が記載されている、内容がサイト上のサービスの説明と一致しない）があり、ご連絡をいただいてから3営業日以内に当サイトが是正できなかった場合。</li></ul><h2>返金しない場合</h2><p>詳細プロフィールが期限内に送信され、内容が説明のとおりである場合は、サービスは提供されたものとみなし、料金は返金しません。ご自身のプロフィールの解説の内容に同意できないことは、サービスの不備にはあたりません。</p><h2>返金の申請方法</h2><p><a href="mailto:info@disc-test.org">info@disc-test.org</a>宛てに、次の内容を記載してご連絡ください。</p><ul><li>お支払いの際に入力したメールアドレス</li><li>お支払いの日付と金額</li><li>返金の理由</li></ul><h2>回答と返金の期限</h2><p>返金の申請には、3営業日以内に回答します。返金は、お支払いに使用された方法と同じ方法で、申請を受け取った日から暦日で10日以内に行います。口座に着金するまでの期間は、ご利用の銀行によって異なります。</p><h2>詳細プロフィールのメールが届かない場合</h2><p>迷惑メールフォルダをご確認ください。そこにも見当たらない場合は、<a href="mailto:info@disc-test.org">info@disc-test.org</a>までご連絡ください。詳細プロフィールを再送します。</p><h2>あなたの権利</h2><p>本ポリシーは、消費者保護に関する法令によってあなたに認められている権利を制限するものではありません。</p><p class="seealso"><a href="../offer/">有料サービス利用規約 →</a> · <a href="../services/">サービス →</a></p><p class="updated"><time datetime="2026-10-11">最終更新：2026年10月11日</time></p></main>
+  <main class="content"><div class="eyebrow">サービス</div><h1>返金ポリシー</h1><p class="lead">DISC詳細プロフィールの料金が、どのような場合に、どのような手続きで返金されるかを簡潔にまとめました。本ポリシーは<a href="../offer/">有料サービス利用規約</a>（第5条）の一部です。</p><p class="notice">本書は、<a href="../../ru/refund/" hreflang="ru" dir="ltr">disc-test.org/ru/refund/</a>で公開されている原文の日本語訳です。両者の内容に相違がある場合は、原文が優先されます。詳細プロフィールの日本語版は、まだ提供していません。現時点では日本語版のご注文はできず、お支払いも受け付けていません。</p><h2>全額を返金する場合</h2><ul><li>お支払いの日から7日以内に返金をお申し出いただいた場合。詳細プロフィールを受け取った後でも、理由を問わず全額返金します。</li><li>詳細プロフィールが送信される前に、サービスをキャンセルされた場合。</li><li>お支払いから24時間以内に詳細プロフィールが送信されなかった場合。</li><li>受け取った詳細プロフィールに不備（メールまたはファイルが開けない、他の人の結果が記載されている、内容がサイト上のサービスの説明と一致しない）があり、ご連絡をいただいてから3営業日以内に当サイトが是正できなかった場合。</li></ul><h2>返金しない場合</h2><p>お支払いから7日を過ぎており、かつ詳細プロフィールが期限内に送信され、内容が説明のとおりである場合は、サービスは提供されたものとみなし、料金は返金しません。ご自身のプロフィールの解説の内容に同意できないことは、サービスの不備にはあたりません。</p><h2>返金の申請方法</h2><p><a href="mailto:info@disc-test.org">info@disc-test.org</a>宛てに、次の内容を記載してご連絡ください。</p><ul><li>お支払いの際に入力したメールアドレス</li><li>お支払いの日付と金額</li><li>返金の理由（お支払いから7日以内であれば、記載は不要です）</li></ul><h2>回答と返金の期限</h2><p>返金の申請には、3営業日以内に回答します。返金は、お支払いに使用された方法と同じ方法で、申請を受け取った日から暦日で10日以内に行います。口座に着金するまでの期間は、ご利用の銀行によって異なります。</p><h2>詳細プロフィールのメールが届かない場合</h2><p>迷惑メールフォルダをご確認ください。そこにも見当たらない場合は、<a href="mailto:info@disc-test.org">info@disc-test.org</a>までご連絡ください。詳細プロフィールを再送します。</p><h2>あなたの権利</h2><p>本ポリシーは、消費者保護に関する法令によってあなたに認められている権利を制限するものではありません。</p><p class="seealso"><a href="../offer/">有料サービス利用規約 →</a> · <a href="../services/">サービス →</a></p><p class="updated"><time datetime="2026-10-21">最終更新：2026年10月21日</time></p></main>
   <footer class="foot">
     <div class="row2"><span>全24問｜約10分｜正解・不正解はありません</span><span class="footlinks"><a href="../../ja/about/">このサイトについて</a> · <a href="../../ja/services/">サービス</a> · <a href="../../ja/offer/">有料サービス規約</a> · <a href="../../ja/contact/">お問い合わせ</a> · <a href="../../ja/privacy/">プライバシー</a></span></div>
     <nav class="materials" aria-label="DISCの資料"><span class="mlabel">DISCの資料</span><a href="../../ja/disc/">DISC理論とは</a><a href="../../ja/styles/">4つのスタイル</a><a href="../../ja/profiles/">16のタイプ</a><a href="../../ja/results/">結果の見方</a><a href="../../ja/compatibility/">スタイルの相性</a><a href="../../ja/colors/">DISCの4色</a><a href="../../ja/teams/">チームでのDISC</a><a href="../../ja/disc-vs-mbti/">DISCとMBTI</a><a href="../../ja/pdf/">診断シート（PDF）</a><a href="../../ja/faq/">よくある質問</a></nav>
@@ -771,6 +779,9 @@ function initCommon(c){
     document.body.appendChild(el); document.body.classList.add("has-consent");
     function close(v){ lsSet("disc.consent", v); el.remove(); document.body.classList.remove("has-consent"); }
     $("#consentOk").addEventListener("click", function(){ close(ask ? "analytics" : "noted"); if(ask) loadYm(); });
+    /* тест пройден в этом браузере: уведомление было на экране все 24 блока. В режиме always оно только сообщает — считаем его прочитанным
+       и убираем, чтобы на телефоне оно не закрывало кнопку отчёта на экране результата. Согласие (режим optin) так не ставится никогда */
+    if(!ask) window.discNoticeSeen = function(){ if(el.parentNode) close("noted"); };
     if($("#consentNo")) $("#consentNo").addEventListener("click", function(){ close("essential"); });
   })();
 
