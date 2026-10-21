@@ -453,6 +453,16 @@ html[dir=rtl] .ask.to-l .arr{transform:none}
 .traits span{font-size:13px;padding:4px 10px;border-radius:999px;background:var(--soft);color:var(--ink)}
 .substyle{border-inline-start:4px solid var(--ks);padding:4px 0;padding-inline-start:14px;margin-top:4px}
 .share{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:var(--shadow)}
+.sharedlg{border:1px solid var(--line);border-radius:16px;padding:0;background:var(--surface);color:var(--ink);box-shadow:0 20px 60px -20px rgba(0,0,0,.5);width:min(400px,calc(100% - 32px));max-width:none;max-height:calc(100% - 32px)}
+.sharedlg::backdrop{background:rgba(10,12,15,.55)}
+.sharedlg-in{padding:18px 20px 20px}
+.sharedlg-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+.sharedlg-head h2{margin:0;font-size:19px;line-height:1.3}
+.sharedlg-x{font:inherit;font-size:26px;line-height:1;width:38px;height:38px;flex:none;border-radius:8px;border:0;background:transparent;color:var(--muted);cursor:pointer}
+.sharedlg-x:hover{background:var(--soft);color:var(--ink)}
+.sharedlg-list{display:grid;gap:10px}
+.sharedlg-list .btn{width:100%;justify-content:flex-start;gap:12px}
+.sharedlg-list svg{flex:none}
 .codebox{font-family:var(--font-mono);font-size:12px;line-height:1.5;word-break:break-all;background:var(--paper);border:1px dashed var(--line-strong);padding:10px 12px;border-radius:8px;margin:12px 0;color:var(--ink);width:100%;min-height:0;resize:none;direction:ltr;text-align:left}
 .notice{background:var(--soft);border-radius:10px;padding:12px 14px;font-size:14px}
 .sendstatus{margin:-4px 0 10px;padding:8px 12px;border-radius:8px;background:var(--soft)}
@@ -969,13 +979,11 @@ function renderReport(r, opts){
       '<div class="share no-print" style="margin-top:16px"><h2>'+t('share.title')+'</h2>'+
         // свой результат: только ссылка и PDF — ссылка открывает отчёт в один клик и принимается «Панелью администратора» вместо кода (с 2026-10-20 код и письмо убраны)
         '<p class="small">'+t('share.text')+'</p>'+
-        '<div class="actions"><button class="btn secondary" type="button" id="copyLink">'+t('share.copyLink')+'</button>'+
-          '<button class="btn secondary" type="button" id="print">'+t('share.pdf')+'</button></div>'+
+        shareButtons()+
       '</div>'+
       '<div class="actions no-print" style="margin-top:18px"><button class="link" id="restart" type="button">'+t('share.restart')+'</button></div>'
     :
-      '<div class="card no-print" style="margin-top:16px"><h3>'+t('share.codeTitle')+'</h3><textarea class="codebox ym-hide-content" id="code" readonly rows="3" aria-label="'+t('share.codeAria')+'">'+esc(code)+'</textarea>'+
-        '<div class="actions"><button class="btn secondary small" type="button" id="copyLink">'+t('share.copyLink')+'</button><button class="btn secondary small" type="button" id="copyCode">'+t('share.copyCode')+'</button><button class="btn secondary small" type="button" id="print">'+t('share.pdf')+'</button></div></div>'
+      '<div class="share no-print" style="margin-top:16px">'+shareButtons()+'</div>'
     )+
     // закреплённая кнопка отчёта (телефон); скрытую крестиком не показываем до конца сеанса
     (PM && !opts.fromAdmin && !extBought() && !barOff() ? '<div class="xbar no-print" id="extBar"><a class="btn" id="extBarGo" href="'+extHref+'">'+esc(PM.button)+'</a>'+
@@ -1036,8 +1044,8 @@ function renderReport(r, opts){
       $('#extBarX').addEventListener('click', function(){ bar.parentNode.removeChild(bar); xbarStop(); xbarStop = null; try{ sessionStorage.setItem('disc.xbar', 'off'); }catch(e){} });
     }
   }
-  if($('#copyCode')) $('#copyCode').addEventListener('click', function(){ copyText(code, $('#code')); });
-  $('#copyLink').addEventListener('click', function(){ copyText(link, null); });
+  // «Поделиться профилем» — окно со ссылкой и соцсетями; адреса соцсетей собираются только при нажатии (ссылку с кодом в разметку не пишем)
+  shareDialog(link, t('share.msg', {name: prof.name, key: cls.key}));
   $('#print').addEventListener('click', function(){ savePdf(r, cls.key, this); });
   if($('#restart')) $('#restart').addEventListener('click', function(){ dropHash(); renderIntro(); window.scrollTo(0,0); });
   if($('#backAdmin')) $('#backAdmin').addEventListener('click', function(){ renderAdmin(); window.scrollTo(0,0); });
@@ -1065,6 +1073,48 @@ function renderReport(r, opts){
       else { showSendStatus(r, code, 'mailto'); location.href = mailto(r.email); }
     }
   }
+}
+/* ====== «Поделиться профилем» и «Сохранить профиль» (с 2026-10-22, по просьбе заказчика) ======
+   Кнопки под отчётом — и у своего результата, и у открытого по ссылке. Окно: «Скопировать ссылку» и четыре сети в порядке заказчика;
+   ссылка — та же, что в адресной строке (без e-mail). Иконки — Simple Icons (CC0), значок ссылки — Feather (MIT). */
+var SHARE_NETS = {
+  "linkedin": {name:"LinkedIn", color:"#0A66C2", url:"https://www.linkedin.com/sharing/share-offsite/?url={u}",
+    icon:"M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"},
+  "facebook": {name:"Facebook", color:"#0866FF", url:"https://www.facebook.com/sharer/sharer.php?u={u}",
+    icon:"M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"},
+  "whatsapp": {name:"WhatsApp", color:"#25D366", url:"https://wa.me/?text={tu}",
+    icon:"M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"},
+  "telegram": {name:"Telegram", color:"#26A5E4", url:"https://t.me/share/url?url={u}&text={t}",
+    icon:"M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"}
+};
+var LINK_ICON = '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>';
+function shareButtons(){
+  return '<div class="actions"><button class="btn secondary" type="button" id="shareOpen" aria-haspopup="dialog">'+t('share.profile')+'</button>'+
+    '<button class="btn secondary" type="button" id="print">'+t('share.saveProfile')+'</button></div>'+
+    '<dialog class="sharedlg" id="shareDlg" aria-labelledby="shareDlgT"><div class="sharedlg-in">'+
+      '<div class="sharedlg-head"><h2 id="shareDlgT">'+t('share.profile')+'</h2><button class="sharedlg-x" type="button" id="shareX" aria-label="'+esc(t('share.close'))+'" title="'+esc(t('share.close'))+'">×</button></div>'+
+      '<div class="sharedlg-list"><button class="btn secondary" type="button" id="copyLink">'+LINK_ICON+t('share.copyLink')+'</button>'+
+      Object.keys(SHARE_NETS).map(function(id){ var n = SHARE_NETS[id];
+        return '<button class="btn secondary" type="button" data-net="'+id+'"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="'+n.color+'"><path d="'+n.icon+'"/></svg>'+esc(n.name)+'</button>'; }).join('')+
+      '</div></div></dialog>';
+}
+function shareDialog(link, msg){
+  var dlg = $('#shareDlg'), e = encodeURIComponent;
+  function close(){ if(dlg.close) dlg.close(); else dlg.removeAttribute('open'); }
+  $('#shareOpen').addEventListener('click', function(){
+    if(window.discTrack) window.discTrack('share');
+    if(dlg.showModal) dlg.showModal(); else dlg.setAttribute('open', '');
+  });
+  $('#shareX').addEventListener('click', close);
+  dlg.addEventListener('click', function(ev){ if(ev.target === dlg) close(); }); // щелчок по затемнению вокруг окна
+  $('#copyLink').addEventListener('click', function(){ copyText(link, null); close(); });
+  dlg.querySelectorAll('[data-net]').forEach(function(b){
+    b.addEventListener('click', function(){
+      var id = b.getAttribute('data-net'), href = SHARE_NETS[id].url.replace('{u}', e(link)).replace('{t}', e(msg)).replace('{tu}', e(msg+' '+link));
+      if(window.discTrack) window.discTrack('share-'+id);
+      window.open(href, '_blank', 'noopener,noreferrer'); close();
+    });
+  });
 }
 function arrowR(){ return L.dir==='rtl' ? '←' : '→'; }
 
