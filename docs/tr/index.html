@@ -753,7 +753,7 @@ function badgeHTML(cls, cssClass){
 }
 
 /* ====== состояние ====== */
-var view = $('#view'), stepEl = $('#step'), progEl = $('#progress'), metaEl = $('#progmeta');
+var view = $('#view'), stepEl = $('#step'), progEl = $('#progress'), metaEl = $('#progmeta'), footEl = $('.foot');
 var S = null;
 
 // cap — подпись экрана, а не счётчик блоков: на телефоне она переносится на свою строку (см. .topbar.cap)
@@ -768,8 +768,10 @@ function renderProgress(i){
   var min = Math.floor((24-n)*SEC_PER_BLOCK/60);
   metaEl.innerHTML = '<span>'+t('test.done',{n:'<b>'+Math.round(n/24*100)+'</b>'})+'</span><span>'+(min>=1 ? t('test.left',{n:'<b>'+min+'</b>'}) : t('test.leftLast'))+'</span>';
   metaEl.hidden=false;
+  if(footEl) footEl.hidden=true;
 }
-function hideProgress(){ progEl.hidden=true; metaEl.hidden=true; }
+// Подвал сайта на экранах теста (блоки 1–24) скрыт, чтобы ссылки не уводили с теста; решение заказчика от 2026-10-21
+function hideProgress(){ progEl.hidden=true; metaEl.hidden=true; if(footEl) footEl.hidden=false; }
 
 /* ====== экран 1: вступление ====== */
 /* Разметка стартового экрана. Один и тот же код используют сборка (build.js кладёт готовый HTML
