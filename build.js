@@ -518,7 +518,7 @@ for (const L of locales) {
       // своё описание профиля (profiles.<код>.metaDesc) + призыв; шаблон из summary давал два двоеточия и обрыв на полуслове (аудит 3, п. 2)
       description: profileDesc(L, key, t),
       crumbs: [{ name: t('nav.profiles'), href: '../', sub: 'profiles/' }, { name: pr.name }], content,
-      // пришли по ссылке «Поделиться типом» (?ref=<сеть>, см. shareNetLinks в template.html) — вверху баннер-приглашение пройти тест
+      // пришли по ссылке с ?ref= (прежние ссылки «Поделиться типом» с экрана результата; блок убран 2026-10-21, ссылки уже разосланы) — вверху баннер-приглашение пройти тест
       pageJs: `if(/[?&]ref=/.test(location.search)){ var inv = document.createElement('aside'); inv.className = 'cta invite'; inv.innerHTML = ${jsStr(
         `<div><h2>${escFull(t('invite.title', { name: pr.name }))}</h2><p>${escFull(t('invite.text'))}</p></div><a class="btn" href="${b}">${escFull(t('cta.button'))}</a>`)};` +
         `inv.querySelector('a').addEventListener('click', function(){ if(window.discTrack) window.discTrack('invite'); });` +
