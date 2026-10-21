@@ -29,7 +29,7 @@ function payCode(r){
    работают вместе: e-mail набирается в одной — появляется в остальных, на время перехода к оплате все кнопки заняты.
    Ими пользуются страница отчёта (initPayBuy) и экран результата на главной (src/template.html: покупка без перехода на страницу отчёта).
    c: {T (тексты content.product.pay, noteHtml и errorHtml — готовая разметка), endpoint, L, esc, lsSet}.
-   add({id, code, source, email}) → {form, input, btn, st}: форма ещё не вставлена в страницу. */
+   add({id, code, source, email, price}) → {form, input, btn, st}: форма ещё не вставлена в страницу; price — цена крупно над кнопкой. */
 function payForms(c){
   var T = c.T, esc = c.esc, g = {busy:false, forms:[]};
   g.setBusy = function(on){ g.busy = on; g.forms.forEach(function(f){ f.btn.disabled = on; f.btn.textContent = on ? T.wait : T.button; }); };
@@ -39,7 +39,8 @@ function payForms(c){
     var form = document.createElement('form'); form.className = 'xpay'; form.noValidate = true;
     form.innerHTML = '<div class="field"><label for="'+o.id+'">'+esc(T.emailLabel)+'</label>'+
       '<input type="email" id="'+o.id+'" class="ym-disable-keys" autocomplete="email" inputmode="email" maxlength="'+PAY_EMAIL_MAX+'" required></div>'+
-      '<button class="btn" type="submit">'+esc(T.button)+'</button>'+
+      (o.price ? '<div class="xbuyact"><span class="xbig">'+esc(o.price)+'</span><button class="btn" type="submit">'+esc(T.button)+'</button></div>'
+        : '<button class="btn" type="submit">'+esc(T.button)+'</button>')+
       (T.guarantee ? '<p class="xguar">'+esc(T.guarantee)+'</p>' : '')+
       '<p class="small sendstatus err" aria-live="polite" hidden></p><p class="xnote">'+T.noteHtml+'</p>';
     var f = {form:form, input:form.querySelector('input'), btn:form.querySelector('button'), st:form.querySelector('.sendstatus')}, input = f.input, st = f.st;

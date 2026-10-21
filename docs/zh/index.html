@@ -257,12 +257,16 @@ html[lang=ar] body,html[lang=hi] body{font-size:17px;line-height:1.65}
 .paymark.ok{color:var(--s)}
 .paymark.fail{color:var(--d)}
 @media (max-width:480px){.xpay .btn{flex:1 1 auto}}
+/* цена крупно над кнопкой «Купить» (форма на экране результата, add({price})); на телефоне — во всю ширину */
+.xpay .xbuyact{display:flex;flex-direction:column;align-items:stretch;gap:8px}
+.xpay .xbig{font-family:var(--font-head);font-weight:500;font-size:30px;line-height:1.1;color:var(--ink);text-align:center;white-space:nowrap}
+@media (max-width:480px){.xpay .xbuyact{flex:1 1 100%}}
 /* строка гарантии возврата у кнопки «Купить» (content.product.pay.guarantee): на странице отчёта и в форме на экране результата */
 p.xguar{flex:1 1 100%;margin:0;font-size:14px;font-weight:600;color:var(--ink)}
 .service p.xguar{margin-top:-6px}
 /* покупка на экране результата: кнопка призыва раскрывает на месте форму с e-mail (src/pay.js, payForms) */
 .xinline{flex:1 1 100%;border-top:1px solid var(--line);padding-top:12px}
-.xoffer .xinline{margin:0 0 12px}
+.xoffer .xinline{margin:0}
 .xinline>p.small{margin:0 0 12px}
 .xinline .xmore{margin:12px 0 0;font-size:14px}
 .content .xq{font-family:var(--font-body);font-size:17px;font-weight:600;text-transform:none;letter-spacing:0;color:var(--ink);margin:20px 0 6px}
@@ -996,6 +1000,9 @@ function renderReport(r, opts){
   // PB.sample — подпись к листам образца: сборка оставляет её только там, где листы есть (отчёт на этом языке написан);
   // PB.soon — строка о заявке в языках, где отчёт пока нельзя заказать
   var PB = L.content && L.content.product, PM = PB && PB.promo, extHref = base+'extended-report/';
+  // покупка прямо в нижнем блоке (там, где отчёт продаётся и задан сервер оплаты): форма открыта сразу, кнопки-раскрывашки,
+  // строки «PDF на e-mail» у цены и «Тест и краткий отчёт остаются бесплатными» нет (решение заказчика от 2026-10-21)
+  var payHere = !!(PB && PB.pay && PAY_ENDPOINT && typeof payForms === 'function' && !opts.fromAdmin);
   function barOff(){ try{ return sessionStorage.getItem('disc.xbar') === 'off'; }catch(e){ return false; } }
   var low = KEYS.slice().sort(function(x,y){ return sc.net[y]-sc.net[x]; })[3];
   function extOffer(){
@@ -1009,8 +1016,8 @@ function renderReport(r, opts){
           '<p>'+esc(PB.sample)+'</p></div>' : '')+
       '</div>'+
       (PB.soon ? '<p class="xsoon">'+esc(PB.soon)+'</p>' : '')+
-      '<div class="actions xact"><a class="btn" href="'+extHref+'">'+esc(PB.button)+'</a><span class="xprice">'+esc(PB.price)+'</span></div>'+
-      '<p class="xfree">'+esc(PB.free)+'</p>'+
+      '<div class="actions xact"'+(payHere ? ' hidden' : '')+'><a class="btn" href="'+extHref+'">'+esc(PB.button)+'</a><span class="xprice">'+esc(PB.price)+'</span></div>'+
+      (payHere ? '' : '<p class="xfree">'+esc(PB.free)+'</p>')+
     '</section>';
   }
 
@@ -1095,14 +1102,14 @@ function renderReport(r, opts){
     function src(v){ try{ sessionStorage.setItem('disc.src', v); }catch(e){} }
     // покупка прямо здесь (PB.pay — там, где отчёт продаётся и задан сервер оплаты): кнопки призывов раскрывают на месте форму с e-mail
     // и кнопкой «Купить», без перехода на страницу отчёта. Источник заказа — какая кнопка раскрыла форму; без PB.pay кнопки ведут на страницу отчёта
-    var PP = PB.pay && PAY_ENDPOINT && typeof payForms === 'function' && !opts.fromAdmin ? PB.pay : null, pf = null, xb = xo.querySelector('.xact .btn');
+    var PP = payHere ? PB.pay : null, pf = null, xb = xo.querySelector('.xact .btn');
     var buyOpen = function(box, after, source, btn, quiet){
       var w = box.querySelector('.xinline');
       if(!w){
-        if(!pf) pf = payForms({T: Object.assign({}, PP, {noteHtml: PP.noteHtml.replace(/\{base\}/g, base)}), endpoint: PAY_ENDPOINT, L: L, esc: esc, lsSet: lsSet});
-        var em = $('#em'), fo = {id: 'xpayE' + pf.forms.length, code: code, source: source, email: (em && em.value.trim()) || r.email || who.email || ''}, f = pf.add(fo);
+        // без строки гарантии (она есть на странице отчёта); цена — крупно над кнопкой «Купить»: часть PB.price до « · » («490 ₽», «US$6.99»)
+        if(!pf) pf = payForms({T: Object.assign({}, PP, {guarantee: '', noteHtml: PP.noteHtml.replace(/\{base\}/g, base)}), endpoint: PAY_ENDPOINT, L: L, esc: esc, lsSet: lsSet});
+        var em = $('#em'), fo = {id: 'xpayE' + pf.forms.length, code: code, source: source, price: String(PB.price).split(' · ')[0], email: (em && em.value.trim()) || r.email || who.email || ''}, f = pf.add(fo);
         w = document.createElement('div'); w.className = 'xinline'; w.discOpts = fo;
-        w.innerHTML = '<p class="small">'+esc(PP.text)+'</p>';
         w.appendChild(f.form);
         var more = document.createElement('p'); more.className = 'xmore'; more.innerHTML = '<a href="'+extHref+'">'+esc(PP.more)+' '+arrowR()+'</a>';
         more.querySelector('a').addEventListener('click', function(){ src(source); });

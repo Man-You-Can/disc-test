@@ -287,12 +287,16 @@ html[lang=ar] body,html[lang=hi] body{font-size:17px;line-height:1.65}
 .paymark.ok{color:var(--s)}
 .paymark.fail{color:var(--d)}
 @media (max-width:480px){.xpay .btn{flex:1 1 auto}}
+/* цена крупно над кнопкой «Купить» (форма на экране результата, add({price})); на телефоне — во всю ширину */
+.xpay .xbuyact{display:flex;flex-direction:column;align-items:stretch;gap:8px}
+.xpay .xbig{font-family:var(--font-head);font-weight:500;font-size:30px;line-height:1.1;color:var(--ink);text-align:center;white-space:nowrap}
+@media (max-width:480px){.xpay .xbuyact{flex:1 1 100%}}
 /* строка гарантии возврата у кнопки «Купить» (content.product.pay.guarantee): на странице отчёта и в форме на экране результата */
 p.xguar{flex:1 1 100%;margin:0;font-size:14px;font-weight:600;color:var(--ink)}
 .service p.xguar{margin-top:-6px}
 /* покупка на экране результата: кнопка призыва раскрывает на месте форму с e-mail (src/pay.js, payForms) */
 .xinline{flex:1 1 100%;border-top:1px solid var(--line);padding-top:12px}
-.xoffer .xinline{margin:0 0 12px}
+.xoffer .xinline{margin:0}
 .xinline>p.small{margin:0 0 12px}
 .xinline .xmore{margin:12px 0 0;font-size:14px}
 .content .xq{font-family:var(--font-body);font-size:17px;font-weight:600;text-transform:none;letter-spacing:0;color:var(--ink);margin:20px 0 6px}
