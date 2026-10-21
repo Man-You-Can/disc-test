@@ -519,7 +519,7 @@
         },
         {
           "q": "¿El test es realmente gratis?",
-          "a": "Sí: el test y el resultado son gratuitos, sin registro y sin pagos ocultos. El resultado aparece en pantalla justo después del último bloque y, si lo desea, también puede recibirlo por correo. En el sitio hay un único servicio de pago, el perfil DISC ampliado: se describe en la sección «Servicios» y es totalmente opcional."
+          "a": "Sí: el test y el resultado son gratuitos, sin registro y sin pagos ocultos. El resultado aparece en pantalla justo después del último bloque y puede guardarlo en PDF. En el sitio hay un único servicio de pago, el perfil DISC ampliado: se describe en la sección «Servicios» y es totalmente opcional."
         },
         {
           "q": "¿Qué significan las letras D, I, S, C?",
@@ -542,8 +542,8 @@
           "a": "Sí. Envíe a sus compañeros el enlace al sitio; en la pantalla de resultado cada uno recibe un enlace y un código; pídales que se los reenvíen. En el panel de administración (enlace en el pie de página) los códigos se reúnen en una tabla que puede copiar a Excel. La tabla se guarda solo en su navegador."
         },
         {
-          "q": "¿Adónde llega el resultado y quién puede verlo?",
-          "a": "El resultado se muestra en pantalla y se guarda en su navegador. Si en la pantalla del resultado indica su nombre y su correo, recibirá el informe en esa dirección, y el nombre, el correo y el resultado se registrarán en la base de resultados del propietario del sitio; sin su consentimiento no se usan con otros fines ni se ceden a terceros. Otras personas solo verán su informe si usted decide compartir el enlace. Más detalles en la página «Privacidad»."
+          "q": "¿Dónde se guarda el resultado y quién puede verlo?",
+          "a": "El resultado se muestra en pantalla y se guarda en su navegador. Otras personas solo verán su informe si usted decide compartir el enlace. Más detalles en la página «Privacidad»."
         },
         {
           "q": "¿Puedo repetir el test?",
@@ -575,7 +575,7 @@
         {
           "h": "Por qué existe este sitio",
           "p": [
-            "Queríamos un test DISC que cualquiera pudiera hacer en diez minutos sin registrarse ni pagar, recibir un informe claro en su idioma y compartirlo con su equipo. El sitio funciona en catorce idiomas, el resultado aparece al instante y, si lo desea, llega por correo, y los directivos y responsables de Recursos Humanos disponen de un panel donde los resultados de los participantes se reúnen en una tabla."
+            "Queríamos un test DISC que cualquiera pudiera hacer en diez minutos sin registrarse ni pagar, recibir un informe claro en su idioma y compartirlo con su equipo. El sitio funciona en catorce idiomas, el resultado aparece al instante y se puede guardar en PDF, y los directivos y responsables de Recursos Humanos disponen de un panel donde los resultados de los participantes se reúnen en una tabla."
           ]
         },
         {
@@ -785,7 +785,7 @@
         },
         {
           "h": "Qué sigue siendo gratuito",
-          "p": ["El test, el resultado en pantalla y el correo con el resultado, las páginas de los dieciséis perfiles y la versión imprimible del test en PDF siguen siendo gratuitos y no requieren registro. El perfil ampliado se adquiere solo si usted lo desea."]
+          "p": ["El test, el resultado en pantalla y el informe breve en PDF, las páginas de los dieciséis perfiles y la versión imprimible del test en PDF siguen siendo gratuitos y no requieren registro. El perfil ampliado se adquiere solo si usted lo desea."]
         },
         {
           "h": "Preguntas sobre el servicio",
@@ -1004,7 +1004,7 @@
         ["Para los demás", "Un enlace a su resultado", "La hoja «Cómo trabajar conmigo», para su jefe y sus compañeros"],
         ["Precio", "Gratis", "{price} USD"]
       ],
-      "compareNote": "El test, el resultado en pantalla, el correo con el resultado y el informe breve en PDF siguen siendo gratuitos. El informe ampliado es totalmente opcional.",
+      "compareNote": "El test, el resultado en pantalla y el informe breve en PDF siguen siendo gratuitos. El informe ampliado es totalmente opcional.",
       "howTitle": "Cómo obtener el informe",
       "how": [
         "Haga el test gratuito: 24 bloques, unos 10 minutos. Si ya lo hizo, no tiene que repetirlo: el informe se elabora con el resultado que ya tiene.",
@@ -1164,7 +1164,7 @@
         {
           "h": "De qué se compone el resultado",
           "p": [
-            "Tras el último bloque verá cuatro elementos: el nombre del perfil con una o dos letras (por ejemplo, «Pionero, DI»), un gráfico con tres líneas, cuatro escalas con porcentajes y una descripción en texto: rasgos, puntos fuertes, áreas de mejora, motivación, comportamiento bajo estrés y recomendaciones sobre cómo comunicarse con usted. El mismo informe puede recibirse por correo y abrirse desde el enlace.",
+            "Tras el último bloque verá cuatro elementos: el nombre del perfil con una o dos letras (por ejemplo, «Pionero, DI»), un gráfico con tres líneas, cuatro escalas con porcentajes y una descripción en texto: rasgos, puntos fuertes, áreas de mejora, motivación, comportamiento bajo estrés y recomendaciones sobre cómo comunicarse con usted. El mismo informe puede guardarse en PDF y abrirse desde el enlace.",
             "Todos los números del informe se derivan de sus marcas en los 24 bloques. En cada bloque eligió una afirmación como «lo que más se parece a mí» y otra como «lo que menos se parece a mí», y cada afirmación pertenece a uno de los estilos D, I, S o C. Por eso cada estilo tiene dos números: cuántas veces lo eligió como «más» y cuántas como «menos»."
           ]
         },
@@ -1343,7 +1343,7 @@
           "h": "Cuándo hace falta la versión en papel",
           "p": [
             "El test en papel resulta práctico en una formación o una sesión estratégica en la que no todos los participantes tienen un dispositivo a mano, en un grupo de estudio y también donde no se puede usar el teléfono. A algunas personas les resulta más fácil concentrarse en papel: marcó, pasó la página y no se distrajo con las notificaciones.",
-            "Si los participantes sí tienen el teléfono a mano, la versión online es más sencilla: calcula el resultado sola, dibuja el gráfico, envía el informe por correo y da un enlace que se puede compartir. Para el equipo hay además un panel de administración donde se reúnen los resultados de todos los participantes."
+            "Si los participantes sí tienen el teléfono a mano, la versión online es más sencilla: calcula el resultado sola, dibuja el gráfico, guarda el informe en PDF y da un enlace que se puede compartir. Para el equipo hay además un panel de administración donde se reúnen los resultados de todos los participantes."
           ]
         },
         {
@@ -1393,7 +1393,7 @@
           "h": "Cómo hacer el test en equipo en este sitio",
           "ol": [
             "Haga el test usted primero: así sabrá qué verán los participantes y podrá mostrar un informe de ejemplo.",
-            "Envíe a sus compañeros el enlace al sitio en el idioma que corresponda. No hace falta registro y el test lleva unos diez minutos; el informe aparece en pantalla, y cada uno indica allí su nombre y su dirección para recibirlo también por correo.",
+            "Envíe a sus compañeros el enlace al sitio en el idioma que corresponda. No hace falta registro y el test lleva unos diez minutos; el informe aparece en pantalla al instante, cada uno puede guardarlo en PDF y reenviarle a usted el enlace a su resultado.",
             "Pida a cada uno que le reenvíe el enlace a su resultado o el código del informe. El resultado solo lo ve quien tiene el enlace; ningún dato llega al directivo de forma automática.",
             "Abra el panel de administración (enlace en el pie de página) y pegue los códigos recibidos. El panel formará una tabla con nombres, perfiles y puntuaciones que puede copiar a Excel. La tabla se guarda solo en su navegador.",
             "Convoque una reunión conjunta: explique los cuatro estilos, muestre el mapa del equipo y deje que cada uno cuente qué del informe ha dado en el clavo y qué no."
@@ -1815,7 +1815,7 @@
         "Un gráfico con tres líneas y la intensidad de cada estilo en porcentaje",
         "Puntos fuertes, áreas de mejora, motivación y comportamiento bajo estrés",
         "Consejos sobre cómo comunicarse y trabajar mejor con usted",
-        "Un enlace al informe, la opción de guardarlo en PDF y, si lo desea, un correo con el resultado, sin registro ni versiones de pago"
+        "Un enlace al informe y la opción de guardarlo en PDF, sin registro ni versiones de pago"
       ],
       "calcTitle": "Cómo se calcula el resultado",
       "calc": "En cada uno de los 24 bloques, usted marca la afirmación que más se parece a usted y la que menos. Cada afirmación corresponde a uno de los estilos D, I, S o C. Para cada estilo se calcula la diferencia entre «más» y «menos», de −24 a +24, y se convierte en porcentaje. El estilo predominante es el que tiene el valor más alto; el secundario se cuenta si también está claramente marcado.",
@@ -1854,7 +1854,7 @@
   "ui": {
     "langLabel": "Idioma",
     "footer": "24 bloques · unos 10 minutos · no hay respuestas correctas ni incorrectas",
-    "privacy": "Sus respuestas se quedan en su navegador; para la estadística general, el servidor del sitio recibe únicamente marcas de visita y de inicio del test y el perfil obtenido, sin nombre ni respuestas. Si usted indica su correo electrónico, el resultado se envía a esa dirección y se guarda en la base de resultados del propietario del sitio. Cuando pulsa «Guardar en PDF», sus respuestas y la fecha del test —sin nombre ni correo— se envían al servidor del sitio, que genera el archivo del informe breve, se lo devuelve y no guarda nada.",
+    "privacy": "Sus respuestas se quedan en su navegador; para la estadística general, el servidor del sitio recibe únicamente marcas de visita y de inicio del test y el perfil obtenido, sin nombre ni respuestas. Cuando pulsa «Guardar en PDF», sus respuestas y la fecha del test —sin nombre ni correo— se envían al servidor del sitio, que genera el archivo del informe breve, se lo devuelve y no guarda nada.",
     "legal": "Manukyan Armen · N.º de identificación fiscal (INN) {inn}",
     "rights": "© {year} disc-test.org. Queda prohibido copiar los textos del sitio y de los informes sin autorización por escrito.",
     "adminLink": "Panel de administración",
@@ -2080,7 +2080,7 @@
     "pages.profiles.colPure": "Sin secundario",
 
     "cta.title": "Descubra su perfil DISC",
-    "cta.text": "Test gratuito: 24 bloques, unos 10 minutos, resultado al instante y por correo.",
+    "cta.text": "Test gratuito: 24 bloques, unos 10 minutos, resultado al instante.",
     "cta.button": "Hacer el test",
     "cta.inline": "Descubra su estilo DISC: test gratuito de 10 minutos, sin registro.",
     "cta.inlineProfile": "¿Se reconoce? Compruebe su tipo DISC con un test gratuito de 10 minutos.",
@@ -2128,7 +2128,7 @@
     "pd.consentLink": "consentimiento para el tratamiento de datos personales",
     "pd.required": "Marque la casilla de consentimiento para el tratamiento de datos personales: sin él no podemos aceptar sus datos.",
     "pd.cookieAsk": "Este sitio guarda su progreso, su resultado y el idioma elegido en el almacenamiento local del navegador. Con su consentimiento, un servicio de analítica web recopilará estadísticas de visitas anonimizadas y una grabación de las acciones en la página para ayudarnos a mejorar el sitio. Su nombre, su correo y su resultado no se envían al servicio de analítica.",
-    "pd.cookieDetails": "En el navegador se guardan: el nombre y el correo, si usted los indicó; sus respuestas y el progreso sin terminar; su último resultado; el idioma elegido; un indicador de que ha visto este aviso. Estos datos permanecen en su dispositivo y se eliminan al borrar los datos del sitio. El servicio de alojamiento recibe los datos técnicos habituales de la solicitud. La primera vez que abre el sitio en un día, se envía al servidor del sitio una marca anónima de visita: solo el idioma de la versión del sitio; el servidor la registra con la hora de llegada y su navegador guarda la fecha para no volver a enviarla ese mismo día. Con estas marcas contamos cuántas personas visitan el sitio. Al empezar el test, se envía al servidor del sitio una marca anónima de inicio: solo el idioma de la versión del sitio. Al terminar el test, se envía al servidor del sitio un registro anónimo para la estadística general: el perfil obtenido y el idioma de la versión del sitio, sin nombre, correo ni respuestas. Cuando pulsa «Guardar en PDF», sus respuestas y la fecha del test —sin nombre ni correo— se envían al servidor del sitio, que genera el archivo del informe breve, se lo devuelve y no guarda nada. Cuando envía el resultado por correo, el nombre, el correo y las respuestas se transmiten al servidor del sitio, que le envía el correo con el resultado y guarda el nombre, el correo, la fecha y el resultado en la base de resultados del propietario del sitio. El servicio de analítica web recibe la dirección de la página sin el código del resultado, la procedencia, el tipo de dispositivo y navegador y una grabación anonimizada de las acciones en la página (los campos de nombre y correo, el enlace y el código del resultado quedan excluidos), y establece sus propias cookies. Puede bloquearlo en la configuración del navegador o con un bloqueador de rastreadores. No se usan rastreadores publicitarios.",
+    "pd.cookieDetails": "En el navegador se guardan: el nombre y el correo, si usted los indicó; sus respuestas y el progreso sin terminar; su último resultado; el idioma elegido; un indicador de que ha visto este aviso. Estos datos permanecen en su dispositivo y se eliminan al borrar los datos del sitio. El servicio de alojamiento recibe los datos técnicos habituales de la solicitud. La primera vez que abre el sitio en un día, se envía al servidor del sitio una marca anónima de visita: solo el idioma de la versión del sitio; el servidor la registra con la hora de llegada y su navegador guarda la fecha para no volver a enviarla ese mismo día. Con estas marcas contamos cuántas personas visitan el sitio. Al empezar el test, se envía al servidor del sitio una marca anónima de inicio: solo el idioma de la versión del sitio. Al terminar el test, se envía al servidor del sitio un registro anónimo para la estadística general: el perfil obtenido y el idioma de la versión del sitio, sin nombre, correo ni respuestas. Cuando pulsa «Guardar en PDF», sus respuestas y la fecha del test —sin nombre ni correo— se envían al servidor del sitio, que genera el archivo del informe breve, se lo devuelve y no guarda nada. El servicio de analítica web recibe la dirección de la página sin el código del resultado, la procedencia, el tipo de dispositivo y navegador y una grabación anonimizada de las acciones en la página (los campos de nombre y correo, el enlace y el código del resultado quedan excluidos), y establece sus propias cookies. Puede bloquearlo en la configuración del navegador o con un bloqueador de rastreadores. No se usan rastreadores publicitarios.",
     "pd.cookieChange": "Cambiar la elección de cookies",
 
     "print.title": "Test DISC para imprimir: cuestionario con clave y puntuación",

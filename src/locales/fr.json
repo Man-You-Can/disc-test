@@ -519,7 +519,7 @@
         },
         {
           "q": "Le test est-il vraiment gratuit ?",
-          "a": "Oui : le test et le résultat sont gratuits, sans inscription et sans frais cachés. Le résultat s'affiche à l'écran juste après le dernier bloc ; si vous le souhaitez, vous pouvez aussi le recevoir par e-mail. Le site propose un seul service payant, le profil DISC détaillé : il est décrit dans la rubrique « Services » et reste entièrement facultatif."
+          "a": "Oui : le test et le résultat sont gratuits, sans inscription et sans frais cachés. Le résultat s'affiche à l'écran juste après le dernier bloc ; vous pouvez l'enregistrer en PDF. Le site propose un seul service payant, le profil DISC détaillé : il est décrit dans la rubrique « Services » et reste entièrement facultatif."
         },
         {
           "q": "Que signifient les lettres D, I, S, C ?",
@@ -542,8 +542,8 @@
           "a": "Oui. Envoyez le lien du site à vos collègues ; sur l'écran de résultat, chacun reçoit un lien et un code, demandez-leur de vous les transmettre. Dans l'espace administrateur (lien en pied de page), les codes sont réunis dans un tableau que vous pouvez copier dans Excel. Le tableau n'est conservé que dans votre navigateur."
         },
         {
-          "q": "Où va le résultat et qui peut le voir ?",
-          "a": "Le résultat s'affiche à l'écran et est enregistré dans votre navigateur. Si vous indiquez votre nom et votre adresse e-mail sur l'écran du résultat, le rapport vous est envoyé à cette adresse, et votre nom, votre adresse e-mail et le résultat sont enregistrés dans la base de résultats du propriétaire du site ; sans votre consentement, ils ne servent à rien d'autre et ne sont pas transmis à des tiers. Personne d'autre ne verra votre rapport, sauf si vous en partagez vous-même le lien. Détails sur la page « Confidentialité »."
+          "q": "Où est conservé le résultat et qui peut le voir ?",
+          "a": "Le résultat s'affiche à l'écran et est enregistré dans votre navigateur. Personne d'autre ne verra votre rapport, sauf si vous en partagez vous-même le lien. Détails sur la page « Confidentialité »."
         },
         {
           "q": "Puis-je refaire le test ?",
@@ -574,7 +574,7 @@
       "sections": [
         {
           "h": "Pourquoi ce site existe",
-          "p": ["Nous voulions un test DISC que chacun puisse passer en dix minutes, sans inscription ni paiement, avec un rapport clair dans sa langue, à partager avec son équipe. Le site fonctionne en quatorze langues, le résultat apparaît immédiatement et, si vous le souhaitez, arrive par e-mail, et les managers et les RH disposent d'un espace où les résultats des participants sont réunis dans un tableau."]
+          "p": ["Nous voulions un test DISC que chacun puisse passer en dix minutes, sans inscription ni paiement, avec un rapport clair dans sa langue, à partager avec son équipe. Le site fonctionne en quatorze langues, le résultat apparaît immédiatement et peut être enregistré en PDF, et les managers et les RH disposent d'un espace où les résultats des participants sont réunis dans un tableau."]
         },
         {
           "h": "Sur quoi repose le test",
@@ -783,7 +783,7 @@
         },
         {
           "h": "Ce qui reste gratuit",
-          "p": ["Le test, le résultat à l'écran et l'e-mail de résultat, les pages des seize profils et la version imprimable du test en PDF restent gratuits et sans inscription. Le profil détaillé ne s'achète que si vous le souhaitez."]
+          "p": ["Le test, le résultat à l'écran et le rapport de synthèse en PDF, les pages des seize profils et la version imprimable du test en PDF restent gratuits et sans inscription. Le profil détaillé ne s'achète que si vous le souhaitez."]
         },
         {
           "h": "Questions sur le service",
@@ -1006,7 +1006,7 @@
         ["À partager", "Un lien vers votre résultat", "La fiche « Comment travailler avec moi », pour votre responsable et vos collègues"],
         ["Prix", "Gratuit", "{price} USD"]
       ],
-      "compareNote": "Le test, le résultat à l'écran, l'e-mail de résultat et le rapport de synthèse en PDF restent gratuits. Le rapport détaillé est entièrement facultatif.",
+      "compareNote": "Le test, le résultat à l'écran et le rapport de synthèse en PDF restent gratuits. Le rapport détaillé est entièrement facultatif.",
       "howTitle": "Comment obtenir le rapport",
       "how": [
         "Passez le test gratuit : 24 blocs, environ 10 minutes. Si vous l'avez déjà passé, inutile de recommencer : le rapport est établi à partir du résultat que vous avez déjà.",
@@ -1166,7 +1166,7 @@
         {
           "h": "De quoi se compose le résultat",
           "p": [
-            "Après le dernier bloc, vous voyez quatre éléments : le nom du profil avec une ou deux lettres (par exemple « Pionnier, DI »), un graphique à trois courbes, quatre échelles en pourcentage et une description textuelle : traits clés, points forts, axes de progression, motivation, comportement sous stress et conseils sur la façon de communiquer avec vous. Vous pouvez aussi recevoir ce rapport par e-mail et l'ouvrir par un lien.",
+            "Après le dernier bloc, vous voyez quatre éléments : le nom du profil avec une ou deux lettres (par exemple « Pionnier, DI »), un graphique à trois courbes, quatre échelles en pourcentage et une description textuelle : traits clés, points forts, axes de progression, motivation, comportement sous stress et conseils sur la façon de communiquer avec vous. Vous pouvez aussi enregistrer ce rapport en PDF et l'ouvrir par un lien.",
             "Tous les chiffres du rapport découlent de vos réponses dans les 24 blocs. Dans chaque bloc, vous avez choisi une affirmation qui vous « ressemble le plus » et une qui vous « ressemble le moins », et chaque affirmation correspond à l'un des styles D, I, S ou C. Chaque style a donc deux nombres : combien de fois vous l'avez choisi comme « le plus » et combien de fois comme « le moins »."
           ]
         },
@@ -1360,7 +1360,7 @@
           "h": "Quand la version papier est utile",
           "p": [
             "Le test papier est pratique en formation ou en séminaire stratégique, quand tous les participants n'ont pas d'ordinateur, dans un groupe d'étudiants, ou là où le téléphone est interdit. Certains se concentrent mieux sur papier : on coche, on tourne la page, sans être distrait par les notifications.",
-            "Si les participants ont tout de même leur téléphone, la version en ligne est plus simple : elle calcule le résultat, trace le graphique, envoie le rapport par e-mail et fournit un lien à partager. Pour une équipe, il y a en plus l'espace administrateur, qui rassemble les résultats de tous les participants."
+            "Si les participants ont tout de même leur téléphone, la version en ligne est plus simple : elle calcule le résultat, trace le graphique, enregistre le rapport en PDF et fournit un lien à partager. Pour une équipe, il y a en plus l'espace administrateur, qui rassemble les résultats de tous les participants."
           ]
         },
         {
@@ -1410,7 +1410,7 @@
           "h": "Comment faire passer le test à votre équipe sur ce site",
           "ol": [
             "Passez d'abord le test vous-même : vous saurez ce que verront les participants et pourrez montrer un exemple de rapport.",
-            "Envoyez à vos collègues le lien du site dans la langue voulue. Aucune inscription n'est nécessaire, le test prend une dizaine de minutes ; le rapport s'affiche à l'écran, et sur l'écran du résultat chacun indique son nom et son e-mail pour le recevoir par e-mail.",
+            "Envoyez à vos collègues le lien du site dans la langue voulue. Aucune inscription n'est nécessaire, le test prend une dizaine de minutes ; le rapport s'affiche aussitôt à l'écran, chacun peut l'enregistrer en PDF et vous transmettre le lien vers son résultat.",
             "Demandez à chacun de vous transmettre le lien vers son résultat ou le code du rapport. Le résultat n'est visible que par ceux qui ont le lien ; aucune donnée n'est envoyée automatiquement au manager.",
             "Ouvrez l'espace administrateur (lien en pied de page) et collez les codes reçus. L'espace constitue un tableau avec les noms, les profils et les scores, que vous pouvez copier dans Excel. Le tableau n'est conservé que dans votre navigateur.",
             "Organisez une réunion commune : présentez les quatre styles, montrez la carte de l'équipe et laissez chacun dire ce qui, dans son rapport, tombe juste et ce qui ne colle pas."
@@ -1832,7 +1832,7 @@
         "Un graphique à trois courbes et l'intensité de chaque style en pourcentage",
         "Vos points forts, vos axes de progression, votre motivation et votre comportement sous stress",
         "Des conseils pour mieux communiquer et travailler avec vous",
-        "Un lien vers le rapport, l'enregistrement en PDF et un envoi par e-mail si vous le souhaitez, sans inscription ni version payante"
+        "Un lien vers le rapport et l'enregistrement en PDF, sans inscription ni version payante"
       ],
       "calcTitle": "Comment le résultat est calculé",
       "calc": "Dans chacun des 24 blocs, vous cochez l'affirmation qui vous ressemble le plus et celle qui vous ressemble le moins. Chaque affirmation correspond à l'un des styles D, I, S ou C. Pour chaque style, on calcule la différence entre « le plus » et « le moins », de −24 à +24, puis on la convertit en pourcentage. Le style dominant est celui qui obtient la valeur la plus élevée ; le style secondaire est retenu s'il est lui aussi nettement marqué.",
@@ -1871,7 +1871,7 @@
   "ui": {
     "langLabel": "Langue",
     "footer": "24 blocs · environ 10 minutes · pas de bonnes ou de mauvaises réponses",
-    "privacy": "Vos réponses restent dans votre navigateur ; pour les statistiques générales, le serveur du site ne reçoit que des marques de visite et de début du test et le profil obtenu, sans nom ni réponses. Si vous indiquez une adresse e-mail, le résultat y est envoyé et conservé dans la base de résultats du propriétaire du site. Lorsque vous cliquez sur « Enregistrer en PDF », vos réponses et la date du test — sans nom ni e-mail — sont envoyées au serveur du site, qui génère le fichier du rapport de synthèse, vous le renvoie et ne conserve rien.",
+    "privacy": "Vos réponses restent dans votre navigateur ; pour les statistiques générales, le serveur du site ne reçoit que des marques de visite et de début du test et le profil obtenu, sans nom ni réponses. Lorsque vous cliquez sur « Enregistrer en PDF », vos réponses et la date du test — sans nom ni e-mail — sont envoyées au serveur du site, qui génère le fichier du rapport de synthèse, vous le renvoie et ne conserve rien.",
     "legal": "Manukyan Armen · N° d’identification fiscale (INN) {inn}",
     "rights": "© {year} disc-test.org. Toute copie des textes du site et des rapports sans autorisation écrite est interdite.",
     "adminLink": "Espace administrateur",
@@ -2097,7 +2097,7 @@
     "pages.profiles.colPure": "Sans secondaire",
 
     "cta.title": "Découvrez votre profil DISC",
-    "cta.text": "Test gratuit : 24 blocs, environ 10 minutes, résultat immédiat et par e-mail.",
+    "cta.text": "Test gratuit : 24 blocs, environ 10 minutes, résultat immédiat.",
     "cta.button": "Passer le test",
     "cta.inline": "Découvrez votre style DISC — test gratuit de 10 minutes, sans inscription.",
     "cta.inlineProfile": "Vous vous reconnaissez ? Vérifiez votre type DISC — test gratuit de 10 minutes.",
@@ -2145,7 +2145,7 @@
     "pd.consentLink": "consentement au traitement des données personnelles",
     "pd.required": "Cochez la case de consentement au traitement des données personnelles : sans ce consentement, nous ne pouvons pas accepter vos données.",
     "pd.cookieAsk": "Ce site conserve votre progression, votre résultat et la langue choisie dans le stockage local du navigateur. Avec votre consentement, un service d'analyse d'audience collectera des statistiques de visite anonymisées et un enregistrement des actions sur la page pour nous aider à améliorer le site. Votre nom, votre e-mail et votre résultat ne sont pas transmis au service d'analyse.",
-    "pd.cookieDetails": "Conservés dans le navigateur : le nom et l'e-mail, si vous les avez indiqués ; vos réponses et la progression inachevée ; votre dernier résultat ; la langue choisie ; une marque indiquant que vous avez vu cet avis. Ces données restent sur votre appareil et sont supprimées lorsque vous effacez les données du site. L'hébergeur reçoit les données techniques habituelles de la requête. La première fois que vous ouvrez le site dans la journée, une marque de visite anonyme est envoyée au serveur du site : uniquement la langue de la version du site ; le serveur l'enregistre avec son heure d'arrivée, et votre navigateur garde la date pour ne pas la renvoyer le même jour. Ces marques nous servent à compter combien de personnes visitent le site. Lorsque vous commencez le test, une marque de début anonyme est envoyée au serveur du site : uniquement la langue de la version du site. Lorsque vous terminez le test, un enregistrement anonyme destiné aux statistiques générales est envoyé au serveur du site : le profil obtenu et la langue de la version du site, sans nom, e-mail ni réponses. Lorsque vous cliquez sur « Enregistrer en PDF », vos réponses et la date du test — sans nom ni e-mail — sont envoyées au serveur du site, qui génère le fichier du rapport de synthèse, vous le renvoie et ne conserve rien. Lorsque vous envoyez le résultat par e-mail, le nom, l'e-mail et les réponses sont transmis au serveur du site, qui vous envoie l'e-mail avec le résultat et enregistre le nom, l'e-mail, la date et le résultat dans la base de résultats du propriétaire du site. Le service d'analyse d'audience reçoit l'adresse de la page sans le code du résultat, la provenance, le type d'appareil et de navigateur, un enregistrement anonymisé des actions sur la page (les champs nom et e-mail, le lien et le code du résultat en sont exclus) et dépose ses propres cookies. Vous pouvez le bloquer dans les paramètres du navigateur ou avec un bloqueur de traceurs. Aucun traceur publicitaire n'est utilisé.",
+    "pd.cookieDetails": "Conservés dans le navigateur : le nom et l'e-mail, si vous les avez indiqués ; vos réponses et la progression inachevée ; votre dernier résultat ; la langue choisie ; une marque indiquant que vous avez vu cet avis. Ces données restent sur votre appareil et sont supprimées lorsque vous effacez les données du site. L'hébergeur reçoit les données techniques habituelles de la requête. La première fois que vous ouvrez le site dans la journée, une marque de visite anonyme est envoyée au serveur du site : uniquement la langue de la version du site ; le serveur l'enregistre avec son heure d'arrivée, et votre navigateur garde la date pour ne pas la renvoyer le même jour. Ces marques nous servent à compter combien de personnes visitent le site. Lorsque vous commencez le test, une marque de début anonyme est envoyée au serveur du site : uniquement la langue de la version du site. Lorsque vous terminez le test, un enregistrement anonyme destiné aux statistiques générales est envoyé au serveur du site : le profil obtenu et la langue de la version du site, sans nom, e-mail ni réponses. Lorsque vous cliquez sur « Enregistrer en PDF », vos réponses et la date du test — sans nom ni e-mail — sont envoyées au serveur du site, qui génère le fichier du rapport de synthèse, vous le renvoie et ne conserve rien. Le service d'analyse d'audience reçoit l'adresse de la page sans le code du résultat, la provenance, le type d'appareil et de navigateur, un enregistrement anonymisé des actions sur la page (les champs nom et e-mail, le lien et le code du résultat en sont exclus) et dépose ses propres cookies. Vous pouvez le bloquer dans les paramètres du navigateur ou avec un bloqueur de traceurs. Aucun traceur publicitaire n'est utilisé.",
     "pd.cookieChange": "Modifier le choix des cookies",
 
     "print.title": "Test DISC à imprimer : questionnaire, clé et calcul du score",

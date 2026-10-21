@@ -4,7 +4,7 @@
   "name": "Polski",
   "dateLocale": "pl-PL",
   "title": "Darmowy test osobowości DISC online – wynik w 10 minut",
-  "description": "Darmowy test DISC po polsku: 24 pytania, 10 minut, bez rejestracji. Poznaj swój styl wiodący, mocne strony i obszary rozwoju. Wynik od razu i na e-mail.",
+  "description": "Darmowy test DISC po polsku: 24 pytania, 10 minut, bez rejestracji. Poznaj swój styl wiodący, mocne strony i obszary rozwoju. Wynik od razu na ekranie.",
   "brand": "Test DISC",
   "keys": { "D": "Dominacja", "I": "Wpływ", "S": "Stałość", "C": "Sumienność" },
   "short": { "D": "Wyniki i kontrola", "I": "Ludzie i entuzjazm", "S": "Wsparcie i stabilność", "C": "Dokładność i jakość" },
@@ -517,7 +517,7 @@
         },
         {
           "q": "Czy test jest naprawdę darmowy?",
-          "a": "Tak: test i wynik są bezpłatne, bez rejestracji i ukrytych opłat. Wynik pojawia się na ekranie od razu po ostatnim pytaniu; jeśli chcesz, możesz go też otrzymać e-mailem. W serwisie jest jedna płatna usługa — rozszerzony profil DISC; opisujemy ją w dziale „Usługi” i jest w pełni dobrowolna."
+          "a": "Tak: test i wynik są bezpłatne, bez rejestracji i ukrytych opłat. Wynik pojawia się na ekranie od razu po ostatnim pytaniu; możesz go zapisać jako PDF. W serwisie jest jedna płatna usługa — rozszerzony profil DISC; opisujemy ją w dziale „Usługi” i jest w pełni dobrowolna."
         },
         {
           "q": "Co oznaczają litery D, I, S, C?",
@@ -540,8 +540,8 @@
           "a": "Tak. Wyślij współpracownikom link do serwisu. Na ekranie wyniku każda osoba dostanie link i kod – poproś o ich przesłanie. W panelu administratora (link w stopce) kody trafiają do tabeli, którą można skopiować do Excela. Tabela jest przechowywana wyłącznie w twojej przeglądarce."
         },
         {
-          "q": "Dokąd trafia wynik i kto go widzi?",
-          "a": "Wynik wyświetla się na ekranie i zapisuje się w twojej przeglądarce. Jeśli na ekranie wyniku podasz imię i adres e-mail, raport przyjdzie na ten adres, a imię, adres e-mail i wynik zostaną zapisane w bazie wyników właściciela serwisu; bez twojej zgody nie są wykorzystywane do innych celów ani przekazywane osobom trzecim. Osoby postronne zobaczą twój raport tylko wtedy, gdy samodzielnie udostępnisz do niego link. Więcej na stronie „Prywatność”."
+          "q": "Gdzie zapisuje się wynik i kto go widzi?",
+          "a": "Wynik wyświetla się na ekranie i zapisuje się w twojej przeglądarce. Osoby postronne zobaczą twój raport tylko wtedy, gdy samodzielnie udostępnisz do niego link. Więcej na stronie „Prywatność”."
         },
         {
           "q": "Czy test można powtórzyć?",
@@ -572,7 +572,7 @@
       "sections": [
         {
           "h": "Po co powstał ten serwis",
-          "p": ["Chcieliśmy stworzyć test DISC, który da się zrobić w dziesięć minut, bez rejestracji i opłat, i który daje zrozumiały raport w twoim języku – taki, którym można podzielić się z zespołem. Serwis działa w czternastu językach, wynik pojawia się od razu i na życzenie przychodzi na e-mail, a dla menedżerów i działów HR jest panel, w którym wyniki uczestników trafiają do jednej tabeli."]
+          "p": ["Chcieliśmy stworzyć test DISC, który da się zrobić w dziesięć minut, bez rejestracji i opłat, i który daje zrozumiały raport w twoim języku – taki, którym można podzielić się z zespołem. Serwis działa w czternastu językach, wynik pojawia się od razu i można go zapisać jako PDF, a dla menedżerów i działów HR jest panel, w którym wyniki uczestników trafiają do jednej tabeli."]
         },
         {
           "h": "Na czym opiera się test",
@@ -781,7 +781,7 @@
         },
         {
           "h": "Co pozostaje bezpłatne",
-          "p": ["Sam test, wynik na ekranie i e-mail z wynikiem, strony szesnastu profili oraz wersja testu w PDF do wydruku pozostają bezpłatne i nie wymagają rejestracji. Profil rozszerzony kupujesz tylko wtedy, gdy chcesz."]
+          "p": ["Sam test, wynik na ekranie i raport podstawowy w PDF, strony szesnastu profili oraz wersja testu w PDF do wydruku pozostają bezpłatne i nie wymagają rejestracji. Profil rozszerzony kupujesz tylko wtedy, gdy chcesz."]
         },
         {
           "h": "Pytania dotyczące usługi",
@@ -995,7 +995,7 @@
         ["Dla innych", "Link do Twojego wyniku", "Karta „Jak ze mną pracować” dla przełożonego i współpracowników"],
         ["Cena", "Bezpłatnie", "{price} USD"]
       ],
-      "compareNote": "Test, wynik na ekranie, e-mail z wynikiem i raport podstawowy w PDF pozostają bezpłatne. Raport rozszerzony to propozycja dla chętnych.",
+      "compareNote": "Test, wynik na ekranie i raport podstawowy w PDF pozostają bezpłatne. Raport rozszerzony to propozycja dla chętnych.",
       "howTitle": "Jak otrzymać raport",
       "how": [
         "Zrób bezpłatny test: 24 pytania, około 10 minut. Jeśli masz go już za sobą, nie musisz go powtarzać – raport powstaje na podstawie gotowego wyniku.",
@@ -1144,7 +1144,7 @@
         {
           "h": "Z czego składa się wynik",
           "p": [
-            "Po ostatnim pytaniu widzisz cztery elementy: nazwę profilu z jedną lub dwiema literami (na przykład „Pionier, DI”), wykres z trzema liniami, cztery skale z procentami i opis tekstowy: cechy, mocne strony, obszary rozwoju, motywacja, zachowanie w stresie i wskazówki, jak najlepiej się z tobą komunikować. Ten sam raport możesz otrzymać e-mailem i otworzyć pod linkiem.",
+            "Po ostatnim pytaniu widzisz cztery elementy: nazwę profilu z jedną lub dwiema literami (na przykład „Pionier, DI”), wykres z trzema liniami, cztery skale z procentami i opis tekstowy: cechy, mocne strony, obszary rozwoju, motywacja, zachowanie w stresie i wskazówki, jak najlepiej się z tobą komunikować. Ten sam raport możesz zapisać jako PDF i otworzyć pod linkiem.",
             "Wszystkie liczby w raporcie wynikają z twoich odpowiedzi w 24 pytaniach. W każdym pytaniu wybierasz jedno stwierdzenie „najbardziej do mnie pasuje” i jedno „najmniej do mnie pasuje”, a każde stwierdzenie odnosi się do jednego ze stylów: D, I, S lub C. Dlatego każdy styl ma dwie liczby: ile razy został wybrany jako „najbardziej” i ile razy jako „najmniej”."
           ]
         },
@@ -1323,7 +1323,7 @@
           "h": "Kiedy przydaje się wersja papierowa",
           "p": [
             "Test na papierze jest wygodny na szkoleniu lub sesji strategicznej, gdzie nie każdy uczestnik ma komputer, na zajęciach w grupie, a także tam, gdzie nie wolno korzystać z telefonu. Niektórym łatwiej skupić się nad kartką: zaznaczasz, przewracasz stronę i nie rozpraszają cię powiadomienia.",
-            "Jeśli jednak uczestnicy mają przy sobie telefony, wersja online jest prostsza: sama liczy wynik, rysuje wykres, wysyła raport e-mailem i daje link, którym można się podzielić. Dla zespołów jest też panel administratora, który zbiera wyniki wszystkich uczestników."
+            "Jeśli jednak uczestnicy mają przy sobie telefony, wersja online jest prostsza: sama liczy wynik, rysuje wykres, zapisuje raport jako PDF i daje link, którym można się podzielić. Dla zespołów jest też panel administratora, który zbiera wyniki wszystkich uczestników."
           ]
         },
         {
@@ -1373,7 +1373,7 @@
           "h": "Jak przeprowadzić test w zespole w tym serwisie",
           "ol": [
             "Najpierw zrób test samodzielnie: dowiesz się, co zobaczą uczestnicy, i będziesz mieć przykładowy raport do pokazania.",
-            "Wyślij współpracownikom link do serwisu w odpowiedniej wersji językowej. Rejestracja nie jest potrzebna, test zajmuje około dziesięciu minut; raport pojawia się na ekranie, a na ekranie wyniku każdy podaje imię i adres e-mail i otrzymuje raport także e-mailem.",
+            "Wyślij współpracownikom link do serwisu w odpowiedniej wersji językowej. Rejestracja nie jest potrzebna, test zajmuje około dziesięciu minut; raport od razu pojawia się na ekranie, każdy może zapisać go jako PDF i przesłać ci link do wyniku.",
             "Poproś każdą osobę o przesłanie ci linku do wyniku albo kodu z raportu. Wynik widzi tylko ten, kto ma link; żadne dane nie trafiają automatycznie do menedżera.",
             "Otwórz panel administratora (link w stopce strony) i wklej otrzymane kody. Panel utworzy tabelę z imionami, profilami i punktami; można ją skopiować do Excela. Tabela jest przechowywana wyłącznie w twojej przeglądarce.",
             "Zaplanuj wspólne spotkanie: opowiedz o czterech stylach, pokaż mapę zespołu i pozwól każdemu powiedzieć, co w raporcie trafiło w sedno, a co nie."
@@ -1790,7 +1790,7 @@
     },
     "home": {
       "getTitle": "Co otrzymasz",
-      "get": ["Styl wiodący i uzupełniający oraz nazwę profilu – jednego z 16", "Wykres z trzema liniami i nasilenie każdego stylu w procentach", "Mocne strony, obszary rozwoju, motywację i zachowanie pod presją", "Wskazówki, jak najlepiej się z tobą komunikować i współpracować", "Link do raportu, zapis jako PDF i wiadomość e-mail, jeśli chcesz – bez rejestracji i płatnych wersji"],
+      "get": ["Styl wiodący i uzupełniający oraz nazwę profilu – jednego z 16", "Wykres z trzema liniami i nasilenie każdego stylu w procentach", "Mocne strony, obszary rozwoju, motywację i zachowanie pod presją", "Wskazówki, jak najlepiej się z tobą komunikować i współpracować", "Link do raportu i zapis jako PDF – bez rejestracji i płatnych wersji"],
       "calcTitle": "Jak liczony jest wynik",
       "calc": "W każdym z 24 pytań zaznaczasz jedno stwierdzenie, które pasuje do ciebie najbardziej, i jedno, które pasuje najmniej. Każde stwierdzenie należy do jednego ze stylów: D, I, S lub C. Dla każdego stylu liczy się różnicę „najbardziej” minus „najmniej” – od −24 do +24 – i przelicza ją na procenty. Styl wiodący to ten o najwyższej wartości; styl uzupełniający jest uwzględniany, jeśli również jest wyraźnie zaznaczony.",
       "faqTitle": "Krótko o teście",
@@ -1828,7 +1828,7 @@
   "ui": {
     "langLabel": "Język",
     "footer": "24 pytania · około 10 minut · nie ma dobrych ani złych odpowiedzi",
-    "privacy": "Odpowiedzi pozostają w twojej przeglądarce; na potrzeby ogólnej statystyki serwer serwisu otrzymuje wyłącznie informacje o wizycie i rozpoczęciu testu oraz uzyskany profil – bez imienia i bez odpowiedzi. Jeśli podasz adres e-mail, wynik zostanie na niego wysłany i zapisany w bazie wyników właściciela serwisu. Gdy klikniesz „Zapisz jako PDF”, odpowiedzi i data testu – bez imienia i e-maila – trafiają na serwer serwisu, który tworzy z nich plik raportu podstawowego, odsyła go i niczego nie zapisuje.",
+    "privacy": "Odpowiedzi pozostają w twojej przeglądarce; na potrzeby ogólnej statystyki serwer serwisu otrzymuje wyłącznie informacje o wizycie i rozpoczęciu testu oraz uzyskany profil – bez imienia i bez odpowiedzi. Gdy klikniesz „Zapisz jako PDF”, odpowiedzi i data testu – bez imienia i e-maila – trafiają na serwer serwisu, który tworzy z nich plik raportu podstawowego, odsyła go i niczego nie zapisuje.",
     "legal": "Manukyan Armen · Numer identyfikacji podatkowej (INN) {inn}",
     "rights": "© {year} disc-test.org. Kopiowanie tekstów serwisu i raportów bez pisemnej zgody jest zabronione.",
     "adminLink": "Panel administratora",
@@ -2054,7 +2054,7 @@
     "pages.profiles.colPure": "Bez uzupełniającego",
 
     "cta.title": "Poznaj swój profil DISC",
-    "cta.text": "Darmowy test: 24 pytania, około 10 minut, wynik od razu i na e-mail.",
+    "cta.text": "Darmowy test: 24 pytania, około 10 minut, wynik od razu.",
     "cta.button": "Zrób test",
     "cta.inline": "Poznaj swój styl DISC – darmowy test w 10 minut, bez rejestracji.",
     "cta.inlineProfile": "To o tobie? Sprawdź swój typ DISC – darmowy test w 10 minut.",
@@ -2102,7 +2102,7 @@
     "pd.consentLink": "zgodę na przetwarzanie danych osobowych",
     "pd.required": "Zaznacz zgodę na przetwarzanie danych osobowych: bez niej nie możemy przyjąć twoich danych.",
     "pd.cookieAsk": "Serwis przechowuje twoje postępy, wynik i wybrany język w pamięci lokalnej przeglądarki. Za twoją zgodą system analityki internetowej będzie zbierać zanonimizowane statystyki odwiedzin oraz zapis działań na stronie, abyśmy mogli ulepszać serwis. Imię, e-mail i wynik nie są przekazywane do systemu analitycznego.",
-    "pd.cookieDetails": "W przeglądarce przechowywane są: imię i e-mail, jeśli je podano; odpowiedzi i nieukończone postępy; ostatni wynik; wybrany język; informacja, że ten komunikat został już wyświetlony. Te dane pozostają na twoim urządzeniu i są usuwane przy czyszczeniu danych witryny. Dostawca hostingu otrzymuje standardowe dane techniczne żądania. Gdy pierwszy raz danego dnia otwierasz serwis, na serwer serwisu trafia anonimowa informacja o wizycie: tylko wersja językowa serwisu; serwer zapisuje ją z godziną otrzymania, a przeglądarka zapamiętuje datę, żeby tego samego dnia nie wysyłać jej ponownie. Na tej podstawie liczymy, ile osób odwiedza serwis. Gdy zaczynasz test, na serwer serwisu trafia anonimowa informacja o rozpoczęciu: tylko wersja językowa serwisu. Po ukończeniu testu na serwer serwisu trafia anonimowy zapis do ogólnej statystyki: uzyskany profil i wersja językowa serwisu – bez imienia, adresu e-mail i odpowiedzi. Gdy klikniesz „Zapisz jako PDF”, odpowiedzi i data testu – bez imienia i e-maila – trafiają na serwer serwisu, który tworzy z nich plik raportu podstawowego, odsyła go i niczego nie zapisuje. Gdy wysyłasz wynik na e-mail, imię, e-mail i odpowiedzi są przekazywane na serwer serwisu: wysyła on do ciebie wiadomość z wynikiem i zapisuje imię, e-mail, datę oraz wynik w bazie wyników właściciela serwisu. System analityki internetowej otrzymuje adres strony bez kodu wyniku, źródło wejścia, typ urządzenia i przeglądarki, zanonimizowany zapis działań na stronie (pola z imieniem i e-mailem oraz link i kod wyniku są z zapisu wyłączone) i zapisuje własne pliki cookie. Możesz go zablokować w ustawieniach przeglądarki lub za pomocą programu blokującego skrypty śledzące. Reklamowe skrypty śledzące nie są używane.",
+    "pd.cookieDetails": "W przeglądarce przechowywane są: imię i e-mail, jeśli je podano; odpowiedzi i nieukończone postępy; ostatni wynik; wybrany język; informacja, że ten komunikat został już wyświetlony. Te dane pozostają na twoim urządzeniu i są usuwane przy czyszczeniu danych witryny. Dostawca hostingu otrzymuje standardowe dane techniczne żądania. Gdy pierwszy raz danego dnia otwierasz serwis, na serwer serwisu trafia anonimowa informacja o wizycie: tylko wersja językowa serwisu; serwer zapisuje ją z godziną otrzymania, a przeglądarka zapamiętuje datę, żeby tego samego dnia nie wysyłać jej ponownie. Na tej podstawie liczymy, ile osób odwiedza serwis. Gdy zaczynasz test, na serwer serwisu trafia anonimowa informacja o rozpoczęciu: tylko wersja językowa serwisu. Po ukończeniu testu na serwer serwisu trafia anonimowy zapis do ogólnej statystyki: uzyskany profil i wersja językowa serwisu – bez imienia, adresu e-mail i odpowiedzi. Gdy klikniesz „Zapisz jako PDF”, odpowiedzi i data testu – bez imienia i e-maila – trafiają na serwer serwisu, który tworzy z nich plik raportu podstawowego, odsyła go i niczego nie zapisuje. System analityki internetowej otrzymuje adres strony bez kodu wyniku, źródło wejścia, typ urządzenia i przeglądarki, zanonimizowany zapis działań na stronie (pola z imieniem i e-mailem oraz link i kod wyniku są z zapisu wyłączone) i zapisuje własne pliki cookie. Możesz go zablokować w ustawieniach przeglądarki lub za pomocą programu blokującego skrypty śledzące. Reklamowe skrypty śledzące nie są używane.",
     "pd.cookieChange": "Zmień wybór dotyczący plików cookie",
 
     "print.title": "Test DISC do druku: kwestionariusz z kluczem i interpretacją",

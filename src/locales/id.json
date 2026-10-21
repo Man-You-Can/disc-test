@@ -519,7 +519,7 @@
         },
         {
           "q": "Apakah tes ini benar-benar gratis?",
-          "a": "Ya: tes dan hasilnya gratis, tanpa pendaftaran dan tanpa biaya tersembunyi. Hasil muncul di layar segera setelah soal terakhir; jika mau, Anda juga bisa menerimanya lewat email. Di situs ini hanya ada satu layanan berbayar, yaitu profil DISC lengkap; layanan ini dijelaskan di bagian “Layanan” dan sepenuhnya opsional."
+          "a": "Ya: tes dan hasilnya gratis, tanpa pendaftaran dan tanpa biaya tersembunyi. Hasil muncul di layar segera setelah soal terakhir; Anda juga bisa menyimpannya sebagai PDF. Di situs ini hanya ada satu layanan berbayar, yaitu profil DISC lengkap; layanan ini dijelaskan di bagian “Layanan” dan sepenuhnya opsional."
         },
         {
           "q": "Apa arti huruf D, I, S, C?",
@@ -542,8 +542,8 @@
           "a": "Bisa. Kirimkan tautan situs ini kepada rekan-rekan Anda; di layar hasil, setiap orang akan mendapat tautan dan kode — mintalah mereka meneruskannya kepada Anda. Di panel admin (tautannya ada di bagian bawah halaman), kode-kode itu dihimpun menjadi tabel yang bisa disalin ke Excel. Tabel tersebut hanya tersimpan di browser Anda."
         },
         {
-          "q": "Ke mana hasil dikirim dan siapa yang bisa melihatnya?",
-          "a": "Hasil ditampilkan di layar dan disimpan di browser Anda. Jika Anda mengisi nama dan email di layar hasil, email berisi laporan akan dikirim ke alamat itu, sedangkan nama, email, dan hasil Anda akan dicatat dalam basis data hasil milik pemilik situs; tanpa persetujuan Anda, data itu tidak digunakan untuk tujuan lain dan tidak diteruskan kepada pihak ketiga. Orang lain hanya dapat melihat laporan Anda jika Anda sendiri membagikan tautannya. Selengkapnya ada di halaman “Privasi”."
+          "q": "Di mana hasil disimpan dan siapa yang bisa melihatnya?",
+          "a": "Hasil ditampilkan di layar dan disimpan di browser Anda. Orang lain hanya dapat melihat laporan Anda jika Anda sendiri membagikan tautannya. Selengkapnya ada di halaman “Privasi”."
         },
         {
           "q": "Bolehkah mengulang tes?",
@@ -574,7 +574,7 @@
       "sections": [
         {
           "h": "Mengapa situs ini dibuat",
-          "p": ["Kami ingin membuat tes DISC yang bisa dikerjakan dalam sepuluh menit tanpa pendaftaran dan tanpa biaya, dengan laporan yang mudah dipahami dalam bahasa sendiri dan bisa dibagikan kepada tim. Situs ini tersedia dalam empat belas bahasa, hasil langsung muncul dan, jika Anda mau, dikirim ke email, dan bagi manajer serta HR tersedia panel tempat hasil para peserta dihimpun dalam satu tabel."]
+          "p": ["Kami ingin membuat tes DISC yang bisa dikerjakan dalam sepuluh menit tanpa pendaftaran dan tanpa biaya, dengan laporan yang mudah dipahami dalam bahasa sendiri dan bisa dibagikan kepada tim. Situs ini tersedia dalam empat belas bahasa, hasil langsung muncul dan bisa disimpan sebagai PDF, dan bagi manajer serta HR tersedia panel tempat hasil para peserta dihimpun dalam satu tabel."]
         },
         {
           "h": "Dasar tes ini",
@@ -783,7 +783,7 @@
         },
         {
           "h": "Yang tetap gratis",
-          "p": ["Tes itu sendiri, hasil di layar dan email hasil, halaman enam belas profil, serta versi PDF tes untuk dicetak tetap gratis dan tidak memerlukan pendaftaran. Profil lengkap hanya dibeli jika Anda menginginkannya."]
+          "p": ["Tes itu sendiri, hasil di layar dan laporan ringkas dalam PDF, halaman enam belas profil, serta versi PDF tes untuk dicetak tetap gratis dan tidak memerlukan pendaftaran. Profil lengkap hanya dibeli jika Anda menginginkannya."]
         },
         {
           "h": "Pertanyaan tentang layanan",
@@ -992,7 +992,7 @@
         ["Untuk orang lain", "Tautan ke hasil Anda", "Lembar “Cara bekerja sama dengan saya” untuk atasan dan rekan kerja"],
         ["Harga", "Gratis", "US${price}"]
       ],
-      "compareNote": "Tes, hasil di layar, email hasil, dan laporan ringkas dalam PDF tetap gratis. Laporan mendalam hanya dibeli jika Anda menginginkannya.",
+      "compareNote": "Tes, hasil di layar, dan laporan ringkas dalam PDF tetap gratis. Laporan mendalam hanya dibeli jika Anda menginginkannya.",
       "howTitle": "Cara mendapatkan laporan",
       "how": [
         "Ikuti tes gratis: 24 soal, sekitar 10 menit. Jika sudah pernah mengikutinya, Anda tidak perlu mengulang: laporan disusun dari hasil yang sudah ada.",
@@ -1141,7 +1141,7 @@
         {
           "h": "Apa saja isi hasil tes",
           "p": [
-            "Setelah soal terakhir, Anda melihat empat unsur: nama profil dengan satu atau dua huruf (misalnya “Perintis, DI”), grafik dengan tiga garis, empat skala dengan persentase, dan uraian tertulis: ciri khas, kekuatan, area pengembangan, motivasi, perilaku saat stres, dan saran cara berkomunikasi dengan Anda. Laporan yang sama bisa Anda terima lewat email dan buka melalui tautan.",
+            "Setelah soal terakhir, Anda melihat empat unsur: nama profil dengan satu atau dua huruf (misalnya “Perintis, DI”), grafik dengan tiga garis, empat skala dengan persentase, dan uraian tertulis: ciri khas, kekuatan, area pengembangan, motivasi, perilaku saat stres, dan saran cara berkomunikasi dengan Anda. Laporan yang sama bisa Anda simpan sebagai PDF dan buka melalui tautan.",
             "Semua angka dalam laporan diturunkan dari pilihan Anda di 24 soal. Di setiap soal Anda memilih satu pernyataan sebagai “Paling menggambarkan saya” dan satu sebagai “Paling tidak menggambarkan saya”, dan setiap pernyataan mewakili salah satu gaya: D, I, S, atau C. Karena itu, setiap gaya memiliki dua angka: berapa kali Anda memilihnya sebagai “paling menggambarkan” dan berapa kali sebagai “paling tidak menggambarkan”."
           ]
         },
@@ -1329,7 +1329,7 @@
           "h": "Kapan versi kertas dibutuhkan",
           "p": [
             "Tes di kertas praktis untuk pelatihan atau sesi strategi ketika tidak semua peserta membawa komputer, untuk kelas atau kelompok belajar, dan di tempat yang tidak mengizinkan penggunaan ponsel. Sebagian orang memang lebih mudah berkonsentrasi di atas kertas: beri tanda, balik halaman, tanpa terganggu notifikasi.",
-            "Jika peserta memang membawa ponsel, versi online lebih praktis: hasil dihitung otomatis, grafik langsung tampil, laporan dikirim ke email, dan ada tautan yang bisa dibagikan. Untuk tim, ada juga panel admin yang mengumpulkan hasil semua peserta."
+            "Jika peserta memang membawa ponsel, versi online lebih praktis: hasil dihitung otomatis, grafik langsung tampil, laporan bisa disimpan sebagai PDF, dan ada tautan yang bisa dibagikan. Untuk tim, ada juga panel admin yang mengumpulkan hasil semua peserta."
           ]
         },
         {
@@ -1379,7 +1379,7 @@
           "h": "Cara mengadakan tes untuk tim di situs ini",
           "ol": [
             "Ikuti tesnya sendiri terlebih dahulu: dengan begitu Anda tahu apa yang akan dilihat peserta dan bisa menunjukkan contoh laporan.",
-            "Kirimkan tautan situs dalam bahasa yang sesuai kepada rekan-rekan Anda. Tidak perlu mendaftar, dan tes hanya memakan waktu sekitar sepuluh menit; laporan langsung muncul di layar, lalu di layar hasil setiap orang mengisi nama dan email untuk menerima laporan lewat email.",
+            "Kirimkan tautan situs dalam bahasa yang sesuai kepada rekan-rekan Anda. Tidak perlu mendaftar, dan tes hanya memakan waktu sekitar sepuluh menit; laporan langsung muncul di layar, bisa disimpan sebagai PDF, dan tautan ke hasilnya bisa diteruskan kepada Anda.",
             "Minta setiap orang mengirimkan tautan hasilnya atau kode dari laporannya kepada Anda. Hasil hanya dapat dilihat oleh orang yang memiliki tautannya; tidak ada data yang otomatis terkirim kepada manajer.",
             "Buka panel admin (tautannya ada di bagian bawah situs) dan tempelkan kode-kode yang Anda terima. Panel akan menyusun tabel berisi nama, profil, dan skor; tabel itu bisa disalin ke Excel. Tabel hanya tersimpan di browser Anda.",
             "Jadwalkan pertemuan bersama: jelaskan keempat gaya, tampilkan peta tim, dan beri setiap orang kesempatan menceritakan bagian laporan mana yang tepat sasaran dan mana yang tidak."
@@ -1798,7 +1798,7 @@
     },
     "home": {
       "getTitle": "Yang akan Anda dapatkan",
-      "get": ["Gaya utama dan gaya sekunder serta nama profil Anda, salah satu dari 16 profil", "Grafik dengan tiga garis dan intensitas setiap gaya dalam persen", "Kekuatan, area pengembangan, motivasi, dan perilaku di bawah tekanan", "Saran tentang cara terbaik berkomunikasi dan bekerja dengan Anda", "Tautan ke laporan, simpan sebagai PDF, dan email jika Anda mau, tanpa pendaftaran dan tanpa versi berbayar"],
+      "get": ["Gaya utama dan gaya sekunder serta nama profil Anda, salah satu dari 16 profil", "Grafik dengan tiga garis dan intensitas setiap gaya dalam persen", "Kekuatan, area pengembangan, motivasi, dan perilaku di bawah tekanan", "Saran tentang cara terbaik berkomunikasi dan bekerja dengan Anda", "Tautan ke laporan dan simpan sebagai PDF, tanpa pendaftaran dan tanpa versi berbayar"],
       "calcTitle": "Cara hasil dihitung",
       "calc": "Di setiap soal dari 24 soal, Anda memilih satu pernyataan yang paling mirip dengan Anda dan satu yang paling tidak mirip. Setiap pernyataan termasuk dalam salah satu gaya D, I, S, atau C. Untuk setiap gaya dihitung selisih “paling” dikurangi “paling tidak”, dari −24 hingga +24, lalu diubah menjadi persen. Gaya utama adalah gaya dengan nilai tertinggi; gaya sekunder ikut dihitung jika gaya itu juga cukup menonjol.",
       "faqTitle": "Sekilas tentang tes",
@@ -1836,7 +1836,7 @@
   "ui": {
     "langLabel": "Bahasa",
     "footer": "24 soal · sekitar 10 menit · tidak ada jawaban benar atau salah",
-    "privacy": "Jawaban Anda tetap berada di browser; untuk statistik umum, server situs hanya menerima penanda kunjungan dan penanda bahwa tes dimulai, serta profil yang Anda peroleh, tanpa nama dan tanpa jawaban. Jika Anda mengisi email, hasil akan dikirim ke alamat itu dan disimpan di basis data hasil milik pemilik situs. Saat Anda menekan “Simpan sebagai PDF”, jawaban dan tanggal tes — tanpa nama dan email — dikirim ke server situs, yang membuat file laporan ringkas, mengembalikannya kepada Anda, dan tidak menyimpan apa pun.",
+    "privacy": "Jawaban Anda tetap berada di browser; untuk statistik umum, server situs hanya menerima penanda kunjungan dan penanda bahwa tes dimulai, serta profil yang Anda peroleh, tanpa nama dan tanpa jawaban. Saat Anda menekan “Simpan sebagai PDF”, jawaban dan tanggal tes — tanpa nama dan email — dikirim ke server situs, yang membuat file laporan ringkas, mengembalikannya kepada Anda, dan tidak menyimpan apa pun.",
     "legal": "Manukyan Armen · Nomor identitas wajib pajak (INN) {inn}",
     "rights": "© {year} disc-test.org. Dilarang menyalin teks situs dan laporan tanpa izin tertulis.",
     "adminLink": "Panel admin",
@@ -2062,7 +2062,7 @@
     "pages.profiles.colPure": "Tanpa gaya sekunder",
 
     "cta.title": "Kenali profil DISC Anda",
-    "cta.text": "Tes gratis: 24 soal, sekitar 10 menit, hasil langsung tampil dan dikirim ke email.",
+    "cta.text": "Tes gratis: 24 soal, sekitar 10 menit, hasil langsung tampil.",
     "cta.button": "Ikuti tes",
     "cta.inline": "Kenali gaya DISC Anda — tes gratis 10 menit, tanpa pendaftaran.",
     "cta.inlineProfile": "Merasa ini tentang Anda? Cek tipe DISC Anda — tes gratis 10 menit.",
@@ -2110,7 +2110,7 @@
     "pd.consentLink": "persetujuan atas pemrosesan data pribadi",
     "pd.required": "Centang persetujuan atas pemrosesan data pribadi: tanpa persetujuan itu, kami tidak dapat menerima data Anda.",
     "pd.cookieAsk": "Situs ini menyimpan progres, hasil, dan bahasa pilihan Anda di penyimpanan lokal browser. Dengan persetujuan Anda, layanan analitik web akan mengumpulkan statistik kunjungan yang dianonimkan dan rekaman aktivitas di halaman agar kami dapat menyempurnakan situs. Nama, email, dan hasil Anda tidak dikirim ke layanan analitik.",
-    "pd.cookieDetails": "Yang disimpan di browser: nama dan email, jika Anda mengisinya; jawaban dan progres yang belum selesai; hasil terakhir; bahasa yang dipilih; penanda bahwa Anda sudah melihat pemberitahuan ini. Data ini tetap berada di perangkat Anda dan terhapus saat Anda menghapus data situs. Layanan hosting menerima data teknis standar dari setiap permintaan. Saat Anda membuka situs untuk pertama kalinya dalam sehari, satu penanda kunjungan anonim dikirim ke server situs: hanya bahasa versi situs; server mencatatnya beserta waktu diterimanya, dan browser Anda menyimpan tanggalnya agar penanda itu tidak dikirim lagi pada hari yang sama. Dengan penanda ini kami menghitung berapa banyak orang yang mengunjungi situs. Saat Anda memulai tes, satu penanda mulai anonim dikirim ke server situs: hanya bahasa versi situs. Saat tes selesai, satu catatan anonim untuk statistik umum dikirim ke server situs: profil yang Anda peroleh dan bahasa versi situs, tanpa nama, email, maupun jawaban. Saat Anda menekan “Simpan sebagai PDF”, jawaban dan tanggal tes — tanpa nama dan email — dikirim ke server situs, yang membuat file laporan ringkas, mengembalikannya kepada Anda, dan tidak menyimpan apa pun. Saat Anda mengirim hasil ke email, nama, email, dan jawaban diteruskan ke server situs: server mengirimkan email berisi hasil kepada Anda dan menyimpan nama, email, tanggal, dan hasil di basis data hasil milik pemilik situs. Layanan analitik web menerima alamat halaman tanpa kode hasil, sumber kunjungan, jenis perangkat dan browser, serta rekaman anonim aktivitas di halaman (kolom nama dan email, tautan, dan kode hasil dikecualikan dari rekaman); layanan ini juga memasang cookie miliknya sendiri. Anda dapat memblokirnya melalui pengaturan browser atau dengan pemblokir pelacak. Pelacak iklan tidak digunakan.",
+    "pd.cookieDetails": "Yang disimpan di browser: nama dan email, jika Anda mengisinya; jawaban dan progres yang belum selesai; hasil terakhir; bahasa yang dipilih; penanda bahwa Anda sudah melihat pemberitahuan ini. Data ini tetap berada di perangkat Anda dan terhapus saat Anda menghapus data situs. Layanan hosting menerima data teknis standar dari setiap permintaan. Saat Anda membuka situs untuk pertama kalinya dalam sehari, satu penanda kunjungan anonim dikirim ke server situs: hanya bahasa versi situs; server mencatatnya beserta waktu diterimanya, dan browser Anda menyimpan tanggalnya agar penanda itu tidak dikirim lagi pada hari yang sama. Dengan penanda ini kami menghitung berapa banyak orang yang mengunjungi situs. Saat Anda memulai tes, satu penanda mulai anonim dikirim ke server situs: hanya bahasa versi situs. Saat tes selesai, satu catatan anonim untuk statistik umum dikirim ke server situs: profil yang Anda peroleh dan bahasa versi situs, tanpa nama, email, maupun jawaban. Saat Anda menekan “Simpan sebagai PDF”, jawaban dan tanggal tes — tanpa nama dan email — dikirim ke server situs, yang membuat file laporan ringkas, mengembalikannya kepada Anda, dan tidak menyimpan apa pun. Layanan analitik web menerima alamat halaman tanpa kode hasil, sumber kunjungan, jenis perangkat dan browser, serta rekaman anonim aktivitas di halaman (kolom nama dan email, tautan, dan kode hasil dikecualikan dari rekaman); layanan ini juga memasang cookie miliknya sendiri. Anda dapat memblokirnya melalui pengaturan browser atau dengan pemblokir pelacak. Pelacak iklan tidak digunakan.",
     "pd.cookieChange": "Ubah pilihan cookie",
 
     "print.title": "Tes DISC untuk Dicetak: Soal, Kunci Jawaban, dan Cara Menghitung Skor",

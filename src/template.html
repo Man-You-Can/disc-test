@@ -610,6 +610,7 @@ var SEND_TOKEN = '__SEND_TOKEN__';
 var PAY_ENDPOINT = '__PAY_ENDPOINT__'; // сервер оплаты (payEndpoint) — только в языках, где отчёт продаётся; пустой — кнопки отчёта ведут на его страницу
 var PD = '__PD__' === '1', PD_VERSION = '__PD_VERSION__'; // отдельная галочка согласия на обработку данных в форме отправки результата (pdConsent в site.config.json)
 var NEWSLETTER = '__NEWSLETTER__' === '1'; // галочка согласия на рассылку в форме отправки результата (newsletter в site.config.json)
+var RESULT_EMAIL = '__RESULT_EMAIL__' === '1'; // форма «краткий отчёт в PDF на e-mail» на экране результата (resultEmail в site.config.json; с 2026-10-21 выключена)
 var PDF_DL = '__PDF_DL__' === '1'; // «Сохранить в PDF» скачивает краткий отчёт, собранный сервером (pdfDownload в site.config.json); иначе — печать браузера
 var STATS = '__STATS__' === '1'; // обезличенный счёт: в начале теста серверу уходит только язык, при завершении — только профиль и язык (profileStats в site.config.json)
 var ROOT_REL = '__ROOT_REL__';         // относительный путь к корню сайта ('./' на главной, '../' в /xx/)
@@ -928,7 +929,7 @@ function renderReport(r, opts){
     '</div>'+
     // форма «краткий отчёт в PDF на e-mail» — сразу под графиком и числами, до описания профиля: так её видят почти все, кто прошёл тест
     // имя и e-mail обязательны (звёздочка, как в форме обратной связи; проверка — в обработчике отправки: имя не короче двух букв)
-    (opts.own ?
+    (opts.own && RESULT_EMAIL ?
       '<div class="share no-print" id="sendBox" style="margin:16px 0"><h2>'+t('share.emailTitle')+'</h2>'+
         '<form class="form" id="sendForm" autocomplete="on" novalidate>'+
           '<div class="field"><label for="nm">'+t('intro.nameLabel')+'<span class="req" aria-hidden="true">*</span></label><input type="text" id="nm" name="name" class="ym-disable-keys" autocomplete="name" required maxlength="80" value="'+esc(r.name||who.name||'')+'"></div>'+
@@ -1029,7 +1030,7 @@ function renderReport(r, opts){
   $('#print').addEventListener('click', function(){ savePdf(r, cls.key, this); });
   if($('#restart')) $('#restart').addEventListener('click', function(){ dropHash(); renderIntro(); window.scrollTo(0,0); });
   if($('#backAdmin')) $('#backAdmin').addEventListener('click', function(){ renderAdmin(); window.scrollTo(0,0); });
-  if(opts.own){
+  if(opts.own && RESULT_EMAIL){
     if(r.email && r.sent) showSendStatus(r, code, 'sent'); else if(r.email && r.queued) showSendStatus(r, code, 'queued');
     renderSub(r);
     $('#sendForm').addEventListener('submit', function(e){

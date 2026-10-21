@@ -4,7 +4,7 @@
   "name": "English",
   "dateLocale": "en-US",
   "title": "Free DISC Personality Test & Assessment — No Sign-Up",
-  "description": "Free online DISC assessment: 24 questions, 10 minutes, no sign-up. Find your primary DISC style, strengths and growth areas. Instant results, also by email.",
+  "description": "Free online DISC assessment: 24 questions, 10 minutes, no sign-up. Find your primary DISC style, strengths and growth areas. Instant results on screen.",
   "brand": "DISC Test",
   "keys": { "D": "Dominance", "I": "Influence", "S": "Steadiness", "C": "Conscientiousness" },
   "short": { "D": "Results and control", "I": "People and enthusiasm", "S": "Support and stability", "C": "Accuracy and quality" },
@@ -517,7 +517,7 @@
         },
         {
           "q": "Is the test really free?",
-          "a": "Yes: the test and the result are free, with no sign-up and no hidden charges. The result appears on screen right after the last block, and you can also have it emailed to you if you like. The site has one paid service — the in-depth DISC profile; it is described in the “Services” section and is entirely optional."
+          "a": "Yes: the test and the result are free, with no sign-up and no hidden charges. The result appears on screen right after the last block, and you can save it as a PDF. The site has one paid service — the in-depth DISC profile; it is described in the “Services” section and is entirely optional."
         },
         {
           "q": "What do the letters D, I, S, C mean?",
@@ -540,8 +540,8 @@
           "a": "Yes. Send your colleagues the link to the site; on the result screen each of them gets a link and a code, so ask them to forward those to you. In the admin panel (link in the footer) the codes are collected into a table you can copy into Excel. The table is stored only in your browser."
         },
         {
-          "q": "Where does the result go and who can see it?",
-          "a": "The result is shown on screen and saved in your browser. If you enter your name and email address on the result screen, the report is emailed to that address, and your name, email address and result are recorded in the site owner’s results database; without your consent they are not used for any other purpose and are not passed to third parties. Other people will see your report only if you share the link to it yourself. See the Privacy page for details."
+          "q": "Where is the result stored and who can see it?",
+          "a": "The result is shown on screen and saved in your browser. Other people will see your report only if you share the link to it yourself. See the Privacy page for details."
         },
         {
           "q": "Can I take the test again?",
@@ -572,7 +572,7 @@
       "sections": [
         {
           "h": "Why this site exists",
-          "p": ["We wanted a DISC test that anyone can take in ten minutes without signing up or paying, that gives them a clear report in their own language and that they can share with their team. The site works in 14 languages, the result appears instantly and can be emailed to you on request, and managers and HR have a panel where participants’ results are collected into a table."]
+          "p": ["We wanted a DISC test that anyone can take in ten minutes without signing up or paying, that gives them a clear report in their own language and that they can share with their team. The site works in 14 languages, the result appears instantly and can be saved as a PDF, and managers and HR have a panel where participants’ results are collected into a table."]
         },
         {
           "h": "What the test is based on",
@@ -781,7 +781,7 @@
         },
         {
           "h": "What stays free",
-          "p": ["The test itself, the on-screen result and the result email, the pages of the sixteen profiles and the printable PDF version of the test remain free and require no sign-up. The in-depth profile is purchased only if you want it."]
+          "p": ["The test itself, the on-screen result and the PDF summary report, the pages of the sixteen profiles and the printable PDF version of the test remain free and require no sign-up. The in-depth profile is purchased only if you want it."]
         },
         {
           "h": "Questions about the service",
@@ -995,7 +995,7 @@
         ["For others", "A link to your result", "The “How to work with me” sheet for your manager and colleagues"],
         ["Price", "Free", "US${price}"]
       ],
-      "compareNote": "The test, the on-screen result, the result email and the PDF summary report stay free. The in-depth report is entirely optional.",
+      "compareNote": "The test, the on-screen result and the PDF summary report stay free. The in-depth report is entirely optional.",
       "howTitle": "How to get the report",
       "how": [
         "Take the free test: 24 blocks, about 10 minutes. If you’ve already taken it, there’s no need to retake it: the report is built from the result you already have.",
@@ -1155,7 +1155,7 @@
         {
           "h": "What the result consists of",
           "p": [
-            "After the last block you see four elements: the profile name with one or two letters (for example, “Pioneer, DI”), a chart with three lines, four scales with percentages, and a written description: traits, strengths, growth areas, motivation, behavior under stress and recommendations on how others can best communicate with you. You can also have the same report emailed to you and reopen it at any time from its link.",
+            "After the last block you see four elements: the profile name with one or two letters (for example, “Pioneer, DI”), a chart with three lines, four scales with percentages, and a written description: traits, strengths, growth areas, motivation, behavior under stress and recommendations on how others can best communicate with you. You can also save the same report as a PDF and reopen it at any time from its link.",
             "Every number in the report is derived from your marks in the 24 blocks. In each block you chose one statement as “most like me” and one as “least like me,” and each statement belongs to one of the styles D, I, S or C. So each style has two numbers: how many times you chose it as “most” and how many times as “least.”"
           ]
         },
@@ -1334,7 +1334,7 @@
           "h": "When you need a paper version",
           "p": [
             "A paper test is convenient at a training session or strategy offsite where not every participant has a computer, in a class, and anywhere phones aren’t allowed. Some people simply find it easier to concentrate on paper: mark, turn the page, no notifications to distract you.",
-            "If participants do have their phones, the online version is simpler: it scores the result itself, draws the chart, emails the report and provides a link you can share. For teams there is also an admin panel that collects everyone’s results."
+            "If participants do have their phones, the online version is simpler: it scores the result itself, draws the chart, saves the report as a PDF and provides a link you can share. For teams there is also an admin panel that collects everyone’s results."
           ]
         },
         {
@@ -1384,7 +1384,7 @@
           "h": "How to run the test with your team on this site",
           "ol": [
             "Take the test yourself: that way you’ll know what participants will see and can show a sample report.",
-            "Send your colleagues the link to the site in the language they need. No sign-up is required and the test takes about ten minutes; the report appears on screen right away, and there each person enters their name and email to get a copy by email.",
+            "Send your colleagues the link to the site in the language they need. No sign-up is required and the test takes about ten minutes; the report appears on screen right away, each person can save it as a PDF and forward you the link to their result.",
             "Ask each person to forward you the link to their result or the code from the report. The result is visible only to whoever has the link; no data is sent to the manager automatically.",
             "Open the admin panel (link in the site footer) and paste in the codes you received. The panel compiles a table with names, profiles and scores; you can copy it into Excel. The table is stored only in your browser.",
             "Schedule a joint meeting: explain the four styles, show the team map and let everyone say what in their report hit the mark and what didn’t."
@@ -1801,7 +1801,7 @@
     },
     "home": {
       "getTitle": "What you’ll get",
-      "get": ["Your primary and secondary style and the name of your profile — one of 16", "A chart with three lines and how strongly each style shows up, in percent", "Your strengths, growth areas, motivation and behavior under stress", "Tips on how best to communicate and work with you", "A link to your report, a PDF copy and an email if you want one — no sign-up and no paid versions"],
+      "get": ["Your primary and secondary style and the name of your profile — one of 16", "A chart with three lines and how strongly each style shows up, in percent", "Your strengths, growth areas, motivation and behavior under stress", "Tips on how best to communicate and work with you", "A link to your report and a PDF copy — no sign-up and no paid versions"],
       "calcTitle": "How the result is calculated",
       "calc": "In each of the 24 blocks, you mark the one statement that is most like you and the one that is least like you. Each statement belongs to one of the styles D, I, S or C. For each style, the score is the number of “most” marks minus the number of “least” marks — from −24 to +24 — and it is then converted to a percentage. The primary style is the one with the highest score; a secondary style counts if it is also clearly pronounced.",
       "faqTitle": "The test in brief",
@@ -1839,7 +1839,7 @@
   "ui": {
     "langLabel": "Language",
     "footer": "24 blocks · about 10 minutes · no right or wrong answers",
-    "privacy": "Your answers stay in your browser; for overall statistics the site’s server receives only notes that you visited the site and started the test, and your resulting profile — no name and no answers. If you enter your email address, your result is sent to it and stored in the site owner’s results database. When you click “Save as PDF”, your answers and the test date — without your name or email — are sent to the site’s server, which builds the summary report file, returns it to you and stores nothing.",
+    "privacy": "Your answers stay in your browser; for overall statistics the site’s server receives only notes that you visited the site and started the test, and your resulting profile — no name and no answers. When you click “Save as PDF”, your answers and the test date — without your name or email — are sent to the site’s server, which builds the summary report file, returns it to you and stores nothing.",
     "legal": "Manukyan Armen · Taxpayer ID (INN) {inn}",
     "rights": "© {year} disc-test.org. Copying the texts of this site and its reports without written permission is prohibited.",
     "adminLink": "Admin panel",
@@ -2065,7 +2065,7 @@
     "pages.profiles.colPure": "No secondary",
 
     "cta.title": "Discover your DISC profile",
-    "cta.text": "Free test: 24 blocks, about 10 minutes, instant result and a copy by email.",
+    "cta.text": "Free test: 24 blocks, about 10 minutes, instant result.",
     "cta.button": "Take the test",
     "cta.inline": "Find your DISC style — a free 10-minute test, no sign-up.",
     "cta.inlineProfile": "Sounds like you? Check your DISC type — a free 10-minute test.",
@@ -2113,7 +2113,7 @@
     "pd.consentLink": "consent to the processing of personal data",
     "pd.required": "Please tick the consent to the processing of personal data: without it we cannot accept your data.",
     "pd.cookieAsk": "This site keeps your progress, result and chosen language in your browser’s local storage. With your consent, a web analytics system will collect anonymized visit statistics and a recording of on-page actions to help us improve the site. Your name, email and result are not sent to the analytics system.",
-    "pd.cookieDetails": "Stored in your browser: your name and email, if you entered them; your answers and unfinished progress; your latest result; your chosen language; a note that you have seen this notice. This data stays on your device and is removed when you clear the site’s data. The hosting provider receives standard technical request data. When you first open the site on a given day, an anonymous visit note goes to the site’s server: the site language only; the server records it with the time it arrived, and your browser remembers the date so the note is not sent again that day. We use these notes to count how many people visit the site. When you start the test, an anonymous start note goes to the site’s server: the site language only. When you finish the test, an anonymous record for overall statistics goes to the site’s server: your resulting profile and the site language — without your name, email or answers. When you click “Save as PDF”, your answers and the test date — without your name or email — are sent to the site’s server, which builds the summary report file, returns it to you and stores nothing. When you send your result by email, your name, email and answers are passed to the site’s server, which emails you your result and stores your name, email, date and result in the site owner’s results database. The web analytics system receives the page address without the result code, the referrer, device and browser type, an anonymized recording of on-page actions (the name and email fields, the result link and code are excluded), and sets its own cookies. You can block it in your browser settings or with a tracker blocker. No advertising trackers are used.",
+    "pd.cookieDetails": "Stored in your browser: your name and email, if you entered them; your answers and unfinished progress; your latest result; your chosen language; a note that you have seen this notice. This data stays on your device and is removed when you clear the site’s data. The hosting provider receives standard technical request data. When you first open the site on a given day, an anonymous visit note goes to the site’s server: the site language only; the server records it with the time it arrived, and your browser remembers the date so the note is not sent again that day. We use these notes to count how many people visit the site. When you start the test, an anonymous start note goes to the site’s server: the site language only. When you finish the test, an anonymous record for overall statistics goes to the site’s server: your resulting profile and the site language — without your name, email or answers. When you click “Save as PDF”, your answers and the test date — without your name or email — are sent to the site’s server, which builds the summary report file, returns it to you and stores nothing. The web analytics system receives the page address without the result code, the referrer, device and browser type, an anonymized recording of on-page actions (the name and email fields, the result link and code are excluded), and sets its own cookies. You can block it in your browser settings or with a tracker blocker. No advertising trackers are used.",
     "pd.cookieChange": "Change cookie choice",
 
     "print.title": "Printable DISC Test: Questionnaire, Answer Key and Scoring",
