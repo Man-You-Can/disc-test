@@ -284,14 +284,14 @@ const firstPublished = key => { const [lang, sub] = [key.slice(0, key.indexOf(':
 const contentDate = (key, text, files) => { const h = crypto.createHash('sha1').update(text).digest('hex').slice(0, 16), old = lmOld[key];
   const d = old ? (old.h === h ? old.d : today) : (lastmod(files) || today); lmNew[key] = { h, d, p: old ? (old.p || firstPublished(key)) : today }; return d; };
 // Локаль для скрипта главной — только то, что нужно тесту, отчёту и блоку под тестом: у профилей название и краткое описание,
-// из статей — content.home и названия цветов (ссылка «Ваш цвет DISC» в отчёте). Тексты статей и страниц профилей
+// из статей — content.home (ссылка «Ваш цвет DISC» в отчёте и названия цветов для неё убраны 2026-10-21). Тексты статей и страниц профилей
 // (profiles.*.deep, careers, team, with, content.*) раньше попадали в скрипт целиком — ~150 КБ лишнего на главной (аудит 3, п. 4).
 const homeLocale = L => Object.assign({}, L, {
   // ui: тексты уведомления о cookie — по режиму языка; ключи pd.* нужны главной только при включённой галочке согласия (pd.cookie* — никогда: они уже подставлены)
   ui: Object.assign(Object.fromEntries(Object.entries(L.ui).filter(([k]) => !k.startsWith('pd.') || (pdOn && !k.startsWith('pd.cookie')))), noticeUi(L)),
   profiles: Object.fromEntries(Object.entries(L.profiles).map(([k, p]) => [k, { name: p.name, summary: p.summary }])),
   // product — тексты блока «Расширенный отчёт» на экране результата (цена уже подставлена); страница отчёта в скрипт не идёт
-  content: Object.assign({ home: L.content.home, colors: { colors: Object.fromEntries(KEYS.map(k => [k, { name: L.content.colors.colors[k].name }])) } },
+  content: Object.assign({ home: L.content.home },
     hasProduct(L) ? { product: Object.assign(withPrice(L, L.content.product.block), hasSamples(L) ? {} : { sample: '' },
       L.content.product.promo ? { promo: withPrice(L, L.content.product.promo) } : {}, homePay(L) ? { pay: homePay(L) } : {}) } : {})
 });
