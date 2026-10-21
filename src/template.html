@@ -983,12 +983,12 @@ function renderReport(r, opts){
     // покупка прямо здесь (PB.pay — там, где отчёт продаётся и задан сервер оплаты): кнопки призывов раскрывают на месте форму с e-mail
     // и кнопкой «Купить», без перехода на страницу отчёта. Источник заказа — какая кнопка раскрыла форму; без PB.pay кнопки ведут на страницу отчёта
     var PP = PB.pay && PAY_ENDPOINT && typeof payForms === 'function' && !opts.fromAdmin ? PB.pay : null, pf = null, xb = xo.querySelector('.xact .btn');
-    var buyOpen = function(box, after, source, btn){
+    var buyOpen = function(box, after, source, btn, quiet){
       var w = box.querySelector('.xinline');
       if(!w){
         if(!pf) pf = payForms({T: Object.assign({}, PP, {noteHtml: PP.noteHtml.replace(/\{base\}/g, base)}), endpoint: PAY_ENDPOINT, L: L, esc: esc, lsSet: lsSet});
-        var em = $('#em'), f = pf.add({id: 'xpayE' + pf.forms.length, code: code, source: source, email: (em && em.value.trim()) || r.email || who.email || ''});
-        w = document.createElement('div'); w.className = 'xinline';
+        var em = $('#em'), fo = {id: 'xpayE' + pf.forms.length, code: code, source: source, email: (em && em.value.trim()) || r.email || who.email || ''}, f = pf.add(fo);
+        w = document.createElement('div'); w.className = 'xinline'; w.discOpts = fo;
         w.innerHTML = '<p class="small">'+esc(PP.text)+'</p>';
         w.appendChild(f.form);
         var more = document.createElement('p'); more.className = 'xmore'; more.innerHTML = '<a href="'+extHref+'">'+esc(PP.more)+' '+arrowR()+'</a>';
@@ -996,10 +996,15 @@ function renderReport(r, opts){
         w.appendChild(more);
         after.parentNode.insertBefore(w, after.nextSibling);
       }
+      // форма уже открыта, а человек нажал кнопку (закреплённую на телефоне): заказ записывается на эту кнопку
+      else if(!quiet && w.discOpts) w.discOpts.source = source;
       if(btn) btn.hidden = true;
-      var i = w.querySelector('input'); if(!i.value){ try{ i.focus({preventScroll:true}); }catch(e){ i.focus(); } }
+      var i = w.querySelector('input'); if(!quiet && !i.value){ try{ i.focus({preventScroll:true}); }catch(e){ i.focus(); } }
       return w;
     };
+    // в нижнем блоке форма покупки (поле e-mail и «Купить») видна сразу, без кнопки, которая её раскрывает (решение заказчика от 2026-10-21);
+    // фокус в поле не ставим, чтобы страница не прыгала к блоку и на телефоне не открывалась клавиатура
+    if(PP) buyOpen(xo, xb.parentNode, 'result-block', xb, true);
     xo.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(ev){ src('result-block'); if(window.discTrack) window.discTrack('ext-click');
       if(PP && a === xb){ ev.preventDefault(); buyOpen(xo, xb.parentNode, 'result-block', xb); } }); });
     if('IntersectionObserver' in window){ var xio = new IntersectionObserver(function(es){ if(es[0].isIntersecting){ xio.disconnect(); if(window.discTrack) window.discTrack('ext-show'); } }, {threshold:.4}); xio.observe(xo); }
