@@ -247,8 +247,11 @@ html[lang=ar] body,html[lang=hi] body{font-size:17px;line-height:1.65}
 @media (max-width:640px){.lastcard .xhooks li:nth-child(n+3){display:none}}
 @media (max-width:480px){.lastcard{padding:14px 16px 16px}.lclead{margin-top:12px}.lclead,.lastcard .xhooks{font-size:15px}.lastcard .btn{display:flex;width:100%;margin-top:14px}}
 .xoffer{scroll-margin-top:76px}
+/* блок расширенного отчёта выделен фоном в цвет ведущего стиля участника (--k), чтобы бросался в глаза (решение заказчика от 2026-10-21);
+   без color-mix — прежний фон карточки и цветная полоса слева */
+.share.xoffer{border-inline-start:4px solid var(--k,var(--ink));background:color-mix(in srgb,var(--k,var(--ink)) 13%,var(--surface));border-color:color-mix(in srgb,var(--k,var(--ink)) 45%,var(--line));border-inline-start-color:var(--k,var(--ink))}
 .xoffer h2{margin:0 0 12px;font-size:22px}
-.xoffer .xhook{background:var(--soft);border-radius:10px;padding:12px 14px;margin:0 0 16px}
+.xoffer .xhook{background:var(--surface);border-radius:10px;padding:12px 14px;margin:0 0 16px}
 .xgrid{display:grid;grid-template-columns:1fr auto;gap:16px 28px;align-items:start}
 .xgrid ul{margin:0;padding-inline-start:20px}
 .xgrid li{margin-bottom:8px}
