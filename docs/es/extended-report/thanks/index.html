@@ -849,7 +849,7 @@ function payForms(c){
   g.add = function(o){
     var form = document.createElement('form'); form.className = 'xpay'; form.noValidate = true;
     form.innerHTML = '<div class="field"><label for="'+o.id+'">'+esc(T.emailLabel)+'</label>'+
-      '<input type="email" id="'+o.id+'" class="ym-disable-keys" autocomplete="email" inputmode="email" maxlength="'+PAY_EMAIL_MAX+'" required></div>'+
+      '<input type="email" id="'+o.id+'" class="ym-disable-keys" autocomplete="email" inputmode="email" maxlength="'+PAY_EMAIL_MAX+'"'+(T.emailPlaceholder ? ' placeholder="'+esc(T.emailPlaceholder)+'"' : '')+' required></div>'+
       (o.price ? '<div class="xbuyact"><span class="xbig">'+esc(o.price)+'</span><button class="btn" type="submit">'+esc(T.button)+'</button></div>'
         : '<button class="btn" type="submit">'+esc(T.button)+'</button>')+
       (T.guarantee ? '<p class="xguar">'+esc(T.guarantee)+'</p>' : '')+

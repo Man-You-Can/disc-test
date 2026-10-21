@@ -875,7 +875,7 @@ function payForms(c){
   g.add = function(o){
     var form = document.createElement('form'); form.className = 'xpay'; form.noValidate = true;
     form.innerHTML = '<div class="field"><label for="'+o.id+'">'+esc(T.emailLabel)+'</label>'+
-      '<input type="email" id="'+o.id+'" class="ym-disable-keys" autocomplete="email" inputmode="email" maxlength="'+PAY_EMAIL_MAX+'" required></div>'+
+      '<input type="email" id="'+o.id+'" class="ym-disable-keys" autocomplete="email" inputmode="email" maxlength="'+PAY_EMAIL_MAX+'"'+(T.emailPlaceholder ? ' placeholder="'+esc(T.emailPlaceholder)+'"' : '')+' required></div>'+
       (o.price ? '<div class="xbuyact"><span class="xbig">'+esc(o.price)+'</span><button class="btn" type="submit">'+esc(T.button)+'</button></div>'
         : '<button class="btn" type="submit">'+esc(T.button)+'</button>')+
       (T.guarantee ? '<p class="xguar">'+esc(T.guarantee)+'</p>' : '')+
@@ -961,7 +961,7 @@ function initPayFail(c){
   if(rec && !rec.fail){ rec.fail = true; c.lsSet('disc.pay', rec); payTrack('ext-pay-fail'); }
 }
 
-initPayBuy({T: {"noteHtml":"Нажимая «Купить», вы принимаете условия \u003ca href=\"../offer/\">публичной оферты\u003c/a>. Данные карты вы вводите на защищённой странице банка.","errorHtml":"Не удалось перейти к оплате. Попробуйте ещё раз через минуту или напишите нам: \u003ca href=\"mailto:info@disc-test.org\">info@disc-test.org\u003c/a>.","title":"Отчёт соберём по вашему результату от {date}","text":"Отчёт придёт письмом на ваш e-mail сразу после оплаты: файл PDF во вложении. На тот же адрес придёт кассовый чек.","emailLabel":"E-mail для получения отчёта в формате PDF","button":"Купить","badEmail":"Проверьте адрес: на него придут отчёт и чек.","wait":"Переходим к оплате…","guarantee":"Не подошло — вернём деньги в течение 7 дней."}, endpoint: "https://api.disc-test.org/pay", L: L, esc: esc, lsGet: lsGet, lsSet: lsSet});
+initPayBuy({T: {"noteHtml":"Нажимая «Купить», вы принимаете условия \u003ca href=\"../offer/\">публичной оферты\u003c/a>. Данные карты вы вводите на защищённой странице банка.","errorHtml":"Не удалось перейти к оплате. Попробуйте ещё раз через минуту или напишите нам: \u003ca href=\"mailto:info@disc-test.org\">info@disc-test.org\u003c/a>.","title":"Отчёт соберём по вашему результату от {date}","text":"Отчёт придёт письмом на ваш e-mail сразу после оплаты: файл PDF во вложении. На тот же адрес придёт кассовый чек.","emailLabel":"E-mail для получения отчёта в формате PDF","emailPlaceholder":"Введите свой e-mail","button":"Купить","badEmail":"Проверьте адрес: на него придут отчёт и чек.","wait":"Переходим к оплате…","guarantee":"Не подошло — вернём деньги в течение 7 дней."}, endpoint: "https://api.disc-test.org/pay", L: L, esc: esc, lsGet: lsGet, lsSet: lsSet});
 /* цели Метрики у кнопок теста (cta-top, cta-bottom, cta-float) и плавающая кнопка на телефоне: видна, когда призыв
    после вводного абзаца уже прокручен вверх, а нижний призыв и подвал ещё не на экране (аудит 3, п. 1) */
 (function(){

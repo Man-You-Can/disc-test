@@ -875,7 +875,7 @@ function payForms(c){
   g.add = function(o){
     var form = document.createElement('form'); form.className = 'xpay'; form.noValidate = true;
     form.innerHTML = '<div class="field"><label for="'+o.id+'">'+esc(T.emailLabel)+'</label>'+
-      '<input type="email" id="'+o.id+'" class="ym-disable-keys" autocomplete="email" inputmode="email" maxlength="'+PAY_EMAIL_MAX+'" required></div>'+
+      '<input type="email" id="'+o.id+'" class="ym-disable-keys" autocomplete="email" inputmode="email" maxlength="'+PAY_EMAIL_MAX+'"'+(T.emailPlaceholder ? ' placeholder="'+esc(T.emailPlaceholder)+'"' : '')+' required></div>'+
       (o.price ? '<div class="xbuyact"><span class="xbig">'+esc(o.price)+'</span><button class="btn" type="submit">'+esc(T.button)+'</button></div>'
         : '<button class="btn" type="submit">'+esc(T.button)+'</button>')+
       (T.guarantee ? '<p class="xguar">'+esc(T.guarantee)+'</p>' : '')+
@@ -961,7 +961,7 @@ function initPayFail(c){
   if(rec && !rec.fail){ rec.fail = true; c.lsSet('disc.pay', rec); payTrack('ext-pay-fail'); }
 }
 
-initPayBuy({T: {"noteHtml":"Dengan menekan “Beli”, Anda menerima \u003ca href=\"../offer/\">syarat dan ketentuan layanan berbayar\u003c/a> kami. Anda membayar dalam dolar AS di halaman aman Prodamus: data kartu Anda masukkan di sana, bukan di situs ini. Di mutasi rekening, pembayaran bisa tercatat atas nama simpleway.by.","errorHtml":"Halaman pembayaran belum bisa dibuka. Coba lagi beberapa menit lagi atau tulis kepada kami di \u003ca href=\"mailto:info@disc-test.org\">info@disc-test.org\u003c/a>.","title":"Laporan disusun dari hasil tes Anda tanggal {date}","text":"Laporan dikirim lewat email sebagai lampiran PDF, segera setelah pembayaran. Bukti pembayaran dikirim ke alamat yang sama.","emailLabel":"Email untuk menerima laporan dalam format PDF","button":"Beli","badEmail":"Periksa alamat email Anda: laporan dan bukti pembayaran dikirim ke alamat itu.","wait":"Membuka halaman pembayaran …","guarantee":"Tidak sesuai harapan? Ada garansi uang kembali selama 7 hari."}, endpoint: "https://api.disc-test.org/pay", L: L, esc: esc, lsGet: lsGet, lsSet: lsSet});
+initPayBuy({T: {"noteHtml":"Dengan menekan “Beli”, Anda menerima \u003ca href=\"../offer/\">syarat dan ketentuan layanan berbayar\u003c/a> kami. Anda membayar dalam dolar AS di halaman aman Prodamus: data kartu Anda masukkan di sana, bukan di situs ini. Di mutasi rekening, pembayaran bisa tercatat atas nama simpleway.by.","errorHtml":"Halaman pembayaran belum bisa dibuka. Coba lagi beberapa menit lagi atau tulis kepada kami di \u003ca href=\"mailto:info@disc-test.org\">info@disc-test.org\u003c/a>.","title":"Laporan disusun dari hasil tes Anda tanggal {date}","text":"Laporan dikirim lewat email sebagai lampiran PDF, segera setelah pembayaran. Bukti pembayaran dikirim ke alamat yang sama.","emailLabel":"Email untuk menerima laporan dalam format PDF","emailPlaceholder":"Masukkan email Anda","button":"Beli","badEmail":"Periksa alamat email Anda: laporan dan bukti pembayaran dikirim ke alamat itu.","wait":"Membuka halaman pembayaran …","guarantee":"Tidak sesuai harapan? Ada garansi uang kembali selama 7 hari."}, endpoint: "https://api.disc-test.org/pay", L: L, esc: esc, lsGet: lsGet, lsSet: lsSet});
 /* цели Метрики у кнопок теста (cta-top, cta-bottom, cta-float) и плавающая кнопка на телефоне: видна, когда призыв
    после вводного абзаца уже прокручен вверх, а нижний призыв и подвал ещё не на экране (аудит 3, п. 1) */
 (function(){

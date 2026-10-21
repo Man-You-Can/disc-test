@@ -875,7 +875,7 @@ function payForms(c){
   g.add = function(o){
     var form = document.createElement('form'); form.className = 'xpay'; form.noValidate = true;
     form.innerHTML = '<div class="field"><label for="'+o.id+'">'+esc(T.emailLabel)+'</label>'+
-      '<input type="email" id="'+o.id+'" class="ym-disable-keys" autocomplete="email" inputmode="email" maxlength="'+PAY_EMAIL_MAX+'" required></div>'+
+      '<input type="email" id="'+o.id+'" class="ym-disable-keys" autocomplete="email" inputmode="email" maxlength="'+PAY_EMAIL_MAX+'"'+(T.emailPlaceholder ? ' placeholder="'+esc(T.emailPlaceholder)+'"' : '')+' required></div>'+
       (o.price ? '<div class="xbuyact"><span class="xbig">'+esc(o.price)+'</span><button class="btn" type="submit">'+esc(T.button)+'</button></div>'
         : '<button class="btn" type="submit">'+esc(T.button)+'</button>')+
       (T.guarantee ? '<p class="xguar">'+esc(T.guarantee)+'</p>' : '')+
@@ -961,7 +961,7 @@ function initPayFail(c){
   if(rec && !rec.fail){ rec.fail = true; c.lsSet('disc.pay', rec); payTrack('ext-pay-fail'); }
 }
 
-initPayBuy({T: {"noteHtml":"Al pulsar «Comprar», acepta las \u003ca href=\"../offer/\">condiciones de venta\u003c/a>. El pago se hace en dólares estadounidenses, en la página segura de Prodamus: los datos de la tarjeta se introducen allí, no en este sitio. En el extracto de la tarjeta, el cargo puede figurar como simpleway.by.","errorHtml":"No se ha podido abrir la página de pago. Inténtelo de nuevo en unos instantes o escriba a \u003ca href=\"mailto:info@disc-test.org\">info@disc-test.org\u003c/a>.","title":"Su informe se elaborará a partir del test que hizo el {date}","text":"El informe le llegará por correo electrónico justo después del pago, como PDF adjunto. El comprobante de pago se envía a la misma dirección.","emailLabel":"Correo para recibir el informe en PDF","button":"Comprar","badEmail":"Revise la dirección de correo: a ella enviaremos el informe y el comprobante.","wait":"Abriendo la página de pago…","guarantee":"¿No es lo que esperaba? Tiene 7 días para recuperar su dinero."}, endpoint: "https://api.disc-test.org/pay", L: L, esc: esc, lsGet: lsGet, lsSet: lsSet});
+initPayBuy({T: {"noteHtml":"Al pulsar «Comprar», acepta las \u003ca href=\"../offer/\">condiciones de venta\u003c/a>. El pago se hace en dólares estadounidenses, en la página segura de Prodamus: los datos de la tarjeta se introducen allí, no en este sitio. En el extracto de la tarjeta, el cargo puede figurar como simpleway.by.","errorHtml":"No se ha podido abrir la página de pago. Inténtelo de nuevo en unos instantes o escriba a \u003ca href=\"mailto:info@disc-test.org\">info@disc-test.org\u003c/a>.","title":"Su informe se elaborará a partir del test que hizo el {date}","text":"El informe le llegará por correo electrónico justo después del pago, como PDF adjunto. El comprobante de pago se envía a la misma dirección.","emailLabel":"Correo para recibir el informe en PDF","emailPlaceholder":"Escriba su correo electrónico","button":"Comprar","badEmail":"Revise la dirección de correo: a ella enviaremos el informe y el comprobante.","wait":"Abriendo la página de pago…","guarantee":"¿No es lo que esperaba? Tiene 7 días para recuperar su dinero."}, endpoint: "https://api.disc-test.org/pay", L: L, esc: esc, lsGet: lsGet, lsSet: lsSet});
 /* цели Метрики у кнопок теста (cta-top, cta-bottom, cta-float) и плавающая кнопка на телефоне: видна, когда призыв
    после вводного абзаца уже прокручен вверх, а нижний призыв и подвал ещё не на экране (аудит 3, п. 1) */
 (function(){

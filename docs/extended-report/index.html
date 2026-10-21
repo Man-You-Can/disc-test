@@ -875,7 +875,7 @@ function payForms(c){
   g.add = function(o){
     var form = document.createElement('form'); form.className = 'xpay'; form.noValidate = true;
     form.innerHTML = '<div class="field"><label for="'+o.id+'">'+esc(T.emailLabel)+'</label>'+
-      '<input type="email" id="'+o.id+'" class="ym-disable-keys" autocomplete="email" inputmode="email" maxlength="'+PAY_EMAIL_MAX+'" required></div>'+
+      '<input type="email" id="'+o.id+'" class="ym-disable-keys" autocomplete="email" inputmode="email" maxlength="'+PAY_EMAIL_MAX+'"'+(T.emailPlaceholder ? ' placeholder="'+esc(T.emailPlaceholder)+'"' : '')+' required></div>'+
       (o.price ? '<div class="xbuyact"><span class="xbig">'+esc(o.price)+'</span><button class="btn" type="submit">'+esc(T.button)+'</button></div>'
         : '<button class="btn" type="submit">'+esc(T.button)+'</button>')+
       (T.guarantee ? '<p class="xguar">'+esc(T.guarantee)+'</p>' : '')+
@@ -961,7 +961,7 @@ function initPayFail(c){
   if(rec && !rec.fail){ rec.fail = true; c.lsSet('disc.pay', rec); payTrack('ext-pay-fail'); }
 }
 
-initPayBuy({T: {"noteHtml":"By clicking “Buy”, you accept our \u003ca href=\"../offer/\">terms of sale\u003c/a>. Payment is handled by Prodamus: you enter your card details on its secure page, not on this site. Your statement may show the charge as simpleway.by.","errorHtml":"We couldn’t take you to payment. Please try again in a minute or write to us at \u003ca href=\"mailto:info@disc-test.org\">info@disc-test.org\u003c/a>.","title":"Your report will be built from the test you took on {date}","text":"The report arrives by email as soon as you pay, as a PDF attachment. Your payment receipt goes to the same address.","emailLabel":"Email to receive your report as a PDF","button":"Buy","badEmail":"Please check the address: your report and receipt will be sent there.","wait":"Taking you to payment…","guarantee":"Not right for you? Get a full refund within 7 days."}, endpoint: "https://api.disc-test.org/pay", L: L, esc: esc, lsGet: lsGet, lsSet: lsSet});
+initPayBuy({T: {"noteHtml":"By clicking “Buy”, you accept our \u003ca href=\"../offer/\">terms of sale\u003c/a>. Payment is handled by Prodamus: you enter your card details on its secure page, not on this site. Your statement may show the charge as simpleway.by.","errorHtml":"We couldn’t take you to payment. Please try again in a minute or write to us at \u003ca href=\"mailto:info@disc-test.org\">info@disc-test.org\u003c/a>.","title":"Your report will be built from the test you took on {date}","text":"The report arrives by email as soon as you pay, as a PDF attachment. Your payment receipt goes to the same address.","emailLabel":"Email to receive your report as a PDF","emailPlaceholder":"Enter your email","button":"Buy","badEmail":"Please check the address: your report and receipt will be sent there.","wait":"Taking you to payment…","guarantee":"Not right for you? Get a full refund within 7 days."}, endpoint: "https://api.disc-test.org/pay", L: L, esc: esc, lsGet: lsGet, lsSet: lsSet});
 /* цели Метрики у кнопок теста (cta-top, cta-bottom, cta-float) и плавающая кнопка на телефоне: видна, когда призыв
    после вводного абзаца уже прокручен вверх, а нижний призыв и подвал ещё не на экране (аудит 3, п. 1) */
 (function(){

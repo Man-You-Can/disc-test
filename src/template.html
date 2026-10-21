@@ -871,7 +871,8 @@ function renderReport(r, opts){
   var code = encodeResult(r);
   var link = pageURL()+'#r='+code;
   var show = {most:false, least:false, net:true};
-  var meta = [esc(r.name), esc(r.email||r.pos||''), fmtDate(r.t)].filter(Boolean).join(' · ');
+  // дата с подписью «Тест пройден:» (ui["report.taken"], с 2026-10-21)
+  var meta = [esc(r.name), esc(r.email||r.pos||''), r.t && fmtDate(r.t) ? esc(t('report.taken',{date:fmtDate(r.t)})) : ''].filter(Boolean).join(' · ');
   var who = lsGet('disc.who')||{};
   var label = cls.key+' · '+prof.name;
   var lines = KEYS.map(function(k){ return k+': '+signed(sc.net[k])+' ('+pct(sc.net[k])+'%)'; }).join(', ');

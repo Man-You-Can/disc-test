@@ -304,7 +304,7 @@ function homePay(L) {
   const vars = { offer: `<a href="{base}offer/">${escFull(C.offer.linkText)}</a>`, email: feedbackEmail ? `<a href="mailto:${escFull(feedbackEmail)}">${escFull(feedbackEmail)}</a>` : '—' };
   const fill = h => h.replace(/\{(offer|email)\}/g, (m, k) => vars[k]);
   return Object.assign({ noteHtml: fill(escFull(pay.note)), errorHtml: fill(escFull(pay.error)), more: C.product.more },
-    Object.fromEntries(['text', 'emailLabel', 'button', 'badEmail', 'wait', 'guarantee'].map(k => [k, pay[k]])));
+    Object.fromEntries(['text', 'emailLabel', 'emailPlaceholder', 'button', 'badEmail', 'wait', 'guarantee'].map(k => [k, pay[k]])));
 }
 // Организация-издатель: одна карточка на весь сайт, с адресом для связи
 const orgLd = () => ({ '@context': 'https://schema.org', '@type': 'Organization', name: 'DISC Test', url: siteUrl + '/', logo: `${siteUrl}/icon-512.png`, email: feedbackEmail || undefined });
@@ -722,7 +722,7 @@ for (const L of locales) {
           `<p class="seealso">${docLink('services/', sv)} · ${docLink('offer/', of)} · ${docLink('refund/', rf)}</p>`,
         files: samples ? pr.sampleAlt.map((_, i) => `src/assets/extended/${L.lang}-i-${i + 1}.webp`) : [],
         pageJs: resultFromUrlJs + (pay ? payJs + `\ninitPayBuy({T: ${JSON.stringify(Object.assign({ noteHtml: fillHtml(escFull(pay.note)), errorHtml: fillHtml(escFull(pay.error)) },
-          Object.fromEntries(['title', 'text', 'emailLabel', 'button', 'badEmail', 'wait', 'guarantee'].map(k => [k, pay[k]])))).replace(/</g, '\\u003c')}, endpoint: ${jsStr(payEndpoint)}, L: L, esc: esc, lsGet: lsGet, lsSet: lsSet});` : `(function(){
+          Object.fromEntries(['title', 'text', 'emailLabel', 'emailPlaceholder', 'button', 'badEmail', 'wait', 'guarantee'].map(k => [k, pay[k]])))).replace(/</g, '\\u003c')}, endpoint: ${jsStr(payEndpoint)}, L: L, esc: esc, lsGet: lsGet, lsSet: lsSet});` : `(function(){
   var r = resultFromUrl() || lsGet('disc.last'); if(!r || !r.t || !r.m || !r.l || !r.m.join) return;
   var B = ${JSON.stringify(pr.buy).replace(/</g, '\\u003c')}, d = new Date(r.t), date = isNaN(d) ? '' : d.toLocaleDateString(L.dateLocale, {day:'numeric', month:'long', year:'numeric'});
   function b64e(s){ return btoa(unescape(encodeURIComponent(s))).replace(/\\+/g,'-').replace(/\\//g,'_').replace(/=+$/,''); }
