@@ -19,41 +19,42 @@ function paySource(){
   return s || (/\/services\/(?:$|[?#])/.test(document.referrer) ? 'services' : 'page');
 }
 
-/* Страница отчёта: у кого результат сохранён на этом устройстве (disc.last), тому блок покупки (.xbuy) превращается в форму
-   с полем e-mail и кнопкой «Купить». c: {T (тексты content.product.pay, noteHtml и errorHtml — готовая разметка), endpoint, L, esc, lsGet, lsSet} */
-function initPayBuy(c){
-  // результат — из адреса страницы (ссылка из PDF краткого отчёта или письма: #r=DISC1.…, функция resultFromUrl вставляется сборкой), иначе сохранённый на устройстве
-  var T = c.T, esc = c.esc, r = (typeof resultFromUrl === 'function' && resultFromUrl()) || c.lsGet('disc.last'); if(!r || !r.t || !r.m || !r.l || !r.m.join) return;
-  var d = new Date(r.t), date = isNaN(d) ? '' : d.toLocaleDateString(c.L.dateLocale, {day:'numeric', month:'long', year:'numeric'});
+/* Код результата для заказа — тот же формат, что у encodeResult на странице теста */
+function payCode(r){
   function b64e(s){ return btoa(unescape(encodeURIComponent(s))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,''); }
-  var code = 'DISC1.' + b64e(JSON.stringify({n:r.name||'', e:r.email||'', p:r.pos||'', t:r.t, m:r.m.join(''), l:r.l.join('')}));
-  var source = paySource(), busy = false, forms = [];
-  function setBusy(on){ busy = on; forms.forEach(function(f){ f.btn.disabled = on; f.btn.textContent = on ? T.wait : T.button; }); }
+  return 'DISC1.' + b64e(JSON.stringify({n:r.name||'', e:r.email||'', p:r.pos||'', t:r.t, m:r.m.join(''), l:r.l.join('')}));
+}
+
+/* Формы покупки одной страницы: поле e-mail, кнопка «Купить», строка гарантии (T.guarantee) и условие оферты. Формы на странице
+   работают вместе: e-mail набирается в одной — появляется в остальных, на время перехода к оплате все кнопки заняты.
+   Ими пользуются страница отчёта (initPayBuy) и экран результата на главной (src/template.html: покупка без перехода на страницу отчёта).
+   c: {T (тексты content.product.pay, noteHtml и errorHtml — готовая разметка), endpoint, L, esc, lsSet}.
+   add({id, code, source, email}) → {form, input, btn, st}: форма ещё не вставлена в страницу. */
+function payForms(c){
+  var T = c.T, esc = c.esc, g = {busy:false, forms:[]};
+  g.setBusy = function(on){ g.busy = on; g.forms.forEach(function(f){ f.btn.disabled = on; f.btn.textContent = on ? T.wait : T.button; }); };
   // возврат со страницы банка кнопкой «Назад»: браузер показывает сохранённую страницу с нажатой кнопкой
-  window.addEventListener('pageshow', function(ev){ if(ev.persisted) setBusy(false); });
-  [].forEach.call(document.querySelectorAll('.xbuy'), function(box, i){
-    var id = 'payEmail' + i, old = box.querySelector('a.btn'), price = box.querySelector('.price');
-    box.querySelector('h2').textContent = T.title.replace('{date}', date);
-    box.querySelector('div p').textContent = T.text;
+  window.addEventListener('pageshow', function(ev){ if(ev.persisted) g.setBusy(false); });
+  g.add = function(o){
     var form = document.createElement('form'); form.className = 'xpay'; form.noValidate = true;
-    form.innerHTML = '<div class="field"><label for="'+id+'">'+esc(T.emailLabel)+'</label>'+
-      '<input type="email" id="'+id+'" class="ym-disable-keys" autocomplete="email" inputmode="email" maxlength="'+PAY_EMAIL_MAX+'" required></div>'+
+    form.innerHTML = '<div class="field"><label for="'+o.id+'">'+esc(T.emailLabel)+'</label>'+
+      '<input type="email" id="'+o.id+'" class="ym-disable-keys" autocomplete="email" inputmode="email" maxlength="'+PAY_EMAIL_MAX+'" required></div>'+
       '<button class="btn" type="submit">'+esc(T.button)+'</button>'+
+      (T.guarantee ? '<p class="xguar">'+esc(T.guarantee)+'</p>' : '')+
       '<p class="small sendstatus err" aria-live="polite" hidden></p><p class="xnote">'+T.noteHtml+'</p>';
-    var input = form.querySelector('input'), btn = form.querySelector('button'), st = form.querySelector('.sendstatus');
-    if(price) form.insertBefore(price, btn);
-    if(old) old.parentNode.removeChild(old);
-    box.appendChild(form);
-    if(r.email && String(r.email).length <= PAY_EMAIL_MAX) input.value = r.email;
-    forms.push({input:input, btn:btn, st:st});
-    input.addEventListener('input', function(){ st.hidden = true; forms.forEach(function(f){ if(f.input !== input) f.input.value = input.value; }); });
+    var f = {form:form, input:form.querySelector('input'), btn:form.querySelector('button'), st:form.querySelector('.sendstatus')}, input = f.input, st = f.st;
+    var other = g.forms.filter(function(x){ return x.input.value; })[0];
+    if(other) input.value = other.input.value;
+    else if(o.email && String(o.email).length <= PAY_EMAIL_MAX) input.value = o.email;
+    g.forms.push(f);
+    input.addEventListener('input', function(){ st.hidden = true; g.forms.forEach(function(x){ if(x.input !== input) x.input.value = input.value; }); });
     form.addEventListener('submit', function(ev){
-      ev.preventDefault(); if(busy) return;
+      ev.preventDefault(); if(g.busy) return;
       var email = input.value.trim();
       if(email.length > PAY_EMAIL_MAX || !PAY_EMAIL_RE.test(email)){ st.textContent = T.badEmail; st.hidden = false; input.focus(); return; }
-      st.hidden = true; setBusy(true); payTrack('ext-page-buy');
+      st.hidden = true; g.setBusy(true); payTrack('ext-page-buy');
       // Content-Type не задаём: «простой» запрос без предварительного OPTIONS
-      fetch(c.endpoint + '/order', {method:'POST', body: JSON.stringify({code:code, email:email, source:source, lang:c.L.lang})})
+      fetch(c.endpoint + '/order', {method:'POST', body: JSON.stringify({code:o.code, email:email, source:o.source, lang:c.L.lang})})
         .then(function(res){ return res.text(); })
         .then(function(txt){ var j = null; try{ j = JSON.parse(txt); }catch(e){}
           if(!j || !j.ok || !j.url || !j.order) throw new Error((j && j.error) || 'bad response');
@@ -61,10 +62,31 @@ function initPayBuy(c){
           if(u.protocol !== 'https:' && u.origin !== location.origin) throw new Error('bad url');
           c.lsSet('disc.pay', {order:String(j.order), key:String(j.key||''), email:email, t:Date.now()});
           payTrack('ext-pay-start'); location.href = u.href; })
-        .catch(function(err){ setBusy(false); st.hidden = false;
+        .catch(function(err){ g.setBusy(false); st.hidden = false;
           if(err && err.message === 'bad email'){ st.textContent = T.badEmail; input.focus(); }
           else { st.innerHTML = T.errorHtml; payTrack('ext-pay-error'); } });
     });
+    return f;
+  };
+  return g;
+}
+
+/* Страница отчёта: у кого результат сохранён на этом устройстве (disc.last), тому блок покупки (.xbuy) превращается в форму
+   с полем e-mail и кнопкой «Купить». c: {T (тексты content.product.pay, noteHtml и errorHtml — готовая разметка), endpoint, L, esc, lsGet, lsSet} */
+function initPayBuy(c){
+  // результат — из адреса страницы (ссылка из PDF краткого отчёта или письма: #r=DISC1.…, функция resultFromUrl вставляется сборкой), иначе сохранённый на устройстве
+  var T = c.T, r = (typeof resultFromUrl === 'function' && resultFromUrl()) || c.lsGet('disc.last'); if(!r || !r.t || !r.m || !r.l || !r.m.join) return;
+  var d = new Date(r.t), date = isNaN(d) ? '' : d.toLocaleDateString(c.L.dateLocale, {day:'numeric', month:'long', year:'numeric'});
+  var code = payCode(r), source = paySource(), g = payForms(c);
+  [].forEach.call(document.querySelectorAll('.xbuy'), function(box, i){
+    var old = box.querySelector('a.btn'), price = box.querySelector('.price'), guar = box.querySelector('.xguar');
+    box.querySelector('h2').textContent = T.title.replace('{date}', date);
+    box.querySelector('div p').textContent = T.text;
+    var f = g.add({id:'payEmail' + i, code:code, source:source, email:r.email});
+    if(price) f.form.insertBefore(price, f.btn);
+    if(old) old.parentNode.removeChild(old);
+    if(guar) guar.parentNode.removeChild(guar);   // строка гарантии без формы (сборка) — в форме она своя
+    box.appendChild(f.form);
   });
 }
 

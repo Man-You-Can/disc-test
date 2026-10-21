@@ -267,6 +267,14 @@ html[lang=ar] body,html[lang=hi] body{font-size:17px;line-height:1.65}
 .paymark.ok{color:var(--s)}
 .paymark.fail{color:var(--d)}
 @media (max-width:480px){.xpay .btn{flex:1 1 auto}}
+/* строка гарантии возврата у кнопки «Купить» (content.product.pay.guarantee): на странице отчёта и в форме на экране результата */
+p.xguar{flex:1 1 100%;margin:0;font-size:14px;font-weight:600;color:var(--ink)}
+.service p.xguar{margin-top:-6px}
+/* покупка на экране результата: кнопка призыва раскрывает на месте форму с e-mail (src/pay.js, payForms) */
+.xinline,.xtop .xinline{flex:1 1 100%;border-top:1px solid var(--line);padding-top:12px}
+.xoffer .xinline{margin:0 0 12px}
+.xinline>p.small{margin:0 0 12px}
+.xinline .xmore{margin:12px 0 0;font-size:14px}
 .content .xq{font-family:var(--font-body);font-size:17px;font-weight:600;text-transform:none;letter-spacing:0;color:var(--ink);margin:20px 0 6px}
 /* «Как готовятся отчёты»: плитки преимуществ */
 .content .hmgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:14px 0 8px}
@@ -618,7 +626,7 @@ body.has-consent{padding-bottom:160px}
   </header>
   <nav class="sitenav no-print"><a href="../../ja/">診断</a><a href="../../ja/disc/">DISC理論とは</a><a href="../../ja/styles/">4つのスタイル</a><a href="../../ja/profiles/">16のタイプ</a><a href="../../ja/results/">結果の見方</a><a href="../../ja/compatibility/">スタイルの相性</a><a href="../../ja/faq/">よくある質問</a><a href="../../ja/how-reports-are-made/">レポートができるまで</a><a href="../../ja/services/" aria-current="page">サービス</a><a href="../../ja/contact/">お問い合わせ</a></nav>
   <nav class="crumbs"><a href="../../ja/">ホーム</a><span>›</span><span aria-current="page">サービス</span></nav>
-  <main class="content"><div class="eyebrow">DISC</div><h1>サービス</h1><p class="lead">このサイトのDISC診断と結果は無料です。より詳しい分析を希望する方のために、有料の詳細版をご用意しています。</p><section class="service"><div><h2>DISC詳細プロフィール</h2><p>受けた診断の結果をもとに、あなたのDISCプロフィールをより詳しく解説します。詳細プロフィールは、料金をお支払いいただいた方にご利用いただけます。</p><p><a class="more" href="../extended-report/">詳細レポートの内容を見る →</a></p></div><p class="price"><small>料金</small>6.99米ドル</p></section><h2>受け取り方法</h2><p>詳細プロフィールの日本語版は、まだご注文いただけません。レポートのページで販売開始のお知らせをお申し込みいただければ、ご注文いただけるようになり次第、メールでご連絡します。ご注文後、詳細プロフィールは、お支払い時に入力されたメールアドレス宛てに、お支払いから24時間以内にお送りします。</p><p>このサービスは<a href="../offer/">有料サービス利用規約</a>に基づいて提供しています。返金の条件と手続きについては、<a href="../refund/">返金ポリシー</a>をご覧ください。</p><h2>無料のままのもの</h2><p>診断そのもの、画面に表示される結果と結果メール、16タイプの各ページ、印刷用の診断シート（PDF）は引き続き無料で、登録も不要です。詳細プロフィールは、希望する方だけがご購入ください。</p><h2>サービスに関するご質問</h2><p>詳細プロフィールやお支払いについてご質問がある場合は、「<a href="../contact/">お問い合わせ</a>」フォームからご連絡ください。入力されたメールアドレスに返信します。サイト運営者の情報は各ページの下部に記載しています。</p><p class="seealso"><a href="../offer/">有料サービス利用規約 →</a> · <a href="../refund/">返金ポリシー →</a></p><p class="updated"><time datetime="2026-10-11">最終更新：2026年10月11日</time></p></main>
+  <main class="content"><div class="eyebrow">DISC</div><h1>サービス</h1><p class="lead">このサイトのDISC診断と結果は無料です。より詳しい分析を希望する方のために、有料の詳細版をご用意しています。</p><section class="service"><div><h2>DISC詳細プロフィール</h2><p>受けた診断の結果をもとに、あなたのDISCプロフィールをより詳しく解説します。詳細プロフィールは、料金をお支払いいただいた方にご利用いただけます。</p><p><a class="more" href="../extended-report/">詳細レポートの内容を見る →</a></p></div><p class="price"><small>料金</small>6.99米ドル</p></section><h2>受け取り方法</h2><p>詳細プロフィールの日本語版は、まだご注文いただけません。レポートのページで販売開始のお知らせをお申し込みいただければ、ご注文いただけるようになり次第、メールでご連絡します。ご注文後、詳細プロフィールは、お支払いが済むとすぐに、お支払い時に入力されたメールアドレス宛てにお送りします。</p><p>このサービスは<a href="../offer/">有料サービス利用規約</a>に基づいて提供しています。返金の条件と手続きについては、<a href="../refund/">返金ポリシー</a>をご覧ください。</p><h2>無料のままのもの</h2><p>診断そのもの、画面に表示される結果と結果メール、16タイプの各ページ、印刷用の診断シート（PDF）は引き続き無料で、登録も不要です。詳細プロフィールは、希望する方だけがご購入ください。</p><h2>サービスに関するご質問</h2><p>詳細プロフィールやお支払いについてご質問がある場合は、「<a href="../contact/">お問い合わせ</a>」フォームからご連絡ください。入力されたメールアドレスに返信します。サイト運営者の情報は各ページの下部に記載しています。</p><p class="seealso"><a href="../offer/">有料サービス利用規約 →</a> · <a href="../refund/">返金ポリシー →</a></p><p class="updated"><time datetime="2026-10-21">最終更新：2026年10月21日</time></p></main>
   <footer class="foot">
     <div class="row2"><span>全24問｜約10分｜正解・不正解はありません</span><span class="footlinks"><a href="../../ja/about/">このサイトについて</a> · <a href="../../ja/services/">サービス</a> · <a href="../../ja/offer/">有料サービス規約</a> · <a href="../../ja/contact/">お問い合わせ</a> · <a href="../../ja/privacy/">プライバシー</a></span></div>
     <nav class="materials" aria-label="DISCの資料"><span class="mlabel">DISCの資料</span><a href="../../ja/disc/">DISC理論とは</a><a href="../../ja/styles/">4つのスタイル</a><a href="../../ja/profiles/">16のタイプ</a><a href="../../ja/results/">結果の見方</a><a href="../../ja/compatibility/">スタイルの相性</a><a href="../../ja/colors/">DISCの4色</a><a href="../../ja/teams/">チームでのDISC</a><a href="../../ja/disc-vs-mbti/">DISCとMBTI</a><a href="../../ja/pdf/">診断シート（PDF）</a><a href="../../ja/faq/">よくある質問</a></nav>
@@ -771,6 +779,9 @@ function initCommon(c){
     document.body.appendChild(el); document.body.classList.add("has-consent");
     function close(v){ lsSet("disc.consent", v); el.remove(); document.body.classList.remove("has-consent"); }
     $("#consentOk").addEventListener("click", function(){ close(ask ? "analytics" : "noted"); if(ask) loadYm(); });
+    /* тест пройден в этом браузере: уведомление было на экране все 24 блока. В режиме always оно только сообщает — считаем его прочитанным
+       и убираем, чтобы на телефоне оно не закрывало кнопку отчёта на экране результата. Согласие (режим optin) так не ставится никогда */
+    if(!ask) window.discNoticeSeen = function(){ if(el.parentNode) close("noted"); };
     if($("#consentNo")) $("#consentNo").addEventListener("click", function(){ close("essential"); });
   })();
 

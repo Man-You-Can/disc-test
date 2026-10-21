@@ -777,7 +777,7 @@
       "sections": [
         {
           "h": "How to get it",
-          "p": ["The in-depth profile is emailed to the address you give at payment, no later than 24 hours after payment."]
+          "p": ["The in-depth profile is emailed to the address you give at payment, as soon as payment goes through."]
         },
         {
           "h": "What stays free",
@@ -794,7 +794,7 @@
       "description": "Terms of sale (public offer) for the paid service “In-depth DISC profile” on disc-test.org: price, payment and delivery, refunds, rights to materials.",
       "h1": "Terms of Sale (Public Offer)",
       "linkText": "terms of sale",
-      "edition": "Version of October 9, 2026. English translation updated on October 19, 2026.",
+      "edition": "Version of October 21, 2026. English translation updated on October 21, 2026.",
       "note": "This is an English translation of the original offer published at {original}. If the two texts differ, the original prevails, except for the price and the way payment is made: for the English version of the Site they are set out in sections 1 and 3.",
       "seller": "individual entrepreneur Manukyan Armen, Taxpayer ID (INN) {inn}",
       "lead": "This document is an official proposal (a public offer) to enter into a contract for the paid service “In-depth DISC profile” on the terms set out below. The offer is made by {seller} (hereinafter, the Provider). Paying for the service constitutes full and unconditional acceptance of these terms (acceptance of the offer).",
@@ -835,7 +835,7 @@
           "h": "4. How the Service is provided",
           "p": [
             "4.1. To receive the Service, the Customer takes the Test on the Site, gives an email address and pays for the Service. The In-depth Profile is prepared from the Test result with which the Customer proceeded to payment.",
-            "4.2. The Provider sends the In-depth Profile to the address given no later than 24 hours after payment (clause 3.3). The email usually arrives sooner; 24 hours is the maximum.",
+            "4.2. The Provider sends the In-depth Profile to the address given no later than 24 hours after payment (clause 3.3). The email usually arrives right after payment; 24 hours is the maximum.",
             "4.3. The Service is deemed provided at the moment the In-depth Profile is sent. If the Customer does not report any defects within three calendar days after that, the Service is deemed accepted. No certificate of services rendered is drawn up.",
             "4.4. If the email does not arrive, the Customer should check the spam folder and write to the Provider at {email}: the In-depth Profile will be sent again.",
             "4.5. The Customer is responsible for the accuracy of the email address they give."
@@ -847,8 +847,8 @@
             "5.1. The Customer may cancel the Service at any time before the In-depth Profile is sent to them. In that case the payment is refunded in full.",
             "5.2. If the In-depth Profile is not sent within the period stated in clause 4.2, the Customer may claim a full refund.",
             "5.3. If the In-depth Profile received has defects (the email or file does not open, it contains another person’s result, or its content does not match the description of the Service on the Site), the Provider remedies them within three business days of the Customer’s request. If a defect is not remedied within that period, the payment is refunded in full.",
-            "5.4. Once the Service has been properly provided, the payment is not refunded. The Customer’s disagreement with how the profile describes them is not a defect in the Service.",
-            "5.5. To obtain a refund, the Customer sends a request to {email}, stating the email address used at payment, the date and amount of the payment, and the reason for the refund.",
+            "5.4. Refund guarantee: within seven calendar days of payment, the Customer may request a full refund without giving any reason, including after receiving the In-depth Profile. After this period, payment for a Service that has been properly provided is not refunded; the Customer’s disagreement with how the profile describes them is not a defect in the Service.",
+            "5.5. To obtain a refund, the Customer sends a request to {email}, stating the email address used at payment, the date and amount of the payment, and the reason for the refund; for a refund under clause 5.4, no reason needs to be given.",
             "5.6. The Provider replies to the request within three business days. Refunds are made to the original payment method, no later than ten calendar days after the request is received; how long the refund takes to reach the Customer’s account depends on the Customer’s bank.",
             "5.7. The terms of this section do not limit the Customer’s rights under consumer protection legislation."
           ]
@@ -906,6 +906,7 @@
         {
           "h": "When you get a full refund",
           "ul": [
+            "The in-depth profile isn’t right for you: within 7 days of payment, we refund you, no reason needed.",
             "You cancel the service before the in-depth profile has been sent to you.",
             "The in-depth profile is not sent within 24 hours of payment.",
             "The in-depth profile you receive has a defect (the email or file does not open, it contains another person’s result, or its content does not match the description of the service on the site), and we have not fixed it within three business days of your request."
@@ -913,12 +914,12 @@
         },
         {
           "h": "When the payment is not refunded",
-          "p": ["If the in-depth profile was sent on time and matches the description, the service is deemed provided and the payment is not refunded. Disagreeing with how your profile is described is not a defect in the service."]
+          "p": ["If more than 7 days have passed since payment, and the in-depth profile was sent on time and matches the description, the service is deemed provided and the payment is not refunded. Disagreeing with how your profile is described is not a defect in the service."]
         },
         {
           "h": "How to request a refund",
           "p": ["Write to {email} and include:"],
-          "ul": ["the email address you gave at payment;", "the date and amount of the payment;", "the reason for the refund."]
+          "ul": ["the email address you gave at payment;", "the date and amount of the payment;", "the reason for the refund (within 7 days of payment, you don’t have to give one)."]
         },
         {
           "h": "Time limits",
@@ -999,7 +1000,7 @@
       "how": [
         "Take the free test: 24 blocks, about 10 minutes. If you’ve already taken it, there’s no need to retake it: the report is built from the result you already have.",
         "Pay for the report on the secure page of Prodamus, our payment service.",
-        "The report arrives by email as a PDF attachment, no later than 24 hours after payment."
+        "The report arrives by email as soon as you pay, as a PDF attachment."
       ],
       "faqTitle": "Questions and answers",
       "faq": [
@@ -1007,7 +1008,7 @@
         { "q": "What format does it come in?", "a": "A PDF attached to an email, about 27 A4 pages. It reads well on screen and prints cleanly; each of the three worksheets fits on a single page." },
         { "q": "What language is the report in?", "a": "In English. The report was written in English from the start, not translated from another language." },
         { "q": "Is this a diagnosis or an ability test?", "a": "No. The report describes your behavioral style based on your answers. It doesn’t diagnose anything, measure intelligence or predict success." },
-        { "q": "Can I get a refund?", "a": "See the {refund} for when and how refunds are made." }
+        { "q": "Can I get a refund?", "a": "Yes. If the report isn’t right for you, write to {email} within 7 days of payment and we’ll refund you in full, no reason needed. Other cases and how refunds are made are set out in the {refund}." }
       ],
       "priceLabel": "Price",
       "price": "US${price}",
@@ -1023,7 +1024,8 @@
       },
       "pay": {
         "title": "Your report will be built from the test you took on {date}",
-        "text": "The report arrives by email as a PDF attachment, no later than 24 hours after payment. Your payment receipt goes to the same address.",
+        "text": "The report arrives by email as soon as you pay, as a PDF attachment. Your payment receipt goes to the same address.",
+        "guarantee": "Not right for you? Get a full refund within 7 days.",
         "emailLabel": "Email for your report and receipt",
         "button": "Buy",
         "note": "By clicking “Buy”, you accept our {offer}. Payment is handled by Prodamus: you enter your card details on its secure page, not on this site. Your statement may show the charge as simpleway.by.",
@@ -1033,14 +1035,14 @@
         "how": [
           "Take the free test: 24 blocks, about 10 minutes. If you’ve already taken it, there’s no need to retake it: the report is built from the result you already have.",
           "Enter your email and click “Buy”. You pay in US dollars on the secure page of Prodamus, our payment service. The charge may appear on your card statement as simpleway.by: that’s the card processor Prodamus works with.",
-          "The report arrives by email as a PDF attachment, no later than 24 hours after payment. Your payment receipt goes to the same address."
+          "The report arrives by email as soon as you pay, as a PDF attachment. Your payment receipt goes to the same address."
         ],
         "thanks": {
           "title": "Thank You for Your Purchase — In-Depth DISC Report",
           "description": "Your payment for the in-depth DISC report went through: where and when the report will arrive, and what to do if the email doesn’t come.",
           "h1": "Thank you! Payment complete",
-          "lead": "Your report will arrive by email at the address you gave when you paid: a PDF attachment, no later than 24 hours after payment. It usually comes much sooner.",
-          "leadEmail": "Your report will arrive by email at {email}: a PDF attachment, no later than 24 hours after payment. It usually comes much sooner.",
+          "lead": "Your report will arrive by email right away, at the address you gave when you paid: a PDF attachment.",
+          "leadEmail": "Your report will arrive by email at {email} right away: a PDF attachment.",
           "order": "Order number: {order}",
           "statusWait": "Waiting for the payment service to confirm your payment.",
           "statusPaid": "Payment received. Your report is being prepared.",
@@ -1730,7 +1732,7 @@
         },
         {
           "h": "Results right away",
-          "p": "The summary report appears on screen the moment you finish the last block. The in-depth report is assembled as soon as you pay, at any hour of the day or night, with no appointment and no waiting list: the email usually arrives within a few minutes and no later than 24 hours after payment."
+          "p": "The summary report appears on screen the moment you finish the last block. The in-depth report is assembled at any hour of the day or night, with no appointment and no waiting list: the email with it arrives right after payment."
         },
         {
           "h": "Affordable price",

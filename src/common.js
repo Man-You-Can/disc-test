@@ -126,6 +126,9 @@ function initCommon(c){
     document.body.appendChild(el); document.body.classList.add("has-consent");
     function close(v){ lsSet("disc.consent", v); el.remove(); document.body.classList.remove("has-consent"); }
     $("#consentOk").addEventListener("click", function(){ close(ask ? "analytics" : "noted"); if(ask) loadYm(); });
+    /* тест пройден в этом браузере: уведомление было на экране все 24 блока. В режиме always оно только сообщает — считаем его прочитанным
+       и убираем, чтобы на телефоне оно не закрывало кнопку отчёта на экране результата. Согласие (режим optin) так не ставится никогда */
+    if(!ask) window.discNoticeSeen = function(){ if(el.parentNode) close("noted"); };
     if($("#consentNo")) $("#consentNo").addEventListener("click", function(){ close("essential"); });
   })();
 

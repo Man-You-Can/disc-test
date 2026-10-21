@@ -304,6 +304,14 @@ html[lang=ar] body,html[lang=hi] body{font-size:17px;line-height:1.65}
 .paymark.ok{color:var(--s)}
 .paymark.fail{color:var(--d)}
 @media (max-width:480px){.xpay .btn{flex:1 1 auto}}
+/* строка гарантии возврата у кнопки «Купить» (content.product.pay.guarantee): на странице отчёта и в форме на экране результата */
+p.xguar{flex:1 1 100%;margin:0;font-size:14px;font-weight:600;color:var(--ink)}
+.service p.xguar{margin-top:-6px}
+/* покупка на экране результата: кнопка призыва раскрывает на месте форму с e-mail (src/pay.js, payForms) */
+.xinline,.xtop .xinline{flex:1 1 100%;border-top:1px solid var(--line);padding-top:12px}
+.xoffer .xinline{margin:0 0 12px}
+.xinline>p.small{margin:0 0 12px}
+.xinline .xmore{margin:12px 0 0;font-size:14px}
 .content .xq{font-family:var(--font-body);font-size:17px;font-weight:600;text-transform:none;letter-spacing:0;color:var(--ink);margin:20px 0 6px}
 /* «Как готовятся отчёты»: плитки преимуществ */
 .content .hmgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:14px 0 8px}
@@ -655,7 +663,7 @@ body.has-consent{padding-bottom:160px}
   </header>
   <nav class="sitenav no-print"><a href="../../ar/">الاختبار</a><a href="../../ar/disc/">ما هو DISC</a><a href="../../ar/styles/">الأنماط الأربعة</a><a href="../../ar/profiles/">16 ملفًا سلوكيًا</a><a href="../../ar/results/">تفسير النتائج</a><a href="../../ar/compatibility/">التوافق بين الأنماط</a><a href="../../ar/faq/">الأسئلة الشائعة</a><a href="../../ar/how-reports-are-made/">كيف تُعدّ التقارير</a><a href="../../ar/services/" aria-current="page">الخدمات</a><a href="../../ar/contact/">اتصل بنا</a></nav>
   <nav class="crumbs"><a href="../../ar/">الرئيسية</a><span>›</span><span aria-current="page">الخدمات</span></nav>
-  <main class="content"><div class="eyebrow">DISC</div><h1>الخدمات</h1><p class="lead">اختبار DISC ونتيجته مجانيان على هذا الموقع. ولمن يرغب في تحليل أكثر تفصيلًا تتوفر نسخة موسّعة مدفوعة.</p><section class="service"><div><h2>ملف DISC الموسّع</h2><p>تحليل أكثر تفصيلًا لملفك السلوكي في DISC بناءً على الاختبار الذي أجريته. الملف الموسّع متاح للمستخدمين الذين دفعوا مقابل الخدمة.</p><p><a class="more" href="../extended-report/">ماذا يتضمّن التقرير الموسّع ←</a></p></div><p class="price"><small>السعر</small>6.99 دولار أمريكي</p></section><h2>كيفية الحصول عليه</h2><p>الملف الموسّع غير متاح بالعربية بعد. يمكنك أن تطلب من صفحة التقرير إشعارًا بتوفّره، وسنراسلك بالبريد الإلكتروني حالما يُتاح شراؤه. وبعد الشراء يُرسَل الملف الموسّع بالبريد الإلكتروني إلى العنوان الذي أدخلته عند الدفع، خلال 24 ساعة على الأكثر من إتمام الدفع.</p><p>تُقدَّم الخدمة وفق <a href="../offer/">شروط البيع</a>؛ وحالات استرداد المبلغ وإجراءاته مبيّنة في <a href="../refund/">سياسة الاسترداد</a>.</p><h2>ما الذي يبقى مجانيًا</h2><p>الاختبار نفسه، والنتيجة على الشاشة ورسالة النتيجة، وصفحات الملفات السلوكية الستة عشر، ونسخة الاختبار بصيغة PDF للطباعة تبقى مجانية ولا تتطلب تسجيلًا. أما الملف الموسّع فتشتريه فقط إن رغبت.</p><h2>أسئلة عن الخدمة</h2><p>إذا كان لديك سؤال عن الملف الموسّع أو عن الدفع، فاكتب لنا عبر نموذج «<a href="../contact/">اتصل بنا</a>»، وسيصلك الرد على البريد الإلكتروني الذي تدخله. بيانات مالك الموقع مذكورة في أسفل كل صفحة.</p><p class="seealso"><a href="../offer/">شروط البيع (إيجاب عام) ←</a> · <a href="../refund/">سياسة الاسترداد ←</a></p><p class="updated"><time datetime="2026-10-11">آخر تحديث: 11 أكتوبر 2026</time></p></main>
+  <main class="content"><div class="eyebrow">DISC</div><h1>الخدمات</h1><p class="lead">اختبار DISC ونتيجته مجانيان على هذا الموقع. ولمن يرغب في تحليل أكثر تفصيلًا تتوفر نسخة موسّعة مدفوعة.</p><section class="service"><div><h2>ملف DISC الموسّع</h2><p>تحليل أكثر تفصيلًا لملفك السلوكي في DISC بناءً على الاختبار الذي أجريته. الملف الموسّع متاح للمستخدمين الذين دفعوا مقابل الخدمة.</p><p><a class="more" href="../extended-report/">ماذا يتضمّن التقرير الموسّع ←</a></p></div><p class="price"><small>السعر</small>6.99 دولار أمريكي</p></section><h2>كيفية الحصول عليه</h2><p>الملف الموسّع غير متاح بالعربية بعد. يمكنك أن تطلب من صفحة التقرير إشعارًا بتوفّره، وسنراسلك بالبريد الإلكتروني حالما يُتاح شراؤه. وبعد الشراء يصل الملف الموسّع بالبريد الإلكتروني إلى العنوان الذي أدخلته عند الدفع، فور إتمام الدفع.</p><p>تُقدَّم الخدمة وفق <a href="../offer/">شروط البيع</a>؛ وحالات استرداد المبلغ وإجراءاته مبيّنة في <a href="../refund/">سياسة الاسترداد</a>.</p><h2>ما الذي يبقى مجانيًا</h2><p>الاختبار نفسه، والنتيجة على الشاشة ورسالة النتيجة، وصفحات الملفات السلوكية الستة عشر، ونسخة الاختبار بصيغة PDF للطباعة تبقى مجانية ولا تتطلب تسجيلًا. أما الملف الموسّع فتشتريه فقط إن رغبت.</p><h2>أسئلة عن الخدمة</h2><p>إذا كان لديك سؤال عن الملف الموسّع أو عن الدفع، فاكتب لنا عبر نموذج «<a href="../contact/">اتصل بنا</a>»، وسيصلك الرد على البريد الإلكتروني الذي تدخله. بيانات مالك الموقع مذكورة في أسفل كل صفحة.</p><p class="seealso"><a href="../offer/">شروط البيع (إيجاب عام) ←</a> · <a href="../refund/">سياسة الاسترداد ←</a></p><p class="updated"><time datetime="2026-10-21">آخر تحديث: 21 أكتوبر 2026</time></p></main>
   <footer class="foot">
     <div class="row2"><span>24 مجموعة · نحو 10 دقائق · لا توجد إجابات صحيحة أو خاطئة</span><span class="footlinks"><a href="../../ar/about/">عن المشروع</a> · <a href="../../ar/services/">الخدمات</a> · <a href="../../ar/offer/">شروط البيع</a> · <a href="../../ar/contact/">اتصل بنا</a> · <a href="../../ar/privacy/">الخصوصية</a></span></div>
     <nav class="materials" aria-label="مواد عن DISC"><span class="mlabel">مواد عن DISC</span><a href="../../ar/disc/">ما هو DISC</a><a href="../../ar/styles/">الأنماط الأربعة</a><a href="../../ar/profiles/">16 ملفًا سلوكيًا</a><a href="../../ar/results/">تفسير النتائج</a><a href="../../ar/compatibility/">التوافق بين الأنماط</a><a href="../../ar/colors/">DISC بالألوان</a><a href="../../ar/teams/">DISC للفرق</a><a href="../../ar/disc-vs-mbti/">DISC وMBTI</a><a href="../../ar/pdf/">الاختبار بصيغة PDF</a><a href="../../ar/faq/">الأسئلة الشائعة</a></nav>
@@ -808,6 +816,9 @@ function initCommon(c){
     document.body.appendChild(el); document.body.classList.add("has-consent");
     function close(v){ lsSet("disc.consent", v); el.remove(); document.body.classList.remove("has-consent"); }
     $("#consentOk").addEventListener("click", function(){ close(ask ? "analytics" : "noted"); if(ask) loadYm(); });
+    /* тест пройден в этом браузере: уведомление было на экране все 24 блока. В режиме always оно только сообщает — считаем его прочитанным
+       и убираем, чтобы на телефоне оно не закрывало кнопку отчёта на экране результата. Согласие (режим optin) так не ставится никогда */
+    if(!ask) window.discNoticeSeen = function(){ if(el.parentNode) close("noted"); };
     if($("#consentNo")) $("#consentNo").addEventListener("click", function(){ close("essential"); });
   })();
 

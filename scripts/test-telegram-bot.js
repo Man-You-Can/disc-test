@@ -65,7 +65,7 @@ check('/start: тест по ссылке, услуга и вопрос — кн
 check('/start с параметром и /start@имя_бота', (post(msg('/start promo')), calls[0].data.text === home.data.text) && (post(msg('/start@disc_test_bot')), calls[0].data.text === home.data.text));
 post(msg('/service'));
 const service = calls[0];
-check('/service: цена, срок, реквизиты', service.data.text.includes('Расширенная версия DISC — ' + PRICE + ' ₽') && service.data.text.includes('не позднее 24 часов') && service.data.text.endsWith('Манукян Армен Кеворкович\nИНН ' + INN));
+check('/service: цена, срок, реквизиты', service.data.text.includes('Расширенная версия DISC — ' + PRICE + ' ₽') && service.data.text.includes('сразу после оплаты') && service.data.text.includes('вернём деньги в течение 7 дней') && service.data.text.endsWith('Манукян Армен Кеворкович\nИНН ' + INN));
 check('/service: ссылки на услугу, оферту и возврат', ['services/', 'offer/', 'refund/'].every(p => buttons(service).some(b => b.url === cfg.siteUrl + '/ru/' + p)));
 post(msg('/help'));
 check('/help: форма обратной связи и e-mail', calls[0].data.text.includes(cfg.feedbackEmail) && buttons(calls[0]).some(b => b.url === cfg.siteUrl + '/ru/contact/'));

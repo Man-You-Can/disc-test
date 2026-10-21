@@ -31,7 +31,7 @@ http.createServer((req, res) => {
         if (!/^DISC1\.[A-Za-z0-9_-]+$/.test(String(j.code || ''))) return json({ ok: false, error: 'bad code' });
         const d = new Date(), order = String(d.getFullYear()).slice(2) + String(d.getMonth() + 1).padStart(2, '0') + String(d.getDate()).padStart(2, '0') + '-' + Math.random().toString(36).slice(2, 8).toUpperCase();
         // куда «банк» вернёт покупателя: страница отчёта, с которой пришёл заказ (…/extended-report/), иначе русская версия
-        let back = '/ru/extended-report/'; try { back = new URL(req.headers.referer).pathname.replace(/extended-report\/.*$/, 'extended-report/'); } catch (e) {}
+        let back = '/ru/extended-report/'; try { const rp = new URL(req.headers.referer).pathname; back = /extended-report\//.test(rp) ? rp.replace(/extended-report\/.*$/, 'extended-report/') : rp.replace(/[^/]*$/, '') + 'extended-report/'; } catch (e) {}   // заказ с экрана результата (главная языка) — тоже на страницы отчёта, как у настоящего сервера
         mockOrders[order] = { key: Math.random().toString(36).slice(2), paid: 0, back };
         json({ ok: true, order, key: mockOrders[order].key, url: '/mock-pay/form?order=' + order });
       }); return;

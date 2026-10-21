@@ -777,7 +777,7 @@
       "sections": [
         {
           "h": "Jak go otrzymać",
-          "p": ["Profil rozszerzony wysyłamy e-mailem na adres podany przy płatności, nie później niż 24 godziny po dokonaniu płatności."]
+          "p": ["Profil rozszerzony przychodzi e-mailem na adres podany przy płatności od razu po jej dokonaniu."]
         },
         {
           "h": "Co pozostaje bezpłatne",
@@ -794,7 +794,7 @@
       "description": "Regulamin sprzedaży płatnej usługi „Rozszerzony profil DISC” w serwisie disc-test.org: cena, płatność i dostarczenie, zwroty, prawa do materiałów.",
       "h1": "Regulamin sprzedaży",
       "linkText": "regulaminu sprzedaży",
-      "edition": "Wersja z 9 października 2026 r. Tłumaczenie na język polski opublikowano 21 października 2026 r.",
+      "edition": "Wersja z 21 października 2026 r. Tłumaczenie na język polski zaktualizowano 21 października 2026 r.",
       "note": "Niniejszy tekst jest tłumaczeniem na język polski oryginalnej oferty opublikowanej pod adresem {original}. W razie rozbieżności między tekstami pierwszeństwo ma oryginał – z wyjątkiem ceny i sposobu płatności: w polskiej wersji Serwisu obowiązują rozdziały 1 i 3 niniejszego tłumaczenia.",
       "seller": "przedsiębiorca indywidualny Manukyan Armen, numer identyfikacji podatkowej (INN) {inn}",
       "lead": "Niniejszy regulamin (dalej: Regulamin) jest oficjalną propozycją (ofertą publiczną) zawarcia umowy o świadczenie płatnej usługi „Rozszerzony profil DISC” na warunkach określonych poniżej. Ofertę składa {seller} (dalej: Usługodawca). Opłacenie usługi oznacza pełną i bezwarunkową akceptację tych warunków (przyjęcie oferty).",
@@ -835,7 +835,7 @@
           "h": "4. Sposób świadczenia Usługi",
           "p": [
             "4.1. Aby skorzystać z Usługi, Klient wypełnia Test w Serwisie, podaje adres e-mail i opłaca Usługę. Profil Rozszerzony jest przygotowywany na podstawie tego wyniku Testu, z którym Klient przeszedł do płatności.",
-            "4.2. Usługodawca wysyła Profil Rozszerzony na podany adres nie później niż w ciągu 24 godzin od opłacenia Usługi (punkt 3.3). Zwykle wiadomość dociera wcześniej; 24 godziny to termin maksymalny.",
+            "4.2. Usługodawca wysyła Profil Rozszerzony na podany adres nie później niż w ciągu 24 godzin od opłacenia Usługi (punkt 3.3). Zwykle wiadomość dociera zaraz po płatności; 24 godziny to termin maksymalny.",
             "4.3. Usługę uznaje się za wykonaną z chwilą wysłania Profilu Rozszerzonego. Jeżeli w ciągu trzech dni kalendarzowych od tej chwili Klient nie zgłosi wad, Usługę uznaje się za przyjętą. Protokołu wykonania usługi nie sporządza się.",
             "4.4. Jeżeli wiadomość nie dotarła, Klient powinien sprawdzić folder ze spamem i napisać do Usługodawcy na adres {email}: Profil Rozszerzony zostanie wysłany ponownie.",
             "4.5. Klient odpowiada za poprawność podanego przez siebie adresu e-mail."
@@ -847,8 +847,8 @@
             "5.1. Klient może zrezygnować z Usługi w dowolnej chwili przed wysłaniem mu Profilu Rozszerzonego. W takim przypadku płatność jest zwracana w całości.",
             "5.2. Jeżeli Profil Rozszerzony nie zostanie wysłany w terminie określonym w punkcie 4.2, Klient może zażądać zwrotu całej płatności.",
             "5.3. Jeżeli otrzymany Profil Rozszerzony ma wady (wiadomość lub plik się nie otwiera, zawiera wynik innej osoby, treść nie odpowiada opisowi Usługi w Serwisie), Usługodawca usuwa je w ciągu trzech dni roboczych od zgłoszenia Klienta. Jeżeli wada nie zostanie usunięta w tym terminie, płatność jest zwracana w całości.",
-            "5.4. Po należytym wykonaniu Usługi płatność nie podlega zwrotowi. To, że Klient nie zgadza się z treścią opisu swojego profilu, nie stanowi wady Usługi.",
-            "5.5. Aby otrzymać zwrot, Klient wysyła wniosek na adres {email}, podając adres e-mail użyty przy płatności, datę i kwotę płatności oraz powód zwrotu.",
+            "5.4. Gwarancja zwrotu: w ciągu siedmiu dni kalendarzowych od dnia płatności Klient może bez podawania przyczyny zażądać pełnego zwrotu płatności, także po otrzymaniu Profilu Rozszerzonego. Po upływie tego terminu płatność za Usługę wykonaną należycie nie podlega zwrotowi; to, że Klient nie zgadza się z treścią opisu swojego profilu, nie stanowi wady Usługi.",
+            "5.5. Aby otrzymać zwrot, Klient wysyła wniosek na adres {email}, podając adres e-mail użyty przy płatności, datę i kwotę płatności oraz powód zwrotu; przy zwrocie na podstawie punktu 5.4 podanie powodu nie jest wymagane.",
             "5.6. Usługodawca odpowiada na wniosek w ciągu trzech dni roboczych. Pieniądze są zwracane tą samą metodą, którą dokonano płatności, nie później niż w terminie dziesięciu dni kalendarzowych od otrzymania wniosku; termin zaksięgowania zwrotu zależy od banku Klienta.",
             "5.7. Postanowienia niniejszego rozdziału nie ograniczają praw Klienta wynikających z przepisów o ochronie konsumentów."
           ]
@@ -911,6 +911,7 @@
         {
           "h": "Kiedy zwracamy całą kwotę",
           "ul": [
+            "Gdy profil rozszerzony ci nie odpowiada: w ciągu 7 dni od płatności zwracamy pieniądze bez podawania przyczyny.",
             "Gdy zrezygnujesz z usługi, zanim wyślemy ci profil rozszerzony.",
             "Gdy profil rozszerzony nie zostanie wysłany w ciągu 24 godzin od płatności.",
             "Gdy otrzymany profil rozszerzony ma wadę (wiadomość lub plik się nie otwiera, zawiera wynik innej osoby, treść nie odpowiada opisowi usługi w serwisie), a my nie usuniemy jej w ciągu trzech dni roboczych od twojego zgłoszenia."
@@ -918,12 +919,12 @@
         },
         {
           "h": "Kiedy płatność nie podlega zwrotowi",
-          "p": ["Jeśli profil rozszerzony został wysłany w terminie i odpowiada opisowi, usługę uznaje się za wykonaną, a płatność nie podlega zwrotowi. To, że nie zgadzasz się z treścią opisu swojego profilu, nie jest wadą usługi."]
+          "p": ["Jeśli od płatności minęło więcej niż 7 dni, a profil rozszerzony został wysłany w terminie i odpowiada opisowi, usługę uznaje się za wykonaną, a płatność nie podlega zwrotowi. To, że nie zgadzasz się z treścią opisu swojego profilu, nie jest wadą usługi."]
         },
         {
           "h": "Jak złożyć wniosek o zwrot",
           "p": ["Napisz na {email} i podaj:"],
-          "ul": ["adres e-mail podany przy płatności;", "datę i kwotę płatności;", "powód zwrotu."]
+          "ul": ["adres e-mail podany przy płatności;", "datę i kwotę płatności;", "powód zwrotu (przez 7 dni od płatności można go nie podawać)."]
         },
         {
           "h": "Terminy",
@@ -999,7 +1000,7 @@
       "how": [
         "Zrób bezpłatny test: 24 pytania, około 10 minut. Jeśli masz go już za sobą, nie musisz go powtarzać – raport powstaje na podstawie gotowego wyniku.",
         "Opłać raport na zabezpieczonej stronie płatności Prodamus, naszego operatora płatności.",
-        "Raport przyjdzie e-mailem jako załącznik PDF, nie później niż 24 godziny po płatności."
+        "Raport przyjdzie e-mailem jako załącznik PDF od razu po płatności."
       ],
       "faqTitle": "Pytania i odpowiedzi",
       "faq": [
@@ -1007,7 +1008,7 @@
         { "q": "W jakiej formie przyjdzie raport?", "a": "Jako plik PDF w załączniku do e-maila, około 28 stron A4. Wygodnie czyta się go na ekranie i dobrze wygląda w druku; każda z trzech kart pracy mieści się na jednej stronie." },
         { "q": "W jakim języku jest raport?", "a": "Po polsku. Raport napisano od razu po polsku, z myślą o czytelniku w Polsce – to nie jest tłumaczenie." },
         { "q": "Czy to diagnoza albo ocena zdolności?", "a": "Nie. Raport opisuje styl zachowania na podstawie twoich odpowiedzi. Nie stawia diagnoz, nie mierzy inteligencji i nie przewiduje sukcesu." },
-        { "q": "Czy mogę odzyskać pieniądze?", "a": "O tym, kiedy i jak zwracamy pieniądze, przeczytasz w {refund}." }
+        { "q": "Czy mogę odzyskać pieniądze?", "a": "Tak. Jeśli raport ci nie odpowiada, napisz na {email} w ciągu 7 dni od płatności – zwrócimy całą kwotę bez pytania o powód. Pozostałe przypadki i sposób zwrotu opisujemy w {refund}." }
       ],
       "priceLabel": "Cena",
       "price": "{price} USD",
@@ -1023,9 +1024,10 @@
       },
       "pay": {
         "title": "Raport przygotujemy na podstawie twojego wyniku z {date}",
-        "text": "Raport przyjdzie e-mailem jako załącznik PDF, nie później niż 24 godziny po płatności. Dowód zakupu wyślemy na ten sam adres.",
+        "text": "Raport przyjdzie e-mailem od razu po płatności, jako załącznik PDF. Dowód zakupu wyślemy na ten sam adres.",
         "emailLabel": "E-mail do raportu i dowodu zakupu",
         "button": "Kup",
+        "guarantee": "Raport ci nie odpowiada? Przez 7 dni zwrócimy pieniądze bez pytań.",
         "note": "Klikając „Kup”, akceptujesz warunki {offer}. Płacisz w dolarach amerykańskich na zabezpieczonej stronie Prodamus: dane karty podajesz tam, a nie w tym serwisie. Na wyciągu z konta płatność może być widoczna jako simpleway.by.",
         "badEmail": "Sprawdź adres e-mail: na niego wyślemy raport i dowód zakupu.",
         "wait": "Otwieramy stronę płatności…",
@@ -1033,14 +1035,14 @@
         "how": [
           "Zrób bezpłatny test: 24 pytania, około 10 minut. Jeśli masz go już za sobą, nie musisz go powtarzać – raport powstaje na podstawie gotowego wyniku.",
           "Wpisz adres e-mail i kliknij „Kup”. Płacisz w dolarach amerykańskich na zabezpieczonej stronie Prodamus, naszego operatora płatności; ta strona jest po angielsku. Na wyciągu z konta płatność może być widoczna jako simpleway.by – pod tą nazwą działa bePaid, firma, która obsługuje płatności kartą dla Prodamus.",
-          "Raport przyjdzie e-mailem jako załącznik PDF, nie później niż 24 godziny po płatności. Dowód zakupu wyślemy na ten sam adres."
+          "Raport przyjdzie e-mailem od razu po płatności, jako załącznik PDF. Dowód zakupu wyślemy na ten sam adres."
         ],
         "thanks": {
           "title": "Dziękujemy za zakup – Rozszerzony raport DISC",
           "description": "Płatność za rozszerzony raport DISC: kiedy i dokąd przyjdzie raport i co zrobić, jeśli e-mail nie dotarł.",
           "h1": "Dziękujemy za zakup",
-          "lead": "Raport przyjdzie na adres e-mail podany przy płatności, jako załącznik PDF, nie później niż 24 godziny po płatności. Zwykle dużo szybciej.",
-          "leadEmail": "Raport przyjdzie na adres {email}, jako załącznik PDF, nie później niż 24 godziny po płatności. Zwykle dużo szybciej.",
+          "lead": "Raport przyjdzie zaraz na adres e-mail podany przy płatności, jako załącznik PDF.",
+          "leadEmail": "Raport przyjdzie zaraz na adres {email}, jako załącznik PDF.",
           "order": "Numer zamówienia: {order}",
           "statusWait": "Czekamy na potwierdzenie płatności od Prodamus.",
           "statusPaid": "Płatność otrzymana. Raport jest przygotowywany.",
@@ -1719,7 +1721,7 @@
         },
         {
           "h": "Wynik od razu",
-          "p": "Raport podstawowy pojawia się na ekranie, gdy tylko odpowiesz na ostatnie pytanie. Raport rozszerzony jest składany od razu po opłaceniu zamówienia – o każdej porze dnia i nocy, bez zapisów i kolejek – a e-mail z nim przychodzi zwykle po kilku minutach, nie później niż 24 godziny po płatności."
+          "p": "Raport podstawowy pojawia się na ekranie, gdy tylko odpowiesz na ostatnie pytanie. Raport rozszerzony jest składany o każdej porze dnia i nocy, bez zapisów i kolejek, a e-mail z nim przychodzi od razu po płatności."
         },
         {
           "h": "Przystępna cena",

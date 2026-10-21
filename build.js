@@ -290,8 +290,17 @@ const homeLocale = L => Object.assign({}, L, {
   // product — тексты блока «Расширенный отчёт» на экране результата (цена уже подставлена); страница отчёта в скрипт не идёт
   content: Object.assign({ home: L.content.home, colors: { colors: Object.fromEntries(KEYS.map(k => [k, { name: L.content.colors.colors[k].name }])) } },
     hasProduct(L) ? { product: Object.assign(withPrice(L, L.content.product.block), hasSamples(L) ? {} : { sample: '' },
-      L.content.product.promo ? { promo: withPrice(L, L.content.product.promo) } : {}) } : {})
+      L.content.product.promo ? { promo: withPrice(L, L.content.product.promo) } : {}, homePay(L) ? { pay: homePay(L) } : {}) } : {})
 });
+// Покупка прямо на экране результата (src/pay.js, payForms): тексты формы — те же, что на странице отчёта; ссылки в условии оферты и в ошибке —
+// готовая разметка, адрес оферты начинается с {base} (скрипт главной подставляет путь языковой версии). Без payEndpoint кнопки ведут на страницу отчёта
+function homePay(L) {
+  const C = L.content, pay = payEndpoint && C.product && C.product.pay ? withPrice(L, C.product.pay) : null; if (!pay) return null;
+  const vars = { offer: `<a href="{base}offer/">${escFull(C.offer.linkText)}</a>`, email: feedbackEmail ? `<a href="mailto:${escFull(feedbackEmail)}">${escFull(feedbackEmail)}</a>` : '—' };
+  const fill = h => h.replace(/\{(offer|email)\}/g, (m, k) => vars[k]);
+  return Object.assign({ noteHtml: fill(escFull(pay.note)), errorHtml: fill(escFull(pay.error)), more: C.product.more },
+    Object.fromEntries(['text', 'emailLabel', 'button', 'badEmail', 'wait', 'guarantee'].map(k => [k, pay[k]])));
+}
 // Организация-издатель: одна карточка на весь сайт, с адресом для связи
 const orgLd = () => ({ '@context': 'https://schema.org', '@type': 'Organization', name: 'DISC Test', url: siteUrl + '/', logo: `${siteUrl}/icon-512.png`, email: feedbackEmail || undefined });
 const jsonLd = L => JSON.stringify([
@@ -341,7 +350,8 @@ for (const L of locales) {
     .replace('__LANG_SWITCHER__', () => switcher).replace('__LANG_LINKS__', () => links).replace('__FLAG_SPRITE__', () => flagSprite(locales.map(x => x.lang)))
     .replace(/__FOOTER__/g, esc(L.ui.footer)).replace(/__ADMIN_LINK__/g, esc(L.ui.adminLink)).replace(/__PRIVACY__/g, esc(L.ui.privacy)).replace('__LEGAL__', () => rightsHtml(L))
     .replace(/__EMAIL__/g, String(cfg.contactEmail || '').replace(/['\\]/g, ''))
-    .replace(/__SEND_ENDPOINT__/g, String(cfg.sendEndpoint || '').replace(/['\\]/g, ''))
+    .replace(/__SEND_ENDPOINT__/g, String(cfg.sendEndpoint || '').replace(/['\\]/g, '')).replace(/__PAY_ENDPOINT__/g, homePay(L) ? payEndpoint.replace(/['\\]/g, '') : '')
+    .replace('__PAY_JS__', () => homePay(L) ? payJs : '')
     .replace(/__SEND_TOKEN__/g, String(cfg.sendToken || '').replace(/['\\]/g, '')).replace(/__NEWSLETTER__/g, newsletter ? '1' : '0').replace(/__STATS__/g, profileStats ? '1' : '0').replace(/__PDF_DL__/g, pdfDownload ? '1' : '0')
     .replace(/__PD__/g, pdOn && cfg.sendEndpoint ? '1' : '0').replace(/__PD_VERSION__/g, pdVersion)
     .replace('__LOCALE_JSON__', () => JSON.stringify(homeLocale(L)).replace(/</g, '\\u003c').replace(/\u2028|\u2029/g, ''));
@@ -689,7 +699,7 @@ for (const L of locales) {
       const pr = withPrice(L, C.product), root = '../' + (pathOf(L.lang) ? '../' : ''), rich = str => escFull(str).replace(/&lt;(\/?)b&gt;/g, '<$1b>');
       const pay = payEndpoint && C.product.pay ? pr.pay : null;
       const buyBox = id => `<section class="service xbuy"${pay && id ? ` id="${id}"` : ''}><div><h2>${escFull(pr.buy.testTitle)}</h2><p>${escFull(pr.buy.testText)}</p></div><p class="price"><small>${escFull(pr.priceLabel)}</small>${escFull(pr.price)}</p>` +
-        `<a class="btn" href="../" data-goal="ext-page-test">${escFull(pr.buy.testButton)}</a></section>`;
+        `<a class="btn" href="../" data-goal="ext-page-test">${escFull(pr.buy.testButton)}</a>` + (pay && pay.guarantee ? `<p class="xguar">${escFull(pay.guarantee)}</p>` : '') + `</section>`;
       const samples = hasSamples(L);
       const sample = !samples ? '' : pr.sampleAlt.map((alt, i) => `<figure><a href="${root}extended/${L.lang}-i-${i + 1}.webp" target="_blank" rel="noopener" data-goal="ext-page-sample">` +
         `<img src="${root}extended/${L.lang}-i-${i + 1}-s.webp" width="440" height="623" alt="${escFull(alt)}" loading="lazy" decoding="async"></a><figcaption>${escFull(pr.sampleCaption[i])}</figcaption></figure>`).join('');
@@ -707,7 +717,7 @@ for (const L of locales) {
           `<p class="seealso">${docLink('services/', sv)} · ${docLink('offer/', of)} · ${docLink('refund/', rf)}</p>`,
         files: samples ? pr.sampleAlt.map((_, i) => `src/assets/extended/${L.lang}-i-${i + 1}.webp`) : [],
         pageJs: resultFromUrlJs + (pay ? payJs + `\ninitPayBuy({T: ${JSON.stringify(Object.assign({ noteHtml: fillHtml(escFull(pay.note)), errorHtml: fillHtml(escFull(pay.error)) },
-          Object.fromEntries(['title', 'text', 'emailLabel', 'button', 'badEmail', 'wait'].map(k => [k, pay[k]])))).replace(/</g, '\\u003c')}, endpoint: ${jsStr(payEndpoint)}, L: L, esc: esc, lsGet: lsGet, lsSet: lsSet});` : `(function(){
+          Object.fromEntries(['title', 'text', 'emailLabel', 'button', 'badEmail', 'wait', 'guarantee'].map(k => [k, pay[k]])))).replace(/</g, '\\u003c')}, endpoint: ${jsStr(payEndpoint)}, L: L, esc: esc, lsGet: lsGet, lsSet: lsSet});` : `(function(){
   var r = resultFromUrl() || lsGet('disc.last'); if(!r || !r.t || !r.m || !r.l || !r.m.join) return;
   var B = ${JSON.stringify(pr.buy).replace(/</g, '\\u003c')}, d = new Date(r.t), date = isNaN(d) ? '' : d.toLocaleDateString(L.dateLocale, {day:'numeric', month:'long', year:'numeric'});
   function b64e(s){ return btoa(unescape(encodeURIComponent(s))).replace(/\\+/g,'-').replace(/\\//g,'_').replace(/=+$/,''); }
