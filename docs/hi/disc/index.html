@@ -230,21 +230,13 @@ html[lang=ar] body,html[lang=hi] body{font-size:17px;line-height:1.65}
 .service .price{flex:none;color:var(--ink);font-family:var(--font-head);font-weight:500;font-size:28px;line-height:1.1}
 .service .price small{display:block;font-family:var(--font-body);font-weight:400;font-size:13px;color:var(--muted);margin-bottom:4px}
 /* расширенный отчёт: блок на экране результата (.xoffer, .xanchor) и страница отчёта (.xfacts, .xsample, .xbuy) */
-.xtop{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;background:var(--surface);border:1px solid var(--line);border-inline-start:4px solid var(--k,var(--ink));border-radius:12px;padding:14px 18px;margin:0 0 18px}
-.xtop div{flex:1 1 280px}
-.xtop b{font-family:var(--font-head);font-weight:500;font-size:16px}
-.xtop p{margin:4px 0 0;font-size:14px;color:var(--muted)}
-/* личные зацепки в верхнем призыве (content.product.promo): что в отчёте разобрано по числам этого участника */
-.xtop .xhooks{margin:6px 0 4px;padding-inline-start:18px;font-size:14px}
-.xtop .xhooks li{margin-bottom:4px}
-/* закреплённая кнопка отчёта на экране результата (телефон): видна, пока верхний призыв и нижний блок за краем экрана */
+/* закреплённая кнопка отчёта на экране результата (телефон): видна, пока форма e-mail и нижний блок за краем экрана */
 .xbar{display:none}
 @media (max-width:640px){
   .xbar.show{display:flex;gap:8px;position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:15}
   .xbar .btn{flex:1 1 auto;box-shadow:0 8px 24px -6px rgba(0,0,0,.35)}
   .xbar-x{flex:none;width:46px;border:1px solid var(--line-strong);border-radius:12px;background:var(--surface);color:var(--muted);font-size:22px;line-height:1;cursor:pointer;box-shadow:0 8px 24px -6px rgba(0,0,0,.35)}
   body.has-consent .xbar{display:none}
-  .xtop .xhooks li:nth-child(n+3){display:none}
 }
 /* вернувшийся посетитель: карточка прошлого результата с личными зацепками и крупной кнопкой отчёта под заголовком; «Пройти тест заново» — ссылка ниже */
 .lastcard{background:var(--surface);border:1px solid var(--line);border-inline-start:4px solid var(--k,var(--ink));border-radius:14px;padding:16px 20px 18px;margin:4px 0 22px;box-shadow:0 10px 28px -18px rgba(0,0,0,.35)}
@@ -306,7 +298,7 @@ html[lang=ar] body,html[lang=hi] body{font-size:17px;line-height:1.65}
 p.xguar{flex:1 1 100%;margin:0;font-size:14px;font-weight:600;color:var(--ink)}
 .service p.xguar{margin-top:-6px}
 /* покупка на экране результата: кнопка призыва раскрывает на месте форму с e-mail (src/pay.js, payForms) */
-.xinline,.xtop .xinline{flex:1 1 100%;border-top:1px solid var(--line);padding-top:12px}
+.xinline{flex:1 1 100%;border-top:1px solid var(--line);padding-top:12px}
 .xoffer .xinline{margin:0 0 12px}
 .xinline>p.small{margin:0 0 12px}
 .xinline .xmore{margin:12px 0 0;font-size:14px}
