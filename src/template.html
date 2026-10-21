@@ -933,7 +933,7 @@ function renderReport(r, opts){
         KEYS.map(function(k){ return '<div class="stat" style="--k:'+colorVar(k)+'"><span class="k">'+k+'</span><span class="nm">'+esc(L.keys[k])+'<small>'+t('report.statMeta',{most:sc.most[k],least:sc.least[k],net:signed(sc.net[k])})+'</small></span><span class="v">'+pct(sc.net[k])+'%</span><div class="bar"><i style="width:'+pct(sc.net[k])+'%"></i></div></div>'; }).join('')+
       '</div>'+
       '</div>'+
-      '<p class="howto">'+t('report.howto')+' <a href="'+ROOT_REL+LANG_PATH[L.lang]+'results/">'+t('report.moreLink')+'</a></p>'+
+      '<p class="howto">'+t('report.howto')+'</p>'+
     '</div>'+
     // форма «краткий отчёт в PDF на e-mail» — сразу под графиком и числами, до описания профиля: так её видят почти все, кто прошёл тест
     // имя и e-mail обязательны (звёздочка, как в форме обратной связи; проверка — в обработчике отправки: имя не короче двух букв)
