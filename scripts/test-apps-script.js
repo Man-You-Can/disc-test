@@ -275,7 +275,7 @@ check('extended: off until the secret is set in script properties', ext({}).erro
 props.extendedSecret = 's3cret';
 check('extended: wrong or missing secret rejected, nothing sent', ext({ secret: 'nope' }).error === 'forbidden' && ext({ secret: '' }).error === 'forbidden' && ext({ secret: TOKEN }).error === 'forbidden' && sent.length === nX);
 check('extended: bad address, bad code, not a pdf, language without the report', ext({ to: 'nobody' }).error === 'bad email' && ext({ code: 'DISC1.zzz' }).error === 'bad code' &&
-  ext({ pdf: Buffer.alloc(3000, 65).toString('base64') }).error === 'bad pdf' && ext({ pdf: '***' }).error === 'bad pdf' && ext({ pdf: '' }).error === 'bad pdf' && /^no extended report/.test(ext({ lang: 'pl' }).error) && sent.length === nX);
+  ext({ pdf: Buffer.alloc(3000, 65).toString('base64') }).error === 'bad pdf' && ext({ pdf: '***' }).error === 'bad pdf' && ext({ pdf: '' }).error === 'bad pdf' && /^no extended report/.test(ext({ lang: 'ja' }).error) && sent.length === nX);
 const rX = ext({ order: '1042' }), mX = sent[sent.length - 1];
 check('extended: accepted without the site token, one mail to the buyer', rX.ok === true && rX.saved === true && rX.warned === false && sent.length === nX + 1 && mX.to === 'buyer@b.co');
 check('extended mail: subject with profile, from the domain address, brand name', mX.subject === 'Ваш расширенный отчёт DISC: DI · Первопроходец' && mX.from === 'info@disc-test.org' && mX.name === 'Тест DISC · disc-test.org');
@@ -447,6 +447,18 @@ if (ctx.DATA.id && ctx.DATA.id.extended) {
   const mN = ctx.composeExtendedMail(ctx.decodeResult(cX), 'id');
   check('extended mail in Indonesian: subject, invite link to /id/ with campaign tags, nothing unfilled', /^Laporan DISC mendalam Anda:\sDI · Perintis$/.test(mN.subject) &&
     mN.html.includes('href="https://disc-test.org/id/?utm_source=report&amp;utm_medium=email&amp;utm_campaign=full-di&amp;utm_content=invite"') && !/\{\w+\}|undefined/.test(mN.html + mN.text));
+}
+// напоминание на польском: цена в записи языка (6,99 USD), дата словами, ничего русского
+if (ctx.DATA.pl && ctx.DATA.pl.pay) {
+  const pP = ctx.composePayRemindMail(ctx.decodeResult(cX), 'pl', { order: '261021-PL12CD', url: 'https://api.disc-test.org/pay/go?order=261021-PL12CD&key=k', until: new Date('2026-10-23T09:00:00Z'), price: ctx.EXTENDED_PRICE_USD });
+  check('pay reminder in Polish: 6,99 USD, the date written out, Prodamus named, nothing unfilled, nothing Russian', [pP.html, pP.text].every(s => s.includes('6,99 USD') && s.includes('23 października 2026') && s.includes('Prodamus') &&
+    s.includes('261021-PL12CD') && s.includes('Pionier') && !/\{\w+\}|undefined|₽|6\.99|[А-Яа-яЁё]/.test(s.replace(/Пётр Буянов/g, ''))) && pP.subject === ctx.DATA.pl.pay.remind.subject);
+}
+// письмо покупателю на польском: приглашение ведёт на /pl/ с метками кампании
+if (ctx.DATA.pl && ctx.DATA.pl.extended) {
+  const mP = ctx.composeExtendedMail(ctx.decodeResult(cX), 'pl');
+  check('extended mail in Polish: subject, invite link to /pl/ with campaign tags, nothing unfilled', /^Twój rozszerzony raport DISC:\sDI · Pionier$/.test(mP.subject) &&
+    mP.html.includes('href="https://disc-test.org/pl/?utm_source=report&amp;utm_medium=email&amp;utm_campaign=full-di&amp;utm_content=invite"') && !/\{\w+\}|undefined/.test(mP.html + mP.text));
 }
 check('doGet reports that extended delivery is on', JSON.parse(ctx.doGet().text).extended === true);
 fs.writeFileSync(path.join(process.env.OUT || '/tmp', 'disc-extended-mail-preview.html'), mX.htmlBody);

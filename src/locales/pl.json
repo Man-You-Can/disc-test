@@ -635,7 +635,7 @@
         "h": "Zakup profilu rozszerzonego",
         "p": [
           "Jeśli kupujesz rozszerzony profil DISC, przetwarzamy twój adres e-mail, imię (jeśli je podasz), wynik testu, na podstawie którego powstaje raport, oraz dane zamówienia: datę, kwotę, numer i status płatności. Dane te są potrzebne, aby przygotować raport i wysłać go do ciebie, odpowiedzieć na twoje zgłoszenie i dokonać zwrotu płatności. Podstawą przetwarzania jest umowa, którą zawierasz, opłacając usługę na warunkach {offer}.",
-          "Płatność przyjmuje bank; jego nazwa jest widoczna na stronie płatności. Dane płatnicze podajesz na zabezpieczonej stronie banku: nie otrzymujemy ich ani nie przechowujemy. Bank otrzymuje kwotę i numer zamówienia oraz twój adres e-mail, na który wysyłany jest dowód zakupu.",
+          "Płatność obsługuje Prodamus, nasz operator płatności. Dane karty podajesz na zabezpieczonej stronie płatności Prodamus: nie otrzymujemy ich ani nie przechowujemy. Przekazujemy Prodamus kwotę i numer zamówienia oraz twój adres e-mail, na który wysyłany jest dowód zakupu.",
           "Raport jest generowany na serwerze działającym na nasze zlecenie i wysyłany do ciebie e-mailem z adresu {email}. Kopię raportu i dane zamówienia przechowuje właściciel serwisu: są potrzebne, aby ponownie wysłać raport, odpowiedzieć na zgłoszenie, dokonać zwrotu płatności i prowadzić ewidencję. Jeśli chcesz, abyśmy usunęli raport i dane zamówienia, napisz na {email}. Informacje o płatności, które przepisy nakazują przechowywać, są usuwane po upływie wymaganego okresu.",
           "Jeśli rozpoczniesz zakup, ale nie dokonasz płatności, przechowujemy twój adres e-mail, wynik testu i dane zamówienia przez 30 dni, a następnie je usuwamy. W tym czasie na podany adres może przyjść jedna wiadomość z przypomnieniem i linkiem do płatności. Podstawą są twoje działania zmierzające do zawarcia umowy."
         ]
@@ -711,9 +711,9 @@
         "h": "Zakup profilu rozszerzonego",
         "p": [
           "Jeśli kupujesz rozszerzony profil DISC, przetwarzamy twój adres e-mail, imię (jeśli je podasz), wynik testu, na podstawie którego powstaje raport, oraz dane zamówienia: datę, kwotę, numer i status płatności. Dane te są potrzebne, aby przygotować raport i wysłać go do ciebie, odpowiedzieć na twoje zgłoszenie i dokonać zwrotu płatności. Podstawą przetwarzania jest umowa, którą zawierasz, opłacając usługę na warunkach {offer}; odrębna zgoda nie jest do tego wymagana.",
-          "Płatność przyjmuje bank; jego nazwa jest widoczna na stronie płatności. Dane płatnicze podajesz na zabezpieczonej stronie banku: nie otrzymujemy ich ani nie przechowujemy. Bank otrzymuje kwotę i numer zamówienia oraz twój adres e-mail, na który wysyłany jest dowód zakupu.",
+          "Płatność obsługuje Prodamus, nasz operator płatności. Dane karty podajesz na zabezpieczonej stronie płatności Prodamus: nie otrzymujemy ich ani nie przechowujemy. Przekazujemy Prodamus kwotę i numer zamówienia oraz twój adres e-mail, na który wysyłany jest dowód zakupu.",
           "Raport jest generowany na serwerze serwisu i wysyłany do ciebie e-mailem z adresu {email}. Gotowy raport nie jest przechowywany na serwerze: w razie potrzeby generujemy go ponownie. Dane zamówienia przechowujemy przez pięć lat od dnia płatności – są potrzebne, aby ponownie wysłać raport, odpowiedzieć na zgłoszenie, dokonać zwrotu płatności i prowadzić ewidencję. Informacje o płatności, które przepisy nakazują przechowywać dłużej, są usuwane po upływie wymaganego okresu.",
-          "Jeśli rozpoczniesz zakup, ale nie dokonasz płatności, przechowujemy twój adres e-mail, wynik testu i dane zamówienia przez 30 dni, a następnie je usuwamy. W tym czasie na podany adres może przyjść jedna wiadomość z przypomnieniem i linkiem do płatności. Podstawą są twoje działania zmierzające do zawarcia umowy. Dopóki profilu rozszerzonego nie można zamówić po polsku, prośbę o powiadomienie wysłaną przez formularz kontaktowy traktujemy jak każdą inną wiadomość z tego formularza; informacja o twojej zgodzie jest oznaczana jako zgłoszenie dotyczące profilu rozszerzonego."
+          "Jeśli rozpoczniesz zakup, ale nie dokonasz płatności, przechowujemy twój adres e-mail, wynik testu i dane zamówienia przez 30 dni, a następnie je usuwamy. W tym czasie na podany adres może przyjść jedna wiadomość z przypomnieniem i linkiem do płatności. Podstawą są twoje działania zmierzające do zawarcia umowy."
         ]
       }
     },
@@ -777,7 +777,7 @@
       "sections": [
         {
           "h": "Jak go otrzymać",
-          "p": ["Profil rozszerzony nie jest jeszcze dostępny po polsku: na stronie raportu możesz poprosić o powiadomienie, a my damy znać e-mailem, gdy tylko będzie można go zamówić. Po zamówieniu profil rozszerzony wysyłamy e-mailem na adres podany przy płatności, nie później niż 24 godziny po dokonaniu płatności."]
+          "p": ["Profil rozszerzony wysyłamy e-mailem na adres podany przy płatności, nie później niż 24 godziny po dokonaniu płatności."]
         },
         {
           "h": "Co pozostaje bezpłatne",
@@ -794,8 +794,8 @@
       "description": "Regulamin sprzedaży płatnej usługi „Rozszerzony profil DISC” w serwisie disc-test.org: cena, płatność i dostarczenie, zwroty, prawa do materiałów.",
       "h1": "Regulamin sprzedaży",
       "linkText": "regulaminu sprzedaży",
-      "edition": "Wersja z 9 października 2026 r. Tłumaczenie na język polski opublikowano 11 października 2026 r.",
-      "note": "Niniejszy tekst jest tłumaczeniem na język polski oryginalnej oferty opublikowanej pod adresem {original}. W razie rozbieżności między tekstami pierwszeństwo ma oryginał – z wyjątkiem ceny: w polskiej wersji Serwisu obowiązuje cena podana w punkcie 3.1. Profil rozszerzony nie jest jeszcze dostępny po polsku: na razie nie można go zamówić i nie są pobierane żadne płatności.",
+      "edition": "Wersja z 9 października 2026 r. Tłumaczenie na język polski opublikowano 21 października 2026 r.",
+      "note": "Niniejszy tekst jest tłumaczeniem na język polski oryginalnej oferty opublikowanej pod adresem {original}. W razie rozbieżności między tekstami pierwszeństwo ma oryginał – z wyjątkiem ceny i sposobu płatności: w polskiej wersji Serwisu obowiązują rozdziały 1 i 3 niniejszego tłumaczenia.",
       "seller": "przedsiębiorca indywidualny Manukyan Armen, numer identyfikacji podatkowej (INN) {inn}",
       "lead": "Niniejszy regulamin (dalej: Regulamin) jest oficjalną propozycją (ofertą publiczną) zawarcia umowy o świadczenie płatnej usługi „Rozszerzony profil DISC” na warunkach określonych poniżej. Ofertę składa {seller} (dalej: Usługodawca). Opłacenie usługi oznacza pełną i bezwarunkową akceptację tych warunków (przyjęcie oferty).",
       "sections": [
@@ -808,7 +808,7 @@
             "Test – bezpłatny kwestionariusz DISC dostępny w Serwisie.",
             "Profil Rozszerzony – bardziej szczegółowa analiza profilu DISC Klienta, przygotowana przez Usługodawcę w formie elektronicznej na podstawie wypełnionego przez Klienta Testu.",
             "Usługa – przygotowanie Profilu Rozszerzonego i przesłanie go Klientowi.",
-            "Bank – instytucja kredytowa, za pośrednictwem której Klient opłaca Usługę; jej nazwa jest widoczna na stronie płatności."
+            "Operator Płatności – Prodamus, platforma płatnicza, na której zabezpieczonej stronie Klient opłaca Usługę."
           ]
         },
         {
@@ -824,9 +824,9 @@
           "h": "3. Cena i płatność",
           "p": [
             "3.1. Cena Usługi, wyrażona w dolarach amerykańskich, wynosi {price}. Cena jest ostateczna: Klient nie ponosi żadnych dodatkowych opłat na rzecz Usługodawcy.",
-            "3.2. Klient opłaca Usługę w całości przed jej wykonaniem, jedną z bezgotówkowych metod płatności wskazanych na stronie płatności. Płatność przyjmuje Bank.",
-            "3.3. Usługę uznaje się za opłaconą z chwilą otrzymania przez Usługodawcę potwierdzenia płatności od Banku.",
-            "3.4. Dane płatnicze Klient podaje na zabezpieczonej stronie Banku. Usługodawca nie otrzymuje tych danych ani ich nie przechowuje.",
+            "3.2. Klient opłaca Usługę w całości przed jej wykonaniem, kartą płatniczą lub inną metodą płatności elektronicznej dostępną na stronie płatności. Płatność przyjmuje Operator Płatności.",
+            "3.3. Usługę uznaje się za opłaconą z chwilą otrzymania przez Usługodawcę potwierdzenia płatności od Operatora Płatności.",
+            "3.4. Dane karty Klient podaje na zabezpieczonej stronie Operatora Płatności. Usługodawca nie otrzymuje tych danych ani ich nie przechowuje.",
             "3.5. Po dokonaniu płatności dowód zakupu w formie elektronicznej jest wysyłany na adres e-mail podany przez Klienta przy płatności.",
             "3.6. Usługodawca może zmienić cenę Usługi. Nowa cena obowiązuje od chwili jej opublikowania w Serwisie i nie dotyczy zamówień już opłaconych."
           ]
@@ -876,7 +876,7 @@
           "h": "8. Dane osobowe",
           "p": [
             "8.1. Aby wykonać Usługę, Usługodawca przetwarza adres e-mail Klienta, imię (jeśli zostało podane), wynik Testu oraz informacje o płatności, z wyłączeniem danych karty płatniczej. Podstawą przetwarzania jest wykonanie umowy, której stroną jest Klient.",
-            "8.2. Dane są przekazywane wyłącznie Bankowi – w celu przyjęcia płatności i wysłania dowodu zakupu – oraz dostawcom usług niezbędnych do przygotowania i wysłania Profilu Rozszerzonego, a także w przypadkach przewidzianych przepisami prawa.",
+            "8.2. Dane są przekazywane wyłącznie Operatorowi Płatności – w celu przyjęcia płatności i wysłania dowodu zakupu – oraz dostawcom usług niezbędnych do przygotowania i wysłania Profilu Rozszerzonego, a także w przypadkach przewidzianych przepisami prawa.",
             "8.3. Więcej o przetwarzaniu danych można przeczytać na stronie „{privacy}”."
           ]
         },
@@ -906,7 +906,7 @@
       "h1": "Zasady zwrotu płatności",
       "linkText": "zasadach zwrotu płatności",
       "lead": "W skrócie: kiedy i jak można odzyskać pieniądze za rozszerzony profil DISC. Zasady te stanowią część {offer} (rozdział 5).",
-      "note": "Niniejszy tekst jest tłumaczeniem na język polski oryginalnych zasad zwrotu opublikowanych pod adresem {original}. W razie rozbieżności między tekstami pierwszeństwo ma oryginał. Profil rozszerzony nie jest jeszcze dostępny po polsku: na razie nie można go zamówić i nie są pobierane żadne płatności.",
+      "note": "Niniejszy tekst jest tłumaczeniem na język polski oryginalnych zasad zwrotu opublikowanych pod adresem {original}. W razie rozbieżności między tekstami pierwszeństwo ma oryginał.",
       "sections": [
         {
           "h": "Kiedy zwracamy całą kwotę",
@@ -939,13 +939,28 @@
         }
       ]
     },
+    "extendedMail": {
+      "subject": "Twój rozszerzony raport DISC: {label}",
+      "intro": "Dziękujemy za zakup. Twój rozszerzony raport DISC jest gotowy. Przygotowaliśmy go dla profilu:",
+      "attached": "Raport rozszerzony jest w załączniku do tego e-maila, w pliku PDF.",
+      "how": "Raport ma 13 rozdziałów. Zacznij od rozdziału 1: wyjaśnia, jak czytać pozostałe.",
+      "help": "Jeśli plik się nie otwiera albo coś w raporcie wydaje ci się nie tak, po prostu odpowiedz na tę wiadomość.",
+      "inviteTitle": "Zaproś do testu znajomych, współpracowników i bliskich",
+      "invite": "Rozdział 8 raportu mówi, jak rozmawiać z przedstawicielami każdego stylu. Styl osób wokół siebie poznasz, jeśli zaprosisz je do testu: jest bezpłatny i zajmuje około 10 minut. Kto zna styl rozmówcy, łatwiej się z nim porozumiewa.",
+      "inviteLink": "Link do testu, który możesz przesłać dalej:",
+      "footer": "Otrzymujesz tę wiadomość, ponieważ opłacono usługę „Rozszerzony profil DISC” w serwisie disc-test.org na ten adres. Raport jest imienny i przeznaczony wyłącznie do użytku własnego."
+    },
     "product": {
       "title": "Rozszerzony raport DISC – 13 rozdziałów o twoim wyniku",
-      "description": "Rozszerzony raport DISC na podstawie twojego wyniku: skala po skali, pięć ćwiczeń, plan na 30 dni. PDF na e-mail, {price} USD. Wkrótce po polsku.",
+      "description": "Rozszerzony raport DISC na podstawie twojego wyniku: skala po skali, pięć ćwiczeń, plan na 30 dni i karta dla współpracowników. PDF na e-mail, {price} USD.",
       "h1": "Rozszerzony raport DISC",
       "lead": "Raport podstawowy, który dostajesz po teście, odpowiada na pytanie „jakim jestem typem?”. Raport rozszerzony – na kolejne: „co mam z tym zrobić?”. Powstaje na podstawie twoich odpowiedzi: z twoimi liczbami, dla twojego profilu, z twoim imieniem na każdej stronie.",
       "facts": ["13 rozdziałów", "około 28 stron A4", "trzy karty pracy", "PDF na twój e-mail"],
       "more": "Co zawiera raport rozszerzony",
+      "sampleTitle": "Tak wygląda raport",
+      "sampleNote": "Cztery strony raportu przygotowanego dla fikcyjnej osoby z profilem Inspirator. W twoim raporcie będą twoje imię, twoje liczby i tekst dla twojego profilu. Kliknij lub dotknij strony, żeby ją powiększyć.",
+      "sampleAlt": ["Strona rozszerzonego raportu DISC: okładka z profilem i spis 13 rozdziałów", "Strona rozszerzonego raportu DISC: rozdział „Twój profil w szczegółach” z czterema skalami i ich znaczeniem", "Strona rozszerzonego raportu DISC: rozdział „Komunikacja z każdym z czterech stylów”", "Strona rozszerzonego raportu DISC: karta pracy „Plan na 30 dni”"],
+      "sampleCaption": ["Okładka i spis treści", "Rozdział 2: twoje skale", "Rozdział 8: rozmowa z każdym stylem", "Rozdział 11: plan na 30 dni"],
       "forTitle": "Komu się przyda",
       "for": [
         "Osobom, które chcą zrozumieć swoje liczby: co oznacza każda z czterech skal, skąd wzięła się nazwa profilu i co zrobić z najniższą skalą.",
@@ -983,14 +998,14 @@
       "howTitle": "Jak otrzymać raport",
       "how": [
         "Zrób bezpłatny test: 24 pytania, około 10 minut. Jeśli masz go już za sobą, nie musisz go powtarzać – raport powstaje na podstawie gotowego wyniku.",
-        "Poproś o powiadomienie. Raport rozszerzony nie jest jeszcze dostępny po polsku; napiszemy do ciebie, gdy tylko będzie można go zamówić.",
-        "Po zamówieniu raport przyjdzie e-mailem jako załącznik PDF, nie później niż 24 godziny po płatności."
+        "Opłać raport na zabezpieczonej stronie płatności Prodamus, naszego operatora płatności.",
+        "Raport przyjdzie e-mailem jako załącznik PDF, nie później niż 24 godziny po płatności."
       ],
       "faqTitle": "Pytania i odpowiedzi",
       "faq": [
         { "q": "Czy raport jest pisany specjalnie dla mnie, czy to ogólny tekst?", "a": "Raport powstaje na podstawie twoich odpowiedzi. Tekst jest napisany dla twojego profilu – jednego z szesnastu. Cały rozdział 2 i fragmenty rozdziałów 3, 5, 11, 12 i 13 zależą od twoich liczb: procentów na czterech skalach, liczby zaznaczeń „najbardziej” i „najmniej” oraz najniższej skali. Na każdej stronie jest twoje imię." },
         { "q": "W jakiej formie przyjdzie raport?", "a": "Jako plik PDF w załączniku do e-maila, około 28 stron A4. Wygodnie czyta się go na ekranie i dobrze wygląda w druku; każda z trzech kart pracy mieści się na jednej stronie." },
-        { "q": "W jakim języku jest raport?", "a": "Na razie raport jest dostępny tylko po rosyjsku. Poproś o powiadomienie, a napiszemy do ciebie, gdy tylko będzie można zamówić go po polsku." },
+        { "q": "W jakim języku jest raport?", "a": "Po polsku. Raport napisano od razu po polsku, z myślą o czytelniku w Polsce – to nie jest tłumaczenie." },
         { "q": "Czy to diagnoza albo ocena zdolności?", "a": "Nie. Raport opisuje styl zachowania na podstawie twoich odpowiedzi. Nie stawia diagnoz, nie mierzy inteligencji i nie przewiduje sukcesu." },
         { "q": "Czy mogę odzyskać pieniądze?", "a": "O tym, kiedy i jak zwracamy pieniądze, przeczytasz w {refund}." }
       ],
@@ -999,12 +1014,62 @@
       "docs": "Usługa nosi nazwę „Rozszerzony profil DISC” i jest świadczona na podstawie {offer}; o tym, kiedy i jak zwracamy pieniądze, przeczytasz w {refund}.",
       "buy": {
         "testTitle": "Raport powstaje na podstawie wyniku testu",
-        "testText": "Najpierw zrób bezpłatny test: 24 pytania, około 10 minut. Wynik i raport podstawowy zobaczysz od razu. Raport rozszerzony nie jest jeszcze dostępny po polsku; gdy będziesz już mieć wynik, na tej stronie możesz poprosić o powiadomienie.",
+        "testText": "Najpierw zrób bezpłatny test: 24 pytania, około 10 minut. Wynik i raport podstawowy zobaczysz od razu.",
         "testButton": "Zrób test",
         "orderTitle": "Raport przygotujemy na podstawie twojego wyniku z {date}",
-        "orderText": "Raport rozszerzony nie jest jeszcze dostępny po polsku. Poproś o powiadomienie – napiszemy na twój e-mail, gdy tylko będzie można go zamówić.",
-        "orderButton": "Powiadom mnie o dostępności",
-        "orderMsg": "Chcę otrzymać rozszerzony raport DISC po polsku. Proszę o wiadomość, gdy będzie można go zamówić.\n\nMój wynik: {link}"
+        "orderText": "Płatność online jest chwilowo niedostępna. Zostaw kontakt – napiszemy e-mailem, gdy tylko znów zacznie działać.",
+        "orderButton": "Zostaw kontakt",
+        "orderMsg": "Chcę kupić rozszerzony raport DISC. Proszę o wiadomość, gdy płatność znów będzie możliwa.\n\nMój wynik: {link}"
+      },
+      "pay": {
+        "title": "Raport przygotujemy na podstawie twojego wyniku z {date}",
+        "text": "Raport przyjdzie e-mailem jako załącznik PDF, nie później niż 24 godziny po płatności. Dowód zakupu wyślemy na ten sam adres.",
+        "emailLabel": "E-mail do raportu i dowodu zakupu",
+        "button": "Kup",
+        "note": "Klikając „Kup”, akceptujesz warunki {offer}. Płacisz w dolarach amerykańskich na zabezpieczonej stronie Prodamus: dane karty podajesz tam, a nie w tym serwisie. Na wyciągu z konta płatność może być widoczna jako simpleway.by.",
+        "badEmail": "Sprawdź adres e-mail: na niego wyślemy raport i dowód zakupu.",
+        "wait": "Otwieramy stronę płatności…",
+        "error": "Nie udało się otworzyć strony płatności. Spróbuj ponownie za kilka minut albo napisz do nas na {email}.",
+        "how": [
+          "Zrób bezpłatny test: 24 pytania, około 10 minut. Jeśli masz go już za sobą, nie musisz go powtarzać – raport powstaje na podstawie gotowego wyniku.",
+          "Wpisz adres e-mail i kliknij „Kup”. Płacisz w dolarach amerykańskich na zabezpieczonej stronie Prodamus, naszego operatora płatności; ta strona jest po angielsku. Na wyciągu z konta płatność może być widoczna jako simpleway.by – pod tą nazwą działa bePaid, firma, która obsługuje płatności kartą dla Prodamus.",
+          "Raport przyjdzie e-mailem jako załącznik PDF, nie później niż 24 godziny po płatności. Dowód zakupu wyślemy na ten sam adres."
+        ],
+        "thanks": {
+          "title": "Dziękujemy za zakup – Rozszerzony raport DISC",
+          "description": "Płatność za rozszerzony raport DISC: kiedy i dokąd przyjdzie raport i co zrobić, jeśli e-mail nie dotarł.",
+          "h1": "Dziękujemy za zakup",
+          "lead": "Raport przyjdzie na adres e-mail podany przy płatności, jako załącznik PDF, nie później niż 24 godziny po płatności. Zwykle dużo szybciej.",
+          "leadEmail": "Raport przyjdzie na adres {email}, jako załącznik PDF, nie później niż 24 godziny po płatności. Zwykle dużo szybciej.",
+          "order": "Numer zamówienia: {order}",
+          "statusWait": "Czekamy na potwierdzenie płatności od Prodamus.",
+          "statusPaid": "Płatność otrzymana. Raport jest przygotowywany.",
+          "statusSent": "Raport został wysłany. Sprawdź skrzynkę odbiorczą.",
+          "nextTitle": "Co dalej",
+          "next": ["E-mail przyjdzie z adresu {email}; temat zaczyna się od słów „Twój rozszerzony raport DISC”.", "Dowód zakupu przyjdzie w osobnym e-mailu od bePaid, firmy, która obsługuje płatności kartą dla Prodamus. Na wyciągu z konta płatność może być widoczna jako simpleway.by.", "Raport ma 13 rozdziałów. Zacznij od rozdziału 1: wyjaśnia, jak czytać pozostałe."],
+          "helpTitle": "Jeśli e-mail nie dotarł",
+          "help": ["Sprawdź folder ze spamem i zakładki w rodzaju „Oferty”.", "Jeśli e-maila nadal nie ma, napisz do nas na {email} albo przez formularz „{contact}” i podaj numer zamówienia. Wyślemy raport ponownie."],
+          "back": "Wróć do serwisu"
+        },
+        "fail": {
+          "title": "Płatność nie powiodła się – Rozszerzony raport DISC",
+          "description": "Płatność za rozszerzony raport DISC nie powiodła się: co możesz zrobić i jak się z nami skontaktować.",
+          "h1": "Płatność nie powiodła się",
+          "lead": "Twoje zamówienie jest zapisane; raport nie został jeszcze wysłany.",
+          "order": "Numer zamówienia: {order}",
+          "tryTitle": "Co możesz zrobić",
+          "try": ["Sprawdź dane karty i upewnij się, że karta obsługuje płatności internetowe i zagraniczne.", "Spróbuj zapłacić inną kartą albo inną metodą płatności.", "Spróbuj ponownie za kilka minut."],
+          "button": "Spróbuj ponownie",
+          "charged": "Jeśli pieniądze mimo to zostały pobrane, napisz do nas na {email} albo przez formularz „{contact}” i podaj numer zamówienia. Sprawdzimy to i odpowiemy w ciągu trzech dni roboczych."
+        },
+        "remind": {
+          "subject": "Twój rozszerzony raport DISC czeka na płatność",
+          "intro": "W serwisie {site} rozpoczęto zakup rozszerzonego raportu DISC, ale płatność nie została dokończona. Zamówienie jest zapisane: raport przygotujemy na podstawie twojego wyniku, dla tego profilu:",
+          "price": "Cena: {price} USD. Po płatności raport przyjdzie na ten adres jako załącznik PDF, a dowód zakupu – w osobnym e-mailu.",
+          "button": "Dokończ płatność",
+          "valid": "Link otwiera zabezpieczoną stronę płatności Prodamus i jest ważny do {date}.",
+          "footer": "Wysyłamy tę wiadomość tylko raz, ponieważ w serwisie {site} jest zamówienie (nr {order}) z tym adresem. Jeśli raport nie jest ci już potrzebny albo nie składano tego zamówienia, nic nie musisz robić: zamówienie zostanie automatycznie anulowane i nie dostaniesz w tej sprawie żadnych innych wiadomości."
+        }
       },
       "pdf": {
         "lead": "Raport podstawowy mówi, jakim jesteś typem. Raport rozszerzony – co z tym zrobić.",
@@ -1015,7 +1080,8 @@
           ["3", "karty pracy"]
         ],
         "list": ["Co oznaczają liczby w twoim profilu", "Jak pracować z osobami o innych profilach", "Wskazówki, jak działać skuteczniej"],
-        "where": "Więcej informacji:"
+        "sheets": [2, 4],
+        "where": "Więcej informacji i zamówienie:"
       },
       "block": {
         "eyebrow": "Raport rozszerzony",
@@ -1027,14 +1093,37 @@
           "Jak rozmawiać z przedstawicielami każdego z czterech stylów: techniki i gotowe sformułowania",
           "Trzy karty pracy: plan na 30 dni, najważniejsze na jednej stronie, karta dla współpracowników"
         ],
+        "sample": "Strony raportu przygotowanego dla fikcyjnej osoby",
         "price": "{price} USD · PDF na e-mail",
-        "button": "Powiadom mnie o dostępności",
+        "button": "Zostaw kontakt",
         "free": "Test i raport podstawowy pozostają bezpłatne.",
         "topTitle": "Raport rozszerzony na podstawie twojego wyniku",
         "topText": "13 rozdziałów o tym, co zrobić ze swoim profilem: omówienie każdej skali, pięć ćwiczeń, plan na 30 dni.",
-        "topButton": "Dowiedz się więcej – {price} USD",
-        "anchor": "Co jest w środku",
-        "soon": "Raport rozszerzony nie jest jeszcze dostępny po polsku. Poproś o powiadomienie – napiszemy, gdy tylko będzie można go zamówić."
+        "topButton": "Zamów raport – {price} USD",
+        "anchor": "Co jest w środku"
+      },
+      "promo": {
+        "lead": "Raport powstaje na podstawie twoich odpowiedzi i omawia:",
+        "hooks": {
+          "low": "{k} ({name}), twoja najniższa skala, {pct}%: co to oznacza",
+          "flat": "Twój profil zrównoważony: co to oznacza i jak go czytać",
+          "moderate": "Twój styl wiodący, {k}, ma tylko {pct}% (jest zaznaczony umiarkowanie): jak czytać opis",
+          "pairMid": "Połączenie {a} + {b}: co daje i czym różni się od czystego {a}",
+          "pairClose": "Twoje style {a} i {b} są prawie równe: na ile pewna jest kolejność liter",
+          "pairEqual": "Twoje style {a} i {b} są równe: dlaczego {a} jest na pierwszym miejscu",
+          "pairEdge": "Styl {b} jest uzupełniający dzięki jednej odpowiedzi: co to dla ciebie znaczy",
+          "pureHigh": "{k} ma {pct}%, a mimo to nie jest stylem uzupełniającym: co znaczy profil „czysty”",
+          "layersDiff": "Twój styl adaptowany ({a}) różni się od naturalnego ({b}): ile cię to kosztuje",
+          "layersSame": "Twój styl adaptowany i naturalny są zgodne ({k}): zalety i ryzyka"
+        },
+        "tail": "Razem 13 rozdziałów, w tym pięć ćwiczeń i plan na 30 dni.",
+        "button": "Raport rozszerzony – {price} USD",
+        "close": "Ukryj",
+        "homeLabel": "Twój wynik z {date}",
+        "homeOpen": "Otwórz wynik",
+        "homeLead": "Raport rozszerzony powstaje na podstawie twoich odpowiedzi i omawia:",
+        "homeSample": "Zobacz przykładowe strony",
+        "homeRetake": "Zrób test ponownie"
       }
     },
     "contact": {
@@ -1582,7 +1671,7 @@
       "steps": [
         "<b>Odpowiadasz.</b> Test ma 24 pytania; w każdym zaznaczasz, co pasuje do ciebie najbardziej, a co najmniej. Obliczenia opierają się wyłącznie na tych odpowiedziach.",
         "<b>Program liczy.</b> Dla każdego z czterech stylów odejmuje zaznaczenia „najmniej” od zaznaczeń „najbardziej” i na podstawie tych liczb ustala profil – jeden z szesnastu. Wzór jest jawny: omawiamy go na stronie „{results}”.",
-        "<b>Program składa raport.</b> Do twojego profilu i twoich liczb dobiera teksty napisane wcześniej przez AI. Raport podstawowy pojawia się na ekranie od razu. Raport rozszerzony jest składany po płatności i przychodzi e-mailem. Po polsku nie jest jeszcze dostępny: możesz poprosić o powiadomienie, a napiszemy, gdy tylko będzie można go zamówić."
+        "<b>Program składa raport.</b> Do twojego profilu i twoich liczb dobiera teksty napisane wcześniej przez AI. Raport podstawowy pojawia się na ekranie od razu. Raport rozszerzony jest składany po płatności i przychodzi e-mailem."
       ],
       "sections": [
         {
@@ -1630,7 +1719,7 @@
         },
         {
           "h": "Wynik od razu",
-          "p": "Raport podstawowy pojawia się na ekranie, gdy tylko odpowiesz na ostatnie pytanie. Raport rozszerzony jest składany od razu po opłaceniu zamówienia – o każdej porze dnia i nocy, bez zapisów i kolejek – a e-mail z nim przychodzi nie później niż 24 godziny po płatności. Po polsku nie można go jeszcze zamówić: poproś o powiadomienie, a damy znać e-mailem, gdy tylko będzie to możliwe."
+          "p": "Raport podstawowy pojawia się na ekranie, gdy tylko odpowiesz na ostatnie pytanie. Raport rozszerzony jest składany od razu po opłaceniu zamówienia – o każdej porze dnia i nocy, bez zapisów i kolejek – a e-mail z nim przychodzi zwykle po kilku minutach, nie później niż 24 godziny po płatności."
         },
         {
           "h": "Przystępna cena",
