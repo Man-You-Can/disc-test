@@ -1133,7 +1133,9 @@ function renderReport(r, opts){
       '</div>'+
       '<div class="actions no-print" style="margin-top:18px"><button class="link" id="restart" type="button">'+t('share.restart')+'</button></div>'
     :
-      '<div class="share no-print" style="margin-top:16px">'+shareButtons()+'</div>'
+      '<div class="share no-print" style="margin-top:16px">'+shareButtons()+'</div>'+
+      // ссылка «Пройти тест заново» — как у своего результата (по просьбе заказчика от 2026-10-22); в панели администратора её нет
+      (opts.fromAdmin ? '' : '<div class="actions no-print" style="margin-top:18px"><button class="link" id="restart" type="button">'+t('share.restart')+'</button></div>')
     )+
     // закреплённая кнопка отчёта (телефон); скрытую крестиком не показываем до конца сеанса
     (PM && !opts.fromAdmin && !extBought() && !barOff() ? '<div class="xbar no-print" id="extBar"><a class="btn" id="extBarGo" href="'+extHref+'">'+esc(PM.button)+'</a>'+
