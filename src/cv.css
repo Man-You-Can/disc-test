@@ -362,3 +362,34 @@ body:has(.cvpage) .wrap{max-width:1080px}
   .cvdash-t td.d-rec{margin-top:8px}
   .cvdash-t td.d-docs{margin-top:8px;white-space:normal}
 }
+
+/* файлы примера на двух языках: метки RU / EN у строк кнопок */
+.cvlang{display:inline-flex;align-items:center;justify-content:center;min-width:30px;font-size:11.5px;font-weight:700;letter-spacing:.04em;padding:3px 8px;border-radius:6px;background:var(--soft);color:var(--muted);white-space:nowrap}
+.cvdemo .cvfiles{align-items:center;margin-top:8px}
+.cvfile-b{display:flex;flex-direction:column;gap:8px}
+.cvfile-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.cvfile-row .cvlang{min-width:92px;justify-content:flex-start;background:none;padding:0;font-size:12.5px;letter-spacing:0}
+@media (max-width:600px){.cvfile-row .cvlang{flex:1 1 100%}}
+
+/* блок «CV на английском — без переводчика» */
+.content .cven-points{grid-template-columns:repeat(4,1fr)}
+.cven-cmp{margin-top:18px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px 20px}
+.cven-cmp h3{margin:0 0 10px;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.cven-hd,.cven-row{display:grid;grid-template-columns:minmax(0,1fr) 28px minmax(0,1fr);gap:8px;align-items:center}
+.cven-hd span{font-size:12px;font-weight:600;color:var(--muted)}
+.cven-row{padding:10px 0;border-top:1px solid var(--line)}
+.cven-row .ru{color:var(--muted)}
+.cven-row .en{font-weight:600}
+.cven-row .arr{text-align:center;color:var(--s);font-weight:700}
+.cven-dl{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;margin-top:16px}
+.cven-dl span{font-weight:600;margin-inline-end:4px}
+.cven-dl .btn{font-size:14.5px;padding:10px 16px}
+.cven-dl .btn::before{content:"↓";margin-inline-end:7px;font-weight:700;color:var(--s)}
+@media (max-width:900px){.content .cven-points{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){
+  .content .cven-points{grid-template-columns:1fr}
+  .cven-hd{display:none}
+  .cven-row{grid-template-columns:1fr;gap:2px}
+  .cven-row .arr{text-align:start;transform:rotate(90deg);width:14px}
+  .cven-dl .btn{flex:1 1 100%;justify-content:center}
+}

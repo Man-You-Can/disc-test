@@ -743,7 +743,7 @@ for (const L of locales) {
         (D.scoreLabel ? `<small>${escFull(D.scoreLabel)}</small>` : '') + `</div></div>` + (D.scoreNote ? `<p class="cvscorenote">${escFull(D.scoreNote)}</p>` : '') +
       `<ul class="cvrows">${D.rows.map(r => `<li class="s-${r.s}"><span>${escFull(r.t)}</span><em>${escFull(r.v)}</em></li>`).join('')}</ul>` +
       `<div class="cvverdict${D.verdictTag ? ' go' : ''}"><b>${escFull(D.verdictTitle)}</b>${D.verdictTag ? `<span class="cvgo">${escFull(D.verdictTag)}</span>` : ''}<p>${escFull(D.verdict)}</p></div>` +
-      `<div class="cvfiles">${D.files.map(f => `<a href="${imgRel}files/${f.f}" download data-dl="${f.dl}">${escFull(f.t)}</a>`).join('')}</div>` + (D.more && V.example ? `<a class="cvmore" href="#example">${escFull(D.more)} ↓</a>` : '') + `</figure>`;
+      D.fileGroups.map(g => `<div class="cvfiles"><span class="cvlang">${escFull(g.lang)}</span>${g.files.map(f => `<a href="${imgRel}files/${f.f}" download data-dl="${f.dl}">${escFull(f.t)}</a>`).join('')}</div>`).join('') + (D.more && V.example ? `<a class="cvmore" href="#example">${escFull(D.more)} ↓</a>` : '') + `</figure>`;
     // «Пример: от единого резюме до отклика» (с 2026-10-22, по просьбе заказчика): четыре вкладки на вымышленном кандидате; без скрипта все панели видны подряд
     const X = V.example;
     // сравнение «вакансия — кандидатка» в оценке: в обеих таблицах вакансия — первый столбец (синим), кандидатка — второй (серым); на телефоне строка — карточка с подписями
@@ -771,8 +771,9 @@ for (const L of locales) {
         return `<div class="cvdoc"><div class="cvdoc-head"><strong>${escFull(P.name)}</strong><span>${escFull(P.headline)}</span></div>` +
           `<p class="cvsrc">${escFull(P.sources)}</p>` +
           (P.cvFile ? `<div class="cvfile"><div class="cvfile-t"><strong>${escFull(P.cvFile.title)}</strong><p>${escFull(P.cvFile.text)}</p></div>` +
-            `<div class="cvfile-b"><a class="btn" href="${imgRel}files/cv-example-irina-sokolova.pdf" download data-dl="pdf">${escFull(P.cvFile.pdf)}</a>` +
-            `<a class="btn btn-ghost" href="${imgRel}files/cv-example-irina-sokolova.docx" download data-dl="docx">${escFull(P.cvFile.docx)}</a></div></div>` : '') +
+            `<div class="cvfile-b">${P.cvFile.langs.map(l => `<div class="cvfile-row"><span class="cvlang">${escFull(l.label)}</span>` +
+              `<a class="btn" href="${imgRel}files/cv-example-irina-sokolova${l.sfx}.pdf" download data-dl="pdf${l.sfx}">${escFull(P.cvFile.pdf)}</a>` +
+              `<a class="btn btn-ghost" href="${imgRel}files/cv-example-irina-sokolova${l.sfx}.docx" download data-dl="docx${l.sfx}">${escFull(P.cvFile.docx)}</a></div>`).join('')}</div></div>` : '') +
           `<div class="cvlegend"><span class="in">${escFull(P.legendIn)}</span><span class="out">${escFull(P.legendOut)}</span></div>` +
           `<p class="cvcount">${escFull(P.count).replace('{in}', `<b>${nIn}</b>`).replace('{all}', `<b>${nAll}</b>`)}</p>` +
           `<h3>${escFull(P.expTitle)}</h3>` + P.jobs.map(job).join('') + gap + P.early.map(job).join('') + intern +
@@ -834,6 +835,12 @@ for (const L of locales) {
         `<section class="cvsec cvhow"><div><h2>${escFull(V.howTitle)}</h2><ol class="cvsteps">${V.how.map(x => `<li><strong>${escFull(x.h)}</strong><span>${escFull(x.p)}</span></li>`).join('')}</ol>${cta()}</div>${demo}</section>` +
         exampleHtml +
         `<section class="cvsec"><h2>${escFull(V.featuresTitle)}</h2><ul class="cvgrid">${V.features.map((x, i) => `<li style="--k:var(${K[i % 4]})"><h3>${escFull(x.h)}</h3><p>${escFull(x.p)}</p></li>`).join('')}</ul></section>` +
+        // «CV на английском — без переводчика» (с 2026-10-23, по просьбе заказчика): почему простого перевода мало, пример строк RU → EN, скачивание английских примеров
+        (V.english ? (E => `<section class="cvsec cven" id="english"><h2>${escFull(E.title)}</h2><p class="cvsub">${escFull(E.lead)}</p>` +
+          `<ul class="cvgrid cven-points">${E.points.map((x, i) => `<li style="--k:var(${K[(i + 3) % 4]})"><h3>${escFull(x.h)}</h3><p>${escFull(x.p)}</p></li>`).join('')}</ul>` +
+          `<div class="cven-cmp"><h3>${escFull(E.compareTitle)}</h3><div class="cven-rows"><div class="cven-hd"><span>${escFull(E.ruLabel)}</span><span></span><span>${escFull(E.enLabel)}</span></div>` +
+            E.compare.map(r => `<div class="cven-row"><span class="ru">${escFull(r.ru)}</span><span class="arr" aria-hidden="true">→</span><span class="en" lang="en">${escFull(r.en)}</span></div>`).join('') + `</div></div>` +
+          `<div class="cven-dl"><span>${escFull(E.downloadsTitle)}:</span>${E.downloads.map(d => `<a class="btn btn-ghost" href="${imgRel}files/${d.f}" download data-dl="${d.dl}">${escFull(d.t)}</a>`).join('')}</div></section>`)(V.english) : '') +
         `<section class="cvsec"><h2>${escFull(V.honestTitle)}</h2><div class="cvhonest"><p>${escFull(V.honest)}</p>${listHtml('ul', V.honestList)}</div></section>` +
         `<section class="cvsec" id="pricing"><h2>${escFull(V.pricingTitle)}</h2><p class="cvsub">${escFull(V.pricingLead)}</p><ul class="cvplans">` +
           V.plans.map((p, i) => `<li class="${i === 1 ? 'hot' : ''}"><div class="cvplan-head"><h3>${escFull(p.name)}</h3>${p.tag ? `<span class="cvtag">${escFull(p.tag)}</span>` : ''}</div>` +

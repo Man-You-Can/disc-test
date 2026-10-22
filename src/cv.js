@@ -22,8 +22,8 @@ function cvFormHTML(c, k){
 
 /* Вкладки блока «Пример: от единого резюме до отклика»: без скрипта все панели видны подряд, со скриптом — одна, переключение мышью и стрелками */
 function initCvTabs(){
-  // скачивание примеров из карточки-оценки в «Как это работает» (CV.docx, CV.pdf, письмо)
-  document.querySelectorAll('.cvfiles a[data-dl]').forEach(function(a){ a.addEventListener('click', function(){ if(window.discTrack) window.discTrack('cv-sample-' + a.getAttribute('data-dl')); }); });
+  // скачивание примеров (карточка-оценка, блок «Готовое CV», блок «CV на английском»): цель cv-sample-<формат>[-en]
+  document.querySelectorAll('a[data-dl]').forEach(function(a){ a.addEventListener('click', function(){ if(window.discTrack) window.discTrack('cv-sample-' + a.getAttribute('data-dl')); }); });
   var box=document.getElementById('cvEx'); if(!box) return;
   var tabs=[].slice.call(box.querySelectorAll('[role="tab"]')), panels=[].slice.call(box.querySelectorAll('[role="tabpanel"]'));
   function sel(i, focus){ tabs.forEach(function(t,k){ var on=k===i; t.setAttribute('aria-selected', on); t.tabIndex=on?0:-1; panels[k].hidden=!on; }); if(focus) tabs[i].focus();
@@ -41,7 +41,6 @@ function initCvTabs(){
       if(navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(text).then(ok, fallback); else fallback();
     });
   });
-  box.querySelectorAll('a[data-dl]').forEach(function(a){ a.addEventListener('click', function(){ if(window.discTrack) window.discTrack('cv-sample-' + a.getAttribute('data-dl')); }); });
   tabs.forEach(function(t,i){
     t.addEventListener('click', function(){ sel(i); if(window.discTrack) window.discTrack('cv-example'); });
     t.addEventListener('keydown', function(e){ var n=tabs.length, j=e.key==='ArrowRight'?(i+1)%n:e.key==='ArrowLeft'?(i-1+n)%n:e.key==='Home'?0:e.key==='End'?n-1:-1; if(j<0) return; e.preventDefault(); sel(j, true); });
