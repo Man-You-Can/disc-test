@@ -54,8 +54,8 @@ function initCvForm(c){
         setStatus('err', /too many|daily limit/.test(m) ? T.tooMany.replace('{contact}', mailLink) : T.sendFailed.replace('{error}', esc(m)).replace('{contact}', mailLink)); })
       .then(function(){ btn.disabled=false; });
   });
-  // закреплённая кнопка «Оставить заявку» на телефоне: видна, когда кнопка первого экрана ушла вверх, а форма и подвал ещё не на экране
-  var fl=$('#cvFloat'), top=$('#cvTop'), ends=[form, document.querySelector('.foot')];
+  // закреплённая кнопка «Оставить заявку» на телефоне: видна, когда кнопка первого экрана ушла вверх, а форма ещё не на экране
+  var fl=$('#cvFloat'), top=$('#cvTop'), ends=[form];
   if(!fl || !top || !('IntersectionObserver' in window)) return;
   var passed=false, near=false;
   function upd(){ fl.classList.toggle('show', passed && !near); }

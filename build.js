@@ -493,9 +493,9 @@ function writeContentPage(L, sub, opts) {
   ].concat(opts.ldExtra || [])).replace(/</g, '\\u003c');
   const miniL = { lang: L.lang, name: L.name, dir: L.dir, dateLocale: L.dateLocale, ui: Object.fromEntries(Object.entries(L.ui).filter(([k]) => k === 'langLabel' || k === 'root.continue' || k.startsWith('consent.') || (opts.uiKeys && opts.uiKeys.test(k)))) };
   Object.assign(miniL.ui, noticeUi(L));
-  // opts.bare — самостоятельная страница (лендинг): без шапки сайта (название и выбор языка), пунктов меню, хлебных крошек и «Материалов»; opts.css — стили только этой страницы
-  const tpl = !opts.bare ? pageTpl : pageTpl.replace(/\s*<header class="topbar">[\s\S]*?<\/header>/, '').replace(/\s*<nav class="sitenav no-print">__NAV__<\/nav>/, '').replace(/\s*<nav class="crumbs">__CRUMBS__<\/nav>/, '')
-    .replace(/\s*__MATERIALS__/, '').replace(/\s*<nav class="langs"[^>]*>__LANG_LINKS__<\/nav>/, '');
+  // opts.bare — самостоятельная страница (лендинг): без шапки сайта (название и выбор языка), пунктов меню, хлебных крошек и подвала; opts.css — стили только этой страницы
+  const tpl = !opts.bare ? pageTpl : pageTpl.replace(/\s*<header class="topbar">[\s\S]*?<\/header>/, '').replace(/\s*<footer class="foot">[\s\S]*?<\/footer>/, '')
+    .replace(/\s*<nav class="sitenav no-print">__NAV__<\/nav>/, '').replace(/\s*<nav class="crumbs">__CRUMBS__<\/nav>/, '');
   const html = tpl.replace('</head>', () => opts.css ? `<style>${opts.css}</style>\n</head>` : '</head>')
     .replace(/__LANG__/g, hl(L.lang)).replace(/__DIR__/g, L.dir)
     .replace(/__TITLE__/g, esc(opts.title)).replace(/__DESC__/g, esc(opts.description))
