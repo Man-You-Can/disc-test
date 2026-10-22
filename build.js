@@ -717,32 +717,46 @@ for (const L of locales) {
     content: `<div class="eyebrow">DISC</div><h1>${escFull(tm.h1)}</h1><p class="lead">${escFull(tm.lead)}</p>` + ctaTop(t, '../') + sectionsHtml(tm.sections) +
       (hasBusiness(L) ? `<p class="seealso"><a href="../business/">${escFull(C.business.h1)}: ${escFull(C.business.packsTitle.toLowerCase())} ${arrow(L)}</a></p>` : '') +
       ctaBlock(L, t, '../') + seeAlso('../', 'nav.teams') });
-  // /cv/ — лендинг «CV и сопроводительное письмо под каждую вакансию» (с 2026-10-22, решение заказчика): услуга Армена Манукяна для соискателей,
-  // подписка, оплаты на странице нет — только заявка (src/cv.js → форма обратной связи сервера, тема «Заявка на CV под вакансию»). Только там, где в
-  // локали есть content.cv (сейчас русская версия). Ссылка только прямая: ни в меню, ни в подвале, ни на экране результата её нет; noindex, в sitemap не входит
+  // /cv/ — лендинг сервиса «Резюме под каждую вакансию» (с 2026-10-22, решение заказчика; первая редакция того же дня продавала ручную услугу в Telegram):
+  // заявка на ранний доступ, первым 1000 — скидка 50%, оплаты на странице нет. Две одинаковые формы (первый экран и конец страницы, src/cv.js) →
+  // форма обратной связи сервера, тема «Заявка на ранний доступ к сервису CV». Только там, где в локали есть content.cv (сейчас русская версия).
+  // Ссылка только прямая: ни в меню, ни в подвале, ни на экране результата её нет; noindex, в sitemap не входит
   if (C.cv && feedbackEmail) {
-    const V = C.cv, F = V.form, A = V.author, K = ['--d', '--i', '--s', '--c'];
+    const V = C.cv, F = V.form, A = V.author, D = V.demo, K = ['--d', '--i', '--s', '--c'];
     const fill = str => escFull(str).replace(/\{email\}/g, `<a href="mailto:${escFull(feedbackEmail)}">${escFull(feedbackEmail)}</a>`);
-    const VT = { name: t('intro.nameLabel'), email: F.email, telegram: F.telegram, telegramPlaceholder: F.telegramPlaceholder,
-      button: F.button, subject: F.subject, sent: F.sent, needTelegram: F.needTelegram, requiredNote: t('intro.requiredNote'), nameRequired: t('intro.nameRequired'),
-      emailRequired: t('intro.emailRequired'), pdRequired: L.ui['pd.required'] || '', sending: t('contact.sending'), sendFailed: t('contact.sendFailed'), tooMany: t('contact.tooMany'), privacyNote: F.privacy };
+    const VT = { name: t('intro.nameLabel'), email: F.email, button: F.button, subject: F.subject, message: F.message, sentTitle: F.sentTitle, sent: F.sent,
+      nameRequired: t('intro.nameRequired'), emailRequired: t('intro.emailRequired'), pdRequired: L.ui['pd.required'] || '', sending: t('contact.sending'),
+      sendFailed: t('contact.sendFailed'), tooMany: t('contact.tooMany'), privacyNote: F.privacy };
+    const form = k => cvFormHTML({ T: VT, esc: escFull, email: feedbackEmail, pdLabel: pdOn ? pdLabelHtml(L, '../') : '' }, k);
+    const tick = `<svg class="cvtick" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+    const cta = (cls) => `<a class="btn ${cls || ''}" href="#cvfinal" data-cta>${escFull(V.button)}</a>`;
     const ldFaq = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: V.faq.map(it => ({ '@type': 'Question', name: it.q, acceptedAnswer: { '@type': 'Answer', text: it.a.replace(/\{email\}/g, feedbackEmail) } })) };
+    const demo = `<figure class="cvdemo" aria-label="${escFull(D.label)}"><figcaption class="cvdemo-label">${escFull(D.label)}</figcaption>` +
+      `<div class="cvdemo-head"><div><strong>${escFull(D.role)}</strong><span>${escFull(D.company)}</span></div>` +
+      `<div class="cvscore" style="--p:${(+D.score) * 10}%"><b>${escFull(D.score)}</b><span>${escFull(D.scoreOf)}</span></div></div>` +
+      `<ul class="cvrows">${D.rows.map(r => `<li class="s-${r.s}"><span>${escFull(r.t)}</span><em>${escFull(r.v)}</em></li>`).join('')}</ul>` +
+      `<div class="cvverdict"><b>${escFull(D.verdictTitle)}</b><p>${escFull(D.verdict)}</p></div>` +
+      `<div class="cvfiles">${D.files.map(f => `<span>${escFull(f)}</span>`).join('')}</div></figure>`;
     writeContentPage(L, 'cv/', { bare: true, noindex: true, noDate: true, langs: locales.filter(x => x.content.cv), css: cvCss, title: V.title, description: V.description,
       crumbs: [{ name: V.h1 }], ldExtra: [ldFaq], files: ['src/cv.js', 'src/cv.css'],
-      content: `<div class="cvpage"><h1>${escFull(V.h1)}</h1><p class="lead">${escFull(V.lead)}</p>` +
-        `<section class="cvoffer"><div class="cvfree"><strong>${escFull(V.free)}</strong><p>${escFull(V.freeText)}</p></div>` +
-        `<div class="cvbuy"><p class="price"><small>${escFull(V.priceLabel)}</small>${escFull(V.price)}</p><a class="btn" id="cvTop" href="#request">${escFull(V.button)}</a></div></section>` +
-        `<ul class="xfacts">${V.facts.map(x => `<li>${escFull(x)}</li>`).join('')}</ul>` +
-        `<h2>${escFull(V.includedTitle)}</h2><ul class="cvgrid">${V.included.map((x, i) => `<li style="--k:var(${K[i % 4]})"><h3>${escFull(x.h)}</h3><p>${escFull(x.p)}</p></li>`).join('')}</ul>` +
-        `<h2>${escFull(V.honestTitle)}</h2><div class="cvhonest"><p>${escFull(V.honest)}</p>${listHtml('ul', V.honestList)}</div>` +
-        `<h2>${escFull(V.howTitle)}</h2><ol class="cvsteps">${V.how.map(x => `<li><strong>${escFull(x.h)}</strong><span>${escFull(x.p)}</span></li>`).join('')}</ol>` +
-        `<p><a class="btn" href="#request">${escFull(V.button)}</a></p>` +
-        `<h2>${escFull(V.authorTitle)}</h2><section class="cvauthor"><span class="cvname">${escFull(A.name)}</span><p class="cvrole">${escFull(A.role)}</p>` + listHtml('ul', A.facts) +
-        `<p>${escFull(A.text)}</p><p class="cvsite"><a href="${escFull(A.siteUrl)}" target="_blank" rel="noopener">${escFull(A.site)} ${arrow(L)}</a></p></section>` +
-        `<h2>${escFull(V.faqTitle)}</h2>` + V.faq.map(it => `<h3 class="xq">${escFull(it.q)}</h3><p>${fill(it.a)}</p>`).join('') +
-        `<h2 id="request">${escFull(F.title)}</h2><p>${escFull(F.lead)}</p>` +
-        cvFormHTML({ T: VT, esc: escFull, email: feedbackEmail, pdLabel: pdOn ? pdLabelHtml(L, '../') : '' }) + `</div>` +
-        `<a class="btn ctafloat no-print" id="cvFloat" href="#request">${escFull(V.button)}</a>`,
+      content: `<div class="cvpage">` +
+        `<section class="cvhero"><div class="cvhero-text"><p class="cvbadge">${escFull(V.badge)}</p><h1>${escFull(V.h1)}</h1><p class="lead">${escFull(V.lead)}</p>` +
+          `<ul class="cvpoints">${V.heroPoints.map(x => `<li>${tick}${escFull(x)}</li>`).join('')}</ul></div>` +
+          `<div class="cvformcard" id="request"><h2>${escFull(V.formTitle)}</h2><p class="cvformlead">${escFull(V.formLead)}</p>${form('1')}<p class="cvnote">${escFull(V.formNote)}</p></div></section>` +
+        `<section class="cvsec"><h2>${escFull(V.painTitle)}</h2><ul class="cvpain">${V.pain.map((x, i) => `<li style="--k:var(${K[i % 4]})"><h3>${escFull(x.h)}</h3><p>${escFull(x.p)}</p></li>`).join('')}</ul></section>` +
+        `<section class="cvsec cvhow"><div><h2>${escFull(V.howTitle)}</h2><ol class="cvsteps">${V.how.map(x => `<li><strong>${escFull(x.h)}</strong><span>${escFull(x.p)}</span></li>`).join('')}</ol>${cta()}</div>${demo}</section>` +
+        `<section class="cvsec"><h2>${escFull(V.featuresTitle)}</h2><ul class="cvgrid">${V.features.map((x, i) => `<li style="--k:var(${K[i % 4]})"><h3>${escFull(x.h)}</h3><p>${escFull(x.p)}</p></li>`).join('')}</ul></section>` +
+        `<section class="cvsec"><h2>${escFull(V.honestTitle)}</h2><div class="cvhonest"><p>${escFull(V.honest)}</p>${listHtml('ul', V.honestList)}</div></section>` +
+        `<section class="cvsec" id="pricing"><h2>${escFull(V.pricingTitle)}</h2><p class="cvsub">${escFull(V.pricingLead)}</p><ul class="cvplans">` +
+          V.plans.map((p, i) => `<li class="${i === 1 ? 'hot' : ''}"><div class="cvplan-head"><h3>${escFull(p.name)}</h3>${p.tag ? `<span class="cvtag">${escFull(p.tag)}</span>` : ''}</div>` +
+            `<p class="cvprice">${p.old ? `<s>${escFull(p.old)}</s>` : ''}<b>${escFull(p.price)}</b><span>${escFull(p.per)}</span></p>` +
+            `<ul>${p.items.map(x => `<li>${tick}${escFull(x)}</li>`).join('')}</ul></li>`).join('') +
+          `</ul><p class="cvsub small">${escFull(V.pricingNote)}</p>${cta('cvcenter')}</section>` +
+        `<section class="cvsec"><h2>${escFull(V.founderTitle)}</h2><div class="cvauthor"><span class="cvname">${escFull(A.name)}</span><p class="cvrole">${escFull(A.role)}</p>` + listHtml('ul', A.facts) +
+          `<p>${escFull(A.text)}</p><p class="cvsite"><a href="${escFull(A.siteUrl)}" target="_blank" rel="noopener">${escFull(A.site)} ${arrow(L)}</a></p></div></section>` +
+        `<section class="cvsec cvfaq"><h2>${escFull(V.faqTitle)}</h2>` + V.faq.map(it => `<details><summary>${escFull(it.q)}</summary><p>${fill(it.a)}</p></details>`).join('') + `</section>` +
+        `<section class="cvfinal" id="cvfinal"><h2>${escFull(V.finalTitle)}</h2><p>${escFull(V.finalLead)}</p>${form('2')}</section>` +
+        `</div><a class="btn ctafloat no-print" id="cvFloat" href="#cvfinal" data-cta>${escFull(V.floatButton)}</a>`,
       pageJs: cvJs + `initCvForm({T: ${JSON.stringify(VT).replace(/</g, '\\u003c')}, L: L, esc: esc, $: $, endpoint: ${jsStr(cfg.sendEndpoint)}, token: ${jsStr(cfg.sendToken)}, email: ${jsStr(feedbackEmail)}, pdVersion: ${jsStr(pdOn ? pdVersion : '')}});` });
   }
   // /disc-vs-mbti/ — сравнение моделей: таблица после второй секции
