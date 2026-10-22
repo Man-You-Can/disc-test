@@ -769,6 +769,9 @@ for (const L of locales) {
           `<ul class="cvmarks">${I2.items.map(tag).join('')}</ul><p class="cvwhy">${escFull(I2.why)}</p></div>`;
         return `<div class="cvdoc"><div class="cvdoc-head"><strong>${escFull(P.name)}</strong><span>${escFull(P.headline)}</span></div>` +
           `<p class="cvsrc">${escFull(P.sources)}</p>` +
+          (P.cvFile ? `<div class="cvfile"><div class="cvfile-t"><strong>${escFull(P.cvFile.title)}</strong><p>${escFull(P.cvFile.text)}</p></div>` +
+            `<div class="cvfile-b"><a class="btn" href="${imgRel}files/cv-example-irina-sokolova.pdf" download data-dl="pdf">${escFull(P.cvFile.pdf)}</a>` +
+            `<a class="btn btn-ghost" href="${imgRel}files/cv-example-irina-sokolova.docx" download data-dl="docx">${escFull(P.cvFile.docx)}</a></div></div>` : '') +
           `<div class="cvlegend"><span class="in">${escFull(P.legendIn)}</span><span class="out">${escFull(P.legendOut)}</span></div>` +
           `<p class="cvcount">${escFull(P.count).replace('{in}', `<b>${nIn}</b>`).replace('{all}', `<b>${nAll}</b>`)}</p>` +
           `<h3>${escFull(P.expTitle)}</h3>` + P.jobs.map(job).join('') + gap + P.early.map(job).join('') + intern +
@@ -1096,6 +1099,9 @@ for (const f of fs.existsSync(path.join(ASSETS, 'fonts')) ? fs.readdirSync(path.
 // листы образца расширенного отчёта (картинки; готовятся вручную из PDF образца, см. PROJECT.md от 2026-10-09)
 if (fs.existsSync(path.join(ASSETS, 'extended'))) { fs.mkdirSync(path.join(OUT, 'extended'), { recursive: true });
   for (const f of fs.readdirSync(path.join(ASSETS, 'extended'))) if (f.endsWith('.webp')) fs.copyFileSync(path.join(ASSETS, 'extended', f), path.join(OUT, 'extended', f)); }
+// файлы для скачивания (пример CV в PDF и DOCX на лендинге /ru/cv/, с 2026-10-22)
+if (fs.existsSync(path.join(ASSETS, 'files'))) { fs.mkdirSync(path.join(OUT, 'files'), { recursive: true });
+  for (const f of fs.readdirSync(path.join(ASSETS, 'files'))) if (/\.(pdf|docx)$/.test(f)) fs.copyFileSync(path.join(ASSETS, 'files', f), path.join(OUT, 'files', f)); }
 // картинки страниц (фото основателя на лендинге /ru/cv/, с 2026-10-22)
 if (fs.existsSync(path.join(ASSETS, 'img'))) { fs.mkdirSync(path.join(OUT, 'img'), { recursive: true });
   for (const f of fs.readdirSync(path.join(ASSETS, 'img'))) if (/\.(webp|png|jpe?g)$/.test(f)) fs.copyFileSync(path.join(ASSETS, 'img', f), path.join(OUT, 'img', f)); }

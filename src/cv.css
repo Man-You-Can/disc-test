@@ -287,3 +287,15 @@ body:has(.cvpage) .wrap{max-width:1080px}
 .cvverdict.go b{display:inline-block;margin:0 8px 4px 0}
 .cvgo{display:inline-flex;align-items:center;gap:5px;margin:0 0 4px;padding:2px 10px;border-radius:999px;background:var(--s);color:#fff;font-weight:600;font-size:13px;vertical-align:middle}
 .cvgo::before{content:"✓";font-weight:700}
+
+/* пример: готовое CV — 2 страницы A4, кнопки «Скачать PDF» и «Скачать DOCX» в начале вкладки «Единое резюме» */
+.cvfile{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px 20px;margin:16px 0 4px;padding:16px 18px;border-radius:14px;
+  background:color-mix(in srgb,var(--s) 13%,transparent);border:1px solid color-mix(in srgb,var(--s) 45%,transparent);border-inline-start:4px solid var(--s)}
+.cvfile-t{flex:1 1 300px}
+.cvfile-t strong{display:block;font-family:var(--font-head);font-weight:500;font-size:19px;line-height:1.25}
+.cvfile-t p{margin:4px 0 0;font-size:14px;color:var(--muted)}
+.cvfile-b{display:flex;flex-wrap:wrap;gap:8px}
+.cvfile-b .btn{font-size:15px;padding:11px 18px}
+.cvfile-b .btn::before{content:"↓";margin-inline-end:7px;font-weight:700}
+.cvfile-b .btn-ghost{background:var(--surface);color:var(--ink);border:1px solid var(--line-strong)}
+@media (max-width:600px){.cvfile-b{flex:1 1 100%}.cvfile-b .btn{flex:1 1 0;justify-content:center}}

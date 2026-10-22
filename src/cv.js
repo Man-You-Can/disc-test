@@ -27,6 +27,7 @@ function initCvTabs(){
   function sel(i, focus){ tabs.forEach(function(t,k){ var on=k===i; t.setAttribute('aria-selected', on); t.tabIndex=on?0:-1; panels[k].hidden=!on; }); if(focus) tabs[i].focus();
     var bar=tabs[i].parentNode, t=tabs[i]; if(t.offsetLeft < bar.scrollLeft || t.offsetLeft + t.offsetWidth > bar.scrollLeft + bar.clientWidth) bar.scrollLeft = t.offsetLeft - 8; }
   box.classList.add('js'); sel(0);
+  box.querySelectorAll('a[data-dl]').forEach(function(a){ a.addEventListener('click', function(){ if(window.discTrack) window.discTrack('cv-sample-' + a.getAttribute('data-dl')); }); });
   tabs.forEach(function(t,i){
     t.addEventListener('click', function(){ sel(i); if(window.discTrack) window.discTrack('cv-example'); });
     t.addEventListener('keydown', function(e){ var n=tabs.length, j=e.key==='ArrowRight'?(i+1)%n:e.key==='ArrowLeft'?(i-1+n)%n:e.key==='Home'?0:e.key==='End'?n-1:-1; if(j<0) return; e.preventDefault(); sel(j, true); });
