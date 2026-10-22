@@ -164,15 +164,18 @@ html[lang=ar] body,html[lang=hi] body{font-size:17px;line-height:1.65}
 .service .price{flex:none;color:var(--ink);font-family:var(--font-head);font-weight:500;font-size:28px;line-height:1.1}
 .service .price small{display:block;font-family:var(--font-body);font-weight:400;font-size:13px;color:var(--muted);margin-bottom:4px}
 /* расширенный отчёт: блок на экране результата (.xoffer, .xanchor) и страница отчёта (.xfacts, .xsample, .xbuy) */
-/* закреплённая кнопка отчёта на экране результата (телефон): видна всё время, пока человек не закроет её крестиком (решение заказчика от 2026-10-22);
+/* закреплённая кнопка отчёта на экране результата: видна всё время, пока человек не закроет её крестиком (решение заказчика от 2026-10-22),
+   на любой ширине экрана (с 2026-10-22; прежде — только на телефоне): по центру внизу, не шире 560 px, на телефоне — во всю ширину с полями 12 px;
    снизу у страницы запас под кнопку, чтобы она не закрывала конец страницы */
 .xbar{display:none}
+.xbar.show{display:flex;gap:8px;position:fixed;left:50%;transform:translateX(-50%);width:min(560px,calc(100% - 24px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:15}
+.xbar .btn{flex:1 1 auto;box-shadow:0 8px 24px -6px rgba(0,0,0,.35)}
+.xbar-x{flex:none;width:46px;border:1px solid var(--line-strong);border-radius:12px;background:var(--surface);color:var(--muted);font-size:22px;line-height:1;cursor:pointer;box-shadow:0 8px 24px -6px rgba(0,0,0,.35)}
+body:not(.has-consent):has(.xbar.show){padding-bottom:88px}
+body.has-consent .xbar{display:none}
 @media (max-width:640px){
-  body:has(.xbar.show){padding-bottom:84px}
-  .xbar.show{display:flex;gap:8px;position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:15}
-  .xbar .btn{flex:1 1 auto;box-shadow:0 8px 24px -6px rgba(0,0,0,.35)}
-  .xbar-x{flex:none;width:46px;border:1px solid var(--line-strong);border-radius:12px;background:var(--surface);color:var(--muted);font-size:22px;line-height:1;cursor:pointer;box-shadow:0 8px 24px -6px rgba(0,0,0,.35)}
-  body.has-consent .xbar{display:none}
+  .xbar.show{bottom:calc(12px + env(safe-area-inset-bottom,0px))}
+  body:not(.has-consent):has(.xbar.show){padding-bottom:84px}
 }
 /* вернувшийся посетитель: карточка прошлого результата под заголовком; с 2026-10-22 — как блок «Расширенный отчёт» экрана результата
    (класс share xoffer: фон в цвет стиля, заголовок, строка о самой низкой шкале, тезисы, листы образца, форма с e-mail и «Купить»); «Пройти тест заново» — ссылка ниже */
@@ -1080,7 +1083,7 @@ function renderReport(r, opts){
       // ссылка «Пройти тест заново» — как у своего результата (по просьбе заказчика от 2026-10-22); в панели администратора её нет
       (opts.fromAdmin ? '' : '<div class="actions no-print" style="margin-top:18px"><button class="link" id="restart" type="button">'+t('share.restart')+'</button></div>')
     )+
-    // закреплённая кнопка отчёта (телефон); скрытую крестиком не показываем до конца сеанса
+    // закреплённая кнопка отчёта (на любой ширине экрана); скрытую крестиком не показываем до конца сеанса
     (PM && !opts.fromAdmin && !extBought() && !barOff() ? '<div class="xbar no-print" id="extBar"><a class="btn" id="extBarGo" href="'+extHref+'">'+esc(PM.button)+'</a>'+
       '<button class="xbar-x" type="button" id="extBarX" aria-label="'+esc(PM.close)+'" title="'+esc(PM.close)+'">×</button></div>' : '');
 
