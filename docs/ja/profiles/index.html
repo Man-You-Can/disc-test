@@ -288,6 +288,19 @@ p.xguar{flex:1 1 100%;margin:0;font-size:14px;font-weight:600;color:var(--ink)}
 .xpay .xcodein::placeholder{text-transform:none;letter-spacing:normal}
 .xpay.xcoding>.xdeal,.xpay.xcoding>.xbuyact,.xpay.xcoding>.btn,.xpay.xcoding>.price,.xpay.xcoding>.xguar,.xpay.xcoding>.xnote,.xpay.xcoding>.sendstatus{display:none}
 @media (max-width:480px){.xpay .xcodebox .btn{flex:1 1 auto}}
+/* «Услуги» с разделами «Для физических лиц» и «Для организаций»: две карточки выбора сверху и заголовки разделов */
+.svcpicks{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:20px 0 8px}
+@media (max-width:640px){.svcpicks{grid-template-columns:1fr}}
+.svcpick{display:flex;flex-direction:column;gap:6px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px;color:var(--ink);text-decoration:none}
+.svcpick:hover{border-color:var(--line-strong)}
+.svcpick strong{font-family:var(--font-head);font-weight:500;font-size:19px;line-height:1.25}
+.svcpick span{font-size:14px;color:var(--muted);flex:1}
+.svcpick b{font-family:var(--font-head);font-weight:500;font-size:20px;margin-top:4px}
+.svcpick b::after{content:" \2192";color:var(--muted);font-weight:400}
+[dir=rtl] .svcpick b::after{content:" \2190"}
+h2.svcpart{font-size:28px;margin-top:44px;padding-top:20px;border-top:1px solid var(--line);scroll-margin-top:16px}
+h3.svch3{margin-top:24px}
+.service>.btn{flex:none}
 /* страница «Для организаций»: таблица пакетов и группа галочек в заявке */
 .cmp.packs{min-width:0}.cmp.packs th{white-space:normal}.cmp.packs td{white-space:nowrap}
 .bizcard select{font:inherit;padding:12px 40px 12px 14px;border:1px solid var(--line-strong);border-radius:10px;background:var(--surface) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1.5 1.5 6 6l4.5-4.5' fill='none' stroke='%235B6470' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 14px center/12px 8px;color:var(--ink);width:100%;-webkit-appearance:none;appearance:none}

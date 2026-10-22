@@ -736,12 +736,34 @@ for (const L of locales) {
     const fillHtml = html => html.replace(/\{(\w+)\}/g, (m, k) => k in vars ? vars[k] : m);
     const svcCrumb = { name: t('nav.services'), href: '../services/', sub: 'services/' }, docLink = (sub2, d) => `<a href="../${sub2}">${escFull(d.h1)} ${arrow(L)}</a>`;
     writeContentPage(L, 'services/', { navKey: 'nav.services', langs: locales.filter(hasServices), title: fill(sv.title), description: fill(sv.description), crumbs: [{ name: t('nav.services') }],
-      content: fillHtml(`<div class="eyebrow">DISC</div><h1>${escFull(sv.h1)}</h1><p class="lead">${escFull(sv.lead)}</p>` +
-        `<section class="service"><div><h2>${escFull(sv.name)}</h2><p>${escFull(sv.text)}</p>` + (hasProduct(L) ? `<p><a class="more" href="../extended-report/">${escFull(C.product.more)} ${arrow(L)}</a></p>` : '') +
-        `</div><p class="price"><small>${escFull(sv.priceLabel)}</small>${escFull(sv.price)}</p></section>` +
+      content: hasBusiness(L) ? servicesSplit() : fillHtml(`<div class="eyebrow">DISC</div><h1>${escFull(sv.h1)}</h1><p class="lead">${escFull(sv.lead)}</p>` + personCard() +
         sectionsHtml(sv.sections.slice(0, 1)) + (docs && sv.docs ? `<p>${escFull(sv.docs)}</p>` : '') + sectionsHtml(sv.sections.slice(1))) +
-        (hasBusiness(L) ? `<h2>${escFull(C.business.h1)}</h2><p>${escFull(C.business.lead)}</p><p><a class="more" href="../business/">${escFull(C.business.packsTitle)} ${arrow(L)}</a></p>` : '') +
         (docs ? `<p class="seealso">${docLink('offer/', of)} · ${docLink('refund/', rf)}</p>` : '') });
+    // карточка расширенного отчёта для физических лиц: название, описание, ссылка на страницу отчёта, цена
+    function personCard() {
+      return `<section class="service"><div><h2>${escFull(sv.name)}</h2><p>${escFull(sv.text)}</p>` + (hasProduct(L) ? `<p><a class="more" href="../extended-report/">${escFull(C.product.more)} ${arrow(L)}</a></p>` : '') +
+        `</div><p class="price"><small>${escFull(sv.priceLabel)}</small>${escFull(sv.price)}</p></section>`;
+    }
+    // «Услуги» там, где есть страница «Для организаций» (с 2026-10-22, по просьбе заказчика; сейчас русская версия): сверху выбор из двух карточек
+    // («Для физических лиц» → #person, «Для организаций» → #org), затем два раздела со своими карточками и ценами; подразделы о физических лицах —
+    // заголовками третьего уровня; последний раздел услуги («Вопросы об услуге») — общий, в конце страницы. Тексты — content.business.services
+    function servicesSplit() {
+      const S = C.business.services, retail = servicePrices.RUB, minPrice = Math.min(...businessPacks.map(p => p.priceRub));
+      const maxDiscount = Math.max(...businessPacks.map(p => Math.floor((1 - p.priceRub / retail) * 100)));
+      const fillS = str => String(str).replace(/\{minPrice\}/g, fmtPrice(L, minPrice)).replace(/\{maxDiscount\}/g, maxDiscount);
+      const h3 = secs => sectionsHtml(secs).replace(/<h2>/g, '<h3 class="svch3">').replace(/<\/h2>/g, '</h3>');
+      const pick = (id, title, text, price) => `<a class="svcpick" href="#${id}"><strong>${escFull(title)}</strong><span>${escFull(text)}</span><b>${escFull(price)}</b></a>`;
+      return fillHtml(`<div class="eyebrow">DISC</div><h1>${escFull(sv.h1)}</h1><p class="lead">${escFull(sv.lead)}</p>` +
+        `<nav class="svcpicks" aria-label="${escFull(sv.h1)}">` + pick('person', S.person, S.personPick, sv.price) + pick('org', S.org, S.orgPick, fillS(S.orgPrice)) + `</nav>` +
+        `<h2 class="svcpart" id="person">${escFull(S.person)}</h2>` + personCard() +
+        h3(sv.sections.slice(0, 1)) + (docs && sv.docs ? `<p>${escFull(sv.docs)}</p>` : '') + h3(sv.sections.slice(1, -1)) +
+        `<h2 class="svcpart" id="org">${escFull(S.org)}</h2>` +
+        `<section class="service"><div><h2>${escFull(S.orgName)}</h2><p>${escFull(fillS(S.orgText))}</p></div>` +
+        `<p class="price"><small>${escFull(S.orgPriceLabel)}</small>${escFull(fillS(S.orgPrice))}</p>` +
+        `<a class="btn" href="../business/">${escFull(S.orgButton)}</a></section>` +
+        sectionsHtml(sv.sections.slice(-1))) +
+        (docs ? `<p class="seealso">${docLink('business/', C.business)} · ${docLink('offer/', of)} · ${docLink('refund/', rf)}</p>` : '');
+    }
     // /business/ — «Для организаций»: пакеты кодов доступа к расширенному отчёту (цены — businessPacks), как это работает, данные участников,
     // границы применения, оплата по счёту, вопросы и форма заявки (src/business.js → форма обратной связи сервера, тема «Заявка для организации: …»)
     if (hasBusiness(L)) {
