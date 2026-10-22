@@ -811,27 +811,30 @@ for (const L of locales) {
   });
 })();` });
   }
-  // /subscribe/ — подтверждение подписки с главной: ключ из ссылки в письме (#c=…), кнопка отправляет его серверу ({action: 'confirmSubscribe'}).
-  // Подтверждает кнопка, а не само открытие ссылки: почтовые сервисы и антивирусы открывают ссылки из писем автоматически.
+  // /subscribe/ — подтверждение подписки с главной: ключ из ссылки в письме (#c=…) страница сама отправляет серверу при открытии ({action: 'confirmSubscribe'})
+  // и пишет «Подписка подтверждена» (с 2026-10-22, по просьбе заказчика: без лишнего нажатия). Запрос шлёт скрипт страницы, а не сам переход по ссылке:
+  // сканеры ссылок в почте, которые только скачивают страницу, подписку не подтверждают. Кнопка «Подтвердить подписку» — только для повтора после сбоя.
   if (homeSub) {
     const sc = C.subscribeConfirm, mailLink = feedbackEmail ? `<a href="mailto:${escFull(feedbackEmail)}">${escFull(feedbackEmail)}</a>` : '';
     writeContentPage(L, 'subscribe/', { noindex: true, noDate: true, title: sc.title, description: sc.description, crumbs: [{ name: sc.h1 }],
       content: `<div class="eyebrow">DISC</div><h1>${escFull(sc.h1)}</h1><p class="lead">${escFull(sc.lead)}</p>` +
-        `<div class="card contactcard"><p class="small sendstatus" id="cStatus" aria-live="polite" hidden></p><div class="actions"><button class="btn" type="button" id="cBtn">${escFull(t('subc.button'))}</button></div></div>`,
+        `<div class="card contactcard"><p class="sendstatus" id="cStatus" aria-live="polite">${escFull(t('subc.wait'))}</p><div class="actions"><button class="btn" type="button" id="cBtn" hidden>${escFull(t('subc.button'))}</button></div></div>`,
       uiKeys: /^subc\./,
       pageJs: `(function(){ var btn = $('#cBtn'), st = $('#cStatus'), m = /[#&]c=([A-Za-z0-9_-]{22})(?:&|$)/.exec(dataHash()), mail = ${jsStr(mailLink)};
-  function status(kind, html){ st.hidden = false; st.className = 'small sendstatus ' + kind; st.innerHTML = html; }
-  if(!m){ btn.hidden = true; status('err', t('subc.bad', {email: mail})); return; }
-  btn.addEventListener('click', function(){
-    btn.disabled = true;
+  function status(kind, html){ st.hidden = false; st.className = 'sendstatus ' + kind; st.innerHTML = html; }
+  if(!m){ status('err', t('subc.bad', {email: mail})); return; }
+  function confirm(){
+    btn.hidden = true; status('muted', esc(t('subc.wait')));
     fetch(${jsStr(cfg.sendEndpoint)}, {method: 'POST', body: JSON.stringify({token: ${jsStr(cfg.sendToken)}, action: 'confirmSubscribe', c: m[1]}), redirect: 'follow'})
       .then(function(res){ return res.text(); })
       .then(function(txt){ var j = null; try{ j = JSON.parse(txt); }catch(e){}
-        if(j && j.error === 'bad link'){ btn.hidden = true; status('err', t('subc.bad', {email: mail})); return; }
+        if(j && j.error === 'bad link'){ status('err', t('subc.bad', {email: mail})); return; }
         if(!j || !j.ok) throw new Error('failed');
-        btn.hidden = true; status('ok', esc(t('subc.done'))); if(window.discTrack) window.discTrack('subscribe'); })
-      .catch(function(){ btn.disabled = false; status('err', t('subc.failed', {email: mail})); });
-  });
+        status('ok', esc(t('subc.done'))); if(window.discTrack) window.discTrack('subscribe'); })
+      .catch(function(){ btn.hidden = false; status('err', t('subc.failed', {email: mail})); });
+  }
+  btn.addEventListener('click', confirm);
+  confirm();
 })();` });
   }
   // /contact/ — форма обратной связи (только при заданном feedbackEmail); разметка из src/contact.js, там же логика страницы

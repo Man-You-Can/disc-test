@@ -1145,10 +1145,10 @@
       "lead": "Kliknij przycisk, a disc-test.org przestanie wysyłać newsletter na adres, na który przyszła wiadomość z tym linkiem. Nie dotyczy to e-maila z wynikiem testu: jest on wysyłany tylko wtedy, gdy samodzielnie o niego poprosisz."
     },
     "subscribeConfirm": {
-      "title": "Potwierdzenie subskrypcji – test DISC",
-      "description": "Potwierdź subskrypcję newslettera disc-test.org jednym przyciskiem.",
-      "h1": "Potwierdź subskrypcję",
-      "lead": "Kliknij przycisk, a na adres, na który przyszła wiadomość z tym linkiem, zacznie przychodzić newsletter disc-test.org: nowe testy, porady dotyczące rozwoju kariery i szukania pracy, nowości z serwisu i oferty promocyjne."
+      "title": "Subskrypcja newslettera – test DISC",
+      "description": "Potwierdzenie subskrypcji newslettera disc-test.org z linku w wiadomości.",
+      "h1": "Subskrypcja newslettera",
+      "lead": "Na adres, na który przyszła wiadomość z tym linkiem, zacznie przychodzić newsletter disc-test.org: nowe testy, porady dotyczące rozwoju kariery i szukania pracy, nowości z serwisu i oferty promocyjne."
     },
     "subscribeMail": {
       "subject": "Potwierdź subskrypcję newslettera disc-test.org",
@@ -2115,6 +2115,7 @@
     "nl.sent": "Prawie gotowe: na adres {email} wysłaliśmy wiadomość. Otwórz ją i kliknij „Potwierdź subskrypcję” – bez tego newsletter nie będzie przychodzić.",
     "nl.failed": "Nie udało się zapisać do newslettera. Spróbuj ponownie później.",
     "subc.button": "Potwierdź subskrypcję",
+    "subc.wait": "Potwierdzamy subskrypcję…",
     "subc.done": "Subskrypcja potwierdzona. W każdej chwili możesz zrezygnować, klikając link w dowolnej wiadomości z newslettera.",
     "subc.bad": "Link jest niepełny albo wygasł: subskrypcję można potwierdzić w ciągu 7 dni. Zapisz się ponownie na stronie głównej albo napisz do nas: {email}.",
     "subc.failed": "Nie udało się potwierdzić subskrypcji. Spróbuj ponownie albo napisz do nas: {email}.",

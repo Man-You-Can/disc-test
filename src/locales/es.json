@@ -1165,10 +1165,10 @@
       "lead": "Pulse el botón y disc-test.org dejará de enviar su boletín a la dirección que recibió el mensaje con este enlace. Esto no afecta al correo con el resultado del test: ese solo se envía cuando usted lo solicita."
     },
     "subscribeConfirm": {
-      "title": "Confirmar la suscripción al boletín — test DISC",
-      "description": "Confirme su suscripción al boletín de disc-test.org con un solo botón.",
-      "h1": "Confirme su suscripción",
-      "lead": "Pulse el botón y la dirección que recibió el mensaje con este enlace empezará a recibir el boletín de disc-test.org: nuevos tests, consejos de desarrollo profesional y búsqueda de empleo, novedades del sitio y ofertas comerciales."
+      "title": "Suscripción al boletín — test DISC",
+      "description": "Confirmación de la suscripción al boletín de disc-test.org desde el enlace del mensaje.",
+      "h1": "Suscripción al boletín",
+      "lead": "La dirección que recibió el mensaje con este enlace empezará a recibir el boletín de disc-test.org: nuevos tests, consejos de desarrollo profesional y búsqueda de empleo, novedades del sitio y ofertas comerciales."
     },
     "subscribeMail": {
       "subject": "Confirme su suscripción al boletín de disc-test.org",
@@ -2141,6 +2141,7 @@
     "nl.sent": "Casi listo: hemos enviado un mensaje a {email}. Ábralo y pulse «Confirmar suscripción»; si no lo hace, el boletín no le llegará.",
     "nl.failed": "No se ha podido tramitar la suscripción. Inténtelo de nuevo más tarde.",
     "subc.button": "Confirmar suscripción",
+    "subc.wait": "Confirmando su suscripción…",
     "subc.done": "Suscripción confirmada. Puede darse de baja en cualquier momento desde el enlace de cualquier mensaje del boletín.",
     "subc.bad": "El enlace está incompleto o ha caducado: la suscripción puede confirmarse en un plazo de 7 días. Vuelva a suscribirse en la página de inicio o escríbanos: {email}.",
     "subc.failed": "No se ha podido confirmar la suscripción. Inténtelo de nuevo o escríbanos: {email}.",
