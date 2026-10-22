@@ -290,9 +290,9 @@ check('extended with build notes: buyer still gets the report, owner gets the no
 check('extended: second sending is appended to the cell, row and column not duplicated', rows().filter(r => r[19] === cX).length === 1 && sheet1().rows[0].filter(h => h === 'Расширенный отчёт').length === 1 &&
   rowX()[extCol()] === 'отправлен 2026-09-07 12:00 на buyer@b.co, заказ 1042; отправлен 2026-09-07 12:00 на other@b.co');
 // оплата расширенного отчёта на своём сервере: цена и письмо-напоминание о неоконченной оплате (отправляет сервер, тексты и вёрстка — здесь)
-const pR = ctx.composePayRemindMail(ctx.decodeResult(cX), 'ru', { order: '261011-7K3QXM', url: 'https://api.disc-test.org/pay/go?order=261011-7K3QXM&key=k', until: new Date('2026-10-14T09:00:00Z'), price: ctx.EXTENDED_PRICE_RUB });
+const pR = ctx.composePayRemindMail(ctx.decodeResult(cX), 'ru', { order: '261011-7K3QXM', url: 'https://api.disc-test.org/pay/go?order=261011-7K3QXM&key=k', until: new Date('2026-10-14T09:00:00Z'), price: ctx.EXTENDED_OFFER_RUB });   // напоминание называет цену заказа: здесь — специальную
 const saleOf = lg => { const P = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'src', 'locales', lg + '.json'), 'utf8')).content.product; return !!(P && P.pay); };
-check('pay: price from site settings, service name and reminder texts only where the report is sold', ctx.EXTENDED_PRICE_RUB === 490 && ctx.DATA.ru.pay.name === 'Расширенная версия DISC' &&
+check('pay: price from site settings, service name and reminder texts only where the report is sold', ctx.EXTENDED_PRICE_RUB === 790 && ctx.EXTENDED_OFFER_RUB === 490 && ctx.EXTENDED_OFFER_MIN === 60 && ctx.DATA.ru.pay.name === 'Расширенная версия DISC' &&
   Object.keys(ctx.DATA).filter(lg => ctx.DATA[lg].pay).join() === Object.keys(ctx.DATA).filter(saleOf).join() && Object.keys(ctx.DATA).filter(lg => ctx.DATA[lg].pay).includes('ru'));
 // напоминание в языке с оплатой через Prodamus: цена в долларах, дата в записи языка (не 21.10.2026), ничего русского
 if (ctx.DATA.en && ctx.DATA.en.pay) {

@@ -18,7 +18,8 @@
  */
 var SITE_URL = 'https://disc-test.org';
 var HOME_URL = SITE_URL + '/ru/';
-var PRICE = '490';               // servicePriceRub в site.config.json
+var PRICE = '790';               // servicePriceRub в site.config.json
+var OFFER = '490';               // специальная цена на час после теста (offerPriceRub); '0' — её нет
 var SERVICE_NAME = "Расширенная версия DISC";       // content.services.name в ru.json
 var LEGAL = "Манукян Армен Кеворкович\nИНН 771583655604";                     // реквизиты исполнителя: ui.legal в ru.json и legalInn, две строки
 var CONTACT_EMAIL = 'info@disc-test.org';   // feedbackEmail в site.config.json
@@ -41,6 +42,7 @@ function screen(name) {
   if (name === 'service') return {
     text: '<b>' + esc(SERVICE_NAME) + ' — ' + PRICE + ' ₽</b>\n\n' +
       'Более подробный разбор вашего профиля DISC по итогам теста.\n\n' +
+      (+OFFER ? '<b>Цена после теста.</b> В течение часа после прохождения теста на сайте — ' + OFFER + ' ₽.\n\n' : '') +
       '<b>Как получить.</b> Расширенная версия приходит письмом на e-mail, указанный при оплате, сразу после оплаты.\n\n' +
       '<b>Гарантия.</b> Не подошло — вернём деньги в течение 7 дней со дня оплаты, без объяснения причин.\n\n' +
       'Сам тест и результат на сайте остаются бесплатными, расширенная версия приобретается только по желанию.\n\n' +

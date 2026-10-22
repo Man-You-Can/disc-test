@@ -275,6 +275,12 @@ html[lang=ar] body,html[lang=hi] body{font-size:17px;line-height:1.65}
 .xpay .xbuyact{display:flex;flex-direction:column;align-items:stretch;gap:8px}
 .xpay .xbig{font-family:var(--font-head);font-weight:500;font-size:30px;line-height:1.1;color:var(--ink);text-align:center;white-space:nowrap}
 @media (max-width:480px){.xpay .xbuyact{flex:1 1 100%}}
+/* специальная цена на час после теста (src/pay.js, T.offer): обычная цена зачёркнута, под кнопкой — обратный отсчёт */
+s.xold{font-size:.6em;font-weight:400;color:var(--muted);text-decoration-thickness:2px;margin-right:.2em;vertical-align:.12em}
+.vh{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+p.xtimer{flex:1 1 100%;margin:0;font-size:14px;font-weight:600;color:var(--d);font-variant-numeric:tabular-nums}
+.xbuyact+p.xtimer{text-align:right}
+@media (max-width:480px){.xbuyact+p.xtimer{text-align:center}}
 /* строка гарантии возврата у кнопки «Купить» (content.product.pay.guarantee): на странице отчёта и в форме на экране результата */
 p.xguar{flex:1 1 100%;margin:0;font-size:14px;font-weight:600;color:var(--ink)}
 .service p.xguar{margin-top:-6px}
@@ -870,8 +876,8 @@ function renderIntro(){
   // форма покупки в карточке — та же, что на экране результата (payForms, src/pay.js): поле e-mail, крупная цена, «Купить»; цель ext-home — отправка формы
   if(lastCard && lastCard.pay){
     var PP = PB.pay, base = ROOT_REL+LANG_PATH[L.lang], who = lsGet('disc.who')||{};
-    var pf = payForms({T: Object.assign({}, PP, {guarantee: '', noteHtml: PP.noteHtml.replace(/\{base\}/g, base)}), endpoint: PAY_ENDPOINT, L: L, esc: esc, lsSet: lsSet});
-    var hf = pf.add({id: 'xpayHome', code: encodeResult(last), source: 'home', price: String(PB.price).split(' · ')[0], email: last.email || who.email || ''});
+    var pf = payForms({T: Object.assign({}, PP, {guarantee: '', noteHtml: PP.noteHtml.replace(/\{base\}/g, base)}), endpoint: PAY_ENDPOINT, L: L, esc: esc, lsGet: lsGet, lsSet: lsSet});
+    var hf = pf.add({id: 'xpayHome', code: encodeResult(last), t: last.t, source: 'home', price: String(PB.price).split(' · ')[0], email: last.email || who.email || ''});
     hf.form.addEventListener('submit', function(){ try{ sessionStorage.setItem('disc.src', 'home'); }catch(e){} if(window.discTrack) window.discTrack('ext-home'); });
     var hw = document.createElement('div'); hw.className = 'xinline'; hw.appendChild(hf.form);
     var hm = document.createElement('p'); hm.className = 'xmore'; hm.innerHTML = '<a href="'+lastCard.href+'" id="lastMore">'+esc(PP.more)+' '+arrowR()+'</a>'; hw.appendChild(hm);
@@ -946,6 +952,8 @@ function renderTest(){
     if(missing>=0){ S.i=missing; lsSet('disc.progress', S); toast(t('test.missing',{n:missing+1})); renderTest(); return; }
     var r = {name:S.name, email:S.email||'', pos:S.pos||'', t:new Date().toISOString(), m:S.m.slice(), l:S.l.slice()};
     lsSet('disc.last', r); lsDel('disc.progress'); S=null;
+    // специальная цена расширенного отчёта на час после теста (src/pay.js): время первого прохождения на этом устройстве, повторное его не меняет
+    var PBo = L.content && L.content.product; if(PBo && PBo.pay && PBo.pay.offer && typeof payOfferMark === 'function') payOfferMark(r, lsGet, lsSet);
     if(window.discTrack) window.discTrack('finish'); // цель Метрики: тест завершён
     sendStat(r);
     renderReport(r, {own:true});
@@ -1154,8 +1162,8 @@ function renderReport(r, opts){
       var w = box.querySelector('.xinline');
       if(!w){
         // без строки гарантии (она есть на странице отчёта); цена — крупно над кнопкой «Купить»: часть PB.price до « · » («490 ₽», «US$6.99»)
-        if(!pf) pf = payForms({T: Object.assign({}, PP, {guarantee: '', noteHtml: PP.noteHtml.replace(/\{base\}/g, base)}), endpoint: PAY_ENDPOINT, L: L, esc: esc, lsSet: lsSet});
-        var em = $('#em'), fo = {id: 'xpayE' + pf.forms.length, code: code, source: source, price: String(PB.price).split(' · ')[0], email: (em && em.value.trim()) || r.email || who.email || ''}, f = pf.add(fo);
+        if(!pf) pf = payForms({T: Object.assign({}, PP, {guarantee: '', noteHtml: PP.noteHtml.replace(/\{base\}/g, base)}), endpoint: PAY_ENDPOINT, L: L, esc: esc, lsGet: lsGet, lsSet: lsSet});
+        var em = $('#em'), fo = {id: 'xpayE' + pf.forms.length, code: code, t: r.t, source: source, price: String(PB.price).split(' · ')[0], email: (em && em.value.trim()) || r.email || who.email || ''}, f = pf.add(fo);
         w = document.createElement('div'); w.className = 'xinline'; w.discOpts = fo;
         w.appendChild(f.form);
         var more = document.createElement('p'); more.className = 'xmore'; more.innerHTML = '<a href="'+extHref+'">'+esc(PP.more)+' '+arrowR()+'</a>';
@@ -1190,6 +1198,8 @@ function renderReport(r, opts){
       // с формой на месте закреплённая кнопка раскрывает её в нижнем блоке и прокручивает к ней
       $('#extBarGo').addEventListener('click', function(ev){ src('result-bar'); if(window.discTrack) window.discTrack('ext-bar');
         if(PP){ ev.preventDefault(); buyOpen(xo, xb.parentNode, 'result-bar', xb).scrollIntoView({behavior:'smooth', block:'center'}); } });
+      // пока действует специальная цена, на закреплённой кнопке — она (PP.offer.button), потом — обычная (PM.button)
+      if(pf && PP.offer && PP.offer.button){ var bgo = $('#extBarGo'); pf.onOffer(function(on){ bgo.textContent = on ? PP.offer.button : PM.button; }); }
       $('#extBarX').addEventListener('click', function(){ bar.parentNode.removeChild(bar); xbarStop(); xbarStop = null; try{ sessionStorage.setItem('disc.xbar', 'off'); }catch(e){} });
     }
   }

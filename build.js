@@ -63,7 +63,21 @@ const hasOffer = L => !!(hasServices(L) && L.content.offer && L.content.refund &
 const sampleCount = L => { let n = 0; while (fs.existsSync(path.join(SRC, 'assets', 'extended', `${L.lang}-i-${n + 1}.webp`)) && fs.existsSync(path.join(SRC, 'assets', 'extended', `${L.lang}-i-${n + 1}-s.webp`))) n++; return n; };
 const hasProduct = L => !!(hasOffer(L) && L.content.product);
 const hasSamples = L => { const P = L.content.product; return !!(hasProduct(L) && P.sampleTitle && P.sampleNote && P.block.sample && Array.isArray(P.sampleAlt) && Array.isArray(P.sampleCaption) && P.sampleAlt.length && sampleCount(L) >= P.sampleAlt.length); };
-const withPrice = (L, obj) => JSON.parse(JSON.stringify(obj).replace(/\{price\}/g, servicePrice(L)));
+// Специальная цена (offerPriceRub, offerMinutes в site.config.json; решение заказчика от 2026-10-22, пока только русская версия): в течение
+// offerMinutes после прохождения теста отчёт стоит offerPriceRub вместо servicePriceRub. Включается в языке с этой валютой, где отчёт продаётся
+// (content.product.pay) и есть тексты content.product.pay.offer; в текстах цена подставляется вместо {offerPrice}. Срок проверяет сервер оплаты
+// по времени прохождения в коде результата (private/server/src/pay.js), страница показывает зачёркнутую обычную цену и обратный отсчёт (src/pay.js).
+const offerPrices = { RUB: Number(cfg.offerPriceRub) || 0 }, offerMinutes = Number(cfg.offerMinutes) || 60;
+const offerPrice = L => { const C = L.content, cur = C.services && C.services.currency, v = offerPrices[cur] || 0;
+  return v && v < (servicePrices[cur] || 0) && C.product && C.product.pay && C.product.pay.offer ? new Intl.NumberFormat(L.dateLocale).format(v) : ''; };
+const withPrice = (L, obj) => { const s = JSON.stringify(obj).replace(/\{price\}/g, servicePrice(L));
+  if (/\{offerPrice\}/.test(s) && !offerPrice(L)) throw new Error(`${L.lang}: в тексте есть {offerPrice}, а специальная цена не задана (offerPriceRub в site.config.json)`);
+  return JSON.parse(s.replace(/\{offerPrice\}/g, offerPrice(L))); };
+// Специальная цена для скрипта покупки (src/pay.js, T.offer): числа — для сервера, строки — для показа; null — специальной цены в языке нет
+const payOffer = L => { if (!offerPrice(L)) return null; const P = L.content.product, O = withPrice(L, P.pay.offer), cur = L.content.services.currency;
+  return { price: offerPrices[cur], regular: servicePrices[cur], ms: offerMinutes * 60000, priceText: withPrice(L, P.price).replace(servicePrice(L), offerPrice(L)),
+    regularText: withPrice(L, P.price), regularLabel: O.regular, timer: O.timer, expired: O.expired,
+    button: P.promo ? withPrice(L, P.promo.button).replace(servicePrice(L), offerPrice(L)) : '' }; };
 // Оператор и дата редакции в политике и согласии: в языке с полным текстом политики (policy.legal — русская версия) — исполнитель из оферты
 // (ИП с ИНН), в остальных — строка реквизитов из подвала. От наличия оферты не зависит: иначе её появление в языке меняло бы текст согласия,
 // на который люди уже согласились (после правки текста согласия нужна новая pdVersion)
@@ -303,7 +317,7 @@ function homePay(L) {
   const C = L.content, pay = payEndpoint && C.product && C.product.pay ? withPrice(L, C.product.pay) : null; if (!pay) return null;
   const vars = { offer: `<a href="{base}offer/">${escFull(C.offer.linkText)}</a>`, email: feedbackEmail ? `<a href="mailto:${escFull(feedbackEmail)}">${escFull(feedbackEmail)}</a>` : '—' };
   const fill = h => h.replace(/\{(offer|email)\}/g, (m, k) => vars[k]);
-  return Object.assign({ noteHtml: fill(escFull(pay.note)), errorHtml: fill(escFull(pay.error)), more: C.product.more },
+  return Object.assign({ noteHtml: fill(escFull(pay.note)), errorHtml: fill(escFull(pay.error)), more: C.product.more, offer: payOffer(L) },
     Object.fromEntries(['text', 'emailLabel', 'emailPlaceholder', 'button', 'badEmail', 'wait', 'guarantee'].map(k => [k, pay[k]])));
 }
 // Организация-издатель: одна карточка на весь сайт, с адресом для связи
@@ -683,8 +697,9 @@ for (const L of locales) {
   // В текстах подставляются {price}, {inn}, {seller} (исполнитель с ИНН), {email}, {site} и ссылки {contact}, {privacy}, {offer}, {refund}
   if (hasServices(L)) {
     const sv = C.services, of = C.offer, rf = C.refund, docs = hasOffer(L), own = locales.filter(hasOffer), price = servicePrice(L), fill = str => String(str).replace(/\{price\}/g, price);
+    if (!offerPrice(L) && /\{offerPrice\}/.test(JSON.stringify([sv, of || '', rf || '']))) throw new Error(`${L.lang}: в услуге или оферте есть {offerPrice}, а специальная цена не задана`);
     const link = (sub2, text) => `<a href="../${sub2}">${escFull(text)}</a>`;
-    const vars = Object.assign({ price, site: escFull(siteUrl),
+    const vars = Object.assign({ price, offerPrice: offerPrice(L), site: escFull(siteUrl),
       email: feedbackEmail ? `<a href="mailto:${escFull(feedbackEmail)}">${escFull(feedbackEmail)}</a>` : '—',
       contact: feedbackEmail ? link('contact/', t('nav.contact')) : escFull(t('nav.contact')), privacy: link('privacy/', t('nav.privacy')) },
       docs ? { inn: legalInn, seller: escFull(of.seller.replace('{inn}', legalInn)), offer: link('offer/', of.linkText), refund: link('refund/', rf.linkText) } : {});
@@ -722,7 +737,7 @@ for (const L of locales) {
           `<p class="seealso">${docLink('services/', sv)} · ${docLink('offer/', of)} · ${docLink('refund/', rf)}</p>`,
         files: samples ? pr.sampleAlt.map((_, i) => `src/assets/extended/${L.lang}-i-${i + 1}.webp`) : [],
         pageJs: resultFromUrlJs + (pay ? payJs + `\ninitPayBuy({T: ${JSON.stringify(Object.assign({ noteHtml: fillHtml(escFull(pay.note)), errorHtml: fillHtml(escFull(pay.error)) },
-          Object.fromEntries(['title', 'text', 'emailLabel', 'emailPlaceholder', 'button', 'badEmail', 'wait', 'guarantee'].map(k => [k, pay[k]])))).replace(/</g, '\\u003c')}, endpoint: ${jsStr(payEndpoint)}, L: L, esc: esc, lsGet: lsGet, lsSet: lsSet});` : `(function(){
+          Object.fromEntries(['title', 'text', 'emailLabel', 'emailPlaceholder', 'button', 'badEmail', 'wait', 'guarantee'].map(k => [k, pay[k]])), { offer: payOffer(L) })).replace(/</g, '\\u003c')}, endpoint: ${jsStr(payEndpoint)}, L: L, esc: esc, lsGet: lsGet, lsSet: lsSet});` : `(function(){
   var r = resultFromUrl() || lsGet('disc.last'); if(!r || !r.t || !r.m || !r.l || !r.m.join) return;
   var B = ${JSON.stringify(pr.buy).replace(/</g, '\\u003c')}, d = new Date(r.t), date = isNaN(d) ? '' : d.toLocaleDateString(L.dateLocale, {day:'numeric', month:'long', year:'numeric'});
   function b64e(s){ return btoa(unescape(encodeURIComponent(s))).replace(/\\+/g,'-').replace(/\\//g,'_').replace(/=+$/,''); }
@@ -915,7 +930,7 @@ if (cfg.reportAd === true || process.env.REPORT_AD === '1') {
 const gsTpl = fs.readFileSync(path.join(SRC, 'apps-script.template.js'), 'utf8');
 const gs = gsTpl
   .replace('__SITE_URL__', siteUrl).replace('__SEND_TOKEN__', String(cfg.sendToken || '').replace(/['\\]/g, ''))
-  .replace('__SENDER_EMAIL__', senderEmail).replace('__CONTACT_TO__', feedbackEmail).replace('__PRICE_RUB__', String(servicePrices.RUB || 0)).replace('__PRICE_USD__', String(servicePrices.USD || 0)).replace('__MAX_CONTACT_BYTES__', String(MAX_CONTACT_BYTES))
+  .replace('__SENDER_EMAIL__', senderEmail).replace('__CONTACT_TO__', feedbackEmail).replace('__PRICE_RUB__', String(servicePrices.RUB || 0)).replace('__PRICE_USD__', String(servicePrices.USD || 0)).replace('__OFFER_RUB__', String(offerPrices.RUB || 0)).replace('__OFFER_MIN__', String(offerMinutes)).replace('__MAX_CONTACT_BYTES__', String(MAX_CONTACT_BYTES))
   .replace('__BLOCK_KEYS__', BLOCK_KEYS).replace('__DATA__', () => JSON.stringify(mailData));
 fs.mkdirSync(path.join(ROOT, 'backend', 'apps-script'), { recursive: true });
 fs.writeFileSync(path.join(ROOT, 'backend', 'apps-script', 'Code.gs'), gs);
@@ -925,7 +940,7 @@ const ruL = locales.find(L => L.lang === 'ru');
 const hasBot = !!(ruL && hasOffer(ruL) && servicePrices.RUB && legalInn && feedbackEmail);
 if (hasBot) {
   const bot = fs.readFileSync(path.join(SRC, 'telegram-bot.template.js'), 'utf8')
-    .replace('__SITE_URL__', siteUrl).replace('__PRICE_RUB__', String(servicePrices.RUB)).replace('__CONTACT_EMAIL__', feedbackEmail)
+    .replace('__SITE_URL__', siteUrl).replace('__PRICE_RUB__', String(servicePrices.RUB)).replace('__OFFER_RUB__', String(offerPrices.RUB || 0)).replace('__CONTACT_EMAIL__', feedbackEmail)
     .replace('__SERVICE_NAME__', () => JSON.stringify(ruL.content.services.name))
     .replace('__LEGAL__', () => JSON.stringify(ruL.ui.legal.replace('{inn}', legalInn).split(' · ').join('\n')));
   fs.mkdirSync(path.join(ROOT, 'backend', 'telegram-bot'), { recursive: true });

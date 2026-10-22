@@ -12,7 +12,10 @@ const files = process.argv.slice(2).length ? process.argv.slice(2) : fs.readdirS
 // и полный текст политики по российскому закону (policy.legal).
 // Оферта, условия возврата, страница отчёта, раздел о данных покупателя и ссылка «Оферта» обязательны во всех языках.
 const OPTIONAL = ['.content.policy.legal', '.content.extendedMail', '.content.product.pay', '.content.product.sampleTitle', '.content.product.sampleNote', '.content.product.sampleAlt',
-  '.content.product.sampleCaption', '.content.product.block.sample', '.content.product.pdf.sheets', '.content.product.promo'];
+  '.content.product.sampleCaption', '.content.product.block.sample', '.content.product.pdf.sheets', '.content.product.promo',
+  // специальная цена на час после теста (product.pay.offer, offerPriceRub в site.config.json): по решению заказчика от 2026-10-22 только в русской
+  // версии — исключение из правила «продающее — во все языки с покупкой»; в языке с долларовой ценой build.js её не включит, пока нет цены в долларах
+  '.content.product.pay.offer'];
 // Страница «Как готовятся отчёты» (content.howMade) и её пункт в шапке (ui["nav.howMade"]) обязательны во всех языках (с 2026-10-14).
 // Ключи, которых в эталоне нет, а в остальных локалях они допустимы: оговорка о переводе в оферте и условиях возврата (при расхождении действует
 // русский текст) и строка о заявке в блоке расширенного отчёта (отчёт на этом языке пока нельзя заказать). Их обязательность — в проверке ниже.
@@ -52,6 +55,8 @@ for (const f of files) {
   const sm = [P.sampleTitle, P.sampleNote, P.sampleAlt, P.sampleCaption, B.sample, P.pdf && P.pdf.sheets].filter(x => x != null).length;
   if (sm && sm < 6) errs.push('.content.product: sample keys must come together (sampleTitle, sampleNote, sampleAlt, sampleCaption, block.sample, pdf.sheets)');
   if (!!P.pay !== !!C.extendedMail) errs.push('.content.product.pay and .content.extendedMail must come together');
+  if (P.pay && P.pay.offer && !['regular', 'timer', 'expired'].every(k => typeof P.pay.offer[k] === 'string' && P.pay.offer[k]) ) errs.push('.content.product.pay.offer: needs regular, timer and expired');
+  if (P.pay && P.pay.offer && !/\{time\}/.test(P.pay.offer.timer)) errs.push('.content.product.pay.offer.timer: needs {time}');
   if (P.promo && !P.pay) errs.push('.content.product.promo: only where the report is on sale (needs product.pay)');
   // Правило заказчика от 2026-10-14: всё, что сделано для продажи в русской версии, применяется в языке вместе с покупкой
   if (P.pay && !P.promo) errs.push('.content.product.promo: missing — the report is on sale in this language, so everything done for sales in the Russian version applies here (CLAUDE.md)');
