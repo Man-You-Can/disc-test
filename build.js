@@ -747,14 +747,30 @@ for (const L of locales) {
     const X = V.example;
     const exRow = r => `<li class="s-${r.s}"><div class="cvexrow-t"><span>${escFull(r.t)}</span><em>${escFull(r.v)}</em></div>${r.why ? `<p>${escFull(r.why)}</p>` : ''}</li>`;
     const exPanels = X ? [
-      // единое резюме
-      `<div class="cvdoc"><div class="cvdoc-head"><strong>${escFull(X.profile.name)}</strong><span>${escFull(X.profile.headline)}</span></div>` +
-        `<p class="cvsrc">${escFull(X.profile.sources)}</p><h3>${escFull(X.profile.expTitle)}</h3>` +
-        X.profile.jobs.map(j => `<div class="cvjob"><p class="cvjob-period">${escFull(j.period)}</p><p class="cvjob-role"><b>${escFull(j.role)}</b> · ${escFull(j.company)}</p>` +
-          `<ul>${j.items.map(x => `<li>${escFull(x)}</li>`).join('')}</ul>` +
-          (j.note ? `<p class="cvflag"><b>${escFull(X.profile.flagLabel)}.</b> ${escFull(j.note)}</p>` : '') + `</div>`).join('') +
-        `<h3>${escFull(X.profile.skillsTitle)}</h3><p class="cvchips">${X.profile.skills.map(x => `<span>${escFull(x)}</span>`).join('')}</p>` +
-        `<h3>${escFull(X.profile.eduTitle)}</h3><p>${escFull(X.profile.edu)}</p></div>`,
+      // единое резюме: всё, что собрано о кандидате, с пометкой «войдёт в CV под эту вакансию» / «останется в едином резюме»; счётчик считается из самих данных
+      (() => {
+        const P = X.profile, tag = it => `<li class="${it.in ? 'in' : 'out'}">${escFull(it.t)}</li>`;
+        const all = [].concat(...P.jobs.map(j => j.items), ...P.early.map(j => j.items), P.intern.items, ...P.sections.map(s => s.items));
+        const nIn = all.filter(x => x.in).length + 1, nAll = all.length + 1;   // + перерыв в работе: в CV входит одна строка о нём
+        const titles = j => j.titles ? `<div class="cvtitles"><p class="cvtitles-l">${escFull(P.titlesLabel)}</p><ul>` +
+          j.titles.map(x => `<li class="${x.pick ? 'cvsel' : ''}"><b>${escFull(x.t)}</b> <i>— ${escFull(x.src)}${x.pick ? ` · ${escFull(P.pickLabel)}` : ''}</i></li>`).join('') + `</ul></div>` : '';
+        const job = j => `<div class="cvjob"><p class="cvjob-period">${escFull(j.period)}</p><p class="cvjob-role"><b>${escFull(j.role)}</b> · ${escFull(j.company)}</p>` +
+          titles(j) + `<ul class="cvmarks">${j.items.map(tag).join('')}</ul>` + (j.note ? `<p class="cvflag"><b>${escFull(P.flagLabel)}.</b> ${escFull(j.note)}</p>` : '') + `</div>`;
+        const G = P.gap;
+        const gap = `<div class="cvjob cvgap"><p class="cvjob-period">${escFull(G.period)}</p><p class="cvjob-role"><b>${escFull(G.title)}</b></p>` +
+          `<p class="cvgap-l">${escFull(G.label)}:</p><ul class="cvvariants">${G.variants.map(v => `<li><b>${escFull(v.t)}</b> <i>${escFull(v.src)}</i></li>`).join('')}</ul>` +
+          `<p class="cvflag">${escFull(G.resolved)}</p><p class="cvpick">${escFull(G.pick)}</p></div>`;
+        const I2 = P.intern;
+        const intern = `<div class="cvjob cvdim"><p class="cvjob-period">${escFull(I2.period)}</p><p class="cvjob-role"><b>${escFull(I2.role)}</b> · ${escFull(I2.company)}</p>` +
+          `<ul class="cvmarks">${I2.items.map(tag).join('')}</ul><p class="cvwhy">${escFull(I2.why)}</p></div>`;
+        return `<div class="cvdoc"><div class="cvdoc-head"><strong>${escFull(P.name)}</strong><span>${escFull(P.headline)}</span></div>` +
+          `<p class="cvsrc">${escFull(P.sources)}</p>` +
+          `<div class="cvlegend"><span class="in">${escFull(P.legendIn)}</span><span class="out">${escFull(P.legendOut)}</span></div>` +
+          `<p class="cvcount">${escFull(P.count).replace('{in}', `<b>${nIn}</b>`).replace('{all}', `<b>${nAll}</b>`)}</p>` +
+          `<h3>${escFull(P.expTitle)}</h3>` + P.jobs.map(job).join('') + gap + P.early.map(job).join('') + intern +
+          P.sections.map(s => `<h3>${escFull(s.h)}</h3><ul class="cvmarks${s.items.length > 3 && s.items.every(x => !x.in) ? ' wrap' : ''}">${s.items.map(tag).join('')}</ul>${s.why ? `<p class="cvwhy">${escFull(s.why)}</p>` : ''}`).join('') +
+          `<h3>${escFull(P.skillsTitle)}</h3><p class="cvchips">${P.skills.map(x => `<span>${escFull(x)}</span>`).join('')}</p></div>`;
+      })(),
       // вакансия
       `<div class="cvdoc"><div class="cvdoc-head"><strong>${escFull(X.vacancy.role)}</strong><span>${escFull(X.vacancy.company)}</span></div><p class="cvsrc">${escFull(X.vacancy.meta)}</p>` +
         X.vacancy.sections.map(sct => `<h3>${escFull(sct.h)}</h3><ul>${sct.items.map(x => `<li>${escFull(x)}</li>`).join('')}</ul>`).join('') + `</div>`,
