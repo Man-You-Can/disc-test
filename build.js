@@ -40,6 +40,10 @@ const contactJs = fs.readFileSync(path.join(SRC, 'contact.js'), 'utf8').replace(
 // Заявка со страницы «Для организаций» (/business/): разметку businessHTML() кладёт сборка, логику initBusiness() — сама страница
 const businessHTML = require(path.join(SRC, 'business.js'));
 const businessJs = fs.readFileSync(path.join(SRC, 'business.js'), 'utf8').replace(/\nif \(typeof module[^\n]*\n?$/, '\n');
+// Лендинг «CV под каждую вакансию» (/ru/cv/): разметку формы cvFormHTML() кладёт сборка, логику initCvForm() — сама страница; стили страницы — src/cv.css
+const cvFormHTML = require(path.join(SRC, 'cv.js'));
+const cvJs = fs.readFileSync(path.join(SRC, 'cv.js'), 'utf8').replace(/\nif \(typeof module[^\n]*\n?$/, '\n');
+const cvCss = fs.readFileSync(path.join(SRC, 'cv.css'), 'utf8').replace(/\/\*[\s\S]*?\*\//g, '').replace(/\n+/g, '\n').trim();
 const contactHTML = require(path.join(SRC, 'contact.js'));
 const feedbackEmail = String(cfg.feedbackEmail || '').trim().replace(/['\\<>"]/g, '');
 // Адрес, с которого Apps Script шлёт письма (в Gmail он должен быть добавлен как «Отправлять письма как»); по умолчанию — feedbackEmail
@@ -489,7 +493,10 @@ function writeContentPage(L, sub, opts) {
   ].concat(opts.ldExtra || [])).replace(/</g, '\\u003c');
   const miniL = { lang: L.lang, name: L.name, dir: L.dir, dateLocale: L.dateLocale, ui: Object.fromEntries(Object.entries(L.ui).filter(([k]) => k === 'langLabel' || k === 'root.continue' || k.startsWith('consent.') || (opts.uiKeys && opts.uiKeys.test(k)))) };
   Object.assign(miniL.ui, noticeUi(L));
-  const html = pageTpl
+  // opts.bare — самостоятельная страница (лендинг): без пунктов шапки, хлебных крошек, «Материалов» и выбора языка; opts.css — стили только этой страницы
+  const tpl = !opts.bare ? pageTpl : pageTpl.replace(/\s*<nav class="sitenav no-print">__NAV__<\/nav>/, '').replace(/\s*<nav class="crumbs">__CRUMBS__<\/nav>/, '')
+    .replace(/\s*__MATERIALS__/, '').replace(/\s*<nav class="langs"[^>]*>__LANG_LINKS__<\/nav>/, '').replace('__LANG_SWITCHER__', '');
+  const html = tpl.replace('</head>', () => opts.css ? `<style>${opts.css}</style>\n</head>` : '</head>')
     .replace(/__LANG__/g, hl(L.lang)).replace(/__DIR__/g, L.dir)
     .replace(/__TITLE__/g, esc(opts.title)).replace(/__DESC__/g, esc(opts.description))
     .replace('__ROBOTS__', opts.noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large')
@@ -710,6 +717,35 @@ for (const L of locales) {
     content: `<div class="eyebrow">DISC</div><h1>${escFull(tm.h1)}</h1><p class="lead">${escFull(tm.lead)}</p>` + ctaTop(t, '../') + sectionsHtml(tm.sections) +
       (hasBusiness(L) ? `<p class="seealso"><a href="../business/">${escFull(C.business.h1)}: ${escFull(C.business.packsTitle.toLowerCase())} ${arrow(L)}</a></p>` : '') +
       ctaBlock(L, t, '../') + seeAlso('../', 'nav.teams') });
+  // /cv/ — лендинг «CV и сопроводительное письмо под каждую вакансию» (с 2026-10-22, решение заказчика): услуга Армена Манукяна для соискателей,
+  // подписка, оплаты на странице нет — только заявка (src/cv.js → форма обратной связи сервера, тема «Заявка на CV под вакансию»). Только там, где в
+  // локали есть content.cv (сейчас русская версия). Ссылка только прямая: ни в меню, ни в подвале, ни на экране результата её нет; noindex, в sitemap не входит
+  if (C.cv && feedbackEmail) {
+    const V = C.cv, F = V.form, A = V.author, K = ['--d', '--i', '--s', '--c'];
+    const fill = str => escFull(str).replace(/\{email\}/g, `<a href="mailto:${escFull(feedbackEmail)}">${escFull(feedbackEmail)}</a>`);
+    const VT = { name: t('intro.nameLabel'), email: F.email, telegram: F.telegram, telegramPlaceholder: F.telegramPlaceholder, position: F.position,
+      positionPlaceholder: F.positionPlaceholder, resume: F.resume, resumeOptional: F.resumeOptional, resumePlaceholder: F.resumePlaceholder, button: F.button, subject: F.subject,
+      sent: F.sent, needTelegram: F.needTelegram, needPosition: F.needPosition, badLink: F.badLink, requiredNote: t('intro.requiredNote'), nameRequired: t('intro.nameRequired'),
+      emailRequired: t('intro.emailRequired'), pdRequired: L.ui['pd.required'] || '', sending: t('contact.sending'), sendFailed: t('contact.sendFailed'), tooMany: t('contact.tooMany'), privacyNote: F.privacy };
+    const ldFaq = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: V.faq.map(it => ({ '@type': 'Question', name: it.q, acceptedAnswer: { '@type': 'Answer', text: it.a.replace(/\{email\}/g, feedbackEmail) } })) };
+    writeContentPage(L, 'cv/', { bare: true, noindex: true, noDate: true, langs: locales.filter(x => x.content.cv), css: cvCss, title: V.title, description: V.description,
+      crumbs: [{ name: V.h1 }], ldExtra: [ldFaq], files: ['src/cv.js', 'src/cv.css'],
+      content: `<div class="cvpage"><div class="eyebrow">${escFull(V.eyebrow)}</div><h1>${escFull(V.h1)}</h1><p class="lead">${escFull(V.lead)}</p>` +
+        `<section class="cvoffer"><div class="cvfree"><strong>${escFull(V.free)}</strong><p>${escFull(V.freeText)}</p></div>` +
+        `<div class="cvbuy"><p class="price"><small>${escFull(V.priceLabel)}</small>${escFull(V.price)}</p><a class="btn" id="cvTop" href="#request">${escFull(V.button)}</a></div></section>` +
+        `<ul class="xfacts">${V.facts.map(x => `<li>${escFull(x)}</li>`).join('')}</ul>` +
+        `<h2>${escFull(V.includedTitle)}</h2><ul class="cvgrid">${V.included.map((x, i) => `<li style="--k:var(${K[i % 4]})"><h3>${escFull(x.h)}</h3><p>${escFull(x.p)}</p></li>`).join('')}</ul>` +
+        `<h2>${escFull(V.honestTitle)}</h2><div class="cvhonest"><p>${escFull(V.honest)}</p>${listHtml('ul', V.honestList)}</div>` +
+        `<h2>${escFull(V.howTitle)}</h2><ol class="cvsteps">${V.how.map(x => `<li><strong>${escFull(x.h)}</strong><span>${escFull(x.p)}</span></li>`).join('')}</ol>` +
+        `<p><a class="btn" href="#request">${escFull(V.button)}</a></p>` +
+        `<h2>${escFull(V.authorTitle)}</h2><section class="cvauthor"><span class="cvname">${escFull(A.name)}</span><p class="cvrole">${escFull(A.role)}</p>` + listHtml('ul', A.facts) +
+        `<p>${escFull(A.text)}</p><p class="cvsite"><a href="${escFull(A.siteUrl)}" target="_blank" rel="noopener">${escFull(A.site)} ${arrow(L)}</a></p></section>` +
+        `<h2>${escFull(V.faqTitle)}</h2>` + V.faq.map(it => `<h3 class="xq">${escFull(it.q)}</h3><p>${fill(it.a)}</p>`).join('') +
+        `<h2 id="request">${escFull(F.title)}</h2><p>${escFull(F.lead)}</p>` +
+        cvFormHTML({ T: VT, esc: escFull, email: feedbackEmail, pdLabel: pdOn ? pdLabelHtml(L, '../') : '' }) + `</div>` +
+        `<a class="btn ctafloat no-print" id="cvFloat" href="#request">${escFull(V.button)}</a>`,
+      pageJs: cvJs + `initCvForm({T: ${JSON.stringify(VT).replace(/</g, '\\u003c')}, L: L, esc: esc, $: $, endpoint: ${jsStr(cfg.sendEndpoint)}, token: ${jsStr(cfg.sendToken)}, email: ${jsStr(feedbackEmail)}, pdVersion: ${jsStr(pdOn ? pdVersion : '')}});` });
+  }
   // /disc-vs-mbti/ — сравнение моделей: таблица после второй секции
   const mb = C.mbti;
   writeContentPage(L, 'disc-vs-mbti/', { navKey: 'nav.mbti', article: true, title: mb.title, description: mb.description, crumbs: [{ name: t('nav.mbti') }],

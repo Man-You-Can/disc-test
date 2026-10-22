@@ -1,0 +1,37 @@
+/* Лендинг «CV и сопроводительное письмо под каждую вакансию» (/ru/cv/): стили только этой страницы, сборка вставляет их в её <head> */
+.cvpage h1{font-size:clamp(28px,7.4vw,42px);line-height:1.12;margin:6px 0 14px;hyphens:manual;-webkit-hyphens:manual}
+.cvpage .lead{font-size:18px}
+.cvoffer{display:flex;flex-wrap:wrap;align-items:center;gap:16px 28px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px 24px;margin:6px 0 16px;box-shadow:0 10px 30px -22px rgba(0,0,0,.45)}
+.cvoffer .cvfree{flex:1 1 280px}
+.cvoffer .cvfree strong{display:inline-block;font-family:var(--font-head);font-weight:500;font-size:20px;line-height:1.25;padding:2px 10px;border-radius:8px;background:color-mix(in srgb,var(--s) 16%,transparent);color:var(--ink)}
+.cvoffer .cvfree p{margin:8px 0 0;color:var(--muted);font-size:15px}
+.cvbuy{flex:none;display:flex;flex-direction:column;align-items:stretch;gap:12px}
+.cvoffer .price{margin:0;font-family:var(--font-head);font-weight:500;font-size:30px;line-height:1.1;color:var(--ink);white-space:nowrap}
+.cvoffer .price small{display:block;font-family:var(--font-body);font-weight:400;font-size:13px;color:var(--muted);margin-bottom:4px}
+.cvbuy .btn{display:flex;justify-content:center;font-size:17px;padding:14px 26px}
+@media (max-width:560px){.cvpage .lead{font-size:16px}.cvoffer{padding:18px}.cvbuy{flex:1 1 100%}.cvoffer .cvfree strong{font-size:18px}}
+.cvpage .xfacts{margin-bottom:8px}
+.cvgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:14px 0 8px;padding:0;list-style:none;counter-reset:cv}
+@media (max-width:640px){.cvgrid{grid-template-columns:1fr}}
+.content .cvgrid li{margin:0;background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--k);border-radius:14px;padding:16px 18px}
+.cvgrid h3{margin:0 0 6px;font-size:18px;line-height:1.3;text-transform:none;letter-spacing:0}
+.cvgrid p{margin:0;color:var(--muted);font-size:15px}
+.cvhonest{background:var(--surface);border:1px solid var(--line);border-inline-start:4px solid var(--s);border-radius:14px;padding:18px 22px;margin:14px 0 8px}
+.cvhonest p{margin:0 0 10px}
+.content .cvhonest ul{margin:0;padding:0;list-style:none}
+.content .cvhonest li{position:relative;padding-inline-start:28px;margin:0 0 6px}
+.cvhonest li::before{content:"";position:absolute;inset-inline-start:2px;top:.35em;width:14px;height:8px;border-inline-start:2.5px solid var(--s);border-bottom:2.5px solid var(--s);transform:rotate(-45deg)}
+.content ol.cvsteps{list-style:none;padding:0;margin:14px 0 8px;counter-reset:st}
+.content .cvsteps li{position:relative;counter-increment:st;padding:0 0 18px;padding-inline-start:52px;margin:0}
+.cvsteps li::before{content:counter(st);position:absolute;inset-inline-start:0;top:0;width:36px;height:36px;border-radius:50%;background:var(--btn);color:var(--btn-ink);display:flex;align-items:center;justify-content:center;font-weight:600}
+.cvsteps li:not(:last-child)::after{content:"";position:absolute;inset-inline-start:17px;top:40px;bottom:4px;width:2px;background:var(--line)}
+.cvsteps strong{display:block;font-size:17px;padding-top:6px}
+.cvsteps span{color:var(--muted)}
+.cvauthor{display:flex;flex-direction:column;gap:4px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin:14px 0 8px}
+.cvauthor .cvname{font-family:var(--font-head);font-weight:500;font-size:24px;line-height:1.2}
+.cvauthor .cvrole{color:var(--muted);margin:0 0 8px}
+.content .cvauthor ul{margin:0 0 10px;padding-inline-start:20px}
+.cvauthor p{margin:0}
+.cvauthor .cvsite{margin-top:10px}
+.cvformcard{max-width:none}
+.cvpage .xq{margin-top:22px}

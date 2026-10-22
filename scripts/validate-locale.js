@@ -18,7 +18,9 @@ const OPTIONAL = ['.content.policy.legal', '.content.extendedMail', '.content.pr
   // обязательным вместе с product.pay (правило «что сделано для продажи — во все языки с покупкой»)
   '.content.business', '.ui.nav.business', '.content.product.pay.code', '.content.extendedMail.codeIntro', '.content.extendedMail.codeFooter',
   // пункты оферты и абзац политики о кодах — там, где коды есть (решение заказчика от 2026-10-22: пока только русская версия)
-  '.content.offer.codeTerms', '.content.policy.purchaseCode'];
+  '.content.offer.codeTerms', '.content.policy.purchaseCode',
+  // лендинг «CV и сопроводительное письмо под каждую вакансию» (/ru/cv/, с 2026-10-22, решение заказчика): только русская версия, ссылка только прямая
+  '.content.cv'];
 // специальная цена на час после теста (product.pay.offer; offerPriceRub, offerPriceUsd в site.config.json; с 2026-10-22) обязательна вместе с product.pay:
 // её тексты сравниваются с ru.json как часть pay
 // Страница «Как готовятся отчёты» (content.howMade) и её пункт в шапке (ui["nav.howMade"]) обязательны во всех языках (с 2026-10-14).
