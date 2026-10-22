@@ -20,7 +20,21 @@ function cvFormHTML(c, k){
     '</form>';
 }
 
+/* Вкладки блока «Пример: от единого резюме до отклика»: без скрипта все панели видны подряд, со скриптом — одна, переключение мышью и стрелками */
+function initCvTabs(){
+  var box=document.getElementById('cvEx'); if(!box) return;
+  var tabs=[].slice.call(box.querySelectorAll('[role="tab"]')), panels=[].slice.call(box.querySelectorAll('[role="tabpanel"]'));
+  function sel(i, focus){ tabs.forEach(function(t,k){ var on=k===i; t.setAttribute('aria-selected', on); t.tabIndex=on?0:-1; panels[k].hidden=!on; }); if(focus) tabs[i].focus();
+    var bar=tabs[i].parentNode, t=tabs[i]; if(t.offsetLeft < bar.scrollLeft || t.offsetLeft + t.offsetWidth > bar.scrollLeft + bar.clientWidth) bar.scrollLeft = t.offsetLeft - 8; }
+  box.classList.add('js'); sel(0);
+  tabs.forEach(function(t,i){
+    t.addEventListener('click', function(){ sel(i); if(window.discTrack) window.discTrack('cv-example'); });
+    t.addEventListener('keydown', function(e){ var n=tabs.length, j=e.key==='ArrowRight'?(i+1)%n:e.key==='ArrowLeft'?(i-1+n)%n:e.key==='Home'?0:e.key==='End'?n-1:-1; if(j<0) return; e.preventDefault(); sel(j, true); });
+  });
+}
+
 function initCvForm(c){
+  initCvTabs();
   var T=c.T, esc=c.esc, $=c.$, L=c.L, forms=document.querySelectorAll('form.cvform'); if(!forms.length) return;
   var EMAIL_RE=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/, toastT, sent=false;
   var mailLink = c.email ? '<a href="mailto:'+esc(c.email)+'">'+esc(c.email)+'</a>' : '';
