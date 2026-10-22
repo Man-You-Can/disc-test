@@ -847,7 +847,10 @@ initCommon({L:L, t:t, esc:esc, lsGet:lsGet, lsSet:lsSet, langHref:langHref, $:$,
       .then(function(txt){ var j = null; try{ j = JSON.parse(txt); }catch(e){}
         if(j && j.error === 'bad link'){ status('err', t('subc.bad', {email: mail})); return; }
         if(!j || !j.ok) throw new Error('failed');
-        status('ok', esc(t('subc.done'))); if(window.discTrack) window.discTrack('subscribe'); })
+        // зелёная галочка в кружке перед надписью (по просьбе заказчика от 2026-10-22): с первого взгляда видно, что подписка прошла
+        status('ok', '<span style="display:flex;gap:12px;align-items:center"><svg viewBox="0 0 24 24" width="32" height="32" aria-hidden="true" style="flex:none">' +
+          '<circle cx="12" cy="12" r="12" fill="currentColor"/><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
+          '<span>' + esc(t('subc.done')) + '</span></span>'); if(window.discTrack) window.discTrack('subscribe'); })
       .catch(function(){ btn.hidden = false; status('err', t('subc.failed', {email: mail})); });
   }
   btn.addEventListener('click', confirm);
