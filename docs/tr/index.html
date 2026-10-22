@@ -213,7 +213,7 @@ html[lang=ar] body,html[lang=hi] body{font-size:17px;line-height:1.65}
 .service .price{flex:none;color:var(--ink);font-family:var(--font-head);font-weight:500;font-size:28px;line-height:1.1}
 .service .price small{display:block;font-family:var(--font-body);font-weight:400;font-size:13px;color:var(--muted);margin-bottom:4px}
 /* расширенный отчёт: блок на экране результата (.xoffer, .xanchor) и страница отчёта (.xfacts, .xsample, .xbuy) */
-/* закреплённая кнопка отчёта на экране результата (телефон): видна, пока форма e-mail и нижний блок за краем экрана */
+/* закреплённая кнопка отчёта на экране результата (телефон): видна, пока человек читает описание профиля под блоком отчёта */
 .xbar{display:none}
 @media (max-width:640px){
   .xbar.show{display:flex;gap:8px;position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:15}
@@ -233,6 +233,7 @@ html[lang=ar] body,html[lang=hi] body{font-size:17px;line-height:1.65}
 .startrow.again{margin-top:-4px}
 @media (max-width:480px){.lastcard>.btn{display:flex;width:100%;margin-top:14px}}
 .xoffer{scroll-margin-top:76px}
+.xoffer+.card{margin-top:16px}
 /* блок расширенного отчёта выделен фоном в цвет ведущего стиля участника (--k), чтобы бросался в глаза (решение заказчика от 2026-10-21);
    без color-mix — прежний фон карточки и цветная полоса слева */
 .share.xoffer{border-inline-start:4px solid var(--k,var(--ink));background:color-mix(in srgb,var(--k,var(--ink)) 13%,var(--surface));border-color:color-mix(in srgb,var(--k,var(--ink)) 45%,var(--line));border-inline-start-color:var(--k,var(--ink))}
@@ -1061,7 +1062,7 @@ function renderReport(r, opts){
   // PB.sample — подпись к листам образца: сборка оставляет её только там, где листы есть (отчёт на этом языке написан);
   // PB.soon — строка о заявке в языках, где отчёт пока нельзя заказать
   var PB = L.content && L.content.product, PM = PB && PB.promo, extHref = base+'extended-report/';
-  // покупка прямо в нижнем блоке (там, где отчёт продаётся и задан сервер оплаты): форма открыта сразу, кнопки-раскрывашки,
+  // покупка прямо в блоке отчёта (там, где отчёт продаётся и задан сервер оплаты): форма открыта сразу, кнопки-раскрывашки,
   // строки «PDF на e-mail» у цены и «Тест и краткий отчёт остаются бесплатными» нет (решение заказчика от 2026-10-21)
   var payHere = !!(PB && PB.pay && PAY_ENDPOINT && typeof payForms === 'function' && !opts.fromAdmin);
   function barOff(){ try{ return sessionStorage.getItem('disc.xbar') === 'off'; }catch(e){ return false; } }
@@ -1122,7 +1123,10 @@ function renderReport(r, opts){
           '<div class="actions"><button class="btn" type="submit">'+t('share.send')+'</button></div>'+
         '</form>'+
       '</div>' : '')+
-    '<div class="card"><div class="sections">'+
+    // блок «Расширенный отчёт» — сразу под графиком (или формой e-mail), перед «Ключевыми чертами»: с 2026-10-22 по решению заказчика
+    // (ниже описания профиля его на телефоне видела только половина прошедших тест)
+    extOffer()+
+    '<div class="card" id="secCard"><div class="sections">'+
       '<div class="sec full"><h3>'+t('report.traits')+'</h3><div class="traits">'+st.traits.map(function(x){ return '<span>'+esc(x)+'</span>'; }).join('')+'</div>'+
         (cls.s ? '<div class="substyle" style="--ks:'+colorVar(cls.s)+'"><b>'+t('report.secondary',{k:cls.s,name:esc(L.keys[cls.s])})+'</b> '+t('report.secondaryAddon',{addon:esc(L.addon[cls.s])})+'</div>' : '')+
       '</div>'+
@@ -1135,7 +1139,6 @@ function renderReport(r, opts){
     '</div></div>'+
     '<div class="print-only printcta"><b>'+t('cta.title')+'</b><p>'+esc(t('cta.text'))+' <b>'+esc(homeURL)+'</b></p></div>'+
     '<p class="print-only printrights">'+esc(t('rights',{year:new Date().getFullYear()}))+'</p>'+
-    extOffer()+
     (opts.own ?
       '<div class="share no-print" style="margin-top:16px"><h2>'+t('share.title')+'</h2>'+
         // свой результат: только ссылка и PDF — ссылка открывает отчёт в один клик и принимается «Панелью администратора» вместо кода (с 2026-10-20 код и письмо убраны)
@@ -1155,7 +1158,7 @@ function renderReport(r, opts){
   view.querySelectorAll('.legend input').forEach(function(cb){
     cb.addEventListener('change', function(){ show[cb.getAttribute('data-s')] = cb.checked; $('#graph').innerHTML = graphSVG(sc, show, {label:t('report.graphAria'), colorVar:colorVar, keys:KEYS}); });
   });
-  // цели Метрики расширенного отчёта: ext-show — нижний блок показан на экране, ext-click — кнопка или листы образца в нижнем блоке
+  // цели Метрики расширенного отчёта: ext-show — блок отчёта показан на экране, ext-click — кнопка или листы образца в блоке
   // (верхний призыв с личными зацепками и целями ext-top, ext-anchor убран с экрана результата 2026-10-21 по решению заказчика)
   if(PB){
     var xo = $('#extOffer');
@@ -1183,25 +1186,25 @@ function renderReport(r, opts){
       var i = w.querySelector('input'); if(!quiet && !i.value){ try{ i.focus({preventScroll:true}); }catch(e){ i.focus(); } }
       return w;
     };
-    // в нижнем блоке форма покупки (поле e-mail и «Купить») видна сразу, без кнопки, которая её раскрывает (решение заказчика от 2026-10-21);
+    // в блоке отчёта форма покупки (поле e-mail и «Купить») видна сразу, без кнопки, которая её раскрывает (решение заказчика от 2026-10-21);
     // фокус в поле не ставим, чтобы страница не прыгала к блоку и на телефоне не открывалась клавиатура
     if(PP) buyOpen(xo, xb.parentNode, 'result-block', xb, true);
     xo.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(ev){ src('result-block'); if(window.discTrack) window.discTrack('ext-click');
       if(PP && a === xb){ ev.preventDefault(); buyOpen(xo, xb.parentNode, 'result-block', xb); } }); });
     if('IntersectionObserver' in window){ var xio = new IntersectionObserver(function(es){ if(es[0].isIntersecting){ xio.disconnect(); if(window.discTrack) window.discTrack('ext-show'); } }, {threshold:.4}); xio.observe(xo); }
-    // закреплённая кнопка: видна между формой e-mail (в чужом результате формы нет — тогда между карточкой графика) и нижним блоком,
-    // то есть пока человек читает описание профиля; у самих призывов и ниже нижнего блока её нет. Источник покупки result-bar, цель ext-bar
+    // закреплённая кнопка: видна, пока человек читает описание профиля — блок отчёта (с 2026-10-22 он стоит над описанием) уже ушёл вверх,
+    // а карточка описания ещё на экране; у самого блока и ниже описания её нет. Источник покупки result-bar, цель ext-bar
     var bar = $('#extBar');
     if(xbarStop){ xbarStop(); xbarStop = null; }
     if(bar){
-      var anchor = $('#sendBox') || view.querySelector('.graphcard');
+      var secCard = $('#secCard');
       var barSync = function(){
         if(!bar.parentNode){ if(xbarStop){ xbarStop(); xbarStop = null; } return; }   // экран сменился: кнопки уже нет
-        bar.classList.toggle('show', anchor.getBoundingClientRect().bottom < 0 && xo.getBoundingClientRect().top > window.innerHeight); };
+        bar.classList.toggle('show', xo.getBoundingClientRect().bottom < 0 && secCard.getBoundingClientRect().bottom > window.innerHeight - 100); };
       window.addEventListener('scroll', barSync); window.addEventListener('resize', barSync);
       xbarStop = function(){ window.removeEventListener('scroll', barSync); window.removeEventListener('resize', barSync); };
       barSync();
-      // с формой на месте закреплённая кнопка раскрывает её в нижнем блоке и прокручивает к ней
+      // с формой на месте закреплённая кнопка раскрывает её в блоке отчёта и прокручивает к ней
       $('#extBarGo').addEventListener('click', function(ev){ src('result-bar'); if(window.discTrack) window.discTrack('ext-bar');
         if(PP){ ev.preventDefault(); buyOpen(xo, xb.parentNode, 'result-bar', xb).scrollIntoView({behavior:'smooth', block:'center'}); } });
       // пока действует специальная цена, на закреплённой кнопке — она (PP.offer.button), потом — обычная (PM.button)
