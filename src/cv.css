@@ -246,3 +246,38 @@ body:has(.cvpage) .wrap{max-width:1080px}
 .content .cvwant li{margin:0 0 3px}
 .cvwant-note{margin:14px 0 0}
 @media (max-width:600px){.cvwant{grid-template-columns:1fr;gap:10px}}
+
+/* пример, вкладка «Оценка»: две таблицы сравнения — «вакансия требует / у кандидатки» и «кандидатка хочет / вакансия предлагает» */
+.cvcmp{width:100%;min-width:0;border-collapse:separate;border-spacing:0;font-size:14.5px;margin:4px 0 0;table-layout:fixed}
+.cvcmp col.c-res{width:116px}
+.cvcmp th,.cvcmp td{white-space:normal;background:none;text-transform:none;letter-spacing:0;border-bottom:0}
+.cvcmp th{text-align:start;font-weight:600;font-size:12px;padding:0 10px 8px;color:var(--muted)}
+.cvcmp th span{display:inline-block;padding:3px 9px;border-radius:999px;text-transform:uppercase;letter-spacing:.05em}
+.cvcmp th.k-vac span{background:color-mix(in srgb,var(--c) 16%,transparent);color:color-mix(in srgb,var(--c) 80%,var(--ink))}
+.cvcmp th.k-cand span{background:var(--soft);color:var(--ink)}
+.cvcmp th:last-child{text-align:end}
+.cvcmp td{padding:10px;border-top:1px solid var(--line);vertical-align:top}
+.cvcmp td.k-vac{background:color-mix(in srgb,var(--c) 6%,transparent)!important;border-inline-start:3px solid color-mix(in srgb,var(--c) 55%,transparent)}
+.cvcmp td.k-cand{border-inline-start:3px solid var(--line-strong)}
+.cvcmp td.cvres{text-align:end;white-space:nowrap}
+.cvcmp em{font-style:normal;font-weight:600;font-size:13px;padding:2px 10px;border-radius:999px}
+.cvcmp .s-yes em{background:color-mix(in srgb,var(--s) 18%,transparent);color:var(--s)}
+.cvcmp .s-part em{background:color-mix(in srgb,var(--i) 20%,transparent);color:color-mix(in srgb,var(--i) 70%,var(--ink))}
+.cvcmp .s-no em{background:color-mix(in srgb,var(--d) 16%,transparent);color:var(--d)}
+.cvcmp tbody tr:last-child td{border-bottom:1px solid var(--line)!important}
+@media (max-width:640px){
+  .cvcmp,.cvcmp tbody,.cvcmp tr,.cvcmp td{display:block;width:auto}
+  .cvcmp thead{display:none}
+  .cvcmp tr{border:1px solid var(--line);border-radius:12px;overflow:hidden;margin:0 0 10px}
+  .cvcmp td{border-top:0;padding:8px 12px}
+  .cvcmp td+td{border-top:1px solid var(--line)}
+  .cvcmp tbody tr:last-child td{border-bottom:0}
+  .cvcmp td.cvres{text-align:end;width:auto}
+  .cvcmp tr{display:grid;grid-template-columns:minmax(0,1fr) auto}
+  .cvcmp td:nth-child(1){grid-column:1;grid-row:1}
+  .cvcmp td:nth-child(2){grid-column:1/-1;grid-row:2}
+  .cvcmp td.cvres{grid-column:2;grid-row:1;padding:10px 12px 0 4px;border:0!important}
+  .cvcmp td.cvres::before{display:none}
+  .cvcmp td::before{content:attr(data-l);display:block;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:2px}
+  .cvcmp td.k-vac::before{color:color-mix(in srgb,var(--c) 80%,var(--ink))}
+}
