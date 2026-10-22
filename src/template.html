@@ -164,18 +164,18 @@ html[lang=ar] body,html[lang=hi] body{font-size:17px;line-height:1.65}
 .service .price{flex:none;color:var(--ink);font-family:var(--font-head);font-weight:500;font-size:28px;line-height:1.1}
 .service .price small{display:block;font-family:var(--font-body);font-weight:400;font-size:13px;color:var(--muted);margin-bottom:4px}
 /* расширенный отчёт: блок на экране результата (.xoffer, .xanchor) и страница отчёта (.xfacts, .xsample, .xbuy) */
-/* закреплённая кнопка отчёта на экране результата: видна всё время, пока человек не закроет её крестиком (решение заказчика от 2026-10-22),
-   на любой ширине экрана (с 2026-10-22; прежде — только на телефоне): по центру внизу, не шире 560 px, на телефоне — во всю ширину с полями 12 px;
-   снизу у страницы запас под кнопку, чтобы она не закрывала конец страницы */
+/* закреплённая кнопка расширенного отчёта (src/common.js): с 2026-10-22 (решения заказчика) — на всех страницах сайта у того, кто прошёл тест,
+   пока он не закроет её крестиком, на любой ширине экрана: по центру внизу, не шире 560 px, на телефоне — во всю ширину с полями 12 px;
+   снизу у страницы запас под кнопку (body.has-xbar), чтобы она не закрывала конец страницы; плавающая кнопка «Пройти тест» в это время не нужна */
 .xbar{display:none}
 .xbar.show{display:flex;gap:8px;position:fixed;left:50%;transform:translateX(-50%);width:min(560px,calc(100% - 24px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:15}
 .xbar .btn{flex:1 1 auto;box-shadow:0 8px 24px -6px rgba(0,0,0,.35)}
 .xbar-x{flex:none;width:46px;border:1px solid var(--line-strong);border-radius:12px;background:var(--surface);color:var(--muted);font-size:22px;line-height:1;cursor:pointer;box-shadow:0 8px 24px -6px rgba(0,0,0,.35)}
-body:not(.has-consent):has(.xbar.show){padding-bottom:88px}
-body.has-consent .xbar{display:none}
+body.has-xbar:not(.has-consent){padding-bottom:88px}
+body.has-consent .xbar,body.has-xbar .btn.ctafloat.show{display:none}
 @media (max-width:640px){
   .xbar.show{bottom:calc(12px + env(safe-area-inset-bottom,0px))}
-  body:not(.has-consent):has(.xbar.show){padding-bottom:84px}
+  body.has-xbar:not(.has-consent){padding-bottom:84px}
 }
 /* вернувшийся посетитель: карточка прошлого результата под заголовком; с 2026-10-22 — как блок «Расширенный отчёт» экрана результата
    (класс share xoffer: фон в цвет стиля, заголовок, строка о самой низкой шкале, тезисы, листы образца, форма с e-mail и «Купить»); «Пройти тест заново» — ссылка ниже */
@@ -800,6 +800,9 @@ function hideProgress(){ progEl.hidden=true; metaEl.hidden=true; if(footEl){ foo
 __INTRO_JS__
 function renderIntro(){
   setStep(''); hideProgress();
+  // закреплённая кнопка — как на любой странице (видна, если результат сохранён); нажатие прокручивает к форме покупки в карточке прошлого результата
+  xbar({show: !!lsGet('disc.last'), go: function(){ var f = $('#lastOffer input[type=email]'); if(!f){ location.href = ROOT_REL+(LANG_PATH[L.lang]||'')+'extended-report/'; return; }
+    f.scrollIntoView({behavior:'smooth', block:'center'}); try{ f.focus({preventScroll:true}); }catch(e){ f.focus(); } }});
   var last = lsGet('disc.last'), prog = lsGet('disc.progress');
   var progDone = prog && prog.m && prog.m.filter(function(x){return x>=0;}).length;
   // вернувшемуся посетителю — карточка с прошлым результатом, личными зацепками (те же, что в верхнем призыве экрана результата)
@@ -876,6 +879,7 @@ window.addEventListener('resize', fitRows);
 if(document.fonts && document.fonts.addEventListener) document.fonts.addEventListener('loadingdone', fitRows);
 function renderTest(){
   var i = S.i, b = BLOCKS[i];
+  xbar({show:false});   // на время вопросов теста кнопки нет (решение заказчика от 2026-10-22)
   setStep(t('test.step',{n:i+1})); renderProgress(i);
   var checkIco = '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg>';
   var rows = b.map(function(it, j){
@@ -950,6 +954,8 @@ __GRAPH_JS__
 __PAY_JS__
 // отчёт в этом браузере уже куплен (страница «Спасибо» отметила заказ): закреплённую кнопку и кнопку на главной не показываем
 function extBought(){ var p = lsGet('disc.pay'); return !!(p && p.done); }
+// закреплённая кнопка отчёта (общая для всех страниц, src/common.js): каждый экран говорит, видна ли она и что делает её нажатие
+function xbar(p){ if(window.discXbar) window.discXbar.set(p); }
 /* Личные зацепки верхнего призыва (content.product.promo.hooks): каждая строка называет то, что расширенный отчёт разбирает по числам
    именно этого участника. Правила те же, что у сборщика отчёта (build-report.py в закрытом хранилище отчётов): самая низкая шкала,
    два слоя ответов (same / diff), вторичный стиль (equal / close / edge / mid), второй по значению стиль чистого профиля выше 60 %,
@@ -1008,7 +1014,6 @@ function renderReport(r, opts){
   // покупка прямо в блоке отчёта (там, где отчёт продаётся и задан сервер оплаты): форма открыта сразу, кнопки-раскрывашки,
   // строки «PDF на e-mail» у цены и «Тест и краткий отчёт остаются бесплатными» нет (решение заказчика от 2026-10-21)
   var payHere = !!(PB && PB.pay && PAY_ENDPOINT && typeof payForms === 'function' && !opts.fromAdmin);
-  function barOff(){ try{ return sessionStorage.getItem('disc.xbar') === 'off'; }catch(e){ return false; } }
   var low = KEYS.slice().sort(function(x,y){ return sc.net[y]-sc.net[x]; })[3];
   function extOffer(){
     if(!PB) return '';
@@ -1083,9 +1088,7 @@ function renderReport(r, opts){
       // ссылка «Пройти тест заново» — как у своего результата (по просьбе заказчика от 2026-10-22); в панели администратора её нет
       (opts.fromAdmin ? '' : '<div class="actions no-print" style="margin-top:18px"><button class="link" id="restart" type="button">'+t('share.restart')+'</button></div>')
     )+
-    // закреплённая кнопка отчёта (на любой ширине экрана); скрытую крестиком не показываем до конца сеанса
-    (PM && !opts.fromAdmin && !extBought() && !barOff() ? '<div class="xbar no-print" id="extBar"><a class="btn" id="extBarGo" href="'+extHref+'">'+esc(PM.button)+'</a>'+
-      '<button class="xbar-x" type="button" id="extBarX" aria-label="'+esc(PM.close)+'" title="'+esc(PM.close)+'">×</button></div>' : '');
+    '';
 
   view.querySelectorAll('.legend input').forEach(function(cb){
     cb.addEventListener('change', function(){ show[cb.getAttribute('data-s')] = cb.checked; $('#graph').innerHTML = graphSVG(sc, show, {label:t('report.graphAria'), colorVar:colorVar, keys:KEYS}); });
@@ -1124,18 +1127,11 @@ function renderReport(r, opts){
     xo.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(ev){ src('result-block'); if(window.discTrack) window.discTrack('ext-click');
       if(PP && a === xb){ ev.preventDefault(); buyOpen(xo, xb.parentNode, 'result-block', xb); } }); });
     if('IntersectionObserver' in window){ var xio = new IntersectionObserver(function(es){ if(es[0].isIntersecting){ xio.disconnect(); if(window.discTrack) window.discTrack('ext-show'); } }, {threshold:.4}); xio.observe(xo); }
-    // закреплённая кнопка: видна всё время, пока человек не закроет её крестиком (решение заказчика от 2026-10-22; прежде — только
-    // пока на экране описание профиля). Источник покупки result-bar, цель ext-bar
-    var bar = $('#extBar');
-    if(bar){
-      bar.classList.add('show');
-      // с формой на месте закреплённая кнопка раскрывает её в блоке отчёта и прокручивает к ней
-      $('#extBarGo').addEventListener('click', function(ev){ src('result-bar'); if(window.discTrack) window.discTrack('ext-bar');
-        if(PP){ ev.preventDefault(); buyOpen(xo, xb.parentNode, 'result-bar', xb).scrollIntoView({behavior:'smooth', block:'center'}); } });
-      // пока действует специальная цена, на закреплённой кнопке — она (PP.offer.button), потом — обычная (PM.button)
-      if(pf && PP.offer && PP.offer.button){ var bgo = $('#extBarGo'); pf.onOffer(function(on){ bgo.textContent = on ? PP.offer.button : PM.button; }); }
-      $('#extBarX').addEventListener('click', function(){ bar.parentNode.removeChild(bar); try{ sessionStorage.setItem('disc.xbar', 'off'); }catch(e){} });
-    }
+    // закреплённая кнопка (общая для всех страниц, src/common.js): на экране результата видна и у чужого результата, пока её не закроют крестиком;
+    // с формой на месте нажатие раскрывает её в блоке отчёта и прокручивает к ней (источник покупки result-bar), без формы — ведёт на страницу отчёта
+    xbar({show: !!PM && !opts.fromAdmin, src: 'result-bar', go: PP ? function(){ buyOpen(xo, xb.parentNode, 'result-bar', xb).scrollIntoView({behavior:'smooth', block:'center'}); } : null});
+    // пока действует специальная цена, на закреплённой кнопке — она (PP.offer.button), потом — обычная (PM.button)
+    if(PM && pf && PP.offer && PP.offer.button) pf.onOffer(function(on){ if(window.discXbar) window.discXbar.text(on ? PP.offer.button : PM.button); });
   }
   // «Поделиться профилем» — окно со ссылкой и соцсетями; адреса соцсетей собираются только при нажатии (ссылку с кодом в разметку не пишем)
   shareDialog(link, t('share.msg', {name: prof.name, key: cls.key}));
@@ -1337,7 +1333,7 @@ function sendSubscribe(r, code){
 /* ====== экран 4: панель администратора ====== */
 function getResults(){ var a = lsGet('disc.admin'); return Array.isArray(a)?a:[]; }
 function renderAdmin(){
-  hideProgress(); setStep(t('admin.step'), true);
+  hideProgress(); setStep(t('admin.step'), true); xbar({show:false});
   var items = getResults().map(function(it){ var r = decodeResult(it.code); return r ? {code:it.code, added:it.added, r:r, a:analyze(r)} : null; }).filter(Boolean);
   items.sort(function(a,b){ return (b.r.t||'').localeCompare(a.r.t||''); });
   var rows = items.map(function(it, idx){
@@ -1405,7 +1401,7 @@ function langHref(code){ return ROOT_REL + (LANG_PATH[code]||'') + location.hash
 // Root page: a language chosen explicitly earlier opens right away (search bots have no stored choice)
 (function(){ if(!IS_ROOT) return; var st = lsGet('disc.lang'); if(st && st!==L.lang && LANG_PATH[st]!=null && !pageHash()) location.replace(langHref(st)); })();
 __COMMON_JS__
-initCommon({L:L, t:t, esc:esc, lsGet:lsGet, lsSet:lsSet, langHref:langHref, $:$, langMeta:LANG_META, langPath:LANG_PATH, privacyHref:ROOT_REL+(LANG_PATH[L.lang]||'')+'privacy/'});
+initCommon({L:L, t:t, esc:esc, lsGet:lsGet, lsSet:lsSet, langHref:langHref, $:$, langMeta:LANG_META, langPath:LANG_PATH, privacyHref:ROOT_REL+(LANG_PATH[L.lang]||'')+'privacy/', reportHref:ROOT_REL+(LANG_PATH[L.lang]||'')+'extended-report/'});
 
 /* ====== маршрутизация ====== */
 $('#adminLink').addEventListener('click', function(){ renderAdmin(); window.scrollTo(0,0); });

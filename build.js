@@ -15,6 +15,8 @@ const analyticsMode = L => cfg.analyticsMode === "always" || (cfg.analyticsAlway
 const headExtraFor = L => [["google-site-verification", cfg.googleSiteVerification], ["yandex-verification", cfg.yandexVerification]]
   .filter(([, v]) => v).map(([n, v]) => `<meta name="${n}" content="${String(v).replace(/["<>&]/g, "")}">`)
   .concat(cfg.yandexMetrikaId ? [`<script>window.DISC_ANALYTICS=${JSON.stringify({ ym: String(cfg.yandexMetrikaId).replace(/\D/g, ""), mode: analyticsMode(L) })};</script>`] : [])
+  // закреплённая кнопка расширенного отчёта на всех страницах (src/common.js) — только в языках, где отчёт продаётся (content.product.promo)
+  .concat(L.content.product && L.content.product.promo ? [`<script>window.DISC_XBAR=${JSON.stringify(xbarCfg(L)).replace(/</g, "\\u003c")};</script>`] : [])
   .concat(visitStats ? [`<script>window.DISC_VISIT=${JSON.stringify({ url: String(cfg.sendEndpoint), token: String(cfg.sendToken || ''), host: new URL(cfg.siteUrl).hostname }).replace(/</g, "\\u003c")};</script>`] : [])
   .join("\n");
 // Персональные данные (план боевого режима, этап Д). pdConsent в site.config.json включает схему «свой сервер в России»:
@@ -86,6 +88,8 @@ const payOffer = L => { if (!offerPrice(L)) return null; const P = L.content.pro
   return { price: offerPrices[cur], regular: servicePrices[cur], ms: offerMinutes * 60000, priceText: withPrice(L, P.price).replace(servicePrice(L), offerPrice(L)),
     regularText: withPrice(L, P.price), regularLabel: O.regular, cta: O.cta, note: O.note, left: O.left, expired: O.expired,
     button: P.promo ? withPrice(L, P.promo.button).replace(servicePrice(L), offerPrice(L)) : '' }; };
+// Закреплённая кнопка расширенного отчёта (src/common.js, window.DISC_XBAR): надпись с обычной ценой, со специальной (пусто — её нет в языке), срок специальной цены, «Скрыть»
+const xbarCfg = L => { const PM = withPrice(L, L.content.product.promo), O = payOffer(L); return { button: PM.button, offer: O ? O.button : '', ms: offerMinutes * 60000, close: PM.close }; };
 // Коды доступа (с 2026-10-22, по просьбе заказчика; сначала русская версия): организации покупают расширенные отчёты пакетом и раздают людям коды.
 // accessCodes в site.config.json включает в формах покупки ссылку «У меня есть код организации» с полем кода (тексты content.product.pay.code):
 // код уходит на <payEndpoint>/code, сервер проверяет его и ставит задание на отчёт (private/server/src/codes.js). Включать после выкладки сервера с кодами.
@@ -514,7 +518,7 @@ function writeContentPage(L, sub, opts) {
     .replace('__LOCALE_JSON__', () => JSON.stringify(miniL).replace(/</g, '\\u003c'))
     .replace(/__SUBPATH__/g, sub).replace('__PAGE_LANGS_JSON__', () => opts.langs ? JSON.stringify(own.map(x => x.lang)) : 'null')
     .replace('__LANG_PATH_JSON__', () => JSON.stringify(LANG_PATH)).replace('__LANG_META_JSON__', () => JSON.stringify(LANG_META).replace(/</g, '\\u003c'))
-    .replace('__COMMON_JS__', () => commonJs).replace('__PAGE_JS__', () => opts.pageJs || '');
+    .replace('__COMMON_JS__', () => commonJs).replace('__PAGE_JS__', () => opts.pageJs || '').replace('__NO_XBAR__', opts.bare ? 'true' : 'false');
   fs.mkdirSync(path.join(OUT, pathOf(L.lang), sub), { recursive: true });
   fs.writeFileSync(path.join(OUT, pathOf(L.lang), sub, 'index.html'), html);
   if (!opts.noindex) pages.push({ lang: L.lang, sub, date: updated, langs: own });

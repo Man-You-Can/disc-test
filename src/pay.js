@@ -151,6 +151,7 @@ function payCodeInit(c, g, f, o){
         done = true; inp.disabled = true; f.input.disabled = true; btn.hidden = true; link.hidden = true;
         say('ok', esc(X.done.replace('{to}', email)));
         try{ var p = c.lsGet('disc.pay') || {}; if(!p.done) c.lsSet('disc.pay', {code:true, email:email, t:Date.now(), done:true}); }catch(e){}
+        if(window.discXbar) window.discXbar.sync();   // отчёт получен — закреплённая кнопка отчёта больше не нужна
         payTrack('ext-code-done'); })
       .catch(function(err){ var m = err && err.message;
         if(!done){ btn.disabled = false; btn.textContent = X.button; }
@@ -198,7 +199,7 @@ function initPayThanks(c){
   if(rec && rec.email){ lead.textContent = T.leadEmail.replace('{email}', rec.email); lead.classList.add('ym-hide-content'); }
   if(o.order){ ord.textContent = T.order.replace('{order}', o.order); ord.hidden = false; }
   if(!rec) return;
-  if(!rec.done){ rec.done = true; c.lsSet('disc.pay', rec); payTrack('ext-pay-done', {order_price: rec.price || c.price, currency: c.currency || 'RUB'}); }
+  if(!rec.done){ rec.done = true; c.lsSet('disc.pay', rec); if(window.discXbar) window.discXbar.sync(); payTrack('ext-pay-done', {order_price: rec.price || c.price, currency: c.currency || 'RUB'}); }
   if(!rec.key || !c.endpoint) return;
   var TEXT = {'new': T.statusWait, paid: T.statusPaid, sent: T.statusSent}, tries = 0;
   (function ask(){

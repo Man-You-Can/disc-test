@@ -140,6 +140,53 @@ function initCommon(c){
     if($("#consentNo")) $("#consentNo").addEventListener("click", function(){ close("essential"); });
   })();
 
+  /* закреплённая кнопка расширенного отчёта внизу экрана (с 2026-10-22 — на всех страницах сайта, решение заказчика).
+     window.DISC_XBAR задаёт сборка только в языках, где отчёт продаётся (content.product.promo): {button, offer — та же кнопка со специальной
+     ценой (пусто, если её нет), ms — срок специальной цены, close}. Видна тем, у кого на устройстве сохранён результат теста (disc.last),
+     пока её не закроют крестиком (sessionStorage disc.xbar, до конца сеанса); не видна купившему отчёт (disc.pay.done) и на самостоятельных
+     лендингах (c.noXbar). Страница теста управляет ею сама через window.discXbar.set({show, go, src}): прячет на время вопросов и в панели,
+     на экране результата показывает и для чужого результата и раскрывает форму покупки. По умолчанию кнопка ведёт на страницу отчёта
+     (источник заказа site-bar), а на самой странице отчёта — прокручивает к форме покупки. Цель Метрики — ext-bar. */
+  (function(){
+    var X = window.DISC_XBAR;
+    if(!X || c.noXbar || !c.reportHref) return;
+    function closed(){ try{ return sessionStorage.getItem('disc.xbar') === 'off'; }catch(e){ return false; } }
+    function bought(){ var p = lsGet('disc.pay'); return !!(p && p.done); }
+    function last(){ var r = lsGet('disc.last'); return r && r.t && r.m && r.l ? r : null; }
+    var bar = document.createElement('div'); bar.className = 'xbar no-print'; bar.id = 'extBar';
+    bar.innerHTML = '<a class="btn" id="extBarGo" href="'+esc(c.reportHref)+'"></a><button class="xbar-x" type="button" id="extBarX" aria-label="'+esc(X.close)+'" title="'+esc(X.close)+'">×</button>';
+    document.body.appendChild(bar);
+    var go = bar.firstChild, page = null, text = '', timer = 0;
+    /* надпись: пока действует специальная цена (час после первого прохождения на устройстве, как в src/pay.js) — с ней, потом обычная */
+    function label(){
+      clearTimeout(timer);
+      if(text){ go.textContent = text; return; }
+      var r = last(), until = 0;
+      if(X.offer && r){ var a = Date.parse(r.t), s = lsGet('disc.offer'), b = s && Date.parse(s.t); if(!isNaN(a)) until = Math.min(a, b && !isNaN(b) ? b : a) + X.ms; }
+      var left = until - Date.now();
+      go.textContent = left > 0 ? X.offer : X.button;
+      if(left > 0) timer = setTimeout(label, Math.min(left + 500, 2147483000));
+    }
+    function sync(){
+      var on = !closed() && !bought() && (page ? !!page.show : !!last());
+      bar.classList.toggle('show', on); document.body.classList.toggle('has-xbar', on);
+    }
+    go.addEventListener('click', function(ev){
+      if(window.discTrack) window.discTrack('ext-bar');
+      if(page && page.go){ ev.preventDefault(); page.go(); return; }
+      var f = document.querySelector('#buy input[type=email]');
+      if(f){ ev.preventDefault(); f.scrollIntoView({behavior:'smooth', block:'center'}); try{ f.focus({preventScroll:true}); }catch(e){ f.focus(); } return; }
+      try{ sessionStorage.setItem('disc.src', (page && page.src) || 'site-bar'); }catch(e){}
+    });
+    bar.lastChild.addEventListener('click', function(){ try{ sessionStorage.setItem('disc.xbar', 'off'); }catch(e){} sync(); });
+    window.discXbar = {
+      set: function(p){ page = p || null; text = ''; label(); sync(); },   // null — как на обычной странице
+      text: function(s){ text = s || ''; label(); },
+      sync: sync
+    };
+    label(); sync();
+  })();
+
   /* отметка о посещении (visitStats в site.config.json, window.DISC_VISIT задаёт сборка): раз в сутки по Москве — один запрос на сервер сайта
      с языком версии, без адресов, меток и ответов; сервер пишет её со временем получения (счёт посетителей на «Сводке» панели).
      Дата последней отметки — в localStorage disc.visit; без localStorage отметка не шлётся (иначе ушла бы с каждой страницы).
