@@ -738,7 +738,40 @@ for (const L of locales) {
       `<div class="cvscore" style="--p:${(+D.score) * 10}%"><b>${escFull(D.score)}</b><span>${escFull(D.scoreOf)}</span></div></div>` +
       `<ul class="cvrows">${D.rows.map(r => `<li class="s-${r.s}"><span>${escFull(r.t)}</span><em>${escFull(r.v)}</em></li>`).join('')}</ul>` +
       `<div class="cvverdict"><b>${escFull(D.verdictTitle)}</b><p>${escFull(D.verdict)}</p></div>` +
-      `<div class="cvfiles">${D.files.map(f => `<span>${escFull(f)}</span>`).join('')}</div></figure>`;
+      `<div class="cvfiles">${D.files.map(f => `<span>${escFull(f)}</span>`).join('')}</div>` + (D.more && V.example ? `<a class="cvmore" href="#example">${escFull(D.more)} ↓</a>` : '') + `</figure>`;
+    // «Пример: от единого резюме до отклика» (с 2026-10-22, по просьбе заказчика): четыре вкладки на вымышленном кандидате; без скрипта все панели видны подряд
+    const X = V.example;
+    const exRow = r => `<li class="s-${r.s}"><div class="cvexrow-t"><span>${escFull(r.t)}</span><em>${escFull(r.v)}</em></div>${r.why ? `<p>${escFull(r.why)}</p>` : ''}</li>`;
+    const exPanels = X ? [
+      // единое резюме
+      `<div class="cvdoc"><div class="cvdoc-head"><strong>${escFull(X.profile.name)}</strong><span>${escFull(X.profile.headline)}</span></div>` +
+        `<p class="cvsrc">${escFull(X.profile.sources)}</p><h3>${escFull(X.profile.expTitle)}</h3>` +
+        X.profile.jobs.map(j => `<div class="cvjob"><p class="cvjob-period">${escFull(j.period)}</p><p class="cvjob-role"><b>${escFull(j.role)}</b> · ${escFull(j.company)}</p>` +
+          `<ul>${j.items.map(x => `<li>${escFull(x)}</li>`).join('')}</ul>` +
+          (j.note ? `<p class="cvflag"><b>${escFull(X.profile.flagLabel)}.</b> ${escFull(j.note)}</p>` : '') + `</div>`).join('') +
+        `<h3>${escFull(X.profile.skillsTitle)}</h3><p class="cvchips">${X.profile.skills.map(x => `<span>${escFull(x)}</span>`).join('')}</p>` +
+        `<h3>${escFull(X.profile.eduTitle)}</h3><p>${escFull(X.profile.edu)}</p></div>`,
+      // вакансия
+      `<div class="cvdoc"><div class="cvdoc-head"><strong>${escFull(X.vacancy.role)}</strong><span>${escFull(X.vacancy.company)}</span></div><p class="cvsrc">${escFull(X.vacancy.meta)}</p>` +
+        X.vacancy.sections.map(sct => `<h3>${escFull(sct.h)}</h3><ul>${sct.items.map(x => `<li>${escFull(x)}</li>`).join('')}</ul>`).join('') + `</div>`,
+      // оценка
+      `<div class="cvdoc"><div class="cvdoc-head cvscorehead"><div><strong>${escFull(X.vacancy.role)}</strong><span>${escFull(X.vacancy.company)}</span></div>` +
+        `<div class="cvscore cvscore-lg" style="--p:${(+X.score.total) * 10}%"><b>${escFull(X.score.total)}</b><span>${escFull(X.score.of)}</span></div></div>` +
+        `<p class="cvparts">${X.score.parts.map(x => `<span>${escFull(x.label)}: <b>${escFull(x.value)}</b></span>`).join('')}</p>` +
+        `<h3>${escFull(X.score.reqTitle)}</h3><ul class="cvexrows">${X.score.rows.map(exRow).join('')}</ul>` +
+        `<h3>${escFull(X.score.critTitle)}</h3><ul class="cvexrows">${X.score.crit.map(exRow).join('')}</ul>` +
+        `<div class="cvverdict"><b>${escFull(X.score.verdictTitle)}</b><p>${escFull(X.score.verdict)}</p></div>` +
+        `<div class="cvtopskip"><div><h3>${escFull(X.score.topTitle)}</h3><ul class="cvplus">${X.score.top.map(x => `<li>${escFull(x)}</li>`).join('')}</ul></div>` +
+        `<div><h3>${escFull(X.score.skipTitle)}</h3><ul class="cvminus">${X.score.skip.map(x => `<li>${escFull(x)}</li>`).join('')}</ul></div></div></div>`,
+      // сопроводительное письмо
+      `<div class="cvdoc cvletter"><p class="cvsrc">${escFull(X.letter.subject)}</p>${X.letter.body.map(x => `<p>${escFull(x)}</p>`).join('')}<p class="cvsign">${escFull(X.letter.sign)}</p>` +
+        `<div class="cvshort"><h3>${escFull(X.letter.shortTitle)}</h3><p>${escFull(X.letter.short)}</p></div></div>`
+    ] : [];
+    const exampleHtml = X ? `<section class="cvsec" id="example"><h2>${escFull(X.title)}</h2><p class="cvsub">${escFull(X.lead)}</p>` +
+      `<div class="cvex" id="cvEx"><div class="cvtabs" role="tablist" aria-label="${escFull(X.title)}">` +
+        X.tabs.map((tb, i) => `<button type="button" role="tab" id="cvt${i}" aria-controls="cvp${i}" aria-selected="${i === 0}" tabindex="${i === 0 ? 0 : -1}"><span>${i + 1}</span>${escFull(tb)}</button>`).join('') + `</div>` +
+        exPanels.map((h, i) => `<div class="cvpanel" role="tabpanel" id="cvp${i}" aria-labelledby="cvt${i}" tabindex="0"><h3 class="cvpanel-title">${escFull(X.tabs[i])}</h3>${h}</div>`).join('') +
+      `</div><p class="cvsub small">${escFull(X.note)}</p></section>` : '';
     writeContentPage(L, 'cv/', { bare: true, noindex: true, noDate: true, langs: locales.filter(x => x.content.cv), css: cvCss, title: V.title, description: V.description,
       crumbs: [{ name: V.h1 }], ldExtra: [ldFaq], files: ['src/cv.js', 'src/cv.css'],
       content: `<div class="cvpage">` +
@@ -747,6 +780,7 @@ for (const L of locales) {
           `<div class="cvformcard" id="request"><h2>${escFull(V.formTitle)}</h2><p class="cvformlead">${escFull(V.formLead)}</p>${form('1')}<p class="cvnote">${escFull(V.formNote)}</p></div></section>` +
         `<section class="cvsec"><h2>${escFull(V.painTitle)}</h2><ul class="cvpain">${V.pain.map((x, i) => `<li style="--k:var(${K[i % 4]})"><h3>${escFull(x.h)}</h3><p>${escFull(x.p)}</p></li>`).join('')}</ul></section>` +
         `<section class="cvsec cvhow"><div><h2>${escFull(V.howTitle)}</h2><ol class="cvsteps">${V.how.map(x => `<li><strong>${escFull(x.h)}</strong><span>${escFull(x.p)}</span></li>`).join('')}</ol>${cta()}</div>${demo}</section>` +
+        exampleHtml +
         `<section class="cvsec"><h2>${escFull(V.featuresTitle)}</h2><ul class="cvgrid">${V.features.map((x, i) => `<li style="--k:var(${K[i % 4]})"><h3>${escFull(x.h)}</h3><p>${escFull(x.p)}</p></li>`).join('')}</ul></section>` +
         `<section class="cvsec"><h2>${escFull(V.honestTitle)}</h2><div class="cvhonest"><p>${escFull(V.honest)}</p>${listHtml('ul', V.honestList)}</div></section>` +
         `<section class="cvsec" id="pricing"><h2>${escFull(V.pricingTitle)}</h2><p class="cvsub">${escFull(V.pricingLead)}</p><ul class="cvplans">` +
