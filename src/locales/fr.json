@@ -767,14 +767,14 @@
     },
     "services": {
       "title": "Services — profil DISC détaillé",
-      "description": "Service payant de disc-test.org : profil DISC détaillé pour {price} USD. Le test et le résultat restent gratuits.",
+      "description": "Service payant de disc-test.org : profil DISC détaillé pour {price} €. Le test et le résultat restent gratuits.",
       "h1": "Services",
       "lead": "Le test DISC et son résultat sont gratuits sur ce site. Pour ceux qui souhaitent une analyse plus approfondie, une version détaillée payante est disponible.",
       "name": "Profil DISC détaillé",
       "text": "Une analyse plus approfondie de votre profil DISC, à partir du test que vous avez passé. Le profil détaillé est accessible aux utilisateurs ayant payé le service.",
       "priceLabel": "Prix",
-      "price": "{price} USD",
-      "currency": "USD",
+      "price": "{price} €",
+      "currency": "EUR",
       "docs": "Le service est fourni conformément à nos {offer} ; notre {refund} précise dans quels cas et comment obtenir un remboursement.",
       "sections": [
         {
@@ -825,7 +825,7 @@
         {
           "h": "3. Prix et modalités de paiement",
           "p": [
-            "3.1. Le prix du Service est de {price} dollars américains. Pendant les 60 minutes qui suivent la réalisation du test sur le Site, le Service est proposé au prix spécial de {offerPrice} dollars américains ; le temps restant est indiqué sur le Site à côté du prix, et refaire le test ne prolonge pas ce délai. Le prix auquel la commande est passée figure sur la page de paiement et reste attaché à cette commande. Ce prix est définitif : aucun autre paiement n'est dû au Prestataire.",
+            "3.1. Le prix du Service est de {price} euros. Pendant les 60 minutes qui suivent la réalisation du test sur le Site, le Service est proposé au prix spécial de {offerPrice} euros ; le temps restant est indiqué sur le Site à côté du prix, et refaire le test ne prolonge pas ce délai. Le prix auquel la commande est passée figure sur la page de paiement et reste attaché à cette commande. Ce prix est définitif : aucun autre paiement n'est dû au Prestataire.",
             "3.2. Le Service est payé intégralement avant sa fourniture, par carte bancaire ou par un autre moyen de paiement électronique proposé sur la page de paiement. Le paiement est encaissé par l'Opérateur de paiement.",
             "3.3. Le Service est réputé payé dès que le Prestataire reçoit de l'Opérateur de paiement la confirmation du paiement.",
             "3.4. Le Client saisit les données de sa carte sur la page sécurisée de l'Opérateur de paiement. Le Prestataire ne reçoit pas ces données et ne les conserve pas.",
@@ -950,7 +950,7 @@
     },
     "product": {
       "title": "Rapport DISC détaillé — 13 sections fondées sur vos réponses",
-      "description": "Rapport DISC détaillé fondé sur vos réponses : chaque échelle expliquée, cinq exercices, un plan sur 30 jours et une fiche pour vos collègues. PDF par e-mail, {price} USD.",
+      "description": "Rapport DISC détaillé fondé sur vos réponses : chaque échelle expliquée, cinq exercices, un plan sur 30 jours et une fiche pour vos collègues. PDF par e-mail, {price} €.",
       "h1": "Rapport DISC détaillé",
       "lead": "Le rapport de synthèse que vous recevez après le test répond à une question : quel est mon type ? Le rapport détaillé répond à la suivante : qu'est-ce que j'en fais ? Il est établi à partir de vos propres réponses, avec vos scores, votre profil et votre nom sur chaque page.",
       "facts": ["13 sections", "environ 30 pages", "trois fiches pratiques", "PDF par e-mail"],
@@ -1004,7 +1004,7 @@
         ["Volume", "L'essentiel sur chaque thème", "13 sections, environ 30 pages"],
         ["Mise en pratique", "Des recommandations générales", "Cinq exercices, un plan sur 30 jours, la fiche « L'essentiel sur une page »"],
         ["À partager", "Un lien vers votre résultat", "La fiche « Comment travailler avec moi », pour votre responsable et vos collègues"],
-        ["Prix", "Gratuit", "{price} USD"]
+        ["Prix", "Gratuit", "{price} €"]
       ],
       "compareNote": "Le test, le résultat à l'écran et le rapport de synthèse en PDF restent gratuits. Le rapport détaillé est entièrement facultatif.",
       "howTitle": "Comment obtenir le rapport",
@@ -1022,7 +1022,7 @@
         { "q": "Peut-on se faire rembourser ?", "a": "Oui. Si le rapport ne vous convient pas, écrivez à {email} dans les 7 jours qui suivent le paiement : nous vous remboursons intégralement, sans que vous ayez à vous justifier. Les autres cas et la marche à suivre sont précisés dans notre {refund}." }
       ],
       "priceLabel": "Prix",
-      "price": "{price} USD",
+      "price": "{price} €",
       "docs": "Le service s'intitule « Profil DISC détaillé » ; il est fourni conformément à nos {offer}, et notre {refund} précise dans quels cas et comment obtenir un remboursement.",
       "buy": {
         "testTitle": "Le rapport est établi à partir du résultat de votre test",
@@ -1039,21 +1039,21 @@
         "guarantee": "Satisfait ou remboursé pendant 7 jours.",
         "offer": {
           "regular": "Prix habituel",
-          "cta": "Achetez maintenant à {offerPrice} USD",
-          "note": "Prix spécial pendant une heure après le test, puis {price} USD",
+          "cta": "Achetez maintenant à {offerPrice} €",
+          "note": "Prix spécial pendant une heure après le test, puis {price} €",
           "left": "Il reste",
-          "expired": "L'heure qui suit le test est écoulée : le rapport coûte désormais {price} USD. Cliquez de nouveau sur « Acheter »."
+          "expired": "L'heure qui suit le test est écoulée : le rapport coûte désormais {price} €. Cliquez de nouveau sur « Acheter »."
         },
         "emailLabel": "E-mail pour recevoir le rapport en PDF",
         "emailPlaceholder": "Saisissez votre e-mail",
         "button": "Acheter",
-        "note": "En cliquant sur « Acheter », vous acceptez nos {offer}. Le paiement se fait en dollars américains sur la page sécurisée de Prodamus : c'est là, et non sur ce site, que vous saisissez les données de votre carte. Sur votre relevé bancaire, l'opération peut apparaître sous le nom simpleway.by.",
+        "note": "En cliquant sur « Acheter », vous acceptez nos {offer}. Le paiement se fait en euros sur la page sécurisée de Prodamus : c'est là, et non sur ce site, que vous saisissez les données de votre carte. Sur votre relevé bancaire, l'opération peut apparaître sous le nom simpleway.by.",
         "badEmail": "Vérifiez l'adresse e-mail : c'est à elle que nous enverrons le rapport et le reçu.",
         "wait": "Ouverture de la page de paiement…",
         "error": "Impossible d'ouvrir la page de paiement. Réessayez dans quelques instants ou écrivez-nous à {email}.",
         "how": [
           "Passez le test gratuit : 24 blocs, environ 10 minutes. Si vous l'avez déjà passé, inutile de recommencer : le rapport est établi à partir du résultat que vous avez déjà.",
-          "Indiquez votre e-mail et cliquez sur « Acheter ». Vous payez en dollars américains sur la page sécurisée de Prodamus, notre opérateur de paiement ; cette page est en anglais. Sur votre relevé bancaire, l'opération peut apparaître sous le nom simpleway.by : c'est le nom qu'utilise bePaid, la société qui traite les paiements par carte pour Prodamus.",
+          "Indiquez votre e-mail et cliquez sur « Acheter ». Vous payez en euros sur la page sécurisée de Prodamus, notre opérateur de paiement ; cette page est en anglais. Sur votre relevé bancaire, l'opération peut apparaître sous le nom simpleway.by : c'est le nom qu'utilise bePaid, la société qui traite les paiements par carte pour Prodamus.",
           "Le rapport arrive par e-mail juste après le paiement, en pièce jointe au format PDF. Le reçu de paiement est envoyé à la même adresse."
         ],
         "thanks": {
@@ -1097,7 +1097,7 @@
         "remind": {
           "subject": "Votre rapport DISC détaillé attend son paiement",
           "intro": "Vous avez commencé l'achat du rapport DISC détaillé sur {site}, mais le paiement n'a pas abouti. Votre commande est conservée : le rapport sera établi à partir de votre résultat, pour ce profil :",
-          "price": "Le prix est de {price} USD. Après le paiement, le rapport arrivera à cette adresse en pièce jointe au format PDF, et le reçu dans un e-mail séparé.",
+          "price": "Le prix est de {price} €. Après le paiement, le rapport arrivera à cette adresse en pièce jointe au format PDF, et le reçu dans un e-mail séparé.",
           "button": "Finaliser le paiement",
           "valid": "Ce lien mène à la page de paiement sécurisée de Prodamus ; il reste valable jusqu'au {date}.",
           "footer": "Nous vous envoyons cet e-mail une seule fois, parce qu'une commande (n° {order}) a été passée sur {site} avec cette adresse. Si vous n'avez plus besoin du rapport ou si vous n'avez pas passé cette commande, vous n'avez rien à faire : la commande sera annulée automatiquement et vous ne recevrez plus de message à son sujet."
@@ -1126,7 +1126,7 @@
           "Un plan de développement sur 30 jours"
         ],
         "sample": "Pages du rapport d'une participante fictive",
-        "price": "{price} USD · PDF par e-mail",
+        "price": "{price} € · PDF par e-mail",
         "button": "Je veux le rapport détaillé",
         "free": "Le test et le rapport de synthèse restent gratuits."
       },
@@ -1144,7 +1144,7 @@
           "layersSame": "votre style adapté et votre style naturel coïncident ({k}) : l'atout et le risque"
         },
         "tail": "Au total, 13 sections, dont cinq exercices et un plan sur 30 jours.",
-        "button": "Rapport détaillé — {price} USD",
+        "button": "Rapport détaillé — {price} €",
         "close": "Masquer",
         "homeLabel": "Votre résultat du {date}",
         "homeOpen": "Ouvrir le résultat",
@@ -1765,7 +1765,7 @@
         },
         {
           "h": "Un prix accessible",
-          "p": "La préparation automatique permet de garder le test et le rapport de synthèse gratuits, et de proposer le rapport détaillé à {price} USD."
+          "p": "La préparation automatique permet de garder le test et le rapport de synthèse gratuits, et de proposer le rapport détaillé à {price} €."
         },
         {
           "h": "Aucune réponse envoyée à une IA",

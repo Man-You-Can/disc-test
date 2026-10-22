@@ -48,9 +48,9 @@ const legalHtml = L => legalInn ? `<div class="legal">${esc(L.ui.legal.replace('
 // Строка о правах на тексты (подвал каждой страницы, печатная версия результата, PDF-отчёт из письма): ui.rights, {year} — год сборки
 const rightsHtml = L => `<div class="rights">${esc(L.ui.rights.replace('{year}', new Date().getFullYear()))}</div>`;
 // Платная услуга. Страница /services/ есть во всех языках; цена берётся по валюте локали (content.services.currency):
-// servicePriceRub или servicePriceUsd в site.config.json, пустое значение или 0 убирает страницу и пункт меню в языках с этой валютой.
+// servicePriceRub, servicePriceUsd или servicePriceEur (французская и немецкая версии, с 2026-10-22) в site.config.json, пустое значение или 0 убирает страницу и пункт меню в языках с этой валютой.
 // Оферта и условия возврата (/offer/, /refund/) — только в языках, где есть content.offer и content.refund (сейчас — русский)
-const servicePrices = { RUB: Number(cfg.servicePriceRub) || 0, USD: Number(cfg.servicePriceUsd) || 0 };
+const servicePrices = { RUB: Number(cfg.servicePriceRub) || 0, USD: Number(cfg.servicePriceUsd) || 0, EUR: Number(cfg.servicePriceEur) || 0 };
 const fmtPrice = (L, v) => v ? new Intl.NumberFormat(L.dateLocale, Number.isInteger(v) ? {} : { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(v) : '';
 const servicePrice = L => fmtPrice(L, L.content.services ? servicePrices[L.content.services.currency] || 0 : 0);
 const hasServices = L => !!(servicePrice(L) && L.ui['nav.services']);
@@ -63,11 +63,11 @@ const hasOffer = L => !!(hasServices(L) && L.content.offer && L.content.refund &
 const sampleCount = L => { let n = 0; while (fs.existsSync(path.join(SRC, 'assets', 'extended', `${L.lang}-i-${n + 1}.webp`)) && fs.existsSync(path.join(SRC, 'assets', 'extended', `${L.lang}-i-${n + 1}-s.webp`))) n++; return n; };
 const hasProduct = L => !!(hasOffer(L) && L.content.product);
 const hasSamples = L => { const P = L.content.product; return !!(hasProduct(L) && P.sampleTitle && P.sampleNote && P.block.sample && Array.isArray(P.sampleAlt) && Array.isArray(P.sampleCaption) && P.sampleAlt.length && sampleCount(L) >= P.sampleAlt.length); };
-// Специальная цена (offerPriceRub, offerPriceUsd, offerMinutes в site.config.json; решение заказчика от 2026-10-22, во всех языках с покупкой): в течение
+// Специальная цена (offerPriceRub, offerPriceUsd, offerPriceEur, offerMinutes в site.config.json; решение заказчика от 2026-10-22, во всех языках с покупкой): в течение
 // offerMinutes после прохождения теста отчёт стоит offerPrice<валюта> вместо servicePrice<валюта>. Включается в языке с этой валютой, где отчёт продаётся
 // (content.product.pay) и есть тексты content.product.pay.offer; в текстах цена подставляется вместо {offerPrice}. Срок проверяет сервер оплаты
 // по времени прохождения в коде результата (private/server/src/pay.js), страница показывает зачёркнутую обычную цену и обратный отсчёт (src/pay.js).
-const offerPrices = { RUB: Number(cfg.offerPriceRub) || 0, USD: Number(cfg.offerPriceUsd) || 0 }, offerMinutes = Number(cfg.offerMinutes) || 60;
+const offerPrices = { RUB: Number(cfg.offerPriceRub) || 0, USD: Number(cfg.offerPriceUsd) || 0, EUR: Number(cfg.offerPriceEur) || 0 }, offerMinutes = Number(cfg.offerMinutes) || 60;
 // offerTermsPrice — цена для оферты (п. 3.1 во всех языках, где она есть, даже без покупки); offerPrice — для форм покупки (нужны тексты pay.offer)
 const offerTermsPrice = L => { const cur = L.content.services && L.content.services.currency, v = offerPrices[cur] || 0; return v && v < (servicePrices[cur] || 0) ? fmtPrice(L, v) : ''; };
 const offerPrice = L => { const C = L.content; return C.product && C.product.pay && C.product.pay.offer ? offerTermsPrice(L) : ''; };
@@ -903,8 +903,8 @@ for (const L of locales) {
     cta: { title: L.ui['cta.title'], text: L.ui['cta.text'], desc: L.ui['pages.profile.descCta'] } };
   // письмо с расширенным отчётом (платная услуга): тексты есть только в языках, где отчёт написан
   if (L.content.extendedMail) mailData[L.lang].extended = L.content.extendedMail;
-  // оплата расширенного отчёта на своём сервере: название услуги для платёжной страницы и чека, письмо-напоминание о неоконченной оплате
-  if (L.content.product && L.content.product.pay && L.content.product.pay.remind) mailData[L.lang].pay = { name: L.content.services.name, remind: L.content.product.pay.remind, dateLocale: L.dateLocale };
+  // оплата расширенного отчёта на своём сервере: название услуги для платёжной страницы и чека, письмо-напоминание о неоконченной оплате, валюта заказа (USD или EUR через Prodamus)
+  if (L.content.product && L.content.product.pay && L.content.product.pay.remind) mailData[L.lang].pay = { name: L.content.services.name, remind: L.content.product.pay.remind, dateLocale: L.dateLocale, currency: L.content.services.currency };
 }
 // Блок о расширенном отчёте в PDF краткого отчёта и в теле письма с результатом: в языках, где есть страница отчёта и тексты `content.product.pdf`.
 // Листы образца — только там, где есть и их картинки для PDF, и подписи (hasSamples): они вшиваются в данные ядра, при сборке PDF сеть закрыта.
@@ -931,7 +931,7 @@ if (cfg.reportAd === true || process.env.REPORT_AD === '1') {
 const gsTpl = fs.readFileSync(path.join(SRC, 'apps-script.template.js'), 'utf8');
 const gs = gsTpl
   .replace('__SITE_URL__', siteUrl).replace('__SEND_TOKEN__', String(cfg.sendToken || '').replace(/['\\]/g, ''))
-  .replace('__SENDER_EMAIL__', senderEmail).replace('__CONTACT_TO__', feedbackEmail).replace('__PRICE_RUB__', String(servicePrices.RUB || 0)).replace('__PRICE_USD__', String(servicePrices.USD || 0)).replace('__OFFER_RUB__', String(offerPrices.RUB || 0)).replace('__OFFER_USD__', String(offerPrices.USD || 0)).replace('__OFFER_MIN__', String(offerMinutes)).replace('__MAX_CONTACT_BYTES__', String(MAX_CONTACT_BYTES))
+  .replace('__SENDER_EMAIL__', senderEmail).replace('__CONTACT_TO__', feedbackEmail).replace('__PRICE_RUB__', String(servicePrices.RUB || 0)).replace('__PRICE_USD__', String(servicePrices.USD || 0)).replace('__OFFER_RUB__', String(offerPrices.RUB || 0)).replace('__OFFER_USD__', String(offerPrices.USD || 0)).replace('__PRICE_EUR__', String(servicePrices.EUR || 0)).replace('__OFFER_EUR__', String(offerPrices.EUR || 0)).replace('__OFFER_MIN__', String(offerMinutes)).replace('__MAX_CONTACT_BYTES__', String(MAX_CONTACT_BYTES))
   .replace('__BLOCK_KEYS__', BLOCK_KEYS).replace('__DATA__', () => JSON.stringify(mailData));
 fs.mkdirSync(path.join(ROOT, 'backend', 'apps-script'), { recursive: true });
 fs.writeFileSync(path.join(ROOT, 'backend', 'apps-script', 'Code.gs'), gs);

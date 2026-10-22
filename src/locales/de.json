@@ -769,14 +769,14 @@
     },
     "services": {
       "title": "Leistungen – ausführliches DISG-Profil",
-      "description": "Kostenpflichtige Leistung von disc-test.org: ausführliches DISG-Profil für {price} USD. Test und Ergebnis bleiben kostenlos.",
+      "description": "Kostenpflichtige Leistung von disc-test.org: ausführliches DISG-Profil für {price} €. Test und Ergebnis bleiben kostenlos.",
       "h1": "Leistungen",
       "lead": "Der DISG-Test und sein Ergebnis sind auf dieser Seite kostenlos. Wer eine genauere Auswertung wünscht, kann eine kostenpflichtige ausführliche Version erhalten.",
       "name": "Ausführliches DISG-Profil",
       "text": "Eine genauere Auswertung Ihres DISG-Profils auf Grundlage Ihres Tests. Das ausführliche Profil steht Nutzern zur Verfügung, die die Leistung bezahlt haben.",
       "priceLabel": "Preis",
-      "price": "{price} USD",
-      "currency": "USD",
+      "price": "{price} €",
+      "currency": "EUR",
       "docs": "Für die Leistung gelten unsere {offer}; wann und wie Sie Ihr Geld zurückerhalten, steht in den {refund}.",
       "sections": [
         {
@@ -827,7 +827,7 @@
         {
           "h": "3. Preis und Zahlung",
           "p": [
-            "3.1. Der Preis der Leistung beträgt {price} US-Dollar. Innerhalb von 60 Minuten nach Durchführung des Tests auf der Website wird die Leistung zum Sonderpreis von {offerPrice} US-Dollar angeboten; die verbleibende Zeit wird auf der Website neben dem Preis angezeigt, eine Wiederholung des Tests verlängert diese Frist nicht. Der Preis, zu dem eine Bestellung aufgegeben wird, wird auf der Zahlungsseite angezeigt und bleibt für diese Bestellung bestehen. Der Preis ist ein Endpreis: Weitere Zahlungen an den Anbieter fallen nicht an.",
+            "3.1. Der Preis der Leistung beträgt {price} Euro. Innerhalb von 60 Minuten nach Durchführung des Tests auf der Website wird die Leistung zum Sonderpreis von {offerPrice} Euro angeboten; die verbleibende Zeit wird auf der Website neben dem Preis angezeigt, eine Wiederholung des Tests verlängert diese Frist nicht. Der Preis, zu dem eine Bestellung aufgegeben wird, wird auf der Zahlungsseite angezeigt und bleibt für diese Bestellung bestehen. Der Preis ist ein Endpreis: Weitere Zahlungen an den Anbieter fallen nicht an.",
             "3.2. Die Leistung ist vor ihrer Erbringung vollständig zu bezahlen, und zwar mit Bankkarte oder einer anderen elektronischen Zahlungsart, die auf der Zahlungsseite angeboten wird. Die Zahlung nimmt der Zahlungsabwickler entgegen.",
             "3.3. Die Leistung gilt als bezahlt, sobald der Anbieter die Zahlungsbestätigung des Zahlungsabwicklers erhalten hat.",
             "3.4. Die Kartendaten gibt der Kunde auf der gesicherten Seite des Zahlungsabwicklers ein. Der Anbieter erhält und speichert diese Daten nicht.",
@@ -952,7 +952,7 @@
     },
     "product": {
       "title": "Ausführlicher DISG-Bericht – 13 Kapitel zu Ihrem Ergebnis",
-      "description": "Ausführlicher DISG-Bericht zu Ihrem Testergebnis: jede Skala erklärt, fünf Übungen, ein 30-Tage-Plan und ein Blatt für Ihr Team. PDF per E-Mail, {price} USD.",
+      "description": "Ausführlicher DISG-Bericht zu Ihrem Testergebnis: jede Skala erklärt, fünf Übungen, ein 30-Tage-Plan und ein Blatt für Ihr Team. PDF per E-Mail, {price} €.",
       "h1": "Ausführlicher DISG-Bericht",
       "lead": "Der Kurzbericht nach dem Test beantwortet die Frage „Welcher Typ bin ich?“. Der ausführliche Bericht beantwortet die nächste: „Was fange ich damit an?“ Er entsteht aus Ihren eigenen Antworten: mit Ihren Zahlen, für Ihr Profil, mit Ihrem Namen auf jeder Seite.",
       "facts": ["13 Kapitel", "rund 30 Seiten", "drei Arbeitsblätter", "PDF per E-Mail"],
@@ -1002,7 +1002,7 @@
         ["Umfang", "Jedes Thema in Kürze", "13 Kapitel, rund 30 Seiten"],
         ["Praxis", "Allgemeine Empfehlungen", "Fünf Übungen, 30-Tage-Plan, Arbeitsblatt „Das Wichtigste auf einer Seite“"],
         ["Für andere", "Link zu Ihrem Ergebnis", "Arbeitsblatt „So arbeitet man am besten mit mir“ für Führungskraft und Team"],
-        ["Preis", "Kostenlos", "{price} USD"]
+        ["Preis", "Kostenlos", "{price} €"]
       ],
       "compareNote": "Der Test, das Ergebnis auf dem Bildschirm und der Kurzbericht als PDF bleiben kostenlos. Den ausführlichen Bericht bestellen Sie nur, wenn Sie ihn möchten.",
       "howTitle": "So erhalten Sie den Bericht",
@@ -1020,7 +1020,7 @@
         { "q": "Kann ich mein Geld zurückbekommen?", "a": "Ja. Sagt Ihnen der Bericht nicht zu, schreiben Sie innerhalb von 7 Tagen nach der Zahlung an {email}: Sie erhalten Ihr Geld vollständig zurück, ohne Angabe von Gründen. Alle weiteren Fälle und den Ablauf finden Sie in den {refund}." }
       ],
       "priceLabel": "Preis",
-      "price": "{price} USD",
+      "price": "{price} €",
       "docs": "Die Leistung heißt „Ausführliches DISG-Profil“; für sie gelten unsere {offer}. Wann und wie Sie Ihr Geld zurückerhalten, steht in den {refund}.",
       "buy": {
         "testTitle": "Der Bericht entsteht aus Ihrem Testergebnis",
@@ -1037,21 +1037,21 @@
         "guarantee": "Nicht zufrieden? 7 Tage Geld-zurück-Garantie.",
         "offer": {
           "regular": "Regulärer Preis",
-          "cta": "Jetzt für {offerPrice} USD sichern",
-          "note": "Sonderpreis eine Stunde nach dem Test, danach {price} USD",
+          "cta": "Jetzt für {offerPrice} € sichern",
+          "note": "Sonderpreis eine Stunde nach dem Test, danach {price} €",
           "left": "Noch",
-          "expired": "Die Stunde nach dem Test ist vorbei: Der Bericht kostet jetzt {price} USD. Klicken Sie erneut auf „Kaufen“."
+          "expired": "Die Stunde nach dem Test ist vorbei: Der Bericht kostet jetzt {price} €. Klicken Sie erneut auf „Kaufen“."
         },
         "emailLabel": "E-Mail-Adresse für den Bericht als PDF",
         "emailPlaceholder": "Geben Sie Ihre E-Mail-Adresse ein",
         "button": "Kaufen",
-        "note": "Mit einem Klick auf „Kaufen“ akzeptieren Sie unsere {offer}. Sie bezahlen in US-Dollar auf der gesicherten Seite von Prodamus: Ihre Kartendaten geben Sie dort ein, nicht auf dieser Website. Auf Ihrem Kontoauszug kann die Zahlung unter dem Namen simpleway.by erscheinen.",
+        "note": "Mit einem Klick auf „Kaufen“ akzeptieren Sie unsere {offer}. Sie bezahlen in Euro auf der gesicherten Seite von Prodamus: Ihre Kartendaten geben Sie dort ein, nicht auf dieser Website. Auf Ihrem Kontoauszug kann die Zahlung unter dem Namen simpleway.by erscheinen.",
         "badEmail": "Prüfen Sie die E-Mail-Adresse: An sie senden wir den Bericht und den Kaufbeleg.",
         "wait": "Die Zahlungsseite wird geöffnet …",
         "error": "Die Zahlungsseite lässt sich gerade nicht öffnen. Versuchen Sie es in ein paar Minuten noch einmal oder schreiben Sie uns an {email}.",
         "how": [
           "Machen Sie den kostenlosen Test: 24 Blöcke, etwa 10 Minuten. Haben Sie ihn schon gemacht, brauchen Sie ihn nicht zu wiederholen: Der Bericht entsteht aus dem vorhandenen Ergebnis.",
-          "Geben Sie Ihre E-Mail-Adresse ein und klicken Sie auf „Kaufen“. Sie bezahlen in US-Dollar auf der gesicherten Seite von Prodamus, unserem Zahlungsabwickler; diese Seite ist auf Englisch. Auf Ihrem Kontoauszug kann die Zahlung unter dem Namen simpleway.by erscheinen: Diesen Namen verwendet bePaid, das Unternehmen, das für Prodamus die Kartenzahlungen abwickelt.",
+          "Geben Sie Ihre E-Mail-Adresse ein und klicken Sie auf „Kaufen“. Sie bezahlen in Euro auf der gesicherten Seite von Prodamus, unserem Zahlungsabwickler; diese Seite ist auf Englisch. Auf Ihrem Kontoauszug kann die Zahlung unter dem Namen simpleway.by erscheinen: Diesen Namen verwendet bePaid, das Unternehmen, das für Prodamus die Kartenzahlungen abwickelt.",
           "Der Bericht kommt direkt nach der Zahlung per E-Mail, als PDF im Anhang. Der Kaufbeleg geht an dieselbe Adresse."
         ],
         "thanks": {
@@ -1095,7 +1095,7 @@
         "remind": {
           "subject": "Ihr ausführlicher DISG-Bericht wartet auf die Zahlung",
           "intro": "Sie haben auf {site} begonnen, den ausführlichen DISG-Bericht zu kaufen, aber die Zahlung wurde nicht abgeschlossen. Ihre Bestellung ist gespeichert: Der Bericht entsteht aus Ihrem Ergebnis, für dieses Profil:",
-          "price": "Der Preis beträgt {price} USD. Nach der Zahlung kommt der Bericht als PDF im Anhang an diese Adresse, der Kaufbeleg in einer eigenen E-Mail.",
+          "price": "Der Preis beträgt {price} €. Nach der Zahlung kommt der Bericht als PDF im Anhang an diese Adresse, der Kaufbeleg in einer eigenen E-Mail.",
           "button": "Zahlung abschließen",
           "valid": "Der Link führt zur gesicherten Zahlungsseite von Prodamus und gilt bis zum {date}.",
           "footer": "Wir senden Ihnen diese E-Mail nur einmal, weil auf {site} mit dieser Adresse eine Bestellung (Nr. {order}) aufgegeben wurde. Wenn Sie den Bericht nicht mehr brauchen oder die Bestellung nicht aufgegeben haben, müssen Sie nichts tun: Die Bestellung wird automatisch storniert, und Sie erhalten dazu keine weiteren Nachrichten."
@@ -1124,7 +1124,7 @@
           "Ein 30-Tage-Entwicklungsplan"
         ],
         "sample": "Seiten aus dem Bericht einer erfundenen Teilnehmerin",
-        "price": "{price} USD · PDF per E-Mail",
+        "price": "{price} € · PDF per E-Mail",
         "button": "Ausführlichen Bericht holen",
         "free": "Test und Kurzbericht bleiben kostenlos."
       },
@@ -1142,7 +1142,7 @@
           "layersSame": "Angepasstes und natürliches Verhalten stimmen überein ({k}): Vorteil und Risiko"
         },
         "tail": "Insgesamt 13 Kapitel, darunter fünf Übungen und ein 30-Tage-Plan.",
-        "button": "Ausführlicher Bericht – {price} USD",
+        "button": "Ausführlicher Bericht – {price} €",
         "close": "Ausblenden",
         "homeLabel": "Ihr Ergebnis vom {date}",
         "homeOpen": "Ergebnis öffnen",
@@ -1750,7 +1750,7 @@
         },
         {
           "h": "Günstiger Preis",
-          "p": "Weil die Berichte automatisch entstehen, können Test und Kurzbericht kostenlos bleiben und der ausführliche Bericht für {price} USD angeboten werden."
+          "p": "Weil die Berichte automatisch entstehen, können Test und Kurzbericht kostenlos bleiben und der ausführliche Bericht für {price} € angeboten werden."
         },
         {
           "h": "Ihre Antworten gehen an keine KI",

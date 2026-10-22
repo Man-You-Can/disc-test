@@ -982,7 +982,7 @@ function payOrder(c){
 }
 
 /* «Спасибо»: e-mail покупателя в первом абзаце, номер заказа, статус (оплата получена → отчёт отправлен), цель ext-pay-done один раз на заказ.
-   c: {T (content.product.pay.thanks), endpoint, price, currency (RUB или USD — валюта языка), lsGet, lsSet, $} */
+   c: {T (content.product.pay.thanks), endpoint, price, currency (RUB, USD или EUR — валюта языка), lsGet, lsSet, $} */
 function initPayThanks(c){
   var T = c.T, $ = c.$, o = payOrder(c), rec = o.rec, lead = $('#payLead'), ord = $('#payOrder'), st = $('#payStatus');
   if(rec && rec.email){ lead.textContent = T.leadEmail.replace('{email}', rec.email); lead.classList.add('ym-hide-content'); }
@@ -1008,7 +1008,7 @@ function initPayFail(c){
   if(rec && !rec.fail){ rec.fail = true; c.lsSet('disc.pay', rec); payTrack('ext-pay-fail'); }
 }
 
-initPayThanks({T: {"leadEmail":"Der Bericht kommt gleich an {email}, als PDF im Anhang.","order":"Bestellnummer: {order}","statusWait":"Wir warten auf die Zahlungsbestätigung von Prodamus.","statusPaid":"Die Zahlung ist eingegangen. Ihr Bericht wird erstellt.","statusSent":"Der Bericht ist verschickt. Sehen Sie in Ihrem Posteingang nach."}, endpoint: "https://api.disc-test.org/pay", price: 9.99, currency: "USD", lsGet: lsGet, lsSet: lsSet, $: $});
+initPayThanks({T: {"leadEmail":"Der Bericht kommt gleich an {email}, als PDF im Anhang.","order":"Bestellnummer: {order}","statusWait":"Wir warten auf die Zahlungsbestätigung von Prodamus.","statusPaid":"Die Zahlung ist eingegangen. Ihr Bericht wird erstellt.","statusSent":"Der Bericht ist verschickt. Sehen Sie in Ihrem Posteingang nach."}, endpoint: "https://api.disc-test.org/pay", price: 9.99, currency: "EUR", lsGet: lsGet, lsSet: lsSet, $: $});
 /* цели Метрики у кнопок теста (cta-top, cta-bottom, cta-float) и плавающая кнопка на телефоне: видна, когда призыв
    после вводного абзаца уже прокручен вверх, а нижний призыв и подвал ещё не на экране (аудит 3, п. 1) */
 (function(){

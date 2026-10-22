@@ -49,6 +49,8 @@ var EXTENDED_PRICE_RUB = __PRICE_RUB__;  // цена расширенного о
 var EXTENDED_PRICE_USD = __PRICE_USD__;  // цена в долларах (servicePriceUsd) — для оплаты из нерусских версий через Prodamus; 0 — услуги нет
 var EXTENDED_OFFER_RUB = __OFFER_RUB__;  // специальная цена в рублях (offerPriceRub): в течение EXTENDED_OFFER_MIN минут после прохождения теста; 0 — её нет
 var EXTENDED_OFFER_USD = __OFFER_USD__;  // специальная цена в долларах (offerPriceUsd) — для нерусских версий через Prodamus; 0 — её нет
+var EXTENDED_PRICE_EUR = __PRICE_EUR__;  // цена в евро (servicePriceEur) — для языков с валютой EUR (DATA[язык].pay.currency: французский, немецкий) через Prodamus; 0 — её нет
+var EXTENDED_OFFER_EUR = __OFFER_EUR__;  // специальная цена в евро (offerPriceEur); 0 — её нет
 var EXTENDED_OFFER_MIN = __OFFER_MIN__;  // срок специальной цены в минутах (offerMinutes)
 var CONTACT_TO = '__CONTACT_TO__';   // адрес формы обратной связи (feedbackEmail в site.config.json); '' — форма отключена
 var MAX_CONTACT_BYTES = __MAX_CONTACT_BYTES__;  // общий размер вложений одного сообщения (то же число проверяет браузер)
@@ -285,7 +287,7 @@ function composePayRemindMail(r, lang, o) {
   // дата: в русском письме — 21.10.2026, в остальных — запись языка (October 21, 2026), чтобы не путать день и месяц
   var date = Utilities.formatDate(o.until, 'Europe/Moscow', 'dd.MM.yyyy');
   if (lang !== 'ru' && L.pay.dateLocale) { try { date = new Intl.DateTimeFormat(L.pay.dateLocale, { timeZone: 'Europe/Moscow', day: 'numeric', month: 'long', year: 'numeric' }).format(o.until); } catch (e) {} }
-  // цена в долларах — в записи языка (6.99 в английском, 6,99 в португальском); рубли в русском письме — как есть
+  // цена в долларах или евро — в записи языка (6.99 в английском, 6,99 в португальском); рубли в русском письме — как есть
   var price = o.price;
   if (lang !== 'ru' && L.pay.dateLocale && price % 1) { try { price = new Intl.NumberFormat(L.pay.dateLocale, { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(price); } catch (e) {} }
   var vars = { site: site, order: o.order, price: price, date: date };

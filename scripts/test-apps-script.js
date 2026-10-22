@@ -292,7 +292,7 @@ check('extended: second sending is appended to the cell, row and column not dupl
 // оплата расширенного отчёта на своём сервере: цена и письмо-напоминание о неоконченной оплате (отправляет сервер, тексты и вёрстка — здесь)
 const pR = ctx.composePayRemindMail(ctx.decodeResult(cX), 'ru', { order: '261011-7K3QXM', url: 'https://api.disc-test.org/pay/go?order=261011-7K3QXM&key=k', until: new Date('2026-10-14T09:00:00Z'), price: ctx.EXTENDED_OFFER_RUB });   // напоминание называет цену заказа: здесь — специальную
 const saleOf = lg => { const P = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'src', 'locales', lg + '.json'), 'utf8')).content.product; return !!(P && P.pay); };
-check('pay: price from site settings, service name and reminder texts only where the report is sold', ctx.EXTENDED_PRICE_RUB === 790 && ctx.EXTENDED_OFFER_RUB === 490 && ctx.EXTENDED_PRICE_USD === 9.99 && ctx.EXTENDED_OFFER_USD === 6.99 && ctx.EXTENDED_OFFER_MIN === 60 && ctx.DATA.ru.pay.name === 'Расширенная версия DISC' &&
+check('pay: price from site settings, service name and reminder texts only where the report is sold', ctx.EXTENDED_PRICE_RUB === 790 && ctx.EXTENDED_OFFER_RUB === 490 && ctx.EXTENDED_PRICE_USD === 9.99 && ctx.EXTENDED_OFFER_USD === 6.99 && ctx.EXTENDED_PRICE_EUR === 9.99 && ctx.EXTENDED_OFFER_EUR === 6.99 && ctx.EXTENDED_OFFER_MIN === 60 && ctx.DATA.ru.pay.name === 'Расширенная версия DISC' &&
   Object.keys(ctx.DATA).filter(lg => ctx.DATA[lg].pay).join() === Object.keys(ctx.DATA).filter(saleOf).join() && Object.keys(ctx.DATA).filter(lg => ctx.DATA[lg].pay).includes('ru'));
 // напоминание в языке с оплатой через Prodamus: цена в долларах, дата в записи языка (не 21.10.2026), ничего русского
 if (ctx.DATA.en && ctx.DATA.en.pay) {
@@ -312,10 +312,11 @@ if (ctx.DATA.es && ctx.DATA.es.pay) {
   check('pay reminder in Spanish: 6,99 USD, the date written out, Prodamus named, nothing unfilled, nothing Russian', [pS.html, pS.text].every(s => s.includes('6,99 USD') && s.includes('21 de octubre de 2026') && s.includes('Prodamus') &&
     s.includes('261019-AB12CD') && s.includes('Pionero') && !/\{\w+\}|undefined|₽|6\.99|[А-Яа-яЁё]/.test(s.replace(/Пётр Буянов/g, ''))) && pS.subject === ctx.DATA.es.pay.remind.subject);
 }
-// напоминание на французском: цена в записи языка (6,99 USD с неразрывным пробелом), дата словами, ничего русского
+check('pay: order currency by language — EUR in French and German, USD in the other languages with purchase, RUB in Russian', Object.keys(ctx.DATA).filter(lg => ctx.DATA[lg].pay).every(lg => ctx.DATA[lg].pay.currency === (lg === 'ru' ? 'RUB' : lg === 'fr' || lg === 'de' ? 'EUR' : 'USD')));
+// напоминание на французском: цена в евро в записи языка (6,99 € с неразрывным пробелом; евро с 2026-10-22), дата словами, ничего русского
 if (ctx.DATA.fr && ctx.DATA.fr.pay) {
-  const pF = ctx.composePayRemindMail(ctx.decodeResult(cX), 'fr', { order: '261019-AB12CD', url: 'https://api.disc-test.org/pay/go?order=261019-AB12CD&key=k', until: new Date('2026-10-21T09:00:00Z'), price: ctx.EXTENDED_OFFER_USD });
-  check('pay reminder in French: 6,99 USD (no-break space), the date written out, Prodamus named, nothing unfilled, nothing Russian', [pF.html, pF.text].every(s => s.includes('6,99\u00a0USD') && s.includes('21 octobre 2026') && s.includes('Prodamus') &&
+  const pF = ctx.composePayRemindMail(ctx.decodeResult(cX), 'fr', { order: '261019-AB12CD', url: 'https://api.disc-test.org/pay/go?order=261019-AB12CD&key=k', until: new Date('2026-10-21T09:00:00Z'), price: ctx.EXTENDED_OFFER_EUR });
+  check('pay reminder in French: 6,99 € (no-break space), the date written out, Prodamus named, nothing unfilled, nothing Russian, no dollars', [pF.html, pF.text].every(s => s.includes('6,99\u00a0€') && !/USD|dollar/i.test(s) && s.includes('21 octobre 2026') && s.includes('Prodamus') &&
     s.includes('261019-AB12CD') && s.includes('Pionnier') && !/\{\w+\}|undefined|₽|6\.99|[А-Яа-яЁё]/.test(s.replace(/Пётр Буянов/g, ''))) && pF.subject === ctx.DATA.fr.pay.remind.subject);
 }
 check('pay reminder: subject, greeting, profile, price, order, link valid until the date, nothing unfilled', pR.subject === 'Ваш расширенный отчёт DISC ждёт оплаты' && [pR.html, pR.text].every(s => s.includes('Пётр Буянов') && s.includes('Первопроходец') &&
@@ -424,10 +425,10 @@ if (ctx.DATA.fr && ctx.DATA.fr.extended) {
   check('extended mail in French: subject, invite link to /fr/ with campaign tags, nothing unfilled', /^Votre rapport DISC détaillé\s:\sDI · Pionnier$/.test(mF.subject) &&
     mF.html.includes('href="https://disc-test.org/fr/?utm_source=report&amp;utm_medium=email&amp;utm_campaign=full-di&amp;utm_content=invite"') && !/\{\w+\}|undefined/.test(mF.html + mF.text));
 }
-// напоминание на немецком: цена в записи языка (6,99 USD с неразрывным пробелом), дата словами, ничего русского
+// напоминание на немецком: цена в евро в записи языка (6,99 € с неразрывным пробелом; евро с 2026-10-22), дата словами, ничего русского
 if (ctx.DATA.de && ctx.DATA.de.pay) {
-  const pG = ctx.composePayRemindMail(ctx.decodeResult(cX), 'de', { order: '261019-AB12CD', url: 'https://api.disc-test.org/pay/go?order=261019-AB12CD&key=k', until: new Date('2026-10-21T09:00:00Z'), price: ctx.EXTENDED_OFFER_USD });
-  check('pay reminder in German: 6,99 USD (no-break space), the date written out, Prodamus named, nothing unfilled, nothing Russian', [pG.html, pG.text].every(s => s.includes('6,99\u00a0USD') && s.includes('21. Oktober 2026') && s.includes('Prodamus') &&
+  const pG = ctx.composePayRemindMail(ctx.decodeResult(cX), 'de', { order: '261019-AB12CD', url: 'https://api.disc-test.org/pay/go?order=261019-AB12CD&key=k', until: new Date('2026-10-21T09:00:00Z'), price: ctx.EXTENDED_OFFER_EUR });
+  check('pay reminder in German: 6,99 € (no-break space), the date written out, Prodamus named, nothing unfilled, nothing Russian, no dollars', [pG.html, pG.text].every(s => s.includes('6,99\u00a0€') && !/USD|Dollar/i.test(s) && s.includes('21. Oktober 2026') && s.includes('Prodamus') &&
     s.includes('261019-AB12CD') && s.includes('Pionier') && !/\{\w+\}|undefined|₽|6\.99|[А-Яа-яЁё]/.test(s.replace(/Пётр Буянов/g, ''))) && pG.subject === ctx.DATA.de.pay.remind.subject);
 }
 // письмо покупателю на немецком: приглашение ведёт на /de/ с метками кампании

@@ -982,7 +982,7 @@ function payOrder(c){
 }
 
 /* «Спасибо»: e-mail покупателя в первом абзаце, номер заказа, статус (оплата получена → отчёт отправлен), цель ext-pay-done один раз на заказ.
-   c: {T (content.product.pay.thanks), endpoint, price, currency (RUB или USD — валюта языка), lsGet, lsSet, $} */
+   c: {T (content.product.pay.thanks), endpoint, price, currency (RUB, USD или EUR — валюта языка), lsGet, lsSet, $} */
 function initPayThanks(c){
   var T = c.T, $ = c.$, o = payOrder(c), rec = o.rec, lead = $('#payLead'), ord = $('#payOrder'), st = $('#payStatus');
   if(rec && rec.email){ lead.textContent = T.leadEmail.replace('{email}', rec.email); lead.classList.add('ym-hide-content'); }
