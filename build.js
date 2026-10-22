@@ -37,6 +37,9 @@ const introHTML = require(path.join(SRC, 'intro.js'));
 const commonJs = fs.readFileSync(path.join(SRC, 'common.js'), 'utf8').replace(/\nif \(typeof module[^\n]*\n?$/, '\n');
 // Форма обратной связи: письма уходят на feedbackEmail через Apps Script; пустой адрес — страницы /contact/ и ссылки на неё нет
 const contactJs = fs.readFileSync(path.join(SRC, 'contact.js'), 'utf8').replace(/\nif \(typeof module[^\n]*\n?$/, '\n');
+// Заявка со страницы «Для организаций» (/business/): разметку businessHTML() кладёт сборка, логику initBusiness() — сама страница
+const businessHTML = require(path.join(SRC, 'business.js'));
+const businessJs = fs.readFileSync(path.join(SRC, 'business.js'), 'utf8').replace(/\nif \(typeof module[^\n]*\n?$/, '\n');
 const contactHTML = require(path.join(SRC, 'contact.js'));
 const feedbackEmail = String(cfg.feedbackEmail || '').trim().replace(/['\\<>"]/g, '');
 // Адрес, с которого Apps Script шлёт письма (в Gmail он должен быть добавлен как «Отправлять письма как»); по умолчанию — feedbackEmail
@@ -79,6 +82,20 @@ const payOffer = L => { if (!offerPrice(L)) return null; const P = L.content.pro
   return { price: offerPrices[cur], regular: servicePrices[cur], ms: offerMinutes * 60000, priceText: withPrice(L, P.price).replace(servicePrice(L), offerPrice(L)),
     regularText: withPrice(L, P.price), regularLabel: O.regular, cta: O.cta, note: O.note, left: O.left, expired: O.expired,
     button: P.promo ? withPrice(L, P.promo.button).replace(servicePrice(L), offerPrice(L)) : '' }; };
+// Коды доступа (с 2026-10-22, по просьбе заказчика; сначала русская версия): организации покупают расширенные отчёты пакетом и раздают людям коды.
+// accessCodes в site.config.json включает в формах покупки ссылку «Есть код доступа от организации?» с полем кода (тексты content.product.pay.code):
+// код уходит на <payEndpoint>/code, сервер проверяет его и ставит задание на отчёт (private/server/src/codes.js). Включать после выкладки сервера с кодами.
+const accessCodes = () => !!(cfg.accessCodes && payEndpoint);   // функция: payEndpoint объявлен ниже
+const payCodeT = (L, fill) => { const P = L.content.product && L.content.product.pay, X = P && P.code; if (!accessCodes() || !X) return null;
+  return Object.assign(Object.fromEntries(['link', 'label', 'placeholder', 'button', 'back', 'wait', 'badEmail', 'empty', 'done', 'bad', 'expired'].map(k => [k, X[k]])),
+    { noteHtml: fill(escFull(X.note)), usedHtml: fill(escFull(X.used)), errorHtml: fill(escFull(X.error)) }); };
+// Страница «Для организаций» (/business/, пункт в подвале): пакеты кодов — businessPacks в site.config.json ([{from, priceRub}]: от скольких кодов
+// и цена одного), срок кода — businessCodeMonths; заявка — форма на странице (src/business.js), уходит через форму обратной связи сервера.
+// Есть там, где в локали content.business и ui['nav.business'], отчёт продаётся в рублях и включены коды доступа.
+const businessPacks = (Array.isArray(cfg.businessPacks) ? cfg.businessPacks : []).filter(x => x && x.from > 0 && x.priceRub > 0).sort((a, b) => a.from - b.from);
+const businessMonths = Number(cfg.businessCodeMonths) || 12;
+const hasBusiness = L => !!(L.content.business && L.ui['nav.business'] && hasProduct(L) && L.content.product.pay && L.content.services.currency === 'RUB' && servicePrices.RUB &&
+  payCodeT(L, x => x) && feedbackEmail && cfg.sendEndpoint && businessPacks.length);
 // Оператор и дата редакции в политике и согласии: в языке с полным текстом политики (policy.legal — русская версия) — исполнитель из оферты
 // (ИП с ИНН), в остальных — строка реквизитов из подвала. От наличия оферты не зависит: иначе её появление в языке меняло бы текст согласия,
 // на который люди уже согласились (после правки текста согласия нужна новая pdVersion)
@@ -160,7 +177,7 @@ const ltr = str => `<span dir="ltr">${str}</span>`; // латиница внут
 const FOOT_ITEMS = [['nav.about', 'about/']].concat(feedbackEmail ? [['nav.contact', 'contact/']] : []).concat([['nav.privacy', 'privacy/']]);
 // Короткий подвал экрана результата (с 2026-10-21, решение заказчика): только оферта, конфиденциальность и обратная связь + строка ©
 const footShort = (L, base) => (hasOffer(L) ? [['nav.offer', 'offer/']] : []).concat([['nav.privacy', 'privacy/']], feedbackEmail ? [['nav.contact', 'contact/']] : []).map(([k, sub]) => `<a href="${base + sub}">${esc(L.ui[k])}</a>`).join(' · ');
-const footLinks = (L, base) => FOOT_ITEMS.slice(0, 1).concat(hasServices(L) ? [['nav.services', 'services/']] : [], hasOffer(L) ? [['nav.offer', 'offer/']] : [], FOOT_ITEMS.slice(1)).map(([k, sub]) => `<a href="${base + sub}">${esc(L.ui[k])}</a>`).join(' · ');
+const footLinks = (L, base) => FOOT_ITEMS.slice(0, 1).concat(hasServices(L) ? [['nav.services', 'services/']] : [], hasBusiness(L) ? [['nav.business', 'business/']] : [], hasOffer(L) ? [['nav.offer', 'offer/']] : [], FOOT_ITEMS.slice(1)).map(([k, sub]) => `<a href="${base + sub}">${esc(L.ui[k])}</a>`).join(' · ');
 const PROFILE_KEYS = ['D', 'DI', 'DC', 'DS', 'I', 'ID', 'IS', 'IC', 'S', 'SI', 'SC', 'SD', 'C', 'CD', 'CS', 'CI'];
 // Источники к странице «Что такое DISC». Библиографические описания одинаковы во всех языках
 // (названия работ приводятся на языке оригинала), поэтому живут здесь, а не в локалях;
@@ -321,7 +338,7 @@ function homePay(L) {
   const C = L.content, pay = payEndpoint && C.product && C.product.pay ? withPrice(L, C.product.pay) : null; if (!pay) return null;
   const vars = { offer: `<a href="{base}offer/">${escFull(C.offer.linkText)}</a>`, email: feedbackEmail ? `<a href="mailto:${escFull(feedbackEmail)}">${escFull(feedbackEmail)}</a>` : '—' };
   const fill = h => h.replace(/\{(offer|email)\}/g, (m, k) => vars[k]);
-  return Object.assign({ noteHtml: fill(escFull(pay.note)), errorHtml: fill(escFull(pay.error)), more: C.product.more, offer: payOffer(L) },
+  return Object.assign({ noteHtml: fill(escFull(pay.note)), errorHtml: fill(escFull(pay.error)), more: C.product.more, offer: payOffer(L), code: payCodeT(L, fill) },
     Object.fromEntries(['text', 'emailLabel', 'emailPlaceholder', 'button', 'badEmail', 'wait', 'guarantee'].map(k => [k, pay[k]])));
 }
 // Организация-издатель: одна карточка на весь сайт, с адресом для связи
@@ -683,7 +700,9 @@ for (const L of locales) {
   // /teams/ — DISC для команды и HR
   const tm = C.teams;
   writeContentPage(L, 'teams/', { navKey: 'nav.teams', article: true, title: tm.title, description: tm.description, crumbs: [{ name: t('nav.teams') }],
-    content: `<div class="eyebrow">DISC</div><h1>${escFull(tm.h1)}</h1><p class="lead">${escFull(tm.lead)}</p>` + ctaTop(t, '../') + sectionsHtml(tm.sections) + ctaBlock(L, t, '../') + seeAlso('../', 'nav.teams') });
+    content: `<div class="eyebrow">DISC</div><h1>${escFull(tm.h1)}</h1><p class="lead">${escFull(tm.lead)}</p>` + ctaTop(t, '../') + sectionsHtml(tm.sections) +
+      (hasBusiness(L) ? `<p class="seealso"><a href="../business/">${escFull(C.business.h1)}: ${escFull(C.business.packsTitle.toLowerCase())} ${arrow(L)}</a></p>` : '') +
+      ctaBlock(L, t, '../') + seeAlso('../', 'nav.teams') });
   // /disc-vs-mbti/ — сравнение моделей: таблица после второй секции
   const mb = C.mbti;
   writeContentPage(L, 'disc-vs-mbti/', { navKey: 'nav.mbti', article: true, title: mb.title, description: mb.description, crumbs: [{ name: t('nav.mbti') }],
@@ -714,7 +733,39 @@ for (const L of locales) {
         `<section class="service"><div><h2>${escFull(sv.name)}</h2><p>${escFull(sv.text)}</p>` + (hasProduct(L) ? `<p><a class="more" href="../extended-report/">${escFull(C.product.more)} ${arrow(L)}</a></p>` : '') +
         `</div><p class="price"><small>${escFull(sv.priceLabel)}</small>${escFull(sv.price)}</p></section>` +
         sectionsHtml(sv.sections.slice(0, 1)) + (docs && sv.docs ? `<p>${escFull(sv.docs)}</p>` : '') + sectionsHtml(sv.sections.slice(1))) +
+        (hasBusiness(L) ? `<h2>${escFull(C.business.h1)}</h2><p>${escFull(C.business.lead)}</p><p><a class="more" href="../business/">${escFull(C.business.packsTitle)} ${arrow(L)}</a></p>` : '') +
         (docs ? `<p class="seealso">${docLink('offer/', of)} · ${docLink('refund/', rf)}</p>` : '') });
+    // /business/ — «Для организаций»: пакеты кодов доступа к расширенному отчёту (цены — businessPacks), как это работает, данные участников,
+    // границы применения, оплата по счёту, вопросы и форма заявки (src/business.js → форма обратной связи сервера, тема «Заявка для организации: …»)
+    if (hasBusiness(L)) {
+      const B = C.business, retail = servicePrices.RUB, pct = p => Math.floor((1 - p.priceRub / retail) * 100);   // вниз: скидку не преувеличиваем
+      const bv = Object.assign({}, vars, { minPack: String(businessPacks[0].from), maxDiscount: String(Math.max(...businessPacks.map(pct))), retail: fmtPrice(L, retail), months: String(businessMonths),
+        report: link('extended-report/', C.product.h1), teams: link('teams/', t('nav.teams')) });
+      const fillB = html => html.replace(/\{(\w+)\}/g, (m, k) => k in bv ? bv[k] : m), plainB = str => String(str).replace(/\{(minPack|maxDiscount|retail|months)\}/g, (m, k) => bv[k]);
+      const packs = `<div class="tablewrap"><table class="cmp packs"><thead><tr>${B.packsHead.map(h => `<th scope="col">${escFull(h)}</th>`).join('')}</tr></thead><tbody>` +
+        businessPacks.map(p => `<tr><td>${escFull(B.packRow.replace("{n}", p.from))}</td><td>${escFull(B.packPrice.replace('{price}', fmtPrice(L, p.priceRub)))}</td><td>${escFull(B.packDiscount.replace('{pct}', pct(p)))}</td></tr>`).join('') + `</tbody></table></div>`;
+      const F = B.form, BT = { name: t('intro.nameLabel'), email: t('contact.emailLabel'), company: F.company, size: F.size, sizes: F.sizes, interest: F.interest, interests: F.interests,
+        comment: F.comment, commentPlaceholder: F.commentPlaceholder, button: F.button, subject: F.subject, sent: F.sent, needCompany: F.needCompany, needInterest: F.needInterest,
+        requiredNote: t('intro.requiredNote'), nameRequired: t('intro.nameRequired'), emailRequired: t('intro.emailRequired'), pdRequired: L.ui['pd.required'] || '',
+        sending: t('contact.sending'), sendFailed: t('contact.sendFailed'), tooMany: t('contact.tooMany'), privacyNote: F.privacy };
+      writeContentPage(L, 'business/', { navKey: 'nav.services', langs: locales.filter(hasBusiness), title: plainB(B.title), description: plainB(B.description), crumbs: [svcCrumb, { name: t('nav.business') }],
+        content: fillB(`<div class="eyebrow">${escFull(t('nav.services'))}</div><h1>${escFull(B.h1)}</h1><p class="lead">${escFull(B.lead)}</p>` +
+          `<ul class="xfacts">${B.facts.map(x => `<li>${escFull(x)}</li>`).join('')}</ul>` +
+          `<p><a class="btn" href="#request">${escFull(F.button)}</a></p>` +
+          `<h2>${escFull(B.forTitle)}</h2>` + listHtml('ul', B.for) +
+          `<h2>${escFull(B.packsTitle)}</h2><p>${escFull(B.packsText)}</p>` + packs + `<p class="small muted">${escFull(B.packsNote)}</p>` +
+          `<h2>${escFull(B.howTitle)}</h2>` + listHtml('ol', B.how) +
+          `<h2>${escFull(B.privacyTitle)}</h2>` + B.privacy.map(x => `<p>${escFull(x)}</p>`).join('') +
+          `<h2>${escFull(B.boundsTitle)}</h2><p>${escFull(B.bounds)}</p>` +
+          `<h2>${escFull(B.teamTitle)}</h2><p>${escFull(B.team)}</p>` +
+          `<h2>${escFull(B.payTitle)}</h2>` + B.pay.map(x => `<p>${escFull(x)}</p>`).join('') +
+          `<h2>${escFull(B.faqTitle)}</h2>` + B.faq.map(it => `<h3 class="xq">${escFull(it.q)}</h3><p>${escFull(it.a)}</p>`).join('') +
+          `<h2 id="request">${escFull(F.title)}</h2><p>${escFull(F.lead)}</p>`) +
+          businessHTML({ T: BT, esc: escFull, email: feedbackEmail, pdLabel: pdOn ? pdLabelHtml(L, '../') : '' }) +
+          `<p class="seealso">${docLink('extended-report/', C.product)} · ${docLink('services/', sv)} · ${docLink('offer/', of)}</p>`,
+        files: ['src/business.js'],
+        pageJs: businessJs + `initBusiness({T: ${JSON.stringify(BT).replace(/</g, '\\u003c')}, L: L, esc: esc, $: $, endpoint: ${jsStr(cfg.sendEndpoint)}, token: ${jsStr(cfg.sendToken)}, email: ${jsStr(feedbackEmail)}, pdVersion: ${jsStr(pdOn ? pdVersion : '')}});` });
+    }
     // /extended-report/ — страница расширенного отчёта: что внутри, листы образца картинками, сравнение с кратким отчётом, цена.
     // Блок покупки по умолчанию ведёт на тест. У кого результат сохранён на этом устройстве (disc.last), тому скрипт страницы меняет его:
     // при заданном payEndpoint — на форму с полем e-mail и кнопкой «Купить» (src/pay.js), без него — на заявку через форму обратной связи
@@ -741,7 +792,7 @@ for (const L of locales) {
           `<p class="seealso">${docLink('services/', sv)} · ${docLink('offer/', of)} · ${docLink('refund/', rf)}</p>`,
         files: samples ? pr.sampleAlt.map((_, i) => `src/assets/extended/${L.lang}-i-${i + 1}.webp`) : [],
         pageJs: resultFromUrlJs + (pay ? payJs + `\ninitPayBuy({T: ${JSON.stringify(Object.assign({ noteHtml: fillHtml(escFull(pay.note)), errorHtml: fillHtml(escFull(pay.error)) },
-          Object.fromEntries(['title', 'text', 'emailLabel', 'emailPlaceholder', 'button', 'badEmail', 'wait', 'guarantee'].map(k => [k, pay[k]])), { offer: payOffer(L) })).replace(/</g, '\\u003c')}, endpoint: ${jsStr(payEndpoint)}, L: L, esc: esc, lsGet: lsGet, lsSet: lsSet});` : `(function(){
+          Object.fromEntries(['title', 'text', 'emailLabel', 'emailPlaceholder', 'button', 'badEmail', 'wait', 'guarantee'].map(k => [k, pay[k]])), { offer: payOffer(L), code: payCodeT(L, fillHtml) })).replace(/</g, '\\u003c')}, endpoint: ${jsStr(payEndpoint)}, L: L, esc: esc, lsGet: lsGet, lsSet: lsSet});` : `(function(){
   var r = resultFromUrl() || lsGet('disc.last'); if(!r || !r.t || !r.m || !r.l || !r.m.join) return;
   var B = ${JSON.stringify(pr.buy).replace(/</g, '\\u003c')}, d = new Date(r.t), date = isNaN(d) ? '' : d.toLocaleDateString(L.dateLocale, {day:'numeric', month:'long', year:'numeric'});
   function b64e(s){ return btoa(unescape(encodeURIComponent(s))).replace(/\\+/g,'-').replace(/\\//g,'_').replace(/=+$/,''); }

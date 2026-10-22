@@ -340,8 +340,10 @@ function noteExtended(saved, text) {
   } catch (err) { console.error('noteExtended: ' + ((err && err.message) || err)); }
 }
 
-function composeExtendedMail(r, lang) {
+function composeExtendedMail(r, lang, o) {
   var L = DATA[lang], X = L.extended;
+  // отчёт по коду доступа (o.code, с 2026-10-22): платил не получатель — вступление и строка внизу свои (codeIntro, codeFooter), если они есть в языке
+  var intro = o && o.code && X.codeIntro ? X.codeIntro : X.intro, footer = o && o.code && X.codeFooter ? X.codeFooter : X.footer;
   var c = classify(score(r)), prof = L.profiles[c.key];
   var label = c.key + ' · ' + prof.name;
   var styleName = c.s ? L.keys[c.p] + ' + ' + L.keys[c.s] : L.keys[c.p];
@@ -354,7 +356,7 @@ function composeExtendedMail(r, lang) {
     '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background:#ffffff;border:1px solid #D9DDE3;border-radius:14px"><tr><td style="padding:28px;font-size:16px;line-height:1.5">' +
     '<p style="margin:0 0 16px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#5B6470;font-weight:bold">DISC</p>' +
     '<p style="margin:0 0 8px">' + esc(greeting) + '</p>' +
-    '<p style="margin:0 0 14px">' + esc(X.intro) + '</p>' +
+    '<p style="margin:0 0 14px">' + esc(intro) + '</p>' +
     '<p style="margin:0 0 2px;font-size:34px;font-weight:bold;line-height:1">' + badge + '&nbsp; ' + esc(prof.name) + '</p>' +
     '<p style="margin:0 0 18px;font-size:13px;color:#5B6470">' + esc(styleName) + '</p>' +
     '<p style="margin:0 0 14px;font-weight:bold">' + esc(X.attached) + '</p>' +
@@ -365,10 +367,10 @@ function composeExtendedMail(r, lang) {
     '<p style="margin:0 0 10px">' + esc(X.invite) + '</p>' +
     '<p style="margin:0">' + esc(X.inviteLink) + ' <a href="' + esc(testLink) + '" style="color:#3B6FB6;font-weight:bold">' + esc(test.replace(/^https?:\/\//, '')) + '</a></p>' +
     '</td></tr></table>' +
-    '<p style="margin:0;padding-top:12px;border-top:1px solid #D9DDE3;font-size:12px;color:#5B6470">' + esc(X.footer) + '</p>' +
+    '<p style="margin:0;padding-top:12px;border-top:1px solid #D9DDE3;font-size:12px;color:#5B6470">' + esc(footer) + '</p>' +
     '</td></tr></table></td></tr></table></body></html>';
-  var text = greeting + '\n\n' + X.intro + ' ' + label + ' (' + styleName + ')\n\n' + X.attached + '\n\n' + X.how + '\n\n' + X.help + '\n\n' +
-    X.inviteTitle + '\n' + X.invite + '\n' + X.inviteLink + ' ' + testLink + '\n\n' + X.footer + '\n';
+  var text = greeting + '\n\n' + intro + ' ' + label + ' (' + styleName + ')\n\n' + X.attached + '\n\n' + X.how + '\n\n' + X.help + '\n\n' +
+    X.inviteTitle + '\n' + X.invite + '\n' + X.inviteLink + ' ' + testLink + '\n\n' + footer + '\n';
   return { subject: fmt(X.subject, { label: label }), html: html, text: text };
 }
 

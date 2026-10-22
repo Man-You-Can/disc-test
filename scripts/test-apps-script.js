@@ -401,6 +401,13 @@ check('extended: at most 5 reports per address per hour', (() => { let last; for
 check('extended: reports do not use up the daily counter of result mails', (() => { const k = Object.keys(store).find(x => x.startsWith('day:')), was = store[k]; ext({ to: 'quota@b.co' }); return store[k] === was; })());
 check('extended texts exist only where the report is sold', Object.keys(ctx.DATA).filter(lg => ctx.DATA[lg].extended).join() === Object.keys(ctx.DATA).filter(saleOf).join() &&
   Object.keys(ctx.DATA).filter(lg => ctx.DATA[lg].extended).every(lg => Object.values(ctx.DATA[lg].extended).every(s => typeof s === 'string' && s.trim())));
+// отчёт по коду доступа (с 2026-10-22): платил не получатель — вступление и строка внизу свои, без «Спасибо за покупку» и «вы оплатили»
+if (ctx.DATA.ru.extended && ctx.DATA.ru.extended.codeIntro) {
+  const mC = ctx.composeExtendedMail(ctx.decodeResult(cX), 'ru', { code: true }), mR = ctx.composeExtendedMail(ctx.decodeResult(cX), 'ru');
+  check('extended mail by access code: own intro and footer, no thanks for the purchase; the paid mail is unchanged', mC.subject === mR.subject &&
+    mC.html.includes(ctx.esc(ctx.DATA.ru.extended.codeIntro)) && mC.text.includes(ctx.DATA.ru.extended.codeFooter) && !/Спасибо за покупку|вы оплатили/.test(mC.html + mC.text) &&
+    /Спасибо за покупку/.test(mR.text) && !/\{\w+\}|undefined/.test(mC.html + mC.text));
+}
 // письмо покупателю на английском: ссылка-приглашение ведёт в корень сайта (адрес /en/ перенаправляет туда без меток кампании)
 if (ctx.DATA.en && ctx.DATA.en.extended) {
   const mE = ctx.composeExtendedMail(ctx.decodeResult(cX), 'en');

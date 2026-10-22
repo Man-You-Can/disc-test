@@ -77,9 +77,11 @@ function payForms(c){
       (o.price ? '<div class="xbuyact"><span class="xbig">'+esc(o.price)+'</span><button class="btn" type="submit">'+esc(T.button)+'</button></div>'
         : '<button class="btn" type="submit">'+esc(T.button)+'</button>')+
       (T.guarantee ? '<p class="xguar">'+esc(T.guarantee)+'</p>' : '')+
-      '<p class="small sendstatus err" aria-live="polite" hidden></p><p class="xnote">'+T.noteHtml+'</p>';
+      '<p class="small sendstatus err" aria-live="polite" hidden></p><p class="xnote">'+T.noteHtml+'</p>'+
+      (T.code ? payCodeHTML(T.code, o.id, esc) : '');
     var f = {form:form, input:form.querySelector('input'), btn:form.querySelector('button'), st:form.querySelector('.sendstatus'), deal:form.querySelector('.xdeal'), clock:form.querySelector('.xdeal span'),
       big: o.priceEl || form.querySelector('.xbig'), until: payOfferUntil(O, o.t, c.lsGet), price: 0}, input = f.input, st = f.st;
+    if(T.code) payCodeInit(c, g, f, o);
     var other = g.forms.filter(function(x){ return x.input.value; })[0];
     if(other) input.value = other.input.value;
     else if(o.email && String(o.email).length <= PAY_EMAIL_MAX) input.value = o.email;
@@ -87,6 +89,7 @@ function payForms(c){
     input.addEventListener('input', function(){ st.hidden = true; g.forms.forEach(function(x){ if(x.input !== input) x.input.value = input.value; }); });
     form.addEventListener('submit', function(ev){
       ev.preventDefault(); if(g.busy) return;
+      if(f.coding){ f.redeem(); return; }   // форма в режиме кода доступа: Enter в поле — «Получить отчёт»
       var email = input.value.trim();
       if(email.length > PAY_EMAIL_MAX || !PAY_EMAIL_RE.test(email)){ st.textContent = T.badEmail; st.hidden = false; input.focus(); return; }
       st.hidden = true; g.setBusy(true); payTrack('ext-page-buy');
@@ -110,6 +113,54 @@ function payForms(c){
     return f;
   };
   return g;
+}
+
+/* Код доступа (с 2026-10-22; T.code — тексты content.product.pay.code, есть, когда в site.config.json включены accessCodes): организация купила
+   отчёты пакетом и раздала людям коды. Ссылка под формой покупки переключает форму в режим кода: цена, «Купить» и условия покупки прячутся,
+   появляются поле кода и «Получить отчёт»; поле e-mail общее. Запрос:
+     POST <payEndpoint>/code  {voucher, code, email, lang, source} → {ok: true} или {ok: false, error: 'no code' | 'used' | 'expired' | 'bad email' | …}
+   Сервер проверяет код и ставит задание на отчёт; оплаты нет. После успеха устройство помнит, что отчёт получен (disc.pay.done — как после покупки:
+   продающие элементы больше не показываются). Цель Метрики ext-code-done. */
+function payCodeHTML(X, id, esc){
+  return '<div class="xcode"><button type="button" class="link xcodelink" aria-expanded="false">'+esc(X.link)+'</button>'+
+    '<div class="xcodebox" hidden><div class="field"><label for="'+id+'Code">'+esc(X.label)+'</label>'+
+    '<input type="text" id="'+id+'Code" class="xcodein" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="24" placeholder="'+esc(X.placeholder)+'"></div>'+
+    '<button class="btn" type="button">'+esc(X.button)+'</button>'+
+    '<p class="small sendstatus" aria-live="polite" hidden></p><p class="xnote">'+X.noteHtml+'</p></div></div>';
+}
+function payCodeInit(c, g, f, o){
+  var X = c.T.code, esc = c.esc, form = f.form, link = form.querySelector('.xcodelink'), box = form.querySelector('.xcodebox'),
+    inp = box.querySelector('input'), btn = box.querySelector('button'), st = box.querySelector('.sendstatus'), done = false;
+  function say(kind, html){ st.className = 'small sendstatus' + (kind ? ' ' + kind : ''); st.innerHTML = html; st.hidden = false; }
+  link.addEventListener('click', function(){
+    f.coding = !f.coding; form.classList.toggle('xcoding', f.coding); box.hidden = !f.coding; f.st.hidden = true;
+    link.textContent = f.coding ? X.back : X.link; link.setAttribute('aria-expanded', String(f.coding));
+    if(f.coding) (f.input.value.trim() ? inp : f.input).focus();
+  });
+  f.redeem = function(){
+    if(done || g.busy) return;
+    var email = f.input.value.trim(), voucher = inp.value.trim();
+    if(email.length > PAY_EMAIL_MAX || !PAY_EMAIL_RE.test(email)){ say('err', esc(X.badEmail)); f.input.focus(); return; }
+    if(voucher.replace(/[^A-Za-z0-9]/g, '').length < 4){ say('err', esc(X.empty)); inp.focus(); return; }
+    btn.disabled = true; btn.textContent = X.wait; st.hidden = true;
+    fetch(c.endpoint + '/code', {method:'POST', body: JSON.stringify({voucher:voucher, code:o.code, email:email, lang:c.L.lang, source:o.source})})
+      .then(function(res){ return res.text(); })
+      .then(function(txt){ var j = null; try{ j = JSON.parse(txt); }catch(e){}
+        if(!j) throw new Error('bad response');
+        if(!j.ok){ var e = new Error(String(j.error || 'bad response')); throw e; }
+        done = true; inp.disabled = true; f.input.disabled = true; btn.hidden = true; link.hidden = true;
+        say('ok', esc(X.done.replace('{to}', email)));
+        try{ var p = c.lsGet('disc.pay') || {}; if(!p.done) c.lsSet('disc.pay', {code:true, email:email, t:Date.now(), done:true}); }catch(e){}
+        payTrack('ext-code-done'); })
+      .catch(function(err){ var m = err && err.message;
+        if(!done){ btn.disabled = false; btn.textContent = X.button; }
+        if(m === 'no code') say('err', esc(X.bad));
+        else if(m === 'used') say('err', X.usedHtml);
+        else if(m === 'expired') say('err', esc(X.expired));
+        else if(m === 'bad email'){ say('err', esc(X.badEmail)); f.input.focus(); }
+        else say('err', X.errorHtml); });
+  };
+  btn.addEventListener('click', f.redeem);
 }
 
 /* Страница отчёта: у кого результат сохранён на этом устройстве (disc.last), тому блок покупки (.xbuy) превращается в форму

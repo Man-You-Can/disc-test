@@ -42,6 +42,17 @@ http.createServer((req, res) => {
         json({ ok: true, order, key: mockOrders[order].key, url: '/mock-pay/form?order=' + order });
       }); return;
     }
+    // код доступа (src/pay.js, payCodeInit): TEST-TEST-TEST — принят, USED-USED-USED — использован, OLDS-OLDS-OLDS — истёк, остальные — «нет такого кода»
+    if (req.method === 'POST' && p === '/mock-pay/code') {
+      let body = ''; req.on('data', c => body += c); req.on('end', () => {
+        let j = {}; try { j = JSON.parse(body); } catch (e) {}
+        const v = String(j.voucher || '').toUpperCase().replace(/[^A-Z0-9]/g, '');
+        console.log('mock-pay code:', v, j.email, 'source=' + j.source, 'lang=' + j.lang);
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(String(j.email || '')) || String(j.email).length > 64) return json({ ok: false, error: 'bad email' });
+        if (!/^DISC1\.[A-Za-z0-9_-]+$/.test(String(j.code || ''))) return json({ ok: false, error: 'bad code' });
+        json(v === 'TESTTESTTEST' ? { ok: true } : { ok: false, error: v === 'USEDUSEDUSED' ? 'used' : v === 'OLDSOLDSOLDS' ? 'expired' : 'no code' });
+      }); return;
+    }
     if (p === '/mock-pay/form' && o) return send(200, 'text/html; charset=utf-8', '<!DOCTYPE html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Заглушка платёжной страницы</title>' +
       '<body style="font:16px/1.5 system-ui,sans-serif;max-width:420px;margin:48px auto;padding:0 16px"><h1 style="font-size:22px">Заглушка платёжной страницы</h1>' +
       '<p>Заказ ' + q.get('order') + '. Настоящая страница банка здесь не открывается: это локальная проверка.</p>' +

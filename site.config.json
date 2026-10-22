@@ -49,6 +49,13 @@
   "offerPriceEur": 6.99,
   "sendEndpoint": "https://api.disc-test.org/",
   "payEndpoint": "https://api.disc-test.org/pay",
+  "accessCodes": true,
+  "businessPacks": [
+    { "from": 10, "priceRub": 590 },
+    { "from": 50, "priceRub": 490 },
+    { "from": 100, "priceRub": 390 }
+  ],
+  "businessCodeMonths": 12,
   "newsletter": true,
   "resultEmail": true,
   "homeSubscribe": true,
