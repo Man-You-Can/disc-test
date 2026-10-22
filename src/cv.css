@@ -93,15 +93,24 @@ body:has(.cvpage) .wrap{max-width:1080px}
 .cvhow .btn{font-size:17px;padding:15px 28px}
 
 /* основатель */
-.cvauthor{display:grid;grid-template-columns:220px minmax(0,1fr);gap:28px;align-items:start;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px 24px}
-.cvphoto{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;border-radius:14px;background:var(--soft)}
+/* слева фото и цитата: цитата прижата к низу и кончается вровень с последним пунктом списка справа, фото занимает остаток высоты */
+.cvauthor{display:grid;grid-template-columns:240px minmax(0,1fr);gap:22px 28px;align-items:stretch;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px 24px}
+.cvauthor-side{display:flex;flex-direction:column;gap:16px}
+.cvphoto{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 25%;border-radius:14px;background:var(--soft)}
+.cvauthor-side .cvphoto{aspect-ratio:auto;flex:1 1 0;min-height:180px;max-height:340px}
+.cvquote{margin:auto 0 0;padding:2px 0 2px 14px;border-inline-start:3px solid var(--s);font-size:15px;line-height:1.5;font-style:italic}
 .cvauthor-body{display:flex;flex-direction:column;gap:4px}
 .cvauthor .cvname{font-family:var(--font-head);font-weight:500;font-size:24px;line-height:1.2}
 .cvauthor .cvrole{color:var(--muted);margin:0 0 10px}
 .content .cvauthor ul{list-style:disc;padding-inline-start:20px;margin:0 0 12px}
 .content .cvauthor ul li{margin:0 0 6px}
+.content .cvauthor ul{margin-bottom:0}
+.content .cvauthor ul li:last-child{margin-bottom:0}
 .cvauthor p{margin:0}
-.cvauthor .cvsite{margin-top:10px}
+.cvauthor .cvsite{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 16px;border-top:1px solid var(--line);padding-top:16px;color:var(--muted);font-size:15px}
+.cvsite a{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border:1px solid var(--line-strong);border-radius:999px;color:var(--ink);font-weight:600;text-decoration:none;transition:background .15s,border-color .15s}
+.cvsite a:hover,.cvsite a:focus-visible{background:var(--soft);border-color:var(--s)}
+.cvsite svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.6;color:var(--s)}
 
 /* вопросы */
 .cvfaq details{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:0 20px;margin:0 0 10px}
@@ -120,7 +129,7 @@ body:has(.cvpage) .wrap{max-width:1080px}
 @media (max-width:900px){
   .cvhero,.cvhow{grid-template-columns:1fr;gap:28px}
   .cvformcard{position:static}
-  .cvauthor{grid-template-columns:180px minmax(0,1fr);gap:22px}
+  .cvauthor{grid-template-columns:200px minmax(0,1fr);gap:20px 22px}
   .content .cvpain,.content .cvgrid{grid-template-columns:1fr 1fr}
   .content .cvplans{grid-template-columns:1fr}
 }
@@ -134,7 +143,8 @@ body:has(.cvpage) .wrap{max-width:1080px}
   .cvformcard{padding:22px 18px 18px}
   .cvfinal{padding:26px 18px 20px}
   .cvauthor{grid-template-columns:1fr;gap:18px;padding:18px}
-  .cvphoto{width:180px}
+  .cvphoto,.cvauthor-side .cvphoto{width:180px;aspect-ratio:4/5;flex:none;min-height:0;max-height:none}
+  .cvquote{margin-top:0}
   .cvcenter,.cvhow .btn{display:flex;width:100%;justify-content:center}
 }
 

@@ -848,9 +848,10 @@ for (const L of locales) {
             `<ul>${p.items.map(x => `<li>${tick}${escFull(x)}</li>`).join('')}</ul></li>`).join('') +
           `</ul><p class="cvsub small">${escFull(V.pricingNote)}</p>${cta('cvcenter')}</section>` +
         `<section class="cvsec"><h2>${escFull(V.founderTitle)}</h2><div class="cvauthor">` +
-          (A.photoAlt ? `<img class="cvphoto" src="${imgRel}img/armen-manukyan.webp" srcset="${imgRel}img/armen-manukyan.webp 1x, ${imgRel}img/armen-manukyan-2x.webp 2x" width="280" height="350" alt="${escFull(A.photoAlt)}" loading="lazy" decoding="async">` : '') +
-          `<div class="cvauthor-body"><span class="cvname">${escFull(A.name)}</span><p class="cvrole">${escFull(A.role)}</p>` + listHtml('ul', A.facts) +
-          `<p>${escFull(A.text)}</p><p class="cvsite"><a href="${escFull(A.siteUrl)}" target="_blank" rel="noopener">${escFull(A.site)} ${arrow(L)}</a></p></div></div></section>` +
+          `<div class="cvauthor-side">` + (A.photoAlt ? `<img class="cvphoto" src="${imgRel}img/armen-manukyan.webp" srcset="${imgRel}img/armen-manukyan.webp 1x, ${imgRel}img/armen-manukyan-2x.webp 2x" width="280" height="350" alt="${escFull(A.photoAlt)}" loading="lazy" decoding="async">` : '') +
+          `<blockquote class="cvquote"><p>${escFull(A.text)}</p></blockquote></div>` +
+          `<div class="cvauthor-body"><span class="cvname">${escFull(A.name)}</span><p class="cvrole">${escFull(A.role)}</p>` + listHtml('ul', A.facts) + `</div>` +
+          `<p class="cvsite"><span>${escFull(A.siteLabel)}</span><a href="${escFull(A.siteUrl)}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z"/></svg>${escFull(A.site)} <span aria-hidden="true">${arrow(L)}</span></a></p></div></section>` +
         `<section class="cvsec cvfaq"><h2>${escFull(V.faqTitle)}</h2>` + V.faq.map(it => `<details><summary>${escFull(it.q)}</summary><p>${fill(it.a)}</p></details>`).join('') + `</section>` +
         `<section class="cvfinal" id="cvfinal"><h2>${escFull(V.finalTitle)}</h2><p>${escFull(V.finalLead)}</p>${form('2')}</section>` +
         `</div><a class="btn ctafloat no-print" id="cvFloat" href="#cvfinal" data-cta>${escFull(V.floatButton)}</a>`,
