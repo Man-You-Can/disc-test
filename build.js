@@ -773,8 +773,8 @@ for (const L of locales) {
       const fillB = html => html.replace(/\{(\w+)\}/g, (m, k) => k in bv ? bv[k] : m), plainB = str => String(str).replace(/\{(minPack|maxDiscount|retail|months)\}/g, (m, k) => bv[k]);
       const packs = `<div class="tablewrap"><table class="cmp packs"><thead><tr>${B.packsHead.map(h => `<th scope="col">${escFull(h)}</th>`).join('')}</tr></thead><tbody>` +
         businessPacks.map(p => `<tr><td>${escFull(B.packRow.replace("{n}", p.from))}</td><td>${escFull(B.packPrice.replace('{price}', fmtPrice(L, p.priceRub)))}</td><td>${escFull(B.packDiscount.replace('{pct}', pct(p)))}</td></tr>`).join('') + `</tbody></table></div>`;
-      const F = B.form, BT = { name: t('intro.nameLabel'), email: t('contact.emailLabel'), company: F.company, size: F.size, sizes: F.sizes, interest: F.interest, interests: F.interests,
-        comment: F.comment, commentPlaceholder: F.commentPlaceholder, button: F.button, subject: F.subject, sent: F.sent, needCompany: F.needCompany, needInterest: F.needInterest,
+      const F = B.form, BT = { name: t('intro.nameLabel'), email: t('contact.emailLabel'), size: F.size, sizes: F.sizes, interest: F.interest, interests: F.interests,
+        comment: F.comment, commentPlaceholder: F.commentPlaceholder, button: F.button, subject: F.subject, sent: F.sent, needInterest: F.needInterest,
         requiredNote: t('intro.requiredNote'), nameRequired: t('intro.nameRequired'), emailRequired: t('intro.emailRequired'), pdRequired: L.ui['pd.required'] || '',
         sending: t('contact.sending'), sendFailed: t('contact.sendFailed'), tooMany: t('contact.tooMany'), privacyNote: F.privacy };
       writeContentPage(L, 'business/', { navKey: 'nav.services', langs: locales.filter(hasBusiness), title: plainB(B.title), description: plainB(B.description), crumbs: [svcCrumb, { name: t('nav.business') }],

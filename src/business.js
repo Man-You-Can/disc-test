@@ -1,7 +1,7 @@
 /* Заявка со страницы «Для организаций» (/business/). Разметку businessHTML() кладёт в страницу сборка (build.js), логику initBusiness() —
    сама страница. Заявка уходит через форму обратной связи сервера (action 'contact', тот же адрес и та же галочка согласия, что на /contact/):
-   имя и e-mail — отдельными полями, организация, число людей, что интересует и комментарий — текстом сообщения; тема письма владельцу —
-   «Заявка для организации: <организация>». Цель Метрики business-request — заявка отправлена. */
+   имя и e-mail — отдельными полями, число людей, что интересует и комментарий — текстом сообщения; тема письма владельцу —
+   «Заявка для организации: <имя>» (поле «Организация» убрано 2026-10-22 по просьбе заказчика). Цель Метрики business-request — заявка отправлена. */
 function businessHTML(c){
   var T=c.T, esc=c.esc, mailLink = c.email ? '<a href="mailto:'+esc(c.email)+'">'+esc(c.email)+'</a>' : '';
   var req='<span class="req" aria-hidden="true">*</span>';
@@ -10,7 +10,6 @@ function businessHTML(c){
       '<p class="hint reqnote">'+esc(T.requiredNote).replace('*', req)+'</p>'+
       '<div class="field"><label for="bName">'+esc(T.name)+req+'</label><input type="text" id="bName" class="ym-disable-keys" autocomplete="name" required maxlength="80"></div>'+
       '<div class="field"><label for="bEmail">'+esc(T.email)+req+'</label><input type="email" id="bEmail" class="ym-disable-keys" autocomplete="email" inputmode="email" required maxlength="120"></div>'+
-      '<div class="field"><label for="bCompany">'+esc(T.company)+req+'</label><input type="text" id="bCompany" autocomplete="organization" required maxlength="120"></div>'+
       '<div class="field"><label for="bSize">'+esc(T.size)+'</label><select id="bSize"><option value=""></option>'+
         T.sizes.map(function(x){ return '<option>'+esc(x)+'</option>'; }).join('')+'</select></div>'+
       '<fieldset class="field bizint"><legend>'+esc(T.interest)+req+'</legend>'+
@@ -34,16 +33,15 @@ function initBusiness(c){
   function clean(s){ return String(s||'').trim().replace(/\s+/g,' '); }
   form.addEventListener('submit', function(e){
     e.preventDefault();
-    var name=clean($('#bName').value), em=$('#bEmail').value.trim(), company=clean($('#bCompany').value), size=$('#bSize').value, msg=$('#bMsg').value.trim();
+    var name=clean($('#bName').value), em=$('#bEmail').value.trim(), size=$('#bSize').value, msg=$('#bMsg').value.trim();
     var picked=[].filter.call(form.querySelectorAll('input[name=interest]'), function(x){ return x.checked; }).map(function(x){ return T.interests[+x.value]; });
     if(name.length<2){ $('#bName').focus(); toast(T.nameRequired); return; }
     if(!EMAIL_RE.test(em)||em.length>120){ $('#bEmail').focus(); toast(T.emailRequired); return; }
-    if(company.length<2){ $('#bCompany').focus(); toast(T.needCompany); return; }
     if(!picked.length){ form.querySelector('input[name=interest]').focus(); toast(T.needInterest); return; }
     var pd=$('#bPd'); if(pd && !pd.checked){ pd.focus(); toast(T.pdRequired); return; }
-    if(!c.endpoint){ location.href='mailto:'+encodeURIComponent(c.email)+'?subject='+encodeURIComponent(T.subject.replace('{company}', company)); return; }
-    var text=T.company+': '+company+'\n'+(size ? T.size+': '+size+'\n' : '')+T.interest+': '+picked.join('; ')+(msg ? '\n\n'+T.comment+':\n'+msg : '');
-    var data={action:'contact', token:c.token, lang:L.lang, name:name, email:em, subject:T.subject.replace('{company}', company).slice(0,120), message:text.slice(0,5000),
+    if(!c.endpoint){ location.href='mailto:'+encodeURIComponent(c.email)+'?subject='+encodeURIComponent(T.subject.replace('{name}', name)); return; }
+    var text=(size ? T.size+': '+size+'\n' : '')+T.interest+': '+picked.join('; ')+(msg ? '\n\n'+T.comment+':\n'+msg : '');
+    var data={action:'contact', token:c.token, lang:L.lang, name:name, email:em, subject:T.subject.replace('{name}', name).slice(0,120), message:text.slice(0,5000),
       page:location.href.split('#')[0], hp:$('#bSite').value, files:[]};
     if(pd){ data.consent=true; data.consentV=c.pdVersion||''; }
     btn.disabled=true; setStatus('muted', esc(T.sending));
