@@ -745,7 +745,7 @@ for (const L of locales) {
       `<div class="cvfiles">${D.files.map(f => `<span>${escFull(f)}</span>`).join('')}</div>` + (D.more && V.example ? `<a class="cvmore" href="#example">${escFull(D.more)} ↓</a>` : '') + `</figure>`;
     // «Пример: от единого резюме до отклика» (с 2026-10-22, по просьбе заказчика): четыре вкладки на вымышленном кандидате; без скрипта все панели видны подряд
     const X = V.example;
-    // сравнение «вакансия — кандидатка» в оценке: столбцы подписаны и окрашены (вакансия — синим, кандидатка — серым); на телефоне строка — карточка с подписями
+    // сравнение «вакансия — кандидатка» в оценке: в обеих таблицах вакансия — первый столбец (синим), кандидатка — второй (серым); на телефоне строка — карточка с подписями
     const cmpTable = (title, cols, rows, a, b, ka, kb) => `<h3>${escFull(title)}</h3><table class="cvcmp"><colgroup><col><col><col class="c-res"></colgroup><thead><tr>` +
       `<th class="k-${ka}"><span>${escFull(cols[0])}</span></th><th class="k-${kb}"><span>${escFull(cols[1])}</span></th><th>${escFull(cols[2])}</th></tr></thead><tbody>` +
       rows.map(r => `<tr class="s-${r.s}"><td class="k-${ka}" data-l="${escFull(cols[0])}">${escFull(r[a])}</td><td class="k-${kb}" data-l="${escFull(cols[1])}">${escFull(r[b])}</td>` +
@@ -790,7 +790,7 @@ for (const L of locales) {
         `<div class="cvscore cvscore-lg" style="--p:${(+X.score.total) * 10}%"><b>${escFull(X.score.total)}</b><span>${escFull(X.score.of)}</span></div></div>` +
         `<p class="cvparts">${X.score.parts.map(x => `<span>${escFull(x.label)}: <b>${escFull(x.value)}</b></span>`).join('')}</p>` +
         cmpTable(X.score.reqTitle, X.score.reqCols, X.score.rows, 't', 'why', 'vac', 'cand') +
-        cmpTable(X.score.critTitle, X.score.critCols, X.score.crit, 'want', 'offer', 'cand', 'vac') +
+        cmpTable(X.score.critTitle, X.score.critCols, X.score.crit, 'offer', 'want', 'vac', 'cand') +
         `<div class="cvverdict"><b>${escFull(X.score.verdictTitle)}</b><p>${escFull(X.score.verdict)}</p></div>` +
         `<div class="cvtopskip"><div><h3>${escFull(X.score.topTitle)}</h3><ul class="cvplus">${X.score.top.map(x => `<li>${escFull(x)}</li>`).join('')}</ul></div>` +
         `<div><h3>${escFull(X.score.skipTitle)}</h3><ul class="cvminus">${X.score.skip.map(x => `<li>${escFull(x)}</li>`).join('')}</ul></div></div></div>`,
