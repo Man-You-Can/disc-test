@@ -9,7 +9,7 @@
 <meta name="google-site-verification" content="q9-P14KEm3Bl0iw-lP3zITeLv0EESmjJcPRee30aAsw">
 <meta name="yandex-verification" content="028b85ace16c85fc">
 <script>window.DISC_ANALYTICS={"ym":"112347000","mode":"always"};</script>
-<script>window.DISC_XBAR={"button":"Relatório ampliado — US$ 9,99","offer":"Relatório ampliado — US$ 6,99","ms":3600000,"close":"Ocultar"};</script>
+<script>window.DISC_XBAR={"button":"Compre seu relatório ampliado personalizado por US$ 9,99","offer":"Compre seu relatório ampliado personalizado por US$ 6,99","ms":3600000,"close":"Ocultar"};</script>
 <script>window.DISC_VISIT={"url":"https://api.disc-test.org/","token":"kR7UiShTyG7Wws7t16NkgKN3","host":"disc-test.org"};</script>
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Teste DISC">
@@ -216,8 +216,10 @@ html[lang=ar] body,html[lang=hi] body{font-size:17px;line-height:1.65}
    снизу у страницы запас под кнопку (body.has-xbar), чтобы она не закрывала конец страницы; плавающая кнопка «Пройти тест» в это время не нужна */
 .xbar{display:none}
 .xbar.show{display:flex;gap:8px;position:fixed;left:50%;transform:translateX(-50%);width:min(560px,calc(100% - 24px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:15}
-.xbar .btn{flex:1 1 auto;box-shadow:0 8px 24px -6px rgba(0,0,0,.35)}
-.xbar-x{flex:none;width:46px;border:1px solid var(--line-strong);border-radius:12px;background:var(--surface);color:var(--muted);font-size:22px;line-height:1;cursor:pointer;box-shadow:0 8px 24px -6px rgba(0,0,0,.35)}
+.xbar .btn{flex:1 1 auto;white-space:normal;text-align:center;box-shadow:0 8px 24px -6px rgba(0,0,0,.35)}   /* длинная надпись на телефоне переносится */
+/* крестик (с 2026-10-22, по просьбе заказчика): маленький кружок в правом верхнем углу плашки; область нажатия шире кружка (::before) */
+.xbar-x{position:absolute;top:-7px;inset-inline-end:-7px;display:flex;align-items:center;justify-content:center;width:16px;height:16px;padding:0;border:1px solid var(--line-strong);border-radius:50%;background:var(--surface);color:var(--muted);font-size:12px;line-height:1;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.3)}
+.xbar-x::before{content:"";position:absolute;inset:-12px}
 body.has-xbar:not(.has-consent){padding-bottom:88px}
 body.has-consent .xbar,body.has-xbar .btn.ctafloat.show{display:none}
 @media (max-width:640px){

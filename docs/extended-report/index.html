@@ -9,7 +9,7 @@
 <meta name="google-site-verification" content="q9-P14KEm3Bl0iw-lP3zITeLv0EESmjJcPRee30aAsw">
 <meta name="yandex-verification" content="028b85ace16c85fc">
 <script>window.DISC_ANALYTICS={"ym":"112347000","mode":"always"};</script>
-<script>window.DISC_XBAR={"button":"In-depth report — US$9.99","offer":"In-depth report — US$6.99","ms":3600000,"close":"Hide"};</script>
+<script>window.DISC_XBAR={"button":"Buy your personal in-depth report for US$9.99","offer":"Buy your personal in-depth report for US$6.99","ms":3600000,"close":"Hide"};</script>
 <script>window.DISC_VISIT={"url":"https://api.disc-test.org/","token":"kR7UiShTyG7Wws7t16NkgKN3","host":"disc-test.org"};</script>
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="DISC Test">
@@ -230,8 +230,10 @@ html[lang=ar] body,html[lang=hi] body{font-size:17px;line-height:1.65}
    снизу у страницы запас под кнопку (body.has-xbar), чтобы она не закрывала конец страницы; плавающая кнопка «Пройти тест» в это время не нужна */
 .xbar{display:none}
 .xbar.show{display:flex;gap:8px;position:fixed;left:50%;transform:translateX(-50%);width:min(560px,calc(100% - 24px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:15}
-.xbar .btn{flex:1 1 auto;box-shadow:0 8px 24px -6px rgba(0,0,0,.35)}
-.xbar-x{flex:none;width:46px;border:1px solid var(--line-strong);border-radius:12px;background:var(--surface);color:var(--muted);font-size:22px;line-height:1;cursor:pointer;box-shadow:0 8px 24px -6px rgba(0,0,0,.35)}
+.xbar .btn{flex:1 1 auto;white-space:normal;text-align:center;box-shadow:0 8px 24px -6px rgba(0,0,0,.35)}   /* длинная надпись на телефоне переносится */
+/* крестик (с 2026-10-22, по просьбе заказчика): маленький кружок в правом верхнем углу плашки; область нажатия шире кружка (::before) */
+.xbar-x{position:absolute;top:-7px;inset-inline-end:-7px;display:flex;align-items:center;justify-content:center;width:16px;height:16px;padding:0;border:1px solid var(--line-strong);border-radius:50%;background:var(--surface);color:var(--muted);font-size:12px;line-height:1;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.3)}
+.xbar-x::before{content:"";position:absolute;inset:-12px}
 body.has-xbar:not(.has-consent){padding-bottom:88px}
 body.has-consent .xbar,body.has-xbar .btn.ctafloat.show{display:none}
 @media (max-width:640px){
@@ -1185,7 +1187,7 @@ function initPayFail(c){
   if(rec && !rec.fail){ rec.fail = true; c.lsSet('disc.pay', rec); payTrack('ext-pay-fail'); }
 }
 
-initPayBuy({T: {"noteHtml":"By clicking “Buy”, you accept our \u003ca href=\"../offer/\">terms of sale\u003c/a>. Payment is handled by Prodamus: you enter your card details on its secure page, not on this site. Your statement may show the charge as simpleway.by.","errorHtml":"We couldn’t take you to payment. Please try again in a minute or write to us at \u003ca href=\"mailto:info@disc-test.org\">info@disc-test.org\u003c/a>.","title":"Your report will be built from the test you took on {date}","text":"The report arrives by email as soon as you pay, as a PDF attachment. Your payment receipt goes to the same address.","emailLabel":"Email to receive your report as a PDF","emailPlaceholder":"Enter your email","button":"Buy","badEmail":"Please check the address: your report and receipt will be sent there.","wait":"Taking you to payment…","guarantee":"Not right for you? Get a full refund within 7 days.","offer":{"price":6.99,"regular":9.99,"ms":3600000,"priceText":"US$6.99","regularText":"US$9.99","regularLabel":"Regular price","cta":"Get it now for US$6.99","note":"Special price for one hour after the test, then US$9.99","left":"Time left","expired":"The hour after the test is over: the report now costs US$9.99. Click “Buy” again.","button":"In-depth report — US$6.99"},"code":null}, endpoint: "https://api.disc-test.org/pay", L: L, esc: esc, lsGet: lsGet, lsSet: lsSet});
+initPayBuy({T: {"noteHtml":"By clicking “Buy”, you accept our \u003ca href=\"../offer/\">terms of sale\u003c/a>. Payment is handled by Prodamus: you enter your card details on its secure page, not on this site. Your statement may show the charge as simpleway.by.","errorHtml":"We couldn’t take you to payment. Please try again in a minute or write to us at \u003ca href=\"mailto:info@disc-test.org\">info@disc-test.org\u003c/a>.","title":"Your report will be built from the test you took on {date}","text":"The report arrives by email as soon as you pay, as a PDF attachment. Your payment receipt goes to the same address.","emailLabel":"Email to receive your report as a PDF","emailPlaceholder":"Enter your email","button":"Buy","badEmail":"Please check the address: your report and receipt will be sent there.","wait":"Taking you to payment…","guarantee":"Not right for you? Get a full refund within 7 days.","offer":{"price":6.99,"regular":9.99,"ms":3600000,"priceText":"US$6.99","regularText":"US$9.99","regularLabel":"Regular price","cta":"Get it now for US$6.99","note":"Special price for one hour after the test, then US$9.99","left":"Time left","expired":"The hour after the test is over: the report now costs US$9.99. Click “Buy” again.","button":"Buy your personal in-depth report for US$6.99"},"code":null}, endpoint: "https://api.disc-test.org/pay", L: L, esc: esc, lsGet: lsGet, lsSet: lsSet});
 /* цели Метрики у кнопок теста (cta-top, cta-bottom, cta-float) и плавающая кнопка на телефоне: видна, когда призыв
    после вводного абзаца уже прокручен вверх, а нижний призыв и подвал ещё не на экране (аудит 3, п. 1) */
 (function(){

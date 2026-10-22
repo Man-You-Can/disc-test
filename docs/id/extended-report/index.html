@@ -9,7 +9,7 @@
 <meta name="google-site-verification" content="q9-P14KEm3Bl0iw-lP3zITeLv0EESmjJcPRee30aAsw">
 <meta name="yandex-verification" content="028b85ace16c85fc">
 <script>window.DISC_ANALYTICS={"ym":"112347000","mode":"always"};</script>
-<script>window.DISC_XBAR={"button":"Laporan mendalam — US$9,99","offer":"Laporan mendalam — US$6,99","ms":3600000,"close":"Sembunyikan"};</script>
+<script>window.DISC_XBAR={"button":"Beli laporan mendalam pribadi Anda seharga US$9,99","offer":"Beli laporan mendalam pribadi Anda seharga US$6,99","ms":3600000,"close":"Sembunyikan"};</script>
 <script>window.DISC_VISIT={"url":"https://api.disc-test.org/","token":"kR7UiShTyG7Wws7t16NkgKN3","host":"disc-test.org"};</script>
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Tes DISC">
@@ -230,8 +230,10 @@ html[lang=ar] body,html[lang=hi] body{font-size:17px;line-height:1.65}
    снизу у страницы запас под кнопку (body.has-xbar), чтобы она не закрывала конец страницы; плавающая кнопка «Пройти тест» в это время не нужна */
 .xbar{display:none}
 .xbar.show{display:flex;gap:8px;position:fixed;left:50%;transform:translateX(-50%);width:min(560px,calc(100% - 24px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:15}
-.xbar .btn{flex:1 1 auto;box-shadow:0 8px 24px -6px rgba(0,0,0,.35)}
-.xbar-x{flex:none;width:46px;border:1px solid var(--line-strong);border-radius:12px;background:var(--surface);color:var(--muted);font-size:22px;line-height:1;cursor:pointer;box-shadow:0 8px 24px -6px rgba(0,0,0,.35)}
+.xbar .btn{flex:1 1 auto;white-space:normal;text-align:center;box-shadow:0 8px 24px -6px rgba(0,0,0,.35)}   /* длинная надпись на телефоне переносится */
+/* крестик (с 2026-10-22, по просьбе заказчика): маленький кружок в правом верхнем углу плашки; область нажатия шире кружка (::before) */
+.xbar-x{position:absolute;top:-7px;inset-inline-end:-7px;display:flex;align-items:center;justify-content:center;width:16px;height:16px;padding:0;border:1px solid var(--line-strong);border-radius:50%;background:var(--surface);color:var(--muted);font-size:12px;line-height:1;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.3)}
+.xbar-x::before{content:"";position:absolute;inset:-12px}
 body.has-xbar:not(.has-consent){padding-bottom:88px}
 body.has-consent .xbar,body.has-xbar .btn.ctafloat.show{display:none}
 @media (max-width:640px){
@@ -1185,7 +1187,7 @@ function initPayFail(c){
   if(rec && !rec.fail){ rec.fail = true; c.lsSet('disc.pay', rec); payTrack('ext-pay-fail'); }
 }
 
-initPayBuy({T: {"noteHtml":"Dengan menekan “Beli”, Anda menerima \u003ca href=\"../offer/\">syarat dan ketentuan layanan berbayar\u003c/a> kami. Anda membayar dalam dolar AS di halaman aman Prodamus: data kartu Anda masukkan di sana, bukan di situs ini. Di mutasi rekening, pembayaran bisa tercatat atas nama simpleway.by.","errorHtml":"Halaman pembayaran belum bisa dibuka. Coba lagi beberapa menit lagi atau tulis kepada kami di \u003ca href=\"mailto:info@disc-test.org\">info@disc-test.org\u003c/a>.","title":"Laporan disusun dari hasil tes Anda tanggal {date}","text":"Laporan dikirim lewat email sebagai lampiran PDF, segera setelah pembayaran. Bukti pembayaran dikirim ke alamat yang sama.","emailLabel":"Email untuk menerima laporan dalam format PDF","emailPlaceholder":"Masukkan email Anda","button":"Beli","badEmail":"Periksa alamat email Anda: laporan dan bukti pembayaran dikirim ke alamat itu.","wait":"Membuka halaman pembayaran …","guarantee":"Tidak sesuai harapan? Ada garansi uang kembali selama 7 hari.","offer":{"price":6.99,"regular":9.99,"ms":3600000,"priceText":"US$6,99","regularText":"US$9,99","regularLabel":"Harga normal","cta":"Beli sekarang seharga US$6,99","note":"Harga khusus selama satu jam setelah tes, lalu US$9,99","left":"Sisa waktu","expired":"Satu jam setelah tes sudah lewat: harga laporan sekarang US$9,99. Tekan “Beli” sekali lagi.","button":"Laporan mendalam — US$6,99"},"code":null}, endpoint: "https://api.disc-test.org/pay", L: L, esc: esc, lsGet: lsGet, lsSet: lsSet});
+initPayBuy({T: {"noteHtml":"Dengan menekan “Beli”, Anda menerima \u003ca href=\"../offer/\">syarat dan ketentuan layanan berbayar\u003c/a> kami. Anda membayar dalam dolar AS di halaman aman Prodamus: data kartu Anda masukkan di sana, bukan di situs ini. Di mutasi rekening, pembayaran bisa tercatat atas nama simpleway.by.","errorHtml":"Halaman pembayaran belum bisa dibuka. Coba lagi beberapa menit lagi atau tulis kepada kami di \u003ca href=\"mailto:info@disc-test.org\">info@disc-test.org\u003c/a>.","title":"Laporan disusun dari hasil tes Anda tanggal {date}","text":"Laporan dikirim lewat email sebagai lampiran PDF, segera setelah pembayaran. Bukti pembayaran dikirim ke alamat yang sama.","emailLabel":"Email untuk menerima laporan dalam format PDF","emailPlaceholder":"Masukkan email Anda","button":"Beli","badEmail":"Periksa alamat email Anda: laporan dan bukti pembayaran dikirim ke alamat itu.","wait":"Membuka halaman pembayaran …","guarantee":"Tidak sesuai harapan? Ada garansi uang kembali selama 7 hari.","offer":{"price":6.99,"regular":9.99,"ms":3600000,"priceText":"US$6,99","regularText":"US$9,99","regularLabel":"Harga normal","cta":"Beli sekarang seharga US$6,99","note":"Harga khusus selama satu jam setelah tes, lalu US$9,99","left":"Sisa waktu","expired":"Satu jam setelah tes sudah lewat: harga laporan sekarang US$9,99. Tekan “Beli” sekali lagi.","button":"Beli laporan mendalam pribadi Anda seharga US$6,99"},"code":null}, endpoint: "https://api.disc-test.org/pay", L: L, esc: esc, lsGet: lsGet, lsSet: lsSet});
 /* цели Метрики у кнопок теста (cta-top, cta-bottom, cta-float) и плавающая кнопка на телефоне: видна, когда призыв
    после вводного абзаца уже прокручен вверх, а нижний призыв и подвал ещё не на экране (аудит 3, п. 1) */
 (function(){
