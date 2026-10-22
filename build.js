@@ -727,6 +727,8 @@ for (const L of locales) {
     const VT = { name: t('intro.nameLabel'), email: F.email, button: F.button, subject: F.subject, message: F.message, sentTitle: F.sentTitle, sent: F.sent,
       nameRequired: t('intro.nameRequired'), emailRequired: t('intro.emailRequired'), pdRequired: L.ui['pd.required'] || '', sending: t('contact.sending'),
       sendFailed: t('contact.sendFailed'), tooMany: t('contact.tooMany'), privacyNote: F.privacy };
+    // фото основателя — src/assets/img (копируются в docs/img); путь от страницы /<язык>/cv/ к корню сайта
+    const imgRel = '../'.repeat((pathOf(L.lang) + 'cv/').split('/').length - 1);
     const form = k => cvFormHTML({ T: VT, esc: escFull, email: feedbackEmail, pdLabel: pdOn ? pdLabelHtml(L, '../') : '' }, k);
     const tick = `<svg class="cvtick" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
     const cta = (cls) => `<a class="btn ${cls || ''}" href="#cvfinal" data-cta>${escFull(V.button)}</a>`;
@@ -752,8 +754,10 @@ for (const L of locales) {
             `<p class="cvprice">${p.old ? `<s>${escFull(p.old)}</s>` : ''}<b>${escFull(p.price)}</b><span>${escFull(p.per)}</span></p>` +
             `<ul>${p.items.map(x => `<li>${tick}${escFull(x)}</li>`).join('')}</ul></li>`).join('') +
           `</ul><p class="cvsub small">${escFull(V.pricingNote)}</p>${cta('cvcenter')}</section>` +
-        `<section class="cvsec"><h2>${escFull(V.founderTitle)}</h2><div class="cvauthor"><span class="cvname">${escFull(A.name)}</span><p class="cvrole">${escFull(A.role)}</p>` + listHtml('ul', A.facts) +
-          `<p>${escFull(A.text)}</p><p class="cvsite"><a href="${escFull(A.siteUrl)}" target="_blank" rel="noopener">${escFull(A.site)} ${arrow(L)}</a></p></div></section>` +
+        `<section class="cvsec"><h2>${escFull(V.founderTitle)}</h2><div class="cvauthor">` +
+          (A.photoAlt ? `<img class="cvphoto" src="${imgRel}img/armen-manukyan.webp" srcset="${imgRel}img/armen-manukyan.webp 1x, ${imgRel}img/armen-manukyan-2x.webp 2x" width="280" height="350" alt="${escFull(A.photoAlt)}" loading="lazy" decoding="async">` : '') +
+          `<div class="cvauthor-body"><span class="cvname">${escFull(A.name)}</span><p class="cvrole">${escFull(A.role)}</p>` + listHtml('ul', A.facts) +
+          `<p>${escFull(A.text)}</p><p class="cvsite"><a href="${escFull(A.siteUrl)}" target="_blank" rel="noopener">${escFull(A.site)} ${arrow(L)}</a></p></div></div></section>` +
         `<section class="cvsec cvfaq"><h2>${escFull(V.faqTitle)}</h2>` + V.faq.map(it => `<details><summary>${escFull(it.q)}</summary><p>${fill(it.a)}</p></details>`).join('') + `</section>` +
         `<section class="cvfinal" id="cvfinal"><h2>${escFull(V.finalTitle)}</h2><p>${escFull(V.finalLead)}</p>${form('2')}</section>` +
         `</div><a class="btn ctafloat no-print" id="cvFloat" href="#cvfinal" data-cta>${escFull(V.floatButton)}</a>`,
@@ -1027,6 +1031,9 @@ for (const f of fs.existsSync(path.join(ASSETS, 'fonts')) ? fs.readdirSync(path.
 // листы образца расширенного отчёта (картинки; готовятся вручную из PDF образца, см. PROJECT.md от 2026-10-09)
 if (fs.existsSync(path.join(ASSETS, 'extended'))) { fs.mkdirSync(path.join(OUT, 'extended'), { recursive: true });
   for (const f of fs.readdirSync(path.join(ASSETS, 'extended'))) if (f.endsWith('.webp')) fs.copyFileSync(path.join(ASSETS, 'extended', f), path.join(OUT, 'extended', f)); }
+// картинки страниц (фото основателя на лендинге /ru/cv/, с 2026-10-22)
+if (fs.existsSync(path.join(ASSETS, 'img'))) { fs.mkdirSync(path.join(OUT, 'img'), { recursive: true });
+  for (const f of fs.readdirSync(path.join(ASSETS, 'img'))) if (/\.(webp|png|jpe?g)$/.test(f)) fs.copyFileSync(path.join(ASSETS, 'img', f), path.join(OUT, 'img', f)); }
 fs.mkdirSync(path.join(OUT, 'pdf'), { recursive: true });
 for (const f of fs.existsSync(path.join(ASSETS, 'pdf')) ? fs.readdirSync(path.join(ASSETS, 'pdf')) : []) if (f.endsWith('.pdf')) fs.copyFileSync(path.join(ASSETS, 'pdf', f), path.join(OUT, 'pdf', f));
 fs.mkdirSync(path.join(OUT, 'og'), { recursive: true });
