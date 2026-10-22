@@ -236,3 +236,13 @@ body:has(.cvpage) .wrap{max-width:1080px}
 .cvwhy{margin:6px 0 0}
 .cvdim .cvjob-role{color:var(--muted)}
 @media (max-width:600px){.cvgap{margin:0 -6px;padding:10px 8px!important}.cvtitles li{font-size:13.5px}}
+
+/* пример: что ищет кандидат (профиль поиска) */
+.cvwant{display:grid;grid-template-columns:1fr 1fr;gap:14px 28px;margin:18px 0 0}
+.cvwant>div{border-top:1px solid var(--line);padding-top:10px}
+.cvwant dt{font-size:12.5px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:0 0 4px}
+.cvwant dd{margin:0}
+.content .cvdoc .cvwant ul{list-style:none;padding:0}
+.content .cvwant li{margin:0 0 3px}
+.cvwant-note{margin:14px 0 0}
+@media (max-width:600px){.cvwant{grid-template-columns:1fr;gap:10px}}

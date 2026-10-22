@@ -771,6 +771,13 @@ for (const L of locales) {
           P.sections.map(s => `<h3>${escFull(s.h)}</h3><ul class="cvmarks${s.items.length > 3 && s.items.every(x => !x.in) ? ' wrap' : ''}">${s.items.map(tag).join('')}</ul>${s.why ? `<p class="cvwhy">${escFull(s.why)}</p>` : ''}`).join('') +
           `<h3>${escFull(P.skillsTitle)}</h3><p class="cvchips">${P.skills.map(x => `<span>${escFull(x)}</span>`).join('')}</p></div>`;
       })(),
+      // что ищет кандидат: профиль поиска — по нему считается вторая часть оценки («подходит ли вакансия кандидату»)
+      (() => { const S = X.search;
+        return `<div class="cvdoc"><div class="cvdoc-head"><strong>${escFull(S.title)}</strong><span>${escFull(S.subtitle)}</span></div>` +
+          `<dl class="cvwant">${S.groups.map(g => `<div><dt>${escFull(g.h)}</dt><dd><ul>${g.items.map(x => `<li>${escFull(x)}</li>`).join('')}</ul></dd></div>`).join('')}</dl>` +
+          `<h3>${escFull(S.stopTitle)}</h3><ul class="cvminus">${S.stop.map(x => `<li>${escFull(x)}</li>`).join('')}</ul>` +
+          `<div class="cvshort"><h3>${escFull(S.otherTitle)}</h3><p>${escFull(S.other)}</p></div>` +
+          `<p class="cvwhy cvwant-note">${escFull(S.note)}</p></div>`; })(),
       // вакансия
       `<div class="cvdoc"><div class="cvdoc-head"><strong>${escFull(X.vacancy.role)}</strong><span>${escFull(X.vacancy.company)}</span></div><p class="cvsrc">${escFull(X.vacancy.meta)}</p>` +
         X.vacancy.sections.map(sct => `<h3>${escFull(sct.h)}</h3><ul>${sct.items.map(x => `<li>${escFull(x)}</li>`).join('')}</ul>`).join('') + `</div>`,
