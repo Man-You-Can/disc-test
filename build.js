@@ -723,9 +723,8 @@ for (const L of locales) {
   if (C.cv && feedbackEmail) {
     const V = C.cv, F = V.form, A = V.author, K = ['--d', '--i', '--s', '--c'];
     const fill = str => escFull(str).replace(/\{email\}/g, `<a href="mailto:${escFull(feedbackEmail)}">${escFull(feedbackEmail)}</a>`);
-    const VT = { name: t('intro.nameLabel'), email: F.email, telegram: F.telegram, telegramPlaceholder: F.telegramPlaceholder, position: F.position,
-      positionPlaceholder: F.positionPlaceholder, resume: F.resume, resumeOptional: F.resumeOptional, resumePlaceholder: F.resumePlaceholder, button: F.button, subject: F.subject,
-      sent: F.sent, needTelegram: F.needTelegram, needPosition: F.needPosition, badLink: F.badLink, requiredNote: t('intro.requiredNote'), nameRequired: t('intro.nameRequired'),
+    const VT = { name: t('intro.nameLabel'), email: F.email, telegram: F.telegram, telegramPlaceholder: F.telegramPlaceholder,
+      button: F.button, subject: F.subject, sent: F.sent, needTelegram: F.needTelegram, requiredNote: t('intro.requiredNote'), nameRequired: t('intro.nameRequired'),
       emailRequired: t('intro.emailRequired'), pdRequired: L.ui['pd.required'] || '', sending: t('contact.sending'), sendFailed: t('contact.sendFailed'), tooMany: t('contact.tooMany'), privacyNote: F.privacy };
     const ldFaq = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: V.faq.map(it => ({ '@type': 'Question', name: it.q, acceptedAnswer: { '@type': 'Answer', text: it.a.replace(/\{email\}/g, feedbackEmail) } })) };
     writeContentPage(L, 'cv/', { bare: true, noindex: true, noDate: true, langs: locales.filter(x => x.content.cv), css: cvCss, title: V.title, description: V.description,
