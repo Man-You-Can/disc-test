@@ -57,7 +57,7 @@ function payForms(c){
       f.price = O ? (on ? O.price : O.regular) : 0;
       var html = O ? (on ? '<s class="xold"><span class="vh">'+esc(O.regularLabel)+' </span>'+esc(O.regularText)+'</s> '+esc(O.priceText) : esc(O.regularText)) : null;
       if(f.big && html !== null && f.big.innerHTML !== html) f.big.innerHTML = html;
-      f.timer.hidden = !on; if(on) f.timer.textContent = O.timer.replace('{time}', payClock(f.until - now));
+      f.deal.hidden = !on; if(on) f.clock.textContent = payClock(f.until - now);
     });
     if(any !== g.on){ g.on = any; g.subs.forEach(function(fn){ fn(any); }); }
     if(any && !g.tick) g.tick = setInterval(g.paint, 1000);
@@ -68,14 +68,16 @@ function payForms(c){
   window.addEventListener('pageshow', function(ev){ if(ev.persisted) g.setBusy(false); });
   g.add = function(o){
     var form = document.createElement('form'); form.className = 'xpay'; form.noValidate = true;
-    form.innerHTML = '<div class="field"><label for="'+o.id+'">'+esc(T.emailLabel)+'</label>'+
+    // плашка специальной цены над полем e-mail: призыв «Успейте купить за 490 ₽», пояснение о сроке и крупный обратный отсчёт
+    form.innerHTML = (O ? '<div class="xdeal" hidden><div class="xdeal-t"><b>'+esc(O.cta)+'</b><small>'+esc(O.note)+'</small></div>'+
+        '<div class="xclock"><small>'+esc(O.left)+'</small><span aria-live="off"></span></div></div>' : '<div class="xdeal" hidden><span></span></div>')+
+      '<div class="field"><label for="'+o.id+'">'+esc(T.emailLabel)+'</label>'+
       '<input type="email" id="'+o.id+'" class="ym-disable-keys" autocomplete="email" inputmode="email" maxlength="'+PAY_EMAIL_MAX+'"'+(T.emailPlaceholder ? ' placeholder="'+esc(T.emailPlaceholder)+'"' : '')+' required></div>'+
       (o.price ? '<div class="xbuyact"><span class="xbig">'+esc(o.price)+'</span><button class="btn" type="submit">'+esc(T.button)+'</button></div>'
         : '<button class="btn" type="submit">'+esc(T.button)+'</button>')+
-      '<p class="xtimer" aria-live="off" hidden></p>'+
       (T.guarantee ? '<p class="xguar">'+esc(T.guarantee)+'</p>' : '')+
       '<p class="small sendstatus err" aria-live="polite" hidden></p><p class="xnote">'+T.noteHtml+'</p>';
-    var f = {form:form, input:form.querySelector('input'), btn:form.querySelector('button'), st:form.querySelector('.sendstatus'), timer:form.querySelector('.xtimer'),
+    var f = {form:form, input:form.querySelector('input'), btn:form.querySelector('button'), st:form.querySelector('.sendstatus'), deal:form.querySelector('.xdeal'), clock:form.querySelector('.xdeal span'),
       big: o.priceEl || form.querySelector('.xbig'), until: payOfferUntil(O, o.t, c.lsGet), price: 0}, input = f.input, st = f.st;
     var other = g.forms.filter(function(x){ return x.input.value; })[0];
     if(other) input.value = other.input.value;

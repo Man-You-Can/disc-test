@@ -76,7 +76,7 @@ const withPrice = (L, obj) => { const s = JSON.stringify(obj).replace(/\{price\}
 // Специальная цена для скрипта покупки (src/pay.js, T.offer): числа — для сервера, строки — для показа; null — специальной цены в языке нет
 const payOffer = L => { if (!offerPrice(L)) return null; const P = L.content.product, O = withPrice(L, P.pay.offer), cur = L.content.services.currency;
   return { price: offerPrices[cur], regular: servicePrices[cur], ms: offerMinutes * 60000, priceText: withPrice(L, P.price).replace(servicePrice(L), offerPrice(L)),
-    regularText: withPrice(L, P.price), regularLabel: O.regular, timer: O.timer, expired: O.expired,
+    regularText: withPrice(L, P.price), regularLabel: O.regular, cta: O.cta, note: O.note, left: O.left, expired: O.expired,
     button: P.promo ? withPrice(L, P.promo.button).replace(servicePrice(L), offerPrice(L)) : '' }; };
 // Оператор и дата редакции в политике и согласии: в языке с полным текстом политики (policy.legal — русская версия) — исполнитель из оферты
 // (ИП с ИНН), в остальных — строка реквизитов из подвала. От наличия оферты не зависит: иначе её появление в языке меняло бы текст согласия,

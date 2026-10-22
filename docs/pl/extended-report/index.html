@@ -289,11 +289,17 @@ html[lang=ar] body,html[lang=hi] body{font-size:17px;line-height:1.65}
 .xpay .xbig{font-family:var(--font-head);font-weight:500;font-size:30px;line-height:1.1;color:var(--ink);text-align:center;white-space:nowrap}
 @media (max-width:480px){.xpay .xbuyact{flex:1 1 100%}}
 /* специальная цена на час после теста (src/pay.js, T.offer): обычная цена зачёркнута, под кнопкой — обратный отсчёт */
-s.xold{font-size:.6em;font-weight:400;color:var(--muted);text-decoration-thickness:2px;margin-right:.2em;vertical-align:.12em}
+s.xold{font-size:.72em;font-weight:500;color:var(--muted);text-decoration:line-through 1.5px var(--d);margin-right:.25em;vertical-align:.08em}
 .vh{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
-p.xtimer{flex:1 1 100%;margin:0;font-size:14px;font-weight:600;color:var(--d);font-variant-numeric:tabular-nums}
-.xbuyact+p.xtimer{text-align:right}
-@media (max-width:480px){.xbuyact+p.xtimer{text-align:center}}
+.xdeal{flex:1 1 100%;display:flex;align-items:center;justify-content:space-between;gap:14px;background:#C9453D;color:#fff;border-radius:12px;padding:12px 16px}
+.xdeal[hidden]{display:none}
+.xdeal-t{min-width:0}
+.xdeal-t b{display:block;font-family:var(--font-head);font-weight:500;font-size:20px;line-height:1.2}
+.xdeal-t small{display:block;margin-top:4px;font-size:13px;line-height:1.35;opacity:.92}
+.xclock{flex:none;text-align:center;line-height:1}
+.xclock small{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.06em;opacity:.9;margin-bottom:4px}
+.xclock span{display:block;font-family:var(--font-head);font-weight:500;font-size:32px;font-variant-numeric:tabular-nums;background:rgba(0,0,0,.18);border-radius:8px;padding:6px 10px;min-width:3.6em}
+@media (max-width:480px){.xdeal{padding:12px}.xdeal-t b{font-size:18px}.xclock span{font-size:28px}}
 /* строка гарантии возврата у кнопки «Купить» (content.product.pay.guarantee): на странице отчёта и в форме на экране результата */
 p.xguar{flex:1 1 100%;margin:0;font-size:14px;font-weight:600;color:var(--ink)}
 .service p.xguar{margin-top:-6px}
@@ -916,7 +922,7 @@ function payForms(c){
       f.price = O ? (on ? O.price : O.regular) : 0;
       var html = O ? (on ? '<s class="xold"><span class="vh">'+esc(O.regularLabel)+' </span>'+esc(O.regularText)+'</s> '+esc(O.priceText) : esc(O.regularText)) : null;
       if(f.big && html !== null && f.big.innerHTML !== html) f.big.innerHTML = html;
-      f.timer.hidden = !on; if(on) f.timer.textContent = O.timer.replace('{time}', payClock(f.until - now));
+      f.deal.hidden = !on; if(on) f.clock.textContent = payClock(f.until - now);
     });
     if(any !== g.on){ g.on = any; g.subs.forEach(function(fn){ fn(any); }); }
     if(any && !g.tick) g.tick = setInterval(g.paint, 1000);
@@ -927,14 +933,16 @@ function payForms(c){
   window.addEventListener('pageshow', function(ev){ if(ev.persisted) g.setBusy(false); });
   g.add = function(o){
     var form = document.createElement('form'); form.className = 'xpay'; form.noValidate = true;
-    form.innerHTML = '<div class="field"><label for="'+o.id+'">'+esc(T.emailLabel)+'</label>'+
+    // плашка специальной цены над полем e-mail: призыв «Успейте купить за 490 ₽», пояснение о сроке и крупный обратный отсчёт
+    form.innerHTML = (O ? '<div class="xdeal" hidden><div class="xdeal-t"><b>'+esc(O.cta)+'</b><small>'+esc(O.note)+'</small></div>'+
+        '<div class="xclock"><small>'+esc(O.left)+'</small><span aria-live="off"></span></div></div>' : '<div class="xdeal" hidden><span></span></div>')+
+      '<div class="field"><label for="'+o.id+'">'+esc(T.emailLabel)+'</label>'+
       '<input type="email" id="'+o.id+'" class="ym-disable-keys" autocomplete="email" inputmode="email" maxlength="'+PAY_EMAIL_MAX+'"'+(T.emailPlaceholder ? ' placeholder="'+esc(T.emailPlaceholder)+'"' : '')+' required></div>'+
       (o.price ? '<div class="xbuyact"><span class="xbig">'+esc(o.price)+'</span><button class="btn" type="submit">'+esc(T.button)+'</button></div>'
         : '<button class="btn" type="submit">'+esc(T.button)+'</button>')+
-      '<p class="xtimer" aria-live="off" hidden></p>'+
       (T.guarantee ? '<p class="xguar">'+esc(T.guarantee)+'</p>' : '')+
       '<p class="small sendstatus err" aria-live="polite" hidden></p><p class="xnote">'+T.noteHtml+'</p>';
-    var f = {form:form, input:form.querySelector('input'), btn:form.querySelector('button'), st:form.querySelector('.sendstatus'), timer:form.querySelector('.xtimer'),
+    var f = {form:form, input:form.querySelector('input'), btn:form.querySelector('button'), st:form.querySelector('.sendstatus'), deal:form.querySelector('.xdeal'), clock:form.querySelector('.xdeal span'),
       big: o.priceEl || form.querySelector('.xbig'), until: payOfferUntil(O, o.t, c.lsGet), price: 0}, input = f.input, st = f.st;
     var other = g.forms.filter(function(x){ return x.input.value; })[0];
     if(other) input.value = other.input.value;

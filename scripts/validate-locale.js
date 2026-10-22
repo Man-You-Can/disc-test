@@ -55,8 +55,7 @@ for (const f of files) {
   const sm = [P.sampleTitle, P.sampleNote, P.sampleAlt, P.sampleCaption, B.sample, P.pdf && P.pdf.sheets].filter(x => x != null).length;
   if (sm && sm < 6) errs.push('.content.product: sample keys must come together (sampleTitle, sampleNote, sampleAlt, sampleCaption, block.sample, pdf.sheets)');
   if (!!P.pay !== !!C.extendedMail) errs.push('.content.product.pay and .content.extendedMail must come together');
-  if (P.pay && P.pay.offer && !['regular', 'timer', 'expired'].every(k => typeof P.pay.offer[k] === 'string' && P.pay.offer[k]) ) errs.push('.content.product.pay.offer: needs regular, timer and expired');
-  if (P.pay && P.pay.offer && !/\{time\}/.test(P.pay.offer.timer)) errs.push('.content.product.pay.offer.timer: needs {time}');
+  if (P.pay && P.pay.offer && !['regular', 'cta', 'note', 'left', 'expired'].every(k => typeof P.pay.offer[k] === 'string' && P.pay.offer[k]) ) errs.push('.content.product.pay.offer: needs regular, cta, note, left and expired');
   if (P.promo && !P.pay) errs.push('.content.product.promo: only where the report is on sale (needs product.pay)');
   // Правило заказчика от 2026-10-14: всё, что сделано для продажи в русской версии, применяется в языке вместе с покупкой
   if (P.pay && !P.promo) errs.push('.content.product.promo: missing — the report is on sale in this language, so everything done for sales in the Russian version applies here (CLAUDE.md)');
