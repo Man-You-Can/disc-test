@@ -94,6 +94,13 @@ const payCodeT = (L, fill) => { const P = L.content.product && L.content.product
 // Есть там, где в локали content.business и ui['nav.business'], отчёт продаётся в рублях и включены коды доступа.
 const businessPacks = (Array.isArray(cfg.businessPacks) ? cfg.businessPacks : []).filter(x => x && x.from > 0 && x.priceRub > 0).sort((a, b) => a.from - b.from);
 const businessMonths = Number(cfg.businessCodeMonths) || 12;
+// Пункты оферты и абзац политики о кодах доступа (offer.codeTerms: [{section, text}] — пункт в конец раздела; policy.purchaseCode — абзац в конец
+// раздела о покупке): решение заказчика от 2026-10-22 — коды только в русской версии, поэтому эти тексты в отдельных ключах, а не в общих списках,
+// и появляются только там, где коды включены. Когда коды придут в другой язык, его перевод получает те же ключи.
+const offerSections = L => { const of = L.content.offer; if (!of.codeTerms || !payCodeT(L, x => x)) return of.sections;
+  return of.sections.map((sec, i) => { const add = of.codeTerms.filter(x => x.section === i).map(x => x.text), k = sec.ul ? 'ul' : sec.ol ? 'ol' : 'p';
+    return add.length ? Object.assign({}, sec, { [k]: sec[k].concat(add) }) : sec; }); };
+const policyPurchase = L => { const po = L.content.policy; return po.purchaseCode && payCodeT(L, x => x) ? Object.assign({}, po.purchase, { p: po.purchase.p.concat([po.purchaseCode]) }) : po.purchase; };
 const hasBusiness = L => !!(L.content.business && L.ui['nav.business'] && hasProduct(L) && L.content.product.pay && L.content.services.currency === 'RUB' && servicePrices.RUB &&
   payCodeT(L, x => x) && feedbackEmail && cfg.sendEndpoint && businessPacks.length);
 // Оператор и дата редакции в политике и согласии: в языке с полным текстом политики (policy.legal — русская версия) — исполнитель из оферты
@@ -617,7 +624,7 @@ for (const L of locales) {
   // в языках с офертой; policy.legal — полный текст политики по статье 18.1 закона № 152-ФЗ, только в русской версии.
   // /consent/ — согласие на обработку персональных данных отдельным документом (на него ведёт галочка в формах); в индекс не идёт.
   else {
-    const po = C.policy, cd = C.consentDoc, poSecs = po.purchase && hasOffer(L) ? po.sections.slice(0, 6).concat([po.purchase], po.sections.slice(6)) : po.sections;
+    const po = C.policy, cd = C.consentDoc, poSecs = po.purchase && hasOffer(L) ? po.sections.slice(0, 6).concat([policyPurchase(L)], po.sections.slice(6)) : po.sections;
     const pdFill = html => html.replace(/\{email\}/g, feedbackEmail ? `<a href="mailto:${escFull(feedbackEmail)}">${escFull(feedbackEmail)}</a>` : '—')
       .replace(/\{contact\}/g, feedbackEmail ? `<a href="../contact/">${escFull(t('nav.contact'))}</a>` : escFull(t('nav.contact')))
       .replace(/\{owner\}/g, escFull(pdOwner(L))).replace(/\{date\}/g, escFull(pdDate(L)))
@@ -833,7 +840,7 @@ for (const L of locales) {
     // note — оговорка в переводах оферты и условий возврата: при расхождении действует русский текст; {original} — ссылка на него
     const docNote = (d, sub2) => d.note ? `<p class="notice">${escFull(d.note).replace(/\{original\}/g, () => `<a href="${'../' + (pathOf(L.lang) ? '../' : '')}ru/${sub2}" hreflang="ru" dir="ltr">${escFull(siteUrl.replace(/^https?:\/\//, ''))}/ru/${sub2}</a>`)}</p>` : '';
     writeContentPage(L, 'offer/', { navKey: 'nav.services', langs: own, title: of.title, description: of.description, crumbs: [svcCrumb, { name: of.h1 }],
-      content: fillHtml(`<div class="eyebrow">${escFull(t('nav.services'))}</div><h1>${escFull(of.h1)}</h1><p class="muted">${escFull(of.edition)}</p>${docNote(of, 'offer/')}<p>${escFull(of.lead)}</p>` + sectionsHtml(of.sections)) +
+      content: fillHtml(`<div class="eyebrow">${escFull(t('nav.services'))}</div><h1>${escFull(of.h1)}</h1><p class="muted">${escFull(of.edition)}</p>${docNote(of, 'offer/')}<p>${escFull(of.lead)}</p>` + sectionsHtml(offerSections(L))) +
         `<p class="seealso">${docLink('refund/', rf)} · ${docLink('services/', sv)}</p>` });
     writeContentPage(L, 'refund/', { navKey: 'nav.services', langs: own, title: rf.title, description: rf.description, crumbs: [svcCrumb, { name: rf.h1 }],
       content: fillHtml(`<div class="eyebrow">${escFull(t('nav.services'))}</div><h1>${escFull(rf.h1)}</h1><p class="lead">${escFull(rf.lead)}</p>${docNote(rf, 'refund/')}` + sectionsHtml(rf.sections)) +

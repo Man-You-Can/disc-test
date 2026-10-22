@@ -16,7 +16,9 @@ const OPTIONAL = ['.content.policy.legal', '.content.extendedMail', '.content.pr
   // Для организаций (с 2026-10-22, сначала только русская версия — по просьбе заказчика): страница «Для организаций» и её пункт в подвале,
   // поле кода доступа в форме покупки и письмо получателю отчёта по коду. Когда заказчик утвердит русскую версию, код доступа станет
   // обязательным вместе с product.pay (правило «что сделано для продажи — во все языки с покупкой»)
-  '.content.business', '.ui.nav.business', '.content.product.pay.code', '.content.extendedMail.codeIntro', '.content.extendedMail.codeFooter'];
+  '.content.business', '.ui.nav.business', '.content.product.pay.code', '.content.extendedMail.codeIntro', '.content.extendedMail.codeFooter',
+  // пункты оферты и абзац политики о кодах — там, где коды есть (решение заказчика от 2026-10-22: пока только русская версия)
+  '.content.offer.codeTerms', '.content.policy.purchaseCode'];
 // специальная цена на час после теста (product.pay.offer; offerPriceRub, offerPriceUsd в site.config.json; с 2026-10-22) обязательна вместе с product.pay:
 // её тексты сравниваются с ru.json как часть pay
 // Страница «Как готовятся отчёты» (content.howMade) и её пункт в шапке (ui["nav.howMade"]) обязательны во всех языках (с 2026-10-14).
@@ -66,6 +68,7 @@ for (const f of files) {
   if (!!C.business !== !!(j.ui && j.ui['nav.business'])) errs.push('.content.business and .ui["nav.business"] must come together');
   if (C.business && !(P.pay && P.pay.code)) errs.push('.content.business: needs .content.product.pay.code (people redeem the codes in the purchase form)');
   if (P.pay && P.pay.code && !(C.extendedMail && C.extendedMail.codeIntro && C.extendedMail.codeFooter)) errs.push('.content.product.pay.code: needs .content.extendedMail.codeIntro and codeFooter');
+  if (P.pay && P.pay.code && !(C.offer && C.offer.codeTerms && C.policy && C.policy.purchaseCode)) errs.push('.content.product.pay.code: needs .content.offer.codeTerms and .content.policy.purchaseCode (the offer and the policy must describe codes)');
   // В каждом блоке ровно 4 разных текста
   (j.blocks || []).forEach((b, i) => { const v = Object.values(b || {}); if (new Set(v).size !== v.length) errs.push('.blocks[' + i + ']: duplicate statements'); });
   // Буквы D I S C не переведены в csvHead
