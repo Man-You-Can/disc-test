@@ -466,6 +466,8 @@ html[dir=rtl] .ask.to-l .arr{transform:none}
 .traits span{font-size:13px;padding:4px 10px;border-radius:999px;background:var(--soft);color:var(--ink)}
 .substyle{border-inline-start:4px solid var(--ks);padding:4px 0;padding-inline-start:14px;margin-top:4px}
 .share{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:var(--shadow)}
+.sendbox{margin-top:18px;padding-top:18px;border-top:1px solid var(--line)}
+.sendbox h3{margin:0 0 12px}
 .sharedlg{border:1px solid var(--line);border-radius:16px;padding:0;background:var(--surface);color:var(--ink);box-shadow:0 20px 60px -20px rgba(0,0,0,.5);width:min(400px,calc(100% - 32px));max-width:none;max-height:calc(100% - 32px)}
 .sharedlg::backdrop{background:rgba(10,12,15,.55)}
 .sharedlg-in{padding:18px 20px 20px}
@@ -639,7 +641,7 @@ var SEND_TOKEN = '__SEND_TOKEN__';
 var PAY_ENDPOINT = '__PAY_ENDPOINT__'; // сервер оплаты (payEndpoint) — только в языках, где отчёт продаётся; пустой — кнопки отчёта ведут на его страницу
 var PD = '__PD__' === '1', PD_VERSION = '__PD_VERSION__'; // отдельная галочка согласия на обработку данных в форме отправки результата (pdConsent в site.config.json)
 var NEWSLETTER = '__NEWSLETTER__' === '1'; // галочка согласия на рассылку в форме отправки результата (newsletter в site.config.json)
-var RESULT_EMAIL = '__RESULT_EMAIL__' === '1'; // форма «краткий отчёт в PDF на e-mail» на экране результата (resultEmail в site.config.json; с 2026-10-21 выключена)
+var RESULT_EMAIL = '__RESULT_EMAIL__' === '1'; // кнопка «Отправить на e-mail» и форма краткого отчёта в карточке «Сохраните результат» (resultEmail в site.config.json; с 2026-10-21 по 2026-10-22 выключена)
 var PDF_DL = '__PDF_DL__' === '1'; // «Сохранить в PDF» скачивает краткий отчёт, собранный сервером (pdfDownload в site.config.json); иначе — печать браузера
 var STATS = '__STATS__' === '1'; // обезличенный счёт: в начале теста серверу уходит только язык, при завершении — только профиль и язык (profileStats в site.config.json)
 var ROOT_REL = '__ROOT_REL__';         // относительный путь к корню сайта ('./' на главной, '../' в /xx/)
@@ -978,21 +980,7 @@ function renderReport(r, opts){
       '</div>'+
       '<p class="howto">'+t('report.howto')+'</p>'+
     '</div>'+
-    // форма «краткий отчёт в PDF на e-mail» — сразу под графиком и числами, до описания профиля: так её видят почти все, кто прошёл тест
-    // имя и e-mail обязательны (звёздочка, как в форме обратной связи; проверка — в обработчике отправки: имя не короче двух букв)
-    (opts.own && RESULT_EMAIL ?
-      '<div class="share no-print" id="sendBox" style="margin:16px 0"><h2>'+t('share.emailTitle')+'</h2>'+
-        '<form class="form" id="sendForm" autocomplete="on" novalidate>'+
-          '<div class="field"><label for="nm">'+t('intro.nameLabel')+'<span class="req" aria-hidden="true">*</span></label><input type="text" id="nm" name="name" class="ym-disable-keys" autocomplete="name" required maxlength="80" value="'+esc(r.name||who.name||'')+'"></div>'+
-          '<div class="field"><label for="em">'+t('intro.emailLabel')+'<span class="req" aria-hidden="true">*</span></label><input type="email" id="em" name="email" class="ym-disable-keys" autocomplete="email" inputmode="email" required maxlength="120" value="'+esc(r.email||who.email||'')+'"><span class="hint">'+t(SEND_ENDPOINT ? 'intro.emailHint' : 'share.mailtoHint')+'</span></div>'+
-          (PD ? '<div class="subbox"><label class="check"><input type="checkbox" id="pdOk" name="consent"'+(r.pd?' checked':'')+'><span>'+
-            esc(t('pd.consent')).replace('{consent}','<a href="'+base+'consent/" target="_blank" rel="noopener">'+esc(t('pd.consentLink'))+'</a>').replace('{privacy}','<a href="'+base+'privacy/" target="_blank" rel="noopener">'+esc(t('nav.privacy'))+'</a>')+'</span></label></div>' : '')+
-          (NEWSLETTER && SEND_ENDPOINT ? '<div class="subbox" id="subBox"></div>' : '')+
-          '<p class="small sendstatus" id="sendStatus" aria-live="polite" hidden></p>'+
-          '<div class="actions"><button class="btn" type="submit">'+t('share.send')+'</button></div>'+
-        '</form>'+
-      '</div>' : '')+
-    // блок «Расширенный отчёт» — сразу под графиком (или формой e-mail), перед «Ключевыми чертами»: с 2026-10-22 по решению заказчика
+    // блок «Расширенный отчёт» — сразу под графиком, перед «Ключевыми чертами»: с 2026-10-22 по решению заказчика
     // (ниже описания профиля его на телефоне видела только половина прошедших тест)
     extOffer()+
     '<div class="card" id="secCard"><div class="sections">'+
@@ -1012,7 +1000,10 @@ function renderReport(r, opts){
       '<div class="share no-print" style="margin-top:16px"><h2>'+t('share.title')+'</h2>'+
         // свой результат: только ссылка и PDF — ссылка открывает отчёт в один клик и принимается «Панелью администратора» вместо кода (с 2026-10-20 код и письмо убраны)
         '<p class="small">'+t('share.text')+'</p>'+
-        shareButtons()+
+        // «Отправить на e-mail» (с 2026-10-22, по просьбе заказчика) раскрывает под кнопками прежнюю форму отправки краткого отчёта;
+        // после нажатия «Отправить» экран перерисовывается — форма остаётся открытой со строкой о письме
+        shareButtons(RESULT_EMAIL ? (opts.send ? 'open' : true) : false)+
+        (RESULT_EMAIL ? sendFormHTML(r, who, base, opts.send) : '')+
       '</div>'+
       '<div class="actions no-print" style="margin-top:18px"><button class="link" id="restart" type="button">'+t('share.restart')+'</button></div>'
     :
@@ -1087,6 +1078,11 @@ function renderReport(r, opts){
   if($('#restart')) $('#restart').addEventListener('click', function(){ dropHash(); renderIntro(); window.scrollTo(0,0); });
   if($('#backAdmin')) $('#backAdmin').addEventListener('click', function(){ renderAdmin(); window.scrollTo(0,0); });
   if(opts.own && RESULT_EMAIL){
+    $('#mailOpen').addEventListener('click', function(){
+      var box = $('#sendBox'); box.hidden = false; this.hidden = true; this.setAttribute('aria-expanded', 'true');
+      var f = $('#nm').value.trim() ? $('#em') : $('#nm'); try{ f.focus({preventScroll:true}); }catch(e){ f.focus(); }
+      box.scrollIntoView({behavior:'smooth', block:'nearest'});
+    });
     if(r.email && r.sent) showSendStatus(r, code, 'sent'); else if(r.email && r.queued) showSendStatus(r, code, 'queued');
     renderSub(r);
     $('#sendForm').addEventListener('submit', function(e){
@@ -1125,9 +1121,25 @@ var SHARE_NETS = {
     icon:"M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"}
 };
 var LINK_ICON = '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>';
-function shareButtons(){
+/* ====== форма «краткий отчёт в PDF на e-mail» (с 2026-10-22 — в карточке «Сохраните результат», раскрывается кнопкой «Отправить на e-mail»;
+   до 2026-10-21 стояла открытой под графиком). Имя и e-mail обязательны (звёздочка; проверка — в обработчике отправки) ====== */
+function sendFormHTML(r, who, base, open){
+  return '<div class="sendbox" id="sendBox"'+(open ? '' : ' hidden')+'><h3>'+t('share.emailTitle')+'</h3>'+
+        '<form class="form" id="sendForm" autocomplete="on" novalidate>'+
+          '<div class="field"><label for="nm">'+t('intro.nameLabel')+'<span class="req" aria-hidden="true">*</span></label><input type="text" id="nm" name="name" class="ym-disable-keys" autocomplete="name" required maxlength="80" value="'+esc(r.name||who.name||'')+'"></div>'+
+          '<div class="field"><label for="em">'+t('intro.emailLabel')+'<span class="req" aria-hidden="true">*</span></label><input type="email" id="em" name="email" class="ym-disable-keys" autocomplete="email" inputmode="email" required maxlength="120" value="'+esc(r.email||who.email||'')+'"><span class="hint">'+t(SEND_ENDPOINT ? 'intro.emailHint' : 'share.mailtoHint')+'</span></div>'+
+          (PD ? '<div class="subbox"><label class="check"><input type="checkbox" id="pdOk" name="consent"'+(r.pd?' checked':'')+'><span>'+
+            esc(t('pd.consent')).replace('{consent}','<a href="'+base+'consent/" target="_blank" rel="noopener">'+esc(t('pd.consentLink'))+'</a>').replace('{privacy}','<a href="'+base+'privacy/" target="_blank" rel="noopener">'+esc(t('nav.privacy'))+'</a>')+'</span></label></div>' : '')+
+          (NEWSLETTER && SEND_ENDPOINT ? '<div class="subbox" id="subBox"></div>' : '')+
+          '<p class="small sendstatus" id="sendStatus" aria-live="polite" hidden></p>'+
+          '<div class="actions"><button class="btn" type="submit">'+t('share.send')+'</button></div>'+
+        '</form>'+
+      '</div>';
+}
+function shareButtons(mail){
   return '<div class="actions"><button class="btn secondary" type="button" id="shareOpen" aria-haspopup="dialog">'+t('share.profile')+'</button>'+
-    '<button class="btn secondary" type="button" id="print">'+t('share.saveProfile')+'</button></div>'+
+    '<button class="btn secondary" type="button" id="print">'+t('share.saveProfile')+'</button>'+
+    (mail ? '<button class="btn secondary" type="button" id="mailOpen" aria-expanded="'+(mail==='open')+'" aria-controls="sendBox"'+(mail==='open' ? ' hidden' : '')+'>'+t('share.send')+'</button>' : '')+'</div>'+
     '<dialog class="sharedlg" id="shareDlg" aria-labelledby="shareDlgT"><div class="sharedlg-in">'+
       '<div class="sharedlg-head"><h2 id="shareDlgT">'+t('share.profile')+'</h2><button class="sharedlg-x" type="button" id="shareX" aria-label="'+esc(t('share.close'))+'" title="'+esc(t('share.close'))+'">×</button></div>'+
       '<div class="sharedlg-list"><button class="btn secondary" type="button" id="copyLink">'+LINK_ICON+t('share.copyLink')+'</button>'+
