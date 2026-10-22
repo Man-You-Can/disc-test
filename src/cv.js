@@ -5,7 +5,7 @@
    Сервер и тексты о данных не менялись: форма обратной связи передаёт имя, e-mail и текст сообщения.
    Цели Метрики: cv-cta — нажата кнопка, ведущая к форме, cv-request — заявка отправлена. */
 function cvFormHTML(c, k){
-  var T=c.T, esc=c.esc, mailLink = c.email ? '<a href="mailto:'+esc(c.email)+'">'+esc(c.email)+'</a>' : '';
+  var T=c.T, esc=c.esc;
   var req='<span class="req" aria-hidden="true">*</span>';
   return '<form class="form cvform" id="cvForm'+k+'" data-k="'+k+'" novalidate>'+
       '<div class="cvfields">'+
@@ -16,7 +16,6 @@ function cvFormHTML(c, k){
       (c.pdLabel ? '<div class="subbox"><label class="check"><input type="checkbox" id="vPd'+k+'"><span>'+c.pdLabel+'</span></label></div>' : '')+
       '<p class="small sendstatus" id="vStatus'+k+'" aria-live="polite" hidden></p>'+
       '<div class="actions"><button class="btn cvsubmit" type="submit" id="vSend'+k+'">'+esc(T.button)+'</button></div>'+
-      '<p class="hint cvprivacy">'+esc(T.privacyNote).replace('{email}', mailLink)+'</p>'+
     '</form>';
 }
 

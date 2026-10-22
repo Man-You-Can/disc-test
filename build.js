@@ -730,7 +730,7 @@ for (const L of locales) {
     const fill = str => escFull(str).replace(/\{email\}/g, `<a href="mailto:${escFull(feedbackEmail)}">${escFull(feedbackEmail)}</a>`);
     const VT = { name: t('intro.nameLabel'), email: F.email, button: F.button, subject: F.subject, message: F.message, sentTitle: F.sentTitle, sent: F.sent,
       nameRequired: t('intro.nameRequired'), emailRequired: t('intro.emailRequired'), pdRequired: L.ui['pd.required'] || '', sending: t('contact.sending'),
-      sendFailed: t('contact.sendFailed'), tooMany: t('contact.tooMany'), privacyNote: F.privacy };
+      sendFailed: t('contact.sendFailed'), tooMany: t('contact.tooMany') };
     // фото основателя — src/assets/img (копируются в docs/img); путь от страницы /<язык>/cv/ к корню сайта
     const imgRel = '../'.repeat((pathOf(L.lang) + 'cv/').split('/').length - 1);
     const form = k => cvFormHTML({ T: VT, esc: escFull, email: feedbackEmail, pdLabel: pdOn ? pdLabelHtml(L, '../') : '' }, k);
