@@ -27,6 +27,18 @@ function initCvTabs(){
   function sel(i, focus){ tabs.forEach(function(t,k){ var on=k===i; t.setAttribute('aria-selected', on); t.tabIndex=on?0:-1; panels[k].hidden=!on; }); if(focus) tabs[i].focus();
     var bar=tabs[i].parentNode, t=tabs[i]; if(t.offsetLeft < bar.scrollLeft || t.offsetLeft + t.offsetWidth > bar.scrollLeft + bar.clientWidth) bar.scrollLeft = t.offsetLeft - 8; }
   box.classList.add('js'); sel(0);
+  // «Скопировать текст»: текст блока письма по абзацам (через пустую строку); запасной путь — выделение и execCommand
+  box.querySelectorAll('.cvcopy').forEach(function(btn){
+    var label=btn.textContent, src=btn.parentNode.parentNode.querySelector('.cvcopy-src');
+    btn.addEventListener('click', function(){
+      var text=[].map.call(src.querySelectorAll('p'), function(p){ return p.textContent.trim(); }).join('\n\n');
+      function ok(){ btn.classList.add('done'); btn.textContent=btn.getAttribute('data-copied'); clearTimeout(btn._t);
+        btn._t=setTimeout(function(){ btn.classList.remove('done'); btn.textContent=label; }, 2000); if(window.discTrack) window.discTrack('cv-letter-copy'); }
+      function fallback(){ var ta=document.createElement('textarea'); ta.value=text; ta.setAttribute('readonly',''); ta.style.position='fixed'; ta.style.opacity='0';
+        document.body.appendChild(ta); ta.select(); try{ if(document.execCommand('copy')) ok(); }catch(e){} document.body.removeChild(ta); }
+      if(navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(text).then(ok, fallback); else fallback();
+    });
+  });
   box.querySelectorAll('a[data-dl]').forEach(function(a){ a.addEventListener('click', function(){ if(window.discTrack) window.discTrack('cv-sample-' + a.getAttribute('data-dl')); }); });
   tabs.forEach(function(t,i){
     t.addEventListener('click', function(){ sel(i); if(window.discTrack) window.discTrack('cv-example'); });

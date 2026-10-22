@@ -798,8 +798,12 @@ for (const L of locales) {
         `<div class="cvtopskip"><div><h3>${escFull(X.score.topTitle)}</h3><ul class="cvplus">${X.score.top.map(x => `<li>${escFull(x)}</li>`).join('')}</ul></div>` +
         `<div><h3>${escFull(X.score.skipTitle)}</h3><ul class="cvminus">${X.score.skip.map(x => `<li>${escFull(x)}</li>`).join('')}</ul></div></div></div>`,
       // сопроводительное письмо
-      `<div class="cvdoc cvletter"><p class="cvsrc">${escFull(X.letter.subject)}</p>${X.letter.body.map(x => `<p>${escFull(x)}</p>`).join('')}<p class="cvsign">${escFull(X.letter.sign)}</p>` +
-        `<div class="cvshort"><h3>${escFull(X.letter.shortTitle)}</h3><p>${escFull(X.letter.short)}</p></div></div>`
+      // кнопки «Скопировать текст» у полной и короткой версии (src/cv.js, initCvTabs): копируют текст блока .cvcopy-src без строки «Тема»
+      (() => { const LT = X.letter, copyBtn = `<button type="button" class="cvcopy" data-copied="${escFull(LT.copied)}">${escFull(LT.copy)}</button>`;
+        return `<div class="cvdoc cvletter"><p class="cvsrc">${escFull(LT.subject)}</p>` +
+          `<div class="cvletter-full"><div class="cvcopy-head"><h3>${escFull(LT.fullTitle)}</h3>${copyBtn}</div>` +
+          `<div class="cvcopy-src">${LT.body.map(x => `<p>${escFull(x)}</p>`).join('')}<p class="cvsign">${escFull(LT.sign)}</p></div></div>` +
+          `<div class="cvshort"><div class="cvcopy-head"><h3>${escFull(LT.shortTitle)}</h3>${copyBtn}</div><div class="cvcopy-src"><p>${escFull(LT.short)}</p></div></div></div>`; })()
     ] : [];
     const exampleHtml = X ? `<section class="cvsec" id="example"><h2>${escFull(X.title)}</h2><p class="cvsub">${escFull(X.lead)}</p>` +
       `<div class="cvex" id="cvEx"><div class="cvtabs" role="tablist" aria-label="${escFull(X.title)}">` +

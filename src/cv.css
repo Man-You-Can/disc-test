@@ -299,3 +299,16 @@ body:has(.cvpage) .wrap{max-width:1080px}
 .cvfile-b .btn::before{content:"↓";margin-inline-end:7px;font-weight:700}
 .cvfile-b .btn-ghost{background:var(--surface);color:var(--ink);border:1px solid var(--line-strong)}
 @media (max-width:600px){.cvfile-b{flex:1 1 100%}.cvfile-b .btn{flex:1 1 0;justify-content:center}}
+
+/* пример: кнопки «Скопировать текст» у полной и короткой версии письма */
+.cvcopy-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 0 8px}
+.cvcopy-head h3{margin:0}
+.cvcopy{flex:none;display:inline-flex;align-items:center;gap:6px;font:inherit;font-weight:600;font-size:13.5px;padding:7px 12px;border-radius:10px;cursor:pointer;
+  background:var(--surface);color:var(--ink);border:1px solid var(--line-strong)}
+.cvcopy::before{content:"⧉";font-size:14px}
+.cvcopy:hover{border-color:var(--ink)}
+.cvcopy:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.cvcopy.done{border-color:var(--s);color:var(--s)}
+.cvcopy.done::before{content:"✓"}
+.cvletter-full{padding:2px 0 4px}
+@media (max-width:600px){.cvcopy-head{flex-wrap:wrap;gap:8px}.cvcopy-head h3{flex:1 1 100%}.cvcopy{padding:6px 10px;font-size:13px}}
