@@ -798,7 +798,7 @@
       "description": "Condiciones de venta (oferta pública) del servicio «Perfil DISC ampliado» de disc-test.org: precio, pago y entrega, reembolsos y derechos sobre los materiales.",
       "h1": "Condiciones de venta (oferta pública)",
       "linkText": "condiciones de venta",
-      "edition": "Versión del 21 de octubre de 2026. Traducción al español actualizada el 21 de octubre de 2026.",
+      "edition": "Versión del 22 de octubre de 2026. Traducción al español actualizada el 22 de octubre de 2026.",
       "note": "Este texto es una traducción al español de la oferta original publicada en {original}. En caso de discrepancia entre ambos textos, prevalece el original, salvo en lo relativo al precio y a la forma de pago, que, en la versión en español del Sitio, se rigen por lo dispuesto en las secciones 1 y 3 de esta traducción.",
       "seller": "empresario individual Manukyan Armen, N.º de identificación fiscal (INN) {inn}",
       "lead": "Este documento es una propuesta formal (oferta pública) para celebrar un contrato de prestación del servicio de pago «Perfil DISC ampliado» en las condiciones que se exponen a continuación. La oferta la formula el {seller} (en adelante, el Prestador). El pago del servicio supone la aceptación plena e incondicional de estas condiciones (aceptación de la oferta).",
@@ -827,7 +827,7 @@
         {
           "h": "3. Precio y forma de pago",
           "p": [
-            "3.1. El precio del Servicio es de {price} dólares estadounidenses. El precio es definitivo: no hay pagos adicionales a favor del Prestador.",
+            "3.1. El precio del Servicio es de {price} dólares estadounidenses. Durante los 60 minutos posteriores a la realización del test en el Sitio, el Servicio se ofrece al precio especial de {offerPrice} dólares estadounidenses; el tiempo restante se indica en el Sitio junto al precio, y repetir el test no amplía ese plazo. El precio con el que se realiza el pedido se muestra en la página de pago y se mantiene para ese pedido. El precio es definitivo: no hay pagos adicionales a favor del Prestador.",
             "3.2. El Servicio se paga íntegramente antes de su prestación, con tarjeta de crédito o débito u otro medio de pago electrónico que se muestre en la página de pago. El pago lo procesa el Proveedor de pagos.",
             "3.3. El Servicio se considera pagado en el momento en que el Prestador recibe del Proveedor de pagos la confirmación del pago.",
             "3.4. El Cliente introduce los datos de la tarjeta en la página segura del Proveedor de pagos. El Prestador no recibe ni conserva esos datos.",
@@ -1035,6 +1035,13 @@
         "title": "Su informe se elaborará a partir del test que hizo el {date}",
         "text": "El informe le llegará por correo electrónico justo después del pago, como PDF adjunto. El comprobante de pago se envía a la misma dirección.",
         "guarantee": "¿No es lo que esperaba? Tiene 7 días para recuperar su dinero.",
+        "offer": {
+          "regular": "Precio habitual",
+          "cta": "Consígalo ya por {offerPrice} USD",
+          "note": "Precio especial durante una hora después del test; luego, {price} USD",
+          "left": "Quedan",
+          "expired": "Ya pasó la hora posterior al test: el informe cuesta ahora {price} USD. Pulse «Comprar» de nuevo."
+        },
         "emailLabel": "Correo para recibir el informe en PDF",
         "emailPlaceholder": "Escriba su correo electrónico",
         "button": "Comprar",
@@ -2128,7 +2135,7 @@
     "pd.consentLink": "consentimiento para el tratamiento de datos personales",
     "pd.required": "Marque la casilla de consentimiento para el tratamiento de datos personales: sin él no podemos aceptar sus datos.",
     "pd.cookieAsk": "Este sitio guarda su progreso, su resultado y el idioma elegido en el almacenamiento local del navegador. Con su consentimiento, un servicio de analítica web recopilará estadísticas de visitas anonimizadas y una grabación de las acciones en la página para ayudarnos a mejorar el sitio. Su nombre, su correo y su resultado no se envían al servicio de analítica.",
-    "pd.cookieDetails": "En el navegador se guardan: el nombre y el correo, si usted los indicó; sus respuestas y el progreso sin terminar; su último resultado; el idioma elegido; un indicador de que ha visto este aviso. Estos datos permanecen en su dispositivo y se eliminan al borrar los datos del sitio. El servicio de alojamiento recibe los datos técnicos habituales de la solicitud. La primera vez que abre el sitio en un día, se envía al servidor del sitio una marca anónima de visita: solo el idioma de la versión del sitio; el servidor la registra con la hora de llegada y su navegador guarda la fecha para no volver a enviarla ese mismo día. Con estas marcas contamos cuántas personas visitan el sitio. Al empezar el test, se envía al servidor del sitio una marca anónima de inicio: solo el idioma de la versión del sitio. Al terminar el test, se envía al servidor del sitio un registro anónimo para la estadística general: el perfil obtenido y el idioma de la versión del sitio, sin nombre, correo ni respuestas. Cuando pulsa «Guardar en PDF», sus respuestas y la fecha del test —sin nombre ni correo— se envían al servidor del sitio, que genera el archivo del informe breve, se lo devuelve y no guarda nada. El servicio de analítica web recibe la dirección de la página (en la pantalla del resultado, junto con el código del resultado: sus respuestas, la fecha del test y su nombre si lo indicó, pero no su correo), la procedencia, el tipo de dispositivo y navegador y una grabación de las acciones en la página (los campos de nombre y correo quedan excluidos), y establece sus propias cookies. Puede bloquearlo en la configuración del navegador o con un bloqueador de rastreadores. No se usan rastreadores publicitarios.",
+    "pd.cookieDetails": "En el navegador se guardan: el nombre y el correo, si usted los indicó; sus respuestas y el progreso sin terminar; su último resultado; el momento en que terminó el test por primera vez, para el plazo del precio especial del informe; el idioma elegido; un indicador de que ha visto este aviso. Estos datos permanecen en su dispositivo y se eliminan al borrar los datos del sitio. El servicio de alojamiento recibe los datos técnicos habituales de la solicitud. La primera vez que abre el sitio en un día, se envía al servidor del sitio una marca anónima de visita: solo el idioma de la versión del sitio; el servidor la registra con la hora de llegada y su navegador guarda la fecha para no volver a enviarla ese mismo día. Con estas marcas contamos cuántas personas visitan el sitio. Al empezar el test, se envía al servidor del sitio una marca anónima de inicio: solo el idioma de la versión del sitio. Al terminar el test, se envía al servidor del sitio un registro anónimo para la estadística general: el perfil obtenido y el idioma de la versión del sitio, sin nombre, correo ni respuestas. Cuando pulsa «Guardar en PDF», sus respuestas y la fecha del test —sin nombre ni correo— se envían al servidor del sitio, que genera el archivo del informe breve, se lo devuelve y no guarda nada. El servicio de analítica web recibe la dirección de la página (en la pantalla del resultado, junto con el código del resultado: sus respuestas, la fecha del test y su nombre si lo indicó, pero no su correo), la procedencia, el tipo de dispositivo y navegador y una grabación de las acciones en la página (los campos de nombre y correo quedan excluidos), y establece sus propias cookies. Puede bloquearlo en la configuración del navegador o con un bloqueador de rastreadores. No se usan rastreadores publicitarios.",
     "pd.cookieChange": "Cambiar la elección de cookies",
 
     "print.title": "Test DISC para imprimir: cuestionario con clave y puntuación",

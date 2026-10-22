@@ -51,8 +51,8 @@ const rightsHtml = L => `<div class="rights">${esc(L.ui.rights.replace('{year}',
 // servicePriceRub или servicePriceUsd в site.config.json, пустое значение или 0 убирает страницу и пункт меню в языках с этой валютой.
 // Оферта и условия возврата (/offer/, /refund/) — только в языках, где есть content.offer и content.refund (сейчас — русский)
 const servicePrices = { RUB: Number(cfg.servicePriceRub) || 0, USD: Number(cfg.servicePriceUsd) || 0 };
-const servicePrice = L => { const v = L.content.services ? servicePrices[L.content.services.currency] || 0 : 0;
-  return v ? new Intl.NumberFormat(L.dateLocale, Number.isInteger(v) ? {} : { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(v) : ''; };
+const fmtPrice = (L, v) => v ? new Intl.NumberFormat(L.dateLocale, Number.isInteger(v) ? {} : { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(v) : '';
+const servicePrice = L => fmtPrice(L, L.content.services ? servicePrices[L.content.services.currency] || 0 : 0);
 const hasServices = L => !!(servicePrice(L) && L.ui['nav.services']);
 const hasOffer = L => !!(hasServices(L) && L.content.offer && L.content.refund && L.ui['nav.offer']);
 // Расширенный отчёт: страница /extended-report/ и блок на экране результата — в языках, где есть content.product и оферта.
@@ -63,13 +63,14 @@ const hasOffer = L => !!(hasServices(L) && L.content.offer && L.content.refund &
 const sampleCount = L => { let n = 0; while (fs.existsSync(path.join(SRC, 'assets', 'extended', `${L.lang}-i-${n + 1}.webp`)) && fs.existsSync(path.join(SRC, 'assets', 'extended', `${L.lang}-i-${n + 1}-s.webp`))) n++; return n; };
 const hasProduct = L => !!(hasOffer(L) && L.content.product);
 const hasSamples = L => { const P = L.content.product; return !!(hasProduct(L) && P.sampleTitle && P.sampleNote && P.block.sample && Array.isArray(P.sampleAlt) && Array.isArray(P.sampleCaption) && P.sampleAlt.length && sampleCount(L) >= P.sampleAlt.length); };
-// Специальная цена (offerPriceRub, offerMinutes в site.config.json; решение заказчика от 2026-10-22, пока только русская версия): в течение
-// offerMinutes после прохождения теста отчёт стоит offerPriceRub вместо servicePriceRub. Включается в языке с этой валютой, где отчёт продаётся
+// Специальная цена (offerPriceRub, offerPriceUsd, offerMinutes в site.config.json; решение заказчика от 2026-10-22, во всех языках с покупкой): в течение
+// offerMinutes после прохождения теста отчёт стоит offerPrice<валюта> вместо servicePrice<валюта>. Включается в языке с этой валютой, где отчёт продаётся
 // (content.product.pay) и есть тексты content.product.pay.offer; в текстах цена подставляется вместо {offerPrice}. Срок проверяет сервер оплаты
 // по времени прохождения в коде результата (private/server/src/pay.js), страница показывает зачёркнутую обычную цену и обратный отсчёт (src/pay.js).
-const offerPrices = { RUB: Number(cfg.offerPriceRub) || 0 }, offerMinutes = Number(cfg.offerMinutes) || 60;
-const offerPrice = L => { const C = L.content, cur = C.services && C.services.currency, v = offerPrices[cur] || 0;
-  return v && v < (servicePrices[cur] || 0) && C.product && C.product.pay && C.product.pay.offer ? new Intl.NumberFormat(L.dateLocale).format(v) : ''; };
+const offerPrices = { RUB: Number(cfg.offerPriceRub) || 0, USD: Number(cfg.offerPriceUsd) || 0 }, offerMinutes = Number(cfg.offerMinutes) || 60;
+// offerTermsPrice — цена для оферты (п. 3.1 во всех языках, где она есть, даже без покупки); offerPrice — для форм покупки (нужны тексты pay.offer)
+const offerTermsPrice = L => { const cur = L.content.services && L.content.services.currency, v = offerPrices[cur] || 0; return v && v < (servicePrices[cur] || 0) ? fmtPrice(L, v) : ''; };
+const offerPrice = L => { const C = L.content; return C.product && C.product.pay && C.product.pay.offer ? offerTermsPrice(L) : ''; };
 const withPrice = (L, obj) => { const s = JSON.stringify(obj).replace(/\{price\}/g, servicePrice(L));
   if (/\{offerPrice\}/.test(s) && !offerPrice(L)) throw new Error(`${L.lang}: в тексте есть {offerPrice}, а специальная цена не задана (offerPriceRub в site.config.json)`);
   return JSON.parse(s.replace(/\{offerPrice\}/g, offerPrice(L))); };
@@ -697,9 +698,9 @@ for (const L of locales) {
   // В текстах подставляются {price}, {inn}, {seller} (исполнитель с ИНН), {email}, {site} и ссылки {contact}, {privacy}, {offer}, {refund}
   if (hasServices(L)) {
     const sv = C.services, of = C.offer, rf = C.refund, docs = hasOffer(L), own = locales.filter(hasOffer), price = servicePrice(L), fill = str => String(str).replace(/\{price\}/g, price);
-    if (!offerPrice(L) && /\{offerPrice\}/.test(JSON.stringify([sv, of || '', rf || '']))) throw new Error(`${L.lang}: в услуге или оферте есть {offerPrice}, а специальная цена не задана`);
+    if (!offerTermsPrice(L) && /\{offerPrice\}/.test(JSON.stringify([sv, of || '', rf || '']))) throw new Error(`${L.lang}: в услуге или оферте есть {offerPrice}, а специальная цена не задана`);
     const link = (sub2, text) => `<a href="../${sub2}">${escFull(text)}</a>`;
-    const vars = Object.assign({ price, offerPrice: offerPrice(L), site: escFull(siteUrl),
+    const vars = Object.assign({ price, offerPrice: offerTermsPrice(L), site: escFull(siteUrl),
       email: feedbackEmail ? `<a href="mailto:${escFull(feedbackEmail)}">${escFull(feedbackEmail)}</a>` : '—',
       contact: feedbackEmail ? link('contact/', t('nav.contact')) : escFull(t('nav.contact')), privacy: link('privacy/', t('nav.privacy')) },
       docs ? { inn: legalInn, seller: escFull(of.seller.replace('{inn}', legalInn)), offer: link('offer/', of.linkText), refund: link('refund/', rf.linkText) } : {});
@@ -930,7 +931,7 @@ if (cfg.reportAd === true || process.env.REPORT_AD === '1') {
 const gsTpl = fs.readFileSync(path.join(SRC, 'apps-script.template.js'), 'utf8');
 const gs = gsTpl
   .replace('__SITE_URL__', siteUrl).replace('__SEND_TOKEN__', String(cfg.sendToken || '').replace(/['\\]/g, ''))
-  .replace('__SENDER_EMAIL__', senderEmail).replace('__CONTACT_TO__', feedbackEmail).replace('__PRICE_RUB__', String(servicePrices.RUB || 0)).replace('__PRICE_USD__', String(servicePrices.USD || 0)).replace('__OFFER_RUB__', String(offerPrices.RUB || 0)).replace('__OFFER_MIN__', String(offerMinutes)).replace('__MAX_CONTACT_BYTES__', String(MAX_CONTACT_BYTES))
+  .replace('__SENDER_EMAIL__', senderEmail).replace('__CONTACT_TO__', feedbackEmail).replace('__PRICE_RUB__', String(servicePrices.RUB || 0)).replace('__PRICE_USD__', String(servicePrices.USD || 0)).replace('__OFFER_RUB__', String(offerPrices.RUB || 0)).replace('__OFFER_USD__', String(offerPrices.USD || 0)).replace('__OFFER_MIN__', String(offerMinutes)).replace('__MAX_CONTACT_BYTES__', String(MAX_CONTACT_BYTES))
   .replace('__BLOCK_KEYS__', BLOCK_KEYS).replace('__DATA__', () => JSON.stringify(mailData));
 fs.mkdirSync(path.join(ROOT, 'backend', 'apps-script'), { recursive: true });
 fs.writeFileSync(path.join(ROOT, 'backend', 'apps-script', 'Code.gs'), gs);

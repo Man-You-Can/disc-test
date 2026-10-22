@@ -796,7 +796,7 @@
       "description": "Conditions générales de vente du service payant « Profil DISC détaillé » sur disc-test.org : prix, paiement et envoi, remboursement, droits sur les contenus.",
       "h1": "Conditions générales de vente",
       "linkText": "conditions générales de vente",
-      "edition": "Version du 21 octobre 2026. Traduction française mise à jour le 21 octobre 2026.",
+      "edition": "Version du 22 octobre 2026. Traduction française mise à jour le 22 octobre 2026.",
       "note": "Ce texte est la traduction française des conditions originales publiées à l'adresse {original}. En cas de divergence entre les deux textes, l'original prévaut, sauf pour le prix et les modalités de paiement : pour la version française du Site, ceux-ci sont régis par les articles 1 et 3 de la présente traduction.",
       "seller": "Manukyan Armen, entrepreneur individuel, N° d’identification fiscale (INN) {inn}",
       "lead": "Le présent document constitue une offre officielle (offre au public) de conclure un contrat portant sur le service payant « Profil DISC détaillé » aux conditions énoncées ci-dessous. Cette offre émane de {seller} (ci-après « le Prestataire »). Le paiement du service vaut acceptation pleine, entière et sans réserve des présentes conditions (acceptation de l'offre).",
@@ -825,7 +825,7 @@
         {
           "h": "3. Prix et modalités de paiement",
           "p": [
-            "3.1. Le prix du Service est de {price} dollars américains. Ce prix est définitif : aucun autre paiement n'est dû au Prestataire.",
+            "3.1. Le prix du Service est de {price} dollars américains. Pendant les 60 minutes qui suivent la réalisation du test sur le Site, le Service est proposé au prix spécial de {offerPrice} dollars américains ; le temps restant est indiqué sur le Site à côté du prix, et refaire le test ne prolonge pas ce délai. Le prix auquel la commande est passée figure sur la page de paiement et reste attaché à cette commande. Ce prix est définitif : aucun autre paiement n'est dû au Prestataire.",
             "3.2. Le Service est payé intégralement avant sa fourniture, par carte bancaire ou par un autre moyen de paiement électronique proposé sur la page de paiement. Le paiement est encaissé par l'Opérateur de paiement.",
             "3.3. Le Service est réputé payé dès que le Prestataire reçoit de l'Opérateur de paiement la confirmation du paiement.",
             "3.4. Le Client saisit les données de sa carte sur la page sécurisée de l'Opérateur de paiement. Le Prestataire ne reçoit pas ces données et ne les conserve pas.",
@@ -1037,6 +1037,13 @@
         "title": "Votre rapport sera établi à partir de votre test du {date}",
         "text": "Le rapport arrive par e-mail juste après le paiement, en pièce jointe au format PDF. Le reçu de paiement est envoyé à la même adresse.",
         "guarantee": "Satisfait ou remboursé pendant 7 jours.",
+        "offer": {
+          "regular": "Prix habituel",
+          "cta": "Achetez maintenant à {offerPrice} USD",
+          "note": "Prix spécial pendant une heure après le test, puis {price} USD",
+          "left": "Il reste",
+          "expired": "L'heure qui suit le test est écoulée : le rapport coûte désormais {price} USD. Cliquez de nouveau sur « Acheter »."
+        },
         "emailLabel": "E-mail pour recevoir le rapport en PDF",
         "emailPlaceholder": "Saisissez votre e-mail",
         "button": "Acheter",
@@ -2145,7 +2152,7 @@
     "pd.consentLink": "consentement au traitement des données personnelles",
     "pd.required": "Cochez la case de consentement au traitement des données personnelles : sans ce consentement, nous ne pouvons pas accepter vos données.",
     "pd.cookieAsk": "Ce site conserve votre progression, votre résultat et la langue choisie dans le stockage local du navigateur. Avec votre consentement, un service d'analyse d'audience collectera des statistiques de visite anonymisées et un enregistrement des actions sur la page pour nous aider à améliorer le site. Votre nom, votre e-mail et votre résultat ne sont pas transmis au service d'analyse.",
-    "pd.cookieDetails": "Conservés dans le navigateur : le nom et l'e-mail, si vous les avez indiqués ; vos réponses et la progression inachevée ; votre dernier résultat ; la langue choisie ; une marque indiquant que vous avez vu cet avis. Ces données restent sur votre appareil et sont supprimées lorsque vous effacez les données du site. L'hébergeur reçoit les données techniques habituelles de la requête. La première fois que vous ouvrez le site dans la journée, une marque de visite anonyme est envoyée au serveur du site : uniquement la langue de la version du site ; le serveur l'enregistre avec son heure d'arrivée, et votre navigateur garde la date pour ne pas la renvoyer le même jour. Ces marques nous servent à compter combien de personnes visitent le site. Lorsque vous commencez le test, une marque de début anonyme est envoyée au serveur du site : uniquement la langue de la version du site. Lorsque vous terminez le test, un enregistrement anonyme destiné aux statistiques générales est envoyé au serveur du site : le profil obtenu et la langue de la version du site, sans nom, e-mail ni réponses. Lorsque vous cliquez sur « Enregistrer en PDF », vos réponses et la date du test — sans nom ni e-mail — sont envoyées au serveur du site, qui génère le fichier du rapport de synthèse, vous le renvoie et ne conserve rien. Le service d'analyse d'audience reçoit l'adresse de la page (sur l'écran du résultat, avec le code du résultat : vos réponses, la date du test et votre nom si vous l'avez indiqué, mais pas votre e-mail), la provenance, le type d'appareil et de navigateur, un enregistrement des actions sur la page (les champs nom et e-mail en sont exclus) et dépose ses propres cookies. Vous pouvez le bloquer dans les paramètres du navigateur ou avec un bloqueur de traceurs. Aucun traceur publicitaire n'est utilisé.",
+    "pd.cookieDetails": "Conservés dans le navigateur : le nom et l'e-mail, si vous les avez indiqués ; vos réponses et la progression inachevée ; votre dernier résultat ; l'heure à laquelle vous avez terminé le test pour la première fois, pour le délai du prix spécial du rapport ; la langue choisie ; une marque indiquant que vous avez vu cet avis. Ces données restent sur votre appareil et sont supprimées lorsque vous effacez les données du site. L'hébergeur reçoit les données techniques habituelles de la requête. La première fois que vous ouvrez le site dans la journée, une marque de visite anonyme est envoyée au serveur du site : uniquement la langue de la version du site ; le serveur l'enregistre avec son heure d'arrivée, et votre navigateur garde la date pour ne pas la renvoyer le même jour. Ces marques nous servent à compter combien de personnes visitent le site. Lorsque vous commencez le test, une marque de début anonyme est envoyée au serveur du site : uniquement la langue de la version du site. Lorsque vous terminez le test, un enregistrement anonyme destiné aux statistiques générales est envoyé au serveur du site : le profil obtenu et la langue de la version du site, sans nom, e-mail ni réponses. Lorsque vous cliquez sur « Enregistrer en PDF », vos réponses et la date du test — sans nom ni e-mail — sont envoyées au serveur du site, qui génère le fichier du rapport de synthèse, vous le renvoie et ne conserve rien. Le service d'analyse d'audience reçoit l'adresse de la page (sur l'écran du résultat, avec le code du résultat : vos réponses, la date du test et votre nom si vous l'avez indiqué, mais pas votre e-mail), la provenance, le type d'appareil et de navigateur, un enregistrement des actions sur la page (les champs nom et e-mail en sont exclus) et dépose ses propres cookies. Vous pouvez le bloquer dans les paramètres du navigateur ou avec un bloqueur de traceurs. Aucun traceur publicitaire n'est utilisé.",
     "pd.cookieChange": "Modifier le choix des cookies",
 
     "print.title": "Test DISC à imprimer : questionnaire, clé et calcul du score",

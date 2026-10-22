@@ -794,7 +794,7 @@
       "description": "Terms of sale (public offer) for the paid service “In-depth DISC profile” on disc-test.org: price, payment and delivery, refunds, rights to materials.",
       "h1": "Terms of Sale (Public Offer)",
       "linkText": "terms of sale",
-      "edition": "Version of October 21, 2026. English translation updated on October 21, 2026.",
+      "edition": "Version of October 22, 2026. English translation updated on October 22, 2026.",
       "note": "This is an English translation of the original offer published at {original}. If the two texts differ, the original prevails, except for the price and the way payment is made: for the English version of the Site they are set out in sections 1 and 3.",
       "seller": "individual entrepreneur Manukyan Armen, Taxpayer ID (INN) {inn}",
       "lead": "This document is an official proposal (a public offer) to enter into a contract for the paid service “In-depth DISC profile” on the terms set out below. The offer is made by {seller} (hereinafter, the Provider). Paying for the service constitutes full and unconditional acceptance of these terms (acceptance of the offer).",
@@ -823,7 +823,7 @@
         {
           "h": "3. Price and payment",
           "p": [
-            "3.1. The price of the Service is {price} US dollars. The price is final: there are no additional payments to the Provider.",
+            "3.1. The price of the Service is {price} US dollars. For 60 minutes after the test is taken on the Site, the Service is offered at a special price of {offerPrice} US dollars; the time left is shown on the Site next to the price, and taking the test again does not extend it. The price at which an order is placed is shown on the payment page and stays with that order. The price is final: there are no additional payments to the Provider.",
             "3.2. The Service is paid for in full before it is provided, by payment card or another non-cash method shown on the payment page. Payment is accepted by the Payment Service.",
             "3.3. The Service is deemed paid at the moment the Provider receives confirmation of the payment from the Payment Service.",
             "3.4. The Customer enters their card details on the Payment Service’s secure page. The Provider does not receive or store these details.",
@@ -1026,6 +1026,13 @@
         "title": "Your report will be built from the test you took on {date}",
         "text": "The report arrives by email as soon as you pay, as a PDF attachment. Your payment receipt goes to the same address.",
         "guarantee": "Not right for you? Get a full refund within 7 days.",
+        "offer": {
+          "regular": "Regular price",
+          "cta": "Get it now for US${offerPrice}",
+          "note": "Special price for one hour after the test, then US${price}",
+          "left": "Time left",
+          "expired": "The hour after the test is over: the report now costs US${price}. Click “Buy” again."
+        },
         "emailLabel": "Email to receive your report as a PDF",
         "emailPlaceholder": "Enter your email",
         "button": "Buy",
@@ -2113,7 +2120,7 @@
     "pd.consentLink": "consent to the processing of personal data",
     "pd.required": "Please tick the consent to the processing of personal data: without it we cannot accept your data.",
     "pd.cookieAsk": "This site keeps your progress, result and chosen language in your browser’s local storage. With your consent, a web analytics system will collect anonymized visit statistics and a recording of on-page actions to help us improve the site. Your name, email and result are not sent to the analytics system.",
-    "pd.cookieDetails": "Stored in your browser: your name and email, if you entered them; your answers and unfinished progress; your latest result; your chosen language; a note that you have seen this notice. This data stays on your device and is removed when you clear the site’s data. The hosting provider receives standard technical request data. When you first open the site on a given day, an anonymous visit note goes to the site’s server: the site language only; the server records it with the time it arrived, and your browser remembers the date so the note is not sent again that day. We use these notes to count how many people visit the site. When you start the test, an anonymous start note goes to the site’s server: the site language only. When you finish the test, an anonymous record for overall statistics goes to the site’s server: your resulting profile and the site language — without your name, email or answers. When you click “Save as PDF”, your answers and the test date — without your name or email — are sent to the site’s server, which builds the summary report file, returns it to you and stores nothing. The web analytics system receives the page address (on the result screen, together with the result code: your answers, the test date and your name if you entered it, but not your email), the referrer, device and browser type, a recording of on-page actions (the name and email fields are excluded), and sets its own cookies. You can block it in your browser settings or with a tracker blocker. No advertising trackers are used.",
+    "pd.cookieDetails": "Stored in your browser: your name and email, if you entered them; your answers and unfinished progress; your latest result; the time you first finished the test, for the deadline of the special report price; your chosen language; a note that you have seen this notice. This data stays on your device and is removed when you clear the site’s data. The hosting provider receives standard technical request data. When you first open the site on a given day, an anonymous visit note goes to the site’s server: the site language only; the server records it with the time it arrived, and your browser remembers the date so the note is not sent again that day. We use these notes to count how many people visit the site. When you start the test, an anonymous start note goes to the site’s server: the site language only. When you finish the test, an anonymous record for overall statistics goes to the site’s server: your resulting profile and the site language — without your name, email or answers. When you click “Save as PDF”, your answers and the test date — without your name or email — are sent to the site’s server, which builds the summary report file, returns it to you and stores nothing. The web analytics system receives the page address (on the result screen, together with the result code: your answers, the test date and your name if you entered it, but not your email), the referrer, device and browser type, a recording of on-page actions (the name and email fields are excluded), and sets its own cookies. You can block it in your browser settings or with a tracker blocker. No advertising trackers are used.",
     "pd.cookieChange": "Change cookie choice",
 
     "print.title": "Printable DISC Test: Questionnaire, Answer Key and Scoring",

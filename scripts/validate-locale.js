@@ -12,10 +12,9 @@ const files = process.argv.slice(2).length ? process.argv.slice(2) : fs.readdirS
 // и полный текст политики по российскому закону (policy.legal).
 // Оферта, условия возврата, страница отчёта, раздел о данных покупателя и ссылка «Оферта» обязательны во всех языках.
 const OPTIONAL = ['.content.policy.legal', '.content.extendedMail', '.content.product.pay', '.content.product.sampleTitle', '.content.product.sampleNote', '.content.product.sampleAlt',
-  '.content.product.sampleCaption', '.content.product.block.sample', '.content.product.pdf.sheets', '.content.product.promo',
-  // специальная цена на час после теста (product.pay.offer, offerPriceRub в site.config.json): по решению заказчика от 2026-10-22 только в русской
-  // версии — исключение из правила «продающее — во все языки с покупкой»; в языке с долларовой ценой build.js её не включит, пока нет цены в долларах
-  '.content.product.pay.offer'];
+  '.content.product.sampleCaption', '.content.product.block.sample', '.content.product.pdf.sheets', '.content.product.promo'];
+// специальная цена на час после теста (product.pay.offer; offerPriceRub, offerPriceUsd в site.config.json; с 2026-10-22) обязательна вместе с product.pay:
+// её тексты сравниваются с ru.json как часть pay
 // Страница «Как готовятся отчёты» (content.howMade) и её пункт в шапке (ui["nav.howMade"]) обязательны во всех языках (с 2026-10-14).
 // Ключи, которых в эталоне нет, а в остальных локалях они допустимы: оговорка о переводе в оферте и условиях возврата (при расхождении действует
 // русский текст) и строка о заявке в блоке расширенного отчёта (отчёт на этом языке пока нельзя заказать). Их обязательность — в проверке ниже.

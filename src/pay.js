@@ -55,8 +55,9 @@ function payForms(c){
     g.forms.forEach(function(f){
       var on = f.until > now; any = any || on;
       f.price = O ? (on ? O.price : O.regular) : 0;
-      var html = O ? (on ? '<s class="xold"><span class="vh">'+esc(O.regularLabel)+' </span>'+esc(O.regularText)+'</s> '+esc(O.priceText) : esc(O.regularText)) : null;
-      if(f.big && html !== null && f.big.innerHTML !== html) f.big.innerHTML = html;
+      // каждая цена не переносится внутри себя; две цены (xdual) на узком экране мельче и при нехватке места встают в две строки
+      var html = O ? (on ? '<s class="xold"><span class="vh">'+esc(O.regularLabel)+' </span>'+esc(O.regularText)+'</s> <span class="xnew">'+esc(O.priceText)+'</span>' : '<span class="xnew">'+esc(O.regularText)+'</span>') : null;
+      if(f.big && html !== null && f.big.innerHTML !== html){ f.big.innerHTML = html; f.big.classList.toggle('xdual', on); }
       f.deal.hidden = !on; if(on) f.clock.textContent = payClock(f.until - now);
     });
     if(any !== g.on){ g.on = any; g.subs.forEach(function(fn){ fn(any); }); }

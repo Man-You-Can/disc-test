@@ -29,11 +29,12 @@ http.createServer((req, res) => {
         if (p === '/mock-pay-fail/order') return json({ ok: false, error: 'mock failure' });
         if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(String(j.email || '')) || String(j.email).length > 64) return json({ ok: false, error: 'bad email' });
         if (!/^DISC1\.[A-Za-z0-9_-]+$/.test(String(j.code || ''))) return json({ ok: false, error: 'bad code' });
-        // специальная цена: как сервер оплаты — 490 принимается только в течение offerMinutes (+2 минуты) после прохождения теста (t в коде результата)
+        // специальная цена: как сервер оплаты — специальная (490 ₽, 6.99 USD) принимается только в течение offerMinutes (+2 минуты) после прохождения теста (t в коде результата)
         const cfg = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'site.config.json'), 'utf8'));
         let tt = NaN; try { tt = Date.parse(JSON.parse(Buffer.from(String(j.code).split('.')[1], 'base64url').toString('utf8')).t); } catch (e) {}
         console.log('mock-pay price:', j.price === undefined ? '(нет)' : j.price, 'minutes since test:', isNaN(tt) ? '?' : Math.round((Date.now() - tt) / 60000));
-        if (cfg.offerPriceRub && j.price === cfg.offerPriceRub && !(Date.now() - tt <= ((cfg.offerMinutes || 60) + 2) * 60000)) return json({ ok: false, error: 'offer expired', price: cfg.servicePriceRub });
+        const ru = (j.lang || 'ru') === 'ru', offerP = ru ? cfg.offerPriceRub : cfg.offerPriceUsd, regP = ru ? cfg.servicePriceRub : cfg.servicePriceUsd;
+        if (offerP && j.price === offerP && !(Date.now() - tt <= ((cfg.offerMinutes || 60) + 2) * 60000)) return json({ ok: false, error: 'offer expired', price: regP });
         const d = new Date(), order = String(d.getFullYear()).slice(2) + String(d.getMonth() + 1).padStart(2, '0') + String(d.getDate()).padStart(2, '0') + '-' + Math.random().toString(36).slice(2, 8).toUpperCase();
         // куда «банк» вернёт покупателя: страница отчёта, с которой пришёл заказ (…/extended-report/), иначе русская версия
         let back = '/ru/extended-report/'; try { const rp = new URL(req.headers.referer).pathname; back = /extended-report\//.test(rp) ? rp.replace(/extended-report\/.*$/, 'extended-report/') : rp.replace(/[^/]*$/, '') + 'extended-report/'; } catch (e) {}   // заказ с экрана результата (главная языка) — тоже на страницы отчёта, как у настоящего сервера

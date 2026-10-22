@@ -798,7 +798,7 @@
       "description": "Allgemeine Geschäftsbedingungen für die Leistung „Ausführliches DISG-Profil“ auf disc-test.org: Preis, Zahlung und Zusendung, Erstattung, Rechte an den Inhalten.",
       "h1": "Allgemeine Geschäftsbedingungen",
       "linkText": "Allgemeinen Geschäftsbedingungen",
-      "edition": "Fassung vom 21. Oktober 2026. Deutsche Übersetzung aktualisiert am 21. Oktober 2026.",
+      "edition": "Fassung vom 22. Oktober 2026. Deutsche Übersetzung aktualisiert am 22. Oktober 2026.",
       "note": "Dies ist die deutsche Übersetzung dieser Geschäftsbedingungen; das Original ist unter {original} veröffentlicht. Weichen die beiden Texte voneinander ab, gilt das Original – mit Ausnahme des Preises und der Zahlungsbedingungen: Für die deutsche Version der Website gelten dafür die Ziffern 1 und 3 dieser Übersetzung.",
       "seller": "Einzelunternehmer Manukyan Armen, Steuernummer (INN) {inn}",
       "lead": "Dieses Dokument ist ein verbindliches Angebot (öffentliches Angebot) zum Abschluss eines Vertrags über die kostenpflichtige Leistung „Ausführliches DISG-Profil“ zu den nachstehenden Bedingungen. Das Angebot unterbreitet {seller} (im Folgenden „Anbieter“). Wer die Leistung bezahlt, stimmt diesen Bedingungen vollständig und vorbehaltlos zu (Annahme des Angebots).",
@@ -827,7 +827,7 @@
         {
           "h": "3. Preis und Zahlung",
           "p": [
-            "3.1. Der Preis der Leistung beträgt {price} US-Dollar. Der Preis ist ein Endpreis: Weitere Zahlungen an den Anbieter fallen nicht an.",
+            "3.1. Der Preis der Leistung beträgt {price} US-Dollar. Innerhalb von 60 Minuten nach Durchführung des Tests auf der Website wird die Leistung zum Sonderpreis von {offerPrice} US-Dollar angeboten; die verbleibende Zeit wird auf der Website neben dem Preis angezeigt, eine Wiederholung des Tests verlängert diese Frist nicht. Der Preis, zu dem eine Bestellung aufgegeben wird, wird auf der Zahlungsseite angezeigt und bleibt für diese Bestellung bestehen. Der Preis ist ein Endpreis: Weitere Zahlungen an den Anbieter fallen nicht an.",
             "3.2. Die Leistung ist vor ihrer Erbringung vollständig zu bezahlen, und zwar mit Bankkarte oder einer anderen elektronischen Zahlungsart, die auf der Zahlungsseite angeboten wird. Die Zahlung nimmt der Zahlungsabwickler entgegen.",
             "3.3. Die Leistung gilt als bezahlt, sobald der Anbieter die Zahlungsbestätigung des Zahlungsabwicklers erhalten hat.",
             "3.4. Die Kartendaten gibt der Kunde auf der gesicherten Seite des Zahlungsabwicklers ein. Der Anbieter erhält und speichert diese Daten nicht.",
@@ -1035,6 +1035,13 @@
         "title": "Ihr Bericht entsteht aus Ihrem Testergebnis vom {date}",
         "text": "Der Bericht kommt direkt nach der Zahlung per E-Mail, als PDF im Anhang. Der Kaufbeleg geht an dieselbe Adresse.",
         "guarantee": "Nicht zufrieden? 7 Tage Geld-zurück-Garantie.",
+        "offer": {
+          "regular": "Regulärer Preis",
+          "cta": "Jetzt für {offerPrice} USD sichern",
+          "note": "Sonderpreis eine Stunde nach dem Test, danach {price} USD",
+          "left": "Noch",
+          "expired": "Die Stunde nach dem Test ist vorbei: Der Bericht kostet jetzt {price} USD. Klicken Sie erneut auf „Kaufen“."
+        },
         "emailLabel": "E-Mail-Adresse für den Bericht als PDF",
         "emailPlaceholder": "Geben Sie Ihre E-Mail-Adresse ein",
         "button": "Kaufen",
@@ -2130,7 +2137,7 @@
     "pd.consentLink": "Einwilligung in die Verarbeitung personenbezogener Daten",
     "pd.required": "Bitte bestätigen Sie die Einwilligung in die Verarbeitung personenbezogener Daten: Ohne sie können wir Ihre Daten nicht annehmen.",
     "pd.cookieAsk": "Diese Website speichert Ihren Fortschritt, Ihr Ergebnis und die gewählte Sprache im lokalen Speicher des Browsers. Mit Ihrer Einwilligung erfasst ein Webanalysesystem anonymisierte Besuchsstatistiken und eine Aufzeichnung der Aktionen auf der Seite, damit wir die Website verbessern können. Ihr Name, Ihre E-Mail-Adresse und Ihr Ergebnis werden nicht an das Analysesystem übermittelt.",
-    "pd.cookieDetails": "Im Browser gespeichert werden: Name und E-Mail-Adresse, falls Sie sie angegeben haben; Ihre Antworten und der unvollendete Fortschritt; Ihr letztes Ergebnis; die gewählte Sprache; ein Vermerk, dass Sie diesen Hinweis gesehen haben. Diese Daten bleiben auf Ihrem Gerät und werden beim Löschen der Website-Daten entfernt. Der Hosting-Anbieter erhält die üblichen technischen Anfragedaten. Wenn Sie die Website an einem Tag zum ersten Mal öffnen, geht ein anonymer Besuchsvermerk an den Server der Website: nur die Sprachversion der Website; der Server speichert ihn mit der Uhrzeit des Eingangs, und Ihr Browser merkt sich das Datum, damit der Vermerk am selben Tag nicht noch einmal gesendet wird. Damit zählen wir, wie viele Menschen die Website besuchen. Wenn Sie den Test beginnen, geht ein anonymer Startvermerk an den Server der Website: nur die Sprachversion der Website. Wenn Sie den Test abschließen, geht ein anonymer Eintrag für die Gesamtstatistik an den Server der Website: das ermittelte Profil und die Sprachversion der Website – ohne Namen, E-Mail-Adresse und Antworten. Wenn Sie auf „Als PDF speichern“ klicken, gehen Ihre Antworten und das Testdatum – ohne Namen und E-Mail-Adresse – an den Server der Website; er erstellt daraus die Datei mit dem Kurzbericht, gibt sie Ihnen zurück und speichert nichts. Das Webanalysesystem erhält die Seitenadresse (auf der Ergebnisseite zusammen mit dem Ergebniscode: Ihre Antworten, das Testdatum und Ihr Name, falls Sie ihn angegeben haben, aber nicht Ihre E-Mail-Adresse), die Herkunft des Besuchs, Geräte- und Browsertyp sowie eine Aufzeichnung der Aktionen auf der Seite (die Felder für Name und E-Mail sind ausgenommen) und setzt eigene Cookies. Sie können es in den Browsereinstellungen oder mit einem Tracker-Blocker blockieren. Werbe-Tracker werden nicht verwendet.",
+    "pd.cookieDetails": "Im Browser gespeichert werden: Name und E-Mail-Adresse, falls Sie sie angegeben haben; Ihre Antworten und der unvollendete Fortschritt; Ihr letztes Ergebnis; der Zeitpunkt, zu dem Sie den Test zum ersten Mal abgeschlossen haben, für die Frist des Sonderpreises des Berichts; die gewählte Sprache; ein Vermerk, dass Sie diesen Hinweis gesehen haben. Diese Daten bleiben auf Ihrem Gerät und werden beim Löschen der Website-Daten entfernt. Der Hosting-Anbieter erhält die üblichen technischen Anfragedaten. Wenn Sie die Website an einem Tag zum ersten Mal öffnen, geht ein anonymer Besuchsvermerk an den Server der Website: nur die Sprachversion der Website; der Server speichert ihn mit der Uhrzeit des Eingangs, und Ihr Browser merkt sich das Datum, damit der Vermerk am selben Tag nicht noch einmal gesendet wird. Damit zählen wir, wie viele Menschen die Website besuchen. Wenn Sie den Test beginnen, geht ein anonymer Startvermerk an den Server der Website: nur die Sprachversion der Website. Wenn Sie den Test abschließen, geht ein anonymer Eintrag für die Gesamtstatistik an den Server der Website: das ermittelte Profil und die Sprachversion der Website – ohne Namen, E-Mail-Adresse und Antworten. Wenn Sie auf „Als PDF speichern“ klicken, gehen Ihre Antworten und das Testdatum – ohne Namen und E-Mail-Adresse – an den Server der Website; er erstellt daraus die Datei mit dem Kurzbericht, gibt sie Ihnen zurück und speichert nichts. Das Webanalysesystem erhält die Seitenadresse (auf der Ergebnisseite zusammen mit dem Ergebniscode: Ihre Antworten, das Testdatum und Ihr Name, falls Sie ihn angegeben haben, aber nicht Ihre E-Mail-Adresse), die Herkunft des Besuchs, Geräte- und Browsertyp sowie eine Aufzeichnung der Aktionen auf der Seite (die Felder für Name und E-Mail sind ausgenommen) und setzt eigene Cookies. Sie können es in den Browsereinstellungen oder mit einem Tracker-Blocker blockieren. Werbe-Tracker werden nicht verwendet.",
     "pd.cookieChange": "Cookie-Auswahl ändern",
 
     "print.title": "DISG-Test zum Ausdrucken: Fragebogen mit Schlüssel und Auswertung",

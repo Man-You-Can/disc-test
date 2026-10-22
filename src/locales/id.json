@@ -796,7 +796,7 @@
       "description": "Syarat dan ketentuan layanan berbayar “Profil DISC lengkap” di disc-test.org: harga, pembayaran dan pengiriman, pengembalian dana, hak atas materi.",
       "h1": "Syarat dan Ketentuan Layanan Berbayar",
       "linkText": "syarat dan ketentuan layanan berbayar",
-      "edition": "Versi tanggal 21 Oktober 2026. Terjemahan bahasa Indonesia diperbarui pada 21 Oktober 2026.",
+      "edition": "Versi tanggal 22 Oktober 2026. Terjemahan bahasa Indonesia diperbarui pada 22 Oktober 2026.",
       "note": "Teks ini adalah terjemahan bahasa Indonesia dari syarat dan ketentuan asli yang diterbitkan di {original}. Jika kedua teks berbeda, yang berlaku adalah teks asli, kecuali mengenai harga dan cara pembayaran: untuk Situs versi bahasa Indonesia, yang berlaku adalah bagian 1 dan 3 terjemahan ini.",
       "seller": "pengusaha perorangan Manukyan Armen, Nomor identitas wajib pajak (INN) {inn}",
       "lead": "Dokumen ini adalah penawaran resmi yang terbuka bagi siapa pun (penawaran terbuka) untuk mengadakan perjanjian penyediaan layanan berbayar “Profil DISC lengkap” dengan syarat dan ketentuan di bawah ini. Penawaran ini diajukan oleh {seller} (selanjutnya disebut “Penyedia”). Membayar layanan berarti menerima syarat dan ketentuan ini sepenuhnya dan tanpa syarat (penerimaan penawaran).",
@@ -825,7 +825,7 @@
         {
           "h": "3. Harga dan pembayaran",
           "p": [
-            "3.1. Harga Layanan adalah {price} dolar Amerika Serikat. Harga ini final: tidak ada pembayaran tambahan kepada Penyedia.",
+            "3.1. Harga Layanan adalah {price} dolar Amerika Serikat. Dalam 60 menit setelah tes diselesaikan di Situs, Layanan ditawarkan dengan harga khusus {offerPrice} dolar Amerika Serikat; sisa waktunya ditampilkan di Situs di samping harga, dan mengulang tes tidak memperpanjang batas waktu tersebut. Harga saat pesanan dibuat ditampilkan di halaman pembayaran dan tetap berlaku untuk pesanan itu. Harga ini final: tidak ada pembayaran tambahan kepada Penyedia.",
             "3.2. Layanan dibayar lunas sebelum diberikan, dengan kartu bank atau metode pembayaran elektronik lain yang ditawarkan di halaman pembayaran. Pembayaran diterima oleh Pemroses Pembayaran.",
             "3.3. Layanan dianggap telah dibayar pada saat Penyedia menerima konfirmasi pembayaran dari Pemroses Pembayaran.",
             "3.4. Pelanggan memasukkan data kartu di halaman aman milik Pemroses Pembayaran. Penyedia tidak menerima dan tidak menyimpan data tersebut.",
@@ -1023,6 +1023,13 @@
         "title": "Laporan disusun dari hasil tes Anda tanggal {date}",
         "text": "Laporan dikirim lewat email sebagai lampiran PDF, segera setelah pembayaran. Bukti pembayaran dikirim ke alamat yang sama.",
         "guarantee": "Tidak sesuai harapan? Ada garansi uang kembali selama 7 hari.",
+        "offer": {
+          "regular": "Harga normal",
+          "cta": "Beli sekarang seharga US${offerPrice}",
+          "note": "Harga khusus selama satu jam setelah tes, lalu US${price}",
+          "left": "Sisa waktu",
+          "expired": "Satu jam setelah tes sudah lewat: harga laporan sekarang US${price}. Tekan “Beli” sekali lagi."
+        },
         "emailLabel": "Email untuk menerima laporan dalam format PDF",
         "emailPlaceholder": "Masukkan email Anda",
         "button": "Beli",
@@ -2110,7 +2117,7 @@
     "pd.consentLink": "persetujuan atas pemrosesan data pribadi",
     "pd.required": "Centang persetujuan atas pemrosesan data pribadi: tanpa persetujuan itu, kami tidak dapat menerima data Anda.",
     "pd.cookieAsk": "Situs ini menyimpan progres, hasil, dan bahasa pilihan Anda di penyimpanan lokal browser. Dengan persetujuan Anda, layanan analitik web akan mengumpulkan statistik kunjungan yang dianonimkan dan rekaman aktivitas di halaman agar kami dapat menyempurnakan situs. Nama, email, dan hasil Anda tidak dikirim ke layanan analitik.",
-    "pd.cookieDetails": "Yang disimpan di browser: nama dan email, jika Anda mengisinya; jawaban dan progres yang belum selesai; hasil terakhir; bahasa yang dipilih; penanda bahwa Anda sudah melihat pemberitahuan ini. Data ini tetap berada di perangkat Anda dan terhapus saat Anda menghapus data situs. Layanan hosting menerima data teknis standar dari setiap permintaan. Saat Anda membuka situs untuk pertama kalinya dalam sehari, satu penanda kunjungan anonim dikirim ke server situs: hanya bahasa versi situs; server mencatatnya beserta waktu diterimanya, dan browser Anda menyimpan tanggalnya agar penanda itu tidak dikirim lagi pada hari yang sama. Dengan penanda ini kami menghitung berapa banyak orang yang mengunjungi situs. Saat Anda memulai tes, satu penanda mulai anonim dikirim ke server situs: hanya bahasa versi situs. Saat tes selesai, satu catatan anonim untuk statistik umum dikirim ke server situs: profil yang Anda peroleh dan bahasa versi situs, tanpa nama, email, maupun jawaban. Saat Anda menekan “Simpan sebagai PDF”, jawaban dan tanggal tes — tanpa nama dan email — dikirim ke server situs, yang membuat file laporan ringkas, mengembalikannya kepada Anda, dan tidak menyimpan apa pun. Layanan analitik web menerima alamat halaman (di layar hasil, bersama kode hasil: jawaban Anda, tanggal tes, dan nama Anda jika Anda mengisinya, tetapi tanpa email Anda), sumber kunjungan, jenis perangkat dan browser, serta rekaman aktivitas di halaman (kolom nama dan email dikecualikan dari rekaman); layanan ini juga memasang cookie miliknya sendiri. Anda dapat memblokirnya melalui pengaturan browser atau dengan pemblokir pelacak. Pelacak iklan tidak digunakan.",
+    "pd.cookieDetails": "Yang disimpan di browser: nama dan email, jika Anda mengisinya; jawaban dan progres yang belum selesai; hasil terakhir; waktu Anda pertama kali menyelesaikan tes, untuk batas waktu harga khusus laporan; bahasa yang dipilih; penanda bahwa Anda sudah melihat pemberitahuan ini. Data ini tetap berada di perangkat Anda dan terhapus saat Anda menghapus data situs. Layanan hosting menerima data teknis standar dari setiap permintaan. Saat Anda membuka situs untuk pertama kalinya dalam sehari, satu penanda kunjungan anonim dikirim ke server situs: hanya bahasa versi situs; server mencatatnya beserta waktu diterimanya, dan browser Anda menyimpan tanggalnya agar penanda itu tidak dikirim lagi pada hari yang sama. Dengan penanda ini kami menghitung berapa banyak orang yang mengunjungi situs. Saat Anda memulai tes, satu penanda mulai anonim dikirim ke server situs: hanya bahasa versi situs. Saat tes selesai, satu catatan anonim untuk statistik umum dikirim ke server situs: profil yang Anda peroleh dan bahasa versi situs, tanpa nama, email, maupun jawaban. Saat Anda menekan “Simpan sebagai PDF”, jawaban dan tanggal tes — tanpa nama dan email — dikirim ke server situs, yang membuat file laporan ringkas, mengembalikannya kepada Anda, dan tidak menyimpan apa pun. Layanan analitik web menerima alamat halaman (di layar hasil, bersama kode hasil: jawaban Anda, tanggal tes, dan nama Anda jika Anda mengisinya, tetapi tanpa email Anda), sumber kunjungan, jenis perangkat dan browser, serta rekaman aktivitas di halaman (kolom nama dan email dikecualikan dari rekaman); layanan ini juga memasang cookie miliknya sendiri. Anda dapat memblokirnya melalui pengaturan browser atau dengan pemblokir pelacak. Pelacak iklan tidak digunakan.",
     "pd.cookieChange": "Ubah pilihan cookie",
 
     "print.title": "Tes DISC untuk Dicetak: Soal, Kunci Jawaban, dan Cara Menghitung Skor",
