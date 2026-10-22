@@ -22,6 +22,8 @@ function cvFormHTML(c, k){
 
 /* Вкладки блока «Пример: от единого резюме до отклика»: без скрипта все панели видны подряд, со скриптом — одна, переключение мышью и стрелками */
 function initCvTabs(){
+  // скачивание примеров из карточки-оценки в «Как это работает» (CV.docx, CV.pdf, письмо)
+  document.querySelectorAll('.cvfiles a[data-dl]').forEach(function(a){ a.addEventListener('click', function(){ if(window.discTrack) window.discTrack('cv-sample-' + a.getAttribute('data-dl')); }); });
   var box=document.getElementById('cvEx'); if(!box) return;
   var tabs=[].slice.call(box.querySelectorAll('[role="tab"]')), panels=[].slice.call(box.querySelectorAll('[role="tabpanel"]'));
   function sel(i, focus){ tabs.forEach(function(t,k){ var on=k===i; t.setAttribute('aria-selected', on); t.tabIndex=on?0:-1; panels[k].hidden=!on; }); if(focus) tabs[i].focus();

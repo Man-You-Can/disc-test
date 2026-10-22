@@ -64,8 +64,9 @@ body:has(.cvpage) .wrap{max-width:1080px}
 .cvverdict b{display:block;font-size:13px;margin-bottom:2px}
 .cvverdict p{margin:0;font-size:14.5px}
 .cvfiles{display:flex;flex-wrap:wrap;gap:8px}
-.cvfiles span{font-size:13px;font-weight:600;padding:6px 12px;border-radius:8px;border:1px solid var(--line-strong)}
-.cvfiles span::before{content:"↓ ";color:var(--s)}
+.cvfiles a{font-size:13px;font-weight:600;padding:6px 12px;border-radius:8px;border:1px solid var(--line-strong);color:var(--ink);text-decoration:none}
+.cvfiles a:hover{border-color:var(--s);background:color-mix(in srgb,var(--s) 10%,transparent)}
+.cvfiles a::before{content:"↓ ";color:var(--s)}
 
 /* что вы получите */
 .content .cvgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
@@ -249,7 +250,7 @@ body:has(.cvpage) .wrap{max-width:1080px}
 
 /* пример, вкладка «Оценка»: две таблицы сравнения — «вакансия требует / у кандидатки» и «кандидатка хочет / вакансия предлагает» */
 .cvcmp{width:100%;min-width:0;border-collapse:separate;border-spacing:0;font-size:14.5px;margin:4px 0 0;table-layout:fixed}
-.cvcmp col.c-res{width:116px}
+.cvcmp col.c-res{width:168px}
 .cvcmp th,.cvcmp td{white-space:normal;background:none;text-transform:none;letter-spacing:0;border-bottom:0}
 .cvcmp th{text-align:start;font-weight:600;font-size:12px;padding:0 10px 8px;color:var(--muted)}
 .cvcmp th span{display:inline-block;padding:3px 9px;border-radius:999px;text-transform:uppercase;letter-spacing:.05em}
@@ -312,3 +313,10 @@ body:has(.cvpage) .wrap{max-width:1080px}
 .cvcopy.done::before{content:"✓"}
 .cvletter-full{padding:2px 0 4px}
 @media (max-width:600px){.cvcopy-head{flex-wrap:wrap;gap:8px}.cvcopy-head h3{flex:1 1 100%}.cvcopy{padding:6px 10px;font-size:13px}}
+
+/* подпись «оценка совпадения» под кругом и строка-пояснение под заголовком вакансии */
+.cvscorebox{flex:none;display:flex;flex-direction:column;align-items:center;gap:4px}
+.cvscorebox small{font-size:11.5px;font-weight:600;color:var(--muted);text-align:center;line-height:1.2;max-width:96px}
+.cvscorenote{margin:8px 0 0;font-size:13.5px;color:var(--muted)}
+.cvdemo .cvscorenote{padding-bottom:12px;border-bottom:1px solid var(--line);margin-bottom:0}
+.cvdemo .cvdemo-head{border-bottom:0;padding-bottom:0}

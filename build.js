@@ -739,10 +739,11 @@ for (const L of locales) {
     const ldFaq = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: V.faq.map(it => ({ '@type': 'Question', name: it.q, acceptedAnswer: { '@type': 'Answer', text: it.a.replace(/\{email\}/g, feedbackEmail) } })) };
     const demo = `<figure class="cvdemo" aria-label="${escFull(D.label)}"><figcaption class="cvdemo-label">${escFull(D.label)}</figcaption>` +
       `<div class="cvdemo-head"><div><strong>${escFull(D.role)}</strong><span>${escFull(D.company)}</span></div>` +
-      `<div class="cvscore" style="--p:${(+D.score) * 10}%"><b>${escFull(D.score)}</b><span>${escFull(D.scoreOf)}</span></div></div>` +
+      `<div class="cvscorebox"><div class="cvscore" style="--p:${(+D.score) * 10}%"><b>${escFull(D.score)}</b><span>${escFull(D.scoreOf)}</span></div>` +
+        (D.scoreLabel ? `<small>${escFull(D.scoreLabel)}</small>` : '') + `</div></div>` + (D.scoreNote ? `<p class="cvscorenote">${escFull(D.scoreNote)}</p>` : '') +
       `<ul class="cvrows">${D.rows.map(r => `<li class="s-${r.s}"><span>${escFull(r.t)}</span><em>${escFull(r.v)}</em></li>`).join('')}</ul>` +
       `<div class="cvverdict${D.verdictTag ? ' go' : ''}"><b>${escFull(D.verdictTitle)}</b>${D.verdictTag ? `<span class="cvgo">${escFull(D.verdictTag)}</span>` : ''}<p>${escFull(D.verdict)}</p></div>` +
-      `<div class="cvfiles">${D.files.map(f => `<span>${escFull(f)}</span>`).join('')}</div>` + (D.more && V.example ? `<a class="cvmore" href="#example">${escFull(D.more)} ↓</a>` : '') + `</figure>`;
+      `<div class="cvfiles">${D.files.map(f => `<a href="${imgRel}files/${f.f}" download data-dl="${f.dl}">${escFull(f.t)}</a>`).join('')}</div>` + (D.more && V.example ? `<a class="cvmore" href="#example">${escFull(D.more)} ↓</a>` : '') + `</figure>`;
     // «Пример: от единого резюме до отклика» (с 2026-10-22, по просьбе заказчика): четыре вкладки на вымышленном кандидате; без скрипта все панели видны подряд
     const X = V.example;
     // сравнение «вакансия — кандидатка» в оценке: в обеих таблицах вакансия — первый столбец (синим), кандидатка — второй (серым); на телефоне строка — карточка с подписями
@@ -790,7 +791,8 @@ for (const L of locales) {
         X.vacancy.sections.map(sct => `<h3>${escFull(sct.h)}</h3><ul>${sct.items.map(x => `<li>${escFull(x)}</li>`).join('')}</ul>`).join('') + `</div>`,
       // оценка
       `<div class="cvdoc"><div class="cvdoc-head cvscorehead"><div><strong>${escFull(X.vacancy.role)}</strong><span>${escFull(X.vacancy.company)}</span></div>` +
-        `<div class="cvscore cvscore-lg" style="--p:${(+X.score.total) * 10}%"><b>${escFull(X.score.total)}</b><span>${escFull(X.score.of)}</span></div></div>` +
+        `<div class="cvscorebox"><div class="cvscore cvscore-lg" style="--p:${(+X.score.total) * 10}%"><b>${escFull(X.score.total)}</b><span>${escFull(X.score.of)}</span></div>` +
+        (X.score.label ? `<small>${escFull(X.score.label)}</small>` : '') + `</div></div>` + (X.score.note ? `<p class="cvscorenote">${escFull(X.score.note)}</p>` : '') +
         `<p class="cvparts">${X.score.parts.map(x => `<span>${escFull(x.label)}: <b>${escFull(x.value)}</b></span>`).join('')}</p>` +
         cmpTable(X.score.reqTitle, X.score.reqCols, X.score.rows, 't', 'why', 'vac', 'cand') +
         cmpTable(X.score.critTitle, X.score.critCols, X.score.crit, 'offer', 'want', 'vac', 'cand') +
