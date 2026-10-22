@@ -75,18 +75,21 @@ function initCvForm(c){
           // после заявки обе формы заменяются подтверждением, закреплённая кнопка больше не нужна
           sent=true; forms.forEach(function(f){ var d=document.createElement('div'); d.className='cvdone'; d.setAttribute('role','status');
             d.innerHTML='<strong>'+esc(T.sentTitle)+'</strong><p>'+esc(T.sent)+'</p>'; f.replaceWith(d); });
-          var fl=$('#cvFloat'); if(fl) fl.classList.remove('show');
+          var fl=$('#cvFloat'); if(fl) fl.classList.remove('show'); document.body.classList.remove('has-xbar');
           if(window.discTrack) window.discTrack('cv-request'); })
         .catch(function(err){ var m=String((err&&err.message)||err);
           setStatus('err', /too many|daily limit/.test(m) ? T.tooMany.replace('{contact}', mailLink) : T.sendFailed.replace('{error}', esc(m)).replace('{contact}', mailLink)); })
         .then(function(){ btn.disabled=false; });
     });
   });
-  // закреплённая кнопка на телефоне: видна, когда первая форма ушла вверх, а последняя ещё не на экране
+  // плашка с кнопкой внизу экрана (с 2026-10-23 — на любой ширине, решение заказчика; стили .xbar — общие, src/template.html):
+  // видна, когда первая форма ушла вверх, а последняя ещё не на экране; крестик скрывает её до конца сеанса (sessionStorage disc.cvbar)
   var fl=$('#cvFloat'), first=forms[0], last=forms[forms.length-1];
   if(!fl || !('IntersectionObserver' in window)) return;
   var passed=false, near=false;
-  function upd(){ fl.classList.toggle('show', !sent && passed && !near); }
+  function closed(){ try{ return sessionStorage.getItem('disc.cvbar') === 'off'; }catch(e){ return false; } }
+  function upd(){ var on = !sent && !closed() && passed && !near; fl.classList.toggle('show', on); document.body.classList.toggle('has-xbar', on); }
+  $('#cvFloatX').addEventListener('click', function(){ try{ sessionStorage.setItem('disc.cvbar', 'off'); }catch(e){} upd(); });
   new IntersectionObserver(function(es){ es.forEach(function(x){ passed = !x.isIntersecting && x.boundingClientRect.top < 0; }); upd(); }).observe(first);
   new IntersectionObserver(function(es){ es.forEach(function(x){ near = x.isIntersecting; }); upd(); }).observe(last);
 }

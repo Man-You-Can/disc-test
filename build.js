@@ -854,7 +854,7 @@ for (const L of locales) {
           `<p class="cvsite"><span>${escFull(A.siteLabel)}</span><a href="${escFull(A.siteUrl)}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z"/></svg>${escFull(A.site)} <span aria-hidden="true">${arrow(L)}</span></a></p></div></section>` +
         `<section class="cvsec cvfaq"><h2>${escFull(V.faqTitle)}</h2>` + V.faq.map(it => `<details><summary>${escFull(it.q)}</summary><p>${fill(it.a)}</p></details>`).join('') + `</section>` +
         `<section class="cvfinal" id="cvfinal"><h2>${escFull(V.finalTitle)}</h2><p>${escFull(V.finalLead)}</p>${form('2')}</section>` +
-        `</div><a class="btn ctafloat no-print" id="cvFloat" href="#cvfinal" data-cta>${escFull(V.floatButton)}</a>`,
+        `</div><div class="xbar no-print" id="cvFloat"><a class="btn" href="#cvfinal" data-cta>${escFull(V.floatButton)}</a><button class="xbar-x" type="button" id="cvFloatX" aria-label="${escFull(V.floatClose)}" title="${escFull(V.floatClose)}">×</button></div>`,
       pageJs: cvJs + `initCvForm({T: ${JSON.stringify(VT).replace(/</g, '\\u003c')}, L: L, esc: esc, $: $, endpoint: ${jsStr(cfg.sendEndpoint)}, token: ${jsStr(cfg.sendToken)}, email: ${jsStr(feedbackEmail)}, pdVersion: ${jsStr(pdOn ? pdVersion : '')}});` });
   }
   // /disc-vs-mbti/ — сравнение моделей: таблица после второй секции
