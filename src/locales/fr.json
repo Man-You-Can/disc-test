@@ -666,14 +666,14 @@
           "h": "Où les données sont conservées et à qui elles sont transmises",
           "p": [
             "La base de résultats se trouve sur un serveur que le propriétaire du site loue auprès d'un hébergeur. Les e-mails sont envoyés par un service de messagerie. Ces sociétés traitent les données pour notre compte et uniquement pour le fonctionnement du site. L'e-mail part à l'adresse que vous avez vous-même indiquée. Les données ne sont ni transmises ni vendues à des tiers pour leurs propres finalités.",
-            "Seules les personnes ayant coché la case de consentement distincte dans le formulaire d'envoi du résultat reçoivent la newsletter. Dans ce cas, la base conserve aussi le consentement, sa date et son texte, et votre adresse e-mail, votre nom et votre langue servent à vous envoyer des e-mails de disc-test.org : contenus sur le DISC, actualités du site et offres promotionnelles. Vous pouvez vous désabonner à tout moment, via le lien présent dans chaque e-mail ou en écrivant à {email}.",
+            "Seules les personnes ayant coché la case de consentement distincte — dans le formulaire d'envoi du résultat ou dans le formulaire d'abonnement de la page d'accueil — reçoivent la newsletter. Après le formulaire d'abonnement, un e-mail contenant un lien de confirmation est envoyé : sans confirmation, la newsletter n'est pas envoyée et l'adresse est supprimée au bout de 7 jours. La base conserve le consentement, sa date et son texte, et votre adresse e-mail, votre nom (si vous l'avez indiqué) et votre langue servent à vous envoyer des e-mails de disc-test.org : contenus sur le DISC, nouveaux tests, conseils pour l'évolution de carrière et la recherche d'emploi, actualités du site et offres promotionnelles. Vous pouvez vous désabonner à tout moment, via le lien présent dans chaque e-mail ou en écrivant à {email}.",
             "L'hébergeur reçoit les données techniques habituelles de la requête : adresse IP, type de navigateur, adresse de la page. Les polices sont servies par ce site lui-même. Les statistiques de visite sont collectées par un service d'analyse d'audience : il reçoit des données de visite — l'adresse de la page, la provenance, le type d'appareil et de navigateur — et un enregistrement des actions sur la page ; les champs nom et e-mail sont exclus de l'enregistrement. Sur l'écran du résultat, l'adresse de la page contient le code du résultat : vos réponses, la date du test et votre nom si vous l'avez indiqué, mais pas votre e-mail. Vous pouvez arrêter la collecte dans les paramètres du navigateur ou avec un bloqueur de traceurs. Aucun traceur publicitaire n'est utilisé."
           ]
         },
         {
           "h": "Bases légales et durées de conservation",
           "p": [
-            "Le résultat envoyé par e-mail est traité sur la base de votre consentement et conservé trois ans à compter de la date d'envoi ou jusqu'au retrait du consentement. Les données destinées à la newsletter le sont sur la base d'un consentement distinct, jusqu'au désabonnement. Les messages du formulaire de contact, sur la base du consentement, pendant un an après la réponse.",
+            "Le résultat envoyé par e-mail est traité sur la base de votre consentement et conservé trois ans à compter de la date d'envoi ou jusqu'au retrait du consentement. Les données destinées à la newsletter le sont sur la base d'un consentement distinct, jusqu'au désabonnement ; l'adresse dont l'abonnement n'a pas été confirmé, pendant 7 jours. Les messages du formulaire de contact, sur la base du consentement, pendant un an après la réponse.",
             "Lorsque la durée expire ou que vous retirez votre consentement, les données sont supprimées de la base. Elles disparaissent des copies de sauvegarde au fur et à mesure du renouvellement de celles-ci, au plus tard au bout de six mois."
           ]
         },
@@ -729,7 +729,8 @@
           "h": "Finalités du traitement et données traitées",
           "p": [
             "Formulaire « Recevez votre résultat par e-mail » : nom, adresse e-mail, langue de la version du site, date du test, réponses et résultat du test DISC. Finalité : m'envoyer un e-mail contenant le résultat du test et conserver ce résultat afin de me le renvoyer et de répondre à mes demandes.",
-            "Formulaire de contact : nom, adresse e-mail, texte du message et fichiers joints. Finalité : examiner ma demande et y répondre."
+            "Formulaire de contact : nom, adresse e-mail, texte du message et fichiers joints. Finalité : examiner ma demande et y répondre.",
+            "Formulaire d'abonnement à la newsletter sur la page d'accueil : adresse e-mail et langue de la version du site. Finalité : m'envoyer un e-mail contenant un lien de confirmation de l'abonnement et tenir la liste des abonnés à la newsletter."
           ]
         },
         {
@@ -747,7 +748,7 @@
         {
           "h": "Durée de validité du consentement",
           "p": [
-            "Le consentement est valable trois ans à compter de la date d'envoi du formulaire « Recevez votre résultat par e-mail » et un an après la réponse à la demande envoyée via le formulaire de contact, ou jusqu'à son retrait."
+            "Le consentement est valable trois ans à compter de la date d'envoi du formulaire « Recevez votre résultat par e-mail », un an après la réponse à la demande envoyée via le formulaire de contact et, pour le formulaire d'abonnement, jusqu'au désabonnement de la newsletter (7 jours si l'abonnement n'est pas confirmé), ou jusqu'à son retrait."
           ]
         },
         {
@@ -1164,6 +1165,19 @@
       "description": "Désabonnez-vous de la newsletter de disc-test.org en un clic, sans identifiant ni mot de passe.",
       "h1": "Se désabonner de la newsletter",
       "lead": "Cliquez sur le bouton et disc-test.org cessera d'envoyer sa newsletter à l'adresse qui a reçu l'e-mail contenant ce lien. Cela ne concerne pas l'e-mail avec le résultat du test : il n'est envoyé que lorsque vous le demandez."
+    },
+    "subscribeConfirm": {
+      "title": "Confirmer l'abonnement — test DISC",
+      "description": "Confirmez en un clic votre abonnement à la newsletter de disc-test.org.",
+      "h1": "Confirmez votre abonnement",
+      "lead": "Cliquez sur le bouton et l'adresse qui a reçu l'e-mail contenant ce lien recevra la newsletter de disc-test.org : nouveaux tests, conseils pour l'évolution de carrière et la recherche d'emploi, actualités du site et offres promotionnelles."
+    },
+    "subscribeMail": {
+      "subject": "Confirmez votre abonnement à la newsletter de disc-test.org",
+      "intro": "Bonjour, cette adresse a été indiquée dans le formulaire d'abonnement à la newsletter de {site} : nouveaux tests, conseils pour l'évolution de carrière et la recherche d'emploi, actualités du site et offres promotionnelles.",
+      "action": "Pour recevoir ces e-mails, confirmez votre abonnement :",
+      "button": "Confirmer l'abonnement",
+      "footer": "Si cette demande ne vient pas de vous, vous n'avez rien à faire : sans confirmation, la newsletter ne vous sera pas envoyée et l'adresse sera supprimée au bout de 7 jours."
     },
     "results": {
       "title": "Résultats du test DISC : comment les interpréter",
@@ -1879,7 +1893,7 @@
   "ui": {
     "langLabel": "Langue",
     "footer": "24 blocs · environ 10 minutes · pas de bonnes ou de mauvaises réponses",
-    "privacy": "Vos réponses restent dans votre navigateur ; pour les statistiques générales, le serveur du site ne reçoit que des marques de visite et de début du test et le profil obtenu, sans nom ni réponses. Si vous indiquez une adresse e-mail, le résultat y est envoyé et conservé dans la base de résultats du propriétaire du site. Lorsque vous cliquez sur « Enregistrer en PDF », vos réponses et la date du test — sans nom ni e-mail — sont envoyées au serveur du site, qui génère le fichier du rapport de synthèse, vous le renvoie et ne conserve rien.",
+    "privacy": "Vos réponses restent dans votre navigateur ; pour les statistiques générales, le serveur du site ne reçoit que des marques de visite et de début du test et le profil obtenu, sans nom ni réponses. Si vous indiquez une adresse e-mail, le résultat y est envoyé et conservé dans la base de résultats du propriétaire du site. Si vous vous abonnez à la newsletter sur la page d'accueil, cette base conserve votre adresse e-mail et la langue de la version du site. Lorsque vous cliquez sur « Enregistrer en PDF », vos réponses et la date du test — sans nom ni e-mail — sont envoyées au serveur du site, qui génère le fichier du rapport de synthèse, vous le renvoie et ne conserve rien.",
     "legal": "Manukyan Armen · N° d’identification fiscale (INN) {inn}",
     "rights": "© {year} disc-test.org. Toute copie des textes du site et des rapports sans autorisation écrite est interdite.",
     "adminLink": "Espace administrateur",
@@ -2134,6 +2148,19 @@
     "unsub.done": "C'est fait : disc-test.org n'enverra plus sa newsletter à cette adresse.",
     "unsub.failed": "Le désabonnement n'a pas abouti. Réessayez ou écrivez-nous : {email}.",
     "unsub.bad": "Ce lien ne contient pas de code de désabonnement. Ouvrez le lien complet depuis l'e-mail ou écrivez-nous : {email}.",
+    "nl.title": "Abonnez-vous à la newsletter",
+    "nl.text": "Recevez nos nouveaux tests et des conseils pour faire évoluer votre carrière et trouver un emploi.",
+    "nl.emailLabel": "Votre adresse e-mail",
+    "nl.button": "S'abonner",
+    "nl.consent": "J'accepte de recevoir à cette adresse la newsletter de disc-test.org : nouveaux tests, conseils pour l'évolution de carrière et la recherche d'emploi, actualités du site et offres promotionnelles. Vous pouvez vous désabonner à tout moment via le lien présent dans chaque e-mail.",
+    "nl.consentRequired": "Cochez la case de consentement à recevoir la newsletter.",
+    "nl.sending": "Envoi de l'e-mail…",
+    "nl.sent": "Presque terminé : un e-mail vient d'être envoyé à {email}. Ouvrez-le et cliquez sur « Confirmer l'abonnement » — sans cela, la newsletter ne vous sera pas envoyée.",
+    "nl.failed": "L'abonnement n'a pas abouti. Réessayez plus tard.",
+    "subc.button": "Confirmer l'abonnement",
+    "subc.done": "Abonnement confirmé. Vous pouvez vous désabonner à tout moment via le lien présent dans chaque e-mail de la newsletter.",
+    "subc.bad": "Ce lien est incomplet ou a expiré : l'abonnement doit être confirmé dans les 7 jours. Abonnez-vous à nouveau depuis la page d'accueil ou écrivez-nous : {email}.",
+    "subc.failed": "La confirmation de l'abonnement n'a pas abouti. Réessayez ou écrivez-nous : {email}.",
     "contact.privacyNote": "Le nom, l'adresse e-mail, l'objet, le message et les fichiers seront envoyés par e-mail à {email} et utilisés uniquement pour vous répondre.",
     "contact.mailtoNote": "Le service d'envoi n'est pas encore connecté : le bouton « Envoyer » ouvrira votre messagerie avec le message pré-rempli, et vous devrez ajouter vous-même les fichiers joints à l'e-mail.",
     "contact.mailSubject": "Message depuis le site : {name}",
@@ -2152,7 +2179,7 @@
     "pd.consentLink": "consentement au traitement des données personnelles",
     "pd.required": "Cochez la case de consentement au traitement des données personnelles : sans ce consentement, nous ne pouvons pas accepter vos données.",
     "pd.cookieAsk": "Ce site conserve votre progression, votre résultat et la langue choisie dans le stockage local du navigateur. Avec votre consentement, un service d'analyse d'audience collectera des statistiques de visite anonymisées et un enregistrement des actions sur la page pour nous aider à améliorer le site. Votre nom, votre e-mail et votre résultat ne sont pas transmis au service d'analyse.",
-    "pd.cookieDetails": "Conservés dans le navigateur : le nom et l'e-mail, si vous les avez indiqués ; vos réponses et la progression inachevée ; votre dernier résultat ; l'heure à laquelle vous avez terminé le test pour la première fois, pour le délai du prix spécial du rapport ; la langue choisie ; une marque indiquant que vous avez vu cet avis. Ces données restent sur votre appareil et sont supprimées lorsque vous effacez les données du site. L'hébergeur reçoit les données techniques habituelles de la requête. La première fois que vous ouvrez le site dans la journée, une marque de visite anonyme est envoyée au serveur du site : uniquement la langue de la version du site ; le serveur l'enregistre avec son heure d'arrivée, et votre navigateur garde la date pour ne pas la renvoyer le même jour. Ces marques nous servent à compter combien de personnes visitent le site. Lorsque vous commencez le test, une marque de début anonyme est envoyée au serveur du site : uniquement la langue de la version du site. Lorsque vous terminez le test, un enregistrement anonyme destiné aux statistiques générales est envoyé au serveur du site : le profil obtenu et la langue de la version du site, sans nom, e-mail ni réponses. Lorsque vous cliquez sur « Enregistrer en PDF », vos réponses et la date du test — sans nom ni e-mail — sont envoyées au serveur du site, qui génère le fichier du rapport de synthèse, vous le renvoie et ne conserve rien. Lorsque vous envoyez le résultat par e-mail, le nom, l'e-mail et les réponses sont transmis au serveur du site, qui vous envoie l'e-mail avec le résultat et enregistre le nom, l'e-mail, la date et le résultat dans la base de résultats du propriétaire du site. Le service d'analyse d'audience reçoit l'adresse de la page (sur l'écran du résultat, avec le code du résultat : vos réponses, la date du test et votre nom si vous l'avez indiqué, mais pas votre e-mail), la provenance, le type d'appareil et de navigateur, un enregistrement des actions sur la page (les champs nom et e-mail en sont exclus) et dépose ses propres cookies. Vous pouvez le bloquer dans les paramètres du navigateur ou avec un bloqueur de traceurs. Aucun traceur publicitaire n'est utilisé.",
+    "pd.cookieDetails": "Conservés dans le navigateur : le nom et l'e-mail, si vous les avez indiqués ; vos réponses et la progression inachevée ; votre dernier résultat ; l'heure à laquelle vous avez terminé le test pour la première fois, pour le délai du prix spécial du rapport ; la langue choisie ; une marque indiquant que vous avez vu cet avis. Ces données restent sur votre appareil et sont supprimées lorsque vous effacez les données du site. L'hébergeur reçoit les données techniques habituelles de la requête. La première fois que vous ouvrez le site dans la journée, une marque de visite anonyme est envoyée au serveur du site : uniquement la langue de la version du site ; le serveur l'enregistre avec son heure d'arrivée, et votre navigateur garde la date pour ne pas la renvoyer le même jour. Ces marques nous servent à compter combien de personnes visitent le site. Lorsque vous commencez le test, une marque de début anonyme est envoyée au serveur du site : uniquement la langue de la version du site. Lorsque vous terminez le test, un enregistrement anonyme destiné aux statistiques générales est envoyé au serveur du site : le profil obtenu et la langue de la version du site, sans nom, e-mail ni réponses. Lorsque vous cliquez sur « Enregistrer en PDF », vos réponses et la date du test — sans nom ni e-mail — sont envoyées au serveur du site, qui génère le fichier du rapport de synthèse, vous le renvoie et ne conserve rien. Lorsque vous envoyez le résultat par e-mail, le nom, l'e-mail et les réponses sont transmis au serveur du site, qui vous envoie l'e-mail avec le résultat et enregistre le nom, l'e-mail, la date et le résultat dans la base de résultats du propriétaire du site. Lorsque vous vous abonnez à la newsletter sur la page d'accueil, l'e-mail et la langue de la version du site sont transmis au serveur du site, qui vous envoie un e-mail avec un lien de confirmation et enregistre l'adresse dans la même base ; si l'abonnement n'est pas confirmé, l'adresse est supprimée au bout de 7 jours. Le service d'analyse d'audience reçoit l'adresse de la page (sur l'écran du résultat, avec le code du résultat : vos réponses, la date du test et votre nom si vous l'avez indiqué, mais pas votre e-mail), la provenance, le type d'appareil et de navigateur, un enregistrement des actions sur la page (les champs nom et e-mail en sont exclus) et dépose ses propres cookies. Vous pouvez le bloquer dans les paramètres du navigateur ou avec un bloqueur de traceurs. Aucun traceur publicitaire n'est utilisé.",
     "pd.cookieChange": "Modifier le choix des cookies",
 
     "print.title": "Test DISC à imprimer : questionnaire, clé et calcul du score",

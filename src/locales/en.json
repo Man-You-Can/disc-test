@@ -664,14 +664,14 @@
           "h": "Where the data is stored and who receives it",
           "p": [
             "The results database is on a server that the site owner rents from a hosting provider. Emails are sent by a mail service. These companies process the data on our instructions and only to keep the site running. The email goes to the address you entered yourself. The data is not passed or sold to third parties for their own purposes.",
-            "Only people who ticked the separate consent box in the result form receive our newsletter. In that case the database also stores the fact of consent, its date and its wording, and your email address, name and language are used to send you emails from disc-test.org: DISC materials, site news and promotional offers. You can unsubscribe at any time, using the link in any email or by writing to {email}.",
+            "Only people who ticked the separate consent box — in the result form or in the newsletter sign-up form on the home page — receive our newsletter. After the sign-up form, you receive an email with a confirmation link: without confirmation no newsletter is sent, and the address is deleted after 7 days. The database stores the fact of consent, its date and its wording, and your email address, name (if you entered it) and language are used to send you emails from disc-test.org: DISC materials, new tests, career growth and job-search tips, site news and promotional offers. You can unsubscribe at any time, using the link in any email or by writing to {email}.",
             "The hosting provider receives standard technical request data: IP address, browser type, page address. Fonts are served from this site itself. Visit statistics are collected by a web analytics system: it receives visit data, namely the page address, the referrer, device and browser type, and a recording of on-page actions; the name and email fields are excluded from the recording. On the result screen, the page address contains the result code: your answers, the test date and your name if you entered it, but not your email. You can stop the collection in your browser settings or with a tracker blocker. No advertising trackers are used."
           ]
         },
         {
           "h": "Legal basis and retention periods",
           "p": [
-            "We process a result sent by email on the basis of your consent and keep it for three years from the date it was sent or until you withdraw your consent. Newsletter data is processed on the basis of a separate consent, until you unsubscribe. Messages from the contact form are processed on the basis of consent and kept for one year after our reply.",
+            "We process a result sent by email on the basis of your consent and keep it for three years from the date it was sent or until you withdraw your consent. Newsletter data is processed on the basis of a separate consent, until you unsubscribe; an address whose subscription has not been confirmed is kept for 7 days. Messages from the contact form are processed on the basis of consent and kept for one year after our reply.",
             "When the period expires or you withdraw your consent, the data is deleted from the database. It disappears from backups as they are refreshed, no later than six months afterwards."
           ]
         },
@@ -727,7 +727,8 @@
           "h": "Purposes of processing and the data involved",
           "p": [
             "The “Get your result by email” form: name, email address, language version of the site, test date, answers and DISC test result. The purpose is to email me my test result and to keep the result so that it can be sent again and my enquiries can be answered.",
-            "The contact form: name, email address, message text and attached files. The purpose is to consider my enquiry and reply to it."
+            "The contact form: name, email address, message text and attached files. The purpose is to consider my enquiry and reply to it.",
+            "The newsletter sign-up form on the home page: email address and language version of the site. The purpose is to send me an email with a link to confirm the subscription and to keep the newsletter subscriber list."
           ]
         },
         {
@@ -745,7 +746,7 @@
         {
           "h": "How long the consent is valid",
           "p": [
-            "The consent is valid for three years from the date the “Get your result by email” form is submitted, and for one year after the reply to an enquiry from the contact form, or until it is withdrawn."
+            "The consent is valid for three years from the date the “Get your result by email” form is submitted, for one year after the reply to an enquiry from the contact form, and, for the newsletter sign-up form, until I unsubscribe from the newsletter (7 days if the subscription is not confirmed), or until it is withdrawn."
           ]
         },
         {
@@ -1153,6 +1154,19 @@
       "description": "Unsubscribe from disc-test.org emails with one button: no login or password needed.",
       "h1": "Unsubscribe from emails",
       "lead": "Press the button and disc-test.org will stop sending its newsletter to the address that received the email with this link. This does not affect the email with your test result: that one is sent only when you request it yourself."
+    },
+    "subscribeConfirm": {
+      "title": "Confirm Your Subscription — DISC Test",
+      "description": "Confirm your subscription to the disc-test.org newsletter with one button.",
+      "h1": "Confirm your subscription",
+      "lead": "Press the button and the disc-test.org newsletter will be sent to the address that received the email with this link: new tests, career growth and job-search tips, site news and promotional offers."
+    },
+    "subscribeMail": {
+      "subject": "Confirm your subscription to the disc-test.org newsletter",
+      "intro": "Hello! This address was entered in the newsletter sign-up form on {site}: new tests, career growth and job-search tips, site news and promotional offers.",
+      "action": "To start receiving our emails, please confirm your subscription:",
+      "button": "Confirm subscription",
+      "footer": "If you didn’t sign up, there’s nothing you need to do: without confirmation, no newsletter will be sent, and the address will be deleted after 7 days."
     },
     "results": {
       "title": "DISC Test Results Explained: How to Read Your Chart and Profile",
@@ -1847,7 +1861,7 @@
   "ui": {
     "langLabel": "Language",
     "footer": "24 blocks · about 10 minutes · no right or wrong answers",
-    "privacy": "Your answers stay in your browser; for overall statistics the site’s server receives only notes that you visited the site and started the test, and your resulting profile — no name and no answers. If you enter your email address, your result is sent to it and stored in the site owner’s results database. When you click “Save as PDF”, your answers and the test date — without your name or email — are sent to the site’s server, which builds the summary report file, returns it to you and stores nothing.",
+    "privacy": "Your answers stay in your browser; for overall statistics the site’s server receives only notes that you visited the site and started the test, and your resulting profile — no name and no answers. If you enter your email address, your result is sent to it and stored in the site owner’s results database. If you subscribe to the newsletter on the home page, your email and the site language are stored in that database. When you click “Save as PDF”, your answers and the test date — without your name or email — are sent to the site’s server, which builds the summary report file, returns it to you and stores nothing.",
     "legal": "Manukyan Armen · Taxpayer ID (INN) {inn}",
     "rights": "© {year} disc-test.org. Copying the texts of this site and its reports without written permission is prohibited.",
     "adminLink": "Admin panel",
@@ -2102,6 +2116,19 @@
     "unsub.done": "Done: disc-test.org will no longer send its newsletter to this address.",
     "unsub.failed": "We couldn’t unsubscribe you. Please try again or write to us: {email}.",
     "unsub.bad": "This link has no unsubscribe code. Open the full link from the email or write to us: {email}.",
+    "nl.title": "Subscribe to our newsletter",
+    "nl.text": "Stay up to date with new tests and tips on career growth and job hunting.",
+    "nl.emailLabel": "Your email",
+    "nl.button": "Subscribe",
+    "nl.consent": "I agree to receive the disc-test.org newsletter at this address: new tests, career growth and job-search tips, site news and promotional offers. You can unsubscribe at any time using the link in any email.",
+    "nl.consentRequired": "Please tick the box to agree to receive the newsletter.",
+    "nl.sending": "Sending the email…",
+    "nl.sent": "Almost done: we’ve sent an email to {email}. Open it and click “Confirm subscription” — until you do, the newsletter won’t be sent.",
+    "nl.failed": "We couldn’t sign you up. Please try again later.",
+    "subc.button": "Confirm subscription",
+    "subc.done": "Your subscription is confirmed. You can unsubscribe at any time using the link in any newsletter email.",
+    "subc.bad": "This link is incomplete or has expired: a subscription can be confirmed within 7 days. Subscribe again on the home page or write to us: {email}.",
+    "subc.failed": "We couldn’t confirm your subscription. Please try again or write to us: {email}.",
     "contact.privacyNote": "Your name, email address, subject, message and files will be emailed to {email} and used only to reply to you.",
     "contact.mailtoNote": "The sending service is not connected yet: the “Send” button will open your email client with the message filled in, and you will need to add the attached files to the email yourself.",
     "contact.mailSubject": "Message from the website: {name}",
@@ -2120,7 +2147,7 @@
     "pd.consentLink": "consent to the processing of personal data",
     "pd.required": "Please tick the consent to the processing of personal data: without it we cannot accept your data.",
     "pd.cookieAsk": "This site keeps your progress, result and chosen language in your browser’s local storage. With your consent, a web analytics system will collect anonymized visit statistics and a recording of on-page actions to help us improve the site. Your name, email and result are not sent to the analytics system.",
-    "pd.cookieDetails": "Stored in your browser: your name and email, if you entered them; your answers and unfinished progress; your latest result; the time you first finished the test, for the deadline of the special report price; your chosen language; a note that you have seen this notice. This data stays on your device and is removed when you clear the site’s data. The hosting provider receives standard technical request data. When you first open the site on a given day, an anonymous visit note goes to the site’s server: the site language only; the server records it with the time it arrived, and your browser remembers the date so the note is not sent again that day. We use these notes to count how many people visit the site. When you start the test, an anonymous start note goes to the site’s server: the site language only. When you finish the test, an anonymous record for overall statistics goes to the site’s server: your resulting profile and the site language — without your name, email or answers. When you click “Save as PDF”, your answers and the test date — without your name or email — are sent to the site’s server, which builds the summary report file, returns it to you and stores nothing. When you send your result by email, your name, email and answers are passed to the site’s server, which emails you your result and stores your name, email, date and result in the site owner’s results database. The web analytics system receives the page address (on the result screen, together with the result code: your answers, the test date and your name if you entered it, but not your email), the referrer, device and browser type, a recording of on-page actions (the name and email fields are excluded), and sets its own cookies. You can block it in your browser settings or with a tracker blocker. No advertising trackers are used.",
+    "pd.cookieDetails": "Stored in your browser: your name and email, if you entered them; your answers and unfinished progress; your latest result; the time you first finished the test, for the deadline of the special report price; your chosen language; a note that you have seen this notice. This data stays on your device and is removed when you clear the site’s data. The hosting provider receives standard technical request data. When you first open the site on a given day, an anonymous visit note goes to the site’s server: the site language only; the server records it with the time it arrived, and your browser remembers the date so the note is not sent again that day. We use these notes to count how many people visit the site. When you start the test, an anonymous start note goes to the site’s server: the site language only. When you finish the test, an anonymous record for overall statistics goes to the site’s server: your resulting profile and the site language — without your name, email or answers. When you click “Save as PDF”, your answers and the test date — without your name or email — are sent to the site’s server, which builds the summary report file, returns it to you and stores nothing. When you send your result by email, your name, email and answers are passed to the site’s server, which emails you your result and stores your name, email, date and result in the site owner’s results database. When you subscribe to the newsletter on the home page, your email and the site language are passed to the site’s server, which sends you an email with a confirmation link and stores the address in the same database; if you don’t confirm the subscription, the address is deleted after 7 days. The web analytics system receives the page address (on the result screen, together with the result code: your answers, the test date and your name if you entered it, but not your email), the referrer, device and browser type, a recording of on-page actions (the name and email fields are excluded), and sets its own cookies. You can block it in your browser settings or with a tracker blocker. No advertising trackers are used.",
     "pd.cookieChange": "Change cookie choice",
 
     "print.title": "Printable DISC Test: Questionnaire, Answer Key and Scoring",

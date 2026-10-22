@@ -311,6 +311,26 @@ function composePayRemindMail(r, lang, o) {
   return { subject: X.subject, html: html, text: text };
 }
 
+/**
+ * Письмо со ссылкой подтверждения подписки на рассылку с главной страницы (отправляет свой сервер; с 2026-10-22).
+ * url — ссылка на страницу /subscribe/ с ключом подтверждения (#c=…). Тексты — DATA[язык].nl.mail (content.subscribeMail в локали).
+ */
+function composeSubscribeMail(lang, url) {
+  var L = DATA[lang] || DATA.en, X = L.nl.mail;
+  var vars = { site: SITE_URL.replace(/^https?:\/\//, '') };
+  var html = '<!DOCTYPE html><html lang="' + lang + '" dir="' + (L.dir || 'ltr') + '"><body style="margin:0;background:#F3F4F6;font-family:Arial,Helvetica,sans-serif;color:#1B2027">' +
+    '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F3F4F6"><tr><td align="center" style="padding:24px 12px">' +
+    '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background:#ffffff;border:1px solid #D9DDE3;border-radius:14px"><tr><td style="padding:28px;font-size:16px;line-height:1.5">' +
+    '<p style="margin:0 0 16px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#5B6470;font-weight:bold">DISC</p>' +
+    '<p style="margin:0 0 14px">' + esc(fmt(X.intro, vars)) + '</p>' +
+    '<p style="margin:0 0 14px">' + esc(fmt(X.action, vars)) + '</p>' +
+    '<p style="margin:0 0 22px"><a href="' + esc(url) + '" style="display:inline-block;background:#1B2027;color:#ffffff;text-decoration:none;font-weight:bold;padding:12px 22px;border-radius:8px">' + esc(X.button) + '</a></p>' +
+    '<p style="margin:0;padding-top:12px;border-top:1px solid #D9DDE3;font-size:12px;color:#5B6470">' + esc(fmt(X.footer, vars)) + '</p>' +
+    '</td></tr></table></td></tr></table></body></html>';
+  var text = fmt(X.intro, vars) + '\n\n' + fmt(X.action, vars) + '\n' + url + '\n\n' + fmt(X.footer, vars) + '\n';
+  return { subject: fmt(X.subject, vars), html: html, text: text };
+}
+
 /** Отметка в строке результата; повторная отправка дописывается к прежней через «; ». */
 function noteExtended(saved, text) {
   if (!saved) return;

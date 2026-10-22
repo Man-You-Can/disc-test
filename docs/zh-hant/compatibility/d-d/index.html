@@ -309,6 +309,16 @@ html[lang|=zh] [lang]:not([lang|=zh]):not([lang|=ja]),html[lang=ja] [lang]:not([
 .langbar-x:hover{color:var(--ink);background:var(--soft)}
 .styles-intro{margin-top:34px}
 .home-more{margin-top:34px}
+/* подписка на рассылку на стартовом экране (с 2026-10-22): поле и кнопка в строку, на телефоне — друг под другом */
+.nlbox{margin-top:30px}
+.nlbox h2{margin:0 0 6px;font-size:22px}
+.nlbox>p{margin:0 0 14px;color:var(--muted)}
+.nlfields{display:grid;gap:12px}
+.nlrow{display:flex;gap:10px}
+.nlrow input{flex:1;min-width:0}
+.nlrow .btn{flex:none}
+@media (max-width:480px){.nlrow{flex-direction:column}.nlrow .btn{width:100%}}
+.nlform .sendstatus{margin:0}
 .home-more h2{font-size:22px;margin:28px 0 10px}
 .home-more h3{font-size:15px;text-transform:none;letter-spacing:0;color:var(--ink);margin:14px 0 4px}
 .home-more ul{padding-inline-start:20px}
@@ -651,7 +661,7 @@ body.has-consent{padding-bottom:160px}
   <footer class="foot">
     <div class="row2"><span>24 題 · 約 10 分鐘 · 沒有對錯之分</span><span class="footlinks"><a href="../../../zh-hant/about/">關於本站</a> · <a href="../../../zh-hant/services/">服務</a> · <a href="../../../zh-hant/offer/">銷售條款</a> · <a href="../../../zh-hant/contact/">聯絡我們</a> · <a href="../../../zh-hant/privacy/">隱私權政策</a></span></div>
     <nav class="materials" aria-label="DISC 相關資源"><span class="mlabel">DISC 相關資源</span><a href="../../../zh-hant/disc/">什麼是 DISC</a><a href="../../../zh-hant/styles/">四種風格</a><a href="../../../zh-hant/profiles/">16 種類型</a><a href="../../../zh-hant/results/">結果解讀</a><a href="../../../zh-hant/compatibility/">風格搭配</a><a href="../../../zh-hant/colors/">DISC 人格色彩</a><a href="../../../zh-hant/teams/">DISC 團隊應用</a><a href="../../../zh-hant/disc-vs-mbti/">DISC 與 MBTI</a><a href="../../../zh-hant/pdf/">PDF 列印版</a><a href="../../../zh-hant/faq/">常見問題</a></nav>
-    <div class="privacy">你的答案儲存在瀏覽器中；為了進行整體統計，網站伺服器只會收到造訪網站和開始測驗的紀錄以及你測出的類型，不含姓名和答案。如果你填寫電子郵件，結果會寄到這個信箱，並儲存在網站擁有者的結果資料庫中。點選「儲存為 PDF」時，你的答案和測驗日期（不含姓名和電子郵件）會傳送到網站伺服器，伺服器據此產生基本版報告檔案並傳回給你，不會儲存任何內容。</div>
+    <div class="privacy">你的答案儲存在瀏覽器中；為了進行整體統計，網站伺服器只會收到造訪網站和開始測驗的紀錄以及你測出的類型，不含姓名和答案。如果你填寫電子郵件，結果會寄到這個信箱，並儲存在網站擁有者的結果資料庫中。如果你在首頁訂閱郵件，你的電子郵件和網站語言版本會儲存在這個資料庫中。點選「儲存為 PDF」時，你的答案和測驗日期（不含姓名和電子郵件）會傳送到網站伺服器，伺服器據此產生基本版報告檔案並傳回給你，不會儲存任何內容。</div>
     <div class="rights">© 2026 disc-test.org。未經書面許可，禁止複製本站及報告中的文字內容。</div>
     <nav class="langs" aria-label="語言"><a href="../../../compatibility/d-d/" hreflang="en" lang="en" data-lang="en"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-en"/></svg><span>English</span></a><a href="../../../es/compatibility/d-d/" hreflang="es" lang="es" data-lang="es"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-es"/></svg><span>Español</span></a><a href="../../../zh/compatibility/d-d/" hreflang="zh-Hans" lang="zh-Hans" data-lang="zh"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-zh"/></svg><span>简体中文</span></a><a href="../../../zh-hant/compatibility/d-d/" hreflang="zh-Hant" lang="zh-Hant" data-lang="zh-hant" aria-current="page"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-zh-hant"/></svg><span>繁體中文</span></a><a href="../../../ru/compatibility/d-d/" hreflang="ru" lang="ru" data-lang="ru"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-ru"/></svg><span>Русский</span></a><a href="../../../ar/compatibility/d-d/" hreflang="ar" lang="ar" data-lang="ar"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-ar"/></svg><span>العربية</span></a><a href="../../../pt/compatibility/d-d/" hreflang="pt" lang="pt" data-lang="pt"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-pt"/></svg><span>Português</span></a><a href="../../../fr/compatibility/d-d/" hreflang="fr" lang="fr" data-lang="fr"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-fr"/></svg><span>Français</span></a><a href="../../../de/compatibility/d-d/" hreflang="de" lang="de" data-lang="de"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-de"/></svg><span>Deutsch</span></a><a href="../../../ja/compatibility/d-d/" hreflang="ja" lang="ja" data-lang="ja"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-ja"/></svg><span>日本語</span></a><a href="../../../hi/compatibility/d-d/" hreflang="hi" lang="hi" data-lang="hi"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-hi"/></svg><span>हिन्दी</span></a><a href="../../../id/compatibility/d-d/" hreflang="id" lang="id" data-lang="id"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-id"/></svg><span>Bahasa Indonesia</span></a><a href="../../../tr/compatibility/d-d/" hreflang="tr" lang="tr" data-lang="tr"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-tr"/></svg><span>Türkçe</span></a><a href="../../../pl/compatibility/d-d/" hreflang="pl" lang="pl" data-lang="pl"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-pl"/></svg><span>Polski</span></a></nav>
   </footer>
@@ -661,7 +671,7 @@ body.has-consent{padding-bottom:160px}
 <script>
 (function(){
 'use strict';
-var L = {"lang":"zh-hant","name":"繁體中文","dir":"ltr","dateLocale":"zh-TW","ui":{"langLabel":"語言","consent.label":"Cookie 通知","consent.text":"本網站將你的進度、結果和所選語言儲存在瀏覽器的本機儲存空間中；一項網站分析服務會收集匿名的造訪統計和頁面操作紀錄，協助我們改善網站。你的姓名、電子郵件和結果不會傳送給該分析服務。","consent.more":"了解詳情","consent.details":"瀏覽器中儲存的內容：你填寫的姓名和電子郵件（如有）；你的答案和未完成的進度；最近一次結果；所選語言；你已看過本通知的標記。這些資料只保留在你的裝置上，清除網站資料後即會刪除。網站代管服務會收到標準的技術性請求資料。每天第一次開啟網站時，會有一筆匿名的造訪紀錄傳送到網站伺服器，僅包含網站語言版本；伺服器會連同收到的時間一併保存，瀏覽器會記下日期，以免當天重複傳送。我們用這些紀錄統計有多少人造訪網站。開始測驗時，會有一筆匿名的開始紀錄傳送到網站伺服器，僅包含網站語言版本。完成測驗時，會有一筆用於整體統計的匿名紀錄傳送到網站伺服器：你測出的類型和網站語言版本，不含姓名、電子郵件和答案。點選「儲存為 PDF」時，你的答案和測驗日期（不含姓名和電子郵件）會傳送到網站伺服器，伺服器據此產生基本版報告檔案並傳回給你，不會儲存任何內容。當你把結果寄到電子郵件信箱時，姓名、電子郵件和答案會傳送到網站伺服器：伺服器會把結果寄給你，並將姓名、電子郵件、日期和結果儲存到網站擁有者的結果資料庫中。網站分析服務會收到頁面網址（在結果頁面上包含結果代碼：你的答案、測驗日期，以及你填寫過的姓名，但不含電子郵件）、造訪來源、裝置和瀏覽器類型、頁面操作紀錄（姓名和電子郵件輸入欄位不在記錄範圍內），並設定自己的 Cookie。你可以透過瀏覽器設定或追蹤封鎖工具將其封鎖。本站不使用廣告追蹤器。","consent.accept":"接受","consent.decline":"僅限必要項目","consent.ok":"知道了","root.continue":"繼續"}};
+var L = {"lang":"zh-hant","name":"繁體中文","dir":"ltr","dateLocale":"zh-TW","ui":{"langLabel":"語言","consent.label":"Cookie 通知","consent.text":"本網站將你的進度、結果和所選語言儲存在瀏覽器的本機儲存空間中；一項網站分析服務會收集匿名的造訪統計和頁面操作紀錄，協助我們改善網站。你的姓名、電子郵件和結果不會傳送給該分析服務。","consent.more":"了解詳情","consent.details":"瀏覽器中儲存的內容：你填寫的姓名和電子郵件（如有）；你的答案和未完成的進度；最近一次結果；所選語言；你已看過本通知的標記。這些資料只保留在你的裝置上，清除網站資料後即會刪除。網站代管服務會收到標準的技術性請求資料。每天第一次開啟網站時，會有一筆匿名的造訪紀錄傳送到網站伺服器，僅包含網站語言版本；伺服器會連同收到的時間一併保存，瀏覽器會記下日期，以免當天重複傳送。我們用這些紀錄統計有多少人造訪網站。開始測驗時，會有一筆匿名的開始紀錄傳送到網站伺服器，僅包含網站語言版本。完成測驗時，會有一筆用於整體統計的匿名紀錄傳送到網站伺服器：你測出的類型和網站語言版本，不含姓名、電子郵件和答案。點選「儲存為 PDF」時，你的答案和測驗日期（不含姓名和電子郵件）會傳送到網站伺服器，伺服器據此產生基本版報告檔案並傳回給你，不會儲存任何內容。當你把結果寄到電子郵件信箱時，姓名、電子郵件和答案會傳送到網站伺服器：伺服器會把結果寄給你，並將姓名、電子郵件、日期和結果儲存到網站擁有者的結果資料庫中。當你在首頁訂閱郵件時，電子郵件和網站語言版本會傳送到網站伺服器：伺服器會寄出附有確認連結的郵件，並將這個地址儲存在同一個資料庫中；如果未確認訂閱，這個地址會在 7 天後刪除。網站分析服務會收到頁面網址（在結果頁面上包含結果代碼：你的答案、測驗日期，以及你填寫過的姓名，但不含電子郵件）、造訪來源、裝置和瀏覽器類型、頁面操作紀錄（姓名和電子郵件輸入欄位不在記錄範圍內），並設定自己的 Cookie。你可以透過瀏覽器設定或追蹤封鎖工具將其封鎖。本站不使用廣告追蹤器。","consent.accept":"接受","consent.decline":"僅限必要項目","consent.ok":"知道了","root.continue":"繼續"}};
 var ROOT_REL = '../../../', SUBPATH = 'compatibility/d-d/';
 var LANG_PATH = {"en":"","es":"es/","zh":"zh/","zh-hant":"zh-hant/","ru":"ru/","ar":"ar/","pt":"pt/","fr":"fr/","de":"de/","ja":"ja/","hi":"hi/","id":"id/","tr":"tr/","pl":"pl/"}, LANG_META = {"en":{"name":"English","cont":"Continue","dir":"ltr"},"es":{"name":"Español","cont":"Continuar","dir":"ltr"},"zh":{"name":"简体中文","cont":"继续","dir":"ltr"},"zh-hant":{"name":"繁體中文","cont":"繼續","dir":"ltr"},"ru":{"name":"Русский","cont":"Продолжить","dir":"ltr"},"ar":{"name":"العربية","cont":"متابعة","dir":"rtl"},"pt":{"name":"Português","cont":"Continuar","dir":"ltr"},"fr":{"name":"Français","cont":"Continuer","dir":"ltr"},"de":{"name":"Deutsch","cont":"Weiter","dir":"ltr"},"ja":{"name":"日本語","cont":"続ける","dir":"ltr"},"hi":{"name":"हिन्दी","cont":"जारी रखें","dir":"ltr"},"id":{"name":"Bahasa Indonesia","cont":"Lanjutkan","dir":"ltr"},"tr":{"name":"Türkçe","cont":"Devam et","dir":"ltr"},"pl":{"name":"Polski","cont":"Kontynuuj","dir":"ltr"}};
 function $(s){ return document.querySelector(s); }
@@ -675,7 +685,8 @@ function langHref(code){ return ROOT_REL + (LANG_PATH[code]||'') + (PAGE_LANGS &
 /* Общие элементы всех страниц сайта (тест и контентные страницы): выпадающий список языков,
    запоминание выбранного языка, подсказка «Продолжить на …», уведомление о cookie и загрузка Яндекс.Метрики после согласия.
    Вставляется сборкой в каждую страницу; вызывается как initCommon({L, t, esc, lsGet, lsSet, langHref, $}). */
-/* Хэш адреса с личными данными: #r=… — код результата (в нём имя, e-mail и ответы участника), #u=… — ключ отписки от рассылки.
+/* Хэш адреса с личными данными: #r=… — код результата (в нём имя, e-mail и ответы участника), #u=… — ключ отписки от рассылки,
+   #c=… — ключ подтверждения подписки на рассылку (с 2026-10-22).
    Счётчик веб-аналитики читает адрес страницы сам: в первом запросе (он уходит и при defer), в карте кликов, при переходе
    по внешней ссылке, в записи посещения. Поэтому такой хэш убирается из адресной строки раньше, чем счётчик загружен, и
    остаётся в записи истории браузера (history.state): обновление страницы и «Назад» открывают тот же экран, а новый переход
@@ -686,7 +697,7 @@ function langHref(code){ return ROOT_REL + (LANG_PATH[code]||'') + (PAGE_LANGS &
    о ней говорят тексты о данных на 14 языках. При открытии страницы любой #r=… (в старых ссылках из писем — с e-mail) всё равно сначала
    убирается, до загрузки счётчика, и возвращается в строку уже без e-mail. */
 function dataHash(){
-  var re = /^#[ru]=/, h = location.hash || '';
+  var re = /^#[ruc]=/, h = location.hash || '';
   try{
     var first = !dataHash.seen, s = history.state; dataHash.seen = 1;
     /* ссылка, которую страница сама показала в адресной строке (showHash), остаётся на месте; при открытии страницы (first) убирается и она */
@@ -781,7 +792,7 @@ function initCommon(c){
     var A = window.DISC_ANALYTICS||{}, ym = A.ym ? String(A.ym) : "", optin = A.mode!=="always", ask = optin && !!ym;
     function loadYm(){
       /* пока в адресе остаётся хэш с данными (убрать его не удалось), счётчик не загружается вовсе */
-      if(!ym || window.ym || /^#[ru]=/.test(location.hash)) return;
+      if(!ym || window.ym || /^#[ruc]=/.test(location.hash)) return;
       (function(m,e,t,r,i,k,a){ m[i]=m[i]||function(){ (m[i].a=m[i].a||[]).push(arguments); }; m[i].l=1*new Date();
         for(var j=0;j<document.scripts.length;j++){ if(document.scripts[j].src===r) return; }
         k=e.createElement(t); a=e.getElementsByTagName(t)[0]; k.async=1; k.src=r; a.parentNode.insertBefore(k,a);

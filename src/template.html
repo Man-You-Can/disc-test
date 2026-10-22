@@ -278,6 +278,16 @@ html[lang|=zh] [lang]:not([lang|=zh]):not([lang|=ja]),html[lang=ja] [lang]:not([
 .langbar-x:hover{color:var(--ink);background:var(--soft)}
 .styles-intro{margin-top:34px}
 .home-more{margin-top:34px}
+/* подписка на рассылку на стартовом экране (с 2026-10-22): поле и кнопка в строку, на телефоне — друг под другом */
+.nlbox{margin-top:30px}
+.nlbox h2{margin:0 0 6px;font-size:22px}
+.nlbox>p{margin:0 0 14px;color:var(--muted)}
+.nlfields{display:grid;gap:12px}
+.nlrow{display:flex;gap:10px}
+.nlrow input{flex:1;min-width:0}
+.nlrow .btn{flex:none}
+@media (max-width:480px){.nlrow{flex-direction:column}.nlrow .btn{width:100%}}
+.nlform .sendstatus{margin:0}
 .home-more h2{font-size:22px;margin:28px 0 10px}
 .home-more h3{font-size:15px;text-transform:none;letter-spacing:0;color:var(--ink);margin:14px 0 4px}
 .home-more ul{padding-inline-start:20px}
@@ -649,6 +659,7 @@ var IS_ROOT = '__IS_ROOT__' === '1';      // главная страница (я
 var LANG_PATH = __LANG_PATH_JSON__;       // код языка → путь от корня ('' для языка по умолчанию, 'ru/' и т. д.)
 var LANG_META = __LANG_META_JSON__;       // код языка → {name, cont, dir} для подсказки «Продолжить на …»
 var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+var HOME_SUB = '__HOME_SUB__' === '1'; // форма подписки на рассылку на стартовом экране (homeSubscribe в site.config.json, с 2026-10-22)
 var VERSION = 'DISC1';
 
 var KEYS = ['D','I','S','C'];
@@ -765,7 +776,9 @@ function renderIntro(){
       title:PB.title, hook:PB.hook.replace('{k}', lowK).replace('{name}', L.keys[lowK]).replace('{pct}', pct(la.sc.net[lowK])), list:PB.list,
       thumbs: PB.sample ? [1,2,4].map(function(n){ return ROOT_REL+'extended/'+L.lang+'-i-'+n+'-s.webp'; }) : null, sample:PB.sample, soon:PB.soon,
       pay: !!(PB.pay && PAY_ENDPOINT && typeof payForms === 'function'), retake:PM.homeRetake}; }catch(e){ lastCard = null; } }
-  view.innerHTML = introHTML({L:L, t:t, esc:esc, KEYS:KEYS, colorVar:colorVar, progDone:progDone, lastDate: last ? fmtDate(last.t) : '', lastCard:lastCard, links:{styles: ROOT_REL+LANG_PATH[L.lang]+'styles/', profiles: ROOT_REL+LANG_PATH[L.lang]+'profiles/', pdf: ROOT_REL+LANG_PATH[L.lang]+'pdf/', results: ROOT_REL+LANG_PATH[L.lang]+'results/', faq: ROOT_REL+LANG_PATH[L.lang]+'faq/', profile: function(k){ return ROOT_REL+LANG_PATH[L.lang]+'profiles/'+k.toLowerCase()+'/'; }}});
+  var nlOn = HOME_SUB && NEWSLETTER && !!SEND_ENDPOINT;
+  view.innerHTML = introHTML({L:L, t:t, esc:esc, KEYS:KEYS, colorVar:colorVar, progDone:progDone, lastDate: last ? fmtDate(last.t) : '', lastCard:lastCard,
+    sub: nlOn ? {pdHtml: PD ? pdLabel(ROOT_REL+LANG_PATH[L.lang]) : '', email: (lsGet('disc.who')||{}).email || ''} : null, links:{styles: ROOT_REL+LANG_PATH[L.lang]+'styles/', profiles: ROOT_REL+LANG_PATH[L.lang]+'profiles/', pdf: ROOT_REL+LANG_PATH[L.lang]+'pdf/', results: ROOT_REL+LANG_PATH[L.lang]+'results/', faq: ROOT_REL+LANG_PATH[L.lang]+'faq/', profile: function(k){ return ROOT_REL+LANG_PATH[L.lang]+'profiles/'+k.toLowerCase()+'/'; }}});
   // Тест начинается сразу, без регистрации: имя и e-mail участник по желанию вводит на экране результата
   function start(){
     S = {name:'', email:'', i:0, m:[], l:[]};
@@ -791,7 +804,29 @@ function renderIntro(){
     var hm = document.createElement('p'); hm.className = 'xmore'; hm.innerHTML = '<a href="'+lastCard.href+'" id="lastMore">'+esc(PP.more)+' '+arrowR()+'</a>'; hw.appendChild(hm);
     $('#lastOffer').appendChild(hw);
   }
+  if(nlOn) initHomeSub();
   ['#lastExt', '#lastSample', '#lastMore'].forEach(function(id){ if($(id)) $(id).addEventListener('click', function(){ try{ sessionStorage.setItem('disc.src', 'home'); }catch(e){} if(id==='#lastExt' && window.discTrack) window.discTrack('ext-home'); }); });
+}
+
+/* Подписка на рассылку со стартового экрана (с 2026-10-22): сервер записывает адрес в базу результатов строкой «подписка с главной»
+   и присылает письмо со ссылкой подтверждения (#c=… на странице /subscribe/); рассылка начинается только после подтверждения.
+   На сервер уходят e-mail, язык версии и отметки о согласиях — ничего больше. */
+function initHomeSub(){
+  var f = $('#nlForm'); if(!f) return;
+  f.addEventListener('submit', function(e){
+    e.preventDefault();
+    var inp = $('#nlEm'), email = inp.value.trim(), btn = f.querySelector('button[type=submit]'), st = $('#nlStatus');
+    if(!EMAIL_RE.test(email) || email.length>120){ inp.focus(); toast(t('intro.emailRequired')); return; }
+    if($('#nlPd') && !$('#nlPd').checked){ $('#nlPd').focus(); toast(t('pd.required')); return; }
+    if(!$('#nlOk').checked){ $('#nlOk').focus(); toast(t('nl.consentRequired')); return; }
+    var data = {token:SEND_TOKEN, action:'homeSubscribe', to:email, lang:L.lang, subscribe:true};
+    if(PD){ data.consent = true; data.consentV = PD_VERSION; }
+    btn.disabled = true; st.hidden = false; st.className = 'small sendstatus muted'; st.textContent = t('nl.sending');
+    postJSON(SEND_ENDPOINT, data).then(function(){
+      f.querySelector('.nlfields').hidden = true;
+      st.className = 'small sendstatus ok'; st.textContent = t('nl.sent', {email: email});
+    }, function(){ btn.disabled = false; st.className = 'small sendstatus err'; st.textContent = t('nl.failed'); });
+  });
 }
 
 /* ====== экран 2: тест ====== */
@@ -1123,13 +1158,15 @@ var SHARE_NETS = {
 var LINK_ICON = '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>';
 /* ====== форма «краткий отчёт в PDF на e-mail» (с 2026-10-22 — в карточке «Сохраните результат», раскрывается кнопкой «Отправить на e-mail»;
    до 2026-10-21 стояла открытой под графиком). Имя и e-mail обязательны (звёздочка; проверка — в обработчике отправки) ====== */
+function pdLabel(base){
+  return esc(t('pd.consent')).replace('{consent}','<a href="'+base+'consent/" target="_blank" rel="noopener">'+esc(t('pd.consentLink'))+'</a>').replace('{privacy}','<a href="'+base+'privacy/" target="_blank" rel="noopener">'+esc(t('nav.privacy'))+'</a>');
+}
 function sendFormHTML(r, who, base, open){
   return '<div class="sendbox" id="sendBox"'+(open ? '' : ' hidden')+'><h3>'+t('share.emailTitle')+'</h3>'+
         '<form class="form" id="sendForm" autocomplete="on" novalidate>'+
           '<div class="field"><label for="nm">'+t('intro.nameLabel')+'<span class="req" aria-hidden="true">*</span></label><input type="text" id="nm" name="name" class="ym-disable-keys" autocomplete="name" required maxlength="80" value="'+esc(r.name||who.name||'')+'"></div>'+
           '<div class="field"><label for="em">'+t('intro.emailLabel')+'<span class="req" aria-hidden="true">*</span></label><input type="email" id="em" name="email" class="ym-disable-keys" autocomplete="email" inputmode="email" required maxlength="120" value="'+esc(r.email||who.email||'')+'"><span class="hint">'+t(SEND_ENDPOINT ? 'intro.emailHint' : 'share.mailtoHint')+'</span></div>'+
-          (PD ? '<div class="subbox"><label class="check"><input type="checkbox" id="pdOk" name="consent"'+(r.pd?' checked':'')+'><span>'+
-            esc(t('pd.consent')).replace('{consent}','<a href="'+base+'consent/" target="_blank" rel="noopener">'+esc(t('pd.consentLink'))+'</a>').replace('{privacy}','<a href="'+base+'privacy/" target="_blank" rel="noopener">'+esc(t('nav.privacy'))+'</a>')+'</span></label></div>' : '')+
+          (PD ? '<div class="subbox"><label class="check"><input type="checkbox" id="pdOk" name="consent"'+(r.pd?' checked':'')+'><span>'+pdLabel(base)+'</span></label></div>' : '')+
           (NEWSLETTER && SEND_ENDPOINT ? '<div class="subbox" id="subBox"></div>' : '')+
           '<p class="small sendstatus" id="sendStatus" aria-live="polite" hidden></p>'+
           '<div class="actions"><button class="btn" type="submit">'+t('share.send')+'</button></div>'+

@@ -668,14 +668,14 @@
           "h": "Wo die Daten gespeichert und an wen sie übermittelt werden",
           "p": [
             "Die Ergebnisdatenbank liegt auf einem Server, den der Seitenbetreiber bei einem Hosting-Anbieter mietet. Die E-Mails versendet ein E-Mail-Dienst. Diese Unternehmen verarbeiten die Daten in unserem Auftrag und nur für den Betrieb der Website. Die E-Mail geht an die Adresse, die Sie selbst angegeben haben. An Dritte werden die Daten für deren eigene Zwecke weder weitergegeben noch verkauft.",
-            "Den Newsletter erhält nur, wer im Formular zum Versand des Ergebnisses das gesonderte Kästchen zur Einwilligung angekreuzt hat. In diesem Fall werden in der Datenbank zusätzlich die Einwilligung, ihr Datum und ihr Wortlaut gespeichert, und Ihre E-Mail-Adresse, Ihr Name und Ihre Sprache werden verwendet, um Ihnen E-Mails von disc-test.org zu senden: Inhalte zum DISG-Modell, Neuigkeiten der Website und Werbeangebote. Abmelden können Sie sich jederzeit über den Link in jeder E-Mail oder per Nachricht an {email}.",
+            "Den Newsletter erhält nur, wer das gesonderte Kästchen zur Einwilligung angekreuzt hat – im Formular zum Versand des Ergebnisses oder im Anmeldeformular für den Newsletter auf der Startseite. Nach dem Absenden des Anmeldeformulars kommt eine E-Mail mit einem Bestätigungslink: Ohne Bestätigung wird kein Newsletter versandt, und die Adresse wird nach 7 Tagen gelöscht. In der Datenbank werden die Einwilligung, ihr Datum und ihr Wortlaut gespeichert, und Ihre E-Mail-Adresse, Ihr Name (falls Sie ihn angegeben haben) und Ihre Sprache werden verwendet, um Ihnen E-Mails von disc-test.org zu senden: Inhalte zum DISG-Modell, neue Tests, Tipps für die berufliche Entwicklung und die Jobsuche, Neuigkeiten der Website und Werbeangebote. Abmelden können Sie sich jederzeit über den Link in jeder E-Mail oder per Nachricht an {email}.",
             "Der Hosting-Anbieter erhält die üblichen technischen Anfragedaten: IP-Adresse, Browsertyp, Seitenadresse. Die Schriften werden von dieser Website selbst ausgeliefert. Besuchsstatistiken erfasst ein Webanalysesystem: Es erhält Besuchsdaten – die Seitenadresse, die Herkunft des Besuchs, Geräte- und Browsertyp – sowie eine Aufzeichnung der Aktionen auf der Seite; die Felder für Name und E-Mail sind von der Aufzeichnung ausgenommen. Auf der Ergebnisseite enthält die Seitenadresse den Ergebniscode: Ihre Antworten, das Testdatum und Ihren Namen, falls Sie ihn angegeben haben, aber nicht Ihre E-Mail-Adresse. Sie können die Erfassung in den Browsereinstellungen oder mit einem Tracker-Blocker unterbinden. Werbe-Tracker werden nicht verwendet."
           ]
         },
         {
           "h": "Rechtsgrundlagen und Speicherdauer",
           "p": [
-            "Ein per E-Mail versandtes Ergebnis verarbeiten wir auf Grundlage Ihrer Einwilligung und speichern es drei Jahre ab dem Versanddatum oder bis zum Widerruf der Einwilligung. Die Daten für den Newsletter verarbeiten wir auf Grundlage einer gesonderten Einwilligung, bis Sie sich abmelden. Nachrichten aus dem Kontaktformular verarbeiten wir auf Grundlage der Einwilligung und speichern sie ein Jahr nach unserer Antwort.",
+            "Ein per E-Mail versandtes Ergebnis verarbeiten wir auf Grundlage Ihrer Einwilligung und speichern es drei Jahre ab dem Versanddatum oder bis zum Widerruf der Einwilligung. Die Daten für den Newsletter verarbeiten wir auf Grundlage einer gesonderten Einwilligung, bis Sie sich abmelden; eine Adresse, deren Anmeldung nicht bestätigt wurde, 7 Tage lang. Nachrichten aus dem Kontaktformular verarbeiten wir auf Grundlage der Einwilligung und speichern sie ein Jahr nach unserer Antwort.",
             "Wenn die Frist abläuft oder Sie Ihre Einwilligung widerrufen, werden die Daten aus der Datenbank gelöscht. Aus den Sicherungskopien verschwinden sie, sobald diese erneuert werden, spätestens nach sechs Monaten."
           ]
         },
@@ -731,7 +731,8 @@
           "h": "Zwecke der Verarbeitung und Umfang der Daten",
           "p": [
             "Formular „Ergebnis per E-Mail erhalten“: Name, E-Mail-Adresse, Sprachversion der Website, Testdatum, Antworten und Ergebnis des DISG-Tests. Zweck: mir die E-Mail mit dem Testergebnis zu senden und das Ergebnis zu speichern, um es erneut senden und meine Anfragen beantworten zu können.",
-            "Kontaktformular: Name, E-Mail-Adresse, Nachrichtentext und angehängte Dateien. Zweck: meine Anfrage zu bearbeiten und zu beantworten."
+            "Kontaktformular: Name, E-Mail-Adresse, Nachrichtentext und angehängte Dateien. Zweck: meine Anfrage zu bearbeiten und zu beantworten.",
+            "Anmeldeformular für den Newsletter auf der Startseite: E-Mail-Adresse und Sprachversion der Website. Zweck: mir eine E-Mail mit einem Link zur Bestätigung der Anmeldung zu senden und die Liste der Newsletter-Abonnenten zu führen."
           ]
         },
         {
@@ -749,7 +750,7 @@
         {
           "h": "Geltungsdauer der Einwilligung",
           "p": [
-            "Die Einwilligung gilt drei Jahre ab dem Absenden des Formulars „Ergebnis per E-Mail erhalten“ und ein Jahr nach der Antwort auf eine Anfrage aus dem Kontaktformular oder bis zu ihrem Widerruf."
+            "Die Einwilligung gilt drei Jahre ab dem Absenden des Formulars „Ergebnis per E-Mail erhalten“, ein Jahr nach der Antwort auf eine Anfrage aus dem Kontaktformular und beim Anmeldeformular für den Newsletter bis zur Abmeldung (wird die Anmeldung nicht bestätigt, 7 Tage) oder bis zu ihrem Widerruf."
           ]
         },
         {
@@ -1162,6 +1163,19 @@
       "description": "Newsletter von disc-test.org mit einem Klick abbestellen, ohne Login und Passwort.",
       "h1": "Newsletter abbestellen",
       "lead": "Klicken Sie auf die Schaltfläche, und disc-test.org sendet keinen Newsletter mehr an die Adresse, die die E-Mail mit diesem Link erhalten hat. Die E-Mail mit Ihrem Testergebnis ist davon nicht betroffen: Sie wird nur verschickt, wenn Sie sie selbst anfordern."
+    },
+    "subscribeConfirm": {
+      "title": "Newsletter-Anmeldung bestätigen – DISG-Test",
+      "description": "Anmeldung zum Newsletter von disc-test.org mit einem Klick bestätigen.",
+      "h1": "Bestätigen Sie Ihre Anmeldung",
+      "lead": "Klicken Sie auf die Schaltfläche, und an die Adresse, die die E-Mail mit diesem Link erhalten hat, kommt künftig der Newsletter von disc-test.org: neue Tests, Tipps für die berufliche Entwicklung und die Jobsuche, Neuigkeiten der Website und Werbeangebote."
+    },
+    "subscribeMail": {
+      "subject": "Bitte bestätigen Sie Ihre Anmeldung zum Newsletter von disc-test.org",
+      "intro": "Hallo, diese Adresse wurde im Anmeldeformular für den Newsletter von {site} angegeben: neue Tests, Tipps für die berufliche Entwicklung und die Jobsuche, Neuigkeiten der Website und Werbeangebote.",
+      "action": "Damit Sie die E-Mails erhalten, bestätigen Sie bitte Ihre Anmeldung:",
+      "button": "Anmeldung bestätigen",
+      "footer": "Wenn Sie sich nicht angemeldet haben, müssen Sie nichts tun: Ohne Bestätigung erhalten Sie keinen Newsletter, und die Adresse wird nach 7 Tagen gelöscht."
     },
     "results": {
       "title": "DISG-Auswertung: Ergebnis, Diagramm und Profil verstehen",
@@ -1864,7 +1878,7 @@
   "ui": {
     "langLabel": "Sprache",
     "footer": "24 Blöcke · etwa 10 Minuten · keine richtigen oder falschen Antworten",
-    "privacy": "Ihre Antworten bleiben in Ihrem Browser; für die Gesamtstatistik erhält der Server der Website nur Vermerke über Ihren Besuch und den Testbeginn sowie das ermittelte Profil – ohne Namen und ohne Antworten. Wenn Sie Ihre E-Mail-Adresse angeben, wird das Ergebnis dorthin gesendet und in der Ergebnisdatenbank des Seitenbetreibers gespeichert. Wenn Sie auf „Als PDF speichern“ klicken, gehen Ihre Antworten und das Testdatum – ohne Namen und E-Mail-Adresse – an den Server der Website; er erstellt daraus die Datei mit dem Kurzbericht, gibt sie Ihnen zurück und speichert nichts.",
+    "privacy": "Ihre Antworten bleiben in Ihrem Browser; für die Gesamtstatistik erhält der Server der Website nur Vermerke über Ihren Besuch und den Testbeginn sowie das ermittelte Profil – ohne Namen und ohne Antworten. Wenn Sie Ihre E-Mail-Adresse angeben, wird das Ergebnis dorthin gesendet und in der Ergebnisdatenbank des Seitenbetreibers gespeichert. Wenn Sie den Newsletter auf der Startseite abonnieren, werden in dieser Datenbank Ihre E-Mail-Adresse und die Sprachversion der Website gespeichert. Wenn Sie auf „Als PDF speichern“ klicken, gehen Ihre Antworten und das Testdatum – ohne Namen und E-Mail-Adresse – an den Server der Website; er erstellt daraus die Datei mit dem Kurzbericht, gibt sie Ihnen zurück und speichert nichts.",
     "legal": "Manukyan Armen · Steuernummer (INN) {inn}",
     "rights": "© {year} disc-test.org. Das Kopieren der Texte dieser Website und der Berichte ist ohne schriftliche Genehmigung untersagt.",
     "adminLink": "Admin-Bereich",
@@ -2119,6 +2133,19 @@
     "unsub.done": "Erledigt: disc-test.org sendet an diese Adresse keinen Newsletter mehr.",
     "unsub.failed": "Die Abmeldung hat nicht geklappt. Bitte versuchen Sie es noch einmal oder schreiben Sie uns: {email}.",
     "unsub.bad": "Der Link enthält keinen Abmeldecode. Öffnen Sie den vollständigen Link aus der E-Mail oder schreiben Sie uns: {email}.",
+    "nl.title": "Newsletter abonnieren",
+    "nl.text": "Neue Tests und Tipps für Ihre Karriere und die Jobsuche – direkt in Ihr Postfach.",
+    "nl.emailLabel": "Ihre E-Mail-Adresse",
+    "nl.button": "Abonnieren",
+    "nl.consent": "Ich bin einverstanden, an diese Adresse den Newsletter von disc-test.org zu erhalten: neue Tests, Tipps für die berufliche Entwicklung und die Jobsuche, Neuigkeiten der Website und Werbeangebote. Sie können sich jederzeit über den Link in jeder E-Mail abmelden.",
+    "nl.consentRequired": "Bitte kreuzen Sie die Einwilligung in den Erhalt des Newsletters an.",
+    "nl.sending": "E-Mail wird gesendet…",
+    "nl.sent": "Fast geschafft: Wir haben eine E-Mail an {email} gesendet. Öffnen Sie sie und klicken Sie auf „Anmeldung bestätigen“ – sonst erhalten Sie keinen Newsletter.",
+    "nl.failed": "Die Anmeldung hat nicht geklappt. Bitte versuchen Sie es später noch einmal.",
+    "subc.button": "Anmeldung bestätigen",
+    "subc.done": "Ihre Anmeldung ist bestätigt. Abmelden können Sie sich jederzeit über den Link in jeder Newsletter-E-Mail.",
+    "subc.bad": "Der Link ist unvollständig oder abgelaufen: Die Anmeldung lässt sich nur innerhalb von 7 Tagen bestätigen. Melden Sie sich auf der Startseite erneut an oder schreiben Sie uns: {email}.",
+    "subc.failed": "Die Bestätigung hat nicht geklappt. Bitte versuchen Sie es noch einmal oder schreiben Sie uns: {email}.",
     "contact.privacyNote": "Name, E-Mail-Adresse, Betreff, Nachricht und Dateien werden per E-Mail an {email} gesendet und nur für die Antwort an Sie verwendet.",
     "contact.mailtoNote": "Der Versanddienst ist noch nicht angebunden: Die Schaltfläche „Senden“ öffnet Ihr E-Mail-Programm mit der vorbereiteten Nachricht; angehängte Dateien müssen Sie der E-Mail selbst hinzufügen.",
     "contact.mailSubject": "Nachricht von der Website: {name}",
@@ -2137,7 +2164,7 @@
     "pd.consentLink": "Einwilligung in die Verarbeitung personenbezogener Daten",
     "pd.required": "Bitte bestätigen Sie die Einwilligung in die Verarbeitung personenbezogener Daten: Ohne sie können wir Ihre Daten nicht annehmen.",
     "pd.cookieAsk": "Diese Website speichert Ihren Fortschritt, Ihr Ergebnis und die gewählte Sprache im lokalen Speicher des Browsers. Mit Ihrer Einwilligung erfasst ein Webanalysesystem anonymisierte Besuchsstatistiken und eine Aufzeichnung der Aktionen auf der Seite, damit wir die Website verbessern können. Ihr Name, Ihre E-Mail-Adresse und Ihr Ergebnis werden nicht an das Analysesystem übermittelt.",
-    "pd.cookieDetails": "Im Browser gespeichert werden: Name und E-Mail-Adresse, falls Sie sie angegeben haben; Ihre Antworten und der unvollendete Fortschritt; Ihr letztes Ergebnis; der Zeitpunkt, zu dem Sie den Test zum ersten Mal abgeschlossen haben, für die Frist des Sonderpreises des Berichts; die gewählte Sprache; ein Vermerk, dass Sie diesen Hinweis gesehen haben. Diese Daten bleiben auf Ihrem Gerät und werden beim Löschen der Website-Daten entfernt. Der Hosting-Anbieter erhält die üblichen technischen Anfragedaten. Wenn Sie die Website an einem Tag zum ersten Mal öffnen, geht ein anonymer Besuchsvermerk an den Server der Website: nur die Sprachversion der Website; der Server speichert ihn mit der Uhrzeit des Eingangs, und Ihr Browser merkt sich das Datum, damit der Vermerk am selben Tag nicht noch einmal gesendet wird. Damit zählen wir, wie viele Menschen die Website besuchen. Wenn Sie den Test beginnen, geht ein anonymer Startvermerk an den Server der Website: nur die Sprachversion der Website. Wenn Sie den Test abschließen, geht ein anonymer Eintrag für die Gesamtstatistik an den Server der Website: das ermittelte Profil und die Sprachversion der Website – ohne Namen, E-Mail-Adresse und Antworten. Wenn Sie auf „Als PDF speichern“ klicken, gehen Ihre Antworten und das Testdatum – ohne Namen und E-Mail-Adresse – an den Server der Website; er erstellt daraus die Datei mit dem Kurzbericht, gibt sie Ihnen zurück und speichert nichts. Wenn Sie das Ergebnis per E-Mail senden lassen, werden Name, E-Mail-Adresse und Antworten an den Server der Website übermittelt; er sendet Ihnen die E-Mail mit dem Ergebnis und speichert Name, E-Mail-Adresse, Datum und Ergebnis in der Ergebnisdatenbank des Seitenbetreibers. Das Webanalysesystem erhält die Seitenadresse (auf der Ergebnisseite zusammen mit dem Ergebniscode: Ihre Antworten, das Testdatum und Ihr Name, falls Sie ihn angegeben haben, aber nicht Ihre E-Mail-Adresse), die Herkunft des Besuchs, Geräte- und Browsertyp sowie eine Aufzeichnung der Aktionen auf der Seite (die Felder für Name und E-Mail sind ausgenommen) und setzt eigene Cookies. Sie können es in den Browsereinstellungen oder mit einem Tracker-Blocker blockieren. Werbe-Tracker werden nicht verwendet.",
+    "pd.cookieDetails": "Im Browser gespeichert werden: Name und E-Mail-Adresse, falls Sie sie angegeben haben; Ihre Antworten und der unvollendete Fortschritt; Ihr letztes Ergebnis; der Zeitpunkt, zu dem Sie den Test zum ersten Mal abgeschlossen haben, für die Frist des Sonderpreises des Berichts; die gewählte Sprache; ein Vermerk, dass Sie diesen Hinweis gesehen haben. Diese Daten bleiben auf Ihrem Gerät und werden beim Löschen der Website-Daten entfernt. Der Hosting-Anbieter erhält die üblichen technischen Anfragedaten. Wenn Sie die Website an einem Tag zum ersten Mal öffnen, geht ein anonymer Besuchsvermerk an den Server der Website: nur die Sprachversion der Website; der Server speichert ihn mit der Uhrzeit des Eingangs, und Ihr Browser merkt sich das Datum, damit der Vermerk am selben Tag nicht noch einmal gesendet wird. Damit zählen wir, wie viele Menschen die Website besuchen. Wenn Sie den Test beginnen, geht ein anonymer Startvermerk an den Server der Website: nur die Sprachversion der Website. Wenn Sie den Test abschließen, geht ein anonymer Eintrag für die Gesamtstatistik an den Server der Website: das ermittelte Profil und die Sprachversion der Website – ohne Namen, E-Mail-Adresse und Antworten. Wenn Sie auf „Als PDF speichern“ klicken, gehen Ihre Antworten und das Testdatum – ohne Namen und E-Mail-Adresse – an den Server der Website; er erstellt daraus die Datei mit dem Kurzbericht, gibt sie Ihnen zurück und speichert nichts. Wenn Sie das Ergebnis per E-Mail senden lassen, werden Name, E-Mail-Adresse und Antworten an den Server der Website übermittelt; er sendet Ihnen die E-Mail mit dem Ergebnis und speichert Name, E-Mail-Adresse, Datum und Ergebnis in der Ergebnisdatenbank des Seitenbetreibers. Wenn Sie den Newsletter auf der Startseite abonnieren, werden E-Mail-Adresse und Sprachversion der Website an den Server der Website übermittelt; er sendet Ihnen eine E-Mail mit einem Bestätigungslink und speichert die Adresse in derselben Datenbank; wird die Anmeldung nicht bestätigt, wird die Adresse nach 7 Tagen gelöscht. Das Webanalysesystem erhält die Seitenadresse (auf der Ergebnisseite zusammen mit dem Ergebniscode: Ihre Antworten, das Testdatum und Ihr Name, falls Sie ihn angegeben haben, aber nicht Ihre E-Mail-Adresse), die Herkunft des Besuchs, Geräte- und Browsertyp sowie eine Aufzeichnung der Aktionen auf der Seite (die Felder für Name und E-Mail sind ausgenommen) und setzt eigene Cookies. Sie können es in den Browsereinstellungen oder mit einem Tracker-Blocker blockieren. Werbe-Tracker werden nicht verwendet.",
     "pd.cookieChange": "Cookie-Auswahl ändern",
 
     "print.title": "DISG-Test zum Ausdrucken: Fragebogen mit Schlüssel und Auswertung",

@@ -37,7 +37,22 @@ function introHTML(c){
         return '<article class="stylecard" style="--k:'+colorVar(k)+'"><h3><span class="k">'+k+'</span>'+esc(L.keys[k])+' · '+esc(pr.name)+'</h3><p>'+esc(pr.summary)+'</p><div class="traits">'+st.traits.map(function(x){ return '<span>'+esc(x)+'</span>'; }).join('')+'</div>'+
           (links.profile ? '<a class="more" href="'+esc(links.profile(k))+'">'+t('pages.profile.more',{name:esc(pr.name)})+'</a>' : '')+'</article>'; }).join('')+
     '</div>'+(links.styles ? '<p class="all"><a href="'+esc(links.styles)+'">'+t('nav.styles')+' '+arr+'</a> · <a href="'+esc(links.profiles)+'">'+t('nav.profiles')+' '+arr+'</a></p>' : '')+'</section>'+
+    subHTML(c)+
     homeHTML(c);
+}
+/* Подписка на рассылку (с 2026-10-22, по просьбе заказчика): поле e-mail, «Подписаться», галочки согласия на обработку данных (c.sub.pdHtml)
+   и на рассылку. Собирает только сама страница (c.sub), в сборке формы нет. Подписка действует после подтверждения по ссылке из письма. */
+function subHTML(c){
+  var s=c.sub, t=c.t, esc=c.esc;
+  if(!s) return '';
+  return '<section class="share nlbox" id="nlBox"><h2>'+esc(t('nl.title'))+'</h2><p>'+esc(t('nl.text'))+'</p>'+
+    '<form class="form nlform" id="nlForm" autocomplete="on" novalidate><div class="nlfields">'+
+      '<div class="nlrow"><input type="email" id="nlEm" name="email" class="ym-disable-keys" autocomplete="email" inputmode="email" required maxlength="120" placeholder="'+esc(t('nl.emailLabel'))+'" aria-label="'+esc(t('nl.emailLabel'))+'" value="'+esc(s.email||'')+'">'+
+        '<button class="btn" type="submit">'+esc(t('nl.button'))+'</button></div>'+
+      (s.pdHtml ? '<label class="check"><input type="checkbox" id="nlPd" name="consent"><span>'+s.pdHtml+'</span></label>' : '')+
+      '<label class="check"><input type="checkbox" id="nlOk" name="subscribe"><span>'+esc(t('nl.consent'))+'</span></label></div>'+
+      '<p class="small sendstatus" id="nlStatus" aria-live="polite" hidden></p>'+
+    '</form></section>';
 }
 /* Текст под тестом (content.home): что вы получите, как считается результат, короткие вопросы, 16 профилей — закрывает интент «что за тест» на странице, где его проходят */
 function homeHTML(c){

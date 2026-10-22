@@ -95,6 +95,9 @@ const pdConsentText = L => { const cd = L.content.consentDoc, plain = str => Str
 // развёрнута версия скрипта со столбцами согласия (GET на sendEndpoint отвечает newsletter:true): прежняя версия галочку молча игнорирует.
 // Страница отписки /unsubscribe/ строится всегда, когда задан sendEndpoint: ссылки из уже разосланных писем должны работать.
 const newsletter = !!(cfg.newsletter && cfg.sendEndpoint);
+// Подписка на рассылку на стартовом экране (с 2026-10-22): "homeSubscribe": true — форма e-mail + «Подписаться» и страница подтверждения /subscribe/ (#c=…).
+// Сервер пишет подписчика в базу результатов строкой без результата и шлёт письмо со ссылкой подтверждения (тексты content.subscribeMail).
+const homeSub = !!(cfg.homeSubscribe && newsletter);
 // Кнопка «Отправить на e-mail» с формой краткого отчёта в карточке «Сохраните результат» (с 2026-10-22): "resultEmail": false её убирает
 // (так было с 2026-10-21 по 2026-10-22 по решению заказчика; код отправки остаётся). Без ключа кнопка есть.
 const resultEmail = cfg.resultEmail !== false;
@@ -372,7 +375,7 @@ for (const L of locales) {
     .replace(/__EMAIL__/g, String(cfg.contactEmail || '').replace(/['\\]/g, ''))
     .replace(/__SEND_ENDPOINT__/g, String(cfg.sendEndpoint || '').replace(/['\\]/g, '')).replace(/__PAY_ENDPOINT__/g, homePay(L) ? payEndpoint.replace(/['\\]/g, '') : '')
     .replace('__PAY_JS__', () => homePay(L) ? payJs : '')
-    .replace(/__SEND_TOKEN__/g, String(cfg.sendToken || '').replace(/['\\]/g, '')).replace(/__NEWSLETTER__/g, newsletter ? '1' : '0').replace(/__STATS__/g, profileStats ? '1' : '0').replace(/__PDF_DL__/g, pdfDownload ? '1' : '0').replace(/__RESULT_EMAIL__/g, resultEmail ? '1' : '0')
+    .replace(/__SEND_TOKEN__/g, String(cfg.sendToken || '').replace(/['\\]/g, '')).replace(/__NEWSLETTER__/g, newsletter ? '1' : '0').replace(/__STATS__/g, profileStats ? '1' : '0').replace(/__PDF_DL__/g, pdfDownload ? '1' : '0').replace(/__RESULT_EMAIL__/g, resultEmail ? '1' : '0').replace(/__HOME_SUB__/g, homeSub ? '1' : '0')
     .replace(/__PD__/g, pdOn && cfg.sendEndpoint ? '1' : '0').replace(/__PD_VERSION__/g, pdVersion)
     .replace('__LOCALE_JSON__', () => JSON.stringify(homeLocale(L)).replace(/</g, '\\u003c').replace(/\u2028|\u2029/g, ''));
   fs.mkdirSync(path.join(OUT, pathOf(L.lang)), { recursive: true });
@@ -808,6 +811,29 @@ for (const L of locales) {
   });
 })();` });
   }
+  // /subscribe/ — подтверждение подписки с главной: ключ из ссылки в письме (#c=…), кнопка отправляет его серверу ({action: 'confirmSubscribe'}).
+  // Подтверждает кнопка, а не само открытие ссылки: почтовые сервисы и антивирусы открывают ссылки из писем автоматически.
+  if (homeSub) {
+    const sc = C.subscribeConfirm, mailLink = feedbackEmail ? `<a href="mailto:${escFull(feedbackEmail)}">${escFull(feedbackEmail)}</a>` : '';
+    writeContentPage(L, 'subscribe/', { noindex: true, noDate: true, title: sc.title, description: sc.description, crumbs: [{ name: sc.h1 }],
+      content: `<div class="eyebrow">DISC</div><h1>${escFull(sc.h1)}</h1><p class="lead">${escFull(sc.lead)}</p>` +
+        `<div class="card contactcard"><p class="small sendstatus" id="cStatus" aria-live="polite" hidden></p><div class="actions"><button class="btn" type="button" id="cBtn">${escFull(t('subc.button'))}</button></div></div>`,
+      uiKeys: /^subc\./,
+      pageJs: `(function(){ var btn = $('#cBtn'), st = $('#cStatus'), m = /[#&]c=([A-Za-z0-9_-]{22})(?:&|$)/.exec(dataHash()), mail = ${jsStr(mailLink)};
+  function status(kind, html){ st.hidden = false; st.className = 'small sendstatus ' + kind; st.innerHTML = html; }
+  if(!m){ btn.hidden = true; status('err', t('subc.bad', {email: mail})); return; }
+  btn.addEventListener('click', function(){
+    btn.disabled = true;
+    fetch(${jsStr(cfg.sendEndpoint)}, {method: 'POST', body: JSON.stringify({token: ${jsStr(cfg.sendToken)}, action: 'confirmSubscribe', c: m[1]}), redirect: 'follow'})
+      .then(function(res){ return res.text(); })
+      .then(function(txt){ var j = null; try{ j = JSON.parse(txt); }catch(e){}
+        if(j && j.error === 'bad link'){ btn.hidden = true; status('err', t('subc.bad', {email: mail})); return; }
+        if(!j || !j.ok) throw new Error('failed');
+        btn.hidden = true; status('ok', esc(t('subc.done'))); if(window.discTrack) window.discTrack('subscribe'); })
+      .catch(function(){ btn.disabled = false; status('err', t('subc.failed', {email: mail})); });
+  });
+})();` });
+  }
   // /contact/ — форма обратной связи (только при заданном feedbackEmail); разметка из src/contact.js, там же логика страницы
   if (feedbackEmail) {
     const ct = C.contact, maxLabel = '10 ' + (L.ui['contact.mb'] || 'MB');
@@ -900,7 +926,9 @@ for (const L of locales) {
   // consent — текст у галочки согласия на рассылку: скрипт записывает его в таблицу рядом с отметкой о согласии
   mailData[L.lang] = { name: L.name, dir: L.dir, brand: L.brand, keys: L.keys, addon: L.addon, styles: L.styles, profiles, email, report, rights: L.ui.rights, consent: L.ui['share.subscribe'],
     pd: { v: pdVersion, text: pdConsentText(L) },   // согласие на обработку данных: редакция и текст — свой сервер сохраняет их рядом с отметкой о согласии
-    cta: { title: L.ui['cta.title'], text: L.ui['cta.text'], desc: L.ui['pages.profile.descCta'] } };
+    cta: { title: L.ui['cta.title'], text: L.ui['cta.text'], desc: L.ui['pages.profile.descCta'] },
+    // подписка с главной: текст у галочки согласия (сервер сохраняет его с отметкой о согласии) и письмо со ссылкой подтверждения
+    nl: { consent: L.ui['nl.consent'], mail: L.content.subscribeMail } };
   // письмо с расширенным отчётом (платная услуга): тексты есть только в языках, где отчёт написан
   if (L.content.extendedMail) mailData[L.lang].extended = L.content.extendedMail;
   // оплата расширенного отчёта на своём сервере: название услуги для платёжной страницы и чека, письмо-напоминание о неоконченной оплате, валюта заказа (USD или EUR через Prodamus)

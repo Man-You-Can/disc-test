@@ -664,14 +664,14 @@
           "h": "Veriler nerede saklanır ve kimlere aktarılır",
           "p": [
             "Sonuç veri tabanı, site sahibinin bir barındırma sağlayıcısından kiraladığı bir sunucuda bulunur. E-postaları bir e-posta hizmeti gönderir. Bu şirketler verileri bizim talimatımızla ve yalnızca sitenin çalışması için işler. E-posta, kendi belirttiğiniz adrese gönderilir. Veriler, kendi amaçları için kullanmaları üzere üçüncü kişilere aktarılmaz ve satılmaz.",
-            "Bülteni yalnızca sonuç gönderme formunda ayrı onay kutusunu işaretleyenler alır. Bu durumda veri tabanına onay işareti, onayın tarihi ve metni de kaydedilir; e-posta adresiniz, adınız ve diliniz size disc-test.org e-postalarını göndermek için kullanılır: DISC ile ilgili içerikler, site haberleri ve tanıtım teklifleri. İstediğiniz zaman abonelikten çıkabilirsiniz: e-postadaki bağlantıdan ya da {email} adresine yazarak.",
+            "Bülteni yalnızca ayrı onay kutusunu işaretleyenler alır: sonuç gönderme formunda ya da ana sayfadaki abonelik formunda. Abonelik formunu gönderdikten sonra onay bağlantısı içeren bir e-posta gelir: onaylanmayan aboneliğe bülten gönderilmez ve adres 7 gün sonra silinir. Veri tabanına onay işareti, onayın tarihi ve metni kaydedilir; e-posta adresiniz, adınız (belirttiyseniz) ve diliniz size disc-test.org e-postalarını göndermek için kullanılır: DISC ile ilgili içerikler, yeni testler, kariyer gelişimi ve iş arama ipuçları, site haberleri ve tanıtım teklifleri. İstediğiniz zaman abonelikten çıkabilirsiniz: e-postadaki bağlantıdan ya da {email} adresine yazarak.",
             "Barındırma hizmeti, isteğe ilişkin standart teknik verileri alır: IP adresi, tarayıcı türü, sayfa adresi. Yazı tipleri sitenin kendisinde barındırılır. Ziyaret istatistiklerini bir web analiz hizmeti toplar: ziyarete ilişkin verileri — sayfa adresi, ziyaretin geldiği kaynak, cihaz ve tarayıcı türü — ve sayfadaki hareketlerin kaydını alır; ad ve e-posta alanları bu kaydın dışında tutulur. Sonuç ekranında sayfa adresi sonuç kodunu içerir: yanıtlarınız, test tarihi ve belirttiyseniz adınız; e-posta adresiniz bu koda dahil değildir. Veri toplamayı tarayıcı ayarlarınızdan ya da bir izleyici engelleyiciyle devre dışı bırakabilirsiniz. Reklam amaçlı izleyiciler kullanılmaz."
           ]
         },
         {
           "h": "Hukuki dayanak ve saklama süreleri",
           "p": [
-            "E-postanıza gönderilen sonucu onayınıza dayanarak işler ve gönderim tarihinden itibaren üç yıl boyunca ya da onayınızı geri alana kadar saklarız. Bülten için kullanılan verileri ayrı bir onaya dayanarak, siz abonelikten çıkana kadar işleriz. İletişim formundan gelen mesajları onayınıza dayanarak işler ve yanıt verdikten sonra bir yıl saklarız.",
+            "E-postanıza gönderilen sonucu onayınıza dayanarak işler ve gönderim tarihinden itibaren üç yıl boyunca ya da onayınızı geri alana kadar saklarız. Bülten için kullanılan verileri ayrı bir onaya dayanarak, siz abonelikten çıkana kadar işleriz; aboneliği onaylanmamış adresleri 7 gün saklarız. İletişim formundan gelen mesajları onayınıza dayanarak işler ve yanıt verdikten sonra bir yıl saklarız.",
             "Süre dolduğunda ya da onayınızı geri aldığınızda veriler veri tabanından silinir. Yedek kopyalardan ise kopyalar yenilendikçe, en geç altı ay içinde silinir."
           ]
         },
@@ -727,7 +727,8 @@
           "h": "İşleme amaçları ve işlenen veriler",
           "p": [
             "“Sonucunuzu e-postayla alın” formu: ad, e-posta adresi, sitenin dil sürümü, testin çözüldüğü tarih, yanıtlar ve DISC testinin sonucu. Amaç: bana test sonucunu içeren bir e-posta göndermek ve sonucu, yeniden gönderebilmek ve başvurularımı yanıtlayabilmek için saklamak.",
-            "İletişim formu: ad, e-posta adresi, mesaj metni ve eklenen dosyalar. Amaç: başvurumu incelemek ve yanıtlamak."
+            "İletişim formu: ad, e-posta adresi, mesaj metni ve eklenen dosyalar. Amaç: başvurumu incelemek ve yanıtlamak.",
+            "Ana sayfadaki bülten abonelik formu: e-posta adresi ve sitenin dil sürümü. Amaç: bana aboneliği onaylamam için bağlantı içeren bir e-posta göndermek ve bülten abone listesini tutmak."
           ]
         },
         {
@@ -745,7 +746,7 @@
         {
           "h": "Onayın geçerlilik süresi",
           "p": [
-            "Onay, “Sonucunuzu e-postayla alın” formunun gönderildiği tarihten itibaren üç yıl, iletişim formundan gelen başvurunun yanıtlanmasından sonra ise bir yıl boyunca ya da geri alınana kadar geçerlidir."
+            "Onay, “Sonucunuzu e-postayla alın” formunun gönderildiği tarihten itibaren üç yıl, iletişim formundan gelen başvurunun yanıtlanmasından sonra bir yıl, abonelik formu için ise bülten aboneliğinden çıkılana kadar (abonelik onaylanmazsa 7 gün) ya da geri alınana kadar geçerlidir."
           ]
         },
         {
@@ -1040,6 +1041,19 @@
       "description": "disc-test.org bülten aboneliğinden tek düğmeyle çıkın; giriş ya da şifre gerekmez.",
       "h1": "Bülten aboneliğinden çıkın",
       "lead": "Düğmeye basın; disc-test.org, bu bağlantıyı içeren e-postanın geldiği adrese bülten göndermeyi bırakacak. Bu, test sonucu e-postasını etkilemez: o yalnızca siz istediğinizde gönderilir."
+    },
+    "subscribeConfirm": {
+      "title": "Bülten aboneliğini onaylayın — DISC testi",
+      "description": "disc-test.org bülten aboneliğinizi tek düğmeyle onaylayın.",
+      "h1": "Aboneliğinizi onaylayın",
+      "lead": "Düğmeye basın; bu bağlantıyı içeren e-postanın geldiği adrese disc-test.org bülteni gönderilmeye başlanacak: yeni testler, kariyer gelişimi ve iş arama ipuçları, site haberleri ve tanıtım teklifleri."
+    },
+    "subscribeMail": {
+      "subject": "disc-test.org bülten aboneliğinizi onaylayın",
+      "intro": "Merhaba! Bu adres, {site} sitesinin bülten abonelik formuna girildi: yeni testler, kariyer gelişimi ve iş arama ipuçları, site haberleri ve tanıtım teklifleri.",
+      "action": "E-posta almaya başlamak için aboneliğinizi onaylayın:",
+      "button": "Aboneliği onayla",
+      "footer": "Abone olmadıysanız hiçbir şey yapmanız gerekmez: onay verilmezse bülten gönderilmez ve adres 7 gün sonra silinir."
     },
     "results": {
       "title": "DISC testi sonuçlarının yorumlanması: grafiği ve profili okuma",
@@ -1740,7 +1754,7 @@
   "ui": {
     "langLabel": "Dil",
     "footer": "24 soru · yaklaşık 10 dakika · doğru ya da yanlış yanıt yok",
-    "privacy": "Yanıtlarınız tarayıcınızda kalır; genel istatistik için sitenin sunucusuna yalnızca siteyi ziyaret ettiğinize ve teste başladığınıza dair kayıtlar ile çıkan profiliniz iletilir, adınız ve yanıtlarınız iletilmez. E-posta adresinizi belirtirseniz sonucunuz bu adrese gönderilir ve site sahibinin sonuç veri tabanına kaydedilir. “PDF olarak kaydet” düğmesine bastığınızda yanıtlarınız ve test tarihi, adınız ve e-posta adresiniz olmadan, sitenin sunucusuna iletilir; sunucu bunlardan özet rapor dosyasını oluşturup size geri gönderir ve hiçbir şey saklamaz.",
+    "privacy": "Yanıtlarınız tarayıcınızda kalır; genel istatistik için sitenin sunucusuna yalnızca siteyi ziyaret ettiğinize ve teste başladığınıza dair kayıtlar ile çıkan profiliniz iletilir, adınız ve yanıtlarınız iletilmez. E-posta adresinizi belirtirseniz sonucunuz bu adrese gönderilir ve site sahibinin sonuç veri tabanına kaydedilir. Ana sayfada bültene abone olursanız e-posta adresiniz ve sitenin dil sürümü aynı veri tabanına kaydedilir. “PDF olarak kaydet” düğmesine bastığınızda yanıtlarınız ve test tarihi, adınız ve e-posta adresiniz olmadan, sitenin sunucusuna iletilir; sunucu bunlardan özet rapor dosyasını oluşturup size geri gönderir ve hiçbir şey saklamaz.",
     "legal": "Manukyan Armen · Vergi kimlik numarası (INN) {inn}",
     "rights": "© {year} disc-test.org. Site ve rapor metinlerinin yazılı izin olmadan kopyalanması yasaktır.",
     "adminLink": "Yönetici paneli",
@@ -1995,6 +2009,19 @@
     "unsub.done": "Tamamlandı: disc-test.org bu adrese artık bülten göndermeyecek.",
     "unsub.failed": "Abonelikten çıkılamadı. Tekrar deneyin ya da bize yazın: {email}.",
     "unsub.bad": "Bağlantıda abonelikten çıkma kodu yok. E-postadaki bağlantının tamamını açın ya da bize yazın: {email}.",
+    "nl.title": "Bültenimize abone olun",
+    "nl.text": "Yeni testlerden, kariyer gelişimi ve iş arama ipuçlarından haberdar olun.",
+    "nl.emailLabel": "E-posta adresiniz",
+    "nl.button": "Abone ol",
+    "nl.consent": "Bu e-posta adresine disc-test.org bültenini almayı kabul ediyorum: yeni testler, kariyer gelişimi ve iş arama ipuçları, site haberleri ve tanıtım teklifleri. İstediğiniz zaman her e-postadaki bağlantıdan abonelikten çıkabilirsiniz.",
+    "nl.consentRequired": "Bülteni almak için onay kutusunu işaretleyin.",
+    "nl.sending": "E-posta gönderiliyor…",
+    "nl.sent": "Neredeyse tamam: {email} adresine bir e-posta gönderdik. E-postayı açın ve “Aboneliği onayla” düğmesine basın; bu adım olmadan bülten gönderilmez.",
+    "nl.failed": "Abonelik oluşturulamadı. Lütfen daha sonra tekrar deneyin.",
+    "subc.button": "Aboneliği onayla",
+    "subc.done": "Aboneliğiniz onaylandı. Bültenin her e-postasındaki bağlantıdan istediğiniz zaman abonelikten çıkabilirsiniz.",
+    "subc.bad": "Bağlantı eksik ya da süresi dolmuş: abonelik yalnızca 7 gün içinde onaylanabilir. Ana sayfadan yeniden abone olun ya da bize yazın: {email}.",
+    "subc.failed": "Abonelik onaylanamadı. Tekrar deneyin ya da bize yazın: {email}.",
     "contact.privacyNote": "Adınız, e-posta adresiniz, mesajın konusu, mesajınız ve dosyalarınız {email} adresine e-postayla gönderilir ve yalnızca size yanıt vermek için kullanılır.",
     "contact.mailtoNote": "Gönderim hizmeti henüz bağlanmadı: “Gönder” düğmesi, mesajınızın hazır olarak yer aldığı e-posta programınızı açar; eklediğiniz dosyaları ise e-postaya elle eklemeniz gerekir.",
     "contact.mailSubject": "Siteden mesaj: {name}",
@@ -2013,7 +2040,7 @@
     "pd.consentLink": "kişisel verilerin işlenmesine ilişkin onay",
     "pd.required": "Kişisel verilerin işlenmesine ilişkin onay kutusunu işaretleyin: bu onay olmadan verilerinizi kabul edemeyiz.",
     "pd.cookieAsk": "Site; ilerlemenizi, sonucunuzu ve seçtiğiniz dili tarayıcının yerel depolama alanında saklar. Onay verirseniz bir web analiz hizmeti, siteyi geliştirebilmemiz için anonimleştirilmiş ziyaret istatistiklerini ve sayfadaki hareketlerin kaydını toplar. Adınız, e-posta adresiniz ve sonucunuz analiz hizmetine aktarılmaz.",
-    "pd.cookieDetails": "Tarayıcıda saklananlar: belirttiyseniz adınız ve e-posta adresiniz; yanıtlarınız ve tamamlanmamış ilerlemeniz; son sonucunuz; seçtiğiniz dil; bu bildirimi gördüğünüze dair işaret. Bu veriler cihazınızda kalır ve site verilerini temizlediğinizde silinir. Barındırma hizmeti, isteğe ilişkin standart teknik verileri alır. Siteyi gün içinde ilk kez açtığınızda sitenin sunucusuna anonim bir ziyaret kaydı gönderilir: yalnızca sitenin dil sürümü; sunucu bu kaydı ulaştığı saatle birlikte saklar, tarayıcınız da aynı gün yeniden gönderilmemesi için tarihi hatırlar. Bu kayıtlarla siteyi kaç kişinin ziyaret ettiğini sayarız. Teste başladığınızda sitenin sunucusuna anonim bir başlangıç kaydı gönderilir: yalnızca sitenin dil sürümü. Testi tamamladığınızda genel istatistik için sitenin sunucusuna anonim bir kayıt gönderilir: çıkan profiliniz ve sitenin dil sürümü. Adınız, e-posta adresiniz ve yanıtlarınız bu kayıtta yer almaz. “PDF olarak kaydet” düğmesine bastığınızda yanıtlarınız ve test tarihi, adınız ve e-posta adresiniz olmadan, sitenin sunucusuna iletilir; sunucu bunlardan özet rapor dosyasını oluşturup size geri gönderir ve hiçbir şey saklamaz. Sonucunuzu e-postanıza gönderdiğinizde adınız, e-posta adresiniz ve yanıtlarınız sitenin sunucusuna aktarılır: sunucu size sonucunuzu içeren bir e-posta gönderir ve adınızı, e-posta adresinizi, tarihi ve sonucu site sahibinin sonuç veri tabanına kaydeder. Web analiz hizmeti şunları alır: sayfa adresi (sonuç ekranında sonuç koduyla birlikte: yanıtlarınız, test tarihi ve belirttiyseniz adınız; e-posta adresiniz dahil değildir), ziyaretin geldiği kaynak, cihaz ve tarayıcı türü, sayfadaki hareketlerin kaydı (ad ve e-posta alanları kayda dahil edilmez); ayrıca kendi çerezlerini yerleştirir. Bu hizmeti tarayıcı ayarlarından ya da bir izleyici engelleyiciyle engelleyebilirsiniz. Reklam amaçlı izleyiciler kullanılmaz.",
+    "pd.cookieDetails": "Tarayıcıda saklananlar: belirttiyseniz adınız ve e-posta adresiniz; yanıtlarınız ve tamamlanmamış ilerlemeniz; son sonucunuz; seçtiğiniz dil; bu bildirimi gördüğünüze dair işaret. Bu veriler cihazınızda kalır ve site verilerini temizlediğinizde silinir. Barındırma hizmeti, isteğe ilişkin standart teknik verileri alır. Siteyi gün içinde ilk kez açtığınızda sitenin sunucusuna anonim bir ziyaret kaydı gönderilir: yalnızca sitenin dil sürümü; sunucu bu kaydı ulaştığı saatle birlikte saklar, tarayıcınız da aynı gün yeniden gönderilmemesi için tarihi hatırlar. Bu kayıtlarla siteyi kaç kişinin ziyaret ettiğini sayarız. Teste başladığınızda sitenin sunucusuna anonim bir başlangıç kaydı gönderilir: yalnızca sitenin dil sürümü. Testi tamamladığınızda genel istatistik için sitenin sunucusuna anonim bir kayıt gönderilir: çıkan profiliniz ve sitenin dil sürümü. Adınız, e-posta adresiniz ve yanıtlarınız bu kayıtta yer almaz. “PDF olarak kaydet” düğmesine bastığınızda yanıtlarınız ve test tarihi, adınız ve e-posta adresiniz olmadan, sitenin sunucusuna iletilir; sunucu bunlardan özet rapor dosyasını oluşturup size geri gönderir ve hiçbir şey saklamaz. Sonucunuzu e-postanıza gönderdiğinizde adınız, e-posta adresiniz ve yanıtlarınız sitenin sunucusuna aktarılır: sunucu size sonucunuzu içeren bir e-posta gönderir ve adınızı, e-posta adresinizi, tarihi ve sonucu site sahibinin sonuç veri tabanına kaydeder. Ana sayfada bültene abone olduğunuzda e-posta adresiniz ve sitenin dil sürümü sitenin sunucusuna aktarılır: sunucu size onay bağlantısı içeren bir e-posta gönderir ve adresi aynı veri tabanına kaydeder; aboneliği onaylamazsanız adres 7 gün sonra silinir. Web analiz hizmeti şunları alır: sayfa adresi (sonuç ekranında sonuç koduyla birlikte: yanıtlarınız, test tarihi ve belirttiyseniz adınız; e-posta adresiniz dahil değildir), ziyaretin geldiği kaynak, cihaz ve tarayıcı türü, sayfadaki hareketlerin kaydı (ad ve e-posta alanları kayda dahil edilmez); ayrıca kendi çerezlerini yerleştirir. Bu hizmeti tarayıcı ayarlarından ya da bir izleyici engelleyiciyle engelleyebilirsiniz. Reklam amaçlı izleyiciler kullanılmaz.",
     "pd.cookieChange": "Çerez tercihini değiştir",
 
     "print.title": "DISC kişilik envanteri: yazdırılabilir test, cevap anahtarı, puanlama",

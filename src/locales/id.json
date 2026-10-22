@@ -666,14 +666,14 @@
           "h": "Di mana data disimpan dan kepada siapa data diteruskan",
           "p": [
             "Basis data hasil berada di server yang disewa pemilik situs dari penyedia hosting. Email dikirim oleh layanan email. Perusahaan-perusahaan ini memproses data atas perintah kami dan hanya untuk keperluan operasional situs. Email dikirim ke alamat yang Anda isi sendiri. Data tidak diteruskan ataupun dijual kepada pihak ketiga untuk tujuan mereka sendiri.",
-            "Buletin hanya dikirim kepada orang yang mencentang persetujuan terpisah di formulir pengiriman hasil. Dalam hal itu, basis data juga menyimpan penanda persetujuan, tanggalnya, dan teksnya, sedangkan email, nama, dan bahasa Anda digunakan untuk mengirim email dari disc-test.org: materi tentang DISC, kabar situs, dan penawaran promosi. Anda dapat berhenti berlangganan kapan saja — melalui tautan di email atau dengan menulis ke {email}.",
+            "Buletin hanya dikirim kepada orang yang mencentang persetujuan terpisah — di formulir pengiriman hasil atau di formulir langganan di halaman utama. Setelah formulir langganan dikirim, Anda akan menerima email berisi tautan konfirmasi: tanpa konfirmasi, buletin tidak dikirim, dan alamat Anda dihapus setelah 7 hari. Basis data menyimpan penanda persetujuan, tanggalnya, dan teksnya, sedangkan email, nama (jika Anda mengisinya), dan bahasa Anda digunakan untuk mengirim email dari disc-test.org: materi tentang DISC, tes baru, tips pengembangan karier dan mencari kerja, kabar situs, dan penawaran promosi. Anda dapat berhenti berlangganan kapan saja — melalui tautan di email atau dengan menulis ke {email}.",
             "Layanan hosting menerima data teknis standar dari setiap permintaan: alamat IP, jenis browser, alamat halaman. Font disimpan di situs ini sendiri. Statistik kunjungan dikumpulkan oleh layanan analitik web: layanan ini menerima data kunjungan — alamat halaman, sumber kunjungan, jenis perangkat dan browser — serta rekaman tindakan di halaman; kolom isian nama dan email dikecualikan dari rekaman tersebut. Di layar hasil, alamat halaman memuat kode hasil: jawaban Anda, tanggal tes, dan nama Anda jika Anda mengisinya, tetapi tidak memuat email Anda. Pengumpulan data dapat dinonaktifkan melalui pengaturan browser atau dengan pemblokir pelacak. Pelacak iklan tidak digunakan."
           ]
         },
         {
           "h": "Dasar pemrosesan dan jangka waktu penyimpanan",
           "p": [
-            "Hasil yang dikirim ke email kami proses berdasarkan persetujuan Anda dan kami simpan selama tiga tahun sejak tanggal pengiriman atau sampai persetujuan dicabut. Data untuk buletin kami proses berdasarkan persetujuan terpisah, sampai Anda berhenti berlangganan. Pesan dari formulir kontak kami proses berdasarkan persetujuan dan kami simpan selama satu tahun setelah pesan itu dibalas.",
+            "Hasil yang dikirim ke email kami proses berdasarkan persetujuan Anda dan kami simpan selama tiga tahun sejak tanggal pengiriman atau sampai persetujuan dicabut. Data untuk buletin kami proses berdasarkan persetujuan terpisah, sampai Anda berhenti berlangganan; alamat yang langganannya belum dikonfirmasi kami simpan selama 7 hari. Pesan dari formulir kontak kami proses berdasarkan persetujuan dan kami simpan selama satu tahun setelah pesan itu dibalas.",
             "Ketika jangka waktu tersebut berakhir atau Anda mencabut persetujuan, data dihapus dari basis data. Dari salinan cadangan, data hilang seiring diperbaruinya salinan, paling lambat enam bulan kemudian."
           ]
         },
@@ -729,7 +729,8 @@
           "h": "Tujuan pemrosesan dan data yang diproses",
           "p": [
             "Formulir “Terima hasil lewat email”: nama, alamat email, bahasa versi situs, tanggal tes, jawaban, dan hasil tes DISC. Tujuannya: mengirimkan email berisi hasil tes kepada saya dan menyimpan hasil itu agar dapat dikirim ulang serta untuk menjawab pesan saya.",
-            "Formulir kontak: nama, alamat email, teks pesan, dan file lampiran. Tujuannya: menelaah pesan saya dan membalasnya."
+            "Formulir kontak: nama, alamat email, teks pesan, dan file lampiran. Tujuannya: menelaah pesan saya dan membalasnya.",
+            "Formulir langganan buletin di halaman utama: alamat email dan bahasa versi situs. Tujuannya: mengirimkan email berisi tautan konfirmasi langganan kepada saya dan mengelola daftar pelanggan buletin."
           ]
         },
         {
@@ -747,7 +748,7 @@
         {
           "h": "Masa berlaku persetujuan",
           "p": [
-            "Persetujuan ini berlaku selama tiga tahun sejak tanggal pengiriman formulir “Terima hasil lewat email” dan selama satu tahun setelah pesan dari formulir kontak dibalas, atau sampai persetujuan dicabut."
+            "Persetujuan ini berlaku selama tiga tahun sejak tanggal pengiriman formulir “Terima hasil lewat email”, selama satu tahun setelah pesan dari formulir kontak dibalas, dan untuk formulir langganan — sampai saya berhenti berlangganan buletin (jika langganan tidak dikonfirmasi — 7 hari), atau sampai persetujuan dicabut."
           ]
         },
         {
@@ -1139,6 +1140,19 @@
       "description": "Berhenti berlangganan buletin disc-test.org dengan satu tombol, tanpa login atau kata sandi.",
       "h1": "Berhenti berlangganan buletin",
       "lead": "Tekan tombol, dan disc-test.org akan berhenti mengirim buletin ke alamat yang menerima email berisi tautan ini. Hal ini tidak memengaruhi email hasil tes: email itu hanya dikirim saat Anda sendiri memintanya."
+    },
+    "subscribeConfirm": {
+      "title": "Konfirmasi Langganan Buletin — Tes DISC",
+      "description": "Konfirmasi langganan buletin disc-test.org dengan satu tombol.",
+      "h1": "Konfirmasi langganan Anda",
+      "lead": "Tekan tombol, dan buletin disc-test.org akan dikirim ke alamat yang menerima email berisi tautan ini: tes baru, tips pengembangan karier dan mencari kerja, kabar situs, dan penawaran promosi."
+    },
+    "subscribeMail": {
+      "subject": "Konfirmasi langganan buletin disc-test.org",
+      "intro": "Halo! Alamat ini dimasukkan di formulir langganan buletin {site}: tes baru, tips pengembangan karier dan mencari kerja, kabar situs, dan penawaran promosi.",
+      "action": "Untuk mulai menerima email, konfirmasi langganan Anda:",
+      "button": "Konfirmasi langganan",
+      "footer": "Jika Anda tidak mendaftar, Anda tidak perlu melakukan apa pun: tanpa konfirmasi, buletin tidak akan dikirim, dan alamat ini akan dihapus setelah 7 hari."
     },
     "results": {
       "title": "Cara Membaca Hasil Tes DISC: Memahami Grafik dan Profil",
@@ -1844,7 +1858,7 @@
   "ui": {
     "langLabel": "Bahasa",
     "footer": "24 soal · sekitar 10 menit · tidak ada jawaban benar atau salah",
-    "privacy": "Jawaban Anda tetap berada di browser; untuk statistik umum, server situs hanya menerima penanda kunjungan dan penanda bahwa tes dimulai, serta profil yang Anda peroleh, tanpa nama dan tanpa jawaban. Jika Anda mengisi email, hasil akan dikirim ke alamat itu dan disimpan di basis data hasil milik pemilik situs. Saat Anda menekan “Simpan sebagai PDF”, jawaban dan tanggal tes — tanpa nama dan email — dikirim ke server situs, yang membuat file laporan ringkas, mengembalikannya kepada Anda, dan tidak menyimpan apa pun.",
+    "privacy": "Jawaban Anda tetap berada di browser; untuk statistik umum, server situs hanya menerima penanda kunjungan dan penanda bahwa tes dimulai, serta profil yang Anda peroleh, tanpa nama dan tanpa jawaban. Jika Anda mengisi email, hasil akan dikirim ke alamat itu dan disimpan di basis data hasil milik pemilik situs. Jika Anda berlangganan buletin di halaman utama, email Anda dan bahasa versi situs disimpan di basis data yang sama. Saat Anda menekan “Simpan sebagai PDF”, jawaban dan tanggal tes — tanpa nama dan email — dikirim ke server situs, yang membuat file laporan ringkas, mengembalikannya kepada Anda, dan tidak menyimpan apa pun.",
     "legal": "Manukyan Armen · Nomor identitas wajib pajak (INN) {inn}",
     "rights": "© {year} disc-test.org. Dilarang menyalin teks situs dan laporan tanpa izin tertulis.",
     "adminLink": "Panel admin",
@@ -2099,6 +2113,19 @@
     "unsub.done": "Selesai: disc-test.org tidak akan lagi mengirim buletin ke alamat ini.",
     "unsub.failed": "Gagal berhenti berlangganan. Coba lagi atau hubungi kami: {email}.",
     "unsub.bad": "Tautan ini tidak memuat kode berhenti berlangganan. Buka tautan lengkap dari email atau hubungi kami: {email}.",
+    "nl.title": "Berlangganan buletin",
+    "nl.text": "Dapatkan kabar tentang tes baru serta tips pengembangan karier dan mencari kerja.",
+    "nl.emailLabel": "Email Anda",
+    "nl.button": "Berlangganan",
+    "nl.consent": "Saya setuju menerima buletin disc-test.org di alamat email ini: tes baru, tips pengembangan karier dan mencari kerja, kabar situs, dan penawaran promosi. Anda dapat berhenti berlangganan kapan saja melalui tautan di setiap email.",
+    "nl.consentRequired": "Centang persetujuan untuk menerima buletin.",
+    "nl.sending": "Mengirim email…",
+    "nl.sent": "Hampir selesai: kami telah mengirim email ke {email}. Buka email itu dan tekan “Konfirmasi langganan” — tanpa langkah ini, buletin tidak akan dikirim.",
+    "nl.failed": "Gagal mendaftarkan langganan. Silakan coba lagi nanti.",
+    "subc.button": "Konfirmasi langganan",
+    "subc.done": "Langganan sudah dikonfirmasi. Anda dapat berhenti berlangganan kapan saja melalui tautan di setiap email buletin.",
+    "subc.bad": "Tautan ini tidak lengkap atau sudah kedaluwarsa: langganan hanya dapat dikonfirmasi dalam 7 hari. Daftar lagi di halaman utama atau hubungi kami: {email}.",
+    "subc.failed": "Gagal mengonfirmasi langganan. Coba lagi atau hubungi kami: {email}.",
     "contact.privacyNote": "Nama, email, subjek, pesan, dan file akan dikirim melalui email ke alamat {email} dan hanya digunakan untuk membalas Anda.",
     "contact.mailtoNote": "Layanan pengiriman belum terhubung: tombol “Kirim” akan membuka aplikasi email Anda dengan pesan yang sudah terisi, sedangkan file lampiran perlu Anda tambahkan ke email secara manual.",
     "contact.mailSubject": "Pesan dari situs: {name}",
@@ -2117,7 +2144,7 @@
     "pd.consentLink": "persetujuan atas pemrosesan data pribadi",
     "pd.required": "Centang persetujuan atas pemrosesan data pribadi: tanpa persetujuan itu, kami tidak dapat menerima data Anda.",
     "pd.cookieAsk": "Situs ini menyimpan progres, hasil, dan bahasa pilihan Anda di penyimpanan lokal browser. Dengan persetujuan Anda, layanan analitik web akan mengumpulkan statistik kunjungan yang dianonimkan dan rekaman aktivitas di halaman agar kami dapat menyempurnakan situs. Nama, email, dan hasil Anda tidak dikirim ke layanan analitik.",
-    "pd.cookieDetails": "Yang disimpan di browser: nama dan email, jika Anda mengisinya; jawaban dan progres yang belum selesai; hasil terakhir; waktu Anda pertama kali menyelesaikan tes, untuk batas waktu harga khusus laporan; bahasa yang dipilih; penanda bahwa Anda sudah melihat pemberitahuan ini. Data ini tetap berada di perangkat Anda dan terhapus saat Anda menghapus data situs. Layanan hosting menerima data teknis standar dari setiap permintaan. Saat Anda membuka situs untuk pertama kalinya dalam sehari, satu penanda kunjungan anonim dikirim ke server situs: hanya bahasa versi situs; server mencatatnya beserta waktu diterimanya, dan browser Anda menyimpan tanggalnya agar penanda itu tidak dikirim lagi pada hari yang sama. Dengan penanda ini kami menghitung berapa banyak orang yang mengunjungi situs. Saat Anda memulai tes, satu penanda mulai anonim dikirim ke server situs: hanya bahasa versi situs. Saat tes selesai, satu catatan anonim untuk statistik umum dikirim ke server situs: profil yang Anda peroleh dan bahasa versi situs, tanpa nama, email, maupun jawaban. Saat Anda menekan “Simpan sebagai PDF”, jawaban dan tanggal tes — tanpa nama dan email — dikirim ke server situs, yang membuat file laporan ringkas, mengembalikannya kepada Anda, dan tidak menyimpan apa pun. Saat Anda mengirim hasil ke email, nama, email, dan jawaban diteruskan ke server situs: server mengirimkan email berisi hasil kepada Anda dan menyimpan nama, email, tanggal, dan hasil di basis data hasil milik pemilik situs. Layanan analitik web menerima alamat halaman (di layar hasil, bersama kode hasil: jawaban Anda, tanggal tes, dan nama Anda jika Anda mengisinya, tetapi tanpa email Anda), sumber kunjungan, jenis perangkat dan browser, serta rekaman aktivitas di halaman (kolom nama dan email dikecualikan dari rekaman); layanan ini juga memasang cookie miliknya sendiri. Anda dapat memblokirnya melalui pengaturan browser atau dengan pemblokir pelacak. Pelacak iklan tidak digunakan.",
+    "pd.cookieDetails": "Yang disimpan di browser: nama dan email, jika Anda mengisinya; jawaban dan progres yang belum selesai; hasil terakhir; waktu Anda pertama kali menyelesaikan tes, untuk batas waktu harga khusus laporan; bahasa yang dipilih; penanda bahwa Anda sudah melihat pemberitahuan ini. Data ini tetap berada di perangkat Anda dan terhapus saat Anda menghapus data situs. Layanan hosting menerima data teknis standar dari setiap permintaan. Saat Anda membuka situs untuk pertama kalinya dalam sehari, satu penanda kunjungan anonim dikirim ke server situs: hanya bahasa versi situs; server mencatatnya beserta waktu diterimanya, dan browser Anda menyimpan tanggalnya agar penanda itu tidak dikirim lagi pada hari yang sama. Dengan penanda ini kami menghitung berapa banyak orang yang mengunjungi situs. Saat Anda memulai tes, satu penanda mulai anonim dikirim ke server situs: hanya bahasa versi situs. Saat tes selesai, satu catatan anonim untuk statistik umum dikirim ke server situs: profil yang Anda peroleh dan bahasa versi situs, tanpa nama, email, maupun jawaban. Saat Anda menekan “Simpan sebagai PDF”, jawaban dan tanggal tes — tanpa nama dan email — dikirim ke server situs, yang membuat file laporan ringkas, mengembalikannya kepada Anda, dan tidak menyimpan apa pun. Saat Anda mengirim hasil ke email, nama, email, dan jawaban diteruskan ke server situs: server mengirimkan email berisi hasil kepada Anda dan menyimpan nama, email, tanggal, dan hasil di basis data hasil milik pemilik situs. Saat Anda berlangganan buletin di halaman utama, email dan bahasa versi situs dikirim ke server situs: server mengirimkan email berisi tautan konfirmasi dan menyimpan alamat itu di basis data yang sama; jika langganan tidak dikonfirmasi, alamat itu dihapus setelah 7 hari. Layanan analitik web menerima alamat halaman (di layar hasil, bersama kode hasil: jawaban Anda, tanggal tes, dan nama Anda jika Anda mengisinya, tetapi tanpa email Anda), sumber kunjungan, jenis perangkat dan browser, serta rekaman aktivitas di halaman (kolom nama dan email dikecualikan dari rekaman); layanan ini juga memasang cookie miliknya sendiri. Anda dapat memblokirnya melalui pengaturan browser atau dengan pemblokir pelacak. Pelacak iklan tidak digunakan.",
     "pd.cookieChange": "Ubah pilihan cookie",
 
     "print.title": "Tes DISC untuk Dicetak: Soal, Kunci Jawaban, dan Cara Menghitung Skor",
