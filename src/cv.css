@@ -281,3 +281,9 @@ body:has(.cvpage) .wrap{max-width:1080px}
   .cvcmp td::before{content:attr(data-l);display:block;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:2px}
   .cvcmp td.k-vac::before{color:color-mix(in srgb,var(--c) 80%,var(--ink))}
 }
+
+/* совет с рекомендацией откликнуться (карточка-оценка и вкладка «Оценка»): зелёный блок и метка с галочкой */
+.cvverdict.go{background:color-mix(in srgb,var(--s) 13%,transparent);border:1px solid color-mix(in srgb,var(--s) 45%,transparent);border-inline-start:4px solid var(--s)}
+.cvverdict.go b{display:inline-block;margin:0 8px 4px 0}
+.cvgo{display:inline-flex;align-items:center;gap:5px;margin:0 0 4px;padding:2px 10px;border-radius:999px;background:var(--s);color:#fff;font-weight:600;font-size:13px;vertical-align:middle}
+.cvgo::before{content:"✓";font-weight:700}

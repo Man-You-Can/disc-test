@@ -741,7 +741,7 @@ for (const L of locales) {
       `<div class="cvdemo-head"><div><strong>${escFull(D.role)}</strong><span>${escFull(D.company)}</span></div>` +
       `<div class="cvscore" style="--p:${(+D.score) * 10}%"><b>${escFull(D.score)}</b><span>${escFull(D.scoreOf)}</span></div></div>` +
       `<ul class="cvrows">${D.rows.map(r => `<li class="s-${r.s}"><span>${escFull(r.t)}</span><em>${escFull(r.v)}</em></li>`).join('')}</ul>` +
-      `<div class="cvverdict"><b>${escFull(D.verdictTitle)}</b><p>${escFull(D.verdict)}</p></div>` +
+      `<div class="cvverdict${D.verdictTag ? ' go' : ''}"><b>${escFull(D.verdictTitle)}</b>${D.verdictTag ? `<span class="cvgo">${escFull(D.verdictTag)}</span>` : ''}<p>${escFull(D.verdict)}</p></div>` +
       `<div class="cvfiles">${D.files.map(f => `<span>${escFull(f)}</span>`).join('')}</div>` + (D.more && V.example ? `<a class="cvmore" href="#example">${escFull(D.more)} ↓</a>` : '') + `</figure>`;
     // «Пример: от единого резюме до отклика» (с 2026-10-22, по просьбе заказчика): четыре вкладки на вымышленном кандидате; без скрипта все панели видны подряд
     const X = V.example;
@@ -791,7 +791,7 @@ for (const L of locales) {
         `<p class="cvparts">${X.score.parts.map(x => `<span>${escFull(x.label)}: <b>${escFull(x.value)}</b></span>`).join('')}</p>` +
         cmpTable(X.score.reqTitle, X.score.reqCols, X.score.rows, 't', 'why', 'vac', 'cand') +
         cmpTable(X.score.critTitle, X.score.critCols, X.score.crit, 'offer', 'want', 'vac', 'cand') +
-        `<div class="cvverdict"><b>${escFull(X.score.verdictTitle)}</b><p>${escFull(X.score.verdict)}</p></div>` +
+        `<div class="cvverdict${X.score.verdictTag ? ' go' : ''}"><b>${escFull(X.score.verdictTitle)}</b>${X.score.verdictTag ? `<span class="cvgo">${escFull(X.score.verdictTag)}</span>` : ''}<p>${escFull(X.score.verdict)}</p></div>` +
         `<div class="cvtopskip"><div><h3>${escFull(X.score.topTitle)}</h3><ul class="cvplus">${X.score.top.map(x => `<li>${escFull(x)}</li>`).join('')}</ul></div>` +
         `<div><h3>${escFull(X.score.skipTitle)}</h3><ul class="cvminus">${X.score.skip.map(x => `<li>${escFull(x)}</li>`).join('')}</ul></div></div></div>`,
       // сопроводительное письмо
