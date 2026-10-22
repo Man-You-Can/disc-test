@@ -83,7 +83,7 @@ const payOffer = L => { if (!offerPrice(L)) return null; const P = L.content.pro
     regularText: withPrice(L, P.price), regularLabel: O.regular, cta: O.cta, note: O.note, left: O.left, expired: O.expired,
     button: P.promo ? withPrice(L, P.promo.button).replace(servicePrice(L), offerPrice(L)) : '' }; };
 // Коды доступа (с 2026-10-22, по просьбе заказчика; сначала русская версия): организации покупают расширенные отчёты пакетом и раздают людям коды.
-// accessCodes в site.config.json включает в формах покупки ссылку «Есть код доступа от организации?» с полем кода (тексты content.product.pay.code):
+// accessCodes в site.config.json включает в формах покупки ссылку «У меня есть код» с полем кода (тексты content.product.pay.code):
 // код уходит на <payEndpoint>/code, сервер проверяет его и ставит задание на отчёт (private/server/src/codes.js). Включать после выкладки сервера с кодами.
 const accessCodes = () => !!(cfg.accessCodes && payEndpoint);   // функция: payEndpoint объявлен ниже
 const payCodeT = (L, fill) => { const P = L.content.product && L.content.product.pay, X = P && P.code; if (!accessCodes() || !X) return null;
