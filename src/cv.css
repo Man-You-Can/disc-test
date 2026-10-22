@@ -1,5 +1,6 @@
 /* Лендинг «CV и сопроводительное письмо под каждую вакансию» (/ru/cv/): стили только этой страницы, сборка вставляет их в её <head> */
-.cvpage h1{font-size:clamp(28px,7.4vw,42px);line-height:1.12;margin:6px 0 14px;hyphens:manual;-webkit-hyphens:manual}
+.cvpage{padding-top:36px}
+.cvpage h1{font-size:clamp(28px,7.4vw,42px);line-height:1.12;margin:0 0 14px;hyphens:manual;-webkit-hyphens:manual}
 .cvpage .lead{font-size:18px}
 .cvoffer{display:flex;flex-wrap:wrap;align-items:center;gap:16px 28px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px 24px;margin:6px 0 16px;box-shadow:0 10px 30px -22px rgba(0,0,0,.45)}
 .cvoffer .cvfree{flex:1 1 280px}

@@ -493,9 +493,9 @@ function writeContentPage(L, sub, opts) {
   ].concat(opts.ldExtra || [])).replace(/</g, '\\u003c');
   const miniL = { lang: L.lang, name: L.name, dir: L.dir, dateLocale: L.dateLocale, ui: Object.fromEntries(Object.entries(L.ui).filter(([k]) => k === 'langLabel' || k === 'root.continue' || k.startsWith('consent.') || (opts.uiKeys && opts.uiKeys.test(k)))) };
   Object.assign(miniL.ui, noticeUi(L));
-  // opts.bare — самостоятельная страница (лендинг): без пунктов шапки, хлебных крошек, «Материалов» и выбора языка; opts.css — стили только этой страницы
-  const tpl = !opts.bare ? pageTpl : pageTpl.replace(/\s*<nav class="sitenav no-print">__NAV__<\/nav>/, '').replace(/\s*<nav class="crumbs">__CRUMBS__<\/nav>/, '')
-    .replace(/\s*__MATERIALS__/, '').replace(/\s*<nav class="langs"[^>]*>__LANG_LINKS__<\/nav>/, '').replace('__LANG_SWITCHER__', '');
+  // opts.bare — самостоятельная страница (лендинг): без шапки сайта (название и выбор языка), пунктов меню, хлебных крошек и «Материалов»; opts.css — стили только этой страницы
+  const tpl = !opts.bare ? pageTpl : pageTpl.replace(/\s*<header class="topbar">[\s\S]*?<\/header>/, '').replace(/\s*<nav class="sitenav no-print">__NAV__<\/nav>/, '').replace(/\s*<nav class="crumbs">__CRUMBS__<\/nav>/, '')
+    .replace(/\s*__MATERIALS__/, '').replace(/\s*<nav class="langs"[^>]*>__LANG_LINKS__<\/nav>/, '');
   const html = tpl.replace('</head>', () => opts.css ? `<style>${opts.css}</style>\n</head>` : '</head>')
     .replace(/__LANG__/g, hl(L.lang)).replace(/__DIR__/g, L.dir)
     .replace(/__TITLE__/g, esc(opts.title)).replace(/__DESC__/g, esc(opts.description))
@@ -730,7 +730,7 @@ for (const L of locales) {
     const ldFaq = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: V.faq.map(it => ({ '@type': 'Question', name: it.q, acceptedAnswer: { '@type': 'Answer', text: it.a.replace(/\{email\}/g, feedbackEmail) } })) };
     writeContentPage(L, 'cv/', { bare: true, noindex: true, noDate: true, langs: locales.filter(x => x.content.cv), css: cvCss, title: V.title, description: V.description,
       crumbs: [{ name: V.h1 }], ldExtra: [ldFaq], files: ['src/cv.js', 'src/cv.css'],
-      content: `<div class="cvpage"><div class="eyebrow">${escFull(V.eyebrow)}</div><h1>${escFull(V.h1)}</h1><p class="lead">${escFull(V.lead)}</p>` +
+      content: `<div class="cvpage"><h1>${escFull(V.h1)}</h1><p class="lead">${escFull(V.lead)}</p>` +
         `<section class="cvoffer"><div class="cvfree"><strong>${escFull(V.free)}</strong><p>${escFull(V.freeText)}</p></div>` +
         `<div class="cvbuy"><p class="price"><small>${escFull(V.priceLabel)}</small>${escFull(V.price)}</p><a class="btn" id="cvTop" href="#request">${escFull(V.button)}</a></div></section>` +
         `<ul class="xfacts">${V.facts.map(x => `<li>${escFull(x)}</li>`).join('')}</ul>` +
