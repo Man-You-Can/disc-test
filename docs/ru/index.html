@@ -225,9 +225,11 @@ html[lang=ar] body,html[lang=hi] body{font-size:17px;line-height:1.65}
 .service .price{flex:none;color:var(--ink);font-family:var(--font-head);font-weight:500;font-size:28px;line-height:1.1}
 .service .price small{display:block;font-family:var(--font-body);font-weight:400;font-size:13px;color:var(--muted);margin-bottom:4px}
 /* расширенный отчёт: блок на экране результата (.xoffer, .xanchor) и страница отчёта (.xfacts, .xsample, .xbuy) */
-/* закреплённая кнопка отчёта на экране результата (телефон): видна, пока человек читает описание профиля под блоком отчёта */
+/* закреплённая кнопка отчёта на экране результата (телефон): видна всё время, пока человек не закроет её крестиком (решение заказчика от 2026-10-22);
+   снизу у страницы запас под кнопку, чтобы она не закрывала конец страницы */
 .xbar{display:none}
 @media (max-width:640px){
+  body:has(.xbar.show){padding-bottom:84px}
   .xbar.show{display:flex;gap:8px;position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:15}
   .xbar .btn{flex:1 1 auto;box-shadow:0 8px 24px -6px rgba(0,0,0,.35)}
   .xbar-x{flex:none;width:46px;border:1px solid var(--line-strong);border-radius:12px;background:var(--surface);color:var(--muted);font-size:22px;line-height:1;cursor:pointer;box-shadow:0 8px 24px -6px rgba(0,0,0,.35)}
@@ -1349,7 +1351,6 @@ function extHooks(sc, cls, H){
   }
   return out.slice(0,3);
 }
-var xbarStop = null; // снимает слежение за прокруткой у закреплённой кнопки отчёта
 function renderReport(r, opts){
   opts = opts||{};
   hideProgress(); setStep(opts.own ? t('report.own') : t('report.other'), true);
@@ -1500,24 +1501,17 @@ function renderReport(r, opts){
     xo.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(ev){ src('result-block'); if(window.discTrack) window.discTrack('ext-click');
       if(PP && a === xb){ ev.preventDefault(); buyOpen(xo, xb.parentNode, 'result-block', xb); } }); });
     if('IntersectionObserver' in window){ var xio = new IntersectionObserver(function(es){ if(es[0].isIntersecting){ xio.disconnect(); if(window.discTrack) window.discTrack('ext-show'); } }, {threshold:.4}); xio.observe(xo); }
-    // закреплённая кнопка: видна, пока человек читает описание профиля — блок отчёта (с 2026-10-22 он стоит над описанием) уже ушёл вверх,
-    // а карточка описания ещё на экране; у самого блока и ниже описания её нет. Источник покупки result-bar, цель ext-bar
+    // закреплённая кнопка: видна всё время, пока человек не закроет её крестиком (решение заказчика от 2026-10-22; прежде — только
+    // пока на экране описание профиля). Источник покупки result-bar, цель ext-bar
     var bar = $('#extBar');
-    if(xbarStop){ xbarStop(); xbarStop = null; }
     if(bar){
-      var secCard = $('#secCard');
-      var barSync = function(){
-        if(!bar.parentNode){ if(xbarStop){ xbarStop(); xbarStop = null; } return; }   // экран сменился: кнопки уже нет
-        bar.classList.toggle('show', xo.getBoundingClientRect().bottom < 0 && secCard.getBoundingClientRect().bottom > window.innerHeight - 100); };
-      window.addEventListener('scroll', barSync); window.addEventListener('resize', barSync);
-      xbarStop = function(){ window.removeEventListener('scroll', barSync); window.removeEventListener('resize', barSync); };
-      barSync();
+      bar.classList.add('show');
       // с формой на месте закреплённая кнопка раскрывает её в блоке отчёта и прокручивает к ней
       $('#extBarGo').addEventListener('click', function(ev){ src('result-bar'); if(window.discTrack) window.discTrack('ext-bar');
         if(PP){ ev.preventDefault(); buyOpen(xo, xb.parentNode, 'result-bar', xb).scrollIntoView({behavior:'smooth', block:'center'}); } });
       // пока действует специальная цена, на закреплённой кнопке — она (PP.offer.button), потом — обычная (PM.button)
       if(pf && PP.offer && PP.offer.button){ var bgo = $('#extBarGo'); pf.onOffer(function(on){ bgo.textContent = on ? PP.offer.button : PM.button; }); }
-      $('#extBarX').addEventListener('click', function(){ bar.parentNode.removeChild(bar); xbarStop(); xbarStop = null; try{ sessionStorage.setItem('disc.xbar', 'off'); }catch(e){} });
+      $('#extBarX').addEventListener('click', function(){ bar.parentNode.removeChild(bar); try{ sessionStorage.setItem('disc.xbar', 'off'); }catch(e){} });
     }
   }
   // «Поделиться профилем» — окно со ссылкой и соцсетями; адреса соцсетей собираются только при нажатии (ссылку с кодом в разметку не пишем)
