@@ -805,7 +805,19 @@ for (const L of locales) {
         return `<div class="cvdoc cvletter"><p class="cvsrc">${escFull(LT.subject)}</p>` +
           `<div class="cvletter-full"><div class="cvcopy-head"><h3>${escFull(LT.fullTitle)}</h3>${copyBtn}</div>` +
           `<div class="cvcopy-src">${LT.body.map(x => `<p>${escFull(x)}</p>`).join('')}<p class="cvsign">${escFull(LT.sign)}</p></div></div>` +
-          `<div class="cvshort"><div class="cvcopy-head"><h3>${escFull(LT.shortTitle)}</h3>${copyBtn}</div><div class="cvcopy-src"><p>${escFull(LT.short)}</p></div></div></div>`; })()
+          `<div class="cvshort"><div class="cvcopy-head"><h3>${escFull(LT.shortTitle)}</h3>${copyBtn}</div><div class="cvcopy-src"><p>${escFull(LT.short)}</p></div></div></div>`; })(),
+      // дашборд: макет личного кабинета — вакансии с оценкой, советом и документами; элементы некликабельные, счётчики фильтров считаются из строк
+      (() => { const DB = X.dashboard, cnt = r => DB.rows.filter(x => x.rec === r).length;
+        const tone = n => n >= 7 ? 'hi' : n >= 5 ? 'mid' : 'lo';
+        return `<div class="cvdash"><div class="cvdash-head"><strong>${escFull(DB.title)}</strong><span>${escFull(DB.lead)}</span></div>` +
+          `<div class="cvdash-f" aria-hidden="true"><span class="on">${escFull(DB.all)} <b>${DB.rows.length}</b></span>` +
+            ['go', 'maybe', 'no'].map(r => `<span class="r-${r}">${escFull(DB.recLabels[r])} <b>${cnt(r)}</b></span>`).join('') + `</div>` +
+          `<table class="cvdash-t"><thead><tr>${DB.cols.map(c => `<th>${escFull(c)}</th>`).join('')}</tr></thead><tbody>` +
+          DB.rows.map(r => `<tr class="r-${r.rec}"><td class="d-vac"><b>${escFull(r.role)}</b><span>${escFull(r.company)} · ${escFull(r.place)}</span></td>` +
+            `<td class="d-score"><span class="cvdash-score t-${tone(r.score)}"><b>${r.score}</b> ${escFull(DB.of)}</span></td>` +
+            `<td class="d-rec"><span class="cvdash-rec r-${r.rec}">${escFull(DB.recLabels[r.rec])}</span><small>${escFull(r.why)}</small></td>` +
+            `<td class="d-docs">${r.rec === 'no' ? `<span class="cvdash-none">${escFull(DB.noDocs)}</span>` : DB.docs.map(d => `<span class="cvdash-doc" aria-disabled="true">${escFull(d)}</span>`).join('')}</td></tr>`).join('') +
+          `</tbody></table><p class="cvwhy cvdash-note">${escFull(DB.note)}</p></div>`; })()
     ] : [];
     const exampleHtml = X ? `<section class="cvsec" id="example"><h2>${escFull(X.title)}</h2><p class="cvsub">${escFull(X.lead)}</p>` +
       `<div class="cvex" id="cvEx"><div class="cvtabs" role="tablist" aria-label="${escFull(X.title)}">` +
