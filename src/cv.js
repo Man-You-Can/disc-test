@@ -24,9 +24,19 @@ function initCvTabs(){
   // скачивание примеров (карточка-оценка, блок «Готовое CV», блок «CV на английском»): цель cv-sample-<формат>[-en]
   document.querySelectorAll('a[data-dl]').forEach(function(a){ a.addEventListener('click', function(){ if(window.discTrack) window.discTrack('cv-sample-' + a.getAttribute('data-dl')); }); });
   var box=document.getElementById('cvEx'); if(!box) return;
-  var tabs=[].slice.call(box.querySelectorAll('[role="tab"]')), panels=[].slice.call(box.querySelectorAll('[role="tabpanel"]'));
-  function sel(i, focus){ tabs.forEach(function(t,k){ var on=k===i; t.setAttribute('aria-selected', on); t.tabIndex=on?0:-1; panels[k].hidden=!on; }); if(focus) tabs[i].focus();
-    var bar=tabs[i].parentNode, t=tabs[i]; if(t.offsetLeft < bar.scrollLeft || t.offsetLeft + t.offsetWidth > bar.scrollLeft + bar.clientWidth) bar.scrollLeft = t.offsetLeft - 8; }
+  var tabs=[].slice.call(box.querySelectorAll('[role="tab"]')), panels=[].slice.call(box.querySelectorAll('[role="tabpanel"]')),
+      ends=[].slice.call(box.querySelectorAll('.cvtabs-end button'));   // те же вкладки в конце блока
+  function show(bar, t){ if(t.offsetLeft < bar.scrollLeft || t.offsetLeft + t.offsetWidth > bar.scrollLeft + bar.clientWidth) bar.scrollLeft = t.offsetLeft - 8; }
+  function sel(i, focus){ tabs.forEach(function(t,k){ var on=k===i; t.setAttribute('aria-selected', on); t.tabIndex=on?0:-1; panels[k].hidden=!on; if(ends[k]) ends[k].setAttribute('aria-pressed', on); }); if(focus) tabs[i].focus();
+    show(tabs[i].parentNode, tabs[i]); if(ends[i]) show(ends[i].parentNode, ends[i]); }
+  // нижние вкладки: переключают шаг и возвращают к началу блока, чтобы новый шаг читался сверху
+  ends.forEach(function(b,i){ b.addEventListener('click', function(){ sel(i); var y=box.getBoundingClientRect().top + window.pageYOffset - 12;
+    window.scrollTo({top:y, behavior:'smooth'}); if(window.discTrack) window.discTrack('cv-example'); }); });
+  // «Готовое резюме»: переключатель языка, под ним одна пара кнопок «Скачать PDF / DOCX» (без скрипта видны обе строки с подписями)
+  box.querySelectorAll('.cvlangsw').forEach(function(sw){
+    var bs=[].slice.call(sw.querySelectorAll('button')), rows=[].slice.call(sw.parentNode.querySelectorAll('.cvfile-row'));
+    bs.forEach(function(b,i){ b.addEventListener('click', function(){ bs.forEach(function(x,k){ x.setAttribute('aria-pressed', k===i); rows[k].classList.toggle('on', k===i); }); }); });
+  });
   box.classList.add('js'); sel(0);
   // «Скопировать текст»: текст блока письма по абзацам (через пустую строку); запасной путь — выделение и execCommand
   box.querySelectorAll('.cvcopy').forEach(function(btn){

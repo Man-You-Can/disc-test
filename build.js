@@ -771,7 +771,8 @@ for (const L of locales) {
         return `<div class="cvdoc"><div class="cvdoc-head"><strong>${escFull(P.name)}</strong><span>${escFull(P.headline)}</span></div>` +
           `<p class="cvsrc">${escFull(P.sources)}</p>` +
           (P.cvFile ? `<div class="cvfile"><div class="cvfile-t"><strong>${escFull(P.cvFile.title)}</strong><p>${escFull(P.cvFile.text)}</p></div>` +
-            `<div class="cvfile-b">${P.cvFile.langs.map(l => `<div class="cvfile-row"><span class="cvlang">${escFull(l.label)}</span>` +
+            `<div class="cvfile-b"><div class="cvlangsw" role="group" aria-label="${escFull(P.cvFile.langSwitch)}">${P.cvFile.langs.map((l, i) => `<button type="button" data-l="${i}" aria-pressed="${i === 0}">${escFull(l.label)}</button>`).join('')}</div>` +
+              `${P.cvFile.langs.map((l, i) => `<div class="cvfile-row${i === 0 ? ' on' : ''}" data-l="${i}"><span class="cvlang">${escFull(l.label)}</span>` +
               `<a class="btn" href="${imgRel}files/cv-example-irina-sokolova${l.sfx}.pdf" download data-dl="pdf${l.sfx}">${escFull(P.cvFile.pdf)}</a>` +
               `<a class="btn btn-ghost" href="${imgRel}files/cv-example-irina-sokolova${l.sfx}.docx" download data-dl="docx${l.sfx}">${escFull(P.cvFile.docx)}</a></div>`).join('')}</div></div>` : '') +
           `<div class="cvlegend"><span class="in">${escFull(P.legendIn)}</span><span class="out">${escFull(P.legendOut)}</span></div>` +
@@ -824,6 +825,9 @@ for (const L of locales) {
       `<div class="cvex" id="cvEx"><div class="cvtabs" role="tablist" aria-label="${escFull(X.title)}">` +
         X.tabs.map((tb, i) => `<button type="button" role="tab" id="cvt${i}" aria-controls="cvp${i}" aria-selected="${i === 0}" tabindex="${i === 0 ? 0 : -1}"><span>${i + 1}</span>${escFull(tb)}</button>`).join('') + `</div>` +
         exPanels.map((h, i) => `<div class="cvpanel" role="tabpanel" id="cvp${i}" aria-labelledby="cvt${i}" tabindex="0"><h3 class="cvpanel-title">${escFull(X.tabs[i])}</h3>${h}</div>`).join('') +
+        // те же вкладки в конце блока (с 2026-10-23, по просьбе заказчика): долистав вкладку до конца, видно, что есть другие шаги
+        `<div class="cvtabs cvtabs-end" role="group" aria-label="${escFull(X.title)}">` +
+        X.tabs.map((tb, i) => `<button type="button" data-i="${i}" aria-controls="cvp${i}" aria-pressed="${i === 0}"><span>${i + 1}</span>${escFull(tb)}</button>`).join('') + `</div>` +
       `</div><p class="cvsub small">${escFull(X.note)}</p></section>` : '';
     writeContentPage(L, 'cv/', { bare: true, noindex: true, noDate: true, langs: locales.filter(x => x.content.cv), css: cvCss, title: V.title, description: V.description,
       crumbs: [{ name: V.h1 }], ldExtra: [ldFaq], files: ['src/cv.js', 'src/cv.css'],

@@ -143,7 +143,7 @@ body:has(.cvpage) .wrap{max-width:1080px}
   .cvformcard{padding:22px 18px 18px}
   .cvfinal{padding:26px 18px 20px}
   .cvauthor{grid-template-columns:1fr;gap:18px;padding:18px}
-  .cvphoto,.cvauthor-side .cvphoto{width:180px;aspect-ratio:4/5;flex:none;min-height:0;max-height:none}
+  .cvphoto,.cvauthor-side .cvphoto{width:180px;margin-inline:auto;aspect-ratio:4/5;flex:none;min-height:0;max-height:none}
   .cvquote{margin-top:0}
   .cvcenter,.cvhow .btn{display:flex;width:100%;justify-content:center}
 }
@@ -154,10 +154,11 @@ body:has(.cvpage) .wrap{max-width:1080px}
 .cvtabs{display:none}
 .cvex.js .cvtabs{display:flex;gap:4px;padding:8px;background:var(--soft);border-bottom:1px solid var(--line);overflow-x:auto;scrollbar-width:none}
 .cvtabs::-webkit-scrollbar{display:none}
+.cvex.js .cvtabs-end{border-bottom:0;border-top:1px solid var(--line)}
 .cvtabs button{flex:1 0 auto;display:flex;align-items:center;justify-content:center;gap:7px;font:inherit;font-weight:600;font-size:14px;color:var(--muted);background:transparent;border:0;border-radius:12px;padding:10px 10px;cursor:pointer;white-space:nowrap}
 .cvtabs button span{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:var(--line);color:var(--ink);font-size:12px}
-.cvtabs button[aria-selected="true"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.12)}
-.cvtabs button[aria-selected="true"] span{background:var(--s);color:#fff}
+.cvtabs button[aria-selected="true"],.cvtabs button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.12)}
+.cvtabs button[aria-selected="true"] span,.cvtabs button[aria-pressed="true"] span{background:var(--s);color:#fff}
 .cvtabs button:focus-visible{outline:2px solid var(--focus);outline-offset:1px}
 .cvpanel{padding:24px 28px 26px}
 .cvpanel:focus-visible{outline:2px solid var(--focus);outline-offset:-2px}
@@ -379,6 +380,15 @@ body:has(.cvpage) .wrap{max-width:1080px}
 .cvfile-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .cvfile-row .cvlang{min-width:92px;justify-content:flex-start;background:none;padding:0;font-size:12.5px;letter-spacing:0}
 @media (max-width:600px){.cvfile-row .cvlang{flex:1 1 100%}}
+/* переключатель языка «Русский / English» над одной парой кнопок; без скрипта — обе строки с подписями языка */
+.cvlangsw{display:none}
+.cvex.js .cvlangsw{display:inline-flex;align-self:flex-start;gap:2px;padding:3px;border-radius:11px;background:var(--surface);border:1px solid var(--line)}
+.cvlangsw button{font:inherit;font-size:14px;font-weight:600;color:var(--muted);background:transparent;border:0;border-radius:8px;padding:7px 16px;cursor:pointer}
+.cvlangsw button[aria-pressed="true"]{background:var(--s);color:#fff}
+.cvlangsw button:focus-visible{outline:2px solid var(--focus);outline-offset:1px}
+.cvex.js .cvfile-row:not(.on){display:none}
+.cvex.js .cvfile-row .cvlang{display:none}
+@media (max-width:600px){.cvex.js .cvlangsw{align-self:stretch}.cvlangsw button{flex:1 1 0}}
 
 /* блок «CV на английском — без переводчика» */
 .content .cven-points{grid-template-columns:repeat(4,1fr)}
