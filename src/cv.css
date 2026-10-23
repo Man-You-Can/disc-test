@@ -382,13 +382,16 @@ body:has(.cvpage) .wrap{max-width:1080px}
 @media (max-width:600px){.cvfile-row .cvlang{flex:1 1 100%}}
 /* переключатель языка «Русский / English» над одной парой кнопок; без скрипта — обе строки с подписями языка */
 .cvlangsw{display:none}
-.cvex.js .cvlangsw{display:inline-flex;align-self:flex-start;gap:2px;padding:3px;border-radius:11px;background:var(--surface);border:1px solid var(--line)}
+.cvlangs.js .cvlangsw{display:inline-flex;align-self:flex-start;gap:2px;padding:3px;border-radius:11px;background:var(--surface);border:1px solid var(--line)}
 .cvlangsw button{font:inherit;font-size:14px;font-weight:600;color:var(--muted);background:transparent;border:0;border-radius:8px;padding:7px 16px;cursor:pointer}
 .cvlangsw button[aria-pressed="true"]{background:var(--s);color:#fff}
 .cvlangsw button:focus-visible{outline:2px solid var(--focus);outline-offset:1px}
-.cvex.js .cvfile-row:not(.on){display:none}
-.cvex.js .cvfile-row .cvlang{display:none}
-@media (max-width:600px){.cvex.js .cvlangsw{align-self:stretch}.cvlangsw button{flex:1 1 0}}
+.cvlangs.js>[data-l]:not(.on){display:none}
+.cvlangs.js .cvlang{display:none}
+.cvdemo-files{display:flex;flex-direction:column;gap:8px;margin-top:10px}
+.cvdemo .cvdemo-files .cvfiles{margin-top:0}
+.cvdemo .cvlangsw button{font-size:13px;padding:5px 14px}
+@media (max-width:600px){.cvlangs.js .cvlangsw{align-self:stretch}.cvlangsw button{flex:1 1 0}}
 
 /* блок «CV на английском — без переводчика» */
 .content .cven-points{grid-template-columns:repeat(4,1fr)}

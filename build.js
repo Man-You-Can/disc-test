@@ -743,7 +743,10 @@ for (const L of locales) {
         (D.scoreLabel ? `<small>${escFull(D.scoreLabel)}</small>` : '') + `</div></div>` + (D.scoreNote ? `<p class="cvscorenote">${escFull(D.scoreNote)}</p>` : '') +
       `<ul class="cvrows">${D.rows.map(r => `<li class="s-${r.s}"><span>${escFull(r.t)}</span><em>${escFull(r.v)}</em></li>`).join('')}</ul>` +
       `<div class="cvverdict${D.verdictTag ? ' go' : ''}"><b>${escFull(D.verdictTitle)}</b>${D.verdictTag ? `<span class="cvgo">${escFull(D.verdictTag)}</span>` : ''}<p>${escFull(D.verdict)}</p></div>` +
-      D.fileGroups.map(g => `<div class="cvfiles"><span class="cvlang">${escFull(g.lang)}</span>${g.files.map(f => `<a href="${imgRel}files/${f.f}" download data-dl="${f.dl}">${escFull(f.t)}</a>`).join('')}</div>`).join('') + (D.more && V.example ? `<a class="cvmore" href="#example">${escFull(D.more)} ↓</a>` : '') + `</figure>`;
+      // файлы примера: переключатель «Русский / English» и одна строка файлов на выбранном языке (без скрипта — обе строки с меткой RU / EN)
+      `<div class="cvlangs cvdemo-files"><div class="cvlangsw" role="group" aria-label="${escFull(V.example && V.example.profile.cvFile ? V.example.profile.cvFile.langSwitch : '')}">` +
+        D.fileGroups.map((g, i) => `<button type="button" data-l="${i}" aria-pressed="${i === 0}">${escFull(g.label)}</button>`).join('') + `</div>` +
+      D.fileGroups.map((g, i) => `<div class="cvfiles${i === 0 ? ' on' : ''}" data-l="${i}"><span class="cvlang">${escFull(g.lang)}</span>${g.files.map(f => `<a href="${imgRel}files/${f.f}" download data-dl="${f.dl}">${escFull(f.t)}</a>`).join('')}</div>`).join('') + `</div>` + (D.more && V.example ? `<a class="cvmore" href="#example">${escFull(D.more)} ↓</a>` : '') + `</figure>`;
     // «Пример: от единого резюме до отклика» (с 2026-10-22, по просьбе заказчика): четыре вкладки на вымышленном кандидате; без скрипта все панели видны подряд
     const X = V.example;
     // сравнение «вакансия — кандидатка» в оценке: в обеих таблицах вакансия — первый столбец (синим), кандидатка — второй (серым); на телефоне строка — карточка с подписями
@@ -771,7 +774,7 @@ for (const L of locales) {
         return `<div class="cvdoc"><div class="cvdoc-head"><strong>${escFull(P.name)}</strong><span>${escFull(P.headline)}</span></div>` +
           `<p class="cvsrc">${escFull(P.sources)}</p>` +
           (P.cvFile ? `<div class="cvfile"><div class="cvfile-t"><strong>${escFull(P.cvFile.title)}</strong><p>${escFull(P.cvFile.text)}</p></div>` +
-            `<div class="cvfile-b"><div class="cvlangsw" role="group" aria-label="${escFull(P.cvFile.langSwitch)}">${P.cvFile.langs.map((l, i) => `<button type="button" data-l="${i}" aria-pressed="${i === 0}">${escFull(l.label)}</button>`).join('')}</div>` +
+            `<div class="cvfile-b cvlangs"><div class="cvlangsw" role="group" aria-label="${escFull(P.cvFile.langSwitch)}">${P.cvFile.langs.map((l, i) => `<button type="button" data-l="${i}" aria-pressed="${i === 0}">${escFull(l.label)}</button>`).join('')}</div>` +
               `${P.cvFile.langs.map((l, i) => `<div class="cvfile-row${i === 0 ? ' on' : ''}" data-l="${i}"><span class="cvlang">${escFull(l.label)}</span>` +
               `<a class="btn" href="${imgRel}files/cv-example-irina-sokolova${l.sfx}.pdf" download data-dl="pdf${l.sfx}">${escFull(P.cvFile.pdf)}</a>` +
               `<a class="btn btn-ghost" href="${imgRel}files/cv-example-irina-sokolova${l.sfx}.docx" download data-dl="docx${l.sfx}">${escFull(P.cvFile.docx)}</a></div>`).join('')}</div></div>` : '') +

@@ -23,6 +23,13 @@ function cvFormHTML(c, k){
 function initCvTabs(){
   // скачивание примеров (карточка-оценка, блок «Готовое CV», блок «CV на английском»): цель cv-sample-<формат>[-en]
   document.querySelectorAll('a[data-dl]').forEach(function(a){ a.addEventListener('click', function(){ if(window.discTrack) window.discTrack('cv-sample-' + a.getAttribute('data-dl')); }); });
+  // файлы примера (карточка-оценка и «Готовое резюме»): переключатель «Русский / English», под ним файлы на выбранном языке;
+  // без скрипта видны обе строки с подписями языка
+  document.querySelectorAll('.cvlangs').forEach(function(box){
+    var bs=[].slice.call(box.querySelectorAll('.cvlangsw button')), rows=[].slice.call(box.children).filter(function(r){ return r.hasAttribute('data-l'); });
+    box.classList.add('js');
+    bs.forEach(function(b,i){ b.addEventListener('click', function(){ bs.forEach(function(x,k){ x.setAttribute('aria-pressed', k===i); if(rows[k]) rows[k].classList.toggle('on', k===i); }); }); });
+  });
   var box=document.getElementById('cvEx'); if(!box) return;
   var tabs=[].slice.call(box.querySelectorAll('[role="tab"]')), panels=[].slice.call(box.querySelectorAll('[role="tabpanel"]')),
       ends=[].slice.call(box.querySelectorAll('.cvtabs-end button'));   // те же вкладки в конце блока
@@ -32,11 +39,6 @@ function initCvTabs(){
   // нижние вкладки: переключают шаг и возвращают к началу блока, чтобы новый шаг читался сверху
   ends.forEach(function(b,i){ b.addEventListener('click', function(){ sel(i); var y=box.getBoundingClientRect().top + window.pageYOffset - 12;
     window.scrollTo({top:y, behavior:'smooth'}); if(window.discTrack) window.discTrack('cv-example'); }); });
-  // «Готовое резюме»: переключатель языка, под ним одна пара кнопок «Скачать PDF / DOCX» (без скрипта видны обе строки с подписями)
-  box.querySelectorAll('.cvlangsw').forEach(function(sw){
-    var bs=[].slice.call(sw.querySelectorAll('button')), rows=[].slice.call(sw.parentNode.querySelectorAll('.cvfile-row'));
-    bs.forEach(function(b,i){ b.addEventListener('click', function(){ bs.forEach(function(x,k){ x.setAttribute('aria-pressed', k===i); rows[k].classList.toggle('on', k===i); }); }); });
-  });
   box.classList.add('js'); sel(0);
   // «Скопировать текст»: текст блока письма по абзацам (через пустую строку); запасной путь — выделение и execCommand
   box.querySelectorAll('.cvcopy').forEach(function(btn){
