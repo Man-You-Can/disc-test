@@ -1367,7 +1367,7 @@ function initCvTabs(){
   // автопереключение вкладок (с 2026-10-24, по просьбе заказчика): по кругу, пока блок на экране и вкладка браузера открыта;
   // под активной вкладкой — полоска-таймер (при «уменьшить движение» в системе она без анимации: общее правило template.html).
   // Любой щелчок или клавиша внутри блока останавливают переключение до перезагрузки страницы
-  var DUR=8000, auto=('IntersectionObserver' in window),
+  var DUR=5000, auto=('IntersectionObserver' in window),
       timer=null, left=DUR, t0=0, inView=false;
   function run(){ return auto && inView && !document.hidden; }
   function upd(){ var on=run(); box.classList.toggle('paused', auto && !on);
