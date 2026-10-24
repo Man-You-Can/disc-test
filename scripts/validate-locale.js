@@ -23,7 +23,7 @@ const OPTIONAL = ['.content.policy.legal', '.content.extendedMail', '.content.pr
   '.content.cv',
   // английская версия лендинга (с 2026-10-24): автор без ссылки на личный сайт — блок .cvsite не выводится
   '.content.cv.author.siteLabel', '.content.cv.author.site', '.content.cv.author.siteUrl',
-  // анонсы этого сервиса на сайте (главная, экран результата, профили, «Услуги»; с 2026-10-24, по просьбе заказчика) — только вместе с лендингом
+  // анонсы этого сервиса на сайте (главная, экран результата, профили, «Услуги»; с 2026-10-24, по просьбе заказчика; русская и английская версии) — только вместе с лендингом
   '.content.cvPromo'];
 // специальная цена на час после теста (product.pay.offer; offerPriceRub, offerPriceUsd в site.config.json; с 2026-10-22) обязательна вместе с product.pay:
 // её тексты сравниваются с ru.json как часть pay
@@ -37,8 +37,8 @@ const EXTRA_RE = [/^\.content\.cv\.english\.compare\[\d+\]\.lang$/, /^\.content\
 // Пустая строка вместо имени файла примера на лендинге /cv/ — файлы на этом языке не готовы, кнопка скачивания неактивна
 const EMPTY_OK = [/^\.content\.cv\..*\.f$/, /^\.content\.cv\.example\.profile\.cvFile\.file$/];
 let failed = 0;
-// лендинг /cv/: знак % — часть текста о скидке (в языках скидки разные, с 2026-10-24), а не подстановка — в content.cv не сравнивается
-function phOf(s, p){ const x = ph(s); return p.startsWith('.content.cv.') ? x.split(' ').filter(t => t !== '%').join(' ') : x; }
+// лендинг /cv/ и анонсы сервиса: знак % — часть текста о скидке (в языках скидки разные, с 2026-10-24), а не подстановка — в content.cv и content.cvPromo не сравнивается
+function phOf(s, p){ const x = ph(s); return p.startsWith('.content.cv.') || p.startsWith('.content.cvPromo.') ? x.split(' ').filter(t => t !== '%').join(' ') : x; }
 function ph(s){ return (String(s).match(/\{[a-z]+\}|<\/?b>|<br>|%/g) || []).sort().join(' '); }
 function walk(a, b, p, errs){
   if (Array.isArray(a)) {

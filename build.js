@@ -927,7 +927,8 @@ for (const L of locales) {
     // название, анонс, тарифы и цены (из content.cv.plans лендинга, чтобы не расходились), кнопка на лендинг (цель Метрики cv-promo-services)
     function cvPart() {
       if (!CP) return '';
-      const plansLine = cvPlans.map(p => `<span>${escFull(`${p.name} — ${/^0\D/.test(p.price) ? p.per : p.price + ' ' + p.per}`)}</span>`).join(' · ');
+      // бесплатный тариф («0 ₽», «$0») показывается словом из per («бесплатно», «free»), а не ценой
+      const plansLine = cvPlans.map(p => `<span>${escFull(`${p.name} — ${/^\D*0(?![\d.,])/.test(p.price) ? p.per : p.price + ' ' + p.per}`)}</span>`).join(' · ');
       return `<h2 class="svcpart" id="cv">${escFull(CP.part)}</h2>` +
         `<section class="service"><div><h2>${escFull(CP.name)}</h2><p>${escFull(CP.text)}</p><p class="svcplans">${plansLine}</p></div>` +
         `<p class="price"><small>${escFull(sv.priceLabel)}</small>${escFull(cvFrom)}</p>` +
