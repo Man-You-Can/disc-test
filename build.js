@@ -846,28 +846,30 @@ for (const L of locales) {
         `<section class="cvhero"><div class="cvhero-text"><p class="cvbadge">${escFull(V.badge)}</p><h1>${escFull(V.h1)}</h1><p class="lead">${escFull(V.lead)}</p>` +
           `<ul class="cvpoints">${V.heroPoints.map(x => `<li>${tick}${escFull(x)}</li>`).join('')}</ul></div>` +
           `<div class="cvformcard" id="request"><h2>${escFull(V.formTitle)}</h2><p class="cvformlead">${escFull(V.formLead)}</p>${form('1')}<p class="cvnote">${escFull(V.formNote)}</p></div></section>` +
-        `<section class="cvsec"><h2>${escFull(V.painTitle)}</h2><ul class="cvpain">${V.pain.map((x, i) => `<li style="--k:var(${K[i % 4]})"><h3>${escFull(x.h)}</h3><p>${escFull(x.p)}</p></li>`).join('')}</ul></section>` +
+        // порядок блоков (с 2026-10-24, по просьбе заказчика): проблема → как работает → что получите → пример → «ничего не выдумываем» → английский →
+        // кто создаёт → тарифы → вопросы → заявка; блоки с cvband — на своём фоне во всю ширину (через один), чтобы страница делилась на «главы»
+        `<section class="cvsec cvband"><h2>${escFull(V.painTitle)}</h2><ul class="cvpain">${V.pain.map((x, i) => `<li style="--k:var(${K[i % 4]})"><h3>${escFull(x.h)}</h3><p>${escFull(x.p)}</p></li>`).join('')}</ul></section>` +
         `<section class="cvsec cvhow"><div><h2>${escFull(V.howTitle)}</h2><ol class="cvsteps">${V.how.map(x => `<li><strong>${escFull(x.h)}</strong><span>${escFull(x.p)}</span></li>`).join('')}</ol>${cta()}</div>${demo}</section>` +
+        `<section class="cvsec cvband"><h2>${escFull(V.featuresTitle)}</h2><ul class="cvgrid">${V.features.map((x, i) => `<li style="--k:var(${K[i % 4]})"><h3>${escFull(x.h)}</h3><p>${escFull(x.p)}</p></li>`).join('')}</ul></section>` +
         exampleHtml +
-        `<section class="cvsec"><h2>${escFull(V.featuresTitle)}</h2><ul class="cvgrid">${V.features.map((x, i) => `<li style="--k:var(${K[i % 4]})"><h3>${escFull(x.h)}</h3><p>${escFull(x.p)}</p></li>`).join('')}</ul></section>` +
+        `<section class="cvsec cvband"><h2>${escFull(V.honestTitle)}</h2><div class="cvhonest"><p>${escFull(V.honest)}</p>${listHtml('ul', V.honestList)}</div></section>` +
         // «CV на английском — без переводчика» (с 2026-10-23, по просьбе заказчика): почему простого перевода мало, пример строк RU → EN, скачивание английских примеров
         (V.english ? (E => `<section class="cvsec cven" id="english"><h2>${escFull(E.title)}</h2><p class="cvsub">${escFull(E.lead)}</p>` +
           `<ul class="cvgrid cven-points">${E.points.map((x, i) => `<li style="--k:var(${K[(i + 3) % 4]})"><h3>${escFull(x.h)}</h3><p>${escFull(x.p)}</p></li>`).join('')}</ul>` +
           `<div class="cven-cmp"><h3>${escFull(E.compareTitle)}</h3><div class="cven-rows"><div class="cven-hd"><span>${escFull(E.ruLabel)}</span><span></span><span>${escFull(E.enLabel)}</span></div>` +
             E.compare.map(r => `<div class="cven-row"><span class="ru">${escFull(r.ru)}</span><span class="arr" aria-hidden="true">→</span><span class="en" lang="en">${escFull(r.en)}</span></div>`).join('') + `</div></div>` +
           `<div class="cven-dl"><span>${escFull(E.downloadsTitle)}:</span>${E.downloads.map(d => `<a class="btn btn-ghost" href="${imgRel}files/${d.f}" download data-dl="${d.dl}">${escFull(d.t)}</a>`).join('')}</div></section>`)(V.english) : '') +
-        `<section class="cvsec"><h2>${escFull(V.honestTitle)}</h2><div class="cvhonest"><p>${escFull(V.honest)}</p>${listHtml('ul', V.honestList)}</div></section>` +
+        `<section class="cvsec cvband"><h2>${escFull(V.founderTitle)}</h2><div class="cvauthor">` +
+          `<div class="cvauthor-side">` + (A.photoAlt ? `<img class="cvphoto" src="${imgRel}img/armen-manukyan.webp" srcset="${imgRel}img/armen-manukyan.webp 1x, ${imgRel}img/armen-manukyan-2x.webp 2x" width="280" height="350" alt="${escFull(A.photoAlt)}" loading="lazy" decoding="async">` : '') +
+          `<blockquote class="cvquote"><p>${escFull(A.text)}</p></blockquote></div>` +
+          `<div class="cvauthor-body"><span class="cvname">${escFull(A.name)}</span><p class="cvrole">${escFull(A.role)}</p>` + listHtml('ul', A.facts) + `</div>` +
+          `<p class="cvsite"><span>${escFull(A.siteLabel)}</span><a href="${escFull(A.siteUrl)}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z"/></svg>${escFull(A.site)} <span aria-hidden="true">${arrow(L)}</span></a></p></div></section>` +
         `<section class="cvsec" id="pricing"><h2>${escFull(V.pricingTitle)}</h2><p class="cvsub">${escFull(V.pricingLead)}</p><ul class="cvplans">` +
           V.plans.map((p, i) => `<li class="${i === 1 ? 'hot' : ''}"><div class="cvplan-head"><h3>${escFull(p.name)}</h3>${p.tag ? `<span class="cvtag">${escFull(p.tag)}</span>` : ''}</div>` +
             `<p class="cvprice">${p.old ? `<s>${escFull(p.old)}</s>` : ''}<b>${escFull(p.price)}</b><span>${escFull(p.per)}</span></p>` +
             `<ul>${p.items.map(x => `<li>${tick}${escFull(x)}</li>`).join('')}</ul></li>`).join('') +
           `</ul><p class="cvsub small">${escFull(V.pricingNote)}</p>${cta('cvcenter')}</section>` +
-        `<section class="cvsec"><h2>${escFull(V.founderTitle)}</h2><div class="cvauthor">` +
-          `<div class="cvauthor-side">` + (A.photoAlt ? `<img class="cvphoto" src="${imgRel}img/armen-manukyan.webp" srcset="${imgRel}img/armen-manukyan.webp 1x, ${imgRel}img/armen-manukyan-2x.webp 2x" width="280" height="350" alt="${escFull(A.photoAlt)}" loading="lazy" decoding="async">` : '') +
-          `<blockquote class="cvquote"><p>${escFull(A.text)}</p></blockquote></div>` +
-          `<div class="cvauthor-body"><span class="cvname">${escFull(A.name)}</span><p class="cvrole">${escFull(A.role)}</p>` + listHtml('ul', A.facts) + `</div>` +
-          `<p class="cvsite"><span>${escFull(A.siteLabel)}</span><a href="${escFull(A.siteUrl)}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z"/></svg>${escFull(A.site)} <span aria-hidden="true">${arrow(L)}</span></a></p></div></section>` +
-        `<section class="cvsec cvfaq"><h2>${escFull(V.faqTitle)}</h2>` + V.faq.map(it => `<details><summary>${escFull(it.q)}</summary><p>${fill(it.a)}</p></details>`).join('') + `</section>` +
+        `<section class="cvsec cvband cvfaq"><h2>${escFull(V.faqTitle)}</h2>` + V.faq.map(it => `<details><summary>${escFull(it.q)}</summary><p>${fill(it.a)}</p></details>`).join('') + `</section>` +
         `<section class="cvfinal" id="cvfinal"><h2>${escFull(V.finalTitle)}</h2><p>${escFull(V.finalLead)}</p>${form('2')}</section>` +
         `</div><div class="xbar no-print" id="cvFloat"><a class="btn" href="#cvfinal" data-cta>${escFull(V.floatButton)}</a><button class="xbar-x" type="button" id="cvFloatX" aria-label="${escFull(V.floatClose)}" title="${escFull(V.floatClose)}">×</button></div>`,
       pageJs: cvJs + `initCvForm({T: ${JSON.stringify(VT).replace(/</g, '\\u003c')}, L: L, esc: esc, $: $, endpoint: ${jsStr(cfg.sendEndpoint)}, token: ${jsStr(cfg.sendToken)}, email: ${jsStr(feedbackEmail)}, pdVersion: ${jsStr(pdOn ? pdVersion : '')}});` });

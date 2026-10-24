@@ -1,26 +1,32 @@
 /* Лендинг сервиса «Резюме под каждую вакансию» (/ru/cv/, заявка на ранний доступ): стили только этой страницы, сборка вставляет их в её <head> */
 body:has(.cvpage) .wrap{max-width:1080px}
-.cvpage{padding-top:28px}
-.cvpage h2{font-size:clamp(24px,3.6vw,32px);line-height:1.18;margin:0 0 18px;text-transform:none;letter-spacing:0}
+.cvpage{padding-top:48px}
+.cvpage h2{font-size:clamp(26px,3.8vw,36px);line-height:1.18;margin:0 0 32px;text-transform:none;letter-spacing:0}
 .cvpage h3{text-transform:none;letter-spacing:0}
 .content .cvpage ul{padding:0;margin:0;list-style:none}
 .content .cvpage li{margin:0}
 .cvtick{flex:none;width:16px;height:16px;color:var(--s);margin-top:.25em}
-.cvsub{color:var(--muted);margin:-8px 0 20px;font-size:16px}
-.cvsub.small{font-size:14px;margin:16px 0 18px}
-.cvsec{margin-top:64px}
+.cvsub{color:var(--muted);margin:-18px 0 36px;font-size:17px;line-height:1.6;max-width:46em}
+.cvsub.small{font-size:14px;margin:24px 0 28px}
+.cvsec{padding-block:88px}
+/* «главы» страницы (с 2026-10-24, по просьбе заказчика): блоки с .cvband — на своём фоне во всю ширину окна (через один);
+   фон выходит за .wrap через box-shadow и обрезается clip-path по высоте — без горизонтальной прокрутки */
+.cvpage{--cvband:#E9EBEE}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .cvpage{--cvband:#0F1215}}
+:root[data-theme="dark"] .cvpage{--cvband:#0F1215}
+.cvband{background:var(--cvband);box-shadow:0 0 0 100vmax var(--cvband);clip-path:inset(0 -100vmax)}
 
 /* первый экран: текст и форма рядом, на телефоне — друг под другом */
-.cvhero{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:40px;align-items:start}
-.cvbadge{display:inline-block;margin:0 0 16px;padding:6px 14px;border-radius:999px;font-weight:600;font-size:14px;
+.cvhero{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:64px;align-items:start;padding-bottom:96px}
+.cvbadge{display:inline-block;margin:0 0 24px;padding:6px 14px;border-radius:999px;font-weight:600;font-size:14px;
   background:color-mix(in srgb,var(--s) 16%,transparent);color:var(--ink);border:1px solid color-mix(in srgb,var(--s) 45%,transparent)}
-.cvhero h1{font-size:clamp(30px,5.2vw,50px);line-height:1.08;margin:0 0 18px;hyphens:manual;-webkit-hyphens:manual}
-.cvhero .lead{font-size:19px;color:var(--muted);margin:0 0 22px}
-.content .cvpoints{display:grid;grid-template-columns:1fr 1fr;gap:10px 18px}
+.cvhero h1{font-size:clamp(30px,5.2vw,50px);line-height:1.08;margin:0 0 24px;hyphens:manual;-webkit-hyphens:manual}
+.cvhero .lead{font-size:19px;line-height:1.6;color:var(--muted);margin:0 0 32px}
+.content .cvpoints{display:grid;grid-template-columns:1fr 1fr;gap:14px 24px}
 .content .cvpoints li{display:flex;gap:9px;font-weight:500}
-.cvformcard{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:26px 24px 20px;box-shadow:0 24px 60px -30px rgba(0,0,0,.45);position:sticky;top:20px;scroll-margin-top:20px}
-.cvformcard h2{font-size:24px;margin:0 0 8px}
-.cvformlead{color:var(--muted);margin:0 0 16px;font-size:15px}
+.cvformcard{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:30px 28px 24px;box-shadow:0 24px 60px -30px rgba(0,0,0,.45);position:sticky;top:20px;scroll-margin-top:20px}
+.cvformcard h2{font-size:24px;margin:0 0 10px}
+.cvformlead{color:var(--muted);margin:0 0 20px;font-size:15px;line-height:1.55}
 .cvnote{margin:10px 0 0;text-align:center;font-size:13px;color:var(--muted)}
 .cvform .field{margin:0 0 12px}
 .cvform .actions{margin-top:12px}
@@ -31,20 +37,20 @@ body:has(.cvpage) .wrap{max-width:1080px}
 .cvdone p{margin:0;color:var(--muted)}
 
 /* боли */
-.content .cvpain{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.content .cvpain li{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--k);border-radius:16px;padding:18px 20px}
-.cvpain h3,.cvgrid h3{margin:0 0 6px;font-size:18px;line-height:1.3}
-.cvpain p,.cvgrid p{margin:0;color:var(--muted);font-size:15px}
+.content .cvpain{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.content .cvpain li{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--k);border-radius:16px;padding:26px 26px 28px}
+.cvpain h3,.cvgrid h3{margin:0 0 10px;font-size:18px;line-height:1.3}
+.cvpain p,.cvgrid p{margin:0;color:var(--muted);font-size:15px;line-height:1.6}
 
 /* как это работает + пример оценки */
-.cvhow{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:center}
-.content ol.cvsteps{list-style:none;padding:0;margin:0 0 22px;counter-reset:st}
-.content .cvsteps li{position:relative;counter-increment:st;padding:0 0 20px;padding-inline-start:54px;margin:0}
+.cvhow{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px;align-items:center}
+.content ol.cvsteps{list-style:none;padding:0;margin:0 0 32px;counter-reset:st}
+.content .cvsteps li{position:relative;counter-increment:st;padding:0 0 32px;padding-inline-start:54px;margin:0}
 .cvsteps li::before{content:counter(st);position:absolute;inset-inline-start:0;top:0;width:38px;height:38px;border-radius:50%;background:var(--btn);color:var(--btn-ink);display:flex;align-items:center;justify-content:center;font-weight:600}
 .cvsteps li:not(:last-child)::after{content:"";position:absolute;inset-inline-start:18px;top:42px;bottom:4px;width:2px;background:var(--line)}
-.cvsteps strong{display:block;font-size:17px;padding-top:7px}
-.cvsteps span{color:var(--muted)}
-.cvdemo{margin:0;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:20px 22px;box-shadow:0 24px 60px -30px rgba(0,0,0,.45)}
+.cvsteps strong{display:block;font-size:17px;padding-top:7px;margin-bottom:4px}
+.cvsteps span{color:var(--muted);line-height:1.6}
+.cvdemo{margin:0;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:26px 28px;box-shadow:0 24px 60px -30px rgba(0,0,0,.45)}
 .cvdemo-label{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:12px}
 .cvdemo-head{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-bottom:14px;border-bottom:1px solid var(--line)}
 .cvdemo-head strong{display:block;font-family:var(--font-head);font-weight:500;font-size:19px;line-height:1.25}
@@ -68,81 +74,95 @@ body:has(.cvpage) .wrap{max-width:1080px}
 .cvfiles a::before{content:"↓ ";color:var(--s)}
 
 /* что вы получите */
-.content .cvgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.content .cvgrid li{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--k);border-radius:16px;padding:18px 20px}
+.content .cvgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.content .cvgrid li{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--k);border-radius:16px;padding:26px 26px 28px}
 
 /* ничего не выдумываем */
-.cvhonest{background:var(--surface);border:1px solid var(--line);border-inline-start:4px solid var(--s);border-radius:16px;padding:20px 24px}
-.cvhonest p{margin:0 0 12px}
-.content .cvhonest li{position:relative;padding-inline-start:28px;margin:0 0 6px;font-weight:500}
+.cvhonest{background:var(--surface);border:1px solid var(--line);border-inline-start:4px solid var(--s);border-radius:16px;padding:30px 34px;max-width:860px}
+.cvhonest p{margin:0 0 20px;line-height:1.65}
+.content .cvhonest li{position:relative;padding-inline-start:28px;margin:0 0 10px;font-weight:500}
 .cvhonest li::before{content:"";position:absolute;inset-inline-start:2px;top:.35em;width:14px;height:8px;border-inline-start:2.5px solid var(--s);border-bottom:2.5px solid var(--s);transform:rotate(-45deg)}
 
 /* тарифы */
-.content .cvplans{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;align-items:stretch}
-.content .cvplans>li{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px 22px 20px;display:flex;flex-direction:column}
+.content .cvplans{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:stretch}
+.content .cvplans>li{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:28px 26px 26px;display:flex;flex-direction:column}
 .content .cvplans>li.hot{border:2px solid var(--s);box-shadow:0 24px 60px -32px color-mix(in srgb,var(--s) 80%,transparent)}
 .cvplan-head{display:flex;justify-content:space-between;align-items:center;gap:10px}
 .cvplan-head h3{margin:0;font-size:20px}
 .cvtag{font-weight:700;font-size:13px;padding:3px 10px;border-radius:999px;background:var(--d);color:#fff}
-.cvprice{margin:12px 0 16px;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px}
+.cvprice{margin:16px 0 22px;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px}
 .cvprice s{color:var(--muted);font-size:17px}
 .cvprice b{font-family:var(--font-head);font-weight:500;font-size:32px;line-height:1.1}
 .cvprice span{color:var(--muted);font-size:14px}
-.content .cvplans>li ul li{display:flex;gap:9px;margin:0 0 8px;font-size:15px}
+.content .cvplans>li ul li{display:flex;gap:9px;margin:0 0 12px;font-size:15px;line-height:1.45}
 .cvcenter{display:flex;width:max-content;max-width:100%;margin:0 auto;font-size:17px;padding:15px 28px}
 .cvhow .btn{font-size:17px;padding:15px 28px}
 
 /* основатель */
 /* слева фото и цитата: цитата прижата к низу и кончается вровень с последним пунктом списка справа, фото занимает остаток высоты */
-.cvauthor{display:grid;grid-template-columns:240px minmax(0,1fr);gap:22px 28px;align-items:stretch;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px 24px}
+.cvauthor{display:grid;grid-template-columns:240px minmax(0,1fr);gap:28px 40px;align-items:stretch;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:32px 34px}
 .cvauthor-side{display:flex;flex-direction:column;gap:16px}
 .cvphoto{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 25%;border-radius:14px;background:var(--soft)}
 .cvauthor-side .cvphoto{aspect-ratio:auto;flex:1 1 0;min-height:180px;max-height:340px}
 .cvquote{margin:auto 0 0;padding:2px 0 2px 14px;border-inline-start:3px solid var(--s);font-size:15px;line-height:1.5;font-style:italic}
 .cvauthor-body{display:flex;flex-direction:column;gap:4px}
 .cvauthor .cvname{font-family:var(--font-head);font-weight:500;font-size:24px;line-height:1.2}
-.cvauthor .cvrole{color:var(--muted);margin:0 0 10px}
+.cvauthor .cvrole{color:var(--muted);margin:0 0 18px}
 .content .cvauthor ul{list-style:disc;padding-inline-start:20px;margin:0 0 12px}
-.content .cvauthor ul li{margin:0 0 6px}
+.content .cvauthor ul li{margin:0 0 12px;line-height:1.55}
 .content .cvauthor ul{margin-bottom:0}
 .content .cvauthor ul li:last-child{margin-bottom:0}
 .cvauthor p{margin:0}
-.cvauthor .cvsite{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 16px;border-top:1px solid var(--line);padding-top:16px;color:var(--muted);font-size:15px}
+.cvauthor .cvsite{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 16px;border-top:1px solid var(--line);padding-top:22px;color:var(--muted);font-size:15px}
 .cvsite a{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border:1px solid var(--line-strong);border-radius:999px;color:var(--ink);font-weight:600;text-decoration:none;transition:background .15s,border-color .15s}
 .cvsite a:hover,.cvsite a:focus-visible{background:var(--soft);border-color:var(--s)}
 .cvsite svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.6;color:var(--s)}
 
 /* вопросы */
-.cvfaq details{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:0 20px;margin:0 0 10px}
-.cvfaq summary{cursor:pointer;list-style:none;padding:16px 28px 16px 0;font-weight:600;font-size:17px;position:relative}
+.cvfaq{max-width:860px}
+.cvfaq details{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:0 24px;margin:0 0 12px}
+.cvfaq summary{cursor:pointer;list-style:none;padding:20px 32px 20px 0;font-weight:600;font-size:17px;position:relative}
 .cvfaq summary::-webkit-details-marker{display:none}
-.cvfaq summary::after{content:"+";position:absolute;inset-inline-end:0;top:12px;font-size:24px;font-weight:400;color:var(--muted)}
+.cvfaq summary::after{content:"+";position:absolute;inset-inline-end:0;top:16px;font-size:24px;font-weight:400;color:var(--muted)}
 .cvfaq details[open] summary::after{content:"−"}
-.cvfaq details p{margin:0 0 16px;color:var(--muted)}
+.cvfaq details p{margin:0 0 20px;color:var(--muted);line-height:1.6}
 
 /* финальный призыв */
-.cvfinal{margin:64px auto 0;max-width:720px;text-align:center;background:var(--surface);border:2px solid var(--s);border-radius:22px;padding:32px 28px 26px;scroll-margin-top:20px}
-.cvfinal>p{color:var(--muted);margin:0 0 20px}
+.cvfinal{margin:96px auto 24px;max-width:720px;text-align:center;background:var(--surface);border:2px solid var(--s);border-radius:22px;padding:40px 36px 32px;scroll-margin-top:20px}
+.cvfinal h2{margin-bottom:14px}
+.cvfinal>p{color:var(--muted);margin:0 auto 28px;max-width:34em;line-height:1.6}
 .cvfinal .cvform,.cvfinal .cvdone{text-align:start}
 .cvfinal .cvfields{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}
 
 @media (max-width:900px){
-  .cvhero,.cvhow{grid-template-columns:1fr;gap:28px}
+  .cvhero,.cvhow{grid-template-columns:1fr;gap:40px}
+  .cvsec{padding-block:72px}
+  .cvhero{padding-bottom:72px}
   .cvformcard{position:static}
   .cvauthor{grid-template-columns:200px minmax(0,1fr);gap:20px 22px}
   .content .cvpain,.content .cvgrid{grid-template-columns:1fr 1fr}
   .content .cvplans{grid-template-columns:1fr}
 }
 @media (max-width:600px){
-  .cvpage{padding-top:18px}
+  .cvpage{padding-top:24px}
   .cvbadge{font-size:12.5px;padding:5px 11px;margin-bottom:12px}
   .cvhero h1{font-size:29px}
   .cvhero .lead{font-size:17px}
   .content .cvpoints,.content .cvpain,.content .cvgrid,.cvfinal .cvfields{grid-template-columns:1fr}
-  .cvsec{margin-top:48px}
+  .cvsec{padding-block:56px}
+  .cvhero{gap:32px;padding-bottom:56px}
+  .cvpage h2{margin-bottom:24px}
+  .cvsub{margin:-12px 0 28px;font-size:16px}
+  .content .cvpain,.content .cvgrid,.content .cvplans{gap:16px}
+  .content .cvpain li,.content .cvgrid li{padding:22px 20px 24px}
+  .cvhonest{padding:22px 20px}
+  .cvdemo{padding:20px 18px}
+  .cvfaq details{padding:0 18px}
+  .cvfaq summary{padding:16px 28px 16px 0}
+  .cvfaq summary::after{top:12px}
   .cvformcard{padding:22px 18px 18px}
-  .cvfinal{padding:26px 18px 20px}
-  .cvauthor{grid-template-columns:1fr;gap:18px;padding:18px}
+  .cvfinal{margin-top:64px;padding:28px 18px 22px}
+  .cvauthor{grid-template-columns:1fr;gap:20px;padding:22px 20px}
   .cvphoto,.cvauthor-side .cvphoto{width:180px;margin-inline:auto;aspect-ratio:4/5;flex:none;min-height:0;max-height:none}
   .cvquote{margin-top:0}
   .cvcenter,.cvhow .btn{display:flex;width:100%;justify-content:center}
@@ -160,7 +180,7 @@ body:has(.cvpage) .wrap{max-width:1080px}
 .cvtabs button[aria-selected="true"],.cvtabs button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.12)}
 .cvtabs button[aria-selected="true"] span,.cvtabs button[aria-pressed="true"] span{background:var(--s);color:#fff}
 .cvtabs button:focus-visible{outline:2px solid var(--focus);outline-offset:1px}
-.cvpanel{padding:24px 28px 26px}
+.cvpanel{padding:30px 36px 32px}
 .cvpanel:focus-visible{outline:2px solid var(--focus);outline-offset:-2px}
 .cvex:not(.js) .cvpanel+.cvpanel{border-top:1px solid var(--line)}
 /* свёрнутый пример (с 2026-10-24, по просьбе заказчика): длинная вкладка обрезана по высоте с затуханием, под ней «Показать полностью»;
@@ -407,22 +427,22 @@ body:has(.cvpage) .wrap{max-width:1080px}
 @media (max-width:600px){.cvlangs.js .cvlangsw{align-self:stretch}.cvlangsw button{flex:1 1 0}}
 
 /* блок «CV на английском — без переводчика» */
-.content .cven-points{grid-template-columns:repeat(4,1fr)}
-.cven-cmp{margin-top:18px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px 20px}
-.cven-cmp h3{margin:0 0 10px;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.content .cven-points{grid-template-columns:repeat(2,1fr)}
+.cven-cmp{margin-top:32px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:24px 28px}
+.cven-cmp h3{margin:0 0 14px;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
 .cven-hd,.cven-row{display:grid;grid-template-columns:minmax(0,1fr) 28px minmax(0,1fr);gap:8px;align-items:center}
 .cven-hd span{font-size:12px;font-weight:600;color:var(--muted)}
-.cven-row{padding:10px 0;border-top:1px solid var(--line)}
+.cven-row{padding:14px 0;border-top:1px solid var(--line)}
 .cven-row .ru{color:var(--muted)}
 .cven-row .en{font-weight:600}
 .cven-row .arr{text-align:center;color:var(--s);font-weight:700}
-.cven-dl{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;margin-top:16px}
+.cven-dl{display:flex;flex-wrap:wrap;align-items:center;gap:10px 12px;margin-top:28px}
 .cven-dl span{font-weight:600;margin-inline-end:4px}
 .cven-dl .btn{font-size:14.5px;padding:10px 16px}
 .cven-dl .btn::before{content:"↓";margin-inline-end:7px;font-weight:700;color:var(--s)}
-@media (max-width:900px){.content .cven-points{grid-template-columns:1fr 1fr}}
 @media (max-width:600px){
   .content .cven-points{grid-template-columns:1fr}
+  .cven-cmp{margin-top:24px;padding:18px 16px}
   .cven-hd{display:none}
   .cven-row{grid-template-columns:1fr;gap:2px}
   .cven-row .arr{text-align:start;transform:rotate(90deg);width:14px}
