@@ -790,6 +790,923 @@
         }
       ]
     },
+    "cv": {
+      "title": "Tailored Resume for Every Job with AI — Early Access",
+      "description": "Turn all your experience into one master resume, get an honest 1–10 score for every job, and a tailored resume and cover letter built only from your facts. Early-access pricing for the first 1,000 members.",
+      "badge": "Early access · up to 75% off for the first 1,000",
+      "h1": "A resume tailored to any job in minutes",
+      "lead": "Upload everything about your career once: old and new resumes, job descriptions, your LinkedIn profile. Our AI-powered service turns it into a verified master resume, honestly scores from 1 to 10 how well each job fits you, and prepares a tailored resume and cover letter for the jobs you choose.",
+      "heroPoints": [
+        "A resume tailored to every job",
+        "A cover letter",
+        "Match score from 1 to 10",
+        "English and other languages"
+      ],
+      "formTitle": "Lock in early-access pricing",
+      "formLead": "Leave your name and email, and we’ll let you know when access opens. The first 1,000 members get any paid plan for $49 a month — up to 75% off.",
+      "formNote": "No payment, no commitment",
+      "button": "Get early access",
+      "floatButton": "Get early access",
+      "floatClose": "Hide",
+      "painTitle": "Why your applications go unanswered",
+      "pain": [
+        {
+          "h": "One resume for every job",
+          "p": "Recruiters and applicant tracking systems look for what matters for this specific role. If your resume doesn’t show it, you get rejected."
+        },
+        {
+          "h": "Dozens of versions, each with different numbers",
+          "p": "Over the years you pile up resumes with different dates, titles and results. A recruiter will check them against LinkedIn — and spot the mismatches."
+        },
+        {
+          "h": "Tailoring takes forever",
+          "p": "Rewriting your resume and writing a cover letter for each job by hand takes hours. So most people send the same file everywhere."
+        }
+      ],
+      "demo": {
+        "label": "Example: job score",
+        "role": "Head of E-commerce",
+        "company": "Retail chain · Chicago, IL",
+        "score": "7",
+        "scoreOf": "out of 10",
+        "scoreLabel": "match score",
+        "scoreNote": "Match score from 1 to 10: how well the candidate’s experience fits the job’s requirements, and how well the job fits the candidate’s search criteria.",
+        "rows": [
+          {
+            "t": "Marketplaces and own online store",
+            "s": "yes",
+            "v": "Match"
+          },
+          {
+            "t": "Team of 15+",
+            "s": "yes",
+            "v": "Match"
+          },
+          {
+            "t": "Unit economics, CAC and LTV",
+            "s": "part",
+            "v": "Partial match"
+          },
+          {
+            "t": "CPG experience",
+            "s": "no",
+            "v": "No match"
+          }
+        ],
+        "verdictTitle": "Advice",
+        "verdict": "Lead with online sales growth and the marketplace launch. No CAC or LTV claims without numbers — we’ll check with you first.",
+        "verdictTag": "Recommended: apply",
+        "fileGroups": [
+          {
+            "lang": "EN",
+            "label": "English",
+            "files": [
+              {
+                "t": "Resume.docx",
+                "f": "",
+                "dl": "docx"
+              },
+              {
+                "t": "Resume.pdf",
+                "f": "",
+                "dl": "pdf"
+              },
+              {
+                "t": "Cover letter",
+                "f": "",
+                "dl": "letter"
+              }
+            ]
+          },
+          {
+            "lang": "DE",
+            "label": "Deutsch",
+            "files": [
+              {
+                "t": "Resume.docx",
+                "f": "",
+                "dl": "docx-de"
+              },
+              {
+                "t": "Resume.pdf",
+                "f": "",
+                "dl": "pdf-de"
+              },
+              {
+                "t": "Cover letter",
+                "f": "",
+                "dl": "letter-de"
+              }
+            ]
+          }
+        ],
+        "more": "See the full example"
+      },
+      "howTitle": "How it works",
+      "how": [
+        {
+          "h": "Upload everything you have",
+          "p": "Old and new resumes in PDF or DOCX, your LinkedIn profile export. The more versions, the more complete your master resume."
+        },
+        {
+          "h": "Answer a few questions",
+          "p": "The AI pulls the facts into a master resume, finds mismatches between versions, and asks only what only you can answer."
+        },
+        {
+          "h": "Send job postings",
+          "p": "A link or the text of the posting. In a few minutes you get a 1–10 score, a resume in DOCX and PDF, and a cover letter."
+        }
+      ],
+      "example": {
+        "title": "Example: from master resume to application",
+        "lead": "How it works in practice — with a fictional candidate and a fictional job posting.",
+        "note": "The data in this example is fictional",
+        "more": "Show full",
+        "tabs": [
+          "Master resume",
+          "What the candidate wants",
+          "Job posting",
+          "Score",
+          "Cover letter",
+          "Dashboard"
+        ],
+        "profile": {
+          "name": "Megan Brooks",
+          "headline": "Head of E-commerce · Chicago, IL",
+          "sources": "Built from 4 resume versions, a LinkedIn profile, an Indeed profile, and answers to a few questions",
+          "cvFile": {
+            "title": "Finished resume — 2 pages, in English and German",
+            "text": "From this master resume, the system built a version for the Head of E-commerce role in two languages: the most important points on top, nothing extra.",
+            "pdf": "Download PDF",
+            "docx": "Download DOCX",
+            "langSwitch": "Resume language",
+            "langs": [
+              {
+                "label": "English",
+                "sfx": ""
+              },
+              {
+                "label": "Deutsch",
+                "sfx": "-de"
+              }
+            ],
+            "file": ""
+          },
+          "legendIn": "Goes into the resume for this job",
+          "legendOut": "Stays in the master resume",
+          "count": "For the Head of E-commerce role, the system picks {in} of {all} items",
+          "expTitle": "Work experience",
+          "titlesLabel": "Job title variants",
+          "pickLabel": "for this job",
+          "flagLabel": "Mismatch fixed",
+          "jobs": [
+            {
+              "period": "Mar 2021 – present",
+              "role": "Director of E-commerce",
+              "company": "Home goods retail chain, 240 stores",
+              "titles": [
+                {
+                  "t": "Director of E-commerce",
+                  "src": "offer letter",
+                  "pick": true
+                },
+                {
+                  "t": "Head of E-commerce",
+                  "src": "LinkedIn",
+                  "pick": false
+                },
+                {
+                  "t": "E-commerce Manager",
+                  "src": "2021 resume, before the marketplace launch",
+                  "pick": false
+                }
+              ],
+              "items": [
+                {
+                  "t": "Grew online sales from $45M to $130M a year (2.9x) in 3 years",
+                  "in": true
+                },
+                {
+                  "t": "Launched the chain on Amazon, Walmart Marketplace and Target Plus — 31% of online revenue",
+                  "in": true
+                },
+                {
+                  "t": "Built a team of 18: marketplaces, website, content, analytics",
+                  "in": true
+                },
+                {
+                  "t": "Lifted site conversion from 1.4% to 2.3% after redesigning product pages and checkout",
+                  "in": true
+                },
+                {
+                  "t": "Moved the online store’s warehouse to a new inventory system",
+                  "in": false
+                },
+                {
+                  "t": "Trained staff at 240 stores on buy online, pick up in store",
+                  "in": false
+                }
+              ],
+              "note": "The 2022 resume says a team of 12, LinkedIn says 18. Confirmed with the candidate: 18 people since 2023."
+            },
+            {
+              "period": "Jun 2017 – Feb 2021",
+              "role": "Senior Category Manager, Home Appliances",
+              "company": "Online electronics retailer",
+              "titles": [
+                {
+                  "t": "Senior Category Manager, Home Appliances",
+                  "src": "offer letter for the 2019 promotion",
+                  "pick": true
+                },
+                {
+                  "t": "Category Lead, Appliances",
+                  "src": "LinkedIn",
+                  "pick": false
+                },
+                {
+                  "t": "Category Manager",
+                  "src": "2018 resume, before the promotion",
+                  "pick": false
+                }
+              ],
+              "items": [
+                {
+                  "t": "Tripled category revenue to $200M a year",
+                  "in": true
+                },
+                {
+                  "t": "200+ vendors; launched a third-party marketplace model in the category",
+                  "in": true
+                },
+                {
+                  "t": "Negotiated co-op marketing budgets with vendors",
+                  "in": false
+                },
+                {
+                  "t": "Mentored 4 interns",
+                  "in": false
+                }
+              ],
+              "note": "Two resume versions give different end dates — 2020 and 2021. Per her employment verification letter: February 2021."
+            }
+          ],
+          "gap": {
+            "period": "Jun 2016 – May 2017",
+            "title": "Career break — 11 months",
+            "label": "How the break is explained in different versions",
+            "variants": [
+              {
+                "t": "“Stay-at-home parent”",
+                "src": "2017 resume"
+              },
+              {
+                "t": "“Personal sabbatical, travel”",
+                "src": "Indeed profile"
+              },
+              {
+                "t": "“Freelance: online store setup”",
+                "src": "2018 resume"
+              }
+            ],
+            "resolved": "Confirmed with the candidate: parental leave; in the last three months, a web analytics course and two small projects for friends’ online stores.",
+            "pick": "In the resume: “Parental leave; web analytics course” — short, honest, nothing extra."
+          },
+          "early": [
+            {
+              "period": "Sep 2013 – May 2016",
+              "role": "Online Sales Manager",
+              "company": "Apparel retail chain",
+              "titles": [
+                {
+                  "t": "Online Sales Manager",
+                  "src": "offer letter",
+                  "pick": true
+                },
+                {
+                  "t": "E-commerce Manager",
+                  "src": "LinkedIn",
+                  "pick": false
+                }
+              ],
+              "items": [
+                {
+                  "t": "Launched the chain’s online store: 8% of revenue in year two",
+                  "in": true
+                },
+                {
+                  "t": "Ran the store’s social media",
+                  "in": false
+                }
+              ],
+              "note": ""
+            }
+          ],
+          "intern": {
+            "period": "Jul 2012 – Aug 2012",
+            "role": "Summer internship",
+            "company": "Bank, retail banking division",
+            "items": [
+              {
+                "t": "2-month internship after junior year",
+                "in": false
+              }
+            ],
+            "why": "Left out: too long ago and unrelated to e-commerce. Useful for fintech roles."
+          },
+          "sections": [
+            {
+              "h": "Education",
+              "items": [
+                {
+                  "t": "Illinois State University, BS in Information Systems, 2013",
+                  "in": true
+                }
+              ]
+            },
+            {
+              "h": "Courses",
+              "items": [
+                {
+                  "t": "Web analytics, 2017",
+                  "in": true
+                },
+                {
+                  "t": "P&L management, 2022",
+                  "in": true
+                },
+                {
+                  "t": "Photography basics, 2019",
+                  "in": false
+                }
+              ]
+            },
+            {
+              "h": "Languages",
+              "items": [
+                {
+                  "t": "Spanish — conversational",
+                  "in": true
+                },
+                {
+                  "t": "French — basic",
+                  "in": false
+                }
+              ]
+            },
+            {
+              "h": "Awards and speaking",
+              "items": [
+                {
+                  "t": "Company “Project of the Year” — marketplace launch, 2022",
+                  "in": true
+                },
+                {
+                  "t": "Speaker at an industry e-commerce conference, 2023",
+                  "in": true
+                },
+                {
+                  "t": "Mentor at a university startup accelerator, 2024",
+                  "in": false
+                }
+              ]
+            },
+            {
+              "h": "Interests",
+              "items": [
+                {
+                  "t": "Running — three half marathons",
+                  "in": false
+                },
+                {
+                  "t": "Photography",
+                  "in": false
+                },
+                {
+                  "t": "Board games",
+                  "in": false
+                },
+                {
+                  "t": "Animal shelter volunteer",
+                  "in": false
+                },
+                {
+                  "t": "Yoga",
+                  "in": false
+                },
+                {
+                  "t": "Cooking",
+                  "in": false
+                }
+              ],
+              "why": "Left out of the resume: not relevant to the job. Running and volunteering can come up in the interview."
+            }
+          ],
+          "skillsTitle": "Key skills",
+          "skills": [
+            "Marketplaces",
+            "Online channel P&L",
+            "Unit economics",
+            "Team leadership",
+            "Web analytics",
+            "Assortment and pricing"
+          ]
+        },
+        "search": {
+          "title": "Head of E-commerce",
+          "subtitle": "Primary search profile · built from the candidate’s answers",
+          "groups": [
+            {
+              "h": "Titles",
+              "items": [
+                "Head of E-commerce",
+                "Director of E-commerce",
+                "VP of Digital Commerce"
+              ]
+            },
+            {
+              "h": "Level",
+              "items": [
+                "Director or above",
+                "Reporting to the CEO preferred"
+              ]
+            },
+            {
+              "h": "Companies",
+              "items": [
+                "Retailers and brands with their own online store",
+                "Revenue of $500M+ a year",
+                "Established companies, not early-stage startups"
+              ]
+            },
+            {
+              "h": "Industries",
+              "items": [
+                "Priority: home goods, electronics, home improvement",
+                "Also open to: CPG, apparel, baby products"
+              ]
+            },
+            {
+              "h": "Salary",
+              "items": [
+                "Base from $190,000 a year",
+                "Target: $220,000"
+              ]
+            },
+            {
+              "h": "Location and format",
+              "items": [
+                "Chicago: hybrid or on-site",
+                "Remote if the company is based elsewhere",
+                "Not open to relocation"
+              ]
+            },
+            {
+              "h": "Employment type",
+              "items": [
+                "Full-time, W-2"
+              ]
+            }
+          ],
+          "stopTitle": "Deal-breakers",
+          "stop": [
+            "Tobacco and alcohol",
+            "Roles below director level",
+            "Base salary under $190,000"
+          ],
+          "otherTitle": "Second search profile",
+          "other": "Head of Marketplaces at a manufacturer: same level and salary; industries — home appliances and home goods.",
+          "note": "The system uses these criteria for the second half of the score — how well the job fits the candidate."
+        },
+        "vacancy": {
+          "role": "Head of E-commerce",
+          "company": "Retail chain · Chicago, IL",
+          "meta": "Hybrid · base salary from $200,000 a year",
+          "sections": [
+            {
+              "h": "Responsibilities",
+              "items": [
+                "Grow the company’s own online store and marketplace sales",
+                "Own the online channel P&L and the 2027 growth plan",
+                "Lead an e-commerce team of 15+",
+                "Build unit economics by channel: CAC, LTV, margin"
+              ]
+            },
+            {
+              "h": "Requirements",
+              "items": [
+                "5+ years in e-commerce, including 2+ years in a leadership role",
+                "Marketplace sales and growing a company’s own website",
+                "Managing a team of 15+",
+                "Solid grasp of unit economics: CAC, LTV",
+                "CPG retail experience"
+              ]
+            },
+            {
+              "h": "What we offer",
+              "items": [
+                "Hybrid, office in Chicago",
+                "Base salary from $200,000 a year",
+                "Reports to the Chief Commercial Officer"
+              ]
+            }
+          ]
+        },
+        "score": {
+          "total": "7",
+          "of": "out of 10",
+          "label": "match score",
+          "note": "The overall match score from 1 to 10 is the average of two scores: how well the candidate fits the job, and how well the job fits her.",
+          "parts": [
+            {
+              "label": "Candidate fits the job",
+              "value": "6 out of 10"
+            },
+            {
+              "label": "Job fits the candidate",
+              "value": "8 out of 10"
+            }
+          ],
+          "reqTitle": "Does the candidate fit the job?",
+          "rows": [
+            {
+              "t": "Marketplaces and own online store",
+              "s": "yes",
+              "v": "Match",
+              "why": "Amazon, Walmart Marketplace, Target Plus — 31% of online revenue; the chain’s own website"
+            },
+            {
+              "t": "Team of 15+",
+              "s": "yes",
+              "v": "Match",
+              "why": "Team of 18"
+            },
+            {
+              "t": "Online channel P&L",
+              "s": "yes",
+              "v": "Match",
+              "why": "Online sales up from $45M to $130M a year"
+            },
+            {
+              "t": "Unit economics, CAC and LTV",
+              "s": "part",
+              "v": "Partial match",
+              "why": "Marketplace unit economics, yes; no CAC or LTV numbers in the master resume"
+            },
+            {
+              "t": "CPG retail experience",
+              "s": "no",
+              "v": "No match",
+              "why": "Home goods is adjacent retail, but not CPG"
+            }
+          ],
+          "critTitle": "Does the job fit the candidate?",
+          "crit": [
+            {
+              "want": "Director or above",
+              "offer": "Head of E-commerce",
+              "s": "yes",
+              "v": "Match"
+            },
+            {
+              "want": "Base from $190,000",
+              "offer": "From $200,000",
+              "s": "yes",
+              "v": "Match"
+            },
+            {
+              "want": "Chicago, hybrid or on-site",
+              "offer": "Hybrid, office in Chicago",
+              "s": "yes",
+              "v": "Match"
+            },
+            {
+              "want": "Industry: home goods, electronics, home improvement; CPG also works",
+              "offer": "CPG retail",
+              "s": "yes",
+              "v": "Match"
+            },
+            {
+              "want": "Reporting to the CEO preferred",
+              "offer": "Reports to the Chief Commercial Officer",
+              "s": "part",
+              "v": "Partial match"
+            }
+          ],
+          "verdictTitle": "Advice",
+          "verdict": "Her experience covers the essentials — her own site, marketplaces and the team. Weak spots: CPG and CAC/LTV numbers.",
+          "verdictTag": "Recommended: apply",
+          "topTitle": "Put at the top of the resume",
+          "top": [
+            "Online sales growth from $45M to $130M",
+            "Launch on three marketplaces — 31% of revenue",
+            "Team of 18"
+          ],
+          "skipTitle": "What we won’t claim",
+          "skip": [
+            "CAC and LTV numbers — not in the master resume, so we’ll ask you",
+            "CPG experience — not claimed; addressed in the cover letter"
+          ],
+          "reqCols": [
+            "The job requires",
+            "The candidate has",
+            "Result"
+          ],
+          "critCols": [
+            "The job offers",
+            "The candidate wants",
+            "Result"
+          ]
+        },
+        "letter": {
+          "subject": "Subject: Application for Head of E-commerce — Megan Brooks",
+          "body": [
+            "Dear Hiring Manager,",
+            "I’m applying for the Head of E-commerce role. Since 2021, I’ve led e-commerce for a 240-store home goods chain: online sales grew from $45M to $130M a year, and I launched the chain on Amazon, Walmart Marketplace and Target Plus, which now bring in 31% of online revenue. My team of 18 covers marketplaces, the website, content and analytics.",
+            "You’re looking for someone to grow both your own site and your marketplace business — that’s exactly what I do today. I haven’t worked in CPG, but home goods is also high-volume retail with a broad assortment and fast delivery, and the online playbook is very similar.",
+            "I’d welcome the chance to discuss how to accelerate the growth of your online channel."
+          ],
+          "sign": "Best regards, Megan Brooks",
+          "fullTitle": "Full version — for email",
+          "copy": "Copy text",
+          "copied": "Copied",
+          "shortTitle": "Short version — for a LinkedIn message or an Indeed application",
+          "short": "Hi! I’m applying for your Head of E-commerce role. Since 2021, I’ve led e-commerce for a 240-store home goods chain: online sales grew from $45M to $130M, I launched us on Amazon, Walmart Marketplace and Target Plus (31% of revenue), and I lead a team of 18. My resume is attached — happy to set up a call."
+        },
+        "dashboard": {
+          "title": "My jobs",
+          "lead": "All of the candidate’s jobs in one place: match score, advice, and documents ready to send.",
+          "all": "All",
+          "cols": [
+            "Job",
+            "Score",
+            "Recommendation",
+            "Documents"
+          ],
+          "recLabels": {
+            "go": "Apply",
+            "maybe": "Consider",
+            "no": "Skip"
+          },
+          "docs": [
+            "Resume",
+            "Letter"
+          ],
+          "noDocs": "Not prepared",
+          "of": "out of 10",
+          "rows": [
+            {
+              "role": "VP of E-commerce",
+              "company": "Home appliance manufacturer",
+              "place": "Chicago, hybrid",
+              "score": 9,
+              "rec": "go",
+              "why": "Category and marketplace experience — a direct fit"
+            },
+            {
+              "role": "Head of E-commerce",
+              "company": "Consumer electronics retailer",
+              "place": "Chicago, on-site",
+              "score": 8,
+              "rec": "go",
+              "why": "Electronics is a priority industry; own site and marketplaces"
+            },
+            {
+              "role": "Head of Marketplaces",
+              "company": "Home goods brand",
+              "place": "Chicago, hybrid",
+              "score": 8,
+              "rec": "go",
+              "why": "Fits her second search profile"
+            },
+            {
+              "role": "Head of E-commerce",
+              "company": "Retail chain",
+              "place": "Chicago, hybrid",
+              "score": 7,
+              "rec": "go",
+              "why": "Weak spots: CPG and CAC/LTV numbers"
+            },
+            {
+              "role": "Director of Digital Commerce",
+              "company": "CPG manufacturer",
+              "place": "Minneapolis, remote",
+              "score": 6,
+              "rec": "maybe",
+              "why": "The key requirement is CPG experience, which she lacks"
+            },
+            {
+              "role": "Marketplace Manager",
+              "company": "Online apparel store",
+              "place": "Chicago, on-site",
+              "score": 3,
+              "rec": "no",
+              "why": "Lower level; pay up to $90,000"
+            },
+            {
+              "role": "Head of E-commerce",
+              "company": "Tobacco company",
+              "place": "Chicago, on-site",
+              "score": 2,
+              "rec": "no",
+              "why": "Industry on her deal-breaker list"
+            }
+          ],
+          "note": "This is a mockup of the dashboard: in the service, you add jobs by link or from curated job picks, and open or download the resume and letter with one click."
+        }
+      },
+      "featuresTitle": "What you get",
+      "features": [
+        {
+          "h": "Master resume",
+          "p": "All your resume versions in one verified document: titles, dates, numbers and results. No contradictions in your work history."
+        },
+        {
+          "h": "Honest job score",
+          "p": "From 1 to 10: how well your experience matches the requirements and how well the job fits you. If your chances are slim, we’ll say so."
+        },
+        {
+          "h": "A resume for every job",
+          "p": "We bring forward what this particular employer is looking for. You get ready-to-send files in DOCX and PDF."
+        },
+        {
+          "h": "Cover letter",
+          "p": "A full version for email and a short one for a LinkedIn message or an Indeed application."
+        },
+        {
+          "h": "Application dashboard",
+          "p": "Where, when, with which resume, and at what stage — all in one place, with reminders."
+        },
+        {
+          "h": "English and other languages",
+          "p": "Resumes and cover letters in English and other languages — for jobs in the U.S. and abroad."
+        }
+      ],
+      "english": {
+        "title": "Your resume in other languages — no translator needed",
+        "lead": "A word-for-word translation isn’t enough: a recruiter in Berlin or Madrid expects a different structure, local job titles, and familiar date and number formats. The service writes your resume and cover letter in another language by local conventions — from the same facts as your English version.",
+        "points": [
+          {
+            "h": "Not a translation — a local resume",
+            "p": "Structure and phrasing the way resumes are written in that country, with the sections local recruiters expect."
+          },
+          {
+            "h": "Local job titles",
+            "p": "“Leiterin E-Commerce” in Germany, “Responsable de E-commerce” in Spain — the titles recruiters there search for, agreed with you."
+          },
+          {
+            "h": "Same facts, local formats",
+            "p": "Amounts and dates written the local way (130 Mio. USD, mar. 2021). Not a single fact beyond your master resume."
+          },
+          {
+            "h": "Cover letter, too",
+            "p": "A full version for email and a short one for LinkedIn or a messenger — in the language of the job."
+          }
+        ],
+        "compareTitle": "How resume lines change",
+        "ruLabel": "In your English resume",
+        "enLabel": "In the German or Spanish resume",
+        "compare": [
+          {
+            "ru": "Director of E-commerce",
+            "en": "DE: Leiterin E-Commerce",
+            "lang": "de"
+          },
+          {
+            "ru": "Grew online sales from $45M to $130M a year (2.9x) in 3 years",
+            "en": "DE: Steigerung des Online-Umsatzes von 45 auf 130 Mio. USD pro Jahr (×2,9) in 3 Jahren",
+            "lang": "de"
+          },
+          {
+            "ru": "Mar 2021 – present",
+            "en": "ES: mar. 2021 – actualidad",
+            "lang": "es"
+          }
+        ],
+        "downloadsTitle": "Example in other languages",
+        "downloads": [
+          {
+            "t": "German resume, PDF",
+            "f": "",
+            "dl": "pdf-de"
+          },
+          {
+            "t": "German resume, DOCX",
+            "f": "",
+            "dl": "docx-de"
+          },
+          {
+            "t": "German cover letter, DOCX",
+            "f": "",
+            "dl": "letter-de"
+          }
+        ]
+      },
+      "honestTitle": "We don’t make things up",
+      "honest": "The AI changes wording, order and emphasis — never the facts. Every line of your resume is backed by your master resume, and a separate check verifies every date and number before you get it. A recruiter can compare your resume with LinkedIn and your references — nothing will contradict.",
+      "honestList": [
+        "No contradictions in numbers or facts",
+        "Your key achievements and most relevant experience up front",
+        "A clear answer on whether the job fits you — and whether you fit the job"
+      ],
+      "pricingTitle": "Pricing for the first 1,000 members",
+      "pricingLead": "Sign up now and get any paid plan for $49 a month — up to 75% off the regular price.",
+      "plans": [
+        {
+          "name": "Junior",
+          "price": "$0",
+          "old": "",
+          "per": "free",
+          "items": [
+            "Building your master resume"
+          ]
+        },
+        {
+          "name": "Middle",
+          "price": "$49",
+          "old": "$100",
+          "per": "per month",
+          "tag": "−51%",
+          "items": [
+            "Building your master resume",
+            "10 tailored resumes",
+            "30 job scores",
+            "Dashboard with all your jobs and resumes"
+          ]
+        },
+        {
+          "name": "Senior",
+          "price": "$49",
+          "old": "$200",
+          "per": "per month",
+          "tag": "−75%",
+          "items": [
+            "Building your master resume",
+            "30 tailored resumes",
+            "90 job scores",
+            "Dashboard with all your jobs and resumes",
+            "Resumes in English and other languages",
+            "Job picks matched to your profile"
+          ]
+        }
+      ],
+      "pricingNote": "Early-access prices are for the first 1,000 people who sign up on this page.",
+      "founderTitle": "Who’s building the service",
+      "author": {
+        "name": "Armen Manukyan",
+        "role": "Founder · E-commerce and international trade executive",
+        "facts": [
+          "National postal operator, 2020–2026: led its cross-border import business and its online marketplace business (team of 36, 190+ international partners).",
+          "One of the largest e-commerce marketplaces, 2019–2020: Director of Special Projects. Brought in 50,000+ new sellers in the first year of joint programs with government agencies; launched a lending product for sellers secured by their warehouse inventory.",
+          "National export promotion agency, 2017–2019: Head of Digital Services Development. Helped 200+ B2B and 2,000+ B2C companies start exporting through online channels.",
+          "Two-time winner of a national leadership competition for executives (2020, 2026).",
+          "Winner of a national competition for youth employment practices with the Talent Marketplace project."
+        ],
+        "text": "A master resume, an honest score for every job, and a tailored resume for each one — it’s the system I built for my own job search. Now I’m sharing it with you.",
+        "photoAlt": "Armen Manukyan, founder of the service"
+      },
+      "faqTitle": "Questions",
+      "faq": [
+        {
+          "q": "When will access open?",
+          "a": "We’re getting ready to launch. We’ll open access in the order people sign up and let you know by email."
+        },
+        {
+          "q": "How do I get early-access pricing?",
+          "a": "Sign up on this page: the first 1,000 people get any paid plan — Middle or Senior — for $49 a month."
+        },
+        {
+          "q": "How much does it cost?",
+          "a": "There’s a free plan for building your master resume. Paid plans are Middle at $100 and Senior at $200 a month; for the first 1,000 members, either one is $49 a month."
+        },
+        {
+          "q": "Who is it for?",
+          "a": "Anyone looking for a job, from individual contributors to executives. It helps most if you’ve had several jobs and have many versions of your resume."
+        },
+        {
+          "q": "The AI writes my resume. Won’t it make things up?",
+          "a": "No. The AI works only with the facts in your master resume, which you can see and edit, and before you get it, every resume is checked for numbers and dates that aren’t in your master resume."
+        },
+        {
+          "q": "What happens to my data?",
+          "a": "Your sign-up from this page — name and email — comes to {email} and is used only to reply to you. You’ll upload your resumes later, in the service itself."
+        },
+        {
+          "q": "Do you guarantee a job or an interview?",
+          "a": "No — nobody can honestly guarantee that. What we promise is this: every resume is tailored to the job and built only from your facts, and the score shows in advance where your chances are better."
+        }
+      ],
+      "finalTitle": "Claim a spot among the first 1,000",
+      "finalLead": "No commitment: just your name and email, no payment. The first 1,000 members get any paid plan for $49 a month.",
+      "form": {
+        "email": "Email",
+        "button": "Get early access",
+        "subject": "Early access request — Tailored Resume service (English page)",
+        "message": "I’d like early access to the Tailored Resume for Every Job service at the early-access price for the first 1,000 members ($49 a month).",
+        "sentTitle": "You’re on the early-access list",
+        "sent": "We’ll email you when access opens."
+      }
+    },
     "offer": {
       "title": "Terms of Sale (Public Offer) — In-Depth DISC Profile",
       "description": "Terms of sale (public offer) for the paid service “In-depth DISC profile” on disc-test.org: price, payment and delivery, refunds, rights to materials.",

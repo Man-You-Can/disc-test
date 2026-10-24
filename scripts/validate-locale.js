@@ -21,6 +21,8 @@ const OPTIONAL = ['.content.policy.legal', '.content.extendedMail', '.content.pr
   '.content.offer.codeTerms', '.content.policy.purchaseCode',
   // лендинг «CV и сопроводительное письмо под каждую вакансию» (/ru/cv/, с 2026-10-22, решение заказчика): только русская версия, ссылка только прямая
   '.content.cv',
+  // английская версия лендинга (с 2026-10-24): автор без ссылки на личный сайт — блок .cvsite не выводится
+  '.content.cv.author.siteLabel', '.content.cv.author.site', '.content.cv.author.siteUrl',
   // анонсы этого сервиса на сайте (главная, экран результата, профили, «Услуги»; с 2026-10-24, по просьбе заказчика) — только вместе с лендингом
   '.content.cvPromo'];
 // специальная цена на час после теста (product.pay.offer; offerPriceRub, offerPriceUsd в site.config.json; с 2026-10-22) обязательна вместе с product.pay:
@@ -29,7 +31,14 @@ const OPTIONAL = ['.content.policy.legal', '.content.extendedMail', '.content.pr
 // Ключи, которых в эталоне нет, а в остальных локалях они допустимы: оговорка о переводе в оферте и условиях возврата (при расхождении действует
 // русский текст) и строка о заявке в блоке расширенного отчёта (отчёт на этом языке пока нельзя заказать). Их обязательность — в проверке ниже.
 const EXTRA = ['.content.offer.note', '.content.refund.note', '.content.product.block.soon'];
+// Лендинг /cv/ на других языках (с 2026-10-24): язык строки сравнения в блоке языков (без ключа — en) и начало имени файлов готового резюме
+// (cvFile.file; пустая строка — файлов нет, кнопки неактивны)
+const EXTRA_RE = [/^\.content\.cv\.english\.compare\[\d+\]\.lang$/, /^\.content\.cv\.example\.profile\.cvFile\.file$/];
+// Пустая строка вместо имени файла примера на лендинге /cv/ — файлы на этом языке не готовы, кнопка скачивания неактивна
+const EMPTY_OK = [/^\.content\.cv\..*\.f$/, /^\.content\.cv\.example\.profile\.cvFile\.file$/];
 let failed = 0;
+// лендинг /cv/: знак % — часть текста о скидке (в языках скидки разные, с 2026-10-24), а не подстановка — в content.cv не сравнивается
+function phOf(s, p){ const x = ph(s); return p.startsWith('.content.cv.') ? x.split(' ').filter(t => t !== '%').join(' ') : x; }
 function ph(s){ return (String(s).match(/\{[a-z]+\}|<\/?b>|<br>|%/g) || []).sort().join(' '); }
 function walk(a, b, p, errs){
   if (Array.isArray(a)) {
@@ -39,11 +48,11 @@ function walk(a, b, p, errs){
   } else if (a && typeof a === 'object') {
     if (!b || typeof b !== 'object' || Array.isArray(b)) return errs.push(p + ': expected object');
     for (const k of Object.keys(a)) { if (!(k in b)) { if (!OPTIONAL.includes(p + '.' + k)) errs.push(p + '.' + k + ': missing'); } else walk(a[k], b[k], p + '.' + k, errs); }
-    for (const k of Object.keys(b)) if (!(k in a)) { if (!EXTRA.includes(p + '.' + k)) errs.push(p + '.' + k + ': unexpected key'); else if (typeof b[k] !== 'string' || !b[k].trim()) errs.push(p + '.' + k + ': empty'); }
+    for (const k of Object.keys(b)) if (!(k in a)) { if (!EXTRA.includes(p + '.' + k) && !EXTRA_RE.some(r => r.test(p + '.' + k))) errs.push(p + '.' + k + ': unexpected key'); else if (typeof b[k] !== 'string' || (!b[k].trim() && !EMPTY_OK.some(r => r.test(p + '.' + k)))) errs.push(p + '.' + k + ': empty'); }
   } else if (typeof a === 'string') {
     if (typeof b !== 'string') return errs.push(p + ': expected string');
-    if (!b.trim() && a.trim()) errs.push(p + ': empty');   // пустая строка допустима там, где она пустая и в эталоне (угол таблицы сравнения)
-    if (p !== '.lang' && p !== '.dir' && p !== '.name' && p !== '.dateLocale' && ph(a) !== ph(b)) errs.push(p + ': placeholders/tags differ (expected "' + ph(a) + '", got "' + ph(b) + '")');
+    if (!b.trim() && a.trim() && !EMPTY_OK.some(r => r.test(p))) errs.push(p + ': empty');   // пустая строка допустима там, где она пустая и в эталоне (угол таблицы сравнения)
+    if (p !== '.lang' && p !== '.dir' && p !== '.name' && p !== '.dateLocale' && phOf(a, p) !== phOf(b, p)) errs.push(p + ': placeholders/tags differ (expected "' + ph(a) + '", got "' + ph(b) + '")');
   }
 }
 for (const f of files) {

@@ -45,7 +45,11 @@ const businessJs = fs.readFileSync(path.join(SRC, 'business.js'), 'utf8').replac
 // Лендинг «CV под каждую вакансию» (/ru/cv/): разметку формы cvFormHTML() кладёт сборка, логику initCvForm() — сама страница; стили страницы — src/cv.css
 const cvFormHTML = require(path.join(SRC, 'cv.js'));
 const cvJs = fs.readFileSync(path.join(SRC, 'cv.js'), 'utf8').replace(/\nif \(typeof module[^\n]*\n?$/, '\n');
+// комментарии в cv.js — по-русски и упоминают русскую страницу: в лендинги на других языках код идёт без них (с 2026-10-24)
+const cvJsBare = cvJs.replace(/\/\*[\s\S]*?\*\//g, '').replace(/^[ \t]*\/\/.*\n/gm, '').replace(/[ \t]+\/\/ .*$/gm, '').replace(/\n{2,}/g, '\n');
 const cvCss = fs.readFileSync(path.join(SRC, 'cv.css'), 'utf8').replace(/\/\*[\s\S]*?\*\//g, '').replace(/\n+/g, '\n').trim();
+// неактивные кнопки скачивания (файлы примера на языке ещё не готовы, с 2026-10-24 — английская версия): стили только для таких страниц, cv.css не меняется
+const cvOffCss = fs.readFileSync(path.join(SRC, 'cv-off.css'), 'utf8').replace(/\/\*[\s\S]*?\*\//g, '').replace(/\n+/g, '\n').trim();
 const contactHTML = require(path.join(SRC, 'contact.js'));
 const feedbackEmail = String(cfg.feedbackEmail || '').trim().replace(/['\\<>"]/g, '');
 // Адрес, с которого Apps Script шлёт письма (в Gmail он должен быть добавлен как «Отправлять письма как»); по умолчанию — feedbackEmail
@@ -752,7 +756,7 @@ for (const L of locales) {
       // файлы примера: переключатель «Русский / English» и одна строка файлов на выбранном языке (без скрипта — обе строки с меткой RU / EN)
       `<div class="cvlangs cvdemo-files"><div class="cvlangsw" role="group" aria-label="${escFull(V.example && V.example.profile.cvFile ? V.example.profile.cvFile.langSwitch : '')}">` +
         D.fileGroups.map((g, i) => `<button type="button" data-l="${i}" aria-pressed="${i === 0}">${escFull(g.label)}</button>`).join('') + `</div>` +
-      D.fileGroups.map((g, i) => `<div class="cvfiles${i === 0 ? ' on' : ''}" data-l="${i}"><span class="cvlang">${escFull(g.lang)}</span>${g.files.map(f => `<a href="${imgRel}files/${f.f}" download data-dl="${f.dl}">${escFull(f.t)}</a>`).join('')}</div>`).join('') + `</div>` + (D.more && V.example ? `<a class="cvmore" href="#example">${escFull(D.more)} ↓</a>` : '') + `</figure>`;
+      D.fileGroups.map((g, i) => `<div class="cvfiles${i === 0 ? ' on' : ''}" data-l="${i}"><span class="cvlang">${escFull(g.lang)}</span>${g.files.map(f => f.f ? `<a href="${imgRel}files/${f.f}" download data-dl="${f.dl}">${escFull(f.t)}</a>` : `<button type="button" disabled>${escFull(f.t)}</button>`).join('')}</div>`).join('') + `</div>` + (D.more && V.example ? `<a class="cvmore" href="#example">${escFull(D.more)} ↓</a>` : '') + `</figure>`;
     // «Пример: от единого резюме до отклика» (с 2026-10-22, по просьбе заказчика): четыре вкладки на вымышленном кандидате; без скрипта все панели видны подряд
     const X = V.example;
     // сравнение «вакансия — кандидатка» в оценке: в обеих таблицах вакансия — первый столбец (синим), кандидатка — второй (серым); на телефоне строка — карточка с подписями
@@ -764,6 +768,8 @@ for (const L of locales) {
       // единое резюме: всё, что собрано о кандидате, с пометкой «войдёт в CV под эту вакансию» / «останется в едином резюме»; счётчик считается из самих данных
       (() => {
         const P = X.profile, tag = it => `<li class="${it.in ? 'in' : 'out'}">${escFull(it.t)}</li>`;
+        // файлы готового резюме: cvFile.file — начало имени файла (без ключа — пример Ирины Соколовой), пустая строка — файлов нет, кнопки неактивны
+        const cvBase = P.cvFile && P.cvFile.file !== undefined ? P.cvFile.file : 'cv-example-irina-sokolova';
         const all = [].concat(...P.jobs.map(j => j.items), ...P.early.map(j => j.items), P.intern.items, ...P.sections.map(s => s.items));
         const nIn = all.filter(x => x.in).length + 1, nAll = all.length + 1;   // + перерыв в работе: в CV входит одна строка о нём
         const titles = j => j.titles ? `<div class="cvtitles"><p class="cvtitles-l">${escFull(P.titlesLabel)}</p><ul>` +
@@ -782,8 +788,9 @@ for (const L of locales) {
           (P.cvFile ? `<div class="cvfile"><div class="cvfile-t"><strong>${escFull(P.cvFile.title)}</strong><p>${escFull(P.cvFile.text)}</p></div>` +
             `<div class="cvfile-b cvlangs"><div class="cvlangsw" role="group" aria-label="${escFull(P.cvFile.langSwitch)}">${P.cvFile.langs.map((l, i) => `<button type="button" data-l="${i}" aria-pressed="${i === 0}">${escFull(l.label)}</button>`).join('')}</div>` +
               `${P.cvFile.langs.map((l, i) => `<div class="cvfile-row${i === 0 ? ' on' : ''}" data-l="${i}"><span class="cvlang">${escFull(l.label)}</span>` +
-              `<a class="btn" href="${imgRel}files/cv-example-irina-sokolova${l.sfx}.pdf" download data-dl="pdf${l.sfx}">${escFull(P.cvFile.pdf)}</a>` +
-              `<a class="btn btn-ghost" href="${imgRel}files/cv-example-irina-sokolova${l.sfx}.docx" download data-dl="docx${l.sfx}">${escFull(P.cvFile.docx)}</a></div>`).join('')}</div></div>` : '') +
+              (cvBase ? `<a class="btn" href="${imgRel}files/${cvBase}${l.sfx}.pdf" download data-dl="pdf${l.sfx}">${escFull(P.cvFile.pdf)}</a>` +
+              `<a class="btn btn-ghost" href="${imgRel}files/${cvBase}${l.sfx}.docx" download data-dl="docx${l.sfx}">${escFull(P.cvFile.docx)}</a></div>` :
+              `<button type="button" class="btn" disabled>${escFull(P.cvFile.pdf)}</button><button type="button" class="btn btn-ghost" disabled>${escFull(P.cvFile.docx)}</button></div>`)).join('')}</div></div>` : '') +
           `<div class="cvlegend"><span class="in">${escFull(P.legendIn)}</span><span class="out">${escFull(P.legendOut)}</span></div>` +
           `<p class="cvcount">${escFull(P.count).replace('{in}', `<b>${nIn}</b>`).replace('{all}', `<b>${nAll}</b>`)}</p>` +
           `<h3>${escFull(P.expTitle)}</h3>` + P.jobs.map(job).join('') + gap + P.early.map(job).join('') + intern +
@@ -840,8 +847,11 @@ for (const L of locales) {
         `<div class="cvtabs cvtabs-end" role="group" aria-label="${escFull(X.title)}">` +
         X.tabs.map((tb, i) => `<button type="button" data-i="${i}" aria-controls="cvp${i}" aria-pressed="${i === 0}"><span>${i + 1}</span>${escFull(tb)}</button>`).join('') + `</div>` +
       `</div><p class="cvsub small">${escFull(X.note)}</p></section>` : '';
-    writeContentPage(L, 'cv/', { bare: true, noDate: true, langs: locales.filter(x => x.content.cv), css: cvCss, title: V.title, description: V.description,
-      crumbs: [{ name: V.h1 }], ldExtra: [ldFaq], files: ['src/cv.js', 'src/cv.css'],
+    // языковые версии лендинга друг на друга не ссылаются (с 2026-10-24, решение заказчика): langs — только сама локаль, без hreflang и og:locale:alternate;
+    // cvIndex в site.config.json — языки, где страница открыта поисковикам и входит в sitemap (остальные — noindex, пока заказчик не одобрит)
+    const filesOff = D.fileGroups.some(g => g.files.some(f => !f.f)) || !!(X && X.profile.cvFile && X.profile.cvFile.file === '') || !!(V.english && V.english.downloads.some(d => !d.f));
+    writeContentPage(L, 'cv/', { bare: true, noDate: true, langs: [L], noindex: !!cfg.cvIndex && !cfg.cvIndex.includes(L.lang), css: filesOff ? cvCss + '\n' + cvOffCss : cvCss, title: V.title, description: V.description,
+      crumbs: [{ name: V.h1 }], ldExtra: [ldFaq], files: ['src/cv.js', 'src/cv.css'].concat(filesOff ? ['src/cv-off.css'] : []),
       content: `<div class="cvpage">` +
         `<section class="cvhero"><div class="cvhero-text"><p class="cvbadge">${escFull(V.badge)}</p><h1>${escFull(V.h1)}</h1><p class="lead">${escFull(V.lead)}</p>` +
           `<ul class="cvpoints">${V.heroPoints.map(x => `<li>${tick}${escFull(x)}</li>`).join('')}</ul></div>` +
@@ -857,13 +867,14 @@ for (const L of locales) {
         (V.english ? (E => `<section class="cvsec cven" id="english"><h2>${escFull(E.title)}</h2><p class="cvsub">${escFull(E.lead)}</p>` +
           `<ul class="cvgrid cven-points">${E.points.map((x, i) => `<li style="--k:var(${K[(i + 3) % 4]})"><h3>${escFull(x.h)}</h3><p>${escFull(x.p)}</p></li>`).join('')}</ul>` +
           `<div class="cven-cmp"><h3>${escFull(E.compareTitle)}</h3><div class="cven-rows"><div class="cven-hd"><span>${escFull(E.ruLabel)}</span><span></span><span>${escFull(E.enLabel)}</span></div>` +
-            E.compare.map(r => `<div class="cven-row"><span class="ru">${escFull(r.ru)}</span><span class="arr" aria-hidden="true">→</span><span class="en" lang="en">${escFull(r.en)}</span></div>`).join('') + `</div></div>` +
-          `<div class="cven-dl"><span>${escFull(E.downloadsTitle)}:</span>${E.downloads.map(d => `<a class="btn btn-ghost" href="${imgRel}files/${d.f}" download data-dl="${d.dl}">${escFull(d.t)}</a>`).join('')}</div></section>`)(V.english) : '') +
+            E.compare.map(r => `<div class="cven-row"><span class="ru">${escFull(r.ru)}</span><span class="arr" aria-hidden="true">→</span><span class="en" lang="${escFull(r.lang || 'en')}">${escFull(r.en)}</span></div>`).join('') + `</div></div>` +
+          `<div class="cven-dl"><span>${escFull(E.downloadsTitle)}:</span>${E.downloads.map(d => d.f ? `<a class="btn btn-ghost" href="${imgRel}files/${d.f}" download data-dl="${d.dl}">${escFull(d.t)}</a>` : `<button type="button" class="btn btn-ghost" disabled>${escFull(d.t)}</button>`).join('')}</div></section>`)(V.english) : '') +
         `<section class="cvsec cvband"><h2>${escFull(V.founderTitle)}</h2><div class="cvauthor">` +
           `<div class="cvauthor-side">` + (A.photoAlt ? `<img class="cvphoto" src="${imgRel}img/armen-manukyan.webp" srcset="${imgRel}img/armen-manukyan.webp 1x, ${imgRel}img/armen-manukyan-2x.webp 2x" width="280" height="350" alt="${escFull(A.photoAlt)}" loading="lazy" decoding="async">` : '') +
           `<blockquote class="cvquote"><p>${escFull(A.text)}</p></blockquote></div>` +
           `<div class="cvauthor-body"><span class="cvname">${escFull(A.name)}</span><p class="cvrole">${escFull(A.role)}</p>` + listHtml('ul', A.facts) + `</div>` +
-          `<p class="cvsite"><span>${escFull(A.siteLabel)}</span><a href="${escFull(A.siteUrl)}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z"/></svg>${escFull(A.site)} <span aria-hidden="true">${arrow(L)}</span></a></p></div></section>` +
+          // ссылка на личный сайт — только если в локали есть author.site (в английской версии её нет: автор без привязки к стране, с 2026-10-24)
+          (A.site ? `<p class="cvsite"><span>${escFull(A.siteLabel)}</span><a href="${escFull(A.siteUrl)}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z"/></svg>${escFull(A.site)} <span aria-hidden="true">${arrow(L)}</span></a></p>` : '') + `</div></section>` +
         `<section class="cvsec" id="pricing"><h2>${escFull(V.pricingTitle)}</h2><p class="cvsub">${escFull(V.pricingLead)}</p><ul class="cvplans">` +
           V.plans.map((p, i) => `<li class="${i === 1 ? 'hot' : ''}"><div class="cvplan-head"><h3>${escFull(p.name)}</h3>${p.tag ? `<span class="cvtag">${escFull(p.tag)}</span>` : ''}</div>` +
             `<p class="cvprice">${p.old ? `<s>${escFull(p.old)}</s>` : ''}<b>${escFull(p.price)}</b><span>${escFull(p.per)}</span></p>` +
@@ -872,7 +883,7 @@ for (const L of locales) {
         `<section class="cvsec cvband cvfaq"><h2>${escFull(V.faqTitle)}</h2>` + V.faq.map(it => `<details><summary>${escFull(it.q)}</summary><p>${fill(it.a)}</p></details>`).join('') + `</section>` +
         `<section class="cvfinal" id="cvfinal"><h2>${escFull(V.finalTitle)}</h2><p>${escFull(V.finalLead)}</p>${form('2')}</section>` +
         `</div><div class="xbar no-print" id="cvFloat"><a class="btn" href="#cvfinal" data-cta>${escFull(V.floatButton)}</a><button class="xbar-x" type="button" id="cvFloatX" aria-label="${escFull(V.floatClose)}" title="${escFull(V.floatClose)}">×</button></div>`,
-      pageJs: cvJs + `initCvForm({T: ${JSON.stringify(VT).replace(/</g, '\\u003c')}, L: L, esc: esc, $: $, endpoint: ${jsStr(cfg.sendEndpoint)}, token: ${jsStr(cfg.sendToken)}, email: ${jsStr(feedbackEmail)}, pdVersion: ${jsStr(pdOn ? pdVersion : '')}});` });
+      pageJs: (L.lang === 'ru' ? cvJs : cvJsBare) + `initCvForm({T: ${JSON.stringify(VT).replace(/</g, '\\u003c')}, L: L, esc: esc, $: $, endpoint: ${jsStr(cfg.sendEndpoint)}, token: ${jsStr(cfg.sendToken)}, email: ${jsStr(feedbackEmail)}, pdVersion: ${jsStr(pdOn ? pdVersion : '')}});` });
   }
   // /disc-vs-mbti/ — сравнение моделей: таблица после второй секции
   const mb = C.mbti;
