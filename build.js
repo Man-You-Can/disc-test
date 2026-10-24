@@ -52,6 +52,8 @@ const cvCss = fs.readFileSync(path.join(SRC, 'cv.css'), 'utf8').replace(/\/\*[\s
 const cvOffCss = fs.readFileSync(path.join(SRC, 'cv-off.css'), 'utf8').replace(/\/\*[\s\S]*?\*\//g, '').replace(/\n+/g, '\n').trim();
 // фото автора без обрезки головы (src/cv-photo.css): во всех языках лендинга, кроме русского — русская страница не меняется без решения заказчика
 const cvPhotoCss = fs.readFileSync(path.join(SRC, 'cv-photo.css'), 'utf8').replace(/\/\*[\s\S]*?\*\//g, '').replace(/\n+/g, '\n').trim();
+// китайский и японский лендинг (src/cv-cjk.css, с 2026-10-24): цитата автора без курсива — у иероглифов его нет; только эти языки
+const cvCjkCss = fs.readFileSync(path.join(SRC, 'cv-cjk.css'), 'utf8').replace(/\/\*[\s\S]*?\*\//g, '').replace(/\n+/g, '\n').trim(), CV_CJK = ['zh', 'zh-hant', 'ja'];
 const contactHTML = require(path.join(SRC, 'contact.js'));
 const feedbackEmail = String(cfg.feedbackEmail || '').trim().replace(/['\\<>"]/g, '');
 // Адрес, с которого Apps Script шлёт письма (в Gmail он должен быть добавлен как «Отправлять письма как»); по умолчанию — feedbackEmail
@@ -852,8 +854,8 @@ for (const L of locales) {
     // языковые версии лендинга друг на друга не ссылаются (с 2026-10-24, решение заказчика): langs — только сама локаль, без hreflang и og:locale:alternate;
     // cvIndex в site.config.json — языки, где страница открыта поисковикам и входит в sitemap (остальные — noindex, пока заказчик не одобрит)
     const filesOff = D.fileGroups.some(g => g.files.some(f => !f.f)) || !!(X && X.profile.cvFile && X.profile.cvFile.file === '') || !!(V.english && V.english.downloads.some(d => !d.f));
-    writeContentPage(L, 'cv/', { bare: true, noDate: true, langs: [L], noindex: !!cfg.cvIndex && !cfg.cvIndex.includes(L.lang), css: [cvCss].concat(filesOff ? [cvOffCss] : [], L.lang !== 'ru' ? [cvPhotoCss] : []).join('\n'), title: V.title, description: V.description,
-      crumbs: [{ name: V.h1 }], ldExtra: [ldFaq], files: ['src/cv.js', 'src/cv.css'].concat(filesOff ? ['src/cv-off.css'] : [], L.lang !== 'ru' ? ['src/cv-photo.css'] : []),
+    writeContentPage(L, 'cv/', { bare: true, noDate: true, langs: [L], noindex: !!cfg.cvIndex && !cfg.cvIndex.includes(L.lang), css: [cvCss].concat(filesOff ? [cvOffCss] : [], L.lang !== 'ru' ? [cvPhotoCss] : [], CV_CJK.includes(L.lang) ? [cvCjkCss] : []).join('\n'), title: V.title, description: V.description,
+      crumbs: [{ name: V.h1 }], ldExtra: [ldFaq], files: ['src/cv.js', 'src/cv.css'].concat(filesOff ? ['src/cv-off.css'] : [], L.lang !== 'ru' ? ['src/cv-photo.css'] : [], CV_CJK.includes(L.lang) ? ['src/cv-cjk.css'] : []),
       content: `<div class="cvpage">` +
         `<section class="cvhero"><div class="cvhero-text"><p class="cvbadge">${escFull(V.badge)}</p><h1>${escFull(V.h1)}</h1><p class="lead">${escFull(V.lead)}</p>` +
           `<ul class="cvpoints">${V.heroPoints.map(x => `<li>${tick}${escFull(x)}</li>`).join('')}</ul></div>` +
