@@ -4,9 +4,9 @@
 // Отдаёт собранный сайт, подставляя в страницы сохранённый скрипт счётчика и перехватчик: все запросы к хостам счётчика
 // (fetch, XMLHttpRequest, sendBeacon, картинки, скрипты) уходят на этот же сервер и записываются; в систему аналитики не уходит ничего.
 //   http://localhost:8770/__mc/dump  — записанные запросы: адрес страницы, page-url, page-ref (хэш обрезан до длины) и в каких
-//                                      параметрах или теле найден хэш с данными (#r=…, #u=…); поле leaks — сколько таких запросов
+//                                      параметрах или теле найден хэш с данными (#r=…, #u=…, #c=…); поле leaks — сколько таких запросов
 //   http://localhost:8770/__mc/reset — очистить запись
-// Проверять с выдуманным кодом результата: страница с #r=…, смена языка, обновление, «Назад», 404, страница отчёта, отписка (#u=…).
+// Проверять с выдуманным кодом результата: страница с #r=…, смена языка, обновление, «Назад», 404, страница отчёта, отписка (#u=…), подтверждение подписки (#c=…).
 // Запись посещений на стенде не запускается: её запросы стенд не проверяет.
 const http = require('http'), fs = require('fs'), path = require('path');
 const tagFile = path.resolve(process.argv[2] || 'tag.js'), port = +(process.argv[3] || 8770), root = path.resolve(process.argv[4] || path.join(__dirname, '..', 'docs'));
@@ -40,7 +40,7 @@ const SHIM = `<script>
 </script>`;
 function finds(s) {   // где в строке встречается хэш с личными данными (в чистом или закодированном виде)
   const out = []; let v = String(s || '');
-  for (let i = 0; i < 3; i++) { if (/#(r|u)=|[#&]r=DISC1|DISC1\.eyJ/.test(v)) { out.push('enc' + i); break; } try { const d = decodeURIComponent(v); if (d === v) break; v = d; } catch (e) { break; } }
+  for (let i = 0; i < 3; i++) { if (/#(r|u|c)=|[#&]r=DISC1|DISC1\.eyJ/.test(v)) { out.push('enc' + i); break; } try { const d = decodeURIComponent(v); if (d === v) break; v = d; } catch (e) { break; } }
   return out.length > 0;
 }
 function analyse() {

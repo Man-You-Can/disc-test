@@ -4,7 +4,7 @@
   "name": "English",
   "dateLocale": "en-US",
   "title": "Free DISC Personality Test & Assessment — No Sign-Up",
-  "description": "Free online DISC assessment: 24 questions, 10 minutes, no sign-up. Find your primary DISC style, strengths and growth areas. Instant results, also by email.",
+  "description": "Free online DISC assessment: 24 questions, 10 minutes, no sign-up. Find your primary DISC style, strengths and growth areas. Instant results on screen.",
   "brand": "DISC Test",
   "keys": { "D": "Dominance", "I": "Influence", "S": "Steadiness", "C": "Conscientiousness" },
   "short": { "D": "Results and control", "I": "People and enthusiasm", "S": "Support and stability", "C": "Accuracy and quality" },
@@ -517,7 +517,7 @@
         },
         {
           "q": "Is the test really free?",
-          "a": "Yes: the test and the result are free, with no sign-up and no hidden charges. The result appears on screen right after the last block, and you can also have it emailed to you if you like. The site has one paid service — the in-depth DISC profile; it is described in the “Services” section and is entirely optional."
+          "a": "Yes: the test and the result are free, with no sign-up and no hidden charges. The result appears on screen right after the last block, and you can save it as a PDF. The site has one paid service — the in-depth DISC profile; it is described in the “Services” section and is entirely optional."
         },
         {
           "q": "What do the letters D, I, S, C mean?",
@@ -540,8 +540,8 @@
           "a": "Yes. Send your colleagues the link to the site; on the result screen each of them gets a link and a code, so ask them to forward those to you. In the admin panel (link in the footer) the codes are collected into a table you can copy into Excel. The table is stored only in your browser."
         },
         {
-          "q": "Where does the result go and who can see it?",
-          "a": "The result is shown on screen and saved in your browser. If you enter your name and email address on the result screen, the report is emailed to that address, and your name, email address and result are recorded in the site owner’s results database; without your consent they are not used for any other purpose and are not passed to third parties. Other people will see your report only if you share the link to it yourself. See the Privacy page for details."
+          "q": "Where is the result stored and who can see it?",
+          "a": "The result is shown on screen and saved in your browser. Other people will see your report only if you share the link to it yourself. See the Privacy page for details."
         },
         {
           "q": "Can I take the test again?",
@@ -572,7 +572,7 @@
       "sections": [
         {
           "h": "Why this site exists",
-          "p": ["We wanted a DISC test that anyone can take in ten minutes without signing up or paying, that gives them a clear report in their own language and that they can share with their team. The site works in 14 languages, the result appears instantly and can be emailed to you on request, and managers and HR have a panel where participants’ results are collected into a table."]
+          "p": ["We wanted a DISC test that anyone can take in ten minutes without signing up or paying, that gives them a clear report in their own language and that they can share with their team. The site works in 14 languages, the result appears instantly and can be saved as a PDF, and managers and HR have a panel where participants’ results are collected into a table."]
         },
         {
           "h": "What the test is based on",
@@ -664,14 +664,14 @@
           "h": "Where the data is stored and who receives it",
           "p": [
             "The results database is on a server that the site owner rents from a hosting provider. Emails are sent by a mail service. These companies process the data on our instructions and only to keep the site running. The email goes to the address you entered yourself. The data is not passed or sold to third parties for their own purposes.",
-            "Only people who ticked the separate consent box in the result form receive our newsletter. In that case the database also stores the fact of consent, its date and its wording, and your email address, name and language are used to send you emails from disc-test.org: DISC materials, site news and promotional offers. You can unsubscribe at any time, using the link in any email or by writing to {email}.",
-            "The hosting provider receives standard technical request data: IP address, browser type, page address. Fonts are served from this site itself. Visit statistics are collected by a web analytics system: it receives anonymized visit data, namely the page address without the result code, the referrer, device and browser type, and a recording of on-page actions; the name and email fields, the result link and code are excluded from the recording. You can stop the collection in your browser settings or with a tracker blocker. No advertising trackers are used."
+            "Only people who ticked the separate consent box — in the result form or in the newsletter sign-up form on the home page — receive our newsletter. After the sign-up form, you receive an email with a confirmation link: without confirmation no newsletter is sent, and the address is deleted after 7 days. The database stores the fact of consent, its date and its wording, and your email address, name (if you entered it) and language are used to send you emails from disc-test.org: DISC materials, new tests, career growth and job-search tips, site news and promotional offers. You can unsubscribe at any time, using the link in any email or by writing to {email}.",
+            "The hosting provider receives standard technical request data: IP address, browser type, page address. Fonts are served from this site itself. Visit statistics are collected by a web analytics system: it receives visit data, namely the page address, the referrer, device and browser type, and a recording of on-page actions; the name and email fields are excluded from the recording. On the result screen, the page address contains the result code: your answers, the test date and your name if you entered it, but not your email. You can stop the collection in your browser settings or with a tracker blocker. No advertising trackers are used."
           ]
         },
         {
           "h": "Legal basis and retention periods",
           "p": [
-            "We process a result sent by email on the basis of your consent and keep it for three years from the date it was sent or until you withdraw your consent. Newsletter data is processed on the basis of a separate consent, until you unsubscribe. Messages from the contact form are processed on the basis of consent and kept for one year after our reply.",
+            "We process a result sent by email on the basis of your consent and keep it for three years from the date it was sent or until you withdraw your consent. Newsletter data is processed on the basis of a separate consent, until you unsubscribe; an address whose subscription has not been confirmed is kept for 7 days. Messages from the contact form are processed on the basis of consent and kept for one year after our reply.",
             "When the period expires or you withdraw your consent, the data is deleted from the database. It disappears from backups as they are refreshed, no later than six months afterwards."
           ]
         },
@@ -727,7 +727,8 @@
           "h": "Purposes of processing and the data involved",
           "p": [
             "The “Get your result by email” form: name, email address, language version of the site, test date, answers and DISC test result. The purpose is to email me my test result and to keep the result so that it can be sent again and my enquiries can be answered.",
-            "The contact form: name, email address, message text and attached files. The purpose is to consider my enquiry and reply to it."
+            "The contact form: name, email address, message text and attached files. The purpose is to consider my enquiry and reply to it.",
+            "The newsletter sign-up form on the home page: email address and language version of the site. The purpose is to send me an email with a link to confirm the subscription and to keep the newsletter subscriber list."
           ]
         },
         {
@@ -745,7 +746,7 @@
         {
           "h": "How long the consent is valid",
           "p": [
-            "The consent is valid for three years from the date the “Get your result by email” form is submitted, and for one year after the reply to an enquiry from the contact form, or until it is withdrawn."
+            "The consent is valid for three years from the date the “Get your result by email” form is submitted, for one year after the reply to an enquiry from the contact form, and, for the newsletter sign-up form, until I unsubscribe from the newsletter (7 days if the subscription is not confirmed), or until it is withdrawn."
           ]
         },
         {
@@ -777,11 +778,11 @@
       "sections": [
         {
           "h": "How to get it",
-          "p": ["The in-depth profile is emailed to the address you give at payment, no later than 24 hours after payment."]
+          "p": ["The in-depth profile is emailed to the address you give at payment, as soon as payment goes through."]
         },
         {
           "h": "What stays free",
-          "p": ["The test itself, the on-screen result and the result email, the pages of the sixteen profiles and the printable PDF version of the test remain free and require no sign-up. The in-depth profile is purchased only if you want it."]
+          "p": ["The test itself, the on-screen result and the PDF summary report, the pages of the sixteen profiles and the printable PDF version of the test remain free and require no sign-up. The in-depth profile is purchased only if you want it."]
         },
         {
           "h": "Questions about the service",
@@ -789,12 +790,954 @@
         }
       ]
     },
+    "cv": {
+      "title": "AI-Tailored Resumes for Every Job — Early Access",
+      "description": "Turn all your experience into one master resume, get an honest 1–10 score for every job, and get a tailored resume and cover letter built only from your facts. Early-access pricing for the first 1,000 members.",
+      "badge": "Early access · special pricing for the first 1,000",
+      "h1": "A resume tailored to any job in minutes",
+      "lead": "Upload your career history once: old and new resumes, past job descriptions, your LinkedIn profile. Our AI turns it into a verified master resume, gives every job an honest 1⁠–⁠10 fit score, and writes a tailored resume and cover letter for the jobs you pick.",
+      "heroPoints": [
+        "Tailored resume for every job",
+        "Matching cover letter",
+        "1⁠–⁠10 match score",
+        "English and other languages"
+      ],
+      "formTitle": "Lock in early-access pricing",
+      "formLead": "Enter your name and email and we’ll let you know when access opens. The first 1,000 members get Mid-Level for $49 and Senior for $99 a month — about half the regular price.",
+      "formNote": "No credit card. No commitment.",
+      "button": "Get early access",
+      "floatButton": "Get early access",
+      "floatClose": "Hide",
+      "painTitle": "Why you’re not hearing back",
+      "pain": [
+        {
+          "h": "The same resume for every job",
+          "p": "Recruiters and applicant tracking systems screen for what this specific role needs. If your resume doesn’t show it, you’re out."
+        },
+        {
+          "h": "Dozens of versions, each with different numbers",
+          "p": "Over the years you pile up resumes with different dates, titles and results. Recruiters check your resume against LinkedIn — and spot the mismatches."
+        },
+        {
+          "h": "Tailoring takes forever",
+          "p": "Rewriting your resume and writing a cover letter for each job by hand takes hours. So most people send the same file everywhere."
+        }
+      ],
+      "demo": {
+        "label": "Sample job score",
+        "role": "Head of E-commerce",
+        "company": "Retail chain · Chicago, IL",
+        "score": "7",
+        "scoreOf": "out of 10",
+        "scoreLabel": "match score",
+        "scoreNote": "Match score from 1 to 10: how well the candidate’s experience fits the job’s requirements, and how well the job fits the candidate’s search criteria.",
+        "rows": [
+          {
+            "t": "Marketplaces and owned site",
+            "s": "yes",
+            "v": "Match"
+          },
+          {
+            "t": "Team of 15+",
+            "s": "yes",
+            "v": "Match"
+          },
+          {
+            "t": "Unit economics (CAC, LTV)",
+            "s": "part",
+            "v": "Partial match"
+          },
+          {
+            "t": "CPG experience",
+            "s": "no",
+            "v": "No match"
+          }
+        ],
+        "verdictTitle": "Our take",
+        "verdict": "Lead with online sales growth and the marketplace launch. We won’t mention CAC or LTV without real numbers — we’ll ask you first.",
+        "verdictTag": "Worth applying",
+        "fileGroups": [
+          {
+            "lang": "EN",
+            "label": "English",
+            "files": [
+              {
+                "t": "Resume.docx",
+                "f": "",
+                "dl": "docx"
+              },
+              {
+                "t": "Resume.pdf",
+                "f": "",
+                "dl": "pdf"
+              },
+              {
+                "t": "Cover letter",
+                "f": "",
+                "dl": "letter"
+              }
+            ]
+          },
+          {
+            "lang": "DE",
+            "label": "Deutsch",
+            "files": [
+              {
+                "t": "Resume.docx",
+                "f": "",
+                "dl": "docx-de"
+              },
+              {
+                "t": "Resume.pdf",
+                "f": "",
+                "dl": "pdf-de"
+              },
+              {
+                "t": "Cover letter",
+                "f": "",
+                "dl": "letter-de"
+              }
+            ]
+          }
+        ],
+        "more": "See the full example"
+      },
+      "howTitle": "How it works",
+      "how": [
+        {
+          "h": "Upload everything you have",
+          "p": "Old and new resumes (PDF or DOCX) plus your LinkedIn profile. The more versions you add, the more complete your master resume."
+        },
+        {
+          "h": "Answer a few questions",
+          "p": "The AI pulls the facts into a master resume, finds mismatches between versions and asks you only what it can’t figure out on its own."
+        },
+        {
+          "h": "Add a job posting",
+          "p": "Paste a link or the full text. In a few minutes you get a 1⁠–⁠10 score, a resume in DOCX and PDF, and a cover letter."
+        }
+      ],
+      "example": {
+        "title": "Example: from master resume to application",
+        "lead": "See it in action with a fictional candidate and job posting.",
+        "note": "The data in this example is fictional",
+        "more": "Show more",
+        "tabs": [
+          "Master resume",
+          "Search criteria",
+          "Job posting",
+          "Score",
+          "Cover letter",
+          "Dashboard"
+        ],
+        "profile": {
+          "name": "Megan Brooks",
+          "headline": "Head of E-commerce · Chicago, IL",
+          "sources": "Built from 4 resume versions, her LinkedIn and Indeed profiles, and answers to a few questions",
+          "cvFile": {
+            "title": "Ready-to-send resume — 2 pages, English and German",
+            "text": "From this master resume, we built a version for the Head of E-commerce role in two languages: the most relevant points up top, no filler.",
+            "pdf": "Download PDF",
+            "docx": "Download DOCX",
+            "langSwitch": "Resume language",
+            "langs": [
+              {
+                "label": "English",
+                "sfx": ""
+              },
+              {
+                "label": "Deutsch",
+                "sfx": "-de"
+              }
+            ],
+            "file": ""
+          },
+          "legendIn": "Goes into the resume for this job",
+          "legendOut": "Stays in the master resume",
+          "count": "For the Head of E-commerce role, we use {in} of {all} items",
+          "expTitle": "Work experience",
+          "titlesLabel": "Title variations",
+          "pickLabel": "for this job",
+          "flagLabel": "Conflict resolved",
+          "jobs": [
+            {
+              "period": "Mar 2021 – present",
+              "role": "Director of E-commerce",
+              "company": "Home goods retail chain, 240 stores",
+              "titles": [
+                {
+                  "t": "Director of E-commerce",
+                  "src": "offer letter",
+                  "pick": true
+                },
+                {
+                  "t": "Head of E-commerce",
+                  "src": "LinkedIn",
+                  "pick": false
+                },
+                {
+                  "t": "E-commerce Manager",
+                  "src": "2021 resume, before the marketplace launch",
+                  "pick": false
+                }
+              ],
+              "items": [
+                {
+                  "t": "Grew online sales from $45M to $130M a year (2.9x) in 3 years",
+                  "in": true
+                },
+                {
+                  "t": "Launched the chain on Amazon, Walmart Marketplace and Target Plus — now 31% of online revenue",
+                  "in": true
+                },
+                {
+                  "t": "Built a team of 18: marketplaces, website, content, analytics",
+                  "in": true
+                },
+                {
+                  "t": "Lifted site conversion from 1.4% to 2.3% by redesigning product pages and checkout",
+                  "in": true
+                },
+                {
+                  "t": "Migrated the online store’s warehouse to a new inventory management system",
+                  "in": false
+                },
+                {
+                  "t": "Trained staff at all 240 stores on buy online, pick up in store (BOPIS)",
+                  "in": false
+                }
+              ],
+              "note": "The 2022 resume says a team of 12; LinkedIn says 18. Confirmed with the candidate: 18 people since 2023."
+            },
+            {
+              "period": "Jun 2017 – Feb 2021",
+              "role": "Senior Category Manager, Home Appliances",
+              "company": "Online electronics retailer",
+              "titles": [
+                {
+                  "t": "Senior Category Manager, Home Appliances",
+                  "src": "2019 promotion letter",
+                  "pick": true
+                },
+                {
+                  "t": "Category Lead, Appliances",
+                  "src": "LinkedIn",
+                  "pick": false
+                },
+                {
+                  "t": "Category Manager",
+                  "src": "2018 resume, before the promotion",
+                  "pick": false
+                }
+              ],
+              "items": [
+                {
+                  "t": "Tripled category revenue to $200M a year",
+                  "in": true
+                },
+                {
+                  "t": "Managed 200+ vendors; launched a third-party marketplace model for the category",
+                  "in": true
+                },
+                {
+                  "t": "Negotiated co-op marketing budgets with vendors",
+                  "in": false
+                },
+                {
+                  "t": "Mentored 4 interns",
+                  "in": false
+                }
+              ],
+              "note": "Two resume versions list different end dates: 2020 and 2021. Her employment verification letter confirms February 2021."
+            }
+          ],
+          "gap": {
+            "period": "Jun 2016 – May 2017",
+            "title": "Career break — 1 year",
+            "label": "How each version explains the gap",
+            "variants": [
+              {
+                "t": "“Stay-at-home parent”",
+                "src": "2017 resume"
+              },
+              {
+                "t": "“Personal sabbatical, travel”",
+                "src": "Indeed profile"
+              },
+              {
+                "t": "“Freelance: online store setup”",
+                "src": "2018 resume"
+              }
+            ],
+            "resolved": "Confirmed with the candidate: she was a full-time parent; in the last three months, she took a web analytics course and did two small projects for friends’ online stores.",
+            "pick": "On the resume: “Career break: full-time parent; web analytics course” — short, honest, no extra detail."
+          },
+          "early": [
+            {
+              "period": "Sep 2013 – May 2016",
+              "role": "Online Sales Manager",
+              "company": "Apparel retail chain",
+              "titles": [
+                {
+                  "t": "Online Sales Manager",
+                  "src": "offer letter",
+                  "pick": true
+                },
+                {
+                  "t": "E-commerce Manager",
+                  "src": "LinkedIn",
+                  "pick": false
+                }
+              ],
+              "items": [
+                {
+                  "t": "Launched the chain’s online store, reaching 8% of total revenue in year two",
+                  "in": true
+                },
+                {
+                  "t": "Managed the chain’s social media",
+                  "in": false
+                }
+              ],
+              "note": ""
+            }
+          ],
+          "intern": {
+            "period": "Jul 2012 – Aug 2012",
+            "role": "Summer internship",
+            "company": "Bank, retail banking division",
+            "items": [
+              {
+                "t": "2-month internship after junior year",
+                "in": false
+              }
+            ],
+            "why": "Left out: too old and unrelated to e-commerce. Worth including for fintech roles."
+          },
+          "sections": [
+            {
+              "h": "Education",
+              "items": [
+                {
+                  "t": "Illinois State University, BS in Information Systems, 2013",
+                  "in": true
+                }
+              ]
+            },
+            {
+              "h": "Professional Development",
+              "items": [
+                {
+                  "t": "Web analytics, 2017",
+                  "in": true
+                },
+                {
+                  "t": "P&L management, 2022",
+                  "in": true
+                },
+                {
+                  "t": "Photography basics, 2019",
+                  "in": false
+                }
+              ]
+            },
+            {
+              "h": "Languages",
+              "items": [
+                {
+                  "t": "Spanish — conversational",
+                  "in": true
+                },
+                {
+                  "t": "French — basic",
+                  "in": false
+                }
+              ]
+            },
+            {
+              "h": "Awards and speaking",
+              "items": [
+                {
+                  "t": "“Project of the Year” company award for the marketplace launch, 2022",
+                  "in": true
+                },
+                {
+                  "t": "Speaker at an industry e-commerce conference, 2023",
+                  "in": true
+                },
+                {
+                  "t": "Mentor at a university startup accelerator, 2024",
+                  "in": false
+                }
+              ]
+            },
+            {
+              "h": "Interests",
+              "items": [
+                {
+                  "t": "Running — three half marathons",
+                  "in": false
+                },
+                {
+                  "t": "Photography",
+                  "in": false
+                },
+                {
+                  "t": "Board games",
+                  "in": false
+                },
+                {
+                  "t": "Animal shelter volunteer",
+                  "in": false
+                },
+                {
+                  "t": "Yoga",
+                  "in": false
+                },
+                {
+                  "t": "Cooking",
+                  "in": false
+                }
+              ],
+              "why": "Left off the resume: not relevant to this job. Running and volunteering can come up in an interview."
+            }
+          ],
+          "skillsTitle": "Key skills",
+          "skills": [
+            "Marketplaces",
+            "E-commerce P&L",
+            "Unit economics",
+            "Team leadership",
+            "Web analytics",
+            "Assortment and pricing"
+          ]
+        },
+        "search": {
+          "title": "Head of E-commerce",
+          "subtitle": "Primary search profile · built from her answers",
+          "groups": [
+            {
+              "h": "Titles",
+              "items": [
+                "Head of E-commerce",
+                "Director of E-commerce",
+                "VP of Digital Commerce"
+              ]
+            },
+            {
+              "h": "Level",
+              "items": [
+                "Director or above",
+                "Reporting to the CEO preferred"
+              ]
+            },
+            {
+              "h": "Companies",
+              "items": [
+                "Retailers and brands with their own online store",
+                "$500M+ in annual revenue",
+                "Established companies, not early-stage startups"
+              ]
+            },
+            {
+              "h": "Industries",
+              "items": [
+                "Priority: home goods, electronics, home improvement",
+                "Also open to: CPG, apparel, baby products"
+              ]
+            },
+            {
+              "h": "Salary",
+              "items": [
+                "Base salary: $190,000+",
+                "Target: $220,000"
+              ]
+            },
+            {
+              "h": "Location and work setup",
+              "items": [
+                "Chicago: hybrid or on-site",
+                "Remote if the company is based elsewhere",
+                "Not open to relocation"
+              ]
+            },
+            {
+              "h": "Employment type",
+              "items": [
+                "Full-time, permanent"
+              ]
+            }
+          ],
+          "stopTitle": "Dealbreakers",
+          "stop": [
+            "Tobacco and alcohol",
+            "Roles below director level",
+            "Base salary under $190,000"
+          ],
+          "otherTitle": "Second search profile",
+          "other": "Head of Marketplaces at a manufacturer: same level and pay; home appliances and home goods.",
+          "note": "These criteria drive the second half of the score: how well the job fits her."
+        },
+        "vacancy": {
+          "role": "Head of E-commerce",
+          "company": "Retail chain · Chicago, IL",
+          "meta": "Hybrid · $200,000–$240,000 base salary",
+          "sections": [
+            {
+              "h": "Responsibilities",
+              "items": [
+                "Grow sales through our own website and on marketplaces",
+                "Own the e-commerce P&L and the 2027 growth plan",
+                "Lead an e-commerce team of 15+",
+                "Own channel-level unit economics: CAC, LTV, margin"
+              ]
+            },
+            {
+              "h": "Requirements",
+              "items": [
+                "5+ years in e-commerce, including 2+ years in a leadership role",
+                "Experience growing marketplace sales and an owned e-commerce site",
+                "Managing a team of 15+",
+                "Solid grasp of unit economics: CAC, LTV",
+                "CPG experience"
+              ]
+            },
+            {
+              "h": "What we offer",
+              "items": [
+                "Hybrid, Chicago office",
+                "Base salary of $200,000–$240,000",
+                "Reports to the Chief Commercial Officer"
+              ]
+            }
+          ]
+        },
+        "score": {
+          "total": "7",
+          "of": "out of 10",
+          "label": "match score",
+          "note": "The overall match score from 1 to 10 is the average of two scores: how well the candidate fits the job, and how well the job fits her.",
+          "parts": [
+            {
+              "label": "Candidate fits the job",
+              "value": "6 out of 10"
+            },
+            {
+              "label": "Job fits the candidate",
+              "value": "8 out of 10"
+            }
+          ],
+          "reqTitle": "Does the candidate fit the job?",
+          "rows": [
+            {
+              "t": "Marketplaces and owned site",
+              "s": "yes",
+              "v": "Match",
+              "why": "Amazon, Walmart Marketplace, Target Plus — 31% of online revenue; the chain’s website"
+            },
+            {
+              "t": "Team of 15+",
+              "s": "yes",
+              "v": "Match",
+              "why": "Team of 18"
+            },
+            {
+              "t": "E-commerce P&L",
+              "s": "yes",
+              "v": "Match",
+              "why": "Online sales up from $45M to $130M a year"
+            },
+            {
+              "t": "Unit economics (CAC, LTV)",
+              "s": "part",
+              "v": "Partial match",
+              "why": "Knows marketplace unit economics, but the master resume has no CAC or LTV numbers"
+            },
+            {
+              "t": "CPG experience",
+              "s": "no",
+              "v": "No match",
+              "why": "Home goods is adjacent, but it isn’t CPG"
+            }
+          ],
+          "critTitle": "Does the job fit the candidate?",
+          "crit": [
+            {
+              "want": "Director or above",
+              "offer": "Head of E-commerce",
+              "s": "yes",
+              "v": "Match"
+            },
+            {
+              "want": "$190,000+ base",
+              "offer": "$200,000–$240,000 base",
+              "s": "yes",
+              "v": "Match"
+            },
+            {
+              "want": "Chicago, hybrid or on-site",
+              "offer": "Hybrid, Chicago office",
+              "s": "yes",
+              "v": "Match"
+            },
+            {
+              "want": "Home goods, electronics, home improvement; open to CPG",
+              "offer": "CPG retail",
+              "s": "yes",
+              "v": "Match"
+            },
+            {
+              "want": "Reporting to the CEO preferred",
+              "offer": "Reports to the Chief Commercial Officer",
+              "s": "part",
+              "v": "Partial match"
+            }
+          ],
+          "verdictTitle": "Our take",
+          "verdict": "Her experience covers the essentials: the company website, marketplaces and team size. Gaps: CPG and CAC/LTV numbers.",
+          "verdictTag": "Worth applying",
+          "topTitle": "Lead the resume with",
+          "top": [
+            "Online sales growth from $45M to $130M",
+            "Launch on three marketplaces — 31% of online revenue",
+            "Team of 18"
+          ],
+          "skipTitle": "What we won’t claim",
+          "skip": [
+            "CAC and LTV numbers — not in the master resume, so we’ll ask her first",
+            "CPG experience — not claimed; addressed in the cover letter"
+          ],
+          "reqCols": [
+            "Job requires",
+            "Candidate has",
+            "Fit"
+          ],
+          "critCols": [
+            "Job offers",
+            "Candidate wants",
+            "Fit"
+          ]
+        },
+        "letter": {
+          "subject": "Subject: Application for Head of E-commerce — Megan Brooks",
+          "body": [
+            "Dear Hiring Manager,",
+            "I’m applying for the Head of E-commerce role. Since 2021, I’ve led e-commerce for a 240-store home goods chain, growing online sales from $45M to $130M a year and launching the chain on Amazon, Walmart Marketplace and Target Plus, which now bring in 31% of online revenue. My team of 18 covers marketplaces, the website, content and analytics.",
+            "You’re looking for someone to grow both your website and your marketplace business — that’s exactly what I do now. I haven’t worked in CPG, but home goods is also high-volume retail with a broad assortment and fast delivery, and the online playbook is very similar.",
+            "I’d welcome the chance to discuss how I can accelerate growth in your online channel."
+          ],
+          "sign": "Best regards, Megan Brooks",
+          "fullTitle": "Full version — for email",
+          "copy": "Copy text",
+          "copied": "Copied",
+          "shortTitle": "Short version — for a LinkedIn message or an Indeed application",
+          "short": "Hi there, I’m applying for your Head of E-commerce role. Since 2021, I’ve led e-commerce for a 240-store home goods chain: online sales grew from $45M to $130M, I launched the chain on Amazon, Walmart Marketplace and Target Plus (31% of online revenue), and I lead a team of 18. I’ve attached my resume and would be glad to set up a call."
+        },
+        "dashboard": {
+          "title": "My jobs",
+          "lead": "All of her jobs in one place: match score, recommendation and documents ready to send.",
+          "all": "All",
+          "cols": [
+            "Job",
+            "Score",
+            "Recommendation",
+            "Documents"
+          ],
+          "recLabels": {
+            "go": "Apply",
+            "maybe": "Maybe",
+            "no": "Skip"
+          },
+          "docs": [
+            "Resume",
+            "Letter"
+          ],
+          "noDocs": "None yet",
+          "of": "out of 10",
+          "rows": [
+            {
+              "role": "VP of E-commerce",
+              "company": "Home appliance manufacturer",
+              "place": "Chicago, hybrid",
+              "score": 9,
+              "rec": "go",
+              "why": "Category and marketplace experience — a direct fit"
+            },
+            {
+              "role": "Head of E-commerce",
+              "company": "Consumer electronics retailer",
+              "place": "Chicago, on-site",
+              "score": 8,
+              "rec": "go",
+              "why": "Electronics is a top-priority industry; website and marketplaces"
+            },
+            {
+              "role": "Head of Marketplaces",
+              "company": "Home goods brand",
+              "place": "Chicago, hybrid",
+              "score": 8,
+              "rec": "go",
+              "why": "Fits her second search profile"
+            },
+            {
+              "role": "Head of E-commerce",
+              "company": "Retail chain",
+              "place": "Chicago, hybrid",
+              "score": 7,
+              "rec": "go",
+              "why": "Gaps: CPG and CAC/LTV numbers"
+            },
+            {
+              "role": "Director of Digital Commerce",
+              "company": "CPG manufacturer",
+              "place": "Minneapolis, remote",
+              "score": 6,
+              "rec": "maybe",
+              "why": "The key requirement is CPG experience, which she lacks"
+            },
+            {
+              "role": "Marketplace Manager",
+              "company": "Online apparel store",
+              "place": "Chicago, on-site",
+              "score": 3,
+              "rec": "no",
+              "why": "Below her level; pays up to $90,000"
+            },
+            {
+              "role": "Head of E-commerce",
+              "company": "Tobacco company",
+              "place": "Chicago, on-site",
+              "score": 2,
+              "rec": "no",
+              "why": "Industry on her dealbreaker list"
+            }
+          ],
+          "note": "Dashboard mockup. In the live product, you add jobs by link or from curated job picks and open or download the resume and cover letter in one click."
+        }
+      },
+      "featuresTitle": "What you get",
+      "features": [
+        {
+          "h": "Master resume",
+          "p": "All your resume versions in one verified document: titles, dates, numbers and results. No contradictions in your work history."
+        },
+        {
+          "h": "Honest job score",
+          "p": "From 1 to 10: how well your experience matches the requirements and how well the job fits you. If your chances are slim, we’ll say so."
+        },
+        {
+          "h": "A resume for every job",
+          "p": "We put what each employer is looking for front and center. You get ready-to-send files in DOCX and PDF."
+        },
+        {
+          "h": "Cover letter",
+          "p": "A full version for email and a short one for a LinkedIn message or an Indeed application."
+        },
+        {
+          "h": "Application dashboard",
+          "p": "Where you applied, when, with which resume, and where each application stands — all in one place, with reminders."
+        },
+        {
+          "h": "English and other languages",
+          "p": "Resumes and cover letters in English and other languages — for jobs in the U.S. and abroad."
+        }
+      ],
+      "english": {
+        "title": "Your resume in other languages — no translator needed",
+        "lead": "A word-for-word translation isn’t enough: a recruiter in Berlin or Madrid expects a different structure, local job titles, and familiar date and number formats. We write your resume and cover letter in another language following local conventions — from the same facts as your English version.",
+        "points": [
+          {
+            "h": "Not a translation — a local resume",
+            "p": "Structure and phrasing the way resumes are written in that country, with the sections local recruiters expect."
+          },
+          {
+            "h": "Local job titles",
+            "p": "“Leiterin E-Commerce” in Germany, “Responsable de E-commerce” in Spain — the titles local recruiters search for, confirmed with you."
+          },
+          {
+            "h": "Same facts, local formats",
+            "p": "Amounts and dates written the local way (130 Mio. USD, mar. 2021). Nothing that isn’t in your master resume."
+          },
+          {
+            "h": "Cover letter, too",
+            "p": "A full version for email and a short one for LinkedIn or a messaging app — in the language of the posting."
+          }
+        ],
+        "compareTitle": "How resume lines change",
+        "ruLabel": "In your English resume",
+        "enLabel": "In the German or Spanish resume",
+        "compare": [
+          {
+            "ru": "Director of E-commerce",
+            "en": "DE: Leiterin E-Commerce",
+            "lang": "de"
+          },
+          {
+            "ru": "Grew online sales from $45M to $130M a year (2.9x) in 3 years",
+            "en": "DE: Steigerung des jährlichen Online-Umsatzes von 45 auf 130 Mio. USD (2,9-fach) innerhalb von 3 Jahren",
+            "lang": "de"
+          },
+          {
+            "ru": "Mar 2021 – present",
+            "en": "ES: mar. 2021 – actualidad",
+            "lang": "es"
+          }
+        ],
+        "downloadsTitle": "Example in other languages",
+        "downloads": [
+          {
+            "t": "German resume, PDF",
+            "f": "",
+            "dl": "pdf-de"
+          },
+          {
+            "t": "German resume, DOCX",
+            "f": "",
+            "dl": "docx-de"
+          },
+          {
+            "t": "German cover letter, DOCX",
+            "f": "",
+            "dl": "letter-de"
+          }
+        ]
+      },
+      "honestTitle": "We don’t make things up",
+      "honest": "The AI changes wording, order and emphasis — never the facts. Every line of your resume is backed by your master resume, and a separate check verifies every date and number before you get it. A recruiter can compare your resume with LinkedIn and your references, and everything will line up.",
+      "honestList": [
+        "No contradictions in numbers or facts",
+        "Your key achievements and most relevant experience up front",
+        "A clear answer on whether the job fits you — and whether you fit the job"
+      ],
+      "pricingTitle": "Pricing for the first 1,000 members",
+      "pricingLead": "Sign up now to lock in early-access pricing — about half the regular price on any paid plan.",
+      "plans": [
+        {
+          "name": "Junior",
+          "price": "$0",
+          "old": "",
+          "per": "free",
+          "items": [
+            "Building your master resume"
+          ]
+        },
+        {
+          "name": "Mid-Level",
+          "price": "$49",
+          "old": "$100",
+          "per": "per month",
+          "tag": "−51%",
+          "items": [
+            "Building your master resume",
+            "10 tailored resumes",
+            "30 job scores",
+            "Dashboard with all your jobs and resumes"
+          ]
+        },
+        {
+          "name": "Senior",
+          "price": "$99",
+          "old": "$200",
+          "per": "per month",
+          "tag": "−51%",
+          "items": [
+            "Building your master resume",
+            "30 tailored resumes",
+            "90 job scores",
+            "Dashboard with all your jobs and resumes",
+            "Resumes in English and other languages",
+            "Job picks matched to your profile"
+          ]
+        }
+      ],
+      "pricingNote": "Early-access prices are for the first 1,000 people who sign up on this page.",
+      "founderTitle": "Who’s behind this",
+      "author": {
+        "name": "Armen Manukyan",
+        "role": "Founder · E-commerce and international trade executive",
+        "facts": [
+          "National postal operator, 2020–2026: led its cross-border import business and its online marketplace business (team of 36, 190+ international partners).",
+          "One of the largest e-commerce marketplaces, 2019–2020: Director of Special Projects. Onboarded 50,000+ new sellers in the first year through joint programs with government agencies; launched inventory-backed loans for sellers.",
+          "National export promotion agency, 2017–2019: Head of Digital Services Development. Helped 200+ B2B and 2,000+ B2C companies start exporting through online channels.",
+          "Two-time winner of a national leadership competition for executives (2020, 2026).",
+          "Winner of a national competition for youth employment programs with the Talent Marketplace project."
+        ],
+        "text": "A master resume, an honest score for every job, and a tailored resume for each one — that’s the system I built for my own job search. Now I’m sharing it with you.",
+        "photoAlt": "Armen Manukyan, founder of the service"
+      },
+      "faqTitle": "FAQ",
+      "faq": [
+        {
+          "q": "When will access open?",
+          "a": "We’re getting ready to launch. We’ll open access in the order people sign up and let you know by email."
+        },
+        {
+          "q": "How do I get early-access pricing?",
+          "a": "Sign up on this page. The first 1,000 people get Mid-Level for $49 a month instead of $100, and Senior for $99 instead of $200."
+        },
+        {
+          "q": "How much does it cost?",
+          "a": "There’s a free plan for building your master resume. Paid plans are Mid-Level at $100 a month and Senior at $200 a month; the first 1,000 members pay $49 and $99."
+        },
+        {
+          "q": "Who is it for?",
+          "a": "Anyone looking for a job, from individual contributors to executives. It helps most if you’ve had several jobs and have many versions of your resume."
+        },
+        {
+          "q": "If AI writes my resume, won’t it make things up?",
+          "a": "No. The AI works only with the facts in your master resume, which you can see and edit. Before you get any resume, we check it for numbers and dates that aren’t in your master resume."
+        },
+        {
+          "q": "What happens to my data?",
+          "a": "When you sign up here, your name and email go to {email} and are used only to contact you. You’ll upload your resumes later, inside the app."
+        },
+        {
+          "q": "Do you guarantee a job or an interview?",
+          "a": "No — nobody can honestly guarantee that. What we promise is this: every resume is tailored to the job and built only from your facts, and the score tells you up front where your odds are best."
+        }
+      ],
+      "finalTitle": "Claim one of the first 1,000 spots",
+      "finalLead": "No commitment, no credit card — just your name and email. The first 1,000 members get about half off any paid plan.",
+      "form": {
+        "email": "Email",
+        "button": "Get early access",
+        "subject": "Early access request — Tailored Resume service (English page)",
+        "message": "I’d like early access to the Tailored Resume for Every Job service at early-access pricing for the first 1,000 members.",
+        "sentTitle": "You’re on the early-access list",
+        "sent": "We’ll email you when access opens."
+      }
+    },
+    "cvPromo": {
+      "tag": "New",
+      "button": "Learn more",
+      "note": "Early access: special pricing for the first 1,000 members.",
+      "home": {
+        "h": "Need help with your job search?",
+        "p": "Upload your old resumes, job descriptions and LinkedIn profile once. Our AI turns them into a master resume, tells you honestly how well each job fits you, and writes a tailored resume and cover letter in minutes."
+      },
+      "result": {
+        "h": "Looking for a job?",
+        "p": "Now you know your strengths. Our new service helps you show them to employers: it turns your experience into a master resume, gives each job a 1⁠–⁠10 fit score, and writes a tailored resume and cover letter in minutes. Built only from your facts — nothing made up."
+      },
+      "profile": {
+        "h": "Need help with your resume?",
+        "p": "A good-fit career is only the start. To land the interview, your resume has to match the specific job. Our service builds that resume and a cover letter from your real experience in minutes — and tells you honestly whether the job is worth applying for."
+      },
+      "services": {
+        "part": "Job search",
+        "pick": "A tailored resume and cover letter for every job",
+        "price": "{price} to start",
+        "name": "Tailored Resumes for Every Job",
+        "text": "Our AI service turns all your experience (old resumes, job descriptions, your LinkedIn profile) into a master resume, scores each job from 1 to 10 for fit, and writes a tailored resume and cover letter for the jobs you pick. Early access is open now, with special pricing for the first 1,000 members.",
+        "button": "Learn more"
+      }
+    },
     "offer": {
       "title": "Terms of Sale (Public Offer) — In-Depth DISC Profile",
       "description": "Terms of sale (public offer) for the paid service “In-depth DISC profile” on disc-test.org: price, payment and delivery, refunds, rights to materials.",
       "h1": "Terms of Sale (Public Offer)",
       "linkText": "terms of sale",
-      "edition": "Version of October 9, 2026. English translation updated on October 19, 2026.",
+      "edition": "Version of October 22, 2026. English translation updated on October 22, 2026.",
       "note": "This is an English translation of the original offer published at {original}. If the two texts differ, the original prevails, except for the price and the way payment is made: for the English version of the Site they are set out in sections 1 and 3.",
       "seller": "individual entrepreneur Manukyan Armen, Taxpayer ID (INN) {inn}",
       "lead": "This document is an official proposal (a public offer) to enter into a contract for the paid service “In-depth DISC profile” on the terms set out below. The offer is made by {seller} (hereinafter, the Provider). Paying for the service constitutes full and unconditional acceptance of these terms (acceptance of the offer).",
@@ -823,7 +1766,7 @@
         {
           "h": "3. Price and payment",
           "p": [
-            "3.1. The price of the Service is {price} US dollars. The price is final: there are no additional payments to the Provider.",
+            "3.1. The price of the Service is {price} US dollars. For 60 minutes after the test is taken on the Site, the Service is offered at a special price of {offerPrice} US dollars; the time left is shown on the Site next to the price, and taking the test again does not extend it. The price at which an order is placed is shown on the payment page and stays with that order. The price is final: there are no additional payments to the Provider.",
             "3.2. The Service is paid for in full before it is provided, by payment card or another non-cash method shown on the payment page. Payment is accepted by the Payment Service.",
             "3.3. The Service is deemed paid at the moment the Provider receives confirmation of the payment from the Payment Service.",
             "3.4. The Customer enters their card details on the Payment Service’s secure page. The Provider does not receive or store these details.",
@@ -835,7 +1778,7 @@
           "h": "4. How the Service is provided",
           "p": [
             "4.1. To receive the Service, the Customer takes the Test on the Site, gives an email address and pays for the Service. The In-depth Profile is prepared from the Test result with which the Customer proceeded to payment.",
-            "4.2. The Provider sends the In-depth Profile to the address given no later than 24 hours after payment (clause 3.3). The email usually arrives sooner; 24 hours is the maximum.",
+            "4.2. The Provider sends the In-depth Profile to the address given no later than 24 hours after payment (clause 3.3). The email usually arrives right after payment; 24 hours is the maximum.",
             "4.3. The Service is deemed provided at the moment the In-depth Profile is sent. If the Customer does not report any defects within three calendar days after that, the Service is deemed accepted. No certificate of services rendered is drawn up.",
             "4.4. If the email does not arrive, the Customer should check the spam folder and write to the Provider at {email}: the In-depth Profile will be sent again.",
             "4.5. The Customer is responsible for the accuracy of the email address they give."
@@ -847,8 +1790,8 @@
             "5.1. The Customer may cancel the Service at any time before the In-depth Profile is sent to them. In that case the payment is refunded in full.",
             "5.2. If the In-depth Profile is not sent within the period stated in clause 4.2, the Customer may claim a full refund.",
             "5.3. If the In-depth Profile received has defects (the email or file does not open, it contains another person’s result, or its content does not match the description of the Service on the Site), the Provider remedies them within three business days of the Customer’s request. If a defect is not remedied within that period, the payment is refunded in full.",
-            "5.4. Once the Service has been properly provided, the payment is not refunded. The Customer’s disagreement with how the profile describes them is not a defect in the Service.",
-            "5.5. To obtain a refund, the Customer sends a request to {email}, stating the email address used at payment, the date and amount of the payment, and the reason for the refund.",
+            "5.4. Refund guarantee: within seven calendar days of payment, the Customer may request a full refund without giving any reason, including after receiving the In-depth Profile. After this period, payment for a Service that has been properly provided is not refunded; the Customer’s disagreement with how the profile describes them is not a defect in the Service.",
+            "5.5. To obtain a refund, the Customer sends a request to {email}, stating the email address used at payment, the date and amount of the payment, and the reason for the refund; for a refund under clause 5.4, no reason needs to be given.",
             "5.6. The Provider replies to the request within three business days. Refunds are made to the original payment method, no later than ten calendar days after the request is received; how long the refund takes to reach the Customer’s account depends on the Customer’s bank.",
             "5.7. The terms of this section do not limit the Customer’s rights under consumer protection legislation."
           ]
@@ -906,6 +1849,7 @@
         {
           "h": "When you get a full refund",
           "ul": [
+            "The in-depth profile isn’t right for you: within 7 days of payment, we refund you, no reason needed.",
             "You cancel the service before the in-depth profile has been sent to you.",
             "The in-depth profile is not sent within 24 hours of payment.",
             "The in-depth profile you receive has a defect (the email or file does not open, it contains another person’s result, or its content does not match the description of the service on the site), and we have not fixed it within three business days of your request."
@@ -913,12 +1857,12 @@
         },
         {
           "h": "When the payment is not refunded",
-          "p": ["If the in-depth profile was sent on time and matches the description, the service is deemed provided and the payment is not refunded. Disagreeing with how your profile is described is not a defect in the service."]
+          "p": ["If more than 7 days have passed since payment, and the in-depth profile was sent on time and matches the description, the service is deemed provided and the payment is not refunded. Disagreeing with how your profile is described is not a defect in the service."]
         },
         {
           "h": "How to request a refund",
           "p": ["Write to {email} and include:"],
-          "ul": ["the email address you gave at payment;", "the date and amount of the payment;", "the reason for the refund."]
+          "ul": ["the email address you gave at payment;", "the date and amount of the payment;", "the reason for the refund (within 7 days of payment, you don’t have to give one)."]
         },
         {
           "h": "Time limits",
@@ -991,15 +1935,15 @@
         ["Based on", "A description of your profile", "Your scores: scale by scale, the two layers of your answers, your lowest scale"],
         ["Length", "A short take on each topic", "13 sections, about 27 pages"],
         ["Practice", "General recommendations", "Five practices, a 30-day plan, the “Essentials on one page” sheet"],
-        ["For others", "The “Share your type” link", "The “How to work with me” sheet for your manager and colleagues"],
+        ["For others", "A link to your result", "The “How to work with me” sheet for your manager and colleagues"],
         ["Price", "Free", "US${price}"]
       ],
-      "compareNote": "The test, the on-screen result, the result email and the PDF summary report stay free. The in-depth report is entirely optional.",
+      "compareNote": "The test, the on-screen result and the PDF summary report stay free. The in-depth report is entirely optional.",
       "howTitle": "How to get the report",
       "how": [
         "Take the free test: 24 blocks, about 10 minutes. If you’ve already taken it, there’s no need to retake it: the report is built from the result you already have.",
         "Pay for the report on the secure page of Prodamus, our payment service.",
-        "The report arrives by email as a PDF attachment, no later than 24 hours after payment."
+        "The report arrives by email as soon as you pay, as a PDF attachment."
       ],
       "faqTitle": "Questions and answers",
       "faq": [
@@ -1007,7 +1951,7 @@
         { "q": "What format does it come in?", "a": "A PDF attached to an email, about 27 A4 pages. It reads well on screen and prints cleanly; each of the three worksheets fits on a single page." },
         { "q": "What language is the report in?", "a": "In English. The report was written in English from the start, not translated from another language." },
         { "q": "Is this a diagnosis or an ability test?", "a": "No. The report describes your behavioral style based on your answers. It doesn’t diagnose anything, measure intelligence or predict success." },
-        { "q": "Can I get a refund?", "a": "See the {refund} for when and how refunds are made." }
+        { "q": "Can I get a refund?", "a": "Yes. If the report isn’t right for you, write to {email} within 7 days of payment and we’ll refund you in full, no reason needed. Other cases and how refunds are made are set out in the {refund}." }
       ],
       "priceLabel": "Price",
       "price": "US${price}",
@@ -1023,8 +1967,17 @@
       },
       "pay": {
         "title": "Your report will be built from the test you took on {date}",
-        "text": "The report arrives by email as a PDF attachment, no later than 24 hours after payment. Your payment receipt goes to the same address.",
-        "emailLabel": "Email for your report and receipt",
+        "text": "The report arrives by email as soon as you pay, as a PDF attachment. Your payment receipt goes to the same address.",
+        "guarantee": "Not right for you? Get a full refund within 7 days.",
+        "offer": {
+          "regular": "Regular price",
+          "cta": "Get it now for US${offerPrice}",
+          "note": "Special price for one hour after the test, then US${price}",
+          "left": "Time left",
+          "expired": "The hour after the test is over: the report now costs US${price}. Click “Buy” again."
+        },
+        "emailLabel": "Email to receive your report as a PDF",
+        "emailPlaceholder": "Enter your email",
         "button": "Buy",
         "note": "By clicking “Buy”, you accept our {offer}. Payment is handled by Prodamus: you enter your card details on its secure page, not on this site. Your statement may show the charge as simpleway.by.",
         "badEmail": "Please check the address: your report and receipt will be sent there.",
@@ -1033,14 +1986,14 @@
         "how": [
           "Take the free test: 24 blocks, about 10 minutes. If you’ve already taken it, there’s no need to retake it: the report is built from the result you already have.",
           "Enter your email and click “Buy”. You pay in US dollars on the secure page of Prodamus, our payment service. The charge may appear on your card statement as simpleway.by: that’s the card processor Prodamus works with.",
-          "The report arrives by email as a PDF attachment, no later than 24 hours after payment. Your payment receipt goes to the same address."
+          "The report arrives by email as soon as you pay, as a PDF attachment. Your payment receipt goes to the same address."
         ],
         "thanks": {
           "title": "Thank You for Your Purchase — In-Depth DISC Report",
           "description": "Your payment for the in-depth DISC report went through: where and when the report will arrive, and what to do if the email doesn’t come.",
           "h1": "Thank you! Payment complete",
-          "lead": "Your report will arrive by email at the address you gave when you paid: a PDF attachment, no later than 24 hours after payment. It usually comes much sooner.",
-          "leadEmail": "Your report will arrive by email at {email}: a PDF attachment, no later than 24 hours after payment. It usually comes much sooner.",
+          "lead": "Your report will arrive by email right away, at the address you gave when you paid: a PDF attachment.",
+          "leadEmail": "Your report will arrive by email at {email} right away: a PDF attachment.",
           "order": "Order number: {order}",
           "statusWait": "Waiting for the payment service to confirm your payment.",
           "statusPaid": "Payment received. Your report is being prepared.",
@@ -1096,25 +2049,20 @@
       },
       "block": {
         "eyebrow": "In-depth report",
-        "title": "What to do with your profile: 13 sections built from your answers",
-        "hook": "Your lowest scale is {k}, {name}: {pct}%. The in-depth report explains what that means and gives you a practice for it.",
+        "title": "Learn more about your profile: more than 25 pages with an in-depth breakdown",
+        "hook": "Your lowest scale is {k}, {name}: {pct}%. The in-depth report explains what that means and how to work with it.",
         "list": [
-          "Scale by scale: what each of your four scores means",
-          "Five blind spots, plus five practices and how to tell they’re working",
-          "How to talk to each of the four styles: techniques and ready-made phrases",
-          "Three worksheets: a 30-day plan, the essentials on one page, a sheet for your colleagues"
+          "What each of your four scores means",
+          "Five blind spots and five practices for working on them",
+          "How to work with people of different types: techniques and ready-made phrases",
+          "A 30-day development plan"
         ],
         "sample": "Pages from a sample participant’s report",
         "price": "US${price} · PDF by email",
         "button": "Get the in-depth report",
-        "free": "The test and the summary report stay free.",
-        "topTitle": "An in-depth report on your result",
-        "topText": "13 sections on what to do with your profile: every scale explained, five practices, a 30-day plan.",
-        "topButton": "Get the report — US${price}",
-        "anchor": "What’s inside"
+        "free": "The test and the summary report stay free."
       },
       "promo": {
-        "lead": "Based on your answers, it covers:",
         "hooks": {
           "low": "{k}, {name}, your lowest scale at {pct}%: what it means",
           "flat": "your balanced profile: what it means and how to read it",
@@ -1128,7 +2076,7 @@
           "layersSame": "your adapted and natural styles match ({k}): the strength and the catch"
         },
         "tail": "13 sections in all, including five practices and a 30-day plan.",
-        "button": "In-depth report — US${price}",
+        "button": "Buy your personal in-depth report for US${price}",
         "close": "Hide",
         "homeLabel": "Your result from {date}",
         "homeOpen": "Open result",
@@ -1149,6 +2097,19 @@
       "h1": "Unsubscribe from emails",
       "lead": "Press the button and disc-test.org will stop sending its newsletter to the address that received the email with this link. This does not affect the email with your test result: that one is sent only when you request it yourself."
     },
+    "subscribeConfirm": {
+      "title": "Newsletter Subscription — DISC Test",
+      "description": "Confirming your subscription to the disc-test.org newsletter from the link in the email.",
+      "h1": "Newsletter subscription",
+      "lead": "The disc-test.org newsletter will be sent to the address that received the email with this link: new tests, career growth and job-search tips, site news and promotional offers."
+    },
+    "subscribeMail": {
+      "subject": "Confirm your subscription to the disc-test.org newsletter",
+      "intro": "Hello! This address was entered in the newsletter sign-up form on {site}: new tests, career growth and job-search tips, site news and promotional offers.",
+      "action": "To start receiving our emails, please confirm your subscription:",
+      "button": "Confirm subscription",
+      "footer": "If you didn’t sign up, there’s nothing you need to do: without confirmation, no newsletter will be sent, and the address will be deleted after 7 days."
+    },
     "results": {
       "title": "DISC Test Results Explained: How to Read Your Chart and Profile",
       "description": "How to read your DISC test results: the three chart lines, percentages, primary and secondary styles, balanced profile. Examples and common mistakes.",
@@ -1158,7 +2119,7 @@
         {
           "h": "What the result consists of",
           "p": [
-            "After the last block you see four elements: the profile name with one or two letters (for example, “Pioneer, DI”), a chart with three lines, four scales with percentages, and a written description: traits, strengths, growth areas, motivation, behavior under stress and recommendations on how others can best communicate with you. You can also have the same report emailed to you and reopen it at any time from its link.",
+            "After the last block you see four elements: the profile name with one or two letters (for example, “Pioneer, DI”), a chart with three lines, four scales with percentages, and a written description: traits, strengths, growth areas, motivation, behavior under stress and recommendations on how others can best communicate with you. You can also save the same report as a PDF and reopen it at any time from its link.",
             "Every number in the report is derived from your marks in the 24 blocks. In each block you chose one statement as “most like me” and one as “least like me,” and each statement belongs to one of the styles D, I, S or C. So each style has two numbers: how many times you chose it as “most” and how many times as “least.”"
           ]
         },
@@ -1337,7 +2298,7 @@
           "h": "When you need a paper version",
           "p": [
             "A paper test is convenient at a training session or strategy offsite where not every participant has a computer, in a class, and anywhere phones aren’t allowed. Some people simply find it easier to concentrate on paper: mark, turn the page, no notifications to distract you.",
-            "If participants do have their phones, the online version is simpler: it scores the result itself, draws the chart, emails the report and provides a link you can share. For teams there is also an admin panel that collects everyone’s results."
+            "If participants do have their phones, the online version is simpler: it scores the result itself, draws the chart, saves the report as a PDF and provides a link you can share. For teams there is also an admin panel that collects everyone’s results."
           ]
         },
         {
@@ -1387,7 +2348,7 @@
           "h": "How to run the test with your team on this site",
           "ol": [
             "Take the test yourself: that way you’ll know what participants will see and can show a sample report.",
-            "Send your colleagues the link to the site in the language they need. No sign-up is required and the test takes about ten minutes; the report appears on screen right away, and there each person enters their name and email to get a copy by email.",
+            "Send your colleagues the link to the site in the language they need. No sign-up is required and the test takes about ten minutes; the report appears on screen right away, each person can save it as a PDF and forward you the link to their result.",
             "Ask each person to forward you the link to their result or the code from the report. The result is visible only to whoever has the link; no data is sent to the manager automatically.",
             "Open the admin panel (link in the site footer) and paste in the codes you received. The panel compiles a table with names, profiles and scores; you can copy it into Excel. The table is stored only in your browser.",
             "Schedule a joint meeting: explain the four styles, show the team map and let everyone say what in their report hit the mark and what didn’t."
@@ -1730,7 +2691,7 @@
         },
         {
           "h": "Results right away",
-          "p": "The summary report appears on screen the moment you finish the last block. The in-depth report is assembled as soon as you pay, at any hour of the day or night, with no appointment and no waiting list: the email usually arrives within a few minutes and no later than 24 hours after payment."
+          "p": "The summary report appears on screen the moment you finish the last block. The in-depth report is assembled at any hour of the day or night, with no appointment and no waiting list: the email with it arrives right after payment."
         },
         {
           "h": "Affordable price",
@@ -1804,7 +2765,7 @@
     },
     "home": {
       "getTitle": "What you’ll get",
-      "get": ["Your primary and secondary style and the name of your profile — one of 16", "A chart with three lines and how strongly each style shows up, in percent", "Your strengths, growth areas, motivation and behavior under stress", "Tips on how best to communicate and work with you", "A link to your report, a PDF copy and an email if you want one — no sign-up and no paid versions"],
+      "get": ["Your primary and secondary style and the name of your profile — one of 16", "A chart with three lines and how strongly each style shows up, in percent", "Your strengths, growth areas, motivation and behavior under stress", "Tips on how best to communicate and work with you", "A link to your report and a PDF copy — no sign-up and no paid versions"],
       "calcTitle": "How the result is calculated",
       "calc": "In each of the 24 blocks, you mark the one statement that is most like you and the one that is least like you. Each statement belongs to one of the styles D, I, S or C. For each style, the score is the number of “most” marks minus the number of “least” marks — from −24 to +24 — and it is then converted to a percentage. The primary style is the one with the highest score; a secondary style counts if it is also clearly pronounced.",
       "faqTitle": "The test in brief",
@@ -1842,7 +2803,7 @@
   "ui": {
     "langLabel": "Language",
     "footer": "24 blocks · about 10 minutes · no right or wrong answers",
-    "privacy": "Your answers stay in your browser; for overall statistics the site’s server receives only notes that you visited the site and started the test, and your resulting profile — no name and no answers. If you enter your email address, your result is sent to it and stored in the site owner’s results database. When you click “Save as PDF”, your answers and the test date — without your name or email — are sent to the site’s server, which builds the summary report file, returns it to you and stores nothing.",
+    "privacy": "Your answers stay in your browser; for overall statistics the site’s server receives only notes that you visited the site and started the test, and your resulting profile — no name and no answers. If you enter your email address, your result is sent to it and stored in the site owner’s results database. If you subscribe to the newsletter on the home page, your email and the site language are stored in that database. When you click “Save as PDF”, your answers and the test date — without your name or email — are sent to the site’s server, which builds the summary report file, returns it to you and stores nothing.",
     "legal": "Manukyan Armen · Taxpayer ID (INN) {inn}",
     "rights": "© {year} disc-test.org. Copying the texts of this site and its reports without written permission is prohibited.",
     "adminLink": "Admin panel",
@@ -1888,6 +2849,7 @@
     "test.missing": "Block {n} is not complete",
 
     "report.own": "Your result",
+    "report.taken": "Test taken: {date}",
     "report.other": "Participant’s result",
     "report.backAdmin": "← Back to the results list",
     "report.flat": "Your profile is balanced: no single style stands out strongly. This usually means behavioral flexibility, but it can sometimes indicate uncertainty in the answers. The primary style was determined by the highest score.",
@@ -1908,16 +2870,14 @@
     "report.communication": "How others can best communicate with you",
     "report.stress": "Under stress",
     "report.environment": "Ideal environment",
-    "report.moreLink": "More on how to read your DISC profile →",
-    "report.color": "Your DISC color: {color}",
 
     "share.title": "Save your result",
     "share.text": "Your result is saved in your browser. Copy the link to open the report later or on another device, or send it to the person who asked you to take the test.",
-    "share.codeAria": "Result code",
-    "share.codeTitle": "Result code",
     "share.copyLink": "Copy link",
-    "share.copyCode": "Copy code",
-    "share.pdf": "Save as PDF",
+    "share.profile": "Share profile",
+    "share.saveProfile": "Save profile",
+    "share.msg": "DISC profile: {name} ({key})",
+    "share.close": "Close",
     "share.pdfWait": "Preparing PDF…",
     "share.pdfFail": "Couldn’t download the PDF. A print window will open — you can save the page as a PDF there.",
     "share.restart": "Take the test again",
@@ -1933,11 +2893,6 @@
     "share.send": "Email my result",
     "share.mailtoHint": "Your email app will open with a ready-made message to this address; just press “Send.”",
     "share.mailtoOpened": "The email with your result is open in your email app. Send it to {email}.",
-    "share.typeTitle": "Share your type",
-    "share.typeText": "The link opens the public description of the {name} profile. It doesn’t include your name, email or answers.",
-    "share.type": "Share my type",
-    "share.via": "Share on {net}",
-    "share.typeMsg": "My DISC type is {name} ({key}). What’s yours? Take the free 10-minute test.",
 
     "invite.title": "Your friend is “{name}”. What’s your type?",
     "invite.text": "Take the free DISC test: 24 blocks, about 10 minutes, no sign-up. Find out your type and how the two of you work and communicate best.",
@@ -2073,7 +3028,7 @@
     "pages.profiles.colPure": "No secondary",
 
     "cta.title": "Discover your DISC profile",
-    "cta.text": "Free test: 24 blocks, about 10 minutes, instant result and a copy by email.",
+    "cta.text": "Free test: 24 blocks, about 10 minutes, instant result.",
     "cta.button": "Take the test",
     "cta.inline": "Find your DISC style — a free 10-minute test, no sign-up.",
     "cta.inlineProfile": "Sounds like you? Check your DISC type — a free 10-minute test.",
@@ -2103,6 +3058,20 @@
     "unsub.done": "Done: disc-test.org will no longer send its newsletter to this address.",
     "unsub.failed": "We couldn’t unsubscribe you. Please try again or write to us: {email}.",
     "unsub.bad": "This link has no unsubscribe code. Open the full link from the email or write to us: {email}.",
+    "nl.title": "Subscribe to our newsletter",
+    "nl.text": "Stay up to date with new tests and tips on career growth and job hunting.",
+    "nl.emailLabel": "Your email",
+    "nl.button": "Subscribe",
+    "nl.consent": "I agree to receive the disc-test.org newsletter at this address: new tests, career growth and job-search tips, site news and promotional offers. You can unsubscribe at any time using the link in any email.",
+    "nl.consentRequired": "Please tick the box to agree to receive the newsletter.",
+    "nl.sending": "Sending the email…",
+    "nl.sent": "Almost done: we’ve sent an email to {email}. Open it and click “Confirm subscription” — until you do, the newsletter won’t be sent.",
+    "nl.failed": "We couldn’t sign you up. Please try again later.",
+    "subc.button": "Confirm subscription",
+    "subc.wait": "Confirming your subscription…",
+    "subc.done": "Your subscription is confirmed. You can unsubscribe at any time using the link in any newsletter email.",
+    "subc.bad": "This link is incomplete or has expired: a subscription can be confirmed within 7 days. Subscribe again on the home page or write to us: {email}.",
+    "subc.failed": "We couldn’t confirm your subscription. Please try again or write to us: {email}.",
     "contact.privacyNote": "Your name, email address, subject, message and files will be emailed to {email} and used only to reply to you.",
     "contact.mailtoNote": "The sending service is not connected yet: the “Send” button will open your email client with the message filled in, and you will need to add the attached files to the email yourself.",
     "contact.mailSubject": "Message from the website: {name}",
@@ -2121,7 +3090,7 @@
     "pd.consentLink": "consent to the processing of personal data",
     "pd.required": "Please tick the consent to the processing of personal data: without it we cannot accept your data.",
     "pd.cookieAsk": "This site keeps your progress, result and chosen language in your browser’s local storage. With your consent, a web analytics system will collect anonymized visit statistics and a recording of on-page actions to help us improve the site. Your name, email and result are not sent to the analytics system.",
-    "pd.cookieDetails": "Stored in your browser: your name and email, if you entered them; your answers and unfinished progress; your latest result; your chosen language; a note that you have seen this notice. This data stays on your device and is removed when you clear the site’s data. The hosting provider receives standard technical request data. When you first open the site on a given day, an anonymous visit note goes to the site’s server: the site language only; the server records it with the time it arrived, and your browser remembers the date so the note is not sent again that day. We use these notes to count how many people visit the site. When you start the test, an anonymous start note goes to the site’s server: the site language only. When you finish the test, an anonymous record for overall statistics goes to the site’s server: your resulting profile and the site language — without your name, email or answers. When you click “Save as PDF”, your answers and the test date — without your name or email — are sent to the site’s server, which builds the summary report file, returns it to you and stores nothing. When you send your result by email, your name, email and answers are passed to the site’s server, which emails you your result and stores your name, email, date and result in the site owner’s results database. The web analytics system receives the page address without the result code, the referrer, device and browser type, an anonymized recording of on-page actions (the name and email fields, the result link and code are excluded), and sets its own cookies. You can block it in your browser settings or with a tracker blocker. No advertising trackers are used.",
+    "pd.cookieDetails": "Stored in your browser: your name and email, if you entered them; your answers and unfinished progress; your latest result; the time you first finished the test, for the deadline of the special report price; your chosen language; a note that you have seen this notice. This data stays on your device and is removed when you clear the site’s data. The hosting provider receives standard technical request data. When you first open the site on a given day, an anonymous visit note goes to the site’s server: the site language only; the server records it with the time it arrived, and your browser remembers the date so the note is not sent again that day. We use these notes to count how many people visit the site. When you start the test, an anonymous start note goes to the site’s server: the site language only. When you finish the test, an anonymous record for overall statistics goes to the site’s server: your resulting profile and the site language — without your name, email or answers. When you click “Save as PDF”, your answers and the test date — without your name or email — are sent to the site’s server, which builds the summary report file, returns it to you and stores nothing. When you send your result by email, your name, email and answers are passed to the site’s server, which emails you your result and stores your name, email, date and result in the site owner’s results database. When you subscribe to the newsletter on the home page, your email and the site language are passed to the site’s server, which sends you an email with a confirmation link and stores the address in the same database; if you don’t confirm the subscription, the address is deleted after 7 days. The web analytics system receives the page address (on the result screen, together with the result code: your answers, the test date and your name if you entered it, but not your email), the referrer, device and browser type, a recording of on-page actions (the name and email fields are excluded), and sets its own cookies. You can block it in your browser settings or with a tracker blocker. No advertising trackers are used.",
     "pd.cookieChange": "Change cookie choice",
 
     "print.title": "Printable DISC Test: Questionnaire, Answer Key and Scoring",

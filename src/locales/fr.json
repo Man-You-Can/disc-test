@@ -519,7 +519,7 @@
         },
         {
           "q": "Le test est-il vraiment gratuit ?",
-          "a": "Oui : le test et le résultat sont gratuits, sans inscription et sans frais cachés. Le résultat s'affiche à l'écran juste après le dernier bloc ; si vous le souhaitez, vous pouvez aussi le recevoir par e-mail. Le site propose un seul service payant, le profil DISC détaillé : il est décrit dans la rubrique « Services » et reste entièrement facultatif."
+          "a": "Oui : le test et le résultat sont gratuits, sans inscription et sans frais cachés. Le résultat s'affiche à l'écran juste après le dernier bloc ; vous pouvez l'enregistrer en PDF. Le site propose un seul service payant, le profil DISC détaillé : il est décrit dans la rubrique « Services » et reste entièrement facultatif."
         },
         {
           "q": "Que signifient les lettres D, I, S, C ?",
@@ -542,8 +542,8 @@
           "a": "Oui. Envoyez le lien du site à vos collègues ; sur l'écran de résultat, chacun reçoit un lien et un code, demandez-leur de vous les transmettre. Dans l'espace administrateur (lien en pied de page), les codes sont réunis dans un tableau que vous pouvez copier dans Excel. Le tableau n'est conservé que dans votre navigateur."
         },
         {
-          "q": "Où va le résultat et qui peut le voir ?",
-          "a": "Le résultat s'affiche à l'écran et est enregistré dans votre navigateur. Si vous indiquez votre nom et votre adresse e-mail sur l'écran du résultat, le rapport vous est envoyé à cette adresse, et votre nom, votre adresse e-mail et le résultat sont enregistrés dans la base de résultats du propriétaire du site ; sans votre consentement, ils ne servent à rien d'autre et ne sont pas transmis à des tiers. Personne d'autre ne verra votre rapport, sauf si vous en partagez vous-même le lien. Détails sur la page « Confidentialité »."
+          "q": "Où est conservé le résultat et qui peut le voir ?",
+          "a": "Le résultat s'affiche à l'écran et est enregistré dans votre navigateur. Personne d'autre ne verra votre rapport, sauf si vous en partagez vous-même le lien. Détails sur la page « Confidentialité »."
         },
         {
           "q": "Puis-je refaire le test ?",
@@ -574,7 +574,7 @@
       "sections": [
         {
           "h": "Pourquoi ce site existe",
-          "p": ["Nous voulions un test DISC que chacun puisse passer en dix minutes, sans inscription ni paiement, avec un rapport clair dans sa langue, à partager avec son équipe. Le site fonctionne en quatorze langues, le résultat apparaît immédiatement et, si vous le souhaitez, arrive par e-mail, et les managers et les RH disposent d'un espace où les résultats des participants sont réunis dans un tableau."]
+          "p": ["Nous voulions un test DISC que chacun puisse passer en dix minutes, sans inscription ni paiement, avec un rapport clair dans sa langue, à partager avec son équipe. Le site fonctionne en quatorze langues, le résultat apparaît immédiatement et peut être enregistré en PDF, et les managers et les RH disposent d'un espace où les résultats des participants sont réunis dans un tableau."]
         },
         {
           "h": "Sur quoi repose le test",
@@ -666,14 +666,14 @@
           "h": "Où les données sont conservées et à qui elles sont transmises",
           "p": [
             "La base de résultats se trouve sur un serveur que le propriétaire du site loue auprès d'un hébergeur. Les e-mails sont envoyés par un service de messagerie. Ces sociétés traitent les données pour notre compte et uniquement pour le fonctionnement du site. L'e-mail part à l'adresse que vous avez vous-même indiquée. Les données ne sont ni transmises ni vendues à des tiers pour leurs propres finalités.",
-            "Seules les personnes ayant coché la case de consentement distincte dans le formulaire d'envoi du résultat reçoivent la newsletter. Dans ce cas, la base conserve aussi le consentement, sa date et son texte, et votre adresse e-mail, votre nom et votre langue servent à vous envoyer des e-mails de disc-test.org : contenus sur le DISC, actualités du site et offres promotionnelles. Vous pouvez vous désabonner à tout moment, via le lien présent dans chaque e-mail ou en écrivant à {email}.",
-            "L'hébergeur reçoit les données techniques habituelles de la requête : adresse IP, type de navigateur, adresse de la page. Les polices sont servies par ce site lui-même. Les statistiques de visite sont collectées par un service d'analyse d'audience : il reçoit des données de visite anonymisées — l'adresse de la page sans le code du résultat, la provenance, le type d'appareil et de navigateur — et un enregistrement des actions sur la page ; les champs nom et e-mail, le lien et le code du résultat sont exclus de l'enregistrement. Vous pouvez arrêter la collecte dans les paramètres du navigateur ou avec un bloqueur de traceurs. Aucun traceur publicitaire n'est utilisé."
+            "Seules les personnes ayant coché la case de consentement distincte — dans le formulaire d'envoi du résultat ou dans le formulaire d'abonnement de la page d'accueil — reçoivent la newsletter. Après le formulaire d'abonnement, un e-mail contenant un lien de confirmation est envoyé : sans confirmation, la newsletter n'est pas envoyée et l'adresse est supprimée au bout de 7 jours. La base conserve le consentement, sa date et son texte, et votre adresse e-mail, votre nom (si vous l'avez indiqué) et votre langue servent à vous envoyer des e-mails de disc-test.org : contenus sur le DISC, nouveaux tests, conseils pour l'évolution de carrière et la recherche d'emploi, actualités du site et offres promotionnelles. Vous pouvez vous désabonner à tout moment, via le lien présent dans chaque e-mail ou en écrivant à {email}.",
+            "L'hébergeur reçoit les données techniques habituelles de la requête : adresse IP, type de navigateur, adresse de la page. Les polices sont servies par ce site lui-même. Les statistiques de visite sont collectées par un service d'analyse d'audience : il reçoit des données de visite — l'adresse de la page, la provenance, le type d'appareil et de navigateur — et un enregistrement des actions sur la page ; les champs nom et e-mail sont exclus de l'enregistrement. Sur l'écran du résultat, l'adresse de la page contient le code du résultat : vos réponses, la date du test et votre nom si vous l'avez indiqué, mais pas votre e-mail. Vous pouvez arrêter la collecte dans les paramètres du navigateur ou avec un bloqueur de traceurs. Aucun traceur publicitaire n'est utilisé."
           ]
         },
         {
           "h": "Bases légales et durées de conservation",
           "p": [
-            "Le résultat envoyé par e-mail est traité sur la base de votre consentement et conservé trois ans à compter de la date d'envoi ou jusqu'au retrait du consentement. Les données destinées à la newsletter le sont sur la base d'un consentement distinct, jusqu'au désabonnement. Les messages du formulaire de contact, sur la base du consentement, pendant un an après la réponse.",
+            "Le résultat envoyé par e-mail est traité sur la base de votre consentement et conservé trois ans à compter de la date d'envoi ou jusqu'au retrait du consentement. Les données destinées à la newsletter le sont sur la base d'un consentement distinct, jusqu'au désabonnement ; l'adresse dont l'abonnement n'a pas été confirmé, pendant 7 jours. Les messages du formulaire de contact, sur la base du consentement, pendant un an après la réponse.",
             "Lorsque la durée expire ou que vous retirez votre consentement, les données sont supprimées de la base. Elles disparaissent des copies de sauvegarde au fur et à mesure du renouvellement de celles-ci, au plus tard au bout de six mois."
           ]
         },
@@ -729,7 +729,8 @@
           "h": "Finalités du traitement et données traitées",
           "p": [
             "Formulaire « Recevez votre résultat par e-mail » : nom, adresse e-mail, langue de la version du site, date du test, réponses et résultat du test DISC. Finalité : m'envoyer un e-mail contenant le résultat du test et conserver ce résultat afin de me le renvoyer et de répondre à mes demandes.",
-            "Formulaire de contact : nom, adresse e-mail, texte du message et fichiers joints. Finalité : examiner ma demande et y répondre."
+            "Formulaire de contact : nom, adresse e-mail, texte du message et fichiers joints. Finalité : examiner ma demande et y répondre.",
+            "Formulaire d'abonnement à la newsletter sur la page d'accueil : adresse e-mail et langue de la version du site. Finalité : m'envoyer un e-mail contenant un lien de confirmation de l'abonnement et tenir la liste des abonnés à la newsletter."
           ]
         },
         {
@@ -747,7 +748,7 @@
         {
           "h": "Durée de validité du consentement",
           "p": [
-            "Le consentement est valable trois ans à compter de la date d'envoi du formulaire « Recevez votre résultat par e-mail » et un an après la réponse à la demande envoyée via le formulaire de contact, ou jusqu'à son retrait."
+            "Le consentement est valable trois ans à compter de la date d'envoi du formulaire « Recevez votre résultat par e-mail », un an après la réponse à la demande envoyée via le formulaire de contact et, pour le formulaire d'abonnement, jusqu'au désabonnement de la newsletter (7 jours si l'abonnement n'est pas confirmé), ou jusqu'à son retrait."
           ]
         },
         {
@@ -767,23 +768,23 @@
     },
     "services": {
       "title": "Services — profil DISC détaillé",
-      "description": "Service payant de disc-test.org : profil DISC détaillé pour {price} USD. Le test et le résultat restent gratuits.",
+      "description": "Service payant de disc-test.org : profil DISC détaillé pour {price} €. Le test et le résultat restent gratuits.",
       "h1": "Services",
       "lead": "Le test DISC et son résultat sont gratuits sur ce site. Pour ceux qui souhaitent une analyse plus approfondie, une version détaillée payante est disponible.",
       "name": "Profil DISC détaillé",
       "text": "Une analyse plus approfondie de votre profil DISC, à partir du test que vous avez passé. Le profil détaillé est accessible aux utilisateurs ayant payé le service.",
       "priceLabel": "Prix",
-      "price": "{price} USD",
-      "currency": "USD",
+      "price": "{price} €",
+      "currency": "EUR",
       "docs": "Le service est fourni conformément à nos {offer} ; notre {refund} précise dans quels cas et comment obtenir un remboursement.",
       "sections": [
         {
           "h": "Comment le recevoir",
-          "p": ["Le profil détaillé est envoyé par e-mail à l'adresse indiquée lors du paiement, au plus tard 24 heures après le paiement."]
+          "p": ["Le profil détaillé est envoyé par e-mail à l'adresse indiquée lors du paiement, dès que le paiement est effectué."]
         },
         {
           "h": "Ce qui reste gratuit",
-          "p": ["Le test, le résultat à l'écran et l'e-mail de résultat, les pages des seize profils et la version imprimable du test en PDF restent gratuits et sans inscription. Le profil détaillé ne s'achète que si vous le souhaitez."]
+          "p": ["Le test, le résultat à l'écran et le rapport de synthèse en PDF, les pages des seize profils et la version imprimable du test en PDF restent gratuits et sans inscription. Le profil détaillé ne s'achète que si vous le souhaitez."]
         },
         {
           "h": "Questions sur le service",
@@ -796,7 +797,7 @@
       "description": "Conditions générales de vente du service payant « Profil DISC détaillé » sur disc-test.org : prix, paiement et envoi, remboursement, droits sur les contenus.",
       "h1": "Conditions générales de vente",
       "linkText": "conditions générales de vente",
-      "edition": "Version du 9 octobre 2026. Traduction française mise à jour le 20 octobre 2026.",
+      "edition": "Version du 22 octobre 2026. Traduction française mise à jour le 22 octobre 2026.",
       "note": "Ce texte est la traduction française des conditions originales publiées à l'adresse {original}. En cas de divergence entre les deux textes, l'original prévaut, sauf pour le prix et les modalités de paiement : pour la version française du Site, ceux-ci sont régis par les articles 1 et 3 de la présente traduction.",
       "seller": "Manukyan Armen, entrepreneur individuel, N° d’identification fiscale (INN) {inn}",
       "lead": "Le présent document constitue une offre officielle (offre au public) de conclure un contrat portant sur le service payant « Profil DISC détaillé » aux conditions énoncées ci-dessous. Cette offre émane de {seller} (ci-après « le Prestataire »). Le paiement du service vaut acceptation pleine, entière et sans réserve des présentes conditions (acceptation de l'offre).",
@@ -825,7 +826,7 @@
         {
           "h": "3. Prix et modalités de paiement",
           "p": [
-            "3.1. Le prix du Service est de {price} dollars américains. Ce prix est définitif : aucun autre paiement n'est dû au Prestataire.",
+            "3.1. Le prix du Service est de {price} euros. Pendant les 60 minutes qui suivent la réalisation du test sur le Site, le Service est proposé au prix spécial de {offerPrice} euros ; le temps restant est indiqué sur le Site à côté du prix, et refaire le test ne prolonge pas ce délai. Le prix auquel la commande est passée figure sur la page de paiement et reste attaché à cette commande. Ce prix est définitif : aucun autre paiement n'est dû au Prestataire.",
             "3.2. Le Service est payé intégralement avant sa fourniture, par carte bancaire ou par un autre moyen de paiement électronique proposé sur la page de paiement. Le paiement est encaissé par l'Opérateur de paiement.",
             "3.3. Le Service est réputé payé dès que le Prestataire reçoit de l'Opérateur de paiement la confirmation du paiement.",
             "3.4. Le Client saisit les données de sa carte sur la page sécurisée de l'Opérateur de paiement. Le Prestataire ne reçoit pas ces données et ne les conserve pas.",
@@ -837,7 +838,7 @@
           "h": "4. Modalités de fourniture du Service",
           "p": [
             "4.1. Pour bénéficier du Service, le Client passe le Test sur le Site, indique une adresse e-mail et paie le Service. Le Profil détaillé est établi à partir du résultat du Test pour lequel le Client a procédé au paiement.",
-            "4.2. Le Prestataire envoie le Profil détaillé à l'adresse indiquée au plus tard 24 heures après le paiement (article 3.3). L'e-mail arrive généralement plus tôt ; 24 heures constituent le délai maximal.",
+            "4.2. Le Prestataire envoie le Profil détaillé à l'adresse indiquée au plus tard 24 heures après le paiement (article 3.3). L'e-mail arrive généralement juste après le paiement ; 24 heures constituent le délai maximal.",
             "4.3. Le Service est réputé fourni au moment de l'envoi du Profil détaillé. Si le Client ne signale aucun défaut dans les trois jours calendaires qui suivent, le Service est réputé accepté. Aucun acte constatant l'exécution du Service n'est établi.",
             "4.4. Si l'e-mail n'arrive pas, le Client est invité à vérifier son dossier de courrier indésirable (spam) et à écrire au Prestataire à l'adresse {email} : le Profil détaillé lui sera renvoyé.",
             "4.5. Le Client est responsable de l'exactitude de l'adresse e-mail qu'il indique."
@@ -849,8 +850,8 @@
             "5.1. Le Client peut annuler sa commande à tout moment tant que le Profil détaillé ne lui a pas été envoyé. La somme versée lui est alors intégralement remboursée.",
             "5.2. Si le Profil détaillé n'est pas envoyé dans le délai prévu à l'article 4.2, le Client peut exiger le remboursement intégral de la somme versée.",
             "5.3. Si le Profil détaillé reçu présente un défaut (l'e-mail ou le fichier ne s'ouvre pas, il contient le résultat d'une autre personne, son contenu ne correspond pas à la description du Service sur le Site), le Prestataire y remédie dans un délai de trois jours ouvrés à compter de la demande du Client. Si le défaut n'est pas corrigé dans ce délai, la somme versée est intégralement remboursée.",
-            "5.4. Une fois le Service dûment fourni, la somme versée n'est pas remboursée. Le fait que le Client ne soit pas d'accord avec la description de son profil ne constitue pas un défaut du Service.",
-            "5.5. Pour obtenir un remboursement, le Client adresse une demande à {email} en précisant l'adresse e-mail utilisée lors du paiement, la date et le montant du paiement ainsi que le motif du remboursement.",
+            "5.4. Garantie de remboursement : dans un délai de sept jours calendaires à compter du paiement, le Client peut, sans avoir à motiver sa demande, exiger le remboursement intégral de la somme versée, y compris après réception du Profil détaillé. Passé ce délai, la somme versée pour un Service dûment fourni n'est pas remboursée ; le fait que le Client ne soit pas d'accord avec la description de son profil ne constitue pas un défaut du Service.",
+            "5.5. Pour obtenir un remboursement, le Client adresse une demande à {email} en précisant l'adresse e-mail utilisée lors du paiement, la date et le montant du paiement ainsi que le motif du remboursement ; pour un remboursement au titre de l'article 5.4, l'indication du motif est facultative.",
             "5.6. Le Prestataire répond à la demande dans un délai de trois jours ouvrés. Le remboursement est effectué par le même moyen que celui utilisé pour le paiement, au plus tard dix jours calendaires après la réception de la demande ; le délai dans lequel la somme est créditée dépend de la banque du Client.",
             "5.7. Les dispositions du présent article ne limitent pas les droits que la législation sur la protection des consommateurs reconnaît au Client."
           ]
@@ -908,6 +909,7 @@
         {
           "h": "Quand le remboursement est intégral",
           "ul": [
+            "Le profil détaillé ne vous convient pas : dans les 7 jours qui suivent le paiement, nous vous remboursons sans que vous ayez à vous justifier.",
             "Vous annulez votre commande avant que le profil détaillé vous ait été envoyé.",
             "Le profil détaillé ne vous est pas envoyé dans les 24 heures qui suivent le paiement.",
             "Le profil détaillé reçu présente un défaut (l'e-mail ou le fichier ne s'ouvre pas, il contient le résultat d'une autre personne, son contenu ne correspond pas à la description du service sur le site) et nous n'y avons pas remédié dans les trois jours ouvrés suivant votre demande."
@@ -915,12 +917,12 @@
         },
         {
           "h": "Quand il n'y a pas de remboursement",
-          "p": ["Si le profil détaillé a été envoyé à temps et correspond à la description, le service est réputé fourni et la somme versée n'est pas remboursée. Le fait de ne pas être d'accord avec la description de votre profil ne constitue pas un défaut du service."]
+          "p": ["Si plus de 7 jours se sont écoulés depuis le paiement et que le profil détaillé a été envoyé à temps et correspond à la description, le service est réputé fourni et la somme versée n'est pas remboursée. Le fait de ne pas être d'accord avec la description de votre profil ne constitue pas un défaut du service."]
         },
         {
           "h": "Comment demander un remboursement",
           "p": ["Écrivez à {email} en indiquant :"],
-          "ul": ["l'adresse e-mail que vous avez indiquée lors du paiement ;", "la date et le montant du paiement ;", "le motif du remboursement."]
+          "ul": ["l'adresse e-mail que vous avez indiquée lors du paiement ;", "la date et le montant du paiement ;", "le motif du remboursement (facultatif dans les 7 jours qui suivent le paiement)."]
         },
         {
           "h": "Délais",
@@ -949,7 +951,7 @@
     },
     "product": {
       "title": "Rapport DISC détaillé — 13 sections fondées sur vos réponses",
-      "description": "Rapport DISC détaillé fondé sur vos réponses : chaque échelle expliquée, cinq exercices, un plan sur 30 jours et une fiche pour vos collègues. PDF par e-mail, {price} USD.",
+      "description": "Rapport DISC détaillé fondé sur vos réponses : chaque échelle expliquée, cinq exercices, un plan sur 30 jours et une fiche pour vos collègues. PDF par e-mail, {price} €.",
       "h1": "Rapport DISC détaillé",
       "lead": "Le rapport de synthèse que vous recevez après le test répond à une question : quel est mon type ? Le rapport détaillé répond à la suivante : qu'est-ce que j'en fais ? Il est établi à partir de vos propres réponses, avec vos scores, votre profil et votre nom sur chaque page.",
       "facts": ["13 sections", "environ 30 pages", "trois fiches pratiques", "PDF par e-mail"],
@@ -1002,15 +1004,15 @@
         ],
         ["Volume", "L'essentiel sur chaque thème", "13 sections, environ 30 pages"],
         ["Mise en pratique", "Des recommandations générales", "Cinq exercices, un plan sur 30 jours, la fiche « L'essentiel sur une page »"],
-        ["À partager", "Le lien « Partagez votre type »", "La fiche « Comment travailler avec moi », pour votre responsable et vos collègues"],
-        ["Prix", "Gratuit", "{price} USD"]
+        ["À partager", "Un lien vers votre résultat", "La fiche « Comment travailler avec moi », pour votre responsable et vos collègues"],
+        ["Prix", "Gratuit", "{price} €"]
       ],
-      "compareNote": "Le test, le résultat à l'écran, l'e-mail de résultat et le rapport de synthèse en PDF restent gratuits. Le rapport détaillé est entièrement facultatif.",
+      "compareNote": "Le test, le résultat à l'écran et le rapport de synthèse en PDF restent gratuits. Le rapport détaillé est entièrement facultatif.",
       "howTitle": "Comment obtenir le rapport",
       "how": [
         "Passez le test gratuit : 24 blocs, environ 10 minutes. Si vous l'avez déjà passé, inutile de recommencer : le rapport est établi à partir du résultat que vous avez déjà.",
         "Réglez le rapport sur la page de paiement sécurisée de Prodamus, notre opérateur de paiement.",
-        "Le rapport arrive par e-mail, en pièce jointe au format PDF, au plus tard 24 heures après le paiement."
+        "Le rapport arrive par e-mail juste après le paiement, en pièce jointe au format PDF."
       ],
       "faqTitle": "Questions fréquentes",
       "faq": [
@@ -1018,10 +1020,10 @@
         { "q": "Sous quelle forme le rapport arrive-t-il ?", "a": "Un fichier PDF d'environ 30 pages A4, joint à un e-mail. Il se lit aussi bien à l'écran que sur papier ; chacune des trois fiches pratiques tient sur une seule page." },
         { "q": "Dans quelle langue le rapport est-il rédigé ?", "a": "En français. Le rapport a été écrit directement en français, pour des lecteurs francophones ; ce n'est pas la traduction d'une autre langue." },
         { "q": "Est-ce un diagnostic ou une évaluation des aptitudes ?", "a": "Non. Le rapport décrit votre style de comportement à partir de vos réponses. Il ne pose aucun diagnostic, ne mesure pas l'intelligence et ne prédit pas la réussite." },
-        { "q": "Peut-on se faire rembourser ?", "a": "Notre {refund} précise dans quels cas et comment obtenir un remboursement." }
+        { "q": "Peut-on se faire rembourser ?", "a": "Oui. Si le rapport ne vous convient pas, écrivez à {email} dans les 7 jours qui suivent le paiement : nous vous remboursons intégralement, sans que vous ayez à vous justifier. Les autres cas et la marche à suivre sont précisés dans notre {refund}." }
       ],
       "priceLabel": "Prix",
-      "price": "{price} USD",
+      "price": "{price} €",
       "docs": "Le service s'intitule « Profil DISC détaillé » ; il est fourni conformément à nos {offer}, et notre {refund} précise dans quels cas et comment obtenir un remboursement.",
       "buy": {
         "testTitle": "Le rapport est établi à partir du résultat de votre test",
@@ -1034,24 +1036,33 @@
       },
       "pay": {
         "title": "Votre rapport sera établi à partir de votre test du {date}",
-        "text": "Le rapport arrive par e-mail, en pièce jointe au format PDF, au plus tard 24 heures après le paiement. Le reçu de paiement est envoyé à la même adresse.",
-        "emailLabel": "E-mail pour le rapport et le reçu",
+        "text": "Le rapport arrive par e-mail juste après le paiement, en pièce jointe au format PDF. Le reçu de paiement est envoyé à la même adresse.",
+        "guarantee": "Satisfait ou remboursé pendant 7 jours.",
+        "offer": {
+          "regular": "Prix habituel",
+          "cta": "Achetez maintenant à {offerPrice} €",
+          "note": "Prix spécial pendant une heure après le test, puis {price} €",
+          "left": "Il reste",
+          "expired": "L'heure qui suit le test est écoulée : le rapport coûte désormais {price} €. Cliquez de nouveau sur « Acheter »."
+        },
+        "emailLabel": "E-mail pour recevoir le rapport en PDF",
+        "emailPlaceholder": "Saisissez votre e-mail",
         "button": "Acheter",
-        "note": "En cliquant sur « Acheter », vous acceptez nos {offer}. Le paiement se fait en dollars américains sur la page sécurisée de Prodamus : c'est là, et non sur ce site, que vous saisissez les données de votre carte. Sur votre relevé bancaire, l'opération peut apparaître sous le nom simpleway.by.",
+        "note": "En cliquant sur « Acheter », vous acceptez nos {offer}. Le paiement se fait en euros sur la page sécurisée de Prodamus : c'est là, et non sur ce site, que vous saisissez les données de votre carte. Sur votre relevé bancaire, l'opération peut apparaître sous le nom simpleway.by.",
         "badEmail": "Vérifiez l'adresse e-mail : c'est à elle que nous enverrons le rapport et le reçu.",
         "wait": "Ouverture de la page de paiement…",
         "error": "Impossible d'ouvrir la page de paiement. Réessayez dans quelques instants ou écrivez-nous à {email}.",
         "how": [
           "Passez le test gratuit : 24 blocs, environ 10 minutes. Si vous l'avez déjà passé, inutile de recommencer : le rapport est établi à partir du résultat que vous avez déjà.",
-          "Indiquez votre e-mail et cliquez sur « Acheter ». Vous payez en dollars américains sur la page sécurisée de Prodamus, notre opérateur de paiement ; cette page est en anglais. Sur votre relevé bancaire, l'opération peut apparaître sous le nom simpleway.by : c'est le nom qu'utilise bePaid, la société qui traite les paiements par carte pour Prodamus.",
-          "Le rapport arrive par e-mail, en pièce jointe au format PDF, au plus tard 24 heures après le paiement. Le reçu de paiement est envoyé à la même adresse."
+          "Indiquez votre e-mail et cliquez sur « Acheter ». Vous payez en euros sur la page sécurisée de Prodamus, notre opérateur de paiement ; cette page est en anglais. Sur votre relevé bancaire, l'opération peut apparaître sous le nom simpleway.by : c'est le nom qu'utilise bePaid, la société qui traite les paiements par carte pour Prodamus.",
+          "Le rapport arrive par e-mail juste après le paiement, en pièce jointe au format PDF. Le reçu de paiement est envoyé à la même adresse."
         ],
         "thanks": {
           "title": "Merci pour votre achat — Rapport DISC détaillé",
           "description": "Paiement du rapport DISC détaillé : où et quand arrive le rapport, et que faire si l'e-mail n'arrive pas.",
           "h1": "Merci pour votre achat !",
-          "lead": "Le rapport arrivera à l'adresse e-mail indiquée lors du paiement, en pièce jointe au format PDF, au plus tard 24 heures après le paiement. En général, il arrive bien plus tôt.",
-          "leadEmail": "Le rapport arrivera à l'adresse {email}, en pièce jointe au format PDF, au plus tard 24 heures après le paiement. En général, il arrive bien plus tôt.",
+          "lead": "Le rapport arrive dans un instant à l'adresse e-mail indiquée lors du paiement, en pièce jointe au format PDF.",
+          "leadEmail": "Le rapport arrive dans un instant à l'adresse {email}, en pièce jointe au format PDF.",
           "order": "Numéro de commande : {order}",
           "statusWait": "En attente de la confirmation du paiement par Prodamus.",
           "statusPaid": "Paiement reçu. Nous préparons votre rapport.",
@@ -1087,7 +1098,7 @@
         "remind": {
           "subject": "Votre rapport DISC détaillé attend son paiement",
           "intro": "Vous avez commencé l'achat du rapport DISC détaillé sur {site}, mais le paiement n'a pas abouti. Votre commande est conservée : le rapport sera établi à partir de votre résultat, pour ce profil :",
-          "price": "Le prix est de {price} USD. Après le paiement, le rapport arrivera à cette adresse en pièce jointe au format PDF, et le reçu dans un e-mail séparé.",
+          "price": "Le prix est de {price} €. Après le paiement, le rapport arrivera à cette adresse en pièce jointe au format PDF, et le reçu dans un e-mail séparé.",
           "button": "Finaliser le paiement",
           "valid": "Ce lien mène à la page de paiement sécurisée de Prodamus ; il reste valable jusqu'au {date}.",
           "footer": "Nous vous envoyons cet e-mail une seule fois, parce qu'une commande (n° {order}) a été passée sur {site} avec cette adresse. Si vous n'avez plus besoin du rapport ou si vous n'avez pas passé cette commande, vous n'avez rien à faire : la commande sera annulée automatiquement et vous ne recevrez plus de message à son sujet."
@@ -1107,25 +1118,20 @@
       },
       "block": {
         "eyebrow": "Rapport détaillé",
-        "title": "Que faire de votre profil : 13 sections fondées sur vos réponses",
-        "hook": "Votre échelle la plus basse : {k} ({name}), {pct} %. Le rapport détaillé explique ce que cela signifie et propose un exercice adapté.",
+        "title": "En savoir plus sur votre profil : plus de 25 pages d'analyse détaillée",
+        "hook": "Votre échelle la plus basse : {k} ({name}), {pct} %. Le rapport détaillé explique ce que cela signifie et comment travailler avec.",
         "list": [
-          "Échelle par échelle : ce que signifie chacun de vos quatre scores",
-          "Cinq angles morts et cinq exercices, avec les signes qui montrent qu'ils portent leurs fruits",
-          "Comment parler à chacun des quatre styles : techniques et phrases toutes prêtes",
-          "Trois fiches pratiques : un plan sur 30 jours, l'essentiel sur une page, une fiche pour vos collègues"
+          "Ce que signifie chacun de vos quatre indicateurs",
+          "Cinq angles morts et cinq exercices pour y travailler",
+          "Comment interagir avec des personnes de types différents : techniques et phrases toutes prêtes",
+          "Un plan de développement sur 30 jours"
         ],
         "sample": "Pages du rapport d'une participante fictive",
-        "price": "{price} USD · PDF par e-mail",
+        "price": "{price} € · PDF par e-mail",
         "button": "Je veux le rapport détaillé",
-        "free": "Le test et le rapport de synthèse restent gratuits.",
-        "topTitle": "Un rapport détaillé fondé sur votre résultat",
-        "topText": "13 sections pour savoir que faire de votre profil : chaque échelle expliquée, cinq exercices, un plan sur 30 jours.",
-        "topButton": "Je veux le rapport — {price} USD",
-        "anchor": "Au sommaire"
+        "free": "Le test et le rapport de synthèse restent gratuits."
       },
       "promo": {
-        "lead": "Établi à partir de vos réponses, le rapport aborde :",
         "hooks": {
           "low": "{k} ({name}), votre échelle la plus basse, à {pct} % : ce que cela signifie",
           "flat": "votre profil équilibré : ce qu'il signifie et comment le lire",
@@ -1139,7 +1145,7 @@
           "layersSame": "votre style adapté et votre style naturel coïncident ({k}) : l'atout et le risque"
         },
         "tail": "Au total, 13 sections, dont cinq exercices et un plan sur 30 jours.",
-        "button": "Rapport détaillé — {price} USD",
+        "button": "Achetez votre rapport détaillé personnalisé à {price} €",
         "close": "Masquer",
         "homeLabel": "Votre résultat du {date}",
         "homeOpen": "Ouvrir le résultat",
@@ -1160,6 +1166,19 @@
       "h1": "Se désabonner de la newsletter",
       "lead": "Cliquez sur le bouton et disc-test.org cessera d'envoyer sa newsletter à l'adresse qui a reçu l'e-mail contenant ce lien. Cela ne concerne pas l'e-mail avec le résultat du test : il n'est envoyé que lorsque vous le demandez."
     },
+    "subscribeConfirm": {
+      "title": "Abonnement à la newsletter — test DISC",
+      "description": "Confirmation de votre abonnement à la newsletter de disc-test.org depuis le lien de l'e-mail.",
+      "h1": "Abonnement à la newsletter",
+      "lead": "L'adresse qui a reçu l'e-mail contenant ce lien recevra la newsletter de disc-test.org : nouveaux tests, conseils pour l'évolution de carrière et la recherche d'emploi, actualités du site et offres promotionnelles."
+    },
+    "subscribeMail": {
+      "subject": "Confirmez votre abonnement à la newsletter de disc-test.org",
+      "intro": "Bonjour, cette adresse a été indiquée dans le formulaire d'abonnement à la newsletter de {site} : nouveaux tests, conseils pour l'évolution de carrière et la recherche d'emploi, actualités du site et offres promotionnelles.",
+      "action": "Pour recevoir ces e-mails, confirmez votre abonnement :",
+      "button": "Confirmer l'abonnement",
+      "footer": "Si cette demande ne vient pas de vous, vous n'avez rien à faire : sans confirmation, la newsletter ne vous sera pas envoyée et l'adresse sera supprimée au bout de 7 jours."
+    },
     "results": {
       "title": "Résultats du test DISC : comment les interpréter",
       "description": "Lire un résultat DISC : les trois courbes du graphique, les pourcentages, styles dominant et secondaire, profil équilibré.",
@@ -1169,7 +1188,7 @@
         {
           "h": "De quoi se compose le résultat",
           "p": [
-            "Après le dernier bloc, vous voyez quatre éléments : le nom du profil avec une ou deux lettres (par exemple « Pionnier, DI »), un graphique à trois courbes, quatre échelles en pourcentage et une description textuelle : traits clés, points forts, axes de progression, motivation, comportement sous stress et conseils sur la façon de communiquer avec vous. Vous pouvez aussi recevoir ce rapport par e-mail et l'ouvrir par un lien.",
+            "Après le dernier bloc, vous voyez quatre éléments : le nom du profil avec une ou deux lettres (par exemple « Pionnier, DI »), un graphique à trois courbes, quatre échelles en pourcentage et une description textuelle : traits clés, points forts, axes de progression, motivation, comportement sous stress et conseils sur la façon de communiquer avec vous. Vous pouvez aussi enregistrer ce rapport en PDF et l'ouvrir par un lien.",
             "Tous les chiffres du rapport découlent de vos réponses dans les 24 blocs. Dans chaque bloc, vous avez choisi une affirmation qui vous « ressemble le plus » et une qui vous « ressemble le moins », et chaque affirmation correspond à l'un des styles D, I, S ou C. Chaque style a donc deux nombres : combien de fois vous l'avez choisi comme « le plus » et combien de fois comme « le moins »."
           ]
         },
@@ -1363,7 +1382,7 @@
           "h": "Quand la version papier est utile",
           "p": [
             "Le test papier est pratique en formation ou en séminaire stratégique, quand tous les participants n'ont pas d'ordinateur, dans un groupe d'étudiants, ou là où le téléphone est interdit. Certains se concentrent mieux sur papier : on coche, on tourne la page, sans être distrait par les notifications.",
-            "Si les participants ont tout de même leur téléphone, la version en ligne est plus simple : elle calcule le résultat, trace le graphique, envoie le rapport par e-mail et fournit un lien à partager. Pour une équipe, il y a en plus l'espace administrateur, qui rassemble les résultats de tous les participants."
+            "Si les participants ont tout de même leur téléphone, la version en ligne est plus simple : elle calcule le résultat, trace le graphique, enregistre le rapport en PDF et fournit un lien à partager. Pour une équipe, il y a en plus l'espace administrateur, qui rassemble les résultats de tous les participants."
           ]
         },
         {
@@ -1413,7 +1432,7 @@
           "h": "Comment faire passer le test à votre équipe sur ce site",
           "ol": [
             "Passez d'abord le test vous-même : vous saurez ce que verront les participants et pourrez montrer un exemple de rapport.",
-            "Envoyez à vos collègues le lien du site dans la langue voulue. Aucune inscription n'est nécessaire, le test prend une dizaine de minutes ; le rapport s'affiche à l'écran, et sur l'écran du résultat chacun indique son nom et son e-mail pour le recevoir par e-mail.",
+            "Envoyez à vos collègues le lien du site dans la langue voulue. Aucune inscription n'est nécessaire, le test prend une dizaine de minutes ; le rapport s'affiche aussitôt à l'écran, chacun peut l'enregistrer en PDF et vous transmettre le lien vers son résultat.",
             "Demandez à chacun de vous transmettre le lien vers son résultat ou le code du rapport. Le résultat n'est visible que par ceux qui ont le lien ; aucune donnée n'est envoyée automatiquement au manager.",
             "Ouvrez l'espace administrateur (lien en pied de page) et collez les codes reçus. L'espace constitue un tableau avec les noms, les profils et les scores, que vous pouvez copier dans Excel. Le tableau n'est conservé que dans votre navigateur.",
             "Organisez une réunion commune : présentez les quatre styles, montrez la carte de l'équipe et laissez chacun dire ce qui, dans son rapport, tombe juste et ce qui ne colle pas."
@@ -1756,11 +1775,11 @@
         },
         {
           "h": "Un résultat immédiat",
-          "p": "Le rapport de synthèse s'affiche dès que vous avez répondu au dernier bloc. Le rapport détaillé est assemblé sitôt payé, à toute heure du jour ou de la nuit, sans rendez-vous ni file d'attente : l'e-mail arrive en général en quelques minutes, et au plus tard 24 heures après le paiement."
+          "p": "Le rapport de synthèse s'affiche dès que vous avez répondu au dernier bloc. Le rapport détaillé est assemblé à toute heure du jour ou de la nuit, sans rendez-vous ni file d'attente : l'e-mail qui le contient arrive juste après le paiement."
         },
         {
           "h": "Un prix accessible",
-          "p": "La préparation automatique permet de garder le test et le rapport de synthèse gratuits, et de proposer le rapport détaillé à {price} USD."
+          "p": "La préparation automatique permet de garder le test et le rapport de synthèse gratuits, et de proposer le rapport détaillé à {price} €."
         },
         {
           "h": "Aucune réponse envoyée à une IA",
@@ -1835,7 +1854,7 @@
         "Un graphique à trois courbes et l'intensité de chaque style en pourcentage",
         "Vos points forts, vos axes de progression, votre motivation et votre comportement sous stress",
         "Des conseils pour mieux communiquer et travailler avec vous",
-        "Un lien vers le rapport, l'enregistrement en PDF et un envoi par e-mail si vous le souhaitez, sans inscription ni version payante"
+        "Un lien vers le rapport et l'enregistrement en PDF, sans inscription ni version payante"
       ],
       "calcTitle": "Comment le résultat est calculé",
       "calc": "Dans chacun des 24 blocs, vous cochez l'affirmation qui vous ressemble le plus et celle qui vous ressemble le moins. Chaque affirmation correspond à l'un des styles D, I, S ou C. Pour chaque style, on calcule la différence entre « le plus » et « le moins », de −24 à +24, puis on la convertit en pourcentage. Le style dominant est celui qui obtient la valeur la plus élevée ; le style secondaire est retenu s'il est lui aussi nettement marqué.",
@@ -1874,7 +1893,7 @@
   "ui": {
     "langLabel": "Langue",
     "footer": "24 blocs · environ 10 minutes · pas de bonnes ou de mauvaises réponses",
-    "privacy": "Vos réponses restent dans votre navigateur ; pour les statistiques générales, le serveur du site ne reçoit que des marques de visite et de début du test et le profil obtenu, sans nom ni réponses. Si vous indiquez une adresse e-mail, le résultat y est envoyé et conservé dans la base de résultats du propriétaire du site. Lorsque vous cliquez sur « Enregistrer en PDF », vos réponses et la date du test — sans nom ni e-mail — sont envoyées au serveur du site, qui génère le fichier du rapport de synthèse, vous le renvoie et ne conserve rien.",
+    "privacy": "Vos réponses restent dans votre navigateur ; pour les statistiques générales, le serveur du site ne reçoit que des marques de visite et de début du test et le profil obtenu, sans nom ni réponses. Si vous indiquez une adresse e-mail, le résultat y est envoyé et conservé dans la base de résultats du propriétaire du site. Si vous vous abonnez à la newsletter sur la page d'accueil, cette base conserve votre adresse e-mail et la langue de la version du site. Lorsque vous cliquez sur « Enregistrer en PDF », vos réponses et la date du test — sans nom ni e-mail — sont envoyées au serveur du site, qui génère le fichier du rapport de synthèse, vous le renvoie et ne conserve rien.",
     "legal": "Manukyan Armen · N° d’identification fiscale (INN) {inn}",
     "rights": "© {year} disc-test.org. Toute copie des textes du site et des rapports sans autorisation écrite est interdite.",
     "adminLink": "Espace administrateur",
@@ -1920,6 +1939,7 @@
     "test.missing": "Le bloc {n} n'est pas rempli",
 
     "report.own": "Votre résultat",
+    "report.taken": "Test passé le {date}",
     "report.other": "Résultat du participant",
     "report.backAdmin": "← Retour à la liste des résultats",
     "report.flat": "Profil équilibré : aucun style ne ressort nettement. Cela traduit généralement une souplesse de comportement, mais peut parfois révéler une hésitation dans les réponses. Le style dominant a été déterminé d'après la valeur la plus élevée.",
@@ -1940,16 +1960,14 @@
     "report.communication": "Comment communiquer avec vous",
     "report.stress": "Sous stress",
     "report.environment": "Environnement idéal",
-    "report.moreLink": "En savoir plus sur la lecture d'un profil DISC →",
-    "report.color": "Votre couleur DISC : {color}",
 
     "share.title": "Conservez votre résultat",
     "share.text": "Votre résultat est enregistré dans votre navigateur. Copiez le lien pour rouvrir le rapport plus tard ou sur un autre appareil, ou envoyez-le à la personne qui vous a demandé de passer le test.",
-    "share.codeAria": "Code du résultat",
-    "share.codeTitle": "Code du résultat",
     "share.copyLink": "Copier le lien",
-    "share.copyCode": "Copier le code",
-    "share.pdf": "Enregistrer en PDF",
+    "share.profile": "Partager le profil",
+    "share.saveProfile": "Enregistrer le profil",
+    "share.msg": "Profil DISC : {name} ({key})",
+    "share.close": "Fermer",
     "share.pdfWait": "Préparation du PDF…",
     "share.pdfFail": "Impossible de télécharger le PDF. La fenêtre d’impression va s’ouvrir : vous pourrez y enregistrer la page en PDF.",
     "share.restart": "Refaire le test",
@@ -1965,11 +1983,6 @@
     "share.send": "Recevoir par e-mail",
     "share.mailtoHint": "Votre messagerie s'ouvrira avec un e-mail prêt à partir vers cette adresse : il ne restera plus qu'à cliquer sur « Envoyer ».",
     "share.mailtoOpened": "L'e-mail contenant votre résultat est ouvert dans votre messagerie : envoyez-le à {email}.",
-    "share.typeTitle": "Partagez votre type",
-    "share.typeText": "Le lien mène à la description publique du profil « {name} » : il ne contient ni votre nom, ni votre e-mail, ni vos réponses.",
-    "share.type": "Partager mon type",
-    "share.via": "Partager sur {net}",
-    "share.typeMsg": "Mon type DISC : {name} ({key}). Et vous, c'est lequel ? Faites le test gratuit en 10 minutes.",
 
     "invite.title": "Votre ami est « {name} ». Et vous, quel est votre type ?",
     "invite.text": "Passez le test DISC gratuit : 24 blocs, environ 10 minutes, sans inscription. Découvrez votre type et comment mieux travailler et communiquer ensemble.",
@@ -2105,7 +2118,7 @@
     "pages.profiles.colPure": "Sans secondaire",
 
     "cta.title": "Découvrez votre profil DISC",
-    "cta.text": "Test gratuit : 24 blocs, environ 10 minutes, résultat immédiat et par e-mail.",
+    "cta.text": "Test gratuit : 24 blocs, environ 10 minutes, résultat immédiat.",
     "cta.button": "Passer le test",
     "cta.inline": "Découvrez votre style DISC — test gratuit de 10 minutes, sans inscription.",
     "cta.inlineProfile": "Vous vous reconnaissez ? Vérifiez votre type DISC — test gratuit de 10 minutes.",
@@ -2135,6 +2148,20 @@
     "unsub.done": "C'est fait : disc-test.org n'enverra plus sa newsletter à cette adresse.",
     "unsub.failed": "Le désabonnement n'a pas abouti. Réessayez ou écrivez-nous : {email}.",
     "unsub.bad": "Ce lien ne contient pas de code de désabonnement. Ouvrez le lien complet depuis l'e-mail ou écrivez-nous : {email}.",
+    "nl.title": "Abonnez-vous à la newsletter",
+    "nl.text": "Recevez nos nouveaux tests et des conseils pour faire évoluer votre carrière et trouver un emploi.",
+    "nl.emailLabel": "Votre adresse e-mail",
+    "nl.button": "S'abonner",
+    "nl.consent": "J'accepte de recevoir à cette adresse la newsletter de disc-test.org : nouveaux tests, conseils pour l'évolution de carrière et la recherche d'emploi, actualités du site et offres promotionnelles. Vous pouvez vous désabonner à tout moment via le lien présent dans chaque e-mail.",
+    "nl.consentRequired": "Cochez la case de consentement à recevoir la newsletter.",
+    "nl.sending": "Envoi de l'e-mail…",
+    "nl.sent": "Presque terminé : un e-mail vient d'être envoyé à {email}. Ouvrez-le et cliquez sur « Confirmer l'abonnement » — sans cela, la newsletter ne vous sera pas envoyée.",
+    "nl.failed": "L'abonnement n'a pas abouti. Réessayez plus tard.",
+    "subc.button": "Confirmer l'abonnement",
+    "subc.wait": "Confirmation de votre abonnement…",
+    "subc.done": "Abonnement confirmé. Vous pouvez vous désabonner à tout moment via le lien présent dans chaque e-mail de la newsletter.",
+    "subc.bad": "Ce lien est incomplet ou a expiré : l'abonnement doit être confirmé dans les 7 jours. Abonnez-vous à nouveau depuis la page d'accueil ou écrivez-nous : {email}.",
+    "subc.failed": "La confirmation de l'abonnement n'a pas abouti. Réessayez ou écrivez-nous : {email}.",
     "contact.privacyNote": "Le nom, l'adresse e-mail, l'objet, le message et les fichiers seront envoyés par e-mail à {email} et utilisés uniquement pour vous répondre.",
     "contact.mailtoNote": "Le service d'envoi n'est pas encore connecté : le bouton « Envoyer » ouvrira votre messagerie avec le message pré-rempli, et vous devrez ajouter vous-même les fichiers joints à l'e-mail.",
     "contact.mailSubject": "Message depuis le site : {name}",
@@ -2153,7 +2180,7 @@
     "pd.consentLink": "consentement au traitement des données personnelles",
     "pd.required": "Cochez la case de consentement au traitement des données personnelles : sans ce consentement, nous ne pouvons pas accepter vos données.",
     "pd.cookieAsk": "Ce site conserve votre progression, votre résultat et la langue choisie dans le stockage local du navigateur. Avec votre consentement, un service d'analyse d'audience collectera des statistiques de visite anonymisées et un enregistrement des actions sur la page pour nous aider à améliorer le site. Votre nom, votre e-mail et votre résultat ne sont pas transmis au service d'analyse.",
-    "pd.cookieDetails": "Conservés dans le navigateur : le nom et l'e-mail, si vous les avez indiqués ; vos réponses et la progression inachevée ; votre dernier résultat ; la langue choisie ; une marque indiquant que vous avez vu cet avis. Ces données restent sur votre appareil et sont supprimées lorsque vous effacez les données du site. L'hébergeur reçoit les données techniques habituelles de la requête. La première fois que vous ouvrez le site dans la journée, une marque de visite anonyme est envoyée au serveur du site : uniquement la langue de la version du site ; le serveur l'enregistre avec son heure d'arrivée, et votre navigateur garde la date pour ne pas la renvoyer le même jour. Ces marques nous servent à compter combien de personnes visitent le site. Lorsque vous commencez le test, une marque de début anonyme est envoyée au serveur du site : uniquement la langue de la version du site. Lorsque vous terminez le test, un enregistrement anonyme destiné aux statistiques générales est envoyé au serveur du site : le profil obtenu et la langue de la version du site, sans nom, e-mail ni réponses. Lorsque vous cliquez sur « Enregistrer en PDF », vos réponses et la date du test — sans nom ni e-mail — sont envoyées au serveur du site, qui génère le fichier du rapport de synthèse, vous le renvoie et ne conserve rien. Lorsque vous envoyez le résultat par e-mail, le nom, l'e-mail et les réponses sont transmis au serveur du site, qui vous envoie l'e-mail avec le résultat et enregistre le nom, l'e-mail, la date et le résultat dans la base de résultats du propriétaire du site. Le service d'analyse d'audience reçoit l'adresse de la page sans le code du résultat, la provenance, le type d'appareil et de navigateur, un enregistrement anonymisé des actions sur la page (les champs nom et e-mail, le lien et le code du résultat en sont exclus) et dépose ses propres cookies. Vous pouvez le bloquer dans les paramètres du navigateur ou avec un bloqueur de traceurs. Aucun traceur publicitaire n'est utilisé.",
+    "pd.cookieDetails": "Conservés dans le navigateur : le nom et l'e-mail, si vous les avez indiqués ; vos réponses et la progression inachevée ; votre dernier résultat ; l'heure à laquelle vous avez terminé le test pour la première fois, pour le délai du prix spécial du rapport ; la langue choisie ; une marque indiquant que vous avez vu cet avis. Ces données restent sur votre appareil et sont supprimées lorsque vous effacez les données du site. L'hébergeur reçoit les données techniques habituelles de la requête. La première fois que vous ouvrez le site dans la journée, une marque de visite anonyme est envoyée au serveur du site : uniquement la langue de la version du site ; le serveur l'enregistre avec son heure d'arrivée, et votre navigateur garde la date pour ne pas la renvoyer le même jour. Ces marques nous servent à compter combien de personnes visitent le site. Lorsque vous commencez le test, une marque de début anonyme est envoyée au serveur du site : uniquement la langue de la version du site. Lorsque vous terminez le test, un enregistrement anonyme destiné aux statistiques générales est envoyé au serveur du site : le profil obtenu et la langue de la version du site, sans nom, e-mail ni réponses. Lorsque vous cliquez sur « Enregistrer en PDF », vos réponses et la date du test — sans nom ni e-mail — sont envoyées au serveur du site, qui génère le fichier du rapport de synthèse, vous le renvoie et ne conserve rien. Lorsque vous envoyez le résultat par e-mail, le nom, l'e-mail et les réponses sont transmis au serveur du site, qui vous envoie l'e-mail avec le résultat et enregistre le nom, l'e-mail, la date et le résultat dans la base de résultats du propriétaire du site. Lorsque vous vous abonnez à la newsletter sur la page d'accueil, l'e-mail et la langue de la version du site sont transmis au serveur du site, qui vous envoie un e-mail avec un lien de confirmation et enregistre l'adresse dans la même base ; si l'abonnement n'est pas confirmé, l'adresse est supprimée au bout de 7 jours. Le service d'analyse d'audience reçoit l'adresse de la page (sur l'écran du résultat, avec le code du résultat : vos réponses, la date du test et votre nom si vous l'avez indiqué, mais pas votre e-mail), la provenance, le type d'appareil et de navigateur, un enregistrement des actions sur la page (les champs nom et e-mail en sont exclus) et dépose ses propres cookies. Vous pouvez le bloquer dans les paramètres du navigateur ou avec un bloqueur de traceurs. Aucun traceur publicitaire n'est utilisé.",
     "pd.cookieChange": "Modifier le choix des cookies",
 
     "print.title": "Test DISC à imprimer : questionnaire, clé et calcul du score",

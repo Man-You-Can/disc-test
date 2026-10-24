@@ -15,6 +15,8 @@ const analyticsMode = L => cfg.analyticsMode === "always" || (cfg.analyticsAlway
 const headExtraFor = L => [["google-site-verification", cfg.googleSiteVerification], ["yandex-verification", cfg.yandexVerification]]
   .filter(([, v]) => v).map(([n, v]) => `<meta name="${n}" content="${String(v).replace(/["<>&]/g, "")}">`)
   .concat(cfg.yandexMetrikaId ? [`<script>window.DISC_ANALYTICS=${JSON.stringify({ ym: String(cfg.yandexMetrikaId).replace(/\D/g, ""), mode: analyticsMode(L) })};</script>`] : [])
+  // закреплённая кнопка расширенного отчёта на всех страницах (src/common.js) — только в языках, где отчёт продаётся (content.product.promo)
+  .concat(L.content.product && L.content.product.promo ? [`<script>window.DISC_XBAR=${JSON.stringify(xbarCfg(L)).replace(/</g, "\\u003c")};</script>`] : [])
   .concat(visitStats ? [`<script>window.DISC_VISIT=${JSON.stringify({ url: String(cfg.sendEndpoint), token: String(cfg.sendToken || ''), host: new URL(cfg.siteUrl).hostname }).replace(/</g, "\\u003c")};</script>`] : [])
   .join("\n");
 // Персональные данные (план боевого режима, этап Д). pdConsent в site.config.json включает схему «свой сервер в России»:
@@ -33,10 +35,25 @@ const siteUrl = cfg.siteUrl.replace(/\/+$/, '');
 const basePath = new URL(siteUrl + '/').pathname; // например "/disc-test/" или "/"
 const tpl = fs.readFileSync(path.join(SRC, 'template.html'), 'utf8');
 const introJs = fs.readFileSync(path.join(SRC, 'intro.js'), 'utf8');
-const introHTML = require(path.join(SRC, 'intro.js'));
+const introHTML = require(path.join(SRC, 'intro.js')), cvPromoHTML = introHTML.cvPromoHTML;
 const commonJs = fs.readFileSync(path.join(SRC, 'common.js'), 'utf8').replace(/\nif \(typeof module[^\n]*\n?$/, '\n');
 // Форма обратной связи: письма уходят на feedbackEmail через Apps Script; пустой адрес — страницы /contact/ и ссылки на неё нет
 const contactJs = fs.readFileSync(path.join(SRC, 'contact.js'), 'utf8').replace(/\nif \(typeof module[^\n]*\n?$/, '\n');
+// Заявка со страницы «Для организаций» (/business/): разметку businessHTML() кладёт сборка, логику initBusiness() — сама страница
+const businessHTML = require(path.join(SRC, 'business.js'));
+const businessJs = fs.readFileSync(path.join(SRC, 'business.js'), 'utf8').replace(/\nif \(typeof module[^\n]*\n?$/, '\n');
+// Лендинг «CV под каждую вакансию» (/ru/cv/): разметку формы cvFormHTML() кладёт сборка, логику initCvForm() — сама страница; стили страницы — src/cv.css
+const cvFormHTML = require(path.join(SRC, 'cv.js'));
+const cvJs = fs.readFileSync(path.join(SRC, 'cv.js'), 'utf8').replace(/\nif \(typeof module[^\n]*\n?$/, '\n');
+// комментарии в cv.js — по-русски и упоминают русскую страницу: в лендинги на других языках код идёт без них (с 2026-10-24)
+const cvJsBare = cvJs.replace(/\/\*[\s\S]*?\*\//g, '').replace(/^[ \t]*\/\/.*\n/gm, '').replace(/[ \t]+\/\/ .*$/gm, '').replace(/\n{2,}/g, '\n');
+const cvCss = fs.readFileSync(path.join(SRC, 'cv.css'), 'utf8').replace(/\/\*[\s\S]*?\*\//g, '').replace(/\n+/g, '\n').trim();
+// неактивные кнопки скачивания (файлы примера на языке ещё не готовы, с 2026-10-24 — английская версия): стили только для таких страниц, cv.css не меняется
+const cvOffCss = fs.readFileSync(path.join(SRC, 'cv-off.css'), 'utf8').replace(/\/\*[\s\S]*?\*\//g, '').replace(/\n+/g, '\n').trim();
+// фото автора без обрезки головы (src/cv-photo.css): во всех языках лендинга, кроме русского — русская страница не меняется без решения заказчика
+const cvPhotoCss = fs.readFileSync(path.join(SRC, 'cv-photo.css'), 'utf8').replace(/\/\*[\s\S]*?\*\//g, '').replace(/\n+/g, '\n').trim();
+// китайский и японский лендинг (src/cv-cjk.css, с 2026-10-24): цитата автора без курсива — у иероглифов его нет; только эти языки
+const cvCjkCss = fs.readFileSync(path.join(SRC, 'cv-cjk.css'), 'utf8').replace(/\/\*[\s\S]*?\*\//g, '').replace(/\n+/g, '\n').trim(), CV_CJK = ['zh', 'zh-hant', 'ja'];
 const contactHTML = require(path.join(SRC, 'contact.js'));
 const feedbackEmail = String(cfg.feedbackEmail || '').trim().replace(/['\\<>"]/g, '');
 // Адрес, с которого Apps Script шлёт письма (в Gmail он должен быть добавлен как «Отправлять письма как»); по умолчанию — feedbackEmail
@@ -48,12 +65,14 @@ const legalHtml = L => legalInn ? `<div class="legal">${esc(L.ui.legal.replace('
 // Строка о правах на тексты (подвал каждой страницы, печатная версия результата, PDF-отчёт из письма): ui.rights, {year} — год сборки
 const rightsHtml = L => `<div class="rights">${esc(L.ui.rights.replace('{year}', new Date().getFullYear()))}</div>`;
 // Платная услуга. Страница /services/ есть во всех языках; цена берётся по валюте локали (content.services.currency):
-// servicePriceRub или servicePriceUsd в site.config.json, пустое значение или 0 убирает страницу и пункт меню в языках с этой валютой.
+// servicePriceRub, servicePriceUsd или servicePriceEur (французская и немецкая версии, с 2026-10-22) в site.config.json, пустое значение или 0 убирает страницу и пункт меню в языках с этой валютой.
 // Оферта и условия возврата (/offer/, /refund/) — только в языках, где есть content.offer и content.refund (сейчас — русский)
-const servicePrices = { RUB: Number(cfg.servicePriceRub) || 0, USD: Number(cfg.servicePriceUsd) || 0 };
-const servicePrice = L => { const v = L.content.services ? servicePrices[L.content.services.currency] || 0 : 0;
-  return v ? new Intl.NumberFormat(L.dateLocale, Number.isInteger(v) ? {} : { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(v) : ''; };
+const servicePrices = { RUB: Number(cfg.servicePriceRub) || 0, USD: Number(cfg.servicePriceUsd) || 0, EUR: Number(cfg.servicePriceEur) || 0 };
+const fmtPrice = (L, v) => v ? new Intl.NumberFormat(L.dateLocale, Number.isInteger(v) ? {} : { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(v) : '';
+const servicePrice = L => fmtPrice(L, L.content.services ? servicePrices[L.content.services.currency] || 0 : 0);
 const hasServices = L => !!(servicePrice(L) && L.ui['nav.services']);
+// анонсы сервиса «Резюме под каждую вакансию» (content.cvPromo, с 2026-10-24): только там, где есть сам лендинг /<язык>/cv/ (content.cv и форма заявки)
+const hasCvPromo = L => !!(L.content.cvPromo && L.content.cv && feedbackEmail);
 const hasOffer = L => !!(hasServices(L) && L.content.offer && L.content.refund && L.ui['nav.offer']);
 // Расширенный отчёт: страница /extended-report/ и блок на экране результата — в языках, где есть content.product и оферта.
 // Листы образца — картинки src/assets/extended/<язык>-i-<n>.webp (с уменьшенной копией -s) и подписи к ним в локали (sampleAlt, sampleCaption,
@@ -63,7 +82,45 @@ const hasOffer = L => !!(hasServices(L) && L.content.offer && L.content.refund &
 const sampleCount = L => { let n = 0; while (fs.existsSync(path.join(SRC, 'assets', 'extended', `${L.lang}-i-${n + 1}.webp`)) && fs.existsSync(path.join(SRC, 'assets', 'extended', `${L.lang}-i-${n + 1}-s.webp`))) n++; return n; };
 const hasProduct = L => !!(hasOffer(L) && L.content.product);
 const hasSamples = L => { const P = L.content.product; return !!(hasProduct(L) && P.sampleTitle && P.sampleNote && P.block.sample && Array.isArray(P.sampleAlt) && Array.isArray(P.sampleCaption) && P.sampleAlt.length && sampleCount(L) >= P.sampleAlt.length); };
-const withPrice = (L, obj) => JSON.parse(JSON.stringify(obj).replace(/\{price\}/g, servicePrice(L)));
+// Специальная цена (offerPriceRub, offerPriceUsd, offerPriceEur, offerMinutes в site.config.json; решение заказчика от 2026-10-22, во всех языках с покупкой): в течение
+// offerMinutes после прохождения теста отчёт стоит offerPrice<валюта> вместо servicePrice<валюта>. Включается в языке с этой валютой, где отчёт продаётся
+// (content.product.pay) и есть тексты content.product.pay.offer; в текстах цена подставляется вместо {offerPrice}. Срок проверяет сервер оплаты
+// по времени прохождения в коде результата (private/server/src/pay.js), страница показывает зачёркнутую обычную цену и обратный отсчёт (src/pay.js).
+const offerPrices = { RUB: Number(cfg.offerPriceRub) || 0, USD: Number(cfg.offerPriceUsd) || 0, EUR: Number(cfg.offerPriceEur) || 0 }, offerMinutes = Number(cfg.offerMinutes) || 60;
+// offerTermsPrice — цена для оферты (п. 3.1 во всех языках, где она есть, даже без покупки); offerPrice — для форм покупки (нужны тексты pay.offer)
+const offerTermsPrice = L => { const cur = L.content.services && L.content.services.currency, v = offerPrices[cur] || 0; return v && v < (servicePrices[cur] || 0) ? fmtPrice(L, v) : ''; };
+const offerPrice = L => { const C = L.content; return C.product && C.product.pay && C.product.pay.offer ? offerTermsPrice(L) : ''; };
+const withPrice = (L, obj) => { const s = JSON.stringify(obj).replace(/\{price\}/g, servicePrice(L));
+  if (/\{offerPrice\}/.test(s) && !offerPrice(L)) throw new Error(`${L.lang}: в тексте есть {offerPrice}, а специальная цена не задана (offerPriceRub в site.config.json)`);
+  return JSON.parse(s.replace(/\{offerPrice\}/g, offerPrice(L))); };
+// Специальная цена для скрипта покупки (src/pay.js, T.offer): числа — для сервера, строки — для показа; null — специальной цены в языке нет
+const payOffer = L => { if (!offerPrice(L)) return null; const P = L.content.product, O = withPrice(L, P.pay.offer), cur = L.content.services.currency;
+  return { price: offerPrices[cur], regular: servicePrices[cur], ms: offerMinutes * 60000, priceText: withPrice(L, P.price).replace(servicePrice(L), offerPrice(L)),
+    regularText: withPrice(L, P.price), regularLabel: O.regular, cta: O.cta, note: O.note, left: O.left, expired: O.expired,
+    button: P.promo ? withPrice(L, P.promo.button).replace(servicePrice(L), offerPrice(L)) : '' }; };
+// Закреплённая кнопка расширенного отчёта (src/common.js, window.DISC_XBAR): надпись с обычной ценой, со специальной (пусто — её нет в языке), срок специальной цены, «Скрыть»
+const xbarCfg = L => { const PM = withPrice(L, L.content.product.promo), O = payOffer(L); return { button: PM.button, offer: O ? O.button : '', ms: offerMinutes * 60000, close: PM.close }; };
+// Коды доступа (с 2026-10-22, по просьбе заказчика; сначала русская версия): организации покупают расширенные отчёты пакетом и раздают людям коды.
+// accessCodes в site.config.json включает в формах покупки ссылку «У меня есть код организации» с полем кода (тексты content.product.pay.code):
+// код уходит на <payEndpoint>/code, сервер проверяет его и ставит задание на отчёт (private/server/src/codes.js). Включать после выкладки сервера с кодами.
+const accessCodes = () => !!(cfg.accessCodes && payEndpoint);   // функция: payEndpoint объявлен ниже
+const payCodeT = (L, fill) => { const P = L.content.product && L.content.product.pay, X = P && P.code; if (!accessCodes() || !X) return null;
+  return Object.assign(Object.fromEntries(['link', 'label', 'placeholder', 'button', 'back', 'wait', 'badEmail', 'empty', 'done', 'bad', 'expired'].map(k => [k, X[k]])),
+    { noteHtml: fill(escFull(X.note)), usedHtml: fill(escFull(X.used)), errorHtml: fill(escFull(X.error)) }); };
+// Страница «Для организаций» (/business/, пункт в подвале): пакеты кодов — businessPacks в site.config.json ([{from, priceRub}]: от скольких кодов
+// и цена одного), срок кода — businessCodeMonths; заявка — форма на странице (src/business.js), уходит через форму обратной связи сервера.
+// Есть там, где в локали content.business и ui['nav.business'], отчёт продаётся в рублях и включены коды доступа.
+const businessPacks = (Array.isArray(cfg.businessPacks) ? cfg.businessPacks : []).filter(x => x && x.from > 0 && x.priceRub > 0).sort((a, b) => a.from - b.from);
+const businessMonths = Number(cfg.businessCodeMonths) || 12;
+// Пункты оферты и абзац политики о кодах доступа (offer.codeTerms: [{section, text}] — пункт в конец раздела; policy.purchaseCode — абзац в конец
+// раздела о покупке): решение заказчика от 2026-10-22 — коды только в русской версии, поэтому эти тексты в отдельных ключах, а не в общих списках,
+// и появляются только там, где коды включены. Когда коды придут в другой язык, его перевод получает те же ключи.
+const offerSections = L => { const of = L.content.offer; if (!of.codeTerms || !payCodeT(L, x => x)) return of.sections;
+  return of.sections.map((sec, i) => { const add = of.codeTerms.filter(x => x.section === i).map(x => x.text), k = sec.ul ? 'ul' : sec.ol ? 'ol' : 'p';
+    return add.length ? Object.assign({}, sec, { [k]: sec[k].concat(add) }) : sec; }); };
+const policyPurchase = L => { const po = L.content.policy; return po.purchaseCode && payCodeT(L, x => x) ? Object.assign({}, po.purchase, { p: po.purchase.p.concat([po.purchaseCode]) }) : po.purchase; };
+const hasBusiness = L => !!(L.content.business && L.ui['nav.business'] && hasProduct(L) && L.content.product.pay && L.content.services.currency === 'RUB' && servicePrices.RUB &&
+  payCodeT(L, x => x) && feedbackEmail && cfg.sendEndpoint && businessPacks.length);
 // Оператор и дата редакции в политике и согласии: в языке с полным текстом политики (policy.legal — русская версия) — исполнитель из оферты
 // (ИП с ИНН), в остальных — строка реквизитов из подвала. От наличия оферты не зависит: иначе её появление в языке меняло бы текст согласия,
 // на который люди уже согласились (после правки текста согласия нужна новая pdVersion)
@@ -80,6 +137,12 @@ const pdConsentText = L => { const cd = L.content.consentDoc, plain = str => Str
 // развёрнута версия скрипта со столбцами согласия (GET на sendEndpoint отвечает newsletter:true): прежняя версия галочку молча игнорирует.
 // Страница отписки /unsubscribe/ строится всегда, когда задан sendEndpoint: ссылки из уже разосланных писем должны работать.
 const newsletter = !!(cfg.newsletter && cfg.sendEndpoint);
+// Подписка на рассылку на стартовом экране (с 2026-10-22): "homeSubscribe": true — форма e-mail + «Подписаться» и страница подтверждения /subscribe/ (#c=…).
+// Сервер пишет подписчика в базу результатов строкой без результата и шлёт письмо со ссылкой подтверждения (тексты content.subscribeMail).
+const homeSub = !!(cfg.homeSubscribe && newsletter);
+// Кнопка «Отправить на e-mail» с формой краткого отчёта в карточке «Сохраните результат» (с 2026-10-22): "resultEmail": false её убирает
+// (так было с 2026-10-21 по 2026-10-22 по решению заказчика; код отправки остаётся). Без ключа кнопка есть.
+const resultEmail = cfg.resultEmail !== false;
 // Обезличенный счёт прохождений: profileStats в site.config.json — в момент, когда тест пройден, страница шлёт на sendEndpoint профиль и язык версии
 // (action: 'stat'), без имени, адреса, ответов и кода результата; сервер пишет их в таблицу счёта, панель показывает на странице «Профили».
 // По кнопке «Начать тест» уходит вторая запись — только язык версии (action: 'start'): панель показывает на странице «Прохождения», сколько раз тест начали.
@@ -137,7 +200,9 @@ const relRoot = (L, sub) => { const depth = (pathOf(L.lang) + sub).split('/').le
 const PAIRS = ['DD', 'DI', 'DS', 'DC', 'II', 'IS', 'IC', 'SS', 'SC', 'CC'], pairSlug = k => (k[0] + '-' + k[1]).toLowerCase();
 const ltr = str => `<span dir="ltr">${str}</span>`; // латиница внутри арабского текста: без изоляции «D · I» читается как «I · D»
 const FOOT_ITEMS = [['nav.about', 'about/']].concat(feedbackEmail ? [['nav.contact', 'contact/']] : []).concat([['nav.privacy', 'privacy/']]);
-const footLinks = (L, base) => FOOT_ITEMS.slice(0, 1).concat(hasServices(L) ? [['nav.services', 'services/']] : [], hasOffer(L) ? [['nav.offer', 'offer/']] : [], FOOT_ITEMS.slice(1)).map(([k, sub]) => `<a href="${base + sub}">${esc(L.ui[k])}</a>`).join(' · ');
+// Короткий подвал экрана результата (с 2026-10-21, решение заказчика): только оферта, конфиденциальность и обратная связь + строка ©
+const footShort = (L, base) => (hasOffer(L) ? [['nav.offer', 'offer/']] : []).concat([['nav.privacy', 'privacy/']], feedbackEmail ? [['nav.contact', 'contact/']] : []).map(([k, sub]) => `<a href="${base + sub}">${esc(L.ui[k])}</a>`).join(' · ');
+const footLinks = (L, base) => FOOT_ITEMS.slice(0, 1).concat(hasServices(L) ? [['nav.services', 'services/']] : [], hasBusiness(L) ? [['nav.business', 'business/']] : [], hasOffer(L) ? [['nav.offer', 'offer/']] : [], FOOT_ITEMS.slice(1)).map(([k, sub]) => `<a href="${base + sub}">${esc(L.ui[k])}</a>`).join(' · ');
 const PROFILE_KEYS = ['D', 'DI', 'DC', 'DS', 'I', 'ID', 'IS', 'IC', 'S', 'SI', 'SC', 'SD', 'C', 'CD', 'CS', 'CI'];
 // Источники к странице «Что такое DISC». Библиографические описания одинаковы во всех языках
 // (названия работ приводятся на языке оригинала), поэтому живут здесь, а не в локалях;
@@ -281,17 +346,26 @@ const firstPublished = key => { const [lang, sub] = [key.slice(0, key.indexOf(':
 const contentDate = (key, text, files) => { const h = crypto.createHash('sha1').update(text).digest('hex').slice(0, 16), old = lmOld[key];
   const d = old ? (old.h === h ? old.d : today) : (lastmod(files) || today); lmNew[key] = { h, d, p: old ? (old.p || firstPublished(key)) : today }; return d; };
 // Локаль для скрипта главной — только то, что нужно тесту, отчёту и блоку под тестом: у профилей название и краткое описание,
-// из статей — content.home и названия цветов (ссылка «Ваш цвет DISC» в отчёте). Тексты статей и страниц профилей
+// из статей — content.home (ссылка «Ваш цвет DISC» в отчёте и названия цветов для неё убраны 2026-10-21). Тексты статей и страниц профилей
 // (profiles.*.deep, careers, team, with, content.*) раньше попадали в скрипт целиком — ~150 КБ лишнего на главной (аудит 3, п. 4).
 const homeLocale = L => Object.assign({}, L, {
   // ui: тексты уведомления о cookie — по режиму языка; ключи pd.* нужны главной только при включённой галочке согласия (pd.cookie* — никогда: они уже подставлены)
   ui: Object.assign(Object.fromEntries(Object.entries(L.ui).filter(([k]) => !k.startsWith('pd.') || (pdOn && !k.startsWith('pd.cookie')))), noticeUi(L)),
   profiles: Object.fromEntries(Object.entries(L.profiles).map(([k, p]) => [k, { name: p.name, summary: p.summary }])),
   // product — тексты блока «Расширенный отчёт» на экране результата (цена уже подставлена); страница отчёта в скрипт не идёт
-  content: Object.assign({ home: L.content.home, colors: { colors: Object.fromEntries(KEYS.map(k => [k, { name: L.content.colors.colors[k].name }])) } },
+  content: Object.assign({ home: L.content.home }, hasCvPromo(L) ? { cvPromo: L.content.cvPromo } : {},
     hasProduct(L) ? { product: Object.assign(withPrice(L, L.content.product.block), hasSamples(L) ? {} : { sample: '' },
-      L.content.product.promo ? { promo: withPrice(L, L.content.product.promo) } : {}) } : {})
+      L.content.product.promo ? { promo: withPrice(L, L.content.product.promo) } : {}, homePay(L) ? { pay: homePay(L) } : {}) } : {})
 });
+// Покупка прямо на экране результата (src/pay.js, payForms): тексты формы — те же, что на странице отчёта; ссылки в условии оферты и в ошибке —
+// готовая разметка, адрес оферты начинается с {base} (скрипт главной подставляет путь языковой версии). Без payEndpoint кнопки ведут на страницу отчёта
+function homePay(L) {
+  const C = L.content, pay = payEndpoint && C.product && C.product.pay ? withPrice(L, C.product.pay) : null; if (!pay) return null;
+  const vars = { offer: `<a href="{base}offer/">${escFull(C.offer.linkText)}</a>`, email: feedbackEmail ? `<a href="mailto:${escFull(feedbackEmail)}">${escFull(feedbackEmail)}</a>` : '—' };
+  const fill = h => h.replace(/\{(offer|email)\}/g, (m, k) => vars[k]);
+  return Object.assign({ noteHtml: fill(escFull(pay.note)), errorHtml: fill(escFull(pay.error)), more: C.product.more, offer: payOffer(L), code: payCodeT(L, fill) },
+    Object.fromEntries(['text', 'emailLabel', 'emailPlaceholder', 'button', 'badEmail', 'wait', 'guarantee'].map(k => [k, pay[k]])));
+}
 // Организация-издатель: одна карточка на весь сайт, с адресом для связи
 const orgLd = () => ({ '@context': 'https://schema.org', '@type': 'Organization', name: 'DISC Test', url: siteUrl + '/', logo: `${siteUrl}/icon-512.png`, email: feedbackEmail || undefined });
 const jsonLd = L => JSON.stringify([
@@ -311,9 +385,10 @@ for (const L of locales) {
   const isRoot = L.lang === def.lang, rootRel = isRoot ? './' : '../';
   const href = x => rootRel + pathOf(x.lang);
   const navHtml = navItems(L).map(([k, sub]) => `<a href="${rootRel + pathOf(L.lang) + sub}"${sub === '' ? ' aria-current="page"' : ''}>${esc(L.ui[k])}</a>`).join('');
-  const footHtml = footLinks(L, rootRel + pathOf(L.lang));
+  const footHtml = footLinks(L, rootRel + pathOf(L.lang)), footShortHtml = footShort(L, rootRel + pathOf(L.lang));
   const introBuilt = introHTML({ L, t: tFor(L), esc: escFull, KEYS, colorVar: k => 'var(--' + k.toLowerCase() + ')', progDone: 0, lastDate: '',
-    links: { styles: rootRel + pathOf(L.lang) + 'styles/', profiles: rootRel + pathOf(L.lang) + 'profiles/', pdf: rootRel + pathOf(L.lang) + 'pdf/', results: rootRel + pathOf(L.lang) + 'results/', faq: rootRel + pathOf(L.lang) + 'faq/', profile: k => rootRel + pathOf(L.lang) + 'profiles/' + k.toLowerCase() + '/' } });
+    links: { styles: rootRel + pathOf(L.lang) + 'styles/', profiles: rootRel + pathOf(L.lang) + 'profiles/', pdf: rootRel + pathOf(L.lang) + 'pdf/', results: rootRel + pathOf(L.lang) + 'results/', faq: rootRel + pathOf(L.lang) + 'faq/', profile: k => rootRel + pathOf(L.lang) + 'profiles/' + k.toLowerCase() + '/',
+      cv: hasCvPromo(L) ? rootRel + pathOf(L.lang) + 'cv/' : '' } });
   pages.push({ lang: L.lang, sub: '', date: contentDate(L.lang + ':', [L.title, L.description, introBuilt.split(rootRel + pathOf(L.lang)).join('~/')].join('\n'), [`src/locales/${L.lang}.json`, 'src/template.html', 'src/intro.js']) });
   const chevron = `<svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5l3.5 3.5 3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
   const switcher = `<div class="langsel" id="langSel">` +
@@ -333,7 +408,7 @@ for (const L of locales) {
     .replace('__JSON_LD__', () => jsonLd(L))
     .replace('__INTRO_JS__', () => introJs.replace(/\nif \(typeof module[^\n]*\n?$/, '\n'))
     .replace('__COMMON_JS__', () => commonJs).replace('__GRAPH_JS__', () => graphJs)
-    .replace('__NAV__', () => navHtml).replace('__FOOT_LINKS__', () => footHtml).replace('__MATERIALS__', () => materialsHtml(L, rootRel + pathOf(L.lang), null))
+    .replace('__NAV__', () => navHtml).replace('__FOOT_LINKS__', () => footHtml).replace('__FOOT_SHORT__', () => footShortHtml).replace('__MATERIALS__', () => materialsHtml(L, rootRel + pathOf(L.lang), null))
     .replace('__INTRO_HTML__', () => introBuilt)
     .replace(/__HREFLANG__/g, hreflangTags).replace(/__HEAD_EXTRA__/g, () => headExtraFor(L))
     .replace(/__FONTS_HEAD__/g, () => fontsHead(f, L)).replace(/__FONT_HEAD__/g, f.head).replace(/__FONT_BODY__/g, f.body)
@@ -341,8 +416,9 @@ for (const L of locales) {
     .replace('__LANG_SWITCHER__', () => switcher).replace('__LANG_LINKS__', () => links).replace('__FLAG_SPRITE__', () => flagSprite(locales.map(x => x.lang)))
     .replace(/__FOOTER__/g, esc(L.ui.footer)).replace(/__ADMIN_LINK__/g, esc(L.ui.adminLink)).replace(/__PRIVACY__/g, esc(L.ui.privacy)).replace('__LEGAL__', () => rightsHtml(L))
     .replace(/__EMAIL__/g, String(cfg.contactEmail || '').replace(/['\\]/g, ''))
-    .replace(/__SEND_ENDPOINT__/g, String(cfg.sendEndpoint || '').replace(/['\\]/g, ''))
-    .replace(/__SEND_TOKEN__/g, String(cfg.sendToken || '').replace(/['\\]/g, '')).replace(/__NEWSLETTER__/g, newsletter ? '1' : '0').replace(/__STATS__/g, profileStats ? '1' : '0').replace(/__PDF_DL__/g, pdfDownload ? '1' : '0')
+    .replace(/__SEND_ENDPOINT__/g, String(cfg.sendEndpoint || '').replace(/['\\]/g, '')).replace(/__PAY_ENDPOINT__/g, homePay(L) ? payEndpoint.replace(/['\\]/g, '') : '')
+    .replace('__PAY_JS__', () => homePay(L) ? payJs : '')
+    .replace(/__SEND_TOKEN__/g, String(cfg.sendToken || '').replace(/['\\]/g, '')).replace(/__NEWSLETTER__/g, newsletter ? '1' : '0').replace(/__STATS__/g, profileStats ? '1' : '0').replace(/__PDF_DL__/g, pdfDownload ? '1' : '0').replace(/__RESULT_EMAIL__/g, resultEmail ? '1' : '0').replace(/__HOME_SUB__/g, homeSub ? '1' : '0')
     .replace(/__PD__/g, pdOn && cfg.sendEndpoint ? '1' : '0').replace(/__PD_VERSION__/g, pdVersion)
     .replace('__LOCALE_JSON__', () => JSON.stringify(homeLocale(L)).replace(/</g, '\\u003c').replace(/\u2028|\u2029/g, ''));
   fs.mkdirSync(path.join(OUT, pathOf(L.lang)), { recursive: true });
@@ -432,7 +508,10 @@ function writeContentPage(L, sub, opts) {
   ].concat(opts.ldExtra || [])).replace(/</g, '\\u003c');
   const miniL = { lang: L.lang, name: L.name, dir: L.dir, dateLocale: L.dateLocale, ui: Object.fromEntries(Object.entries(L.ui).filter(([k]) => k === 'langLabel' || k === 'root.continue' || k.startsWith('consent.') || (opts.uiKeys && opts.uiKeys.test(k)))) };
   Object.assign(miniL.ui, noticeUi(L));
-  const html = pageTpl
+  // opts.bare — самостоятельная страница (лендинг): без шапки сайта (название и выбор языка), пунктов меню, хлебных крошек и подвала; opts.css — стили только этой страницы
+  const tpl = !opts.bare ? pageTpl : pageTpl.replace(/\s*<header class="topbar">[\s\S]*?<\/header>/, '').replace(/\s*<footer class="foot">[\s\S]*?<\/footer>/, '')
+    .replace(/\s*<nav class="sitenav no-print">__NAV__<\/nav>/, '').replace(/\s*<nav class="crumbs">__CRUMBS__<\/nav>/, '');
+  const html = tpl.replace('</head>', () => opts.css ? `<style>${opts.css}</style>\n</head>` : '</head>')
     .replace(/__LANG__/g, hl(L.lang)).replace(/__DIR__/g, L.dir)
     .replace(/__TITLE__/g, esc(opts.title)).replace(/__DESC__/g, esc(opts.description))
     .replace('__ROBOTS__', opts.noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large')
@@ -450,7 +529,7 @@ function writeContentPage(L, sub, opts) {
     .replace('__LOCALE_JSON__', () => JSON.stringify(miniL).replace(/</g, '\\u003c'))
     .replace(/__SUBPATH__/g, sub).replace('__PAGE_LANGS_JSON__', () => opts.langs ? JSON.stringify(own.map(x => x.lang)) : 'null')
     .replace('__LANG_PATH_JSON__', () => JSON.stringify(LANG_PATH)).replace('__LANG_META_JSON__', () => JSON.stringify(LANG_META).replace(/</g, '\\u003c'))
-    .replace('__COMMON_JS__', () => commonJs).replace('__PAGE_JS__', () => opts.pageJs || '');
+    .replace('__COMMON_JS__', () => commonJs).replace('__PAGE_JS__', () => opts.pageJs || '').replace('__NO_XBAR__', opts.bare ? 'true' : 'false');
   fs.mkdirSync(path.join(OUT, pathOf(L.lang), sub), { recursive: true });
   fs.writeFileSync(path.join(OUT, pathOf(L.lang), sub, 'index.html'), html);
   if (!opts.noindex) pages.push({ lang: L.lang, sub, date: updated, langs: own });
@@ -491,6 +570,8 @@ for (const L of locales) {
         `<a class="more" href="${b}styles/#${k.toLowerCase()}">${escFull(t('pages.profile.styleMore', { name: L.keys[k], key: k }))} ${arrow(L)}</a></div>`).join('') + `</div>` +
       (dp ? `<h2>${escFull(t('pages.profile.work', { name: pr.name }))}</h2><p>${escFull(dp.work)}</p>` : '') +
       `<h2>${t('pages.profile.careers')}</h2>${ul(pr.careers)}` +
+      // анонс сервиса резюме — сразу после подходящих профессий (с 2026-10-24, где есть content.cvPromo)
+      (hasCvPromo(L) ? cvPromoHTML({ P: L.content.cvPromo, esc: escFull, href: b + 'cv/', kind: 'profile' }) : '') +
       `<h2>${t('pages.profile.team')}</h2><p>${escFull(pr.team)}</p>` +
       (dp ? `<h2>${escFull(t('pages.profile.lead', { name: pr.name }))}</h2><p>${escFull(dp.lead)}</p>` +
         `<h2>${t('pages.profile.managed')}</h2><p>${escFull(dp.managed)}</p>` +
@@ -508,7 +589,7 @@ for (const L of locales) {
       // своё описание профиля (profiles.<код>.metaDesc) + призыв; шаблон из summary давал два двоеточия и обрыв на полуслове (аудит 3, п. 2)
       description: profileDesc(L, key, t),
       crumbs: [{ name: t('nav.profiles'), href: '../', sub: 'profiles/' }, { name: pr.name }], content,
-      // пришли по ссылке «Поделиться типом» (?ref=<сеть>, см. shareNetLinks в template.html) — вверху баннер-приглашение пройти тест
+      // пришли по ссылке с ?ref= (прежние ссылки «Поделиться типом» с экрана результата; блок убран 2026-10-21, ссылки уже разосланы) — вверху баннер-приглашение пройти тест
       pageJs: `if(/[?&]ref=/.test(location.search)){ var inv = document.createElement('aside'); inv.className = 'cta invite'; inv.innerHTML = ${jsStr(
         `<div><h2>${escFull(t('invite.title', { name: pr.name }))}</h2><p>${escFull(t('invite.text'))}</p></div><a class="btn" href="${b}">${escFull(t('cta.button'))}</a>`)};` +
         `inv.querySelector('a').addEventListener('click', function(){ if(window.discTrack) window.discTrack('invite'); });` +
@@ -567,7 +648,7 @@ for (const L of locales) {
   // в языках с офертой; policy.legal — полный текст политики по статье 18.1 закона № 152-ФЗ, только в русской версии.
   // /consent/ — согласие на обработку персональных данных отдельным документом (на него ведёт галочка в формах); в индекс не идёт.
   else {
-    const po = C.policy, cd = C.consentDoc, poSecs = po.purchase && hasOffer(L) ? po.sections.slice(0, 6).concat([po.purchase], po.sections.slice(6)) : po.sections;
+    const po = C.policy, cd = C.consentDoc, poSecs = po.purchase && hasOffer(L) ? po.sections.slice(0, 6).concat([policyPurchase(L)], po.sections.slice(6)) : po.sections;
     const pdFill = html => html.replace(/\{email\}/g, feedbackEmail ? `<a href="mailto:${escFull(feedbackEmail)}">${escFull(feedbackEmail)}</a>` : '—')
       .replace(/\{contact\}/g, feedbackEmail ? `<a href="../contact/">${escFull(t('nav.contact'))}</a>` : escFull(t('nav.contact')))
       .replace(/\{owner\}/g, escFull(pdOwner(L))).replace(/\{date\}/g, escFull(pdDate(L)))
@@ -650,7 +731,164 @@ for (const L of locales) {
   // /teams/ — DISC для команды и HR
   const tm = C.teams;
   writeContentPage(L, 'teams/', { navKey: 'nav.teams', article: true, title: tm.title, description: tm.description, crumbs: [{ name: t('nav.teams') }],
-    content: `<div class="eyebrow">DISC</div><h1>${escFull(tm.h1)}</h1><p class="lead">${escFull(tm.lead)}</p>` + ctaTop(t, '../') + sectionsHtml(tm.sections) + ctaBlock(L, t, '../') + seeAlso('../', 'nav.teams') });
+    content: `<div class="eyebrow">DISC</div><h1>${escFull(tm.h1)}</h1><p class="lead">${escFull(tm.lead)}</p>` + ctaTop(t, '../') + sectionsHtml(tm.sections) +
+      (hasBusiness(L) ? `<p class="seealso"><a href="../business/">${escFull(C.business.h1)}: ${escFull(C.business.packsTitle.toLowerCase())} ${arrow(L)}</a></p>` : '') +
+      ctaBlock(L, t, '../') + seeAlso('../', 'nav.teams') });
+  // /cv/ — лендинг сервиса «Резюме под каждую вакансию» (с 2026-10-22, решение заказчика; первая редакция того же дня продавала ручную услугу в Telegram):
+  // заявка на ранний доступ, первым 1000 — скидка 50%, оплаты на странице нет. Две одинаковые формы (первый экран и конец страницы, src/cv.js) →
+  // форма обратной связи сервера, тема «Заявка на ранний доступ к сервису CV». Только там, где в локали есть content.cv (сейчас русская версия).
+  // С 2026-10-24 (по просьбе заказчика) на лендинг ведут блоки-анонсы content.cvPromo: главная, экран результата, страницы профилей и «Услуги»
+  // (раздел «Поиск работы»); в меню и подвале ссылки нет. С 2026-10-24 (решение заказчика) открыта для поисковиков и входит в sitemap
+  if (C.cv && feedbackEmail) {
+    const V = C.cv, F = V.form, A = V.author, D = V.demo, K = ['--d', '--i', '--s', '--c'];
+    const fill = str => escFull(str).replace(/\{email\}/g, `<a href="mailto:${escFull(feedbackEmail)}">${escFull(feedbackEmail)}</a>`);
+    const VT = { name: t('intro.nameLabel'), email: F.email, button: F.button, subject: F.subject, message: F.message, sentTitle: F.sentTitle, sent: F.sent,
+      nameRequired: t('intro.nameRequired'), emailRequired: t('intro.emailRequired'), pdRequired: L.ui['pd.required'] || '', sending: t('contact.sending'),
+      sendFailed: t('contact.sendFailed'), tooMany: t('contact.tooMany') };
+    // фото основателя — src/assets/img (копируются в docs/img); путь от страницы /<язык>/cv/ к корню сайта
+    const imgRel = '../'.repeat((pathOf(L.lang) + 'cv/').split('/').length - 1);
+    const form = k => cvFormHTML({ T: VT, esc: escFull, email: feedbackEmail, pdLabel: pdOn ? pdLabelHtml(L, '../') : '' }, k);
+    const tick = `<svg class="cvtick" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+    const cta = (cls) => `<a class="btn ${cls || ''}" href="#cvfinal" data-cta>${escFull(V.button)}</a>`;
+    const ldFaq = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: V.faq.map(it => ({ '@type': 'Question', name: it.q, acceptedAnswer: { '@type': 'Answer', text: it.a.replace(/\{email\}/g, feedbackEmail) } })) };
+    const demo = `<figure class="cvdemo" aria-label="${escFull(D.label)}"><figcaption class="cvdemo-label">${escFull(D.label)}</figcaption>` +
+      `<div class="cvdemo-head"><div><strong>${escFull(D.role)}</strong><span>${escFull(D.company)}</span></div>` +
+      `<div class="cvscorebox"><div class="cvscore" style="--p:${(+D.score) * 10}%"><b>${escFull(D.score)}</b><span>${escFull(D.scoreOf)}</span></div>` +
+        (D.scoreLabel ? `<small>${escFull(D.scoreLabel)}</small>` : '') + `</div></div>` + (D.scoreNote ? `<p class="cvscorenote">${escFull(D.scoreNote)}</p>` : '') +
+      `<ul class="cvrows">${D.rows.map(r => `<li class="s-${r.s}"><span>${escFull(r.t)}</span><em>${escFull(r.v)}</em></li>`).join('')}</ul>` +
+      `<div class="cvverdict${D.verdictTag ? ' go' : ''}"><b>${escFull(D.verdictTitle)}</b>${D.verdictTag ? `<span class="cvgo">${escFull(D.verdictTag)}</span>` : ''}<p>${escFull(D.verdict)}</p></div>` +
+      // файлы примера: переключатель «Русский / English» и одна строка файлов на выбранном языке (без скрипта — обе строки с меткой RU / EN)
+      `<div class="cvlangs cvdemo-files"><div class="cvlangsw" role="group" aria-label="${escFull(V.example && V.example.profile.cvFile ? V.example.profile.cvFile.langSwitch : '')}">` +
+        D.fileGroups.map((g, i) => `<button type="button" data-l="${i}" aria-pressed="${i === 0}">${escFull(g.label)}</button>`).join('') + `</div>` +
+      D.fileGroups.map((g, i) => `<div class="cvfiles${i === 0 ? ' on' : ''}" data-l="${i}"><span class="cvlang">${escFull(g.lang)}</span>${g.files.map(f => f.f ? `<a href="${imgRel}files/${f.f}" download data-dl="${f.dl}">${escFull(f.t)}</a>` : `<button type="button" disabled>${escFull(f.t)}</button>`).join('')}</div>`).join('') + `</div>` + (D.more && V.example ? `<a class="cvmore" href="#example">${escFull(D.more)} ↓</a>` : '') + `</figure>`;
+    // «Пример: от единого резюме до отклика» (с 2026-10-22, по просьбе заказчика): четыре вкладки на вымышленном кандидате; без скрипта все панели видны подряд
+    const X = V.example;
+    // сравнение «вакансия — кандидатка» в оценке: в обеих таблицах вакансия — первый столбец (синим), кандидатка — второй (серым); на телефоне строка — карточка с подписями
+    const cmpTable = (title, cols, rows, a, b, ka, kb) => `<h3>${escFull(title)}</h3><table class="cvcmp"><colgroup><col><col><col class="c-res"></colgroup><thead><tr>` +
+      `<th class="k-${ka}"><span>${escFull(cols[0])}</span></th><th class="k-${kb}"><span>${escFull(cols[1])}</span></th><th>${escFull(cols[2])}</th></tr></thead><tbody>` +
+      rows.map(r => `<tr class="s-${r.s}"><td class="k-${ka}" data-l="${escFull(cols[0])}">${escFull(r[a])}</td><td class="k-${kb}" data-l="${escFull(cols[1])}">${escFull(r[b])}</td>` +
+        `<td class="cvres" data-l="${escFull(cols[2])}"><em>${escFull(r.v)}</em></td></tr>`).join('') + `</tbody></table>`;
+    const exPanels = X ? [
+      // единое резюме: всё, что собрано о кандидате, с пометкой «войдёт в CV под эту вакансию» / «останется в едином резюме»; счётчик считается из самих данных
+      (() => {
+        const P = X.profile, tag = it => `<li class="${it.in ? 'in' : 'out'}">${escFull(it.t)}</li>`;
+        // файлы готового резюме: cvFile.file — начало имени файла (без ключа — пример Ирины Соколовой), пустая строка — файлов нет, кнопки неактивны
+        const cvBase = P.cvFile && P.cvFile.file !== undefined ? P.cvFile.file : 'cv-example-irina-sokolova';
+        const all = [].concat(...P.jobs.map(j => j.items), ...P.early.map(j => j.items), P.intern.items, ...P.sections.map(s => s.items));
+        const nIn = all.filter(x => x.in).length + 1, nAll = all.length + 1;   // + перерыв в работе: в CV входит одна строка о нём
+        const titles = j => j.titles ? `<div class="cvtitles"><p class="cvtitles-l">${escFull(P.titlesLabel)}</p><ul>` +
+          j.titles.map(x => `<li class="${x.pick ? 'cvsel' : ''}"><b>${escFull(x.t)}</b> <i>— ${escFull(x.src)}${x.pick ? ` · ${escFull(P.pickLabel)}` : ''}</i></li>`).join('') + `</ul></div>` : '';
+        const job = j => `<div class="cvjob"><p class="cvjob-period">${escFull(j.period)}</p><p class="cvjob-role"><b>${escFull(j.role)}</b> · ${escFull(j.company)}</p>` +
+          titles(j) + `<ul class="cvmarks">${j.items.map(tag).join('')}</ul>` + (j.note ? `<p class="cvflag"><b>${escFull(P.flagLabel)}.</b> ${escFull(j.note)}</p>` : '') + `</div>`;
+        const G = P.gap;
+        const gap = `<div class="cvjob cvgap"><p class="cvjob-period">${escFull(G.period)}</p><p class="cvjob-role"><b>${escFull(G.title)}</b></p>` +
+          `<p class="cvgap-l">${escFull(G.label)}:</p><ul class="cvvariants">${G.variants.map(v => `<li><b>${escFull(v.t)}</b> <i>${escFull(v.src)}</i></li>`).join('')}</ul>` +
+          `<p class="cvflag">${escFull(G.resolved)}</p><p class="cvpick">${escFull(G.pick)}</p></div>`;
+        const I2 = P.intern;
+        const intern = `<div class="cvjob cvdim"><p class="cvjob-period">${escFull(I2.period)}</p><p class="cvjob-role"><b>${escFull(I2.role)}</b> · ${escFull(I2.company)}</p>` +
+          `<ul class="cvmarks">${I2.items.map(tag).join('')}</ul><p class="cvwhy">${escFull(I2.why)}</p></div>`;
+        return `<div class="cvdoc"><div class="cvdoc-head"><strong>${escFull(P.name)}</strong><span>${escFull(P.headline)}</span></div>` +
+          `<p class="cvsrc">${escFull(P.sources)}</p>` +
+          (P.cvFile ? `<div class="cvfile"><div class="cvfile-t"><strong>${escFull(P.cvFile.title)}</strong><p>${escFull(P.cvFile.text)}</p></div>` +
+            `<div class="cvfile-b cvlangs"><div class="cvlangsw" role="group" aria-label="${escFull(P.cvFile.langSwitch)}">${P.cvFile.langs.map((l, i) => `<button type="button" data-l="${i}" aria-pressed="${i === 0}">${escFull(l.label)}</button>`).join('')}</div>` +
+              `${P.cvFile.langs.map((l, i) => `<div class="cvfile-row${i === 0 ? ' on' : ''}" data-l="${i}"><span class="cvlang">${escFull(l.label)}</span>` +
+              (cvBase ? `<a class="btn" href="${imgRel}files/${cvBase}${l.sfx}.pdf" download data-dl="pdf${l.sfx}">${escFull(P.cvFile.pdf)}</a>` +
+              `<a class="btn btn-ghost" href="${imgRel}files/${cvBase}${l.sfx}.docx" download data-dl="docx${l.sfx}">${escFull(P.cvFile.docx)}</a></div>` :
+              `<button type="button" class="btn" disabled>${escFull(P.cvFile.pdf)}</button><button type="button" class="btn btn-ghost" disabled>${escFull(P.cvFile.docx)}</button></div>`)).join('')}</div></div>` : '') +
+          `<div class="cvlegend"><span class="in">${escFull(P.legendIn)}</span><span class="out">${escFull(P.legendOut)}</span></div>` +
+          `<p class="cvcount">${escFull(P.count).replace('{in}', `<b>${nIn}</b>`).replace('{all}', `<b>${nAll}</b>`)}</p>` +
+          `<h3>${escFull(P.expTitle)}</h3>` + P.jobs.map(job).join('') + gap + P.early.map(job).join('') + intern +
+          P.sections.map(s => `<h3>${escFull(s.h)}</h3><ul class="cvmarks${s.items.length > 3 && s.items.every(x => !x.in) ? ' wrap' : ''}">${s.items.map(tag).join('')}</ul>${s.why ? `<p class="cvwhy">${escFull(s.why)}</p>` : ''}`).join('') +
+          `<h3>${escFull(P.skillsTitle)}</h3><p class="cvchips">${P.skills.map(x => `<span>${escFull(x)}</span>`).join('')}</p></div>`;
+      })(),
+      // что ищет кандидат: профиль поиска — по нему считается вторая часть оценки («подходит ли вакансия кандидату»)
+      (() => { const S = X.search;
+        return `<div class="cvdoc"><div class="cvdoc-head"><strong>${escFull(S.title)}</strong><span>${escFull(S.subtitle)}</span></div>` +
+          `<dl class="cvwant">${S.groups.map(g => `<div><dt>${escFull(g.h)}</dt><dd><ul>${g.items.map(x => `<li>${escFull(x)}</li>`).join('')}</ul></dd></div>`).join('')}</dl>` +
+          `<h3>${escFull(S.stopTitle)}</h3><ul class="cvminus">${S.stop.map(x => `<li>${escFull(x)}</li>`).join('')}</ul>` +
+          `<div class="cvshort"><h3>${escFull(S.otherTitle)}</h3><p>${escFull(S.other)}</p></div>` +
+          `<p class="cvwhy cvwant-note">${escFull(S.note)}</p></div>`; })(),
+      // вакансия
+      `<div class="cvdoc"><div class="cvdoc-head"><strong>${escFull(X.vacancy.role)}</strong><span>${escFull(X.vacancy.company)}</span></div><p class="cvsrc">${escFull(X.vacancy.meta)}</p>` +
+        X.vacancy.sections.map(sct => `<h3>${escFull(sct.h)}</h3><ul>${sct.items.map(x => `<li>${escFull(x)}</li>`).join('')}</ul>`).join('') + `</div>`,
+      // оценка
+      `<div class="cvdoc"><div class="cvdoc-head cvscorehead"><div><strong>${escFull(X.vacancy.role)}</strong><span>${escFull(X.vacancy.company)}</span></div>` +
+        `<div class="cvscorebox"><div class="cvscore cvscore-lg" style="--p:${(+X.score.total) * 10}%"><b>${escFull(X.score.total)}</b><span>${escFull(X.score.of)}</span></div>` +
+        (X.score.label ? `<small>${escFull(X.score.label)}</small>` : '') + `</div></div>` + (X.score.note ? `<p class="cvscorenote">${escFull(X.score.note)}</p>` : '') +
+        `<p class="cvparts">${X.score.parts.map(x => `<span>${escFull(x.label)}: <b>${escFull(x.value)}</b></span>`).join('')}</p>` +
+        cmpTable(X.score.reqTitle, X.score.reqCols, X.score.rows, 't', 'why', 'vac', 'cand') +
+        cmpTable(X.score.critTitle, X.score.critCols, X.score.crit, 'offer', 'want', 'vac', 'cand') +
+        `<div class="cvverdict${X.score.verdictTag ? ' go' : ''}"><b>${escFull(X.score.verdictTitle)}</b>${X.score.verdictTag ? `<span class="cvgo">${escFull(X.score.verdictTag)}</span>` : ''}<p>${escFull(X.score.verdict)}</p></div>` +
+        `<div class="cvtopskip"><div><h3>${escFull(X.score.topTitle)}</h3><ul class="cvplus">${X.score.top.map(x => `<li>${escFull(x)}</li>`).join('')}</ul></div>` +
+        `<div><h3>${escFull(X.score.skipTitle)}</h3><ul class="cvminus">${X.score.skip.map(x => `<li>${escFull(x)}</li>`).join('')}</ul></div></div></div>`,
+      // сопроводительное письмо
+      // кнопки «Скопировать текст» у полной и короткой версии (src/cv.js, initCvTabs): копируют текст блока .cvcopy-src без строки «Тема»
+      (() => { const LT = X.letter, copyBtn = `<button type="button" class="cvcopy" data-copied="${escFull(LT.copied)}">${escFull(LT.copy)}</button>`;
+        return `<div class="cvdoc cvletter"><p class="cvsrc">${escFull(LT.subject)}</p>` +
+          `<div class="cvletter-full"><div class="cvcopy-head"><h3>${escFull(LT.fullTitle)}</h3>${copyBtn}</div>` +
+          `<div class="cvcopy-src">${LT.body.map(x => `<p>${escFull(x)}</p>`).join('')}<p class="cvsign">${escFull(LT.sign)}</p></div></div>` +
+          `<div class="cvshort"><div class="cvcopy-head"><h3>${escFull(LT.shortTitle)}</h3>${copyBtn}</div><div class="cvcopy-src"><p>${escFull(LT.short)}</p></div></div></div>`; })(),
+      // дашборд: макет личного кабинета — вакансии с оценкой, советом и документами; элементы некликабельные, счётчики фильтров считаются из строк
+      (() => { const DB = X.dashboard, cnt = r => DB.rows.filter(x => x.rec === r).length;
+        const tone = n => n >= 7 ? 'hi' : n >= 5 ? 'mid' : 'lo';
+        return `<div class="cvdash"><div class="cvdash-head"><strong>${escFull(DB.title)}</strong><span>${escFull(DB.lead)}</span></div>` +
+          `<div class="cvdash-f" aria-hidden="true"><span class="on">${escFull(DB.all)} <b>${DB.rows.length}</b></span>` +
+            ['go', 'maybe', 'no'].map(r => `<span class="r-${r}">${escFull(DB.recLabels[r])} <b>${cnt(r)}</b></span>`).join('') + `</div>` +
+          `<table class="cvdash-t"><thead><tr>${DB.cols.map(c => `<th>${escFull(c)}</th>`).join('')}</tr></thead><tbody>` +
+          DB.rows.map(r => `<tr class="r-${r.rec}"><td class="d-vac"><b>${escFull(r.role)}</b><span>${escFull(r.company)} · ${escFull(r.place)}</span></td>` +
+            `<td class="d-score"><span class="cvdash-score t-${tone(r.score)}"><b>${r.score}</b> ${escFull(DB.of)}</span></td>` +
+            `<td class="d-rec"><span class="cvdash-rec r-${r.rec}">${escFull(DB.recLabels[r.rec])}</span><small>${escFull(r.why)}</small></td>` +
+            `<td class="d-docs">${r.rec === 'no' ? `<span class="cvdash-none">${escFull(DB.noDocs)}</span>` : DB.docs.map(d => `<span class="cvdash-doc" aria-disabled="true">${escFull(d)}</span>`).join('')}</td></tr>`).join('') +
+          `</tbody></table><p class="cvwhy cvdash-note">${escFull(DB.note)}</p></div>`; })()
+    ] : [];
+    const exampleHtml = X ? `<section class="cvsec" id="example"><h2>${escFull(X.title)}</h2><p class="cvsub">${escFull(X.lead)}</p>` +
+      `<div class="cvex" id="cvEx"><div class="cvtabs" role="tablist" aria-label="${escFull(X.title)}">` +
+        X.tabs.map((tb, i) => `<button type="button" role="tab" id="cvt${i}" aria-controls="cvp${i}" aria-selected="${i === 0}" tabindex="${i === 0 ? 0 : -1}"><span>${i + 1}</span>${escFull(tb)}</button>`).join('') + `</div>` +
+        exPanels.map((h, i) => `<div class="cvpanel" role="tabpanel" id="cvp${i}" aria-labelledby="cvt${i}" tabindex="0"><h3 class="cvpanel-title">${escFull(X.tabs[i])}</h3>${h}</div>`).join('') +
+        // свёрнутый пример (с 2026-10-24, по просьбе заказчика): вкладка видна не целиком, внизу «Показать полностью» — логика в src/cv.js
+        (X.more ? `<div class="cvexmore"><button type="button" class="btn secondary" aria-expanded="false">${escFull(X.more)}</button></div>` : '') +
+        // те же вкладки в конце блока (с 2026-10-23, по просьбе заказчика): долистав вкладку до конца, видно, что есть другие шаги
+        `<div class="cvtabs cvtabs-end" role="group" aria-label="${escFull(X.title)}">` +
+        X.tabs.map((tb, i) => `<button type="button" data-i="${i}" aria-controls="cvp${i}" aria-pressed="${i === 0}"><span>${i + 1}</span>${escFull(tb)}</button>`).join('') + `</div>` +
+      `</div><p class="cvsub small">${escFull(X.note)}</p></section>` : '';
+    // языковые версии лендинга друг на друга не ссылаются (с 2026-10-24, решение заказчика): langs — только сама локаль, без hreflang и og:locale:alternate;
+    // cvIndex в site.config.json — языки, где страница открыта поисковикам и входит в sitemap (остальные — noindex, пока заказчик не одобрит)
+    const filesOff = D.fileGroups.some(g => g.files.some(f => !f.f)) || !!(X && X.profile.cvFile && X.profile.cvFile.file === '') || !!(V.english && V.english.downloads.some(d => !d.f));
+    writeContentPage(L, 'cv/', { bare: true, noDate: true, langs: [L], noindex: !!cfg.cvIndex && !cfg.cvIndex.includes(L.lang), css: [cvCss].concat(filesOff ? [cvOffCss] : [], L.lang !== 'ru' ? [cvPhotoCss] : [], CV_CJK.includes(L.lang) ? [cvCjkCss] : []).join('\n'), title: V.title, description: V.description,
+      crumbs: [{ name: V.h1 }], ldExtra: [ldFaq], files: ['src/cv.js', 'src/cv.css'].concat(filesOff ? ['src/cv-off.css'] : [], L.lang !== 'ru' ? ['src/cv-photo.css'] : [], CV_CJK.includes(L.lang) ? ['src/cv-cjk.css'] : []),
+      content: `<div class="cvpage">` +
+        `<section class="cvhero"><div class="cvhero-text"><p class="cvbadge">${escFull(V.badge)}</p><h1>${escFull(V.h1)}</h1><p class="lead">${escFull(V.lead)}</p>` +
+          `<ul class="cvpoints">${V.heroPoints.map(x => `<li>${tick}${escFull(x)}</li>`).join('')}</ul></div>` +
+          `<div class="cvformcard" id="request"><h2>${escFull(V.formTitle)}</h2><p class="cvformlead">${escFull(V.formLead)}</p>${form('1')}<p class="cvnote">${escFull(V.formNote)}</p></div></section>` +
+        // порядок блоков (с 2026-10-24, по просьбе заказчика): проблема → как работает → что получите → пример → «ничего не выдумываем» → английский →
+        // кто создаёт → тарифы → вопросы → заявка; блоки с cvband — на своём фоне во всю ширину (через один), чтобы страница делилась на «главы»
+        `<section class="cvsec cvband"><h2>${escFull(V.painTitle)}</h2><ul class="cvpain">${V.pain.map((x, i) => `<li style="--k:var(${K[i % 4]})"><h3>${escFull(x.h)}</h3><p>${escFull(x.p)}</p></li>`).join('')}</ul></section>` +
+        `<section class="cvsec cvhow"><div><h2>${escFull(V.howTitle)}</h2><ol class="cvsteps">${V.how.map(x => `<li><strong>${escFull(x.h)}</strong><span>${escFull(x.p)}</span></li>`).join('')}</ol>${cta()}</div>${demo}</section>` +
+        `<section class="cvsec cvband"><h2>${escFull(V.featuresTitle)}</h2><ul class="cvgrid">${V.features.map((x, i) => `<li style="--k:var(${K[i % 4]})"><h3>${escFull(x.h)}</h3><p>${escFull(x.p)}</p></li>`).join('')}</ul></section>` +
+        exampleHtml +
+        `<section class="cvsec cvband"><h2>${escFull(V.honestTitle)}</h2><div class="cvhonest"><p>${escFull(V.honest)}</p>${listHtml('ul', V.honestList)}</div></section>` +
+        // «CV на английском — без переводчика» (с 2026-10-23, по просьбе заказчика): почему простого перевода мало, пример строк RU → EN, скачивание английских примеров
+        (V.english ? (E => `<section class="cvsec cven" id="english"><h2>${escFull(E.title)}</h2><p class="cvsub">${escFull(E.lead)}</p>` +
+          `<ul class="cvgrid cven-points">${E.points.map((x, i) => `<li style="--k:var(${K[(i + 3) % 4]})"><h3>${escFull(x.h)}</h3><p>${escFull(x.p)}</p></li>`).join('')}</ul>` +
+          `<div class="cven-cmp"><h3>${escFull(E.compareTitle)}</h3><div class="cven-rows"><div class="cven-hd"><span>${escFull(E.ruLabel)}</span><span></span><span>${escFull(E.enLabel)}</span></div>` +
+            E.compare.map(r => `<div class="cven-row"><span class="ru">${escFull(r.ru)}</span><span class="arr" aria-hidden="true">→</span><span class="en" lang="${escFull(r.lang || 'en')}">${escFull(r.en)}</span></div>`).join('') + `</div></div>` +
+          `<div class="cven-dl"><span>${escFull(E.downloadsTitle)}:</span>${E.downloads.map(d => d.f ? `<a class="btn btn-ghost" href="${imgRel}files/${d.f}" download data-dl="${d.dl}">${escFull(d.t)}</a>` : `<button type="button" class="btn btn-ghost" disabled>${escFull(d.t)}</button>`).join('')}</div></section>`)(V.english) : '') +
+        `<section class="cvsec cvband"><h2>${escFull(V.founderTitle)}</h2><div class="cvauthor">` +
+          `<div class="cvauthor-side">` + (A.photoAlt ? `<img class="cvphoto" src="${imgRel}img/armen-manukyan.webp" srcset="${imgRel}img/armen-manukyan.webp 1x, ${imgRel}img/armen-manukyan-2x.webp 2x" width="280" height="350" alt="${escFull(A.photoAlt)}" loading="lazy" decoding="async">` : '') +
+          `<blockquote class="cvquote"><p>${escFull(A.text)}</p></blockquote></div>` +
+          `<div class="cvauthor-body"><span class="cvname">${escFull(A.name)}</span><p class="cvrole">${escFull(A.role)}</p>` + listHtml('ul', A.facts) + `</div>` +
+          // ссылка на личный сайт — только если в локали есть author.site (в английской версии её нет: автор без привязки к стране, с 2026-10-24)
+          (A.site ? `<p class="cvsite"><span>${escFull(A.siteLabel)}</span><a href="${escFull(A.siteUrl)}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z"/></svg>${escFull(A.site)} <span aria-hidden="true">${arrow(L)}</span></a></p>` : '') + `</div></section>` +
+        `<section class="cvsec" id="pricing"><h2>${escFull(V.pricingTitle)}</h2><p class="cvsub">${escFull(V.pricingLead)}</p><ul class="cvplans">` +
+          V.plans.map((p, i) => `<li class="${i === 1 ? 'hot' : ''}"><div class="cvplan-head"><h3>${escFull(p.name)}</h3>${p.tag ? `<span class="cvtag">${escFull(p.tag)}</span>` : ''}</div>` +
+            `<p class="cvprice">${p.old ? `<s>${escFull(p.old)}</s>` : ''}<b>${escFull(p.price)}</b><span>${escFull(p.per)}</span></p>` +
+            `<ul>${p.items.map(x => `<li>${tick}${escFull(x)}</li>`).join('')}</ul></li>`).join('') +
+          `</ul><p class="cvsub small">${escFull(V.pricingNote)}</p>${cta('cvcenter')}</section>` +
+        `<section class="cvsec cvband cvfaq"><h2>${escFull(V.faqTitle)}</h2>` + V.faq.map(it => `<details><summary>${escFull(it.q)}</summary><p>${fill(it.a)}</p></details>`).join('') + `</section>` +
+        `<section class="cvfinal" id="cvfinal"><h2>${escFull(V.finalTitle)}</h2><p>${escFull(V.finalLead)}</p>${form('2')}</section>` +
+        `</div><div class="xbar no-print" id="cvFloat"><a class="btn" href="#cvfinal" data-cta>${escFull(V.floatButton)}</a><button class="xbar-x" type="button" id="cvFloatX" aria-label="${escFull(V.floatClose)}" title="${escFull(V.floatClose)}">×</button></div>`,
+      pageJs: (L.lang === 'ru' ? cvJs : cvJsBare) + `initCvForm({T: ${JSON.stringify(VT).replace(/</g, '\\u003c')}, L: L, esc: esc, $: $, endpoint: ${jsStr(cfg.sendEndpoint)}, token: ${jsStr(cfg.sendToken)}, email: ${jsStr(feedbackEmail)}, pdVersion: ${jsStr(pdOn ? pdVersion : '')}});` });
+  }
   // /disc-vs-mbti/ — сравнение моделей: таблица после второй секции
   const mb = C.mbti;
   writeContentPage(L, 'disc-vs-mbti/', { navKey: 'nav.mbti', article: true, title: mb.title, description: mb.description, crumbs: [{ name: t('nav.mbti') }],
@@ -668,19 +906,88 @@ for (const L of locales) {
   // В текстах подставляются {price}, {inn}, {seller} (исполнитель с ИНН), {email}, {site} и ссылки {contact}, {privacy}, {offer}, {refund}
   if (hasServices(L)) {
     const sv = C.services, of = C.offer, rf = C.refund, docs = hasOffer(L), own = locales.filter(hasOffer), price = servicePrice(L), fill = str => String(str).replace(/\{price\}/g, price);
+    if (!offerTermsPrice(L) && /\{offerPrice\}/.test(JSON.stringify([sv, of || '', rf || '']))) throw new Error(`${L.lang}: в услуге или оферте есть {offerPrice}, а специальная цена не задана`);
     const link = (sub2, text) => `<a href="../${sub2}">${escFull(text)}</a>`;
-    const vars = Object.assign({ price, site: escFull(siteUrl),
+    const vars = Object.assign({ price, offerPrice: offerTermsPrice(L), site: escFull(siteUrl),
       email: feedbackEmail ? `<a href="mailto:${escFull(feedbackEmail)}">${escFull(feedbackEmail)}</a>` : '—',
       contact: feedbackEmail ? link('contact/', t('nav.contact')) : escFull(t('nav.contact')), privacy: link('privacy/', t('nav.privacy')) },
       docs ? { inn: legalInn, seller: escFull(of.seller.replace('{inn}', legalInn)), offer: link('offer/', of.linkText), refund: link('refund/', rf.linkText) } : {});
     const fillHtml = html => html.replace(/\{(\w+)\}/g, (m, k) => k in vars ? vars[k] : m);
     const svcCrumb = { name: t('nav.services'), href: '../services/', sub: 'services/' }, docLink = (sub2, d) => `<a href="../${sub2}">${escFull(d.h1)} ${arrow(L)}</a>`;
+    // раздел «Поиск работы» (cvPart ниже)
+    const CP = hasCvPromo(L) ? C.cvPromo.services : null, cvPlans = CP ? C.cv.plans : [], cvFrom = CP ? CP.price.replace('{price}', cvPlans[0].price) : '';
     writeContentPage(L, 'services/', { navKey: 'nav.services', langs: locales.filter(hasServices), title: fill(sv.title), description: fill(sv.description), crumbs: [{ name: t('nav.services') }],
-      content: fillHtml(`<div class="eyebrow">DISC</div><h1>${escFull(sv.h1)}</h1><p class="lead">${escFull(sv.lead)}</p>` +
-        `<section class="service"><div><h2>${escFull(sv.name)}</h2><p>${escFull(sv.text)}</p>` + (hasProduct(L) ? `<p><a class="more" href="../extended-report/">${escFull(C.product.more)} ${arrow(L)}</a></p>` : '') +
-        `</div><p class="price"><small>${escFull(sv.priceLabel)}</small>${escFull(sv.price)}</p></section>` +
-        sectionsHtml(sv.sections.slice(0, 1)) + (docs && sv.docs ? `<p>${escFull(sv.docs)}</p>` : '') + sectionsHtml(sv.sections.slice(1))) +
+      content: hasBusiness(L) ? servicesSplit() : fillHtml(`<div class="eyebrow">DISC</div><h1>${escFull(sv.h1)}</h1><p class="lead">${escFull(sv.lead)}</p>` + personCard() +
+        sectionsHtml(sv.sections.slice(0, 1)) + (docs && sv.docs ? `<p>${escFull(sv.docs)}</p>` : '') + sectionsHtml(sv.sections.slice(1)) + cvPart()) +
         (docs ? `<p class="seealso">${docLink('offer/', of)} · ${docLink('refund/', rf)}</p>` : '') });
+    // карточка расширенного отчёта для физических лиц: название, описание, ссылка на страницу отчёта, цена
+    function personCard() {
+      return `<section class="service"><div><h2>${escFull(sv.name)}</h2><p>${escFull(sv.text)}</p>` + (hasProduct(L) ? `<p><a class="more" href="../extended-report/">${escFull(C.product.more)} ${arrow(L)}</a></p>` : '') +
+        `</div><p class="price"><small>${escFull(sv.priceLabel)}</small>${escFull(sv.price)}</p></section>`;
+    }
+    // сервис «Резюме под каждую вакансию» (с 2026-10-24, по просьбе заказчика; где есть content.cvPromo): раздел «Поиск работы» с карточкой —
+    // название, анонс, тарифы и цены (из content.cv.plans лендинга, чтобы не расходились), кнопка на лендинг (цель Метрики cv-promo-services)
+    function cvPart() {
+      if (!CP) return '';
+      // бесплатный тариф («0 ₽», «$0») показывается словом из per («бесплатно», «free»), а не ценой
+      const plansLine = cvPlans.map(p => `<span>${escFull(`${p.name} — ${/^\D*0(?![\d.,])/.test(p.price) ? p.per : p.price + ' ' + p.per}`)}</span>`).join(' · ');
+      return `<h2 class="svcpart" id="cv">${escFull(CP.part)}</h2>` +
+        `<section class="service"><div><h2>${escFull(CP.name)}</h2><p>${escFull(CP.text)}</p><p class="svcplans">${plansLine}</p></div>` +
+        `<p class="price"><small>${escFull(sv.priceLabel)}</small>${escFull(cvFrom)}</p>` +
+        `<a class="btn" href="../cv/" data-goal="cv-promo-services">${escFull(CP.button)}</a></section>`;
+    }
+    // «Услуги» там, где есть страница «Для организаций» (с 2026-10-22, по просьбе заказчика; сейчас русская версия): сверху выбор из двух карточек
+    // («Для физических лиц» → #person, «Для организаций» → #org), затем два раздела со своими карточками и ценами; подразделы о физических лицах —
+    // заголовками третьего уровня; последний раздел услуги («Вопросы об услуге») — общий, в конце страницы. Тексты — content.business.services
+    function servicesSplit() {
+      const S = C.business.services, retail = servicePrices.RUB, minPrice = Math.min(...businessPacks.map(p => p.priceRub));
+      const maxDiscount = Math.max(...businessPacks.map(p => Math.floor((1 - p.priceRub / retail) * 100)));
+      const fillS = str => String(str).replace(/\{minPrice\}/g, fmtPrice(L, minPrice)).replace(/\{maxDiscount\}/g, maxDiscount);
+      const h3 = secs => sectionsHtml(secs).replace(/<h2>/g, '<h3 class="svch3">').replace(/<\/h2>/g, '</h3>');
+      const pick = (id, title, text, price) => `<a class="svcpick" href="#${id}"><strong>${escFull(title)}</strong><span>${escFull(text)}</span><b>${escFull(price)}</b></a>`;
+      return fillHtml(`<div class="eyebrow">DISC</div><h1>${escFull(sv.h1)}</h1><p class="lead">${escFull(sv.lead)}</p>` +
+        `<nav class="svcpicks${CP ? ' three' : ''}" aria-label="${escFull(sv.h1)}">` + pick('person', S.person, S.personPick, sv.price) +
+          (CP ? pick('cv', CP.part, CP.pick, cvFrom) : '') + pick('org', S.org, S.orgPick, fillS(S.orgPrice)) + `</nav>` +
+        `<h2 class="svcpart" id="person">${escFull(S.person)}</h2>` + personCard() +
+        h3(sv.sections.slice(0, 1)) + (docs && sv.docs ? `<p>${escFull(sv.docs)}</p>` : '') + h3(sv.sections.slice(1, -1)) + cvPart() +
+        `<h2 class="svcpart" id="org">${escFull(S.org)}</h2>` +
+        `<section class="service"><div><h2>${escFull(S.orgName)}</h2><p>${escFull(fillS(S.orgText))}</p></div>` +
+        `<p class="price"><small>${escFull(S.orgPriceLabel)}</small>${escFull(fillS(S.orgPrice))}</p>` +
+        `<a class="btn" href="../business/">${escFull(S.orgButton)}</a></section>` +
+        sectionsHtml(sv.sections.slice(-1))) +
+        (docs ? `<p class="seealso">${docLink('business/', C.business)} · ${docLink('offer/', of)} · ${docLink('refund/', rf)}</p>` : '');
+    }
+    // /business/ — «Для организаций»: пакеты кодов доступа к расширенному отчёту (цены — businessPacks), как это работает, данные участников,
+    // границы применения, оплата по счёту, вопросы и форма заявки (src/business.js → форма обратной связи сервера, тема «Заявка для организации: …»)
+    if (hasBusiness(L)) {
+      const B = C.business, retail = servicePrices.RUB, pct = p => Math.floor((1 - p.priceRub / retail) * 100);   // вниз: скидку не преувеличиваем
+      const bv = Object.assign({}, vars, { minPack: String(businessPacks[0].from), maxDiscount: String(Math.max(...businessPacks.map(pct))), retail: fmtPrice(L, retail), months: String(businessMonths),
+        report: link('extended-report/', C.product.h1), teams: link('teams/', t('nav.teams')) });
+      const fillB = html => html.replace(/\{(\w+)\}/g, (m, k) => k in bv ? bv[k] : m), plainB = str => String(str).replace(/\{(minPack|maxDiscount|retail|months)\}/g, (m, k) => bv[k]);
+      const packs = `<div class="tablewrap"><table class="cmp packs"><thead><tr>${B.packsHead.map(h => `<th scope="col">${escFull(h)}</th>`).join('')}</tr></thead><tbody>` +
+        businessPacks.map(p => `<tr><td>${escFull(B.packRow.replace("{n}", p.from))}</td><td>${escFull(B.packPrice.replace('{price}', fmtPrice(L, p.priceRub)))}</td><td>${escFull(B.packDiscount.replace('{pct}', pct(p)))}</td></tr>`).join('') + `</tbody></table></div>`;
+      const F = B.form, BT = { name: t('intro.nameLabel'), email: t('contact.emailLabel'), size: F.size, sizes: F.sizes, interest: F.interest, interests: F.interests,
+        comment: F.comment, commentPlaceholder: F.commentPlaceholder, button: F.button, subject: F.subject, sent: F.sent, needInterest: F.needInterest,
+        requiredNote: t('intro.requiredNote'), nameRequired: t('intro.nameRequired'), emailRequired: t('intro.emailRequired'), pdRequired: L.ui['pd.required'] || '',
+        sending: t('contact.sending'), sendFailed: t('contact.sendFailed'), tooMany: t('contact.tooMany'), privacyNote: F.privacy };
+      writeContentPage(L, 'business/', { navKey: 'nav.services', langs: locales.filter(hasBusiness), title: plainB(B.title), description: plainB(B.description), crumbs: [svcCrumb, { name: t('nav.business') }],
+        content: fillB(`<div class="eyebrow">${escFull(t('nav.services'))}</div><h1>${escFull(B.h1)}</h1><p class="lead">${escFull(B.lead)}</p>` +
+          `<ul class="xfacts">${B.facts.map(x => `<li>${escFull(x)}</li>`).join('')}</ul>` +
+          `<p><a class="btn" href="#request">${escFull(F.button)}</a></p>` +
+          `<h2>${escFull(B.forTitle)}</h2>` + listHtml('ul', B.for) +
+          `<h2>${escFull(B.packsTitle)}</h2><p>${escFull(B.packsText)}</p>` + packs + `<p class="small muted">${escFull(B.packsNote)}</p>` +
+          `<h2>${escFull(B.howTitle)}</h2>` + listHtml('ol', B.how) +
+          `<h2>${escFull(B.privacyTitle)}</h2>` + B.privacy.map(x => `<p>${escFull(x)}</p>`).join('') +
+          `<h2>${escFull(B.boundsTitle)}</h2><p>${escFull(B.bounds)}</p>` +
+          `<h2>${escFull(B.teamTitle)}</h2><p>${escFull(B.team)}</p>` +
+          `<h2>${escFull(B.payTitle)}</h2>` + B.pay.map(x => `<p>${escFull(x)}</p>`).join('') +
+          `<h2>${escFull(B.faqTitle)}</h2>` + B.faq.map(it => `<h3 class="xq">${escFull(it.q)}</h3><p>${escFull(it.a)}</p>`).join('') +
+          `<h2 id="request">${escFull(F.title)}</h2><p>${escFull(F.lead)}</p>`) +
+          businessHTML({ T: BT, esc: escFull, email: feedbackEmail, pdLabel: pdOn ? pdLabelHtml(L, '../') : '' }) +
+          `<p class="seealso">${docLink('extended-report/', C.product)} · ${docLink('services/', sv)} · ${docLink('offer/', of)}</p>`,
+        files: ['src/business.js'],
+        pageJs: businessJs + `initBusiness({T: ${JSON.stringify(BT).replace(/</g, '\\u003c')}, L: L, esc: esc, $: $, endpoint: ${jsStr(cfg.sendEndpoint)}, token: ${jsStr(cfg.sendToken)}, email: ${jsStr(feedbackEmail)}, pdVersion: ${jsStr(pdOn ? pdVersion : '')}});` });
+    }
     // /extended-report/ — страница расширенного отчёта: что внутри, листы образца картинками, сравнение с кратким отчётом, цена.
     // Блок покупки по умолчанию ведёт на тест. У кого результат сохранён на этом устройстве (disc.last), тому скрипт страницы меняет его:
     // при заданном payEndpoint — на форму с полем e-mail и кнопкой «Купить» (src/pay.js), без него — на заявку через форму обратной связи
@@ -689,7 +996,7 @@ for (const L of locales) {
       const pr = withPrice(L, C.product), root = '../' + (pathOf(L.lang) ? '../' : ''), rich = str => escFull(str).replace(/&lt;(\/?)b&gt;/g, '<$1b>');
       const pay = payEndpoint && C.product.pay ? pr.pay : null;
       const buyBox = id => `<section class="service xbuy"${pay && id ? ` id="${id}"` : ''}><div><h2>${escFull(pr.buy.testTitle)}</h2><p>${escFull(pr.buy.testText)}</p></div><p class="price"><small>${escFull(pr.priceLabel)}</small>${escFull(pr.price)}</p>` +
-        `<a class="btn" href="../" data-goal="ext-page-test">${escFull(pr.buy.testButton)}</a></section>`;
+        `<a class="btn" href="../" data-goal="ext-page-test">${escFull(pr.buy.testButton)}</a>` + (pay && pay.guarantee ? `<p class="xguar">${escFull(pay.guarantee)}</p>` : '') + `</section>`;
       const samples = hasSamples(L);
       const sample = !samples ? '' : pr.sampleAlt.map((alt, i) => `<figure><a href="${root}extended/${L.lang}-i-${i + 1}.webp" target="_blank" rel="noopener" data-goal="ext-page-sample">` +
         `<img src="${root}extended/${L.lang}-i-${i + 1}-s.webp" width="440" height="623" alt="${escFull(alt)}" loading="lazy" decoding="async"></a><figcaption>${escFull(pr.sampleCaption[i])}</figcaption></figure>`).join('');
@@ -707,7 +1014,7 @@ for (const L of locales) {
           `<p class="seealso">${docLink('services/', sv)} · ${docLink('offer/', of)} · ${docLink('refund/', rf)}</p>`,
         files: samples ? pr.sampleAlt.map((_, i) => `src/assets/extended/${L.lang}-i-${i + 1}.webp`) : [],
         pageJs: resultFromUrlJs + (pay ? payJs + `\ninitPayBuy({T: ${JSON.stringify(Object.assign({ noteHtml: fillHtml(escFull(pay.note)), errorHtml: fillHtml(escFull(pay.error)) },
-          Object.fromEntries(['title', 'text', 'emailLabel', 'button', 'badEmail', 'wait'].map(k => [k, pay[k]])))).replace(/</g, '\\u003c')}, endpoint: ${jsStr(payEndpoint)}, L: L, esc: esc, lsGet: lsGet, lsSet: lsSet});` : `(function(){
+          Object.fromEntries(['title', 'text', 'emailLabel', 'emailPlaceholder', 'button', 'badEmail', 'wait', 'guarantee'].map(k => [k, pay[k]])), { offer: payOffer(L), code: payCodeT(L, fillHtml) })).replace(/</g, '\\u003c')}, endpoint: ${jsStr(payEndpoint)}, L: L, esc: esc, lsGet: lsGet, lsSet: lsSet});` : `(function(){
   var r = resultFromUrl() || lsGet('disc.last'); if(!r || !r.t || !r.m || !r.l || !r.m.join) return;
   var B = ${JSON.stringify(pr.buy).replace(/</g, '\\u003c')}, d = new Date(r.t), date = isNaN(d) ? '' : d.toLocaleDateString(L.dateLocale, {day:'numeric', month:'long', year:'numeric'});
   function b64e(s){ return btoa(unescape(encodeURIComponent(s))).replace(/\\+/g,'-').replace(/\\//g,'_').replace(/=+$/,''); }
@@ -748,7 +1055,7 @@ for (const L of locales) {
     // note — оговорка в переводах оферты и условий возврата: при расхождении действует русский текст; {original} — ссылка на него
     const docNote = (d, sub2) => d.note ? `<p class="notice">${escFull(d.note).replace(/\{original\}/g, () => `<a href="${'../' + (pathOf(L.lang) ? '../' : '')}ru/${sub2}" hreflang="ru" dir="ltr">${escFull(siteUrl.replace(/^https?:\/\//, ''))}/ru/${sub2}</a>`)}</p>` : '';
     writeContentPage(L, 'offer/', { navKey: 'nav.services', langs: own, title: of.title, description: of.description, crumbs: [svcCrumb, { name: of.h1 }],
-      content: fillHtml(`<div class="eyebrow">${escFull(t('nav.services'))}</div><h1>${escFull(of.h1)}</h1><p class="muted">${escFull(of.edition)}</p>${docNote(of, 'offer/')}<p>${escFull(of.lead)}</p>` + sectionsHtml(of.sections)) +
+      content: fillHtml(`<div class="eyebrow">${escFull(t('nav.services'))}</div><h1>${escFull(of.h1)}</h1><p class="muted">${escFull(of.edition)}</p>${docNote(of, 'offer/')}<p>${escFull(of.lead)}</p>` + sectionsHtml(offerSections(L))) +
         `<p class="seealso">${docLink('refund/', rf)} · ${docLink('services/', sv)}</p>` });
     writeContentPage(L, 'refund/', { navKey: 'nav.services', langs: own, title: rf.title, description: rf.description, crumbs: [svcCrumb, { name: rf.h1 }],
       content: fillHtml(`<div class="eyebrow">${escFull(t('nav.services'))}</div><h1>${escFull(rf.h1)}</h1><p class="lead">${escFull(rf.lead)}</p>${docNote(rf, 'refund/')}` + sectionsHtml(rf.sections)) +
@@ -775,6 +1082,35 @@ for (const L of locales) {
         btn.hidden = true; status('ok', esc(t('unsub.done'))); if(window.discTrack) window.discTrack('unsubscribe'); })
       .catch(function(){ btn.disabled = false; status('err', t('unsub.failed', {email: mail})); });
   });
+})();` });
+  }
+  // /subscribe/ — подтверждение подписки с главной: ключ из ссылки в письме (#c=…) страница сама отправляет серверу при открытии ({action: 'confirmSubscribe'})
+  // и пишет «Подписка подтверждена» (с 2026-10-22, по просьбе заказчика: без лишнего нажатия). Запрос шлёт скрипт страницы, а не сам переход по ссылке:
+  // сканеры ссылок в почте, которые только скачивают страницу, подписку не подтверждают. Кнопка «Подтвердить подписку» — только для повтора после сбоя.
+  if (homeSub) {
+    const sc = C.subscribeConfirm, mailLink = feedbackEmail ? `<a href="mailto:${escFull(feedbackEmail)}">${escFull(feedbackEmail)}</a>` : '';
+    writeContentPage(L, 'subscribe/', { noindex: true, noDate: true, title: sc.title, description: sc.description, crumbs: [{ name: sc.h1 }],
+      content: `<div class="eyebrow">DISC</div><h1>${escFull(sc.h1)}</h1><p class="lead">${escFull(sc.lead)}</p>` +
+        `<div class="card contactcard"><p class="sendstatus" id="cStatus" aria-live="polite">${escFull(t('subc.wait'))}</p><div class="actions"><button class="btn" type="button" id="cBtn" hidden>${escFull(t('subc.button'))}</button></div></div>`,
+      uiKeys: /^subc\./,
+      pageJs: `(function(){ var btn = $('#cBtn'), st = $('#cStatus'), m = /[#&]c=([A-Za-z0-9_-]{22})(?:&|$)/.exec(dataHash()), mail = ${jsStr(mailLink)};
+  function status(kind, html){ st.hidden = false; st.className = 'sendstatus ' + kind; st.innerHTML = html; }
+  if(!m){ status('err', t('subc.bad', {email: mail})); return; }
+  function confirm(){
+    btn.hidden = true; status('muted', esc(t('subc.wait')));
+    fetch(${jsStr(cfg.sendEndpoint)}, {method: 'POST', body: JSON.stringify({token: ${jsStr(cfg.sendToken)}, action: 'confirmSubscribe', c: m[1]}), redirect: 'follow'})
+      .then(function(res){ return res.text(); })
+      .then(function(txt){ var j = null; try{ j = JSON.parse(txt); }catch(e){}
+        if(j && j.error === 'bad link'){ status('err', t('subc.bad', {email: mail})); return; }
+        if(!j || !j.ok) throw new Error('failed');
+        // зелёная галочка в кружке перед надписью (по просьбе заказчика от 2026-10-22): с первого взгляда видно, что подписка прошла
+        status('ok', '<span style="display:flex;gap:12px;align-items:center"><svg viewBox="0 0 24 24" width="32" height="32" aria-hidden="true" style="flex:none">' +
+          '<circle cx="12" cy="12" r="12" fill="currentColor"/><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
+          '<span>' + esc(t('subc.done')) + '</span></span>'); if(window.discTrack) window.discTrack('subscribe'); })
+      .catch(function(){ btn.hidden = false; status('err', t('subc.failed', {email: mail})); });
+  }
+  btn.addEventListener('click', confirm);
+  confirm();
 })();` });
   }
   // /contact/ — форма обратной связи (только при заданном feedbackEmail); разметка из src/contact.js, там же логика страницы
@@ -835,6 +1171,12 @@ for (const f of fs.existsSync(path.join(ASSETS, 'fonts')) ? fs.readdirSync(path.
 // листы образца расширенного отчёта (картинки; готовятся вручную из PDF образца, см. PROJECT.md от 2026-10-09)
 if (fs.existsSync(path.join(ASSETS, 'extended'))) { fs.mkdirSync(path.join(OUT, 'extended'), { recursive: true });
   for (const f of fs.readdirSync(path.join(ASSETS, 'extended'))) if (f.endsWith('.webp')) fs.copyFileSync(path.join(ASSETS, 'extended', f), path.join(OUT, 'extended', f)); }
+// файлы для скачивания (пример CV в PDF и DOCX на лендинге /ru/cv/, с 2026-10-22)
+if (fs.existsSync(path.join(ASSETS, 'files'))) { fs.mkdirSync(path.join(OUT, 'files'), { recursive: true });
+  for (const f of fs.readdirSync(path.join(ASSETS, 'files'))) if (/\.(pdf|docx)$/.test(f)) fs.copyFileSync(path.join(ASSETS, 'files', f), path.join(OUT, 'files', f)); }
+// картинки страниц (фото основателя на лендинге /ru/cv/, с 2026-10-22)
+if (fs.existsSync(path.join(ASSETS, 'img'))) { fs.mkdirSync(path.join(OUT, 'img'), { recursive: true });
+  for (const f of fs.readdirSync(path.join(ASSETS, 'img'))) if (/\.(webp|png|jpe?g)$/.test(f)) fs.copyFileSync(path.join(ASSETS, 'img', f), path.join(OUT, 'img', f)); }
 fs.mkdirSync(path.join(OUT, 'pdf'), { recursive: true });
 for (const f of fs.existsSync(path.join(ASSETS, 'pdf')) ? fs.readdirSync(path.join(ASSETS, 'pdf')) : []) if (f.endsWith('.pdf')) fs.copyFileSync(path.join(ASSETS, 'pdf', f), path.join(OUT, 'pdf', f));
 fs.mkdirSync(path.join(OUT, 'og'), { recursive: true });
@@ -869,11 +1211,13 @@ for (const L of locales) {
   // consent — текст у галочки согласия на рассылку: скрипт записывает его в таблицу рядом с отметкой о согласии
   mailData[L.lang] = { name: L.name, dir: L.dir, brand: L.brand, keys: L.keys, addon: L.addon, styles: L.styles, profiles, email, report, rights: L.ui.rights, consent: L.ui['share.subscribe'],
     pd: { v: pdVersion, text: pdConsentText(L) },   // согласие на обработку данных: редакция и текст — свой сервер сохраняет их рядом с отметкой о согласии
-    cta: { title: L.ui['cta.title'], text: L.ui['cta.text'], desc: L.ui['pages.profile.descCta'] } };
+    cta: { title: L.ui['cta.title'], text: L.ui['cta.text'], desc: L.ui['pages.profile.descCta'] },
+    // подписка с главной: текст у галочки согласия (сервер сохраняет его с отметкой о согласии) и письмо со ссылкой подтверждения
+    nl: { consent: L.ui['nl.consent'], mail: L.content.subscribeMail } };
   // письмо с расширенным отчётом (платная услуга): тексты есть только в языках, где отчёт написан
   if (L.content.extendedMail) mailData[L.lang].extended = L.content.extendedMail;
-  // оплата расширенного отчёта на своём сервере: название услуги для платёжной страницы и чека, письмо-напоминание о неоконченной оплате
-  if (L.content.product && L.content.product.pay && L.content.product.pay.remind) mailData[L.lang].pay = { name: L.content.services.name, remind: L.content.product.pay.remind, dateLocale: L.dateLocale };
+  // оплата расширенного отчёта на своём сервере: название услуги для платёжной страницы и чека, письмо-напоминание о неоконченной оплате, валюта заказа (USD или EUR через Prodamus)
+  if (L.content.product && L.content.product.pay && L.content.product.pay.remind) mailData[L.lang].pay = { name: L.content.services.name, remind: L.content.product.pay.remind, dateLocale: L.dateLocale, currency: L.content.services.currency };
 }
 // Блок о расширенном отчёте в PDF краткого отчёта и в теле письма с результатом: в языках, где есть страница отчёта и тексты `content.product.pdf`.
 // Листы образца — только там, где есть и их картинки для PDF, и подписи (hasSamples): они вшиваются в данные ядра, при сборке PDF сеть закрыта.
@@ -900,7 +1244,7 @@ if (cfg.reportAd === true || process.env.REPORT_AD === '1') {
 const gsTpl = fs.readFileSync(path.join(SRC, 'apps-script.template.js'), 'utf8');
 const gs = gsTpl
   .replace('__SITE_URL__', siteUrl).replace('__SEND_TOKEN__', String(cfg.sendToken || '').replace(/['\\]/g, ''))
-  .replace('__SENDER_EMAIL__', senderEmail).replace('__CONTACT_TO__', feedbackEmail).replace('__PRICE_RUB__', String(servicePrices.RUB || 0)).replace('__PRICE_USD__', String(servicePrices.USD || 0)).replace('__MAX_CONTACT_BYTES__', String(MAX_CONTACT_BYTES))
+  .replace('__SENDER_EMAIL__', senderEmail).replace('__CONTACT_TO__', feedbackEmail).replace('__PRICE_RUB__', String(servicePrices.RUB || 0)).replace('__PRICE_USD__', String(servicePrices.USD || 0)).replace('__OFFER_RUB__', String(offerPrices.RUB || 0)).replace('__OFFER_USD__', String(offerPrices.USD || 0)).replace('__PRICE_EUR__', String(servicePrices.EUR || 0)).replace('__OFFER_EUR__', String(offerPrices.EUR || 0)).replace('__OFFER_MIN__', String(offerMinutes)).replace('__MAX_CONTACT_BYTES__', String(MAX_CONTACT_BYTES))
   .replace('__BLOCK_KEYS__', BLOCK_KEYS).replace('__DATA__', () => JSON.stringify(mailData));
 fs.mkdirSync(path.join(ROOT, 'backend', 'apps-script'), { recursive: true });
 fs.writeFileSync(path.join(ROOT, 'backend', 'apps-script', 'Code.gs'), gs);
@@ -910,7 +1254,7 @@ const ruL = locales.find(L => L.lang === 'ru');
 const hasBot = !!(ruL && hasOffer(ruL) && servicePrices.RUB && legalInn && feedbackEmail);
 if (hasBot) {
   const bot = fs.readFileSync(path.join(SRC, 'telegram-bot.template.js'), 'utf8')
-    .replace('__SITE_URL__', siteUrl).replace('__PRICE_RUB__', String(servicePrices.RUB)).replace('__CONTACT_EMAIL__', feedbackEmail)
+    .replace('__SITE_URL__', siteUrl).replace('__PRICE_RUB__', String(servicePrices.RUB)).replace('__OFFER_RUB__', String(offerPrices.RUB || 0)).replace('__CONTACT_EMAIL__', feedbackEmail)
     .replace('__SERVICE_NAME__', () => JSON.stringify(ruL.content.services.name))
     .replace('__LEGAL__', () => JSON.stringify(ruL.ui.legal.replace('{inn}', legalInn).split(' · ').join('\n')));
   fs.mkdirSync(path.join(ROOT, 'backend', 'telegram-bot'), { recursive: true });

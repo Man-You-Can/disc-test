@@ -1,18 +1,24 @@
 /* Общие элементы всех страниц сайта (тест и контентные страницы): выпадающий список языков,
    запоминание выбранного языка, подсказка «Продолжить на …», уведомление о cookie и загрузка Яндекс.Метрики после согласия.
    Вставляется сборкой в каждую страницу; вызывается как initCommon({L, t, esc, lsGet, lsSet, langHref, $}). */
-/* Хэш адреса с личными данными: #r=… — код результата (в нём имя, e-mail и ответы участника), #u=… — ключ отписки от рассылки.
+/* Хэш адреса с личными данными: #r=… — код результата (в нём имя, e-mail и ответы участника), #u=… — ключ отписки от рассылки,
+   #c=… — ключ подтверждения подписки на рассылку (с 2026-10-22).
    Счётчик веб-аналитики читает адрес страницы сам: в первом запросе (он уходит и при defer), в карте кликов, при переходе
    по внешней ссылке, в записи посещения. Поэтому такой хэш убирается из адресной строки раньше, чем счётчик загружен, и
    остаётся в записи истории браузера (history.state): обновление страницы и «Назад» открывают тот же экран, а новый переход
    по тому же адресу (ссылка на эту же страницу) — страницу без данных.
-   Код страниц берёт хэш через dataHash() и pageHash(), а не из location.hash; в разметку страницы хэш с данными не пишется. */
+   Код страниц берёт хэш через dataHash() и pageHash(), а не из location.hash; в разметку страницы хэш с данными не пишется.
+   Исключение (решение заказчика от 2026-10-22): экран результата после загрузки сам кладёт в адресную строку ссылку на отчёт без e-mail
+   (showHash) — ту же, что копирует кнопка «Скопировать ссылку», чтобы адрес из строки браузера можно было переслать. Её счётчик видит;
+   о ней говорят тексты о данных на 14 языках. При открытии страницы любой #r=… (в старых ссылках из писем — с e-mail) всё равно сначала
+   убирается, до загрузки счётчика, и возвращается в строку уже без e-mail. */
 function dataHash(){
-  var re = /^#[ru]=/, h = location.hash || '';
+  var re = /^#[ruc]=/, h = location.hash || '';
   try{
-    var first = !dataHash.seen; dataHash.seen = 1;
+    var first = !dataHash.seen, s = history.state; dataHash.seen = 1;
+    /* ссылка, которую страница сама показала в адресной строке (showHash), остаётся на месте; при открытии страницы (first) убирается и она */
+    if(!first && h && s && s.discShown === h) return h;
     if(re.test(h)){ history.replaceState({discHash:h}, '', location.pathname + location.search); return h; }
-    var s = history.state;
     if(s && typeof s.discHash === 'string' && re.test(s.discHash)){
       if(first && navFresh()){ history.replaceState(null, '', location.href); return ''; }
       return s.discHash;
@@ -25,6 +31,8 @@ function navFresh(){
   try{ var n = performance.getEntriesByType('navigation')[0]; return n ? n.type === 'navigate' : performance.navigation.type === 0; }catch(e){ return false; }
 }
 function pageHash(){ return dataHash() || location.hash || ''; }
+/* показать ссылку на результат в адресной строке (экран результата): без новой записи истории и без события hashchange */
+function showHash(h){ try{ history.replaceState({discHash:h, discShown:h}, '', location.pathname + location.search + h); }catch(e){} }
 /* возврат к началу: адрес без хэша, запись истории без данных */
 function dropHash(){ try{ if(location.hash || history.state) history.replaceState(null, '', location.pathname + location.search); }catch(e){} }
 
@@ -100,7 +108,7 @@ function initCommon(c){
     var A = window.DISC_ANALYTICS||{}, ym = A.ym ? String(A.ym) : "", optin = A.mode!=="always", ask = optin && !!ym;
     function loadYm(){
       /* пока в адресе остаётся хэш с данными (убрать его не удалось), счётчик не загружается вовсе */
-      if(!ym || window.ym || /^#[ru]=/.test(location.hash)) return;
+      if(!ym || window.ym || /^#[ruc]=/.test(location.hash)) return;
       (function(m,e,t,r,i,k,a){ m[i]=m[i]||function(){ (m[i].a=m[i].a||[]).push(arguments); }; m[i].l=1*new Date();
         for(var j=0;j<document.scripts.length;j++){ if(document.scripts[j].src===r) return; }
         k=e.createElement(t); a=e.getElementsByTagName(t)[0]; k.async=1; k.src=r; a.parentNode.insertBefore(k,a);
@@ -126,7 +134,57 @@ function initCommon(c){
     document.body.appendChild(el); document.body.classList.add("has-consent");
     function close(v){ lsSet("disc.consent", v); el.remove(); document.body.classList.remove("has-consent"); }
     $("#consentOk").addEventListener("click", function(){ close(ask ? "analytics" : "noted"); if(ask) loadYm(); });
+    /* тест пройден в этом браузере: уведомление было на экране все 24 блока. В режиме always оно только сообщает — считаем его прочитанным
+       и убираем, чтобы на телефоне оно не закрывало кнопку отчёта на экране результата. Согласие (режим optin) так не ставится никогда */
+    if(!ask) window.discNoticeSeen = function(){ if(el.parentNode) close("noted"); };
     if($("#consentNo")) $("#consentNo").addEventListener("click", function(){ close("essential"); });
+  })();
+
+  /* закреплённая кнопка расширенного отчёта внизу экрана (с 2026-10-22 — на всех страницах сайта, решение заказчика).
+     window.DISC_XBAR задаёт сборка только в языках, где отчёт продаётся (content.product.promo): {button, offer — та же кнопка со специальной
+     ценой (пусто, если её нет), ms — срок специальной цены, close}. Видна тем, у кого на устройстве сохранён результат теста (disc.last),
+     пока её не закроют крестиком (sessionStorage disc.xbar, до конца сеанса); не видна купившему отчёт (disc.pay.done) и на самостоятельных
+     лендингах (c.noXbar). Страница теста управляет ею сама через window.discXbar.set({show, go, src}): прячет на время вопросов и в панели,
+     на экране результата показывает и для чужого результата и раскрывает форму покупки. По умолчанию кнопка ведёт на страницу отчёта
+     (источник заказа site-bar), а на самой странице отчёта — прокручивает к форме покупки. Цель Метрики — ext-bar. */
+  (function(){
+    var X = window.DISC_XBAR;
+    if(!X || c.noXbar || !c.reportHref) return;
+    function closed(){ try{ return sessionStorage.getItem('disc.xbar') === 'off'; }catch(e){ return false; } }
+    function bought(){ var p = lsGet('disc.pay'); return !!(p && p.done); }
+    function last(){ var r = lsGet('disc.last'); return r && r.t && r.m && r.l ? r : null; }
+    var bar = document.createElement('div'); bar.className = 'xbar no-print'; bar.id = 'extBar';
+    bar.innerHTML = '<a class="btn" id="extBarGo" href="'+esc(c.reportHref)+'"></a><button class="xbar-x" type="button" id="extBarX" aria-label="'+esc(X.close)+'" title="'+esc(X.close)+'">×</button>';
+    document.body.appendChild(bar);
+    var go = bar.firstChild, page = null, text = '', timer = 0;
+    /* надпись: пока действует специальная цена (час после первого прохождения на устройстве, как в src/pay.js) — с ней, потом обычная */
+    function label(){
+      clearTimeout(timer);
+      if(text){ go.textContent = text; return; }
+      var r = last(), until = 0;
+      if(X.offer && r){ var a = Date.parse(r.t), s = lsGet('disc.offer'), b = s && Date.parse(s.t); if(!isNaN(a)) until = Math.min(a, b && !isNaN(b) ? b : a) + X.ms; }
+      var left = until - Date.now();
+      go.textContent = left > 0 ? X.offer : X.button;
+      if(left > 0) timer = setTimeout(label, Math.min(left + 500, 2147483000));
+    }
+    function sync(){
+      var on = !closed() && !bought() && (page ? !!page.show : !!last());
+      bar.classList.toggle('show', on); document.body.classList.toggle('has-xbar', on);
+    }
+    go.addEventListener('click', function(ev){
+      if(window.discTrack) window.discTrack('ext-bar');
+      if(page && page.go){ ev.preventDefault(); page.go(); return; }
+      var f = document.querySelector('#buy input[type=email]');
+      if(f){ ev.preventDefault(); f.scrollIntoView({behavior:'smooth', block:'center'}); try{ f.focus({preventScroll:true}); }catch(e){ f.focus(); } return; }
+      try{ sessionStorage.setItem('disc.src', (page && page.src) || 'site-bar'); }catch(e){}
+    });
+    bar.lastChild.addEventListener('click', function(){ try{ sessionStorage.setItem('disc.xbar', 'off'); }catch(e){} sync(); });
+    window.discXbar = {
+      set: function(p){ page = p || null; text = ''; label(); sync(); },   // null — как на обычной странице
+      text: function(s){ text = s || ''; label(); },
+      sync: sync
+    };
+    label(); sync();
   })();
 
   /* отметка о посещении (visitStats в site.config.json, window.DISC_VISIT задаёт сборка): раз в сутки по Москве — один запрос на сервер сайта

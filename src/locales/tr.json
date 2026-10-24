@@ -517,7 +517,7 @@
         },
         {
           "q": "Test gerçekten ücretsiz mi?",
-          "a": "Evet: test ve sonuç ücretsizdir; kayıt ve gizli ödeme yoktur. Sonuç, son sorunun hemen ardından ekranda görünür; isterseniz e-postayla da alabilirsiniz. Sitede tek bir ücretli hizmet vardır: genişletilmiş DISC profili. “Hizmetler” bölümünde anlatılır ve tamamen isteğe bağlıdır."
+          "a": "Evet: test ve sonuç ücretsizdir; kayıt ve gizli ödeme yoktur. Sonuç, son sorunun hemen ardından ekranda görünür; PDF olarak da kaydedebilirsiniz. Sitede tek bir ücretli hizmet vardır: genişletilmiş DISC profili. “Hizmetler” bölümünde anlatılır ve tamamen isteğe bağlıdır."
         },
         {
           "q": "D, I, S, C harfleri ne anlama gelir?",
@@ -540,8 +540,8 @@
           "a": "Evet. İş arkadaşlarınıza sitenin bağlantısını gönderin; sonuç ekranında herkes bir bağlantı ve bir kod alır, bunları size iletmelerini isteyin. Yönetici panelinde (bağlantısı sitenin en altındadır) kodlar, Excel’e kopyalayabileceğiniz bir tabloda toplanır. Tablo yalnızca sizin tarayıcınızda saklanır."
         },
         {
-          "q": "Sonuç nereye gider ve onu kim görür?",
-          "a": "Sonuç ekranda gösterilir ve tarayıcınıza kaydedilir. Sonuç ekranında adınızı ve e-posta adresinizi belirtirseniz rapor bu adrese e-postayla gönderilir, adınız, e-posta adresiniz ve sonucunuz da site sahibinin sonuç veri tabanına kaydedilir; onayınız olmadan bu veriler başka amaçlarla kullanılmaz ve üçüncü kişilere aktarılmaz. Başkaları raporunuzu ancak bağlantısını siz paylaşırsanız görebilir. Ayrıntılar “Gizlilik” sayfasındadır."
+          "q": "Sonuç nerede saklanır ve onu kim görür?",
+          "a": "Sonuç ekranda gösterilir ve tarayıcınıza kaydedilir. Başkaları raporunuzu ancak bağlantısını siz paylaşırsanız görebilir. Ayrıntılar “Gizlilik” sayfasındadır."
         },
         {
           "q": "Testi yeniden çözebilir miyim?",
@@ -572,7 +572,7 @@
       "sections": [
         {
           "h": "Bu site neden var",
-          "p": ["Kayıt olmadan ve ödeme yapmadan on dakikada çözülebilen, kendi dilinizde anlaşılır bir rapor veren ve sonucu ekiple paylaşmaya imkân tanıyan bir DISC testi hazırlamak istedik. Site 14 dilde çalışır; sonuç hemen görünür ve isterseniz e-postayla gelir; yöneticiler ve İK için de katılımcıların sonuçlarının tek bir tabloda toplandığı bir panel vardır."]
+          "p": ["Kayıt olmadan ve ödeme yapmadan on dakikada çözülebilen, kendi dilinizde anlaşılır bir rapor veren ve sonucu ekiple paylaşmaya imkân tanıyan bir DISC testi hazırlamak istedik. Site 14 dilde çalışır; sonuç hemen görünür ve PDF olarak kaydedilebilir; yöneticiler ve İK için de katılımcıların sonuçlarının tek bir tabloda toplandığı bir panel vardır."]
         },
         {
           "h": "Test neye dayanıyor",
@@ -664,14 +664,14 @@
           "h": "Veriler nerede saklanır ve kimlere aktarılır",
           "p": [
             "Sonuç veri tabanı, site sahibinin bir barındırma sağlayıcısından kiraladığı bir sunucuda bulunur. E-postaları bir e-posta hizmeti gönderir. Bu şirketler verileri bizim talimatımızla ve yalnızca sitenin çalışması için işler. E-posta, kendi belirttiğiniz adrese gönderilir. Veriler, kendi amaçları için kullanmaları üzere üçüncü kişilere aktarılmaz ve satılmaz.",
-            "Bülteni yalnızca sonuç gönderme formunda ayrı onay kutusunu işaretleyenler alır. Bu durumda veri tabanına onay işareti, onayın tarihi ve metni de kaydedilir; e-posta adresiniz, adınız ve diliniz size disc-test.org e-postalarını göndermek için kullanılır: DISC ile ilgili içerikler, site haberleri ve tanıtım teklifleri. İstediğiniz zaman abonelikten çıkabilirsiniz: e-postadaki bağlantıdan ya da {email} adresine yazarak.",
-            "Barındırma hizmeti, isteğe ilişkin standart teknik verileri alır: IP adresi, tarayıcı türü, sayfa adresi. Yazı tipleri sitenin kendisinde barındırılır. Ziyaret istatistiklerini bir web analiz hizmeti toplar: ziyarete ilişkin anonimleştirilmiş verileri — sonuç kodu içermeyen sayfa adresi, ziyaretin geldiği kaynak, cihaz ve tarayıcı türü — ve sayfadaki hareketlerin kaydını alır; ad ve e-posta alanları, sonuç bağlantısı ve sonuç kodu bu kaydın dışında tutulur. Veri toplamayı tarayıcı ayarlarınızdan ya da bir izleyici engelleyiciyle devre dışı bırakabilirsiniz. Reklam amaçlı izleyiciler kullanılmaz."
+            "Bülteni yalnızca ayrı onay kutusunu işaretleyenler alır: sonuç gönderme formunda ya da ana sayfadaki abonelik formunda. Abonelik formunu gönderdikten sonra onay bağlantısı içeren bir e-posta gelir: onaylanmayan aboneliğe bülten gönderilmez ve adres 7 gün sonra silinir. Veri tabanına onay işareti, onayın tarihi ve metni kaydedilir; e-posta adresiniz, adınız (belirttiyseniz) ve diliniz size disc-test.org e-postalarını göndermek için kullanılır: DISC ile ilgili içerikler, yeni testler, kariyer gelişimi ve iş arama ipuçları, site haberleri ve tanıtım teklifleri. İstediğiniz zaman abonelikten çıkabilirsiniz: e-postadaki bağlantıdan ya da {email} adresine yazarak.",
+            "Barındırma hizmeti, isteğe ilişkin standart teknik verileri alır: IP adresi, tarayıcı türü, sayfa adresi. Yazı tipleri sitenin kendisinde barındırılır. Ziyaret istatistiklerini bir web analiz hizmeti toplar: ziyarete ilişkin verileri — sayfa adresi, ziyaretin geldiği kaynak, cihaz ve tarayıcı türü — ve sayfadaki hareketlerin kaydını alır; ad ve e-posta alanları bu kaydın dışında tutulur. Sonuç ekranında sayfa adresi sonuç kodunu içerir: yanıtlarınız, test tarihi ve belirttiyseniz adınız; e-posta adresiniz bu koda dahil değildir. Veri toplamayı tarayıcı ayarlarınızdan ya da bir izleyici engelleyiciyle devre dışı bırakabilirsiniz. Reklam amaçlı izleyiciler kullanılmaz."
           ]
         },
         {
           "h": "Hukuki dayanak ve saklama süreleri",
           "p": [
-            "E-postanıza gönderilen sonucu onayınıza dayanarak işler ve gönderim tarihinden itibaren üç yıl boyunca ya da onayınızı geri alana kadar saklarız. Bülten için kullanılan verileri ayrı bir onaya dayanarak, siz abonelikten çıkana kadar işleriz. İletişim formundan gelen mesajları onayınıza dayanarak işler ve yanıt verdikten sonra bir yıl saklarız.",
+            "E-postanıza gönderilen sonucu onayınıza dayanarak işler ve gönderim tarihinden itibaren üç yıl boyunca ya da onayınızı geri alana kadar saklarız. Bülten için kullanılan verileri ayrı bir onaya dayanarak, siz abonelikten çıkana kadar işleriz; aboneliği onaylanmamış adresleri 7 gün saklarız. İletişim formundan gelen mesajları onayınıza dayanarak işler ve yanıt verdikten sonra bir yıl saklarız.",
             "Süre dolduğunda ya da onayınızı geri aldığınızda veriler veri tabanından silinir. Yedek kopyalardan ise kopyalar yenilendikçe, en geç altı ay içinde silinir."
           ]
         },
@@ -727,7 +727,8 @@
           "h": "İşleme amaçları ve işlenen veriler",
           "p": [
             "“Sonucunuzu e-postayla alın” formu: ad, e-posta adresi, sitenin dil sürümü, testin çözüldüğü tarih, yanıtlar ve DISC testinin sonucu. Amaç: bana test sonucunu içeren bir e-posta göndermek ve sonucu, yeniden gönderebilmek ve başvurularımı yanıtlayabilmek için saklamak.",
-            "İletişim formu: ad, e-posta adresi, mesaj metni ve eklenen dosyalar. Amaç: başvurumu incelemek ve yanıtlamak."
+            "İletişim formu: ad, e-posta adresi, mesaj metni ve eklenen dosyalar. Amaç: başvurumu incelemek ve yanıtlamak.",
+            "Ana sayfadaki bülten abonelik formu: e-posta adresi ve sitenin dil sürümü. Amaç: bana aboneliği onaylamam için bağlantı içeren bir e-posta göndermek ve bülten abone listesini tutmak."
           ]
         },
         {
@@ -745,7 +746,7 @@
         {
           "h": "Onayın geçerlilik süresi",
           "p": [
-            "Onay, “Sonucunuzu e-postayla alın” formunun gönderildiği tarihten itibaren üç yıl, iletişim formundan gelen başvurunun yanıtlanmasından sonra ise bir yıl boyunca ya da geri alınana kadar geçerlidir."
+            "Onay, “Sonucunuzu e-postayla alın” formunun gönderildiği tarihten itibaren üç yıl, iletişim formundan gelen başvurunun yanıtlanmasından sonra bir yıl, abonelik formu için ise bülten aboneliğinden çıkılana kadar (abonelik onaylanmazsa 7 gün) ya da geri alınana kadar geçerlidir."
           ]
         },
         {
@@ -777,11 +778,11 @@
       "sections": [
         {
           "h": "Nasıl alınır",
-          "p": ["Genişletilmiş profil, ödeme sırasında belirtilen e-posta adresine, ödemeden sonra en geç 24 saat içinde gönderilir."]
+          "p": ["Genişletilmiş profil, ödemenin hemen ardından, ödeme sırasında belirtilen e-posta adresine gönderilir."]
         },
         {
           "h": "Ücretsiz kalanlar",
-          "p": ["Testin kendisi, ekrandaki sonuç ve sonuç e-postası, on altı profilin sayfaları ve testin yazdırılabilir PDF sürümü ücretsiz kalır ve kayıt gerektirmez. Genişletilmiş profil yalnızca isteyenler içindir."]
+          "p": ["Testin kendisi, ekrandaki sonuç ve PDF biçimindeki özet rapor, on altı profilin sayfaları ve testin yazdırılabilir PDF sürümü ücretsiz kalır ve kayıt gerektirmez. Genişletilmiş profil yalnızca isteyenler içindir."]
         },
         {
           "h": "Hizmetle ilgili sorular",
@@ -794,7 +795,7 @@
       "description": "disc-test.org sitesindeki ücretli “Genişletilmiş DISC profili” hizmetinin satış koşulları (kamuya açık teklif): ücret, ödeme, teslim, iade, içerik hakları.",
       "h1": "Satış koşulları (kamuya açık teklif)",
       "linkText": "satış koşulları",
-      "edition": "9 Ekim 2026 tarihli sürüm. Türkçe çevirisi 21 Ekim 2026’da yayımlanmıştır.",
+      "edition": "22 Ekim 2026 tarihli sürüm. Türkçe çevirisi 22 Ekim 2026’da güncellenmiştir.",
       "note": "Bu metin, teklifin {original} adresinde yayımlanan asıl metninin Türkçe çevirisidir. İki metin arasında fark olması hâlinde asıl metin esas alınır; bunun istisnası ücret ve ödeme yöntemidir: Site’nin Türkçe sürümü için bu çevirinin 1. ve 3. bölümleri geçerlidir.",
       "seller": "bireysel girişimci Manukyan Armen, vergi kimlik numarası (INN) {inn}",
       "lead": "Bu belge, ücretli “Genişletilmiş DISC profili” hizmetine ilişkin sözleşmenin aşağıdaki koşullarla kurulması için yapılmış resmî bir tekliftir (kamuya açık teklif). Teklifi yapan: {seller} (bundan böyle “Hizmet Sağlayıcı” olarak anılır). Hizmetin ücretinin ödenmesi, bu koşulların tamamen ve kayıtsız şartsız kabul edildiği anlamına gelir (teklifin kabulü).",
@@ -823,7 +824,7 @@
         {
           "h": "3. Ücret ve ödeme",
           "p": [
-            "3.1. Hizmet’in ücreti {price} ABD dolarıdır. Bu ücret nihaidir: Hizmet Sağlayıcı’ya başka bir ödeme yapılmaz.",
+            "3.1. Hizmet’in ücreti {price} ABD dolarıdır. Site’de testin tamamlanmasından sonraki 60 dakika boyunca Hizmet {offerPrice} ABD doları özel ücretle sunulur; kalan süre Site’de ücretin yanında gösterilir ve testin yeniden yapılması bu süreyi uzatmaz. Siparişin verildiği ücret ödeme sayfasında gösterilir ve o sipariş için geçerli kalır. Bu ücret nihaidir: Hizmet Sağlayıcı’ya başka bir ödeme yapılmaz.",
             "3.2. Hizmet’in ücretinin tamamı, Hizmet sunulmadan önce, banka kartıyla ya da ödeme sayfasında sunulan başka bir elektronik ödeme yöntemiyle ödenir. Ödemeyi Ödeme Aracısı alır.",
             "3.3. Hizmet’in ücreti, Hizmet Sağlayıcı’nın Ödeme Aracısı’ndan ödeme onayını aldığı anda ödenmiş sayılır.",
             "3.4. Müşteri, kart bilgilerini Ödeme Aracısı’nın güvenli sayfasında girer. Hizmet Sağlayıcı bu bilgileri almaz ve saklamaz.",
@@ -835,7 +836,7 @@
           "h": "4. Hizmetin sunulması",
           "p": [
             "4.1. Hizmet’i almak için Müşteri Site’de Test’i çözer, e-posta adresini belirtir ve Hizmet’in ücretini öder. Müşteri ödeme adımına hangi Test sonucuyla geçtiyse Genişletilmiş Profil o sonuca göre hazırlanır.",
-            "4.2. Hizmet Sağlayıcı, Genişletilmiş Profil’i belirtilen adrese ödeme anından (madde 3.3) itibaren en geç 24 saat içinde gönderir. E-posta genellikle daha erken ulaşır; 24 saat azami süredir.",
+            "4.2. Hizmet Sağlayıcı, Genişletilmiş Profil’i belirtilen adrese ödeme anından (madde 3.3) itibaren en geç 24 saat içinde gönderir. E-posta genellikle ödemenin hemen ardından ulaşır; 24 saat azami süredir.",
             "4.3. Hizmet, Genişletilmiş Profil’in gönderildiği anda sunulmuş sayılır. Müşteri bunu izleyen üç takvim günü içinde bir ayıp bildirmezse Hizmet kabul edilmiş sayılır. Hizmet’in sunulduğuna ilişkin ayrı bir tutanak düzenlenmez.",
             "4.4. E-posta ulaşmazsa Müşteri’nin istenmeyen e-posta (spam) klasörünü kontrol etmesi ve {email} adresine yazarak Hizmet Sağlayıcı’ya başvurması gerekir: Genişletilmiş Profil yeniden gönderilir.",
             "4.5. Belirttiği e-posta adresinin doğruluğundan Müşteri sorumludur."
@@ -847,8 +848,8 @@
             "5.1. Müşteri, Genişletilmiş Profil kendisine gönderilmeden önce dilediği zaman Hizmet’i iptal edebilir. Bu durumda ödediği ücretin tamamı iade edilir.",
             "5.2. Genişletilmiş Profil 4.2. maddede belirtilen süre içinde gönderilmezse Müşteri, ödediği ücretin tamamının iadesini talep edebilir.",
             "5.3. Alınan Genişletilmiş Profil ayıplıysa (e-posta veya dosya açılmıyorsa, içinde başka birinin sonucu yer alıyorsa ya da içerik Hizmet’in Site’deki tanımına uymuyorsa) Hizmet Sağlayıcı, Müşteri’nin başvurduğu günden itibaren üç iş günü içinde ayıbı giderir. Ayıp bu süre içinde giderilmezse ödenen ücretin tamamı iade edilir.",
-            "5.4. Hizmet gereği gibi sunulduktan sonra ödenen ücret iade edilmez. Müşteri’nin, profiline ilişkin açıklamanın içeriğine katılmaması Hizmet’te ayıp sayılmaz.",
-            "5.5. Para iadesi için Müşteri {email} adresine bir talep gönderir; talepte ödeme sırasında kullandığı e-posta adresini, ödemenin tarihini ve tutarını, ayrıca iade nedenini belirtir.",
+            "5.4. İade güvencesi: Müşteri, ödeme gününden itibaren yedi takvim günü içinde, Genişletilmiş Profil’i almış olsa dahi, herhangi bir gerekçe göstermeksizin ödediği ücretin tamamının iadesini talep edebilir. Bu süre geçtikten sonra gereği gibi sunulmuş Hizmet’in ücreti iade edilmez; Müşteri’nin, profiline ilişkin açıklamanın içeriğine katılmaması Hizmet’te ayıp sayılmaz.",
+            "5.5. Para iadesi için Müşteri {email} adresine bir talep gönderir; talepte ödeme sırasında kullandığı e-posta adresini, ödemenin tarihini ve tutarını, ayrıca iade nedenini belirtir. Madde 5.4 uyarınca yapılan iadelerde iade nedeninin belirtilmesi zorunlu değildir.",
             "5.6. Hizmet Sağlayıcı talebi üç iş günü içinde yanıtlar. İade, ödemenin yapıldığı yöntemle, talebin alındığı günden itibaren en geç on takvim günü içinde yapılır; tutarın hesaba geçme süresi Müşteri’nin bankasına bağlıdır.",
             "5.7. Bu bölümdeki koşullar, tüketicinin korunmasına ilişkin mevzuatın Müşteri’ye tanıdığı hakları sınırlamaz."
           ]
@@ -906,6 +907,7 @@
         {
           "h": "Ücretin tamamı ne zaman iade edilir",
           "ul": [
+            "Genişletilmiş profil size uygun gelmediyse: ödeme gününden itibaren 7 gün içinde, gerekçe sormadan paranızı iade ederiz.",
             "Genişletilmiş profil size gönderilmeden önce hizmeti iptal ettiyseniz.",
             "Genişletilmiş profil, ödemeden sonraki 24 saat içinde gönderilmediyse.",
             "Aldığınız genişletilmiş profil ayıplıysa (e-posta veya dosya açılmıyor, içinde başka birinin sonucu yer alıyor ya da içerik hizmetin sitedeki tanımına uymuyor) ve başvurunuzdan sonraki üç iş günü içinde ayıbı gidermediysek."
@@ -913,12 +915,12 @@
         },
         {
           "h": "Ücret ne zaman iade edilmez",
-          "p": ["Genişletilmiş profil zamanında gönderildiyse ve tanımına uygunsa hizmet sunulmuş sayılır ve ödenen ücret iade edilmez. Profilinize ilişkin açıklamanın içeriğine katılmamanız hizmette ayıp sayılmaz."]
+          "p": ["Ödemenin üzerinden 7 günden fazla geçtiyse ve genişletilmiş profil zamanında gönderilip tanımına uygunsa hizmet sunulmuş sayılır ve ödenen ücret iade edilmez. Profilinize ilişkin açıklamanın içeriğine katılmamanız hizmette ayıp sayılmaz."]
         },
         {
           "h": "İade nasıl talep edilir",
           "p": ["{email} adresine yazın ve şunları belirtin:"],
-          "ul": ["ödeme sırasında belirttiğiniz e-posta adresi;", "ödemenin tarihi ve tutarı;", "iade nedeni."]
+          "ul": ["ödeme sırasında belirttiğiniz e-posta adresi;", "ödemenin tarihi ve tutarı;", "iade nedeni (ödemeden sonraki ilk 7 gün içinde belirtmeniz gerekmez)."]
         },
         {
           "h": "Süreler",
@@ -986,15 +988,15 @@
         ["Neye dayanır", "Profil açıklaması", "Puanlarınız: ölçek ölçek, yanıtların iki katmanı, en düşük ölçek"],
         ["Kapsam", "Her konuda kısa bir açıklama", "13 bölüm, yaklaşık 28 sayfa"],
         ["Uygulama", "Genel öneriler", "Beş alıştırma, 30 günlük plan, “Tek sayfada işin özü” kâğıdı"],
-        ["Başkaları için", "“Tipinizi paylaşın” bağlantısı", "Yöneticiniz ve iş arkadaşlarınız için “Benimle nasıl çalışılır” sayfası"],
+        ["Başkaları için", "Sonucunuzun bağlantısı", "Yöneticiniz ve iş arkadaşlarınız için “Benimle nasıl çalışılır” sayfası"],
         ["Ücret", "Ücretsiz", "{price} USD"]
       ],
-      "compareNote": "Test, ekrandaki sonuç, sonuç e-postası ve PDF biçimindeki özet rapor ücretsiz kalır. Genişletilmiş rapor yalnızca isteyenler içindir.",
+      "compareNote": "Test, ekrandaki sonuç ve PDF biçimindeki özet rapor ücretsiz kalır. Genişletilmiş rapor yalnızca isteyenler içindir.",
       "howTitle": "Rapor nasıl alınır",
       "how": [
         "Ücretsiz testi çözün: 24 soru, yaklaşık 10 dakika. Testi daha önce çözdüyseniz yeniden çözmeniz gerekmez: rapor mevcut sonucunuza göre hazırlanır.",
         "Raporu, ödeme aracımız Prodamus’un güvenli ödeme sayfasında satın alın.",
-        "Rapor, ödemeden sonra en geç 24 saat içinde PDF eki olarak e-postanıza gelir."
+        "Rapor, ödemenin hemen ardından PDF eki olarak e-postanıza gelir."
       ],
       "faqTitle": "Sık sorulan sorular",
       "faq": [
@@ -1002,7 +1004,7 @@
         { "q": "Rapor hangi biçimde gelir?", "a": "E-postaya ekli bir PDF dosyası olarak gelir; yaklaşık 28 A4 sayfadır. Ekrandan rahatça okunur, çıktısı da alınabilir; üç çalışma kâğıdının her biri tek sayfaya sığar." },
         { "q": "Rapor hangi dilde?", "a": "Türkçe. Rapor çeviri değildir: doğrudan Türkçe, Türkiye’deki okur için yazılmıştır." },
         { "q": "Bu bir teşhis ya da yetenek testi mi?", "a": "Hayır. Rapor, yanıtlarınıza dayanarak davranış stilinizi anlatır. Teşhis koymaz, zekâyı ölçmez, başarıyı öngörmez." },
-        { "q": "Para iadesi alabilir miyim?", "a": "İadenin hangi durumlarda ve nasıl yapıldığı {refund} sayfasında açıklanır." }
+        { "q": "Para iadesi alabilir miyim?", "a": "Evet. Rapor size uygun gelmediyse ödeme gününden itibaren 7 gün içinde {email} adresine yazın: paranızın tamamını gerekçe sormadan iade ederiz. Diğer durumlar ve iade süreci {refund} sayfasında açıklanır." }
       ],
       "priceLabel": "Ücret",
       "price": "{price} USD",
@@ -1018,9 +1020,18 @@
       },
       "pay": {
         "title": "Rapor, {date} tarihli test sonucunuza göre hazırlanır",
-        "text": "Rapor, ödemeden sonra en geç 24 saat içinde PDF eki olarak e-postanıza gelir. Ödeme makbuzu da aynı adrese gönderilir.",
+        "text": "Rapor, ödemenin hemen ardından PDF eki olarak e-postanıza gelir. Ödeme makbuzu da aynı adrese gönderilir.",
         "emailLabel": "Rapor ve makbuz için e-posta adresi",
+        "emailPlaceholder": "E-posta adresinizi yazın",
         "button": "Satın al",
+        "guarantee": "Rapor size uymadı mı? 7 gün içinde, gerekçe sormadan paranızı iade ederiz.",
+        "offer": {
+          "regular": "Normal fiyat",
+          "cta": "Hemen satın al — {offerPrice} USD",
+          "note": "Testten sonraki bir saat için özel fiyat; ardından {price} USD",
+          "left": "Kalan süre",
+          "expired": "Testin üzerinden bir saat geçti: rapor artık {price} USD. “Satın al” düğmesine yeniden basın."
+        },
         "note": "“Satın al” düğmesine bastığınızda {offer} kabul edilmiş olur. Ödemeyi ABD doları olarak Prodamus’un güvenli sayfasında yaparsınız: kart bilgilerinizi bu sitede değil, orada girersiniz. Hesap ekstrenizde ödeme simpleway.by adıyla görünebilir.",
         "badEmail": "E-posta adresinizi kontrol edin: rapor ve makbuz bu adrese gönderilecek.",
         "wait": "Ödeme sayfası açılıyor…",
@@ -1028,14 +1039,14 @@
         "how": [
           "Ücretsiz testi çözün: 24 soru, yaklaşık 10 dakika. Testi daha önce çözdüyseniz yeniden çözmeniz gerekmez: rapor mevcut sonucunuza göre hazırlanır.",
           "E-posta adresinizi yazıp “Satın al” düğmesine basın. Ödemeyi ABD doları olarak, ödeme aracımız Prodamus’un güvenli sayfasında yaparsınız; bu sayfa İngilizcedir. Hesap ekstrenizde ödeme simpleway.by adıyla görünebilir: Prodamus için kart ödemelerini işleyen bePaid şirketi bu adı kullanır.",
-          "Rapor, ödemeden sonra en geç 24 saat içinde PDF eki olarak e-postanıza gelir. Ödeme makbuzu da aynı adrese gönderilir."
+          "Rapor, ödemenin hemen ardından PDF eki olarak e-postanıza gelir. Ödeme makbuzu da aynı adrese gönderilir."
         ],
         "thanks": {
           "title": "Satın aldığınız için teşekkürler — Genişletilmiş DISC raporu",
           "description": "Genişletilmiş DISC raporunun ödemesi: rapor ne zaman ve nereye gönderilir, e-posta gelmezse ne yapmalı.",
           "h1": "Satın aldığınız için teşekkürler",
-          "lead": "Rapor, ödeme sırasında belirttiğiniz e-posta adresine, ödemeden sonra en geç 24 saat içinde PDF eki olarak gönderilir. Çoğu zaman çok daha erken gelir.",
-          "leadEmail": "Rapor {email} adresine, ödemeden sonra en geç 24 saat içinde PDF eki olarak gönderilir. Çoğu zaman çok daha erken gelir.",
+          "lead": "Rapor birazdan, ödeme sırasında belirttiğiniz e-posta adresine PDF eki olarak gelir.",
+          "leadEmail": "Rapor birazdan {email} adresine PDF eki olarak gelir.",
           "order": "Sipariş numarası: {order}",
           "statusWait": "Prodamus’tan ödeme onayını bekliyoruz.",
           "statusPaid": "Ödeme alındı. Raporunuz hazırlanıyor.",
@@ -1080,25 +1091,20 @@
       },
       "block": {
         "eyebrow": "Genişletilmiş rapor",
-        "title": "Profilinizle ne yapmalı: yanıtlarınıza özel 13 bölüm",
-        "hook": "En düşük ölçeğiniz {name} ({k}): %{pct}. Genişletilmiş rapor bunun ne anlama geldiğini açıklar ve bu ölçeğe özel bir alıştırma önerir.",
+        "title": "Profilinizi daha yakından tanıyın: 25 sayfayı aşan ayrıntılı analiz",
+        "hook": "En düşük ölçeğiniz {name} ({k}): %{pct}. Genişletilmiş rapor bunun ne anlama geldiğini ve bunun üzerinde nasıl çalışabileceğinizi anlatır.",
         "list": [
-          "Ölçek ölçek: dört puanınızın her biri ne anlama geliyor",
-          "Beş kör nokta, beş alıştırma ve işe yaradıklarını gösteren işaretler",
-          "Dört stilin her biriyle nasıl konuşulur: yöntemler ve hazır cümleler",
-          "Üç çalışma kâğıdı: 30 günlük plan, tek sayfada işin özü, iş arkadaşlarınız için bir sayfa"
+          "Dört puanınızın her biri ne anlama geliyor",
+          "Beş kör nokta ve bunlar üzerinde çalışmak için beş alıştırma",
+          "Farklı tiplerden insanlarla nasıl iletişim kurulur: yöntemler ve hazır cümleler",
+          "30 günlük gelişim planı"
         ],
         "sample": "Hayalî bir katılımcı için hazırlanmış rapordan sayfalar",
         "price": "{price} USD · e-postayla PDF",
         "button": "Genişletilmiş raporu al",
-        "free": "Test ve özet rapor ücretsiz kalır.",
-        "topTitle": "Sonucunuza özel genişletilmiş rapor",
-        "topText": "Profilinizle ne yapacağınıza dair 13 bölüm: her ölçeğin yorumu, beş alıştırma, 30 günlük plan.",
-        "topButton": "Raporu al — {price} USD",
-        "anchor": "İçinde neler var"
+        "free": "Test ve özet rapor ücretsiz kalır."
       },
       "promo": {
-        "lead": "Rapor yanıtlarınıza göre hazırlanır ve şunları ele alır:",
         "hooks": {
           "low": "{k} ({name}), en düşük ölçeğiniz, %{pct}: ne anlama geliyor",
           "flat": "Dengeli profiliniz: ne anlama geliyor ve nasıl okunmalı",
@@ -1112,7 +1118,7 @@
           "layersSame": "Uyarlanmış stiliniz ve doğal stiliniz örtüşüyor ({k}): avantajı ve riski"
         },
         "tail": "Toplam 13 bölüm; beş alıştırma ve 30 günlük plan da içinde.",
-        "button": "Genişletilmiş rapor — {price} USD",
+        "button": "Kişiye özel genişletilmiş raporu satın al — {price} USD",
         "close": "Gizle",
         "homeLabel": "{date} tarihli sonucunuz",
         "homeOpen": "Sonucu aç",
@@ -1133,6 +1139,19 @@
       "h1": "Bülten aboneliğinden çıkın",
       "lead": "Düğmeye basın; disc-test.org, bu bağlantıyı içeren e-postanın geldiği adrese bülten göndermeyi bırakacak. Bu, test sonucu e-postasını etkilemez: o yalnızca siz istediğinizde gönderilir."
     },
+    "subscribeConfirm": {
+      "title": "Bülten aboneliği — DISC testi",
+      "description": "disc-test.org bülten aboneliğinin e-postadaki bağlantıyla onaylanması.",
+      "h1": "Bülten aboneliği",
+      "lead": "Bu bağlantıyı içeren e-postanın geldiği adrese disc-test.org bülteni gönderilmeye başlanacak: yeni testler, kariyer gelişimi ve iş arama ipuçları, site haberleri ve tanıtım teklifleri."
+    },
+    "subscribeMail": {
+      "subject": "disc-test.org bülten aboneliğinizi onaylayın",
+      "intro": "Merhaba! Bu adres, {site} sitesinin bülten abonelik formuna girildi: yeni testler, kariyer gelişimi ve iş arama ipuçları, site haberleri ve tanıtım teklifleri.",
+      "action": "E-posta almaya başlamak için aboneliğinizi onaylayın:",
+      "button": "Aboneliği onayla",
+      "footer": "Abone olmadıysanız hiçbir şey yapmanız gerekmez: onay verilmezse bülten gönderilmez ve adres 7 gün sonra silinir."
+    },
     "results": {
       "title": "DISC testi sonuçlarının yorumlanması: grafiği ve profili okuma",
       "description": "DISC testi sonuçları nasıl okunur: grafikteki üç çizgi, yüzdeler, ana ve ikincil stil, dengeli profil. Sonuç yorumlama örnekleri ve sık yapılan hatalar.",
@@ -1142,7 +1161,7 @@
         {
           "h": "Sonuç nelerden oluşur",
           "p": [
-            "Son sorudan sonra dört öğe görürsünüz: bir ya da iki harfli profil adı (örneğin “Öncü, DI”), üç çizgili bir grafik, yüzdeleri gösteren dört ölçek ve yazılı bir açıklama: özellikler, güçlü yönler, gelişim alanları, motivasyon, stres altındaki davranış ve sizinle nasıl iletişim kurulması gerektiğine dair öneriler. Aynı raporu e-postayla da alabilir ve bağlantısı üzerinden yeniden açabilirsiniz.",
+            "Son sorudan sonra dört öğe görürsünüz: bir ya da iki harfli profil adı (örneğin “Öncü, DI”), üç çizgili bir grafik, yüzdeleri gösteren dört ölçek ve yazılı bir açıklama: özellikler, güçlü yönler, gelişim alanları, motivasyon, stres altındaki davranış ve sizinle nasıl iletişim kurulması gerektiğine dair öneriler. Aynı raporu PDF olarak kaydedebilir ve bağlantısı üzerinden yeniden açabilirsiniz.",
             "Rapordaki bütün sayılar, 24 soruda yaptığınız işaretlemelerden türetilir. Her soruda “Beni en çok tanımlayan” bir ifade ve “Beni en az tanımlayan” bir ifade seçtiniz; her ifade de D, I, S ya da C stillerinden birine aittir. Bu yüzden her stilin iki sayısı vardır: onu kaç kez “en çok”, kaç kez “en az” olarak seçtiğiniz."
           ]
         },
@@ -1321,7 +1340,7 @@
           "h": "Kâğıt sürüm ne zaman gerekir?",
           "p": [
             "Kâğıt test, her katılımcının bilgisayarının olmadığı bir eğitimde ya da strateji çalıştayında, sınıf ortamında ve telefon kullanmanın yasak olduğu yerlerde işe yarar. Bazıları için kâğıt üzerinde odaklanmak daha kolaydır; işaretlersiniz, sayfayı çevirirsiniz, bildirimler dikkatinizi dağıtmaz.",
-            "Katılımcıların yanında telefonları varsa online sürüm daha pratiktir; sonucu kendisi hesaplar, grafiği çizer, raporu e-postayla gönderir ve paylaşabileceğiniz bir bağlantı verir. Ekipler için ayrıca tüm katılımcıların sonuçlarının toplandığı bir yönetici paneli vardır."
+            "Katılımcıların yanında telefonları varsa online sürüm daha pratiktir; sonucu kendisi hesaplar, grafiği çizer, raporu PDF olarak kaydeder ve paylaşabileceğiniz bir bağlantı verir. Ekipler için ayrıca tüm katılımcıların sonuçlarının toplandığı bir yönetici paneli vardır."
           ]
         },
         {
@@ -1371,7 +1390,7 @@
           "h": "Bu sitede test ekibe nasıl uygulanır?",
           "ol": [
             "Önce testi kendiniz çözün; böylece katılımcıların ne göreceğini bilir ve örnek bir rapor gösterebilirsiniz.",
-            "İş arkadaşlarınıza sitenin uygun dildeki bağlantısını gönderin. Kayıt gerekmez, test yaklaşık on dakika sürer; rapor ekranda görünür, herkes sonuç ekranında adını ve e-posta adresini yazarak raporu e-postayla da alır.",
+            "İş arkadaşlarınıza sitenin uygun dildeki bağlantısını gönderin. Kayıt gerekmez, test yaklaşık on dakika sürer; rapor hemen ekranda görünür; herkes onu PDF olarak kaydedebilir ve sonucunun bağlantısını size iletebilir.",
             "Herkesten sonuç bağlantısını ya da rapordaki kodu size iletmesini isteyin. Sonucu yalnızca bağlantıya sahip olanlar görebilir; yöneticiye hiçbir veri otomatik olarak gönderilmez.",
             "Yönetici panelini açın (bağlantısı sitenin en altında) ve aldığınız kodları yapıştırın. Panel adları, profilleri ve puanları içeren bir tablo oluşturur; tabloyu Excel’e kopyalayabilirsiniz. Tablo yalnızca sizin tarayıcınızda saklanır.",
             "Ortak bir toplantı planlayın. Dört stili anlatın, ekip haritasını gösterin ve herkese raporunda neyin tam isabet olduğunu, neyin olmadığını anlatma fırsatı verin."
@@ -1714,7 +1733,7 @@
         },
         {
           "h": "Anında sonuç",
-          "p": "Özet rapor, son soruyu yanıtladığınız anda ekrana gelir. Genişletilmiş rapor ödemenin hemen ardından, günün her saatinde, randevu almadan ve sıra beklemeden derlenir: e-posta çoğu zaman birkaç dakika içinde, en geç 24 saat içinde gelir."
+          "p": "Özet rapor, son soruyu yanıtladığınız anda ekrana gelir. Genişletilmiş rapor ödemenin hemen ardından, günün her saatinde, randevu almadan ve sıra beklemeden derlenir ve e-postanıza ulaşır."
         },
         {
           "h": "Uygun fiyat",
@@ -1793,7 +1812,7 @@
         "Üç çizgili bir grafik ve her stilin yüzde olarak ne kadar belirgin olduğu",
         "Güçlü yönleriniz, gelişim alanlarınız, motivasyonunuz ve stres altındaki davranışınız",
         "Sizinle en iyi nasıl iletişim kurulacağına ve çalışılacağına dair öneriler",
-        "Rapor bağlantısı, PDF olarak kaydetme ve isterseniz e-postayla gönderim; kayıt ve ücretli sürüm yok"
+        "Rapor bağlantısı ve PDF olarak kaydetme; kayıt ve ücretli sürüm yok"
       ],
       "calcTitle": "Sonuç nasıl hesaplanır",
       "calc": "24 sorunun her birinde size en çok benzeyen bir ifadeyi ve en az benzeyen bir ifadeyi işaretlersiniz. Her ifade D, I, S veya C stillerinden birine aittir. Her stil için “en çok” işaretlerinin sayısından “en az” işaretlerinin sayısı çıkarılır; −24 ile +24 arasındaki bu değer yüzdeye dönüştürülür. Ana stil, değeri en yüksek olan stildir; ikincil stil ise o da belirgin biçimde öne çıkıyorsa sayılır.",
@@ -1832,7 +1851,7 @@
   "ui": {
     "langLabel": "Dil",
     "footer": "24 soru · yaklaşık 10 dakika · doğru ya da yanlış yanıt yok",
-    "privacy": "Yanıtlarınız tarayıcınızda kalır; genel istatistik için sitenin sunucusuna yalnızca siteyi ziyaret ettiğinize ve teste başladığınıza dair kayıtlar ile çıkan profiliniz iletilir, adınız ve yanıtlarınız iletilmez. E-posta adresinizi belirtirseniz sonucunuz bu adrese gönderilir ve site sahibinin sonuç veri tabanına kaydedilir. “PDF olarak kaydet” düğmesine bastığınızda yanıtlarınız ve test tarihi, adınız ve e-posta adresiniz olmadan, sitenin sunucusuna iletilir; sunucu bunlardan özet rapor dosyasını oluşturup size geri gönderir ve hiçbir şey saklamaz.",
+    "privacy": "Yanıtlarınız tarayıcınızda kalır; genel istatistik için sitenin sunucusuna yalnızca siteyi ziyaret ettiğinize ve teste başladığınıza dair kayıtlar ile çıkan profiliniz iletilir, adınız ve yanıtlarınız iletilmez. E-posta adresinizi belirtirseniz sonucunuz bu adrese gönderilir ve site sahibinin sonuç veri tabanına kaydedilir. Ana sayfada bültene abone olursanız e-posta adresiniz ve sitenin dil sürümü aynı veri tabanına kaydedilir. “PDF olarak kaydet” düğmesine bastığınızda yanıtlarınız ve test tarihi, adınız ve e-posta adresiniz olmadan, sitenin sunucusuna iletilir; sunucu bunlardan özet rapor dosyasını oluşturup size geri gönderir ve hiçbir şey saklamaz.",
     "legal": "Manukyan Armen · Vergi kimlik numarası (INN) {inn}",
     "rights": "© {year} disc-test.org. Site ve rapor metinlerinin yazılı izin olmadan kopyalanması yasaktır.",
     "adminLink": "Yönetici paneli",
@@ -1878,6 +1897,7 @@
     "test.missing": "{n}. soru tamamlanmadı",
 
     "report.own": "Sonucunuz",
+    "report.taken": "Test tarihi: {date}",
     "report.other": "Katılımcının sonucu",
     "report.backAdmin": "← Sonuç listesine dön",
     "report.flat": "Profil dengeli: hiçbir stil belirgin biçimde öne çıkmıyor. Bu genellikle davranış esnekliği anlamına gelir, ancak bazen yanıtlardaki kararsızlığa da işaret edebilir. Ana stil, en yüksek değere göre belirlendi.",
@@ -1898,16 +1918,14 @@
     "report.communication": "Sizinle nasıl iletişim kurulmalı",
     "report.stress": "Stres altında",
     "report.environment": "İdeal ortam",
-    "report.moreLink": "DISC profilinin nasıl okunacağına dair ayrıntılar →",
-    "report.color": "DISC renginiz: {color}",
 
     "share.title": "Sonucunuzu kaydedin",
     "share.text": "Sonuç tarayıcınıza kaydedildi. Raporu daha sonra ya da başka bir cihazda açmak için bağlantıyı kopyalayın veya testi çözmenizi isteyen kişiye iletin.",
-    "share.codeAria": "Sonuç kodu",
-    "share.codeTitle": "Sonuç kodu",
     "share.copyLink": "Bağlantıyı kopyala",
-    "share.copyCode": "Kodu kopyala",
-    "share.pdf": "PDF olarak kaydet",
+    "share.profile": "Profili paylaş",
+    "share.saveProfile": "Profili kaydet",
+    "share.msg": "DISC profili: {name} ({key})",
+    "share.close": "Kapat",
     "share.pdfWait": "PDF hazırlanıyor…",
     "share.pdfFail": "PDF indirilemedi. Yazdırma penceresi açılacak; orada sayfayı PDF olarak kaydedebilirsiniz.",
     "share.restart": "Testi yeniden çöz",
@@ -1923,11 +1941,6 @@
     "share.send": "E-postama gönder",
     "share.mailtoHint": "E-posta programınız bu adrese hazırlanmış bir e-postayla açılır; size yalnızca “Gönder”e basmak kalır.",
     "share.mailtoOpened": "Sonucunuzu içeren e-posta, e-posta programınızda açıldı; {email} adresine gönderin.",
-    "share.typeTitle": "Tipinizi paylaşın",
-    "share.typeText": "Bağlantı, “{name}” profilinin herkese açık açıklamasına gider: adınız, e-posta adresiniz ya da yanıtlarınız bu bağlantıda yer almaz.",
-    "share.type": "Tipimi paylaş",
-    "share.via": "{net} üzerinden paylaş",
-    "share.typeMsg": "DISC tipim: {name} ({key}). Peki sizinki hangisi? 10 dakikalık ücretsiz testi siz de çözün.",
 
     "invite.title": "Arkadaşınızın tipi: “{name}”. Peki sizinki?",
     "invite.text": "Ücretsiz DISC testini çözün: 24 blok, yaklaşık 10 dakika, kayıt gerekmez. Kendi tipinizi ve birlikte en iyi nasıl çalışıp iletişim kuracağınızı öğrenin.",
@@ -2063,7 +2076,7 @@
     "pages.profiles.colPure": "İkincil stil yok",
 
     "cta.title": "DISC profilinizi öğrenin",
-    "cta.text": "Ücretsiz test: 24 soru, yaklaşık 10 dakika; sonuç anında ekranda ve e-postanızda.",
+    "cta.text": "Ücretsiz test: 24 soru, yaklaşık 10 dakika; sonuç anında ekranda.",
     "cta.button": "Testi çöz",
     "cta.inline": "DISC stilinizi keşfedin — 10 dakikalık ücretsiz test, kayıt gerekmez.",
     "cta.inlineProfile": "Size mi benziyor? DISC tipinizi öğrenin — 10 dakikalık ücretsiz test.",
@@ -2093,6 +2106,20 @@
     "unsub.done": "Tamamlandı: disc-test.org bu adrese artık bülten göndermeyecek.",
     "unsub.failed": "Abonelikten çıkılamadı. Tekrar deneyin ya da bize yazın: {email}.",
     "unsub.bad": "Bağlantıda abonelikten çıkma kodu yok. E-postadaki bağlantının tamamını açın ya da bize yazın: {email}.",
+    "nl.title": "Bültenimize abone olun",
+    "nl.text": "Yeni testlerden, kariyer gelişimi ve iş arama ipuçlarından haberdar olun.",
+    "nl.emailLabel": "E-posta adresiniz",
+    "nl.button": "Abone ol",
+    "nl.consent": "Bu e-posta adresine disc-test.org bültenini almayı kabul ediyorum: yeni testler, kariyer gelişimi ve iş arama ipuçları, site haberleri ve tanıtım teklifleri. İstediğiniz zaman her e-postadaki bağlantıdan abonelikten çıkabilirsiniz.",
+    "nl.consentRequired": "Bülteni almak için onay kutusunu işaretleyin.",
+    "nl.sending": "E-posta gönderiliyor…",
+    "nl.sent": "Neredeyse tamam: {email} adresine bir e-posta gönderdik. E-postayı açın ve “Aboneliği onayla” düğmesine basın; bu adım olmadan bülten gönderilmez.",
+    "nl.failed": "Abonelik oluşturulamadı. Lütfen daha sonra tekrar deneyin.",
+    "subc.button": "Aboneliği onayla",
+    "subc.wait": "Aboneliğiniz onaylanıyor…",
+    "subc.done": "Aboneliğiniz onaylandı. Bültenin her e-postasındaki bağlantıdan istediğiniz zaman abonelikten çıkabilirsiniz.",
+    "subc.bad": "Bağlantı eksik ya da süresi dolmuş: abonelik yalnızca 7 gün içinde onaylanabilir. Ana sayfadan yeniden abone olun ya da bize yazın: {email}.",
+    "subc.failed": "Abonelik onaylanamadı. Tekrar deneyin ya da bize yazın: {email}.",
     "contact.privacyNote": "Adınız, e-posta adresiniz, mesajın konusu, mesajınız ve dosyalarınız {email} adresine e-postayla gönderilir ve yalnızca size yanıt vermek için kullanılır.",
     "contact.mailtoNote": "Gönderim hizmeti henüz bağlanmadı: “Gönder” düğmesi, mesajınızın hazır olarak yer aldığı e-posta programınızı açar; eklediğiniz dosyaları ise e-postaya elle eklemeniz gerekir.",
     "contact.mailSubject": "Siteden mesaj: {name}",
@@ -2111,7 +2138,7 @@
     "pd.consentLink": "kişisel verilerin işlenmesine ilişkin onay",
     "pd.required": "Kişisel verilerin işlenmesine ilişkin onay kutusunu işaretleyin: bu onay olmadan verilerinizi kabul edemeyiz.",
     "pd.cookieAsk": "Site; ilerlemenizi, sonucunuzu ve seçtiğiniz dili tarayıcının yerel depolama alanında saklar. Onay verirseniz bir web analiz hizmeti, siteyi geliştirebilmemiz için anonimleştirilmiş ziyaret istatistiklerini ve sayfadaki hareketlerin kaydını toplar. Adınız, e-posta adresiniz ve sonucunuz analiz hizmetine aktarılmaz.",
-    "pd.cookieDetails": "Tarayıcıda saklananlar: belirttiyseniz adınız ve e-posta adresiniz; yanıtlarınız ve tamamlanmamış ilerlemeniz; son sonucunuz; seçtiğiniz dil; bu bildirimi gördüğünüze dair işaret. Bu veriler cihazınızda kalır ve site verilerini temizlediğinizde silinir. Barındırma hizmeti, isteğe ilişkin standart teknik verileri alır. Siteyi gün içinde ilk kez açtığınızda sitenin sunucusuna anonim bir ziyaret kaydı gönderilir: yalnızca sitenin dil sürümü; sunucu bu kaydı ulaştığı saatle birlikte saklar, tarayıcınız da aynı gün yeniden gönderilmemesi için tarihi hatırlar. Bu kayıtlarla siteyi kaç kişinin ziyaret ettiğini sayarız. Teste başladığınızda sitenin sunucusuna anonim bir başlangıç kaydı gönderilir: yalnızca sitenin dil sürümü. Testi tamamladığınızda genel istatistik için sitenin sunucusuna anonim bir kayıt gönderilir: çıkan profiliniz ve sitenin dil sürümü. Adınız, e-posta adresiniz ve yanıtlarınız bu kayıtta yer almaz. “PDF olarak kaydet” düğmesine bastığınızda yanıtlarınız ve test tarihi, adınız ve e-posta adresiniz olmadan, sitenin sunucusuna iletilir; sunucu bunlardan özet rapor dosyasını oluşturup size geri gönderir ve hiçbir şey saklamaz. Sonucunuzu e-postanıza gönderdiğinizde adınız, e-posta adresiniz ve yanıtlarınız sitenin sunucusuna aktarılır: sunucu size sonucunuzu içeren bir e-posta gönderir ve adınızı, e-posta adresinizi, tarihi ve sonucu site sahibinin sonuç veri tabanına kaydeder. Web analiz hizmeti şunları alır: sonuç kodu içermeyen sayfa adresi, ziyaretin geldiği kaynak, cihaz ve tarayıcı türü, sayfadaki hareketlerin anonimleştirilmiş kaydı (ad ve e-posta alanları ile sonuç bağlantısı ve kodu kayda dahil edilmez); ayrıca kendi çerezlerini yerleştirir. Bu hizmeti tarayıcı ayarlarından ya da bir izleyici engelleyiciyle engelleyebilirsiniz. Reklam amaçlı izleyiciler kullanılmaz.",
+    "pd.cookieDetails": "Tarayıcıda saklananlar: belirttiyseniz adınız ve e-posta adresiniz; yanıtlarınız ve tamamlanmamış ilerlemeniz; son sonucunuz; seçtiğiniz dil; bu bildirimi gördüğünüze dair işaret. Bu veriler cihazınızda kalır ve site verilerini temizlediğinizde silinir. Barındırma hizmeti, isteğe ilişkin standart teknik verileri alır. Siteyi gün içinde ilk kez açtığınızda sitenin sunucusuna anonim bir ziyaret kaydı gönderilir: yalnızca sitenin dil sürümü; sunucu bu kaydı ulaştığı saatle birlikte saklar, tarayıcınız da aynı gün yeniden gönderilmemesi için tarihi hatırlar. Bu kayıtlarla siteyi kaç kişinin ziyaret ettiğini sayarız. Teste başladığınızda sitenin sunucusuna anonim bir başlangıç kaydı gönderilir: yalnızca sitenin dil sürümü. Testi tamamladığınızda genel istatistik için sitenin sunucusuna anonim bir kayıt gönderilir: çıkan profiliniz ve sitenin dil sürümü. Adınız, e-posta adresiniz ve yanıtlarınız bu kayıtta yer almaz. “PDF olarak kaydet” düğmesine bastığınızda yanıtlarınız ve test tarihi, adınız ve e-posta adresiniz olmadan, sitenin sunucusuna iletilir; sunucu bunlardan özet rapor dosyasını oluşturup size geri gönderir ve hiçbir şey saklamaz. Sonucunuzu e-postanıza gönderdiğinizde adınız, e-posta adresiniz ve yanıtlarınız sitenin sunucusuna aktarılır: sunucu size sonucunuzu içeren bir e-posta gönderir ve adınızı, e-posta adresinizi, tarihi ve sonucu site sahibinin sonuç veri tabanına kaydeder. Ana sayfada bültene abone olduğunuzda e-posta adresiniz ve sitenin dil sürümü sitenin sunucusuna aktarılır: sunucu size onay bağlantısı içeren bir e-posta gönderir ve adresi aynı veri tabanına kaydeder; aboneliği onaylamazsanız adres 7 gün sonra silinir. Web analiz hizmeti şunları alır: sayfa adresi (sonuç ekranında sonuç koduyla birlikte: yanıtlarınız, test tarihi ve belirttiyseniz adınız; e-posta adresiniz dahil değildir), ziyaretin geldiği kaynak, cihaz ve tarayıcı türü, sayfadaki hareketlerin kaydı (ad ve e-posta alanları kayda dahil edilmez); ayrıca kendi çerezlerini yerleştirir. Bu hizmeti tarayıcı ayarlarından ya da bir izleyici engelleyiciyle engelleyebilirsiniz. Reklam amaçlı izleyiciler kullanılmaz.",
     "pd.cookieChange": "Çerez tercihini değiştir",
 
     "print.title": "DISC kişilik envanteri: yazdırılabilir test, cevap anahtarı, puanlama",

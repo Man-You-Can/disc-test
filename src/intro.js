@@ -5,16 +5,20 @@
 function introHTML(c){
   var L=c.L, t=c.t, esc=c.esc, KEYS=c.KEYS, colorVar=c.colorVar, progDone=c.progDone||0, lastDate=c.lastDate||'';
   var links=c.links||{}, arr=L.dir==='rtl'?'←':'→';
-  // lc — карточка вернувшегося посетителя (её собирает сама страница, в сборке её нет): прошлый результат, личные зацепки, ссылка на образец
-  // и крупная кнопка расширенного отчёта — сразу под заголовком; «Начать тест» становится неброской ссылкой «Пройти тест заново» под вводным абзацем
+  // lc — карточка вернувшегося посетителя (её собирает сама страница, в сборке её нет): прошлый результат и под ним блок расширенного отчёта,
+  // как на экране результата (заголовок, строка о самой низкой шкале, тезисы, листы образца; форму покупки страница добавляет сама, где lc.pay;
+  // без неё — крупная кнопка отчёта) — сразу под заголовком; «Начать тест» становится неброской ссылкой «Пройти тест заново» под вводным абзацем
   var lc=c.lastCard||null;
   return '<div class="eyebrow">'+t('intro.eyebrow')+'</div>'+
     '<h1>'+t('intro.h1')+'</h1>'+
-    (lc ? '<div class="lastcard" style="--k:'+colorVar(lc.k)+'"><div class="lchead">'+esc(lc.label)+
+    (lc ? '<section class="share xoffer lastcard" id="lastOffer" style="--k:'+colorVar(lc.k)+'"><div class="lchead">'+esc(lc.label)+
         '<span class="lastname"><b>'+lc.badge+' '+esc(lc.name)+'</b><button class="link" type="button" id="showLast">'+esc(lc.open)+'</button></span></div>'+
-      '<p class="lclead">'+esc(lc.lead)+'</p><ul class="xhooks">'+lc.hooks.map(function(x){ return '<li>'+esc(x)+'</li>'; }).join('')+'</ul>'+
-      '<p class="lctail">'+esc(lc.tail)+' <a href="'+esc(lc.href)+'#sample" id="lastSample">'+esc(lc.sample)+'</a></p>'+
-      '<a class="btn big" id="lastExt" href="'+esc(lc.href)+'">'+esc(lc.button)+'</a></div>' : '')+
+      '<h2>'+esc(lc.title)+'</h2><p class="xhook">'+esc(lc.hook)+'</p>'+
+      '<div class="xgrid"><ul>'+lc.list.map(function(x){ return '<li>'+esc(x)+'</li>'; }).join('')+'</ul>'+
+        (lc.thumbs ? '<div class="xside"><a class="xthumbs" id="lastSample" href="'+esc(lc.href)+'#sample" aria-label="'+esc(lc.sample)+'">'+lc.thumbs.map(function(u){ return '<img src="'+esc(u)+'" width="440" height="623" alt="" loading="lazy" decoding="async">'; }).join('')+'</a>'+
+          '<p>'+esc(lc.sample)+'</p></div>' : '')+'</div>'+
+      (lc.soon ? '<p class="xsoon">'+esc(lc.soon)+'</p>' : '')+
+      (lc.pay ? '' : '<a class="btn big" id="lastExt" href="'+esc(lc.href)+'">'+esc(lc.button)+'</a>')+'</section>' : '')+
     '<p class="lead">'+t('intro.lead')+'</p>'+
     '<div class="actions startrow'+(lc ? ' again' : '')+'">'+(lc ? '<button class="link" type="button" id="start">'+esc(lc.retake)+'</button>' : '<button class="btn big" type="button" id="start">'+t('intro.start')+'</button>')+
       '<span class="small muted">'+t('intro.startNote')+'</span>'+
@@ -33,7 +37,34 @@ function introHTML(c){
         return '<article class="stylecard" style="--k:'+colorVar(k)+'"><h3><span class="k">'+k+'</span>'+esc(L.keys[k])+' · '+esc(pr.name)+'</h3><p>'+esc(pr.summary)+'</p><div class="traits">'+st.traits.map(function(x){ return '<span>'+esc(x)+'</span>'; }).join('')+'</div>'+
           (links.profile ? '<a class="more" href="'+esc(links.profile(k))+'">'+t('pages.profile.more',{name:esc(pr.name)})+'</a>' : '')+'</article>'; }).join('')+
     '</div>'+(links.styles ? '<p class="all"><a href="'+esc(links.styles)+'">'+t('nav.styles')+' '+arr+'</a> · <a href="'+esc(links.profiles)+'">'+t('nav.profiles')+' '+arr+'</a></p>' : '')+'</section>'+
+    cvPromoHTML({P: L.content && L.content.cvPromo, esc: esc, href: links.cv, kind: 'home'})+
+    subHTML(c)+
     homeHTML(c);
+}
+/* Блок-анонс сервиса «Резюме под каждую вакансию» (/ru/cv/, с 2026-10-24, по просьбе заказчика; сейчас только русская версия — content.cvPromo):
+   метка «Новый сервис», вопрос, короткий анонс и кнопка на лендинг. kind — место на сайте: home (главная), result (экран результата),
+   profile (страницы профилей); у каждого места свой вопрос и текст, клик по кнопке — цель Метрики cv-promo-<kind>.
+   Общий для сборки (главная, страницы профилей) и страницы теста (экран результата). Без текстов или адреса — пусто. */
+function cvPromoHTML(o){
+  var P=o.P, esc=o.esc, X=P && P[o.kind];
+  if(!X || !o.href) return '';
+  return '<aside class="cvpromo no-print"><div><span class="cvtag">'+esc(P.tag)+'</span><h2>'+esc(X.h)+'</h2><p>'+esc(X.p)+'</p>'+
+    (P.note ? '<p class="cvnote">'+esc(P.note)+'</p>' : '')+'</div>'+
+    '<a class="btn" href="'+esc(o.href)+'" data-goal="cv-promo-'+o.kind+'">'+esc(P.button)+'</a></aside>';
+}
+/* Подписка на рассылку (с 2026-10-22, по просьбе заказчика): поле e-mail, «Подписаться», галочки согласия на обработку данных (c.sub.pdHtml)
+   и на рассылку. Собирает только сама страница (c.sub), в сборке формы нет. Подписка действует после подтверждения по ссылке из письма. */
+function subHTML(c){
+  var s=c.sub, t=c.t, esc=c.esc;
+  if(!s) return '';
+  return '<section class="share nlbox" id="nlBox"><h2>'+esc(t('nl.title'))+'</h2><p>'+esc(t('nl.text'))+'</p>'+
+    '<form class="form nlform" id="nlForm" autocomplete="on" novalidate><div class="nlfields">'+
+      '<div class="nlrow"><input type="email" id="nlEm" name="email" class="ym-disable-keys" autocomplete="email" inputmode="email" required maxlength="120" placeholder="'+esc(t('nl.emailLabel'))+'" aria-label="'+esc(t('nl.emailLabel'))+'" value="'+esc(s.email||'')+'">'+
+        '<button class="btn" type="submit">'+esc(t('nl.button'))+'</button></div>'+
+      (s.pdHtml ? '<label class="check"><input type="checkbox" id="nlPd" name="consent"><span>'+s.pdHtml+'</span></label>' : '')+
+      '<label class="check"><input type="checkbox" id="nlOk" name="subscribe"><span>'+esc(t('nl.consent'))+'</span></label></div>'+
+      '<p class="small sendstatus" id="nlStatus" aria-live="polite" hidden></p>'+
+    '</form></section>';
 }
 /* Текст под тестом (content.home): что вы получите, как считается результат, короткие вопросы, 16 профилей — закрывает интент «что за тест» на странице, где его проходят */
 function homeHTML(c){
@@ -49,4 +80,4 @@ function homeHTML(c){
       return '<a href="'+esc(links.profile(k))+'"><span class="pill" dir="ltr" style="--kp:var(--'+k[0].toLowerCase()+');--ks:var(--'+(k[1]||k[0]).toLowerCase()+')"><span class="p">'+k[0]+'</span>'+(k[1]?'<span class="s">'+k[1]+'</span>':'')+'</span> '+esc(pr.name)+'</a>'; }).join('')+'</p>' : '')+
     '</section>';
 }
-if (typeof module !== 'undefined' && module.exports) module.exports = introHTML;
+if (typeof module !== 'undefined' && module.exports) { module.exports = introHTML; module.exports.cvPromoHTML = cvPromoHTML; }

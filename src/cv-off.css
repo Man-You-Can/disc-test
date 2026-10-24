@@ -1,0 +1,5 @@
+/* Лендинг /cv/: неактивные кнопки скачивания — файлы примера на этом языке ещё не готовы (с 2026-10-24, английская версия).
+   Сборка добавляет эти стили к src/cv.css только на страницах, где у файла пустой адрес (build.js, cvOffCss): русская страница их не получает.
+   Большие кнопки (.btn) гасит общее правило .btn:disabled; здесь — маленькие ссылки-файлы в карточке оценки (.cvfiles). */
+.cvfiles button{font:inherit;font-size:13px;font-weight:600;padding:6px 12px;border-radius:8px;border:1px solid var(--line-strong);color:var(--ink);background:none;opacity:.45;cursor:not-allowed}
+.cvfiles button::before{content:"↓ ";color:var(--s)}

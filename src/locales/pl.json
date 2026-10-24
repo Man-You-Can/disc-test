@@ -4,7 +4,7 @@
   "name": "Polski",
   "dateLocale": "pl-PL",
   "title": "Darmowy test osobowości DISC online – wynik w 10 minut",
-  "description": "Darmowy test DISC po polsku: 24 pytania, 10 minut, bez rejestracji. Poznaj swój styl wiodący, mocne strony i obszary rozwoju. Wynik od razu i na e-mail.",
+  "description": "Darmowy test DISC po polsku: 24 pytania, 10 minut, bez rejestracji. Poznaj swój styl wiodący, mocne strony i obszary rozwoju. Wynik od razu na ekranie.",
   "brand": "Test DISC",
   "keys": { "D": "Dominacja", "I": "Wpływ", "S": "Stałość", "C": "Sumienność" },
   "short": { "D": "Wyniki i kontrola", "I": "Ludzie i entuzjazm", "S": "Wsparcie i stabilność", "C": "Dokładność i jakość" },
@@ -517,7 +517,7 @@
         },
         {
           "q": "Czy test jest naprawdę darmowy?",
-          "a": "Tak: test i wynik są bezpłatne, bez rejestracji i ukrytych opłat. Wynik pojawia się na ekranie od razu po ostatnim pytaniu; jeśli chcesz, możesz go też otrzymać e-mailem. W serwisie jest jedna płatna usługa — rozszerzony profil DISC; opisujemy ją w dziale „Usługi” i jest w pełni dobrowolna."
+          "a": "Tak: test i wynik są bezpłatne, bez rejestracji i ukrytych opłat. Wynik pojawia się na ekranie od razu po ostatnim pytaniu; możesz go zapisać jako PDF. W serwisie jest jedna płatna usługa — rozszerzony profil DISC; opisujemy ją w dziale „Usługi” i jest w pełni dobrowolna."
         },
         {
           "q": "Co oznaczają litery D, I, S, C?",
@@ -540,8 +540,8 @@
           "a": "Tak. Wyślij współpracownikom link do serwisu. Na ekranie wyniku każda osoba dostanie link i kod – poproś o ich przesłanie. W panelu administratora (link w stopce) kody trafiają do tabeli, którą można skopiować do Excela. Tabela jest przechowywana wyłącznie w twojej przeglądarce."
         },
         {
-          "q": "Dokąd trafia wynik i kto go widzi?",
-          "a": "Wynik wyświetla się na ekranie i zapisuje się w twojej przeglądarce. Jeśli na ekranie wyniku podasz imię i adres e-mail, raport przyjdzie na ten adres, a imię, adres e-mail i wynik zostaną zapisane w bazie wyników właściciela serwisu; bez twojej zgody nie są wykorzystywane do innych celów ani przekazywane osobom trzecim. Osoby postronne zobaczą twój raport tylko wtedy, gdy samodzielnie udostępnisz do niego link. Więcej na stronie „Prywatność”."
+          "q": "Gdzie zapisuje się wynik i kto go widzi?",
+          "a": "Wynik wyświetla się na ekranie i zapisuje się w twojej przeglądarce. Osoby postronne zobaczą twój raport tylko wtedy, gdy samodzielnie udostępnisz do niego link. Więcej na stronie „Prywatność”."
         },
         {
           "q": "Czy test można powtórzyć?",
@@ -572,7 +572,7 @@
       "sections": [
         {
           "h": "Po co powstał ten serwis",
-          "p": ["Chcieliśmy stworzyć test DISC, który da się zrobić w dziesięć minut, bez rejestracji i opłat, i który daje zrozumiały raport w twoim języku – taki, którym można podzielić się z zespołem. Serwis działa w czternastu językach, wynik pojawia się od razu i na życzenie przychodzi na e-mail, a dla menedżerów i działów HR jest panel, w którym wyniki uczestników trafiają do jednej tabeli."]
+          "p": ["Chcieliśmy stworzyć test DISC, który da się zrobić w dziesięć minut, bez rejestracji i opłat, i który daje zrozumiały raport w twoim języku – taki, którym można podzielić się z zespołem. Serwis działa w czternastu językach, wynik pojawia się od razu i można go zapisać jako PDF, a dla menedżerów i działów HR jest panel, w którym wyniki uczestników trafiają do jednej tabeli."]
         },
         {
           "h": "Na czym opiera się test",
@@ -635,7 +635,7 @@
         "h": "Zakup profilu rozszerzonego",
         "p": [
           "Jeśli kupujesz rozszerzony profil DISC, przetwarzamy twój adres e-mail, imię (jeśli je podasz), wynik testu, na podstawie którego powstaje raport, oraz dane zamówienia: datę, kwotę, numer i status płatności. Dane te są potrzebne, aby przygotować raport i wysłać go do ciebie, odpowiedzieć na twoje zgłoszenie i dokonać zwrotu płatności. Podstawą przetwarzania jest umowa, którą zawierasz, opłacając usługę na warunkach {offer}.",
-          "Płatność przyjmuje bank; jego nazwa jest widoczna na stronie płatności. Dane płatnicze podajesz na zabezpieczonej stronie banku: nie otrzymujemy ich ani nie przechowujemy. Bank otrzymuje kwotę i numer zamówienia oraz twój adres e-mail, na który wysyłany jest dowód zakupu.",
+          "Płatność obsługuje Prodamus, nasz operator płatności. Dane karty podajesz na zabezpieczonej stronie płatności Prodamus: nie otrzymujemy ich ani nie przechowujemy. Przekazujemy Prodamus kwotę i numer zamówienia oraz twój adres e-mail, na który wysyłany jest dowód zakupu.",
           "Raport jest generowany na serwerze działającym na nasze zlecenie i wysyłany do ciebie e-mailem z adresu {email}. Kopię raportu i dane zamówienia przechowuje właściciel serwisu: są potrzebne, aby ponownie wysłać raport, odpowiedzieć na zgłoszenie, dokonać zwrotu płatności i prowadzić ewidencję. Jeśli chcesz, abyśmy usunęli raport i dane zamówienia, napisz na {email}. Informacje o płatności, które przepisy nakazują przechowywać, są usuwane po upływie wymaganego okresu.",
           "Jeśli rozpoczniesz zakup, ale nie dokonasz płatności, przechowujemy twój adres e-mail, wynik testu i dane zamówienia przez 30 dni, a następnie je usuwamy. W tym czasie na podany adres może przyjść jedna wiadomość z przypomnieniem i linkiem do płatności. Podstawą są twoje działania zmierzające do zawarcia umowy."
         ]
@@ -664,14 +664,14 @@
           "h": "Gdzie dane są przechowywane i komu są przekazywane",
           "p": [
             "Baza wyników znajduje się na serwerze, który właściciel serwisu wynajmuje od dostawcy hostingu. E-maile wysyła usługa poczty elektronicznej. Firmy te przetwarzają dane na nasze zlecenie i wyłącznie na potrzeby działania serwisu. E-mail trafia na adres, który podajesz samodzielnie. Dane nie są przekazywane ani sprzedawane osobom trzecim do ich własnych celów.",
-            "Newsletter otrzymują tylko osoby, które zaznaczyły odrębną zgodę w formularzu wysyłki wyniku. W takim przypadku w bazie zapisywane są także zgoda, jej data i treść, a twój adres e-mail, imię i język służą do wysyłania e-maili od disc-test.org: materiałów o DISC, nowości z serwisu i ofert promocyjnych. W każdej chwili możesz zrezygnować: klikając link w dowolnej wiadomości albo pisząc na {email}.",
-            "Dostawca hostingu otrzymuje standardowe dane techniczne żądania: adres IP, typ przeglądarki, adres strony. Czcionki są przechowywane w samym serwisie. Statystyki odwiedzin zbiera system analityki internetowej: otrzymuje zanonimizowane dane o wizycie – adres strony bez kodu wyniku, źródło wejścia, typ urządzenia i przeglądarki – oraz zapis działań na stronie; pola z imieniem i adresem e-mail, link i kod wyniku są z tego zapisu wyłączone. Zbieranie danych można wyłączyć w ustawieniach przeglądarki albo za pomocą narzędzia blokującego skrypty śledzące. Reklamowe skrypty śledzące nie są używane."
+            "Newsletter otrzymują tylko osoby, które zaznaczyły odrębną zgodę – w formularzu wysyłki wyniku albo w formularzu zapisu do newslettera na stronie głównej. Po wysłaniu formularza zapisu przychodzi wiadomość z linkiem potwierdzającym: bez potwierdzenia newsletter nie jest wysyłany, a adres zostaje usunięty po 7 dniach. W bazie zapisywane są zgoda, jej data i treść, a twój adres e-mail, imię (jeśli je podano) i język służą do wysyłania e-maili od disc-test.org: materiałów o DISC, nowych testów, porad dotyczących rozwoju kariery i szukania pracy, nowości z serwisu i ofert promocyjnych. W każdej chwili możesz zrezygnować: klikając link w dowolnej wiadomości albo pisząc na {email}.",
+            "Dostawca hostingu otrzymuje standardowe dane techniczne żądania: adres IP, typ przeglądarki, adres strony. Czcionki są przechowywane w samym serwisie. Statystyki odwiedzin zbiera system analityki internetowej: otrzymuje dane o wizycie – adres strony, źródło wejścia, typ urządzenia i przeglądarki – oraz zapis działań na stronie; pola z imieniem i adresem e-mail są z tego zapisu wyłączone. Na ekranie wyniku adres strony zawiera kod wyniku: odpowiedzi, datę testu i imię, jeśli je podano – bez adresu e-mail. Zbieranie danych można wyłączyć w ustawieniach przeglądarki albo za pomocą narzędzia blokującego skrypty śledzące. Reklamowe skrypty śledzące nie są używane."
           ]
         },
         {
           "h": "Podstawy przetwarzania i okresy przechowywania",
           "p": [
-            "Wynik wysłany na e-mail przetwarzamy na podstawie twojej zgody i przechowujemy przez trzy lata od daty wysyłki albo do wycofania zgody. Dane do newslettera – na podstawie odrębnej zgody, do czasu rezygnacji z subskrypcji. Wiadomości z formularza kontaktowego – na podstawie zgody, przez rok od udzielenia odpowiedzi.",
+            "Wynik wysłany na e-mail przetwarzamy na podstawie twojej zgody i przechowujemy przez trzy lata od daty wysyłki albo do wycofania zgody. Dane do newslettera – na podstawie odrębnej zgody, do czasu rezygnacji z subskrypcji; adres, którego subskrypcja nie została potwierdzona – przez 7 dni. Wiadomości z formularza kontaktowego – na podstawie zgody, przez rok od udzielenia odpowiedzi.",
             "Gdy okres przechowywania upłynie albo wycofasz zgodę, dane są usuwane z bazy. Z kopii zapasowych znikają w miarę odświeżania tych kopii, nie później niż po sześciu miesiącach."
           ]
         },
@@ -711,9 +711,9 @@
         "h": "Zakup profilu rozszerzonego",
         "p": [
           "Jeśli kupujesz rozszerzony profil DISC, przetwarzamy twój adres e-mail, imię (jeśli je podasz), wynik testu, na podstawie którego powstaje raport, oraz dane zamówienia: datę, kwotę, numer i status płatności. Dane te są potrzebne, aby przygotować raport i wysłać go do ciebie, odpowiedzieć na twoje zgłoszenie i dokonać zwrotu płatności. Podstawą przetwarzania jest umowa, którą zawierasz, opłacając usługę na warunkach {offer}; odrębna zgoda nie jest do tego wymagana.",
-          "Płatność przyjmuje bank; jego nazwa jest widoczna na stronie płatności. Dane płatnicze podajesz na zabezpieczonej stronie banku: nie otrzymujemy ich ani nie przechowujemy. Bank otrzymuje kwotę i numer zamówienia oraz twój adres e-mail, na który wysyłany jest dowód zakupu.",
+          "Płatność obsługuje Prodamus, nasz operator płatności. Dane karty podajesz na zabezpieczonej stronie płatności Prodamus: nie otrzymujemy ich ani nie przechowujemy. Przekazujemy Prodamus kwotę i numer zamówienia oraz twój adres e-mail, na który wysyłany jest dowód zakupu.",
           "Raport jest generowany na serwerze serwisu i wysyłany do ciebie e-mailem z adresu {email}. Gotowy raport nie jest przechowywany na serwerze: w razie potrzeby generujemy go ponownie. Dane zamówienia przechowujemy przez pięć lat od dnia płatności – są potrzebne, aby ponownie wysłać raport, odpowiedzieć na zgłoszenie, dokonać zwrotu płatności i prowadzić ewidencję. Informacje o płatności, które przepisy nakazują przechowywać dłużej, są usuwane po upływie wymaganego okresu.",
-          "Jeśli rozpoczniesz zakup, ale nie dokonasz płatności, przechowujemy twój adres e-mail, wynik testu i dane zamówienia przez 30 dni, a następnie je usuwamy. W tym czasie na podany adres może przyjść jedna wiadomość z przypomnieniem i linkiem do płatności. Podstawą są twoje działania zmierzające do zawarcia umowy. Dopóki profilu rozszerzonego nie można zamówić po polsku, prośbę o powiadomienie wysłaną przez formularz kontaktowy traktujemy jak każdą inną wiadomość z tego formularza; informacja o twojej zgodzie jest oznaczana jako zgłoszenie dotyczące profilu rozszerzonego."
+          "Jeśli rozpoczniesz zakup, ale nie dokonasz płatności, przechowujemy twój adres e-mail, wynik testu i dane zamówienia przez 30 dni, a następnie je usuwamy. W tym czasie na podany adres może przyjść jedna wiadomość z przypomnieniem i linkiem do płatności. Podstawą są twoje działania zmierzające do zawarcia umowy."
         ]
       }
     },
@@ -727,7 +727,8 @@
           "h": "Cele przetwarzania i zakres danych",
           "p": [
             "Formularz „Otrzymaj wynik e-mailem”: imię, adres e-mail, wersja językowa serwisu, data wykonania testu, odpowiedzi i wynik testu DISC. Cel: wysłanie mi e-maila z wynikiem testu oraz przechowywanie wyniku, aby można było wysłać go ponownie i odpowiedzieć na moje zgłoszenia.",
-            "Formularz kontaktowy: imię, adres e-mail, treść wiadomości i załączone pliki. Cel: rozpatrzenie mojego zgłoszenia i udzielenie na nie odpowiedzi."
+            "Formularz kontaktowy: imię, adres e-mail, treść wiadomości i załączone pliki. Cel: rozpatrzenie mojego zgłoszenia i udzielenie na nie odpowiedzi.",
+            "Formularz zapisu do newslettera na stronie głównej: adres e-mail i wersja językowa serwisu. Cel: wysłanie mi wiadomości z linkiem do potwierdzenia subskrypcji oraz prowadzenie listy subskrybentów newslettera."
           ]
         },
         {
@@ -745,7 +746,7 @@
         {
           "h": "Okres obowiązywania zgody",
           "p": [
-            "Zgoda obowiązuje przez trzy lata od daty wysłania formularza „Otrzymaj wynik e-mailem” oraz przez rok od udzielenia odpowiedzi na zgłoszenie z formularza kontaktowego albo do czasu jej wycofania."
+            "Zgoda obowiązuje przez trzy lata od daty wysłania formularza „Otrzymaj wynik e-mailem”, przez rok od udzielenia odpowiedzi na zgłoszenie z formularza kontaktowego oraz – w przypadku formularza zapisu do newslettera – do czasu rezygnacji z subskrypcji (jeśli subskrypcja nie zostanie potwierdzona – przez 7 dni) albo do czasu jej wycofania."
           ]
         },
         {
@@ -777,11 +778,11 @@
       "sections": [
         {
           "h": "Jak go otrzymać",
-          "p": ["Profil rozszerzony nie jest jeszcze dostępny po polsku: na stronie raportu możesz poprosić o powiadomienie, a my damy znać e-mailem, gdy tylko będzie można go zamówić. Po zamówieniu profil rozszerzony wysyłamy e-mailem na adres podany przy płatności, nie później niż 24 godziny po dokonaniu płatności."]
+          "p": ["Profil rozszerzony przychodzi e-mailem na adres podany przy płatności od razu po jej dokonaniu."]
         },
         {
           "h": "Co pozostaje bezpłatne",
-          "p": ["Sam test, wynik na ekranie i e-mail z wynikiem, strony szesnastu profili oraz wersja testu w PDF do wydruku pozostają bezpłatne i nie wymagają rejestracji. Profil rozszerzony kupujesz tylko wtedy, gdy chcesz."]
+          "p": ["Sam test, wynik na ekranie i raport podstawowy w PDF, strony szesnastu profili oraz wersja testu w PDF do wydruku pozostają bezpłatne i nie wymagają rejestracji. Profil rozszerzony kupujesz tylko wtedy, gdy chcesz."]
         },
         {
           "h": "Pytania dotyczące usługi",
@@ -794,8 +795,8 @@
       "description": "Regulamin sprzedaży płatnej usługi „Rozszerzony profil DISC” w serwisie disc-test.org: cena, płatność i dostarczenie, zwroty, prawa do materiałów.",
       "h1": "Regulamin sprzedaży",
       "linkText": "regulaminu sprzedaży",
-      "edition": "Wersja z 9 października 2026 r. Tłumaczenie na język polski opublikowano 11 października 2026 r.",
-      "note": "Niniejszy tekst jest tłumaczeniem na język polski oryginalnej oferty opublikowanej pod adresem {original}. W razie rozbieżności między tekstami pierwszeństwo ma oryginał – z wyjątkiem ceny: w polskiej wersji Serwisu obowiązuje cena podana w punkcie 3.1. Profil rozszerzony nie jest jeszcze dostępny po polsku: na razie nie można go zamówić i nie są pobierane żadne płatności.",
+      "edition": "Wersja z 22 października 2026 r. Tłumaczenie na język polski zaktualizowano 22 października 2026 r.",
+      "note": "Niniejszy tekst jest tłumaczeniem na język polski oryginalnej oferty opublikowanej pod adresem {original}. W razie rozbieżności między tekstami pierwszeństwo ma oryginał – z wyjątkiem ceny i sposobu płatności: w polskiej wersji Serwisu obowiązują rozdziały 1 i 3 niniejszego tłumaczenia.",
       "seller": "przedsiębiorca indywidualny Manukyan Armen, numer identyfikacji podatkowej (INN) {inn}",
       "lead": "Niniejszy regulamin (dalej: Regulamin) jest oficjalną propozycją (ofertą publiczną) zawarcia umowy o świadczenie płatnej usługi „Rozszerzony profil DISC” na warunkach określonych poniżej. Ofertę składa {seller} (dalej: Usługodawca). Opłacenie usługi oznacza pełną i bezwarunkową akceptację tych warunków (przyjęcie oferty).",
       "sections": [
@@ -808,7 +809,7 @@
             "Test – bezpłatny kwestionariusz DISC dostępny w Serwisie.",
             "Profil Rozszerzony – bardziej szczegółowa analiza profilu DISC Klienta, przygotowana przez Usługodawcę w formie elektronicznej na podstawie wypełnionego przez Klienta Testu.",
             "Usługa – przygotowanie Profilu Rozszerzonego i przesłanie go Klientowi.",
-            "Bank – instytucja kredytowa, za pośrednictwem której Klient opłaca Usługę; jej nazwa jest widoczna na stronie płatności."
+            "Operator Płatności – Prodamus, platforma płatnicza, na której zabezpieczonej stronie Klient opłaca Usługę."
           ]
         },
         {
@@ -823,10 +824,10 @@
         {
           "h": "3. Cena i płatność",
           "p": [
-            "3.1. Cena Usługi, wyrażona w dolarach amerykańskich, wynosi {price}. Cena jest ostateczna: Klient nie ponosi żadnych dodatkowych opłat na rzecz Usługodawcy.",
-            "3.2. Klient opłaca Usługę w całości przed jej wykonaniem, jedną z bezgotówkowych metod płatności wskazanych na stronie płatności. Płatność przyjmuje Bank.",
-            "3.3. Usługę uznaje się za opłaconą z chwilą otrzymania przez Usługodawcę potwierdzenia płatności od Banku.",
-            "3.4. Dane płatnicze Klient podaje na zabezpieczonej stronie Banku. Usługodawca nie otrzymuje tych danych ani ich nie przechowuje.",
+            "3.1. Cena Usługi, wyrażona w dolarach amerykańskich, wynosi {price}. W ciągu 60 minut od wypełnienia testu w Serwisie Usługa jest oferowana w cenie specjalnej, wyrażonej w dolarach amerykańskich, w wysokości {offerPrice}; pozostały czas jest podany w Serwisie obok ceny, a ponowne wypełnienie testu nie wydłuża tego terminu. Cena, po której złożono zamówienie, jest widoczna na stronie płatności i pozostaje przypisana do tego zamówienia. Cena jest ostateczna: Klient nie ponosi żadnych dodatkowych opłat na rzecz Usługodawcy.",
+            "3.2. Klient opłaca Usługę w całości przed jej wykonaniem, kartą płatniczą lub inną metodą płatności elektronicznej dostępną na stronie płatności. Płatność przyjmuje Operator Płatności.",
+            "3.3. Usługę uznaje się za opłaconą z chwilą otrzymania przez Usługodawcę potwierdzenia płatności od Operatora Płatności.",
+            "3.4. Dane karty Klient podaje na zabezpieczonej stronie Operatora Płatności. Usługodawca nie otrzymuje tych danych ani ich nie przechowuje.",
             "3.5. Po dokonaniu płatności dowód zakupu w formie elektronicznej jest wysyłany na adres e-mail podany przez Klienta przy płatności.",
             "3.6. Usługodawca może zmienić cenę Usługi. Nowa cena obowiązuje od chwili jej opublikowania w Serwisie i nie dotyczy zamówień już opłaconych."
           ]
@@ -835,7 +836,7 @@
           "h": "4. Sposób świadczenia Usługi",
           "p": [
             "4.1. Aby skorzystać z Usługi, Klient wypełnia Test w Serwisie, podaje adres e-mail i opłaca Usługę. Profil Rozszerzony jest przygotowywany na podstawie tego wyniku Testu, z którym Klient przeszedł do płatności.",
-            "4.2. Usługodawca wysyła Profil Rozszerzony na podany adres nie później niż w ciągu 24 godzin od opłacenia Usługi (punkt 3.3). Zwykle wiadomość dociera wcześniej; 24 godziny to termin maksymalny.",
+            "4.2. Usługodawca wysyła Profil Rozszerzony na podany adres nie później niż w ciągu 24 godzin od opłacenia Usługi (punkt 3.3). Zwykle wiadomość dociera zaraz po płatności; 24 godziny to termin maksymalny.",
             "4.3. Usługę uznaje się za wykonaną z chwilą wysłania Profilu Rozszerzonego. Jeżeli w ciągu trzech dni kalendarzowych od tej chwili Klient nie zgłosi wad, Usługę uznaje się za przyjętą. Protokołu wykonania usługi nie sporządza się.",
             "4.4. Jeżeli wiadomość nie dotarła, Klient powinien sprawdzić folder ze spamem i napisać do Usługodawcy na adres {email}: Profil Rozszerzony zostanie wysłany ponownie.",
             "4.5. Klient odpowiada za poprawność podanego przez siebie adresu e-mail."
@@ -847,8 +848,8 @@
             "5.1. Klient może zrezygnować z Usługi w dowolnej chwili przed wysłaniem mu Profilu Rozszerzonego. W takim przypadku płatność jest zwracana w całości.",
             "5.2. Jeżeli Profil Rozszerzony nie zostanie wysłany w terminie określonym w punkcie 4.2, Klient może zażądać zwrotu całej płatności.",
             "5.3. Jeżeli otrzymany Profil Rozszerzony ma wady (wiadomość lub plik się nie otwiera, zawiera wynik innej osoby, treść nie odpowiada opisowi Usługi w Serwisie), Usługodawca usuwa je w ciągu trzech dni roboczych od zgłoszenia Klienta. Jeżeli wada nie zostanie usunięta w tym terminie, płatność jest zwracana w całości.",
-            "5.4. Po należytym wykonaniu Usługi płatność nie podlega zwrotowi. To, że Klient nie zgadza się z treścią opisu swojego profilu, nie stanowi wady Usługi.",
-            "5.5. Aby otrzymać zwrot, Klient wysyła wniosek na adres {email}, podając adres e-mail użyty przy płatności, datę i kwotę płatności oraz powód zwrotu.",
+            "5.4. Gwarancja zwrotu: w ciągu siedmiu dni kalendarzowych od dnia płatności Klient może bez podawania przyczyny zażądać pełnego zwrotu płatności, także po otrzymaniu Profilu Rozszerzonego. Po upływie tego terminu płatność za Usługę wykonaną należycie nie podlega zwrotowi; to, że Klient nie zgadza się z treścią opisu swojego profilu, nie stanowi wady Usługi.",
+            "5.5. Aby otrzymać zwrot, Klient wysyła wniosek na adres {email}, podając adres e-mail użyty przy płatności, datę i kwotę płatności oraz powód zwrotu; przy zwrocie na podstawie punktu 5.4 podanie powodu nie jest wymagane.",
             "5.6. Usługodawca odpowiada na wniosek w ciągu trzech dni roboczych. Pieniądze są zwracane tą samą metodą, którą dokonano płatności, nie później niż w terminie dziesięciu dni kalendarzowych od otrzymania wniosku; termin zaksięgowania zwrotu zależy od banku Klienta.",
             "5.7. Postanowienia niniejszego rozdziału nie ograniczają praw Klienta wynikających z przepisów o ochronie konsumentów."
           ]
@@ -876,7 +877,7 @@
           "h": "8. Dane osobowe",
           "p": [
             "8.1. Aby wykonać Usługę, Usługodawca przetwarza adres e-mail Klienta, imię (jeśli zostało podane), wynik Testu oraz informacje o płatności, z wyłączeniem danych karty płatniczej. Podstawą przetwarzania jest wykonanie umowy, której stroną jest Klient.",
-            "8.2. Dane są przekazywane wyłącznie Bankowi – w celu przyjęcia płatności i wysłania dowodu zakupu – oraz dostawcom usług niezbędnych do przygotowania i wysłania Profilu Rozszerzonego, a także w przypadkach przewidzianych przepisami prawa.",
+            "8.2. Dane są przekazywane wyłącznie Operatorowi Płatności – w celu przyjęcia płatności i wysłania dowodu zakupu – oraz dostawcom usług niezbędnych do przygotowania i wysłania Profilu Rozszerzonego, a także w przypadkach przewidzianych przepisami prawa.",
             "8.3. Więcej o przetwarzaniu danych można przeczytać na stronie „{privacy}”."
           ]
         },
@@ -906,11 +907,12 @@
       "h1": "Zasady zwrotu płatności",
       "linkText": "zasadach zwrotu płatności",
       "lead": "W skrócie: kiedy i jak można odzyskać pieniądze za rozszerzony profil DISC. Zasady te stanowią część {offer} (rozdział 5).",
-      "note": "Niniejszy tekst jest tłumaczeniem na język polski oryginalnych zasad zwrotu opublikowanych pod adresem {original}. W razie rozbieżności między tekstami pierwszeństwo ma oryginał. Profil rozszerzony nie jest jeszcze dostępny po polsku: na razie nie można go zamówić i nie są pobierane żadne płatności.",
+      "note": "Niniejszy tekst jest tłumaczeniem na język polski oryginalnych zasad zwrotu opublikowanych pod adresem {original}. W razie rozbieżności między tekstami pierwszeństwo ma oryginał.",
       "sections": [
         {
           "h": "Kiedy zwracamy całą kwotę",
           "ul": [
+            "Gdy profil rozszerzony ci nie odpowiada: w ciągu 7 dni od płatności zwracamy pieniądze bez podawania przyczyny.",
             "Gdy zrezygnujesz z usługi, zanim wyślemy ci profil rozszerzony.",
             "Gdy profil rozszerzony nie zostanie wysłany w ciągu 24 godzin od płatności.",
             "Gdy otrzymany profil rozszerzony ma wadę (wiadomość lub plik się nie otwiera, zawiera wynik innej osoby, treść nie odpowiada opisowi usługi w serwisie), a my nie usuniemy jej w ciągu trzech dni roboczych od twojego zgłoszenia."
@@ -918,12 +920,12 @@
         },
         {
           "h": "Kiedy płatność nie podlega zwrotowi",
-          "p": ["Jeśli profil rozszerzony został wysłany w terminie i odpowiada opisowi, usługę uznaje się za wykonaną, a płatność nie podlega zwrotowi. To, że nie zgadzasz się z treścią opisu swojego profilu, nie jest wadą usługi."]
+          "p": ["Jeśli od płatności minęło więcej niż 7 dni, a profil rozszerzony został wysłany w terminie i odpowiada opisowi, usługę uznaje się za wykonaną, a płatność nie podlega zwrotowi. To, że nie zgadzasz się z treścią opisu swojego profilu, nie jest wadą usługi."]
         },
         {
           "h": "Jak złożyć wniosek o zwrot",
           "p": ["Napisz na {email} i podaj:"],
-          "ul": ["adres e-mail podany przy płatności;", "datę i kwotę płatności;", "powód zwrotu."]
+          "ul": ["adres e-mail podany przy płatności;", "datę i kwotę płatności;", "powód zwrotu (przez 7 dni od płatności można go nie podawać)."]
         },
         {
           "h": "Terminy",
@@ -939,13 +941,28 @@
         }
       ]
     },
+    "extendedMail": {
+      "subject": "Twój rozszerzony raport DISC: {label}",
+      "intro": "Dziękujemy za zakup. Twój rozszerzony raport DISC jest gotowy. Przygotowaliśmy go dla profilu:",
+      "attached": "Raport rozszerzony jest w załączniku do tego e-maila, w pliku PDF.",
+      "how": "Raport ma 13 rozdziałów. Zacznij od rozdziału 1: wyjaśnia, jak czytać pozostałe.",
+      "help": "Jeśli plik się nie otwiera albo coś w raporcie wydaje ci się nie tak, po prostu odpowiedz na tę wiadomość.",
+      "inviteTitle": "Zaproś do testu znajomych, współpracowników i bliskich",
+      "invite": "Rozdział 8 raportu mówi, jak rozmawiać z przedstawicielami każdego stylu. Styl osób wokół siebie poznasz, jeśli zaprosisz je do testu: jest bezpłatny i zajmuje około 10 minut. Kto zna styl rozmówcy, łatwiej się z nim porozumiewa.",
+      "inviteLink": "Link do testu, który możesz przesłać dalej:",
+      "footer": "Otrzymujesz tę wiadomość, ponieważ opłacono usługę „Rozszerzony profil DISC” w serwisie disc-test.org na ten adres. Raport jest imienny i przeznaczony wyłącznie do użytku własnego."
+    },
     "product": {
       "title": "Rozszerzony raport DISC – 13 rozdziałów o twoim wyniku",
-      "description": "Rozszerzony raport DISC na podstawie twojego wyniku: skala po skali, pięć ćwiczeń, plan na 30 dni. PDF na e-mail, {price} USD. Wkrótce po polsku.",
+      "description": "Rozszerzony raport DISC na podstawie twojego wyniku: skala po skali, pięć ćwiczeń, plan na 30 dni i karta dla współpracowników. PDF na e-mail, {price} USD.",
       "h1": "Rozszerzony raport DISC",
       "lead": "Raport podstawowy, który dostajesz po teście, odpowiada na pytanie „jakim jestem typem?”. Raport rozszerzony – na kolejne: „co mam z tym zrobić?”. Powstaje na podstawie twoich odpowiedzi: z twoimi liczbami, dla twojego profilu, z twoim imieniem na każdej stronie.",
       "facts": ["13 rozdziałów", "około 28 stron A4", "trzy karty pracy", "PDF na twój e-mail"],
       "more": "Co zawiera raport rozszerzony",
+      "sampleTitle": "Tak wygląda raport",
+      "sampleNote": "Cztery strony raportu przygotowanego dla fikcyjnej osoby z profilem Inspirator. W twoim raporcie będą twoje imię, twoje liczby i tekst dla twojego profilu. Kliknij lub dotknij strony, żeby ją powiększyć.",
+      "sampleAlt": ["Strona rozszerzonego raportu DISC: okładka z profilem i spis 13 rozdziałów", "Strona rozszerzonego raportu DISC: rozdział „Twój profil w szczegółach” z czterema skalami i ich znaczeniem", "Strona rozszerzonego raportu DISC: rozdział „Komunikacja z każdym z czterech stylów”", "Strona rozszerzonego raportu DISC: karta pracy „Plan na 30 dni”"],
+      "sampleCaption": ["Okładka i spis treści", "Rozdział 2: twoje skale", "Rozdział 8: rozmowa z każdym stylem", "Rozdział 11: plan na 30 dni"],
       "forTitle": "Komu się przyda",
       "for": [
         "Osobom, które chcą zrozumieć swoje liczby: co oznacza każda z czterech skal, skąd wzięła się nazwa profilu i co zrobić z najniższą skalą.",
@@ -976,35 +993,94 @@
         ["Podstawa", "Opis profilu", "Twoje liczby: skala po skali, dwie warstwy odpowiedzi, najniższa skala"],
         ["Objętość", "Krótko o każdym temacie", "13 rozdziałów, około 28 stron"],
         ["Praktyka", "Ogólne wskazówki", "Pięć ćwiczeń, plan na 30 dni, karta „Najważniejsze na jednej stronie”"],
-        ["Dla innych", "Link „Udostępnij swój typ”", "Karta „Jak ze mną pracować” dla przełożonego i współpracowników"],
+        ["Dla innych", "Link do Twojego wyniku", "Karta „Jak ze mną pracować” dla przełożonego i współpracowników"],
         ["Cena", "Bezpłatnie", "{price} USD"]
       ],
-      "compareNote": "Test, wynik na ekranie, e-mail z wynikiem i raport podstawowy w PDF pozostają bezpłatne. Raport rozszerzony to propozycja dla chętnych.",
+      "compareNote": "Test, wynik na ekranie i raport podstawowy w PDF pozostają bezpłatne. Raport rozszerzony to propozycja dla chętnych.",
       "howTitle": "Jak otrzymać raport",
       "how": [
         "Zrób bezpłatny test: 24 pytania, około 10 minut. Jeśli masz go już za sobą, nie musisz go powtarzać – raport powstaje na podstawie gotowego wyniku.",
-        "Poproś o powiadomienie. Raport rozszerzony nie jest jeszcze dostępny po polsku; napiszemy do ciebie, gdy tylko będzie można go zamówić.",
-        "Po zamówieniu raport przyjdzie e-mailem jako załącznik PDF, nie później niż 24 godziny po płatności."
+        "Opłać raport na zabezpieczonej stronie płatności Prodamus, naszego operatora płatności.",
+        "Raport przyjdzie e-mailem jako załącznik PDF od razu po płatności."
       ],
       "faqTitle": "Pytania i odpowiedzi",
       "faq": [
         { "q": "Czy raport jest pisany specjalnie dla mnie, czy to ogólny tekst?", "a": "Raport powstaje na podstawie twoich odpowiedzi. Tekst jest napisany dla twojego profilu – jednego z szesnastu. Cały rozdział 2 i fragmenty rozdziałów 3, 5, 11, 12 i 13 zależą od twoich liczb: procentów na czterech skalach, liczby zaznaczeń „najbardziej” i „najmniej” oraz najniższej skali. Na każdej stronie jest twoje imię." },
         { "q": "W jakiej formie przyjdzie raport?", "a": "Jako plik PDF w załączniku do e-maila, około 28 stron A4. Wygodnie czyta się go na ekranie i dobrze wygląda w druku; każda z trzech kart pracy mieści się na jednej stronie." },
-        { "q": "W jakim języku jest raport?", "a": "Na razie raport jest dostępny tylko po rosyjsku. Poproś o powiadomienie, a napiszemy do ciebie, gdy tylko będzie można zamówić go po polsku." },
+        { "q": "W jakim języku jest raport?", "a": "Po polsku. Raport napisano od razu po polsku, z myślą o czytelniku w Polsce – to nie jest tłumaczenie." },
         { "q": "Czy to diagnoza albo ocena zdolności?", "a": "Nie. Raport opisuje styl zachowania na podstawie twoich odpowiedzi. Nie stawia diagnoz, nie mierzy inteligencji i nie przewiduje sukcesu." },
-        { "q": "Czy mogę odzyskać pieniądze?", "a": "O tym, kiedy i jak zwracamy pieniądze, przeczytasz w {refund}." }
+        { "q": "Czy mogę odzyskać pieniądze?", "a": "Tak. Jeśli raport ci nie odpowiada, napisz na {email} w ciągu 7 dni od płatności – zwrócimy całą kwotę bez pytania o powód. Pozostałe przypadki i sposób zwrotu opisujemy w {refund}." }
       ],
       "priceLabel": "Cena",
       "price": "{price} USD",
       "docs": "Usługa nosi nazwę „Rozszerzony profil DISC” i jest świadczona na podstawie {offer}; o tym, kiedy i jak zwracamy pieniądze, przeczytasz w {refund}.",
       "buy": {
         "testTitle": "Raport powstaje na podstawie wyniku testu",
-        "testText": "Najpierw zrób bezpłatny test: 24 pytania, około 10 minut. Wynik i raport podstawowy zobaczysz od razu. Raport rozszerzony nie jest jeszcze dostępny po polsku; gdy będziesz już mieć wynik, na tej stronie możesz poprosić o powiadomienie.",
+        "testText": "Najpierw zrób bezpłatny test: 24 pytania, około 10 minut. Wynik i raport podstawowy zobaczysz od razu.",
         "testButton": "Zrób test",
         "orderTitle": "Raport przygotujemy na podstawie twojego wyniku z {date}",
-        "orderText": "Raport rozszerzony nie jest jeszcze dostępny po polsku. Poproś o powiadomienie – napiszemy na twój e-mail, gdy tylko będzie można go zamówić.",
-        "orderButton": "Powiadom mnie o dostępności",
-        "orderMsg": "Chcę otrzymać rozszerzony raport DISC po polsku. Proszę o wiadomość, gdy będzie można go zamówić.\n\nMój wynik: {link}"
+        "orderText": "Płatność online jest chwilowo niedostępna. Zostaw kontakt – napiszemy e-mailem, gdy tylko znów zacznie działać.",
+        "orderButton": "Zostaw kontakt",
+        "orderMsg": "Chcę kupić rozszerzony raport DISC. Proszę o wiadomość, gdy płatność znów będzie możliwa.\n\nMój wynik: {link}"
+      },
+      "pay": {
+        "title": "Raport przygotujemy na podstawie twojego wyniku z {date}",
+        "text": "Raport przyjdzie e-mailem od razu po płatności, jako załącznik PDF. Dowód zakupu wyślemy na ten sam adres.",
+        "emailLabel": "E-mail, na który wyślemy raport w PDF",
+        "emailPlaceholder": "Wpisz swój e-mail",
+        "button": "Kup",
+        "guarantee": "Raport ci nie odpowiada? Przez 7 dni zwrócimy pieniądze bez pytań.",
+        "offer": {
+          "regular": "Cena regularna",
+          "cta": "Kup teraz za {offerPrice} USD",
+          "note": "Cena specjalna przez godzinę po teście, potem {price} USD",
+          "left": "Zostało",
+          "expired": "Minęła godzina od testu: raport kosztuje teraz {price} USD. Kliknij „Kup” jeszcze raz."
+        },
+        "note": "Klikając „Kup”, akceptujesz warunki {offer}. Płacisz w dolarach amerykańskich na zabezpieczonej stronie Prodamus: dane karty podajesz tam, a nie w tym serwisie. Na wyciągu z konta płatność może być widoczna jako simpleway.by.",
+        "badEmail": "Sprawdź adres e-mail: na niego wyślemy raport i dowód zakupu.",
+        "wait": "Otwieramy stronę płatności…",
+        "error": "Nie udało się otworzyć strony płatności. Spróbuj ponownie za kilka minut albo napisz do nas na {email}.",
+        "how": [
+          "Zrób bezpłatny test: 24 pytania, około 10 minut. Jeśli masz go już za sobą, nie musisz go powtarzać – raport powstaje na podstawie gotowego wyniku.",
+          "Wpisz adres e-mail i kliknij „Kup”. Płacisz w dolarach amerykańskich na zabezpieczonej stronie Prodamus, naszego operatora płatności; ta strona jest po angielsku. Na wyciągu z konta płatność może być widoczna jako simpleway.by – pod tą nazwą działa bePaid, firma, która obsługuje płatności kartą dla Prodamus.",
+          "Raport przyjdzie e-mailem od razu po płatności, jako załącznik PDF. Dowód zakupu wyślemy na ten sam adres."
+        ],
+        "thanks": {
+          "title": "Dziękujemy za zakup – Rozszerzony raport DISC",
+          "description": "Płatność za rozszerzony raport DISC: kiedy i dokąd przyjdzie raport i co zrobić, jeśli e-mail nie dotarł.",
+          "h1": "Dziękujemy za zakup",
+          "lead": "Raport przyjdzie zaraz na adres e-mail podany przy płatności, jako załącznik PDF.",
+          "leadEmail": "Raport przyjdzie zaraz na adres {email}, jako załącznik PDF.",
+          "order": "Numer zamówienia: {order}",
+          "statusWait": "Czekamy na potwierdzenie płatności od Prodamus.",
+          "statusPaid": "Płatność otrzymana. Raport jest przygotowywany.",
+          "statusSent": "Raport został wysłany. Sprawdź skrzynkę odbiorczą.",
+          "nextTitle": "Co dalej",
+          "next": ["E-mail przyjdzie z adresu {email}; temat zaczyna się od słów „Twój rozszerzony raport DISC”.", "Dowód zakupu przyjdzie w osobnym e-mailu od bePaid, firmy, która obsługuje płatności kartą dla Prodamus. Na wyciągu z konta płatność może być widoczna jako simpleway.by.", "Raport ma 13 rozdziałów. Zacznij od rozdziału 1: wyjaśnia, jak czytać pozostałe."],
+          "helpTitle": "Jeśli e-mail nie dotarł",
+          "help": ["Sprawdź folder ze spamem i zakładki w rodzaju „Oferty”.", "Jeśli e-maila nadal nie ma, napisz do nas na {email} albo przez formularz „{contact}” i podaj numer zamówienia. Wyślemy raport ponownie."],
+          "back": "Wróć do serwisu"
+        },
+        "fail": {
+          "title": "Płatność nie powiodła się – Rozszerzony raport DISC",
+          "description": "Płatność za rozszerzony raport DISC nie powiodła się: co możesz zrobić i jak się z nami skontaktować.",
+          "h1": "Płatność nie powiodła się",
+          "lead": "Twoje zamówienie jest zapisane; raport nie został jeszcze wysłany.",
+          "order": "Numer zamówienia: {order}",
+          "tryTitle": "Co możesz zrobić",
+          "try": ["Sprawdź dane karty i upewnij się, że karta obsługuje płatności internetowe i zagraniczne.", "Spróbuj zapłacić inną kartą albo inną metodą płatności.", "Spróbuj ponownie za kilka minut."],
+          "button": "Spróbuj ponownie",
+          "charged": "Jeśli pieniądze mimo to zostały pobrane, napisz do nas na {email} albo przez formularz „{contact}” i podaj numer zamówienia. Sprawdzimy to i odpowiemy w ciągu trzech dni roboczych."
+        },
+        "remind": {
+          "subject": "Twój rozszerzony raport DISC czeka na płatność",
+          "intro": "W serwisie {site} rozpoczęto zakup rozszerzonego raportu DISC, ale płatność nie została dokończona. Zamówienie jest zapisane: raport przygotujemy na podstawie twojego wyniku, dla tego profilu:",
+          "price": "Cena: {price} USD. Po płatności raport przyjdzie na ten adres jako załącznik PDF, a dowód zakupu – w osobnym e-mailu.",
+          "button": "Dokończ płatność",
+          "valid": "Link otwiera zabezpieczoną stronę płatności Prodamus i jest ważny do {date}.",
+          "footer": "Wysyłamy tę wiadomość tylko raz, ponieważ w serwisie {site} jest zamówienie (nr {order}) z tym adresem. Jeśli raport nie jest ci już potrzebny albo nie składano tego zamówienia, nic nie musisz robić: zamówienie zostanie automatycznie anulowane i nie dostaniesz w tej sprawie żadnych innych wiadomości."
+        }
       },
       "pdf": {
         "lead": "Raport podstawowy mówi, jakim jesteś typem. Raport rozszerzony – co z tym zrobić.",
@@ -1015,26 +1091,45 @@
           ["3", "karty pracy"]
         ],
         "list": ["Co oznaczają liczby w twoim profilu", "Jak pracować z osobami o innych profilach", "Wskazówki, jak działać skuteczniej"],
-        "where": "Więcej informacji:"
+        "sheets": [2, 4],
+        "where": "Więcej informacji i zamówienie:"
       },
       "block": {
         "eyebrow": "Raport rozszerzony",
-        "title": "Co zrobić ze swoim profilem: 13 rozdziałów na podstawie twoich odpowiedzi",
-        "hook": "Twoja najniższa skala to {k}, {name}: {pct}%. Raport rozszerzony wyjaśnia, co to oznacza, i proponuje ćwiczenie dobrane do tej skali.",
+        "title": "Dowiedz się więcej o swoim profilu: ponad 25 stron ze szczegółową analizą",
+        "hook": "Twoja najniższa skala to {k}, {name}: {pct}%. Raport rozszerzony wyjaśnia, co to oznacza i jak z tym pracować.",
         "list": [
-          "Skala po skali: co oznacza każda z twoich czterech liczb",
-          "Pięć ślepych plamek i pięć ćwiczeń, a przy każdym – po czym poznać, że działa",
-          "Jak rozmawiać z przedstawicielami każdego z czterech stylów: techniki i gotowe sformułowania",
-          "Trzy karty pracy: plan na 30 dni, najważniejsze na jednej stronie, karta dla współpracowników"
+          "Co oznacza każdy z twoich czterech wskaźników",
+          "Pięć ślepych plamek i pięć ćwiczeń, jak sobie z nimi radzić",
+          "Jak współpracować z przedstawicielami różnych typów: techniki i gotowe sformułowania",
+          "Plan rozwoju na 30 dni"
         ],
+        "sample": "Strony raportu przygotowanego dla fikcyjnej osoby",
         "price": "{price} USD · PDF na e-mail",
-        "button": "Powiadom mnie o dostępności",
-        "free": "Test i raport podstawowy pozostają bezpłatne.",
-        "topTitle": "Raport rozszerzony na podstawie twojego wyniku",
-        "topText": "13 rozdziałów o tym, co zrobić ze swoim profilem: omówienie każdej skali, pięć ćwiczeń, plan na 30 dni.",
-        "topButton": "Dowiedz się więcej – {price} USD",
-        "anchor": "Co jest w środku",
-        "soon": "Raport rozszerzony nie jest jeszcze dostępny po polsku. Poproś o powiadomienie – napiszemy, gdy tylko będzie można go zamówić."
+        "button": "Zamów raport rozszerzony",
+        "free": "Test i raport podstawowy pozostają bezpłatne."
+      },
+      "promo": {
+        "hooks": {
+          "low": "{k} ({name}), twoja najniższa skala, {pct}%: co to oznacza",
+          "flat": "Twój profil zrównoważony: co to oznacza i jak go czytać",
+          "moderate": "Twój styl wiodący, {k}, ma tylko {pct}% (jest zaznaczony umiarkowanie): jak czytać opis",
+          "pairMid": "Połączenie {a} + {b}: co daje i czym różni się od czystego {a}",
+          "pairClose": "Twoje style {a} i {b} są prawie równe: na ile pewna jest kolejność liter",
+          "pairEqual": "Twoje style {a} i {b} są równe: dlaczego {a} jest na pierwszym miejscu",
+          "pairEdge": "Styl {b} jest uzupełniający dzięki jednej odpowiedzi: co to dla ciebie znaczy",
+          "pureHigh": "{k} ma {pct}%, a mimo to nie jest stylem uzupełniającym: co znaczy profil „czysty”",
+          "layersDiff": "Twój styl adaptowany ({a}) różni się od naturalnego ({b}): ile cię to kosztuje",
+          "layersSame": "Twój styl adaptowany i naturalny są zgodne ({k}): zalety i ryzyka"
+        },
+        "tail": "Razem 13 rozdziałów, w tym pięć ćwiczeń i plan na 30 dni.",
+        "button": "Kup swój osobisty raport rozszerzony za {price} USD",
+        "close": "Ukryj",
+        "homeLabel": "Twój wynik z {date}",
+        "homeOpen": "Otwórz wynik",
+        "homeLead": "Raport rozszerzony powstaje na podstawie twoich odpowiedzi i omawia:",
+        "homeSample": "Zobacz przykładowe strony",
+        "homeRetake": "Zrób test ponownie"
       }
     },
     "contact": {
@@ -1049,6 +1144,19 @@
       "h1": "Rezygnacja z newslettera",
       "lead": "Kliknij przycisk, a disc-test.org przestanie wysyłać newsletter na adres, na który przyszła wiadomość z tym linkiem. Nie dotyczy to e-maila z wynikiem testu: jest on wysyłany tylko wtedy, gdy samodzielnie o niego poprosisz."
     },
+    "subscribeConfirm": {
+      "title": "Subskrypcja newslettera – test DISC",
+      "description": "Potwierdzenie subskrypcji newslettera disc-test.org z linku w wiadomości.",
+      "h1": "Subskrypcja newslettera",
+      "lead": "Na adres, na który przyszła wiadomość z tym linkiem, zacznie przychodzić newsletter disc-test.org: nowe testy, porady dotyczące rozwoju kariery i szukania pracy, nowości z serwisu i oferty promocyjne."
+    },
+    "subscribeMail": {
+      "subject": "Potwierdź subskrypcję newslettera disc-test.org",
+      "intro": "Cześć! Ten adres podano w formularzu zapisu do newslettera {site}: nowe testy, porady dotyczące rozwoju kariery i szukania pracy, nowości z serwisu i oferty promocyjne.",
+      "action": "Aby otrzymywać wiadomości, potwierdź subskrypcję:",
+      "button": "Potwierdź subskrypcję",
+      "footer": "Jeśli ten adres nie został podany przez ciebie, nie musisz nic robić: bez potwierdzenia newsletter nie będzie przychodzić, a adres zostanie usunięty po 7 dniach."
+    },
     "results": {
       "title": "Interpretacja wyników testu DISC: jak czytać wykres i profil",
       "description": "Jak czytać wynik testu DISC: trzy linie wykresu, procenty, styl wiodący i uzupełniający, profil zrównoważony. Przykłady interpretacji i typowe błędy.",
@@ -1058,7 +1166,7 @@
         {
           "h": "Z czego składa się wynik",
           "p": [
-            "Po ostatnim pytaniu widzisz cztery elementy: nazwę profilu z jedną lub dwiema literami (na przykład „Pionier, DI”), wykres z trzema liniami, cztery skale z procentami i opis tekstowy: cechy, mocne strony, obszary rozwoju, motywacja, zachowanie w stresie i wskazówki, jak najlepiej się z tobą komunikować. Ten sam raport możesz otrzymać e-mailem i otworzyć pod linkiem.",
+            "Po ostatnim pytaniu widzisz cztery elementy: nazwę profilu z jedną lub dwiema literami (na przykład „Pionier, DI”), wykres z trzema liniami, cztery skale z procentami i opis tekstowy: cechy, mocne strony, obszary rozwoju, motywacja, zachowanie w stresie i wskazówki, jak najlepiej się z tobą komunikować. Ten sam raport możesz zapisać jako PDF i otworzyć pod linkiem.",
             "Wszystkie liczby w raporcie wynikają z twoich odpowiedzi w 24 pytaniach. W każdym pytaniu wybierasz jedno stwierdzenie „najbardziej do mnie pasuje” i jedno „najmniej do mnie pasuje”, a każde stwierdzenie odnosi się do jednego ze stylów: D, I, S lub C. Dlatego każdy styl ma dwie liczby: ile razy został wybrany jako „najbardziej” i ile razy jako „najmniej”."
           ]
         },
@@ -1237,7 +1345,7 @@
           "h": "Kiedy przydaje się wersja papierowa",
           "p": [
             "Test na papierze jest wygodny na szkoleniu lub sesji strategicznej, gdzie nie każdy uczestnik ma komputer, na zajęciach w grupie, a także tam, gdzie nie wolno korzystać z telefonu. Niektórym łatwiej skupić się nad kartką: zaznaczasz, przewracasz stronę i nie rozpraszają cię powiadomienia.",
-            "Jeśli jednak uczestnicy mają przy sobie telefony, wersja online jest prostsza: sama liczy wynik, rysuje wykres, wysyła raport e-mailem i daje link, którym można się podzielić. Dla zespołów jest też panel administratora, który zbiera wyniki wszystkich uczestników."
+            "Jeśli jednak uczestnicy mają przy sobie telefony, wersja online jest prostsza: sama liczy wynik, rysuje wykres, zapisuje raport jako PDF i daje link, którym można się podzielić. Dla zespołów jest też panel administratora, który zbiera wyniki wszystkich uczestników."
           ]
         },
         {
@@ -1287,7 +1395,7 @@
           "h": "Jak przeprowadzić test w zespole w tym serwisie",
           "ol": [
             "Najpierw zrób test samodzielnie: dowiesz się, co zobaczą uczestnicy, i będziesz mieć przykładowy raport do pokazania.",
-            "Wyślij współpracownikom link do serwisu w odpowiedniej wersji językowej. Rejestracja nie jest potrzebna, test zajmuje około dziesięciu minut; raport pojawia się na ekranie, a na ekranie wyniku każdy podaje imię i adres e-mail i otrzymuje raport także e-mailem.",
+            "Wyślij współpracownikom link do serwisu w odpowiedniej wersji językowej. Rejestracja nie jest potrzebna, test zajmuje około dziesięciu minut; raport od razu pojawia się na ekranie, każdy może zapisać go jako PDF i przesłać ci link do wyniku.",
             "Poproś każdą osobę o przesłanie ci linku do wyniku albo kodu z raportu. Wynik widzi tylko ten, kto ma link; żadne dane nie trafiają automatycznie do menedżera.",
             "Otwórz panel administratora (link w stopce strony) i wklej otrzymane kody. Panel utworzy tabelę z imionami, profilami i punktami; można ją skopiować do Excela. Tabela jest przechowywana wyłącznie w twojej przeglądarce.",
             "Zaplanuj wspólne spotkanie: opowiedz o czterech stylach, pokaż mapę zespołu i pozwól każdemu powiedzieć, co w raporcie trafiło w sedno, a co nie."
@@ -1582,7 +1690,7 @@
       "steps": [
         "<b>Odpowiadasz.</b> Test ma 24 pytania; w każdym zaznaczasz, co pasuje do ciebie najbardziej, a co najmniej. Obliczenia opierają się wyłącznie na tych odpowiedziach.",
         "<b>Program liczy.</b> Dla każdego z czterech stylów odejmuje zaznaczenia „najmniej” od zaznaczeń „najbardziej” i na podstawie tych liczb ustala profil – jeden z szesnastu. Wzór jest jawny: omawiamy go na stronie „{results}”.",
-        "<b>Program składa raport.</b> Do twojego profilu i twoich liczb dobiera teksty napisane wcześniej przez AI. Raport podstawowy pojawia się na ekranie od razu. Raport rozszerzony jest składany po płatności i przychodzi e-mailem. Po polsku nie jest jeszcze dostępny: możesz poprosić o powiadomienie, a napiszemy, gdy tylko będzie można go zamówić."
+        "<b>Program składa raport.</b> Do twojego profilu i twoich liczb dobiera teksty napisane wcześniej przez AI. Raport podstawowy pojawia się na ekranie od razu. Raport rozszerzony jest składany po płatności i przychodzi e-mailem."
       ],
       "sections": [
         {
@@ -1630,7 +1738,7 @@
         },
         {
           "h": "Wynik od razu",
-          "p": "Raport podstawowy pojawia się na ekranie, gdy tylko odpowiesz na ostatnie pytanie. Raport rozszerzony jest składany od razu po opłaceniu zamówienia – o każdej porze dnia i nocy, bez zapisów i kolejek – a e-mail z nim przychodzi nie później niż 24 godziny po płatności. Po polsku nie można go jeszcze zamówić: poproś o powiadomienie, a damy znać e-mailem, gdy tylko będzie to możliwe."
+          "p": "Raport podstawowy pojawia się na ekranie, gdy tylko odpowiesz na ostatnie pytanie. Raport rozszerzony jest składany o każdej porze dnia i nocy, bez zapisów i kolejek, a e-mail z nim przychodzi od razu po płatności."
         },
         {
           "h": "Przystępna cena",
@@ -1704,7 +1812,7 @@
     },
     "home": {
       "getTitle": "Co otrzymasz",
-      "get": ["Styl wiodący i uzupełniający oraz nazwę profilu – jednego z 16", "Wykres z trzema liniami i nasilenie każdego stylu w procentach", "Mocne strony, obszary rozwoju, motywację i zachowanie pod presją", "Wskazówki, jak najlepiej się z tobą komunikować i współpracować", "Link do raportu, zapis jako PDF i wiadomość e-mail, jeśli chcesz – bez rejestracji i płatnych wersji"],
+      "get": ["Styl wiodący i uzupełniający oraz nazwę profilu – jednego z 16", "Wykres z trzema liniami i nasilenie każdego stylu w procentach", "Mocne strony, obszary rozwoju, motywację i zachowanie pod presją", "Wskazówki, jak najlepiej się z tobą komunikować i współpracować", "Link do raportu i zapis jako PDF – bez rejestracji i płatnych wersji"],
       "calcTitle": "Jak liczony jest wynik",
       "calc": "W każdym z 24 pytań zaznaczasz jedno stwierdzenie, które pasuje do ciebie najbardziej, i jedno, które pasuje najmniej. Każde stwierdzenie należy do jednego ze stylów: D, I, S lub C. Dla każdego stylu liczy się różnicę „najbardziej” minus „najmniej” – od −24 do +24 – i przelicza ją na procenty. Styl wiodący to ten o najwyższej wartości; styl uzupełniający jest uwzględniany, jeśli również jest wyraźnie zaznaczony.",
       "faqTitle": "Krótko o teście",
@@ -1742,7 +1850,7 @@
   "ui": {
     "langLabel": "Język",
     "footer": "24 pytania · około 10 minut · nie ma dobrych ani złych odpowiedzi",
-    "privacy": "Odpowiedzi pozostają w twojej przeglądarce; na potrzeby ogólnej statystyki serwer serwisu otrzymuje wyłącznie informacje o wizycie i rozpoczęciu testu oraz uzyskany profil – bez imienia i bez odpowiedzi. Jeśli podasz adres e-mail, wynik zostanie na niego wysłany i zapisany w bazie wyników właściciela serwisu. Gdy klikniesz „Zapisz jako PDF”, odpowiedzi i data testu – bez imienia i e-maila – trafiają na serwer serwisu, który tworzy z nich plik raportu podstawowego, odsyła go i niczego nie zapisuje.",
+    "privacy": "Odpowiedzi pozostają w twojej przeglądarce; na potrzeby ogólnej statystyki serwer serwisu otrzymuje wyłącznie informacje o wizycie i rozpoczęciu testu oraz uzyskany profil – bez imienia i bez odpowiedzi. Jeśli podasz adres e-mail, wynik zostanie na niego wysłany i zapisany w bazie wyników właściciela serwisu. Jeśli zapiszesz się do newslettera na stronie głównej, w tej bazie zostaną zapisane twój adres e-mail i wersja językowa serwisu. Gdy klikniesz „Zapisz jako PDF”, odpowiedzi i data testu – bez imienia i e-maila – trafiają na serwer serwisu, który tworzy z nich plik raportu podstawowego, odsyła go i niczego nie zapisuje.",
     "legal": "Manukyan Armen · Numer identyfikacji podatkowej (INN) {inn}",
     "rights": "© {year} disc-test.org. Kopiowanie tekstów serwisu i raportów bez pisemnej zgody jest zabronione.",
     "adminLink": "Panel administratora",
@@ -1788,6 +1896,7 @@
     "test.missing": "Pytanie {n} nie zostało wypełnione",
 
     "report.own": "Twój wynik",
+    "report.taken": "Test wypełniony: {date}",
     "report.other": "Wynik uczestnika",
     "report.backAdmin": "← Do listy wyników",
     "report.flat": "Profil jest zrównoważony: żaden styl nie wybija się wyraźnie. Zwykle oznacza to elastyczność zachowania, ale czasem świadczy o niepewności przy udzielaniu odpowiedzi. Styl wiodący określono na podstawie najwyższej wartości.",
@@ -1808,16 +1917,14 @@
     "report.communication": "Jak najlepiej się z tobą komunikować",
     "report.stress": "W stresie",
     "report.environment": "Sprzyjające środowisko",
-    "report.moreLink": "Więcej o tym, jak czytać profil DISC →",
-    "report.color": "Twój kolor DISC: {color}",
 
     "share.title": "Zapisz wynik",
     "share.text": "Wynik jest zapisany w twojej przeglądarce. Skopiuj link, aby otworzyć raport później lub na innym urządzeniu, albo prześlij go osobie, która poprosiła cię o wypełnienie testu.",
-    "share.codeAria": "Kod wyniku",
-    "share.codeTitle": "Kod wyniku",
     "share.copyLink": "Kopiuj link",
-    "share.copyCode": "Kopiuj kod",
-    "share.pdf": "Zapisz jako PDF",
+    "share.profile": "Udostępnij profil",
+    "share.saveProfile": "Zapisz profil",
+    "share.msg": "Profil DISC: {name} ({key})",
+    "share.close": "Zamknij",
     "share.pdfWait": "Przygotowujemy PDF…",
     "share.pdfFail": "Nie udało się pobrać PDF. Otworzy się okno drukowania – możesz w nim zapisać stronę jako PDF.",
     "share.restart": "Zrób test ponownie",
@@ -1833,11 +1940,6 @@
     "share.send": "Wyślij na mój e-mail",
     "share.mailtoHint": "Otworzy się twój program pocztowy z gotową wiadomością na ten adres – wystarczy kliknąć „Wyślij”.",
     "share.mailtoOpened": "Wiadomość z wynikiem otworzyła się w twoim programie pocztowym – wyślij ją na adres {email}.",
-    "share.typeTitle": "Udostępnij swój typ",
-    "share.typeText": "Link prowadzi do publicznego opisu profilu „{name}”: nie ma w nim twojego imienia, adresu e-mail ani odpowiedzi.",
-    "share.type": "Udostępnij typ",
-    "share.via": "Udostępnij w {net}",
-    "share.typeMsg": "Mój typ DISC to {name} ({key}). A jaki jest twój? Zrób darmowy test – 10 minut.",
 
     "invite.title": "Twój znajomy to „{name}”. A jaki jest twój typ?",
     "invite.text": "Zrób darmowy test DISC: 24 bloki, około 10 minut, bez rejestracji. Poznasz swój typ i dowiesz się, jak najlepiej ze sobą współpracować i rozmawiać.",
@@ -1973,7 +2075,7 @@
     "pages.profiles.colPure": "Bez uzupełniającego",
 
     "cta.title": "Poznaj swój profil DISC",
-    "cta.text": "Darmowy test: 24 pytania, około 10 minut, wynik od razu i na e-mail.",
+    "cta.text": "Darmowy test: 24 pytania, około 10 minut, wynik od razu.",
     "cta.button": "Zrób test",
     "cta.inline": "Poznaj swój styl DISC – darmowy test w 10 minut, bez rejestracji.",
     "cta.inlineProfile": "To o tobie? Sprawdź swój typ DISC – darmowy test w 10 minut.",
@@ -2003,6 +2105,20 @@
     "unsub.done": "Gotowe: disc-test.org nie będzie już wysyłać newslettera na ten adres.",
     "unsub.failed": "Nie udało się anulować subskrypcji. Spróbuj ponownie albo napisz do nas: {email}.",
     "unsub.bad": "W linku brakuje kodu rezygnacji. Otwórz pełny link z wiadomości albo napisz do nas: {email}.",
+    "nl.title": "Zapisz się do newslettera",
+    "nl.text": "Bądź na bieżąco z nowymi testami i poradami dotyczącymi rozwoju kariery i szukania pracy.",
+    "nl.emailLabel": "Twój adres e-mail",
+    "nl.button": "Zapisz się",
+    "nl.consent": "Zgadzam się otrzymywać na ten adres newsletter disc-test.org: nowe testy, porady dotyczące rozwoju kariery i szukania pracy, nowości z serwisu i oferty promocyjne. W każdej chwili możesz zrezygnować, klikając link w dowolnej wiadomości.",
+    "nl.consentRequired": "Zaznacz zgodę na otrzymywanie newslettera.",
+    "nl.sending": "Wysyłamy wiadomość…",
+    "nl.sent": "Prawie gotowe: na adres {email} wysłaliśmy wiadomość. Otwórz ją i kliknij „Potwierdź subskrypcję” – bez tego newsletter nie będzie przychodzić.",
+    "nl.failed": "Nie udało się zapisać do newslettera. Spróbuj ponownie później.",
+    "subc.button": "Potwierdź subskrypcję",
+    "subc.wait": "Potwierdzamy subskrypcję…",
+    "subc.done": "Subskrypcja potwierdzona. W każdej chwili możesz zrezygnować, klikając link w dowolnej wiadomości z newslettera.",
+    "subc.bad": "Link jest niepełny albo wygasł: subskrypcję można potwierdzić w ciągu 7 dni. Zapisz się ponownie na stronie głównej albo napisz do nas: {email}.",
+    "subc.failed": "Nie udało się potwierdzić subskrypcji. Spróbuj ponownie albo napisz do nas: {email}.",
     "contact.privacyNote": "Imię, e-mail, temat, wiadomość i pliki zostaną wysłane e-mailem na adres {email} i posłużą wyłącznie do udzielenia ci odpowiedzi.",
     "contact.mailtoNote": "Usługa wysyłki nie jest jeszcze podłączona: przycisk „Wyślij” otworzy twój program pocztowy z wypełnioną wiadomością, a załączone pliki trzeba będzie dodać do niej ręcznie.",
     "contact.mailSubject": "Wiadomość ze strony: {name}",
@@ -2021,7 +2137,7 @@
     "pd.consentLink": "zgodę na przetwarzanie danych osobowych",
     "pd.required": "Zaznacz zgodę na przetwarzanie danych osobowych: bez niej nie możemy przyjąć twoich danych.",
     "pd.cookieAsk": "Serwis przechowuje twoje postępy, wynik i wybrany język w pamięci lokalnej przeglądarki. Za twoją zgodą system analityki internetowej będzie zbierać zanonimizowane statystyki odwiedzin oraz zapis działań na stronie, abyśmy mogli ulepszać serwis. Imię, e-mail i wynik nie są przekazywane do systemu analitycznego.",
-    "pd.cookieDetails": "W przeglądarce przechowywane są: imię i e-mail, jeśli je podano; odpowiedzi i nieukończone postępy; ostatni wynik; wybrany język; informacja, że ten komunikat został już wyświetlony. Te dane pozostają na twoim urządzeniu i są usuwane przy czyszczeniu danych witryny. Dostawca hostingu otrzymuje standardowe dane techniczne żądania. Gdy pierwszy raz danego dnia otwierasz serwis, na serwer serwisu trafia anonimowa informacja o wizycie: tylko wersja językowa serwisu; serwer zapisuje ją z godziną otrzymania, a przeglądarka zapamiętuje datę, żeby tego samego dnia nie wysyłać jej ponownie. Na tej podstawie liczymy, ile osób odwiedza serwis. Gdy zaczynasz test, na serwer serwisu trafia anonimowa informacja o rozpoczęciu: tylko wersja językowa serwisu. Po ukończeniu testu na serwer serwisu trafia anonimowy zapis do ogólnej statystyki: uzyskany profil i wersja językowa serwisu – bez imienia, adresu e-mail i odpowiedzi. Gdy klikniesz „Zapisz jako PDF”, odpowiedzi i data testu – bez imienia i e-maila – trafiają na serwer serwisu, który tworzy z nich plik raportu podstawowego, odsyła go i niczego nie zapisuje. Gdy wysyłasz wynik na e-mail, imię, e-mail i odpowiedzi są przekazywane na serwer serwisu: wysyła on do ciebie wiadomość z wynikiem i zapisuje imię, e-mail, datę oraz wynik w bazie wyników właściciela serwisu. System analityki internetowej otrzymuje adres strony bez kodu wyniku, źródło wejścia, typ urządzenia i przeglądarki, zanonimizowany zapis działań na stronie (pola z imieniem i e-mailem oraz link i kod wyniku są z zapisu wyłączone) i zapisuje własne pliki cookie. Możesz go zablokować w ustawieniach przeglądarki lub za pomocą programu blokującego skrypty śledzące. Reklamowe skrypty śledzące nie są używane.",
+    "pd.cookieDetails": "W przeglądarce przechowywane są: imię i e-mail, jeśli je podano; odpowiedzi i nieukończone postępy; ostatni wynik; czas pierwszego ukończenia testu, do liczenia terminu ceny specjalnej raportu; wybrany język; informacja, że ten komunikat został już wyświetlony. Te dane pozostają na twoim urządzeniu i są usuwane przy czyszczeniu danych witryny. Dostawca hostingu otrzymuje standardowe dane techniczne żądania. Gdy pierwszy raz danego dnia otwierasz serwis, na serwer serwisu trafia anonimowa informacja o wizycie: tylko wersja językowa serwisu; serwer zapisuje ją z godziną otrzymania, a przeglądarka zapamiętuje datę, żeby tego samego dnia nie wysyłać jej ponownie. Na tej podstawie liczymy, ile osób odwiedza serwis. Gdy zaczynasz test, na serwer serwisu trafia anonimowa informacja o rozpoczęciu: tylko wersja językowa serwisu. Po ukończeniu testu na serwer serwisu trafia anonimowy zapis do ogólnej statystyki: uzyskany profil i wersja językowa serwisu – bez imienia, adresu e-mail i odpowiedzi. Gdy klikniesz „Zapisz jako PDF”, odpowiedzi i data testu – bez imienia i e-maila – trafiają na serwer serwisu, który tworzy z nich plik raportu podstawowego, odsyła go i niczego nie zapisuje. Gdy wysyłasz wynik na e-mail, imię, e-mail i odpowiedzi są przekazywane na serwer serwisu: wysyła on do ciebie wiadomość z wynikiem i zapisuje imię, e-mail, datę oraz wynik w bazie wyników właściciela serwisu. Gdy zapisujesz się do newslettera na stronie głównej, e-mail i wersja językowa serwisu są przekazywane na serwer serwisu: wysyła on do ciebie wiadomość z linkiem potwierdzającym i zapisuje adres w tej samej bazie; jeśli subskrypcja nie zostanie potwierdzona, adres jest usuwany po 7 dniach. System analityki internetowej otrzymuje adres strony (na ekranie wyniku – razem z kodem wyniku: odpowiedziami, datą testu i imieniem, jeśli je podano, ale bez adresu e-mail), źródło wejścia, typ urządzenia i przeglądarki, zapis działań na stronie (pola z imieniem i e-mailem są z zapisu wyłączone) i zapisuje własne pliki cookie. Możesz go zablokować w ustawieniach przeglądarki lub za pomocą programu blokującego skrypty śledzące. Reklamowe skrypty śledzące nie są używane.",
     "pd.cookieChange": "Zmień wybór dotyczący plików cookie",
 
     "print.title": "Test DISC do druku: kwestionariusz z kluczem i interpretacją",

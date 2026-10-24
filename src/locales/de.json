@@ -519,7 +519,7 @@
         },
         {
           "q": "Ist der Test wirklich kostenlos?",
-          "a": "Ja: Test und Ergebnis sind kostenlos, ohne Anmeldung und ohne versteckte Kosten. Das Ergebnis erscheint direkt nach dem letzten Block auf dem Bildschirm; auf Wunsch können Sie es sich per E-Mail zusenden lassen. Auf der Seite gibt es eine einzige kostenpflichtige Leistung – das ausführliche DISG-Profil; sie ist unter „Leistungen“ beschrieben und völlig freiwillig."
+          "a": "Ja: Test und Ergebnis sind kostenlos, ohne Anmeldung und ohne versteckte Kosten. Das Ergebnis erscheint direkt nach dem letzten Block auf dem Bildschirm; Sie können es als PDF speichern. Auf der Seite gibt es eine einzige kostenpflichtige Leistung – das ausführliche DISG-Profil; sie ist unter „Leistungen“ beschrieben und völlig freiwillig."
         },
         {
           "q": "Wofür stehen die Buchstaben D, I, S, C?",
@@ -542,8 +542,8 @@
           "a": "Ja. Schicken Sie Ihren Kolleginnen und Kollegen den Link zur Seite; auf dem Ergebnisbildschirm erhält jeder einen Link und einen Code, den Sie sich weiterleiten lassen. Im Admin-Bereich (Link in der Fußzeile) werden die Codes in einer Tabelle gesammelt, die Sie nach Excel kopieren können. Die Tabelle bleibt nur in Ihrem Browser."
         },
         {
-          "q": "Wohin geht das Ergebnis, und wer kann es sehen?",
-          "a": "Das Ergebnis wird auf dem Bildschirm angezeigt und in Ihrem Browser gespeichert. Wenn Sie auf dem Ergebnisbildschirm Namen und E-Mail-Adresse angeben, erhalten Sie den Bericht per E-Mail an diese Adresse, und Name, E-Mail-Adresse und Ergebnis werden in der Ergebnisdatenbank des Seitenbetreibers gespeichert; ohne Ihre Einwilligung werden sie nicht für andere Zwecke verwendet und nicht an Dritte weitergegeben. Andere Personen sehen Ihren Bericht nur, wenn Sie den Link dazu selbst weitergeben. Details auf der Seite „Datenschutz“."
+          "q": "Wo wird das Ergebnis gespeichert, und wer kann es sehen?",
+          "a": "Das Ergebnis wird auf dem Bildschirm angezeigt und in Ihrem Browser gespeichert. Andere Personen sehen Ihren Bericht nur, wenn Sie den Link dazu selbst weitergeben. Details auf der Seite „Datenschutz“."
         },
         {
           "q": "Kann ich den Test wiederholen?",
@@ -575,7 +575,7 @@
         {
           "h": "Warum es diese Seite gibt",
           "p": [
-            "Wir wollten einen DISG-Test, den jeder in zehn Minuten ohne Anmeldung und Bezahlung machen kann, mit einem verständlichen Bericht in der eigenen Sprache, den man mit dem Team teilen kann. Die Seite funktioniert in 14 Sprachen, das Ergebnis erscheint sofort und kommt auf Wunsch per E-Mail, und Führungskräfte und HR haben einen Bereich, in dem die Ergebnisse der Teilnehmenden in einer Tabelle gesammelt werden."
+            "Wir wollten einen DISG-Test, den jeder in zehn Minuten ohne Anmeldung und Bezahlung machen kann, mit einem verständlichen Bericht in der eigenen Sprache, den man mit dem Team teilen kann. Die Seite funktioniert in 14 Sprachen, das Ergebnis erscheint sofort und lässt sich als PDF speichern, und Führungskräfte und HR haben einen Bereich, in dem die Ergebnisse der Teilnehmenden in einer Tabelle gesammelt werden."
           ]
         },
         {
@@ -668,14 +668,14 @@
           "h": "Wo die Daten gespeichert und an wen sie übermittelt werden",
           "p": [
             "Die Ergebnisdatenbank liegt auf einem Server, den der Seitenbetreiber bei einem Hosting-Anbieter mietet. Die E-Mails versendet ein E-Mail-Dienst. Diese Unternehmen verarbeiten die Daten in unserem Auftrag und nur für den Betrieb der Website. Die E-Mail geht an die Adresse, die Sie selbst angegeben haben. An Dritte werden die Daten für deren eigene Zwecke weder weitergegeben noch verkauft.",
-            "Den Newsletter erhält nur, wer im Formular zum Versand des Ergebnisses das gesonderte Kästchen zur Einwilligung angekreuzt hat. In diesem Fall werden in der Datenbank zusätzlich die Einwilligung, ihr Datum und ihr Wortlaut gespeichert, und Ihre E-Mail-Adresse, Ihr Name und Ihre Sprache werden verwendet, um Ihnen E-Mails von disc-test.org zu senden: Inhalte zum DISG-Modell, Neuigkeiten der Website und Werbeangebote. Abmelden können Sie sich jederzeit über den Link in jeder E-Mail oder per Nachricht an {email}.",
-            "Der Hosting-Anbieter erhält die üblichen technischen Anfragedaten: IP-Adresse, Browsertyp, Seitenadresse. Die Schriften werden von dieser Website selbst ausgeliefert. Besuchsstatistiken erfasst ein Webanalysesystem: Es erhält anonymisierte Besuchsdaten – die Seitenadresse ohne den Ergebniscode, die Herkunft des Besuchs, Geräte- und Browsertyp – sowie eine Aufzeichnung der Aktionen auf der Seite; die Felder für Name und E-Mail, der Ergebnislink und der Code sind von der Aufzeichnung ausgenommen. Sie können die Erfassung in den Browsereinstellungen oder mit einem Tracker-Blocker unterbinden. Werbe-Tracker werden nicht verwendet."
+            "Den Newsletter erhält nur, wer das gesonderte Kästchen zur Einwilligung angekreuzt hat – im Formular zum Versand des Ergebnisses oder im Anmeldeformular für den Newsletter auf der Startseite. Nach dem Absenden des Anmeldeformulars kommt eine E-Mail mit einem Bestätigungslink: Ohne Bestätigung wird kein Newsletter versandt, und die Adresse wird nach 7 Tagen gelöscht. In der Datenbank werden die Einwilligung, ihr Datum und ihr Wortlaut gespeichert, und Ihre E-Mail-Adresse, Ihr Name (falls Sie ihn angegeben haben) und Ihre Sprache werden verwendet, um Ihnen E-Mails von disc-test.org zu senden: Inhalte zum DISG-Modell, neue Tests, Tipps für die berufliche Entwicklung und die Jobsuche, Neuigkeiten der Website und Werbeangebote. Abmelden können Sie sich jederzeit über den Link in jeder E-Mail oder per Nachricht an {email}.",
+            "Der Hosting-Anbieter erhält die üblichen technischen Anfragedaten: IP-Adresse, Browsertyp, Seitenadresse. Die Schriften werden von dieser Website selbst ausgeliefert. Besuchsstatistiken erfasst ein Webanalysesystem: Es erhält Besuchsdaten – die Seitenadresse, die Herkunft des Besuchs, Geräte- und Browsertyp – sowie eine Aufzeichnung der Aktionen auf der Seite; die Felder für Name und E-Mail sind von der Aufzeichnung ausgenommen. Auf der Ergebnisseite enthält die Seitenadresse den Ergebniscode: Ihre Antworten, das Testdatum und Ihren Namen, falls Sie ihn angegeben haben, aber nicht Ihre E-Mail-Adresse. Sie können die Erfassung in den Browsereinstellungen oder mit einem Tracker-Blocker unterbinden. Werbe-Tracker werden nicht verwendet."
           ]
         },
         {
           "h": "Rechtsgrundlagen und Speicherdauer",
           "p": [
-            "Ein per E-Mail versandtes Ergebnis verarbeiten wir auf Grundlage Ihrer Einwilligung und speichern es drei Jahre ab dem Versanddatum oder bis zum Widerruf der Einwilligung. Die Daten für den Newsletter verarbeiten wir auf Grundlage einer gesonderten Einwilligung, bis Sie sich abmelden. Nachrichten aus dem Kontaktformular verarbeiten wir auf Grundlage der Einwilligung und speichern sie ein Jahr nach unserer Antwort.",
+            "Ein per E-Mail versandtes Ergebnis verarbeiten wir auf Grundlage Ihrer Einwilligung und speichern es drei Jahre ab dem Versanddatum oder bis zum Widerruf der Einwilligung. Die Daten für den Newsletter verarbeiten wir auf Grundlage einer gesonderten Einwilligung, bis Sie sich abmelden; eine Adresse, deren Anmeldung nicht bestätigt wurde, 7 Tage lang. Nachrichten aus dem Kontaktformular verarbeiten wir auf Grundlage der Einwilligung und speichern sie ein Jahr nach unserer Antwort.",
             "Wenn die Frist abläuft oder Sie Ihre Einwilligung widerrufen, werden die Daten aus der Datenbank gelöscht. Aus den Sicherungskopien verschwinden sie, sobald diese erneuert werden, spätestens nach sechs Monaten."
           ]
         },
@@ -731,7 +731,8 @@
           "h": "Zwecke der Verarbeitung und Umfang der Daten",
           "p": [
             "Formular „Ergebnis per E-Mail erhalten“: Name, E-Mail-Adresse, Sprachversion der Website, Testdatum, Antworten und Ergebnis des DISG-Tests. Zweck: mir die E-Mail mit dem Testergebnis zu senden und das Ergebnis zu speichern, um es erneut senden und meine Anfragen beantworten zu können.",
-            "Kontaktformular: Name, E-Mail-Adresse, Nachrichtentext und angehängte Dateien. Zweck: meine Anfrage zu bearbeiten und zu beantworten."
+            "Kontaktformular: Name, E-Mail-Adresse, Nachrichtentext und angehängte Dateien. Zweck: meine Anfrage zu bearbeiten und zu beantworten.",
+            "Anmeldeformular für den Newsletter auf der Startseite: E-Mail-Adresse und Sprachversion der Website. Zweck: mir eine E-Mail mit einem Link zur Bestätigung der Anmeldung zu senden und die Liste der Newsletter-Abonnenten zu führen."
           ]
         },
         {
@@ -749,7 +750,7 @@
         {
           "h": "Geltungsdauer der Einwilligung",
           "p": [
-            "Die Einwilligung gilt drei Jahre ab dem Absenden des Formulars „Ergebnis per E-Mail erhalten“ und ein Jahr nach der Antwort auf eine Anfrage aus dem Kontaktformular oder bis zu ihrem Widerruf."
+            "Die Einwilligung gilt drei Jahre ab dem Absenden des Formulars „Ergebnis per E-Mail erhalten“, ein Jahr nach der Antwort auf eine Anfrage aus dem Kontaktformular und beim Anmeldeformular für den Newsletter bis zur Abmeldung (wird die Anmeldung nicht bestätigt, 7 Tage) oder bis zu ihrem Widerruf."
           ]
         },
         {
@@ -769,23 +770,23 @@
     },
     "services": {
       "title": "Leistungen – ausführliches DISG-Profil",
-      "description": "Kostenpflichtige Leistung von disc-test.org: ausführliches DISG-Profil für {price} USD. Test und Ergebnis bleiben kostenlos.",
+      "description": "Kostenpflichtige Leistung von disc-test.org: ausführliches DISG-Profil für {price} €. Test und Ergebnis bleiben kostenlos.",
       "h1": "Leistungen",
       "lead": "Der DISG-Test und sein Ergebnis sind auf dieser Seite kostenlos. Wer eine genauere Auswertung wünscht, kann eine kostenpflichtige ausführliche Version erhalten.",
       "name": "Ausführliches DISG-Profil",
       "text": "Eine genauere Auswertung Ihres DISG-Profils auf Grundlage Ihres Tests. Das ausführliche Profil steht Nutzern zur Verfügung, die die Leistung bezahlt haben.",
       "priceLabel": "Preis",
-      "price": "{price} USD",
-      "currency": "USD",
+      "price": "{price} €",
+      "currency": "EUR",
       "docs": "Für die Leistung gelten unsere {offer}; wann und wie Sie Ihr Geld zurückerhalten, steht in den {refund}.",
       "sections": [
         {
           "h": "So erhalten Sie es",
-          "p": ["Das ausführliche Profil wird per E-Mail an die bei der Zahlung angegebene Adresse gesendet, spätestens 24 Stunden nach der Zahlung."]
+          "p": ["Das ausführliche Profil wird direkt nach der Zahlung per E-Mail an die beim Bezahlen angegebene Adresse gesendet."]
         },
         {
           "h": "Was kostenlos bleibt",
-          "p": ["Der Test selbst, das Ergebnis auf dem Bildschirm und die E-Mail mit dem Ergebnis, die Seiten der sechzehn Profile und die druckbare PDF-Version des Tests bleiben kostenlos und erfordern keine Anmeldung. Das ausführliche Profil erwerben Sie nur, wenn Sie es wünschen."]
+          "p": ["Der Test selbst, das Ergebnis auf dem Bildschirm und der Kurzbericht als PDF, die Seiten der sechzehn Profile und die druckbare PDF-Version des Tests bleiben kostenlos und erfordern keine Anmeldung. Das ausführliche Profil erwerben Sie nur, wenn Sie es wünschen."]
         },
         {
           "h": "Fragen zur Leistung",
@@ -798,7 +799,7 @@
       "description": "Allgemeine Geschäftsbedingungen für die Leistung „Ausführliches DISG-Profil“ auf disc-test.org: Preis, Zahlung und Zusendung, Erstattung, Rechte an den Inhalten.",
       "h1": "Allgemeine Geschäftsbedingungen",
       "linkText": "Allgemeinen Geschäftsbedingungen",
-      "edition": "Fassung vom 9. Oktober 2026. Deutsche Übersetzung aktualisiert am 20. Oktober 2026.",
+      "edition": "Fassung vom 22. Oktober 2026. Deutsche Übersetzung aktualisiert am 22. Oktober 2026.",
       "note": "Dies ist die deutsche Übersetzung dieser Geschäftsbedingungen; das Original ist unter {original} veröffentlicht. Weichen die beiden Texte voneinander ab, gilt das Original – mit Ausnahme des Preises und der Zahlungsbedingungen: Für die deutsche Version der Website gelten dafür die Ziffern 1 und 3 dieser Übersetzung.",
       "seller": "Einzelunternehmer Manukyan Armen, Steuernummer (INN) {inn}",
       "lead": "Dieses Dokument ist ein verbindliches Angebot (öffentliches Angebot) zum Abschluss eines Vertrags über die kostenpflichtige Leistung „Ausführliches DISG-Profil“ zu den nachstehenden Bedingungen. Das Angebot unterbreitet {seller} (im Folgenden „Anbieter“). Wer die Leistung bezahlt, stimmt diesen Bedingungen vollständig und vorbehaltlos zu (Annahme des Angebots).",
@@ -827,7 +828,7 @@
         {
           "h": "3. Preis und Zahlung",
           "p": [
-            "3.1. Der Preis der Leistung beträgt {price} US-Dollar. Der Preis ist ein Endpreis: Weitere Zahlungen an den Anbieter fallen nicht an.",
+            "3.1. Der Preis der Leistung beträgt {price} Euro. Innerhalb von 60 Minuten nach Durchführung des Tests auf der Website wird die Leistung zum Sonderpreis von {offerPrice} Euro angeboten; die verbleibende Zeit wird auf der Website neben dem Preis angezeigt, eine Wiederholung des Tests verlängert diese Frist nicht. Der Preis, zu dem eine Bestellung aufgegeben wird, wird auf der Zahlungsseite angezeigt und bleibt für diese Bestellung bestehen. Der Preis ist ein Endpreis: Weitere Zahlungen an den Anbieter fallen nicht an.",
             "3.2. Die Leistung ist vor ihrer Erbringung vollständig zu bezahlen, und zwar mit Bankkarte oder einer anderen elektronischen Zahlungsart, die auf der Zahlungsseite angeboten wird. Die Zahlung nimmt der Zahlungsabwickler entgegen.",
             "3.3. Die Leistung gilt als bezahlt, sobald der Anbieter die Zahlungsbestätigung des Zahlungsabwicklers erhalten hat.",
             "3.4. Die Kartendaten gibt der Kunde auf der gesicherten Seite des Zahlungsabwicklers ein. Der Anbieter erhält und speichert diese Daten nicht.",
@@ -839,7 +840,7 @@
           "h": "4. Erbringung der Leistung",
           "p": [
             "4.1. Um die Leistung zu erhalten, absolviert der Kunde den Test auf der Website, gibt eine E-Mail-Adresse an und bezahlt die Leistung. Das Ausführliche Profil wird aus dem Testergebnis erstellt, mit dem der Kunde den Zahlungsvorgang begonnen hat.",
-            "4.2. Der Anbieter sendet das Ausführliche Profil spätestens 24 Stunden nach der Zahlung (Ziffer 3.3) an die angegebene Adresse. In der Regel kommt die E-Mail früher an; 24 Stunden sind die Höchstfrist.",
+            "4.2. Der Anbieter sendet das Ausführliche Profil spätestens 24 Stunden nach der Zahlung (Ziffer 3.3) an die angegebene Adresse. In der Regel kommt die E-Mail direkt nach der Zahlung an; 24 Stunden sind die Höchstfrist.",
             "4.3. Die Leistung gilt mit dem Versand des Ausführlichen Profils als erbracht. Meldet der Kunde innerhalb von drei Kalendertagen danach keine Mängel, gilt die Leistung als abgenommen. Ein Abnahmeprotokoll wird nicht erstellt.",
             "4.4. Kommt die E-Mail nicht an, sollte der Kunde den Spam-Ordner prüfen und dem Anbieter an {email} schreiben: Das Ausführliche Profil wird dann erneut gesendet.",
             "4.5. Für die Richtigkeit der angegebenen E-Mail-Adresse ist der Kunde verantwortlich."
@@ -851,8 +852,8 @@
             "5.1. Der Kunde kann die Bestellung jederzeit stornieren, solange ihm das Ausführliche Profil noch nicht zugesandt wurde. In diesem Fall wird die Zahlung vollständig erstattet.",
             "5.2. Wird das Ausführliche Profil nicht innerhalb der in Ziffer 4.2 genannten Frist gesendet, kann der Kunde die vollständige Erstattung der Zahlung verlangen.",
             "5.3. Weist das erhaltene Ausführliche Profil Mängel auf (die E-Mail oder die Datei lässt sich nicht öffnen, sie enthält das Ergebnis einer anderen Person, der Inhalt entspricht nicht der Beschreibung der Leistung auf der Website), behebt der Anbieter sie innerhalb von drei Arbeitstagen nach der Mitteilung des Kunden. Wird ein Mangel in dieser Frist nicht behoben, wird die Zahlung vollständig erstattet.",
-            "5.4. Ist die Leistung ordnungsgemäß erbracht, wird die Zahlung nicht erstattet. Ist der Kunde mit der Beschreibung seines Profils inhaltlich nicht einverstanden, stellt dies keinen Mangel der Leistung dar.",
-            "5.5. Für eine Rückerstattung sendet der Kunde einen Antrag an {email} und nennt darin die bei der Zahlung verwendete E-Mail-Adresse, Datum und Betrag der Zahlung sowie den Grund für die Rückerstattung.",
+            "5.4. Rückerstattungsgarantie: Innerhalb von sieben Kalendertagen ab dem Tag der Zahlung kann der Kunde ohne Angabe von Gründen die vollständige Erstattung der Zahlung verlangen, auch nachdem er das Ausführliche Profil erhalten hat. Nach Ablauf dieser Frist wird die Zahlung für eine ordnungsgemäß erbrachte Leistung nicht erstattet; ist der Kunde mit der Beschreibung seines Profils inhaltlich nicht einverstanden, stellt dies keinen Mangel der Leistung dar.",
+            "5.5. Für eine Rückerstattung sendet der Kunde einen Antrag an {email} und nennt darin die bei der Zahlung verwendete E-Mail-Adresse, Datum und Betrag der Zahlung sowie den Grund für die Rückerstattung; bei einer Rückerstattung nach Ziffer 5.4 muss kein Grund angegeben werden.",
             "5.6. Der Anbieter beantwortet den Antrag innerhalb von drei Arbeitstagen. Das Geld wird auf demselben Weg erstattet, auf dem bezahlt wurde, spätestens zehn Kalendertage nach Eingang des Antrags; wann der Betrag gutgeschrieben wird, hängt von der Bank des Kunden ab.",
             "5.7. Die gesetzlichen Verbraucherrechte des Kunden bleiben von den Bestimmungen dieses Abschnitts unberührt."
           ]
@@ -910,6 +911,7 @@
         {
           "h": "Wann Sie Ihr Geld vollständig zurückerhalten",
           "ul": [
+            "Das ausführliche Profil sagt Ihnen nicht zu: Innerhalb von 7 Tagen nach der Zahlung erhalten Sie Ihr Geld ohne Angabe von Gründen zurück.",
             "Sie stornieren die Bestellung, bevor Ihnen das ausführliche Profil zugesandt wurde.",
             "Das ausführliche Profil wurde nicht innerhalb von 24 Stunden nach der Zahlung gesendet.",
             "Das erhaltene ausführliche Profil hat einen Mangel (die E-Mail oder die Datei lässt sich nicht öffnen, sie enthält das Ergebnis einer anderen Person, der Inhalt entspricht nicht der Beschreibung der Leistung auf der Website), und wir haben ihn nicht innerhalb von drei Arbeitstagen nach Ihrer Mitteilung behoben."
@@ -917,12 +919,12 @@
         },
         {
           "h": "Wann die Zahlung nicht erstattet wird",
-          "p": ["Wurde das ausführliche Profil rechtzeitig gesendet und entspricht es der Beschreibung, gilt die Leistung als erbracht, und die Zahlung wird nicht erstattet. Sind Sie mit der Beschreibung Ihres Profils inhaltlich nicht einverstanden, ist das kein Mangel der Leistung."]
+          "p": ["Sind seit der Zahlung mehr als 7 Tage vergangen und wurde das ausführliche Profil rechtzeitig gesendet und entspricht es der Beschreibung, gilt die Leistung als erbracht, und die Zahlung wird nicht erstattet. Sind Sie mit der Beschreibung Ihres Profils inhaltlich nicht einverstanden, ist das kein Mangel der Leistung."]
         },
         {
           "h": "So beantragen Sie eine Rückerstattung",
           "p": ["Schreiben Sie an {email} und nennen Sie:"],
-          "ul": ["die E-Mail-Adresse, die Sie bei der Zahlung angegeben haben;", "Datum und Betrag der Zahlung;", "den Grund für die Rückerstattung."]
+          "ul": ["die E-Mail-Adresse, die Sie bei der Zahlung angegeben haben;", "Datum und Betrag der Zahlung;", "den Grund für die Rückerstattung (in den ersten 7 Tagen nach der Zahlung können Sie ihn weglassen)."]
         },
         {
           "h": "Fristen",
@@ -951,7 +953,7 @@
     },
     "product": {
       "title": "Ausführlicher DISG-Bericht – 13 Kapitel zu Ihrem Ergebnis",
-      "description": "Ausführlicher DISG-Bericht zu Ihrem Testergebnis: jede Skala erklärt, fünf Übungen, ein 30-Tage-Plan und ein Blatt für Ihr Team. PDF per E-Mail, {price} USD.",
+      "description": "Ausführlicher DISG-Bericht zu Ihrem Testergebnis: jede Skala erklärt, fünf Übungen, ein 30-Tage-Plan und ein Blatt für Ihr Team. PDF per E-Mail, {price} €.",
       "h1": "Ausführlicher DISG-Bericht",
       "lead": "Der Kurzbericht nach dem Test beantwortet die Frage „Welcher Typ bin ich?“. Der ausführliche Bericht beantwortet die nächste: „Was fange ich damit an?“ Er entsteht aus Ihren eigenen Antworten: mit Ihren Zahlen, für Ihr Profil, mit Ihrem Namen auf jeder Seite.",
       "facts": ["13 Kapitel", "rund 30 Seiten", "drei Arbeitsblätter", "PDF per E-Mail"],
@@ -1000,15 +1002,15 @@
         ["Grundlage", "Beschreibung Ihres Profils", "Ihre Zahlen: Skala für Skala, die beiden Ebenen Ihrer Antworten, Ihr niedrigster Wert"],
         ["Umfang", "Jedes Thema in Kürze", "13 Kapitel, rund 30 Seiten"],
         ["Praxis", "Allgemeine Empfehlungen", "Fünf Übungen, 30-Tage-Plan, Arbeitsblatt „Das Wichtigste auf einer Seite“"],
-        ["Für andere", "Link „Teilen Sie Ihren Typ“", "Arbeitsblatt „So arbeitet man am besten mit mir“ für Führungskraft und Team"],
-        ["Preis", "Kostenlos", "{price} USD"]
+        ["Für andere", "Link zu Ihrem Ergebnis", "Arbeitsblatt „So arbeitet man am besten mit mir“ für Führungskraft und Team"],
+        ["Preis", "Kostenlos", "{price} €"]
       ],
-      "compareNote": "Der Test, das Ergebnis auf dem Bildschirm, die E-Mail mit dem Ergebnis und der Kurzbericht als PDF bleiben kostenlos. Den ausführlichen Bericht bestellen Sie nur, wenn Sie ihn möchten.",
+      "compareNote": "Der Test, das Ergebnis auf dem Bildschirm und der Kurzbericht als PDF bleiben kostenlos. Den ausführlichen Bericht bestellen Sie nur, wenn Sie ihn möchten.",
       "howTitle": "So erhalten Sie den Bericht",
       "how": [
         "Machen Sie den kostenlosen Test: 24 Blöcke, etwa 10 Minuten. Haben Sie ihn schon gemacht, brauchen Sie ihn nicht zu wiederholen: Der Bericht entsteht aus dem vorhandenen Ergebnis.",
         "Bezahlen Sie den Bericht auf der gesicherten Zahlungsseite von Prodamus, unserem Zahlungsabwickler.",
-        "Der Bericht kommt per E-Mail: als PDF im Anhang, spätestens 24 Stunden nach der Zahlung."
+        "Der Bericht kommt direkt nach der Zahlung per E-Mail: als PDF im Anhang."
       ],
       "faqTitle": "Fragen und Antworten",
       "faq": [
@@ -1016,10 +1018,10 @@
         { "q": "In welcher Form kommt der Bericht?", "a": "Als PDF im Anhang einer E-Mail, rund 30 Seiten im Format A4. Er lässt sich gut am Bildschirm lesen und sauber ausdrucken; jedes der drei Arbeitsblätter passt auf eine Seite." },
         { "q": "In welcher Sprache ist der Bericht?", "a": "Auf Deutsch. Der Bericht wurde direkt auf Deutsch geschrieben, für Leser in Deutschland, und ist keine Übersetzung." },
         { "q": "Ist das eine Diagnose oder eine Beurteilung meiner Fähigkeiten?", "a": "Nein. Der Bericht beschreibt Ihren Verhaltensstil anhand Ihrer Antworten. Er stellt keine Diagnosen, misst keine Intelligenz und sagt keinen Erfolg voraus." },
-        { "q": "Kann ich mein Geld zurückbekommen?", "a": "Wann und wie Sie Ihr Geld zurückerhalten, steht in den {refund}." }
+        { "q": "Kann ich mein Geld zurückbekommen?", "a": "Ja. Sagt Ihnen der Bericht nicht zu, schreiben Sie innerhalb von 7 Tagen nach der Zahlung an {email}: Sie erhalten Ihr Geld vollständig zurück, ohne Angabe von Gründen. Alle weiteren Fälle und den Ablauf finden Sie in den {refund}." }
       ],
       "priceLabel": "Preis",
-      "price": "{price} USD",
+      "price": "{price} €",
       "docs": "Die Leistung heißt „Ausführliches DISG-Profil“; für sie gelten unsere {offer}. Wann und wie Sie Ihr Geld zurückerhalten, steht in den {refund}.",
       "buy": {
         "testTitle": "Der Bericht entsteht aus Ihrem Testergebnis",
@@ -1032,24 +1034,33 @@
       },
       "pay": {
         "title": "Ihr Bericht entsteht aus Ihrem Testergebnis vom {date}",
-        "text": "Der Bericht kommt per E-Mail als PDF im Anhang, spätestens 24 Stunden nach der Zahlung. Der Kaufbeleg geht an dieselbe Adresse.",
-        "emailLabel": "E-Mail für Bericht und Kaufbeleg",
+        "text": "Der Bericht kommt direkt nach der Zahlung per E-Mail, als PDF im Anhang. Der Kaufbeleg geht an dieselbe Adresse.",
+        "guarantee": "Nicht zufrieden? 7 Tage Geld-zurück-Garantie.",
+        "offer": {
+          "regular": "Regulärer Preis",
+          "cta": "Jetzt für {offerPrice} € sichern",
+          "note": "Sonderpreis eine Stunde nach dem Test, danach {price} €",
+          "left": "Noch",
+          "expired": "Die Stunde nach dem Test ist vorbei: Der Bericht kostet jetzt {price} €. Klicken Sie erneut auf „Kaufen“."
+        },
+        "emailLabel": "E-Mail-Adresse für den Bericht als PDF",
+        "emailPlaceholder": "Geben Sie Ihre E-Mail-Adresse ein",
         "button": "Kaufen",
-        "note": "Mit einem Klick auf „Kaufen“ akzeptieren Sie unsere {offer}. Sie bezahlen in US-Dollar auf der gesicherten Seite von Prodamus: Ihre Kartendaten geben Sie dort ein, nicht auf dieser Website. Auf Ihrem Kontoauszug kann die Zahlung unter dem Namen simpleway.by erscheinen.",
+        "note": "Mit einem Klick auf „Kaufen“ akzeptieren Sie unsere {offer}. Sie bezahlen in Euro auf der gesicherten Seite von Prodamus: Ihre Kartendaten geben Sie dort ein, nicht auf dieser Website. Auf Ihrem Kontoauszug kann die Zahlung unter dem Namen simpleway.by erscheinen.",
         "badEmail": "Prüfen Sie die E-Mail-Adresse: An sie senden wir den Bericht und den Kaufbeleg.",
         "wait": "Die Zahlungsseite wird geöffnet …",
         "error": "Die Zahlungsseite lässt sich gerade nicht öffnen. Versuchen Sie es in ein paar Minuten noch einmal oder schreiben Sie uns an {email}.",
         "how": [
           "Machen Sie den kostenlosen Test: 24 Blöcke, etwa 10 Minuten. Haben Sie ihn schon gemacht, brauchen Sie ihn nicht zu wiederholen: Der Bericht entsteht aus dem vorhandenen Ergebnis.",
-          "Geben Sie Ihre E-Mail-Adresse ein und klicken Sie auf „Kaufen“. Sie bezahlen in US-Dollar auf der gesicherten Seite von Prodamus, unserem Zahlungsabwickler; diese Seite ist auf Englisch. Auf Ihrem Kontoauszug kann die Zahlung unter dem Namen simpleway.by erscheinen: Diesen Namen verwendet bePaid, das Unternehmen, das für Prodamus die Kartenzahlungen abwickelt.",
-          "Der Bericht kommt per E-Mail als PDF im Anhang, spätestens 24 Stunden nach der Zahlung. Der Kaufbeleg geht an dieselbe Adresse."
+          "Geben Sie Ihre E-Mail-Adresse ein und klicken Sie auf „Kaufen“. Sie bezahlen in Euro auf der gesicherten Seite von Prodamus, unserem Zahlungsabwickler; diese Seite ist auf Englisch. Auf Ihrem Kontoauszug kann die Zahlung unter dem Namen simpleway.by erscheinen: Diesen Namen verwendet bePaid, das Unternehmen, das für Prodamus die Kartenzahlungen abwickelt.",
+          "Der Bericht kommt direkt nach der Zahlung per E-Mail, als PDF im Anhang. Der Kaufbeleg geht an dieselbe Adresse."
         ],
         "thanks": {
           "title": "Vielen Dank für Ihren Kauf – Ausführlicher DISG-Bericht",
           "description": "Zahlung für den ausführlichen DISG-Bericht: wann und wohin der Bericht kommt und was zu tun ist, wenn die E-Mail ausbleibt.",
           "h1": "Vielen Dank für Ihren Kauf",
-          "lead": "Der Bericht kommt an die bei der Zahlung angegebene E-Mail-Adresse, als PDF im Anhang, spätestens 24 Stunden nach der Zahlung. Meist geht es deutlich schneller.",
-          "leadEmail": "Der Bericht kommt an {email}, als PDF im Anhang, spätestens 24 Stunden nach der Zahlung. Meist geht es deutlich schneller.",
+          "lead": "Der Bericht kommt gleich an die bei der Zahlung angegebene E-Mail-Adresse, als PDF im Anhang.",
+          "leadEmail": "Der Bericht kommt gleich an {email}, als PDF im Anhang.",
           "order": "Bestellnummer: {order}",
           "statusWait": "Wir warten auf die Zahlungsbestätigung von Prodamus.",
           "statusPaid": "Die Zahlung ist eingegangen. Ihr Bericht wird erstellt.",
@@ -1085,7 +1096,7 @@
         "remind": {
           "subject": "Ihr ausführlicher DISG-Bericht wartet auf die Zahlung",
           "intro": "Sie haben auf {site} begonnen, den ausführlichen DISG-Bericht zu kaufen, aber die Zahlung wurde nicht abgeschlossen. Ihre Bestellung ist gespeichert: Der Bericht entsteht aus Ihrem Ergebnis, für dieses Profil:",
-          "price": "Der Preis beträgt {price} USD. Nach der Zahlung kommt der Bericht als PDF im Anhang an diese Adresse, der Kaufbeleg in einer eigenen E-Mail.",
+          "price": "Der Preis beträgt {price} €. Nach der Zahlung kommt der Bericht als PDF im Anhang an diese Adresse, der Kaufbeleg in einer eigenen E-Mail.",
           "button": "Zahlung abschließen",
           "valid": "Der Link führt zur gesicherten Zahlungsseite von Prodamus und gilt bis zum {date}.",
           "footer": "Wir senden Ihnen diese E-Mail nur einmal, weil auf {site} mit dieser Adresse eine Bestellung (Nr. {order}) aufgegeben wurde. Wenn Sie den Bericht nicht mehr brauchen oder die Bestellung nicht aufgegeben haben, müssen Sie nichts tun: Die Bestellung wird automatisch storniert, und Sie erhalten dazu keine weiteren Nachrichten."
@@ -1105,25 +1116,20 @@
       },
       "block": {
         "eyebrow": "Ausführlicher Bericht",
-        "title": "Was tun mit Ihrem Profil? 13 Kapitel auf Basis Ihrer Antworten",
-        "hook": "Ihr niedrigster Wert: {k}, {name} – {pct} %. Der ausführliche Bericht erklärt, was das bedeutet, und enthält eine Übung dazu.",
+        "title": "Mehr über Ihr Profil: über 25 Seiten mit ausführlicher Analyse",
+        "hook": "Ihr niedrigster Wert: {k}, {name} – {pct} %. Der ausführliche Bericht erklärt, was das bedeutet und wie Sie damit arbeiten.",
         "list": [
-          "Skala für Skala: was jede Ihrer vier Zahlen bedeutet",
-          "Fünf blinde Flecken und fünf Übungen – mit Anzeichen dafür, dass sie wirken",
-          "So sprechen Sie mit Menschen jedes Stils: Gesprächstechniken und fertige Formulierungen",
-          "Drei Arbeitsblätter: 30-Tage-Plan, das Wichtigste auf einer Seite, ein Blatt fürs Team"
+          "Was jeder Ihrer vier Werte bedeutet",
+          "Fünf blinde Flecken und fünf Übungen, um daran zu arbeiten",
+          "Wie Sie mit Menschen verschiedener Typen umgehen: Gesprächstechniken und fertige Formulierungen",
+          "Ein 30-Tage-Entwicklungsplan"
         ],
         "sample": "Seiten aus dem Bericht einer erfundenen Teilnehmerin",
-        "price": "{price} USD · PDF per E-Mail",
+        "price": "{price} € · PDF per E-Mail",
         "button": "Ausführlichen Bericht holen",
-        "free": "Test und Kurzbericht bleiben kostenlos.",
-        "topTitle": "Ausführlicher Bericht zu Ihrem Ergebnis",
-        "topText": "13 Kapitel darüber, was Sie mit Ihrem Profil anfangen können: jede Skala erklärt, fünf Übungen, ein 30-Tage-Plan.",
-        "topButton": "Bericht holen – {price} USD",
-        "anchor": "Was im Bericht steht"
+        "free": "Test und Kurzbericht bleiben kostenlos."
       },
       "promo": {
-        "lead": "Der Bericht entsteht aus Ihren Antworten und behandelt:",
         "hooks": {
           "low": "{k} ({name}), Ihr niedrigster Wert mit {pct} %: was er bedeutet",
           "flat": "Ihr ausgeglichenes Profil: was es bedeutet und wie Sie es lesen",
@@ -1137,7 +1143,7 @@
           "layersSame": "Angepasstes und natürliches Verhalten stimmen überein ({k}): Vorteil und Risiko"
         },
         "tail": "Insgesamt 13 Kapitel, darunter fünf Übungen und ein 30-Tage-Plan.",
-        "button": "Ausführlicher Bericht – {price} USD",
+        "button": "Ihren persönlichen ausführlichen Bericht für {price} € kaufen",
         "close": "Ausblenden",
         "homeLabel": "Ihr Ergebnis vom {date}",
         "homeOpen": "Ergebnis öffnen",
@@ -1158,6 +1164,19 @@
       "h1": "Newsletter abbestellen",
       "lead": "Klicken Sie auf die Schaltfläche, und disc-test.org sendet keinen Newsletter mehr an die Adresse, die die E-Mail mit diesem Link erhalten hat. Die E-Mail mit Ihrem Testergebnis ist davon nicht betroffen: Sie wird nur verschickt, wenn Sie sie selbst anfordern."
     },
+    "subscribeConfirm": {
+      "title": "Newsletter-Anmeldung – DISG-Test",
+      "description": "Bestätigung Ihrer Anmeldung zum Newsletter von disc-test.org über den Link in der E-Mail.",
+      "h1": "Newsletter-Anmeldung",
+      "lead": "An die Adresse, die die E-Mail mit diesem Link erhalten hat, kommt künftig der Newsletter von disc-test.org: neue Tests, Tipps für die berufliche Entwicklung und die Jobsuche, Neuigkeiten der Website und Werbeangebote."
+    },
+    "subscribeMail": {
+      "subject": "Bitte bestätigen Sie Ihre Anmeldung zum Newsletter von disc-test.org",
+      "intro": "Hallo, diese Adresse wurde im Anmeldeformular für den Newsletter von {site} angegeben: neue Tests, Tipps für die berufliche Entwicklung und die Jobsuche, Neuigkeiten der Website und Werbeangebote.",
+      "action": "Damit Sie die E-Mails erhalten, bestätigen Sie bitte Ihre Anmeldung:",
+      "button": "Anmeldung bestätigen",
+      "footer": "Wenn Sie sich nicht angemeldet haben, müssen Sie nichts tun: Ohne Bestätigung erhalten Sie keinen Newsletter, und die Adresse wird nach 7 Tagen gelöscht."
+    },
     "results": {
       "title": "DISG-Auswertung: Ergebnis, Diagramm und Profil verstehen",
       "description": "DISG-Ergebnis verstehen: drei Linien im Diagramm, Prozentwerte, Haupt- und Nebenstil, ausgeglichenes Profil. Beispiele zur Auswertung und typische Lesefehler.",
@@ -1167,7 +1186,7 @@
         {
           "h": "Woraus das Ergebnis besteht",
           "p": [
-            "Nach dem letzten Block sehen Sie vier Elemente: den Profilnamen mit einem oder zwei Buchstaben (zum Beispiel „Pionier, DI“), ein Diagramm mit drei Linien, vier Skalen mit Prozentwerten und eine Textbeschreibung: Kernmerkmale, Stärken, Entwicklungsfelder, Motivation, Verhalten unter Stress und Empfehlungen, wie man am besten mit Ihnen kommuniziert. Denselben Bericht können Sie sich per E-Mail zusenden lassen und über den Link öffnen.",
+            "Nach dem letzten Block sehen Sie vier Elemente: den Profilnamen mit einem oder zwei Buchstaben (zum Beispiel „Pionier, DI“), ein Diagramm mit drei Linien, vier Skalen mit Prozentwerten und eine Textbeschreibung: Kernmerkmale, Stärken, Entwicklungsfelder, Motivation, Verhalten unter Stress und Empfehlungen, wie man am besten mit Ihnen kommuniziert. Denselben Bericht können Sie als PDF speichern und über den Link öffnen.",
             "Alle Zahlen im Bericht ergeben sich aus Ihren Markierungen in den 24 Blöcken. In jedem Block haben Sie eine Aussage als „trifft am meisten zu“ und eine als „trifft am wenigsten zu“ gewählt, und jede Aussage gehört zu einem der Stile D, I, S oder C. Deshalb gibt es für jeden Stil zwei Zahlen: wie oft Sie ihn als „am meisten“ und wie oft als „am wenigsten“ gewählt haben."
           ]
         },
@@ -1348,7 +1367,7 @@
           "h": "Wann die Papierversion sinnvoll ist",
           "p": [
             "Der Papiertest ist praktisch in Trainings oder Strategie-Workshops, bei denen nicht alle Teilnehmenden einen Computer haben, in Lerngruppen und überall dort, wo das Handy nicht benutzt werden darf. Manche konzentrieren sich auf Papier leichter: markiert, Seite umgeblättert, keine Ablenkung durch Benachrichtigungen.",
-            "Haben die Teilnehmenden ihr Handy dabei, ist die Online-Version einfacher: Sie wertet das Ergebnis selbst aus, zeichnet das Diagramm, schickt den Bericht per E-Mail und liefert einen Link zum Teilen. Für Teams gibt es außerdem den Admin-Bereich, in dem die Ergebnisse aller Teilnehmenden gesammelt werden."
+            "Haben die Teilnehmenden ihr Handy dabei, ist die Online-Version einfacher: Sie wertet das Ergebnis selbst aus, zeichnet das Diagramm, speichert den Bericht als PDF und liefert einen Link zum Teilen. Für Teams gibt es außerdem den Admin-Bereich, in dem die Ergebnisse aller Teilnehmenden gesammelt werden."
           ]
         },
         {
@@ -1398,7 +1417,7 @@
           "h": "So führen Sie den Test auf dieser Seite im Team durch",
           "ol": [
             "Machen Sie den Test zuerst selbst: So wissen Sie, was die Teilnehmenden sehen, und können einen Beispielbericht zeigen.",
-            "Schicken Sie den Kolleginnen und Kollegen den Link zur Seite in der passenden Sprache. Eine Anmeldung ist nicht nötig, der Test dauert etwa zehn Minuten; der Bericht erscheint auf dem Bildschirm, und dort kann jeder Name und E-Mail-Adresse angeben, um ihn zusätzlich per E-Mail zu erhalten.",
+            "Schicken Sie den Kolleginnen und Kollegen den Link zur Seite in der passenden Sprache. Eine Anmeldung ist nicht nötig, der Test dauert etwa zehn Minuten; der Bericht erscheint sofort auf dem Bildschirm, jeder kann ihn als PDF speichern und Ihnen den Link zum Ergebnis schicken.",
             "Bitten Sie jeden, Ihnen den Link zum Ergebnis oder den Code aus dem Bericht weiterzuleiten. Das Ergebnis sieht nur, wer den Link hat; an die Führungskraft werden keine Daten automatisch übermittelt.",
             "Öffnen Sie den Admin-Bereich (Link in der Fußzeile) und fügen Sie die erhaltenen Codes ein. Der Bereich erstellt eine Tabelle mit Namen, Profilen und Punkten; sie lässt sich nach Excel kopieren. Die Tabelle wird nur in Ihrem Browser gespeichert.",
             "Setzen Sie ein gemeinsames Treffen an: Erklären Sie die vier Stile, zeigen Sie die Teamkarte und lassen Sie jeden erzählen, was im Bericht ins Schwarze getroffen hat und was nicht."
@@ -1741,11 +1760,11 @@
         },
         {
           "h": "Ergebnis sofort",
-          "p": "Der Kurzbericht erscheint auf dem Bildschirm, sobald Sie den letzten Block beantwortet haben. Der ausführliche Bericht wird direkt nach der Zahlung zusammengestellt – zu jeder Tages- und Nachtzeit, ohne Termin und ohne Warteschlange: Die E-Mail kommt meist innerhalb weniger Minuten, spätestens 24 Stunden nach der Zahlung."
+          "p": "Der Kurzbericht erscheint auf dem Bildschirm, sobald Sie den letzten Block beantwortet haben. Der ausführliche Bericht wird zu jeder Tages- und Nachtzeit zusammengestellt, ohne Termin und ohne Warteschlange: Die E-Mail damit kommt direkt nach der Zahlung."
         },
         {
           "h": "Günstiger Preis",
-          "p": "Weil die Berichte automatisch entstehen, können Test und Kurzbericht kostenlos bleiben und der ausführliche Bericht für {price} USD angeboten werden."
+          "p": "Weil die Berichte automatisch entstehen, können Test und Kurzbericht kostenlos bleiben und der ausführliche Bericht für {price} € angeboten werden."
         },
         {
           "h": "Ihre Antworten gehen an keine KI",
@@ -1820,7 +1839,7 @@
         "Ein Diagramm mit drei Linien und die Ausprägung jedes Stils in Prozent",
         "Stärken, Entwicklungsfelder, Motivation und Verhalten unter Druck",
         "Tipps, wie man am besten mit Ihnen kommuniziert und zusammenarbeitet",
-        "Einen Link zum Bericht, Speichern als PDF und auf Wunsch eine E-Mail – ohne Anmeldung und ohne kostenpflichtige Versionen"
+        "Einen Link zum Bericht und Speichern als PDF – ohne Anmeldung und ohne kostenpflichtige Versionen"
       ],
       "calcTitle": "So wird das Ergebnis berechnet",
       "calc": "In jedem der 24 Blöcke markieren Sie die Aussage, die am meisten auf Sie zutrifft, und die, die am wenigsten auf Sie zutrifft. Jede Aussage gehört zu einem der Stile D, I, S oder C. Für jeden Stil wird die Differenz „am meisten“ minus „am wenigsten“ berechnet – von −24 bis +24 – und in Prozent umgerechnet. Der Hauptstil ist der Stil mit dem höchsten Wert; ein Nebenstil zählt, wenn er ebenfalls deutlich ausgeprägt ist.",
@@ -1859,7 +1878,7 @@
   "ui": {
     "langLabel": "Sprache",
     "footer": "24 Blöcke · etwa 10 Minuten · keine richtigen oder falschen Antworten",
-    "privacy": "Ihre Antworten bleiben in Ihrem Browser; für die Gesamtstatistik erhält der Server der Website nur Vermerke über Ihren Besuch und den Testbeginn sowie das ermittelte Profil – ohne Namen und ohne Antworten. Wenn Sie Ihre E-Mail-Adresse angeben, wird das Ergebnis dorthin gesendet und in der Ergebnisdatenbank des Seitenbetreibers gespeichert. Wenn Sie auf „Als PDF speichern“ klicken, gehen Ihre Antworten und das Testdatum – ohne Namen und E-Mail-Adresse – an den Server der Website; er erstellt daraus die Datei mit dem Kurzbericht, gibt sie Ihnen zurück und speichert nichts.",
+    "privacy": "Ihre Antworten bleiben in Ihrem Browser; für die Gesamtstatistik erhält der Server der Website nur Vermerke über Ihren Besuch und den Testbeginn sowie das ermittelte Profil – ohne Namen und ohne Antworten. Wenn Sie Ihre E-Mail-Adresse angeben, wird das Ergebnis dorthin gesendet und in der Ergebnisdatenbank des Seitenbetreibers gespeichert. Wenn Sie den Newsletter auf der Startseite abonnieren, werden in dieser Datenbank Ihre E-Mail-Adresse und die Sprachversion der Website gespeichert. Wenn Sie auf „Als PDF speichern“ klicken, gehen Ihre Antworten und das Testdatum – ohne Namen und E-Mail-Adresse – an den Server der Website; er erstellt daraus die Datei mit dem Kurzbericht, gibt sie Ihnen zurück und speichert nichts.",
     "legal": "Manukyan Armen · Steuernummer (INN) {inn}",
     "rights": "© {year} disc-test.org. Das Kopieren der Texte dieser Website und der Berichte ist ohne schriftliche Genehmigung untersagt.",
     "adminLink": "Admin-Bereich",
@@ -1905,6 +1924,7 @@
     "test.missing": "Block {n} ist nicht ausgefüllt",
 
     "report.own": "Ihr Ergebnis",
+    "report.taken": "Test absolviert am {date}",
     "report.other": "Ergebnis der teilnehmenden Person",
     "report.backAdmin": "← Zur Ergebnisliste",
     "report.flat": "Ihr Profil ist ausgeglichen: Kein Stil tritt deutlich hervor. Meist bedeutet das Flexibilität im Verhalten, manchmal aber auch Unsicherheit beim Antworten. Der Hauptstil wurde nach dem höchsten Wert bestimmt.",
@@ -1925,16 +1945,14 @@
     "report.communication": "So kommuniziert man am besten mit Ihnen",
     "report.stress": "Unter Stress",
     "report.environment": "Ideales Umfeld",
-    "report.moreLink": "Mehr dazu, wie Sie Ihr DISG-Profil lesen →",
-    "report.color": "Ihre DISG-Farbe: {color}",
 
     "share.title": "Ergebnis speichern",
     "share.text": "Ihr Ergebnis ist in Ihrem Browser gespeichert. Kopieren Sie den Link, um den Bericht später oder auf einem anderen Gerät zu öffnen, oder senden Sie ihn an die Person, die Sie um den Test gebeten hat.",
-    "share.codeAria": "Ergebniscode",
-    "share.codeTitle": "Ergebniscode",
     "share.copyLink": "Link kopieren",
-    "share.copyCode": "Code kopieren",
-    "share.pdf": "Als PDF speichern",
+    "share.profile": "Profil teilen",
+    "share.saveProfile": "Profil speichern",
+    "share.msg": "DISG-Profil: {name} ({key})",
+    "share.close": "Schließen",
     "share.pdfWait": "PDF wird erstellt …",
     "share.pdfFail": "Das PDF konnte nicht heruntergeladen werden. Es öffnet sich das Druckfenster – dort können Sie die Seite als PDF speichern.",
     "share.restart": "Test wiederholen",
@@ -1950,11 +1968,6 @@
     "share.send": "Per E-Mail zusenden",
     "share.mailtoHint": "Ihr E-Mail-Programm öffnet sich mit einer fertigen Nachricht an diese Adresse – Sie müssen nur noch auf „Senden“ klicken.",
     "share.mailtoOpened": "Die E-Mail mit Ihrem Ergebnis ist in Ihrem E-Mail-Programm geöffnet – senden Sie sie an {email}.",
-    "share.typeTitle": "Teilen Sie Ihren Typ",
-    "share.typeText": "Der Link führt zur öffentlichen Beschreibung des Profils „{name}“; er enthält weder Ihren Namen noch Ihre E-Mail-Adresse oder Ihre Antworten.",
-    "share.type": "Typ teilen",
-    "share.via": "Auf {net} teilen",
-    "share.typeMsg": "Mein DISG-Typ ist {name} ({key}). Und welcher Typ sind Sie? Machen Sie den kostenlosen Test – 10 Minuten.",
 
     "invite.title": "Ihr Bekannter ist „{name}“. Welcher Typ sind Sie?",
     "invite.text": "Machen Sie den kostenlosen DISG-Test: 24 Blöcke, etwa 10 Minuten, ohne Anmeldung. Sie erfahren Ihren Typ und wie Sie am besten zusammenarbeiten und kommunizieren.",
@@ -2090,7 +2103,7 @@
     "pages.profiles.colPure": "Ohne Nebenstil",
 
     "cta.title": "Finden Sie Ihr DISG-Profil",
-    "cta.text": "Kostenloser Test: 24 Blöcke, etwa 10 Minuten, Ergebnis sofort und per E-Mail.",
+    "cta.text": "Kostenloser Test: 24 Blöcke, etwa 10 Minuten, Ergebnis sofort.",
     "cta.button": "Test starten",
     "cta.inline": "Finden Sie Ihren DISG-Stil – kostenloser Test in 10 Minuten, ohne Anmeldung.",
     "cta.inlineProfile": "Erkennen Sie sich wieder? Prüfen Sie Ihren DISG-Typ – kostenloser Test in 10 Minuten.",
@@ -2120,6 +2133,20 @@
     "unsub.done": "Erledigt: disc-test.org sendet an diese Adresse keinen Newsletter mehr.",
     "unsub.failed": "Die Abmeldung hat nicht geklappt. Bitte versuchen Sie es noch einmal oder schreiben Sie uns: {email}.",
     "unsub.bad": "Der Link enthält keinen Abmeldecode. Öffnen Sie den vollständigen Link aus der E-Mail oder schreiben Sie uns: {email}.",
+    "nl.title": "Newsletter abonnieren",
+    "nl.text": "Neue Tests und Tipps für Ihre Karriere und die Jobsuche – direkt in Ihr Postfach.",
+    "nl.emailLabel": "Ihre E-Mail-Adresse",
+    "nl.button": "Abonnieren",
+    "nl.consent": "Ich bin einverstanden, an diese Adresse den Newsletter von disc-test.org zu erhalten: neue Tests, Tipps für die berufliche Entwicklung und die Jobsuche, Neuigkeiten der Website und Werbeangebote. Sie können sich jederzeit über den Link in jeder E-Mail abmelden.",
+    "nl.consentRequired": "Bitte kreuzen Sie die Einwilligung in den Erhalt des Newsletters an.",
+    "nl.sending": "E-Mail wird gesendet…",
+    "nl.sent": "Fast geschafft: Wir haben eine E-Mail an {email} gesendet. Öffnen Sie sie und klicken Sie auf „Anmeldung bestätigen“ – sonst erhalten Sie keinen Newsletter.",
+    "nl.failed": "Die Anmeldung hat nicht geklappt. Bitte versuchen Sie es später noch einmal.",
+    "subc.button": "Anmeldung bestätigen",
+    "subc.wait": "Ihre Anmeldung wird bestätigt…",
+    "subc.done": "Ihre Anmeldung ist bestätigt. Abmelden können Sie sich jederzeit über den Link in jeder Newsletter-E-Mail.",
+    "subc.bad": "Der Link ist unvollständig oder abgelaufen: Die Anmeldung lässt sich nur innerhalb von 7 Tagen bestätigen. Melden Sie sich auf der Startseite erneut an oder schreiben Sie uns: {email}.",
+    "subc.failed": "Die Bestätigung hat nicht geklappt. Bitte versuchen Sie es noch einmal oder schreiben Sie uns: {email}.",
     "contact.privacyNote": "Name, E-Mail-Adresse, Betreff, Nachricht und Dateien werden per E-Mail an {email} gesendet und nur für die Antwort an Sie verwendet.",
     "contact.mailtoNote": "Der Versanddienst ist noch nicht angebunden: Die Schaltfläche „Senden“ öffnet Ihr E-Mail-Programm mit der vorbereiteten Nachricht; angehängte Dateien müssen Sie der E-Mail selbst hinzufügen.",
     "contact.mailSubject": "Nachricht von der Website: {name}",
@@ -2138,7 +2165,7 @@
     "pd.consentLink": "Einwilligung in die Verarbeitung personenbezogener Daten",
     "pd.required": "Bitte bestätigen Sie die Einwilligung in die Verarbeitung personenbezogener Daten: Ohne sie können wir Ihre Daten nicht annehmen.",
     "pd.cookieAsk": "Diese Website speichert Ihren Fortschritt, Ihr Ergebnis und die gewählte Sprache im lokalen Speicher des Browsers. Mit Ihrer Einwilligung erfasst ein Webanalysesystem anonymisierte Besuchsstatistiken und eine Aufzeichnung der Aktionen auf der Seite, damit wir die Website verbessern können. Ihr Name, Ihre E-Mail-Adresse und Ihr Ergebnis werden nicht an das Analysesystem übermittelt.",
-    "pd.cookieDetails": "Im Browser gespeichert werden: Name und E-Mail-Adresse, falls Sie sie angegeben haben; Ihre Antworten und der unvollendete Fortschritt; Ihr letztes Ergebnis; die gewählte Sprache; ein Vermerk, dass Sie diesen Hinweis gesehen haben. Diese Daten bleiben auf Ihrem Gerät und werden beim Löschen der Website-Daten entfernt. Der Hosting-Anbieter erhält die üblichen technischen Anfragedaten. Wenn Sie die Website an einem Tag zum ersten Mal öffnen, geht ein anonymer Besuchsvermerk an den Server der Website: nur die Sprachversion der Website; der Server speichert ihn mit der Uhrzeit des Eingangs, und Ihr Browser merkt sich das Datum, damit der Vermerk am selben Tag nicht noch einmal gesendet wird. Damit zählen wir, wie viele Menschen die Website besuchen. Wenn Sie den Test beginnen, geht ein anonymer Startvermerk an den Server der Website: nur die Sprachversion der Website. Wenn Sie den Test abschließen, geht ein anonymer Eintrag für die Gesamtstatistik an den Server der Website: das ermittelte Profil und die Sprachversion der Website – ohne Namen, E-Mail-Adresse und Antworten. Wenn Sie auf „Als PDF speichern“ klicken, gehen Ihre Antworten und das Testdatum – ohne Namen und E-Mail-Adresse – an den Server der Website; er erstellt daraus die Datei mit dem Kurzbericht, gibt sie Ihnen zurück und speichert nichts. Wenn Sie das Ergebnis per E-Mail senden lassen, werden Name, E-Mail-Adresse und Antworten an den Server der Website übermittelt; er sendet Ihnen die E-Mail mit dem Ergebnis und speichert Name, E-Mail-Adresse, Datum und Ergebnis in der Ergebnisdatenbank des Seitenbetreibers. Das Webanalysesystem erhält die Seitenadresse ohne den Ergebniscode, die Herkunft des Besuchs, Geräte- und Browsertyp sowie eine anonymisierte Aufzeichnung der Aktionen auf der Seite (die Felder für Name und E-Mail, der Ergebnislink und der Code sind ausgenommen) und setzt eigene Cookies. Sie können es in den Browsereinstellungen oder mit einem Tracker-Blocker blockieren. Werbe-Tracker werden nicht verwendet.",
+    "pd.cookieDetails": "Im Browser gespeichert werden: Name und E-Mail-Adresse, falls Sie sie angegeben haben; Ihre Antworten und der unvollendete Fortschritt; Ihr letztes Ergebnis; der Zeitpunkt, zu dem Sie den Test zum ersten Mal abgeschlossen haben, für die Frist des Sonderpreises des Berichts; die gewählte Sprache; ein Vermerk, dass Sie diesen Hinweis gesehen haben. Diese Daten bleiben auf Ihrem Gerät und werden beim Löschen der Website-Daten entfernt. Der Hosting-Anbieter erhält die üblichen technischen Anfragedaten. Wenn Sie die Website an einem Tag zum ersten Mal öffnen, geht ein anonymer Besuchsvermerk an den Server der Website: nur die Sprachversion der Website; der Server speichert ihn mit der Uhrzeit des Eingangs, und Ihr Browser merkt sich das Datum, damit der Vermerk am selben Tag nicht noch einmal gesendet wird. Damit zählen wir, wie viele Menschen die Website besuchen. Wenn Sie den Test beginnen, geht ein anonymer Startvermerk an den Server der Website: nur die Sprachversion der Website. Wenn Sie den Test abschließen, geht ein anonymer Eintrag für die Gesamtstatistik an den Server der Website: das ermittelte Profil und die Sprachversion der Website – ohne Namen, E-Mail-Adresse und Antworten. Wenn Sie auf „Als PDF speichern“ klicken, gehen Ihre Antworten und das Testdatum – ohne Namen und E-Mail-Adresse – an den Server der Website; er erstellt daraus die Datei mit dem Kurzbericht, gibt sie Ihnen zurück und speichert nichts. Wenn Sie das Ergebnis per E-Mail senden lassen, werden Name, E-Mail-Adresse und Antworten an den Server der Website übermittelt; er sendet Ihnen die E-Mail mit dem Ergebnis und speichert Name, E-Mail-Adresse, Datum und Ergebnis in der Ergebnisdatenbank des Seitenbetreibers. Wenn Sie den Newsletter auf der Startseite abonnieren, werden E-Mail-Adresse und Sprachversion der Website an den Server der Website übermittelt; er sendet Ihnen eine E-Mail mit einem Bestätigungslink und speichert die Adresse in derselben Datenbank; wird die Anmeldung nicht bestätigt, wird die Adresse nach 7 Tagen gelöscht. Das Webanalysesystem erhält die Seitenadresse (auf der Ergebnisseite zusammen mit dem Ergebniscode: Ihre Antworten, das Testdatum und Ihr Name, falls Sie ihn angegeben haben, aber nicht Ihre E-Mail-Adresse), die Herkunft des Besuchs, Geräte- und Browsertyp sowie eine Aufzeichnung der Aktionen auf der Seite (die Felder für Name und E-Mail sind ausgenommen) und setzt eigene Cookies. Sie können es in den Browsereinstellungen oder mit einem Tracker-Blocker blockieren. Werbe-Tracker werden nicht verwendet.",
     "pd.cookieChange": "Cookie-Auswahl ändern",
 
     "print.title": "DISG-Test zum Ausdrucken: Fragebogen mit Schlüssel und Auswertung",

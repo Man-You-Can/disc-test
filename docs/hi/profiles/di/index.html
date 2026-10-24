@@ -230,45 +230,39 @@ html[lang=ar] body,html[lang=hi] body{font-size:17px;line-height:1.65}
 .service .price{flex:none;color:var(--ink);font-family:var(--font-head);font-weight:500;font-size:28px;line-height:1.1}
 .service .price small{display:block;font-family:var(--font-body);font-weight:400;font-size:13px;color:var(--muted);margin-bottom:4px}
 /* расширенный отчёт: блок на экране результата (.xoffer, .xanchor) и страница отчёта (.xfacts, .xsample, .xbuy) */
-.xtop{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;background:var(--surface);border:1px solid var(--line);border-inline-start:4px solid var(--k,var(--ink));border-radius:12px;padding:14px 18px;margin:0 0 18px}
-.xtop div{flex:1 1 280px}
-.xtop b{font-family:var(--font-head);font-weight:500;font-size:16px}
-.xtop p{margin:4px 0 0;font-size:14px;color:var(--muted)}
-/* личные зацепки в верхнем призыве (content.product.promo): что в отчёте разобрано по числам этого участника */
-.xtop .xhooks{margin:6px 0 4px;padding-inline-start:18px;font-size:14px}
-.xtop .xhooks li{margin-bottom:4px}
-/* закреплённая кнопка отчёта на экране результата (телефон): видна, пока верхний призыв и нижний блок за краем экрана */
+/* закреплённая кнопка расширенного отчёта (src/common.js): с 2026-10-22 (решения заказчика) — на всех страницах сайта у того, кто прошёл тест,
+   пока он не закроет её крестиком, на любой ширине экрана: по центру внизу, не шире 560 px, на телефоне — во всю ширину с полями 12 px;
+   снизу у страницы запас под кнопку (body.has-xbar), чтобы она не закрывала конец страницы; плавающая кнопка «Пройти тест» в это время не нужна */
 .xbar{display:none}
+.xbar.show{display:flex;gap:8px;position:fixed;left:50%;transform:translateX(-50%);width:min(560px,calc(100% - 24px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:15}
+.xbar .btn{flex:1 1 auto;white-space:normal;text-align:center;box-shadow:0 8px 24px -6px rgba(0,0,0,.35)}   /* длинная надпись на телефоне переносится */
+/* крестик (с 2026-10-22, по просьбе заказчика): маленький кружок в правом верхнем углу плашки; область нажатия шире кружка (::before) */
+.xbar-x{position:absolute;top:-7px;inset-inline-end:-7px;display:flex;align-items:center;justify-content:center;width:16px;height:16px;padding:0;border:1px solid var(--line-strong);border-radius:50%;background:var(--surface);color:var(--muted);font-size:12px;line-height:1;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.3)}
+.xbar-x::before{content:"";position:absolute;inset:-12px}
+body.has-xbar:not(.has-consent){padding-bottom:88px}
+body.has-consent .xbar,body.has-xbar .btn.ctafloat.show{display:none}
 @media (max-width:640px){
-  .xbar.show{display:flex;gap:8px;position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:15}
-  .xbar .btn{flex:1 1 auto;box-shadow:0 8px 24px -6px rgba(0,0,0,.35)}
-  .xbar-x{flex:none;width:46px;border:1px solid var(--line-strong);border-radius:12px;background:var(--surface);color:var(--muted);font-size:22px;line-height:1;cursor:pointer;box-shadow:0 8px 24px -6px rgba(0,0,0,.35)}
-  body.has-consent .xbar{display:none}
-  .xtop .xhooks li:nth-child(n+3){display:none}
+  .xbar.show{bottom:calc(12px + env(safe-area-inset-bottom,0px))}
+  body.has-xbar:not(.has-consent){padding-bottom:84px}
 }
-/* вернувшийся посетитель: карточка прошлого результата с личными зацепками и крупной кнопкой отчёта под заголовком; «Пройти тест заново» — ссылка ниже */
+/* вернувшийся посетитель: карточка прошлого результата под заголовком; с 2026-10-22 — как блок «Расширенный отчёт» экрана результата
+   (класс share xoffer: фон в цвет стиля, заголовок, строка о самой низкой шкале, тезисы, листы образца, форма с e-mail и «Купить»); «Пройти тест заново» — ссылка ниже */
 .lastcard{background:var(--surface);border:1px solid var(--line);border-inline-start:4px solid var(--k,var(--ink));border-radius:14px;padding:16px 20px 18px;margin:4px 0 22px;box-shadow:0 10px 28px -18px rgba(0,0,0,.35)}
 .lchead{font-size:14px;color:var(--muted)}
+.lastcard .lchead{margin-bottom:16px}
 .lastname{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 14px;margin-top:4px}
 .lastcard b{display:inline-flex;align-items:baseline;gap:8px;font-family:var(--font-head);font-weight:500;font-size:20px;color:var(--ink)}
-.lclead{margin:14px 0 0;font-weight:600}
-.lastcard .xhooks{margin:6px 0 0;padding-inline-start:20px}
-.lastcard .xhooks li{margin-bottom:4px}
-.lctail{margin:8px 0 0;font-size:14px;color:var(--muted)}
-.lctail a{color:var(--ink);text-underline-offset:3px;white-space:nowrap}
-.lastcard .btn{margin-top:16px;font-size:18px;padding:16px 30px;box-shadow:0 8px 22px -10px rgba(0,0,0,.5)}
+.lastcard>.btn{margin-top:16px;font-size:18px;padding:16px 30px;box-shadow:0 8px 22px -10px rgba(0,0,0,.5)}
+.lastcard .xinline{margin-top:16px}
 .startrow.again{margin-top:-4px}
-@media (max-width:640px){.lastcard .xhooks li:nth-child(n+3){display:none}}
-@media (max-width:480px){.lastcard{padding:14px 16px 16px}.lclead{margin-top:12px}.lclead,.lastcard .xhooks{font-size:15px}.lastcard .btn{display:flex;width:100%;margin-top:14px}}
-/* ссылки под описанием профиля на экране результата: плитки с отметкой цвета ведущего стиля */
-.rlinks{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:16px 0}
-.rlinks a{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--surface);border:1px solid var(--line);border-inline-start:3px solid var(--k,var(--ink));border-radius:12px;padding:12px 14px;color:var(--ink);text-decoration:none;font-size:15px;font-weight:600;line-height:1.35}
-.rlinks a:hover{border-color:var(--line-strong);border-inline-start-color:var(--k,var(--ink))}
-.rlinks a i{font-style:normal;color:var(--muted);flex:none}
-.rlinks .dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--k);margin-inline-end:8px;vertical-align:1px}
+@media (max-width:480px){.lastcard>.btn{display:flex;width:100%;margin-top:14px}}
 .xoffer{scroll-margin-top:76px}
+.xoffer+.card{margin-top:16px}
+/* блок расширенного отчёта выделен фоном в цвет ведущего стиля участника (--k), чтобы бросался в глаза (решение заказчика от 2026-10-21);
+   без color-mix — прежний фон карточки и цветная полоса слева */
+.share.xoffer{border-inline-start:4px solid var(--k,var(--ink));background:color-mix(in srgb,var(--k,var(--ink)) 13%,var(--surface));border-color:color-mix(in srgb,var(--k,var(--ink)) 45%,var(--line));border-inline-start-color:var(--k,var(--ink))}
 .xoffer h2{margin:0 0 12px;font-size:22px}
-.xoffer .xhook{background:var(--soft);border-radius:10px;padding:12px 14px;margin:0 0 16px}
+.xoffer .xhook{background:var(--surface);border-radius:10px;padding:12px 14px;margin:0 0 16px}
 .xgrid{display:grid;grid-template-columns:1fr auto;gap:16px 28px;align-items:start}
 .xgrid ul{margin:0;padding-inline-start:20px}
 .xgrid li{margin-bottom:8px}
@@ -302,6 +296,80 @@ html[lang=ar] body,html[lang=hi] body{font-size:17px;line-height:1.65}
 .paymark.ok{color:var(--s)}
 .paymark.fail{color:var(--d)}
 @media (max-width:480px){.xpay .btn{flex:1 1 auto}}
+/* цена крупно над кнопкой «Купить» (форма на экране результата, add({price})); на телефоне — во всю ширину */
+.xpay .xbuyact{display:flex;flex-direction:column;align-items:stretch;gap:8px}
+.xpay .xbig{font-family:var(--font-head);font-weight:500;font-size:30px;line-height:1.1;color:var(--ink);text-align:center;white-space:nowrap}
+@media (max-width:480px){.xpay .xbuyact{flex:1 1 100%}}
+/* специальная цена на час после теста (src/pay.js, T.offer): обычная цена зачёркнута, под кнопкой — обратный отсчёт */
+.xbig.xdual,.price .xdual{white-space:normal}
+.xdual s.xold,.xdual .xnew{white-space:nowrap}
+@media (max-width:480px){.xpay .xbig.xdual{font-size:25px}}
+s.xold{font-size:.72em;font-weight:500;color:var(--muted);text-decoration:line-through 1.5px var(--d);margin-right:.25em;vertical-align:.08em}
+.vh{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.xdeal{flex:1 1 100%;display:flex;align-items:center;justify-content:space-between;gap:14px;background:#C9453D;color:#fff;border-radius:12px;padding:12px 16px}
+.xdeal[hidden]{display:none}
+.xdeal-t{min-width:0}
+.xdeal-t b{display:block;font-family:var(--font-head);font-weight:500;font-size:20px;line-height:1.2}
+.xdeal-t small{display:block;margin-top:4px;font-size:13px;line-height:1.35;opacity:.92}
+.xclock{flex:none;text-align:center;line-height:1}
+.xclock small{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.06em;opacity:.9;margin-bottom:4px}
+.xclock span{display:block;font-family:var(--font-head);font-weight:500;font-size:32px;font-variant-numeric:tabular-nums;background:rgba(0,0,0,.18);border-radius:8px;padding:6px 10px;min-width:3.6em}
+@media (max-width:480px){.xdeal{padding:12px}.xdeal-t b{font-size:18px}.xclock span{font-size:28px}}
+/* строка гарантии возврата у кнопки «Купить» (content.product.pay.guarantee): на странице отчёта и в форме на экране результата */
+p.xguar{flex:1 1 100%;margin:0;font-size:14px;font-weight:600;color:var(--ink)}
+.service p.xguar{margin-top:-6px}
+/* код доступа от организации в форме покупки (src/pay.js, payCodeHTML): в режиме кода цена, «Купить» и условия покупки прячутся */
+.xpay .xcode{flex:1 1 100%;margin:0}
+.xpay .xcodelink{font-size:14px}
+.xpay .xcodebox{display:flex;flex-wrap:wrap;align-items:flex-end;gap:12px 20px;margin-top:12px}
+.xpay .xcodebox[hidden]{display:none}
+.xpay .xcodebox .field{flex:1 1 220px;min-width:0}
+.xpay .xcodebox .sendstatus,.xpay .xcodebox .xnote{flex:1 1 100%;margin:0}
+.xpay .xcodebox .sendstatus.err{color:var(--d)}
+.xpay .xcodein{text-transform:uppercase;letter-spacing:.06em}
+.xpay .xcodein::placeholder{text-transform:none;letter-spacing:normal}
+.xpay.xcoding>.xdeal,.xpay.xcoding>.xbuyact,.xpay.xcoding>.btn,.xpay.xcoding>.price,.xpay.xcoding>.xguar,.xpay.xcoding>.xnote,.xpay.xcoding>.sendstatus{display:none}
+@media (max-width:480px){.xpay .xcodebox .btn{flex:1 1 auto}}
+/* «Услуги» с разделами «Для физических лиц» и «Для организаций»: две карточки выбора сверху и заголовки разделов */
+.svcpicks{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:20px 0 8px}
+@media (max-width:640px){.svcpicks{grid-template-columns:1fr}}
+.svcpick{display:flex;flex-direction:column;gap:6px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px;color:var(--ink);text-decoration:none}
+.svcpick:hover{border-color:var(--line-strong)}
+.svcpick strong{font-family:var(--font-head);font-weight:500;font-size:19px;line-height:1.25}
+.svcpick span{font-size:14px;color:var(--muted);flex:1}
+.svcpick b{font-family:var(--font-head);font-weight:500;font-size:20px;margin-top:4px}
+.svcpick b::after{content:" \2192";color:var(--muted);font-weight:400}
+[dir=rtl] .svcpick b::after{content:" \2190"}
+h2.svcpart{font-size:28px;margin-top:44px;padding-top:20px;border-top:1px solid var(--line);scroll-margin-top:16px}
+h3.svch3{margin-top:24px}
+/* третья карточка выбора — «Поиск работы» (сервис резюме, с 2026-10-24) */
+@media (min-width:641px){.svcpicks.three{grid-template-columns:repeat(3,1fr)}}
+.service p.svcplans{margin-top:8px;font-size:14px;color:var(--ink)}
+.service p.svcplans span{white-space:nowrap}
+/* блок-анонс сервиса «Резюме под каждую вакансию» (cvPromoHTML в src/intro.js): главная, экран результата, страницы профилей */
+.cvpromo{display:flex;flex-wrap:wrap;align-items:center;gap:14px 24px;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--s);border-radius:14px;padding:20px 24px;margin:30px 0}
+[dir=rtl] .cvpromo{border-left-width:1px;border-right:4px solid var(--s)}
+.cvpromo div{flex:1 1 320px}
+.cvpromo .cvtag{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--s);margin-bottom:6px}
+.cvpromo h2{margin:0 0 6px;font-size:22px}
+.cvpromo p{margin:0;color:var(--muted);font-size:15px}
+.cvpromo p.cvnote{margin-top:8px;font-size:14px;color:var(--ink);font-weight:500}
+.cvpromo .btn{flex:none}
+@media (max-width:480px){.cvpromo{padding:18px}.cvpromo .btn{flex:1 1 auto;text-align:center}}
+.service>.btn{flex:none}
+/* страница «Для организаций»: таблица пакетов и группа галочек в заявке */
+.cmp.packs{min-width:0}.cmp.packs th{white-space:normal}.cmp.packs td{white-space:nowrap}
+.bizcard select{font:inherit;padding:12px 40px 12px 14px;border:1px solid var(--line-strong);border-radius:10px;background:var(--surface) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1.5 1.5 6 6l4.5-4.5' fill='none' stroke='%235B6470' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 14px center/12px 8px;color:var(--ink);width:100%;-webkit-appearance:none;appearance:none}
+[dir=rtl] .bizcard select{padding:12px 14px 12px 40px;background-position:left 14px center}
+fieldset.bizint{border:0;padding:0;margin:0;min-width:0}
+fieldset.bizint legend{padding:0;margin-bottom:6px;font-size:14px;font-weight:500}
+fieldset.bizint legend .req{margin-inline-start:3px}
+fieldset.bizint .check{margin:6px 0;font-size:15px;color:var(--ink)}
+/* покупка на экране результата: кнопка призыва раскрывает на месте форму с e-mail (src/pay.js, payForms) */
+.xinline{flex:1 1 100%;border-top:1px solid var(--line);padding-top:12px}
+.xoffer .xinline{margin:0}
+.xinline>p.small{margin:0 0 12px}
+.xinline .xmore{margin:12px 0 0;font-size:14px}
 .content .xq{font-family:var(--font-body);font-size:17px;font-weight:600;text-transform:none;letter-spacing:0;color:var(--ink);margin:20px 0 6px}
 /* «Как готовятся отчёты»: плитки преимуществ */
 .content .hmgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:14px 0 8px}
@@ -330,6 +398,16 @@ html[lang|=zh] [lang]:not([lang|=zh]):not([lang|=ja]),html[lang=ja] [lang]:not([
 .langbar-x:hover{color:var(--ink);background:var(--soft)}
 .styles-intro{margin-top:34px}
 .home-more{margin-top:34px}
+/* подписка на рассылку на стартовом экране (с 2026-10-22): поле и кнопка в строку, на телефоне — друг под другом */
+.nlbox{margin-top:30px}
+.nlbox h2{margin:0 0 6px;font-size:22px}
+.nlbox>p{margin:0 0 14px;color:var(--muted)}
+.nlfields{display:grid;gap:12px}
+.nlrow{display:flex;gap:10px}
+.nlrow input{flex:1;min-width:0}
+.nlrow .btn{flex:none}
+@media (max-width:480px){.nlrow{flex-direction:column}.nlrow .btn{width:100%}}
+.nlform .sendstatus{margin:0}
 .home-more h2{font-size:22px;margin:28px 0 10px}
 .home-more h3{font-size:15px;text-transform:none;letter-spacing:0;color:var(--ink);margin:14px 0 4px}
 .home-more ul{padding-inline-start:20px}
@@ -403,6 +481,10 @@ input:focus-visible,textarea:focus-visible,button:focus-visible,select:focus-vis
 .foot{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
 .foot .row2{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .foot .privacy,.foot .legal,.foot .rights{margin-top:6px}
+/* короткий подвал на экране результата (класс short ставит renderReport): только оферта, конфиденциальность, обратная связь и строка © */
+.foot .footshort{display:none}
+.foot.short .row2,.foot.short .materials,.foot.short .privacy,.foot.short .langs{display:none}
+.foot.short .footshort{display:block}
 .footlinks a{color:var(--muted)}
 .footlinks a:hover{color:var(--ink)}
 .content .seealso{margin-top:26px;font-size:14px}
@@ -448,8 +530,8 @@ html[dir=rtl] .ask.to-l .arr{transform:none}
 .row .txt{position:relative;font-size:17px;padding:17px 6px;line-height:1.35}
 /* слово шире колонки (телефон: «Дисциплинированный», «Kommunikationsorientiert») переносится по слогам; класс ставит fitRows() только таким строкам */
 .row .txt.hy{-webkit-hyphens:auto;hyphens:auto;overflow-wrap:anywhere}
-/* выбранное «больше всего» выделено обводкой букв, а не жирным начертанием: жирное шире, строка переносилась, и блок прыгал под пальцем */
-.row.is-most .txt{-webkit-text-stroke:.5px currentColor}
+/* выбранное утверждение («больше всего» и «меньше всего») выделено обводкой букв, а не жирным начертанием: жирное шире, строка переносилась, и блок прыгал под пальцем */
+.row.is-most .txt,.row.is-least .txt{-webkit-text-stroke:.5px currentColor}
 /* цвет до выбора — только у подписей колонок; отмеченное обведено прямоугольником: зелёным — «больше всего», красным — «меньше всего».
    Прямоугольник охватывает свой кружок и утверждение, кружок противоположной колонки остаётся снаружи */
 .row{position:relative;z-index:0}
@@ -504,7 +586,7 @@ html[dir=rtl] .ask.to-l .arr{transform:none}
 .stat .v{font-family:var(--font-mono);font-size:20px;font-weight:500;font-variant-numeric:tabular-nums;direction:ltr}
 .bar{height:6px;background:var(--soft);border-radius:3px;overflow:hidden;grid-column:1/-1}
 .bar i{display:block;height:100%;background:var(--k);border-radius:3px}
-.howto{font-size:13px;color:var(--muted);margin-top:14px;padding-top:12px;border-top:1px solid var(--line)}
+.howto{grid-column:1/-1;font-size:13px;color:var(--muted);margin:0;padding-top:14px;border-top:1px solid var(--line)}
 .sections{display:grid;grid-template-columns:1fr 1fr;gap:18px 26px}
 @media (max-width:680px){.sections{grid-template-columns:1fr}}
 .sec ul{margin:0;padding-inline-start:18px}
@@ -514,7 +596,18 @@ html[dir=rtl] .ask.to-l .arr{transform:none}
 .traits span{font-size:13px;padding:4px 10px;border-radius:999px;background:var(--soft);color:var(--ink)}
 .substyle{border-inline-start:4px solid var(--ks);padding:4px 0;padding-inline-start:14px;margin-top:4px}
 .share{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:var(--shadow)}
-.sharenet svg{flex:none}
+.sendbox{margin-top:18px;padding-top:18px;border-top:1px solid var(--line)}
+.sendbox h3{margin:0 0 12px}
+.sharedlg{border:1px solid var(--line);border-radius:16px;padding:0;background:var(--surface);color:var(--ink);box-shadow:0 20px 60px -20px rgba(0,0,0,.5);width:min(400px,calc(100% - 32px));max-width:none;max-height:calc(100% - 32px)}
+.sharedlg::backdrop{background:rgba(10,12,15,.55)}
+.sharedlg-in{padding:18px 20px 20px}
+.sharedlg-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+.sharedlg-head h2{margin:0;font-size:19px;line-height:1.3}
+.sharedlg-x{font:inherit;font-size:26px;line-height:1;width:38px;height:38px;flex:none;border-radius:8px;border:0;background:transparent;color:var(--muted);cursor:pointer}
+.sharedlg-x:hover{background:var(--soft);color:var(--ink)}
+.sharedlg-list{display:grid;gap:10px}
+.sharedlg-list .btn{width:100%;justify-content:flex-start;gap:12px}
+.sharedlg-list svg{flex:none}
 .codebox{font-family:var(--font-mono);font-size:12px;line-height:1.5;word-break:break-all;background:var(--paper);border:1px dashed var(--line-strong);padding:10px 12px;border-radius:8px;margin:12px 0;color:var(--ink);width:100%;min-height:0;resize:none;direction:ltr;text-align:left}
 .notice{background:var(--soft);border-radius:10px;padding:12px 14px;font-size:14px}
 .sendstatus{margin:-4px 0 10px;padding:8px 12px;border-radius:8px;background:var(--soft)}
@@ -653,11 +746,11 @@ body.has-consent{padding-bottom:160px}
   </header>
   <nav class="sitenav no-print"><a href="../../../hi/">टेस्ट</a><a href="../../../hi/disc/">DISC क्या है</a><a href="../../../hi/styles/">चार शैलियाँ</a><a href="../../../hi/profiles/" aria-current="page">16 प्रोफ़ाइल</a><a href="../../../hi/results/">नतीजे कैसे समझें</a><a href="../../../hi/compatibility/">शैलियों की अनुकूलता</a><a href="../../../hi/faq/">सामान्य प्रश्न</a><a href="../../../hi/how-reports-are-made/">रिपोर्ट कैसे बनती है</a><a href="../../../hi/services/">सेवाएँ</a><a href="../../../hi/contact/">संपर्क करें</a></nav>
   <nav class="crumbs"><a href="../../../hi/">होम</a><span>›</span><a href="../">16 प्रोफ़ाइल</a><span>›</span><span aria-current="page">अगुआ</span></nav>
-  <main class="content"><div class="eyebrow">DISC प्रोफ़ाइल · DI</div><div class="rhead"><span class="badge" style="--kp:var(--d);--ks:var(--i)"><span class="p">D</span><span class="s">I</span></span><div class="rtitle"><h1>अगुआ (<span dir="ltr">DI</span>) — DISC प्रोफ़ाइल</h1><div class="meta">प्रभुत्व + प्रभाव</div></div></div><p class="lead">जोश और आकर्षण: आप तेज़ी से लक्ष्य की ओर ले जाते हैं और लोगों को अपने साथ जोड़ना जानते हैं। दमदार अंदाज़ और उत्साह से क़ायल करते हैं, चलते-चलते फ़ैसले लेते हैं, लेकिन बारीकियों के लिए धैर्य और सावधानी अक्सर कम पड़ जाती है।</p><aside class="cta cta-top no-print"><p>इसमें ख़ुद को पहचाना? अपना DISC प्रकार जाँचें — 10 मिनट का मुफ़्त टेस्ट।</p><a class="btn" href="../../" data-goal="cta-top">टेस्ट दें</a></aside><figure class="ogfig"><img src="../../../og/profiles/hi-di.png" width="1200" height="630" alt="अगुआ (DI) — DISC प्रोफ़ाइल · प्रभुत्व + प्रभाव" loading="lazy" decoding="async"></figure><section class="example"><h2>नतीजा कैसा दिखता है</h2><p>“अगुआ” प्रकार के व्यक्ति का नमूना नतीजा: चारों शैलियों की प्रबलता प्रतिशत में, 50% से ऊपर के मान प्रबल माने जाते हैं। आपका ग्राफ़ ब्योरे में अलग होगा, पर आकार मिलता-जुलता है।</p><div class="card graphcard"><div class="graph"><h3>DISC प्रोफ़ाइल</h3><svg viewBox="0 0 380 252" role="img" aria-label="DISC प्रोफ़ाइल का ग्राफ़"><line x1="34" x2="366" y1="220.0" y2="220.0" stroke="var(--line)" stroke-width="1"/><text x="27" y="223.5" text-anchor="end" class="ax">0</text><line x1="34" x2="366" y1="168.5" y2="168.5" stroke="var(--line)" stroke-width="1"/><text x="27" y="172" text-anchor="end" class="ax">6</text><line x1="34" x2="366" y1="117.0" y2="117.0" stroke="var(--line-strong)" stroke-width="1.5" stroke-dasharray="4 3"/><text x="27" y="120.5" text-anchor="end" class="ax">12</text><line x1="34" x2="366" y1="65.5" y2="65.5" stroke="var(--line)" stroke-width="1"/><text x="27" y="69" text-anchor="end" class="ax">18</text><line x1="34" x2="366" y1="14.0" y2="14.0" stroke="var(--line)" stroke-width="1"/><text x="27" y="17.5" text-anchor="end" class="ax">24</text><text x="75.5" y="243" text-anchor="middle" class="kl" fill="var(--d)">D</text><text x="158.5" y="243" text-anchor="middle" class="kl" fill="var(--i)">I</text><text x="241.5" y="243" text-anchor="middle" class="kl" fill="var(--s)">S</text><text x="324.5" y="243" text-anchor="middle" class="kl" fill="var(--c)">C</text><polyline class="s3" points="75.5,56.9 158.5,82.7 241.5,168.5 324.5,159.9"/><circle class="s3" cx="75.5" cy="56.9" r="5.5" fill="var(--d)"/><circle class="s3" cx="158.5" cy="82.7" r="5.5" fill="var(--i)"/><circle class="s3" cx="241.5" cy="168.5" r="5.5" fill="var(--s)"/><circle class="s3" cx="324.5" cy="159.9" r="5.5" fill="var(--c)"/></svg></div><div><h3>शैलियों की प्रबलता</h3><div class="stats"><div class="stat" style="--k:var(--d)"><span class="k">D</span><span class="nm">प्रभुत्व</span><span class="v">79%</span><div class="bar"><i style="width:79%"></i></div></div><div class="stat" style="--k:var(--i)"><span class="k">I</span><span class="nm">प्रभाव</span><span class="v">67%</span><div class="bar"><i style="width:67%"></i></div></div><div class="stat" style="--k:var(--s)"><span class="k">S</span><span class="nm">स्थिरता</span><span class="v">25%</span><div class="bar"><i style="width:25%"></i></div></div><div class="stat" style="--k:var(--c)"><span class="k">C</span><span class="nm">कर्तव्यनिष्ठा</span><span class="v">29%</span><div class="bar"><i style="width:29%"></i></div></div></div></div></div></section><h2>मिलती-जुलती प्रोफ़ाइल से क्या अलग है</h2><p>अगुआ उत्प्रेरक (ID) से अक्षरों के क्रम में अलग हैं: इनमें दबाव आकर्षण से आगे है। उत्प्रेरक पहले लोगों को उत्साहित करना चाहते हैं और फिर लक्ष्य तक पहुँचना, जबकि अगुआ लक्ष्य तक पहुँचना चाहते हैं और रास्ते में लोगों को साथ जोड़ लेते हैं। शुद्ध लक्ष्यभेदी (D) से ये बातचीत से रास्ता निकालने और लोगों का दिल जीतने की क़ाबिलियत में अलग हैं, और रणनीतिकार (DC) से अपनी रफ़्तार और पूरे विश्लेषण के बिना जोखिम उठाने की तैयारी में।</p><div class="sections"><div class="sec kcol" style="--k:var(--d)"><h3>प्रमुख शैली: प्रभुत्व (D)</h3><p>नतीजे और नियंत्रण.</p><div class="traits"><span>स्पष्टवादी</span><span>फ़ैसले लेने में तेज़</span><span>नतीजे पर केंद्रित</span><span>स्वतंत्र</span><span>सख़्त</span></div><a class="more" href="../../styles/#d">D शैली के बारे में और जानें: प्रभुत्व →</a></div><div class="sec kcol" style="--k:var(--i)"><h3>द्वितीयक शैली: प्रभाव (I)</h3><p>यह आपकी प्रमुख शैली में अधिक मिलनसार स्वभाव, आशावाद और लोगों को साथ जोड़ने की क्षमता जोड़ती है।</p><div class="traits"><span>मिलनसार</span><span>आशावादी</span><span>भावनाओं से भरपूर</span><span>मनाने में माहिर</span><span>मनमौजी</span></div><a class="more" href="../../styles/#i">I शैली के बारे में और जानें: प्रभाव →</a></div></div><h2>काम पर अगुआ</h2><p>काम पर अगुआ शुरुआत करने वाले लोग हैं: नए उत्पाद, नए बाज़ार, नए ग्राहक, शून्य से शुरू होने वाले प्रोजेक्ट। ये जल्दी साथी ढूँढ़ लेते हैं, ऊपर के प्रबंधन को अपना आइडिया बेच देते हैं और वे बातचीत अपने हाथ में ले लेते हैं, जिनसे बाक़ी लोग कतराते हैं। जब प्रोजेक्ट रख-रखाव और रिपोर्टों के दौर में पहुँचता है, तो इनकी दिलचस्पी घट जाती है और ये अगली शुरुआत ढूँढ़ने लगते हैं।</p><h2>उपयुक्त भूमिकाएँ और काम</h2><ul><li>संस्थापक, स्टार्टअप का प्रमुख</li><li>बिक्री निदेशक</li><li>नए उत्पादों और बाज़ारों की लॉन्चिंग का प्रमुख</li><li>सार्वजनिक नेता, वक्ता</li><li>व्यावसायिक वार्ताकार</li></ul><h2>टीम में</h2><p>काम की शुरुआत करते हैं: महत्वाकांक्षी लक्ष्य तय करते हैं, साथी जुटाते हैं और लोगों को अपने पीछे ले चलते हैं। प्रोजेक्ट की शुरुआत में और ऐसी बातचीत में, जहाँ दमदार अंदाज़ और आकर्षण दोनों चाहिए, इनसे बेहतर कोई नहीं। लंबी दौड़ में इन्हें S और C वाले सहकर्मी चाहिए, जो शुरू किया काम अंत तक पहुँचाएँ और बारीकियाँ जाँचें।</p><h2>प्रबंधक की भूमिका में अगुआ</h2><p>प्रबंधक के रूप में अगुआ मिसाल और ऊर्जा से आगे ले चलते हैं: साहसी लक्ष्य तय करते हैं, जल्दी फ़ैसले लेते हैं, सबके सामने तारीफ़ करते हैं। लोग ख़ुशी से इनके पीछे चलते हैं। कमज़ोर पहलू: चलते-चलते योजनाएँ बदल देते हैं, काम की मात्रा को कम आँकते हैं और टीम को बारीकियों से जूझने के लिए छोड़कर ख़ुद अगले लक्ष्य की ओर दौड़ सकते हैं।</p><h2>प्रबंधक से क्या चाहिए</h2><p>अगुआ को ऐसा प्रबंधक चाहिए, जो इन्हें आज़ादी भी दे और सामने आने का मौक़ा भी: मुश्किल लक्ष्य, काम करने की छूट और नतीजा ख़ुद पेश करने का अवसर। धीमी प्रक्रियाएँ और विस्तृत रिपोर्टें इन्हें रास नहीं आतीं। किसी ऐसे प्रबंधक या सहकर्मी के साथ जोड़ी अच्छी चलती है, जो जोखिम और बारीकियाँ सँभाले और ईमानदारी से बताए कि योजना कहाँ हक़ीक़त से दूर है।</p><h2>दबाव और टकराव में</h2><p>दबाव में अगुआ और तेज़ी से, और ज़ोर देकर क़ायल करने लगते हैं: ज़्यादा वादे करते हैं, ज़्यादा ज़ोर से बहस करते हैं, काम के उस हिस्से पर चले जाते हैं जहाँ जल्दी नतीजा दिखाया जा सके। टकराव में पहले मोहित करने की कोशिश करते हैं, और अगर बात न बने, तो दबाव डालते हैं। सबके सामने बहस हारना इन्हें बहुत भारी पड़ता है।</p><h2>किन बातों पर काम करें</h2><ul><li>वादा करने से पहले काम की मात्रा का यथार्थ आकलन करें</li><li>प्रोजेक्ट सिर्फ़ “आगे आप देख लें” कहकर नहीं, स्पष्ट योजना के साथ सौंपें</li><li>सतर्क सहकर्मियों की आपत्तियों को ब्रेक नहीं, जाँच की तरह सुनें</li><li>चलते-चलते किए गए वादे कैलेंडर में दर्ज करें</li></ul><h2>दूसरी शैलियों से कैसे संवाद करें</h2><div class="sections"><div class="sec kcol" style="--k:var(--d)"><h3>प्रभुत्व (D) के साथ</h3><p>प्रभाव के दायरे बाँट लें और तवज्जो के लिए होड़ न करें — दो नेताओं को अलग-अलग मोर्चे चाहिए।</p></div><div class="sec kcol" style="--k:var(--i)"><h3>प्रभाव (I) के साथ</h3><p>साझा उत्साह का मज़ा लें, पर बात ज़िम्मेदार लोगों और समय-सीमाओं वाली कामों की सूची से ख़त्म करें।</p></div><div class="sec kcol" style="--k:var(--s)"><h3>स्थिरता (S) के साथ</h3><p>ज़ोर कम करें, बदलावों की ख़बर पहले से दें और चुप्पी को सहमति न समझें।</p></div><div class="sec kcol" style="--k:var(--c)"><h3>कर्तव्यनिष्ठा (C) के साथ</h3><p>तथ्य और समय दें। C ब्रेक नहीं लगाता, बल्कि आपकी रफ़्तार को ग़लतियों से बचाता है।</p></div></div><h2>तालमेल कैसे बिठाएँ</h2><p>अगुआ से बात जल्दी और नतीजे की तस्वीर के साथ करें: क्यों, हमें क्या मिलेगा, यह कैसा दिखेगा। इन्हें ऐसी भूमिका दें, जहाँ ये सबकी नज़र में रहें। सीमाएँ — बजट, समय-सीमा, जोखिम — शुरू में ही बता दें और लिखित रूप में पक्की कर लें, वरना वे जोश में खो जाएँगी।</p><h2>व्यवहार से एक उदाहरण</h2><p>अगुआ दो मीटिंग में एक बड़े ग्राहक को पायलट शुरू करने के लिए मना लेते हैं और एक महीने में लॉन्च का वादा कर देते हैं। टीम को समय-सीमा का पता अनुबंध पर दस्तख़त होने के बाद चलता है। पायलट दो हफ़्ते देर से शुरू होता है, पर ग्राहक से रिश्ता बना रहता है — काफ़ी हद तक अगुआ के निजी आकर्षण की वजह से। अगली बार ये प्रोजेक्ट मैनेजर को साथ लेकर मीटिंग में आते हैं, और समय-सीमा दोनों मिलकर बताते हैं।</p><p class="seealso"><a href="../../compatibility/">DISC शैलियों की अनुकूलता: सभी जोड़ियाँ →</a></p><aside class="cta"><div><h2>अपनी DISC प्रोफ़ाइल जानें</h2><p>मुफ़्त टेस्ट: 24 ब्लॉक, लगभग 10 मिनट, नतीजा तुरंत और ईमेल पर।</p></div><a class="btn" href="../../" data-goal="cta-bottom">टेस्ट दें</a></aside><h2>मिलती-जुलती प्रोफ़ाइल</h2><div class="pgrid"><a class="pcard" href="../../profiles/id/"><span class="badge" style="--kp:var(--i);--ks:var(--d)"><span class="p">I</span><span class="s">D</span></span><span><strong>उत्प्रेरक</strong><small>ID · प्रभाव + प्रभुत्व</small><p>ऊर्जा और जोश: आप लोगों में अपने विचारों का उत्साह भर देते हैं और पहल करने से नहीं हिचकते। विचारों और लक्ष्यों…</p></span></a><a class="pcard" href="../../profiles/d/"><span class="badge" style="--kp:var(--d);--ks:inherit"><span class="p">D</span></span><span><strong>लक्ष्यभेदी</strong><small>D · प्रभुत्व</small><p>आप लक्ष्य की ओर सीधे और तेज़ी से बढ़ते हैं: पहल करते हैं, लंबी चर्चा के बिना फ़ैसले लेते हैं और विरोध से…</p></span></a><a class="pcard" href="../../profiles/dc/"><span class="badge" style="--kp:var(--d);--ks:var(--c)"><span class="p">D</span><span class="s">C</span></span><span><strong>रणनीतिकार</strong><small>DC · प्रभुत्व + कर्तव्यनिष्ठा</small><p>गुणवत्ता के ज़रिए नतीजा: आप ख़ुद से और दूसरों से ऊँची अपेक्षाएँ रखते हैं, व्यवस्थित ढंग से सोचते हैं और ठोस…</p></span></a><a class="pcard" href="../../profiles/ds/"><span class="badge" style="--kp:var(--d);--ks:var(--s)"><span class="p">D</span><span class="s">S</span></span><span><strong>कर्मयोगी</strong><small>DS · प्रभुत्व + स्थिरता</small><p>दृढ़ता और भरोसा: आप लगन से लक्ष्य की ओर बढ़ते हैं, लेकिन बिना शोर-शराबे के, और शुरू किए काम को अंजाम तक…</p></span></a></div><h2>अन्य DISC प्रोफ़ाइल</h2><p class="chips"><a href="../../profiles/i/"><span class="pill" style="--kp:var(--i);--ks:inherit"><span class="p">I</span></span> प्रेरक</a><a href="../../profiles/is/"><span class="pill" style="--kp:var(--i);--ks:var(--s)"><span class="p">I</span><span class="s">S</span></span> मार्गदर्शक</a><a href="../../profiles/ic/"><span class="pill" style="--kp:var(--i);--ks:var(--c)"><span class="p">I</span><span class="s">C</span></span> प्रस्तुतकर्ता</a><a href="../../profiles/s/"><span class="pill" style="--kp:var(--s);--ks:inherit"><span class="p">S</span></span> आधारस्तंभ</a><a href="../../profiles/si/"><span class="pill" style="--kp:var(--s);--ks:var(--i)"><span class="p">S</span><span class="s">I</span></span> शांतिदूत</a><a href="../../profiles/sc/"><span class="pill" style="--kp:var(--s);--ks:var(--c)"><span class="p">S</span><span class="s">C</span></span> विशेषज्ञ</a><a href="../../profiles/sd/"><span class="pill" style="--kp:var(--s);--ks:var(--d)"><span class="p">S</span><span class="s">D</span></span> कार्यसाधक</a><a href="../../profiles/c/"><span class="pill" style="--kp:var(--c);--ks:inherit"><span class="p">C</span></span> विश्लेषक</a><a href="../../profiles/cd/"><span class="pill" style="--kp:var(--c);--ks:var(--d)"><span class="p">C</span><span class="s">D</span></span> पूर्णतावादी</a><a href="../../profiles/cs/"><span class="pill" style="--kp:var(--c);--ks:var(--s)"><span class="p">C</span><span class="s">S</span></span> पारखी</a><a href="../../profiles/ci/"><span class="pill" style="--kp:var(--c);--ks:var(--i)"><span class="p">C</span><span class="s">I</span></span> सलाहकार</a></p><p class="updated"><time datetime="2026-09-24">अंतिम अपडेट: 24 सितंबर 2026</time></p></main>
+  <main class="content"><div class="eyebrow">DISC प्रोफ़ाइल · DI</div><div class="rhead"><span class="badge" style="--kp:var(--d);--ks:var(--i)"><span class="p">D</span><span class="s">I</span></span><div class="rtitle"><h1>अगुआ (<span dir="ltr">DI</span>) — DISC प्रोफ़ाइल</h1><div class="meta">प्रभुत्व + प्रभाव</div></div></div><p class="lead">जोश और आकर्षण: आप तेज़ी से लक्ष्य की ओर ले जाते हैं और लोगों को अपने साथ जोड़ना जानते हैं। दमदार अंदाज़ और उत्साह से क़ायल करते हैं, चलते-चलते फ़ैसले लेते हैं, लेकिन बारीकियों के लिए धैर्य और सावधानी अक्सर कम पड़ जाती है।</p><aside class="cta cta-top no-print"><p>इसमें ख़ुद को पहचाना? अपना DISC प्रकार जाँचें — 10 मिनट का मुफ़्त टेस्ट।</p><a class="btn" href="../../" data-goal="cta-top">टेस्ट दें</a></aside><figure class="ogfig"><img src="../../../og/profiles/hi-di.png" width="1200" height="630" alt="अगुआ (DI) — DISC प्रोफ़ाइल · प्रभुत्व + प्रभाव" loading="lazy" decoding="async"></figure><section class="example"><h2>नतीजा कैसा दिखता है</h2><p>“अगुआ” प्रकार के व्यक्ति का नमूना नतीजा: चारों शैलियों की प्रबलता प्रतिशत में, 50% से ऊपर के मान प्रबल माने जाते हैं। आपका ग्राफ़ ब्योरे में अलग होगा, पर आकार मिलता-जुलता है।</p><div class="card graphcard"><div class="graph"><h3>DISC प्रोफ़ाइल</h3><svg viewBox="0 0 380 252" role="img" aria-label="DISC प्रोफ़ाइल का ग्राफ़"><line x1="34" x2="366" y1="220.0" y2="220.0" stroke="var(--line)" stroke-width="1"/><text x="27" y="223.5" text-anchor="end" class="ax">0</text><line x1="34" x2="366" y1="168.5" y2="168.5" stroke="var(--line)" stroke-width="1"/><text x="27" y="172" text-anchor="end" class="ax">6</text><line x1="34" x2="366" y1="117.0" y2="117.0" stroke="var(--line-strong)" stroke-width="1.5" stroke-dasharray="4 3"/><text x="27" y="120.5" text-anchor="end" class="ax">12</text><line x1="34" x2="366" y1="65.5" y2="65.5" stroke="var(--line)" stroke-width="1"/><text x="27" y="69" text-anchor="end" class="ax">18</text><line x1="34" x2="366" y1="14.0" y2="14.0" stroke="var(--line)" stroke-width="1"/><text x="27" y="17.5" text-anchor="end" class="ax">24</text><text x="75.5" y="243" text-anchor="middle" class="kl" fill="var(--d)">D</text><text x="158.5" y="243" text-anchor="middle" class="kl" fill="var(--i)">I</text><text x="241.5" y="243" text-anchor="middle" class="kl" fill="var(--s)">S</text><text x="324.5" y="243" text-anchor="middle" class="kl" fill="var(--c)">C</text><polyline class="s3" points="75.5,56.9 158.5,82.7 241.5,168.5 324.5,159.9"/><circle class="s3" cx="75.5" cy="56.9" r="5.5" fill="var(--d)"/><circle class="s3" cx="158.5" cy="82.7" r="5.5" fill="var(--i)"/><circle class="s3" cx="241.5" cy="168.5" r="5.5" fill="var(--s)"/><circle class="s3" cx="324.5" cy="159.9" r="5.5" fill="var(--c)"/></svg></div><div><h3>शैलियों की प्रबलता</h3><div class="stats"><div class="stat" style="--k:var(--d)"><span class="k">D</span><span class="nm">प्रभुत्व</span><span class="v">79%</span><div class="bar"><i style="width:79%"></i></div></div><div class="stat" style="--k:var(--i)"><span class="k">I</span><span class="nm">प्रभाव</span><span class="v">67%</span><div class="bar"><i style="width:67%"></i></div></div><div class="stat" style="--k:var(--s)"><span class="k">S</span><span class="nm">स्थिरता</span><span class="v">25%</span><div class="bar"><i style="width:25%"></i></div></div><div class="stat" style="--k:var(--c)"><span class="k">C</span><span class="nm">कर्तव्यनिष्ठा</span><span class="v">29%</span><div class="bar"><i style="width:29%"></i></div></div></div></div></div></section><h2>मिलती-जुलती प्रोफ़ाइल से क्या अलग है</h2><p>अगुआ उत्प्रेरक (ID) से अक्षरों के क्रम में अलग हैं: इनमें दबाव आकर्षण से आगे है। उत्प्रेरक पहले लोगों को उत्साहित करना चाहते हैं और फिर लक्ष्य तक पहुँचना, जबकि अगुआ लक्ष्य तक पहुँचना चाहते हैं और रास्ते में लोगों को साथ जोड़ लेते हैं। शुद्ध लक्ष्यभेदी (D) से ये बातचीत से रास्ता निकालने और लोगों का दिल जीतने की क़ाबिलियत में अलग हैं, और रणनीतिकार (DC) से अपनी रफ़्तार और पूरे विश्लेषण के बिना जोखिम उठाने की तैयारी में।</p><div class="sections"><div class="sec kcol" style="--k:var(--d)"><h3>प्रमुख शैली: प्रभुत्व (D)</h3><p>नतीजे और नियंत्रण.</p><div class="traits"><span>स्पष्टवादी</span><span>फ़ैसले लेने में तेज़</span><span>नतीजे पर केंद्रित</span><span>स्वतंत्र</span><span>सख़्त</span></div><a class="more" href="../../styles/#d">D शैली के बारे में और जानें: प्रभुत्व →</a></div><div class="sec kcol" style="--k:var(--i)"><h3>द्वितीयक शैली: प्रभाव (I)</h3><p>यह आपकी प्रमुख शैली में अधिक मिलनसार स्वभाव, आशावाद और लोगों को साथ जोड़ने की क्षमता जोड़ती है।</p><div class="traits"><span>मिलनसार</span><span>आशावादी</span><span>भावनाओं से भरपूर</span><span>मनाने में माहिर</span><span>मनमौजी</span></div><a class="more" href="../../styles/#i">I शैली के बारे में और जानें: प्रभाव →</a></div></div><h2>काम पर अगुआ</h2><p>काम पर अगुआ शुरुआत करने वाले लोग हैं: नए उत्पाद, नए बाज़ार, नए ग्राहक, शून्य से शुरू होने वाले प्रोजेक्ट। ये जल्दी साथी ढूँढ़ लेते हैं, ऊपर के प्रबंधन को अपना आइडिया बेच देते हैं और वे बातचीत अपने हाथ में ले लेते हैं, जिनसे बाक़ी लोग कतराते हैं। जब प्रोजेक्ट रख-रखाव और रिपोर्टों के दौर में पहुँचता है, तो इनकी दिलचस्पी घट जाती है और ये अगली शुरुआत ढूँढ़ने लगते हैं।</p><h2>उपयुक्त भूमिकाएँ और काम</h2><ul><li>संस्थापक, स्टार्टअप का प्रमुख</li><li>बिक्री निदेशक</li><li>नए उत्पादों और बाज़ारों की लॉन्चिंग का प्रमुख</li><li>सार्वजनिक नेता, वक्ता</li><li>व्यावसायिक वार्ताकार</li></ul><h2>टीम में</h2><p>काम की शुरुआत करते हैं: महत्वाकांक्षी लक्ष्य तय करते हैं, साथी जुटाते हैं और लोगों को अपने पीछे ले चलते हैं। प्रोजेक्ट की शुरुआत में और ऐसी बातचीत में, जहाँ दमदार अंदाज़ और आकर्षण दोनों चाहिए, इनसे बेहतर कोई नहीं। लंबी दौड़ में इन्हें S और C वाले सहकर्मी चाहिए, जो शुरू किया काम अंत तक पहुँचाएँ और बारीकियाँ जाँचें।</p><h2>प्रबंधक की भूमिका में अगुआ</h2><p>प्रबंधक के रूप में अगुआ मिसाल और ऊर्जा से आगे ले चलते हैं: साहसी लक्ष्य तय करते हैं, जल्दी फ़ैसले लेते हैं, सबके सामने तारीफ़ करते हैं। लोग ख़ुशी से इनके पीछे चलते हैं। कमज़ोर पहलू: चलते-चलते योजनाएँ बदल देते हैं, काम की मात्रा को कम आँकते हैं और टीम को बारीकियों से जूझने के लिए छोड़कर ख़ुद अगले लक्ष्य की ओर दौड़ सकते हैं।</p><h2>प्रबंधक से क्या चाहिए</h2><p>अगुआ को ऐसा प्रबंधक चाहिए, जो इन्हें आज़ादी भी दे और सामने आने का मौक़ा भी: मुश्किल लक्ष्य, काम करने की छूट और नतीजा ख़ुद पेश करने का अवसर। धीमी प्रक्रियाएँ और विस्तृत रिपोर्टें इन्हें रास नहीं आतीं। किसी ऐसे प्रबंधक या सहकर्मी के साथ जोड़ी अच्छी चलती है, जो जोखिम और बारीकियाँ सँभाले और ईमानदारी से बताए कि योजना कहाँ हक़ीक़त से दूर है।</p><h2>दबाव और टकराव में</h2><p>दबाव में अगुआ और तेज़ी से, और ज़ोर देकर क़ायल करने लगते हैं: ज़्यादा वादे करते हैं, ज़्यादा ज़ोर से बहस करते हैं, काम के उस हिस्से पर चले जाते हैं जहाँ जल्दी नतीजा दिखाया जा सके। टकराव में पहले मोहित करने की कोशिश करते हैं, और अगर बात न बने, तो दबाव डालते हैं। सबके सामने बहस हारना इन्हें बहुत भारी पड़ता है।</p><h2>किन बातों पर काम करें</h2><ul><li>वादा करने से पहले काम की मात्रा का यथार्थ आकलन करें</li><li>प्रोजेक्ट सिर्फ़ “आगे आप देख लें” कहकर नहीं, स्पष्ट योजना के साथ सौंपें</li><li>सतर्क सहकर्मियों की आपत्तियों को ब्रेक नहीं, जाँच की तरह सुनें</li><li>चलते-चलते किए गए वादे कैलेंडर में दर्ज करें</li></ul><h2>दूसरी शैलियों से कैसे संवाद करें</h2><div class="sections"><div class="sec kcol" style="--k:var(--d)"><h3>प्रभुत्व (D) के साथ</h3><p>प्रभाव के दायरे बाँट लें और तवज्जो के लिए होड़ न करें — दो नेताओं को अलग-अलग मोर्चे चाहिए।</p></div><div class="sec kcol" style="--k:var(--i)"><h3>प्रभाव (I) के साथ</h3><p>साझा उत्साह का मज़ा लें, पर बात ज़िम्मेदार लोगों और समय-सीमाओं वाली कामों की सूची से ख़त्म करें।</p></div><div class="sec kcol" style="--k:var(--s)"><h3>स्थिरता (S) के साथ</h3><p>ज़ोर कम करें, बदलावों की ख़बर पहले से दें और चुप्पी को सहमति न समझें।</p></div><div class="sec kcol" style="--k:var(--c)"><h3>कर्तव्यनिष्ठा (C) के साथ</h3><p>तथ्य और समय दें। C ब्रेक नहीं लगाता, बल्कि आपकी रफ़्तार को ग़लतियों से बचाता है।</p></div></div><h2>तालमेल कैसे बिठाएँ</h2><p>अगुआ से बात जल्दी और नतीजे की तस्वीर के साथ करें: क्यों, हमें क्या मिलेगा, यह कैसा दिखेगा। इन्हें ऐसी भूमिका दें, जहाँ ये सबकी नज़र में रहें। सीमाएँ — बजट, समय-सीमा, जोखिम — शुरू में ही बता दें और लिखित रूप में पक्की कर लें, वरना वे जोश में खो जाएँगी।</p><h2>व्यवहार से एक उदाहरण</h2><p>अगुआ दो मीटिंग में एक बड़े ग्राहक को पायलट शुरू करने के लिए मना लेते हैं और एक महीने में लॉन्च का वादा कर देते हैं। टीम को समय-सीमा का पता अनुबंध पर दस्तख़त होने के बाद चलता है। पायलट दो हफ़्ते देर से शुरू होता है, पर ग्राहक से रिश्ता बना रहता है — काफ़ी हद तक अगुआ के निजी आकर्षण की वजह से। अगली बार ये प्रोजेक्ट मैनेजर को साथ लेकर मीटिंग में आते हैं, और समय-सीमा दोनों मिलकर बताते हैं।</p><p class="seealso"><a href="../../compatibility/">DISC शैलियों की अनुकूलता: सभी जोड़ियाँ →</a></p><aside class="cta"><div><h2>अपनी DISC प्रोफ़ाइल जानें</h2><p>मुफ़्त टेस्ट: 24 ब्लॉक, लगभग 10 मिनट, नतीजा तुरंत।</p></div><a class="btn" href="../../" data-goal="cta-bottom">टेस्ट दें</a></aside><h2>मिलती-जुलती प्रोफ़ाइल</h2><div class="pgrid"><a class="pcard" href="../../profiles/id/"><span class="badge" style="--kp:var(--i);--ks:var(--d)"><span class="p">I</span><span class="s">D</span></span><span><strong>उत्प्रेरक</strong><small>ID · प्रभाव + प्रभुत्व</small><p>ऊर्जा और जोश: आप लोगों में अपने विचारों का उत्साह भर देते हैं और पहल करने से नहीं हिचकते। विचारों और लक्ष्यों…</p></span></a><a class="pcard" href="../../profiles/d/"><span class="badge" style="--kp:var(--d);--ks:inherit"><span class="p">D</span></span><span><strong>लक्ष्यभेदी</strong><small>D · प्रभुत्व</small><p>आप लक्ष्य की ओर सीधे और तेज़ी से बढ़ते हैं: पहल करते हैं, लंबी चर्चा के बिना फ़ैसले लेते हैं और विरोध से…</p></span></a><a class="pcard" href="../../profiles/dc/"><span class="badge" style="--kp:var(--d);--ks:var(--c)"><span class="p">D</span><span class="s">C</span></span><span><strong>रणनीतिकार</strong><small>DC · प्रभुत्व + कर्तव्यनिष्ठा</small><p>गुणवत्ता के ज़रिए नतीजा: आप ख़ुद से और दूसरों से ऊँची अपेक्षाएँ रखते हैं, व्यवस्थित ढंग से सोचते हैं और ठोस…</p></span></a><a class="pcard" href="../../profiles/ds/"><span class="badge" style="--kp:var(--d);--ks:var(--s)"><span class="p">D</span><span class="s">S</span></span><span><strong>कर्मयोगी</strong><small>DS · प्रभुत्व + स्थिरता</small><p>दृढ़ता और भरोसा: आप लगन से लक्ष्य की ओर बढ़ते हैं, लेकिन बिना शोर-शराबे के, और शुरू किए काम को अंजाम तक…</p></span></a></div><h2>अन्य DISC प्रोफ़ाइल</h2><p class="chips"><a href="../../profiles/i/"><span class="pill" style="--kp:var(--i);--ks:inherit"><span class="p">I</span></span> प्रेरक</a><a href="../../profiles/is/"><span class="pill" style="--kp:var(--i);--ks:var(--s)"><span class="p">I</span><span class="s">S</span></span> मार्गदर्शक</a><a href="../../profiles/ic/"><span class="pill" style="--kp:var(--i);--ks:var(--c)"><span class="p">I</span><span class="s">C</span></span> प्रस्तुतकर्ता</a><a href="../../profiles/s/"><span class="pill" style="--kp:var(--s);--ks:inherit"><span class="p">S</span></span> आधारस्तंभ</a><a href="../../profiles/si/"><span class="pill" style="--kp:var(--s);--ks:var(--i)"><span class="p">S</span><span class="s">I</span></span> शांतिदूत</a><a href="../../profiles/sc/"><span class="pill" style="--kp:var(--s);--ks:var(--c)"><span class="p">S</span><span class="s">C</span></span> विशेषज्ञ</a><a href="../../profiles/sd/"><span class="pill" style="--kp:var(--s);--ks:var(--d)"><span class="p">S</span><span class="s">D</span></span> कार्यसाधक</a><a href="../../profiles/c/"><span class="pill" style="--kp:var(--c);--ks:inherit"><span class="p">C</span></span> विश्लेषक</a><a href="../../profiles/cd/"><span class="pill" style="--kp:var(--c);--ks:var(--d)"><span class="p">C</span><span class="s">D</span></span> पूर्णतावादी</a><a href="../../profiles/cs/"><span class="pill" style="--kp:var(--c);--ks:var(--s)"><span class="p">C</span><span class="s">S</span></span> पारखी</a><a href="../../profiles/ci/"><span class="pill" style="--kp:var(--c);--ks:var(--i)"><span class="p">C</span><span class="s">I</span></span> सलाहकार</a></p><p class="updated"><time datetime="2026-10-21">अंतिम अपडेट: 21 अक्टूबर 2026</time></p></main>
   <footer class="foot">
     <div class="row2"><span>24 ब्लॉक · लगभग 10 मिनट · कोई सही या ग़लत जवाब नहीं</span><span class="footlinks"><a href="../../../hi/about/">प्रोजेक्ट के बारे में</a> · <a href="../../../hi/services/">सेवाएँ</a> · <a href="../../../hi/offer/">बिक्री की शर्तें</a> · <a href="../../../hi/contact/">संपर्क करें</a> · <a href="../../../hi/privacy/">गोपनीयता</a></span></div>
     <nav class="materials" aria-label="DISC पर सामग्री"><span class="mlabel">DISC पर सामग्री</span><a href="../../../hi/disc/">DISC क्या है</a><a href="../../../hi/styles/">चार शैलियाँ</a><a href="../../../hi/profiles/">16 प्रोफ़ाइल</a><a href="../../../hi/results/">नतीजे कैसे समझें</a><a href="../../../hi/compatibility/">शैलियों की अनुकूलता</a><a href="../../../hi/colors/">DISC के रंग</a><a href="../../../hi/teams/">टीम के लिए DISC</a><a href="../../../hi/disc-vs-mbti/">DISC और MBTI</a><a href="../../../hi/pdf/">PDF में टेस्ट</a><a href="../../../hi/faq/">सामान्य प्रश्न</a></nav>
-    <div class="privacy">आपके उत्तर आपके ब्राउज़र में रहते हैं; कुल आँकड़ों के लिए साइट के सर्वर को सिर्फ़ साइट पर आने और टेस्ट शुरू होने के निशान और आपका प्रोफ़ाइल मिलता है — बिना नाम और बिना उत्तरों के। अगर आप ईमेल बताएँ, तो नतीजा उस पर भेजा जाएगा और साइट के मालिक के नतीजों के डेटाबेस में सहेजा जाएगा। जब आप “PDF में सहेजें” दबाते हैं, तो आपके उत्तर और टेस्ट की तारीख — बिना नाम और ईमेल के — साइट के सर्वर को भेजे जाते हैं: सर्वर उनसे संक्षिप्त रिपोर्ट की फ़ाइल बनाकर आपको लौटा देता है और कुछ भी सहेजता नहीं।</div>
+    <div class="privacy">आपके उत्तर आपके ब्राउज़र में रहते हैं; कुल आँकड़ों के लिए साइट के सर्वर को सिर्फ़ साइट पर आने और टेस्ट शुरू होने के निशान और आपका प्रोफ़ाइल मिलता है — बिना नाम और बिना उत्तरों के। अगर आप ईमेल बताएँ, तो नतीजा उस पर भेजा जाएगा और साइट के मालिक के नतीजों के डेटाबेस में सहेजा जाएगा। अगर आप होम पेज पर न्यूज़लेटर की सदस्यता लेते हैं, तो उसी डेटाबेस में आपका ईमेल और साइट के संस्करण की भाषा सहेजी जाती है। जब आप “PDF में सहेजें” दबाते हैं, तो आपके उत्तर और टेस्ट की तारीख — बिना नाम और ईमेल के — साइट के सर्वर को भेजे जाते हैं: सर्वर उनसे संक्षिप्त रिपोर्ट की फ़ाइल बनाकर आपको लौटा देता है और कुछ भी सहेजता नहीं।</div>
     <div class="rights">© 2026 disc-test.org. लिखित अनुमति के बिना साइट और रिपोर्ट के पाठ की नक़ल करना वर्जित है।</div>
     <nav class="langs" aria-label="भाषा"><a href="../../../profiles/di/" hreflang="en" lang="en" data-lang="en"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-en"/></svg><span>English</span></a><a href="../../../es/profiles/di/" hreflang="es" lang="es" data-lang="es"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-es"/></svg><span>Español</span></a><a href="../../../zh/profiles/di/" hreflang="zh-Hans" lang="zh-Hans" data-lang="zh"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-zh"/></svg><span>简体中文</span></a><a href="../../../zh-hant/profiles/di/" hreflang="zh-Hant" lang="zh-Hant" data-lang="zh-hant"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-zh-hant"/></svg><span>繁體中文</span></a><a href="../../../ru/profiles/di/" hreflang="ru" lang="ru" data-lang="ru"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-ru"/></svg><span>Русский</span></a><a href="../../../ar/profiles/di/" hreflang="ar" lang="ar" data-lang="ar"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-ar"/></svg><span>العربية</span></a><a href="../../../pt/profiles/di/" hreflang="pt" lang="pt" data-lang="pt"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-pt"/></svg><span>Português</span></a><a href="../../../fr/profiles/di/" hreflang="fr" lang="fr" data-lang="fr"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-fr"/></svg><span>Français</span></a><a href="../../../de/profiles/di/" hreflang="de" lang="de" data-lang="de"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-de"/></svg><span>Deutsch</span></a><a href="../../../ja/profiles/di/" hreflang="ja" lang="ja" data-lang="ja"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-ja"/></svg><span>日本語</span></a><a href="../../../hi/profiles/di/" hreflang="hi" lang="hi" data-lang="hi" aria-current="page"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-hi"/></svg><span>हिन्दी</span></a><a href="../../../id/profiles/di/" hreflang="id" lang="id" data-lang="id"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-id"/></svg><span>Bahasa Indonesia</span></a><a href="../../../tr/profiles/di/" hreflang="tr" lang="tr" data-lang="tr"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-tr"/></svg><span>Türkçe</span></a><a href="../../../pl/profiles/di/" hreflang="pl" lang="pl" data-lang="pl"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-pl"/></svg><span>Polski</span></a></nav>
   </footer>
@@ -667,7 +760,7 @@ body.has-consent{padding-bottom:160px}
 <script>
 (function(){
 'use strict';
-var L = {"lang":"hi","name":"हिन्दी","dir":"ltr","dateLocale":"hi-IN","ui":{"langLabel":"भाषा","consent.label":"कुकी सूचना","consent.text":"यह साइट आपकी प्रगति, नतीजा और चुनी हुई भाषा को ब्राउज़र के लोकल स्टोरेज में रखती है, और एक वेब एनालिटिक्स सेवा साइट को बेहतर बनाने के लिए अनामीकृत विज़िट आँकड़े और पेज पर की गई क्रियाओं की रिकॉर्डिंग एकत्र करती है। आपका नाम, ईमेल और नतीजा एनालिटिक्स सेवा को नहीं भेजे जाते।","consent.more":"और जानें","consent.details":"ब्राउज़र में संग्रहीत: नाम और ईमेल, अगर आपने दर्ज किए हों; आपके उत्तर और अधूरी प्रगति; आपका पिछला नतीजा; चुनी हुई भाषा; यह निशान कि आपने यह सूचना देख ली है। ये डेटा आपके डिवाइस पर ही रहते हैं और साइट का डेटा साफ़ करने पर हट जाते हैं। होस्टिंग सेवा को अनुरोध का सामान्य तकनीकी डेटा मिलता है। दिन में पहली बार साइट खोलने पर साइट के सर्वर को विज़िट का एक गुमनाम निशान भेजा जाता है: सिर्फ़ साइट के संस्करण की भाषा; सर्वर इसे पहुँचने के समय के साथ दर्ज करता है, और आपका ब्राउज़र तारीख़ याद रखता है ताकि उसी दिन यह निशान दोबारा न भेजा जाए। इन निशानों से हम गिनते हैं कि साइट पर कितने लोग आते हैं। टेस्ट शुरू करने पर साइट के सर्वर को शुरुआत का एक गुमनाम निशान भेजा जाता है: सिर्फ़ साइट के संस्करण की भाषा। टेस्ट पूरा होने पर कुल आँकड़ों के लिए साइट के सर्वर को एक गुमनाम रिकॉर्ड भेजा जाता है: आपका प्रोफ़ाइल और साइट के संस्करण की भाषा — बिना नाम, ईमेल और उत्तरों के। जब आप “PDF में सहेजें” दबाते हैं, तो आपके उत्तर और टेस्ट की तारीख — बिना नाम और ईमेल के — साइट के सर्वर को भेजे जाते हैं: सर्वर उनसे संक्षिप्त रिपोर्ट की फ़ाइल बनाकर आपको लौटा देता है और कुछ भी सहेजता नहीं। जब आप नतीजा ईमेल पर भेजते हैं, तब नाम, ईमेल और उत्तर साइट के सर्वर को भेजे जाते हैं: वह आपको नतीजे वाला ईमेल भेजता है और नाम, ईमेल, तारीख़ और नतीजे को साइट के मालिक के नतीजों के डेटाबेस में सहेजता है। वेब एनालिटिक्स सेवा को नतीजे के कोड के बिना पेज का पता, विज़िट का स्रोत, डिवाइस और ब्राउज़र का प्रकार, तथा पेज पर की गई क्रियाओं की अनामीकृत रिकॉर्डिंग मिलती है (नाम और ईमेल के फ़ील्ड, नतीजे का लिंक और कोड इससे बाहर रखे गए हैं) और वह अपनी कुकीज़ सेट करती है। आप उसे ब्राउज़र सेटिंग्स में या ट्रैकर ब्लॉकर से रोक सकते हैं। विज्ञापन ट्रैकर उपयोग नहीं किए जाते।","consent.accept":"स्वीकार करें","consent.decline":"केवल आवश्यक","consent.ok":"ठीक है","root.continue":"जारी रखें"}};
+var L = {"lang":"hi","name":"हिन्दी","dir":"ltr","dateLocale":"hi-IN","ui":{"langLabel":"भाषा","consent.label":"कुकी सूचना","consent.text":"यह साइट आपकी प्रगति, नतीजा और चुनी हुई भाषा को ब्राउज़र के लोकल स्टोरेज में रखती है, और एक वेब एनालिटिक्स सेवा साइट को बेहतर बनाने के लिए अनामीकृत विज़िट आँकड़े और पेज पर की गई क्रियाओं की रिकॉर्डिंग एकत्र करती है। आपका नाम, ईमेल और नतीजा एनालिटिक्स सेवा को नहीं भेजे जाते।","consent.more":"और जानें","consent.details":"ब्राउज़र में संग्रहीत: नाम और ईमेल, अगर आपने दर्ज किए हों; आपके उत्तर और अधूरी प्रगति; आपका पिछला नतीजा; चुनी हुई भाषा; यह निशान कि आपने यह सूचना देख ली है। ये डेटा आपके डिवाइस पर ही रहते हैं और साइट का डेटा साफ़ करने पर हट जाते हैं। होस्टिंग सेवा को अनुरोध का सामान्य तकनीकी डेटा मिलता है। दिन में पहली बार साइट खोलने पर साइट के सर्वर को विज़िट का एक गुमनाम निशान भेजा जाता है: सिर्फ़ साइट के संस्करण की भाषा; सर्वर इसे पहुँचने के समय के साथ दर्ज करता है, और आपका ब्राउज़र तारीख़ याद रखता है ताकि उसी दिन यह निशान दोबारा न भेजा जाए। इन निशानों से हम गिनते हैं कि साइट पर कितने लोग आते हैं। टेस्ट शुरू करने पर साइट के सर्वर को शुरुआत का एक गुमनाम निशान भेजा जाता है: सिर्फ़ साइट के संस्करण की भाषा। टेस्ट पूरा होने पर कुल आँकड़ों के लिए साइट के सर्वर को एक गुमनाम रिकॉर्ड भेजा जाता है: आपका प्रोफ़ाइल और साइट के संस्करण की भाषा — बिना नाम, ईमेल और उत्तरों के। जब आप “PDF में सहेजें” दबाते हैं, तो आपके उत्तर और टेस्ट की तारीख — बिना नाम और ईमेल के — साइट के सर्वर को भेजे जाते हैं: सर्वर उनसे संक्षिप्त रिपोर्ट की फ़ाइल बनाकर आपको लौटा देता है और कुछ भी सहेजता नहीं। जब आप नतीजा ईमेल पर भेजते हैं, तब नाम, ईमेल और उत्तर साइट के सर्वर को भेजे जाते हैं: वह आपको नतीजे वाला ईमेल भेजता है और नाम, ईमेल, तारीख़ और नतीजे को साइट के मालिक के नतीजों के डेटाबेस में सहेजता है। जब आप होम पेज पर न्यूज़लेटर की सदस्यता लेते हैं, तब ईमेल और साइट के संस्करण की भाषा साइट के सर्वर को भेजे जाते हैं: वह पुष्टि के लिंक वाला ईमेल भेजता है और पते को उसी डेटाबेस में सहेजता है; अगर सदस्यता की पुष्टि न की जाए, तो 7 दिनों बाद पता हटा दिया जाता है। वेब एनालिटिक्स सेवा को पेज का पता (नतीजे की स्क्रीन पर नतीजे के कोड के साथ: आपके उत्तर, टेस्ट की तारीख और आपका नाम, अगर आपने दर्ज किया हो — लेकिन आपका ईमेल नहीं), विज़िट का स्रोत, डिवाइस और ब्राउज़र का प्रकार, तथा पेज पर की गई क्रियाओं की रिकॉर्डिंग मिलती है (नाम और ईमेल के फ़ील्ड इससे बाहर रखे गए हैं) और वह अपनी कुकीज़ सेट करती है। आप उसे ब्राउज़र सेटिंग्स में या ट्रैकर ब्लॉकर से रोक सकते हैं। विज्ञापन ट्रैकर उपयोग नहीं किए जाते।","consent.accept":"स्वीकार करें","consent.decline":"केवल आवश्यक","consent.ok":"ठीक है","root.continue":"जारी रखें"}};
 var ROOT_REL = '../../../', SUBPATH = 'profiles/di/';
 var LANG_PATH = {"en":"","es":"es/","zh":"zh/","zh-hant":"zh-hant/","ru":"ru/","ar":"ar/","pt":"pt/","fr":"fr/","de":"de/","ja":"ja/","hi":"hi/","id":"id/","tr":"tr/","pl":"pl/"}, LANG_META = {"en":{"name":"English","cont":"Continue","dir":"ltr"},"es":{"name":"Español","cont":"Continuar","dir":"ltr"},"zh":{"name":"简体中文","cont":"继续","dir":"ltr"},"zh-hant":{"name":"繁體中文","cont":"繼續","dir":"ltr"},"ru":{"name":"Русский","cont":"Продолжить","dir":"ltr"},"ar":{"name":"العربية","cont":"متابعة","dir":"rtl"},"pt":{"name":"Português","cont":"Continuar","dir":"ltr"},"fr":{"name":"Français","cont":"Continuer","dir":"ltr"},"de":{"name":"Deutsch","cont":"Weiter","dir":"ltr"},"ja":{"name":"日本語","cont":"続ける","dir":"ltr"},"hi":{"name":"हिन्दी","cont":"जारी रखें","dir":"ltr"},"id":{"name":"Bahasa Indonesia","cont":"Lanjutkan","dir":"ltr"},"tr":{"name":"Türkçe","cont":"Devam et","dir":"ltr"},"pl":{"name":"Polski","cont":"Kontynuuj","dir":"ltr"}};
 function $(s){ return document.querySelector(s); }
@@ -681,18 +774,24 @@ function langHref(code){ return ROOT_REL + (LANG_PATH[code]||'') + (PAGE_LANGS &
 /* Общие элементы всех страниц сайта (тест и контентные страницы): выпадающий список языков,
    запоминание выбранного языка, подсказка «Продолжить на …», уведомление о cookie и загрузка Яндекс.Метрики после согласия.
    Вставляется сборкой в каждую страницу; вызывается как initCommon({L, t, esc, lsGet, lsSet, langHref, $}). */
-/* Хэш адреса с личными данными: #r=… — код результата (в нём имя, e-mail и ответы участника), #u=… — ключ отписки от рассылки.
+/* Хэш адреса с личными данными: #r=… — код результата (в нём имя, e-mail и ответы участника), #u=… — ключ отписки от рассылки,
+   #c=… — ключ подтверждения подписки на рассылку (с 2026-10-22).
    Счётчик веб-аналитики читает адрес страницы сам: в первом запросе (он уходит и при defer), в карте кликов, при переходе
    по внешней ссылке, в записи посещения. Поэтому такой хэш убирается из адресной строки раньше, чем счётчик загружен, и
    остаётся в записи истории браузера (history.state): обновление страницы и «Назад» открывают тот же экран, а новый переход
    по тому же адресу (ссылка на эту же страницу) — страницу без данных.
-   Код страниц берёт хэш через dataHash() и pageHash(), а не из location.hash; в разметку страницы хэш с данными не пишется. */
+   Код страниц берёт хэш через dataHash() и pageHash(), а не из location.hash; в разметку страницы хэш с данными не пишется.
+   Исключение (решение заказчика от 2026-10-22): экран результата после загрузки сам кладёт в адресную строку ссылку на отчёт без e-mail
+   (showHash) — ту же, что копирует кнопка «Скопировать ссылку», чтобы адрес из строки браузера можно было переслать. Её счётчик видит;
+   о ней говорят тексты о данных на 14 языках. При открытии страницы любой #r=… (в старых ссылках из писем — с e-mail) всё равно сначала
+   убирается, до загрузки счётчика, и возвращается в строку уже без e-mail. */
 function dataHash(){
-  var re = /^#[ru]=/, h = location.hash || '';
+  var re = /^#[ruc]=/, h = location.hash || '';
   try{
-    var first = !dataHash.seen; dataHash.seen = 1;
+    var first = !dataHash.seen, s = history.state; dataHash.seen = 1;
+    /* ссылка, которую страница сама показала в адресной строке (showHash), остаётся на месте; при открытии страницы (first) убирается и она */
+    if(!first && h && s && s.discShown === h) return h;
     if(re.test(h)){ history.replaceState({discHash:h}, '', location.pathname + location.search); return h; }
-    var s = history.state;
     if(s && typeof s.discHash === 'string' && re.test(s.discHash)){
       if(first && navFresh()){ history.replaceState(null, '', location.href); return ''; }
       return s.discHash;
@@ -705,6 +804,8 @@ function navFresh(){
   try{ var n = performance.getEntriesByType('navigation')[0]; return n ? n.type === 'navigate' : performance.navigation.type === 0; }catch(e){ return false; }
 }
 function pageHash(){ return dataHash() || location.hash || ''; }
+/* показать ссылку на результат в адресной строке (экран результата): без новой записи истории и без события hashchange */
+function showHash(h){ try{ history.replaceState({discHash:h, discShown:h}, '', location.pathname + location.search + h); }catch(e){} }
 /* возврат к началу: адрес без хэша, запись истории без данных */
 function dropHash(){ try{ if(location.hash || history.state) history.replaceState(null, '', location.pathname + location.search); }catch(e){} }
 
@@ -780,7 +881,7 @@ function initCommon(c){
     var A = window.DISC_ANALYTICS||{}, ym = A.ym ? String(A.ym) : "", optin = A.mode!=="always", ask = optin && !!ym;
     function loadYm(){
       /* пока в адресе остаётся хэш с данными (убрать его не удалось), счётчик не загружается вовсе */
-      if(!ym || window.ym || /^#[ru]=/.test(location.hash)) return;
+      if(!ym || window.ym || /^#[ruc]=/.test(location.hash)) return;
       (function(m,e,t,r,i,k,a){ m[i]=m[i]||function(){ (m[i].a=m[i].a||[]).push(arguments); }; m[i].l=1*new Date();
         for(var j=0;j<document.scripts.length;j++){ if(document.scripts[j].src===r) return; }
         k=e.createElement(t); a=e.getElementsByTagName(t)[0]; k.async=1; k.src=r; a.parentNode.insertBefore(k,a);
@@ -806,7 +907,57 @@ function initCommon(c){
     document.body.appendChild(el); document.body.classList.add("has-consent");
     function close(v){ lsSet("disc.consent", v); el.remove(); document.body.classList.remove("has-consent"); }
     $("#consentOk").addEventListener("click", function(){ close(ask ? "analytics" : "noted"); if(ask) loadYm(); });
+    /* тест пройден в этом браузере: уведомление было на экране все 24 блока. В режиме always оно только сообщает — считаем его прочитанным
+       и убираем, чтобы на телефоне оно не закрывало кнопку отчёта на экране результата. Согласие (режим optin) так не ставится никогда */
+    if(!ask) window.discNoticeSeen = function(){ if(el.parentNode) close("noted"); };
     if($("#consentNo")) $("#consentNo").addEventListener("click", function(){ close("essential"); });
+  })();
+
+  /* закреплённая кнопка расширенного отчёта внизу экрана (с 2026-10-22 — на всех страницах сайта, решение заказчика).
+     window.DISC_XBAR задаёт сборка только в языках, где отчёт продаётся (content.product.promo): {button, offer — та же кнопка со специальной
+     ценой (пусто, если её нет), ms — срок специальной цены, close}. Видна тем, у кого на устройстве сохранён результат теста (disc.last),
+     пока её не закроют крестиком (sessionStorage disc.xbar, до конца сеанса); не видна купившему отчёт (disc.pay.done) и на самостоятельных
+     лендингах (c.noXbar). Страница теста управляет ею сама через window.discXbar.set({show, go, src}): прячет на время вопросов и в панели,
+     на экране результата показывает и для чужого результата и раскрывает форму покупки. По умолчанию кнопка ведёт на страницу отчёта
+     (источник заказа site-bar), а на самой странице отчёта — прокручивает к форме покупки. Цель Метрики — ext-bar. */
+  (function(){
+    var X = window.DISC_XBAR;
+    if(!X || c.noXbar || !c.reportHref) return;
+    function closed(){ try{ return sessionStorage.getItem('disc.xbar') === 'off'; }catch(e){ return false; } }
+    function bought(){ var p = lsGet('disc.pay'); return !!(p && p.done); }
+    function last(){ var r = lsGet('disc.last'); return r && r.t && r.m && r.l ? r : null; }
+    var bar = document.createElement('div'); bar.className = 'xbar no-print'; bar.id = 'extBar';
+    bar.innerHTML = '<a class="btn" id="extBarGo" href="'+esc(c.reportHref)+'"></a><button class="xbar-x" type="button" id="extBarX" aria-label="'+esc(X.close)+'" title="'+esc(X.close)+'">×</button>';
+    document.body.appendChild(bar);
+    var go = bar.firstChild, page = null, text = '', timer = 0;
+    /* надпись: пока действует специальная цена (час после первого прохождения на устройстве, как в src/pay.js) — с ней, потом обычная */
+    function label(){
+      clearTimeout(timer);
+      if(text){ go.textContent = text; return; }
+      var r = last(), until = 0;
+      if(X.offer && r){ var a = Date.parse(r.t), s = lsGet('disc.offer'), b = s && Date.parse(s.t); if(!isNaN(a)) until = Math.min(a, b && !isNaN(b) ? b : a) + X.ms; }
+      var left = until - Date.now();
+      go.textContent = left > 0 ? X.offer : X.button;
+      if(left > 0) timer = setTimeout(label, Math.min(left + 500, 2147483000));
+    }
+    function sync(){
+      var on = !closed() && !bought() && (page ? !!page.show : !!last());
+      bar.classList.toggle('show', on); document.body.classList.toggle('has-xbar', on);
+    }
+    go.addEventListener('click', function(ev){
+      if(window.discTrack) window.discTrack('ext-bar');
+      if(page && page.go){ ev.preventDefault(); page.go(); return; }
+      var f = document.querySelector('#buy input[type=email]');
+      if(f){ ev.preventDefault(); f.scrollIntoView({behavior:'smooth', block:'center'}); try{ f.focus({preventScroll:true}); }catch(e){ f.focus(); } return; }
+      try{ sessionStorage.setItem('disc.src', (page && page.src) || 'site-bar'); }catch(e){}
+    });
+    bar.lastChild.addEventListener('click', function(){ try{ sessionStorage.setItem('disc.xbar', 'off'); }catch(e){} sync(); });
+    window.discXbar = {
+      set: function(p){ page = p || null; text = ''; label(); sync(); },   // null — как на обычной странице
+      text: function(s){ text = s || ''; label(); },
+      sync: sync
+    };
+    label(); sync();
   })();
 
   /* отметка о посещении (visitStats в site.config.json, window.DISC_VISIT задаёт сборка): раз в сутки по Москве — один запрос на сервер сайта
@@ -821,7 +972,7 @@ function initCommon(c){
   })();
 }
 
-initCommon({L:L, t:t, esc:esc, lsGet:lsGet, lsSet:lsSet, langHref:langHref, $:$, langMeta:LANG_META, langPath:LANG_PATH, privacyHref:ROOT_REL+(LANG_PATH[L.lang]||'')+'privacy/'});
+initCommon({L:L, t:t, esc:esc, lsGet:lsGet, lsSet:lsSet, langHref:langHref, $:$, langMeta:LANG_META, langPath:LANG_PATH, privacyHref:ROOT_REL+(LANG_PATH[L.lang]||'')+'privacy/', reportHref:ROOT_REL+(LANG_PATH[L.lang]||'')+'extended-report/', noXbar:false});
 if(/[?&]ref=/.test(location.search)){ var inv = document.createElement('aside'); inv.className = 'cta invite'; inv.innerHTML = "\u003cdiv>\u003ch2>आपके दोस्त का प्रकार है “अगुआ”। आपका कौन-सा है?\u003c/h2>\u003cp>मुफ़्त DISC टेस्ट दें: 24 ब्लॉक, लगभग 10 मिनट, बिना रजिस्ट्रेशन। जानें आपका प्रकार क्या है और आप दोनों साथ मिलकर बेहतर काम और बातचीत कैसे कर सकते हैं।\u003c/p>\u003c/div>\u003ca class=\"btn\" href=\"../../\">टेस्ट दें\u003c/a>";inv.querySelector('a').addEventListener('click', function(){ if(window.discTrack) window.discTrack('invite'); });var m = $('main.content'); m.insertBefore(inv, m.firstChild); var ct = $('.cta-top'); if(ct) ct.remove(); if(window.discTrack) window.discTrack('invite-view'); }
 /* цели Метрики у кнопок теста (cta-top, cta-bottom, cta-float) и плавающая кнопка на телефоне: видна, когда призыв
    после вводного абзаца уже прокручен вверх, а нижний призыв и подвал ещё не на экране (аудит 3, п. 1) */

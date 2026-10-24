@@ -67,7 +67,7 @@ function lsSet(k,v){ MEM[k]=v; try{ localStorage.setItem(k, JSON.stringify(v)); 
 var PAGE_LANGS = __PAGE_LANGS_JSON__; /* языки, в которых есть эта страница (null — во всех); в остальных ссылка ведёт на главную языка */
 function langHref(code){ return ROOT_REL + (LANG_PATH[code]||'') + (PAGE_LANGS && PAGE_LANGS.indexOf(code)<0 ? '' : SUBPATH) + location.hash; }
 __COMMON_JS__
-initCommon({L:L, t:t, esc:esc, lsGet:lsGet, lsSet:lsSet, langHref:langHref, $:$, langMeta:LANG_META, langPath:LANG_PATH, privacyHref:ROOT_REL+(LANG_PATH[L.lang]||'')+'privacy/'});
+initCommon({L:L, t:t, esc:esc, lsGet:lsGet, lsSet:lsSet, langHref:langHref, $:$, langMeta:LANG_META, langPath:LANG_PATH, privacyHref:ROOT_REL+(LANG_PATH[L.lang]||'')+'privacy/', reportHref:ROOT_REL+(LANG_PATH[L.lang]||'')+'extended-report/', noXbar:__NO_XBAR__});
 __PAGE_JS__
 /* цели Метрики у кнопок теста (cta-top, cta-bottom, cta-float) и плавающая кнопка на телефоне: видна, когда призыв
    после вводного абзаца уже прокручен вверх, а нижний призыв и подвал ещё не на экране (аудит 3, п. 1) */

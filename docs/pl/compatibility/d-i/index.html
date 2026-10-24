@@ -9,6 +9,7 @@
 <meta name="google-site-verification" content="q9-P14KEm3Bl0iw-lP3zITeLv0EESmjJcPRee30aAsw">
 <meta name="yandex-verification" content="028b85ace16c85fc">
 <script>window.DISC_ANALYTICS={"ym":"112347000","mode":"always"};</script>
+<script>window.DISC_XBAR={"button":"Kup swój osobisty raport rozszerzony za 9,99 USD","offer":"Kup swój osobisty raport rozszerzony za 6,99 USD","ms":3600000,"close":"Ukryj"};</script>
 <script>window.DISC_VISIT={"url":"https://api.disc-test.org/","token":"kR7UiShTyG7Wws7t16NkgKN3","host":"disc-test.org"};</script>
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Test DISC">
@@ -60,7 +61,7 @@
 <link rel="icon" href="../../../favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../../../apple-touch-icon.png">
 <link rel="manifest" href="../../../manifest.webmanifest">
-<script type="application/ld+json">[{"@context":"https://schema.org","@type":"Article","headline":"Dominacja i Wpływ: dopasowanie stylów DISC w pracy","name":"Dominacja i Wpływ: dopasowanie stylów DISC w pracy","description":"Jak style Dominacja i Wpływ współpracują ze sobą: co je łączy, gdzie dochodzi do tarć i co może zrobić każda ze stron. Darmowy test DISC na stronie.","url":"https://disc-test.org/pl/compatibility/d-i/","inLanguage":"pl","datePublished":"2026-09-20","dateModified":"2026-09-24","author":{"@type":"Organization","name":"DISC Test","url":"https://disc-test.org/"},"image":"https://disc-test.org/og/pairs/pl-d-i.png","publisher":{"@type":"Organization","name":"DISC Test","url":"https://disc-test.org/","logo":"https://disc-test.org/icon-512.png"},"isPartOf":{"@type":"WebSite","name":"DISC Test","url":"https://disc-test.org/"}},{"@context":"https://schema.org","@type":"Organization","name":"DISC Test","url":"https://disc-test.org/","logo":"https://disc-test.org/icon-512.png","email":"info@disc-test.org"},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Strona główna","item":"https://disc-test.org/pl/"},{"@type":"ListItem","position":2,"name":"Dopasowanie stylów","item":"https://disc-test.org/pl/compatibility/"},{"@type":"ListItem","position":3,"name":"DI","item":"https://disc-test.org/pl/compatibility/d-i/"}]}]</script>
+<script type="application/ld+json">[{"@context":"https://schema.org","@type":"Article","headline":"Dominacja i Wpływ: dopasowanie stylów DISC w pracy","name":"Dominacja i Wpływ: dopasowanie stylów DISC w pracy","description":"Jak style Dominacja i Wpływ współpracują ze sobą: co je łączy, gdzie dochodzi do tarć i co może zrobić każda ze stron. Darmowy test DISC na stronie.","url":"https://disc-test.org/pl/compatibility/d-i/","inLanguage":"pl","datePublished":"2026-09-20","dateModified":"2026-10-21","author":{"@type":"Organization","name":"DISC Test","url":"https://disc-test.org/"},"image":"https://disc-test.org/og/pairs/pl-d-i.png","publisher":{"@type":"Organization","name":"DISC Test","url":"https://disc-test.org/","logo":"https://disc-test.org/icon-512.png"},"isPartOf":{"@type":"WebSite","name":"DISC Test","url":"https://disc-test.org/"}},{"@context":"https://schema.org","@type":"Organization","name":"DISC Test","url":"https://disc-test.org/","logo":"https://disc-test.org/icon-512.png","email":"info@disc-test.org"},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Strona główna","item":"https://disc-test.org/pl/"},{"@type":"ListItem","position":2,"name":"Dopasowanie stylów","item":"https://disc-test.org/pl/compatibility/"},{"@type":"ListItem","position":3,"name":"DI","item":"https://disc-test.org/pl/compatibility/d-i/"}]}]</script>
 <link rel="preload" href="/fonts/golos-text-400-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/unbounded-500-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/golos-text-400-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
@@ -226,45 +227,39 @@ html[lang=ar] body,html[lang=hi] body{font-size:17px;line-height:1.65}
 .service .price{flex:none;color:var(--ink);font-family:var(--font-head);font-weight:500;font-size:28px;line-height:1.1}
 .service .price small{display:block;font-family:var(--font-body);font-weight:400;font-size:13px;color:var(--muted);margin-bottom:4px}
 /* расширенный отчёт: блок на экране результата (.xoffer, .xanchor) и страница отчёта (.xfacts, .xsample, .xbuy) */
-.xtop{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;background:var(--surface);border:1px solid var(--line);border-inline-start:4px solid var(--k,var(--ink));border-radius:12px;padding:14px 18px;margin:0 0 18px}
-.xtop div{flex:1 1 280px}
-.xtop b{font-family:var(--font-head);font-weight:500;font-size:16px}
-.xtop p{margin:4px 0 0;font-size:14px;color:var(--muted)}
-/* личные зацепки в верхнем призыве (content.product.promo): что в отчёте разобрано по числам этого участника */
-.xtop .xhooks{margin:6px 0 4px;padding-inline-start:18px;font-size:14px}
-.xtop .xhooks li{margin-bottom:4px}
-/* закреплённая кнопка отчёта на экране результата (телефон): видна, пока верхний призыв и нижний блок за краем экрана */
+/* закреплённая кнопка расширенного отчёта (src/common.js): с 2026-10-22 (решения заказчика) — на всех страницах сайта у того, кто прошёл тест,
+   пока он не закроет её крестиком, на любой ширине экрана: по центру внизу, не шире 560 px, на телефоне — во всю ширину с полями 12 px;
+   снизу у страницы запас под кнопку (body.has-xbar), чтобы она не закрывала конец страницы; плавающая кнопка «Пройти тест» в это время не нужна */
 .xbar{display:none}
+.xbar.show{display:flex;gap:8px;position:fixed;left:50%;transform:translateX(-50%);width:min(560px,calc(100% - 24px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:15}
+.xbar .btn{flex:1 1 auto;white-space:normal;text-align:center;box-shadow:0 8px 24px -6px rgba(0,0,0,.35)}   /* длинная надпись на телефоне переносится */
+/* крестик (с 2026-10-22, по просьбе заказчика): маленький кружок в правом верхнем углу плашки; область нажатия шире кружка (::before) */
+.xbar-x{position:absolute;top:-7px;inset-inline-end:-7px;display:flex;align-items:center;justify-content:center;width:16px;height:16px;padding:0;border:1px solid var(--line-strong);border-radius:50%;background:var(--surface);color:var(--muted);font-size:12px;line-height:1;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.3)}
+.xbar-x::before{content:"";position:absolute;inset:-12px}
+body.has-xbar:not(.has-consent){padding-bottom:88px}
+body.has-consent .xbar,body.has-xbar .btn.ctafloat.show{display:none}
 @media (max-width:640px){
-  .xbar.show{display:flex;gap:8px;position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:15}
-  .xbar .btn{flex:1 1 auto;box-shadow:0 8px 24px -6px rgba(0,0,0,.35)}
-  .xbar-x{flex:none;width:46px;border:1px solid var(--line-strong);border-radius:12px;background:var(--surface);color:var(--muted);font-size:22px;line-height:1;cursor:pointer;box-shadow:0 8px 24px -6px rgba(0,0,0,.35)}
-  body.has-consent .xbar{display:none}
-  .xtop .xhooks li:nth-child(n+3){display:none}
+  .xbar.show{bottom:calc(12px + env(safe-area-inset-bottom,0px))}
+  body.has-xbar:not(.has-consent){padding-bottom:84px}
 }
-/* вернувшийся посетитель: карточка прошлого результата с личными зацепками и крупной кнопкой отчёта под заголовком; «Пройти тест заново» — ссылка ниже */
+/* вернувшийся посетитель: карточка прошлого результата под заголовком; с 2026-10-22 — как блок «Расширенный отчёт» экрана результата
+   (класс share xoffer: фон в цвет стиля, заголовок, строка о самой низкой шкале, тезисы, листы образца, форма с e-mail и «Купить»); «Пройти тест заново» — ссылка ниже */
 .lastcard{background:var(--surface);border:1px solid var(--line);border-inline-start:4px solid var(--k,var(--ink));border-radius:14px;padding:16px 20px 18px;margin:4px 0 22px;box-shadow:0 10px 28px -18px rgba(0,0,0,.35)}
 .lchead{font-size:14px;color:var(--muted)}
+.lastcard .lchead{margin-bottom:16px}
 .lastname{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 14px;margin-top:4px}
 .lastcard b{display:inline-flex;align-items:baseline;gap:8px;font-family:var(--font-head);font-weight:500;font-size:20px;color:var(--ink)}
-.lclead{margin:14px 0 0;font-weight:600}
-.lastcard .xhooks{margin:6px 0 0;padding-inline-start:20px}
-.lastcard .xhooks li{margin-bottom:4px}
-.lctail{margin:8px 0 0;font-size:14px;color:var(--muted)}
-.lctail a{color:var(--ink);text-underline-offset:3px;white-space:nowrap}
-.lastcard .btn{margin-top:16px;font-size:18px;padding:16px 30px;box-shadow:0 8px 22px -10px rgba(0,0,0,.5)}
+.lastcard>.btn{margin-top:16px;font-size:18px;padding:16px 30px;box-shadow:0 8px 22px -10px rgba(0,0,0,.5)}
+.lastcard .xinline{margin-top:16px}
 .startrow.again{margin-top:-4px}
-@media (max-width:640px){.lastcard .xhooks li:nth-child(n+3){display:none}}
-@media (max-width:480px){.lastcard{padding:14px 16px 16px}.lclead{margin-top:12px}.lclead,.lastcard .xhooks{font-size:15px}.lastcard .btn{display:flex;width:100%;margin-top:14px}}
-/* ссылки под описанием профиля на экране результата: плитки с отметкой цвета ведущего стиля */
-.rlinks{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:16px 0}
-.rlinks a{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--surface);border:1px solid var(--line);border-inline-start:3px solid var(--k,var(--ink));border-radius:12px;padding:12px 14px;color:var(--ink);text-decoration:none;font-size:15px;font-weight:600;line-height:1.35}
-.rlinks a:hover{border-color:var(--line-strong);border-inline-start-color:var(--k,var(--ink))}
-.rlinks a i{font-style:normal;color:var(--muted);flex:none}
-.rlinks .dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--k);margin-inline-end:8px;vertical-align:1px}
+@media (max-width:480px){.lastcard>.btn{display:flex;width:100%;margin-top:14px}}
 .xoffer{scroll-margin-top:76px}
+.xoffer+.card{margin-top:16px}
+/* блок расширенного отчёта выделен фоном в цвет ведущего стиля участника (--k), чтобы бросался в глаза (решение заказчика от 2026-10-21);
+   без color-mix — прежний фон карточки и цветная полоса слева */
+.share.xoffer{border-inline-start:4px solid var(--k,var(--ink));background:color-mix(in srgb,var(--k,var(--ink)) 13%,var(--surface));border-color:color-mix(in srgb,var(--k,var(--ink)) 45%,var(--line));border-inline-start-color:var(--k,var(--ink))}
 .xoffer h2{margin:0 0 12px;font-size:22px}
-.xoffer .xhook{background:var(--soft);border-radius:10px;padding:12px 14px;margin:0 0 16px}
+.xoffer .xhook{background:var(--surface);border-radius:10px;padding:12px 14px;margin:0 0 16px}
 .xgrid{display:grid;grid-template-columns:1fr auto;gap:16px 28px;align-items:start}
 .xgrid ul{margin:0;padding-inline-start:20px}
 .xgrid li{margin-bottom:8px}
@@ -298,6 +293,80 @@ html[lang=ar] body,html[lang=hi] body{font-size:17px;line-height:1.65}
 .paymark.ok{color:var(--s)}
 .paymark.fail{color:var(--d)}
 @media (max-width:480px){.xpay .btn{flex:1 1 auto}}
+/* цена крупно над кнопкой «Купить» (форма на экране результата, add({price})); на телефоне — во всю ширину */
+.xpay .xbuyact{display:flex;flex-direction:column;align-items:stretch;gap:8px}
+.xpay .xbig{font-family:var(--font-head);font-weight:500;font-size:30px;line-height:1.1;color:var(--ink);text-align:center;white-space:nowrap}
+@media (max-width:480px){.xpay .xbuyact{flex:1 1 100%}}
+/* специальная цена на час после теста (src/pay.js, T.offer): обычная цена зачёркнута, под кнопкой — обратный отсчёт */
+.xbig.xdual,.price .xdual{white-space:normal}
+.xdual s.xold,.xdual .xnew{white-space:nowrap}
+@media (max-width:480px){.xpay .xbig.xdual{font-size:25px}}
+s.xold{font-size:.72em;font-weight:500;color:var(--muted);text-decoration:line-through 1.5px var(--d);margin-right:.25em;vertical-align:.08em}
+.vh{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.xdeal{flex:1 1 100%;display:flex;align-items:center;justify-content:space-between;gap:14px;background:#C9453D;color:#fff;border-radius:12px;padding:12px 16px}
+.xdeal[hidden]{display:none}
+.xdeal-t{min-width:0}
+.xdeal-t b{display:block;font-family:var(--font-head);font-weight:500;font-size:20px;line-height:1.2}
+.xdeal-t small{display:block;margin-top:4px;font-size:13px;line-height:1.35;opacity:.92}
+.xclock{flex:none;text-align:center;line-height:1}
+.xclock small{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.06em;opacity:.9;margin-bottom:4px}
+.xclock span{display:block;font-family:var(--font-head);font-weight:500;font-size:32px;font-variant-numeric:tabular-nums;background:rgba(0,0,0,.18);border-radius:8px;padding:6px 10px;min-width:3.6em}
+@media (max-width:480px){.xdeal{padding:12px}.xdeal-t b{font-size:18px}.xclock span{font-size:28px}}
+/* строка гарантии возврата у кнопки «Купить» (content.product.pay.guarantee): на странице отчёта и в форме на экране результата */
+p.xguar{flex:1 1 100%;margin:0;font-size:14px;font-weight:600;color:var(--ink)}
+.service p.xguar{margin-top:-6px}
+/* код доступа от организации в форме покупки (src/pay.js, payCodeHTML): в режиме кода цена, «Купить» и условия покупки прячутся */
+.xpay .xcode{flex:1 1 100%;margin:0}
+.xpay .xcodelink{font-size:14px}
+.xpay .xcodebox{display:flex;flex-wrap:wrap;align-items:flex-end;gap:12px 20px;margin-top:12px}
+.xpay .xcodebox[hidden]{display:none}
+.xpay .xcodebox .field{flex:1 1 220px;min-width:0}
+.xpay .xcodebox .sendstatus,.xpay .xcodebox .xnote{flex:1 1 100%;margin:0}
+.xpay .xcodebox .sendstatus.err{color:var(--d)}
+.xpay .xcodein{text-transform:uppercase;letter-spacing:.06em}
+.xpay .xcodein::placeholder{text-transform:none;letter-spacing:normal}
+.xpay.xcoding>.xdeal,.xpay.xcoding>.xbuyact,.xpay.xcoding>.btn,.xpay.xcoding>.price,.xpay.xcoding>.xguar,.xpay.xcoding>.xnote,.xpay.xcoding>.sendstatus{display:none}
+@media (max-width:480px){.xpay .xcodebox .btn{flex:1 1 auto}}
+/* «Услуги» с разделами «Для физических лиц» и «Для организаций»: две карточки выбора сверху и заголовки разделов */
+.svcpicks{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:20px 0 8px}
+@media (max-width:640px){.svcpicks{grid-template-columns:1fr}}
+.svcpick{display:flex;flex-direction:column;gap:6px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px;color:var(--ink);text-decoration:none}
+.svcpick:hover{border-color:var(--line-strong)}
+.svcpick strong{font-family:var(--font-head);font-weight:500;font-size:19px;line-height:1.25}
+.svcpick span{font-size:14px;color:var(--muted);flex:1}
+.svcpick b{font-family:var(--font-head);font-weight:500;font-size:20px;margin-top:4px}
+.svcpick b::after{content:" \2192";color:var(--muted);font-weight:400}
+[dir=rtl] .svcpick b::after{content:" \2190"}
+h2.svcpart{font-size:28px;margin-top:44px;padding-top:20px;border-top:1px solid var(--line);scroll-margin-top:16px}
+h3.svch3{margin-top:24px}
+/* третья карточка выбора — «Поиск работы» (сервис резюме, с 2026-10-24) */
+@media (min-width:641px){.svcpicks.three{grid-template-columns:repeat(3,1fr)}}
+.service p.svcplans{margin-top:8px;font-size:14px;color:var(--ink)}
+.service p.svcplans span{white-space:nowrap}
+/* блок-анонс сервиса «Резюме под каждую вакансию» (cvPromoHTML в src/intro.js): главная, экран результата, страницы профилей */
+.cvpromo{display:flex;flex-wrap:wrap;align-items:center;gap:14px 24px;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--s);border-radius:14px;padding:20px 24px;margin:30px 0}
+[dir=rtl] .cvpromo{border-left-width:1px;border-right:4px solid var(--s)}
+.cvpromo div{flex:1 1 320px}
+.cvpromo .cvtag{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--s);margin-bottom:6px}
+.cvpromo h2{margin:0 0 6px;font-size:22px}
+.cvpromo p{margin:0;color:var(--muted);font-size:15px}
+.cvpromo p.cvnote{margin-top:8px;font-size:14px;color:var(--ink);font-weight:500}
+.cvpromo .btn{flex:none}
+@media (max-width:480px){.cvpromo{padding:18px}.cvpromo .btn{flex:1 1 auto;text-align:center}}
+.service>.btn{flex:none}
+/* страница «Для организаций»: таблица пакетов и группа галочек в заявке */
+.cmp.packs{min-width:0}.cmp.packs th{white-space:normal}.cmp.packs td{white-space:nowrap}
+.bizcard select{font:inherit;padding:12px 40px 12px 14px;border:1px solid var(--line-strong);border-radius:10px;background:var(--surface) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1.5 1.5 6 6l4.5-4.5' fill='none' stroke='%235B6470' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 14px center/12px 8px;color:var(--ink);width:100%;-webkit-appearance:none;appearance:none}
+[dir=rtl] .bizcard select{padding:12px 14px 12px 40px;background-position:left 14px center}
+fieldset.bizint{border:0;padding:0;margin:0;min-width:0}
+fieldset.bizint legend{padding:0;margin-bottom:6px;font-size:14px;font-weight:500}
+fieldset.bizint legend .req{margin-inline-start:3px}
+fieldset.bizint .check{margin:6px 0;font-size:15px;color:var(--ink)}
+/* покупка на экране результата: кнопка призыва раскрывает на месте форму с e-mail (src/pay.js, payForms) */
+.xinline{flex:1 1 100%;border-top:1px solid var(--line);padding-top:12px}
+.xoffer .xinline{margin:0}
+.xinline>p.small{margin:0 0 12px}
+.xinline .xmore{margin:12px 0 0;font-size:14px}
 .content .xq{font-family:var(--font-body);font-size:17px;font-weight:600;text-transform:none;letter-spacing:0;color:var(--ink);margin:20px 0 6px}
 /* «Как готовятся отчёты»: плитки преимуществ */
 .content .hmgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:14px 0 8px}
@@ -326,6 +395,16 @@ html[lang|=zh] [lang]:not([lang|=zh]):not([lang|=ja]),html[lang=ja] [lang]:not([
 .langbar-x:hover{color:var(--ink);background:var(--soft)}
 .styles-intro{margin-top:34px}
 .home-more{margin-top:34px}
+/* подписка на рассылку на стартовом экране (с 2026-10-22): поле и кнопка в строку, на телефоне — друг под другом */
+.nlbox{margin-top:30px}
+.nlbox h2{margin:0 0 6px;font-size:22px}
+.nlbox>p{margin:0 0 14px;color:var(--muted)}
+.nlfields{display:grid;gap:12px}
+.nlrow{display:flex;gap:10px}
+.nlrow input{flex:1;min-width:0}
+.nlrow .btn{flex:none}
+@media (max-width:480px){.nlrow{flex-direction:column}.nlrow .btn{width:100%}}
+.nlform .sendstatus{margin:0}
 .home-more h2{font-size:22px;margin:28px 0 10px}
 .home-more h3{font-size:15px;text-transform:none;letter-spacing:0;color:var(--ink);margin:14px 0 4px}
 .home-more ul{padding-inline-start:20px}
@@ -399,6 +478,10 @@ input:focus-visible,textarea:focus-visible,button:focus-visible,select:focus-vis
 .foot{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
 .foot .row2{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .foot .privacy,.foot .legal,.foot .rights{margin-top:6px}
+/* короткий подвал на экране результата (класс short ставит renderReport): только оферта, конфиденциальность, обратная связь и строка © */
+.foot .footshort{display:none}
+.foot.short .row2,.foot.short .materials,.foot.short .privacy,.foot.short .langs{display:none}
+.foot.short .footshort{display:block}
 .footlinks a{color:var(--muted)}
 .footlinks a:hover{color:var(--ink)}
 .content .seealso{margin-top:26px;font-size:14px}
@@ -444,8 +527,8 @@ html[dir=rtl] .ask.to-l .arr{transform:none}
 .row .txt{position:relative;font-size:17px;padding:17px 6px;line-height:1.35}
 /* слово шире колонки (телефон: «Дисциплинированный», «Kommunikationsorientiert») переносится по слогам; класс ставит fitRows() только таким строкам */
 .row .txt.hy{-webkit-hyphens:auto;hyphens:auto;overflow-wrap:anywhere}
-/* выбранное «больше всего» выделено обводкой букв, а не жирным начертанием: жирное шире, строка переносилась, и блок прыгал под пальцем */
-.row.is-most .txt{-webkit-text-stroke:.5px currentColor}
+/* выбранное утверждение («больше всего» и «меньше всего») выделено обводкой букв, а не жирным начертанием: жирное шире, строка переносилась, и блок прыгал под пальцем */
+.row.is-most .txt,.row.is-least .txt{-webkit-text-stroke:.5px currentColor}
 /* цвет до выбора — только у подписей колонок; отмеченное обведено прямоугольником: зелёным — «больше всего», красным — «меньше всего».
    Прямоугольник охватывает свой кружок и утверждение, кружок противоположной колонки остаётся снаружи */
 .row{position:relative;z-index:0}
@@ -500,7 +583,7 @@ html[dir=rtl] .ask.to-l .arr{transform:none}
 .stat .v{font-family:var(--font-mono);font-size:20px;font-weight:500;font-variant-numeric:tabular-nums;direction:ltr}
 .bar{height:6px;background:var(--soft);border-radius:3px;overflow:hidden;grid-column:1/-1}
 .bar i{display:block;height:100%;background:var(--k);border-radius:3px}
-.howto{font-size:13px;color:var(--muted);margin-top:14px;padding-top:12px;border-top:1px solid var(--line)}
+.howto{grid-column:1/-1;font-size:13px;color:var(--muted);margin:0;padding-top:14px;border-top:1px solid var(--line)}
 .sections{display:grid;grid-template-columns:1fr 1fr;gap:18px 26px}
 @media (max-width:680px){.sections{grid-template-columns:1fr}}
 .sec ul{margin:0;padding-inline-start:18px}
@@ -510,7 +593,18 @@ html[dir=rtl] .ask.to-l .arr{transform:none}
 .traits span{font-size:13px;padding:4px 10px;border-radius:999px;background:var(--soft);color:var(--ink)}
 .substyle{border-inline-start:4px solid var(--ks);padding:4px 0;padding-inline-start:14px;margin-top:4px}
 .share{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:var(--shadow)}
-.sharenet svg{flex:none}
+.sendbox{margin-top:18px;padding-top:18px;border-top:1px solid var(--line)}
+.sendbox h3{margin:0 0 12px}
+.sharedlg{border:1px solid var(--line);border-radius:16px;padding:0;background:var(--surface);color:var(--ink);box-shadow:0 20px 60px -20px rgba(0,0,0,.5);width:min(400px,calc(100% - 32px));max-width:none;max-height:calc(100% - 32px)}
+.sharedlg::backdrop{background:rgba(10,12,15,.55)}
+.sharedlg-in{padding:18px 20px 20px}
+.sharedlg-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+.sharedlg-head h2{margin:0;font-size:19px;line-height:1.3}
+.sharedlg-x{font:inherit;font-size:26px;line-height:1;width:38px;height:38px;flex:none;border-radius:8px;border:0;background:transparent;color:var(--muted);cursor:pointer}
+.sharedlg-x:hover{background:var(--soft);color:var(--ink)}
+.sharedlg-list{display:grid;gap:10px}
+.sharedlg-list .btn{width:100%;justify-content:flex-start;gap:12px}
+.sharedlg-list svg{flex:none}
 .codebox{font-family:var(--font-mono);font-size:12px;line-height:1.5;word-break:break-all;background:var(--paper);border:1px dashed var(--line-strong);padding:10px 12px;border-radius:8px;margin:12px 0;color:var(--ink);width:100%;min-height:0;resize:none;direction:ltr;text-align:left}
 .notice{background:var(--soft);border-radius:10px;padding:12px 14px;font-size:14px}
 .sendstatus{margin:-4px 0 10px;padding:8px 12px;border-radius:8px;background:var(--soft)}
@@ -649,11 +743,11 @@ body.has-consent{padding-bottom:160px}
   </header>
   <nav class="sitenav no-print"><a href="../../../pl/">Test</a><a href="../../../pl/disc/">Czym jest DISC</a><a href="../../../pl/styles/">Cztery style</a><a href="../../../pl/profiles/">16 profili</a><a href="../../../pl/results/">Interpretacja wyników</a><a href="../../../pl/compatibility/" aria-current="page">Dopasowanie stylów</a><a href="../../../pl/faq/">Pytania i odpowiedzi</a><a href="../../../pl/how-reports-are-made/">Jak powstają raporty</a><a href="../../../pl/services/">Usługi</a><a href="../../../pl/contact/">Kontakt</a></nav>
   <nav class="crumbs"><a href="../../../pl/">Strona główna</a><span>›</span><a href="../">Dopasowanie stylów</a><span>›</span><span aria-current="page">DI</span></nav>
-  <main class="content"><div class="eyebrow">Dopasowanie stylów · <span dir="ltr">D + I</span></div><div class="rhead"><span class="badge" style="--kp:var(--d);--ks:var(--i)"><span class="p">D</span><span class="s">I</span></span><div class="rtitle"><h1>Dominacja i Wpływ: dopasowanie</h1><div class="meta"><span dir="ltr">D · I</span></div></div></div><p class="lead">Najbardziej energiczna para: D wyznacza cel i tempo, a I porywa ludzi. Razem uruchamiają projekty, ale mają skłonność do niedoceniania szczegółów i ostrożności.</p><p>Style D oraz I łączy szybkie tempo: oba style decydują w biegu, lubią wyzwania i nie znoszą rutyny. Różni je orientacja: D myśli o wyniku, I – o ludziach i wrażeniu. To udane uzupełnienie: D daje kierunek i twardość, I – kontakty, dobry nastrój i umiejętność sprzedania pomysłu. Tarcia pojawiają się, gdy D odbiera rozmowność I jako stratę czasu, a I widzi w D chłód i szorstkość. Obie strony powinny pamiętać, że przy całej tej energii ktoś musi pilnować szczegółów.</p><aside class="cta cta-top no-print"><p>Jaki styl masz ty, a jaki twoi współpracownicy? Darmowy test pokaże to w 10 minut.</p><a class="btn" href="../../" data-goal="cta-top">Zrób test</a></aside><figure class="ogfig"><img src="../../../og/pairs/pl-d-i.png" width="1200" height="630" alt="Dominacja i Wpływ: dopasowanie" loading="lazy" decoding="async"></figure><h2>Jak pracują razem</h2><div class="sections"><div class="sec"><h3>Co łączy te style</h3><ul><li>Szybkie tempo i gotowość do działania bez długich przygotowań</li><li>Optymizm i apetyt na nowe zadania</li><li>Niechęć do rutyny i mikrozarządzania</li></ul></div><div class="sec"><h3>Gdzie dochodzi do tarć</h3><ul><li>D żąda konkretów, a I daje się ponieść rozmowie</li><li>Szorstkość rani I, emocje drażnią D</li><li>Oba style zbyt optymistycznie podchodzą do terminów i gubią szczegóły</li></ul></div><div class="sec kcol" style="--k:var(--d)"><h3>Wskazówki dla stylu Dominacja (D)</h3><ul><li>Zaczynaj rozmowę od dwóch minut o człowieku, dopiero potem przechodź do sprawy</li><li>Głośno doceniaj wkład I: dla tego stylu to paliwo</li><li>Nie ucinaj pomysłów w locie: daj dokończyć, a potem wybieraj</li></ul></div><div class="sec kcol" style="--k:var(--i)"><h3>Wskazówki dla stylu Wpływ (I)</h3><ul><li>Z D rozmawiaj krótko: wynik, termin i to, czego potrzebujesz od D</li><li>Spisuj ustalenia, żeby entuzjazm nie rozminął się z faktami</li><li>Nie bierz bezpośredniości D do siebie: to styl, a nie ocena</li></ul></div></div><h2>Przełożony D, podwładny I</h2><p>Przełożony o stylu D stawia podwładnemu o stylu I cel i czeka na wynik – a w zamian dostaje energię, kontakty i szybką reakcję. Styl I źle jednak znosi suche polecenia i brak uznania: przełożony o stylu D powinien głośno chwalić i dawać zadania, w których widać efekty pracy. Szczegóły i raporty lepiej sprawdzać na bieżąco, a nie dopiero na końcu.</p><h2>Przełożony I, podwładny D</h2><p>Przełożony o stylu I porywa podwładnego o stylu D pomysłem i daje mu swobodę – a D to docenia. Tarcia pojawiają się, gdy cele zmieniają się wraz z każdym nowym pomysłem: niekonsekwencja drażni D. Przełożony o stylu I powinien zapisywać priorytety i nie zmieniać ich bez powodu, a D – mówić o sprzeciwie w cztery oczy, zamiast spierać się przy zespole.</p><h2>Na zebraniach i w korespondencji</h2><p>Na zebraniu D i I są najgłośniejszymi uczestnikami: D ciągnie do decyzji, I – do rozmowy o pomysłach i ludziach. Razem szybko przekonują resztę do pomysłu. W korespondencji D pisze krótko, I – emocjonalnie i obszernie; D może uznać wiadomości I za puste, a I wiadomości D – za niegrzeczne.</p><h2>Typowy konflikt i jak z niego wyjść</h2><p>Typowy konflikt: I obiecuje klientowi więcej, niż zespół zdąży zrobić, D dowiaduje się o tym na końcu i wybucha. Zamiast ustalać, „kto zawinił”, warto przyjąć zasadę: każdą obietnicę dotyczącą terminów uzgadnia się z osobą odpowiedzialną za wykonanie. Osoba o stylu D powinna przy tym pamiętać, że ostrą uwagę przy wszystkich I przeżywa jak zdradę.</p><h2>Poza pracą: przyjaźń, związek, rodzina</h2><p>Poza pracą D i I tworzą barwną, aktywną parę: podróże, znajomi, nowe projekty. Obie strony lubią działać i nie znoszą nudy. Ryzyka to rywalizacja o uwagę i impulsywne decyzje; ktoś powinien odpowiadać za budżet i kalendarz.</p><h2>Trzy zasady dla tej pary</h2><ol><li>Obietnice terminów – tylko po uzgodnieniu</li><li>Uznanie na głos: dla I to paliwo, dla D – oznaka szacunku</li><li>Decyzje zapisywać od razu po rozmowie</li></ol><p class="seealso"><a href="../../profiles/d/">Więcej o profilu „Zdobywca”</a> · <a href="../../profiles/i/">Więcej o profilu „Inspirator”</a></p><aside class="cta"><div><h2>Poznaj swój profil DISC</h2><p>Darmowy test: 24 pytania, około 10 minut, wynik od razu i na e-mail.</p></div><a class="btn" href="../../" data-goal="cta-bottom">Zrób test</a></aside><h2>Inne pary stylów</h2><p class="chips"><a href="../d-d/"><span class="pill" style="--kp:var(--d);--ks:var(--d)"><span class="p">D</span><span class="s">D</span></span> D + D</a><a href="../d-s/"><span class="pill" style="--kp:var(--d);--ks:var(--s)"><span class="p">D</span><span class="s">S</span></span> Dominacja + Stałość</a><a href="../d-c/"><span class="pill" style="--kp:var(--d);--ks:var(--c)"><span class="p">D</span><span class="s">C</span></span> Dominacja + Sumienność</a><a href="../i-i/"><span class="pill" style="--kp:var(--i);--ks:var(--i)"><span class="p">I</span><span class="s">I</span></span> I + I</a><a href="../i-s/"><span class="pill" style="--kp:var(--i);--ks:var(--s)"><span class="p">I</span><span class="s">S</span></span> Wpływ + Stałość</a><a href="../i-c/"><span class="pill" style="--kp:var(--i);--ks:var(--c)"><span class="p">I</span><span class="s">C</span></span> Wpływ + Sumienność</a><a href="../s-s/"><span class="pill" style="--kp:var(--s);--ks:var(--s)"><span class="p">S</span><span class="s">S</span></span> S + S</a><a href="../s-c/"><span class="pill" style="--kp:var(--s);--ks:var(--c)"><span class="p">S</span><span class="s">C</span></span> Stałość + Sumienność</a><a href="../c-c/"><span class="pill" style="--kp:var(--c);--ks:var(--c)"><span class="p">C</span><span class="s">C</span></span> C + C</a></p><p class="updated"><time datetime="2026-09-24">Aktualizacja: 24 września 2026</time></p></main>
+  <main class="content"><div class="eyebrow">Dopasowanie stylów · <span dir="ltr">D + I</span></div><div class="rhead"><span class="badge" style="--kp:var(--d);--ks:var(--i)"><span class="p">D</span><span class="s">I</span></span><div class="rtitle"><h1>Dominacja i Wpływ: dopasowanie</h1><div class="meta"><span dir="ltr">D · I</span></div></div></div><p class="lead">Najbardziej energiczna para: D wyznacza cel i tempo, a I porywa ludzi. Razem uruchamiają projekty, ale mają skłonność do niedoceniania szczegółów i ostrożności.</p><p>Style D oraz I łączy szybkie tempo: oba style decydują w biegu, lubią wyzwania i nie znoszą rutyny. Różni je orientacja: D myśli o wyniku, I – o ludziach i wrażeniu. To udane uzupełnienie: D daje kierunek i twardość, I – kontakty, dobry nastrój i umiejętność sprzedania pomysłu. Tarcia pojawiają się, gdy D odbiera rozmowność I jako stratę czasu, a I widzi w D chłód i szorstkość. Obie strony powinny pamiętać, że przy całej tej energii ktoś musi pilnować szczegółów.</p><aside class="cta cta-top no-print"><p>Jaki styl masz ty, a jaki twoi współpracownicy? Darmowy test pokaże to w 10 minut.</p><a class="btn" href="../../" data-goal="cta-top">Zrób test</a></aside><figure class="ogfig"><img src="../../../og/pairs/pl-d-i.png" width="1200" height="630" alt="Dominacja i Wpływ: dopasowanie" loading="lazy" decoding="async"></figure><h2>Jak pracują razem</h2><div class="sections"><div class="sec"><h3>Co łączy te style</h3><ul><li>Szybkie tempo i gotowość do działania bez długich przygotowań</li><li>Optymizm i apetyt na nowe zadania</li><li>Niechęć do rutyny i mikrozarządzania</li></ul></div><div class="sec"><h3>Gdzie dochodzi do tarć</h3><ul><li>D żąda konkretów, a I daje się ponieść rozmowie</li><li>Szorstkość rani I, emocje drażnią D</li><li>Oba style zbyt optymistycznie podchodzą do terminów i gubią szczegóły</li></ul></div><div class="sec kcol" style="--k:var(--d)"><h3>Wskazówki dla stylu Dominacja (D)</h3><ul><li>Zaczynaj rozmowę od dwóch minut o człowieku, dopiero potem przechodź do sprawy</li><li>Głośno doceniaj wkład I: dla tego stylu to paliwo</li><li>Nie ucinaj pomysłów w locie: daj dokończyć, a potem wybieraj</li></ul></div><div class="sec kcol" style="--k:var(--i)"><h3>Wskazówki dla stylu Wpływ (I)</h3><ul><li>Z D rozmawiaj krótko: wynik, termin i to, czego potrzebujesz od D</li><li>Spisuj ustalenia, żeby entuzjazm nie rozminął się z faktami</li><li>Nie bierz bezpośredniości D do siebie: to styl, a nie ocena</li></ul></div></div><h2>Przełożony D, podwładny I</h2><p>Przełożony o stylu D stawia podwładnemu o stylu I cel i czeka na wynik – a w zamian dostaje energię, kontakty i szybką reakcję. Styl I źle jednak znosi suche polecenia i brak uznania: przełożony o stylu D powinien głośno chwalić i dawać zadania, w których widać efekty pracy. Szczegóły i raporty lepiej sprawdzać na bieżąco, a nie dopiero na końcu.</p><h2>Przełożony I, podwładny D</h2><p>Przełożony o stylu I porywa podwładnego o stylu D pomysłem i daje mu swobodę – a D to docenia. Tarcia pojawiają się, gdy cele zmieniają się wraz z każdym nowym pomysłem: niekonsekwencja drażni D. Przełożony o stylu I powinien zapisywać priorytety i nie zmieniać ich bez powodu, a D – mówić o sprzeciwie w cztery oczy, zamiast spierać się przy zespole.</p><h2>Na zebraniach i w korespondencji</h2><p>Na zebraniu D i I są najgłośniejszymi uczestnikami: D ciągnie do decyzji, I – do rozmowy o pomysłach i ludziach. Razem szybko przekonują resztę do pomysłu. W korespondencji D pisze krótko, I – emocjonalnie i obszernie; D może uznać wiadomości I za puste, a I wiadomości D – za niegrzeczne.</p><h2>Typowy konflikt i jak z niego wyjść</h2><p>Typowy konflikt: I obiecuje klientowi więcej, niż zespół zdąży zrobić, D dowiaduje się o tym na końcu i wybucha. Zamiast ustalać, „kto zawinił”, warto przyjąć zasadę: każdą obietnicę dotyczącą terminów uzgadnia się z osobą odpowiedzialną za wykonanie. Osoba o stylu D powinna przy tym pamiętać, że ostrą uwagę przy wszystkich I przeżywa jak zdradę.</p><h2>Poza pracą: przyjaźń, związek, rodzina</h2><p>Poza pracą D i I tworzą barwną, aktywną parę: podróże, znajomi, nowe projekty. Obie strony lubią działać i nie znoszą nudy. Ryzyka to rywalizacja o uwagę i impulsywne decyzje; ktoś powinien odpowiadać za budżet i kalendarz.</p><h2>Trzy zasady dla tej pary</h2><ol><li>Obietnice terminów – tylko po uzgodnieniu</li><li>Uznanie na głos: dla I to paliwo, dla D – oznaka szacunku</li><li>Decyzje zapisywać od razu po rozmowie</li></ol><p class="seealso"><a href="../../profiles/d/">Więcej o profilu „Zdobywca”</a> · <a href="../../profiles/i/">Więcej o profilu „Inspirator”</a></p><aside class="cta"><div><h2>Poznaj swój profil DISC</h2><p>Darmowy test: 24 pytania, około 10 minut, wynik od razu.</p></div><a class="btn" href="../../" data-goal="cta-bottom">Zrób test</a></aside><h2>Inne pary stylów</h2><p class="chips"><a href="../d-d/"><span class="pill" style="--kp:var(--d);--ks:var(--d)"><span class="p">D</span><span class="s">D</span></span> D + D</a><a href="../d-s/"><span class="pill" style="--kp:var(--d);--ks:var(--s)"><span class="p">D</span><span class="s">S</span></span> Dominacja + Stałość</a><a href="../d-c/"><span class="pill" style="--kp:var(--d);--ks:var(--c)"><span class="p">D</span><span class="s">C</span></span> Dominacja + Sumienność</a><a href="../i-i/"><span class="pill" style="--kp:var(--i);--ks:var(--i)"><span class="p">I</span><span class="s">I</span></span> I + I</a><a href="../i-s/"><span class="pill" style="--kp:var(--i);--ks:var(--s)"><span class="p">I</span><span class="s">S</span></span> Wpływ + Stałość</a><a href="../i-c/"><span class="pill" style="--kp:var(--i);--ks:var(--c)"><span class="p">I</span><span class="s">C</span></span> Wpływ + Sumienność</a><a href="../s-s/"><span class="pill" style="--kp:var(--s);--ks:var(--s)"><span class="p">S</span><span class="s">S</span></span> S + S</a><a href="../s-c/"><span class="pill" style="--kp:var(--s);--ks:var(--c)"><span class="p">S</span><span class="s">C</span></span> Stałość + Sumienność</a><a href="../c-c/"><span class="pill" style="--kp:var(--c);--ks:var(--c)"><span class="p">C</span><span class="s">C</span></span> C + C</a></p><p class="updated"><time datetime="2026-10-21">Aktualizacja: 21 października 2026</time></p></main>
   <footer class="foot">
     <div class="row2"><span>24 pytania · około 10 minut · nie ma dobrych ani złych odpowiedzi</span><span class="footlinks"><a href="../../../pl/about/">O projekcie</a> · <a href="../../../pl/services/">Usługi</a> · <a href="../../../pl/offer/">Regulamin sprzedaży</a> · <a href="../../../pl/contact/">Kontakt</a> · <a href="../../../pl/privacy/">Prywatność</a></span></div>
     <nav class="materials" aria-label="Materiały o DISC"><span class="mlabel">Materiały o DISC</span><a href="../../../pl/disc/">Czym jest DISC</a><a href="../../../pl/styles/">Cztery style</a><a href="../../../pl/profiles/">16 profili</a><a href="../../../pl/results/">Interpretacja wyników</a><a href="../../../pl/compatibility/">Dopasowanie stylów</a><a href="../../../pl/colors/">Kolory DISC</a><a href="../../../pl/teams/">DISC dla zespołu</a><a href="../../../pl/disc-vs-mbti/">DISC a MBTI</a><a href="../../../pl/pdf/">Test w PDF</a><a href="../../../pl/faq/">Pytania i odpowiedzi</a></nav>
-    <div class="privacy">Odpowiedzi pozostają w twojej przeglądarce; na potrzeby ogólnej statystyki serwer serwisu otrzymuje wyłącznie informacje o wizycie i rozpoczęciu testu oraz uzyskany profil – bez imienia i bez odpowiedzi. Jeśli podasz adres e-mail, wynik zostanie na niego wysłany i zapisany w bazie wyników właściciela serwisu. Gdy klikniesz „Zapisz jako PDF”, odpowiedzi i data testu – bez imienia i e-maila – trafiają na serwer serwisu, który tworzy z nich plik raportu podstawowego, odsyła go i niczego nie zapisuje.</div>
+    <div class="privacy">Odpowiedzi pozostają w twojej przeglądarce; na potrzeby ogólnej statystyki serwer serwisu otrzymuje wyłącznie informacje o wizycie i rozpoczęciu testu oraz uzyskany profil – bez imienia i bez odpowiedzi. Jeśli podasz adres e-mail, wynik zostanie na niego wysłany i zapisany w bazie wyników właściciela serwisu. Jeśli zapiszesz się do newslettera na stronie głównej, w tej bazie zostaną zapisane twój adres e-mail i wersja językowa serwisu. Gdy klikniesz „Zapisz jako PDF”, odpowiedzi i data testu – bez imienia i e-maila – trafiają na serwer serwisu, który tworzy z nich plik raportu podstawowego, odsyła go i niczego nie zapisuje.</div>
     <div class="rights">© 2026 disc-test.org. Kopiowanie tekstów serwisu i raportów bez pisemnej zgody jest zabronione.</div>
     <nav class="langs" aria-label="Język"><a href="../../../compatibility/d-i/" hreflang="en" lang="en" data-lang="en"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-en"/></svg><span>English</span></a><a href="../../../es/compatibility/d-i/" hreflang="es" lang="es" data-lang="es"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-es"/></svg><span>Español</span></a><a href="../../../zh/compatibility/d-i/" hreflang="zh-Hans" lang="zh-Hans" data-lang="zh"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-zh"/></svg><span>简体中文</span></a><a href="../../../zh-hant/compatibility/d-i/" hreflang="zh-Hant" lang="zh-Hant" data-lang="zh-hant"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-zh-hant"/></svg><span>繁體中文</span></a><a href="../../../ru/compatibility/d-i/" hreflang="ru" lang="ru" data-lang="ru"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-ru"/></svg><span>Русский</span></a><a href="../../../ar/compatibility/d-i/" hreflang="ar" lang="ar" data-lang="ar"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-ar"/></svg><span>العربية</span></a><a href="../../../pt/compatibility/d-i/" hreflang="pt" lang="pt" data-lang="pt"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-pt"/></svg><span>Português</span></a><a href="../../../fr/compatibility/d-i/" hreflang="fr" lang="fr" data-lang="fr"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-fr"/></svg><span>Français</span></a><a href="../../../de/compatibility/d-i/" hreflang="de" lang="de" data-lang="de"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-de"/></svg><span>Deutsch</span></a><a href="../../../ja/compatibility/d-i/" hreflang="ja" lang="ja" data-lang="ja"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-ja"/></svg><span>日本語</span></a><a href="../../../hi/compatibility/d-i/" hreflang="hi" lang="hi" data-lang="hi"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-hi"/></svg><span>हिन्दी</span></a><a href="../../../id/compatibility/d-i/" hreflang="id" lang="id" data-lang="id"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-id"/></svg><span>Bahasa Indonesia</span></a><a href="../../../tr/compatibility/d-i/" hreflang="tr" lang="tr" data-lang="tr"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-tr"/></svg><span>Türkçe</span></a><a href="../../../pl/compatibility/d-i/" hreflang="pl" lang="pl" data-lang="pl" aria-current="page"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-pl"/></svg><span>Polski</span></a></nav>
   </footer>
@@ -663,7 +757,7 @@ body.has-consent{padding-bottom:160px}
 <script>
 (function(){
 'use strict';
-var L = {"lang":"pl","name":"Polski","dir":"ltr","dateLocale":"pl-PL","ui":{"langLabel":"Język","consent.label":"Informacja o plikach cookie","consent.text":"Serwis przechowuje twoje postępy, wynik i wybrany język w pamięci lokalnej przeglądarki, a usługa analityki internetowej zbiera zanonimizowane statystyki odwiedzin oraz zapis działań na stronie, abyśmy mogli ulepszać serwis. Imię, e-mail i wynik nie są przekazywane do usługi analitycznej.","consent.more":"Więcej informacji","consent.details":"W przeglądarce przechowywane są: imię i e-mail, jeśli je podano; odpowiedzi i nieukończone postępy; ostatni wynik; wybrany język; informacja, że ten komunikat został już wyświetlony. Te dane pozostają na twoim urządzeniu i są usuwane przy czyszczeniu danych witryny. Dostawca hostingu otrzymuje standardowe dane techniczne żądania. Gdy pierwszy raz danego dnia otwierasz serwis, na serwer serwisu trafia anonimowa informacja o wizycie: tylko wersja językowa serwisu; serwer zapisuje ją z godziną otrzymania, a przeglądarka zapamiętuje datę, żeby tego samego dnia nie wysyłać jej ponownie. Na tej podstawie liczymy, ile osób odwiedza serwis. Gdy zaczynasz test, na serwer serwisu trafia anonimowa informacja o rozpoczęciu: tylko wersja językowa serwisu. Po ukończeniu testu na serwer serwisu trafia anonimowy zapis do ogólnej statystyki: uzyskany profil i wersja językowa serwisu – bez imienia, adresu e-mail i odpowiedzi. Gdy klikniesz „Zapisz jako PDF”, odpowiedzi i data testu – bez imienia i e-maila – trafiają na serwer serwisu, który tworzy z nich plik raportu podstawowego, odsyła go i niczego nie zapisuje. Gdy wysyłasz wynik na e-mail, imię, e-mail i odpowiedzi są przekazywane na serwer serwisu: wysyła on do ciebie wiadomość z wynikiem i zapisuje imię, e-mail, datę oraz wynik w bazie wyników właściciela serwisu. System analityki internetowej otrzymuje adres strony bez kodu wyniku, źródło wejścia, typ urządzenia i przeglądarki, zanonimizowany zapis działań na stronie (pola z imieniem i e-mailem oraz link i kod wyniku są z zapisu wyłączone) i zapisuje własne pliki cookie. Możesz go zablokować w ustawieniach przeglądarki lub za pomocą programu blokującego skrypty śledzące. Reklamowe skrypty śledzące nie są używane.","consent.accept":"Akceptuję","consent.decline":"Tylko niezbędne","consent.ok":"Rozumiem","root.continue":"Kontynuuj"}};
+var L = {"lang":"pl","name":"Polski","dir":"ltr","dateLocale":"pl-PL","ui":{"langLabel":"Język","consent.label":"Informacja o plikach cookie","consent.text":"Serwis przechowuje twoje postępy, wynik i wybrany język w pamięci lokalnej przeglądarki, a usługa analityki internetowej zbiera zanonimizowane statystyki odwiedzin oraz zapis działań na stronie, abyśmy mogli ulepszać serwis. Imię, e-mail i wynik nie są przekazywane do usługi analitycznej.","consent.more":"Więcej informacji","consent.details":"W przeglądarce przechowywane są: imię i e-mail, jeśli je podano; odpowiedzi i nieukończone postępy; ostatni wynik; czas pierwszego ukończenia testu, do liczenia terminu ceny specjalnej raportu; wybrany język; informacja, że ten komunikat został już wyświetlony. Te dane pozostają na twoim urządzeniu i są usuwane przy czyszczeniu danych witryny. Dostawca hostingu otrzymuje standardowe dane techniczne żądania. Gdy pierwszy raz danego dnia otwierasz serwis, na serwer serwisu trafia anonimowa informacja o wizycie: tylko wersja językowa serwisu; serwer zapisuje ją z godziną otrzymania, a przeglądarka zapamiętuje datę, żeby tego samego dnia nie wysyłać jej ponownie. Na tej podstawie liczymy, ile osób odwiedza serwis. Gdy zaczynasz test, na serwer serwisu trafia anonimowa informacja o rozpoczęciu: tylko wersja językowa serwisu. Po ukończeniu testu na serwer serwisu trafia anonimowy zapis do ogólnej statystyki: uzyskany profil i wersja językowa serwisu – bez imienia, adresu e-mail i odpowiedzi. Gdy klikniesz „Zapisz jako PDF”, odpowiedzi i data testu – bez imienia i e-maila – trafiają na serwer serwisu, który tworzy z nich plik raportu podstawowego, odsyła go i niczego nie zapisuje. Gdy wysyłasz wynik na e-mail, imię, e-mail i odpowiedzi są przekazywane na serwer serwisu: wysyła on do ciebie wiadomość z wynikiem i zapisuje imię, e-mail, datę oraz wynik w bazie wyników właściciela serwisu. Gdy zapisujesz się do newslettera na stronie głównej, e-mail i wersja językowa serwisu są przekazywane na serwer serwisu: wysyła on do ciebie wiadomość z linkiem potwierdzającym i zapisuje adres w tej samej bazie; jeśli subskrypcja nie zostanie potwierdzona, adres jest usuwany po 7 dniach. System analityki internetowej otrzymuje adres strony (na ekranie wyniku – razem z kodem wyniku: odpowiedziami, datą testu i imieniem, jeśli je podano, ale bez adresu e-mail), źródło wejścia, typ urządzenia i przeglądarki, zapis działań na stronie (pola z imieniem i e-mailem są z zapisu wyłączone) i zapisuje własne pliki cookie. Możesz go zablokować w ustawieniach przeglądarki lub za pomocą programu blokującego skrypty śledzące. Reklamowe skrypty śledzące nie są używane.","consent.accept":"Akceptuję","consent.decline":"Tylko niezbędne","consent.ok":"Rozumiem","root.continue":"Kontynuuj"}};
 var ROOT_REL = '../../../', SUBPATH = 'compatibility/d-i/';
 var LANG_PATH = {"en":"","es":"es/","zh":"zh/","zh-hant":"zh-hant/","ru":"ru/","ar":"ar/","pt":"pt/","fr":"fr/","de":"de/","ja":"ja/","hi":"hi/","id":"id/","tr":"tr/","pl":"pl/"}, LANG_META = {"en":{"name":"English","cont":"Continue","dir":"ltr"},"es":{"name":"Español","cont":"Continuar","dir":"ltr"},"zh":{"name":"简体中文","cont":"继续","dir":"ltr"},"zh-hant":{"name":"繁體中文","cont":"繼續","dir":"ltr"},"ru":{"name":"Русский","cont":"Продолжить","dir":"ltr"},"ar":{"name":"العربية","cont":"متابعة","dir":"rtl"},"pt":{"name":"Português","cont":"Continuar","dir":"ltr"},"fr":{"name":"Français","cont":"Continuer","dir":"ltr"},"de":{"name":"Deutsch","cont":"Weiter","dir":"ltr"},"ja":{"name":"日本語","cont":"続ける","dir":"ltr"},"hi":{"name":"हिन्दी","cont":"जारी रखें","dir":"ltr"},"id":{"name":"Bahasa Indonesia","cont":"Lanjutkan","dir":"ltr"},"tr":{"name":"Türkçe","cont":"Devam et","dir":"ltr"},"pl":{"name":"Polski","cont":"Kontynuuj","dir":"ltr"}};
 function $(s){ return document.querySelector(s); }
@@ -677,18 +771,24 @@ function langHref(code){ return ROOT_REL + (LANG_PATH[code]||'') + (PAGE_LANGS &
 /* Общие элементы всех страниц сайта (тест и контентные страницы): выпадающий список языков,
    запоминание выбранного языка, подсказка «Продолжить на …», уведомление о cookie и загрузка Яндекс.Метрики после согласия.
    Вставляется сборкой в каждую страницу; вызывается как initCommon({L, t, esc, lsGet, lsSet, langHref, $}). */
-/* Хэш адреса с личными данными: #r=… — код результата (в нём имя, e-mail и ответы участника), #u=… — ключ отписки от рассылки.
+/* Хэш адреса с личными данными: #r=… — код результата (в нём имя, e-mail и ответы участника), #u=… — ключ отписки от рассылки,
+   #c=… — ключ подтверждения подписки на рассылку (с 2026-10-22).
    Счётчик веб-аналитики читает адрес страницы сам: в первом запросе (он уходит и при defer), в карте кликов, при переходе
    по внешней ссылке, в записи посещения. Поэтому такой хэш убирается из адресной строки раньше, чем счётчик загружен, и
    остаётся в записи истории браузера (history.state): обновление страницы и «Назад» открывают тот же экран, а новый переход
    по тому же адресу (ссылка на эту же страницу) — страницу без данных.
-   Код страниц берёт хэш через dataHash() и pageHash(), а не из location.hash; в разметку страницы хэш с данными не пишется. */
+   Код страниц берёт хэш через dataHash() и pageHash(), а не из location.hash; в разметку страницы хэш с данными не пишется.
+   Исключение (решение заказчика от 2026-10-22): экран результата после загрузки сам кладёт в адресную строку ссылку на отчёт без e-mail
+   (showHash) — ту же, что копирует кнопка «Скопировать ссылку», чтобы адрес из строки браузера можно было переслать. Её счётчик видит;
+   о ней говорят тексты о данных на 14 языках. При открытии страницы любой #r=… (в старых ссылках из писем — с e-mail) всё равно сначала
+   убирается, до загрузки счётчика, и возвращается в строку уже без e-mail. */
 function dataHash(){
-  var re = /^#[ru]=/, h = location.hash || '';
+  var re = /^#[ruc]=/, h = location.hash || '';
   try{
-    var first = !dataHash.seen; dataHash.seen = 1;
+    var first = !dataHash.seen, s = history.state; dataHash.seen = 1;
+    /* ссылка, которую страница сама показала в адресной строке (showHash), остаётся на месте; при открытии страницы (first) убирается и она */
+    if(!first && h && s && s.discShown === h) return h;
     if(re.test(h)){ history.replaceState({discHash:h}, '', location.pathname + location.search); return h; }
-    var s = history.state;
     if(s && typeof s.discHash === 'string' && re.test(s.discHash)){
       if(first && navFresh()){ history.replaceState(null, '', location.href); return ''; }
       return s.discHash;
@@ -701,6 +801,8 @@ function navFresh(){
   try{ var n = performance.getEntriesByType('navigation')[0]; return n ? n.type === 'navigate' : performance.navigation.type === 0; }catch(e){ return false; }
 }
 function pageHash(){ return dataHash() || location.hash || ''; }
+/* показать ссылку на результат в адресной строке (экран результата): без новой записи истории и без события hashchange */
+function showHash(h){ try{ history.replaceState({discHash:h, discShown:h}, '', location.pathname + location.search + h); }catch(e){} }
 /* возврат к началу: адрес без хэша, запись истории без данных */
 function dropHash(){ try{ if(location.hash || history.state) history.replaceState(null, '', location.pathname + location.search); }catch(e){} }
 
@@ -776,7 +878,7 @@ function initCommon(c){
     var A = window.DISC_ANALYTICS||{}, ym = A.ym ? String(A.ym) : "", optin = A.mode!=="always", ask = optin && !!ym;
     function loadYm(){
       /* пока в адресе остаётся хэш с данными (убрать его не удалось), счётчик не загружается вовсе */
-      if(!ym || window.ym || /^#[ru]=/.test(location.hash)) return;
+      if(!ym || window.ym || /^#[ruc]=/.test(location.hash)) return;
       (function(m,e,t,r,i,k,a){ m[i]=m[i]||function(){ (m[i].a=m[i].a||[]).push(arguments); }; m[i].l=1*new Date();
         for(var j=0;j<document.scripts.length;j++){ if(document.scripts[j].src===r) return; }
         k=e.createElement(t); a=e.getElementsByTagName(t)[0]; k.async=1; k.src=r; a.parentNode.insertBefore(k,a);
@@ -802,7 +904,57 @@ function initCommon(c){
     document.body.appendChild(el); document.body.classList.add("has-consent");
     function close(v){ lsSet("disc.consent", v); el.remove(); document.body.classList.remove("has-consent"); }
     $("#consentOk").addEventListener("click", function(){ close(ask ? "analytics" : "noted"); if(ask) loadYm(); });
+    /* тест пройден в этом браузере: уведомление было на экране все 24 блока. В режиме always оно только сообщает — считаем его прочитанным
+       и убираем, чтобы на телефоне оно не закрывало кнопку отчёта на экране результата. Согласие (режим optin) так не ставится никогда */
+    if(!ask) window.discNoticeSeen = function(){ if(el.parentNode) close("noted"); };
     if($("#consentNo")) $("#consentNo").addEventListener("click", function(){ close("essential"); });
+  })();
+
+  /* закреплённая кнопка расширенного отчёта внизу экрана (с 2026-10-22 — на всех страницах сайта, решение заказчика).
+     window.DISC_XBAR задаёт сборка только в языках, где отчёт продаётся (content.product.promo): {button, offer — та же кнопка со специальной
+     ценой (пусто, если её нет), ms — срок специальной цены, close}. Видна тем, у кого на устройстве сохранён результат теста (disc.last),
+     пока её не закроют крестиком (sessionStorage disc.xbar, до конца сеанса); не видна купившему отчёт (disc.pay.done) и на самостоятельных
+     лендингах (c.noXbar). Страница теста управляет ею сама через window.discXbar.set({show, go, src}): прячет на время вопросов и в панели,
+     на экране результата показывает и для чужого результата и раскрывает форму покупки. По умолчанию кнопка ведёт на страницу отчёта
+     (источник заказа site-bar), а на самой странице отчёта — прокручивает к форме покупки. Цель Метрики — ext-bar. */
+  (function(){
+    var X = window.DISC_XBAR;
+    if(!X || c.noXbar || !c.reportHref) return;
+    function closed(){ try{ return sessionStorage.getItem('disc.xbar') === 'off'; }catch(e){ return false; } }
+    function bought(){ var p = lsGet('disc.pay'); return !!(p && p.done); }
+    function last(){ var r = lsGet('disc.last'); return r && r.t && r.m && r.l ? r : null; }
+    var bar = document.createElement('div'); bar.className = 'xbar no-print'; bar.id = 'extBar';
+    bar.innerHTML = '<a class="btn" id="extBarGo" href="'+esc(c.reportHref)+'"></a><button class="xbar-x" type="button" id="extBarX" aria-label="'+esc(X.close)+'" title="'+esc(X.close)+'">×</button>';
+    document.body.appendChild(bar);
+    var go = bar.firstChild, page = null, text = '', timer = 0;
+    /* надпись: пока действует специальная цена (час после первого прохождения на устройстве, как в src/pay.js) — с ней, потом обычная */
+    function label(){
+      clearTimeout(timer);
+      if(text){ go.textContent = text; return; }
+      var r = last(), until = 0;
+      if(X.offer && r){ var a = Date.parse(r.t), s = lsGet('disc.offer'), b = s && Date.parse(s.t); if(!isNaN(a)) until = Math.min(a, b && !isNaN(b) ? b : a) + X.ms; }
+      var left = until - Date.now();
+      go.textContent = left > 0 ? X.offer : X.button;
+      if(left > 0) timer = setTimeout(label, Math.min(left + 500, 2147483000));
+    }
+    function sync(){
+      var on = !closed() && !bought() && (page ? !!page.show : !!last());
+      bar.classList.toggle('show', on); document.body.classList.toggle('has-xbar', on);
+    }
+    go.addEventListener('click', function(ev){
+      if(window.discTrack) window.discTrack('ext-bar');
+      if(page && page.go){ ev.preventDefault(); page.go(); return; }
+      var f = document.querySelector('#buy input[type=email]');
+      if(f){ ev.preventDefault(); f.scrollIntoView({behavior:'smooth', block:'center'}); try{ f.focus({preventScroll:true}); }catch(e){ f.focus(); } return; }
+      try{ sessionStorage.setItem('disc.src', (page && page.src) || 'site-bar'); }catch(e){}
+    });
+    bar.lastChild.addEventListener('click', function(){ try{ sessionStorage.setItem('disc.xbar', 'off'); }catch(e){} sync(); });
+    window.discXbar = {
+      set: function(p){ page = p || null; text = ''; label(); sync(); },   // null — как на обычной странице
+      text: function(s){ text = s || ''; label(); },
+      sync: sync
+    };
+    label(); sync();
   })();
 
   /* отметка о посещении (visitStats в site.config.json, window.DISC_VISIT задаёт сборка): раз в сутки по Москве — один запрос на сервер сайта
@@ -817,7 +969,7 @@ function initCommon(c){
   })();
 }
 
-initCommon({L:L, t:t, esc:esc, lsGet:lsGet, lsSet:lsSet, langHref:langHref, $:$, langMeta:LANG_META, langPath:LANG_PATH, privacyHref:ROOT_REL+(LANG_PATH[L.lang]||'')+'privacy/'});
+initCommon({L:L, t:t, esc:esc, lsGet:lsGet, lsSet:lsSet, langHref:langHref, $:$, langMeta:LANG_META, langPath:LANG_PATH, privacyHref:ROOT_REL+(LANG_PATH[L.lang]||'')+'privacy/', reportHref:ROOT_REL+(LANG_PATH[L.lang]||'')+'extended-report/', noXbar:false});
 
 /* цели Метрики у кнопок теста (cta-top, cta-bottom, cta-float) и плавающая кнопка на телефоне: видна, когда призыв
    после вводного абзаца уже прокручен вверх, а нижний призыв и подвал ещё не на экране (аудит 3, п. 1) */

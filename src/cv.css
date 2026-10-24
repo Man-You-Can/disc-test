@@ -1,0 +1,450 @@
+/* Лендинг сервиса «Резюме под каждую вакансию» (/ru/cv/, заявка на ранний доступ): стили только этой страницы, сборка вставляет их в её <head> */
+body:has(.cvpage) .wrap{max-width:1080px}
+.cvpage{padding-top:48px}
+.cvpage h2{font-size:clamp(26px,3.8vw,36px);line-height:1.18;margin:0 0 32px;text-transform:none;letter-spacing:0}
+.cvpage h3{text-transform:none;letter-spacing:0}
+.content .cvpage ul{padding:0;margin:0;list-style:none}
+.content .cvpage li{margin:0}
+.cvtick{flex:none;width:16px;height:16px;color:var(--s);margin-top:.25em}
+.cvsub{color:var(--muted);margin:-18px 0 36px;font-size:17px;line-height:1.6;max-width:46em}
+.cvsub.small{font-size:14px;margin:24px 0 28px}
+.cvsec{padding-block:88px}
+/* «главы» страницы (с 2026-10-24, по просьбе заказчика): блоки с .cvband — на своём фоне во всю ширину окна (через один);
+   фон выходит за .wrap через box-shadow и обрезается clip-path по высоте — без горизонтальной прокрутки */
+.cvpage{--cvband:#E9EBEE}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .cvpage{--cvband:#0F1215}}
+:root[data-theme="dark"] .cvpage{--cvband:#0F1215}
+.cvband{background:var(--cvband);box-shadow:0 0 0 100vmax var(--cvband);clip-path:inset(0 -100vmax)}
+
+/* первый экран: текст и форма рядом, на телефоне — друг под другом */
+.cvhero{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:64px;align-items:start;padding-bottom:96px}
+.cvbadge{display:inline-block;margin:0 0 24px;padding:6px 14px;border-radius:999px;font-weight:600;font-size:14px;
+  background:color-mix(in srgb,var(--s) 16%,transparent);color:var(--ink);border:1px solid color-mix(in srgb,var(--s) 45%,transparent)}
+.cvhero h1{font-size:clamp(30px,5.2vw,50px);line-height:1.08;margin:0 0 24px;hyphens:manual;-webkit-hyphens:manual}
+.cvhero .lead{font-size:19px;line-height:1.6;color:var(--muted);margin:0 0 32px}
+.content .cvpoints{display:grid;grid-template-columns:1fr 1fr;gap:14px 24px}
+.content .cvpoints li{display:flex;gap:9px;font-weight:500}
+.cvformcard{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:30px 28px 24px;box-shadow:0 24px 60px -30px rgba(0,0,0,.45);position:sticky;top:20px;scroll-margin-top:20px}
+.cvformcard h2{font-size:24px;margin:0 0 10px}
+.cvformlead{color:var(--muted);margin:0 0 20px;font-size:15px;line-height:1.55}
+.cvnote{margin:10px 0 0;text-align:center;font-size:13px;color:var(--muted)}
+.cvform .field{margin:0 0 12px}
+.cvform .actions{margin-top:12px}
+.cvform .cvsubmit{width:100%;justify-content:center;font-size:17px;padding:15px 22px}
+.cvform .subbox{margin-top:4px}
+.cvdone{border:2px solid var(--s);border-radius:14px;padding:18px 20px;background:color-mix(in srgb,var(--s) 10%,transparent)}
+.cvdone strong{display:block;font-family:var(--font-head);font-weight:500;font-size:20px;margin-bottom:4px}
+.cvdone p{margin:0;color:var(--muted)}
+
+/* боли */
+.content .cvpain{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.content .cvpain li{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--k);border-radius:16px;padding:26px 26px 28px}
+.cvpain h3,.cvgrid h3{margin:0 0 10px;font-size:18px;line-height:1.3}
+.cvpain p,.cvgrid p{margin:0;color:var(--muted);font-size:15px;line-height:1.6}
+
+/* как это работает + пример оценки */
+.cvhow{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px;align-items:center}
+.content ol.cvsteps{list-style:none;padding:0;margin:0 0 32px;counter-reset:st}
+.content .cvsteps li{position:relative;counter-increment:st;padding:0 0 32px;padding-inline-start:54px;margin:0}
+.cvsteps li::before{content:counter(st);position:absolute;inset-inline-start:0;top:0;width:38px;height:38px;border-radius:50%;background:var(--btn);color:var(--btn-ink);display:flex;align-items:center;justify-content:center;font-weight:600}
+.cvsteps li:not(:last-child)::after{content:"";position:absolute;inset-inline-start:18px;top:42px;bottom:4px;width:2px;background:var(--line)}
+.cvsteps strong{display:block;font-size:17px;padding-top:7px;margin-bottom:4px}
+.cvsteps span{color:var(--muted);line-height:1.6}
+.cvdemo{margin:0;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:26px 28px;box-shadow:0 24px 60px -30px rgba(0,0,0,.45)}
+.cvdemo-label{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:12px}
+.cvdemo-head{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.cvdemo-head strong{display:block;font-family:var(--font-head);font-weight:500;font-size:19px;line-height:1.25}
+.cvdemo-head span{color:var(--muted);font-size:14px}
+.cvscore{flex:none;width:74px;height:74px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  background:radial-gradient(closest-side,var(--surface) 78%,transparent 79%),conic-gradient(var(--s) var(--p),var(--soft) 0)}
+.cvscore b{font-family:var(--font-head);font-weight:500;font-size:26px;line-height:1}
+.cvscore span{font-size:11px;color:var(--muted)}
+.content .cvrows{margin:12px 0}
+.content .cvrows li{display:flex;justify-content:space-between;gap:12px;padding:7px 0;font-size:14.5px;border-bottom:1px dashed var(--line)}
+.cvrows em{font-style:normal;font-weight:600;font-size:13px;padding:1px 9px;border-radius:999px;white-space:nowrap;align-self:center}
+.cvrows .s-yes em{background:color-mix(in srgb,var(--s) 18%,transparent);color:var(--s)}
+.cvrows .s-part em{background:color-mix(in srgb,var(--i) 20%,transparent);color:color-mix(in srgb,var(--i) 70%,var(--ink))}
+.cvrows .s-no em{background:color-mix(in srgb,var(--d) 16%,transparent);color:var(--d)}
+.cvverdict{background:var(--soft);border-radius:12px;padding:12px 14px;margin:14px 0 12px}
+.cvverdict b{display:block;font-size:13px;margin-bottom:2px}
+.cvverdict p{margin:0;font-size:14.5px}
+.cvfiles{display:flex;flex-wrap:wrap;gap:8px}
+.cvfiles a{font-size:13px;font-weight:600;padding:6px 12px;border-radius:8px;border:1px solid var(--line-strong);color:var(--ink);text-decoration:none}
+.cvfiles a:hover{border-color:var(--s);background:color-mix(in srgb,var(--s) 10%,transparent)}
+.cvfiles a::before{content:"↓ ";color:var(--s)}
+
+/* что вы получите */
+.content .cvgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.content .cvgrid li{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--k);border-radius:16px;padding:26px 26px 28px}
+
+/* ничего не выдумываем */
+.cvhonest{background:var(--surface);border:1px solid var(--line);border-inline-start:4px solid var(--s);border-radius:16px;padding:30px 34px;max-width:860px}
+.cvhonest p{margin:0 0 20px;line-height:1.65}
+.content .cvhonest li{position:relative;padding-inline-start:28px;margin:0 0 10px;font-weight:500}
+.cvhonest li::before{content:"";position:absolute;inset-inline-start:2px;top:.35em;width:14px;height:8px;border-inline-start:2.5px solid var(--s);border-bottom:2.5px solid var(--s);transform:rotate(-45deg)}
+
+/* тарифы */
+.content .cvplans{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:stretch}
+.content .cvplans>li{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:28px 26px 26px;display:flex;flex-direction:column}
+.content .cvplans>li.hot{border:2px solid var(--s);box-shadow:0 24px 60px -32px color-mix(in srgb,var(--s) 80%,transparent)}
+.cvplan-head{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.cvplan-head h3{margin:0;font-size:20px}
+.cvtag{font-weight:700;font-size:13px;padding:3px 10px;border-radius:999px;background:var(--d);color:#fff}
+.cvprice{margin:16px 0 22px;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px}
+.cvprice s{color:var(--muted);font-size:17px}
+.cvprice b{font-family:var(--font-head);font-weight:500;font-size:32px;line-height:1.1}
+.cvprice span{color:var(--muted);font-size:14px}
+.content .cvplans>li ul li{display:flex;gap:9px;margin:0 0 12px;font-size:15px;line-height:1.45}
+.cvcenter{display:flex;width:max-content;max-width:100%;margin:0 auto;font-size:17px;padding:15px 28px}
+.cvhow .btn{font-size:17px;padding:15px 28px}
+
+/* основатель */
+/* слева фото и цитата: цитата прижата к низу и кончается вровень с последним пунктом списка справа, фото занимает остаток высоты */
+.cvauthor{display:grid;grid-template-columns:240px minmax(0,1fr);gap:28px 40px;align-items:stretch;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:32px 34px}
+.cvauthor-side{display:flex;flex-direction:column;gap:16px}
+.cvphoto{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 25%;border-radius:14px;background:var(--soft)}
+.cvauthor-side .cvphoto{aspect-ratio:auto;flex:1 1 0;min-height:180px;max-height:340px}
+.cvquote{margin:auto 0 0;padding:2px 0 2px 14px;border-inline-start:3px solid var(--s);font-size:15px;line-height:1.5;font-style:italic}
+.cvauthor-body{display:flex;flex-direction:column;gap:4px}
+.cvauthor .cvname{font-family:var(--font-head);font-weight:500;font-size:24px;line-height:1.2}
+.cvauthor .cvrole{color:var(--muted);margin:0 0 18px}
+.content .cvauthor ul{list-style:disc;padding-inline-start:20px;margin:0 0 12px}
+.content .cvauthor ul li{margin:0 0 12px;line-height:1.55}
+.content .cvauthor ul{margin-bottom:0}
+.content .cvauthor ul li:last-child{margin-bottom:0}
+.cvauthor p{margin:0}
+.cvauthor .cvsite{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 16px;border-top:1px solid var(--line);padding-top:22px;color:var(--muted);font-size:15px}
+.cvsite a{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border:1px solid var(--line-strong);border-radius:999px;color:var(--ink);font-weight:600;text-decoration:none;transition:background .15s,border-color .15s}
+.cvsite a:hover,.cvsite a:focus-visible{background:var(--soft);border-color:var(--s)}
+.cvsite svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.6;color:var(--s)}
+
+/* вопросы */
+.cvfaq{max-width:860px}
+.cvfaq details{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:0 24px;margin:0 0 12px}
+.cvfaq summary{cursor:pointer;list-style:none;padding:20px 32px 20px 0;font-weight:600;font-size:17px;position:relative}
+.cvfaq summary::-webkit-details-marker{display:none}
+.cvfaq summary::after{content:"+";position:absolute;inset-inline-end:0;top:16px;font-size:24px;font-weight:400;color:var(--muted)}
+.cvfaq details[open] summary::after{content:"−"}
+.cvfaq details p{margin:0 0 20px;color:var(--muted);line-height:1.6}
+
+/* финальный призыв */
+.cvfinal{margin:96px auto 24px;max-width:720px;text-align:center;background:var(--surface);border:2px solid var(--s);border-radius:22px;padding:40px 36px 32px;scroll-margin-top:20px}
+.cvfinal h2{margin-bottom:14px}
+.cvfinal>p{color:var(--muted);margin:0 auto 28px;max-width:34em;line-height:1.6}
+.cvfinal .cvform,.cvfinal .cvdone{text-align:start}
+.cvfinal .cvfields{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}
+
+@media (max-width:900px){
+  .cvhero,.cvhow{grid-template-columns:1fr;gap:40px}
+  .cvsec{padding-block:72px}
+  .cvhero{padding-bottom:72px}
+  .cvformcard{position:static}
+  .cvauthor{grid-template-columns:200px minmax(0,1fr);gap:20px 22px}
+  .content .cvpain,.content .cvgrid{grid-template-columns:1fr 1fr}
+  .content .cvplans{grid-template-columns:1fr}
+}
+@media (max-width:600px){
+  .cvpage{padding-top:24px}
+  .cvbadge{font-size:12.5px;padding:5px 11px;margin-bottom:12px}
+  .cvhero h1{font-size:29px}
+  .cvhero .lead{font-size:17px}
+  .content .cvpoints,.content .cvpain,.content .cvgrid,.cvfinal .cvfields{grid-template-columns:1fr}
+  .cvsec{padding-block:56px}
+  .cvhero{gap:32px;padding-bottom:56px}
+  .cvpage h2{margin-bottom:24px}
+  .cvsub{margin:-12px 0 28px;font-size:16px}
+  .content .cvpain,.content .cvgrid,.content .cvplans{gap:16px}
+  .content .cvpain li,.content .cvgrid li{padding:22px 20px 24px}
+  .cvhonest{padding:22px 20px}
+  .cvdemo{padding:20px 18px}
+  .cvfaq details{padding:0 18px}
+  .cvfaq summary{padding:16px 28px 16px 0}
+  .cvfaq summary::after{top:12px}
+  .cvformcard{padding:22px 18px 18px}
+  .cvfinal{margin-top:64px;padding:28px 18px 22px}
+  .cvauthor{grid-template-columns:1fr;gap:20px;padding:22px 20px}
+  .cvphoto,.cvauthor-side .cvphoto{width:180px;margin-inline:auto;aspect-ratio:4/5;flex:none;min-height:0;max-height:none}
+  .cvquote{margin-top:0}
+  .cvcenter,.cvhow .btn{display:flex;width:100%;justify-content:center}
+}
+
+/* пример: от единого резюме до отклика (вкладки) */
+.cvmore{display:inline-block;margin-top:12px;font-weight:600;font-size:14px}
+.cvex{background:var(--surface);border:1px solid var(--line);border-radius:20px;box-shadow:0 24px 60px -34px rgba(0,0,0,.45);overflow:hidden}
+.cvtabs{display:none}
+.cvex.js .cvtabs{display:flex;gap:4px;padding:8px;background:var(--soft);border-bottom:1px solid var(--line);overflow-x:auto;scrollbar-width:none}
+.cvtabs::-webkit-scrollbar{display:none}
+.cvex.js .cvtabs-end{border-bottom:0;border-top:1px solid var(--line)}
+.cvtabs button{flex:1 0 auto;display:flex;align-items:center;justify-content:center;gap:7px;font:inherit;font-weight:600;font-size:14px;color:var(--muted);background:transparent;border:0;border-radius:12px;padding:10px 10px;cursor:pointer;white-space:nowrap}
+.cvtabs button span{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:var(--line);color:var(--ink);font-size:12px}
+.cvtabs button[aria-selected="true"],.cvtabs button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.12)}
+.cvtabs button[aria-selected="true"] span,.cvtabs button[aria-pressed="true"] span{background:var(--s);color:#fff}
+.cvtabs button:focus-visible{outline:2px solid var(--focus);outline-offset:1px}
+.cvpanel{padding:30px 36px 32px}
+.cvpanel:focus-visible{outline:2px solid var(--focus);outline-offset:-2px}
+.cvex:not(.js) .cvpanel+.cvpanel{border-top:1px solid var(--line)}
+/* свёрнутый пример (с 2026-10-24, по просьбе заказчика): длинная вкладка обрезана по высоте с затуханием, под ней «Показать полностью»;
+   нижние вкладки появляются после разворота. Автопереключение вкладок — полоска-таймер под активной вкладкой (src/cv.js) */
+.cvexmore{display:none}
+.cvex.js.cut .cvpanel.over{max-height:var(--cvcut);overflow:hidden;position:relative}
+.cvex.js.cut .cvpanel.over::after{content:"";position:absolute;inset:auto 0 0;height:140px;background:linear-gradient(to bottom,color-mix(in srgb,var(--surface) 0%,transparent),var(--surface) 85%);pointer-events:none}
+.cvex.js.cut.over .cvexmore{display:flex;justify-content:center;padding:0 16px 22px}
+.cvex.js.cut .cvtabs-end{display:none}
+.cvex{--cvcut:520px}
+.cvex.auto .cvtabs button{position:relative;overflow:hidden}
+.cvex.auto .cvtabs button[aria-selected="true"]::after{content:"";position:absolute;inset:auto 10px 3px;height:2px;border-radius:2px;background:var(--s);transform-origin:left;animation:cvauto var(--cvdur) linear forwards}
+.cvex.auto.paused .cvtabs button[aria-selected="true"]::after{animation-play-state:paused}
+@keyframes cvauto{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.cvpanel-title{margin:0 0 12px;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.cvex.js .cvpanel-title{display:none}
+.cvdoc{max-width:760px;font-size:15px}
+.cvdoc h3{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:22px 0 10px}
+.cvdoc-head{display:flex;flex-direction:column;gap:2px}
+.cvdoc-head strong{font-family:var(--font-head);font-weight:500;font-size:24px;line-height:1.2}
+.cvdoc-head span{color:var(--muted)}
+.cvscorehead{flex-direction:row;justify-content:space-between;align-items:center;gap:16px}
+.cvscorehead>div{display:flex;flex-direction:column;gap:2px}
+.cvscore-lg{width:86px;height:86px}
+.cvscore-lg b{font-size:30px}
+.cvsrc{margin:8px 0 0;font-size:14px;color:var(--muted)}
+.content .cvdoc ul{list-style:disc;padding-inline-start:20px;margin:0}
+.content .cvdoc ul li{margin:0 0 5px}
+.cvjob{padding:12px 0;border-top:1px solid var(--line)}
+.cvjob:first-of-type{border-top:0;padding-top:0}
+.cvjob-period{margin:0;font-size:13px;color:var(--muted)}
+.cvjob-role{margin:2px 0 8px}
+.cvflag{margin:10px 0 0;padding:9px 12px;border-radius:10px;font-size:14px;background:color-mix(in srgb,var(--i) 14%,transparent);border-inline-start:3px solid var(--i)}
+.cvchips{display:flex;flex-wrap:wrap;gap:8px;margin:0}
+.cvchips span{font-size:13.5px;padding:5px 11px;border-radius:999px;background:var(--soft)}
+.cvparts{display:flex;flex-wrap:wrap;gap:8px 18px;margin:12px 0 0;font-size:14px;color:var(--muted)}
+.cvparts b{color:var(--ink)}
+.content .cvdoc ul.cvexrows{list-style:none;padding:0}
+.content .cvexrows li{padding:9px 0;border-bottom:1px dashed var(--line);margin:0}
+.cvexrow-t{display:flex;justify-content:space-between;gap:12px;font-weight:500}
+.cvexrow-t em{font-style:normal;font-weight:600;font-size:13px;padding:1px 9px;border-radius:999px;white-space:nowrap;align-self:flex-start}
+.cvexrows .s-yes em{background:color-mix(in srgb,var(--s) 18%,transparent);color:var(--s)}
+.cvexrows .s-part em{background:color-mix(in srgb,var(--i) 20%,transparent);color:color-mix(in srgb,var(--i) 70%,var(--ink))}
+.cvexrows .s-no em{background:color-mix(in srgb,var(--d) 16%,transparent);color:var(--d)}
+.cvexrows p{margin:3px 0 0;font-size:14px;color:var(--muted)}
+.cvdoc .cvverdict{margin:18px 0 0}
+.cvtopskip{display:grid;grid-template-columns:1fr 1fr;gap:6px 24px}
+.content .cvdoc ul.cvplus,.content .cvdoc ul.cvminus{list-style:none;padding:0}
+.content .cvplus li,.content .cvminus li{position:relative;padding-inline-start:22px}
+.cvplus li::before{content:"+";position:absolute;inset-inline-start:2px;font-weight:700;color:var(--s)}
+.cvminus li::before{content:"−";position:absolute;inset-inline-start:2px;font-weight:700;color:var(--d)}
+.cvletter p{margin:0 0 12px}
+.cvletter .cvsrc{margin:0 0 16px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.cvsign{font-weight:600}
+.cvshort{margin-top:18px;padding:14px 16px;border-radius:12px;background:var(--soft)}
+.cvshort h3{margin:0 0 6px}
+.cvshort p{margin:0}
+@media (max-width:600px){
+  .cvex{border-radius:16px}
+  .cvtabs button{flex:0 0 auto;font-size:14px;padding:10px 12px}
+  .cvpanel{padding:18px 16px 20px}
+  .cvex{--cvcut:660px}
+  .cvdoc-head strong{font-size:20px}
+  .cvtopskip{grid-template-columns:1fr}
+}
+
+/* пример: единое резюме с пометками «в CV / не в CV», варианты должностей, перерыв в работе */
+.cvlegend{display:flex;flex-wrap:wrap;gap:8px 18px;margin:14px 0 0;font-size:13.5px}
+.cvlegend span{display:inline-flex;align-items:center;gap:7px}
+.cvlegend span::before{content:"";width:12px;height:12px;border-radius:3px}
+.cvlegend .in::before{background:var(--s)}
+.cvlegend .out::before{background:var(--line-strong)}
+.cvcount{margin:10px 0 0;padding:10px 14px;border-radius:12px;background:color-mix(in srgb,var(--s) 10%,transparent);font-size:14.5px}
+.content .cvdoc ul.cvmarks{list-style:none;padding:0;margin:0}
+.content .cvmarks li{position:relative;padding:3px 0 3px 22px;margin:0}
+.cvmarks li::before{content:"";position:absolute;left:2px;top:.62em;width:10px;height:10px;border-radius:3px}
+.cvmarks li.in::before{background:var(--s)}
+.cvmarks li.out{color:var(--muted)}
+.cvmarks li.out::before{background:var(--line-strong)}
+.cvtitles{margin:0 0 10px;padding:8px 12px;border-radius:10px;border:1px solid var(--line)}
+.cvtitles-l{margin:0 0 4px;font-size:12.5px;color:var(--muted)}
+.content .cvdoc .cvtitles ul{list-style:none;padding:0;margin:0}
+.content .cvtitles li{position:relative;margin:0;padding:2px 0 2px 20px;font-size:14px;color:var(--muted)}
+.cvtitles li::before{content:"·";position:absolute;left:6px;font-weight:700}
+.cvtitles li b{font-weight:600}
+.cvtitles li i{font-style:normal;font-size:12.5px}
+.content .cvtitles li.cvsel{color:var(--ink)}
+.cvtitles li.cvsel::before{content:"✓";left:2px;color:var(--s)}
+.cvtitles li.cvsel i{color:var(--s);font-weight:600}
+.content .cvdoc ul.cvmarks.wrap{display:flex;flex-wrap:wrap;gap:0 20px}
+.cvgap{border-top:1px dashed var(--line-strong)!important;background:repeating-linear-gradient(-45deg,transparent 0 10px,color-mix(in srgb,var(--line) 35%,transparent) 10px 11px);margin:0 -12px;padding:12px!important;border-radius:10px}
+.cvgap-l{margin:0 0 4px;font-size:13px;color:var(--muted)}
+.content .cvdoc ul.cvvariants{list-style:none;padding:0;margin:0 0 4px}
+.content .cvvariants li{margin:0 0 4px;font-size:14px}
+.cvvariants i,.cvwhy{font-style:normal;font-size:12.5px;color:var(--muted)}
+.cvpick{margin:8px 0 0;padding:9px 12px;border-radius:10px;font-size:14px;background:color-mix(in srgb,var(--s) 12%,transparent);border-inline-start:3px solid var(--s)}
+.cvwhy{margin:6px 0 0}
+.cvdim .cvjob-role{color:var(--muted)}
+@media (max-width:600px){.cvgap{margin:0 -6px;padding:10px 8px!important}.cvtitles li{font-size:13.5px}}
+
+/* пример: что ищет кандидат (профиль поиска) */
+.cvwant{display:grid;grid-template-columns:1fr 1fr;gap:14px 28px;margin:18px 0 0}
+.cvwant>div{border-top:1px solid var(--line);padding-top:10px}
+.cvwant dt{font-size:12.5px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:0 0 4px}
+.cvwant dd{margin:0}
+.content .cvdoc .cvwant ul{list-style:none;padding:0}
+.content .cvwant li{margin:0 0 3px}
+.cvwant-note{margin:14px 0 0}
+@media (max-width:600px){.cvwant{grid-template-columns:1fr;gap:10px}}
+
+/* пример, вкладка «Оценка»: две таблицы сравнения — «вакансия требует / у кандидатки» и «кандидатка хочет / вакансия предлагает» */
+.cvcmp{width:100%;min-width:0;border-collapse:separate;border-spacing:0;font-size:14.5px;margin:4px 0 0;table-layout:fixed}
+.cvcmp col.c-res{width:168px}
+.cvcmp th,.cvcmp td{white-space:normal;background:none;text-transform:none;letter-spacing:0;border-bottom:0}
+.cvcmp th{text-align:start;font-weight:600;font-size:12px;padding:0 10px 8px;color:var(--muted)}
+.cvcmp th span{display:inline-block;padding:3px 9px;border-radius:999px;text-transform:uppercase;letter-spacing:.05em}
+.cvcmp th.k-vac span{background:color-mix(in srgb,var(--c) 16%,transparent);color:color-mix(in srgb,var(--c) 80%,var(--ink))}
+.cvcmp th.k-cand span{background:var(--soft);color:var(--ink)}
+.cvcmp th:last-child{text-align:end}
+.cvcmp td{padding:10px;border-top:1px solid var(--line);vertical-align:top}
+.cvcmp td.k-vac{background:color-mix(in srgb,var(--c) 6%,transparent)!important;border-inline-start:3px solid color-mix(in srgb,var(--c) 55%,transparent)}
+.cvcmp td.k-cand{border-inline-start:3px solid var(--line-strong)}
+.cvcmp td.cvres{text-align:end;white-space:nowrap}
+.cvcmp em{font-style:normal;font-weight:600;font-size:13px;padding:2px 10px;border-radius:999px}
+.cvcmp .s-yes em{background:color-mix(in srgb,var(--s) 18%,transparent);color:var(--s)}
+.cvcmp .s-part em{background:color-mix(in srgb,var(--i) 20%,transparent);color:color-mix(in srgb,var(--i) 70%,var(--ink))}
+.cvcmp .s-no em{background:color-mix(in srgb,var(--d) 16%,transparent);color:var(--d)}
+.cvcmp tbody tr:last-child td{border-bottom:1px solid var(--line)!important}
+@media (max-width:640px){
+  .cvcmp,.cvcmp tbody,.cvcmp tr,.cvcmp td{display:block;width:auto}
+  .cvcmp thead{display:none}
+  .cvcmp tr{border:1px solid var(--line);border-radius:12px;overflow:hidden;margin:0 0 10px}
+  .cvcmp td{border-top:0;padding:8px 12px}
+  .cvcmp td+td{border-top:1px solid var(--line)}
+  .cvcmp tbody tr:last-child td{border-bottom:0}
+  .cvcmp td.cvres{text-align:end;width:auto}
+  .cvcmp tr{display:grid;grid-template-columns:minmax(0,1fr) auto}
+  .cvcmp td:nth-child(1){grid-column:1;grid-row:1}
+  .cvcmp td:nth-child(2){grid-column:1/-1;grid-row:2}
+  .cvcmp td.cvres{grid-column:2;grid-row:1;padding:10px 12px 0 4px;border:0!important}
+  .cvcmp td.cvres::before{display:none}
+  .cvcmp td::before{content:attr(data-l);display:block;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:2px}
+  .cvcmp td.k-vac::before{color:color-mix(in srgb,var(--c) 80%,var(--ink))}
+}
+
+/* совет с рекомендацией откликнуться (карточка-оценка и вкладка «Оценка»): зелёный блок и метка с галочкой */
+.cvverdict.go{background:color-mix(in srgb,var(--s) 13%,transparent);border:1px solid color-mix(in srgb,var(--s) 45%,transparent);border-inline-start:4px solid var(--s)}
+.cvverdict.go b{display:inline-block;margin:0 8px 4px 0}
+.cvgo{display:inline-flex;align-items:center;gap:5px;margin:0 0 4px;padding:2px 10px;border-radius:999px;background:var(--s);color:#fff;font-weight:600;font-size:13px;vertical-align:middle}
+.cvgo::before{content:"✓";font-weight:700}
+
+/* пример: готовое CV — 2 страницы A4, кнопки «Скачать PDF» и «Скачать DOCX» в начале вкладки «Единое резюме» */
+.cvfile{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px 20px;margin:16px 0 4px;padding:16px 18px;border-radius:14px;
+  background:color-mix(in srgb,var(--s) 13%,transparent);border:1px solid color-mix(in srgb,var(--s) 45%,transparent);border-inline-start:4px solid var(--s)}
+.cvfile-t{flex:1 1 300px}
+.cvfile-t strong{display:block;font-family:var(--font-head);font-weight:500;font-size:19px;line-height:1.25}
+.cvfile-t p{margin:4px 0 0;font-size:14px;color:var(--muted)}
+.cvfile-b{display:flex;flex-wrap:wrap;gap:8px}
+.cvfile-b .btn{font-size:15px;padding:11px 18px}
+.cvfile-b .btn::before{content:"↓";margin-inline-end:7px;font-weight:700}
+.cvfile-b .btn-ghost{background:var(--surface);color:var(--ink);border:1px solid var(--line-strong)}
+@media (max-width:600px){.cvfile-b{flex:1 1 100%}.cvfile-b .btn{flex:1 1 0;justify-content:center}}
+
+/* пример: кнопки «Скопировать текст» у полной и короткой версии письма */
+.cvcopy-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 0 8px}
+.cvcopy-head h3{margin:0}
+.cvcopy{flex:none;display:inline-flex;align-items:center;gap:6px;font:inherit;font-weight:600;font-size:13.5px;padding:7px 12px;border-radius:10px;cursor:pointer;
+  background:var(--surface);color:var(--ink);border:1px solid var(--line-strong)}
+.cvcopy::before{content:"⧉";font-size:14px}
+.cvcopy:hover{border-color:var(--ink)}
+.cvcopy:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.cvcopy.done{border-color:var(--s);color:var(--s)}
+.cvcopy.done::before{content:"✓"}
+.cvletter-full{padding:2px 0 4px}
+@media (max-width:600px){.cvcopy-head{flex-wrap:wrap;gap:8px}.cvcopy-head h3{flex:1 1 100%}.cvcopy{padding:6px 10px;font-size:13px}}
+
+/* подпись «оценка совпадения» под кругом и строка-пояснение под заголовком вакансии */
+.cvscorebox{flex:none;display:flex;flex-direction:column;align-items:center;gap:4px}
+.cvscorebox small{font-size:11.5px;font-weight:600;color:var(--muted);text-align:center;line-height:1.2;max-width:96px}
+.cvscorenote{margin:8px 0 0;font-size:13.5px;color:var(--muted)}
+.cvdemo .cvscorenote{padding-bottom:12px;border-bottom:1px solid var(--line);margin-bottom:0}
+.cvdemo .cvdemo-head{border-bottom:0;padding-bottom:0}
+
+/* пример, вкладка «Дашборд»: макет личного кабинета (некликабельный) */
+.cvdash{font-size:14.5px}
+.cvdash-head{display:flex;flex-direction:column;gap:2px}
+.cvdash-head strong{font-family:var(--font-head);font-weight:500;font-size:24px;line-height:1.2}
+.cvdash-head span{color:var(--muted)}
+.cvdash-f{display:flex;flex-wrap:wrap;gap:6px;margin:16px 0 12px}
+.cvdash-f span{font-size:13px;font-weight:600;padding:5px 12px;border-radius:999px;border:1px solid var(--line);color:var(--muted);cursor:default;user-select:none}
+.cvdash-f span b{color:var(--ink);margin-inline-start:2px}
+.cvdash-f span.on{background:var(--btn);color:var(--btn-ink);border-color:var(--btn)}
+.cvdash-f span.on b{color:var(--btn-ink)}
+.cvdash-t{width:100%;min-width:0;table-layout:fixed;border-collapse:separate;border-spacing:0}
+.cvdash-t th,.cvdash-t td{white-space:normal;background:none;letter-spacing:0;border-bottom:0;padding:11px 10px;vertical-align:middle}
+.cvdash-t th{text-align:start;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);padding-top:0}
+.cvdash-t th:nth-child(1){width:34%}.cvdash-t th:nth-child(2){width:14%}.cvdash-t th:nth-child(3){width:30%}
+.cvdash-t td{border-top:1px solid var(--line)}
+.cvdash-t tbody tr:last-child td{border-bottom:1px solid var(--line)!important}
+.cvdash-t tr.r-no td{opacity:.62}
+.d-vac b{display:block;font-weight:600}
+.d-vac span{display:block;font-size:13px;color:var(--muted)}
+.cvdash-score{display:inline-flex;align-items:baseline;gap:3px;white-space:nowrap;font-size:12px;color:var(--muted)}
+.cvdash-score b{font-family:var(--font-head);font-weight:500;font-size:22px;line-height:1}
+.cvdash-score.t-hi b{color:var(--s)}.cvdash-score.t-mid b{color:color-mix(in srgb,var(--i) 75%,var(--ink))}.cvdash-score.t-lo b{color:var(--d)}
+.cvdash-rec{display:inline-block;font-weight:600;font-size:13px;padding:2px 10px;border-radius:999px;white-space:nowrap}
+.cvdash-rec.r-go{background:var(--s);color:#fff}
+.cvdash-rec.r-maybe{background:color-mix(in srgb,var(--i) 22%,transparent);color:color-mix(in srgb,var(--i) 70%,var(--ink))}
+.cvdash-rec.r-no{background:color-mix(in srgb,var(--d) 16%,transparent);color:var(--d)}
+.d-rec small{display:block;margin-top:4px;font-size:12.5px;color:var(--muted);line-height:1.35}
+.d-docs{white-space:nowrap}
+.cvdash-doc{display:inline-flex;align-items:center;gap:5px;font-size:13px;font-weight:600;padding:5px 10px;border-radius:8px;border:1px solid var(--line-strong);margin:2px 6px 2px 0;cursor:default;user-select:none}
+.cvdash-doc::before{content:"";width:9px;height:11px;border:1.5px solid currentColor;border-radius:2px;opacity:.7}
+.cvdash-none{font-size:13px;color:var(--muted)}
+.cvdash-note{margin:12px 0 0}
+@media (max-width:700px){
+  .cvdash-t,.cvdash-t tbody,.cvdash-t tr,.cvdash-t td{display:block;width:auto}
+  .cvdash-t thead{display:none}
+  .cvdash-t tr{position:relative;border:1px solid var(--line);border-radius:12px;padding:12px 70px 10px 12px;margin:0 0 10px}
+  .cvdash-t td{border:0!important;padding:0}
+  .cvdash-t td.d-score{position:absolute;top:12px;right:12px}
+  .cvdash-t td.d-rec{margin-top:8px}
+  .cvdash-t td.d-docs{margin-top:8px;white-space:normal}
+}
+
+/* файлы примера на двух языках: метки RU / EN у строк кнопок */
+.cvlang{display:inline-flex;align-items:center;justify-content:center;min-width:30px;font-size:11.5px;font-weight:700;letter-spacing:.04em;padding:3px 8px;border-radius:6px;background:var(--soft);color:var(--muted);white-space:nowrap}
+.cvdemo .cvfiles{align-items:center;margin-top:8px}
+.cvfile-b{display:flex;flex-direction:column;gap:8px}
+.cvfile-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.cvfile-row .cvlang{min-width:92px;justify-content:flex-start;background:none;padding:0;font-size:12.5px;letter-spacing:0}
+@media (max-width:600px){.cvfile-row .cvlang{flex:1 1 100%}}
+/* переключатель языка «Русский / English» над одной парой кнопок; без скрипта — обе строки с подписями языка */
+.cvlangsw{display:none}
+.cvlangs.js .cvlangsw{display:inline-flex;align-self:flex-start;gap:2px;padding:3px;border-radius:11px;background:var(--surface);border:1px solid var(--line)}
+.cvlangsw button{font:inherit;font-size:14px;font-weight:600;color:var(--muted);background:transparent;border:0;border-radius:8px;padding:7px 16px;cursor:pointer}
+.cvlangsw button[aria-pressed="true"]{background:var(--s);color:#fff}
+.cvlangsw button:focus-visible{outline:2px solid var(--focus);outline-offset:1px}
+.cvlangs.js>[data-l]:not(.on){display:none}
+.cvlangs.js .cvlang{display:none}
+.cvdemo-files{display:flex;flex-direction:column;gap:8px;margin-top:10px}
+.cvdemo .cvdemo-files .cvfiles{margin-top:0}
+.cvdemo .cvlangsw button{font-size:13px;padding:5px 14px}
+@media (max-width:600px){.cvlangs.js .cvlangsw{align-self:stretch}.cvlangsw button{flex:1 1 0}}
+
+/* блок «CV на английском — без переводчика» */
+.content .cven-points{grid-template-columns:repeat(2,1fr)}
+.cven-cmp{margin-top:32px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:24px 28px}
+.cven-cmp h3{margin:0 0 14px;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.cven-hd,.cven-row{display:grid;grid-template-columns:minmax(0,1fr) 28px minmax(0,1fr);gap:8px;align-items:center}
+.cven-hd span{font-size:12px;font-weight:600;color:var(--muted)}
+.cven-row{padding:14px 0;border-top:1px solid var(--line)}
+.cven-row .ru{color:var(--muted)}
+.cven-row .en{font-weight:600}
+.cven-row .arr{text-align:center;color:var(--s);font-weight:700}
+.cven-dl{display:flex;flex-wrap:wrap;align-items:center;gap:10px 12px;margin-top:28px}
+.cven-dl span{font-weight:600;margin-inline-end:4px}
+.cven-dl .btn{font-size:14.5px;padding:10px 16px}
+.cven-dl .btn::before{content:"↓";margin-inline-end:7px;font-weight:700;color:var(--s)}
+@media (max-width:600px){
+  .content .cven-points{grid-template-columns:1fr}
+  .cven-cmp{margin-top:24px;padding:18px 16px}
+  .cven-hd{display:none}
+  .cven-row{grid-template-columns:1fr;gap:2px}
+  .cven-row .arr{text-align:start;transform:rotate(90deg);width:14px}
+  .cven-dl .btn{flex:1 1 100%;justify-content:center}
+}

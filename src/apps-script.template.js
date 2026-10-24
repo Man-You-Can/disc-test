@@ -47,6 +47,11 @@ var SENDER_EMAIL = '__SENDER_EMAIL__';  // адрес отправителя: д
 var ATTACH_PDF = true;               // прикладывать к письму PDF с полным отчётом
 var EXTENDED_PRICE_RUB = __PRICE_RUB__;  // цена расширенного отчёта в рублях (servicePriceRub в site.config.json): по ней свой сервер создаёт заказ; 0 — услуги нет
 var EXTENDED_PRICE_USD = __PRICE_USD__;  // цена в долларах (servicePriceUsd) — для оплаты из нерусских версий через Prodamus; 0 — услуги нет
+var EXTENDED_OFFER_RUB = __OFFER_RUB__;  // специальная цена в рублях (offerPriceRub): в течение EXTENDED_OFFER_MIN минут после прохождения теста; 0 — её нет
+var EXTENDED_OFFER_USD = __OFFER_USD__;  // специальная цена в долларах (offerPriceUsd) — для нерусских версий через Prodamus; 0 — её нет
+var EXTENDED_PRICE_EUR = __PRICE_EUR__;  // цена в евро (servicePriceEur) — для языков с валютой EUR (DATA[язык].pay.currency: французский, немецкий) через Prodamus; 0 — её нет
+var EXTENDED_OFFER_EUR = __OFFER_EUR__;  // специальная цена в евро (offerPriceEur); 0 — её нет
+var EXTENDED_OFFER_MIN = __OFFER_MIN__;  // срок специальной цены в минутах (offerMinutes)
 var CONTACT_TO = '__CONTACT_TO__';   // адрес формы обратной связи (feedbackEmail в site.config.json); '' — форма отключена
 var MAX_CONTACT_BYTES = __MAX_CONTACT_BYTES__;  // общий размер вложений одного сообщения (то же число проверяет браузер)
 var MAX_CONTACT_FILES = 20;
@@ -282,7 +287,7 @@ function composePayRemindMail(r, lang, o) {
   // дата: в русском письме — 21.10.2026, в остальных — запись языка (October 21, 2026), чтобы не путать день и месяц
   var date = Utilities.formatDate(o.until, 'Europe/Moscow', 'dd.MM.yyyy');
   if (lang !== 'ru' && L.pay.dateLocale) { try { date = new Intl.DateTimeFormat(L.pay.dateLocale, { timeZone: 'Europe/Moscow', day: 'numeric', month: 'long', year: 'numeric' }).format(o.until); } catch (e) {} }
-  // цена в долларах — в записи языка (6.99 в английском, 6,99 в португальском); рубли в русском письме — как есть
+  // цена в долларах или евро — в записи языка (6.99 в английском, 6,99 в португальском); рубли в русском письме — как есть
   var price = o.price;
   if (lang !== 'ru' && L.pay.dateLocale && price % 1) { try { price = new Intl.NumberFormat(L.pay.dateLocale, { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(price); } catch (e) {} }
   var vars = { site: site, order: o.order, price: price, date: date };
@@ -306,6 +311,26 @@ function composePayRemindMail(r, lang, o) {
   return { subject: X.subject, html: html, text: text };
 }
 
+/**
+ * Письмо со ссылкой подтверждения подписки на рассылку с главной страницы (отправляет свой сервер; с 2026-10-22).
+ * url — ссылка на страницу /subscribe/ с ключом подтверждения (#c=…). Тексты — DATA[язык].nl.mail (content.subscribeMail в локали).
+ */
+function composeSubscribeMail(lang, url) {
+  var L = DATA[lang] || DATA.en, X = L.nl.mail;
+  var vars = { site: SITE_URL.replace(/^https?:\/\//, '') };
+  var html = '<!DOCTYPE html><html lang="' + lang + '" dir="' + (L.dir || 'ltr') + '"><body style="margin:0;background:#F3F4F6;font-family:Arial,Helvetica,sans-serif;color:#1B2027">' +
+    '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F3F4F6"><tr><td align="center" style="padding:24px 12px">' +
+    '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background:#ffffff;border:1px solid #D9DDE3;border-radius:14px"><tr><td style="padding:28px;font-size:16px;line-height:1.5">' +
+    '<p style="margin:0 0 16px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#5B6470;font-weight:bold">DISC</p>' +
+    '<p style="margin:0 0 14px">' + esc(fmt(X.intro, vars)) + '</p>' +
+    '<p style="margin:0 0 14px">' + esc(fmt(X.action, vars)) + '</p>' +
+    '<p style="margin:0 0 22px"><a href="' + esc(url) + '" style="display:inline-block;background:#1B2027;color:#ffffff;text-decoration:none;font-weight:bold;padding:12px 22px;border-radius:8px">' + esc(X.button) + '</a></p>' +
+    '<p style="margin:0;padding-top:12px;border-top:1px solid #D9DDE3;font-size:12px;color:#5B6470">' + esc(fmt(X.footer, vars)) + '</p>' +
+    '</td></tr></table></td></tr></table></body></html>';
+  var text = fmt(X.intro, vars) + '\n\n' + fmt(X.action, vars) + '\n' + url + '\n\n' + fmt(X.footer, vars) + '\n';
+  return { subject: fmt(X.subject, vars), html: html, text: text };
+}
+
 /** Отметка в строке результата; повторная отправка дописывается к прежней через «; ». */
 function noteExtended(saved, text) {
   if (!saved) return;
@@ -315,8 +340,10 @@ function noteExtended(saved, text) {
   } catch (err) { console.error('noteExtended: ' + ((err && err.message) || err)); }
 }
 
-function composeExtendedMail(r, lang) {
+function composeExtendedMail(r, lang, o) {
   var L = DATA[lang], X = L.extended;
+  // отчёт по коду доступа (o.code, с 2026-10-22): платил не получатель — вступление и строка внизу свои (codeIntro, codeFooter), если они есть в языке
+  var intro = o && o.code && X.codeIntro ? X.codeIntro : X.intro, footer = o && o.code && X.codeFooter ? X.codeFooter : X.footer;
   var c = classify(score(r)), prof = L.profiles[c.key];
   var label = c.key + ' · ' + prof.name;
   var styleName = c.s ? L.keys[c.p] + ' + ' + L.keys[c.s] : L.keys[c.p];
@@ -329,7 +356,7 @@ function composeExtendedMail(r, lang) {
     '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background:#ffffff;border:1px solid #D9DDE3;border-radius:14px"><tr><td style="padding:28px;font-size:16px;line-height:1.5">' +
     '<p style="margin:0 0 16px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#5B6470;font-weight:bold">DISC</p>' +
     '<p style="margin:0 0 8px">' + esc(greeting) + '</p>' +
-    '<p style="margin:0 0 14px">' + esc(X.intro) + '</p>' +
+    '<p style="margin:0 0 14px">' + esc(intro) + '</p>' +
     '<p style="margin:0 0 2px;font-size:34px;font-weight:bold;line-height:1">' + badge + '&nbsp; ' + esc(prof.name) + '</p>' +
     '<p style="margin:0 0 18px;font-size:13px;color:#5B6470">' + esc(styleName) + '</p>' +
     '<p style="margin:0 0 14px;font-weight:bold">' + esc(X.attached) + '</p>' +
@@ -340,10 +367,10 @@ function composeExtendedMail(r, lang) {
     '<p style="margin:0 0 10px">' + esc(X.invite) + '</p>' +
     '<p style="margin:0">' + esc(X.inviteLink) + ' <a href="' + esc(testLink) + '" style="color:#3B6FB6;font-weight:bold">' + esc(test.replace(/^https?:\/\//, '')) + '</a></p>' +
     '</td></tr></table>' +
-    '<p style="margin:0;padding-top:12px;border-top:1px solid #D9DDE3;font-size:12px;color:#5B6470">' + esc(X.footer) + '</p>' +
+    '<p style="margin:0;padding-top:12px;border-top:1px solid #D9DDE3;font-size:12px;color:#5B6470">' + esc(footer) + '</p>' +
     '</td></tr></table></td></tr></table></body></html>';
-  var text = greeting + '\n\n' + X.intro + ' ' + label + ' (' + styleName + ')\n\n' + X.attached + '\n\n' + X.how + '\n\n' + X.help + '\n\n' +
-    X.inviteTitle + '\n' + X.invite + '\n' + X.inviteLink + ' ' + testLink + '\n\n' + X.footer + '\n';
+  var text = greeting + '\n\n' + intro + ' ' + label + ' (' + styleName + ')\n\n' + X.attached + '\n\n' + X.how + '\n\n' + X.help + '\n\n' +
+    X.inviteTitle + '\n' + X.invite + '\n' + X.inviteLink + ' ' + testLink + '\n\n' + footer + '\n';
   return { subject: fmt(X.subject, { label: label }), html: html, text: text };
 }
 

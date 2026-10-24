@@ -29,11 +29,28 @@ http.createServer((req, res) => {
         if (p === '/mock-pay-fail/order') return json({ ok: false, error: 'mock failure' });
         if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(String(j.email || '')) || String(j.email).length > 64) return json({ ok: false, error: 'bad email' });
         if (!/^DISC1\.[A-Za-z0-9_-]+$/.test(String(j.code || ''))) return json({ ok: false, error: 'bad code' });
+        // специальная цена: как сервер оплаты — специальная (490 ₽, 6.99 USD, 6.99 EUR) принимается только в течение offerMinutes (+2 минуты) после прохождения теста (t в коде результата)
+        const cfg = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'site.config.json'), 'utf8'));
+        let tt = NaN; try { tt = Date.parse(JSON.parse(Buffer.from(String(j.code).split('.')[1], 'base64url').toString('utf8')).t); } catch (e) {}
+        console.log('mock-pay price:', j.price === undefined ? '(нет)' : j.price, 'minutes since test:', isNaN(tt) ? '?' : Math.round((Date.now() - tt) / 60000));
+        const lg = j.lang || 'ru', cur = lg === 'ru' ? 'Rub' : lg === 'fr' || lg === 'de' ? 'Eur' : 'Usd', offerP = cfg['offerPrice' + cur], regP = cfg['servicePrice' + cur];   // валюта — как content.services.currency языка
+        if (offerP && j.price === offerP && !(Date.now() - tt <= ((cfg.offerMinutes || 60) + 2) * 60000)) return json({ ok: false, error: 'offer expired', price: regP });
         const d = new Date(), order = String(d.getFullYear()).slice(2) + String(d.getMonth() + 1).padStart(2, '0') + String(d.getDate()).padStart(2, '0') + '-' + Math.random().toString(36).slice(2, 8).toUpperCase();
         // куда «банк» вернёт покупателя: страница отчёта, с которой пришёл заказ (…/extended-report/), иначе русская версия
-        let back = '/ru/extended-report/'; try { back = new URL(req.headers.referer).pathname.replace(/extended-report\/.*$/, 'extended-report/'); } catch (e) {}
+        let back = '/ru/extended-report/'; try { const rp = new URL(req.headers.referer).pathname; back = /extended-report\//.test(rp) ? rp.replace(/extended-report\/.*$/, 'extended-report/') : rp.replace(/[^/]*$/, '') + 'extended-report/'; } catch (e) {}   // заказ с экрана результата (главная языка) — тоже на страницы отчёта, как у настоящего сервера
         mockOrders[order] = { key: Math.random().toString(36).slice(2), paid: 0, back };
         json({ ok: true, order, key: mockOrders[order].key, url: '/mock-pay/form?order=' + order });
+      }); return;
+    }
+    // код доступа (src/pay.js, payCodeInit): TEST-TEST-TEST — принят, USED-USED-USED — использован, OLDS-OLDS-OLDS — истёк, остальные — «нет такого кода»
+    if (req.method === 'POST' && p === '/mock-pay/code') {
+      let body = ''; req.on('data', c => body += c); req.on('end', () => {
+        let j = {}; try { j = JSON.parse(body); } catch (e) {}
+        const v = String(j.voucher || '').toUpperCase().replace(/[^A-Z0-9]/g, '');
+        console.log('mock-pay code:', v, j.email, 'source=' + j.source, 'lang=' + j.lang);
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(String(j.email || '')) || String(j.email).length > 64) return json({ ok: false, error: 'bad email' });
+        if (!/^DISC1\.[A-Za-z0-9_-]+$/.test(String(j.code || ''))) return json({ ok: false, error: 'bad code' });
+        json(v === 'TESTTESTTEST' ? { ok: true } : { ok: false, error: v === 'USEDUSEDUSED' ? 'used' : v === 'OLDSOLDSOLDS' ? 'expired' : 'no code' });
       }); return;
     }
     if (p === '/mock-pay/form' && o) return send(200, 'text/html; charset=utf-8', '<!DOCTYPE html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Заглушка платёжной страницы</title>' +
