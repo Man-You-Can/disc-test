@@ -86,7 +86,7 @@ const doc = new Document({
       B('Launched the chain’s online store: 8% of revenue in its second year.'),
 
       H('Education'),
-      B([run('Degree in Economics', { bold: true }), run(', 2013')]),
+      B([run('Plekhanov Russian University of Economics', { bold: true }), run(', Faculty of Informatics in Economics, 2013')]),
       H('Courses'),
       B([run('Web Analytics', { bold: true }), run(', 2017')]),
       B([run('P&L Management', { bold: true }), run(', 2022')]),
