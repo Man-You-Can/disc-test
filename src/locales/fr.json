@@ -792,6 +792,948 @@
         }
       ]
     },
+    "cv": {
+      "title": "CV adapté à chaque offre d'emploi grâce à l'IA — accès anticipé",
+      "description": "Réunissez toute votre expérience dans un CV de référence, obtenez une note objective de 1 à 10 pour chaque offre, ainsi qu'un CV et une lettre de motivation adaptés, fondés uniquement sur votre parcours réel. Prix de lancement pour les 1 000 premiers inscrits.",
+      "badge": "Accès anticipé · prix de lancement pour les 1 000 premiers inscrits",
+      "h1": "Un CV adapté à chaque offre, en quelques minutes",
+      "lead": "Importez une fois pour toutes vos CV, anciens comme récents, vos fiches de poste et votre profil LinkedIn. Notre IA en tire un CV de référence vérifié, attribue à chaque offre une note d'adéquation de 1 à 10 et rédige un CV et une lettre de motivation adaptés aux offres que vous choisissez.",
+      "heroPoints": [
+        "Un CV adapté à chaque offre",
+        "La lettre de motivation qui va avec",
+        "Une note d'adéquation de 1 à 10",
+        "En français, en anglais et dans d'autres langues"
+      ],
+      "formTitle": "Bénéficiez des prix de lancement",
+      "formLead": "Indiquez votre nom et votre e-mail : nous vous préviendrons dès l'ouverture de l'accès. Les 1 000 premiers inscrits profiteront de la formule Confirmé à 49 € et de la formule Senior à 99 € par mois, soit environ moitié prix.",
+      "formNote": "Aucune carte bancaire demandée. Sans engagement.",
+      "button": "Réserver ma place",
+      "floatButton": "Réserver ma place",
+      "floatClose": "Masquer",
+      "painTitle": "Pourquoi vos candidatures restent sans réponse",
+      "pain": [
+        {
+          "h": "Le même CV pour toutes les offres",
+          "p": "Les recruteurs et les logiciels de tri des candidatures (ATS) cherchent dans votre CV ce que demande ce poste précis. S'ils ne le trouvent pas, votre candidature est écartée."
+        },
+        {
+          "h": "Des dizaines de versions, des chiffres différents",
+          "p": "Au fil des années, les versions de CV s'accumulent, avec des dates, des intitulés et des résultats qui ne concordent pas. Les recruteurs comparent votre CV à votre profil LinkedIn et repèrent les incohérences."
+        },
+        {
+          "h": "Adapter son CV prend un temps fou",
+          "p": "Réécrire son CV et rédiger une lettre de motivation pour chaque offre demande des heures. Résultat : la plupart des candidats envoient le même fichier partout."
+        }
+      ],
+      "demo": {
+        "label": "Exemple d'évaluation d'une offre",
+        "role": "Directeur e-commerce (H/F)",
+        "company": "Enseigne de grande distribution · Lille",
+        "score": "7",
+        "scoreOf": "sur 10",
+        "scoreLabel": "note d'adéquation",
+        "scoreNote": "Note d'adéquation de 1 à 10 : dans quelle mesure l'expérience de la candidate répond aux exigences de l'offre, et dans quelle mesure l'offre répond à ses critères de recherche.",
+        "rows": [
+          {
+            "t": "Marketplaces et site propre",
+            "s": "yes",
+            "v": "Correspond"
+          },
+          {
+            "t": "Équipe de 15 personnes et plus",
+            "s": "yes",
+            "v": "Correspond"
+          },
+          {
+            "t": "Unit economics (CAC, LTV)",
+            "s": "part",
+            "v": "En partie"
+          },
+          {
+            "t": "Expérience en grande consommation",
+            "s": "no",
+            "v": "Ne correspond pas"
+          }
+        ],
+        "verdictTitle": "Notre avis",
+        "verdict": "Nous mettons en avant la croissance des ventes en ligne et le lancement sur les marketplaces. Pas de CAC ni de LTV inventés : nous demandons d'abord les chiffres réels à la candidate.",
+        "verdictTag": "Candidature conseillée",
+        "fileGroups": [
+          {
+            "lang": "FR",
+            "label": "Français",
+            "files": [
+              {
+                "t": "CV.docx",
+                "f": "",
+                "dl": "docx"
+              },
+              {
+                "t": "CV.pdf",
+                "f": "",
+                "dl": "pdf"
+              },
+              {
+                "t": "Lettre de motivation",
+                "f": "",
+                "dl": "letter"
+              }
+            ]
+          },
+          {
+            "lang": "EN",
+            "label": "English",
+            "files": [
+              {
+                "t": "CV.docx",
+                "f": "",
+                "dl": "docx-en"
+              },
+              {
+                "t": "CV.pdf",
+                "f": "",
+                "dl": "pdf-en"
+              },
+              {
+                "t": "Cover letter",
+                "f": "",
+                "dl": "letter-en"
+              }
+            ]
+          }
+        ],
+        "more": "Voir l'exemple complet"
+      },
+      "howTitle": "Comment ça marche",
+      "how": [
+        {
+          "h": "Importez tout ce que vous avez",
+          "p": "Vos CV, anciens comme récents (PDF ou DOCX), et votre profil LinkedIn. Plus vous ajoutez de versions, plus votre CV de référence sera complet."
+        },
+        {
+          "h": "Répondez à quelques questions",
+          "p": "L'IA rassemble les faits dans un CV de référence, repère les incohérences entre les versions et ne vous interroge que sur les points qu'elle ne peut pas trancher seule."
+        },
+        {
+          "h": "Ajoutez une offre d'emploi",
+          "p": "Collez un lien ou le texte complet de l'annonce. En quelques minutes, vous obtenez une note de 1 à 10, un CV en DOCX et en PDF, et une lettre de motivation."
+        }
+      ],
+      "example": {
+        "title": "Exemple : du CV de référence à la candidature",
+        "lead": "Le principe appliqué à une candidate et à une offre fictives.",
+        "note": "Les données de cet exemple sont fictives",
+        "more": "Afficher la suite",
+        "tabs": [
+          "CV de référence",
+          "Critères de recherche",
+          "Offre d'emploi",
+          "Évaluation",
+          "Lettre de motivation",
+          "Tableau de bord"
+        ],
+        "profile": {
+          "name": "Camille Lefebvre",
+          "headline": "Directrice e-commerce · Lille",
+          "sources": "Construit à partir de 4 versions de son CV, de son profil LinkedIn, de son CV déposé sur l'APEC et de ses réponses à quelques questions",
+          "cvFile": {
+            "title": "CV prêt à envoyer — 2 pages, en français et en anglais",
+            "text": "À partir de ce CV de référence, nous avons préparé une version pour le poste de directeur e-commerce, en deux langues : l'essentiel en tête, rien de superflu.",
+            "pdf": "Télécharger le PDF",
+            "docx": "Télécharger le DOCX",
+            "langSwitch": "Langue du CV",
+            "langs": [
+              {
+                "label": "Français",
+                "sfx": ""
+              },
+              {
+                "label": "English",
+                "sfx": "-en"
+              }
+            ],
+            "file": ""
+          },
+          "legendIn": "Repris dans le CV pour ce poste",
+          "legendOut": "Reste dans le CV de référence",
+          "count": "Pour le poste de directeur e-commerce, nous retenons {in} éléments sur {all}",
+          "expTitle": "Expérience professionnelle",
+          "titlesLabel": "Intitulés selon les sources",
+          "pickLabel": "retenu pour ce poste",
+          "flagLabel": "Incohérence résolue",
+          "jobs": [
+            {
+              "period": "mars 2021 – aujourd'hui",
+              "role": "Directrice e-commerce",
+              "company": "Enseigne d'ameublement et de décoration, 240 magasins",
+              "titles": [
+                {
+                  "t": "Directrice e-commerce",
+                  "src": "contrat de travail",
+                  "pick": true
+                },
+                {
+                  "t": "Head of E-commerce",
+                  "src": "LinkedIn",
+                  "pick": false
+                },
+                {
+                  "t": "Responsable e-commerce",
+                  "src": "CV de 2021, avant le lancement sur les marketplaces",
+                  "pick": false
+                }
+              ],
+              "items": [
+                {
+                  "t": "Croissance des ventes en ligne de 45 à 130 M€ par an (×2,9) en 3 ans",
+                  "in": true
+                },
+                {
+                  "t": "Lancement de l'enseigne sur Amazon.fr, Cdiscount et ManoMano : 31 % du CA en ligne aujourd'hui",
+                  "in": true
+                },
+                {
+                  "t": "Constitution d'une équipe de 18 personnes : marketplaces, site, contenus, data",
+                  "in": true
+                },
+                {
+                  "t": "Taux de conversion du site porté de 1,4 % à 2,3 % grâce à la refonte des fiches produits et du tunnel de commande",
+                  "in": true
+                },
+                {
+                  "t": "Migration de l'entrepôt e-commerce vers un nouveau WMS (logiciel de gestion d'entrepôt)",
+                  "in": false
+                },
+                {
+                  "t": "Formation des équipes des 240 magasins au click & collect",
+                  "in": false
+                }
+              ],
+              "note": "Le CV de 2022 mentionne une équipe de 12 personnes, LinkedIn en indique 18. Vérifié avec la candidate : 18 personnes depuis 2023."
+            },
+            {
+              "period": "juin 2017 – février 2021",
+              "role": "Category manager senior, gros électroménager",
+              "company": "E-commerçant spécialisé en high-tech et électroménager",
+              "titles": [
+                {
+                  "t": "Category manager senior, gros électroménager",
+                  "src": "avenant au contrat de travail, 2019",
+                  "pick": true
+                },
+                {
+                  "t": "Cheffe de catégorie électroménager",
+                  "src": "LinkedIn",
+                  "pick": false
+                },
+                {
+                  "t": "Category manager",
+                  "src": "CV de 2018, avant sa promotion",
+                  "pick": false
+                }
+              ],
+              "items": [
+                {
+                  "t": "Chiffre d'affaires de la catégorie multiplié par 3, pour atteindre 200 M€ par an",
+                  "in": true
+                },
+                {
+                  "t": "Gestion de plus de 200 fournisseurs ; lancement d'un modèle marketplace pour la catégorie",
+                  "in": true
+                },
+                {
+                  "t": "Négociation des budgets de coopération commerciale avec les fournisseurs",
+                  "in": false
+                },
+                {
+                  "t": "Tutorat de 4 stagiaires",
+                  "in": false
+                }
+              ],
+              "note": "Deux versions du CV donnent des dates de fin différentes : 2020 et 2021. Son certificat de travail confirme février 2021."
+            }
+          ],
+          "gap": {
+            "period": "juin 2016 – mai 2017",
+            "title": "Pause professionnelle — 1 an",
+            "label": "Comment chaque version explique cette période ",
+            "variants": [
+              {
+                "t": "« Mère au foyer »",
+                "src": "CV de 2017"
+              },
+              {
+                "t": "« Année sabbatique, voyages »",
+                "src": "CV déposé sur l'APEC"
+              },
+              {
+                "t": "« Freelance : création de boutiques en ligne »",
+                "src": "CV de 2018"
+              }
+            ],
+            "resolved": "Vérifié avec la candidate : après sa démission, elle s'est occupée de son enfant ; les trois derniers mois, elle a suivi une formation en web analytics et réalisé deux petites missions pour des boutiques en ligne tenues par des amis.",
+            "pick": "Dans le CV : « Pause professionnelle pour raisons familiales ; formation en web analytics » — bref et exact, sans détails superflus."
+          },
+          "early": [
+            {
+              "period": "septembre 2013 – mai 2016",
+              "role": "Responsable des ventes en ligne",
+              "company": "Enseigne de prêt-à-porter",
+              "titles": [
+                {
+                  "t": "Responsable des ventes en ligne",
+                  "src": "bulletins de paie",
+                  "pick": true
+                },
+                {
+                  "t": "Responsable e-commerce",
+                  "src": "LinkedIn",
+                  "pick": false
+                }
+              ],
+              "items": [
+                {
+                  "t": "Lancement du site marchand de l'enseigne : 8 % du chiffre d'affaires total dès la deuxième année",
+                  "in": true
+                },
+                {
+                  "t": "Animation des réseaux sociaux de l'enseigne",
+                  "in": false
+                }
+              ],
+              "note": ""
+            }
+          ],
+          "intern": {
+            "period": "juillet – août 2012",
+            "role": "Conseillère clientèle (stage)",
+            "company": "Banque, réseau d'agences",
+            "items": [
+              {
+                "t": "Stage de 2 mois entre le M1 et le M2",
+                "in": false
+              }
+            ],
+            "why": "Non repris : trop ancien et sans lien avec l'e-commerce. À garder pour un poste dans la fintech."
+          },
+          "sections": [
+            {
+              "h": "Formation",
+              "items": [
+                {
+                  "t": "EDHEC Business School — Programme Grande École, Master in Management (Bac+5), 2013",
+                  "in": true
+                }
+              ]
+            },
+            {
+              "h": "Formation continue",
+              "items": [
+                {
+                  "t": "Web analytics, 2017",
+                  "in": true
+                },
+                {
+                  "t": "Pilotage du P&L, 2022",
+                  "in": true
+                },
+                {
+                  "t": "Initiation à la photographie, 2019",
+                  "in": false
+                }
+              ]
+            },
+            {
+              "h": "Langues",
+              "items": [
+                {
+                  "t": "Anglais — courant (C1, TOEIC 945)",
+                  "in": true
+                },
+                {
+                  "t": "Espagnol — notions (A2)",
+                  "in": false
+                }
+              ]
+            },
+            {
+              "h": "Distinctions et interventions",
+              "items": [
+                {
+                  "t": "Prix interne « Projet de l'année » pour le lancement sur les marketplaces, 2022",
+                  "in": true
+                },
+                {
+                  "t": "Intervenante lors d'un salon professionnel de l'e-commerce, 2023",
+                  "in": true
+                },
+                {
+                  "t": "Mentorat au sein de l'incubateur d'une école de commerce, 2024",
+                  "in": false
+                }
+              ]
+            },
+            {
+              "h": "Centres d'intérêt",
+              "items": [
+                {
+                  "t": "Course à pied — trois semi-marathons",
+                  "in": true
+                },
+                {
+                  "t": "Photographie",
+                  "in": false
+                },
+                {
+                  "t": "Jeux de société",
+                  "in": false
+                },
+                {
+                  "t": "Bénévolat dans un refuge pour animaux",
+                  "in": false
+                },
+                {
+                  "t": "Yoga",
+                  "in": false
+                },
+                {
+                  "t": "Cuisine",
+                  "in": false
+                }
+              ],
+              "why": "Dans le CV, seule la course à pied : en France, une ligne « Centres d'intérêt » est d'usage, mais le reste n'apporte rien pour ce poste. Le bénévolat pourra être évoqué en entretien."
+            }
+          ],
+          "skillsTitle": "Compétences clés",
+          "skills": [
+            "Marketplaces",
+            "P&L e-commerce",
+            "Unit economics",
+            "Management d'équipe",
+            "Web analytics",
+            "Assortiment et pricing"
+          ]
+        },
+        "search": {
+          "title": "Directrice e-commerce",
+          "subtitle": "Profil de recherche principal · d'après ses réponses",
+          "groups": [
+            {
+              "h": "Intitulés de poste",
+              "items": [
+                "Directrice e-commerce",
+                "Head of E-commerce",
+                "Directrice omnicanal"
+              ]
+            },
+            {
+              "h": "Niveau",
+              "items": [
+                "Poste de direction au minimum",
+                "De préférence rattachée au directeur général"
+              ]
+            },
+            {
+              "h": "Entreprises",
+              "items": [
+                "Enseignes et marques dotées de leur propre site marchand",
+                "Chiffre d'affaires annuel d'au moins 500 M€",
+                "Entreprises établies, pas de start-up en phase d'amorçage"
+              ]
+            },
+            {
+              "h": "Secteurs",
+              "items": [
+                "En priorité : maison et décoration, électroménager, bricolage",
+                "Ouverte également à : grande consommation, mode, puériculture"
+              ]
+            },
+            {
+              "h": "Rémunération",
+              "items": [
+                "Fixe : 100 k€ brut/an minimum",
+                "Objectif : 115 k€ brut/an"
+              ]
+            },
+            {
+              "h": "Lieu et mode de travail",
+              "items": [
+                "Lille : hybride ou sur site",
+                "100 % télétravail si l'entreprise est basée ailleurs",
+                "Mobilité géographique : non"
+              ]
+            },
+            {
+              "h": "Type de contrat",
+              "items": [
+                "CDI, temps plein"
+              ]
+            }
+          ],
+          "stopTitle": "Critères rédhibitoires",
+          "stop": [
+            "Tabac et alcool",
+            "Postes inférieurs au niveau direction",
+            "Fixe inférieur à 100 k€ brut/an"
+          ],
+          "otherTitle": "Second profil de recherche",
+          "other": "Responsable marketplaces chez un fabricant, à niveau et rémunération équivalents ; électroménager et équipement de la maison.",
+          "note": "Ces critères déterminent la seconde moitié de la note : dans quelle mesure le poste lui correspond."
+        },
+        "vacancy": {
+          "role": "Directeur e-commerce (H/F)",
+          "company": "Enseigne de grande distribution · Lille",
+          "meta": "CDI · Hybride, 2 jours de télétravail par semaine · 110⁠–⁠130 k€ brut/an + variable",
+          "sections": [
+            {
+              "h": "Vos missions",
+              "items": [
+                "Développer les ventes sur notre site et sur les marketplaces",
+                "Piloter le P&L e-commerce et le plan de croissance 2027",
+                "Manager une équipe e-commerce de 15 personnes et plus",
+                "Optimiser la rentabilité par canal : CAC, LTV, marge"
+              ]
+            },
+            {
+              "h": "Votre profil",
+              "items": [
+                "5 ans d'expérience minimum en e-commerce, dont 2 ans en management",
+                "Expérience du développement des ventes sur les marketplaces et sur un site propre",
+                "Management d'une équipe de 15 personnes et plus",
+                "Maîtrise des unit economics : CAC, LTV",
+                "Expérience en grande consommation"
+              ]
+            },
+            {
+              "h": "Ce que nous vous proposons",
+              "items": [
+                "CDI basé à Lille, 2 jours de télétravail par semaine",
+                "Rémunération : 110⁠–⁠130 k€ brut/an + variable",
+                "Rattachement au directeur commercial"
+              ]
+            }
+          ]
+        },
+        "score": {
+          "total": "7",
+          "of": "sur 10",
+          "label": "note d'adéquation",
+          "note": "La note globale de 1 à 10 est la moyenne de deux notes : dans quelle mesure la candidate correspond au poste, et dans quelle mesure le poste lui correspond.",
+          "parts": [
+            {
+              "label": "La candidate correspond au poste ",
+              "value": "6 sur 10"
+            },
+            {
+              "label": "Le poste correspond à la candidate ",
+              "value": "8 sur 10"
+            }
+          ],
+          "reqTitle": "La candidate correspond-elle au poste ?",
+          "rows": [
+            {
+              "t": "Marketplaces et site propre",
+              "s": "yes",
+              "v": "Correspond",
+              "why": "Amazon.fr, Cdiscount, ManoMano : 31 % du CA en ligne ; site de l'enseigne"
+            },
+            {
+              "t": "Équipe de 15 personnes et plus",
+              "s": "yes",
+              "v": "Correspond",
+              "why": "Équipe de 18 personnes"
+            },
+            {
+              "t": "P&L e-commerce",
+              "s": "yes",
+              "v": "Correspond",
+              "why": "Ventes en ligne passées de 45 à 130 M€ par an"
+            },
+            {
+              "t": "Unit economics (CAC, LTV)",
+              "s": "part",
+              "v": "En partie",
+              "why": "Connaît bien l'économie des marketplaces, mais aucun chiffre de CAC ni de LTV dans le CV de référence"
+            },
+            {
+              "t": "Expérience en grande consommation",
+              "s": "no",
+              "v": "Ne correspond pas",
+              "why": "L'équipement de la maison est un secteur voisin, mais ce n'est pas la grande consommation"
+            }
+          ],
+          "critTitle": "Le poste correspond-il à la candidate ?",
+          "crit": [
+            {
+              "want": "Poste de direction au minimum",
+              "offer": "Directeur e-commerce",
+              "s": "yes",
+              "v": "Correspond"
+            },
+            {
+              "want": "Fixe de 100 k€ brut/an minimum",
+              "offer": "110⁠–⁠130 k€ brut/an + variable",
+              "s": "yes",
+              "v": "Correspond"
+            },
+            {
+              "want": "Lille, hybride ou sur site",
+              "offer": "Lille, 2 jours de télétravail par semaine",
+              "s": "yes",
+              "v": "Correspond"
+            },
+            {
+              "want": "Maison, électroménager, bricolage ; ouverte à la grande consommation",
+              "offer": "Grande distribution, produits de grande consommation",
+              "s": "yes",
+              "v": "Correspond"
+            },
+            {
+              "want": "De préférence rattachée au directeur général",
+              "offer": "Rattachement au directeur commercial",
+              "s": "part",
+              "v": "En partie"
+            }
+          ],
+          "verdictTitle": "Notre avis",
+          "verdict": "Son expérience couvre l'essentiel : site propre, marketplaces, taille de l'équipe. Points faibles : pas d'expérience en grande consommation, pas de chiffres de CAC ni de LTV.",
+          "verdictTag": "Candidature conseillée",
+          "topTitle": "À mettre en tête du CV",
+          "top": [
+            "Croissance des ventes en ligne de 45 à 130 M€",
+            "Lancement sur trois marketplaces : 31 % du CA en ligne",
+            "Équipe de 18 personnes"
+          ],
+          "skipTitle": "Ce que nous n'écrirons pas",
+          "skip": [
+            "Chiffres de CAC et de LTV : absents du CV de référence, nous lui poserons d'abord la question",
+            "Expérience en grande consommation : non revendiquée, abordée dans la lettre de motivation"
+          ],
+          "reqCols": [
+            "Exigences du poste",
+            "Profil de la candidate",
+            "Adéquation"
+          ],
+          "critCols": [
+            "Conditions du poste",
+            "Souhaits de la candidate",
+            "Adéquation"
+          ]
+        },
+        "letter": {
+          "subject": "Objet : Candidature au poste de directrice e-commerce — Camille Lefebvre",
+          "body": [
+            "Madame, Monsieur,",
+            "Je vous adresse ma candidature au poste de directrice e-commerce. Depuis 2021, je dirige l'e-commerce d'une enseigne d'ameublement et de décoration de 240 magasins : les ventes en ligne sont passées de 45 à 130 M€ par an, et j'ai lancé l'enseigne sur Amazon.fr, Cdiscount et ManoMano, qui représentent aujourd'hui 31 % du chiffre d'affaires en ligne. Mon équipe de 18 personnes couvre les marketplaces, le site, les contenus et la data.",
+            "Vous souhaitez développer à la fois votre site et vos ventes sur les marketplaces : c'est précisément ce que je fais aujourd'hui. Je n'ai pas encore travaillé dans la grande consommation, mais l'équipement de la maison est lui aussi un commerce de volume, avec un large assortiment et des délais de livraison courts ; les leviers de l'e-commerce y sont très proches.",
+            "Je serais heureuse de vous exposer, lors d'un entretien, comment je pourrais contribuer à accélérer la croissance de vos ventes en ligne. Je vous prie d'agréer, Madame, Monsieur, l'expression de mes salutations distinguées."
+          ],
+          "sign": "Camille Lefebvre",
+          "fullTitle": "Version complète — pour un envoi par e-mail",
+          "copy": "Copier le texte",
+          "copied": "Copié",
+          "shortTitle": "Version courte — pour un message LinkedIn ou une candidature sur Welcome to the Jungle",
+          "short": "Bonjour, je vous contacte au sujet du poste de directrice e-commerce. Depuis 2021, je dirige l'e-commerce d'une enseigne d'ameublement et de décoration de 240 magasins : ventes en ligne passées de 45 à 130 M€, lancement sur Amazon.fr, Cdiscount et ManoMano (31 % du CA en ligne), équipe de 18 personnes. Vous trouverez mon CV ci-joint ; je serais ravie d'en échanger avec vous."
+        },
+        "dashboard": {
+          "title": "Mes offres",
+          "lead": "Toutes ses offres au même endroit : note d'adéquation, recommandation et documents prêts à envoyer.",
+          "all": "Toutes",
+          "cols": [
+            "Offre",
+            "Note",
+            "Recommandation",
+            "Documents"
+          ],
+          "recLabels": {
+            "go": "Postuler",
+            "maybe": "À étudier",
+            "no": "À écarter"
+          },
+          "docs": [
+            "CV",
+            "Lettre"
+          ],
+          "noDocs": "Pas encore",
+          "of": "sur 10",
+          "rows": [
+            {
+              "role": "Directrice e-commerce",
+              "company": "Fabricant d'électroménager",
+              "place": "Lille, hybride",
+              "score": 9,
+              "rec": "go",
+              "why": "Expérience catégorie et marketplaces : en plein dans sa cible"
+            },
+            {
+              "role": "Head of E-commerce",
+              "company": "Enseigne high-tech et électroménager",
+              "place": "Lille, sur site",
+              "score": 8,
+              "rec": "go",
+              "why": "Secteur prioritaire ; site propre et marketplaces"
+            },
+            {
+              "role": "Responsable marketplaces",
+              "company": "Marque de décoration",
+              "place": "Lille, hybride",
+              "score": 8,
+              "rec": "go",
+              "why": "Correspond à son second profil de recherche"
+            },
+            {
+              "role": "Directeur e-commerce (H/F)",
+              "company": "Enseigne de grande distribution",
+              "place": "Lille, hybride",
+              "score": 7,
+              "rec": "go",
+              "why": "Points faibles : grande consommation et chiffres de CAC et de LTV"
+            },
+            {
+              "role": "Directrice du commerce digital",
+              "company": "Industriel de la grande consommation",
+              "place": "Paris, 100 % télétravail",
+              "score": 6,
+              "rec": "maybe",
+              "why": "Exige une expérience en grande consommation, qu'elle n'a pas"
+            },
+            {
+              "role": "Marketplace manager",
+              "company": "Site de mode en ligne",
+              "place": "Roubaix, sur site",
+              "score": 3,
+              "rec": "no",
+              "why": "En dessous de son niveau ; jusqu'à 55 k€ brut/an"
+            },
+            {
+              "role": "Directeur e-commerce",
+              "company": "Groupe de vins et spiritueux",
+              "place": "Lille, sur site",
+              "score": 2,
+              "rec": "no",
+              "why": "Secteur exclu de sa recherche"
+            }
+          ],
+          "note": "Maquette de l'espace personnel. Dans le service, vous ajouterez une offre par un simple lien ou depuis une sélection d'offres, et vous ouvrirez ou téléchargerez le CV et la lettre en un clic."
+        }
+      },
+      "featuresTitle": "Ce que vous obtenez",
+      "features": [
+        {
+          "h": "Un CV de référence",
+          "p": "Toutes vos versions de CV réunies dans un seul document vérifié : intitulés, dates, chiffres et résultats. Plus aucune contradiction dans votre parcours."
+        },
+        {
+          "h": "Une note objective pour chaque offre",
+          "p": "De 1 à 10 : dans quelle mesure votre expérience répond aux exigences, et dans quelle mesure le poste vous correspond. Si vos chances sont faibles, nous vous le disons."
+        },
+        {
+          "h": "Un CV pour chaque offre",
+          "p": "Ce que recherche l'employeur apparaît en premier. Vous recevez des fichiers prêts à envoyer, en DOCX et en PDF."
+        },
+        {
+          "h": "La lettre de motivation",
+          "p": "Une version complète pour l'e-mail et une version courte pour un message LinkedIn ou une candidature sur Welcome to the Jungle."
+        },
+        {
+          "h": "Le suivi des candidatures",
+          "p": "Où vous avez postulé, quand, avec quel CV et où en est chaque candidature : tout au même endroit, avec des rappels."
+        },
+        {
+          "h": "Anglais et autres langues",
+          "p": "CV et lettres de motivation en anglais et dans d'autres langues, pour des postes en France comme à l'étranger."
+        }
+      ],
+      "english": {
+        "title": "Votre CV en anglais, sans passer par un traducteur",
+        "lead": "Une traduction mot à mot ne suffit pas : un recruteur à Londres, Dublin ou Amsterdam attend une autre structure, des intitulés de poste qui lui sont familiers, des dates et des montants au format local. Nous rédigeons votre CV et votre lettre de motivation en anglais selon les usages du pays, à partir des mêmes faits que votre version française.",
+        "points": [
+          {
+            "h": "Pas une traduction : un CV aux codes anglo-saxons",
+            "p": "Ni photo, ni âge, ni situation familiale ; « Bac+5 » laisse place à l'intitulé exact du diplôme, et les centres d'intérêt deviennent facultatifs. Les rubriques sont celles qu'attend un recruteur anglophone."
+          },
+          {
+            "h": "Des intitulés que les recruteurs recherchent",
+            "p": "« Directrice e-commerce » devient « Head of E-commerce » : l'intitulé que les recruteurs anglophones tapent vraiment dans leurs recherches, validé avec vous."
+          },
+          {
+            "h": "Les mêmes faits, aux formats locaux",
+            "p": "Montants et dates écrits à l'anglaise (€130M, Mar 2021 – Present). Et rien d'autre que ce qui figure dans votre CV de référence."
+          },
+          {
+            "h": "La lettre aussi",
+            "p": "Une version complète pour l'e-mail et une version courte pour LinkedIn, dans la langue de l'annonce."
+          }
+        ],
+        "compareTitle": "Ce qui change, ligne par ligne",
+        "ruLabel": "Dans votre CV en français",
+        "enLabel": "Dans votre CV en anglais",
+        "compare": [
+          {
+            "ru": "Directrice e-commerce",
+            "en": "Head of E-commerce",
+            "lang": "en"
+          },
+          {
+            "ru": "Croissance des ventes en ligne de 45 à 130 M€ par an (×2,9) en 3 ans",
+            "en": "Grew annual online sales from €45M to €130M (2.9x) in 3 years",
+            "lang": "en"
+          },
+          {
+            "ru": "EDHEC Business School — Programme Grande École, Master in Management (Bac+5)",
+            "en": "EDHEC Business School — Master in Management (Grande École Programme)",
+            "lang": "en"
+          }
+        ],
+        "downloadsTitle": "L'exemple en anglais ",
+        "downloads": [
+          {
+            "t": "CV en anglais, PDF",
+            "f": "",
+            "dl": "pdf-en"
+          },
+          {
+            "t": "CV en anglais, DOCX",
+            "f": "",
+            "dl": "docx-en"
+          },
+          {
+            "t": "Lettre en anglais, DOCX",
+            "f": "",
+            "dl": "letter-en"
+          }
+        ]
+      },
+      "honestTitle": "Nous n'inventons rien",
+      "honest": "L'IA reformule, réorganise et choisit ce qu'elle met en avant, mais ne touche jamais aux faits. Chaque ligne de votre CV s'appuie sur votre CV de référence, et une vérification distincte contrôle chaque date et chaque chiffre avant que vous ne receviez votre CV. Un recruteur peut le comparer à votre profil LinkedIn et à vos références : tout concordera.",
+      "honestList": [
+        "Aucune contradiction dans les chiffres ni dans les faits",
+        "Vos réalisations clés et votre expérience la plus pertinente en premier",
+        "Une réponse claire : le poste vous correspond-il, et correspondez-vous au poste ?"
+      ],
+      "pricingTitle": "Tarifs pour les 1 000 premiers inscrits",
+      "pricingLead": "Inscrivez-vous dès maintenant pour bénéficier des prix de lancement : environ la moitié du tarif normal, sur chaque formule payante.",
+      "plans": [
+        {
+          "name": "Junior",
+          "price": "0 €",
+          "old": "",
+          "per": "gratuit",
+          "items": [
+            "Création de votre CV de référence"
+          ]
+        },
+        {
+          "name": "Confirmé",
+          "price": "49 €",
+          "old": "100 €",
+          "per": "par mois",
+          "tag": "−51 %",
+          "items": [
+            "Création de votre CV de référence",
+            "10 CV adaptés",
+            "30 évaluations d'offres",
+            "Tableau de bord de vos offres et de vos CV"
+          ]
+        },
+        {
+          "name": "Senior",
+          "price": "99 €",
+          "old": "200 €",
+          "per": "par mois",
+          "tag": "−51 %",
+          "items": [
+            "Création de votre CV de référence",
+            "30 CV adaptés",
+            "90 évaluations d'offres",
+            "Tableau de bord de vos offres et de vos CV",
+            "CV en anglais et dans d'autres langues",
+            "Sélection d'offres adaptées à votre profil"
+          ]
+        }
+      ],
+      "pricingNote": "Les prix de lancement sont réservés aux 1 000 premières personnes inscrites sur cette page.",
+      "founderTitle": "À propos du fondateur",
+      "author": {
+        "name": "Armen Manukyan",
+        "role": "Fondateur · Dirigeant dans l'e-commerce et le commerce international",
+        "facts": [
+          "Opérateur postal national, 2020–2026 : direction de l'activité d'import transfrontalier et de la place de marché en ligne (équipe de 36 personnes, plus de 190 partenaires internationaux).",
+          "L'une des plus grandes places de marché en ligne, 2019–2020 : directeur des projets spéciaux. Plus de 50 000 nouveaux vendeurs dès la première année grâce à des programmes menés avec les pouvoirs publics ; lancement du financement des vendeurs adossé à leurs stocks.",
+          "Agence nationale de promotion des exportations, 2017–2019 : responsable du développement des services numériques. Plus de 200 entreprises B2B et plus de 2 000 entreprises B2C accompagnées à l'export par les canaux en ligne.",
+          "Deux fois lauréat d'un concours national de leadership pour dirigeants (2020, 2026).",
+          "Lauréat d'un concours national des meilleures pratiques pour l'emploi des jeunes, avec le projet « Place de marché des talents »."
+        ],
+        "text": "Un CV de référence, une note objective pour chaque offre et un CV adapté à chacune : c'est la méthode que j'ai mise au point pour ma propre recherche d'emploi. Je souhaite maintenant la rendre accessible à tous.",
+        "photoAlt": "Armen Manukyan, fondateur du service"
+      },
+      "faqTitle": "Questions fréquentes",
+      "faq": [
+        {
+          "q": "Quand l'accès ouvrira-t-il ?",
+          "a": "Nous préparons le lancement. L'accès sera ouvert progressivement, dans l'ordre des inscriptions, et nous vous préviendrons par e-mail."
+        },
+        {
+          "q": "Comment bénéficier des prix de lancement ?",
+          "a": "Inscrivez-vous sur cette page. Les 1 000 premiers inscrits auront la formule Confirmé à 49 € par mois au lieu de 100 €, et la formule Senior à 99 € au lieu de 200 €."
+        },
+        {
+          "q": "Combien ça coûte ?",
+          "a": "La formule gratuite permet de créer votre CV de référence. Les formules payantes coûtent 100 € par mois (Confirmé) et 200 € par mois (Senior) ; les 1 000 premiers inscrits paieront 49 € et 99 €."
+        },
+        {
+          "q": "À qui s'adresse ce service ?",
+          "a": "À toute personne en recherche d'emploi, du premier poste aux fonctions de direction. Il est particulièrement utile si vous avez occupé plusieurs postes et accumulé de nombreuses versions de votre CV."
+        },
+        {
+          "q": "Si c'est l'IA qui rédige mon CV, ne risque-t-elle pas d'inventer ?",
+          "a": "Non. L'IA travaille uniquement avec les faits de votre CV de référence, que vous pouvez consulter et modifier. Avant de vous remettre un CV, nous vérifions qu'il ne contient aucun chiffre ni aucune date absents de votre CV de référence."
+        },
+        {
+          "q": "Que deviennent mes données ?",
+          "a": "Lors de votre inscription ici, votre nom et votre e-mail sont envoyés à l'adresse {email} et servent uniquement à vous contacter. Vos CV, vous les importerez plus tard, dans l'application."
+        },
+        {
+          "q": "Garantissez-vous un emploi ou un entretien ?",
+          "a": "Non : personne ne peut honnêtement le garantir. Notre engagement : chaque CV est adapté à l'offre et fondé uniquement sur votre parcours réel, et la note vous indique d'emblée où vos chances sont les meilleures."
+        }
+      ],
+      "finalTitle": "Réservez votre place parmi les 1 000 premiers",
+      "finalLead": "Sans engagement ni carte bancaire : simplement votre nom et votre e-mail. Les 1 000 premiers inscrits paieront environ moitié prix sur chaque formule payante.",
+      "form": {
+        "email": "E-mail",
+        "button": "Réserver ma place",
+        "subject": "Demande d'accès anticipé — service « Un CV adapté à chaque offre » (FR)",
+        "message": "Je souhaite m'inscrire à l'accès anticipé au service « Un CV adapté à chaque offre », au prix de lancement réservé aux 1 000 premiers inscrits.",
+        "sentTitle": "Votre inscription est enregistrée",
+        "sent": "Nous vous écrirons dès l'ouverture de l'accès."
+      }
+    },
+    "cvPromo": {
+      "tag": "Nouveau",
+      "button": "En savoir plus",
+      "note": "Inscriptions ouvertes pour l'accès anticipé : prix de lancement pour les 1 000 premiers inscrits.",
+      "home": {
+        "h": "Besoin d'un coup de main pour votre recherche d'emploi ?",
+        "p": "Avec notre futur service, vous importerez une fois pour toutes vos CV, anciens comme récents, vos fiches de poste et votre profil LinkedIn. Notre IA en tirera un CV de référence, vous dira objectivement si chaque offre vous correspond et rédigera en quelques minutes un CV et une lettre de motivation adaptés."
+      },
+      "result": {
+        "h": "Vous cherchez un emploi ?",
+        "p": "Vous connaissez maintenant vos points forts. Reste à les montrer aux employeurs : notre prochain service réunira votre expérience dans un CV de référence, attribuera à chaque offre une note d'adéquation de 1 à 10 et rédigera en quelques minutes un CV et une lettre de motivation adaptés. Le tout fondé sur votre parcours réel, sans rien inventer."
+      },
+      "profile": {
+        "h": "Besoin d'aide pour votre CV ?",
+        "p": "Savoir quels postes vous conviennent n'est qu'un début. Pour décrocher un entretien, votre CV doit répondre précisément à l'offre. Bientôt, nous rédigerons ce CV et la lettre de motivation en quelques minutes, à partir de votre expérience réelle, et nous vous dirons objectivement s'il vaut la peine de postuler."
+      },
+      "services": {
+        "part": "Recherche d'emploi",
+        "pick": "Un CV et une lettre de motivation adaptés à chaque offre",
+        "price": "{price} pour débuter",
+        "name": "Un CV adapté à chaque offre",
+        "text": "Notre futur service d'IA réunira toute votre expérience (anciens CV, fiches de poste, profil LinkedIn) dans un CV de référence, notera chaque offre de 1 à 10 selon votre profil et rédigera un CV et une lettre de motivation adaptés aux offres que vous choisirez. Les inscriptions à l'accès anticipé sont ouvertes, avec des prix de lancement pour les 1 000 premiers inscrits.",
+        "button": "En savoir plus"
+      }
+    },
     "offer": {
       "title": "Conditions générales de vente — profil DISC détaillé",
       "description": "Conditions générales de vente du service payant « Profil DISC détaillé » sur disc-test.org : prix, paiement et envoi, remboursement, droits sur les contenus.",
