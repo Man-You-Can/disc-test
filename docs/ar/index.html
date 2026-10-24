@@ -345,6 +345,20 @@ p.xguar{flex:1 1 100%;margin:0;font-size:14px;font-weight:600;color:var(--ink)}
 [dir=rtl] .svcpick b::after{content:" \2190"}
 h2.svcpart{font-size:28px;margin-top:44px;padding-top:20px;border-top:1px solid var(--line);scroll-margin-top:16px}
 h3.svch3{margin-top:24px}
+/* третья карточка выбора — «Поиск работы» (сервис резюме, с 2026-10-24) */
+@media (min-width:641px){.svcpicks.three{grid-template-columns:repeat(3,1fr)}}
+.service p.svcplans{margin-top:8px;font-size:14px;color:var(--ink)}
+.service p.svcplans span{white-space:nowrap}
+/* блок-анонс сервиса «Резюме под каждую вакансию» (cvPromoHTML в src/intro.js): главная, экран результата, страницы профилей */
+.cvpromo{display:flex;flex-wrap:wrap;align-items:center;gap:14px 24px;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--s);border-radius:14px;padding:20px 24px;margin:30px 0}
+[dir=rtl] .cvpromo{border-left-width:1px;border-right:4px solid var(--s)}
+.cvpromo div{flex:1 1 320px}
+.cvpromo .cvtag{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--s);margin-bottom:6px}
+.cvpromo h2{margin:0 0 6px;font-size:22px}
+.cvpromo p{margin:0;color:var(--muted);font-size:15px}
+.cvpromo p.cvnote{margin-top:8px;font-size:14px;color:var(--ink);font-weight:500}
+.cvpromo .btn{flex:none}
+@media (max-width:480px){.cvpromo{padding:18px}.cvpromo .btn{flex:1 1 auto;text-align:center}}
 .service>.btn{flex:none}
 /* страница «Для организаций»: таблица пакетов и группа галочек в заявке */
 .cmp.packs{min-width:0}.cmp.packs th{white-space:normal}.cmp.packs td{white-space:nowrap}
@@ -867,6 +881,9 @@ function renderProgress(i){
 // Подвал сайта на экранах теста (блоки 1–24) скрыт, чтобы ссылки не уводили с теста; решение заказчика от 2026-10-21
 function hideProgress(){ progEl.hidden=true; metaEl.hidden=true; if(footEl){ footEl.hidden=false; footEl.classList.remove('short'); } }
 
+/* цели Метрики ссылок с data-goal на странице теста (анонс сервиса резюме: cv-promo-home, cv-promo-result); экран перерисовывается — слушаем документ */
+document.addEventListener('click', function(e){ var a = e.target && e.target.closest ? e.target.closest('a[data-goal]') : null; if(a && window.discTrack) window.discTrack(a.getAttribute('data-goal')); });
+
 /* ====== экран 1: вступление ====== */
 /* Разметка стартового экрана. Один и тот же код используют сборка (build.js кладёт готовый HTML
    в страницу, чтобы поисковики видели текст без JavaScript) и сама страница (перерисовка
@@ -907,8 +924,20 @@ function introHTML(c){
         return '<article class="stylecard" style="--k:'+colorVar(k)+'"><h3><span class="k">'+k+'</span>'+esc(L.keys[k])+' · '+esc(pr.name)+'</h3><p>'+esc(pr.summary)+'</p><div class="traits">'+st.traits.map(function(x){ return '<span>'+esc(x)+'</span>'; }).join('')+'</div>'+
           (links.profile ? '<a class="more" href="'+esc(links.profile(k))+'">'+t('pages.profile.more',{name:esc(pr.name)})+'</a>' : '')+'</article>'; }).join('')+
     '</div>'+(links.styles ? '<p class="all"><a href="'+esc(links.styles)+'">'+t('nav.styles')+' '+arr+'</a> · <a href="'+esc(links.profiles)+'">'+t('nav.profiles')+' '+arr+'</a></p>' : '')+'</section>'+
+    cvPromoHTML({P: L.content && L.content.cvPromo, esc: esc, href: links.cv, kind: 'home'})+
     subHTML(c)+
     homeHTML(c);
+}
+/* Блок-анонс сервиса «Резюме под каждую вакансию» (/ru/cv/, с 2026-10-24, по просьбе заказчика; сейчас только русская версия — content.cvPromo):
+   метка «Новый сервис», вопрос, короткий анонс и кнопка на лендинг. kind — место на сайте: home (главная), result (экран результата),
+   profile (страницы профилей); у каждого места свой вопрос и текст, клик по кнопке — цель Метрики cv-promo-<kind>.
+   Общий для сборки (главная, страницы профилей) и страницы теста (экран результата). Без текстов или адреса — пусто. */
+function cvPromoHTML(o){
+  var P=o.P, esc=o.esc, X=P && P[o.kind];
+  if(!X || !o.href) return '';
+  return '<aside class="cvpromo no-print"><div><span class="cvtag">'+esc(P.tag)+'</span><h2>'+esc(X.h)+'</h2><p>'+esc(X.p)+'</p>'+
+    (P.note ? '<p class="cvnote">'+esc(P.note)+'</p>' : '')+'</div>'+
+    '<a class="btn" href="'+esc(o.href)+'" data-goal="cv-promo-'+o.kind+'">'+esc(P.button)+'</a></aside>';
 }
 /* Подписка на рассылку (с 2026-10-22, по просьбе заказчика): поле e-mail, «Подписаться», галочки согласия на обработку данных (c.sub.pdHtml)
    и на рассылку. Собирает только сама страница (c.sub), в сборке формы нет. Подписка действует после подтверждения по ссылке из письма. */
@@ -960,7 +989,7 @@ function renderIntro(){
       pay: !!(PB.pay && PAY_ENDPOINT && typeof payForms === 'function'), retake:PM.homeRetake}; }catch(e){ lastCard = null; } }
   var nlOn = HOME_SUB && NEWSLETTER && !!SEND_ENDPOINT;
   view.innerHTML = introHTML({L:L, t:t, esc:esc, KEYS:KEYS, colorVar:colorVar, progDone:progDone, lastDate: last ? fmtDate(last.t) : '', lastCard:lastCard,
-    sub: nlOn ? {pdHtml: PD ? pdLabel(ROOT_REL+LANG_PATH[L.lang]) : '', email: (lsGet('disc.who')||{}).email || ''} : null, links:{styles: ROOT_REL+LANG_PATH[L.lang]+'styles/', profiles: ROOT_REL+LANG_PATH[L.lang]+'profiles/', pdf: ROOT_REL+LANG_PATH[L.lang]+'pdf/', results: ROOT_REL+LANG_PATH[L.lang]+'results/', faq: ROOT_REL+LANG_PATH[L.lang]+'faq/', profile: function(k){ return ROOT_REL+LANG_PATH[L.lang]+'profiles/'+k.toLowerCase()+'/'; }}});
+    sub: nlOn ? {pdHtml: PD ? pdLabel(ROOT_REL+LANG_PATH[L.lang]) : '', email: (lsGet('disc.who')||{}).email || ''} : null, links:{styles: ROOT_REL+LANG_PATH[L.lang]+'styles/', profiles: ROOT_REL+LANG_PATH[L.lang]+'profiles/', pdf: ROOT_REL+LANG_PATH[L.lang]+'pdf/', results: ROOT_REL+LANG_PATH[L.lang]+'results/', faq: ROOT_REL+LANG_PATH[L.lang]+'faq/', cv: ROOT_REL+LANG_PATH[L.lang]+'cv/', profile: function(k){ return ROOT_REL+LANG_PATH[L.lang]+'profiles/'+k.toLowerCase()+'/'; }}});
   // Тест начинается сразу, без регистрации: имя и e-mail участник по желанию вводит на экране результата
   function start(){
     S = {name:'', email:'', i:0, m:[], l:[]};
@@ -1242,6 +1271,8 @@ function renderReport(r, opts){
       '<div class="sec"><h3>'+t('report.stress')+'</h3><p>'+esc(st.stress)+'</p></div>'+
       '<div class="sec"><h3>'+t('report.environment')+'</h3><p>'+esc(st.environment)+'</p></div>'+
     '</div></div>'+
+    // анонс сервиса «Резюме под каждую вакансию» (content.cvPromo, с 2026-10-24) — после описания профиля; в панели администратора его нет
+    (opts.fromAdmin ? '' : cvPromoHTML({P: L.content && L.content.cvPromo, esc: esc, href: base+'cv/', kind: 'result'}))+
     '<div class="print-only printcta"><b>'+t('cta.title')+'</b><p>'+esc(t('cta.text'))+' <b>'+esc(homeURL)+'</b></p></div>'+
     '<p class="print-only printrights">'+esc(t('rights',{year:new Date().getFullYear()}))+'</p>'+
     (opts.own ?

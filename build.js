@@ -35,7 +35,7 @@ const siteUrl = cfg.siteUrl.replace(/\/+$/, '');
 const basePath = new URL(siteUrl + '/').pathname; // например "/disc-test/" или "/"
 const tpl = fs.readFileSync(path.join(SRC, 'template.html'), 'utf8');
 const introJs = fs.readFileSync(path.join(SRC, 'intro.js'), 'utf8');
-const introHTML = require(path.join(SRC, 'intro.js'));
+const introHTML = require(path.join(SRC, 'intro.js')), cvPromoHTML = introHTML.cvPromoHTML;
 const commonJs = fs.readFileSync(path.join(SRC, 'common.js'), 'utf8').replace(/\nif \(typeof module[^\n]*\n?$/, '\n');
 // Форма обратной связи: письма уходят на feedbackEmail через Apps Script; пустой адрес — страницы /contact/ и ссылки на неё нет
 const contactJs = fs.readFileSync(path.join(SRC, 'contact.js'), 'utf8').replace(/\nif \(typeof module[^\n]*\n?$/, '\n');
@@ -63,6 +63,8 @@ const servicePrices = { RUB: Number(cfg.servicePriceRub) || 0, USD: Number(cfg.s
 const fmtPrice = (L, v) => v ? new Intl.NumberFormat(L.dateLocale, Number.isInteger(v) ? {} : { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(v) : '';
 const servicePrice = L => fmtPrice(L, L.content.services ? servicePrices[L.content.services.currency] || 0 : 0);
 const hasServices = L => !!(servicePrice(L) && L.ui['nav.services']);
+// анонсы сервиса «Резюме под каждую вакансию» (content.cvPromo, с 2026-10-24): только там, где есть сам лендинг /<язык>/cv/ (content.cv и форма заявки)
+const hasCvPromo = L => !!(L.content.cvPromo && L.content.cv && feedbackEmail);
 const hasOffer = L => !!(hasServices(L) && L.content.offer && L.content.refund && L.ui['nav.offer']);
 // Расширенный отчёт: страница /extended-report/ и блок на экране результата — в языках, где есть content.product и оферта.
 // Листы образца — картинки src/assets/extended/<язык>-i-<n>.webp (с уменьшенной копией -s) и подписи к ним в локали (sampleAlt, sampleCaption,
@@ -343,7 +345,7 @@ const homeLocale = L => Object.assign({}, L, {
   ui: Object.assign(Object.fromEntries(Object.entries(L.ui).filter(([k]) => !k.startsWith('pd.') || (pdOn && !k.startsWith('pd.cookie')))), noticeUi(L)),
   profiles: Object.fromEntries(Object.entries(L.profiles).map(([k, p]) => [k, { name: p.name, summary: p.summary }])),
   // product — тексты блока «Расширенный отчёт» на экране результата (цена уже подставлена); страница отчёта в скрипт не идёт
-  content: Object.assign({ home: L.content.home },
+  content: Object.assign({ home: L.content.home }, hasCvPromo(L) ? { cvPromo: L.content.cvPromo } : {},
     hasProduct(L) ? { product: Object.assign(withPrice(L, L.content.product.block), hasSamples(L) ? {} : { sample: '' },
       L.content.product.promo ? { promo: withPrice(L, L.content.product.promo) } : {}, homePay(L) ? { pay: homePay(L) } : {}) } : {})
 });
@@ -377,7 +379,8 @@ for (const L of locales) {
   const navHtml = navItems(L).map(([k, sub]) => `<a href="${rootRel + pathOf(L.lang) + sub}"${sub === '' ? ' aria-current="page"' : ''}>${esc(L.ui[k])}</a>`).join('');
   const footHtml = footLinks(L, rootRel + pathOf(L.lang)), footShortHtml = footShort(L, rootRel + pathOf(L.lang));
   const introBuilt = introHTML({ L, t: tFor(L), esc: escFull, KEYS, colorVar: k => 'var(--' + k.toLowerCase() + ')', progDone: 0, lastDate: '',
-    links: { styles: rootRel + pathOf(L.lang) + 'styles/', profiles: rootRel + pathOf(L.lang) + 'profiles/', pdf: rootRel + pathOf(L.lang) + 'pdf/', results: rootRel + pathOf(L.lang) + 'results/', faq: rootRel + pathOf(L.lang) + 'faq/', profile: k => rootRel + pathOf(L.lang) + 'profiles/' + k.toLowerCase() + '/' } });
+    links: { styles: rootRel + pathOf(L.lang) + 'styles/', profiles: rootRel + pathOf(L.lang) + 'profiles/', pdf: rootRel + pathOf(L.lang) + 'pdf/', results: rootRel + pathOf(L.lang) + 'results/', faq: rootRel + pathOf(L.lang) + 'faq/', profile: k => rootRel + pathOf(L.lang) + 'profiles/' + k.toLowerCase() + '/',
+      cv: hasCvPromo(L) ? rootRel + pathOf(L.lang) + 'cv/' : '' } });
   pages.push({ lang: L.lang, sub: '', date: contentDate(L.lang + ':', [L.title, L.description, introBuilt.split(rootRel + pathOf(L.lang)).join('~/')].join('\n'), [`src/locales/${L.lang}.json`, 'src/template.html', 'src/intro.js']) });
   const chevron = `<svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5l3.5 3.5 3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
   const switcher = `<div class="langsel" id="langSel">` +
@@ -559,6 +562,8 @@ for (const L of locales) {
         `<a class="more" href="${b}styles/#${k.toLowerCase()}">${escFull(t('pages.profile.styleMore', { name: L.keys[k], key: k }))} ${arrow(L)}</a></div>`).join('') + `</div>` +
       (dp ? `<h2>${escFull(t('pages.profile.work', { name: pr.name }))}</h2><p>${escFull(dp.work)}</p>` : '') +
       `<h2>${t('pages.profile.careers')}</h2>${ul(pr.careers)}` +
+      // анонс сервиса резюме — сразу после подходящих профессий (с 2026-10-24, где есть content.cvPromo)
+      (hasCvPromo(L) ? cvPromoHTML({ P: L.content.cvPromo, esc: escFull, href: b + 'cv/', kind: 'profile' }) : '') +
       `<h2>${t('pages.profile.team')}</h2><p>${escFull(pr.team)}</p>` +
       (dp ? `<h2>${escFull(t('pages.profile.lead', { name: pr.name }))}</h2><p>${escFull(dp.lead)}</p>` +
         `<h2>${t('pages.profile.managed')}</h2><p>${escFull(dp.managed)}</p>` +
@@ -724,7 +729,8 @@ for (const L of locales) {
   // /cv/ — лендинг сервиса «Резюме под каждую вакансию» (с 2026-10-22, решение заказчика; первая редакция того же дня продавала ручную услугу в Telegram):
   // заявка на ранний доступ, первым 1000 — скидка 50%, оплаты на странице нет. Две одинаковые формы (первый экран и конец страницы, src/cv.js) →
   // форма обратной связи сервера, тема «Заявка на ранний доступ к сервису CV». Только там, где в локали есть content.cv (сейчас русская версия).
-  // Ссылка только прямая: ни в меню, ни в подвале, ни на экране результата её нет; noindex, в sitemap не входит
+  // С 2026-10-24 (по просьбе заказчика) на лендинг ведут блоки-анонсы content.cvPromo: главная, экран результата, страницы профилей и «Услуги»
+  // (раздел «Поиск работы»); в меню и подвале ссылки нет; noindex, в sitemap не входит
   if (C.cv && feedbackEmail) {
     const V = C.cv, F = V.form, A = V.author, D = V.demo, K = ['--d', '--i', '--s', '--c'];
     const fill = str => escFull(str).replace(/\{email\}/g, `<a href="mailto:${escFull(feedbackEmail)}">${escFull(feedbackEmail)}</a>`);
@@ -889,14 +895,26 @@ for (const L of locales) {
       docs ? { inn: legalInn, seller: escFull(of.seller.replace('{inn}', legalInn)), offer: link('offer/', of.linkText), refund: link('refund/', rf.linkText) } : {});
     const fillHtml = html => html.replace(/\{(\w+)\}/g, (m, k) => k in vars ? vars[k] : m);
     const svcCrumb = { name: t('nav.services'), href: '../services/', sub: 'services/' }, docLink = (sub2, d) => `<a href="../${sub2}">${escFull(d.h1)} ${arrow(L)}</a>`;
+    // раздел «Поиск работы» (cvPart ниже)
+    const CP = hasCvPromo(L) ? C.cvPromo.services : null, cvPlans = CP ? C.cv.plans : [], cvFrom = CP ? CP.price.replace('{price}', cvPlans[0].price) : '';
     writeContentPage(L, 'services/', { navKey: 'nav.services', langs: locales.filter(hasServices), title: fill(sv.title), description: fill(sv.description), crumbs: [{ name: t('nav.services') }],
       content: hasBusiness(L) ? servicesSplit() : fillHtml(`<div class="eyebrow">DISC</div><h1>${escFull(sv.h1)}</h1><p class="lead">${escFull(sv.lead)}</p>` + personCard() +
-        sectionsHtml(sv.sections.slice(0, 1)) + (docs && sv.docs ? `<p>${escFull(sv.docs)}</p>` : '') + sectionsHtml(sv.sections.slice(1))) +
+        sectionsHtml(sv.sections.slice(0, 1)) + (docs && sv.docs ? `<p>${escFull(sv.docs)}</p>` : '') + sectionsHtml(sv.sections.slice(1)) + cvPart()) +
         (docs ? `<p class="seealso">${docLink('offer/', of)} · ${docLink('refund/', rf)}</p>` : '') });
     // карточка расширенного отчёта для физических лиц: название, описание, ссылка на страницу отчёта, цена
     function personCard() {
       return `<section class="service"><div><h2>${escFull(sv.name)}</h2><p>${escFull(sv.text)}</p>` + (hasProduct(L) ? `<p><a class="more" href="../extended-report/">${escFull(C.product.more)} ${arrow(L)}</a></p>` : '') +
         `</div><p class="price"><small>${escFull(sv.priceLabel)}</small>${escFull(sv.price)}</p></section>`;
+    }
+    // сервис «Резюме под каждую вакансию» (с 2026-10-24, по просьбе заказчика; где есть content.cvPromo): раздел «Поиск работы» с карточкой —
+    // название, анонс, тарифы и цены (из content.cv.plans лендинга, чтобы не расходились), кнопка на лендинг (цель Метрики cv-promo-services)
+    function cvPart() {
+      if (!CP) return '';
+      const plansLine = cvPlans.map(p => `<span>${escFull(`${p.name} — ${/^0\D/.test(p.price) ? p.per : p.price + ' ' + p.per}`)}</span>`).join(' · ');
+      return `<h2 class="svcpart" id="cv">${escFull(CP.part)}</h2>` +
+        `<section class="service"><div><h2>${escFull(CP.name)}</h2><p>${escFull(CP.text)}</p><p class="svcplans">${plansLine}</p></div>` +
+        `<p class="price"><small>${escFull(sv.priceLabel)}</small>${escFull(cvFrom)}</p>` +
+        `<a class="btn" href="../cv/" data-goal="cv-promo-services">${escFull(CP.button)}</a></section>`;
     }
     // «Услуги» там, где есть страница «Для организаций» (с 2026-10-22, по просьбе заказчика; сейчас русская версия): сверху выбор из двух карточек
     // («Для физических лиц» → #person, «Для организаций» → #org), затем два раздела со своими карточками и ценами; подразделы о физических лицах —
@@ -908,9 +926,10 @@ for (const L of locales) {
       const h3 = secs => sectionsHtml(secs).replace(/<h2>/g, '<h3 class="svch3">').replace(/<\/h2>/g, '</h3>');
       const pick = (id, title, text, price) => `<a class="svcpick" href="#${id}"><strong>${escFull(title)}</strong><span>${escFull(text)}</span><b>${escFull(price)}</b></a>`;
       return fillHtml(`<div class="eyebrow">DISC</div><h1>${escFull(sv.h1)}</h1><p class="lead">${escFull(sv.lead)}</p>` +
-        `<nav class="svcpicks" aria-label="${escFull(sv.h1)}">` + pick('person', S.person, S.personPick, sv.price) + pick('org', S.org, S.orgPick, fillS(S.orgPrice)) + `</nav>` +
+        `<nav class="svcpicks${CP ? ' three' : ''}" aria-label="${escFull(sv.h1)}">` + pick('person', S.person, S.personPick, sv.price) +
+          (CP ? pick('cv', CP.part, CP.pick, cvFrom) : '') + pick('org', S.org, S.orgPick, fillS(S.orgPrice)) + `</nav>` +
         `<h2 class="svcpart" id="person">${escFull(S.person)}</h2>` + personCard() +
-        h3(sv.sections.slice(0, 1)) + (docs && sv.docs ? `<p>${escFull(sv.docs)}</p>` : '') + h3(sv.sections.slice(1, -1)) +
+        h3(sv.sections.slice(0, 1)) + (docs && sv.docs ? `<p>${escFull(sv.docs)}</p>` : '') + h3(sv.sections.slice(1, -1)) + cvPart() +
         `<h2 class="svcpart" id="org">${escFull(S.org)}</h2>` +
         `<section class="service"><div><h2>${escFull(S.orgName)}</h2><p>${escFull(fillS(S.orgText))}</p></div>` +
         `<p class="price"><small>${escFull(S.orgPriceLabel)}</small>${escFull(fillS(S.orgPrice))}</p>` +

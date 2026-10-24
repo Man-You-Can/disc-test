@@ -307,6 +307,20 @@ p.xguar{flex:1 1 100%;margin:0;font-size:14px;font-weight:600;color:var(--ink)}
 [dir=rtl] .svcpick b::after{content:" \2190"}
 h2.svcpart{font-size:28px;margin-top:44px;padding-top:20px;border-top:1px solid var(--line);scroll-margin-top:16px}
 h3.svch3{margin-top:24px}
+/* третья карточка выбора — «Поиск работы» (сервис резюме, с 2026-10-24) */
+@media (min-width:641px){.svcpicks.three{grid-template-columns:repeat(3,1fr)}}
+.service p.svcplans{margin-top:8px;font-size:14px;color:var(--ink)}
+.service p.svcplans span{white-space:nowrap}
+/* блок-анонс сервиса «Резюме под каждую вакансию» (cvPromoHTML в src/intro.js): главная, экран результата, страницы профилей */
+.cvpromo{display:flex;flex-wrap:wrap;align-items:center;gap:14px 24px;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--s);border-radius:14px;padding:20px 24px;margin:30px 0}
+[dir=rtl] .cvpromo{border-left-width:1px;border-right:4px solid var(--s)}
+.cvpromo div{flex:1 1 320px}
+.cvpromo .cvtag{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--s);margin-bottom:6px}
+.cvpromo h2{margin:0 0 6px;font-size:22px}
+.cvpromo p{margin:0;color:var(--muted);font-size:15px}
+.cvpromo p.cvnote{margin-top:8px;font-size:14px;color:var(--ink);font-weight:500}
+.cvpromo .btn{flex:none}
+@media (max-width:480px){.cvpromo{padding:18px}.cvpromo .btn{flex:1 1 auto;text-align:center}}
 .service>.btn{flex:none}
 /* страница «Для организаций»: таблица пакетов и группа галочек в заявке */
 .cmp.packs{min-width:0}.cmp.packs th{white-space:normal}.cmp.packs td{white-space:nowrap}

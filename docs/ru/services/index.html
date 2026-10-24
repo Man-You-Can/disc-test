@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Услуги — расширенная версия DISC</title>
-<meta name="description" content="Платная услуга сайта disc-test.org: расширенная версия DISC — 790 ₽. Тест и результат остаются бесплатными.">
+<title>Услуги — расширенная версия DISC и резюме под вакансию</title>
+<meta name="description" content="Платные услуги сайта disc-test.org: расширенная версия DISC за 790 ₽ и сервис «Резюме под каждую вакансию». Тест и результат остаются бесплатными.">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="google-site-verification" content="q9-P14KEm3Bl0iw-lP3zITeLv0EESmjJcPRee30aAsw">
 <meta name="yandex-verification" content="028b85ace16c85fc">
@@ -13,8 +13,8 @@
 <script>window.DISC_VISIT={"url":"https://api.disc-test.org/","token":"kR7UiShTyG7Wws7t16NkgKN3","host":"disc-test.org"};</script>
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Тест DISC">
-<meta property="og:title" content="Услуги — расширенная версия DISC">
-<meta property="og:description" content="Платная услуга сайта disc-test.org: расширенная версия DISC — 790 ₽. Тест и результат остаются бесплатными.">
+<meta property="og:title" content="Услуги — расширенная версия DISC и резюме под вакансию">
+<meta property="og:description" content="Платные услуги сайта disc-test.org: расширенная версия DISC за 790 ₽ и сервис «Резюме под каждую вакансию». Тест и результат остаются бесплатными.">
 <meta property="og:url" content="https://disc-test.org/ru/services/">
 <meta property="og:locale" content="ru_RU">
 <meta property="og:locale:alternate" content="en_US">
@@ -33,7 +33,7 @@
 <meta property="og:image" content="https://disc-test.org/og/ru.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Услуги — расширенная версия DISC">
+<meta property="og:image:alt" content="Услуги — расширенная версия DISC и резюме под вакансию">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://disc-test.org/og/ru.png">
 <meta name="theme-color" content="#F3F4F6" media="(prefers-color-scheme: light)">
@@ -61,7 +61,7 @@
 <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../../apple-touch-icon.png">
 <link rel="manifest" href="../../manifest.webmanifest">
-<script type="application/ld+json">[{"@context":"https://schema.org","@type":"WebPage","name":"Услуги — расширенная версия DISC","description":"Платная услуга сайта disc-test.org: расширенная версия DISC — 790 ₽. Тест и результат остаются бесплатными.","url":"https://disc-test.org/ru/services/","inLanguage":"ru","isPartOf":{"@type":"WebSite","name":"DISC Test","url":"https://disc-test.org/"}},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Главная","item":"https://disc-test.org/ru/"},{"@type":"ListItem","position":2,"name":"Услуги","item":"https://disc-test.org/ru/services/"}]}]</script>
+<script type="application/ld+json">[{"@context":"https://schema.org","@type":"WebPage","name":"Услуги — расширенная версия DISC и резюме под вакансию","description":"Платные услуги сайта disc-test.org: расширенная версия DISC за 790 ₽ и сервис «Резюме под каждую вакансию». Тест и результат остаются бесплатными.","url":"https://disc-test.org/ru/services/","inLanguage":"ru","isPartOf":{"@type":"WebSite","name":"DISC Test","url":"https://disc-test.org/"}},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Главная","item":"https://disc-test.org/ru/"},{"@type":"ListItem","position":2,"name":"Услуги","item":"https://disc-test.org/ru/services/"}]}]</script>
 <link rel="preload" href="/fonts/golos-text-400-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/unbounded-500-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <style>@font-face{font-family:'Unbounded';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/unbounded-400-cyrillic-ext.woff2) format('woff2');unicode-range:U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F}
@@ -337,6 +337,20 @@ p.xguar{flex:1 1 100%;margin:0;font-size:14px;font-weight:600;color:var(--ink)}
 [dir=rtl] .svcpick b::after{content:" \2190"}
 h2.svcpart{font-size:28px;margin-top:44px;padding-top:20px;border-top:1px solid var(--line);scroll-margin-top:16px}
 h3.svch3{margin-top:24px}
+/* третья карточка выбора — «Поиск работы» (сервис резюме, с 2026-10-24) */
+@media (min-width:641px){.svcpicks.three{grid-template-columns:repeat(3,1fr)}}
+.service p.svcplans{margin-top:8px;font-size:14px;color:var(--ink)}
+.service p.svcplans span{white-space:nowrap}
+/* блок-анонс сервиса «Резюме под каждую вакансию» (cvPromoHTML в src/intro.js): главная, экран результата, страницы профилей */
+.cvpromo{display:flex;flex-wrap:wrap;align-items:center;gap:14px 24px;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--s);border-radius:14px;padding:20px 24px;margin:30px 0}
+[dir=rtl] .cvpromo{border-left-width:1px;border-right:4px solid var(--s)}
+.cvpromo div{flex:1 1 320px}
+.cvpromo .cvtag{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--s);margin-bottom:6px}
+.cvpromo h2{margin:0 0 6px;font-size:22px}
+.cvpromo p{margin:0;color:var(--muted);font-size:15px}
+.cvpromo p.cvnote{margin-top:8px;font-size:14px;color:var(--ink);font-weight:500}
+.cvpromo .btn{flex:none}
+@media (max-width:480px){.cvpromo{padding:18px}.cvpromo .btn{flex:1 1 auto;text-align:center}}
 .service>.btn{flex:none}
 /* страница «Для организаций»: таблица пакетов и группа галочек в заявке */
 .cmp.packs{min-width:0}.cmp.packs th{white-space:normal}.cmp.packs td{white-space:nowrap}
@@ -727,7 +741,7 @@ body.has-consent{padding-bottom:160px}
   </header>
   <nav class="sitenav no-print"><a href="../../ru/">Тест</a><a href="../../ru/disc/">Что такое DISC</a><a href="../../ru/styles/">Четыре стиля</a><a href="../../ru/profiles/">16 профилей</a><a href="../../ru/results/">Расшифровка результатов</a><a href="../../ru/compatibility/">Совместимость стилей</a><a href="../../ru/faq/">Вопросы и ответы</a><a href="../../ru/how-reports-are-made/">Как готовятся отчёты</a><a href="../../ru/services/" aria-current="page">Услуги</a><a href="../../ru/contact/">Обратная связь</a></nav>
   <nav class="crumbs"><a href="../../ru/">Главная</a><span>›</span><span aria-current="page">Услуги</span></nav>
-  <main class="content"><div class="eyebrow">DISC</div><h1>Услуги</h1><p class="lead">Тест DISC и его результат на сайте бесплатны. Для тех, кому нужен более подробный разбор, на сайте доступна платная расширенная версия.</p><nav class="svcpicks" aria-label="Услуги"><a class="svcpick" href="#person"><strong>Для физических лиц</strong><span>Расширенный отчёт по вашему результату теста</span><b>790 ₽</b></a><a class="svcpick" href="#org"><strong>Для организаций</strong><span>Расширенные отчёты для сотрудников, клиентов и слушателей — пакетом, по счёту</span><b>от 390 ₽ за отчёт</b></a></nav><h2 class="svcpart" id="person">Для физических лиц</h2><section class="service"><div><h2>Расширенная версия DISC</h2><p>Более подробный разбор вашего профиля DISC по итогам теста. Расширенная версия доступна пользователям, оплатившим услугу.</p><p><a class="more" href="../extended-report/">Что входит в расширенный отчёт →</a></p></div><p class="price"><small>Стоимость</small>790 ₽</p></section><h3 class="svch3">Как получить</h3><p>Расширенная версия приходит письмом на e-mail, указанный при оплате, сразу после оплаты.</p><p>Услуга оказывается на условиях <a href="../offer/">публичной оферты</a>; случаи и порядок возврата денег описаны в <a href="../refund/">условиях возврата</a>.</p><h3 class="svch3">Что остаётся бесплатным</h3><p>Сам тест, результат на экране и краткий отчёт в PDF, страницы шестнадцати профилей и печатная версия теста в PDF остаются бесплатными и не требуют регистрации. Расширенная версия приобретается только по желанию.</p><h2 class="svcpart" id="org">Для организаций</h2><section class="service"><div><h2>Пакеты расширенных отчётов</h2><p>Для HR, кадровых агентств, корпоративных университетов, тренеров и коучей. Вы покупаете коды доступа и раздаёте их людям: каждый проходит тест и получает свой отчёт на e-mail. Оплата по счёту, скидка до 50 %.</p></div><p class="price"><small>Стоимость</small>от 390 ₽ за отчёт</p><a class="btn" href="../business/">Подробнее и заявка</a></section><h2>Вопросы об услуге</h2><p>Если у вас есть вопрос о расширенной версии или об оплате, напишите нам через форму «<a href="../contact/">Обратная связь</a>» — ответ придёт на указанный e-mail. Реквизиты владельца сайта указаны внизу каждой страницы.</p><p class="seealso"><a href="../business/">DISC для организаций →</a> · <a href="../offer/">Публичная оферта →</a> · <a href="../refund/">Условия возврата →</a></p><p class="updated"><time datetime="2026-10-22">Обновлено 22 октября 2026 г.</time></p></main>
+  <main class="content"><div class="eyebrow">DISC</div><h1>Услуги</h1><p class="lead">Тест DISC и его результат на сайте бесплатны. Для тех, кому нужен более подробный разбор, на сайте доступна платная расширенная версия, а тем, кто ищет работу, поможет наш сервис «Резюме под каждую вакансию».</p><nav class="svcpicks three" aria-label="Услуги"><a class="svcpick" href="#person"><strong>Для физических лиц</strong><span>Расширенный отчёт по вашему результату теста</span><b>790 ₽</b></a><a class="svcpick" href="#cv"><strong>Поиск работы</strong><span>Резюме и сопроводительное письмо под каждую вакансию</span><b>от 0 ₽</b></a><a class="svcpick" href="#org"><strong>Для организаций</strong><span>Расширенные отчёты для сотрудников, клиентов и слушателей — пакетом, по счёту</span><b>от 390 ₽ за отчёт</b></a></nav><h2 class="svcpart" id="person">Для физических лиц</h2><section class="service"><div><h2>Расширенная версия DISC</h2><p>Более подробный разбор вашего профиля DISC по итогам теста. Расширенная версия доступна пользователям, оплатившим услугу.</p><p><a class="more" href="../extended-report/">Что входит в расширенный отчёт →</a></p></div><p class="price"><small>Стоимость</small>790 ₽</p></section><h3 class="svch3">Как получить</h3><p>Расширенная версия приходит письмом на e-mail, указанный при оплате, сразу после оплаты.</p><p>Услуга оказывается на условиях <a href="../offer/">публичной оферты</a>; случаи и порядок возврата денег описаны в <a href="../refund/">условиях возврата</a>.</p><h3 class="svch3">Что остаётся бесплатным</h3><p>Сам тест, результат на экране и краткий отчёт в PDF, страницы шестнадцати профилей и печатная версия теста в PDF остаются бесплатными и не требуют регистрации. Расширенная версия приобретается только по желанию.</p><h2 class="svcpart" id="cv">Поиск работы</h2><section class="service"><div><h2>Резюме под каждую вакансию</h2><p>Сервис на основе ИИ собирает весь ваш опыт (старые резюме, должностные инструкции, профили в LinkedIn и hh) в единое резюме, по шкале от 1 до 10 оценивает, насколько вам подходит вакансия, и готовит под выбранные вакансии профильное резюме и сопроводительное письмо. Сейчас открыт ранний доступ: первой 1000 участников скидка 50%.</p><p class="svcplans"><span>Junior — бесплатно</span> · <span>Middle — 2 499 ₽ в месяц</span> · <span>Senior — 4 999 ₽ в месяц</span></p></div><p class="price"><small>Стоимость</small>от 0 ₽</p><a class="btn" href="../cv/" data-goal="cv-promo-services">Подробнее о сервисе</a></section><h2 class="svcpart" id="org">Для организаций</h2><section class="service"><div><h2>Пакеты расширенных отчётов</h2><p>Для HR, кадровых агентств, корпоративных университетов, тренеров и коучей. Вы покупаете коды доступа и раздаёте их людям: каждый проходит тест и получает свой отчёт на e-mail. Оплата по счёту, скидка до 50 %.</p></div><p class="price"><small>Стоимость</small>от 390 ₽ за отчёт</p><a class="btn" href="../business/">Подробнее и заявка</a></section><h2>Вопросы об услуге</h2><p>Если у вас есть вопрос о расширенной версии или об оплате, напишите нам через форму «<a href="../contact/">Обратная связь</a>» — ответ придёт на указанный e-mail. Реквизиты владельца сайта указаны внизу каждой страницы.</p><p class="seealso"><a href="../business/">DISC для организаций →</a> · <a href="../offer/">Публичная оферта →</a> · <a href="../refund/">Условия возврата →</a></p><p class="updated"><time datetime="2026-10-24">Обновлено 24 октября 2026 г.</time></p></main>
   <footer class="foot">
     <div class="row2"><span>24 блока · около 10 минут · нет правильных и неправильных ответов</span><span class="footlinks"><a href="../../ru/about/">О проекте</a> · <a href="../../ru/services/">Услуги</a> · <a href="../../ru/business/">Для организаций</a> · <a href="../../ru/offer/">Оферта</a> · <a href="../../ru/contact/">Обратная связь</a> · <a href="../../ru/privacy/">Конфиденциальность</a></span></div>
     <nav class="materials" aria-label="Материалы о DISC"><span class="mlabel">Материалы о DISC</span><a href="../../ru/disc/">Что такое DISC</a><a href="../../ru/styles/">Четыре стиля</a><a href="../../ru/profiles/">16 профилей</a><a href="../../ru/results/">Расшифровка результатов</a><a href="../../ru/compatibility/">Совместимость стилей</a><a href="../../ru/colors/">DISC по цветам</a><a href="../../ru/teams/">DISC для команды</a><a href="../../ru/disc-vs-mbti/">DISC и MBTI</a><a href="../../ru/pdf/">Тест в PDF</a><a href="../../ru/faq/">Вопросы и ответы</a></nav>

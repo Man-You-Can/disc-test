@@ -20,7 +20,9 @@ const OPTIONAL = ['.content.policy.legal', '.content.extendedMail', '.content.pr
   // пункты оферты и абзац политики о кодах — там, где коды есть (решение заказчика от 2026-10-22: пока только русская версия)
   '.content.offer.codeTerms', '.content.policy.purchaseCode',
   // лендинг «CV и сопроводительное письмо под каждую вакансию» (/ru/cv/, с 2026-10-22, решение заказчика): только русская версия, ссылка только прямая
-  '.content.cv'];
+  '.content.cv',
+  // анонсы этого сервиса на сайте (главная, экран результата, профили, «Услуги»; с 2026-10-24, по просьбе заказчика) — только вместе с лендингом
+  '.content.cvPromo'];
 // специальная цена на час после теста (product.pay.offer; offerPriceRub, offerPriceUsd в site.config.json; с 2026-10-22) обязательна вместе с product.pay:
 // её тексты сравниваются с ru.json как часть pay
 // Страница «Как готовятся отчёты» (content.howMade) и её пункт в шапке (ui["nav.howMade"]) обязательны во всех языках (с 2026-10-14).
@@ -67,6 +69,7 @@ for (const f of files) {
   // Правило заказчика от 2026-10-14: всё, что сделано для продажи в русской версии, применяется в языке вместе с покупкой
   if (P.pay && !P.promo) errs.push('.content.product.promo: missing — the report is on sale in this language, so everything done for sales in the Russian version applies here (CLAUDE.md)');
   // «Для организаций»: страница и пункт в подвале — вместе; продаются коды доступа, поэтому нужны поле кода в покупке и письмо по коду
+  if (C.cvPromo && !C.cv) errs.push('.content.cvPromo: needs .content.cv (the blocks link to the /cv/ landing)');
   if (!!C.business !== !!(j.ui && j.ui['nav.business'])) errs.push('.content.business and .ui["nav.business"] must come together');
   if (C.business && !(P.pay && P.pay.code)) errs.push('.content.business: needs .content.product.pay.code (people redeem the codes in the purchase form)');
   if (P.pay && P.pay.code && !(C.extendedMail && C.extendedMail.codeIntro && C.extendedMail.codeFooter)) errs.push('.content.product.pay.code: needs .content.extendedMail.codeIntro and codeFooter');
