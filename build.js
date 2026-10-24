@@ -730,7 +730,7 @@ for (const L of locales) {
   // заявка на ранний доступ, первым 1000 — скидка 50%, оплаты на странице нет. Две одинаковые формы (первый экран и конец страницы, src/cv.js) →
   // форма обратной связи сервера, тема «Заявка на ранний доступ к сервису CV». Только там, где в локали есть content.cv (сейчас русская версия).
   // С 2026-10-24 (по просьбе заказчика) на лендинг ведут блоки-анонсы content.cvPromo: главная, экран результата, страницы профилей и «Услуги»
-  // (раздел «Поиск работы»); в меню и подвале ссылки нет; noindex, в sitemap не входит
+  // (раздел «Поиск работы»); в меню и подвале ссылки нет. С 2026-10-24 (решение заказчика) открыта для поисковиков и входит в sitemap
   if (C.cv && feedbackEmail) {
     const V = C.cv, F = V.form, A = V.author, D = V.demo, K = ['--d', '--i', '--s', '--c'];
     const fill = str => escFull(str).replace(/\{email\}/g, `<a href="mailto:${escFull(feedbackEmail)}">${escFull(feedbackEmail)}</a>`);
@@ -838,7 +838,7 @@ for (const L of locales) {
         `<div class="cvtabs cvtabs-end" role="group" aria-label="${escFull(X.title)}">` +
         X.tabs.map((tb, i) => `<button type="button" data-i="${i}" aria-controls="cvp${i}" aria-pressed="${i === 0}"><span>${i + 1}</span>${escFull(tb)}</button>`).join('') + `</div>` +
       `</div><p class="cvsub small">${escFull(X.note)}</p></section>` : '';
-    writeContentPage(L, 'cv/', { bare: true, noindex: true, noDate: true, langs: locales.filter(x => x.content.cv), css: cvCss, title: V.title, description: V.description,
+    writeContentPage(L, 'cv/', { bare: true, noDate: true, langs: locales.filter(x => x.content.cv), css: cvCss, title: V.title, description: V.description,
       crumbs: [{ name: V.h1 }], ldExtra: [ldFaq], files: ['src/cv.js', 'src/cv.css'],
       content: `<div class="cvpage">` +
         `<section class="cvhero"><div class="cvhero-text"><p class="cvbadge">${escFull(V.badge)}</p><h1>${escFull(V.h1)}</h1><p class="lead">${escFull(V.lead)}</p>` +
