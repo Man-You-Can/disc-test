@@ -794,6 +794,948 @@
         }
       ]
     },
+    "cv": {
+      "title": "Lebenslauf und Anschreiben mit KI – passend zu jeder Stelle · Early Access",
+      "description": "Bald verfügbar: ein geprüfter Master-Lebenslauf aus Ihrer gesamten Berufserfahrung, für jede Stelle eine objektive Bewertung der Passung von 1 bis 10 sowie ein passender Lebenslauf und ein Anschreiben – ausschließlich auf Basis Ihres tatsächlichen Werdegangs. Jetzt vormerken: Sonderpreise für die ersten 1.000 Anmeldungen.",
+      "badge": "Early Access · Sonderpreise für die ersten 1.000",
+      "h1": "Für jede Stelle der passende Lebenslauf – in wenigen Minuten",
+      "lead": "Sie laden einmal alle Ihre Lebensläufe hoch – alte wie aktuelle –, dazu Ihre Arbeitszeugnisse und Ihr XING- oder LinkedIn-Profil. Daraus erstellen wir einen geprüften Master-Lebenslauf, bewerten für jede Stelle die Passung von 1 bis 10 und schreiben für die Stellen Ihrer Wahl einen passenden Lebenslauf und ein Anschreiben.",
+      "heroPoints": [
+        "Ein passender Lebenslauf für jede Stelle",
+        "Das passende Anschreiben dazu",
+        "Eine Bewertung der Passung von 1 bis 10",
+        "Auf Deutsch, Englisch und in weiteren Sprachen"
+      ],
+      "formTitle": "Sichern Sie sich die Sonderpreise",
+      "formLead": "Tragen Sie Ihren Namen und Ihre E-Mail-Adresse ein – wir benachrichtigen Sie, sobald der Early Access beginnt. Die ersten 1.000 Anmeldungen erhalten den Professional-Tarif für 49 € statt 100 € und den Senior-Tarif für 99 € statt 200 € pro Monat.",
+      "formNote": "Kostenlos und unverbindlich – keine Kreditkarte nötig.",
+      "button": "Platz sichern",
+      "floatButton": "Platz sichern",
+      "floatClose": "Ausblenden",
+      "painTitle": "Warum Ihre Bewerbungen ohne Antwort bleiben",
+      "pain": [
+        {
+          "h": "Ein Lebenslauf für alle Stellen",
+          "p": "Recruiter und Bewerbermanagementsysteme (ATS) suchen in Ihrem Lebenslauf genau das, was diese eine Stelle verlangt. Finden sie es nicht, wird Ihre Bewerbung aussortiert."
+        },
+        {
+          "h": "Viele Versionen, widersprüchliche Angaben",
+          "p": "Über die Jahre entstehen viele Versionen Ihres Lebenslaufs – mit Zeiträumen, Positionsbezeichnungen und Ergebnissen, die nicht zusammenpassen. Recruiter gleichen Ihren Lebenslauf mit Ihrem XING- oder LinkedIn-Profil ab und sehen die Widersprüche sofort."
+        },
+        {
+          "h": "Jede Bewerbung anzupassen kostet Stunden",
+          "p": "Lebenslauf und Anschreiben für jede einzelne Stelle umzuschreiben, ist mühsam. Deshalb verschicken die meisten Bewerber überall dieselben Unterlagen."
+        }
+      ],
+      "demo": {
+        "label": "Beispiel: Bewertung einer Stelle",
+        "role": "Head of E-⁠Commerce (m/w/d)",
+        "company": "Lebensmittelhändler mit bundesweitem Filialnetz · Hamburg",
+        "score": "7",
+        "scoreOf": "von 10",
+        "scoreLabel": "Passung",
+        "scoreNote": "Die Passung von 1 bis 10 zeigt, wie gut die Erfahrung der Kandidatin zu den Anforderungen der Stelle passt – und wie gut die Stelle zu ihren Suchkriterien passt.",
+        "rows": [
+          {
+            "t": "Marktplätze und eigener Onlineshop",
+            "s": "yes",
+            "v": "Passt"
+          },
+          {
+            "t": "Team ab 15 Personen",
+            "s": "yes",
+            "v": "Passt"
+          },
+          {
+            "t": "Unit Economics (CAC, LTV)",
+            "s": "part",
+            "v": "Teilweise"
+          },
+          {
+            "t": "Erfahrung im Lebensmittelhandel",
+            "s": "no",
+            "v": "Passt nicht"
+          }
+        ],
+        "verdictTitle": "Unsere Einschätzung",
+        "verdict": "Im Lebenslauf stellen wir das Wachstum des Online-Umsatzes und den Aufbau des Marktplatzvertriebs nach vorn. Zahlen zu CAC und LTV erfinden wir nicht – wir fragen die Kandidatin zuerst nach den tatsächlichen Werten.",
+        "verdictTag": "Bewerbung empfohlen",
+        "fileGroups": [
+          {
+            "lang": "DE",
+            "label": "Deutsch",
+            "files": [
+              {
+                "t": "Lebenslauf.docx",
+                "f": "",
+                "dl": "docx"
+              },
+              {
+                "t": "Lebenslauf.pdf",
+                "f": "",
+                "dl": "pdf"
+              },
+              {
+                "t": "Anschreiben",
+                "f": "",
+                "dl": "letter"
+              }
+            ]
+          },
+          {
+            "lang": "EN",
+            "label": "English",
+            "files": [
+              {
+                "t": "CV.docx",
+                "f": "",
+                "dl": "docx-en"
+              },
+              {
+                "t": "CV.pdf",
+                "f": "",
+                "dl": "pdf-en"
+              },
+              {
+                "t": "Cover letter",
+                "f": "",
+                "dl": "letter-en"
+              }
+            ]
+          }
+        ],
+        "more": "Zum vollständigen Beispiel"
+      },
+      "howTitle": "So funktioniert es",
+      "how": [
+        {
+          "h": "Laden Sie alles hoch, was Sie haben",
+          "p": "Alte und aktuelle Lebensläufe (PDF oder DOCX), Arbeitszeugnisse und Ihr XING- oder LinkedIn-Profil. Je mehr Versionen, desto vollständiger wird Ihr Master-Lebenslauf."
+        },
+        {
+          "h": "Beantworten Sie ein paar Fragen",
+          "p": "Wir führen die Fakten in einem Master-Lebenslauf zusammen, decken Widersprüche zwischen den Versionen auf und fragen nur dort nach, wo wir sie nicht allein klären können."
+        },
+        {
+          "h": "Fügen Sie eine Stellenanzeige hinzu",
+          "p": "Ein Link oder der vollständige Anzeigentext genügt. Nach wenigen Minuten erhalten Sie die Bewertung von 1 bis 10, einen Lebenslauf als DOCX und PDF sowie ein Anschreiben."
+        }
+      ],
+      "example": {
+        "title": "Beispiel: vom Master-Lebenslauf zur Bewerbung",
+        "lead": "So funktioniert es – am Beispiel einer erfundenen Kandidatin und einer erfundenen Stelle.",
+        "note": "Alle Angaben in diesem Beispiel sind frei erfunden",
+        "more": "Mehr anzeigen",
+        "tabs": [
+          "Master-Lebenslauf",
+          "Suchkriterien",
+          "Stellenanzeige",
+          "Bewertung",
+          "Anschreiben",
+          "Dashboard"
+        ],
+        "profile": {
+          "name": "Julia Hoffmann",
+          "headline": "Leiterin E-⁠Commerce · Hamburg",
+          "sources": "Erstellt aus 4 Versionen ihres Lebenslaufs, ihrem XING- und LinkedIn-Profil, ihren Arbeitszeugnissen und ihren Antworten auf unsere Rückfragen",
+          "cvFile": {
+            "title": "Versandfertiger Lebenslauf – 2 Seiten, auf Deutsch und Englisch",
+            "text": "Aus diesem Master-Lebenslauf haben wir eine Version für die Stelle als Head of E-⁠Commerce erstellt – auf Deutsch und Englisch, das Wichtigste oben, ohne Überflüssiges.",
+            "pdf": "PDF herunterladen",
+            "docx": "DOCX herunterladen",
+            "langSwitch": "Sprache des Lebenslaufs",
+            "langs": [
+              {
+                "label": "Deutsch",
+                "sfx": ""
+              },
+              {
+                "label": "English",
+                "sfx": "-en"
+              }
+            ],
+            "file": ""
+          },
+          "legendIn": "Kommt in den Lebenslauf für diese Stelle",
+          "legendOut": "Bleibt im Master-Lebenslauf",
+          "count": "Für die Stelle als Head of E-⁠Commerce übernehmen wir {in} von {all} Punkten",
+          "expTitle": "Berufserfahrung",
+          "titlesLabel": "Positionsbezeichnungen je nach Quelle",
+          "pickLabel": "für diese Stelle gewählt",
+          "flagLabel": "Widerspruch geklärt",
+          "jobs": [
+            {
+              "period": "03/2021 – heute",
+              "role": "Leiterin E-⁠Commerce",
+              "company": "Einzelhandelskette für Wohnaccessoires und Dekoration, 240 Filialen",
+              "titles": [
+                {
+                  "t": "Leiterin E-⁠Commerce",
+                  "src": "Arbeitsvertrag",
+                  "pick": true
+                },
+                {
+                  "t": "Head of E-⁠Commerce",
+                  "src": "LinkedIn",
+                  "pick": false
+                },
+                {
+                  "t": "E-⁠Commerce-Managerin",
+                  "src": "Lebenslauf von 2021, vor dem Marktplatzstart",
+                  "pick": false
+                }
+              ],
+              "items": [
+                {
+                  "t": "Online-Umsatz in 3 Jahren von 45 auf 130 Mio. € pro Jahr gesteigert (Faktor 2,9)",
+                  "in": true
+                },
+                {
+                  "t": "Einführung des Marktplatzvertriebs über Amazon.de, OTTO Market und Kaufland.de – heute 31 % des Online-Umsatzes",
+                  "in": true
+                },
+                {
+                  "t": "Aufbau eines Teams von 18 Personen: Marktplätze, Onlineshop, Content, Data",
+                  "in": true
+                },
+                {
+                  "t": "Conversion-Rate des Onlineshops von 1,4 % auf 2,3 % gesteigert – durch neue Produktseiten und einen überarbeiteten Checkout",
+                  "in": true
+                },
+                {
+                  "t": "Einführung eines neuen Lagerverwaltungssystems (WMS) im E-⁠Commerce-Lager",
+                  "in": false
+                },
+                {
+                  "t": "Schulung der Teams in 240 Filialen zu Click & Collect",
+                  "in": false
+                }
+              ],
+              "note": "Im Lebenslauf von 2022 steht ein Team mit 12 Personen, auf LinkedIn sind es 18. Mit der Kandidatin geklärt: 18 Personen seit 2023."
+            },
+            {
+              "period": "06/2017 – 02/2021",
+              "role": "Senior Category Managerin Haushaltsgroßgeräte",
+              "company": "Onlinehändler für Unterhaltungselektronik und Haushaltsgeräte",
+              "titles": [
+                {
+                  "t": "Senior Category Managerin Haushaltsgroßgeräte",
+                  "src": "Zwischenzeugnis, 2019",
+                  "pick": true
+                },
+                {
+                  "t": "Category Lead Weiße Ware",
+                  "src": "XING-Profil",
+                  "pick": false
+                },
+                {
+                  "t": "Category Managerin",
+                  "src": "Lebenslauf von 2018, vor der Beförderung",
+                  "pick": false
+                }
+              ],
+              "items": [
+                {
+                  "t": "Kategorieumsatz verdreifacht – auf 200 Mio. € pro Jahr",
+                  "in": true
+                },
+                {
+                  "t": "Steuerung von über 200 Lieferanten; Aufbau eines Marktplatzmodells für die Kategorie",
+                  "in": true
+                },
+                {
+                  "t": "Verhandlung der Werbekostenzuschüsse (WKZ) mit Lieferanten",
+                  "in": false
+                },
+                {
+                  "t": "Betreuung von 4 Praktikantinnen und Praktikanten",
+                  "in": false
+                }
+              ],
+              "note": "Zwei Versionen des Lebenslaufs nennen unterschiedliche Enddaten: 2020 und 2021. Das Arbeitszeugnis bestätigt Februar 2021."
+            }
+          ],
+          "gap": {
+            "period": "06/2016 – 05/2017",
+            "title": "Berufliche Auszeit – 1 Jahr",
+            "label": "So steht diese Zeit in den einzelnen Quellen",
+            "variants": [
+              {
+                "t": "„Hausfrau und Mutter“",
+                "src": "Lebenslauf von 2017"
+              },
+              {
+                "t": "„Sabbatical, Reisen“",
+                "src": "XING-Profil"
+              },
+              {
+                "t": "„Freiberuflich: Aufbau von Onlineshops“",
+                "src": "Lebenslauf von 2018"
+              }
+            ],
+            "resolved": "Mit der Kandidatin geklärt: Nach ihrer Kündigung hat sie sich um ihr Kind gekümmert, in den letzten drei Monaten eine Weiterbildung in Web Analytics absolviert und zwei kleine Aufträge für Onlineshops von Bekannten übernommen.",
+            "pick": "Im Lebenslauf: „Familienphase; Weiterbildung Web Analytics“ – kurz, zutreffend und ohne unnötige Details."
+          },
+          "early": [
+            {
+              "period": "09/2013 – 05/2016",
+              "role": "Managerin Onlinevertrieb",
+              "company": "Modefilialist",
+              "titles": [
+                {
+                  "t": "Managerin Onlinevertrieb",
+                  "src": "Arbeitszeugnis",
+                  "pick": true
+                },
+                {
+                  "t": "E-⁠Commerce-Managerin",
+                  "src": "XING-Profil",
+                  "pick": false
+                }
+              ],
+              "items": [
+                {
+                  "t": "Aufbau des Onlineshops: schon im zweiten Jahr 8 % des Gesamtumsatzes",
+                  "in": true
+                },
+                {
+                  "t": "Betreuung der Social-Media-Kanäle",
+                  "in": false
+                }
+              ],
+              "note": ""
+            }
+          ],
+          "intern": {
+            "period": "07/2012 – 08/2012",
+            "role": "Praktikantin Privatkundenberatung",
+            "company": "Regionalbank",
+            "items": [
+              {
+                "t": "Zweimonatiges Praktikum während des Masterstudiums",
+                "in": false
+              }
+            ],
+            "why": "Nicht übernommen: liegt zu lange zurück und hat keinen Bezug zum E-⁠Commerce. Bleibt im Master-Lebenslauf – etwa für Stellen im Fintech-Bereich."
+          },
+          "sections": [
+            {
+              "h": "Ausbildung",
+              "items": [
+                {
+                  "t": "Universität Mannheim – Master of Science (M.Sc.) in Management, 2013, Abschlussnote 1,7",
+                  "in": true
+                }
+              ]
+            },
+            {
+              "h": "Weiterbildung",
+              "items": [
+                {
+                  "t": "Web Analytics, Zertifikatskurs, 2017",
+                  "in": true
+                },
+                {
+                  "t": "GuV-Steuerung für Führungskräfte, 2022",
+                  "in": true
+                },
+                {
+                  "t": "Fotografie-Grundkurs, 2019",
+                  "in": false
+                }
+              ]
+            },
+            {
+              "h": "Sprachkenntnisse",
+              "items": [
+                {
+                  "t": "Deutsch – Muttersprache; Englisch – verhandlungssicher (C1)",
+                  "in": true
+                },
+                {
+                  "t": "Spanisch – Grundkenntnisse (A2)",
+                  "in": false
+                }
+              ]
+            },
+            {
+              "h": "Auszeichnungen und Vorträge",
+              "items": [
+                {
+                  "t": "Interne Auszeichnung „Projekt des Jahres“ für den Marktplatzstart, 2022",
+                  "in": true
+                },
+                {
+                  "t": "Vortrag auf einer E-⁠Commerce-Fachmesse, 2023",
+                  "in": true
+                },
+                {
+                  "t": "Mentorin im Gründerzentrum einer Hochschule, 2024",
+                  "in": false
+                }
+              ]
+            },
+            {
+              "h": "Interessen",
+              "items": [
+                {
+                  "t": "Laufen – drei Halbmarathons",
+                  "in": true
+                },
+                {
+                  "t": "Fotografie",
+                  "in": false
+                },
+                {
+                  "t": "Brettspiele",
+                  "in": false
+                },
+                {
+                  "t": "Ehrenamt im Tierheim",
+                  "in": false
+                },
+                {
+                  "t": "Yoga",
+                  "in": false
+                },
+                {
+                  "t": "Kochen",
+                  "in": false
+                }
+              ],
+              "why": "Im Lebenslauf steht nur das Laufen: Hobbys sind in Deutschland kein Muss, eine kurze Zeile ist aber üblich. Der Rest bringt für diese Stelle keinen Mehrwert; das Ehrenamt kann im Vorstellungsgespräch zur Sprache kommen."
+            }
+          ],
+          "skillsTitle": "Kernkompetenzen",
+          "skills": [
+            "Marktplätze",
+            "E-⁠Commerce-GuV",
+            "Unit Economics",
+            "Teamführung",
+            "Web Analytics",
+            "Sortiment und Pricing"
+          ]
+        },
+        "search": {
+          "title": "Leiterin E-⁠Commerce",
+          "subtitle": "Hauptsuchprofil · aus ihren Antworten",
+          "groups": [
+            {
+              "h": "Positionen",
+              "items": [
+                "Leiterin E-⁠Commerce",
+                "Head of E-⁠Commerce",
+                "Head of Omnichannel"
+              ]
+            },
+            {
+              "h": "Ebene",
+              "items": [
+                "Leitungsfunktion oder höher",
+                "Bevorzugt mit Berichtslinie an die Geschäftsführung"
+              ]
+            },
+            {
+              "h": "Unternehmen",
+              "items": [
+                "Händler und Marken mit eigenem Onlineshop",
+                "Jahresumsatz ab 500 Mio. €",
+                "Etablierte Unternehmen, keine Start-ups in der Frühphase"
+              ]
+            },
+            {
+              "h": "Branchen",
+              "items": [
+                "Bevorzugt: Wohnen und Einrichtung, Haushaltsgeräte, Baumarkt und DIY",
+                "Auch denkbar: Lebensmittelhandel, Mode, Baby und Kind"
+              ]
+            },
+            {
+              "h": "Gehalt",
+              "items": [
+                "Fixgehalt: mindestens 100.000 € brutto/Jahr",
+                "Wunschgehalt: 115.000 € brutto/Jahr"
+              ]
+            },
+            {
+              "h": "Ort und Arbeitsmodell",
+              "items": [
+                "Hamburg: hybrid oder vor Ort",
+                "Andere Standorte: nur 100 % remote",
+                "Kein Umzug"
+              ]
+            },
+            {
+              "h": "Vertragsart",
+              "items": [
+                "Unbefristet, Vollzeit"
+              ]
+            }
+          ],
+          "stopTitle": "Ausschlusskriterien",
+          "stop": [
+            "Branchen Tabak und Alkohol",
+            "Positionen unterhalb der Leitungsebene",
+            "Fixgehalt unter 100.000 € brutto/Jahr"
+          ],
+          "otherTitle": "Zweites Suchprofil",
+          "other": "Head of Marketplaces bei einem Hersteller – gleiche Ebene, gleiches Gehalt; Branchen: Haushaltsgeräte und Einrichtung.",
+          "note": "Diese Kriterien bestimmen die zweite Hälfte der Bewertung: wie gut die Stelle zu ihr passt."
+        },
+        "vacancy": {
+          "role": "Head of E-⁠Commerce (m/w/d)",
+          "company": "Lebensmittelhändler mit bundesweitem Filialnetz · Hamburg",
+          "meta": "Unbefristet · Vollzeit · Hybrid (2 Tage mobiles Arbeiten pro Woche) · 110.000⁠–⁠130.000 € brutto/Jahr + Bonus",
+          "sections": [
+            {
+              "h": "Ihre Aufgaben",
+              "items": [
+                "Ausbau des Umsatzes im eigenen Onlineshop und auf Marktplätzen",
+                "Verantwortung für die E-⁠Commerce-GuV und den Wachstumsplan 2027",
+                "Führung eines E-⁠Commerce-Teams mit 15 oder mehr Mitarbeitenden",
+                "Steigerung der Profitabilität je Kanal: CAC, LTV, Marge"
+              ]
+            },
+            {
+              "h": "Ihr Profil",
+              "items": [
+                "Mindestens 5 Jahre Berufserfahrung im E-⁠Commerce, davon 2 Jahre in einer Führungsrolle",
+                "Nachweisbare Erfolge beim Umsatzwachstum auf Marktplätzen und im eigenen Onlineshop",
+                "Erfahrung in der Führung von Teams mit 15 oder mehr Personen",
+                "Sicherer Umgang mit Unit Economics (CAC, LTV)",
+                "Erfahrung im Lebensmittelhandel"
+              ]
+            },
+            {
+              "h": "Wir bieten",
+              "items": [
+                "Unbefristete Festanstellung in Hamburg, 2 Tage mobiles Arbeiten pro Woche",
+                "Gehalt: 110.000⁠–⁠130.000 € brutto/Jahr + Bonus",
+                "Berichtslinie an die Bereichsleitung Vertrieb"
+              ]
+            }
+          ]
+        },
+        "score": {
+          "total": "7",
+          "of": "von 10",
+          "label": "Passung",
+          "note": "Die Gesamtbewertung von 1 bis 10 ist der Mittelwert aus zwei Teilen: wie gut die Kandidatin zur Stelle passt und wie gut die Stelle zu ihr passt.",
+          "parts": [
+            {
+              "label": "Kandidatin passt zur Stelle",
+              "value": "6 von 10"
+            },
+            {
+              "label": "Stelle passt zur Kandidatin",
+              "value": "8 von 10"
+            }
+          ],
+          "reqTitle": "Passt die Kandidatin zur Stelle?",
+          "rows": [
+            {
+              "t": "Marktplätze und eigener Onlineshop",
+              "s": "yes",
+              "v": "Passt",
+              "why": "Amazon.de, OTTO Market, Kaufland.de: 31 % des Online-Umsatzes; eigener Onlineshop der Kette"
+            },
+            {
+              "t": "Team ab 15 Personen",
+              "s": "yes",
+              "v": "Passt",
+              "why": "Team von 18 Personen"
+            },
+            {
+              "t": "E-⁠Commerce-GuV",
+              "s": "yes",
+              "v": "Passt",
+              "why": "Verantwortung für den Online-Umsatz: von 45 auf 130 Mio. € pro Jahr gesteigert"
+            },
+            {
+              "t": "Unit Economics (CAC, LTV)",
+              "s": "part",
+              "v": "Teilweise",
+              "why": "Kennt die Wirtschaftlichkeit von Marktplätzen, im Master-Lebenslauf stehen aber keine Zahlen zu CAC und LTV"
+            },
+            {
+              "t": "Erfahrung im Lebensmittelhandel",
+              "s": "no",
+              "v": "Passt nicht",
+              "why": "Erfahrung im Non-Food-Handel (Wohnaccessoires), nicht im Lebensmittelhandel"
+            }
+          ],
+          "critTitle": "Passt die Stelle zur Kandidatin?",
+          "crit": [
+            {
+              "want": "Leitungsfunktion oder höher",
+              "offer": "Head of E-⁠Commerce",
+              "s": "yes",
+              "v": "Passt"
+            },
+            {
+              "want": "Fixgehalt mindestens 100.000 € brutto/Jahr",
+              "offer": "110.000⁠–⁠130.000 € brutto/Jahr + Bonus",
+              "s": "yes",
+              "v": "Passt"
+            },
+            {
+              "want": "Hamburg, hybrid oder vor Ort",
+              "offer": "Hamburg, 2 Tage mobiles Arbeiten pro Woche",
+              "s": "yes",
+              "v": "Passt"
+            },
+            {
+              "want": "Wohnen, Haushaltsgeräte, DIY; auch Lebensmittelhandel denkbar",
+              "offer": "Lebensmitteleinzelhandel, Food und Non-Food",
+              "s": "yes",
+              "v": "Passt"
+            },
+            {
+              "want": "Bevorzugt: Berichtslinie an die Geschäftsführung",
+              "offer": "Berichtslinie an die Bereichsleitung Vertrieb",
+              "s": "part",
+              "v": "Teilweise"
+            }
+          ],
+          "verdictTitle": "Unsere Einschätzung",
+          "verdict": "Die Kandidatin bringt das Wesentliche mit: eigener Onlineshop, Marktplätze, Teamgröße. Schwachpunkte: keine Erfahrung im Lebensmittelhandel, keine Zahlen zu CAC und LTV.",
+          "verdictTag": "Bewerbung empfohlen",
+          "topTitle": "Im Lebenslauf ganz oben",
+          "top": [
+            "Online-Umsatz von 45 auf 130 Mio. € gesteigert",
+            "Marktplatzvertrieb über drei Plattformen: 31 % des Online-Umsatzes",
+            "Team von 18 Personen"
+          ],
+          "skipTitle": "Was wir nicht schreiben",
+          "skip": [
+            "Zahlen zu CAC und LTV: nicht im Master-Lebenslauf – wir fragen zuerst bei ihr nach",
+            "Erfahrung im Lebensmittelhandel: wird nicht behauptet, sondern im Anschreiben aufgegriffen"
+          ],
+          "reqCols": [
+            "Anforderungen der Stelle",
+            "Profil der Kandidatin",
+            "Passung"
+          ],
+          "critCols": [
+            "Angebot der Stelle",
+            "Wünsche der Kandidatin",
+            "Passung"
+          ]
+        },
+        "letter": {
+          "subject": "Bewerbung als Head of E-⁠Commerce (m/w/d) – Julia Hoffmann",
+          "body": [
+            "Sehr geehrte Damen und Herren,",
+            "seit 2021 leite ich den E-⁠Commerce einer Einzelhandelskette für Wohnaccessoires und Dekoration mit 240 Filialen. Unter meiner Leitung ist der Online-Umsatz in drei Jahren von 45 auf 130 Mio. € pro Jahr gewachsen. Zudem habe ich den Vertrieb über Amazon.de, OTTO Market und Kaufland.de aufgebaut, der heute 31 % des Online-Umsatzes ausmacht. Mein 18-köpfiges Team verantwortet Marktplätze, Onlineshop, Content und Data.",
+            "Sie möchten Ihren Onlineshop und Ihr Marktplatzgeschäft gleichzeitig ausbauen – genau das ist heute meine Aufgabe. Im Lebensmittelhandel habe ich bisher nicht gearbeitet. Wohnaccessoires sind jedoch ebenfalls ein Geschäft mit hohen Stückzahlen, breitem Sortiment und kurzen Lieferzeiten – die Hebel im E-⁠Commerce sind sehr ähnlich. In einem persönlichen Gespräch zeige ich Ihnen gern, wie ich das Wachstum Ihres Onlinegeschäfts beschleunigen kann.",
+            "Mit freundlichen Grüßen"
+          ],
+          "sign": "Julia Hoffmann",
+          "fullTitle": "Anschreiben – für die Bewerbung per E-Mail oder über das Bewerbungsportal",
+          "copy": "Text kopieren",
+          "copied": "Kopiert",
+          "shortTitle": "Kurzversion – für eine Nachricht an Recruiter auf XING oder LinkedIn",
+          "short": "Guten Tag, ich interessiere mich für Ihre Stelle als Head of E-⁠Commerce (m/w/d). Seit 2021 leite ich den E-⁠Commerce einer Einzelhandelskette für Wohnaccessoires mit 240 Filialen: Online-Umsatz von 45 auf 130 Mio. € gesteigert, Marktplatzvertrieb über Amazon.de, OTTO Market und Kaufland.de aufgebaut (heute 31 % des Online-Umsatzes), Team von 18 Personen. Meinen Lebenslauf finden Sie im Anhang. Ich freue mich auf Ihre Rückmeldung! Viele Grüße, Julia Hoffmann"
+        },
+        "dashboard": {
+          "title": "Meine Stellen",
+          "lead": "Alle Stellen an einem Ort: Passung, Empfehlung und versandfertige Unterlagen.",
+          "all": "Alle",
+          "cols": [
+            "Stelle",
+            "Passung",
+            "Empfehlung",
+            "Unterlagen"
+          ],
+          "recLabels": {
+            "go": "Bewerben",
+            "maybe": "Prüfen",
+            "no": "Nicht bewerben"
+          },
+          "docs": [
+            "Lebenslauf",
+            "Anschreiben"
+          ],
+          "noDocs": "Noch keine",
+          "of": "von 10",
+          "rows": [
+            {
+              "role": "Leitung E-⁠Commerce",
+              "company": "Hersteller von Haushaltsgeräten",
+              "place": "Hamburg, hybrid",
+              "score": 9,
+              "rec": "go",
+              "why": "Ihre Kategorie- und Marktplatzerfahrung passt genau"
+            },
+            {
+              "role": "Head of E-⁠Commerce",
+              "company": "Händler für Elektronik und Haushaltsgeräte",
+              "place": "Hamburg, vor Ort",
+              "score": 8,
+              "rec": "go",
+              "why": "Wunschbranche; eigener Onlineshop und Marktplätze"
+            },
+            {
+              "role": "Head of Marketplaces",
+              "company": "Marke für Wohnaccessoires",
+              "place": "Hamburg, hybrid",
+              "score": 8,
+              "rec": "go",
+              "why": "Passt zu ihrem zweiten Suchprofil"
+            },
+            {
+              "role": "Head of E-⁠Commerce (m/w/d)",
+              "company": "Lebensmittelhändler",
+              "place": "Hamburg, hybrid",
+              "score": 7,
+              "rec": "go",
+              "why": "Schwachpunkte: Lebensmittelhandel, Zahlen zu CAC und LTV"
+            },
+            {
+              "role": "Leitung Digital Commerce",
+              "company": "Konsumgüterhersteller",
+              "place": "Düsseldorf, 100 % remote",
+              "score": 6,
+              "rec": "maybe",
+              "why": "Verlangt FMCG-Erfahrung, die sie nicht hat"
+            },
+            {
+              "role": "Marketplace Manager",
+              "company": "Online-Modehändler",
+              "place": "Berlin, vor Ort",
+              "score": 3,
+              "rec": "no",
+              "why": "Unterhalb ihrer Ebene; maximal 60.000 € brutto/Jahr"
+            },
+            {
+              "role": "Leitung E-⁠Commerce",
+              "company": "Spirituosenhersteller",
+              "place": "Hamburg, vor Ort",
+              "score": 2,
+              "rec": "no",
+              "why": "Branche ausgeschlossen (Alkohol)"
+            }
+          ],
+          "note": "Entwurf Ihres persönlichen Bereichs. Später fügen Sie Stellen per Link hinzu oder wählen sie aus passenden Angeboten aus – Lebenslauf und Anschreiben öffnen Sie oder laden sie mit einem Klick herunter."
+        }
+      },
+      "featuresTitle": "Das erhalten Sie",
+      "features": [
+        {
+          "h": "Master-Lebenslauf",
+          "p": "Alle Versionen Ihres Lebenslaufs in einem geprüften Dokument: Positionen, Zeiträume, Zahlen und Erfolge. Keine Widersprüche mehr in Ihren Unterlagen."
+        },
+        {
+          "h": "Objektive Bewertung jeder Stelle",
+          "p": "Von 1 bis 10: wie gut Ihre Erfahrung zu den Anforderungen passt und wie gut die Stelle zu Ihnen passt. Sind Ihre Chancen gering, sagen wir es Ihnen offen."
+        },
+        {
+          "h": "Passender Lebenslauf für jede Stelle",
+          "p": "Was der Arbeitgeber sucht, steht ganz oben. Sie erhalten versandfertige Dateien als DOCX und PDF."
+        },
+        {
+          "h": "Anschreiben in zwei Fassungen",
+          "p": "Eine ausführliche Fassung für die Bewerbung per E-Mail oder Portal und eine Kurzfassung für Nachrichten auf XING oder LinkedIn."
+        },
+        {
+          "h": "Alle Bewerbungen im Blick",
+          "p": "Wo und wann Sie sich beworben haben, mit welchem Lebenslauf und wie der aktuelle Stand ist – alles an einem Ort, mit Erinnerungsfunktion."
+        },
+        {
+          "h": "Englisch und weitere Sprachen",
+          "p": "Lebensläufe und Anschreiben auf Englisch und in weiteren Sprachen – für Stellen in Deutschland und im Ausland."
+        }
+      ],
+      "english": {
+        "title": "Ihr Lebenslauf auf Englisch – ohne Übersetzungsbüro",
+        "lead": "Eine Wort-für-Wort-Übersetzung reicht nicht: Recruiter in London, Dublin oder Amsterdam – und in vielen internationalen Unternehmen in Deutschland – erwarten einen anderen Aufbau, vertraute Positionsbezeichnungen sowie Datums- und Betragsangaben im gewohnten Format. Wir schreiben Ihren Lebenslauf und Ihr Anschreiben auf Englisch nach den dort üblichen Standards – auf Grundlage derselben Fakten wie Ihre deutsche Fassung.",
+        "points": [
+          {
+            "h": "Keine Übersetzung, sondern ein CV nach internationalem Standard",
+            "p": "Kein Foto, kein Geburtsdatum, kein Familienstand, keine Unterschrift mit Ort und Datum. Die Abschnitte sind so aufgebaut, wie es englischsprachige Recruiter erwarten."
+          },
+          {
+            "h": "Positionsbezeichnungen, nach denen Recruiter suchen",
+            "p": "Aus „Leiterin E-⁠Commerce“ wird „Head of E-⁠Commerce“ – der Titel, den englischsprachige Recruiter tatsächlich in die Suche eingeben. Wir stimmen ihn mit Ihnen ab."
+          },
+          {
+            "h": "Dieselben Fakten im englischen Format",
+            "p": "Beträge und Daten in englischer Schreibweise (€130M, Mar 2021 – Present), die deutsche Abschlussnote mit Erklärung der Skala. Und nichts, was nicht in Ihrem Master-Lebenslauf steht."
+          },
+          {
+            "h": "Auch das Anschreiben",
+            "p": "Eine ausführliche Fassung für die E-Mail und eine Kurzfassung für LinkedIn – in der Sprache der Anzeige."
+          }
+        ],
+        "compareTitle": "Was sich ändert, Zeile für Zeile",
+        "ruLabel": "In Ihrem deutschen Lebenslauf",
+        "enLabel": "In Ihrem englischen CV",
+        "compare": [
+          {
+            "ru": "Leiterin E-⁠Commerce",
+            "en": "Head of E-⁠Commerce",
+            "lang": "en"
+          },
+          {
+            "ru": "Online-Umsatz in 3 Jahren von 45 auf 130 Mio. € pro Jahr gesteigert (Faktor 2,9)",
+            "en": "Grew annual online revenue from €45M to €130M (2.9x) in 3 years",
+            "lang": "en"
+          },
+          {
+            "ru": "Universität Mannheim – M.Sc. in Management, Abschlussnote 1,7",
+            "en": "University of Mannheim — MSc in Management, grade 1.7 (German scale; 1.0 = best)",
+            "lang": "en"
+          }
+        ],
+        "downloadsTitle": "Das Beispiel auf Englisch",
+        "downloads": [
+          {
+            "t": "CV als PDF",
+            "f": "",
+            "dl": "pdf-en"
+          },
+          {
+            "t": "CV als DOCX",
+            "f": "",
+            "dl": "docx-en"
+          },
+          {
+            "t": "Anschreiben als DOCX",
+            "f": "",
+            "dl": "letter-en"
+          }
+        ]
+      },
+      "honestTitle": "Wir erfinden nichts",
+      "honest": "Unsere KI formuliert um, ordnet neu und entscheidet, was nach vorn kommt – an den Fakten ändert sie nichts. Jede Zeile Ihres Lebenslaufs stützt sich auf Ihren Master-Lebenslauf, und bevor Sie den Lebenslauf erhalten, prüfen wir in einem eigenen Schritt jedes Datum und jede Zahl. Recruiter können ihn mit Ihrem XING- oder LinkedIn-Profil und Ihren Arbeitszeugnissen abgleichen: Alles stimmt überein.",
+      "honestList": [
+        "Keine Widersprüche bei Zahlen und Fakten",
+        "Ihre wichtigsten Erfolge und relevantesten Erfahrungen zuerst",
+        "Eine klare Antwort: Passt die Stelle zu Ihnen – und passen Sie zur Stelle?"
+      ],
+      "pricingTitle": "Sonderpreise für die ersten 1.000 Anmeldungen",
+      "pricingLead": "Lassen Sie sich jetzt für den Early Access vormerken und sichern Sie sich die Sonderpreise: Alle kostenpflichtigen Tarife gibt es für rund die Hälfte des regulären Preises.",
+      "plans": [
+        {
+          "name": "Junior",
+          "price": "0 €",
+          "old": "",
+          "per": "kostenlos",
+          "items": [
+            "Erstellung Ihres Master-Lebenslaufs"
+          ]
+        },
+        {
+          "name": "Professional",
+          "price": "49 €",
+          "old": "100 €",
+          "per": "pro Monat",
+          "tag": "−51 %",
+          "items": [
+            "Erstellung Ihres Master-Lebenslaufs",
+            "10 angepasste Lebensläufe",
+            "Bewertung von 30 Stellen",
+            "Dashboard für Ihre Stellen und Lebensläufe"
+          ]
+        },
+        {
+          "name": "Senior",
+          "price": "99 €",
+          "old": "200 €",
+          "per": "pro Monat",
+          "tag": "−51 %",
+          "items": [
+            "Erstellung Ihres Master-Lebenslaufs",
+            "30 angepasste Lebensläufe",
+            "Bewertung von 90 Stellen",
+            "Dashboard für Ihre Stellen und Lebensläufe",
+            "Lebensläufe auf Englisch und in weiteren Sprachen",
+            "Vorauswahl passender Stellenangebote"
+          ]
+        }
+      ],
+      "pricingNote": "Die Sonderpreise gelten für die ersten 1.000 Personen, die sich auf dieser Seite vormerken lassen. Reguläre Preise nach dem Start: 100 € (Professional) und 200 € (Senior) pro Monat.",
+      "founderTitle": "Über den Gründer",
+      "author": {
+        "name": "Armen Manukyan",
+        "role": "Gründer · Führungskraft in E-⁠Commerce und internationalem Handel",
+        "facts": [
+          "Nationaler Postbetreiber, 2020⁠–⁠2026: Leitung des grenzüberschreitenden Importgeschäfts und des Online-Marktplatzes (Team mit 36 Personen, über 190 internationale Partner).",
+          "Einer der größten Online-Marktplätze, 2019⁠–⁠2020: Director Special Projects. Über 50.000 neue Händler im ersten Jahr durch gemeinsame Programme mit staatlichen Stellen; Einführung von Händlerkrediten, besichert durch den Warenbestand.",
+          "Nationale Agentur für Exportförderung, 2017⁠–⁠2019: Head of Digital Services Development. Über 200 B2B- und über 2.000 B2C-Unternehmen beim Export über Online-Kanäle unterstützt.",
+          "Zweifacher Gewinner eines nationalen Führungskräftewettbewerbs (2020, 2026).",
+          "Gewinner eines nationalen Wettbewerbs für Programme zur Jugendbeschäftigung mit dem Projekt „Talent-Marktplatz“."
+        ],
+        "text": "Ein Master-Lebenslauf, eine objektive Bewertung jeder Stelle und ein darauf zugeschnittener Lebenslauf: Diese Methode habe ich für meine eigene Jobsuche entwickelt. Jetzt möchte ich sie allen zugänglich machen.",
+        "photoAlt": "Armen Manukyan, Gründer des Service"
+      },
+      "faqTitle": "Häufige Fragen",
+      "faq": [
+        {
+          "q": "Wann startet der Service?",
+          "a": "Wir bereiten den Start gerade vor. Den Zugang schalten wir schrittweise frei – in der Reihenfolge der Anmeldungen. Sobald Sie an der Reihe sind, erhalten Sie eine E-Mail von uns."
+        },
+        {
+          "q": "Wie erhalte ich die Sonderpreise?",
+          "a": "Lassen Sie sich auf dieser Seite vormerken. Die ersten 1.000 Anmeldungen erhalten den Professional-Tarif für 49 € statt 100 € und den Senior-Tarif für 99 € statt 200 € pro Monat."
+        },
+        {
+          "q": "Was kostet der Service?",
+          "a": "Im kostenlosen Junior-Tarif erstellen Sie Ihren Master-Lebenslauf. Regulär kosten Professional 100 € und Senior 200 € pro Monat; die ersten 1.000 Anmeldungen zahlen 49 € bzw. 99 €."
+        },
+        {
+          "q": "Für wen ist der Service gedacht?",
+          "a": "Für alle, die eine neue Stelle suchen – vom Berufseinstieg bis zur Geschäftsführung. Besonders hilfreich ist er, wenn Sie schon mehrere Positionen hatten und viele Versionen Ihres Lebenslaufs haben."
+        },
+        {
+          "q": "Erfindet die KI nicht einfach etwas dazu?",
+          "a": "Nein. Die KI arbeitet nur mit den Fakten aus Ihrem Master-Lebenslauf, den Sie jederzeit einsehen und ändern können. Bevor Sie einen Lebenslauf erhalten, stellen wir sicher, dass er nur Zahlen und Daten enthält, die auch im Master-Lebenslauf stehen."
+        },
+        {
+          "q": "Was passiert mit meinen Daten?",
+          "a": "Bei der Anmeldung auf dieser Seite werden Ihr Name und Ihre E-Mail-Adresse an {email} gesendet und ausschließlich dafür verwendet, mit Ihnen Kontakt aufzunehmen. Ihre Lebensläufe laden Sie erst nach dem Start im Service hoch."
+        },
+        {
+          "q": "Garantieren Sie eine Stelle oder ein Vorstellungsgespräch?",
+          "a": "Nein – das kann seriös niemand garantieren. Unser Versprechen: Jeder Lebenslauf ist auf die Stelle zugeschnitten und beruht ausschließlich auf Ihrem tatsächlichen Werdegang. Und die Bewertung zeigt Ihnen auf einen Blick, wo Ihre Chancen am größten sind."
+        }
+      ],
+      "finalTitle": "Sichern Sie sich einen Platz unter den ersten 1.000",
+      "finalLead": "Unverbindlich und ohne Kreditkarte – nur Name und E-Mail-Adresse. Die ersten 1.000 Anmeldungen zahlen für alle kostenpflichtigen Tarife rund die Hälfte des regulären Preises.",
+      "form": {
+        "email": "E-Mail",
+        "button": "Platz sichern",
+        "subject": "Anmeldung Early Access – Service „Für jede Stelle der passende Lebenslauf“ (DE)",
+        "message": "Ich möchte mich für den Early Access zum Service „Für jede Stelle der passende Lebenslauf“ vormerken lassen – zu den Sonderpreisen für die ersten 1.000 Anmeldungen.",
+        "sentTitle": "Vielen Dank – Sie sind vorgemerkt",
+        "sent": "Wir melden uns per E-Mail, sobald der Early Access beginnt."
+      }
+    },
+    "cvPromo": {
+      "tag": "Demnächst",
+      "button": "Mehr erfahren",
+      "note": "Die Anmeldung für den Early Access läuft: Sonderpreise für die ersten 1.000 Anmeldungen.",
+      "home": {
+        "h": "Brauchen Sie Unterstützung bei der Jobsuche?",
+        "p": "Wir entwickeln gerade einen neuen Service: Sie laden künftig einmal alle Ihre Lebensläufe – alte wie aktuelle –, Ihre Arbeitszeugnisse und Ihr XING- oder LinkedIn-Profil hoch. Wir werden daraus einen Master-Lebenslauf erstellen, Ihnen objektiv sagen, wie gut jede Stelle zu Ihnen passt, und in wenigen Minuten einen passenden Lebenslauf und ein Anschreiben schreiben."
+      },
+      "result": {
+        "h": "Sie suchen eine neue Stelle?",
+        "p": "Ihr DISG-Profil zeigt Ihre Stärken. Jetzt kommt es darauf an, dass Arbeitgeber sie auch sehen: Unser neuer Service, der bald startet, wird Ihre Erfahrung in einem Master-Lebenslauf bündeln, jede Stelle auf einer Skala von 1 bis 10 bewerten und in wenigen Minuten Lebenslauf und Anschreiben passend zur Stelle schreiben – ausschließlich auf Basis Ihres tatsächlichen Werdegangs."
+      },
+      "profile": {
+        "h": "Brauchen Sie Hilfe bei Ihrem Lebenslauf?",
+        "p": "Zu wissen, welche Rollen zu Ihnen passen, ist erst der Anfang. Für eine Einladung zum Vorstellungsgespräch muss Ihr Lebenslauf genau auf die Anzeige zugeschnitten sein. Bald werden wir Lebenslauf und Anschreiben in wenigen Minuten für Sie schreiben – auf Basis Ihrer tatsächlichen Erfahrung – und Ihnen objektiv sagen, ob sich eine Bewerbung lohnt."
+      },
+      "services": {
+        "part": "Jobsuche",
+        "pick": "Lebenslauf und Anschreiben für jede Stelle",
+        "price": "{price} zum Start",
+        "name": "Für jede Stelle der passende Lebenslauf",
+        "text": "Bald verfügbar: Unser KI-Service wird Ihre gesamte Erfahrung (alte Lebensläufe, Arbeitszeugnisse, XING- oder LinkedIn-Profil) in einem Master-Lebenslauf bündeln, jede Stelle auf einer Skala von 1 bis 10 bewerten und für die Stellen Ihrer Wahl Lebenslauf und Anschreiben schreiben. Für den Early Access können Sie sich schon jetzt vormerken lassen – mit Sonderpreisen für die ersten 1.000 Anmeldungen.",
+        "button": "Mehr erfahren"
+      }
+    },
     "offer": {
       "title": "Allgemeine Geschäftsbedingungen – ausführliches DISG-Profil",
       "description": "Allgemeine Geschäftsbedingungen für die Leistung „Ausführliches DISG-Profil“ auf disc-test.org: Preis, Zahlung und Zusendung, Erstattung, Rechte an den Inhalten.",
