@@ -34,12 +34,38 @@ function initCvTabs(){
   var tabs=[].slice.call(box.querySelectorAll('[role="tab"]')), panels=[].slice.call(box.querySelectorAll('[role="tabpanel"]')),
       ends=[].slice.call(box.querySelectorAll('.cvtabs-end button'));   // те же вкладки в конце блока
   function show(bar, t){ if(t.offsetLeft < bar.scrollLeft || t.offsetLeft + t.offsetWidth > bar.scrollLeft + bar.clientWidth) bar.scrollLeft = t.offsetLeft - 8; }
-  function sel(i, focus){ tabs.forEach(function(t,k){ var on=k===i; t.setAttribute('aria-selected', on); t.tabIndex=on?0:-1; panels[k].hidden=!on; if(ends[k]) ends[k].setAttribute('aria-pressed', on); }); if(focus) tabs[i].focus();
-    show(tabs[i].parentNode, tabs[i]); if(ends[i]) show(ends[i].parentNode, ends[i]); }
+  var more=box.querySelector('.cvexmore button'), cur=0;
+  function sel(i, focus){ cur=i; tabs.forEach(function(t,k){ var on=k===i; t.setAttribute('aria-selected', on); t.tabIndex=on?0:-1; panels[k].hidden=!on; if(ends[k]) ends[k].setAttribute('aria-pressed', on); }); if(focus) tabs[i].focus();
+    show(tabs[i].parentNode, tabs[i]); if(ends[i]) show(ends[i].parentNode, ends[i]); fit(); }
+  // свёрнутый пример (с 2026-10-24, по просьбе заказчика): вкладка выше --cvcut обрезана с затуханием, под ней «Показать полностью»;
+  // разворот — сразу для всех вкладок, до перезагрузки страницы
+  function fit(){ if(!box.classList.contains('cut')) return; var p=panels[cur], lim=parseFloat(getComputedStyle(box).getPropertyValue('--cvcut'))||520;
+    p.classList.remove('over'); var over=p.scrollHeight > lim + 80;   // почти влезающую вкладку не режем
+    p.classList.toggle('over', over); box.classList.toggle('over', over); }
+  function expand(){ box.classList.remove('cut', 'over'); panels.forEach(function(p){ p.classList.remove('over'); }); if(more) more.setAttribute('aria-expanded', 'true'); }
+  if(more){ box.classList.add('cut');
+    more.addEventListener('click', function(){ expand(); stop(); panels[cur].focus({preventScroll:true}); if(window.discTrack) window.discTrack('cv-example-more'); });
+    // фокус клавиатурой на ссылке или кнопке внутри обрезанной части — разворачиваем, иначе она прокрутится под затуханием
+    box.addEventListener('focusin', function(e){ if(panels.indexOf(e.target) < 0 && e.target.closest('.cvpanel.over')) expand(); });
+    window.addEventListener('resize', fit); }
   // нижние вкладки: переключают шаг и возвращают к началу блока, чтобы новый шаг читался сверху
   ends.forEach(function(b,i){ b.addEventListener('click', function(){ sel(i); var y=box.getBoundingClientRect().top + window.pageYOffset - 12;
     window.scrollTo({top:y, behavior:'smooth'}); if(window.discTrack) window.discTrack('cv-example'); }); });
   box.classList.add('js'); sel(0);
+  // автопереключение вкладок (с 2026-10-24, по просьбе заказчика): по кругу, пока блок на экране и вкладка браузера открыта;
+  // под активной вкладкой — полоска-таймер (при «уменьшить движение» в системе она без анимации: общее правило template.html).
+  // Любой щелчок или клавиша внутри блока останавливают переключение до перезагрузки страницы
+  var DUR=8000, auto=('IntersectionObserver' in window),
+      timer=null, left=DUR, t0=0, inView=false;
+  function run(){ return auto && inView && !document.hidden; }
+  function upd(){ var on=run(); box.classList.toggle('paused', auto && !on);
+    if(on && !timer){ t0=Date.now(); timer=setTimeout(function(){ timer=null; left=DUR; sel((cur+1) % tabs.length); upd(); }, left); }
+    else if(!on && timer){ clearTimeout(timer); timer=null; left=Math.max(500, left-(Date.now()-t0)); } }
+  function stop(){ if(!auto) return; auto=false; upd(); box.classList.remove('auto', 'paused'); }
+  if(auto){ box.style.setProperty('--cvdur', DUR+'ms'); box.classList.add('auto', 'paused');
+    new IntersectionObserver(function(es){ es.forEach(function(x){ inView = x.isIntersecting && x.intersectionRatio >= 0.4; }); upd(); }, {threshold:[0, 0.4, 0.6]}).observe(box);
+    document.addEventListener('visibilitychange', upd);
+    box.addEventListener('click', stop); box.addEventListener('keydown', stop); }
   // «Скопировать текст»: текст блока письма по абзацам (через пустую строку); запасной путь — выделение и execCommand
   box.querySelectorAll('.cvcopy').forEach(function(btn){
     var label=btn.textContent, src=btn.parentNode.parentNode.querySelector('.cvcopy-src');

@@ -163,6 +163,18 @@ body:has(.cvpage) .wrap{max-width:1080px}
 .cvpanel{padding:24px 28px 26px}
 .cvpanel:focus-visible{outline:2px solid var(--focus);outline-offset:-2px}
 .cvex:not(.js) .cvpanel+.cvpanel{border-top:1px solid var(--line)}
+/* свёрнутый пример (с 2026-10-24, по просьбе заказчика): длинная вкладка обрезана по высоте с затуханием, под ней «Показать полностью»;
+   нижние вкладки появляются после разворота. Автопереключение вкладок — полоска-таймер под активной вкладкой (src/cv.js) */
+.cvexmore{display:none}
+.cvex.js.cut .cvpanel.over{max-height:var(--cvcut);overflow:hidden;position:relative}
+.cvex.js.cut .cvpanel.over::after{content:"";position:absolute;inset:auto 0 0;height:140px;background:linear-gradient(to bottom,color-mix(in srgb,var(--surface) 0%,transparent),var(--surface) 85%);pointer-events:none}
+.cvex.js.cut.over .cvexmore{display:flex;justify-content:center;padding:0 16px 22px}
+.cvex.js.cut .cvtabs-end{display:none}
+.cvex{--cvcut:520px}
+.cvex.auto .cvtabs button{position:relative;overflow:hidden}
+.cvex.auto .cvtabs button[aria-selected="true"]::after{content:"";position:absolute;inset:auto 10px 3px;height:2px;border-radius:2px;background:var(--s);transform-origin:left;animation:cvauto var(--cvdur) linear forwards}
+.cvex.auto.paused .cvtabs button[aria-selected="true"]::after{animation-play-state:paused}
+@keyframes cvauto{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 .cvpanel-title{margin:0 0 12px;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
 .cvex.js .cvpanel-title{display:none}
 .cvdoc{max-width:760px;font-size:15px}
@@ -210,6 +222,7 @@ body:has(.cvpage) .wrap{max-width:1080px}
   .cvex{border-radius:16px}
   .cvtabs button{flex:0 0 auto;font-size:14px;padding:10px 12px}
   .cvpanel{padding:18px 16px 20px}
+  .cvex{--cvcut:660px}
   .cvdoc-head strong{font-size:20px}
   .cvtopskip{grid-template-columns:1fr}
 }

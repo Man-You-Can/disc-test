@@ -834,6 +834,8 @@ for (const L of locales) {
       `<div class="cvex" id="cvEx"><div class="cvtabs" role="tablist" aria-label="${escFull(X.title)}">` +
         X.tabs.map((tb, i) => `<button type="button" role="tab" id="cvt${i}" aria-controls="cvp${i}" aria-selected="${i === 0}" tabindex="${i === 0 ? 0 : -1}"><span>${i + 1}</span>${escFull(tb)}</button>`).join('') + `</div>` +
         exPanels.map((h, i) => `<div class="cvpanel" role="tabpanel" id="cvp${i}" aria-labelledby="cvt${i}" tabindex="0"><h3 class="cvpanel-title">${escFull(X.tabs[i])}</h3>${h}</div>`).join('') +
+        // свёрнутый пример (с 2026-10-24, по просьбе заказчика): вкладка видна не целиком, внизу «Показать полностью» — логика в src/cv.js
+        (X.more ? `<div class="cvexmore"><button type="button" class="btn secondary" aria-expanded="false">${escFull(X.more)}</button></div>` : '') +
         // те же вкладки в конце блока (с 2026-10-23, по просьбе заказчика): долистав вкладку до конца, видно, что есть другие шаги
         `<div class="cvtabs cvtabs-end" role="group" aria-label="${escFull(X.title)}">` +
         X.tabs.map((tb, i) => `<button type="button" data-i="${i}" aria-controls="cvp${i}" aria-pressed="${i === 0}"><span>${i + 1}</span>${escFull(tb)}</button>`).join('') + `</div>` +
