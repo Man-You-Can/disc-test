@@ -2106,7 +2106,7 @@
       "title": "Se désabonner de la newsletter — test DISC",
       "description": "Désabonnez-vous de la newsletter de disc-test.org en un clic, sans identifiant ni mot de passe.",
       "h1": "Se désabonner de la newsletter",
-      "lead": "Cliquez sur le bouton et disc-test.org cessera d'envoyer sa newsletter à l'adresse qui a reçu l'e-mail contenant ce lien. Cela ne concerne pas l'e-mail avec le résultat du test : il n'est envoyé que lorsque vous le demandez."
+      "lead": "Une fois désabonné, vous ne recevrez plus la newsletter de disc-test.org à l'adresse qui a reçu l'e-mail contenant ce lien. Cela ne concerne pas l'e-mail avec le résultat du test : il n'est envoyé que lorsque vous le demandez."
     },
     "subscribeConfirm": {
       "title": "Abonnement à la newsletter — test DISC",
@@ -3087,7 +3087,8 @@
     "contact.messageRequired": "Écrivez un message",
     "contact.direct": "Ou écrivez-nous directement : {email}",
     "unsub.button": "Me désabonner",
-    "unsub.done": "C'est fait : disc-test.org n'enverra plus sa newsletter à cette adresse.",
+    "unsub.done": "Désabonnement effectué : disc-test.org n'enverra plus sa newsletter à cette adresse.",
+    "unsub.wait": "Désabonnement en cours…",
     "unsub.failed": "Le désabonnement n'a pas abouti. Réessayez ou écrivez-nous : {email}.",
     "unsub.bad": "Ce lien ne contient pas de code de désabonnement. Ouvrez le lien complet depuis l'e-mail ou écrivez-nous : {email}.",
     "nl.title": "Abonnez-vous à la newsletter",

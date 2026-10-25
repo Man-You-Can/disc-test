@@ -1060,26 +1060,34 @@ for (const L of locales) {
         `<p class="seealso">${docLink('offer/', of)} · ${docLink('services/', sv)}</p>` });
     }
   }
-  // /unsubscribe/ — отписка от рассылки: код берётся из ссылки в письме (#u=…), кнопка отправляет его в Apps Script ({action: 'unsubscribe'}).
-  // Отписывает кнопка, а не само открытие ссылки: почтовые сервисы и антивирусы открывают ссылки из писем автоматически.
+  // /unsubscribe/ — отписка от рассылки: код из ссылки в письме (#u=…) страница сама отправляет серверу при открытии ({action: 'unsubscribe'})
+  // и пишет «Вы отписались» с зелёной галочкой (с 2026-10-25, по просьбе заказчика: без лишнего нажатия; так же устроена /subscribe/).
+  // Запрос шлёт скрипт страницы, а не сам переход по ссылке: сканеры ссылок в почте, которые только скачивают страницу, никого не отписывают.
+  // Кнопка «Отписаться» — только для повтора после сбоя. Сервер отвечает ok и на повторную отписку: страницу можно открыть снова.
   if (cfg.sendEndpoint) {
     const un = C.unsubscribe, mailLink = feedbackEmail ? `<a href="mailto:${escFull(feedbackEmail)}">${escFull(feedbackEmail)}</a>` : '';
     writeContentPage(L, 'unsubscribe/', { noindex: true, noDate: true, title: un.title, description: un.description, crumbs: [{ name: un.h1 }],
       content: `<div class="eyebrow">DISC</div><h1>${escFull(un.h1)}</h1><p class="lead">${escFull(un.lead)}</p>` +
-        `<div class="card contactcard"><p class="small sendstatus" id="uStatus" aria-live="polite" hidden></p><div class="actions"><button class="btn" type="button" id="uBtn">${escFull(t('unsub.button'))}</button></div></div>`,
+        `<div class="card contactcard"><p class="sendstatus" id="uStatus" aria-live="polite">${escFull(t('unsub.wait'))}</p><div class="actions"><button class="btn" type="button" id="uBtn" hidden>${escFull(t('unsub.button'))}</button></div></div>`,
       uiKeys: /^unsub\./,
       pageJs: `(function(){ var btn = $('#uBtn'), st = $('#uStatus'), m = /[#&]u=([A-Za-z0-9_-]{22})(?:&|$)/.exec(dataHash()), mail = ${jsStr(mailLink)};
-  function status(kind, html){ st.hidden = false; st.className = 'small sendstatus ' + kind; st.innerHTML = html; }
-  if(!m){ btn.hidden = true; status('err', t('unsub.bad', {email: mail})); return; }
-  btn.addEventListener('click', function(){
-    btn.disabled = true;
-    // Content-Type не задаём: «простой» запрос без preflight, который принимает Google Apps Script
+  function status(kind, html){ st.hidden = false; st.className = 'sendstatus ' + kind; st.innerHTML = html; }
+  if(!m){ status('err', t('unsub.bad', {email: mail})); return; }
+  function unsubscribe(){
+    btn.hidden = true; status('muted', esc(t('unsub.wait')));
+    // Content-Type не задаём: «простой» запрос без preflight
     fetch(${jsStr(cfg.sendEndpoint)}, {method: 'POST', body: JSON.stringify({token: ${jsStr(cfg.sendToken)}, action: 'unsubscribe', u: m[1]}), redirect: 'follow'})
       .then(function(res){ return res.text(); })
-      .then(function(txt){ var j = null; try{ j = JSON.parse(txt); }catch(e){} if(!j || !j.ok) throw new Error('failed');
-        btn.hidden = true; status('ok', esc(t('unsub.done'))); if(window.discTrack) window.discTrack('unsubscribe'); })
-      .catch(function(){ btn.disabled = false; status('err', t('unsub.failed', {email: mail})); });
-  });
+      .then(function(txt){ var j = null; try{ j = JSON.parse(txt); }catch(e){}
+        if(j && j.error === 'bad link'){ status('err', t('unsub.bad', {email: mail})); return; }
+        if(!j || !j.ok) throw new Error('failed');
+        status('ok', '<span style="display:flex;gap:12px;align-items:center"><svg viewBox="0 0 24 24" width="32" height="32" aria-hidden="true" style="flex:none">' +
+          '<circle cx="12" cy="12" r="12" fill="currentColor"/><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
+          '<span>' + esc(t('unsub.done')) + '</span></span>'); if(window.discTrack) window.discTrack('unsubscribe'); })
+      .catch(function(){ btn.hidden = false; status('err', t('unsub.failed', {email: mail})); });
+  }
+  btn.addEventListener('click', unsubscribe);
+  unsubscribe();
 })();` });
   }
   // /subscribe/ — подтверждение подписки с главной: ключ из ссылки в письме (#c=…) страница сама отправляет серверу при открытии ({action: 'confirmSubscribe'})

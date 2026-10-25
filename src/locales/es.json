@@ -1162,7 +1162,7 @@
       "title": "Darse de baja del boletín — test DISC",
       "description": "Dese de baja del boletín de disc-test.org con un solo botón, sin usuario ni contraseña.",
       "h1": "Darse de baja del boletín",
-      "lead": "Pulse el botón y disc-test.org dejará de enviar su boletín a la dirección que recibió el mensaje con este enlace. Esto no afecta al correo con el resultado del test: ese solo se envía cuando usted lo solicita."
+      "lead": "Al darse de baja, disc-test.org deja de enviar su boletín a la dirección que recibió el mensaje con este enlace. Esto no afecta al correo con el resultado del test: ese solo se envía cuando usted lo solicita."
     },
     "subscribeConfirm": {
       "title": "Suscripción al boletín — test DISC",
@@ -2128,7 +2128,8 @@
     "contact.messageRequired": "Escriba un mensaje",
     "contact.direct": "O escríbanos directamente: {email}",
     "unsub.button": "Darme de baja",
-    "unsub.done": "Listo: disc-test.org ya no enviará su boletín a esta dirección.",
+    "unsub.done": "Se ha dado de baja: disc-test.org ya no enviará su boletín a esta dirección.",
+    "unsub.wait": "Procesando la baja…",
     "unsub.failed": "No se ha podido tramitar la baja. Inténtelo de nuevo o escríbanos: {email}.",
     "unsub.bad": "El enlace no contiene el código de baja. Abra el enlace completo del mensaje o escríbanos: {email}.",
     "nl.title": "Suscríbase al boletín",

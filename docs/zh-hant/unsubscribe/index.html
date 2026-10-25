@@ -709,7 +709,7 @@ body.has-consent{padding-bottom:160px}
   </header>
   <nav class="sitenav no-print"><a href="../../zh-hant/">測驗</a><a href="../../zh-hant/disc/">什麼是 DISC</a><a href="../../zh-hant/styles/">四種風格</a><a href="../../zh-hant/profiles/">16 種類型</a><a href="../../zh-hant/results/">結果解讀</a><a href="../../zh-hant/compatibility/">風格搭配</a><a href="../../zh-hant/faq/">常見問題</a><a href="../../zh-hant/how-reports-are-made/">報告製作方式</a><a href="../../zh-hant/services/">服務</a><a href="../../zh-hant/contact/">聯絡我們</a></nav>
   <nav class="crumbs"><a href="../../zh-hant/">首頁</a><span>›</span><span aria-current="page">取消訂閱</span></nav>
-  <main class="content"><div class="eyebrow">DISC</div><h1>取消訂閱</h1><p class="lead">按下按鈕後，disc-test.org 將不再寄送訂閱郵件到收到這封郵件的信箱。這不影響測驗結果郵件：只有在你自己要求時才會寄出。</p><div class="card contactcard"><p class="small sendstatus" id="uStatus" aria-live="polite" hidden></p><div class="actions"><button class="btn" type="button" id="uBtn">取消訂閱</button></div></div></main>
+  <main class="content"><div class="eyebrow">DISC</div><h1>取消訂閱</h1><p class="lead">取消訂閱後，disc-test.org 將不再寄送訂閱郵件到收到這封郵件的信箱。這不影響測驗結果郵件：只有在你自己要求時才會寄出。</p><div class="card contactcard"><p class="sendstatus" id="uStatus" aria-live="polite">正在取消訂閱……</p><div class="actions"><button class="btn" type="button" id="uBtn" hidden>取消訂閱</button></div></div></main>
   <footer class="foot">
     <div class="row2"><span>24 題 · 約 10 分鐘 · 沒有對錯之分</span><span class="footlinks"><a href="../../zh-hant/about/">關於本站</a> · <a href="../../zh-hant/services/">服務</a> · <a href="../../zh-hant/offer/">銷售條款</a> · <a href="../../zh-hant/contact/">聯絡我們</a> · <a href="../../zh-hant/privacy/">隱私權政策</a></span></div>
     <nav class="materials" aria-label="DISC 相關資源"><span class="mlabel">DISC 相關資源</span><a href="../../zh-hant/disc/">什麼是 DISC</a><a href="../../zh-hant/styles/">四種風格</a><a href="../../zh-hant/profiles/">16 種類型</a><a href="../../zh-hant/results/">結果解讀</a><a href="../../zh-hant/compatibility/">風格搭配</a><a href="../../zh-hant/colors/">DISC 人格色彩</a><a href="../../zh-hant/teams/">DISC 團隊應用</a><a href="../../zh-hant/disc-vs-mbti/">DISC 與 MBTI</a><a href="../../zh-hant/pdf/">PDF 列印版</a><a href="../../zh-hant/faq/">常見問題</a></nav>
@@ -723,7 +723,7 @@ body.has-consent{padding-bottom:160px}
 <script>
 (function(){
 'use strict';
-var L = {"lang":"zh-hant","name":"繁體中文","dir":"ltr","dateLocale":"zh-TW","ui":{"langLabel":"語言","unsub.button":"取消訂閱","unsub.done":"已完成：disc-test.org 不會再寄送訂閱郵件到這個信箱。","unsub.failed":"取消訂閱失敗。請再試一次，或直接來信：{email}。","unsub.bad":"連結中沒有取消訂閱的代碼。請完整開啟郵件中的連結，或直接來信：{email}。","consent.label":"Cookie 通知","consent.text":"本網站將你的進度、結果和所選語言儲存在瀏覽器的本機儲存空間中；一項網站分析服務會收集匿名的造訪統計和頁面操作紀錄，協助我們改善網站。你的姓名、電子郵件和結果不會傳送給該分析服務。","consent.more":"了解詳情","consent.details":"瀏覽器中儲存的內容：你填寫的姓名和電子郵件（如有）；你的答案和未完成的進度；最近一次結果；所選語言；你已看過本通知的標記。這些資料只保留在你的裝置上，清除網站資料後即會刪除。網站代管服務會收到標準的技術性請求資料。每天第一次開啟網站時，會有一筆匿名的造訪紀錄傳送到網站伺服器，僅包含網站語言版本；伺服器會連同收到的時間一併保存，瀏覽器會記下日期，以免當天重複傳送。我們用這些紀錄統計有多少人造訪網站。開始測驗時，會有一筆匿名的開始紀錄傳送到網站伺服器，僅包含網站語言版本。完成測驗時，會有一筆用於整體統計的匿名紀錄傳送到網站伺服器：你測出的類型和網站語言版本，不含姓名、電子郵件和答案。點選「儲存為 PDF」時，你的答案和測驗日期（不含姓名和電子郵件）會傳送到網站伺服器，伺服器據此產生基本版報告檔案並傳回給你，不會儲存任何內容。當你把結果寄到電子郵件信箱時，姓名、電子郵件和答案會傳送到網站伺服器：伺服器會把結果寄給你，並將姓名、電子郵件、日期和結果儲存到網站擁有者的結果資料庫中。當你在首頁訂閱郵件時，電子郵件和網站語言版本會傳送到網站伺服器：伺服器會寄出附有確認連結的郵件，並將這個地址儲存在同一個資料庫中；如果未確認訂閱，這個地址會在 7 天後刪除。網站分析服務會收到頁面網址（在結果頁面上包含結果代碼：你的答案、測驗日期，以及你填寫過的姓名，但不含電子郵件）、造訪來源、裝置和瀏覽器類型、頁面操作紀錄（姓名和電子郵件輸入欄位不在記錄範圍內），並設定自己的 Cookie。你可以透過瀏覽器設定或追蹤封鎖工具將其封鎖。本站不使用廣告追蹤器。","consent.accept":"接受","consent.decline":"僅限必要項目","consent.ok":"知道了","root.continue":"繼續"}};
+var L = {"lang":"zh-hant","name":"繁體中文","dir":"ltr","dateLocale":"zh-TW","ui":{"langLabel":"語言","unsub.button":"取消訂閱","unsub.done":"你已取消訂閱：disc-test.org 不會再寄送訂閱郵件到這個信箱。","unsub.wait":"正在取消訂閱……","unsub.failed":"取消訂閱失敗。請再試一次，或直接來信：{email}。","unsub.bad":"連結中沒有取消訂閱的代碼。請完整開啟郵件中的連結，或直接來信：{email}。","consent.label":"Cookie 通知","consent.text":"本網站將你的進度、結果和所選語言儲存在瀏覽器的本機儲存空間中；一項網站分析服務會收集匿名的造訪統計和頁面操作紀錄，協助我們改善網站。你的姓名、電子郵件和結果不會傳送給該分析服務。","consent.more":"了解詳情","consent.details":"瀏覽器中儲存的內容：你填寫的姓名和電子郵件（如有）；你的答案和未完成的進度；最近一次結果；所選語言；你已看過本通知的標記。這些資料只保留在你的裝置上，清除網站資料後即會刪除。網站代管服務會收到標準的技術性請求資料。每天第一次開啟網站時，會有一筆匿名的造訪紀錄傳送到網站伺服器，僅包含網站語言版本；伺服器會連同收到的時間一併保存，瀏覽器會記下日期，以免當天重複傳送。我們用這些紀錄統計有多少人造訪網站。開始測驗時，會有一筆匿名的開始紀錄傳送到網站伺服器，僅包含網站語言版本。完成測驗時，會有一筆用於整體統計的匿名紀錄傳送到網站伺服器：你測出的類型和網站語言版本，不含姓名、電子郵件和答案。點選「儲存為 PDF」時，你的答案和測驗日期（不含姓名和電子郵件）會傳送到網站伺服器，伺服器據此產生基本版報告檔案並傳回給你，不會儲存任何內容。當你把結果寄到電子郵件信箱時，姓名、電子郵件和答案會傳送到網站伺服器：伺服器會把結果寄給你，並將姓名、電子郵件、日期和結果儲存到網站擁有者的結果資料庫中。當你在首頁訂閱郵件時，電子郵件和網站語言版本會傳送到網站伺服器：伺服器會寄出附有確認連結的郵件，並將這個地址儲存在同一個資料庫中；如果未確認訂閱，這個地址會在 7 天後刪除。網站分析服務會收到頁面網址（在結果頁面上包含結果代碼：你的答案、測驗日期，以及你填寫過的姓名，但不含電子郵件）、造訪來源、裝置和瀏覽器類型、頁面操作紀錄（姓名和電子郵件輸入欄位不在記錄範圍內），並設定自己的 Cookie。你可以透過瀏覽器設定或追蹤封鎖工具將其封鎖。本站不使用廣告追蹤器。","consent.accept":"接受","consent.decline":"僅限必要項目","consent.ok":"知道了","root.continue":"繼續"}};
 var ROOT_REL = '../../', SUBPATH = 'unsubscribe/';
 var LANG_PATH = {"en":"","es":"es/","zh":"zh/","zh-hant":"zh-hant/","ru":"ru/","ar":"ar/","pt":"pt/","fr":"fr/","de":"de/","ja":"ja/","id":"id/","tr":"tr/","pl":"pl/"}, LANG_META = {"en":{"name":"English","cont":"Continue","dir":"ltr"},"es":{"name":"Español","cont":"Continuar","dir":"ltr"},"zh":{"name":"简体中文","cont":"继续","dir":"ltr"},"zh-hant":{"name":"繁體中文","cont":"繼續","dir":"ltr"},"ru":{"name":"Русский","cont":"Продолжить","dir":"ltr"},"ar":{"name":"العربية","cont":"متابعة","dir":"rtl"},"pt":{"name":"Português","cont":"Continuar","dir":"ltr"},"fr":{"name":"Français","cont":"Continuer","dir":"ltr"},"de":{"name":"Deutsch","cont":"Weiter","dir":"ltr"},"ja":{"name":"日本語","cont":"続ける","dir":"ltr"},"id":{"name":"Bahasa Indonesia","cont":"Lanjutkan","dir":"ltr"},"tr":{"name":"Türkçe","cont":"Devam et","dir":"ltr"},"pl":{"name":"Polski","cont":"Kontynuuj","dir":"ltr"}};
 function $(s){ return document.querySelector(s); }
@@ -937,17 +937,23 @@ function initCommon(c){
 
 initCommon({L:L, t:t, esc:esc, lsGet:lsGet, lsSet:lsSet, langHref:langHref, $:$, langMeta:LANG_META, langPath:LANG_PATH, privacyHref:ROOT_REL+(LANG_PATH[L.lang]||'')+'privacy/', reportHref:ROOT_REL+(LANG_PATH[L.lang]||'')+'extended-report/', noXbar:false});
 (function(){ var btn = $('#uBtn'), st = $('#uStatus'), m = /[#&]u=([A-Za-z0-9_-]{22})(?:&|$)/.exec(dataHash()), mail = "\u003ca href=\"mailto:info@disc-test.org\">info@disc-test.org\u003c/a>";
-  function status(kind, html){ st.hidden = false; st.className = 'small sendstatus ' + kind; st.innerHTML = html; }
-  if(!m){ btn.hidden = true; status('err', t('unsub.bad', {email: mail})); return; }
-  btn.addEventListener('click', function(){
-    btn.disabled = true;
-    // Content-Type не задаём: «простой» запрос без preflight, который принимает Google Apps Script
+  function status(kind, html){ st.hidden = false; st.className = 'sendstatus ' + kind; st.innerHTML = html; }
+  if(!m){ status('err', t('unsub.bad', {email: mail})); return; }
+  function unsubscribe(){
+    btn.hidden = true; status('muted', esc(t('unsub.wait')));
+    // Content-Type не задаём: «простой» запрос без preflight
     fetch("https://api.disc-test.org/", {method: 'POST', body: JSON.stringify({token: "kR7UiShTyG7Wws7t16NkgKN3", action: 'unsubscribe', u: m[1]}), redirect: 'follow'})
       .then(function(res){ return res.text(); })
-      .then(function(txt){ var j = null; try{ j = JSON.parse(txt); }catch(e){} if(!j || !j.ok) throw new Error('failed');
-        btn.hidden = true; status('ok', esc(t('unsub.done'))); if(window.discTrack) window.discTrack('unsubscribe'); })
-      .catch(function(){ btn.disabled = false; status('err', t('unsub.failed', {email: mail})); });
-  });
+      .then(function(txt){ var j = null; try{ j = JSON.parse(txt); }catch(e){}
+        if(j && j.error === 'bad link'){ status('err', t('unsub.bad', {email: mail})); return; }
+        if(!j || !j.ok) throw new Error('failed');
+        status('ok', '<span style="display:flex;gap:12px;align-items:center"><svg viewBox="0 0 24 24" width="32" height="32" aria-hidden="true" style="flex:none">' +
+          '<circle cx="12" cy="12" r="12" fill="currentColor"/><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
+          '<span>' + esc(t('unsub.done')) + '</span></span>'); if(window.discTrack) window.discTrack('unsubscribe'); })
+      .catch(function(){ btn.hidden = false; status('err', t('unsub.failed', {email: mail})); });
+  }
+  btn.addEventListener('click', unsubscribe);
+  unsubscribe();
 })();
 /* цели Метрики у кнопок теста (cta-top, cta-bottom, cta-float) и плавающая кнопка на телефоне: видна, когда призыв
    после вводного абзаца уже прокручен вверх, а нижний призыв и подвал ещё не на экране (аудит 3, п. 1) */

@@ -1916,7 +1916,7 @@
       }
     },
     "contact": { "title": "联系我们｜给 DISC 测试作者留言", "description": "有问题、翻译错误或建议？通过联系表单给我们留言，需要时可以添加附件。", "h1": "联系我们", "lead": "发现错误、翻译不准确，或想提出改进建议？给我们留言，我们会回复到你填写的邮箱。" },
-    "unsubscribe": { "title": "退订邮件｜DISC 测试", "description": "一键退订 disc-test.org 的邮件，无需登录或密码。", "h1": "退订邮件", "lead": "点击按钮后，disc-test.org 将不再向收到此链接邮件的邮箱发送订阅邮件。这不影响测试结果邮件：只有你自己申请时才会发送。" },
+    "unsubscribe": { "title": "退订邮件｜DISC 测试", "description": "一键退订 disc-test.org 的邮件，无需登录或密码。", "h1": "退订邮件", "lead": "退订后，disc-test.org 将不再向收到此链接邮件的邮箱发送订阅邮件。这不影响测试结果邮件：只有你自己申请时才会发送。" },
     "subscribeConfirm": {
       "title": "订阅确认｜DISC 测试",
       "description": "通过邮件中的链接确认订阅 disc-test.org 的邮件。",
@@ -2754,7 +2754,8 @@
     "contact.messageRequired": "请填写留言",
     "contact.direct": "或直接写信给我们：{email}",
     "unsub.button": "退订",
-    "unsub.done": "已完成：disc-test.org 不会再向此邮箱发送订阅邮件。",
+    "unsub.done": "你已退订：disc-test.org 不会再向此邮箱发送订阅邮件。",
+    "unsub.wait": "正在退订……",
     "unsub.failed": "退订失败。请重试，或直接写信给我们：{email}。",
     "unsub.bad": "链接中没有退订代码。请完整打开邮件中的链接，或直接写信给我们：{email}。",
     "nl.title": "订阅邮件",

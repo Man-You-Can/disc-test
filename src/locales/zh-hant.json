@@ -866,7 +866,7 @@
       }
     },
     "contact": { "title": "聯絡我們｜留言給 DISC 測驗作者", "description": "對 DISC 測驗有問題、發現翻譯錯誤或想提出建議？歡迎透過聯絡表單留言給我們，需要時也可以附加檔案。", "h1": "聯絡我們", "lead": "發現錯誤、翻譯不準確，或想提出改進建議？留言給我們，我們會回覆到你填寫的電子郵件信箱。" },
-    "unsubscribe": { "title": "取消訂閱｜DISC 測驗", "description": "一鍵取消訂閱 disc-test.org 的郵件，不需登入或密碼。", "h1": "取消訂閱", "lead": "按下按鈕後，disc-test.org 將不再寄送訂閱郵件到收到這封郵件的信箱。這不影響測驗結果郵件：只有在你自己要求時才會寄出。" },
+    "unsubscribe": { "title": "取消訂閱｜DISC 測驗", "description": "一鍵取消訂閱 disc-test.org 的郵件，不需登入或密碼。", "h1": "取消訂閱", "lead": "取消訂閱後，disc-test.org 將不再寄送訂閱郵件到收到這封郵件的信箱。這不影響測驗結果郵件：只有在你自己要求時才會寄出。" },
     "subscribeConfirm": {
       "title": "訂閱確認｜DISC 測驗",
       "description": "透過郵件中的連結確認訂閱 disc-test.org 的郵件。",
@@ -1708,7 +1708,8 @@
     "contact.messageRequired": "請填寫留言",
     "contact.direct": "或直接來信：{email}",
     "unsub.button": "取消訂閱",
-    "unsub.done": "已完成：disc-test.org 不會再寄送訂閱郵件到這個信箱。",
+    "unsub.done": "你已取消訂閱：disc-test.org 不會再寄送訂閱郵件到這個信箱。",
+    "unsub.wait": "正在取消訂閱……",
     "unsub.failed": "取消訂閱失敗。請再試一次，或直接來信：{email}。",
     "unsub.bad": "連結中沒有取消訂閱的代碼。請完整開啟郵件中的連結，或直接來信：{email}。",
     "nl.title": "訂閱我們的郵件",

@@ -2095,7 +2095,7 @@
       "title": "Unsubscribe — Stop Emails From the DISC Test",
       "description": "Unsubscribe from disc-test.org emails with one button: no login or password needed.",
       "h1": "Unsubscribe from emails",
-      "lead": "Press the button and disc-test.org will stop sending its newsletter to the address that received the email with this link. This does not affect the email with your test result: that one is sent only when you request it yourself."
+      "lead": "Once you unsubscribe, disc-test.org stops sending its newsletter to the address that received the email with this link. This does not affect the email with your test result: that one is sent only when you request it yourself."
     },
     "subscribeConfirm": {
       "title": "Newsletter Subscription — DISC Test",
@@ -3055,7 +3055,8 @@
     "contact.messageRequired": "Please write a message",
     "contact.direct": "Or write to us directly: {email}",
     "unsub.button": "Unsubscribe",
-    "unsub.done": "Done: disc-test.org will no longer send its newsletter to this address.",
+    "unsub.done": "You have unsubscribed: disc-test.org will no longer send its newsletter to this address.",
+    "unsub.wait": "Unsubscribing…",
     "unsub.failed": "We couldn’t unsubscribe you. Please try again or write to us: {email}.",
     "unsub.bad": "This link has no unsubscribe code. Open the full link from the email or write to us: {email}.",
     "nl.title": "Subscribe to our newsletter",

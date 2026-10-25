@@ -1139,7 +1139,7 @@
       "title": "Berhenti Berlangganan Buletin — Tes DISC",
       "description": "Berhenti berlangganan buletin disc-test.org dengan satu tombol, tanpa login atau kata sandi.",
       "h1": "Berhenti berlangganan buletin",
-      "lead": "Tekan tombol, dan disc-test.org akan berhenti mengirim buletin ke alamat yang menerima email berisi tautan ini. Hal ini tidak memengaruhi email hasil tes: email itu hanya dikirim saat Anda sendiri memintanya."
+      "lead": "Setelah berhenti berlangganan, disc-test.org tidak lagi mengirim buletin ke alamat yang menerima email berisi tautan ini. Hal ini tidak memengaruhi email hasil tes: email itu hanya dikirim saat Anda sendiri memintanya."
     },
     "subscribeConfirm": {
       "title": "Langganan Buletin — Tes DISC",
@@ -2110,7 +2110,8 @@
     "contact.messageRequired": "Mohon tulis pesan Anda",
     "contact.direct": "Atau hubungi kami langsung: {email}",
     "unsub.button": "Berhenti berlangganan",
-    "unsub.done": "Selesai: disc-test.org tidak akan lagi mengirim buletin ke alamat ini.",
+    "unsub.done": "Anda telah berhenti berlangganan: disc-test.org tidak akan lagi mengirim buletin ke alamat ini.",
+    "unsub.wait": "Memproses berhenti berlangganan…",
     "unsub.failed": "Gagal berhenti berlangganan. Coba lagi atau hubungi kami: {email}.",
     "unsub.bad": "Tautan ini tidak memuat kode berhenti berlangganan. Buka tautan lengkap dari email atau hubungi kami: {email}.",
     "nl.title": "Berlangganan buletin",

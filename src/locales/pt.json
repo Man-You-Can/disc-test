@@ -1158,7 +1158,7 @@
       "title": "Cancelar inscrição na newsletter — teste DISC",
       "description": "Cancele a inscrição na newsletter do disc-test.org com um botão, sem login nem senha.",
       "h1": "Cancelar inscrição na newsletter",
-      "lead": "Clique no botão e o disc-test.org deixará de enviar a newsletter para o endereço que recebeu o e-mail com este link. Isso não afeta o e-mail com o resultado do teste: ele só é enviado quando você mesmo solicita."
+      "lead": "Ao cancelar a inscrição, o disc-test.org deixa de enviar a newsletter para o endereço que recebeu o e-mail com este link. Isso não afeta o e-mail com o resultado do teste: ele só é enviado quando você mesmo solicita."
     },
     "subscribeConfirm": {
       "title": "Inscrição na newsletter — teste DISC",
@@ -2120,7 +2120,8 @@
     "contact.messageRequired": "Escreva uma mensagem",
     "contact.direct": "Ou escreva diretamente para nós: {email}",
     "unsub.button": "Cancelar inscrição",
-    "unsub.done": "Pronto: o disc-test.org não enviará mais a newsletter para este endereço.",
+    "unsub.done": "Inscrição cancelada: o disc-test.org não enviará mais a newsletter para este endereço.",
+    "unsub.wait": "Cancelando a inscrição…",
     "unsub.failed": "Não foi possível cancelar a inscrição. Tente novamente ou escreva para nós: {email}.",
     "unsub.bad": "O link não contém o código de cancelamento. Abra o link completo do e-mail ou escreva para nós: {email}.",
     "nl.title": "Inscreva-se na newsletter",
