@@ -85,6 +85,9 @@ for (const f of files) {
   // письмо подписчикам о расширенном отчёте (с 2026-10-25, во всех языках с покупкой) — по этому же правилу
   if (P.pay && !(C.mailing && C.mailing.promo)) errs.push('.content.mailing.promo: missing — the report is on sale in this language, so the subscriber mail goes with it (CLAUDE.md)');
   // «Для организаций»: страница и пункт в подвале — вместе; продаются коды доступа, поэтому нужны поле кода в покупке и письмо по коду
+  // бумажный бланк и набор ведущего (с 2026-10-25): появляются в языке только вместе — QR-коды бланка ведут на набор, письмо с бланком — тоже
+  if (!!C.kit !== !!C.paper) errs.push('.content.kit and .content.paper must come together (the blank links to the kit)');
+  if (C.paper && !(C.consentDoc && C.consentDoc.paperForm)) errs.push('.content.paper: needs .content.consentDoc.paperForm (the consent text must describe the "blank by e-mail" form)');
   if (C.cvPromo && !C.cv) errs.push('.content.cvPromo: needs .content.cv (the blocks link to the /cv/ landing)');
   if (!!C.business !== !!(j.ui && j.ui['nav.business'])) errs.push('.content.business and .ui["nav.business"] must come together');
   if (C.business && !(P.pay && P.pay.code)) errs.push('.content.business: needs .content.product.pay.code (people redeem the codes in the purchase form)');

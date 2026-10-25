@@ -43,6 +43,6 @@ for (const code of langs) {
   const html = printHTML({ L, t, esc, KEYS, PROFILE_KEYS, BLOCK_KEYS, url, fontsCss, fontFamily: f.family, links, qr: qrSVG });
   const htmlFile = path.join(tmp, code + '.html'); fs.writeFileSync(htmlFile, html);
   const out = path.join(OUTD, 'disc-test-' + code + '.pdf');
-  execFileSync(chrome, ['--headless=new', '--disable-gpu', '--no-sandbox', '--no-pdf-header-footer', '--virtual-time-budget=5000', '--print-to-pdf=' + out, 'file://' + encodeURI(htmlFile)], { stdio: 'ignore' });
+  execFileSync(chrome, ['--headless=new', '--disable-gpu', '--no-sandbox', '--no-pdf-header-footer', '--virtual-time-budget=5000', '--print-to-pdf=' + out, 'file://' + encodeURI(htmlFile)], { stdio: 'ignore', timeout: 120000 });
   console.log('pdf: ' + path.relative(ROOT, out) + ' (' + Math.round(fs.statSync(out).size / 1024) + ' KB)');
 }

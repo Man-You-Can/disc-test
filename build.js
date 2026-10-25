@@ -161,9 +161,12 @@ const offerSections = L => { const of = L.content.offer; if (!of.codeTerms || !p
 const policyPurchase = L => { const po = L.content.policy; return po.purchaseCode && payCodeT(L, x => x) ? Object.assign({}, po.purchase, { p: po.purchase.p.concat([po.purchaseCode]) }) : po.purchase; };
 // Набор ведущего (/kit/, с 2026-10-25; пока только русская версия): сценарий занятия, слайды, таблица группы, карта команды и карточки —
 // платные файлы в private/kit (вне репозитория), на странице — описание, картинки-образцы src/assets/kit/<язык>-*.jpg и заявка через форму
-// обратной связи (src/business.js, цель kit-request). Цена — kitPriceRub в site.config.json. Есть там, где в локали content.kit.
-const kitPriceRub = Number(cfg.kitPriceRub) || 0;
-const hasKit = L => !!(L.content.kit && kitPriceRub && feedbackEmail && cfg.sendEndpoint);
+// обратной связи (src/business.js, цель kit-request). Цена — kitPriceRub / kitPriceUsd / kitPriceEur в site.config.json, по валюте языка
+// (content.services.currency); в текстах {price} — только число, знак валюты пишет сам язык («{price} ₽», «US${price}», «{price} €»).
+// Есть там, где в локали content.kit и для валюты языка задана цена.
+const kitPrices = { RUB: Number(cfg.kitPriceRub) || 0, USD: Number(cfg.kitPriceUsd) || 0, EUR: Number(cfg.kitPriceEur) || 0 };
+const kitPrice = L => kitPrices[(L.content.services && L.content.services.currency) || 'USD'] || 0;
+const hasKit = L => !!(L.content.kit && kitPrice(L) && feedbackEmail && cfg.sendEndpoint);
 const hasBusiness = L => !!(L.content.business && L.ui['nav.business'] && hasProduct(L) && L.content.product.pay && L.content.services.currency === 'RUB' && servicePrices.RUB &&
   payCodeT(L, x => x) && feedbackEmail && cfg.sendEndpoint && businessPacks.length);
 // Оператор и дата редакции в политике и согласии: в языке с полным текстом политики (policy.legal — русская версия) — исполнитель из оферты
@@ -1070,7 +1073,7 @@ for (const L of locales) {
     }
     // /kit/ — набор ведущего: что внутри (с картинками-образцами), кому подойдёт, план занятия, цена и заявка (src/business.js, цель kit-request)
     if (hasKit(L)) {
-      const KT = C.kit, F = KT.form, kprice = fmtPrice(L, kitPriceRub) + ' ₽';
+      const KT = C.kit, F = KT.form, kprice = fmtPrice(L, kitPrice(L));
       const kv = s2 => String(s2).replace(/\{price\}/g, kprice);
       const KF = { name: t('intro.nameLabel'), email: t('contact.emailLabel'), size: F.size, sizes: F.sizes, interest: F.interest, interests: F.interests,
         comment: F.comment, commentPlaceholder: F.commentPlaceholder, button: F.button, subject: F.subject, sent: F.sent, needInterest: F.needInterest,
