@@ -9,7 +9,7 @@
 <meta name="google-site-verification" content="q9-P14KEm3Bl0iw-lP3zITeLv0EESmjJcPRee30aAsw">
 <meta name="yandex-verification" content="028b85ace16c85fc">
 <script>window.DISC_ANALYTICS={"ym":"112347000","mode":"always"};</script>
-<script>window.DISC_XBAR={"button":"购买你的专属详细版报告，⁣9.99⁣ 美元","offer":"购买你的专属详细版报告，⁢6.99⁢ 美元","offerUrl":"https://api.disc-test.org/pay/offer","ms":3600000,"close":"关闭"};</script>
+<script>window.DISC_XBAR={"button":"购买你的专属详细版报告，⁣9.99⁣ 美元","offer":"购买你的专属详细版报告，⁢6.99⁢ 美元","offerUrl":"https://api.disc-test.org/pay/offer","ms":86400000,"close":"关闭"};</script>
 <script>window.DISC_PRICE={"url":"https://api.disc-test.org/pay/offer","cur":"USD","loc":"zh-CN"};</script>
 <script>window.DISC_VISIT={"url":"https://api.disc-test.org/","token":"kR7UiShTyG7Wws7t16NkgKN3","host":"disc-test.org"};</script>
 <meta property="og:type" content="article">
@@ -363,6 +363,40 @@ html[lang|=zh] [lang]:not([lang|=zh]):not([lang|=ja]),html[lang=ja] [lang]:not([
 .langbar-x:hover{color:var(--ink);background:var(--soft)}
 .styles-intro{margin-top:34px}
 .home-more{margin-top:34px}
+/* «Что вы получите» с примером результата — сразу под кнопкой теста (с 2026-10-25): список слева, пример справа; на телефоне — заголовок, пример без графика, список */
+.homeget{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);grid-template-areas:"h c" "l c";grid-template-rows:auto 1fr;gap:4px 28px;align-items:start;margin:30px 0 6px}
+.homeget h2{grid-area:h;font-size:22px;margin:0 0 8px}
+.homeget ul{grid-area:l;margin:0;padding-inline-start:20px}
+.homeget li{margin-bottom:8px}
+.homeget .hgcard{grid-area:c}
+@media (max-width:700px){.homeget{grid-template-columns:minmax(0,1fr);grid-template-areas:"h" "c" "l";grid-template-rows:none;gap:14px;margin-top:26px}.homeget .hgcard .graph{display:none}}
+.hgcard{padding:18px}
+.hglabel{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:600;margin-bottom:8px}
+html[lang=ar] .hglabel,html[lang|=zh] .hglabel,html[lang=ja] .hglabel{letter-spacing:.04em;font-size:13px}
+.hgname{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 8px;margin-bottom:14px}
+.hgname .pill{font-size:22px}.hgname .pill .s{font-size:16px}
+.hgname b{font-size:17px}
+.hgname .muted{font-size:13px;flex-basis:100%}
+.hgbody{display:grid;grid-template-columns:minmax(0,1fr);gap:14px}
+.hgbody .graph svg{max-height:200px}
+.hgbars{display:grid;gap:10px}
+.hgbar{display:grid;grid-template-columns:16px minmax(0,1fr) 40px;gap:10px;align-items:center}
+.hgbar b{color:var(--k);font-family:var(--font-head);font-weight:500}
+.hgbar .bar{grid-column:auto}
+.hgbar span{font-family:var(--font-mono);font-size:13px;text-align:end;direction:ltr;font-variant-numeric:tabular-nums}
+.hgcard.flat{margin:16px 0 0;padding:14px 16px;border:1px solid var(--line);border-radius:12px}
+/* строка со счётом прохождений за 7 дней под кнопкой теста (число — от сервера, GET <sendEndpoint>stats) */
+.passes:not([hidden]){display:flex;align-items:center;gap:9px;margin:8px 0 0}
+.passes::before{content:"";flex:none;width:8px;height:8px;border-radius:50%;background:var(--s);box-shadow:0 0 0 3px color-mix(in srgb,var(--s) 25%,transparent)}
+/* «Тест в PDF»: «На бумаге» и «Онлайн» рядом (с 2026-10-25) */
+.pdfcmp{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;margin:24px 0 8px;align-items:start}
+@media (max-width:700px){.pdfcmp{grid-template-columns:minmax(0,1fr)}}
+.pdfcmp h2{margin:0 0 10px;font-size:20px}
+.pdfcmp ul{padding-inline-start:20px;margin:0}
+.pdfcmp li{margin-bottom:6px}
+.pdfcmp .download{margin:16px 0 0}
+.pdfcmp>.card{margin:0}
+.pdfcmp .card.on{border-color:var(--line-strong)}
 /* подписка на рассылку на стартовом экране (с 2026-10-22): поле и кнопка в строку, на телефоне — друг под другом */
 .nlbox{margin-top:30px}
 .nlbox h2{margin:0 0 6px;font-size:22px}
@@ -620,14 +654,16 @@ th.num{text-align:end}
 .consent-in summary::-webkit-details-marker{display:none}
 .consent-in details p{margin:8px 0 0}
 body.has-consent{padding-bottom:160px}
-/* телефон: плашка только информирует, поэтому компактная — одна строка текста и кнопка, подробности свёрнуты */
+/* телефон: плашка только информирует, поэтому компактная — одна строка текста (с 2026-10-25, раньше три) и кнопка, подробности свёрнуты:
+   по «Подробнее» текст раскрывается целиком */
 @media (max-width:640px){
-  body.has-consent{padding-bottom:120px}
+  body.has-consent{padding-bottom:84px}
   .consent{padding:0 8px 8px}
-  .consent-in{padding:10px 12px;gap:4px 10px;font-size:12px;line-height:1.4;display:grid;grid-template-columns:1fr auto;align-items:start}
-  .consent-in>p{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+  .consent-in{padding:8px 10px 8px 12px;gap:0 10px;font-size:12px;line-height:1.4;display:grid;grid-template-columns:1fr auto;align-items:center}
+  .consent-in>p{display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
+  .consent-in>.btn,.consent-in>.consent-btns{grid-row:1/3;grid-column:2}
   .consent-in:has(details[open])>p{display:block}
-  .consent-in details{grid-column:1/-1}
+  .consent-in details{grid-column:1}
 }
 @media print{.consent{display:none!important}}
 @media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
@@ -1261,7 +1297,7 @@ function initPayFail(c){
   if(rec && !rec.fail){ rec.fail = true; c.lsSet('disc.pay', rec); payTrack('ext-pay-fail'); }
 }
 
-initPayBuy({T: {"noteHtml":"点击“购买”，即表示你接受《\u003ca href=\"../offer/\">付费服务协议\u003c/a>》。付款由 Prodamus 处理：银行卡信息填写在它的安全页面上，而不是本网站。银行账单上的收款方可能显示为 simpleway.by。","errorHtml":"暂时无法跳转到付款页面。请过一分钟再试，或写信至 \u003ca href=\"mailto:info@disc-test.org\">info@disc-test.org\u003c/a>。","title":"报告将根据你 {date}的测试结果生成","text":"付款后，报告会立即以 PDF 附件的形式发送到你的邮箱，付款收据也发到同一个邮箱。","emailLabel":"接收报告（PDF）的邮箱","emailPlaceholder":"请输入你的邮箱","button":"购买","badEmail":"请检查邮箱地址：报告和收据都会发到这个地址。","wait":"正在跳转到付款页面……","guarantee":"不满意？7 天内全额退款，无需说明理由。","offer":{"price":6.99,"regular":9.99,"ms":3600000,"priceText":"⁢6.99⁢ 美元","regularText":"⁣9.99⁣ 美元","regularLabel":"原价","cta":"现在购买，只需 ⁢6.99⁢ 美元","note":"测试后⁡1小时⁡内享受特价，之后恢复为 ⁣9.99⁣ 美元","left":"剩余时间","expired":"特价时间已过，报告现价 ⁣9.99⁣ 美元。请再点一次“购买”。","button":"购买你的专属详细版报告，⁢6.99⁢ 美元"},"code":null}, endpoint: "https://api.disc-test.org/pay", L: L, esc: esc, lsGet: lsGet, lsSet: lsSet});
+initPayBuy({T: {"noteHtml":"点击“购买”，即表示你接受《\u003ca href=\"../offer/\">付费服务协议\u003c/a>》。付款由 Prodamus 处理：银行卡信息填写在它的安全页面上，而不是本网站。银行账单上的收款方可能显示为 simpleway.by。","errorHtml":"暂时无法跳转到付款页面。请过一分钟再试，或写信至 \u003ca href=\"mailto:info@disc-test.org\">info@disc-test.org\u003c/a>。","title":"报告将根据你 {date}的测试结果生成","text":"付款后，报告会立即以 PDF 附件的形式发送到你的邮箱，付款收据也发到同一个邮箱。","emailLabel":"接收报告（PDF）的邮箱","emailPlaceholder":"请输入你的邮箱","button":"购买","badEmail":"请检查邮箱地址：报告和收据都会发到这个地址。","wait":"正在跳转到付款页面……","guarantee":"不满意？7 天内全额退款，无需说明理由。","offer":{"price":6.99,"regular":9.99,"ms":86400000,"priceText":"⁢6.99⁢ 美元","regularText":"⁣9.99⁣ 美元","regularLabel":"原价","cta":"现在购买，只需 ⁢6.99⁢ 美元","note":"测试后⁡24小时⁡内享受特价，之后恢复为 ⁣9.99⁣ 美元","left":"剩余时间","expired":"特价时间已过，报告现价 ⁣9.99⁣ 美元。请再点一次“购买”。","button":"购买你的专属详细版报告，⁢6.99⁢ 美元"},"code":null}, endpoint: "https://api.disc-test.org/pay", L: L, esc: esc, lsGet: lsGet, lsSet: lsSet});
 /* цели Метрики у кнопок теста (cta-top, cta-bottom, cta-float) и плавающая кнопка на телефоне: видна, когда призыв
    после вводного абзаца уже прокручен вверх, а нижний призыв и подвал ещё не на экране (аудит 3, п. 1) */
 (function(){

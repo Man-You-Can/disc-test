@@ -1359,6 +1359,13 @@
       "description": "Tes DISC PDF gratis: 24 soal, kunci jawaban, tabel skor, dan uraian 16 profil. Unduh, cetak, lalu isi di kertas. Versi online menghitung hasilnya otomatis.",
       "h1": "Tes DISC PDF: Unduh dan Cetak",
       "lead": "Versi lengkap yang sama dengan tes online, tetapi dalam bentuk file siap cetak: 24 soal yang masing-masing berisi empat pernyataan, kunci jawaban (gaya di balik tiap pernyataan), tabel penghitungan skor, dan uraian ke-16 profil. File ini gratis dan tidak memerlukan pendaftaran.",
+      "compare": {
+        "paperTitle": "Di kertas",
+        "paper": ["Cetak lalu tandai jawaban dengan pena", "Hitung skor sendiri dengan kunci", "Profil dan beberapa baris deskripsi"],
+        "onlineTitle": "Online",
+        "online": ["Sekitar 10 menit dari ponsel atau komputer", "Skor, persentase, dan grafik dihitung otomatis", "Laporan langsung: kekuatan, area pengembangan, dan saran"],
+        "button": "Ikuti tes online"
+      },
       "sections": [
         {
           "h": "Isi file",
@@ -1900,6 +1907,7 @@
     "intro.requiredNote": "Kolom bertanda bintang (*) wajib diisi.",
     "intro.start": "Mulai tes",
     "intro.startNote": "24 soal · sekitar 10 menit · tanpa pendaftaran",
+    "intro.passes": "Tes yang diselesaikan dalam 7 hari terakhir: {n}",
     "intro.resume": "Lanjutkan tes sebelumnya ({n} dari 24 soal sudah diisi)",
     "intro.showLast": "Buka hasil saya sebelumnya, tertanggal {date}",
     "intro.nameRequired": "Mohon isi nama Anda",

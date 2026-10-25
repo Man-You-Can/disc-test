@@ -2332,6 +2332,13 @@
       "description": "Test DISC gratuit en PDF : 24 blocs d'affirmations, clé, grille de calcul et description des 16 profils. À télécharger, imprimer et remplir sur papier.",
       "h1": "Test DISC en PDF : télécharger et imprimer",
       "lead": "La même version complète du test qu'en ligne, mais dans un fichier à imprimer : 24 blocs de quatre affirmations, la clé des styles, la grille de calcul et la description des 16 profils. Le fichier est gratuit et ne demande aucune inscription.",
+      "compare": {
+        "paperTitle": "Sur papier",
+        "paper": ["L'imprimer et cocher les réponses au stylo", "Compter les points à la main avec la clé", "Le profil et quelques lignes de description"],
+        "onlineTitle": "En ligne",
+        "online": ["Environ 10 minutes sur téléphone ou ordinateur", "Scores, pourcentages et graphique calculés automatiquement", "Un rapport immédiat : points forts, axes de progression, conseils"],
+        "button": "Passer le test en ligne"
+      },
       "sections": [
         {
           "h": "Contenu du fichier",
@@ -2877,6 +2884,7 @@
     "intro.requiredNote": "Les champs marqués d'un astérisque (*) sont obligatoires.",
     "intro.start": "Commencer le test",
     "intro.startNote": "24 blocs · environ 10 minutes · sans inscription",
+    "intro.passes": "Tests réalisés ces 7 derniers jours : {n}",
     "intro.resume": "Reprendre le test précédent ({n} blocs sur 24 remplis)",
     "intro.showLast": "Ouvrir mon résultat précédent du {date}",
     "intro.nameRequired": "Indiquez votre nom",

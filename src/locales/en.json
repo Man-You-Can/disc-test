@@ -2313,6 +2313,13 @@
       "description": "Free printable DISC assessment PDF: 24 blocks of statements, answer key, scoring table and all 16 profiles. Fill it in on paper or take it online.",
       "h1": "DISC test PDF: download and print",
       "lead": "The same full version of the test as online, but as a printable file: 24 blocks of four statements, the style key, a scoring table and descriptions of all 16 profiles. The file is free and requires no sign-up.",
+      "compare": {
+        "paperTitle": "On paper",
+        "paper": ["Print it and mark your answers with a pen", "Score it by hand using the key", "Your profile and a few lines about it"],
+        "onlineTitle": "Online",
+        "online": ["About 10 minutes on your phone or computer", "Scores, percentages and the graph are calculated for you", "An instant report: strengths, growth areas, tips"],
+        "button": "Take it online"
+      },
       "sections": [
         {
           "h": "What’s in the file",
@@ -2845,6 +2852,7 @@
     "intro.requiredNote": "Fields marked with an asterisk (*) are required.",
     "intro.start": "Start the test",
     "intro.startNote": "24 blocks · about 10 minutes · no sign-up",
+    "intro.passes": "Tests completed in the last 7 days: {n}",
     "intro.resume": "Continue previous attempt ({n} of 24 completed)",
     "intro.showLast": "Open my previous result from {date}",
     "intro.nameRequired": "Please enter your name",

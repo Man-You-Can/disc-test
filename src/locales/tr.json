@@ -1355,6 +1355,13 @@
       "description": "Ücretsiz DISC testi PDF’i: 24 soru, anahtar, puanlama tablosu ve 16 profilin açıklaması. İndirin, yazdırın, kâğıtta doldurun.",
       "h1": "DISC testi PDF: indirin ve yazdırın",
       "lead": "Online testle aynı tam sürüm, ama yazdırılabilir bir dosyada: dörder ifadeli 24 soru, stil anahtarı, puanlama tablosu ve 16 profilin tamamının açıklaması. Dosya ücretsizdir, kayıt gerektirmez.",
+      "compare": {
+        "paperTitle": "Kâğıt üzerinde",
+        "paper": ["Yazdırıp cevapları kalemle işaretleyin", "Puanları anahtara göre elle hesaplayın", "Profil ve birkaç satırlık açıklama"],
+        "onlineTitle": "Online",
+        "online": ["Telefondan ya da bilgisayardan yaklaşık 10 dakika", "Puanlar, yüzdeler ve grafik otomatik hesaplanır", "Hemen rapor: güçlü yönler, gelişim alanları, öneriler"],
+        "button": "Online çöz"
+      },
       "sections": [
         {
           "h": "Dosyada neler var?",
@@ -1893,6 +1900,7 @@
     "intro.requiredNote": "Yıldız (*) ile işaretli alanların doldurulması zorunludur.",
     "intro.start": "Teste başla",
     "intro.startNote": "24 soru · yaklaşık 10 dakika · kayıt yok",
+    "intro.passes": "Son 7 günde tamamlanan test sayısı: {n}",
     "intro.resume": "Yarım kalan teste devam et (24 sorudan {n} tanesi tamamlandı)",
     "intro.showLast": "{date} tarihli önceki sonucumu aç",
     "intro.nameRequired": "Adınızı yazın",

@@ -24,7 +24,11 @@ function introHTML(c){
       '<span class="small muted">'+t('intro.startNote')+'</span>'+
       (progDone ? '<button class="link" type="button" id="resume">'+t('intro.resume',{n:progDone})+'</button>' : '')+
     '</div>'+
+    // строка со счётом прохождений за 7 дней: число страница берёт у сервера (GET <sendEndpoint>stats) и показывает строку сама, в сборке она скрыта
+    (lc ? '' : '<p class="small muted passes" id="weekPasses" hidden></p>')+
     (lastDate && !lc ? '<p class="small muted" style="margin-top:12px"><button class="link" id="showLast" type="button">'+t('intro.showLast',{date:esc(lastDate)})+'</button></p>' : '')+
+    // «Что вы получите» с примером результата — сразу под кнопкой (с 2026-10-25, по просьбе заказчика); вернувшемуся посетителю с карточкой результата не нужен
+    (lc ? '' : homeGetHTML(c))+
     '<div class="tiles">'+KEYS.map(function(k){ return '<div class="tile" style="--k:'+colorVar(k)+'"><b>'+k+'</b><strong>'+esc(L.keys[k])+'</strong><span>'+esc(L.short[k])+'</span></div>'; }).join('')+'</div>'+
     '<div class="card">'+
       '<h2>'+t('intro.howTitle')+'</h2>'+
@@ -37,9 +41,32 @@ function introHTML(c){
         return '<article class="stylecard" style="--k:'+colorVar(k)+'"><h3><span class="k">'+k+'</span>'+esc(L.keys[k])+' · '+esc(pr.name)+'</h3><p>'+esc(pr.summary)+'</p><div class="traits">'+st.traits.map(function(x){ return '<span>'+esc(x)+'</span>'; }).join('')+'</div>'+
           (links.profile ? '<a class="more" href="'+esc(links.profile(k))+'">'+t('pages.profile.more',{name:esc(pr.name)})+'</a>' : '')+'</article>'; }).join('')+
     '</div>'+(links.styles ? '<p class="all"><a href="'+esc(links.styles)+'">'+t('nav.styles')+' '+arr+'</a> · <a href="'+esc(links.profiles)+'">'+t('nav.profiles')+' '+arr+'</a></p>' : '')+'</section>'+
-    cvPromoHTML({P: L.content && L.content.cvPromo, esc: esc, href: links.cv, kind: 'home'})+
-    subHTML(c)+
-    homeHTML(c);
+    // анонс сервиса резюме и подписка — после «Как считается результат» и коротких вопросов, перед списком 16 профилей (с 2026-10-25, по просьбе заказчика):
+    // раньше стояли между кнопкой теста и доводами пройти его
+    homeHTML(c, cvPromoHTML({P: L.content && L.content.cvPromo, esc: esc, href: links.cv, kind: 'home'})+subHTML(c));
+}
+/* Пример результата: профиль DI (те же числа, что в src/samples.js) — название, график и шкалы. «Что вы получите» на главной (homeGetHTML,
+   график на телефоне скрыт) и колонка «Онлайн» на странице «Тест в PDF» (build.js, без графика). c.graphSVG — функция графика (src/graph.js):
+   сборка передаёт её явно, страница — свою глобальную. o.graph — рисовать график, o.cls — классы обёртки. */
+var HOME_SAMPLE = {key:'DI', net:{D:14, I:8, S:-12, C:-10}};
+function sampleCardHTML(c, o){
+  var L=c.L, t=c.t, esc=c.esc, KEYS=c.KEYS, colorVar=c.colorVar, g=o.graph ? (c.graphSVG || (typeof graphSVG === 'function' ? graphSVG : null)) : null;
+  var k=HOME_SAMPLE.key, net=HOME_SAMPLE.net, pr=L.profiles[k], most={}, least={};
+  var pos=KEYS.reduce(function(a,x){ return a+Math.max(0,net[x]); },0), base=(24-pos)/4;
+  KEYS.forEach(function(x){ most[x]=Math.max(0,net[x])+base; least[x]=Math.max(0,-net[x])+base; });
+  var pct=function(x){ return Math.round((net[x]+24)/48*100); };
+  return '<div class="'+(o.cls||'hgcard')+'"><div class="hglabel">'+esc(t('pages.profile.exampleTitle'))+'</div>'+
+    '<div class="hgname"><span class="pill" dir="ltr" style="--kp:var(--'+k[0].toLowerCase()+');--ks:var(--'+k[1].toLowerCase()+')"><span class="p">'+k[0]+'</span><span class="s">'+k[1]+'</span></span> <b>'+esc(pr.name)+'</b>'+
+      '<span class="muted">'+esc(L.keys[k[0]]+' + '+L.keys[k[1]])+'</span></div>'+
+    '<div class="hgbody">'+(g ? '<div class="graph">'+g({most:most, least:least, net:net}, {net:true}, {label:t('report.graphAria'), colorVar:colorVar, keys:KEYS})+'</div>' : '')+
+      '<div class="hgbars">'+KEYS.map(function(x){ return '<div class="hgbar" style="--k:'+colorVar(x)+'"><b>'+x+'</b><div class="bar"><i style="width:'+pct(x)+'%"></i></div><span>'+pct(x)+'%</span></div>'; }).join('')+'</div></div></div>';
+}
+/* «Что вы получите» на главной — сразу под кнопкой теста (с 2026-10-25, по просьбе заказчика): заголовок, пример результата и список content.home.get */
+function homeGetHTML(c){
+  var H=c.L.content && c.L.content.home, esc=c.esc;
+  if(!H || !H.get) return '';
+  return '<section class="homeget"><h2>'+esc(H.getTitle)+'</h2>'+sampleCardHTML(c, {graph:true, cls:'card hgcard'})+
+    '<ul>'+H.get.map(function(x){ return '<li>'+esc(x)+'</li>'; }).join('')+'</ul></section>';
 }
 /* Блок-анонс сервиса «Резюме под каждую вакансию» (/ru/cv/, с 2026-10-24, по просьбе заказчика; сейчас только русская версия — content.cvPromo):
    метка «Новый сервис», вопрос, короткий анонс и кнопка на лендинг. kind — место на сайте: home (главная), result (экран результата),
@@ -66,18 +93,22 @@ function subHTML(c){
       '<p class="small sendstatus" id="nlStatus" aria-live="polite" hidden></p>'+
     '</form></section>';
 }
-/* Текст под тестом (content.home): что вы получите, как считается результат, короткие вопросы, 16 профилей — закрывает интент «что за тест» на странице, где его проходят */
-function homeHTML(c){
+/* Текст под тестом (content.home): как считается результат, короткие вопросы, 16 профилей — закрывает интент «что за тест» на странице, где его проходят.
+   mid — блоки между короткими вопросами и списком 16 профилей (анонс сервиса резюме, подписка) */
+function homeHTML(c, mid){
   var L=c.L, t=c.t, esc=c.esc, H=L.content && L.content.home, links=c.links||{}, arr=L.dir==='rtl'?'←':'→';
-  if(!H) return '';
+  mid = mid || '';
+  if(!H) return mid;
   var P=['D','DI','DC','DS','I','ID','IS','IC','S','SI','SC','SD','C','CD','CS','CI'];
   return '<section class="home-more">'+
-    '<h2>'+esc(H.getTitle)+'</h2><ul>'+H.get.map(function(x){ return '<li>'+esc(x)+'</li>'; }).join('')+'</ul>'+
+    // «Что вы получите» — вернувшемуся посетителю с карточкой результата здесь, остальным — под кнопкой теста (homeGetHTML)
+    (c.lastCard ? '<h2>'+esc(H.getTitle)+'</h2><ul>'+H.get.map(function(x){ return '<li>'+esc(x)+'</li>'; }).join('')+'</ul>' : '')+
     '<h2>'+esc(H.calcTitle)+'</h2><p>'+esc(H.calc)+(links.results ? ' <a href="'+esc(links.results)+'">'+t('nav.results')+' '+arr+'</a>' : '')+'</p>'+
     '<h2>'+esc(H.faqTitle)+'</h2>'+H.faq.map(function(x){ return '<h3>'+esc(x.q)+'</h3><p>'+esc(x.a)+'</p>'; }).join('')+
     (links.faq ? '<p><a href="'+esc(links.faq)+'">'+t('nav.faq')+' '+arr+'</a></p>' : '')+
+    (mid ? '</section>'+mid+'<section class="home-more">' : '')+
     (links.profile ? '<h2>'+esc(H.profilesTitle)+'</h2><p class="chips">'+P.map(function(k){ var pr=L.profiles[k];
       return '<a href="'+esc(links.profile(k))+'"><span class="pill" dir="ltr" style="--kp:var(--'+k[0].toLowerCase()+');--ks:var(--'+(k[1]||k[0]).toLowerCase()+')"><span class="p">'+k[0]+'</span>'+(k[1]?'<span class="s">'+k[1]+'</span>':'')+'</span> '+esc(pr.name)+'</a>'; }).join('')+'</p>' : '')+
     '</section>';
 }
-if (typeof module !== 'undefined' && module.exports) { module.exports = introHTML; module.exports.cvPromoHTML = cvPromoHTML; }
+if (typeof module !== 'undefined' && module.exports) { module.exports = introHTML; module.exports.cvPromoHTML = cvPromoHTML; module.exports.sampleCardHTML = sampleCardHTML; }

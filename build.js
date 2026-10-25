@@ -56,7 +56,7 @@ const siteUrl = cfg.siteUrl.replace(/\/+$/, '');
 const basePath = new URL(siteUrl + '/').pathname; // например "/disc-test/" или "/"
 const tpl = fs.readFileSync(path.join(SRC, 'template.html'), 'utf8');
 const introJs = fs.readFileSync(path.join(SRC, 'intro.js'), 'utf8');
-const introHTML = require(path.join(SRC, 'intro.js')), cvPromoHTML = introHTML.cvPromoHTML;
+const introHTML = require(path.join(SRC, 'intro.js')), cvPromoHTML = introHTML.cvPromoHTML, sampleCardHTML = introHTML.sampleCardHTML;
 const commonJs = fs.readFileSync(path.join(SRC, 'common.js'), 'utf8').replace(/\nif \(typeof module[^\n]*\n?$/, '\n');
 // Форма обратной связи: письма уходят на feedbackEmail через Apps Script; пустой адрес — страницы /contact/ и ссылки на неё нет
 const contactJs = fs.readFileSync(path.join(SRC, 'contact.js'), 'utf8').replace(/\nif \(typeof module[^\n]*\n?$/, '\n');
@@ -423,7 +423,7 @@ for (const L of locales) {
   const href = x => rootRel + pathOf(x.lang);
   const navHtml = navItems(L).map(([k, sub]) => `<a href="${rootRel + pathOf(L.lang) + sub}"${sub === '' ? ' aria-current="page"' : ''}>${esc(L.ui[k])}</a>`).join('');
   const footHtml = footLinks(L, rootRel + pathOf(L.lang)), footShortHtml = footShort(L, rootRel + pathOf(L.lang));
-  const introBuilt = introHTML({ L, t: tFor(L), esc: escFull, KEYS, colorVar: k => 'var(--' + k.toLowerCase() + ')', progDone: 0, lastDate: '',
+  const introBuilt = introHTML({ L, t: tFor(L), esc: escFull, KEYS, colorVar: k => 'var(--' + k.toLowerCase() + ')', progDone: 0, lastDate: '', graphSVG,
     links: { styles: rootRel + pathOf(L.lang) + 'styles/', profiles: rootRel + pathOf(L.lang) + 'profiles/', pdf: rootRel + pathOf(L.lang) + 'pdf/', results: rootRel + pathOf(L.lang) + 'results/', faq: rootRel + pathOf(L.lang) + 'faq/', profile: k => rootRel + pathOf(L.lang) + 'profiles/' + k.toLowerCase() + '/',
       cv: hasCvPromo(L) ? rootRel + pathOf(L.lang) + 'cv/' : '' } });
   pages.push({ lang: L.lang, sub: '', date: contentDate(L.lang + ':', [L.title, L.description, introBuilt.split(rootRel + pathOf(L.lang)).join('~/')].join('\n'), [`src/locales/${L.lang}.json`, 'src/template.html', 'src/intro.js']) });
@@ -934,10 +934,17 @@ for (const L of locales) {
       `<p class="seealso"><a href="../disc/#sources">${esc(t('pages.sourcesLink'))} ${arrow(L)}</a></p>` + ctaBlock(L, t, '../') + seeAlso('../', 'nav.mbti') });
   // /pdf/ — печатная версия: кнопка скачивания файла из src/assets/pdf (готовится node scripts/make-pdf.js)
   const pd = C.pdf, pi = pdfInfo(L.lang), pdfRoot = relRoot(L, 'pdf/');
-  const download = pi ? `<p class="download"><a class="btn" href="${pdfRoot}pdf/${pi.file}" download>${t('pages.pdf.download')}</a><span class="muted">${escFull(t('pages.pdf.meta', { pages: pi.pages, size: fmtSize(pi.size) }))}</span></p>` : `<p class="notice">${escFull(t('pages.pdf.missing'))}</p>`;
+  const download = pi ? `<p class="download"><a class="btn" href="${pdfRoot}pdf/${pi.file}" download data-goal="paper-pdf">${t('pages.pdf.download')}</a><span class="muted">${escFull(t('pages.pdf.meta', { pages: pi.pages, size: fmtSize(pi.size) }))}</span></p>` : `<p class="notice">${escFull(t('pages.pdf.missing'))}</p>`;
   if (!pi) console.warn('WARNING: no PDF for ' + L.lang + ' (run node scripts/make-pdf.js)');
+  // «На бумаге» и «Онлайн» рядом, над текстом страницы (с 2026-10-25, по просьбе заказчика): в первой колонке — скачивание (цель paper-pdf),
+  // во второй — пример результата и кнопка теста (цель pdf-online). Тексты — content.pdf.compare
+  const pc = pd.compare, li = a => `<ul>${a.map(x => `<li>${escFull(x)}</li>`).join('')}</ul>`;
+  const pdfCompare = `<div class="pdfcmp"><section class="card"><h2>${escFull(pc.paperTitle)}</h2>${li(pc.paper)}${download}</section>` +
+    `<section class="card on"><h2>${escFull(pc.onlineTitle)}</h2>${li(pc.online)}` +
+    sampleCardHTML({ L, t, esc: escFull, KEYS, colorVar }, { graph: false, cls: 'hgcard flat' }) +
+    `<p class="download"><a class="btn" href="../" data-goal="pdf-online">${escFull(pc.button)}</a><span class="muted">${escFull(t('intro.startNote'))}</span></p></section></div>`;
   writeContentPage(L, 'pdf/', { navKey: 'nav.pdf', title: pd.title, description: pd.description, crumbs: [{ name: t('nav.pdf') }],
-    content: `<div class="eyebrow">DISC</div><h1>${escFull(pd.h1)}</h1><p class="lead">${escFull(pd.lead)}</p>` + download + ctaTop(t, '../', 'cta.inlinePdf') + sectionsHtml(pd.sections) + download + ctaBlock(L, t, '../') + seeAlso('../', 'nav.pdf'),
+    content: `<div class="eyebrow">DISC</div><h1>${escFull(pd.h1)}</h1><p class="lead">${escFull(pd.lead)}</p>` + pdfCompare + sectionsHtml(pd.sections) + download + ctaBlock(L, t, '../') + seeAlso('../', 'nav.pdf'),
     ldExtra: pi ? [{ '@context': 'https://schema.org', '@type': 'DigitalDocument', name: pd.title, url: `${siteUrl}/pdf/${pi.file}`, encodingFormat: 'application/pdf', inLanguage: hl(L.lang), isAccessibleForFree: true }] : [] });
   if (pi) extraUrls.push({ lang: L.lang, loc: `${siteUrl}/pdf/${pi.file}`, date: contentDate(L.lang + ':pdf-file', fs.readFileSync(path.join(ASSETS, 'pdf', pi.file)).toString('base64'), [`src/assets/pdf/${pi.file}`]) });
   // /services/ — платная услуга (все языки); /offer/ и /refund/ — публичная оферта и условия возврата, только в языках, где эти разделы есть (hasOffer).

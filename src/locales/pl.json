@@ -1360,6 +1360,13 @@
       "description": "Darmowy test DISC w PDF: 24 pytania, klucz, tabela do obliczania wyniku i opis 16 profili. Pobierz, wydrukuj, wypełnij na papierze.",
       "h1": "Test DISC w PDF: pobierz i wydrukuj",
       "lead": "Ta sama pełna wersja testu co online, ale w pliku do druku: 24 pytania po cztery stwierdzenia, klucz do stylów, tabela do obliczania wyniku i opis wszystkich 16 profili. Plik jest darmowy i nie wymaga rejestracji.",
+      "compare": {
+        "paperTitle": "Na papierze",
+        "paper": ["Wydrukuj i zaznacz odpowiedzi długopisem", "Policz punkty ręcznie według klucza", "Profil i kilka zdań opisu"],
+        "onlineTitle": "Online",
+        "online": ["Około 10 minut na telefonie lub komputerze", "Punkty, procenty i wykres liczą się same", "Od razu raport: mocne strony, obszary rozwoju, wskazówki"],
+        "button": "Zrób test online"
+      },
       "sections": [
         {
           "h": "Co zawiera plik",
@@ -1892,6 +1899,7 @@
     "intro.requiredNote": "Pola oznaczone gwiazdką (*) są wymagane.",
     "intro.start": "Rozpocznij test",
     "intro.startNote": "24 pytania · około 10 minut · bez rejestracji",
+    "intro.passes": "Ukończone testy w ostatnich 7 dniach: {n}",
     "intro.resume": "Dokończ rozpoczęty test (wypełniono {n} z 24 pytań)",
     "intro.showLast": "Otwórz mój poprzedni wynik z {date}",
     "intro.nameRequired": "Podaj imię",

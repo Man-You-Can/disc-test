@@ -1380,6 +1380,13 @@
       "description": "Test DISC gratis en PDF: 24 bloques, clave, tabla de cálculo y 16 perfiles. Descargue, imprima y complete en papel. La versión online calcula el resultado.",
       "h1": "Test DISC en PDF: descargar e imprimir",
       "lead": "La misma versión completa del test que online, pero en un archivo para imprimir: 24 bloques de cuatro afirmaciones, la clave de los estilos, la tabla de cálculo y la descripción de los 16 perfiles. El archivo es gratis y no requiere registro.",
+      "compare": {
+        "paperTitle": "En papel",
+        "paper": ["Imprimirlo y marcar las respuestas con bolígrafo", "Calcular la puntuación a mano con la clave", "El perfil y unas líneas de descripción"],
+        "onlineTitle": "Online",
+        "online": ["Unos 10 minutos desde el móvil o el ordenador", "Las puntuaciones, los porcentajes y el gráfico se calculan solos", "Informe al instante: puntos fuertes, áreas de mejora y consejos"],
+        "button": "Hacerlo online"
+      },
       "sections": [
         {
           "h": "Qué contiene el archivo",
@@ -1918,6 +1925,7 @@
     "intro.requiredNote": "Los campos marcados con asterisco (*) son obligatorios.",
     "intro.start": "Empezar el test",
     "intro.startNote": "24 bloques · unos 10 minutos · sin registro",
+    "intro.passes": "Tests completados en los últimos 7 días: {n}",
     "intro.resume": "Continuar el intento anterior ({n} de 24 completados)",
     "intro.showLast": "Abrir mi resultado anterior del {date}",
     "intro.nameRequired": "Indique su nombre",

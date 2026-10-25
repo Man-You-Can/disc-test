@@ -362,6 +362,40 @@ html[lang|=zh] [lang]:not([lang|=zh]):not([lang|=ja]),html[lang=ja] [lang]:not([
 .langbar-x:hover{color:var(--ink);background:var(--soft)}
 .styles-intro{margin-top:34px}
 .home-more{margin-top:34px}
+/* «Что вы получите» с примером результата — сразу под кнопкой теста (с 2026-10-25): список слева, пример справа; на телефоне — заголовок, пример без графика, список */
+.homeget{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);grid-template-areas:"h c" "l c";grid-template-rows:auto 1fr;gap:4px 28px;align-items:start;margin:30px 0 6px}
+.homeget h2{grid-area:h;font-size:22px;margin:0 0 8px}
+.homeget ul{grid-area:l;margin:0;padding-inline-start:20px}
+.homeget li{margin-bottom:8px}
+.homeget .hgcard{grid-area:c}
+@media (max-width:700px){.homeget{grid-template-columns:minmax(0,1fr);grid-template-areas:"h" "c" "l";grid-template-rows:none;gap:14px;margin-top:26px}.homeget .hgcard .graph{display:none}}
+.hgcard{padding:18px}
+.hglabel{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:600;margin-bottom:8px}
+html[lang=ar] .hglabel,html[lang|=zh] .hglabel,html[lang=ja] .hglabel{letter-spacing:.04em;font-size:13px}
+.hgname{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 8px;margin-bottom:14px}
+.hgname .pill{font-size:22px}.hgname .pill .s{font-size:16px}
+.hgname b{font-size:17px}
+.hgname .muted{font-size:13px;flex-basis:100%}
+.hgbody{display:grid;grid-template-columns:minmax(0,1fr);gap:14px}
+.hgbody .graph svg{max-height:200px}
+.hgbars{display:grid;gap:10px}
+.hgbar{display:grid;grid-template-columns:16px minmax(0,1fr) 40px;gap:10px;align-items:center}
+.hgbar b{color:var(--k);font-family:var(--font-head);font-weight:500}
+.hgbar .bar{grid-column:auto}
+.hgbar span{font-family:var(--font-mono);font-size:13px;text-align:end;direction:ltr;font-variant-numeric:tabular-nums}
+.hgcard.flat{margin:16px 0 0;padding:14px 16px;border:1px solid var(--line);border-radius:12px}
+/* строка со счётом прохождений за 7 дней под кнопкой теста (число — от сервера, GET <sendEndpoint>stats) */
+.passes:not([hidden]){display:flex;align-items:center;gap:9px;margin:8px 0 0}
+.passes::before{content:"";flex:none;width:8px;height:8px;border-radius:50%;background:var(--s);box-shadow:0 0 0 3px color-mix(in srgb,var(--s) 25%,transparent)}
+/* «Тест в PDF»: «На бумаге» и «Онлайн» рядом (с 2026-10-25) */
+.pdfcmp{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;margin:24px 0 8px;align-items:start}
+@media (max-width:700px){.pdfcmp{grid-template-columns:minmax(0,1fr)}}
+.pdfcmp h2{margin:0 0 10px;font-size:20px}
+.pdfcmp ul{padding-inline-start:20px;margin:0}
+.pdfcmp li{margin-bottom:6px}
+.pdfcmp .download{margin:16px 0 0}
+.pdfcmp>.card{margin:0}
+.pdfcmp .card.on{border-color:var(--line-strong)}
 /* подписка на рассылку на стартовом экране (с 2026-10-22): поле и кнопка в строку, на телефоне — друг под другом */
 .nlbox{margin-top:30px}
 .nlbox h2{margin:0 0 6px;font-size:22px}
@@ -619,14 +653,16 @@ th.num{text-align:end}
 .consent-in summary::-webkit-details-marker{display:none}
 .consent-in details p{margin:8px 0 0}
 body.has-consent{padding-bottom:160px}
-/* телефон: плашка только информирует, поэтому компактная — одна строка текста и кнопка, подробности свёрнуты */
+/* телефон: плашка только информирует, поэтому компактная — одна строка текста (с 2026-10-25, раньше три) и кнопка, подробности свёрнуты:
+   по «Подробнее» текст раскрывается целиком */
 @media (max-width:640px){
-  body.has-consent{padding-bottom:120px}
+  body.has-consent{padding-bottom:84px}
   .consent{padding:0 8px 8px}
-  .consent-in{padding:10px 12px;gap:4px 10px;font-size:12px;line-height:1.4;display:grid;grid-template-columns:1fr auto;align-items:start}
-  .consent-in>p{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+  .consent-in{padding:8px 10px 8px 12px;gap:0 10px;font-size:12px;line-height:1.4;display:grid;grid-template-columns:1fr auto;align-items:center}
+  .consent-in>p{display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
+  .consent-in>.btn,.consent-in>.consent-btns{grid-row:1/3;grid-column:2}
   .consent-in:has(details[open])>p{display:block}
-  .consent-in details{grid-column:1/-1}
+  .consent-in details{grid-column:1}
 }
 @media print{.consent{display:none!important}}
 @media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
@@ -710,7 +746,7 @@ body.has-consent{padding-bottom:160px}
   </header>
   <nav class="sitenav no-print"><a href="../../ja/">診断</a><a href="../../ja/disc/">DISC理論とは</a><a href="../../ja/styles/">4つのスタイル</a><a href="../../ja/profiles/">16のタイプ</a><a href="../../ja/results/">結果の見方</a><a href="../../ja/compatibility/">スタイルの相性</a><a href="../../ja/faq/">よくある質問</a><a href="../../ja/how-reports-are-made/">レポートができるまで</a><a href="../../ja/services/">サービス</a><a href="../../ja/contact/">お問い合わせ</a></nav>
   <nav class="crumbs"><a href="../../ja/">ホーム</a><span>›</span><span aria-current="page">診断シート（PDF）</span></nav>
-  <main class="content"><div class="eyebrow">DISC</div><h1>DISC診断シート（PDF）：ダウンロードして印刷</h1><p class="lead">オンライン版と同じ完全版の診断を、印刷用ファイルにしたものです。全24問（各問4つの文）、スタイルの採点キー、集計表、16タイプすべての解説が入っています。ファイルは無料で、登録は不要です。</p><p class="download"><a class="btn" href="../../pdf/disc-test-ja.pdf" download>PDFをダウンロード</a><span class="muted">A4｜5ページ｜890 KB</span></p><aside class="cta cta-top no-print"><p>手で集計するのが面倒なら、オンライン版が自動で計算します（無料・約10分）。</p><a class="btn" href="../" data-goal="cta-top">診断を受ける</a></aside><h2>ファイルの内容</h2><ul><li>記入の説明と、名前・日付の記入欄</li><li>「最もあてはまる」「最もあてはまらない」の列が付いた全24問（各問4つの文、合計96文）</li><li>採点キー：各問の各文がどのスタイルに対応するか</li><li>D・I・S・Cのスタイル別の集計表</li><li>主要スタイルと第2スタイルの判定ルール</li><li>DISCの16タイプの簡単な解説</li></ul><p>ファイルはA4判で、このページの言語で書かれています。質問紙では色を使っていないため、白黒で印刷できます。</p><h2>紙版が役立つ場面</h2><p>紙の診断は、参加者全員がパソコンを持っているわけではない研修や戦略セッション、学習グループ、携帯電話が使えない場所で便利です。紙のほうが集中しやすい人もいます。印を付けてページをめくるだけで、通知に気を取られることがありません。</p><p>参加者が携帯電話を持っているなら、オンライン版のほうが簡単です。結果を自動で計算し、グラフを描き、レポートをPDFにまとめ、共有できるリンクを発行します。チーム向けには、全参加者の結果をまとめる管理画面もあります。</p><h2>記入と集計の方法</h2><p>各問で、自分に最もあてはまる文を1つ、最もあてはまらない文を1つ選んで印を付けてください。職場での普段の行動を基準に、長く考え込まずに答えます。次に採点キーを見て、印の横にスタイルの文字を書き込み、スタイルごとに「最もあてはまる」と「最もあてはまらない」の印の数を数えます。</p><p>その差がスタイルごとのスコアで、−24〜+24の範囲になります。スコアが最も高いスタイルが主要スタイルです。2番目に高いスコアが正で、主要スタイルの40%以上（最低3点）であれば、それが第2スタイルです。こうしてDやDIのような1〜2文字のタイプが決まります。その解説はファイルに載っており、例付きの詳しい読み方は専用ページにあります。</p><h2>紙の結果からレポートへ</h2><p>紙版で分かるのは、タイプと簡単な解説です。グラフ、強み、成長のポイント、接し方のアドバイスを含む概要レポートを得るには、16タイプの一覧から自分のタイプのページを開くか、オンラインで診断を受けてください。約10分で終わります。</p><p class="download"><a class="btn" href="../../pdf/disc-test-ja.pdf" download>PDFをダウンロード</a><span class="muted">A4｜5ページ｜890 KB</span></p><aside class="cta"><div><h2>あなたのDISCタイプを知る</h2><p>無料診断：全24問、約10分。結果はすぐに表示されます。</p></div><a class="btn" href="../" data-goal="cta-bottom">診断を受ける</a></aside><p class="seealso"><a href="../disc/">DISC理論とは →</a> · <a href="../styles/">4つのスタイル →</a> · <a href="../profiles/">16のタイプ →</a> · <a href="../results/">結果の見方 →</a> · <a href="../compatibility/">スタイルの相性 →</a> · <a href="../colors/">DISCの4色 →</a> · <a href="../teams/">チームでのDISC →</a> · <a href="../disc-vs-mbti/">DISCとMBTI →</a> · <a href="../faq/">よくある質問 →</a></p><p class="updated"><time datetime="2026-10-21">最終更新：2026年10月21日</time></p></main>
+  <main class="content"><div class="eyebrow">DISC</div><h1>DISC診断シート（PDF）：ダウンロードして印刷</h1><p class="lead">オンライン版と同じ完全版の診断を、印刷用ファイルにしたものです。全24問（各問4つの文）、スタイルの採点キー、集計表、16タイプすべての解説が入っています。ファイルは無料で、登録は不要です。</p><div class="pdfcmp"><section class="card"><h2>紙で</h2><ul><li>印刷して、ペンで回答に印をつける</li><li>採点キーを見ながら手で集計する</li><li>タイプ名と短い説明</li></ul><p class="download"><a class="btn" href="../../pdf/disc-test-ja.pdf" download data-goal="paper-pdf">PDFをダウンロード</a><span class="muted">A4｜5ページ｜890 KB</span></p></section><section class="card on"><h2>オンラインで</h2><ul><li>スマホやパソコンで約10分</li><li>得点・パーセント・グラフを自動で計算</li><li>すぐにレポート：強み、成長のポイント、アドバイス</li></ul><div class="hgcard flat"><div class="hglabel">結果のイメージ</div><div class="hgname"><span class="pill" dir="ltr" style="--kp:var(--d);--ks:var(--i)"><span class="p">D</span><span class="s">I</span></span> <b>開拓者</b><span class="muted">主導 + 感化</span></div><div class="hgbody"><div class="hgbars"><div class="hgbar" style="--k:var(--d)"><b>D</b><div class="bar"><i style="width:79%"></i></div><span>79%</span></div><div class="hgbar" style="--k:var(--i)"><b>I</b><div class="bar"><i style="width:67%"></i></div><span>67%</span></div><div class="hgbar" style="--k:var(--s)"><b>S</b><div class="bar"><i style="width:25%"></i></div><span>25%</span></div><div class="hgbar" style="--k:var(--c)"><b>C</b><div class="bar"><i style="width:29%"></i></div><span>29%</span></div></div></div></div><p class="download"><a class="btn" href="../" data-goal="pdf-online">オンラインで診断する</a><span class="muted">全24問｜約10分｜登録不要</span></p></section></div><h2>ファイルの内容</h2><ul><li>記入の説明と、名前・日付の記入欄</li><li>「最もあてはまる」「最もあてはまらない」の列が付いた全24問（各問4つの文、合計96文）</li><li>採点キー：各問の各文がどのスタイルに対応するか</li><li>D・I・S・Cのスタイル別の集計表</li><li>主要スタイルと第2スタイルの判定ルール</li><li>DISCの16タイプの簡単な解説</li></ul><p>ファイルはA4判で、このページの言語で書かれています。質問紙では色を使っていないため、白黒で印刷できます。</p><h2>紙版が役立つ場面</h2><p>紙の診断は、参加者全員がパソコンを持っているわけではない研修や戦略セッション、学習グループ、携帯電話が使えない場所で便利です。紙のほうが集中しやすい人もいます。印を付けてページをめくるだけで、通知に気を取られることがありません。</p><p>参加者が携帯電話を持っているなら、オンライン版のほうが簡単です。結果を自動で計算し、グラフを描き、レポートをPDFにまとめ、共有できるリンクを発行します。チーム向けには、全参加者の結果をまとめる管理画面もあります。</p><h2>記入と集計の方法</h2><p>各問で、自分に最もあてはまる文を1つ、最もあてはまらない文を1つ選んで印を付けてください。職場での普段の行動を基準に、長く考え込まずに答えます。次に採点キーを見て、印の横にスタイルの文字を書き込み、スタイルごとに「最もあてはまる」と「最もあてはまらない」の印の数を数えます。</p><p>その差がスタイルごとのスコアで、−24〜+24の範囲になります。スコアが最も高いスタイルが主要スタイルです。2番目に高いスコアが正で、主要スタイルの40%以上（最低3点）であれば、それが第2スタイルです。こうしてDやDIのような1〜2文字のタイプが決まります。その解説はファイルに載っており、例付きの詳しい読み方は専用ページにあります。</p><h2>紙の結果からレポートへ</h2><p>紙版で分かるのは、タイプと簡単な解説です。グラフ、強み、成長のポイント、接し方のアドバイスを含む概要レポートを得るには、16タイプの一覧から自分のタイプのページを開くか、オンラインで診断を受けてください。約10分で終わります。</p><p class="download"><a class="btn" href="../../pdf/disc-test-ja.pdf" download data-goal="paper-pdf">PDFをダウンロード</a><span class="muted">A4｜5ページ｜890 KB</span></p><aside class="cta"><div><h2>あなたのDISCタイプを知る</h2><p>無料診断：全24問、約10分。結果はすぐに表示されます。</p></div><a class="btn" href="../" data-goal="cta-bottom">診断を受ける</a></aside><p class="seealso"><a href="../disc/">DISC理論とは →</a> · <a href="../styles/">4つのスタイル →</a> · <a href="../profiles/">16のタイプ →</a> · <a href="../results/">結果の見方 →</a> · <a href="../compatibility/">スタイルの相性 →</a> · <a href="../colors/">DISCの4色 →</a> · <a href="../teams/">チームでのDISC →</a> · <a href="../disc-vs-mbti/">DISCとMBTI →</a> · <a href="../faq/">よくある質問 →</a></p><p class="updated"><time datetime="2026-10-25">最終更新：2026年10月25日</time></p></main>
   <footer class="foot">
     <div class="row2"><span>全24問｜約10分｜正解・不正解はありません</span><span class="footlinks"><a href="../../ja/about/">このサイトについて</a> · <a href="../../ja/services/">サービス</a> · <a href="../../ja/offer/">有料サービス規約</a> · <a href="../../ja/contact/">お問い合わせ</a> · <a href="../../ja/privacy/">プライバシー</a></span></div>
     <nav class="materials" aria-label="DISCの資料"><span class="mlabel">DISCの資料</span><a href="../../ja/disc/">DISC理論とは</a><a href="../../ja/styles/">4つのスタイル</a><a href="../../ja/profiles/">16のタイプ</a><a href="../../ja/results/">結果の見方</a><a href="../../ja/compatibility/">スタイルの相性</a><a href="../../ja/colors/">DISCの4色</a><a href="../../ja/teams/">チームでのDISC</a><a href="../../ja/disc-vs-mbti/">DISCとMBTI</a><span aria-current="page">診断シート（PDF）</span><a href="../../ja/faq/">よくある質問</a></nav>
@@ -719,7 +755,7 @@ body.has-consent{padding-bottom:160px}
     <nav class="langs" aria-label="言語"><a href="../../pdf/" hreflang="en" lang="en" data-lang="en"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-en"/></svg><span>English</span></a><a href="../../es/pdf/" hreflang="es" lang="es" data-lang="es"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-es"/></svg><span>Español</span></a><a href="../../zh/pdf/" hreflang="zh-Hans" lang="zh-Hans" data-lang="zh"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-zh"/></svg><span>简体中文</span></a><a href="../../zh-hant/pdf/" hreflang="zh-Hant" lang="zh-Hant" data-lang="zh-hant"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-zh-hant"/></svg><span>繁體中文</span></a><a href="../../ru/pdf/" hreflang="ru" lang="ru" data-lang="ru"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-ru"/></svg><span>Русский</span></a><a href="../../ar/pdf/" hreflang="ar" lang="ar" data-lang="ar"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-ar"/></svg><span>العربية</span></a><a href="../../pt/pdf/" hreflang="pt" lang="pt" data-lang="pt"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-pt"/></svg><span>Português</span></a><a href="../../fr/pdf/" hreflang="fr" lang="fr" data-lang="fr"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-fr"/></svg><span>Français</span></a><a href="../../de/pdf/" hreflang="de" lang="de" data-lang="de"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-de"/></svg><span>Deutsch</span></a><a href="../../ja/pdf/" hreflang="ja" lang="ja" data-lang="ja" aria-current="page"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-ja"/></svg><span>日本語</span></a><a href="../../id/pdf/" hreflang="id" lang="id" data-lang="id"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-id"/></svg><span>Bahasa Indonesia</span></a><a href="../../tr/pdf/" hreflang="tr" lang="tr" data-lang="tr"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-tr"/></svg><span>Türkçe</span></a><a href="../../pl/pdf/" hreflang="pl" lang="pl" data-lang="pl"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-pl"/></svg><span>Polski</span></a></nav>
   </footer>
 </div>
-<a class="btn ctafloat no-print" id="ctaFloat" href="../../ja/" data-goal="cta-float">診断を受ける</a>
+
 <div class="toast" id="toast" hidden></div>
 <script>
 (function(){

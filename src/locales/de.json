@@ -2324,6 +2324,13 @@
       "description": "DISG-Test als PDF kostenlos: 24 Blöcke, Schlüssel, Auswertungstabelle, 16 Profile. Herunterladen, ausdrucken, auf Papier ausfüllen.",
       "h1": "DISG-Test als PDF: herunterladen und ausdrucken",
       "lead": "Dieselbe Vollversion des Tests wie online, nur als Datei zum Ausdrucken: 24 Blöcke mit je vier Aussagen, Schlüssel zu den Stilen, Auswertungstabelle und Beschreibung aller 16 Profile. Die Datei ist kostenlos und erfordert keine Anmeldung.",
+      "compare": {
+        "paperTitle": "Auf Papier",
+        "paper": ["Ausdrucken und die Antworten mit dem Stift markieren", "Die Punkte von Hand mit dem Schlüssel auszählen", "Profil und ein paar Zeilen Beschreibung"],
+        "onlineTitle": "Online",
+        "online": ["Etwa 10 Minuten am Handy oder Computer", "Punkte, Prozente und Grafik werden automatisch berechnet", "Sofort ein Bericht: Stärken, Entwicklungsfelder, Tipps"],
+        "button": "Online starten"
+      },
       "sections": [
         {
           "h": "Was die Datei enthält",
@@ -2862,6 +2869,7 @@
     "intro.requiredNote": "Mit Sternchen (*) markierte Felder sind Pflichtfelder.",
     "intro.start": "Test starten",
     "intro.startNote": "24 Blöcke · etwa 10 Minuten · ohne Anmeldung",
+    "intro.passes": "In den letzten 7 Tagen abgeschlossene Tests: {n}",
     "intro.resume": "Letzten Durchgang fortsetzen ({n} von 24 ausgefüllt)",
     "intro.showLast": "Mein letztes Ergebnis vom {date} öffnen",
     "intro.nameRequired": "Bitte geben Sie Ihren Namen an",
