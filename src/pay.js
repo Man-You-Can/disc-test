@@ -46,20 +46,25 @@ function payClock(ms){ var s = Math.max(0, Math.ceil(ms / 1000)), m = Math.floor
    add({id, code, t, source, email, price, priceEl}) → {form, input, btn, st}: форма ещё не вставлена в страницу; price — цена крупно над кнопкой,
    priceEl — готовый элемент цены на странице (страница отчёта), t — время прохождения теста (для срока специальной цены).
    Пока специальная цена действует, вместо цены — зачёркнутая обычная и специальная, под кнопкой — обратный отсчёт; по окончании срока
-   (или по ответу сервера «offer expired») формы показывают обычную цену. g.onOffer(fn) — fn(on) при смене цены (закреплённая кнопка). */
+   (или по ответу сервера «offer expired») формы показывают обычную цену. g.onOffer(fn) — fn(on) при смене цены (закреплённая кнопка).
+   Специальная цена показывается, только когда она включена в панели (discOffer в src/common.js; с 2026-10-25): пока ответа нет — обычная цена;
+   ответ сервера «offer off» (выключили, пока страница была открыта) — формы переходят на обычную цену. */
 function payForms(c){
   var T = c.T, esc = c.esc, O = T.offer || null, g = {busy:false, forms:[], subs:[], tick:0};
-  g.onOffer = function(fn){ g.subs.push(fn); fn(g.forms.some(function(f){ return f.until > Date.now(); })); };
+  /* включена ли специальная цена в панели (discOffer в src/common.js): true — да, false — нет, null — ответа ещё нет (до ответа — обычная цена) */
+  function flag(){ if(typeof discOffer !== 'function') return true; return discOffer.on === true ? true : discOffer.on === false ? false : null; }
+  g.onOffer = function(fn){ g.subs.push(fn); fn(g.on === true); };
   g.paint = function(){
-    var now = Date.now(), any = false;
+    var now = Date.now(), any = false, ask = false, fl = flag();
     g.forms.forEach(function(f){
-      var on = f.until > now; any = any || on;
+      var on = f.until > now && fl === true; any = any || on; ask = ask || (f.until > now && fl === null);
       f.price = O ? (on ? O.price : O.regular) : 0;
       // каждая цена не переносится внутри себя; две цены (xdual) на узком экране мельче и при нехватке места встают в две строки
       var html = O ? (on ? '<s class="xold"><span class="vh">'+esc(O.regularLabel)+' </span>'+esc(O.regularText)+'</s> <span class="xnew">'+esc(O.priceText)+'</span>' : '<span class="xnew">'+esc(O.regularText)+'</span>') : null;
       if(f.big && html !== null && f.big.innerHTML !== html){ f.big.innerHTML = html; f.big.classList.toggle('xdual', on); }
       f.deal.hidden = !on; if(on) f.clock.textContent = payClock(f.until - now);
     });
+    if(ask && !g.asked){ g.asked = true; discOffer(c.endpoint + '/offer', function(){ g.paint(); }); }
     if(any !== g.on){ g.on = any; g.subs.forEach(function(fn){ fn(any); }); }
     if(any && !g.tick) g.tick = setInterval(g.paint, 1000);
     if(!any && g.tick){ clearInterval(g.tick); g.tick = 0; }
@@ -100,6 +105,8 @@ function payForms(c){
         .then(function(res){ return res.text(); })
         .then(function(txt){ var j = null; try{ j = JSON.parse(txt); }catch(e){}
           if(j && !j.ok && j.error === 'offer expired' && O){ g.forms.forEach(function(x){ x.until = 0; }); g.paint(); throw new Error('offer expired'); }
+          // специальную цену только что выключили в панели: формы переходят на обычную цену, покупатель видит её и нажимает «Купить» снова
+          if(j && !j.ok && j.error === 'offer off' && O){ if(typeof discOfferSet === 'function') discOfferSet(false); g.paint(); throw new Error('offer off'); }
           if(!j || !j.ok || !j.url || !j.order) throw new Error((j && j.error) || 'bad response');
           var u = new URL(j.url, location.href);   // платёжная страница: только https (на локальной заглушке — тот же адрес, что у сайта)
           if(u.protocol !== 'https:' && u.origin !== location.origin) throw new Error('bad url');
@@ -108,6 +115,7 @@ function payForms(c){
         .catch(function(err){ g.setBusy(false); st.hidden = false;
           if(err && err.message === 'bad email'){ st.textContent = T.badEmail; input.focus(); }
           else if(err && err.message === 'offer expired'){ st.textContent = O.expired; }
+          else if(err && err.message === 'offer off'){ st.textContent = O.regularLabel + ': ' + O.regularText; }
           else { st.innerHTML = T.errorHtml; payTrack('ext-pay-error'); } });
     });
     return f;

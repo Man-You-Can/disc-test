@@ -98,8 +98,9 @@ const payOffer = L => { if (!offerPrice(L)) return null; const P = L.content.pro
   return { price: offerPrices[cur], regular: servicePrices[cur], ms: offerMinutes * 60000, priceText: withPrice(L, P.price).replace(servicePrice(L), offerPrice(L)),
     regularText: withPrice(L, P.price), regularLabel: O.regular, cta: O.cta, note: O.note, left: O.left, expired: O.expired,
     button: P.promo ? withPrice(L, P.promo.button).replace(servicePrice(L), offerPrice(L)) : '' }; };
-// Закреплённая кнопка расширенного отчёта (src/common.js, window.DISC_XBAR): надпись с обычной ценой, со специальной (пусто — её нет в языке), срок специальной цены, «Скрыть»
-const xbarCfg = L => { const PM = withPrice(L, L.content.product.promo), O = payOffer(L); return { button: PM.button, offer: O ? O.button : '', ms: offerMinutes * 60000, close: PM.close }; };
+// Закреплённая кнопка расширенного отчёта (src/common.js, window.DISC_XBAR): надпись с обычной ценой, со специальной (пусто — её нет в языке), адрес, где спросить,
+// включена ли специальная цена в панели (GET <payEndpoint>/offer, с 2026-10-25), срок специальной цены, «Скрыть»
+const xbarCfg = L => { const PM = withPrice(L, L.content.product.promo), O = payOffer(L); return { button: PM.button, offer: O ? O.button : '', offerUrl: O && payEndpoint ? payEndpoint + '/offer' : '', ms: offerMinutes * 60000, close: PM.close }; };
 // Коды доступа (с 2026-10-22, по просьбе заказчика; сначала русская версия): организации покупают расширенные отчёты пакетом и раздают людям коды.
 // accessCodes в site.config.json включает в формах покупки ссылку «У меня есть код организации» с полем кода (тексты content.product.pay.code):
 // код уходит на <payEndpoint>/code, сервер проверяет его и ставит задание на отчёт (private/server/src/codes.js). Включать после выкладки сервера с кодами.

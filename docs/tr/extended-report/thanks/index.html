@@ -9,7 +9,7 @@
 <meta name="google-site-verification" content="q9-P14KEm3Bl0iw-lP3zITeLv0EESmjJcPRee30aAsw">
 <meta name="yandex-verification" content="028b85ace16c85fc">
 <script>window.DISC_ANALYTICS={"ym":"112347000","mode":"always"};</script>
-<script>window.DISC_XBAR={"button":"Kişiye özel genişletilmiş raporu satın al — 9,99 USD","offer":"Kişiye özel genişletilmiş raporu satın al — 6,99 USD","ms":3600000,"close":"Gizle"};</script>
+<script>window.DISC_XBAR={"button":"Kişiye özel genişletilmiş raporu satın al — 9,99 USD","offer":"Kişiye özel genişletilmiş raporu satın al — 6,99 USD","offerUrl":"https://api.disc-test.org/pay/offer","ms":3600000,"close":"Gizle"};</script>
 <script>window.DISC_VISIT={"url":"https://api.disc-test.org/","token":"kR7UiShTyG7Wws7t16NkgKN3","host":"disc-test.org"};</script>
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="DISC Testi">
@@ -776,6 +776,26 @@ function dataHash(){
   }catch(e){}
   return re.test(h) ? h : '';
 }
+/* Действует ли специальная цена на час после теста (переключатель на «Сводке» панели, с 2026-10-25): GET <payEndpoint>/offer → {ok, offer}.
+   Один запрос на страницу, без данных о посетителе, и только когда цена нужна — у посетителя идёт его час после теста (src/pay.js, закреплённая кнопка ниже).
+   discOffer(url, fn): fn(on) — сразу, если ответ уже есть, иначе по ответу. discOffer.on: true / false; null или undefined — ответа ещё нет.
+   discOfferWatch(fn) — fn() при каждой смене (ответ сервера; discOfferSet(false), когда сервер оплаты ответил «offer off» — выключили, пока страница открыта).
+   Пока ответа нет и при сбое запроса специальной цены нет: везде обычная цена (сервер оплаты при выключенной её всё равно не примет). */
+function discOffer(url, fn){
+  var S = discOffer;
+  if(S.on === true || S.on === false){ if(fn) fn(S.on); return; }
+  S.fns = S.fns || []; if(fn) S.fns.push(fn);
+  if(S.asked) return;
+  S.asked = true;
+  if(!url || !window.fetch){ discOfferSet(false); return; }
+  fetch(url, {cache:'no-store'}).then(function(r){ return r.json(); }).then(function(j){ discOfferSet(!!(j && j.ok && j.offer === true)); }, function(){ discOfferSet(false); });
+}
+function discOfferWatch(fn){ (discOffer.watchers = discOffer.watchers || []).push(fn); }
+function discOfferSet(v){
+  var S = discOffer, a = (S.fns || []).concat(S.watchers || []); S.fns = []; S.asked = true;
+  if(S.on === v) return; S.on = v;
+  for(var i = 0; i < a.length; i++) a[i](v);
+}
 /* страница открыта новым переходом, а не обновлением и не возвратом по истории */
 function navFresh(){
   try{ var n = performance.getEntriesByType('navigation')[0]; return n ? n.type === 'navigate' : performance.navigation.type === 0; }catch(e){ return false; }
@@ -892,7 +912,7 @@ function initCommon(c){
 
   /* закреплённая кнопка расширенного отчёта внизу экрана (с 2026-10-22 — на всех страницах сайта, решение заказчика).
      window.DISC_XBAR задаёт сборка только в языках, где отчёт продаётся (content.product.promo): {button, offer — та же кнопка со специальной
-     ценой (пусто, если её нет), ms — срок специальной цены, close}. Видна тем, у кого на устройстве сохранён результат теста (disc.last),
+     ценой (пусто, если её нет), offerUrl — где спросить, включена ли она (discOffer), ms — срок специальной цены, close}. Видна тем, у кого на устройстве сохранён результат теста (disc.last),
      пока её не закроют крестиком (sessionStorage disc.xbar, до конца сеанса); не видна купившему отчёт (disc.pay.done) и на самостоятельных
      лендингах (c.noXbar). Страница теста управляет ею сама через window.discXbar.set({show, go, src}): прячет на время вопросов и в панели,
      на экране результата показывает и для чужого результата и раскрывает форму покупки. По умолчанию кнопка ведёт на страницу отчёта
@@ -907,13 +927,15 @@ function initCommon(c){
     bar.innerHTML = '<a class="btn" id="extBarGo" href="'+esc(c.reportHref)+'"></a><button class="xbar-x" type="button" id="extBarX" aria-label="'+esc(X.close)+'" title="'+esc(X.close)+'">×</button>';
     document.body.appendChild(bar);
     var go = bar.firstChild, page = null, text = '', timer = 0;
-    /* надпись: пока действует специальная цена (час после первого прохождения на устройстве, как в src/pay.js) — с ней, потом обычная */
+    /* надпись: пока действует специальная цена (час после первого прохождения на устройстве, как в src/pay.js, и она включена в панели — discOffer) — с ней, потом обычная */
     function label(){
       clearTimeout(timer);
       if(text){ go.textContent = text; return; }
       var r = last(), until = 0;
       if(X.offer && r){ var a = Date.parse(r.t), s = lsGet('disc.offer'), b = s && Date.parse(s.t); if(!isNaN(a)) until = Math.min(a, b && !isNaN(b) ? b : a) + X.ms; }
       var left = until - Date.now();
+      if(left > 0 && discOffer.on !== true && discOffer.on !== false){ go.textContent = X.button; discOffer(X.offerUrl); return; }
+      if(left > 0 && !discOffer.on) left = 0;
       go.textContent = left > 0 ? X.offer : X.button;
       if(left > 0) timer = setTimeout(label, Math.min(left + 500, 2147483000));
     }
@@ -934,6 +956,7 @@ function initCommon(c){
       text: function(s){ text = s || ''; label(); },
       sync: sync
     };
+    if(X.offer) discOfferWatch(label);   // ответ о специальной цене (discOffer) — надпись заново
     label(); sync();
   })();
 
@@ -998,20 +1021,25 @@ function payClock(ms){ var s = Math.max(0, Math.ceil(ms / 1000)), m = Math.floor
    add({id, code, t, source, email, price, priceEl}) → {form, input, btn, st}: форма ещё не вставлена в страницу; price — цена крупно над кнопкой,
    priceEl — готовый элемент цены на странице (страница отчёта), t — время прохождения теста (для срока специальной цены).
    Пока специальная цена действует, вместо цены — зачёркнутая обычная и специальная, под кнопкой — обратный отсчёт; по окончании срока
-   (или по ответу сервера «offer expired») формы показывают обычную цену. g.onOffer(fn) — fn(on) при смене цены (закреплённая кнопка). */
+   (или по ответу сервера «offer expired») формы показывают обычную цену. g.onOffer(fn) — fn(on) при смене цены (закреплённая кнопка).
+   Специальная цена показывается, только когда она включена в панели (discOffer в src/common.js; с 2026-10-25): пока ответа нет — обычная цена;
+   ответ сервера «offer off» (выключили, пока страница была открыта) — формы переходят на обычную цену. */
 function payForms(c){
   var T = c.T, esc = c.esc, O = T.offer || null, g = {busy:false, forms:[], subs:[], tick:0};
-  g.onOffer = function(fn){ g.subs.push(fn); fn(g.forms.some(function(f){ return f.until > Date.now(); })); };
+  /* включена ли специальная цена в панели (discOffer в src/common.js): true — да, false — нет, null — ответа ещё нет (до ответа — обычная цена) */
+  function flag(){ if(typeof discOffer !== 'function') return true; return discOffer.on === true ? true : discOffer.on === false ? false : null; }
+  g.onOffer = function(fn){ g.subs.push(fn); fn(g.on === true); };
   g.paint = function(){
-    var now = Date.now(), any = false;
+    var now = Date.now(), any = false, ask = false, fl = flag();
     g.forms.forEach(function(f){
-      var on = f.until > now; any = any || on;
+      var on = f.until > now && fl === true; any = any || on; ask = ask || (f.until > now && fl === null);
       f.price = O ? (on ? O.price : O.regular) : 0;
       // каждая цена не переносится внутри себя; две цены (xdual) на узком экране мельче и при нехватке места встают в две строки
       var html = O ? (on ? '<s class="xold"><span class="vh">'+esc(O.regularLabel)+' </span>'+esc(O.regularText)+'</s> <span class="xnew">'+esc(O.priceText)+'</span>' : '<span class="xnew">'+esc(O.regularText)+'</span>') : null;
       if(f.big && html !== null && f.big.innerHTML !== html){ f.big.innerHTML = html; f.big.classList.toggle('xdual', on); }
       f.deal.hidden = !on; if(on) f.clock.textContent = payClock(f.until - now);
     });
+    if(ask && !g.asked){ g.asked = true; discOffer(c.endpoint + '/offer', function(){ g.paint(); }); }
     if(any !== g.on){ g.on = any; g.subs.forEach(function(fn){ fn(any); }); }
     if(any && !g.tick) g.tick = setInterval(g.paint, 1000);
     if(!any && g.tick){ clearInterval(g.tick); g.tick = 0; }
@@ -1052,6 +1080,8 @@ function payForms(c){
         .then(function(res){ return res.text(); })
         .then(function(txt){ var j = null; try{ j = JSON.parse(txt); }catch(e){}
           if(j && !j.ok && j.error === 'offer expired' && O){ g.forms.forEach(function(x){ x.until = 0; }); g.paint(); throw new Error('offer expired'); }
+          // специальную цену только что выключили в панели: формы переходят на обычную цену, покупатель видит её и нажимает «Купить» снова
+          if(j && !j.ok && j.error === 'offer off' && O){ if(typeof discOfferSet === 'function') discOfferSet(false); g.paint(); throw new Error('offer off'); }
           if(!j || !j.ok || !j.url || !j.order) throw new Error((j && j.error) || 'bad response');
           var u = new URL(j.url, location.href);   // платёжная страница: только https (на локальной заглушке — тот же адрес, что у сайта)
           if(u.protocol !== 'https:' && u.origin !== location.origin) throw new Error('bad url');
@@ -1060,6 +1090,7 @@ function payForms(c){
         .catch(function(err){ g.setBusy(false); st.hidden = false;
           if(err && err.message === 'bad email'){ st.textContent = T.badEmail; input.focus(); }
           else if(err && err.message === 'offer expired'){ st.textContent = O.expired; }
+          else if(err && err.message === 'offer off'){ st.textContent = O.regularLabel + ': ' + O.regularText; }
           else { st.innerHTML = T.errorHtml; payTrack('ext-pay-error'); } });
     });
     return f;
