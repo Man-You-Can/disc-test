@@ -1435,7 +1435,13 @@ $('#brand').addEventListener('click', function(e){
 function route(){
   var h = pageHash(); // #r=… к этому времени убран из адресной строки и лежит в записи истории (dataHash в общем коде страниц)
   if(h==='#admin'){ renderAdmin(); return true; }
-  if(h.indexOf('#r=')===0){ var r = decodeResult(decodeURIComponent(h.slice(3))); if(r){ renderReport(r, {own:false}); return true; } }
+  if(h.indexOf('#r=')===0){ var r = decodeResult(decodeURIComponent(h.slice(3))); if(r){
+    // ссылка на свой результат (экран результата сам кладёт её в адресную строку — showHash; после обновления страницы,
+    // возврата назад или восстановления вкладки она открывается снова): совпала с сохранённым на устройстве — экран своего результата
+    // с карточкой «Сохраните результат» и кнопкой «Отправить на e-mail»
+    var last = lsGet('disc.last');
+    if(last && last.t && last.t===r.t && String(last.m)===String(r.m) && String(last.l)===String(r.l)){ renderReport(last, {own:true}); return true; }
+    renderReport(r, {own:false}); return true; } }
   return false;
 }
 window.addEventListener('hashchange', function(){ if(!route() && !S) renderIntro(); });
