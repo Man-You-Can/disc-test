@@ -1012,7 +1012,7 @@ function renderReport(r, opts){
   // ссылка на отчёт — без e-mail (решение заказчика от 2026-10-22): её копирует кнопка «Скопировать ссылку» и показывает адресная строка
   var link = pageURL()+'#r='+encodeResult(Object.assign({}, r, {email:''}));
   if(!opts.fromAdmin) showHash(link.slice(link.indexOf('#')));
-  var show = {most:false, least:false, net:true};
+  var show = {most:true, least:true, net:true}; // все три линии графика включены сразу (по просьбе заказчика от 2026-10-25)
   // дата с подписью «Тест пройден:» (ui["report.taken"], с 2026-10-21)
   var meta = [esc(r.name), esc(r.email||r.pos||''), r.t && fmtDate(r.t) ? esc(t('report.taken',{date:fmtDate(r.t)})) : ''].filter(Boolean).join(' · ');
   var who = lsGet('disc.who')||{};
@@ -1066,8 +1066,8 @@ function renderReport(r, opts){
       '<div class="graph"><h3>'+t('report.graphTitle')+'</h3><div id="graph">'+graphSVG(sc, show, {label:t('report.graphAria'), colorVar:colorVar, keys:KEYS})+'</div>'+
         '<div class="legend no-print">'+
           '<label><input type="checkbox" data-s="net" checked> <span class="sw"></span> '+t('report.legendNet')+'</label>'+
-          '<label><input type="checkbox" data-s="most"> <span class="sw s1"></span> '+t('report.legendMost')+'</label>'+
-          '<label><input type="checkbox" data-s="least"> <span class="sw s2"></span> '+t('report.legendLeast')+'</label>'+
+          '<label><input type="checkbox" data-s="most" checked> <span class="sw s1"></span> '+t('report.legendMost')+'</label>'+
+          '<label><input type="checkbox" data-s="least" checked> <span class="sw s2"></span> '+t('report.legendLeast')+'</label>'+
         '</div>'+
       '</div>'+
       '<div><h3>'+t('report.statsTitle')+'</h3><div class="stats">'+
