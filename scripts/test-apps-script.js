@@ -480,6 +480,18 @@ if (ctx.DATA.tr && ctx.DATA.tr.extended) {
   check('extended mail in Turkish: subject, invite link to /tr/ with campaign tags, nothing unfilled', /^Genişletilmiş DISC raporunuz:\sDI · Öncü$/.test(mT.subject) &&
     mT.html.includes('href="https://disc-test.org/tr/?utm_source=report&amp;utm_medium=email&amp;utm_campaign=full-di&amp;utm_content=invite"') && !/\{\w+\}|undefined/.test(mT.html + mT.text));
 }
+// напоминание на китайском: цена в записи языка (6.99 美元), дата по-китайски, ничего русского
+if (ctx.DATA.zh && ctx.DATA.zh.pay) {
+  const pZ = ctx.composePayRemindMail(ctx.decodeResult(cX), 'zh', { order: '261025-ZH12CD', url: 'https://api.disc-test.org/pay/go?order=261025-ZH12CD&key=k', until: new Date('2026-10-27T09:00:00Z'), price: ctx.EXTENDED_OFFER_USD });
+  check('pay reminder in Chinese: 6.99 美元, the date in Chinese, Prodamus named, nothing unfilled, nothing Russian', [pZ.html, pZ.text].every(s => s.includes('6.99 美元') && s.includes('2026年10月27日') && s.includes('Prodamus') &&
+    s.includes('261025-ZH12CD') && s.includes('开拓者') && !/\{\w+\}|undefined|₽|6,99|[А-Яа-яЁё]/.test(s.replace(/Пётр Буянов/g, ''))) && pZ.subject === ctx.DATA.zh.pay.remind.subject);
+}
+// письмо покупателю на китайском: приглашение ведёт на /zh/ с метками кампании
+if (ctx.DATA.zh && ctx.DATA.zh.extended) {
+  const mZ = ctx.composeExtendedMail(ctx.decodeResult(cX), 'zh');
+  check('extended mail in Chinese: subject, invite link to /zh/ with campaign tags, nothing unfilled', /^你的 DISC 详细版报告：\s?DI · 开拓者$/.test(mZ.subject) &&
+    mZ.html.includes('href="https://disc-test.org/zh/?utm_source=report&amp;utm_medium=email&amp;utm_campaign=full-di&amp;utm_content=invite"') && !/\{\w+\}|undefined/.test(mZ.html + mZ.text));
+}
 check('doGet reports that extended delivery is on', JSON.parse(ctx.doGet().text).extended === true);
 fs.writeFileSync(path.join(process.env.OUT || '/tmp', 'disc-extended-mail-preview.html'), mX.htmlBody);
 fs.writeFileSync(path.join(process.env.OUT || '/tmp', 'disc-mail-preview.html'), mail.htmlBody);
