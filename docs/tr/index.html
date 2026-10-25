@@ -1456,16 +1456,10 @@ function renderReport(r, opts){
       '</div>'+
       '<p class="howto">'+t('report.howto')+'</p>'+
     '</div>'+
-    // «Ключевые черты» — отдельной карточкой, за ней блок «Расширенный отчёт», потом остальное описание профиля
-    // (с 2026-10-25 по решению заказчика; с 2026-10-22 блок стоял сразу под графиком, а до того — ниже описания профиля,
-    // где его на телефоне видела только половина прошедших тест)
-    '<div class="card" id="traitsCard"><div class="sections">'+
+    '<div class="card" id="secCard"><div class="sections">'+
       '<div class="sec full"><h3>'+t('report.traits')+'</h3><div class="traits">'+st.traits.map(function(x){ return '<span>'+esc(x)+'</span>'; }).join('')+'</div>'+
         (cls.s ? '<div class="substyle" style="--ks:'+colorVar(cls.s)+'"><b>'+t('report.secondary',{k:cls.s,name:esc(L.keys[cls.s])})+'</b> '+t('report.secondaryAddon',{addon:esc(L.addon[cls.s])})+'</div>' : '')+
       '</div>'+
-    '</div></div>'+
-    extOffer()+
-    '<div class="card" id="secCard"><div class="sections">'+
       '<div class="sec"><h3>'+t('report.strengths')+'</h3>'+list(st.strengths)+'</div>'+
       '<div class="sec"><h3>'+t('report.growth')+'</h3>'+list(st.growth)+'</div>'+
       '<div class="sec"><h3>'+t('report.motivation')+'</h3>'+list(st.motivation)+'</div>'+
@@ -1473,6 +1467,9 @@ function renderReport(r, opts){
       '<div class="sec"><h3>'+t('report.stress')+'</h3><p>'+esc(st.stress)+'</p></div>'+
       '<div class="sec"><h3>'+t('report.environment')+'</h3><p>'+esc(st.environment)+'</p></div>'+
     '</div></div>'+
+    // блок «Расширенный отчёт» — сразу после описания профиля (карточки с «Ключевыми чертами», «Сильными сторонами» и т. д.):
+    // с 2026-10-25 по решению заказчика; с 2026-10-22 до 2026-10-25 стоял сразу под графиком
+    extOffer()+
     // анонс сервиса «Резюме под каждую вакансию» (content.cvPromo, с 2026-10-24) — после описания профиля; в панели администратора его нет
     (opts.fromAdmin ? '' : cvPromoHTML({P: L.content && L.content.cvPromo, esc: esc, href: base+'cv/', kind: 'result'}))+
     '<div class="print-only printcta"><b>'+t('cta.title')+'</b><p>'+esc(t('cta.text'))+' <b>'+esc(homeURL)+'</b></p></div>'+
