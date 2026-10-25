@@ -339,13 +339,16 @@ function composeSubscribeMail(lang, url) {
  */
 function composePromoMail(r, lang, o) {
   var L = DATA[lang], X = L.promo, rtl = L.dir === 'rtl', start = rtl ? 'right' : 'left';
+  // китайский и японский: между предложениями без пробела, после ссылки отписки — «。», а не «.»
+  var cjk = /^(zh|ja)/.test(lang), gap = cjk ? '' : ' ', stop = cjk ? '\u3002' : '.';
   var sc = score(r), c = classify(sc), prof = L.profiles[c.key];
   var low = KEYS.slice().sort(function (x, y) { return sc.net[y] - sc.net[x]; })[3];
   var site = SITE_URL.replace(/^https?:\/\//, ''), home = langHome(lang);
   var href = home + 'extended-report/?src=nl#r=' + o.code;
   // даты: в русском письме — 24.10.2026, в остальных — запись языка (October 24, 2026), как в напоминании об оплате
   function day(d) {
-    if (lang !== 'ru' && X.dateLocale) { try { return new Intl.DateTimeFormat(X.dateLocale, { timeZone: 'Europe/Moscow', day: 'numeric', month: 'long', year: 'numeric' }).format(d); } catch (e) {} }
+    // пробелы внутри даты — неразрывные: «24 octobre» и «2026» не расходятся по строкам
+    if (lang !== 'ru' && X.dateLocale) { try { return new Intl.DateTimeFormat(X.dateLocale, { timeZone: 'Europe/Moscow', day: 'numeric', month: 'long', year: 'numeric' }).format(d).replace(/ /g, '\u00a0'); } catch (e) {} }
     return Utilities.formatDate(d, 'Europe/Moscow', 'dd.MM.yyyy');
   }
   var tested = new Date(r.t); if (isNaN(tested.getTime())) tested = o.consentAt;
@@ -393,16 +396,16 @@ function composePromoMail(r, lang, o) {
     '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 22px;border:1px solid #D9DDE3;border-radius:12px"><tr><td style="padding:16px 14px">' +
       '<p style="margin:0 0 12px;font-size:15px">' + esc(price[0]) + '<b style="font-size:24px">' + esc(X.price) + '</b>' + esc(price[1] || '') + '</p>' +
       '<a href="' + esc(href) + '" style="display:block;background:#1B2027;color:#ffffff;text-decoration:none;font-size:15px;font-weight:bold;text-align:center;padding:13px 8px;border-radius:8px">' + esc(X.button) + '</a>' +
-      '<p style="margin:12px 0 0;font-size:13px;line-height:1.45;color:#5B6470">' + esc(X.delivery + ' ' + X.guarantee) + '</p>' +
+      '<p style="margin:12px 0 0;font-size:13px;line-height:1.45;color:#5B6470">' + esc(X.delivery + gap + X.guarantee) + '</p>' +
     '</td></tr></table>' +
     '<p style="margin:0 0 22px;font-size:13px;color:#5B6470">' + esc(X.free) + '</p>' +
     '<p style="margin:0;padding-top:12px;border-top:1px solid #D9DDE3;font-size:12px;color:#5B6470">' + withSite(X.footer, { date: day(o.consentAt) }, '#5B6470') +
-      ' <a href="' + esc(o.unsubUrl) + '" style="color:#5B6470">' + esc(L.email.unsubscribe) + '</a>.</p>' +
+      gap + '<a href="' + esc(o.unsubUrl) + '" style="color:#5B6470">' + esc(L.email.unsubscribe) + '</a>' + stop + '</p>' +
     '</td></tr></table></td></tr></table></body></html>';
   var text = greeting + '\n\n' + fmt(X.intro, { date: day(tested), site: site }) + '\n' + c.key + ' · ' + prof.name + ' (' + styleName + ')\n' +
     KEYS.map(function (k) { return k + ' ' + L.keys[k] + ': ' + pct(sc.net[k]) + '%'; }).join('\n') + '\n\n' + X.lead + '\n\n' + hook + '\n\n' +
     X.listTitle + '\n' + X.list.map(function (t) { return '— ' + t; }).join('\n') + '\n\n' + X.why + '\n\n' + X.size + '\n\n' +
-    fmt(X.priceLine, { price: X.price }) + '\n' + X.button + ': ' + href + '\n' + X.delivery + ' ' + X.guarantee + '\n' + X.free + '\n\n' +
+    fmt(X.priceLine, { price: X.price }) + '\n' + X.button + ': ' + href + '\n' + X.delivery + gap + X.guarantee + '\n' + X.free + '\n\n' +
     fmt(X.footer, { date: day(o.consentAt), site: site }) + '\n' + L.email.unsubscribe + ': ' + o.unsubUrl + '\n';
   return { subject: subject, preheader: preheader, html: html, text: text };
 }

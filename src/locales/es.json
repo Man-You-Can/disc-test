@@ -1177,6 +1177,31 @@
       "button": "Confirmar suscripción",
       "footer": "Si usted no se ha suscrito, no tiene que hacer nada: sin confirmación no recibirá el boletín, y la dirección se eliminará al cabo de 7 días."
     },
+    "mailing": {
+      "promo": {
+        "subject": "{name}, lo que su resultado {key} aún puede decirle",
+        "subjectNoName": "Lo que su resultado DISC {key} aún puede decirle",
+        "preheader": "Su escala más baja es {k} ({scale}), {pct} %: qué significa y cómo trabajar con ello",
+        "greetingNoName": "Hola:",
+        "intro": "El {date} hizo el test DISC en {site}. Su perfil:",
+        "lead": "El informe breve recogió lo esencial. El ampliado analiza su resultado en detalle, a partir de estas cuatro cifras.",
+        "hook": "Su escala más baja es {k} ({scale}): {pct} %. El informe ampliado explica qué significa y cómo trabajar con ello.",
+        "scales": {
+          "D": "dominancia",
+          "I": "influencia",
+          "S": "estabilidad",
+          "C": "cumplimiento"
+        },
+        "listTitle": "En el informe ampliado:",
+        "why": "Le será útil antes de una entrevista de trabajo, en una conversación con su responsable y en el trabajo en equipo.",
+        "imageAlt": "Páginas del informe DISC ampliado",
+        "size": "En total, 13 secciones y unas 28 páginas en PDF. El informe es personal: se elabora a partir de sus respuestas y lleva su nombre en cada página.",
+        "priceLine": "Informe ampliado: {price}",
+        "price": "{price} USD",
+        "delivery": "El informe llegará a esta dirección justo después del pago.",
+        "footer": "Ha recibido este mensaje porque el {date} aceptó recibir correos de {site} al enviarse el resultado del test."
+      }
+    },
     "results": {
       "title": "Resultados del test DISC: interpretación del gráfico y el perfil",
       "description": "Cómo leer el resultado del test DISC: gráfico de tres líneas, porcentajes, estilo predominante y secundario, perfil equilibrado. Ejemplos y errores comunes.",

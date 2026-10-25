@@ -2110,6 +2110,31 @@
       "button": "Confirm subscription",
       "footer": "If you didn’t sign up, there’s nothing you need to do: without confirmation, no newsletter will be sent, and the address will be deleted after 7 days."
     },
+    "mailing": {
+      "promo": {
+        "subject": "{name}, here’s what else your {key} result says",
+        "subjectNoName": "Here’s what else your DISC {key} result says",
+        "preheader": "Your lowest scale is {k} ({scale}), {pct}%: what it means and how to work with it",
+        "greetingNoName": "Hello,",
+        "intro": "On {date}, you took the DISC test on {site}. Your profile:",
+        "lead": "Your summary report covered the essentials. The in-depth report takes a detailed look at your result, built around these four numbers.",
+        "hook": "Your lowest scale is {k} ({scale}): {pct}%. The in-depth report explains what that means and how to work with it.",
+        "scales": {
+          "D": "Dominance",
+          "I": "Influence",
+          "S": "Steadiness",
+          "C": "Conscientiousness"
+        },
+        "listTitle": "Inside the in-depth report:",
+        "why": "It comes in handy before a job interview, in a conversation with your manager and when working on a team.",
+        "imageAlt": "Pages from the in-depth DISC report",
+        "size": "13 sections in all, about 27 pages in PDF. The report is personal: it’s built from your answers, with your name on every page.",
+        "priceLine": "In-depth report: {price}",
+        "price": "US${price}",
+        "delivery": "The report will arrive at this address right after payment.",
+        "footer": "You’re receiving this email because on {date}, you agreed to receive emails from {site} when you sent yourself your test result."
+      }
+    },
     "results": {
       "title": "DISC Test Results Explained: How to Read Your Chart and Profile",
       "description": "How to read your DISC test results: the three chart lines, percentages, primary and secondary styles, balanced profile. Examples and common mistakes.",

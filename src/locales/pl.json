@@ -1157,6 +1157,31 @@
       "button": "Potwierdź subskrypcję",
       "footer": "Jeśli ten adres nie został podany przez ciebie, nie musisz nic robić: bez potwierdzenia newsletter nie będzie przychodzić, a adres zostanie usunięty po 7 dniach."
     },
+    "mailing": {
+      "promo": {
+        "subject": "{name}, co jeszcze mówi twój wynik {key}",
+        "subjectNoName": "Co jeszcze mówi twój wynik DISC {key}",
+        "preheader": "Twoja najniższa skala to {k} ({scale}), {pct}%: co to oznacza i jak z tym pracować",
+        "greetingNoName": "Cześć!",
+        "intro": "Twój test DISC w serwisie {site} z {date} r. pokazał taki profil:",
+        "lead": "Raport podstawowy opisał najważniejsze. Raport rozszerzony analizuje twój wynik szczegółowo – na podstawie tych czterech liczb.",
+        "hook": "Twoja najniższa skala to {k} ({scale}): {pct}%. Raport rozszerzony wyjaśnia, co to oznacza i jak z tym pracować.",
+        "scales": {
+          "D": "dominacja",
+          "I": "wpływ",
+          "S": "stałość",
+          "C": "sumienność"
+        },
+        "listTitle": "W raporcie rozszerzonym:",
+        "why": "Przyda się przed rozmową kwalifikacyjną, w rozmowie z przełożonym i w pracy zespołowej.",
+        "imageAlt": "Strony rozszerzonego raportu DISC",
+        "size": "Razem 13 rozdziałów, około 28 stron w formacie PDF. Raport jest imienny: powstaje na podstawie twoich odpowiedzi, a na każdej stronie jest twoje imię.",
+        "priceLine": "Raport rozszerzony: {price}",
+        "price": "{price} USD",
+        "delivery": "Raport przyjdzie na ten adres zaraz po płatności.",
+        "footer": "Dostajesz tę wiadomość, ponieważ {date} r. przy wysyłce wyniku testu na ten adres została zaznaczona zgoda na otrzymywanie wiadomości od {site}."
+      }
+    },
     "results": {
       "title": "Interpretacja wyników testu DISC: jak czytać wykres i profil",
       "description": "Jak czytać wynik testu DISC: trzy linie wykresu, procenty, styl wiodący i uzupełniający, profil zrównoważony. Przykłady interpretacji i typowe błędy.",

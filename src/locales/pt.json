@@ -1173,6 +1173,31 @@
       "button": "Confirmar inscrição",
       "footer": "Se você não se inscreveu, não precisa fazer nada: sem confirmação, a newsletter não será enviada, e o endereço será apagado em 7 dias."
     },
+    "mailing": {
+      "promo": {
+        "subject": "{name}, o que mais o seu resultado {key} revela",
+        "subjectNoName": "O que mais o seu resultado DISC {key} revela",
+        "preheader": "Sua escala mais baixa é {k} ({scale}), {pct}%: o que isso significa e como trabalhar com isso",
+        "greetingNoName": "Olá!",
+        "intro": "Em {date}, você fez o teste DISC no {site}. Seu perfil:",
+        "lead": "O relatório resumido mostrou o essencial. O ampliado analisa o seu resultado em detalhes, a partir destes quatro números.",
+        "hook": "Sua escala mais baixa é {k} ({scale}): {pct}%. O relatório ampliado explica o que isso significa e como trabalhar com isso.",
+        "scales": {
+          "D": "dominância",
+          "I": "influência",
+          "S": "estabilidade",
+          "C": "conformidade"
+        },
+        "listTitle": "No relatório ampliado:",
+        "why": "Ele é útil antes de uma entrevista de emprego, numa conversa com a sua liderança e no trabalho em equipe.",
+        "imageAlt": "Páginas do relatório DISC ampliado",
+        "size": "São 13 seções, cerca de 29 páginas em PDF. O relatório é personalizado: ele é montado a partir das suas respostas e traz o seu nome em todas as páginas.",
+        "priceLine": "Relatório ampliado: {price}",
+        "price": "US$ {price}",
+        "delivery": "O relatório chega neste e-mail logo após o pagamento.",
+        "footer": "Você recebeu este e-mail porque, em {date}, aceitou receber mensagens do {site} quando enviou o resultado do teste para o seu e-mail."
+      }
+    },
     "results": {
       "title": "Resultado do teste DISC: como interpretar o gráfico e o perfil",
       "description": "Como interpretar o resultado do teste DISC: as três linhas do gráfico, as porcentagens, estilo predominante e secundário, perfil equilibrado.",

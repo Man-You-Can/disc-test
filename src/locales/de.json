@@ -2119,6 +2119,31 @@
       "button": "Anmeldung bestätigen",
       "footer": "Wenn Sie sich nicht angemeldet haben, müssen Sie nichts tun: Ohne Bestätigung erhalten Sie keinen Newsletter, und die Adresse wird nach 7 Tagen gelöscht."
     },
+    "mailing": {
+      "promo": {
+        "subject": "{name}, was Ihr DISG-Ergebnis {key} noch verrät",
+        "subjectNoName": "Was Ihr DISG-Ergebnis {key} noch verrät",
+        "preheader": "Ihr niedrigster Wert ist {k} ({scale}), {pct} %: was das bedeutet und wie Sie damit arbeiten",
+        "greetingNoName": "Hallo,",
+        "intro": "Am {date} haben Sie auf {site} den DISG-Test gemacht. Ihr Profil:",
+        "lead": "Der Kurzbericht hat das Wichtigste zusammengefasst. Der ausführliche Bericht analysiert Ihr Ergebnis im Detail – anhand dieser vier Zahlen.",
+        "hook": "Ihr niedrigster Wert ist {k} ({scale}): {pct} %. Der ausführliche Bericht erklärt, was das bedeutet und wie Sie damit arbeiten.",
+        "scales": {
+          "D": "Dominanz",
+          "I": "Initiative",
+          "S": "Stetigkeit",
+          "C": "Gewissenhaftigkeit"
+        },
+        "listTitle": "Im ausführlichen Bericht:",
+        "why": "Hilfreich vor einem Vorstellungsgespräch, im Gespräch mit Ihrer Führungskraft und bei der Arbeit im Team.",
+        "imageAlt": "Seiten aus dem ausführlichen DISG-Bericht",
+        "size": "Insgesamt 13 Kapitel, rund 30 Seiten als PDF. Der Bericht ist persönlich: Er entsteht aus Ihren Antworten, und auf jeder Seite steht Ihr Name.",
+        "priceLine": "Ausführlicher Bericht: {price}",
+        "price": "{price} €",
+        "delivery": "Der Bericht kommt direkt nach der Zahlung an diese Adresse.",
+        "footer": "Sie erhalten diese E-Mail, weil Sie am {date} beim Versand Ihres Testergebnisses zugestimmt haben, E-Mails von {site} zu erhalten."
+      }
+    },
     "results": {
       "title": "DISG-Auswertung: Ergebnis, Diagramm und Profil verstehen",
       "description": "DISG-Ergebnis verstehen: drei Linien im Diagramm, Prozentwerte, Haupt- und Nebenstil, ausgeglichenes Profil. Beispiele zur Auswertung und typische Lesefehler.",

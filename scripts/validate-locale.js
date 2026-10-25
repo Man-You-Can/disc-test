@@ -25,8 +25,8 @@ const OPTIONAL = ['.content.policy.legal', '.content.extendedMail', '.content.pr
   '.content.cv.author.siteLabel', '.content.cv.author.site', '.content.cv.author.siteUrl',
   // анонсы этого сервиса на сайте (главная, экран результата, профили, «Услуги»; с 2026-10-24, по просьбе заказчика; русская и английская версии) — только вместе с лендингом
   '.content.cvPromo',
-  // письмо подписчикам с призывом купить расширенный отчёт (content.mailing.promo, с 2026-10-25): решение заказчика — сначала только русская версия,
-  // остальные языки с покупкой — позже, когда их тексты будут написаны и вычитаны (исключение из правила от 2026-10-14). Где ключ есть, он полный (сверка с ru)
+  // письмо подписчикам с призывом купить расширенный отчёт (content.mailing.promo, с 2026-10-25): только где отчёт продаётся; обязательность — в проверке ниже.
+  // Где ключ есть, он полный (сверка с ru)
   '.content.mailing'];
 // специальная цена на час после теста (product.pay.offer; offerPriceRub, offerPriceUsd в site.config.json; с 2026-10-22) обязательна вместе с product.pay:
 // её тексты сравниваются с ru.json как часть pay
@@ -81,6 +81,8 @@ for (const f of files) {
   if (P.promo && !P.pay) errs.push('.content.product.promo: only where the report is on sale (needs product.pay)');
   // Правило заказчика от 2026-10-14: всё, что сделано для продажи в русской версии, применяется в языке вместе с покупкой
   if (P.pay && !P.promo) errs.push('.content.product.promo: missing — the report is on sale in this language, so everything done for sales in the Russian version applies here (CLAUDE.md)');
+  // письмо подписчикам о расширенном отчёте (с 2026-10-25, во всех языках с покупкой) — по этому же правилу
+  if (P.pay && !(C.mailing && C.mailing.promo)) errs.push('.content.mailing.promo: missing — the report is on sale in this language, so the subscriber mail goes with it (CLAUDE.md)');
   // «Для организаций»: страница и пункт в подвале — вместе; продаются коды доступа, поэтому нужны поле кода в покупке и письмо по коду
   if (C.cvPromo && !C.cv) errs.push('.content.cvPromo: needs .content.cv (the blocks link to the /cv/ landing)');
   if (!!C.business !== !!(j.ui && j.ui['nav.business'])) errs.push('.content.business and .ui["nav.business"] must come together');

@@ -1154,6 +1154,31 @@
       "button": "Konfirmasi langganan",
       "footer": "Jika Anda tidak mendaftar, Anda tidak perlu melakukan apa pun: tanpa konfirmasi, buletin tidak akan dikirim, dan alamat ini akan dihapus setelah 7 hari."
     },
+    "mailing": {
+      "promo": {
+        "subject": "{name}, apa lagi yang diungkap hasil {key} Anda",
+        "subjectNoName": "Apa lagi yang diungkap hasil DISC {key} Anda",
+        "preheader": "Skala terendah Anda adalah {k} ({scale}), {pct}%: apa artinya dan cara menyikapinya",
+        "greetingNoName": "Halo!",
+        "intro": "Pada {date}, Anda mengikuti tes DISC di {site}. Profil Anda:",
+        "lead": "Laporan ringkas sudah membahas hal-hal utamanya. Laporan mendalam mengurai hasil Anda secara terperinci, berdasarkan empat angka ini.",
+        "hook": "Skala terendah Anda adalah {k} ({scale}): {pct}%. Laporan mendalam menjelaskan artinya dan cara menyikapinya.",
+        "scales": {
+          "D": "Dominasi",
+          "I": "Pengaruh",
+          "S": "Kestabilan",
+          "C": "Ketelitian"
+        },
+        "listTitle": "Isi laporan mendalam:",
+        "why": "Berguna sebelum wawancara kerja, saat berbicara dengan atasan, dan ketika bekerja dalam tim.",
+        "imageAlt": "Halaman dari laporan DISC mendalam",
+        "size": "Seluruhnya 13 bagian, sekitar 30 halaman dalam format PDF. Laporan ini bersifat pribadi: disusun dari jawaban Anda, dengan nama Anda di setiap halaman.",
+        "priceLine": "Laporan mendalam: {price}",
+        "price": "US${price}",
+        "delivery": "Laporan dikirim ke alamat email ini segera setelah pembayaran.",
+        "footer": "Anda menerima email ini karena pada {date} Anda setuju menerima email dari {site} saat mengirim hasil tes ke email Anda sendiri."
+      }
+    },
     "results": {
       "title": "Cara Membaca Hasil Tes DISC: Memahami Grafik dan Profil",
       "description": "Cara membaca hasil tes DISC: tiga garis grafik, persentase, gaya utama dan gaya sekunder, profil seimbang. Dilengkapi contoh pembacaan dan kesalahan yang umum.",

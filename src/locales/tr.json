@@ -1152,6 +1152,31 @@
       "button": "Aboneliği onayla",
       "footer": "Abone olmadıysanız hiçbir şey yapmanız gerekmez: onay verilmezse bülten gönderilmez ve adres 7 gün sonra silinir."
     },
+    "mailing": {
+      "promo": {
+        "subject": "{name}, {key} sonucunuz size başka neler söylüyor",
+        "subjectNoName": "DISC {key} sonucunuz size başka neler söylüyor",
+        "preheader": "En düşük ölçeğiniz {k} ({scale}), %{pct}: bunun ne anlama geldiği ve üzerinde nasıl çalışabileceğiniz",
+        "greetingNoName": "Merhaba,",
+        "intro": "{date} tarihinde {site} sitesinde DISC testini çözdünüz. Profiliniz:",
+        "lead": "Özet rapor temel noktaları anlattı. Genişletilmiş rapor ise sonucunuzu bu dört sayıya dayanarak ayrıntılı biçimde ele alır.",
+        "hook": "En düşük ölçeğiniz {k} ({scale}): %{pct}. Genişletilmiş rapor bunun ne anlama geldiğini ve bunun üzerinde nasıl çalışabileceğinizi anlatır.",
+        "scales": {
+          "D": "baskınlık",
+          "I": "etkileyicilik",
+          "S": "istikrar",
+          "C": "titizlik"
+        },
+        "listTitle": "Genişletilmiş raporda:",
+        "why": "İş görüşmesinden önce, yöneticinizle konuşurken ve ekip çalışmasında işinize yarar.",
+        "imageAlt": "Genişletilmiş DISC raporundan sayfalar",
+        "size": "Toplam 13 bölüm, PDF formatında yaklaşık 28 sayfa. Rapor kişiye özeldir: yanıtlarınıza göre hazırlanır ve her sayfada adınız yer alır.",
+        "priceLine": "Genişletilmiş rapor: {price}",
+        "price": "{price} USD",
+        "delivery": "Rapor, ödemeden hemen sonra bu adrese gelir.",
+        "footer": "Bu e-postayı, {date} tarihinde test sonucunuzu kendinize gönderirken {site} e-postalarını almayı kabul ettiğiniz için aldınız."
+      }
+    },
     "results": {
       "title": "DISC testi sonuçlarının yorumlanması: grafiği ve profili okuma",
       "description": "DISC testi sonuçları nasıl okunur: grafikteki üç çizgi, yüzdeler, ana ve ikincil stil, dengeli profil. Sonuç yorumlama örnekleri ve sık yapılan hatalar.",

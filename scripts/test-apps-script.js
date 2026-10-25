@@ -297,7 +297,7 @@ check('pay: price from site settings, service name and reminder texts only where
 // письмо подписчикам с призывом купить расширенный отчёт (content.mailing.promo, с 2026-10-25; отправляет свой сервер, src/promo.js)
 {
   const mailingOf = lg => { const C = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'src', 'locales', lg + '.json'), 'utf8')).content; return !!(C.mailing && C.mailing.promo && C.product && C.product.pay); };
-  check('promo: texts only where the report is sold and the letter is written (Russian first)', typeof ctx.composePromoMail === 'function' &&
+  check('promo: texts only where the report is sold and the letter is written', typeof ctx.composePromoMail === 'function' &&
     Object.keys(ctx.DATA).filter(lg => ctx.DATA[lg].promo).join() === Object.keys(ctx.DATA).filter(mailingOf).join() && !!ctx.DATA.ru.promo, Object.keys(ctx.DATA).filter(lg => ctx.DATA[lg].promo).join());
   const rP = ctx.decodeResult(cX), scP = ctx.score(rP), cP = ctx.classify(scP);
   const lowP = ['D', 'I', 'S', 'C'].slice().sort((x, y) => scP.net[y] - scP.net[x])[3];
@@ -320,6 +320,31 @@ check('pay: price from site settings, service name and reminder texts only where
   check('promo (ru): nothing unfilled, no e-mail of the participant in the visible text', ![mP.subject, mP.preheader, mP.html, mP.text].some(s => /\{\w+\}|undefined|null/.test(s)) && !mP.text.includes('@b.co'));
   const mP0 = ctx.composePromoMail(Object.assign({}, rP, { name: '' }), 'ru', { code: cX, consentAt: new Date('2026-10-01T10:05:00Z'), unsubUrl: unsubP });
   check('promo (ru): without a name — neutral subject and greeting', mP0.subject === 'Что ещё говорит ваш результат DISC ' + cP.key && mP0.html.includes('>Здравствуйте!</p>'), mP0.subject);
+}
+// письмо подписчикам в остальных языках с покупкой (с 2026-10-25): цена в валюте языка, дата в записи языка, ссылка на страницу отчёта своего языка, ничего русского
+{
+  const rL = Object.assign({}, ctx.decodeResult(cX), { name: 'Alex' }), scL = ctx.score(rL), cL = ctx.classify(scL);
+  const lowL = ['D', 'I', 'S', 'C'].slice().sort((x, y) => scL.net[y] - scL.net[x])[3], atL = new Date('2026-10-01T10:05:00Z');
+  const priceOf = { USD: /^(US\$\u00a0?9[.,]99|9[.,]99\u00a0(USD|美元))$/, EUR: /^9,99\u00a0€$/ };
+  for (const lg of Object.keys(ctx.DATA).filter(l => l !== 'ru' && ctx.DATA[l].promo)) {
+    const X = ctx.DATA[lg].promo, cur = ctx.DATA[lg].pay.currency || 'USD', home = 'https://disc-test.org/' + (lg === 'en' ? '' : lg + '/');
+    const unsubL = home + 'unsubscribe/#u=AbCdEfGhIjKlMnOpQrStUv', m = ctx.composePromoMail(rL, lg, { code: cX, consentAt: atL, unsubUrl: unsubL });
+    const href = home + 'extended-report/?src=nl#r=' + cX, dL = new Intl.DateTimeFormat(X.dateLocale, { timeZone: 'Europe/Moscow', day: 'numeric', month: 'long', year: 'numeric' }).format(atL).replace(/ /g, '\u00a0');
+    const all = [m.subject, m.preheader, m.html, m.text];
+    check('promo (' + lg + '): regular price in ' + cur + ', button to the ' + lg + ' report page with the nl mark, guarantee', priceOf[cur].test(X.price) &&
+      m.html.includes('<b style="font-size:24px">' + ctx.esc(X.price) + '</b>') && m.html.includes('href="' + ctx.esc(href) + '"') && m.text.includes(href) &&
+      m.html.includes(ctx.esc(X.guarantee)) && !all.some(s => /6[.,]99|₽|PDF (by|per|por|par|na|lewat) e|e-postayla PDF|发送到邮箱|寄到信箱/.test(s)), X.price);
+    check('promo (' + lg + '): dates in the language (' + dL + '), not 01.10.2026; lowest scale in subject line and preheader', all.every(s => !s.includes('01.10.2026')) &&
+      m.text.includes(ctx.fmt(X.intro, { date: dL, site: 'disc-test.org' })) && m.text.includes(ctx.fmt(X.footer, { date: dL, site: 'disc-test.org' })) &&
+      m.subject === ctx.fmt(X.subject, { name: 'Alex', key: cL.key }) && m.preheader === ctx.fmt(X.preheader, { k: lowL, scale: X.scales[lowL], pct: ctx.pct(scL.net[lowL]) }), m.preheader);
+    check('promo (' + lg + '): sheets image /extended/' + lg + '-mail.jpg, site links to the ' + lg + ' home page, unsubscribe link', !!X.image &&
+      m.html.includes('<img src="https://disc-test.org/extended/' + lg + '-mail.jpg"') && m.html.includes('<a href="' + home + '" style="color:#5B6470">disc-test.org</a>') &&
+      m.html.includes('<a href="' + unsubL + '" style="color:#5B6470">' + ctx.esc(ctx.DATA[lg].email.unsubscribe) + '</a>') && X.list.every(t => m.html.includes(ctx.esc(t))));
+    check('promo (' + lg + '): nothing Russian, nothing unfilled', !all.some(s => /[А-Яа-яЁё]/.test(s) || /\{\w+\}|undefined|null/.test(s)) && !m.text.includes('@b.co'),
+      (all.join(' ').match(/.{0,30}([А-Яа-яЁё]|\{\w+\}|undefined|null).{0,30}/) || [''])[0]);
+    const m0 = ctx.composePromoMail(Object.assign({}, rL, { name: '' }), lg, { code: cX, consentAt: atL, unsubUrl: unsubL });
+    check('promo (' + lg + '): without a name — neutral subject and greeting', m0.subject === ctx.fmt(X.subjectNoName, { key: cL.key }) && m0.html.includes('>' + ctx.esc(X.greetingNoName) + '</p>'), m0.subject);
+  }
 }
 // напоминание в языке с оплатой через Prodamus: цена в долларах, дата в записи языка (не 21.10.2026), ничего русского
 if (ctx.DATA.en && ctx.DATA.en.pay) {

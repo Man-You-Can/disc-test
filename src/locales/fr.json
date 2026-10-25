@@ -2121,6 +2121,31 @@
       "button": "Confirmer l'abonnement",
       "footer": "Si cette demande ne vient pas de vous, vous n'avez rien à faire : sans confirmation, la newsletter ne vous sera pas envoyée et l'adresse sera supprimée au bout de 7 jours."
     },
+    "mailing": {
+      "promo": {
+        "subject": "{name}, ce que votre résultat {key} peut encore vous apprendre",
+        "subjectNoName": "Ce que votre résultat DISC {key} peut encore vous apprendre",
+        "preheader": "Votre échelle la plus basse est {k} ({scale}), {pct} % : ce que cela signifie et comment travailler avec",
+        "greetingNoName": "Bonjour,",
+        "intro": "Le {date}, vous avez passé le test DISC sur {site}. Votre profil :",
+        "lead": "Le rapport de synthèse a présenté l'essentiel. Le rapport détaillé analyse votre résultat en profondeur, à partir de ces quatre chiffres.",
+        "hook": "Votre échelle la plus basse est {k} ({scale}) : {pct} %. Le rapport détaillé explique ce que cela signifie et comment travailler avec.",
+        "scales": {
+          "D": "dominance",
+          "I": "influence",
+          "S": "stabilité",
+          "C": "conformité"
+        },
+        "listTitle": "Dans le rapport détaillé :",
+        "why": "Utile avant un entretien d'embauche, lors d'un échange avec votre manager et dans le travail en équipe.",
+        "imageAlt": "Pages du rapport DISC détaillé",
+        "size": "13 sections au total, environ 30 pages au format PDF. Le rapport est personnalisé : il est établi à partir de vos réponses, avec votre nom sur chaque page.",
+        "priceLine": "Rapport détaillé : {price}",
+        "price": "{price} €",
+        "delivery": "Le rapport arrivera à cette adresse dès le paiement effectué.",
+        "footer": "Vous recevez cet e-mail parce que, le {date}, vous avez accepté de recevoir les e-mails de {site} en vous envoyant le résultat du test."
+      }
+    },
     "results": {
       "title": "Résultats du test DISC : comment les interpréter",
       "description": "Lire un résultat DISC : les trois courbes du graphique, les pourcentages, styles dominant et secondaire, profil équilibré.",
