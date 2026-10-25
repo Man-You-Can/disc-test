@@ -510,6 +510,27 @@ const ctaBlock = (L, t, homeHref) => `<aside class="cta"><div><h2>${t('cta.title
 // Призыв сразу после вводного абзаца: с поиска приходят на профили, расшифровку, PDF, а кнопка теста была только в конце
 // страницы (на телефоне — через 4–10 экранов). data-goal — цели Метрики cta-top / cta-bottom / cta-float (аудит 3, п. 1)
 const ctaTop = (t, homeHref, key, btn) => `<aside class="cta cta-top no-print"><p>${escFull(t(key || 'cta.inline'))}</p><a class="btn" href="${homeHref}" data-goal="cta-top">${escFull(btn || t('cta.button'))}</a></aside>`;
+// Первый блок теста прямо в статье вместо верхнего призыва (с 2026-10-26, по просьбе заказчика; п. 5 разбора воронки «зашёл → начал тест»):
+// «Что такое DISC», «Расшифровка результатов», «DISC по цветам» и 16 профилей. Те же утверждения и та же разметка, что у блока 1 теста
+// (порядок — BLOCK_KEYS[0] из template.html: от него зависят номера ответов). Скрипт страницы (src/page.html) кладёт ответ в disc.progress
+// и ведёт на главную с меткой #test — тест открывается сразу на блоке 2. Без скрипта кнопка — обычная ссылка на тест.
+const FIRST_BLOCK = (tpl.match(/var BLOCK_KEYS = \['([DISC]{4})'/) || [])[1];
+if (!FIRST_BLOCK) throw new Error('BLOCK_KEYS не найден в src/template.html');
+const EMBED_UI = /^(embed\.|test\.(ask1|ask2|askDone|mostTag|leastTag)$|intro\.resume$)/;
+const embedTest = (L, t, homeHref, key) => {
+  const ico = '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg>';
+  const arr = '<svg class="arr" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 10H4M9 5l-5 5 5 5"/></svg>';
+  const rows = FIRST_BLOCK.split('').map((k, j) => { const s = escFull(L.blocks[0][k]);
+    return `<div class="row" data-j="${j}"><button type="button" class="pick most" data-pick="m" data-j="${j}" aria-pressed="false" aria-label="${esc(t('test.mostAria', { t: s }))}">${ico}</button>` +
+      `<div class="txt">${s}</div><button type="button" class="pick least" data-pick="l" data-j="${j}" aria-pressed="false" aria-label="${esc(t('test.leastAria', { t: s }))}">${ico}</button></div>`; }).join('');
+  return `<section class="card testcard embedtest no-print" id="embedTest" data-home="${homeHref}">` +
+    `<div class="eyebrow">${escFull(t('embed.eyebrow'))}</div><h2 class="et-title">${escFull(t(key || 'cta.inline'))}</h2><p class="muted et-lead">${escFull(t('embed.lead'))}</p>` +
+    `<div class="et-test"><div class="et-step">${escFull(t('test.step', { n: 1 }))}</div><div class="qgrid need-m"><div class="qhead"><span class="h m">${t('test.mostHead')}</span><div class="asks">` +
+    `<div class="ask on">${arr}<span>${t('test.ask1')}</span></div><div class="ask to-l" aria-hidden="true">${arr}<span>${t('test.ask2')}</span></div>` +
+    `<div class="ask to-l done" aria-hidden="true"><span>${t('test.askDone', { next: escFull(t('embed.next')) })}</span></div></div><span class="h l">${t('test.leastHead')}</span></div>` +
+    `<div class="qrows">${rows}</div></div></div>` +
+    `<div class="testnav"><span class="et-meta">${escFull(t('embed.meta'))}</span><a class="btn small off" id="etNext" href="${homeHref}#test" aria-disabled="true">${escFull(t('embed.next'))} ${arrow(L)}</a></div></section>`;
+};
 // Карточка профиля или пары (та же картинка, что og:image) картинкой в тексте страницы: её индексируют Google Картинки,
 // встроенный SVG и метатеги — нет (аудит 3, п. 10). Ставится после верхнего призыва, первый экран не удлиняет.
 const ogFigure = (src, alt) => `<figure class="ogfig"><img src="${src}" width="1200" height="630" alt="${escFull(alt)}" loading="lazy" decoding="async"></figure>`;
@@ -558,7 +579,7 @@ function writeContentPage(L, sub, opts) {
     ...(opts.article ? [orgLd()] : []),
     { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: crumbs.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.name, item: i === 0 ? urlOf(L.lang) : urlOf(L.lang) + (c.sub || sub) })) }
   ].concat(opts.ldExtra || [])).replace(/</g, '\\u003c');
-  const miniL = { lang: L.lang, name: L.name, dir: L.dir, dateLocale: L.dateLocale, ui: Object.fromEntries(Object.entries(L.ui).filter(([k]) => k === 'langLabel' || k === 'root.continue' || k.startsWith('consent.') || (opts.uiKeys && opts.uiKeys.test(k)))) };
+  const miniL = { lang: L.lang, name: L.name, dir: L.dir, dateLocale: L.dateLocale, ui: Object.fromEntries(Object.entries(L.ui).filter(([k]) => k === 'langLabel' || k === 'root.continue' || k.startsWith('consent.') || (opts.uiKeys && opts.uiKeys.test(k)) || (opts.content.includes('id="embedTest"') && EMBED_UI.test(k)))) };
   Object.assign(miniL.ui, noticeUi(L));
   // opts.bare — самостоятельная страница (лендинг): без шапки сайта (название и выбор языка), пунктов меню, хлебных крошек и подвала; opts.css — стили только этой страницы
   const tpl = !opts.bare ? pageTpl : pageTpl.replace(/\s*<header class="topbar">[\s\S]*?<\/header>/, '').replace(/\s*<footer class="foot">[\s\S]*?<\/footer>/, '')
@@ -576,7 +597,7 @@ function writeContentPage(L, sub, opts) {
     .replace(/__BRAND__/g, esc(L.brand)).replace(/__HOME_HREF__/g, homeHref).replace(/__LANG_LABEL__/g, esc(L.ui.langLabel))
     .replace('__LANG_SWITCHER__', () => switcher).replace('__NAV__', () => navHtml).replace('__CRUMBS__', () => crumbsHtml).replace('__FOOT_LINKS__', () => footHtml).replace('__MATERIALS__', () => materialsHtml(L, base, sub))
     .replace('__CONTENT__', () => opts.content + updatedHtml)
-    .replace('__CTA_FLOAT__', () => opts.content.includes('class="cta cta-top') ? `<a class="btn ctafloat no-print" id="ctaFloat" href="${homeHref}" data-goal="cta-float">${esc(t('cta.button'))}</a>` : '')
+    .replace('__CTA_FLOAT__', () => opts.content.includes('class="cta cta-top') || opts.content.includes('id="embedTest"') ? `<a class="btn ctafloat no-print" id="ctaFloat" href="${homeHref}" data-goal="cta-float">${esc(t('cta.button'))}</a>` : '')
     .replace(/__FOOTER__/g, esc(L.ui.footer)).replace(/__PRIVACY__/g, esc(L.ui.privacy)).replace('__LEGAL__', () => (sub === 'contact/' ? legalHtml(L) : '') + rightsHtml(L)).replace('__LANG_LINKS__', () => links)
     .replace('__LOCALE_JSON__', () => JSON.stringify(miniL).replace(/</g, '\\u003c'))
     .replace(/__SUBPATH__/g, sub).replace('__PAGE_LANGS_JSON__', () => opts.langs ? JSON.stringify(own.map(x => x.lang)) : 'null')
@@ -608,7 +629,7 @@ for (const L of locales) {
     const pr = L.profiles[key], dp = pr.deep, p = key[0], s2 = key[1] || null, b = '../../';
     const content = `<div class="eyebrow">${t('pages.profile.eyebrow', { key })}</div>` +
       `<div class="rhead">${badge(key)}<div class="rtitle"><h1>${escFull(t('pages.profile.h1', { name: pr.name, key: '\u0000' })).replace('\u0000', ltr(key))}</h1><div class="meta">${escFull(s2 ? L.keys[p] + ' + ' + L.keys[s2] : L.keys[p])}</div></div></div>` +
-      `<p class="lead">${escFull(pr.summary)}</p>` + ctaTop(t, b, 'cta.inlineProfile') +
+      `<p class="lead">${escFull(pr.summary)}</p>` + embedTest(L, t, b, 'cta.inlineProfile') +
       (fs.existsSync(path.join(ASSETS, 'og', 'profiles', `${L.lang}-${key.toLowerCase()}.png`)) ? ogFigure(`${b}${pathOf(L.lang) ? '../' : ''}og/profiles/${L.lang}-${key.toLowerCase()}.png`,
         `${t('pages.profile.h1', { name: pr.name, key })} · ${s2 ? L.keys[p] + ' + ' + L.keys[s2] : L.keys[p]}`) : '') +
       (() => { const sc = sampleScore(SAMPLE_NET[key]);
@@ -646,7 +667,7 @@ for (const L of locales) {
       pageJs: `if(/[?&]ref=/.test(location.search)){ var inv = document.createElement('aside'); inv.className = 'cta invite'; inv.innerHTML = ${jsStr(
         `<div><h2>${escFull(t('invite.title', { name: pr.name }))}</h2><p>${escFull(t('invite.text'))}</p></div><a class="btn" href="${b}">${escFull(t('cta.button'))}</a>`)};` +
         `inv.querySelector('a').addEventListener('click', function(){ if(window.discTrack) window.discTrack('invite'); });` +
-        `var m = $('main.content'); m.insertBefore(inv, m.firstChild); var ct = $('.cta-top'); if(ct) ct.remove(); if(window.discTrack) window.discTrack('invite-view'); }`,
+        `var m = $('main.content'); m.insertBefore(inv, m.firstChild); var ct = $('.cta-top') || $('#embedTest'); if(ct) ct.remove(); if(window.discTrack) window.discTrack('invite-view'); }`,
       ogImage: fs.existsSync(path.join(ASSETS, 'og', 'profiles', `${L.lang}-${key.toLowerCase()}.png`)) ? `${siteUrl}/og/profiles/${L.lang}-${key.toLowerCase()}.png` : null });
   }
 }
@@ -661,7 +682,7 @@ for (const L of locales) {
   const seeAlso = (base, cur) => `<p class="seealso">${MATERIALS.filter(([k]) => k !== cur).map(([k, sub]) => `<a href="${base + sub}">${esc(L.ui[k])} ${arrow(L)}</a>`).join(' · ')}</p>`;
   const d = C.disc;
   writeContentPage(L, 'disc/', { navKey: 'nav.disc', article: true, title: d.title, description: d.description, crumbs: [{ name: t('nav.disc') }],
-    content: `<div class="eyebrow">DISC</div><h1>${escFull(d.h1)}</h1><p class="lead">${escFull(d.lead)}</p>` + ctaTop(t, '../') + sectionsHtml(d.sections) + sourcesHtml(L, t) + ctaBlock(L, t, '../') + seeAlso('../', 'nav.disc'),
+    content: `<div class="eyebrow">DISC</div><h1>${escFull(d.h1)}</h1><p class="lead">${escFull(d.lead)}</p>` + embedTest(L, t, '../') + sectionsHtml(d.sections) + sourcesHtml(L, t) + ctaBlock(L, t, '../') + seeAlso('../', 'nav.disc'),
     ldExtra: [{ '@context': 'https://schema.org', '@type': 'ItemList', name: d.sourcesTitle, itemListElement: SOURCES.map((sc, i) => ({ '@type': 'ListItem', position: i + 1, item: { '@type': 'CreativeWork', name: sc.text, url: sc.url } })) }] });
   const f = C.faq;
   writeContentPage(L, 'faq/', { navKey: 'nav.faq', title: f.title, description: f.description, crumbs: [{ name: t('nav.faq') }],
@@ -724,7 +745,7 @@ for (const L of locales) {
       KEYS.map(k => `<div class="stat" style="--k:${colorVar(k)}"><span class="k">${k}</span><span class="nm">${escFull(L.keys[k])}</span><span class="v">${pct(sc.net[k])}%</span><div class="bar"><i style="width:${pct(sc.net[k])}%"></i></div></div>`).join('') +
       `</div><p>${escFull(ex.text)}</p>` + (key !== 'flat' ? `<a class="more" href="../profiles/${key.toLowerCase()}/">${t('pages.profile.more', { name: escFull(L.profiles[key].name) })}</a>` : '') + `</div>`; };
   writeContentPage(L, 'results/', { navKey: 'nav.results', article: true, title: rs.title, description: rs.description, crumbs: [{ name: t('nav.results') }],
-    content: `<div class="eyebrow">DISC</div><h1>${escFull(rs.h1)}</h1><p class="lead">${escFull(rs.lead)}</p>` + ctaTop(t, '../', 'cta.inlineResults') + sectionsHtml(rs.sections.slice(0, 3)) +
+    content: `<div class="eyebrow">DISC</div><h1>${escFull(rs.h1)}</h1><p class="lead">${escFull(rs.lead)}</p>` + embedTest(L, t, '../', 'cta.inlineResults') + sectionsHtml(rs.sections.slice(0, 3)) +
       `<div class="examples">${rs.examples.map(exampleHtml).join('')}</div>` + sectionsHtml(rs.sections.slice(3)) + ctaBlock(L, t, '../') + seeAlso('../', 'nav.results') });
   // /colors/ — DISC по цветам: четыре цветные карточки, подробный разбор каждого цвета, текст и свой призыв «Узнать свой цвет»
   const co = C.colors;
@@ -745,7 +766,7 @@ for (const L of locales) {
       `<h3>${escFull(co.labels.signs)}</h3>${ul(c.signs)}<h3>${escFull(co.labels.blind)}</h3><p>${escFull(c.blind)}</p><h3>${escFull(co.labels.talk)}</h3>${ul(c.talk)}` +
       `<a class="more" href="../profiles/${k.toLowerCase()}/">${t('pages.profile.more', { name: escFull(L.profiles[k].name) })}</a></section>`; };
   writeContentPage(L, 'colors/', { navKey: 'nav.colors', article: true, title: co.title, description: co.description, crumbs: [{ name: t('nav.colors') }],
-    content: `<div class="eyebrow">DISC</div><h1>${escFull(co.h1)}</h1><p class="lead">${escFull(co.lead)}</p>` + ctaTop(t, '../', 'cta.inlineColors', co.cta.button) + `<div class="colorgrid">` +
+    content: `<div class="eyebrow">DISC</div><h1>${escFull(co.h1)}</h1><p class="lead">${escFull(co.lead)}</p>` + embedTest(L, t, '../', 'cta.inlineColors') + `<div class="colorgrid">` +
       KEYS.map(k => { const c = co.colors[k]; return `<section class="colorcard" id="${k.toLowerCase()}" style="--k:${colorVar(k)}"><div class="swatch">${k}</div><h2>${escFull(c.name)}</h2><p class="muted">${escFull(c.tagline)}</p><p>${escFull(c.text)}</p><div class="traits">${L.styles[k].traits.map(x => `<span>${escFull(x)}</span>`).join('')}</div><a class="more" href="#type-${k.toLowerCase()}">${escFull(c.h)} ↓</a></section>`; }).join('') +
       `</div>` + `<aside class="cta"><div><h2>${escFull(co.cta.title)}</h2><p>${escFull(co.cta.text)}</p></div><a class="btn" href="../" data-goal="cta-bottom">${escFull(co.cta.button)}</a></aside>` +
       KEYS.map(colorType).join('') + `<figure class="ogfig"><img src="${relRoot(L, 'colors/')}img/disc-colors-${L.lang}.svg" width="1200" height="630" alt="${escFull(co.h1)}" loading="lazy" decoding="async"></figure>` + sectionsHtml(co.sections) +
