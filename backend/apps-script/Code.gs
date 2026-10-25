@@ -338,7 +338,7 @@ function composeSubscribeMail(lang, url) {
  */
 function composePaperMail(lang, confirmUrl) {
   var L = DATA[lang], P = L.paper, X = P.letter, site = SITE_URL.replace(/^https?:\/\//, '');
-  var vars = { site: site, online: P.online.replace(/^https?:\/\//, '') };
+  var vars = { site: site, online: P.online.replace(/^https?:\/\//, '').replace(/\?.*$/, '') };   // в тексте — адрес без метки ?ref=mail, в ссылке — с ней
   var btn = function (href, label, dark) { return '<a href="' + esc(href) + '" style="display:inline-block;background:' + (dark ? '#1B2027' : '#ffffff') + ';color:' + (dark ? '#ffffff' : '#1B2027') +
     ';text-decoration:none;font-weight:bold;padding:12px 22px;border-radius:8px;border:1px solid #1B2027">' + esc(label) + '</a>'; };
   var guide = X.guide.map(function (g, i) { return '<tr><td style="vertical-align:top;padding:0 10px 10px 0;font-weight:bold;color:#5B6470">' + (i + 1) + '</td><td style="padding:0 0 10px">' +
