@@ -666,7 +666,7 @@
           "h": "Où les données sont conservées et à qui elles sont transmises",
           "p": [
             "La base de résultats se trouve sur un serveur que le propriétaire du site loue auprès d'un hébergeur. Les e-mails sont envoyés par un service de messagerie. Ces sociétés traitent les données pour notre compte et uniquement pour le fonctionnement du site. L'e-mail part à l'adresse que vous avez vous-même indiquée. Les données ne sont ni transmises ni vendues à des tiers pour leurs propres finalités.",
-            "Seules les personnes ayant coché la case de consentement distincte — dans le formulaire d'envoi du résultat ou dans le formulaire d'abonnement de la page d'accueil — reçoivent la newsletter. Après le formulaire d'abonnement, un e-mail contenant un lien de confirmation est envoyé : sans confirmation, la newsletter n'est pas envoyée et l'adresse est supprimée au bout de 7 jours. La base conserve le consentement, sa date et son texte, et votre adresse e-mail, votre nom (si vous l'avez indiqué), votre langue et le résultat de votre test (si vous vous l'êtes envoyé par e-mail) servent à vous envoyer des e-mails de disc-test.org : contenus sur le DISC, nouveaux tests, conseils pour l'évolution de carrière et la recherche d'emploi, actualités du site et offres promotionnelles. Vous pouvez vous désabonner à tout moment, via le lien présent dans chaque e-mail ou en écrivant à {email}.",
+            "Seules les personnes ayant coché la case de consentement distincte — dans le formulaire d'envoi du résultat, dans le formulaire d'abonnement de la page d'accueil ou dans le formulaire « Recevoir le questionnaire par e-mail » de la page « Test en PDF » — reçoivent la newsletter. Après le formulaire d'abonnement de la page d'accueil, un e-mail contenant un lien de confirmation est envoyé : sans confirmation, la newsletter n'est pas envoyée et l'adresse est supprimée au bout de 7 jours. Avec le formulaire « Recevoir le questionnaire par e-mail », l'abonnement prend effet dès l'envoi du formulaire, et l'e-mail contenant le questionnaire comporte un lien de désabonnement. La base conserve le consentement, sa date et son texte, et votre adresse e-mail, votre nom (si vous l'avez indiqué), votre langue et le résultat de votre test (si vous vous l'êtes envoyé par e-mail) servent à vous envoyer des e-mails de disc-test.org : contenus sur le DISC, nouveaux tests, conseils pour l'évolution de carrière et la recherche d'emploi, actualités du site et offres promotionnelles. Vous pouvez vous désabonner à tout moment, via le lien présent dans chaque e-mail ou en écrivant à {email}.",
             "L'hébergeur reçoit les données techniques habituelles de la requête : adresse IP, type de navigateur, adresse de la page. Les polices sont servies par ce site lui-même. Les statistiques de visite sont collectées par un service d'analyse d'audience : il reçoit des données de visite — l'adresse de la page, la provenance, le type d'appareil et de navigateur — et un enregistrement des actions sur la page ; les champs nom et e-mail sont exclus de l'enregistrement. Sur l'écran du résultat, l'adresse de la page contient le code du résultat : vos réponses, la date du test et votre nom si vous l'avez indiqué, mais pas votre e-mail. Vous pouvez arrêter la collecte dans les paramètres du navigateur ou avec un bloqueur de traceurs. Aucun traceur publicitaire n'est utilisé."
           ]
         },
@@ -724,6 +724,7 @@
       "description": "Texte du consentement au traitement des données personnelles que vous donnez en envoyant les formulaires de disc-test.org.",
       "h1": "Consentement au traitement des données personnelles",
       "lead": "En cochant, dans un formulaire du site disc-test.org, la case de consentement au traitement des données personnelles et en envoyant ce formulaire, je donne librement, de ma propre volonté et dans mon propre intérêt, mon consentement au responsable du traitement — {owner} — pour le traitement de mes données personnelles aux conditions exposées ci-dessous.",
+      "paperForm": "Formulaire « Recevoir le questionnaire par e-mail » de la page « Test en PDF » : adresse e-mail et langue de la version du site. Finalité : m'envoyer un e-mail contenant le questionnaire du test et un aide-mémoire pour l'animateur et, si je coche la case de consentement à la newsletter, tenir également la liste des abonnés à la newsletter.",
       "sections": [
         {
           "h": "Finalités du traitement et données traitées",
@@ -2327,6 +2328,205 @@
         "button": "Découvrir ma couleur"
       }
     },
+    "kit": {
+      "title": "Kit de l'animateur DISC : déroulé d'atelier, diapositives et tableau de groupe",
+      "description": "Tout pour animer un atelier DISC avec une équipe ou un groupe : déroulé de 60 ou 90 minutes, 16 diapositives, un tableau Excel qui calcule tout seul les résultats du groupe, une carte d'équipe et des fiches. {price} €.",
+      "h1": "Kit de l'animateur DISC",
+      "lead": "Tout ce qu'il faut pour animer un atelier DISC avec une équipe, un groupe d'étudiants ou en formation, même si c'est une première pour vous. Le test reste gratuit pour les participants : sur papier ou en ligne.",
+      "facts": [
+        "60 ou 90 minutes",
+        "4 à 30 participants",
+        "PDF et Excel",
+        "{price} €"
+      ],
+      "button": "Faire une demande",
+      "insideTitle": "Contenu du kit",
+      "inside": [
+        {
+          "title": "Déroulé de l'atelier",
+          "text": "6 pages : préparation, programme en 60 et en 90 minutes, quoi dire et quoi faire à chaque étape, deux exercices, comment parler des résultats sans coller d'étiquettes, situations délicates et réponses aux questions fréquentes des participants.",
+          "img": "fr-guide",
+          "alt": "Première page du déroulé de l'atelier"
+        },
+        {
+          "title": "Diapositives",
+          "text": "16 diapositives à projeter : objectifs et règles de l'atelier, QR code du test, les deux axes et les quatre styles, une diapositive par style, comment lire son résultat, exercices et engagements communs.",
+          "img": "fr-slide",
+          "alt": "Diapositive sur les deux axes et les quatre styles"
+        },
+        {
+          "title": "Tableau du groupe",
+          "text": "Un fichier Excel pour 40 participants. Saisissez les nombres du questionnaire papier ou les pourcentages du résultat en ligne : le tableau calcule les totaux, détermine le profil de chacun et affiche la synthèse du groupe, avec le nombre de personnes par style et les points d'attention.",
+          "img": "",
+          "alt": ""
+        },
+        {
+          "title": "Carte d'équipe",
+          "text": "Un cercle à quatre secteurs à imprimer en A3 ou A4 : chacun place une gommette sur son style, et l'équipe voit aussitôt quels styles dominent, lesquels manquent et où des frictions sont possibles.",
+          "img": "fr-map",
+          "alt": "Carte d'équipe"
+        },
+        {
+          "title": "Fiches « Comment travailler avec moi »",
+          "text": "Une fiche par style (ce qui compte pour la personne, comment s'accorder avec elle, ce qui la freine) et des fiches vierges que chacun complète à sa façon.",
+          "img": "fr-cards",
+          "alt": "Fiches « Comment travailler avec moi »"
+        }
+      ],
+      "forTitle": "Pour qui",
+      "for": [
+        "RH et managers : faire connaissance en équipe, intégrer les nouveaux arrivants, parler des frictions sans chercher de coupable.",
+        "Formateurs et universités d'entreprise : un module clé en main pour vos parcours sur la communication et le travail en équipe.",
+        "Enseignants du supérieur : une séance de psychologie de la communication, de management ou d'orientation professionnelle.",
+        "Conseillers en évolution professionnelle et coachs : une séance collective sur les points forts et le style de travail."
+      ],
+      "planTitle": "Déroulé de l'atelier",
+      "plan": [
+        "Introduction et règles : on parle du comportement au travail, chacun partage s'il le souhaite, sans étiquettes.",
+        "Les participants passent le test, sur leur téléphone via un QR code ou sur le questionnaire papier.",
+        "Les quatre styles et comment lire son résultat.",
+        "Exercice « Les quatre coins » : les groupes par style discutent de ce qui leur donne de l'énergie et de la meilleure façon de s'accorder avec eux.",
+        "Carte d'équipe : quels styles dominent, lesquels manquent, où des frictions sont possibles.",
+        "« Comment travailler avec moi » : échange de fiches en binômes (dans la version de 90 minutes).",
+        "Engagements communs : comment mener nos réunions, confier les tâches et donner du feedback."
+      ],
+      "reportTitle": "Un rapport détaillé pour chaque participant",
+      "report": "Après l'atelier, chaque participant peut commander son {business} : plus de 25 pages sur son profil, établies à partir de ses réponses au test en ligne.",
+      "reportLink": "rapport DISC détaillé",
+      "priceTitle": "Prix et obtention",
+      "price": [
+        "Le kit coûte {price} €. Faites une demande : nous vous répondons sous un jour ouvré avec un lien de paiement.",
+        "Après le paiement, les fichiers arrivent par e-mail. Imprimez la carte, les fiches et le questionnaire pour les participants de vos propres ateliers autant de fois que nécessaire."
+      ],
+      "faqTitle": "Questions fréquentes",
+      "faq": [
+        {
+          "q": "Faut-il de l'expérience ou une certification pour animer l'atelier ?",
+          "a": "Non. Le déroulé est conçu pour un animateur qui fait du DISC pour la première fois : il indique quoi dire et quoi faire à chaque étape."
+        },
+        {
+          "q": "Les participants doivent-ils s'inscrire ou payer ?",
+          "a": "Non. Le test est gratuit et sans inscription, en ligne ou sur le questionnaire papier, à imprimer depuis la page « Test en PDF »."
+        },
+        {
+          "q": "Peut-on animer l'atelier à distance ?",
+          "a": "Oui. Le déroulé décrit une version en ligne : des salles de sous-groupes à la place des coins de la pièce, un tableau blanc partagé à la place de la carte papier."
+        },
+        {
+          "q": "Et si le groupe compte plus de 30 personnes ?",
+          "a": "Les exercices se font en sous-groupes, la carte d'équipe par service. Le tableau du groupe accueille 40 participants."
+        },
+        {
+          "q": "Voyez-vous les résultats de mes participants ?",
+          "a": "Non. Le tableau du groupe fonctionne sur votre ordinateur et n'envoie aucune donnée. Les participants passent le test en ligne eux-mêmes, sans inscription."
+        }
+      ],
+      "form": {
+        "title": "Demande de kit",
+        "lead": "Nous vous répondons sous un jour ouvré, à l'adresse e-mail que vous indiquez.",
+        "size": "Taille habituelle de vos groupes",
+        "sizes": [
+          "jusqu'à 10",
+          "10 à 20",
+          "20 à 30",
+          "plus de 30"
+        ],
+        "interest": "À qui le kit est-il destiné ?",
+        "interests": [
+          "À mon équipe ou à mon organisation",
+          "À mes clients, stagiaires ou étudiants"
+        ],
+        "comment": "Commentaire",
+        "commentPlaceholder": "Par exemple : pour quel public, quand vous prévoyez l'atelier, si vous avez besoin d'une facture",
+        "button": "Envoyer la demande",
+        "subject": "Demande de kit de l'animateur : {name}",
+        "sent": "Demande envoyée. Nous vous répondrons à {email} sous un jour ouvré.",
+        "needInterest": "Indiquez à qui le kit est destiné.",
+        "privacy": "Votre nom, votre e-mail et le texte de la demande seront envoyés par e-mail à {email} et servent uniquement à vous répondre."
+      }
+    },
+    "paper": {
+      "group": {
+        "title": "Vous faites passer le test à un groupe ?",
+        "kitTitle": "Kit de l'animateur",
+        "kitText": "Un déroulé d'atelier de 60 ou 90 minutes, des diapositives, un tableau Excel qui calcule tout seul les résultats du groupe, une carte d'équipe et les fiches « Comment travailler avec moi ».",
+        "kitButton": "Découvrir le kit",
+        "bizTitle": "Un rapport détaillé pour chaque participant",
+        "bizText": "Après le test en ligne, chaque participant peut commander un rapport détaillé sur son profil.",
+        "bizButton": "En savoir plus"
+      },
+      "mail": {
+        "toggle": "Recevoir le questionnaire par e-mail",
+        "lead": "Nous vous envoyons le questionnaire en pièce jointe, avec un court aide-mémoire pour faire passer le test à un groupe.",
+        "emailLabel": "Votre adresse e-mail",
+        "button": "Envoyer",
+        "sending": "Envoi en cours…",
+        "sent": "E-mail envoyé à {email}. S'il n'est pas dans votre boîte de réception, regardez dans les spams.",
+        "failed": "Impossible d'envoyer l'e-mail ({error}). Téléchargez le questionnaire avec le bouton ci-dessus.",
+        "tooMany": "Plusieurs e-mails ont déjà été envoyés à cette adresse. Réessayez plus tard ou téléchargez le questionnaire avec le bouton ci-dessus."
+      },
+      "letter": {
+        "subject": "Questionnaire DISC à imprimer et aide-mémoire de l'animateur",
+        "intro": "Bonjour, vous avez demandé le questionnaire du test DISC sur le site {site}.",
+        "attachNote": "Le questionnaire est joint à cet e-mail. Si la pièce jointe ne s'ouvre pas, téléchargez-le avec ce bouton :",
+        "pdfButton": "Télécharger le questionnaire (PDF)",
+        "pdfNote": "Le fichier contient 24 blocs d'affirmations, la clé, la grille de calcul et la description des 16 profils. Il s'imprime très bien en noir et blanc.",
+        "guideTitle": "Faire passer le test à un groupe",
+        "guide": [
+          "Imprimez un questionnaire par participant ou donnez le lien de la version en ligne : {online} (le résultat s'y calcule automatiquement).",
+          "Demandez à chacun de répondre selon son comportement habituel au travail, et non selon l'image idéale qu'il a de lui-même. Les réponses prennent environ 10 minutes.",
+          "Sur papier, pour chaque style, on compte les coches « le plus » moins les coches « le moins ». La clé se trouve page 4 du questionnaire ; grâce au QR code placé à côté de la grille de calcul, on peut saisir ses totaux sur le site et obtenir la description détaillée de son profil.",
+          "Parlez des résultats sans coller d'étiquettes : le style montre ce qui vient plus facilement à une personne, pas ce dont elle est capable. Chacun partage son résultat s'il le souhaite.",
+          "Pour finir, demandez à chacun comment s'accorder au mieux avec lui, et notez 2 ou 3 règles de travail communes."
+        ],
+        "kitText": "Le kit de l'animateur réunit un déroulé d'atelier de 60 ou 90 minutes, des diapositives, un tableau qui calcule les résultats du groupe, une carte d'équipe et des fiches :",
+        "kitButton": "Kit de l'animateur DISC",
+        "subscribed": "Votre adresse est inscrite à la newsletter de {site} : nouveaux tests, conseils pour l'évolution de carrière et la recherche d'emploi, actualités du site et offres promotionnelles. Vous pouvez vous désabonner à tout moment :",
+        "unsubscribe": "Se désabonner de la newsletter",
+        "footer": "Vous recevez cet e-mail parce que vous avez demandé le questionnaire sur la page « Test en PDF » du site {site}. Aucun autre e-mail ne suivra cette demande."
+      },
+      "score": {
+        "eyebrow": "Questionnaire papier",
+        "title": "Saisissez le résultat de votre questionnaire",
+        "lead": "Reportez les nombres du tableau « Calcul du résultat », page 4 du questionnaire : le site affichera votre profil avec un graphique et une description détaillée (points forts, axes de progression, motivation et conseils pour bien communiquer et travailler avec vous).",
+        "style": "Style",
+        "most": "« Le plus »",
+        "least": "« Le moins »",
+        "net": "Total",
+        "sum": "Somme",
+        "sumNote": "Chaque colonne totalise 24 : chacun des 24 blocs compte une coche « le plus » et une coche « le moins ».",
+        "errEmpty": "Remplissez les huit nombres : pour chaque style, les coches « le plus » et « le moins ».",
+        "errSum": "La colonne {col} totalise {n} au lieu de 24. Vérifiez votre calcul avec la clé.",
+        "errStyle": "Pour le style {k}, les coches « le plus » et « le moins » dépassent 24 au total, ce qui est impossible. Vérifiez votre calcul.",
+        "button": "Afficher le résultat",
+        "alt": "Pas de questionnaire sous la main ?",
+        "altButton": "Passer le test en ligne (environ 10 minutes)"
+      },
+      "fromPdf": {
+        "title": "Vous avez rempli le questionnaire papier ?",
+        "text": "Reportez vos coches ici : les blocs et les affirmations sont dans le même ordre que sur le questionnaire, cela prend 3 à 4 minutes. Le site calcule les scores, trace le graphique et affiche la description détaillée de votre profil.",
+        "scoreLink": "Vous avez déjà calculé vos totaux avec la clé ? Saisissez les nombres du tableau"
+      },
+      "print": {
+        "qrTitle": "La description détaillée de votre profil vous attend sur le site",
+        "qrText": "Scannez ce code avec l'appareil photo de votre téléphone et saisissez les nombres de ce tableau : le site affichera votre profil, un graphique des quatre styles, vos points forts, vos axes de progression et des conseils pour bien communiquer et travailler avec vous.",
+        "nextTitle": "Et maintenant ?",
+        "nextLead": "Grâce au questionnaire, vous connaissez votre profil. Pour aller plus loin, scannez le code qui vous intéresse avec l'appareil photo de votre téléphone.",
+        "online": {
+          "title": "Rapport gratuit avec graphique",
+          "text": "Reportez vos coches dans la version en ligne : 3 à 4 minutes, sans inscription. Vous obtenez un graphique à trois courbes, les pourcentages des quatre styles, vos points forts, vos axes de progression, votre motivation, votre comportement sous stress et des conseils pour bien communiquer et travailler avec vous."
+        },
+        "extended": {
+          "title": "Rapport DISC détaillé",
+          "text": "Plus de 25 pages sur votre profil : ce que signifie chacun des quatre scores, cinq angles morts et comment les travailler, des techniques et des phrases toutes prêtes pour échanger avec chaque type de personne, un plan de développement sur 30 jours. Le rapport est établi à partir de vos réponses : il se commande donc après le test en ligne."
+        },
+        "group": {
+          "title": "Vous faites passer le test à un groupe ?",
+          "text": "Le kit de l'animateur : un tableau qui calcule tout seul les résultats du groupe, un déroulé d'atelier de 60 à 90 minutes, des diapositives, une carte d'équipe et les fiches « Comment travailler avec moi »."
+        },
+        "footer": "Version la plus récente du questionnaire : disc-test.org/fr/pdf/"
+      }
+    },
     "pdf": {
       "title": "Test DISC PDF gratuit à imprimer : questionnaire, clé et profils",
       "description": "Test DISC gratuit en PDF : 24 blocs d'affirmations, clé, grille de calcul et description des 16 profils. À télécharger, imprimer et remplir sur papier.",
@@ -2867,7 +3067,7 @@
   "ui": {
     "langLabel": "Langue",
     "footer": "24 blocs · environ 10 minutes · pas de bonnes ou de mauvaises réponses",
-    "privacy": "Vos réponses restent dans votre navigateur ; pour les statistiques générales, le serveur du site ne reçoit que des marques de visite et de début du test et le profil obtenu, sans nom ni réponses. Si vous indiquez une adresse e-mail, le résultat y est envoyé et conservé dans la base de résultats du propriétaire du site. Si vous vous abonnez à la newsletter sur la page d'accueil, cette base conserve votre adresse e-mail et la langue de la version du site. Lorsque vous cliquez sur « Enregistrer en PDF », vos réponses et la date du test — sans nom ni e-mail — sont envoyées au serveur du site, qui génère le fichier du rapport de synthèse, vous le renvoie et ne conserve rien.",
+    "privacy": "Vos réponses restent dans votre navigateur ; pour les statistiques générales, le serveur du site ne reçoit que des marques de visite et de début du test et le profil obtenu, sans nom ni réponses. Si vous indiquez une adresse e-mail, le résultat y est envoyé et conservé dans la base de résultats du propriétaire du site. Si vous vous abonnez à la newsletter sur la page d'accueil, cette base conserve votre adresse e-mail et la langue de la version du site. Si vous demandez à recevoir le questionnaire par e-mail sur la page « Test en PDF », le serveur du site vous envoie l'e-mail avec le questionnaire et conserve la trace de votre consentement avec votre adresse e-mail ; si vous acceptez aussi la newsletter, votre adresse et la langue de la version du site sont enregistrées dans la liste des abonnés. Lorsque vous cliquez sur « Enregistrer en PDF », vos réponses et la date du test — sans nom ni e-mail — sont envoyées au serveur du site, qui génère le fichier du rapport de synthèse, vous le renvoie et ne conserve rien.",
     "legal": "Manukyan Armen · N° d’identification fiscale (INN) {inn}",
     "rights": "© {year} disc-test.org. Toute copie des textes du site et des rapports sans autorisation écrite est interdite.",
     "adminLink": "Espace administrateur",
@@ -3156,7 +3356,7 @@
     "pd.consentLink": "consentement au traitement des données personnelles",
     "pd.required": "Cochez la case de consentement au traitement des données personnelles : sans ce consentement, nous ne pouvons pas accepter vos données.",
     "pd.cookieAsk": "Ce site conserve votre progression, votre résultat et la langue choisie dans le stockage local du navigateur. Avec votre consentement, un service d'analyse d'audience collectera des statistiques de visite anonymisées et un enregistrement des actions sur la page pour nous aider à améliorer le site. Votre nom, votre e-mail et votre résultat ne sont pas transmis au service d'analyse.",
-    "pd.cookieDetails": "Conservés dans le navigateur : le nom et l'e-mail, si vous les avez indiqués ; vos réponses et la progression inachevée ; votre dernier résultat ; l'heure à laquelle vous avez terminé le test pour la première fois, pour le délai du prix spécial du rapport ; la langue choisie ; une marque indiquant que vous avez vu cet avis. Ces données restent sur votre appareil et sont supprimées lorsque vous effacez les données du site. L'hébergeur reçoit les données techniques habituelles de la requête. La première fois que vous ouvrez le site dans la journée, une marque de visite anonyme est envoyée au serveur du site : uniquement la langue de la version du site ; le serveur l'enregistre avec son heure d'arrivée, et votre navigateur garde la date pour ne pas la renvoyer le même jour. Ces marques nous servent à compter combien de personnes visitent le site. Lorsque vous commencez le test, une marque de début anonyme est envoyée au serveur du site : uniquement la langue de la version du site. Lorsque vous terminez le test, un enregistrement anonyme destiné aux statistiques générales est envoyé au serveur du site : le profil obtenu et la langue de la version du site, sans nom, e-mail ni réponses. Lorsque vous cliquez sur « Enregistrer en PDF », vos réponses et la date du test — sans nom ni e-mail — sont envoyées au serveur du site, qui génère le fichier du rapport de synthèse, vous le renvoie et ne conserve rien. Lorsque vous envoyez le résultat par e-mail, le nom, l'e-mail et les réponses sont transmis au serveur du site, qui vous envoie l'e-mail avec le résultat et enregistre le nom, l'e-mail, la date et le résultat dans la base de résultats du propriétaire du site. Lorsque vous vous abonnez à la newsletter sur la page d'accueil, l'e-mail et la langue de la version du site sont transmis au serveur du site, qui vous envoie un e-mail avec un lien de confirmation et enregistre l'adresse dans la même base ; si l'abonnement n'est pas confirmé, l'adresse est supprimée au bout de 7 jours. Le service d'analyse d'audience reçoit l'adresse de la page (sur l'écran du résultat, avec le code du résultat : vos réponses, la date du test et votre nom si vous l'avez indiqué, mais pas votre e-mail), la provenance, le type d'appareil et de navigateur, un enregistrement des actions sur la page (les champs nom et e-mail en sont exclus) et dépose ses propres cookies. Vous pouvez le bloquer dans les paramètres du navigateur ou avec un bloqueur de traceurs. Aucun traceur publicitaire n'est utilisé.",
+    "pd.cookieDetails": "Conservés dans le navigateur : le nom et l'e-mail, si vous les avez indiqués ; vos réponses et la progression inachevée ; votre dernier résultat ; l'heure à laquelle vous avez terminé le test pour la première fois, pour le délai du prix spécial du rapport ; la langue choisie ; une marque indiquant que vous avez vu cet avis. Ces données restent sur votre appareil et sont supprimées lorsque vous effacez les données du site. L'hébergeur reçoit les données techniques habituelles de la requête. La première fois que vous ouvrez le site dans la journée, une marque de visite anonyme est envoyée au serveur du site : uniquement la langue de la version du site ; le serveur l'enregistre avec son heure d'arrivée, et votre navigateur garde la date pour ne pas la renvoyer le même jour. Ces marques nous servent à compter combien de personnes visitent le site. Lorsque vous commencez le test, une marque de début anonyme est envoyée au serveur du site : uniquement la langue de la version du site. Lorsque vous terminez le test, un enregistrement anonyme destiné aux statistiques générales est envoyé au serveur du site : le profil obtenu et la langue de la version du site, sans nom, e-mail ni réponses. Lorsque vous cliquez sur « Enregistrer en PDF », vos réponses et la date du test — sans nom ni e-mail — sont envoyées au serveur du site, qui génère le fichier du rapport de synthèse, vous le renvoie et ne conserve rien. Lorsque vous envoyez le résultat par e-mail, le nom, l'e-mail et les réponses sont transmis au serveur du site, qui vous envoie l'e-mail avec le résultat et enregistre le nom, l'e-mail, la date et le résultat dans la base de résultats du propriétaire du site. Lorsque vous vous abonnez à la newsletter sur la page d'accueil, l'e-mail et la langue de la version du site sont transmis au serveur du site, qui vous envoie un e-mail avec un lien de confirmation et enregistre l'adresse dans la même base ; si l'abonnement n'est pas confirmé, l'adresse est supprimée au bout de 7 jours. Lorsque vous demandez à recevoir le questionnaire par e-mail sur la page « Test en PDF », l'e-mail et la langue de la version du site sont transmis au serveur du site, qui vous envoie l'e-mail avec le questionnaire et conserve la trace de votre consentement avec l'adresse ; si vous avez coché la case de consentement à la newsletter, l'adresse est aussitôt enregistrée dans la liste des abonnés, et l'e-mail contient un lien de désabonnement. Le service d'analyse d'audience reçoit l'adresse de la page (sur l'écran du résultat, avec le code du résultat : vos réponses, la date du test et votre nom si vous l'avez indiqué, mais pas votre e-mail), la provenance, le type d'appareil et de navigateur, un enregistrement des actions sur la page (les champs nom et e-mail en sont exclus) et dépose ses propres cookies. Vous pouvez le bloquer dans les paramètres du navigateur ou avec un bloqueur de traceurs. Aucun traceur publicitaire n'est utilisé.",
     "pd.cookieChange": "Modifier le choix des cookies",
 
     "print.title": "Test DISC à imprimer : questionnaire, clé et calcul du score",

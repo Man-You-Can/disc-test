@@ -668,7 +668,7 @@
           "h": "Wo die Daten gespeichert und an wen sie übermittelt werden",
           "p": [
             "Die Ergebnisdatenbank liegt auf einem Server, den der Seitenbetreiber bei einem Hosting-Anbieter mietet. Die E-Mails versendet ein E-Mail-Dienst. Diese Unternehmen verarbeiten die Daten in unserem Auftrag und nur für den Betrieb der Website. Die E-Mail geht an die Adresse, die Sie selbst angegeben haben. An Dritte werden die Daten für deren eigene Zwecke weder weitergegeben noch verkauft.",
-            "Den Newsletter erhält nur, wer das gesonderte Kästchen zur Einwilligung angekreuzt hat – im Formular zum Versand des Ergebnisses oder im Anmeldeformular für den Newsletter auf der Startseite. Nach dem Absenden des Anmeldeformulars kommt eine E-Mail mit einem Bestätigungslink: Ohne Bestätigung wird kein Newsletter versandt, und die Adresse wird nach 7 Tagen gelöscht. In der Datenbank werden die Einwilligung, ihr Datum und ihr Wortlaut gespeichert, und Ihre E-Mail-Adresse, Ihr Name (falls Sie ihn angegeben haben), Ihre Sprache und Ihr Testergebnis (falls Sie es sich per E-Mail geschickt haben) werden verwendet, um Ihnen E-Mails von disc-test.org zu senden: Inhalte zum DISG-Modell, neue Tests, Tipps für die berufliche Entwicklung und die Jobsuche, Neuigkeiten der Website und Werbeangebote. Abmelden können Sie sich jederzeit über den Link in jeder E-Mail oder per Nachricht an {email}.",
+            "Den Newsletter erhält nur, wer das gesonderte Kästchen zur Einwilligung angekreuzt hat – im Formular zum Versand des Ergebnisses, im Anmeldeformular für den Newsletter auf der Startseite oder im Formular „Fragebogen per E-Mail erhalten“ auf der Seite „Test als PDF“. Nach dem Absenden des Anmeldeformulars auf der Startseite kommt eine E-Mail mit einem Bestätigungslink: Ohne Bestätigung wird kein Newsletter versandt, und die Adresse wird nach 7 Tagen gelöscht. Im Formular „Fragebogen per E-Mail erhalten“ gilt die Anmeldung sofort nach dem Absenden, und die E-Mail mit dem Fragebogen enthält einen Abmeldelink. In der Datenbank werden die Einwilligung, ihr Datum und ihr Wortlaut gespeichert, und Ihre E-Mail-Adresse, Ihr Name (falls Sie ihn angegeben haben), Ihre Sprache und Ihr Testergebnis (falls Sie es sich per E-Mail geschickt haben) werden verwendet, um Ihnen E-Mails von disc-test.org zu senden: Inhalte zum DISG-Modell, neue Tests, Tipps für die berufliche Entwicklung und die Jobsuche, Neuigkeiten der Website und Werbeangebote. Abmelden können Sie sich jederzeit über den Link in jeder E-Mail oder per Nachricht an {email}.",
             "Der Hosting-Anbieter erhält die üblichen technischen Anfragedaten: IP-Adresse, Browsertyp, Seitenadresse. Die Schriften werden von dieser Website selbst ausgeliefert. Besuchsstatistiken erfasst ein Webanalysesystem: Es erhält Besuchsdaten – die Seitenadresse, die Herkunft des Besuchs, Geräte- und Browsertyp – sowie eine Aufzeichnung der Aktionen auf der Seite; die Felder für Name und E-Mail sind von der Aufzeichnung ausgenommen. Auf der Ergebnisseite enthält die Seitenadresse den Ergebniscode: Ihre Antworten, das Testdatum und Ihren Namen, falls Sie ihn angegeben haben, aber nicht Ihre E-Mail-Adresse. Sie können die Erfassung in den Browsereinstellungen oder mit einem Tracker-Blocker unterbinden. Werbe-Tracker werden nicht verwendet."
           ]
         },
@@ -726,6 +726,7 @@
       "description": "Wortlaut der Einwilligung in die Verarbeitung personenbezogener Daten, die Sie beim Absenden von Formularen auf disc-test.org erteilen.",
       "h1": "Einwilligung in die Verarbeitung personenbezogener Daten",
       "lead": "Indem ich in einem Formular auf disc-test.org das Kästchen zur Einwilligung in die Verarbeitung personenbezogener Daten ankreuze und dieses Formular absende, erteile ich dem Betreiber der Website – {owner} – freiwillig, aus eigenem Willen und im eigenen Interesse meine Einwilligung in die Verarbeitung meiner personenbezogenen Daten zu den nachstehenden Bedingungen.",
+      "paperForm": "Formular „Fragebogen per E-Mail erhalten“ auf der Seite „Test als PDF“: E-Mail-Adresse und Sprachversion der Website. Zweck: mir eine E-Mail mit dem Testfragebogen und einer Anleitung für die Moderation zu senden; wenn ich in den Newsletter einwillige, zudem die Liste der Newsletter-Abonnenten zu führen.",
       "sections": [
         {
           "h": "Zwecke der Verarbeitung und Umfang der Daten",
@@ -2319,6 +2320,205 @@
         "button": "Meine Farbe herausfinden"
       }
     },
+    "kit": {
+      "title": "DISG-Workshop-Paket: Leitfaden, Folien und Gruppenauswertung in Excel",
+      "description": "Alles für einen DISG-Workshop mit Team oder Gruppe: Leitfaden für 60 oder 90 Minuten, 16 Folien, eine Excel-Tabelle, die die Ergebnisse der Gruppe selbst auswertet, Teamkarte und Karten. {price} €.",
+      "h1": "DISG-Workshop-Paket",
+      "lead": "Alles, was Sie brauchen, um einen DISG-Workshop mit Ihrem Team, einer Lerngruppe oder im Training durchzuführen – auch wenn Sie das zum ersten Mal machen. Der Test ist für die Teilnehmenden kostenlos: auf Papier oder online.",
+      "facts": [
+        "60 oder 90 Minuten",
+        "4–30 Teilnehmende",
+        "PDF und Excel",
+        "{price} €"
+      ],
+      "button": "Anfrage senden",
+      "insideTitle": "Was enthalten ist",
+      "inside": [
+        {
+          "title": "Moderationsleitfaden",
+          "text": "6 Seiten: Vorbereitung, Ablauf für 60 und 90 Minuten, was Sie bei jedem Schritt sagen und tun, zwei Übungen, wie Sie Ergebnisse ohne Schubladendenken besprechen, schwierige Situationen und Antworten auf häufige Fragen der Teilnehmenden.",
+          "img": "de-guide",
+          "alt": "Erste Seite des Moderationsleitfadens"
+        },
+        {
+          "title": "Folien",
+          "text": "16 Folien für die Leinwand: Ziele und Regeln des Workshops, QR-Code zum Test, zwei Achsen und vier Stile, eine Folie pro Stil, wie man das Ergebnis liest, Übungen und Vereinbarungen.",
+          "img": "de-slide",
+          "alt": "Folie zu den zwei Achsen und vier Stilen"
+        },
+        {
+          "title": "Gruppenauswertung",
+          "text": "Excel-Datei für 40 Teilnehmende. Tragen Sie die Punkte vom Papierfragebogen oder die Prozentwerte aus dem Online-Ergebnis ein – die Tabelle rechnet die Ergebnisse aus, bestimmt das Profil jeder Person und zeigt eine Übersicht der Gruppe: wie viele Personen welchen Stil haben und worauf Sie achten sollten.",
+          "img": "",
+          "alt": ""
+        },
+        {
+          "title": "Teamkarte",
+          "text": "Ein Kreis aus vier Sektoren zum Ausdrucken in A3 oder A4: Die Teilnehmenden markieren ihren Stil mit Klebepunkten, und das Team sieht sofort, welche Stile stark vertreten sind, welche fehlen und wo es reiben kann.",
+          "img": "de-map",
+          "alt": "Teamkarte"
+        },
+        {
+          "title": "Karten „So arbeitet man am besten mit mir“",
+          "text": "Eine Karte pro Stil – was der Person wichtig ist, wie man sich am besten mit ihr abstimmt und was sie ausbremst – und leere Karten, auf denen die Teilnehmenden Eigenes ergänzen.",
+          "img": "de-cards",
+          "alt": "Karten „So arbeitet man am besten mit mir“"
+        }
+      ],
+      "forTitle": "Für wen es sich eignet",
+      "for": [
+        "HR und Führungskräfte: Teams lernen sich kennen, neue Mitarbeitende kommen an, Reibungen werden besprochen, ohne Schuldige zu suchen.",
+        "Trainerinnen und Trainer, Corporate Academies: ein fertiges Modul für Programme zu Kommunikation und Teamarbeit.",
+        "Lehrende an Hochschulen und Berufsschulen: eine Einheit zu Kommunikationspsychologie, Management oder Berufsorientierung.",
+        "Karriereberatung und Coaching: ein Gruppentermin zu Stärken und Arbeitsstil."
+      ],
+      "planTitle": "So läuft der Workshop ab",
+      "plan": [
+        "Einstieg und Regeln: Es geht um Verhalten bei der Arbeit, geteilt wird freiwillig, ohne Schubladen.",
+        "Die Teilnehmenden machen den Test – am Handy per QR-Code oder auf dem Papierfragebogen.",
+        "Die vier Stile und wie man das Ergebnis liest.",
+        "Übung „Vier Ecken“: Gruppen nach Stilen besprechen, was ihnen Energie gibt und wie man sich am besten mit ihnen abstimmt.",
+        "Teamkarte: Welche Stile sind stark vertreten, welche fehlen, wo kann es reiben?",
+        "„So arbeitet man am besten mit mir“ – Kartentausch zu zweit (in der 90-Minuten-Variante).",
+        "Vereinbarungen: wie wir Besprechungen führen, Aufgaben vergeben und Feedback geben."
+      ],
+      "reportTitle": "Ausführlicher Bericht für die Teilnehmenden",
+      "report": "Nach dem Workshop können die Teilnehmenden den ausführlichen DISG-Bericht zu ihrem Profil bestellen – rund 30 Seiten. Mehr dazu: {business}.",
+      "reportLink": "ausführlicher DISG-Bericht",
+      "priceTitle": "Preis und Bezug",
+      "price": [
+        "Das Paket kostet {price} €. Senden Sie uns eine Anfrage – wir antworten innerhalb eines Werktags mit einem Zahlungslink.",
+        "Nach der Zahlung erhalten Sie die Dateien per E-Mail. Teamkarte, Karten und Testfragebogen dürfen Sie für die Teilnehmenden Ihrer eigenen Workshops beliebig oft ausdrucken."
+      ],
+      "faqTitle": "Fragen",
+      "faq": [
+        {
+          "q": "Brauche ich Erfahrung oder ein Zertifikat, um den Workshop zu leiten?",
+          "a": "Nein. Der Leitfaden ist für alle geschrieben, die zum ersten Mal einen DISG-Workshop moderieren: Für jeden Schritt steht darin, was Sie sagen und tun."
+        },
+        {
+          "q": "Müssen sich die Teilnehmenden anmelden oder etwas bezahlen?",
+          "a": "Nein. Der Test ist kostenlos und ohne Anmeldung – online oder auf dem Papierfragebogen, den Sie auf der Seite „Test als PDF“ herunterladen können."
+        },
+        {
+          "q": "Kann ich den Workshop auch online durchführen?",
+          "a": "Ja. Der Leitfaden beschreibt eine Online-Variante: Breakout-Räume statt Raumecken, ein gemeinsames Whiteboard statt der Papierkarte."
+        },
+        {
+          "q": "Was, wenn die Gruppe größer als 30 Personen ist?",
+          "a": "Die Übungen laufen in Untergruppen, die Teamkarte erstellen Sie nach Abteilungen. Die Gruppenauswertung ist für 40 Teilnehmende ausgelegt."
+        },
+        {
+          "q": "Sehen Sie die Ergebnisse meiner Teilnehmenden?",
+          "a": "Nein. Die Gruppenauswertung läuft auf Ihrem Computer und sendet keine Daten. Den Online-Test machen die Teilnehmenden selbst und ohne Anmeldung."
+        }
+      ],
+      "form": {
+        "title": "Anfrage zum Workshop-Paket",
+        "lead": "Wir antworten innerhalb eines Werktags an die E-Mail-Adresse, die Sie angeben.",
+        "size": "Wie viele Personen sind meist in Ihrer Gruppe?",
+        "sizes": [
+          "bis 10",
+          "10–20",
+          "20–30",
+          "mehr als 30"
+        ],
+        "interest": "Für wen ist der Workshop?",
+        "interests": [
+          "Für mein Team oder meine Organisation",
+          "Für Kundinnen und Kunden oder Lerngruppen"
+        ],
+        "comment": "Kommentar",
+        "commentPlaceholder": "Zum Beispiel: wann Sie den Workshop planen und ob er vor Ort oder online stattfindet",
+        "button": "Anfrage senden",
+        "subject": "Anfrage zum DISG-Workshop-Paket: {name}",
+        "sent": "Ihre Anfrage wurde gesendet. Wir antworten innerhalb eines Werktags an {email}.",
+        "needInterest": "Bitte geben Sie an, für wen der Workshop ist.",
+        "privacy": "Name, E-Mail-Adresse und Text der Anfrage werden per E-Mail an {email} gesendet und nur verwendet, um Ihnen zu antworten."
+      }
+    },
+    "paper": {
+      "group": {
+        "title": "Führen Sie den Test mit einer Gruppe durch?",
+        "kitTitle": "DISG-Workshop-Paket",
+        "kitText": "Leitfaden für einen Workshop von 60 oder 90 Minuten, Folien, eine Excel-Tabelle, die die Ergebnisse der ganzen Gruppe selbst auswertet, Teamkarte und Karten „So arbeitet man am besten mit mir“.",
+        "kitButton": "Mehr zum Paket",
+        "bizTitle": "Ausführliche Berichte für die Teilnehmenden",
+        "bizText": "Nach dem Online-Test kann jede Person den ausführlichen DISG-Bericht zu ihrem Profil bestellen.",
+        "bizButton": "Zum ausführlichen Bericht"
+      },
+      "mail": {
+        "toggle": "Fragebogen per E-Mail erhalten",
+        "lead": "Wir senden Ihnen den Fragebogen als Anhang und eine kurze Anleitung, wie Sie den Test mit einer Gruppe durchführen.",
+        "emailLabel": "Ihre E-Mail-Adresse",
+        "button": "Senden",
+        "sending": "Wird gesendet …",
+        "sent": "Die E-Mail wurde an {email} gesendet. Falls sie nicht im Posteingang liegt, sehen Sie bitte im Spam-Ordner nach.",
+        "failed": "Die E-Mail konnte nicht gesendet werden ({error}). Laden Sie den Fragebogen über die Schaltfläche oben herunter.",
+        "tooMany": "An diese Adresse wurden bereits mehrere E-Mails gesendet. Versuchen Sie es später noch einmal oder laden Sie den Fragebogen über die Schaltfläche oben herunter."
+      },
+      "letter": {
+        "subject": "DISG-Fragebogen und Anleitung für die Moderation",
+        "intro": "Guten Tag, Sie haben auf {site} den DISG-Fragebogen angefordert.",
+        "attachNote": "Den Fragebogen finden Sie im Anhang dieser E-Mail. Falls sich der Anhang nicht öffnen lässt, laden Sie ihn über die Schaltfläche herunter:",
+        "pdfButton": "Fragebogen herunterladen (PDF)",
+        "pdfNote": "Die Datei enthält 24 Blöcke mit Aussagen, den Schlüssel, die Auswertungstabelle und die Beschreibung der 16 Profile. Sie können sie in Schwarz-Weiß drucken.",
+        "guideTitle": "So führen Sie den Test mit einer Gruppe durch",
+        "guide": [
+          "Drucken Sie den Fragebogen für jede Person aus oder geben Sie den Link zur Online-Version weiter: {online} – dort wird das Ergebnis automatisch berechnet.",
+          "Bitten Sie darum, so zu antworten, wie man sich bei der Arbeit gewöhnlich verhält, und nicht so, wie man gern wäre. Das Ausfüllen dauert etwa 10 Minuten.",
+          "Auf Papier zählt man für jeden Stil die Markierungen „am meisten“ und zieht die Markierungen „am wenigsten“ ab. Der Schlüssel steht auf Seite 4 des Fragebogens; über den QR-Code neben der Auswertungstabelle lassen sich die Zahlen auf der Website eingeben – dann erscheint eine ausführliche Beschreibung des Profils.",
+          "Besprechen Sie die Ergebnisse ohne Schubladendenken: Der Stil zeigt, was einer Person leichter fällt, nicht, was sie kann. Ob jemand sein Ergebnis teilt, entscheidet jede Person selbst.",
+          "Bitten Sie zum Schluss alle zu sagen, wie man sich am besten mit ihnen abstimmt, und halten Sie 2–3 gemeinsame Arbeitsregeln fest."
+        ],
+        "kitText": "Einen fertigen Leitfaden für einen Workshop von 60 oder 90 Minuten, Folien, eine Tabelle, die die Ergebnisse der Gruppe auswertet, eine Teamkarte und Karten finden Sie im DISG-Workshop-Paket:",
+        "kitButton": "DISG-Workshop-Paket",
+        "subscribed": "Sie haben den Newsletter von {site} abonniert: neue Tests, Tipps für die berufliche Entwicklung und die Jobsuche, Neuigkeiten der Website und Werbeangebote. Sie können sich jederzeit abmelden:",
+        "unsubscribe": "Vom Newsletter abmelden",
+        "footer": "Sie erhalten diese E-Mail, weil Sie auf der Seite „Test als PDF“ von {site} den Fragebogen angefordert haben. Weitere E-Mails zu dieser Anfrage erhalten Sie nicht."
+      },
+      "score": {
+        "eyebrow": "Papierfragebogen",
+        "title": "Ergebnis vom Fragebogen eingeben",
+        "lead": "Übertragen Sie die Zahlen aus der Tabelle „Auswertung“ auf Seite 4 des Fragebogens – die Website zeigt Ihr Profil mit Diagramm und ausführlicher Beschreibung: Stärken, Entwicklungsfelder, Motivation und Tipps, wie man am besten mit Ihnen kommuniziert und zusammenarbeitet.",
+        "style": "Stil",
+        "most": "„Am meisten“",
+        "least": "„Am wenigsten“",
+        "net": "Ergebnis",
+        "sum": "Summe",
+        "sumNote": "In jeder Spalte ist die Summe 24: In jedem der 24 Blöcke gibt es genau eine Markierung „am meisten“ und eine „am wenigsten“.",
+        "errEmpty": "Bitte füllen Sie alle acht Felder aus: für jeden Stil die Markierungen „am meisten“ und „am wenigsten“.",
+        "errSum": "Die Summe in der Spalte {col} ist {n}, sie muss aber 24 sein. Prüfen Sie die Auszählung mit dem Schlüssel.",
+        "errStyle": "Beim Stil {k} ergeben die Markierungen „am meisten“ und „am wenigsten“ zusammen mehr als 24 – das ist nicht möglich. Prüfen Sie die Auszählung.",
+        "button": "Ergebnis anzeigen",
+        "alt": "Kein Fragebogen zur Hand?",
+        "altButton": "Test online machen – etwa 10 Minuten"
+      },
+      "fromPdf": {
+        "title": "Papierfragebogen ausgefüllt?",
+        "text": "Übertragen Sie Ihre Markierungen hierher: Blöcke und Aussagen stehen in derselben Reihenfolge wie auf dem Fragebogen – das dauert 3–4 Minuten. Die Website zählt die Punkte, zeichnet das Diagramm und zeigt die ausführliche Beschreibung Ihres Profils.",
+        "scoreLink": "Schon mit dem Schlüssel ausgezählt? Zahlen aus der Tabelle eingeben"
+      },
+      "print": {
+        "qrTitle": "Ausführliche Beschreibung Ihres Profils – auf der Website",
+        "qrText": "Scannen Sie den Code mit der Handykamera und geben Sie die Zahlen aus dieser Tabelle ein – die Website zeigt Ihr Profil, ein Diagramm der vier Stile, Ihre Stärken, Entwicklungsfelder und Tipps, wie man am besten mit Ihnen kommuniziert und zusammenarbeitet.",
+        "nextTitle": "Wie geht es weiter?",
+        "nextLead": "Mit dem Fragebogen haben Sie Ihr Profil ermittelt. Das können Sie als Nächstes tun – scannen Sie dazu den Code mit der Handykamera.",
+        "online": {
+          "title": "Kostenloser Bericht mit Diagramm",
+          "text": "Übertragen Sie Ihre Markierungen in die Online-Version – 3–4 Minuten, ohne Anmeldung. Sie erhalten ein Diagramm mit drei Linien, Prozentwerte für die vier Stile, Stärken, Entwicklungsfelder, Motivation, Verhalten unter Stress und Tipps, wie man am besten mit Ihnen kommuniziert und zusammenarbeitet."
+        },
+        "extended": {
+          "title": "Ausführlicher DISG-Bericht",
+          "text": "Rund 30 Seiten zu Ihrem Profil: was jeder der vier Werte bedeutet, fünf blinde Flecken und wie Sie mit ihnen umgehen, Techniken und fertige Formulierungen für Gespräche mit Menschen jedes Stils, ein 30-Tage-Plan. Der Bericht entsteht aus Ihren Antworten und wird deshalb nach dem Online-Test bestellt."
+        },
+        "group": {
+          "title": "Führen Sie den Test mit einer Gruppe durch?",
+          "text": "DISG-Workshop-Paket: eine Tabelle, die die Ergebnisse der ganzen Gruppe selbst auswertet, ein Leitfaden für einen Workshop von 60–90 Minuten, Folien, eine Teamkarte und Karten „So arbeitet man am besten mit mir“."
+        },
+        "footer": "Die aktuelle Version des Fragebogens finden Sie auf disc-test.org/de/pdf/"
+      }
+    },
     "pdf": {
       "title": "DISG-Test PDF kostenlos: zum Ausdrucken mit Auswertung",
       "description": "DISG-Test als PDF kostenlos: 24 Blöcke, Schlüssel, Auswertungstabelle, 16 Profile. Herunterladen, ausdrucken, auf Papier ausfüllen.",
@@ -2852,7 +3052,7 @@
   "ui": {
     "langLabel": "Sprache",
     "footer": "24 Blöcke · etwa 10 Minuten · keine richtigen oder falschen Antworten",
-    "privacy": "Ihre Antworten bleiben in Ihrem Browser; für die Gesamtstatistik erhält der Server der Website nur Vermerke über Ihren Besuch und den Testbeginn sowie das ermittelte Profil – ohne Namen und ohne Antworten. Wenn Sie Ihre E-Mail-Adresse angeben, wird das Ergebnis dorthin gesendet und in der Ergebnisdatenbank des Seitenbetreibers gespeichert. Wenn Sie den Newsletter auf der Startseite abonnieren, werden in dieser Datenbank Ihre E-Mail-Adresse und die Sprachversion der Website gespeichert. Wenn Sie auf „Als PDF speichern“ klicken, gehen Ihre Antworten und das Testdatum – ohne Namen und E-Mail-Adresse – an den Server der Website; er erstellt daraus die Datei mit dem Kurzbericht, gibt sie Ihnen zurück und speichert nichts.",
+    "privacy": "Ihre Antworten bleiben in Ihrem Browser; für die Gesamtstatistik erhält der Server der Website nur Vermerke über Ihren Besuch und den Testbeginn sowie das ermittelte Profil – ohne Namen und ohne Antworten. Wenn Sie Ihre E-Mail-Adresse angeben, wird das Ergebnis dorthin gesendet und in der Ergebnisdatenbank des Seitenbetreibers gespeichert. Wenn Sie den Newsletter auf der Startseite abonnieren, werden in dieser Datenbank Ihre E-Mail-Adresse und die Sprachversion der Website gespeichert. Wenn Sie sich auf der Seite „Test als PDF“ den Fragebogen per E-Mail schicken lassen, sendet der Server der Website Ihnen die E-Mail mit dem Fragebogen und speichert den Vermerk über Ihre Einwilligung zusammen mit Ihrer E-Mail-Adresse; willigen Sie in den Newsletter ein, werden Adresse und Sprachversion der Website auch in der Abonnentenliste gespeichert. Wenn Sie auf „Als PDF speichern“ klicken, gehen Ihre Antworten und das Testdatum – ohne Namen und E-Mail-Adresse – an den Server der Website; er erstellt daraus die Datei mit dem Kurzbericht, gibt sie Ihnen zurück und speichert nichts.",
     "legal": "Manukyan Armen · Steuernummer (INN) {inn}",
     "rights": "© {year} disc-test.org. Das Kopieren der Texte dieser Website und der Berichte ist ohne schriftliche Genehmigung untersagt.",
     "adminLink": "Admin-Bereich",
@@ -3141,7 +3341,7 @@
     "pd.consentLink": "Einwilligung in die Verarbeitung personenbezogener Daten",
     "pd.required": "Bitte bestätigen Sie die Einwilligung in die Verarbeitung personenbezogener Daten: Ohne sie können wir Ihre Daten nicht annehmen.",
     "pd.cookieAsk": "Diese Website speichert Ihren Fortschritt, Ihr Ergebnis und die gewählte Sprache im lokalen Speicher des Browsers. Mit Ihrer Einwilligung erfasst ein Webanalysesystem anonymisierte Besuchsstatistiken und eine Aufzeichnung der Aktionen auf der Seite, damit wir die Website verbessern können. Ihr Name, Ihre E-Mail-Adresse und Ihr Ergebnis werden nicht an das Analysesystem übermittelt.",
-    "pd.cookieDetails": "Im Browser gespeichert werden: Name und E-Mail-Adresse, falls Sie sie angegeben haben; Ihre Antworten und der unvollendete Fortschritt; Ihr letztes Ergebnis; der Zeitpunkt, zu dem Sie den Test zum ersten Mal abgeschlossen haben, für die Frist des Sonderpreises des Berichts; die gewählte Sprache; ein Vermerk, dass Sie diesen Hinweis gesehen haben. Diese Daten bleiben auf Ihrem Gerät und werden beim Löschen der Website-Daten entfernt. Der Hosting-Anbieter erhält die üblichen technischen Anfragedaten. Wenn Sie die Website an einem Tag zum ersten Mal öffnen, geht ein anonymer Besuchsvermerk an den Server der Website: nur die Sprachversion der Website; der Server speichert ihn mit der Uhrzeit des Eingangs, und Ihr Browser merkt sich das Datum, damit der Vermerk am selben Tag nicht noch einmal gesendet wird. Damit zählen wir, wie viele Menschen die Website besuchen. Wenn Sie den Test beginnen, geht ein anonymer Startvermerk an den Server der Website: nur die Sprachversion der Website. Wenn Sie den Test abschließen, geht ein anonymer Eintrag für die Gesamtstatistik an den Server der Website: das ermittelte Profil und die Sprachversion der Website – ohne Namen, E-Mail-Adresse und Antworten. Wenn Sie auf „Als PDF speichern“ klicken, gehen Ihre Antworten und das Testdatum – ohne Namen und E-Mail-Adresse – an den Server der Website; er erstellt daraus die Datei mit dem Kurzbericht, gibt sie Ihnen zurück und speichert nichts. Wenn Sie das Ergebnis per E-Mail senden lassen, werden Name, E-Mail-Adresse und Antworten an den Server der Website übermittelt; er sendet Ihnen die E-Mail mit dem Ergebnis und speichert Name, E-Mail-Adresse, Datum und Ergebnis in der Ergebnisdatenbank des Seitenbetreibers. Wenn Sie den Newsletter auf der Startseite abonnieren, werden E-Mail-Adresse und Sprachversion der Website an den Server der Website übermittelt; er sendet Ihnen eine E-Mail mit einem Bestätigungslink und speichert die Adresse in derselben Datenbank; wird die Anmeldung nicht bestätigt, wird die Adresse nach 7 Tagen gelöscht. Das Webanalysesystem erhält die Seitenadresse (auf der Ergebnisseite zusammen mit dem Ergebniscode: Ihre Antworten, das Testdatum und Ihr Name, falls Sie ihn angegeben haben, aber nicht Ihre E-Mail-Adresse), die Herkunft des Besuchs, Geräte- und Browsertyp sowie eine Aufzeichnung der Aktionen auf der Seite (die Felder für Name und E-Mail sind ausgenommen) und setzt eigene Cookies. Sie können es in den Browsereinstellungen oder mit einem Tracker-Blocker blockieren. Werbe-Tracker werden nicht verwendet.",
+    "pd.cookieDetails": "Im Browser gespeichert werden: Name und E-Mail-Adresse, falls Sie sie angegeben haben; Ihre Antworten und der unvollendete Fortschritt; Ihr letztes Ergebnis; der Zeitpunkt, zu dem Sie den Test zum ersten Mal abgeschlossen haben, für die Frist des Sonderpreises des Berichts; die gewählte Sprache; ein Vermerk, dass Sie diesen Hinweis gesehen haben. Diese Daten bleiben auf Ihrem Gerät und werden beim Löschen der Website-Daten entfernt. Der Hosting-Anbieter erhält die üblichen technischen Anfragedaten. Wenn Sie die Website an einem Tag zum ersten Mal öffnen, geht ein anonymer Besuchsvermerk an den Server der Website: nur die Sprachversion der Website; der Server speichert ihn mit der Uhrzeit des Eingangs, und Ihr Browser merkt sich das Datum, damit der Vermerk am selben Tag nicht noch einmal gesendet wird. Damit zählen wir, wie viele Menschen die Website besuchen. Wenn Sie den Test beginnen, geht ein anonymer Startvermerk an den Server der Website: nur die Sprachversion der Website. Wenn Sie den Test abschließen, geht ein anonymer Eintrag für die Gesamtstatistik an den Server der Website: das ermittelte Profil und die Sprachversion der Website – ohne Namen, E-Mail-Adresse und Antworten. Wenn Sie auf „Als PDF speichern“ klicken, gehen Ihre Antworten und das Testdatum – ohne Namen und E-Mail-Adresse – an den Server der Website; er erstellt daraus die Datei mit dem Kurzbericht, gibt sie Ihnen zurück und speichert nichts. Wenn Sie das Ergebnis per E-Mail senden lassen, werden Name, E-Mail-Adresse und Antworten an den Server der Website übermittelt; er sendet Ihnen die E-Mail mit dem Ergebnis und speichert Name, E-Mail-Adresse, Datum und Ergebnis in der Ergebnisdatenbank des Seitenbetreibers. Wenn Sie den Newsletter auf der Startseite abonnieren, werden E-Mail-Adresse und Sprachversion der Website an den Server der Website übermittelt; er sendet Ihnen eine E-Mail mit einem Bestätigungslink und speichert die Adresse in derselben Datenbank; wird die Anmeldung nicht bestätigt, wird die Adresse nach 7 Tagen gelöscht. Wenn Sie sich auf der Seite „Test als PDF“ den Fragebogen per E-Mail schicken lassen, werden E-Mail-Adresse und Sprachversion der Website an den Server der Website übermittelt; er sendet Ihnen die E-Mail mit dem Fragebogen und speichert den Vermerk über Ihre Einwilligung zusammen mit der Adresse; haben Sie in den Newsletter eingewilligt, wird die Adresse sofort in der Abonnentenliste gespeichert, und die E-Mail enthält einen Abmeldelink. Das Webanalysesystem erhält die Seitenadresse (auf der Ergebnisseite zusammen mit dem Ergebniscode: Ihre Antworten, das Testdatum und Ihr Name, falls Sie ihn angegeben haben, aber nicht Ihre E-Mail-Adresse), die Herkunft des Besuchs, Geräte- und Browsertyp sowie eine Aufzeichnung der Aktionen auf der Seite (die Felder für Name und E-Mail sind ausgenommen) und setzt eigene Cookies. Sie können es in den Browsereinstellungen oder mit einem Tracker-Blocker blockieren. Werbe-Tracker werden nicht verwendet.",
     "pd.cookieChange": "Cookie-Auswahl ändern",
 
     "print.title": "DISG-Test zum Ausdrucken: Fragebogen mit Schlüssel und Auswertung",

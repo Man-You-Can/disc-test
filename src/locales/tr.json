@@ -664,7 +664,7 @@
           "h": "Veriler nerede saklanır ve kimlere aktarılır",
           "p": [
             "Sonuç veri tabanı, site sahibinin bir barındırma sağlayıcısından kiraladığı bir sunucuda bulunur. E-postaları bir e-posta hizmeti gönderir. Bu şirketler verileri bizim talimatımızla ve yalnızca sitenin çalışması için işler. E-posta, kendi belirttiğiniz adrese gönderilir. Veriler, kendi amaçları için kullanmaları üzere üçüncü kişilere aktarılmaz ve satılmaz.",
-            "Bülteni yalnızca ayrı onay kutusunu işaretleyenler alır: sonuç gönderme formunda ya da ana sayfadaki abonelik formunda. Abonelik formunu gönderdikten sonra onay bağlantısı içeren bir e-posta gelir: onaylanmayan aboneliğe bülten gönderilmez ve adres 7 gün sonra silinir. Veri tabanına onay işareti, onayın tarihi ve metni kaydedilir; e-posta adresiniz, adınız (belirttiyseniz), diliniz ve test sonucunuz (e-postanıza gönderdiyseniz) size disc-test.org e-postalarını göndermek için kullanılır: DISC ile ilgili içerikler, yeni testler, kariyer gelişimi ve iş arama ipuçları, site haberleri ve tanıtım teklifleri. İstediğiniz zaman abonelikten çıkabilirsiniz: e-postadaki bağlantıdan ya da {email} adresine yazarak.",
+            "Bülteni yalnızca ayrı onay kutusunu işaretleyenler alır: sonuç gönderme formunda, ana sayfadaki abonelik formunda ya da “DISC testi PDF” sayfasındaki “PDF’i e-postama gönderin” formunda. Ana sayfadaki abonelik formunu gönderdikten sonra onay bağlantısı içeren bir e-posta gelir: onaylanmayan aboneliğe bülten gönderilmez ve adres 7 gün sonra silinir. “PDF’i e-postama gönderin” formunda abonelik, form gönderildiği anda başlar; PDF’i içeren e-postada abonelikten çıkma bağlantısı bulunur. Veri tabanına onay işareti, onayın tarihi ve metni kaydedilir; e-posta adresiniz, adınız (belirttiyseniz), diliniz ve test sonucunuz (e-postanıza gönderdiyseniz) size disc-test.org e-postalarını göndermek için kullanılır: DISC ile ilgili içerikler, yeni testler, kariyer gelişimi ve iş arama ipuçları, site haberleri ve tanıtım teklifleri. İstediğiniz zaman abonelikten çıkabilirsiniz: e-postadaki bağlantıdan ya da {email} adresine yazarak.",
             "Barındırma hizmeti, isteğe ilişkin standart teknik verileri alır: IP adresi, tarayıcı türü, sayfa adresi. Yazı tipleri sitenin kendisinde barındırılır. Ziyaret istatistiklerini bir web analiz hizmeti toplar: ziyarete ilişkin verileri — sayfa adresi, ziyaretin geldiği kaynak, cihaz ve tarayıcı türü — ve sayfadaki hareketlerin kaydını alır; ad ve e-posta alanları bu kaydın dışında tutulur. Sonuç ekranında sayfa adresi sonuç kodunu içerir: yanıtlarınız, test tarihi ve belirttiyseniz adınız; e-posta adresiniz bu koda dahil değildir. Veri toplamayı tarayıcı ayarlarınızdan ya da bir izleyici engelleyiciyle devre dışı bırakabilirsiniz. Reklam amaçlı izleyiciler kullanılmaz."
           ]
         },
@@ -722,6 +722,7 @@
       "description": "disc-test.org’daki formları gönderirken verdiğiniz, kişisel verilerin işlenmesine ilişkin onayın metni.",
       "h1": "Kişisel verilerin işlenmesine ilişkin onay",
       "lead": "disc-test.org sitesindeki formda kişisel verilerin işlenmesine ilişkin onay kutusunu işaretleyip bu formu göndererek, kişisel verilerimin aşağıda belirtilen koşullarla işlenmesine özgürce, kendi irademle ve kendi yararıma onay veriyorum. Onay verdiğim veri sorumlusu: {owner}.",
+      "paperForm": "“DISC testi PDF” sayfasındaki “PDF’i e-postama gönderin” formu: e-posta adresi ve sitenin dil sürümü. Amaç: bana test PDF’ini ve testi bir grupla uygulamaya dair kısa notları içeren bir e-posta göndermek; bülten onay kutusunu işaretlersem bülten abone listesini de tutmak.",
       "sections": [
         {
           "h": "İşleme amaçları ve işlenen veriler",
@@ -1350,6 +1351,205 @@
         "button": "Rengini öğren"
       }
     },
+    "kit": {
+      "title": "DISC Atölye Kiti: atölye rehberi, slaytlar ve grup tablosu",
+      "description": "Ekibiniz ya da grubunuzla DISC atölyesi için gereken her şey: 60 veya 90 dakikalık akış, 16 slayt, grubun sonuçlarını kendisi hesaplayan Excel tablosu, ekip haritası ve kartlar. {price} USD.",
+      "h1": "DISC Atölye Kiti",
+      "lead": "Bir ekip, sınıf ya da eğitim grubuyla DISC atölyesi yapmak için gereken her şey — ilk kez yapacak olsanız bile. Katılımcılar için test ücretsizdir: kâğıt üzerinde ya da online.",
+      "facts": [
+        "60 veya 90 dakika",
+        "4–30 katılımcı",
+        "PDF ve Excel",
+        "{price} USD"
+      ],
+      "button": "Talep bırakın",
+      "insideTitle": "Kitte neler var",
+      "inside": [
+        {
+          "title": "Atölye rehberi",
+          "text": "6 sayfa: hazırlık, 60 ve 90 dakikalık plan, her adımda ne söyleyip ne yapacağınız, iki alıştırma, sonuçları etiketlemeden konuşmanın yolları, zor durumlar ve katılımcıların sık sorduğu sorulara yanıtlar.",
+          "img": "tr-guide",
+          "alt": "Atölye rehberinin ilk sayfası"
+        },
+        {
+          "title": "Slaytlar",
+          "text": "Ekran için 16 slayt: atölyenin amaçları ve kuralları, testin QR kodu, iki eksen ve dört stil, her stile bir slayt, sonucun nasıl okunacağı, alıştırmalar ve ortak kararlar.",
+          "img": "tr-slide",
+          "alt": "İki eksen ve dört stili anlatan slayt"
+        },
+        {
+          "title": "Grup tablosu",
+          "text": "40 katılımcılık Excel dosyası. Kâğıt testteki sayıları ya da online sonuçtaki yüzdeleri girin: tablo net puanları hesaplar, herkesin profilini belirler ve grubun özetini gösterir — her stilden kaç kişi olduğunu ve nelere dikkat etmek gerektiğini.",
+          "img": "",
+          "alt": ""
+        },
+        {
+          "title": "Ekip haritası",
+          "text": "A3 ya da A4 kâğıda basılacak dört bölümlü bir daire: katılımcılar kendi stillerini yapışkan notlarla işaretler, ekip de hangi stilin ağır bastığını, hangisinin eksik olduğunu ve nerede sürtüşme çıkabileceğini hemen görür.",
+          "img": "tr-map",
+          "alt": "Ekip haritası"
+        },
+        {
+          "title": "“Benimle nasıl çalışılır” kartları",
+          "text": "Her stil için bir kart — kişi için neyin önemli olduğu, onunla en iyi nasıl anlaşılacağı ve onu neyin zorladığı — ve katılımcıların kendileri doldurması için boş kartlar.",
+          "img": "tr-cards",
+          "alt": "“Benimle nasıl çalışılır” kartları"
+        }
+      ],
+      "forTitle": "Kimler için",
+      "for": [
+        "İK uzmanları ve yöneticiler: ekibin birbirini tanıması, yeni çalışanların uyumu, suçlu aramadan sürtüşmeleri konuşmak.",
+        "Kurumsal eğitmenler ve kurum içi akademiler: iletişim ve ekip çalışması programları için hazır bir modül.",
+        "Üniversite ve meslek yüksekokulu öğretim elemanları: iletişim psikolojisi, yönetim ya da kariyer gelişimi dersi.",
+        "Kariyer danışmanları ve koçlar: güçlü yönler ve çalışma tarzı üzerine bir grup oturumu."
+      ],
+      "planTitle": "Atölye nasıl ilerler",
+      "plan": [
+        "Açılış ve kurallar: iş yerindeki davranışları konuşuruz, sonucunu paylaşmak isteğe bağlıdır, etiket yoktur.",
+        "Katılımcılar testi çözer — telefondan QR koduyla ya da kâğıt üzerinde.",
+        "Dört stil ve sonucun nasıl okunacağı.",
+        "“Dört köşe” alıştırması: stillere göre oluşan gruplar, kendilerine neyin enerji verdiğini ve kendileriyle nasıl anlaşılacağını konuşur.",
+        "Ekip haritası: hangi stil ağır basıyor, hangisi eksik, nerede sürtüşme çıkabilir.",
+        "“Benimle nasıl çalışılır”: çiftler halinde kart alışverişi (90 dakikalık sürümde).",
+        "Ortak kararlar: toplantıları nasıl yapacağız, görevleri nasıl vereceğiz, geri bildirimi nasıl paylaşacağız."
+      ],
+      "reportTitle": "Her katılımcıya ayrıntılı rapor",
+      "report": "Atölyeden sonra katılımcılar kendi profilleri hakkında genişletilmiş DISC raporunu sipariş edebilir: {business}.",
+      "reportLink": "genişletilmiş rapor",
+      "priceTitle": "Fiyat ve teslimat",
+      "price": [
+        "Kitin fiyatı {price} USD. Talep bırakın: bir iş günü içinde size kartla ödeme bağlantısı göndeririz.",
+        "Ödemeden sonra dosyalar e-posta adresinize gelir. Haritayı, kartları ve test kâğıdını kendi atölyelerinizin katılımcıları için istediğiniz kadar yazdırabilirsiniz."
+      ],
+      "faqTitle": "Sorular",
+      "faq": [
+        {
+          "q": "Atölyeyi yönetmek için deneyim ya da sertifika gerekir mi?",
+          "a": "Hayır. Rehber, DISC atölyesini ilk kez yapacak biri için yazıldı: her adımda ne söyleyip ne yapacağınız ayrıntılı olarak anlatılır."
+        },
+        {
+          "q": "Katılımcıların kayıt olması ya da ödeme yapması gerekir mi?",
+          "a": "Hayır. Test ücretsizdir ve kayıt gerektirmez: online ya da “DISC testi PDF” sayfasından yazdırabileceğiniz kâğıt sürümüyle çözülebilir."
+        },
+        {
+          "q": "Atölye online yapılabilir mi?",
+          "a": "Evet. Rehberde online sürüm de anlatılır: oda köşeleri yerine gruplar için ayrı odalar, kâğıt harita yerine ortak bir dijital pano."
+        },
+        {
+          "q": "Grup 30 kişiden kalabalıksa ne yapmalı?",
+          "a": "Alıştırmalar alt gruplarda, ekip haritası ise birimlere göre yapılır. Grup tablosu 40 katılımcıya göre hazırlanmıştır."
+        },
+        {
+          "q": "Katılımcılarımın sonuçlarını siz görüyor musunuz?",
+          "a": "Hayır. Grup tablosu sizin bilgisayarınızda çalışır ve hiçbir yere veri göndermez. Online testi ise katılımcılar kendileri ve kayıt olmadan çözer."
+        }
+      ],
+      "form": {
+        "title": "Kit talebi",
+        "lead": "Belirttiğiniz e-posta adresine bir iş günü içinde yanıt veririz.",
+        "size": "Grubunuzda genellikle kaç katılımcı oluyor",
+        "sizes": [
+          "10’a kadar",
+          "10–20",
+          "20–30",
+          "30’dan fazla"
+        ],
+        "interest": "Kiti kimlerle kullanacaksınız",
+        "interests": [
+          "Kendi ekibimde ya da kurumumda",
+          "Müşterilerim veya öğrencilerimle"
+        ],
+        "comment": "Yorum",
+        "commentPlaceholder": "Örneğin: atölye kimler için, ne zaman yapmayı planlıyorsunuz",
+        "button": "Talebi gönder",
+        "subject": "Atölye Kiti talebi: {name}",
+        "sent": "Talebiniz gönderildi. {email} adresine bir iş günü içinde yanıt vereceğiz.",
+        "needInterest": "Kiti kimlerle kullanacağınızı işaretleyin.",
+        "privacy": "Adınız, e-posta adresiniz ve talebinizin metni {email} adresine e-postayla gönderilir ve yalnızca size yanıt vermek için kullanılır."
+      }
+    },
+    "paper": {
+      "group": {
+        "title": "Testi bir grupla mı uyguluyorsunuz?",
+        "kitTitle": "Atölye Kiti",
+        "kitText": "60 veya 90 dakikalık atölye rehberi, slaytlar, tüm grubun sonuçlarını kendisi hesaplayan Excel tablosu, ekip haritası ve “Benimle nasıl çalışılır” kartları.",
+        "kitButton": "Kit hakkında ayrıntılar",
+        "bizTitle": "Katılımcılar için genişletilmiş rapor",
+        "bizText": "Katılımcılar testten sonra kendi profilleri hakkında genişletilmiş raporu sipariş edebilir.",
+        "bizButton": "Genişletilmiş rapor"
+      },
+      "mail": {
+        "toggle": "PDF’i e-postama gönderin",
+        "lead": "Testi ek olarak, bir grupla nasıl uygulayacağınızı anlatan kısa notlarla birlikte göndeririz.",
+        "emailLabel": "E-posta adresiniz",
+        "button": "Gönder",
+        "sending": "Gönderiliyor…",
+        "sent": "E-posta {email} adresine gönderildi. Gelen kutunuzda göremiyorsanız “Spam” klasörüne bakın.",
+        "failed": "E-posta gönderilemedi ({error}). PDF’i yukarıdaki düğmeyle indirin.",
+        "tooMany": "Bu adrese zaten birkaç e-posta gönderildi. Daha sonra yeniden deneyin ya da PDF’i yukarıdaki düğmeyle indirin."
+      },
+      "letter": {
+        "subject": "DISC testi PDF’i ve grup uygulaması için kısa notlar",
+        "intro": "Merhaba! {site} sitesinden DISC testinin PDF sürümünü istediniz.",
+        "attachNote": "Test bu e-postanın ekinde. Ek açılmazsa düğmeyle indirebilirsiniz:",
+        "pdfButton": "Testi indir (PDF)",
+        "pdfNote": "Dosyada dörder ifadeli 24 soru, cevap anahtarı, puanlama tablosu ve 16 profilin açıklaması var. Siyah beyaz yazdırabilirsiniz.",
+        "guideTitle": "Testi bir grupla nasıl uygularsınız",
+        "guide": [
+          "Testi her katılımcı için yazdırın ya da online sürümün bağlantısını paylaşın: {online} — orada sonuç kendiliğinden hesaplanır.",
+          "Katılımcılardan, olmak istedikleri gibi değil, iş yerinde genellikle nasıl davrandıklarına göre yanıt vermelerini isteyin. Yanıtlamak yaklaşık 10 dakika sürer.",
+          "Kâğıt üzerinde her stil için “en çok” işaretlerinin sayısından “en az” işaretlerinin sayısı çıkarılır. Cevap anahtarı PDF’in dördüncü sayfasındadır; puanlama tablosunun yanındaki QR koduyla sayıları sitede girip profilin ayrıntılı açıklamasını alabilirsiniz.",
+          "Sonuçları etiketlemeden konuşun: stil, kişinin neyi daha kolay yaptığını gösterir, neyi yapabildiğini değil. Sonucunu paylaşmak isteğe bağlıdır.",
+          "Sonunda herkesten kendisiyle en iyi nasıl anlaşılacağını söylemesini isteyin ve 2–3 ortak çalışma kuralı yazın."
+        ],
+        "kitText": "60 veya 90 dakikalık hazır atölye rehberi, slaytlar, grubun sonuçlarını hesaplayan tablo, ekip haritası ve kartlar Atölye Kiti’nde:",
+        "kitButton": "DISC Atölye Kiti",
+        "subscribed": "{site} bültenine abone oldunuz: yeni testler, kariyer gelişimi ve iş arama ipuçları, site haberleri ve tanıtım teklifleri. İstediğiniz zaman abonelikten çıkabilirsiniz:",
+        "unsubscribe": "Abonelikten çık",
+        "footer": "Bu e-postayı, {site} sitesinin “DISC testi PDF” sayfasında testin PDF’ini istediğiniz için aldınız. Bu istekle ilgili başka e-posta gönderilmeyecek."
+      },
+      "score": {
+        "eyebrow": "Kâğıt test",
+        "title": "Kâğıt testteki sonucunuzu girin",
+        "lead": "Testin dördüncü sayfasındaki “Sonucun hesaplanması” tablosundan sayıları aktarın: site, profilinizi grafikle ve ayrıntılı açıklamayla gösterir — güçlü yönler, gelişim alanları, motivasyon ve sizinle en iyi nasıl iletişim kurulup çalışılacağına dair öneriler.",
+        "style": "Stil",
+        "most": "“En çok”",
+        "least": "“En az”",
+        "net": "Net puan",
+        "sum": "Toplam",
+        "sumNote": "Her sütunun toplamı 24’tür: 24 sorunun her birinde bir “en çok” ve bir “en az” işareti vardır.",
+        "errEmpty": "Sekiz sayının hepsini girin: her stil için “en çok” ve “en az” işaretlerinin sayısı.",
+        "errSum": "{col} sütununun toplamı {n}, oysa 24 olmalı. Hesabınızı anahtara göre kontrol edin.",
+        "errStyle": "{k} stilinde “en çok” ve “en az” işaretleri birlikte 24’ten fazla; bu mümkün değil. Hesabınızı kontrol edin.",
+        "button": "Sonucu göster",
+        "alt": "Test kâğıdı yanınızda değil mi?",
+        "altButton": "Testi online çözün — yaklaşık 10 dakika"
+      },
+      "fromPdf": {
+        "title": "Kâğıt testi doldurdunuz mu?",
+        "text": "İşaretlerinizi buraya aktarın: sorular ve ifadeler kâğıttakiyle aynı sırada, bu 3–4 dakika sürer. Site puanları kendisi hesaplar, grafiği çizer ve profilinizin ayrıntılı açıklamasını gösterir.",
+        "scoreLink": "Puanları anahtara göre zaten hesapladınız mı? Tablodaki sayıları girin"
+      },
+      "print": {
+        "qrTitle": "Profilinizin ayrıntılı açıklaması sitede",
+        "qrText": "Telefonunuzun kamerasını koda tutun ve bu tablodaki sayıları girin: site profilinizi, dört stilin grafiğini, güçlü yönlerinizi, gelişim alanlarınızı ve sizinle en iyi nasıl iletişim kurulup çalışılacağına dair önerileri gösterir.",
+        "nextTitle": "Sırada ne var",
+        "nextLead": "Kâğıt testle profilinizi öğrendiniz. Bundan sonra yapabilecekleriniz için telefonunuzun kamerasını koda tutun.",
+        "online": {
+          "title": "Grafikli ücretsiz rapor",
+          "text": "İşaretlerinizi online sürüme aktarın: 3–4 dakika, kayıt gerekmez. Üç çizgili bir grafik, dört stilin yüzdeleri, güçlü yönler, gelişim alanları, motivasyon, stres altındaki davranış ve sizinle en iyi nasıl iletişim kurulup çalışılacağına dair öneriler alırsınız."
+        },
+        "extended": {
+          "title": "Genişletilmiş DISC raporu",
+          "text": "Profiliniz hakkında 25 sayfayı aşan bir rapor: dört puanınızın her birinin anlamı, beş kör nokta ve bunlar üzerinde çalışma alıştırmaları, farklı tiplerden insanlarla iletişim için yöntemler ve hazır cümleler, 30 günlük gelişim planı. Rapor yanıtlarınıza göre hazırlanır, bu yüzden online testten sonra sipariş edilir."
+        },
+        "group": {
+          "title": "Testi bir grupla mı uyguluyorsunuz?",
+          "text": "Atölye Kiti: tüm grubun sonuçlarını kendisi hesaplayan tablo, 60–90 dakikalık atölye rehberi, slaytlar, ekip haritası ve “Benimle nasıl çalışılır” kartları."
+        },
+        "footer": "Testin güncel sürümü: disc-test.org/tr/pdf/"
+      }
+    },
     "pdf": {
       "title": "DISC testi PDF: soruları, anahtarı ve yorumuyla ücretsiz indirin",
       "description": "Ücretsiz DISC testi PDF’i: 24 soru, anahtar, puanlama tablosu ve 16 profilin açıklaması. İndirin, yazdırın, kâğıtta doldurun.",
@@ -1883,7 +2083,7 @@
   "ui": {
     "langLabel": "Dil",
     "footer": "24 soru · yaklaşık 10 dakika · doğru ya da yanlış yanıt yok",
-    "privacy": "Yanıtlarınız tarayıcınızda kalır; genel istatistik için sitenin sunucusuna yalnızca siteyi ziyaret ettiğinize ve teste başladığınıza dair kayıtlar ile çıkan profiliniz iletilir, adınız ve yanıtlarınız iletilmez. E-posta adresinizi belirtirseniz sonucunuz bu adrese gönderilir ve site sahibinin sonuç veri tabanına kaydedilir. Ana sayfada bültene abone olursanız e-posta adresiniz ve sitenin dil sürümü aynı veri tabanına kaydedilir. “PDF olarak kaydet” düğmesine bastığınızda yanıtlarınız ve test tarihi, adınız ve e-posta adresiniz olmadan, sitenin sunucusuna iletilir; sunucu bunlardan özet rapor dosyasını oluşturup size geri gönderir ve hiçbir şey saklamaz.",
+    "privacy": "Yanıtlarınız tarayıcınızda kalır; genel istatistik için sitenin sunucusuna yalnızca siteyi ziyaret ettiğinize ve teste başladığınıza dair kayıtlar ile çıkan profiliniz iletilir, adınız ve yanıtlarınız iletilmez. E-posta adresinizi belirtirseniz sonucunuz bu adrese gönderilir ve site sahibinin sonuç veri tabanına kaydedilir. Ana sayfada bültene abone olursanız e-posta adresiniz ve sitenin dil sürümü aynı veri tabanına kaydedilir. “DISC testi PDF” sayfasında testin e-postanıza gönderilmesini isterseniz sitenin sunucusu PDF’i içeren bir e-posta gönderir ve onay kaydınızı e-posta adresinizle birlikte saklar; bülten onayı da verirseniz adresiniz ve sitenin dil sürümü abone listesine de kaydedilir. “PDF olarak kaydet” düğmesine bastığınızda yanıtlarınız ve test tarihi, adınız ve e-posta adresiniz olmadan, sitenin sunucusuna iletilir; sunucu bunlardan özet rapor dosyasını oluşturup size geri gönderir ve hiçbir şey saklamaz.",
     "legal": "Manukyan Armen · Vergi kimlik numarası (INN) {inn}",
     "rights": "© {year} disc-test.org. Site ve rapor metinlerinin yazılı izin olmadan kopyalanması yasaktır.",
     "adminLink": "Yönetici paneli",
@@ -2172,7 +2372,7 @@
     "pd.consentLink": "kişisel verilerin işlenmesine ilişkin onay",
     "pd.required": "Kişisel verilerin işlenmesine ilişkin onay kutusunu işaretleyin: bu onay olmadan verilerinizi kabul edemeyiz.",
     "pd.cookieAsk": "Site; ilerlemenizi, sonucunuzu ve seçtiğiniz dili tarayıcının yerel depolama alanında saklar. Onay verirseniz bir web analiz hizmeti, siteyi geliştirebilmemiz için anonimleştirilmiş ziyaret istatistiklerini ve sayfadaki hareketlerin kaydını toplar. Adınız, e-posta adresiniz ve sonucunuz analiz hizmetine aktarılmaz.",
-    "pd.cookieDetails": "Tarayıcıda saklananlar: belirttiyseniz adınız ve e-posta adresiniz; yanıtlarınız ve tamamlanmamış ilerlemeniz; son sonucunuz; seçtiğiniz dil; bu bildirimi gördüğünüze dair işaret. Bu veriler cihazınızda kalır ve site verilerini temizlediğinizde silinir. Barındırma hizmeti, isteğe ilişkin standart teknik verileri alır. Siteyi gün içinde ilk kez açtığınızda sitenin sunucusuna anonim bir ziyaret kaydı gönderilir: yalnızca sitenin dil sürümü; sunucu bu kaydı ulaştığı saatle birlikte saklar, tarayıcınız da aynı gün yeniden gönderilmemesi için tarihi hatırlar. Bu kayıtlarla siteyi kaç kişinin ziyaret ettiğini sayarız. Teste başladığınızda sitenin sunucusuna anonim bir başlangıç kaydı gönderilir: yalnızca sitenin dil sürümü. Testi tamamladığınızda genel istatistik için sitenin sunucusuna anonim bir kayıt gönderilir: çıkan profiliniz ve sitenin dil sürümü. Adınız, e-posta adresiniz ve yanıtlarınız bu kayıtta yer almaz. “PDF olarak kaydet” düğmesine bastığınızda yanıtlarınız ve test tarihi, adınız ve e-posta adresiniz olmadan, sitenin sunucusuna iletilir; sunucu bunlardan özet rapor dosyasını oluşturup size geri gönderir ve hiçbir şey saklamaz. Sonucunuzu e-postanıza gönderdiğinizde adınız, e-posta adresiniz ve yanıtlarınız sitenin sunucusuna aktarılır: sunucu size sonucunuzu içeren bir e-posta gönderir ve adınızı, e-posta adresinizi, tarihi ve sonucu site sahibinin sonuç veri tabanına kaydeder. Ana sayfada bültene abone olduğunuzda e-posta adresiniz ve sitenin dil sürümü sitenin sunucusuna aktarılır: sunucu size onay bağlantısı içeren bir e-posta gönderir ve adresi aynı veri tabanına kaydeder; aboneliği onaylamazsanız adres 7 gün sonra silinir. Web analiz hizmeti şunları alır: sayfa adresi (sonuç ekranında sonuç koduyla birlikte: yanıtlarınız, test tarihi ve belirttiyseniz adınız; e-posta adresiniz dahil değildir), ziyaretin geldiği kaynak, cihaz ve tarayıcı türü, sayfadaki hareketlerin kaydı (ad ve e-posta alanları kayda dahil edilmez); ayrıca kendi çerezlerini yerleştirir. Bu hizmeti tarayıcı ayarlarından ya da bir izleyici engelleyiciyle engelleyebilirsiniz. Reklam amaçlı izleyiciler kullanılmaz.",
+    "pd.cookieDetails": "Tarayıcıda saklananlar: belirttiyseniz adınız ve e-posta adresiniz; yanıtlarınız ve tamamlanmamış ilerlemeniz; son sonucunuz; seçtiğiniz dil; bu bildirimi gördüğünüze dair işaret. Bu veriler cihazınızda kalır ve site verilerini temizlediğinizde silinir. Barındırma hizmeti, isteğe ilişkin standart teknik verileri alır. Siteyi gün içinde ilk kez açtığınızda sitenin sunucusuna anonim bir ziyaret kaydı gönderilir: yalnızca sitenin dil sürümü; sunucu bu kaydı ulaştığı saatle birlikte saklar, tarayıcınız da aynı gün yeniden gönderilmemesi için tarihi hatırlar. Bu kayıtlarla siteyi kaç kişinin ziyaret ettiğini sayarız. Teste başladığınızda sitenin sunucusuna anonim bir başlangıç kaydı gönderilir: yalnızca sitenin dil sürümü. Testi tamamladığınızda genel istatistik için sitenin sunucusuna anonim bir kayıt gönderilir: çıkan profiliniz ve sitenin dil sürümü. Adınız, e-posta adresiniz ve yanıtlarınız bu kayıtta yer almaz. “PDF olarak kaydet” düğmesine bastığınızda yanıtlarınız ve test tarihi, adınız ve e-posta adresiniz olmadan, sitenin sunucusuna iletilir; sunucu bunlardan özet rapor dosyasını oluşturup size geri gönderir ve hiçbir şey saklamaz. Sonucunuzu e-postanıza gönderdiğinizde adınız, e-posta adresiniz ve yanıtlarınız sitenin sunucusuna aktarılır: sunucu size sonucunuzu içeren bir e-posta gönderir ve adınızı, e-posta adresinizi, tarihi ve sonucu site sahibinin sonuç veri tabanına kaydeder. Ana sayfada bültene abone olduğunuzda e-posta adresiniz ve sitenin dil sürümü sitenin sunucusuna aktarılır: sunucu size onay bağlantısı içeren bir e-posta gönderir ve adresi aynı veri tabanına kaydeder; aboneliği onaylamazsanız adres 7 gün sonra silinir. “DISC testi PDF” sayfasında testin e-postanıza gönderilmesini istediğinizde e-posta adresiniz ve sitenin dil sürümü sitenin sunucusuna aktarılır: sunucu size PDF’i içeren bir e-posta gönderir ve onay kaydını adresinizle birlikte saklar; bülten onayı verdiyseniz adresiniz hemen abone listesine kaydedilir ve e-postada abonelikten çıkma bağlantısı bulunur. Web analiz hizmeti şunları alır: sayfa adresi (sonuç ekranında sonuç koduyla birlikte: yanıtlarınız, test tarihi ve belirttiyseniz adınız; e-posta adresiniz dahil değildir), ziyaretin geldiği kaynak, cihaz ve tarayıcı türü, sayfadaki hareketlerin kaydı (ad ve e-posta alanları kayda dahil edilmez); ayrıca kendi çerezlerini yerleştirir. Bu hizmeti tarayıcı ayarlarından ya da bir izleyici engelleyiciyle engelleyebilirsiniz. Reklam amaçlı izleyiciler kullanılmaz.",
     "pd.cookieChange": "Çerez tercihini değiştir",
 
     "print.title": "DISC kişilik envanteri: yazdırılabilir test, cevap anahtarı, puanlama",

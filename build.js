@@ -1080,7 +1080,7 @@ for (const L of locales) {
         requiredNote: t('intro.requiredNote'), nameRequired: t('intro.nameRequired'), emailRequired: t('intro.emailRequired'), pdRequired: L.ui['pd.required'] || '',
         sending: t('contact.sending'), sendFailed: t('contact.sendFailed'), tooMany: t('contact.tooMany'), privacyNote: F.privacy, goal: 'kit-request' };
       const inside = `<div class="kitgrid">` + KT.inside.map(it => `<article class="kititem">` +
-        (it.img && fs.existsSync(path.join(ASSETS, 'kit', it.img + '.jpg')) ? `<a class="kitimg" href="../../kit/${it.img}.jpg" target="_blank" rel="noopener"><img src="../../kit/${it.img}.jpg" alt="${escFull(it.alt)}" loading="lazy" decoding="async"></a>` : '') +
+        (it.img && fs.existsSync(path.join(ASSETS, 'kit', it.img + '.jpg')) ? `<a class="kitimg" href="${relRoot(L, 'kit/')}kit/${it.img}.jpg" target="_blank" rel="noopener"><img src="${relRoot(L, 'kit/')}kit/${it.img}.jpg" alt="${escFull(it.alt)}" loading="lazy" decoding="async"></a>` : '') +
         `<h3>${escFull(it.title)}</h3><p>${escFull(it.text)}</p></article>`).join('') + `</div>`;
       writeContentPage(L, 'kit/', { navKey: 'nav.services', langs: locales.filter(hasKit), title: kv(KT.title), description: kv(KT.description), crumbs: [svcCrumb, { name: KT.h1 }],
         content: `<div class="eyebrow">${escFull(t('nav.services'))}</div><h1>${escFull(KT.h1)}</h1><p class="lead">${escFull(KT.lead)}</p>` +

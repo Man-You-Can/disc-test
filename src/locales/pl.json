@@ -664,7 +664,7 @@
           "h": "Gdzie dane są przechowywane i komu są przekazywane",
           "p": [
             "Baza wyników znajduje się na serwerze, który właściciel serwisu wynajmuje od dostawcy hostingu. E-maile wysyła usługa poczty elektronicznej. Firmy te przetwarzają dane na nasze zlecenie i wyłącznie na potrzeby działania serwisu. E-mail trafia na adres, który podajesz samodzielnie. Dane nie są przekazywane ani sprzedawane osobom trzecim do ich własnych celów.",
-            "Newsletter otrzymują tylko osoby, które zaznaczyły odrębną zgodę – w formularzu wysyłki wyniku albo w formularzu zapisu do newslettera na stronie głównej. Po wysłaniu formularza zapisu przychodzi wiadomość z linkiem potwierdzającym: bez potwierdzenia newsletter nie jest wysyłany, a adres zostaje usunięty po 7 dniach. W bazie zapisywane są zgoda, jej data i treść, a twój adres e-mail, imię (jeśli je podano), język i wynik testu (jeśli wysłano go na e-mail) służą do wysyłania e-maili od disc-test.org: materiałów o DISC, nowych testów, porad dotyczących rozwoju kariery i szukania pracy, nowości z serwisu i ofert promocyjnych. W każdej chwili możesz zrezygnować: klikając link w dowolnej wiadomości albo pisząc na {email}.",
+            "Newsletter otrzymują tylko osoby, które zaznaczyły odrębną zgodę – w formularzu wysyłki wyniku, w formularzu zapisu do newslettera na stronie głównej albo w formularzu „Wyślij mi arkusz e-mailem” na stronie „Test w PDF”. Po wysłaniu formularza zapisu na stronie głównej przychodzi wiadomość z linkiem potwierdzającym: bez potwierdzenia newsletter nie jest wysyłany, a adres zostaje usunięty po 7 dniach. W formularzu „Wyślij mi arkusz e-mailem” subskrypcja zaczyna obowiązywać od razu po wysłaniu formularza, a w wiadomości z arkuszem jest link do rezygnacji. W bazie zapisywane są zgoda, jej data i treść, a twój adres e-mail, imię (jeśli je podano), język i wynik testu (jeśli wysłano go na e-mail) służą do wysyłania e-maili od disc-test.org: materiałów o DISC, nowych testów, porad dotyczących rozwoju kariery i szukania pracy, nowości z serwisu i ofert promocyjnych. W każdej chwili możesz zrezygnować: klikając link w dowolnej wiadomości albo pisząc na {email}.",
             "Dostawca hostingu otrzymuje standardowe dane techniczne żądania: adres IP, typ przeglądarki, adres strony. Czcionki są przechowywane w samym serwisie. Statystyki odwiedzin zbiera system analityki internetowej: otrzymuje dane o wizycie – adres strony, źródło wejścia, typ urządzenia i przeglądarki – oraz zapis działań na stronie; pola z imieniem i adresem e-mail są z tego zapisu wyłączone. Na ekranie wyniku adres strony zawiera kod wyniku: odpowiedzi, datę testu i imię, jeśli je podano – bez adresu e-mail. Zbieranie danych można wyłączyć w ustawieniach przeglądarki albo za pomocą narzędzia blokującego skrypty śledzące. Reklamowe skrypty śledzące nie są używane."
           ]
         },
@@ -722,6 +722,7 @@
       "description": "Treść zgody na przetwarzanie danych osobowych, której udzielasz, wysyłając formularze w serwisie disc-test.org.",
       "h1": "Zgoda na przetwarzanie danych osobowych",
       "lead": "Zaznaczając w formularzu w serwisie disc-test.org pole zgody na przetwarzanie danych osobowych i wysyłając ten formularz, dobrowolnie, z własnej woli i we własnym interesie wyrażam zgodę na to, aby administrator danych – {owner} – przetwarzał moje dane osobowe na warunkach określonych poniżej.",
+      "paperForm": "Formularz „Wyślij mi arkusz e-mailem” na stronie „Test w PDF”: adres e-mail i wersja językowa serwisu. Cel: wysłanie mi wiadomości z arkuszem testu i ściągawką dla prowadzącego, a jeśli zaznaczę zgodę na newsletter – także prowadzenie listy subskrybentów newslettera.",
       "sections": [
         {
           "h": "Cele przetwarzania i zakres danych",
@@ -1355,6 +1356,205 @@
         "button": "Poznaj swój kolor"
       }
     },
+    "kit": {
+      "title": "Zestaw prowadzącego DISC: scenariusz warsztatu, slajdy i tabela grupy",
+      "description": "Wszystko do warsztatu DISC z zespołem lub grupą: scenariusz na 60 lub 90 minut, 16 slajdów, tabela Excel, która sama liczy wyniki grupy, mapa zespołu i karty. {price} USD.",
+      "h1": "Zestaw prowadzącego DISC",
+      "lead": "Wszystko, czego potrzebujesz, żeby poprowadzić warsztat DISC dla zespołu, grupy studentów albo na szkoleniu – nawet jeśli robisz to pierwszy raz. Test jest dla uczestników bezpłatny: na papierze lub online.",
+      "facts": [
+        "60 lub 90 minut",
+        "4–30 uczestników",
+        "PDF i Excel",
+        "{price} USD"
+      ],
+      "button": "Zostaw zgłoszenie",
+      "insideTitle": "Co zawiera zestaw",
+      "inside": [
+        {
+          "title": "Scenariusz warsztatu",
+          "text": "6 stron: przygotowanie, plan na 60 i 90 minut, co mówić i robić na każdym etapie, dwa ćwiczenia, jak omawiać wyniki bez etykiet, trudne sytuacje i odpowiedzi na częste pytania uczestników.",
+          "img": "pl-guide",
+          "alt": "Pierwsza strona scenariusza warsztatu"
+        },
+        {
+          "title": "Slajdy",
+          "text": "16 slajdów do wyświetlenia na ekranie: cele i zasady warsztatu, kod QR do testu, dwie osie i cztery style, osobny slajd dla każdego stylu, jak czytać wynik, ćwiczenia i wspólne ustalenia.",
+          "img": "pl-slide",
+          "alt": "Slajd o dwóch osiach i czterech stylach"
+        },
+        {
+          "title": "Tabela grupy",
+          "text": "Plik Excel dla 40 uczestników. Wpisujesz punkty z papierowego arkusza albo procenty z wyniku online – tabela policzy wyniki, określi profil każdej osoby i pokaże podsumowanie grupy: ile osób ma każdy styl i na co zwrócić uwagę.",
+          "img": "",
+          "alt": ""
+        },
+        {
+          "title": "Mapa zespołu",
+          "text": "Koło z czterema sektorami do druku w formacie A3 lub A4: uczestnicy zaznaczają swój styl karteczkami samoprzylepnymi, a zespół od razu widzi, kogo jest w nim więcej, kogo brakuje i gdzie mogą pojawić się tarcia.",
+          "img": "pl-map",
+          "alt": "Mapa zespołu"
+        },
+        {
+          "title": "Karty „Jak ze mną pracować”",
+          "text": "Po jednej karcie dla każdego stylu – co jest dla tej osoby ważne, jak najlepiej się z nią dogadać i co jej przeszkadza – oraz puste karty, na których uczestnicy dopiszą coś od siebie.",
+          "img": "pl-cards",
+          "alt": "Karty „Jak ze mną pracować”"
+        }
+      ],
+      "forTitle": "Dla kogo",
+      "for": [
+        "Dla HR i menedżerów: lepsze poznanie się w zespole, wdrażanie nowych pracowników, rozmowa o tarciach bez szukania winnych.",
+        "Dla trenerów biznesu i akademii korporacyjnych: gotowy moduł do programów o komunikacji i pracy zespołowej.",
+        "Dla wykładowców i nauczycieli: zajęcia z psychologii komunikacji, zarządzania lub planowania kariery.",
+        "Dla doradców zawodowych i coachów: spotkanie grupowe o mocnych stronach i stylu pracy."
+      ],
+      "planTitle": "Jak przebiega warsztat",
+      "plan": [
+        "Wprowadzenie i zasady: mówimy o zachowaniu w pracy, wynikiem dzielimy się tylko z własnej woli, bez etykiet.",
+        "Uczestnicy robią test – na telefonie przez kod QR albo na papierowym arkuszu.",
+        "Cztery style i jak czytać wynik.",
+        "Ćwiczenie „Cztery narożniki”: grupy według stylów rozmawiają o tym, co je napędza i jak się z nimi dogadywać.",
+        "Mapa zespołu: kogo jest więcej, kogo brakuje, gdzie mogą pojawić się tarcia.",
+        "„Jak ze mną pracować” – wymiana kart w parach (w wersji 90-minutowej).",
+        "Wspólne ustalenia: jak prowadzimy spotkania, jak przydzielamy zadania i jak przekazujemy informację zwrotną."
+      ],
+      "reportTitle": "Szczegółowy raport dla uczestników",
+      "report": "Po warsztacie każdy uczestnik może zamówić rozszerzony raport DISC – ponad 25 stron o swoim profilu: {business}.",
+      "reportLink": "raport rozszerzony",
+      "priceTitle": "Cena i jak otrzymać zestaw",
+      "price": [
+        "Zestaw kosztuje {price} USD. Zostaw zgłoszenie – w ciągu jednego dnia roboczego odpowiemy i wyślemy link do płatności kartą.",
+        "Po opłaceniu pliki przyjdą na twój adres e-mail. Mapę, karty i arkusz testu możesz drukować dla uczestników swoich warsztatów tyle razy, ile potrzebujesz."
+      ],
+      "faqTitle": "Pytania",
+      "faq": [
+        {
+          "q": "Czy do poprowadzenia warsztatu potrzebne jest doświadczenie albo certyfikat?",
+          "a": "Nie. Scenariusz jest napisany dla osoby, która prowadzi warsztat DISC pierwszy raz: opisuje, co mówić i robić na każdym etapie."
+        },
+        {
+          "q": "Czy uczestnicy muszą się rejestrować albo płacić?",
+          "a": "Nie. Test jest bezpłatny i nie wymaga rejestracji – online albo na papierowym arkuszu, który można wydrukować ze strony „Test w PDF”."
+        },
+        {
+          "q": "Czy warsztat można poprowadzić online?",
+          "a": "Tak. Scenariusz opisuje wariant online: zamiast narożników sali – osobne pokoje dla grup, zamiast papierowej mapy – wspólna tablica online."
+        },
+        {
+          "q": "Co, jeśli w grupie jest więcej niż 30 osób?",
+          "a": "Ćwiczenia robi się w podgrupach, a mapę zespołu – osobno dla każdego działu. Tabela grupy mieści 40 uczestników."
+        },
+        {
+          "q": "Czy widzicie wyniki moich uczestników?",
+          "a": "Nie. Tabela grupy działa na twoim komputerze i nigdzie nie wysyła danych. Test online uczestnicy robią samodzielnie i bez rejestracji."
+        }
+      ],
+      "form": {
+        "title": "Zgłoszenie – zestaw prowadzącego",
+        "lead": "Odpowiemy w ciągu jednego dnia roboczego na adres e-mail, który podasz.",
+        "size": "Ile osób zwykle liczy twoja grupa",
+        "sizes": [
+          "do 10",
+          "10–20",
+          "20–30",
+          "ponad 30"
+        ],
+        "interest": "Kto płaci za zestaw",
+        "interests": [
+          "Ja, prywatnie",
+          "Firma, szkoła lub uczelnia"
+        ],
+        "comment": "Komentarz",
+        "commentPlaceholder": "Na przykład: dla kogo jest warsztat i kiedy planujesz go poprowadzić",
+        "button": "Wyślij zgłoszenie",
+        "subject": "Zgłoszenie na zestaw prowadzącego: {name}",
+        "sent": "Zgłoszenie wysłane. Odpowiemy na {email} w ciągu jednego dnia roboczego.",
+        "needInterest": "Zaznacz, kto płaci za zestaw.",
+        "privacy": "Imię, e-mail i treść zgłoszenia zostaną wysłane e-mailem na adres {email} i posłużą wyłącznie do udzielenia ci odpowiedzi."
+      }
+    },
+    "paper": {
+      "group": {
+        "title": "Prowadzisz test w grupie?",
+        "kitTitle": "Zestaw prowadzącego",
+        "kitText": "Scenariusz warsztatu na 60 lub 90 minut, slajdy, tabela Excel, która sama liczy wyniki całej grupy, mapa zespołu i karty „Jak ze mną pracować”.",
+        "kitButton": "Więcej o zestawie",
+        "bizTitle": "Raporty rozszerzone dla uczestników",
+        "bizText": "Po teście online każdy uczestnik może zamówić rozszerzony raport o swoim profilu.",
+        "bizButton": "Raport rozszerzony"
+      },
+      "mail": {
+        "toggle": "Wyślij mi arkusz e-mailem",
+        "lead": "Wyślemy arkusz testu w załączniku i krótką ściągawkę, jak przeprowadzić test w grupie.",
+        "emailLabel": "Twój adres e-mail",
+        "button": "Wyślij",
+        "sending": "Wysyłamy…",
+        "sent": "Wiadomość wysłana na {email}. Jeśli nie ma jej w odebranych, zajrzyj do folderu „Spam”.",
+        "failed": "Nie udało się wysłać wiadomości ({error}). Pobierz arkusz przyciskiem powyżej.",
+        "tooMany": "Na ten adres wysłano już kilka wiadomości. Spróbuj później albo pobierz arkusz przyciskiem powyżej."
+      },
+      "letter": {
+        "subject": "Arkusz testu DISC i ściągawka dla prowadzącego",
+        "intro": "Cześć! Ten adres podano na stronie {site} z prośbą o przesłanie arkusza testu DISC.",
+        "attachNote": "Arkusz testu jest w załączniku do tej wiadomości. Jeśli załącznik się nie otwiera, pobierz go przyciskiem:",
+        "pdfButton": "Pobierz arkusz (PDF)",
+        "pdfNote": "Plik zawiera 24 pytania po cztery stwierdzenia, klucz, tabelę do obliczania wyniku i opis 16 profili. Można go drukować w czerni i bieli.",
+        "guideTitle": "Jak przeprowadzić test w grupie",
+        "guide": [
+          "Wydrukuj arkusz dla każdego uczestnika albo podaj link do wersji online: {online} – tam wynik liczy się sam.",
+          "Poproś, żeby uczestnicy odpowiadali o tym, jak zwykle zachowują się w pracy, a nie jacy chcieliby być. Odpowiedzi zajmują około 10 minut.",
+          "Na papierze dla każdego stylu liczy się zaznaczenia „najbardziej” minus zaznaczenia „najmniej”. Klucz jest na czwartej stronie arkusza, a kod QR obok tabeli „Obliczanie wyniku” prowadzi do strony, na której można wpisać wyniki i otrzymać szczegółowy opis profilu.",
+          "Omawiajcie wyniki bez etykiet: styl pokazuje, co komuś przychodzi łatwiej, a nie co potrafi. Dzielenie się wynikiem jest dobrowolne.",
+          "Na koniec poproś każdego, żeby powiedział, jak najlepiej się z nim dogadywać, i zapiszcie 2–3 wspólne zasady pracy."
+        ],
+        "kitText": "Gotowy scenariusz warsztatu na 60 lub 90 minut, slajdy, tabelę do liczenia wyników grupy, mapę zespołu i karty znajdziesz w zestawie prowadzącego:",
+        "kitButton": "Zestaw prowadzącego DISC",
+        "subscribed": "Ten adres został zapisany do newslettera {site}: nowe testy, porady dotyczące rozwoju kariery i szukania pracy, nowości z serwisu i oferty promocyjne. W każdej chwili możesz zrezygnować:",
+        "unsubscribe": "Zrezygnuj z subskrypcji",
+        "footer": "Otrzymujesz tę wiadomość, ponieważ na stronie „Test w PDF” serwisu {site} poproszono o przesłanie arkusza na ten adres. W związku z tą prośbą nie wyślemy kolejnych wiadomości."
+      },
+      "score": {
+        "eyebrow": "Papierowy arkusz",
+        "title": "Wpisz wynik z arkusza",
+        "lead": "Przepisz liczby z tabeli „Obliczanie wyniku” z czwartej strony arkusza – serwis pokaże twój profil z wykresem i szczegółowym opisem: mocne strony, obszary rozwoju, motywację i wskazówki, jak najlepiej się z tobą komunikować i współpracować.",
+        "style": "Styl",
+        "most": "„Najbardziej”",
+        "least": "„Najmniej”",
+        "net": "Wynik",
+        "sum": "Suma",
+        "sumNote": "W każdej kolumnie suma wynosi 24: w każdym z 24 pytań jest jedno zaznaczenie „najbardziej” i jedno „najmniej”.",
+        "errEmpty": "Wpisz wszystkie osiem liczb: dla każdego stylu zaznaczenia „najbardziej” i „najmniej”.",
+        "errSum": "Suma w kolumnie {col} wynosi {n}, a powinna wynosić 24. Sprawdź obliczenia według klucza.",
+        "errStyle": "Styl {k} ma łącznie więcej niż 24 zaznaczenia „najbardziej” i „najmniej” – to niemożliwe. Sprawdź obliczenia.",
+        "button": "Pokaż wynik",
+        "alt": "Nie masz arkusza pod ręką?",
+        "altButton": "Zrób test online – około 10 minut"
+      },
+      "fromPdf": {
+        "title": "Masz wypełniony papierowy arkusz?",
+        "text": "Przenieś tu swoje zaznaczenia: pytania i stwierdzenia są w tej samej kolejności co na arkuszu – zajmie to 3–4 minuty. Serwis sam policzy punkty, narysuje wykres i pokaże szczegółowy opis twojego profilu.",
+        "scoreLink": "Masz już policzone punkty według klucza? Wpisz liczby z tabeli"
+      },
+      "print": {
+        "qrTitle": "Szczegółowy opis twojego profilu – w serwisie",
+        "qrText": "Zeskanuj kod aparatem telefonu i wpisz liczby z tej tabeli – serwis pokaże twój profil, wykres czterech stylów, mocne strony, obszary rozwoju i wskazówki, jak najlepiej się z tobą komunikować i współpracować.",
+        "nextTitle": "Co dalej",
+        "nextLead": "Arkusz pokazał ci twój profil. Oto co możesz zrobić dalej – zeskanuj kod aparatem telefonu.",
+        "online": {
+          "title": "Bezpłatny raport z wykresem",
+          "text": "Przenieś zaznaczenia do wersji online – 3–4 minuty, bez rejestracji. Otrzymasz wykres z trzema liniami, procenty dla czterech stylów, mocne strony, obszary rozwoju, motywację, zachowanie w stresie i wskazówki, jak najlepiej się z tobą komunikować i współpracować."
+        },
+        "extended": {
+          "title": "Rozszerzony raport DISC",
+          "text": "Ponad 25 stron o twoim profilu: co oznacza każdy z czterech wskaźników, pięć ślepych plamek i ćwiczenia, jak sobie z nimi radzić, techniki i gotowe sformułowania do rozmów z osobami o różnych typach, plan rozwoju na 30 dni. Raport powstaje na podstawie twoich odpowiedzi, dlatego zamawia się go po teście online."
+        },
+        "group": {
+          "title": "Prowadzisz test w grupie?",
+          "text": "Zestaw prowadzącego: tabela, która sama liczy wyniki całej grupy, scenariusz warsztatu na 60–90 minut, slajdy, mapa zespołu i karty „Jak ze mną pracować”."
+        },
+        "footer": "Najnowsza wersja arkusza – na disc-test.org/pl/pdf/"
+      }
+    },
     "pdf": {
       "title": "Test DISC PDF – darmowy arkusz do druku z kluczem",
       "description": "Darmowy test DISC w PDF: 24 pytania, klucz, tabela do obliczania wyniku i opis 16 profili. Pobierz, wydrukuj, wypełnij na papierze.",
@@ -1882,7 +2082,7 @@
   "ui": {
     "langLabel": "Język",
     "footer": "24 pytania · około 10 minut · nie ma dobrych ani złych odpowiedzi",
-    "privacy": "Odpowiedzi pozostają w twojej przeglądarce; na potrzeby ogólnej statystyki serwer serwisu otrzymuje wyłącznie informacje o wizycie i rozpoczęciu testu oraz uzyskany profil – bez imienia i bez odpowiedzi. Jeśli podasz adres e-mail, wynik zostanie na niego wysłany i zapisany w bazie wyników właściciela serwisu. Jeśli zapiszesz się do newslettera na stronie głównej, w tej bazie zostaną zapisane twój adres e-mail i wersja językowa serwisu. Gdy klikniesz „Zapisz jako PDF”, odpowiedzi i data testu – bez imienia i e-maila – trafiają na serwer serwisu, który tworzy z nich plik raportu podstawowego, odsyła go i niczego nie zapisuje.",
+    "privacy": "Odpowiedzi pozostają w twojej przeglądarce; na potrzeby ogólnej statystyki serwer serwisu otrzymuje wyłącznie informacje o wizycie i rozpoczęciu testu oraz uzyskany profil – bez imienia i bez odpowiedzi. Jeśli podasz adres e-mail, wynik zostanie na niego wysłany i zapisany w bazie wyników właściciela serwisu. Jeśli zapiszesz się do newslettera na stronie głównej, w tej bazie zostaną zapisane twój adres e-mail i wersja językowa serwisu. Jeśli na stronie „Test w PDF” poprosisz o przesłanie arkusza testu e-mailem, serwer serwisu wyśle wiadomość z arkuszem i zapisze informację o zgodzie razem z twoim adresem e-mail; jeśli zgodzisz się na newsletter, adres i wersja językowa serwisu zostaną zapisane także na liście subskrybentów. Gdy klikniesz „Zapisz jako PDF”, odpowiedzi i data testu – bez imienia i e-maila – trafiają na serwer serwisu, który tworzy z nich plik raportu podstawowego, odsyła go i niczego nie zapisuje.",
     "legal": "Manukyan Armen · Numer identyfikacji podatkowej (INN) {inn}",
     "rights": "© {year} disc-test.org. Kopiowanie tekstów serwisu i raportów bez pisemnej zgody jest zabronione.",
     "adminLink": "Panel administratora",
@@ -2171,7 +2371,7 @@
     "pd.consentLink": "zgodę na przetwarzanie danych osobowych",
     "pd.required": "Zaznacz zgodę na przetwarzanie danych osobowych: bez niej nie możemy przyjąć twoich danych.",
     "pd.cookieAsk": "Serwis przechowuje twoje postępy, wynik i wybrany język w pamięci lokalnej przeglądarki. Za twoją zgodą system analityki internetowej będzie zbierać zanonimizowane statystyki odwiedzin oraz zapis działań na stronie, abyśmy mogli ulepszać serwis. Imię, e-mail i wynik nie są przekazywane do systemu analitycznego.",
-    "pd.cookieDetails": "W przeglądarce przechowywane są: imię i e-mail, jeśli je podano; odpowiedzi i nieukończone postępy; ostatni wynik; czas pierwszego ukończenia testu, do liczenia terminu ceny specjalnej raportu; wybrany język; informacja, że ten komunikat został już wyświetlony. Te dane pozostają na twoim urządzeniu i są usuwane przy czyszczeniu danych witryny. Dostawca hostingu otrzymuje standardowe dane techniczne żądania. Gdy pierwszy raz danego dnia otwierasz serwis, na serwer serwisu trafia anonimowa informacja o wizycie: tylko wersja językowa serwisu; serwer zapisuje ją z godziną otrzymania, a przeglądarka zapamiętuje datę, żeby tego samego dnia nie wysyłać jej ponownie. Na tej podstawie liczymy, ile osób odwiedza serwis. Gdy zaczynasz test, na serwer serwisu trafia anonimowa informacja o rozpoczęciu: tylko wersja językowa serwisu. Po ukończeniu testu na serwer serwisu trafia anonimowy zapis do ogólnej statystyki: uzyskany profil i wersja językowa serwisu – bez imienia, adresu e-mail i odpowiedzi. Gdy klikniesz „Zapisz jako PDF”, odpowiedzi i data testu – bez imienia i e-maila – trafiają na serwer serwisu, który tworzy z nich plik raportu podstawowego, odsyła go i niczego nie zapisuje. Gdy wysyłasz wynik na e-mail, imię, e-mail i odpowiedzi są przekazywane na serwer serwisu: wysyła on do ciebie wiadomość z wynikiem i zapisuje imię, e-mail, datę oraz wynik w bazie wyników właściciela serwisu. Gdy zapisujesz się do newslettera na stronie głównej, e-mail i wersja językowa serwisu są przekazywane na serwer serwisu: wysyła on do ciebie wiadomość z linkiem potwierdzającym i zapisuje adres w tej samej bazie; jeśli subskrypcja nie zostanie potwierdzona, adres jest usuwany po 7 dniach. System analityki internetowej otrzymuje adres strony (na ekranie wyniku – razem z kodem wyniku: odpowiedziami, datą testu i imieniem, jeśli je podano, ale bez adresu e-mail), źródło wejścia, typ urządzenia i przeglądarki, zapis działań na stronie (pola z imieniem i e-mailem są z zapisu wyłączone) i zapisuje własne pliki cookie. Możesz go zablokować w ustawieniach przeglądarki lub za pomocą programu blokującego skrypty śledzące. Reklamowe skrypty śledzące nie są używane.",
+    "pd.cookieDetails": "W przeglądarce przechowywane są: imię i e-mail, jeśli je podano; odpowiedzi i nieukończone postępy; ostatni wynik; czas pierwszego ukończenia testu, do liczenia terminu ceny specjalnej raportu; wybrany język; informacja, że ten komunikat został już wyświetlony. Te dane pozostają na twoim urządzeniu i są usuwane przy czyszczeniu danych witryny. Dostawca hostingu otrzymuje standardowe dane techniczne żądania. Gdy pierwszy raz danego dnia otwierasz serwis, na serwer serwisu trafia anonimowa informacja o wizycie: tylko wersja językowa serwisu; serwer zapisuje ją z godziną otrzymania, a przeglądarka zapamiętuje datę, żeby tego samego dnia nie wysyłać jej ponownie. Na tej podstawie liczymy, ile osób odwiedza serwis. Gdy zaczynasz test, na serwer serwisu trafia anonimowa informacja o rozpoczęciu: tylko wersja językowa serwisu. Po ukończeniu testu na serwer serwisu trafia anonimowy zapis do ogólnej statystyki: uzyskany profil i wersja językowa serwisu – bez imienia, adresu e-mail i odpowiedzi. Gdy klikniesz „Zapisz jako PDF”, odpowiedzi i data testu – bez imienia i e-maila – trafiają na serwer serwisu, który tworzy z nich plik raportu podstawowego, odsyła go i niczego nie zapisuje. Gdy wysyłasz wynik na e-mail, imię, e-mail i odpowiedzi są przekazywane na serwer serwisu: wysyła on do ciebie wiadomość z wynikiem i zapisuje imię, e-mail, datę oraz wynik w bazie wyników właściciela serwisu. Gdy zapisujesz się do newslettera na stronie głównej, e-mail i wersja językowa serwisu są przekazywane na serwer serwisu: wysyła on do ciebie wiadomość z linkiem potwierdzającym i zapisuje adres w tej samej bazie; jeśli subskrypcja nie zostanie potwierdzona, adres jest usuwany po 7 dniach. Gdy na stronie „Test w PDF” prosisz o przesłanie arkusza testu e-mailem, e-mail i wersja językowa serwisu są przekazywane na serwer serwisu: wysyła on do ciebie wiadomość z arkuszem i zapisuje informację o zgodzie razem z adresem; jeśli zaznaczysz zgodę na newsletter, adres od razu trafia na listę subskrybentów, a w wiadomości znajdzie się link do rezygnacji. System analityki internetowej otrzymuje adres strony (na ekranie wyniku – razem z kodem wyniku: odpowiedziami, datą testu i imieniem, jeśli je podano, ale bez adresu e-mail), źródło wejścia, typ urządzenia i przeglądarki, zapis działań na stronie (pola z imieniem i e-mailem są z zapisu wyłączone) i zapisuje własne pliki cookie. Możesz go zablokować w ustawieniach przeglądarki lub za pomocą programu blokującego skrypty śledzące. Reklamowe skrypty śledzące nie są używane.",
     "pd.cookieChange": "Zmień wybór dotyczący plików cookie",
 
     "print.title": "Test DISC do druku: kwestionariusz z kluczem i interpretacją",

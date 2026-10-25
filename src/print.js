@@ -7,8 +7,10 @@ function printHTML(c){
   // {test, extended, kit} с меткой ?ref=pdf, c.qr — функция QR-кода (src/qr.js). Без текстов — бланк прежний
   var PP=L.content && L.content.paper && L.content.paper.print, links=c.links||{}, qr=c.qr;
   var bare=function(u){ return String(u).replace(/^https?:\/\//,'').replace(/\?.*$/,''); };
-  var qrBox=function(u){ return '<div class="qr">'+qr(u,{dark:'#111'})+'<span>'+esc(bare(u))+'</span></div>'; };
-  var strip=function(s){ return String(s).replace(/<br\s*\/?>/g,' ').replace(/<[^>]+>/g,''); };
+  // адрес под кодом переносится только после косой черты (не посреди слова)
+  var qrBox=function(u){ return '<div class="qr">'+qr(u,{dark:'#111'})+'<span>'+esc(bare(u)).replace(/\//g,'/<wbr>')+'</span></div>'; };
+  // тексты страницы теста с разметкой: <br> — пробел, теги убираем, &shy; — настоящий мягкий перенос (иначе печатается как текст)
+  var strip=function(s){ return String(s).replace(/<br\s*\/?>/g,' ').replace(/<[^>]+>/g,'').replace(/&shy;/g,'\u00ad').replace(/&nbsp;/g,'\u00a0'); };
   var most=strip(t('test.mostHead')), least=strip(t('test.leastHead'));
   // призыв пройти тест онлайн: заметный блок на первой странице и строка в конце; адрес — ссылка
   var online=function(cls){ var u=esc(url); return '<p'+(cls?' class="'+cls+'"':'')+'>'+esc(t('print.online',{url:url})).replace(u,'<a href="'+u+'">'+u+'</a>')+'</p>'; };
@@ -70,7 +72,7 @@ var CSS='@page{size:A4;margin:8mm 13mm 13mm}*{box-sizing:border-box}body{font-fa
   '.profiles{column-count:2;column-gap:6mm}.prof{break-inside:avoid;margin-bottom:2.8mm}.prof b{display:inline-block;min-width:8mm;font-weight:700;color:#3B6FB6}.prof p{font-size:9.5pt;color:#333;margin:0.5mm 0 0}.profiles.dense .prof{margin-bottom:2.2mm}.profiles.dense .prof p{font-size:9pt}'+
   '.ctatop{border:1.5px solid #3B6FB6;background:#EEF3FA;border-radius:2mm;padding:2.5mm 4mm;margin-bottom:4mm;-webkit-print-color-adjust:exact;print-color-adjust:exact}.ctatop b{font-size:11.5pt}.ctatop p{margin:0.8mm 0 0}a{color:#3B6FB6;white-space:nowrap;direction:ltr;unicode-bidi:isolate}'+
   '.online{margin-top:5mm;padding-top:2mm;border-top:1px solid #ccc;font-size:9.5pt;color:#555}'+
-  '.qr{flex:none;width:30mm;text-align:center;font-size:7.5pt;color:#555;direction:ltr}.qr svg{display:block;width:30mm;height:30mm}.qr span{display:block;margin-top:0.5mm;word-break:break-all}'+
+  '.qr{flex:none;width:30mm;text-align:center;font-size:7.5pt;color:#555;direction:ltr}.qr svg{display:block;width:30mm;height:30mm}.qr span{display:block;margin-top:0.5mm;overflow-wrap:normal;word-break:normal}'+
   '.qrrow{display:flex;gap:4mm;align-items:center;border:1.5px solid #3B6FB6;background:#EEF3FA;border-radius:2mm;padding:1.5mm 3mm;margin-top:3mm;break-inside:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}'+
   '.ctatop.withqr{display:flex;gap:4mm;align-items:center;padding:2mm 4mm 2mm 2.5mm}.ctatop .qr{width:21mm}.ctatop .qr svg{width:21mm;height:21mm}.ctatop .qr span{display:none}'+
   '.qrrow .qr{width:21mm}.qrrow .qr svg{width:21mm;height:21mm}.qrrow .qr span{display:none}'+

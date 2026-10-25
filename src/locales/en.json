@@ -664,7 +664,7 @@
           "h": "Where the data is stored and who receives it",
           "p": [
             "The results database is on a server that the site owner rents from a hosting provider. Emails are sent by a mail service. These companies process the data on our instructions and only to keep the site running. The email goes to the address you entered yourself. The data is not passed or sold to third parties for their own purposes.",
-            "Only people who ticked the separate consent box — in the result form or in the newsletter sign-up form on the home page — receive our newsletter. After the sign-up form, you receive an email with a confirmation link: without confirmation no newsletter is sent, and the address is deleted after 7 days. The database stores the fact of consent, its date and its wording, and your email address, name (if you entered it), language and test result (if you sent it to yourself by email) are used to send you emails from disc-test.org: DISC materials, new tests, career growth and job-search tips, site news and promotional offers. You can unsubscribe at any time, using the link in any email or by writing to {email}.",
+            "Only people who ticked the separate consent box — in the result form, in the newsletter sign-up form on the home page or in the “Email me the test form” form on the “PDF test” page — receive our newsletter. After the sign-up form on the home page, you receive an email with a confirmation link: without confirmation no newsletter is sent, and the address is deleted after 7 days. With the “Email me the test form” form, the subscription starts as soon as you submit the form, and the email with the test form contains an unsubscribe link. The database stores the fact of consent, its date and its wording, and your email address, name (if you entered it), language and test result (if you sent it to yourself by email) are used to send you emails from disc-test.org: DISC materials, new tests, career growth and job-search tips, site news and promotional offers. You can unsubscribe at any time, using the link in any email or by writing to {email}.",
             "The hosting provider receives standard technical request data: IP address, browser type, page address. Fonts are served from this site itself. Visit statistics are collected by a web analytics system: it receives visit data, namely the page address, the referrer, device and browser type, and a recording of on-page actions; the name and email fields are excluded from the recording. On the result screen, the page address contains the result code: your answers, the test date and your name if you entered it, but not your email. You can stop the collection in your browser settings or with a tracker blocker. No advertising trackers are used."
           ]
         },
@@ -722,6 +722,7 @@
       "description": "The text of the consent to personal data processing that you give when you submit forms on disc-test.org.",
       "h1": "Consent to the Processing of Personal Data",
       "lead": "By ticking the box for consent to the processing of personal data in a form on disc-test.org and submitting that form, I freely, of my own will and in my own interest consent to the processing of my personal data, on the terms set out below, by the operator: {owner}.",
+      "paperForm": "The “Email me the test form” form on the “PDF test” page: email address and language version of the site. The purpose is to email me the test form and tips for facilitators and, if I tick the newsletter consent box, to keep the newsletter subscriber list.",
       "sections": [
         {
           "h": "Purposes of processing and the data involved",
@@ -2308,6 +2309,205 @@
         "button": "Find my color"
       }
     },
+    "kit": {
+      "title": "DISC Facilitator Kit: Session Plan, Slides and Group Scoring Workbook",
+      "description": "Everything you need to run a DISC session with a team or group: a 60- or 90-minute session plan, 16 slides, an Excel workbook that scores the whole group, a team map and cards. US${price}.",
+      "h1": "DISC facilitator kit",
+      "lead": "Everything you need to run a DISC session for a team, a class or a training group — even if it’s your first time. The test is free for participants, on paper or online.",
+      "facts": [
+        "60 or 90 minutes",
+        "4–30 participants",
+        "PDF and Excel",
+        "US${price}"
+      ],
+      "button": "Request the kit",
+      "insideTitle": "What’s inside",
+      "inside": [
+        {
+          "title": "Facilitator guide",
+          "text": "6 pages: preparation, a plan for 60 and 90 minutes, what to say and do at each step, two exercises, how to discuss results without labels, tricky situations and answers to common participant questions.",
+          "img": "en-guide",
+          "alt": "First page of the facilitator guide"
+        },
+        {
+          "title": "Slides",
+          "text": "16 slides for the screen: goals and ground rules, a QR code for the test, the two axes and four styles, one slide per style, how to read a result, the exercises and team agreements.",
+          "img": "en-slide",
+          "alt": "Slide showing the two axes and the four styles"
+        },
+        {
+          "title": "Group workbook",
+          "text": "An Excel file for 40 participants. Enter the counts from the paper test form or the percentages from the online result, and the workbook does the math: totals, each person’s profile and a group summary — how many people have each style and what to watch for.",
+          "img": "",
+          "alt": ""
+        },
+        {
+          "title": "Team map",
+          "text": "A four-sector circle to print on A3 or A4: participants put a sticky note in their style’s sector, and the team sees right away which styles it has more of, which are missing and where friction is likely.",
+          "img": "en-map",
+          "alt": "Team map"
+        },
+        {
+          "title": "“How to work with me” cards",
+          "text": "One card per style — what matters to the person, how best to agree on things with them and what gets in their way — plus blank cards for participants to fill in themselves.",
+          "img": "en-cards",
+          "alt": "“How to work with me” cards"
+        }
+      ],
+      "forTitle": "Who it’s for",
+      "for": [
+        "HR and managers: getting a team to know each other, onboarding new hires, talking about friction without looking for someone to blame.",
+        "Corporate trainers and L&D teams: a ready-made module for communication and teamwork programs.",
+        "College and university instructors: a class on interpersonal communication, management or career development.",
+        "Career counselors and coaches: a group session on strengths and work style."
+      ],
+      "planTitle": "How the session runs",
+      "plan": [
+        "Introduction and ground rules: we talk about behavior at work, sharing is optional, no labels.",
+        "Participants take the test — on their phones via a QR code or on the paper form.",
+        "The four styles and how to read a result.",
+        "“Four Corners” exercise: groups by style discuss what energizes them and how best to work with them.",
+        "Team map: which styles there are more of, which are missing, where friction is likely.",
+        "“How to work with me”: swapping cards in pairs (90-minute version).",
+        "Team agreements: how we run meetings, assign tasks and give feedback."
+      ],
+      "reportTitle": "An in-depth report for each participant",
+      "report": "After the session, participants can order an in-depth DISC report on their own profile: {business}.",
+      "reportLink": "in-depth DISC report",
+      "priceTitle": "Price and how to get it",
+      "price": [
+        "The kit costs US${price}. Send a request, and we’ll reply within one business day with a payment link.",
+        "After payment, the files arrive by email. Print the map, the cards and the test form for participants of your own sessions as many times as you need."
+      ],
+      "faqTitle": "Questions",
+      "faq": [
+        {
+          "q": "Do I need experience or a certification to run the session?",
+          "a": "No. The guide is written for facilitators running DISC for the first time: it spells out what to say and do at each step."
+        },
+        {
+          "q": "Do participants need to sign up or pay?",
+          "a": "No. The test is free and requires no sign-up — online or on the paper form, which you can print from the “PDF test” page."
+        },
+        {
+          "q": "Can I run the session online?",
+          "a": "Yes. The guide describes an online version: breakout rooms instead of room corners and a shared whiteboard instead of the paper map."
+        },
+        {
+          "q": "What if my group has more than 30 people?",
+          "a": "Run the exercises in subgroups and do the team map by department. The group workbook holds 40 participants."
+        },
+        {
+          "q": "Do you see my participants’ results?",
+          "a": "No. The group workbook runs on your computer and sends data nowhere. Participants take the online test on their own, with no sign-up."
+        }
+      ],
+      "form": {
+        "title": "Request the kit",
+        "lead": "We’ll reply within one business day to the email address you give.",
+        "size": "Typical group size",
+        "sizes": [
+          "up to 10",
+          "10–20",
+          "20–30",
+          "more than 30"
+        ],
+        "interest": "How you plan to run the session",
+        "interests": [
+          "In person",
+          "Online"
+        ],
+        "comment": "Comment",
+        "commentPlaceholder": "For example: who the session is for and when you plan to run it",
+        "button": "Send request",
+        "subject": "Facilitator kit request: {name}",
+        "sent": "Request sent. We’ll reply to {email} within one business day.",
+        "needInterest": "Please tick how you plan to run the session.",
+        "privacy": "Your name, email and message will be emailed to {email} and used only to reply to you."
+      }
+    },
+    "paper": {
+      "group": {
+        "title": "Running the test with a group?",
+        "kitTitle": "Facilitator kit",
+        "kitText": "A 60- or 90-minute session plan, slides, an Excel workbook that scores the whole group for you, a team map and “How to work with me” cards.",
+        "kitButton": "About the kit",
+        "bizTitle": "In-depth reports for participants",
+        "bizText": "After taking the test online, each participant can order an in-depth report on their own profile.",
+        "bizButton": "In-depth report"
+      },
+      "mail": {
+        "toggle": "Email me the test form",
+        "lead": "We’ll send the form as an attachment, plus a short guide to running the test with a group.",
+        "emailLabel": "Your email",
+        "button": "Send",
+        "sending": "Sending…",
+        "sent": "Email sent to {email}. If you don’t see it in your inbox, check your spam folder.",
+        "failed": "Couldn’t send the email ({error}). Download the form with the button above.",
+        "tooMany": "Several emails have already been sent to this address. Try again later or download the form with the button above."
+      },
+      "letter": {
+        "subject": "Your DISC test form and facilitator tips",
+        "intro": "Hello! You requested the DISC test form on {site}.",
+        "attachNote": "The test form is attached to this email. If the attachment won’t open, download it here:",
+        "pdfButton": "Download the form (PDF)",
+        "pdfNote": "The file has 24 blocks of statements, the answer key, a scoring table and descriptions of the 16 profiles. It prints fine in black and white.",
+        "guideTitle": "How to run the test with a group",
+        "guide": [
+          "Print a form for each participant, or share the link to the online version: {online} — it scores the result automatically.",
+          "Ask people to answer based on how they usually behave at work, not how they’d like to be. Answering takes about 10 minutes.",
+          "On paper, each style’s total is the number of “most like me” marks minus the number of “least like me” marks. The key is on page 4 of the form, and the QR code next to the scoring table opens a page where people enter their counts and get a detailed profile description.",
+          "Discuss results without labels: a style shows what comes more easily to a person, not what they’re capable of. Sharing a result is always optional.",
+          "To wrap up, ask everyone how others can best work with them, and write down 2–3 shared ground rules."
+        ],
+        "kitText": "A ready-made 60- or 90-minute session plan, slides, a workbook that scores the whole group, a team map and cards are all in the facilitator kit:",
+        "kitButton": "DISC facilitator kit",
+        "subscribed": "You’ve subscribed to the {site} newsletter: new tests, career growth and job-search tips, site news and promotional offers. You can unsubscribe at any time:",
+        "unsubscribe": "Unsubscribe",
+        "footer": "You received this email because you requested the test form on the “PDF test” page of {site}. You won’t receive any other emails about this request."
+      },
+      "score": {
+        "eyebrow": "Paper test form",
+        "title": "Enter your scores from the form",
+        "lead": "Copy the numbers from the “Scoring” table on page 4 of the form, and the site will show your profile with a chart and a detailed description: strengths, growth areas, motivation and tips on how others can best communicate and work with you.",
+        "style": "Style",
+        "most": "“Most like me”",
+        "least": "“Least like me”",
+        "net": "Total",
+        "sum": "Sum",
+        "sumNote": "Each column adds up to 24: each of the 24 blocks has one “most like me” mark and one “least like me” mark.",
+        "errEmpty": "Fill in all eight numbers: the “most like me” and “least like me” marks for each style.",
+        "errSum": "The {col} column adds up to {n}, but it should be 24. Check your count against the key.",
+        "errStyle": "For style {k}, the “most like me” and “least like me” marks add up to more than 24, which isn’t possible. Check your count.",
+        "button": "Show my result",
+        "alt": "Don’t have the form with you?",
+        "altButton": "Take the test online — about 10 minutes"
+      },
+      "fromPdf": {
+        "title": "Filled in the paper form?",
+        "text": "Transfer your marks here: the blocks and statements are in the same order as on the form, so it takes 3–4 minutes. The site will score it, draw the chart and show a detailed description of your profile.",
+        "scoreLink": "Already scored it with the key? Enter the numbers from the table"
+      },
+      "print": {
+        "qrTitle": "Your detailed profile description is online",
+        "qrText": "Point your phone camera at the code and enter the numbers from this table — the site will show your profile, a chart of the four styles, strengths, growth areas and tips on how others can best communicate and work with you.",
+        "nextTitle": "What’s next",
+        "nextLead": "The form has shown you your profile. Here’s what you can do next — point your phone camera at a code.",
+        "online": {
+          "title": "Free report with a chart",
+          "text": "Transfer your marks to the online version — 3–4 minutes, no sign-up. You’ll get a chart with three lines, percentages for the four styles, strengths, growth areas, motivation, behavior under stress and tips on how others can best communicate and work with you."
+        },
+        "extended": {
+          "title": "In-depth DISC report",
+          "text": "More than 25 pages about your profile: what each of your four scores means, five blind spots and practices for working on them, techniques and ready-made phrases for communicating with people of different types, and a 30-day development plan. The report is built from your answers, so you order it after taking the test online."
+        },
+        "group": {
+          "title": "Running the test with a group?",
+          "text": "The facilitator kit: a workbook that scores the whole group for you, a 60–90-minute session plan, slides, a team map and “How to work with me” cards."
+        },
+        "footer": "Latest version of the form: disc-test.org/pdf/"
+      }
+    },
     "pdf": {
       "title": "Free Printable DISC Assessment PDF With Answer Key",
       "description": "Free printable DISC assessment PDF: 24 blocks of statements, answer key, scoring table and all 16 profiles. Fill it in on paper or take it online.",
@@ -2835,7 +3035,7 @@
   "ui": {
     "langLabel": "Language",
     "footer": "24 blocks · about 10 minutes · no right or wrong answers",
-    "privacy": "Your answers stay in your browser; for overall statistics the site’s server receives only notes that you visited the site and started the test, and your resulting profile — no name and no answers. If you enter your email address, your result is sent to it and stored in the site owner’s results database. If you subscribe to the newsletter on the home page, your email and the site language are stored in that database. When you click “Save as PDF”, your answers and the test date — without your name or email — are sent to the site’s server, which builds the summary report file, returns it to you and stores nothing.",
+    "privacy": "Your answers stay in your browser; for overall statistics the site’s server receives only notes that you visited the site and started the test, and your resulting profile — no name and no answers. If you enter your email address, your result is sent to it and stored in the site owner’s results database. If you subscribe to the newsletter on the home page, your email and the site language are stored in that database. If you ask for the test form to be emailed to you on the “PDF test” page, the site’s server sends you an email with the form and stores a record of your consent together with your email; with newsletter consent, your address and the site language are also added to the subscriber list. When you click “Save as PDF”, your answers and the test date — without your name or email — are sent to the site’s server, which builds the summary report file, returns it to you and stores nothing.",
     "legal": "Manukyan Armen · Taxpayer ID (INN) {inn}",
     "rights": "© {year} disc-test.org. Copying the texts of this site and its reports without written permission is prohibited.",
     "adminLink": "Admin panel",
@@ -3124,7 +3324,7 @@
     "pd.consentLink": "consent to the processing of personal data",
     "pd.required": "Please tick the consent to the processing of personal data: without it we cannot accept your data.",
     "pd.cookieAsk": "This site keeps your progress, result and chosen language in your browser’s local storage. With your consent, a web analytics system will collect anonymized visit statistics and a recording of on-page actions to help us improve the site. Your name, email and result are not sent to the analytics system.",
-    "pd.cookieDetails": "Stored in your browser: your name and email, if you entered them; your answers and unfinished progress; your latest result; the time you first finished the test, for the deadline of the special report price; your chosen language; a note that you have seen this notice. This data stays on your device and is removed when you clear the site’s data. The hosting provider receives standard technical request data. When you first open the site on a given day, an anonymous visit note goes to the site’s server: the site language only; the server records it with the time it arrived, and your browser remembers the date so the note is not sent again that day. We use these notes to count how many people visit the site. When you start the test, an anonymous start note goes to the site’s server: the site language only. When you finish the test, an anonymous record for overall statistics goes to the site’s server: your resulting profile and the site language — without your name, email or answers. When you click “Save as PDF”, your answers and the test date — without your name or email — are sent to the site’s server, which builds the summary report file, returns it to you and stores nothing. When you send your result by email, your name, email and answers are passed to the site’s server, which emails you your result and stores your name, email, date and result in the site owner’s results database. When you subscribe to the newsletter on the home page, your email and the site language are passed to the site’s server, which sends you an email with a confirmation link and stores the address in the same database; if you don’t confirm the subscription, the address is deleted after 7 days. The web analytics system receives the page address (on the result screen, together with the result code: your answers, the test date and your name if you entered it, but not your email), the referrer, device and browser type, a recording of on-page actions (the name and email fields are excluded), and sets its own cookies. You can block it in your browser settings or with a tracker blocker. No advertising trackers are used.",
+    "pd.cookieDetails": "Stored in your browser: your name and email, if you entered them; your answers and unfinished progress; your latest result; the time you first finished the test, for the deadline of the special report price; your chosen language; a note that you have seen this notice. This data stays on your device and is removed when you clear the site’s data. The hosting provider receives standard technical request data. When you first open the site on a given day, an anonymous visit note goes to the site’s server: the site language only; the server records it with the time it arrived, and your browser remembers the date so the note is not sent again that day. We use these notes to count how many people visit the site. When you start the test, an anonymous start note goes to the site’s server: the site language only. When you finish the test, an anonymous record for overall statistics goes to the site’s server: your resulting profile and the site language — without your name, email or answers. When you click “Save as PDF”, your answers and the test date — without your name or email — are sent to the site’s server, which builds the summary report file, returns it to you and stores nothing. When you send your result by email, your name, email and answers are passed to the site’s server, which emails you your result and stores your name, email, date and result in the site owner’s results database. When you subscribe to the newsletter on the home page, your email and the site language are passed to the site’s server, which sends you an email with a confirmation link and stores the address in the same database; if you don’t confirm the subscription, the address is deleted after 7 days. When you ask for the test form to be emailed to you on the “PDF test” page, your email and the site language are passed to the site’s server, which sends you an email with the form and stores a record of your consent together with the address; if you ticked the newsletter consent box, the address is added to the subscriber list right away, and the email contains an unsubscribe link. The web analytics system receives the page address (on the result screen, together with the result code: your answers, the test date and your name if you entered it, but not your email), the referrer, device and browser type, a recording of on-page actions (the name and email fields are excluded), and sets its own cookies. You can block it in your browser settings or with a tracker blocker. No advertising trackers are used.",
     "pd.cookieChange": "Change cookie choice",
 
     "print.title": "Printable DISC Test: Questionnaire, Answer Key and Scoring",

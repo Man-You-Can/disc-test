@@ -666,7 +666,7 @@
           "h": "Di mana data disimpan dan kepada siapa data diteruskan",
           "p": [
             "Basis data hasil berada di server yang disewa pemilik situs dari penyedia hosting. Email dikirim oleh layanan email. Perusahaan-perusahaan ini memproses data atas perintah kami dan hanya untuk keperluan operasional situs. Email dikirim ke alamat yang Anda isi sendiri. Data tidak diteruskan ataupun dijual kepada pihak ketiga untuk tujuan mereka sendiri.",
-            "Buletin hanya dikirim kepada orang yang mencentang persetujuan terpisah — di formulir pengiriman hasil atau di formulir langganan di halaman utama. Setelah formulir langganan dikirim, Anda akan menerima email berisi tautan konfirmasi: tanpa konfirmasi, buletin tidak dikirim, dan alamat Anda dihapus setelah 7 hari. Basis data menyimpan penanda persetujuan, tanggalnya, dan teksnya, sedangkan email, nama (jika Anda mengisinya), bahasa, dan hasil tes Anda (jika Anda mengirimkannya ke email) digunakan untuk mengirim email dari disc-test.org: materi tentang DISC, tes baru, tips pengembangan karier dan mencari kerja, kabar situs, dan penawaran promosi. Anda dapat berhenti berlangganan kapan saja — melalui tautan di email atau dengan menulis ke {email}.",
+            "Buletin hanya dikirim kepada orang yang mencentang persetujuan terpisah — di formulir pengiriman hasil, di formulir langganan di halaman utama, atau di formulir “Kirim lembar tes ke email” di halaman “Tes DISC PDF”. Setelah formulir langganan di halaman utama dikirim, Anda akan menerima email berisi tautan konfirmasi: tanpa konfirmasi, buletin tidak dikirim, dan alamat Anda dihapus setelah 7 hari. Di formulir “Kirim lembar tes ke email”, langganan berlaku segera setelah formulir dikirim, dan email berisi lembar tes memuat tautan untuk berhenti berlangganan. Basis data menyimpan penanda persetujuan, tanggalnya, dan teksnya, sedangkan email, nama (jika Anda mengisinya), bahasa, dan hasil tes Anda (jika Anda mengirimkannya ke email) digunakan untuk mengirim email dari disc-test.org: materi tentang DISC, tes baru, tips pengembangan karier dan mencari kerja, kabar situs, dan penawaran promosi. Anda dapat berhenti berlangganan kapan saja — melalui tautan di email atau dengan menulis ke {email}.",
             "Layanan hosting menerima data teknis standar dari setiap permintaan: alamat IP, jenis browser, alamat halaman. Font disimpan di situs ini sendiri. Statistik kunjungan dikumpulkan oleh layanan analitik web: layanan ini menerima data kunjungan — alamat halaman, sumber kunjungan, jenis perangkat dan browser — serta rekaman tindakan di halaman; kolom isian nama dan email dikecualikan dari rekaman tersebut. Di layar hasil, alamat halaman memuat kode hasil: jawaban Anda, tanggal tes, dan nama Anda jika Anda mengisinya, tetapi tidak memuat email Anda. Pengumpulan data dapat dinonaktifkan melalui pengaturan browser atau dengan pemblokir pelacak. Pelacak iklan tidak digunakan."
           ]
         },
@@ -724,6 +724,7 @@
       "description": "Teks persetujuan atas pemrosesan data pribadi yang Anda berikan saat mengirim formulir di disc-test.org.",
       "h1": "Persetujuan atas pemrosesan data pribadi",
       "lead": "Dengan mencentang kotak persetujuan atas pemrosesan data pribadi pada formulir di situs disc-test.org dan mengirimkan formulir tersebut, saya secara bebas, atas kehendak sendiri, dan demi kepentingan saya sendiri memberikan persetujuan atas pemrosesan data pribadi saya, dengan ketentuan di bawah ini, kepada pengendali data, yaitu: {owner}.",
+      "paperForm": "Formulir “Kirim lembar tes ke email” di halaman “Tes DISC PDF”: alamat email dan bahasa versi situs. Tujuannya: mengirimkan email berisi lembar tes dan panduan singkat untuk fasilitator kepada saya; jika saya mencentang persetujuan buletin, juga mengelola daftar pelanggan buletin.",
       "sections": [
         {
           "h": "Tujuan pemrosesan dan data yang diproses",
@@ -1354,6 +1355,205 @@
         "button": "Ketahui warna Anda"
       }
     },
+    "kit": {
+      "title": "Paket Fasilitator DISC: Panduan Sesi, Slide, dan Tabel Kelompok",
+      "description": "Semua untuk sesi DISC bersama tim atau kelompok: panduan sesi 60 atau 90 menit, 16 slide, tabel Excel yang menghitung hasil kelompok secara otomatis, peta tim, dan kartu. US${price}.",
+      "h1": "Paket Fasilitator DISC",
+      "lead": "Semua yang Anda perlukan untuk mengadakan sesi DISC bagi tim, kelas, atau peserta pelatihan — bahkan jika ini pertama kalinya. Tes untuk peserta gratis: di kertas atau online.",
+      "facts": [
+        "60 atau 90 menit",
+        "4–30 peserta",
+        "PDF dan Excel",
+        "US${price}"
+      ],
+      "button": "Ajukan permintaan",
+      "insideTitle": "Isi paket",
+      "inside": [
+        {
+          "title": "Panduan sesi",
+          "text": "6 halaman: persiapan, rencana untuk 60 dan 90 menit, apa yang dikatakan dan dilakukan di setiap langkah, dua latihan, cara membahas hasil tanpa memberi label, situasi sulit, dan jawaban atas pertanyaan yang sering diajukan peserta.",
+          "img": "id-guide",
+          "alt": "Halaman pertama panduan sesi"
+        },
+        {
+          "title": "Slide",
+          "text": "16 slide untuk layar: tujuan dan aturan sesi, kode QR tes, dua sumbu dan empat gaya, satu slide untuk setiap gaya, cara membaca hasil, latihan, dan kesepakatan.",
+          "img": "id-slide",
+          "alt": "Slide tentang dua sumbu dan empat gaya"
+        },
+        {
+          "title": "Tabel kelompok",
+          "text": "File Excel untuk 40 peserta. Masukkan angka dari lembar tes kertas atau persentase dari hasil online — tabel menghitung skor, menentukan profil setiap orang, dan menampilkan ringkasan kelompok: berapa orang untuk tiap gaya dan hal yang perlu diperhatikan.",
+          "img": "",
+          "alt": ""
+        },
+        {
+          "title": "Peta tim",
+          "text": "Lingkaran empat sektor untuk dicetak di kertas A3 atau A4: peserta menempelkan stiker di sektor gaya mereka, sehingga tim langsung melihat gaya mana yang banyak, mana yang kurang, dan di mana gesekan mungkin muncul.",
+          "img": "id-map",
+          "alt": "Peta tim"
+        },
+        {
+          "title": "Kartu “Cara bekerja dengan saya”",
+          "text": "Satu kartu untuk setiap gaya — apa yang penting bagi orang itu, cara terbaik bersepakat dengannya, dan apa yang menghambatnya — serta kartu kosong agar peserta bisa menuliskan versinya sendiri.",
+          "img": "id-cards",
+          "alt": "Kartu “Cara bekerja dengan saya”"
+        }
+      ],
+      "forTitle": "Untuk siapa paket ini",
+      "for": [
+        "HR dan manajer: perkenalan tim, orientasi karyawan baru, membicarakan gesekan tanpa mencari siapa yang salah.",
+        "Trainer dan corporate university: modul siap pakai untuk program komunikasi dan kerja tim.",
+        "Dosen dan pengajar: sesi tentang psikologi komunikasi, manajemen, atau pengembangan karier.",
+        "Konsultan karier dan coach: pertemuan kelompok tentang kekuatan dan gaya kerja."
+      ],
+      "planTitle": "Jalannya sesi",
+      "plan": [
+        "Pembukaan dan aturan: kita membahas perilaku di tempat kerja, berbagi hasil secara sukarela, tanpa label.",
+        "Peserta mengerjakan tes — di ponsel lewat kode QR atau di lembar tes kertas.",
+        "Empat gaya dan cara membaca hasil.",
+        "Latihan “Empat sudut”: kelompok per gaya membahas apa yang membuat mereka bersemangat dan cara terbaik bersepakat dengan mereka.",
+        "Peta tim: gaya mana yang banyak, mana yang kurang, di mana gesekan mungkin muncul.",
+        "“Cara bekerja dengan saya” — bertukar kartu berpasangan (dalam versi 90 menit).",
+        "Kesepakatan: cara kita mengadakan rapat, memberi tugas, dan memberi umpan balik."
+      ],
+      "reportTitle": "Laporan mendalam untuk setiap peserta",
+      "report": "Setelah sesi, setiap peserta dapat memesan {business} — sekitar 30 halaman tentang profilnya sendiri.",
+      "reportLink": "laporan DISC mendalam",
+      "priceTitle": "Harga dan cara mendapatkannya",
+      "price": [
+        "Harga paket US${price}. Ajukan permintaan — kami akan membalas dalam satu hari kerja dengan tautan pembayaran.",
+        "Setelah pembayaran, file dikirim ke email Anda. Cetak peta, kartu, dan lembar tes untuk peserta sesi Anda sendiri sebanyak yang Anda perlukan."
+      ],
+      "faqTitle": "Pertanyaan",
+      "faq": [
+        {
+          "q": "Apakah perlu pengalaman atau sertifikat untuk mengadakan sesi?",
+          "a": "Tidak. Panduan sesi ditulis untuk fasilitator yang baru pertama kali membawakan DISC: di setiap langkah dijelaskan apa yang perlu dikatakan dan dilakukan."
+        },
+        {
+          "q": "Apakah peserta harus mendaftar atau membayar?",
+          "a": "Tidak. Tesnya gratis dan tanpa pendaftaran — online atau di lembar tes kertas yang dapat dicetak dari halaman “Tes DISC PDF”."
+        },
+        {
+          "q": "Bisakah sesi diadakan secara online?",
+          "a": "Bisa. Panduan memuat versi online: breakout room untuk kelompok sebagai pengganti sudut ruangan, dan papan bersama sebagai pengganti peta kertas."
+        },
+        {
+          "q": "Bagaimana jika pesertanya lebih dari 30 orang?",
+          "a": "Latihan dilakukan dalam subkelompok, dan peta tim dibuat per departemen. Tabel kelompok dirancang untuk 40 peserta."
+        },
+        {
+          "q": "Apakah Anda bisa melihat hasil peserta saya?",
+          "a": "Tidak. Tabel kelompok berjalan di komputer Anda dan tidak mengirim data ke mana pun. Peserta mengerjakan tes online sendiri, tanpa pendaftaran."
+        }
+      ],
+      "form": {
+        "title": "Permintaan paket",
+        "lead": "Kami akan membalas dalam satu hari kerja ke email yang Anda cantumkan.",
+        "size": "Biasanya berapa peserta dalam satu kelompok",
+        "sizes": [
+          "sampai 10",
+          "10–20",
+          "20–30",
+          "lebih dari 30"
+        ],
+        "interest": "Format sesi",
+        "interests": [
+          "Tatap muka",
+          "Online"
+        ],
+        "comment": "Komentar",
+        "commentPlaceholder": "Misalnya: untuk siapa sesinya dan kapan Anda berencana mengadakannya",
+        "button": "Kirim permintaan",
+        "subject": "Permintaan paket fasilitator: {name}",
+        "sent": "Permintaan terkirim. Kami akan membalas ke {email} dalam satu hari kerja.",
+        "needInterest": "Pilih format sesi.",
+        "privacy": "Nama, email, dan isi permintaan akan dikirim lewat email ke {email} dan hanya digunakan untuk membalas Anda."
+      }
+    },
+    "paper": {
+      "group": {
+        "title": "Mengadakan tes untuk kelompok?",
+        "kitTitle": "Paket Fasilitator",
+        "kitText": "Panduan sesi 60 atau 90 menit, slide, tabel Excel yang otomatis menghitung hasil seluruh kelompok, peta tim, dan kartu “Cara bekerja dengan saya”.",
+        "kitButton": "Selengkapnya tentang paket",
+        "bizTitle": "Laporan mendalam untuk peserta",
+        "bizText": "Setiap peserta dapat memesan laporan DISC mendalam tentang profilnya setelah mengerjakan tes online.",
+        "bizButton": "Laporan mendalam"
+      },
+      "mail": {
+        "toggle": "Kirim lembar tes ke email",
+        "lead": "Kami akan mengirimkan lembar tes sebagai lampiran, beserta panduan singkat cara mengadakan tes untuk kelompok.",
+        "emailLabel": "Email Anda",
+        "button": "Kirim",
+        "sending": "Mengirim…",
+        "sent": "Email sudah dikirim ke {email}. Jika tidak ada di Kotak Masuk, periksa folder Spam.",
+        "failed": "Email tidak dapat dikirim ({error}). Unduh lembar tes dengan tombol di atas.",
+        "tooMany": "Beberapa email sudah dikirim ke alamat ini. Coba lagi nanti atau unduh lembar tes dengan tombol di atas."
+      },
+      "letter": {
+        "subject": "Lembar tes DISC dan panduan untuk fasilitator",
+        "intro": "Halo! Anda meminta lembar tes DISC di situs {site}.",
+        "attachNote": "Lembar tes terlampir pada email ini. Jika lampiran tidak bisa dibuka, unduh lewat tombol ini:",
+        "pdfButton": "Unduh lembar tes (PDF)",
+        "pdfNote": "File ini berisi 24 soal, kunci jawaban, tabel penghitungan, dan uraian 16 profil. File dapat dicetak hitam-putih.",
+        "guideTitle": "Cara mengadakan tes untuk kelompok",
+        "guide": [
+          "Cetak lembar tes untuk setiap peserta atau bagikan tautan versi online: {online} — di sana hasilnya dihitung otomatis.",
+          "Minta peserta menjawab sesuai perilaku mereka yang biasa di tempat kerja, bukan seperti yang mereka inginkan. Menjawab butuh sekitar 10 menit.",
+          "Di kertas, skor setiap gaya adalah jumlah tanda “paling menggambarkan saya” dikurangi jumlah tanda “paling tidak menggambarkan saya”. Kunci jawaban ada di halaman keempat lembar tes, dan lewat kode QR di samping tabel penghitungan, angka hasil bisa dimasukkan di situs untuk mendapatkan uraian profil yang terperinci.",
+          "Bahas hasil tanpa memberi label: gaya menunjukkan apa yang lebih mudah dilakukan seseorang, bukan apa yang mampu ia lakukan. Berbagi hasil bersifat sukarela.",
+          "Di akhir, minta setiap orang menyebutkan cara terbaik bersepakat dengannya, lalu catat 2–3 aturan kerja bersama."
+        ],
+        "kitText": "Panduan sesi siap pakai untuk 60 atau 90 menit, slide, tabel untuk menghitung hasil kelompok, peta tim, dan kartu — semuanya ada di Paket Fasilitator:",
+        "kitButton": "Paket Fasilitator DISC",
+        "subscribed": "Anda telah berlangganan buletin {site}: tes baru, tips pengembangan karier dan mencari kerja, kabar situs, dan penawaran promosi. Anda dapat berhenti berlangganan kapan saja:",
+        "unsubscribe": "Berhenti berlangganan",
+        "footer": "Anda menerima email ini karena meminta lembar tes di halaman “Tes DISC PDF” situs {site}. Tidak akan ada email lain terkait permintaan ini."
+      },
+      "score": {
+        "eyebrow": "Lembar tes kertas",
+        "title": "Masukkan hasil dari lembar tes",
+        "lead": "Salin angka dari tabel “Penghitungan hasil” di halaman keempat lembar tes — situs akan menampilkan profil Anda dengan grafik dan uraian terperinci: kekuatan, area pengembangan, motivasi, dan saran tentang cara terbaik berkomunikasi dan bekerja dengan Anda.",
+        "style": "Gaya",
+        "most": "Paling (+)",
+        "least": "Paling tidak (−)",
+        "net": "Hasil",
+        "sum": "Jumlah",
+        "sumNote": "Jumlah setiap kolom adalah 24: di setiap soal dari 24 soal ada satu tanda “paling” dan satu tanda “paling tidak”.",
+        "errEmpty": "Isi kedelapan angka: untuk setiap gaya, jumlah tanda “paling” dan “paling tidak”.",
+        "errSum": "Jumlah di kolom “{col}” adalah {n}, seharusnya 24. Periksa lagi penghitungan dengan kunci jawaban.",
+        "errStyle": "Pada gaya {k}, tanda “paling” dan “paling tidak” jika dijumlahkan lebih dari 24 — itu tidak mungkin. Periksa lagi penghitungannya.",
+        "button": "Tampilkan hasil",
+        "alt": "Lembar tes tidak ada di tangan?",
+        "altButton": "Ikuti tes online — sekitar 10 menit"
+      },
+      "fromPdf": {
+        "title": "Sudah mengisi lembar tes kertas?",
+        "text": "Salin tanda Anda ke sini: soal dan pernyataan disusun dalam urutan yang sama seperti di lembar tes, jadi hanya butuh 3–4 menit. Situs akan menghitung skor, menggambar grafik, dan menampilkan uraian terperinci profil Anda.",
+        "scoreLink": "Sudah menghitung skor dengan kunci jawaban? Masukkan angka dari tabel"
+      },
+      "print": {
+        "qrTitle": "Uraian terperinci profil Anda — di situs",
+        "qrText": "Arahkan kamera ponsel ke kode ini dan masukkan angka dari tabel ini — situs akan menampilkan profil Anda, grafik keempat gaya, kekuatan, area pengembangan, dan saran tentang cara terbaik berkomunikasi dan bekerja dengan Anda.",
+        "nextTitle": "Langkah berikutnya",
+        "nextLead": "Dari lembar tes ini Anda sudah mengetahui profil Anda. Inilah yang bisa Anda lakukan selanjutnya — arahkan kamera ponsel ke kode.",
+        "online": {
+          "title": "Laporan gratis dengan grafik",
+          "text": "Salin tanda Anda ke versi online — 3–4 menit, tanpa pendaftaran. Anda akan mendapatkan grafik dengan tiga garis, persentase keempat gaya, kekuatan, area pengembangan, motivasi, perilaku di bawah tekanan, dan saran tentang cara terbaik berkomunikasi dan bekerja dengan Anda."
+        },
+        "extended": {
+          "title": "Laporan DISC mendalam",
+          "text": "Sekitar 30 halaman tentang profil Anda: arti masing-masing dari empat skala, lima titik buta dan latihan untuk menghadapinya, kiat dan kalimat siap pakai untuk berkomunikasi dengan orang dari setiap gaya, serta rencana pengembangan 30 hari. Laporan disusun dari jawaban Anda, jadi dipesan setelah Anda mengerjakan tes online."
+        },
+        "group": {
+          "title": "Mengadakan tes untuk kelompok?",
+          "text": "Paket Fasilitator: tabel yang otomatis menghitung hasil seluruh kelompok, panduan sesi 60–90 menit, slide, peta tim, dan kartu “Cara bekerja dengan saya”."
+        },
+        "footer": "Versi terbaru lembar tes ada di disc-test.org/id/pdf/"
+      }
+    },
     "pdf": {
       "title": "Tes DISC PDF Gratis: Soal, Kunci Jawaban, Cara Menghitung",
       "description": "Tes DISC PDF gratis: 24 soal, kunci jawaban, tabel skor, dan uraian 16 profil. Unduh, cetak, lalu isi di kertas. Versi online menghitung hasilnya otomatis.",
@@ -1890,7 +2090,7 @@
   "ui": {
     "langLabel": "Bahasa",
     "footer": "24 soal · sekitar 10 menit · tidak ada jawaban benar atau salah",
-    "privacy": "Jawaban Anda tetap berada di browser; untuk statistik umum, server situs hanya menerima penanda kunjungan dan penanda bahwa tes dimulai, serta profil yang Anda peroleh, tanpa nama dan tanpa jawaban. Jika Anda mengisi email, hasil akan dikirim ke alamat itu dan disimpan di basis data hasil milik pemilik situs. Jika Anda berlangganan buletin di halaman utama, email Anda dan bahasa versi situs disimpan di basis data yang sama. Saat Anda menekan “Simpan sebagai PDF”, jawaban dan tanggal tes — tanpa nama dan email — dikirim ke server situs, yang membuat file laporan ringkas, mengembalikannya kepada Anda, dan tidak menyimpan apa pun.",
+    "privacy": "Jawaban Anda tetap berada di browser; untuk statistik umum, server situs hanya menerima penanda kunjungan dan penanda bahwa tes dimulai, serta profil yang Anda peroleh, tanpa nama dan tanpa jawaban. Jika Anda mengisi email, hasil akan dikirim ke alamat itu dan disimpan di basis data hasil milik pemilik situs. Jika Anda berlangganan buletin di halaman utama, email Anda dan bahasa versi situs disimpan di basis data yang sama. Jika Anda meminta lembar tes dikirim ke email di halaman “Tes DISC PDF”, server situs mengirimkan email berisi lembar tes dan menyimpan penanda persetujuan beserta email Anda; jika Anda menyetujui buletin, alamat dan bahasa versi situs juga disimpan di daftar pelanggan. Saat Anda menekan “Simpan sebagai PDF”, jawaban dan tanggal tes — tanpa nama dan email — dikirim ke server situs, yang membuat file laporan ringkas, mengembalikannya kepada Anda, dan tidak menyimpan apa pun.",
     "legal": "Manukyan Armen · Nomor identitas wajib pajak (INN) {inn}",
     "rights": "© {year} disc-test.org. Dilarang menyalin teks situs dan laporan tanpa izin tertulis.",
     "adminLink": "Panel admin",
@@ -2179,7 +2379,7 @@
     "pd.consentLink": "persetujuan atas pemrosesan data pribadi",
     "pd.required": "Centang persetujuan atas pemrosesan data pribadi: tanpa persetujuan itu, kami tidak dapat menerima data Anda.",
     "pd.cookieAsk": "Situs ini menyimpan progres, hasil, dan bahasa pilihan Anda di penyimpanan lokal browser. Dengan persetujuan Anda, layanan analitik web akan mengumpulkan statistik kunjungan yang dianonimkan dan rekaman aktivitas di halaman agar kami dapat menyempurnakan situs. Nama, email, dan hasil Anda tidak dikirim ke layanan analitik.",
-    "pd.cookieDetails": "Yang disimpan di browser: nama dan email, jika Anda mengisinya; jawaban dan progres yang belum selesai; hasil terakhir; waktu Anda pertama kali menyelesaikan tes, untuk batas waktu harga khusus laporan; bahasa yang dipilih; penanda bahwa Anda sudah melihat pemberitahuan ini. Data ini tetap berada di perangkat Anda dan terhapus saat Anda menghapus data situs. Layanan hosting menerima data teknis standar dari setiap permintaan. Saat Anda membuka situs untuk pertama kalinya dalam sehari, satu penanda kunjungan anonim dikirim ke server situs: hanya bahasa versi situs; server mencatatnya beserta waktu diterimanya, dan browser Anda menyimpan tanggalnya agar penanda itu tidak dikirim lagi pada hari yang sama. Dengan penanda ini kami menghitung berapa banyak orang yang mengunjungi situs. Saat Anda memulai tes, satu penanda mulai anonim dikirim ke server situs: hanya bahasa versi situs. Saat tes selesai, satu catatan anonim untuk statistik umum dikirim ke server situs: profil yang Anda peroleh dan bahasa versi situs, tanpa nama, email, maupun jawaban. Saat Anda menekan “Simpan sebagai PDF”, jawaban dan tanggal tes — tanpa nama dan email — dikirim ke server situs, yang membuat file laporan ringkas, mengembalikannya kepada Anda, dan tidak menyimpan apa pun. Saat Anda mengirim hasil ke email, nama, email, dan jawaban diteruskan ke server situs: server mengirimkan email berisi hasil kepada Anda dan menyimpan nama, email, tanggal, dan hasil di basis data hasil milik pemilik situs. Saat Anda berlangganan buletin di halaman utama, email dan bahasa versi situs dikirim ke server situs: server mengirimkan email berisi tautan konfirmasi dan menyimpan alamat itu di basis data yang sama; jika langganan tidak dikonfirmasi, alamat itu dihapus setelah 7 hari. Layanan analitik web menerima alamat halaman (di layar hasil, bersama kode hasil: jawaban Anda, tanggal tes, dan nama Anda jika Anda mengisinya, tetapi tanpa email Anda), sumber kunjungan, jenis perangkat dan browser, serta rekaman aktivitas di halaman (kolom nama dan email dikecualikan dari rekaman); layanan ini juga memasang cookie miliknya sendiri. Anda dapat memblokirnya melalui pengaturan browser atau dengan pemblokir pelacak. Pelacak iklan tidak digunakan.",
+    "pd.cookieDetails": "Yang disimpan di browser: nama dan email, jika Anda mengisinya; jawaban dan progres yang belum selesai; hasil terakhir; waktu Anda pertama kali menyelesaikan tes, untuk batas waktu harga khusus laporan; bahasa yang dipilih; penanda bahwa Anda sudah melihat pemberitahuan ini. Data ini tetap berada di perangkat Anda dan terhapus saat Anda menghapus data situs. Layanan hosting menerima data teknis standar dari setiap permintaan. Saat Anda membuka situs untuk pertama kalinya dalam sehari, satu penanda kunjungan anonim dikirim ke server situs: hanya bahasa versi situs; server mencatatnya beserta waktu diterimanya, dan browser Anda menyimpan tanggalnya agar penanda itu tidak dikirim lagi pada hari yang sama. Dengan penanda ini kami menghitung berapa banyak orang yang mengunjungi situs. Saat Anda memulai tes, satu penanda mulai anonim dikirim ke server situs: hanya bahasa versi situs. Saat tes selesai, satu catatan anonim untuk statistik umum dikirim ke server situs: profil yang Anda peroleh dan bahasa versi situs, tanpa nama, email, maupun jawaban. Saat Anda menekan “Simpan sebagai PDF”, jawaban dan tanggal tes — tanpa nama dan email — dikirim ke server situs, yang membuat file laporan ringkas, mengembalikannya kepada Anda, dan tidak menyimpan apa pun. Saat Anda mengirim hasil ke email, nama, email, dan jawaban diteruskan ke server situs: server mengirimkan email berisi hasil kepada Anda dan menyimpan nama, email, tanggal, dan hasil di basis data hasil milik pemilik situs. Saat Anda berlangganan buletin di halaman utama, email dan bahasa versi situs dikirim ke server situs: server mengirimkan email berisi tautan konfirmasi dan menyimpan alamat itu di basis data yang sama; jika langganan tidak dikonfirmasi, alamat itu dihapus setelah 7 hari. Saat Anda meminta lembar tes dikirim ke email di halaman “Tes DISC PDF”, email dan bahasa versi situs dikirim ke server situs: server mengirimkan email berisi lembar tes dan menyimpan penanda persetujuan beserta alamat itu; jika Anda mencentang persetujuan buletin, alamat itu langsung disimpan di daftar pelanggan, dan email tersebut memuat tautan untuk berhenti berlangganan. Layanan analitik web menerima alamat halaman (di layar hasil, bersama kode hasil: jawaban Anda, tanggal tes, dan nama Anda jika Anda mengisinya, tetapi tanpa email Anda), sumber kunjungan, jenis perangkat dan browser, serta rekaman aktivitas di halaman (kolom nama dan email dikecualikan dari rekaman); layanan ini juga memasang cookie miliknya sendiri. Anda dapat memblokirnya melalui pengaturan browser atau dengan pemblokir pelacak. Pelacak iklan tidak digunakan.",
     "pd.cookieChange": "Ubah pilihan cookie",
 
     "print.title": "Tes DISC untuk Dicetak: Soal, Kunci Jawaban, dan Cara Menghitung Skor",
