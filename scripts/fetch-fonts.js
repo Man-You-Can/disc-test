@@ -9,8 +9,7 @@ const FAMILIES = [
   { css: 'Golos+Text:wght@400;500;600', subsets: ['latin', 'latin-ext', 'cyrillic', 'cyrillic-ext'] },
   { css: 'IBM+Plex+Mono:wght@400;500', subsets: ['latin', 'latin-ext', 'cyrillic', 'cyrillic-ext'] },
   { css: 'Noto+Kufi+Arabic:wght@500;600', subsets: ['arabic', 'latin'] },
-  { css: 'IBM+Plex+Sans+Arabic:wght@400;500;600', subsets: ['arabic', 'latin'] },
-  { css: 'Noto+Sans+Devanagari:wght@400;500;600', subsets: ['devanagari', 'latin'] }
+  { css: 'IBM+Plex+Sans+Arabic:wght@400;500;600', subsets: ['arabic', 'latin'] }
 ];
 const get = (url, binary) => new Promise((resolve, reject) => https.get(url, { headers: { 'User-Agent': UA } }, res => {
   if (res.statusCode !== 200) return reject(new Error(res.statusCode + ' ' + url));

@@ -224,6 +224,7 @@ const SOURCES = [
 const sourcesHtml = (L, t) => `<h2 id="sources">${escFull(L.content.disc.sourcesTitle)}</h2><p>${escFull(L.content.disc.sourcesLead)}</p><ol class="sources" dir="ltr">` +
   SOURCES.map(sc => `<li><span class="kind">${esc(t('sources.kind.' + sc.kind))}</span><a href="${sc.url}" rel="noopener nofollow" hreflang="en">${escFull(sc.text)}</a></li>`).join('') + `</ol>`;
 const pages = []; // для sitemap: {lang, sub, files}
+const writtenSubs = {}; // все записанные контентные страницы по языкам (и noindex): для переадресации снятых языков
 const extraUrls = []; // для sitemap: файлы PDF {lang, loc, date}
 const ASSETS = path.join(SRC, 'assets');
 const nfTpl = fs.readFileSync(path.join(SRC, '404.html'), 'utf8');
@@ -245,9 +246,6 @@ const FONTS = {
   ar: { families: ['Unbounded', 'Golos Text', 'IBM Plex Mono', 'Noto Kufi Arabic', 'IBM Plex Sans Arabic'],
     head: "'Unbounded','Noto Kufi Arabic',sans-serif", body: "'IBM Plex Sans Arabic','Golos Text',system-ui,'Segoe UI',Tahoma,sans-serif",
     preload: () => ['ibm-plex-sans-arabic-400-arabic.woff2', 'noto-kufi-arabic-500-arabic.woff2'] },
-  hi: { families: ['Unbounded', 'Golos Text', 'IBM Plex Mono', 'Noto Sans Devanagari'],
-    head: "'Unbounded','Noto Sans Devanagari',sans-serif", body: "'Golos Text','Noto Sans Devanagari',system-ui,sans-serif",
-    preload: () => ['noto-sans-devanagari-400-devanagari.woff2', 'noto-sans-devanagari-500-devanagari.woff2'] },
   zh: { families: [],
     head: "'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC','Source Han Sans SC',system-ui,sans-serif",
     body: "'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC','Source Han Sans SC',system-ui,sans-serif" },
@@ -267,7 +265,7 @@ const fontsHead = (f, L) => {
   const pre = (f.preload ? f.preload(sub, ext) : []).filter(n => fs.existsSync(path.join(ASSETS, 'fonts', n))).map(n => `<link rel="preload" href="${basePath}fonts/${n}" as="font" type="font/woff2" crossorigin>`).join('\n');
   return pre + '\n<style>' + faces + '</style>';
 };
-const OG_LOCALE = { en: 'en_US', ru: 'ru_RU', es: 'es_ES', zh: 'zh_CN', ar: 'ar_AR', pt: 'pt_BR', fr: 'fr_FR', de: 'de_DE', ja: 'ja_JP', hi: 'hi_IN', 'zh-hant': 'zh_TW', id: 'id_ID', tr: 'tr_TR', pl: 'pl_PL' };
+const OG_LOCALE = { en: 'en_US', ru: 'ru_RU', es: 'es_ES', zh: 'zh_CN', ar: 'ar_AR', pt: 'pt_BR', fr: 'fr_FR', de: 'de_DE', ja: 'ja_JP', 'zh-hant': 'zh_TW', id: 'id_ID', tr: 'tr_TR', pl: 'pl_PL' };
 
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
@@ -293,7 +291,6 @@ const FLAGS = {
   fr: `<rect width="10" height="20" fill="#0055A4"/><rect x="10" width="10" height="20" fill="#fff"/><rect x="20" width="10" height="20" fill="#EF4135"/>`,
   de: `<rect width="30" height="6.67" fill="#000"/><rect y="6.67" width="30" height="6.67" fill="#DD0000"/><rect y="13.33" width="30" height="6.67" fill="#FFCE00"/>`,
   ja: `<rect width="30" height="20" fill="#fff"/><circle cx="15" cy="10" r="6" fill="#BC002D"/>`,
-  hi: `<rect width="30" height="6.67" fill="#FF9933"/><rect y="6.67" width="30" height="6.67" fill="#fff"/><rect y="13.33" width="30" height="6.67" fill="#138808"/><circle cx="15" cy="10" r="2.6" fill="none" stroke="#000080" stroke-width=".8"/><circle cx="15" cy="10" r=".6" fill="#000080"/>`,
   // Традиционный китайский — флаг Тайваня (крупнейшая аудитория версии), белое солнце упрощено до круга с лучами
   'zh-hant': `<rect width="30" height="20" fill="#FE0000"/><rect width="15" height="10" fill="#000095"/>` + sun(7.5, 5, 3.6, 2.1, '#fff', '#000095'),
   id: `<rect width="30" height="10" fill="#FF0000"/><rect y="10" width="30" height="10" fill="#fff"/>`,
@@ -532,6 +529,7 @@ function writeContentPage(L, sub, opts) {
     .replace('__COMMON_JS__', () => commonJs).replace('__PAGE_JS__', () => opts.pageJs || '').replace('__NO_XBAR__', opts.bare ? 'true' : 'false');
   fs.mkdirSync(path.join(OUT, pathOf(L.lang), sub), { recursive: true });
   fs.writeFileSync(path.join(OUT, pathOf(L.lang), sub, 'index.html'), html);
+  (writtenSubs[L.lang] = writtenSubs[L.lang] || []).push(sub);
   if (!opts.noindex) pages.push({ lang: L.lang, sub, date: updated, langs: own });
 }
 
@@ -1127,6 +1125,21 @@ for (const L of locales) {
 // /en/ (язык по умолчанию) перенаправляет в корень: адрес существовал раньше и мог быть сохранён
 fs.mkdirSync(path.join(OUT, def.lang), { recursive: true });
 fs.writeFileSync(path.join(OUT, def.lang, 'index.html'), `<!doctype html><html lang="${def.lang}"><head><meta charset="utf-8"><title>${esc(def.brand)}</title><meta http-equiv="refresh" content="0; url=../"><link rel="canonical" href="${siteUrl}/"><script>location.replace('../'+location.hash)</script></head><body><a href="../">${esc(def.brand)}</a></body></html>\n`);
+
+// Снятые языки (retiredLanguages в site.config.json: код → язык, куда вести). Хинди снят 2026-10-25 по решению заказчика
+// (за месяц один посетитель): прежние адреса /hi/… и разосланные ссылки (#r=…, #u=…, #c=…) ведут на ту же страницу
+// другого языка, хэш переносится. Сам язык в сборку не входит: ни страниц, ни sitemap, ни hreflang, ни пункта в меню.
+for (const [code, to] of Object.entries(cfg.retiredLanguages || {})) {
+  const T = locales.find(L => L.lang === to);
+  if (!T || locales.some(L => L.lang === code)) continue;   // при сборке части языков (LANGS) целевого может не быть
+  for (const sub of [''].concat(writtenSubs[to] || [])) {
+    const rel = '../'.repeat(1 + sub.split('/').filter(Boolean).length) + pathOf(to) + sub, abs = urlOf(to) + sub;
+    fs.mkdirSync(path.join(OUT, code, sub), { recursive: true });
+    fs.writeFileSync(path.join(OUT, code, sub, 'index.html'), `<!doctype html><html lang="${hl(to)}"><head><meta charset="utf-8"><title>${esc(T.brand)}</title>` +
+      `<meta http-equiv="refresh" content="0; url=${rel}"><link rel="canonical" href="${abs}">` +
+      `<script>location.replace(${JSON.stringify(rel)}+location.hash)</script></head><body><a href="${rel}">${esc(T.brand)}</a></body></html>\n`);
+  }
+}
 
 // 404: тексты на всех языках, язык выбирает скрипт страницы (по началу пути, прежнему выбору или языку браузера);
 // без JavaScript — язык по умолчанию. Старые ссылки #r=… и #admin перенаправляются на главную (аудит 3, п. 6)

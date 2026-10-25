@@ -539,7 +539,7 @@ function testMail() {
   for (var i = 0; i < 24; i++) { m.push(BLOCK_KEYS[i].indexOf(i % 3 === 0 ? 'I' : 'D')); l.push(BLOCK_KEYS[i].indexOf(i % 2 ? 'S' : 'C')); }
   var json = JSON.stringify({ n: 'Test', e: to, p: '', t: new Date().toISOString(), m: m.join(''), l: l.join('') });
   var r = decodeResult(VERSION + '.' + Utilities.base64EncodeWebSafe(json, Utilities.Charset.UTF_8).replace(/=+$/, ''));
-  ['ru', 'en', 'ar', 'ja', 'hi'].forEach(function (lang) {
+  ['ru', 'en', 'ar', 'ja'].forEach(function (lang) {
     if (!DATA[lang]) return;
     var res = sendResultMail(to, r, lang);
     Logger.log(lang + ': ' + (res.error ? 'ошибка: ' + res.error : 'отправлено на ' + to + (res.pdf ? ' с PDF' : ' без PDF: ' + res.pdfError)));

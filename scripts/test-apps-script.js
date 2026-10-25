@@ -173,7 +173,7 @@ check('setup warns about missing alias', logs.some(x => /ВНИМАНИЕ: info@
 aliases = ['Info@disc-test.org']; logs.length = 0; ctx.setup();
 check('setup confirms alias (case-insensitive)', logs.some(x => x === 'Письма уходят с адреса info@disc-test.org'));
 const nSent = sent.length, nRows = rows().length; logs.length = 0; ctx.testMail();
-check('testMail: 5 samples with pdf to the owner, nothing saved', sent.length === nSent + 5 && sent.slice(nSent).every(x => x.to === 'owner@example.com' && x.from === 'info@disc-test.org' && x.attachments.length === 1) && rows().length === nRows && logs.length === 5 && logs.every(x => /с PDF$/.test(x)));
+check('testMail: 4 samples with pdf to the owner, nothing saved', sent.length === nSent + 4 && sent.slice(nSent).every(x => x.to === 'owner@example.com' && x.from === 'info@disc-test.org' && x.attachments.length === 1) && rows().length === nRows && logs.length === 4 && logs.every(x => /с PDF$/.test(x)));
 
 ctx.SAVE_RESULTS = false;
 const before = rows().length;
@@ -351,7 +351,7 @@ const adLangs = Object.keys(ctx.DATA).filter(lg => ctx.DATA[lg].reportAd), sheet
   bareLangs = adLangs.filter(lg => !ctx.DATA[lg].reportAd.images && ctx.DATA[lg].pay);   // отчёт продаётся, листов образца ещё нет
 const pageOf = lg => 'https://disc-test.org/' + (lg === 'en' ? '' : lg + '/') + 'extended-report/';
 if (realAd) {
-  check('report block: in all 14 languages, each with the terms of sale behind it', adLangs.length === 14 && adLangs.every(lg => { const C = locOf(lg).content; return C.offer && C.refund && C.policy.purchase && (lg === 'ru' || (/\{original\}/.test(C.offer.note) && /\{original\}/.test(C.refund.note))); }));
+  check('report block: in all 13 languages, each with the terms of sale behind it', adLangs.length === 13 && adLangs.every(lg => { const C = locOf(lg).content; return C.offer && C.refund && C.policy.purchase && (lg === 'ru' || (/\{original\}/.test(C.offer.note) && /\{original\}/.test(C.refund.note))); }));
   check('report block: built exactly where the locale has the report page', adLangs.join() === Object.keys(ctx.DATA).filter(lg => locOf(lg).content.product).join());
   check('report block: sample sheets only where the report is written, a request line where it is not sold', sheetLangs.every(lg => ctx.DATA[lg].extended && ctx.DATA[lg].pay) &&
     bareLangs.every(lg => { const A = ctx.DATA[lg].reportAd; return !A.soon && !A.sample && !A.captions && ctx.DATA[lg].extended; }) &&
