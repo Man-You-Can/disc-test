@@ -1076,10 +1076,26 @@ function renderReport(r, opts){
       '</div>'+
       '<p class="howto">'+t('report.howto')+'</p>'+
     '</div>'+
-    '<div class="card" id="secCard"><div class="sections">'+
+    '<div class="card" id="traitsCard"><div class="sections">'+
       '<div class="sec full"><h3>'+t('report.traits')+'</h3><div class="traits">'+st.traits.map(function(x){ return '<span>'+esc(x)+'</span>'; }).join('')+'</div>'+
         (cls.s ? '<div class="substyle" style="--ks:'+colorVar(cls.s)+'"><b>'+t('report.secondary',{k:cls.s,name:esc(L.keys[cls.s])})+'</b> '+t('report.secondaryAddon',{addon:esc(L.addon[cls.s])})+'</div>' : '')+
       '</div>'+
+    '</div></div>'+
+    // «Сохраните результат» («Поделиться профилем», «Отправить на e-mail») — сразу после «Ключевых черт», перед остальным описанием профиля
+    // (с 2026-10-25 по решению заказчика; раньше — в конце экрана). У чужого результата здесь же одна кнопка «Поделиться профилем»
+    (opts.own ?
+      '<div class="share no-print" style="margin-top:16px"><h2>'+t('share.title')+'</h2>'+
+        // свой результат: ссылка открывает отчёт в один клик и принимается «Панелью администратора» вместо кода (с 2026-10-20 код и письмо убраны)
+        '<p class="small">'+t('share.text')+'</p>'+
+        // «Отправить на e-mail» (с 2026-10-22, по просьбе заказчика) раскрывает под кнопками прежнюю форму отправки краткого отчёта;
+        // после нажатия «Отправить» экран перерисовывается — форма остаётся открытой со строкой о письме
+        shareButtons(RESULT_EMAIL ? (opts.send ? 'open' : true) : false)+
+        (RESULT_EMAIL ? sendFormHTML(r, who, base, opts.send) : '')+
+      '</div>'
+    :
+      '<div class="share no-print" style="margin-top:16px">'+shareButtons()+'</div>'
+    )+
+    '<div class="card" id="secCard" style="margin-top:16px"><div class="sections">'+
       '<div class="sec"><h3>'+t('report.strengths')+'</h3>'+list(st.strengths)+'</div>'+
       '<div class="sec"><h3>'+t('report.growth')+'</h3>'+list(st.growth)+'</div>'+
       '<div class="sec"><h3>'+t('report.motivation')+'</h3>'+list(st.motivation)+'</div>'+
@@ -1094,21 +1110,8 @@ function renderReport(r, opts){
     (opts.fromAdmin ? '' : cvPromoHTML({P: L.content && L.content.cvPromo, esc: esc, href: base+'cv/', kind: 'result'}))+
     '<div class="print-only printcta"><b>'+t('cta.title')+'</b><p>'+esc(t('cta.text'))+' <b>'+esc(homeURL)+'</b></p></div>'+
     '<p class="print-only printrights">'+esc(t('rights',{year:new Date().getFullYear()}))+'</p>'+
-    (opts.own ?
-      '<div class="share no-print" style="margin-top:16px"><h2>'+t('share.title')+'</h2>'+
-        // свой результат: только ссылка и PDF — ссылка открывает отчёт в один клик и принимается «Панелью администратора» вместо кода (с 2026-10-20 код и письмо убраны)
-        '<p class="small">'+t('share.text')+'</p>'+
-        // «Отправить на e-mail» (с 2026-10-22, по просьбе заказчика) раскрывает под кнопками прежнюю форму отправки краткого отчёта;
-        // после нажатия «Отправить» экран перерисовывается — форма остаётся открытой со строкой о письме
-        shareButtons(RESULT_EMAIL ? (opts.send ? 'open' : true) : false)+
-        (RESULT_EMAIL ? sendFormHTML(r, who, base, opts.send) : '')+
-      '</div>'+
-      '<div class="actions no-print" style="margin-top:18px"><button class="link" id="restart" type="button">'+t('share.restart')+'</button></div>'
-    :
-      '<div class="share no-print" style="margin-top:16px">'+shareButtons()+'</div>'+
-      // ссылка «Пройти тест заново» — как у своего результата (по просьбе заказчика от 2026-10-22); в панели администратора её нет
-      (opts.fromAdmin ? '' : '<div class="actions no-print" style="margin-top:18px"><button class="link" id="restart" type="button">'+t('share.restart')+'</button></div>')
-    )+
+    // ссылка «Пройти тест заново» — в конце экрана (у чужого результата — по просьбе заказчика от 2026-10-22); в панели администратора её нет
+    (opts.fromAdmin ? '' : '<div class="actions no-print" style="margin-top:18px"><button class="link" id="restart" type="button">'+t('share.restart')+'</button></div>')+
     '';
 
   view.querySelectorAll('.legend input').forEach(function(cb){
