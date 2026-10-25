@@ -519,6 +519,18 @@ if (ctx.DATA.zh && ctx.DATA.zh.extended) {
   check('extended mail in Chinese: subject, invite link to /zh/ with campaign tags, nothing unfilled', /^你的 DISC 详细版报告：\s?DI · 开拓者$/.test(mZ.subject) &&
     mZ.html.includes('href="https://disc-test.org/zh/?utm_source=report&amp;utm_medium=email&amp;utm_campaign=full-di&amp;utm_content=invite"') && !/\{\w+\}|undefined/.test(mZ.html + mZ.text));
 }
+// напоминание на традиционном китайском (Тайвань): цена в записи языка (6.99 美元), дата по-китайски, ничего русского и ничего упрощённого
+if (ctx.DATA['zh-hant'] && ctx.DATA['zh-hant'].pay) {
+  const pH = ctx.composePayRemindMail(ctx.decodeResult(cX), 'zh-hant', { order: '261025-TW12CD', url: 'https://api.disc-test.org/pay/go?order=261025-TW12CD&key=k', until: new Date('2026-10-27T09:00:00Z'), price: ctx.EXTENDED_OFFER_USD });
+  check('pay reminder in Traditional Chinese: 6.99 美元, the date in Chinese, Prodamus named, nothing unfilled, nothing Russian or Simplified', [pH.html, pH.text].every(s => s.includes('6.99 美元') && s.includes('2026年10月27日') && s.includes('Prodamus') &&
+    s.includes('261025-TW12CD') && s.includes('開拓者') && s.includes('進階版報告') && !/详细版|报告|开拓者|\{\w+\}|undefined|₽|6,99|[А-Яа-яЁё]/.test(s.replace(/Пётр Буянов/g, ''))) && pH.subject === ctx.DATA['zh-hant'].pay.remind.subject);
+}
+// письмо покупателю на традиционном китайском: приглашение ведёт на /zh-hant/ с метками кампании
+if (ctx.DATA['zh-hant'] && ctx.DATA['zh-hant'].extended) {
+  const mH = ctx.composeExtendedMail(ctx.decodeResult(cX), 'zh-hant');
+  check('extended mail in Traditional Chinese: subject, invite link to /zh-hant/ with campaign tags, nothing unfilled', /^你的 DISC 進階版報告：\s?DI · 開拓者$/.test(mH.subject) &&
+    mH.html.includes('href="https://disc-test.org/zh-hant/?utm_source=report&amp;utm_medium=email&amp;utm_campaign=full-di&amp;utm_content=invite"') && !/\{\w+\}|undefined/.test(mH.html + mH.text));
+}
 check('doGet reports that extended delivery is on', JSON.parse(ctx.doGet().text).extended === true);
 fs.writeFileSync(path.join(process.env.OUT || '/tmp', 'disc-extended-mail-preview.html'), mX.htmlBody);
 fs.writeFileSync(path.join(process.env.OUT || '/tmp', 'disc-mail-preview.html'), mail.htmlBody);
