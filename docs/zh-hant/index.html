@@ -396,7 +396,8 @@ html[lang=ar] .hglabel,html[lang|=zh] .hglabel,html[lang=ja] .hglabel{letter-spa
 .pdfcmp ul{padding-inline-start:20px;margin:0}
 .pdfcmp li{margin-bottom:6px}
 .pdfcmp .download{margin:16px 0 0}
-.pdfcmp>.card{margin:0}
+/* сильнее общего .card+.card (отступ 16px сверху у второй карточки подряд): карточки сравнения стоят вровень */
+.pdfcmp>.card,.pdfcmp>.card+.card{margin:0}
 .pdfcmp .card.on{border-color:var(--line-strong)}
 /* подписка на рассылку на стартовом экране (с 2026-10-22): поле и кнопка в строку, на телефоне — друг под другом */
 .nlbox{margin-top:30px}
