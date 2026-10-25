@@ -332,6 +332,38 @@ function composeSubscribeMail(lang, url) {
 }
 
 /**
+ * Письмо с бумажным бланком теста (с 2026-10-25; форма «Прислать бланк на e-mail» на странице «Тест в PDF», пока русская версия):
+ * ссылка на PDF, короткая памятка ведущему, ссылка на набор ведущего; если человек отметил согласие на рассылку — кнопка подтверждения подписки.
+ * Тексты — DATA[язык].paper (content.paper.letter, адреса бланка, онлайн-теста и набора кладёт сборка). confirmUrl — ссылка подтверждения или ''.
+ */
+function composePaperMail(lang, confirmUrl) {
+  var L = DATA[lang], P = L.paper, X = P.letter, site = SITE_URL.replace(/^https?:\/\//, '');
+  var vars = { site: site, online: P.online.replace(/^https?:\/\//, '') };
+  var btn = function (href, label, dark) { return '<a href="' + esc(href) + '" style="display:inline-block;background:' + (dark ? '#1B2027' : '#ffffff') + ';color:' + (dark ? '#ffffff' : '#1B2027') +
+    ';text-decoration:none;font-weight:bold;padding:12px 22px;border-radius:8px;border:1px solid #1B2027">' + esc(label) + '</a>'; };
+  var guide = X.guide.map(function (g, i) { return '<tr><td style="vertical-align:top;padding:0 10px 10px 0;font-weight:bold;color:#5B6470">' + (i + 1) + '</td><td style="padding:0 0 10px">' +
+    esc(fmt(g, vars)).replace(esc(vars.online), '<a href="' + esc(P.online) + '" style="color:#3B6FB6">' + esc(vars.online) + '</a>') + '</td></tr>'; }).join('');
+  var html = '<!DOCTYPE html><html lang="' + lang + '" dir="' + (L.dir || 'ltr') + '"><body style="margin:0;background:#F3F4F6;font-family:Arial,Helvetica,sans-serif;color:#1B2027">' +
+    '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F3F4F6"><tr><td align="center" style="padding:24px 12px">' +
+    '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background:#ffffff;border:1px solid #D9DDE3;border-radius:14px"><tr><td style="padding:28px;font-size:16px;line-height:1.5">' +
+    '<p style="margin:0 0 16px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#5B6470;font-weight:bold">DISC</p>' +
+    '<p style="margin:0 0 18px">' + esc(fmt(X.intro, vars)) + '</p>' +
+    '<p style="margin:0 0 10px">' + btn(P.pdf, X.pdfButton, true) + '</p>' +
+    '<p style="margin:0 0 24px;font-size:14px;color:#5B6470">' + esc(X.pdfNote) + '</p>' +
+    '<p style="margin:0 0 10px;font-weight:bold;font-size:17px">' + esc(X.guideTitle) + '</p>' +
+    '<table role="presentation" cellpadding="0" cellspacing="0" style="margin:0 0 14px;font-size:15px;line-height:1.45">' + guide + '</table>' +
+    '<p style="margin:0 0 12px;font-size:15px">' + esc(X.kitText) + '</p>' +
+    '<p style="margin:0 0 24px">' + btn(P.kit, X.kitButton, false) + '</p>' +
+    (confirmUrl ? '<p style="margin:0 0 12px;font-size:15px">' + esc(X.subscribe) + '</p><p style="margin:0 0 24px">' + btn(confirmUrl, X.subscribeButton, true) + '</p>' : '') +
+    '<p style="margin:0;padding-top:12px;border-top:1px solid #D9DDE3;font-size:12px;color:#5B6470">' + esc(fmt(X.footer, vars)) + '</p>' +
+    '</td></tr></table></td></tr></table></body></html>';
+  var text = fmt(X.intro, vars) + '\n\n' + X.pdfButton + ': ' + P.pdf + '\n' + X.pdfNote + '\n\n' + X.guideTitle + '\n' +
+    X.guide.map(function (g, i) { return (i + 1) + '. ' + fmt(g, vars); }).join('\n') + '\n\n' + X.kitText + '\n' + P.kit + '\n\n' +
+    (confirmUrl ? X.subscribe + '\n' + confirmUrl + '\n\n' : '') + fmt(X.footer, vars) + '\n';
+  return { subject: fmt(X.subject, vars), html: html, text: text };
+}
+
+/**
  * Письмо подписчику с призывом купить расширенный отчёт (с 2026-10-25; отправляет свой сервер, src/promo.js — одно письмо на адрес через сутки после согласия).
  * Тексты — DATA[язык].promo (content.mailing.promo; тезисы, подпись к листам, кнопка и «бесплатно» — из блока product.block, гарантия — product.pay.guarantee).
  * o: {code — код результата для ссылки на страницу отчёта, consentAt — дата согласия на рассылку (Date), unsubUrl — ссылка отписки}.

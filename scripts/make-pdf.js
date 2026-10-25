@@ -6,6 +6,7 @@ const fs = require('fs'), path = require('path'), os = require('os'), { execFile
 const ROOT = path.join(__dirname, '..'), SRC = path.join(ROOT, 'src'), OUTD = path.join(SRC, 'assets', 'pdf');
 const cfg = JSON.parse(fs.readFileSync(path.join(ROOT, 'site.config.json'), 'utf8'));
 const printHTML = require(path.join(SRC, 'print.js'));
+const qrSVG = require(path.join(SRC, 'qr.js'));
 const tpl = fs.readFileSync(path.join(SRC, 'template.html'), 'utf8');
 const BLOCK_KEYS = JSON.parse((tpl.match(/var BLOCK_KEYS = (\[[^\]]+\]);/) || [])[1].replace(/'/g, '"'));
 const KEYS = ['D', 'I', 'S', 'C'], PROFILE_KEYS = ['D', 'DI', 'DC', 'DS', 'I', 'ID', 'IS', 'IC', 'S', 'SI', 'SC', 'SD', 'C', 'CD', 'CS', 'CI'];
@@ -36,7 +37,9 @@ for (const code of langs) {
   const t = (key, vars) => { let v = L.ui[key]; if (v == null) v = key; if (vars) v = v.replace(/\{(\w+)\}/g, (_, n) => vars[n] != null ? vars[n] : '{' + n + '}'); return v; };
   const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const url = siteUrl + '/' + (code === def ? '' : code + '/');
-  const html = printHTML({ L, t, esc, KEYS, PROFILE_KEYS, BLOCK_KEYS, url, fontsCss, fontFamily: f.family });
+  // адреса для QR-кодов печатной версии (только там, где в локали есть content.paper.print): тест, расширенный отчёт, набор ведущего
+  const links = L.content.paper && L.content.paper.print ? { test: url + '?ref=pdf', extended: url + 'extended-report/?ref=pdf', kit: url + 'kit/?ref=pdf' } : {};
+  const html = printHTML({ L, t, esc, KEYS, PROFILE_KEYS, BLOCK_KEYS, url, fontsCss, fontFamily: f.family, links, qr: qrSVG });
   const htmlFile = path.join(tmp, code + '.html'); fs.writeFileSync(htmlFile, html);
   const out = path.join(OUTD, 'disc-test-' + code + '.pdf');
   execFileSync(chrome, ['--headless=new', '--disable-gpu', '--no-sandbox', '--no-pdf-header-footer', '--virtual-time-budget=5000', '--print-to-pdf=' + out, 'file://' + encodeURI(htmlFile)], { stdio: 'ignore' });

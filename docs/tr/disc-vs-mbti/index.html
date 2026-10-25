@@ -258,6 +258,12 @@ body.has-consent .xbar,body.has-xbar .btn.ctafloat.show{display:none}
 .xprice{font-weight:600}
 .xoffer .xfree{margin:0;font-size:13px;color:var(--muted)}
 .xoffer .xsoon{margin:16px 0 0;padding:10px 14px;border:1px dashed var(--line-strong);border-radius:10px;font-size:14px;color:var(--muted)}
+/* набор ведущего (/kit/, с 2026-10-25): что внутри — карточки с картинками-образцами */
+.kitgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:4px 0 8px}
+@media (max-width:640px){.kitgrid{grid-template-columns:minmax(0,1fr)}}
+.kititem{border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--surface)}
+.kititem h3{margin:0 0 6px;font-size:17px;text-transform:none;letter-spacing:0;color:var(--ink)}.kititem p{margin:0;font-size:15px}
+.kitimg{display:block;margin:0 0 14px}.kitimg img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;border-radius:8px;border:1px solid var(--line);background:#fff}
 .content .xfacts{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 22px;padding:0;list-style:none}
 .content .xfacts li{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:14px;margin:0}
 .xsample{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:14px 0 8px}
@@ -380,6 +386,9 @@ html[lang|=zh] [lang]:not([lang|=zh]):not([lang|=ja]),html[lang=ja] [lang]:not([
 .langbar-x:hover{color:var(--ink);background:var(--soft)}
 .styles-intro{margin-top:34px}
 .home-more{margin-top:34px}
+/* подсказка пришедшему по QR-коду с бумажного бланка (?ref=pdf): как перенести отметки */
+.frompdf{border:1px solid var(--line-strong);border-inline-start:4px solid var(--c);border-radius:12px;padding:12px 16px;margin:0 0 18px;background:var(--surface)}
+.frompdf b{display:block;margin-bottom:4px}.frompdf p{margin:0;font-size:15px;color:var(--muted)}
 /* «Что вы получите» с примером результата — сразу под кнопкой теста (с 2026-10-25): список слева, пример справа; на телефоне — заголовок, пример без графика, список */
 .homeget{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);grid-template-areas:"h c" "l c";grid-template-rows:auto 1fr;gap:4px 28px;align-items:start;margin:30px 0 6px}
 .homeget h2{grid-area:h;font-size:22px;margin:0 0 8px}
@@ -415,6 +424,10 @@ html[lang=ar] .hglabel,html[lang|=zh] .hglabel,html[lang=ja] .hglabel{letter-spa
 /* сильнее общего .card+.card (отступ 16px сверху у второй карточки подряд): карточки сравнения стоят вровень */
 .pdfcmp>.card,.pdfcmp>.card+.card{margin:0}
 .pdfcmp .card.on{border-color:var(--line-strong)}
+.pmail{margin-top:14px}.pmail summary{cursor:pointer;color:var(--ink);text-decoration:underline;text-underline-offset:3px;font-size:15px}
+.pmail form{margin-top:10px;display:grid;gap:10px}.pmail .nlrow{display:flex;gap:8px}.pmail .nlrow input{flex:1;min-width:0}
+@media (max-width:480px){.pmail .nlrow{flex-direction:column}}
+.pdfgroup{margin:26px 0 8px}.pdfgroup h2{margin:0 0 12px}.pdfgroup h3{margin:0 0 6px;font-size:17px;text-transform:none;letter-spacing:0;color:var(--ink)}.pdfgroup p{font-size:15px}
 /* подписка на рассылку на стартовом экране (с 2026-10-22): поле и кнопка в строку, на телефоне — друг под другом */
 .nlbox{margin-top:30px}
 .nlbox h2{margin:0 0 6px;font-size:22px}

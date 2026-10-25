@@ -159,6 +159,11 @@ const offerSections = L => { const of = L.content.offer; if (!of.codeTerms || !p
   return of.sections.map((sec, i) => { const add = of.codeTerms.filter(x => x.section === i).map(x => x.text), k = sec.ul ? 'ul' : sec.ol ? 'ol' : 'p';
     return add.length ? Object.assign({}, sec, { [k]: sec[k].concat(add) }) : sec; }); };
 const policyPurchase = L => { const po = L.content.policy; return po.purchaseCode && payCodeT(L, x => x) ? Object.assign({}, po.purchase, { p: po.purchase.p.concat([po.purchaseCode]) }) : po.purchase; };
+// Набор ведущего (/kit/, с 2026-10-25; пока только русская версия): сценарий занятия, слайды, таблица группы, карта команды и карточки —
+// платные файлы в private/kit (вне репозитория), на странице — описание, картинки-образцы src/assets/kit/<язык>-*.jpg и заявка через форму
+// обратной связи (src/business.js, цель kit-request). Цена — kitPriceRub в site.config.json. Есть там, где в локали content.kit.
+const kitPriceRub = Number(cfg.kitPriceRub) || 0;
+const hasKit = L => !!(L.content.kit && kitPriceRub && feedbackEmail && cfg.sendEndpoint);
 const hasBusiness = L => !!(L.content.business && L.ui['nav.business'] && hasProduct(L) && L.content.product.pay && L.content.services.currency === 'RUB' && servicePrices.RUB &&
   payCodeT(L, x => x) && feedbackEmail && cfg.sendEndpoint && businessPacks.length);
 // Оператор и дата редакции в политике и согласии: в языке с полным текстом политики (policy.legal — русская версия) — исполнитель из оферты
@@ -346,6 +351,10 @@ const ONLY = process.env.LANGS ? process.env.LANGS.split(',') : null; // лок�
 const locales = cfg.languages.filter(code => !missing.includes(code) && (!ONLY || ONLY.includes(code))).map(code => {
   const L = JSON.parse(fs.readFileSync(path.join(SRC, 'locales', code + '.json'), 'utf8'));
   if (L.lang !== code) throw new Error(code + '.json: lang mismatch');
+  // форма «Прислать бланк на e-mail» (с 2026-10-25, пока русская версия): её абзац в согласии лежит отдельным ключом consentDoc.paperForm —
+  // число абзацев согласия у всех языков одно (валидатор); здесь он становится последним абзацем первого раздела (страница согласия и текст для сервера)
+  const CD = L.content && L.content.consentDoc;
+  if (CD && CD.paperForm) { CD.sections[0].p = CD.sections[0].p.concat([CD.paperForm]); delete CD.paperForm; }
   return typo(L);   // src/typo.js: неразрывные пробелы во французском, знаки чисел в арабском
 });
 const LANG_ROWS = Math.ceil(locales.length / 2); // меню языков в две колонки: число строк для CSS (--lrows)
@@ -391,6 +400,8 @@ const homeLocale = L => Object.assign({}, L, {
   profiles: Object.fromEntries(Object.entries(L.profiles).map(([k, p]) => [k, { name: p.name, summary: p.summary }])),
   // product — тексты блока «Расширенный отчёт» на экране результата (цена уже подставлена); страница отчёта в скрипт не идёт
   content: Object.assign({ home: L.content.home }, hasCvPromo(L) ? { cvPromo: L.content.cvPromo } : {},
+    // подсказка пришедшему по QR-коду с бумажного бланка (?ref=pdf, с 2026-10-25): только она, без остального content.paper
+    L.content.paper && L.content.paper.fromPdf ? { paper: { fromPdf: L.content.paper.fromPdf } } : {},
     hasProduct(L) ? { product: Object.assign(withPrice(L, L.content.product.block), hasSamples(L) ? {} : { sample: '' },
       L.content.product.promo ? { promo: withPrice(L, L.content.product.promo) } : {}, homePay(L) ? { pay: homePay(L) } : {}) } : {})
 });
@@ -939,12 +950,36 @@ for (const L of locales) {
   // «На бумаге» и «Онлайн» рядом, над текстом страницы (с 2026-10-25, по просьбе заказчика): в первой колонке — скачивание (цель paper-pdf),
   // во второй — пример результата и кнопка теста (цель pdf-online). Тексты — content.pdf.compare
   const pc = pd.compare, li = a => `<ul>${a.map(x => `<li>${escFull(x)}</li>`).join('')}</ul>`;
-  const pdfCompare = `<div class="pdfcmp"><section class="card"><h2>${escFull(pc.paperTitle)}</h2>${li(pc.paper)}${download}</section>` +
+  // бумажный бланк на e-mail и блок «Проводите тест в группе?» (с 2026-10-25; там, где в локали content.paper и есть набор ведущего — пока русская версия)
+  const PPR = L.content.paper, paperOn = !!(PPR && PPR.mail && hasKit(L) && pi && pdOn);
+  const PM = paperOn ? PPR.mail : null;
+  const paperMail = PM ? `<details class="pmail"><summary>${escFull(PM.toggle)}</summary><form class="form" id="pmForm" novalidate><p class="small muted">${escFull(PM.lead)}</p>` +
+    `<div class="nlrow"><input type="email" id="pmEm" class="ym-disable-keys" autocomplete="email" inputmode="email" required maxlength="120" placeholder="${escFull(PM.emailLabel)}" aria-label="${escFull(PM.emailLabel)}">` +
+    `<button class="btn" type="submit" id="pmSend">${escFull(PM.button)}</button></div>` +
+    `<label class="check"><input type="checkbox" id="pmPd"><span>${pdLabelHtml(L, '../')}</span></label>` +
+    `<label class="check"><input type="checkbox" id="pmNl"><span>${escFull(t('nl.consent'))}</span></label>` +
+    `<p class="small sendstatus" id="pmStatus" aria-live="polite" hidden></p></form></details>` : '';
+  const PG = paperOn && PPR.group ? PPR.group : null;
+  const paperGroup = PG ? `<section class="pdfgroup"><h2>${escFull(PG.title)}</h2><div class="pdfcmp">` +
+    `<div class="card"><h3>${escFull(PG.kitTitle)}</h3><p>${escFull(PG.kitText)}</p><p class="download"><a class="btn secondary" href="../kit/" data-goal="pdf-kit">${escFull(PG.kitButton)}</a></p></div>` +
+    (hasBusiness(L) ? `<div class="card"><h3>${escFull(PG.bizTitle)}</h3><p>${escFull(PG.bizText)}</p><p class="download"><a class="btn secondary" href="../business/" data-goal="pdf-business">${escFull(PG.bizButton)}</a></p></div>` : '') +
+    `</div></section>` : '';
+  const pdfCompare = `<div class="pdfcmp"><section class="card"><h2>${escFull(pc.paperTitle)}</h2>${li(pc.paper)}${download}${paperMail}</section>` +
     `<section class="card on"><h2>${escFull(pc.onlineTitle)}</h2>${li(pc.online)}` +
     sampleCardHTML({ L, t, esc: escFull, KEYS, colorVar }, { graph: false, cls: 'hgcard flat' }) +
     `<p class="download"><a class="btn" href="../" data-goal="pdf-online">${escFull(pc.button)}</a><span class="muted">${escFull(t('intro.startNote'))}</span></p></section></div>`;
   writeContentPage(L, 'pdf/', { navKey: 'nav.pdf', title: pd.title, description: pd.description, crumbs: [{ name: t('nav.pdf') }],
-    content: `<div class="eyebrow">DISC</div><h1>${escFull(pd.h1)}</h1><p class="lead">${escFull(pd.lead)}</p>` + pdfCompare + sectionsHtml(pd.sections) + download + ctaBlock(L, t, '../') + seeAlso('../', 'nav.pdf'),
+    content: `<div class="eyebrow">DISC</div><h1>${escFull(pd.h1)}</h1><p class="lead">${escFull(pd.lead)}</p>` + pdfCompare + paperGroup + sectionsHtml(pd.sections) + download + ctaBlock(L, t, '../') + seeAlso('../', 'nav.pdf'),
+    pageJs: PM ? `(function(){ var f=$('#pmForm'); if(!f) return; var st=$('#pmStatus'), btn=$('#pmSend'), M=${JSON.stringify({ sending: PM.sending, sent: PM.sent, failed: PM.failed, tooMany: PM.tooMany, emailRequired: t('intro.emailRequired'), pdRequired: L.ui['pd.required'] || '' }).replace(/</g, '\\u003c')};
+      function show(kind, txt){ st.hidden=false; st.className='small sendstatus'+(kind?' '+kind:''); st.textContent=txt; }
+      f.addEventListener('submit', function(e){ e.preventDefault(); var em=$('#pmEm').value.trim();
+        if(!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]{2,}$/.test(em)||em.length>120){ $('#pmEm').focus(); show('err', M.emailRequired); return; }
+        if(!$('#pmPd').checked){ $('#pmPd').focus(); show('err', M.pdRequired); return; }
+        btn.disabled=true; show('muted', M.sending);
+        fetch(${jsStr(cfg.sendEndpoint)}, {method:'POST', body:JSON.stringify({action:'paperMail', token:${jsStr(cfg.sendToken)}, lang:L.lang, to:em, consent:true, consentV:${jsStr(pdVersion)}, subscribe:$('#pmNl').checked})})
+          .then(function(r){ return r.json(); }).then(function(j){ if(!j||!j.ok) throw new Error((j&&j.error)||'bad response'); show('ok', M.sent.replace('{email}', em)); if(window.discTrack) window.discTrack('paper-mail'); })
+          .catch(function(err){ var m=String((err&&err.message)||err); show('err', /too many|daily limit/.test(m) ? M.tooMany : M.failed.replace('{error}', m)); })
+          .then(function(){ btn.disabled=false; }); }); })();` : '',
     ldExtra: pi ? [{ '@context': 'https://schema.org', '@type': 'DigitalDocument', name: pd.title, url: `${siteUrl}/pdf/${pi.file}`, encodingFormat: 'application/pdf', inLanguage: hl(L.lang), isAccessibleForFree: true }] : [] });
   if (pi) extraUrls.push({ lang: L.lang, loc: `${siteUrl}/pdf/${pi.file}`, date: contentDate(L.lang + ':pdf-file', fs.readFileSync(path.join(ASSETS, 'pdf', pi.file)).toString('base64'), [`src/assets/pdf/${pi.file}`]) });
   // /services/ — платная услуга (все языки); /offer/ и /refund/ — публичная оферта и условия возврата, только в языках, где эти разделы есть (hasOffer).
@@ -1032,6 +1067,33 @@ for (const L of locales) {
           `<p class="seealso">${docLink('extended-report/', C.product)} · ${docLink('services/', sv)} · ${docLink('offer/', of)}</p>`,
         files: ['src/business.js'],
         pageJs: businessJs + `initBusiness({T: ${JSON.stringify(BT).replace(/</g, '\\u003c')}, L: L, esc: esc, $: $, endpoint: ${jsStr(cfg.sendEndpoint)}, token: ${jsStr(cfg.sendToken)}, email: ${jsStr(feedbackEmail)}, pdVersion: ${jsStr(pdOn ? pdVersion : '')}});` });
+    }
+    // /kit/ — набор ведущего: что внутри (с картинками-образцами), кому подойдёт, план занятия, цена и заявка (src/business.js, цель kit-request)
+    if (hasKit(L)) {
+      const KT = C.kit, F = KT.form, kprice = fmtPrice(L, kitPriceRub) + ' ₽';
+      const kv = s2 => String(s2).replace(/\{price\}/g, kprice);
+      const KF = { name: t('intro.nameLabel'), email: t('contact.emailLabel'), size: F.size, sizes: F.sizes, interest: F.interest, interests: F.interests,
+        comment: F.comment, commentPlaceholder: F.commentPlaceholder, button: F.button, subject: F.subject, sent: F.sent, needInterest: F.needInterest,
+        requiredNote: t('intro.requiredNote'), nameRequired: t('intro.nameRequired'), emailRequired: t('intro.emailRequired'), pdRequired: L.ui['pd.required'] || '',
+        sending: t('contact.sending'), sendFailed: t('contact.sendFailed'), tooMany: t('contact.tooMany'), privacyNote: F.privacy, goal: 'kit-request' };
+      const inside = `<div class="kitgrid">` + KT.inside.map(it => `<article class="kititem">` +
+        (it.img && fs.existsSync(path.join(ASSETS, 'kit', it.img + '.jpg')) ? `<a class="kitimg" href="../../kit/${it.img}.jpg" target="_blank" rel="noopener"><img src="../../kit/${it.img}.jpg" alt="${escFull(it.alt)}" loading="lazy" decoding="async"></a>` : '') +
+        `<h3>${escFull(it.title)}</h3><p>${escFull(it.text)}</p></article>`).join('') + `</div>`;
+      writeContentPage(L, 'kit/', { navKey: 'nav.services', langs: locales.filter(hasKit), title: kv(KT.title), description: kv(KT.description), crumbs: [svcCrumb, { name: KT.h1 }],
+        content: `<div class="eyebrow">${escFull(t('nav.services'))}</div><h1>${escFull(KT.h1)}</h1><p class="lead">${escFull(KT.lead)}</p>` +
+          `<ul class="xfacts">${KT.facts.map(x => `<li>${escFull(kv(x))}</li>`).join('')}</ul>` +
+          `<p><a class="btn" href="#request" data-goal="kit-cta">${escFull(KT.button)}</a></p>` +
+          `<h2>${escFull(KT.insideTitle)}</h2>` + inside +
+          `<h2>${escFull(KT.forTitle)}</h2>` + listHtml('ul', KT.for) +
+          `<h2>${escFull(KT.planTitle)}</h2>` + listHtml('ol', KT.plan) +
+          (hasBusiness(L) ? `<h2>${escFull(KT.reportTitle)}</h2><p>${escFull(KT.report).replace('{business}', link('business/', KT.reportLink))}</p>` : '') +
+          `<h2>${escFull(KT.priceTitle)}</h2>` + KT.price.map(x => `<p>${escFull(kv(x))}</p>`).join('') +
+          `<h2>${escFull(KT.faqTitle)}</h2>` + KT.faq.map(it => `<h3 class="xq">${escFull(it.q)}</h3><p>${escFull(it.a)}</p>`).join('') +
+          `<h2 id="request">${escFull(F.title)}</h2><p>${escFull(F.lead)}</p>` +
+          businessHTML({ T: KF, esc: escFull, email: feedbackEmail, pdLabel: pdOn ? pdLabelHtml(L, '../') : '' }) +
+          `<p class="seealso"><a href="../pdf/">${escFull(t('nav.pdf'))} ${arrow(L)}</a>` + (hasBusiness(L) ? ` · ${docLink('business/', C.business)}` : '') + `</p>`,
+        files: ['src/business.js'],
+        pageJs: businessJs + `initBusiness({T: ${JSON.stringify(KF).replace(/</g, '\\u003c')}, L: L, esc: esc, $: $, endpoint: ${jsStr(cfg.sendEndpoint)}, token: ${jsStr(cfg.sendToken)}, email: ${jsStr(feedbackEmail)}, pdVersion: ${jsStr(pdOn ? pdVersion : '')}});` });
     }
     // /extended-report/ — страница расширенного отчёта: что внутри, листы образца картинками, сравнение с кратким отчётом, цена.
     // Блок покупки по умолчанию ведёт на тест. У кого результат сохранён на этом устройстве (disc.last), тому скрипт страницы меняет его:
@@ -1240,6 +1302,9 @@ for (const f of fs.existsSync(path.join(ASSETS, 'fonts')) ? fs.readdirSync(path.
 if (fs.existsSync(path.join(ASSETS, 'extended'))) { fs.mkdirSync(path.join(OUT, 'extended'), { recursive: true });
   // <язык>-mail.jpg — листы образца для письма подписчикам (content.mailing.promo): JPEG, а не WebP — WebP показывают не все почтовые программы
   for (const f of fs.readdirSync(path.join(ASSETS, 'extended'))) if (f.endsWith('.webp') || /^[a-z-]+-mail\.jpg$/.test(f)) fs.copyFileSync(path.join(ASSETS, 'extended', f), path.join(OUT, 'extended', f)); }
+// картинки-образцы набора ведущего (страница /kit/, с 2026-10-25): готовит private/kit/make-kit.js
+if (fs.existsSync(path.join(ASSETS, 'kit'))) { fs.mkdirSync(path.join(OUT, 'kit'), { recursive: true });
+  for (const f of fs.readdirSync(path.join(ASSETS, 'kit'))) if (/^[a-z-]+-[a-z]+\.jpg$/.test(f)) fs.copyFileSync(path.join(ASSETS, 'kit', f), path.join(OUT, 'kit', f)); }
 // файлы для скачивания (пример CV в PDF и DOCX на лендинге /ru/cv/, с 2026-10-22)
 if (fs.existsSync(path.join(ASSETS, 'files'))) { fs.mkdirSync(path.join(OUT, 'files'), { recursive: true });
   for (const f of fs.readdirSync(path.join(ASSETS, 'files'))) if (/\.(pdf|docx)$/.test(f)) fs.copyFileSync(path.join(ASSETS, 'files', f), path.join(OUT, 'files', f)); }
@@ -1283,6 +1348,9 @@ for (const L of locales) {
     cta: { title: L.ui['cta.title'], text: L.ui['cta.text'], desc: L.ui['pages.profile.descCta'] },
     // подписка с главной: текст у галочки согласия (сервер сохраняет его с отметкой о согласии) и письмо со ссылкой подтверждения
     nl: { consent: L.ui['nl.consent'], mail: L.content.subscribeMail } };
+  // письмо с бумажным бланком (форма «Прислать бланк на e-mail» на «Тест в PDF», с 2026-10-25): тексты и адреса бланка, онлайн-теста и набора ведущего
+  if (L.content.paper && L.content.paper.letter && hasKit(L)) { const home = urlOf(L.lang), pi = pdfInfo(L.lang);
+    if (pi) mailData[L.lang].paper = { letter: L.content.paper.letter, pdf: siteUrl + '/pdf/' + pi.file, online: home + '?ref=mail', kit: home + 'kit/?ref=mail' }; }
   // письмо с расширенным отчётом (платная услуга): тексты есть только в языках, где отчёт написан
   if (L.content.extendedMail) mailData[L.lang].extended = L.content.extendedMail;
   // оплата расширенного отчёта на своём сервере: название услуги для платёжной страницы и чека, письмо-напоминание о неоконченной оплате, валюта заказа (USD или EUR через Prodamus)

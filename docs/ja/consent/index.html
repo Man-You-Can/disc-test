@@ -240,6 +240,12 @@ body.has-consent .xbar,body.has-xbar .btn.ctafloat.show{display:none}
 .xprice{font-weight:600}
 .xoffer .xfree{margin:0;font-size:13px;color:var(--muted)}
 .xoffer .xsoon{margin:16px 0 0;padding:10px 14px;border:1px dashed var(--line-strong);border-radius:10px;font-size:14px;color:var(--muted)}
+/* набор ведущего (/kit/, с 2026-10-25): что внутри — карточки с картинками-образцами */
+.kitgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:4px 0 8px}
+@media (max-width:640px){.kitgrid{grid-template-columns:minmax(0,1fr)}}
+.kititem{border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--surface)}
+.kititem h3{margin:0 0 6px;font-size:17px;text-transform:none;letter-spacing:0;color:var(--ink)}.kititem p{margin:0;font-size:15px}
+.kitimg{display:block;margin:0 0 14px}.kitimg img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;border-radius:8px;border:1px solid var(--line);background:#fff}
 .content .xfacts{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 22px;padding:0;list-style:none}
 .content .xfacts li{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:14px;margin:0}
 .xsample{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:14px 0 8px}
@@ -362,6 +368,9 @@ html[lang|=zh] [lang]:not([lang|=zh]):not([lang|=ja]),html[lang=ja] [lang]:not([
 .langbar-x:hover{color:var(--ink);background:var(--soft)}
 .styles-intro{margin-top:34px}
 .home-more{margin-top:34px}
+/* подсказка пришедшему по QR-коду с бумажного бланка (?ref=pdf): как перенести отметки */
+.frompdf{border:1px solid var(--line-strong);border-inline-start:4px solid var(--c);border-radius:12px;padding:12px 16px;margin:0 0 18px;background:var(--surface)}
+.frompdf b{display:block;margin-bottom:4px}.frompdf p{margin:0;font-size:15px;color:var(--muted)}
 /* «Что вы получите» с примером результата — сразу под кнопкой теста (с 2026-10-25): список слева, пример справа; на телефоне — заголовок, пример без графика, список */
 .homeget{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);grid-template-areas:"h c" "l c";grid-template-rows:auto 1fr;gap:4px 28px;align-items:start;margin:30px 0 6px}
 .homeget h2{grid-area:h;font-size:22px;margin:0 0 8px}
@@ -397,6 +406,10 @@ html[lang=ar] .hglabel,html[lang|=zh] .hglabel,html[lang=ja] .hglabel{letter-spa
 /* сильнее общего .card+.card (отступ 16px сверху у второй карточки подряд): карточки сравнения стоят вровень */
 .pdfcmp>.card,.pdfcmp>.card+.card{margin:0}
 .pdfcmp .card.on{border-color:var(--line-strong)}
+.pmail{margin-top:14px}.pmail summary{cursor:pointer;color:var(--ink);text-decoration:underline;text-underline-offset:3px;font-size:15px}
+.pmail form{margin-top:10px;display:grid;gap:10px}.pmail .nlrow{display:flex;gap:8px}.pmail .nlrow input{flex:1;min-width:0}
+@media (max-width:480px){.pmail .nlrow{flex-direction:column}}
+.pdfgroup{margin:26px 0 8px}.pdfgroup h2{margin:0 0 12px}.pdfgroup h3{margin:0 0 6px;font-size:17px;text-transform:none;letter-spacing:0;color:var(--ink)}.pdfgroup p{font-size:15px}
 /* подписка на рассылку на стартовом экране (с 2026-10-22): поле и кнопка в строку, на телефоне — друг под другом */
 .nlbox{margin-top:30px}
 .nlbox h2{margin:0 0 6px;font-size:22px}
@@ -747,7 +760,7 @@ body.has-consent{padding-bottom:160px}
   </header>
   <nav class="sitenav no-print"><a href="../../ja/">診断</a><a href="../../ja/disc/">DISC理論とは</a><a href="../../ja/styles/">4つのスタイル</a><a href="../../ja/profiles/">16のタイプ</a><a href="../../ja/results/">結果の見方</a><a href="../../ja/compatibility/">スタイルの相性</a><a href="../../ja/faq/">よくある質問</a><a href="../../ja/how-reports-are-made/">レポートができるまで</a><a href="../../ja/services/">サービス</a><a href="../../ja/contact/">お問い合わせ</a></nav>
   <nav class="crumbs"><a href="../../ja/">ホーム</a><span>›</span><a href="../privacy/">プライバシー</a><span>›</span><span aria-current="page">個人データの取り扱いに関する同意</span></nav>
-  <main class="content"><div class="eyebrow">DISC</div><h1>個人データの取り扱いに関する同意</h1><p class="lead">私は、disc-test.orgのフォームで個人データの取り扱いに関する同意のチェックを入れ、そのフォームを送信することにより、自由な意思に基づき、自らの利益のために、以下の条件で私の個人データを取り扱うことについて運営者に同意します。運営者：Manukyan Armen · 納税者番号（INN）771583655604。</p><h2>取り扱いの目的とデータの項目</h2><p>「結果をメールで受け取る」フォーム：氏名、メールアドレス、サイトの言語版、診断日、回答、DISC診断の結果。目的は、診断結果のメールを私に送信すること、および再送信や私からの問い合わせへの回答のために結果を保管することです。</p><p>お問い合わせフォーム：氏名、メールアドレス、メッセージの本文、添付ファイル。目的は、私の問い合わせを確認し、回答することです。</p><p>トップページのメールマガジン登録フォーム：メールアドレス、サイトの言語版。目的は、登録確定用のリンクを記載したメールを私に送信すること、およびメールマガジンの登録者リストを管理することです。</p><h2>データに対して行う操作</h2><p>収集、記録、整理、蓄積、保管、訂正、抽出、利用、次の項に記載する者への提供、利用停止、削除、破棄。これらは自動化された手段を用いて行われます。</p><h2>取り扱いの委託先</h2><p>運営者は、サイトが稼働し結果データベースが置かれているサーバーのホスティング事業者と、メールの送受信に用いるメールサービスに取り扱いを委託します。これらの事業者は、運営者の委託に基づいて業務を行います。</p><h2>同意の有効期間</h2><p>この同意は、「結果をメールで受け取る」フォームについては送信日から3年間、お問い合わせフォームからの問い合わせについては返信後1年間、メールマガジン登録フォームについては配信停止まで（登録が確定されていない場合は7日間）、または撤回されるまで有効です。</p><h2>同意の撤回方法</h2><p>私は、<a href="mailto:info@disc-test.org">info@disc-test.org</a>宛のメールまたは<a href="../contact/">お問い合わせ</a>フォームからの連絡により、いつでも同意を撤回できます。撤回後、運営者は取り扱いを停止し、取り扱いを続ける別の法的根拠がない限り、30日以内に私のデータを削除します。</p><h2>この同意の対象外となる事項</h2><p>メールマガジンの受信に関する同意は、フォーム内の専用のチェックボックスで別途行います。それ以外の場合に運営者がデータをどのように取り扱うかは、「<a href="../privacy/">プライバシー</a>」のページに記載されています。</p><p class="small muted">2026年10月25日改定。</p></main>
+  <main class="content"><div class="eyebrow">DISC</div><h1>個人データの取り扱いに関する同意</h1><p class="lead">私は、disc-test.orgのフォームで個人データの取り扱いに関する同意のチェックを入れ、そのフォームを送信することにより、自由な意思に基づき、自らの利益のために、以下の条件で私の個人データを取り扱うことについて運営者に同意します。運営者：Manukyan Armen · 納税者番号（INN）771583655604。</p><h2>取り扱いの目的とデータの項目</h2><p>「結果をメールで受け取る」フォーム：氏名、メールアドレス、サイトの言語版、診断日、回答、DISC診断の結果。目的は、診断結果のメールを私に送信すること、および再送信や私からの問い合わせへの回答のために結果を保管することです。</p><p>お問い合わせフォーム：氏名、メールアドレス、メッセージの本文、添付ファイル。目的は、私の問い合わせを確認し、回答することです。</p><p>トップページのメールマガジン登録フォーム：メールアドレス、サイトの言語版。目的は、登録確定用のリンクを記載したメールを私に送信すること、およびメールマガジンの登録者リストを管理することです。</p><h2>データに対して行う操作</h2><p>収集、記録、整理、蓄積、保管、訂正、抽出、利用、次の項に記載する者への提供、利用停止、削除、破棄。これらは自動化された手段を用いて行われます。</p><h2>取り扱いの委託先</h2><p>運営者は、サイトが稼働し結果データベースが置かれているサーバーのホスティング事業者と、メールの送受信に用いるメールサービスに取り扱いを委託します。これらの事業者は、運営者の委託に基づいて業務を行います。</p><h2>同意の有効期間</h2><p>この同意は、「結果をメールで受け取る」フォームについては送信日から3年間、お問い合わせフォームからの問い合わせについては返信後1年間、メールマガジン登録フォームについては配信停止まで（登録が確定されていない場合は7日間）、または撤回されるまで有効です。</p><h2>同意の撤回方法</h2><p>私は、<a href="mailto:info@disc-test.org">info@disc-test.org</a>宛のメールまたは<a href="../contact/">お問い合わせ</a>フォームからの連絡により、いつでも同意を撤回できます。撤回後、運営者は取り扱いを停止し、取り扱いを続ける別の法的根拠がない限り、30日以内に私のデータを削除します。</p><h2>この同意の対象外となる事項</h2><p>メールマガジンの受信に関する同意は、フォーム内の専用のチェックボックスで別途行います。それ以外の場合に運営者がデータをどのように取り扱うかは、「<a href="../privacy/">プライバシー</a>」のページに記載されています。</p><p class="small muted">2026年10月26日改定。</p></main>
   <footer class="foot">
     <div class="row2"><span>全24問｜約10分｜正解・不正解はありません</span><span class="footlinks"><a href="../../ja/about/">このサイトについて</a> · <a href="../../ja/services/">サービス</a> · <a href="../../ja/offer/">有料サービス規約</a> · <a href="../../ja/contact/">お問い合わせ</a> · <a href="../../ja/privacy/">プライバシー</a></span></div>
     <nav class="materials" aria-label="DISCの資料"><span class="mlabel">DISCの資料</span><a href="../../ja/disc/">DISC理論とは</a><a href="../../ja/styles/">4つのスタイル</a><a href="../../ja/profiles/">16のタイプ</a><a href="../../ja/results/">結果の見方</a><a href="../../ja/compatibility/">スタイルの相性</a><a href="../../ja/colors/">DISCの4色</a><a href="../../ja/teams/">チームでのDISC</a><a href="../../ja/disc-vs-mbti/">DISCとMBTI</a><a href="../../ja/pdf/">診断シート（PDF）</a><a href="../../ja/faq/">よくある質問</a></nav>

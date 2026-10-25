@@ -25,6 +25,7 @@ const OPTIONAL = ['.content.policy.legal', '.content.extendedMail', '.content.pr
   '.content.cv.author.siteLabel', '.content.cv.author.site', '.content.cv.author.siteUrl',
   // анонсы этого сервиса на сайте (главная, экран результата, профили, «Услуги»; с 2026-10-24, по просьбе заказчика; русская и английская версии) — только вместе с лендингом
   '.content.cvPromo',
+  '.content.paper', '.content.kit', '.content.consentDoc.paperForm',   // бумажный бланк: QR, «Что дальше», блок для групп, бланк на e-mail; набор ведущего (с 2026-10-25, пока русская версия)
   // письмо подписчикам с призывом купить расширенный отчёт (content.mailing.promo, с 2026-10-25): только где отчёт продаётся; обязательность — в проверке ниже.
   // Где ключ есть, он полный (сверка с ru)
   '.content.mailing'];

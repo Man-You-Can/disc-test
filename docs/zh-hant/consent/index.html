@@ -241,6 +241,12 @@ body.has-consent .xbar,body.has-xbar .btn.ctafloat.show{display:none}
 .xprice{font-weight:600}
 .xoffer .xfree{margin:0;font-size:13px;color:var(--muted)}
 .xoffer .xsoon{margin:16px 0 0;padding:10px 14px;border:1px dashed var(--line-strong);border-radius:10px;font-size:14px;color:var(--muted)}
+/* набор ведущего (/kit/, с 2026-10-25): что внутри — карточки с картинками-образцами */
+.kitgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:4px 0 8px}
+@media (max-width:640px){.kitgrid{grid-template-columns:minmax(0,1fr)}}
+.kititem{border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--surface)}
+.kititem h3{margin:0 0 6px;font-size:17px;text-transform:none;letter-spacing:0;color:var(--ink)}.kititem p{margin:0;font-size:15px}
+.kitimg{display:block;margin:0 0 14px}.kitimg img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;border-radius:8px;border:1px solid var(--line);background:#fff}
 .content .xfacts{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 22px;padding:0;list-style:none}
 .content .xfacts li{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:14px;margin:0}
 .xsample{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:14px 0 8px}
@@ -363,6 +369,9 @@ html[lang|=zh] [lang]:not([lang|=zh]):not([lang|=ja]),html[lang=ja] [lang]:not([
 .langbar-x:hover{color:var(--ink);background:var(--soft)}
 .styles-intro{margin-top:34px}
 .home-more{margin-top:34px}
+/* подсказка пришедшему по QR-коду с бумажного бланка (?ref=pdf): как перенести отметки */
+.frompdf{border:1px solid var(--line-strong);border-inline-start:4px solid var(--c);border-radius:12px;padding:12px 16px;margin:0 0 18px;background:var(--surface)}
+.frompdf b{display:block;margin-bottom:4px}.frompdf p{margin:0;font-size:15px;color:var(--muted)}
 /* «Что вы получите» с примером результата — сразу под кнопкой теста (с 2026-10-25): список слева, пример справа; на телефоне — заголовок, пример без графика, список */
 .homeget{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);grid-template-areas:"h c" "l c";grid-template-rows:auto 1fr;gap:4px 28px;align-items:start;margin:30px 0 6px}
 .homeget h2{grid-area:h;font-size:22px;margin:0 0 8px}
@@ -398,6 +407,10 @@ html[lang=ar] .hglabel,html[lang|=zh] .hglabel,html[lang=ja] .hglabel{letter-spa
 /* сильнее общего .card+.card (отступ 16px сверху у второй карточки подряд): карточки сравнения стоят вровень */
 .pdfcmp>.card,.pdfcmp>.card+.card{margin:0}
 .pdfcmp .card.on{border-color:var(--line-strong)}
+.pmail{margin-top:14px}.pmail summary{cursor:pointer;color:var(--ink);text-decoration:underline;text-underline-offset:3px;font-size:15px}
+.pmail form{margin-top:10px;display:grid;gap:10px}.pmail .nlrow{display:flex;gap:8px}.pmail .nlrow input{flex:1;min-width:0}
+@media (max-width:480px){.pmail .nlrow{flex-direction:column}}
+.pdfgroup{margin:26px 0 8px}.pdfgroup h2{margin:0 0 12px}.pdfgroup h3{margin:0 0 6px;font-size:17px;text-transform:none;letter-spacing:0;color:var(--ink)}.pdfgroup p{font-size:15px}
 /* подписка на рассылку на стартовом экране (с 2026-10-22): поле и кнопка в строку, на телефоне — друг под другом */
 .nlbox{margin-top:30px}
 .nlbox h2{margin:0 0 6px;font-size:22px}
@@ -748,7 +761,7 @@ body.has-consent{padding-bottom:160px}
   </header>
   <nav class="sitenav no-print"><a href="../../zh-hant/">測驗</a><a href="../../zh-hant/disc/">什麼是 DISC</a><a href="../../zh-hant/styles/">四種風格</a><a href="../../zh-hant/profiles/">16 種類型</a><a href="../../zh-hant/results/">結果解讀</a><a href="../../zh-hant/compatibility/">風格搭配</a><a href="../../zh-hant/faq/">常見問題</a><a href="../../zh-hant/how-reports-are-made/">報告製作方式</a><a href="../../zh-hant/services/">服務</a><a href="../../zh-hant/contact/">聯絡我們</a></nav>
   <nav class="crumbs"><a href="../../zh-hant/">首頁</a><span>›</span><a href="../privacy/">隱私權政策</a><span>›</span><span aria-current="page">個人資料處理同意書</span></nav>
-  <main class="content"><div class="eyebrow">DISC</div><h1>個人資料處理同意書</h1><p class="lead">我在 disc-test.org 網站的表單中勾選同意處理個人資料的選項並送出該表單，即表示我出於自由意願並基於自身利益，同意營運者依下列條件處理我的個人資料。營運者：Manukyan Armen · 納稅人識別號碼（INN）771583655604。</p><h2>處理目的與資料範圍</h2><p>「用電子郵件收取結果」表單：姓名、電子郵件地址、網站語言版本、測驗日期、答案和 DISC 測驗結果。目的：把測驗結果寄到我的電子郵件信箱，並保存結果，以便再次寄送及回覆我的詢問。</p><p>聯絡表單：姓名、電子郵件地址、留言內容和附加檔案。目的：處理我的留言並予以回覆。</p><p>首頁的郵件訂閱表單：電子郵件地址和網站語言版本。目的：寄送附有訂閱確認連結的郵件給我，並維護訂閱者名單。</p><h2>對資料進行的處理</h2><p>蒐集、記錄、整理、累積、儲存、更正、擷取、使用、提供給下一節所列對象、凍結、刪除和銷毀——均使用自動化方式進行。</p><h2>受託處理者</h2><p>營運者委託下列各方處理資料：主機代管業者（網站在其伺服器上運作，結果資料庫也存放於此），以及用來收發郵件的郵件服務。這些公司依營運者的委託行事。</p><h2>同意的有效期間</h2><p>本同意自送出「用電子郵件收取結果」表單之日起三年內有效；對於聯絡表單中的留言，在回覆後一年內有效；對於訂閱表單，至取消訂閱為止有效（如未確認訂閱，則為 7 天）；或至撤回同意為止。</p><h2>如何撤回同意</h2><p>我可以隨時撤回同意：來信至 <a href="mailto:info@disc-test.org">info@disc-test.org</a>，或使用「<a href="../contact/">聯絡我們</a>」頁面的表單。撤回後，營運者會停止處理，並在三十日內刪除我的資料，除非其有其他合法依據繼續處理。</p><h2>本同意不涵蓋的事項</h2><p>接收訂閱郵件的同意須另外給予——透過表單中獨立的勾選方塊。營運者在其他情況下如何處理資料，請見「<a href="../privacy/">隱私權政策</a>」頁面。</p><p class="small muted">本版本日期：2026年10月25日。</p></main>
+  <main class="content"><div class="eyebrow">DISC</div><h1>個人資料處理同意書</h1><p class="lead">我在 disc-test.org 網站的表單中勾選同意處理個人資料的選項並送出該表單，即表示我出於自由意願並基於自身利益，同意營運者依下列條件處理我的個人資料。營運者：Manukyan Armen · 納稅人識別號碼（INN）771583655604。</p><h2>處理目的與資料範圍</h2><p>「用電子郵件收取結果」表單：姓名、電子郵件地址、網站語言版本、測驗日期、答案和 DISC 測驗結果。目的：把測驗結果寄到我的電子郵件信箱，並保存結果，以便再次寄送及回覆我的詢問。</p><p>聯絡表單：姓名、電子郵件地址、留言內容和附加檔案。目的：處理我的留言並予以回覆。</p><p>首頁的郵件訂閱表單：電子郵件地址和網站語言版本。目的：寄送附有訂閱確認連結的郵件給我，並維護訂閱者名單。</p><h2>對資料進行的處理</h2><p>蒐集、記錄、整理、累積、儲存、更正、擷取、使用、提供給下一節所列對象、凍結、刪除和銷毀——均使用自動化方式進行。</p><h2>受託處理者</h2><p>營運者委託下列各方處理資料：主機代管業者（網站在其伺服器上運作，結果資料庫也存放於此），以及用來收發郵件的郵件服務。這些公司依營運者的委託行事。</p><h2>同意的有效期間</h2><p>本同意自送出「用電子郵件收取結果」表單之日起三年內有效；對於聯絡表單中的留言，在回覆後一年內有效；對於訂閱表單，至取消訂閱為止有效（如未確認訂閱，則為 7 天）；或至撤回同意為止。</p><h2>如何撤回同意</h2><p>我可以隨時撤回同意：來信至 <a href="mailto:info@disc-test.org">info@disc-test.org</a>，或使用「<a href="../contact/">聯絡我們</a>」頁面的表單。撤回後，營運者會停止處理，並在三十日內刪除我的資料，除非其有其他合法依據繼續處理。</p><h2>本同意不涵蓋的事項</h2><p>接收訂閱郵件的同意須另外給予——透過表單中獨立的勾選方塊。營運者在其他情況下如何處理資料，請見「<a href="../privacy/">隱私權政策</a>」頁面。</p><p class="small muted">本版本日期：2026年10月26日。</p></main>
   <footer class="foot">
     <div class="row2"><span>24 題 · 約 10 分鐘 · 沒有對錯之分</span><span class="footlinks"><a href="../../zh-hant/about/">關於本站</a> · <a href="../../zh-hant/services/">服務</a> · <a href="../../zh-hant/offer/">銷售條款</a> · <a href="../../zh-hant/contact/">聯絡我們</a> · <a href="../../zh-hant/privacy/">隱私權政策</a></span></div>
     <nav class="materials" aria-label="DISC 相關資源"><span class="mlabel">DISC 相關資源</span><a href="../../zh-hant/disc/">什麼是 DISC</a><a href="../../zh-hant/styles/">四種風格</a><a href="../../zh-hant/profiles/">16 種類型</a><a href="../../zh-hant/results/">結果解讀</a><a href="../../zh-hant/compatibility/">風格搭配</a><a href="../../zh-hant/colors/">DISC 人格色彩</a><a href="../../zh-hant/teams/">DISC 團隊應用</a><a href="../../zh-hant/disc-vs-mbti/">DISC 與 MBTI</a><a href="../../zh-hant/pdf/">PDF 列印版</a><a href="../../zh-hant/faq/">常見問題</a></nav>

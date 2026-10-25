@@ -214,6 +214,12 @@ body.has-consent .xbar,body.has-xbar .btn.ctafloat.show{display:none}
 .xprice{font-weight:600}
 .xoffer .xfree{margin:0;font-size:13px;color:var(--muted)}
 .xoffer .xsoon{margin:16px 0 0;padding:10px 14px;border:1px dashed var(--line-strong);border-radius:10px;font-size:14px;color:var(--muted)}
+/* набор ведущего (/kit/, с 2026-10-25): что внутри — карточки с картинками-образцами */
+.kitgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:4px 0 8px}
+@media (max-width:640px){.kitgrid{grid-template-columns:minmax(0,1fr)}}
+.kititem{border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--surface)}
+.kititem h3{margin:0 0 6px;font-size:17px;text-transform:none;letter-spacing:0;color:var(--ink)}.kititem p{margin:0;font-size:15px}
+.kitimg{display:block;margin:0 0 14px}.kitimg img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;border-radius:8px;border:1px solid var(--line);background:#fff}
 .content .xfacts{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 22px;padding:0;list-style:none}
 .content .xfacts li{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:14px;margin:0}
 .xsample{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:14px 0 8px}
@@ -336,6 +342,9 @@ html[lang|=zh] [lang]:not([lang|=zh]):not([lang|=ja]),html[lang=ja] [lang]:not([
 .langbar-x:hover{color:var(--ink);background:var(--soft)}
 .styles-intro{margin-top:34px}
 .home-more{margin-top:34px}
+/* подсказка пришедшему по QR-коду с бумажного бланка (?ref=pdf): как перенести отметки */
+.frompdf{border:1px solid var(--line-strong);border-inline-start:4px solid var(--c);border-radius:12px;padding:12px 16px;margin:0 0 18px;background:var(--surface)}
+.frompdf b{display:block;margin-bottom:4px}.frompdf p{margin:0;font-size:15px;color:var(--muted)}
 /* «Что вы получите» с примером результата — сразу под кнопкой теста (с 2026-10-25): список слева, пример справа; на телефоне — заголовок, пример без графика, список */
 .homeget{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);grid-template-areas:"h c" "l c";grid-template-rows:auto 1fr;gap:4px 28px;align-items:start;margin:30px 0 6px}
 .homeget h2{grid-area:h;font-size:22px;margin:0 0 8px}
@@ -371,6 +380,10 @@ html[lang=ar] .hglabel,html[lang|=zh] .hglabel,html[lang=ja] .hglabel{letter-spa
 /* сильнее общего .card+.card (отступ 16px сверху у второй карточки подряд): карточки сравнения стоят вровень */
 .pdfcmp>.card,.pdfcmp>.card+.card{margin:0}
 .pdfcmp .card.on{border-color:var(--line-strong)}
+.pmail{margin-top:14px}.pmail summary{cursor:pointer;color:var(--ink);text-decoration:underline;text-underline-offset:3px;font-size:15px}
+.pmail form{margin-top:10px;display:grid;gap:10px}.pmail .nlrow{display:flex;gap:8px}.pmail .nlrow input{flex:1;min-width:0}
+@media (max-width:480px){.pmail .nlrow{flex-direction:column}}
+.pdfgroup{margin:26px 0 8px}.pdfgroup h2{margin:0 0 12px}.pdfgroup h3{margin:0 0 6px;font-size:17px;text-transform:none;letter-spacing:0;color:var(--ink)}.pdfgroup p{font-size:15px}
 /* подписка на рассылку на стартовом экране (с 2026-10-22): поле и кнопка в строку, на телефоне — друг под другом */
 .nlbox{margin-top:30px}
 .nlbox h2{margin:0 0 6px;font-size:22px}
@@ -1523,7 +1536,7 @@ function initCvForm(c){
   new IntersectionObserver(function(es){ es.forEach(function(x){ passed = !x.isIntersecting && x.boundingClientRect.top < 0; }); upd(); }).observe(first);
   new IntersectionObserver(function(es){ es.forEach(function(x){ near = x.isIntersecting; }); upd(); }).observe(last);
 }
-initCvForm({T: {"name":"姓名","email":"邮箱","button":"申请抢先体验","subject":"抢先体验申请——AI 定制简历服务 (ZH)","message":"我想申请 AI 定制简历服务的抢先体验，享受前 1000 名用户的抢先体验价。","sentTitle":"你已加入抢先体验名单","sent":"开放后我们会发邮件通知你。","nameRequired":"请输入你的姓名","emailRequired":"请输入有效的电子邮箱","pdRequired":"请勾选同意处理个人数据：否则我们无法接收你的数据。","sending":"正在发送留言……","sendFailed":"留言发送失败（{error}）。请重试，或直接写信给我们：{contact}。","tooMany":"该地址已发送多条留言。请稍后再试，或直接写信给我们：{contact}。"}, L: L, esc: esc, $: $, endpoint: "https://api.disc-test.org/", token: "kR7UiShTyG7Wws7t16NkgKN3", email: "info@disc-test.org", pdVersion: "2026-10-25"});
+initCvForm({T: {"name":"姓名","email":"邮箱","button":"申请抢先体验","subject":"抢先体验申请——AI 定制简历服务 (ZH)","message":"我想申请 AI 定制简历服务的抢先体验，享受前 1000 名用户的抢先体验价。","sentTitle":"你已加入抢先体验名单","sent":"开放后我们会发邮件通知你。","nameRequired":"请输入你的姓名","emailRequired":"请输入有效的电子邮箱","pdRequired":"请勾选同意处理个人数据：否则我们无法接收你的数据。","sending":"正在发送留言……","sendFailed":"留言发送失败（{error}）。请重试，或直接写信给我们：{contact}。","tooMany":"该地址已发送多条留言。请稍后再试，或直接写信给我们：{contact}。"}, L: L, esc: esc, $: $, endpoint: "https://api.disc-test.org/", token: "kR7UiShTyG7Wws7t16NkgKN3", email: "info@disc-test.org", pdVersion: "2026-10-26"});
 /* цели Метрики у кнопок теста (cta-top, cta-bottom, cta-float) и плавающая кнопка на телефоне: видна, когда призыв
    после вводного абзаца уже прокручен вверх, а нижний призыв и подвал ещё не на экране (аудит 3, п. 1) */
 (function(){

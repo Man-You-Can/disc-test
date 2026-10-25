@@ -3,6 +3,11 @@
    headless Chrome в src/assets/pdf/disc-test-<язык>.pdf, а сборка кладёт файлы в docs/pdf/. */
 function printHTML(c){
   var L=c.L, t=c.t, esc=c.esc, KEYS=c.KEYS, PROFILE_KEYS=c.PROFILE_KEYS, BLOCK_KEYS=c.BLOCK_KEYS, url=c.url, fontsCss=c.fontsCss||'', fontFamily=c.fontFamily||'sans-serif';
+  // QR-код у подсчёта и страница «Что дальше» (с 2026-10-25; пока только русская версия): тексты content.paper.print, адреса — c.links
+  // {test, extended, kit} с меткой ?ref=pdf, c.qr — функция QR-кода (src/qr.js). Без текстов — бланк прежний
+  var PP=L.content && L.content.paper && L.content.paper.print, links=c.links||{}, qr=c.qr;
+  var bare=function(u){ return String(u).replace(/^https?:\/\//,'').replace(/\?.*$/,''); };
+  var qrBox=function(u){ return '<div class="qr">'+qr(u,{dark:'#111'})+'<span>'+esc(bare(u))+'</span></div>'; };
   var strip=function(s){ return String(s).replace(/<br\s*\/?>/g,' ').replace(/<[^>]+>/g,''); };
   var most=strip(t('test.mostHead')), least=strip(t('test.leastHead'));
   // призыв пройти тест онлайн: заметный блок на первой странице и строка в конце; адрес — ссылка
@@ -32,10 +37,15 @@ function printHTML(c){
     '<div class="pb"></div>'+
     '<h2>'+esc(t('print.keyTitle'))+'</h2><p>'+esc(t('print.keyText'))+'</p><div class="keys">'+keyTable(0,12)+keyTable(12,24)+'</div>'+
     '<h2>'+esc(t('print.countTitle'))+'</h2><p>'+esc(t('print.countText'))+'</p>'+count+
+    (PP && qr && links.test ? '<div class="qrrow">'+qrBox(links.test)+'<div><b>'+esc(PP.qrTitle)+'</b><p>'+esc(PP.qrText)+'</p></div></div>' : '')+
     '<h2>'+esc(t('print.decodeTitle'))+'</h2><p>'+esc(t('print.decodeText'))+'</p>'+
     '<div class="pb"></div>'+
     '<h2 class="first">'+esc(t('print.profilesTitle'))+'</h2>'+profiles+
     online('online')+
+    (PP && qr ? '<div class="pb"></div><h2 class="first">'+esc(PP.nextTitle)+'</h2><p class="nextlead">'+esc(PP.nextLead)+'</p><div class="next">'+
+      [['online', links.test], ['extended', links.extended], ['group', links.kit]].filter(function(x){ return PP[x[0]] && x[1]; }).map(function(x){ var it=PP[x[0]];
+        return '<div class="nextitem">'+qrBox(x[1])+'<div><h3>'+esc(it.title)+'</h3><p>'+esc(it.text)+'</p></div></div>'; }).join('')+'</div>'+
+      '<p class="online">'+esc(PP.footer||'')+'</p>' : '')+
     '</body></html>';
 }
 var CSS='@page{size:A4;margin:13mm 13mm 15mm}*{box-sizing:border-box}body{font-family:__FONT__;font-size:10.5pt;line-height:1.35;color:#111;margin:0}'+
@@ -55,5 +65,12 @@ var CSS='@page{size:A4;margin:13mm 13mm 15mm}*{box-sizing:border-box}body{font-f
   '.count{border-collapse:collapse;width:100%;margin-bottom:3mm}.count th,.count td{border:1px solid #bbb;padding:1.8mm 2mm;text-align:start}.count th{background:#f2f2f2;font-weight:600;font-size:9.5pt}.count td.w{width:22%}.count .k{display:inline-block;min-width:5mm}'+
   '.profiles{column-count:2;column-gap:6mm}.prof{break-inside:avoid;margin-bottom:2.8mm}.prof b{display:inline-block;min-width:8mm;font-weight:700;color:#3B6FB6}.prof p{font-size:9.5pt;color:#333;margin:0.5mm 0 0}.profiles.dense .prof{margin-bottom:2.2mm}.profiles.dense .prof p{font-size:9pt}'+
   '.ctatop{border:1.5px solid #3B6FB6;background:#EEF3FA;border-radius:2mm;padding:2.5mm 4mm;margin-bottom:4mm;-webkit-print-color-adjust:exact;print-color-adjust:exact}.ctatop b{font-size:11.5pt}.ctatop p{margin:0.8mm 0 0}a{color:#3B6FB6;white-space:nowrap;direction:ltr;unicode-bidi:isolate}'+
-  '.online{margin-top:5mm;padding-top:2mm;border-top:1px solid #ccc;font-size:9.5pt;color:#555}';
+  '.online{margin-top:5mm;padding-top:2mm;border-top:1px solid #ccc;font-size:9.5pt;color:#555}'+
+  '.qr{flex:none;width:30mm;text-align:center;font-size:7.5pt;color:#555;direction:ltr}.qr svg{display:block;width:30mm;height:30mm}.qr span{display:block;margin-top:0.5mm;word-break:break-all}'+
+  '.qrrow{display:flex;gap:4mm;align-items:center;border:1.5px solid #3B6FB6;background:#EEF3FA;border-radius:2mm;padding:1.5mm 3mm;margin-top:3mm;break-inside:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}'+
+  '.qrrow .qr{width:21mm}.qrrow .qr svg{width:21mm;height:21mm}.qrrow .qr span{display:none}'+
+  '.qrrow b{font-size:10.5pt}.qrrow p{margin:0.5mm 0 0;font-size:9.5pt;line-height:1.3}'+
+  '.nextlead{font-size:11pt;margin-bottom:5mm}.next{display:grid;gap:5mm}'+
+  '.nextitem{display:flex;gap:6mm;align-items:center;border:1px solid #bbb;border-radius:2mm;padding:4mm 5mm;break-inside:avoid}'+
+  '.nextitem h3{font-size:12.5pt;margin:0 0 1.5mm}.nextitem p{margin:0;font-size:10.5pt}';
 if (typeof module !== 'undefined' && module.exports) module.exports = printHTML;
