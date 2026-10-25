@@ -1406,7 +1406,8 @@ function shareButtons(mail){
   return '<div class="actions"><button class="btn secondary" type="button" id="shareOpen" aria-haspopup="dialog">'+t('share.profile')+'</button>'+
     // кнопка «Сохранить профиль» (#print, скачивание краткого отчёта — savePdf) убрана 2026-10-25 по просьбе заказчика;
     // тексты о данных про «Сохранить в PDF» (ui.privacy, pd.cookieDetails, content.policy) по его решению пока не менялись
-    (mail ? '<button class="btn secondary" type="button" id="mailOpen" aria-expanded="'+(mail==='open')+'" aria-controls="sendBox"'+(mail==='open' ? ' hidden' : '')+'>'+t('share.send')+'</button>' : '')+'</div>'+
+    // «Отправить на e-mail» — основная (белая в тёмной теме) кнопка карточки: с 2026-10-25 по просьбе заказчика
+    (mail ? '<button class="btn" type="button" id="mailOpen" aria-expanded="'+(mail==='open')+'" aria-controls="sendBox"'+(mail==='open' ? ' hidden' : '')+'>'+t('share.send')+'</button>' : '')+'</div>'+
     '<dialog class="sharedlg" id="shareDlg" aria-labelledby="shareDlgT"><div class="sharedlg-in">'+
       '<div class="sharedlg-head"><h2 id="shareDlgT">'+t('share.profile')+'</h2><button class="sharedlg-x" type="button" id="shareX" aria-label="'+esc(t('share.close'))+'" title="'+esc(t('share.close'))+'">×</button></div>'+
       '<div class="sharedlg-list"><button class="btn secondary" type="button" id="copyLink">'+LINK_ICON+t('share.copyLink')+'</button>'+
