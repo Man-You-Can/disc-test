@@ -24,7 +24,10 @@ const OPTIONAL = ['.content.policy.legal', '.content.extendedMail', '.content.pr
   // английская версия лендинга (с 2026-10-24): автор без ссылки на личный сайт — блок .cvsite не выводится
   '.content.cv.author.siteLabel', '.content.cv.author.site', '.content.cv.author.siteUrl',
   // анонсы этого сервиса на сайте (главная, экран результата, профили, «Услуги»; с 2026-10-24, по просьбе заказчика; русская и английская версии) — только вместе с лендингом
-  '.content.cvPromo'];
+  '.content.cvPromo',
+  // письмо подписчикам с призывом купить расширенный отчёт (content.mailing.promo, с 2026-10-25): решение заказчика — сначала только русская версия,
+  // остальные языки с покупкой — позже, когда их тексты будут написаны и вычитаны (исключение из правила от 2026-10-14). Где ключ есть, он полный (сверка с ru)
+  '.content.mailing'];
 // специальная цена на час после теста (product.pay.offer; offerPriceRub, offerPriceUsd в site.config.json; с 2026-10-22) обязательна вместе с product.pay:
 // её тексты сравниваются с ru.json как часть pay
 // Страница «Как готовятся отчёты» (content.howMade) и её пункт в шапке (ui["nav.howMade"]) обязательны во всех языках (с 2026-10-14).
@@ -74,6 +77,7 @@ for (const f of files) {
   if (sm && sm < 6) errs.push('.content.product: sample keys must come together (sampleTitle, sampleNote, sampleAlt, sampleCaption, block.sample, pdf.sheets)');
   if (!!P.pay !== !!C.extendedMail) errs.push('.content.product.pay and .content.extendedMail must come together');
   if (P.pay && P.pay.offer && !['regular', 'cta', 'note', 'left', 'expired'].every(k => typeof P.pay.offer[k] === 'string' && P.pay.offer[k]) ) errs.push('.content.product.pay.offer: needs regular, cta, note, left and expired');
+  if (C.mailing && !P.pay) errs.push('.content.mailing: only where the report is on sale (needs product.pay)');
   if (P.promo && !P.pay) errs.push('.content.product.promo: only where the report is on sale (needs product.pay)');
   // Правило заказчика от 2026-10-14: всё, что сделано для продажи в русской версии, применяется в языке вместе с покупкой
   if (P.pay && !P.promo) errs.push('.content.product.promo: missing — the report is on sale in this language, so everything done for sales in the Russian version applies here (CLAUDE.md)');

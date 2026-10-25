@@ -1413,7 +1413,7 @@ function initCvForm(c){
   new IntersectionObserver(function(es){ es.forEach(function(x){ passed = !x.isIntersecting && x.boundingClientRect.top < 0; }); upd(); }).observe(first);
   new IntersectionObserver(function(es){ es.forEach(function(x){ near = x.isIntersecting; }); upd(); }).observe(last);
 }
-initCvForm({T: {"name":"姓名","email":"邮箱","button":"申请抢先体验","subject":"抢先体验申请——AI 定制简历服务 (ZH)","message":"我想申请 AI 定制简历服务的抢先体验，享受前 1000 名用户的抢先体验价。","sentTitle":"你已加入抢先体验名单","sent":"开放后我们会发邮件通知你。","nameRequired":"请输入你的姓名","emailRequired":"请输入有效的电子邮箱","pdRequired":"请勾选同意处理个人数据：否则我们无法接收你的数据。","sending":"正在发送留言……","sendFailed":"留言发送失败（{error}）。请重试，或直接写信给我们：{contact}。","tooMany":"该地址已发送多条留言。请稍后再试，或直接写信给我们：{contact}。"}, L: L, esc: esc, $: $, endpoint: "https://api.disc-test.org/", token: "kR7UiShTyG7Wws7t16NkgKN3", email: "info@disc-test.org", pdVersion: "2026-10-22"});
+initCvForm({T: {"name":"姓名","email":"邮箱","button":"申请抢先体验","subject":"抢先体验申请——AI 定制简历服务 (ZH)","message":"我想申请 AI 定制简历服务的抢先体验，享受前 1000 名用户的抢先体验价。","sentTitle":"你已加入抢先体验名单","sent":"开放后我们会发邮件通知你。","nameRequired":"请输入你的姓名","emailRequired":"请输入有效的电子邮箱","pdRequired":"请勾选同意处理个人数据：否则我们无法接收你的数据。","sending":"正在发送留言……","sendFailed":"留言发送失败（{error}）。请重试，或直接写信给我们：{contact}。","tooMany":"该地址已发送多条留言。请稍后再试，或直接写信给我们：{contact}。"}, L: L, esc: esc, $: $, endpoint: "https://api.disc-test.org/", token: "kR7UiShTyG7Wws7t16NkgKN3", email: "info@disc-test.org", pdVersion: "2026-10-25"});
 /* цели Метрики у кнопок теста (cta-top, cta-bottom, cta-float) и плавающая кнопка на телефоне: видна, когда призыв
    после вводного абзаца уже прокручен вверх, а нижний призыв и подвал ещё не на экране (аудит 3, п. 1) */
 (function(){

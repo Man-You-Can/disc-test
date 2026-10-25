@@ -1191,7 +1191,8 @@ fs.mkdirSync(path.join(OUT, 'fonts'), { recursive: true });
 for (const f of fs.existsSync(path.join(ASSETS, 'fonts')) ? fs.readdirSync(path.join(ASSETS, 'fonts')) : []) if (f.endsWith('.woff2')) fs.copyFileSync(path.join(ASSETS, 'fonts', f), path.join(OUT, 'fonts', f));
 // листы образца расширенного отчёта (картинки; готовятся вручную из PDF образца, см. PROJECT.md от 2026-10-09)
 if (fs.existsSync(path.join(ASSETS, 'extended'))) { fs.mkdirSync(path.join(OUT, 'extended'), { recursive: true });
-  for (const f of fs.readdirSync(path.join(ASSETS, 'extended'))) if (f.endsWith('.webp')) fs.copyFileSync(path.join(ASSETS, 'extended', f), path.join(OUT, 'extended', f)); }
+  // <язык>-mail.jpg — листы образца для письма подписчикам (content.mailing.promo): JPEG, а не WebP — WebP показывают не все почтовые программы
+  for (const f of fs.readdirSync(path.join(ASSETS, 'extended'))) if (f.endsWith('.webp') || /^[a-z-]+-mail\.jpg$/.test(f)) fs.copyFileSync(path.join(ASSETS, 'extended', f), path.join(OUT, 'extended', f)); }
 // файлы для скачивания (пример CV в PDF и DOCX на лендинге /ru/cv/, с 2026-10-22)
 if (fs.existsSync(path.join(ASSETS, 'files'))) { fs.mkdirSync(path.join(OUT, 'files'), { recursive: true });
   for (const f of fs.readdirSync(path.join(ASSETS, 'files'))) if (/\.(pdf|docx)$/.test(f)) fs.copyFileSync(path.join(ASSETS, 'files', f), path.join(OUT, 'files', f)); }
@@ -1239,6 +1240,13 @@ for (const L of locales) {
   if (L.content.extendedMail) mailData[L.lang].extended = L.content.extendedMail;
   // оплата расширенного отчёта на своём сервере: название услуги для платёжной страницы и чека, письмо-напоминание о неоконченной оплате, валюта заказа (USD или EUR через Prodamus)
   if (L.content.product && L.content.product.pay && L.content.product.pay.remind) mailData[L.lang].pay = { name: L.content.services.name, remind: L.content.product.pay.remind, dateLocale: L.dateLocale, currency: L.content.services.currency };
+  // письмо подписчикам с призывом купить расширенный отчёт (с 2026-10-25; отправляет свой сервер, src/promo.js): только где отчёт продаётся и есть тексты письма.
+  // Тезисы, подпись к листам, кнопка и «бесплатно» — из блока «Расширенный отчёт» (product.block), гарантия — из покупки; цена — обычная (servicePrice).
+  // image — есть ли картинка листов образца для писем (src/assets/extended/<язык>-mail.jpg; сайт отдаёт её по адресу /extended/<язык>-mail.jpg)
+  const MP = L.content.mailing && L.content.mailing.promo, PP = L.content.product;
+  if (MP && PP && PP.pay && PP.block) mailData[L.lang].promo = Object.assign({}, MP, { list: PP.block.list, sample: PP.block.sample || '', button: PP.block.button, free: PP.block.free,
+    guarantee: PP.pay.guarantee, price: MP.price.replace('{price}', servicePrice(L)), dateLocale: L.dateLocale,
+    image: fs.existsSync(path.join(SRC, 'assets', 'extended', L.lang + '-mail.jpg')) });
 }
 // Блок о расширенном отчёте в PDF краткого отчёта и в теле письма с результатом: в языках, где есть страница отчёта и тексты `content.product.pdf`.
 // Листы образца — только там, где есть и их картинки для PDF, и подписи (hasSamples): они вшиваются в данные ядра, при сборке PDF сеть закрыта.

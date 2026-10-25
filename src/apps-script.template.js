@@ -331,6 +331,82 @@ function composeSubscribeMail(lang, url) {
   return { subject: fmt(X.subject, vars), html: html, text: text };
 }
 
+/**
+ * Письмо подписчику с призывом купить расширенный отчёт (с 2026-10-25; отправляет свой сервер, src/promo.js — одно письмо на адрес через сутки после согласия).
+ * Тексты — DATA[язык].promo (content.mailing.promo; тезисы, подпись к листам, кнопка и «бесплатно» — из блока product.block, гарантия — product.pay.guarantee).
+ * o: {code — код результата для ссылки на страницу отчёта, consentAt — дата согласия на рассылку (Date), unsubUrl — ссылка отписки}.
+ * Возвращает {subject, preheader, html, text}. Цена — обычная (на час после теста письмо не приходится). Картинка — листы образца с сайта (одна на язык, без меток).
+ */
+function composePromoMail(r, lang, o) {
+  var L = DATA[lang], X = L.promo, rtl = L.dir === 'rtl', start = rtl ? 'right' : 'left';
+  var sc = score(r), c = classify(sc), prof = L.profiles[c.key];
+  var low = KEYS.slice().sort(function (x, y) { return sc.net[y] - sc.net[x]; })[3];
+  var site = SITE_URL.replace(/^https?:\/\//, ''), home = langHome(lang);
+  var href = home + 'extended-report/?src=nl#r=' + o.code;
+  // даты: в русском письме — 24.10.2026, в остальных — запись языка (October 24, 2026), как в напоминании об оплате
+  function day(d) {
+    if (lang !== 'ru' && X.dateLocale) { try { return new Intl.DateTimeFormat(X.dateLocale, { timeZone: 'Europe/Moscow', day: 'numeric', month: 'long', year: 'numeric' }).format(d); } catch (e) {} }
+    return Utilities.formatDate(d, 'Europe/Moscow', 'dd.MM.yyyy');
+  }
+  var tested = new Date(r.t); if (isNaN(tested.getTime())) tested = o.consentAt;
+  var name = String(r.name || '').trim();
+  var subject = name ? fmt(X.subject, { name: name, key: c.key }) : fmt(X.subjectNoName, { key: c.key });
+  var greeting = name ? fmt(L.email.greeting, { name: name }) : X.greetingNoName;
+  var lowVars = { k: low, scale: X.scales[low], pct: pct(sc.net[low]) };
+  var preheader = fmt(X.preheader, lowVars), hook = fmt(X.hook, lowVars);
+  var styleName = c.s ? L.keys[c.p] + ' + ' + L.keys[c.s] : L.keys[c.p];
+  var price = fmt(X.priceLine, { price: '\u0000' }).split('\u0000');
+  // {site} в тексте — ссылка на главную версии (решение заказчика: «disc-test.org» в письме — всегда ссылкой)
+  function withSite(s, vars, color) { return esc(fmt(s, Object.assign({ site: '\u0001' }, vars))).replace('\u0001', '<a href="' + esc(home) + '" style="color:' + color + '">' + esc(site) + '</a>'); }
+  var dot = function (k, m) { return '<span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:' + COLORS[k] + ';margin-' + (rtl ? 'left' : 'right') + ':' + m + ';vertical-align:middle"></span>'; };
+  var badge = '<span style="color:' + COLORS[c.p] + '">' + c.p + '</span>' + (c.s ? '<span style="color:' + COLORS[c.s] + ';font-size:22px">' + c.s + '</span>' : '');
+  var rows = KEYS.map(function (k) {
+    var p = pct(sc.net[k]);
+    return '<tr><td style="padding:5px 10px 5px 0;font-weight:bold;color:' + COLORS[k] + ';font-size:16px;width:24px">' + k + '</td>' +
+      '<td style="padding:5px 10px 5px 0;font-size:14px">' + esc(L.keys[k]) + '</td>' +
+      '<td style="padding:5px 0;width:140px"><div style="height:6px;background:#E9EBEF;border-radius:3px"><div style="height:6px;width:' + p + '%;background:' + COLORS[k] + ';border-radius:3px"></div></div></td>' +
+      '<td style="padding:5px 0 5px 10px;font-size:14px;font-weight:bold;text-align:right;width:44px">' + p + '%</td></tr>';
+  }).join('');
+  var image = X.image ? SITE_URL + '/extended/' + lang + '-mail.jpg' : '';
+  var html = '<!DOCTYPE html><html lang="' + lang + '" dir="' + (L.dir || 'ltr') + '"><body style="margin:0;background:#F3F4F6;font-family:Arial,Helvetica,sans-serif;color:#1B2027">' +
+    // анонс: почтовые программы показывают его под темой в списке писем; в самом письме не виден. Пробелы нулевой ширины после него не дают подтянуть в анонс текст письма
+    '<div style="display:none;max-height:0;max-width:0;overflow:hidden;mso-hide:all;font-size:1px;line-height:1px;color:#F3F4F6;opacity:0">' + esc(preheader) + new Array(41).join('&#8199;&#847;') + '</div>' +
+    '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F3F4F6"><tr><td align="center" style="padding:24px 12px">' +
+    '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background:#ffffff;border:1px solid #D9DDE3;border-radius:14px"><tr><td style="padding:28px;font-size:16px;line-height:1.5">' +
+    // логотип сайта — четыре точки D, I, S, C разметкой, без картинки
+    '<p style="margin:0 0 16px;font-size:12px;line-height:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:bold"><a href="' + esc(home) + '" style="color:#5B6470;text-decoration:none">' +
+      dot('D', '3px') + dot('I', '3px') + dot('S', '3px') + dot('C', '10px') + '<span style="vertical-align:middle">DISC</span></a></p>' +
+    '<p style="margin:0 0 8px">' + esc(greeting) + '</p>' +
+    '<p style="margin:0 0 14px">' + withSite(X.intro, { date: day(tested) }, '#1B2027') + '</p>' +
+    '<p style="margin:0 0 2px;font-size:34px;font-weight:bold;line-height:1">' + badge + '&nbsp; ' + esc(prof.name) + '</p>' +
+    '<p style="margin:0 0 14px;font-size:13px;color:#5B6470">' + esc(styleName) + '</p>' +
+    '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 18px">' + rows + '</table>' +
+    '<p style="margin:0 0 14px">' + esc(X.lead) + '</p>' +
+    '<p style="margin:0 0 18px;padding:8px 12px;background:#F3F4F6;border-' + start + ':3px solid ' + COLORS[low] + '">' + esc(hook) + '</p>' +
+    '<p style="margin:0 0 6px;font-weight:bold">' + esc(X.listTitle) + '</p>' +
+    '<ul style="margin:0 0 14px;padding-' + start + ':20px">' + X.list.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') + '</ul>' +
+    '<p style="margin:0 0 18px">' + esc(X.why) + '</p>' +
+    (image ? '<p style="margin:0 0 6px"><a href="' + esc(href) + '"><img src="' + esc(image) + '" width="504" alt="' + esc(X.imageAlt) + '" style="display:block;width:100%;max-width:504px;height:auto;border:0"></a></p>' +
+      (X.sample ? '<p style="margin:0 0 14px;font-size:12px;color:#5B6470">' + esc(X.sample) + '</p>' : '') : '') +
+    '<p style="margin:0 0 18px">' + esc(X.size) + '</p>' +
+    // карточка покупки: цена, кнопка, срок доставки и гарантия вместе (решение заказчика от 2026-10-25)
+    '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 22px;border:1px solid #D9DDE3;border-radius:12px"><tr><td style="padding:16px 14px">' +
+      '<p style="margin:0 0 12px;font-size:15px">' + esc(price[0]) + '<b style="font-size:24px">' + esc(X.price) + '</b>' + esc(price[1] || '') + '</p>' +
+      '<a href="' + esc(href) + '" style="display:block;background:#1B2027;color:#ffffff;text-decoration:none;font-size:15px;font-weight:bold;text-align:center;padding:13px 8px;border-radius:8px">' + esc(X.button) + '</a>' +
+      '<p style="margin:12px 0 0;font-size:13px;line-height:1.45;color:#5B6470">' + esc(X.delivery + ' ' + X.guarantee) + '</p>' +
+    '</td></tr></table>' +
+    '<p style="margin:0 0 22px;font-size:13px;color:#5B6470">' + esc(X.free) + '</p>' +
+    '<p style="margin:0;padding-top:12px;border-top:1px solid #D9DDE3;font-size:12px;color:#5B6470">' + withSite(X.footer, { date: day(o.consentAt) }, '#5B6470') +
+      ' <a href="' + esc(o.unsubUrl) + '" style="color:#5B6470">' + esc(L.email.unsubscribe) + '</a>.</p>' +
+    '</td></tr></table></td></tr></table></body></html>';
+  var text = greeting + '\n\n' + fmt(X.intro, { date: day(tested), site: site }) + '\n' + c.key + ' · ' + prof.name + ' (' + styleName + ')\n' +
+    KEYS.map(function (k) { return k + ' ' + L.keys[k] + ': ' + pct(sc.net[k]) + '%'; }).join('\n') + '\n\n' + X.lead + '\n\n' + hook + '\n\n' +
+    X.listTitle + '\n' + X.list.map(function (t) { return '— ' + t; }).join('\n') + '\n\n' + X.why + '\n\n' + X.size + '\n\n' +
+    fmt(X.priceLine, { price: X.price }) + '\n' + X.button + ': ' + href + '\n' + X.delivery + ' ' + X.guarantee + '\n' + X.free + '\n\n' +
+    fmt(X.footer, { date: day(o.consentAt), site: site }) + '\n' + L.email.unsubscribe + ': ' + o.unsubUrl + '\n';
+  return { subject: subject, preheader: preheader, html: html, text: text };
+}
+
 /** Отметка в строке результата; повторная отправка дописывается к прежней через «; ». */
 function noteExtended(saved, text) {
   if (!saved) return;

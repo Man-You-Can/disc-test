@@ -294,6 +294,33 @@ const pR = ctx.composePayRemindMail(ctx.decodeResult(cX), 'ru', { order: '261011
 const saleOf = lg => { const P = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'src', 'locales', lg + '.json'), 'utf8')).content.product; return !!(P && P.pay); };
 check('pay: price from site settings, service name and reminder texts only where the report is sold', ctx.EXTENDED_PRICE_RUB === 790 && ctx.EXTENDED_OFFER_RUB === 490 && ctx.EXTENDED_PRICE_USD === 9.99 && ctx.EXTENDED_OFFER_USD === 6.99 && ctx.EXTENDED_PRICE_EUR === 9.99 && ctx.EXTENDED_OFFER_EUR === 6.99 && ctx.EXTENDED_OFFER_MIN === 60 && ctx.DATA.ru.pay.name === 'Расширенная версия DISC' &&
   Object.keys(ctx.DATA).filter(lg => ctx.DATA[lg].pay).join() === Object.keys(ctx.DATA).filter(saleOf).join() && Object.keys(ctx.DATA).filter(lg => ctx.DATA[lg].pay).includes('ru'));
+// письмо подписчикам с призывом купить расширенный отчёт (content.mailing.promo, с 2026-10-25; отправляет свой сервер, src/promo.js)
+{
+  const mailingOf = lg => { const C = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'src', 'locales', lg + '.json'), 'utf8')).content; return !!(C.mailing && C.mailing.promo && C.product && C.product.pay); };
+  check('promo: texts only where the report is sold and the letter is written (Russian first)', typeof ctx.composePromoMail === 'function' &&
+    Object.keys(ctx.DATA).filter(lg => ctx.DATA[lg].promo).join() === Object.keys(ctx.DATA).filter(mailingOf).join() && !!ctx.DATA.ru.promo, Object.keys(ctx.DATA).filter(lg => ctx.DATA[lg].promo).join());
+  const rP = ctx.decodeResult(cX), scP = ctx.score(rP), cP = ctx.classify(scP);
+  const lowP = ['D', 'I', 'S', 'C'].slice().sort((x, y) => scP.net[y] - scP.net[x])[3];
+  const unsubP = 'https://disc-test.org/ru/unsubscribe/#u=AbCdEfGhIjKlMnOpQrStUv';
+  const mP = ctx.composePromoMail(rP, 'ru', { code: cX, consentAt: new Date('2026-10-01T10:05:00Z'), unsubUrl: unsubP });
+  const hrefP = 'https://disc-test.org/ru/extended-report/?src=nl#r=' + cX;
+  const dP = ctx.Utilities.formatDate(new Date('2026-10-01T10:05:00Z'), 'Europe/Moscow', 'dd.MM.yyyy');   // здесь Utilities подменён: дата условная; настоящий вид (01.10.2026) даёт ядро сервера
+  check('promo (ru): subject with the name and profile, preheader with the lowest scale', mP.subject === 'Пётр Буянов, что ещё говорит ваш результат ' + cP.key &&
+    mP.preheader.includes('самая низкая шкала — ' + lowP + ' (' + ctx.DATA.ru.promo.scales[lowP] + '), ' + ctx.pct(scP.net[lowP]) + ' %') && mP.html.includes(ctx.esc(mP.preheader)), mP.subject + ' | ' + mP.preheader);
+  check('promo (ru): dates, site link, four scores, lowest scale, list, why, size', [mP.html, mP.text].every(s => s.includes(dP + ' вы прошли тест DISC на')) &&
+    mP.html.includes('<a href="https://disc-test.org/ru/" style="color:#1B2027">disc-test.org</a>') && ['D', 'I', 'S', 'C'].every(k => mP.html.includes('width:' + ctx.pct(scP.net[k]) + '%')) &&
+    mP.html.includes('(' + ctx.DATA.ru.promo.scales[lowP] + '): ' + ctx.pct(scP.net[lowP])) && ctx.DATA.ru.promo.list.every(t => mP.html.includes(ctx.esc(t))) &&
+    mP.html.includes('Пригодится перед собеседованием') && mP.html.includes('на каждой странице ваше имя'), mP.text.slice(0, 400));
+  check('promo (ru): regular price 790 ₽ in the card, button to the report page with the result and the nl mark, guarantee', ctx.EXTENDED_PRICE_RUB === 790 &&
+    mP.html.includes('Расширенный отчёт — <b style="font-size:24px">790 ₽</b>') && mP.html.includes('href="' + ctx.esc(hrefP) + '"') && mP.text.includes(hrefP) &&
+    mP.html.includes('сразу после оплаты. Не подошло — вернём деньги в течение 7 дней.') && !mP.html.includes('490') && !mP.html.includes('PDF на e-mail'), mP.text);
+  check('promo (ru): sheets image from the site, logo dots, footer with the consent date, site link and unsubscribe link', (ctx.DATA.ru.promo.image ? mP.html.includes('<img src="https://disc-test.org/extended/ru-mail.jpg"') : true) &&
+    mP.html.includes('border-radius:50%;background:#C9453D') && mP.html.includes('потому что ' + dP + ' согласились получать рассылку <a href="https://disc-test.org/ru/" style="color:#5B6470">disc-test.org</a>') &&
+    mP.html.includes('<a href="' + unsubP + '" style="color:#5B6470">Отписаться от рассылки</a>') && mP.text.includes('Отписаться от рассылки: ' + unsubP) && !/ИНН|Отправитель/.test(mP.html), mP.html.slice(-700));
+  check('promo (ru): nothing unfilled, no e-mail of the participant in the visible text', ![mP.subject, mP.preheader, mP.html, mP.text].some(s => /\{\w+\}|undefined|null/.test(s)) && !mP.text.includes('@b.co'));
+  const mP0 = ctx.composePromoMail(Object.assign({}, rP, { name: '' }), 'ru', { code: cX, consentAt: new Date('2026-10-01T10:05:00Z'), unsubUrl: unsubP });
+  check('promo (ru): without a name — neutral subject and greeting', mP0.subject === 'Что ещё говорит ваш результат DISC ' + cP.key && mP0.html.includes('>Здравствуйте!</p>'), mP0.subject);
+}
 // напоминание в языке с оплатой через Prodamus: цена в долларах, дата в записи языка (не 21.10.2026), ничего русского
 if (ctx.DATA.en && ctx.DATA.en.pay) {
   const pE = ctx.composePayRemindMail(ctx.decodeResult(cX), 'en', { order: '261019-AB12CD', url: 'https://api.disc-test.org/pay/go?order=261019-AB12CD&key=k', until: new Date('2026-10-21T09:00:00Z'), price: ctx.EXTENDED_OFFER_USD });
