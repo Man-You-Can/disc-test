@@ -1550,7 +1550,7 @@ function renderReport(r, opts){
   }
   // «Поделиться профилем» — окно со ссылкой и соцсетями; адреса соцсетей собираются только при нажатии (ссылку с кодом в разметку не пишем)
   shareDialog(link, t('share.msg', {name: prof.name, key: cls.key}));
-  $('#print').addEventListener('click', function(){ savePdf(r, cls.key, this); });
+  if($('#print')) $('#print').addEventListener('click', function(){ savePdf(r, cls.key, this); });
   if($('#restart')) $('#restart').addEventListener('click', function(){ dropHash(); renderIntro(); window.scrollTo(0,0); });
   if($('#backAdmin')) $('#backAdmin').addEventListener('click', function(){ renderAdmin(); window.scrollTo(0,0); });
   if(opts.own && RESULT_EMAIL){
@@ -1616,7 +1616,8 @@ function sendFormHTML(r, who, base, open){
 }
 function shareButtons(mail){
   return '<div class="actions"><button class="btn secondary" type="button" id="shareOpen" aria-haspopup="dialog">'+t('share.profile')+'</button>'+
-    '<button class="btn secondary" type="button" id="print">'+t('share.saveProfile')+'</button>'+
+    // кнопка «Сохранить профиль» (#print, скачивание краткого отчёта — savePdf) убрана 2026-10-25 по просьбе заказчика;
+    // тексты о данных про «Сохранить в PDF» (ui.privacy, pd.cookieDetails, content.policy) по его решению пока не менялись
     (mail ? '<button class="btn secondary" type="button" id="mailOpen" aria-expanded="'+(mail==='open')+'" aria-controls="sendBox"'+(mail==='open' ? ' hidden' : '')+'>'+t('share.send')+'</button>' : '')+'</div>'+
     '<dialog class="sharedlg" id="shareDlg" aria-labelledby="shareDlgT"><div class="sharedlg-in">'+
       '<div class="sharedlg-head"><h2 id="shareDlgT">'+t('share.profile')+'</h2><button class="sharedlg-x" type="button" id="shareX" aria-label="'+esc(t('share.close'))+'" title="'+esc(t('share.close'))+'">×</button></div>'+
