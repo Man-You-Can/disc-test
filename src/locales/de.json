@@ -1770,7 +1770,7 @@
         {
           "h": "3. Preis und Zahlung",
           "p": [
-            "3.1. Der Preis der Leistung beträgt {price} Euro. Der Anbieter kann die Leistung innerhalb von 60 Minuten nach Durchführung des Tests auf der Website zum Sonderpreis von {offerPrice} Euro anbieten und ein solches Angebot jederzeit beginnen oder beenden. Der Sonderpreis gilt nur, solange die Website ihn neben dem Preis zusammen mit der verbleibenden Zeit anzeigt; eine Wiederholung des Tests verlängert diese Frist nicht. Der Preis, zu dem eine Bestellung aufgegeben wird, wird auf der Zahlungsseite angezeigt und bleibt für diese Bestellung bestehen: Die Beendigung des Angebots berührt bereits aufgegebene Bestellungen nicht. Der Preis ist ein Endpreis: Weitere Zahlungen an den Anbieter fallen nicht an.",
+            "3.1. Der Preis der Leistung wird auf der Website neben der Kaufschaltfläche und auf der Zahlungsseite in Euro angegeben. Der Anbieter kann den Preis der Leistung jederzeit ändern sowie die Leistung für einen Zeitraum nach Durchführung des Tests auf der Website zu einem Sonderpreis anbieten und ein solches Angebot beginnen oder beenden. Der Sonderpreis gilt nur, solange die Website ihn neben dem Preis zusammen mit der verbleibenden Zeit anzeigt; eine Wiederholung des Tests verlängert diese Frist nicht. Der Preis, zu dem eine Bestellung aufgegeben wird, wird auf der Zahlungsseite angezeigt und bleibt für diese Bestellung bestehen: Preisänderungen und die Beendigung des Angebots berühren bereits aufgegebene Bestellungen nicht. Der Preis ist ein Endpreis: Weitere Zahlungen an den Anbieter fallen nicht an.",
             "3.2. Die Leistung ist vor ihrer Erbringung vollständig zu bezahlen, und zwar mit Bankkarte oder einer anderen elektronischen Zahlungsart, die auf der Zahlungsseite angeboten wird. Die Zahlung nimmt der Zahlungsabwickler entgegen.",
             "3.3. Die Leistung gilt als bezahlt, sobald der Anbieter die Zahlungsbestätigung des Zahlungsabwicklers erhalten hat.",
             "3.4. Die Kartendaten gibt der Kunde auf der gesicherten Seite des Zahlungsabwicklers ein. Der Anbieter erhält und speichert diese Daten nicht.",
@@ -1981,9 +1981,9 @@
         "offer": {
           "regular": "Regulärer Preis",
           "cta": "Jetzt für {offerPrice} € sichern",
-          "note": "Sonderpreis eine Stunde nach dem Test, danach {price} €",
+          "note": "Sonderpreis für {duration} nach dem Test, danach {price} €",
           "left": "Noch",
-          "expired": "Die Stunde nach dem Test ist vorbei: Der Bericht kostet jetzt {price} €. Klicken Sie erneut auf „Kaufen“."
+          "expired": "Der Sonderpreis ist abgelaufen: Der Bericht kostet jetzt {price} €. Klicken Sie erneut auf „Kaufen“."
         },
         "emailLabel": "E-Mail-Adresse für den Bericht als PDF",
         "emailPlaceholder": "Geben Sie Ihre E-Mail-Adresse ein",

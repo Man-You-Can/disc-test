@@ -824,7 +824,7 @@
         {
           "h": "3. Ücret ve ödeme",
           "p": [
-            "3.1. Hizmet’in ücreti {price} ABD dolarıdır. Hizmet Sağlayıcı, Site’de testin tamamlanmasından sonraki 60 dakika boyunca Hizmet’i {offerPrice} ABD doları özel ücretle sunabilir ve bu teklifi dilediği zaman başlatabilir veya sona erdirebilir. Özel ücret yalnızca Site onu ücretin yanında kalan süreyle birlikte gösterdiği sürece geçerlidir; testin yeniden yapılması bu süreyi uzatmaz. Siparişin verildiği ücret ödeme sayfasında gösterilir ve o sipariş için geçerli kalır: teklifin sona erdirilmesi önceden verilmiş siparişleri etkilemez. Bu ücret nihaidir: Hizmet Sağlayıcı’ya başka bir ödeme yapılmaz.",
+            "3.1. Hizmet’in ücreti Site’de satın alma düğmesinin yanında ve ödeme sayfasında ABD doları olarak gösterilir. Hizmet Sağlayıcı, Hizmet’in ücretini dilediği zaman değiştirebilir; ayrıca Site’de testin tamamlanmasından sonraki bir süre boyunca Hizmet’i özel ücretle sunabilir ve bu teklifi başlatabilir veya sona erdirebilir. Özel ücret yalnızca Site onu ücretin yanında kalan süreyle birlikte gösterdiği sürece geçerlidir; testin yeniden yapılması bu süreyi uzatmaz. Siparişin verildiği ücret ödeme sayfasında gösterilir ve o sipariş için geçerli kalır: ücret değişiklikleri ve teklifin sona erdirilmesi önceden verilmiş siparişleri etkilemez. Bu ücret nihaidir: Hizmet Sağlayıcı’ya başka bir ödeme yapılmaz.",
             "3.2. Hizmet’in ücretinin tamamı, Hizmet sunulmadan önce, banka kartıyla ya da ödeme sayfasında sunulan başka bir elektronik ödeme yöntemiyle ödenir. Ödemeyi Ödeme Aracısı alır.",
             "3.3. Hizmet’in ücreti, Hizmet Sağlayıcı’nın Ödeme Aracısı’ndan ödeme onayını aldığı anda ödenmiş sayılır.",
             "3.4. Müşteri, kart bilgilerini Ödeme Aracısı’nın güvenli sayfasında girer. Hizmet Sağlayıcı bu bilgileri almaz ve saklamaz.",
@@ -1028,9 +1028,9 @@
         "offer": {
           "regular": "Normal fiyat",
           "cta": "Hemen satın al — {offerPrice} USD",
-          "note": "Testten sonraki bir saat için özel fiyat; ardından {price} USD",
+          "note": "Testten sonraki {duration} için özel fiyat; ardından {price} USD",
           "left": "Kalan süre",
-          "expired": "Testin üzerinden bir saat geçti: rapor artık {price} USD. “Satın al” düğmesine yeniden basın."
+          "expired": "Özel fiyatın süresi doldu: rapor artık {price} USD. “Satın al” düğmesine yeniden basın."
         },
         "note": "“Satın al” düğmesine bastığınızda {offer} kabul edilmiş olur. Ödemeyi ABD doları olarak Prodamus’un güvenli sayfasında yaparsınız: kart bilgilerinizi bu sitede değil, orada girersiniz. Hesap ekstrenizde ödeme simpleway.by adıyla görünebilir.",
         "badEmail": "E-posta adresinizi kontrol edin: rapor ve makbuz bu adrese gönderilecek.",

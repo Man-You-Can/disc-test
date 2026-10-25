@@ -1766,7 +1766,7 @@
         {
           "h": "3. Price and payment",
           "p": [
-            "3.1. The price of the Service is {price} US dollars. The Provider may offer the Service at a special price of {offerPrice} US dollars for 60 minutes after the test is taken on the Site, and may start or stop such an offer at any time. The special price applies only while the Site shows it next to the price together with the time left; taking the test again does not extend that time. The price at which an order is placed is shown on the payment page and stays with that order: stopping the offer does not affect orders already placed. The price is final: there are no additional payments to the Provider.",
+            "3.1. The price of the Service is shown in US dollars on the Site next to the purchase button and on the payment page. The Provider may change the price of the Service at any time, and may also offer the Service at a special price for a period after the test is taken on the Site and start or stop such an offer. The special price applies only while the Site shows it next to the price together with the time left; taking the test again does not extend that time. The price at which an order is placed is shown on the payment page and stays with that order: price changes and stopping the offer do not affect orders already placed. The price is final: there are no additional payments to the Provider.",
             "3.2. The Service is paid for in full before it is provided, by payment card or another non-cash method shown on the payment page. Payment is accepted by the Payment Service.",
             "3.3. The Service is deemed paid at the moment the Provider receives confirmation of the payment from the Payment Service.",
             "3.4. The Customer enters their card details on the Payment Service’s secure page. The Provider does not receive or store these details.",
@@ -1972,9 +1972,9 @@
         "offer": {
           "regular": "Regular price",
           "cta": "Get it now for US${offerPrice}",
-          "note": "Special price for one hour after the test, then US${price}",
+          "note": "Special price for {duration} after the test, then US${price}",
           "left": "Time left",
-          "expired": "The hour after the test is over: the report now costs US${price}. Click “Buy” again."
+          "expired": "The special price has ended: the report now costs US${price}. Click “Buy” again."
         },
         "emailLabel": "Email to receive your report as a PDF",
         "emailPlaceholder": "Enter your email",

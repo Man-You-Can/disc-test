@@ -826,7 +826,7 @@
         {
           "h": "3. Harga dan pembayaran",
           "p": [
-            "3.1. Harga Layanan adalah {price} dolar Amerika Serikat. Penyedia dapat menawarkan Layanan dengan harga khusus {offerPrice} dolar Amerika Serikat dalam 60 menit setelah tes diselesaikan di Situs, serta dapat memulai atau menghentikan penawaran tersebut kapan saja. Harga khusus hanya berlaku selama Situs menampilkannya di samping harga beserta sisa waktunya; mengulang tes tidak memperpanjang batas waktu tersebut. Harga saat pesanan dibuat ditampilkan di halaman pembayaran dan tetap berlaku untuk pesanan itu: penghentian penawaran tidak memengaruhi pesanan yang sudah dibuat. Harga ini final: tidak ada pembayaran tambahan kepada Penyedia.",
+            "3.1. Harga Layanan dicantumkan dalam dolar Amerika Serikat di Situs, di samping tombol pembelian, dan di halaman pembayaran. Penyedia dapat mengubah harga Layanan kapan saja, serta menawarkan Layanan dengan harga khusus selama jangka waktu tertentu setelah tes diselesaikan di Situs dan memulai atau menghentikan penawaran tersebut. Harga khusus hanya berlaku selama Situs menampilkannya di samping harga beserta sisa waktunya; mengulang tes tidak memperpanjang batas waktu tersebut. Harga saat pesanan dibuat ditampilkan di halaman pembayaran dan tetap berlaku untuk pesanan itu: perubahan harga dan penghentian penawaran tidak memengaruhi pesanan yang sudah dibuat. Harga ini final: tidak ada pembayaran tambahan kepada Penyedia.",
             "3.2. Layanan dibayar lunas sebelum diberikan, dengan kartu bank atau metode pembayaran elektronik lain yang ditawarkan di halaman pembayaran. Pembayaran diterima oleh Pemroses Pembayaran.",
             "3.3. Layanan dianggap telah dibayar pada saat Penyedia menerima konfirmasi pembayaran dari Pemroses Pembayaran.",
             "3.4. Pelanggan memasukkan data kartu di halaman aman milik Pemroses Pembayaran. Penyedia tidak menerima dan tidak menyimpan data tersebut.",
@@ -1027,9 +1027,9 @@
         "offer": {
           "regular": "Harga normal",
           "cta": "Beli sekarang seharga US${offerPrice}",
-          "note": "Harga khusus selama satu jam setelah tes, lalu US${price}",
+          "note": "Harga khusus selama {duration} setelah tes, lalu US${price}",
           "left": "Sisa waktu",
-          "expired": "Satu jam setelah tes sudah lewat: harga laporan sekarang US${price}. Tekan “Beli” sekali lagi."
+          "expired": "Harga khusus sudah berakhir: harga laporan sekarang US${price}. Tekan “Beli” sekali lagi."
         },
         "emailLabel": "Email untuk menerima laporan dalam format PDF",
         "emailPlaceholder": "Masukkan email Anda",

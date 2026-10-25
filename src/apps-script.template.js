@@ -338,7 +338,7 @@ function composeSubscribeMail(lang, url) {
  * Возвращает {subject, preheader, html, text}. Цена — обычная (на час после теста письмо не приходится). Картинка — листы образца с сайта (одна на язык, без меток).
  */
 function composePromoMail(r, lang, o) {
-  var L = DATA[lang], X = L.promo, rtl = L.dir === 'rtl', start = rtl ? 'right' : 'left';
+  var L = DATA[lang], X = withExtPrice(L.promo), rtl = L.dir === 'rtl', start = rtl ? 'right' : 'left';
   // китайский и японский: между предложениями без пробела, после ссылки отписки — «。», а не «.»
   var cjk = /^(zh|ja)/.test(lang), gap = cjk ? '' : ' ', stop = cjk ? '\u3002' : '.';
   var sc = score(r), c = classify(sc), prof = L.profiles[c.key];
@@ -653,6 +653,14 @@ function classify(sc) {
 function pct(net) { return Math.round((net + 24) / 48 * 100); }
 function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
 function fmt(s, vars) { return String(s).replace(/\{(\w+)\}/g, function (_, n) { return vars[n] != null ? vars[n] : '{' + n + '}'; }); }
+/* Цена расширенного отчёта в письмах и PDF (с 2026-10-25): сборка оставляет в DATA[язык].promo.price и reportAd.price подстановку {price}, сюда — текущая
+   обычная цена в валюте языка (cur: RUB, USD, EUR) в записи языка (dateLocale). Свой сервер кладёт в EXTENDED_PRICE_* цены из панели (src/prices.js). */
+function extPriceText(cur, locale) {
+  var v = cur === 'EUR' ? EXTENDED_PRICE_EUR : cur === 'USD' ? EXTENDED_PRICE_USD : EXTENDED_PRICE_RUB;
+  if (!v) return '';
+  try { return new Intl.NumberFormat(locale || 'ru-RU', v % 1 ? { minimumFractionDigits: 2, maximumFractionDigits: 2 } : {}).format(v); } catch (e) { return String(v); }
+}
+function withExtPrice(X) { if (!X || !X.price) return X; var o = {}; for (var k in X) o[k] = X[k]; o.price = fmt(X.price, { price: extPriceText(X.cur, X.dateLocale) }); return o; }
 
 /** Адрес языковой версии: английская живёт в корне сайта, остальные — в /<язык>/ (как pathOf в build.js). */
 function langHome(lang) { return SITE_URL + '/' + (lang === 'en' ? '' : lang + '/'); }
@@ -665,7 +673,7 @@ function langHome(lang) { return SITE_URL + '/' + (lang === 'en' ? '' : lang + '
  * Возвращает {html, text}.
  */
 function mailAd(L, r, lang, code, sc) {
-  var A = L.reportAd;
+  var A = withExtPrice(L.reportAd);
   if (!A) return { html: '', text: '' };
   var low = KEYS.slice().sort(function (x, y) { return sc.net[y] - sc.net[x]; })[3];
   var page = langHome(lang) + 'extended-report/', href = page + '?src=mail#r=' + code, rtl = L.dir === 'rtl';
@@ -761,7 +769,7 @@ function reportPdf(r, lang) {
  * без них возвращает пустую строку. Блок не рвётся между листами: если не помещается под текстом, уходит на следующий лист целиком.
  */
 function reportAdHtml(L, r, lang, sc, start, end) {
-  var A = L.reportAd;
+  var A = withExtPrice(L.reportAd);
   if (!A) return '';
   var low = KEYS.slice().sort(function (x, y) { return sc.net[y] - sc.net[x]; })[3];
   // В ссылке — код результата без адреса почты: PDF пересылают другим (в нём рамка «Узнайте свой профиль»), а в исходном коде зашит e-mail участника.

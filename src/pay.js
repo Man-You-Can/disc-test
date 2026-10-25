@@ -48,19 +48,26 @@ function payClock(ms){ var s = Math.max(0, Math.ceil(ms / 1000)), m = Math.floor
    Пока специальная цена действует, вместо цены — зачёркнутая обычная и специальная, под кнопкой — обратный отсчёт; по окончании срока
    (или по ответу сервера «offer expired») формы показывают обычную цену. g.onOffer(fn) — fn(on) при смене цены (закреплённая кнопка).
    Специальная цена показывается, только когда она включена в панели (discOffer в src/common.js; с 2026-10-25): пока ответа нет — обычная цена;
-   ответ сервера «offer off» (выключили, пока страница была открыта) — формы переходят на обычную цену. */
+   ответ сервера «offer off» (выключили, пока страница была открыта) — формы переходят на обычную цену. Цены и срок — из панели, когда ответ
+   сервера уже есть (discPriceNow), иначе — со сборки (T.offer); ответ «price» (цену только что сменили) — формы спрашивают цены заново. */
 function payForms(c){
   var T = c.T, esc = c.esc, O = T.offer || null, g = {busy:false, forms:[], subs:[], tick:0};
   /* включена ли специальная цена в панели (discOffer в src/common.js): true — да, false — нет, null — ответа ещё нет (до ответа — обычная цена) */
   function flag(){ if(typeof discOffer !== 'function') return true; return discOffer.on === true ? true : discOffer.on === false ? false : null; }
+  /* числа для заказа и отсчёта: из ответа сервера (цены и срок из панели), пока его нет — со сборки */
+  function nums(){ var n = typeof discPriceNow === 'function' ? discPriceNow() : null;
+    return {price: n && n.offer ? n.offer : O ? O.price : 0, regular: n ? n.regular : O ? O.regular : 0, ms: n && n.minutes ? n.minutes * 60000 : O ? O.ms : 0}; }
+  var pstr = function(x){ return typeof discPriceStr === 'function' ? discPriceStr(x) : x; };
+  if(typeof discOfferWatch === 'function') discOfferWatch(function(){ g.paint(); });
   g.onOffer = function(fn){ g.subs.push(fn); fn(g.on === true); };
   g.paint = function(){
-    var now = Date.now(), any = false, ask = false, fl = flag();
+    var now = Date.now(), any = false, ask = false, fl = flag(), N = nums();
     g.forms.forEach(function(f){
+      f.until = f.over ? 0 : payOfferUntil(O ? {ms: N.ms} : null, f.t, c.lsGet);
       var on = f.until > now && fl === true; any = any || on; ask = ask || (f.until > now && fl === null);
-      f.price = O ? (on ? O.price : O.regular) : 0;
+      f.price = O ? (on ? N.price : N.regular) : N.regular;
       // каждая цена не переносится внутри себя; две цены (xdual) на узком экране мельче и при нехватке места встают в две строки
-      var html = O ? (on ? '<s class="xold"><span class="vh">'+esc(O.regularLabel)+' </span>'+esc(O.regularText)+'</s> <span class="xnew">'+esc(O.priceText)+'</span>' : '<span class="xnew">'+esc(O.regularText)+'</span>') : null;
+      var html = O ? (on ? '<s class="xold"><span class="vh">'+esc(O.regularLabel)+' </span>'+esc(pstr(O.regularText))+'</s> <span class="xnew">'+esc(pstr(O.priceText))+'</span>' : '<span class="xnew">'+esc(pstr(O.regularText))+'</span>') : null;
       if(f.big && html !== null && f.big.innerHTML !== html){ f.big.innerHTML = html; f.big.classList.toggle('xdual', on); }
       f.deal.hidden = !on; if(on) f.clock.textContent = payClock(f.until - now);
     });
@@ -85,7 +92,7 @@ function payForms(c){
       '<p class="small sendstatus err" aria-live="polite" hidden></p><p class="xnote">'+T.noteHtml+'</p>'+
       (T.code ? payCodeHTML(T.code, o.id, esc) : '');
     var f = {form:form, input:form.querySelector('input'), btn:form.querySelector('button'), st:form.querySelector('.sendstatus'), deal:form.querySelector('.xdeal'), clock:form.querySelector('.xdeal span'),
-      big: o.priceEl || form.querySelector('.xbig'), until: payOfferUntil(O, o.t, c.lsGet), price: 0}, input = f.input, st = f.st;
+      big: o.priceEl || form.querySelector('.xbig'), t: o.t, until: 0, over: false, price: 0}, input = f.input, st = f.st;
     if(T.code) payCodeInit(c, g, f, o);
     var other = g.forms.filter(function(x){ return x.input.value; })[0];
     if(other) input.value = other.input.value;
@@ -104,7 +111,9 @@ function payForms(c){
       fetch(c.endpoint + '/order', {method:'POST', body: JSON.stringify(body)})
         .then(function(res){ return res.text(); })
         .then(function(txt){ var j = null; try{ j = JSON.parse(txt); }catch(e){}
-          if(j && !j.ok && j.error === 'offer expired' && O){ g.forms.forEach(function(x){ x.until = 0; }); g.paint(); throw new Error('offer expired'); }
+          if(j && !j.ok && j.error === 'offer expired' && O){ g.forms.forEach(function(x){ x.over = true; }); g.paint(); throw new Error('offer expired'); }
+          // цену только что сменили в панели: формы спрашивают текущие цены и показывают обычную, покупатель нажимает «Купить» снова
+          if(j && !j.ok && j.error === 'price'){ throw new Error('price'); }
           // специальную цену только что выключили в панели: формы переходят на обычную цену, покупатель видит её и нажимает «Купить» снова
           if(j && !j.ok && j.error === 'offer off' && O){ if(typeof discOfferSet === 'function') discOfferSet(false); g.paint(); throw new Error('offer off'); }
           if(!j || !j.ok || !j.url || !j.order) throw new Error((j && j.error) || 'bad response');
@@ -115,7 +124,8 @@ function payForms(c){
         .catch(function(err){ g.setBusy(false); st.hidden = false;
           if(err && err.message === 'bad email'){ st.textContent = T.badEmail; input.focus(); }
           else if(err && err.message === 'offer expired'){ st.textContent = O.expired; }
-          else if(err && err.message === 'offer off'){ st.textContent = O.regularLabel + ': ' + O.regularText; }
+          else if(err && err.message === 'offer off'){ st.textContent = O.regularLabel + ': ' + pstr(O.regularText); }
+          else if(err && err.message === 'price' && O && typeof discOfferRefresh === 'function'){ st.hidden = true; discOfferRefresh(c.endpoint + '/offer', function(){ g.paint(); st.textContent = g.on ? pstr(O.cta) : O.regularLabel + ': ' + pstr(O.regularText); st.hidden = false; }); }
           else { st.innerHTML = T.errorHtml; payTrack('ext-pay-error'); } });
     });
     return f;

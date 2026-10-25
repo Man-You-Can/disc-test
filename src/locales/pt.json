@@ -824,7 +824,7 @@
         {
           "h": "3. Preço e forma de pagamento",
           "p": [
-            "3.1. O preço do Serviço é de {price} dólares americanos. O Prestador pode oferecer o Serviço pelo preço especial de {offerPrice} dólares americanos durante 60 minutos após a realização do teste no Site, e também iniciar ou encerrar essa oferta a qualquer momento. O preço especial vale somente enquanto o Site o exibe ao lado do preço, junto com o tempo restante; refazer o teste não prorroga esse prazo. O preço pelo qual o pedido é feito aparece na página de pagamento e fica mantido para esse pedido: o encerramento da oferta não afeta pedidos já feitos. O preço é final: o Prestador não cobra nenhum valor adicional.",
+            "3.1. O preço do Serviço é informado em dólares americanos no Site, ao lado do botão de compra, e na página de pagamento. O Prestador pode alterar o preço do Serviço a qualquer momento, e também oferecer o Serviço por um preço especial durante um prazo após a realização do teste no Site e iniciar ou encerrar essa oferta. O preço especial vale somente enquanto o Site o exibe ao lado do preço, junto com o tempo restante; refazer o teste não prorroga esse prazo. O preço pelo qual o pedido é feito aparece na página de pagamento e fica mantido para esse pedido: mudanças de preço e o encerramento da oferta não afetam pedidos já feitos. O preço é final: o Prestador não cobra nenhum valor adicional.",
             "3.2. O Serviço é pago integralmente antes da prestação, por cartão de crédito ou débito ou outro meio eletrônico exibido na página de pagamento. O pagamento é processado pelo Serviço de Pagamento.",
             "3.3. O Serviço é considerado pago no momento em que o Prestador recebe do Serviço de Pagamento a confirmação do pagamento.",
             "3.4. O Cliente informa os dados do cartão na página segura do Serviço de Pagamento. O Prestador não recebe nem armazena esses dados.",
@@ -1035,9 +1035,9 @@
         "offer": {
           "regular": "Preço normal",
           "cta": "Garanta já por US$ {offerPrice}",
-          "note": "Preço especial por uma hora após o teste; depois, US$ {price}",
+          "note": "Preço especial por {duration} após o teste; depois, US$ {price}",
           "left": "Restam",
-          "expired": "A hora após o teste já passou: agora o relatório custa US$ {price}. Clique em “Comprar” de novo."
+          "expired": "O preço especial já terminou: agora o relatório custa US$ {price}. Clique em “Comprar” de novo."
         },
         "emailLabel": "E-mail para receber o relatório em PDF",
         "emailPlaceholder": "Digite seu e-mail",

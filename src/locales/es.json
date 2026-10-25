@@ -828,7 +828,7 @@
         {
           "h": "3. Precio y forma de pago",
           "p": [
-            "3.1. El precio del Servicio es de {price} dólares estadounidenses. El Prestador puede ofrecer el Servicio al precio especial de {offerPrice} dólares estadounidenses durante los 60 minutos posteriores a la realización del test en el Sitio, así como iniciar o retirar esa oferta en cualquier momento. El precio especial solo es válido mientras el Sitio lo muestre junto al precio, con el tiempo restante; repetir el test no amplía ese plazo. El precio con el que se realiza el pedido se muestra en la página de pago y se mantiene para ese pedido: la retirada de la oferta no afecta a los pedidos ya realizados. El precio es definitivo: no hay pagos adicionales a favor del Prestador.",
+            "3.1. El precio del Servicio se indica en dólares estadounidenses en el Sitio, junto al botón de compra, y en la página de pago. El Prestador puede modificar el precio del Servicio en cualquier momento, así como ofrecer el Servicio a un precio especial durante un plazo posterior a la realización del test en el Sitio e iniciar o retirar esa oferta. El precio especial solo es válido mientras el Sitio lo muestre junto al precio, con el tiempo restante; repetir el test no amplía ese plazo. El precio con el que se realiza el pedido se muestra en la página de pago y se mantiene para ese pedido: los cambios de precio y la retirada de la oferta no afectan a los pedidos ya realizados. El precio es definitivo: no hay pagos adicionales a favor del Prestador.",
             "3.2. El Servicio se paga íntegramente antes de su prestación, con tarjeta de crédito o débito u otro medio de pago electrónico que se muestre en la página de pago. El pago lo procesa el Proveedor de pagos.",
             "3.3. El Servicio se considera pagado en el momento en que el Prestador recibe del Proveedor de pagos la confirmación del pago.",
             "3.4. El Cliente introduce los datos de la tarjeta en la página segura del Proveedor de pagos. El Prestador no recibe ni conserva esos datos.",
@@ -1039,9 +1039,9 @@
         "offer": {
           "regular": "Precio habitual",
           "cta": "Consígalo ya por {offerPrice} USD",
-          "note": "Precio especial durante una hora después del test; luego, {price} USD",
+          "note": "Precio especial durante {duration} después del test; luego, {price} USD",
           "left": "Quedan",
-          "expired": "Ya pasó la hora posterior al test: el informe cuesta ahora {price} USD. Pulse «Comprar» de nuevo."
+          "expired": "El precio especial ya terminó: el informe cuesta ahora {price} USD. Pulse «Comprar» de nuevo."
         },
         "emailLabel": "Correo para recibir el informe en PDF",
         "emailPlaceholder": "Escriba su correo electrónico",

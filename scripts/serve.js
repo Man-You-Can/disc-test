@@ -3,6 +3,11 @@ const http = require('http'), fs = require('fs'), path = require('path');
 const root = path.join(__dirname, '..', 'docs'), port = +(process.argv[2] || 8765);
 const mockOrders = {};   // заказы заглушки оплаты (/mock-pay): живут, пока работает сервер
 let mockOffer = true;    // переключатель специальной цены заглушки (как на «Сводке» панели): GET /mock-pay/offer?set=off | on
+// цены и срок заглушки (как в панели): GET /mock-pay/offer?rub=990&offerRub=590&usd=…&offerUsd=…&eur=…&offerEur=…&min=30; без них — из site.config.json
+const mockPrices = {};
+const mockCfg = () => { const cfg = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'site.config.json'), 'utf8'));
+  const v = (k, d) => mockPrices[k] != null ? mockPrices[k] : +cfg[d] || 0;
+  return { Rub: [v('rub', 'servicePriceRub'), v('offerRub', 'offerPriceRub')], Usd: [v('usd', 'servicePriceUsd'), v('offerUsd', 'offerPriceUsd')], Eur: [v('eur', 'servicePriceEur'), v('offerEur', 'offerPriceEur')], min: v('min', 'offerMinutes') || 60 }; };
 const types = { '.html': 'text/html; charset=utf-8', '.xml': 'application/xml', '.txt': 'text/plain; charset=utf-8', '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png', '.pdf': 'application/pdf', '.woff2': 'font/woff2', '.ico': 'image/x-icon', '.webmanifest': 'application/manifest+json' };
 http.createServer((req, res) => {
   let p = decodeURIComponent(req.url.split('?')[0]);
@@ -31,12 +36,13 @@ http.createServer((req, res) => {
         if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(String(j.email || '')) || String(j.email).length > 64) return json({ ok: false, error: 'bad email' });
         if (!/^DISC1\.[A-Za-z0-9_-]+$/.test(String(j.code || ''))) return json({ ok: false, error: 'bad code' });
         // специальная цена: как сервер оплаты — специальная (490 ₽, 6.99 USD, 6.99 EUR) принимается только в течение offerMinutes (+2 минуты) после прохождения теста (t в коде результата)
-        const cfg = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'site.config.json'), 'utf8'));
+        const mc = mockCfg();
         let tt = NaN; try { tt = Date.parse(JSON.parse(Buffer.from(String(j.code).split('.')[1], 'base64url').toString('utf8')).t); } catch (e) {}
         console.log('mock-pay price:', j.price === undefined ? '(нет)' : j.price, 'minutes since test:', isNaN(tt) ? '?' : Math.round((Date.now() - tt) / 60000));
-        const lg = j.lang || 'ru', cur = lg === 'ru' ? 'Rub' : lg === 'fr' || lg === 'de' ? 'Eur' : 'Usd', offerP = cfg['offerPrice' + cur], regP = cfg['servicePrice' + cur];   // валюта — как content.services.currency языка
+        const lg = j.lang || 'ru', cur = lg === 'ru' ? 'Rub' : lg === 'fr' || lg === 'de' ? 'Eur' : 'Usd', offerP = mc[cur][1], regP = mc[cur][0];   // валюта — как content.services.currency языка
         if (offerP && j.price === offerP && !mockOffer) return json({ ok: false, error: 'offer off', price: regP });
-        if (offerP && j.price === offerP && !(Date.now() - tt <= ((cfg.offerMinutes || 60) + 2) * 60000)) return json({ ok: false, error: 'offer expired', price: regP });
+        if (offerP && j.price === offerP && !(Date.now() - tt <= (mc.min + 2) * 60000)) return json({ ok: false, error: 'offer expired', price: regP });
+        if (j.price !== undefined && j.price !== offerP && j.price !== regP) return json({ ok: false, error: 'price', price: regP });
         const d = new Date(), order = String(d.getFullYear()).slice(2) + String(d.getMonth() + 1).padStart(2, '0') + String(d.getDate()).padStart(2, '0') + '-' + Math.random().toString(36).slice(2, 8).toUpperCase();
         // куда «банк» вернёт покупателя: страница отчёта, с которой пришёл заказ (…/extended-report/), иначе русская версия
         let back = '/ru/extended-report/'; try { const rp = new URL(req.headers.referer).pathname; back = /extended-report\//.test(rp) ? rp.replace(/extended-report\/.*$/, 'extended-report/') : rp.replace(/[^/]*$/, '') + 'extended-report/'; } catch (e) {}   // заказ с экрана результата (главная языка) — тоже на страницы отчёта, как у настоящего сервера
@@ -45,7 +51,12 @@ http.createServer((req, res) => {
       }); return;
     }
     // действует ли специальная цена (src/common.js, discOffer); ?set=off | on — переключить, как кнопкой на «Сводке» панели
-    if (req.method === 'GET' && p === '/mock-pay/offer') { if (q.get('set')) { mockOffer = q.get('set') !== 'off'; console.log('mock-pay offer:', mockOffer ? 'on' : 'off'); } return json({ ok: true, offer: mockOffer }); }
+    if (req.method === 'GET' && p === '/mock-pay/offer') {
+      if (q.get('set')) { mockOffer = q.get('set') !== 'off'; console.log('mock-pay offer:', mockOffer ? 'on' : 'off'); }
+      for (const k of ['rub', 'offerRub', 'usd', 'offerUsd', 'eur', 'offerEur', 'min']) if (q.get(k)) mockPrices[k] = +q.get(k);
+      const mc = mockCfg();
+      return json({ ok: true, offer: mockOffer, minutes: mc.min, prices: { RUB: { regular: mc.Rub[0], offer: mc.Rub[1] }, USD: { regular: mc.Usd[0], offer: mc.Usd[1] }, EUR: { regular: mc.Eur[0], offer: mc.Eur[1] } } });
+    }
     // код доступа (src/pay.js, payCodeInit): TEST-TEST-TEST — принят, USED-USED-USED — использован, OLDS-OLDS-OLDS — истёк, остальные — «нет такого кода»
     if (req.method === 'POST' && p === '/mock-pay/code') {
       let body = ''; req.on('data', c => body += c); req.on('end', () => {

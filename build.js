@@ -4,6 +4,24 @@
 const fs = require('fs'), path = require('path'), crypto = require('crypto'), { execSync } = require('child_process');
 const ROOT = __dirname, SRC = path.join(ROOT, 'src'), OUT = path.join(ROOT, 'docs');
 const cfg = JSON.parse(fs.readFileSync(path.join(ROOT, 'site.config.json'), 'utf8'));
+// Цены и срок специальной цены меняются в панели (с 2026-10-25, по просьбе заказчика; private/server/src/prices.js). Перед сборкой — текущие значения
+// с сервера (GET <payEndpoint>/offer): страницы, ядро писем и бот собираются с ними, а site.config.json обновляется, если они другие (в git видно,
+// с какими ценами опубликован сайт). Без сети, с NO_LIVE_PRICES=1 или с PAY_ENDPOINT (локальная заглушка) — значения из site.config.json.
+(function livePrices() {
+  const ep = String(cfg.payEndpoint || '').trim().replace(/\/+$/, '');
+  if (!ep || process.env.PAY_ENDPOINT || process.env.NO_LIVE_PRICES === '1') return;
+  const r = require('child_process').spawnSync(process.execPath, ['-e', `fetch(${JSON.stringify(ep + '/offer')}, { signal: AbortSignal.timeout(8000) }).then(r => r.json()).then(j => process.stdout.write(JSON.stringify(j))).catch(e => { process.stderr.write(String(e)); process.exit(1); })`], { encoding: 'utf8', timeout: 12000 });
+  let j = null; try { j = JSON.parse(r.stdout); } catch (e) {}
+  const P = j && j.ok && j.prices;
+  if (!P || !(P.RUB && P.RUB.regular > 0 && P.USD && P.USD.regular > 0 && P.EUR && P.EUR.regular > 0 && j.minutes > 0)) { console.warn('Цены из панели не получены — сборка с ценами site.config.json' + (r.stderr ? ' (' + String(r.stderr).trim().slice(0, 120) + ')' : '')); return; }
+  const want = { servicePriceRub: P.RUB.regular, offerPriceRub: P.RUB.offer, offerMinutes: j.minutes, servicePriceUsd: P.USD.regular, offerPriceUsd: P.USD.offer, servicePriceEur: P.EUR.regular, offerPriceEur: P.EUR.offer };
+  const diff = Object.keys(want).filter(k => +want[k] > 0 && +cfg[k] !== +want[k]);
+  if (!diff.length) return;
+  let text = fs.readFileSync(path.join(ROOT, 'site.config.json'), 'utf8');
+  for (const k of diff) { text = text.replace(new RegExp('("' + k + '":\\s*)[0-9.]+'), '$1' + want[k]); cfg[k] = want[k]; }
+  fs.writeFileSync(path.join(ROOT, 'site.config.json'), text);
+  console.log('Цены из панели: ' + diff.map(k => k + ' = ' + want[k]).join(', ') + ' — site.config.json обновлён');
+})();
 const typo = require('./src/typo.js');
 // Служебные теги в <head> (site.config.json): подтверждение сайта в Google Search Console и Яндекс Вебмастере
 // (googleSiteVerification, yandexVerification) и аналитика (yandexMetrikaId — номер счётчика Яндекс.Метрики,
@@ -17,6 +35,9 @@ const headExtraFor = L => [["google-site-verification", cfg.googleSiteVerificati
   .concat(cfg.yandexMetrikaId ? [`<script>window.DISC_ANALYTICS=${JSON.stringify({ ym: String(cfg.yandexMetrikaId).replace(/\D/g, ""), mode: analyticsMode(L) })};</script>`] : [])
   // закреплённая кнопка расширенного отчёта на всех страницах (src/common.js) — только в языках, где отчёт продаётся (content.product.promo)
   .concat(L.content.product && L.content.product.promo ? [`<script>window.DISC_XBAR=${JSON.stringify(xbarCfg(L)).replace(/</g, "\\u003c")};</script>`] : [])
+  // цены и срок из панели (src/common.js, discPriceApply): где спросить, валюта и запись чисел языка; packs — цены пакетов кодов для пересчёта скидок
+  .concat(payEndpoint && hasServices(L) ? [`<script>window.DISC_PRICE=${JSON.stringify(Object.assign({ url: payEndpoint + '/offer', cur: L.content.services.currency, loc: L.dateLocale },
+    hasBusiness(L) ? { packs: businessPacks.map(p => p.priceRub) } : {})).replace(/</g, "\\u003c")};</script>`] : [])
   .concat(visitStats ? [`<script>window.DISC_VISIT=${JSON.stringify({ url: String(cfg.sendEndpoint), token: String(cfg.sendToken || ''), host: new URL(cfg.siteUrl).hostname }).replace(/</g, "\\u003c")};</script>`] : [])
   .join("\n");
 // Персональные данные (план боевого режима, этап Д). pdConsent в site.config.json включает схему «свой сервер в России»:
@@ -90,14 +111,32 @@ const offerPrices = { RUB: Number(cfg.offerPriceRub) || 0, USD: Number(cfg.offer
 // offerTermsPrice — цена для оферты (п. 3.1 во всех языках, где она есть, даже без покупки); offerPrice — для форм покупки (нужны тексты pay.offer)
 const offerTermsPrice = L => { const cur = L.content.services && L.content.services.currency, v = offerPrices[cur] || 0; return v && v < (servicePrices[cur] || 0) ? fmtPrice(L, v) : ''; };
 const offerPrice = L => { const C = L.content; return C.product && C.product.pay && C.product.pay.offer ? offerTermsPrice(L) : ''; };
-const withPrice = (L, obj) => { const s = JSON.stringify(obj).replace(/\{price\}/g, servicePrice(L));
+// Цены и срок меняются в панели (с 2026-10-25, по просьбе заказчика; сервер — private/server/src/prices.js): сборка ставит в тексты значения на момент
+// сборки, обёрнутые невидимыми метками — U+2063 у обычной цены, U+2062 у специальной, U+2061 у срока (U+2064 — скидка пакета на «Для организаций»:
+// <метка><цена пакета>|<скидка><метка>; U+2060 не годится — это соединитель слов в текстах лендинга резюме). Страница при открытии спрашивает у сервера текущие значения (GET <payEndpoint>/offer, window.DISC_PRICE) и меняет текст
+// между метками (discPriceApply в src/common.js). В <title>, <meta> и разметку для поисковиков метки не попадают (finishMarks), в письма — тоже: там цену
+// подставляет ядро (extPriceText в src/apps-script.template.js).
+const MK_R = '\u2063', MK_O = '\u2062', MK_D = '\u2061', MK_P = '\u2064';
+const markR = L => { const v = servicePrice(L); return v ? MK_R + v + MK_R : ''; };
+const markO = L => { const v = offerPrice(L); return v ? MK_O + v + MK_O : ''; };
+// срок словами в языке страницы: кратный часу — в часах («1 час», «2 hours»), иначе в минутах («45 минут»); то же — discDuration в src/common.js
+const fmtDuration = (L, min) => { try { const h = min % 60 === 0; return new Intl.NumberFormat(L.dateLocale, { style: 'unit', unit: h ? 'hour' : 'minute', unitDisplay: 'long' }).format(h ? min / 60 : min); } catch (e) { return min + ' min'; } };
+const markD = L => MK_D + fmtDuration(L, offerMinutes) + MK_D;
+// скидка пакета кодов к обычной цене (для организаций): метка с ценой пакета, страница пересчитывает её от текущей цены; 'max' — наибольшая из пакетов
+const markPct = (key, v) => MK_P + key + '|' + v + MK_P;
+// метки в разметке страницы: в заголовке, описаниях и JSON-LD — только значение; в тексте скидки пакетов — <span data-dpct> для пересчёта
+const unmark = str => String(str).replace(/\u2064[^|\u2064]*\|([^\u2064]*)\u2064/g, '$1').replace(/[\u2061-\u2063]/g, '');
+const finishMarks = html => html
+  .replace(/<title>[\s\S]*?<\/title>|<meta [^>]*>|<script type="application\/ld\+json">[\s\S]*?<\/script>/g, unmark)
+  .replace(/\u2064([^|\u2064<>"]*)\|([^\u2064<>"]*)\u2064/g, '<span data-dpct="$1">$2</span>');
+const withPrice = (L, obj) => { const s = JSON.stringify(obj).replace(/\{price\}/g, markR(L));
   if (/\{offerPrice\}/.test(s) && !offerPrice(L)) throw new Error(`${L.lang}: в тексте есть {offerPrice}, а специальная цена не задана (offerPriceRub в site.config.json)`);
-  return JSON.parse(s.replace(/\{offerPrice\}/g, offerPrice(L))); };
+  return JSON.parse(s.replace(/\{offerPrice\}/g, markO(L)).replace(/\{duration\}/g, markD(L))); };
 // Специальная цена для скрипта покупки (src/pay.js, T.offer): числа — для сервера, строки — для показа; null — специальной цены в языке нет
 const payOffer = L => { if (!offerPrice(L)) return null; const P = L.content.product, O = withPrice(L, P.pay.offer), cur = L.content.services.currency;
-  return { price: offerPrices[cur], regular: servicePrices[cur], ms: offerMinutes * 60000, priceText: withPrice(L, P.price).replace(servicePrice(L), offerPrice(L)),
+  return { price: offerPrices[cur], regular: servicePrices[cur], ms: offerMinutes * 60000, priceText: withPrice(L, P.price).replace(markR(L), markO(L)),
     regularText: withPrice(L, P.price), regularLabel: O.regular, cta: O.cta, note: O.note, left: O.left, expired: O.expired,
-    button: P.promo ? withPrice(L, P.promo.button).replace(servicePrice(L), offerPrice(L)) : '' }; };
+    button: P.promo ? withPrice(L, P.promo.button).replace(markR(L), markO(L)) : '' }; };
 // Закреплённая кнопка расширенного отчёта (src/common.js, window.DISC_XBAR): надпись с обычной ценой, со специальной (пусто — её нет в языке), адрес, где спросить,
 // включена ли специальная цена в панели (GET <payEndpoint>/offer, с 2026-10-25), срок специальной цены, «Скрыть»
 const xbarCfg = L => { const PM = withPrice(L, L.content.product.promo), O = payOffer(L); return { button: PM.button, offer: O ? O.button : '', offerUrl: O && payEndpoint ? payEndpoint + '/offer' : '', ms: offerMinutes * 60000, close: PM.close }; };
@@ -420,7 +459,7 @@ for (const L of locales) {
     .replace(/__PD__/g, pdOn && cfg.sendEndpoint ? '1' : '0').replace(/__PD_VERSION__/g, pdVersion)
     .replace('__LOCALE_JSON__', () => JSON.stringify(homeLocale(L)).replace(/</g, '\\u003c').replace(/\u2028|\u2029/g, ''));
   fs.mkdirSync(path.join(OUT, pathOf(L.lang)), { recursive: true });
-  fs.writeFileSync(path.join(OUT, pathOf(L.lang), 'index.html'), html);
+  fs.writeFileSync(path.join(OUT, pathOf(L.lang), 'index.html'), finishMarks(html));
 }
 // ---------- Контентные страницы: четыре стиля, каталог и 16 профилей ----------
 const colorVar = k => 'var(--' + k.toLowerCase() + ')';
@@ -529,7 +568,7 @@ function writeContentPage(L, sub, opts) {
     .replace('__LANG_PATH_JSON__', () => JSON.stringify(LANG_PATH)).replace('__LANG_META_JSON__', () => JSON.stringify(LANG_META).replace(/</g, '\\u003c'))
     .replace('__COMMON_JS__', () => commonJs).replace('__PAGE_JS__', () => opts.pageJs || '').replace('__NO_XBAR__', opts.bare ? 'true' : 'false');
   fs.mkdirSync(path.join(OUT, pathOf(L.lang), sub), { recursive: true });
-  fs.writeFileSync(path.join(OUT, pathOf(L.lang), sub, 'index.html'), html);
+  fs.writeFileSync(path.join(OUT, pathOf(L.lang), sub, 'index.html'), finishMarks(html));
   (writtenSubs[L.lang] = writtenSubs[L.lang] || []).push(sub);
   if (!opts.noindex) pages.push({ lang: L.lang, sub, date: updated, langs: own });
 }
@@ -904,7 +943,7 @@ for (const L of locales) {
   // /services/ — платная услуга (все языки); /offer/ и /refund/ — публичная оферта и условия возврата, только в языках, где эти разделы есть (hasOffer).
   // В текстах подставляются {price}, {inn}, {seller} (исполнитель с ИНН), {email}, {site} и ссылки {contact}, {privacy}, {offer}, {refund}
   if (hasServices(L)) {
-    const sv = C.services, of = C.offer, rf = C.refund, docs = hasOffer(L), own = locales.filter(hasOffer), price = servicePrice(L), fill = str => String(str).replace(/\{price\}/g, price);
+    const sv = C.services, of = C.offer, rf = C.refund, docs = hasOffer(L), own = locales.filter(hasOffer), price = markR(L), fill = str => String(str).replace(/\{price\}/g, price);
     if (!offerTermsPrice(L) && /\{offerPrice\}/.test(JSON.stringify([sv, of || '', rf || '']))) throw new Error(`${L.lang}: в услуге или оферте есть {offerPrice}, а специальная цена не задана`);
     const link = (sub2, text) => `<a href="../${sub2}">${escFull(text)}</a>`;
     const vars = Object.assign({ price, offerPrice: offerTermsPrice(L), site: escFull(siteUrl),
@@ -940,7 +979,7 @@ for (const L of locales) {
     // заголовками третьего уровня; последний раздел услуги («Вопросы об услуге») — общий, в конце страницы. Тексты — content.business.services
     function servicesSplit() {
       const S = C.business.services, retail = servicePrices.RUB, minPrice = Math.min(...businessPacks.map(p => p.priceRub));
-      const maxDiscount = Math.max(...businessPacks.map(p => Math.floor((1 - p.priceRub / retail) * 100)));
+      const maxDiscount = markPct('max', Math.max(...businessPacks.map(p => Math.floor((1 - p.priceRub / retail) * 100))));
       const fillS = str => String(str).replace(/\{minPrice\}/g, fmtPrice(L, minPrice)).replace(/\{maxDiscount\}/g, maxDiscount);
       const h3 = secs => sectionsHtml(secs).replace(/<h2>/g, '<h3 class="svch3">').replace(/<\/h2>/g, '</h3>');
       const pick = (id, title, text, price) => `<a class="svcpick" href="#${id}"><strong>${escFull(title)}</strong><span>${escFull(text)}</span><b>${escFull(price)}</b></a>`;
@@ -960,11 +999,11 @@ for (const L of locales) {
     // границы применения, оплата по счёту, вопросы и форма заявки (src/business.js → форма обратной связи сервера, тема «Заявка для организации: …»)
     if (hasBusiness(L)) {
       const B = C.business, retail = servicePrices.RUB, pct = p => Math.floor((1 - p.priceRub / retail) * 100);   // вниз: скидку не преувеличиваем
-      const bv = Object.assign({}, vars, { minPack: String(businessPacks[0].from), maxDiscount: String(Math.max(...businessPacks.map(pct))), retail: fmtPrice(L, retail), months: String(businessMonths),
+      const bv = Object.assign({}, vars, { minPack: String(businessPacks[0].from), maxDiscount: markPct('max', Math.max(...businessPacks.map(pct))), retail: markR(L), months: String(businessMonths),
         report: link('extended-report/', C.product.h1), teams: link('teams/', t('nav.teams')) });
       const fillB = html => html.replace(/\{(\w+)\}/g, (m, k) => k in bv ? bv[k] : m), plainB = str => String(str).replace(/\{(minPack|maxDiscount|retail|months)\}/g, (m, k) => bv[k]);
       const packs = `<div class="tablewrap"><table class="cmp packs"><thead><tr>${B.packsHead.map(h => `<th scope="col">${escFull(h)}</th>`).join('')}</tr></thead><tbody>` +
-        businessPacks.map(p => `<tr><td>${escFull(B.packRow.replace("{n}", p.from))}</td><td>${escFull(B.packPrice.replace('{price}', fmtPrice(L, p.priceRub)))}</td><td>${escFull(B.packDiscount.replace('{pct}', pct(p)))}</td></tr>`).join('') + `</tbody></table></div>`;
+        businessPacks.map(p => `<tr><td>${escFull(B.packRow.replace("{n}", p.from))}</td><td>${escFull(B.packPrice.replace('{price}', fmtPrice(L, p.priceRub)))}</td><td>${escFull(B.packDiscount.replace('{pct}', markPct(p.priceRub, pct(p))))}</td></tr>`).join('') + `</tbody></table></div>`;
       const F = B.form, BT = { name: t('intro.nameLabel'), email: t('contact.emailLabel'), size: F.size, sizes: F.sizes, interest: F.interest, interests: F.interests,
         comment: F.comment, commentPlaceholder: F.commentPlaceholder, button: F.button, subject: F.subject, sent: F.sent, needInterest: F.needInterest,
         requiredNote: t('intro.requiredNote'), nameRequired: t('intro.nameRequired'), emailRequired: t('intro.emailRequired'), pdRequired: L.ui['pd.required'] || '',
@@ -1246,7 +1285,7 @@ for (const L of locales) {
   // image — есть ли картинка листов образца для писем (src/assets/extended/<язык>-mail.jpg; сайт отдаёт её по адресу /extended/<язык>-mail.jpg)
   const MP = L.content.mailing && L.content.mailing.promo, PP = L.content.product;
   if (MP && PP && PP.pay && PP.block) mailData[L.lang].promo = Object.assign({}, MP, { list: PP.block.list, sample: PP.block.sample || '', button: PP.block.button, free: PP.block.free,
-    guarantee: PP.pay.guarantee, price: MP.price.replace('{price}', servicePrice(L)), dateLocale: L.dateLocale,
+    guarantee: PP.pay.guarantee, price: MP.price, cur: L.content.services.currency, dateLocale: L.dateLocale,   // {price} подставляет ядро (extPriceText): цены меняются в панели
     image: fs.existsSync(path.join(SRC, 'assets', 'extended', L.lang + '-mail.jpg')) });
 }
 // Блок о расширенном отчёте в PDF краткого отчёта и в теле письма с результатом: в языках, где есть страница отчёта и тексты `content.product.pdf`.
@@ -1267,7 +1306,7 @@ if (cfg.reportAd === true || process.env.REPORT_AD === '1') {
     if (!withSheets && !P.block.soon && !P.pay) continue;
     mailData[L.lang].reportAd = Object.assign({ eyebrow: P.h1, title: P.block.title, lead: P.pdf.lead, facts: P.pdf.facts, hook: P.block.hook, list: P.pdf.list || P.block.list },
       withSheets ? { sample: P.block.sample, captions: sheets.map(n => P.sampleCaption[n - 1]) } : {},
-      { price: P.block.price.replace('{price}', servicePrice(L)), button: P.block.button, free: P.block.free, where: P.pdf.where },
+      { price: P.block.price, cur: L.content.services && L.content.services.currency, dateLocale: L.dateLocale, button: P.block.button, free: P.block.free, where: P.pdf.where },   // {price} — ядро, extPriceText
       withSheets ? { images: files.map(f => 'data:image/jpeg;base64,' + fs.readFileSync(f).toString('base64')) } : P.block.soon ? { soon: P.block.soon } : {});
   }
 }

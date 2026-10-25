@@ -1768,7 +1768,7 @@
         {
           "h": "3. Prix et modalités de paiement",
           "p": [
-            "3.1. Le prix du Service est de {price} euros. Le Prestataire peut proposer le Service au prix spécial de {offerPrice} euros pendant les 60 minutes qui suivent la réalisation du test sur le Site, et peut à tout moment lancer ou arrêter cette offre. Le prix spécial ne s'applique que tant que le Site l'affiche à côté du prix, avec le temps restant ; refaire le test ne prolonge pas ce délai. Le prix auquel la commande est passée figure sur la page de paiement et reste attaché à cette commande : l'arrêt de l'offre n'affecte pas les commandes déjà passées. Ce prix est définitif : aucun autre paiement n'est dû au Prestataire.",
+            "3.1. Le prix du Service est indiqué en euros sur le Site, à côté du bouton d'achat, et sur la page de paiement. Le Prestataire peut modifier le prix du Service à tout moment, ainsi que proposer le Service à un prix spécial pendant une durée suivant la réalisation du test sur le Site et lancer ou arrêter cette offre. Le prix spécial ne s'applique que tant que le Site l'affiche à côté du prix, avec le temps restant ; refaire le test ne prolonge pas ce délai. Le prix auquel la commande est passée figure sur la page de paiement et reste attaché à cette commande : les changements de prix et l'arrêt de l'offre n'affectent pas les commandes déjà passées. Ce prix est définitif : aucun autre paiement n'est dû au Prestataire.",
             "3.2. Le Service est payé intégralement avant sa fourniture, par carte bancaire ou par un autre moyen de paiement électronique proposé sur la page de paiement. Le paiement est encaissé par l'Opérateur de paiement.",
             "3.3. Le Service est réputé payé dès que le Prestataire reçoit de l'Opérateur de paiement la confirmation du paiement.",
             "3.4. Le Client saisit les données de sa carte sur la page sécurisée de l'Opérateur de paiement. Le Prestataire ne reçoit pas ces données et ne les conserve pas.",
@@ -1983,9 +1983,9 @@
         "offer": {
           "regular": "Prix habituel",
           "cta": "Achetez maintenant à {offerPrice} €",
-          "note": "Prix spécial pendant une heure après le test, puis {price} €",
+          "note": "Prix spécial pendant {duration} après le test, puis {price} €",
           "left": "Il reste",
-          "expired": "L'heure qui suit le test est écoulée : le rapport coûte désormais {price} €. Cliquez de nouveau sur « Acheter »."
+          "expired": "Le prix spécial a pris fin : le rapport coûte désormais {price} €. Cliquez de nouveau sur « Acheter »."
         },
         "emailLabel": "E-mail pour recevoir le rapport en PDF",
         "emailPlaceholder": "Saisissez votre e-mail",

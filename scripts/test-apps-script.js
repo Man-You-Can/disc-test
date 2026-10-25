@@ -327,7 +327,8 @@ check('pay: price from site settings, service name and reminder texts only where
   const lowL = ['D', 'I', 'S', 'C'].slice().sort((x, y) => scL.net[y] - scL.net[x])[3], atL = new Date('2026-10-01T10:05:00Z');
   const priceOf = { USD: /^(US\$\u00a0?9[.,]99|9[.,]99\u00a0(USD|美元))$/, EUR: /^9,99\u00a0€$/ };
   for (const lg of Object.keys(ctx.DATA).filter(l => l !== 'ru' && ctx.DATA[l].promo)) {
-    const X = ctx.DATA[lg].promo, cur = ctx.DATA[lg].pay.currency || 'USD', home = 'https://disc-test.org/' + (lg === 'en' ? '' : lg + '/');
+    const X = ctx.withExtPrice(ctx.DATA[lg].promo), cur = ctx.DATA[lg].pay.currency || 'USD',   // цену ({price}) ядро подставляет при отправке
+    home = 'https://disc-test.org/' + (lg === 'en' ? '' : lg + '/');
     const unsubL = home + 'unsubscribe/#u=AbCdEfGhIjKlMnOpQrStUv', m = ctx.composePromoMail(rL, lg, { code: cX, consentAt: atL, unsubUrl: unsubL });
     const href = home + 'extended-report/?src=nl#r=' + cX, dL = new Intl.DateTimeFormat(X.dateLocale, { timeZone: 'Europe/Moscow', day: 'numeric', month: 'long', year: 'numeric' }).format(atL).replace(/ /g, '\u00a0');
     const all = [m.subject, m.preheader, m.html, m.text];
@@ -410,14 +411,14 @@ if (realAd) {
     soonLangs.every(lg => { const A = ctx.DATA[lg].reportAd; return typeof A.soon === 'string' && A.soon.trim() && !A.sample && !A.captions && !ctx.DATA[lg].pay && !ctx.DATA[lg].extended; }) &&
     sheetLangs.every(lg => !ctx.DATA[lg].reportAd.soon));
   check('report block without sheets: PDF and mail carry the request line, the price of the language, no images, nothing unfilled; link to the report page of the language', soonLangs.every(lg => {
-    const A = ctx.DATA[lg].reportAd, h = ctx.reportHtml(r0, lg), m = ctx.composeMail(r0, lg, cM, true, ''), link = (new RegExp('href="' + pageOf(lg).replace(/[.\/]/g, '\\$&') + '\\?src=pdf#r=(DISC1\\.[A-Za-z0-9_-]+)"').exec(h) || [])[1], rL = link && ctx.decodeResult(link);
+    const A = ctx.withExtPrice(ctx.DATA[lg].reportAd), h = ctx.reportHtml(r0, lg), m = ctx.composeMail(r0, lg, cM, true, ''), link = (new RegExp('href="' + pageOf(lg).replace(/[.\/]/g, '\\$&') + '\\?src=pdf#r=(DISC1\\.[A-Za-z0-9_-]+)"').exec(h) || [])[1], rL = link && ctx.decodeResult(link);
     return !/<img /.test(h) && !/<img /.test(m.html) && [h, m.html].every(x => x.includes(ctx.esc(A.soon)) && x.includes(ctx.esc(A.price)) && x.includes(ctx.esc(A.button)) && !/\{\w+\}|undefined/.test(x)) && m.text.includes(A.soon) &&
       !!rL && rL.email === '' && rL.name === r0.name && !h.includes(cM) && !h.includes('maria@example.com') &&
       m.html.includes('href="' + pageOf(lg) + '?src=mail#r=' + cM + '"') && m.text.includes(pageOf(lg) + '?src=mail#r=' + cM) && !/₽|[А-Яа-яЁё]/.test(JSON.stringify(A)) && !/\/en\/extended-report/.test(h + m.html + m.text);
   }));
 }
 if (realAd) check('report block on sale without sheets: no request line, no empty column, price and button of the language, link to the report page', bareLangs.every(lg => {
-  const A = ctx.DATA[lg].reportAd, h = ctx.reportHtml(r0, lg), m = ctx.composeMail(r0, lg, cM, true, '');
+  const A = ctx.withExtPrice(ctx.DATA[lg].reportAd), h = ctx.reportHtml(r0, lg), m = ctx.composeMail(r0, lg, cM, true, '');
   return !/<img /.test(h) && !/border:1px dashed/.test(h) && h.includes('<td width="100%" valign="middle"') && [h, m.html].every(x => x.includes(ctx.esc(A.price)) && x.includes(ctx.esc(A.button)) && !/\{\w+\}|undefined/.test(x)) &&
     h.includes('href="' + pageOf(lg) + '?src=pdf#r=') && m.html.includes('href="' + pageOf(lg) + '?src=mail#r=' + cM + '"') && !/₽|[А-Яа-яЁё]/.test(JSON.stringify(A)) && !/\/en\/extended-report/.test(h + m.html + m.text);
 }));
@@ -441,7 +442,12 @@ if (CONTACT_TO) check('contact: request for the extended report arrives with its
   return a.subject === 'Заявка на расширенный отчёт — ' + ctx.DATA.de.name + ' (de): Greta' && a.body.includes('Заявка на расширенный отчёт, язык: ' + ctx.DATA.de.name + ' (de)\nИмя: Greta') && a.replyTo === 'greta-req@example.com' &&
     b.subject === 'Сообщение с сайта disc-test.org: Greta' && !/Заявка/.test(b.body); })());
 if (realAd) check('short report, real block data: texts, two sample sheets as JPEG, nothing unfilled', realAd.images.length === 2 && realAd.images.every(x => /^data:image\/jpeg;base64,/.test(x)) && realAd.captions.length === 2 && realAd.list.length === 3 &&
-  /^\d+ ₽/.test(realAd.price) && !/\{\w+\}|undefined/.test(ctx.reportHtml(ctx.decodeResult(cM), 'ru').replace(/data:image[^"]+/g, '')));
+  /^\{price\} ₽/.test(realAd.price) && /^\d+ ₽/.test(ctx.withExtPrice(realAd).price) && !/\{\w+\}|undefined/.test(ctx.reportHtml(ctx.decodeResult(cM), 'ru').replace(/data:image[^"]+/g, '')));
+// цены из панели (с 2026-10-25): свой сервер кладёт их в переменные ядра (core.setPrices) — письма и PDF берут цену в момент сборки письма
+{ const was = [ctx.EXTENDED_PRICE_RUB, ctx.EXTENDED_PRICE_EUR]; ctx.EXTENDED_PRICE_RUB = 990; ctx.EXTENDED_PRICE_EUR = 12.5;
+  const pr = ctx.withExtPrice(ctx.DATA.ru.promo).price, pe = ctx.DATA.de.promo ? ctx.withExtPrice(ctx.DATA.de.promo).price : '12,50\u00a0€', ad = realAd ? ctx.withExtPrice(realAd).price : '990 ₽';
+  check('prices from the admin panel: the mail and the PDF block take the current price (990 ₽, 12,50 €)', /^990\u00a0?₽/.test(pr.replace(' ', '\u00a0')) && /^12,50\u00a0€$/.test(pe) && /^990/.test(ad), [pr, pe, ad]);
+  ctx.EXTENDED_PRICE_RUB = was[0]; ctx.EXTENDED_PRICE_EUR = was[1]; }
 const nRowsX = rows().length;
 check('extended for a result already in the table: same row marked', ext({ code, to: 'ivan@example.com' }).ok === true && rows().length === nRowsX && /^отправлен .* на ivan@example\.com$/.test(rows().find(r => r[19] === code)[extCol()]));
 check('extended: file name without .pdf or with a path is replaced', (() => { ext({ to: 'n1@b.co', filename: '../../etc/passwd' }); const a = sent[sent.length - 1].attachments[0].getName(); ext({ to: 'n2@b.co', filename: 'a/b\\c.pdf' }); return a === 'DISC-extended.pdf' && sent[sent.length - 1].attachments[0].getName() === 'a b c.pdf'; })());

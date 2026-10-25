@@ -824,7 +824,7 @@
         {
           "h": "3. Cena i płatność",
           "p": [
-            "3.1. Cena Usługi, wyrażona w dolarach amerykańskich, wynosi {price}. Usługodawca może oferować Usługę w cenie specjalnej, wyrażonej w dolarach amerykańskich, w wysokości {offerPrice} w ciągu 60 minut od wypełnienia testu w Serwisie, a także w każdej chwili rozpocząć lub zakończyć taką ofertę. Cena specjalna obowiązuje wyłącznie wtedy, gdy Serwis wyświetla ją obok ceny wraz z pozostałym czasem; ponowne wypełnienie testu nie wydłuża tego terminu. Cena, po której złożono zamówienie, jest widoczna na stronie płatności i pozostaje przypisana do tego zamówienia: zakończenie oferty nie dotyczy zamówień już złożonych. Cena jest ostateczna: Klient nie ponosi żadnych dodatkowych opłat na rzecz Usługodawcy.",
+            "3.1. Cena Usługi, wyrażona w dolarach amerykańskich, jest podana w Serwisie obok przycisku zakupu oraz na stronie płatności. Usługodawca może w każdej chwili zmienić cenę Usługi, a także oferować Usługę w cenie specjalnej przez określony czas od wypełnienia testu w Serwisie oraz rozpocząć lub zakończyć taką ofertę. Cena specjalna obowiązuje wyłącznie wtedy, gdy Serwis wyświetla ją obok ceny wraz z pozostałym czasem; ponowne wypełnienie testu nie wydłuża tego terminu. Cena, po której złożono zamówienie, jest widoczna na stronie płatności i pozostaje przypisana do tego zamówienia: zmiany cen i zakończenie oferty nie dotyczą zamówień już złożonych. Cena jest ostateczna: Klient nie ponosi żadnych dodatkowych opłat na rzecz Usługodawcy.",
             "3.2. Klient opłaca Usługę w całości przed jej wykonaniem, kartą płatniczą lub inną metodą płatności elektronicznej dostępną na stronie płatności. Płatność przyjmuje Operator Płatności.",
             "3.3. Usługę uznaje się za opłaconą z chwilą otrzymania przez Usługodawcę potwierdzenia płatności od Operatora Płatności.",
             "3.4. Dane karty Klient podaje na zabezpieczonej stronie Operatora Płatności. Usługodawca nie otrzymuje tych danych ani ich nie przechowuje.",
@@ -1033,9 +1033,9 @@
         "offer": {
           "regular": "Cena regularna",
           "cta": "Kup teraz za {offerPrice} USD",
-          "note": "Cena specjalna przez godzinę po teście, potem {price} USD",
+          "note": "Czas ceny specjalnej po teście: {duration}; potem {price} USD",
           "left": "Zostało",
-          "expired": "Minęła godzina od testu: raport kosztuje teraz {price} USD. Kliknij „Kup” jeszcze raz."
+          "expired": "Cena specjalna już nie obowiązuje: raport kosztuje teraz {price} USD. Kliknij „Kup” jeszcze raz."
         },
         "note": "Klikając „Kup”, akceptujesz warunki {offer}. Płacisz w dolarach amerykańskich na zabezpieczonej stronie Prodamus: dane karty podajesz tam, a nie w tym serwisie. Na wyciągu z konta płatność może być widoczna jako simpleway.by.",
         "badEmail": "Sprawdź adres e-mail: na niego wyślemy raport i dowód zakupu.",
