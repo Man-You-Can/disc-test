@@ -371,7 +371,15 @@ html[lang|=zh] [lang]:not([lang|=zh]):not([lang|=ja]),html[lang=ja] [lang]:not([
 .home-more{margin-top:34px}
 /* подсказка пришедшему по QR-коду с бумажного бланка (?ref=pdf): как перенести отметки */
 .frompdf{border:1px solid var(--line-strong);border-inline-start:4px solid var(--c);border-radius:12px;padding:12px 16px;margin:0 0 18px;background:var(--surface)}
-.frompdf b{display:block;margin-bottom:4px}.frompdf p{margin:0;font-size:15px;color:var(--muted)}
+.frompdf b{display:block;margin-bottom:4px}.frompdf p{margin:0;font-size:15px;color:var(--muted)}.frompdf a{display:inline-block;margin-top:8px;color:var(--ink);font-size:15px}
+/* ввод результата с бумажного бланка (#paper) */
+.paperform{margin-top:6px}.ptab{width:100%;min-width:0;table-layout:fixed;border-collapse:collapse;margin-bottom:10px;font-size:16px}.ptab th:first-child{width:38%}
+.ptab th{font-size:13px;font-weight:600;color:var(--muted);text-align:start;padding:0 6px 8px;white-space:normal;text-transform:none;letter-spacing:0;background:none;line-height:1.25;vertical-align:bottom}.ptab tfoot td:first-child{font-family:inherit;font-size:14px;font-weight:600;color:var(--muted)}.ptab td{padding:6px;border-top:1px solid var(--line);vertical-align:middle}
+.ptab td:first-child{white-space:nowrap}.ptab .k{font-family:var(--font-head);font-size:18px;margin-inline-end:4px}
+.ptab input{width:72px;max-width:100%;font-size:18px;padding:8px 10px;text-align:center}
+.ptab .pnet,.ptab tfoot td{font-family:var(--font-mono);font-size:17px;font-variant-numeric:tabular-nums;direction:ltr}.ptab tfoot td{font-weight:600}.ptab tfoot td.ok{color:var(--s)}
+@media (max-width:480px){.ptab .nm{display:none}.ptab th:first-child{width:18%}.ptab input{width:100%;padding:8px 2px}.ptab th{font-size:12px;padding:0 4px 8px}.ptab td{padding:6px 4px}}
+.paperalt{margin-top:18px}
 /* «Что вы получите» с примером результата — сразу под кнопкой теста (с 2026-10-25): список слева, пример справа; на телефоне — заголовок, пример без графика, список */
 .homeget{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);grid-template-areas:"h c" "l c";grid-template-rows:auto 1fr;gap:4px 28px;align-items:start;margin:30px 0 6px}
 .homeget h2{grid-area:h;font-size:22px;margin:0 0 8px}
@@ -920,7 +928,7 @@ function introHTML(c){
       (lc.pay ? '' : '<a class="btn big" id="lastExt" href="'+esc(lc.href)+'">'+esc(lc.button)+'</a>')+'</section>' : '')+
     '<p class="lead">'+t('intro.lead')+'</p>'+
     // пришёл по QR-коду с бумажного бланка (?ref=pdf, с 2026-10-25; тексты content.paper.fromPdf): как перенести отметки
-    (c.fromPdf ? '<div class="frompdf"><b>'+esc(c.fromPdf.title)+'</b><p>'+esc(c.fromPdf.text)+'</p></div>' : '')+
+    (c.fromPdf ? '<div class="frompdf"><b>'+esc(c.fromPdf.title)+'</b><p>'+esc(c.fromPdf.text)+'</p>'+(c.fromPdf.scoreLink ? '<a href="#paper">'+esc(c.fromPdf.scoreLink)+' '+arr+'</a>' : '')+'</div>' : '')+
     '<div class="actions startrow'+(lc ? ' again' : '')+'">'+(lc ? '<button class="link" type="button" id="start">'+esc(lc.retake)+'</button>' : '<button class="btn big" type="button" id="start">'+t('intro.start')+'</button>')+
       '<span class="small muted">'+t('intro.startNote')+'</span>'+
       (progDone ? '<button class="link" type="button" id="resume">'+t('intro.resume',{n:progDone})+'</button>' : '')+
@@ -1155,14 +1163,75 @@ function renderTest(){
     var missing = -1; for(var k=0;k<24;k++){ if(S.m[k]<0||S.l[k]<0){ missing=k; break; } }
     if(missing>=0){ S.i=missing; lsSet('disc.progress', S); toast(t('test.missing',{n:missing+1})); renderTest(); return; }
     var r = {name:S.name, email:S.email||'', pos:S.pos||'', t:new Date().toISOString(), m:S.m.slice(), l:S.l.slice()};
-    lsSet('disc.last', r); lsDel('disc.progress'); S=null;
-    // специальная цена расширенного отчёта на час после теста (src/pay.js): время первого прохождения на этом устройстве, повторное его не меняет
-    var PBo = L.content && L.content.product; if(PBo && PBo.pay && PBo.pay.offer && typeof payOfferMark === 'function') payOfferMark(r, lsGet, lsSet);
-    if(window.discTrack) window.discTrack('finish'); // цель Метрики: тест завершён
-    sendStat(r);
-    renderReport(r, {own:true});
-    window.scrollTo(0,0);
+    lsDel('disc.progress'); S=null;
+    finishResult(r, 'finish'); // цель Метрики finish: тест завершён
   });
+}
+// Конец прохождения — онлайн-теста и ввода чисел с бумажного бланка (#paper): результат сохраняется на устройстве, отметка о прохождении
+// уходит в общую статистику, открывается экран своего результата. goal — цель Метрики (finish или paper-score)
+function finishResult(r, goal){
+  lsSet('disc.last', r);
+  // специальная цена расширенного отчёта на час после теста (src/pay.js): время первого прохождения на этом устройстве, повторное его не меняет
+  var PBo = L.content && L.content.product; if(PBo && PBo.pay && PBo.pay.offer && typeof payOfferMark === 'function') payOfferMark(r, lsGet, lsSet);
+  if(window.discTrack) window.discTrack(goal);
+  sendStat(r);
+  renderReport(r, {own:true});
+  window.scrollTo(0,0);
+}
+
+/* ====== ввод результата с бумажного бланка (#paper, с 2026-10-25; тексты content.paper.score — пока русская версия) ======
+   QR-код у таблицы «Подсчёт результата» в PDF ведёт сюда. Человек вводит, сколько отметок «больше всего» и «меньше всего» у каждого стиля;
+   сайт подбирает ответы по блокам, которые дают ровно эти числа (в каждом блоке все четыре стиля, отметки «больше» и «меньше» —
+   у разных стилей), и открывает обычный экран своего результата: проценты, график, профиль и расширенный отчёт считаются только по этим числам. */
+function paperAnswers(most, least){
+  for(var tries=0; tries<400; tries++){
+    var mList=[], rem={}, lList=[], ok=true, i, j;
+    KEYS.forEach(function(k){ for(var n=0;n<most[k];n++) mList.push(k); rem[k]=least[k]; });
+    for(i=mList.length-1;i>0;i--){ j=Math.floor(Math.random()*(i+1)); var x=mList[i]; mList[i]=mList[j]; mList[j]=x; }
+    for(i=0;i<24;i++){ var best=null;
+      KEYS.forEach(function(k){ if(k!==mList[i] && rem[k]>0 && (best===null || rem[k]>rem[best] || (rem[k]===rem[best] && Math.random()<0.5))) best=k; });
+      if(best===null){ ok=false; break; } lList.push(best); rem[best]--; }
+    if(!ok) continue;
+    var idx=function(i, k){ for(var q=0;q<4;q++) if(BLOCKS[i][q].k===k) return q; return -1; };
+    return {m: mList.map(function(k, i){ return idx(i, k); }), l: lList.map(function(k, i){ return idx(i, k); })};
+  }
+  return null;
+}
+function renderPaper(){
+  var P = L.content && L.content.paper && L.content.paper.score;
+  if(!P){ renderIntro(); return; }
+  setStep(''); hideProgress(); xbar({show:false});
+  var cell = function(k, c, label){ return '<td><input type="number" inputmode="numeric" min="0" max="24" step="1" data-k="'+k+'" data-c="'+c+'" aria-label="'+esc(L.keys[k]+': '+label)+'"></td>'; };
+  view.innerHTML = '<div class="eyebrow">'+esc(P.eyebrow)+'</div><h1>'+esc(P.title)+'</h1><p class="lead">'+esc(P.lead)+'</p>'+
+    '<form class="card paperform" id="paperForm" novalidate><table class="ptab"><thead><tr><th>'+esc(P.style)+'</th><th>'+esc(P.most)+'</th><th>'+esc(P.least)+'</th><th>'+esc(P.net)+'</th></tr></thead><tbody>'+
+    KEYS.map(function(k){ return '<tr><td><b class="k" style="color:'+colorVar(k)+'">'+k+'</b> <span class="nm">'+esc(L.keys[k])+'</span></td>'+cell(k,'m',P.most)+cell(k,'l',P.least)+'<td class="pnet" data-net="'+k+'">—</td></tr>'; }).join('')+
+    '</tbody><tfoot><tr><td>'+esc(P.sum)+'</td><td data-sum="m">0</td><td data-sum="l">0</td><td></td></tr></tfoot></table>'+
+    '<p class="small muted">'+esc(P.sumNote)+'</p><p class="small sendstatus err" id="pErr" hidden></p>'+
+    '<div class="actions"><button class="btn big" type="submit">'+esc(P.button)+'</button></div></form>'+
+    '<p class="small muted paperalt">'+esc(P.alt)+' <button class="link" type="button" id="pStart">'+esc(P.altButton)+'</button></p>';
+  var form=$('#paperForm'), err=$('#pErr');
+  var val = function(k, c){ var v = form.querySelector('input[data-k="'+k+'"][data-c="'+c+'"]').value.trim(); return v==='' ? null : (/^\d{1,2}$/.test(v) ? +v : NaN); };
+  var num = function(v){ return typeof v==='number' && v>=0 && v<=24; };   // пустое поле — null, а null >= 0 в JS истинно
+  var upd = function(){ var sm=0, sl=0; KEYS.forEach(function(k){ var m=val(k,'m'), l=val(k,'l'); if(num(m)) sm+=m; if(num(l)) sl+=l;
+      form.querySelector('[data-net="'+k+'"]').textContent = (num(m) && num(l)) ? (m-l>0 ? '+' : '')+(m-l) : '—'; });
+    form.querySelector('[data-sum="m"]').textContent = sm; form.querySelector('[data-sum="l"]').textContent = sl;
+    form.querySelector('[data-sum="m"]').className = sm===24 ? 'ok' : ''; form.querySelector('[data-sum="l"]').className = sl===24 ? 'ok' : ''; };
+  form.addEventListener('input', function(){ err.hidden=true; upd(); });
+  form.addEventListener('submit', function(e){ e.preventDefault();
+    var most={}, least={}, bad=false, sm=0, sl=0;
+    KEYS.forEach(function(k){ most[k]=val(k,'m'); least[k]=val(k,'l'); if(!(num(most[k]) && num(least[k]))) bad=true; else { sm+=most[k]; sl+=least[k]; } });
+    var show = function(msg){ err.textContent=msg; err.hidden=false; };
+    if(bad){ show(P.errEmpty); return; }
+    if(sm!==24){ show(P.errSum.replace('{col}', P.most).replace('{n}', sm)); return; }
+    if(sl!==24){ show(P.errSum.replace('{col}', P.least).replace('{n}', sl)); return; }
+    var over = KEYS.filter(function(k){ return most[k]+least[k]>24; })[0];
+    if(over){ show(P.errStyle.replace('{k}', over)); return; }
+    var a = paperAnswers(most, least); if(!a){ show(P.errEmpty); return; }
+    var who = lsGet('disc.who')||{};
+    finishResult({name:who.name||'', email:'', pos:'', t:new Date().toISOString(), m:a.m, l:a.l}, 'paper-score');
+  });
+  $('#pStart').addEventListener('click', function(){ dropHash(); renderIntro(); window.scrollTo(0,0); });
+  upd();
 }
 
 /* ====== график ====== */
@@ -1955,6 +2024,7 @@ $('#brand').addEventListener('click', function(e){
 function route(){
   var h = pageHash(); // #r=… к этому времени убран из адресной строки и лежит в записи истории (dataHash в общем коде страниц)
   if(h==='#admin'){ renderAdmin(); return true; }
+  if(h==='#paper'){ renderPaper(); return true; }
   if(h.indexOf('#r=')===0){ var r = decodeResult(decodeURIComponent(h.slice(3))); if(r){
     // ссылка на свой результат (экран результата сам кладёт её в адресную строку — showHash; после обновления страницы,
     // возврата назад или восстановления вкладки она открывается снова): совпала с сохранённым на устройстве — экран своего результата

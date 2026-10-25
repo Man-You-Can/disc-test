@@ -333,10 +333,11 @@ function composeSubscribeMail(lang, url) {
 
 /**
  * Письмо с бумажным бланком теста (с 2026-10-25; форма «Прислать бланк на e-mail» на странице «Тест в PDF», пока русская версия):
- * ссылка на PDF, короткая памятка ведущему, ссылка на набор ведущего; если человек отметил согласие на рассылку — кнопка подтверждения подписки.
- * Тексты — DATA[язык].paper (content.paper.letter, адреса бланка, онлайн-теста и набора кладёт сборка). confirmUrl — ссылка подтверждения или ''.
+ * бланк во вложении (его прикладывает сервер) и ссылка на него, короткая памятка ведущему, ссылка на набор ведущего; если человек отметил согласие
+ * на рассылку — подписка действует сразу (решение заказчика от 2026-10-25), в письме — строка о ней и ссылка отписки.
+ * Тексты — DATA[язык].paper (content.paper.letter, адреса бланка, онлайн-теста и набора кладёт сборка). unsubUrl — ссылка отписки или ''.
  */
-function composePaperMail(lang, confirmUrl) {
+function composePaperMail(lang, unsubUrl) {
   var L = DATA[lang], P = L.paper, X = P.letter, site = SITE_URL.replace(/^https?:\/\//, '');
   var vars = { site: site, online: P.online.replace(/^https?:\/\//, '').replace(/\?.*$/, '') };   // в тексте — адрес без метки ?ref=mail, в ссылке — с ней
   var btn = function (href, label, dark) { return '<a href="' + esc(href) + '" style="display:inline-block;background:' + (dark ? '#1B2027' : '#ffffff') + ';color:' + (dark ? '#ffffff' : '#1B2027') +
@@ -348,18 +349,19 @@ function composePaperMail(lang, confirmUrl) {
     '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background:#ffffff;border:1px solid #D9DDE3;border-radius:14px"><tr><td style="padding:28px;font-size:16px;line-height:1.5">' +
     '<p style="margin:0 0 16px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#5B6470;font-weight:bold">DISC</p>' +
     '<p style="margin:0 0 18px">' + esc(fmt(X.intro, vars)) + '</p>' +
+    '<p style="margin:0 0 10px">' + esc(X.attachNote) + '</p>' +
     '<p style="margin:0 0 10px">' + btn(P.pdf, X.pdfButton, true) + '</p>' +
     '<p style="margin:0 0 24px;font-size:14px;color:#5B6470">' + esc(X.pdfNote) + '</p>' +
     '<p style="margin:0 0 10px;font-weight:bold;font-size:17px">' + esc(X.guideTitle) + '</p>' +
     '<table role="presentation" cellpadding="0" cellspacing="0" style="margin:0 0 14px;font-size:15px;line-height:1.45">' + guide + '</table>' +
     '<p style="margin:0 0 12px;font-size:15px">' + esc(X.kitText) + '</p>' +
     '<p style="margin:0 0 24px">' + btn(P.kit, X.kitButton, false) + '</p>' +
-    (confirmUrl ? '<p style="margin:0 0 12px;font-size:15px">' + esc(X.subscribe) + '</p><p style="margin:0 0 24px">' + btn(confirmUrl, X.subscribeButton, true) + '</p>' : '') +
+    (unsubUrl ? '<p style="margin:0 0 24px;font-size:14px;color:#5B6470">' + esc(fmt(X.subscribed, vars)) + ' <a href="' + esc(unsubUrl) + '" style="color:#5B6470">' + esc(X.unsubscribe) + '</a></p>' : '') +
     '<p style="margin:0;padding-top:12px;border-top:1px solid #D9DDE3;font-size:12px;color:#5B6470">' + esc(fmt(X.footer, vars)) + '</p>' +
     '</td></tr></table></td></tr></table></body></html>';
-  var text = fmt(X.intro, vars) + '\n\n' + X.pdfButton + ': ' + P.pdf + '\n' + X.pdfNote + '\n\n' + X.guideTitle + '\n' +
+  var text = fmt(X.intro, vars) + '\n\n' + X.attachNote + '\n' + P.pdf + '\n' + X.pdfNote + '\n\n' + X.guideTitle + '\n' +
     X.guide.map(function (g, i) { return (i + 1) + '. ' + fmt(g, vars); }).join('\n') + '\n\n' + X.kitText + '\n' + P.kit + '\n\n' +
-    (confirmUrl ? X.subscribe + '\n' + confirmUrl + '\n\n' : '') + fmt(X.footer, vars) + '\n';
+    (unsubUrl ? fmt(X.subscribed, vars) + '\n' + unsubUrl + '\n\n' : '') + fmt(X.footer, vars) + '\n';
   return { subject: fmt(X.subject, vars), html: html, text: text };
 }
 

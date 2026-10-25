@@ -400,8 +400,8 @@ const homeLocale = L => Object.assign({}, L, {
   profiles: Object.fromEntries(Object.entries(L.profiles).map(([k, p]) => [k, { name: p.name, summary: p.summary }])),
   // product — тексты блока «Расширенный отчёт» на экране результата (цена уже подставлена); страница отчёта в скрипт не идёт
   content: Object.assign({ home: L.content.home }, hasCvPromo(L) ? { cvPromo: L.content.cvPromo } : {},
-    // подсказка пришедшему по QR-коду с бумажного бланка (?ref=pdf, с 2026-10-25): только она, без остального content.paper
-    L.content.paper && L.content.paper.fromPdf ? { paper: { fromPdf: L.content.paper.fromPdf } } : {},
+    // подсказка пришедшему по QR-коду с бумажного бланка (?ref=pdf) и экран ввода чисел с бланка (#paper), с 2026-10-25: только они, без остального content.paper
+    L.content.paper && L.content.paper.fromPdf ? { paper: { fromPdf: L.content.paper.fromPdf, score: L.content.paper.score } } : {},
     hasProduct(L) ? { product: Object.assign(withPrice(L, L.content.product.block), hasSamples(L) ? {} : { sample: '' },
       L.content.product.promo ? { promo: withPrice(L, L.content.product.promo) } : {}, homePay(L) ? { pay: homePay(L) } : {}) } : {})
 });

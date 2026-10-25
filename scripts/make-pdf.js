@@ -38,7 +38,8 @@ for (const code of langs) {
   const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const url = siteUrl + '/' + (code === def ? '' : code + '/');
   // адреса для QR-кодов печатной версии (только там, где в локали есть content.paper.print): тест, расширенный отчёт, набор ведущего
-  const links = L.content.paper && L.content.paper.print ? { test: url + '?ref=pdf', extended: url + 'extended-report/?ref=pdf', kit: url + 'kit/?ref=pdf' } : {};
+  // score — страница ввода чисел из таблицы «Подсчёт результата» (#paper на странице теста): после ввода — обычный экран результата
+  const links = L.content.paper && L.content.paper.print ? { test: url + '?ref=pdf', score: url + '?ref=pdf#paper', extended: url + 'extended-report/?ref=pdf', kit: url + 'kit/?ref=pdf' } : {};
   const html = printHTML({ L, t, esc, KEYS, PROFILE_KEYS, BLOCK_KEYS, url, fontsCss, fontFamily: f.family, links, qr: qrSVG });
   const htmlFile = path.join(tmp, code + '.html'); fs.writeFileSync(htmlFile, html);
   const out = path.join(OUTD, 'disc-test-' + code + '.pdf');

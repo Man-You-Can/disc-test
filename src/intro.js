@@ -21,7 +21,7 @@ function introHTML(c){
       (lc.pay ? '' : '<a class="btn big" id="lastExt" href="'+esc(lc.href)+'">'+esc(lc.button)+'</a>')+'</section>' : '')+
     '<p class="lead">'+t('intro.lead')+'</p>'+
     // пришёл по QR-коду с бумажного бланка (?ref=pdf, с 2026-10-25; тексты content.paper.fromPdf): как перенести отметки
-    (c.fromPdf ? '<div class="frompdf"><b>'+esc(c.fromPdf.title)+'</b><p>'+esc(c.fromPdf.text)+'</p></div>' : '')+
+    (c.fromPdf ? '<div class="frompdf"><b>'+esc(c.fromPdf.title)+'</b><p>'+esc(c.fromPdf.text)+'</p>'+(c.fromPdf.scoreLink ? '<a href="#paper">'+esc(c.fromPdf.scoreLink)+' '+arr+'</a>' : '')+'</div>' : '')+
     '<div class="actions startrow'+(lc ? ' again' : '')+'">'+(lc ? '<button class="link" type="button" id="start">'+esc(lc.retake)+'</button>' : '<button class="btn big" type="button" id="start">'+t('intro.start')+'</button>')+
       '<span class="small muted">'+t('intro.startNote')+'</span>'+
       (progDone ? '<button class="link" type="button" id="resume">'+t('intro.resume',{n:progDone})+'</button>' : '')+
