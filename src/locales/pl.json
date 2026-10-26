@@ -1105,6 +1105,20 @@
           "Jak współpracować z przedstawicielami różnych typów: techniki i gotowe sformułowania",
           "Plan rozwoju na 30 dni"
         ],
+        "screen": {
+          "title": "Raport podstawowy opisuje twój profil. Rozszerzony pokazuje, co z tym zrobić w pracy",
+          "hook": "Twoja najniższa skala to {k} ({name}): {pct}%. Raport omawia to szczegółowo: część porad napisano właśnie dla osób, u których ta skala jest najniższa.",
+          "nameLower": false,
+          "onlyTitle": "Czego nie ma w bezpłatnym raporcie, a jest w rozszerzonym:",
+          "only": [
+            ["Jak widzą cię inni", "pierwsze wrażenie, pięć ślepych plamek i jak sprawdzić każdą z nich"],
+            ["Rozmowa z szefem", "jak przedstawiać wyniki, wyrażać sprzeciw i komunikować się, jeśli twój szef ma styl D, I, S lub C"],
+            ["Styl rozmówcy", "jak rozpoznać styl danej osoby i gotowe zdanie do rozmowy z każdym stylem: D, I, S i C"],
+            ["Kariera", "gdzie najlepiej się sprawdzasz, zadania, które są pułapką, i sygnały, że rola ci nie służy"],
+            ["Konflikt", "trzy typowe scenariusze i pięć kroków: co robić tu i teraz"],
+            ["Trzy karty pracy", "plan na 30 dni, najważniejsze na jednej stronie i karta „Jak ze mną pracować” dla współpracowników"]
+          ]
+        },
         "sample": "Strony raportu przygotowanego dla fikcyjnej osoby",
         "price": "{price} USD · PDF na e-mail",
         "button": "Zamów raport rozszerzony",

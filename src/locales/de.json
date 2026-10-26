@@ -2067,6 +2067,20 @@
           "Wie Sie mit Menschen verschiedener Typen umgehen: Gesprächstechniken und fertige Formulierungen",
           "Ein 30-Tage-Entwicklungsplan"
         ],
+        "screen": {
+          "title": "Der Kurzbericht zeigt, wer Sie sind. Der ausführliche Bericht zeigt, was Sie im Beruf daraus machen",
+          "hook": "Ihr niedrigster Wert ist {k} ({name}): {pct} %. Der Bericht geht ausführlich darauf ein: Ein Teil der Ratschläge ist gezielt für Menschen geschrieben, bei denen dieser Wert am niedrigsten ist.",
+          "nameLower": false,
+          "onlyTitle": "Was nicht im kostenlosen Bericht steht, aber im ausführlichen:",
+          "only": [
+            ["Wie andere Sie sehen", "der erste Eindruck, fünf blinde Flecken und wie Sie jeden davon überprüfen"],
+            ["Gespräche mit Ihrer Führungskraft", "wie Sie Ergebnisse präsentieren, widersprechen und kommunizieren, wenn Ihre Führungskraft den Stil D, I, S oder C hat"],
+            ["Der Stil Ihres Gegenübers", "wie Sie den Stil eines Menschen erkennen, und eine fertige Formulierung für jeden Stil: D, I, S und C"],
+            ["Karriere", "wo Sie am stärksten sind, Aufgaben, die zur Falle werden, und Anzeichen, dass eine Rolle nicht zu Ihnen passt"],
+            ["Konflikt", "drei typische Szenarien und fünf Schritte für die Situation selbst"],
+            ["Drei Arbeitsblätter", "ein 30-Tage-Plan, das Wichtigste auf einer Seite und das Blatt „So arbeitet man am besten mit mir“ für Kollegen"]
+          ]
+        },
         "sample": "Seiten aus dem Bericht einer erfundenen Teilnehmerin",
         "price": "{price} € · PDF per E-Mail",
         "button": "Ausführlichen Bericht holen",

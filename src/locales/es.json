@@ -1125,6 +1125,20 @@
           "Cómo relacionarse con personas de distintos tipos: técnicas y frases listas para usar",
           "Un plan de desarrollo de 30 días"
         ],
+        "screen": {
+          "title": "El informe breve muestra cómo es usted. El ampliado, qué hacer con ello en el trabajo",
+          "hook": "Su escala más baja es {k} ({name}): {pct} %. El informe lo analiza en detalle: parte de los consejos está escrita precisamente para personas cuya escala más baja es esta.",
+          "nameLower": false,
+          "onlyTitle": "Lo que no está en el informe gratuito, pero sí en el ampliado:",
+          "only": [
+            ["Cómo le ven los demás", "la primera impresión, cinco puntos ciegos y cómo comprobar cada uno"],
+            ["Conversaciones con su jefe", "cómo presentar resultados, discrepar y comunicarse si su jefe es D, I, S o C"],
+            ["El estilo de su interlocutor", "cómo reconocer el estilo de una persona y una frase lista para hablar con cada estilo: D, I, S y C"],
+            ["Carrera", "dónde rinde más, tareas trampa y señales de que un puesto no es para usted"],
+            ["Conflicto", "tres situaciones típicas y cinco pasos: qué hacer en el momento"],
+            ["Tres hojas de trabajo", "plan de 30 días, lo esencial en una página y la hoja «Cómo trabajar conmigo» para sus compañeros"]
+          ]
+        },
         "sample": "Páginas del informe de una participante ficticia",
         "price": "{price} USD · PDF por correo",
         "button": "Quiero el informe ampliado",

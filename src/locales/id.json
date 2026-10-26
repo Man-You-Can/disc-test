@@ -1102,6 +1102,20 @@
           "Cara berinteraksi dengan orang dari tipe yang berbeda: kiat dan kalimat siap pakai",
           "Rencana pengembangan diri 30 hari"
         ],
+        "screen": {
+          "title": "Laporan ringkas menunjukkan seperti apa diri Anda. Laporan mendalam menunjukkan cara memanfaatkannya di tempat kerja",
+          "hook": "Skala terendah Anda adalah {k} ({name}): {pct}%. Laporan ini membahasnya secara rinci: sebagian sarannya ditulis khusus untuk orang yang skala terendahnya sama dengan Anda.",
+          "nameLower": false,
+          "onlyTitle": "Yang tidak ada di laporan gratis, tetapi ada di laporan mendalam:",
+          "only": [
+            ["Bagaimana orang lain melihat Anda", "kesan pertama, lima titik buta, dan cara memeriksa masing-masing"],
+            ["Berbicara dengan atasan", "cara menyampaikan hasil kerja, menyatakan ketidaksetujuan, dan berkomunikasi jika atasan Anda bergaya D, I, S, atau C"],
+            ["Gaya lawan bicara", "cara mengenali gaya seseorang dan kalimat siap pakai untuk berbicara dengan tiap gaya: D, I, S, dan C"],
+            ["Karier", "di mana Anda paling unggul, tugas yang menjebak, dan tanda bahwa sebuah peran tidak cocok untuk Anda"],
+            ["Konflik", "tiga skenario yang lazim dan lima langkah yang perlu dilakukan saat itu juga"],
+            ["Tiga lembar kerja", "rencana 30 hari, intisari dalam satu halaman, dan lembar “Cara bekerja sama dengan saya” untuk rekan kerja"]
+          ]
+        },
         "sample": "Halaman dari laporan untuk peserta rekaan",
         "price": "US${price} · PDF lewat email",
         "button": "Dapatkan laporan mendalam",

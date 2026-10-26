@@ -2069,6 +2069,20 @@
           "Comment interagir avec des personnes de types différents : techniques et phrases toutes prêtes",
           "Un plan de développement sur 30 jours"
         ],
+        "screen": {
+          "title": "Le rapport de synthèse montre qui vous êtes. Le rapport détaillé, ce qu'il faut en faire au travail",
+          "hook": "Votre échelle la plus basse : {k} ({name}), {pct} %. Le rapport l'analyse en détail : une partie des conseils est écrite précisément pour les personnes dont c'est l'échelle la plus basse.",
+          "nameLower": false,
+          "onlyTitle": "Ce qui n'est pas dans le rapport gratuit, mais figure dans le rapport détaillé :",
+          "only": [
+            ["Comment les autres vous voient", "la première impression, cinq angles morts et comment vérifier chacun"],
+            ["Avec votre responsable", "comment présenter vos résultats, exprimer un désaccord et communiquer si votre responsable est D, I, S ou C"],
+            ["Le style de votre interlocuteur", "comment reconnaître le style d'une personne et une phrase toute prête pour parler à chaque style : D, I, S et C"],
+            ["Carrière", "là où vous donnez toute votre mesure, les tâches qui vous piègent et les signes qu'un poste n'est pas fait pour vous"],
+            ["Conflit", "trois scénarios types et cinq étapes : que faire sur le moment"],
+            ["Trois fiches pratiques", "un plan sur 30 jours, l'essentiel sur une page et la fiche « Comment travailler avec moi » pour vos collègues"]
+          ]
+        },
         "sample": "Pages du rapport d'une participante fictive",
         "price": "{price} € · PDF par e-mail",
         "button": "Je veux le rapport détaillé",

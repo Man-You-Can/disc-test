@@ -1100,6 +1100,20 @@
           "Farklı tiplerden insanlarla nasıl iletişim kurulur: yöntemler ve hazır cümleler",
           "30 günlük gelişim planı"
         ],
+        "screen": {
+          "title": "Özet rapor nasıl biri olduğunuzu gösterir. Genişletilmiş rapor ise bununla iş hayatında ne yapacağınızı",
+          "hook": "En düşük ölçeğiniz {k} ({name}): %{pct}. Raporda bu ayrıntılı olarak ele alınıyor: tavsiyelerin bir kısmı, en düşük ölçeği bu olan kişiler için özel olarak yazıldı.",
+          "nameLower": false,
+          "onlyTitle": "Ücretsiz raporda olmayan, genişletilmiş raporda olanlar:",
+          "only": [
+            ["Başkaları sizi nasıl görüyor", "ilk izlenim, beş kör nokta ve her birini nasıl sınayacağınız"],
+            ["Yöneticinizle konuşmak", "yöneticiniz D, I, S veya C stilindeyse sonuçları nasıl sunacağınız, nasıl itiraz edeceğiniz ve nasıl iletişim kuracağınız"],
+            ["Karşınızdakinin stili", "bir kişinin stilini nasıl tanıyacağınız ve her stille konuşmak için hazır bir cümle: D, I, S ve C"],
+            ["Kariyer", "en güçlü olduğunuz alanlar, sizi tuzağa düşüren görevler ve bir rolün size uymadığını gösteren işaretler"],
+            ["Çatışma", "üç tipik senaryo ve o anda atılacak beş adım"],
+            ["Üç çalışma kâğıdı", "30 günlük plan, tek sayfada işin özü ve iş arkadaşlarınız için “Benimle nasıl çalışılır” sayfası"]
+          ]
+        },
         "sample": "Hayalî bir katılımcı için hazırlanmış rapordan sayfalar",
         "price": "{price} USD · e-postayla PDF",
         "button": "Genişletilmiş raporu al",

@@ -13,8 +13,8 @@ function introHTML(c){
     '<h1>'+t('intro.h1')+'</h1>'+
     (lc ? '<section class="share xoffer lastcard" id="lastOffer" style="--k:'+colorVar(lc.k)+'"><div class="lchead">'+esc(lc.label)+
         '<span class="lastname"><b>'+lc.badge+' '+esc(lc.name)+'</b><button class="link" type="button" id="showLast">'+esc(lc.open)+'</button></span></div>'+
-      '<h2>'+esc(lc.title)+'</h2><p class="xhook">'+esc(lc.hook)+'</p>'+
-      '<div class="xgrid"><ul>'+lc.list.map(function(x){ return '<li>'+esc(x)+'</li>'; }).join('')+'</ul>'+
+      '<h2>'+esc(lc.x.title)+'</h2><p class="xhook">'+esc(lc.x.hook)+'</p>'+
+      '<div class="xgrid">'+c.extListHTML(lc.x)+
         (lc.thumbs ? '<div class="xside"><a class="xthumbs" id="lastSample" href="'+esc(lc.href)+'#sample" aria-label="'+esc(lc.sample)+'">'+lc.thumbs.map(function(u){ return '<img src="'+esc(u)+'" width="440" height="623" alt="" loading="lazy" decoding="async">'; }).join('')+'</a>'+
           '<p>'+esc(lc.sample)+'</p></div>' : '')+'</div>'+
       (lc.soon ? '<p class="xsoon">'+esc(lc.soon)+'</p>' : '')+

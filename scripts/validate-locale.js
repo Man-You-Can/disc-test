@@ -13,6 +13,9 @@ const files = process.argv.slice(2).length ? process.argv.slice(2) : fs.readdirS
 // Оферта, условия возврата, страница отчёта, раздел о данных покупателя и ссылка «Оферта» обязательны во всех языках.
 const OPTIONAL = ['.content.policy.legal', '.content.extendedMail', '.content.product.pay', '.content.product.sampleTitle', '.content.product.sampleNote', '.content.product.sampleAlt',
   '.content.product.sampleCaption', '.content.product.block.sample', '.content.product.pdf.sheets', '.content.product.promo',
+  // тексты блока «Расширенный отчёт» на экране результата и в карточке вернувшегося посетителя («Чего нет в бесплатном отчёте, но есть в расширенном»,
+  // с 2026-10-26): только где отчёт продаётся; обязательность — в проверке ниже
+  '.content.product.block.screen',
   // Для организаций (с 2026-10-22, сначала только русская версия — по просьбе заказчика): страница «Для организаций» и её пункт в подвале,
   // поле кода доступа в форме покупки и письмо получателю отчёта по коду. Когда заказчик утвердит русскую версию, код доступа станет
   // обязательным вместе с product.pay (правило «что сделано для продажи — во все языки с покупкой»)
@@ -80,6 +83,10 @@ for (const f of files) {
   if (P.pay && P.pay.offer && !['regular', 'cta', 'note', 'left', 'expired'].every(k => typeof P.pay.offer[k] === 'string' && P.pay.offer[k]) ) errs.push('.content.product.pay.offer: needs regular, cta, note, left and expired');
   if (C.mailing && !P.pay) errs.push('.content.mailing: only where the report is on sale (needs product.pay)');
   if (P.promo && !P.pay) errs.push('.content.product.promo: only where the report is on sale (needs product.pay)');
+  if (B.screen && !P.pay) errs.push('.content.product.block.screen: only where the report is on sale (needs product.pay)');
+  if (P.pay && !B.screen) errs.push('.content.product.block.screen: missing — the report is on sale in this language, so the result-screen block goes with it (CLAUDE.md)');
+  if (B.screen && !(Array.isArray(B.screen.only) && B.screen.only.length && B.screen.only.every(x => Array.isArray(x) && x.length === 2 && x.every(y => typeof y === 'string' && y)))) errs.push('.content.product.block.screen.only: needs [start, explanation] pairs');
+  if (B.screen && typeof B.screen.nameLower !== 'boolean') errs.push('.content.product.block.screen.nameLower: must be true or false');
   // Правило заказчика от 2026-10-14: всё, что сделано для продажи в русской версии, применяется в языке вместе с покупкой
   if (P.pay && !P.promo) errs.push('.content.product.promo: missing — the report is on sale in this language, so everything done for sales in the Russian version applies here (CLAUDE.md)');
   // письмо подписчикам о расширенном отчёте (с 2026-10-25, во всех языках с покупкой) — по этому же правилу

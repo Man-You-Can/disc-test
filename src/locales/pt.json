@@ -1121,6 +1121,20 @@
           "Como lidar com pessoas de tipos diferentes: técnicas e frases prontas",
           "Plano de desenvolvimento de 30 dias"
         ],
+        "screen": {
+          "title": "O relatório resumido mostra quem você é. O ampliado mostra o que fazer com isso no trabalho",
+          "hook": "Sua escala mais baixa é {k} ({name}): {pct}%. O relatório analisa isso em detalhe: parte dos conselhos foi escrita justamente para pessoas cuja escala mais baixa é esta.",
+          "nameLower": false,
+          "onlyTitle": "O que não está no relatório gratuito, mas está no ampliado:",
+          "only": [
+            ["Como os outros veem você", "a primeira impressão, cinco pontos cegos e como verificar cada um"],
+            ["Conversa com o gestor", "como apresentar resultados, discordar e se comunicar se o seu gestor for D, I, S ou C"],
+            ["O estilo do outro", "como perceber o estilo de uma pessoa e uma frase pronta para conversar com cada estilo: D, I, S e C"],
+            ["Carreira", "onde você rende mais, tarefas que são armadilhas e sinais de que o cargo não combina com você"],
+            ["Conflito", "três cenários típicos e cinco passos: o que fazer na hora"],
+            ["Três folhas de trabalho", "plano de 30 dias, o essencial em uma página e a folha “Como trabalhar comigo” para os colegas"]
+          ]
+        },
         "sample": "Páginas do relatório de uma participante fictícia",
         "price": "US$ {price} · PDF por e-mail",
         "button": "Quero o relatório ampliado",
