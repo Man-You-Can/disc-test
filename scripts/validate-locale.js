@@ -31,7 +31,9 @@ const OPTIONAL = ['.content.policy.legal', '.content.extendedMail', '.content.pr
   '.content.paper', '.content.kit', '.content.consentDoc.paperForm',   // бумажный бланк: QR, «Что дальше», блок для групп, бланк на e-mail; набор ведущего (с 2026-10-25, пока русская версия)
   // письмо подписчикам с призывом купить расширенный отчёт (content.mailing.promo, с 2026-10-25): только где отчёт продаётся; обязательность — в проверке ниже.
   // Где ключ есть, он полный (сверка с ru)
-  '.content.mailing'];
+  '.content.mailing',
+  // страница «Провести тест в группе» (/group/, с 2026-10-26, черновик заказчику — пока русская версия)
+  '.content.group', '.ui.nav.group'];
 // специальная цена на час после теста (product.pay.offer; offerPriceRub, offerPriceUsd в site.config.json; с 2026-10-22) обязательна вместе с product.pay:
 // её тексты сравниваются с ru.json как часть pay
 // Страница «Как готовятся отчёты» (content.howMade) и её пункт в шапке (ui["nav.howMade"]) обязательны во всех языках (с 2026-10-14).
@@ -98,6 +100,7 @@ for (const f of files) {
   // бумажный бланк и набор ведущего (с 2026-10-25): появляются в языке только вместе — QR-коды бланка ведут на набор, письмо с бланком — тоже
   if (!!C.kit !== !!C.paper) errs.push('.content.kit and .content.paper must come together (the blank links to the kit)');
   if (C.paper && !(C.consentDoc && C.consentDoc.paperForm)) errs.push('.content.paper: needs .content.consentDoc.paperForm (the consent text must describe the "blank by e-mail" form)');
+  if (!!C.group !== !!(j.ui && j.ui['nav.group'])) errs.push('.content.group and .ui["nav.group"] must come together (the footer links to the page)');
   if (C.cvPromo && !C.cv) errs.push('.content.cvPromo: needs .content.cv (the blocks link to the /cv/ landing)');
   if (!!C.business !== !!(j.ui && j.ui['nav.business'])) errs.push('.content.business and .ui["nav.business"] must come together');
   if (C.business && !(P.pay && P.pay.code)) errs.push('.content.business: needs .content.product.pay.code (people redeem the codes in the purchase form)');

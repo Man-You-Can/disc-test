@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 /* Сборка сайта: src/template.html + src/locales/*.json → docs/<lang>/index.html
    Запуск: node build.js */
+const vm = require('vm');
+let qrLib = null;   // src/qr.js для QR-кода на странице /group/ (загружается при сборке один раз)
 const fs = require('fs'), path = require('path'), crypto = require('crypto'), { execSync } = require('child_process');
 const ROOT = __dirname, SRC = path.join(ROOT, 'src'), OUT = path.join(ROOT, 'docs');
 const cfg = JSON.parse(fs.readFileSync(path.join(ROOT, 'site.config.json'), 'utf8'));
@@ -251,7 +253,7 @@ const ltr = str => `<span dir="ltr">${str}</span>`; // латиница внут
 const FOOT_ITEMS = [['nav.about', 'about/']].concat(feedbackEmail ? [['nav.contact', 'contact/']] : []).concat([['nav.privacy', 'privacy/']]);
 // Короткий подвал экрана результата (с 2026-10-21, решение заказчика): только оферта, конфиденциальность и обратная связь + строка ©
 const footShort = (L, base) => (hasOffer(L) ? [['nav.offer', 'offer/']] : []).concat([['nav.privacy', 'privacy/']], feedbackEmail ? [['nav.contact', 'contact/']] : []).map(([k, sub]) => `<a href="${base + sub}">${esc(L.ui[k])}</a>`).join(' · ');
-const footLinks = (L, base) => FOOT_ITEMS.slice(0, 1).concat(hasServices(L) ? [['nav.services', 'services/']] : [], hasBusiness(L) ? [['nav.business', 'business/']] : [], hasOffer(L) ? [['nav.offer', 'offer/']] : [], FOOT_ITEMS.slice(1)).map(([k, sub]) => `<a href="${base + sub}">${esc(L.ui[k])}</a>`).join(' · ');
+const footLinks = (L, base) => FOOT_ITEMS.slice(0, 1).concat(hasServices(L) ? [['nav.services', 'services/']] : [], hasBusiness(L) ? [['nav.business', 'business/']] : [], L.content.group && L.ui['nav.group'] ? [['nav.group', 'group/']] : [], hasOffer(L) ? [['nav.offer', 'offer/']] : [], FOOT_ITEMS.slice(1)).map(([k, sub]) => `<a href="${base + sub}">${esc(L.ui[k])}</a>`).join(' · ');
 const PROFILE_KEYS = ['D', 'DI', 'DC', 'DS', 'I', 'ID', 'IS', 'IC', 'S', 'SI', 'SC', 'SD', 'C', 'CD', 'CS', 'CI'];
 // Источники к странице «Что такое DISC». Библиографические описания одинаковы во всех языках
 // (названия работ приводятся на языке оригинала), поэтому живут здесь, а не в локалях;
@@ -406,6 +408,8 @@ const homeLocale = L => Object.assign({}, L, {
   content: Object.assign({ home: L.content.home }, hasCvPromo(L) ? { cvPromo: L.content.cvPromo } : {},
     // подсказка пришедшему по QR-коду с бумажного бланка (?ref=pdf) и экран ввода чисел с бланка (#paper), с 2026-10-25: только они, без остального content.paper
     L.content.paper && L.content.paper.fromPdf ? { paper: { fromPdf: L.content.paper.fromPdf, score: L.content.paper.score } } : {},
+    // строка на экране своего результата о странице «Провести тест в группе» (с 2026-10-26, content.group.resultLine)
+    L.content.group ? { group: { resultLine: L.content.group.resultLine } } : {},
     hasProduct(L) ? { product: Object.assign(withPrice(L, L.content.product.block), hasSamples(L) ? {} : { sample: '' },
       L.content.product.promo ? { promo: withPrice(L, L.content.product.promo) } : {}, homePay(L) ? { pay: homePay(L) } : {}) } : {})
 });
@@ -805,9 +809,44 @@ for (const L of locales) {
   // /teams/ — DISC для команды и HR
   const tm = C.teams;
   writeContentPage(L, 'teams/', { navKey: 'nav.teams', article: true, title: tm.title, description: tm.description, crumbs: [{ name: t('nav.teams') }],
-    content: `<div class="eyebrow">DISC</div><h1>${escFull(tm.h1)}</h1><p class="lead">${escFull(tm.lead)}</p>` + ctaTop(t, '../') + sectionsHtml(tm.sections) +
+    content: `<div class="eyebrow">DISC</div><h1>${escFull(tm.h1)}</h1><p class="lead">${escFull(tm.lead)}</p>` + ctaTop(t, '../') + (C.group ? sectionsHtml(tm.sections.slice(0, 3)) + `<p class="seealso">${escFull(C.group.teamsLink)} <a href="../group/">${escFull(C.group.h1)} ${arrow(L)}</a></p>` + sectionsHtml(tm.sections.slice(3)) : sectionsHtml(tm.sections)) +
       (hasBusiness(L) ? `<p class="seealso"><a href="../business/">${escFull(C.business.h1)}: ${escFull(C.business.packsTitle.toLowerCase())} ${arrow(L)}</a></p>` : '') +
       ctaBlock(L, t, '../') + seeAlso('../', 'nav.teams') });
+  // /group/ — провести тест в группе (с 2026-10-26, по разбору источников: большинство прохождений — по ссылке, которую ведущий разослал группе):
+  // готовый текст приглашения, ссылка с меткой ?ref=group и QR-код, как собрать результаты в панели администратора (#admin), материалы для занятия.
+  // Тексты — content.group; кнопки «Скопировать» — скрипт страницы (цель group-copy); QR — src/qr.js при сборке
+  if (C.group) {
+    const G = C.group, gLink = urlOf(L.lang) + '?ref=group';
+    const gInvite = G.invite.replace('{link}', gLink).replace('{share}', t('share.profile')).replace('{copy}', t('share.copyLink'));
+    if (!qrLib) { qrLib = {}; vm.createContext(qrLib); vm.runInContext(fs.readFileSync(path.join(__dirname, 'src', 'qr.js'), 'utf8'), qrLib); }
+    const gQr = qrLib.qrSVG(gLink, { label: G.qrAlt });
+    const gMore = { kit: hasKit(L) ? `<a href="../kit/">${escFull(C.kit.h1)}</a>` : '', pdf: `<a href="../pdf/">${escFull(t('nav.pdf'))}</a>`,
+      teams: `<a href="../teams/">${escFull(t('nav.teams'))}</a>`, business: hasBusiness(L) ? `<a href="../business/">${escFull(C.business.h1)}</a>` : '' };
+    const gItems = G.more.map(x => { const k = (/^\{(\w+)\}/.exec(x) || [])[1]; return k && gMore[k] ? escFull(x).replace('{' + k + '}', gMore[k]) : ''; }).filter(Boolean);
+    writeContentPage(L, 'group/', { navKey: 'nav.teams', langs: locales.filter(x => x.content.group), title: G.title, description: G.description, crumbs: [{ name: t('nav.teams'), href: '../teams/', sub: 'teams/' }, { name: G.h1.replace(/ /g, ' ') }],
+      content: `<div class="eyebrow">DISC</div><h1>${escFull(G.h1)}</h1><p class="lead">${escFull(G.lead)}</p>` +
+        `<ul class="xfacts">${G.facts.map(x => `<li>${escFull(x)}</li>`).join('')}</ul>` +
+        `<h2>${escFull(G.inviteTitle)}</h2><p>${escFull(G.inviteLead)}</p>` +
+        `<div class="ginvite" id="gInvite">${escFull(gInvite)}</div>` +
+        `<p><button class="btn" type="button" data-copy="invite">${escFull(G.copyText)}</button></p>` +
+        `<h2>${escFull(G.linkTitle)}</h2><p>${escFull(G.linkLead)}</p>` +
+        `<div class="glink"><input type="text" readonly value="${escFull(gLink)}" aria-label="${escFull(G.linkTitle)}" id="gLink"><button class="btn secondary" type="button" data-copy="link">${escFull(G.copyLink)}</button></div>` +
+        `<div class="gqr">${gQr}<p><a href="data:image/svg+xml;charset=utf-8,${encodeURIComponent(gQr)}" download="disc-test-qr.svg" data-goal-copy="qr">${escFull(G.qrDownload)}</a></p></div>` +
+        `<h2>${escFull(G.collectTitle)}</h2><ol>${G.collect.map(x => `<li>${escFull(x).replace('{admin}', `<a href="../#admin">${escFull(G.adminLink)}</a>`)}</li>`).join('')}</ol>` +
+        `<h2>${escFull(G.rulesTitle)}</h2>` + listHtml('ul', G.rules) +
+        `<h2>${escFull(G.moreTitle)}</h2><ul>${gItems.map(x => `<li>${x}</li>`).join('')}</ul>`,
+      css: `.ginvite{white-space:pre-line;background:var(--soft);border-radius:12px;padding:16px 18px;margin:0 0 12px}` +
+        `.glink{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 16px}.glink input{flex:1 1 220px;min-width:0;font:inherit;padding:10px 12px;border-radius:10px;border:1px solid var(--line-strong);background:var(--surface);color:var(--ink)}` +
+        `.gqr{display:flex;align-items:center;gap:16px;flex-wrap:wrap}.gqr svg{width:160px;height:160px;border-radius:8px}.gqr p{margin:0}`,
+      pageJs: `(function(){ var T = ${JSON.stringify({ invite: gInvite, link: gLink, copied: G.copied })};
+  function copy(s, btn){ var done = function(){ var was = btn.textContent; btn.textContent = T.copied; setTimeout(function(){ btn.textContent = was; }, 2000); };
+    if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(s).then(done, function(){ fallback(s); done(); }); } else { fallback(s); done(); } }
+  function fallback(s){ var ta = document.createElement('textarea'); ta.value = s; ta.style.position = 'fixed'; ta.style.opacity = '0'; document.body.appendChild(ta); ta.select(); try{ document.execCommand('copy'); }catch(e){} ta.remove(); }
+  document.querySelectorAll('[data-copy]').forEach(function(b){ b.addEventListener('click', function(){ var k = b.getAttribute('data-copy'); copy(T[k], b); if(window.discTrack) window.discTrack('group-copy', {what: k}); }); });
+  var q = document.querySelector('[data-goal-copy]'); if(q) q.addEventListener('click', function(){ if(window.discTrack) window.discTrack('group-copy', {what: 'qr'}); });
+  var i = document.getElementById('gLink'); if(i) i.addEventListener('focus', function(){ i.select(); });
+})();` });
+  }
   // /cv/ — лендинг сервиса «Резюме под каждую вакансию» (с 2026-10-22, решение заказчика; первая редакция того же дня продавала ручную услугу в Telegram):
   // заявка на ранний доступ, первым 1000 — скидка 50%, оплаты на странице нет. Две одинаковые формы (первый экран и конец страницы, src/cv.js) →
   // форма обратной связи сервера, тема «Заявка на ранний доступ к сервису CV». Только там, где в локали есть content.cv (сейчас русская версия).
@@ -1116,7 +1155,7 @@ for (const L of locales) {
           `<h2>${escFull(KT.faqTitle)}</h2>` + KT.faq.map(it => `<h3 class="xq">${escFull(it.q)}</h3><p>${escFull(it.a)}</p>`).join('') +
           `<h2 id="request">${escFull(F.title)}</h2><p>${escFull(F.lead)}</p>` +
           businessHTML({ T: KF, esc: escFull, email: feedbackEmail, pdLabel: pdOn ? pdLabelHtml(L, '../') : '' }) +
-          `<p class="seealso"><a href="../pdf/">${escFull(t('nav.pdf'))} ${arrow(L)}</a>` + (hasBusiness(L) ? ` · ${docLink('business/', C.business)}` : '') + `</p>`,
+          `<p class="seealso"><a href="../pdf/">${escFull(t('nav.pdf'))} ${arrow(L)}</a>` + (C.group ? ` · <a href="../group/">${escFull(C.group.h1)} ${arrow(L)}</a>` : '') + (hasBusiness(L) ? ` · ${docLink('business/', C.business)}` : '') + `</p>`,
         files: ['src/business.js'],
         pageJs: businessJs + `initBusiness({T: ${JSON.stringify(KF).replace(/</g, '\\u003c')}, L: L, esc: esc, $: $, endpoint: ${jsStr(cfg.sendEndpoint)}, token: ${jsStr(cfg.sendToken)}, email: ${jsStr(feedbackEmail)}, pdVersion: ${jsStr(pdOn ? pdVersion : '')}});` });
     }
