@@ -459,6 +459,11 @@ check('extended: at most 5 reports per address per hour', (() => { let last; for
 check('extended: reports do not use up the daily counter of result mails', (() => { const k = Object.keys(store).find(x => x.startsWith('day:')), was = store[k]; ext({ to: 'quota@b.co' }); return store[k] === was; })());
 check('extended texts exist only where the report is sold', Object.keys(ctx.DATA).filter(lg => ctx.DATA[lg].extended).join() === Object.keys(ctx.DATA).filter(saleOf).join() &&
   Object.keys(ctx.DATA).filter(lg => ctx.DATA[lg].extended).every(lg => Object.values(ctx.DATA[lg].extended).every(s => typeof s === 'string' && s.trim())));
+// просьба об отзыве (с 2026-10-26): в каждом письме с расширенным отчётом, в разметке и в простом тексте, перед приглашением пройти тест
+check('extended mail: review request in every sale language, html and text, before the invite', Object.keys(ctx.DATA).filter(lg => ctx.DATA[lg].extended).every(lg => {
+  const X = ctx.DATA[lg].extended, mm = ctx.composeExtendedMail(ctx.decodeResult(cX), lg);
+  return X.reviewTitle && X.review && X.reviewConsent && [X.reviewTitle, X.review, X.reviewConsent].every(s => mm.html.includes(ctx.esc(s)) && mm.text.includes(s)) &&
+    mm.html.indexOf(ctx.esc(X.reviewTitle)) < mm.html.indexOf(ctx.esc(X.inviteTitle)) && mm.text.indexOf(X.reviewTitle) < mm.text.indexOf(X.inviteTitle); }));
 // отчёт по коду доступа (с 2026-10-22): платил не получатель — вступление и строка внизу свои, без «Спасибо за покупку» и «вы оплатили»
 if (ctx.DATA.ru.extended && ctx.DATA.ru.extended.codeIntro) {
   const mC = ctx.composeExtendedMail(ctx.decodeResult(cX), 'ru', { code: true }), mR = ctx.composeExtendedMail(ctx.decodeResult(cX), 'ru');

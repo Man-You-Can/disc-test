@@ -475,6 +475,12 @@ function composeExtendedMail(r, lang, o) {
     '<p style="margin:0 0 14px;font-weight:bold">' + esc(X.attached) + '</p>' +
     '<p style="margin:0 0 14px">' + esc(X.how) + '</p>' +
     '<p style="margin:0 0 18px">' + esc(X.help) + '</p>' +
+    // просьба об отзыве (с 2026-10-26, по просьбе заказчика): ответом на письмо; на сайте — только с разрешения автора, только с именем
+    (X.reviewTitle ? '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 18px;background:#F3F4F6;border-radius:10px"><tr><td style="padding:16px 18px;font-size:15px;line-height:1.5">' +
+      '<p style="margin:0 0 6px;font-weight:bold">' + esc(X.reviewTitle) + '</p>' +
+      '<p style="margin:0 0 10px">' + esc(X.review) + '</p>' +
+      '<p style="margin:0;font-size:13px;color:#5B6470">' + esc(X.reviewConsent) + '</p>' +
+      '</td></tr></table>' : '') +
     '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 18px;background:#F3F4F6;border-radius:10px"><tr><td style="padding:16px 18px;font-size:15px;line-height:1.5">' +
     '<p style="margin:0 0 6px;font-weight:bold">' + esc(X.inviteTitle) + '</p>' +
     '<p style="margin:0 0 10px">' + esc(X.invite) + '</p>' +
@@ -483,6 +489,7 @@ function composeExtendedMail(r, lang, o) {
     '<p style="margin:0;padding-top:12px;border-top:1px solid #D9DDE3;font-size:12px;color:#5B6470">' + esc(footer) + '</p>' +
     '</td></tr></table></td></tr></table></body></html>';
   var text = greeting + '\n\n' + intro + ' ' + label + ' (' + styleName + ')\n\n' + X.attached + '\n\n' + X.how + '\n\n' + X.help + '\n\n' +
+    (X.reviewTitle ? X.reviewTitle + '\n' + X.review + '\n' + X.reviewConsent + '\n\n' : '') +
     X.inviteTitle + '\n' + X.invite + '\n' + X.inviteLink + ' ' + testLink + '\n\n' + footer + '\n';
   return { subject: fmt(X.subject, { label: label }), html: html, text: text };
 }
