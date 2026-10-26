@@ -191,6 +191,9 @@ body.has-consent .xbar,body.has-xbar .btn.ctafloat.show{display:none}
 .startrow.again{margin-top:-4px}
 @media (max-width:480px){.lastcard>.btn{display:flex;width:100%;margin-top:14px}}
 .xoffer{scroll-margin-top:76px}
+.xjump{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px 16px;margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
+.xjump p{margin:0;font-weight:600;flex:1 1 220px}
+.xjump .btn{flex:none}
 .xoffer+.card{margin-top:16px}
 /* блок расширенного отчёта выделен фоном в цвет ведущего стиля участника (--k), чтобы бросался в глаза (решение заказчика от 2026-10-21);
    без color-mix — прежний фон карточки и цветная полоса слева */
@@ -1204,6 +1207,7 @@ function renderReport(r, opts){
   // строки «PDF на e-mail» у цены и «Тест и краткий отчёт остаются бесплатными» нет (решение заказчика от 2026-10-21)
   var payHere = !!(PB && PB.pay && PAY_ENDPOINT && typeof payForms === 'function' && !opts.fromAdmin);
   var low = KEYS.slice().sort(function(x,y){ return sc.net[y]-sc.net[x]; })[3];
+  var XJ = PB && PB.screen && PB.screen.jump && !opts.fromAdmin ? PB.screen.jump : null;
   function extOffer(){
     if(!PB) return '';
     var X = extTexts(PB, low, pct(sc.net[low]));
@@ -1250,7 +1254,11 @@ function renderReport(r, opts){
       '<div class="sec full"><h3>'+t('report.traits')+'</h3><div class="traits">'+st.traits.map(function(x){ return '<span>'+esc(x)+'</span>'; }).join('')+'</div>'+
         (cls.s ? '<div class="substyle" style="--ks:'+colorVar(cls.s)+'"><b>'+t('report.secondary',{k:cls.s,name:esc(L.keys[cls.s])})+'</b> '+t('report.secondaryAddon',{addon:esc(L.addon[cls.s])})+'</div>' : '')+
       '</div>'+
-    '</div></div>'+
+    '</div>'+
+    // строка с кнопкой к блоку «Расширенный отчёт» под «Ключевыми чертами» (с 2026-10-26, по решению заказчика: блок стоит после описания профиля,
+    // и до него доходят не все). Тексты — product.block.screen.jump; кнопка прокручивает к блоку, заказ записывается с источником result-top
+    (XJ ? '<div class="xjump no-print"><p>'+esc(XJ.text)+'</p><a class="btn secondary small" id="xJump" href="#extOffer">'+esc(XJ.button)+' ↓</a></div>' : '')+
+    '</div>'+
     // «Сохраните результат» («Поделиться профилем», «Отправить на e-mail») — сразу после «Ключевых черт», перед остальным описанием профиля
     // (с 2026-10-25 по решению заказчика; раньше — в конце экрана). У чужого результата здесь же одна кнопка «Поделиться профилем»
     (opts.own ?
@@ -1320,6 +1328,11 @@ function renderReport(r, opts){
     if(PP) buyOpen(xo, xb.parentNode, 'result-block', xb, true);
     xo.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(ev){ src('result-block'); if(window.discTrack) window.discTrack('ext-click');
       if(PP && a === xb){ ev.preventDefault(); buyOpen(xo, xb.parentNode, 'result-block', xb); } }); });
+    // строка под «Ключевыми чертами»: прокрутка к блоку; форма покупки в блоке записывает заказ на эту кнопку (result-top, цель ext-top)
+    var xj = $('#xJump');
+    if(xj) xj.addEventListener('click', function(ev){ ev.preventDefault(); src('result-top'); if(window.discTrack) window.discTrack('ext-top');
+      if(PP){ var w = buyOpen(xo, xb.parentNode, 'result-top', xb, true); if(w && w.discOpts) w.discOpts.source = 'result-top'; }
+      xo.scrollIntoView({behavior:'smooth', block:'start'}); });
     if('IntersectionObserver' in window){ var xio = new IntersectionObserver(function(es){ if(es[0].isIntersecting){ xio.disconnect(); if(window.discTrack) window.discTrack('ext-show'); } }, {threshold:.4}); xio.observe(xo); }
     // закреплённая кнопка (общая для всех страниц, src/common.js): на экране результата видна и у чужого результата, пока её не закроют крестиком;
     // с формой на месте нажатие раскрывает её в блоке отчёта и прокручивает к ней (источник покупки result-bar), без формы — ведёт на страницу отчёта
