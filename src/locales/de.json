@@ -2576,6 +2576,50 @@
         }
       ]
     },
+    "group": {
+      "title": "DISG-Test mit einer Gruppe durchführen: Einladung, QR-Code und Ergebnistabelle",
+      "description": "Kostenloser DISG-Test für Klasse, Team oder Seminar: fertige Einladung zum Verschicken, QR-Code für Ihre Folien und alle Ergebnisse in einer Tabelle. Ohne Anmeldung.",
+      "h1": "DISG-Test mit einer Gruppe durchführen",
+      "lead": "Für Lehrkräfte, HR, Führungskräfte und Trainer. Der Test ist kostenlos, ohne Anmeldung und dauert etwa 10 Minuten; jede Person sieht ihr Ergebnis sofort. Hier finden Sie alles, um ihn in einer Minute an Ihre Gruppe zu schicken und die Ergebnisse danach in einer Tabelle zu sammeln.",
+      "facts": [
+        "Kostenlos",
+        "Ohne Anmeldung",
+        "Etwa 10 Minuten",
+        "Ergebnis sofort"
+      ],
+      "inviteTitle": "Einladung für die Gruppe",
+      "inviteLead": "Kopieren Sie den Text und schicken Sie ihn per Chat, E-Mail oder über die Lernplattform.",
+      "invite": "Hallo zusammen! Bitte machen Sie diesen kostenlosen DISG-Test: Er zeigt Ihren Verhaltensstil bei der Arbeit und in der Kommunikation. Er dauert etwa 10 Minuten, eine Anmeldung ist nicht nötig, und das Ergebnis erscheint sofort auf dem Bildschirm.\n\n{link}\n\nWenn Sie Ihr Ergebnis sehen, tippen Sie auf „{share}“, dann auf „{copy}“ und schicken Sie mir den Link.",
+      "copyText": "Text kopieren",
+      "copied": "Kopiert",
+      "linkTitle": "Link und QR-Code",
+      "linkLead": "Den Link können Sie überall einfügen, den QR-Code auf eine Folie oder einen Ausdruck setzen: Die Teilnehmenden scannen ihn mit der Handykamera, und der Test öffnet sich.",
+      "copyLink": "Link kopieren",
+      "qrDownload": "QR-Code herunterladen (SVG)",
+      "qrAlt": "QR-Code mit Link zum DISG-Test",
+      "collectTitle": "So sammeln Sie die Ergebnisse der Gruppe",
+      "collect": [
+        "Die Teilnehmenden antworten auf die Einladung mit dem Link zu ihrem Ergebnis.",
+        "Öffnen Sie den {admin} und fügen Sie die Links ein. Sie können alle auf einmal einfügen, auch ganze E-Mails.",
+        "Daraus entsteht eine Tabelle mit Namen, Profilen und Prozentwerten auf allen vier Skalen. Sie lässt sich in Excel kopieren. Die Tabelle bleibt nur in Ihrem Browser."
+      ],
+      "adminLink": "Admin-Bereich",
+      "rulesTitle": "Was Sie den Teilnehmenden sagen sollten",
+      "rules": [
+        "Das Ergebnis gehört der teilnehmenden Person: Es Ihnen zu schicken, ist freiwillig.",
+        "Der Test beschreibt den Verhaltensstil, nicht die Fähigkeiten. Es gibt keine guten oder schlechten Profile.",
+        "Ein Ergebnis ist ein Anlass für ein Gespräch, keine Grundlage für Entscheidungen über Menschen."
+      ],
+      "teamsLink": "Fertige Einladung für die Gruppe, Link und QR-Code zum Test:",
+      "resultLine": "Sie machen den Test mit einer Gruppe? Fertige Einladung und QR-Code",
+      "moreTitle": "Wenn Sie einen Workshop leiten",
+      "more": [
+        "{kit}: Ablauf für 60 oder 90 Minuten, 16 Folien, Gruppentabelle und Teamkarte.",
+        "{pdf}: Antwortbogen auf Papier, wenn Teilnehmende kein Handy oder Internet haben.",
+        "{teams}: wie Sie die Teamkarte lesen und Ergebnisse ohne Schubladendenken besprechen.",
+        "{business}: ausführliche Berichte für die Teilnehmenden im Paket, Zahlung per Rechnung."
+      ]
+    },
     "teams": {
       "title": "DISG für Teams, Führungskräfte und HR: so nutzen Sie den Test",
       "description": "DISG im Team: Stilkarte, Rollen, Konflikte, Onboarding, Feedback, Vertrieb. So führen Sie den kostenlosen Test im Team durch und besprechen die Ergebnisse.",
@@ -3232,6 +3276,7 @@
     "nav.compat": "Zusammenarbeit der Stile",
     "nav.colors": "DISG-Farben",
     "nav.teams": "DISG für Teams",
+    "nav.group": "Test für Gruppen",
     "nav.mbti": "DISG und MBTI",
     "nav.pdf": "Test als PDF",
     "nav.materials": "Mehr über DISG",

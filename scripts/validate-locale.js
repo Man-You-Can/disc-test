@@ -31,9 +31,7 @@ const OPTIONAL = ['.content.policy.legal', '.content.extendedMail', '.content.pr
   '.content.paper', '.content.kit', '.content.consentDoc.paperForm',   // бумажный бланк: QR, «Что дальше», блок для групп, бланк на e-mail; набор ведущего (с 2026-10-25, пока русская версия)
   // письмо подписчикам с призывом купить расширенный отчёт (content.mailing.promo, с 2026-10-25): только где отчёт продаётся; обязательность — в проверке ниже.
   // Где ключ есть, он полный (сверка с ru)
-  '.content.mailing',
-  // страница «Провести тест в группе» (/group/, с 2026-10-26, черновик заказчику — пока русская версия)
-  '.content.group', '.ui.nav.group'];
+  '.content.mailing'];
 // специальная цена на час после теста (product.pay.offer; offerPriceRub, offerPriceUsd в site.config.json; с 2026-10-22) обязательна вместе с product.pay:
 // её тексты сравниваются с ru.json как часть pay
 // Страница «Как готовятся отчёты» (content.howMade) и её пункт в шапке (ui["nav.howMade"]) обязательны во всех языках (с 2026-10-14).

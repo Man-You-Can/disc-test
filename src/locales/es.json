@@ -1632,6 +1632,50 @@
         }
       ]
     },
+    "group": {
+      "title": "Cómo aplicar el test DISC a un grupo: invitación, código QR y tabla de resultados",
+      "description": "Test DISC gratis para una clase, un equipo o un taller: invitación lista para enviar, código QR para sus diapositivas y los resultados de todos en una tabla. Sin registro.",
+      "h1": "Aplicar el test DISC a un grupo",
+      "lead": "Para docentes, RR. HH., responsables de equipo y formadores. El test es gratuito, no requiere registro y dura unos 10 minutos; cada participante ve su resultado al instante. Aquí tiene todo para enviarlo a su grupo en un minuto y después reunir los resultados en una sola tabla.",
+      "facts": [
+        "Gratis",
+        "Sin registro",
+        "Unos 10 minutos",
+        "Resultado al instante"
+      ],
+      "inviteTitle": "Invitación para el grupo",
+      "inviteLead": "Copie el texto y envíelo por chat, por correo o en la plataforma del curso.",
+      "invite": "¡Hola a todos! Por favor, hagan este test DISC gratuito: muestra su estilo de comportamiento en el trabajo y en la comunicación. Dura unos 10 minutos, no hace falta registrarse y el resultado aparece en pantalla al momento.\n\n{link}\n\nCuando vean su resultado, pulsen «{share}», luego «{copy}» y envíenme el enlace.",
+      "copyText": "Copiar texto",
+      "copied": "Copiado",
+      "linkTitle": "Enlace y código QR",
+      "linkLead": "Pegue el enlace donde quiera; ponga el código QR en una diapositiva o en papel: los participantes lo escanean con la cámara del móvil y el test se abre.",
+      "copyLink": "Copiar enlace",
+      "qrDownload": "Descargar código QR (SVG)",
+      "qrAlt": "Código QR con el enlace al test DISC",
+      "collectTitle": "Cómo reunir los resultados del grupo",
+      "collect": [
+        "Los participantes responden a la invitación con el enlace a su resultado.",
+        "Abra el {admin} y pegue los enlaces. Puede pegarlos todos a la vez, incluso correos completos.",
+        "El panel arma una tabla con nombres, perfiles y porcentajes en las cuatro escalas. Puede copiarla a Excel. La tabla se guarda solo en su navegador."
+      ],
+      "adminLink": "panel de administración",
+      "rulesTitle": "Qué decir a los participantes",
+      "rules": [
+        "El resultado es del participante: enviárselo a usted es opcional.",
+        "El test describe el estilo de comportamiento, no las capacidades. No hay perfiles buenos ni malos.",
+        "El resultado sirve para conversar, no para tomar decisiones sobre las personas."
+      ],
+      "teamsLink": "Invitación lista para el grupo, enlace y código QR del test:",
+      "resultLine": "¿Va a aplicar el test a un grupo? Invitación lista y código QR",
+      "moreTitle": "Si va a dirigir una sesión",
+      "more": [
+        "{kit}: guion de 60 o 90 minutos, 16 diapositivas, tabla del grupo y mapa del equipo.",
+        "{pdf}: hoja de respuestas en papel, si los participantes no tienen móvil o internet.",
+        "{teams}: cómo leer el mapa del equipo y comentar los resultados sin etiquetar.",
+        "{business}: informes ampliados para los participantes en paquete, con pago por factura."
+      ]
+    },
     "teams": {
       "title": "Test DISC para equipos y recursos humanos: cómo aplicarlo",
       "description": "DISC en el equipo: mapa de estilos, roles, conflictos, incorporación, feedback, ventas. Cómo hacer el test gratis en equipo y comentar los resultados.",
@@ -2288,6 +2332,7 @@
     "nav.compat": "Compatibilidad de estilos",
     "nav.colors": "DISC por colores",
     "nav.teams": "DISC para equipos",
+    "nav.group": "Test para grupos",
     "nav.mbti": "DISC y MBTI",
     "nav.pdf": "Test en PDF",
     "nav.materials": "Materiales sobre DISC",

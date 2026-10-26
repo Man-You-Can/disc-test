@@ -823,14 +823,14 @@ for (const L of locales) {
     const gMore = { kit: hasKit(L) ? `<a href="../kit/">${escFull(C.kit.h1)}</a>` : '', pdf: `<a href="../pdf/">${escFull(t('nav.pdf'))}</a>`,
       teams: `<a href="../teams/">${escFull(t('nav.teams'))}</a>`, business: hasBusiness(L) ? `<a href="../business/">${escFull(C.business.h1)}</a>` : '' };
     const gItems = G.more.map(x => { const k = (/^\{(\w+)\}/.exec(x) || [])[1]; return k && gMore[k] ? escFull(x).replace('{' + k + '}', gMore[k]) : ''; }).filter(Boolean);
-    writeContentPage(L, 'group/', { navKey: 'nav.teams', langs: locales.filter(x => x.content.group), title: G.title, description: G.description, crumbs: [{ name: t('nav.teams'), href: '../teams/', sub: 'teams/' }, { name: G.h1.replace(/ /g, ' ') }],
+    writeContentPage(L, 'group/', { navKey: 'nav.teams', langs: locales.filter(x => x.content.group), title: G.title, description: G.description, crumbs: [{ name: t('nav.teams'), href: '../teams/', sub: 'teams/' }, { name: G.h1.replace(/\u00a0/g, ' ').replace(/\u2060/g, '') }],
       content: `<div class="eyebrow">DISC</div><h1>${escFull(G.h1)}</h1><p class="lead">${escFull(G.lead)}</p>` +
         `<ul class="xfacts">${G.facts.map(x => `<li>${escFull(x)}</li>`).join('')}</ul>` +
         `<h2>${escFull(G.inviteTitle)}</h2><p>${escFull(G.inviteLead)}</p>` +
         `<div class="ginvite" id="gInvite">${escFull(gInvite)}</div>` +
         `<p><button class="btn" type="button" data-copy="invite">${escFull(G.copyText)}</button></p>` +
         `<h2>${escFull(G.linkTitle)}</h2><p>${escFull(G.linkLead)}</p>` +
-        `<div class="glink"><input type="text" readonly value="${escFull(gLink)}" aria-label="${escFull(G.linkTitle)}" id="gLink"><button class="btn secondary" type="button" data-copy="link">${escFull(G.copyLink)}</button></div>` +
+        `<div class="glink"><input type="text" dir="ltr" readonly value="${escFull(gLink)}" aria-label="${escFull(G.linkTitle)}" id="gLink"><button class="btn secondary" type="button" data-copy="link">${escFull(G.copyLink)}</button></div>` +
         `<div class="gqr">${gQr}<p><a href="data:image/svg+xml;charset=utf-8,${encodeURIComponent(gQr)}" download="disc-test-qr.svg" data-goal-copy="qr">${escFull(G.qrDownload)}</a></p></div>` +
         `<h2>${escFull(G.collectTitle)}</h2><ol>${G.collect.map(x => `<li>${escFull(x).replace('{admin}', `<a href="../#admin">${escFull(G.adminLink)}</a>`)}</li>`).join('')}</ol>` +
         `<h2>${escFull(G.rulesTitle)}</h2>` + listHtml('ul', G.rules) +

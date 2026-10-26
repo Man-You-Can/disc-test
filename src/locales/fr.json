@@ -2591,6 +2591,50 @@
         }
       ]
     },
+    "group": {
+      "title": "Faire passer le test DISC à un groupe : invitation, QR code et tableau des résultats",
+      "description": "Test DISC gratuit pour une classe, une équipe ou une formation : invitation prête à envoyer, QR code pour vos diapositives et les résultats de tous dans un tableau. Sans inscription.",
+      "h1": "Faire passer le test DISC à un groupe",
+      "lead": "Pour les enseignants, les RH, les managers et les formateurs. Le test est gratuit, sans inscription et dure environ 10 minutes ; chaque participant voit son résultat tout de suite. Voici tout ce qu'il faut pour l'envoyer à votre groupe en une minute, puis réunir les résultats dans un seul tableau.",
+      "facts": [
+        "Gratuit",
+        "Sans inscription",
+        "Environ 10 minutes",
+        "Résultat immédiat"
+      ],
+      "inviteTitle": "Invitation pour le groupe",
+      "inviteLead": "Copiez le texte et envoyez-le par messagerie, par e-mail ou sur la plateforme de formation.",
+      "invite": "Bonjour à toutes et à tous ! Merci de passer ce test DISC gratuit : il montre votre style de comportement au travail et dans la communication. Il dure environ 10 minutes, sans inscription, et le résultat s'affiche tout de suite.\n\n{link}\n\nUne fois le résultat affiché, appuyez sur « {share} », puis sur « {copy} », et envoyez-moi le lien.",
+      "copyText": "Copier le texte",
+      "copied": "Copié",
+      "linkTitle": "Lien et QR code",
+      "linkLead": "Collez le lien où vous voulez ; mettez le QR code sur une diapositive ou un document imprimé : les participants le scannent avec l'appareil photo de leur téléphone et le test s'ouvre.",
+      "copyLink": "Copier le lien",
+      "qrDownload": "Télécharger le QR code (SVG)",
+      "qrAlt": "QR code menant au test DISC",
+      "collectTitle": "Comment réunir les résultats du groupe",
+      "collect": [
+        "Les participants répondent à l'invitation en vous envoyant le lien de leur résultat.",
+        "Ouvrez l'{admin} et collez les liens. Vous pouvez tous les coller d'un coup, même des e-mails entiers.",
+        "L'espace crée un tableau avec les noms, les profils et les pourcentages sur les quatre échelles. Vous pouvez le copier dans Excel. Le tableau reste uniquement dans votre navigateur."
+      ],
+      "adminLink": "espace administrateur",
+      "rulesTitle": "Ce qu'il faut dire aux participants",
+      "rules": [
+        "Le résultat appartient au participant : vous l'envoyer reste facultatif.",
+        "Le test décrit un style de comportement, pas des capacités. Il n'y a pas de bon ou de mauvais profil.",
+        "Un résultat sert à engager la discussion, pas à prendre des décisions sur les personnes."
+      ],
+      "teamsLink": "Invitation prête pour le groupe, lien et QR code du test :",
+      "resultLine": "Vous faites passer le test à un groupe ? Invitation prête et QR code",
+      "moreTitle": "Si vous animez une séance",
+      "more": [
+        "{kit} : déroulé de 60 ou 90 minutes, 16 diapositives, tableau du groupe et carte de l'équipe.",
+        "{pdf} : feuille de réponses papier, si les participants n'ont ni téléphone ni internet.",
+        "{teams} : lire la carte de l'équipe et discuter des résultats sans étiqueter.",
+        "{business} : rapports détaillés pour les participants, en lot, payés sur facture."
+      ]
+    },
     "teams": {
       "title": "Test DISC pour les équipes, managers et RH : comment l'utiliser",
       "description": "Le DISC en équipe : carte des styles, rôles, conflits, intégration, feedback, vente. Faire passer le test gratuit à l'équipe et discuter des résultats.",
@@ -3247,6 +3291,7 @@
     "nav.compat": "Compatibilité des styles",
     "nav.colors": "Couleurs DISC",
     "nav.teams": "DISC en équipe",
+    "nav.group": "Test en groupe",
     "nav.mbti": "DISC et MBTI",
     "nav.pdf": "Test en PDF",
     "nav.materials": "Ressources sur le DISC",

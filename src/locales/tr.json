@@ -1607,6 +1607,50 @@
         }
       ]
     },
+    "group": {
+      "title": "DISC Testini Bir Gruba Uygulama: Davet Metni, QR Kod ve Sonuç Tablosu",
+      "description": "Sınıf, ekip veya eğitim grubu için ücretsiz DISC testi: göndermeye hazır davet metni, slaytlarınız için QR kod ve herkesin sonucu tek tabloda. Kayıt gerekmez.",
+      "h1": "DISC testini bir gruba uygulayın",
+      "lead": "Öğretmenler, İK uzmanları, yöneticiler ve eğitmenler için. Test ücretsizdir, kayıt gerektirmez ve yaklaşık 10 dakika sürer; her katılımcı sonucunu hemen görür. Testi bir dakikada grubunuza göndermek ve ardından sonuçları tek tabloda toplamak için gereken her şey burada.",
+      "facts": [
+        "Ücretsiz",
+        "Kayıt yok",
+        "Yaklaşık 10 dakika",
+        "Anında sonuç"
+      ],
+      "inviteTitle": "Grup için davet metni",
+      "inviteLead": "Metni kopyalayın ve sohbet grubuna, e-postaya ya da eğitim platformuna gönderin.",
+      "invite": "Merhaba! Lütfen bu ücretsiz DISC testini çözün: iş hayatındaki ve iletişimdeki davranış tarzınızı gösteriyor. Yaklaşık 10 dakika sürüyor, kayıt gerekmiyor ve sonuç hemen ekranda çıkıyor.\n\n{link}\n\nSonucunuzu gördüğünüzde önce “{share}”, sonra “{copy}” düğmesine dokunun ve bağlantıyı bana gönderin.",
+      "copyText": "Metni kopyala",
+      "copied": "Kopyalandı",
+      "linkTitle": "Bağlantı ve QR kod",
+      "linkLead": "Bağlantıyı istediğiniz yere yapıştırabilir, QR kodu slayda veya çıktıya koyabilirsiniz: katılımcılar telefon kamerasıyla okutur ve test açılır.",
+      "copyLink": "Bağlantıyı kopyala",
+      "qrDownload": "QR kodu indir (SVG)",
+      "qrAlt": "DISC testine giden QR kod",
+      "collectTitle": "Grubun sonuçları nasıl toplanır",
+      "collect": [
+        "Katılımcılar davetinize sonuçlarının bağlantısıyla yanıt verir.",
+        "{admin} açın ve bağlantıları yapıştırın. Hepsini birden, hatta e-postaların tamamını yapıştırabilirsiniz.",
+        "Panel; ad, profil ve dört ölçekteki yüzdelerle bir tablo oluşturur. Tabloyu Excel’e kopyalayabilirsiniz. Tablo yalnızca tarayıcınızda saklanır."
+      ],
+      "adminLink": "Yönetici panelini",
+      "rulesTitle": "Katılımcılara ne söylemeli",
+      "rules": [
+        "Sonuç katılımcıya aittir: size göndermek isteğe bağlıdır.",
+        "Test yetenekleri değil, davranış tarzını anlatır. İyi ya da kötü profil yoktur.",
+        "Sonuç, insanlar hakkında karar vermenin değil, sohbetin başlangıç noktasıdır."
+      ],
+      "teamsLink": "Grup için hazır davet metni, bağlantı ve test QR kodu:",
+      "resultLine": "Testi bir gruba mı uyguluyorsunuz? Hazır davet metni ve QR kod",
+      "moreTitle": "Bir oturum yönetiyorsanız",
+      "more": [
+        "{kit}: 60 veya 90 dakikalık akış, 16 slayt, grup tablosu ve ekip haritası.",
+        "{pdf}: katılımcıların telefonu veya interneti yoksa kâğıt cevap formu.",
+        "{teams}: ekip haritasını okumak ve sonuçları etiketlemeden konuşmak için.",
+        "{business}: katılımcılar için paket hâlinde genişletilmiş raporlar, faturayla ödeme."
+      ]
+    },
     "teams": {
       "title": "Ekip, yönetici ve İK için DISC testi: iş yerinde kullanımı",
       "description": "DISC ekipte nasıl kullanılır: stil haritası, rol dağılımı, çatışma, oryantasyon, geri bildirim, satış. Ücretsiz testi tüm ekibe uygulayın ve sonuçları konuşun.",
@@ -2263,6 +2307,7 @@
     "nav.compat": "Stillerin uyumu",
     "nav.colors": "DISC renkleri",
     "nav.teams": "Ekipler için DISC",
+    "nav.group": "Grup için test",
     "nav.mbti": "DISC ve MBTI",
     "nav.pdf": "DISC testi PDF",
     "nav.materials": "DISC kaynakları",

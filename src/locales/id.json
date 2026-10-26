@@ -1618,6 +1618,50 @@
         }
       ]
     },
+    "group": {
+      "title": "Cara Menjalankan Tes DISC untuk Kelompok: Undangan, Kode QR, dan Tabel Hasil",
+      "description": "Tes DISC gratis untuk kelas, tim, atau pelatihan: teks undangan siap kirim, kode QR untuk slide, dan hasil semua peserta dalam satu tabel. Tanpa daftar.",
+      "h1": "Menjalankan Tes DISC untuk Kelompok",
+      "lead": "Untuk guru, dosen, HR, manajer, dan pelatih. Tesnya gratis, tanpa daftar, dan memakan waktu sekitar 10 menit; setiap peserta langsung melihat hasilnya. Di sini ada semua yang Anda perlukan untuk mengirimkannya ke kelompok dalam satu menit, lalu mengumpulkan hasilnya dalam satu tabel.",
+      "facts": [
+        "Gratis",
+        "Tanpa daftar",
+        "Sekitar 10 menit",
+        "Hasil langsung"
+      ],
+      "inviteTitle": "Undangan untuk kelompok",
+      "inviteLead": "Salin teksnya, lalu kirim lewat grup chat, email, atau platform belajar.",
+      "invite": "Halo semuanya! Silakan kerjakan tes DISC gratis ini: tes ini menunjukkan gaya perilaku Anda dalam bekerja dan berkomunikasi. Waktunya sekitar 10 menit, tidak perlu daftar, dan hasilnya langsung muncul di layar.\n\n{link}\n\nSetelah hasil muncul, ketuk “{share}”, lalu “{copy}”, dan kirimkan tautannya kepada saya.",
+      "copyText": "Salin teks",
+      "copied": "Tersalin",
+      "linkTitle": "Tautan dan kode QR",
+      "linkLead": "Tautan bisa ditempel di mana saja, kode QR bisa dipasang di slide atau lembar cetak: peserta cukup memindainya dengan kamera ponsel dan tes langsung terbuka.",
+      "copyLink": "Salin tautan",
+      "qrDownload": "Unduh kode QR (SVG)",
+      "qrAlt": "Kode QR berisi tautan ke tes DISC",
+      "collectTitle": "Cara mengumpulkan hasil kelompok",
+      "collect": [
+        "Peserta membalas undangan Anda dengan tautan ke hasil mereka.",
+        "Buka {admin} dan tempelkan tautannya. Semua bisa ditempel sekaligus, bahkan isi email utuh.",
+        "Panel akan menyusun tabel berisi nama, profil, dan persentase di keempat skala. Tabel ini bisa disalin ke Excel dan hanya tersimpan di browser Anda."
+      ],
+      "adminLink": "panel admin",
+      "rulesTitle": "Yang perlu disampaikan kepada peserta",
+      "rules": [
+        "Hasil tes milik peserta: mengirimkannya kepada Anda bersifat sukarela.",
+        "Tes ini menggambarkan gaya perilaku, bukan kemampuan. Tidak ada profil yang baik atau buruk.",
+        "Hasil tes adalah bahan obrolan, bukan dasar untuk mengambil keputusan tentang orang."
+      ],
+      "teamsLink": "Undangan siap kirim untuk kelompok, tautan, dan kode QR tes:",
+      "resultLine": "Mau menjalankan tes untuk kelompok? Undangan siap kirim dan kode QR",
+      "moreTitle": "Jika Anda memandu sesi",
+      "more": [
+        "{kit}: skenario sesi 60 atau 90 menit, 16 slide, tabel kelompok, dan peta tim.",
+        "{pdf}: lembar jawaban kertas, jika peserta tidak punya ponsel atau internet.",
+        "{teams}: cara membaca peta tim dan membahas hasil tanpa memberi label.",
+        "{business}: laporan mendalam untuk peserta dalam paket, dibayar dengan faktur."
+      ]
+    },
     "teams": {
       "title": "DISC untuk Tim, Manajer, dan HR: Cara Memakai Tes di Kantor",
       "description": "DISC di tim: peta gaya, pembagian peran, konflik, onboarding, umpan balik, penjualan. Adakan tes DISC gratis untuk seluruh tim dan bahas hasilnya.",
@@ -2270,6 +2314,7 @@
     "nav.compat": "Kecocokan gaya",
     "nav.colors": "Warna DISC",
     "nav.teams": "DISC untuk tim",
+    "nav.group": "Tes untuk kelompok",
     "nav.mbti": "DISC dan MBTI",
     "nav.pdf": "Tes DISC PDF",
     "nav.materials": "Materi tentang DISC",
