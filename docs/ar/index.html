@@ -950,12 +950,14 @@ function hideProgress(){ progEl.hidden=true; metaEl.hidden=true; if(footEl){ foo
 document.addEventListener('click', function(e){ var a = e.target && e.target.closest ? e.target.closest('a[data-goal]') : null; if(a && window.discTrack) window.discTrack(a.getAttribute('data-goal')); });
 
 /* ====== экран 1: вступление ====== */
-// новое прохождение: старт засчитывается (цель start и запись test_starts — только язык)
+// новое прохождение: старт засчитывается (цель start и запись test_starts — язык и, с 2026-10-26, признак повторного прохождения:
+// в браузере уже есть пройденный тест disc.last или начатый disc.progress)
 function newTest(){
+  var again = !!(lsGet('disc.last') || lsGet('disc.progress'));
   S = {name:'', email:'', i:0, m:[], l:[]};
   for(var k=0;k<24;k++){ S.m.push(-1); S.l.push(-1); }
   if(window.discTrack) window.discTrack('start'); // цель Метрики: тест начат
-  sendStart();
+  sendStart(again);
   lsSet('disc.progress', S);
 }
 // #test — переход из первого блока теста в статье (src/page.html, с 2026-10-26): тест открывается на первом незаполненном блоке.
@@ -967,7 +969,7 @@ function openTest(){
     S = p;
     if(S.from){ var from = String(S.from); delete S.from;
       if(window.discTrack){ window.discTrack('start'); window.discTrack('embed-start', {page: from}); }
-      sendStart(); }
+      sendStart(!!lsGet('disc.last')); }   // disc.progress здесь положила статья: повторным считается только тот, кто уже проходил тест
     var first = S.m.findIndex(function(x,i){ return x<0 || S.l[i]<0; }); S.i = first<0 ? 23 : first;
     lsSet('disc.progress', S);
   } else newTest();
@@ -1648,7 +1650,7 @@ function savePdf(r, key, btn){
   })['catch'](function(){ done(); toast(t('share.pdfFail'), 5000); setTimeout(printPage, 1200); });
 }
 function sendStat(r){ statPost({action:'stat', profile:analyze(r).cls.key}); }
-function sendStart(){ statPost({action:'start'}); }
+function sendStart(again){ var d = {action:'start'}; if(again) d.again = 1; statPost(d); }   // again: 1 — повторное прохождение (для «Начали повторно» на «Сводке»)
 // строка «Прохождений теста за последние 7 дней: N» под кнопкой теста (с 2026-10-25, по просьбе заказчика): GET <sendEndpoint>stats — без тела
 // и параметров, о посетителе ничего не уходит; число — сколько раз тест пройден за 7 полных дней (profile_stats на сервере). Меньше PASSES_MIN
 // или нет ответа — строки нет. Число запрашивается один раз за загрузку страницы.
