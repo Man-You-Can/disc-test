@@ -2282,12 +2282,18 @@ function initCommon(c){
   /* отметка о посещении (visitStats в site.config.json, window.DISC_VISIT задаёт сборка): раз в сутки по Москве — один запрос на сервер сайта
      с языком версии, без адресов, меток и ответов; сервер пишет её со временем получения (счёт посетителей на «Сводке» панели).
      Дата последней отметки — в localStorage disc.visit; без localStorage отметка не шлётся (иначе ушла бы с каждой страницы).
-     Только на самом сайте (не на localhost) и не из автоматических браузеров. Об отметке говорят тексты о данных на 14 языках. */
+     Только на самом сайте (не на localhost) и не из автоматических браузеров. Об отметке говорят тексты о данных на 14 языках.
+     С 2026-10-26 в отметке есть first: 1 — первый визит
+     на сайт с этого браузера: в localStorage ещё нет ни одной записи сайта («disc.…»). До этого кода страницы при загрузке ничего в localStorage
+     не пишут, поэтому у нового посетителя записей нет. По признаку панель считает «Новых посетителей». */
   (function(){
-    var V = window.DISC_VISIT, day = new Date(Date.now() + 3 * 3600000).toISOString().slice(0, 10);
+    var V = window.DISC_VISIT, day = new Date(Date.now() + 3 * 3600000).toISOString().slice(0, 10), first = true;
     if(!V || !V.url || !window.fetch || navigator.webdriver || location.hostname !== V.host) return;
-    try{ if(localStorage.getItem("disc.visit") === day) return; localStorage.setItem("disc.visit", day); if(localStorage.getItem("disc.visit") !== day) return; }catch(e){ return; }
-    try{ fetch(V.url, {method:"POST", body:JSON.stringify({action:"visit", token:V.token, lang:L.lang}), keepalive:true})["catch"](function(){}); }catch(e){}
+    try{ if(localStorage.getItem("disc.visit") === day) return;
+      for(var i = 0; i < localStorage.length; i++){ if(String(localStorage.key(i)).indexOf("disc.") === 0){ first = false; break; } }
+      localStorage.setItem("disc.visit", day); if(localStorage.getItem("disc.visit") !== day) return; }catch(e){ return; }
+    var body = {action:"visit", token:V.token, lang:L.lang}; if(first) body.first = 1;
+    try{ fetch(V.url, {method:"POST", body:JSON.stringify(body), keepalive:true})["catch"](function(){}); }catch(e){}
   })();
 }
 
