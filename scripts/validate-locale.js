@@ -37,7 +37,9 @@ const OPTIONAL = ['.content.policy.legal', '.content.extendedMail', '.content.pr
 // Страница «Как готовятся отчёты» (content.howMade) и её пункт в шапке (ui["nav.howMade"]) обязательны во всех языках (с 2026-10-14).
 // Ключи, которых в эталоне нет, а в остальных локалях они допустимы: оговорка о переводе в оферте и условиях возврата (при расхождении действует
 // русский текст) и строка о заявке в блоке расширенного отчёта (отчёт на этом языке пока нельзя заказать). Их обязательность — в проверке ниже.
-const EXTRA = ['.content.offer.note', '.content.refund.note', '.content.product.block.soon'];
+// строка под «Купить» о странице оплаты Prodamus (на английском, в долларах или евро; с 2026-10-26) — только в языках, которые платят через Prodamus
+// (в русском оплата через Т-Банк на русском — ключа нет)
+const EXTRA = ['.content.offer.note', '.content.refund.note', '.content.product.block.soon', '.content.product.pay.payPage'];
 // Лендинг /cv/ на других языках (с 2026-10-24): язык строки сравнения в блоке языков (без ключа — en) и начало имени файлов готового резюме
 // (cvFile.file; пустая строка — файлов нет, кнопки неактивны)
 const EXTRA_RE = [/^\.content\.cv\.english\.compare\[\d+\]\.lang$/, /^\.content\.cv\.example\.profile\.cvFile\.file$/];
@@ -82,6 +84,7 @@ for (const f of files) {
   if (!!P.pay !== !!C.extendedMail) errs.push('.content.product.pay and .content.extendedMail must come together');
   if (P.pay && P.pay.offer && !['regular', 'cta', 'note', 'left', 'expired'].every(k => typeof P.pay.offer[k] === 'string' && P.pay.offer[k]) ) errs.push('.content.product.pay.offer: needs regular, cta, note, left and expired');
   if (C.mailing && !P.pay) errs.push('.content.mailing: only where the report is on sale (needs product.pay)');
+  if (P.pay && P.pay.payPage != null && !(typeof P.pay.payPage === 'string' && P.pay.payPage)) errs.push('.content.product.pay.payPage: must be a non-empty string');
   if (P.promo && !P.pay) errs.push('.content.product.promo: only where the report is on sale (needs product.pay)');
   if (B.screen && !P.pay) errs.push('.content.product.block.screen: only where the report is on sale (needs product.pay)');
   if (P.pay && !B.screen) errs.push('.content.product.block.screen: missing — the report is on sale in this language, so the result-screen block goes with it (CLAUDE.md)');

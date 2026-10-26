@@ -88,6 +88,8 @@ function payForms(c){
       '<input type="email" id="'+o.id+'" class="ym-disable-keys" autocomplete="email" inputmode="email" maxlength="'+PAY_EMAIL_MAX+'"'+(T.emailPlaceholder ? ' placeholder="'+esc(T.emailPlaceholder)+'"' : '')+' required></div>'+
       (o.price ? '<div class="xbuyact"><span class="xbig">'+esc(o.price)+'</span><button class="btn" type="submit">'+esc(T.button)+'</button></div>'
         : '<button class="btn" type="submit">'+esc(T.button)+'</button>')+
+      // строка о странице оплаты Prodamus (на английском, в долларах или евро) — сразу под кнопкой, обычным шрифтом (content.product.pay.payPage, с 2026-10-26)
+      (T.payPage ? '<p class="xppage">'+esc(T.payPage)+'</p>' : '')+
       (T.guarantee ? '<p class="xguar">'+esc(T.guarantee)+'</p>' : '')+
       '<p class="small sendstatus err" aria-live="polite" hidden></p><p class="xnote">'+T.noteHtml+'</p>'+
       (T.code ? payCodeHTML(T.code, o.id, esc) : '');
