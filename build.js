@@ -38,7 +38,7 @@ const headExtraFor = L => [["google-site-verification", cfg.googleSiteVerificati
   // цены и срок из панели (src/common.js, discPriceApply): где спросить, валюта и запись чисел языка; packs — цены пакетов кодов для пересчёта скидок
   .concat(payEndpoint && hasServices(L) ? [`<script>window.DISC_PRICE=${JSON.stringify(Object.assign({ url: payEndpoint + '/offer', cur: L.content.services.currency, loc: L.dateLocale },
     hasBusiness(L) ? { packs: businessPacks.map(p => p.priceRub) } : {})).replace(/</g, "\\u003c")};</script>`] : [])
-  .concat(visitStats ? [`<script>window.DISC_VISIT=${JSON.stringify({ url: String(cfg.sendEndpoint), token: String(cfg.sendToken || ''), host: new URL(cfg.siteUrl).hostname }).replace(/</g, "\\u003c")};</script>`] : [])
+  .concat(visitStats ? [`<script>window.DISC_VISIT=${JSON.stringify({ url: String(cfg.sendEndpoint), token: String(cfg.sendToken || ''), host: new URL(cfg.siteUrl).hostname, admin: String(cfg.adminUrl || 'https://admin.disc-test.org/') }).replace(/</g, "\\u003c")};</script>`] : [])
   .join("\n");
 // Персональные данные (план боевого режима, этап Д). pdConsent в site.config.json включает схему «свой сервер в России»:
 // отдельная галочка согласия на обработку данных в форме отправки результата и в форме обратной связи (без неё форма не отправляется,

@@ -16,7 +16,7 @@
 <script>window.DISC_ANALYTICS={"ym":"112347000","mode":"always"};</script>
 <script>window.DISC_XBAR={"button":"Kişiye özel genişletilmiş raporu satın al — ⁣9,99⁣ USD","offer":"Kişiye özel genişletilmiş raporu satın al — ⁢6,99⁢ USD","offerUrl":"https://api.disc-test.org/pay/offer","ms":86400000,"close":"Gizle"};</script>
 <script>window.DISC_PRICE={"url":"https://api.disc-test.org/pay/offer","cur":"USD","loc":"tr-TR"};</script>
-<script>window.DISC_VISIT={"url":"https://api.disc-test.org/","token":"kR7UiShTyG7Wws7t16NkgKN3","host":"disc-test.org"};</script>
+<script>window.DISC_VISIT={"url":"https://api.disc-test.org/","token":"kR7UiShTyG7Wws7t16NkgKN3","host":"disc-test.org","admin":"https://admin.disc-test.org/"};</script>
 <meta property="og:site_name" content="DISC Testi">
 <meta property="og:locale:alternate" content="en_US">
 <meta property="og:locale:alternate" content="es_ES">
@@ -1844,6 +1844,8 @@ function arrowR(){ return L.dir==='rtl' ? '←' : '→'; }
    Ответ странице не нужен, сбой молча пропускается ====== */
 function statPost(data){
   if(!STATS || !SEND_ENDPOINT || !window.fetch) return;
+  // устройство заказчика (ссылка …/#nostat, src/common.js) и встроенный браузер приложения Claude в счёт не идут (с 2026-10-26)
+  try{ if(localStorage.getItem('disc.nostat') === '1' || /\bClaude\//.test(navigator.userAgent)) return; }catch(e){}
   data.token = SEND_TOKEN; data.lang = L.lang;
   try{ fetch(SEND_ENDPOINT, {method:'POST', body:JSON.stringify(data), keepalive:true})['catch'](function(){}); }catch(e){}
 }
@@ -2282,6 +2284,18 @@ function initCommon(c){
     label(); sync();
   })();
 
+  /* «Не считать это устройство» (с 2026-10-26): ссылка …/#nostat запоминает в браузере disc.nostat — отметки о посещении, начале и прохождении теста
+     с него больше не уходят (см. ниже и statPost в template.html); #stat — снять отметку. После этого — на страницу панели с подтверждением. */
+  (function(){
+    function apply(){
+      var h = location.hash, V = window.DISC_VISIT;
+      if(h !== '#nostat' && h !== '#stat') return;
+      try{ if(h === '#nostat') localStorage.setItem('disc.nostat', '1'); else localStorage.removeItem('disc.nostat'); }catch(e){ return; }
+      if(V && V.admin) location.replace(V.admin + 'nostat?done=' + (h === '#nostat' ? 'on' : 'off'));
+    }
+    apply(); window.addEventListener('hashchange', apply);   // ссылка с той же страницы меняет только хэш, без перезагрузки
+  })();
+
   /* отметка о посещении (visitStats в site.config.json, window.DISC_VISIT задаёт сборка): раз в сутки по Москве — один запрос на сервер сайта
      с языком версии, без адресов, меток и ответов; сервер пишет её со временем получения (счёт посетителей на «Сводке» панели).
      Дата последней отметки — в localStorage disc.visit; без localStorage отметка не шлётся (иначе ушла бы с каждой страницы).
@@ -2291,8 +2305,8 @@ function initCommon(c){
      не пишут, поэтому у нового посетителя записей нет. По признаку панель считает «Новых посетителей». */
   (function(){
     var V = window.DISC_VISIT, day = new Date(Date.now() + 3 * 3600000).toISOString().slice(0, 10), first = true;
-    if(!V || !V.url || !window.fetch || navigator.webdriver || location.hostname !== V.host) return;
-    try{ if(localStorage.getItem("disc.visit") === day) return;
+    if(!V || !V.url || !window.fetch || navigator.webdriver || location.hostname !== V.host || /\bClaude\//.test(navigator.userAgent)) return;
+    try{ if(localStorage.getItem("disc.nostat") === "1" || localStorage.getItem("disc.visit") === day) return;
       for(var i = 0; i < localStorage.length; i++){ if(String(localStorage.key(i)).indexOf("disc.") === 0){ first = false; break; } }
       localStorage.setItem("disc.visit", day); if(localStorage.getItem("disc.visit") !== day) return; }catch(e){ return; }
     var body = {action:"visit", token:V.token, lang:L.lang}; if(first) body.first = 1;

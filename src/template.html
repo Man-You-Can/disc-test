@@ -1412,6 +1412,8 @@ function arrowR(){ return L.dir==='rtl' ? '←' : '→'; }
    Ответ странице не нужен, сбой молча пропускается ====== */
 function statPost(data){
   if(!STATS || !SEND_ENDPOINT || !window.fetch) return;
+  // устройство заказчика (ссылка …/#nostat, src/common.js) и встроенный браузер приложения Claude в счёт не идут (с 2026-10-26)
+  try{ if(localStorage.getItem('disc.nostat') === '1' || /\bClaude\//.test(navigator.userAgent)) return; }catch(e){}
   data.token = SEND_TOKEN; data.lang = L.lang;
   try{ fetch(SEND_ENDPOINT, {method:'POST', body:JSON.stringify(data), keepalive:true})['catch'](function(){}); }catch(e){}
 }

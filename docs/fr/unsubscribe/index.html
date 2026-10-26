@@ -11,7 +11,7 @@
 <script>window.DISC_ANALYTICS={"ym":"112347000","mode":"always"};</script>
 <script>window.DISC_XBAR={"button":"Achetez votre rapport détaillé personnalisé à ⁣9,99⁣ €","offer":"Achetez votre rapport détaillé personnalisé à ⁢6,99⁢ €","offerUrl":"https://api.disc-test.org/pay/offer","ms":86400000,"close":"Masquer"};</script>
 <script>window.DISC_PRICE={"url":"https://api.disc-test.org/pay/offer","cur":"EUR","loc":"fr-FR"};</script>
-<script>window.DISC_VISIT={"url":"https://api.disc-test.org/","token":"kR7UiShTyG7Wws7t16NkgKN3","host":"disc-test.org"};</script>
+<script>window.DISC_VISIT={"url":"https://api.disc-test.org/","token":"kR7UiShTyG7Wws7t16NkgKN3","host":"disc-test.org","admin":"https://admin.disc-test.org/"};</script>
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Test DISC">
 <meta property="og:title" content="Se désabonner de la newsletter — test DISC">
@@ -1092,6 +1092,18 @@ function initCommon(c){
     label(); sync();
   })();
 
+  /* «Не считать это устройство» (с 2026-10-26): ссылка …/#nostat запоминает в браузере disc.nostat — отметки о посещении, начале и прохождении теста
+     с него больше не уходят (см. ниже и statPost в template.html); #stat — снять отметку. После этого — на страницу панели с подтверждением. */
+  (function(){
+    function apply(){
+      var h = location.hash, V = window.DISC_VISIT;
+      if(h !== '#nostat' && h !== '#stat') return;
+      try{ if(h === '#nostat') localStorage.setItem('disc.nostat', '1'); else localStorage.removeItem('disc.nostat'); }catch(e){ return; }
+      if(V && V.admin) location.replace(V.admin + 'nostat?done=' + (h === '#nostat' ? 'on' : 'off'));
+    }
+    apply(); window.addEventListener('hashchange', apply);   // ссылка с той же страницы меняет только хэш, без перезагрузки
+  })();
+
   /* отметка о посещении (visitStats в site.config.json, window.DISC_VISIT задаёт сборка): раз в сутки по Москве — один запрос на сервер сайта
      с языком версии, без адресов, меток и ответов; сервер пишет её со временем получения (счёт посетителей на «Сводке» панели).
      Дата последней отметки — в localStorage disc.visit; без localStorage отметка не шлётся (иначе ушла бы с каждой страницы).
@@ -1101,8 +1113,8 @@ function initCommon(c){
      не пишут, поэтому у нового посетителя записей нет. По признаку панель считает «Новых посетителей». */
   (function(){
     var V = window.DISC_VISIT, day = new Date(Date.now() + 3 * 3600000).toISOString().slice(0, 10), first = true;
-    if(!V || !V.url || !window.fetch || navigator.webdriver || location.hostname !== V.host) return;
-    try{ if(localStorage.getItem("disc.visit") === day) return;
+    if(!V || !V.url || !window.fetch || navigator.webdriver || location.hostname !== V.host || /\bClaude\//.test(navigator.userAgent)) return;
+    try{ if(localStorage.getItem("disc.nostat") === "1" || localStorage.getItem("disc.visit") === day) return;
       for(var i = 0; i < localStorage.length; i++){ if(String(localStorage.key(i)).indexOf("disc.") === 0){ first = false; break; } }
       localStorage.setItem("disc.visit", day); if(localStorage.getItem("disc.visit") !== day) return; }catch(e){ return; }
     var body = {action:"visit", token:V.token, lang:L.lang}; if(first) body.first = 1;
