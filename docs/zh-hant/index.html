@@ -1197,11 +1197,12 @@ function renderTest(){
 // Конец прохождения — онлайн-теста и ввода чисел с бумажного бланка (#paper): результат сохраняется на устройстве, отметка о прохождении
 // уходит в общую статистику, открывается экран своего результата. goal — цель Метрики (finish или paper-score)
 function finishResult(r, goal){
+  var again = !!lsGet('disc.last');   // в браузере уже есть пройденный тест — повторное прохождение (с 2026-10-26: в «Прошли тест» панели не входит)
   lsSet('disc.last', r);
   // специальная цена расширенного отчёта на час после теста (src/pay.js): время первого прохождения на этом устройстве, повторное его не меняет
   var PBo = L.content && L.content.product; if(PBo && PBo.pay && PBo.pay.offer && typeof payOfferMark === 'function') payOfferMark(r, lsGet, lsSet);
   if(window.discTrack) window.discTrack(goal);
-  sendStat(r);
+  sendStat(r, again);
   renderReport(r, {own:true});
   window.scrollTo(0,0);
 }
@@ -1851,7 +1852,7 @@ function savePdf(r, key, btn){
     if(window.discTrack) window.discTrack('pdf-download');
   })['catch'](function(){ done(); toast(t('share.pdfFail'), 5000); setTimeout(printPage, 1200); });
 }
-function sendStat(r){ statPost({action:'stat', profile:analyze(r).cls.key}); }
+function sendStat(r, again){ var d = {action:'stat', profile:analyze(r).cls.key}; if(again) d.again = 1; statPost(d); }
 function sendStart(again){ var d = {action:'start'}; if(again) d.again = 1; statPost(d); }   // again: 1 — повторное прохождение (для «Начали повторно» на «Сводке»)
 // строка «Прохождений теста за последние 7 дней: N» под кнопкой теста (с 2026-10-25, по просьбе заказчика): GET <sendEndpoint>stats — без тела
 // и параметров, о посетителе ничего не уходит; число — сколько раз тест пройден за 7 полных дней (profile_stats на сервере). Меньше PASSES_MIN
