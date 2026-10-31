@@ -37,7 +37,9 @@ function payOfferUntil(O, t, lsGet){
   return Math.min(a, b && !isNaN(b) ? b : a) + O.ms;
 }
 function payOfferMark(r, lsGet, lsSet){ if(!lsGet('disc.offer')) lsSet('disc.offer', {t: r.t}); }
-function payClock(ms){ var s = Math.max(0, Math.ceil(ms / 1000)), m = Math.floor(s / 60); s %= 60; return m + ':' + (s < 10 ? '0' : '') + s; }
+/* обратный отсчёт: до часа — «59:59», дольше — «23:59:59» (срок специальной цены в панели бывает до суток) */
+function payClock(ms){ var s = Math.max(0, Math.ceil(ms / 1000)), h = Math.floor(s / 3600), m = Math.floor(s % 3600 / 60), two = function(n){ return (n < 10 ? '0' : '') + n; }; s %= 60;
+  return h ? h + ':' + two(m) + ':' + two(s) : m + ':' + two(s); }
 
 /* Формы покупки одной страницы: поле e-mail, кнопка «Купить», строка гарантии (T.guarantee) и условие оферты. Формы на странице
    работают вместе: e-mail набирается в одной — появляется в остальных, на время перехода к оплате все кнопки заняты.
@@ -63,13 +65,14 @@ function payForms(c){
   g.paint = function(){
     var now = Date.now(), any = false, ask = false, fl = flag(), N = nums();
     g.forms.forEach(function(f){
-      f.until = f.over ? 0 : payOfferUntil(O ? {ms: N.ms} : null, f.t, c.lsGet);
+      // пришли по ссылке из письма подписчикам (source nl): срок — от времени теста в письме, как у сервера оплаты; более раннее прохождение на этом устройстве его не сокращает
+      f.until = f.over ? 0 : payOfferUntil(O ? {ms: N.ms} : null, f.t, f.source === 'nl' ? null : c.lsGet);
       var on = f.until > now && fl === true; any = any || on; ask = ask || (f.until > now && fl === null);
       f.price = O ? (on ? N.price : N.regular) : N.regular;
       // каждая цена не переносится внутри себя; две цены (xdual) на узком экране мельче и при нехватке места встают в две строки
       var html = O ? (on ? '<s class="xold"><span class="vh">'+esc(O.regularLabel)+' </span>'+esc(pstr(O.regularText))+'</s> <span class="xnew">'+esc(pstr(O.priceText))+'</span>' : '<span class="xnew">'+esc(pstr(O.regularText))+'</span>') : null;
       if(f.big && html !== null && f.big.innerHTML !== html){ f.big.innerHTML = html; f.big.classList.toggle('xdual', on); }
-      f.deal.hidden = !on; if(on) f.clock.textContent = payClock(f.until - now);
+      f.deal.hidden = !on; if(on){ f.clock.textContent = payClock(f.until - now); f.clock.classList.toggle('xlong', f.until - now >= 3600000); }
     });
     if(ask && !g.asked){ g.asked = true; discOffer(c.endpoint + '/offer', function(){ g.paint(); }); }
     if(any !== g.on){ g.on = any; g.subs.forEach(function(fn){ fn(any); }); }
@@ -94,7 +97,7 @@ function payForms(c){
       '<p class="small sendstatus err" aria-live="polite" hidden></p><p class="xnote">'+T.noteHtml+'</p>'+
       (T.code ? payCodeHTML(T.code, o.id, esc) : '');
     var f = {form:form, input:form.querySelector('input'), btn:form.querySelector('button'), st:form.querySelector('.sendstatus'), deal:form.querySelector('.xdeal'), clock:form.querySelector('.xdeal span'),
-      big: o.priceEl || form.querySelector('.xbig'), t: o.t, until: 0, over: false, price: 0}, input = f.input, st = f.st;
+      big: o.priceEl || form.querySelector('.xbig'), t: o.t, source: o.source, until: 0, over: false, price: 0}, input = f.input, st = f.st;
     if(T.code) payCodeInit(c, g, f, o);
     var other = g.forms.filter(function(x){ return x.input.value; })[0];
     if(other) input.value = other.input.value;

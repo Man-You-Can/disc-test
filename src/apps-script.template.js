@@ -369,8 +369,10 @@ function composePaperMail(lang, unsubUrl) {
 /**
  * Письмо подписчику с призывом купить расширенный отчёт (с 2026-10-25; отправляет свой сервер, src/promo.js — одно письмо на адрес через сутки после согласия).
  * Тексты — DATA[язык].promo (content.mailing.promo; тезисы, подпись к листам, кнопка и «бесплатно» — из блока product.block, гарантия — product.pay.guarantee).
- * o: {code — код результата для ссылки на страницу отчёта, consentAt — дата согласия на рассылку (Date), unsubUrl — ссылка отписки}.
- * Возвращает {subject, preheader, html, text}. Цена — обычная (на час после теста письмо не приходится). Картинка — листы образца с сайта (одна на язык, без меток).
+ * o: {code — код результата для ссылки на страницу отчёта, consentAt — дата согласия на рассылку (Date), unsubUrl — ссылка отписки,
+ *     offer — специальная цена {price, regular, minutes, until (Date)} или null (с 2026-11-01: письмо уходит через 3 часа после теста, пока срок специальной цены
+ *     ещё идёт; решает src/promo.js), clickUrl — адрес сервера для ссылок письма (/pay/nl: счёт переходов), без него — прямо на страницу отчёта}.
+ * Возвращает {subject, preheader, html, text}. Картинка — листы образца с сайта (одна на язык, без меток).
  */
 function composePromoMail(r, lang, o) {
   var L = DATA[lang], X = withExtPrice(L.promo, lang), rtl = L.dir === 'rtl', start = rtl ? 'right' : 'left';
@@ -379,7 +381,18 @@ function composePromoMail(r, lang, o) {
   var sc = score(r), c = classify(sc), prof = L.profiles[c.key];
   var low = KEYS.slice().sort(function (x, y) { return sc.net[y] - sc.net[x]; })[3];
   var site = SITE_URL.replace(/^https?:\/\//, ''), home = langHome(lang);
-  var href = home + 'extended-report/?src=nl#r=' + o.code;
+  var href = (o.clickUrl || home + 'extended-report/?src=nl') + '#r=' + o.code;   // код после «#» до сервера не доходит: браузер переносит его на адрес переадресации
+  // специальная цена со сроком: зачёркнутая обычная, крупно специальная и строка о сроке (promo.offerNote); {untilMsk} — день и время конца срока по Москве
+  // (только в русском письме: в нерусских версиях Россия не называется; имя с заглавной буквой проверка локалей не сверяет между языками)
+  var F = o.offer && X.offerNote && X.offerVs ? o.offer : null, offerNote = '', regularText = '', offerText = '';
+  if (F) {
+    var num = function (v) { try { return new Intl.NumberFormat(X.dateLocale || 'ru-RU', v % 1 ? { minimumFractionDigits: 2, maximumFractionDigits: 2 } : {}).format(v); } catch (e) { return String(v); } };
+    var dur; try { dur = new Intl.NumberFormat(X.dateLocale || 'ru-RU', { style: 'unit', unit: F.minutes % 60 ? 'minute' : 'hour', unitDisplay: 'long' }).format(F.minutes % 60 ? F.minutes : F.minutes / 60); } catch (e) { dur = F.minutes + ' min'; }
+    // «1 ноября 23:43»: день с месяцем и время через пробел (без «в», как утвердил заказчик 01.11.2026)
+    var until; try { var loc = X.dateLocale || 'ru-RU'; until = new Intl.DateTimeFormat(loc, { timeZone: 'Europe/Moscow', day: 'numeric', month: 'long' }).format(F.until) + ' ' + new Intl.DateTimeFormat(loc, { timeZone: 'Europe/Moscow', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' }).format(F.until); } catch (e) { until = Utilities.formatDate(F.until, 'Europe/Moscow', 'dd.MM.yyyy'); }
+    regularText = fmt(L.promo.price, { price: num(F.regular) }); offerText = fmt(L.promo.price, { price: num(F.price) });
+    offerNote = fmt(X.offerNote, { duration: dur, untilMsk: until, price: regularText, offerPrice: offerText });
+  }
   // даты: в русском письме — 24.10.2026, в остальных — запись языка (October 24, 2026), как в напоминании об оплате
   function day(d) {
     // пробелы внутри даты — неразрывные: «24 octobre» и «2026» не расходятся по строкам
@@ -429,7 +442,8 @@ function composePromoMail(r, lang, o) {
     '<p style="margin:0 0 18px">' + esc(X.size) + '</p>' +
     // карточка покупки: цена, кнопка, срок доставки и гарантия вместе (решение заказчика от 2026-10-25)
     '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 22px;border:1px solid #D9DDE3;border-radius:12px"><tr><td style="padding:16px 14px">' +
-      '<p style="margin:0 0 12px;font-size:15px">' + esc(price[0]) + '<b style="font-size:24px">' + esc(X.price) + '</b>' + esc(price[1] || '') + '</p>' +
+      '<p style="margin:0 0 12px;font-size:15px">' + esc(price[0]) + (F ? '<s style="color:#5B6470">' + esc(regularText) + '</s>&nbsp; <b style="font-size:24px;color:#C0392B">' + esc(offerText) + '</b>' : '<b style="font-size:24px">' + esc(X.price) + '</b>') + esc(price[1] || '') + '</p>' +
+      (F ? '<p style="margin:-4px 0 12px;font-size:14px;line-height:1.45;color:#C0392B">' + esc(offerNote) + '</p>' : '') +
       '<a href="' + esc(href) + '" style="display:block;background:#1B2027;color:#ffffff;text-decoration:none;font-size:15px;font-weight:bold;text-align:center;padding:13px 8px;border-radius:8px">' + esc(X.button) + '</a>' +
       '<p style="margin:12px 0 0;font-size:13px;line-height:1.45;color:#5B6470">' + esc(X.delivery + gap + X.guarantee) + '</p>' +
     '</td></tr></table>' +
@@ -440,7 +454,7 @@ function composePromoMail(r, lang, o) {
   var text = greeting + '\n\n' + fmt(X.intro, { date: day(tested), site: site }) + '\n' + c.key + ' · ' + prof.name + ' (' + styleName + ')\n' +
     KEYS.map(function (k) { return k + ' ' + L.keys[k] + ': ' + pct(sc.net[k]) + '%'; }).join('\n') + '\n\n' + X.lead + '\n\n' + hook + '\n\n' +
     X.listTitle + '\n' + X.list.map(function (t) { return '— ' + t; }).join('\n') + '\n\n' + X.why + '\n\n' + X.size + '\n\n' +
-    fmt(X.priceLine, { price: X.price }) + '\n' + X.button + ': ' + href + '\n' + X.delivery + gap + X.guarantee + '\n' + X.free + '\n\n' +
+    fmt(X.priceLine, { price: F ? fmt(X.offerVs, { offerPrice: offerText, price: regularText }) : X.price }) + (F ? '\n' + offerNote : '') + '\n' + X.button + ': ' + href + '\n' + X.delivery + gap + X.guarantee + '\n' + X.free + '\n\n' +
     fmt(X.footer, { date: day(o.consentAt), site: site }) + '\n' + L.email.unsubscribe + ': ' + o.unsubUrl + '\n';
   return { subject: subject, preheader: preheader, html: html, text: text };
 }
