@@ -47,6 +47,7 @@
   "offerPriceUsd": 6.99,
   "servicePriceEur": 9.99,
   "offerPriceEur": 6.99,
+  "langPrices": {"es": [7.99, 4.99], "pl": [7.99, 4.99], "pt": [4.99, 2.99], "tr": [4.99, 2.99], "zh": [4.99, 2.99], "id": [3.99, 2.49]},
   "sendEndpoint": "https://api.disc-test.org/",
   "payEndpoint": "https://api.disc-test.org/pay",
   "accessCodes": true,

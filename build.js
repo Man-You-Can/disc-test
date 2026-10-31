@@ -18,9 +18,14 @@ const cfg = JSON.parse(fs.readFileSync(path.join(ROOT, 'site.config.json'), 'utf
   if (!P || !(P.RUB && P.RUB.regular > 0 && P.USD && P.USD.regular > 0 && P.EUR && P.EUR.regular > 0 && j.minutes > 0)) { console.warn('Цены из панели не получены — сборка с ценами site.config.json' + (r.stderr ? ' (' + String(r.stderr).trim().slice(0, 120) + ')' : '')); return; }
   const want = { servicePriceRub: P.RUB.regular, offerPriceRub: P.RUB.offer, offerMinutes: j.minutes, servicePriceUsd: P.USD.regular, offerPriceUsd: P.USD.offer, servicePriceEur: P.EUR.regular, offerPriceEur: P.EUR.offer };
   const diff = Object.keys(want).filter(k => +want[k] > 0 && +cfg[k] !== +want[k]);
-  if (!diff.length) return;
+  // цены по языкам (с 2026-10-31): {язык: {regular, offer}} → langPrices {язык: [обычная, специальная]}; старый сервер их не отдаёт — тогда не трогаем
+  const lp = j.langs && typeof j.langs === 'object' ? Object.fromEntries(Object.keys(j.langs).sort().filter(l => +j.langs[l].regular > 0).map(l => [l, [+j.langs[l].regular, +j.langs[l].offer || 0]])) : null;
+  const lpOld = JSON.stringify(Object.fromEntries(Object.keys(cfg.langPrices || {}).sort().map(l => [l, cfg.langPrices[l].map(Number)])));
+  const lpDiff = !!lp && JSON.stringify(lp) !== lpOld;
+  if (!diff.length && !lpDiff) return;
   let text = fs.readFileSync(path.join(ROOT, 'site.config.json'), 'utf8');
   for (const k of diff) { text = text.replace(new RegExp('("' + k + '":\\s*)[0-9.]+'), '$1' + want[k]); cfg[k] = want[k]; }
+  if (lpDiff) { text = text.replace(/("langPrices":\s*)\{[^}]*\}/, '$1' + JSON.stringify(lp).replace(/,(?=")/g, ', ').replace(/":/g, '": ').replace(/,(?=\d)/g, ', ')); cfg.langPrices = lp; diff.push('langPrices'); want.langPrices = JSON.stringify(lp); }
   fs.writeFileSync(path.join(ROOT, 'site.config.json'), text);
   console.log('Цены из панели: ' + diff.map(k => k + ' = ' + want[k]).join(', ') + ' — site.config.json обновлён');
 })();
@@ -38,7 +43,7 @@ const headExtraFor = L => [["google-site-verification", cfg.googleSiteVerificati
   // закреплённая кнопка расширенного отчёта на всех страницах (src/common.js) — только в языках, где отчёт продаётся (content.product.promo)
   .concat(L.content.product && L.content.product.promo ? [`<script>window.DISC_XBAR=${JSON.stringify(xbarCfg(L)).replace(/</g, "\\u003c")};</script>`] : [])
   // цены и срок из панели (src/common.js, discPriceApply): где спросить, валюта и запись чисел языка; packs — цены пакетов кодов для пересчёта скидок
-  .concat(payEndpoint && hasServices(L) ? [`<script>window.DISC_PRICE=${JSON.stringify(Object.assign({ url: payEndpoint + '/offer', cur: L.content.services.currency, loc: L.dateLocale },
+  .concat(payEndpoint && hasServices(L) ? [`<script>window.DISC_PRICE=${JSON.stringify(Object.assign({ url: payEndpoint + '/offer', cur: L.content.services.currency, lang: L.lang, loc: L.dateLocale },
     hasBusiness(L) ? { packs: businessPacks.map(p => p.priceRub) } : {})).replace(/</g, "\\u003c")};</script>`] : [])
   .concat(visitStats ? [`<script>window.DISC_VISIT=${JSON.stringify({ url: String(cfg.sendEndpoint), token: String(cfg.sendToken || ''), host: new URL(cfg.siteUrl).hostname, admin: String(cfg.adminUrl || 'https://admin.disc-test.org/') }).replace(/</g, "\\u003c")};</script>`] : [])
   .join("\n");
@@ -91,8 +96,14 @@ const rightsHtml = L => `<div class="rights">${esc(L.ui.rights.replace('{year}',
 // servicePriceRub, servicePriceUsd или servicePriceEur (французская и немецкая версии, с 2026-10-22) в site.config.json, пустое значение или 0 убирает страницу и пункт меню в языках с этой валютой.
 // Оферта и условия возврата (/offer/, /refund/) — только в языках, где есть content.offer и content.refund (сейчас — русский)
 const servicePrices = { RUB: Number(cfg.servicePriceRub) || 0, USD: Number(cfg.servicePriceUsd) || 0, EUR: Number(cfg.servicePriceEur) || 0 };
+const offerPrices = { RUB: Number(cfg.offerPriceRub) || 0, USD: Number(cfg.offerPriceUsd) || 0, EUR: Number(cfg.offerPriceEur) || 0 };
+// Цены по языкам (с 2026-10-31, по решению заказчика): langPrices {язык: [обычная, специальная]} в валюте языка (доллары или евро) — поверх общей цены
+// валюты; язык без записи берёт общую. Русская версия (рубли) — только общая цена. Меняются в панели вместе с остальными ценами (private/server/src/prices.js).
+const langPrices = cfg.langPrices && typeof cfg.langPrices === 'object' ? cfg.langPrices : {};
+const langPair = L => { const cur = L.content.services && L.content.services.currency, x = cur && cur !== 'RUB' && langPrices[L.lang];
+  return Array.isArray(x) && +x[0] > 0 ? [+x[0], +x[1] || 0] : [servicePrices[cur] || 0, offerPrices[cur] || 0]; };
 const fmtPrice = (L, v) => v ? new Intl.NumberFormat(L.dateLocale, Number.isInteger(v) ? {} : { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(v) : '';
-const servicePrice = L => fmtPrice(L, L.content.services ? servicePrices[L.content.services.currency] || 0 : 0);
+const servicePrice = L => fmtPrice(L, L.content.services ? langPair(L)[0] : 0);
 const hasServices = L => !!(servicePrice(L) && L.ui['nav.services']);
 // анонсы сервиса «Резюме под каждую вакансию» (content.cvPromo, с 2026-10-24): только там, где есть сам лендинг /<язык>/cv/ (content.cv и форма заявки)
 const hasCvPromo = L => !!(L.content.cvPromo && L.content.cv && feedbackEmail);
@@ -109,9 +120,9 @@ const hasSamples = L => { const P = L.content.product; return !!(hasProduct(L) &
 // offerMinutes после прохождения теста отчёт стоит offerPrice<валюта> вместо servicePrice<валюта>. Включается в языке с этой валютой, где отчёт продаётся
 // (content.product.pay) и есть тексты content.product.pay.offer; в текстах цена подставляется вместо {offerPrice}. Срок проверяет сервер оплаты
 // по времени прохождения в коде результата (private/server/src/pay.js), страница показывает зачёркнутую обычную цену и обратный отсчёт (src/pay.js).
-const offerPrices = { RUB: Number(cfg.offerPriceRub) || 0, USD: Number(cfg.offerPriceUsd) || 0, EUR: Number(cfg.offerPriceEur) || 0 }, offerMinutes = Number(cfg.offerMinutes) || 60;
+const offerMinutes = Number(cfg.offerMinutes) || 60;
 // offerTermsPrice — цена для оферты (п. 3.1 во всех языках, где она есть, даже без покупки); offerPrice — для форм покупки (нужны тексты pay.offer)
-const offerTermsPrice = L => { const cur = L.content.services && L.content.services.currency, v = offerPrices[cur] || 0; return v && v < (servicePrices[cur] || 0) ? fmtPrice(L, v) : ''; };
+const offerTermsPrice = L => { if (!L.content.services) return ''; const [b, v] = langPair(L); return v && v < b ? fmtPrice(L, v) : ''; };
 const offerPrice = L => { const C = L.content; return C.product && C.product.pay && C.product.pay.offer ? offerTermsPrice(L) : ''; };
 // Цены и срок меняются в панели (с 2026-10-25, по просьбе заказчика; сервер — private/server/src/prices.js): сборка ставит в тексты значения на момент
 // сборки, обёрнутые невидимыми метками — U+2063 у обычной цены, U+2062 у специальной, U+2061 у срока (U+2064 — скидка пакета на «Для организаций»:
@@ -135,8 +146,8 @@ const withPrice = (L, obj) => { const s = JSON.stringify(obj).replace(/\{price\}
   if (/\{offerPrice\}/.test(s) && !offerPrice(L)) throw new Error(`${L.lang}: в тексте есть {offerPrice}, а специальная цена не задана (offerPriceRub в site.config.json)`);
   return JSON.parse(s.replace(/\{offerPrice\}/g, markO(L)).replace(/\{duration\}/g, markD(L))); };
 // Специальная цена для скрипта покупки (src/pay.js, T.offer): числа — для сервера, строки — для показа; null — специальной цены в языке нет
-const payOffer = L => { if (!offerPrice(L)) return null; const P = L.content.product, O = withPrice(L, P.pay.offer), cur = L.content.services.currency;
-  return { price: offerPrices[cur], regular: servicePrices[cur], ms: offerMinutes * 60000, priceText: withPrice(L, P.price).replace(markR(L), markO(L)),
+const payOffer = L => { if (!offerPrice(L)) return null; const P = L.content.product, O = withPrice(L, P.pay.offer), lp = langPair(L);
+  return { price: lp[1], regular: lp[0], ms: offerMinutes * 60000, priceText: withPrice(L, P.price).replace(markR(L), markO(L)),
     regularText: withPrice(L, P.price), regularLabel: O.regular, cta: O.cta, note: O.note, left: O.left, expired: O.expired,
     button: P.promo ? withPrice(L, P.promo.button).replace(markR(L), markO(L)) : '' }; };
 // Закреплённая кнопка расширенного отчёта (src/common.js, window.DISC_XBAR): надпись с обычной ценой, со специальной (пусто — её нет в языке), адрес, где спросить,
@@ -1212,7 +1223,7 @@ for (const L of locales) {
             `<p class="notice payorder ym-hide-content" id="payOrder" hidden></p><p class="small sendstatus" id="payStatus" aria-live="polite" hidden></p>` +
             fill2(`<h2>${escFull(th.nextTitle)}</h2>` + listHtml('ul', th.next) + `<h2>${escFull(th.helpTitle)}</h2>` + th.help.map(x => `<p>${escFull(x)}</p>`).join('')) +
             `<p class="seealso"><a href="../../">${escFull(th.back)} ${arrow(L)}</a> · <a href="../../refund/">${escFull(rf.h1)} ${arrow(L)}</a></p>`,
-          pageJs: payJs + `\ninitPayThanks({T: ${pick(th, ['leadEmail', 'order', 'statusWait', 'statusPaid', 'statusSent'])}, endpoint: ${jsStr(payEndpoint)}, price: ${servicePrices[sv.currency] || 0}, currency: ${jsStr(sv.currency)}, lsGet: lsGet, lsSet: lsSet, $: $});` });
+          pageJs: payJs + `\ninitPayThanks({T: ${pick(th, ['leadEmail', 'order', 'statusWait', 'statusPaid', 'statusSent'])}, endpoint: ${jsStr(payEndpoint)}, price: ${langPair(L)[0]}, currency: ${jsStr(sv.currency)}, lsGet: lsGet, lsSet: lsSet, $: $});` });
         writeContentPage(L, 'extended-report/failed/', { noindex: true, noDate: true, navKey: 'nav.services', langs: own2, title: fl.title, description: fl.description, crumbs: crumbs2(fl.h1),
           content: payMark('fail') + `<div class="eyebrow">${escFull(pr.h1)}</div><h1>${escFull(fl.h1)}</h1><p class="lead">${escFull(fl.lead)}</p>` +
             `<p class="notice payorder ym-hide-content" id="payOrder" hidden></p>` +
@@ -1452,7 +1463,7 @@ if (cfg.reportAd === true || process.env.REPORT_AD === '1') {
 const gsTpl = fs.readFileSync(path.join(SRC, 'apps-script.template.js'), 'utf8');
 const gs = gsTpl
   .replace('__SITE_URL__', siteUrl).replace('__SEND_TOKEN__', String(cfg.sendToken || '').replace(/['\\]/g, ''))
-  .replace('__SENDER_EMAIL__', senderEmail).replace('__CONTACT_TO__', feedbackEmail).replace('__PRICE_RUB__', String(servicePrices.RUB || 0)).replace('__PRICE_USD__', String(servicePrices.USD || 0)).replace('__OFFER_RUB__', String(offerPrices.RUB || 0)).replace('__OFFER_USD__', String(offerPrices.USD || 0)).replace('__PRICE_EUR__', String(servicePrices.EUR || 0)).replace('__OFFER_EUR__', String(offerPrices.EUR || 0)).replace('__OFFER_MIN__', String(offerMinutes)).replace('__MAX_CONTACT_BYTES__', String(MAX_CONTACT_BYTES))
+  .replace('__SENDER_EMAIL__', senderEmail).replace('__CONTACT_TO__', feedbackEmail).replace('__PRICE_RUB__', String(servicePrices.RUB || 0)).replace('__PRICE_USD__', String(servicePrices.USD || 0)).replace('__OFFER_RUB__', String(offerPrices.RUB || 0)).replace('__OFFER_USD__', String(offerPrices.USD || 0)).replace('__PRICE_EUR__', String(servicePrices.EUR || 0)).replace('__OFFER_EUR__', String(offerPrices.EUR || 0)).replace('__OFFER_MIN__', String(offerMinutes)).replace('__LANG_PRICES__', JSON.stringify(langPrices)).replace('__MAX_CONTACT_BYTES__', String(MAX_CONTACT_BYTES))
   .replace('__BLOCK_KEYS__', BLOCK_KEYS).replace('__DATA__', () => JSON.stringify(mailData));
 fs.mkdirSync(path.join(ROOT, 'backend', 'apps-script'), { recursive: true });
 fs.writeFileSync(path.join(ROOT, 'backend', 'apps-script', 'Code.gs'), gs);

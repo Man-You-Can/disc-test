@@ -9,8 +9,8 @@
 <meta name="google-site-verification" content="q9-P14KEm3Bl0iw-lP3zITeLv0EESmjJcPRee30aAsw">
 <meta name="yandex-verification" content="028b85ace16c85fc">
 <script>window.DISC_ANALYTICS={"ym":"112347000","mode":"always"};</script>
-<script>window.DISC_XBAR={"button":"Kişiye özel genişletilmiş raporu satın al — ⁣9,99⁣ USD","offer":"Kişiye özel genişletilmiş raporu satın al — ⁢6,99⁢ USD","offerUrl":"https://api.disc-test.org/pay/offer","ms":86400000,"close":"Gizle"};</script>
-<script>window.DISC_PRICE={"url":"https://api.disc-test.org/pay/offer","cur":"USD","loc":"tr-TR"};</script>
+<script>window.DISC_XBAR={"button":"Kişiye özel genişletilmiş raporu satın al — ⁣4,99⁣ USD","offer":"Kişiye özel genişletilmiş raporu satın al — ⁢2,99⁢ USD","offerUrl":"https://api.disc-test.org/pay/offer","ms":86400000,"close":"Gizle"};</script>
+<script>window.DISC_PRICE={"url":"https://api.disc-test.org/pay/offer","cur":"USD","lang":"tr","loc":"tr-TR"};</script>
 <script>window.DISC_VISIT={"url":"https://api.disc-test.org/","token":"kR7UiShTyG7Wws7t16NkgKN3","host":"disc-test.org","admin":"https://admin.disc-test.org/"};</script>
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="DISC Testi">
@@ -860,7 +860,7 @@ function dataHash(){
   return re.test(h) ? h : '';
 }
 /* Специальная цена, цены и срок из панели (с 2026-10-25, по просьбе заказчика; сервер — private/server/src/prices.js): GET <payEndpoint>/offer →
-   {ok, offer, minutes, prices: {RUB: {regular, offer}, USD: {…}, EUR: {…}}}. Один запрос на страницу, без данных о посетителе, и только когда он нужен:
+   {ok, offer, minutes, prices: {RUB: {regular, offer}, USD: {…}, EUR: {…}}, langs: {<язык>: {regular, offer}}}. Один запрос на страницу, без данных о посетителе, и только когда он нужен:
    на странице есть цена (метки сборки, discPriceApply) или у посетителя идёт его срок после теста (src/pay.js, закреплённая кнопка ниже).
    discOffer(url, fn): fn(on) — сразу, если ответ уже есть, иначе по ответу. discOffer.on: true / false; null или undefined — ответа ещё нет.
    discOffer.data — ответ сервера (цены и срок); discOfferWatch(fn) — fn() при каждом ответе и смене (discOfferSet(false), когда сервер оплаты
@@ -886,9 +886,9 @@ function discOfferRefresh(url, fn){ var S = discOffer; S.asked = false; S.on = n
 /* числа и срок в записи языка страницы (window.DISC_PRICE.loc) — так же, как сборка (fmtPrice, fmtDuration в build.js) */
 function discNum(v){ var P = window.DISC_PRICE || {}; try{ return new Intl.NumberFormat(P.loc, v % 1 ? {minimumFractionDigits:2, maximumFractionDigits:2} : {}).format(v); }catch(e){ return String(v); } }
 function discDuration(min){ var P = window.DISC_PRICE || {}, h = min % 60 === 0; try{ return new Intl.NumberFormat(P.loc, {style:'unit', unit: h ? 'hour' : 'minute', unitDisplay:'long'}).format(h ? min / 60 : min); }catch(e){ return min + ' min'; } }
-/* текущие значения в валюте страницы: {regular, offer, minutes}; null — ответа сервера ещё нет */
+/* текущие значения в валюте страницы: {regular, offer, minutes}; null — ответа сервера ещё нет. Цена языка (d.langs[язык], с 2026-10-31) — поверх цены валюты */
 function discPriceNow(){
-  var d = discOffer.data, P = window.DISC_PRICE, x = d && P && d.prices && d.prices[P.cur];
+  var d = discOffer.data, P = window.DISC_PRICE, x = d && P && ((P.lang && d.langs && d.langs[P.lang]) || (d.prices && d.prices[P.cur]));
   return x && +x.regular > 0 ? {regular: +x.regular, offer: +x.offer || 0, minutes: +d.minutes || 0} : null;
 }
 /* строка с метками сборки (U+2063 — обычная цена, U+2062 — специальная, U+2061 — срок) → та же строка с текущими значениями; метки остаются */
