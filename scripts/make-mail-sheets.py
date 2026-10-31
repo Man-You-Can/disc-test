@@ -13,6 +13,7 @@ from PIL import Image, ImageDraw
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DIR = os.path.join(ROOT, 'src', 'assets', 'extended')
 SHEETS = (1, 2, 4)
+RTL = ('ar',)  # письмо справа налево: титульный лист справа
 W, GAP = 1008, 24
 
 
@@ -22,7 +23,7 @@ def make(lang):
     out = Image.new('RGB', (W, h), '#FFFFFF')
     d = ImageDraw.Draw(out)
     x = 0
-    for n in SHEETS:
+    for n in (SHEETS[::-1] if lang in RTL else SHEETS):
         src = os.path.join(DIR, '%s-i-%d.webp' % (lang, n))
         im = Image.open(src).convert('RGB').resize((w - 2, h - 2), Image.LANCZOS)
         d.rectangle([x, 0, x + w - 1, h - 1], outline='#D9DDE3')
