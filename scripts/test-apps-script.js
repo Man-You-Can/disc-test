@@ -275,7 +275,7 @@ check('extended: off until the secret is set in script properties', ext({}).erro
 props.extendedSecret = 's3cret';
 check('extended: wrong or missing secret rejected, nothing sent', ext({ secret: 'nope' }).error === 'forbidden' && ext({ secret: '' }).error === 'forbidden' && ext({ secret: TOKEN }).error === 'forbidden' && sent.length === nX);
 check('extended: bad address, bad code, not a pdf, language without the report', ext({ to: 'nobody' }).error === 'bad email' && ext({ code: 'DISC1.zzz' }).error === 'bad code' &&
-  ext({ pdf: Buffer.alloc(3000, 65).toString('base64') }).error === 'bad pdf' && ext({ pdf: '***' }).error === 'bad pdf' && ext({ pdf: '' }).error === 'bad pdf' && /^no extended report/.test(ext({ lang: 'ar' }).error) && sent.length === nX);
+  ext({ pdf: Buffer.alloc(3000, 65).toString('base64') }).error === 'bad pdf' && ext({ pdf: '***' }).error === 'bad pdf' && ext({ pdf: '' }).error === 'bad pdf' && /^no extended report/.test(ext({ lang: 'xx' }).error) && sent.length === nX);
 const rX = ext({ order: '1042' }), mX = sent[sent.length - 1];
 check('extended: accepted without the site token, one mail to the buyer', rX.ok === true && rX.saved === true && rX.warned === false && sent.length === nX + 1 && mX.to === 'buyer@b.co');
 check('extended mail: subject with profile, from the domain address, brand name', mX.subject === 'Ваш расширенный отчёт DISC: DI · Первопроходец' && mX.from === 'info@disc-test.org' && mX.name === 'Тест DISC · disc-test.org');
@@ -327,7 +327,7 @@ check('pay: price from site settings, service name and reminder texts only where
   const lowL = ['D', 'I', 'S', 'C'].slice().sort((x, y) => scL.net[y] - scL.net[x])[3], atL = new Date('2026-10-01T10:05:00Z');
   // цена языка (langPrices, с 2026-10-31) или общая 9,99 валюты
   const priceOf = (cur, lg) => { const lp = ctx.EXTENDED_LANG_PRICES && ctx.EXTENDED_LANG_PRICES[lg], n = String(lp && lp[0] > 0 ? lp[0] : 9.99).replace('.', '[.,]');
-    return cur === 'EUR' ? new RegExp('^' + n + '\u00a0€$') : new RegExp('^(US\\$\u00a0?' + n + '|' + n + '\u00a0(USD|美元)|' + n + '米ドル)$'); };
+    return cur === 'EUR' ? new RegExp('^' + n + '\u00a0€$') : new RegExp('^(US\\$\u00a0?' + n + '|' + n + '\u00a0(USD|美元)|' + n + '米ドル|' + n + '[ \u00a0]دولار أمريكي)$'); };
   for (const lg of Object.keys(ctx.DATA).filter(l => l !== 'ru' && ctx.DATA[l].promo)) {
     const X = ctx.withExtPrice(ctx.DATA[lg].promo, lg), cur = ctx.DATA[lg].pay.currency || 'USD',   // цену ({price}) ядро подставляет при отправке
     home = 'https://disc-test.org/' + (lg === 'en' ? '' : lg + '/');
@@ -581,6 +581,19 @@ if (ctx.DATA.ja && ctx.DATA.ja.extended) {
   const mJ = ctx.composeExtendedMail(ctx.decodeResult(cX), 'ja');
   check('extended mail in Japanese: subject, invite link to /ja/ with campaign tags, nothing unfilled', /^DISC詳細レポート：\s?DI · 開拓者$/.test(mJ.subject) &&
     mJ.html.includes('href="https://disc-test.org/ja/?utm_source=report&amp;utm_medium=email&amp;utm_campaign=full-di&amp;utm_content=invite"') && !/\{\w+\}|undefined/.test(mJ.html + mJ.text), mJ.subject);
+}
+// напоминание на арабском: доллары («دولار أمريكي»), дата по-арабски с западными цифрами, Prodamus назван, ничего русского; письмо справа налево
+if (ctx.DATA.ar && ctx.DATA.ar.pay) {
+  const pA = ctx.composePayRemindMail(ctx.decodeResult(cX), 'ar', { order: '261031-AR12CD', url: 'https://api.disc-test.org/pay/go?order=261031-AR12CD&key=k', until: new Date('2026-11-02T09:00:00Z'), price: ctx.EXTENDED_OFFER_USD });
+  check('pay reminder in Arabic: دولار أمريكي, the date in Arabic with Western digits, Prodamus named, right to left, nothing unfilled, nothing Russian', [pA.html, pA.text].every(s => /6[.,]99[ \u00a0]دولار أمريكي/.test(s) && /2\u00a0?نوفمبر\u00a0?2026|2 نوفمبر 2026/.test(s) && s.includes('Prodamus') &&
+    s.includes('261031-AR12CD') && s.includes('الرائد') && !/\{\w+\}|undefined|₽|[А-Яа-яЁё]/.test(s.replace(/Пётр Буянов/g, ''))) && pA.html.includes('dir="rtl"') && pA.subject === ctx.DATA.ar.pay.remind.subject,
+    (pA.text.match(/.{0,40}(6[.,]99|2026).{0,40}/g) || []).join(' | '));
+}
+// письмо покупателю на арабском: тема, приглашение ведёт на /ar/ с метками кампании, справа налево
+if (ctx.DATA.ar && ctx.DATA.ar.extended) {
+  const mA = ctx.composeExtendedMail(ctx.decodeResult(cX), 'ar');
+  check('extended mail in Arabic: subject, invite link to /ar/ with campaign tags, right to left, nothing unfilled', /^تقرير DISC الموسّع:\s?DI · الرائد$/.test(mA.subject) &&
+    mA.html.includes('href="https://disc-test.org/ar/?utm_source=report&amp;utm_medium=email&amp;utm_campaign=full-di&amp;utm_content=invite"') && mA.html.includes('dir="rtl"') && !/\{\w+\}|undefined/.test(mA.html + mA.text), mA.subject);
 }
 check('doGet reports that extended delivery is on', JSON.parse(ctx.doGet().text).extended === true);
 fs.writeFileSync(path.join(process.env.OUT || '/tmp', 'disc-extended-mail-preview.html'), mX.htmlBody);
