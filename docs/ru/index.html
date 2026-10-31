@@ -1882,11 +1882,13 @@ function shareDialog(link, msg){
   });
   $('#shareX').addEventListener('click', close);
   dlg.addEventListener('click', function(ev){ if(ev.target === dlg) close(); }); // щелчок по затемнению вокруг окна
-  $('#copyLink').addEventListener('click', function(){ copyText(link, null); close(); });
+  // что выбрали в окне — одна цель share-pick, способ в параметре share (copy, telegram, whatsapp, linkedin, facebook)
+  function picked(id){ if(window.discTrack) window.discTrack('share-pick', {share: id}); }
+  $('#copyLink').addEventListener('click', function(){ picked('copy'); copyText(link, null); close(); });
   dlg.querySelectorAll('[data-net]').forEach(function(b){
     b.addEventListener('click', function(){
       var id = b.getAttribute('data-net'), href = SHARE_NETS[id].url.replace('{u}', e(link)).replace('{t}', e(msg)).replace('{tu}', e(msg+' '+link));
-      if(window.discTrack) window.discTrack('share-'+id);
+      picked(id);
       window.open(href, '_blank', 'noopener,noreferrer'); close();
     });
   });
