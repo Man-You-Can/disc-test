@@ -292,7 +292,7 @@ function composePayRemindMail(r, lang, o) {
   var price = o.price;
   if (lang !== 'ru' && L.pay.dateLocale && price % 1) { try { price = new Intl.NumberFormat(L.pay.dateLocale, { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(price); } catch (e) {} }
   var vars = { site: site, order: o.order, price: price, date: date };
-  var greeting = fmt(L.email.greeting, { name: r.name });
+  var greeting = greet(L, r.name);
   var badge = '<span style="color:' + COLORS[c.p] + '">' + c.p + '</span>' + (c.s ? '<span style="color:' + COLORS[c.s] + ';font-size:22px">' + c.s + '</span>' : '');
   var html = '<!DOCTYPE html><html lang="' + lang + '" dir="' + (L.dir || 'ltr') + '"><body style="margin:0;background:#F3F4F6;font-family:Arial,Helvetica,sans-serif;color:#1B2027">' +
     '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F3F4F6"><tr><td align="center" style="padding:24px 12px">' +
@@ -475,7 +475,7 @@ function composeExtendedMail(r, lang, o) {
   var c = classify(score(r)), prof = L.profiles[c.key];
   var label = c.key + ' · ' + prof.name;
   var styleName = c.s ? L.keys[c.p] + ' + ' + L.keys[c.s] : L.keys[c.p];
-  var greeting = fmt(L.email.greeting, { name: r.name });   // ссылки на результат в письме нет: по ней открывается краткий отчёт, его легко принять за купленный
+  var greeting = greet(L, r.name);   // ссылки на результат в письме нет: по ней открывается краткий отчёт, его легко принять за купленный
   // единственная ссылка — на тест, для пересылки друзьям и коллегам; метки те же, что у ссылок в самом отчёте (utm_campaign=full-<профиль>)
   var test = langHome(lang), testLink = test + '?utm_source=report&utm_medium=email&utm_campaign=full-' + c.key.toLowerCase() + '&utm_content=invite';
   var badge = '<span style="color:' + COLORS[c.p] + '">' + c.p + '</span>' + (c.s ? '<span style="color:' + COLORS[c.s] + ';font-size:22px">' + c.s + '</span>' : '');
@@ -706,6 +706,8 @@ function classify(sc) {
   var sec = sc.net[s] > 0 && sc.net[s] >= Math.max(3, Math.round(sc.net[p] * 0.4));
   return { p: p, s: sec ? s : null, key: p + (sec ? s : '') };
 }
+/** Приветствие письма: с именем — «Здравствуйте, Анна!», без имени (с 2026-11-01 результат можно прислать с одним e-mail) — email.greetingNoName. */
+function greet(L, name) { name = String(name || '').trim(); return name ? fmt(L.email.greeting, { name: name }) : (L.email.greetingNoName || (L.promo && L.promo.greetingNoName) || 'Hello!'); }
 function pct(net) { return Math.round((net + 24) / 48 * 100); }
 function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
 function fmt(s, vars) { return String(s).replace(/\{(\w+)\}/g, function (_, n) { return vars[n] != null ? vars[n] : '{' + n + '}'; }); }
@@ -784,7 +786,7 @@ function composeMail(r, lang, code, hasPdf, unsub) {
     '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F3F4F6"><tr><td align="center" style="padding:24px 12px">' +
     '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background:#ffffff;border:1px solid #D9DDE3;border-radius:14px"><tr><td style="padding:28px;font-size:16px;line-height:1.5">' +
     '<p style="margin:0 0 16px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#5B6470;font-weight:bold">DISC</p>' +
-    '<p style="margin:0 0 8px">' + esc(fmt(E.greeting, { name: r.name })) + '</p>' +
+    '<p style="margin:0 0 8px">' + esc(greet(L, r.name)) + '</p>' +
     '<p style="margin:0 0 14px">' + esc(E.intro) + '</p>' +
     '<p style="margin:0 0 2px;font-size:34px;font-weight:bold;line-height:1">' + badge + '&nbsp; ' + esc(prof.name) + '</p>' +
     '<p style="margin:0 0 14px;font-size:13px;color:#5B6470">' + esc(styleName) + '</p>' +
@@ -797,7 +799,7 @@ function composeMail(r, lang, code, hasPdf, unsub) {
     '<p style="margin:0;padding-top:12px;border-top:1px solid #D9DDE3;font-size:12px;color:#5B6470">' + esc(E.footer) + '</p>' +
     (unsub ? '<p style="margin:8px 0 0;font-size:12px;color:#5B6470">' + esc(E.subscribed) + ' <a href="' + esc(unsub) + '" style="color:#5B6470">' + esc(E.unsubscribe) + '</a></p>' : '') +
     '</td></tr></table></td></tr></table></body></html>';
-  var text = fmt(E.greeting, { name: r.name }) + '\n\n' + E.intro + ' ' + label + ' (' + styleName + ')\n\n' + prof.summary + '\n\n' + E.scores + ':\n' +
+  var text = greet(L, r.name) + '\n\n' + E.intro + ' ' + label + ' (' + styleName + ')\n\n' + prof.summary + '\n\n' + E.scores + ':\n' +
     KEYS.map(function (k) { return k + ' — ' + L.keys[k] + ': ' + pct(sc.net[k]) + '%'; }).join('\n') +
     (attached ? '\n\n' + attached : '') + '\n\n' + E.open + ':\n' + link + ad.text + '\n\n' + E.footer + '\n' +
     (unsub ? '\n' + E.subscribed + '\n' + E.unsubscribe + ': ' + unsub + '\n' : '');

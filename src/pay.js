@@ -87,6 +87,10 @@ function payForms(c){
     // плашка специальной цены над полем e-mail: призыв «Успейте купить за 490 ₽», пояснение о сроке и крупный обратный отсчёт
     form.innerHTML = (O ? '<div class="xdeal" hidden><div class="xdeal-t"><b>'+esc(O.cta)+'</b><small>'+esc(O.note)+'</small></div>'+
         '<div class="xclock"><small>'+esc(O.left)+'</small><span aria-live="off"></span></div></div>' : '<div class="xdeal" hidden><span></span></div>')+
+      // имя для отчёта (с 2026-11-01): только когда в результате имени нет — после экрана «Куда прислать результат?» человек оставляет один e-mail,
+      // а расширенный отчёт именной (обложка и страницы); o.withName(имя) → код результата с этим именем (T.nameLabel — content.product.pay.nameLabel)
+      (o.withName && T.nameLabel ? '<div class="field xname"><label for="'+o.id+'n">'+esc(T.nameLabel)+'</label><input type="text" id="'+o.id+'n" class="ym-disable-keys" autocomplete="name" maxlength="80" required>'+
+        (T.nameHint ? '<span class="hint">'+esc(T.nameHint)+'</span>' : '')+'</div>' : '')+
       '<div class="field"><label for="'+o.id+'">'+esc(T.emailLabel)+'</label>'+
       '<input type="email" id="'+o.id+'" class="ym-disable-keys" autocomplete="email" inputmode="email" maxlength="'+PAY_EMAIL_MAX+'"'+(T.emailPlaceholder ? ' placeholder="'+esc(T.emailPlaceholder)+'"' : '')+' required></div>'+
       (o.price ? '<div class="xbuyact"><span class="xbig">'+esc(o.price)+'</span><button class="btn" type="submit">'+esc(T.button)+'</button></div>'
@@ -96,23 +100,35 @@ function payForms(c){
       (T.guarantee ? '<p class="xguar">'+esc(T.guarantee)+'</p>' : '')+
       '<p class="small sendstatus err" aria-live="polite" hidden></p><p class="xnote">'+T.noteHtml+'</p>'+
       (T.code ? payCodeHTML(T.code, o.id, esc) : '');
-    var f = {form:form, input:form.querySelector('input'), btn:form.querySelector('button'), st:form.querySelector('.sendstatus'), deal:form.querySelector('.xdeal'), clock:form.querySelector('.xdeal span'),
+    var f = {form:form, input:form.querySelector('input[type=email]'), nameInput:form.querySelector('.xname input'), btn:form.querySelector('button'), st:form.querySelector('.sendstatus'), deal:form.querySelector('.xdeal'), clock:form.querySelector('.xdeal span'),
       big: o.priceEl || form.querySelector('.xbig'), t: o.t, source: o.source, until: 0, over: false, price: 0}, input = f.input, st = f.st;
+    /* код результата для заказа: с полем имени — с введённым именем (оно же запоминается в браузере для следующих покупок и писем); null — имени нет */
+    f.code = function(){
+      if(!f.nameInput) return o.code;
+      var n = f.nameInput.value.trim().replace(/\s+/g, ' ');
+      if(n.length < 2){ f.st.textContent = T.nameRequired || T.nameLabel; f.st.hidden = false; f.nameInput.focus(); return null; }
+      var last = c.lsGet('disc.last'); if(last && last.t === o.t && !last.name){ last.name = n; c.lsSet('disc.last', last); }
+      var who = c.lsGet('disc.who'); if(who && !who.name){ who.name = n; c.lsSet('disc.who', who); }
+      return o.withName(n);
+    };
     if(T.code) payCodeInit(c, g, f, o);
     var other = g.forms.filter(function(x){ return x.input.value; })[0];
     if(other) input.value = other.input.value;
     else if(o.email && String(o.email).length <= PAY_EMAIL_MAX) input.value = o.email;
     g.forms.push(f); g.paint();
     input.addEventListener('input', function(){ st.hidden = true; g.forms.forEach(function(x){ if(x.input !== input) x.input.value = input.value; }); });
+    if(f.nameInput){ var on = g.forms.filter(function(x){ return x.nameInput && x.nameInput.value; })[0]; if(on) f.nameInput.value = on.nameInput.value;
+      f.nameInput.addEventListener('input', function(){ st.hidden = true; g.forms.forEach(function(x){ if(x.nameInput && x !== f) x.nameInput.value = f.nameInput.value; }); }); }
     form.addEventListener('submit', function(ev){
       ev.preventDefault(); if(g.busy) return;
       if(f.coding){ f.redeem(); return; }   // форма в режиме кода доступа: Enter в поле — «Получить отчёт»
-      var email = input.value.trim();
+      var email = input.value.trim(), code = f.code();
+      if(code === null) return;
       if(email.length > PAY_EMAIL_MAX || !PAY_EMAIL_RE.test(email)){ st.textContent = T.badEmail; st.hidden = false; input.focus(); return; }
       st.hidden = true; g.setBusy(true); payTrack('ext-page-buy');
       // Content-Type не задаём: «простой» запрос без предварительного OPTIONS
       g.paint(); var price = f.price;
-      var body = {code:o.code, email:email, source:o.source, lang:c.L.lang}; if(price) body.price = price;
+      var body = {code:code, email:email, source:o.source, lang:c.L.lang}; if(price) body.price = price;
       fetch(c.endpoint + '/order', {method:'POST', body: JSON.stringify(body)})
         .then(function(res){ return res.text(); })
         .then(function(txt){ var j = null; try{ j = JSON.parse(txt); }catch(e){}
@@ -165,8 +181,9 @@ function payCodeInit(c, g, f, o){
     var email = f.input.value.trim(), voucher = inp.value.trim();
     if(email.length > PAY_EMAIL_MAX || !PAY_EMAIL_RE.test(email)){ say('err', esc(X.badEmail)); f.input.focus(); return; }
     if(voucher.replace(/[^A-Za-z0-9]/g, '').length < 4){ say('err', esc(X.empty)); inp.focus(); return; }
+    var code = f.code(); if(code === null) return;
     btn.disabled = true; btn.textContent = X.wait; st.hidden = true;
-    fetch(c.endpoint + '/code', {method:'POST', body: JSON.stringify({voucher:voucher, code:o.code, email:email, lang:c.L.lang, source:o.source})})
+    fetch(c.endpoint + '/code', {method:'POST', body: JSON.stringify({voucher:voucher, code:code, email:email, lang:c.L.lang, source:o.source})})
       .then(function(res){ return res.text(); })
       .then(function(txt){ var j = null; try{ j = JSON.parse(txt); }catch(e){}
         if(!j) throw new Error('bad response');
@@ -201,7 +218,8 @@ function initPayBuy(c){
     // цена «Стоимость 790 ₽»: сама сумма — в своём элементе, им управляет форма (зачёркнутая обычная цена и специальная, пока та действует)
     if(price && T.offer){ var sm = price.querySelector('small'); pv = document.createElement('span'); pv.textContent = T.offer.regularText;
       price.textContent = ''; if(sm) price.appendChild(sm); price.appendChild(pv); }
-    var f = g.add({id:'payEmail' + i, code:code, t:r.t, source:source, email:r.email, priceEl:pv});
+    var f = g.add({id:'payEmail' + i, code:code, t:r.t, source:source, email:r.email, priceEl:pv,
+      withName: String(r.name||'').trim() ? null : function(n){ return payCode(Object.assign({}, r, {name: n})); }});
     if(price) f.form.insertBefore(price, f.btn);
     if(old) old.parentNode.removeChild(old);
     if(guar) guar.parentNode.removeChild(guar);   // строка гарантии без формы (сборка) — в форме она своя

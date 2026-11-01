@@ -603,6 +603,11 @@ html[dir=rtl] .ask.to-l .arr{transform:none}
 .substyle{border-inline-start:4px solid var(--ks);padding:4px 0;padding-inline-start:14px;margin-top:4px}
 .share{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:var(--shadow)}
 .sendbox{margin-top:18px;padding-top:18px;border-top:1px solid var(--line)}
+.estep .form{display:flex;flex-direction:column;gap:14px}
+.estep .actions{margin-top:4px}
+.estep .btn.big{width:100%}
+.estep-skip{margin:14px 0 0;text-align:center}
+.estep-skip .link{font-size:15px;color:var(--ink);text-decoration:underline;text-underline-offset:3px}
 .sendbox h3{margin:0 0 12px}
 .sharedlg{border:1px solid var(--line);border-radius:16px;padding:0;background:var(--surface);color:var(--ink);box-shadow:0 20px 60px -20px rgba(0,0,0,.5);width:min(400px,calc(100% - 32px));max-width:none;max-height:calc(100% - 32px)}
 .sharedlg::backdrop{background:rgba(10,12,15,.55)}
@@ -787,6 +792,7 @@ var IS_ROOT = '__IS_ROOT__' === '1';      // главная страница (я
 var LANG_PATH = __LANG_PATH_JSON__;       // код языка → путь от корня ('' для языка по умолчанию, 'ru/' и т. д.)
 var LANG_META = __LANG_META_JSON__;       // код языка → {name, cont, dir} для подсказки «Продолжить на …»
 var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+var EMAIL_STEP = +'__EMAIL_STEP__' || 0;   // доля прошедших тест, которым показывается экран «Куда прислать результат?» (emailStep в site.config.json; с 2026-11-01)
 var HOME_SUB = '__HOME_SUB__' === '1'; // форма подписки на рассылку на стартовом экране (homeSubscribe в site.config.json, с 2026-10-22)
 var VERSION = 'DISC1';
 
@@ -954,7 +960,8 @@ function renderIntro(){
   if(lastCard && lastCard.pay){
     var PP = PB.pay, base = ROOT_REL+LANG_PATH[L.lang], who = lsGet('disc.who')||{};
     var pf = payForms({T: Object.assign({}, PP, {guarantee: '', noteHtml: PP.noteHtml.replace(/\{base\}/g, base)}), endpoint: PAY_ENDPOINT, L: L, esc: esc, lsGet: lsGet, lsSet: lsSet});
-    var hf = pf.add({id: 'xpayHome', code: encodeResult(last), t: last.t, source: 'home', price: String(PB.price).split(' · ')[0], email: last.email || who.email || ''});
+    var hf = pf.add({id: 'xpayHome', code: encodeResult(last), t: last.t, source: 'home', price: String(PB.price).split(' · ')[0], email: last.email || who.email || '',
+      withName: String(last.name||'').trim() ? null : function(n){ return encodeResult(Object.assign({}, last, {name: n})); }});
     hf.form.addEventListener('submit', function(){ try{ sessionStorage.setItem('disc.src', 'home'); }catch(e){} if(window.discTrack) window.discTrack('ext-home'); });
     var hw = document.createElement('div'); hw.className = 'xinline'; hw.appendChild(hf.form);
     var hm = document.createElement('p'); hm.className = 'xmore'; hm.innerHTML = '<a href="'+lastCard.href+'" id="lastMore">'+esc(PP.more)+' '+arrowR()+'</a>'; hw.appendChild(hm);
@@ -1065,8 +1072,52 @@ function finishResult(r, goal){
   var PBo = L.content && L.content.product; if(PBo && PBo.pay && PBo.pay.offer && typeof payOfferMark === 'function') payOfferMark(r, lsGet, lsSet);
   if(window.discTrack) window.discTrack(goal);
   sendStat(r, again);
+  // экран «Куда прислать результат?» — части прошедших тест (жребий при каждом прохождении, не хранится); цель estep-none — подходившие, но без экрана:
+  // по двум целям в системе веб-аналитики сравниваются покупки с экраном и без него
+  if(emailStepWanted(goal)){ var es = Math.random() < EMAIL_STEP; if(window.discTrack) window.discTrack(es ? 'estep-show' : 'estep-none'); if(es){ renderEmailStep(r); window.scrollTo(0,0); return; } }
   renderReport(r, {own:true});
   window.scrollTo(0,0);
+}
+
+/* ====== экран «Куда прислать результат?» (с 2026-11-01, по просьбе заказчика; доля посетителей — EMAIL_STEP) ======
+   Между последним вопросом теста и результатом, в оформлении теста (шапка с шагом, полная полоса прогресса, без меню разделов и подвала).
+   Только после ответа на вопросы на сайте (не с бумажного бланка), только когда результат можно отправить письмом (RESULT_EMAIL, SEND_ENDPOINT)
+   и в браузере ещё нет e-mail (disc.who). Поле e-mail и галочки — те же, что у формы «Отправить на e-mail» в карточке «Сохраните результат»
+   (то же письмо, та же запись на сервере, тексты о данных не меняются), но без имени: решение заказчика. «Показать результат без e-mail» — сразу результат.
+   Цели: estep-show, estep-none (см. finishResult), estep-send, estep-skip. */
+function emailStepWanted(goal){ return EMAIL_STEP > 0 && goal === 'finish' && RESULT_EMAIL && !!SEND_ENDPOINT && !((lsGet('disc.who')||{}).email); }
+function renderEmailStep(r){
+  setStep(t('estep.step'));
+  var h=''; for(var k=0;k<24;k++) h+='<i class="done"></i>';
+  progEl.innerHTML=h; progEl.hidden=false;
+  metaEl.innerHTML='<span>'+t('test.done',{n:'<b>100</b>'})+'</span><span></span>'; metaEl.hidden=false;
+  if(footEl) footEl.hidden=true;
+  if(typeof xbar === 'function') xbar({show:false});
+  var base = ROOT_REL+LANG_PATH[L.lang];
+  view.innerHTML = '<h1>'+esc(t('estep.title'))+'</h1><p class="lead">'+esc(t('estep.lead'))+'</p>'+
+    '<div class="card estep"><form class="form" id="esForm" autocomplete="on" novalidate>'+
+      '<div class="field"><label for="esEm">'+esc(t('intro.emailLabel'))+'<span class="req" aria-hidden="true">*</span></label><input type="email" id="esEm" name="email" class="ym-disable-keys" autocomplete="email" inputmode="email" required maxlength="120"><span class="hint">'+esc(t('estep.hint'))+'</span></div>'+
+      (PD ? '<div class="subbox"><label class="check"><input type="checkbox" id="esPd" name="consent"><span>'+pdLabel(base)+'</span></label></div>' : '')+
+      (NEWSLETTER ? '<div class="subbox"><label class="check"><input type="checkbox" id="esSub" name="subscribe"><span>'+esc(t('share.subscribe'))+'</span></label></div>' : '')+
+      '<div class="actions"><button class="btn big" type="submit">'+esc(t('estep.send'))+'</button></div>'+
+    '</form><p class="estep-skip"><button class="link" type="button" id="esSkip">'+esc(t('estep.skip'))+'</button></p></div>';
+  $('#esSkip').addEventListener('click', function(){
+    if(window.discTrack) window.discTrack('estep-skip');
+    renderReport(r, {own:true}); window.scrollTo(0,0);
+  });
+  $('#esForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var email = $('#esEm').value.trim();
+    if(!EMAIL_RE.test(email) || email.length>120){ $('#esEm').focus(); toast(t('intro.emailRequired')); return; }
+    if(PD){ r.pd = $('#esPd').checked; if(!r.pd){ $('#esPd').focus(); toast(t('pd.required')); return; } }
+    r.sub = !!($('#esSub') && $('#esSub').checked);
+    r.email = email; delete r.sent; delete r.subOk;
+    lsSet('disc.who', {name: r.name||'', email: email});
+    var last = lsGet('disc.last'); if(last && last.t===r.t) lsSet('disc.last', r);
+    if(window.discTrack){ window.discTrack('email'); window.discTrack('estep-send'); }
+    renderReport(r, {own:true, send:true}); window.scrollTo(0,0);
+    toast(t('share.sending', {email: email}), 4000);
+  });
 }
 
 /* ====== ввод результата с бумажного бланка (#paper, с 2026-10-25; тексты content.paper.score — пока русская версия) ======
@@ -1314,7 +1365,8 @@ function renderReport(r, opts){
       if(!w){
         // без строки гарантии (она есть на странице отчёта); цена — крупно над кнопкой «Купить»: часть PB.price до « · » («490 ₽», «US$6.99»)
         if(!pf) pf = payForms({T: Object.assign({}, PP, {guarantee: '', noteHtml: PP.noteHtml.replace(/\{base\}/g, base)}), endpoint: PAY_ENDPOINT, L: L, esc: esc, lsGet: lsGet, lsSet: lsSet});
-        var em = $('#em'), fo = {id: 'xpayE' + pf.forms.length, code: code, t: r.t, source: source, price: String(PB.price).split(' · ')[0], email: (em && em.value.trim()) || r.email || who.email || ''}, f = pf.add(fo);
+        var em = $('#em'), fo = {id: 'xpayE' + pf.forms.length, code: code, t: r.t, source: source, price: String(PB.price).split(' · ')[0], email: (em && em.value.trim()) || r.email || who.email || '',
+          withName: String(r.name||'').trim() ? null : function(n){ return encodeResult(Object.assign({}, r, {name: n})); }}, f = pf.add(fo);
         w = document.createElement('div'); w.className = 'xinline'; w.discOpts = fo;
         w.appendChild(f.form);
         var more = document.createElement('p'); more.className = 'xmore'; more.innerHTML = '<a href="'+extHref+'">'+esc(PP.more)+' '+arrowR()+'</a>';
