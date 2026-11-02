@@ -311,9 +311,9 @@ check('pay: price from site settings, service name and reminder texts only where
     mP.html.includes('<a href="https://disc-test.org/ru/" style="color:#1B2027">disc-test.org</a>') && ['D', 'I', 'S', 'C'].every(k => mP.html.includes('width:' + ctx.pct(scP.net[k]) + '%')) &&
     mP.html.includes('(' + ctx.DATA.ru.promo.scales[lowP] + '): ' + ctx.pct(scP.net[lowP])) && ctx.DATA.ru.promo.list.every(t => mP.html.includes(ctx.esc(t))) &&
     mP.html.includes('Пригодится перед собеседованием') && mP.html.includes('на каждой странице ваше имя'), mP.text.slice(0, 400));
-  check('promo (ru): regular price 790 ₽ in the card, button to the report page with the result and the nl mark, guarantee', ctx.EXTENDED_PRICE_RUB === 790 &&
+  check('promo (ru): regular price 790 ₽ in the card, button to the report page with the result and the nl mark, no refund guarantee', ctx.EXTENDED_PRICE_RUB === 790 &&
     mP.html.includes('Расширенный отчёт — <b style="font-size:24px">790 ₽</b>') && mP.html.includes('href="' + ctx.esc(hrefP) + '"') && mP.text.includes(hrefP) &&
-    mP.html.includes('сразу после оплаты. Не подошло — вернём деньги в течение 7 дней.') && !mP.html.includes('490') && !mP.html.includes('PDF на e-mail'), mP.text);
+    mP.html.includes('сразу после оплаты.</p>') && !/вернём|7 дней/.test(mP.html + mP.text) && !mP.html.includes('490') && !mP.html.includes('PDF на e-mail'), mP.text);
   check('promo (ru): sheets image from the site, logo dots, footer with the consent date, site link and unsubscribe link', (ctx.DATA.ru.promo.image ? mP.html.includes('<img src="https://disc-test.org/extended/ru-mail.jpg"') : true) &&
     mP.html.includes('border-radius:50%;background:#C9453D') && mP.html.includes('потому что ' + dP + ' согласились получать рассылку <a href="https://disc-test.org/ru/" style="color:#5B6470">disc-test.org</a>') &&
     mP.html.includes('<a href="' + unsubP + '" style="color:#5B6470">Отписаться от рассылки</a>') && mP.text.includes('Отписаться от рассылки: ' + unsubP) && !/ИНН|Отправитель/.test(mP.html), mP.html.slice(-700));
@@ -334,9 +334,9 @@ check('pay: price from site settings, service name and reminder texts only where
     const unsubL = home + 'unsubscribe/#u=AbCdEfGhIjKlMnOpQrStUv', m = ctx.composePromoMail(rL, lg, { code: cX, consentAt: atL, unsubUrl: unsubL });
     const href = home + 'extended-report/?src=nl#r=' + cX, dL = new Intl.DateTimeFormat(X.dateLocale, { timeZone: 'Europe/Moscow', day: 'numeric', month: 'long', year: 'numeric' }).format(atL).replace(/ /g, '\u00a0');
     const all = [m.subject, m.preheader, m.html, m.text];
-    check('promo (' + lg + '): regular price in ' + cur + ', button to the ' + lg + ' report page with the nl mark, guarantee', priceOf(cur, lg).test(X.price) &&
+    check('promo (' + lg + '): regular price in ' + cur + ', button to the ' + lg + ' report page with the nl mark, no refund guarantee', priceOf(cur, lg).test(X.price) &&
       m.html.includes('<b style="font-size:24px">' + ctx.esc(X.price) + '</b>') && m.html.includes('href="' + ctx.esc(href) + '"') && m.text.includes(href) &&
-      m.html.includes(ctx.esc(X.guarantee)) && !all.some(s => /6[.,]99|₽|PDF (by|per|por|par|na|lewat) e|e-postayla PDF|发送到邮箱|寄到信箱/.test(s)), X.price);
+      !('guarantee' in X) && !all.some(s => /6[.,]99|₽|PDF (by|per|por|par|na|lewat) e|e-postayla PDF|发送到邮箱|寄到信箱/.test(s)), X.price);
     check('promo (' + lg + '): dates in the language (' + dL + '), not 01.10.2026; lowest scale in subject line and preheader', all.every(s => !s.includes('01.10.2026')) &&
       m.text.includes(ctx.fmt(X.intro, { date: dL, site: 'disc-test.org' })) && m.text.includes(ctx.fmt(X.footer, { date: dL, site: 'disc-test.org' })) &&
       m.subject === ctx.fmt(X.subject, { name: 'Alex', key: cL.key }) && m.preheader === ctx.fmt(X.preheader, { k: lowL, scale: X.scales[lowL], pct: ctx.pct(scL.net[lowL]) }), m.preheader);

@@ -796,7 +796,7 @@
       "description": "Regulamin sprzedaży płatnej usługi „Rozszerzony profil DISC” w serwisie disc-test.org: cena, płatność i dostarczenie, zwroty, prawa do materiałów.",
       "h1": "Regulamin sprzedaży",
       "linkText": "regulaminu sprzedaży",
-      "edition": "Wersja z 25 października 2026 r. Tłumaczenie na język polski zaktualizowano 25 października 2026 r.",
+      "edition": "Wersja z 2 listopada 2026 r. Tłumaczenie na język polski zaktualizowano 2 listopada 2026 r.",
       "note": "Niniejszy tekst jest tłumaczeniem na język polski oryginalnej oferty opublikowanej pod adresem {original}. W razie rozbieżności między tekstami pierwszeństwo ma oryginał – z wyjątkiem ceny i sposobu płatności: w polskiej wersji Serwisu obowiązują rozdziały 1 i 3 niniejszego tłumaczenia.",
       "seller": "przedsiębiorca indywidualny Manukyan Armen, numer identyfikacji podatkowej (INN) {inn}",
       "lead": "Niniejszy regulamin (dalej: Regulamin) jest oficjalną propozycją (ofertą publiczną) zawarcia umowy o świadczenie płatnej usługi „Rozszerzony profil DISC” na warunkach określonych poniżej. Ofertę składa {seller} (dalej: Usługodawca). Opłacenie usługi oznacza pełną i bezwarunkową akceptację tych warunków (przyjęcie oferty).",
@@ -849,8 +849,8 @@
             "5.1. Klient może zrezygnować z Usługi w dowolnej chwili przed wysłaniem mu Profilu Rozszerzonego. W takim przypadku płatność jest zwracana w całości.",
             "5.2. Jeżeli Profil Rozszerzony nie zostanie wysłany w terminie określonym w punkcie 4.2, Klient może zażądać zwrotu całej płatności.",
             "5.3. Jeżeli otrzymany Profil Rozszerzony ma wady (wiadomość lub plik się nie otwiera, zawiera wynik innej osoby, treść nie odpowiada opisowi Usługi w Serwisie), Usługodawca usuwa je w ciągu trzech dni roboczych od zgłoszenia Klienta. Jeżeli wada nie zostanie usunięta w tym terminie, płatność jest zwracana w całości.",
-            "5.4. Gwarancja zwrotu: w ciągu siedmiu dni kalendarzowych od dnia płatności Klient może bez podawania przyczyny zażądać pełnego zwrotu płatności, także po otrzymaniu Profilu Rozszerzonego. Po upływie tego terminu płatność za Usługę wykonaną należycie nie podlega zwrotowi; to, że Klient nie zgadza się z treścią opisu swojego profilu, nie stanowi wady Usługi.",
-            "5.5. Aby otrzymać zwrot, Klient wysyła wniosek na adres {email}, podając adres e-mail użyty przy płatności, datę i kwotę płatności oraz powód zwrotu; przy zwrocie na podstawie punktu 5.4 podanie powodu nie jest wymagane.",
+            "5.4. Płatność za Usługę wykonaną należycie nie podlega zwrotowi; to, że Klient nie zgadza się z treścią opisu swojego profilu, nie stanowi wady Usługi.",
+            "5.5. Aby otrzymać zwrot, Klient wysyła wniosek na adres {email}, podając adres e-mail użyty przy płatności, datę i kwotę płatności oraz powód zwrotu.",
             "5.6. Usługodawca odpowiada na wniosek w ciągu trzech dni roboczych. Pieniądze są zwracane tą samą metodą, którą dokonano płatności, nie później niż w terminie dziesięciu dni kalendarzowych od otrzymania wniosku; termin zaksięgowania zwrotu zależy od banku Klienta.",
             "5.7. Postanowienia niniejszego rozdziału nie ograniczają praw Klienta wynikających z przepisów o ochronie konsumentów."
           ]
@@ -913,7 +913,6 @@
         {
           "h": "Kiedy zwracamy całą kwotę",
           "ul": [
-            "Gdy profil rozszerzony ci nie odpowiada: w ciągu 7 dni od płatności zwracamy pieniądze bez podawania przyczyny.",
             "Gdy zrezygnujesz z usługi, zanim wyślemy ci profil rozszerzony.",
             "Gdy profil rozszerzony nie zostanie wysłany w ciągu 24 godzin od płatności.",
             "Gdy otrzymany profil rozszerzony ma wadę (wiadomość lub plik się nie otwiera, zawiera wynik innej osoby, treść nie odpowiada opisowi usługi w serwisie), a my nie usuniemy jej w ciągu trzech dni roboczych od twojego zgłoszenia."
@@ -921,12 +920,12 @@
         },
         {
           "h": "Kiedy płatność nie podlega zwrotowi",
-          "p": ["Jeśli od płatności minęło więcej niż 7 dni, a profil rozszerzony został wysłany w terminie i odpowiada opisowi, usługę uznaje się za wykonaną, a płatność nie podlega zwrotowi. To, że nie zgadzasz się z treścią opisu swojego profilu, nie jest wadą usługi."]
+          "p": ["Jeśli profil rozszerzony został wysłany w terminie i odpowiada opisowi, usługę uznaje się za wykonaną, a płatność nie podlega zwrotowi. To, że nie zgadzasz się z treścią opisu swojego profilu, nie jest wadą usługi."]
         },
         {
           "h": "Jak złożyć wniosek o zwrot",
           "p": ["Napisz na {email} i podaj:"],
-          "ul": ["adres e-mail podany przy płatności;", "datę i kwotę płatności;", "powód zwrotu (przez 7 dni od płatności można go nie podawać)."]
+          "ul": ["adres e-mail podany przy płatności;", "datę i kwotę płatności;", "powód zwrotu."]
         },
         {
           "h": "Terminy",
@@ -1012,8 +1011,7 @@
         { "q": "Czy raport jest pisany specjalnie dla mnie, czy to ogólny tekst?", "a": "Raport powstaje na podstawie twoich odpowiedzi. Tekst jest napisany dla twojego profilu – jednego z szesnastu. Cały rozdział 2 i fragmenty rozdziałów 3, 5, 11, 12 i 13 zależą od twoich liczb: procentów na czterech skalach, liczby zaznaczeń „najbardziej” i „najmniej” oraz najniższej skali. Na każdej stronie jest twoje imię." },
         { "q": "W jakiej formie przyjdzie raport?", "a": "Jako plik PDF w załączniku do e-maila, około 28 stron A4. Wygodnie czyta się go na ekranie i dobrze wygląda w druku; każda z trzech kart pracy mieści się na jednej stronie." },
         { "q": "W jakim języku jest raport?", "a": "Po polsku. Raport napisano od razu po polsku, z myślą o czytelniku w Polsce – to nie jest tłumaczenie." },
-        { "q": "Czy to diagnoza albo ocena zdolności?", "a": "Nie. Raport opisuje styl zachowania na podstawie twoich odpowiedzi. Nie stawia diagnoz, nie mierzy inteligencji i nie przewiduje sukcesu." },
-        { "q": "Czy mogę odzyskać pieniądze?", "a": "Tak. Jeśli raport ci nie odpowiada, napisz na {email} w ciągu 7 dni od płatności – zwrócimy całą kwotę bez pytania o powód. Pozostałe przypadki i sposób zwrotu opisujemy w {refund}." }
+        { "q": "Czy to diagnoza albo ocena zdolności?", "a": "Nie. Raport opisuje styl zachowania na podstawie twoich odpowiedzi. Nie stawia diagnoz, nie mierzy inteligencji i nie przewiduje sukcesu." }
       ],
       "priceLabel": "Cena",
       "price": "{price} USD",
@@ -1036,7 +1034,6 @@
         "nameRequired": "Podaj imię: pojawi się w raporcie.",
         "emailPlaceholder": "Wpisz swój e-mail",
         "button": "Kup",
-        "guarantee": "Raport ci nie odpowiada? Przez 7 dni zwrócimy pieniądze bez pytań.",
         "offer": {
           "regular": "Cena regularna",
           "cta": "Kup teraz za {offerPrice} USD",

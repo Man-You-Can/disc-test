@@ -796,7 +796,7 @@
       "description": "disc-test.org sitesindeki ücretli “Genişletilmiş DISC profili” hizmetinin satış koşulları (kamuya açık teklif): ücret, ödeme, teslim, iade, içerik hakları.",
       "h1": "Satış koşulları (kamuya açık teklif)",
       "linkText": "satış koşulları",
-      "edition": "25 Ekim 2026 tarihli sürüm. Türkçe çevirisi 25 Ekim 2026’da güncellenmiştir.",
+      "edition": "2 Kasım 2026 tarihli sürüm. Türkçe çevirisi 2 Kasım 2026’da güncellenmiştir.",
       "note": "Bu metin, teklifin {original} adresinde yayımlanan asıl metninin Türkçe çevirisidir. İki metin arasında fark olması hâlinde asıl metin esas alınır; bunun istisnası ücret ve ödeme yöntemidir: Site’nin Türkçe sürümü için bu çevirinin 1. ve 3. bölümleri geçerlidir.",
       "seller": "bireysel girişimci Manukyan Armen, vergi kimlik numarası (INN) {inn}",
       "lead": "Bu belge, ücretli “Genişletilmiş DISC profili” hizmetine ilişkin sözleşmenin aşağıdaki koşullarla kurulması için yapılmış resmî bir tekliftir (kamuya açık teklif). Teklifi yapan: {seller} (bundan böyle “Hizmet Sağlayıcı” olarak anılır). Hizmetin ücretinin ödenmesi, bu koşulların tamamen ve kayıtsız şartsız kabul edildiği anlamına gelir (teklifin kabulü).",
@@ -849,8 +849,8 @@
             "5.1. Müşteri, Genişletilmiş Profil kendisine gönderilmeden önce dilediği zaman Hizmet’i iptal edebilir. Bu durumda ödediği ücretin tamamı iade edilir.",
             "5.2. Genişletilmiş Profil 4.2. maddede belirtilen süre içinde gönderilmezse Müşteri, ödediği ücretin tamamının iadesini talep edebilir.",
             "5.3. Alınan Genişletilmiş Profil ayıplıysa (e-posta veya dosya açılmıyorsa, içinde başka birinin sonucu yer alıyorsa ya da içerik Hizmet’in Site’deki tanımına uymuyorsa) Hizmet Sağlayıcı, Müşteri’nin başvurduğu günden itibaren üç iş günü içinde ayıbı giderir. Ayıp bu süre içinde giderilmezse ödenen ücretin tamamı iade edilir.",
-            "5.4. İade güvencesi: Müşteri, ödeme gününden itibaren yedi takvim günü içinde, Genişletilmiş Profil’i almış olsa dahi, herhangi bir gerekçe göstermeksizin ödediği ücretin tamamının iadesini talep edebilir. Bu süre geçtikten sonra gereği gibi sunulmuş Hizmet’in ücreti iade edilmez; Müşteri’nin, profiline ilişkin açıklamanın içeriğine katılmaması Hizmet’te ayıp sayılmaz.",
-            "5.5. Para iadesi için Müşteri {email} adresine bir talep gönderir; talepte ödeme sırasında kullandığı e-posta adresini, ödemenin tarihini ve tutarını, ayrıca iade nedenini belirtir. Madde 5.4 uyarınca yapılan iadelerde iade nedeninin belirtilmesi zorunlu değildir.",
+            "5.4. Gereği gibi sunulmuş Hizmet’in ücreti iade edilmez; Müşteri’nin, profiline ilişkin açıklamanın içeriğine katılmaması Hizmet’te ayıp sayılmaz.",
+            "5.5. Para iadesi için Müşteri {email} adresine bir talep gönderir; talepte ödeme sırasında kullandığı e-posta adresini, ödemenin tarihini ve tutarını, ayrıca iade nedenini belirtir.",
             "5.6. Hizmet Sağlayıcı talebi üç iş günü içinde yanıtlar. İade, ödemenin yapıldığı yöntemle, talebin alındığı günden itibaren en geç on takvim günü içinde yapılır; tutarın hesaba geçme süresi Müşteri’nin bankasına bağlıdır.",
             "5.7. Bu bölümdeki koşullar, tüketicinin korunmasına ilişkin mevzuatın Müşteri’ye tanıdığı hakları sınırlamaz."
           ]
@@ -908,7 +908,6 @@
         {
           "h": "Ücretin tamamı ne zaman iade edilir",
           "ul": [
-            "Genişletilmiş profil size uygun gelmediyse: ödeme gününden itibaren 7 gün içinde, gerekçe sormadan paranızı iade ederiz.",
             "Genişletilmiş profil size gönderilmeden önce hizmeti iptal ettiyseniz.",
             "Genişletilmiş profil, ödemeden sonraki 24 saat içinde gönderilmediyse.",
             "Aldığınız genişletilmiş profil ayıplıysa (e-posta veya dosya açılmıyor, içinde başka birinin sonucu yer alıyor ya da içerik hizmetin sitedeki tanımına uymuyor) ve başvurunuzdan sonraki üç iş günü içinde ayıbı gidermediysek."
@@ -916,12 +915,12 @@
         },
         {
           "h": "Ücret ne zaman iade edilmez",
-          "p": ["Ödemenin üzerinden 7 günden fazla geçtiyse ve genişletilmiş profil zamanında gönderilip tanımına uygunsa hizmet sunulmuş sayılır ve ödenen ücret iade edilmez. Profilinize ilişkin açıklamanın içeriğine katılmamanız hizmette ayıp sayılmaz."]
+          "p": ["Genişletilmiş profil zamanında gönderilip tanımına uygunsa hizmet sunulmuş sayılır ve ödenen ücret iade edilmez. Profilinize ilişkin açıklamanın içeriğine katılmamanız hizmette ayıp sayılmaz."]
         },
         {
           "h": "İade nasıl talep edilir",
           "p": ["{email} adresine yazın ve şunları belirtin:"],
-          "ul": ["ödeme sırasında belirttiğiniz e-posta adresi;", "ödemenin tarihi ve tutarı;", "iade nedeni (ödemeden sonraki ilk 7 gün içinde belirtmeniz gerekmez)."]
+          "ul": ["ödeme sırasında belirttiğiniz e-posta adresi;", "ödemenin tarihi ve tutarı;", "iade nedeni."]
         },
         {
           "h": "Süreler",
@@ -1007,8 +1006,7 @@
         { "q": "Rapor bana özel mi yazılıyor, yoksa genel bir metin mi?", "a": "Rapor sizin yanıtlarınıza göre hazırlanır. Metin, on altı profilden biri olan sizin profiliniz için yazılmıştır. 2. bölümün tamamı ile 3, 5, 11, 12 ve 13. bölümlerin bazı kısımları sizin sonuçlarınıza göre değişir: dört ölçekteki yüzdelerinize, “en çok” ve “en az” işaretlerinizin sayısına ve en düşük ölçeğinize. Her sayfada adınız yer alır." },
         { "q": "Rapor hangi biçimde gelir?", "a": "E-postaya ekli bir PDF dosyası olarak gelir; yaklaşık 28 A4 sayfadır. Ekrandan rahatça okunur, çıktısı da alınabilir; üç çalışma kâğıdının her biri tek sayfaya sığar." },
         { "q": "Rapor hangi dilde?", "a": "Türkçe. Rapor çeviri değildir: doğrudan Türkçe, Türkiye’deki okur için yazılmıştır." },
-        { "q": "Bu bir teşhis ya da yetenek testi mi?", "a": "Hayır. Rapor, yanıtlarınıza dayanarak davranış stilinizi anlatır. Teşhis koymaz, zekâyı ölçmez, başarıyı öngörmez." },
-        { "q": "Para iadesi alabilir miyim?", "a": "Evet. Rapor size uygun gelmediyse ödeme gününden itibaren 7 gün içinde {email} adresine yazın: paranızın tamamını gerekçe sormadan iade ederiz. Diğer durumlar ve iade süreci {refund} sayfasında açıklanır." }
+        { "q": "Bu bir teşhis ya da yetenek testi mi?", "a": "Hayır. Rapor, yanıtlarınıza dayanarak davranış stilinizi anlatır. Teşhis koymaz, zekâyı ölçmez, başarıyı öngörmez." }
       ],
       "priceLabel": "Ücret",
       "price": "{price} USD",
@@ -1031,7 +1029,6 @@
         "nameRequired": "Lütfen adınızı yazın: raporda yer alacak.",
         "emailPlaceholder": "E-posta adresinizi yazın",
         "button": "Satın al",
-        "guarantee": "Rapor size uymadı mı? 7 gün içinde, gerekçe sormadan paranızı iade ederiz.",
         "offer": {
           "regular": "Normal fiyat",
           "cta": "Hemen satın al — {offerPrice} USD",

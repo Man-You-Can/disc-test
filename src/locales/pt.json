@@ -796,7 +796,7 @@
       "description": "Termos de venda (oferta ao público) do serviço “Perfil DISC ampliado” no disc-test.org: preço, pagamento e entrega, reembolso, direitos sobre os materiais.",
       "h1": "Termos de venda (oferta ao público)",
       "linkText": "termos de venda",
-      "edition": "Versão de 25 de outubro de 2026. Tradução para o português atualizada em 25 de outubro de 2026.",
+      "edition": "Versão de 2 de novembro de 2026. Tradução para o português atualizada em 2 de novembro de 2026.",
       "note": "Este texto é a tradução para o português da oferta original publicada em {original}. Em caso de divergência entre os dois textos, prevalece o original, exceto quanto ao preço e à forma de pagamento: na versão em português do Site, eles estão definidos nas seções 1 e 3.",
       "seller": "empresário individual Manukyan Armen, N.º de identificação fiscal (INN) {inn}",
       "lead": "Este documento é uma proposta formal (oferta ao público) para celebrar um contrato de prestação do serviço pago “Perfil DISC ampliado” nas condições descritas abaixo. A oferta é feita por {seller} (doravante, o Prestador). O pagamento do serviço implica concordância integral e incondicional com estas condições (aceitação da oferta).",
@@ -849,8 +849,8 @@
             "5.1. O Cliente pode desistir do Serviço a qualquer momento antes do envio do Perfil Ampliado. Nesse caso, o valor pago é devolvido integralmente.",
             "5.2. Se o Perfil Ampliado não for enviado no prazo indicado na cláusula 4.2, o Cliente pode exigir a devolução integral do valor pago.",
             "5.3. Se o Perfil Ampliado recebido tiver defeitos (o e-mail ou o arquivo não abre, contém o resultado de outra pessoa ou o conteúdo não corresponde à descrição do Serviço no Site), o Prestador os corrige em até três dias úteis a contar do contato do Cliente. Se o defeito não for corrigido nesse prazo, o valor pago é devolvido integralmente.",
-            "5.4. Garantia de reembolso: no prazo de sete dias corridos a contar da data do pagamento, o Cliente tem o direito de solicitar o reembolso integral do valor pago, sem precisar justificar o pedido, inclusive após o recebimento do Perfil Ampliado. Decorrido esse prazo, o valor pago pelo Serviço devidamente prestado não é devolvido; a discordância do Cliente quanto ao conteúdo da descrição do seu perfil não constitui defeito do Serviço.",
-            "5.5. Para obter o reembolso, o Cliente deve enviar uma solicitação para {email}, informando o endereço de e-mail usado no pagamento, a data e o valor do pagamento e o motivo do reembolso; no reembolso com base na cláusula 5.4, não é obrigatório informar o motivo.",
+            "5.4. O valor pago pelo Serviço devidamente prestado não é devolvido; a discordância do Cliente quanto ao conteúdo da descrição do seu perfil não constitui defeito do Serviço.",
+            "5.5. Para obter o reembolso, o Cliente deve enviar uma solicitação para {email}, informando o endereço de e-mail usado no pagamento, a data e o valor do pagamento e o motivo do reembolso.",
             "5.6. O Prestador responde à solicitação em até três dias úteis. O valor é devolvido pelo mesmo meio usado no pagamento, em até dez dias corridos a contar do recebimento da solicitação; o prazo para o valor ser creditado depende do banco do Cliente.",
             "5.7. As condições desta seção não limitam os direitos do Cliente previstos na legislação de defesa do consumidor."
           ]
@@ -908,7 +908,6 @@
         {
           "h": "Quando o valor é devolvido integralmente",
           "ul": [
-            "O perfil ampliado não atendeu às suas expectativas: em até 7 dias após o pagamento, o valor é devolvido sem necessidade de justificativa.",
             "Você desistiu do serviço antes do envio do perfil ampliado.",
             "O perfil ampliado não foi enviado em até 24 horas após o pagamento.",
             "O perfil ampliado que você recebeu tem um defeito (o e-mail ou o arquivo não abre, contém o resultado de outra pessoa ou o conteúdo não corresponde à descrição do serviço no site), e nós não o corrigimos em até três dias úteis depois do seu contato."
@@ -916,12 +915,12 @@
         },
         {
           "h": "Quando o valor não é devolvido",
-          "p": ["Se já se passaram mais de 7 dias desde o pagamento e o perfil ampliado foi enviado no prazo e corresponde à descrição, o serviço é considerado prestado e o valor pago não é devolvido. Discordar do conteúdo da descrição do seu perfil não constitui defeito do serviço."]
+          "p": ["Se o perfil ampliado foi enviado no prazo e corresponde à descrição, o serviço é considerado prestado e o valor pago não é devolvido. Discordar do conteúdo da descrição do seu perfil não constitui defeito do serviço."]
         },
         {
           "h": "Como solicitar o reembolso",
           "p": ["Escreva para {email} e informe:"],
-          "ul": ["o endereço de e-mail usado no pagamento;", "a data e o valor do pagamento;", "o motivo do reembolso (nos primeiros 7 dias após o pagamento, não é preciso informá-lo)."]
+          "ul": ["o endereço de e-mail usado no pagamento;", "a data e o valor do pagamento;", "o motivo do reembolso."]
         },
         {
           "h": "Prazos",
@@ -1017,8 +1016,7 @@
         { "q": "O relatório é escrito para mim ou é um texto genérico?", "a": "Ele é montado a partir das suas respostas. O texto foi escrito para o seu perfil, um entre dezesseis. A seção 2 inteira e trechos das seções 3, 5, 11, 12 e 13 dependem dos seus números: as porcentagens nas quatro escalas, a contagem de marcações “mais” e “menos” e a escala mais baixa. Seu nome aparece em todas as páginas." },
         { "q": "Em que formato o relatório chega?", "a": "Em um arquivo PDF anexado ao e-mail, com cerca de 29 páginas A4. Dá para ler bem na tela e para imprimir; cada uma das três folhas de trabalho cabe em uma única página." },
         { "q": "Em que idioma está o relatório?", "a": "Em português do Brasil. O relatório foi escrito diretamente em português, e não traduzido de outro idioma." },
-        { "q": "É um diagnóstico ou uma avaliação de habilidades?", "a": "Não. O relatório descreve o seu estilo de comportamento com base nas suas respostas. Ele não faz diagnósticos, não mede inteligência e não prevê sucesso." },
-        { "q": "Posso pedir reembolso?", "a": "Sim. Se o relatório não atender às suas expectativas, escreva para {email} em até 7 dias após o pagamento: devolvemos o valor integral, sem pedir justificativa. Os demais casos e o procedimento de reembolso estão na {refund}." }
+        { "q": "É um diagnóstico ou uma avaliação de habilidades?", "a": "Não. O relatório descreve o seu estilo de comportamento com base nas suas respostas. Ele não faz diagnósticos, não mede inteligência e não prevê sucesso." }
       ],
       "priceLabel": "Preço",
       "price": "US$ {price}",
@@ -1035,7 +1033,6 @@
       "pay": {
         "title": "Seu relatório será montado com base no teste que você fez em {date}",
         "text": "O relatório chega ao seu e-mail logo após o pagamento, em PDF, como anexo. O comprovante de pagamento vai para o mesmo endereço.",
-        "guarantee": "Não gostou? Você tem 7 dias para pedir seu dinheiro de volta.",
         "offer": {
           "regular": "Preço normal",
           "cta": "Garanta já por US$ {offerPrice}",

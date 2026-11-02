@@ -1744,7 +1744,7 @@
       "description": "Allgemeine Geschäftsbedingungen für die Leistung „Ausführliches DISG-Profil“ auf disc-test.org: Preis, Zahlung und Zusendung, Erstattung, Rechte an den Inhalten.",
       "h1": "Allgemeine Geschäftsbedingungen",
       "linkText": "Allgemeinen Geschäftsbedingungen",
-      "edition": "Fassung vom 25. Oktober 2026. Deutsche Übersetzung aktualisiert am 25. Oktober 2026.",
+      "edition": "Fassung vom 2. November 2026. Deutsche Übersetzung aktualisiert am 2. November 2026.",
       "note": "Dies ist die deutsche Übersetzung dieser Geschäftsbedingungen; das Original ist unter {original} veröffentlicht. Weichen die beiden Texte voneinander ab, gilt das Original – mit Ausnahme des Preises und der Zahlungsbedingungen: Für die deutsche Version der Website gelten dafür die Ziffern 1 und 3 dieser Übersetzung.",
       "seller": "Einzelunternehmer Manukyan Armen, Steuernummer (INN) {inn}",
       "lead": "Dieses Dokument ist ein verbindliches Angebot (öffentliches Angebot) zum Abschluss eines Vertrags über die kostenpflichtige Leistung „Ausführliches DISG-Profil“ zu den nachstehenden Bedingungen. Das Angebot unterbreitet {seller} (im Folgenden „Anbieter“). Wer die Leistung bezahlt, stimmt diesen Bedingungen vollständig und vorbehaltlos zu (Annahme des Angebots).",
@@ -1797,8 +1797,8 @@
             "5.1. Der Kunde kann die Bestellung jederzeit stornieren, solange ihm das Ausführliche Profil noch nicht zugesandt wurde. In diesem Fall wird die Zahlung vollständig erstattet.",
             "5.2. Wird das Ausführliche Profil nicht innerhalb der in Ziffer 4.2 genannten Frist gesendet, kann der Kunde die vollständige Erstattung der Zahlung verlangen.",
             "5.3. Weist das erhaltene Ausführliche Profil Mängel auf (die E-Mail oder die Datei lässt sich nicht öffnen, sie enthält das Ergebnis einer anderen Person, der Inhalt entspricht nicht der Beschreibung der Leistung auf der Website), behebt der Anbieter sie innerhalb von drei Arbeitstagen nach der Mitteilung des Kunden. Wird ein Mangel in dieser Frist nicht behoben, wird die Zahlung vollständig erstattet.",
-            "5.4. Rückerstattungsgarantie: Innerhalb von sieben Kalendertagen ab dem Tag der Zahlung kann der Kunde ohne Angabe von Gründen die vollständige Erstattung der Zahlung verlangen, auch nachdem er das Ausführliche Profil erhalten hat. Nach Ablauf dieser Frist wird die Zahlung für eine ordnungsgemäß erbrachte Leistung nicht erstattet; ist der Kunde mit der Beschreibung seines Profils inhaltlich nicht einverstanden, stellt dies keinen Mangel der Leistung dar.",
-            "5.5. Für eine Rückerstattung sendet der Kunde einen Antrag an {email} und nennt darin die bei der Zahlung verwendete E-Mail-Adresse, Datum und Betrag der Zahlung sowie den Grund für die Rückerstattung; bei einer Rückerstattung nach Ziffer 5.4 muss kein Grund angegeben werden.",
+            "5.4. Die Zahlung für eine ordnungsgemäß erbrachte Leistung wird nicht erstattet; ist der Kunde mit der Beschreibung seines Profils inhaltlich nicht einverstanden, stellt dies keinen Mangel der Leistung dar.",
+            "5.5. Für eine Rückerstattung sendet der Kunde einen Antrag an {email} und nennt darin die bei der Zahlung verwendete E-Mail-Adresse, Datum und Betrag der Zahlung sowie den Grund für die Rückerstattung.",
             "5.6. Der Anbieter beantwortet den Antrag innerhalb von drei Arbeitstagen. Das Geld wird auf demselben Weg erstattet, auf dem bezahlt wurde, spätestens zehn Kalendertage nach Eingang des Antrags; wann der Betrag gutgeschrieben wird, hängt von der Bank des Kunden ab.",
             "5.7. Die gesetzlichen Verbraucherrechte des Kunden bleiben von den Bestimmungen dieses Abschnitts unberührt."
           ]
@@ -1856,7 +1856,6 @@
         {
           "h": "Wann Sie Ihr Geld vollständig zurückerhalten",
           "ul": [
-            "Das ausführliche Profil sagt Ihnen nicht zu: Innerhalb von 7 Tagen nach der Zahlung erhalten Sie Ihr Geld ohne Angabe von Gründen zurück.",
             "Sie stornieren die Bestellung, bevor Ihnen das ausführliche Profil zugesandt wurde.",
             "Das ausführliche Profil wurde nicht innerhalb von 24 Stunden nach der Zahlung gesendet.",
             "Das erhaltene ausführliche Profil hat einen Mangel (die E-Mail oder die Datei lässt sich nicht öffnen, sie enthält das Ergebnis einer anderen Person, der Inhalt entspricht nicht der Beschreibung der Leistung auf der Website), und wir haben ihn nicht innerhalb von drei Arbeitstagen nach Ihrer Mitteilung behoben."
@@ -1864,12 +1863,12 @@
         },
         {
           "h": "Wann die Zahlung nicht erstattet wird",
-          "p": ["Sind seit der Zahlung mehr als 7 Tage vergangen und wurde das ausführliche Profil rechtzeitig gesendet und entspricht es der Beschreibung, gilt die Leistung als erbracht, und die Zahlung wird nicht erstattet. Sind Sie mit der Beschreibung Ihres Profils inhaltlich nicht einverstanden, ist das kein Mangel der Leistung."]
+          "p": ["Wurde das ausführliche Profil rechtzeitig gesendet und entspricht es der Beschreibung, gilt die Leistung als erbracht, und die Zahlung wird nicht erstattet. Sind Sie mit der Beschreibung Ihres Profils inhaltlich nicht einverstanden, ist das kein Mangel der Leistung."]
         },
         {
           "h": "So beantragen Sie eine Rückerstattung",
           "p": ["Schreiben Sie an {email} und nennen Sie:"],
-          "ul": ["die E-Mail-Adresse, die Sie bei der Zahlung angegeben haben;", "Datum und Betrag der Zahlung;", "den Grund für die Rückerstattung (in den ersten 7 Tagen nach der Zahlung können Sie ihn weglassen)."]
+          "ul": ["die E-Mail-Adresse, die Sie bei der Zahlung angegeben haben;", "Datum und Betrag der Zahlung;", "den Grund für die Rückerstattung."]
         },
         {
           "h": "Fristen",
@@ -1965,8 +1964,7 @@
         { "q": "Wird der Bericht für mich geschrieben oder ist das ein Standardtext?", "a": "Der Bericht entsteht aus Ihren Antworten. Der Text ist für Ihr Profil geschrieben – eines von sechzehn. Das gesamte Kapitel 2 und einzelne Stellen in den Kapiteln 3, 5, 11, 12 und 13 hängen von Ihren Zahlen ab: von den Prozentwerten auf den vier Skalen, von der Zahl Ihrer Markierungen „am meisten“ und „am wenigsten“ und von Ihrem niedrigsten Wert. Auf jeder Seite steht Ihr Name." },
         { "q": "In welcher Form kommt der Bericht?", "a": "Als PDF im Anhang einer E-Mail, rund 30 Seiten im Format A4. Er lässt sich gut am Bildschirm lesen und sauber ausdrucken; jedes der drei Arbeitsblätter passt auf eine Seite." },
         { "q": "In welcher Sprache ist der Bericht?", "a": "Auf Deutsch. Der Bericht wurde direkt auf Deutsch geschrieben, für Leser in Deutschland, und ist keine Übersetzung." },
-        { "q": "Ist das eine Diagnose oder eine Beurteilung meiner Fähigkeiten?", "a": "Nein. Der Bericht beschreibt Ihren Verhaltensstil anhand Ihrer Antworten. Er stellt keine Diagnosen, misst keine Intelligenz und sagt keinen Erfolg voraus." },
-        { "q": "Kann ich mein Geld zurückbekommen?", "a": "Ja. Sagt Ihnen der Bericht nicht zu, schreiben Sie innerhalb von 7 Tagen nach der Zahlung an {email}: Sie erhalten Ihr Geld vollständig zurück, ohne Angabe von Gründen. Alle weiteren Fälle und den Ablauf finden Sie in den {refund}." }
+        { "q": "Ist das eine Diagnose oder eine Beurteilung meiner Fähigkeiten?", "a": "Nein. Der Bericht beschreibt Ihren Verhaltensstil anhand Ihrer Antworten. Er stellt keine Diagnosen, misst keine Intelligenz und sagt keinen Erfolg voraus." }
       ],
       "priceLabel": "Preis",
       "price": "{price} €",
@@ -1983,7 +1981,6 @@
       "pay": {
         "title": "Ihr Bericht entsteht aus Ihrem Testergebnis vom {date}",
         "text": "Der Bericht kommt direkt nach der Zahlung per E-Mail, als PDF im Anhang. Der Kaufbeleg geht an dieselbe Adresse.",
-        "guarantee": "Nicht zufrieden? 7 Tage Geld-zurück-Garantie.",
         "offer": {
           "regular": "Regulärer Preis",
           "cta": "Jetzt für {offerPrice} € sichern",

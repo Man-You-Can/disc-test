@@ -1434,11 +1434,11 @@ for (const L of locales) {
   // оплата расширенного отчёта на своём сервере: название услуги для платёжной страницы и чека, письмо-напоминание о неоконченной оплате, валюта заказа (USD или EUR через Prodamus)
   if (L.content.product && L.content.product.pay && L.content.product.pay.remind) mailData[L.lang].pay = { name: L.content.services.name, remind: L.content.product.pay.remind, dateLocale: L.dateLocale, currency: L.content.services.currency };
   // письмо подписчикам с призывом купить расширенный отчёт (с 2026-10-25; отправляет свой сервер, src/promo.js): только где отчёт продаётся и есть тексты письма.
-  // Тезисы, подпись к листам, кнопка и «бесплатно» — из блока «Расширенный отчёт» (product.block), гарантия — из покупки; цена — обычная (servicePrice).
+  // Тезисы, подпись к листам, кнопка и «бесплатно» — из блока «Расширенный отчёт» (product.block); цена — обычная (servicePrice).
   // image — есть ли картинка листов образца для писем (src/assets/extended/<язык>-mail.jpg; сайт отдаёт её по адресу /extended/<язык>-mail.jpg)
   const MP = L.content.mailing && L.content.mailing.promo, PP = L.content.product;
   if (MP && PP && PP.pay && PP.block) mailData[L.lang].promo = Object.assign({}, MP, { list: PP.block.list, sample: PP.block.sample || '', button: PP.block.button, free: PP.block.free,
-    guarantee: PP.pay.guarantee, price: MP.price, cur: L.content.services.currency, dateLocale: L.dateLocale,   // {price} подставляет ядро (extPriceText): цены меняются в панели
+    price: MP.price, cur: L.content.services.currency, dateLocale: L.dateLocale,   // {price} подставляет ядро (extPriceText): цены меняются в панели
     image: fs.existsSync(path.join(SRC, 'assets', 'extended', L.lang + '-mail.jpg')) });
 }
 // Блок о расширенном отчёте в PDF краткого отчёта и в теле письма с результатом: в языках, где есть страница отчёта и тексты `content.product.pdf`.
