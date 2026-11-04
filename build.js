@@ -106,7 +106,10 @@ const fmtPrice = (L, v) => v ? new Intl.NumberFormat(L.dateLocale, Number.isInte
 const servicePrice = L => fmtPrice(L, L.content.services ? langPair(L)[0] : 0);
 const hasServices = L => !!(servicePrice(L) && L.ui['nav.services']);
 // анонсы сервиса «Резюме под каждую вакансию» (content.cvPromo, с 2026-10-24): только там, где есть сам лендинг /<язык>/cv/ (content.cv и форма заявки)
-const hasCvPromo = L => !!(L.content.cvPromo && L.content.cv && feedbackEmail);
+// cvService: false в site.config.json (с 2026-11-04, решение заказчика) — сервис резюме снят с сайта: нет ни анонсов, ни лендинга /<язык>/cv/;
+// прежние адреса /cv/ ведут на главную языка. Тексты content.cv и content.cvPromo в локалях оставлены — вернуть сервис можно этим ключом.
+const cvOn = cfg.cvService !== false;
+const hasCvPromo = L => !!(cvOn && L.content.cvPromo && L.content.cv && feedbackEmail);
 const hasOffer = L => !!(hasServices(L) && L.content.offer && L.content.refund && L.ui['nav.offer']);
 // Расширенный отчёт: страница /extended-report/ и блок на экране результата — в языках, где есть content.product и оферта.
 // Листы образца — картинки src/assets/extended/<язык>-i-<n>.webp (с уменьшенной копией -s) и подписи к ним в локали (sampleAlt, sampleCaption,
@@ -866,7 +869,14 @@ for (const L of locales) {
   // форма обратной связи сервера, тема «Заявка на ранний доступ к сервису CV». Только там, где в локали есть content.cv (сейчас русская версия).
   // С 2026-10-24 (по просьбе заказчика) на лендинг ведут блоки-анонсы content.cvPromo: главная, экран результата, страницы профилей и «Услуги»
   // (раздел «Поиск работы»); в меню и подвале ссылки нет. С 2026-10-24 (решение заказчика) открыта для поисковиков и входит в sitemap
-  if (C.cv && feedbackEmail) {
+  if (!cvOn && C.cv) {
+    // сервис снят (cvService: false): на месте лендинга — переадресация на главную языка, вне sitemap
+    fs.mkdirSync(path.join(OUT, pathOf(L.lang), 'cv'), { recursive: true });
+    fs.writeFileSync(path.join(OUT, pathOf(L.lang), 'cv', 'index.html'), `<!doctype html><html lang="${hl(L.lang)}"><head><meta charset="utf-8"><title>${esc(L.brand)}</title>` +
+      `<meta name="robots" content="noindex"><meta http-equiv="refresh" content="0; url=../"><link rel="canonical" href="${urlOf(L.lang)}">` +
+      `<script>location.replace('../')</script></head><body><a href="../">${esc(L.brand)}</a></body></html>\n`);
+  }
+  if (cvOn && C.cv && feedbackEmail) {
     const V = C.cv, F = V.form, A = V.author, D = V.demo, K = ['--d', '--i', '--s', '--c'];
     const fill = str => escFull(str).replace(/\{email\}/g, `<a href="mailto:${escFull(feedbackEmail)}">${escFull(feedbackEmail)}</a>`);
     const VT = { name: t('intro.nameLabel'), email: F.email, button: F.button, subject: F.subject, message: F.message, sentTitle: F.sentTitle, sent: F.sent,
