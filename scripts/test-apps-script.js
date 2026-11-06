@@ -428,9 +428,9 @@ check('result mail in a language without the report page: no block', Object.keys
 // заявка на расширенный отчёт с формы обратной связи: своя тема письма с языком страницы; обычное сообщение — с прежней темой
 check('contact subject: request for the extended report names the language, an ordinary message does not', ctx.contactSubject('Ann Lee', 'en', 'extended') === 'Заявка на расширенный отчёт — English (en): Ann Lee' &&
   ctx.contactSubject('Ken', 'ja', 'extended') === 'Заявка на расширенный отчёт — ' + ctx.DATA.ja.name + ' (ja): Ken' && ctx.contactSubject('X', '', 'extended') === 'Заявка на расширенный отчёт — язык не указан: X' &&
-  ctx.contactSubject('Ann Lee', 'en', '') === 'Сообщение с сайта disc-test.org: Ann Lee');
+  ctx.contactSubject('Ann Lee', 'en', '') === 'disc-test.org: Ann Lee' && ctx.contactSubject('Анна', 'ru', '') === 'Сообщение с сайта disc-test.org: Анна');
 check('contact subject: the subject from the form goes before the name; a request for the extended report keeps its own subject',
-  ctx.contactSubject('Ann Lee', 'en', '', 'Typo on the FAQ page') === 'Сообщение с сайта disc-test.org: Typo on the FAQ page — Ann Lee' &&
+  ctx.contactSubject('Ann Lee', 'en', '', 'Typo on the FAQ page') === 'disc-test.org: Typo on the FAQ page — Ann Lee' &&
   ctx.contactSubject('Ann Lee', 'en', 'extended', 'Extended DISC report') === 'Заявка на расширенный отчёт — English (en): Ann Lee');
 check('contact: subject from the form in the mail subject and in the details, spaces collapsed, cut to 120 characters', !CONTACT_TO || (() => {
   post({ action: 'contact', lang: 'ru', name: 'Олег', email: 'oleg-subj@example.com', subject: '  Предложение:\r\n сравнение   результатов ', message: 'Текст' }); const a = sent[sent.length - 1];
@@ -442,7 +442,21 @@ if (CONTACT_TO) check('contact: request for the extended report arrives with its
   post({ action: 'contact', topic: 'extended', lang: 'de', name: 'Greta', email: 'greta-req@example.com', message: 'Ich möchte den Bericht.' }); const a = sent[sent.length - 1];
   post({ action: 'contact', topic: 'spam', lang: 'de', name: 'Greta', email: 'greta-msg@example.com', message: 'Hallo' }); const b = sent[sent.length - 1];
   return a.subject === 'Заявка на расширенный отчёт — ' + ctx.DATA.de.name + ' (de): Greta' && a.body.includes('Заявка на расширенный отчёт, язык: ' + ctx.DATA.de.name + ' (de)\nИмя: Greta') && a.replyTo === 'greta-req@example.com' &&
-    b.subject === 'Сообщение с сайта disc-test.org: Greta' && !/Заявка/.test(b.body); })());
+    b.subject === 'disc-test.org: Greta' && !/Заявка/.test(b.body); })());
+// с 2026-11-06: сообщение не с русской версии — тема и сведения без русских слов (их цитирует ответ иностранцу); имя, уже стоящее в теме из формы, не повторяется
+check('contact subject: not from the Russian version — no Russian words; the name already in the form subject is not repeated; no language — as before',
+  ctx.contactSubject('SIMONIN', 'fr', '', "Demande de kit de l'animateur : SIMONIN") === "disc-test.org: Demande de kit de l'animateur : SIMONIN" &&
+  ctx.contactSubject('Олег', 'ru', '', 'Заявка на набор ведущего: Олег') === 'Сообщение с сайта disc-test.org: Заявка на набор ведущего: Олег' &&
+  ctx.contactSubject('Ann', '', '', 'Hi') === 'Сообщение с сайта disc-test.org: Hi — Ann' && ctx.contactSubject('Ann', 'zh-hant', '', 'Hi') === 'disc-test.org: Hi — Ann');
+check('contact meta: not from the Russian version — in English; Russian version and the extended report request — in Russian', (() => {
+  const o = { topic: '', lang: 'fr', subject: 'Demande', name: 'SIMONIN', email: 'c@example.com', page: 'https://disc-test.org/fr/kit/', when: '2026-11-06 11:55', files: ['a.pdf'] };
+  const fr = ctx.contactMeta(o), ru = ctx.contactMeta(Object.assign({}, o, { lang: 'ru' })), ex = ctx.contactMeta(Object.assign({}, o, { topic: 'extended', lang: 'de' }));
+  return fr === 'Subject: Demande\nName: SIMONIN\nE-mail: c@example.com\nLanguage: fr\nPage: https://disc-test.org/fr/kit/\nReceived: 2026-11-06 11:55\nAttachments: a.pdf' &&
+    ru === 'Тема: Demande\nИмя: SIMONIN\nE-mail: c@example.com\nЯзык: ru\nСтраница: https://disc-test.org/fr/kit/\nПолучено: 2026-11-06 11:55\nВложения: a.pdf' &&
+    ex.startsWith('Заявка на расширенный отчёт, язык: ' + ctx.DATA.de.name + ' (de)\nТема: Demande\nИмя: SIMONIN'); })());
+if (CONTACT_TO) check('contact: a French kit request arrives without Russian words in the subject and the details', (() => {
+  post({ action: 'contact', lang: 'fr', name: 'SIMONIN', email: 'kit-fr@example.com', page: 'https://disc-test.org/fr/kit/', subject: "Demande de kit de l'animateur : SIMONIN", message: 'Animation de mon équipe' }); const a = sent[sent.length - 1];
+  return a.subject === "disc-test.org: Demande de kit de l'animateur : SIMONIN" && !/[А-Яа-яЁё]/.test(a.subject + a.body + a.htmlBody) && a.body.includes('\nName: SIMONIN\nE-mail: kit-fr@example.com\nLanguage: fr\n'); })());
 if (realAd) check('short report, real block data: texts, two sample sheets as JPEG, nothing unfilled', realAd.images.length === 2 && realAd.images.every(x => /^data:image\/jpeg;base64,/.test(x)) && realAd.captions.length === 2 && realAd.list.length === 3 &&
   /^\{price\} ₽/.test(realAd.price) && /^\d+ ₽/.test(ctx.withExtPrice(realAd).price) && !/\{\w+\}|undefined/.test(ctx.reportHtml(ctx.decodeResult(cM), 'ru').replace(/data:image[^"]+/g, '')));
 // цены из панели (с 2026-10-25): свой сервер кладёт их в переменные ядра (core.setPrices) — письма и PDF берут цену в момент сборки письма

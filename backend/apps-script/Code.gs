@@ -169,12 +169,26 @@ function checkLimits(to, perHour, prefix) {
  * человек ждёт отчёт. Название языка — как в переключателе языков сайта (DATA[язык].name).
  * subject — тема, которую человек указал в форме (обязательное поле с 12 октября 2026): в обычном сообщении она стоит в теме письма перед именем.
  * Страница, открытая до появления поля, темы не присылает — тогда тема письма прежняя, только с именем.
+ * С 2026-11-06 (по просьбе заказчика: при ответе иностранцу русские слова темы и сведений уходят в его письмо) обычное сообщение не с русской версии
+ * (язык задан и не ru) получает тему без русских слов — «disc-test.org: <тема> — <имя>» — и сведения по-английски (contactMeta). Если имя уже есть
+ * в теме из формы (заявка на набор ведущего: «Demande de kit de l'animateur : SIMONIN»), второй раз его не дописывать — во всех языках.
+ * Заявка на расширенный отчёт и сообщения с русской версии — как раньше.
  */
 function contactTopicLine(s) { return String(s || '').replace(/\s+/g, ' ').trim().slice(0, 120); }
+function contactForeign(lang, topic) { return topic !== 'extended' && !!lang && lang !== 'ru'; }
 function contactSubject(name, lang, topic, subject) {
   var site = SITE_URL.replace(/^https?:\/\//, '');
-  if (topic !== 'extended') return 'Сообщение с сайта ' + site + ': ' + (subject ? subject + ' — ' : '') + name;
-  return 'Заявка на расширенный отчёт — ' + contactLang(lang) + ': ' + name;
+  if (topic === 'extended') return 'Заявка на расширенный отчёт — ' + contactLang(lang) + ': ' + name;
+  var text = subject ? (name && subject.indexOf(name) >= 0 ? subject : subject + ' — ' + name) : name;
+  return (contactForeign(lang, topic) ? site : 'Сообщение с сайта ' + site) + ': ' + text;
+}
+/** Сведения под текстом письма с формы обратной связи; o: {topic, lang, subject, name, email, page, when, files: [имена]}. Не с русской версии — по-английски. */
+function contactMeta(o) {
+  var en = contactForeign(o.lang, o.topic), files = o.files || [];
+  var T = en ? ['Subject', 'Name', 'Language', 'Page', 'Received', 'Attachments'] : ['Тема', 'Имя', 'Язык', 'Страница', 'Получено', 'Вложения'];
+  return (o.topic === 'extended' ? 'Заявка на расширенный отчёт, язык: ' + contactLang(o.lang) + '\n' : '') + (o.subject ? T[0] + ': ' + o.subject + '\n' : '') +
+    T[1] + ': ' + o.name + '\nE-mail: ' + o.email + (o.lang ? '\n' + T[2] + ': ' + o.lang : '') + (o.page ? '\n' + T[3] + ': ' + o.page : '') + '\n' + T[4] + ': ' + o.when +
+    (files.length ? '\n' + T[5] + ': ' + files.join(', ') : '');
 }
 function contactLang(lang) { var L = DATA[lang]; return lang ? (L && L.name ? L.name + ' (' + lang + ')' : lang) : 'язык не указан'; }
 
@@ -204,8 +218,7 @@ function sendContact(b) {
   if (limit) return out({ ok: false, error: limit });
   var lang = String(b.lang || '').replace(/[^a-z-]/gi, '').slice(0, 10), page = String(b.page || '').slice(0, 300);
   var topic = b.topic === 'extended' ? 'extended' : '', subj = contactTopicLine(b.subject);
-  var meta = (topic ? 'Заявка на расширенный отчёт, язык: ' + contactLang(lang) + '\n' : '') + (subj ? 'Тема: ' + subj + '\n' : '') + 'Имя: ' + name + '\nE-mail: ' + email + (lang ? '\nЯзык: ' + lang : '') + (page ? '\nСтраница: ' + page : '') + '\nПолучено: ' + stamp() +
-    (blobs.length ? '\nВложения: ' + blobs.map(function (x) { return x.getName(); }).join(', ') : '');
+  var meta = contactMeta({ topic: topic, lang: lang, subject: subj, name: name, email: email, page: page, when: stamp(), files: blobs.map(function (x) { return x.getName(); }) });
   var subject = contactSubject(name, lang, topic, subj);
   var html = '<div style="font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.5;color:#1B2027">' +
     '<p style="margin:0 0 18px">' + esc(msg).replace(/\n/g, '<br>') + '</p>' +
