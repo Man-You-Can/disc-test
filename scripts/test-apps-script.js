@@ -238,7 +238,7 @@ check('no consent: subscription cells stay empty, mail has no unsubscribe link',
 const cS = mk('Sub One', 'sub@b.co'), rS = post({ to: 'sub@b.co', lang: 'ru', code: cS, subscribe: true }), mS = sent[sent.length - 1], sS = subCell(lastRow());
 const linkS = sS[3], tokS = String(linkS).split('#u=')[1];
 check('subscribe with the result: ok, subscribed, one mail', rS.ok === true && rS.subscribed === true && mS.to === 'sub@b.co');
-check('subscribe: row marked, consent text in the participant language, link to the ru page', sS[0] === 'да' && sS[1] === '2026-09-07 12:00' && sS[2] === ctx.DATA.ru.consent && /^Соглашаюсь получать/.test(sS[2]) && /^https:\/\/disc-test\.org\/ru\/unsubscribe\/#u=[A-Za-z0-9_-]{22}$/.test(linkS));
+check('subscribe: row marked, consent text in the participant language, link to the ru page', sS[0] === 'да' && sS[1] === '2026-09-07 12:00' && sS[2] === ctx.DATA.ru.consent && /^Хочу получать/.test(sS[2]) && /^Присылайте мне/.test(ctx.DATA.ru.consentB || '') && /^https:\/\/disc-test\.org\/ru\/unsubscribe\/#u=[A-Za-z0-9_-]{22}$/.test(linkS));
 check('subscribe: mail has the consent line and the unsubscribe link (html and text)', mS.htmlBody.includes('Вы согласились получать рассылку') && mS.htmlBody.includes('href="' + linkS + '"') && mS.body.includes('Отписаться от рассылки: ' + linkS));
 check('subscribe: key kept in script properties, not in the link', typeof props.unsubKey === 'string' && props.unsubKey.length > 30 && !linkS.includes(props.unsubKey));
 const nBefore = sent.length, cL = mk('Late', 'late@b.co'); post({ to: 'late@b.co', lang: 'en', code: cL });

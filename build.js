@@ -225,6 +225,9 @@ const resultEmail = cfg.resultEmail !== false;
 // Экран «Куда прислать результат?» между последним вопросом и результатом (с 2026-11-01, по просьбе заказчика): emailStep — доля прошедших тест
 // (от 0 до 1), которым он показывается; 0 или нет ключа — экрана нет. Остальные видят результат сразу — так сравнивается, как экран влияет на покупки
 const emailStep = Math.max(0, Math.min(1, +cfg.emailStep || 0));
+// Сравнение двух текстов галочки согласия на рассылку в формах отправки результата (с 2026-11-07, по просьбе заказчика): subscribeAB — доля
+// открытий страницы, где показывается вариант Б (ui["share.subscribeB"]), остальным — А (ui["share.subscribe"]); 0 или нет ключа — только А.
+const subscribeAB = Math.max(0, Math.min(1, +cfg.subscribeAB || 0));
 // Обезличенный счёт прохождений: profileStats в site.config.json — в момент, когда тест пройден, страница шлёт на sendEndpoint профиль и язык версии
 // (action: 'stat'), без имени, адреса, ответов и кода результата; сервер пишет их в таблицу счёта, панель показывает на странице «Профили».
 // По кнопке «Начать тест» уходит вторая запись — только язык версии (action: 'start'): панель показывает на странице «Прохождения», сколько раз тест начали.
@@ -506,7 +509,7 @@ for (const L of locales) {
     .replace(/__EMAIL__/g, String(cfg.contactEmail || '').replace(/['\\]/g, ''))
     .replace(/__SEND_ENDPOINT__/g, String(cfg.sendEndpoint || '').replace(/['\\]/g, '')).replace(/__PAY_ENDPOINT__/g, homePay(L) ? payEndpoint.replace(/['\\]/g, '') : '')
     .replace('__PAY_JS__', () => homePay(L) ? payJs : '')
-    .replace(/__SEND_TOKEN__/g, String(cfg.sendToken || '').replace(/['\\]/g, '')).replace(/__NEWSLETTER__/g, newsletter ? '1' : '0').replace(/__STATS__/g, profileStats ? '1' : '0').replace(/__PDF_DL__/g, pdfDownload ? '1' : '0').replace(/__RESULT_EMAIL__/g, resultEmail ? '1' : '0').replace(/__EMAIL_STEP__/g, String(emailStep)).replace(/__HOME_SUB__/g, homeSub ? '1' : '0')
+    .replace(/__SEND_TOKEN__/g, String(cfg.sendToken || '').replace(/['\\]/g, '')).replace(/__NEWSLETTER__/g, newsletter ? '1' : '0').replace(/__STATS__/g, profileStats ? '1' : '0').replace(/__PDF_DL__/g, pdfDownload ? '1' : '0').replace(/__RESULT_EMAIL__/g, resultEmail ? '1' : '0').replace(/__EMAIL_STEP__/g, String(emailStep)).replace(/__SUBSCRIBE_AB__/g, String(subscribeAB)).replace(/__HOME_SUB__/g, homeSub ? '1' : '0')
     .replace(/__PD__/g, pdOn && cfg.sendEndpoint ? '1' : '0').replace(/__PD_VERSION__/g, pdVersion)
     .replace('__LOCALE_JSON__', () => JSON.stringify(homeLocale(L)).replace(/</g, '\\u003c').replace(/\u2028|\u2029/g, ''));
   fs.mkdirSync(path.join(OUT, pathOf(L.lang)), { recursive: true });
@@ -1453,7 +1456,7 @@ for (const L of locales) {
   const report = {};
   for (const k of ['flat', 'statsTitle', 'statMeta', 'traits', 'secondary', 'secondaryAddon', 'strengths', 'growth', 'motivation', 'communication', 'stress', 'environment']) report[k] = L.ui['report.' + k];
   // consent — текст у галочки согласия на рассылку: скрипт записывает его в таблицу рядом с отметкой о согласии
-  mailData[L.lang] = { name: L.name, dir: L.dir, brand: L.brand, keys: L.keys, addon: L.addon, styles: L.styles, profiles, email, report, rights: L.ui.rights, consent: L.ui['share.subscribe'],
+  mailData[L.lang] = { name: L.name, dir: L.dir, brand: L.brand, keys: L.keys, addon: L.addon, styles: L.styles, profiles, email, report, rights: L.ui.rights, consent: L.ui['share.subscribe'], consentB: L.ui['share.subscribeB'] || '',
     pd: { v: pdVersion, text: pdConsentText(L) },   // согласие на обработку данных: редакция и текст — свой сервер сохраняет их рядом с отметкой о согласии
     cta: { title: L.ui['cta.title'], text: L.ui['cta.text'], desc: L.ui['pages.profile.descCta'] },
     // подписка с главной: текст у галочки согласия (сервер сохраняет его с отметкой о согласии) и письмо со ссылкой подтверждения
