@@ -380,6 +380,46 @@ function composePaperMail(lang, unsubUrl) {
 }
 
 /**
+ * Письмо покупателю набора ведущего со ссылками на файлы (с 2026-11-06; отправляет свой сервер сразу после оплаты, src/pay.js — kitDeliver).
+ * Тексты — DATA[язык].kit.mail (content.kit.mail локали), адреса онлайн-теста, «Теста в PDF» и «Теста для группы» кладёт сборка (DATA[язык].kit).
+ * o: {order — номер заказа, until — до какого дня действуют ссылки (Date), zip — ссылка на архив со всеми файлами,
+ *     files — [{name, url}] в порядке набора (описания — kit.mail.files по тому же номеру)}.
+ */
+function composeKitMail(lang, o) {
+  var L = DATA[lang], K = L.kit, X = K.mail, site = SITE_URL.replace(/^https?:\/\//, '');
+  var date = '';
+  try { date = new Intl.DateTimeFormat(K.dateLocale || 'en-US', { timeZone: 'Europe/Moscow', day: 'numeric', month: 'long', year: 'numeric' }).format(o.until); }
+  catch (e) { date = Utilities.formatDate(o.until, 'Europe/Moscow', 'dd.MM.yyyy'); }
+  var vars = { until: date, order: o.order, site: site };
+  var intro = fmt(X.intro, vars); if (/\.$/.test(date)) intro = intro.split(date + '.').join(date);   // «5 декабря 2026 г.» в конце предложения — без второй точки
+  var a = function (href, label) { return '<a href="' + esc(href) + '" style="color:#3B6FB6">' + esc(label) + '</a>'; };
+  var plainUrl = function (u) { return u.replace(/\?.*$/, ''); };
+  var files = o.files.map(function (f, i) { var d = X.files[i] ? ' — ' + X.files[i] : '';
+    return { html: '<li style="margin:0 0 8px"><a href="' + esc(f.url) + '" style="color:#3B6FB6;font-weight:bold"><bdi>' + esc(f.name) + '</bdi></a>' + esc(d) + '</li>', text: (i + 1) + '. ' + f.name + d + '\n   ' + f.url }; });
+  var links = [[X.online, K.online], [X.paper, K.pdf]].filter(function (x) { return x[1]; });
+  var html = '<!DOCTYPE html><html lang="' + lang + '" dir="' + (L.dir || 'ltr') + '"><body style="margin:0;background:#F3F4F6;font-family:Arial,Helvetica,sans-serif;color:#1B2027">' +
+    '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F3F4F6"><tr><td align="center" style="padding:24px 12px">' +
+    '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background:#ffffff;border:1px solid #D9DDE3;border-radius:14px"><tr><td style="padding:28px;font-size:16px;line-height:1.5">' +
+    '<p style="margin:0 0 16px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#5B6470;font-weight:bold">DISC</p>' +
+    '<p style="margin:0 0 8px">' + esc(X.hello) + '</p>' +
+    '<p style="margin:0 0 18px">' + esc(intro) + '</p>' +
+    '<p style="margin:0 0 18px"><a href="' + esc(o.zip) + '" style="display:inline-block;background:#1B2027;color:#ffffff;text-decoration:none;font-weight:bold;padding:12px 22px;border-radius:8px">' + esc(X.zip) + '</a></p>' +
+    '<p style="margin:0 0 8px">' + esc(X.filesTitle) + '</p>' +
+    '<ol style="margin:0 0 20px;padding-' + (L.dir === 'rtl' ? 'right' : 'left') + ':22px;font-size:15px;line-height:1.45">' + files.map(function (f) { return f.html; }).join('') + '</ol>' +
+    '<p style="margin:0 0 6px">' + esc(X.testTitle) + '</p>' +
+    '<ul style="margin:0 0 14px;padding-' + (L.dir === 'rtl' ? 'right' : 'left') + ':22px;font-size:15px">' + links.map(function (x) { return '<li>' + esc(x[0]) + ': ' + a(x[1], plainUrl(x[1]).replace(/^https?:\/\//, '')) + '</li>'; }).join('') + '</ul>' +
+    (K.group ? '<p style="margin:0 0 18px;font-size:15px">' + esc(X.group) + ': ' + a(K.group, plainUrl(K.group).replace(/^https?:\/\//, '')) + '</p>' : '') +
+    '<p style="margin:0 0 6px">' + esc(X.questions) + '</p>' +
+    '<p style="margin:0 0 20px">' + esc(X.bye) + '</p>' +
+    '<p style="margin:0;padding-top:12px;border-top:1px solid #D9DDE3;font-size:12px;color:#5B6470">' + esc(fmt(X.order, vars)) + ' ' + a(SITE_URL + '/', site) + '</p>' +
+    '</td></tr></table></td></tr></table></body></html>';
+  var text = X.hello + '\n\n' + intro + '\n\n' + X.zip + ':\n' + o.zip + '\n\n' + X.filesTitle + '\n' + files.map(function (f) { return f.text; }).join('\n') + '\n\n' +
+    X.testTitle + '\n' + links.map(function (x) { return '• ' + x[0] + ': ' + x[1]; }).join('\n') + '\n\n' + (K.group ? X.group + ': ' + K.group + '\n\n' : '') +
+    X.questions + '\n\n' + X.bye + '\n' + site + '\n\n' + fmt(X.order, vars) + '\n';
+  return { subject: fmt(X.subject, vars), html: html, text: text };
+}
+
+/**
  * Письмо подписчику с призывом купить расширенный отчёт (с 2026-10-25; отправляет свой сервер, src/promo.js — одно письмо на адрес через сутки после согласия).
  * Тексты — DATA[язык].promo (content.mailing.promo; тезисы, подпись к листам, кнопка и «бесплатно» — из блока product.block; строки о гарантии возврата нет с 2026-11-02, решение заказчика).
  * o: {code — код результата для ссылки на страницу отчёта, consentAt — дата согласия на рассылку (Date), unsubUrl — ссылка отписки,

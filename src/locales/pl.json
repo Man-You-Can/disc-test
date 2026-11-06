@@ -632,12 +632,13 @@
         }
       ],
       "purchase": {
-        "h": "Zakup profilu rozszerzonego",
+        "h": "Zakup profilu rozszerzonego i zestawu prowadzącego",
         "p": [
           "Jeśli kupujesz rozszerzony profil DISC, przetwarzamy twój adres e-mail, imię (jeśli je podasz), wynik testu, na podstawie którego powstaje raport, oraz dane zamówienia: datę, kwotę, numer i status płatności. Dane te są potrzebne, aby przygotować raport i wysłać go do ciebie, odpowiedzieć na twoje zgłoszenie i dokonać zwrotu płatności. Podstawą przetwarzania jest umowa, którą zawierasz, opłacając usługę na warunkach {offer}.",
           "Płatność obsługuje Prodamus, nasz operator płatności. Dane karty podajesz na zabezpieczonej stronie płatności Prodamus: nie otrzymujemy ich ani nie przechowujemy. Przekazujemy Prodamus kwotę i numer zamówienia oraz twój adres e-mail, na który wysyłany jest dowód zakupu.",
           "Raport jest generowany na serwerze działającym na nasze zlecenie i wysyłany do ciebie e-mailem z adresu {email}. Kopię raportu i dane zamówienia przechowuje właściciel serwisu: są potrzebne, aby ponownie wysłać raport, odpowiedzieć na zgłoszenie, dokonać zwrotu płatności i prowadzić ewidencję. Jeśli chcesz, abyśmy usunęli raport i dane zamówienia, napisz na {email}. Informacje o płatności, które przepisy nakazują przechowywać, są usuwane po upływie wymaganego okresu.",
-          "Jeśli rozpoczniesz zakup, ale nie dokonasz płatności, przechowujemy twój adres e-mail, wynik testu i dane zamówienia przez 30 dni, a następnie je usuwamy. W tym czasie na podany adres może przyjść jedna wiadomość z przypomnieniem i linkiem do płatności. Podstawą są twoje działania zmierzające do zawarcia umowy."
+          "Jeśli rozpoczniesz zakup, ale nie dokonasz płatności, przechowujemy twój adres e-mail, wynik testu i dane zamówienia przez 30 dni, a następnie je usuwamy. W tym czasie na podany adres może przyjść jedna wiadomość z przypomnieniem i linkiem do płatności. Podstawą są twoje działania zmierzające do zawarcia umowy.",
+          "Jeśli kupujesz zestaw prowadzącego DISC, przetwarzamy twój adres e-mail i dane zamówienia: datę, kwotę, numer i status płatności. Dane te są potrzebne, aby wysłać ci wiadomość z linkami do plików zestawu, odpowiedzieć na twoje zgłoszenie i dokonać zwrotu płatności; podstawą jest umowa zawarta na warunkach {offer}. Dane zamówienia zestawu przechowujemy tak samo jak dane zamówienia profilu rozszerzonego; przypomnień o niedokończonej płatności za zestaw nie wysyłamy."
         ]
       }
     },
@@ -708,12 +709,13 @@
         }
       ],
       "purchase": {
-        "h": "Zakup profilu rozszerzonego",
+        "h": "Zakup profilu rozszerzonego i zestawu prowadzącego",
         "p": [
           "Jeśli kupujesz rozszerzony profil DISC, przetwarzamy twój adres e-mail, imię (jeśli je podasz), wynik testu, na podstawie którego powstaje raport, oraz dane zamówienia: datę, kwotę, numer i status płatności. Dane te są potrzebne, aby przygotować raport i wysłać go do ciebie, odpowiedzieć na twoje zgłoszenie i dokonać zwrotu płatności. Podstawą przetwarzania jest umowa, którą zawierasz, opłacając usługę na warunkach {offer}; odrębna zgoda nie jest do tego wymagana.",
           "Płatność obsługuje Prodamus, nasz operator płatności. Dane karty podajesz na zabezpieczonej stronie płatności Prodamus: nie otrzymujemy ich ani nie przechowujemy. Przekazujemy Prodamus kwotę i numer zamówienia oraz twój adres e-mail, na który wysyłany jest dowód zakupu.",
           "Raport jest generowany na serwerze serwisu i wysyłany do ciebie e-mailem z adresu {email}. Gotowy raport nie jest przechowywany na serwerze: w razie potrzeby generujemy go ponownie. Dane zamówienia przechowujemy przez pięć lat od dnia płatności – są potrzebne, aby ponownie wysłać raport, odpowiedzieć na zgłoszenie, dokonać zwrotu płatności i prowadzić ewidencję. Informacje o płatności, które przepisy nakazują przechowywać dłużej, są usuwane po upływie wymaganego okresu.",
-          "Jeśli rozpoczniesz zakup, ale nie dokonasz płatności, przechowujemy twój adres e-mail, wynik testu i dane zamówienia przez 30 dni, a następnie je usuwamy. W tym czasie na podany adres może przyjść jedna wiadomość z przypomnieniem i linkiem do płatności. Podstawą są twoje działania zmierzające do zawarcia umowy."
+          "Jeśli rozpoczniesz zakup, ale nie dokonasz płatności, przechowujemy twój adres e-mail, wynik testu i dane zamówienia przez 30 dni, a następnie je usuwamy. W tym czasie na podany adres może przyjść jedna wiadomość z przypomnieniem i linkiem do płatności. Podstawą są twoje działania zmierzające do zawarcia umowy.",
+          "Jeśli kupujesz zestaw prowadzącego DISC, przetwarzamy twój adres e-mail i dane zamówienia: datę, kwotę, numer i status płatności. Dane te są potrzebne, aby wysłać ci wiadomość z linkami do plików zestawu, odpowiedzieć na twoje zgłoszenie i dokonać zwrotu płatności; podstawą jest umowa zawarta na warunkach {offer}. Dane zamówienia zestawu przechowujemy tak samo jak dane zamówienia profilu rozszerzonego; przypomnień o niedokończonej płatności za zestaw nie wysyłamy."
         ]
       }
     },
@@ -792,14 +794,14 @@
       ]
     },
     "offer": {
-      "title": "Regulamin sprzedaży – rozszerzony profil DISC",
-      "description": "Regulamin sprzedaży płatnej usługi „Rozszerzony profil DISC” w serwisie disc-test.org: cena, płatność i dostarczenie, zwroty, prawa do materiałów.",
+      "title": "Regulamin sprzedaży – rozszerzony profil DISC i zestaw prowadzącego",
+      "description": "Regulamin sprzedaży płatnej usługi „Rozszerzony profil DISC” i Zestawu prowadzącego DISC w serwisie disc-test.org: cena, płatność i dostarczenie, zwroty, prawa do materiałów.",
       "h1": "Regulamin sprzedaży",
       "linkText": "regulaminu sprzedaży",
-      "edition": "Wersja z 2 listopada 2026 r. Tłumaczenie na język polski zaktualizowano 2 listopada 2026 r.",
+      "edition": "Wersja z 6 listopada 2026 r. Tłumaczenie na język polski zaktualizowano 6 listopada 2026 r.",
       "note": "Niniejszy tekst jest tłumaczeniem na język polski oryginalnej oferty opublikowanej pod adresem {original}. W razie rozbieżności między tekstami pierwszeństwo ma oryginał – z wyjątkiem ceny i sposobu płatności: w polskiej wersji Serwisu obowiązują rozdziały 1 i 3 niniejszego tłumaczenia.",
       "seller": "przedsiębiorca indywidualny Manukyan Armen, numer identyfikacji podatkowej (INN) {inn}",
-      "lead": "Niniejszy regulamin (dalej: Regulamin) jest oficjalną propozycją (ofertą publiczną) zawarcia umowy o świadczenie płatnej usługi „Rozszerzony profil DISC” na warunkach określonych poniżej. Ofertę składa {seller} (dalej: Usługodawca). Opłacenie usługi oznacza pełną i bezwarunkową akceptację tych warunków (przyjęcie oferty).",
+      "lead": "Niniejszy regulamin (dalej: Regulamin) jest oficjalną propozycją (ofertą publiczną) zawarcia umowy o świadczenie płatnej usługi „Rozszerzony profil DISC”, a także umowy o dostarczenie Zestawu prowadzącego DISC (rozdział 10), na warunkach określonych poniżej. Ofertę składa {seller} (dalej: Usługodawca). Opłacenie usługi lub Zestawu oznacza pełną i bezwarunkową akceptację tych warunków (przyjęcie oferty).",
       "sections": [
         {
           "h": "1. Definicje",
@@ -885,14 +887,26 @@
         {
           "h": "9. Okres obowiązywania i zmiana Regulaminu",
           "p": [
-            "9.1. Umowę uznaje się za zawartą z chwilą opłacenia Usługi; obowiązuje ona do czasu wykonania przez strony ich zobowiązań.",
+            "9.1. Umowę uznaje się za zawartą z chwilą opłacenia Usługi lub Zestawu (rozdział 10); obowiązuje ona do czasu wykonania przez strony ich zobowiązań.",
             "9.2. Usługodawca może zmienić Regulamin. Nowa wersja obowiązuje od chwili jej opublikowania w Serwisie i nie dotyczy zamówień już opłaconych.",
             "9.3. Reklamacje należy kierować na adres {email}; Usługodawca odpowiada na nie w ciągu dziesięciu dni kalendarzowych. Spór, którego nie uda się rozwiązać polubownie, rozstrzyga sąd zgodnie z prawem właściwym dla umowy.",
             "9.4. Prawem właściwym dla umowy jest prawo państwa, w którym zarejestrowany jest Usługodawca."
           ]
         },
         {
-          "h": "10. Dane Usługodawcy",
+          "h": "10. Zestaw prowadzącego DISC",
+          "p": [
+            "10.1. Na warunkach Regulaminu Usługodawca dostarcza także Zestaw prowadzącego DISC (dalej: Zestaw) – komplet plików w formie elektronicznej do prowadzenia warsztatu grupowego według modelu DISC: scenariusz warsztatu, slajdy, tabelę grupy, mapę zespołu i karty. Zawartość Zestawu jest opisana na jego stronie w Serwisie. Zakup Zestawu nie wymaga wypełnienia Testu; Klientem w rozumieniu niniejszego rozdziału jest osoba, która opłaciła Zestaw.",
+            "10.2. Cena Zestawu jest podana na jego stronie obok przycisku zakupu oraz na stronie płatności; cena jest ostateczna. Klient opłaca Zestaw w całości przed jego dostarczeniem, w sposób określony w punktach 3.2–3.5.",
+            "10.3. Po dokonaniu płatności Usługodawca wysyła na adres e-mail podany przez Klienta wiadomość z linkami do pobrania plików Zestawu – zwykle zaraz po płatności, nie później niż w ciągu 24 godzin od płatności. Linki działają przez 30 dni kalendarzowych od dnia płatności; Klient zapisuje pliki u siebie. Jeżeli wiadomość nie dotarła lub linki przestały działać, na prośbę wysłaną na adres {email} linki są wysyłane ponownie. Zestaw uznaje się za dostarczony z chwilą wysłania wiadomości.",
+            "10.4. Klient może korzystać z Zestawu do prowadzenia warsztatów – własnych oraz prowadzonych dla organizacji, na której rzecz je prowadzi: wyświetlać slajdy, drukować mapę zespołu, karty i materiały dla uczestników w dowolnej liczbie egzemplarzy oraz wpisywać dane uczestników do tabeli grupy. Zabrania się sprzedawania plików Zestawu, przekazywania ich innym osobom do samodzielnego wykorzystania, udostępniania ich publicznie i podawania ich za własne. W pozostałym zakresie do Zestawu stosuje się rozdział 6.",
+            "10.5. Klient może zrezygnować z Zestawu przed wysłaniem mu wiadomości z linkami – w takim przypadku płatność jest zwracana w całości. Płatność jest zwracana w całości również wtedy, gdy wiadomość nie zostanie wysłana w terminie określonym w punkcie 10.3 albo gdy pliki Zestawu się nie otwierają, a Usługodawca nie usunie tej wady w ciągu trzech dni roboczych od zgłoszenia Klienta. Płatność za Zestaw dostarczony należycie nie podlega zwrotowi. Zwrot następuje w trybie punktów 5.5–5.7.",
+            "10.6. Aby dostarczyć Zestaw, Usługodawca przetwarza adres e-mail Klienta oraz informacje o płatności, z wyłączeniem danych karty płatniczej; stosuje się do nich rozdział 8.",
+            "10.7. Pytania dotyczące Zestawu można kierować na adres {email}."
+          ]
+        },
+        {
+          "h": "11. Dane Usługodawcy",
           "ul": [
             "Przedsiębiorca indywidualny Manukyan Armen",
             "Numer identyfikacji podatkowej (INN) {inn}",
@@ -903,11 +917,11 @@
       ]
     },
     "refund": {
-      "title": "Zasady zwrotu płatności – rozszerzony profil DISC",
-      "description": "Kiedy i jak odzyskać pieniądze za rozszerzony profil DISC w serwisie disc-test.org: przypadki zwrotu, wniosek, terminy.",
+      "title": "Zasady zwrotu płatności – rozszerzony profil DISC i zestaw prowadzącego",
+      "description": "Kiedy i jak odzyskać pieniądze za rozszerzony profil DISC i zestaw prowadzącego w serwisie disc-test.org: przypadki zwrotu, wniosek, terminy.",
       "h1": "Zasady zwrotu płatności",
       "linkText": "zasadach zwrotu płatności",
-      "lead": "W skrócie: kiedy i jak można odzyskać pieniądze za rozszerzony profil DISC. Zasady te stanowią część {offer} (rozdział 5).",
+      "lead": "W skrócie: kiedy i jak można odzyskać pieniądze za rozszerzony profil DISC i zestaw prowadzącego. Zasady te stanowią część {offer} (rozdziały 5 i 10).",
       "note": "Niniejszy tekst jest tłumaczeniem na język polski oryginalnych zasad zwrotu opublikowanych pod adresem {original}. W razie rozbieżności między tekstami pierwszeństwo ma oryginał.",
       "sections": [
         {
@@ -934,6 +948,12 @@
         {
           "h": "Jeśli wiadomość z profilem rozszerzonym nie dotarła",
           "p": ["Sprawdź folder ze spamem. Jeśli i tam jej nie ma, napisz na {email} – wyślemy profil rozszerzony ponownie."]
+        },
+        {
+          "h": "Zestaw prowadzącego",
+          "p": [
+            "Pieniądze za zestaw prowadzącego zwracamy w całości, jeśli zrezygnujesz z zakupu, zanim wyślemy ci wiadomość z linkami do plików, jeśli wiadomość nie zostanie wysłana w ciągu 24 godzin od płatności albo jeśli pliki się nie otwierają, a my nie naprawimy tego w ciągu trzech dni roboczych od twojego zgłoszenia. Jeśli wiadomość została wysłana w terminie, a pliki się otwierają, płatność nie podlega zwrotowi. Wniosek o zwrot składasz tak samo jak w przypadku profilu rozszerzonego: napisz na {email} i podaj adres e-mail, datę i kwotę płatności oraz powód zwrotu."
+          ]
         },
         {
           "h": "Twoje prawa",
@@ -1491,6 +1511,48 @@
         "sent": "Zgłoszenie wysłane. Odpowiemy na {email} w ciągu jednego dnia roboczego.",
         "needInterest": "Zaznacz, kto płaci za zestaw.",
         "privacy": "Imię, e-mail i treść zgłoszenia zostaną wysłane e-mailem na adres {email} i posłużą wyłącznie do udzielenia ci odpowiedzi."
+      },
+      "buy": {
+        "button": "Kup zestaw",
+        "price": [
+          "Zestaw kosztuje {price} USD. Zapłać kartą – od razu po płatności na twój adres e-mail przyjdzie wiadomość z linkami do wszystkich plików zestawu.",
+          "Linki działają przez 30 dni: pobierz pliki i zachowaj je u siebie. Mapę, karty i arkusz testu możesz drukować dla uczestników swoich warsztatów tyle razy, ile potrzebujesz."
+        ],
+        "emailLabel": "E-mail, na który wyślemy pliki",
+        "submit": "Kup",
+        "wait": "Otwieramy stronę płatności…",
+        "note": "Klikając „Kup”, akceptujesz warunki {offer}. Dane karty podajesz na zabezpieczonej stronie płatności.",
+        "badEmail": "Sprawdź adres e-mail: na niego wyślemy pliki zestawu i dowód zakupu.",
+        "error": "Nie udało się otworzyć strony płatności. Spróbuj ponownie za kilka minut albo napisz do nas na {email}.",
+        "questions": "Pytania o zestaw? Napisz do nas na {email}.",
+        "status": {
+          "thanks": "Dziękujemy za zakup! Wiadomość z linkami do plików przyjdzie na adres e-mail podany przy płatności. Jeśli nie ma jej w skrzynce odbiorczej, sprawdź folder ze spamem.",
+          "wait": "Czekamy na potwierdzenie płatności od Prodamus…",
+          "paid": "Płatność otrzymana. Wysyłamy wiadomość z linkami do plików…",
+          "sent": "Płatność otrzymana. Wiadomość z linkami do plików została wysłana na adres {email}. Jeśli nie ma jej w skrzynce odbiorczej, sprawdź folder ze spamem.",
+          "failed": "Płatność nie powiodła się. Spróbuj ponownie albo zapłać inną kartą.",
+          "expired": "Linki do plików wygasły. Napisz do nas na {email} – wyślemy nowe."
+        }
+      },
+      "mail": {
+        "subject": "Zestaw prowadzącego DISC: linki do plików",
+        "hello": "Dzień dobry,",
+        "intro": "dziękujemy za zakup Zestawu prowadzącego DISC! Pliki można pobrać z linków poniżej – warto od razu zapisać je u siebie: linki działają do {until}.",
+        "zip": "Pobierz wszystkie pliki w jednym archiwum",
+        "filesTitle": "Albo pojedynczo:",
+        "files": [
+          "przygotowanie, plan na 60 i 90 minut oraz co mówić i robić na każdym etapie",
+          "16 slajdów do wyświetlenia",
+          "mapa zespołu do wydruku w formacie A3 lub A4 i karty „Jak ze mną pracować”",
+          "arkusz Excel na 40 uczestników: wystarczy wpisać liczby z testu papierowego lub procenty z wyniku online, a arkusz sam obliczy profil każdej osoby i podsumowanie grupy"
+        ],
+        "testTitle": "Dla uczestników test jest bezpłatny:",
+        "online": "online",
+        "paper": "na papierze (formularz do wydruku)",
+        "group": "Gotowe zaproszenie, link i kod QR dla grupy",
+        "order": "Numer zamówienia: {order}.",
+        "questions": "W razie pytań wystarczy odpowiedzieć na tę wiadomość.",
+        "bye": "Udanego warsztatu!"
       }
     },
     "paper": {

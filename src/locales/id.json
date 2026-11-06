@@ -634,12 +634,13 @@
         }
       ],
       "purchase": {
-        "h": "Pembelian profil lengkap",
+        "h": "Pembelian profil lengkap dan Paket Fasilitator",
         "p": [
           "Jika Anda membeli profil DISC lengkap, kami memproses alamat email Anda, nama Anda (jika Anda mengisinya), hasil tes yang menjadi dasar penyusunan laporan, serta data pesanan: tanggal, jumlah, nomor, dan status pembayaran. Data ini diperlukan untuk menyusun laporan dan mengirimkannya kepada Anda, menjawab pertanyaan Anda, dan memproses pengembalian dana. Dasar pemrosesannya adalah perjanjian yang Anda adakan dengan membayar layanan berdasarkan {offer}.",
           "Pembayaran diproses oleh Prodamus, pemroses pembayaran kami. Anda memasukkan data kartu di halaman pembayaran aman Prodamus: kami tidak menerima dan tidak menyimpannya. Kami meneruskan kepada Prodamus jumlah pembayaran, nomor pesanan, dan alamat email Anda; ke alamat itulah bukti pembayaran dikirim.",
           "Laporan disusun di server yang beroperasi atas perintah kami dan dikirim kepada Anda lewat email dari alamat {email}. Salinan laporan dan data pesanan disimpan oleh pemilik situs: keduanya diperlukan untuk mengirim ulang laporan, menjawab pertanyaan, memproses pengembalian dana, dan menyelenggarakan pencatatan. Untuk meminta agar laporan dan data pesanan dihapus, tulislah ke {email}. Data pembayaran yang menurut hukum wajib disimpan akan dihapus setelah jangka waktu yang ditetapkan berakhir.",
-          "Jika Anda memulai pembelian tetapi tidak membayar, kami menyimpan alamat email, hasil tes, dan data pesanan Anda selama 30 hari, lalu menghapusnya. Selama jangka waktu itu, satu email pengingat berisi tautan pembayaran dapat dikirim ke alamat yang Anda cantumkan. Dasarnya adalah langkah yang Anda ambil untuk mengadakan perjanjian."
+          "Jika Anda memulai pembelian tetapi tidak membayar, kami menyimpan alamat email, hasil tes, dan data pesanan Anda selama 30 hari, lalu menghapusnya. Selama jangka waktu itu, satu email pengingat berisi tautan pembayaran dapat dikirim ke alamat yang Anda cantumkan. Dasarnya adalah langkah yang Anda ambil untuk mengadakan perjanjian.",
+          "Jika Anda membeli Paket Fasilitator, kami memproses alamat email Anda dan data pesanan: tanggal, jumlah, nomor, dan status pembayaran. Data ini diperlukan untuk mengirimkan email berisi tautan ke file paket, menjawab pertanyaan Anda, dan memproses pengembalian dana; dasarnya adalah perjanjian berdasarkan {offer}. Data pesanan paket disimpan dengan cara yang sama seperti data pesanan profil lengkap; email pengingat tentang pembayaran paket yang belum selesai tidak dikirim."
         ]
       }
     },
@@ -710,12 +711,13 @@
         }
       ],
       "purchase": {
-        "h": "Pembelian profil lengkap",
+        "h": "Pembelian profil lengkap dan Paket Fasilitator",
         "p": [
           "Jika Anda membeli profil DISC lengkap, kami memproses alamat email Anda, nama Anda (jika Anda mengisinya), hasil tes yang menjadi dasar penyusunan laporan, serta data pesanan: tanggal, jumlah, nomor, dan status pembayaran. Data ini diperlukan untuk menyusun laporan dan mengirimkannya kepada Anda, menjawab pertanyaan Anda, dan memproses pengembalian dana. Dasar pemrosesannya adalah perjanjian yang Anda adakan dengan membayar layanan berdasarkan {offer}; persetujuan terpisah tidak diperlukan untuk itu.",
           "Pembayaran diproses oleh Prodamus, pemroses pembayaran kami. Anda memasukkan data kartu di halaman pembayaran aman Prodamus: kami tidak menerima dan tidak menyimpannya. Kami meneruskan kepada Prodamus jumlah pembayaran, nomor pesanan, dan alamat email Anda; ke alamat itulah bukti pembayaran dikirim.",
           "Laporan disusun di server situs dan dikirim kepada Anda lewat email dari alamat {email}. Laporan yang sudah jadi tidak disimpan di server: bila diperlukan, laporan disusun ulang. Data pesanan disimpan selama lima tahun setelah pembayaran: data ini diperlukan untuk mengirim ulang laporan, menjawab pertanyaan, memproses pengembalian dana, dan menyelenggarakan pencatatan. Data pembayaran yang menurut hukum wajib disimpan lebih lama akan dihapus setelah jangka waktu yang ditetapkan berakhir.",
-          "Jika Anda memulai pembelian tetapi tidak membayar, kami menyimpan alamat email, hasil tes, dan data pesanan Anda selama 30 hari, lalu menghapusnya. Selama jangka waktu itu, satu email pengingat berisi tautan pembayaran dapat dikirim ke alamat yang Anda cantumkan. Dasarnya adalah langkah yang Anda ambil untuk mengadakan perjanjian."
+          "Jika Anda memulai pembelian tetapi tidak membayar, kami menyimpan alamat email, hasil tes, dan data pesanan Anda selama 30 hari, lalu menghapusnya. Selama jangka waktu itu, satu email pengingat berisi tautan pembayaran dapat dikirim ke alamat yang Anda cantumkan. Dasarnya adalah langkah yang Anda ambil untuk mengadakan perjanjian.",
+          "Jika Anda membeli Paket Fasilitator, kami memproses alamat email Anda dan data pesanan: tanggal, jumlah, nomor, dan status pembayaran. Data ini diperlukan untuk mengirimkan email berisi tautan ke file paket, menjawab pertanyaan Anda, dan memproses pengembalian dana; dasarnya adalah perjanjian berdasarkan {offer}. Data pesanan paket disimpan dengan cara yang sama seperti data pesanan profil lengkap; email pengingat tentang pembayaran paket yang belum selesai tidak dikirim."
         ]
       }
     },
@@ -794,14 +796,14 @@
       ]
     },
     "offer": {
-      "title": "Syarat dan Ketentuan Layanan Berbayar — Profil DISC Lengkap",
-      "description": "Syarat dan ketentuan layanan berbayar “Profil DISC lengkap” di disc-test.org: harga, pembayaran dan pengiriman, pengembalian dana, hak atas materi.",
+      "title": "Syarat dan Ketentuan Layanan Berbayar — Profil DISC Lengkap dan Paket Fasilitator",
+      "description": "Syarat dan ketentuan layanan berbayar “Profil DISC lengkap” dan Paket Fasilitator DISC di disc-test.org: harga, pembayaran dan pengiriman, pengembalian dana, hak atas materi.",
       "h1": "Syarat dan Ketentuan Layanan Berbayar",
       "linkText": "syarat dan ketentuan layanan berbayar",
-      "edition": "Versi tanggal 2 November 2026. Terjemahan bahasa Indonesia diperbarui pada 2 November 2026.",
+      "edition": "Versi tanggal 6 November 2026. Terjemahan bahasa Indonesia diperbarui pada 6 November 2026.",
       "note": "Teks ini adalah terjemahan bahasa Indonesia dari syarat dan ketentuan asli yang diterbitkan di {original}. Jika kedua teks berbeda, yang berlaku adalah teks asli, kecuali mengenai harga dan cara pembayaran: untuk Situs versi bahasa Indonesia, yang berlaku adalah bagian 1 dan 3 terjemahan ini.",
       "seller": "pengusaha perorangan Manukyan Armen, Nomor identitas wajib pajak (INN) {inn}",
-      "lead": "Dokumen ini adalah penawaran resmi yang terbuka bagi siapa pun (penawaran terbuka) untuk mengadakan perjanjian penyediaan layanan berbayar “Profil DISC lengkap” dengan syarat dan ketentuan di bawah ini. Penawaran ini diajukan oleh {seller} (selanjutnya disebut “Penyedia”). Membayar layanan berarti menerima syarat dan ketentuan ini sepenuhnya dan tanpa syarat (penerimaan penawaran).",
+      "lead": "Dokumen ini adalah penawaran resmi yang terbuka bagi siapa pun (penawaran terbuka) untuk mengadakan perjanjian penyediaan layanan berbayar “Profil DISC lengkap”, serta perjanjian penyerahan Paket Fasilitator DISC (bagian 10), dengan syarat dan ketentuan di bawah ini. Penawaran ini diajukan oleh {seller} (selanjutnya disebut “Penyedia”). Membayar layanan atau Paket berarti menerima syarat dan ketentuan ini sepenuhnya dan tanpa syarat (penerimaan penawaran).",
       "sections": [
         {
           "h": "1. Definisi",
@@ -887,24 +889,36 @@
         {
           "h": "9. Masa berlaku serta perubahan syarat dan ketentuan",
           "p": [
-            "9.1. Perjanjian dianggap terjadi pada saat Layanan dibayar dan berlaku sampai para pihak memenuhi kewajibannya.",
+            "9.1. Perjanjian dianggap terjadi pada saat Layanan atau Paket (bagian 10) dibayar dan berlaku sampai para pihak memenuhi kewajibannya.",
             "9.2. Penyedia berhak mengubah syarat dan ketentuan ini. Versi baru berlaku sejak diterbitkan di Situs dan tidak berlaku bagi pesanan yang sudah dibayar.",
             "9.3. Pengaduan dikirim ke {email}; Penyedia menjawabnya dalam sepuluh hari kalender. Jika tidak tercapai penyelesaian, sengketa diperiksa oleh pengadilan sesuai dengan hukum yang mengatur perjanjian ini.",
             "9.4. Perjanjian ini tunduk pada hukum negara tempat Penyedia terdaftar."
           ]
         },
         {
-          "h": "10. Identitas Penyedia",
+          "h": "10. Paket Fasilitator DISC",
+          "p": [
+            "10.1. Berdasarkan syarat dan ketentuan ini, Penyedia juga menyerahkan Paket Fasilitator DISC (selanjutnya disebut “Paket”) — seperangkat file elektronik untuk mengadakan sesi kelompok berdasarkan model DISC: panduan sesi, slide, tabel kelompok, peta tim, dan kartu. Isi Paket diuraikan di halamannya di Situs. Untuk membeli Paket, Tes tidak perlu dikerjakan; dalam bagian ini, Pelanggan adalah orang yang membayar Paket.",
+            "10.2. Harga Paket dicantumkan di halamannya, di samping tombol pembelian, dan di halaman pembayaran; harga ini final. Paket dibayar lunas sebelum diserahkan, dengan cara yang diatur dalam butir 3.2–3.5.",
+            "10.3. Setelah pembayaran, Penyedia mengirim email berisi tautan untuk mengunduh file Paket ke alamat email yang dicantumkan Pelanggan — biasanya segera setelah pembayaran, paling lambat 24 jam sejak pembayaran. Tautan berlaku selama 30 hari kalender sejak tanggal pembayaran; Pelanggan menyimpan file di perangkatnya sendiri. Jika email tidak sampai atau tautan sudah tidak berlaku, tautan dikirim ulang atas permintaan yang dikirim ke {email}. Paket dianggap telah diserahkan pada saat email dikirim.",
+            "10.4. Pelanggan berhak menggunakan Paket untuk mengadakan sesi — sesinya sendiri dan sesi di organisasi tempat ia mengadakannya: menampilkan slide, mencetak peta tim, kartu, dan materi untuk peserta dalam jumlah berapa pun, serta memasukkan data peserta ke dalam tabel kelompok. Dilarang menjual file Paket, menyerahkannya kepada orang lain untuk digunakan sendiri oleh mereka, memuatnya di tempat yang dapat diakses publik, dan mengakuinya sebagai karya sendiri. Selebihnya, bagian 6 berlaku untuk Paket.",
+            "10.5. Pelanggan berhak membatalkan Paket sebelum email berisi tautan dikirim kepadanya; dalam hal itu, pembayaran dikembalikan sepenuhnya. Pembayaran juga dikembalikan sepenuhnya jika email tidak dikirim dalam jangka waktu yang disebutkan dalam butir 10.3, atau jika file Paket tidak dapat dibuka dan Penyedia tidak memperbaikinya dalam tiga hari kerja sejak Pelanggan melaporkannya. Pembayaran untuk Paket yang telah diserahkan sebagaimana mestinya tidak dikembalikan. Pengembalian dana diproses sesuai dengan butir 5.5–5.7.",
+            "10.6. Untuk menyerahkan Paket, Penyedia memproses alamat email Pelanggan dan data pembayaran tanpa data kartu bank; bagian 8 berlaku untuk data tersebut.",
+            "10.7. Pertanyaan tentang Paket dapat dikirim ke {email}."
+          ]
+        },
+        {
+          "h": "11. Identitas Penyedia",
           "ul": ["Pengusaha perorangan Manukyan Armen", "Nomor identitas wajib pajak (INN) {inn}", "Email: {email}", "Situs: {site}"]
         }
       ]
     },
     "refund": {
-      "title": "Kebijakan Pengembalian Dana — Profil DISC Lengkap",
-      "description": "Kapan dan bagaimana dana untuk profil DISC lengkap di disc-test.org dikembalikan: kasus pengembalian, cara mengajukan permohonan, jangka waktu.",
+      "title": "Kebijakan Pengembalian Dana — Profil DISC Lengkap dan Paket Fasilitator",
+      "description": "Kapan dan bagaimana dana untuk profil DISC lengkap dan Paket Fasilitator di disc-test.org dikembalikan: kasus pengembalian, cara mengajukan permohonan, jangka waktu.",
       "h1": "Kebijakan Pengembalian Dana",
       "linkText": "kebijakan pengembalian dana",
-      "lead": "Ringkasan tentang kapan dan bagaimana uang yang Anda bayarkan untuk profil DISC lengkap dapat dikembalikan. Kebijakan ini merupakan bagian dari {offer} (bagian 5).",
+      "lead": "Ringkasan tentang kapan dan bagaimana uang yang Anda bayarkan untuk profil DISC lengkap dan Paket Fasilitator dapat dikembalikan. Kebijakan ini merupakan bagian dari {offer} (bagian 5 dan 10).",
       "note": "Teks ini adalah terjemahan bahasa Indonesia dari kebijakan pengembalian dana asli yang diterbitkan di {original}. Jika kedua teks berbeda, yang berlaku adalah teks asli.",
       "sections": [
         {
@@ -931,6 +945,12 @@
         {
           "h": "Jika email berisi profil lengkap tidak sampai",
           "p": ["Periksa folder spam. Jika di sana pun tidak ada, tulislah ke {email} — kami akan mengirim ulang profil lengkap."]
+        },
+        {
+          "h": "Paket Fasilitator",
+          "p": [
+            "Uang untuk Paket Fasilitator dikembalikan sepenuhnya jika Anda membatalkan pembelian sebelum email berisi tautan ke file dikirim kepada Anda, jika email tidak dikirim dalam 24 jam setelah pembayaran, atau jika file tidak dapat dibuka dan kami tidak memperbaikinya dalam tiga hari kerja sejak Anda melaporkannya. Jika email dikirim tepat waktu dan file dapat dibuka, pembayaran tidak dikembalikan. Permohonan pengembalian dana diajukan dengan cara yang sama seperti untuk profil lengkap: tulislah ke {email} dan cantumkan alamat email yang Anda gunakan saat pembayaran, tanggal dan jumlah pembayaran, serta alasannya."
+          ]
         },
         {
           "h": "Hak Anda",
@@ -1490,6 +1510,48 @@
         "sent": "Permintaan terkirim. Kami akan membalas ke {email} dalam satu hari kerja.",
         "needInterest": "Pilih format sesi.",
         "privacy": "Nama, email, dan isi permintaan akan dikirim lewat email ke {email} dan hanya digunakan untuk membalas Anda."
+      },
+      "buy": {
+        "button": "Beli paket",
+        "price": [
+          "Harga paket US${price}. Bayar dengan kartu — segera setelah pembayaran, email berisi tautan ke semua file paket akan dikirim ke alamat Anda.",
+          "Tautan berlaku selama 30 hari: unduh file dan simpan di perangkat Anda. Cetak peta, kartu, dan lembar tes untuk peserta sesi Anda sendiri sebanyak yang Anda perlukan."
+        ],
+        "emailLabel": "Email untuk menerima file",
+        "submit": "Beli",
+        "wait": "Membuka halaman pembayaran …",
+        "note": "Dengan menekan “Beli”, Anda menerima {offer} kami. Data kartu Anda masukkan di halaman pembayaran yang aman.",
+        "badEmail": "Periksa alamat email Anda: file paket dan bukti pembayaran dikirim ke alamat itu.",
+        "error": "Halaman pembayaran belum bisa dibuka. Coba lagi beberapa menit lagi atau tulis kepada kami di {email}.",
+        "questions": "Ada pertanyaan tentang paket? Tulis kepada kami: {email}.",
+        "status": {
+          "thanks": "Terima kasih atas pembelian Anda! Email berisi tautan ke file akan dikirim ke alamat yang Anda cantumkan saat pembayaran. Jika tidak ada di Kotak Masuk, periksa folder spam.",
+          "wait": "Menunggu konfirmasi pembayaran dari Prodamus …",
+          "paid": "Pembayaran sudah diterima. Email berisi tautan ke file sedang dikirim …",
+          "sent": "Pembayaran sudah diterima. Email berisi tautan ke file telah dikirim ke {email}. Jika tidak ada di Kotak Masuk, periksa folder spam.",
+          "failed": "Pembayaran tidak berhasil. Coba lagi atau bayar dengan kartu lain.",
+          "expired": "Masa berlaku tautan ke file sudah habis. Tulis kepada kami di {email} — kami akan mengirim tautan baru."
+        }
+      },
+      "mail": {
+        "subject": "Paket Fasilitator DISC: tautan ke file",
+        "hello": "Halo,",
+        "intro": "Terima kasih telah membeli Paket Fasilitator DISC! Unduh file melalui tautan di bawah ini dan simpan di perangkat Anda: tautan berlaku sampai {until}.",
+        "zip": "Unduh semua file dalam satu arsip",
+        "filesTitle": "Atau satu per satu:",
+        "files": [
+          "persiapan, rencana 60 dan 90 menit, serta apa yang perlu dikatakan dan dilakukan di setiap langkah",
+          "16 slide untuk layar",
+          "peta tim untuk dicetak di kertas A3 atau A4 dan kartu “Cara bekerja dengan saya”",
+          "tabel Excel untuk 40 peserta: masukkan angka dari tes kertas atau persentase dari hasil online, dan tabel akan menghitung profil setiap orang serta ringkasan kelompok"
+        ],
+        "testTitle": "Tes ini gratis untuk peserta:",
+        "online": "online",
+        "paper": "di kertas (formulir untuk dicetak)",
+        "group": "Undangan siap pakai, tautan, dan kode QR untuk kelompok Anda",
+        "order": "Nomor pesanan: {order}.",
+        "questions": "Jika ada pertanyaan, cukup balas email ini.",
+        "bye": "Selamat menjalankan sesi!"
       }
     },
     "paper": {

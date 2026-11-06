@@ -632,12 +632,13 @@
         }
       ],
       "purchase": {
-        "h": "Compra do perfil ampliado",
+        "h": "Compra do perfil ampliado e do kit do facilitador",
         "p": [
           "Se você comprar o perfil DISC ampliado, tratamos seu e-mail, seu nome (se informado), o resultado do teste que serve de base ao relatório e os dados do pedido: data, valor, número e status do pagamento. Precisamos desses dados para preparar o relatório e enviá-lo a você, responder às suas mensagens e processar reembolsos. A base legal do tratamento é o contrato que você celebra ao pagar pelo serviço conforme os {offer}.",
           "Os pagamentos são processados pela Prodamus, nossa prestadora de serviços de pagamento. Você informa os dados do cartão na página segura de pagamento dela: nós não os recebemos nem armazenamos. A Prodamus recebe o valor, o número do pedido e seu e-mail, para o qual o comprovante é enviado.",
           "O relatório é gerado em um servidor que opera por nossa conta e é enviado a você por e-mail a partir do endereço {email}. Uma cópia do relatório e os dados do pedido ficam com o responsável pelo site: são necessários para reenviar o relatório, responder a mensagens, fazer reembolsos e manter os registros. Para solicitar a exclusão do relatório e dos dados do pedido, escreva para {email}. Os dados de pagamento que a lei obriga a guardar são excluídos ao fim do prazo exigido.",
-          "Se você iniciar uma compra, mas não pagar, guardamos seu e-mail, o resultado do teste e os dados do pedido por 30 dias e depois os excluímos. Nesse período, o endereço informado pode receber um único e-mail de lembrete com o link de pagamento. A base legal são as providências que você tomou para celebrar o contrato."
+          "Se você iniciar uma compra, mas não pagar, guardamos seu e-mail, o resultado do teste e os dados do pedido por 30 dias e depois os excluímos. Nesse período, o endereço informado pode receber um único e-mail de lembrete com o link de pagamento. A base legal são as providências que você tomou para celebrar o contrato.",
+          "Se você comprar o kit do facilitador, tratamos seu e-mail e os dados do pedido: data, valor, número e status do pagamento. Precisamos desses dados para enviar a você o e-mail com os links para os arquivos do kit, responder às suas mensagens e processar reembolsos; a base legal é o contrato conforme os {offer}. Os dados do pedido do kit são guardados da mesma forma que os do pedido do perfil ampliado; não enviamos lembretes sobre um pagamento do kit não concluído."
         ]
       }
     },
@@ -708,12 +709,13 @@
         }
       ],
       "purchase": {
-        "h": "Compra do perfil ampliado",
+        "h": "Compra do perfil ampliado e do kit do facilitador",
         "p": [
           "Se você comprar o perfil DISC ampliado, tratamos seu e-mail, seu nome (se informado), o resultado do teste que serve de base ao relatório e os dados do pedido: data, valor, número e status do pagamento. Precisamos desses dados para preparar o relatório e enviá-lo a você, responder às suas mensagens e processar reembolsos. A base legal do tratamento é o contrato que você celebra ao pagar pelo serviço conforme os {offer}; para isso, não é necessário consentimento específico.",
           "Os pagamentos são processados pela Prodamus, nossa prestadora de serviços de pagamento. Você informa os dados do cartão na página segura de pagamento dela: nós não os recebemos nem armazenamos. A Prodamus recebe o valor, o número do pedido e seu e-mail, para o qual o comprovante é enviado.",
           "O relatório é gerado no servidor do site e enviado a você por e-mail a partir do endereço {email}. O relatório pronto não fica armazenado no servidor: se necessário, é gerado novamente. Os dados do pedido são guardados por cinco anos após o pagamento: são necessários para reenviar o relatório, responder a mensagens, fazer reembolsos e manter os registros. Os dados de pagamento que a lei obriga a guardar por mais tempo são excluídos ao fim do prazo exigido.",
-          "Se você iniciar uma compra, mas não pagar, guardamos seu e-mail, o resultado do teste e os dados do pedido por 30 dias e depois os excluímos. Nesse período, o endereço informado pode receber um único e-mail de lembrete com o link de pagamento. A base legal são as providências que você tomou para celebrar o contrato."
+          "Se você iniciar uma compra, mas não pagar, guardamos seu e-mail, o resultado do teste e os dados do pedido por 30 dias e depois os excluímos. Nesse período, o endereço informado pode receber um único e-mail de lembrete com o link de pagamento. A base legal são as providências que você tomou para celebrar o contrato.",
+          "Se você comprar o kit do facilitador, tratamos seu e-mail e os dados do pedido: data, valor, número e status do pagamento. Precisamos desses dados para enviar a você o e-mail com os links para os arquivos do kit, responder às suas mensagens e processar reembolsos; a base legal é o contrato conforme os {offer}. Os dados do pedido do kit são guardados da mesma forma que os do pedido do perfil ampliado; não enviamos lembretes sobre um pagamento do kit não concluído."
         ]
       }
     },
@@ -792,14 +794,14 @@
       ]
     },
     "offer": {
-      "title": "Termos de venda (oferta ao público) — perfil DISC ampliado",
-      "description": "Termos de venda (oferta ao público) do serviço “Perfil DISC ampliado” no disc-test.org: preço, pagamento e entrega, reembolso, direitos sobre os materiais.",
+      "title": "Termos de venda (oferta ao público) — perfil DISC ampliado e kit do facilitador",
+      "description": "Termos de venda (oferta ao público) do serviço “Perfil DISC ampliado” e do Kit do facilitador DISC no disc-test.org: preço, pagamento e entrega, reembolso, direitos sobre os materiais.",
       "h1": "Termos de venda (oferta ao público)",
       "linkText": "termos de venda",
-      "edition": "Versão de 2 de novembro de 2026. Tradução para o português atualizada em 2 de novembro de 2026.",
+      "edition": "Versão de 6 de novembro de 2026. Tradução para o português atualizada em 6 de novembro de 2026.",
       "note": "Este texto é a tradução para o português da oferta original publicada em {original}. Em caso de divergência entre os dois textos, prevalece o original, exceto quanto ao preço e à forma de pagamento: na versão em português do Site, eles estão definidos nas seções 1 e 3.",
       "seller": "empresário individual Manukyan Armen, N.º de identificação fiscal (INN) {inn}",
-      "lead": "Este documento é uma proposta formal (oferta ao público) para celebrar um contrato de prestação do serviço pago “Perfil DISC ampliado” nas condições descritas abaixo. A oferta é feita por {seller} (doravante, o Prestador). O pagamento do serviço implica concordância integral e incondicional com estas condições (aceitação da oferta).",
+      "lead": "Este documento é uma proposta formal (oferta ao público) para celebrar um contrato de prestação do serviço pago “Perfil DISC ampliado” e também um contrato de fornecimento do Kit do facilitador DISC (seção 10), nas condições descritas abaixo. A oferta é feita por {seller} (doravante, o Prestador). O pagamento do serviço ou do Kit implica concordância integral e incondicional com estas condições (aceitação da oferta).",
       "sections": [
         {
           "h": "1. Definições",
@@ -885,24 +887,36 @@
         {
           "h": "9. Vigência e alteração da oferta",
           "p": [
-            "9.1. O contrato é considerado celebrado no momento do pagamento do Serviço e vigora até que as partes cumpram suas obrigações.",
+            "9.1. O contrato é considerado celebrado no momento do pagamento do Serviço ou do Kit (seção 10) e vigora até que as partes cumpram suas obrigações.",
             "9.2. O Prestador pode alterar a oferta. A nova versão vale a partir da publicação no Site e não se aplica aos pedidos já pagos.",
             "9.3. As reclamações devem ser enviadas para {email}; o Prestador responde a elas em até dez dias corridos. Se a controvérsia não for resolvida, será decidida em juízo, de acordo com a lei que rege o contrato.",
             "9.4. O contrato é regido pela lei do país em que o Prestador está registrado."
           ]
         },
         {
-          "h": "10. Dados do Prestador",
+          "h": "10. Kit do facilitador DISC",
+          "p": [
+            "10.1. Nas condições desta oferta, o Prestador também fornece o Kit do facilitador DISC (doravante, o Kit): um conjunto de arquivos em formato eletrônico para conduzir um encontro em grupo com base no modelo DISC, composto por roteiro do encontro, slides, planilha do grupo, mapa da equipe e cartões. O conteúdo do Kit está descrito na página dele no Site. Para comprar o Kit, não é necessário fazer o Teste; para os fins desta seção, considera-se Cliente a pessoa que pagou pelo Kit.",
+            "10.2. O preço do Kit é informado na página dele, ao lado do botão de compra, e na página de pagamento; o preço é final. O Kit é pago integralmente antes do fornecimento, na forma prevista nas cláusulas 3.2 a 3.5.",
+            "10.3. Após o pagamento, o Prestador envia para o endereço de e-mail informado pelo Cliente uma mensagem com os links para baixar os arquivos do Kit — em geral, logo após o pagamento e em até 24 horas a contar do pagamento. Os links valem por 30 dias corridos a contar da data do pagamento; o Cliente guarda os arquivos consigo. Se a mensagem não chegar ou os links deixarem de funcionar, eles são enviados novamente mediante solicitação para {email}. O Kit é considerado fornecido no momento do envio da mensagem.",
+            "10.4. O Cliente pode usar o Kit para conduzir encontros — próprios ou na organização para a qual os conduz: projetar os slides, imprimir o mapa da equipe, os cartões e os materiais para os participantes em qualquer quantidade e inserir os dados dos participantes na planilha do grupo. É proibido vender os arquivos do Kit, repassá-los a terceiros para que os usem por conta própria, disponibilizá-los publicamente e apresentá-los como de sua autoria. No mais, aplica-se ao Kit a seção 6.",
+            "10.5. O Cliente pode desistir do Kit antes do envio da mensagem com os links; nesse caso, o valor pago é devolvido integralmente. O valor pago também é devolvido integralmente se a mensagem não for enviada no prazo indicado na cláusula 10.3 ou se os arquivos do Kit não abrirem e o Prestador não tiver corrigido o problema em até três dias úteis a contar do contato do Cliente. O valor pago por um Kit devidamente fornecido não é devolvido. O reembolso é feito na forma das cláusulas 5.5 a 5.7.",
+            "10.6. Para fornecer o Kit, o Prestador trata o endereço de e-mail do Cliente e os dados do pagamento, exceto os dados de cartão bancário; a esses dados aplica-se a seção 8.",
+            "10.7. Dúvidas sobre o Kit podem ser enviadas para {email}."
+          ]
+        },
+        {
+          "h": "11. Dados do Prestador",
           "ul": ["Empresário individual Manukyan Armen", "N.º de identificação fiscal (INN) {inn}", "E-mail: {email}", "Site: {site}"]
         }
       ]
     },
     "refund": {
-      "title": "Política de reembolso — perfil DISC ampliado",
-      "description": "Quando e como receber de volta o valor pago pelo perfil DISC ampliado no disc-test.org: casos de reembolso, como solicitar, prazos.",
+      "title": "Política de reembolso — perfil DISC ampliado e kit do facilitador",
+      "description": "Quando e como receber de volta o valor pago pelo perfil DISC ampliado e pelo kit do facilitador no disc-test.org: casos de reembolso, como solicitar, prazos.",
       "h1": "Política de reembolso",
       "linkText": "política de reembolso",
-      "lead": "Um resumo de quando e como você pode receber de volta o valor pago pelo perfil DISC ampliado. Esta política faz parte dos {offer} (seção 5).",
+      "lead": "Um resumo de quando e como você pode receber de volta o valor pago pelo perfil DISC ampliado e pelo kit do facilitador. Esta política faz parte dos {offer} (seções 5 e 10).",
       "note": "Este texto é a tradução para o português da política de reembolso original publicada em {original}. Em caso de divergência entre os dois textos, prevalece o original.",
       "sections": [
         {
@@ -929,6 +943,12 @@
         {
           "h": "Se o e-mail com o perfil ampliado não chegou",
           "p": ["Verifique a pasta de spam. Se ele também não estiver lá, escreva para {email} — enviaremos o perfil ampliado novamente."]
+        },
+        {
+          "h": "Kit do facilitador",
+          "p": [
+            "O valor pago pelo kit do facilitador é devolvido integralmente se você desistir da compra antes do envio do e-mail com os links para os arquivos, se o e-mail não for enviado em até 24 horas após o pagamento ou se os arquivos não abrirem e nós não tivermos corrigido o problema em até três dias úteis depois do seu contato. Se o e-mail foi enviado no prazo e os arquivos abrem normalmente, o valor pago não é devolvido. O reembolso é solicitado da mesma forma que o do perfil ampliado: escreva para {email} informando o e-mail usado no pagamento, a data e o valor do pagamento e o motivo."
+          ]
         },
         {
           "h": "Seus direitos",
@@ -1509,6 +1529,48 @@
         "sent": "Pedido enviado. Responderemos para {email} em até um dia útil.",
         "needInterest": "Indique como prefere pagar.",
         "privacy": "Nome, e-mail e texto do pedido serão enviados por e-mail para {email} e usados apenas para responder a você."
+      },
+      "buy": {
+        "button": "Comprar o kit",
+        "price": [
+          "O kit custa US$ {price}. Pague com cartão — logo após o pagamento, você recebe por e-mail os links para todos os arquivos do kit.",
+          "Os links valem por 30 dias: baixe os arquivos e guarde com você. Imprima o mapa, os cartões e o questionário do teste para os participantes dos seus encontros quantas vezes quiser."
+        ],
+        "emailLabel": "E-mail para receber os arquivos",
+        "submit": "Comprar",
+        "wait": "Redirecionando para o pagamento…",
+        "note": "Ao clicar em “Comprar”, você aceita os {offer}. Você informa os dados do cartão em uma página de pagamento segura.",
+        "badEmail": "Confira o endereço: os arquivos do kit e o comprovante serão enviados para ele.",
+        "error": "Não foi possível abrir a página de pagamento. Tente de novo em instantes ou escreva para {email}.",
+        "questions": "Dúvidas sobre o kit? Escreva para {email}.",
+        "status": {
+          "thanks": "Obrigado pela compra! O e-mail com os links para os arquivos vai chegar no endereço que você informou no pagamento. Se ele não estiver na caixa de entrada, confira a pasta de spam.",
+          "wait": "Aguardando a confirmação do pagamento…",
+          "paid": "Pagamento recebido. Enviando o e-mail com os links para os arquivos…",
+          "sent": "Pagamento recebido. O e-mail com os links para os arquivos foi enviado para {email}. Se ele não estiver na caixa de entrada, confira a pasta de spam.",
+          "failed": "O pagamento não foi concluído. Tente de novo ou use outro cartão.",
+          "expired": "Os links para os arquivos expiraram. Escreva para {email} e enviaremos novos links."
+        }
+      },
+      "mail": {
+        "subject": "Kit do facilitador DISC: links para os arquivos",
+        "hello": "Olá!",
+        "intro": "Obrigado por comprar o Kit do facilitador DISC! Baixe os arquivos pelos links abaixo e guarde com você: os links valem até {until}.",
+        "zip": "Baixar todos os arquivos em um único ZIP",
+        "filesTitle": "Ou um por um:",
+        "files": [
+          "preparação, roteiro de 60 e de 90 minutos e o que dizer e fazer em cada etapa",
+          "16 slides para a tela",
+          "o mapa da equipe para imprimir em A3 ou A4 e os cartões “Como trabalhar comigo”",
+          "planilha de Excel para 40 participantes: digite os números do teste em papel ou as porcentagens do resultado online, e a planilha calcula o perfil de cada pessoa e o resumo do grupo"
+        ],
+        "testTitle": "Para os participantes, o teste é gratuito:",
+        "online": "online",
+        "paper": "em papel (formulário para imprimir)",
+        "group": "Convite pronto, link e QR code para o seu grupo",
+        "order": "Número do pedido: {order}.",
+        "questions": "Se tiver alguma dúvida, é só responder a este e-mail.",
+        "bye": "Bom encontro!"
       }
     },
     "paper": {

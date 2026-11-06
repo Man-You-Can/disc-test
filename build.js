@@ -70,6 +70,7 @@ const contactJs = fs.readFileSync(path.join(SRC, 'contact.js'), 'utf8').replace(
 // Заявка со страницы «Для организаций» (/business/): разметку businessHTML() кладёт сборка, логику initBusiness() — сама страница
 const businessHTML = require(path.join(SRC, 'business.js'));
 const businessJs = fs.readFileSync(path.join(SRC, 'business.js'), 'utf8').replace(/\nif \(typeof module[^\n]*\n?$/, '\n');
+const kitBuyJs = fs.readFileSync(path.join(SRC, 'kit-buy.js'), 'utf8');
 // Лендинг «CV под каждую вакансию» (/ru/cv/): разметку формы cvFormHTML() кладёт сборка, логику initCvForm() — сама страница; стили страницы — src/cv.css
 const cvFormHTML = require(path.join(SRC, 'cv.js'));
 const cvJs = fs.readFileSync(path.join(SRC, 'cv.js'), 'utf8').replace(/\nif \(typeof module[^\n]*\n?$/, '\n');
@@ -183,6 +184,20 @@ const policyPurchase = L => { const po = L.content.policy; return po.purchaseCod
 const kitPrices = { RUB: Number(cfg.kitPriceRub) || 0, USD: Number(cfg.kitPriceUsd) || 0, EUR: Number(cfg.kitPriceEur) || 0 };
 const kitPrice = L => kitPrices[(L.content.services && L.content.services.currency) || 'USD'] || 0;
 const hasKit = L => !!(L.content.kit && kitPrice(L) && feedbackEmail && cfg.sendEndpoint);
+// Покупка набора на сайте (с 2026-11-06, по решению заказчика): "kitBuy": true в site.config.json и payEndpoint — на странице набора поле e-mail и «Купить»
+// (src/kit-buy.js), после оплаты сервер сам шлёт письмо со ссылками на файлы (private/server/src/pay.js — kitOrder, kitDeliver). Тексты — content.kit.buy и
+// content.kit.mail (обязательны при content.kit). Тот же ключ кладёт в ядро сервера DATA[язык].kit: без него сервер заказы набора с сайта не принимает и
+// файлы сам не шлёт. Ключ, выкладка сервера и публикация сайта меняются вместе: сначала сервер, потом сайт.
+const hasKitBuy = L => !!(hasKit(L) && cfg.kitBuy === true && payEndpoint && L.content.kit.buy && L.content.kit.mail);
+// форма «Купить» набора (src/kit-buy.js): поле e-mail, цена крупно (строка из kit.facts с {price} — в ней знак валюты языка) и кнопка, под ней — условие оферты
+const kitPriceLine = (KT, kv) => kv(KT.facts.find(x => x.includes('{price}')) || '{price}');
+const kitNoteHtml = (L, KB) => escFull(KB.note).replace('{offer}', `<a href="../offer/">${escFull(L.content.offer.linkText)}</a>`);
+const kitBuyT = (L, KB) => ({ submit: KB.submit, wait: KB.wait, badEmail: KB.badEmail, status: KB.status,
+  errorHtml: escFull(KB.error).replace('{email}', `<a href="mailto:${escFull(feedbackEmail)}">${escFull(feedbackEmail)}</a>`) });
+const kitBuyHTML = (L, KB, kv) => `<section class="service xbuy kitbuy"><form class="xpay" id="kitBuy" novalidate>` +
+  `<div class="field"><label for="kitEmail">${escFull(KB.emailLabel)}</label><input type="email" id="kitEmail" class="ym-disable-keys" autocomplete="email" inputmode="email" maxlength="64" required></div>` +
+  `<div class="xbuyact"><span class="xbig">${escFull(kitPriceLine(L.content.kit, kv))}</span><button class="btn" type="submit">${escFull(KB.submit)}</button></div>` +
+  `<p class="small sendstatus err" aria-live="polite" hidden></p><p class="xnote">${kitNoteHtml(L, KB)}</p></form></section>`;
 const hasBusiness = L => !!(L.content.business && L.ui['nav.business'] && hasProduct(L) && L.content.product.pay && L.content.services.currency === 'RUB' && servicePrices.RUB &&
   payCodeT(L, x => x) && feedbackEmail && cfg.sendEndpoint && businessPacks.length);
 // Оператор и дата редакции в политике и согласии: в языке с полным текстом политики (policy.legal — русская версия) — исполнитель из оферты
@@ -1160,7 +1175,10 @@ for (const L of locales) {
     if (hasKit(L)) {
       const KT = C.kit, F = KT.form, kprice = fmtPrice(L, kitPrice(L));
       const kv = s2 => String(s2).replace(/\{price\}/g, kprice);
-      const KF = { name: t('intro.nameLabel'), email: t('contact.emailLabel'), size: F.size, sizes: F.sizes, interest: F.interest, interests: F.interests,
+      // покупка на сайте (hasKitBuy, с 2026-11-06): кнопка вверху ведёт к форме «Купить» в разделе о цене; заявка остаётся только для оплаты по счёту
+      // (buy.invoice, русская версия), в остальных языках вместо неё — строка «Вопросы — на e-mail»
+      const KB = hasKitBuy(L) ? KT.buy : null, inv = KB && KB.invoice;
+      const KF = { name: t('intro.nameLabel'), email: t('contact.emailLabel'), size: F.size, sizes: F.sizes, interest: F.interest, interests: KB ? null : F.interests,
         comment: F.comment, commentPlaceholder: F.commentPlaceholder, button: F.button, subject: F.subject, sent: F.sent, needInterest: F.needInterest,
         requiredNote: t('intro.requiredNote'), nameRequired: t('intro.nameRequired'), emailRequired: t('intro.emailRequired'), pdRequired: L.ui['pd.required'] || '',
         sending: t('contact.sending'), sendFailed: t('contact.sendFailed'), tooMany: t('contact.tooMany'), privacyNote: F.privacy, goal: 'kit-request' };
@@ -1170,18 +1188,22 @@ for (const L of locales) {
       writeContentPage(L, 'kit/', { navKey: 'nav.services', langs: locales.filter(hasKit), title: kv(KT.title), description: kv(KT.description), crumbs: [svcCrumb, { name: KT.h1 }],
         content: `<div class="eyebrow">${escFull(t('nav.services'))}</div><h1>${escFull(KT.h1)}</h1><p class="lead">${escFull(KT.lead)}</p>` +
           `<ul class="xfacts">${KT.facts.map(x => `<li>${escFull(kv(x))}</li>`).join('')}</ul>` +
-          `<p><a class="btn" href="#request" data-goal="kit-cta">${escFull(KT.button)}</a></p>` +
+          (KB ? `<p class="small sendstatus kitstatus" id="kitStatus" aria-live="polite" hidden></p>` : '') +
+          `<p><a class="btn" href="${KB ? '#buy' : '#request'}" data-goal="kit-cta">${escFull(KB ? KB.button : KT.button)}</a></p>` +
           `<h2>${escFull(KT.insideTitle)}</h2>` + inside +
           `<h2>${escFull(KT.forTitle)}</h2>` + listHtml('ul', KT.for) +
           `<h2>${escFull(KT.planTitle)}</h2>` + listHtml('ol', KT.plan) +
           (hasBusiness(L) ? `<h2>${escFull(KT.reportTitle)}</h2><p>${escFull(KT.report).replace('{business}', link('business/', KT.reportLink))}</p>` : '') +
-          `<h2>${escFull(KT.priceTitle)}</h2>` + KT.price.map(x => `<p>${escFull(kv(x))}</p>`).join('') +
+          (KB ? `<h2 id="buy" class="kitbuyh">${escFull(KT.priceTitle)}</h2>` + KB.price.map(x => `<p>${escFull(kv(x))}</p>`).join('') + kitBuyHTML(L, KB, kv)
+            : `<h2>${escFull(KT.priceTitle)}</h2>` + KT.price.map(x => `<p>${escFull(kv(x))}</p>`).join('')) +
           `<h2>${escFull(KT.faqTitle)}</h2>` + KT.faq.map(it => `<h3 class="xq">${escFull(it.q)}</h3><p>${escFull(it.a)}</p>`).join('') +
-          `<h2 id="request">${escFull(F.title)}</h2><p>${escFull(F.lead)}</p>` +
-          businessHTML({ T: KF, esc: escFull, email: feedbackEmail, pdLabel: pdOn ? pdLabelHtml(L, '../') : '' }) +
+          (KB && !inv ? `<p>${escFull(KB.questions).replace('{email}', `<a href="mailto:${escFull(feedbackEmail)}">${escFull(feedbackEmail)}</a>`)}</p>`
+            : `<h2 id="request">${escFull(inv ? inv.title : F.title)}</h2><p>${escFull(inv ? inv.lead : F.lead)}</p>` +
+              businessHTML({ T: KF, esc: escFull, email: feedbackEmail, pdLabel: pdOn ? pdLabelHtml(L, '../') : '' })) +
           `<p class="seealso"><a href="../pdf/">${escFull(t('nav.pdf'))} ${arrow(L)}</a>` + (C.group ? ` · <a href="../group/">${escFull(C.group.h1)} ${arrow(L)}</a>` : '') + (hasBusiness(L) ? ` · ${docLink('business/', C.business)}` : '') + `</p>`,
-        files: ['src/business.js'],
-        pageJs: businessJs + `initBusiness({T: ${JSON.stringify(KF).replace(/</g, '\\u003c')}, L: L, esc: esc, $: $, endpoint: ${jsStr(cfg.sendEndpoint)}, token: ${jsStr(cfg.sendToken)}, email: ${jsStr(feedbackEmail)}, pdVersion: ${jsStr(pdOn ? pdVersion : '')}});` });
+        files: ['src/business.js', 'src/kit-buy.js'],
+        pageJs: (KB && !inv ? '' : businessJs + `initBusiness({T: ${JSON.stringify(KF).replace(/</g, '\\u003c')}, L: L, esc: esc, $: $, endpoint: ${jsStr(cfg.sendEndpoint)}, token: ${jsStr(cfg.sendToken)}, email: ${jsStr(feedbackEmail)}, pdVersion: ${jsStr(pdOn ? pdVersion : '')}});`) +
+          (KB ? kitBuyJs + `initKitBuy({T: ${JSON.stringify(kitBuyT(L, KB)).replace(/</g, '\\u003c')}, L: L, esc: esc, $: $, endpoint: ${jsStr(payEndpoint)}, price: ${kitPrice(L)}, currency: ${jsStr((C.services && C.services.currency) || 'USD')}, email: ${jsStr(feedbackEmail)}});` : '') });
     }
     // /extended-report/ — страница расширенного отчёта: что внутри, листы образца картинками, сравнение с кратким отчётом, цена.
     // Блок покупки по умолчанию ведёт на тест. У кого результат сохранён на этом устройстве (disc.last), тому скрипт страницы меняет его:
@@ -1439,6 +1461,10 @@ for (const L of locales) {
   // письмо с бумажным бланком (форма «Прислать бланк на e-mail» на «Тест в PDF», с 2026-10-25): тексты и адреса бланка, онлайн-теста и набора ведущего
   if (L.content.paper && L.content.paper.letter && hasKit(L)) { const home = urlOf(L.lang), pi = pdfInfo(L.lang);
     if (pi) mailData[L.lang].paper = { letter: L.content.paper.letter, pdf: siteUrl + '/pdf/' + pi.file, online: home + '?ref=mail', kit: home + 'kit/?ref=mail' }; }
+  // покупка набора ведущего на сайте (hasKitBuy, с 2026-11-06): название и цена для платёжной страницы и чека, письмо со ссылками на файлы и адреса страниц для него
+  if (hasKitBuy(L)) { const home = urlOf(L.lang);
+    mailData[L.lang].kit = { name: L.content.kit.h1, price: kitPrice(L), currency: (L.content.services && L.content.services.currency) || 'USD', dateLocale: L.dateLocale, mail: L.content.kit.mail,
+      page: home + 'kit/', online: home, pdf: pdfInfo(L.lang) ? home + 'pdf/' : '', group: L.content.group ? home + 'group/' : '' }; }
   // письмо с расширенным отчётом (платная услуга): тексты есть только в языках, где отчёт написан
   if (L.content.extendedMail) mailData[L.lang].extended = L.content.extendedMail;
   // оплата расширенного отчёта на своём сервере: название услуги для платёжной страницы и чека, письмо-напоминание о неоконченной оплате, валюта заказа (USD или EUR через Prodamus)

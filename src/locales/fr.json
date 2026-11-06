@@ -634,12 +634,13 @@
         }
       ],
       "purchase": {
-        "h": "Achat du profil détaillé",
+        "h": "Achat du profil détaillé et du kit de l'animateur",
         "p": [
           "Si vous achetez le profil DISC détaillé, nous traitons votre adresse e-mail, votre nom (si vous l'avez indiqué), le résultat du test à partir duquel le rapport est établi et les informations relatives à la commande : date, montant, numéro et statut du paiement. Ces données nous servent à établir le rapport et à vous l'envoyer, à répondre à vos demandes et à procéder à un éventuel remboursement. Le traitement a pour base légale le contrat que vous concluez en payant le service conformément à nos {offer}.",
           "Les paiements sont traités par Prodamus, notre opérateur de paiement. Vous saisissez les données de votre carte sur la page de paiement sécurisée de Prodamus : nous ne les recevons pas et ne les conservons pas. Nous transmettons à Prodamus le montant, le numéro de commande et votre adresse e-mail, à laquelle le reçu de paiement est envoyé.",
           "Le rapport est généré sur un serveur exploité pour notre compte et vous est envoyé par e-mail depuis l'adresse {email}. Une copie du rapport et les informations relatives à la commande sont conservées par le propriétaire du site : elles permettent de renvoyer le rapport, de répondre à une demande, d'effectuer un remboursement et de tenir la comptabilité. Pour demander la suppression du rapport et des informations relatives à la commande, écrivez à {email}. Les informations de paiement que la loi impose de conserver sont supprimées à l'expiration du délai prescrit.",
-          "Si vous commencez un achat sans le payer, nous conservons votre adresse e-mail, le résultat du test et les informations relatives à la commande pendant 30 jours, puis nous les supprimons. Durant cette période, un seul e-mail de rappel contenant un lien de paiement peut être envoyé à l'adresse indiquée. Ce traitement a pour base légale les démarches que vous avez entreprises en vue de conclure le contrat."
+          "Si vous commencez un achat sans le payer, nous conservons votre adresse e-mail, le résultat du test et les informations relatives à la commande pendant 30 jours, puis nous les supprimons. Durant cette période, un seul e-mail de rappel contenant un lien de paiement peut être envoyé à l'adresse indiquée. Ce traitement a pour base légale les démarches que vous avez entreprises en vue de conclure le contrat.",
+          "Si vous achetez le kit de l'animateur DISC, nous traitons votre adresse e-mail et les informations relatives à la commande : date, montant, numéro et statut du paiement. Ces données nous servent à vous envoyer l'e-mail contenant les liens vers les fichiers du kit, à répondre à vos demandes et à procéder à un éventuel remboursement ; le traitement a pour base légale le contrat conclu conformément à nos {offer}. Les informations relatives à la commande du kit sont conservées de la même manière que celles de la commande du profil détaillé ; aucun e-mail de rappel n'est envoyé si le paiement du kit n'a pas été finalisé."
         ]
       }
     },
@@ -710,12 +711,13 @@
         }
       ],
       "purchase": {
-        "h": "Achat du profil détaillé",
+        "h": "Achat du profil détaillé et du kit de l'animateur",
         "p": [
           "Si vous achetez le profil DISC détaillé, nous traitons votre adresse e-mail, votre nom (si vous l'avez indiqué), le résultat du test à partir duquel le rapport est établi et les informations relatives à la commande : date, montant, numéro et statut du paiement. Ces données nous servent à établir le rapport et à vous l'envoyer, à répondre à vos demandes et à procéder à un éventuel remboursement. Le traitement a pour base légale le contrat que vous concluez en payant le service conformément à nos {offer} ; aucun consentement distinct n'est requis à cet effet.",
           "Les paiements sont traités par Prodamus, notre opérateur de paiement. Vous saisissez les données de votre carte sur la page de paiement sécurisée de Prodamus : nous ne les recevons pas et ne les conservons pas. Nous transmettons à Prodamus le montant, le numéro de commande et votre adresse e-mail, à laquelle le reçu de paiement est envoyé.",
           "Le rapport est généré sur le serveur du site et vous est envoyé par e-mail depuis l'adresse {email}. Une fois envoyé, le rapport n'est pas conservé sur le serveur : au besoin, il est généré de nouveau. Les informations relatives à la commande sont conservées cinq ans après le paiement : elles permettent de renvoyer le rapport, de répondre à une demande, d'effectuer un remboursement et de tenir la comptabilité. Les informations de paiement que la loi impose de conserver plus longtemps sont supprimées à l'expiration du délai prescrit.",
-          "Si vous commencez un achat sans le payer, nous conservons votre adresse e-mail, le résultat du test et les informations relatives à la commande pendant 30 jours, puis nous les supprimons. Durant cette période, un seul e-mail de rappel contenant un lien de paiement peut être envoyé à l'adresse indiquée. Ce traitement a pour base légale les démarches que vous avez entreprises en vue de conclure le contrat."
+          "Si vous commencez un achat sans le payer, nous conservons votre adresse e-mail, le résultat du test et les informations relatives à la commande pendant 30 jours, puis nous les supprimons. Durant cette période, un seul e-mail de rappel contenant un lien de paiement peut être envoyé à l'adresse indiquée. Ce traitement a pour base légale les démarches que vous avez entreprises en vue de conclure le contrat.",
+          "Si vous achetez le kit de l'animateur DISC, nous traitons votre adresse e-mail et les informations relatives à la commande : date, montant, numéro et statut du paiement. Ces données nous servent à vous envoyer l'e-mail contenant les liens vers les fichiers du kit, à répondre à vos demandes et à procéder à un éventuel remboursement ; le traitement a pour base légale le contrat conclu conformément à nos {offer}. Les informations relatives à la commande du kit sont conservées de la même manière que celles de la commande du profil détaillé ; aucun e-mail de rappel n'est envoyé si le paiement du kit n'a pas été finalisé."
         ]
       }
     },
@@ -1738,14 +1740,14 @@
       }
     },
     "offer": {
-      "title": "Conditions générales de vente — profil DISC détaillé",
-      "description": "Conditions générales de vente du service payant « Profil DISC détaillé » sur disc-test.org : prix, paiement et envoi, remboursement, droits sur les contenus.",
+      "title": "Conditions générales de vente — profil DISC détaillé et kit de l'animateur",
+      "description": "Conditions générales de vente du service payant « Profil DISC détaillé » et du kit de l'animateur DISC sur disc-test.org : prix, paiement et envoi, remboursement, droits sur les contenus.",
       "h1": "Conditions générales de vente",
       "linkText": "conditions générales de vente",
-      "edition": "Version du 2 novembre 2026. Traduction française mise à jour le 2 novembre 2026.",
+      "edition": "Version du 6 novembre 2026. Traduction française mise à jour le 6 novembre 2026.",
       "note": "Ce texte est la traduction française des conditions originales publiées à l'adresse {original}. En cas de divergence entre les deux textes, l'original prévaut, sauf pour le prix et les modalités de paiement : pour la version française du Site, ceux-ci sont régis par les articles 1 et 3 de la présente traduction.",
       "seller": "Manukyan Armen, entrepreneur individuel, N° d’identification fiscale (INN) {inn}",
-      "lead": "Le présent document constitue une offre officielle (offre au public) de conclure un contrat portant sur le service payant « Profil DISC détaillé » aux conditions énoncées ci-dessous. Cette offre émane de {seller} (ci-après « le Prestataire »). Le paiement du service vaut acceptation pleine, entière et sans réserve des présentes conditions (acceptation de l'offre).",
+      "lead": "Le présent document constitue une offre officielle (offre au public) de conclure un contrat portant sur le service payant « Profil DISC détaillé », ainsi qu'un contrat de fourniture du Kit de l'animateur DISC (article 10), aux conditions énoncées ci-dessous. Cette offre émane de {seller} (ci-après « le Prestataire »). Le paiement du service ou du Kit vaut acceptation pleine, entière et sans réserve des présentes conditions (acceptation de l'offre).",
       "sections": [
         {
           "h": "1. Définitions",
@@ -1831,24 +1833,36 @@
         {
           "h": "9. Durée et modification des conditions",
           "p": [
-            "9.1. Le contrat est réputé conclu au moment du paiement du Service et reste en vigueur jusqu'à ce que les parties aient exécuté leurs obligations.",
+            "9.1. Le contrat est réputé conclu au moment du paiement du Service ou du Kit (article 10) et reste en vigueur jusqu'à ce que les parties aient exécuté leurs obligations.",
             "9.2. Le Prestataire peut modifier les présentes conditions. La nouvelle version s'applique dès sa publication sur le Site et ne concerne pas les commandes déjà payées.",
             "9.3. Les réclamations sont adressées à {email} ; le Prestataire y répond dans un délai de dix jours calendaires. Si le litige n'est pas réglé, il est porté devant les tribunaux, conformément au droit applicable au contrat.",
             "9.4. Le contrat est régi par le droit du pays dans lequel le Prestataire est enregistré."
           ]
         },
         {
-          "h": "10. Coordonnées du Prestataire",
+          "h": "10. Kit de l'animateur DISC",
+          "p": [
+            "10.1. Aux présentes conditions, le Prestataire fournit également le Kit de l'animateur DISC (ci-après « le Kit ») : un ensemble de fichiers électroniques permettant d'animer un atelier de groupe fondé sur le modèle DISC, à savoir le déroulé de l'atelier, des diapositives, le tableau du groupe, la carte d'équipe et des fiches. Le contenu du Kit est décrit sur sa page du Site. L'achat du Kit ne nécessite pas de passer le Test ; dans le présent article, on entend par Client la personne qui a payé le Kit.",
+            "10.2. Le prix du Kit est indiqué sur sa page, à côté du bouton d'achat, et sur la page de paiement ; ce prix est définitif. Le Kit est payé intégralement avant sa fourniture, selon les modalités prévues aux articles 3.2 à 3.5.",
+            "10.3. Après le paiement, le Prestataire envoie à l'adresse e-mail indiquée par le Client un e-mail contenant les liens de téléchargement des fichiers du Kit, généralement juste après le paiement et au plus tard 24 heures après celui-ci. Les liens sont valables 30 jours calendaires à compter du jour du paiement ; il appartient au Client d'enregistrer les fichiers. Si l'e-mail n'arrive pas ou si les liens ne fonctionnent plus, ils sont renvoyés sur simple demande adressée à {email}. Le Kit est réputé fourni au moment de l'envoi de l'e-mail.",
+            "10.4. Le Client peut utiliser le Kit pour animer des ateliers, qu'il s'agisse des siens ou de ceux qu'il anime pour une organisation : projeter les diapositives, imprimer la carte d'équipe, les fiches et les documents destinés aux participants en autant d'exemplaires que nécessaire, saisir les données des participants dans le tableau du groupe. Il est interdit de vendre les fichiers du Kit, de les transmettre à des tiers pour leur propre usage, de les mettre à la disposition du public et de les présenter comme siens. Pour le reste, l'article 6 s'applique au Kit.",
+            "10.5. Le Client peut renoncer au Kit tant que l'e-mail contenant les liens ne lui a pas été envoyé ; la somme versée lui est alors intégralement remboursée. Elle l'est également si l'e-mail n'est pas envoyé dans le délai prévu à l'article 10.3, ou si les fichiers du Kit ne s'ouvrent pas et que le Prestataire n'y a pas remédié dans un délai de trois jours ouvrés à compter de la demande du Client. La somme versée pour un Kit dûment fourni n'est pas remboursée. Le remboursement est effectué conformément aux articles 5.5 à 5.7.",
+            "10.6. Pour fournir le Kit, le Prestataire traite l'adresse e-mail du Client et les informations de paiement, à l'exclusion des données de carte bancaire ; l'article 8 s'applique à ces données.",
+            "10.7. Toute question sur le Kit peut être adressée à {email}."
+          ]
+        },
+        {
+          "h": "11. Coordonnées du Prestataire",
           "ul": ["Manukyan Armen, entrepreneur individuel", "N° d’identification fiscale (INN) {inn}", "Adresse e-mail : {email}", "Site web : {site}"]
         }
       ]
     },
     "refund": {
-      "title": "Politique de remboursement — profil DISC détaillé",
-      "description": "Quand et comment obtenir le remboursement du profil DISC détaillé sur disc-test.org : cas de remboursement, demande, délais.",
+      "title": "Politique de remboursement — profil DISC détaillé et kit de l'animateur",
+      "description": "Quand et comment obtenir le remboursement du profil DISC détaillé et du kit de l'animateur sur disc-test.org : cas de remboursement, demande, délais.",
       "h1": "Politique de remboursement",
       "linkText": "politique de remboursement",
-      "lead": "L'essentiel sur les cas où le profil DISC détaillé vous est remboursé et sur la marche à suivre. Cette politique fait partie intégrante de nos {offer} (article 5).",
+      "lead": "L'essentiel sur les cas où le profil DISC détaillé et le kit de l'animateur vous sont remboursés et sur la marche à suivre. Cette politique fait partie intégrante de nos {offer} (articles 5 et 10).",
       "note": "Ce texte est la traduction française de la politique de remboursement originale publiée à l'adresse {original}. En cas de divergence entre les deux textes, l'original prévaut.",
       "sections": [
         {
@@ -1875,6 +1889,12 @@
         {
           "h": "Si vous n'avez pas reçu l'e-mail contenant le profil détaillé",
           "p": ["Vérifiez votre dossier de courrier indésirable (spam). S'il ne s'y trouve pas non plus, écrivez à {email} : nous vous renverrons le profil détaillé."]
+        },
+        {
+          "h": "Kit de l'animateur",
+          "p": [
+            "Le kit de l'animateur vous est intégralement remboursé si vous renoncez à l'achat avant que l'e-mail contenant les liens vers les fichiers vous ait été envoyé, si cet e-mail n'est pas envoyé dans les 24 heures qui suivent le paiement, ou si les fichiers ne s'ouvrent pas et que nous n'y avons pas remédié dans les trois jours ouvrés suivant votre demande. Si l'e-mail a été envoyé à temps et que les fichiers s'ouvrent, la somme versée n'est pas remboursée. La demande de remboursement se fait comme pour le profil détaillé : écrivez à {email} en indiquant l'adresse e-mail, la date et le montant du paiement ainsi que le motif."
+          ]
         },
         {
           "h": "Vos droits",
@@ -2465,6 +2485,48 @@
         "sent": "Demande envoyée. Nous vous répondrons à {email} sous un jour ouvré.",
         "needInterest": "Indiquez à qui le kit est destiné.",
         "privacy": "Votre nom, votre e-mail et le texte de la demande seront envoyés par e-mail à {email} et servent uniquement à vous répondre."
+      },
+      "buy": {
+        "button": "Acheter le kit",
+        "price": [
+          "Le kit coûte {price} €. Payez par carte : dès le paiement effectué, vous recevez un e-mail avec les liens vers tous les fichiers du kit.",
+          "Les liens restent valables 30 jours : téléchargez les fichiers et conservez-les. Imprimez la carte, les fiches et le questionnaire pour les participants de vos propres ateliers autant de fois que nécessaire."
+        ],
+        "emailLabel": "E-mail pour recevoir les fichiers",
+        "submit": "Acheter",
+        "wait": "Ouverture de la page de paiement…",
+        "note": "En cliquant sur « Acheter », vous acceptez nos {offer}. Vous saisissez les données de votre carte sur une page de paiement sécurisée.",
+        "badEmail": "Vérifiez l'adresse e-mail : c'est à elle que nous enverrons les fichiers du kit et le reçu.",
+        "error": "Impossible d'ouvrir la page de paiement. Réessayez dans quelques instants ou écrivez-nous à {email}.",
+        "questions": "Une question sur le kit ? Écrivez-nous à {email}.",
+        "status": {
+          "thanks": "Merci pour votre achat ! L'e-mail contenant les liens vers les fichiers arrivera à l'adresse indiquée lors du paiement. S'il n'est pas dans votre boîte de réception, vérifiez le dossier de courrier indésirable (spam).",
+          "wait": "En attente de la confirmation du paiement par Prodamus…",
+          "paid": "Paiement reçu. Nous envoyons l'e-mail contenant les liens vers les fichiers…",
+          "sent": "Paiement reçu. L'e-mail contenant les liens vers les fichiers a été envoyé à {email}. S'il n'est pas dans votre boîte de réception, vérifiez le dossier de courrier indésirable (spam).",
+          "failed": "Le paiement n'a pas abouti. Réessayez ou payez avec une autre carte.",
+          "expired": "Les liens vers les fichiers ont expiré. Écrivez-nous à {email} : nous vous en enverrons de nouveaux."
+        }
+      },
+      "mail": {
+        "subject": "Kit de l'animateur DISC : liens vers les fichiers",
+        "hello": "Bonjour,",
+        "intro": "Merci d'avoir acheté le Kit de l'animateur DISC ! Téléchargez les fichiers à l'aide des liens ci-dessous et conservez-les : les liens sont valables jusqu'au {until}.",
+        "zip": "Télécharger tous les fichiers en une seule archive",
+        "filesTitle": "Ou un par un :",
+        "files": [
+          "préparation, déroulé en 60 et en 90 minutes, ce qu'il faut dire et faire à chaque étape",
+          "16 diapositives à projeter",
+          "la carte d'équipe à imprimer en A3 ou A4 et les fiches « Comment travailler avec moi »",
+          "un tableau Excel pour 40 participants : saisissez les chiffres du test papier ou les pourcentages du résultat en ligne, et le tableau calcule le profil de chacun et la synthèse du groupe"
+        ],
+        "testTitle": "Pour les participants, le test est gratuit :",
+        "online": "en ligne",
+        "paper": "sur papier (questionnaire à imprimer)",
+        "group": "Invitation prête à l'emploi, lien et QR code pour votre groupe",
+        "order": "Numéro de commande : {order}.",
+        "questions": "Pour toute question, il suffit de répondre à ce message.",
+        "bye": "Bon atelier !"
       }
     },
     "paper": {

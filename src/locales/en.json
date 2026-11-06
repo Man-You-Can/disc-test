@@ -632,12 +632,13 @@
         }
       ],
       "purchase": {
-        "h": "Buying the in-depth profile",
+        "h": "Buying the in-depth profile or the facilitator kit",
         "p": [
           "If you buy the in-depth DISC profile, we process your email address, your name (if you gave it), the test result the report is prepared from, and order details: the date, amount, payment number and payment status. We need this data to prepare the report and send it to you, to answer your enquiries and to process a refund. The basis for processing is the contract you enter into when you pay for the service under the {offer}.",
           "Payments are processed by Prodamus, our payment service provider. You enter your card details on its secure payment page: we do not receive or store them. Prodamus receives the amount, the order number and your email address, to which it sends the receipt.",
           "The report is generated on a server operated on our behalf and is emailed to you from {email}. A copy of the report and the order details are kept by the site owner: they are needed to resend the report, answer enquiries, make refunds and keep records. To ask for the report and the order details to be deleted, write to {email}. Payment information that the law requires to be kept is deleted when the required period ends.",
-          "If you start a purchase but do not pay, we keep your email address, test result and order details for 30 days and then delete them. During that time one reminder email with a payment link may be sent to the address you gave. The basis is the steps you took toward entering into the contract."
+          "If you start a purchase but do not pay, we keep your email address, test result and order details for 30 days and then delete them. During that time one reminder email with a payment link may be sent to the address you gave. The basis is the steps you took toward entering into the contract.",
+          "If you buy the facilitator kit, we process your email address and order details: the date, amount, payment number and payment status. We need this data to send you the email with links to the kit files, to answer your enquiries and to process a refund; the basis is the contract under the {offer}. Kit order details are kept in the same way as order details for the in-depth profile; no reminder emails are sent about an unfinished kit payment."
         ]
       }
     },
@@ -708,12 +709,13 @@
         }
       ],
       "purchase": {
-        "h": "Buying the in-depth profile",
+        "h": "Buying the in-depth profile or the facilitator kit",
         "p": [
           "If you buy the in-depth DISC profile, we process your email address, your name (if you gave it), the test result the report is prepared from, and order details: the date, amount, payment number and payment status. We need this data to prepare the report and send it to you, to answer your enquiries and to process a refund. The basis for processing is the contract you enter into when you pay for the service under the {offer}; no separate consent is required for this.",
           "Payments are processed by Prodamus, our payment service provider. You enter your card details on its secure payment page: we do not receive or store them. Prodamus receives the amount, the order number and your email address, to which it sends the receipt.",
           "The report is generated on the site’s server and emailed to you from {email}. The finished report is not kept on the server: if needed, it is generated again. Order details are kept for five years after payment: they are needed to resend the report, answer enquiries, make refunds and keep records. Payment information that the law requires to be kept longer is deleted when the required period ends.",
-          "If you start a purchase but do not pay, we keep your email address, test result and order details for 30 days and then delete them. During that time one reminder email with a payment link may be sent to the address you gave. The basis is the steps you took toward entering into the contract."
+          "If you start a purchase but do not pay, we keep your email address, test result and order details for 30 days and then delete them. During that time one reminder email with a payment link may be sent to the address you gave. The basis is the steps you took toward entering into the contract.",
+          "If you buy the facilitator kit, we process your email address and order details: the date, amount, payment number and payment status. We need this data to send you the email with links to the kit files, to answer your enquiries and to process a refund; the basis is the contract under the {offer}. Kit order details are kept in the same way as order details for the in-depth profile; no reminder emails are sent about an unfinished kit payment."
         ]
       }
     },
@@ -1736,14 +1738,14 @@
       }
     },
     "offer": {
-      "title": "Terms of Sale (Public Offer) — In-Depth DISC Profile",
-      "description": "Terms of sale (public offer) for the paid service “In-depth DISC profile” on disc-test.org: price, payment and delivery, refunds, rights to materials.",
+      "title": "Terms of Sale (Public Offer) — In-Depth DISC Profile and Facilitator Kit",
+      "description": "Terms of sale (public offer) for the paid service “In-depth DISC profile” and the DISC facilitator kit on disc-test.org: price, payment and delivery, refunds, rights to materials.",
       "h1": "Terms of Sale (Public Offer)",
       "linkText": "terms of sale",
-      "edition": "Version of November 2, 2026. English translation updated on November 2, 2026.",
+      "edition": "Version of November 6, 2026. English translation updated on November 6, 2026.",
       "note": "This is an English translation of the original offer published at {original}. If the two texts differ, the original prevails, except for the price and the way payment is made: for the English version of the Site they are set out in sections 1 and 3.",
       "seller": "individual entrepreneur Manukyan Armen, Taxpayer ID (INN) {inn}",
-      "lead": "This document is an official proposal (a public offer) to enter into a contract for the paid service “In-depth DISC profile” on the terms set out below. The offer is made by {seller} (hereinafter, the Provider). Paying for the service constitutes full and unconditional acceptance of these terms (acceptance of the offer).",
+      "lead": "This document is an official proposal (a public offer) to enter into a contract for the paid service “In-depth DISC profile” and a contract for the supply of the DISC Facilitator Kit (section 10) on the terms set out below. The offer is made by {seller} (hereinafter, the Provider). Paying for the service or the Kit constitutes full and unconditional acceptance of these terms (acceptance of the offer).",
       "sections": [
         {
           "h": "1. Definitions",
@@ -1829,24 +1831,36 @@
         {
           "h": "9. Term and amendment of the offer",
           "p": [
-            "9.1. The contract is deemed concluded at the moment the Service is paid for and remains in force until the parties have performed their obligations.",
+            "9.1. The contract is deemed concluded at the moment the Service or the Kit (section 10) is paid for and remains in force until the parties have performed their obligations.",
             "9.2. The Provider may amend the offer. The new version applies from the moment it is published on the Site and does not apply to orders already paid for.",
             "9.3. Complaints are sent to {email}; the Provider replies to them within ten calendar days. If a dispute is not settled, it is heard by a court in accordance with the law that governs the contract.",
             "9.4. The contract is governed by the law of the country in which the Provider is registered."
           ]
         },
         {
-          "h": "10. Provider’s details",
+          "h": "10. DISC Facilitator Kit",
+          "p": [
+            "10.1. On the terms of this offer, the Provider also supplies the DISC Facilitator Kit (hereinafter, the Kit): a set of electronic files for running a group session based on the DISC model — a facilitator guide, slides, a group workbook, a team map and cards. The contents of the Kit are described on its page on the Site. The Test does not have to be taken to buy the Kit; for the purposes of this section, the Customer is the person who has paid for the Kit.",
+            "10.2. The price of the Kit is shown on its page next to the purchase button and on the payment page; the price is final. The Kit is paid for in full before it is supplied, as set out in clauses 3.2–3.5.",
+            "10.3. After payment, the Provider sends an email with links to download the Kit files to the email address the Customer gave — usually right after payment and no later than 24 hours after payment. The links work for 30 calendar days from the date of payment; the Customer saves the files on their own device. If the email does not arrive or the links have stopped working, the links are sent again on request to {email}. The Kit is deemed supplied at the moment the email is sent.",
+            "10.4. The Customer may use the Kit to run sessions, both their own and for the organization they run them for: show the slides, print the team map, the cards and the participant materials in any quantity, and enter participants’ data in the group workbook. It is prohibited to sell the Kit files, pass them on to other people for their own use, make them publicly available or present them as one’s own. In all other respects, section 6 applies to the Kit.",
+            "10.5. The Customer may cancel the Kit before the email with the links is sent to them; in that case the payment is refunded in full. The payment is also refunded in full if the email is not sent within the period stated in clause 10.3, or if the Kit files do not open and the Provider has not fixed this within three business days of the Customer’s request. Payment for a Kit that has been properly supplied is not refunded. Refunds are made as set out in clauses 5.5–5.7.",
+            "10.6. To supply the Kit, the Provider processes the Customer’s email address and payment information, excluding bank card details; section 8 applies to this data.",
+            "10.7. Questions about the Kit can be sent to {email}."
+          ]
+        },
+        {
+          "h": "11. Provider’s details",
           "ul": ["Individual entrepreneur Manukyan Armen", "Taxpayer ID (INN) {inn}", "Email: {email}", "Website: {site}"]
         }
       ]
     },
     "refund": {
-      "title": "Refund Policy — In-Depth DISC Profile",
-      "description": "When and how to get your money back for the in-depth DISC profile on disc-test.org: when refunds are made, how to request one, time limits.",
+      "title": "Refund Policy — In-Depth DISC Profile and Facilitator Kit",
+      "description": "When and how to get your money back for the in-depth DISC profile and the facilitator kit on disc-test.org: when refunds are made, how to request one, time limits.",
       "h1": "Refund Policy",
       "linkText": "refund policy",
-      "lead": "A short guide to when and how you can get your money back for the in-depth DISC profile. It forms part of the {offer} (section 5).",
+      "lead": "A short guide to when and how you can get your money back for the in-depth DISC profile and the facilitator kit. It forms part of the {offer} (sections 5 and 10).",
       "note": "This is an English translation of the original refund policy published at {original}. If the two texts differ, the original prevails.",
       "sections": [
         {
@@ -1873,6 +1887,12 @@
         {
           "h": "If the email with the in-depth profile hasn’t arrived",
           "p": ["Check your spam folder. If it isn’t there either, write to {email} and we’ll send the in-depth profile again."]
+        },
+        {
+          "h": "Facilitator kit",
+          "p": [
+            "You get a full refund for the facilitator kit if you cancel the purchase before the email with links to the files has been sent to you, if the email is not sent within 24 hours of payment, or if the files do not open and we have not fixed this within three business days of your request. If the email was sent on time and the files open, the payment is not refunded. To request a refund, do the same as for the in-depth profile: write to {email} with the email address you gave at payment, the date and amount of the payment, and the reason."
+          ]
         },
         {
           "h": "Your rights",
@@ -2446,6 +2466,48 @@
         "sent": "Request sent. We’ll reply to {email} within one business day.",
         "needInterest": "Please tick how you plan to run the session.",
         "privacy": "Your name, email and message will be emailed to {email} and used only to reply to you."
+      },
+      "buy": {
+        "button": "Buy the kit",
+        "price": [
+          "The kit costs US${price}. Pay by card, and an email with links to all the kit files will arrive right after payment.",
+          "The links work for 30 days: download the files and keep them. Print the map, the cards and the test form for participants of your own sessions as many times as you need."
+        ],
+        "emailLabel": "Email to receive the files",
+        "submit": "Buy",
+        "wait": "Taking you to payment…",
+        "note": "By clicking “Buy”, you accept our {offer}. You enter your card details on a secure payment page.",
+        "badEmail": "Please check the address: the kit files and your receipt will be sent there.",
+        "error": "We couldn’t take you to payment. Please try again in a minute or write to us at {email}.",
+        "questions": "Questions about the kit? Write to us at {email}.",
+        "status": {
+          "thanks": "Thank you for your purchase! An email with links to the files will arrive at the address you gave at payment. If it isn’t in your inbox, check your spam folder.",
+          "wait": "Waiting for the payment to be confirmed…",
+          "paid": "Payment received. Sending the email with links to the files…",
+          "sent": "Payment received. The email with links to the files has been sent to {email}. If it isn’t in your inbox, check your spam folder.",
+          "failed": "The payment didn’t go through. Please try again or use a different card.",
+          "expired": "The links to the files have expired. Write to us at {email} and we’ll send new ones."
+        }
+      },
+      "mail": {
+        "subject": "DISC facilitator kit: links to your files",
+        "hello": "Hello,",
+        "intro": "Thank you for buying the DISC facilitator kit! Download the files using the links below and save them: the links work until {until}.",
+        "zip": "Download all the files as one ZIP archive",
+        "filesTitle": "Or one at a time:",
+        "files": [
+          "preparation, a 60- and a 90-minute plan, and what to say and do at each step",
+          "16 slides for the screen",
+          "the team map to print on A3 or A4 and the “How to work with me” cards",
+          "an Excel workbook for 40 participants: enter the numbers from the paper test or the percentages from the online result, and it works out everyone’s profile and the group summary"
+        ],
+        "testTitle": "The test is free for participants:",
+        "online": "online",
+        "paper": "on paper (printable form)",
+        "group": "A ready-made invitation, link and QR code for your group",
+        "order": "Order number: {order}.",
+        "questions": "If you have any questions, just reply to this email.",
+        "bye": "Have a great session!"
       }
     },
     "paper": {
