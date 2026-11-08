@@ -976,11 +976,20 @@ document.addEventListener('click', function(e){ var a = e.target && e.target.clo
 /* ====== экран 1: вступление ====== */
 // новое прохождение: старт засчитывается (цель start и запись test_starts — язык и, с 2026-10-26, признак повторного прохождения:
 // в браузере уже есть пройденный тест disc.last или начатый disc.progress)
+// Сарафан (с 2026-11-08, по просьбе заказчика): кто открыл чужой результат (ссылку прислал знакомый), помечается до конца сеанса
+// (sessionStorage disc.friend: share — ссылка из окна «Поделиться профилем» с меткой ?ref=share, link — любая другая ссылка на результат),
+// и его начатый и пройденный тест — цели friend-start и friend-finish (параметр via). На сервер ничего не уходит.
+function friendGoal(goal){
+  try{ var via = sessionStorage.getItem('disc.friend'); if(!via) return;
+    if(goal==='friend-finish') sessionStorage.removeItem('disc.friend');
+    if(window.discTrack) window.discTrack(goal, {via: via}); }catch(e){}
+}
 function newTest(){
   var again = !!(lsGet('disc.last') || lsGet('disc.progress'));
   S = {name:'', email:'', i:0, m:[], l:[]};
   for(var k=0;k<24;k++){ S.m.push(-1); S.l.push(-1); }
   if(window.discTrack) window.discTrack('start'); // цель Метрики: тест начат
+  friendGoal('friend-start');
   sendStart(again);
   lsSet('disc.progress', S);
 }
@@ -993,6 +1002,7 @@ function openTest(){
     S = p;
     if(S.from){ var from = String(S.from); delete S.from;
       if(window.discTrack){ window.discTrack('start'); window.discTrack('embed-start', {page: from}); }
+      friendGoal('friend-start');
       sendStart(!!lsGet('disc.last')); }   // disc.progress здесь положила статья: повторным считается только тот, кто уже проходил тест
     var first = S.m.findIndex(function(x,i){ return x<0 || S.l[i]<0; }); S.i = first<0 ? 23 : first;
     lsSet('disc.progress', S);
@@ -1264,6 +1274,7 @@ function finishResult(r, goal){
   // специальная цена расширенного отчёта на час после теста (src/pay.js): время первого прохождения на этом устройстве, повторное его не меняет
   var PBo = L.content && L.content.product; if(PBo && PBo.pay && PBo.pay.offer && typeof payOfferMark === 'function') payOfferMark(r, lsGet, lsSet);
   if(window.discTrack) window.discTrack(goal);
+  friendGoal('friend-finish');
   sendStat(r, again);
   // экран «Куда прислать результат?» — части прошедших тест (жребий при каждом прохождении, не хранится); цель estep-none — подходившие, но без экрана:
   // по двум целям в системе веб-аналитики сравниваются покупки с экраном и без него
@@ -1741,6 +1752,10 @@ function renderReport(r, opts){
   // ссылка на отчёт — без e-mail (решение заказчика от 2026-10-22): её копирует кнопка «Скопировать ссылку» и показывает адресная строка
   var link = pageURL()+'#r='+encodeResult(Object.assign({}, r, {email:''}));
   if(!opts.fromAdmin) showHash(link.slice(link.indexOf('#')));
+  // чужой результат по ссылке знакомого — цель friend-open (сарафан, с 2026-11-08); метка для friendGoal — до конца сеанса
+  if(!opts.own && !opts.fromAdmin){ var via = /[?&]ref=share(&|$)/.test(location.search) ? 'share' : 'link';
+    try{ sessionStorage.setItem('disc.friend', via); }catch(e){}
+    if(window.discTrack) window.discTrack('friend-open', {via: via}); }
   var show = {most:true, least:true, net:true}; // все три линии графика включены сразу (по просьбе заказчика от 2026-10-25)
   // дата с подписью «Тест пройден:» (ui["report.taken"], с 2026-10-21)
   var meta = [esc(r.name), esc(r.email||r.pos||''), r.t && fmtDate(r.t) ? esc(t('report.taken',{date:fmtDate(r.t)})) : ''].filter(Boolean).join(' · ');
@@ -1900,7 +1915,9 @@ function renderReport(r, opts){
     if(PM && pf && PP.offer && PP.offer.button) pf.onOffer(function(on){ if(window.discXbar) window.discXbar.text(on ? PP.offer.button : PM.button); });
   }
   // «Поделиться профилем» — окно со ссылкой и соцсетями; адреса соцсетей собираются только при нажатии (ссылку с кодом в разметку не пишем)
-  shareDialog(link, t('share.msg', {name: prof.name, key: cls.key}));
+  // ссылка для знакомых (с 2026-11-08): адрес страницы без меток визита того, кто делится (utm_source=chatgpt.com и т. п. — иначе
+  // знакомый считался бы пришедшим из ChatGPT), с меткой ?ref=share — по ней цель friend-open отличает присланную ссылку (Clean-param: ref в robots.txt)
+  shareDialog(location.origin + location.pathname + '?ref=share' + link.slice(link.indexOf('#')), t('share.msg', {name: prof.name, key: cls.key}));
   if($('#print')) $('#print').addEventListener('click', function(){ savePdf(r, cls.key, this); });
   if($('#restart')) $('#restart').addEventListener('click', function(){ dropHash(); renderIntro(); window.scrollTo(0,0); });
   if($('#backAdmin')) $('#backAdmin').addEventListener('click', function(){ renderAdmin(); window.scrollTo(0,0); });
