@@ -850,7 +850,7 @@ var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 var SUB_AB = +'0.5' || 0;
 var SUB_V = (SUB_AB > 0 && Math.random() < SUB_AB) ? 'b' : 'a';
 function subLabel(){ return SUB_V === 'b' && t('share.subscribeB') !== 'share.subscribeB' ? t('share.subscribeB') : t('share.subscribe'); }
-var EMAIL_STEP = +'0.5' || 0;   // доля прошедших тест, которым показывается экран «Куда прислать результат?» (emailStep в site.config.json; с 2026-11-01)
+var EMAIL_STEP = +'1' || 0;   // доля прошедших тест, которым показывается экран «Куда прислать результат?» (emailStep в site.config.json; с 2026-11-01)
 var HOME_SUB = '1' === '1'; // форма подписки на рассылку на стартовом экране (homeSubscribe в site.config.json, с 2026-10-22)
 var VERSION = 'DISC1';
 
