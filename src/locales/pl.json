@@ -665,14 +665,14 @@
           "h": "Gdzie dane są przechowywane i komu są przekazywane",
           "p": [
             "Baza wyników znajduje się na serwerze, który właściciel serwisu wynajmuje od dostawcy hostingu. E-maile wysyła usługa poczty elektronicznej. Firmy te przetwarzają dane na nasze zlecenie i wyłącznie na potrzeby działania serwisu. E-mail trafia na adres, który podajesz samodzielnie. Dane nie są przekazywane ani sprzedawane osobom trzecim do ich własnych celów.",
-            "Newsletter otrzymują tylko osoby, które zaznaczyły odrębną zgodę – w formularzu wysyłki wyniku, w formularzu zapisu do newslettera na stronie głównej albo w formularzu „Wyślij mi arkusz e-mailem” na stronie „Test w PDF”. Po wysłaniu formularza zapisu na stronie głównej przychodzi wiadomość z linkiem potwierdzającym: bez potwierdzenia newsletter nie jest wysyłany, a adres zostaje usunięty po 7 dniach. W formularzu „Wyślij mi arkusz e-mailem” subskrypcja zaczyna obowiązywać od razu po wysłaniu formularza, a w wiadomości z arkuszem jest link do rezygnacji. W bazie zapisywane są zgoda, jej data i treść, a twój adres e-mail, imię (jeśli je podano), język i wynik testu (jeśli wysłano go na e-mail) służą do wysyłania e-maili od disc-test.org: materiałów o DISC, nowych testów, porad dotyczących rozwoju kariery i szukania pracy, nowości z serwisu i ofert promocyjnych. W każdej chwili możesz zrezygnować: klikając link w dowolnej wiadomości albo pisząc na {email}.",
+            "Newsletter otrzymują tylko osoby, które zaznaczyły odrębną zgodę – w formularzu wysyłki wyniku, w formularzu zapisu do newslettera na stronie głównej albo w formularzu „Wyślij mi arkusz e-mailem” na stronie „Test w PDF”. Po wysłaniu formularza zapisu na stronie głównej przychodzi wiadomość z linkiem potwierdzającym: bez potwierdzenia newsletter nie jest wysyłany, a adres zostaje usunięty po 7 dniach. W formularzu „Wyślij mi arkusz e-mailem” subskrypcja zaczyna obowiązywać od razu po wysłaniu formularza, a w wiadomości z arkuszem jest link do rezygnacji. W bazie zapisywane są zgoda, jej data i treść, a twój adres e-mail, imię (jeśli je podano), język i wynik testu (jeśli wysłano go na e-mail) służą do wysyłania e-maili od disc-test.org: materiałów o DISC, nowych testów, porad dotyczących rozwoju kariery i szukania pracy, nowości z serwisu i ofert promocyjnych. Linki w wiadomościach newslettera prowadzą przez serwer serwisu: każda wiadomość ma własny znacznik, a serwer odnotowuje, czy i kiedy kliknięto link z tej wiadomości. Dzięki temu przypomnienie wysyłamy tylko osobom, które zainteresowała dana wiadomość, i wiemy, które wiadomości są przydatne. Te informacje przechowujemy do czasu rezygnacji z subskrypcji, ale nie dłużej niż rok. W każdej chwili możesz zrezygnować: klikając link w dowolnej wiadomości albo pisząc na {email}.",
             "Dostawca hostingu otrzymuje standardowe dane techniczne żądania: adres IP, typ przeglądarki, adres strony. Czcionki są przechowywane w samym serwisie. Statystyki odwiedzin zbiera system analityki internetowej: otrzymuje dane o wizycie – adres strony, źródło wejścia, typ urządzenia i przeglądarki – oraz zapis działań na stronie; pola z imieniem i adresem e-mail są z tego zapisu wyłączone. Na ekranie wyniku adres strony zawiera kod wyniku: odpowiedzi, datę testu i imię, jeśli je podano – bez adresu e-mail. Zbieranie danych można wyłączyć w ustawieniach przeglądarki albo za pomocą narzędzia blokującego skrypty śledzące. Reklamowe skrypty śledzące nie są używane."
           ]
         },
         {
           "h": "Podstawy przetwarzania i okresy przechowywania",
           "p": [
-            "Wynik wysłany na e-mail przetwarzamy na podstawie twojej zgody i przechowujemy przez trzy lata od daty wysyłki albo do wycofania zgody. Dane do newslettera – na podstawie odrębnej zgody, do czasu rezygnacji z subskrypcji; adres, którego subskrypcja nie została potwierdzona – przez 7 dni. Wiadomości z formularza kontaktowego – na podstawie zgody, przez rok od udzielenia odpowiedzi.",
+            "Wynik wysłany na e-mail przetwarzamy na podstawie twojej zgody i przechowujemy przez trzy lata od daty wysyłki albo do wycofania zgody. Dane do newslettera – na podstawie odrębnej zgody, do czasu rezygnacji z subskrypcji (informacje o kliknięciach w linki w wiadomościach – nie dłużej niż rok); adres, którego subskrypcja nie została potwierdzona – przez 7 dni. Wiadomości z formularza kontaktowego – na podstawie zgody, przez rok od udzielenia odpowiedzi.",
             "Gdy okres przechowywania upłynie albo wycofasz zgodę, dane są usuwane z bazy. Z kopii zapasowych znikają w miarę odświeżania tych kopii, nie później niż po sześciu miesiącach."
           ]
         },
@@ -1061,6 +1061,11 @@
           "left": "Zostało",
           "expired": "Cena specjalna już nie obowiązuje: raport kosztuje teraz {price} USD. Kliknij „Kup” jeszcze raz."
         },
+        "sale": {
+          "cta": "Promocja 11.11: raport za {salePrice} USD",
+          "note": "Cena promocyjna obowiązuje do końca dnia {day}; potem {price} USD",
+          "expired": "Promocja już się zakończyła: raport kosztuje teraz {price} USD. Kliknij „Kup” jeszcze raz."
+        },
         "note": "Klikając „Kup”, akceptujesz warunki {offer}. Dane karty podajesz na zabezpieczonej stronie płatności.",
         "badEmail": "Sprawdź adres e-mail: na niego wyślemy raport i dowód zakupu.",
         "wait": "Otwieramy stronę płatności…",
@@ -1221,6 +1226,18 @@
         "price": "{price} USD",
         "delivery": "Raport przyjdzie na ten adres zaraz po płatności.",
         "footer": "Dostajesz tę wiadomość, ponieważ {date} r. przy wysyłce wyniku testu na ten adres została zaznaczona zgoda na otrzymywanie wiadomości od {site}."
+      },
+      "sale": {
+        "label": "Promocja 11.11",
+        "subject": "{name}, promocja 11.11: raport rozszerzony {key} za {salePrice}",
+        "subjectNoName": "Promocja 11.11: rozszerzony raport DISC {key} za {salePrice}",
+        "preheader": "Tylko {day}: {salePrice} zamiast {price} za szczegółową analizę twojego profilu",
+        "intro": "Tylko {day} raport rozszerzony o twoim wyniku kosztuje {salePrice} zamiast {price}. Twój profil:",
+        "until": "Cena promocyjna obowiązuje do końca dnia {day}; potem {price}.",
+        "remindSubject": "{name}, promocja 11.11 kończy się dzisiaj",
+        "remindSubjectNoName": "Promocja 11.11 kończy się dzisiaj",
+        "remindPreheader": "Raport rozszerzony {key} za {salePrice} zamiast {price} – tylko do końca dnia",
+        "remindIntro": "Dziś ostatni dzień promocji: raport rozszerzony o twoim wyniku kosztuje {salePrice} zamiast {price}."
       }
     },
     "results": {

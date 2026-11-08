@@ -665,14 +665,14 @@
           "h": "Veriler nerede saklanır ve kimlere aktarılır",
           "p": [
             "Sonuç veri tabanı, site sahibinin bir barındırma sağlayıcısından kiraladığı bir sunucuda bulunur. E-postaları bir e-posta hizmeti gönderir. Bu şirketler verileri bizim talimatımızla ve yalnızca sitenin çalışması için işler. E-posta, kendi belirttiğiniz adrese gönderilir. Veriler, kendi amaçları için kullanmaları üzere üçüncü kişilere aktarılmaz ve satılmaz.",
-            "Bülteni yalnızca ayrı onay kutusunu işaretleyenler alır: sonuç gönderme formunda, ana sayfadaki abonelik formunda ya da “DISC testi PDF” sayfasındaki “PDF’i e-postama gönderin” formunda. Ana sayfadaki abonelik formunu gönderdikten sonra onay bağlantısı içeren bir e-posta gelir: onaylanmayan aboneliğe bülten gönderilmez ve adres 7 gün sonra silinir. “PDF’i e-postama gönderin” formunda abonelik, form gönderildiği anda başlar; PDF’i içeren e-postada abonelikten çıkma bağlantısı bulunur. Veri tabanına onay işareti, onayın tarihi ve metni kaydedilir; e-posta adresiniz, adınız (belirttiyseniz), diliniz ve test sonucunuz (e-postanıza gönderdiyseniz) size disc-test.org e-postalarını göndermek için kullanılır: DISC ile ilgili içerikler, yeni testler, kariyer gelişimi ve iş arama ipuçları, site haberleri ve tanıtım teklifleri. İstediğiniz zaman abonelikten çıkabilirsiniz: e-postadaki bağlantıdan ya da {email} adresine yazarak.",
+            "Bülteni yalnızca ayrı onay kutusunu işaretleyenler alır: sonuç gönderme formunda, ana sayfadaki abonelik formunda ya da “DISC testi PDF” sayfasındaki “PDF’i e-postama gönderin” formunda. Ana sayfadaki abonelik formunu gönderdikten sonra onay bağlantısı içeren bir e-posta gelir: onaylanmayan aboneliğe bülten gönderilmez ve adres 7 gün sonra silinir. “PDF’i e-postama gönderin” formunda abonelik, form gönderildiği anda başlar; PDF’i içeren e-postada abonelikten çıkma bağlantısı bulunur. Veri tabanına onay işareti, onayın tarihi ve metni kaydedilir; e-posta adresiniz, adınız (belirttiyseniz), diliniz ve test sonucunuz (e-postanıza gönderdiyseniz) size disc-test.org e-postalarını göndermek için kullanılır: DISC ile ilgili içerikler, yeni testler, kariyer gelişimi ve iş arama ipuçları, site haberleri ve tanıtım teklifleri. Bülten e-postalarındaki bağlantılar sitenin sunucusu üzerinden açılır: her e-postanın kendine özgü bir etiketi vardır ve sunucu, o e-postadaki bir bağlantıya tıklayıp tıklamadığınızı ve ne zaman tıkladığınızı kaydeder. Böylece hatırlatma e-postasını yalnızca e-postayla ilgilenenlere gönderir ve hangi e-postaların faydalı olduğunu anlarız. Bu kayıtlar abonelikten çıkana kadar, ancak en fazla bir yıl saklanır. İstediğiniz zaman abonelikten çıkabilirsiniz: e-postadaki bağlantıdan ya da {email} adresine yazarak.",
             "Barındırma hizmeti, isteğe ilişkin standart teknik verileri alır: IP adresi, tarayıcı türü, sayfa adresi. Yazı tipleri sitenin kendisinde barındırılır. Ziyaret istatistiklerini bir web analiz hizmeti toplar: ziyarete ilişkin verileri — sayfa adresi, ziyaretin geldiği kaynak, cihaz ve tarayıcı türü — ve sayfadaki hareketlerin kaydını alır; ad ve e-posta alanları bu kaydın dışında tutulur. Sonuç ekranında sayfa adresi sonuç kodunu içerir: yanıtlarınız, test tarihi ve belirttiyseniz adınız; e-posta adresiniz bu koda dahil değildir. Veri toplamayı tarayıcı ayarlarınızdan ya da bir izleyici engelleyiciyle devre dışı bırakabilirsiniz. Reklam amaçlı izleyiciler kullanılmaz."
           ]
         },
         {
           "h": "Hukuki dayanak ve saklama süreleri",
           "p": [
-            "E-postanıza gönderilen sonucu onayınıza dayanarak işler ve gönderim tarihinden itibaren üç yıl boyunca ya da onayınızı geri alana kadar saklarız. Bülten için kullanılan verileri ayrı bir onaya dayanarak, siz abonelikten çıkana kadar işleriz; aboneliği onaylanmamış adresleri 7 gün saklarız. İletişim formundan gelen mesajları onayınıza dayanarak işler ve yanıt verdikten sonra bir yıl saklarız.",
+            "E-postanıza gönderilen sonucu onayınıza dayanarak işler ve gönderim tarihinden itibaren üç yıl boyunca ya da onayınızı geri alana kadar saklarız. Bülten için kullanılan verileri ayrı bir onaya dayanarak, siz abonelikten çıkana kadar işleriz (e-postalardaki bağlantılara tıklamalarla ilgili kayıtları en fazla bir yıl saklarız); aboneliği onaylanmamış adresleri 7 gün saklarız. İletişim formundan gelen mesajları onayınıza dayanarak işler ve yanıt verdikten sonra bir yıl saklarız.",
             "Süre dolduğunda ya da onayınızı geri aldığınızda veriler veri tabanından silinir. Yedek kopyalardan ise kopyalar yenilendikçe, en geç altı ay içinde silinir."
           ]
         },
@@ -1056,6 +1056,11 @@
           "left": "Kalan süre",
           "expired": "Özel fiyatın süresi doldu: rapor artık {price} USD. “Satın al” düğmesine yeniden basın."
         },
+        "sale": {
+          "cta": "11.11 İndirimi: rapor yalnızca {salePrice} USD",
+          "note": "İndirimli fiyat {day} günü sonuna kadar geçerli; ardından {price} USD",
+          "expired": "İndirim sona erdi: rapor artık {price} USD. “Satın al” düğmesine yeniden basın."
+        },
         "note": "“Satın al” düğmesine bastığınızda {offer} kabul edilmiş olur. Kart bilgilerinizi güvenli bir ödeme sayfasında girersiniz.",
         "badEmail": "E-posta adresinizi kontrol edin: rapor ve makbuz bu adrese gönderilecek.",
         "wait": "Ödeme sayfası açılıyor…",
@@ -1216,6 +1221,18 @@
         "price": "{price} USD",
         "delivery": "Rapor, ödemeden hemen sonra bu adrese gelir.",
         "footer": "Bu e-postayı, {date} tarihinde test sonucunuzu kendinize gönderirken {site} e-postalarını almayı kabul ettiğiniz için aldınız."
+      },
+      "sale": {
+        "label": "11.11 İndirimi",
+        "subject": "{name}, 11.11 İndirimi: genişletilmiş {key} raporunuz {salePrice}",
+        "subjectNoName": "11.11 İndirimi: genişletilmiş DISC {key} raporu {salePrice}",
+        "preheader": "Yalnızca {day} günü: profilinizin ayrıntılı analizi {price} yerine {salePrice}",
+        "intro": "Yalnızca {day} günü, sonucunuza göre hazırlanan genişletilmiş rapor {price} yerine {salePrice}. Profiliniz:",
+        "until": "İndirimli fiyat {day} günü sonuna kadar geçerli; ardından {price}.",
+        "remindSubject": "{name}, 11.11 İndirimi bugün sona eriyor",
+        "remindSubjectNoName": "11.11 İndirimi bugün sona eriyor",
+        "remindPreheader": "Genişletilmiş DISC {key} raporu gün sonuna kadar {price} yerine {salePrice}",
+        "remindIntro": "Bugün indirimin son günü: sonucunuza göre hazırlanan genişletilmiş rapor {price} yerine {salePrice}."
       }
     },
     "results": {

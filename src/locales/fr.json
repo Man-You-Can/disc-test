@@ -667,14 +667,14 @@
           "h": "Où les données sont conservées et à qui elles sont transmises",
           "p": [
             "La base de résultats se trouve sur un serveur que le propriétaire du site loue auprès d'un hébergeur. Les e-mails sont envoyés par un service de messagerie. Ces sociétés traitent les données pour notre compte et uniquement pour le fonctionnement du site. L'e-mail part à l'adresse que vous avez vous-même indiquée. Les données ne sont ni transmises ni vendues à des tiers pour leurs propres finalités.",
-            "Seules les personnes ayant coché la case de consentement distincte — dans le formulaire d'envoi du résultat, dans le formulaire d'abonnement de la page d'accueil ou dans le formulaire « Recevoir le questionnaire par e-mail » de la page « Test en PDF » — reçoivent la newsletter. Après le formulaire d'abonnement de la page d'accueil, un e-mail contenant un lien de confirmation est envoyé : sans confirmation, la newsletter n'est pas envoyée et l'adresse est supprimée au bout de 7 jours. Avec le formulaire « Recevoir le questionnaire par e-mail », l'abonnement prend effet dès l'envoi du formulaire, et l'e-mail contenant le questionnaire comporte un lien de désabonnement. La base conserve le consentement, sa date et son texte, et votre adresse e-mail, votre nom (si vous l'avez indiqué), votre langue et le résultat de votre test (si vous vous l'êtes envoyé par e-mail) servent à vous envoyer des e-mails de disc-test.org : contenus sur le DISC, nouveaux tests, conseils pour l'évolution de carrière et la recherche d'emploi, actualités du site et offres promotionnelles. Vous pouvez vous désabonner à tout moment, via le lien présent dans chaque e-mail ou en écrivant à {email}.",
+            "Seules les personnes ayant coché la case de consentement distincte — dans le formulaire d'envoi du résultat, dans le formulaire d'abonnement de la page d'accueil ou dans le formulaire « Recevoir le questionnaire par e-mail » de la page « Test en PDF » — reçoivent la newsletter. Après le formulaire d'abonnement de la page d'accueil, un e-mail contenant un lien de confirmation est envoyé : sans confirmation, la newsletter n'est pas envoyée et l'adresse est supprimée au bout de 7 jours. Avec le formulaire « Recevoir le questionnaire par e-mail », l'abonnement prend effet dès l'envoi du formulaire, et l'e-mail contenant le questionnaire comporte un lien de désabonnement. La base conserve le consentement, sa date et son texte, et votre adresse e-mail, votre nom (si vous l'avez indiqué), votre langue et le résultat de votre test (si vous vous l'êtes envoyé par e-mail) servent à vous envoyer des e-mails de disc-test.org : contenus sur le DISC, nouveaux tests, conseils pour l'évolution de carrière et la recherche d'emploi, actualités du site et offres promotionnelles. Les liens des e-mails de la newsletter passent par le serveur du site : chaque e-mail porte son propre identifiant, et le serveur enregistre si vous avez cliqué sur un lien de cet e-mail et à quel moment. Cela nous permet d'envoyer un rappel uniquement aux personnes que l'e-mail a intéressées et de savoir quels e-mails sont utiles. Ces enregistrements sont conservés jusqu'au désabonnement, et au plus un an. Vous pouvez vous désabonner à tout moment, via le lien présent dans chaque e-mail ou en écrivant à {email}.",
             "L'hébergeur reçoit les données techniques habituelles de la requête : adresse IP, type de navigateur, adresse de la page. Les polices sont servies par ce site lui-même. Les statistiques de visite sont collectées par un service d'analyse d'audience : il reçoit des données de visite — l'adresse de la page, la provenance, le type d'appareil et de navigateur — et un enregistrement des actions sur la page ; les champs nom et e-mail sont exclus de l'enregistrement. Sur l'écran du résultat, l'adresse de la page contient le code du résultat : vos réponses, la date du test et votre nom si vous l'avez indiqué, mais pas votre e-mail. Vous pouvez arrêter la collecte dans les paramètres du navigateur ou avec un bloqueur de traceurs. Aucun traceur publicitaire n'est utilisé."
           ]
         },
         {
           "h": "Bases légales et durées de conservation",
           "p": [
-            "Le résultat envoyé par e-mail est traité sur la base de votre consentement et conservé trois ans à compter de la date d'envoi ou jusqu'au retrait du consentement. Les données destinées à la newsletter le sont sur la base d'un consentement distinct, jusqu'au désabonnement ; l'adresse dont l'abonnement n'a pas été confirmé, pendant 7 jours. Les messages du formulaire de contact, sur la base du consentement, pendant un an après la réponse.",
+            "Le résultat envoyé par e-mail est traité sur la base de votre consentement et conservé trois ans à compter de la date d'envoi ou jusqu'au retrait du consentement. Les données destinées à la newsletter le sont sur la base d'un consentement distinct, jusqu'au désabonnement (un an au plus pour les données relatives aux clics sur les liens des e-mails) ; l'adresse dont l'abonnement n'a pas été confirmé, pendant 7 jours. Les messages du formulaire de contact, sur la base du consentement, pendant un an après la réponse.",
             "Lorsque la durée expire ou que vous retirez votre consentement, les données sont supprimées de la base. Elles disparaissent des copies de sauvegarde au fur et à mesure du renouvellement de celles-ci, au plus tard au bout de six mois."
           ]
         },
@@ -2010,6 +2010,11 @@
           "left": "Il reste",
           "expired": "Le prix spécial a pris fin : le rapport coûte désormais {price} €. Cliquez de nouveau sur « Acheter »."
         },
+        "sale": {
+          "cta": "Offre 11.11 : le rapport à {salePrice} €",
+          "note": "Prix de l'offre valable jusqu'au {day} inclus, puis {price} €",
+          "expired": "L'offre a pris fin : le rapport coûte désormais {price} €. Cliquez de nouveau sur « Acheter »."
+        },
         "emailLabel": "E-mail pour recevoir le rapport en PDF",
         "nameLabel": "Nom pour le rapport",
         "nameHint": "Il figurera sur la couverture et les pages du rapport.",
@@ -2187,6 +2192,18 @@
         "price": "{price} €",
         "delivery": "Le rapport arrivera à cette adresse dès le paiement effectué.",
         "footer": "Vous recevez cet e-mail parce que, le {date}, vous avez accepté de recevoir les e-mails de {site} en vous envoyant le résultat du test."
+      },
+      "sale": {
+        "label": "Offre 11.11",
+        "subject": "{name}, offre 11.11 : votre rapport détaillé {key} à {salePrice}",
+        "subjectNoName": "Offre 11.11 : rapport DISC détaillé {key} à {salePrice}",
+        "preheader": "Le {day} uniquement : l'analyse détaillée de votre profil à {salePrice} au lieu de {price}",
+        "intro": "Le {day} uniquement, le rapport détaillé sur votre résultat coûte {salePrice} au lieu de {price}. Votre profil :",
+        "until": "Le prix de l'offre est valable jusqu'à la fin de la journée du {day}, puis {price}.",
+        "remindSubject": "{name}, l'offre 11.11 se termine aujourd'hui",
+        "remindSubjectNoName": "L'offre 11.11 se termine aujourd'hui",
+        "remindPreheader": "Rapport détaillé {key} : {salePrice} au lieu de {price} jusqu'à ce soir",
+        "remindIntro": "C'est aujourd'hui le dernier jour de l'offre : le rapport détaillé sur votre résultat coûte {salePrice} au lieu de {price}."
       }
     },
     "results": {

@@ -665,14 +665,14 @@
           "h": "Onde os dados ficam armazenados e a quem são transmitidos",
           "p": [
             "A base de resultados fica em um servidor que o responsável pelo site aluga de um provedor de hospedagem. Os e-mails são enviados por um serviço de e-mail. Essas empresas tratam os dados por nossa conta e apenas para o funcionamento do site. O e-mail segue para o endereço que você mesmo informou. Os dados não são repassados nem vendidos a terceiros para as finalidades deles.",
-            "A newsletter só é enviada a quem marcou a caixa de consentimento específica — no formulário de envio do resultado, no formulário de inscrição na newsletter da página inicial ou no formulário “Receber o questionário por e-mail” da página “Teste em PDF”. Depois do formulário de inscrição da página inicial, chega um e-mail com um link de confirmação: sem a confirmação, a newsletter não é enviada, e o endereço é apagado em 7 dias. No formulário “Receber o questionário por e-mail”, a inscrição vale assim que o formulário é enviado, e o e-mail com o questionário traz um link para cancelar a inscrição. A base guarda o consentimento, sua data e seu texto, e seu e-mail, nome (se você o informou), idioma e resultado do teste (se você o enviou para o seu e-mail) são usados para enviar mensagens do disc-test.org: materiais sobre DISC, novos testes, dicas de crescimento na carreira e de busca de emprego, novidades do site e ofertas promocionais. Você pode cancelar a inscrição a qualquer momento, pelo link de cada mensagem ou escrevendo para {email}.",
+            "A newsletter só é enviada a quem marcou a caixa de consentimento específica — no formulário de envio do resultado, no formulário de inscrição na newsletter da página inicial ou no formulário “Receber o questionário por e-mail” da página “Teste em PDF”. Depois do formulário de inscrição da página inicial, chega um e-mail com um link de confirmação: sem a confirmação, a newsletter não é enviada, e o endereço é apagado em 7 dias. No formulário “Receber o questionário por e-mail”, a inscrição vale assim que o formulário é enviado, e o e-mail com o questionário traz um link para cancelar a inscrição. A base guarda o consentimento, sua data e seu texto, e seu e-mail, nome (se você o informou), idioma e resultado do teste (se você o enviou para o seu e-mail) são usados para enviar mensagens do disc-test.org: materiais sobre DISC, novos testes, dicas de crescimento na carreira e de busca de emprego, novidades do site e ofertas promocionais. Os links dos e-mails da newsletter passam pelo servidor do site: cada e-mail tem uma marcação própria, e o servidor registra se você clicou em um link desse e-mail e quando. Assim, enviamos um lembrete só para quem se interessou pelo e-mail e entendemos quais e-mails são úteis. Esses registros ficam guardados até o cancelamento da inscrição, por no máximo um ano. Você pode cancelar a inscrição a qualquer momento, pelo link de cada mensagem ou escrevendo para {email}.",
             "O serviço de hospedagem recebe os dados técnicos habituais da requisição: endereço IP, tipo de navegador, endereço da página. As fontes são servidas pelo próprio site. As estatísticas de visitas são coletadas por um serviço de análise da web, que recebe dados de visita — o endereço da página, a origem da visita, o tipo de dispositivo e navegador — e uma gravação das ações na página; os campos de nome e e-mail ficam excluídos da gravação. Na tela do resultado, o endereço da página contém o código do resultado: suas respostas, a data do teste e seu nome, se você o informou, mas não o seu e-mail. Você pode impedir a coleta nas configurações do navegador ou com um bloqueador de rastreadores. Não são usados rastreadores publicitários."
           ]
         },
         {
           "h": "Bases legais e prazos de armazenamento",
           "p": [
-            "O resultado enviado por e-mail é tratado com base no seu consentimento e fica armazenado por três anos a partir da data de envio ou até a revogação do consentimento. Os dados para a newsletter, com base em um consentimento específico, até o cancelamento da inscrição; o endereço cuja inscrição não foi confirmada, por 7 dias. As mensagens do formulário de contato, com base no consentimento, por um ano após a resposta.",
+            "O resultado enviado por e-mail é tratado com base no seu consentimento e fica armazenado por três anos a partir da data de envio ou até a revogação do consentimento. Os dados para a newsletter, com base em um consentimento específico, até o cancelamento da inscrição (os registros de cliques nos links dos e-mails, por no máximo um ano); o endereço cuja inscrição não foi confirmada, por 7 dias. As mensagens do formulário de contato, com base no consentimento, por um ano após a resposta.",
             "Quando o prazo termina ou você revoga o consentimento, os dados são excluídos da base. Das cópias de segurança, eles desaparecem à medida que as cópias são renovadas, em no máximo seis meses."
           ]
         },
@@ -1060,6 +1060,11 @@
           "left": "Restam",
           "expired": "O preço especial já terminou: agora o relatório custa US$ {price}. Clique em “Comprar” de novo."
         },
+        "sale": {
+          "cta": "Promoção 11.11: relatório por US$ {salePrice}",
+          "note": "Preço promocional até o fim do dia {day}; depois, US$ {price}",
+          "expired": "A promoção já terminou: agora o relatório custa US$ {price}. Clique em “Comprar” de novo."
+        },
         "emailLabel": "E-mail para receber o relatório em PDF",
         "nameLabel": "Nome para o relatório",
         "nameHint": "Ele aparecerá na capa e nas páginas do relatório.",
@@ -1237,6 +1242,18 @@
         "price": "US$ {price}",
         "delivery": "O relatório chega neste e-mail logo após o pagamento.",
         "footer": "Você recebeu este e-mail porque, em {date}, aceitou receber mensagens do {site} quando enviou o resultado do teste para o seu e-mail."
+      },
+      "sale": {
+        "label": "Promoção 11.11",
+        "subject": "{name}, Promoção 11.11: relatório ampliado {key} por {salePrice}",
+        "subjectNoName": "Promoção 11.11: relatório DISC ampliado {key} por {salePrice}",
+        "preheader": "Só no dia {day}: a análise detalhada do seu perfil por {salePrice} em vez de {price}",
+        "intro": "Só no dia {day}, o relatório ampliado do seu resultado custa {salePrice} em vez de {price}. Seu perfil:",
+        "until": "O preço promocional vale até o fim do dia {day}; depois, {price}.",
+        "remindSubject": "{name}, a Promoção 11.11 termina hoje",
+        "remindSubjectNoName": "A Promoção 11.11 termina hoje",
+        "remindPreheader": "Relatório ampliado {key}: {salePrice} em vez de {price} até o fim do dia",
+        "remindIntro": "Hoje é o último dia da promoção: o relatório ampliado do seu resultado custa {salePrice} em vez de {price}."
       }
     },
     "results": {

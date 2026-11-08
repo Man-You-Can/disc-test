@@ -96,6 +96,15 @@ for (const f of files) {
   if (P.pay && !P.promo) errs.push('.content.product.promo: missing — the report is on sale in this language, so everything done for sales in the Russian version applies here (CLAUDE.md)');
   // письмо подписчикам о расширенном отчёте (с 2026-10-25, во всех языках с покупкой) — по этому же правилу
   if (P.pay && !(C.mailing && C.mailing.promo)) errs.push('.content.mailing.promo: missing — the report is on sale in this language, so the subscriber mail goes with it (CLAUDE.md)');
+  // распродажа для подписчиков (с 2026-11-08, private/server/src/sale.js): письмо и напоминание (mailing.sale) и плашка формы покупки (product.pay.sale) — по этому же правилу
+  if (P.pay && !(C.mailing && C.mailing.sale)) errs.push('.content.mailing.sale: missing — the report is on sale in this language, so the sale mail goes with it (CLAUDE.md)');
+  if (P.pay && !P.pay.sale) errs.push('.content.product.pay.sale: missing — the report is on sale in this language, so the sale plate goes with it (CLAUDE.md)');
+  if (P.pay && P.pay.sale && !['cta', 'note', 'expired'].every(k => typeof P.pay.sale[k] === 'string' && P.pay.sale[k])) errs.push('.content.product.pay.sale: needs cta, note and expired');
+  if (P.pay && P.pay.sale && !/\{salePrice\}/.test(P.pay.sale.cta)) errs.push('.content.product.pay.sale.cta: needs {salePrice}');
+  if (P.pay && P.pay.sale && !/\{day\}/.test(P.pay.sale.note)) errs.push('.content.product.pay.sale.note: needs {day}');
+  const MS = C.mailing && C.mailing.sale;
+  if (MS) for (const k of ['subject', 'subjectNoName', 'preheader', 'intro', 'until', 'remindSubject', 'remindPreheader', 'remindIntro']) if (!/\{salePrice\}|\{day\}|\{name\}/.test(String(MS[k] || '')) && k !== 'remindSubject' && k !== 'subjectNoName') errs.push('.content.mailing.sale.' + k + ': expected {salePrice}, {day} or {name}');
+  if (MS && code !== 'ru' && /Моск|Moscow|Russia|Росси/i.test(JSON.stringify(MS))) errs.push('.content.mailing.sale: non-Russian versions do not name Russia or Moscow time (CLAUDE.md)');
   // «Для организаций»: страница и пункт в подвале — вместе; продаются коды доступа, поэтому нужны поле кода в покупке и письмо по коду
   // бумажный бланк и набор ведущего (с 2026-10-25): появляются в языке только вместе — QR-коды бланка ведут на набор, письмо с бланком — тоже
   if (!!C.kit !== !!C.paper) errs.push('.content.kit and .content.paper must come together (the blank links to the kit)');

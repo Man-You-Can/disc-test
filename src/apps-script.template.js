@@ -512,6 +512,81 @@ function composePromoMail(r, lang, o) {
   return { subject: subject, preheader: preheader, html: html, text: text };
 }
 
+/**
+ * Письмо распродажи для подписчиков и вечернее напоминание (с 2026-11-08, решение заказчика — «вариант В»; отправляет свой сервер, src/sale.js).
+ * Тексты — DATA[язык].sale (content.mailing.sale); тезисы, листы образца, кнопка, «бесплатно», строка о самой низкой шкале, подвал — из письма подписчикам (DATA[язык].promo).
+ * o: {code — код результата (дописывается к ссылке после «#»), consentAt — дата согласия на рассылку (Date), unsubUrl — ссылка отписки,
+ *     href — адрес ссылок письма (сервер: отметка перехода и переадресация на страницу отчёта), remind — вечернее напоминание (короче),
+ *     sale: {price, regular — цены в валюте языка, end — конец распродажи (Date), day — 'ГГГГ-ММ-ДД'}}.
+ * Возвращает {subject, preheader, html, text}.
+ */
+function composeSaleMail(r, lang, o) {
+  var L = DATA[lang], X = L.sale, P = L.promo, rtl = L.dir === 'rtl', start = rtl ? 'right' : 'left';
+  var cjk = /^(zh|ja)/.test(lang), gap = cjk ? '' : ' ', stop = cjk ? '。' : '.';
+  var sc = score(r), c = classify(sc), prof = L.profiles[c.key];
+  var low = KEYS.slice().sort(function (x, y) { return sc.net[y] - sc.net[x]; })[3];
+  var site = SITE_URL.replace(/^https?:\/\//, ''), home = langHome(lang), loc = P.dateLocale || 'ru-RU';
+  var href = o.href + '#r=' + o.code;   // код после «#» до сервера не доходит: браузер переносит его на адрес переадресации
+  var num = function (v) { try { return new Intl.NumberFormat(loc, v % 1 ? { minimumFractionDigits: 2, maximumFractionDigits: 2 } : {}).format(v); } catch (e) { return String(v); } };
+  var priceText = fmt(P.price, { price: num(o.sale.regular) }), saleText = fmt(P.price, { price: num(o.sale.price) });
+  // день распродажи словами в языке («11 ноября», «November 11»); пробелы внутри — неразрывные
+  var dayText;
+  try { dayText = new Intl.DateTimeFormat(loc, { timeZone: 'UTC', day: 'numeric', month: 'long' }).format(new Date(o.sale.day + 'T12:00:00Z')).replace(/ /g, ' '); } catch (e) { dayText = o.sale.day; }
+  var name = String(r.name || '').trim();
+  var vars = { name: name, key: c.key, salePrice: saleText, price: priceText, day: dayText };
+  var subject = o.remind ? fmt(name ? X.remindSubject : X.remindSubjectNoName, vars) : fmt(name ? X.subject : X.subjectNoName, vars);
+  var preheader = fmt(o.remind ? X.remindPreheader : X.preheader, vars);
+  var greeting = name ? fmt(L.email.greeting, { name: name }) : P.greetingNoName;
+  var intro = fmt(o.remind ? X.remindIntro : X.intro, vars), until = fmt(X.until, vars);
+  var hook = fmt(P.hook, { k: low, scale: P.scales[low], pct: pct(sc.net[low]) });
+  var styleName = c.s ? L.keys[c.p] + ' + ' + L.keys[c.s] : L.keys[c.p];
+  function day(d) {
+    if (lang !== 'ru' && P.dateLocale) { try { return new Intl.DateTimeFormat(P.dateLocale, { timeZone: 'Europe/Moscow', day: 'numeric', month: 'long', year: 'numeric' }).format(d).replace(/ /g, ' '); } catch (e) {} }
+    return Utilities.formatDate(d, 'Europe/Moscow', 'dd.MM.yyyy');
+  }
+  function withSite(s, v, color) { return esc(fmt(s, Object.assign({ site: '\u0001' }, v))).replace('\u0001', '<a href="' + esc(home) + '" style="color:' + color + '">' + esc(site) + '</a>'); }
+  var dot = function (k, m) { return '<span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:' + COLORS[k] + ';margin-' + (rtl ? 'left' : 'right') + ':' + m + ';vertical-align:middle"></span>'; };
+  var badge = '<span style="color:' + COLORS[c.p] + '">' + c.p + '</span>' + (c.s ? '<span style="color:' + COLORS[c.s] + ';font-size:22px">' + c.s + '</span>' : '');
+  var price = fmt(P.priceLine, { price: '\u0000' }).split('\u0000');
+  var image = P.image ? SITE_URL + '/extended/' + lang + '-mail.jpg' : '';
+  // карточка покупки в красной рамке: метка распродажи, зачёркнутая обычная цена и цена распродажи, срок, кнопка, срок доставки
+  var card = '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 22px;border:2px solid #C0392B;border-radius:12px"><tr><td style="padding:16px 14px">' +
+    '<p style="margin:0 0 10px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:bold;color:#C0392B">' + esc(X.label) + '</p>' +
+    '<p style="margin:0 0 12px;font-size:15px">' + esc(price[0]) + '<s style="color:#5B6470">' + esc(priceText) + '</s>&nbsp; <b style="font-size:24px;color:#C0392B">' + esc(saleText) + '</b>' + esc(price[1] || '') + '</p>' +
+    '<p style="margin:-4px 0 12px;font-size:14px;line-height:1.45;color:#C0392B">' + esc(until) + '</p>' +
+    '<a href="' + esc(href) + '" style="display:block;background:#1B2027;color:#ffffff;text-decoration:none;font-size:15px;font-weight:bold;text-align:center;padding:13px 8px;border-radius:8px">' + esc(P.button) + '</a>' +
+    '<p style="margin:12px 0 0;font-size:13px;line-height:1.45;color:#5B6470">' + esc(P.delivery) + '</p>' +
+    '</td></tr></table>';
+  var footer = '<p style="margin:0;padding-top:12px;border-top:1px solid #D9DDE3;font-size:12px;color:#5B6470">' + withSite(P.footer, { date: day(o.consentAt) }, '#5B6470') +
+    gap + '<a href="' + esc(o.unsubUrl) + '" style="color:#5B6470">' + esc(L.email.unsubscribe) + '</a>' + stop + '</p>';
+  var head = '<p style="margin:0 0 8px">' + esc(greeting) + '</p>' +
+    '<p style="margin:0 0 14px">' + esc(intro) + '</p>' +
+    '<p style="margin:0 0 2px;font-size:34px;font-weight:bold;line-height:1">' + badge + '&nbsp; ' + esc(prof.name) + '</p>' +
+    '<p style="margin:0 0 18px;font-size:13px;color:#5B6470">' + esc(styleName) + '</p>';
+  var body = o.remind ? head + card :
+    head + '<p style="margin:0 0 18px;padding:8px 12px;background:#F3F4F6;border-' + start + ':3px solid ' + COLORS[low] + '">' + esc(hook) + '</p>' +
+    '<p style="margin:0 0 6px;font-weight:bold">' + esc(P.listTitle) + '</p>' +
+    '<ul style="margin:0 0 14px;padding-' + start + ':20px">' + P.list.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') + '</ul>' +
+    (image ? '<p style="margin:0 0 6px"><a href="' + esc(href) + '"><img src="' + esc(image) + '" width="504" alt="' + esc(P.imageAlt) + '" style="display:block;width:100%;max-width:504px;height:auto;border:0"></a></p>' +
+      (P.sample ? '<p style="margin:0 0 14px;font-size:12px;color:#5B6470">' + esc(P.sample) + '</p>' : '') : '') +
+    '<p style="margin:0 0 18px">' + esc(P.size) + '</p>' + card;
+  var html = '<!DOCTYPE html><html lang="' + lang + '" dir="' + (L.dir || 'ltr') + '"><body style="margin:0;background:#F3F4F6;font-family:Arial,Helvetica,sans-serif;color:#1B2027">' +
+    // анонс: почтовые программы показывают его под темой в списке писем
+    '<div style="display:none;max-height:0;max-width:0;overflow:hidden;mso-hide:all;font-size:1px;line-height:1px;color:#F3F4F6;opacity:0">' + esc(preheader) + new Array(41).join('&#8199;&#847;') + '</div>' +
+    '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F3F4F6"><tr><td align="center" style="padding:24px 12px">' +
+    '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background:#ffffff;border:1px solid #D9DDE3;border-radius:14px"><tr><td style="padding:28px;font-size:16px;line-height:1.5">' +
+    '<p style="margin:0 0 16px;font-size:12px;line-height:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:bold"><a href="' + esc(home) + '" style="color:#5B6470;text-decoration:none">' +
+      dot('D', '3px') + dot('I', '3px') + dot('S', '3px') + dot('C', '10px') + '<span style="vertical-align:middle">DISC</span></a></p>' +
+    body + '<p style="margin:0 0 22px;font-size:13px;color:#5B6470">' + esc(P.free) + '</p>' + footer +
+    '</td></tr></table></td></tr></table></body></html>';
+  var text = greeting + '\n\n' + intro + '\n' + c.key + ' · ' + prof.name + ' (' + styleName + ')\n\n' +
+    (o.remind ? '' : hook + '\n\n' + P.listTitle + '\n' + P.list.map(function (t) { return '— ' + t; }).join('\n') + '\n\n' + P.size + '\n\n') +
+    X.label + '\n' + fmt(P.priceLine, { price: fmt(P.offerVs || '{offerPrice} / {price}', { offerPrice: saleText, price: priceText }) }) + '\n' + until + '\n' +
+    P.button + ': ' + href + '\n' + P.delivery + '\n' + P.free + '\n\n' +
+    fmt(P.footer, { date: day(o.consentAt), site: site }) + '\n' + L.email.unsubscribe + ': ' + o.unsubUrl + '\n';
+  return { subject: subject, preheader: preheader, html: html, text: text };
+}
+
 /** Отметка в строке результата; повторная отправка дописывается к прежней через «; ». */
 function noteExtended(saved, text) {
   if (!saved) return;

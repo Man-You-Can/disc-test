@@ -665,14 +665,14 @@
           "h": "Where the data is stored and who receives it",
           "p": [
             "The results database is on a server that the site owner rents from a hosting provider. Emails are sent by a mail service. These companies process the data on our instructions and only to keep the site running. The email goes to the address you entered yourself. The data is not passed or sold to third parties for their own purposes.",
-            "Only people who ticked the separate consent box — in the result form, in the newsletter sign-up form on the home page or in the “Email me the test form” form on the “PDF test” page — receive our newsletter. After the sign-up form on the home page, you receive an email with a confirmation link: without confirmation no newsletter is sent, and the address is deleted after 7 days. With the “Email me the test form” form, the subscription starts as soon as you submit the form, and the email with the test form contains an unsubscribe link. The database stores the fact of consent, its date and its wording, and your email address, name (if you entered it), language and test result (if you sent it to yourself by email) are used to send you emails from disc-test.org: DISC materials, new tests, career growth and job-search tips, site news and promotional offers. You can unsubscribe at any time, using the link in any email or by writing to {email}.",
+            "Only people who ticked the separate consent box — in the result form, in the newsletter sign-up form on the home page or in the “Email me the test form” form on the “PDF test” page — receive our newsletter. After the sign-up form on the home page, you receive an email with a confirmation link: without confirmation no newsletter is sent, and the address is deleted after 7 days. With the “Email me the test form” form, the subscription starts as soon as you submit the form, and the email with the test form contains an unsubscribe link. The database stores the fact of consent, its date and its wording, and your email address, name (if you entered it), language and test result (if you sent it to yourself by email) are used to send you emails from disc-test.org: DISC materials, new tests, career growth and job-search tips, site news and promotional offers. Links in our newsletter emails go through the site’s server: each email has its own tag, and the server records whether and when you clicked a link in that email. This lets us send a reminder only to people who found an email interesting and see which emails are useful. These records are kept until you unsubscribe, but for no longer than one year. You can unsubscribe at any time, using the link in any email or by writing to {email}.",
             "The hosting provider receives standard technical request data: IP address, browser type, page address. Fonts are served from this site itself. Visit statistics are collected by a web analytics system: it receives visit data, namely the page address, the referrer, device and browser type, and a recording of on-page actions; the name and email fields are excluded from the recording. On the result screen, the page address contains the result code: your answers, the test date and your name if you entered it, but not your email. You can stop the collection in your browser settings or with a tracker blocker. No advertising trackers are used."
           ]
         },
         {
           "h": "Legal basis and retention periods",
           "p": [
-            "We process a result sent by email on the basis of your consent and keep it for three years from the date it was sent or until you withdraw your consent. Newsletter data is processed on the basis of a separate consent, until you unsubscribe; an address whose subscription has not been confirmed is kept for 7 days. Messages from the contact form are processed on the basis of consent and kept for one year after our reply.",
+            "We process a result sent by email on the basis of your consent and keep it for three years from the date it was sent or until you withdraw your consent. Newsletter data is processed on the basis of a separate consent, until you unsubscribe (records of clicks on links in emails are kept for no longer than one year); an address whose subscription has not been confirmed is kept for 7 days. Messages from the contact form are processed on the basis of consent and kept for one year after our reply.",
             "When the period expires or you withdraw your consent, the data is deleted from the database. It disappears from backups as they are refreshed, no later than six months afterwards."
           ]
         },
@@ -1999,6 +1999,11 @@
           "left": "Time left",
           "expired": "The special price has ended: the report now costs US${price}. Click “Buy” again."
         },
+        "sale": {
+          "cta": "The 11.11 Sale: your report for US${salePrice}",
+          "note": "Sale price until the end of {day}, then US${price}",
+          "expired": "The sale has ended: the report now costs US${price}. Click “Buy” again."
+        },
         "emailLabel": "Email to receive your report as a PDF",
         "nameLabel": "Name for the report",
         "nameHint": "It will appear on the cover and pages of your report.",
@@ -2176,6 +2181,18 @@
         "price": "US${price}",
         "delivery": "The report will arrive at this address right after payment.",
         "footer": "You’re receiving this email because on {date}, you agreed to receive emails from {site} when you sent yourself your test result."
+      },
+      "sale": {
+        "label": "11.11 Sale",
+        "subject": "{name}, 11.11 Sale: your in-depth {key} report for {salePrice}",
+        "subjectNoName": "11.11 Sale: your in-depth DISC {key} report for {salePrice}",
+        "preheader": "{day} only: a detailed look at your profile for {salePrice} instead of {price}",
+        "intro": "On {day} only, the in-depth report on your result costs {salePrice} instead of {price}. Your profile:",
+        "until": "The sale price is valid until the end of {day}, then {price}.",
+        "remindSubject": "{name}, the 11.11 Sale ends today",
+        "remindSubjectNoName": "The 11.11 Sale ends today",
+        "remindPreheader": "Your in-depth {key} report: {salePrice} instead of {price} until the end of the day",
+        "remindIntro": "Today is the last day of the sale: the in-depth report on your result costs {salePrice} instead of {price}."
       }
     },
     "results": {

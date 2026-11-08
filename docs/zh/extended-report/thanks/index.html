@@ -1163,7 +1163,10 @@ function payClock(ms){ var s = Math.max(0, Math.ceil(ms / 1000)), h = Math.floor
    (или по ответу сервера «offer expired») формы показывают обычную цену. g.onOffer(fn) — fn(on) при смене цены (закреплённая кнопка).
    Специальная цена показывается, только когда она включена в панели (discOffer в src/common.js; с 2026-10-25): пока ответа нет — обычная цена;
    ответ сервера «offer off» (выключили, пока страница была открыта) — формы переходят на обычную цену. Цены и срок — из панели, когда ответ
-   сервера уже есть (discPriceNow), иначе — со сборки (T.offer); ответ «price» (цену только что сменили) — формы спрашивают цены заново. */
+   сервера уже есть (discPriceNow), иначе — со сборки (T.offer); ответ «price» (цену только что сменили) — формы спрашивают цены заново.
+   Распродажа для подписчиков (с 2026-11-08; T.sale — тексты content.product.pay.sale, сервер — private/server/src/sale.js): форма, открытая по ссылке
+   из письма распродажи (источник sale или sale2), показывает цену распродажи с отсчётом до конца её дня — цены и срок из ответа сервера (discOffer.data.sale[язык]);
+   переключатель специальной цены на неё не влияет. Сервер принимает цену распродажи только в её сутки, позже — «offer expired», и форма переходит на обычную цену. */
 function payForms(c){
   var T = c.T, esc = c.esc, O = T.offer || null, g = {busy:false, forms:[], subs:[], tick:0};
   /* включена ли специальная цена в панели (discOffer в src/common.js): true — да, false — нет, null — ответа ещё нет (до ответа — обычная цена) */
@@ -1172,6 +1175,11 @@ function payForms(c){
   function nums(){ var n = typeof discPriceNow === 'function' ? discPriceNow() : null;
     return {price: n && n.offer ? n.offer : O ? O.price : 0, regular: n ? n.regular : O ? O.regular : 0, ms: n && n.minutes ? n.minutes * 60000 : O ? O.ms : 0}; }
   var pstr = function(x){ return typeof discPriceStr === 'function' ? discPriceStr(x) : x; };
+  var num = function(v){ return typeof discNum === 'function' ? discNum(v) : String(v); };
+  /* распродажа для формы f: {price, regular, start, end, day} из ответа сервера или null */
+  function saleOf(f){ if(!T.sale || !/^sale/.test(f.source || '') || typeof discOffer !== 'function') return null;
+    var d = discOffer.data, S = d && d.sale && d.sale[c.L.lang]; return S && +S.price > 0 ? S : null; }
+  function saleDay(S){ var d = new Date(S.day + 'T12:00:00Z'); try{ return d.toLocaleDateString(c.L.dateLocale, {day:'numeric', month:'long', timeZone:'UTC'}).replace(/ /g, '\u00a0'); }catch(e){ return S.day; } }
   if(typeof discOfferWatch === 'function') discOfferWatch(function(){ g.paint(); });
   g.onOffer = function(fn){ g.subs.push(fn); fn(g.on === true); };
   g.paint = function(){
@@ -1183,6 +1191,14 @@ function payForms(c){
       f.price = O ? (on ? N.price : N.regular) : N.regular;
       // каждая цена не переносится внутри себя; две цены (xdual) на узком экране мельче и при нехватке места встают в две строки
       var html = O ? (on ? '<s class="xold"><span class="vh">'+esc(O.regularLabel)+' </span>'+esc(pstr(O.regularText))+'</s> <span class="xnew">'+esc(pstr(O.priceText))+'</span>' : '<span class="xnew">'+esc(pstr(O.regularText))+'</span>') : null;
+      // распродажа (ссылка из письма распродажи): цена распродажи и отсчёт до конца её дня; ответа сервера ещё нет — спросить
+      var S = saleOf(f), sEnd = S ? Date.parse(S.end) : 0, sOn = !!S && !f.over && now < sEnd && now >= Date.parse(S.start) - 600000;
+      if(T.sale && /^sale/.test(f.source || '') && typeof discOffer === 'function' && !discOffer.data && discOffer.on !== false) ask = true;
+      if(sOn){ on = true; f.until = sEnd; f.price = +S.price;
+        var reg = T.sale.regularTpl.replace('\u0001', num(+S.regular)), sp = T.sale.regularTpl.replace('\u0001', num(+S.price));
+        html = '<s class="xold"><span class="vh">'+esc(T.sale.regularLabel)+' </span>'+esc(reg)+'</s> <span class="xnew">'+esc(sp)+'</span>';
+        if(f.dealB){ f.dealB.textContent = T.sale.cta.replace('{salePrice}', num(+S.price)); f.dealS.textContent = pstr(T.sale.note).replace('{day}', saleDay(S)); f.saleMode = true; } }
+      else if(f.saleMode){ f.saleMode = false; f.dealB.textContent = pstr(O.cta); f.dealS.textContent = pstr(O.note); }   // распродажа кончилась — плашка снова о специальной цене
       if(f.big && html !== null && f.big.innerHTML !== html){ f.big.innerHTML = html; f.big.classList.toggle('xdual', on); }
       f.deal.hidden = !on; if(on){ f.clock.textContent = payClock(f.until - now); f.clock.classList.toggle('xlong', f.until - now >= 3600000); }
     });
@@ -1214,6 +1230,7 @@ function payForms(c){
       (T.code ? payCodeHTML(T.code, o.id, esc) : '');
     var f = {form:form, input:form.querySelector('input[type=email]'), nameInput:form.querySelector('.xname input'), btn:form.querySelector('button'), st:form.querySelector('.sendstatus'), deal:form.querySelector('.xdeal'), clock:form.querySelector('.xdeal span'),
       big: o.priceEl || form.querySelector('.xbig'), t: o.t, source: o.source, until: 0, over: false, price: 0}, input = f.input, st = f.st;
+    f.dealB = O ? form.querySelector('.xdeal-t b') : null; f.dealS = O ? form.querySelector('.xdeal-t small') : null;
     /* код результата для заказа: с полем имени — с введённым именем (оно же запоминается в браузере для следующих покупок и писем); null — имени нет */
     f.code = function(){
       if(!f.nameInput) return o.code;
@@ -1244,7 +1261,7 @@ function payForms(c){
       fetch(c.endpoint + '/order', {method:'POST', body: JSON.stringify(body)})
         .then(function(res){ return res.text(); })
         .then(function(txt){ var j = null; try{ j = JSON.parse(txt); }catch(e){}
-          if(j && !j.ok && j.error === 'offer expired' && O){ g.forms.forEach(function(x){ x.over = true; }); g.paint(); throw new Error('offer expired'); }
+          if(j && !j.ok && j.error === 'offer expired' && (O || saleOf(f))){ g.forms.forEach(function(x){ x.over = true; }); g.paint(); throw new Error(saleOf(f) ? 'sale over' : 'offer expired'); }
           // цену только что сменили в панели: формы спрашивают текущие цены и показывают обычную, покупатель нажимает «Купить» снова
           if(j && !j.ok && j.error === 'price'){ throw new Error('price'); }
           // специальную цену только что выключили в панели: формы переходят на обычную цену, покупатель видит её и нажимает «Купить» снова
@@ -1257,6 +1274,7 @@ function payForms(c){
         .catch(function(err){ g.setBusy(false); st.hidden = false;
           if(err && err.message === 'bad email'){ st.textContent = T.badEmail; input.focus(); }
           else if(err && err.message === 'offer expired'){ st.textContent = O.expired; }
+          else if(err && err.message === 'sale over'){ st.textContent = pstr(T.sale.expired); }
           else if(err && err.message === 'offer off'){ st.textContent = O.regularLabel + ': ' + pstr(O.regularText); }
           else if(err && err.message === 'price' && O && typeof discOfferRefresh === 'function'){ st.hidden = true; discOfferRefresh(c.endpoint + '/offer', function(){ g.paint(); st.textContent = g.on ? pstr(O.cta) : O.regularLabel + ': ' + pstr(O.regularText); st.hidden = false; }); }
           else { st.innerHTML = T.errorHtml; payTrack('ext-pay-error'); } });

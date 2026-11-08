@@ -154,6 +154,11 @@ const payOffer = L => { if (!offerPrice(L)) return null; const P = L.content.pro
   return { price: lp[1], regular: lp[0], ms: offerMinutes * 60000, priceText: withPrice(L, P.price).replace(markR(L), markO(L)),
     regularText: withPrice(L, P.price), regularLabel: O.regular, cta: O.cta, note: O.note, left: O.left, expired: O.expired,
     button: P.promo ? withPrice(L, P.promo.button).replace(markR(L), markO(L)) : '' }; };
+// Распродажа для подписчиков (с 2026-11-08; private/server/src/sale.js): тексты плашки формы покупки, открытой по ссылке из письма распродажи (src/pay.js, T.sale).
+// Цены и день распродажи сайт берёт из ответа сервера; {salePrice} и {day} подставляет страница, {price} — обычная цена языка (метка сборки);
+// regularTpl — запись цены языка («{price} ₽», «US${price}») с U+0001 на месте числа.
+const paySale = L => { const P = L.content.product, S = P && P.pay && P.pay.sale; if (!S) return null; const W = withPrice(L, S);
+  return { cta: W.cta, note: W.note, expired: W.expired, regularLabel: P.pay.offer ? P.pay.offer.regular : '', regularTpl: P.price.replace('{price}', '\u0001') }; };
 // Закреплённая кнопка расширенного отчёта (src/common.js, window.DISC_XBAR): надпись с обычной ценой, со специальной (пусто — её нет в языке), адрес, где спросить,
 // включена ли специальная цена в панели (GET <payEndpoint>/offer, с 2026-10-25), срок специальной цены, «Скрыть»
 const xbarCfg = L => { const PM = withPrice(L, L.content.product.promo), O = payOffer(L); return { button: PM.button, offer: O ? O.button : '', offerUrl: O && payEndpoint ? payEndpoint + '/offer' : '', ms: offerMinutes * 60000, close: PM.close }; };
@@ -454,7 +459,7 @@ function homePay(L) {
   const C = L.content, pay = payEndpoint && C.product && C.product.pay ? withPrice(L, C.product.pay) : null; if (!pay) return null;
   const vars = { offer: `<a href="{base}offer/">${escFull(C.offer.linkText)}</a>`, email: feedbackEmail ? `<a href="mailto:${escFull(feedbackEmail)}">${escFull(feedbackEmail)}</a>` : '—' };
   const fill = h => h.replace(/\{(offer|email)\}/g, (m, k) => vars[k]);
-  return Object.assign({ noteHtml: fill(escFull(pay.note)), errorHtml: fill(escFull(pay.error)), more: C.product.more, offer: payOffer(L), code: payCodeT(L, fill) },
+  return Object.assign({ noteHtml: fill(escFull(pay.note)), errorHtml: fill(escFull(pay.error)), more: C.product.more, offer: payOffer(L), sale: paySale(L), code: payCodeT(L, fill) },
     Object.fromEntries(['text', 'emailLabel', 'emailPlaceholder', 'button', 'badEmail', 'wait', 'guarantee', 'payPage', 'nameLabel', 'nameHint', 'nameRequired'].map(k => [k, pay[k]])));
 }
 // Организация-издатель: одна карточка на весь сайт, с адресом для связи
@@ -1234,7 +1239,7 @@ for (const L of locales) {
           `<p class="seealso">${docLink('services/', sv)} · ${docLink('offer/', of)} · ${docLink('refund/', rf)}</p>`,
         files: samples ? pr.sampleAlt.map((_, i) => `src/assets/extended/${L.lang}-i-${i + 1}.webp`) : [],
         pageJs: resultFromUrlJs + (pay ? payJs + `\ninitPayBuy({T: ${JSON.stringify(Object.assign({ noteHtml: fillHtml(escFull(pay.note)), errorHtml: fillHtml(escFull(pay.error)) },
-          Object.fromEntries(['title', 'text', 'emailLabel', 'emailPlaceholder', 'button', 'badEmail', 'wait', 'guarantee', 'payPage', 'nameLabel', 'nameHint', 'nameRequired'].map(k => [k, pay[k]])), { offer: payOffer(L), code: payCodeT(L, fillHtml) })).replace(/</g, '\\u003c')}, endpoint: ${jsStr(payEndpoint)}, L: L, esc: esc, lsGet: lsGet, lsSet: lsSet});` : `(function(){
+          Object.fromEntries(['title', 'text', 'emailLabel', 'emailPlaceholder', 'button', 'badEmail', 'wait', 'guarantee', 'payPage', 'nameLabel', 'nameHint', 'nameRequired'].map(k => [k, pay[k]])), { offer: payOffer(L), sale: paySale(L), code: payCodeT(L, fillHtml) })).replace(/</g, '\\u003c')}, endpoint: ${jsStr(payEndpoint)}, L: L, esc: esc, lsGet: lsGet, lsSet: lsSet});` : `(function(){
   var r = resultFromUrl() || lsGet('disc.last'); if(!r || !r.t || !r.m || !r.l || !r.m.join) return;
   var B = ${JSON.stringify(pr.buy).replace(/</g, '\\u003c')}, d = new Date(r.t), date = isNaN(d) ? '' : d.toLocaleDateString(L.dateLocale, {day:'numeric', month:'long', year:'numeric'});
   function b64e(s){ return btoa(unescape(encodeURIComponent(s))).replace(/\\+/g,'-').replace(/\\//g,'_').replace(/=+$/,''); }
@@ -1479,6 +1484,9 @@ for (const L of locales) {
   if (MP && PP && PP.pay && PP.block) mailData[L.lang].promo = Object.assign({}, MP, { list: PP.block.list, sample: PP.block.sample || '', button: PP.block.button, free: PP.block.free,
     price: MP.price, cur: L.content.services.currency, dateLocale: L.dateLocale,   // {price} подставляет ядро (extPriceText): цены меняются в панели
     image: fs.existsSync(path.join(SRC, 'assets', 'extended', L.lang + '-mail.jpg')) });
+  // письмо распродажи для подписчиков и вечернее напоминание (с 2026-11-08; отправляет свой сервер, src/sale.js): тексты content.mailing.sale, остальное — из письма подписчикам
+  const MS = L.content.mailing && L.content.mailing.sale;
+  if (MS && mailData[L.lang].promo) mailData[L.lang].sale = MS;
 }
 // Блок о расширенном отчёте в PDF краткого отчёта и в теле письма с результатом: в языках, где есть страница отчёта и тексты `content.product.pdf`.
 // Листы образца — только там, где есть и их картинки для PDF, и подписи (hasSamples): они вшиваются в данные ядра, при сборке PDF сеть закрыта.

@@ -667,14 +667,14 @@
           "h": "Di mana data disimpan dan kepada siapa data diteruskan",
           "p": [
             "Basis data hasil berada di server yang disewa pemilik situs dari penyedia hosting. Email dikirim oleh layanan email. Perusahaan-perusahaan ini memproses data atas perintah kami dan hanya untuk keperluan operasional situs. Email dikirim ke alamat yang Anda isi sendiri. Data tidak diteruskan ataupun dijual kepada pihak ketiga untuk tujuan mereka sendiri.",
-            "Buletin hanya dikirim kepada orang yang mencentang persetujuan terpisah — di formulir pengiriman hasil, di formulir langganan di halaman utama, atau di formulir “Kirim lembar tes ke email” di halaman “Tes DISC PDF”. Setelah formulir langganan di halaman utama dikirim, Anda akan menerima email berisi tautan konfirmasi: tanpa konfirmasi, buletin tidak dikirim, dan alamat Anda dihapus setelah 7 hari. Di formulir “Kirim lembar tes ke email”, langganan berlaku segera setelah formulir dikirim, dan email berisi lembar tes memuat tautan untuk berhenti berlangganan. Basis data menyimpan penanda persetujuan, tanggalnya, dan teksnya, sedangkan email, nama (jika Anda mengisinya), bahasa, dan hasil tes Anda (jika Anda mengirimkannya ke email) digunakan untuk mengirim email dari disc-test.org: materi tentang DISC, tes baru, tips pengembangan karier dan mencari kerja, kabar situs, dan penawaran promosi. Anda dapat berhenti berlangganan kapan saja — melalui tautan di email atau dengan menulis ke {email}.",
+            "Buletin hanya dikirim kepada orang yang mencentang persetujuan terpisah — di formulir pengiriman hasil, di formulir langganan di halaman utama, atau di formulir “Kirim lembar tes ke email” di halaman “Tes DISC PDF”. Setelah formulir langganan di halaman utama dikirim, Anda akan menerima email berisi tautan konfirmasi: tanpa konfirmasi, buletin tidak dikirim, dan alamat Anda dihapus setelah 7 hari. Di formulir “Kirim lembar tes ke email”, langganan berlaku segera setelah formulir dikirim, dan email berisi lembar tes memuat tautan untuk berhenti berlangganan. Basis data menyimpan penanda persetujuan, tanggalnya, dan teksnya, sedangkan email, nama (jika Anda mengisinya), bahasa, dan hasil tes Anda (jika Anda mengirimkannya ke email) digunakan untuk mengirim email dari disc-test.org: materi tentang DISC, tes baru, tips pengembangan karier dan mencari kerja, kabar situs, dan penawaran promosi. Tautan di email buletin melewati server situs: setiap email memiliki penanda sendiri, dan server mencatat apakah Anda mengeklik tautan dari email tersebut dan kapan. Dengan begitu, kami mengirim pengingat hanya kepada orang yang tertarik dengan email itu dan mengetahui email mana yang bermanfaat. Catatan ini disimpan sampai Anda berhenti berlangganan, tetapi tidak lebih dari satu tahun. Anda dapat berhenti berlangganan kapan saja — melalui tautan di email atau dengan menulis ke {email}.",
             "Layanan hosting menerima data teknis standar dari setiap permintaan: alamat IP, jenis browser, alamat halaman. Font disimpan di situs ini sendiri. Statistik kunjungan dikumpulkan oleh layanan analitik web: layanan ini menerima data kunjungan — alamat halaman, sumber kunjungan, jenis perangkat dan browser — serta rekaman tindakan di halaman; kolom isian nama dan email dikecualikan dari rekaman tersebut. Di layar hasil, alamat halaman memuat kode hasil: jawaban Anda, tanggal tes, dan nama Anda jika Anda mengisinya, tetapi tidak memuat email Anda. Pengumpulan data dapat dinonaktifkan melalui pengaturan browser atau dengan pemblokir pelacak. Pelacak iklan tidak digunakan."
           ]
         },
         {
           "h": "Dasar pemrosesan dan jangka waktu penyimpanan",
           "p": [
-            "Hasil yang dikirim ke email kami proses berdasarkan persetujuan Anda dan kami simpan selama tiga tahun sejak tanggal pengiriman atau sampai persetujuan dicabut. Data untuk buletin kami proses berdasarkan persetujuan terpisah, sampai Anda berhenti berlangganan; alamat yang langganannya belum dikonfirmasi kami simpan selama 7 hari. Pesan dari formulir kontak kami proses berdasarkan persetujuan dan kami simpan selama satu tahun setelah pesan itu dibalas.",
+            "Hasil yang dikirim ke email kami proses berdasarkan persetujuan Anda dan kami simpan selama tiga tahun sejak tanggal pengiriman atau sampai persetujuan dicabut. Data untuk buletin kami proses berdasarkan persetujuan terpisah, sampai Anda berhenti berlangganan (catatan klik tautan di email paling lama satu tahun); alamat yang langganannya belum dikonfirmasi kami simpan selama 7 hari. Pesan dari formulir kontak kami proses berdasarkan persetujuan dan kami simpan selama satu tahun setelah pesan itu dibalas.",
             "Ketika jangka waktu tersebut berakhir atau Anda mencabut persetujuan, data dihapus dari basis data. Dari salinan cadangan, data hilang seiring diperbaruinya salinan, paling lambat enam bulan kemudian."
           ]
         },
@@ -1052,6 +1052,11 @@
           "left": "Sisa waktu",
           "expired": "Harga khusus sudah berakhir: harga laporan sekarang US${price}. Tekan “Beli” sekali lagi."
         },
+        "sale": {
+          "cta": "Promo 11.11: laporan hanya US${salePrice}",
+          "note": "Harga promo berlaku hingga akhir hari {day}, lalu US${price}",
+          "expired": "Promo sudah berakhir: harga laporan sekarang US${price}. Tekan “Beli” sekali lagi."
+        },
         "emailLabel": "Email untuk menerima laporan dalam format PDF",
         "nameLabel": "Nama untuk laporan",
         "nameHint": "Nama ini akan tercantum di sampul dan halaman laporan.",
@@ -1218,6 +1223,18 @@
         "price": "US${price}",
         "delivery": "Laporan dikirim ke alamat email ini segera setelah pembayaran.",
         "footer": "Anda menerima email ini karena pada {date} Anda setuju menerima email dari {site} saat mengirim hasil tes ke email Anda sendiri."
+      },
+      "sale": {
+        "label": "Promo 11.11",
+        "subject": "{name}, Promo 11.11: laporan mendalam {key} hanya {salePrice}",
+        "subjectNoName": "Promo 11.11: laporan DISC mendalam {key} hanya {salePrice}",
+        "preheader": "Hanya pada {day}: {salePrice} (harga normal {price}) untuk analisis terperinci profil Anda",
+        "intro": "Hanya pada {day}, laporan mendalam berdasarkan hasil Anda seharga {salePrice} (harga normal {price}). Profil Anda:",
+        "until": "Harga promo berlaku hingga akhir hari {day}, lalu {price}.",
+        "remindSubject": "{name}, Promo 11.11 berakhir hari ini",
+        "remindSubjectNoName": "Promo 11.11 berakhir hari ini",
+        "remindPreheader": "Laporan mendalam {key} seharga {salePrice} (harga normal {price}) hanya sampai akhir hari ini",
+        "remindIntro": "Hari ini hari terakhir Promo 11.11: laporan mendalam berdasarkan hasil Anda seharga {salePrice} (harga normal {price})."
       }
     },
     "results": {

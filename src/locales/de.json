@@ -669,14 +669,14 @@
           "h": "Wo die Daten gespeichert und an wen sie übermittelt werden",
           "p": [
             "Die Ergebnisdatenbank liegt auf einem Server, den der Seitenbetreiber bei einem Hosting-Anbieter mietet. Die E-Mails versendet ein E-Mail-Dienst. Diese Unternehmen verarbeiten die Daten in unserem Auftrag und nur für den Betrieb der Website. Die E-Mail geht an die Adresse, die Sie selbst angegeben haben. An Dritte werden die Daten für deren eigene Zwecke weder weitergegeben noch verkauft.",
-            "Den Newsletter erhält nur, wer das gesonderte Kästchen zur Einwilligung angekreuzt hat – im Formular zum Versand des Ergebnisses, im Anmeldeformular für den Newsletter auf der Startseite oder im Formular „Fragebogen per E-Mail erhalten“ auf der Seite „Test als PDF“. Nach dem Absenden des Anmeldeformulars auf der Startseite kommt eine E-Mail mit einem Bestätigungslink: Ohne Bestätigung wird kein Newsletter versandt, und die Adresse wird nach 7 Tagen gelöscht. Im Formular „Fragebogen per E-Mail erhalten“ gilt die Anmeldung sofort nach dem Absenden, und die E-Mail mit dem Fragebogen enthält einen Abmeldelink. In der Datenbank werden die Einwilligung, ihr Datum und ihr Wortlaut gespeichert, und Ihre E-Mail-Adresse, Ihr Name (falls Sie ihn angegeben haben), Ihre Sprache und Ihr Testergebnis (falls Sie es sich per E-Mail geschickt haben) werden verwendet, um Ihnen E-Mails von disc-test.org zu senden: Inhalte zum DISG-Modell, neue Tests, Tipps für die berufliche Entwicklung und die Jobsuche, Neuigkeiten der Website und Werbeangebote. Abmelden können Sie sich jederzeit über den Link in jeder E-Mail oder per Nachricht an {email}.",
+            "Den Newsletter erhält nur, wer das gesonderte Kästchen zur Einwilligung angekreuzt hat – im Formular zum Versand des Ergebnisses, im Anmeldeformular für den Newsletter auf der Startseite oder im Formular „Fragebogen per E-Mail erhalten“ auf der Seite „Test als PDF“. Nach dem Absenden des Anmeldeformulars auf der Startseite kommt eine E-Mail mit einem Bestätigungslink: Ohne Bestätigung wird kein Newsletter versandt, und die Adresse wird nach 7 Tagen gelöscht. Im Formular „Fragebogen per E-Mail erhalten“ gilt die Anmeldung sofort nach dem Absenden, und die E-Mail mit dem Fragebogen enthält einen Abmeldelink. In der Datenbank werden die Einwilligung, ihr Datum und ihr Wortlaut gespeichert, und Ihre E-Mail-Adresse, Ihr Name (falls Sie ihn angegeben haben), Ihre Sprache und Ihr Testergebnis (falls Sie es sich per E-Mail geschickt haben) werden verwendet, um Ihnen E-Mails von disc-test.org zu senden: Inhalte zum DISG-Modell, neue Tests, Tipps für die berufliche Entwicklung und die Jobsuche, Neuigkeiten der Website und Werbeangebote. Die Links in den Newsletter-E-Mails führen über den Server der Website: Jede E-Mail hat eine eigene Kennung, und der Server vermerkt, ob und wann Sie einen Link aus dieser E-Mail angeklickt haben. So schicken wir eine Erinnerung nur denjenigen, die sich für die E-Mail interessiert haben, und erkennen, welche E-Mails nützlich sind. Diese Vermerke werden bis zur Abmeldung gespeichert, höchstens jedoch ein Jahr. Abmelden können Sie sich jederzeit über den Link in jeder E-Mail oder per Nachricht an {email}.",
             "Der Hosting-Anbieter erhält die üblichen technischen Anfragedaten: IP-Adresse, Browsertyp, Seitenadresse. Die Schriften werden von dieser Website selbst ausgeliefert. Besuchsstatistiken erfasst ein Webanalysesystem: Es erhält Besuchsdaten – die Seitenadresse, die Herkunft des Besuchs, Geräte- und Browsertyp – sowie eine Aufzeichnung der Aktionen auf der Seite; die Felder für Name und E-Mail sind von der Aufzeichnung ausgenommen. Auf der Ergebnisseite enthält die Seitenadresse den Ergebniscode: Ihre Antworten, das Testdatum und Ihren Namen, falls Sie ihn angegeben haben, aber nicht Ihre E-Mail-Adresse. Sie können die Erfassung in den Browsereinstellungen oder mit einem Tracker-Blocker unterbinden. Werbe-Tracker werden nicht verwendet."
           ]
         },
         {
           "h": "Rechtsgrundlagen und Speicherdauer",
           "p": [
-            "Ein per E-Mail versandtes Ergebnis verarbeiten wir auf Grundlage Ihrer Einwilligung und speichern es drei Jahre ab dem Versanddatum oder bis zum Widerruf der Einwilligung. Die Daten für den Newsletter verarbeiten wir auf Grundlage einer gesonderten Einwilligung, bis Sie sich abmelden; eine Adresse, deren Anmeldung nicht bestätigt wurde, 7 Tage lang. Nachrichten aus dem Kontaktformular verarbeiten wir auf Grundlage der Einwilligung und speichern sie ein Jahr nach unserer Antwort.",
+            "Ein per E-Mail versandtes Ergebnis verarbeiten wir auf Grundlage Ihrer Einwilligung und speichern es drei Jahre ab dem Versanddatum oder bis zum Widerruf der Einwilligung. Die Daten für den Newsletter verarbeiten wir auf Grundlage einer gesonderten Einwilligung, bis Sie sich abmelden (Angaben zum Anklicken von Links in den E-Mails höchstens ein Jahr); eine Adresse, deren Anmeldung nicht bestätigt wurde, 7 Tage lang. Nachrichten aus dem Kontaktformular verarbeiten wir auf Grundlage der Einwilligung und speichern sie ein Jahr nach unserer Antwort.",
             "Wenn die Frist abläuft oder Sie Ihre Einwilligung widerrufen, werden die Daten aus der Datenbank gelöscht. Aus den Sicherungskopien verschwinden sie, sobald diese erneuert werden, spätestens nach sechs Monaten."
           ]
         },
@@ -2008,6 +2008,11 @@
           "left": "Noch",
           "expired": "Der Sonderpreis ist abgelaufen: Der Bericht kostet jetzt {price} €. Klicken Sie erneut auf „Kaufen“."
         },
+        "sale": {
+          "cta": "Aktion 11.11: Bericht für {salePrice} €",
+          "note": "Aktionspreis bis einschließlich {day}, danach {price} €",
+          "expired": "Die Aktion ist vorbei: Der Bericht kostet jetzt {price} €. Klicken Sie erneut auf „Kaufen“."
+        },
         "emailLabel": "E-Mail-Adresse für den Bericht als PDF",
         "nameLabel": "Name für den Bericht",
         "nameHint": "Er steht auf dem Deckblatt und den Seiten des Berichts.",
@@ -2185,6 +2190,18 @@
         "price": "{price} €",
         "delivery": "Der Bericht kommt direkt nach der Zahlung an diese Adresse.",
         "footer": "Sie erhalten diese E-Mail, weil Sie am {date} beim Versand Ihres Testergebnisses zugestimmt haben, E-Mails von {site} zu erhalten."
+      },
+      "sale": {
+        "label": "Aktion 11.11",
+        "subject": "{name}, Aktion 11.11: Ihr ausführlicher DISG-Bericht {key} für {salePrice}",
+        "subjectNoName": "Aktion 11.11: ausführlicher DISG-Bericht {key} für {salePrice}",
+        "preheader": "Nur am {day}: {salePrice} statt {price} für die ausführliche Analyse Ihres Profils",
+        "intro": "Nur am {day} kostet der ausführliche Bericht zu Ihrem Ergebnis {salePrice} statt {price}. Ihr Profil:",
+        "until": "Der Aktionspreis gilt bis einschließlich {day}, danach {price}.",
+        "remindSubject": "{name}, die Aktion 11.11 endet heute",
+        "remindSubjectNoName": "Die Aktion 11.11 endet heute",
+        "remindPreheader": "Ausführlicher DISG-Bericht {key}: {salePrice} statt {price} – nur noch heute",
+        "remindIntro": "Heute ist der letzte Tag der Aktion: Der ausführliche Bericht zu Ihrem Ergebnis kostet {salePrice} statt {price}."
       }
     },
     "results": {
