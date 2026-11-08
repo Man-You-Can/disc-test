@@ -2016,7 +2016,7 @@
         "error": "We couldn’t take you to payment. Please try again in a minute or write to us at {email}.",
         "how": [
           "Take the free test: 24 blocks, about 10 minutes. If you’ve already taken it, there’s no need to retake it: the report is built from the result you already have.",
-          "Enter your email and click “Buy”. Payment goes through a secure payment page.",
+          "Enter your email and click “Buy”. Pay by Visa or Mastercard on a secure payment page.",
           "The report arrives by email as soon as you pay, as a PDF attachment. Your payment receipt goes to the same address."
         ],
         "thanks": {
@@ -3183,6 +3183,8 @@
     "privacy": "Your answers stay in your browser; for overall statistics the site’s server receives only notes that you visited the site and started the test, and your resulting profile — no name and no answers. If you enter your email address, your result is sent to it and stored in the site owner’s results database. If you subscribe to the newsletter on the home page, your email and the site language are stored in that database. If you ask for the test form to be emailed to you on the “PDF test” page, the site’s server sends you an email with the form and stores a record of your consent together with your email; with newsletter consent, your address and the site language are also added to the subscriber list. When you click “Save as PDF”, your answers and the test date — without your name or email — are sent to the site’s server, which builds the summary report file, returns it to you and stores nothing.",
     "legal": "Manukyan Armen · Taxpayer ID (INN) {inn}",
     "rights": "© {year} disc-test.org. Copying the texts of this site and its reports without written permission is prohibited.",
+    "foot.pay": "We accept:",
+    "foot.payMethods": "VISA, Mastercard",
     "adminLink": "Admin panel",
 
     "intro.eyebrow": "Behavioral style questionnaire",

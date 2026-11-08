@@ -2027,7 +2027,7 @@
         "error": "Impossible d'ouvrir la page de paiement. Réessayez dans quelques instants ou écrivez-nous à {email}.",
         "how": [
           "Passez le test gratuit : 24 blocs, environ 10 minutes. Si vous l'avez déjà passé, inutile de recommencer : le rapport est établi à partir du résultat que vous avez déjà.",
-          "Indiquez votre e-mail et cliquez sur « Acheter ». Le paiement se fait sur une page de paiement sécurisée.",
+          "Indiquez votre e-mail et cliquez sur « Acheter ». Le paiement se fait par carte Visa ou Mastercard sur une page de paiement sécurisée.",
           "Le rapport arrive par e-mail juste après le paiement, en pièce jointe au format PDF. Le reçu de paiement est envoyé à la même adresse."
         ],
         "thanks": {
@@ -3215,6 +3215,8 @@
     "privacy": "Vos réponses restent dans votre navigateur ; pour les statistiques générales, le serveur du site ne reçoit que des marques de visite et de début du test et le profil obtenu, sans nom ni réponses. Si vous indiquez une adresse e-mail, le résultat y est envoyé et conservé dans la base de résultats du propriétaire du site. Si vous vous abonnez à la newsletter sur la page d'accueil, cette base conserve votre adresse e-mail et la langue de la version du site. Si vous demandez à recevoir le questionnaire par e-mail sur la page « Test en PDF », le serveur du site vous envoie l'e-mail avec le questionnaire et conserve la trace de votre consentement avec votre adresse e-mail ; si vous acceptez aussi la newsletter, votre adresse et la langue de la version du site sont enregistrées dans la liste des abonnés. Lorsque vous cliquez sur « Enregistrer en PDF », vos réponses et la date du test — sans nom ni e-mail — sont envoyées au serveur du site, qui génère le fichier du rapport de synthèse, vous le renvoie et ne conserve rien.",
     "legal": "Manukyan Armen · N° d’identification fiscale (INN) {inn}",
     "rights": "© {year} disc-test.org. Toute copie des textes du site et des rapports sans autorisation écrite est interdite.",
+    "foot.pay": "Nous acceptons :",
+    "foot.payMethods": "VISA, Mastercard",
     "adminLink": "Espace administrateur",
 
     "intro.eyebrow": "Questionnaire de styles comportementaux",

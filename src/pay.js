@@ -115,6 +115,8 @@ function payForms(c){
       (T.payPage ? '<p class="xppage">'+esc(T.payPage)+'</p>' : '')+
       (T.guarantee ? '<p class="xguar">'+esc(T.guarantee)+'</p>' : '')+
       '<p class="small sendstatus err" aria-live="polite" hidden></p><p class="xnote">'+T.noteHtml+'</p>'+
+      // способы оплаты (с 2026-11-08): та же строка значков, что в подвале (payMethodsHtml в build.js)
+      (T.methodsHtml || '')+
       (T.code ? payCodeHTML(T.code, o.id, esc) : '');
     var f = {form:form, input:form.querySelector('input[type=email]'), nameInput:form.querySelector('.xname input'), btn:form.querySelector('button'), st:form.querySelector('.sendstatus'), deal:form.querySelector('.xdeal'), clock:form.querySelector('.xdeal span'),
       big: o.priceEl || form.querySelector('.xbig'), t: o.t, source: o.source, until: 0, over: false, price: 0}, input = f.input, st = f.st;

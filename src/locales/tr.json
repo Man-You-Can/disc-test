@@ -1067,7 +1067,7 @@
         "error": "Ödeme sayfası şu anda açılamadı. Birkaç dakika sonra yeniden deneyin ya da {email} adresine yazın.",
         "how": [
           "Ücretsiz testi çözün: 24 soru, yaklaşık 10 dakika. Testi daha önce çözdüyseniz yeniden çözmeniz gerekmez: rapor mevcut sonucunuza göre hazırlanır.",
-          "E-posta adresinizi yazıp “Satın al” düğmesine basın. Ödeme güvenli bir ödeme sayfasında yapılır.",
+          "E-posta adresinizi yazıp “Satın al” düğmesine basın. Ödeme, Visa veya Mastercard kartla güvenli bir ödeme sayfasında yapılır.",
           "Rapor, ödemenin hemen ardından PDF eki olarak e-postanıza gelir. Ödeme makbuzu da aynı adrese gönderilir."
         ],
         "thanks": {
@@ -2229,6 +2229,8 @@
     "privacy": "Yanıtlarınız tarayıcınızda kalır; genel istatistik için sitenin sunucusuna yalnızca siteyi ziyaret ettiğinize ve teste başladığınıza dair kayıtlar ile çıkan profiliniz iletilir, adınız ve yanıtlarınız iletilmez. E-posta adresinizi belirtirseniz sonucunuz bu adrese gönderilir ve site sahibinin sonuç veri tabanına kaydedilir. Ana sayfada bültene abone olursanız e-posta adresiniz ve sitenin dil sürümü aynı veri tabanına kaydedilir. “DISC testi PDF” sayfasında testin e-postanıza gönderilmesini isterseniz sitenin sunucusu PDF’i içeren bir e-posta gönderir ve onay kaydınızı e-posta adresinizle birlikte saklar; bülten onayı da verirseniz adresiniz ve sitenin dil sürümü abone listesine de kaydedilir. “PDF olarak kaydet” düğmesine bastığınızda yanıtlarınız ve test tarihi, adınız ve e-posta adresiniz olmadan, sitenin sunucusuna iletilir; sunucu bunlardan özet rapor dosyasını oluşturup size geri gönderir ve hiçbir şey saklamaz.",
     "legal": "Manukyan Armen · Vergi kimlik numarası (INN) {inn}",
     "rights": "© {year} disc-test.org. Site ve rapor metinlerinin yazılı izin olmadan kopyalanması yasaktır.",
+    "foot.pay": "Kabul edilen kartlar:",
+    "foot.payMethods": "VISA, Mastercard",
     "adminLink": "Yönetici paneli",
 
     "intro.eyebrow": "DISC kişilik envanteri",

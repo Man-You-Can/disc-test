@@ -1072,7 +1072,7 @@
         "error": "Nie udało się otworzyć strony płatności. Spróbuj ponownie za kilka minut albo napisz do nas na {email}.",
         "how": [
           "Zrób bezpłatny test: 24 pytania, około 10 minut. Jeśli masz go już za sobą, nie musisz go powtarzać – raport powstaje na podstawie gotowego wyniku.",
-          "Wpisz adres e-mail i kliknij „Kup”. Płatność odbywa się na zabezpieczonej stronie płatności.",
+          "Wpisz adres e-mail i kliknij „Kup”. Płatność kartą Visa lub Mastercard odbywa się na zabezpieczonej stronie płatności.",
           "Raport przyjdzie e-mailem od razu po płatności, jako załącznik PDF. Dowód zakupu wyślemy na ten sam adres."
         ],
         "thanks": {
@@ -2228,6 +2228,8 @@
     "privacy": "Odpowiedzi pozostają w twojej przeglądarce; na potrzeby ogólnej statystyki serwer serwisu otrzymuje wyłącznie informacje o wizycie i rozpoczęciu testu oraz uzyskany profil – bez imienia i bez odpowiedzi. Jeśli podasz adres e-mail, wynik zostanie na niego wysłany i zapisany w bazie wyników właściciela serwisu. Jeśli zapiszesz się do newslettera na stronie głównej, w tej bazie zostaną zapisane twój adres e-mail i wersja językowa serwisu. Jeśli na stronie „Test w PDF” poprosisz o przesłanie arkusza testu e-mailem, serwer serwisu wyśle wiadomość z arkuszem i zapisze informację o zgodzie razem z twoim adresem e-mail; jeśli zgodzisz się na newsletter, adres i wersja językowa serwisu zostaną zapisane także na liście subskrybentów. Gdy klikniesz „Zapisz jako PDF”, odpowiedzi i data testu – bez imienia i e-maila – trafiają na serwer serwisu, który tworzy z nich plik raportu podstawowego, odsyła go i niczego nie zapisuje.",
     "legal": "Manukyan Armen · Numer identyfikacji podatkowej (INN) {inn}",
     "rights": "© {year} disc-test.org. Kopiowanie tekstów serwisu i raportów bez pisemnej zgody jest zabronione.",
+    "foot.pay": "Akceptujemy:",
+    "foot.payMethods": "VISA, Mastercard",
     "adminLink": "Panel administratora",
 
     "intro.eyebrow": "Kwestionariusz stylów zachowania",

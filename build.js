@@ -93,6 +93,16 @@ const legalInn = String(cfg.legalInn || '').replace(/\D/g, '');
 const legalHtml = L => legalInn ? `<div class="legal">${esc(L.ui.legal.replace('{inn}', legalInn))}</div>` : '';
 // Строка о правах на тексты (подвал каждой страницы, печатная версия результата, PDF-отчёт из письма): ui.rights, {year} — год сборки
 const rightsHtml = L => `<div class="rights">${esc(L.ui.rights.replace('{year}', new Date().getFullYear()))}</div>`;
+// Способы оплаты (с 2026-11-08, по просьбе заказчика): строка в подвале каждой страницы и под кнопкой «Купить» (отчёт, набор ведущего).
+// ui["foot.pay"] — подпись, ui["foot.payMethods"] — названия через запятую: ru (Т-Банк) — МИР, СБП, VISA, Mastercard; остальные (Prodamus) — VISA, Mastercard.
+// Знакомое название получает свой цвет (класс pm-…), у Mastercard — два круга; любое другое — простой значок с текстом
+const PM_KIND = { 'мир': 'mir', 'сбп': 'sbp', 'visa': 'visa', 'mastercard': 'mc' };
+const PM_MC = '<svg viewBox="0 0 24 15" aria-hidden="true"><circle cx="7.5" cy="7.5" r="7.5" fill="#EB001B"/><circle cx="16.5" cy="7.5" r="7.5" fill="#F79E1B"/>' +
+  '<path d="M12 1.5A7.5 7.5 0 0 1 12 13.5A7.5 7.5 0 0 1 12 1.5Z" fill="#FF5F00"/></svg>';
+const payMethodsHtml = L => { const lbl = L.ui['foot.pay'], list = String(L.ui['foot.payMethods'] || '').split(',').map(s => s.trim()).filter(Boolean);
+  if (!lbl || !list.length) return '';
+  return `<div class="paym"><span class="pml">${esc(lbl)}</span>` + list.map(s => { const k = PM_KIND[s.toLowerCase()] || 'x';
+    return `<span class="pm pm-${k}">${k === 'mc' ? PM_MC : ''}${esc(s)}</span>`; }).join('') + '</div>'; };
 // Платная услуга. Страница /services/ есть во всех языках; цена берётся по валюте локали (content.services.currency):
 // servicePriceRub, servicePriceUsd или servicePriceEur (французская и немецкая версии, с 2026-10-22) в site.config.json, пустое значение или 0 убирает страницу и пункт меню в языках с этой валютой.
 // Оферта и условия возврата (/offer/, /refund/) — только в языках, где есть content.offer и content.refund (сейчас — русский)
@@ -202,7 +212,7 @@ const kitBuyT = (L, KB) => ({ submit: KB.submit, wait: KB.wait, badEmail: KB.bad
 const kitBuyHTML = (L, KB, kv) => `<section class="service xbuy kitbuy"><form class="xpay" id="kitBuy" novalidate>` +
   `<div class="field"><label for="kitEmail">${escFull(KB.emailLabel)}</label><input type="email" id="kitEmail" class="ym-disable-keys" autocomplete="email" inputmode="email" maxlength="64" required></div>` +
   `<div class="xbuyact"><span class="xbig">${escFull(kitPriceLine(L.content.kit, kv))}</span><button class="btn" type="submit">${escFull(KB.submit)}</button></div>` +
-  `<p class="small sendstatus err" aria-live="polite" hidden></p><p class="xnote">${kitNoteHtml(L, KB)}</p></form></section>`;
+  `<p class="small sendstatus err" aria-live="polite" hidden></p><p class="xnote">${kitNoteHtml(L, KB)}</p>${payMethodsHtml(L)}</form></section>`;
 const hasBusiness = L => !!(L.content.business && L.ui['nav.business'] && hasProduct(L) && L.content.product.pay && L.content.services.currency === 'RUB' && servicePrices.RUB &&
   payCodeT(L, x => x) && feedbackEmail && cfg.sendEndpoint && businessPacks.length);
 // Оператор и дата редакции в политике и согласии: в языке с полным текстом политики (policy.legal — русская версия) — исполнитель из оферты
@@ -459,7 +469,7 @@ function homePay(L) {
   const C = L.content, pay = payEndpoint && C.product && C.product.pay ? withPrice(L, C.product.pay) : null; if (!pay) return null;
   const vars = { offer: `<a href="{base}offer/">${escFull(C.offer.linkText)}</a>`, email: feedbackEmail ? `<a href="mailto:${escFull(feedbackEmail)}">${escFull(feedbackEmail)}</a>` : '—' };
   const fill = h => h.replace(/\{(offer|email)\}/g, (m, k) => vars[k]);
-  return Object.assign({ noteHtml: fill(escFull(pay.note)), errorHtml: fill(escFull(pay.error)), more: C.product.more, offer: payOffer(L), sale: paySale(L), code: payCodeT(L, fill) },
+  return Object.assign({ noteHtml: fill(escFull(pay.note)), errorHtml: fill(escFull(pay.error)), methodsHtml: payMethodsHtml(L), more: C.product.more, offer: payOffer(L), sale: paySale(L), code: payCodeT(L, fill) },
     Object.fromEntries(['text', 'emailLabel', 'emailPlaceholder', 'button', 'badEmail', 'wait', 'guarantee', 'payPage', 'nameLabel', 'nameHint', 'nameRequired'].map(k => [k, pay[k]])));
 }
 // Организация-издатель: одна карточка на весь сайт, с адресом для связи
@@ -510,7 +520,7 @@ for (const L of locales) {
     .replace(/__FONTS_HEAD__/g, () => fontsHead(f, L)).replace(/__FONT_HEAD__/g, f.head).replace(/__FONT_BODY__/g, f.body)
     .replace(/__BRAND__/g, esc(L.brand)).replace(/__LANG_LABEL__/g, esc(L.ui.langLabel))
     .replace('__LANG_SWITCHER__', () => switcher).replace('__LANG_LINKS__', () => links).replace('__FLAG_SPRITE__', () => flagSprite(locales.map(x => x.lang)))
-    .replace(/__FOOTER__/g, esc(L.ui.footer)).replace(/__ADMIN_LINK__/g, esc(L.ui.adminLink)).replace(/__PRIVACY__/g, esc(L.ui.privacy)).replace('__LEGAL__', () => rightsHtml(L))
+    .replace(/__FOOTER__/g, esc(L.ui.footer)).replace(/__ADMIN_LINK__/g, esc(L.ui.adminLink)).replace(/__PRIVACY__/g, esc(L.ui.privacy)).replace('__LEGAL__', () => payMethodsHtml(L) + rightsHtml(L))
     .replace(/__EMAIL__/g, String(cfg.contactEmail || '').replace(/['\\]/g, ''))
     .replace(/__SEND_ENDPOINT__/g, String(cfg.sendEndpoint || '').replace(/['\\]/g, '')).replace(/__PAY_ENDPOINT__/g, homePay(L) ? payEndpoint.replace(/['\\]/g, '') : '')
     .replace('__PAY_JS__', () => homePay(L) ? payJs : '')
@@ -642,7 +652,7 @@ function writeContentPage(L, sub, opts) {
     .replace('__LANG_SWITCHER__', () => switcher).replace('__NAV__', () => navHtml).replace('__CRUMBS__', () => crumbsHtml).replace('__FOOT_LINKS__', () => footHtml).replace('__MATERIALS__', () => materialsHtml(L, base, sub))
     .replace('__CONTENT__', () => opts.content + updatedHtml)
     .replace('__CTA_FLOAT__', () => opts.content.includes('class="cta cta-top') || opts.content.includes('id="embedTest"') ? `<a class="btn ctafloat no-print" id="ctaFloat" href="${homeHref}" data-goal="cta-float">${esc(t('cta.button'))}</a>` : '')
-    .replace(/__FOOTER__/g, esc(L.ui.footer)).replace(/__PRIVACY__/g, esc(L.ui.privacy)).replace('__LEGAL__', () => (sub === 'contact/' ? legalHtml(L) : '') + rightsHtml(L)).replace('__LANG_LINKS__', () => links)
+    .replace(/__FOOTER__/g, esc(L.ui.footer)).replace(/__PRIVACY__/g, esc(L.ui.privacy)).replace('__LEGAL__', () => payMethodsHtml(L) + (sub === 'contact/' ? legalHtml(L) : '') + rightsHtml(L)).replace('__LANG_LINKS__', () => links)
     .replace('__LOCALE_JSON__', () => JSON.stringify(miniL).replace(/</g, '\\u003c'))
     .replace(/__SUBPATH__/g, sub).replace('__PAGE_LANGS_JSON__', () => opts.langs ? JSON.stringify(own.map(x => x.lang)) : 'null')
     .replace('__LANG_PATH_JSON__', () => JSON.stringify(LANG_PATH)).replace('__LANG_META_JSON__', () => JSON.stringify(LANG_META).replace(/</g, '\\u003c'))
@@ -1238,7 +1248,7 @@ for (const L of locales) {
           `<h2>${escFull(pr.faqTitle)}</h2>` + pr.faq.map(it => `<h3 class="xq">${escFull(it.q)}</h3><p>${escFull(it.a)}</p>`).join('') + `<p class="small muted">${escFull(pr.docs)}</p>`) +
           `<p class="seealso">${docLink('services/', sv)} · ${docLink('offer/', of)} · ${docLink('refund/', rf)}</p>`,
         files: samples ? pr.sampleAlt.map((_, i) => `src/assets/extended/${L.lang}-i-${i + 1}.webp`) : [],
-        pageJs: resultFromUrlJs + (pay ? payJs + `\ninitPayBuy({T: ${JSON.stringify(Object.assign({ noteHtml: fillHtml(escFull(pay.note)), errorHtml: fillHtml(escFull(pay.error)) },
+        pageJs: resultFromUrlJs + (pay ? payJs + `\ninitPayBuy({T: ${JSON.stringify(Object.assign({ noteHtml: fillHtml(escFull(pay.note)), errorHtml: fillHtml(escFull(pay.error)), methodsHtml: payMethodsHtml(L) },
           Object.fromEntries(['title', 'text', 'emailLabel', 'emailPlaceholder', 'button', 'badEmail', 'wait', 'guarantee', 'payPage', 'nameLabel', 'nameHint', 'nameRequired'].map(k => [k, pay[k]])), { offer: payOffer(L), sale: paySale(L), code: payCodeT(L, fillHtml) })).replace(/</g, '\\u003c')}, endpoint: ${jsStr(payEndpoint)}, L: L, esc: esc, lsGet: lsGet, lsSet: lsSet});` : `(function(){
   var r = resultFromUrl() || lsGet('disc.last'); if(!r || !r.t || !r.m || !r.l || !r.m.join) return;
   var B = ${JSON.stringify(pr.buy).replace(/</g, '\\u003c')}, d = new Date(r.t), date = isNaN(d) ? '' : d.toLocaleDateString(L.dateLocale, {day:'numeric', month:'long', year:'numeric'});

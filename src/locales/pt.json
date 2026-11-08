@@ -1077,7 +1077,7 @@
         "error": "Não foi possível abrir a página de pagamento. Tente de novo em instantes ou escreva para {email}.",
         "how": [
           "Faça o teste gratuito: 24 blocos, cerca de 10 minutos. Se você já fez, não precisa repetir: o relatório é montado a partir do resultado que você já tem.",
-          "Informe seu e-mail e clique em “Comprar”. O pagamento é feito em uma página de pagamento segura.",
+          "Informe seu e-mail e clique em “Comprar”. O pagamento é feito com cartão Visa ou Mastercard em uma página de pagamento segura.",
           "O relatório chega ao seu e-mail logo após o pagamento, em PDF, como anexo. O comprovante de pagamento vai para o mesmo endereço."
         ],
         "thanks": {
@@ -2246,6 +2246,8 @@
     "privacy": "Suas respostas ficam no seu navegador; para a estatística geral, o servidor do site recebe apenas marcas de visita e de início do teste e o perfil obtido, sem nome nem respostas. Se você informar um e-mail, o resultado será enviado para ele e guardado na base de resultados do responsável pelo site. Se você se inscrever na newsletter na página inicial, seu e-mail e o idioma da versão do site serão guardados nessa base. Se você pedir o questionário do teste por e-mail na página “Teste em PDF”, o servidor do site envia um e-mail com o questionário e guarda o registro do consentimento com o seu e-mail; com o consentimento para a newsletter, o endereço e o idioma da versão do site também são guardados na lista de assinantes. Quando você clica em “Salvar em PDF”, suas respostas e a data do teste — sem nome nem e-mail — são enviadas ao servidor do site, que gera o arquivo do relatório resumido, o devolve para você e não guarda nada.",
     "legal": "Manukyan Armen · N.º de identificação fiscal (INN) {inn}",
     "rights": "© {year} disc-test.org. É proibido copiar os textos do site e dos relatórios sem autorização por escrito.",
+    "foot.pay": "Aceitamos:",
+    "foot.payMethods": "VISA, Mastercard",
     "adminLink": "Painel do administrador",
 
     "intro.eyebrow": "Questionário de perfil comportamental",

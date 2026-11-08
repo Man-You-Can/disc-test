@@ -339,7 +339,7 @@ p.xppage{flex:1 1 100%;margin:0;font-size:14px;color:var(--ink);padding-inline-s
 .xpay .xcodebox .sendstatus.err{color:var(--d)}
 .xpay .xcodein{text-transform:uppercase;letter-spacing:.06em}
 .xpay .xcodein::placeholder{text-transform:none;letter-spacing:normal}
-.xpay.xcoding>.xdeal,.xpay.xcoding>.xbuyact,.xpay.xcoding>.btn,.xpay.xcoding>.price,.xpay.xcoding>.xguar,.xpay.xcoding>.xnote,.xpay.xcoding>.sendstatus{display:none}
+.xpay.xcoding>.xdeal,.xpay.xcoding>.xbuyact,.xpay.xcoding>.btn,.xpay.xcoding>.price,.xpay.xcoding>.xguar,.xpay.xcoding>.xnote,.xpay.xcoding>.sendstatus,.xpay.xcoding>.paym{display:none}
 @media (max-width:480px){.xpay .xcodebox .btn{flex:1 1 auto}}
 /* «Услуги» с разделами «Для физических лиц» и «Для организаций»: две карточки выбора сверху и заголовки разделов */
 .svcpicks{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:20px 0 8px}
@@ -548,6 +548,17 @@ input:focus-visible,textarea:focus-visible,button:focus-visible,select:focus-vis
 .foot.short .footshort{display:block}
 .footlinks a{color:var(--muted)}
 .footlinks a:hover{color:var(--ink)}
+/* способы оплаты (build.js, payMethodsHtml; с 2026-11-08): подвал и строка под «Купить»; значки на белом — как знаки платёжных систем на кассе */
+.paym{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:8px;font-size:13px;color:var(--muted)}
+.paym .pml{margin-inline-end:2px}
+.pm{display:inline-flex;align-items:center;gap:4px;height:22px;padding:0 7px;border:1px solid var(--line);border-radius:5px;background:#fff;color:#1a1a1a;
+  font-family:Arial,Helvetica,sans-serif;font-size:11.5px;font-weight:700;letter-spacing:.02em;line-height:1;white-space:nowrap;direction:ltr}
+.pm svg{width:19px;height:12px;display:block;flex:none}
+.pm-mir{color:#0F754E}
+.pm-sbp{color:#1D1346}
+.pm-visa{color:#1A1F71;font-style:italic;font-weight:900;letter-spacing:.04em}
+.pm-mc{font-weight:600;letter-spacing:0}
+.xpay .paym{flex:1 1 100%;margin:0}
 .content .seealso{margin-top:26px;font-size:14px}
 .content .seealso a{color:var(--ink)}
 .content h2+p{margin-top:0}
@@ -827,7 +838,7 @@ body.has-consent{padding-bottom:160px}
     <div class="row2"><span>24 blocos · cerca de 10 minutos · não há respostas certas ou erradas</span><span class="footlinks"><a href="../../pt/about/">Sobre</a> · <a href="../../pt/services/">Serviços</a> · <a href="../../pt/group/">Teste em grupo</a> · <a href="../../pt/offer/">Termos de venda</a> · <a href="../../pt/contact/">Contato</a> · <a href="../../pt/privacy/">Privacidade</a></span></div>
     <nav class="materials" aria-label="Materiais sobre DISC"><span class="mlabel">Materiais sobre DISC</span><a href="../../pt/disc/">O que é DISC</a><a href="../../pt/styles/">Quatro estilos</a><a href="../../pt/profiles/">16 perfis</a><a href="../../pt/results/">Como ler o resultado</a><a href="../../pt/compatibility/">Compatibilidade de estilos</a><span aria-current="page">DISC por cores</span><a href="../../pt/teams/">DISC para equipes</a><a href="../../pt/disc-vs-mbti/">DISC e MBTI</a><a href="../../pt/pdf/">Teste em PDF</a><a href="../../pt/faq/">Perguntas frequentes</a></nav>
     <div class="privacy">Suas respostas ficam no seu navegador; para a estatística geral, o servidor do site recebe apenas marcas de visita e de início do teste e o perfil obtido, sem nome nem respostas. Se você informar um e-mail, o resultado será enviado para ele e guardado na base de resultados do responsável pelo site. Se você se inscrever na newsletter na página inicial, seu e-mail e o idioma da versão do site serão guardados nessa base. Se você pedir o questionário do teste por e-mail na página “Teste em PDF”, o servidor do site envia um e-mail com o questionário e guarda o registro do consentimento com o seu e-mail; com o consentimento para a newsletter, o endereço e o idioma da versão do site também são guardados na lista de assinantes. Quando você clica em “Salvar em PDF”, suas respostas e a data do teste — sem nome nem e-mail — são enviadas ao servidor do site, que gera o arquivo do relatório resumido, o devolve para você e não guarda nada.</div>
-    <div class="rights">© 2026 disc-test.org. É proibido copiar os textos do site e dos relatórios sem autorização por escrito.</div>
+    <div class="paym"><span class="pml">Aceitamos:</span><span class="pm pm-visa">VISA</span><span class="pm pm-mc"><svg viewBox="0 0 24 15" aria-hidden="true"><circle cx="7.5" cy="7.5" r="7.5" fill="#EB001B"/><circle cx="16.5" cy="7.5" r="7.5" fill="#F79E1B"/><path d="M12 1.5A7.5 7.5 0 0 1 12 13.5A7.5 7.5 0 0 1 12 1.5Z" fill="#FF5F00"/></svg>Mastercard</span></div><div class="rights">© 2026 disc-test.org. É proibido copiar os textos do site e dos relatórios sem autorização por escrito.</div>
     <nav class="langs" aria-label="Idioma"><a href="../../colors/" hreflang="en" lang="en" data-lang="en"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-en"/></svg><span>English</span></a><a href="../../es/colors/" hreflang="es" lang="es" data-lang="es"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-es"/></svg><span>Español</span></a><a href="../../zh/colors/" hreflang="zh-Hans" lang="zh-Hans" data-lang="zh"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-zh"/></svg><span>简体中文</span></a><a href="../../zh-hant/colors/" hreflang="zh-Hant" lang="zh-Hant" data-lang="zh-hant"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-zh-hant"/></svg><span>繁體中文</span></a><a href="../../ru/colors/" hreflang="ru" lang="ru" data-lang="ru"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-ru"/></svg><span>Русский</span></a><a href="../../ar/colors/" hreflang="ar" lang="ar" data-lang="ar"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-ar"/></svg><span>العربية</span></a><a href="../../pt/colors/" hreflang="pt" lang="pt" data-lang="pt" aria-current="page"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-pt"/></svg><span>Português</span></a><a href="../../fr/colors/" hreflang="fr" lang="fr" data-lang="fr"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-fr"/></svg><span>Français</span></a><a href="../../de/colors/" hreflang="de" lang="de" data-lang="de"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-de"/></svg><span>Deutsch</span></a><a href="../../ja/colors/" hreflang="ja" lang="ja" data-lang="ja"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-ja"/></svg><span>日本語</span></a><a href="../../id/colors/" hreflang="id" lang="id" data-lang="id"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-id"/></svg><span>Bahasa Indonesia</span></a><a href="../../tr/colors/" hreflang="tr" lang="tr" data-lang="tr"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-tr"/></svg><span>Türkçe</span></a><a href="../../pl/colors/" hreflang="pl" lang="pl" data-lang="pl"><svg class="flag" aria-hidden="true" focusable="false"><use href="#flag-pl"/></svg><span>Polski</span></a></nav>
   </footer>
 </div>
