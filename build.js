@@ -326,6 +326,7 @@ const sourcesHtml = (L, t) => `<h2 id="sources">${escFull(L.content.disc.sources
   SOURCES.map(sc => `<li><span class="kind">${esc(t('sources.kind.' + sc.kind))}</span><a href="${sc.url}" rel="noopener nofollow" hreflang="en">${escFull(sc.text)}</a></li>`).join('') + `</ol>`;
 const pages = []; // для sitemap: {lang, sub, files}
 const writtenSubs = {}; // все записанные контентные страницы по языкам (и noindex): для переадресации снятых языков
+const goneSubs = {};    // снятые страницы языка, на месте которых переадресация на главную (сейчас cv/): снятый язык ведёт туда же, сразу на главную
 const extraUrls = []; // для sitemap: файлы PDF {lang, loc, date}
 const ASSETS = path.join(SRC, 'assets');
 const nfTpl = fs.readFileSync(path.join(SRC, '404.html'), 'utf8');
@@ -904,6 +905,7 @@ for (const L of locales) {
   // (раздел «Поиск работы»); в меню и подвале ссылки нет. С 2026-10-24 (решение заказчика) открыта для поисковиков и входит в sitemap
   if (!cvOn && C.cv) {
     // сервис снят (cvService: false): на месте лендинга — переадресация на главную языка, вне sitemap
+    (goneSubs[L.lang] = goneSubs[L.lang] || []).push('cv/');
     fs.mkdirSync(path.join(OUT, pathOf(L.lang), 'cv'), { recursive: true });
     fs.writeFileSync(path.join(OUT, pathOf(L.lang), 'cv', 'index.html'), `<!doctype html><html lang="${hl(L.lang)}"><head><meta charset="utf-8"><title>${esc(L.brand)}</title>` +
       `<meta name="robots" content="noindex"><meta http-equiv="refresh" content="0; url=../"><link rel="canonical" href="${urlOf(L.lang)}">` +
@@ -1377,8 +1379,11 @@ fs.writeFileSync(path.join(OUT, def.lang, 'index.html'), `<!doctype html><html l
 for (const [code, to] of Object.entries(cfg.retiredLanguages || {})) {
   const T = locales.find(L => L.lang === to);
   if (!T || locales.some(L => L.lang === code)) continue;   // при сборке части языков (LANGS) целевого может не быть
-  for (const sub of [''].concat(writtenSubs[to] || [])) {
-    const rel = '../'.repeat(1 + sub.split('/').filter(Boolean).length) + pathOf(to) + sub, abs = urlOf(to) + sub;
+  // goneSubs: /hi/cv/ был переадресацией на /cv/; после снятия сервиса резюме (2026-11-04) пропал и отвечал 404 в Search Console — теперь ведёт на главную
+  const gone = goneSubs[to] || [];
+  for (const sub of [''].concat(writtenSubs[to] || [], gone)) {
+    const dest = gone.includes(sub) ? '' : sub;
+    const rel = '../'.repeat(1 + sub.split('/').filter(Boolean).length) + pathOf(to) + dest, abs = urlOf(to) + dest;
     fs.mkdirSync(path.join(OUT, code, sub), { recursive: true });
     fs.writeFileSync(path.join(OUT, code, sub, 'index.html'), `<!doctype html><html lang="${hl(to)}"><head><meta charset="utf-8"><title>${esc(T.brand)}</title>` +
       `<meta http-equiv="refresh" content="0; url=${rel}"><link rel="canonical" href="${abs}">` +
