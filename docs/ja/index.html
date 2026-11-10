@@ -841,7 +841,7 @@ var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 /* Сравнение текстов галочки согласия на рассылку (subscribeAB в site.config.json; с 2026-11-07): жребий при каждом открытии страницы, не хранится.
    Вариант уходит на сервер (subV) — он пишет в базу текст именно этого варианта. Цели: nl-a / nl-b — e-mail отправлен, галочка была видна;
    nl-a-yes / nl-b-yes — сервер подтвердил подписку. */
-var SUB_AB = +'0.5' || 0;
+var SUB_AB = +'0' || 0;
 var SUB_V = (SUB_AB > 0 && Math.random() < SUB_AB) ? 'b' : 'a';
 function subLabel(){ return SUB_V === 'b' && t('share.subscribeB') !== 'share.subscribeB' ? t('share.subscribeB') : t('share.subscribe'); }
 var EMAIL_STEP = +'1' || 0;   // доля прошедших тест, которым показывается экран «Куда прислать результат?» (emailStep в site.config.json; с 2026-11-01)
