@@ -717,7 +717,8 @@
           "If you start a purchase but do not pay, we keep your email address, test result and order details for 30 days and then delete them. During that time one reminder email with a payment link may be sent to the address you gave. The basis is the steps you took toward entering into the contract.",
           "If you buy the facilitator kit, we process your email address and order details: the date, amount, payment number and payment status. We need this data to send you the email with links to the kit files, to answer your enquiries and to process a refund; the basis is the contract under the {offer}. Kit order details are kept in the same way as order details for the in-depth profile; no reminder emails are sent about an unfinished kit payment."
         ]
-      }
+      },
+      "purchaseCode": "If you receive the in-depth profile with an access code bought by an organization or another person, we process the same data, except payment information, and record that the code has been used. We tell the person who bought the code only whether and when it was used: your result, report and email address are not passed on to them. The basis is the contract you enter into when you enter the code under the {offer}."
     },
     "consentDoc": {
       "title": "Consent to the Processing of Personal Data — DISC Test",
@@ -792,6 +793,89 @@
           "p": ["If you have a question about the in-depth profile or about payment, write to us via the “{contact}” form — the reply will come to the email address you provide. The site owner’s details are at the bottom of every page."]
         }
       ]
+    },
+    "business": {
+      "title": "DISC for Organizations: In-Depth Report Packs for Teams and Clients",
+      "description": "In-depth DISC reports for employees, clients and trainees, bought in bulk at up to {maxDiscount}% off. Access codes, card payment via a secure link.",
+      "h1": "DISC for organizations",
+      "lead": "The DISC test on this site is free and requires no sign-up. If you run it with employees, clients or trainees, you can buy in-depth reports for them in bulk: cheaper than one at a time, with a single card payment.",
+      "facts": ["from {minPack} reports", "up to {maxDiscount}% off", "pay by card via a secure link", "each person gets their report by email"],
+      "forTitle": "Who it’s for",
+      "for": [
+        "HR and managers: getting to know a team, onboarding new hires, working through friction between colleagues.",
+        "Corporate universities, L&D teams and corporate trainers: material for programs on communication, leadership and teamwork.",
+        "Recruitment agencies and career consultants: a gift for a candidate or client, and a starting point for talking about what kind of work suits them.",
+        "Coaches: a detailed report on a client before your first session."
+      ],
+      "services": {
+        "person": "For individuals",
+        "personPick": "An in-depth report on your own test result",
+        "org": "For organizations",
+        "orgPick": "In-depth reports for employees, clients and trainees — in bulk, at a discount",
+        "orgName": "In-depth report packs",
+        "orgText": "For HR teams, recruitment agencies, corporate universities, trainers and coaches. You buy access codes and hand them out: each person takes the test and gets their own report by email. Pay by card via a secure link; up to {maxDiscount}% off.",
+        "orgPriceLabel": "Price",
+        "orgPrice": "from US${minPrice} per report",
+        "orgButton": "Details and request"
+      },
+      "packsTitle": "In-depth report packs",
+      "packsText": "You buy access codes and hand them out, one code per person. Each person takes the test, enters the code on their result screen and receives a personalized in-depth report as a PDF at their own email address. What’s inside the report and what its pages look like is shown on the “{report}” page.",
+      "packsHead": ["Pack", "Price per report", "Discount"],
+      "packRow": "{n}+ codes",
+      "packPrice": "US${price}",
+      "packDiscount": "−{pct}%",
+      "packsNote": "The regular price of a report is US${retail}. A code is valid for {months} months from the date it is issued. One code is one report for one person.",
+      "csv": ["Access code", "Used", "Valid until", "Where to enter it"],
+      "howTitle": "How it works",
+      "how": [
+        "Send a request at the bottom of this page: how many reports you need and who they’re for. We’ll reply within one business day.",
+        "We’ll send you a link to pay by card. After payment, we’ll send you the codes as a file.",
+        "Send people the link to the test and one code each. The test takes about 10 minutes, and no sign-up is needed.",
+        "On the result screen, the person clicks “I have an organization code” and enters the code and their email address. The report arrives by email within a few minutes.",
+        "Whenever you ask, we’ll tell you how many codes have been used."
+      ],
+      "privacyTitle": "Results stay with the people who took the test",
+      "privacy": [
+        "The report goes only to the person who took the test and entered the code. We don’t pass on results, reports or participants’ email addresses to whoever paid for the codes — only the number of codes used.",
+        "If you need a summary of your team, ask people to share their results themselves by sending you the link to their result or the code from their summary report. How to turn these into a team table is explained on the “{teams}” page."
+      ],
+      "boundsTitle": "What DISC is not for",
+      "bounds": "DISC describes behavioral style, not ability, knowledge or honesty. It is not designed for screening candidates or for decisions about hiring, dismissal or pay. Use it to help people understand themselves and each other better: in onboarding, in teamwork and in leadership development.",
+      "teamTitle": "Team report — coming soon",
+      "team": "We’re preparing a report for managers on the team as a whole: a map of styles, the team’s strengths, where friction arises and what to do about it. If you’d like one, tick it in your request, and we’ll let you know when it’s ready.",
+      "payTitle": "Payment and documents",
+      "pay": ["You pay by card — a company card works too — via a secure payment link that we send after your request. Payment is in US dollars. Once you’ve paid, the payer receives an electronic payment confirmation by email.", "If your finance team needs an invoice or other documents, mention it in your request and we’ll let you know what we can provide.", "The service is provided by {seller}."],
+      "faqTitle": "Questions",
+      "faq": [
+        { "q": "Can I buy fewer than {minPack} reports?", "a": "Pack prices start at {minPack} codes. Anyone can buy one or a few reports for themselves at the regular price on the “{report}” page." },
+        {
+          "q": "What language are the reports in?",
+          "a": "A code works in any language version of the site: the test, the report and the email are in the language of the version where the person enters the code. The test itself is available free in 13 languages."
+        },
+        {
+          "q": "What if someone has already taken the test?",
+          "a": "They don’t need to take it again: they can enter the code on the screen of their saved result or on the in-depth report page, on the same device."
+        },
+        {
+          "q": "Can we use the reports in training sessions?",
+          "a": "Yes: participants work with their own reports during sessions. Copying the report texts into your own materials or handouts is not allowed — the rights to them are set out in section 6 of our {offer}."
+        }
+      ],
+      "form": {
+        "title": "Send a request",
+        "lead": "We’ll reply within one business day to the email address you give.",
+        "size": "Number of people",
+        "sizes": ["up to 10", "10–50", "50–100", "more than 100"],
+        "interest": "What you’re interested in",
+        "interests": ["In-depth report pack", "Team report", "Something else"],
+        "comment": "Comment",
+        "commentPlaceholder": "For example: who the reports are for, when you need them, whether your finance team needs an invoice",
+        "button": "Send request",
+        "subject": "Заявка для организации: {name}",
+        "sent": "Request sent. We’ll reply to {email} within one business day.",
+        "needInterest": "Please tick what you’re interested in.",
+        "privacy": "Your name, email address and message will be emailed to {email} and used only to reply to you."
+      }
     },
     "cv": {
       "title": "AI-Tailored Resumes for Every Job — Early Access",
@@ -1742,7 +1826,25 @@
       "description": "Terms of sale (public offer) for the paid service “In-depth DISC profile” and the DISC facilitator kit on disc-test.org: price, payment and delivery, refunds, rights to materials.",
       "h1": "Terms of Sale (Public Offer)",
       "linkText": "terms of sale",
-      "edition": "Version of November 6, 2026. English translation updated on November 6, 2026.",
+      "codeTerms": [
+        {
+          "section": 0,
+          "text": "Access Code — a set of characters that entitles its holder to receive the Service without payment by the Customer. Access Codes are bought from the Provider under a separate agreement by a third party — an organization, a sole proprietor or another individual — who passes them on to Customers."
+        },
+        {
+          "section": 3,
+          "text": "4.6. A Customer who has an Access Code enters it on the Site next to the payment form instead of paying, and gives an email address. An Access Code can be used once and only within the period stated when it was issued. For such a Customer, the Service is deemed paid for at the moment the Site accepts the Access Code; the period in clause 4.2 runs from that moment."
+        },
+        {
+          "section": 4,
+          "text": "5.8. A Service received with an Access Code is not paid for by the Customer, so the provisions of this section on refunds do not apply to it: settlements for Access Codes are made between the Provider and the person who bought them. The Customer retains the right to have defects remedied (clause 5.3)."
+        },
+        {
+          "section": 7,
+          "text": "8.4. The Provider tells the person who bought an Access Code only whether and when the Access Code was used. The Provider does not pass on to them the Customer’s Test result, In-depth Profile or email address."
+        }
+      ],
+      "edition": "Version of November 12, 2026. English translation updated on November 12, 2026.",
       "note": "This is an English translation of the original offer published at {original}. If the two texts differ, the original prevails, except for the price and the way payment is made: for the English version of the Site they are set out in sections 1 and 3.",
       "seller": "individual entrepreneur Manukyan Armen, Taxpayer ID (INN) {inn}",
       "lead": "This document is an official proposal (a public offer) to enter into a contract for the paid service “In-depth DISC profile” and a contract for the supply of the DISC Facilitator Kit (section 10) on the terms set out below. The offer is made by {seller} (hereinafter, the Provider). Paying for the service or the Kit constitutes full and unconditional acceptance of these terms (acceptance of the offer).",
@@ -1751,7 +1853,7 @@
           "h": "1. Definitions",
           "ul": [
             "Provider — {seller}.",
-            "Customer — a natural person with full legal capacity who has accepted the terms of this offer by paying for the Service.",
+            "Customer — a natural person with full legal capacity who has accepted the terms of this offer by paying for the Service or entering an Access Code.",
             "Site — {site} and all of its pages.",
             "Test — the free DISC questionnaire available on the Site.",
             "In-depth Profile — a more detailed analysis of the Customer’s DISC profile, prepared by the Provider in electronic form on the basis of the Test the Customer has taken.",
@@ -1831,7 +1933,7 @@
         {
           "h": "9. Term and amendment of the offer",
           "p": [
-            "9.1. The contract is deemed concluded at the moment the Service or the Kit (section 10) is paid for and remains in force until the parties have performed their obligations.",
+            "9.1. The contract is deemed concluded at the moment the Service or the Kit (section 10) is paid for or an Access Code is accepted (clause 4.6) and remains in force until the parties have performed their obligations.",
             "9.2. The Provider may amend the offer. The new version applies from the moment it is published on the Site and does not apply to orders already paid for.",
             "9.3. Complaints are sent to {email}; the Provider replies to them within ten calendar days. If a dispute is not settled, it is heard by a court in accordance with the law that governs the contract.",
             "9.4. The contract is governed by the law of the country in which the Provider is registered."
@@ -1912,7 +2014,9 @@
       "inviteTitle": "Invite your friends, colleagues and family to take the test",
       "invite": "Section 8 of the report shows how to talk to people of each of the four styles. To find out the styles of the people around you, invite them to take the test: it’s free and takes about 10 minutes. Once you know each other’s styles, it’s easier to find common ground.",
       "inviteLink": "Here’s a link to the test you can pass on:",
-      "footer": "You’re receiving this email because you paid for the “In-depth DISC profile” service on disc-test.org. The report is personalized and intended for your personal use only."
+      "footer": "You’re receiving this email because you paid for the “In-depth DISC profile” service on disc-test.org. The report is personalized and intended for your personal use only.",
+      "codeIntro": "Your in-depth DISC report is ready. It was paid for by whoever gave you the access code. It was prepared for this profile:",
+      "codeFooter": "You’re receiving this email because you entered an access code for the “In-depth DISC profile” service on disc-test.org. We don’t pass on your result or this report to whoever gave you the code. The report is personalized and intended for your personal use only."
     },
     "product": {
       "title": "In-Depth DISC Report — 13 Sections Built From Your Result",
@@ -2014,6 +2118,22 @@
         "badEmail": "Please check the address: your report and receipt will be sent there.",
         "wait": "Taking you to payment…",
         "error": "We couldn’t take you to payment. Please try again in a minute or write to us at {email}.",
+        "code": {
+          "link": "I have an organization code",
+          "label": "Access code",
+          "placeholder": "XXXX-XXXX-XXXX",
+          "button": "Get my report",
+          "back": "Buy without a code",
+          "wait": "Checking your code…",
+          "note": "Whoever gave you the code has already paid for your report, so you don’t need to pay. We don’t pass on your result or email address to them. By clicking “Get my report”, you accept our {offer}.",
+          "badEmail": "Please check the address: your report will be sent there.",
+          "empty": "Please enter your access code.",
+          "done": "Code accepted. Your report will arrive at {to} within a few minutes. If you can’t find the email, check your spam folder.",
+          "bad": "We couldn’t find this code. Please check that you’ve entered it correctly.",
+          "used": "This code has already been used. If you entered it yourself and the report didn’t arrive, write to us at {email}.",
+          "expired": "This code has expired. Please contact whoever gave it to you.",
+          "error": "We couldn’t check the code. Please try again in a minute or write to us at {email}."
+        },
         "how": [
           "Take the free test: 24 blocks, about 10 minutes. If you’ve already taken it, there’s no need to retake it: the report is built from the result you already have.",
           "Enter your email and click “Buy”. Pay by Visa or Mastercard on a secure payment page.",
@@ -2431,8 +2551,8 @@
         "Team agreements: how we run meetings, assign tasks and give feedback."
       ],
       "reportTitle": "An in-depth report for each participant",
-      "report": "After the session, participants can order an in-depth DISC report on their own profile: {business}.",
-      "reportLink": "in-depth DISC report",
+      "report": "After the session, participants can order an in-depth DISC report on their own profile: more than 25 pages. If your organization is paying for the reports, it’s cheaper to buy {business} at a discount.",
+      "reportLink": "report packs for organizations",
       "priceTitle": "Price and how to get it",
       "price": [
         "The kit costs US${price}. Send a request, and we’ll reply within one business day with a payment link.",
@@ -2534,8 +2654,8 @@
         "kitText": "A 60- or 90-minute session plan, slides, an Excel workbook that scores the whole group for you, a team map and “How to work with me” cards.",
         "kitButton": "About the kit",
         "bizTitle": "In-depth reports for participants",
-        "bizText": "After taking the test online, each participant can order an in-depth report on their own profile.",
-        "bizButton": "In-depth report"
+        "bizText": "If your organization wants to give every participant a detailed report on their profile, there are in-depth report packs at a discount.",
+        "bizButton": "For organizations"
       },
       "mail": {
         "toggle": "Email me the test form",
@@ -2688,7 +2808,7 @@
         "{kit}: a 60- or 90-minute session plan, 16 slides, a group spreadsheet and a team map.",
         "{pdf}: a paper answer sheet if participants have no phones or internet.",
         "{teams}: how to read a team map and discuss results without labels.",
-        "{business}: in-depth reports for participants in bulk, paid by invoice."
+        "{business}: in-depth reports for participants in bulk, at a discount."
       ]
     },
     "teams": {
@@ -3356,6 +3476,7 @@
     "nav.pdf": "PDF test",
     "nav.materials": "DISC resources",
     "nav.howMade": "How reports are made",
+    "nav.business": "For organizations",
 
     "pages.styles.title": "DISC Personality Types: D, I, S, C — Traits, Strengths, Motivation",
     "pages.styles.description": "The four DISC personality types: Dominance, Influence, Steadiness, Conscientiousness. Traits, strengths, growth areas, motivation and behavior under stress.",

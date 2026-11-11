@@ -16,11 +16,11 @@ const OPTIONAL = ['.content.policy.legal', '.content.extendedMail', '.content.pr
   // тексты блока «Расширенный отчёт» на экране результата и в карточке вернувшегося посетителя («Чего нет в бесплатном отчёте, но есть в расширенном»,
   // с 2026-10-26): только где отчёт продаётся; обязательность — в проверке ниже
   '.content.product.block.screen',
-  // Для организаций (с 2026-10-22, сначала только русская версия — по просьбе заказчика): страница «Для организаций» и её пункт в подвале,
-  // поле кода доступа в форме покупки и письмо получателю отчёта по коду. Когда заказчик утвердит русскую версию, код доступа станет
-  // обязательным вместе с product.pay (правило «что сделано для продажи — во все языки с покупкой»)
+  // Для организаций (с 2026-10-22 в русской версии, с 2026-11-12 — во всех языках с покупкой): страница «Для организаций» и её пункт в подвале,
+  // поле кода доступа в форме покупки и письмо получателю отчёта по коду. Обязательны вместе с product.pay (правило «что сделано для продажи —
+  // во все языки с покупкой»; проверка ниже)
   '.content.business', '.ui.nav.business', '.content.product.pay.code', '.content.extendedMail.codeIntro', '.content.extendedMail.codeFooter',
-  // пункты оферты и абзац политики о кодах — там, где коды есть (решение заказчика от 2026-10-22: пока только русская версия)
+  // пункты оферты и абзац политики о кодах — там, где коды есть (с 2026-11-12 — во всех языках с покупкой)
   '.content.offer.codeTerms', '.content.policy.purchaseCode',
   // лендинг «CV и сопроводительное письмо под каждую вакансию» (/ru/cv/, с 2026-10-22, решение заказчика): только русская версия, ссылка только прямая
   '.content.cv',
@@ -114,6 +114,8 @@ for (const f of files) {
   if (!!C.business !== !!(j.ui && j.ui['nav.business'])) errs.push('.content.business and .ui["nav.business"] must come together');
   if (C.business && !(P.pay && P.pay.code)) errs.push('.content.business: needs .content.product.pay.code (people redeem the codes in the purchase form)');
   if (P.pay && P.pay.code && !(C.extendedMail && C.extendedMail.codeIntro && C.extendedMail.codeFooter)) errs.push('.content.product.pay.code: needs .content.extendedMail.codeIntro and codeFooter');
+  // с 2026-11-12: страница «Для организаций» и коды доступа — во всех языках, где отчёт продаётся (правило «что сделано для продажи — во все языки с покупкой»)
+  if (P.pay && !(C.business && j.ui && j.ui['nav.business'] && P.pay.code)) errs.push('.content.business, .ui["nav.business"], .content.product.pay.code: missing — the report is on sale in this language, so the page for organizations and access codes go with it (CLAUDE.md)');
   if (P.pay && P.pay.code && !(C.offer && C.offer.codeTerms && C.policy && C.policy.purchaseCode)) errs.push('.content.product.pay.code: needs .content.offer.codeTerms and .content.policy.purchaseCode (the offer and the policy must describe codes)');
   // В каждом блоке ровно 4 разных текста
   (j.blocks || []).forEach((b, i) => { const v = Object.values(b || {}); if (new Set(v).size !== v.length) errs.push('.blocks[' + i + ']: duplicate statements'); });

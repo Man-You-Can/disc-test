@@ -721,7 +721,8 @@
           "Wenn Sie einen Kauf beginnen, aber nicht bezahlen, speichern wir Ihre E-Mail-Adresse, Ihr Testergebnis und die Bestelldaten 30 Tage lang und löschen sie danach. In dieser Zeit kann an die angegebene Adresse eine einzige Erinnerungs-E-Mail mit einem Link zur Zahlung gesendet werden. Rechtsgrundlage sind die Schritte, die Sie zum Abschluss des Vertrags unternommen haben.",
           "Wenn Sie das DISG-Workshop-Paket kaufen, verarbeiten wir Ihre E-Mail-Adresse und die Bestelldaten: Datum, Betrag, Nummer und Status der Zahlung. Wir benötigen diese Daten, um Ihnen die E-Mail mit den Links zu den Dateien des Pakets zu senden, Ihre Anfragen zu beantworten und eine Rückerstattung abzuwickeln; Rechtsgrundlage ist der Vertrag auf Grundlage der {offer}. Die Bestelldaten zum Paket werden genauso aufbewahrt wie die Bestelldaten zum ausführlichen Profil; Erinnerungs-E-Mails zu einer nicht abgeschlossenen Zahlung für das Paket versenden wir nicht."
         ]
-      }
+      },
+      "purchaseCode": "Wenn Sie das ausführliche Profil mit einem Zugangscode erhalten, den eine Organisation oder eine andere Person gekauft hat, verarbeiten wir dieselben Daten mit Ausnahme der Zahlungsdaten und vermerken, dass der Code verwendet wurde. Wer den Code gekauft hat, erfährt von uns nur, ob und wann er verwendet wurde: Ihr Ergebnis, Ihr Bericht und Ihre E-Mail-Adresse werden nicht weitergegeben. Rechtsgrundlage ist der Vertrag, den Sie mit der Eingabe des Codes auf Grundlage der {offer} schließen."
     },
     "consentDoc": {
       "title": "Einwilligung in die Verarbeitung personenbezogener Daten – DISG-Test",
@@ -796,6 +797,96 @@
           "p": ["Wenn Sie eine Frage zum ausführlichen Profil oder zur Zahlung haben, schreiben Sie uns über das Formular „{contact}“ – die Antwort kommt an die angegebene E-Mail-Adresse. Die Angaben zum Inhaber der Website stehen am Ende jeder Seite."]
         }
       ]
+    },
+    "business": {
+      "title": "DISG für Organisationen: ausführliche Berichte im Paket",
+      "description": "Ausführliche DISG-Berichte für Mitarbeitende, Kundschaft und Teilnehmende im Paket, mit bis zu {maxDiscount} % Rabatt. Zugangscodes, Zahlung per Karte.",
+      "h1": "DISG für Organisationen",
+      "lead": "Der DISG-Test auf dieser Website ist kostenlos und ohne Anmeldung. Wenn Sie ihn mit Mitarbeitenden, Kundinnen und Kunden oder Teilnehmenden durchführen, können Sie die ausführlichen Berichte für sie im Paket kaufen: günstiger als einzeln.",
+      "facts": ["ab {minPack} Berichten", "bis zu {maxDiscount} % Rabatt", "Zahlung per Karte über einen sicheren Link", "jede Person erhält ihren Bericht per E-Mail"],
+      "forTitle": "Für wen das passt",
+      "for": [
+        "HR und Führungskräfte: Teams lernen sich kennen, neue Mitarbeitende kommen gut an, Reibungen unter Kolleginnen und Kollegen kommen auf den Tisch.",
+        "Corporate Academies, Trainerinnen und Trainer: Material für Programme zu Kommunikation, Führung und Teamarbeit.",
+        "Personalvermittlungen und Karriereberatung: ein Geschenk für Kandidatinnen und Kandidaten oder Kundschaft und eine Grundlage für das Gespräch darüber, welche Arbeit zu ihnen passt.",
+        "Coaches: der ausführliche Bericht der Klientin oder des Klienten schon vor dem ersten Termin."
+      ],
+      "services": {
+        "person": "Für Privatpersonen",
+        "personPick": "Ausführlicher Bericht zu Ihrem Testergebnis",
+        "org": "Für Organisationen",
+        "orgPick": "Ausführliche Berichte für Mitarbeitende, Kundschaft und Teilnehmende – im Paket, Zahlung per Karte",
+        "orgName": "Berichtspakete",
+        "orgText": "Für HR, Personalvermittlungen, Corporate Academies, Trainerinnen, Trainer und Coaches. Sie kaufen Zugangscodes und geben sie an die Personen weiter: Jede Person macht den Test und erhält ihren eigenen Bericht per E-Mail. Zahlung per Karte über einen sicheren Link, bis zu {maxDiscount} % Rabatt.",
+        "orgPriceLabel": "Preis",
+        "orgPrice": "ab {minPrice} € pro Bericht",
+        "orgButton": "Mehr erfahren und anfragen"
+      },
+      "packsTitle": "Berichtspakete",
+      "packsText": "Sie kaufen Zugangscodes und geben sie weiter, einen Code pro Person. Jede Person macht den Test, gibt den Code auf der Seite mit ihrem Ergebnis ein und erhält einen ausführlichen Bericht mit ihrem Namen als PDF an ihre E-Mail-Adresse. Was im Bericht steht und wie seine Seiten aussehen, zeigt die Seite „{report}“.",
+      "packsHead": ["Paket", "Preis pro Bericht", "Rabatt"],
+      "packRow": "ab {n} Codes",
+      "packPrice": "{price} €",
+      "packDiscount": "−{pct} %",
+      "packsNote": "Einzelpreis eines Berichts: {retail} €. Ein Code gilt {months} Monate ab Ausgabe. Ein Code – ein Bericht für eine Person.",
+      "csv": ["Zugangscode", "Verwendet", "Gültig bis", "Wo eingeben"],
+      "howTitle": "So funktioniert es",
+      "how": [
+        "Senden Sie unten auf der Seite eine Anfrage: wie viele Berichte Sie brauchen und für wen. Wir antworten innerhalb eines Werktags.",
+        "Wir senden Ihnen einen Link zur Zahlung per Karte. Nach der Zahlung erhalten Sie die Codes als Datei.",
+        "Schicken Sie den Personen den Link zum Test und jeweils einen Code. Der Test dauert etwa 10 Minuten, eine Anmeldung ist nicht nötig.",
+        "Auf der Seite mit dem Ergebnis klickt die Person auf „Ich habe einen Zugangscode“ und gibt den Code und ihre E-Mail-Adresse ein. Der Bericht kommt nach wenigen Minuten per E-Mail.",
+        "Auf Wunsch teilen wir Ihnen mit, wie viele Codes bereits verwendet wurden."
+      ],
+      "privacyTitle": "Die Ergebnisse bleiben bei den Teilnehmenden",
+      "privacy": [
+        "Den Bericht erhält nur, wer den Test gemacht und den Code eingegeben hat. Wer die Codes bezahlt hat, bekommt von uns weder Ergebnisse noch Berichte noch E-Mail-Adressen der Teilnehmenden – nur die Zahl der verwendeten Codes.",
+        "Wenn Sie einen Überblick über das Team brauchen, bitten Sie die Personen, ihr Ergebnis selbst zu teilen: den Link zum Ergebnis oder den Code aus dem Kurzbericht. Wie Sie daraus eine Teamtabelle erstellen, steht auf der Seite „{teams}“."
+      ],
+      "boundsTitle": "Wofür DISG nicht geeignet ist",
+      "bounds": "DISG beschreibt den Verhaltensstil, nicht Fähigkeiten, Wissen oder Ehrlichkeit. Der Test ist nicht für die Personalauswahl gedacht und nicht für Entscheidungen über Einstellung, Kündigung oder Gehalt. Nutzen Sie ihn, damit Menschen sich selbst und einander besser verstehen: beim Onboarding, in der Teamarbeit und in der Führungskräfteentwicklung.",
+      "teamTitle": "Teambericht – in Vorbereitung",
+      "team": "Wir bereiten einen Bericht für Führungskräfte über das ganze Team vor: Stilkarte, Stärken des Teams, wo Reibungen entstehen und was dagegen hilft. Wenn Sie ihn brauchen, vermerken Sie das in Ihrer Anfrage: Wir melden uns, sobald er fertig ist.",
+      "payTitle": "Zahlung und Unterlagen",
+      "pay": [
+        "Sie bezahlen in Euro per Karte, gern auch mit einer Firmenkarte, über einen sicheren Zahlungslink, den wir Ihnen nach Ihrer Anfrage senden. Nach der Zahlung erhält die zahlende Person eine elektronische Zahlungsbestätigung per E-Mail.",
+        "Braucht Ihre Buchhaltung eine Rechnung oder andere Unterlagen, schreiben Sie das bitte in Ihre Anfrage: Wir sagen Ihnen, was wir bereitstellen können.",
+        "Anbieter: {seller}."
+      ],
+      "faqTitle": "Fragen",
+      "faq": [
+        {
+          "q": "Kann man weniger als {minPack} Berichte kaufen?",
+          "a": "Der Paketpreis gilt ab {minPack} Codes. Einzelne Berichte kann jede Person auf der Seite „{report}“ zum regulären Preis selbst kaufen."
+        },
+        {
+          "q": "In welcher Sprache sind die Berichte?",
+          "a": "Der Code funktioniert in jeder Sprachversion der Website: Test, Bericht und E-Mail sind in der Sprache der Version, in der die Person den Code eingibt. Der Test selbst ist kostenlos in 13 Sprachen verfügbar."
+        },
+        {
+          "q": "Was, wenn jemand den Test schon gemacht hat?",
+          "a": "Der Test muss nicht wiederholt werden: Der Code lässt sich auf der Seite mit dem gespeicherten Ergebnis oder auf der Seite des ausführlichen Berichts eingeben, auf demselben Gerät."
+        },
+        {
+          "q": "Dürfen wir die Berichte im Training verwenden?",
+          "a": "Ja: Die Teilnehmenden arbeiten im Training mit ihren eigenen Berichten. Texte aus den Berichten in eigene Unterlagen oder Handouts zu übernehmen, ist nicht erlaubt – die Rechte daran regelt Abschnitt 6 der {offer}."
+        }
+      ],
+      "form": {
+        "title": "Anfrage",
+        "lead": "Wir antworten innerhalb eines Werktags an die E-Mail-Adresse, die Sie angeben.",
+        "size": "Wie viele Personen?",
+        "sizes": ["bis 10", "10–50", "50–100", "mehr als 100"],
+        "interest": "Was interessiert Sie?",
+        "interests": ["Berichtspaket", "Teambericht", "Etwas anderes"],
+        "comment": "Kommentar",
+        "commentPlaceholder": "Zum Beispiel: für wen die Berichte sind, bis wann Sie sie brauchen und ob Ihre Buchhaltung eine Rechnung benötigt",
+        "button": "Anfrage senden",
+        "subject": "Заявка для организации: {name}",
+        "sent": "Ihre Anfrage wurde gesendet. Wir antworten innerhalb eines Werktags an {email}.",
+        "needInterest": "Bitte geben Sie an, was Sie interessiert.",
+        "privacy": "Name, E-Mail-Adresse und Text der Anfrage werden per E-Mail an {email} gesendet und nur verwendet, um Ihnen zu antworten."
+      }
     },
     "cv": {
       "title": "Lebenslauf und Anschreiben mit KI – passend zu jeder Stelle · Early Access",
@@ -1746,7 +1837,25 @@
       "description": "Allgemeine Geschäftsbedingungen für die Leistung „Ausführliches DISG-Profil“ und das DISG-Workshop-Paket auf disc-test.org: Preis, Zahlung und Zusendung, Erstattung, Rechte an den Inhalten.",
       "h1": "Allgemeine Geschäftsbedingungen",
       "linkText": "Allgemeinen Geschäftsbedingungen",
-      "edition": "Fassung vom 6. November 2026. Deutsche Übersetzung aktualisiert am 6. November 2026.",
+      "codeTerms": [
+        {
+          "section": 0,
+          "text": "Zugangscode – eine Zeichenfolge, die zum Erhalt der Leistung ohne Bezahlung durch den Kunden berechtigt. Zugangscodes erwirbt ein Dritter – eine Organisation, ein Einzelunternehmer oder eine andere Person – auf Grundlage eines gesonderten Vertrags vom Anbieter und gibt sie an Kunden weiter."
+        },
+        {
+          "section": 3,
+          "text": "4.6. Ein Kunde, der einen Zugangscode hat, gibt diesen anstelle der Zahlung auf der Website neben dem Zahlungsformular ein und gibt eine E-Mail-Adresse an. Ein Zugangscode gilt einmalig und nur innerhalb der Frist, die bei seiner Ausgabe genannt wurde. Für diesen Kunden gilt die Leistung als bezahlt, sobald die Website den Zugangscode angenommen hat; die Frist nach Ziffer 4.2 beginnt mit diesem Zeitpunkt."
+        },
+        {
+          "section": 4,
+          "text": "5.8. Eine mit einem Zugangscode erhaltene Leistung bezahlt der Kunde nicht; die Bestimmungen dieses Abschnitts über die Rückerstattung gelten für sie daher nicht: Abgerechnet wird über Zugangscodes zwischen dem Anbieter und demjenigen, der sie gekauft hat. Das Recht des Kunden auf Behebung von Mängeln (Ziffer 5.3) bleibt bestehen."
+        },
+        {
+          "section": 7,
+          "text": "8.4. Demjenigen, der einen Zugangscode gekauft hat, teilt der Anbieter nur mit, ob und wann der Zugangscode verwendet wurde. Das Testergebnis, das Ausführliche Profil und die E-Mail-Adresse des Kunden gibt der Anbieter nicht an ihn weiter."
+        }
+      ],
+      "edition": "Fassung vom 12. November 2026. Deutsche Übersetzung aktualisiert am 12. November 2026.",
       "note": "Dies ist die deutsche Übersetzung dieser Geschäftsbedingungen; das Original ist unter {original} veröffentlicht. Weichen die beiden Texte voneinander ab, gilt das Original – mit Ausnahme des Preises und der Zahlungsbedingungen: Für die deutsche Version der Website gelten dafür die Ziffern 1 und 3 dieser Übersetzung.",
       "seller": "Einzelunternehmer Manukyan Armen, Steuernummer (INN) {inn}",
       "lead": "Dieses Dokument ist ein verbindliches Angebot (öffentliches Angebot) zum Abschluss eines Vertrags über die kostenpflichtige Leistung „Ausführliches DISG-Profil“ sowie eines Vertrags über die Überlassung des DISG-Workshop-Pakets (Abschnitt 10) zu den nachstehenden Bedingungen. Das Angebot unterbreitet {seller} (im Folgenden „Anbieter“). Wer die Leistung oder das Paket bezahlt, stimmt diesen Bedingungen vollständig und vorbehaltlos zu (Annahme des Angebots).",
@@ -1755,7 +1864,7 @@
           "h": "1. Begriffsbestimmungen",
           "ul": [
             "Anbieter – {seller}.",
-            "Kunde – eine unbeschränkt geschäftsfähige natürliche Person, die die Bedingungen dieses Angebots durch Bezahlung der Leistung angenommen hat.",
+            "Kunde – eine unbeschränkt geschäftsfähige natürliche Person, die die Bedingungen dieses Angebots durch Bezahlung der Leistung oder durch Eingabe eines Zugangscodes angenommen hat.",
             "Website – {site} mit allen ihren Seiten.",
             "Test – der kostenlose DISG-Fragebogen auf der Website.",
             "Ausführliches Profil – eine vom Anbieter in elektronischer Form erstellte genauere Auswertung des DISG-Profils des Kunden auf Grundlage des von ihm absolvierten Tests.",
@@ -1835,7 +1944,7 @@
         {
           "h": "9. Geltungsdauer und Änderung des Angebots",
           "p": [
-            "9.1. Der Vertrag gilt mit der Bezahlung der Leistung oder des Pakets (Abschnitt 10) als geschlossen und bleibt in Kraft, bis die Parteien ihre Pflichten erfüllt haben.",
+            "9.1. Der Vertrag gilt mit der Bezahlung der Leistung oder des Pakets (Abschnitt 10) oder mit der Annahme eines Zugangscodes (Ziffer 4.6) als geschlossen und bleibt in Kraft, bis die Parteien ihre Pflichten erfüllt haben.",
             "9.2. Der Anbieter kann das Angebot ändern. Die neue Fassung gilt ab ihrer Veröffentlichung auf der Website; für bereits bezahlte Bestellungen gilt sie nicht.",
             "9.3. Beschwerden sind an {email} zu richten; der Anbieter beantwortet sie innerhalb von zehn Kalendertagen. Wird ein Streit nicht beigelegt, entscheidet darüber ein Gericht nach dem auf den Vertrag anwendbaren Recht.",
             "9.4. Auf den Vertrag ist das Recht des Landes anwendbar, in dem der Anbieter registriert ist."
@@ -1916,7 +2025,9 @@
       "inviteTitle": "Laden Sie Freunde, Kollegen und Angehörige zum Test ein",
       "invite": "Kapitel 8 des Berichts erklärt, wie Sie mit Menschen jedes der vier Stile sprechen. Den Stil der Menschen um Sie herum erfahren Sie, wenn Sie ihnen den Test vorschlagen: Er ist kostenlos und dauert etwa 10 Minuten. Wer den Stil des anderen kennt, versteht ihn leichter.",
       "inviteLink": "Hier ist der Link zum Test zum Weitergeben:",
-      "footer": "Sie erhalten diese E-Mail, weil Sie auf disc-test.org die Leistung „Ausführliches DISG-Profil“ bezahlt haben. Der Bericht ist persönlich und nur für Ihren eigenen Gebrauch bestimmt."
+      "footer": "Sie erhalten diese E-Mail, weil Sie auf disc-test.org die Leistung „Ausführliches DISG-Profil“ bezahlt haben. Der Bericht ist persönlich und nur für Ihren eigenen Gebrauch bestimmt.",
+      "codeIntro": "Ihr ausführlicher DISG-Bericht ist fertig. Bezahlt hat ihn die Person oder Organisation, die Ihnen den Zugangscode gegeben hat. Der Bericht wurde für dieses Profil erstellt:",
+      "codeFooter": "Sie erhalten diese E-Mail, weil Sie auf disc-test.org einen Zugangscode für die Leistung „Ausführliches DISG-Profil“ eingegeben haben. Ihr Ergebnis und diesen Bericht geben wir nicht an die Person oder Organisation weiter, die Ihnen den Code gegeben hat. Der Bericht ist persönlich und nur für Ihren eigenen Gebrauch bestimmt."
     },
     "product": {
       "title": "Ausführlicher DISG-Bericht – 13 Kapitel zu Ihrem Ergebnis",
@@ -2023,6 +2134,22 @@
         "badEmail": "Prüfen Sie die E-Mail-Adresse: An sie senden wir den Bericht und den Kaufbeleg.",
         "wait": "Die Zahlungsseite wird geöffnet …",
         "error": "Die Zahlungsseite lässt sich gerade nicht öffnen. Versuchen Sie es in ein paar Minuten noch einmal oder schreiben Sie uns an {email}.",
+        "code": {
+          "link": "Ich habe einen Zugangscode",
+          "label": "Zugangscode",
+          "placeholder": "XXXX-XXXX-XXXX",
+          "button": "Bericht erhalten",
+          "back": "Ohne Code kaufen",
+          "wait": "Der Code wird geprüft …",
+          "note": "Den Bericht hat bereits die Person oder Organisation bezahlt, die Ihnen den Code gegeben hat: Sie zahlen nichts. Ihr Ergebnis und Ihre E-Mail-Adresse geben wir nicht an sie weiter. Mit einem Klick auf „Bericht erhalten“ akzeptieren Sie unsere {offer}.",
+          "badEmail": "Prüfen Sie die E-Mail-Adresse: An sie senden wir den Bericht.",
+          "empty": "Geben Sie den Zugangscode ein.",
+          "done": "Code angenommen. Der Bericht kommt in wenigen Minuten an {to}. Wenn keine E-Mail ankommt, sehen Sie im Spam-Ordner nach.",
+          "bad": "Diesen Code gibt es nicht. Prüfen Sie, ob er richtig eingegeben ist.",
+          "used": "Dieser Code wurde bereits verwendet. Wenn Sie ihn selbst eingegeben haben und der Bericht nicht angekommen ist, schreiben Sie uns an {email}.",
+          "expired": "Dieser Code ist abgelaufen. Wenden Sie sich an die Person oder Organisation, die ihn Ihnen gegeben hat.",
+          "error": "Der Code ließ sich nicht prüfen. Versuchen Sie es in einer Minute noch einmal oder schreiben Sie uns an {email}."
+        },
         "how": [
           "Machen Sie den kostenlosen Test: 24 Blöcke, etwa 10 Minuten. Haben Sie ihn schon gemacht, brauchen Sie ihn nicht zu wiederholen: Der Bericht entsteht aus dem vorhandenen Ergebnis.",
           "Geben Sie Ihre E-Mail-Adresse ein und klicken Sie auf „Kaufen“. Die Zahlung erfolgt per Visa oder Mastercard auf einer gesicherten Zahlungsseite.",
@@ -2442,8 +2569,8 @@
         "Vereinbarungen: wie wir Besprechungen führen, Aufgaben vergeben und Feedback geben."
       ],
       "reportTitle": "Ausführlicher Bericht für die Teilnehmenden",
-      "report": "Nach dem Workshop können die Teilnehmenden den ausführlichen DISG-Bericht zu ihrem Profil bestellen – rund 30 Seiten. Mehr dazu: {business}.",
-      "reportLink": "ausführlicher DISG-Bericht",
+      "report": "Nach dem Workshop können die Teilnehmenden den ausführlichen DISG-Bericht zu ihrem Profil bestellen – rund 30 Seiten. Bezahlt Ihre Organisation die Berichte, ist ein {business} günstiger: mit Rabatt.",
+      "reportLink": "Berichtspaket für Organisationen",
       "priceTitle": "Preis und Bezug",
       "price": [
         "Das Paket kostet {price} €. Senden Sie uns eine Anfrage – wir antworten innerhalb eines Werktags mit einem Zahlungslink.",
@@ -2545,8 +2672,8 @@
         "kitText": "Leitfaden für einen Workshop von 60 oder 90 Minuten, Folien, eine Excel-Tabelle, die die Ergebnisse der ganzen Gruppe selbst auswertet, Teamkarte und Karten „So arbeitet man am besten mit mir“.",
         "kitButton": "Mehr zum Paket",
         "bizTitle": "Ausführliche Berichte für die Teilnehmenden",
-        "bizText": "Nach dem Online-Test kann jede Person den ausführlichen DISG-Bericht zu ihrem Profil bestellen.",
-        "bizButton": "Zum ausführlichen Bericht"
+        "bizText": "Möchte Ihre Organisation allen Teilnehmenden einen ausführlichen Bericht zu ihrem Profil geben? Dafür gibt es Berichtspakete mit Rabatt.",
+        "bizButton": "Für Organisationen"
       },
       "mail": {
         "toggle": "Fragebogen per E-Mail erhalten",
@@ -2699,7 +2826,7 @@
         "{kit}: Ablauf für 60 oder 90 Minuten, 16 Folien, Gruppentabelle und Teamkarte.",
         "{pdf}: Antwortbogen auf Papier, wenn Teilnehmende kein Handy oder Internet haben.",
         "{teams}: wie Sie die Teamkarte lesen und Ergebnisse ohne Schubladendenken besprechen.",
-        "{business}: ausführliche Berichte für die Teilnehmenden im Paket, Zahlung per Rechnung."
+        "{business}: ausführliche Berichte für die Teilnehmenden im Paket, mit Rabatt."
       ]
     },
     "teams": {
@@ -3373,6 +3500,7 @@
     "nav.pdf": "Test als PDF",
     "nav.materials": "Mehr über DISG",
     "nav.howMade": "So entstehen die Berichte",
+    "nav.business": "Für Organisationen",
 
     "pages.styles.title": "Die vier DISG-Typen D, I, S, C – Merkmale, Stärken, Motivation",
     "pages.styles.description": "Die vier DISG-Typen: Dominanz, Initiative, Stetigkeit, Gewissenhaftigkeit. Merkmale, Stärken, Entwicklungsfelder, Motivation, Verhalten unter Stress.",

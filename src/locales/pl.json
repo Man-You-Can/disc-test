@@ -717,7 +717,8 @@
           "Jeśli rozpoczniesz zakup, ale nie dokonasz płatności, przechowujemy twój adres e-mail, wynik testu i dane zamówienia przez 30 dni, a następnie je usuwamy. W tym czasie na podany adres może przyjść jedna wiadomość z przypomnieniem i linkiem do płatności. Podstawą są twoje działania zmierzające do zawarcia umowy.",
           "Jeśli kupujesz zestaw prowadzącego DISC, przetwarzamy twój adres e-mail i dane zamówienia: datę, kwotę, numer i status płatności. Dane te są potrzebne, aby wysłać ci wiadomość z linkami do plików zestawu, odpowiedzieć na twoje zgłoszenie i dokonać zwrotu płatności; podstawą jest umowa zawarta na warunkach {offer}. Dane zamówienia zestawu przechowujemy tak samo jak dane zamówienia profilu rozszerzonego; przypomnień o niedokończonej płatności za zestaw nie wysyłamy."
         ]
-      }
+      },
+      "purchaseCode": "Jeśli otrzymujesz profil rozszerzony dzięki kodowi dostępu, który kupiła organizacja lub inna osoba, przetwarzamy te same dane z wyjątkiem informacji o płatności i odnotowujemy wykorzystanie kodu. Osobie, która kupiła kod, przekazujemy wyłącznie informację, czy i kiedy kod został wykorzystany: twój wynik, raport i adres e-mail nie są jej przekazywane. Podstawą jest umowa, którą zawierasz, wpisując kod na warunkach {offer}."
     },
     "consentDoc": {
       "title": "Zgoda na przetwarzanie danych osobowych – test DISC",
@@ -793,12 +794,110 @@
         }
       ]
     },
+    "business": {
+      "title": "DISC dla organizacji: pakiety raportów rozszerzonych",
+      "description": "Rozszerzone raporty DISC dla pracowników, klientów i uczestników szkoleń w pakiecie, z rabatem do {maxDiscount}%. Kody dostępu, płatność kartą.",
+      "h1": "DISC dla organizacji",
+      "lead": "Test DISC w serwisie jest bezpłatny i nie wymaga rejestracji. Jeśli przeprowadzasz go dla pracowników, klientów lub uczestników szkoleń, rozszerzone raporty możesz kupić dla nich w pakiecie – taniej niż pojedynczo.",
+      "facts": ["od {minPack} raportów", "rabat do {maxDiscount}%", "płatność kartą przez bezpieczny link", "każdy dostaje raport na swój e-mail"],
+      "forTitle": "Dla kogo",
+      "for": [
+        "Dla HR i menedżerów: poznanie zespołu, wdrażanie nowych pracowników, rozmowa o tarciach między współpracownikami.",
+        "Dla akademii korporacyjnych i trenerów biznesu: materiał do programów o komunikacji, przywództwie i pracy zespołowej.",
+        "Dla agencji rekrutacyjnych i doradców zawodowych: prezent dla kandydata lub klienta i punkt wyjścia do rozmowy o tym, jaka praca mu odpowiada.",
+        "Dla coachów: szczegółowy raport klienta jeszcze przed pierwszą sesją."
+      ],
+      "services": {
+        "person": "Dla osób prywatnych",
+        "personPick": "Raport rozszerzony na podstawie twojego wyniku testu",
+        "org": "Dla organizacji",
+        "orgPick": "Raporty rozszerzone dla pracowników, klientów i uczestników szkoleń – w pakiecie, z płatnością kartą",
+        "orgName": "Pakiety raportów rozszerzonych",
+        "orgText": "Dla działów HR, agencji rekrutacyjnych, akademii korporacyjnych, trenerów i coachów. Kupujesz kody dostępu i przekazujesz je uczestnikom: każdy robi test i dostaje własny raport na e-mail. Płatność kartą przez bezpieczny link, rabat do {maxDiscount}%.",
+        "orgPriceLabel": "Cena",
+        "orgPrice": "od {minPrice} USD za raport",
+        "orgButton": "Szczegóły i zgłoszenie"
+      },
+      "packsTitle": "Pakiety raportów rozszerzonych",
+      "packsText": "Kupujesz kody dostępu i przekazujesz je uczestnikom – jeden kod na osobę. Każdy robi test, wpisuje kod na ekranie swojego wyniku i dostaje na swój e-mail imienny raport rozszerzony w PDF. Co jest w raporcie i jak wyglądają jego strony, zobaczysz na stronie „{report}”.",
+      "packsHead": ["Pakiet", "Cena jednego raportu", "Rabat"],
+      "packRow": "od {n} kodów",
+      "packPrice": "{price} USD",
+      "packDiscount": "−{pct}%",
+      "packsNote": "Cena pojedynczego raportu: {retail} USD. Kod jest ważny {months} miesięcy od dnia wydania. Jeden kod to jeden raport dla jednej osoby.",
+      "csv": ["Kod dostępu", "Wykorzystany", "Ważny do", "Gdzie wpisać"],
+      "howTitle": "Jak to działa",
+      "how": [
+        "Zostaw zgłoszenie na dole strony: ile raportów potrzebujesz i dla kogo. Odpowiemy w ciągu jednego dnia roboczego.",
+        "Wyślemy ci link do płatności kartą. Po płatności prześlemy kody w pliku.",
+        "Wyślij uczestnikom link do testu i każdemu jeden kod. Test trwa około 10 minut i nie wymaga rejestracji.",
+        "Na ekranie wyniku uczestnik klika „Mam kod dostępu”, wpisuje kod i swój adres e-mail. Raport przychodzi do niego e-mailem w ciągu kilku minut.",
+        "Na twoją prośbę powiemy, ile kodów zostało już wykorzystanych."
+      ],
+      "privacyTitle": "Wyniki zostają u uczestników",
+      "privacy": [
+        "Raport dostaje tylko osoba, która zrobiła test i wpisała kod. Tym, którzy zapłacili za kody, nie przekazujemy wyników, raportów ani adresów e-mail uczestników – tylko liczbę wykorzystanych kodów.",
+        "Jeśli potrzebujesz podsumowania zespołu, poproś uczestników, żeby sami udostępnili swój wynik: przesłali link do wyniku albo kod z raportu podstawowego. Jak zebrać z nich tabelę zespołu, opisujemy na stronie „{teams}”."
+      ],
+      "boundsTitle": "Do czego DISC się nie nadaje",
+      "bounds": "DISC opisuje styl zachowania, a nie zdolności, wiedzę czy uczciwość. Nie służy do selekcji kandydatów ani do decyzji o zatrudnieniu, zwolnieniu czy wynagrodzeniu. Korzystaj z niego, żeby ludzie lepiej rozumieli siebie i innych: przy wdrażaniu nowych osób, w pracy zespołowej, w rozwoju menedżerów.",
+      "teamTitle": "Raport o zespole – w przygotowaniu",
+      "team": "Przygotowujemy raport dla menedżera o całym zespole: mapę stylów, mocne strony zespołu, miejsca, w których pojawiają się tarcia, i co z nimi zrobić. Jeśli go potrzebujesz, zaznacz to w zgłoszeniu – napiszemy, gdy będzie gotowy.",
+      "payTitle": "Płatność i dokumenty",
+      "pay": ["Płacisz kartą, także firmową, przez bezpieczny link do płatności, który wyślemy po otrzymaniu zgłoszenia; kwota jest w dolarach amerykańskich (USD). Po płatności płacący dostaje na e-mail elektroniczne potwierdzenie płatności.", "Jeśli księgowość potrzebuje faktury lub innych dokumentów, napisz o tym w zgłoszeniu – odpowiemy, co możemy przygotować.", "Usługodawca: {seller}."],
+      "faqTitle": "Pytania",
+      "faq": [
+        { "q": "Czy można kupić mniej niż {minPack} raportów?", "a": "Cena pakietowa obowiązuje od {minPack} kodów. Jeden lub kilka raportów każdy może kupić sam na stronie „{report}” w zwykłej cenie." },
+        {
+          "q": "W jakim języku są raporty?",
+          "a": "Kod działa w każdej wersji językowej serwisu: test, raport i e-mail są w języku tej wersji, w której uczestnik wpisuje kod. Sam test jest bezpłatnie dostępny w 13 językach."
+        },
+        { "q": "A jeśli ktoś już zrobił test?", "a": "Nie musi go powtarzać: kod można wpisać na ekranie zapisanego wyniku albo na stronie raportu rozszerzonego na tym samym urządzeniu." },
+        {
+          "q": "Czy raporty można wykorzystać na szkoleniu?",
+          "a": "Tak: uczestnicy pracują na zajęciach z własnymi raportami. Nie wolno natomiast kopiować tekstów raportów do własnych materiałów i handoutów – prawa do nich opisuje rozdział 6 {offer}."
+        }
+      ],
+      "form": {
+        "title": "Zgłoszenie",
+        "lead": "Odpowiemy w ciągu jednego dnia roboczego na adres e-mail, który podasz.",
+        "size": "Ile osób",
+        "sizes": ["do 10", "10–50", "50–100", "ponad 100"],
+        "interest": "Co cię interesuje",
+        "interests": ["Pakiet raportów rozszerzonych", "Raport o zespole", "Coś innego"],
+        "comment": "Komentarz",
+        "commentPlaceholder": "Na przykład: dla kogo są raporty, na kiedy i czy księgowość potrzebuje faktury",
+        "button": "Wyślij zgłoszenie",
+        "subject": "Заявка для организации: {name}",
+        "sent": "Zgłoszenie wysłane. Odpowiemy na {email} w ciągu jednego dnia roboczego.",
+        "needInterest": "Zaznacz, co cię interesuje.",
+        "privacy": "Imię, e-mail i treść zgłoszenia zostaną wysłane e-mailem na adres {email} i posłużą wyłącznie do udzielenia ci odpowiedzi."
+      }
+    },
     "offer": {
       "title": "Regulamin sprzedaży – rozszerzony profil DISC i zestaw prowadzącego",
       "description": "Regulamin sprzedaży płatnej usługi „Rozszerzony profil DISC” i Zestawu prowadzącego DISC w serwisie disc-test.org: cena, płatność i dostarczenie, zwroty, prawa do materiałów.",
       "h1": "Regulamin sprzedaży",
       "linkText": "regulaminu sprzedaży",
-      "edition": "Wersja z 6 listopada 2026 r. Tłumaczenie na język polski zaktualizowano 6 listopada 2026 r.",
+      "codeTerms": [
+        {
+          "section": 0,
+          "text": "Kod Dostępu – ciąg znaków uprawniający do otrzymania Usługi bez płatności ze strony Klienta. Kody Dostępu kupuje od Usługodawcy na podstawie odrębnej umowy osoba trzecia – organizacja, przedsiębiorca lub inna osoba – i przekazuje je Klientom."
+        },
+        {
+          "section": 3,
+          "text": "4.6. Klient, który ma Kod Dostępu, zamiast płatności wpisuje go w Serwisie obok formularza płatności i podaje adres e-mail. Kod Dostępu można wykorzystać jeden raz, w terminie wskazanym przy jego wydaniu. Dla takiego Klienta Usługę uznaje się za opłaconą z chwilą przyjęcia Kodu Dostępu przez Serwis; termin określony w punkcie 4.2 liczy się od tej chwili."
+        },
+        {
+          "section": 4,
+          "text": "5.8. Klient nie płaci za Usługę otrzymaną na podstawie Kodu Dostępu, dlatego postanowienia niniejszego rozdziału dotyczące zwrotu płatności nie mają do niej zastosowania: rozliczenia za Kody Dostępu prowadzone są między Usługodawcą a osobą, która je kupiła. Prawo Klienta do usunięcia wad (punkt 5.3) zostaje zachowane."
+        },
+        {
+          "section": 7,
+          "text": "8.4. Osobie, która kupiła Kod Dostępu, Usługodawca przekazuje wyłącznie informację, czy i kiedy Kod Dostępu został wykorzystany. Wyniku Testu, Profilu Rozszerzonego ani adresu e-mail Klienta Usługodawca jej nie przekazuje."
+        }
+      ],
+      "edition": "Wersja z 12 listopada 2026 r. Tłumaczenie na język polski zaktualizowano 12 listopada 2026 r.",
       "note": "Niniejszy tekst jest tłumaczeniem na język polski oryginalnej oferty opublikowanej pod adresem {original}. W razie rozbieżności między tekstami pierwszeństwo ma oryginał – z wyjątkiem ceny i sposobu płatności: w polskiej wersji Serwisu obowiązują rozdziały 1 i 3 niniejszego tłumaczenia.",
       "seller": "przedsiębiorca indywidualny Manukyan Armen, numer identyfikacji podatkowej (INN) {inn}",
       "lead": "Niniejszy regulamin (dalej: Regulamin) jest oficjalną propozycją (ofertą publiczną) zawarcia umowy o świadczenie płatnej usługi „Rozszerzony profil DISC”, a także umowy o dostarczenie Zestawu prowadzącego DISC (rozdział 10), na warunkach określonych poniżej. Ofertę składa {seller} (dalej: Usługodawca). Opłacenie usługi lub Zestawu oznacza pełną i bezwarunkową akceptację tych warunków (przyjęcie oferty).",
@@ -807,7 +906,7 @@
           "h": "1. Definicje",
           "ul": [
             "Usługodawca – {seller}.",
-            "Klient – osoba fizyczna mająca pełną zdolność do czynności prawnych, która zaakceptowała warunki Regulaminu, opłacając Usługę.",
+            "Klient – osoba fizyczna mająca pełną zdolność do czynności prawnych, która zaakceptowała warunki Regulaminu, opłacając Usługę lub wpisując Kod Dostępu.",
             "Serwis – {site} wraz ze wszystkimi podstronami.",
             "Test – bezpłatny kwestionariusz DISC dostępny w Serwisie.",
             "Profil Rozszerzony – bardziej szczegółowa analiza profilu DISC Klienta, przygotowana przez Usługodawcę w formie elektronicznej na podstawie wypełnionego przez Klienta Testu.",
@@ -887,7 +986,7 @@
         {
           "h": "9. Okres obowiązywania i zmiana Regulaminu",
           "p": [
-            "9.1. Umowę uznaje się za zawartą z chwilą opłacenia Usługi lub Zestawu (rozdział 10); obowiązuje ona do czasu wykonania przez strony ich zobowiązań.",
+            "9.1. Umowę uznaje się za zawartą z chwilą opłacenia Usługi lub Zestawu (rozdział 10) albo przyjęcia Kodu Dostępu (punkt 4.6); obowiązuje ona do czasu wykonania przez strony ich zobowiązań.",
             "9.2. Usługodawca może zmienić Regulamin. Nowa wersja obowiązuje od chwili jej opublikowania w Serwisie i nie dotyczy zamówień już opłaconych.",
             "9.3. Reklamacje należy kierować na adres {email}; Usługodawca odpowiada na nie w ciągu dziesięciu dni kalendarzowych. Spór, którego nie uda się rozwiązać polubownie, rozstrzyga sąd zgodnie z prawem właściwym dla umowy.",
             "9.4. Prawem właściwym dla umowy jest prawo państwa, w którym zarejestrowany jest Usługodawca."
@@ -973,7 +1072,9 @@
       "inviteTitle": "Zaproś do testu znajomych, współpracowników i bliskich",
       "invite": "Rozdział 8 raportu mówi, jak rozmawiać z przedstawicielami każdego stylu. Styl osób wokół siebie poznasz, jeśli zaprosisz je do testu: jest bezpłatny i zajmuje około 10 minut. Kto zna styl rozmówcy, łatwiej się z nim porozumiewa.",
       "inviteLink": "Link do testu, który możesz przesłać dalej:",
-      "footer": "Otrzymujesz tę wiadomość, ponieważ opłacono usługę „Rozszerzony profil DISC” w serwisie disc-test.org na ten adres. Raport jest imienny i przeznaczony wyłącznie do użytku własnego."
+      "footer": "Otrzymujesz tę wiadomość, ponieważ opłacono usługę „Rozszerzony profil DISC” w serwisie disc-test.org na ten adres. Raport jest imienny i przeznaczony wyłącznie do użytku własnego.",
+      "codeIntro": "Twój rozszerzony raport DISC jest gotowy. Zapłaciła za niego osoba lub organizacja, która dała ci kod dostępu. Przygotowaliśmy go dla profilu:",
+      "codeFooter": "Otrzymujesz tę wiadomość, ponieważ w serwisie disc-test.org wpisano kod dostępu do usługi „Rozszerzony profil DISC” z tym adresem e-mail. Twojego wyniku ani tego raportu nie przekazujemy osobie, która wydała kod. Raport jest imienny i przeznaczony wyłącznie do użytku własnego."
     },
     "product": {
       "title": "Rozszerzony raport DISC – 13 rozdziałów o twoim wyniku",
@@ -1070,6 +1171,22 @@
         "badEmail": "Sprawdź adres e-mail: na niego wyślemy raport i dowód zakupu.",
         "wait": "Otwieramy stronę płatności…",
         "error": "Nie udało się otworzyć strony płatności. Spróbuj ponownie za kilka minut albo napisz do nas na {email}.",
+        "code": {
+          "link": "Mam kod dostępu",
+          "label": "Kod dostępu",
+          "placeholder": "XXXX-XXXX-XXXX",
+          "button": "Odbierz raport",
+          "back": "Kup bez kodu",
+          "wait": "Sprawdzamy kod…",
+          "note": "Za raport zapłaciła już osoba lub organizacja, która dała ci kod – ty nic nie płacisz. Nie przekazujemy jej twojego wyniku ani adresu e-mail. Klikając „Odbierz raport”, akceptujesz warunki {offer}.",
+          "badEmail": "Sprawdź adres e-mail: na niego wyślemy raport.",
+          "empty": "Wpisz kod dostępu.",
+          "done": "Kod przyjęty. Raport przyjdzie na {to} w ciągu kilku minut. Jeśli nie widzisz wiadomości, sprawdź folder ze spamem.",
+          "bad": "Nie ma takiego kodu. Sprawdź, czy został wpisany bez błędów.",
+          "used": "Ten kod został już wykorzystany. Jeśli kod został wpisany przez ciebie, a raport nie przyszedł, napisz do nas: {email}.",
+          "expired": "Kod stracił ważność. Zwróć się do osoby lub organizacji, która go wydała.",
+          "error": "Nie udało się sprawdzić kodu. Spróbuj ponownie za minutę albo napisz do nas: {email}."
+        },
         "how": [
           "Zrób bezpłatny test: 24 pytania, około 10 minut. Jeśli masz go już za sobą, nie musisz go powtarzać – raport powstaje na podstawie gotowego wyniku.",
           "Wpisz adres e-mail i kliknij „Kup”. Płatność kartą Visa lub Mastercard odbywa się na zabezpieczonej stronie płatności.",
@@ -1476,8 +1593,8 @@
         "Wspólne ustalenia: jak prowadzimy spotkania, jak przydzielamy zadania i jak przekazujemy informację zwrotną."
       ],
       "reportTitle": "Szczegółowy raport dla uczestników",
-      "report": "Po warsztacie każdy uczestnik może zamówić rozszerzony raport DISC – ponad 25 stron o swoim profilu: {business}.",
-      "reportLink": "raport rozszerzony",
+      "report": "Po warsztacie każdy uczestnik może zamówić rozszerzony raport DISC – ponad 25 stron o swoim profilu. Jeśli za raporty płaci organizacja, korzystniej jest kupić {business}: z rabatem.",
+      "reportLink": "pakiet raportów dla organizacji",
       "priceTitle": "Cena i jak otrzymać zestaw",
       "price": [
         "Zestaw kosztuje {price} USD. Zostaw zgłoszenie – w ciągu jednego dnia roboczego odpowiemy i wyślemy link do płatności kartą.",
@@ -1579,8 +1696,8 @@
         "kitText": "Scenariusz warsztatu na 60 lub 90 minut, slajdy, tabela Excel, która sama liczy wyniki całej grupy, mapa zespołu i karty „Jak ze mną pracować”.",
         "kitButton": "Więcej o zestawie",
         "bizTitle": "Raporty rozszerzone dla uczestników",
-        "bizText": "Po teście online każdy uczestnik może zamówić rozszerzony raport o swoim profilu.",
-        "bizButton": "Raport rozszerzony"
+        "bizText": "Jeśli organizacja chce dać każdemu uczestnikowi szczegółowy raport o jego profilu – pakiety raportów z rabatem.",
+        "bizButton": "Dla organizacji"
       },
       "mail": {
         "toggle": "Wyślij mi arkusz e-mailem",
@@ -1733,7 +1850,7 @@
         "{kit}: scenariusz na 60 lub 90 minut, 16 slajdów, tabela grupy i mapa zespołu.",
         "{pdf}: papierowy arkusz odpowiedzi, jeśli uczestnicy nie mają telefonów lub internetu.",
         "{teams}: jak czytać mapę zespołu i omawiać wyniki bez etykietowania.",
-        "{business}: rozszerzone raporty dla uczestników w pakiecie, płatne na fakturę."
+        "{business}: rozszerzone raporty dla uczestników w pakiecie, z rabatem."
       ]
     },
     "teams": {
@@ -2401,6 +2518,7 @@
     "nav.pdf": "Test w PDF",
     "nav.materials": "Materiały o DISC",
     "nav.howMade": "Jak powstają raporty",
+    "nav.business": "Dla organizacji",
 
     "pages.styles.title": "Typy osobowości DISC: D, I, S, C – cechy i mocne strony",
     "pages.styles.description": "Cztery typy osobowości (style zachowania) DISC: dominacja, wpływ, stałość, sumienność. Cechy, mocne strony, obszary rozwoju, motywacja i zachowanie w stresie.",

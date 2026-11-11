@@ -717,7 +717,8 @@
           "Satın alma işlemine başlayıp ödeme yapmadıysanız e-posta adresinizi, test sonucunuzu ve sipariş bilgilerini 30 gün saklar, ardından sileriz. Bu süre içinde belirttiğiniz adrese, ödeme bağlantısı içeren tek bir hatırlatma e-postası gönderilebilir. Hukuki dayanak, sözleşmenin kurulmasına yönelik attığınız adımlardır.",
           "Atölye Kiti’ni satın alırsanız e-posta adresinizi ve sipariş bilgilerini (tarih, tutar, ödeme numarası ve ödeme durumu) işleriz. Bu veriler size kit dosyalarının bağlantılarını içeren e-postayı göndermek, başvurunuzu yanıtlamak ve iade işlemini yapmak için gereklidir; hukuki dayanak, {offer} uyarınca kurulan sözleşmedir. Kit siparişinin bilgileri, genişletilmiş profil siparişinin bilgileriyle aynı şekilde saklanır; tamamlanmamış kit ödemeleri için hatırlatma e-postası gönderilmez."
         ]
-      }
+      },
+      "purchaseCode": "Genişletilmiş profili bir kurumun ya da başka bir kişinin satın aldığı bir erişim koduyla alıyorsanız ödeme bilgileri dışında aynı verileri işler ve kodun kullanıldığını kaydederiz. Kodu satın alan kişiye yalnızca kodun kullanılıp kullanılmadığını ve ne zaman kullanıldığını bildiririz: sonucunuz, raporunuz ve e-posta adresiniz ona iletilmez. Hukuki dayanak, kodu {offer} uyarınca girerek kurduğunuz sözleşmedir."
     },
     "consentDoc": {
       "title": "Kişisel verilerin işlenmesine ilişkin onay — DISC testi",
@@ -793,12 +794,114 @@
         }
       ]
     },
+    "business": {
+      "title": "Kurumlar için DISC: genişletilmiş rapor paketleri",
+      "description": "Çalışanlar, danışanlar ve eğitim katılımcıları için paket hâlinde genişletilmiş DISC raporları, en fazla %{maxDiscount} indirimle. Erişim kodları, bağlantıyla kartla ödeme.",
+      "h1": "Kurumlar için DISC",
+      "lead": "Sitedeki DISC testi ücretsizdir ve kayıt gerektirmez. Testi çalışanlarınıza, danışanlarınıza ya da eğitim katılımcılarınıza uyguluyorsanız onlar için genişletilmiş raporları paket hâlinde alabilirsiniz: tek tek almaktan daha ucuzdur ve tek bir ödeme bağlantısıyla ödenir.",
+      "facts": ["en az {minPack} rapor", "en fazla %{maxDiscount} indirim", "bağlantıyla kartla ödeme", "rapor herkesin kendi e-postasına gelir"],
+      "forTitle": "Kimler için uygun",
+      "for": [
+        "İK uzmanları ve yöneticiler: ekibi tanımak, yeni çalışanların işe uyumu, iş arkadaşları arasındaki sürtüşmeleri konuşmak.",
+        "Kurum içi akademiler ve kurumsal eğitmenler: iletişim, liderlik ve ekip çalışması programları için materyal.",
+        "İnsan kaynakları danışmanlık firmaları ve kariyer danışmanları: adaya ya da danışana bir hediye ve ona hangi işin uygun olduğunu konuşmak için bir dayanak.",
+        "Koçlar: ilk görüşmeden önce danışanın ayrıntılı raporu."
+      ],
+      "services": {
+        "person": "Bireyler için",
+        "personPick": "Test sonucunuza göre genişletilmiş rapor",
+        "org": "Kurumlar için",
+        "orgPick": "Çalışanlar, danışanlar ve katılımcılar için genişletilmiş raporlar — paket hâlinde, indirimli",
+        "orgName": "Genişletilmiş rapor paketleri",
+        "orgText": "İK ekipleri, insan kaynakları danışmanlık firmaları, kurum içi akademiler, eğitmenler ve koçlar için. Erişim kodlarını satın alır ve kişilere dağıtırsınız: her kişi testi çözer ve kendi raporunu e-postayla alır. Bağlantıyla kartla ödeme, en fazla %{maxDiscount} indirim.",
+        "orgPriceLabel": "Fiyat",
+        "orgPrice": "rapor başına {minPrice} USD’den başlayan fiyatlarla",
+        "orgButton": "Ayrıntılar ve talep"
+      },
+      "packsTitle": "Genişletilmiş rapor paketleri",
+      "packsText": "Erişim kodlarını satın alır ve her kişiye bir kod olacak şekilde dağıtırsınız. Her kişi testi çözer, sonuç ekranında kodu girer ve kendi adına hazırlanmış genişletilmiş raporu PDF olarak kendi e-posta adresine alır. Raporda neler olduğunu ve sayfalarının nasıl göründüğünü “{report}” sayfasında görebilirsiniz.",
+      "packsHead": ["Paket", "Rapor başına fiyat", "İndirim"],
+      "packRow": "{n} koddan itibaren",
+      "packPrice": "{price} USD",
+      "packDiscount": "−%{pct}",
+      "packsNote": "Raporun normal fiyatı {retail} USD. Kod, verildiği tarihten itibaren {months} ay geçerlidir. Bir kod, bir kişi için bir rapor demektir.",
+      "csv": ["Erişim kodu", "Kullanıldı", "Son geçerlilik tarihi", "Nereye girilir"],
+      "howTitle": "Nasıl işler",
+      "how": [
+        "Sayfanın altındaki formdan talep bırakın: kaç rapora ve kimler için ihtiyacınız olduğunu yazın. Bir iş günü içinde yanıt veririz.",
+        "Kartla ödeme için bir bağlantı göndeririz. Ödemeden sonra kodları dosya olarak iletiriz.",
+        "Kişilere test bağlantısını ve her birine bir kod gönderin. Test yaklaşık 10 dakika sürer, kayıt gerekmez.",
+        "Kişi sonuç ekranında “Kurumsal kodum var” düğmesine basar, kodu ve e-posta adresini girer. Rapor birkaç dakika içinde e-postasına gelir.",
+        "İsterseniz kaç kodun kullanıldığını size bildiririz."
+      ],
+      "privacyTitle": "Sonuçlar kişilerin kendisinde kalır",
+      "privacy": [
+        "Rapor yalnızca testi çözüp kodu giren kişiye gönderilir. Kodların ücretini ödeyenlere ne sonuçları, ne raporları ne de katılımcıların e-posta adreslerini iletiriz: yalnızca kullanılan kodların sayısını bildiririz.",
+        "Ekip için bir özete ihtiyacınız varsa kişilerden sonuçlarını kendilerinin paylaşmasını isteyin: sonuç bağlantısını ya da özet rapordaki kodu göndersinler. Bunlardan ekip tablosunun nasıl oluşturulacağı “{teams}” sayfasında anlatılıyor."
+      ],
+      "boundsTitle": "DISC neye uygun değildir",
+      "bounds": "DISC davranış tarzını tanımlar; yetenekleri, bilgiyi ya da dürüstlüğü ölçmez. Aday seçmek ve işe alma, işten çıkarma ya da ücret kararları vermek için tasarlanmamıştır. Kişilerin kendilerini ve birbirlerini daha iyi anlamaları için kullanın: işe uyum sürecinde, ekip çalışmasında, yöneticilerin gelişiminde.",
+      "teamTitle": "Ekip raporu — hazırlanıyor",
+      "team": "Yöneticiler için ekibin bütününü ele alan bir rapor hazırlıyoruz: stil haritası, ekibin güçlü yönleri, sürtüşmelerin nerede çıktığı ve bunlarla ne yapılabileceği. Böyle bir rapora ihtiyacınız varsa bunu talepte belirtin: rapor hazır olduğunda size yazarız.",
+      "payTitle": "Ödeme ve belgeler",
+      "pay": [
+        "Talebinizden sonra size güvenli bir ödeme sayfasının bağlantısını göndeririz. Ödemeyi, şirket kartı dâhil olmak üzere kartla ve bu sayfadaki fiyatlar gibi ABD doları cinsinden yaparsınız. Ödemeden sonra ödemeyi yapanın e-posta adresine elektronik ödeme onayı gönderilir.",
+        "Muhasebeniz için fatura ya da başka belgeler gerekiyorsa bunu talebinizde belirtin: hangi belgeleri sağlayabileceğimizi size bildiririz.",
+        "Hizmet Sağlayıcı: {seller}."
+      ],
+      "faqTitle": "Sorular",
+      "faq": [
+        {
+          "q": "{minPack} rapordan az satın alabilir miyim?",
+          "a": "Paket fiyatı {minPack} koddan itibaren geçerlidir. Bir ya da birkaç raporu herkes “{report}” sayfasından normal fiyatla kendisi satın alabilir."
+        },
+        { "q": "Raporlar hangi dilde?", "a": "Kod, sitenin tüm dil sürümlerinde çalışır: test, rapor ve e-posta, kişinin kodu girdiği sürümün dilinde olur. Testin kendisi 13 dilde ücretsiz olarak sunulur." },
+        { "q": "Kişi testi daha önce çözdüyse ne olur?", "a": "Yeniden çözmesi gerekmez: kod, aynı cihazda kayıtlı sonuç ekranında ya da genişletilmiş rapor sayfasında girilebilir." },
+        {
+          "q": "Raporlar eğitimde kullanılabilir mi?",
+          "a": "Evet: katılımcılar eğitim sırasında kendi raporları üzerinde çalışır. Rapor metinlerini kendi materyallerinize ve dağıtım notlarınıza kopyalamak ise yasaktır; bu metinler üzerindeki haklar için bkz. {offer}, 6. bölüm."
+        }
+      ],
+      "form": {
+        "title": "Talep",
+        "lead": "Belirttiğiniz e-posta adresine bir iş günü içinde yanıt veririz.",
+        "size": "Kaç kişi",
+        "sizes": ["10’a kadar", "10–50", "50–100", "100’den fazla"],
+        "interest": "Neyle ilgileniyorsunuz",
+        "interests": ["Genişletilmiş rapor paketi", "Ekip raporu", "Diğer"],
+        "comment": "Yorum",
+        "commentPlaceholder": "Örneğin: raporlar kimler için, ne zamana kadar gerekli, muhasebeniz için fatura gerekiyor mu",
+        "button": "Talebi gönder",
+        "subject": "Заявка для организации: {name}",
+        "sent": "Talebiniz gönderildi. {email} adresine bir iş günü içinde yanıt vereceğiz.",
+        "needInterest": "Neyle ilgilendiğinizi işaretleyin.",
+        "privacy": "Adınız, e-posta adresiniz ve talebinizin metni {email} adresine e-postayla gönderilir ve yalnızca size yanıt vermek için kullanılır."
+      }
+    },
     "offer": {
       "title": "Satış koşulları (kamuya açık teklif) — genişletilmiş DISC profili ve Atölye Kiti",
       "description": "disc-test.org sitesindeki ücretli “Genişletilmiş DISC profili” hizmetinin ve DISC Atölye Kiti’nin satış koşulları (kamuya açık teklif): ücret, ödeme, teslim, iade, içerik hakları.",
       "h1": "Satış koşulları (kamuya açık teklif)",
       "linkText": "satış koşulları",
-      "edition": "6 Kasım 2026 tarihli sürüm. Türkçe çevirisi 6 Kasım 2026’da güncellenmiştir.",
+      "codeTerms": [
+        {
+          "section": 0,
+          "text": "Erişim Kodu: Müşteri’ye, ücret ödemeden Hizmet’i alma hakkı veren karakter dizisi. Erişim Kodu, Hizmet Sağlayıcı’dan ayrı bir sözleşmeyle üçüncü bir kişi (bir kurum, bir bireysel girişimci ya da başka bir kişi) tarafından satın alınır ve bu kişi tarafından Müşteri’ye verilir."
+        },
+        {
+          "section": 3,
+          "text": "4.6. Erişim Kodu’na sahip Müşteri, ödeme yapmak yerine bu kodu Site’de ödeme formunun yanına girer ve e-posta adresini belirtir. Erişim Kodu yalnızca bir kez ve verilirken belirtilen süre içinde kullanılabilir. Bu Müşteri için Hizmet’in ücreti, Site’nin Erişim Kodu’nu kabul ettiği anda ödenmiş sayılır; 4.2. maddedeki süre bu andan itibaren işlemeye başlar."
+        },
+        {
+          "section": 4,
+          "text": "5.8. Erişim Kodu ile alınan Hizmet’in ücreti Müşteri tarafından ödenmez; bu nedenle bu bölümün para iadesine ilişkin maddeleri bu Hizmet’e uygulanmaz: Erişim Kodu’na ilişkin hesaplaşma Hizmet Sağlayıcı ile kodu satın alan kişi arasında yapılır. Müşteri’nin ayıpların giderilmesini isteme hakkı (madde 5.3) saklıdır."
+        },
+        {
+          "section": 7,
+          "text": "8.4. Hizmet Sağlayıcı, Erişim Kodu’nu satın alan kişiye yalnızca kodun kullanılıp kullanılmadığını ve ne zaman kullanıldığını bildirir. Test sonucunu, Genişletilmiş Profil’i ve Müşteri’nin e-posta adresini bu kişiye iletmez."
+        }
+      ],
+      "edition": "12 Kasım 2026 tarihli sürüm. Türkçe çevirisi 12 Kasım 2026’da güncellenmiştir.",
       "note": "Bu metin, teklifin {original} adresinde yayımlanan asıl metninin Türkçe çevirisidir. İki metin arasında fark olması hâlinde asıl metin esas alınır; bunun istisnası ücret ve ödeme yöntemidir: Site’nin Türkçe sürümü için bu çevirinin 1. ve 3. bölümleri geçerlidir.",
       "seller": "bireysel girişimci Manukyan Armen, vergi kimlik numarası (INN) {inn}",
       "lead": "Bu belge, ücretli “Genişletilmiş DISC profili” hizmetine ilişkin sözleşmenin ve DISC Atölye Kiti’nin teslimine ilişkin sözleşmenin (10. bölüm) aşağıdaki koşullarla kurulması için yapılmış resmî bir tekliftir (kamuya açık teklif). Teklifi yapan: {seller} (bundan böyle “Hizmet Sağlayıcı” olarak anılır). Hizmetin ya da Kit’in ücretinin ödenmesi, bu koşulların tamamen ve kayıtsız şartsız kabul edildiği anlamına gelir (teklifin kabulü).",
@@ -807,7 +910,7 @@
           "h": "1. Tanımlar",
           "ul": [
             "Hizmet Sağlayıcı: {seller}.",
-            "Müşteri: Hizmet’in ücretini ödeyerek bu teklifin koşullarını kabul eden, tam fiil ehliyetine sahip gerçek kişi.",
+            "Müşteri: Hizmet’in ücretini ödeyerek ya da Erişim Kodu girerek bu teklifin koşullarını kabul eden, tam fiil ehliyetine sahip gerçek kişi.",
             "Site: {site} ve tüm sayfaları.",
             "Test: Site’de yer alan ücretsiz DISC anketi.",
             "Genişletilmiş Profil: Müşteri’nin çözdüğü Test’in sonucuna dayanarak Hizmet Sağlayıcı’nın elektronik ortamda hazırladığı, Müşteri’nin DISC profiline ilişkin daha ayrıntılı değerlendirme.",
@@ -887,7 +990,7 @@
         {
           "h": "9. Teklifin geçerlilik süresi ve değiştirilmesi",
           "p": [
-            "9.1. Sözleşme, Hizmet’in ya da Kit’in (10. bölüm) ücretinin ödendiği anda kurulmuş sayılır ve taraflar yükümlülüklerini yerine getirene kadar yürürlükte kalır.",
+            "9.1. Sözleşme, Hizmet’in ya da Kit’in (10. bölüm) ücretinin ödendiği ya da Erişim Kodu’nun kabul edildiği (madde 4.6) anda kurulmuş sayılır ve taraflar yükümlülüklerini yerine getirene kadar yürürlükte kalır.",
             "9.2. Hizmet Sağlayıcı teklifi değiştirebilir. Yeni sürüm Site’de yayımlandığı andan itibaren geçerlidir ve ücreti daha önce ödenmiş siparişlere uygulanmaz.",
             "9.3. Şikâyetler {email} adresine gönderilir; Hizmet Sağlayıcı bunları on takvim günü içinde yanıtlar. Uyuşmazlık çözülemezse, sözleşmeye uygulanan hukuk uyarınca mahkemede görülür.",
             "9.4. Sözleşmeye, Hizmet Sağlayıcı’nın kayıtlı olduğu ülkenin hukuku uygulanır."
@@ -968,7 +1071,9 @@
       "inviteTitle": "Arkadaşlarınızı, iş arkadaşlarınızı ve yakınlarınızı teste davet edin",
       "invite": "Raporun 8. bölümü, her stilden insanla nasıl konuşulacağını anlatır. Çevrenizdekilerin stilini, onları teste davet ederek öğrenebilirsiniz: test ücretsizdir ve yaklaşık 10 dakika sürer. Karşınızdakinin stilini bildiğinizde onu anlamak kolaylaşır.",
       "inviteLink": "Paylaşabileceğiniz test bağlantısı:",
-      "footer": "Bu e-postayı, disc-test.org sitesinde “Genişletilmiş DISC profili” hizmetinin ücretini ödediğiniz için aldınız. Rapor kişiye özeldir ve yalnızca kişisel kullanım içindir."
+      "footer": "Bu e-postayı, disc-test.org sitesinde “Genişletilmiş DISC profili” hizmetinin ücretini ödediğiniz için aldınız. Rapor kişiye özeldir ve yalnızca kişisel kullanım içindir.",
+      "codeIntro": "Genişletilmiş DISC raporunuz hazır. Ücretini, size erişim kodunu verenler ödedi. Rapor şu profil için hazırlandı:",
+      "codeFooter": "Bu e-postayı, disc-test.org sitesinde “Genişletilmiş DISC profili” hizmeti için bir erişim kodu girdiğiniz için aldınız. Sonucunuzu ve bu raporu kodu verenlere iletmeyiz. Rapor kişiye özeldir ve yalnızca kişisel kullanım içindir."
     },
     "product": {
       "title": "Genişletilmiş DISC raporu — sonucunuza özel 13 bölüm",
@@ -1065,6 +1170,22 @@
         "badEmail": "E-posta adresinizi kontrol edin: rapor ve makbuz bu adrese gönderilecek.",
         "wait": "Ödeme sayfası açılıyor…",
         "error": "Ödeme sayfası şu anda açılamadı. Birkaç dakika sonra yeniden deneyin ya da {email} adresine yazın.",
+        "code": {
+          "link": "Kurumsal kodum var",
+          "label": "Erişim kodu",
+          "placeholder": "XXXX-XXXX-XXXX",
+          "button": "Raporu al",
+          "back": "Kodsuz satın al",
+          "wait": "Kod kontrol ediliyor…",
+          "note": "Bu kodla alınan raporun ücretini, kodu size verenler zaten ödedi: sizin ödeme yapmanız gerekmez. Sonucunuzu ve e-posta adresinizi onlara iletmeyiz. “Raporu al” düğmesine bastığınızda {offer} kabul edilmiş olur.",
+          "badEmail": "E-posta adresinizi kontrol edin: rapor bu adrese gönderilecek.",
+          "empty": "Erişim kodunu girin.",
+          "done": "Kod kabul edildi. Rapor birkaç dakika içinde {to} adresine gelecek. E-posta gelmezse istenmeyen e-posta (spam) klasörünü kontrol edin.",
+          "bad": "Böyle bir kod yok. Kodu hatasız girdiğinizi kontrol edin.",
+          "used": "Bu kod zaten kullanılmış. Kodu kendiniz girdiyseniz ve rapor gelmediyse {email} adresine yazın.",
+          "expired": "Kodun geçerlilik süresi dolmuş. Kodu size verenlere başvurun.",
+          "error": "Kod kontrol edilemedi. Bir dakika sonra yeniden deneyin ya da {email} adresine yazın."
+        },
         "how": [
           "Ücretsiz testi çözün: 24 soru, yaklaşık 10 dakika. Testi daha önce çözdüyseniz yeniden çözmeniz gerekmez: rapor mevcut sonucunuza göre hazırlanır.",
           "E-posta adresinizi yazıp “Satın al” düğmesine basın. Ödeme, Visa veya Mastercard kartla güvenli bir ödeme sayfasında yapılır.",
@@ -1471,8 +1592,8 @@
         "Ortak kararlar: toplantıları nasıl yapacağız, görevleri nasıl vereceğiz, geri bildirimi nasıl paylaşacağız."
       ],
       "reportTitle": "Her katılımcıya ayrıntılı rapor",
-      "report": "Atölyeden sonra katılımcılar kendi profilleri hakkında genişletilmiş DISC raporunu sipariş edebilir: {business}.",
-      "reportLink": "genişletilmiş rapor",
+      "report": "Atölyeden sonra katılımcılar kendi profilleri hakkında yaklaşık 28 sayfalık genişletilmiş DISC raporunu sipariş edebilir. Raporların ücretini kurumunuz ödeyecekse indirimli {business} almak daha avantajlıdır.",
+      "reportLink": "kurumsal rapor paketi",
       "priceTitle": "Fiyat ve teslimat",
       "price": [
         "Kitin fiyatı {price} USD. Talep bırakın: bir iş günü içinde size kartla ödeme bağlantısı göndeririz.",
@@ -1574,8 +1695,8 @@
         "kitText": "60 veya 90 dakikalık atölye rehberi, slaytlar, tüm grubun sonuçlarını kendisi hesaplayan Excel tablosu, ekip haritası ve “Benimle nasıl çalışılır” kartları.",
         "kitButton": "Kit hakkında ayrıntılar",
         "bizTitle": "Katılımcılar için genişletilmiş rapor",
-        "bizText": "Katılımcılar testten sonra kendi profilleri hakkında genişletilmiş raporu sipariş edebilir.",
-        "bizButton": "Genişletilmiş rapor"
+        "bizText": "Kurumunuz her katılımcıya kendi profili hakkında ayrıntılı bir rapor vermek istiyorsa indirimli rapor paketleri sunuyoruz.",
+        "bizButton": "Kurumlar için"
       },
       "mail": {
         "toggle": "PDF’i e-postama gönderin",
@@ -1728,7 +1849,7 @@
         "{kit}: 60 veya 90 dakikalık akış, 16 slayt, grup tablosu ve ekip haritası.",
         "{pdf}: katılımcıların telefonu veya interneti yoksa kâğıt cevap formu.",
         "{teams}: ekip haritasını okumak ve sonuçları etiketlemeden konuşmak için.",
-        "{business}: katılımcılar için paket hâlinde genişletilmiş raporlar, faturayla ödeme."
+        "{business}: katılımcılar için paket hâlinde, indirimli genişletilmiş raporlar."
       ]
     },
     "teams": {
@@ -2402,6 +2523,7 @@
     "nav.pdf": "DISC testi PDF",
     "nav.materials": "DISC kaynakları",
     "nav.howMade": "Raporların hazırlanışı",
+    "nav.business": "Kurumlar için",
 
     "pages.styles.title": "DISC kişilik tipleri: D, I, S, C — özellikler ve güçlü yönler",
     "pages.styles.description": "DISC’e göre dört kişilik tipi: Baskınlık, Etkileyicilik, İstikrar ve Titizlik. Özellikler, güçlü yönler, gelişim alanları, motivasyon ve stres.",

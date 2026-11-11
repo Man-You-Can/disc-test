@@ -717,7 +717,8 @@
           "Se você iniciar uma compra, mas não pagar, guardamos seu e-mail, o resultado do teste e os dados do pedido por 30 dias e depois os excluímos. Nesse período, o endereço informado pode receber um único e-mail de lembrete com o link de pagamento. A base legal são as providências que você tomou para celebrar o contrato.",
           "Se você comprar o kit do facilitador, tratamos seu e-mail e os dados do pedido: data, valor, número e status do pagamento. Precisamos desses dados para enviar a você o e-mail com os links para os arquivos do kit, responder às suas mensagens e processar reembolsos; a base legal é o contrato conforme os {offer}. Os dados do pedido do kit são guardados da mesma forma que os do pedido do perfil ampliado; não enviamos lembretes sobre um pagamento do kit não concluído."
         ]
-      }
+      },
+      "purchaseCode": "Se você receber o perfil ampliado por um código de acesso comprado por uma empresa ou outra pessoa, tratamos os mesmos dados, exceto os dados de pagamento, e registramos que o código foi usado. A quem comprou o código, informamos apenas se ele foi usado e quando: seu resultado, seu relatório e seu e-mail não são repassados. A base legal é o contrato que você celebra ao digitar o código conforme os {offer}."
     },
     "consentDoc": {
       "title": "Consentimento para o tratamento de dados pessoais — teste DISC",
@@ -793,12 +794,117 @@
         }
       ]
     },
+    "business": {
+      "title": "DISC para empresas: pacotes de relatórios DISC ampliados",
+      "description": "Relatórios DISC ampliados para colaboradores, clientes e alunos em pacote, com até {maxDiscount}% de desconto. Códigos de acesso e pagamento com cartão por link seguro.",
+      "h1": "DISC para empresas",
+      "lead": "O teste DISC no site é gratuito e não exige cadastro. Se você aplica o teste com colaboradores, clientes ou alunos, pode comprar os relatórios ampliados deles em pacote: sai mais barato do que comprar um a um, com um único pagamento no cartão.",
+      "facts": ["a partir de {minPack} relatórios", "até {maxDiscount}% de desconto", "pagamento com cartão por link seguro", "cada pessoa recebe o relatório por e-mail"],
+      "forTitle": "Para quem é",
+      "for": [
+        "RH e gestores: integração da equipe, onboarding de novos colaboradores, conversas sobre atritos entre colegas.",
+        "Universidades corporativas, equipes de T&D e facilitadores de treinamento: material para programas de comunicação, liderança e trabalho em equipe.",
+        "Consultorias de recrutamento e orientadores de carreira: um presente para o candidato ou cliente e um ponto de partida para conversar sobre o tipo de trabalho que combina com ele.",
+        "Coaches: um relatório detalhado do cliente antes da primeira sessão."
+      ],
+      "services": {
+        "person": "Para pessoas físicas",
+        "personPick": "Relatório ampliado sobre o resultado do seu teste",
+        "org": "Para empresas",
+        "orgPick": "Relatórios ampliados para colaboradores, clientes e alunos — em pacote, com desconto",
+        "orgName": "Pacotes de relatórios ampliados",
+        "orgText": "Para RH, consultorias de recrutamento, universidades corporativas, facilitadores e coaches. Você compra códigos de acesso e distribui entre as pessoas: cada uma faz o teste e recebe o próprio relatório por e-mail. Pagamento com cartão por link seguro e até {maxDiscount}% de desconto.",
+        "orgPriceLabel": "Preço",
+        "orgPrice": "a partir de US$ {minPrice} por relatório",
+        "orgButton": "Saiba mais e faça o pedido"
+      },
+      "packsTitle": "Pacotes de relatórios ampliados",
+      "packsText": "Você compra códigos de acesso e distribui um código por pessoa. Cada uma faz o teste, digita o código na tela do próprio resultado e recebe no seu e-mail o relatório ampliado em PDF, com o próprio nome. O que tem no relatório e como são as páginas, você vê na página “{report}”.",
+      "packsHead": ["Pacote", "Preço por relatório", "Desconto"],
+      "packRow": "a partir de {n} códigos",
+      "packPrice": "US$ {price}",
+      "packDiscount": "−{pct}%",
+      "packsNote": "O preço normal do relatório é US$ {retail}. O código vale por {months} meses a partir da data de emissão. Um código dá direito a um relatório para uma pessoa.",
+      "csv": ["Código de acesso", "Usado", "Válido até", "Onde digitar"],
+      "howTitle": "Como funciona",
+      "how": [
+        "Faça o pedido no fim desta página: quantos relatórios você precisa e para quem. Respondemos em até um dia útil.",
+        "Enviamos o link para pagamento com cartão. Depois do pagamento, enviamos os códigos em um arquivo.",
+        "Envie às pessoas o link do teste e um código para cada uma. O teste leva cerca de 10 minutos e não exige cadastro.",
+        "Na tela do resultado, a pessoa clica em “Tenho um código da empresa” e digita o código e o próprio e-mail. O relatório chega por e-mail em poucos minutos.",
+        "Quando você pedir, informamos quantos códigos já foram usados."
+      ],
+      "privacyTitle": "Os resultados ficam com as pessoas",
+      "privacy": [
+        "O relatório vai só para quem fez o teste e digitou o código. A quem pagou pelos códigos, não repassamos resultados, relatórios nem e-mails dos participantes: só o número de códigos usados.",
+        "Se você precisa de um resumo da equipe, peça que as próprias pessoas compartilhem o resultado: que enviem o link do resultado ou o código do relatório resumido. Como montar com isso a tabela da equipe está explicado na página “{teams}”."
+      ],
+      "boundsTitle": "Para que o DISC não serve",
+      "bounds": "O DISC descreve o estilo de comportamento, não habilidades, conhecimentos ou honestidade. Ele não foi feito para triagem de candidatos nem para decisões de contratação, demissão ou salário. Use-o para que as pessoas entendam melhor a si mesmas e umas às outras: no onboarding, no trabalho em equipe e no desenvolvimento de líderes.",
+      "teamTitle": "Relatório da equipe — em preparação",
+      "team": "Estamos preparando um relatório para o gestor sobre a equipe como um todo: mapa de estilos, pontos fortes da equipe, onde surgem atritos e o que fazer a respeito. Se tiver interesse, marque isso no pedido: avisaremos quando o relatório estiver pronto.",
+      "payTitle": "Pagamento e documentos",
+      "pay": [
+        "O pagamento é feito com cartão — pode ser o cartão da empresa — por um link de pagamento seguro que enviamos depois do pedido, em dólares americanos. Após o pagamento, quem pagou recebe por e-mail a confirmação eletrônica do pagamento.",
+        "Se o financeiro precisar de uma fatura (invoice) ou de outros documentos, informe isso no pedido: diremos o que podemos fornecer.",
+        "Prestador do serviço: {seller}."
+      ],
+      "faqTitle": "Perguntas e respostas",
+      "faq": [
+        {
+          "q": "Dá para comprar menos de {minPack} relatórios?",
+          "a": "O preço de pacote vale a partir de {minPack} códigos. Um ou alguns relatórios, qualquer pessoa pode comprar por conta própria na página “{report}”, pelo preço normal."
+        },
+        {
+          "q": "Em que idioma estão os relatórios?",
+          "a": "O código funciona em qualquer versão de idioma do site: o teste, o relatório e o e-mail ficam no idioma da versão em que a pessoa digita o código. O teste em si está disponível gratuitamente em 13 idiomas."
+        },
+        { "q": "E se a pessoa já tiver feito o teste?", "a": "Não precisa refazer: dá para digitar o código na tela do resultado salvo ou na página do relatório ampliado, no mesmo aparelho." },
+        {
+          "q": "Posso usar os relatórios em treinamentos?",
+          "a": "Sim: os participantes trabalham com os próprios relatórios nos encontros. Não é permitido copiar textos dos relatórios para os seus materiais e apostilas — os direitos sobre eles estão descritos na seção 6 dos {offer}."
+        }
+      ],
+      "form": {
+        "title": "Pedido",
+        "lead": "Respondemos em até um dia útil no e-mail que você informar.",
+        "size": "Quantas pessoas",
+        "sizes": ["até 10", "10–50", "50–100", "mais de 100"],
+        "interest": "O que interessa a você",
+        "interests": ["Pacote de relatórios ampliados", "Relatório da equipe", "Outro assunto"],
+        "comment": "Comentário",
+        "commentPlaceholder": "Por exemplo: para quem são os relatórios, para quando, se o financeiro precisa de fatura",
+        "button": "Enviar pedido",
+        "subject": "Заявка для организации: {name}",
+        "sent": "Pedido enviado. Responderemos para {email} em até um dia útil.",
+        "needInterest": "Indique o que interessa a você.",
+        "privacy": "Nome, e-mail e texto do pedido serão enviados por e-mail para {email} e usados apenas para responder a você."
+      }
+    },
     "offer": {
       "title": "Termos de venda (oferta ao público) — perfil DISC ampliado e kit do facilitador",
       "description": "Termos de venda (oferta ao público) do serviço “Perfil DISC ampliado” e do Kit do facilitador DISC no disc-test.org: preço, pagamento e entrega, reembolso, direitos sobre os materiais.",
       "h1": "Termos de venda (oferta ao público)",
       "linkText": "termos de venda",
-      "edition": "Versão de 6 de novembro de 2026. Tradução para o português atualizada em 6 de novembro de 2026.",
+      "codeTerms": [
+        {
+          "section": 0,
+          "text": "Código de Acesso — conjunto de caracteres que dá direito a receber o Serviço sem pagamento pelo Cliente. Os Códigos de Acesso são comprados do Prestador, por contrato separado, por um terceiro — uma organização, um empresário individual ou outra pessoa — que os repassa aos Clientes."
+        },
+        {
+          "section": 3,
+          "text": "4.6. O Cliente que tem um Código de Acesso, em vez de pagar, digita-o no Site junto ao formulário de pagamento e informa um endereço de e-mail. O Código de Acesso pode ser usado uma única vez e dentro do prazo indicado na sua emissão. Para esse Cliente, o Serviço é considerado pago no momento em que o Site aceita o Código de Acesso; o prazo da cláusula 4.2 conta a partir desse momento."
+        },
+        {
+          "section": 4,
+          "text": "5.8. O Serviço recebido por Código de Acesso não é pago pelo Cliente; por isso, as disposições desta seção sobre a devolução do valor pago não se aplicam a ele: os acertos relativos aos Códigos de Acesso são feitos entre o Prestador e quem os comprou. Fica mantido o direito do Cliente à correção de defeitos (cláusula 5.3)."
+        },
+        {
+          "section": 7,
+          "text": "8.4. A quem comprou o Código de Acesso, o Prestador informa apenas se o Código de Acesso foi usado e quando. O Prestador não lhe transmite o resultado do Teste, o Perfil Ampliado nem o endereço de e-mail do Cliente."
+        }
+      ],
+      "edition": "Versão de 12 de novembro de 2026. Tradução para o português atualizada em 12 de novembro de 2026.",
       "note": "Este texto é a tradução para o português da oferta original publicada em {original}. Em caso de divergência entre os dois textos, prevalece o original, exceto quanto ao preço e à forma de pagamento: na versão em português do Site, eles estão definidos nas seções 1 e 3.",
       "seller": "empresário individual Manukyan Armen, N.º de identificação fiscal (INN) {inn}",
       "lead": "Este documento é uma proposta formal (oferta ao público) para celebrar um contrato de prestação do serviço pago “Perfil DISC ampliado” e também um contrato de fornecimento do Kit do facilitador DISC (seção 10), nas condições descritas abaixo. A oferta é feita por {seller} (doravante, o Prestador). O pagamento do serviço ou do Kit implica concordância integral e incondicional com estas condições (aceitação da oferta).",
@@ -807,7 +913,7 @@
           "h": "1. Definições",
           "ul": [
             "Prestador — {seller}.",
-            "Cliente — pessoa física plenamente capaz que aceitou as condições desta oferta ao pagar pelo Serviço.",
+            "Cliente — pessoa física plenamente capaz que aceitou as condições desta oferta ao pagar pelo Serviço ou digitar um Código de Acesso.",
             "Site — {site} e todas as suas páginas.",
             "Teste — o questionário DISC gratuito disponível no Site.",
             "Perfil Ampliado — análise mais detalhada do perfil DISC do Cliente, preparada pelo Prestador em formato eletrônico com base no Teste feito pelo Cliente.",
@@ -887,7 +993,7 @@
         {
           "h": "9. Vigência e alteração da oferta",
           "p": [
-            "9.1. O contrato é considerado celebrado no momento do pagamento do Serviço ou do Kit (seção 10) e vigora até que as partes cumpram suas obrigações.",
+            "9.1. O contrato é considerado celebrado no momento do pagamento do Serviço ou do Kit (seção 10) ou da aceitação do Código de Acesso (cláusula 4.6) e vigora até que as partes cumpram suas obrigações.",
             "9.2. O Prestador pode alterar a oferta. A nova versão vale a partir da publicação no Site e não se aplica aos pedidos já pagos.",
             "9.3. As reclamações devem ser enviadas para {email}; o Prestador responde a elas em até dez dias corridos. Se a controvérsia não for resolvida, será decidida em juízo, de acordo com a lei que rege o contrato.",
             "9.4. O contrato é regido pela lei do país em que o Prestador está registrado."
@@ -968,7 +1074,9 @@
       "inviteTitle": "Convide amigos, colegas e familiares para fazer o teste",
       "invite": "A seção 8 do relatório mostra como falar com pessoas de cada um dos quatro estilos. Para descobrir o estilo de quem está à sua volta, convide essas pessoas para fazer o teste: é gratuito e leva cerca de 10 minutos. Quando cada um conhece o estilo do outro, fica mais fácil se entender.",
       "inviteLink": "Este é o link do teste para compartilhar:",
-      "footer": "Você recebeu este e-mail porque pagou pelo serviço “Perfil DISC ampliado” em disc-test.org. O relatório é personalizado e destinado somente ao seu uso pessoal."
+      "footer": "Você recebeu este e-mail porque pagou pelo serviço “Perfil DISC ampliado” em disc-test.org. O relatório é personalizado e destinado somente ao seu uso pessoal.",
+      "codeIntro": "Seu relatório DISC ampliado está pronto. Ele foi pago por quem passou a você o código de acesso. O relatório foi preparado para este perfil:",
+      "codeFooter": "Você recebeu este e-mail porque digitou um código de acesso ao serviço “Perfil DISC ampliado” em disc-test.org. Não repassamos o seu resultado nem este relatório a quem passou o código a você. O relatório é personalizado e destinado somente ao seu uso pessoal."
     },
     "product": {
       "title": "Relatório DISC ampliado — 13 seções sobre o seu resultado",
@@ -1075,6 +1183,22 @@
         "badEmail": "Confira o endereço: o relatório e o comprovante serão enviados para ele.",
         "wait": "Redirecionando para o pagamento…",
         "error": "Não foi possível abrir a página de pagamento. Tente de novo em instantes ou escreva para {email}.",
+        "code": {
+          "link": "Tenho um código da empresa",
+          "label": "Código de acesso",
+          "placeholder": "XXXX-XXXX-XXXX",
+          "button": "Receber o relatório",
+          "back": "Comprar sem código",
+          "wait": "Verificando o código…",
+          "note": "Quem passou o código a você já pagou pelo relatório: você não precisa pagar nada. Não repassamos a essa pessoa ou empresa o seu resultado nem o seu e-mail. Ao clicar em “Receber o relatório”, você aceita os {offer}.",
+          "badEmail": "Confira o endereço: o relatório será enviado para ele.",
+          "empty": "Digite o código de acesso.",
+          "done": "Código aceito. O relatório chegará em {to} em poucos minutos. Se o e-mail não aparecer, confira a pasta de spam.",
+          "bad": "Código não encontrado. Confira se ele foi digitado corretamente.",
+          "used": "Este código já foi usado. Se foi você quem o digitou e o relatório não chegou, escreva para {email}.",
+          "expired": "A validade deste código terminou. Fale com quem passou o código a você.",
+          "error": "Não foi possível verificar o código. Tente de novo em um minuto ou escreva para {email}."
+        },
         "how": [
           "Faça o teste gratuito: 24 blocos, cerca de 10 minutos. Se você já fez, não precisa repetir: o relatório é montado a partir do resultado que você já tem.",
           "Informe seu e-mail e clique em “Comprar”. O pagamento é feito com cartão Visa ou Mastercard em uma página de pagamento segura.",
@@ -1494,8 +1618,8 @@
         "Combinados: como fazemos reuniões, definimos tarefas e damos feedback."
       ],
       "reportTitle": "Relatório detalhado para cada participante",
-      "report": "Depois do encontro, cada participante pode comprar o {business}: cerca de 29 páginas sobre o próprio perfil.",
-      "reportLink": "relatório DISC ampliado",
+      "report": "Depois do encontro, cada participante pode comprar o relatório DISC ampliado: cerca de 29 páginas sobre o próprio perfil. Se quem paga os relatórios é a empresa, sai mais barato comprar {business}, com desconto.",
+      "reportLink": "pacotes de relatórios para empresas",
       "priceTitle": "Preço e como receber",
       "price": [
         "O kit custa US$ {price}. Faça o pedido — respondemos em até um dia útil com o link de pagamento.",
@@ -1597,8 +1721,8 @@
         "kitText": "Roteiro de encontro de 60 ou 90 minutos, slides, planilha de Excel que calcula sozinha os resultados de todo o grupo, mapa da equipe e cartões “Como trabalhar comigo”.",
         "kitButton": "Conheça o kit",
         "bizTitle": "Relatório ampliado para os participantes",
-        "bizText": "Depois do teste online, cada participante pode comprar o próprio relatório DISC ampliado.",
-        "bizButton": "Saiba mais"
+        "bizText": "Se a empresa quiser oferecer a cada participante um relatório detalhado sobre o próprio perfil, há pacotes de relatórios ampliados com desconto.",
+        "bizButton": "Para empresas"
       },
       "mail": {
         "toggle": "Receber o questionário por e-mail",
@@ -1751,7 +1875,7 @@
         "{kit}: roteiro de 60 ou 90 minutos, 16 slides, planilha do grupo e mapa da equipe.",
         "{pdf}: folha de respostas em papel, se os participantes não tiverem celular ou internet.",
         "{teams}: como ler o mapa da equipe e discutir os resultados sem rótulos.",
-        "{business}: relatórios ampliados para os participantes em pacote, com pagamento por fatura."
+        "{business}: relatórios ampliados para os participantes em pacote, com desconto."
       ]
     },
     "teams": {
@@ -2419,6 +2543,7 @@
     "nav.pdf": "Teste em PDF",
     "nav.materials": "Materiais sobre DISC",
     "nav.howMade": "Como é feito o relatório",
+    "nav.business": "Para empresas",
 
     "pages.styles.title": "Os 4 estilos DISC (perfis comportamentais): D, I, S e C",
     "pages.styles.description": "Os quatro perfis comportamentais DISC: dominância, influência, estabilidade e conformidade. Traços, pontos fortes, motivação e comportamento sob pressão.",

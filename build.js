@@ -44,7 +44,7 @@ const headExtraFor = L => [["google-site-verification", cfg.googleSiteVerificati
   .concat(L.content.product && L.content.product.promo ? [`<script>window.DISC_XBAR=${JSON.stringify(xbarCfg(L)).replace(/</g, "\\u003c")};</script>`] : [])
   // цены и срок из панели (src/common.js, discPriceApply): где спросить, валюта и запись чисел языка; packs — цены пакетов кодов для пересчёта скидок
   .concat(payEndpoint && hasServices(L) ? [`<script>window.DISC_PRICE=${JSON.stringify(Object.assign({ url: payEndpoint + '/offer', cur: L.content.services.currency, lang: L.lang, loc: L.dateLocale },
-    hasBusiness(L) ? { packs: businessPacks.map(p => p.priceRub) } : {})).replace(/</g, "\\u003c")};</script>`] : [])
+    hasBusiness(L) ? { packs: packPrices(L) } : {})).replace(/</g, "\\u003c")};</script>`] : [])
   .concat(visitStats ? [`<script>window.DISC_VISIT=${JSON.stringify({ url: String(cfg.sendEndpoint), token: String(cfg.sendToken || ''), host: new URL(cfg.siteUrl).hostname, admin: String(cfg.adminUrl || 'https://admin.disc-test.org/') }).replace(/</g, "\\u003c")};</script>`] : [])
   .join("\n");
 // Персональные данные (план боевого режима, этап Д). pdConsent в site.config.json включает схему «свой сервер в России»:
@@ -179,10 +179,16 @@ const accessCodes = () => !!(cfg.accessCodes && payEndpoint);   // функци�
 const payCodeT = (L, fill) => { const P = L.content.product && L.content.product.pay, X = P && P.code; if (!accessCodes() || !X) return null;
   return Object.assign(Object.fromEntries(['link', 'label', 'placeholder', 'button', 'back', 'wait', 'badEmail', 'empty', 'done', 'bad', 'expired'].map(k => [k, X[k]])),
     { noteHtml: fill(escFull(X.note)), usedHtml: fill(escFull(X.used)), errorHtml: fill(escFull(X.error)) }); };
-// Страница «Для организаций» (/business/, пункт в подвале): пакеты кодов — businessPacks в site.config.json ([{from, priceRub}]: от скольких кодов
-// и цена одного), срок кода — businessCodeMonths; заявка — форма на странице (src/business.js), уходит через форму обратной связи сервера.
-// Есть там, где в локали content.business и ui['nav.business'], отчёт продаётся в рублях и включены коды доступа.
+// Страница «Для организаций» (/business/, пункт в подвале): пакеты кодов — businessPacks в site.config.json ([{from, priceRub, priceUsd, priceEur, lang}]:
+// от скольких кодов и цена одного в рублях, долларах и евро; lang — {язык: цена} для языков со своей ценой отчёта, langPrices; с 2026-11-12 — все 13 языков),
+// срок кода — businessCodeMonths; заявка — форма на странице (src/business.js), уходит через форму обратной связи сервера.
+// Есть там, где в локали content.business и ui['nav.business'], отчёт продаётся, для валюты языка у каждого пакета есть цена и включены коды доступа.
 const businessPacks = (Array.isArray(cfg.businessPacks) ? cfg.businessPacks : []).filter(x => x && x.from > 0 && x.priceRub > 0).sort((a, b) => a.from - b.from);
+// цена кода пакета в языке: рубли — priceRub; доллары и евро — своя цена языка (lang) или общая цена валюты
+const packPrice = (L, p) => { const cur = L.content.services && L.content.services.currency;
+  return cur === 'RUB' ? +p.priceRub : +((p.lang && p.lang[L.lang]) || (cur === 'EUR' ? p.priceEur : cur === 'USD' ? p.priceUsd : 0)) || 0; };
+const packPrices = L => businessPacks.map(p => packPrice(L, p));
+const packRetail = L => langPair(L)[0];   // скидка пакета — от обычной цены языка (в рублях — servicePriceRub)
 const businessMonths = Number(cfg.businessCodeMonths) || 12;
 // Пункты оферты и абзац политики о кодах доступа (offer.codeTerms: [{section, text}] — пункт в конец раздела; policy.purchaseCode — абзац в конец
 // раздела о покупке): решение заказчика от 2026-10-22 — коды только в русской версии, поэтому эти тексты в отдельных ключах, а не в общих списках,
@@ -213,8 +219,12 @@ const kitBuyHTML = (L, KB, kv) => `<section class="service xbuy kitbuy"><form cl
   `<div class="field"><label for="kitEmail">${escFull(KB.emailLabel)}</label><input type="email" id="kitEmail" class="ym-disable-keys" autocomplete="email" inputmode="email" maxlength="64" required></div>` +
   `<div class="xbuyact"><span class="xbig">${escFull(kitPriceLine(L.content.kit, kv))}</span><button class="btn" type="submit">${escFull(KB.submit)}</button></div>` +
   `<p class="small sendstatus err" aria-live="polite" hidden></p><p class="xnote">${kitNoteHtml(L, KB)}</p>${payMethodsHtml(L)}</form></section>`;
-const hasBusiness = L => !!(L.content.business && L.ui['nav.business'] && hasProduct(L) && L.content.product.pay && L.content.services.currency === 'RUB' && servicePrices.RUB &&
-  payCodeT(L, x => x) && feedbackEmail && cfg.sendEndpoint && businessPacks.length);
+// ссылка «Для организаций: пакеты отчётов» на «DISC для команды»: двоеточие и строчная буква — по языку (в немецком существительные с заглавной,
+// во французском перед двоеточием неразрывный пробел, в китайском и японском — полноширинное двоеточие без пробела)
+const bizSep = L => L.lang === 'fr' ? '\u00a0: ' : /^(zh|ja)/.test(L.lang) ? '：' : ': ';
+const bizLower = (L, x) => L.lang === 'de' ? x : x.toLocaleLowerCase(L.dateLocale);
+const hasBusiness = L => !!(L.content.business && L.ui['nav.business'] && hasProduct(L) && L.content.product.pay && packRetail(L) > 0 &&
+  payCodeT(L, x => x) && feedbackEmail && cfg.sendEndpoint && businessPacks.length && packPrices(L).every(v => v > 0));
 // Оператор и дата редакции в политике и согласии: в языке с полным текстом политики (policy.legal — русская версия) — исполнитель из оферты
 // (ИП с ИНН), в остальных — строка реквизитов из подвала. От наличия оферты не зависит: иначе её появление в языке меняло бы текст согласия,
 // на который люди уже согласились (после правки текста согласия нужна новая pdVersion)
@@ -861,7 +871,7 @@ for (const L of locales) {
   const tm = C.teams;
   writeContentPage(L, 'teams/', { navKey: 'nav.teams', article: true, title: tm.title, description: tm.description, crumbs: [{ name: t('nav.teams') }],
     content: `<div class="eyebrow">DISC</div><h1>${escFull(tm.h1)}</h1><p class="lead">${escFull(tm.lead)}</p>` + ctaTop(t, '../') + (C.group ? sectionsHtml(tm.sections.slice(0, 3)) + `<p class="seealso">${escFull(C.group.teamsLink)} <a href="../group/">${escFull(C.group.h1)} ${arrow(L)}</a></p>` + sectionsHtml(tm.sections.slice(3)) : sectionsHtml(tm.sections)) +
-      (hasBusiness(L) ? `<p class="seealso"><a href="../business/">${escFull(C.business.h1)}: ${escFull(C.business.packsTitle.toLowerCase())} ${arrow(L)}</a></p>` : '') +
+      (hasBusiness(L) ? `<p class="seealso"><a href="../business/">${escFull(C.business.h1)}${bizSep(L)}${escFull(bizLower(L, C.business.packsTitle))} ${arrow(L)}</a></p>` : '') +
       ctaBlock(L, t, '../') + seeAlso('../', 'nav.teams') });
   // /group/ — провести тест в группе (с 2026-10-26, по разбору источников: большинство прохождений — по ссылке, которую ведущий разослал группе):
   // готовый текст приглашения, ссылка с меткой ?ref=group и QR-код, как собрать результаты в панели администратора (#admin), материалы для занятия.
@@ -1143,8 +1153,8 @@ for (const L of locales) {
     // («Для физических лиц» → #person, «Для организаций» → #org), затем два раздела со своими карточками и ценами; подразделы о физических лицах —
     // заголовками третьего уровня; последний раздел услуги («Вопросы об услуге») — общий, в конце страницы. Тексты — content.business.services
     function servicesSplit() {
-      const S = C.business.services, retail = servicePrices.RUB, minPrice = Math.min(...businessPacks.map(p => p.priceRub));
-      const maxDiscount = markPct('max', Math.max(...businessPacks.map(p => Math.floor((1 - p.priceRub / retail) * 100))));
+      const S = C.business.services, retail = packRetail(L), minPrice = Math.min(...packPrices(L));
+      const maxDiscount = markPct('max', Math.max(...packPrices(L).map(v => Math.floor((1 - v / retail) * 100))));
       const fillS = str => String(str).replace(/\{minPrice\}/g, fmtPrice(L, minPrice)).replace(/\{maxDiscount\}/g, maxDiscount);
       const h3 = secs => sectionsHtml(secs).replace(/<h2>/g, '<h3 class="svch3">').replace(/<\/h2>/g, '</h3>');
       const pick = (id, title, text, price) => `<a class="svcpick" href="#${id}"><strong>${escFull(title)}</strong><span>${escFull(text)}</span><b>${escFull(price)}</b></a>`;
@@ -1163,12 +1173,12 @@ for (const L of locales) {
     // /business/ — «Для организаций»: пакеты кодов доступа к расширенному отчёту (цены — businessPacks), как это работает, данные участников,
     // границы применения, оплата по счёту, вопросы и форма заявки (src/business.js → форма обратной связи сервера, тема «Заявка для организации: …»)
     if (hasBusiness(L)) {
-      const B = C.business, retail = servicePrices.RUB, pct = p => Math.floor((1 - p.priceRub / retail) * 100);   // вниз: скидку не преувеличиваем
+      const B = C.business, retail = packRetail(L), pct = p => Math.floor((1 - packPrice(L, p) / retail) * 100);   // вниз: скидку не преувеличиваем
       const bv = Object.assign({}, vars, { minPack: String(businessPacks[0].from), maxDiscount: markPct('max', Math.max(...businessPacks.map(pct))), retail: markR(L), months: String(businessMonths),
         report: link('extended-report/', C.product.h1), teams: link('teams/', t('nav.teams')) });
       const fillB = html => html.replace(/\{(\w+)\}/g, (m, k) => k in bv ? bv[k] : m), plainB = str => String(str).replace(/\{(minPack|maxDiscount|retail|months)\}/g, (m, k) => bv[k]);
       const packs = `<div class="tablewrap"><table class="cmp packs"><thead><tr>${B.packsHead.map(h => `<th scope="col">${escFull(h)}</th>`).join('')}</tr></thead><tbody>` +
-        businessPacks.map(p => `<tr><td>${escFull(B.packRow.replace("{n}", p.from))}</td><td>${escFull(B.packPrice.replace('{price}', fmtPrice(L, p.priceRub)))}</td><td>${escFull(B.packDiscount.replace('{pct}', markPct(p.priceRub, pct(p))))}</td></tr>`).join('') + `</tbody></table></div>`;
+        businessPacks.map(p => `<tr><td>${escFull(B.packRow.replace("{n}", p.from))}</td><td>${escFull(B.packPrice.replace('{price}', fmtPrice(L, packPrice(L, p))))}</td><td>${escFull(B.packDiscount.replace('{pct}', markPct(packPrice(L, p), pct(p))))}</td></tr>`).join('') + `</tbody></table></div>`;
       const F = B.form, BT = { name: t('intro.nameLabel'), email: t('contact.emailLabel'), size: F.size, sizes: F.sizes, interest: F.interest, interests: F.interests,
         comment: F.comment, commentPlaceholder: F.commentPlaceholder, button: F.button, subject: F.subject, sent: F.sent, needInterest: F.needInterest,
         requiredNote: t('intro.requiredNote'), nameRequired: t('intro.nameRequired'), emailRequired: t('intro.emailRequired'), pdRequired: L.ui['pd.required'] || '',
@@ -1488,6 +1498,9 @@ for (const L of locales) {
   if (hasKitBuy(L)) { const home = urlOf(L.lang);
     mailData[L.lang].kit = { name: L.content.kit.h1, price: kitPrice(L), currency: (L.content.services && L.content.services.currency) || 'USD', dateLocale: L.dateLocale, mail: L.content.kit.mail,
       page: home + 'kit/', online: home, pdf: pdfInfo(L.lang) ? home + 'pdf/' : '', group: L.content.group ? home + 'group/' : '' }; }
+  // файл с кодами доступа для покупателя (панель, страница партии → «Скачать коды файлом», с 2026-11-12): заголовки столбцов на языке партии и адрес,
+  // где вводить код, — главная этого языка
+  if (hasBusiness(L) && Array.isArray(L.content.business.csv)) mailData[L.lang].codes = { csv: L.content.business.csv, home: urlOf(L.lang) };
   // письмо с расширенным отчётом (платная услуга): тексты есть только в языках, где отчёт написан
   if (L.content.extendedMail) mailData[L.lang].extended = L.content.extendedMail;
   // оплата расширенного отчёта на своём сервере: название услуги для платёжной страницы и чека, письмо-напоминание о неоконченной оплате, валюта заказа (USD или EUR через Prodamus)

@@ -719,7 +719,8 @@
           "Si vous commencez un achat sans le payer, nous conservons votre adresse e-mail, le résultat du test et les informations relatives à la commande pendant 30 jours, puis nous les supprimons. Durant cette période, un seul e-mail de rappel contenant un lien de paiement peut être envoyé à l'adresse indiquée. Ce traitement a pour base légale les démarches que vous avez entreprises en vue de conclure le contrat.",
           "Si vous achetez le kit de l'animateur DISC, nous traitons votre adresse e-mail et les informations relatives à la commande : date, montant, numéro et statut du paiement. Ces données nous servent à vous envoyer l'e-mail contenant les liens vers les fichiers du kit, à répondre à vos demandes et à procéder à un éventuel remboursement ; le traitement a pour base légale le contrat conclu conformément à nos {offer}. Les informations relatives à la commande du kit sont conservées de la même manière que celles de la commande du profil détaillé ; aucun e-mail de rappel n'est envoyé si le paiement du kit n'a pas été finalisé."
         ]
-      }
+      },
+      "purchaseCode": "Si vous recevez le profil détaillé grâce à un code d'accès acheté par une organisation ou par une autre personne, nous traitons les mêmes données, à l'exception des informations de paiement, et nous enregistrons l'utilisation du code. À la personne qui a acheté le code, nous indiquons seulement si le code a été utilisé et à quelle date : votre résultat, votre rapport et votre adresse e-mail ne lui sont pas transmis. Le traitement a pour base légale le contrat que vous concluez en saisissant le code conformément à nos {offer}."
     },
     "consentDoc": {
       "title": "Consentement au traitement des données personnelles — test DISC",
@@ -794,6 +795,96 @@
           "p": ["Pour toute question sur le profil détaillé ou sur le paiement, écrivez-nous via le formulaire « {contact} » : la réponse arrivera à l'adresse e-mail indiquée. Les coordonnées du propriétaire du site figurent en bas de chaque page."]
         }
       ]
+    },
+    "business": {
+      "title": "DISC pour les organisations : packs de rapports DISC détaillés",
+      "description": "Rapports DISC détaillés pour vos collaborateurs, clients ou stagiaires, par packs, avec jusqu'à {maxDiscount} % de réduction. Codes d'accès, paiement par carte.",
+      "h1": "DISC pour les organisations",
+      "lead": "Le test DISC est gratuit sur ce site et ne demande aucune inscription. Si vous le faites passer à vos collaborateurs, à vos clients ou aux participants d'une formation, vous pouvez leur offrir le rapport détaillé en achetant un pack : c'est moins cher qu'à l'unité.",
+      "facts": ["dès {minPack} rapports", "jusqu'à {maxDiscount} % de réduction", "paiement par carte, sur lien sécurisé", "chacun reçoit son rapport par e-mail"],
+      "forTitle": "Pour qui",
+      "for": [
+        "RH et managers : faire connaissance avec l'équipe, intégrer les nouveaux arrivants, désamorcer les frictions entre collègues.",
+        "Universités d'entreprise et formateurs : un support pour vos parcours sur la communication, le leadership et le travail en équipe.",
+        "Cabinets de recrutement et conseillers en évolution professionnelle : un cadeau pour le candidat ou le client, et une base pour parler du type de poste qui lui convient.",
+        "Coachs : le rapport détaillé du client avant la première séance."
+      ],
+      "services": {
+        "person": "Pour les particuliers",
+        "personPick": "Un rapport détaillé établi à partir de votre résultat au test",
+        "org": "Pour les organisations",
+        "orgPick": "Des rapports détaillés pour vos collaborateurs, clients et stagiaires, par packs, payés par carte",
+        "orgName": "Packs de rapports détaillés",
+        "orgText": "Pour les RH, les cabinets de recrutement, les universités d'entreprise, les formateurs et les coachs. Vous achetez des codes d'accès et les remettez aux personnes concernées : chacune passe le test et reçoit son propre rapport par e-mail. Paiement par carte sur lien sécurisé, jusqu'à {maxDiscount} % de réduction.",
+        "orgPriceLabel": "Prix",
+        "orgPrice": "à partir de {minPrice} € par rapport",
+        "orgButton": "En savoir plus et faire une demande"
+      },
+      "packsTitle": "Packs de rapports détaillés",
+      "packsText": "Vous achetez des codes d'accès et les remettez aux personnes concernées, un code par personne. Chacune passe le test, saisit le code sur l'écran de son résultat et reçoit à son adresse e-mail un rapport détaillé nominatif au format PDF. Le contenu du rapport et l'aperçu de ses pages se trouvent sur la page « {report} ».",
+      "packsHead": ["Pack", "Prix par rapport", "Réduction"],
+      "packRow": "dès {n} codes",
+      "packPrice": "{price} €",
+      "packDiscount": "−{pct} %",
+      "packsNote": "Prix du rapport à l'unité : {retail} €. Le code est valable {months} mois à compter de sa remise. Un code donne droit à un rapport pour une personne.",
+      "csv": ["Code d'accès", "Utilisé", "Valable jusqu'au", "Où le saisir"],
+      "howTitle": "Comment ça marche",
+      "how": [
+        "Faites une demande en bas de la page : combien de rapports et pour qui. Nous vous répondons sous un jour ouvré.",
+        "Nous vous envoyons un lien de paiement par carte. Après le paiement, nous vous envoyons les codes dans un fichier.",
+        "Envoyez à chaque personne le lien vers le test et un code. Le test prend environ 10 minutes, sans inscription.",
+        "Sur l'écran de son résultat, la personne clique sur « J'ai un code d'accès », puis saisit le code et son adresse e-mail. Le rapport lui arrive par e-mail en quelques minutes.",
+        "Sur simple demande, nous vous indiquons combien de codes ont déjà été utilisés."
+      ],
+      "privacyTitle": "Les résultats restent entre les mains des participants",
+      "privacy": [
+        "Le rapport n'est envoyé qu'à la personne qui a passé le test et saisi le code. À ceux qui ont payé les codes, nous ne transmettons ni les résultats, ni les rapports, ni les adresses e-mail des participants : seulement le nombre de codes utilisés.",
+        "Si vous avez besoin d'une vue d'ensemble de l'équipe, demandez aux participants de partager eux-mêmes leur résultat : le lien vers leur résultat ou le code de leur rapport de synthèse. La page « {teams} » explique comment en faire un tableau d'équipe."
+      ],
+      "boundsTitle": "Ce à quoi DISC ne sert pas",
+      "bounds": "DISC décrit un style de comportement, pas des aptitudes, des connaissances ou l'honnêteté. Il n'est pas conçu pour sélectionner des candidats ni pour décider d'une embauche, d'un licenciement ou d'une rémunération. Utilisez-le pour aider chacun à mieux se comprendre et à mieux comprendre les autres : lors de l'intégration, dans le travail en équipe, dans le développement des managers.",
+      "teamTitle": "Rapport d'équipe : en préparation",
+      "team": "Nous préparons un rapport destiné au manager sur l'équipe dans son ensemble : carte des styles, points forts de l'équipe, sources de frictions et pistes pour y remédier. S'il vous intéresse, indiquez-le dans votre demande : nous vous écrirons quand il sera prêt.",
+      "payTitle": "Paiement et documents",
+      "pay": [
+        "Le paiement se fait en euros, par carte bancaire (une carte d'entreprise convient), via un lien de paiement sécurisé que nous vous envoyons après votre demande. Une confirmation électronique du paiement est ensuite envoyée par e-mail au payeur.",
+        "Si votre service comptable a besoin d'une facture ou d'autres documents, précisez-le dans votre demande : nous vous dirons ce que nous pouvons fournir.",
+        "Prestataire : {seller}."
+      ],
+      "faqTitle": "Questions fréquentes",
+      "faq": [
+        {
+          "q": "Peut-on acheter moins de {minPack} rapports ?",
+          "a": "Le prix par pack s'applique à partir de {minPack} codes. Pour un ou quelques rapports, chacun peut acheter le sien sur la page « {report} » au prix habituel."
+        },
+        {
+          "q": "Dans quelle langue sont les rapports ?",
+          "a": "Le code fonctionne dans toutes les versions linguistiques du site : le test, le rapport et l'e-mail sont dans la langue de la version où la personne saisit le code. Le test lui-même est gratuit et disponible en 13 langues."
+        },
+        {
+          "q": "Et si la personne a déjà passé le test ?",
+          "a": "Inutile de le repasser : le code peut être saisi sur l'écran du résultat enregistré ou sur la page du rapport détaillé, depuis le même appareil."
+        },
+        {
+          "q": "Peut-on utiliser les rapports en formation ?",
+          "a": "Oui : les participants travaillent sur leur propre rapport pendant les séances. En revanche, il est interdit de copier les textes des rapports dans vos supports ou dans les documents remis aux participants : les droits sur ces textes sont décrits à l'article 6 de nos {offer}."
+        }
+      ],
+      "form": {
+        "title": "Demande",
+        "lead": "Nous vous répondons sous un jour ouvré, à l'adresse e-mail que vous indiquez.",
+        "size": "Nombre de personnes",
+        "sizes": ["jusqu'à 10", "10 à 50", "50 à 100", "plus de 100"],
+        "interest": "Ce qui vous intéresse",
+        "interests": ["Un pack de rapports détaillés", "Le rapport d'équipe", "Autre chose"],
+        "comment": "Commentaire",
+        "commentPlaceholder": "Par exemple : pour qui sont les rapports, pour quelle date, si votre comptabilité a besoin d'une facture",
+        "button": "Envoyer la demande",
+        "subject": "Заявка для организации: {name}",
+        "sent": "Demande envoyée. Nous vous répondrons à {email} sous un jour ouvré.",
+        "needInterest": "Indiquez ce qui vous intéresse.",
+        "privacy": "Votre nom, votre e-mail et le texte de la demande seront envoyés par e-mail à {email} et servent uniquement à vous répondre."
+      }
     },
     "cv": {
       "title": "CV adapté à chaque offre d'emploi grâce à l'IA — accès anticipé",
@@ -1744,7 +1835,25 @@
       "description": "Conditions générales de vente du service payant « Profil DISC détaillé » et du kit de l'animateur DISC sur disc-test.org : prix, paiement et envoi, remboursement, droits sur les contenus.",
       "h1": "Conditions générales de vente",
       "linkText": "conditions générales de vente",
-      "edition": "Version du 6 novembre 2026. Traduction française mise à jour le 6 novembre 2026.",
+      "codeTerms": [
+        {
+          "section": 0,
+          "text": "Code d'accès : une suite de caractères qui donne le droit de recevoir le Service sans paiement par le Client. Les Codes d'accès sont achetés auprès du Prestataire, en vertu d'un contrat distinct, par un tiers (une organisation, un entrepreneur individuel ou une autre personne), qui les remet aux Clients."
+        },
+        {
+          "section": 3,
+          "text": "4.6. Le Client qui dispose d'un Code d'accès le saisit sur le Site, à côté du formulaire de paiement, au lieu de payer, et indique une adresse e-mail. Le Code d'accès n'est valable qu'une seule fois et pendant la durée indiquée lors de sa remise. Pour ce Client, le Service est réputé payé au moment où le Site accepte le Code d'accès ; le délai prévu à l'article 4.2 court à compter de ce moment."
+        },
+        {
+          "section": 4,
+          "text": "5.8. Le Service obtenu au moyen d'un Code d'accès n'est pas payé par le Client ; les dispositions du présent article relatives au remboursement ne s'y appliquent donc pas : les règlements relatifs aux Codes d'accès se font entre le Prestataire et la personne qui les a achetés. Le droit du Client d'obtenir la correction des défauts (article 5.3) est maintenu."
+        },
+        {
+          "section": 7,
+          "text": "8.4. À la personne qui a acheté un Code d'accès, le Prestataire indique uniquement si ce Code d'accès a été utilisé et à quelle date. Le Prestataire ne lui transmet ni le résultat du Test, ni le Profil détaillé, ni l'adresse e-mail du Client."
+        }
+      ],
+      "edition": "Version du 12 novembre 2026. Traduction française mise à jour le 12 novembre 2026.",
       "note": "Ce texte est la traduction française des conditions originales publiées à l'adresse {original}. En cas de divergence entre les deux textes, l'original prévaut, sauf pour le prix et les modalités de paiement : pour la version française du Site, ceux-ci sont régis par les articles 1 et 3 de la présente traduction.",
       "seller": "Manukyan Armen, entrepreneur individuel, N° d’identification fiscale (INN) {inn}",
       "lead": "Le présent document constitue une offre officielle (offre au public) de conclure un contrat portant sur le service payant « Profil DISC détaillé », ainsi qu'un contrat de fourniture du Kit de l'animateur DISC (article 10), aux conditions énoncées ci-dessous. Cette offre émane de {seller} (ci-après « le Prestataire »). Le paiement du service ou du Kit vaut acceptation pleine, entière et sans réserve des présentes conditions (acceptation de l'offre).",
@@ -1753,7 +1862,7 @@
           "h": "1. Définitions",
           "ul": [
             "Prestataire : {seller}.",
-            "Client : toute personne physique jouissant de la pleine capacité juridique qui a accepté les présentes conditions en payant le Service.",
+            "Client : toute personne physique jouissant de la pleine capacité juridique qui a accepté les présentes conditions en payant le Service ou en saisissant un Code d'accès.",
             "Site : {site} et l'ensemble de ses pages.",
             "Test : le questionnaire DISC gratuit proposé sur le Site.",
             "Profil détaillé : une analyse plus approfondie du profil DISC du Client, établie par le Prestataire sous forme électronique à partir du Test passé par le Client.",
@@ -1833,7 +1942,7 @@
         {
           "h": "9. Durée et modification des conditions",
           "p": [
-            "9.1. Le contrat est réputé conclu au moment du paiement du Service ou du Kit (article 10) et reste en vigueur jusqu'à ce que les parties aient exécuté leurs obligations.",
+            "9.1. Le contrat est réputé conclu au moment du paiement du Service ou du Kit (article 10) ou de l'acceptation d'un Code d'accès (article 4.6) et reste en vigueur jusqu'à ce que les parties aient exécuté leurs obligations.",
             "9.2. Le Prestataire peut modifier les présentes conditions. La nouvelle version s'applique dès sa publication sur le Site et ne concerne pas les commandes déjà payées.",
             "9.3. Les réclamations sont adressées à {email} ; le Prestataire y répond dans un délai de dix jours calendaires. Si le litige n'est pas réglé, il est porté devant les tribunaux, conformément au droit applicable au contrat.",
             "9.4. Le contrat est régi par le droit du pays dans lequel le Prestataire est enregistré."
@@ -1914,7 +2023,9 @@
       "inviteTitle": "Invitez vos amis, vos collègues et vos proches à passer le test",
       "invite": "La section 8 du rapport explique comment communiquer avec les personnes de chacun des quatre styles. Pour connaître le style de votre entourage, proposez-leur de passer le test : il est gratuit et prend environ 10 minutes. Quand chacun connaît le style de l'autre, on se comprend plus facilement.",
       "inviteLink": "Voici le lien vers le test, à partager :",
-      "footer": "Vous recevez cet e-mail parce que vous avez payé le service « Profil DISC détaillé » sur disc-test.org. Le rapport est nominatif et réservé à votre usage personnel."
+      "footer": "Vous recevez cet e-mail parce que vous avez payé le service « Profil DISC détaillé » sur disc-test.org. Le rapport est nominatif et réservé à votre usage personnel.",
+      "codeIntro": "Votre rapport DISC détaillé est prêt. Il a été payé par la personne ou l'organisation qui vous a remis le code d'accès. Le rapport a été établi pour ce profil :",
+      "codeFooter": "Vous recevez cet e-mail parce que vous avez saisi un code d'accès au service « Profil DISC détaillé » sur disc-test.org. Nous ne transmettons ni votre résultat ni ce rapport à la personne qui vous a remis le code. Le rapport est nominatif et réservé à votre usage personnel."
     },
     "product": {
       "title": "Rapport DISC détaillé — 13 sections fondées sur vos réponses",
@@ -2025,6 +2136,22 @@
         "badEmail": "Vérifiez l'adresse e-mail : c'est à elle que nous enverrons le rapport et le reçu.",
         "wait": "Ouverture de la page de paiement…",
         "error": "Impossible d'ouvrir la page de paiement. Réessayez dans quelques instants ou écrivez-nous à {email}.",
+        "code": {
+          "link": "J'ai un code d'accès",
+          "label": "Code d'accès",
+          "placeholder": "XXXX-XXXX-XXXX",
+          "button": "Recevoir le rapport",
+          "back": "Acheter sans code",
+          "wait": "Vérification du code…",
+          "note": "Le rapport a déjà été payé par la personne ou l'organisation qui vous a remis le code : vous n'avez rien à payer. Nous ne lui transmettons ni votre résultat ni votre adresse e-mail. En cliquant sur « Recevoir le rapport », vous acceptez nos {offer}.",
+          "badEmail": "Vérifiez l'adresse e-mail : c'est à elle que nous enverrons le rapport.",
+          "empty": "Saisissez le code d'accès.",
+          "done": "Code accepté. Le rapport arrivera à {to} d'ici quelques minutes. S'il n'est pas dans votre boîte de réception, vérifiez le dossier de courrier indésirable (spam).",
+          "bad": "Ce code n'existe pas. Vérifiez qu'il a été saisi sans erreur.",
+          "used": "Ce code a déjà été utilisé. Si c'est vous qui l'avez saisi et que le rapport n'est pas arrivé, écrivez-nous à {email}.",
+          "expired": "Ce code a expiré. Adressez-vous à la personne ou à l'organisation qui vous l'a remis.",
+          "error": "Impossible de vérifier le code. Réessayez dans une minute ou écrivez-nous à {email}."
+        },
         "how": [
           "Passez le test gratuit : 24 blocs, environ 10 minutes. Si vous l'avez déjà passé, inutile de recommencer : le rapport est établi à partir du résultat que vous avez déjà.",
           "Indiquez votre e-mail et cliquez sur « Acheter ». Le paiement se fait par carte Visa ou Mastercard sur une page de paiement sécurisée.",
@@ -2450,8 +2577,8 @@
         "Engagements communs : comment mener nos réunions, confier les tâches et donner du feedback."
       ],
       "reportTitle": "Un rapport détaillé pour chaque participant",
-      "report": "Après l'atelier, chaque participant peut commander son {business} : plus de 25 pages sur son profil, établies à partir de ses réponses au test en ligne.",
-      "reportLink": "rapport DISC détaillé",
+      "report": "Après l'atelier, chaque participant peut commander son rapport DISC détaillé : plus de 25 pages sur son profil, établies à partir de ses réponses au test en ligne. Si c'est votre organisation qui paie les rapports, mieux vaut acheter un {business} : c'est moins cher qu'à l'unité.",
+      "reportLink": "pack de rapports pour les organisations",
       "priceTitle": "Prix et obtention",
       "price": [
         "Le kit coûte {price} €. Faites une demande : nous vous répondons sous un jour ouvré avec un lien de paiement.",
@@ -2553,8 +2680,8 @@
         "kitText": "Un déroulé d'atelier de 60 ou 90 minutes, des diapositives, un tableau Excel qui calcule tout seul les résultats du groupe, une carte d'équipe et les fiches « Comment travailler avec moi ».",
         "kitButton": "Découvrir le kit",
         "bizTitle": "Un rapport détaillé pour chaque participant",
-        "bizText": "Après le test en ligne, chaque participant peut commander un rapport détaillé sur son profil.",
-        "bizButton": "En savoir plus"
+        "bizText": "Votre organisation souhaite offrir à chaque participant un rapport détaillé sur son profil ? Des packs de rapports sont proposés à prix réduit.",
+        "bizButton": "Pour les organisations"
       },
       "mail": {
         "toggle": "Recevoir le questionnaire par e-mail",
@@ -2714,7 +2841,7 @@
         "{kit} : déroulé de 60 ou 90 minutes, 16 diapositives, tableau du groupe et carte de l'équipe.",
         "{pdf} : feuille de réponses papier, si les participants n'ont ni téléphone ni internet.",
         "{teams} : lire la carte de l'équipe et discuter des résultats sans étiqueter.",
-        "{business} : rapports détaillés pour les participants, en lot, payés sur facture."
+        "{business} : des rapports détaillés pour les participants, par packs, à prix réduit."
       ]
     },
     "teams": {
@@ -3388,6 +3515,7 @@
     "nav.pdf": "Test en PDF",
     "nav.materials": "Ressources sur le DISC",
     "nav.howMade": "Préparation des rapports",
+    "nav.business": "Pour les organisations",
 
     "pages.styles.title": "Types de personnalité DISC : les quatre styles D, I, S, C",
     "pages.styles.description": "Les quatre types de personnalité DISC : dominance, influence, stabilité, conformité. Traits, points forts, axes de progression, motivation, stress.",

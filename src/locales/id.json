@@ -719,7 +719,8 @@
           "Jika Anda memulai pembelian tetapi tidak membayar, kami menyimpan alamat email, hasil tes, dan data pesanan Anda selama 30 hari, lalu menghapusnya. Selama jangka waktu itu, satu email pengingat berisi tautan pembayaran dapat dikirim ke alamat yang Anda cantumkan. Dasarnya adalah langkah yang Anda ambil untuk mengadakan perjanjian.",
           "Jika Anda membeli Paket Fasilitator, kami memproses alamat email Anda dan data pesanan: tanggal, jumlah, nomor, dan status pembayaran. Data ini diperlukan untuk mengirimkan email berisi tautan ke file paket, menjawab pertanyaan Anda, dan memproses pengembalian dana; dasarnya adalah perjanjian berdasarkan {offer}. Data pesanan paket disimpan dengan cara yang sama seperti data pesanan profil lengkap; email pengingat tentang pembayaran paket yang belum selesai tidak dikirim."
         ]
-      }
+      },
+      "purchaseCode": "Jika Anda memperoleh profil lengkap dengan kode akses yang dibeli oleh organisasi atau orang lain, kami memproses data yang sama, kecuali data pembayaran, dan mencatat bahwa kode tersebut telah digunakan. Kepada pembeli kode, kami hanya memberitahukan apakah kode telah digunakan dan kapan: hasil, laporan, dan email Anda tidak diteruskan kepadanya. Dasarnya adalah perjanjian yang Anda adakan dengan memasukkan kode berdasarkan {offer}."
     },
     "consentDoc": {
       "title": "Persetujuan atas Pemrosesan Data Pribadi — Tes DISC",
@@ -795,12 +796,120 @@
         }
       ]
     },
+    "business": {
+      "title": "DISC untuk Organisasi: Paket Laporan Mendalam",
+      "description": "Laporan DISC mendalam untuk karyawan, klien, dan peserta pelatihan dalam paket, dengan diskon hingga {maxDiscount}%. Kode akses, pembayaran dengan kartu lewat tautan.",
+      "h1": "DISC untuk organisasi",
+      "lead": "Tes DISC di situs ini gratis dan tanpa registrasi. Jika Anda mengadakannya untuk karyawan, klien, atau peserta pelatihan, laporan mendalam untuk mereka bisa dibeli dalam paket: lebih murah daripada satu per satu, dan dibayar sekaligus lewat satu tautan pembayaran.",
+      "facts": ["mulai {minPack} laporan", "diskon hingga {maxDiscount}%", "bayar dengan kartu lewat tautan", "laporan dikirim ke email masing-masing"],
+      "forTitle": "Untuk siapa",
+      "for": [
+        "HR dan manajer: mengenal tim, orientasi karyawan baru, membahas gesekan antarrekan kerja.",
+        "Corporate university dan trainer bisnis: materi untuk program komunikasi, kepemimpinan, dan kerja tim.",
+        "Biro rekrutmen dan konsultan karier: hadiah untuk kandidat atau klien sekaligus bahan percakapan tentang pekerjaan yang cocok baginya.",
+        "Coach: laporan lengkap tentang klien sebelum pertemuan pertama."
+      ],
+      "services": {
+        "person": "Untuk perorangan",
+        "personPick": "Laporan mendalam dari hasil tes Anda",
+        "org": "Untuk organisasi",
+        "orgPick": "Laporan mendalam untuk karyawan, klien, dan peserta pelatihan — dalam paket, dengan diskon",
+        "orgName": "Paket laporan mendalam",
+        "orgText": "Untuk HR, biro rekrutmen, corporate university, trainer, dan coach. Anda membeli kode akses lalu membagikannya: setiap orang mengikuti tes dan menerima laporannya sendiri lewat email. Pembayaran dengan kartu lewat tautan, diskon hingga {maxDiscount}%.",
+        "orgPriceLabel": "Harga",
+        "orgPrice": "mulai US${minPrice} per laporan",
+        "orgButton": "Selengkapnya dan permintaan"
+      },
+      "packsTitle": "Paket laporan mendalam",
+      "packsText": "Anda membeli kode akses dan membagikannya, satu kode untuk satu orang. Setiap orang mengikuti tes, memasukkan kode di layar hasilnya, dan menerima laporan mendalam atas namanya sendiri dalam bentuk PDF di emailnya. Isi laporan dan contoh halamannya bisa dilihat di halaman “{report}”.",
+      "packsHead": ["Paket", "Harga per laporan", "Diskon"],
+      "packRow": "mulai {n} kode",
+      "packPrice": "US${price}",
+      "packDiscount": "−{pct}%",
+      "packsNote": "Harga normal satu laporan: US${retail}. Kode berlaku {months} bulan sejak tanggal diterbitkan. Satu kode untuk satu laporan bagi satu orang.",
+      "csv": ["Kode akses", "Sudah dipakai", "Berlaku sampai", "Tempat memasukkan kode"],
+      "howTitle": "Cara kerjanya",
+      "how": [
+        "Kirim permintaan lewat formulir di bagian bawah halaman: berapa laporan yang dibutuhkan dan untuk siapa. Kami membalas dalam satu hari kerja.",
+        "Kami mengirim tautan untuk membayar dengan kartu. Setelah pembayaran, kami mengirim kode-kodenya dalam sebuah file.",
+        "Kirim tautan tes dan satu kode kepada setiap orang. Tes memakan waktu sekitar 10 menit, tanpa registrasi.",
+        "Di layar hasil, orang tersebut menekan “Saya punya kode dari organisasi”, lalu memasukkan kode dan alamat emailnya. Laporan dikirim kepadanya lewat email dalam beberapa menit.",
+        "Jika Anda minta, kami memberi tahu berapa kode yang sudah dipakai."
+      ],
+      "privacyTitle": "Hasil tetap milik masing-masing orang",
+      "privacy": [
+        "Laporan hanya dikirim kepada orang yang mengikuti tes dan memasukkan kode. Kepada pihak yang membayar kode, kami tidak meneruskan hasil, laporan, maupun alamat email peserta: hanya jumlah kode yang sudah dipakai.",
+        "Jika Anda memerlukan ringkasan untuk tim, mintalah setiap orang membagikan hasilnya sendiri: mengirim tautan hasil atau kode dari laporan ringkas. Cara menyusun tabel tim dari hasil-hasil itu dijelaskan di halaman “{teams}”."
+      ],
+      "boundsTitle": "Untuk apa DISC tidak cocok",
+      "bounds": "DISC menggambarkan gaya perilaku, bukan kemampuan, pengetahuan, atau kejujuran. DISC tidak dirancang untuk menyeleksi kandidat atau mengambil keputusan tentang perekrutan, pemberhentian, atau gaji. Gunakan DISC agar orang lebih memahami diri sendiri dan satu sama lain: saat orientasi karyawan baru, dalam kerja tim, dan dalam pengembangan pemimpin.",
+      "teamTitle": "Laporan tim — sedang disiapkan",
+      "team": "Kami sedang menyiapkan laporan untuk manajer tentang tim secara keseluruhan: peta gaya, kekuatan tim, titik-titik gesekan, dan cara menanganinya. Jika Anda membutuhkannya, tandai hal itu dalam permintaan: kami akan memberi tahu saat laporannya siap.",
+      "payTitle": "Pembayaran dan dokumen",
+      "pay": [
+        "Setelah menerima permintaan Anda, kami mengirim tautan ke halaman pembayaran yang aman. Pembayaran dilakukan dengan kartu, termasuk kartu perusahaan, dalam dolar AS seperti harga di halaman ini. Setelah pembayaran, bukti pembayaran elektronik dikirim ke email pembayar.",
+        "Jika bagian keuangan Anda memerlukan invoice atau dokumen lain, sebutkan hal itu dalam permintaan: kami akan memberi tahu dokumen apa yang dapat kami sediakan.",
+        "Penyedia layanan: {seller}."
+      ],
+      "faqTitle": "Pertanyaan",
+      "faq": [
+        {
+          "q": "Bisakah membeli kurang dari {minPack} laporan?",
+          "a": "Harga paket berlaku mulai {minPack} kode. Satu atau beberapa laporan bisa dibeli sendiri oleh setiap orang di halaman “{report}” dengan harga normal."
+        },
+        {
+          "q": "Dalam bahasa apa laporannya?",
+          "a": "Kode berlaku di semua versi bahasa situs ini: tes, laporan, dan email menggunakan bahasa versi tempat orang tersebut memasukkan kode. Tesnya sendiri tersedia gratis dalam 13 bahasa."
+        },
+        {
+          "q": "Bagaimana jika seseorang sudah pernah mengikuti tes?",
+          "a": "Tidak perlu mengulang: kode bisa dimasukkan di layar hasil yang tersimpan atau di halaman laporan mendalam, pada perangkat yang sama."
+        },
+        {
+          "q": "Bolehkah laporan dipakai dalam pelatihan?",
+          "a": "Boleh: peserta mengerjakan laporannya masing-masing selama sesi. Teks laporan tidak boleh disalin ke materi atau handout Anda sendiri — hak atas teks tersebut diatur dalam bagian 6 {offer}."
+        }
+      ],
+      "form": {
+        "title": "Permintaan",
+        "lead": "Kami akan membalas dalam satu hari kerja ke email yang Anda cantumkan.",
+        "size": "Berapa orang",
+        "sizes": ["sampai 10", "10–50", "50–100", "lebih dari 100"],
+        "interest": "Apa yang Anda minati",
+        "interests": ["Paket laporan mendalam", "Laporan tim", "Lainnya"],
+        "comment": "Komentar",
+        "commentPlaceholder": "Misalnya: untuk siapa laporannya, kapan dibutuhkan, apakah bagian keuangan memerlukan invoice",
+        "button": "Kirim permintaan",
+        "subject": "Заявка для организации: {name}",
+        "sent": "Permintaan terkirim. Kami akan membalas ke {email} dalam satu hari kerja.",
+        "needInterest": "Pilih apa yang Anda minati.",
+        "privacy": "Nama, email, dan isi permintaan akan dikirim lewat email ke {email} dan hanya digunakan untuk membalas Anda."
+      }
+    },
     "offer": {
       "title": "Syarat dan Ketentuan Layanan Berbayar — Profil DISC Lengkap dan Paket Fasilitator",
       "description": "Syarat dan ketentuan layanan berbayar “Profil DISC lengkap” dan Paket Fasilitator DISC di disc-test.org: harga, pembayaran dan pengiriman, pengembalian dana, hak atas materi.",
       "h1": "Syarat dan Ketentuan Layanan Berbayar",
       "linkText": "syarat dan ketentuan layanan berbayar",
-      "edition": "Versi tanggal 6 November 2026. Terjemahan bahasa Indonesia diperbarui pada 6 November 2026.",
+      "codeTerms": [
+        {
+          "section": 0,
+          "text": "Kode Akses adalah rangkaian karakter yang memberikan hak untuk memperoleh Layanan tanpa pembayaran oleh Pelanggan. Kode Akses dibeli dari Penyedia berdasarkan perjanjian tersendiri oleh pihak ketiga — organisasi, pengusaha perorangan, atau orang lain — yang kemudian memberikannya kepada Pelanggan."
+        },
+        {
+          "section": 3,
+          "text": "4.6. Pelanggan yang memiliki Kode Akses memasukkannya di Situs di samping formulir pembayaran sebagai ganti pembayaran dan mencantumkan alamat email. Kode Akses hanya dapat digunakan satu kali dan dalam jangka waktu yang ditentukan saat kode tersebut diberikan. Bagi Pelanggan tersebut, Layanan dianggap telah dibayar pada saat Situs menerima Kode Akses; jangka waktu dalam butir 4.2 dihitung sejak saat itu."
+        },
+        {
+          "section": 4,
+          "text": "5.8. Layanan yang diperoleh dengan Kode Akses tidak dibayar oleh Pelanggan sehingga ketentuan bagian ini tentang pengembalian dana tidak berlaku baginya: penyelesaian pembayaran atas Kode Akses dilakukan antara Penyedia dan pihak yang membelinya. Hak Pelanggan atas perbaikan kekurangan (butir 5.3) tetap berlaku."
+        },
+        {
+          "section": 7,
+          "text": "8.4. Kepada pihak yang membeli Kode Akses, Penyedia hanya memberitahukan apakah Kode Akses telah digunakan dan kapan. Hasil Tes, Profil Lengkap, dan alamat email Pelanggan tidak diteruskan Penyedia kepadanya."
+        }
+      ],
+      "edition": "Versi tanggal 12 November 2026. Terjemahan bahasa Indonesia diperbarui pada 12 November 2026.",
       "note": "Teks ini adalah terjemahan bahasa Indonesia dari syarat dan ketentuan asli yang diterbitkan di {original}. Jika kedua teks berbeda, yang berlaku adalah teks asli, kecuali mengenai harga dan cara pembayaran: untuk Situs versi bahasa Indonesia, yang berlaku adalah bagian 1 dan 3 terjemahan ini.",
       "seller": "pengusaha perorangan Manukyan Armen, Nomor identitas wajib pajak (INN) {inn}",
       "lead": "Dokumen ini adalah penawaran resmi yang terbuka bagi siapa pun (penawaran terbuka) untuk mengadakan perjanjian penyediaan layanan berbayar “Profil DISC lengkap”, serta perjanjian penyerahan Paket Fasilitator DISC (bagian 10), dengan syarat dan ketentuan di bawah ini. Penawaran ini diajukan oleh {seller} (selanjutnya disebut “Penyedia”). Membayar layanan atau Paket berarti menerima syarat dan ketentuan ini sepenuhnya dan tanpa syarat (penerimaan penawaran).",
@@ -809,7 +918,7 @@
           "h": "1. Definisi",
           "ul": [
             "Penyedia adalah {seller}.",
-            "Pelanggan adalah orang perseorangan yang cakap hukum dan telah menerima syarat dan ketentuan ini dengan membayar Layanan.",
+            "Pelanggan adalah orang perseorangan yang cakap hukum dan telah menerima syarat dan ketentuan ini dengan membayar Layanan atau memasukkan Kode Akses.",
             "Situs adalah {site} beserta seluruh halamannya.",
             "Tes adalah kuesioner DISC gratis yang tersedia di Situs.",
             "Profil Lengkap adalah analisis yang lebih mendalam atas profil DISC Pelanggan, yang disusun Penyedia dalam bentuk elektronik berdasarkan Tes yang telah dikerjakan Pelanggan.",
@@ -889,7 +998,7 @@
         {
           "h": "9. Masa berlaku serta perubahan syarat dan ketentuan",
           "p": [
-            "9.1. Perjanjian dianggap terjadi pada saat Layanan atau Paket (bagian 10) dibayar dan berlaku sampai para pihak memenuhi kewajibannya.",
+            "9.1. Perjanjian dianggap terjadi pada saat Layanan atau Paket (bagian 10) dibayar atau pada saat Kode Akses diterima (butir 4.6) dan berlaku sampai para pihak memenuhi kewajibannya.",
             "9.2. Penyedia berhak mengubah syarat dan ketentuan ini. Versi baru berlaku sejak diterbitkan di Situs dan tidak berlaku bagi pesanan yang sudah dibayar.",
             "9.3. Pengaduan dikirim ke {email}; Penyedia menjawabnya dalam sepuluh hari kalender. Jika tidak tercapai penyelesaian, sengketa diperiksa oleh pengadilan sesuai dengan hukum yang mengatur perjanjian ini.",
             "9.4. Perjanjian ini tunduk pada hukum negara tempat Penyedia terdaftar."
@@ -970,7 +1079,9 @@
       "inviteTitle": "Ajak teman, rekan kerja, dan keluarga mengikuti tes",
       "invite": "Bagian 8 laporan menjelaskan cara berbicara dengan orang dari tiap gaya. Gaya orang di sekitar Anda bisa diketahui kalau Anda mengajak mereka mengikuti tes: gratis dan hanya sekitar 10 menit. Orang yang tahu gaya lawan bicaranya lebih mudah memahaminya.",
       "inviteLink": "Ini tautan tes untuk dibagikan:",
-      "footer": "Anda menerima email ini karena telah membayar layanan “Profil DISC lengkap” di disc-test.org. Laporan ini bersifat pribadi dan hanya untuk dipakai sendiri."
+      "footer": "Anda menerima email ini karena telah membayar layanan “Profil DISC lengkap” di disc-test.org. Laporan ini bersifat pribadi dan hanya untuk dipakai sendiri.",
+      "codeIntro": "Laporan DISC mendalam Anda sudah siap. Laporan ini dibayar oleh pihak yang memberi Anda kode akses. Laporan disusun untuk profil:",
+      "codeFooter": "Anda menerima email ini karena telah memasukkan kode akses untuk layanan “Profil DISC lengkap” di disc-test.org. Hasil Anda dan laporan ini tidak kami teruskan kepada pihak yang memberikan kode. Laporan ini bersifat pribadi dan hanya untuk dipakai sendiri."
     },
     "product": {
       "title": "Laporan DISC Mendalam — 13 Bagian dari Hasil Tes Anda",
@@ -1067,6 +1178,22 @@
         "badEmail": "Periksa alamat email Anda: laporan dan bukti pembayaran dikirim ke alamat itu.",
         "wait": "Membuka halaman pembayaran …",
         "error": "Halaman pembayaran belum bisa dibuka. Coba lagi beberapa menit lagi atau tulis kepada kami di {email}.",
+        "code": {
+          "link": "Saya punya kode dari organisasi",
+          "label": "Kode akses",
+          "placeholder": "XXXX-XXXX-XXXX",
+          "button": "Dapatkan laporan",
+          "back": "Beli tanpa kode",
+          "wait": "Memeriksa kode …",
+          "note": "Laporan dengan kode ini sudah dibayar oleh pihak yang memberi Anda kode: Anda tidak perlu membayar. Hasil dan email Anda tidak kami teruskan kepada mereka. Dengan menekan “Dapatkan laporan”, Anda menerima {offer} kami.",
+          "badEmail": "Periksa alamat email Anda: laporan dikirim ke alamat itu.",
+          "empty": "Masukkan kode akses.",
+          "done": "Kode diterima. Laporan akan dikirim ke {to} dalam beberapa menit. Jika email belum masuk, periksa folder spam.",
+          "bad": "Kode ini tidak ditemukan. Periksa apakah kode sudah diketik dengan benar.",
+          "used": "Kode ini sudah dipakai. Jika Anda sendiri yang memasukkannya dan laporan belum diterima, tulis kepada kami di {email}.",
+          "expired": "Masa berlaku kode sudah habis. Hubungi pihak yang memberikan kode tersebut.",
+          "error": "Kode belum bisa diperiksa. Coba lagi dalam satu menit atau tulis kepada kami di {email}."
+        },
         "how": [
           "Ikuti tes gratis: 24 soal, sekitar 10 menit. Jika sudah pernah mengikutinya, Anda tidak perlu mengulang: laporan disusun dari hasil yang sudah ada.",
           "Masukkan alamat email Anda dan tekan “Beli”. Pembayaran dengan kartu Visa atau Mastercard dilakukan di halaman pembayaran yang aman.",
@@ -1475,8 +1602,8 @@
         "Kesepakatan: cara kita mengadakan rapat, memberi tugas, dan memberi umpan balik."
       ],
       "reportTitle": "Laporan mendalam untuk setiap peserta",
-      "report": "Setelah sesi, setiap peserta dapat memesan {business} — sekitar 30 halaman tentang profilnya sendiri.",
-      "reportLink": "laporan DISC mendalam",
+      "report": "Setelah sesi, setiap peserta dapat memesan laporan DISC mendalam — sekitar 30 halaman tentang profilnya sendiri. Jika laporannya dibayar oleh organisasi, lebih hemat membeli {business} dengan diskon.",
+      "reportLink": "paket laporan untuk organisasi",
       "priceTitle": "Harga dan cara mendapatkannya",
       "price": [
         "Harga paket US${price}. Ajukan permintaan — kami akan membalas dalam satu hari kerja dengan tautan pembayaran.",
@@ -1578,8 +1705,8 @@
         "kitText": "Panduan sesi 60 atau 90 menit, slide, tabel Excel yang otomatis menghitung hasil seluruh kelompok, peta tim, dan kartu “Cara bekerja dengan saya”.",
         "kitButton": "Selengkapnya tentang paket",
         "bizTitle": "Laporan mendalam untuk peserta",
-        "bizText": "Setiap peserta dapat memesan laporan DISC mendalam tentang profilnya setelah mengerjakan tes online.",
-        "bizButton": "Laporan mendalam"
+        "bizText": "Jika organisasi ingin memberikan laporan mendalam tentang profil kepada setiap peserta, tersedia paket laporan dengan diskon.",
+        "bizButton": "Untuk organisasi"
       },
       "mail": {
         "toggle": "Kirim lembar tes ke email",
@@ -1739,7 +1866,7 @@
         "{kit}: skenario sesi 60 atau 90 menit, 16 slide, tabel kelompok, dan peta tim.",
         "{pdf}: lembar jawaban kertas, jika peserta tidak punya ponsel atau internet.",
         "{teams}: cara membaca peta tim dan membahas hasil tanpa memberi label.",
-        "{business}: laporan mendalam untuk peserta dalam paket, dibayar dengan faktur."
+        "{business}: laporan mendalam untuk peserta dalam paket, dengan diskon."
       ]
     },
     "teams": {
@@ -2409,6 +2536,7 @@
     "nav.pdf": "Tes DISC PDF",
     "nav.materials": "Materi tentang DISC",
     "nav.howMade": "Cara laporan dibuat",
+    "nav.business": "Untuk organisasi",
 
     "pages.styles.title": "Tipe Kepribadian DISC: 4 Gaya D, I, S, C — Ciri dan Kekuatan",
     "pages.styles.description": "Empat tipe kepribadian (gaya perilaku) DISC: Dominasi, Pengaruh, Kestabilan, Ketelitian. Ciri, kekuatan, area pengembangan, motivasi, dan perilaku saat stres.",

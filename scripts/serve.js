@@ -55,7 +55,9 @@ http.createServer((req, res) => {
       if (q.get('set')) { mockOffer = q.get('set') !== 'off'; console.log('mock-pay offer:', mockOffer ? 'on' : 'off'); }
       for (const k of ['rub', 'offerRub', 'usd', 'offerUsd', 'eur', 'offerEur', 'min']) if (q.get(k)) mockPrices[k] = +q.get(k);
       const mc = mockCfg();
-      return json({ ok: true, offer: mockOffer, minutes: mc.min, prices: { RUB: { regular: mc.Rub[0], offer: mc.Rub[1] }, USD: { regular: mc.Usd[0], offer: mc.Usd[1] }, EUR: { regular: mc.Eur[0], offer: mc.Eur[1] } } });
+      return json({ ok: true, offer: mockOffer, minutes: mc.min, prices: { RUB: { regular: mc.Rub[0], offer: mc.Rub[1] }, USD: { regular: mc.Usd[0], offer: mc.Usd[1] }, EUR: { regular: mc.Eur[0], offer: mc.Eur[1] } },
+        // цены языков (langPrices из site.config.json) — как у сервера: страница берёт их раньше общей цены валюты
+        langs: Object.fromEntries(Object.entries(JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'site.config.json'), 'utf8')).langPrices || {}).map(([l, v]) => [l, { regular: +v[0], offer: +v[1] }])) });
     }
     // код доступа (src/pay.js, payCodeInit): TEST-TEST-TEST — принят, USED-USED-USED — использован, OLDS-OLDS-OLDS — истёк, остальные — «нет такого кода»
     if (req.method === 'POST' && p === '/mock-pay/code') {
