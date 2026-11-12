@@ -517,7 +517,7 @@
         },
         {
           "q": "Test gerçekten ücretsiz mi?",
-          "a": "Evet: test ve sonuç ücretsizdir; kayıt ve gizli ödeme yoktur. Sonuç, son sorunun hemen ardından ekranda görünür; PDF olarak da kaydedebilirsiniz. Sitede tek bir ücretli hizmet vardır: genişletilmiş DISC profili. “Hizmetler” bölümünde anlatılır ve tamamen isteğe bağlıdır."
+          "a": "Evet: test ve sonuç ücretsizdir; kayıt ve gizli ödeme yoktur. Sonuç, son sorunun hemen ardından ekranda görünür. Sitede tek bir ücretli hizmet vardır: genişletilmiş DISC profili. “Hizmetler” bölümünde anlatılır ve tamamen isteğe bağlıdır."
         },
         {
           "q": "D, I, S, C harfleri ne anlama gelir?",
@@ -572,7 +572,7 @@
       "sections": [
         {
           "h": "Bu site neden var",
-          "p": ["Kayıt olmadan ve ödeme yapmadan on dakikada çözülebilen, kendi dilinizde anlaşılır bir rapor veren ve sonucu ekiple paylaşmaya imkân tanıyan bir DISC testi hazırlamak istedik. Site 13 dilde çalışır; sonuç hemen görünür ve PDF olarak kaydedilebilir; yöneticiler ve İK için de katılımcıların sonuçlarının tek bir tabloda toplandığı bir panel vardır."]
+          "p": ["Kayıt olmadan ve ödeme yapmadan on dakikada çözülebilen, kendi dilinizde anlaşılır bir rapor veren ve sonucu ekiple paylaşmaya imkân tanıyan bir DISC testi hazırlamak istedik. Site 13 dilde çalışır; sonuç hemen görünür; yöneticiler ve İK için de katılımcıların sonuçlarının tek bir tabloda toplandığı bir panel vardır."]
         },
         {
           "h": "Test neye dayanıyor",
@@ -1370,7 +1370,7 @@
         {
           "h": "Sonuç nelerden oluşur",
           "p": [
-            "Son sorudan sonra dört öğe görürsünüz: bir ya da iki harfli profil adı (örneğin “Öncü, DI”), üç çizgili bir grafik, yüzdeleri gösteren dört ölçek ve yazılı bir açıklama: özellikler, güçlü yönler, gelişim alanları, motivasyon, stres altındaki davranış ve sizinle nasıl iletişim kurulması gerektiğine dair öneriler. Aynı raporu PDF olarak kaydedebilir ve bağlantısı üzerinden yeniden açabilirsiniz.",
+            "Son sorudan sonra dört öğe görürsünüz: bir ya da iki harfli profil adı (örneğin “Öncü, DI”), üç çizgili bir grafik, yüzdeleri gösteren dört ölçek ve yazılı bir açıklama: özellikler, güçlü yönler, gelişim alanları, motivasyon, stres altındaki davranış ve sizinle nasıl iletişim kurulması gerektiğine dair öneriler. Aynı raporu bağlantısı üzerinden yeniden açabilirsiniz.",
             "Rapordaki bütün sayılar, 24 soruda yaptığınız işaretlemelerden türetilir. Her soruda “Beni en çok tanımlayan” bir ifade ve “Beni en az tanımlayan” bir ifade seçtiniz; her ifade de D, I, S ya da C stillerinden birine aittir. Bu yüzden her stilin iki sayısı vardır: onu kaç kez “en çok”, kaç kez “en az” olarak seçtiğiniz."
           ]
         },
@@ -2313,7 +2313,7 @@
         "Üç çizgili bir grafik ve her stilin yüzde olarak ne kadar belirgin olduğu",
         "Güçlü yönleriniz, gelişim alanlarınız, motivasyonunuz ve stres altındaki davranışınız",
         "Sizinle en iyi nasıl iletişim kurulacağına ve çalışılacağına dair öneriler",
-        "Rapor bağlantısı ve PDF olarak kaydetme; kayıt ve ücretli sürüm yok"
+        "Rapor bağlantısı; kayıt ve ücretli sürüm yok"
       ],
       "calcTitle": "Sonuç nasıl hesaplanır",
       "calc": "24 sorunun her birinde size en çok benzeyen bir ifadeyi ve en az benzeyen bir ifadeyi işaretlersiniz. Her ifade D, I, S veya C stillerinden birine aittir. Her stil için “en çok” işaretlerinin sayısından “en az” işaretlerinin sayısı çıkarılır; −24 ile +24 arasındaki bu değer yüzdeye dönüştürülür. Ana stil, değeri en yüksek olan stildir; ikincil stil ise o da belirgin biçimde öne çıkıyorsa sayılır.",

@@ -519,7 +519,7 @@
         },
         {
           "q": "Le test est-il vraiment gratuit ?",
-          "a": "Oui : le test et le résultat sont gratuits, sans inscription et sans frais cachés. Le résultat s'affiche à l'écran juste après le dernier bloc ; vous pouvez l'enregistrer en PDF. Le site propose un seul service payant, le profil DISC détaillé : il est décrit dans la rubrique « Services » et reste entièrement facultatif."
+          "a": "Oui : le test et le résultat sont gratuits, sans inscription et sans frais cachés. Le résultat s'affiche à l'écran juste après le dernier bloc. Le site propose un seul service payant, le profil DISC détaillé : il est décrit dans la rubrique « Services » et reste entièrement facultatif."
         },
         {
           "q": "Que signifient les lettres D, I, S, C ?",
@@ -574,7 +574,7 @@
       "sections": [
         {
           "h": "Pourquoi ce site existe",
-          "p": ["Nous voulions un test DISC que chacun puisse passer en dix minutes, sans inscription ni paiement, avec un rapport clair dans sa langue, à partager avec son équipe. Le site fonctionne en treize langues, le résultat apparaît immédiatement et peut être enregistré en PDF, et les managers et les RH disposent d'un espace où les résultats des participants sont réunis dans un tableau."]
+          "p": ["Nous voulions un test DISC que chacun puisse passer en dix minutes, sans inscription ni paiement, avec un rapport clair dans sa langue, à partager avec son équipe. Le site fonctionne en treize langues, le résultat apparaît immédiatement, et les managers et les RH disposent d'un espace où les résultats des participants sont réunis dans un tableau."]
         },
         {
           "h": "Sur quoi repose le test",
@@ -2348,7 +2348,7 @@
         {
           "h": "De quoi se compose le résultat",
           "p": [
-            "Après le dernier bloc, vous voyez quatre éléments : le nom du profil avec une ou deux lettres (par exemple « Pionnier, DI »), un graphique à trois courbes, quatre échelles en pourcentage et une description textuelle : traits clés, points forts, axes de progression, motivation, comportement sous stress et conseils sur la façon de communiquer avec vous. Vous pouvez aussi enregistrer ce rapport en PDF et l'ouvrir par un lien.",
+            "Après le dernier bloc, vous voyez quatre éléments : le nom du profil avec une ou deux lettres (par exemple « Pionnier, DI »), un graphique à trois courbes, quatre échelles en pourcentage et une description textuelle : traits clés, points forts, axes de progression, motivation, comportement sous stress et conseils sur la façon de communiquer avec vous. Vous pouvez aussi rouvrir ce rapport par un lien.",
             "Tous les chiffres du rapport découlent de vos réponses dans les 24 blocs. Dans chaque bloc, vous avez choisi une affirmation qui vous « ressemble le plus » et une qui vous « ressemble le moins », et chaque affirmation correspond à l'un des styles D, I, S ou C. Chaque style a donc deux nombres : combien de fois vous l'avez choisi comme « le plus » et combien de fois comme « le moins »."
           ]
         },
@@ -3306,7 +3306,7 @@
         "Un graphique à trois courbes et l'intensité de chaque style en pourcentage",
         "Vos points forts, vos axes de progression, votre motivation et votre comportement sous stress",
         "Des conseils pour mieux communiquer et travailler avec vous",
-        "Un lien vers le rapport et l'enregistrement en PDF, sans inscription ni version payante"
+        "Un lien vers le rapport, sans inscription ni version payante"
       ],
       "calcTitle": "Comment le résultat est calculé",
       "calc": "Dans chacun des 24 blocs, vous cochez l'affirmation qui vous ressemble le plus et celle qui vous ressemble le moins. Chaque affirmation correspond à l'un des styles D, I, S ou C. Pour chaque style, on calcule la différence entre « le plus » et « le moins », de −24 à +24, puis on la convertit en pourcentage. Le style dominant est celui qui obtient la valeur la plus élevée ; le style secondaire est retenu s'il est lui aussi nettement marqué.",

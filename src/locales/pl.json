@@ -517,7 +517,7 @@
         },
         {
           "q": "Czy test jest naprawdę darmowy?",
-          "a": "Tak: test i wynik są bezpłatne, bez rejestracji i ukrytych opłat. Wynik pojawia się na ekranie od razu po ostatnim pytaniu; możesz go zapisać jako PDF. W serwisie jest jedna płatna usługa — rozszerzony profil DISC; opisujemy ją w dziale „Usługi” i jest w pełni dobrowolna."
+          "a": "Tak: test i wynik są bezpłatne, bez rejestracji i ukrytych opłat. Wynik pojawia się na ekranie od razu po ostatnim pytaniu. W serwisie jest jedna płatna usługa — rozszerzony profil DISC; opisujemy ją w dziale „Usługi” i jest w pełni dobrowolna."
         },
         {
           "q": "Co oznaczają litery D, I, S, C?",
@@ -572,7 +572,7 @@
       "sections": [
         {
           "h": "Po co powstał ten serwis",
-          "p": ["Chcieliśmy stworzyć test DISC, który da się zrobić w dziesięć minut, bez rejestracji i opłat, i który daje zrozumiały raport w twoim języku – taki, którym można podzielić się z zespołem. Serwis działa w trzynastu językach, wynik pojawia się od razu i można go zapisać jako PDF, a dla menedżerów i działów HR jest panel, w którym wyniki uczestników trafiają do jednej tabeli."]
+          "p": ["Chcieliśmy stworzyć test DISC, który da się zrobić w dziesięć minut, bez rejestracji i opłat, i który daje zrozumiały raport w twoim języku – taki, którym można podzielić się z zespołem. Serwis działa w trzynastu językach, wynik pojawia się od razu, a dla menedżerów i działów HR jest panel, w którym wyniki uczestników trafiają do jednej tabeli."]
         },
         {
           "h": "Na czym opiera się test",
@@ -1372,7 +1372,7 @@
         {
           "h": "Z czego składa się wynik",
           "p": [
-            "Po ostatnim pytaniu widzisz cztery elementy: nazwę profilu z jedną lub dwiema literami (na przykład „Pionier, DI”), wykres z trzema liniami, cztery skale z procentami i opis tekstowy: cechy, mocne strony, obszary rozwoju, motywacja, zachowanie w stresie i wskazówki, jak najlepiej się z tobą komunikować. Ten sam raport możesz zapisać jako PDF i otworzyć pod linkiem.",
+            "Po ostatnim pytaniu widzisz cztery elementy: nazwę profilu z jedną lub dwiema literami (na przykład „Pionier, DI”), wykres z trzema liniami, cztery skale z procentami i opis tekstowy: cechy, mocne strony, obszary rozwoju, motywacja, zachowanie w stresie i wskazówki, jak najlepiej się z tobą komunikować. Ten sam raport możesz też otworzyć pod linkiem.",
             "Wszystkie liczby w raporcie wynikają z twoich odpowiedzi w 24 pytaniach. W każdym pytaniu wybierasz jedno stwierdzenie „najbardziej do mnie pasuje” i jedno „najmniej do mnie pasuje”, a każde stwierdzenie odnosi się do jednego ze stylów: D, I, S lub C. Dlatego każdy styl ma dwie liczby: ile razy został wybrany jako „najbardziej” i ile razy jako „najmniej”."
           ]
         },
@@ -2310,7 +2310,7 @@
     },
     "home": {
       "getTitle": "Co otrzymasz",
-      "get": ["Styl wiodący i uzupełniający oraz nazwę profilu – jednego z 16", "Wykres z trzema liniami i nasilenie każdego stylu w procentach", "Mocne strony, obszary rozwoju, motywację i zachowanie pod presją", "Wskazówki, jak najlepiej się z tobą komunikować i współpracować", "Link do raportu i zapis jako PDF – bez rejestracji i płatnych wersji"],
+      "get": ["Styl wiodący i uzupełniający oraz nazwę profilu – jednego z 16", "Wykres z trzema liniami i nasilenie każdego stylu w procentach", "Mocne strony, obszary rozwoju, motywację i zachowanie pod presją", "Wskazówki, jak najlepiej się z tobą komunikować i współpracować", "Link do raportu – bez rejestracji i płatnych wersji"],
       "calcTitle": "Jak liczony jest wynik",
       "calc": "W każdym z 24 pytań zaznaczasz jedno stwierdzenie, które pasuje do ciebie najbardziej, i jedno, które pasuje najmniej. Każde stwierdzenie należy do jednego ze stylów: D, I, S lub C. Dla każdego stylu liczy się różnicę „najbardziej” minus „najmniej” – od −24 do +24 – i przelicza ją na procenty. Styl wiodący to ten o najwyższej wartości; styl uzupełniający jest uwzględniany, jeśli również jest wyraźnie zaznaczony.",
       "faqTitle": "Krótko o teście",
