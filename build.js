@@ -165,10 +165,12 @@ const payOffer = L => { if (!offerPrice(L)) return null; const P = L.content.pro
     regularText: withPrice(L, P.price), regularLabel: O.regular, cta: O.cta, note: O.note, left: O.left, expired: O.expired,
     button: P.promo ? withPrice(L, P.promo.button).replace(markR(L), markO(L)) : '' }; };
 // Распродажа для подписчиков (с 2026-11-08; private/server/src/sale.js): тексты плашки формы покупки, открытой по ссылке из письма распродажи (src/pay.js, T.sale).
-// Цены и день распродажи сайт берёт из ответа сервера; {salePrice} и {day} подставляет страница, {price} — обычная цена языка (метка сборки);
-// regularTpl — запись цены языка («{price} ₽», «US${price}») с U+0001 на месте числа.
-const paySale = L => { const P = L.content.product, S = P && P.pay && P.pay.sale; if (!S) return null; const W = withPrice(L, S);
-  return { cta: W.cta, note: W.note, expired: W.expired, regularLabel: P.pay.offer ? P.pay.offer.regular : '', regularTpl: P.price.replace('{price}', '\u0001') }; };
+// Цены, последний день и повод распродажи сайт берёт из ответа сервера; {salePrice}, {day} и {occasion} подставляет страница, {price} — обычная цена языка
+// (метка сборки); regularTpl — запись цены языка («{price} ₽», «US${price}») с U+0001 на месте числа; occasions — названия поводов (content.mailing.sale.occasions);
+// plain — без зачёркнутой обычной цены (языки ЕС, с 2026-11-12).
+const paySale = L => { const P = L.content.product, S = P && P.pay && P.pay.sale; if (!S) return null; const W = withPrice(L, S), MS = (L.content.mailing && L.content.mailing.sale) || {};
+  return { cta: W.cta, note: W.note, expired: W.expired, regularLabel: P.pay.offer ? P.pay.offer.regular : '', regularTpl: P.price.replace('{price}', '\u0001'),
+    occasions: MS.occasions || {}, plain: !!MS.plain }; };
 // Закреплённая кнопка расширенного отчёта (src/common.js, window.DISC_XBAR): надпись с обычной ценой, со специальной (пусто — её нет в языке), адрес, где спросить,
 // включена ли специальная цена в панели (GET <payEndpoint>/offer, с 2026-10-25), срок специальной цены, «Скрыть»
 const xbarCfg = L => { const PM = withPrice(L, L.content.product.promo), O = payOffer(L); return { button: PM.button, offer: O ? O.button : '', offerUrl: O && payEndpoint ? payEndpoint + '/offer' : '', ms: offerMinutes * 60000, close: PM.close }; };

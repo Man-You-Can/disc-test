@@ -1176,8 +1176,8 @@
           "expired": "El precio especial ya terminó: el informe cuesta ahora {price} USD. Pulse «Comprar» de nuevo."
         },
         "sale": {
-          "cta": "Oferta 11.11: el informe por {salePrice} USD",
-          "note": "Precio de oferta hasta el final del {day}; luego, {price} USD",
+          "cta": "{occasion}: el informe por {salePrice} USD",
+          "note": "Precio válido hasta el {day} inclusive",
           "expired": "La oferta ya terminó: el informe cuesta ahora {price} USD. Pulse «Comprar» de nuevo."
         },
         "emailLabel": "Correo para recibir el informe en PDF",
@@ -1375,16 +1375,22 @@
         "footer": "Ha recibido este mensaje porque el {date} aceptó recibir correos de {site} al enviarse el resultado del test."
       },
       "sale": {
-        "label": "Oferta 11.11",
-        "subject": "{name}, oferta 11.11: su informe ampliado {key} por {salePrice}",
-        "subjectNoName": "Oferta 11.11: informe DISC ampliado {key} por {salePrice}",
-        "preheader": "Solo el {day}: el análisis detallado de su perfil por {salePrice} en lugar de {price}",
-        "intro": "Solo el {day}, el informe ampliado sobre su resultado cuesta {salePrice} en lugar de {price}. Su perfil:",
-        "until": "El precio de oferta es válido hasta el final del {day}; luego, {price}.",
-        "remindSubject": "{name}, la oferta 11.11 termina hoy",
-        "remindSubjectNoName": "La oferta 11.11 termina hoy",
-        "remindPreheader": "Informe ampliado {key}: {salePrice} en lugar de {price} hasta el final del día",
-        "remindIntro": "Hoy es el último día de la oferta: el informe ampliado sobre su resultado cuesta {salePrice} en lugar de {price}."
+        "occasions": {
+          "bf": "Black Friday",
+          "sale": "Oferta"
+        },
+        "plain": true,
+        "subject": "{name}, {occasion}: lo que su perfil {key} aún puede decirle",
+        "subjectNoName": "{occasion}: lo que su perfil DISC {key} aún puede decirle",
+        "subjectB": "{name}, su escala más baja es {k}, con un {pct} %: qué significa",
+        "subjectBNoName": "Su escala DISC más baja es {k}, con un {pct} %: qué significa",
+        "preheader": "{occasion}: el análisis detallado de su perfil por {salePrice} hasta el {day} inclusive",
+        "intro": "Le recordamos lo que mostró su test DISC:",
+        "until": "Este precio es válido hasta el {day} inclusive.",
+        "remindSubject": "{name}, último día: {occasion}",
+        "remindSubjectNoName": "Último día: {occasion}",
+        "remindPreheader": "Informe ampliado {key} por {salePrice}, solo hasta el final del día",
+        "remindIntro": "Hoy es el último día: el informe ampliado sobre su resultado cuesta {salePrice}. Su perfil:"
       }
     },
     "results": {

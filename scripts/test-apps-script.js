@@ -349,38 +349,46 @@ check('pay: price from site settings, service name and reminder texts only where
     check('promo (' + lg + '): without a name — neutral subject and greeting', m0.subject === ctx.fmt(X.subjectNoName, { key: cL.key }) && m0.html.includes('>' + ctx.esc(X.greetingNoName) + '</p>'), m0.subject);
   }
 }
-// письмо распродажи для подписчиков и вечернее напоминание (content.mailing.sale, с 2026-11-08; отправляет свой сервер, src/sale.js)
+// письмо распродажи для подписчиков и письмо её последнего дня (content.mailing.sale, с 2026-11-08; отправляет свой сервер, src/sale.js)
 {
   const saleOfL = lg => { const C = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'src', 'locales', lg + '.json'), 'utf8')).content; return !!(C.mailing && C.mailing.sale && C.mailing.promo && C.product && C.product.pay); };
   check('sale mail: texts in every language where the subscriber mail is written', typeof ctx.composeSaleMail === 'function' &&
     Object.keys(ctx.DATA).filter(lg => ctx.DATA[lg].sale).join() === Object.keys(ctx.DATA).filter(saleOfL).join() && !!ctx.DATA.ru.sale, Object.keys(ctx.DATA).filter(lg => ctx.DATA[lg].sale).join());
   const rS = ctx.decodeResult(cX), cS = ctx.classify(ctx.score(rS)), at = new Date('2026-10-01T10:05:00Z');
   const hrefS = 'https://api.disc-test.org/pay/m?t=AbCdEfGhIjKlMnOpQrStUv&l=ru&k=sale', unsubS = 'https://disc-test.org/ru/unsubscribe/#u=AbCdEfGhIjKlMnOpQrStUv';
-  const sale = { price: 390, regular: 790, end: new Date('2026-11-11T21:00:00Z'), day: '2026-11-11' };
-  const mS = ctx.composeSaleMail(rS, 'ru', { code: cX, consentAt: at, unsubUrl: unsubS, href: hrefS, sale });
-  check('sale (ru): subject with the name, profile and sale price; preheader with the day', mS.subject === 'Пётр Буянов, распродажа 11.11: расширенный отчёт ' + cS.key + ' за 390\u00a0₽' &&
-    mS.preheader === 'Только 11 ноября: 390\u00a0₽ вместо 790\u00a0₽ за подробный разбор вашего профиля' && mS.html.includes(ctx.esc(mS.preheader)), mS.subject + ' | ' + mS.preheader);
-  check('sale (ru): struck regular price and sale price in the card, deadline in Moscow time, tracked link with the result code', mS.html.includes('<s style="color:#5B6470">790\u00a0₽</s>') &&
-    mS.html.includes('<b style="font-size:24px;color:#C0392B">390\u00a0₽</b>') && mS.html.includes('до конца дня 11 ноября по московскому времени, потом — 790\u00a0₽.') &&
-    mS.html.includes('href="' + ctx.esc(hrefS + '#r=' + cX) + '"') && mS.text.includes(hrefS + '#r=' + cX) && mS.html.includes('>Распродажа 11.11</p>') &&
-    ctx.DATA.ru.promo.list.every(t => mS.html.includes(ctx.esc(t))), mS.text.slice(0, 600));
+  // с 2026-11-12: повод из настроек ({occasion}), последний день распродажи — {day}, две темы (A — о профиле и поводе, B — о самой низкой шкале)
+  const sale = { price: 490, regular: 790, end: new Date('2026-11-30T21:00:00Z'), day: '2026-11-30', occasion: 'bf' };
+  const mS = ctx.composeSaleMail(rS, 'ru', { code: cX, consentAt: at, unsubUrl: unsubS, href: hrefS, sale, variant: 'A' });
+  check('sale (ru): subject A with the name, occasion and profile, no price; preheader with the last day and prices', mS.subject === 'Пётр Буянов, Чёрная пятница: что ещё говорит ваш профиль ' + cS.key &&
+    /^Чёрная пятница: до конца 30.ноября подробный разбор вашего профиля — 490 ₽ вместо 790 ₽$/.test(mS.preheader) && mS.html.includes(ctx.esc(mS.preheader)), mS.subject + ' | ' + mS.preheader);
+  const mB = ctx.composeSaleMail(rS, 'ru', { code: cX, consentAt: at, unsubUrl: unsubS, href: hrefS, sale, variant: 'B' });
+  check('sale (ru): subject B about the lowest scale, same body', /^Пётр Буянов, ваша самая низкая шкала — [DISC], \d+ %: что это значит$/.test(mB.subject) && mB.html === mS.html, mB.subject);
+  check('sale (ru): struck regular price and sale price in the card, occasion label, deadline in Moscow time, tracked link with the result code', mS.html.includes('<s style="color:#5B6470">790 ₽</s>') &&
+    mS.html.includes('<b style="font-size:24px;color:#C0392B">490 ₽</b>') && /до конца 30.ноября по московскому времени, потом — 790 ₽\./.test(mS.html) &&
+    mS.html.includes('href="' + ctx.esc(hrefS + '#r=' + cX) + '"') && mS.text.includes(hrefS + '#r=' + cX) && mS.html.includes('>Чёрная пятница</p>') && mS.html.includes('Напомним, что показал ваш тест DISC:') &&
+    ctx.DATA.ru.promo.list.every(t => mS.html.includes(ctx.esc(t))) && !/11\.11/.test(mS.html + mS.text), mS.text.slice(0, 600));
   check('sale (ru): unsubscribe link and consent footer, nothing unfilled', mS.html.includes('<a href="' + unsubS + '" style="color:#5B6470">Отписаться от рассылки</a>') &&
-    mS.html.includes('согласились получать рассылку') && ![mS.subject, mS.preheader, mS.html, mS.text].some(s => /\{\w+\}|undefined|null|NaN/.test(s)));
+    mS.html.includes('согласились получать рассылку') && ![mS.subject, mS.preheader, mS.html, mS.text, mB.subject].some(s => /\{\w+\}|undefined|null|NaN/.test(s)));
   const mR = ctx.composeSaleMail(rS, 'ru', { code: cX, consentAt: at, unsubUrl: unsubS, href: hrefS.replace('k=sale', 'k=sale2'), sale, remind: true });
-  check('sale reminder (ru): own subject, short body without the list, same card, no hint that we saw a click', mR.subject === 'Пётр Буянов, распродажа 11.11 заканчивается сегодня' &&
-    mR.html.includes('Сегодня последний день распродажи') && !mR.html.includes(ctx.esc(ctx.DATA.ru.promo.list[0])) && mR.html.includes('<b style="font-size:24px;color:#C0392B">390\u00a0₽</b>') &&
+  check('sale last day (ru): own subject, short body without the list, same card, no hint that we saw a click', mR.subject === 'Пётр Буянов, Чёрная пятница заканчивается сегодня' &&
+    mR.html.includes('Сегодня последний день') && !mR.html.includes(ctx.esc(ctx.DATA.ru.promo.list[0])) && mR.html.includes('<b style="font-size:24px;color:#C0392B">490 ₽</b>') &&
     !/открывали|смотрели/.test(mR.html) && ![mR.subject, mR.html, mR.text].some(s => /\{\w+\}|undefined|null|NaN/.test(s)), mR.subject);
-  const mS0 = ctx.composeSaleMail(Object.assign({}, rS, { name: '' }), 'ru', { code: cX, consentAt: at, unsubUrl: unsubS, href: hrefS, sale });
-  check('sale (ru): without a name — neutral subject and greeting', mS0.subject === 'Распродажа 11.11: расширенный отчёт DISC ' + cS.key + ' за 390\u00a0₽' && mS0.html.includes('>Здравствуйте!</p>'), mS0.subject);
+  const mS0 = ctx.composeSaleMail(Object.assign({}, rS, { name: '' }), 'ru', { code: cX, consentAt: at, unsubUrl: unsubS, href: hrefS, sale, variant: 'A' });
+  const mB0 = ctx.composeSaleMail(Object.assign({}, rS, { name: '' }), 'ru', { code: cX, consentAt: at, unsubUrl: unsubS, href: hrefS, sale, variant: 'B' });
+  check('sale (ru): without a name — neutral subjects and greeting', mS0.subject === 'Чёрная пятница: что ещё говорит ваш профиль DISC ' + cS.key && /^Ваша самая низкая шкала DISC — [DISC], \d+ %/.test(mB0.subject) &&
+    mS0.html.includes('>Здравствуйте!</p>'), mS0.subject + ' | ' + mB0.subject);
+  const mG = ctx.composeSaleMail(rS, 'ru', { code: cX, consentAt: at, unsubUrl: unsubS, href: hrefS, sale: Object.assign({}, sale, { occasion: 'nosuch' }) });
+  check('sale (ru): unknown occasion — the general name «Распродажа», subject A without a variant', mG.subject === 'Пётр Буянов, Распродажа: что ещё говорит ваш профиль ' + cS.key && mG.html.includes('>Распродажа</p>'), mG.subject);
   for (const lg of Object.keys(ctx.DATA).filter(l => l !== 'ru' && ctx.DATA[l].sale)) {
     const home = 'https://disc-test.org/' + (lg === 'en' ? '' : lg + '/'), un = home + 'unsubscribe/#u=AbCdEfGhIjKlMnOpQrStUv', hr = 'https://api.disc-test.org/pay/m?t=AbCdEfGhIjKlMnOpQrStUv&l=' + lg + '&k=sale';
-    const sl = { price: 4.99, regular: 9.99, end: new Date('2026-11-12T08:00:00Z'), day: '2026-11-11' };
-    for (const remind of [false, true]) {
-      const m = ctx.composeSaleMail(Object.assign({}, rS, { name: 'Alex' }), lg, { code: cX, consentAt: at, unsubUrl: un, href: hr, sale: sl, remind }), all = [m.subject, m.preheader, m.html, m.text];
-      check('sale' + (remind ? ' reminder' : '') + ' (' + lg + '): prices 4.99 and 9.99 in the language, tracked link, nothing Russian, nothing unfilled',
-        /4[.,]99/.test(m.html) && /9[.,]99/.test(m.html) && m.html.includes('href="' + ctx.esc(hr + '#r=' + cX) + '"') && m.html.includes('<a href="' + un + '"') &&
+    const sl = { price: 6.99, regular: 9.99, end: new Date('2026-12-01T08:00:00Z'), day: '2026-11-30', occasion: 'bf' }, plain = !!ctx.DATA[lg].sale.plain;
+    for (const [remind, variant] of [[false, 'A'], [false, 'B'], [true, 'A']]) {
+      const m = ctx.composeSaleMail(Object.assign({}, rS, { name: 'Alex' }), lg, { code: cX, consentAt: at, unsubUrl: un, href: hr, sale: sl, remind, variant }), all = [m.subject, m.preheader, m.html, m.text];
+      check('sale' + (remind ? ' last day' : ' ' + variant) + ' (' + lg + '): ' + (plain ? 'only the sale price 6.99, nothing struck' : 'prices 6.99 and 9.99') + ' in the language, occasion, tracked link, nothing Russian, nothing unfilled',
+        /6[.,]99/.test(m.html) && (plain ? !/9[.,]99/.test(m.html + m.text + m.preheader) && !m.html.includes('<s ') : /9[.,]99/.test(m.html)) && m.html.includes(ctx.esc(ctx.DATA[lg].sale.occasions.bf)) &&
+        m.html.includes('href="' + ctx.esc(hr + '#r=' + cX) + '"') && m.html.includes('<a href="' + un + '"') && !/11\.11|双11|雙11/.test(all.join(' ')) &&
         !all.some(s => /[А-Яа-яЁё]/.test(s.replace(/Пётр Буянов/g, '')) || /\{\w+\}|undefined|null|NaN|₽|Moscow/.test(s)),
-        (all.join(' ').match(/.{0,30}([А-Яа-яЁё]|\{\w+\}|undefined|null|NaN|₽|Moscow).{0,30}/) || [m.subject])[0]);
+        (all.join(' ').match(/.{0,30}([А-Яа-яЁё]|\{\w+\}|undefined|null|NaN|₽|Moscow|9[.,]99).{0,30}/) || [m.subject])[0]);
     }
   }
 }

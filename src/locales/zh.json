@@ -1923,9 +1923,9 @@
           "expired": "特价时间已过，报告现价 {price} 美元。请再点一次“购买”。"
         },
         "sale": {
-          "cta": "双11特惠：报告只需 {salePrice} 美元",
+          "cta": "{occasion}：报告只需 {salePrice} 美元",
           "note": "特惠价有效至{day}当天结束，之后恢复为 {price} 美元",
-          "expired": "双11特惠已结束，报告现价 {price} 美元。请再点一次“购买”。"
+          "expired": "特惠已结束，报告现价 {price} 美元。请再点一次“购买”。"
         },
         "note": "点击“购买”，即表示你接受《{offer}》。银行卡信息在安全的支付页面上填写。",
         "badEmail": "请检查邮箱地址：报告和收据都会发到这个地址。",
@@ -2101,16 +2101,21 @@
         "footer": "你收到这封邮件，是因为你在{date}把测试结果发送到自己的邮箱时，同意接收 {site} 的邮件。"
       },
       "sale": {
-        "label": "双11特惠",
-        "subject": "{name}，双11特惠：{key} 详细版报告只需 {salePrice}",
-        "subjectNoName": "双11特惠：DISC {key} 详细版报告只需 {salePrice}",
-        "preheader": "仅限{day}：{salePrice}（原价 {price}），全面解读你的类型",
-        "intro": "仅限{day}，根据你的结果生成的详细版报告只需 {salePrice}（原价 {price}）。你的类型：",
+        "occasions": {
+          "bf": "黑色星期五",
+          "sale": "特惠"
+        },
+        "subject": "{name}，{occasion}：你的 {key} 类型还能告诉你什么",
+        "subjectNoName": "{occasion}：DISC {key} 类型还能告诉你什么",
+        "subjectB": "{name}，你得分最低的风格是 {k}（{pct}%）：这意味着什么",
+        "subjectBNoName": "你在 DISC 中得分最低的风格是 {k}（{pct}%）：这意味着什么",
+        "preheader": "{occasion}：截至{day}，全面解读你类型的详细版报告只需 {salePrice}（原价 {price}）",
+        "intro": "回顾一下你的 DISC 测试结果：",
         "until": "特惠价有效至{day}当天结束，之后恢复为 {price}。",
-        "remindSubject": "{name}，双11特惠今天结束",
-        "remindSubjectNoName": "双11特惠今天结束",
+        "remindSubject": "{name}，{occasion}今天结束",
+        "remindSubjectNoName": "{occasion}今天结束",
         "remindPreheader": "{key} 详细版报告 {salePrice}（原价 {price}），今天结束前有效",
-        "remindIntro": "今天是双11特惠的最后一天：根据你的结果生成的详细版报告只需 {salePrice}（原价 {price}）。"
+        "remindIntro": "今天是最后一天：根据你的结果生成的详细版报告只需 {salePrice}（原价 {price}）。你的类型："
       }
     },
     "results": {

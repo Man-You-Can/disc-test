@@ -2120,9 +2120,9 @@
           "expired": "Der Sonderpreis ist abgelaufen: Der Bericht kostet jetzt {price} €. Klicken Sie erneut auf „Kaufen“."
         },
         "sale": {
-          "cta": "Aktion 11.11: Bericht für {salePrice} €",
-          "note": "Aktionspreis bis einschließlich {day}, danach {price} €",
-          "expired": "Die Aktion ist vorbei: Der Bericht kostet jetzt {price} €. Klicken Sie erneut auf „Kaufen“."
+          "cta": "{occasion}: Bericht für {salePrice} €",
+          "note": "Preis gilt bis einschließlich {day}",
+          "expired": "Die Aktion ist vorbei: Der Bericht kostet jetzt {price} €. Klicken Sie erneut auf „Kaufen“."
         },
         "emailLabel": "E-Mail-Adresse für den Bericht als PDF",
         "nameLabel": "Name für den Bericht",
@@ -2319,16 +2319,22 @@
         "footer": "Sie erhalten diese E-Mail, weil Sie am {date} beim Versand Ihres Testergebnisses zugestimmt haben, E-Mails von {site} zu erhalten."
       },
       "sale": {
-        "label": "Aktion 11.11",
-        "subject": "{name}, Aktion 11.11: Ihr ausführlicher DISG-Bericht {key} für {salePrice}",
-        "subjectNoName": "Aktion 11.11: ausführlicher DISG-Bericht {key} für {salePrice}",
-        "preheader": "Nur am {day}: {salePrice} statt {price} für die ausführliche Analyse Ihres Profils",
-        "intro": "Nur am {day} kostet der ausführliche Bericht zu Ihrem Ergebnis {salePrice} statt {price}. Ihr Profil:",
-        "until": "Der Aktionspreis gilt bis einschließlich {day}, danach {price}.",
-        "remindSubject": "{name}, die Aktion 11.11 endet heute",
-        "remindSubjectNoName": "Die Aktion 11.11 endet heute",
-        "remindPreheader": "Ausführlicher DISG-Bericht {key}: {salePrice} statt {price} – nur noch heute",
-        "remindIntro": "Heute ist der letzte Tag der Aktion: Der ausführliche Bericht zu Ihrem Ergebnis kostet {salePrice} statt {price}."
+        "occasions": {
+          "bf": "Black Friday",
+          "sale": "Aktion"
+        },
+        "plain": true,
+        "subject": "{name}, {occasion}: Was Ihr DISG-Profil {key} noch über Sie verrät",
+        "subjectNoName": "{occasion}: Was Ihr DISG-Profil {key} noch über Sie verrät",
+        "subjectB": "{name}, Ihr niedrigster Wert ist {k} mit {pct} %: Was das bedeutet",
+        "subjectBNoName": "Ihr niedrigster DISG-Wert ist {k} mit {pct} %: Was das bedeutet",
+        "preheader": "{occasion}: die ausführliche Analyse Ihres Profils für {salePrice} – bis einschließlich {day}",
+        "intro": "Zur Erinnerung – das hat Ihr DISG-Test ergeben:",
+        "until": "Dieser Preis gilt bis einschließlich {day}.",
+        "remindSubject": "{name}, letzter Tag: {occasion}",
+        "remindSubjectNoName": "Letzter Tag: {occasion}",
+        "remindPreheader": "Ausführlicher DISG-Bericht {key} für {salePrice} – nur noch heute",
+        "remindIntro": "Heute ist der letzte Tag: Der ausführliche Bericht zu Ihrem Ergebnis kostet {salePrice}. Ihr Profil:"
       }
     },
     "results": {

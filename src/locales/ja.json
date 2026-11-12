@@ -1025,9 +1025,9 @@
           "expired": "特別価格の期間は終了しました。現在の価格は{price}米ドルです。もう一度「購入する」を押してください。"
         },
         "sale": {
-          "cta": "11.11セール：レポートが{salePrice}米ドル",
+          "cta": "{occasion}：レポートが{salePrice}米ドル",
           "note": "セール価格は{day}いっぱい、その後は{price}米ドルになります",
-          "expired": "11.11セールは終了しました。現在の価格は{price}米ドルです。もう一度「購入する」を押してください。"
+          "expired": "セールは終了しました。現在の価格は{price}米ドルです。もう一度「購入する」を押してください。"
         },
         "note": "「購入する」を押すと、{offer}に同意したことになります。カード情報は、セキュリティで保護された決済ページで入力します。",
         "badEmail": "メールアドレスをご確認ください。レポートと領収書はこのアドレスに届きます。",
@@ -1202,16 +1202,21 @@
         "footer": "このメールは、{date}に診断結果をご自身のメールアドレスに送信された際、{site}からのメールの受信に同意されたためにお送りしています。"
       },
       "sale": {
-        "label": "11.11セール",
-        "subject": "{name}さん、11.11セール：詳細レポート「{key}」が{salePrice}",
-        "subjectNoName": "11.11セール：DISC詳細レポート「{key}」が{salePrice}",
-        "preheader": "{day}限定：あなたのタイプを詳しく解説するレポートが、通常価格{price}のところ{salePrice}",
-        "intro": "{day}限定で、あなたの結果をもとにした詳細レポートを、通常価格{price}のところ{salePrice}でお求めいただけます。あなたのタイプ：",
+        "occasions": {
+          "bf": "ブラックフライデー",
+          "sale": "セール"
+        },
+        "subject": "{name}さん、{occasion}：あなたのタイプ「{key}」がさらに教えてくれること",
+        "subjectNoName": "{occasion}：DISCタイプ「{key}」がさらに教えてくれること",
+        "subjectB": "{name}さん、最も低い尺度は{k}で{pct}%：それが意味すること",
+        "subjectBNoName": "DISCで最も低い尺度は{k}で{pct}%：それが意味すること",
+        "preheader": "{occasion}：あなたのタイプを詳しく解説するレポートが、{day}まで通常価格{price}のところ{salePrice}",
+        "intro": "DISCテストでわかったあなたのタイプをおさらいしましょう：",
         "until": "セール価格は{day}いっぱい有効です。その後は{price}になります。",
-        "remindSubject": "{name}さん、11.11セールは本日まで",
-        "remindSubjectNoName": "11.11セールは本日まで",
+        "remindSubject": "{name}さん、{occasion}は本日まで",
+        "remindSubjectNoName": "{occasion}は本日まで",
         "remindPreheader": "詳細レポート「{key}」が{salePrice}（通常価格 {price}）、本日いっぱい",
-        "remindIntro": "本日は11.11セールの最終日です。あなたの結果をもとにした詳細レポートを、通常価格{price}のところ{salePrice}でお求めいただけます。"
+        "remindIntro": "本日が最終日です。あなたの結果をもとにした詳細レポートを、通常価格{price}のところ{salePrice}でお求めいただけます。あなたのタイプ："
       }
     },
     "results": {

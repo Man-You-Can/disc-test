@@ -1169,7 +1169,7 @@
           "expired": "O preço especial já terminou: agora o relatório custa US$ {price}. Clique em “Comprar” de novo."
         },
         "sale": {
-          "cta": "Promoção 11.11: relatório por US$ {salePrice}",
+          "cta": "{occasion}: relatório por US$ {salePrice}",
           "note": "Preço promocional até o fim do dia {day}; depois, US$ {price}",
           "expired": "A promoção já terminou: agora o relatório custa US$ {price}. Clique em “Comprar” de novo."
         },
@@ -1368,16 +1368,21 @@
         "footer": "Você recebeu este e-mail porque, em {date}, aceitou receber mensagens do {site} quando enviou o resultado do teste para o seu e-mail."
       },
       "sale": {
-        "label": "Promoção 11.11",
-        "subject": "{name}, Promoção 11.11: relatório ampliado {key} por {salePrice}",
-        "subjectNoName": "Promoção 11.11: relatório DISC ampliado {key} por {salePrice}",
-        "preheader": "Só no dia {day}: a análise detalhada do seu perfil por {salePrice} em vez de {price}",
-        "intro": "Só no dia {day}, o relatório ampliado do seu resultado custa {salePrice} em vez de {price}. Seu perfil:",
+        "occasions": {
+          "bf": "Black Friday",
+          "sale": "Promoção"
+        },
+        "subject": "{name}, {occasion}: o que mais o seu perfil {key} revela",
+        "subjectNoName": "{occasion}: o que mais o seu perfil DISC {key} revela",
+        "subjectB": "{name}, sua escala mais baixa é {k}, com {pct}%: o que isso significa",
+        "subjectBNoName": "Sua escala DISC mais baixa é {k}, com {pct}%: o que isso significa",
+        "preheader": "{occasion}: a análise detalhada do seu perfil por {salePrice} em vez de {price}, até o fim do dia {day}",
+        "intro": "Relembre o que o seu teste DISC mostrou:",
         "until": "O preço promocional vale até o fim do dia {day}; depois, {price}.",
-        "remindSubject": "{name}, a Promoção 11.11 termina hoje",
-        "remindSubjectNoName": "A Promoção 11.11 termina hoje",
-        "remindPreheader": "Relatório ampliado {key}: {salePrice} em vez de {price} até o fim do dia",
-        "remindIntro": "Hoje é o último dia da promoção: o relatório ampliado do seu resultado custa {salePrice} em vez de {price}."
+        "remindSubject": "{name}, último dia: {occasion}",
+        "remindSubjectNoName": "Último dia: {occasion}",
+        "remindPreheader": "Relatório ampliado {key}: {salePrice} em vez de {price} só até o fim do dia",
+        "remindIntro": "Hoje é o último dia: o relatório ampliado do seu resultado custa {salePrice} em vez de {price}. Seu perfil:"
       }
     },
     "results": {

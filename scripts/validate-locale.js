@@ -51,6 +51,9 @@ let failed = 0;
 // лендинг /cv/ и анонсы сервиса: знак % — часть текста о скидке (в языках скидки разные, с 2026-10-24), а не подстановка — в content.cv и content.cvPromo не сравнивается
 function phOf(s, p){ const x = ph(s); return p.startsWith('.content.cv.') || p.startsWith('.content.cvPromo.') ? x.split(' ').filter(t => t !== '%').join(' ') : x; }
 function ph(s){ return (String(s).match(/\{[a-z]+\}|<\/?b>|<br>|%/g) || []).sort().join(' '); }
+// языки ЕС без зачёркнутой цены распродажи (content.mailing.sale.plain, с 2026-11-12): в этих строках нет {price} — сравнения с обычной ценой
+const PLAIN_KEYS = ['.content.mailing.sale.preheader', '.content.mailing.sale.until', '.content.mailing.sale.remindPreheader', '.content.mailing.sale.remindIntro', '.content.product.pay.sale.note'];
+let PLAIN = false;
 function walk(a, b, p, errs){
   if (Array.isArray(a)) {
     if (!Array.isArray(b)) return errs.push(p + ': expected array');
@@ -59,17 +62,19 @@ function walk(a, b, p, errs){
   } else if (a && typeof a === 'object') {
     if (!b || typeof b !== 'object' || Array.isArray(b)) return errs.push(p + ': expected object');
     for (const k of Object.keys(a)) { if (!(k in b)) { if (!OPTIONAL.includes(p + '.' + k)) errs.push(p + '.' + k + ': missing'); } else walk(a[k], b[k], p + '.' + k, errs); }
-    for (const k of Object.keys(b)) if (!(k in a)) { if (!EXTRA.includes(p + '.' + k) && !EXTRA_RE.some(r => r.test(p + '.' + k))) errs.push(p + '.' + k + ': unexpected key'); else if (typeof b[k] !== 'string' || (!b[k].trim() && !EMPTY_OK.some(r => r.test(p + '.' + k)))) errs.push(p + '.' + k + ': empty'); }
+    for (const k of Object.keys(b)) if (!(k in a)) { if (p + '.' + k === '.content.mailing.sale.plain') { if (b[k] !== true) errs.push(p + '.' + k + ': only true'); continue; }
+      if (!EXTRA.includes(p + '.' + k) && !EXTRA_RE.some(r => r.test(p + '.' + k))) errs.push(p + '.' + k + ': unexpected key'); else if (typeof b[k] !== 'string' || (!b[k].trim() && !EMPTY_OK.some(r => r.test(p + '.' + k)))) errs.push(p + '.' + k + ': empty'); }
   } else if (typeof a === 'string') {
     if (typeof b !== 'string') return errs.push(p + ': expected string');
     if (!b.trim() && a.trim() && !EMPTY_OK.some(r => r.test(p))) errs.push(p + ': empty');   // пустая строка допустима там, где она пустая и в эталоне (угол таблицы сравнения)
-    if (p !== '.lang' && p !== '.dir' && p !== '.name' && p !== '.dateLocale' && phOf(a, p) !== phOf(b, p)) errs.push(p + ': placeholders/tags differ (expected "' + ph(a) + '", got "' + ph(b) + '")');
+    if (p !== '.lang' && p !== '.dir' && p !== '.name' && p !== '.dateLocale' && phOf(a, p) !== phOf(b, p) && !(PLAIN && PLAIN_KEYS.includes(p) && phOf(a, p).replace(/\{price\} ?/, '').trim() === phOf(b, p))) errs.push(p + ': placeholders/tags differ (expected "' + ph(a) + '", got "' + ph(b) + '")');
   }
 }
 for (const f of files) {
   const file = path.isAbsolute(f) ? f : path.join(dir, path.basename(f));
   let j; const errs = [];
   try { j = JSON.parse(fs.readFileSync(file, 'utf8')); } catch (e) { console.log('✗ ' + path.basename(file) + ': invalid JSON — ' + e.message); failed++; continue; }
+  PLAIN = !!(j.content && j.content.mailing && j.content.mailing.sale && j.content.mailing.sale.plain);
   walk(ref, j, '', errs);
   const code = path.basename(file, '.json');
   if (j.lang !== code) errs.push('.lang must be "' + code + '"');
@@ -103,7 +108,17 @@ for (const f of files) {
   if (P.pay && P.pay.sale && !/\{salePrice\}/.test(P.pay.sale.cta)) errs.push('.content.product.pay.sale.cta: needs {salePrice}');
   if (P.pay && P.pay.sale && !/\{day\}/.test(P.pay.sale.note)) errs.push('.content.product.pay.sale.note: needs {day}');
   const MS = C.mailing && C.mailing.sale;
-  if (MS) for (const k of ['subject', 'subjectNoName', 'preheader', 'intro', 'until', 'remindSubject', 'remindPreheader', 'remindIntro']) if (!/\{salePrice\}|\{day\}|\{name\}/.test(String(MS[k] || '')) && k !== 'remindSubject' && k !== 'subjectNoName') errs.push('.content.mailing.sale.' + k + ': expected {salePrice}, {day} or {name}');
+  // с 2026-11-12: повод не вписан в тексты — {occasion} из настроек распродажи (названия — occasions, ключи bf и sale обязательны), две темы письма (subject, subjectB)
+  if (P.pay && P.pay.sale && !/\{occasion\}/.test(P.pay.sale.cta)) errs.push('.content.product.pay.sale.cta: needs {occasion} (the sale name comes from the panel)');
+  if (MS && !(MS.occasions && ['bf', 'sale'].every(k => typeof MS.occasions[k] === 'string' && MS.occasions[k]))) errs.push('.content.mailing.sale.occasions: needs names for bf and sale');
+  if (MS) for (const k of ['subject', 'subjectNoName', 'subjectB', 'subjectBNoName', 'preheader', 'intro', 'until', 'remindSubject', 'remindSubjectNoName', 'remindPreheader', 'remindIntro'])
+    if (typeof MS[k] !== 'string' || !MS[k]) errs.push('.content.mailing.sale.' + k + ': missing');
+  if (MS) for (const k of ['subject', 'subjectNoName', 'preheader', 'remindSubject', 'remindSubjectNoName']) if (!/\{occasion\}/.test(String(MS[k] || ''))) errs.push('.content.mailing.sale.' + k + ': needs {occasion}');
+  if (MS) for (const k of ['subjectB', 'subjectBNoName']) if (!/\{k\}/.test(String(MS[k] || '')) || !/\{pct\}/.test(String(MS[k] || ''))) errs.push('.content.mailing.sale.' + k + ': needs {k} and {pct} (the lowest scale)');
+  if (MS) for (const k of ['preheader', 'until', 'remindPreheader', 'remindIntro']) if (!/\{salePrice\}|\{day\}/.test(String(MS[k] || ''))) errs.push('.content.mailing.sale.' + k + ': expected {salePrice} or {day}');
+  if (MS && /11\.11|11\/11|双11|雙11/.test(JSON.stringify(MS) + JSON.stringify(P.pay && P.pay.sale || ''))) errs.push('.content.mailing.sale / product.pay.sale: no sale date in the texts — it comes from the panel ({occasion}, {day})');
+  // языки ЕС без зачёркнутой цены (plain): тексты не сравнивают с обычной ценой
+  if (MS && MS.plain) for (const k of ['preheader', 'until', 'remindPreheader', 'remindIntro']) if (/\{price\}/.test(String(MS[k] || ''))) errs.push('.content.mailing.sale.' + k + ': plain price — no {price} to compare with');
   if (MS && code !== 'ru' && /Моск|Moscow|Russia|Росси/i.test(JSON.stringify(MS))) errs.push('.content.mailing.sale: non-Russian versions do not name Russia or Moscow time (CLAUDE.md)');
   // «Для организаций»: страница и пункт в подвале — вместе; продаются коды доступа, поэтому нужны поле кода в покупке и письмо по коду
   // бумажный бланк и набор ведущего (с 2026-10-25): появляются в языке только вместе — QR-коды бланка ведут на набор, письмо с бланком — тоже

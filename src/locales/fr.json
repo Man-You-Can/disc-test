@@ -2122,9 +2122,9 @@
           "expired": "Le prix spécial a pris fin : le rapport coûte désormais {price} €. Cliquez de nouveau sur « Acheter »."
         },
         "sale": {
-          "cta": "Offre 11.11 : le rapport à {salePrice} €",
-          "note": "Prix de l'offre valable jusqu'au {day} inclus, puis {price} €",
-          "expired": "L'offre a pris fin : le rapport coûte désormais {price} €. Cliquez de nouveau sur « Acheter »."
+          "cta": "{occasion} : le rapport à {salePrice} €",
+          "note": "Prix valable jusqu’au {day} inclus",
+          "expired": "L’offre a pris fin : le rapport coûte désormais {price} €. Cliquez de nouveau sur « Acheter »."
         },
         "emailLabel": "E-mail pour recevoir le rapport en PDF",
         "nameLabel": "Nom pour le rapport",
@@ -2321,16 +2321,22 @@
         "footer": "Vous recevez cet e-mail parce que, le {date}, vous avez accepté de recevoir les e-mails de {site} en vous envoyant le résultat du test."
       },
       "sale": {
-        "label": "Offre 11.11",
-        "subject": "{name}, offre 11.11 : votre rapport détaillé {key} à {salePrice}",
-        "subjectNoName": "Offre 11.11 : rapport DISC détaillé {key} à {salePrice}",
-        "preheader": "Le {day} uniquement : l'analyse détaillée de votre profil à {salePrice} au lieu de {price}",
-        "intro": "Le {day} uniquement, le rapport détaillé sur votre résultat coûte {salePrice} au lieu de {price}. Votre profil :",
-        "until": "Le prix de l'offre est valable jusqu'à la fin de la journée du {day}, puis {price}.",
-        "remindSubject": "{name}, l'offre 11.11 se termine aujourd'hui",
-        "remindSubjectNoName": "L'offre 11.11 se termine aujourd'hui",
-        "remindPreheader": "Rapport détaillé {key} : {salePrice} au lieu de {price} jusqu'à ce soir",
-        "remindIntro": "C'est aujourd'hui le dernier jour de l'offre : le rapport détaillé sur votre résultat coûte {salePrice} au lieu de {price}."
+        "occasions": {
+          "bf": "Black Friday",
+          "sale": "Offre spéciale"
+        },
+        "plain": true,
+        "subject": "{name}, {occasion} : ce que votre profil {key} peut encore vous apprendre",
+        "subjectNoName": "{occasion} : ce que votre profil DISC {key} peut encore vous apprendre",
+        "subjectB": "{name}, votre échelle la plus basse est {k} ({pct} %) : ce que cela signifie",
+        "subjectBNoName": "Votre échelle DISC la plus basse est {k} ({pct} %) : ce que cela signifie",
+        "preheader": "{occasion} : l’analyse détaillée de votre profil à {salePrice}, jusqu’au {day} inclus",
+        "intro": "Petit rappel de ce que votre test DISC a montré :",
+        "until": "Ce prix est valable jusqu’au {day} inclus.",
+        "remindSubject": "{name}, dernier jour : {occasion}",
+        "remindSubjectNoName": "Dernier jour : {occasion}",
+        "remindPreheader": "Rapport détaillé {key} à {salePrice}, aujourd’hui seulement",
+        "remindIntro": "C’est aujourd’hui le dernier jour : le rapport détaillé sur votre résultat coûte {salePrice}. Votre profil :"
       }
     },
     "results": {

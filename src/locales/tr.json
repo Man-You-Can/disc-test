@@ -1162,7 +1162,7 @@
           "expired": "Özel fiyatın süresi doldu: rapor artık {price} USD. “Satın al” düğmesine yeniden basın."
         },
         "sale": {
-          "cta": "11.11 İndirimi: rapor yalnızca {salePrice} USD",
+          "cta": "{occasion}: rapor yalnızca {salePrice} USD",
           "note": "İndirimli fiyat {day} günü sonuna kadar geçerli; ardından {price} USD",
           "expired": "İndirim sona erdi: rapor artık {price} USD. “Satın al” düğmesine yeniden basın."
         },
@@ -1344,16 +1344,21 @@
         "footer": "Bu e-postayı, {date} tarihinde test sonucunuzu kendinize gönderirken {site} e-postalarını almayı kabul ettiğiniz için aldınız."
       },
       "sale": {
-        "label": "11.11 İndirimi",
-        "subject": "{name}, 11.11 İndirimi: genişletilmiş {key} raporunuz {salePrice}",
-        "subjectNoName": "11.11 İndirimi: genişletilmiş DISC {key} raporu {salePrice}",
-        "preheader": "Yalnızca {day} günü: profilinizin ayrıntılı analizi {price} yerine {salePrice}",
-        "intro": "Yalnızca {day} günü, sonucunuza göre hazırlanan genişletilmiş rapor {price} yerine {salePrice}. Profiliniz:",
+        "occasions": {
+          "bf": "Black Friday",
+          "sale": "İndirim"
+        },
+        "subject": "{name}, {occasion}: {key} profiliniz size başka neler söylüyor",
+        "subjectNoName": "{occasion}: DISC {key} profiliniz size başka neler söylüyor",
+        "subjectB": "{name}, en düşük ölçeğiniz {k}, %{pct}: bu ne anlama geliyor",
+        "subjectBNoName": "En düşük DISC ölçeğiniz {k}, %{pct}: bu ne anlama geliyor",
+        "preheader": "{occasion}: profilinizin ayrıntılı analizi {day} günü sonuna kadar {price} yerine {salePrice}",
+        "intro": "DISC testinizin sonucunu hatırlatalım:",
         "until": "İndirimli fiyat {day} günü sonuna kadar geçerli; ardından {price}.",
-        "remindSubject": "{name}, 11.11 İndirimi bugün sona eriyor",
-        "remindSubjectNoName": "11.11 İndirimi bugün sona eriyor",
-        "remindPreheader": "Genişletilmiş DISC {key} raporu gün sonuna kadar {price} yerine {salePrice}",
-        "remindIntro": "Bugün indirimin son günü: sonucunuza göre hazırlanan genişletilmiş rapor {price} yerine {salePrice}."
+        "remindSubject": "{name}, son gün: {occasion}",
+        "remindSubjectNoName": "Son gün: {occasion}",
+        "remindPreheader": "Genişletilmiş DISC {key} raporu bugün sonuna kadar {price} yerine {salePrice}",
+        "remindIntro": "Bugün son gün: sonucunuza göre hazırlanan genişletilmiş rapor {price} yerine {salePrice}. Profiliniz:"
       }
     },
     "results": {

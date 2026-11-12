@@ -2104,7 +2104,7 @@
           "expired": "The special price has ended: the report now costs US${price}. Click “Buy” again."
         },
         "sale": {
-          "cta": "The 11.11 Sale: your report for US${salePrice}",
+          "cta": "{occasion}: your report for US${salePrice}",
           "note": "Sale price until the end of {day}, then US${price}",
           "expired": "The sale has ended: the report now costs US${price}. Click “Buy” again."
         },
@@ -2303,16 +2303,21 @@
         "footer": "You’re receiving this email because on {date}, you agreed to receive emails from {site} when you sent yourself your test result."
       },
       "sale": {
-        "label": "11.11 Sale",
-        "subject": "{name}, 11.11 Sale: your in-depth {key} report for {salePrice}",
-        "subjectNoName": "11.11 Sale: your in-depth DISC {key} report for {salePrice}",
-        "preheader": "{day} only: a detailed look at your profile for {salePrice} instead of {price}",
-        "intro": "On {day} only, the in-depth report on your result costs {salePrice} instead of {price}. Your profile:",
+        "occasions": {
+          "bf": "Black Friday",
+          "sale": "Sale"
+        },
+        "subject": "{name}, {occasion}: what else your {key} profile says",
+        "subjectNoName": "{occasion}: what else your DISC {key} profile says",
+        "subjectB": "{name}, your lowest scale is {k} at {pct}%: what it means",
+        "subjectBNoName": "Your lowest DISC scale is {k} at {pct}%: what it means",
+        "preheader": "{occasion}: an in-depth look at your profile for {salePrice} instead of {price}, until the end of {day}",
+        "intro": "Here is a reminder of what your DISC test showed:",
         "until": "The sale price is valid until the end of {day}, then {price}.",
-        "remindSubject": "{name}, the 11.11 Sale ends today",
-        "remindSubjectNoName": "The 11.11 Sale ends today",
-        "remindPreheader": "Your in-depth {key} report: {salePrice} instead of {price} until the end of the day",
-        "remindIntro": "Today is the last day of the sale: the in-depth report on your result costs {salePrice} instead of {price}."
+        "remindSubject": "{name}, {occasion} ends today",
+        "remindSubjectNoName": "{occasion} ends today",
+        "remindPreheader": "Your in-depth {key} report: {salePrice} instead of {price}, today only",
+        "remindIntro": "Today is the last day: the in-depth report on your result costs {salePrice} instead of {price}. Your profile:"
       }
     },
     "results": {

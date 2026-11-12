@@ -979,9 +979,9 @@
           "expired": "特價時間已過，報告現在的價格是 {price} 美元。請再點選一次「購買」。"
         },
         "sale": {
-          "cta": "雙11特價：報告只要 {salePrice} 美元",
+          "cta": "{occasion}：報告只要 {salePrice} 美元",
           "note": "特價到{day}當天結束為止，之後恢復為 {price} 美元",
-          "expired": "雙11特價已結束，報告現在的價格是 {price} 美元。請再點選一次「購買」。"
+          "expired": "特價已結束，報告現在的價格是 {price} 美元。請再點選一次「購買」。"
         },
         "note": "點選「購買」，即表示你同意{offer}。卡片資料是在安全的付款頁面上填寫。",
         "badEmail": "請確認電子郵件地址：報告和收據都會寄到這個地址。",
@@ -1157,16 +1157,21 @@
         "footer": "你會收到這封郵件，是因為你在{date}把測驗結果寄給自己時，同意接收 {site} 的郵件。"
       },
       "sale": {
-        "label": "雙11特價",
-        "subject": "{name}，雙11特價：{key} 進階版報告只要 {salePrice}",
-        "subjectNoName": "雙11特價：DISC {key} 進階版報告只要 {salePrice}",
-        "preheader": "只限{day}：{salePrice}（原價 {price}），詳細解讀你的類型",
-        "intro": "只限{day}，依你的結果製作的進階版報告只要 {salePrice}（原價 {price}）。你的類型：",
+        "occasions": {
+          "bf": "黑色星期五",
+          "sale": "特價"
+        },
+        "subject": "{name}，{occasion}：你的 {key} 類型還能告訴你什麼",
+        "subjectNoName": "{occasion}：DISC {key} 類型還能告訴你什麼",
+        "subjectB": "{name}，你最低的量尺是 {k}（{pct}%）：這代表什麼",
+        "subjectBNoName": "你在 DISC 中最低的量尺是 {k}（{pct}%）：這代表什麼",
+        "preheader": "{occasion}：到{day}為止，詳細解讀你類型的進階版報告只要 {salePrice}（原價 {price}）",
+        "intro": "回顧一下你的 DISC 測驗結果：",
         "until": "特價到{day}當天結束為止，之後恢復為 {price}。",
-        "remindSubject": "{name}，雙11特價今天結束",
-        "remindSubjectNoName": "雙11特價今天結束",
+        "remindSubject": "{name}，{occasion}今天結束",
+        "remindSubjectNoName": "{occasion}今天結束",
         "remindPreheader": "{key} 進階版報告 {salePrice}（原價 {price}），今天結束前有效",
-        "remindIntro": "今天是雙11特價的最後一天：依你的結果製作的進階版報告只要 {salePrice}（原價 {price}）。"
+        "remindIntro": "今天是最後一天：依你的結果製作的進階版報告只要 {salePrice}（原價 {price}）。你的類型："
       }
     },
     "results": {

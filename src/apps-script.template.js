@@ -513,11 +513,13 @@ function composePromoMail(r, lang, o) {
 }
 
 /**
- * Письмо распродажи для подписчиков и вечернее напоминание (с 2026-11-08, решение заказчика — «вариант В»; отправляет свой сервер, src/sale.js).
+ * Письмо распродажи для подписчиков и письмо её последнего дня (с 2026-11-08, решение заказчика — «вариант В»; отправляет свой сервер, src/sale.js).
  * Тексты — DATA[язык].sale (content.mailing.sale); тезисы, листы образца, кнопка, «бесплатно», строка о самой низкой шкале, подвал — из письма подписчикам (DATA[язык].promo).
+ * С 2026-11-12 (по итогам 11.11): повод — из настроек ({occasion}: X.occasions[ключ]), а не в тексте; тема письма — одна из двух (variant 'A' — subject,
+ * 'B' — subjectB: о самой низкой шкале); X.plain — без зачёркнутой обычной цены (языки ЕС: зачёркнутая цена должна быть самой низкой за 30 дней).
  * o: {code — код результата (дописывается к ссылке после «#»), consentAt — дата согласия на рассылку (Date), unsubUrl — ссылка отписки,
- *     href — адрес ссылок письма (сервер: отметка перехода и переадресация на страницу отчёта), remind — вечернее напоминание (короче),
- *     sale: {price, regular — цены в валюте языка, end — конец распродажи (Date), day — 'ГГГГ-ММ-ДД'}}.
+ *     href — адрес ссылок письма (сервер: отметка перехода и переадресация на страницу отчёта), remind — письмо последнего дня (короче), variant — 'A' | 'B',
+ *     sale: {price, regular — цены в валюте языка, end — конец распродажи (Date), day — последний день 'ГГГГ-ММ-ДД', occasion — ключ повода}}.
  * Возвращает {subject, preheader, html, text}.
  */
 function composeSaleMail(r, lang, o) {
@@ -532,9 +534,10 @@ function composeSaleMail(r, lang, o) {
   // день распродажи словами в языке («11 ноября», «November 11»); пробелы внутри — неразрывные
   var dayText;
   try { dayText = new Intl.DateTimeFormat(loc, { timeZone: 'UTC', day: 'numeric', month: 'long' }).format(new Date(o.sale.day + 'T12:00:00Z')).replace(/ /g, ' '); } catch (e) { dayText = o.sale.day; }
-  var name = String(r.name || '').trim();
-  var vars = { name: name, key: c.key, salePrice: saleText, price: priceText, day: dayText };
-  var subject = o.remind ? fmt(name ? X.remindSubject : X.remindSubjectNoName, vars) : fmt(name ? X.subject : X.subjectNoName, vars);
+  var name = String(r.name || '').trim(), occ = X.occasions ? X.occasions[o.sale.occasion] || X.occasions.sale : X.label, plain = !!X.plain;
+  var vars = { name: name, key: c.key, salePrice: saleText, price: priceText, day: dayText, occasion: occ, k: low, scale: P.scales[low], pct: pct(sc.net[low]) };
+  var B = o.variant === 'B' && X.subjectB;
+  var subject = o.remind ? fmt(name ? X.remindSubject : X.remindSubjectNoName, vars) : fmt(name ? (B ? X.subjectB : X.subject) : (B ? X.subjectBNoName : X.subjectNoName), vars);
   var preheader = fmt(o.remind ? X.remindPreheader : X.preheader, vars);
   var greeting = name ? fmt(L.email.greeting, { name: name }) : P.greetingNoName;
   var intro = fmt(o.remind ? X.remindIntro : X.intro, vars), until = fmt(X.until, vars);
@@ -549,10 +552,10 @@ function composeSaleMail(r, lang, o) {
   var badge = '<span style="color:' + COLORS[c.p] + '">' + c.p + '</span>' + (c.s ? '<span style="color:' + COLORS[c.s] + ';font-size:22px">' + c.s + '</span>' : '');
   var price = fmt(P.priceLine, { price: '\u0000' }).split('\u0000');
   var image = P.image ? SITE_URL + '/extended/' + lang + '-mail.jpg' : '';
-  // карточка покупки в красной рамке: метка распродажи, зачёркнутая обычная цена и цена распродажи, срок, кнопка, срок доставки
+  // карточка покупки в красной рамке: повод, зачёркнутая обычная цена (кроме plain) и цена распродажи, срок, кнопка, срок доставки
   var card = '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 22px;border:2px solid #C0392B;border-radius:12px"><tr><td style="padding:16px 14px">' +
-    '<p style="margin:0 0 10px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:bold;color:#C0392B">' + esc(X.label) + '</p>' +
-    '<p style="margin:0 0 12px;font-size:15px">' + esc(price[0]) + '<s style="color:#5B6470">' + esc(priceText) + '</s>&nbsp; <b style="font-size:24px;color:#C0392B">' + esc(saleText) + '</b>' + esc(price[1] || '') + '</p>' +
+    '<p style="margin:0 0 10px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:bold;color:#C0392B">' + esc(occ) + '</p>' +
+    '<p style="margin:0 0 12px;font-size:15px">' + esc(price[0]) + (plain ? '' : '<s style="color:#5B6470">' + esc(priceText) + '</s>&nbsp; ') + '<b style="font-size:24px;color:#C0392B">' + esc(saleText) + '</b>' + esc(price[1] || '') + '</p>' +
     '<p style="margin:-4px 0 12px;font-size:14px;line-height:1.45;color:#C0392B">' + esc(until) + '</p>' +
     '<a href="' + esc(href) + '" style="display:block;background:#1B2027;color:#ffffff;text-decoration:none;font-size:15px;font-weight:bold;text-align:center;padding:13px 8px;border-radius:8px">' + esc(P.button) + '</a>' +
     '<p style="margin:12px 0 0;font-size:13px;line-height:1.45;color:#5B6470">' + esc(P.delivery) + '</p>' +
@@ -581,7 +584,7 @@ function composeSaleMail(r, lang, o) {
     '</td></tr></table></td></tr></table></body></html>';
   var text = greeting + '\n\n' + intro + '\n' + c.key + ' · ' + prof.name + ' (' + styleName + ')\n\n' +
     (o.remind ? '' : hook + '\n\n' + P.listTitle + '\n' + P.list.map(function (t) { return '— ' + t; }).join('\n') + '\n\n' + P.size + '\n\n') +
-    X.label + '\n' + fmt(P.priceLine, { price: fmt(P.offerVs || '{offerPrice} / {price}', { offerPrice: saleText, price: priceText }) }) + '\n' + until + '\n' +
+    occ + '\n' + fmt(P.priceLine, { price: plain ? saleText : fmt(P.offerVs || '{offerPrice} / {price}', { offerPrice: saleText, price: priceText }) }) + '\n' + until + '\n' +
     P.button + ': ' + href + '\n' + P.delivery + '\n' + P.free + '\n\n' +
     fmt(P.footer, { date: day(o.consentAt), site: site }) + '\n' + L.email.unsubscribe + ': ' + o.unsubUrl + '\n';
   return { subject: subject, preheader: preheader, html: html, text: text };

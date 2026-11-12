@@ -1164,7 +1164,7 @@
           "expired": "Harga khusus sudah berakhir: harga laporan sekarang US${price}. Tekan “Beli” sekali lagi."
         },
         "sale": {
-          "cta": "Promo 11.11: laporan hanya US${salePrice}",
+          "cta": "{occasion}: laporan hanya US${salePrice}",
           "note": "Harga promo berlaku hingga akhir hari {day}, lalu US${price}",
           "expired": "Promo sudah berakhir: harga laporan sekarang US${price}. Tekan “Beli” sekali lagi."
         },
@@ -1352,16 +1352,21 @@
         "footer": "Anda menerima email ini karena pada {date} Anda setuju menerima email dari {site} saat mengirim hasil tes ke email Anda sendiri."
       },
       "sale": {
-        "label": "Promo 11.11",
-        "subject": "{name}, Promo 11.11: laporan mendalam {key} hanya {salePrice}",
-        "subjectNoName": "Promo 11.11: laporan DISC mendalam {key} hanya {salePrice}",
-        "preheader": "Hanya pada {day}: {salePrice} (harga normal {price}) untuk analisis terperinci profil Anda",
-        "intro": "Hanya pada {day}, laporan mendalam berdasarkan hasil Anda seharga {salePrice} (harga normal {price}). Profil Anda:",
+        "occasions": {
+          "bf": "Black Friday",
+          "sale": "Promo"
+        },
+        "subject": "{name}, {occasion}: apa lagi yang diungkap profil {key} Anda",
+        "subjectNoName": "{occasion}: apa lagi yang diungkap profil DISC {key} Anda",
+        "subjectB": "{name}, skala terendah Anda adalah {k}, {pct}%: apa artinya",
+        "subjectBNoName": "Skala DISC terendah Anda adalah {k}, {pct}%: apa artinya",
+        "preheader": "{occasion}: analisis terperinci profil Anda seharga {salePrice} (harga normal {price}) hingga akhir hari {day}",
+        "intro": "Mari mengingat lagi hasil tes DISC Anda:",
         "until": "Harga promo berlaku hingga akhir hari {day}, lalu {price}.",
-        "remindSubject": "{name}, Promo 11.11 berakhir hari ini",
-        "remindSubjectNoName": "Promo 11.11 berakhir hari ini",
+        "remindSubject": "{name}, {occasion} berakhir hari ini",
+        "remindSubjectNoName": "{occasion} berakhir hari ini",
         "remindPreheader": "Laporan mendalam {key} seharga {salePrice} (harga normal {price}) hanya sampai akhir hari ini",
-        "remindIntro": "Hari ini hari terakhir Promo 11.11: laporan mendalam berdasarkan hasil Anda seharga {salePrice} (harga normal {price})."
+        "remindIntro": "Hari ini hari terakhir: laporan mendalam berdasarkan hasil Anda seharga {salePrice} (harga normal {price}). Profil Anda:"
       }
     },
     "results": {

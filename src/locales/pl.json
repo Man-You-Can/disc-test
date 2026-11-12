@@ -1163,8 +1163,8 @@
           "expired": "Cena specjalna już nie obowiązuje: raport kosztuje teraz {price} USD. Kliknij „Kup” jeszcze raz."
         },
         "sale": {
-          "cta": "Promocja 11.11: raport za {salePrice} USD",
-          "note": "Cena promocyjna obowiązuje do końca dnia {day}; potem {price} USD",
+          "cta": "{occasion}: raport za {salePrice} USD",
+          "note": "Cena obowiązuje do końca dnia {day}",
           "expired": "Promocja już się zakończyła: raport kosztuje teraz {price} USD. Kliknij „Kup” jeszcze raz."
         },
         "note": "Klikając „Kup”, akceptujesz warunki {offer}. Dane karty podajesz na zabezpieczonej stronie płatności.",
@@ -1345,16 +1345,22 @@
         "footer": "Dostajesz tę wiadomość, ponieważ {date} r. przy wysyłce wyniku testu na ten adres została zaznaczona zgoda na otrzymywanie wiadomości od {site}."
       },
       "sale": {
-        "label": "Promocja 11.11",
-        "subject": "{name}, promocja 11.11: raport rozszerzony {key} za {salePrice}",
-        "subjectNoName": "Promocja 11.11: rozszerzony raport DISC {key} za {salePrice}",
-        "preheader": "Tylko {day}: {salePrice} zamiast {price} za szczegółową analizę twojego profilu",
-        "intro": "Tylko {day} raport rozszerzony o twoim wyniku kosztuje {salePrice} zamiast {price}. Twój profil:",
-        "until": "Cena promocyjna obowiązuje do końca dnia {day}; potem {price}.",
-        "remindSubject": "{name}, promocja 11.11 kończy się dzisiaj",
-        "remindSubjectNoName": "Promocja 11.11 kończy się dzisiaj",
-        "remindPreheader": "Raport rozszerzony {key} za {salePrice} zamiast {price} – tylko do końca dnia",
-        "remindIntro": "Dziś ostatni dzień promocji: raport rozszerzony o twoim wyniku kosztuje {salePrice} zamiast {price}."
+        "occasions": {
+          "bf": "Black Friday",
+          "sale": "Promocja"
+        },
+        "plain": true,
+        "subject": "{name}, {occasion}: co jeszcze mówi twój profil {key}",
+        "subjectNoName": "{occasion}: co jeszcze mówi twój profil DISC {key}",
+        "subjectB": "{name}, twoja najniższa skala to {k}, {pct}%: co to oznacza",
+        "subjectBNoName": "Twoja najniższa skala DISC to {k}, {pct}%: co to oznacza",
+        "preheader": "{occasion}: szczegółowa analiza twojego profilu za {salePrice} – do końca dnia {day}",
+        "intro": "Przypominamy, co pokazał twój test DISC:",
+        "until": "Ta cena obowiązuje do końca dnia {day}.",
+        "remindSubject": "{name}, ostatni dzień: {occasion}",
+        "remindSubjectNoName": "Ostatni dzień: {occasion}",
+        "remindPreheader": "Raport rozszerzony {key} za {salePrice} – tylko do końca dnia",
+        "remindIntro": "Dziś ostatni dzień: raport rozszerzony o twoim wyniku kosztuje {salePrice}. Twój profil:"
       }
     },
     "results": {
