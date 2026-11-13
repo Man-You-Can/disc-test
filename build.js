@@ -95,14 +95,15 @@ const legalHtml = L => legalInn ? `<div class="legal">${esc(L.ui.legal.replace('
 const rightsHtml = L => `<div class="rights">${esc(L.ui.rights.replace('{year}', new Date().getFullYear()))}</div>`;
 // Способы оплаты (с 2026-11-08, по просьбе заказчика): строка в подвале каждой страницы и под кнопкой «Купить» (отчёт, набор ведущего).
 // ui["foot.pay"] — подпись, ui["foot.payMethods"] — названия через запятую: ru (Т-Банк) — МИР, СБП, VISA, Mastercard; остальные (Prodamus) — VISA, Mastercard.
-// Знакомое название получает свой цвет (класс pm-…), у Mastercard — два круга; любое другое — простой значок с текстом
+// Знакомое название получает свой цвет (класс pm-…), Mastercard — только два круга; любое другое — простой значок с текстом
 const PM_KIND = { 'мир': 'mir', 'сбп': 'sbp', 'visa': 'visa', 'mastercard': 'mc' };
 const PM_MC = '<svg viewBox="0 0 24 15" aria-hidden="true"><circle cx="7.5" cy="7.5" r="7.5" fill="#EB001B"/><circle cx="16.5" cy="7.5" r="7.5" fill="#F79E1B"/>' +
   '<path d="M12 1.5A7.5 7.5 0 0 1 12 13.5A7.5 7.5 0 0 1 12 1.5Z" fill="#FF5F00"/></svg>';
 const payMethodsHtml = L => { const lbl = L.ui['foot.pay'], list = String(L.ui['foot.payMethods'] || '').split(',').map(s => s.trim()).filter(Boolean);
   if (!lbl || !list.length) return '';
   return `<div class="paym"><span class="pml">${esc(lbl)}</span>` + list.map(s => { const k = PM_KIND[s.toLowerCase()] || 'x';
-    return `<span class="pm pm-${k}">${k === 'mc' ? PM_MC : ''}${esc(s)}</span>`; }).join('') + '</div>'; };
+    // Mastercard — только знак из двух кругов (с 2026-11-13, по просьбе заказчика); название — для экранного чтеца
+    return k === 'mc' ? `<span class="pm pm-mc">${PM_MC}<span class="vh">${esc(s)}</span></span>` : `<span class="pm pm-${k}">${esc(s)}</span>`; }).join('') + '</div>'; };
 // Платная услуга. Страница /services/ есть во всех языках; цена берётся по валюте локали (content.services.currency):
 // servicePriceRub, servicePriceUsd или servicePriceEur (французская и немецкая версии, с 2026-10-22) в site.config.json, пустое значение или 0 убирает страницу и пункт меню в языках с этой валютой.
 // Оферта и условия возврата (/offer/, /refund/) — только в языках, где есть content.offer и content.refund (сейчас — русский)
