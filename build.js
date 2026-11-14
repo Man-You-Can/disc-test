@@ -73,6 +73,7 @@ const businessJs = fs.readFileSync(path.join(SRC, 'business.js'), 'utf8').replac
 const kitBuyJs = fs.readFileSync(path.join(SRC, 'kit-buy.js'), 'utf8');
 const giftJs = fs.readFileSync(path.join(SRC, 'gift.js'), 'utf8'), giftCss = fs.readFileSync(path.join(SRC, 'gift.css'), 'utf8');
 const pairJs = fs.readFileSync(path.join(SRC, 'pair.js'), 'utf8'), pairCss = fs.readFileSync(path.join(SRC, 'pair.css'), 'utf8');
+const bigfiveJs = fs.readFileSync(path.join(SRC, 'bigfive.js'), 'utf8'), bigfiveCss = fs.readFileSync(path.join(SRC, 'bigfive.css'), 'utf8');   // тест «Большая пятёрка» (/big-five/)
 // Лендинг «CV под каждую вакансию» (/ru/cv/): разметку формы cvFormHTML() кладёт сборка, логику initCvForm() — сама страница; стили страницы — src/cv.css
 const cvFormHTML = require(path.join(SRC, 'cv.js'));
 const cvJs = fs.readFileSync(path.join(SRC, 'cv.js'), 'utf8').replace(/\nif \(typeof module[^\n]*\n?$/, '\n');
@@ -1424,6 +1425,23 @@ for (const L of locales) {
         css: pairCss, content, files: ['src/pair.js', 'src/pair.css'].concat(sheets.map(i => `src/assets/pair/${L.lang}-${i}.webp`)),
         pageJs: pairJs + `\ninitPair({T: ${JSON.stringify(PTjs).replace(/</g, '\\u003c')}, pairs: ${JSON.stringify(pairsJs).replace(/</g, '\\u003c')}, profiles: ${JSON.stringify(profJs).replace(/</g, '\\u003c')}, ` +
           `BK: ${PAIR_BK}, price: ${PP.price}, cur: ${jsStr(PP.cur)}, money: ${jsStr(L.content.services.price)}, loc: ${jsStr(L.dateLocale)}, endpoint: ${jsStr(payEndpoint)}, lang: ${jsStr(L.lang)}, home: '../', email: ${jsStr(feedbackEmail)}, esc: esc, $: $, lsGet: lsGet, lsSet: lsSet});` });
+    }
+    // /big-five/ — тест «Большая пятёрка» (с 2026-11-14, по решению заказчика; сначала только русская версия — content.bigfive в локали).
+    // Новый тест на своих адресах: главная и шапка не трогаются (правила поиска — private/TESTS-PLAN.md, раздел 2.2); hreflang нет, пока язык один.
+    // Тест и результат — в браузере (src/bigfive.js), на сервер ничего не уходит. Стартовый блок (#bfApp) отдаётся в HTML для поисковиков.
+    if (L.content.bigfive) {
+      const B = L.content.bigfive;
+      const content = `<div class="eyebrow">${escFull(B.eyebrow)}</div><h1>${escFull(B.h1)}</h1>` +
+        `<div id="bfApp" class="bf-app"><p class="lead">${escFull(B.lead)}</p><ul class="bf-facts">${B.facts.map(x => `<li>${escFull(x)}</li>`).join('')}</ul>` +
+        `<div class="bf-start" id="bfStartBox"><a class="btn" href="#" onclick="return false">${escFull(B.start)}</a></div></div>` +
+        `<div id="bfAbout">` + sectionsHtml(B.sections) +
+        `<h2>${escFull(B.faqTitle)}</h2>` + B.faq.map(it => `<h3 class="bf-fq">${escFull(it.q)}</h3><p>${escFull(it.a)}</p>`).join('') + `</div>`;
+      const BT = { start: B.start, resume: B.resume, restart: B.restart, showLast: B.showLast, step: B.step, count: B.count, hint: B.hint, scale: B.scale,
+        next: B.next, back: B.back, finish: B.finish, needAll: B.needAll, items: B.items, result: B.result, traits: B.traits, aspects: B.aspects };
+      writeContentPage(L, 'big-five/', { langs: [L], ldType: 'WebApplication', title: B.title, description: B.description, crumbs: [{ name: B.h1 }],
+        css: bigfiveCss, content, files: ['src/bigfive.js', 'src/bigfive.css'],
+        ldExtra: [{ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: B.faq.map(it => ({ '@type': 'Question', name: it.q, acceptedAnswer: { '@type': 'Answer', text: it.a } })) }],
+        pageJs: bigfiveJs + `\ninitBigFive({T: ${JSON.stringify(BT).replace(/</g, '\\u003c')}, loc: ${jsStr(L.dateLocale)}, home: '../', esc: esc, $: $, lsGet: lsGet, lsSet: lsSet});` });
     }
     // /extended-report/ — страница расширенного отчёта: что внутри, листы образца картинками, сравнение с кратким отчётом, цена.
     // Блок покупки по умолчанию ведёт на тест. У кого результат сохранён на этом устройстве (disc.last), тому скрипт страницы меняет его:

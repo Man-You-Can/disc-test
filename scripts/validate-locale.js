@@ -33,6 +33,7 @@ const OPTIONAL = ['.content.policy.legal', '.content.extendedMail', '.content.pr
   '.content.cv.author.siteLabel', '.content.cv.author.site', '.content.cv.author.siteUrl',
   // анонсы этого сервиса на сайте (главная, экран результата, профили, «Услуги»; с 2026-10-24, по просьбе заказчика; русская и английская версии) — только вместе с лендингом
   '.content.cvPromo',
+  '.content.bigfive',   // тест «Большая пятёрка» (/big-five/, с 2026-11-14): сначала только русская версия
   '.content.paper', '.content.kit', '.content.consentDoc.paperForm',   // бумажный бланк: QR, «Что дальше», блок для групп, бланк на e-mail; набор ведущего (с 2026-10-25, пока русская версия)
   // покупка набора ведущего (с 2026-11-06): оплата по счёту для организации — только в русской версии (вне России счетов нет)
   '.content.kit.buy.invoice',

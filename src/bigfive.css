@@ -1,0 +1,66 @@
+/* Тест «Большая пятёрка»: страница /ru/big-five/ (build.js, src/bigfive.js) — вводный блок, вопросы по шкале 1–5, результат. */
+#bfApp .bf-facts{list-style:none;padding:0;margin:0 0 6px;display:flex;flex-wrap:wrap;gap:8px}
+.bf-facts li{background:var(--soft);border-radius:999px;padding:6px 12px;font-size:14px}
+.bf-start{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;margin:20px 0 34px}
+.bf-start .btn{font-size:17px;padding:14px 28px}
+.bf-last{flex-basis:100%;margin:0}
+.linkbtn{font:inherit;background:none;border:0;padding:0;color:var(--ink);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.linkbtn:hover{color:var(--muted)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+h3.bf-fq{font-size:17px;margin:18px 0 6px}
+/* тест */
+.bf-prog{height:6px;border-radius:3px;background:var(--soft);overflow:hidden;margin:4px 0 8px}
+.bf-prog i{display:block;height:100%;background:var(--ink);transition:width .2s}
+.bf-meta{display:flex;justify-content:space-between;gap:12px;font-family:var(--font-mono);font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;margin:0 0 14px}
+.bf-hint{background:var(--soft);border-radius:12px;padding:12px 16px;margin:0 0 14px}
+#bfApp .bf-items{list-style:none;padding:0;margin:0}
+#bfApp .bf-item{margin-inline:0}
+.bf-item{border:1px solid var(--line);background:var(--surface);border-radius:14px;padding:16px 18px 12px;margin:0 0 12px;transition:border-color .15s,opacity .15s}
+.bf-item.done{border-color:var(--line-strong)}
+.bf-q{font-size:18px;font-weight:600;margin:0 0 12px}
+.bf-scale{display:flex;justify-content:space-between;gap:8px;max-width:420px;margin:0 auto}
+.bf-opt{position:relative;display:flex;align-items:center;justify-content:center;width:52px;height:44px;cursor:pointer}
+.bf-opt input{position:absolute;opacity:0;width:100%;height:100%;margin:0;cursor:pointer}
+.bf-opt .dot{display:block;border-radius:50%;border:2px solid var(--line-strong);background:var(--surface);transition:background .12s,border-color .12s,transform .12s}
+.bf-opt:nth-child(1) .dot,.bf-opt:nth-child(5) .dot{width:34px;height:34px}
+.bf-opt:nth-child(2) .dot,.bf-opt:nth-child(4) .dot{width:27px;height:27px}
+.bf-opt:nth-child(3) .dot{width:21px;height:21px}
+.bf-opt:hover .dot{border-color:var(--ink)}
+.bf-opt input:checked+.dot{background:var(--ink);border-color:var(--ink);transform:scale(1.05)}
+.bf-opt input:focus-visible+.dot{outline:3px solid var(--focus);outline-offset:3px}
+.bf-ends{display:flex;justify-content:space-between;gap:12px;max-width:440px;margin:4px auto 0;font-size:13px;color:var(--muted)}
+.bf-err{color:var(--d);font-weight:600;margin:6px 0 0}
+.bf-nav{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:18px 0 30px}
+.bf-nav .btn{font-size:16px;padding:13px 26px}
+/* результат */
+.bf-h{margin-top:4px}
+.bf-bar{display:block;position:relative;height:10px;border-radius:5px;background:var(--soft);margin:6px 0 4px}
+.bf-bar::after{content:"";position:absolute;left:50%;top:-3px;bottom:-3px;width:1px;background:var(--line-strong)}
+.bf-bar i{display:block;height:100%;border-radius:5px;background:var(--ink);opacity:.85}
+.bf-bar b{position:absolute;top:50%;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;background:var(--ink);border:2px solid var(--surface)}
+.bf-sum h3{margin-top:0}
+.bf-srow{display:grid;grid-template-columns:minmax(0,180px) minmax(0,1fr) 30px;gap:12px;align-items:center;margin:8px 0}
+.bf-srow .nm{font-weight:600;font-size:15px}
+.bf-srow .v{font-family:var(--font-mono);font-size:14px;text-align:end;font-variant-numeric:tabular-nums}
+.bf-srow .bf-bar{margin:0}
+.bf-scalecap{margin:10px 0 0}
+.bf-trait h3{margin-top:0}
+.bf-pos{margin:0 0 4px}
+.bf-what{margin:8px 0 10px}
+.bf-asps{display:grid;grid-template-columns:1fr 1fr;gap:12px 22px;margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}
+.bf-asp p{margin:0}
+.bf-asp .bf-an{margin-bottom:2px}
+.bf-asp .small{margin-top:4px}
+.bf-note{margin:18px 0}
+.bf-disc{border:2px solid var(--ink)}
+.bf-disc h3{margin-top:0}
+.bf-disc p:last-child{margin-bottom:0}
+.bf-again{margin:20px 0 30px}
+@media (max-width:640px){
+  .bf-item{padding:14px 12px 10px}
+  .bf-q{font-size:17px}
+  .bf-opt{width:46px}
+  .bf-srow{grid-template-columns:minmax(0,1fr) 30px;gap:2px 10px}
+  .bf-srow .nm{grid-column:1 / -1}
+  .bf-asps{grid-template-columns:1fr}
+}
