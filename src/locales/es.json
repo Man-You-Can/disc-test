@@ -1388,6 +1388,64 @@
       "footer": "Si usted no se ha suscrito, no tiene que hacer nada: sin confirmación no recibirá el boletín, y la dirección se eliminará al cabo de 7 días."
     },
     "mailing": {
+      "pair": {
+        "subject": "{name}, ¿con quién choca más y por qué?",
+        "subjectNoName": "¿Con quién choca más y por qué?",
+        "subjectHome": "Novedad en DISC: compare su perfil con alguien cercano",
+        "preheader": "Novedad en {site}: compare su perfil DISC con un compañero de trabajo, su pareja o una amistad",
+        "profile": "Su perfil DISC:",
+        "hard": {
+          "D": "Al estilo D le cuesta más el estilo opuesto: S (estabilidad). Usted mete prisa y una persona S necesita tiempo. Usted entra en una discusión sin problema, y ella la evita a toda costa y asiente en silencio. Es la combinación más difícil del DISC y, a la vez, una de las más útiles.",
+          "I": "Al estilo I le cuesta más el estilo opuesto: C (cumplimiento). Usted promete y una persona C lo comprueba y encuentra incoherencias. Usted necesita comunicación y velocidad; ella, silencio y tiempo. Es una combinación difícil que, con confianza mutua, se vuelve fuerte.",
+          "S": "Al estilo S le cuesta más el estilo opuesto: D (dominancia). Usted necesita tiempo y una persona D mete prisa. Usted cuida la calma, y ella entra en una discusión sin problema y toma su silencio por un sí. Es la combinación más difícil del DISC y, a la vez, una de las más útiles.",
+          "C": "Al estilo C le cuesta más el estilo opuesto: I (influencia). Una persona I promete y usted lo comprueba y encuentra incoherencias. Usted necesita silencio y tiempo; ella, comunicación y velocidad. Es una combinación difícil que, con confianza mutua, se vuelve fuerte."
+        },
+        "near": "Seguramente tiene a alguien así cerca: su jefe, un compañero de trabajo, su pareja, alguien de la familia. Casi nunca se discute por el trabajo en sí, sino por la diferencia de estilos. Y durante años, por lo mismo.",
+        "homeIntro": "Usted sabe cómo actúa. Pero nadie trabaja ni vive en solitario: su jefe, sus compañeros y su pareja tienen su propio estilo. Casi nunca se discute por la tarea en sí, sino por la diferencia de estilos: uno mete prisa y el otro necesita tiempo; uno habla claro y el otro lo oye como una falta de tacto.",
+        "news": "Ahora puede verlo desde fuera. Novedad en {site}: «{brand}». La otra persona hace el test y sus perfiles aparecen lado a lado. Se ve enseguida en qué se parecen y en qué tiran en direcciones opuestas.",
+        "newsHome": "Ahora puede verlo desde fuera. Novedad en {site}: «{brand}». Las dos personas hacen el test y sus perfiles aparecen lado a lado. Se ve enseguida en qué se parecen y en qué tiran en direcciones opuestas.",
+        "howTitle": "Cómo funciona",
+        "steps": [
+          "Envíe una invitación a la persona con la que quiere comparar resultados: por mensajería o con un enlace.",
+          "Esa persona hace el test: es gratis y lleva unos 10 minutos.",
+          "Ven los dos perfiles lado a lado: en qué están cerca y dónde está la mayor distancia. También es gratis."
+        ],
+        "homeStep": "Haga el test: es gratis y lleva unos 10 minutos.",
+        "invite": "Invitar a la otra persona",
+        "takeTest": "Hacer el test",
+        "reportTitle": "Para entenderlo de verdad, está el informe «{brand}»",
+        "reportLead": "Se escribe para ustedes dos, con las cuatro escalas de cada persona. No dice si son «compatibles o no», sino cómo trabajar y convivir de modo que la diferencia les ayude en lugar de enfrentarlos:",
+        "items": [
+          [
+            "Cinco situaciones de roce.",
+            "Cómo se presenta cada una en el trabajo y en casa, qué siente cada persona y qué ayuda."
+          ],
+          [
+            "Frases listas para cada persona.",
+            "Cómo empezar una conversación difícil y cómo escribirse."
+          ],
+          [
+            "Cómo decidir en común",
+            "y frenar una discusión antes de que crezca."
+          ],
+          [
+            "Trabajo y vida personal.",
+            "Secciones aparte para compañeros de trabajo, para jefe y colaborador, y para parejas, amistades y familia."
+          ],
+          [
+            "El «Acuerdo entre dos»",
+            "y un plan de 30 días para los dos."
+          ]
+        ],
+        "imageAlt": "Páginas de muestra del informe «{brand}»",
+        "sample": "Páginas del informe de muestra de una combinación D y S",
+        "facts": "Unas 22 páginas en PDF. El informe llega por correo en un plazo de 24 horas, y antes del envío una persona lo lee entero. Puede enviar una copia a la otra persona.",
+        "eyebrow": "Novedad en {site}",
+        "priceLine": "Informe «{brand}»: {price}",
+        "ownerNote": "Su precio es {owner} porque ya compró el informe ampliado. Se aplica al hacer el pedido con este mismo correo.",
+        "cardNote": "Primero hacen el test las dos personas y después se paga. La comparación de perfiles es gratis.",
+        "footerHome": "Ha recibido este mensaje porque el {date} se suscribió a los correos de {site} en la página principal."
+      },
       "promo": {
         "subject": "{name}, lo que su resultado {key} aún puede decirle",
         "subjectNoName": "Lo que su resultado DISC {key} aún puede decirle",

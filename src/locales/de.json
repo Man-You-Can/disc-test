@@ -2332,6 +2332,64 @@
       "footer": "Wenn Sie sich nicht angemeldet haben, müssen Sie nichts tun: Ohne Bestätigung erhalten Sie keinen Newsletter, und die Adresse wird nach 7 Tagen gelöscht."
     },
     "mailing": {
+      "pair": {
+        "subject": "{name}, mit wem geraten Sie am häufigsten aneinander und warum?",
+        "subjectNoName": "Mit wem geraten Sie am häufigsten aneinander und warum?",
+        "subjectHome": "Neu bei DISG: Vergleichen Sie Ihr Profil mit einem Menschen aus Ihrem Umfeld",
+        "preheader": "Neu auf {site}: Vergleichen Sie Ihr DISG-Profil mit jemandem aus Team, Partnerschaft oder Freundeskreis",
+        "profile": "Ihr DISG-Profil:",
+        "hard": {
+          "D": "Am schwersten tut sich der Stil D mit dem Gegenstil S (Stetigkeit). Sie drängen, ein Mensch mit S-Stil braucht Zeit. Sie gehen Konflikte leicht ein, er vermeidet sie um jeden Preis und stimmt lieber schweigend zu. Das ist das schwierigste Paar im DISG und zugleich eines der nützlichsten.",
+          "I": "Am schwersten tut sich der Stil I mit dem Gegenstil C (Gewissenhaftigkeit). Sie versprechen etwas, ein Mensch mit C-Stil prüft nach und findet Widersprüche. Sie brauchen Austausch und Tempo, er braucht Ruhe und Zeit. Ein schwieriges Paar, das mit Vertrauen stark wird.",
+          "S": "Am schwersten tut sich der Stil S mit dem Gegenstil D (Dominanz). Sie brauchen Zeit, ein Mensch mit D-Stil drängt. Sie wahren den Frieden, er geht Konflikte leicht ein und hält Ihr Schweigen für ein Ja. Das ist das schwierigste Paar im DISG und zugleich eines der nützlichsten.",
+          "C": "Am schwersten tut sich der Stil C mit dem Gegenstil I (Initiative). Ein Mensch mit I-Stil verspricht etwas, Sie prüfen nach und finden Widersprüche. Sie brauchen Ruhe und Zeit, er braucht Austausch und Tempo. Ein schwieriges Paar, das mit Vertrauen stark wird."
+        },
+        "near": "Bestimmt gibt es so jemanden in Ihrer Nähe: Ihre Führungskraft, jemand aus dem Team, Ihr Partner oder Ihre Partnerin, jemand aus der Familie. Gestritten wird selten über die Sache, sondern über den unterschiedlichen Stil. Und oft jahrelang über dasselbe.",
+        "homeIntro": "Sie wissen, wie Sie selbst ticken. Aber niemand arbeitet und lebt allein: Ihre Führungskraft, Ihr Team, Ihr Partner oder Ihre Partnerin haben einen eigenen Stil. Gestritten wird selten über die Sache, sondern über den Stil: Einer drängt, der andere braucht Zeit. Einer redet direkt, der andere hört darin Unhöflichkeit.",
+        "news": "Jetzt können Sie das von außen betrachten. Neu auf {site}: „{brand}“. Die zweite Person macht den Test, und Ihre Profile stehen nebeneinander. Sie sehen sofort, wo Sie sich ähneln und wo Sie in verschiedene Richtungen ziehen.",
+        "newsHome": "Jetzt können Sie das von außen betrachten. Neu auf {site}: „{brand}“. Sie machen beide den Test, und Ihre Profile stehen nebeneinander. Sie sehen sofort, wo Sie sich ähneln und wo Sie in verschiedene Richtungen ziehen.",
+        "howTitle": "So funktioniert es",
+        "steps": [
+          "Schicken Sie der Person, mit der Sie Ihre Ergebnisse vergleichen möchten, eine Einladung: per Messenger oder als Link.",
+          "Die Person macht den Test: kostenlos, in etwa 10 Minuten.",
+          "Sie sehen beide Profile nebeneinander: wo Sie nah beieinander liegen und wo der Abstand am größten ist. Auch das ist kostenlos."
+        ],
+        "homeStep": "Machen Sie den Test: kostenlos, in etwa 10 Minuten.",
+        "invite": "Zweite Person einladen",
+        "takeTest": "Test machen",
+        "reportTitle": "Wer es genau wissen will: der Bericht „{brand}“",
+        "reportLead": "Er wird für Sie beide geschrieben, auf Grundlage aller vier Skalen von Ihnen beiden. Er sagt nicht „passt oder passt nicht“, sondern wie Sie so zusammenarbeiten und zusammenleben, dass der Unterschied Ihnen hilft, statt Sie zu entzweien:",
+        "items": [
+          [
+            "Fünf Situationen mit Reibung.",
+            "Wie jede im Beruf und zu Hause aussieht, was jede Seite dabei erlebt und was hilft."
+          ],
+          [
+            "Fertige Formulierungen für jede Seite.",
+            "Wie Sie ein schwieriges Gespräch beginnen und wie Sie einander schreiben."
+          ],
+          [
+            "Gemeinsam entscheiden",
+            "und einen Streit stoppen, bevor er sich hochschaukelt."
+          ],
+          [
+            "Beruf und Privatleben.",
+            "Eigene Kapitel für Kolleginnen und Kollegen, für Führungskraft und Teammitglied sowie für Paare, Freundschaft und Familie."
+          ],
+          [
+            "Die „Vereinbarung zu zweit“",
+            "und ein 30-Tage-Plan für Sie beide."
+          ]
+        ],
+        "imageAlt": "Beispielseiten aus dem Bericht „{brand}“",
+        "sample": "Seiten aus dem Beispielbericht für ein Paar D und S",
+        "facts": "Rund 22 Seiten als PDF. Der Bericht kommt innerhalb von 24 Stunden per E-Mail, und vor dem Versand liest ihn ein Mensch vollständig. Eine Kopie können Sie an die zweite Person schicken.",
+        "eyebrow": "Neu auf {site}",
+        "priceLine": "Bericht „{brand}“: {price}",
+        "ownerNote": "Für Sie kostet er {owner}, weil Sie bereits den ausführlichen Bericht gekauft haben. Der Preis gilt bei einer Bestellung mit derselben E-Mail-Adresse.",
+        "cardNote": "Zuerst machen Sie beide den Test, dann wird bezahlt. Der Vergleich der Profile ist kostenlos.",
+        "footerHome": "Sie erhalten diese E-Mail, weil Sie sich am {date} auf der Startseite von {site} für E-Mails angemeldet haben."
+      },
       "promo": {
         "subject": "{name}, was Ihr DISG-Ergebnis {key} noch verrät",
         "subjectNoName": "Was Ihr DISG-Ergebnis {key} noch verrät",

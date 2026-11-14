@@ -2316,6 +2316,64 @@
       "footer": "If you didn’t sign up, there’s nothing you need to do: without confirmation, no newsletter will be sent, and the address will be deleted after 7 days."
     },
     "mailing": {
+      "pair": {
+        "subject": "{name}, who do you clash with most, and why?",
+        "subjectNoName": "Who do you clash with most, and why?",
+        "subjectHome": "New on DISC: compare your profile with someone close to you",
+        "preheader": "New on {site}: compare your DISC profile with a colleague, partner or friend",
+        "profile": "Your DISC profile:",
+        "hard": {
+          "D": "Style D finds the opposite style hardest: S (Steadiness). You push for speed, while an S person needs time. You step into an argument easily, while they avoid it at all costs and quietly go along. It’s the hardest pair in DISC, and one of the most useful.",
+          "I": "Style I finds the opposite style hardest: C (Conscientiousness). You make promises, while a C person checks them and finds the gaps. You need interaction and speed, and they need quiet and time. A difficult pair that turns into a strong one once trust is there.",
+          "S": "Style S finds the opposite style hardest: D (Dominance). You need time, while a D person pushes for speed. You keep the peace, while they step into arguments easily and take your quiet agreement as a yes. It’s the hardest pair in DISC, and one of the most useful.",
+          "C": "Style C finds the opposite style hardest: I (Influence). An I person makes promises, while you check them and find the gaps. You need quiet and time, and they need interaction and speed. A difficult pair that turns into a strong one once trust is there."
+        },
+        "near": "You probably have someone like this in your life: a manager, a colleague, a partner, a family member. People rarely argue about the work itself. They argue about the difference in style, and about the same things for years.",
+        "homeIntro": "You know how you operate. But nobody works or lives alone: your manager, your colleagues and your partner each have a style of their own. Most arguments aren’t about the task itself but about that difference in style: one person rushes and the other needs time; one speaks bluntly and the other hears it as rude.",
+        "news": "Now you can see it from the outside. New on {site}: {brand}. The other person takes the test, and your profiles appear side by side. You can see straight away where you’re alike and where you pull in different directions.",
+        "newsHome": "Now you can see it from the outside. New on {site}: {brand}. You both take the test, and your profiles appear side by side. You can see straight away where you’re alike and where you pull in different directions.",
+        "howTitle": "How it works",
+        "steps": [
+          "Send an invitation to the person you want to compare results with, in a messenger or as a link.",
+          "They take the test: it’s free and takes about 10 minutes.",
+          "You see both profiles side by side: where you’re close and where the gap is biggest. That’s free too."
+        ],
+        "homeStep": "Take the test: it’s free and takes about 10 minutes.",
+        "invite": "Invite the other person",
+        "takeTest": "Take the test",
+        "reportTitle": "To really get to the bottom of it, there’s the {brand} report",
+        "reportLead": "It’s written for the two of you, using all four scales for each of you. It doesn’t say whether you’re “compatible or not”. It shows how the two of you can work and live side by side so the difference helps you instead of driving you apart:",
+        "items": [
+          [
+            "Five friction points.",
+            "What each one looks like at work and at home, how each of you experiences it and what helps."
+          ],
+          [
+            "Ready-made phrases for each of you.",
+            "How to start a difficult conversation and how to write to each other."
+          ],
+          [
+            "How to decide together",
+            "and stop an argument before it escalates."
+          ],
+          [
+            "Work and personal life.",
+            "Separate sections for colleagues, for a manager and team member, and for couples, friends and family."
+          ],
+          [
+            "Your two-person agreement",
+            "and a 30-day plan for the two of you."
+          ]
+        ],
+        "imageAlt": "Sample pages from the {brand} report",
+        "sample": "Pages from a sample report for a D and S pair",
+        "facts": "About 22 PDF pages. The report arrives by email within 24 hours, and a person reads it in full before it’s sent. You can send a copy to the other person.",
+        "eyebrow": "New on {site}",
+        "priceLine": "{brand} report: {price}",
+        "ownerNote": "Your price is {owner} because you’ve already bought the in-depth report. It applies when you order with this same email address.",
+        "cardNote": "You both take the test first, then you pay. Comparing your profiles is free.",
+        "footerHome": "You’re receiving this email because on {date}, you subscribed to emails from {site} on the site’s home page."
+      },
       "promo": {
         "subject": "{name}, here’s what else your {key} result says",
         "subjectNoName": "Here’s what else your DISC {key} result says",

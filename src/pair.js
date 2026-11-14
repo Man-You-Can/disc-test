@@ -1,5 +1,6 @@
 /* «DISC на двоих» (/<язык>/pair/, с 2026-11-14, по просьбе заказчика; все языки с покупкой). Одна страница — четыре состояния:
    - без хэша: описание отчёта и кнопка «Пригласить» (если на устройстве есть свой результат — disc.last);
+   - #r=<код> — из письма рассылки (с 2026-11-14): то же, но «Пригласить» — по результату из письма, страница прокручивается к приглашению;
    - #i=<код> — приглашение: пригласивший, кнопка теста (приглашение запоминается в disc.pairInvite — после теста экран результата предложит
      сравнение), а если свой результат уже есть — согласие показать его пригласившему и «Сравнить»;
    - #p=<код>~<код> — сравнение: две диаграммы шкал, строка о паре (summary из content.compatibility.pairs), где близки и где самый большой
@@ -70,9 +71,11 @@ function initPair(o){
   var inviteLink = function(r){ return pageUrl + '?ref=pair#i=' + encode(r); };
 
   /* ---- без хэша: «Пригласить» ---- */
-  function landing(){
+  /* mail — результат из ссылки письма рассылки (#r=<код без e-mail>, с 2026-11-14): письмо часто открывают на другом устройстве, где своего
+     результата нет, — приглашение строится по коду из письма; результат из письма важнее сохранённого на устройстве */
+  function landing(mail){
     var box = $('#pairInviteBox'); if(!box) return;
-    var me = myResult();
+    var me = mail || myResult();
     if(!me){ box.innerHTML = '<p>' + esc(T.inviteNoTest) + '</p><p><a class="btn" href="' + o.home + '#test">' + esc(T.ctaTest) + '</a></p>'; return; }
     box.innerHTML = '<p>' + esc(T.inviteText) + '</p><div id="pairInviteShare"></div>';
     shareBox($('#pairInviteShare'), inviteLink(me), fmt(T.inviteMsg, {name: me.name || ''}), 'pair-invite');
@@ -203,7 +206,9 @@ function initPair(o){
   var q = new URLSearchParams(location.search), h = typeof dataHash === 'function' ? dataHash() : '';
   var mi = /^#i=(DISC1\.[A-Za-z0-9_-]+)$/.exec(h), mp = /^#p=(DISC1\.[A-Za-z0-9_-]+)~(DISC1\.[A-Za-z0-9_-]+)$/.exec(h);
   if(/^PAIR-[A-Z0-9-]{6,30}$/.test(q.get('order') || '')) status(q.get('order'), q.get('pay'));
+  var mr = /^#r=(DISC1\.[A-Za-z0-9_-]+)$/.exec(h), fromMail = mr && decode(mr[1]);
   if(mp) compare(mp[1], mp[2], false);
   else if(mi){ invite(mi[1]); landing(); }
+  else if(fromMail){ landing(fromMail); var ib = $('#pairInviteBox'); if(ib && ib.scrollIntoView && q.get('utm_content') !== 'image') setTimeout(function(){ ib.scrollIntoView({block: 'center'}); }, 300); }
   else landing();
 }

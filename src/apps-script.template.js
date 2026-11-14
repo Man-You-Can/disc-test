@@ -513,6 +513,112 @@ function composePromoMail(r, lang, o) {
 }
 
 /**
+ * Письмо подписчикам о «DISC на двоих» (с 2026-11-14, по просьбе заказчика; тексты — DATA[язык].pair.news = content.mailing.pair на 13 языках,
+ * без длинных тире — просьба заказчика). Отправку на сервере ещё не сделали: сейчас письмо собирают образцы и проверочные письма.
+ * r — результат подписчика (decodeResult) или null для подписчика с главной без результата (o.home).
+ * o: {code — код результата (в ссылках — без e-mail), consentAt — дата согласия (Date), unsubUrl — ссылка отписки, owner — уже покупал расширенный отчёт
+ *     (цена для купивших, DATA.pair.owner), home — подписчик с главной, campaign — метка рассылки в ссылках (по умолчанию 'pair-launch')}.
+ * Каждая ссылка письма — с метками utm_source=newsletter, utm_medium=email, utm_campaign, utm_content = место ссылки в письме
+ * (logo, site, invite, image, card, footer): система веб-аналитики видит переход и из какого места письма он; страница отмечает цель mail-click (src/common.js).
+ * Код результата — после «#»: на сервер и в систему аналитики он не уходит (dataHash убирает его до загрузки счётчика).
+ * Возвращает {subject, preheader, html, text}.
+ */
+function composePairMail(r, lang, o) {
+  var L = DATA[lang], P = L.pair, X = P && P.news;
+  if (!X) throw new Error('нет письма о «DISC на двоих» на языке ' + lang);
+  var rtl = L.dir === 'rtl', start = rtl ? 'right' : 'left', home = !!o.home || !r;
+  var cjk = /^(zh|ja)/.test(lang), gap = cjk ? '' : ' ', stop = cjk ? '。' : '.';
+  var site = SITE_URL.replace(/^https?:\/\//, ''), camp = o.campaign || 'pair-launch';
+  // код для ссылок — без e-mail (как ссылки приглашения и сравнения на сайте)
+  var code = '';
+  if (!home && r) { var j = JSON.stringify({ n: r.name || '', e: '', p: '', t: r.t, m: r.m.join(''), l: r.l.join('') }); code = VERSION + '.' + Utilities.base64EncodeWebSafe(j).replace(/=+$/, ''); }
+  function link(base, slot, hash) {
+    return base + (base.indexOf('?') < 0 ? '?' : '&') + 'utm_source=newsletter&utm_medium=email&utm_campaign=' + encodeURIComponent(camp) + '&utm_content=' + slot + (hash || '');
+  }
+  var homeUrl = P.home, pageUrl = P.page, withCode = code ? '#r=' + code : '';
+  var hrefInvite = home ? link(homeUrl, 'invite', '#test') : link(pageUrl, 'invite', withCode);
+  var hrefCard = home ? link(homeUrl, 'card', '#test') : link(pageUrl, 'card', withCode);
+  var hrefImage = link(pageUrl, 'image', withCode);
+  var num = function (v) { try { return new Intl.NumberFormat(P.dateLocale || 'ru-RU', v % 1 ? { minimumFractionDigits: 2, maximumFractionDigits: 2 } : {}).format(v); } catch (e) { return String(v); } };
+  var money = function (v) { return fmt(P.priceTpl || '{price}', { price: num(v) }).replace(/ /g, ' '); };
+  var owner = !!o.owner && P.owner > 0 && P.owner < P.price;
+  var brand = P.brand;
+  function day(d) {
+    if (lang !== 'ru' && P.dateLocale) { try { return new Intl.DateTimeFormat(P.dateLocale, { timeZone: 'Europe/Moscow', day: 'numeric', month: 'long', year: 'numeric' }).format(d).replace(/ /g, ' '); } catch (e) {} }
+    return Utilities.formatDate(d, 'Europe/Moscow', 'dd.MM.yyyy');
+  }
+  // {site} — ссылка на главную версии с меткой места; {brand} — название продукта жирным
+  function rich(s, vars, color, slot) {
+    return esc(fmt(s, Object.assign({ site: '\u0001', brand: '\u0002' }, vars)))
+      .replace('\u0001', '<a href="' + esc(link(homeUrl, slot)) + '" style="color:' + color + '">' + esc(site) + '</a>').replace('\u0002', '<b>' + esc(brand) + '</b>');
+  }
+  var plain = function (s, vars) { return fmt(s, Object.assign({ site: site, brand: brand }, vars)); };
+  var name = r ? String(r.name || '').trim() : '';
+  var subject = home ? X.subjectHome : name ? fmt(X.subject, { name: name }) : X.subjectNoName;
+  var preheader = plain(X.preheader);
+  var greeting = name ? fmt(L.email.greeting, { name: name }) : (L.promo && L.promo.greetingNoName) || L.email.greetingNoName || '';
+  var dot = function (k, m) { return '<span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:' + COLORS[k] + ';margin-' + (rtl ? 'left' : 'right') + ':' + m + ';vertical-align:middle"></span>'; };
+  var btn = function (href, t) { return '<a href="' + esc(href) + '" style="display:block;background:#1B2027;color:#ffffff;text-decoration:none;font-size:15px;font-weight:bold;text-align:center;padding:13px 8px;border-radius:8px">' + esc(t) + '</a>'; };
+  var profile = '', textProfile = '';
+  if (!home) {
+    var sc = score(r), c = classify(sc), prof = L.profiles[c.key], opp = { D: 'S', S: 'D', I: 'C', C: 'I' }[c.p];
+    var styleName = c.s ? L.keys[c.p] + ' + ' + L.keys[c.s] : L.keys[c.p];
+    var badge = '<span style="color:' + COLORS[c.p] + '">' + c.p + '</span>' + (c.s ? '<span style="color:' + COLORS[c.s] + ';font-size:22px">' + c.s + '</span>' : '');
+    profile = '<p style="margin:0 0 6px">' + esc(X.profile) + '</p>' +
+      '<p style="margin:0 0 2px;font-size:34px;font-weight:bold;line-height:1">' + badge + '&nbsp; ' + esc(prof.name) + '</p>' +
+      '<p style="margin:0 0 18px;font-size:13px;color:#5B6470">' + esc(styleName) + '</p>' +
+      '<p style="margin:0 0 18px;padding:8px 12px;background:#F3F4F6;border-' + start + ':3px solid ' + COLORS[opp] + '">' + esc(X.hard[c.p]) + '</p>' +
+      '<p style="margin:0 0 14px">' + esc(X.near) + '</p>';
+    textProfile = X.profile + ' ' + c.key + ' · ' + prof.name + ' (' + styleName + ')\n\n' + X.hard[c.p] + '\n\n' + X.near + '\n\n';
+  } else {
+    profile = '<p style="margin:0 0 14px">' + esc(X.homeIntro) + '</p>';
+    textProfile = X.homeIntro + '\n\n';
+  }
+  var steps = (home ? [X.homeStep] : []).concat(X.steps);
+  var items = X.items.map(function (x) { return [plain(x[0]), plain(x[1])]; });
+  var image = P.image ? SITE_URL + '/pair/' + lang + '-mail.jpg' : '';
+  var priceHtml = owner
+    ? (P.plain ? '<b style="font-size:24px">' + esc(money(P.owner)) + '</b>' : '<s style="color:#5B6470">' + esc(money(P.price)) + '</s>&nbsp; <b style="font-size:24px">' + esc(money(P.owner)) + '</b>')
+    : '<b style="font-size:24px">' + esc(money(P.price)) + '</b>';
+  var priceParts = esc(fmt(X.priceLine, { brand: brand, price: '\u0000' })).split('\u0000');
+  var button = home ? X.takeTest : X.invite;
+  var footer = home ? X.footerHome : (L.promo && L.promo.footer) || X.footerHome;
+  var html = '<!DOCTYPE html><html lang="' + lang + '" dir="' + (L.dir || 'ltr') + '"><body style="margin:0;background:#F3F4F6;font-family:Arial,Helvetica,sans-serif;color:#1B2027">' +
+    '<div style="display:none;max-height:0;max-width:0;overflow:hidden;mso-hide:all;font-size:1px;line-height:1px;color:#F3F4F6;opacity:0">' + esc(preheader) + new Array(41).join('&#8199;&#847;') + '</div>' +
+    '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F3F4F6"><tr><td align="center" style="padding:24px 12px">' +
+    '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background:#ffffff;border:1px solid #D9DDE3;border-radius:14px"><tr><td style="padding:28px;font-size:16px;line-height:1.5">' +
+    '<p style="margin:0 0 16px;font-size:12px;line-height:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:bold"><a href="' + esc(link(homeUrl, 'logo')) + '" style="color:#5B6470;text-decoration:none">' +
+      dot('D', '3px') + dot('I', '3px') + dot('S', '3px') + dot('C', '10px') + '<span style="vertical-align:middle">DISC</span></a></p>' +
+    '<p style="margin:0 0 8px">' + esc(greeting) + '</p>' + profile +
+    '<p style="margin:0 0 14px">' + rich(home ? X.newsHome : X.news, {}, '#1B2027', 'site') + '</p>' +
+    '<p style="margin:0 0 6px;font-weight:bold">' + esc(X.howTitle) + '</p>' +
+    '<ol style="margin:0 0 18px;padding-' + start + ':20px">' + steps.map(function (s) { return '<li style="margin:0 0 4px">' + esc(s) + '</li>'; }).join('') + '</ol>' +
+    '<div style="margin:0 0 26px">' + btn(hrefInvite, button) + '</div>' +
+    '<p style="margin:0 0 8px;font-size:19px;font-weight:bold;line-height:1.3">' + esc(plain(X.reportTitle)) + '</p>' +
+    '<p style="margin:0 0 6px">' + esc(X.reportLead) + '</p>' +
+    '<ul style="margin:0 0 16px;padding-' + start + ':20px">' + items.map(function (x) { return '<li style="margin:0 0 4px"><b>' + esc(x[0]) + '</b>' + gap + esc(x[1]) + '</li>'; }).join('') + '</ul>' +
+    (image ? '<p style="margin:0 0 6px"><a href="' + esc(hrefImage) + '"><img src="' + esc(image) + '" width="504" alt="' + esc(plain(X.imageAlt)) + '" style="display:block;width:100%;max-width:504px;height:auto;border:0"></a></p>' +
+      '<p style="margin:0 0 14px;font-size:12px;color:#5B6470">' + esc(X.sample) + '</p>' : '') +
+    '<p style="margin:0 0 18px">' + esc(X.facts) + '</p>' +
+    '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 22px;border:2px solid #1B2027;border-radius:12px"><tr><td style="padding:16px 14px">' +
+      '<p style="margin:0 0 10px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:bold;color:#3A9A69">' + esc(plain(X.eyebrow)) + '</p>' +
+      '<p style="margin:0 0 12px;font-size:15px">' + priceParts[0] + priceHtml + (priceParts[1] || '') + '</p>' +
+      (owner ? '<p style="margin:-4px 0 12px;font-size:14px;line-height:1.45;color:#3A9A69">' + esc(fmt(X.ownerNote, { owner: money(P.owner) })) + '</p>' : '') +
+      btn(hrefCard, button) +
+      '<p style="margin:12px 0 0;font-size:13px;line-height:1.45;color:#5B6470">' + esc(X.cardNote) + '</p>' +
+    '</td></tr></table>' +
+    '<p style="margin:0;padding-top:12px;border-top:1px solid #D9DDE3;font-size:12px;color:#5B6470">' + rich(footer, { date: day(o.consentAt) }, '#5B6470', 'footer') +
+      gap + '<a href="' + esc(o.unsubUrl) + '" style="color:#5B6470">' + esc(L.email.unsubscribe) + '</a>' + stop + '</p>' +
+    '</td></tr></table></td></tr></table></body></html>';
+  var text = greeting + '\n\n' + textProfile + plain(home ? X.newsHome : X.news) + '\n\n' + X.howTitle + '\n' +
+    steps.map(function (s, i) { return (i + 1) + '. ' + s; }).join('\n') + '\n' + button + ': ' + hrefInvite + '\n\n' +
+    plain(X.reportTitle) + '\n' + X.reportLead + '\n' + items.map(function (x) { return '• ' + x[0] + gap + x[1]; }).join('\n') + '\n\n' + X.facts + '\n\n' +
+    fmt(X.priceLine, { brand: brand, price: owner ? money(P.owner) : money(P.price) }) + (owner ? '\n' + fmt(X.ownerNote, { owner: money(P.owner) }) : '') + '\n' +
+    button + ': ' + hrefCard + '\n' + X.cardNote + '\n\n' + plain(footer, { date: day(o.consentAt) }) + '\n' + L.email.unsubscribe + ': ' + o.unsubUrl + '\n';
+  return { subject: subject, preheader: preheader, html: html, text: text };
+}
+
+/**
  * Письмо распродажи для подписчиков и письмо её последнего дня (с 2026-11-08, решение заказчика — «вариант В»; отправляет свой сервер, src/sale.js).
  * Тексты — DATA[язык].sale (content.mailing.sale); тезисы, листы образца, кнопка, «бесплатно», строка о самой низкой шкале, подвал — из письма подписчикам (DATA[язык].promo).
  * С 2026-11-12 (по итогам 11.11): повод — из настроек ({occasion}: X.occasions[ключ]), а не в тексте; тема письма — одна из двух (variant 'A' — subject,

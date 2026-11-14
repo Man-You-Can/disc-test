@@ -1358,6 +1358,64 @@
       "footer": "Jeśli ten adres nie został podany przez ciebie, nie musisz nic robić: bez potwierdzenia newsletter nie będzie przychodzić, a adres zostanie usunięty po 7 dniach."
     },
     "mailing": {
+      "pair": {
+        "subject": "{name}, z kim najczęściej się ścierasz i dlaczego?",
+        "subjectNoName": "Z kim najczęściej się ścierasz i dlaczego?",
+        "subjectHome": "Nowość w DISC: porównaj swój profil z kimś bliskim",
+        "preheader": "Nowość w serwisie {site}: porównaj swój profil DISC z kimś z pracy, z domu albo z grona znajomych",
+        "profile": "Twój profil DISC:",
+        "hard": {
+          "D": "Stylowi D najtrudniej ze stylem przeciwnym: S (stałość). Ty ponaglasz, a osoba S potrzebuje czasu. Ty łatwo wchodzisz w spór, a ona unika go za wszelką cenę i zgadza się w milczeniu. To najtrudniejsza para w DISC i zarazem jedna z najcenniejszych.",
+          "I": "Stylowi I najtrudniej ze stylem przeciwnym: C (sumienność). Ty obiecujesz, a osoba C sprawdza i znajduje rozbieżności. Ty potrzebujesz rozmowy i szybkości, ona ciszy i czasu. Trudna para, która przy wzajemnym zaufaniu staje się mocna.",
+          "S": "Stylowi S najtrudniej ze stylem przeciwnym: D (dominacja). Ty potrzebujesz czasu, a osoba D ponagla. Ty dbasz o spokój, a ona łatwo wchodzi w spór i bierze twoje milczenie za zgodę. To najtrudniejsza para w DISC i zarazem jedna z najcenniejszych.",
+          "C": "Stylowi C najtrudniej ze stylem przeciwnym: I (wpływ). Osoba I obiecuje, a ty sprawdzasz i znajdujesz rozbieżności. Ty potrzebujesz ciszy i czasu, ona rozmowy i szybkości. Trudna para, która przy wzajemnym zaufaniu staje się mocna."
+        },
+        "near": "Pewnie masz kogoś takiego obok siebie: szefa, kogoś z zespołu, partnera lub partnerkę, kogoś z rodziny. Rzadko kłócimy się o samą sprawę. Kłócimy się o różnicę stylów i latami o to samo.",
+        "homeIntro": "Wiesz, jak działasz. Ale nikt nie pracuje i nie żyje w pojedynkę: szef, zespół, partner czy partnerka mają swój styl. Rzadko kłócimy się o samo zadanie, częściej o różnicę stylów: jedna osoba ponagla, druga potrzebuje czasu; jedna mówi wprost, druga słyszy w tym niegrzeczność.",
+        "news": "Teraz możesz spojrzeć na to z boku. Nowość w serwisie {site}: „{brand}”. Druga osoba robi test, a wasze profile stają obok siebie. Od razu widać, gdzie macie wiele wspólnego, a gdzie ciągniecie w różne strony.",
+        "newsHome": "Teraz możesz spojrzeć na to z boku. Nowość w serwisie {site}: „{brand}”. Każde z was robi test, a wasze profile stają obok siebie. Od razu widać, gdzie macie wiele wspólnego, a gdzie ciągniecie w różne strony.",
+        "howTitle": "Jak to działa",
+        "steps": [
+          "Wyślij zaproszenie osobie, z którą chcesz porównać wyniki: w komunikatorze albo jako link.",
+          "Ta osoba robi test: bezpłatnie, w około 10 minut.",
+          "Widzicie oba profile obok siebie: gdzie jesteście blisko, a gdzie różnica jest największa. To też jest bezpłatne."
+        ],
+        "homeStep": "Zrób test: bezpłatnie, w około 10 minut.",
+        "invite": "Zaproś drugą osobę",
+        "takeTest": "Zrób test",
+        "reportTitle": "Żeby naprawdę to zrozumieć, jest raport „{brand}”",
+        "reportLead": "Jest pisany dla was dwojga, na podstawie wszystkich czterech skal każdej osoby. Nie mówi, czy „pasujecie do siebie, czy nie”, tylko jak razem pracować i żyć, żeby różnica wam pomagała, a nie was dzieliła:",
+        "items": [
+          [
+            "Pięć sytuacji tarć.",
+            "Jak każda wygląda w pracy i w domu, co czuje każda ze stron i co pomaga."
+          ],
+          [
+            "Gotowe sformułowania dla każdej ze stron.",
+            "Jak zacząć trudną rozmowę i jak do siebie pisać."
+          ],
+          [
+            "Jak decydować razem",
+            "i zatrzymać spór, zanim się rozkręci."
+          ],
+          [
+            "Praca i życie prywatne.",
+            "Osobne rozdziały dla współpracowników, dla szefa i pracownika oraz dla pary, przyjaciół i rodziny."
+          ],
+          [
+            "„Wspólna umowa”",
+            "i wspólny plan na 30 dni."
+          ]
+        ],
+        "imageAlt": "Przykładowe strony raportu „{brand}”",
+        "sample": "Strony z przykładowego raportu dla pary D i S",
+        "facts": "Około 22 stron PDF. Raport przychodzi e-mailem w ciągu 24 godzin, a przed wysyłką człowiek czyta go w całości. Kopię możesz wysłać drugiej osobie.",
+        "eyebrow": "Nowość w serwisie {site}",
+        "priceLine": "Raport „{brand}”: {price}",
+        "ownerNote": "Dla ciebie cena wynosi {owner}, bo masz już raport rozszerzony. Obowiązuje przy zamówieniu na ten sam adres e-mail.",
+        "cardNote": "Najpierw test robią obie osoby, potem płatność. Porównanie profili jest bezpłatne.",
+        "footerHome": "Dostajesz tę wiadomość, ponieważ {date} r. ten adres został zapisany do newslettera {site} na stronie głównej."
+      },
       "promo": {
         "subject": "{name}, co jeszcze mówi twój wynik {key}",
         "subjectNoName": "Co jeszcze mówi twój wynik DISC {key}",

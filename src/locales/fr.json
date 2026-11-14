@@ -2334,6 +2334,64 @@
       "footer": "Si cette demande ne vient pas de vous, vous n'avez rien à faire : sans confirmation, la newsletter ne vous sera pas envoyée et l'adresse sera supprimée au bout de 7 jours."
     },
     "mailing": {
+      "pair": {
+        "subject": "{name}, avec qui vous accrochez-vous le plus, et pourquoi ?",
+        "subjectNoName": "Avec qui vous accrochez-vous le plus, et pourquoi ?",
+        "subjectHome": "Nouveau sur DISC : comparez votre profil avec un proche",
+        "preheader": "Nouveau sur {site} : comparez votre profil DISC avec un collègue, votre partenaire ou un ami",
+        "profile": "Votre profil DISC :",
+        "hard": {
+          "D": "Le style D a le plus de mal avec le style opposé : S (stabilité). Vous pressez, alors qu'une personne S a besoin de temps. Vous entrez facilement dans un désaccord, alors qu'elle l'évite à tout prix et acquiesce en silence. C'est la paire la plus difficile du DISC, et l'une des plus utiles.",
+          "I": "Le style I a le plus de mal avec le style opposé : C (conformité). Vous promettez, et une personne C vérifie et trouve des incohérences. Il vous faut du contact et de la vitesse, il lui faut du silence et du temps. Une paire difficile, qui devient forte avec la confiance.",
+          "S": "Le style S a le plus de mal avec le style opposé : D (dominance). Vous avez besoin de temps, alors qu'une personne D presse. Vous préservez la paix, alors qu'elle entre facilement dans un désaccord et prend votre silence pour un oui. C'est la paire la plus difficile du DISC, et l'une des plus utiles.",
+          "C": "Le style C a le plus de mal avec le style opposé : I (influence). Une personne I promet, et vous vérifiez et trouvez des incohérences. Il vous faut du silence et du temps, il lui faut du contact et de la vitesse. Une paire difficile, qui devient forte avec la confiance."
+        },
+        "near": "Vous avez sûrement quelqu'un comme ça près de vous : un responsable, un collègue, votre partenaire, un proche. On se dispute rarement sur le fond. On se dispute sur la différence de style, et pendant des années sur les mêmes sujets.",
+        "homeIntro": "Vous savez comment vous fonctionnez. Mais personne ne travaille ni ne vit en vase clos : votre responsable, vos collègues, votre partenaire ont leur propre style. Et on se dispute rarement sur le fond, plutôt sur la différence de style : l'un presse, l'autre a besoin de temps ; l'un parle franchement, l'autre l'entend comme de la brusquerie.",
+        "news": "Vous pouvez maintenant le voir de l'extérieur. Nouveau sur {site} : « {brand} ». L'autre personne passe le test, et vos profils s'affichent côte à côte. On voit tout de suite où vous vous ressemblez et où vous tirez dans des sens opposés.",
+        "newsHome": "Vous pouvez maintenant le voir de l'extérieur. Nouveau sur {site} : « {brand} ». Chacun de vous passe le test, et vos profils s'affichent côte à côte. On voit tout de suite où vous vous ressemblez et où vous tirez dans des sens opposés.",
+        "howTitle": "Comment ça marche",
+        "steps": [
+          "Envoyez une invitation à la personne avec qui vous voulez comparer vos résultats : par messagerie ou par lien.",
+          "Elle passe le test : c'est gratuit et cela prend environ 10 minutes.",
+          "Vous voyez les deux profils côte à côte : où vous êtes proches et où l'écart est le plus grand. C'est gratuit aussi."
+        ],
+        "homeStep": "Passez le test : c'est gratuit et cela prend environ 10 minutes.",
+        "invite": "Inviter la deuxième personne",
+        "takeTest": "Passer le test",
+        "reportTitle": "Pour aller au fond des choses, il y a le rapport « {brand} »",
+        "reportLead": "Il est rédigé pour votre duo, à partir des quatre échelles de chacun. Il ne dit pas si vous êtes « compatibles ou non », mais comment travailler et vivre côte à côte pour que la différence vous aide au lieu de vous opposer :",
+        "items": [
+          [
+            "Cinq situations de friction.",
+            "À quoi chacune ressemble au travail et à la maison, ce que vit chaque personne et ce qui aide."
+          ],
+          [
+            "Des phrases toutes prêtes pour chacun.",
+            "Comment engager une conversation difficile et comment vous écrire."
+          ],
+          [
+            "Décider à deux",
+            "et arrêter un désaccord avant qu'il ne s'envenime."
+          ],
+          [
+            "Travail et vie privée.",
+            "Des sections distinctes pour des collègues, pour un responsable et un membre de son équipe, et pour un couple, des amis ou des proches."
+          ],
+          [
+            "« Notre accord »",
+            "et un plan sur 30 jours à deux."
+          ]
+        ],
+        "imageAlt": "Pages d'exemple du rapport « {brand} »",
+        "sample": "Pages du rapport d'exemple d'un duo D et S",
+        "facts": "Environ 22 pages en PDF. Le rapport arrive par e-mail dans les 24 heures, et avant l'envoi une personne le lit en entier. Vous pouvez en envoyer une copie à l'autre personne.",
+        "eyebrow": "Nouveau sur {site}",
+        "priceLine": "Rapport « {brand} » : {price}",
+        "ownerNote": "Pour vous, le prix est de {owner}, car vous avez déjà acheté le rapport détaillé. Il s'applique à une commande passée avec cette même adresse e-mail.",
+        "cardNote": "Vous passez d'abord le test tous les deux, puis vous payez. La comparaison des profils est gratuite.",
+        "footerHome": "Vous recevez cet e-mail parce que, le {date}, vous avez demandé à recevoir les e-mails de {site} depuis la page d'accueil du site."
+      },
       "promo": {
         "subject": "{name}, ce que votre résultat {key} peut encore vous apprendre",
         "subjectNoName": "Ce que votre résultat DISC {key} peut encore vous apprendre",

@@ -112,6 +112,13 @@ for (const f of files) {
   if (P.pay && !(C.mailing && C.mailing.promo)) errs.push('.content.mailing.promo: missing — the report is on sale in this language, so the subscriber mail goes with it (CLAUDE.md)');
   // распродажа для подписчиков (с 2026-11-08, private/server/src/sale.js): письмо и напоминание (mailing.sale) и плашка формы покупки (product.pay.sale) — по этому же правилу
   if (P.pay && !(C.mailing && C.mailing.sale)) errs.push('.content.mailing.sale: missing — the report is on sale in this language, so the sale mail goes with it (CLAUDE.md)');
+  // письмо подписчикам о «DISC на двоих» (с 2026-11-14, content.mailing.pair): где продаётся отчёт на двоих (content.pair при product.pay) — по тому же правилу
+  if (P.pay && C.pair && !(C.mailing && C.mailing.pair)) errs.push('.content.mailing.pair: missing — DISC for two is on sale in this language, so its subscriber mail goes with it (CLAUDE.md)');
+  const MPR = C.mailing && C.mailing.pair;
+  if (MPR) for (const k of ['news', 'newsHome', 'reportTitle', 'imageAlt', 'priceLine']) if (!/\{brand\}/.test(String(MPR[k] || ''))) errs.push('.content.mailing.pair.' + k + ': needs {brand}');
+  if (MPR && !/\{price\}/.test(MPR.priceLine || '')) errs.push('.content.mailing.pair.priceLine: needs {price}');
+  if (MPR && !/\{owner\}/.test(MPR.ownerNote || '')) errs.push('.content.mailing.pair.ownerNote: needs {owner}');
+  if (MPR && /\u2014/.test(JSON.stringify(MPR))) errs.push('.content.mailing.pair: no em dashes in this mail (client request 2026-11-14)');
   if (P.pay && !P.pay.sale) errs.push('.content.product.pay.sale: missing — the report is on sale in this language, so the sale plate goes with it (CLAUDE.md)');
   if (P.pay && P.pay.sale && !['cta', 'note', 'expired'].every(k => typeof P.pay.sale[k] === 'string' && P.pay.sale[k])) errs.push('.content.product.pay.sale: needs cta, note and expired');
   if (P.pay && P.pay.sale && !/\{salePrice\}/.test(P.pay.sale.cta)) errs.push('.content.product.pay.sale.cta: needs {salePrice}');

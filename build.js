@@ -1702,7 +1702,10 @@ for (const L of locales) {
     mailData[L.lang].gift = Object.assign({ name: GT.name, page: home + 'gift/', home, dateLocale: L.dateLocale, dir: L.dir, cert: GT.cert, mail: GT.mail, rmail: GT.rmail, sampleName: GT.sampleName, sampleFrom: GT.sampleFrom }, GIFT); }
   // «DISC на двоих» (hasPair, с 2026-11-14): название для платёжной страницы и чека, цены, адрес страницы (возврат с оплаты), тексты писем
   if (hasPair(L)) { const PP = pairPrice(L);
-    mailData[L.lang].pair = { name: L.content.pair.name, brand: L.content.pair.h1, price: PP.price, owner: PP.owner, currency: PP.cur, page: urlOf(L.lang) + 'pair/', home: urlOf(L.lang), dateLocale: L.dateLocale, dir: L.dir, mail: L.content.pair.mail }; }
+    mailData[L.lang].pair = { name: L.content.pair.name, brand: L.content.pair.h1, price: PP.price, owner: PP.owner, currency: PP.cur, page: urlOf(L.lang) + 'pair/', home: urlOf(L.lang), dateLocale: L.dateLocale, dir: L.dir, mail: L.content.pair.mail,
+      // письмо подписчикам о «DISC на двоих» (content.mailing.pair, с 2026-11-14): тексты, запись цены языка, есть ли картинка листов (src/assets/pair/<язык>-mail.jpg → /pair/<язык>-mail.jpg)
+      news: L.content.mailing && L.content.mailing.pair, priceTpl: L.content.services.price || '{price}', plain: !!(L.content.mailing && L.content.mailing.sale && L.content.mailing.sale.plain),
+      image: fs.existsSync(path.join(ASSETS, 'pair', L.lang + '-mail.jpg')) }; }
   // файл с кодами доступа для покупателя (панель, страница партии → «Скачать коды файлом», с 2026-11-12): заголовки столбцов на языке партии и адрес,
   // где вводить код, — главная этого языка
   if (hasBusiness(L) && Array.isArray(L.content.business.csv)) mailData[L.lang].codes = { csv: L.content.business.csv, home: urlOf(L.lang) };

@@ -1357,6 +1357,64 @@
       "footer": "Abone olmadıysanız hiçbir şey yapmanız gerekmez: onay verilmezse bülten gönderilmez ve adres 7 gün sonra silinir."
     },
     "mailing": {
+      "pair": {
+        "subject": "{name}, en çok kiminle ters düşüyorsunuz ve neden?",
+        "subjectNoName": "En çok kiminle ters düşüyorsunuz ve neden?",
+        "subjectHome": "DISC’te yeni: profilinizi yakınınızdaki biriyle karşılaştırın",
+        "preheader": "{site} sitesinde yeni: DISC profilinizi bir iş arkadaşınızla, partnerinizle ya da bir dostunuzla karşılaştırın",
+        "profile": "DISC profiliniz:",
+        "hard": {
+          "D": "D tarzı en çok karşıt tarzla zorlanır: S (istikrar). Siz acele ettirirsiniz, S tarzındaki kişinin ise zamana ihtiyacı vardır. Siz tartışmaya kolayca girersiniz, o ise tartışmadan ne pahasına olursa olsun kaçınır ve sessizce kabul eder. Bu, DISC’in en zor ikilisi ve aynı zamanda en faydalı ikililerinden biri.",
+          "I": "I tarzı en çok karşıt tarzla zorlanır: C (titizlik). Siz söz verirsiniz, C tarzındaki kişi ise kontrol eder ve tutarsızlıklar bulur. Size iletişim ve hız gerekir, ona sessizlik ve zaman. Zor bir ikili, ama güven oluştuğunda güçlenir.",
+          "S": "S tarzı en çok karşıt tarzla zorlanır: D (baskınlık). Sizin zamana ihtiyacınız vardır, D tarzındaki kişi ise acele ettirir. Siz huzuru korursunuz, o ise tartışmaya kolayca girer ve sessizliğinizi “evet” sanır. Bu, DISC’in en zor ikilisi ve aynı zamanda en faydalı ikililerinden biri.",
+          "C": "C tarzı en çok karşıt tarzla zorlanır: I (etkileyicilik). I tarzındaki kişi söz verir, siz ise kontrol eder ve tutarsızlıklar bulursunuz. Size sessizlik ve zaman gerekir, ona iletişim ve hız. Zor bir ikili, ama güven oluştuğunda güçlenir."
+        },
+        "near": "Çevrenizde muhtemelen böyle biri var: yöneticiniz, bir iş arkadaşınız, partneriniz, ailenizden biri. İnsanlar nadiren işin kendisi yüzünden tartışır. Tarz farkı yüzünden tartışırlar, hem de yıllarca aynı konular üzerine.",
+        "homeIntro": "Nasıl davrandığınızı biliyorsunuz. Ama kimse tek başına çalışmaz ve yaşamaz: yöneticinizin, iş arkadaşlarınızın, partnerinizin kendi tarzı vardır. Tartışmalar da çoğu zaman işin kendisinden değil, tarz farkından çıkar: biri acele ettirir, diğerinin zamana ihtiyacı vardır; biri açık konuşur, diğeri bunu kabalık olarak algılar.",
+        "news": "Artık buna dışarıdan bakabilirsiniz. {site} sitesinde yeni: “{brand}”. İkinci kişi testi çözer ve profilleriniz yan yana gelir. Nerede benzediğinizi ve nerede farklı yönlere çektiğinizi hemen görürsünüz.",
+        "newsHome": "Artık buna dışarıdan bakabilirsiniz. {site} sitesinde yeni: “{brand}”. İkiniz de testi çözersiniz ve profilleriniz yan yana gelir. Nerede benzediğinizi ve nerede farklı yönlere çektiğinizi hemen görürsünüz.",
+        "howTitle": "Nasıl işler",
+        "steps": [
+          "Sonuçlarınızı karşılaştırmak istediğiniz kişiye bir davet gönderin: mesajlaşma uygulamasıyla ya da bağlantı olarak.",
+          "O kişi testi çözer: ücretsiz, yaklaşık 10 dakika.",
+          "İki profili yan yana görürsünüz: nerede yakın olduğunuzu ve en büyük farkın nerede olduğunu. Bu da ücretsiz."
+        ],
+        "homeStep": "Testi çözün: ücretsiz, yaklaşık 10 dakika.",
+        "invite": "İkinci kişiyi davet et",
+        "takeTest": "Teste başla",
+        "reportTitle": "Gerçekten anlamak için “{brand}” raporu var",
+        "reportLead": "Rapor ikiliniz için, ikinizin de dört ölçeğine göre yazılır. “Uyumlu musunuz, değil misiniz” sorusuna cevap vermez; farkın sizi ayırmak yerine işinize yaraması için birlikte nasıl çalışıp yaşayacağınızı anlatır:",
+        "items": [
+          [
+            "Beş sürtüşme durumu.",
+            "Her birinin iş yerinde ve evde nasıl göründüğü, her birinizin ne hissettiği ve neyin işe yaradığı."
+          ],
+          [
+            "Her biriniz için hazır cümleler.",
+            "Zor bir konuşmaya nasıl başlayacağınız ve birbirinize nasıl yazacağınız."
+          ],
+          [
+            "Birlikte karar vermek",
+            "ve tartışmayı büyümeden durdurmak."
+          ],
+          [
+            "İş ve özel hayat.",
+            "İş arkadaşları, yönetici ve çalışan, ayrıca çiftler, arkadaşlar ve aileler için ayrı bölümler."
+          ],
+          [
+            "“Aramızdaki anlaşma”",
+            "ve ikiniz için 30 günlük plan."
+          ]
+        ],
+        "imageAlt": "“{brand}” raporundan örnek sayfalar",
+        "sample": "Bir D ve S ikilisi için örnek rapordan sayfalar",
+        "facts": "Yaklaşık 22 sayfalık PDF. Rapor 24 saat içinde e-postayla gelir; gönderilmeden önce bir insan raporun tamamını okur. Bir kopyasını ikinci kişiye gönderebilirsiniz.",
+        "eyebrow": "{site} sitesinde yeni",
+        "priceLine": "“{brand}” raporu: {price}",
+        "ownerNote": "Sizin için fiyat {owner}, çünkü daha önce genişletilmiş raporu satın aldınız. Bu fiyat aynı e-posta adresiyle verilen siparişte geçerlidir.",
+        "cardNote": "Önce ikiniz de testi çözersiniz, sonra ödeme yapılır. Profillerin karşılaştırılması ücretsizdir.",
+        "footerHome": "Bu e-postayı, {date} tarihinde {site} sitesinin ana sayfasında e-posta listesine abone olduğunuz için aldınız."
+      },
       "promo": {
         "subject": "{name}, {key} sonucunuz size başka neler söylüyor",
         "subjectNoName": "DISC {key} sonucunuz size başka neler söylüyor",

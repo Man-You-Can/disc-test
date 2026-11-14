@@ -1365,6 +1365,64 @@
       "footer": "Jika Anda tidak mendaftar, Anda tidak perlu melakukan apa pun: tanpa konfirmasi, buletin tidak akan dikirim, dan alamat ini akan dihapus setelah 7 hari."
     },
     "mailing": {
+      "pair": {
+        "subject": "{name}, dengan siapa Anda paling sering berbenturan, dan mengapa?",
+        "subjectNoName": "Dengan siapa Anda paling sering berbenturan, dan mengapa?",
+        "subjectHome": "Baru di DISC: bandingkan profil Anda dengan orang terdekat",
+        "preheader": "Baru di {site}: bandingkan profil DISC Anda dengan rekan kerja, pasangan, atau sahabat",
+        "profile": "Profil DISC Anda:",
+        "hard": {
+          "D": "Gaya D paling kesulitan dengan gaya yang berlawanan: S (Kestabilan). Anda mendesak, sementara orang bergaya S butuh waktu. Anda mudah masuk ke perdebatan, sementara ia menghindarinya dengan segala cara dan diam-diam mengiyakan. Ini pasangan paling sulit dalam DISC sekaligus salah satu yang paling bermanfaat.",
+          "I": "Gaya I paling kesulitan dengan gaya yang berlawanan: C (Ketelitian). Anda berjanji, sementara orang bergaya C memeriksa dan menemukan ketidaksesuaian. Anda butuh interaksi dan kecepatan, ia butuh ketenangan dan waktu. Pasangan sulit yang menjadi kuat bila ada kepercayaan.",
+          "S": "Gaya S paling kesulitan dengan gaya yang berlawanan: D (Dominasi). Anda butuh waktu, sementara orang bergaya D mendesak. Anda menjaga suasana tetap damai, sementara ia mudah masuk ke perdebatan dan menganggap diam Anda sebagai persetujuan. Ini pasangan paling sulit dalam DISC sekaligus salah satu yang paling bermanfaat.",
+          "C": "Gaya C paling kesulitan dengan gaya yang berlawanan: I (Pengaruh). Orang bergaya I berjanji, sementara Anda memeriksa dan menemukan ketidaksesuaian. Anda butuh ketenangan dan waktu, ia butuh interaksi dan kecepatan. Pasangan sulit yang menjadi kuat bila ada kepercayaan."
+        },
+        "near": "Mungkin ada orang seperti itu di dekat Anda: atasan, rekan kerja, pasangan, atau anggota keluarga. Orang jarang berselisih karena urusannya sendiri. Mereka berselisih karena perbedaan gaya, dan bertahun-tahun soal hal yang sama.",
+        "homeIntro": "Anda tahu cara Anda bertindak. Tetapi tidak ada yang bekerja dan hidup sendirian: atasan, rekan kerja, dan pasangan Anda punya gaya sendiri. Perselisihan jarang muncul karena tugasnya, lebih sering karena perbedaan gaya: yang satu mendesak, yang lain butuh waktu; yang satu bicara terus terang, yang lain mendengarnya sebagai sikap kasar.",
+        "news": "Kini Anda bisa melihatnya dari luar. Baru di {site}: “{brand}”. Orang kedua mengikuti tes, lalu profil Anda berdua tampil berdampingan. Langsung terlihat di mana Anda mirip dan di mana Anda menarik ke arah yang berbeda.",
+        "newsHome": "Kini Anda bisa melihatnya dari luar. Baru di {site}: “{brand}”. Anda berdua mengikuti tes, lalu profil Anda tampil berdampingan. Langsung terlihat di mana Anda mirip dan di mana Anda menarik ke arah yang berbeda.",
+        "howTitle": "Cara kerjanya",
+        "steps": [
+          "Kirim undangan kepada orang yang hasilnya ingin Anda bandingkan: lewat aplikasi pesan atau sebagai tautan.",
+          "Ia mengikuti tes: gratis, sekitar 10 menit.",
+          "Anda melihat kedua profil berdampingan: di mana Anda dekat dan di mana jaraknya paling besar. Ini juga gratis."
+        ],
+        "homeStep": "Ikuti tes: gratis, sekitar 10 menit.",
+        "invite": "Undang orang kedua",
+        "takeTest": "Ikuti tes",
+        "reportTitle": "Untuk benar-benar memahaminya, ada laporan “{brand}”",
+        "reportLead": "Laporan ini ditulis khusus untuk Anda berdua, berdasarkan keempat skala masing-masing. Bukan “cocok atau tidak”, melainkan bagaimana Anda berdua bekerja dan hidup berdampingan sehingga perbedaan justru membantu, bukan membuat Anda berselisih:",
+        "items": [
+          [
+            "Lima situasi gesekan.",
+            "Seperti apa tiap situasi di tempat kerja dan di rumah, apa yang dirasakan masing-masing, dan apa yang membantu."
+          ],
+          [
+            "Kalimat siap pakai untuk masing-masing.",
+            "Cara memulai percakapan yang sulit dan cara saling berkirim pesan."
+          ],
+          [
+            "Cara memutuskan bersama",
+            "dan menghentikan perdebatan sebelum membesar."
+          ],
+          [
+            "Pekerjaan dan kehidupan pribadi.",
+            "Bagian tersendiri untuk rekan kerja, untuk atasan dan anggota timnya, serta untuk pasangan, teman, dan keluarga."
+          ],
+          [
+            "“Kesepakatan berdua”",
+            "dan rencana 30 hari berdua."
+          ]
+        ],
+        "imageAlt": "Contoh halaman laporan “{brand}”",
+        "sample": "Halaman dari contoh laporan untuk pasangan D dan S",
+        "facts": "Sekitar 22 halaman PDF. Laporan dikirim lewat email dalam 24 jam, dan sebelum dikirim seorang manusia membacanya sampai habis. Anda bisa mengirim salinannya kepada orang kedua.",
+        "eyebrow": "Baru di {site}",
+        "priceLine": "Laporan “{brand}”: {price}",
+        "ownerNote": "Untuk Anda harganya {owner}, karena Anda sudah pernah membeli laporan mendalam. Harga ini berlaku untuk pesanan dengan alamat email yang sama.",
+        "cardNote": "Anda berdua mengikuti tes dulu, baru kemudian membayar. Perbandingan profil gratis.",
+        "footerHome": "Anda menerima email ini karena pada {date} Anda berlangganan email dari {site} di halaman utama situs."
+      },
       "promo": {
         "subject": "{name}, apa lagi yang diungkap hasil {key} Anda",
         "subjectNoName": "Apa lagi yang diungkap hasil DISC {key} Anda",

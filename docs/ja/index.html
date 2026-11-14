@@ -2472,6 +2472,12 @@ function initCommon(c){
     var st = lsGet("disc.consent");
     /* отказ «Только необходимое», данный в режиме optin, остаётся в силе и в режиме always: этому посетителю счётчик не загружается */
     if(!optin && st!=="essential") loadYm();
+    /* переход по ссылке из письма рассылки (с 2026-11-14): ссылки писем несут utm_medium=email, utm_campaign (рассылка) и utm_content (место ссылки
+       в письме, например invite, image, card). Цель mail-click с параметрами mail и link — один раз за сеанс на ссылку. Метки берутся из адреса страницы,
+       который счётчик и так получает; ничего о посетителе в цель не добавлять */
+    try{ var mq = new URLSearchParams(location.search);
+      if(mq.get("utm_medium")==="email"){ var mk = "disc.mailclick:"+(mq.get("utm_campaign")||"")+":"+(mq.get("utm_content")||"");
+        if(!sessionStorage.getItem(mk)){ sessionStorage.setItem(mk,"1"); window.discTrack("mail-click",{mail: mq.get("utm_campaign")||"", link: mq.get("utm_content")||""}); } } }catch(e){}
     if(st==="analytics"||st==="essential"||(st==="noted"&&!ask)){ if(ask && st==="analytics") loadYm(); return; }
     var el=document.createElement("div"); el.className="consent no-print"; el.id="consent"; el.setAttribute("role","region"); el.setAttribute("aria-label", t("consent.label"));
     var more = t("consent.details") + (c.privacyHref ? " <a href=\""+esc(c.privacyHref)+"\">"+esc(t("nav.privacy"))+"</a>" : "");
