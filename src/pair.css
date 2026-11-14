@@ -1,0 +1,54 @@
+/* «DISC на двоих»: страница /ru/pair/ (build.js, src/pair.js) — приглашение, сравнение двух профилей, заказ, статус после оплаты. */
+.pr-invite,.pr-sharecard,.pr-chartbox,.pr-order,.pr-invitebox{background:var(--surface,#fff);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin:18px 0}
+.pr-invite{border-width:2px;border-color:var(--ink)}
+.pr-invite h2{margin-top:4px}
+.pr-have{margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
+.pr-have h3{margin-top:0}
+.pr-status{border-radius:12px;padding:14px 18px;background:var(--soft);font-weight:600;margin:16px 0}
+.pr-status.ok{border-left:4px solid var(--s)}
+.pr-status.err{border-left:4px solid var(--d)}
+/* диаграмма: на стиль две полосы 0–100 — сплошная (первый участник) и контурная (второй), черта — середина шкалы */
+.pr-cmp{display:grid;gap:12px;max-width:620px;margin:6px 0 10px}
+.pr-row{display:grid;grid-template-columns:24px 1fr;gap:12px;align-items:center}
+.pr-row .k{font-weight:700;font-size:17px}
+.pr-pair{display:grid;gap:4px}
+.pr-bar{display:grid;grid-template-columns:1fr 48px;gap:10px;align-items:center}
+.pr-bar .tr{display:block;position:relative;height:10px;border-radius:5px;background:var(--soft)}
+.pr-bar .tr::after{content:"";position:absolute;left:50%;top:-3px;bottom:-3px;width:1px;background:var(--line-strong)}
+.pr-bar .tr i{position:absolute;inset:0 auto 0 0;border-radius:5px;box-sizing:border-box}
+.pr-bar .v{font-size:13px;text-align:right;font-variant-numeric:tabular-nums}
+.pr-row.D .k{color:var(--d)} .pr-row.D .m i{background:var(--d)} .pr-row.D .l i{border:1.5px solid var(--d);background:transparent}
+.pr-row.I .k{color:var(--i)} .pr-row.I .m i{background:var(--i)} .pr-row.I .l i{border:1.5px solid var(--i);background:transparent}
+.pr-row.S .k{color:var(--s)} .pr-row.S .m i{background:var(--s)} .pr-row.S .l i{border:1.5px solid var(--s);background:transparent}
+.pr-row.C .k{color:var(--c)} .pr-row.C .m i{background:var(--c)} .pr-row.C .l i{border:1.5px solid var(--c);background:transparent}
+.pr-two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.pr-share{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.pr-share .btn{text-decoration:none}
+.pr-copied{color:var(--s);margin:8px 0 0}
+.pr-how{padding-inline-start:1.3em}
+.pr-how li{margin-bottom:10px}
+.pr-how li b,.pr-how li span{display:block}
+.pr-inside li{margin-bottom:6px}
+.pr-sheets{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:12px 0 6px}
+.pr-sheets img{width:100%;height:auto;border:1px solid var(--line);border-radius:6px;box-shadow:0 6px 18px -12px rgba(0,0,0,.35);background:#fff}
+.pr-for{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.pr-for div{border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.pr-for b,.pr-for span{display:block}
+.pr-for span{color:var(--muted);font-size:15px;margin-top:4px}
+.pr-order .field{margin-bottom:14px}
+.pr-order .field input{width:100%;max-width:420px}
+.po-rel{border:0;padding:0;margin:0 0 14px}
+.po-rel legend{font-weight:600;margin-bottom:6px;padding:0}
+.po-opts{display:flex;flex-wrap:wrap;gap:8px}
+.po-opt{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:10px;padding:7px 12px;cursor:pointer}
+.po-opt input{margin:0}
+.po-lead{margin-top:10px}
+.po-total{border-top:1px solid var(--line);padding-top:14px;margin-top:6px}
+.po-big{font-size:30px;font-weight:700;line-height:1.1}
+.po-pay{margin-top:12px}
+@media (max-width:640px){
+  .pr-invite,.pr-sharecard,.pr-chartbox,.pr-order,.pr-invitebox{padding:16px}
+  .pr-two,.pr-for{grid-template-columns:1fr}
+  .pr-sheets{grid-template-columns:1fr 1fr}
+  .pr-share .btn{flex:1 1 auto;text-align:center}
+}

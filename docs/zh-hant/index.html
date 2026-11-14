@@ -1833,6 +1833,8 @@ function renderReport(r, opts){
     :
       '<div class="share no-print" style="margin-top:16px">'+shareButtons()+'</div>'
     )+
+    // «DISC на двоих»: пришедшему по приглашению — «Сравнить с …» (с 2026-11-14)
+    (opts.own && !opts.fromAdmin ? pairBoxHTML(r, base, 'top') : '')+
     '<div class="card" id="secCard" style="margin-top:16px"><div class="sections">'+
       '<div class="sec"><h3>'+t('report.strengths')+'</h3>'+list(st.strengths)+'</div>'+
       '<div class="sec"><h3>'+t('report.growth')+'</h3>'+list(st.growth)+'</div>'+
@@ -1844,6 +1846,8 @@ function renderReport(r, opts){
     // блок «Расширенный отчёт» — сразу после описания профиля (карточки с «Ключевыми чертами», «Сильными сторонами» и т. д.):
     // с 2026-10-25 по решению заказчика; с 2026-10-22 до 2026-10-25 стоял сразу под графиком
     extOffer()+
+    // «DISC на двоих»: «Пригласить» (с 2026-11-14, только где есть L.content.pair)
+    (opts.own && !opts.fromAdmin ? pairBoxHTML(r, base, 'after') : '')+
     // анонс сервиса «Резюме под каждую вакансию» (content.cvPromo, с 2026-10-24) — после описания профиля; в панели администратора его нет
     (opts.fromAdmin ? '' : cvPromoHTML({P: L.content && L.content.cvPromo, esc: esc, href: base+'cv/', kind: 'result'}))+
     '<div class="print-only printcta"><b>'+t('cta.title')+'</b><p>'+esc(t('cta.text'))+' <b>'+esc(homeURL)+'</b></p></div>'+
@@ -1905,6 +1909,7 @@ function renderReport(r, opts){
   // ссылка для знакомых (с 2026-11-08): адрес страницы без меток визита того, кто делится (utm_source=chatgpt.com и т. п. — иначе
   // знакомый считался бы пришедшим из ChatGPT), с меткой ?ref=share — по ней цель friend-open отличает присланную ссылку (Clean-param: ref в robots.txt)
   shareDialog(location.origin + location.pathname + '?ref=share' + link.slice(link.indexOf('#')), t('share.msg', {name: prof.name, key: cls.key}));
+  if(opts.own && L.content && L.content.pair) pairBind(r, base);
   if($('#print')) $('#print').addEventListener('click', function(){ savePdf(r, cls.key, this); });
   if($('#restart')) $('#restart').addEventListener('click', function(){ dropHash(); renderIntro(); window.scrollTo(0,0); });
   if($('#backAdmin')) $('#backAdmin').addEventListener('click', function(){ renderAdmin(); window.scrollTo(0,0); });
@@ -1968,6 +1973,60 @@ function sendFormHTML(r, who, base, open){
           '<div class="actions"><button class="btn" type="submit">'+t('share.send')+'</button></div>'+
         '</form>'+
       '</div>';
+}
+/* «DISC на двоих» (с 2026-11-14, по просьбе заказчика; пока только русская версия — тексты в L.content.pair). На экране своего результата:
+   пришедшему по приглашению (disc.pairInvite кладёт страница /pair/ по ссылке #i=…) — «Сравнить с …» с согласием показать свой результат
+   пригласившему (сразу под карточкой «Сохраните результат»); остальным — «Пригласить» после блока «Расширенный отчёт».
+   Ссылки — с кодами без e-mail; в разметку коды не пишутся, ссылка собирается при нажатии. */
+function pairInvited(r){
+  var v = lsGet('disc.pairInvite'); if(!v || !v.c || Date.now() - (+v.at || 0) > 30*86400000) return null;
+  var a = decodeResult(v.c); if(!a || (a.t === r.t && a.m.join('') === r.m.join('') && a.l.join('') === r.l.join(''))) return null;
+  return {code: v.c, r: a};
+}
+function pairCode(r){ return encodeResult({name: r.name, email: '', pos: r.pos, t: r.t, m: r.m, l: r.l}); }
+function pairBoxHTML(r, base, where){
+  var P = L.content && L.content.pair; if(!P) return '';
+  var R = P.result, inv = pairInvited(r);
+  if(where === 'top'){
+    if(!inv) return '';
+    return '<div class="card pairbox no-print" id="pairBox" style="margin-top:16px"><h2>'+esc(R.compareTitle.replace('{name}', inv.r.name))+'</h2><p>'+esc(R.compareText.replace('{name}', inv.r.name))+'</p>'+
+      '<label class="check"><input type="checkbox" id="pairConsent"><span>'+esc(P.invite.consent.replace('{name}', inv.r.name))+'</span></label><p class="small sendstatus err" id="pairErr" hidden></p>'+
+      '<div class="actions"><button class="btn" type="button" id="pairCompare">'+esc(R.compareBtn)+'</button><button class="link" type="button" id="pairSkip">'+esc(R.dismiss)+'</button></div></div>';
+  }
+  if(inv) return '';
+  return '<div class="card pairbox no-print" id="pairInviteCard" style="margin-top:16px"><h2>'+esc(R.title)+'</h2><p>'+esc(R.text)+'</p>'+
+    '<div class="actions"><button class="btn secondary" type="button" id="pairInvite">'+esc(R.button)+'</button><a class="link" href="'+base+'pair/">'+esc(R.more)+' '+arrowR()+'</a></div>'+
+    '<div id="pairShare"></div><p class="small muted">'+esc(R.note)+'</p></div>';
+}
+function pairShareBox(box, link, msg){
+  var P = L.content.pair, e = encodeURIComponent, track = function(how){ if(window.discTrack) window.discTrack('pair-invite', {share: how}); };
+  box.innerHTML = '<div class="actions" style="flex-wrap:wrap">'+(navigator.share ? '<button class="btn" type="button" data-ps="native">'+esc(P.share)+'</button>' : '')+
+    '<button class="btn'+(navigator.share ? ' secondary' : '')+'" type="button" data-ps="copy">'+esc(P.copy)+'</button>'+
+    '<a class="btn secondary" target="_blank" rel="noopener" data-ps="telegram" href="https://t.me/share/url?url='+e(link)+'&text='+e(msg)+'">Telegram</a>'+
+    '<a class="btn secondary" target="_blank" rel="noopener" data-ps="whatsapp" href="https://wa.me/?text='+e(msg+' '+link)+'">WhatsApp</a></div>';
+  box.querySelectorAll('[data-ps]').forEach(function(b){
+    b.addEventListener('click', function(){
+      var how = b.getAttribute('data-ps'); track(how);
+      if(how === 'native') navigator.share({text: msg, url: link}).catch(function(){});
+      if(how === 'copy') copyText(link, null);
+    });
+  });
+}
+function pairBind(r, base){
+  if($('#pairInvite')) $('#pairInvite').addEventListener('click', function(){
+    this.hidden = true;
+    pairShareBox($('#pairShare'), new URL(base + 'pair/', location.href).href + '?ref=pair#i=' + pairCode(r),   // base — относительный путь ('../ru/')
+      L.content.pair.inviteMsg.replace('{name}', r.name || ''));
+  });
+  if($('#pairCompare')) $('#pairCompare').addEventListener('click', function(){
+    var inv = pairInvited(r);
+    if(!inv) return;
+    if(!$('#pairConsent').checked){ $('#pairErr').textContent = L.content.pair.invite.needConsent; $('#pairErr').hidden = false; return; }
+    if(window.discTrack) window.discTrack('pair-compare', {via: 'result'});
+    lsSet('disc.pairInvite', null);
+    location.href = base + 'pair/#p=' + inv.code + '~' + pairCode(r);
+  });
+  if($('#pairSkip')) $('#pairSkip').addEventListener('click', function(){ lsSet('disc.pairInvite', null); $('#pairBox').hidden = true; });
 }
 function shareButtons(mail){
   return '<div class="actions"><button class="btn secondary" type="button" id="shareOpen" aria-haspopup="dialog">'+t('share.profile')+'</button>'+
@@ -2205,7 +2264,7 @@ function langHref(code){ return ROOT_REL + (LANG_PATH[code]||'') + location.hash
    о ней говорят тексты о данных на 14 языках. При открытии страницы любой #r=… (в старых ссылках из писем — с e-mail) всё равно сначала
    убирается, до загрузки счётчика, и возвращается в строку уже без e-mail. */
 function dataHash(){
-  var re = /^#[rucg]=/, h = location.hash || '';
+  var re = /^#[rucgip]=/, h = location.hash || '';   // i, p — приглашение и сравнение «DISC на двоих» (коды результатов с именами, с 2026-11-14)
   try{
     var first = !dataHash.seen, s = history.state; dataHash.seen = 1;
     /* ссылка, которую страница сама показала в адресной строке (showHash), остаётся на месте; при открытии страницы (first) убирается и она */
