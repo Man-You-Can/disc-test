@@ -1638,7 +1638,9 @@ if (fs.existsSync(path.join(ASSETS, 'extended'))) { fs.mkdirSync(path.join(OUT, 
 // образцы подарочного сертификата (страница /gift/, с 2026-11-14): собирает private/server/test/gift-sample.js тем же кодом, что сервер
 // листы образца отчёта «DISC на двоих» (страница /<язык>/pair/): общая папка /pair/ в корне сайта
 if (fs.existsSync(path.join(ASSETS, 'pair'))) { fs.mkdirSync(path.join(OUT, 'pair'), { recursive: true });
-  for (const f of fs.readdirSync(path.join(ASSETS, 'pair'))) if (/^[a-z-]+-\d\.webp$/.test(f)) fs.copyFileSync(path.join(ASSETS, 'pair', f), path.join(OUT, 'pair', f)); }
+  // <язык>-mail.jpg — листы образца для письма подписчикам о «DISC на двоих» (JPEG: WebP показывают не все почтовые программы;
+  // образцы письма — private/mailing-preview/pair-mail.py)
+  for (const f of fs.readdirSync(path.join(ASSETS, 'pair'))) if (/^[a-z-]+-(\d\.webp|mail\.jpg)$/.test(f)) fs.copyFileSync(path.join(ASSETS, 'pair', f), path.join(OUT, 'pair', f)); }
 if (fs.existsSync(path.join(ASSETS, 'gift'))) { fs.mkdirSync(path.join(OUT, 'gift'), { recursive: true });
   for (const f of fs.readdirSync(path.join(ASSETS, 'gift'))) if (/^[a-z-]+-(named|plain)\.pdf$/.test(f)) fs.copyFileSync(path.join(ASSETS, 'gift', f), path.join(OUT, 'gift', f)); }
 // картинки-образцы набора ведущего (страница /kit/, с 2026-10-25): готовит private/kit/make-kit.js
