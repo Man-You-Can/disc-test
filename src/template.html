@@ -198,13 +198,11 @@ body.has-consent .xbar,body.has-xbar .btn.ctafloat.show{display:none}
 .xoffer+.card{margin-top:16px}
 /* «DISC на двоих» на экране своего результата (с 2026-11-14): рамка и список с галочками, чтобы блок читался как предложение */
 .card.pairad{border:2px solid var(--ink)}
-.pairad .actions+div+p,.pairad > p.muted{margin-top:10px}
 .pairad h2{margin:2px 0 10px;font-size:22px}
 .pairad > p{margin:0 0 10px}
 .pairpts{list-style:none;padding:0;margin:0 0 14px}
 .pairpts li{position:relative;padding-inline-start:26px;margin-bottom:8px}
 .pairpts li::before{content:"✓";position:absolute;inset-inline-start:0;top:0;font-weight:700;color:var(--s)}
-.pairad .pairfree{color:var(--muted);margin:0 0 14px}
 .pairad .actions{flex-wrap:wrap;align-items:center;gap:10px 18px}
 .pairad .actions .btn{white-space:normal;text-align:center}
 /* блок расширенного отчёта выделен фоном в цвет ведущего стиля участника (--k), чтобы бросался в глаза (решение заказчика от 2026-10-21);
@@ -1541,13 +1539,12 @@ function pairBoxHTML(r, base, where){
   }
   if(inv) return '';
   // рекламный вид (с 2026-11-14, по просьбе заказчика): зачем отчёт — список того, что узнают двое (пункты обещают только то, что есть
-  // в сравнении и в отчёте — private/extended-report/pair/WRITE-PAIR.md), и строка «сравнение бесплатно, подробно — в отчёте»
+  // в сравнении и в отчёте — private/extended-report/pair/WRITE-PAIR.md)
   return '<div class="card pairbox pairad no-print" id="pairInviteCard" style="margin-top:16px">'+(R.eyebrow ? '<div class="eyebrow">'+esc(R.eyebrow)+'</div>' : '')+
     '<h2>'+esc(R.title)+'</h2><p>'+esc(R.text)+'</p>'+
     (R.points ? '<ul class="pairpts">'+R.points.map(function(x){ return '<li>'+esc(x)+'</li>'; }).join('')+'</ul>' : '')+
-    (R.free ? '<p class="small pairfree">'+esc(R.free)+'</p>' : '')+
     '<div class="actions"><button class="btn" type="button" id="pairInvite">'+esc(R.button)+'</button><a class="link" href="'+base+'pair/">'+esc(R.more)+' '+arrowR()+'</a></div>'+
-    '<div id="pairShare"></div><p class="small muted">'+esc(R.note)+'</p></div>';
+    '<div id="pairShare"></div></div>';   // строки «сравнение бесплатно…» и «Второй человек увидит…» убраны 2026-11-14 по просьбе заказчика
 }
 function pairShareBox(box, link, msg){
   var P = L.content.pair, e = encodeURIComponent, track = function(how){ if(window.discTrack) window.discTrack('pair-invite', {share: how}); };
