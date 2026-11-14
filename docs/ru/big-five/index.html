@@ -1362,6 +1362,8 @@ function initBigFive(o){
       '<p class="bf-again"><button type="button" class="linkbtn" id="bfAgain">' + esc(R.again) + '</button></p></div>';
     app.innerHTML = h;
     top();
+    // цель ссылки на тест DISC: page.html вешает data-goal только на ссылки, которые есть при загрузке
+    var dl = app.querySelector('a[data-goal="bf-disc"]'); if(dl) dl.addEventListener('click', function(){ track('bf-disc'); });
     $('bfAgain').onclick = function(){ var x = blank(); lsSet('disc.bf', x); track('bf-start'); test(x); };
   }
 
