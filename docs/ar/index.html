@@ -893,6 +893,17 @@ var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 var SUB_AB = +'0' || 0;
 var SUB_V = (SUB_AB > 0 && Math.random() < SUB_AB) ? 'b' : 'a';
 function subLabel(){ return SUB_V === 'b' && t('share.subscribeB') !== 'share.subscribeB' ? t('share.subscribeB') : t('share.subscribe'); }
+/* A/B-тест карточки «Сильные стороны» … «Комфортная среда» на экране своего результата (descAB, descABFrom в site.config.json; с 2026-11-14,
+   по просьбе заказчика). Группа — по миллисекундам времени прохождения (r.t): у одного результата она одна и та же при каждом открытии,
+   в браузере ничего не хранится и на сервер не уходит. В тест входят только свои результаты, пройденные после descABFrom; чужой результат
+   по ссылке и панель администратора показывают карточку всегда. Цели: desc-show / desc-hide — при каждом показе своего результата из теста.
+   descHidden: null — результат не в тесте, true — карточки нет, false — есть. */
+var DESC_AB = +'0.5' || 0, DESC_AB_FROM = '2026-11-14T16:30:00.000Z';
+function descHidden(r, opts){
+  if(!(DESC_AB > 0) || !DESC_AB_FROM || !opts.own || opts.fromAdmin || !r || typeof r.t !== 'string' || r.t < DESC_AB_FROM) return null;
+  var ms = new Date(r.t).getTime(); if(!isFinite(ms)) return null;
+  return (ms % 1000) < DESC_AB * 1000;
+}
 var EMAIL_STEP = +'1' || 0;   // доля прошедших тест, которым показывается экран «Куда прислать результат?» (emailStep в site.config.json; с 2026-11-01)
 var HOME_SUB = '1' === '1'; // форма подписки на рассылку на стартовом экране (homeSubscribe в site.config.json, с 2026-10-22)
 var VERSION = 'DISC1';
@@ -1774,6 +1785,8 @@ function extHooks(sc, cls, H){
 }
 function renderReport(r, opts){
   opts = opts||{};
+  var descOff = descHidden(r, opts);   // A/B-тест карточки описания профиля (см. DESC_AB)
+  if(descOff !== null && window.discTrack) window.discTrack(descOff ? 'desc-hide' : 'desc-show');
   hideProgress(); setStep(opts.own ? t('report.own') : t('report.other'), true);
   // на экране результата — короткий подвал, чтобы ссылки не уводили от покупки расширенного отчёта (решение заказчика от 2026-10-21)
   if(footEl) footEl.classList.add('short');
@@ -1865,14 +1878,14 @@ function renderReport(r, opts){
     '</div>'+
     // «DISC на двоих»: пришедшему по приглашению — «Сравнить с …» (с 2026-11-14), сразу после «Ключевых черт»
     (opts.own && !opts.fromAdmin ? pairBoxHTML(r, base, 'top') : '')+
-    '<div class="card" id="secCard" style="margin-top:16px"><div class="sections">'+
+    (descOff ? '' : '<div class="card" id="secCard" style="margin-top:16px"><div class="sections">'+
       '<div class="sec"><h3>'+t('report.strengths')+'</h3>'+list(st.strengths)+'</div>'+
       '<div class="sec"><h3>'+t('report.growth')+'</h3>'+list(st.growth)+'</div>'+
       '<div class="sec"><h3>'+t('report.motivation')+'</h3>'+list(st.motivation)+'</div>'+
       '<div class="sec"><h3>'+t('report.communication')+'</h3>'+list(st.communication)+'</div>'+
       '<div class="sec"><h3>'+t('report.stress')+'</h3><p>'+esc(st.stress)+'</p></div>'+
       '<div class="sec"><h3>'+t('report.environment')+'</h3><p>'+esc(st.environment)+'</p></div>'+
-    '</div></div>'+
+    '</div></div>')+
     // блок «Расширенный отчёт» — сразу после описания профиля (карточки с «Ключевыми чертами», «Сильными сторонами» и т. д.):
     // с 2026-10-25 по решению заказчика; с 2026-10-22 до 2026-10-25 стоял сразу под графиком
     extOffer()+
