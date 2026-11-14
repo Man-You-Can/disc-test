@@ -1393,7 +1393,7 @@ for (const L of locales) {
           `<h2>${escFull(PT.madeTitle)}</h2><p>${escFull(PT.made).replace('{howMade}', `<a href="../${HOWMADE_SUB}">${escFull(PT.howMadeLink)}</a>`)}</p><p class="small muted">${escFull(PT.limits)}</p>` +
           `<h2 id="invite">${escFull(PT.inviteTitle)}</h2><div class="pr-invitebox" id="pairInviteBox"><p>${escFull(PT.inviteNoTest)}</p><p><a class="btn" href="../#test">${escFull(PT.ctaTest)}</a></p></div>` +
           `<h2>${escFull(PT.faqTitle)}</h2>` + PT.faq.map(it => `<h3 class="xq">${escFull(it.q)}</h3><p>${faqA(it.a)}</p>`).join('') +
-          `<p class="seealso"><a href="../extended-report/">${escFull(C.product.h1)} ${arrow(L)}</a> · <a href="../compatibility/">${escFull(t('nav.compatibility') || C.compatibility.h1)} ${arrow(L)}</a> · ` +
+          `<p class="seealso"><a href="../extended-report/">${escFull(C.product.h1)} ${arrow(L)}</a> · <a href="../compatibility/">${escFull(t('nav.compat'))} ${arrow(L)}</a> · ` +
             `<a href="../offer/">${escFull(C.offer.h1)} ${arrow(L)}</a> · <a href="../refund/">${escFull(C.refund.h1)} ${arrow(L)}</a></p></div>`;
       const PTjs = { invite: PT.invite, compare: PT.compare, order: PO, status: PT.status, inviteText: PT.inviteText, inviteNoTest: PT.inviteNoTest, inviteMsg: PT.inviteMsg, ctaTest: PT.ctaTest };
       const pairsJs = Object.fromEntries(Object.entries(C.compatibility.pairs).map(([k, v]) => [k, { summary: v.summary, text: v.text, common: v.common, friction: v.friction }]));
