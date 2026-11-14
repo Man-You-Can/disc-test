@@ -22,6 +22,12 @@
 .pr-row.S .k{color:var(--s)} .pr-row.S .m i{background:var(--s)} .pr-row.S .l i{border:1.5px solid var(--s);background:transparent}
 .pr-row.C .k{color:var(--c)} .pr-row.C .m i{background:var(--c)} .pr-row.C .l i{border:1.5px solid var(--c);background:transparent}
 .pr-two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.pr-two p{margin-top:0}
+/* «Чего нет в бесплатном сравнении, но есть в отчёте» (compare.only) */
+.pr-only{border:2px solid var(--ink);border-radius:14px;padding:20px 22px;margin:22px 0}
+.pr-only h2{margin-top:0}
+.pr-only ul{padding-inline-start:1.2em;margin-bottom:0}
+.pr-only li{margin-bottom:8px}
 .pr-share{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
 .pr-share .btn{text-decoration:none}
 .pr-copied{color:var(--s);margin:8px 0 0}
@@ -47,7 +53,7 @@
 .po-big{font-size:30px;font-weight:700;line-height:1.1}
 .po-pay{margin-top:12px}
 @media (max-width:640px){
-  .pr-invite,.pr-sharecard,.pr-chartbox,.pr-order,.pr-invitebox{padding:16px}
+  .pr-invite,.pr-sharecard,.pr-chartbox,.pr-order,.pr-invitebox,.pr-only{padding:16px}
   .pr-two,.pr-for{grid-template-columns:1fr}
   .pr-sheets{grid-template-columns:1fr 1fr}
   .pr-share .btn{flex:1 1 auto;text-align:center}

@@ -29,6 +29,8 @@ const OPTIONAL = ['.content.policy.legal', '.content.extendedMail', '.content.pr
   // отчёт «DISC на двоих» (/ru/pair/, с 2026-11-14, по просьбе заказчика: «сначала на русском»): страница, приглашение, сравнение, письма, раздел оферты
   // и условий возврата, абзацы политики и «Как готовятся отчёты» — пока только русская версия; в другой язык — все ключи вместе
   '.content.pair', '.ui.nav.pair', '.content.offer.pairSection', '.content.refund.pairSection', '.content.policy.purchasePair', '.content.howMade.pair',
+  // блок об отчёте на страницах совместимости (с 2026-11-14) и «Чего нет в бесплатном сравнении» на /pair/ — внутри .content.pair, пока только ru
+  '.content.pair.compat', '.content.pair.compare.only',
   // английская версия лендинга (с 2026-10-24): автор без ссылки на личный сайт — блок .cvsite не выводится
   '.content.cv.author.siteLabel', '.content.cv.author.site', '.content.cv.author.siteUrl',
   // анонсы этого сервиса на сайте (главная, экран результата, профили, «Услуги»; с 2026-10-24, по просьбе заказчика; русская и английская версии) — только вместе с лендингом

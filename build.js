@@ -891,10 +891,17 @@ for (const L of locales) {
         (pr.deep.leadRev ? `<h2>${escFull(t('pages.compat.lead', { a: b2, b: a }))}</h2><p>${escFull(pr.deep.leadRev)}</p>` : '') +
         `<h2>${t('pages.compat.meeting')}</h2><p>${escFull(pr.deep.meeting)}</p><h2>${t('pages.compat.conflict')}</h2><p>${escFull(pr.deep.conflict)}</p>` +
         `<h2>${t('pages.compat.life')}</h2><p>${escFull(pr.deep.life)}</p><h2>${t('pages.compat.rules')}</h2>${listHtml('ol', pr.deep.rules)}` : '') +
+      // отчёт «DISC на двоих» (hasPair, с 2026-11-14, по просьбе заказчика; content.pair.compat — только русская версия): описание подходит любой
+      // паре с такими ведущими стилями, отчёт — о вас двоих. Кнопка — на «Пригласить» страницы /pair/ (свой результат она берёт из disc.last)
+      (hasPair(L) && C.pair.compat ? (PC => `<aside class="pcpair"><div class="eyebrow">${escFull(PC.eyebrow)}</div><h2>${escFull(PC.title)}</h2>` +
+        `<p>${escFull((a === b2 ? PC.textSame : PC.text).replace('{a}', a).replace('{b}', b2))} ${escFull(PC.more)}</p><p class="small muted">${escFull(PC.note.replace('{price}', fmtPrice(L, PAIR.price)))}</p>` +
+        `<p class="pcpair-btns"><a class="btn" href="${base}pair/#invite" data-goal="pair-compat">${escFull(PC.button)}</a><a class="more" href="${base}pair/">${escFull(PC.link)} ${arrow(L)}</a></p></aside>`)(C.pair.compat) : '') +
       `<p class="seealso">${[...new Set([a, b2])].map(s => `<a href="${base}profiles/${s.toLowerCase()}/">${t('pages.profile.more', { name: escFull(L.profiles[s].name) })}</a>`).join(' · ')}</p>` +
       ctaBlock(L, t, base) + `<h2>${t('pages.compat.other')}</h2><p class="chips">${PAIRS.filter(x => x !== k).map(x => { const n2 = pairNames(x); return `<a href="../${pairSlug(x)}/">${badge(x, 'pill')} ${escFull(n2.a)} + ${escFull(n2.b)}</a>`; }).join('')}</p>`;
     writeContentPage(L, `compatibility/${pairSlug(k)}/`, { navKey: 'nav.compat', article: true, title: t('pages.compat.title', names), description: truncDesc(L, t('pages.compat.description', names)),
       crumbs: [{ name: t('nav.compat'), href: '../', sub: 'compatibility/' }, { name: a + b2 }], content,
+      css: hasPair(L) && C.pair.compat ? `.pcpair{border:2px solid var(--ink);border-radius:14px;padding:20px 22px;margin:30px 0}.pcpair h2{margin-top:4px}` +
+        `.pcpair-btns{display:flex;flex-wrap:wrap;align-items:center;gap:10px 20px;margin-bottom:0}@media (max-width:640px){.pcpair{padding:16px}}` : undefined,
       ogImage: fs.existsSync(path.join(ASSETS, 'og', 'pairs', `${L.lang}-${pairSlug(k)}.png`)) ? `${siteUrl}/og/pairs/${L.lang}-${pairSlug(k)}.png` : null });
   }
   // /teams/ — DISC для команды и HR
@@ -1367,10 +1374,11 @@ for (const L of locales) {
         // сравнение (#p=…)
         `<section class="pr-compare" id="pairCompare" hidden><div class="eyebrow">${escFull(PT.h1)}</div><h1 id="pcTitle"></h1><p class="lead">${escFull(PT.compare.lead)}</p>` +
           `<div class="pr-chartbox"><div id="pcChart"></div><p class="small muted" id="pcLegend"></p><h3>${escFull(PT.compare.profiles)}</h3><ul id="pcProfiles"></ul></div>` +
-          `<h2>${escFull(PT.compare.pairTitle)}</h2><p id="pcSummary"></p><div class="pr-two"><div><h3>${escFull(PT.compare.commonTitle)}</h3><ul id="pcCommon"></ul></div>` +
-          `<div><h3>${escFull(PT.compare.frictionTitle)}</h3><ul id="pcFriction"></ul></div></div><h3>${escFull(PT.compare.closeTitle)}</h3><p id="pcClose"></p>` +
-          `<div class="pr-sharecard"><h3>${escFull(PT.compare.shareTitle)}</h3><p class="small">${escFull(PT.compare.shareText)}</p><div id="pcShare"></div></div>` +
-          `<h2>${escFull(PT.compare.reportTitle)}</h2><p>${escFull(PT.compare.reportText)}</p><ul class="pr-inside">${PT.inside.map(x => `<li><b>${escFull(x[0])}</b> — ${escFull(x[1])}</li>`).join('')}</ul>` +
+          // с 2026-11-14 (по просьбе заказчика): бесплатное описание пары — только затравка (summary), без text, common и friction —
+          // они остаются на страницах совместимости; вместо них — «Чего нет в бесплатном сравнении, но есть в отчёте» (compare.only)
+          `<h2>${escFull(PT.compare.pairTitle)}</h2><p id="pcSummary"></p>` +
+          `<div class="pr-two"><div><h3>${escFull(PT.compare.closeTitle)}</h3><p id="pcClose"></p></div><div><h3>${escFull(PT.compare.gapTitle)}</h3><p id="pcGap"></p></div></div>` +
+          `<section class="pr-only"><h2>${escFull(PT.compare.only.title)}</h2><p>${escFull(PT.compare.only.text)}</p><ul>${PT.compare.only.items.map(x => `<li><b>${escFull(x[0])}</b> — ${escFull(x[1])}</li>`).join('')}</ul></section>` +
           (sheets.length ? `<div class="pr-sheets">${sheets.map(i => `<img src="${relRoot(L, 'pair/')}pair/${L.lang}-${i}.webp" alt="${escFull(PT.sheetAlt.replace('{n}', i))}" loading="lazy" decoding="async" width="480" height="679">`).join('')}</div>` : '') +
           `<h2 id="order">${escFull(PO.title)}</h2><form class="pr-order" id="pairOrder" novalidate>` +
             `<div class="field"><label for="poEmail">${escFull(PO.emailLabel)}<span class="req">*</span></label><input type="email" id="poEmail" class="ym-disable-keys" autocomplete="email" inputmode="email" maxlength="64" required><div class="hint">${escFull(PO.emailHint)}</div></div>` +
@@ -1380,7 +1388,8 @@ for (const L of locales) {
             `<div class="po-total"><div class="po-big" id="poPrice">${escFull(fmtPrice(L, PAIR.price))}&nbsp;₽</div><p class="small muted">${escFull(pv(PO.priceNote))}</p>` +
             `<label class="check"><input type="checkbox" id="poAgree"><span>${escFull(PO.agree).replace('{offer}', `<a href="../offer/">${escFull(C.offer.linkText)}</a>`)}</span></label>` +
             `<button class="btn po-pay" type="submit" id="poPay">${escFull(pv(PO.buy))}</button><p class="small sendstatus err" id="poErr" aria-live="polite" hidden></p>` +
-            `<p class="xnote">${escFull(PO.when)}</p>${payMethodsHtml(L)}</div></form></section>` +
+            `<p class="xnote">${escFull(PO.when)}</p>${payMethodsHtml(L)}</div></form>` +
+          `<div class="pr-sharecard"><h3>${escFull(PT.compare.shareTitle)}</h3><p class="small">${escFull(PT.compare.shareText)}</p><div id="pcShare"></div></div></section>` +
         // описание отчёта (без хэша и под приглашением)
         `<p class="pr-status" id="pairStatus" aria-live="polite" hidden></p>` +
         `<div id="pairLanding"><div class="eyebrow">${escFull(PT.eyebrow)}</div><h1>${escFull(PT.h1)}</h1><p class="lead">${escFull(PT.lead)}</p>` +
@@ -1396,7 +1405,7 @@ for (const L of locales) {
           `<p class="seealso"><a href="../extended-report/">${escFull(C.product.h1)} ${arrow(L)}</a> · <a href="../compatibility/">${escFull(t('nav.compat'))} ${arrow(L)}</a> · ` +
             `<a href="../offer/">${escFull(C.offer.h1)} ${arrow(L)}</a> · <a href="../refund/">${escFull(C.refund.h1)} ${arrow(L)}</a></p></div>`;
       const PTjs = { invite: PT.invite, compare: PT.compare, order: PO, status: PT.status, inviteText: PT.inviteText, inviteNoTest: PT.inviteNoTest, inviteMsg: PT.inviteMsg, ctaTest: PT.ctaTest };
-      const pairsJs = Object.fromEntries(Object.entries(C.compatibility.pairs).map(([k, v]) => [k, { summary: v.summary, text: v.text, common: v.common, friction: v.friction }]));
+      const pairsJs = Object.fromEntries(Object.entries(C.compatibility.pairs).map(([k, v]) => [k, { summary: v.summary }]));
       const profJs = Object.fromEntries(Object.entries(L.profiles).map(([k, v]) => [k, { name: v.name }]));
       writeContentPage(L, 'pair/', { navKey: 'nav.services', langs: locales.filter(hasPair), title: pv(PT.title), description: pv(PT.description), crumbs: [{ name: t('nav.services'), href: '../services/', sub: 'services/' }, { name: PT.h1 }],
         css: pairCss, content, files: ['src/pair.js', 'src/pair.css'].concat(sheets.map(i => `src/assets/pair/${L.lang}-${i}.webp`)),

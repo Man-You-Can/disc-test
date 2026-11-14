@@ -2,7 +2,8 @@
    - без хэша: описание отчёта и кнопка «Пригласить» (если на устройстве есть свой результат — disc.last);
    - #i=<код> — приглашение: пригласивший, кнопка теста (приглашение запоминается в disc.pairInvite — после теста экран результата предложит
      сравнение), а если свой результат уже есть — согласие показать его пригласившему и «Сравнить»;
-   - #p=<код>~<код> — сравнение: две диаграммы шкал, бесплатное описание пары (content.compatibility.pairs), ссылка для второго, форма заказа;
+   - #p=<код>~<код> — сравнение: две диаграммы шкал, строка о паре (summary из content.compatibility.pairs), где близки и где самый большой
+     разрыв, «Чего нет в бесплатном сравнении» (content.pair.compare.only), листы образца, форма заказа, ссылка для второго;
    - ?order=PAIR-…&pay=ok|fail — возврат со страницы банка: статус заказа (GET <payEndpoint>/status).
    Коды в ссылках — без e-mail (имя и ответы); хэш с ними убирает из адресной строки dataHash() до загрузки счётчика, в разметку коды не пишутся.
    Заказ — POST <payEndpoint>/pair/order (сервер — private/server/src/pair.js). Цели: pair-invite, pair-open, pair-start, pair-compare, pair-buy,
@@ -128,10 +129,11 @@ function initPair(o){
     $('#pcChart').innerHTML = bars(sa, sb);
     $('#pcLegend').textContent = fmt(T.compare.legend, {a: a.name, b: b.name});
     $('#pcProfiles').innerHTML = [[a, sa], [b, sb]].map(function(x){ return '<li><b>' + esc(x[0].name) + '</b> — ' + esc(x[1].key) + ' «' + esc(profileName(x[1])) + '»</li>'; }).join('');
-    $('#pcSummary').textContent = [P.summary, P.text].filter(Boolean).join(' ');
-    $('#pcCommon').innerHTML = (P.common || []).map(function(x){ return '<li>' + esc(x) + '</li>'; }).join('');
-    $('#pcFriction').innerHTML = (P.friction || []).map(function(x){ return '<li>' + esc(x) + '</li>'; }).join('');
+    $('#pcSummary').textContent = P.summary || '';   // только затравка: полное описание пары — на страницах совместимости
     $('#pcClose').textContent = near.length ? fmt(T.compare.close, {list: near.length > 1 ? near.slice(0, -1).join(', ') + ' и ' + near[near.length - 1] : near[0]}) : T.compare.closeNone;
+    var diff = function(k){ return Math.abs(sa.pct[k] - sb.pct[k]); };   // самый большой разрыв по шкалам
+    var gk = KEYS.slice().sort(function(x, y){ return diff(y) - diff(x); })[0], gd = diff(gk);
+    $('#pcGap').textContent = fmt(gd > 15 ? T.compare.gap : T.compare.gapSmall, {k: gk, a: a.name, b: b.name, pa: sa.pct[gk], pb: sb.pct[gk]});
     var link = pageUrl + '#p=' + encode(a) + '~' + encode(b);
     shareBox($('#pcShare'), link, fmt(T.compare.title, {a: a.name, b: b.name}) + ' — DISC:', 'pair-share');
     orderForm(encode(a), encode(b), a, b);
