@@ -719,6 +719,7 @@
         ]
       },
       "purchaseCode": "Jeśli otrzymujesz profil rozszerzony dzięki kodowi dostępu, który kupiła organizacja lub inna osoba, przetwarzamy te same dane z wyjątkiem informacji o płatności i odnotowujemy wykorzystanie kodu. Osobie, która kupiła kod, przekazujemy wyłącznie informację, czy i kiedy kod został wykorzystany: twój wynik, raport i adres e-mail nie są jej przekazywane. Podstawą jest umowa, którą zawierasz, wpisując kod na warunkach {offer}.",
+      "purchasePair": "Jeśli zamawiasz raport „DISC w duecie”, przetwarzamy twój adres e-mail, dane zamówienia, imiona i wyniki testu obu osób z linku do porównania, wybór „kim dla siebie jesteście” oraz – jeśli go podasz – adres drugiej osoby, na który wysyłamy kopię raportu. Druga osoba wyraża zgodę na pokazanie swojego wyniku i wykorzystanie go w raporcie, zaznaczając pole w serwisie; podając jej adres, potwierdzasz, że zgadza się otrzymać kopię. Tekst raportu jest przygotowywany przy użyciu AI wyłącznie na podstawie zanonimizowanych danych – profili i wyników bez imion, adresów i kodów wyników. Kody wyników i adres drugiej osoby usuwamy po 30 dniach od wysłania raportu, a w przypadku nieopłaconego zamówienia – po 7 dniach; dane zamówienia przechowujemy tak samo jak dane zamówienia profilu rozszerzonego. Podstawą przetwarzania jest umowa zawarta na warunkach {offer} oraz zgoda drugiej osoby.",
       "purchaseGift": "Jeśli kupujesz bony podarunkowe, przetwarzamy twój adres e-mail, dane zamówienia (datę, kwotę, numer i status płatności), podpis „Od kogo” oraz – jeśli je podasz – imiona i adresy e-mail odbiorców. Twój adres e-mail i dane zamówienia są potrzebne, aby wysłać ci bony, odpowiedzieć na twoje zgłoszenie i dokonać zwrotu płatności; przechowujemy je tak samo jak dane zamówienia profilu rozszerzonego. Imię odbiorcy jest drukowane na jego bonie, a na adres odbiorcy wysyłamy jedną wiadomość z jego bonem; imiona i adresy odbiorców usuwamy po 30 dniach od wysłania bonów, a w przypadku nieopłaconego zamówienia – po 7 dniach. Podając dane odbiorców, potwierdzasz, że zgadzają się na otrzymanie bonu. Podstawą przetwarzania jest umowa zawarta na warunkach {offer}, której beneficjentami są odbiorcy bonów. Odbiorca, który wpisze kod bonu w serwisie, otrzymuje profil rozszerzony tak samo jak przy kodzie dostępu: osobie, która podarowała bon, przekazujemy wyłącznie informację, czy i kiedy został wykorzystany."
     },
     "consentDoc": {
@@ -876,6 +877,19 @@
       }
     },
     "offer": {
+      "pairSection": {
+        "h": "12. Raport „DISC w duecie”",
+        "p": [
+          "12.1. Na warunkach Regulaminu Usługodawca świadczy także usługę „DISC w duecie” (dalej: Raport w Duecie): przygotowuje w formie elektronicznej omówienie profili DISC dwóch osób – Klienta i drugiego uczestnika – oraz ich współpracy i komunikacji i wysyła je Klientowi. Do Raportu w Duecie stosuje się postanowienia Regulaminu dotyczące Usługi, chyba że niniejszy rozdział stanowi inaczej.",
+          "12.2. Raport w Duecie jest przygotowywany na podstawie wyników Testu dwóch osób: Klienta i drugiego uczestnika, który wypełnił Test i, zaznaczając zgodę w Serwisie, zgodził się na pokazanie swojego wyniku Klientowi i na wykorzystanie go w Raporcie w Duecie. Klientem może być każdy z dwóch uczestników.",
+          "12.3. Cena Raportu w Duecie jest podana w Serwisie oraz na stronie płatności; Klientowi, który wcześniej opłacił Profil Rozszerzony z tego samego adresu e-mail, może być oferowana obniżona cena. Klient opłaca Raport w Duecie w całości przed rozpoczęciem jego przygotowania, w sposób określony w punktach 3.2–3.5.",
+          "12.4. Raport w Duecie jest przygotowywany po dokonaniu płatności i wysyłany na adres e-mail Klienta nie później niż w ciągu 24 godzin od płatności. Jeżeli Klient podał adres e-mail drugiego uczestnika, kopia Raportu w Duecie jest wysyłana także na ten adres; podając go, Klient potwierdza, że drugi uczestnik zgadza się na otrzymanie wiadomości. Raport w Duecie uznaje się za wykonany z chwilą wysłania wiadomości Klientowi.",
+          "12.5. Tekst Raportu w Duecie jest przygotowywany przy użyciu systemu sztucznej inteligencji według zasad Usługodawcy na podstawie zanonimizowanych danych – profili i wyników Testu, bez imion, adresów e-mail i kodów wyników; przed wysyłką czyta go człowiek. Raport w Duecie opisuje styl zachowania i nie stanowi oceny dopasowania uczestników, opinii psychologicznej ani podstawy decyzji o zatrudnieniu, zwolnieniu i wynagrodzeniu.",
+          "12.6. Klient może zrezygnować z Raportu w Duecie przed jego wysłaniem – w takim przypadku płatność jest zwracana w całości. Jeżeli Raport w Duecie nie zostanie wysłany w terminie określonym w punkcie 12.4, Klient może zażądać zwrotu całej płatności. W pozostałym zakresie do Raportu w Duecie stosuje się rozdział 5.",
+          "12.7. Raport w Duecie jest przeznaczony do użytku własnego obu uczestników; w pozostałym zakresie stosuje się do niego rozdział 6.",
+          "12.8. Aby przygotować Raport w Duecie, Usługodawca przetwarza adres e-mail Klienta, imiona i wyniki Testu obu uczestników, adres e-mail drugiego uczestnika (jeśli został podany) oraz wskazanie Klienta, kim uczestnicy są dla siebie. Kody wyników i adres drugiego uczestnika są usuwane po 30 dniach kalendarzowych od wysłania Raportu w Duecie, a w przypadku nieopłaconego zamówienia – po 7 dniach. Więcej o przetwarzaniu danych można przeczytać na stronie „{privacy}”."
+        ]
+      },
       "title": "Regulamin sprzedaży – rozszerzony profil DISC i zestaw prowadzącego",
       "description": "Regulamin sprzedaży płatnej usługi „Rozszerzony profil DISC” i Zestawu prowadzącego DISC w serwisie disc-test.org: cena, płatność i dostarczenie, zwroty, prawa do materiałów.",
       "h1": "Regulamin sprzedaży",
@@ -1029,6 +1043,12 @@
       ]
     },
     "refund": {
+      "pairSection": {
+        "h": "Raport „DISC w duecie”",
+        "p": [
+          "Przed wysłaniem raportu „DISC w duecie” zwracamy całą płatność na twój wniosek. Jeśli raport nie przyszedł w ciągu 24 godzin od płatności, również możesz odzyskać całą kwotę. Po wysłaniu płatność za raport przygotowany należycie nie podlega zwrotowi; wady – plik się nie otwiera, raport zawiera cudze dane, treść nie odpowiada opisowi – usuwamy w ciągu trzech dni roboczych. We wniosku podaj numer zamówienia – znajdziesz go w wiadomości o płatności."
+        ]
+      },
       "title": "Zasady zwrotu płatności – rozszerzony profil DISC i zestaw prowadzącego",
       "description": "Kiedy i jak odzyskać pieniądze za rozszerzony profil DISC i zestaw prowadzącego w serwisie disc-test.org: przypadki zwrotu, wniosek, terminy.",
       "h1": "Zasady zwrotu płatności",
@@ -1553,6 +1573,226 @@
         "title": "Poznaj swój kolor DISC",
         "text": "Test pokaże twój kolor wiodący i uzupełniający, ich nasilenie w procentach i to, co z tym zrobić. 24 pytania, około 10 minut, bez rejestracji.",
         "button": "Poznaj swój kolor"
+      }
+    },
+    "pair": {
+      "title": "DISC w duecie – raport o dwóch osobach na podstawie testu DISC",
+      "description": "Raport o dwóch osobach na podstawie wyników testu DISC: jak się nawzajem postrzegacie, gdzie pojawią się tarcia i jak się dogadywać – w pracy i w życiu prywatnym. Pisany specjalnie dla was, przychodzi w ciągu 24 godzin.",
+      "name": "Raport „DISC w duecie”",
+      "eyebrow": "Nowy raport",
+      "h1": "DISC w duecie",
+      "lead": "Raport o dwóch osobach na podstawie ich wyników testu DISC: jak się nawzajem postrzegacie, gdzie pojawią się tarcia i jak się dogadywać – w pracy i w życiu prywatnym. Powstaje specjalnie dla was, na podstawie wszystkich czterech skal obu osób.",
+      "facts": [
+        "Około 22 stron PDF",
+        "Praca i życie prywatne",
+        "W ciągu 24 godzin od płatności",
+        "{price} USD, a po zakupie raportu rozszerzonego – {owner} USD"
+      ],
+      "cta": "Zaproś drugą osobę",
+      "ctaTest": "Zrób test",
+      "howTitle": "Jak to działa",
+      "how": [
+        ["Zrób test i zaproś drugą osobę", "Przycisk „Zaproś” jest na ekranie twojego wyniku i na tej stronie: link możesz wysłać w komunikatorze albo skopiować."],
+        ["Druga osoba robi test", "Bezpłatnie, około 10 minut. Na końcu zaznacza zgodę na pokazanie ci swojego wyniku – bez tej zgody porównania nie będzie."],
+        ["Porównanie i raport", "Na stronie porównania zobaczycie swoje profile obok siebie i bezpłatny opis waszego duetu. Tam też można zamówić raport: przyjdzie e-mailem w ciągu 24 godzin, a kopię można wysłać drugiej osobie."]
+      ],
+      "insideTitle": "Co jest w raporcie",
+      "inside": [
+        ["Dwa profile obok siebie", "skale obu osób na jednym wykresie: gdzie wasze wyniki są zbliżone, gdzie różnicie się najbardziej i co to oznacza dla waszego duetu."],
+        ["Co sobie nawzajem dajecie", "czym się uzupełniacie i w jakich sprawach razem radzicie sobie najlepiej."],
+        ["Jak się nawzajem postrzegacie", "co jedna osoba zauważa w drugiej i co naprawdę za tym stoi."],
+        ["Pięć sytuacji tarć", "jak wyglądają w pracy i w domu, co czuje każda ze stron i co pomaga."],
+        ["Jak rozmawiać, decydować i się spierać", "zasady i gotowe sformułowania dla każdej ze stron, wspólne decyzje i sposób na zatrzymanie sporu."],
+        ["Praca i życie prywatne", "osobne rozdziały o pracy – dla współpracowników oraz szefa i pracownika – i o życiu prywatnym: dla pary, przyjaciół i rodziny."],
+        ["Karty pracy", "„Wspólna umowa”, wspólny plan na 30 dni i najważniejsze na jednej stronie."]
+      ],
+      "sheetsTitle": "Tak wygląda raport",
+      "sheetAlt": "Strona {n} wzoru raportu „DISC w duecie”",
+      "forTitle": "Dla kogo",
+      "for": [
+        ["Współpracownicy", "Jak dzielić pracę, prowadzić spotkania i spierać się merytorycznie, nie raniąc się nawzajem."],
+        ["Szef i pracownik", "Jak wyznaczać zadania, przekazywać informację zwrotną i mówić o tym, że się nie zgadzacie."],
+        ["Para", "Codzienność, pieniądze, odpoczynek, troska i urazy: jak wasze style widać w domu."],
+        ["Przyjaciele i rodzina", "Jak nie sprowadzać relacji do schematu „jedna osoba decyduje, druga się dostosowuje”."]
+      ],
+      "madeTitle": "Jak powstaje raport",
+      "made": "Raport jest pisany specjalnie dla was, a nie składany z gotowych fragmentów. Tekst pisze AI według zasad redakcji na podstawie zanonimizowanych danych – profili i wyników obu osób, bez imion i adresów. Program sprawdza tekst i składa PDF z waszymi imionami, a człowiek czyta cały raport przed wysyłką. Więcej – na stronie {howMade}.",
+      "limits": "Raport opisuje styl zachowania, a nie uczucia i zdolności. Nie ocenia, czy do siebie pasujecie, i nie nadaje się do decyzji o zatrudnieniu, zwolnieniu ani wynagrodzeniu.",
+      "inviteTitle": "Zaproś drugą osobę",
+      "inviteText": "Wyślij link osobie, z którą chcesz porównać wyniki. Zobaczy twoje imię i krótki wynik.",
+      "inviteNoTest": "Najpierw zrób test: przycisk „Zaproś” pojawi się na ekranie twojego wyniku.",
+      "inviteBtn": "Zaproś",
+      "inviteMsg": "Zrób test DISC – zobaczmy, jak razem pracujemy i się dogadujemy. Zaprasza cię {name}:",
+      "faqTitle": "Pytania",
+      "faq": [
+        {
+          "q": "Co, jeśli druga osoba nie chce robić testu?",
+          "a": "Wtedy raportu nie będzie: powstaje wyłącznie na podstawie wyników obu osób, a o pokazaniu swojego wyniku druga osoba decyduje samodzielnie. Możesz zaprosić kogoś innego."
+        },
+        {
+          "q": "Kto zobaczy mój wynik?",
+          "a": "Osoba, której wyślesz zaproszenie albo link do porównania: twoje imię i krótki wynik. Adres e-mail nie trafia do linków. Raport dostaje osoba, która go zamówiła, oraz – jeśli podała jej adres – druga osoba."
+        },
+        {
+          "q": "Ile kosztuje i kiedy przyjdzie?",
+          "a": "{price} USD, a jeśli z tego adresu e-mail kupiono już raport rozszerzony – {owner} USD. Raport przychodzi e-mailem w ciągu 24 godzin od płatności: jest pisany specjalnie dla was i przed wysyłką czyta go człowiek."
+        },
+        {
+          "q": "Czy raport pasuje do pary, a nie tylko do współpracowników?",
+          "a": "Tak. W raporcie są rozdziały i o pracy, i o życiu prywatnym; przy zamówieniu można zaznaczyć, kim dla siebie jesteście – wtedy raport położy nacisk właśnie na to."
+        }
+      ],
+      "refundLink": "zasadach zwrotu płatności",
+      "howMadeLink": "„Jak powstają raporty”",
+      "services": {
+        "name": "DISC w duecie",
+        "text": "Raport o dwóch osobach na podstawie wyników testu DISC: jak się nawzajem postrzegacie, gdzie pojawią się tarcia i jak się dogadywać w pracy i w życiu prywatnym. Przychodzi w ciągu 24 godzin.",
+        "more": "Więcej o raporcie „DISC w duecie”",
+        "price": "{price} USD"
+      },
+      "invite": {
+        "eyebrow": "Zaproszenie",
+        "title": "{name} zaprasza cię do testu DISC",
+        "text": "Test jest bezpłatny i trwa około 10 minut. Potem zobaczysz swój wynik, a jeśli wyrazisz zgodę – także porównanie dwóch profili: jak razem pracujecie i się komunikujecie.",
+        "profile": "{name} – profil „{profile}”",
+        "start": "Zrób test",
+        "haveTitle": "Test masz już za sobą na tym urządzeniu?",
+        "haveText": "Możesz porównać z nim wyniki bez powtarzania testu.",
+        "consent": "Zgadzam się na pokazanie mojego wyniku i imienia osobie zapraszającej ({name}) i na wykorzystanie ich w raporcie „DISC w duecie”, jeśli zostanie zamówiony",
+        "compare": "Porównaj z moim wynikiem",
+        "needConsent": "Zaznacz zgodę, aby zobaczyć porównanie.",
+        "bad": "Link z zaproszeniem jest uszkodzony lub niepełny. Poproś o ponowne przesłanie."
+      },
+      "result": {
+        "eyebrow": "DISC w duecie",
+        "title": "Zrób test w duecie – ze współpracownikiem, partnerem albo przyjacielem",
+        "text": "Zaproś drugą osobę do testu, a dowiecie się, jak skuteczniej działać razem:",
+        "points": [
+          "w czym razem radzicie sobie najlepiej, a co lepiej podzielić między siebie",
+          "gdzie pojawią się tarcia i co pomaga ich uniknąć",
+          "jak ze sobą rozmawiać, żeby każda strona została usłyszana – gotowe sformułowania dla obu stron",
+          "jak podejmować wspólne decyzje i zatrzymać spór, zanim się rozrośnie",
+          "co wziąć pod uwagę w pracy i w życiu prywatnym"
+        ],
+        "button": "Zaproś drugą osobę",
+        "more": "Co jest w raporcie",
+        "dlgTitle": "Zaproś do testu",
+        "compareTitle": "Porównaj wyniki: ty i {name}",
+        "compareText": "{name} zaprasza cię do porównania wyników testu DISC.",
+        "compareBtn": "Pokaż porównanie",
+        "dismiss": "Nie porównuj"
+      },
+      "compat": {
+        "eyebrow": "DISC w duecie",
+        "title": "A jak to wygląda u was?",
+        "text": "Ten opis pasuje do dowolnych dwóch osób ze stylami wiodącymi {a} i {b}.",
+        "textSame": "Ten opis pasuje do dowolnych dwóch osób, których styl wiodący to {a}.",
+        "more": "Jak to wygląda właśnie u was – na podstawie wszystkich skal obu osób, z sytuacjami tarć, gotowymi sformułowaniami i rozdziałami o pracy i życiu prywatnym – omówi raport „DISC w duecie”.",
+        "note": "Obie osoby robią test, potem zamawiacie raport: około 22 stron PDF w ciągu 24 godzin, {price} USD.",
+        "button": "Zaproś drugą osobę",
+        "link": "Więcej o raporcie"
+      },
+      "compare": {
+        "title": "{a} i {b}",
+        "lead": "Dwa profile DISC obok siebie. To bezpłatne porównanie; to, jak wszystko wygląda właśnie u was, omawia raport „DISC w duecie”.",
+        "legend": "Pełny pasek – {a}, obrysowany – {b}. Środek skali, 50%, zaznaczono kreską.",
+        "profiles": "Profile",
+        "pairTitle": "Wasz duet w skrócie",
+        "closeTitle": "Gdzie jesteście blisko",
+        "close": "Na skalach {list} różnica jest mniejsza niż 15 punktów: tu najłatwiej wam się zrozumieć.",
+        "closeNone": "Wyraźnie zbliżonych skal nie ma: tym bardziej warto z góry umówić się co do zasad.",
+        "gapTitle": "Gdzie różnica jest największa",
+        "gap": "Na skali {k}: {a} – {pa}%, {b} – {pb}%. Co ta różnica oznacza dla was, wyjaśnia raport.",
+        "gapSmall": "Największa różnica jest na skali {k} i jest niewielka: {a} – {pa}%, {b} – {pb}%.",
+        "only": {
+          "title": "Czego nie ma w bezpłatnym porównaniu, a jest w raporcie",
+          "text": "Opis duetu powyżej jest wspólny dla wszystkich osób z takimi stylami wiodącymi. Raport jest pisany specjalnie dla was:",
+          "items": [
+            ["Napisany specjalnie dla was", "na podstawie wszystkich czterech skal obu osób i stylów uzupełniających, a nie tylko stylu wiodącego"],
+            ["Pięć sytuacji tarć", "jak każda wygląda w pracy i w domu, co czuje każda ze stron i co pomaga"],
+            ["Gotowe sformułowania dla każdej ze stron", "zasady rozmowy i korespondencji oraz zdanie na początek – osobno dla każdej osoby"],
+            ["Jak decydować razem i zatrzymać spór", "trzy pytania przed wspólną decyzją, jak właśnie u was nakręca się spór i jak go zatrzymać"],
+            ["Praca i życie prywatne", "osobne rozdziały – z uwzględnieniem tego, kim dla siebie jesteście: współpracownicy, szef i pracownik, para, przyjaciele albo rodzina"],
+            ["Karty pracy", "„Wspólna umowa”, wspólny plan na 30 dni i najważniejsze na jednej stronie"],
+            ["Około 22 stron PDF w ciągu 24 godzin", "raport jest pisany pod wasze zamówienie, a przed wysyłką czyta go człowiek"]
+          ]
+        },
+        "shareTitle": "Wyślij tę stronę drugiej osobie",
+        "shareText": "Link otwiera to samo porównanie. Zawiera imiona i krótkie wyniki obu osób, bez adresów e-mail.",
+        "copy": "Kopiuj link",
+        "copied": "Link skopiowany",
+        "share": "Udostępnij",
+        "bad": "Link do porównania jest uszkodzony lub niepełny. Poproś o ponowne przesłanie.",
+        "same": "W linku są dwa takie same wyniki – nie ma czego porównywać.",
+        "aria": "{k}: {a}% i {b}%",
+        "pct": "{n}%",
+        "profile": "{key} „{name}”",
+        "sep": ", ",
+        "and": " i ",
+        "shareMsg": "{title} – DISC:"
+      },
+      "order": {
+        "title": "Zamów raport",
+        "emailLabel": "Twój e-mail",
+        "emailHint": "Tu przyjdą raport i dowód zakupu.",
+        "copyLabel": "E-mail drugiej osoby",
+        "copyOptional": "(opcjonalnie)",
+        "copyHint": "Wyślemy kopię raportu. Podaj adres tylko wtedy, gdy ta osoba zgadza się otrzymać wiadomość.",
+        "relTitle": "Kim dla siebie jesteście",
+        "relHint": "W raporcie są rozdziały i o pracy, i o życiu prywatnym; odpowiedź pomoże rozłożyć akcenty.",
+        "rels": [
+          ["colleagues", "Równorzędni współpracownicy"],
+          ["boss", "Jedna osoba kieruje pracą drugiej"],
+          ["couple", "Para"],
+          ["friends", "Przyjaciele"],
+          ["family", "Rodzina"],
+          ["", "Wolę nie podawać"]
+        ],
+        "leadTitle": "Kto kieruje",
+        "priceNote": "{owner} USD, jeśli z tego adresu e-mail kupiono już raport rozszerzony: cena przeliczy się po kliknięciu „Kup”.",
+        "agree": "Akceptuję warunki {offer}",
+        "buy": "Kup za {price} USD",
+        "wait": "Tworzymy zamówienie…",
+        "when": "Raport przyjdzie e-mailem w ciągu 24 godzin od płatności.",
+        "badEmail": "Sprawdź adres e-mail.",
+        "badCopy": "Sprawdź adres drugiej osoby.",
+        "needAgree": "Zaznacz akceptację warunków.",
+        "needLead": "Wskaż, kto kieruje.",
+        "priceChanged": "Z tego adresu e-mail kupiono już raport rozszerzony, dlatego cena wynosi {price} USD. Kliknij „Kup” jeszcze raz.",
+        "error": "Nie udało się utworzyć zamówienia. Spróbuj ponownie albo napisz na {email}."
+      },
+      "status": {
+        "wait": "Sprawdzamy płatność…",
+        "ok": "Płatność otrzymana. Raport „DISC w duecie” przyjdzie na twój e-mail w ciągu 24 godzin; wiadomość o zamówieniu jest już w skrzynce.",
+        "sent": "Raport został wysłany na twój e-mail.",
+        "fail": "Płatność nie powiodła się, pieniądze nie zostały pobrane. Możesz spróbować ponownie na stronie porównania.",
+        "unknown": "Nie udało się sprawdzić statusu płatności. Jeśli pieniądze zostały pobrane, raport przyjdzie w ciągu 24 godzin; pytania – na {email}."
+      },
+      "mail": {
+        "hello": "Dzień dobry!",
+        "paidSubject": "Płatność otrzymana: raport „DISC w duecie” w ciągu 24 godzin",
+        "paidIntro": "Dziękujemy za zamówienie raportu „DISC w duecie”. W raporcie: {a} i {b}.",
+        "paidWhen": "Raport przyjdzie na ten adres w ciągu 24 godzin od płatności.",
+        "paidCopy": "Kopię otrzyma też druga osoba – na adres podany w zamówieniu.",
+        "paidMeanwhile": "Raport jest pisany specjalnie dla was – na podstawie wszystkich skal obu osób i z uwzględnieniem tego, kim dla siebie jesteście. Przed wysyłką czyta go człowiek.",
+        "question": "Pytania – w odpowiedzi na tę wiadomość albo na {email}.",
+        "bye": "Zespół disc-test.org",
+        "order": "Zamówienie {order} ·",
+        "subject": "Raport „DISC w duecie”: {a} i {b}",
+        "intro": "Twój raport „DISC w duecie” jest gotowy – znajdziesz go w załączniku (PDF). W raporcie: {a} i {b}.",
+        "copyIntro": "To kopia raportu „DISC w duecie” – znajdziesz go w załączniku (PDF). W raporcie: {a} i {b}. Raport zamówiono w serwisie disc-test.org na podstawie wyników testu DISC: obie osoby zgodziły się udostępnić na jego potrzeby swoje wyniki.",
+        "howTitle": "Jak czytać",
+        "how": [
+          "Każda osoba najpierw samodzielnie, potem razem.",
+          "Rozdziały 1–8 dotyczą was w każdej sytuacji, 9 – pracy, 10 – życia prywatnego.",
+          "Zacznijcie od rozdziału 11 „Wspólna umowa”: to dwadzieścia minut razem."
+        ],
+        "copySent": "Kopia raportu została wysłana drugiej osobie.",
+        "copyWhy": "Dostajesz tę wiadomość, ponieważ twój adres podano przy zamówieniu raportu. To nie jest subskrypcja: innych wiadomości nie będzie.",
+        "noName": [
+          "osoba 1",
+          "osoba 2"
+        ]
       }
     },
     "gift": {
@@ -2487,6 +2727,12 @@
       }
     },
     "howMade": {
+      "pair": {
+        "h": "Raport „DISC w duecie”",
+        "p": [
+          "Raport „DISC w duecie” nie jest składany z napisanych wcześniej fragmentów: jego tekst powstaje pod każde zamówienie. Pisze go AI według zasad redakcji na podstawie zanonimizowanych danych – profili i wyników obu osób, bez imion, adresów i kodów wyników. Program sprawdza tekst – długość rozdziałów, zwracanie się do czytelników bez form męskich i żeńskich, zakazane sformułowania, liczby – i składa PDF z imionami obu osób, a człowiek czyta cały raport przed wysyłką. Dlatego raport „DISC w duecie” nie przychodzi od razu po płatności, tylko w ciągu 24 godzin."
+        ]
+      },
       "title": "Jak AI tworzy raporty DISC – automatycznie i bezstronnie",
       "description": "Raporty DISC powstają automatycznie: teksty pisze sztuczna inteligencja według zasad redakcji, a raport z twoich odpowiedzi składa program, nie człowiek.",
       "h1": "Jak powstają raporty DISC",
@@ -2834,6 +3080,7 @@
     "nav.howMade": "Jak powstają raporty",
     "nav.business": "Dla organizacji",
     "nav.gift": "Bony podarunkowe",
+    "nav.pair": "DISC w duecie",
 
     "pages.styles.title": "Typy osobowości DISC: D, I, S, C – cechy i mocne strony",
     "pages.styles.description": "Cztery typy osobowości (style zachowania) DISC: dominacja, wpływ, stałość, sumienność. Cechy, mocne strony, obszary rozwoju, motywacja i zachowanie w stresie.",
@@ -2962,7 +3209,7 @@
     "pd.consentLink": "zgodę na przetwarzanie danych osobowych",
     "pd.required": "Zaznacz zgodę na przetwarzanie danych osobowych: bez niej nie możemy przyjąć twoich danych.",
     "pd.cookieAsk": "Serwis przechowuje twoje postępy, wynik i wybrany język w pamięci lokalnej przeglądarki. Za twoją zgodą system analityki internetowej będzie zbierać zanonimizowane statystyki odwiedzin oraz zapis działań na stronie, abyśmy mogli ulepszać serwis. Imię, e-mail i wynik nie są przekazywane do systemu analitycznego.",
-    "pd.cookieDetails": "W przeglądarce przechowywane są: imię i e-mail, jeśli je podano; odpowiedzi i nieukończone postępy; ostatni wynik; czas pierwszego ukończenia testu, do liczenia terminu ceny specjalnej raportu; kod bonu podarunkowego, jeśli otworzysz serwis z linku na bonie; wybrany język; informacja, że ten komunikat został już wyświetlony. Te dane pozostają na twoim urządzeniu i są usuwane przy czyszczeniu danych witryny. Dostawca hostingu otrzymuje standardowe dane techniczne żądania. Gdy pierwszy raz danego dnia otwierasz serwis, na serwer serwisu trafia anonimowa informacja o wizycie: tylko wersja językowa serwisu; serwer zapisuje ją z godziną otrzymania, a przeglądarka zapamiętuje datę, żeby tego samego dnia nie wysyłać jej ponownie. Na tej podstawie liczymy, ile osób odwiedza serwis. Gdy zaczynasz test, na serwer serwisu trafia anonimowa informacja o rozpoczęciu: tylko wersja językowa serwisu. Po ukończeniu testu na serwer serwisu trafia anonimowy zapis do ogólnej statystyki: uzyskany profil i wersja językowa serwisu – bez imienia, adresu e-mail i odpowiedzi. Gdy klikniesz „Zapisz jako PDF”, odpowiedzi i data testu – bez imienia i e-maila – trafiają na serwer serwisu, który tworzy z nich plik raportu podstawowego, odsyła go i niczego nie zapisuje. Gdy wysyłasz wynik na e-mail, imię, e-mail i odpowiedzi są przekazywane na serwer serwisu: wysyła on do ciebie wiadomość z wynikiem i zapisuje imię, e-mail, datę oraz wynik w bazie wyników właściciela serwisu. Gdy zapisujesz się do newslettera na stronie głównej, e-mail i wersja językowa serwisu są przekazywane na serwer serwisu: wysyła on do ciebie wiadomość z linkiem potwierdzającym i zapisuje adres w tej samej bazie; jeśli subskrypcja nie zostanie potwierdzona, adres jest usuwany po 7 dniach. Gdy na stronie „Test w PDF” prosisz o przesłanie arkusza testu e-mailem, e-mail i wersja językowa serwisu są przekazywane na serwer serwisu: wysyła on do ciebie wiadomość z arkuszem i zapisuje informację o zgodzie razem z adresem; jeśli zaznaczysz zgodę na newsletter, adres od razu trafia na listę subskrybentów, a w wiadomości znajdzie się link do rezygnacji. Gdy zamawiasz bony podarunkowe, twój e-mail, podpis „Od kogo” oraz – jeśli je podasz – imiona i adresy e-mail odbiorców są przekazywane na serwer serwisu: tworzy on zamówienie, a po płatności wysyła bony; imiona i adresy odbiorców są usuwane po 30 dniach od wysłania. System analityki internetowej otrzymuje adres strony (na ekranie wyniku – razem z kodem wyniku: odpowiedziami, datą testu i imieniem, jeśli je podano, ale bez adresu e-mail), źródło wejścia, typ urządzenia i przeglądarki, zapis działań na stronie (pola z imieniem i e-mailem są z zapisu wyłączone) i zapisuje własne pliki cookie. Możesz go zablokować w ustawieniach przeglądarki lub za pomocą programu blokującego skrypty śledzące. Reklamowe skrypty śledzące nie są używane.",
+    "pd.cookieDetails": "W przeglądarce przechowywane są: imię i e-mail, jeśli je podano; odpowiedzi i nieukończone postępy; ostatni wynik; czas pierwszego ukończenia testu, do liczenia terminu ceny specjalnej raportu; kod bonu podarunkowego, jeśli otworzysz serwis z linku na bonie; zaproszenie „DISC w duecie” – imię i wynik osoby zapraszającej, jeśli otworzysz serwis z jej linku; wybrany język; informacja, że ten komunikat został już wyświetlony. Te dane pozostają na twoim urządzeniu i są usuwane przy czyszczeniu danych witryny. Dostawca hostingu otrzymuje standardowe dane techniczne żądania. Gdy pierwszy raz danego dnia otwierasz serwis, na serwer serwisu trafia anonimowa informacja o wizycie: tylko wersja językowa serwisu; serwer zapisuje ją z godziną otrzymania, a przeglądarka zapamiętuje datę, żeby tego samego dnia nie wysyłać jej ponownie. Na tej podstawie liczymy, ile osób odwiedza serwis. Gdy zaczynasz test, na serwer serwisu trafia anonimowa informacja o rozpoczęciu: tylko wersja językowa serwisu. Po ukończeniu testu na serwer serwisu trafia anonimowy zapis do ogólnej statystyki: uzyskany profil i wersja językowa serwisu – bez imienia, adresu e-mail i odpowiedzi. Gdy klikniesz „Zapisz jako PDF”, odpowiedzi i data testu – bez imienia i e-maila – trafiają na serwer serwisu, który tworzy z nich plik raportu podstawowego, odsyła go i niczego nie zapisuje. Gdy wysyłasz wynik na e-mail, imię, e-mail i odpowiedzi są przekazywane na serwer serwisu: wysyła on do ciebie wiadomość z wynikiem i zapisuje imię, e-mail, datę oraz wynik w bazie wyników właściciela serwisu. Gdy zapisujesz się do newslettera na stronie głównej, e-mail i wersja językowa serwisu są przekazywane na serwer serwisu: wysyła on do ciebie wiadomość z linkiem potwierdzającym i zapisuje adres w tej samej bazie; jeśli subskrypcja nie zostanie potwierdzona, adres jest usuwany po 7 dniach. Gdy na stronie „Test w PDF” prosisz o przesłanie arkusza testu e-mailem, e-mail i wersja językowa serwisu są przekazywane na serwer serwisu: wysyła on do ciebie wiadomość z arkuszem i zapisuje informację o zgodzie razem z adresem; jeśli zaznaczysz zgodę na newsletter, adres od razu trafia na listę subskrybentów, a w wiadomości znajdzie się link do rezygnacji. Gdy zamawiasz bony podarunkowe, twój e-mail, podpis „Od kogo” oraz – jeśli je podasz – imiona i adresy e-mail odbiorców są przekazywane na serwer serwisu: tworzy on zamówienie, a po płatności wysyła bony; imiona i adresy odbiorców są usuwane po 30 dniach od wysłania. System analityki internetowej otrzymuje adres strony (na ekranie wyniku – razem z kodem wyniku: odpowiedziami, datą testu i imieniem, jeśli je podano, ale bez adresu e-mail), źródło wejścia, typ urządzenia i przeglądarki, zapis działań na stronie (pola z imieniem i e-mailem są z zapisu wyłączone) i zapisuje własne pliki cookie. Możesz go zablokować w ustawieniach przeglądarki lub za pomocą programu blokującego skrypty śledzące. Reklamowe skrypty śledzące nie są używane.",
     "pd.cookieChange": "Zmień wybór dotyczący plików cookie",
 
     "print.title": "Test DISC do druku: kwestionariusz z kluczem i interpretacją",

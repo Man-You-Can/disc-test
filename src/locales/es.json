@@ -723,6 +723,7 @@
         ]
       },
       "purchaseCode": "Si recibe el perfil ampliado con un código de acceso que compró una organización u otra persona, tratamos los mismos datos, salvo la información sobre el pago, y registramos que el código se ha usado. A quien compró el código solo le informamos de si se ha usado y cuándo: su resultado, su informe y su correo electrónico no se le comunican. La base legal es el contrato que usted celebra al introducir el código conforme a las {offer}.",
+      "purchasePair": "Si encarga el informe «DISC para dos», tratamos su correo electrónico, los datos del pedido, los nombres y los resultados del test de las dos personas que figuran en el enlace a la comparación, la opción elegida en «¿Qué relación tienen?» y, si la indicó, la dirección de la otra persona para enviarle una copia del informe. La otra persona da su consentimiento para mostrar su resultado y para que se utilice en el informe mediante una marca en el sitio; al indicar su dirección, usted confirma que esa persona acepta recibir la copia. El texto del informe se elabora con ayuda de la IA solo a partir de datos anonimizados: perfiles y puntuaciones, sin nombres, direcciones ni códigos de resultado. Los códigos de resultado y la dirección de la otra persona se eliminan 30 días después de enviar el informe o, si el pedido no se paga, a los 7 días; los datos del pedido se conservan del mismo modo que los del pedido del perfil ampliado. La base legal es el contrato conforme a las {offer} y el consentimiento de la otra persona.",
       "purchaseGift": "Si compra certificados de regalo, tratamos su correo electrónico, los datos del pedido (fecha, importe, número y estado del pago), la línea «De parte de» y, si los indicó, los nombres y las direcciones de correo electrónico de los destinatarios. Su correo y los datos del pedido nos sirven para enviarle los certificados y la confirmación del pago, responder a sus consultas y tramitar un reembolso, y se conservan del mismo modo que los datos del pedido del perfil ampliado. El nombre de cada destinatario se imprime en su certificado, y a su dirección se envía un único correo con ese certificado; los nombres y las direcciones de los destinatarios se eliminan 30 días después de enviar los certificados o, si el pedido no se paga, a los 7 días. Al indicar los datos de los destinatarios, usted confirma que ellos aceptan recibir el certificado. La base legal es el contrato conforme a las {offer}, del que los destinatarios de los certificados son beneficiarios. Quien introduce en el sitio el código de un certificado recibe el perfil ampliado igual que con un código de acceso: a quien regaló el certificado solo le informamos de si se ha usado y cuándo."
     },
     "consentDoc": {
@@ -890,6 +891,19 @@
       }
     },
     "offer": {
+      "pairSection": {
+        "h": "12. Informe «DISC para dos»",
+        "p": [
+          "12.1. En las condiciones de esta oferta, el Prestador también presta el servicio «DISC para dos» (en adelante, el Informe para dos): elabora en formato electrónico un análisis de los perfiles DISC de dos personas, el Cliente y el segundo participante, y de su forma de trabajar y comunicarse entre sí, y lo envía al Cliente. Las disposiciones de esta oferta relativas al Servicio se aplican al Informe para dos, salvo que esta sección disponga otra cosa.",
+          "12.2. El Informe para dos se elabora a partir de los resultados del Test de dos personas: el Cliente y el segundo participante, que ha realizado el Test y, mediante una marca en el Sitio, ha aceptado mostrar su resultado al Cliente y que se utilice para el Informe para dos. Puede ser Cliente cualquiera de los dos participantes.",
+          "12.3. El precio del Informe para dos se indica en el Sitio y en la página de pago; al Cliente que haya pagado anteriormente el Perfil ampliado con la misma dirección de correo electrónico se le puede ofrecer un precio reducido. El Informe para dos se paga íntegramente antes de que comience su elaboración, en la forma indicada en las cláusulas 3.2 a 3.5.",
+          "12.4. El Informe para dos se elabora tras el pago y se envía a la dirección de correo electrónico del Cliente en un plazo máximo de 24 horas desde el pago. Si el Cliente ha indicado la dirección de correo electrónico del segundo participante, también se le envía a este una copia del Informe para dos; al indicar esa dirección, el Cliente confirma que el segundo participante acepta recibir el mensaje. El Informe para dos se considera prestado en el momento en que se envía el mensaje al Cliente.",
+          "12.5. El texto del Informe para dos se elabora con ayuda de un sistema de inteligencia artificial, conforme a las reglas del Prestador y a partir de datos anonimizados: los perfiles y las puntuaciones del Test, sin nombres, direcciones de correo electrónico ni códigos de resultado; antes del envío, lo lee una persona. El Informe para dos describe estilos de comportamiento y no constituye una valoración de la compatibilidad de los participantes, un dictamen psicológico ni una base para tomar decisiones de contratación, despido o retribución.",
+          "12.6. El Cliente puede desistir del Informe para dos antes de su envío; en ese caso, el pago se reembolsa íntegramente. Si el Informe para dos no se envía en el plazo indicado en la cláusula 12.4, el Cliente puede exigir el reembolso íntegro del pago. En lo demás, al Informe para dos se le aplica la sección 5.",
+          "12.7. El Informe para dos está destinado al uso personal de los dos participantes; en lo demás, se le aplica la sección 6.",
+          "12.8. Para elaborar el Informe para dos, el Prestador trata la dirección de correo electrónico del Cliente, los nombres y los resultados del Test de los dos participantes, la dirección de correo electrónico del segundo participante (si se ha indicado) y la opción elegida por el Cliente sobre la relación entre los participantes. Los códigos de resultado y la dirección del segundo participante se eliminan 30 días naturales después del envío del Informe para dos y, en un pedido no pagado, a los 7 días. El tratamiento de los datos se describe con más detalle en la página «{privacy}»."
+        ]
+      },
       "title": "Condiciones de venta (oferta pública) — perfil DISC ampliado y kit para facilitadores",
       "description": "Condiciones de venta (oferta pública) del servicio «Perfil DISC ampliado» y del Kit para facilitadores DISC de disc-test.org: precio, pago y entrega, reembolsos y derechos sobre los materiales.",
       "h1": "Condiciones de venta (oferta pública)",
@@ -1038,6 +1052,12 @@
       ]
     },
     "refund": {
+      "pairSection": {
+        "h": "Informe «DISC para dos»",
+        "p": [
+          "Se le devuelve todo el dinero pagado por el informe para dos si lo solicita antes de que se le envíe. También puede recuperar todo el pago si el informe no le llega en las 24 horas siguientes al pago. Una vez enviado, el pago de un informe elaborado debidamente no se reembolsa; los defectos (el archivo no se abre, el informe contiene datos de otras personas o su contenido no se corresponde con la descripción) los subsanamos en un plazo de tres días hábiles. Indique en su solicitud el número de pedido: aparece en el correo de confirmación del pago."
+        ]
+      },
       "title": "Política de reembolso — perfil DISC ampliado y kit para facilitadores",
       "description": "Cuándo y cómo recuperar el dinero pagado por el perfil DISC ampliado y el kit para facilitadores de disc-test.org: casos de reembolso, solicitud y plazos.",
       "h1": "Política de reembolso",
@@ -1583,6 +1603,226 @@
         "title": "Descubra su color DISC",
         "text": "El test muestra su color predominante y el secundario, su intensidad en porcentaje y qué hacer con ello. 24 bloques, unos 10 minutos, sin registro.",
         "button": "Descubrir mi color"
+      }
+    },
+    "pair": {
+      "title": "DISC para dos: informe sobre dos personas a partir del test DISC",
+      "description": "Informe sobre dos personas a partir de sus resultados del test DISC: cómo se ven mutuamente, dónde surgirán roces y cómo llegar a acuerdos, en el trabajo y en la vida personal. Se escribe para ustedes dos y llega en un plazo de 24 horas.",
+      "name": "Informe «DISC para dos»",
+      "eyebrow": "Nuevo informe",
+      "h1": "DISC para dos",
+      "lead": "Un informe sobre dos personas a partir de sus resultados del test DISC: cómo se ven mutuamente, dónde surgirán roces y cómo llegar a acuerdos, en el trabajo y en la vida personal. Se escribe para ustedes dos, con las cuatro escalas de cada persona.",
+      "facts": [
+        "Unas 22 páginas en PDF",
+        "Trabajo y vida personal",
+        "En un plazo de 24 horas tras el pago",
+        "{price} USD; si ya compró el informe ampliado, {owner} USD"
+      ],
+      "cta": "Invitar a la otra persona",
+      "ctaTest": "Hacer el test",
+      "howTitle": "Cómo funciona",
+      "how": [
+        ["Haga el test e invite a la otra persona", "El botón «Invitar» está en la pantalla de su resultado y en esta página: puede enviar el enlace por mensajería o copiarlo."],
+        ["La otra persona hace el test", "Es gratuito y lleva unos 10 minutos. Al final, marca una casilla para permitir que usted vea su resultado; sin esa marca no habrá comparación."],
+        ["La comparación y el informe", "En la página de comparación verá los dos perfiles lado a lado y una descripción gratuita de su combinación. Desde allí puede encargar el informe: le llegará por correo en un plazo de 24 horas, y puede enviarse una copia a la otra persona."]
+      ],
+      "insideTitle": "Qué incluye el informe",
+      "inside": [
+        ["Dos perfiles lado a lado", "las escalas de las dos personas en un mismo gráfico: en qué se parecen, dónde más se diferencian y qué significa eso para ustedes."],
+        ["Lo que se aportan mutuamente", "en qué se complementan y en qué tareas rinden más en equipo."],
+        ["Cómo se ven mutuamente", "qué nota cada persona en la otra y qué hay de verdad detrás."],
+        ["Cinco situaciones de roce", "cómo se presentan en el trabajo y en casa, qué siente cada persona y qué ayuda."],
+        ["Cómo hablar, decidir y discutir", "reglas y frases listas para cada persona, decisiones en común y cómo frenar una discusión."],
+        ["Trabajo y vida personal", "secciones aparte para compañeros de trabajo y para jefe y colaborador, y para parejas, amistades y familia."],
+        ["Hojas de trabajo", "el «Acuerdo entre dos», un plan de 30 días para dos y lo esencial en una página."]
+      ],
+      "sheetsTitle": "Páginas de ejemplo",
+      "sheetAlt": "Página {n} de un informe «DISC para dos» de ejemplo",
+      "forTitle": "Para quién",
+      "for": [
+        ["Compañeros de trabajo", "Cómo repartir el trabajo, llevar reuniones y discutir sobre el fondo del asunto sin herirse."],
+        ["Jefe y colaborador", "Cómo encargar tareas, comentar el trabajo y hablar de un desacuerdo."],
+        ["Parejas", "La casa, el dinero, el descanso, el cuidado mutuo y los disgustos: cómo se manifiestan sus estilos en casa."],
+        ["Amistades y familia", "Cómo evitar que la relación se reduzca a «una persona decide y la otra se adapta»."]
+      ],
+      "madeTitle": "Cómo se elabora el informe",
+      "made": "El informe se escribe para ustedes dos; no se compone con fragmentos ya hechos. El texto lo escribe la IA siguiendo las reglas de nuestra redacción, a partir de datos anonimizados: los perfiles y las puntuaciones de las dos personas, sin nombres ni direcciones. Un programa revisa el texto y genera el PDF con sus nombres, y una persona lee todo el informe antes de enviarlo. Más información en la página {howMade}.",
+      "limits": "El informe describe estilos de comportamiento, no sentimientos ni capacidades. No valora la compatibilidad y no sirve para tomar decisiones de contratación, despido o retribución.",
+      "inviteTitle": "Invitar a la otra persona",
+      "inviteText": "Envíe el enlace a la persona con quien quiere comparar resultados. Esa persona verá su nombre y su resultado breve.",
+      "inviteNoTest": "Primero haga el test: el botón «Invitar» aparecerá en la pantalla de su resultado.",
+      "inviteBtn": "Invitar",
+      "inviteMsg": "Haz el test DISC y veamos cómo trabajamos y nos comunicamos. Te invita {name}:",
+      "faqTitle": "Preguntas frecuentes",
+      "faq": [
+        {
+          "q": "¿Y si la otra persona no quiere hacer el test?",
+          "a": "Entonces no habrá informe para dos: se elabora solo con los resultados de las dos personas, y es la otra persona quien decide si muestra el suyo. Puede invitar a otra persona."
+        },
+        {
+          "q": "¿Quién verá mi resultado?",
+          "a": "La persona a la que envió la invitación o el enlace a la comparación: verá su nombre y su resultado breve. Su correo no aparece en los enlaces. El informe lo recibe quien lo encarga y también la otra persona, si quien lo encarga indica su dirección."
+        },
+        {
+          "q": "¿Cuánto cuesta y cuándo llega?",
+          "a": "{price} USD; si ya compró el informe ampliado con este correo, {owner} USD. El informe llega por correo en un plazo de 24 horas después del pago: se escribe para ustedes dos, y una persona lo lee antes de enviarlo."
+        },
+        {
+          "q": "¿Nos sirve si somos pareja y no compañeros de trabajo?",
+          "a": "Sí. El informe tiene secciones sobre el trabajo y sobre la vida personal; al encargarlo puede indicar qué relación tienen, y el informe pondrá el acento en ella."
+        }
+      ],
+      "refundLink": "política de reembolso",
+      "howMadeLink": "«Cómo se hacen los informes»",
+      "services": {
+        "name": "DISC para dos",
+        "text": "Informe sobre dos personas a partir de sus resultados del test DISC: cómo se ven mutuamente, dónde surgirán roces y cómo llegar a acuerdos en el trabajo y en la vida personal. Llega en un plazo de 24 horas.",
+        "more": "Más información sobre el informe para dos",
+        "price": "{price} USD"
+      },
+      "invite": {
+        "eyebrow": "Invitación",
+        "title": "{name} le invita a hacer el test DISC",
+        "text": "El test es gratuito y lleva unos 10 minutos. Al terminar verá su resultado y, si da su permiso, también la comparación de los dos perfiles: cómo trabajan y se comunican ustedes dos.",
+        "profile": "{name}: perfil «{profile}»",
+        "start": "Hacer el test",
+        "haveTitle": "¿Ya hizo el test en este dispositivo?",
+        "haveText": "Puede comparar ese resultado sin repetir el test.",
+        "consent": "Permito que se muestren mi resultado y mi nombre a quien me invitó ({name}) y que se utilicen para el informe «DISC para dos», si se encarga",
+        "compare": "Comparar con mi resultado",
+        "needConsent": "Marque la casilla de permiso para ver la comparación.",
+        "bad": "El enlace de invitación está dañado o incompleto. Pida que se lo envíen de nuevo."
+      },
+      "result": {
+        "eyebrow": "DISC para dos",
+        "title": "Haga el test con otra persona: un compañero, su pareja o un amigo",
+        "text": "Invite a otra persona a hacer el test y sabrán cómo entenderse y colaborar mejor:",
+        "points": [
+          "en qué tareas rinden más en equipo y cuáles conviene repartir",
+          "dónde surgirán roces y qué ayuda a sortearlos",
+          "cómo hablarse para que cada persona se sienta escuchada, con frases listas para las dos",
+          "cómo tomar decisiones en común y frenar una discusión antes de que crezca",
+          "qué deben tener en cuenta ustedes dos en el trabajo y en la vida personal"
+        ],
+        "button": "Invitar a la otra persona",
+        "more": "Qué incluye el informe",
+        "dlgTitle": "Invitar a hacer el test",
+        "compareTitle": "Comparar resultados: usted y {name}",
+        "compareText": "{name} le invita a comparar sus resultados del test DISC.",
+        "compareBtn": "Ver la comparación",
+        "dismiss": "No comparar"
+      },
+      "compat": {
+        "eyebrow": "DISC para dos",
+        "title": "¿Y cómo es en su caso?",
+        "text": "Esta descripción vale para cualquier par de personas con los estilos predominantes {a} y {b}.",
+        "textSame": "Esta descripción vale para cualquier par de personas cuyo estilo predominante sea {a}.",
+        "more": "Cómo es exactamente en su caso, con las cuatro escalas de cada persona, situaciones de roce, frases listas y secciones sobre el trabajo y la vida personal, lo analiza el informe «DISC para dos».",
+        "note": "Las dos personas hacen el test y luego encargan el informe: unas 22 páginas en PDF en un plazo de 24 horas, por {price} USD.",
+        "button": "Invitar a la otra persona",
+        "link": "Más información sobre el informe"
+      },
+      "compare": {
+        "title": "{a} y {b}",
+        "lead": "Dos perfiles DISC lado a lado. Esta comparación es gratuita; cómo funciona todo en su caso concreto lo analiza el informe «DISC para dos».",
+        "legend": "Barra llena: {a}; barra de contorno: {b}. El punto medio de la escala, 50 %, está marcado con una línea.",
+        "profiles": "Perfiles",
+        "pairTitle": "Su combinación en pocas palabras",
+        "closeTitle": "Dónde se parecen",
+        "close": "En {list}, la diferencia es de menos de 15 puntos: ahí les resulta más fácil entenderse.",
+        "closeNone": "No hay escalas en las que estén claramente cerca: por eso conviene acordar las reglas de antemano.",
+        "gapTitle": "Dónde está la mayor diferencia",
+        "gap": "En la escala {k}: {a}, {pa} %; {b}, {pb} %. Qué significa esa diferencia para ustedes dos lo explica el informe.",
+        "gapSmall": "La diferencia más notable está en la escala {k}, y es pequeña: {a}, {pa} %; {b}, {pb} %.",
+        "only": {
+          "title": "Lo que no está en la comparación gratuita, pero sí en el informe",
+          "text": "La línea de arriba sobre su combinación es la misma para todas las personas con estos estilos predominantes. El informe se escribe para ustedes dos:",
+          "items": [
+            ["Escrito para ustedes dos", "con las cuatro escalas de cada persona y sus estilos secundarios, no solo con el estilo predominante"],
+            ["Cinco situaciones de roce", "cómo se presenta cada una en el trabajo y en casa, qué siente cada persona y qué ayuda"],
+            ["Frases listas para cada persona", "reglas para hablar y para escribirse y una frase con la que empezar, por separado para cada persona"],
+            ["Cómo decidir en común y frenar una discusión", "tres preguntas antes de una decisión conjunta, cómo se intensifica una discusión en su caso y cómo detenerla"],
+            ["Trabajo y vida personal", "secciones aparte, según la relación que tengan: compañeros, jefe y colaborador, pareja, amistad o familia"],
+            ["Hojas de trabajo", "el «Acuerdo entre dos», un plan de 30 días para dos y lo esencial en una página"],
+            ["Unas 22 páginas en PDF en un plazo de 24 horas", "el informe se escribe para su pedido, y una persona lo lee antes de enviarlo"]
+          ]
+        },
+        "shareTitle": "Envíe esta página a la otra persona",
+        "shareText": "El enlace abre esta misma comparación. Contiene los nombres y los resultados breves de las dos personas, sin direcciones de correo.",
+        "copy": "Copiar enlace",
+        "copied": "Enlace copiado",
+        "share": "Compartir",
+        "bad": "El enlace a la comparación está dañado o incompleto. Pida que se lo envíen de nuevo.",
+        "same": "El enlace contiene dos resultados iguales: no hay nada que comparar.",
+        "aria": "{k}: {a} % y {b} %",
+        "pct": "{n} %",
+        "profile": "{key} «{name}»",
+        "sep": ", ",
+        "and": " y ",
+        "shareMsg": "DISC de {title}:"
+      },
+      "order": {
+        "title": "Encargar el informe",
+        "emailLabel": "Su correo electrónico",
+        "emailHint": "Aquí recibirá el informe y la confirmación del pago.",
+        "copyLabel": "Correo de la otra persona",
+        "copyOptional": "(opcional)",
+        "copyHint": "Le enviaremos una copia del informe. Indíquelo solo si esa persona acepta recibir el correo.",
+        "relTitle": "¿Qué relación tienen?",
+        "relHint": "El informe tiene secciones sobre el trabajo y sobre la vida personal; su respuesta ayuda a poner el acento donde corresponde.",
+        "rels": [
+          ["colleagues", "Compañeros al mismo nivel"],
+          ["boss", "Una persona dirige a la otra"],
+          ["couple", "Pareja"],
+          ["friends", "Amigos"],
+          ["family", "Familia"],
+          ["", "Prefiero no decirlo"]
+        ],
+        "leadTitle": "¿Quién dirige?",
+        "priceNote": "{owner} USD si ya compró el informe ampliado con este correo: el precio se recalculará al pulsar «Comprar».",
+        "agree": "Acepto las {offer}",
+        "buy": "Comprar por {price} USD",
+        "wait": "Creando el pedido…",
+        "when": "El informe llegará a su correo en un plazo de 24 horas después del pago. Los datos de la tarjeta se introducen en una página de pago segura.",
+        "badEmail": "Revise la dirección de correo.",
+        "badCopy": "Revise la dirección de la otra persona.",
+        "needAgree": "Marque la casilla para aceptar las condiciones.",
+        "needLead": "Indique quién dirige.",
+        "priceChanged": "Con este correo ya se compró el informe ampliado, así que el precio es de {price} USD. Pulse «Comprar» de nuevo.",
+        "error": "No se ha podido crear el pedido. Inténtelo de nuevo o escriba a {email}."
+      },
+      "status": {
+        "wait": "Comprobando el pago…",
+        "ok": "Pago recibido. El informe «DISC para dos» llegará a su correo en un plazo de 24 horas; el mensaje con los datos del pedido ya está en su bandeja de entrada.",
+        "sent": "El informe se ha enviado a su correo.",
+        "fail": "El pago no se ha completado y no se le ha cobrado nada. Puede intentarlo de nuevo en la página de comparación.",
+        "unknown": "No se ha podido comprobar el estado del pago. Si se le ha cobrado, el informe llegará en un plazo de 24 horas; para cualquier consulta, escriba a {email}."
+      },
+      "mail": {
+        "hello": "Hola:",
+        "paidSubject": "Pago recibido: el informe «DISC para dos» llegará en un plazo de 24 horas",
+        "paidIntro": "Gracias por encargar el informe «DISC para dos». Participantes: {a} y {b}.",
+        "paidWhen": "El informe llegará a esta dirección en un plazo de 24 horas después del pago.",
+        "paidCopy": "También enviaremos una copia a la otra persona, a la dirección que indicó.",
+        "paidMeanwhile": "El informe se escribe para ustedes dos, con las cuatro escalas de cada persona y teniendo en cuenta la relación que tienen. Antes de enviarlo, lo lee una persona.",
+        "question": "Si tiene alguna pregunta, responda a este correo o escriba a {email}.",
+        "bye": "El equipo de disc-test.org",
+        "order": "Pedido n.º {order} ·",
+        "subject": "Informe «DISC para dos»: {a} y {b}",
+        "intro": "Su informe «DISC para dos» está listo: lo encontrará adjunto en PDF. Participantes: {a} y {b}.",
+        "copyIntro": "Esta es una copia del informe «DISC para dos»: la encontrará adjunta en PDF. Participantes: {a} y {b}. El informe se encargó en disc-test.org a partir de los resultados del test DISC: las dos personas aceptaron mostrar sus resultados para elaborarlo.",
+        "howTitle": "Cómo leerlo",
+        "how": [
+          "Primero cada persona por su cuenta y después las dos a la vez.",
+          "Las secciones 1 a 8 tratan de ustedes dos en cualquier ámbito; la 9, del trabajo, y la 10, de la vida personal.",
+          "Empiecen por la sección 11, «Acuerdo entre dos»: son veinte minutos para ustedes dos."
+        ],
+        "copySent": "Se ha enviado una copia del informe a la otra persona.",
+        "copyWhy": "Ha recibido este correo porque su dirección se indicó al encargar el informe. No es una suscripción: no le enviaremos otros correos.",
+        "noName": [
+          "participante 1",
+          "participante 2"
+        ]
       }
     },
     "gift": {
@@ -2515,6 +2755,12 @@
       }
     },
     "howMade": {
+      "pair": {
+        "h": "Informe «DISC para dos»",
+        "p": [
+          "El informe para dos no se compone con textos escritos de antemano: su texto se escribe para cada pedido. Lo escribe la IA siguiendo las reglas de nuestra redacción, a partir de datos anonimizados: los perfiles y las puntuaciones de las dos personas, sin nombres, direcciones ni códigos de resultado. Un programa revisa el texto (la extensión de las secciones, que no haya formas masculinas ni femeninas para dirigirse a las personas, las formulaciones prohibidas y las cifras) y genera el PDF con los nombres de las dos personas, y una persona lee todo el informe antes de enviarlo. Por eso el informe para dos no llega justo después del pago, sino en un plazo de 24 horas."
+        ]
+      },
       "title": "Cómo la IA elabora informes DISC: automáticos y sin sesgos",
       "description": "Informe DISC automático: la IA escribe los textos con las reglas de nuestra redacción y un programa lo compone con sus respuestas, sin intervención humana.",
       "h1": "Cómo se elaboran los informes DISC",
@@ -2868,6 +3114,7 @@
     "nav.howMade": "Cómo se hacen los informes",
     "nav.business": "Para empresas",
     "nav.gift": "Certificados de regalo",
+    "nav.pair": "DISC para dos",
 
     "pages.styles.title": "Tipos de personalidad DISC: cuatro estilos D, I, S, C y sus rasgos",
     "pages.styles.description": "Los cuatro tipos de personalidad DISC: dominancia, influencia, estabilidad y cumplimiento. Rasgos, puntos fuertes, áreas de mejora y reacción al estrés.",
@@ -2996,7 +3243,7 @@
     "pd.consentLink": "consentimiento para el tratamiento de datos personales",
     "pd.required": "Marque la casilla de consentimiento para el tratamiento de datos personales: sin él no podemos aceptar sus datos.",
     "pd.cookieAsk": "Este sitio guarda su progreso, su resultado y el idioma elegido en el almacenamiento local del navegador. Con su consentimiento, un servicio de analítica web recopilará estadísticas de visitas anonimizadas y una grabación de las acciones en la página para ayudarnos a mejorar el sitio. Su nombre, su correo y su resultado no se envían al servicio de analítica.",
-    "pd.cookieDetails": "En el navegador se guardan: el nombre y el correo, si usted los indicó; sus respuestas y el progreso sin terminar; su último resultado; el momento en que terminó el test por primera vez, para el plazo del precio especial del informe; el código del certificado de regalo, si abrió el sitio con el enlace de un certificado; el idioma elegido; un indicador de que ha visto este aviso. Estos datos permanecen en su dispositivo y se eliminan al borrar los datos del sitio. El servicio de alojamiento recibe los datos técnicos habituales de la solicitud. La primera vez que abre el sitio en un día, se envía al servidor del sitio una marca anónima de visita: solo el idioma de la versión del sitio; el servidor la registra con la hora de llegada y su navegador guarda la fecha para no volver a enviarla ese mismo día. Con estas marcas contamos cuántas personas visitan el sitio. Al empezar el test, se envía al servidor del sitio una marca anónima de inicio: solo el idioma de la versión del sitio. Al terminar el test, se envía al servidor del sitio un registro anónimo para la estadística general: el perfil obtenido y el idioma de la versión del sitio, sin nombre, correo ni respuestas. Cuando pulsa «Guardar en PDF», sus respuestas y la fecha del test —sin nombre ni correo— se envían al servidor del sitio, que genera el archivo del informe breve, se lo devuelve y no guarda nada. Cuando envía el resultado por correo, el nombre, el correo y las respuestas se transmiten al servidor del sitio, que le envía el correo con el resultado y guarda el nombre, el correo, la fecha y el resultado en la base de resultados del propietario del sitio. Cuando se suscribe al boletín en la página de inicio, el correo y el idioma de la versión del sitio se transmiten al servidor del sitio, que le envía un mensaje con un enlace de confirmación y guarda la dirección en la misma base; si no confirma la suscripción, la dirección se elimina al cabo de 7 días. Cuando solicita el cuestionario del test por correo en la página «Test en PDF», el correo y el idioma de la versión del sitio se transmiten al servidor del sitio, que le envía un mensaje con el cuestionario y guarda el registro del consentimiento junto con la dirección; si marcó el consentimiento para el boletín, la dirección se guarda de inmediato en la lista de suscriptores y el mensaje incluye un enlace para darse de baja. Cuando encarga certificados de regalo, su correo, la línea «De parte de» y —si los indicó— los nombres y los correos de los destinatarios se transmiten al servidor del sitio, que crea el pedido y, tras el pago, envía los certificados; los nombres y los correos de los destinatarios se eliminan 30 días después del envío. El servicio de analítica web recibe la dirección de la página (en la pantalla del resultado, junto con el código del resultado: sus respuestas, la fecha del test y su nombre si lo indicó, pero no su correo), la procedencia, el tipo de dispositivo y navegador y una grabación de las acciones en la página (los campos de nombre y correo quedan excluidos), y establece sus propias cookies. Puede bloquearlo en la configuración del navegador o con un bloqueador de rastreadores. No se usan rastreadores publicitarios.",
+    "pd.cookieDetails": "En el navegador se guardan: el nombre y el correo, si usted los indicó; sus respuestas y el progreso sin terminar; su último resultado; el momento en que terminó el test por primera vez, para el plazo del precio especial del informe; el código del certificado de regalo, si abrió el sitio con el enlace de un certificado; la invitación de «DISC para dos» (el nombre y el resultado de quien le invitó), si abrió el sitio con su enlace; el idioma elegido; un indicador de que ha visto este aviso. Estos datos permanecen en su dispositivo y se eliminan al borrar los datos del sitio. El servicio de alojamiento recibe los datos técnicos habituales de la solicitud. La primera vez que abre el sitio en un día, se envía al servidor del sitio una marca anónima de visita: solo el idioma de la versión del sitio; el servidor la registra con la hora de llegada y su navegador guarda la fecha para no volver a enviarla ese mismo día. Con estas marcas contamos cuántas personas visitan el sitio. Al empezar el test, se envía al servidor del sitio una marca anónima de inicio: solo el idioma de la versión del sitio. Al terminar el test, se envía al servidor del sitio un registro anónimo para la estadística general: el perfil obtenido y el idioma de la versión del sitio, sin nombre, correo ni respuestas. Cuando pulsa «Guardar en PDF», sus respuestas y la fecha del test —sin nombre ni correo— se envían al servidor del sitio, que genera el archivo del informe breve, se lo devuelve y no guarda nada. Cuando envía el resultado por correo, el nombre, el correo y las respuestas se transmiten al servidor del sitio, que le envía el correo con el resultado y guarda el nombre, el correo, la fecha y el resultado en la base de resultados del propietario del sitio. Cuando se suscribe al boletín en la página de inicio, el correo y el idioma de la versión del sitio se transmiten al servidor del sitio, que le envía un mensaje con un enlace de confirmación y guarda la dirección en la misma base; si no confirma la suscripción, la dirección se elimina al cabo de 7 días. Cuando solicita el cuestionario del test por correo en la página «Test en PDF», el correo y el idioma de la versión del sitio se transmiten al servidor del sitio, que le envía un mensaje con el cuestionario y guarda el registro del consentimiento junto con la dirección; si marcó el consentimiento para el boletín, la dirección se guarda de inmediato en la lista de suscriptores y el mensaje incluye un enlace para darse de baja. Cuando encarga certificados de regalo, su correo, la línea «De parte de» y —si los indicó— los nombres y los correos de los destinatarios se transmiten al servidor del sitio, que crea el pedido y, tras el pago, envía los certificados; los nombres y los correos de los destinatarios se eliminan 30 días después del envío. El servicio de analítica web recibe la dirección de la página (en la pantalla del resultado, junto con el código del resultado: sus respuestas, la fecha del test y su nombre si lo indicó, pero no su correo), la procedencia, el tipo de dispositivo y navegador y una grabación de las acciones en la página (los campos de nombre y correo quedan excluidos), y establece sus propias cookies. Puede bloquearlo en la configuración del navegador o con un bloqueador de rastreadores. No se usan rastreadores publicitarios.",
     "pd.cookieChange": "Cambiar la elección de cookies",
 
     "print.title": "Test DISC para imprimir: cuestionario con clave y puntuación",

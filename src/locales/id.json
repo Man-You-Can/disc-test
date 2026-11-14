@@ -721,6 +721,7 @@
         ]
       },
       "purchaseCode": "Jika Anda memperoleh profil lengkap dengan kode akses yang dibeli oleh organisasi atau orang lain, kami memproses data yang sama, kecuali data pembayaran, dan mencatat bahwa kode tersebut telah digunakan. Kepada pembeli kode, kami hanya memberitahukan apakah kode telah digunakan dan kapan: hasil, laporan, dan email Anda tidak diteruskan kepadanya. Dasarnya adalah perjanjian yang Anda adakan dengan memasukkan kode berdasarkan {offer}.",
+      "purchasePair": "Jika Anda memesan laporan “DISC Berdua”, kami memproses alamat email Anda, data pesanan, nama dan hasil tes kedua peserta dari tautan perbandingan, pilihan “Hubungan Anda berdua”, serta — jika Anda mencantumkannya — alamat email orang kedua untuk salinan laporan. Peserta kedua memberikan persetujuan untuk memperlihatkan hasilnya dan menggunakannya untuk laporan dengan mencentang kotak di situs; dengan mencantumkan alamat emailnya, Anda menegaskan bahwa ia setuju menerima salinan. Teks laporan disusun dengan bantuan AI hanya berdasarkan data anonim — profil dan skor tanpa nama, alamat email, dan kode hasil. Kode hasil dan alamat email peserta kedua kami hapus 30 hari setelah laporan dikirim, dan untuk pesanan yang tidak dibayar, setelah 7 hari; data pesanan disimpan dengan cara yang sama seperti data pesanan profil lengkap. Dasar pemrosesannya adalah perjanjian berdasarkan {offer} dan persetujuan peserta kedua.",
       "purchaseGift": "Jika Anda membeli voucher hadiah, kami memproses alamat email Anda, data pesanan (tanggal, jumlah, nomor, dan status pembayaran), baris “Dari”, serta — jika Anda mencantumkannya — nama dan alamat email para penerima. Alamat email dan data pesanan Anda diperlukan untuk mengirimkan voucher dan bukti pembayaran kepada Anda, menjawab pertanyaan Anda, dan memproses pengembalian dana; data ini disimpan dengan cara yang sama seperti data pesanan profil lengkap. Nama penerima dicetak pada vouchernya, dan ke alamat email penerima hanya dikirim satu email berisi vouchernya; nama dan alamat email penerima kami hapus 30 hari setelah voucher dikirim (untuk pesanan yang tidak dibayar, setelah 7 hari). Dengan mencantumkan data penerima, Anda menegaskan bahwa mereka setuju menerima voucher. Dasar pemrosesannya adalah perjanjian berdasarkan {offer}, dan penerima voucher adalah pihak yang memperoleh manfaat dari perjanjian tersebut. Penerima yang memasukkan kode voucher di situs memperoleh profil lengkap dengan cara yang sama seperti dengan kode akses: kepada orang yang menghadiahkan voucher, kami hanya memberitahukan apakah voucher sudah digunakan dan kapan."
     },
     "consentDoc": {
@@ -888,6 +889,19 @@
       }
     },
     "offer": {
+      "pairSection": {
+        "h": "12. Laporan “DISC Berdua”",
+        "p": [
+          "12.1. Berdasarkan syarat dan ketentuan ini, Penyedia juga memberikan layanan “DISC Berdua” (selanjutnya disebut “Laporan Berdua”): menyusun dalam bentuk elektronik analisis atas profil DISC dua orang — Pelanggan dan peserta kedua — serta atas kerja sama dan komunikasi mereka, lalu mengirimkannya kepada Pelanggan. Ketentuan syarat dan ketentuan ini tentang Layanan berlaku untuk Laporan Berdua, kecuali jika bagian ini menentukan lain.",
+          "12.2. Laporan Berdua disusun berdasarkan hasil Tes dua orang: Pelanggan dan peserta kedua yang telah mengerjakan Tes dan, dengan mencentang persetujuan di Situs, setuju hasilnya diperlihatkan kepada Pelanggan dan digunakan untuk Laporan Berdua. Siapa pun dari kedua peserta dapat menjadi Pelanggan.",
+          "12.3. Harga Laporan Berdua dicantumkan di Situs dan di halaman pembayaran; Pelanggan yang sebelumnya telah membayar Profil Lengkap dengan alamat email yang sama dapat ditawari harga yang lebih rendah. Laporan Berdua dibayar lunas sebelum mulai disusun, dengan cara yang diatur dalam butir 3.2–3.5.",
+          "12.4. Laporan Berdua disusun setelah pembayaran dan dikirim ke alamat email Pelanggan paling lambat 24 jam sejak pembayaran. Jika Pelanggan mencantumkan alamat email peserta kedua, salinan Laporan Berdua juga dikirim kepadanya; dengan mencantumkan alamat itu, Pelanggan menegaskan bahwa peserta kedua setuju menerima email tersebut. Laporan Berdua dianggap telah diberikan pada saat email dikirim kepada Pelanggan.",
+          "12.5. Teks Laporan Berdua disusun dengan bantuan sistem kecerdasan buatan menurut aturan Penyedia berdasarkan data anonim — profil dan skor Tes tanpa nama, alamat email, dan kode hasil; sebelum dikirim, teks tersebut dibaca oleh manusia. Laporan Berdua menguraikan gaya perilaku dan bukan merupakan penilaian kecocokan para peserta, kesimpulan psikologis, ataupun dasar keputusan tentang perekrutan, pemberhentian, dan pengupahan.",
+          "12.6. Pelanggan berhak membatalkan Laporan Berdua sebelum laporan itu dikirim; dalam hal itu, pembayaran dikembalikan sepenuhnya. Jika Laporan Berdua tidak dikirim dalam jangka waktu yang disebutkan dalam butir 12.4, Pelanggan berhak menuntut pengembalian pembayaran sepenuhnya. Selebihnya, bagian 5 berlaku untuk Laporan Berdua.",
+          "12.7. Laporan Berdua ditujukan untuk penggunaan pribadi oleh kedua peserta; selebihnya, bagian 6 berlaku untuknya.",
+          "12.8. Untuk menyusun Laporan Berdua, Penyedia memproses alamat email Pelanggan, nama dan hasil Tes kedua peserta, alamat email peserta kedua (jika dicantumkan), serta pilihan Pelanggan tentang hubungan para peserta satu sama lain. Kode hasil dan alamat email peserta kedua dihapus 30 hari kalender setelah Laporan Berdua dikirim, dan untuk pesanan yang tidak dibayar, setelah 7 hari. Penjelasan lebih lanjut tersedia di halaman “{privacy}”."
+        ]
+      },
       "title": "Syarat dan Ketentuan Layanan Berbayar — Profil DISC Lengkap dan Paket Fasilitator",
       "description": "Syarat dan ketentuan layanan berbayar “Profil DISC lengkap” dan Paket Fasilitator DISC di disc-test.org: harga, pembayaran dan pengiriman, pengembalian dana, hak atas materi.",
       "h1": "Syarat dan Ketentuan Layanan Berbayar",
@@ -1036,6 +1050,12 @@
       ]
     },
     "refund": {
+      "pairSection": {
+        "h": "Laporan “DISC Berdua”",
+        "p": [
+          "Sebelum laporan berdua dikirim, pembayaran dikembalikan sepenuhnya atas permintaan Anda. Jika laporan tidak tiba dalam 24 jam setelah pembayaran, Anda juga berhak meminta pengembalian pembayaran sepenuhnya. Setelah laporan dikirim, pembayaran untuk laporan yang disusun sebagaimana mestinya tidak dikembalikan; kekurangan — file tidak dapat dibuka, laporan memuat data orang lain, atau isinya tidak sesuai dengan uraiannya — kami perbaiki dalam tiga hari kerja. Cantumkan nomor pesanan dalam permintaan Anda — nomor itu ada di email tentang pembayaran."
+        ]
+      },
       "title": "Kebijakan Pengembalian Dana — Profil DISC Lengkap dan Paket Fasilitator",
       "description": "Kapan dan bagaimana dana untuk profil DISC lengkap dan Paket Fasilitator di disc-test.org dikembalikan: kasus pengembalian, cara mengajukan permohonan, jangka waktu.",
       "h1": "Kebijakan Pengembalian Dana",
@@ -1561,6 +1581,226 @@
         "title": "Ketahui warna DISC Anda",
         "text": "Tes ini menunjukkan warna utama dan warna sekunder Anda, seberapa kuat masing-masing dalam persen, dan apa artinya bagi Anda. 24 soal, sekitar 10 menit, tanpa pendaftaran.",
         "button": "Ketahui warna Anda"
+      }
+    },
+    "pair": {
+      "title": "DISC Berdua — Laporan tentang Dua Orang dari Hasil Tes DISC",
+      "description": "Laporan tentang dua orang berdasarkan hasil tes DISC: bagaimana Anda saling memandang, di mana gesekan akan muncul, dan cara mencapai kesepakatan — di tempat kerja dan dalam kehidupan pribadi. Ditulis khusus untuk Anda berdua dan dikirim dalam 24 jam.",
+      "name": "Laporan “DISC Berdua”",
+      "eyebrow": "Laporan baru",
+      "h1": "DISC Berdua",
+      "lead": "Laporan tentang dua orang berdasarkan hasil tes DISC mereka: bagaimana Anda saling memandang, di mana gesekan akan muncul, dan cara mencapai kesepakatan — di tempat kerja dan dalam kehidupan pribadi. Laporan ini ditulis khusus untuk Anda berdua, berdasarkan keempat skala masing-masing.",
+      "facts": [
+        "Sekitar 22 halaman PDF",
+        "Pekerjaan dan kehidupan pribadi",
+        "Dalam 24 jam setelah pembayaran",
+        "US${price}, atau US${owner} jika Anda sudah pernah membeli laporan mendalam"
+      ],
+      "cta": "Undang orang kedua",
+      "ctaTest": "Ikuti tes",
+      "howTitle": "Cara kerjanya",
+      "how": [
+        ["Ikuti tes dan undang orang kedua", "Tombol “Undang” ada di layar hasil Anda dan di halaman ini: tautannya bisa dikirim lewat aplikasi pesan atau disalin."],
+        ["Orang kedua mengikuti tes", "Gratis, sekitar 10 menit. Di akhir tes, ia mencentang persetujuan untuk memperlihatkan hasilnya kepada Anda — tanpa centang itu, perbandingan tidak bisa dibuat."],
+        ["Perbandingan dan laporan", "Di halaman perbandingan, profil Anda berdua tampil berdampingan, disertai uraian singkat gratis tentang Anda berdua. Di sana pula laporan bisa dipesan: laporan dikirim ke email dalam 24 jam, dan salinannya bisa dikirim ke orang kedua."]
+      ],
+      "insideTitle": "Isi laporan",
+      "inside": [
+        ["Dua profil berdampingan", "skala Anda berdua dalam satu diagram: di mana Anda mirip, di mana perbedaannya paling besar, dan apa artinya bagi Anda berdua."],
+        ["Yang Anda berikan satu sama lain", "dalam hal apa Anda saling melengkapi dan dalam urusan apa Anda paling kuat bersama."],
+        ["Bagaimana Anda saling memandang", "apa yang dilihat masing-masing pada diri yang lain dan apa yang sebenarnya ada di baliknya."],
+        ["Lima situasi gesekan", "seperti apa di tempat kerja dan di rumah, apa yang dirasakan masing-masing, dan apa yang membantu."],
+        ["Cara berbicara, memutuskan, dan berdebat", "aturan dan kalimat siap pakai untuk masing-masing, keputusan berdua, dan cara menghentikan perdebatan."],
+        ["Pekerjaan dan kehidupan pribadi", "bagian tersendiri untuk rekan kerja serta atasan dan anggota timnya, dan untuk pasangan, teman, serta keluarga."],
+        ["Lembar kerja", "“Kesepakatan berdua”, rencana 30 hari berdua, dan intisari dalam satu halaman."]
+      ],
+      "sheetsTitle": "Contoh halaman",
+      "sheetAlt": "Halaman {n} contoh laporan “DISC Berdua”",
+      "forTitle": "Cocok untuk siapa",
+      "for": [
+        ["Rekan kerja", "Cara membagi pekerjaan, memimpin rapat, dan berdebat soal pekerjaan tanpa saling menyinggung."],
+        ["Atasan dan anggota tim", "Cara memberi tugas, menyampaikan umpan balik, dan membicarakan ketidaksetujuan."],
+        ["Pasangan", "Urusan rumah, uang, liburan, perhatian, dan rasa tersinggung: bagaimana gaya Anda berdua tampak di rumah."],
+        ["Teman dan keluarga", "Cara agar hubungan tidak berubah menjadi “yang satu memutuskan, yang lain menyesuaikan diri”."]
+      ],
+      "madeTitle": "Cara laporan disiapkan",
+      "made": "Laporan ini ditulis khusus untuk Anda berdua, bukan dirangkai dari potongan teks yang sudah jadi. Teksnya ditulis AI menurut aturan redaksi berdasarkan data anonim — profil dan skor Anda berdua, tanpa nama dan alamat email. Program memeriksa teks dan menyusun PDF dengan nama Anda berdua, lalu seorang manusia membaca seluruh laporan sebelum dikirim. Selengkapnya di halaman {howMade}.",
+      "limits": "Laporan ini menggambarkan gaya perilaku, bukan perasaan dan kemampuan. Laporan ini tidak menilai kecocokan dan tidak boleh dipakai untuk keputusan merekrut, memberhentikan, atau menentukan gaji.",
+      "inviteTitle": "Undang orang kedua",
+      "inviteText": "Kirim tautan kepada orang yang hasilnya ingin Anda bandingkan dengan hasil Anda. Ia akan melihat nama dan hasil ringkas Anda.",
+      "inviteNoTest": "Ikuti tes terlebih dahulu: tombol “Undang” akan muncul di layar hasil Anda.",
+      "inviteBtn": "Undang",
+      "inviteMsg": "Coba ikuti tes DISC ini — kita lihat bagaimana kita bekerja dan berkomunikasi bersama. Undangan dari {name}:",
+      "faqTitle": "Pertanyaan",
+      "faq": [
+        {
+          "q": "Bagaimana jika orang kedua tidak mau mengikuti tes?",
+          "a": "Kalau begitu, laporan berdua tidak bisa dibuat: laporan ini disusun hanya dari hasil kedua orang, dan orang kedua sendiri yang memutuskan apakah hasilnya diperlihatkan. Anda bisa mengundang orang lain."
+        },
+        {
+          "q": "Siapa yang akan melihat hasil saya?",
+          "a": "Orang yang Anda kirimi undangan atau tautan perbandingan: ia melihat nama dan hasil ringkas Anda. Email tidak dimuat dalam tautan. Laporan diterima oleh orang yang memesannya dan — jika pemesan mencantumkan alamatnya — oleh orang kedua."
+        },
+        {
+          "q": "Berapa harganya dan kapan laporan tiba?",
+          "a": "US${price}, atau US${owner} jika dengan email ini Anda sudah pernah membeli laporan mendalam. Laporan dikirim ke email dalam 24 jam setelah pembayaran: laporan ditulis khusus untuk Anda berdua, dan sebelum dikirim dibaca oleh manusia."
+        },
+        {
+          "q": "Apakah laporan ini cocok jika kami pasangan, bukan rekan kerja?",
+          "a": "Ya. Laporan memuat bagian tentang pekerjaan dan tentang kehidupan pribadi; saat memesan, Anda bisa memilih hubungan Anda berdua, dan penekanannya akan disesuaikan."
+        }
+      ],
+      "refundLink": "“Kebijakan Pengembalian Dana”",
+      "howMadeLink": "“Cara laporan dibuat”",
+      "services": {
+        "name": "DISC Berdua",
+        "text": "Laporan tentang dua orang berdasarkan hasil tes DISC: bagaimana Anda saling memandang, di mana gesekan akan muncul, dan cara mencapai kesepakatan di tempat kerja dan dalam kehidupan pribadi. Dikirim dalam 24 jam.",
+        "more": "Selengkapnya tentang laporan berdua",
+        "price": "US${price}"
+      },
+      "invite": {
+        "eyebrow": "Undangan",
+        "title": "{name} mengundang Anda mengikuti tes DISC",
+        "text": "Tesnya gratis, sekitar 10 menit. Setelah itu Anda akan melihat hasil Anda sendiri, dan jika Anda setuju, juga perbandingan kedua profil: bagaimana Anda berdua bekerja dan berkomunikasi bersama.",
+        "profile": "{name} — profil “{profile}”",
+        "start": "Ikuti tes",
+        "haveTitle": "Sudah pernah mengikuti tes di perangkat ini?",
+        "haveText": "Hasil itu bisa langsung dibandingkan, tanpa mengulang tes.",
+        "consent": "Saya mengizinkan hasil dan nama saya diperlihatkan kepada pengundang ({name}) dan digunakan untuk laporan “DISC Berdua” jika laporan itu dipesan",
+        "compare": "Bandingkan dengan hasil saya",
+        "needConsent": "Centang persetujuan untuk melihat perbandingan.",
+        "bad": "Tautan undangan rusak atau tidak lengkap. Mintalah agar tautan itu dikirim sekali lagi."
+      },
+      "result": {
+        "eyebrow": "DISC Berdua",
+        "title": "Ikuti tes berdua — dengan rekan kerja, pasangan, atau teman",
+        "text": "Undang orang kedua untuk mengikuti tes, dan Anda akan tahu cara berinteraksi berdua dengan lebih efektif:",
+        "points": [
+          "dalam urusan apa Anda lebih kuat bersama, dan urusan apa yang lebih baik dibagi",
+          "di mana gesekan akan muncul dan apa yang membantu menghindarinya",
+          "cara berbicara satu sama lain agar setiap orang didengar — kalimat siap pakai untuk Anda berdua",
+          "cara mengambil keputusan bersama dan menghentikan perdebatan sebelum membesar",
+          "apa yang perlu Anda berdua perhatikan di tempat kerja dan dalam kehidupan pribadi"
+        ],
+        "button": "Undang orang kedua",
+        "more": "Isi laporan",
+        "dlgTitle": "Undang untuk mengikuti tes",
+        "compareTitle": "Bandingkan hasil: Anda dan {name}",
+        "compareText": "{name} mengundang Anda membandingkan hasil tes DISC.",
+        "compareBtn": "Tampilkan perbandingan",
+        "dismiss": "Jangan bandingkan"
+      },
+      "compat": {
+        "eyebrow": "DISC Berdua",
+        "title": "Lalu bagaimana dengan Anda berdua?",
+        "text": "Uraian ini berlaku untuk dua orang mana pun dengan gaya utama {a} dan {b}.",
+        "textSame": "Uraian ini berlaku untuk dua orang mana pun yang gaya utamanya {a}.",
+        "more": "Bagaimana semua ini berlaku khusus untuk Anda berdua — berdasarkan keempat skala masing-masing, dengan situasi gesekan, kalimat siap pakai, serta bagian tentang pekerjaan dan kehidupan pribadi — diuraikan dalam laporan “DISC Berdua”.",
+        "note": "Anda berdua mengikuti tes, lalu memesan laporan: sekitar 22 halaman PDF dalam 24 jam, US${price}.",
+        "button": "Undang orang kedua",
+        "link": "Selengkapnya tentang laporan"
+      },
+      "compare": {
+        "title": "{a} dan {b}",
+        "lead": "Dua profil DISC berdampingan. Perbandingan ini gratis; bagaimana semuanya berlaku khusus untuk Anda berdua diuraikan dalam laporan “DISC Berdua”.",
+        "legend": "Batang berisi — {a}, batang bergaris tepi — {b}. Titik tengah skala, 50%, ditandai dengan garis.",
+        "profiles": "Profil",
+        "pairTitle": "Anda berdua secara singkat",
+        "closeTitle": "Di mana Anda mirip",
+        "close": "Pada skala {list}, selisihnya kurang dari 15 poin: di sini Anda paling mudah saling memahami.",
+        "closeNone": "Tidak ada skala yang nilainya berdekatan — karena itu, makin berguna menyepakati aturan sejak awal.",
+        "gapTitle": "Di mana perbedaan terbesar",
+        "gap": "Pada skala {k}: {a} — {pa}%, {b} — {pb}%. Arti perbedaan ini bagi Anda berdua diuraikan dalam laporan.",
+        "gapSmall": "Perbedaan yang paling terlihat ada pada skala {k}, dan perbedaannya kecil: {a} — {pa}%, {b} — {pb}%.",
+        "only": {
+          "title": "Yang tidak ada di perbandingan gratis, tetapi ada di laporan",
+          "text": "Kalimat tentang Anda berdua di atas sama untuk semua orang dengan gaya utama yang sama. Laporan ditulis khusus untuk Anda berdua:",
+          "items": [
+            ["Ditulis untuk Anda berdua", "berdasarkan keempat skala masing-masing dan gaya sekunder, bukan hanya gaya utama"],
+            ["Lima situasi gesekan", "seperti apa tiap situasi di tempat kerja dan di rumah, apa yang dirasakan masing-masing, dan apa yang membantu"],
+            ["Kalimat siap pakai untuk masing-masing", "aturan berbicara dan berkirim pesan, serta kalimat untuk memulai — terpisah untuk Anda masing-masing"],
+            ["Cara memutuskan bersama dan menghentikan perdebatan", "tiga pertanyaan sebelum keputusan bersama, bagaimana perdebatan memanas justru di antara Anda berdua, dan cara menghentikannya"],
+            ["Pekerjaan dan kehidupan pribadi", "bagian tersendiri, disesuaikan dengan hubungan Anda: rekan kerja, atasan dan anggota tim, pasangan, teman, atau keluarga"],
+            ["Lembar kerja", "“Kesepakatan berdua”, rencana 30 hari berdua, dan intisari dalam satu halaman"],
+            ["Sekitar 22 halaman PDF dalam 24 jam", "laporan ditulis untuk pesanan Anda, dan seorang manusia membacanya sebelum dikirim"]
+          ]
+        },
+        "shareTitle": "Kirim halaman ini kepada orang kedua",
+        "shareText": "Tautan ini membuka perbandingan yang sama. Di dalamnya ada nama dan hasil ringkas Anda berdua, tanpa email.",
+        "copy": "Salin tautan",
+        "copied": "Tautan disalin",
+        "share": "Bagikan",
+        "bad": "Tautan perbandingan rusak atau tidak lengkap. Mintalah agar tautan itu dikirim sekali lagi.",
+        "same": "Tautan ini berisi dua hasil yang sama — tidak ada yang bisa dibandingkan.",
+        "aria": "{k}: {a}% dan {b}%",
+        "pct": "{n}%",
+        "profile": "{key} “{name}”",
+        "sep": ", ",
+        "and": " dan ",
+        "shareMsg": "{title} — DISC:"
+      },
+      "order": {
+        "title": "Pesan laporan",
+        "emailLabel": "Email Anda",
+        "emailHint": "Laporan dan bukti pembayaran akan dikirim ke sini.",
+        "copyLabel": "Email orang kedua",
+        "copyOptional": "(opsional)",
+        "copyHint": "Kami akan mengirim salinan laporan. Isi hanya jika orang itu setuju menerima email.",
+        "relTitle": "Hubungan Anda berdua",
+        "relHint": "Laporan memuat bagian tentang pekerjaan dan tentang kehidupan pribadi; jawaban ini membantu menentukan penekanannya.",
+        "rels": [
+          ["colleagues", "Rekan kerja setara"],
+          ["boss", "Atasan dan anggota tim"],
+          ["couple", "Pasangan"],
+          ["friends", "Teman"],
+          ["family", "Keluarga"],
+          ["", "Tidak ingin menyebutkan"]
+        ],
+        "leadTitle": "Siapa yang memimpin",
+        "priceNote": "US${owner} jika dengan email ini Anda sudah pernah membeli laporan mendalam: harga akan dihitung ulang setelah Anda menekan “Beli”.",
+        "agree": "Saya menerima {offer}",
+        "buy": "Beli seharga US${price}",
+        "wait": "Membuat pesanan …",
+        "when": "Laporan dikirim ke email dalam 24 jam setelah pembayaran.",
+        "badEmail": "Periksa alamat email Anda.",
+        "badCopy": "Periksa alamat email orang kedua.",
+        "needAgree": "Centang persetujuan dengan syarat dan ketentuan.",
+        "needLead": "Pilih siapa yang memimpin.",
+        "priceChanged": "Dengan email ini laporan mendalam sudah pernah dibeli, jadi harganya US${price}. Tekan “Beli” sekali lagi.",
+        "error": "Pesanan belum bisa dibuat. Coba lagi atau tulis kepada kami di {email}."
+      },
+      "status": {
+        "wait": "Memeriksa pembayaran …",
+        "ok": "Pembayaran berhasil. Laporan “DISC Berdua” akan dikirim ke email Anda dalam 24 jam; email tentang pesanan sudah dikirim.",
+        "sent": "Laporan sudah dikirim ke email Anda.",
+        "fail": "Pembayaran tidak berhasil, dan dana Anda tidak terpotong. Anda bisa mencoba lagi di halaman perbandingan.",
+        "unknown": "Status pembayaran belum bisa diketahui. Jika dana Anda sudah terpotong, laporan akan dikirim dalam 24 jam; pertanyaan bisa dikirim ke {email}."
+      },
+      "mail": {
+        "hello": "Halo,",
+        "paidSubject": "Pembayaran diterima: laporan “DISC Berdua” dalam 24 jam",
+        "paidIntro": "Terima kasih telah memesan laporan “DISC Berdua”. Peserta: {a} dan {b}.",
+        "paidWhen": "Laporan akan dikirim ke alamat ini dalam 24 jam setelah pembayaran.",
+        "paidCopy": "Salinannya juga akan dikirim ke orang kedua, ke alamat yang Anda cantumkan.",
+        "paidMeanwhile": "Laporan ini ditulis khusus untuk Anda berdua — berdasarkan semua skala kedua peserta dan hubungan Anda. Sebelum dikirim, laporan dibaca oleh manusia.",
+        "question": "Ada pertanyaan? Balas email ini atau tulis ke {email}.",
+        "bye": "Tim disc-test.org",
+        "order": "Pesanan {order} ·",
+        "subject": "Laporan “DISC Berdua”: {a} dan {b}",
+        "intro": "Laporan “DISC Berdua” Anda sudah siap — terlampir dalam email ini (PDF). Peserta: {a} dan {b}.",
+        "copyIntro": "Ini salinan laporan “DISC Berdua” — terlampir dalam email ini (PDF). Peserta: {a} dan {b}. Laporan ini dipesan di disc-test.org berdasarkan hasil tes DISC: kedua peserta setuju hasilnya diperlihatkan untuk laporan ini.",
+        "howTitle": "Cara membacanya",
+        "how": [
+          "Masing-masing membaca sendiri terlebih dahulu, lalu bersama.",
+          "Bagian 1–8 tentang Anda berdua dalam urusan apa pun, bagian 9 tentang pekerjaan, bagian 10 tentang kehidupan pribadi.",
+          "Mulailah dari bagian 11, “Kesepakatan berdua”: cukup dua puluh menit berdua."
+        ],
+        "copySent": "Salinan laporan sudah dikirim ke orang kedua.",
+        "copyWhy": "Anda menerima email ini karena alamat Anda dicantumkan saat laporan dipesan. Ini bukan langganan: Anda tidak akan menerima email lain.",
+        "noName": [
+          "peserta 1",
+          "peserta 2"
+        ]
       }
     },
     "gift": {
@@ -2498,6 +2738,12 @@
       }
     },
     "howMade": {
+      "pair": {
+        "h": "Laporan “DISC Berdua”",
+        "p": [
+          "Laporan berdua tidak dirangkai dari blok teks yang sudah ditulis sebelumnya: teksnya ditulis untuk setiap pesanan. Teks itu ditulis AI menurut aturan redaksi berdasarkan data anonim — profil dan skor kedua peserta tanpa nama, alamat email, dan kode hasil. Program memeriksa teks — panjang bagian, sapaan tanpa penanda jenis kelamin, rumusan yang dilarang, angka — lalu menyusun PDF dengan nama para peserta, dan seorang manusia membaca seluruh laporan sebelum dikirim. Karena itu, laporan berdua tidak tiba segera setelah pembayaran, melainkan dalam 24 jam."
+        ]
+      },
       "title": "Cara AI Menyiapkan Laporan DISC — Otomatis dan Tanpa Bias",
       "description": "Laporan DISC disiapkan otomatis: teks ditulis kecerdasan buatan menurut aturan redaksi, dan laporan disusun dari jawaban Anda tanpa campur tangan manusia.",
       "h1": "Cara Laporan DISC Dibuat",
@@ -2845,6 +3091,7 @@
     "nav.howMade": "Cara laporan dibuat",
     "nav.business": "Untuk organisasi",
     "nav.gift": "Voucher hadiah",
+    "nav.pair": "DISC Berdua",
 
     "pages.styles.title": "Tipe Kepribadian DISC: 4 Gaya D, I, S, C — Ciri dan Kekuatan",
     "pages.styles.description": "Empat tipe kepribadian (gaya perilaku) DISC: Dominasi, Pengaruh, Kestabilan, Ketelitian. Ciri, kekuatan, area pengembangan, motivasi, dan perilaku saat stres.",
@@ -2973,7 +3220,7 @@
     "pd.consentLink": "persetujuan atas pemrosesan data pribadi",
     "pd.required": "Centang persetujuan atas pemrosesan data pribadi: tanpa persetujuan itu, kami tidak dapat menerima data Anda.",
     "pd.cookieAsk": "Situs ini menyimpan progres, hasil, dan bahasa pilihan Anda di penyimpanan lokal browser. Dengan persetujuan Anda, layanan analitik web akan mengumpulkan statistik kunjungan yang dianonimkan dan rekaman aktivitas di halaman agar kami dapat menyempurnakan situs. Nama, email, dan hasil Anda tidak dikirim ke layanan analitik.",
-    "pd.cookieDetails": "Yang disimpan di browser: nama dan email, jika Anda mengisinya; jawaban dan progres yang belum selesai; hasil terakhir; waktu Anda pertama kali menyelesaikan tes, untuk batas waktu harga khusus laporan; kode voucher hadiah, jika Anda membuka situs melalui tautan dari voucher; bahasa yang dipilih; penanda bahwa Anda sudah melihat pemberitahuan ini. Data ini tetap berada di perangkat Anda dan terhapus saat Anda menghapus data situs. Layanan hosting menerima data teknis standar dari setiap permintaan. Saat Anda membuka situs untuk pertama kalinya dalam sehari, satu penanda kunjungan anonim dikirim ke server situs: hanya bahasa versi situs; server mencatatnya beserta waktu diterimanya, dan browser Anda menyimpan tanggalnya agar penanda itu tidak dikirim lagi pada hari yang sama. Dengan penanda ini kami menghitung berapa banyak orang yang mengunjungi situs. Saat Anda memulai tes, satu penanda mulai anonim dikirim ke server situs: hanya bahasa versi situs. Saat tes selesai, satu catatan anonim untuk statistik umum dikirim ke server situs: profil yang Anda peroleh dan bahasa versi situs, tanpa nama, email, maupun jawaban. Saat Anda menekan “Simpan sebagai PDF”, jawaban dan tanggal tes — tanpa nama dan email — dikirim ke server situs, yang membuat file laporan ringkas, mengembalikannya kepada Anda, dan tidak menyimpan apa pun. Saat Anda mengirim hasil ke email, nama, email, dan jawaban diteruskan ke server situs: server mengirimkan email berisi hasil kepada Anda dan menyimpan nama, email, tanggal, dan hasil di basis data hasil milik pemilik situs. Saat Anda berlangganan buletin di halaman utama, email dan bahasa versi situs dikirim ke server situs: server mengirimkan email berisi tautan konfirmasi dan menyimpan alamat itu di basis data yang sama; jika langganan tidak dikonfirmasi, alamat itu dihapus setelah 7 hari. Saat Anda meminta lembar tes dikirim ke email di halaman “Tes DISC PDF”, email dan bahasa versi situs dikirim ke server situs: server mengirimkan email berisi lembar tes dan menyimpan penanda persetujuan beserta alamat itu; jika Anda mencentang persetujuan buletin, alamat itu langsung disimpan di daftar pelanggan, dan email tersebut memuat tautan untuk berhenti berlangganan. Saat Anda memesan voucher hadiah, email Anda, baris “Dari”, serta — jika Anda mengisinya — nama dan alamat email penerima dikirim ke server situs: server membuat pesanan dan, setelah pembayaran, mengirimkan voucher; nama dan alamat email penerima dihapus 30 hari setelah voucher dikirim. Layanan analitik web menerima alamat halaman (di layar hasil, bersama kode hasil: jawaban Anda, tanggal tes, dan nama Anda jika Anda mengisinya, tetapi tanpa email Anda), sumber kunjungan, jenis perangkat dan browser, serta rekaman aktivitas di halaman (kolom nama dan email dikecualikan dari rekaman); layanan ini juga memasang cookie miliknya sendiri. Anda dapat memblokirnya melalui pengaturan browser atau dengan pemblokir pelacak. Pelacak iklan tidak digunakan.",
+    "pd.cookieDetails": "Yang disimpan di browser: nama dan email, jika Anda mengisinya; jawaban dan progres yang belum selesai; hasil terakhir; waktu Anda pertama kali menyelesaikan tes, untuk batas waktu harga khusus laporan; kode voucher hadiah, jika Anda membuka situs melalui tautan dari voucher; undangan “DISC Berdua” — nama dan hasil pengundang, jika Anda membuka situs melalui tautannya; bahasa yang dipilih; penanda bahwa Anda sudah melihat pemberitahuan ini. Data ini tetap berada di perangkat Anda dan terhapus saat Anda menghapus data situs. Layanan hosting menerima data teknis standar dari setiap permintaan. Saat Anda membuka situs untuk pertama kalinya dalam sehari, satu penanda kunjungan anonim dikirim ke server situs: hanya bahasa versi situs; server mencatatnya beserta waktu diterimanya, dan browser Anda menyimpan tanggalnya agar penanda itu tidak dikirim lagi pada hari yang sama. Dengan penanda ini kami menghitung berapa banyak orang yang mengunjungi situs. Saat Anda memulai tes, satu penanda mulai anonim dikirim ke server situs: hanya bahasa versi situs. Saat tes selesai, satu catatan anonim untuk statistik umum dikirim ke server situs: profil yang Anda peroleh dan bahasa versi situs, tanpa nama, email, maupun jawaban. Saat Anda menekan “Simpan sebagai PDF”, jawaban dan tanggal tes — tanpa nama dan email — dikirim ke server situs, yang membuat file laporan ringkas, mengembalikannya kepada Anda, dan tidak menyimpan apa pun. Saat Anda mengirim hasil ke email, nama, email, dan jawaban diteruskan ke server situs: server mengirimkan email berisi hasil kepada Anda dan menyimpan nama, email, tanggal, dan hasil di basis data hasil milik pemilik situs. Saat Anda berlangganan buletin di halaman utama, email dan bahasa versi situs dikirim ke server situs: server mengirimkan email berisi tautan konfirmasi dan menyimpan alamat itu di basis data yang sama; jika langganan tidak dikonfirmasi, alamat itu dihapus setelah 7 hari. Saat Anda meminta lembar tes dikirim ke email di halaman “Tes DISC PDF”, email dan bahasa versi situs dikirim ke server situs: server mengirimkan email berisi lembar tes dan menyimpan penanda persetujuan beserta alamat itu; jika Anda mencentang persetujuan buletin, alamat itu langsung disimpan di daftar pelanggan, dan email tersebut memuat tautan untuk berhenti berlangganan. Saat Anda memesan voucher hadiah, email Anda, baris “Dari”, serta — jika Anda mengisinya — nama dan alamat email penerima dikirim ke server situs: server membuat pesanan dan, setelah pembayaran, mengirimkan voucher; nama dan alamat email penerima dihapus 30 hari setelah voucher dikirim. Layanan analitik web menerima alamat halaman (di layar hasil, bersama kode hasil: jawaban Anda, tanggal tes, dan nama Anda jika Anda mengisinya, tetapi tanpa email Anda), sumber kunjungan, jenis perangkat dan browser, serta rekaman aktivitas di halaman (kolom nama dan email dikecualikan dari rekaman); layanan ini juga memasang cookie miliknya sendiri. Anda dapat memblokirnya melalui pengaturan browser atau dengan pemblokir pelacak. Pelacak iklan tidak digunakan.",
     "pd.cookieChange": "Ubah pilihan cookie",
 
     "print.title": "Tes DISC untuk Dicetak: Soal, Kunci Jawaban, dan Cara Menghitung Skor",

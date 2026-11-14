@@ -719,6 +719,7 @@
         ]
       },
       "purchaseCode": "If you receive the in-depth profile with an access code bought by an organization or another person, we process the same data, except payment information, and record that the code has been used. We tell the person who bought the code only whether and when it was used: your result, report and email address are not passed on to them. The basis is the contract you enter into when you enter the code under the {offer}.",
+      "purchasePair": "If you order the DISC for Two report, we process your email address, order details, the names and test results of both participants from the comparison link, your answer to “How you know each other” and, if you gave it, the other participant’s address for a copy of the report. The other participant consents to showing their result and to its use for the report by ticking a box on the site; by giving their address, you confirm that they agree to receive a copy. The report text is prepared with the help of AI from anonymized data only: profiles and scores without names, email addresses or result codes. We delete result codes and the other participant’s address 30 days after the report is sent, or after 7 days if the order is not paid; order details are kept in the same way as order details for the in-depth profile. The basis is the contract under the {offer} and the other participant’s consent.",
       "purchaseGift": "If you buy gift certificates, we process your email address, order details (the date, amount, payment number and payment status), the “From” line and, if you gave them, the recipients’ names and email addresses. We need your email address and order details to send you the certificates, to answer your enquiries and to process a refund; they are kept in the same way as order details for the in-depth profile. A recipient’s name is printed on their certificate, and one email with their certificate is sent to the recipient’s address. We delete recipients’ names and email addresses 30 days after the certificates are sent, or after 7 days if the order is not paid. By giving recipients’ details, you confirm that they agree to receive a certificate. The basis for processing is the contract under the {offer}, under which the recipients of the certificates are its beneficiaries. A recipient who enters a certificate code on the site receives the in-depth profile in the same way as with an access code: we tell the person who gave the certificate only whether and when it was used."
     },
     "consentDoc": {
@@ -1823,6 +1824,19 @@
       }
     },
     "offer": {
+      "pairSection": {
+        "h": "12. DISC for Two report",
+        "p": [
+          "12.1. On the terms of this offer, the Provider also provides the DISC for Two service (hereinafter, the Report for Two): it prepares, in electronic form, an analysis of the DISC profiles of two persons, the Customer and a second participant, and of how they work and communicate together, and sends it to the Customer. The provisions of this offer on the Service apply to the Report for Two unless this section provides otherwise.",
+          "12.2. The Report for Two is prepared from the Test results of two persons: the Customer and a second participant who has taken the Test and, by ticking a box on the Site, has agreed to show their result to the Customer and to its use for the Report for Two. Either of the two participants may be the Customer.",
+          "12.3. The price of the Report for Two is shown on the Site and on the payment page; a Customer who has previously paid for the In-depth Profile from the same email address may be offered a reduced price. The Report for Two is paid for in full before its preparation begins, as set out in clauses 3.2–3.5.",
+          "12.4. The Report for Two is prepared after payment and sent to the Customer’s email address no later than 24 hours after payment. If the Customer has given the second participant’s email address, a copy of the Report for Two is also sent to that address; by giving the address, the Customer confirms that the second participant agrees to receive the email. The Report for Two is deemed provided at the moment the email is sent to the Customer.",
+          "12.5. The text of the Report for Two is prepared with the help of an artificial intelligence system, under the Provider’s rules, from anonymized data: Test profiles and scores without names, email addresses or result codes; a person reads it before it is sent. The Report for Two describes behavioral style and is not an assessment of the participants’ compatibility, a psychological opinion or a basis for decisions on hiring, dismissal or pay.",
+          "12.6. The Customer may cancel the Report for Two before it is sent, in which case the payment is refunded in full. If the Report for Two is not sent within the period stated in clause 12.4, the Customer may claim a full refund. In all other respects, section 5 applies to the Report for Two.",
+          "12.7. The Report for Two is intended for the personal use of both participants; in all other respects, section 6 applies to it.",
+          "12.8. To prepare the Report for Two, the Provider processes the Customer’s email address, the names and Test results of both participants, the second participant’s email address (if given) and the Customer’s choice of how the participants are related to each other. The result codes and the second participant’s address are deleted 30 calendar days after the Report for Two is sent, or after 7 days for an unpaid order. More about this can be found on the “{privacy}” page."
+        ]
+      },
       "title": "Terms of Sale (Public Offer) — In-Depth DISC Profile and Facilitator Kit",
       "description": "Terms of sale (public offer) for the paid service “In-depth DISC profile” and the DISC facilitator kit on disc-test.org: price, payment and delivery, refunds, rights to materials.",
       "h1": "Terms of Sale (Public Offer)",
@@ -1971,6 +1985,12 @@
       ]
     },
     "refund": {
+      "pairSection": {
+        "h": "DISC for Two report",
+        "p": [
+          "Payment for the DISC for Two report is refunded in full at your request if the report has not yet been sent. If the report has not arrived within 24 hours of payment, you are also entitled to a full refund. Once the report has been sent, payment for a properly prepared report is not refunded; defects (the file does not open, the report contains someone else’s data, or its content does not match the description) are fixed within three business days. Please give the order number in your request — it is in the payment confirmation email."
+        ]
+      },
       "title": "Refund Policy — In-Depth DISC Profile and Facilitator Kit",
       "description": "When and how to get your money back for the in-depth DISC profile and the facilitator kit on disc-test.org: when refunds are made, how to request one, time limits.",
       "h1": "Refund Policy",
@@ -2510,6 +2530,226 @@
         "title": "Find your DISC color",
         "text": "The test shows your primary and secondary colors, how strong each one is in percent and what to do about it. 24 blocks, about 10 minutes, no sign-up.",
         "button": "Find my color"
+      }
+    },
+    "pair": {
+      "title": "DISC for Two — A Report on Two People Based on the DISC Test",
+      "description": "A report on two people based on their DISC test results: how you see each other, where friction will come up and how to reach agreement, at work and in your personal life. Written for the two of you and delivered within 24 hours.",
+      "name": "DISC for Two report",
+      "eyebrow": "New report",
+      "h1": "DISC for Two",
+      "lead": "A report on two people based on their DISC test results: how you see each other, where friction will come up and how to reach agreement, at work and in your personal life. It’s written for the two of you, from all four scales of each of you.",
+      "facts": [
+        "About 22 PDF pages",
+        "Work and personal life",
+        "Within 24 hours of payment",
+        "US${price}, or US${owner} if you’ve already bought the in-depth report"
+      ],
+      "cta": "Invite the other person",
+      "ctaTest": "Take the test",
+      "howTitle": "How it works",
+      "how": [
+        ["Take the test and invite the other person", "The “Invite” button is on your result screen and on this page. You can send the link in a messaging app or copy it."],
+        ["The other person takes the test", "It’s free and takes about 10 minutes. At the end, they tick a box to share their result with you. Without it, there’s no comparison."],
+        ["Comparison and report", "The comparison page shows your profiles side by side and a free description of your pair. You can order the report there too: it arrives by email within 24 hours, and a copy can go to the other participant."]
+      ],
+      "insideTitle": "What’s in the report",
+      "inside": [
+        ["Your two profiles side by side", "both sets of scales on one chart: where you’re alike, where you differ most and what that means for the two of you."],
+        ["What you give each other", "how you complement each other and where you’re strongest together."],
+        ["How you see each other", "what each of you notices in the other and what’s really behind it."],
+        ["Five friction points", "what they look like at work and at home, how each of you experiences them and what helps."],
+        ["How to talk, decide and disagree", "rules and ready-made phrases for each of you, making decisions together and how to stop an argument."],
+        ["Work and personal life", "separate sections for colleagues and for a manager and team member, and for couples, friends and family."],
+        ["Worksheets", "your agreement, a 30-day plan for the two of you and the essentials on one page."]
+      ],
+      "sheetsTitle": "Sample pages",
+      "sheetAlt": "Sample DISC for Two report, page {n}",
+      "forTitle": "Who it’s for",
+      "for": [
+        ["Colleagues", "How to divide the work, run meetings and disagree about the substance without stepping on each other’s toes."],
+        ["Manager and team member", "How to assign tasks, give feedback and talk about disagreement."],
+        ["Couples", "Chores, money, time off, care and hurt feelings: how your styles play out at home."],
+        ["Friends and family", "How to keep the relationship from turning into “one decides, the other goes along.”"]
+      ],
+      "madeTitle": "How the report is prepared",
+      "made": "The report is written for the two of you, not pieced together from prewritten texts. AI writes it under our editorial rules from anonymized data: both of your profiles and scores, without names or email addresses. A program checks the text and builds a PDF with your names, and a person reads the whole report before it’s sent. More on the {howMade} page.",
+      "limits": "The report describes behavioral style, not feelings or abilities. It doesn’t assess compatibility and isn’t suitable for decisions about hiring, firing or pay.",
+      "inviteTitle": "Invite the other person",
+      "inviteText": "Send the link to the person you want to compare results with. They’ll see your name and your summary result.",
+      "inviteNoTest": "Take the test first. The “Invite” button will appear on your result screen.",
+      "inviteBtn": "Invite",
+      "inviteMsg": "Take the DISC test, and let’s see how the two of us work and communicate. Invitation from {name}:",
+      "faqTitle": "Questions",
+      "faq": [
+        {
+          "q": "What if the other person doesn’t want to take the test?",
+          "a": "Then there won’t be a report for two. It’s built only from both results, and the other person decides whether to share theirs. You can invite someone else."
+        },
+        {
+          "q": "Who will see my result?",
+          "a": "The person you sent the invitation or the comparison link to: your name and summary result. Your email address isn’t included in the links. The report goes to the person who ordered it and, if they gave an address, to the other participant."
+        },
+        {
+          "q": "How much does it cost, and when will it arrive?",
+          "a": "US${price}, or US${owner} if you’ve already bought the in-depth report with this email address. The report arrives by email within 24 hours of payment: it’s written for the two of you, and a person reads it before it’s sent."
+        },
+        {
+          "q": "Does it work if we’re a couple rather than colleagues?",
+          "a": "Yes. The report has sections on both work and personal life. When you order, you can say how you know each other, and the report will focus on that."
+        }
+      ],
+      "refundLink": "refund policy",
+      "howMadeLink": "“How reports are made”",
+      "services": {
+        "name": "DISC for Two",
+        "text": "A report on two people based on their DISC test results: how you see each other, where friction will come up and how to reach agreement at work and in your personal life. Delivered within 24 hours.",
+        "more": "More about DISC for Two",
+        "price": "US${price}"
+      },
+      "invite": {
+        "eyebrow": "Invitation",
+        "title": "{name} invites you to take the DISC test",
+        "text": "The test is free and takes about 10 minutes. Afterward you’ll see your result and, if you agree, a comparison of your two profiles: how you work and communicate together.",
+        "profile": "{name}: the {profile} profile",
+        "start": "Take the test",
+        "haveTitle": "Already taken the test on this device?",
+        "haveText": "You can compare that result without retaking the test.",
+        "consent": "I allow my result and name to be shown to the person who invited me ({name}) and to be used for a DISC for Two report if one is ordered",
+        "compare": "Compare with my result",
+        "needConsent": "Tick the consent box to see the comparison.",
+        "bad": "This invitation link is damaged or incomplete. Ask for it to be sent again."
+      },
+      "result": {
+        "eyebrow": "DISC for Two",
+        "title": "Take the test as a pair: with a colleague, your partner or a friend",
+        "text": "Invite another person to take the test, and you’ll see how the two of you can work together better:",
+        "points": [
+          "where you’re stronger together and what’s better split between you",
+          "where friction will come up and what helps you get past it",
+          "how to talk so that each of you is heard, with ready-made phrases for both",
+          "how to make joint decisions and stop an argument before it grows",
+          "what the two of you should keep in mind at work and in your personal life"
+        ],
+        "button": "Invite the other person",
+        "more": "What’s in the report",
+        "dlgTitle": "Invite to the test",
+        "compareTitle": "Compare results: you and {name}",
+        "compareText": "{name} invites you to compare your DISC test results.",
+        "compareBtn": "Show the comparison",
+        "dismiss": "Don’t compare"
+      },
+      "compat": {
+        "eyebrow": "DISC for Two",
+        "title": "What about the two of you?",
+        "text": "This description fits any two people whose primary styles are {a} and {b}.",
+        "textSame": "This description fits any two people whose primary style is {a}.",
+        "more": "How it works for the two of you specifically, from all four scales of each of you, with friction points, ready-made phrases and sections on work and personal life, is what the DISC for Two report covers.",
+        "note": "You both take the test, then you order the report: about 22 PDF pages within 24 hours, US${price}.",
+        "button": "Invite the other person",
+        "link": "More about the report"
+      },
+      "compare": {
+        "title": "{a} and {b}",
+        "lead": "Two DISC profiles side by side. This comparison is free; the DISC for Two report covers how things work for the two of you specifically.",
+        "legend": "The solid bar is {a}, the outlined bar is {b}. The midline, 50%, is marked with a line.",
+        "profiles": "Profiles",
+        "pairTitle": "The two of you in brief",
+        "closeTitle": "Where you’re close",
+        "close": "On {list}, the gap is under 15 points: this is where understanding each other comes easiest.",
+        "closeNone": "No scales are especially close, which makes it all the more useful to agree on some rules in advance.",
+        "gapTitle": "Where the gap is biggest",
+        "gap": "On {k}: {a} {pa}%, {b} {pb}%. The report covers what this gap means for the two of you.",
+        "gapSmall": "Your most noticeable difference is on {k}, and it’s small: {a} {pa}%, {b} {pb}%.",
+        "only": {
+          "title": "Not in the free comparison, but in the report",
+          "text": "The line about your pair above is the same for everyone with these primary styles. The report is written for the two of you:",
+          "items": [
+            ["Written for the two of you", "from all four scales of each of you and your secondary styles, not just your primary styles"],
+            ["Five friction points", "what each one looks like at work and at home, how each of you experiences it and what helps"],
+            ["Ready-made phrases for each of you", "rules for conversations and messages, and a line to start with, separately for each of you"],
+            ["How to decide together and stop an argument", "three questions before a joint decision, how an argument escalates between the two of you and how to stop it"],
+            ["Work and personal life", "separate sections, shaped by how you know each other: colleagues, manager and team member, couple, friends or family"],
+            ["Worksheets", "your agreement, a 30-day plan for the two of you and the essentials on one page"],
+            ["About 22 PDF pages within 24 hours", "the report is written for your order, and a person reads it before it’s sent"]
+          ]
+        },
+        "shareTitle": "Send this page to the other person",
+        "shareText": "The link opens this same comparison. It contains both your names and summary results, but no email addresses.",
+        "copy": "Copy link",
+        "copied": "Link copied",
+        "share": "Share",
+        "bad": "This comparison link is damaged or incomplete. Ask for it to be sent again.",
+        "same": "The link contains the same result twice, so there’s nothing to compare.",
+        "aria": "{k}: {a}% and {b}%",
+        "pct": "{n}%",
+        "profile": "{name} ({key})",
+        "sep": ", ",
+        "and": " and ",
+        "shareMsg": "{title} — DISC:"
+      },
+      "order": {
+        "title": "Order the report",
+        "emailLabel": "Your email",
+        "emailHint": "We’ll send your report and payment confirmation here.",
+        "copyLabel": "The other participant’s email",
+        "copyOptional": "(optional)",
+        "copyHint": "We’ll send them a copy of the report. Only enter it if they’re happy to receive the email.",
+        "relTitle": "How you know each other",
+        "relHint": "The report covers both work and personal life; your answer helps it focus on what matters to you.",
+        "rels": [
+          ["colleagues", "Colleagues at the same level"],
+          ["boss", "One of us manages the other"],
+          ["couple", "Couple"],
+          ["friends", "Friends"],
+          ["family", "Family"],
+          ["", "I’d rather not say"]
+        ],
+        "leadTitle": "Who’s the manager",
+        "priceNote": "US${owner} if you’ve already bought the in-depth report with this email address: the price will update after you click “Buy.”",
+        "agree": "I accept the {offer}",
+        "buy": "Buy for US${price}",
+        "wait": "Creating your order…",
+        "when": "The report will arrive by email within 24 hours of payment.",
+        "badEmail": "Please check your email address.",
+        "badCopy": "Please check the other participant’s email address.",
+        "needAgree": "Please tick the box to accept the terms.",
+        "needLead": "Please choose who’s the manager.",
+        "priceChanged": "The in-depth report has already been bought with this email address, so the price is US${price}. Click “Buy” again.",
+        "error": "We couldn’t create your order. Please try again or email us at {email}."
+      },
+      "status": {
+        "wait": "Checking your payment…",
+        "ok": "Payment received. Your DISC for Two report will arrive by email within 24 hours; an order confirmation is already in your inbox.",
+        "sent": "Your report has been sent to your email.",
+        "fail": "The payment didn’t go through, and you haven’t been charged. You can try again on the comparison page.",
+        "unknown": "We couldn’t check your payment status. If you were charged, the report will arrive within 24 hours; questions to {email}."
+      },
+      "mail": {
+        "hello": "Hello,",
+        "paidSubject": "Payment received: your DISC for Two report within 24 hours",
+        "paidIntro": "Thank you for ordering the DISC for Two report. Participants: {a} and {b}.",
+        "paidWhen": "The report will arrive at this address within 24 hours of payment.",
+        "paidCopy": "A copy will also go to the other participant, at the address you gave.",
+        "paidMeanwhile": "The report is written for the two of you, from all of both your scales and with how you know each other in mind. A person reads it before it’s sent.",
+        "question": "Questions? Reply to this email or write to {email}.",
+        "bye": "The disc-test.org team",
+        "order": "Order {order} ·",
+        "subject": "DISC for Two report: {a} and {b}",
+        "intro": "Your DISC for Two report is ready. It’s attached as a PDF. Participants: {a} and {b}.",
+        "copyIntro": "Here’s a copy of the DISC for Two report, attached as a PDF. Participants: {a} and {b}. The report was ordered on disc-test.org from DISC test results, and both participants agreed to share their results for it.",
+        "howTitle": "How to read it",
+        "how": [
+          "Each of you on your own first, then together.",
+          "Sections 1–8 are about the two of you in any setting, 9 is about work and 10 is about personal life.",
+          "Start with section 11, your agreement: it takes about 20 minutes together."
+        ],
+        "copySent": "A copy of the report has been sent to the other participant.",
+        "copyWhy": "You’re receiving this email because your address was given when the report was ordered. This isn’t a subscription, and you won’t get any other emails.",
+        "noName": [
+          "participant 1",
+          "participant 2"
+        ]
       }
     },
     "gift": {
@@ -3440,6 +3680,12 @@
       }
     },
     "howMade": {
+      "pair": {
+        "h": "The DISC for Two report",
+        "p": [
+          "The DISC for Two report isn’t assembled from prewritten texts: it’s written for each order. AI writes it under our editorial rules from anonymized data: both participants’ profiles and scores, without names, email addresses or result codes. A program checks the text (the length of each section, gender-neutral wording, banned phrasing, the numbers) and builds the PDF with the participants’ names, and a person reads the whole report before it’s sent. That’s why the DISC for Two report arrives within 24 hours of payment rather than right away."
+        ]
+      },
       "title": "How AI Prepares DISC Reports — Automatically, Without Bias",
       "description": "How DISC reports are made: AI wrote the texts in advance under our editorial rules, and a program builds your report from your answers with no human involved.",
       "h1": "How DISC reports are made",
@@ -3787,6 +4033,7 @@
     "nav.howMade": "How reports are made",
     "nav.business": "For organizations",
     "nav.gift": "Gift certificates",
+    "nav.pair": "DISC for Two",
 
     "pages.styles.title": "DISC Personality Types: D, I, S, C Styles and Traits",
     "pages.styles.description": "The four DISC personality types: Dominance, Influence, Steadiness, Conscientiousness. Traits, strengths, growth areas, motivation and behavior under stress.",
@@ -3915,7 +4162,7 @@
     "pd.consentLink": "consent to the processing of personal data",
     "pd.required": "Please tick the consent to the processing of personal data: without it we cannot accept your data.",
     "pd.cookieAsk": "This site keeps your progress, result and chosen language in your browser’s local storage. With your consent, a web analytics system will collect anonymized visit statistics and a recording of on-page actions to help us improve the site. Your name, email and result are not sent to the analytics system.",
-    "pd.cookieDetails": "Stored in your browser: your name and email, if you entered them; your answers and unfinished progress; your latest result; the time you first finished the test, for the deadline of the special report price; the gift certificate code, if you opened the site from a certificate link; your chosen language; a note that you have seen this notice. This data stays on your device and is removed when you clear the site’s data. The hosting provider receives standard technical request data. When you first open the site on a given day, an anonymous visit note goes to the site’s server: the site language only; the server records it with the time it arrived, and your browser remembers the date so the note is not sent again that day. We use these notes to count how many people visit the site. When you start the test, an anonymous start note goes to the site’s server: the site language only. When you finish the test, an anonymous record for overall statistics goes to the site’s server: your resulting profile and the site language — without your name, email or answers. When you click “Save as PDF”, your answers and the test date — without your name or email — are sent to the site’s server, which builds the summary report file, returns it to you and stores nothing. When you send your result by email, your name, email and answers are passed to the site’s server, which emails you your result and stores your name, email, date and result in the site owner’s results database. When you subscribe to the newsletter on the home page, your email and the site language are passed to the site’s server, which sends you an email with a confirmation link and stores the address in the same database; if you don’t confirm the subscription, the address is deleted after 7 days. When you ask for the test form to be emailed to you on the “PDF test” page, your email and the site language are passed to the site’s server, which sends you an email with the form and stores a record of your consent together with the address; if you ticked the newsletter consent box, the address is added to the subscriber list right away, and the email contains an unsubscribe link. When you order gift certificates, your email, the “From” line and, if you entered them, the recipients’ names and email addresses are passed to the site’s server, which creates the order and sends the certificates after payment; recipients’ names and email addresses are deleted 30 days after the certificates are sent. The web analytics system receives the page address (on the result screen, together with the result code: your answers, the test date and your name if you entered it, but not your email), the referrer, device and browser type, a recording of on-page actions (the name and email fields are excluded), and sets its own cookies. You can block it in your browser settings or with a tracker blocker. No advertising trackers are used.",
+    "pd.cookieDetails": "Stored in your browser: your name and email, if you entered them; your answers and unfinished progress; your latest result; the time you first finished the test, for the deadline of the special report price; the gift certificate code, if you opened the site from a certificate link; a DISC for Two invitation: the name and result of the person who invited you, if you opened the site from their link; your chosen language; a note that you have seen this notice. This data stays on your device and is removed when you clear the site’s data. The hosting provider receives standard technical request data. When you first open the site on a given day, an anonymous visit note goes to the site’s server: the site language only; the server records it with the time it arrived, and your browser remembers the date so the note is not sent again that day. We use these notes to count how many people visit the site. When you start the test, an anonymous start note goes to the site’s server: the site language only. When you finish the test, an anonymous record for overall statistics goes to the site’s server: your resulting profile and the site language — without your name, email or answers. When you click “Save as PDF”, your answers and the test date — without your name or email — are sent to the site’s server, which builds the summary report file, returns it to you and stores nothing. When you send your result by email, your name, email and answers are passed to the site’s server, which emails you your result and stores your name, email, date and result in the site owner’s results database. When you subscribe to the newsletter on the home page, your email and the site language are passed to the site’s server, which sends you an email with a confirmation link and stores the address in the same database; if you don’t confirm the subscription, the address is deleted after 7 days. When you ask for the test form to be emailed to you on the “PDF test” page, your email and the site language are passed to the site’s server, which sends you an email with the form and stores a record of your consent together with the address; if you ticked the newsletter consent box, the address is added to the subscriber list right away, and the email contains an unsubscribe link. When you order gift certificates, your email, the “From” line and, if you entered them, the recipients’ names and email addresses are passed to the site’s server, which creates the order and sends the certificates after payment; recipients’ names and email addresses are deleted 30 days after the certificates are sent. The web analytics system receives the page address (on the result screen, together with the result code: your answers, the test date and your name if you entered it, but not your email), the referrer, device and browser type, a recording of on-page actions (the name and email fields are excluded), and sets its own cookies. You can block it in your browser settings or with a tracker blocker. No advertising trackers are used.",
     "pd.cookieChange": "Change cookie choice",
 
     "print.title": "Printable DISC Test: Questionnaire, Answer Key and Scoring",

@@ -26,11 +26,9 @@ const OPTIONAL = ['.content.policy.legal', '.content.extendedMail', '.content.pr
   '.content.cv',
   // подарочные сертификаты на расширенный отчёт (/<язык>/gift/, с 2026-11-14, по просьбе заказчика): там, где отчёт продаётся; обязательность — в проверке ниже
   '.content.gift', '.ui.nav.gift', '.content.policy.purchaseGift',
-  // отчёт «DISC на двоих» (/ru/pair/, с 2026-11-14, по просьбе заказчика: «сначала на русском»): страница, приглашение, сравнение, письма, раздел оферты
-  // и условий возврата, абзацы политики и «Как готовятся отчёты» — пока только русская версия; в другой язык — все ключи вместе
+  // отчёт «DISC на двоих» (/<язык>/pair/, с 2026-11-14, по просьбе заказчика: сначала русская версия, тем же днём — все языки с покупкой): страница,
+  // приглашение, сравнение, письма, раздел оферты и условий возврата, абзацы политики и «Как готовятся отчёты»; обязательность — в проверке ниже
   '.content.pair', '.ui.nav.pair', '.content.offer.pairSection', '.content.refund.pairSection', '.content.policy.purchasePair', '.content.howMade.pair',
-  // блок об отчёте на страницах совместимости (с 2026-11-14) и «Чего нет в бесплатном сравнении» на /pair/ — внутри .content.pair, пока только ru
-  '.content.pair.compat', '.content.pair.compare.only',
   // английская версия лендинга (с 2026-10-24): автор без ссылки на личный сайт — блок .cvsite не выводится
   '.content.cv.author.siteLabel', '.content.cv.author.site', '.content.cv.author.siteUrl',
   // анонсы этого сервиса на сайте (главная, экран результата, профили, «Услуги»; с 2026-10-24, по просьбе заказчика; русская и английская версии) — только вместе с лендингом
@@ -76,7 +74,9 @@ function walk(a, b, p, errs){
   } else if (typeof a === 'string') {
     if (typeof b !== 'string') return errs.push(p + ': expected string');
     if (!b.trim() && a.trim() && !EMPTY_OK.some(r => r.test(p))) errs.push(p + ': empty');   // пустая строка допустима там, где она пустая и в эталоне (угол таблицы сравнения)
-    if (p !== '.lang' && p !== '.dir' && p !== '.name' && p !== '.dateLocale' && phOf(a, p) !== phOf(b, p) && !(PLAIN && PLAIN_KEYS.includes(p) && phOf(a, p).replace(/\{price\} ?/, '').trim() === phOf(b, p))) errs.push(p + ': placeholders/tags differ (expected "' + ph(a) + '", got "' + ph(b) + '")');
+    if (p !== '.lang' && p !== '.dir' && p !== '.name' && p !== '.dateLocale' && phOf(a, p) !== phOf(b, p) && !(PLAIN && PLAIN_KEYS.includes(p) && phOf(a, p).replace(/\{price\} ?/, '').trim() === phOf(b, p))
+      // «DISC на двоих»: срок «до {until} по московскому времени» — только в русском письме, в остальных языках — «в течение 24 часов»
+      && !(p === '.content.pair.mail.paidWhen' && phOf(a, p).replace(/\{until\} ?/, '').trim() === phOf(b, p))) errs.push(p + ': placeholders/tags differ (expected "' + ph(a) + '", got "' + ph(b) + '")');
   }
 }
 for (const f of files) {
@@ -145,6 +145,10 @@ for (const f of files) {
   // страница /gift/ и пункт подвала, абзац политики о данных покупателя и получателей; ключ и тексты о данных меняются вместе
   if (P.pay && !(C.gift && j.ui && j.ui['nav.gift'] && C.policy && C.policy.purchaseGift)) errs.push('.content.gift, .ui["nav.gift"], .content.policy.purchaseGift: missing — the report is on sale in this language, so gift certificates must be too');
   if (!!C.gift !== !!(j.ui && j.ui['nav.gift'])) errs.push('.content.gift and .ui["nav.gift"] must come together');
+  // «DISC на двоих» (с 2026-11-14): правило «что сделано для продажи — во все языки с покупкой»; все ключи продукта — только вместе
+  const PAIRK = [C.pair, j.ui && j.ui['nav.pair'], C.offer && C.offer.pairSection, C.refund && C.refund.pairSection, C.policy && C.policy.purchasePair, C.howMade && C.howMade.pair];
+  if (P.pay && !PAIRK.every(Boolean)) errs.push('.content.pair, .ui["nav.pair"], .content.offer.pairSection, .content.refund.pairSection, .content.policy.purchasePair, .content.howMade.pair: missing — the report is on sale in this language, so "DISC for two" must be too');
+  if (PAIRK.some(Boolean) && !PAIRK.every(Boolean)) errs.push('"DISC for two" keys (.content.pair, .ui["nav.pair"], offer/refund pairSection, policy.purchasePair, howMade.pair) must come together');
   // В каждом блоке ровно 4 разных текста
   (j.blocks || []).forEach((b, i) => { const v = Object.values(b || {}); if (new Set(v).size !== v.length) errs.push('.blocks[' + i + ']: duplicate statements'); });
   // Буквы D I S C не переведены в csvHead

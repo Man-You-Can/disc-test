@@ -1,10 +1,10 @@
-/* «DISC на двоих» (/ru/pair/, с 2026-11-14, по просьбе заказчика; пока только русская версия). Одна страница — четыре состояния:
+/* «DISC на двоих» (/<язык>/pair/, с 2026-11-14, по просьбе заказчика; все языки с покупкой). Одна страница — четыре состояния:
    - без хэша: описание отчёта и кнопка «Пригласить» (если на устройстве есть свой результат — disc.last);
    - #i=<код> — приглашение: пригласивший, кнопка теста (приглашение запоминается в disc.pairInvite — после теста экран результата предложит
      сравнение), а если свой результат уже есть — согласие показать его пригласившему и «Сравнить»;
    - #p=<код>~<код> — сравнение: две диаграммы шкал, строка о паре (summary из content.compatibility.pairs), где близки и где самый большой
      разрыв, «Чего нет в бесплатном сравнении» (content.pair.compare.only), листы образца, форма заказа, ссылка для второго;
-   - ?order=PAIR-…&pay=ok|fail — возврат со страницы банка: статус заказа (GET <payEndpoint>/status).
+   - ?order=PAIR-…&pay=ok|fail — возврат со страницы оплаты (Т-Банк или Prodamus): статус заказа (GET <payEndpoint>/status).
    Коды в ссылках — без e-mail (имя и ответы); хэш с ними убирает из адресной строки dataHash() до загрузки счётчика, в разметку коды не пишутся.
    Заказ — POST <payEndpoint>/pair/order (сервер — private/server/src/pair.js). Цели: pair-invite, pair-open, pair-start, pair-compare, pair-buy,
    pair-pay-start, pair-pay-error, pair-pay-done, pair-pay-fail. */
@@ -12,7 +12,9 @@ function initPair(o){
   var T = o.T, esc = o.esc, $ = o.$, lsGet = o.lsGet, lsSet = o.lsSet, BK = o.BK, KEYS = ['D','I','S','C'];
   var fmt = function(s, v){ return String(s).replace(/\{(\w+)\}/g, function(m, k){ return v && k in v ? v[k] : m; }); };
   var track = function(g, p){ if(window.discTrack) window.discTrack(g, p); };
-  var rub = function(n){ return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '\u202f'); };   // число: знак валюты — в самих строках («{price} ₽»)
+  // число по правилам языка (o.loc); знак валюты — в самих строках («{price} ₽», «US${price}») и в записи цены языка o.money (content.services.price)
+  var num = function(n){ try{ return new Intl.NumberFormat(o.loc || 'ru-RU', n % 1 ? {minimumFractionDigits: 2, maximumFractionDigits: 2} : {}).format(n); }catch(e){ return String(n); } };
+  var money = function(n){ return String(o.money || '{price}').replace('{price}', num(n)).replace(/ /g, '\u00a0'); };
 
   /* ---- код результата: разбор, подсчёт, профиль (как decodeResult, score, classify на главной) ---- */
   function decode(code){
@@ -109,11 +111,12 @@ function initPair(o){
 
   /* ---- #p= сравнение и заказ ---- */
   function bars(sa, sb){
-    return '<div class="pr-cmp" role="img" aria-label="' + esc(KEYS.map(function(k){ return k + ': ' + sa.pct[k] + ' % и ' + sb.pct[k] + ' %'; }).join('; ')) + '">' +
+    var pct = function(n){ return fmt(T.compare.pct, {n: n}); };
+    return '<div class="pr-cmp" role="img" aria-label="' + esc(KEYS.map(function(k){ return fmt(T.compare.aria, {k: k, a: sa.pct[k], b: sb.pct[k]}); }).join('; ')) + '">' +
       KEYS.map(function(k){
         return '<div class="pr-row ' + k + '"><span class="k">' + k + '</span><span class="pr-pair">' +
-          '<span class="pr-bar m"><span class="tr"><i style="width:' + sa.pct[k] + '%"></i></span><span class="v">' + sa.pct[k] + ' %</span></span>' +
-          '<span class="pr-bar l"><span class="tr"><i style="width:' + sb.pct[k] + '%"></i></span><span class="v">' + sb.pct[k] + ' %</span></span></span></div>';
+          '<span class="pr-bar m"><span class="tr"><i style="width:' + sa.pct[k] + '%"></i></span><span class="v">' + pct(sa.pct[k]) + '</span></span>' +
+          '<span class="pr-bar l"><span class="tr"><i style="width:' + sb.pct[k] + '%"></i></span><span class="v">' + pct(sb.pct[k]) + '</span></span></span></div>';
       }).join('') + '</div>';
   }
   function compare(ca, cb, fresh){
@@ -128,21 +131,21 @@ function initPair(o){
     $('#pcTitle').textContent = fmt(T.compare.title, {a: a.name, b: b.name});
     $('#pcChart').innerHTML = bars(sa, sb);
     $('#pcLegend').textContent = fmt(T.compare.legend, {a: a.name, b: b.name});
-    $('#pcProfiles').innerHTML = [[a, sa], [b, sb]].map(function(x){ return '<li><b>' + esc(x[0].name) + '</b> — ' + esc(x[1].key) + ' «' + esc(profileName(x[1])) + '»</li>'; }).join('');
+    $('#pcProfiles').innerHTML = [[a, sa], [b, sb]].map(function(x){ return '<li><b>' + esc(x[0].name) + '</b> — ' + esc(fmt(T.compare.profile, {key: x[1].key, name: profileName(x[1])})) + '</li>'; }).join('');
     $('#pcSummary').textContent = P.summary || '';   // только затравка: полное описание пары — на страницах совместимости
-    $('#pcClose').textContent = near.length ? fmt(T.compare.close, {list: near.length > 1 ? near.slice(0, -1).join(', ') + ' и ' + near[near.length - 1] : near[0]}) : T.compare.closeNone;
+    $('#pcClose').textContent = near.length ? fmt(T.compare.close, {list: near.length > 1 ? near.slice(0, -1).join(T.compare.sep) + T.compare.and + near[near.length - 1] : near[0]}) : T.compare.closeNone;
     var diff = function(k){ return Math.abs(sa.pct[k] - sb.pct[k]); };   // самый большой разрыв по шкалам
     var gk = KEYS.slice().sort(function(x, y){ return diff(y) - diff(x); })[0], gd = diff(gk);
     $('#pcGap').textContent = fmt(gd > 15 ? T.compare.gap : T.compare.gapSmall, {k: gk, a: a.name, b: b.name, pa: sa.pct[gk], pb: sb.pct[gk]});
     var link = pageUrl + '#p=' + encode(a) + '~' + encode(b);
-    shareBox($('#pcShare'), link, fmt(T.compare.title, {a: a.name, b: b.name}) + ' — DISC:', 'pair-share');
+    shareBox($('#pcShare'), link, fmt(T.compare.shareMsg, {title: fmt(T.compare.title, {a: a.name, b: b.name})}), 'pair-share');
     orderForm(encode(a), encode(b), a, b);
   }
   function orderForm(ca, cb, a, b){
     var O = T.order, price = o.price, form = $('#pairOrder'), err = $('#poErr'), btn = $('#poPay');
     var who = lsGet('disc.who'); if(who && who.email && !$('#poEmail').value) $('#poEmail').value = who.email;
     $('#poLeadA').nextElementSibling.textContent = a.name; $('#poLeadB').nextElementSibling.textContent = b.name;
-    var setBtn = function(){ btn.textContent = fmt(O.buy, {price: rub(price)}); $('#poPrice').textContent = rub(price) + '\u00a0₽'; };
+    var setBtn = function(){ btn.textContent = fmt(O.buy, {price: num(price)}); $('#poPrice').textContent = money(price); };
     setBtn();
     form.querySelectorAll('input[name="porel"]').forEach(function(r){ r.addEventListener('change', function(){ $('#poLead').hidden = form.querySelector('input[name="porel"]:checked').value !== 'boss'; }); });
     var EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/, say = function(s){ err.textContent = s; err.hidden = !s; };
@@ -164,7 +167,7 @@ function initPair(o){
             location.href = j.url; return;
           }
           btn.disabled = false;
-          if(j && j.error === 'price' && j.price){ price = j.price; setBtn(); return say(fmt(O.priceChanged, {price: rub(price)})); }
+          if(j && j.error === 'price' && j.price){ price = j.price; setBtn(); return say(fmt(O.priceChanged, {price: num(price)})); }
           setBtn(); track('pair-pay-error', {error: (j && j.error) || 'unknown'});
           say(j && j.error === 'bad email' ? O.badEmail : j && j.error === 'bad copy' ? O.badCopy : fmt(O.error, {email: o.email}));
         })
@@ -187,7 +190,7 @@ function initPair(o){
         var st = j && j.status;
         if(st === 'paid' || st === 'sent'){
           show(st === 'sent' ? S.sent : S.ok, 'ok');
-          if(lsGet('disc.pairDone') !== order){ lsSet('disc.pairDone', order); track('pair-pay-done', {order_price: o.price, currency: 'RUB'}); }
+          if(lsGet('disc.pairDone') !== order){ lsSet('disc.pairDone', order); track('pair-pay-done', {order_price: o.price, currency: o.cur || 'RUB'}); }
           return;
         }
         if(st === 'failed'){ show(S.fail, 'err'); track('pair-pay-fail'); return; }

@@ -723,6 +723,7 @@
         ]
       },
       "purchaseCode": "Wenn Sie das ausführliche Profil mit einem Zugangscode erhalten, den eine Organisation oder eine andere Person gekauft hat, verarbeiten wir dieselben Daten mit Ausnahme der Zahlungsdaten und vermerken, dass der Code verwendet wurde. Wer den Code gekauft hat, erfährt von uns nur, ob und wann er verwendet wurde: Ihr Ergebnis, Ihr Bericht und Ihre E-Mail-Adresse werden nicht weitergegeben. Rechtsgrundlage ist der Vertrag, den Sie mit der Eingabe des Codes auf Grundlage der {offer} schließen.",
+      "purchasePair": "Wenn Sie den Bericht „DISG zu zweit“ bestellen, verarbeiten wir Ihre E-Mail-Adresse, die Bestelldaten, die Namen und Testergebnisse beider Personen aus dem Vergleichslink, Ihre Angabe, in welcher Beziehung Sie zueinander stehen, und – sofern Sie sie angegeben haben – die Adresse der zweiten Person für die Kopie des Berichts. Die zweite Person stimmt mit einem Häkchen auf der Website zu, ihr Ergebnis zu zeigen und für den Bericht verwenden zu lassen; mit der Angabe ihrer Adresse bestätigen Sie, dass sie mit dem Erhalt der Kopie einverstanden ist. Der Text des Berichts wird mithilfe einer KI ausschließlich auf Grundlage anonymisierter Daten erstellt – der Profile und Werte ohne Namen, Adressen und Ergebniscodes. Die Ergebniscodes und die Adresse der zweiten Person löschen wir 30 Tage nach dem Versand des Berichts, bei einer nicht bezahlten Bestellung nach 7 Tagen; die Bestelldaten werden genauso aufbewahrt wie die Bestelldaten zum ausführlichen Profil. Rechtsgrundlage sind der Vertrag auf Grundlage der {offer} und die Einwilligung der zweiten Person.",
       "purchaseGift": "Wenn Sie Geschenkgutscheine kaufen, verarbeiten wir Ihre E-Mail-Adresse, die Bestelldaten (Datum, Betrag, Nummer und Status der Zahlung), die Zeile „Von“ und – sofern Sie sie angegeben haben – Namen und E-Mail-Adressen der Beschenkten. Ihre E-Mail-Adresse und die Bestelldaten benötigen wir, um Ihnen die Gutscheine und die Zahlungsbestätigung zu senden, Ihre Anfragen zu beantworten und eine Rückerstattung abzuwickeln; sie werden genauso aufbewahrt wie die Bestelldaten zum ausführlichen Profil. Der Name einer beschenkten Person wird auf ihren Gutschein gedruckt, und an ihre E-Mail-Adresse geht eine einzige E-Mail mit ihrem Gutschein. Namen und E-Mail-Adressen der Beschenkten löschen wir 30 Tage nach dem Versand der Gutscheine, bei einer nicht bezahlten Bestellung nach 7 Tagen. Mit der Angabe der Daten der Beschenkten bestätigen Sie, dass diese mit dem Erhalt des Gutscheins einverstanden sind. Rechtsgrundlage ist der Vertrag auf Grundlage der {offer}, der zugunsten der Beschenkten geschlossen wird. Wer einen Gutscheincode auf der Website eingibt, erhält das ausführliche Profil wie mit einem Zugangscode: Wer den Gutschein verschenkt hat, erfährt von uns nur, ob und wann er eingelöst wurde."
     },
     "consentDoc": {
@@ -1834,6 +1835,19 @@
       }
     },
     "offer": {
+      "pairSection": {
+        "h": "12. Bericht „DISG zu zweit“",
+        "p": [
+          "12.1. Zu den Bedingungen dieses Angebots bietet der Anbieter außerdem den Bericht „DISG zu zweit“ an (im Folgenden „Bericht zu zweit“): Er erstellt in elektronischer Form eine Auswertung der DISG-Profile zweier Personen – des Kunden und einer zweiten Person, die am Test teilgenommen hat (im Folgenden „zweite Person“) – sowie ihrer Zusammenarbeit und Kommunikation und sendet sie an den Kunden. Die Bestimmungen dieses Angebots über die Leistung gelten für den Bericht zu zweit, soweit dieser Abschnitt nichts anderes bestimmt.",
+          "12.2. Der Bericht zu zweit wird auf Grundlage der Testergebnisse zweier Personen erstellt: des Kunden und der zweiten Person, die den Test absolviert und mit einem Häkchen auf der Website zugestimmt hat, ihr Ergebnis dem Kunden zu zeigen und für den Bericht zu zweit verwenden zu lassen. Kunde kann jede der beiden Personen sein.",
+          "12.3. Der Preis des Berichts zu zweit wird auf der Website und auf der Zahlungsseite angegeben; einem Kunden, der zuvor mit derselben E-Mail-Adresse das Ausführliche Profil bezahlt hat, kann ein ermäßigter Preis angeboten werden. Der Bericht zu zweit ist vor Beginn der Erstellung vollständig zu bezahlen, und zwar wie in den Ziffern 3.2 bis 3.5 beschrieben.",
+          "12.4. Der Bericht zu zweit wird nach der Zahlung erstellt und spätestens 24 Stunden nach der Zahlung an die E-Mail-Adresse des Kunden gesendet. Hat der Kunde die E-Mail-Adresse der zweiten Person angegeben, erhält auch diese eine Kopie des Berichts zu zweit; mit der Angabe der Adresse bestätigt der Kunde, dass die zweite Person mit dem Erhalt der E-Mail einverstanden ist. Der Bericht zu zweit gilt mit dem Versand der E-Mail an den Kunden als erbracht.",
+          "12.5. Der Text des Berichts zu zweit wird mithilfe eines Systems künstlicher Intelligenz nach den Regeln des Anbieters auf Grundlage anonymisierter Daten erstellt – der Profile und Testwerte ohne Namen, E-Mail-Adressen und Ergebniscodes; vor dem Versand liest ihn ein Mensch. Der Bericht zu zweit beschreibt Verhaltensstile und ist weder eine Bewertung der Kompatibilität der beiden Personen noch ein psychologisches Gutachten noch eine Grundlage für Entscheidungen über Einstellung, Kündigung und Bezahlung.",
+          "12.6. Der Kunde kann den Bericht zu zweit stornieren, solange er noch nicht gesendet wurde; die Zahlung wird dann vollständig erstattet. Wird der Bericht zu zweit nicht innerhalb der in Ziffer 12.4 genannten Frist gesendet, kann der Kunde die vollständige Erstattung der Zahlung verlangen. Im Übrigen gilt für den Bericht zu zweit Abschnitt 5.",
+          "12.7. Der Bericht zu zweit ist für den persönlichen Gebrauch beider Personen bestimmt; im Übrigen gilt für ihn Abschnitt 6.",
+          "12.8. Um den Bericht zu zweit zu erstellen, verarbeitet der Anbieter die E-Mail-Adresse des Kunden, die Namen und Testergebnisse beider Personen, die E-Mail-Adresse der zweiten Person (sofern angegeben) und die Angabe des Kunden, in welcher Beziehung die beiden Personen zueinander stehen. Die Ergebniscodes und die Adresse der zweiten Person werden 30 Kalendertage nach dem Versand des Berichts zu zweit gelöscht, bei einer nicht bezahlten Bestellung nach 7 Tagen. Näheres steht auf der Seite „{privacy}“."
+        ]
+      },
       "title": "Allgemeine Geschäftsbedingungen – ausführliches DISG-Profil und DISG-Workshop-Paket",
       "description": "Allgemeine Geschäftsbedingungen für die Leistung „Ausführliches DISG-Profil“ und das DISG-Workshop-Paket auf disc-test.org: Preis, Zahlung und Zusendung, Erstattung, Rechte an den Inhalten.",
       "h1": "Allgemeine Geschäftsbedingungen",
@@ -1982,6 +1996,12 @@
       ]
     },
     "refund": {
+      "pairSection": {
+        "h": "Bericht „DISG zu zweit“",
+        "p": [
+          "Bis zum Versand des Berichts zu zweit erhalten Sie die Zahlung auf Ihren Antrag vollständig zurück. Ist der Bericht nicht innerhalb von 24 Stunden nach der Zahlung angekommen, können Sie ebenfalls die vollständige Erstattung verlangen. Nach dem Versand wird die Zahlung für einen ordnungsgemäß erstellten Bericht nicht erstattet; Mängel – die Datei lässt sich nicht öffnen, der Bericht enthält fremde Daten, der Inhalt entspricht nicht der Beschreibung – beheben wir innerhalb von drei Arbeitstagen. Bitte geben Sie in Ihrem Antrag die Bestellnummer an – sie steht in der E-Mail zur Zahlung."
+        ]
+      },
       "title": "Rückerstattungsbedingungen – ausführliches DISG-Profil und DISG-Workshop-Paket",
       "description": "Wann und wie Sie Ihr Geld für das ausführliche DISG-Profil und das DISG-Workshop-Paket auf disc-test.org zurückerhalten: Erstattungsfälle, Antrag, Fristen.",
       "h1": "Rückerstattungsbedingungen",
@@ -2529,6 +2549,226 @@
         "title": "Finden Sie Ihre DISG-Farbe heraus",
         "text": "Der Test zeigt Ihre Haupt- und Nebenfarbe, ihre Ausprägung in Prozent und was Sie damit anfangen können. 24 Blöcke, etwa 10 Minuten, ohne Anmeldung.",
         "button": "Meine Farbe herausfinden"
+      }
+    },
+    "pair": {
+      "title": "DISG zu zweit – Bericht über zwei Menschen nach dem DISG-Test",
+      "description": "Ein Bericht über zwei Menschen nach ihren DISG-Ergebnissen: wie Sie einander sehen, wo es Reibung gibt und wie Sie sich einigen – im Beruf und im Privatleben. Für Sie beide geschrieben, kommt innerhalb von 24 Stunden.",
+      "name": "Bericht „DISG zu zweit“",
+      "eyebrow": "Neuer Bericht",
+      "h1": "DISG zu zweit",
+      "lead": "Ein Bericht über zwei Menschen nach ihren DISG-Ergebnissen: wie Sie einander sehen, wo es Reibung gibt und wie Sie sich einigen – im Beruf und im Privatleben. Er wird für Sie beide geschrieben, nach allen vier Skalen von Ihnen beiden.",
+      "facts": [
+        "Rund 22 Seiten als PDF",
+        "Beruf und Privatleben",
+        "Innerhalb von 24 Stunden nach der Zahlung",
+        "{price} € – oder {owner} €, wenn Sie bereits den ausführlichen Bericht gekauft haben"
+      ],
+      "cta": "Zweite Person einladen",
+      "ctaTest": "Test machen",
+      "howTitle": "So funktioniert es",
+      "how": [
+        ["Machen Sie den Test und laden Sie die zweite Person ein", "Die Schaltfläche „Einladen“ finden Sie auf Ihrer Ergebnisseite und auf dieser Seite: Den Link können Sie per Messenger verschicken oder kopieren."],
+        ["Die zweite Person macht den Test", "Kostenlos, etwa 10 Minuten. Am Ende bestätigt die Person mit einem Häkchen, dass Sie ihr Ergebnis sehen dürfen – ohne dieses Häkchen gibt es keinen Vergleich."],
+        ["Vergleich und Bericht", "Auf der Vergleichsseite sehen Sie Ihre beiden Profile nebeneinander und eine kostenlose Kurzbeschreibung Ihrer Kombination von Stilen. Dort können Sie auch den Bericht bestellen: Er kommt innerhalb von 24 Stunden per E-Mail, eine Kopie kann an die zweite Person gehen."]
+      ],
+      "insideTitle": "Was im Bericht steht",
+      "inside": [
+        ["Zwei Profile nebeneinander", "die Skalen von Ihnen beiden in einem Diagramm: wo Sie sich ähneln, wo Sie sich am stärksten unterscheiden und was das für Sie beide bedeutet."],
+        ["Was Sie einander geben", "worin Sie sich ergänzen und bei welchen Aufgaben Sie gemeinsam am stärksten sind."],
+        ["Wie Sie einander sehen", "was jede Seite an der anderen wahrnimmt und was tatsächlich dahintersteckt."],
+        ["Fünf Situationen mit Reibung", "wie sie im Beruf und zu Hause aussehen, was jede Seite dabei erlebt und was hilft."],
+        ["Sprechen, entscheiden, streiten", "Regeln und fertige Formulierungen für jede Seite, gemeinsame Entscheidungen und wie Sie einen Streit stoppen."],
+        ["Beruf und Privatleben", "eigene Kapitel für die Zusammenarbeit im Team und zwischen Führungskraft und Teammitglied sowie für Paare, Freundschaft und Familie."],
+        ["Arbeitsblätter", "die „Vereinbarung zu zweit“, ein 30-Tage-Plan für Sie beide und das Wichtigste auf einer Seite."]
+      ],
+      "sheetsTitle": "Seiten aus dem Musterbericht",
+      "sheetAlt": "Seite {n} des Musterberichts „DISG zu zweit“",
+      "forTitle": "Für wen",
+      "for": [
+        ["Kolleginnen und Kollegen", "Wie Sie die Arbeit aufteilen, Besprechungen führen und sachlich streiten, ohne einander zu verletzen."],
+        ["Führungskraft und Teammitglied", "Wie Sie Aufgaben vergeben, Feedback geben und über Widerspruch sprechen."],
+        ["Paare", "Alltag, Geld, Freizeit, Fürsorge und Kränkungen: wie sich Ihre Stile zu Hause zeigen."],
+        ["Freunde und Familie", "Wie die Beziehung nicht zu „Eine Seite entscheidet, die andere passt sich an“ wird."]
+      ],
+      "madeTitle": "So entsteht der Bericht",
+      "made": "Der Bericht wird für Sie beide geschrieben und nicht aus fertigen Bausteinen zusammengesetzt. Den Text schreibt eine KI nach den Regeln der Redaktion auf Grundlage anonymisierter Daten – der Profile und Werte von Ihnen beiden, ohne Namen und Adressen. Ein Programm prüft den Text und erstellt das PDF mit Ihren Namen, und ein Mensch liest den ganzen Bericht vor dem Versand. Mehr dazu auf der Seite {howMade}.",
+      "limits": "Der Bericht beschreibt den Verhaltensstil, nicht Gefühle und Fähigkeiten. Er bewertet nicht, wie gut Sie zueinander passen, und eignet sich nicht für Entscheidungen über Einstellung, Kündigung oder Bezahlung.",
+      "inviteTitle": "Zweite Person einladen",
+      "inviteText": "Schicken Sie den Link an die Person, mit der Sie Ihre Ergebnisse vergleichen möchten. Die Person sieht Ihren Namen und Ihr Ergebnis in Kurzform.",
+      "inviteNoTest": "Machen Sie zuerst den Test: Die Schaltfläche „Einladen“ erscheint dann auf Ihrer Ergebnisseite.",
+      "inviteBtn": "Einladen",
+      "inviteMsg": "Mach doch den DISG-Test – dann sehen wir, wie wir beide zusammenarbeiten und miteinander umgehen. Einladung von {name}:",
+      "faqTitle": "Fragen",
+      "faq": [
+        {
+          "q": "Was ist, wenn die zweite Person den Test nicht machen möchte?",
+          "a": "Dann gibt es keinen Bericht zu zweit: Er beruht nur auf den Ergebnissen von beiden, und ob die zweite Person ihr Ergebnis zeigt, entscheidet sie selbst. Sie können auch jemand anderen einladen."
+        },
+        {
+          "q": "Wer sieht mein Ergebnis?",
+          "a": "Die Person, der Sie die Einladung oder den Link zum Vergleich geschickt haben: Name und Ergebnis in Kurzform. Ihre E-Mail-Adresse steht nicht im Link. Den Bericht erhält, wer ihn bestellt hat, und – wenn bei der Bestellung eine Adresse angegeben wurde – die zweite Person."
+        },
+        {
+          "q": "Was kostet der Bericht, und wann kommt er?",
+          "a": "{price} € – oder {owner} €, wenn Sie mit dieser E-Mail-Adresse bereits den ausführlichen Bericht gekauft haben. Der Bericht kommt innerhalb von 24 Stunden nach der Zahlung per E-Mail: Er wird für Sie beide geschrieben, und vor dem Versand liest ihn ein Mensch."
+        },
+        {
+          "q": "Passt der Bericht auch, wenn wir ein Paar und keine Kollegen sind?",
+          "a": "Ja. Der Bericht hat Kapitel zum Beruf und zum Privatleben; bei der Bestellung können Sie angeben, in welcher Beziehung Sie zueinander stehen – dann liegt der Schwerpunkt darauf."
+        }
+      ],
+      "refundLink": "Rückerstattungsbedingungen",
+      "howMadeLink": "„So entstehen die DISG-Berichte“",
+      "services": {
+        "name": "DISG zu zweit",
+        "text": "Ein Bericht über zwei Menschen nach ihren DISG-Ergebnissen: wie Sie einander sehen, wo es Reibung gibt und wie Sie sich im Beruf und im Privatleben einigen. Kommt innerhalb von 24 Stunden.",
+        "more": "Mehr über den Bericht zu zweit",
+        "price": "{price} €"
+      },
+      "invite": {
+        "eyebrow": "Einladung",
+        "title": "{name} lädt Sie zum DISG-Test ein",
+        "text": "Der Test ist kostenlos und dauert etwa 10 Minuten. Danach sehen Sie Ihr Ergebnis und – wenn Sie zustimmen – den Vergleich Ihrer beiden Profile: wie Sie zusammenarbeiten und miteinander umgehen.",
+        "profile": "{name} – Profil „{profile}“",
+        "start": "Test machen",
+        "haveTitle": "Sie haben den Test auf diesem Gerät schon gemacht?",
+        "haveText": "Dann können Sie mit diesem Ergebnis vergleichen, ohne den Test zu wiederholen.",
+        "consent": "Ich bin einverstanden, dass mein Ergebnis und mein Name der einladenden Person ({name}) angezeigt und für den Bericht „DISG zu zweit“ verwendet werden, falls er bestellt wird",
+        "compare": "Mit meinem Ergebnis vergleichen",
+        "needConsent": "Setzen Sie das Häkchen, um den Vergleich zu sehen.",
+        "bad": "Der Einladungslink ist beschädigt oder unvollständig. Bitten Sie darum, ihn noch einmal zu schicken."
+      },
+      "result": {
+        "eyebrow": "DISG zu zweit",
+        "title": "Machen Sie den Test zu zweit: im Team, in der Partnerschaft oder unter Freunden",
+        "text": "Laden Sie eine zweite Person zum Test ein, und Sie erfahren, wie Sie beide wirksamer zusammenarbeiten und miteinander umgehen:",
+        "points": [
+          "bei welchen Aufgaben Sie gemeinsam stärker sind und welche Sie besser aufteilen",
+          "wo es zwischen Ihnen Reibung gibt und was hilft, sie zu umgehen",
+          "wie Sie miteinander sprechen, damit jede Seite gehört wird – mit fertigen Formulierungen für beide",
+          "wie Sie gemeinsam entscheiden und einen Streit stoppen, bevor er sich ausweitet",
+          "worauf Sie beide im Beruf und im Privatleben achten sollten"
+        ],
+        "button": "Zweite Person einladen",
+        "more": "Was im Bericht steht",
+        "dlgTitle": "Zum Test einladen",
+        "compareTitle": "Ergebnisse vergleichen: Sie und {name}",
+        "compareText": "{name} lädt Sie ein, Ihre DISG-Ergebnisse zu vergleichen.",
+        "compareBtn": "Vergleich anzeigen",
+        "dismiss": "Nicht vergleichen"
+      },
+      "compat": {
+        "eyebrow": "DISG zu zweit",
+        "title": "Und wie ist es bei Ihnen beiden?",
+        "text": "Diese Beschreibung passt zu zwei beliebigen Menschen mit den Hauptstilen {a} und {b}.",
+        "textSame": "Diese Beschreibung passt zu zwei beliebigen Menschen mit dem Hauptstil {a}.",
+        "more": "Wie es genau bei Ihnen beiden aussieht – nach allen Skalen von Ihnen beiden, mit typischen Situationen voller Reibung, fertigen Formulierungen und Kapiteln zu Beruf und Privatleben –, zeigt der Bericht „DISG zu zweit“.",
+        "note": "Sie machen beide den Test, dann bestellen Sie den Bericht: rund 22 Seiten als PDF innerhalb von 24 Stunden, {price} €.",
+        "button": "Zweite Person einladen",
+        "link": "Mehr über den Bericht"
+      },
+      "compare": {
+        "title": "{a} und {b}",
+        "lead": "Zwei DISG-Profile nebeneinander. Dieser Vergleich ist kostenlos; wie es genau bei Ihnen beiden aussieht, zeigt der Bericht „DISG zu zweit“.",
+        "legend": "Ausgefüllter Balken – {a}, Umriss – {b}. Die Mitte der Skala, 50 %, ist mit einem Strich markiert.",
+        "profiles": "Profile",
+        "pairTitle": "Sie beide in Kürze",
+        "closeTitle": "Wo Sie sich nah sind",
+        "close": "Bei {list} beträgt der Unterschied weniger als 15 Punkte: Hier verstehen Sie einander am leichtesten.",
+        "closeNone": "Skalen, auf denen Sie deutlich nah beieinanderliegen, gibt es nicht – umso mehr lohnt es sich, Regeln vorab zu vereinbaren.",
+        "gapTitle": "Wo der Abstand am größten ist",
+        "gap": "Auf der Skala {k}: {a} – {pa} %, {b} – {pb} %. Was dieser Unterschied für Sie beide bedeutet, steht im Bericht.",
+        "gapSmall": "Der deutlichste Unterschied liegt auf der Skala {k}, und er ist gering: {a} – {pa} %, {b} – {pb} %.",
+        "only": {
+          "title": "Was im kostenlosen Vergleich fehlt, im Bericht aber steht",
+          "text": "Die Zeile oben gilt für alle mit denselben Hauptstilen. Der Bericht wird für Sie beide geschrieben:",
+          "items": [
+            ["Für Sie beide geschrieben", "nach allen vier Skalen von Ihnen beiden und nach den Nebenstilen, nicht nur nach dem Hauptstil"],
+            ["Fünf Situationen mit Reibung", "wie jede im Beruf und zu Hause aussieht, was jede Seite dabei erlebt und was hilft"],
+            ["Fertige Formulierungen für jede Seite", "Regeln für Gespräche und Nachrichten und ein Satz für den Anfang – für jede Seite eigens"],
+            ["Gemeinsam entscheiden und Streit stoppen", "drei Fragen vor einer gemeinsamen Entscheidung, wie sich ein Streit genau bei Ihnen hochschaukelt und wie Sie ihn stoppen"],
+            ["Beruf und Privatleben", "eigene Kapitel – je nachdem, in welcher Beziehung Sie zueinander stehen: im Team, als Führungskraft und Teammitglied, als Paar, befreundet oder verwandt"],
+            ["Arbeitsblätter", "die „Vereinbarung zu zweit“, ein 30-Tage-Plan für Sie beide und das Wichtigste auf einer Seite"],
+            ["Rund 22 Seiten als PDF innerhalb von 24 Stunden", "der Bericht wird zu Ihrer Bestellung geschrieben, und ein Mensch liest ihn vor dem Versand"]
+          ]
+        },
+        "shareTitle": "Schicken Sie diese Seite an die zweite Person",
+        "shareText": "Der Link öffnet denselben Vergleich. Er enthält die Namen und die Ergebnisse von Ihnen beiden in Kurzform, aber keine E-Mail-Adressen.",
+        "copy": "Link kopieren",
+        "copied": "Link kopiert",
+        "share": "Teilen",
+        "bad": "Der Link zum Vergleich ist beschädigt oder unvollständig. Bitten Sie darum, ihn noch einmal zu schicken.",
+        "same": "Der Link enthält zweimal dasselbe Ergebnis – es gibt nichts zu vergleichen.",
+        "aria": "{k}: {a} % und {b} %",
+        "pct": "{n} %",
+        "profile": "{key} „{name}“",
+        "sep": ", ",
+        "and": " und ",
+        "shareMsg": "{title} – DISG:"
+      },
+      "order": {
+        "title": "Bericht bestellen",
+        "emailLabel": "Ihre E-Mail-Adresse",
+        "emailHint": "Hierhin senden wir den Bericht und den Kaufbeleg.",
+        "copyLabel": "E-Mail-Adresse der zweiten Person",
+        "copyOptional": "(optional)",
+        "copyHint": "Die zweite Person erhält eine Kopie des Berichts. Geben Sie die Adresse nur an, wenn die Person mit einer E-Mail einverstanden ist.",
+        "relTitle": "In welcher Beziehung stehen Sie zueinander?",
+        "relHint": "Der Bericht hat Kapitel zum Beruf und zum Privatleben; Ihre Antwort hilft, den Schwerpunkt zu setzen.",
+        "rels": [
+          ["colleagues", "Kolleginnen oder Kollegen auf Augenhöhe"],
+          ["boss", "Eine Person führt die andere"],
+          ["couple", "Paar"],
+          ["friends", "Befreundet"],
+          ["family", "Verwandt"],
+          ["", "Keine Angabe"]
+        ],
+        "leadTitle": "Wer führt?",
+        "priceNote": "{owner} €, wenn Sie mit dieser E-Mail-Adresse bereits den ausführlichen Bericht gekauft haben: Der Preis wird nach dem Klick auf „Kaufen“ angepasst.",
+        "agree": "Ich akzeptiere die {offer}",
+        "buy": "Kaufen: {price} €",
+        "wait": "Die Bestellung wird angelegt …",
+        "when": "Der Bericht kommt innerhalb von 24 Stunden nach der Zahlung per E-Mail.",
+        "badEmail": "Prüfen Sie die E-Mail-Adresse.",
+        "badCopy": "Prüfen Sie die Adresse der zweiten Person.",
+        "needAgree": "Setzen Sie das Häkchen bei den Geschäftsbedingungen.",
+        "needLead": "Geben Sie an, wer führt.",
+        "priceChanged": "Mit dieser E-Mail-Adresse wurde bereits der ausführliche Bericht gekauft, deshalb kostet der Bericht {price} €. Klicken Sie noch einmal auf „Kaufen“.",
+        "error": "Die Bestellung konnte nicht angelegt werden. Versuchen Sie es noch einmal oder schreiben Sie an {email}."
+      },
+      "status": {
+        "wait": "Wir prüfen die Zahlung …",
+        "ok": "Die Zahlung ist eingegangen. Der Bericht „DISG zu zweit“ kommt innerhalb von 24 Stunden an Ihre E-Mail-Adresse; die Bestellbestätigung ist schon in Ihrem Postfach.",
+        "sent": "Der Bericht wurde an Ihre E-Mail-Adresse gesendet.",
+        "fail": "Die Zahlung ist nicht durchgegangen, es wurde nichts abgebucht. Sie können es auf der Vergleichsseite noch einmal versuchen.",
+        "unknown": "Der Zahlungsstatus lässt sich gerade nicht abrufen. Wurde der Betrag abgebucht, kommt der Bericht innerhalb von 24 Stunden; bei Fragen schreiben Sie an {email}."
+      },
+      "mail": {
+        "hello": "Guten Tag,",
+        "paidSubject": "Zahlung eingegangen: Ihr Bericht „DISG zu zweit“ kommt innerhalb von 24 Stunden",
+        "paidIntro": "vielen Dank für Ihre Bestellung des Berichts „DISG zu zweit“. Er wird für {a} und {b} erstellt.",
+        "paidWhen": "Der Bericht kommt innerhalb von 24 Stunden nach der Zahlung an diese Adresse.",
+        "paidCopy": "Eine Kopie geht auch an die zweite Person, an die Adresse, die Sie angegeben haben.",
+        "paidMeanwhile": "Der Bericht wird für Sie beide geschrieben – nach allen Skalen von Ihnen beiden und mit Blick darauf, in welcher Beziehung Sie zueinander stehen. Vor dem Versand liest ihn ein Mensch.",
+        "question": "Bei Fragen antworten Sie auf diese E-Mail oder schreiben Sie an {email}.",
+        "bye": "Ihr Team von disc-test.org",
+        "order": "Bestellung {order} ·",
+        "subject": "Bericht „DISG zu zweit“: {a} und {b}",
+        "intro": "Ihr Bericht „DISG zu zweit“ ist fertig – Sie finden ihn als PDF im Anhang. Erstellt für {a} und {b}.",
+        "copyIntro": "dies ist eine Kopie des Berichts „DISG zu zweit“ – Sie finden ihn als PDF im Anhang. Erstellt für {a} und {b}. Bestellt wurde der Bericht auf disc-test.org nach den Ergebnissen des DISG-Tests; beide Personen haben zugestimmt, ihre Ergebnisse dafür zu zeigen.",
+        "howTitle": "So lesen Sie den Bericht",
+        "how": [
+          "Zuerst jede Person für sich, dann gemeinsam.",
+          "Kapitel 1 bis 8 handeln von Ihnen beiden in allen Lebenslagen, Kapitel 9 von der Arbeit, Kapitel 10 vom Privatleben.",
+          "Beginnen Sie mit Kapitel 11, der „Vereinbarung zu zweit“: zwanzig Minuten zu zweit."
+        ],
+        "copySent": "Eine Kopie des Berichts wurde an die zweite Person gesendet.",
+        "copyWhy": "Sie erhalten diese E-Mail, weil Ihre Adresse bei der Bestellung des Berichts angegeben wurde. Es ist kein Abonnement: Weitere E-Mails kommen nicht.",
+        "noName": [
+          "Person 1",
+          "Person 2"
+        ]
       }
     },
     "gift": {
@@ -3459,6 +3699,12 @@
       }
     },
     "howMade": {
+      "pair": {
+        "h": "Bericht „DISG zu zweit“",
+        "p": [
+          "Der Bericht zu zweit wird nicht aus vorab geschriebenen Bausteinen zusammengesetzt: Sein Text entsteht zu jeder Bestellung neu. Ihn schreibt eine KI nach den Regeln der Redaktion auf Grundlage anonymisierter Daten – der Profile und Werte beider Personen ohne Namen, Adressen und Ergebniscodes. Ein Programm prüft den Text – die Länge der Kapitel, die Ansprache ohne männliche oder weibliche Formen, unzulässige Formulierungen, die Zahlen – und erstellt das PDF mit den Namen der beiden Personen, und ein Mensch liest den ganzen Bericht vor dem Versand. Deshalb kommt der Bericht zu zweit nicht direkt nach der Zahlung, sondern innerhalb von 24 Stunden."
+        ]
+      },
       "title": "DISG-Berichte mit KI – automatisch und unvoreingenommen",
       "description": "DISG-Berichte automatisch erstellt: Die Texte schreibt eine KI nach Regeln der Redaktion, Ihr Bericht entsteht ohne menschliches Zutun aus Ihren Antworten.",
       "h1": "So entstehen die DISG-Berichte",
@@ -3812,6 +4058,7 @@
     "nav.howMade": "So entstehen die Berichte",
     "nav.business": "Für Organisationen",
     "nav.gift": "Geschenkgutscheine",
+    "nav.pair": "DISG zu zweit",
 
     "pages.styles.title": "Die vier DISG-Typen D, I, S, C – Merkmale, Stärken, Motivation",
     "pages.styles.description": "Die vier DISG-Typen: Dominanz, Initiative, Stetigkeit, Gewissenhaftigkeit. Merkmale, Stärken, Entwicklungsfelder, Motivation, Verhalten unter Stress.",
@@ -3940,7 +4187,7 @@
     "pd.consentLink": "Einwilligung in die Verarbeitung personenbezogener Daten",
     "pd.required": "Bitte bestätigen Sie die Einwilligung in die Verarbeitung personenbezogener Daten: Ohne sie können wir Ihre Daten nicht annehmen.",
     "pd.cookieAsk": "Diese Website speichert Ihren Fortschritt, Ihr Ergebnis und die gewählte Sprache im lokalen Speicher des Browsers. Mit Ihrer Einwilligung erfasst ein Webanalysesystem anonymisierte Besuchsstatistiken und eine Aufzeichnung der Aktionen auf der Seite, damit wir die Website verbessern können. Ihr Name, Ihre E-Mail-Adresse und Ihr Ergebnis werden nicht an das Analysesystem übermittelt.",
-    "pd.cookieDetails": "Im Browser gespeichert werden: Name und E-Mail-Adresse, falls Sie sie angegeben haben; Ihre Antworten und der unvollendete Fortschritt; Ihr letztes Ergebnis; der Zeitpunkt, zu dem Sie den Test zum ersten Mal abgeschlossen haben, für die Frist des Sonderpreises des Berichts; der Code eines Geschenkgutscheins, wenn Sie die Website über den Link auf einem Gutschein geöffnet haben; die gewählte Sprache; ein Vermerk, dass Sie diesen Hinweis gesehen haben. Diese Daten bleiben auf Ihrem Gerät und werden beim Löschen der Website-Daten entfernt. Der Hosting-Anbieter erhält die üblichen technischen Anfragedaten. Wenn Sie die Website an einem Tag zum ersten Mal öffnen, geht ein anonymer Besuchsvermerk an den Server der Website: nur die Sprachversion der Website; der Server speichert ihn mit der Uhrzeit des Eingangs, und Ihr Browser merkt sich das Datum, damit der Vermerk am selben Tag nicht noch einmal gesendet wird. Damit zählen wir, wie viele Menschen die Website besuchen. Wenn Sie den Test beginnen, geht ein anonymer Startvermerk an den Server der Website: nur die Sprachversion der Website. Wenn Sie den Test abschließen, geht ein anonymer Eintrag für die Gesamtstatistik an den Server der Website: das ermittelte Profil und die Sprachversion der Website – ohne Namen, E-Mail-Adresse und Antworten. Wenn Sie auf „Als PDF speichern“ klicken, gehen Ihre Antworten und das Testdatum – ohne Namen und E-Mail-Adresse – an den Server der Website; er erstellt daraus die Datei mit dem Kurzbericht, gibt sie Ihnen zurück und speichert nichts. Wenn Sie das Ergebnis per E-Mail senden lassen, werden Name, E-Mail-Adresse und Antworten an den Server der Website übermittelt; er sendet Ihnen die E-Mail mit dem Ergebnis und speichert Name, E-Mail-Adresse, Datum und Ergebnis in der Ergebnisdatenbank des Seitenbetreibers. Wenn Sie den Newsletter auf der Startseite abonnieren, werden E-Mail-Adresse und Sprachversion der Website an den Server der Website übermittelt; er sendet Ihnen eine E-Mail mit einem Bestätigungslink und speichert die Adresse in derselben Datenbank; wird die Anmeldung nicht bestätigt, wird die Adresse nach 7 Tagen gelöscht. Wenn Sie sich auf der Seite „Test als PDF“ den Fragebogen per E-Mail schicken lassen, werden E-Mail-Adresse und Sprachversion der Website an den Server der Website übermittelt; er sendet Ihnen die E-Mail mit dem Fragebogen und speichert den Vermerk über Ihre Einwilligung zusammen mit der Adresse; haben Sie in den Newsletter eingewilligt, wird die Adresse sofort in der Abonnentenliste gespeichert, und die E-Mail enthält einen Abmeldelink. Wenn Sie Geschenkgutscheine bestellen, werden Ihre E-Mail-Adresse, die Zeile „Von“ und – sofern Sie sie angegeben haben – Namen und E-Mail-Adressen der Beschenkten an den Server der Website übermittelt; er legt die Bestellung an und sendet nach der Zahlung die Gutscheine. Namen und Adressen der Beschenkten werden 30 Tage nach dem Versand gelöscht. Das Webanalysesystem erhält die Seitenadresse (auf der Ergebnisseite zusammen mit dem Ergebniscode: Ihre Antworten, das Testdatum und Ihr Name, falls Sie ihn angegeben haben, aber nicht Ihre E-Mail-Adresse), die Herkunft des Besuchs, Geräte- und Browsertyp sowie eine Aufzeichnung der Aktionen auf der Seite (die Felder für Name und E-Mail sind ausgenommen) und setzt eigene Cookies. Sie können es in den Browsereinstellungen oder mit einem Tracker-Blocker blockieren. Werbe-Tracker werden nicht verwendet.",
+    "pd.cookieDetails": "Im Browser gespeichert werden: Name und E-Mail-Adresse, falls Sie sie angegeben haben; Ihre Antworten und der unvollendete Fortschritt; Ihr letztes Ergebnis; der Zeitpunkt, zu dem Sie den Test zum ersten Mal abgeschlossen haben, für die Frist des Sonderpreises des Berichts; der Code eines Geschenkgutscheins, wenn Sie die Website über den Link auf einem Gutschein geöffnet haben; die Einladung zu „DISG zu zweit“ – Name und Ergebnis der einladenden Person, wenn Sie die Website über deren Link geöffnet haben; die gewählte Sprache; ein Vermerk, dass Sie diesen Hinweis gesehen haben. Diese Daten bleiben auf Ihrem Gerät und werden beim Löschen der Website-Daten entfernt. Der Hosting-Anbieter erhält die üblichen technischen Anfragedaten. Wenn Sie die Website an einem Tag zum ersten Mal öffnen, geht ein anonymer Besuchsvermerk an den Server der Website: nur die Sprachversion der Website; der Server speichert ihn mit der Uhrzeit des Eingangs, und Ihr Browser merkt sich das Datum, damit der Vermerk am selben Tag nicht noch einmal gesendet wird. Damit zählen wir, wie viele Menschen die Website besuchen. Wenn Sie den Test beginnen, geht ein anonymer Startvermerk an den Server der Website: nur die Sprachversion der Website. Wenn Sie den Test abschließen, geht ein anonymer Eintrag für die Gesamtstatistik an den Server der Website: das ermittelte Profil und die Sprachversion der Website – ohne Namen, E-Mail-Adresse und Antworten. Wenn Sie auf „Als PDF speichern“ klicken, gehen Ihre Antworten und das Testdatum – ohne Namen und E-Mail-Adresse – an den Server der Website; er erstellt daraus die Datei mit dem Kurzbericht, gibt sie Ihnen zurück und speichert nichts. Wenn Sie das Ergebnis per E-Mail senden lassen, werden Name, E-Mail-Adresse und Antworten an den Server der Website übermittelt; er sendet Ihnen die E-Mail mit dem Ergebnis und speichert Name, E-Mail-Adresse, Datum und Ergebnis in der Ergebnisdatenbank des Seitenbetreibers. Wenn Sie den Newsletter auf der Startseite abonnieren, werden E-Mail-Adresse und Sprachversion der Website an den Server der Website übermittelt; er sendet Ihnen eine E-Mail mit einem Bestätigungslink und speichert die Adresse in derselben Datenbank; wird die Anmeldung nicht bestätigt, wird die Adresse nach 7 Tagen gelöscht. Wenn Sie sich auf der Seite „Test als PDF“ den Fragebogen per E-Mail schicken lassen, werden E-Mail-Adresse und Sprachversion der Website an den Server der Website übermittelt; er sendet Ihnen die E-Mail mit dem Fragebogen und speichert den Vermerk über Ihre Einwilligung zusammen mit der Adresse; haben Sie in den Newsletter eingewilligt, wird die Adresse sofort in der Abonnentenliste gespeichert, und die E-Mail enthält einen Abmeldelink. Wenn Sie Geschenkgutscheine bestellen, werden Ihre E-Mail-Adresse, die Zeile „Von“ und – sofern Sie sie angegeben haben – Namen und E-Mail-Adressen der Beschenkten an den Server der Website übermittelt; er legt die Bestellung an und sendet nach der Zahlung die Gutscheine. Namen und Adressen der Beschenkten werden 30 Tage nach dem Versand gelöscht. Das Webanalysesystem erhält die Seitenadresse (auf der Ergebnisseite zusammen mit dem Ergebniscode: Ihre Antworten, das Testdatum und Ihr Name, falls Sie ihn angegeben haben, aber nicht Ihre E-Mail-Adresse), die Herkunft des Besuchs, Geräte- und Browsertyp sowie eine Aufzeichnung der Aktionen auf der Seite (die Felder für Name und E-Mail sind ausgenommen) und setzt eigene Cookies. Sie können es in den Browsereinstellungen oder mit einem Tracker-Blocker blockieren. Werbe-Tracker werden nicht verwendet.",
     "pd.cookieChange": "Cookie-Auswahl ändern",
 
     "print.title": "DISG-Test zum Ausdrucken: Fragebogen mit Schlüssel und Auswertung",

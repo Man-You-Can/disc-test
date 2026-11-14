@@ -245,12 +245,21 @@ const hasBusiness = L => !!(L.content.business && L.ui['nav.business'] && hasPro
 const GIFT = { offFrom: +cfg.giftOffFrom || 5, offPct: +cfg.giftOffPct || 0, max: +cfg.giftMax || 50, months: +cfg.giftMonths || 12 };
 const hasGift = L => !!(cfg.giftBuy === true && payEndpoint && L.content.gift && L.ui['nav.gift'] && hasProduct(L) && L.content.product.pay && payCodeT(L, x => x) && langPair(L)[0] > 0);
 const giftCur = L => (L.content.services && L.content.services.currency) || 'RUB';
-// «DISC на двоих» (с 2026-11-14, по просьбе заказчика: «сначала на русском»): страница /ru/pair/ (приглашение, сравнение двух профилей, заказ), блок «Пригласить»
-// на экране своего результата, карточка на «Услугах», пункт подвала, раздел оферты и условий возврата, абзацы политики и «Как готовятся отчёты».
-// Цена — pairPriceRub, тем, у кого на этот e-mail оплачен личный отчёт, — pairPriceOwnerRub (сервер сверяет сам). Тот же ключ кладёт цену, название и письма
-// в ядро сервера (DATA.ru.pair): без него сервер заказы отчёта на двоих не принимает. Отчёт пишется под заказ — private/extended-report/pair/WRITE-PAIR.md
-const PAIR = { price: +cfg.pairPriceRub || 0, owner: +cfg.pairPriceOwnerRub || +cfg.pairPriceRub || 0 };
-const hasPair = L => !!(cfg.pairBuy === true && payEndpoint && L.lang === 'ru' && L.content.pair && L.ui['nav.pair'] && hasOffer(L) && PAIR.price > 0);
+// «DISC на двоих» (с 2026-11-14, по просьбе заказчика: сначала русская версия, тем же днём — все языки с покупкой): страница /<язык>/pair/ (приглашение,
+// сравнение двух профилей, заказ), блок «Пригласить» на экране своего результата, карточка на «Услугах», пункт подвала, раздел оферты и условий возврата,
+// абзацы политики и «Как готовятся отчёты». Цена (статичная, не из панели) — в валюте языка: рубли — pairPriceRub, доллары и евро — pairPriceUsd / pairPriceEur
+// или своя цена языка pairLangPrices {язык: [цена, для купивших]} (решение заказчика: та же доля от цены личного отчёта языка); тем, у кого на этот e-mail
+// оплачен личный отчёт, — pairPriceOwner… (сервер сверяет сам). Русская версия платит Т-Банку, остальные — Prodamus. Тот же ключ кладёт цену, название
+// и письма в ядро сервера (DATA.<язык>.pair): без него сервер заказы отчёта на двоих не принимает. Отчёт пишется под заказ — private/extended-report/pair/WRITE-PAIR.md
+const pairLangPrices = cfg.pairLangPrices && typeof cfg.pairLangPrices === 'object' ? cfg.pairLangPrices : {};
+const pairCur = L => (L.content.services && L.content.services.currency) || 'RUB';
+const PAIR_BASE = { RUB: [+cfg.pairPriceRub || 0, +cfg.pairPriceOwnerRub || +cfg.pairPriceRub || 0], USD: [+cfg.pairPriceUsd || 0, +cfg.pairPriceOwnerUsd || +cfg.pairPriceUsd || 0],
+  EUR: [+cfg.pairPriceEur || 0, +cfg.pairPriceOwnerEur || +cfg.pairPriceEur || 0] };
+const pairPrice = L => { const cur = pairCur(L), x = cur !== 'RUB' && pairLangPrices[L.lang], b = PAIR_BASE[cur] || [0, 0];
+  return Array.isArray(x) && +x[0] > 0 ? { price: +x[0], owner: +x[1] || +x[0], cur } : { price: b[0], owner: b[1], cur }; };
+// цена прописью языка: число по правилам языка в записи content.services.price («{price} ₽», «US${price}», «{price} €»)
+const pairMoney = (L, v) => String(L.content.services.price || '{price}').replace('{price}', fmtPrice(L, v)).replace(/ /g, '\u00a0');   // крупная цена не переносится
+const hasPair = L => !!(cfg.pairBuy === true && payEndpoint && L.content.pair && L.ui['nav.pair'] && hasOffer(L) && hasProduct(L) && L.content.product.pay && pairPrice(L).price > 0);
 // Оператор и дата редакции в политике и согласии: в языке с полным текстом политики (policy.legal — русская версия) — исполнитель из оферты
 // (ИП с ИНН), в остальных — строка реквизитов из подвала. От наличия оферты не зависит: иначе её появление в языке меняло бы текст согласия,
 // на который люди уже согласились (после правки текста согласия нужна новая pdVersion)
@@ -898,7 +907,7 @@ for (const L of locales) {
       // отчёт «DISC на двоих» (hasPair, с 2026-11-14, по просьбе заказчика; content.pair.compat — только русская версия): описание подходит любой
       // паре с такими ведущими стилями, отчёт — о вас двоих. Кнопка — на «Пригласить» страницы /pair/ (свой результат она берёт из disc.last)
       (hasPair(L) && C.pair.compat ? (PC => `<aside class="pcpair"><div class="eyebrow">${escFull(PC.eyebrow)}</div><h2>${escFull(PC.title)}</h2>` +
-        `<p>${escFull((a === b2 ? PC.textSame : PC.text).replace('{a}', a).replace('{b}', b2))} ${escFull(PC.more)}</p><p class="small muted">${escFull(PC.note.replace('{price}', fmtPrice(L, PAIR.price)))}</p>` +
+        `<p>${escFull((a === b2 ? PC.textSame : PC.text).replace('{a}', a).replace('{b}', b2))} ${escFull(PC.more)}</p><p class="small muted">${escFull(PC.note.replace('{price}', fmtPrice(L, pairPrice(L).price)))}</p>` +
         `<p class="pcpair-btns"><a class="btn" href="${base}pair/#invite" data-goal="pair-compat">${escFull(PC.button)}</a><a class="more" href="${base}pair/">${escFull(PC.link)} ${arrow(L)}</a></p></aside>`)(C.pair.compat) : '') +
       `<p class="seealso">${[...new Set([a, b2])].map(s => `<a href="${base}profiles/${s.toLowerCase()}/">${t('pages.profile.more', { name: escFull(L.profiles[s].name) })}</a>`).join(' · ')}</p>` +
       ctaBlock(L, t, base) + `<h2>${t('pages.compat.other')}</h2><p class="chips">${PAIRS.filter(x => x !== k).map(x => { const n2 = pairNames(x); return `<a href="../${pairSlug(x)}/">${badge(x, 'pill')} ${escFull(n2.a)} + ${escFull(n2.b)}</a>`; }).join('')}</p>`;
@@ -1184,7 +1193,7 @@ for (const L of locales) {
       if (!hasPair(L)) return '';
       const PS = C.pair.services;
       return `<section class="service"><div><h2>${escFull(PS.name)}</h2><p>${escFull(PS.text)}</p><p><a class="more" href="../pair/">${escFull(PS.more)} ${arrow(L)}</a></p></div>` +
-        `<p class="price"><small>${escFull(sv.priceLabel)}</small>${escFull(PS.price.replace(/\{price\}/g, fmtPrice(L, PAIR.price)))}</p></section>`;
+        `<p class="price"><small>${escFull(sv.priceLabel)}</small>${escFull(PS.price.replace(/\{price\}/g, fmtPrice(L, pairPrice(L).price)))}</p></section>`;
     }
     // подарочные сертификаты (hasGift, с 2026-11-14): карточка рядом с карточкой отчёта
     function giftCard() {
@@ -1358,12 +1367,12 @@ for (const L of locales) {
         pageJs: giftJs + `\ninitGift({T: ${JSON.stringify(GTjs).replace(/</g, '\\u003c')}, C: ${JSON.stringify(CT).replace(/</g, '\\u003c')}, G: ${JSON.stringify(GIFT)}, base: ${langPair(L)[0]}, cur: ${jsStr(giftCur(L))}, endpoint: ${jsStr(payEndpoint)}, ` +
           `L: L, esc: esc, $: $, lsGet: lsGet, lsSet: lsSet, email: ${jsStr(feedbackEmail)}, qr: ${jsStr(gqr)}, sampleCode: ${jsStr(SAMPLE.replace(/(.{4})(?=.)/g, '$1-'))}, sampleUrl: ${jsStr(sampleUrl)}, until: ${jsStr(until)}, home: ${jsStr(home)}, site: ${jsStr(gsite)}});` });
     }
-    // /pair/ — «DISC на двоих» (hasPair, с 2026-11-14, по просьбе заказчика; пока только русская версия). Описание отчёта и «Пригласить»; по ссылке
+    // /pair/ — «DISC на двоих» (hasPair, с 2026-11-14, по просьбе заказчика; все языки с покупкой). Описание отчёта и «Пригласить»; по ссылке
     // #i=<код> — приглашение, по #p=<код>~<код> — сравнение двух профилей с формой заказа, после банка — статус (src/pair.js, src/pair.css).
     // Отчёт пишется под заказ (сессия Claude по обезличенным данным, сервер — private/server/src/pair.js), приходит в течение 24 часов
     if (hasPair(L)) {
       const PT = C.pair, PO = PT.order, home = urlOf(L.lang);
-      const pv = str => String(str).replace(/\{price\}/g, fmtPrice(L, PAIR.price)).replace(/\{owner\}/g, fmtPrice(L, PAIR.owner));
+      const PP = pairPrice(L), pv = str => String(str).replace(/\{price\}/g, fmtPrice(L, PP.price)).replace(/\{owner\}/g, fmtPrice(L, PP.owner));
       const email = `<a href="mailto:${escFull(feedbackEmail)}">${escFull(feedbackEmail)}</a>`;
       const faqA = a => escFull(pv(a)).replace('{email}', email).replace('{refund}', `<a href="../refund/">${escFull(PT.refundLink)}</a>`);
       const sheets = [1, 2, 3, 4].filter(i => fs.existsSync(path.join(ASSETS, 'pair', `${L.lang}-${i}.webp`)));
@@ -1389,7 +1398,7 @@ for (const L of locales) {
             `<div class="field"><label for="poCopy">${escFull(PO.copyLabel)} <span class="muted">${escFull(PO.copyOptional)}</span></label><input type="email" id="poCopy" class="ym-disable-keys" inputmode="email" maxlength="64"><div class="hint">${escFull(PO.copyHint)}</div></div>` +
             `<fieldset class="po-rel"><legend>${escFull(PO.relTitle)}</legend><div class="po-opts">${PO.rels.map((r, i) => radio('porel', r[0], r[1], i === PO.rels.length - 1)).join('')}</div><p class="small muted">${escFull(PO.relHint)}</p>` +
               `<div class="po-lead" id="poLead" hidden><b class="small">${escFull(PO.leadTitle)}</b><div class="po-opts">${radio('polead', 'a', '', false, 'poLeadA')}${radio('polead', 'b', '', false, 'poLeadB')}</div></div></fieldset>` +
-            `<div class="po-total"><div class="po-big" id="poPrice">${escFull(fmtPrice(L, PAIR.price))}&nbsp;₽</div><p class="small muted">${escFull(pv(PO.priceNote))}</p>` +
+            `<div class="po-total"><div class="po-big" id="poPrice">${escFull(pairMoney(L, PP.price))}</div><p class="small muted">${escFull(pv(PO.priceNote))}</p>` +
             `<label class="check"><input type="checkbox" id="poAgree"><span>${escFull(PO.agree).replace('{offer}', `<a href="../offer/">${escFull(C.offer.linkText)}</a>`)}</span></label>` +
             `<button class="btn po-pay" type="submit" id="poPay">${escFull(pv(PO.buy))}</button><p class="small sendstatus err" id="poErr" aria-live="polite" hidden></p>` +
             `<p class="xnote">${escFull(PO.when)}</p>${payMethodsHtml(L)}</div></form>` +
@@ -1414,7 +1423,7 @@ for (const L of locales) {
       writeContentPage(L, 'pair/', { navKey: 'nav.services', langs: locales.filter(hasPair), title: pv(PT.title), description: pv(PT.description), crumbs: [{ name: t('nav.services'), href: '../services/', sub: 'services/' }, { name: PT.h1 }],
         css: pairCss, content, files: ['src/pair.js', 'src/pair.css'].concat(sheets.map(i => `src/assets/pair/${L.lang}-${i}.webp`)),
         pageJs: pairJs + `\ninitPair({T: ${JSON.stringify(PTjs).replace(/</g, '\\u003c')}, pairs: ${JSON.stringify(pairsJs).replace(/</g, '\\u003c')}, profiles: ${JSON.stringify(profJs).replace(/</g, '\\u003c')}, ` +
-          `BK: ${PAIR_BK}, price: ${PAIR.price}, endpoint: ${jsStr(payEndpoint)}, lang: ${jsStr(L.lang)}, home: '../', email: ${jsStr(feedbackEmail)}, esc: esc, $: $, lsGet: lsGet, lsSet: lsSet});` });
+          `BK: ${PAIR_BK}, price: ${PP.price}, cur: ${jsStr(PP.cur)}, money: ${jsStr(L.content.services.price)}, loc: ${jsStr(L.dateLocale)}, endpoint: ${jsStr(payEndpoint)}, lang: ${jsStr(L.lang)}, home: '../', email: ${jsStr(feedbackEmail)}, esc: esc, $: $, lsGet: lsGet, lsSet: lsSet});` });
     }
     // /extended-report/ — страница расширенного отчёта: что внутри, листы образца картинками, сравнение с кратким отчётом, цена.
     // Блок покупки по умолчанию ведёт на тест. У кого результат сохранён на этом устройстве (disc.last), тому скрипт страницы меняет его:
@@ -1690,7 +1699,8 @@ for (const L of locales) {
   if (hasGift(L)) { const home = urlOf(L.lang), GT = L.content.gift;
     mailData[L.lang].gift = Object.assign({ name: GT.name, page: home + 'gift/', home, dateLocale: L.dateLocale, dir: L.dir, cert: GT.cert, mail: GT.mail, rmail: GT.rmail, sampleName: GT.sampleName, sampleFrom: GT.sampleFrom }, GIFT); }
   // «DISC на двоих» (hasPair, с 2026-11-14): название для платёжной страницы и чека, цены, адрес страницы (возврат с оплаты), тексты писем
-  if (hasPair(L)) mailData[L.lang].pair = { name: L.content.pair.name, price: PAIR.price, owner: PAIR.owner, page: urlOf(L.lang) + 'pair/', mail: L.content.pair.mail };
+  if (hasPair(L)) { const PP = pairPrice(L);
+    mailData[L.lang].pair = { name: L.content.pair.name, brand: L.content.pair.h1, price: PP.price, owner: PP.owner, currency: PP.cur, page: urlOf(L.lang) + 'pair/', home: urlOf(L.lang), dateLocale: L.dateLocale, dir: L.dir, mail: L.content.pair.mail }; }
   // файл с кодами доступа для покупателя (панель, страница партии → «Скачать коды файлом», с 2026-11-12): заголовки столбцов на языке партии и адрес,
   // где вводить код, — главная этого языка
   if (hasBusiness(L) && Array.isArray(L.content.business.csv)) mailData[L.lang].codes = { csv: L.content.business.csv, home: urlOf(L.lang) };

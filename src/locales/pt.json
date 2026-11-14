@@ -719,6 +719,7 @@
         ]
       },
       "purchaseCode": "Se você receber o perfil ampliado por um código de acesso comprado por uma empresa ou outra pessoa, tratamos os mesmos dados, exceto os dados de pagamento, e registramos que o código foi usado. A quem comprou o código, informamos apenas se ele foi usado e quando: seu resultado, seu relatório e seu e-mail não são repassados. A base legal é o contrato que você celebra ao digitar o código conforme os {offer}.",
+      "purchasePair": "Se você pedir o relatório “DISC para dois”, tratamos o seu e-mail, os dados do pedido, os nomes e os resultados do teste dos dois participantes que estão no link da comparação, a sua resposta sobre a relação entre vocês e — se você o informar — o endereço do segundo participante, para o envio da cópia do relatório. O segundo participante autoriza, por meio de uma marcação no site, que o resultado dele seja mostrado e usado no relatório; ao informar o endereço dele, você confirma que ele concorda em receber a cópia. O texto do relatório é preparado com o auxílio de IA somente com dados anonimizados — perfis e pontuações, sem nomes, endereços nem códigos de resultado. Excluímos os códigos de resultado e o endereço do segundo participante 30 dias após o envio do relatório e, em pedido não pago, após 7 dias; os dados do pedido são guardados da mesma forma que os do pedido do perfil ampliado. A base legal é o contrato conforme os {offer} e o consentimento do segundo participante.",
       "purchaseGift": "Se você comprar vales-presente, tratamos seu e-mail, os dados do pedido (data, valor, número e status do pagamento), a assinatura da linha “De” e, se informados, os nomes e os e-mails dos presenteados. Precisamos do seu e-mail e dos dados do pedido para enviar a você os vales-presente, responder às suas mensagens e processar reembolsos; eles são guardados da mesma forma que os dados do pedido do perfil ampliado. O nome do presenteado é impresso no vale-presente dele, e o e-mail do presenteado recebe uma única mensagem, com o vale-presente; excluímos os nomes e os e-mails dos presenteados 30 dias após o envio dos vales-presente ou, em pedido não pago, após 7 dias. Ao informar os dados dos presenteados, você confirma que eles concordam em receber o vale-presente. A base legal é o contrato conforme os {offer}, do qual os presenteados são beneficiários. Quem digita o código de um vale-presente no site recebe o perfil ampliado da mesma forma que com um código de acesso: a quem deu o vale-presente, informamos apenas se ele foi usado e quando."
     },
     "consentDoc": {
@@ -883,6 +884,19 @@
       }
     },
     "offer": {
+      "pairSection": {
+        "h": "12. Relatório “DISC para dois”",
+        "p": [
+          "12.1. Nas condições desta oferta, o Prestador também presta o serviço “DISC para dois” (doravante, o Relatório para Dois): prepara, em formato eletrônico, uma análise dos perfis DISC de duas pessoas — o Cliente e o segundo participante — e da forma como elas trabalham e se comunicam em conjunto, e a envia ao Cliente. As disposições desta oferta sobre o Serviço aplicam-se ao Relatório para Dois, salvo disposição em contrário nesta seção.",
+          "12.2. O Relatório para Dois é preparado com base nos resultados do Teste de duas pessoas: o Cliente e o segundo participante, que fez o Teste e, por meio de uma marcação no Site, concordou em mostrar o seu resultado ao Cliente e em que ele seja usado no Relatório para Dois. Qualquer um dos dois participantes pode ser o Cliente.",
+          "12.3. O preço do Relatório para Dois é informado no Site e na página de pagamento; ao Cliente que já pagou pelo Perfil Ampliado com o mesmo endereço de e-mail pode ser oferecido um preço reduzido. O Relatório para Dois é pago integralmente antes do início da preparação, na forma prevista nas cláusulas 3.2 a 3.5.",
+          "12.4. O Relatório para Dois é preparado após o pagamento e enviado para o endereço de e-mail do Cliente em até 24 horas a contar do pagamento. Se o Cliente tiver informado o endereço de e-mail do segundo participante, uma cópia do Relatório para Dois é enviada também a ele; ao informar o endereço, o Cliente confirma que o segundo participante concorda em receber a mensagem. O Relatório para Dois é considerado entregue, e o serviço prestado, no momento do envio da mensagem ao Cliente.",
+          "12.5. O texto do Relatório para Dois é preparado com o auxílio de um sistema de inteligência artificial, segundo as regras do Prestador, com base em dados anonimizados — os perfis e as pontuações do Teste, sem nomes, endereços de e-mail nem códigos de resultado; antes do envio, ele é lido por uma pessoa. O Relatório para Dois descreve estilos comportamentais e não constitui avaliação da compatibilidade dos participantes, parecer psicológico nem fundamento para decisões de contratação, demissão ou remuneração.",
+          "12.6. O Cliente pode desistir do Relatório para Dois antes do seu envio; nesse caso, o valor pago é devolvido integralmente. Se o Relatório para Dois não for enviado no prazo indicado na cláusula 12.4, o Cliente pode exigir a devolução integral do valor pago. No mais, aplica-se ao Relatório para Dois a seção 5.",
+          "12.7. O Relatório para Dois destina-se ao uso pessoal dos dois participantes; no mais, aplica-se a ele a seção 6.",
+          "12.8. Para preparar o Relatório para Dois, o Prestador trata o endereço de e-mail do Cliente, os nomes e os resultados do Teste dos dois participantes, o endereço de e-mail do segundo participante (se informado) e a escolha do Cliente sobre a relação entre os participantes. Os códigos de resultado e o endereço do segundo participante são excluídos 30 dias corridos após o envio do Relatório para Dois e, em pedido não pago, após 7 dias. Mais informações na página “{privacy}”."
+        ]
+      },
       "title": "Termos de venda (oferta ao público) — perfil DISC ampliado e kit do facilitador",
       "description": "Termos de venda (oferta ao público) do serviço “Perfil DISC ampliado” e do Kit do facilitador DISC no disc-test.org: preço, pagamento e entrega, reembolso, direitos sobre os materiais.",
       "h1": "Termos de venda (oferta ao público)",
@@ -1031,6 +1045,12 @@
       ]
     },
     "refund": {
+      "pairSection": {
+        "h": "Relatório “DISC para dois”",
+        "p": [
+          "Até o envio do relatório para dois, o valor pago é devolvido integralmente a seu pedido. Se o relatório não chegar em até 24 horas após o pagamento, você também pode pedir a devolução integral. Depois do envio, o valor pago por um relatório devidamente preparado não é devolvido; defeitos — o arquivo não abre, o relatório contém dados de outras pessoas, o conteúdo não corresponde à descrição — são corrigidos por nós em até três dias úteis. Informe na solicitação o número do pedido — ele está no e-mail de confirmação do pagamento."
+        ]
+      },
       "title": "Política de reembolso — perfil DISC ampliado e kit do facilitador",
       "description": "Quando e como receber de volta o valor pago pelo perfil DISC ampliado e pelo kit do facilitador no disc-test.org: casos de reembolso, como solicitar, prazos.",
       "h1": "Política de reembolso",
@@ -1577,6 +1597,226 @@
         "title": "Descubra sua cor DISC",
         "text": "O teste mostra sua cor predominante e a secundária, a intensidade de cada uma em porcentagem e o que fazer com isso. 24 blocos, cerca de 10 minutos, sem cadastro.",
         "button": "Descobrir minha cor"
+      }
+    },
+    "pair": {
+      "title": "DISC para dois — relatório sobre duas pessoas com base no teste DISC",
+      "description": "Relatório sobre duas pessoas com base nos resultados do teste DISC: como vocês se enxergam, onde vão surgir atritos e como chegar a acordos — no trabalho e na vida pessoal. Escrito para a sua dupla, chega em até 24 horas.",
+      "name": "Relatório “DISC para dois”",
+      "eyebrow": "Novo relatório",
+      "h1": "DISC para dois",
+      "lead": "Um relatório sobre duas pessoas, feito a partir dos resultados delas no teste DISC: como vocês se enxergam, onde vão surgir atritos e como chegar a acordos — no trabalho e na vida pessoal. Ele é escrito para a sua dupla, com base nas quatro escalas de cada pessoa.",
+      "facts": [
+        "Cerca de 22 páginas em PDF",
+        "Trabalho e vida pessoal",
+        "Em até 24 horas após o pagamento",
+        "US$ {price}; se você já comprou o relatório ampliado, US$ {owner}"
+      ],
+      "cta": "Convidar a outra pessoa",
+      "ctaTest": "Fazer o teste",
+      "howTitle": "Como funciona",
+      "how": [
+        ["Faça o teste e convide a outra pessoa", "O botão “Convidar” fica na tela do seu resultado e nesta página: dá para mandar o link por um aplicativo de mensagens ou copiá-lo."],
+        ["A outra pessoa faz o teste", "É grátis e leva cerca de 10 minutos. No fim, ela marca que concorda em mostrar o resultado a você — sem essa marcação, não há comparação."],
+        ["A comparação e o relatório", "Na página de comparação, vocês veem os dois perfis lado a lado e uma descrição gratuita da dupla. Ali mesmo dá para pedir o relatório: ele chega ao seu e-mail em até 24 horas, e você pode enviar uma cópia à outra pessoa."]
+      ],
+      "insideTitle": "O que tem no relatório",
+      "inside": [
+        ["Dois perfis lado a lado", "as escalas das duas pessoas no mesmo gráfico: onde vocês se parecem, onde mais se diferenciam e o que isso significa para a dupla."],
+        ["Como vocês se complementam", "em que pontos vocês se completam e em que tarefas a dupla rende mais."],
+        ["Como vocês se enxergam", "o que cada pessoa nota na outra e o que está de fato por trás disso."],
+        ["Cinco situações de atrito", "como elas aparecem no trabalho e em casa, o que cada pessoa sente e o que ajuda."],
+        ["Como conversar, decidir e discordar", "regras e frases prontas para cada pessoa, decisões em dupla e como interromper uma discussão."],
+        ["Trabalho e vida pessoal", "seções separadas para colegas e para a relação entre gestor e membro da equipe, e também para casais, amigos e familiares."],
+        ["Folhas de trabalho", "o “Acordo da dupla”, o plano de 30 dias em dupla e o essencial em uma página."]
+      ],
+      "sheetsTitle": "Páginas do modelo",
+      "sheetAlt": "Página {n} do modelo do relatório “DISC para dois”",
+      "forTitle": "Para quem",
+      "for": [
+        ["Colegas", "Como dividir o trabalho, conduzir reuniões e discutir as questões de trabalho sem ofender ninguém."],
+        ["Gestor e membro da equipe", "Como passar tarefas, dar feedback e falar de discordâncias."],
+        ["Casal", "Rotina, dinheiro, lazer, cuidado e mágoas: como os estilos de vocês aparecem em casa."],
+        ["Amigos e familiares", "Como evitar que a relação vire “uma pessoa decide, a outra se adapta”."]
+      ],
+      "madeTitle": "Como o relatório é feito",
+      "made": "O relatório é escrito para a sua dupla, e não montado com trechos prontos. O texto é escrito por IA, seguindo as regras da redação, com base em dados anonimizados — os perfis e as pontuações das duas pessoas, sem nomes nem endereços. Um programa confere o texto e monta o PDF com os nomes de vocês, e uma pessoa lê o relatório inteiro antes do envio. Saiba mais na página {howMade}.",
+      "limits": "O relatório descreve o estilo de comportamento, e não sentimentos nem capacidades. Ele não avalia a compatibilidade e não serve para decisões de contratação, demissão ou remuneração.",
+      "inviteTitle": "Convidar a outra pessoa",
+      "inviteText": "Mande o link para a pessoa com quem você quer comparar resultados. Ela vai ver o seu nome e o seu resultado resumido.",
+      "inviteNoTest": "Primeiro, faça o teste: o botão “Convidar” aparece na tela do seu resultado.",
+      "inviteBtn": "Convidar",
+      "inviteMsg": "Faça o teste DISC e vamos ver como trabalhamos e nos comunicamos. Convite de {name}:",
+      "faqTitle": "Perguntas frequentes",
+      "faq": [
+        {
+          "q": "E se a outra pessoa não quiser fazer o teste?",
+          "a": "Então não haverá relatório para dois: ele é feito somente com os resultados das duas pessoas, e a outra pessoa decide se mostra ou não o resultado dela. Você pode convidar outra pessoa."
+        },
+        {
+          "q": "Quem vai ver o meu resultado?",
+          "a": "A pessoa para quem você mandou o convite ou o link da comparação: o seu nome e o seu resultado resumido. O e-mail não entra nos links. O relatório vai para quem fez o pedido e — se essa pessoa informar o endereço — também para a outra pessoa."
+        },
+        {
+          "q": "Quanto custa e quando chega?",
+          "a": "US$ {price}; se você já comprou o relatório ampliado com este e-mail, US$ {owner}. O relatório chega ao seu e-mail em até 24 horas após o pagamento: ele é escrito para a sua dupla, e uma pessoa o lê antes do envio."
+        },
+        {
+          "q": "Serve para um casal, e não só para colegas?",
+          "a": "Sim. O relatório tem seções sobre o trabalho e sobre a vida pessoal; no pedido, você pode informar a relação entre vocês, e o relatório dá mais ênfase a ela."
+        }
+      ],
+      "refundLink": "política de reembolso",
+      "howMadeLink": "“Como são feitos os relatórios DISC”",
+      "services": {
+        "name": "DISC para dois",
+        "text": "Relatório sobre duas pessoas com base nos resultados do teste DISC: como vocês se enxergam, onde vão surgir atritos e como chegar a acordos no trabalho e na vida pessoal. Chega em até 24 horas.",
+        "more": "Saiba mais sobre o relatório para dois",
+        "price": "US$ {price}"
+      },
+      "invite": {
+        "eyebrow": "Convite",
+        "title": "{name} convida você para fazer o teste DISC",
+        "text": "O teste é grátis e leva cerca de 10 minutos. Depois dele, você vê o seu resultado e, se concordar, a comparação dos dois perfis: como é a dupla de vocês no trabalho e na conversa.",
+        "profile": "{name} — perfil “{profile}”",
+        "start": "Fazer o teste",
+        "haveTitle": "Já fez o teste neste dispositivo?",
+        "haveText": "Dá para comparar com esse resultado sem refazer o teste.",
+        "consent": "Autorizo mostrar o meu resultado e o meu nome a quem me convidou ({name}) e usá-los no relatório “DISC para dois”, se ele for pedido",
+        "compare": "Comparar com o meu resultado",
+        "needConsent": "Marque a autorização para ver a comparação.",
+        "bad": "O link do convite está danificado ou incompleto. Peça para a pessoa mandar de novo."
+      },
+      "result": {
+        "eyebrow": "DISC para dois",
+        "title": "Faça o teste em dupla — com um colega, um parceiro ou um amigo",
+        "text": "Convide outra pessoa para fazer o teste e descubra como a dupla de vocês pode funcionar melhor:",
+        "points": [
+          "em que tarefas vocês rendem mais em conjunto e quais é melhor dividir",
+          "onde vão surgir atritos e o que ajuda a contorná-los",
+          "como conversar para que cada pessoa seja ouvida — frases prontas para os dois lados",
+          "como tomar decisões em comum e interromper uma discussão antes que ela cresça",
+          "o que levar em conta no trabalho e na vida pessoal"
+        ],
+        "button": "Convidar a outra pessoa",
+        "more": "O que tem no relatório",
+        "dlgTitle": "Convidar para o teste",
+        "compareTitle": "Comparar resultados: você e {name}",
+        "compareText": "{name} convida você a comparar os resultados do teste DISC.",
+        "compareBtn": "Ver a comparação",
+        "dismiss": "Não comparar"
+      },
+      "compat": {
+        "eyebrow": "DISC para dois",
+        "title": "E como isso funciona com vocês?",
+        "text": "Esta descrição vale para quaisquer duas pessoas com estilos predominantes {a} e {b}.",
+        "textSame": "Esta descrição vale para quaisquer duas pessoas cujo estilo predominante é {a}.",
+        "more": "O relatório “DISC para dois” mostra como isso funciona com vocês, especificamente: pelas quatro escalas de cada pessoa, com situações de atrito, frases prontas e seções sobre o trabalho e a vida pessoal.",
+        "note": "As duas pessoas fazem o teste e, depois, vocês pedem o relatório: cerca de 22 páginas em PDF em até 24 horas, por US$ {price}.",
+        "button": "Convidar a outra pessoa",
+        "link": "Saiba mais sobre o relatório"
+      },
+      "compare": {
+        "title": "{a} e {b}",
+        "lead": "Dois perfis DISC lado a lado. Esta comparação é gratuita; o relatório “DISC para dois” mostra como tudo isso funciona com vocês, especificamente.",
+        "legend": "Barra preenchida: {a}; barra só com contorno: {b}. O meio da escala, 50%, está marcado com um traço.",
+        "profiles": "Perfis",
+        "pairTitle": "A dupla de vocês em poucas palavras",
+        "closeTitle": "Onde vocês se aproximam",
+        "close": "Nas escalas {list}, a diferença é menor que 15 pontos: é aí que fica mais fácil vocês se entenderem.",
+        "closeNone": "Não há escalas muito próximas: por isso, vale ainda mais combinar as regras com antecedência.",
+        "gapTitle": "Onde está a maior diferença",
+        "gap": "Na escala {k}: {a} — {pa}%, {b} — {pb}%. O que essa diferença significa para vocês é analisado no relatório.",
+        "gapSmall": "A diferença mais visível está na escala {k}, e ela é pequena: {a} — {pa}%, {b} — {pb}%.",
+        "only": {
+          "title": "O que não está na comparação gratuita, mas está no relatório",
+          "text": "A frase sobre a dupla, acima, é a mesma para todos que têm esses estilos predominantes. O relatório é escrito para vocês:",
+          "items": [
+            ["Escrito para vocês", "com base nas quatro escalas de cada pessoa e nos estilos secundários, e não só no estilo predominante"],
+            ["Cinco situações de atrito", "como cada uma aparece no trabalho e em casa, o que cada pessoa sente e o que ajuda"],
+            ["Frases prontas para cada pessoa", "regras para conversas e mensagens e uma frase para começar — separadas para cada lado"],
+            ["Como decidir em conjunto e interromper uma discussão", "três perguntas antes de uma decisão em comum, como a discussão escala no caso de vocês e como interrompê-la"],
+            ["Trabalho e vida pessoal", "seções separadas, com ênfase na relação entre vocês: colegas, gestor e membro da equipe, casal, amigos ou familiares"],
+            ["Folhas de trabalho", "o “Acordo da dupla”, o plano de 30 dias em dupla e o essencial em uma página"],
+            ["Cerca de 22 páginas em PDF em até 24 horas", "o relatório é escrito para o seu pedido, e uma pessoa o lê antes do envio"]
+          ]
+        },
+        "shareTitle": "Mande esta página para a outra pessoa",
+        "shareText": "O link abre esta mesma comparação. Nele estão os nomes e os resultados resumidos de vocês, sem e-mail.",
+        "copy": "Copiar o link",
+        "copied": "Link copiado",
+        "share": "Compartilhar",
+        "bad": "O link da comparação está danificado ou incompleto. Peça para a pessoa mandar de novo.",
+        "same": "O link tem dois resultados iguais — não há o que comparar.",
+        "aria": "{k}: {a}% e {b}%",
+        "pct": "{n}%",
+        "profile": "{key} “{name}”",
+        "sep": ", ",
+        "and": " e ",
+        "shareMsg": "{title} — DISC:"
+      },
+      "order": {
+        "title": "Pedir o relatório",
+        "emailLabel": "Seu e-mail",
+        "emailHint": "Aqui chegam o relatório e o comprovante de pagamento.",
+        "copyLabel": "E-mail da outra pessoa",
+        "copyOptional": "(opcional)",
+        "copyHint": "Enviaremos uma cópia do relatório. Informe somente se a pessoa concordar em receber o e-mail.",
+        "relTitle": "Qual é a relação entre vocês",
+        "relHint": "O relatório tem seções sobre o trabalho e sobre a vida pessoal; a resposta ajuda a definir a ênfase.",
+        "rels": [
+          ["colleagues", "Colegas no mesmo nível"],
+          ["boss", "Uma pessoa lidera a outra"],
+          ["couple", "Casal"],
+          ["friends", "Amigos"],
+          ["family", "Familiares"],
+          ["", "Prefiro não informar"]
+        ],
+        "leadTitle": "Quem lidera",
+        "priceNote": "US$ {owner} se você já comprou o relatório ampliado com este e-mail: o preço é recalculado quando você clica em “Comprar”.",
+        "agree": "Aceito os {offer}",
+        "buy": "Comprar por US$ {price}",
+        "wait": "Criando o pedido…",
+        "when": "O relatório chega ao seu e-mail em até 24 horas após o pagamento.",
+        "badEmail": "Confira o endereço de e-mail.",
+        "badCopy": "Confira o e-mail da outra pessoa.",
+        "needAgree": "Marque que você aceita os termos de venda.",
+        "needLead": "Informe quem lidera.",
+        "priceChanged": "Já existe um relatório ampliado comprado com este e-mail, por isso o preço é US$ {price}. Clique em “Comprar” de novo.",
+        "error": "Não foi possível criar o pedido. Tente de novo ou escreva para {email}."
+      },
+      "status": {
+        "wait": "Verificando o pagamento…",
+        "ok": "Pagamento aprovado. O relatório “DISC para dois” chega ao seu e-mail em até 24 horas; o e-mail sobre o pedido já está na sua caixa de entrada.",
+        "sent": "O relatório foi enviado para o seu e-mail.",
+        "fail": "O pagamento não foi concluído, e nenhum valor foi cobrado. Você pode tentar de novo na página de comparação.",
+        "unknown": "Não foi possível verificar o status do pagamento. Se o valor foi cobrado, o relatório chega em até 24 horas; em caso de dúvida, escreva para {email}."
+      },
+      "mail": {
+        "hello": "Olá!",
+        "paidSubject": "Pagamento aprovado: o relatório “DISC para dois” chega em até 24 horas",
+        "paidIntro": "Obrigado por pedir o relatório “DISC para dois”. Participantes: {a} e {b}.",
+        "paidWhen": "O relatório chega a este endereço em até 24 horas após o pagamento.",
+        "paidCopy": "Uma cópia também será enviada à outra pessoa, no endereço que você informou.",
+        "paidMeanwhile": "O relatório é escrito para a sua dupla — com base em todas as escalas das duas pessoas e na relação entre vocês. Antes do envio, uma pessoa o lê.",
+        "question": "Dúvidas? Responda a este e-mail ou escreva para {email}.",
+        "bye": "Equipe disc-test.org",
+        "order": "Pedido {order} ·",
+        "subject": "Relatório “DISC para dois”: {a} e {b}",
+        "intro": "O seu relatório “DISC para dois” está pronto — ele segue em anexo (PDF). Participantes: {a} e {b}.",
+        "copyIntro": "Esta é uma cópia do relatório “DISC para dois” — ela segue em anexo (PDF). Participantes: {a} e {b}. O relatório foi pedido no disc-test.org com base nos resultados do teste DISC: as duas pessoas concordaram em mostrar os próprios resultados para ele.",
+        "howTitle": "Como ler",
+        "how": [
+          "Primeiro, cada pessoa lê por conta própria; depois, leiam em conjunto.",
+          "As seções 1 a 8 tratam de vocês em qualquer situação; a 9, do trabalho; a 10, da vida pessoal.",
+          "Comecem pela seção 11, “Acordo da dupla”: são vinte minutos de conversa entre vocês."
+        ],
+        "copySent": "A cópia do relatório foi enviada para a outra pessoa.",
+        "copyWhy": "Você recebeu este e-mail porque o seu endereço foi informado no pedido do relatório. Não há assinatura aqui: você não vai receber outros e-mails.",
+        "noName": [
+          "participante 1",
+          "participante 2"
+        ]
       }
     },
     "gift": {
@@ -2509,6 +2749,12 @@
       }
     },
     "howMade": {
+      "pair": {
+        "h": "Relatório “DISC para dois”",
+        "p": [
+          "O relatório para dois não é montado com blocos escritos de antemão: o texto dele é escrito para cada pedido. Quem o escreve é a IA, seguindo as regras da redação, com base em dados anonimizados — os perfis e as pontuações das duas pessoas, sem nomes, endereços nem códigos de resultado. Um programa confere o texto — o tamanho das seções, a linguagem sem formas no masculino ou no feminino, as formulações proibidas, os números — e monta o PDF com os nomes dos participantes, e uma pessoa lê o relatório inteiro antes do envio. Por isso, o relatório para dois não chega logo após o pagamento, e sim em até 24 horas."
+        ]
+      },
       "title": "Como a IA prepara os relatórios DISC: automáticos e sem viés",
       "description": "Relatórios DISC automáticos: a IA escreve os textos pelas regras da redação, e um programa monta o seu a partir das suas respostas, sem intervenção humana.",
       "h1": "Como são feitos os relatórios DISC",
@@ -2856,6 +3102,7 @@
     "nav.howMade": "Como é feito o relatório",
     "nav.business": "Para empresas",
     "nav.gift": "Vales-presente",
+    "nav.pair": "DISC para dois",
 
     "pages.styles.title": "Os 4 estilos DISC (perfis comportamentais): D, I, S e C",
     "pages.styles.description": "Os quatro perfis comportamentais DISC: dominância, influência, estabilidade e conformidade. Traços, pontos fortes, motivação e comportamento sob pressão.",
@@ -2984,7 +3231,7 @@
     "pd.consentLink": "consentimento para o tratamento de dados pessoais",
     "pd.required": "Marque a caixa de consentimento para o tratamento de dados pessoais: sem ele, não podemos receber seus dados.",
     "pd.cookieAsk": "Este site guarda seu progresso, o resultado e o idioma escolhido no armazenamento local do navegador. Com o seu consentimento, um serviço de análise da web coletará estatísticas anônimas de visitas e uma gravação das ações na página para nos ajudar a melhorar o site. Seu nome, e-mail e resultado não são enviados ao serviço de análise.",
-    "pd.cookieDetails": "No navegador ficam guardados: o nome e o e-mail, se você os informou; suas respostas e o progresso de um teste não concluído; o último resultado; o momento em que você concluiu o teste pela primeira vez, para o prazo do preço especial do relatório; o código do vale-presente, se você abriu o site pelo link de um vale-presente; o idioma escolhido; um registro de que você já viu este aviso. Esses dados permanecem no seu dispositivo e são apagados quando você limpa os dados do site. O serviço de hospedagem recebe os dados técnicos habituais da requisição. Na primeira vez que você abre o site em um dia, uma marca anônima de visita é enviada ao servidor do site: apenas o idioma da versão do site; o servidor a registra com o horário de chegada, e o seu navegador guarda a data para não enviá-la de novo no mesmo dia. Com essas marcas contamos quantas pessoas visitam o site. Quando você começa o teste, uma marca anônima de início é enviada ao servidor do site: apenas o idioma da versão do site. Quando você conclui o teste, um registro anônimo para a estatística geral é enviado ao servidor do site: o perfil obtido e o idioma da versão do site, sem nome, e-mail nem respostas. Quando você clica em “Salvar em PDF”, suas respostas e a data do teste — sem nome nem e-mail — são enviadas ao servidor do site, que gera o arquivo do relatório resumido, o devolve para você e não guarda nada. Quando você envia o resultado por e-mail, o nome, o e-mail e as respostas são transmitidos ao servidor do site, que envia a você o e-mail com o resultado e guarda o nome, o e-mail, a data e o resultado na base de resultados do responsável pelo site. Quando você se inscreve na newsletter na página inicial, o e-mail e o idioma da versão do site são transmitidos ao servidor do site, que envia um e-mail com o link de confirmação e guarda o endereço na mesma base; se a inscrição não for confirmada, o endereço é apagado em 7 dias. Quando você pede o questionário do teste por e-mail na página “Teste em PDF”, o e-mail e o idioma da versão do site são transmitidos ao servidor do site, que envia um e-mail com o questionário e guarda o registro do consentimento junto com o endereço; se você marcou o consentimento para a newsletter, o endereço é salvo imediatamente na lista de assinantes, e o e-mail traz um link para cancelar a inscrição. Quando você faz o pedido de vales-presente, o seu e-mail, a linha “De” e, se informados, os nomes e os e-mails dos presenteados são transmitidos ao servidor do site, que cria o pedido e, após o pagamento, envia os vales-presente; os nomes e os e-mails dos presenteados são apagados 30 dias após o envio. O serviço de análise da web recebe o endereço da página (na tela do resultado, junto com o código do resultado: suas respostas, a data do teste e seu nome, se você o informou, mas não o seu e-mail), a origem da visita, o tipo de dispositivo e navegador e uma gravação das ações na página (os campos de nome e e-mail ficam excluídos), e define os próprios cookies. Você pode bloqueá-lo nas configurações do navegador ou com um bloqueador de rastreadores. Não são usados rastreadores publicitários.",
+    "pd.cookieDetails": "No navegador ficam guardados: o nome e o e-mail, se você os informou; suas respostas e o progresso de um teste não concluído; o último resultado; o momento em que você concluiu o teste pela primeira vez, para o prazo do preço especial do relatório; o código do vale-presente, se você abriu o site pelo link de um vale-presente; o convite do “DISC para dois” — o nome e o resultado de quem convidou você, se você abriu o site pelo link dessa pessoa; o idioma escolhido; um registro de que você já viu este aviso. Esses dados permanecem no seu dispositivo e são apagados quando você limpa os dados do site. O serviço de hospedagem recebe os dados técnicos habituais da requisição. Na primeira vez que você abre o site em um dia, uma marca anônima de visita é enviada ao servidor do site: apenas o idioma da versão do site; o servidor a registra com o horário de chegada, e o seu navegador guarda a data para não enviá-la de novo no mesmo dia. Com essas marcas contamos quantas pessoas visitam o site. Quando você começa o teste, uma marca anônima de início é enviada ao servidor do site: apenas o idioma da versão do site. Quando você conclui o teste, um registro anônimo para a estatística geral é enviado ao servidor do site: o perfil obtido e o idioma da versão do site, sem nome, e-mail nem respostas. Quando você clica em “Salvar em PDF”, suas respostas e a data do teste — sem nome nem e-mail — são enviadas ao servidor do site, que gera o arquivo do relatório resumido, o devolve para você e não guarda nada. Quando você envia o resultado por e-mail, o nome, o e-mail e as respostas são transmitidos ao servidor do site, que envia a você o e-mail com o resultado e guarda o nome, o e-mail, a data e o resultado na base de resultados do responsável pelo site. Quando você se inscreve na newsletter na página inicial, o e-mail e o idioma da versão do site são transmitidos ao servidor do site, que envia um e-mail com o link de confirmação e guarda o endereço na mesma base; se a inscrição não for confirmada, o endereço é apagado em 7 dias. Quando você pede o questionário do teste por e-mail na página “Teste em PDF”, o e-mail e o idioma da versão do site são transmitidos ao servidor do site, que envia um e-mail com o questionário e guarda o registro do consentimento junto com o endereço; se você marcou o consentimento para a newsletter, o endereço é salvo imediatamente na lista de assinantes, e o e-mail traz um link para cancelar a inscrição. Quando você faz o pedido de vales-presente, o seu e-mail, a linha “De” e, se informados, os nomes e os e-mails dos presenteados são transmitidos ao servidor do site, que cria o pedido e, após o pagamento, envia os vales-presente; os nomes e os e-mails dos presenteados são apagados 30 dias após o envio. O serviço de análise da web recebe o endereço da página (na tela do resultado, junto com o código do resultado: suas respostas, a data do teste e seu nome, se você o informou, mas não o seu e-mail), a origem da visita, o tipo de dispositivo e navegador e uma gravação das ações na página (os campos de nome e e-mail ficam excluídos), e define os próprios cookies. Você pode bloqueá-lo nas configurações do navegador ou com um bloqueador de rastreadores. Não são usados rastreadores publicitários.",
     "pd.cookieChange": "Alterar a escolha de cookies",
 
     "print.title": "Teste DISC para imprimir: questionário com gabarito e pontuação",

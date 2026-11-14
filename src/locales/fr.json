@@ -721,6 +721,7 @@
         ]
       },
       "purchaseCode": "Si vous recevez le profil détaillé grâce à un code d'accès acheté par une organisation ou par une autre personne, nous traitons les mêmes données, à l'exception des informations de paiement, et nous enregistrons l'utilisation du code. À la personne qui a acheté le code, nous indiquons seulement si le code a été utilisé et à quelle date : votre résultat, votre rapport et votre adresse e-mail ne lui sont pas transmis. Le traitement a pour base légale le contrat que vous concluez en saisissant le code conformément à nos {offer}.",
+      "purchasePair": "Si vous commandez le rapport « DISC à deux », nous traitons votre adresse e-mail, les informations relatives à la commande, les noms et les résultats au test des deux personnes figurant dans le lien de comparaison, votre réponse à la question sur votre relation et, si vous l'avez indiquée, l'adresse e-mail de la deuxième personne, à laquelle nous envoyons une copie du rapport. La deuxième personne accepte, en cochant une case sur le site, que son résultat vous soit montré et utilisé pour le rapport ; en indiquant son adresse, vous confirmez qu'elle accepte de recevoir une copie. Le texte du rapport est rédigé avec l'aide d'une IA, uniquement à partir de données anonymisées : les profils et les scores, sans noms, adresses ni codes de résultat. Nous supprimons les codes de résultat et l'adresse de la deuxième personne 30 jours après l'envoi du rapport, ou au bout de 7 jours si la commande n'a pas été payée ; les informations relatives à la commande sont conservées de la même manière que celles de la commande du profil détaillé. Le traitement a pour base légale le contrat conclu conformément à nos {offer} et le consentement de la deuxième personne.",
       "purchaseGift": "Si vous achetez des bons cadeaux, nous traitons votre adresse e-mail, les informations relatives à la commande (date, montant, numéro et statut du paiement), la mention « De la part de » et, si vous les avez indiqués, les noms et adresses e-mail des bénéficiaires. Votre adresse e-mail et les informations relatives à la commande nous servent à vous envoyer les bons, à répondre à vos demandes et à procéder à un éventuel remboursement ; elles sont conservées de la même manière que celles de la commande du profil détaillé. Le nom d'un bénéficiaire est imprimé sur son bon, et un seul e-mail, contenant son bon, est envoyé à son adresse ; nous supprimons les noms et adresses des bénéficiaires 30 jours après l'envoi des bons, ou au bout de 7 jours si la commande n'a pas été payée. En indiquant les données des bénéficiaires, vous confirmez qu'ils acceptent de recevoir un bon cadeau. Le traitement a pour base légale le contrat conclu conformément à nos {offer}, dont les bénéficiaires des bons sont les tiers bénéficiaires. Le bénéficiaire qui saisit le code de son bon sur le site reçoit le profil détaillé dans les mêmes conditions qu'avec un code d'accès : à la personne qui a offert le bon, nous indiquons seulement s'il a été utilisé et à quelle date."
     },
     "consentDoc": {
@@ -1832,6 +1833,19 @@
       }
     },
     "offer": {
+      "pairSection": {
+        "h": "12. Rapport « DISC à deux »",
+        "p": [
+          "12.1. Aux présentes conditions, le Prestataire fournit également le service « DISC à deux » (ci-après « le Rapport à deux ») : il établit sous forme électronique une analyse des profils DISC de deux personnes, le Client et un second participant, ainsi que de leur façon de travailler et de communiquer ensemble, et l'envoie au Client. Les dispositions des présentes conditions relatives au Service s'appliquent au Rapport à deux, sauf disposition contraire du présent article.",
+          "12.2. Le Rapport à deux est établi à partir des résultats du Test de deux personnes : le Client et le second participant, qui a passé le Test et a accepté, en cochant une case sur le Site, que son résultat soit montré au Client et utilisé pour le Rapport à deux. Le Client peut être l'un ou l'autre des deux participants.",
+          "12.3. Le prix du Rapport à deux est indiqué sur le Site et sur la page de paiement ; un prix réduit peut être proposé au Client qui a déjà payé le Profil détaillé avec la même adresse e-mail. Le Rapport à deux est payé intégralement avant le début de sa préparation, selon les modalités prévues aux articles 3.2 à 3.5.",
+          "12.4. Le Rapport à deux est préparé après le paiement et envoyé à l'adresse e-mail du Client au plus tard 24 heures après le paiement. Si le Client a indiqué l'adresse e-mail du second participant, une copie du Rapport à deux lui est également envoyée ; en indiquant cette adresse, le Client confirme que le second participant accepte de recevoir cet e-mail. Le Rapport à deux est réputé fourni au moment de l'envoi de l'e-mail au Client.",
+          "12.5. Le texte du Rapport à deux est rédigé au moyen d'un système d'intelligence artificielle, selon les règles du Prestataire, à partir de données anonymisées : les profils et les scores du Test, sans noms, adresses e-mail ni codes de résultat ; une personne le lit avant l'envoi. Le Rapport à deux décrit un style de comportement ; il ne constitue ni une évaluation de la compatibilité des participants, ni un avis psychologique, ni un fondement pour des décisions d'embauche, de licenciement ou de rémunération.",
+          "12.6. Le Client peut renoncer au Rapport à deux tant que celui-ci ne lui a pas été envoyé ; la somme versée lui est alors intégralement remboursée. Si le Rapport à deux n'est pas envoyé dans le délai prévu à l'article 12.4, le Client peut exiger le remboursement intégral de la somme versée. Pour le reste, l'article 5 s'applique au Rapport à deux.",
+          "12.7. Le Rapport à deux est destiné à l'usage personnel des deux participants ; pour le reste, l'article 6 s'applique.",
+          "12.8. Pour préparer le Rapport à deux, le Prestataire traite l'adresse e-mail du Client, les noms et les résultats du Test des deux participants, l'adresse e-mail du second participant (si elle est indiquée) et le choix du Client quant à la relation qui unit les participants. Les codes de résultat et l'adresse du second participant sont supprimés 30 jours calendaires après l'envoi du Rapport à deux (7 jours pour une commande non payée). Pour en savoir plus, consultez la page « {privacy} »."
+        ]
+      },
       "title": "Conditions générales de vente — profil DISC détaillé et kit de l'animateur",
       "description": "Conditions générales de vente du service payant « Profil DISC détaillé » et du kit de l'animateur DISC sur disc-test.org : prix, paiement et envoi, remboursement, droits sur les contenus.",
       "h1": "Conditions générales de vente",
@@ -1980,6 +1994,12 @@
       ]
     },
     "refund": {
+      "pairSection": {
+        "h": "Rapport « DISC à deux »",
+        "p": [
+          "Avant l'envoi du rapport à deux, la somme versée vous est intégralement remboursée sur simple demande. Si le rapport ne vous parvient pas dans les 24 heures qui suivent le paiement, vous pouvez également obtenir un remboursement intégral. Après l'envoi, la somme versée pour un rapport dûment préparé n'est pas remboursée ; nous corrigeons dans un délai de trois jours ouvrés les défauts éventuels : le fichier ne s'ouvre pas, le rapport contient les données d'autres personnes, son contenu ne correspond pas à la description. Indiquez dans votre demande le numéro de commande : il figure dans l'e-mail de confirmation du paiement."
+        ]
+      },
       "title": "Politique de remboursement — profil DISC détaillé et kit de l'animateur",
       "description": "Quand et comment obtenir le remboursement du profil DISC détaillé et du kit de l'animateur sur disc-test.org : cas de remboursement, demande, délais.",
       "h1": "Politique de remboursement",
@@ -2537,6 +2557,226 @@
         "title": "Découvrez votre couleur DISC",
         "text": "Le test révèle votre couleur dominante et votre couleur secondaire, leur intensité en pourcentage et ce que vous pouvez en faire. 24 blocs, environ 10 minutes, sans inscription.",
         "button": "Découvrir ma couleur"
+      }
+    },
+    "pair": {
+      "title": "DISC à deux — un rapport sur deux personnes d'après le test DISC",
+      "description": "Un rapport sur deux personnes d'après leurs résultats au test DISC : comment vous vous percevez mutuellement, où naîtront les frictions et comment vous mettre d'accord, au travail comme dans la vie privée. Rédigé pour votre duo, il arrive dans les 24 heures.",
+      "name": "Rapport « DISC à deux »",
+      "eyebrow": "Nouveau rapport",
+      "h1": "DISC à deux",
+      "lead": "Un rapport sur deux personnes, établi d'après leurs résultats au test DISC : comment vous vous percevez mutuellement, où naîtront les frictions et comment vous mettre d'accord, au travail comme dans la vie privée. Il est rédigé pour votre duo, à partir des quatre échelles de vos deux profils.",
+      "facts": [
+        "Environ 22 pages en PDF",
+        "Travail et vie privée",
+        "Dans les 24 heures après le paiement",
+        "{price} €, ou {owner} € si vous avez déjà acheté le rapport détaillé"
+      ],
+      "cta": "Inviter la deuxième personne",
+      "ctaTest": "Passer le test",
+      "howTitle": "Comment ça marche",
+      "how": [
+        ["Passez le test et invitez la deuxième personne", "Le bouton « Inviter » se trouve sur l'écran de votre résultat et sur cette page : vous pouvez envoyer le lien dans une messagerie ou le copier."],
+        ["La deuxième personne passe le test", "Gratuitement, en 10 minutes environ. À la fin, elle coche la case qui vous permet de voir son résultat : sans cette case, pas de comparaison."],
+        ["La comparaison et le rapport", "La page de comparaison présente vos deux profils côte à côte et une description gratuite de votre duo. Vous pouvez y commander le rapport : il arrive par e-mail dans les 24 heures, et une copie peut être envoyée à la deuxième personne."]
+      ],
+      "insideTitle": "Au sommaire",
+      "inside": [
+        ["Deux profils côte à côte", "vos échelles sur un même graphique : où vous vous ressemblez, où vous différez le plus et ce que cela signifie pour votre duo."],
+        ["Ce que vous vous apportez", "en quoi vous vous complétez et dans quelles situations votre duo donne le meilleur de lui-même."],
+        ["Comment vous vous percevez", "ce que chaque personne remarque chez l'autre et ce qu'il y a vraiment derrière."],
+        ["Cinq situations de friction", "à quoi elles ressemblent au travail et à la maison, ce que vit chaque personne et ce qui aide."],
+        ["Se parler, décider, gérer les désaccords", "des règles et des phrases toutes prêtes pour chaque personne, les décisions à deux et la façon d'arrêter un désaccord."],
+        ["Travail et vie privée", "des sections distinctes pour des collègues ou un responsable et un membre de son équipe, et pour un couple, des amis ou des proches."],
+        ["Fiches pratiques", "« Notre accord », un plan sur 30 jours à deux et l'essentiel sur une page."]
+      ],
+      "sheetsTitle": "Pages de l'exemple",
+      "sheetAlt": "Page {n} de l'exemple de rapport « DISC à deux »",
+      "forTitle": "Pour qui",
+      "for": [
+        ["Collègues", "Comment vous répartir le travail, mener les réunions et débattre sur le fond sans vous blesser."],
+        ["Responsable et membre de l'équipe", "Comment confier les tâches, faire des retours et exprimer un désaccord."],
+        ["Couple", "Vie quotidienne, argent, loisirs, attentions et vexations : comment vos styles se manifestent à la maison."],
+        ["Amis et proches", "Comment éviter que la relation se résume à « une personne décide, l'autre s'adapte »."]
+      ],
+      "madeTitle": "Comment le rapport est préparé",
+      "made": "Le rapport est rédigé pour votre duo, et non assemblé à partir de morceaux tout faits. Le texte est écrit par une IA selon les règles de la rédaction, à partir de données anonymisées : les profils et les scores des deux personnes, sans noms ni adresses. Un programme vérifie le texte et assemble le PDF avec vos noms, puis une personne lit le rapport en entier avant l'envoi. Pour en savoir plus, consultez la page {howMade}.",
+      "limits": "Le rapport décrit un style de comportement, et non des sentiments ou des capacités. Il n'évalue pas la compatibilité et ne convient pas à des décisions d'embauche, de licenciement ou de rémunération.",
+      "inviteTitle": "Inviter la deuxième personne",
+      "inviteText": "Envoyez le lien à la personne avec qui vous voulez comparer vos résultats. Elle verra votre nom et votre résultat de synthèse.",
+      "inviteNoTest": "Passez d'abord le test : le bouton « Inviter » apparaîtra sur l'écran de votre résultat.",
+      "inviteBtn": "Inviter",
+      "inviteMsg": "On compare nos profils DISC ? Il suffit de passer le test, et on verra comment on travaille et on communique ensemble. Invitation de {name} :",
+      "faqTitle": "Questions fréquentes",
+      "faq": [
+        {
+          "q": "Et si la deuxième personne ne veut pas passer le test ?",
+          "a": "Dans ce cas, il n'y aura pas de rapport à deux : il repose uniquement sur les résultats des deux personnes, et c'est la deuxième personne qui décide de montrer ou non son résultat. Vous pouvez inviter quelqu'un d'autre."
+        },
+        {
+          "q": "Qui verra mon résultat ?",
+          "a": "La personne à qui vous avez envoyé l'invitation ou le lien de comparaison : elle verra votre nom et votre résultat de synthèse. Votre e-mail ne figure pas dans les liens. Le rapport est envoyé à la personne qui l'a commandé et, si cette personne a indiqué son adresse, à la deuxième personne."
+        },
+        {
+          "q": "Combien coûte le rapport et quand arrive-t-il ?",
+          "a": "{price} €, ou {owner} € si vous avez déjà acheté le rapport détaillé avec cette adresse e-mail. Le rapport arrive par e-mail dans les 24 heures qui suivent le paiement : il est rédigé pour votre duo, et une personne le lit avant l'envoi."
+        },
+        {
+          "q": "Le rapport convient-il à un couple, et pas seulement à des collègues ?",
+          "a": "Oui. Le rapport comporte des sections sur le travail et sur la vie privée ; lors de la commande, vous pouvez indiquer la nature de votre relation, et le rapport mettra l'accent dessus."
+        }
+      ],
+      "refundLink": "politique de remboursement",
+      "howMadeLink": "« Comment sont préparés les rapports »",
+      "services": {
+        "name": "DISC à deux",
+        "text": "Un rapport sur deux personnes d'après leurs résultats au test DISC : comment vous vous percevez mutuellement, où naîtront les frictions et comment vous mettre d'accord au travail et dans la vie privée. Il arrive dans les 24 heures.",
+        "more": "En savoir plus sur le rapport à deux",
+        "price": "{price} €"
+      },
+      "invite": {
+        "eyebrow": "Invitation",
+        "title": "{name} vous invite à passer le test DISC",
+        "text": "Le test est gratuit et prend environ 10 minutes. Ensuite, vous verrez votre résultat et, si vous l'acceptez, la comparaison de vos deux profils : comment vous travaillez et communiquez ensemble.",
+        "profile": "{name} — profil « {profile} »",
+        "start": "Passer le test",
+        "haveTitle": "Vous avez déjà passé le test sur cet appareil ?",
+        "haveText": "Vous pouvez comparer avec ce résultat sans repasser le test.",
+        "consent": "J'accepte que mon résultat et mon nom soient montrés à la personne qui m'invite ({name}) et utilisés pour le rapport « DISC à deux » s'il est commandé",
+        "compare": "Comparer avec mon résultat",
+        "needConsent": "Cochez la case de consentement pour voir la comparaison.",
+        "bad": "Le lien d'invitation est endommagé ou incomplet. Demandez qu'on vous le renvoie."
+      },
+      "result": {
+        "eyebrow": "DISC à deux",
+        "title": "Passez le test à deux : avec un collègue, votre partenaire ou un ami",
+        "text": "Invitez une deuxième personne à passer le test, et vous découvrirez comment mieux fonctionner à deux :",
+        "points": [
+          "dans quelles tâches vous êtes plus efficaces ensemble et lesquelles il vaut mieux répartir",
+          "où naîtront les frictions et ce qui aide à les dépasser",
+          "comment vous parler pour que chaque personne soit entendue, avec des phrases toutes prêtes pour vous deux",
+          "comment prendre des décisions communes et arrêter un désaccord avant qu'il ne prenne de l'ampleur",
+          "ce qu'il faut prendre en compte à deux, au travail et dans la vie privée"
+        ],
+        "button": "Inviter la deuxième personne",
+        "more": "Ce que contient le rapport",
+        "dlgTitle": "Inviter à passer le test",
+        "compareTitle": "Comparer vos résultats : vous et {name}",
+        "compareText": "{name} vous invite à comparer vos résultats au test DISC.",
+        "compareBtn": "Voir la comparaison",
+        "dismiss": "Ne pas comparer"
+      },
+      "compat": {
+        "eyebrow": "DISC à deux",
+        "title": "Et chez vous deux, comment ça se passe ?",
+        "text": "Cette description vaut pour n'importe quel duo dont les styles dominants sont {a} et {b}.",
+        "textSame": "Cette description vaut pour n'importe quel duo dont le style dominant est {a} chez les deux personnes.",
+        "more": "Comment les choses se passent précisément chez vous deux, d'après les quatre échelles de vos deux profils, avec des situations de friction, des phrases toutes prêtes et des sections sur le travail et la vie privée : c'est ce qu'analyse le rapport « DISC à deux ».",
+        "note": "Les deux personnes passent le test, puis vous commandez le rapport : environ 22 pages en PDF dans les 24 heures, pour {price} €.",
+        "button": "Inviter la deuxième personne",
+        "link": "En savoir plus sur le rapport"
+      },
+      "compare": {
+        "title": "{a} et {b}",
+        "lead": "Deux profils DISC côte à côte. Cette comparaison est gratuite ; le rapport « DISC à deux » analyse comment les choses se passent précisément chez vous deux.",
+        "legend": "Barre pleine : {a} ; barre en contour : {b}. Le milieu de l'échelle, 50 %, est marqué d'un trait.",
+        "profiles": "Profils",
+        "pairTitle": "Votre duo en bref",
+        "closeTitle": "Là où vous êtes proches",
+        "close": "Sur les échelles {list}, l'écart est inférieur à 15 points : c'est là que vous vous comprenez le plus facilement.",
+        "closeNone": "Aucune échelle n'est vraiment proche : il est d'autant plus utile de convenir de règles à l'avance.",
+        "gapTitle": "Là où l'écart est le plus grand",
+        "gap": "Sur l'échelle {k} : {a} — {pa} %, {b} — {pb} %. Ce que cet écart signifie pour vous deux est analysé dans le rapport.",
+        "gapSmall": "L'écart le plus marqué porte sur l'échelle {k}, et il reste faible : {a} — {pa} %, {b} — {pb} %.",
+        "only": {
+          "title": "Ce qui n'est pas dans la comparaison gratuite, mais figure dans le rapport",
+          "text": "La phrase sur votre duo, plus haut, est la même pour toutes les personnes qui ont ces styles dominants. Le rapport, lui, est rédigé pour vous deux :",
+          "items": [
+            ["Rédigé pour vous deux", "d'après les quatre échelles de vos deux profils et vos styles secondaires, et pas seulement d'après le style dominant"],
+            ["Cinq situations de friction", "à quoi chacune ressemble au travail et à la maison, ce que vit chaque personne et ce qui aide"],
+            ["Des phrases toutes prêtes pour chaque personne", "des règles pour se parler et s'écrire, et une phrase pour engager la conversation, séparément pour chaque personne"],
+            ["Décider ensemble et arrêter un désaccord", "trois questions à se poser avant une décision commune, la façon dont un désaccord s'envenime chez vous et comment l'arrêter"],
+            ["Travail et vie privée", "des sections distinctes, qui tiennent compte de votre relation : collègues, responsable et membre de l'équipe, couple, amis ou proches"],
+            ["Fiches pratiques", "« Notre accord », un plan sur 30 jours à deux et l'essentiel sur une page"],
+            ["Environ 22 pages en PDF dans les 24 heures", "le rapport est rédigé pour votre commande, et une personne le lit avant l'envoi"]
+          ]
+        },
+        "shareTitle": "Envoyez cette page à la deuxième personne",
+        "shareText": "Le lien ouvre cette même comparaison. Il contient vos deux noms et vos résultats de synthèse, sans e-mail.",
+        "copy": "Copier le lien",
+        "copied": "Lien copié",
+        "share": "Partager",
+        "bad": "Le lien de comparaison est endommagé ou incomplet. Demandez qu'on vous le renvoie.",
+        "same": "Le lien contient deux fois le même résultat : il n'y a rien à comparer.",
+        "aria": "{k} : {a} % et {b} %",
+        "pct": "{n} %",
+        "profile": "{key} « {name} »",
+        "sep": ", ",
+        "and": " et ",
+        "shareMsg": "{title} — DISC :"
+      },
+      "order": {
+        "title": "Commander le rapport",
+        "emailLabel": "Votre e-mail",
+        "emailHint": "Vous y recevrez le rapport et la confirmation de paiement.",
+        "copyLabel": "E-mail de la deuxième personne",
+        "copyOptional": "(facultatif)",
+        "copyHint": "Nous lui enverrons une copie du rapport. Indiquez cette adresse seulement si la personne accepte de recevoir un e-mail.",
+        "relTitle": "Votre relation",
+        "relHint": "Le rapport comporte des sections sur le travail et sur la vie privée ; votre réponse permet de mettre l'accent au bon endroit.",
+        "rels": [
+          ["colleagues", "Collègues au même niveau"],
+          ["boss", "Relation hiérarchique"],
+          ["couple", "Couple"],
+          ["friends", "Amis"],
+          ["family", "Famille"],
+          ["", "Je préfère ne pas répondre"]
+        ],
+        "leadTitle": "Qui dirige ?",
+        "priceNote": "{owner} € si vous avez déjà acheté le rapport détaillé avec cet e-mail : le prix sera recalculé après le clic sur « Acheter ».",
+        "agree": "J'accepte les {offer}",
+        "buy": "Acheter pour {price} €",
+        "wait": "Création de la commande…",
+        "when": "Le rapport arrivera par e-mail dans les 24 heures qui suivent le paiement.",
+        "badEmail": "Vérifiez l'adresse e-mail.",
+        "badCopy": "Vérifiez l'adresse de la deuxième personne.",
+        "needAgree": "Cochez la case d'acceptation des conditions.",
+        "needLead": "Indiquez qui dirige.",
+        "priceChanged": "Le rapport détaillé a déjà été acheté avec cet e-mail : le prix est donc de {price} €. Cliquez de nouveau sur « Acheter ».",
+        "error": "Impossible de créer la commande. Réessayez ou écrivez-nous à {email}."
+      },
+      "status": {
+        "wait": "Vérification du paiement…",
+        "ok": "Paiement reçu. Le rapport « DISC à deux » arrivera à votre adresse e-mail dans les 24 heures ; l'e-mail de confirmation de la commande est déjà dans votre boîte de réception.",
+        "sent": "Le rapport a été envoyé à votre adresse e-mail.",
+        "fail": "Le paiement n'a pas abouti et votre compte n'a pas été débité. Vous pouvez réessayer sur la page de comparaison.",
+        "unknown": "Impossible de connaître l'état du paiement. Si votre compte a été débité, le rapport arrivera dans les 24 heures ; pour toute question : {email}."
+      },
+      "mail": {
+        "hello": "Bonjour,",
+        "paidSubject": "Paiement reçu : votre rapport « DISC à deux » dans les 24 heures",
+        "paidIntro": "Merci d'avoir commandé le rapport « DISC à deux ». Les deux personnes : {a} et {b}.",
+        "paidWhen": "Le rapport arrivera à cette adresse dans les 24 heures qui suivent le paiement.",
+        "paidCopy": "Une copie sera aussi envoyée à la deuxième personne, à l'adresse que vous avez indiquée.",
+        "paidMeanwhile": "Le rapport est rédigé pour votre duo, d'après toutes les échelles de vos deux profils et en tenant compte de votre relation. Une personne le lit avant l'envoi.",
+        "question": "Pour toute question, répondez à cet e-mail ou écrivez à {email}.",
+        "bye": "L'équipe disc-test.org",
+        "order": "Commande {order} ·",
+        "subject": "Rapport « DISC à deux » : {a} et {b}",
+        "intro": "Votre rapport « DISC à deux » est prêt : vous le trouverez en pièce jointe (PDF). Les deux personnes : {a} et {b}.",
+        "copyIntro": "Voici une copie du rapport « DISC à deux », en pièce jointe (PDF). Les deux personnes : {a} et {b}. Le rapport a été commandé sur disc-test.org d'après les résultats au test DISC : les deux personnes ont accepté de montrer leur résultat pour ce rapport.",
+        "howTitle": "Comment le lire",
+        "how": [
+          "D'abord séparément, puis ensemble.",
+          "Les sections 1 à 8 portent sur vous deux dans tous les domaines, la 9 sur le travail, la 10 sur la vie privée.",
+          "Commencez par la section 11, « Notre accord » : vingt minutes à deux."
+        ],
+        "copySent": "Une copie du rapport a été envoyée à la deuxième personne.",
+        "copyWhy": "Vous recevez cet e-mail parce que votre adresse a été indiquée lors de la commande du rapport. Il ne s'agit pas d'un abonnement : vous ne recevrez pas d'autres e-mails.",
+        "noName": [
+          "personne 1",
+          "personne 2"
+        ]
       }
     },
     "gift": {
@@ -3476,6 +3716,12 @@
       }
     },
     "howMade": {
+      "pair": {
+        "h": "Rapport « DISC à deux »",
+        "p": [
+          "Le rapport à deux n'est pas assemblé à partir de textes écrits à l'avance : son texte est rédigé pour chaque commande. Il est écrit par une IA selon les règles de la rédaction, à partir de données anonymisées : les profils et les scores des deux personnes, sans noms, adresses ni codes de résultat. Un programme vérifie le texte (longueur des sections, absence de formes masculines ou féminines, formulations interdites, chiffres) et assemble le PDF avec les noms des deux personnes, puis une personne lit le rapport en entier avant l'envoi. C'est pourquoi le rapport à deux n'arrive pas juste après le paiement, mais dans les 24 heures."
+        ]
+      },
       "title": "Rapports DISC préparés par l'IA : automatiques et impartiaux",
       "description": "Rapports DISC automatiques : textes écrits par une IA selon les règles de la rédaction, rapport assemblé d'après vos réponses, sans intervention humaine.",
       "h1": "Comment sont préparés les rapports DISC",
@@ -3829,6 +4075,7 @@
     "nav.howMade": "Préparation des rapports",
     "nav.business": "Pour les organisations",
     "nav.gift": "Bons cadeaux",
+    "nav.pair": "DISC à deux",
 
     "pages.styles.title": "Types de personnalité DISC : les quatre styles D, I, S, C",
     "pages.styles.description": "Les quatre types de personnalité DISC : dominance, influence, stabilité, conformité. Traits, points forts, axes de progression, motivation, stress.",
@@ -3957,7 +4204,7 @@
     "pd.consentLink": "consentement au traitement des données personnelles",
     "pd.required": "Cochez la case de consentement au traitement des données personnelles : sans ce consentement, nous ne pouvons pas accepter vos données.",
     "pd.cookieAsk": "Ce site conserve votre progression, votre résultat et la langue choisie dans le stockage local du navigateur. Avec votre consentement, un service d'analyse d'audience collectera des statistiques de visite anonymisées et un enregistrement des actions sur la page pour nous aider à améliorer le site. Votre nom, votre e-mail et votre résultat ne sont pas transmis au service d'analyse.",
-    "pd.cookieDetails": "Conservés dans le navigateur : le nom et l'e-mail, si vous les avez indiqués ; vos réponses et la progression inachevée ; votre dernier résultat ; l'heure à laquelle vous avez terminé le test pour la première fois, pour le délai du prix spécial du rapport ; le code d'un bon cadeau, si vous avez ouvert le site via le lien d'un bon ; la langue choisie ; une marque indiquant que vous avez vu cet avis. Ces données restent sur votre appareil et sont supprimées lorsque vous effacez les données du site. L'hébergeur reçoit les données techniques habituelles de la requête. La première fois que vous ouvrez le site dans la journée, une marque de visite anonyme est envoyée au serveur du site : uniquement la langue de la version du site ; le serveur l'enregistre avec son heure d'arrivée, et votre navigateur garde la date pour ne pas la renvoyer le même jour. Ces marques nous servent à compter combien de personnes visitent le site. Lorsque vous commencez le test, une marque de début anonyme est envoyée au serveur du site : uniquement la langue de la version du site. Lorsque vous terminez le test, un enregistrement anonyme destiné aux statistiques générales est envoyé au serveur du site : le profil obtenu et la langue de la version du site, sans nom, e-mail ni réponses. Lorsque vous cliquez sur « Enregistrer en PDF », vos réponses et la date du test — sans nom ni e-mail — sont envoyées au serveur du site, qui génère le fichier du rapport de synthèse, vous le renvoie et ne conserve rien. Lorsque vous envoyez le résultat par e-mail, le nom, l'e-mail et les réponses sont transmis au serveur du site, qui vous envoie l'e-mail avec le résultat et enregistre le nom, l'e-mail, la date et le résultat dans la base de résultats du propriétaire du site. Lorsque vous vous abonnez à la newsletter sur la page d'accueil, l'e-mail et la langue de la version du site sont transmis au serveur du site, qui vous envoie un e-mail avec un lien de confirmation et enregistre l'adresse dans la même base ; si l'abonnement n'est pas confirmé, l'adresse est supprimée au bout de 7 jours. Lorsque vous demandez à recevoir le questionnaire par e-mail sur la page « Test en PDF », l'e-mail et la langue de la version du site sont transmis au serveur du site, qui vous envoie l'e-mail avec le questionnaire et conserve la trace de votre consentement avec l'adresse ; si vous avez coché la case de consentement à la newsletter, l'adresse est aussitôt enregistrée dans la liste des abonnés, et l'e-mail contient un lien de désabonnement. Lorsque vous commandez des bons cadeaux, votre e-mail, la mention « De la part de » et, si vous les avez indiqués, les noms et adresses e-mail des bénéficiaires sont transmis au serveur du site, qui crée la commande et, après le paiement, envoie les bons ; les noms et adresses des bénéficiaires sont supprimés 30 jours après l'envoi. Le service d'analyse d'audience reçoit l'adresse de la page (sur l'écran du résultat, avec le code du résultat : vos réponses, la date du test et votre nom si vous l'avez indiqué, mais pas votre e-mail), la provenance, le type d'appareil et de navigateur, un enregistrement des actions sur la page (les champs nom et e-mail en sont exclus) et dépose ses propres cookies. Vous pouvez le bloquer dans les paramètres du navigateur ou avec un bloqueur de traceurs. Aucun traceur publicitaire n'est utilisé.",
+    "pd.cookieDetails": "Conservés dans le navigateur : le nom et l'e-mail, si vous les avez indiqués ; vos réponses et la progression inachevée ; votre dernier résultat ; l'heure à laquelle vous avez terminé le test pour la première fois, pour le délai du prix spécial du rapport ; le code d'un bon cadeau, si vous avez ouvert le site via le lien d'un bon ; l'invitation « DISC à deux », c'est-à-dire le nom et le résultat de la personne qui vous invite, si vous avez ouvert le site via son lien ; la langue choisie ; une marque indiquant que vous avez vu cet avis. Ces données restent sur votre appareil et sont supprimées lorsque vous effacez les données du site. L'hébergeur reçoit les données techniques habituelles de la requête. La première fois que vous ouvrez le site dans la journée, une marque de visite anonyme est envoyée au serveur du site : uniquement la langue de la version du site ; le serveur l'enregistre avec son heure d'arrivée, et votre navigateur garde la date pour ne pas la renvoyer le même jour. Ces marques nous servent à compter combien de personnes visitent le site. Lorsque vous commencez le test, une marque de début anonyme est envoyée au serveur du site : uniquement la langue de la version du site. Lorsque vous terminez le test, un enregistrement anonyme destiné aux statistiques générales est envoyé au serveur du site : le profil obtenu et la langue de la version du site, sans nom, e-mail ni réponses. Lorsque vous cliquez sur « Enregistrer en PDF », vos réponses et la date du test — sans nom ni e-mail — sont envoyées au serveur du site, qui génère le fichier du rapport de synthèse, vous le renvoie et ne conserve rien. Lorsque vous envoyez le résultat par e-mail, le nom, l'e-mail et les réponses sont transmis au serveur du site, qui vous envoie l'e-mail avec le résultat et enregistre le nom, l'e-mail, la date et le résultat dans la base de résultats du propriétaire du site. Lorsque vous vous abonnez à la newsletter sur la page d'accueil, l'e-mail et la langue de la version du site sont transmis au serveur du site, qui vous envoie un e-mail avec un lien de confirmation et enregistre l'adresse dans la même base ; si l'abonnement n'est pas confirmé, l'adresse est supprimée au bout de 7 jours. Lorsque vous demandez à recevoir le questionnaire par e-mail sur la page « Test en PDF », l'e-mail et la langue de la version du site sont transmis au serveur du site, qui vous envoie l'e-mail avec le questionnaire et conserve la trace de votre consentement avec l'adresse ; si vous avez coché la case de consentement à la newsletter, l'adresse est aussitôt enregistrée dans la liste des abonnés, et l'e-mail contient un lien de désabonnement. Lorsque vous commandez des bons cadeaux, votre e-mail, la mention « De la part de » et, si vous les avez indiqués, les noms et adresses e-mail des bénéficiaires sont transmis au serveur du site, qui crée la commande et, après le paiement, envoie les bons ; les noms et adresses des bénéficiaires sont supprimés 30 jours après l'envoi. Le service d'analyse d'audience reçoit l'adresse de la page (sur l'écran du résultat, avec le code du résultat : vos réponses, la date du test et votre nom si vous l'avez indiqué, mais pas votre e-mail), la provenance, le type d'appareil et de navigateur, un enregistrement des actions sur la page (les champs nom et e-mail en sont exclus) et dépose ses propres cookies. Vous pouvez le bloquer dans les paramètres du navigateur ou avec un bloqueur de traceurs. Aucun traceur publicitaire n'est utilisé.",
     "pd.cookieChange": "Modifier le choix des cookies",
 
     "print.title": "Test DISC à imprimer : questionnaire, clé et calcul du score",

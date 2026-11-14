@@ -719,6 +719,7 @@
         ]
       },
       "purchaseCode": "Genişletilmiş profili bir kurumun ya da başka bir kişinin satın aldığı bir erişim koduyla alıyorsanız ödeme bilgileri dışında aynı verileri işler ve kodun kullanıldığını kaydederiz. Kodu satın alan kişiye yalnızca kodun kullanılıp kullanılmadığını ve ne zaman kullanıldığını bildiririz: sonucunuz, raporunuz ve e-posta adresiniz ona iletilmez. Hukuki dayanak, kodu {offer} uyarınca girerek kurduğunuz sözleşmedir.",
+      "purchasePair": "“İki kişilik DISC” raporunu sipariş ederseniz e-posta adresinizi, sipariş bilgilerini, karşılaştırma bağlantısındaki iki katılımcının adlarını ve test sonuçlarını, aranızdaki ilişkiye dair seçiminizi ve — belirttiyseniz — rapor kopyası için ikinci katılımcının adresini işleriz. İkinci katılımcı, sonucunun gösterilmesine ve rapor için kullanılmasına sitedeki bir işaretle onay verir; onun adresini belirterek kopyayı almayı kabul ettiğini teyit edersiniz. Rapor metni yapay zekâ yardımıyla, yalnızca anonim verilere dayanarak hazırlanır: adlar, adresler ve sonuç kodları olmadan profiller ve puanlar. Sonuç kodlarını ve ikinci katılımcının adresini raporun gönderilmesinden 30 gün sonra, ödenmemiş siparişlerde ise 7 gün sonra sileriz; sipariş bilgileri, genişletilmiş profil siparişinin bilgileriyle aynı şekilde saklanır. Hukuki dayanak, {offer} uyarınca kurulan sözleşme ve ikinci katılımcının onayıdır.",
       "purchaseGift": "Hediye sertifikası satın alırsanız e-posta adresinizi, sipariş bilgilerini (tarih, tutar, ödeme numarası ve ödeme durumu), “Kimden” satırını ve — belirttiyseniz — alıcıların adlarını ve e-posta adreslerini işleriz. E-posta adresiniz ve sipariş bilgileri, sertifikaları size göndermek, başvurunuzu yanıtlamak ve iade işlemini yapmak için gereklidir; bunlar genişletilmiş profil siparişinin bilgileriyle aynı şekilde saklanır. Alıcının adı kendi sertifikasına basılır, alıcının adresine ise yalnızca kendi sertifikasını içeren tek bir e-posta gönderilir; alıcıların adlarını ve adreslerini sertifikalar gönderildikten 30 gün sonra, ödenmemiş siparişlerde ise 7 gün sonra sileriz. Alıcıların bilgilerini belirterek onların sertifika almayı kabul ettiğini teyit edersiniz. Hukuki dayanak, {offer} uyarınca kurulan ve sertifika alıcılarının yararına olan sözleşmedir. Sertifika kodunu sitede giren alıcı, genişletilmiş profili erişim koduyla alınan profille aynı şekilde alır: sertifikayı hediye eden kişiye yalnızca sertifikanın kullanılıp kullanılmadığını ve ne zaman kullanıldığını bildiririz."
     },
     "consentDoc": {
@@ -880,6 +881,19 @@
       }
     },
     "offer": {
+      "pairSection": {
+        "h": "12. “İki kişilik DISC” raporu",
+        "p": [
+          "12.1. Hizmet Sağlayıcı, bu teklifin koşullarıyla “İki kişilik DISC” hizmetini de (bundan böyle “İki Kişilik Rapor” olarak anılır) sunar: iki kişinin — Müşteri’nin ve ikinci katılımcının — DISC profillerini ve bu kişilerin birlikte çalışmasını ve iletişimini ele alan bir değerlendirmeyi elektronik ortamda hazırlar ve Müşteri’ye gönderir. Bu bölümde aksi belirtilmedikçe teklifin Hizmet’e ilişkin hükümleri İki Kişilik Rapor’a da uygulanır.",
+          "12.2. İki Kişilik Rapor, iki kişinin Test sonuçlarına göre hazırlanır: Müşteri’nin ve Test’i çözüp Site’deki bir işaretle kendi sonucunun Müşteri’ye gösterilmesini ve İki Kişilik Rapor için kullanılmasını kabul eden ikinci katılımcının. İki katılımcıdan herhangi biri Müşteri olabilir.",
+          "12.3. İki Kişilik Rapor’un ücreti Site’de ve ödeme sayfasında gösterilir; Genişletilmiş Profil’in ücretini daha önce aynı e-posta adresiyle ödemiş olan Müşteri’ye indirimli bir ücret sunulabilir. İki Kişilik Rapor’un ücretinin tamamı, hazırlanmaya başlanmadan önce, 3.2–3.5. maddelerde belirtilen şekilde ödenir.",
+          "12.4. İki Kişilik Rapor ödemeden sonra hazırlanır ve ödeme anından itibaren en geç 24 saat içinde Müşteri’nin e-posta adresine gönderilir. Müşteri ikinci katılımcının e-posta adresini belirttiyse İki Kişilik Rapor’un bir kopyası ona da gönderilir; Müşteri, adresi belirterek ikinci katılımcının e-posta almayı kabul ettiğini teyit eder. İki Kişilik Rapor, e-posta Müşteri’ye gönderildiği anda sunulmuş sayılır.",
+          "12.5. İki Kişilik Rapor’un metni, Hizmet Sağlayıcı’nın kurallarına göre bir yapay zekâ sistemiyle, anonim veriler temelinde hazırlanır: adlar, e-posta adresleri ve sonuç kodları olmadan Test profilleri ve puanları. Rapor gönderilmeden önce bir insan tarafından okunur. İki Kişilik Rapor davranış stilini anlatır; katılımcıların uyumuna ilişkin bir değerlendirme, psikolojik bir uzman görüşü ya da işe alma, işten çıkarma ve ücretle ilgili kararlar için bir dayanak değildir.",
+          "12.6. Müşteri, İki Kişilik Rapor kendisine gönderilmeden önce ondan vazgeçebilir; bu durumda ödediği ücretin tamamı iade edilir. İki Kişilik Rapor 12.4. maddede belirtilen süre içinde gönderilmezse Müşteri, ödediği ücretin tamamının iadesini talep edebilir. Diğer konularda İki Kişilik Rapor’a 5. bölüm uygulanır.",
+          "12.7. İki Kişilik Rapor, iki katılımcının kişisel kullanımı içindir; diğer konularda ona 6. bölüm uygulanır.",
+          "12.8. Hizmet Sağlayıcı, İki Kişilik Rapor’u hazırlamak için Müşteri’nin e-posta adresini, iki katılımcının adlarını ve Test sonuçlarını, ikinci katılımcının e-posta adresini (belirtilmişse) ve Müşteri’nin, katılımcılar arasındaki ilişkiye dair seçimini işler. Sonuç kodları ve ikinci katılımcının adresi, İki Kişilik Rapor gönderildikten 30 takvim günü sonra, ödenmemiş siparişte ise 7 gün sonra silinir. Verilerin işlenmesine ilişkin ayrıntılı bilgi “{privacy}” sayfasında yer alır."
+        ]
+      },
       "title": "Satış koşulları (kamuya açık teklif) — genişletilmiş DISC profili ve Atölye Kiti",
       "description": "disc-test.org sitesindeki ücretli “Genişletilmiş DISC profili” hizmetinin ve DISC Atölye Kiti’nin satış koşulları (kamuya açık teklif): ücret, ödeme, teslim, iade, içerik hakları.",
       "h1": "Satış koşulları (kamuya açık teklif)",
@@ -1028,6 +1042,12 @@
       ]
     },
     "refund": {
+      "pairSection": {
+        "h": "“İki kişilik DISC” raporu",
+        "p": [
+          "İki kişilik rapor size gönderilmeden önce talep ederseniz ödediğiniz ücretin tamamı iade edilir. Rapor ödemeden sonraki 24 saat içinde gelmediyse de ücretin tamamını geri isteyebilirsiniz. Rapor gönderildikten sonra, gereği gibi hazırlanmış bir raporun ücreti iade edilmez; ayıpları (dosya açılmıyor, raporda başka birinin bilgileri yer alıyor, içerik tanımına uymuyor) üç iş günü içinde gideririz. Talebinizde sipariş numarasını belirtin — numara, ödeme onayı e-postasında yer alır."
+        ]
+      },
       "title": "İptal ve iade koşulları — genişletilmiş DISC profili ve Atölye Kiti",
       "description": "disc-test.org sitesindeki genişletilmiş DISC profili ve Atölye Kiti için ödediğiniz ücreti ne zaman ve nasıl geri alabilirsiniz: iade durumları, talep, süreler.",
       "h1": "İptal ve iade koşulları",
@@ -1551,6 +1571,226 @@
         "title": "DISC renginizi öğrenin",
         "text": "Test, ana ve ikincil renginizi, bunların yüzde kaç belirgin olduğunu ve bununla ne yapabileceğinizi gösterir. 24 soru, yaklaşık 10 dakika, kayıt yok.",
         "button": "Rengini öğren"
+      }
+    },
+    "pair": {
+      "title": "İki kişilik DISC — DISC testine göre iki kişi hakkında rapor",
+      "description": "DISC testi sonuçlarına göre iki kişi hakkında bir rapor: birbirinizi nasıl gördüğünüz, sürtüşmenin nerede çıkacağı ve iş yerinde de özel hayatta da nasıl anlaşabileceğiniz. İkiliniz için yazılır, 24 saat içinde gelir.",
+      "name": "“İki kişilik DISC” raporu",
+      "eyebrow": "Yeni rapor",
+      "h1": "İki kişilik DISC",
+      "lead": "İki kişinin DISC testi sonuçlarına dayanan bir rapor: birbirinizi nasıl gördüğünüz, sürtüşmenin nerede çıkacağı ve iş yerinde de özel hayatta da nasıl anlaşabileceğiniz. Rapor, ikinizin dört ölçeğinin tamamına bakılarak sizin ikiliniz için yazılır.",
+      "facts": [
+        "Yaklaşık 22 sayfalık PDF",
+        "İş ve özel hayat",
+        "Ödemeden sonra 24 saat içinde",
+        "{price} USD; daha önce genişletilmiş rapor satın aldıysanız {owner} USD"
+      ],
+      "cta": "İkinci kişiyi davet et",
+      "ctaTest": "Teste başla",
+      "howTitle": "Nasıl işler",
+      "how": [
+        ["Testi çözün ve ikinci kişiyi davet edin", "“Davet et” düğmesi sonuç ekranınızda ve bu sayfada: bağlantıyı bir mesajlaşma uygulamasıyla gönderebilir ya da kopyalayabilirsiniz."],
+        ["İkinci kişi testi çözer", "Ücretsiz, yaklaşık 10 dakika. Sonunda kendi sonucunu size göstermeyi kabul ettiğini işaretler; bu onay olmadan karşılaştırma yapılmaz."],
+        ["Karşılaştırma ve rapor", "Karşılaştırma sayfasında profilleriniz yan yana durur, ikiliniz hakkında ücretsiz bir açıklama da yer alır. Raporu da orada sipariş edebilirsiniz: 24 saat içinde e-postanıza gelir, bir kopyasını ikinci katılımcıya da gönderebilirsiniz."]
+      ],
+      "insideTitle": "Raporda neler var",
+      "inside": [
+        ["İki profil yan yana", "ikinizin ölçekleri tek grafikte: nerede benzediğiniz, nerede en çok ayrıldığınız ve bunun ikiliniz için ne anlama geldiği."],
+        ["Birbirinize kattıklarınız", "birbirinizi nasıl tamamladığınız ve hangi işlerde birlikte en güçlü olduğunuz."],
+        ["Birbirinizi nasıl görüyorsunuz", "her birinizin ötekinde fark ettikleri ve bunların ardında gerçekte ne olduğu."],
+        ["Beş sürtüşme durumu", "iş yerinde ve evde nasıl göründükleri, her birinizin ne hissettiği ve neyin işe yaradığı."],
+        ["Konuşmak, karar vermek, tartışmak", "her biriniz için kurallar ve hazır cümleler, birlikte karar vermek, bir tartışmayı durdurmak."],
+        ["İş ve özel hayat", "iş arkadaşları ile yönetici ve çalışan için, ayrıca çiftler, arkadaşlar ve aileler için ayrı bölümler."],
+        ["Çalışma kâğıtları", "“Aramızdaki anlaşma”, ikiniz için 30 günlük plan ve tek sayfada işin özü."]
+      ],
+      "sheetsTitle": "Örnek sayfalar",
+      "sheetAlt": "“İki kişilik DISC” raporu örneğinin {n}. sayfası",
+      "forTitle": "Kimler için",
+      "for": [
+        ["İş arkadaşları", "İşi nasıl paylaşacağınız, toplantıları nasıl yürüteceğiniz ve birbirinizi kırmadan işe dair nasıl tartışacağınız."],
+        ["Yönetici ve çalışan", "Görev vermek, geri bildirimde bulunmak ve aynı fikirde olmadığınızı söylemek."],
+        ["Çiftler", "Ev düzeni, para, tatil, ilgi ve kırgınlıklar: stilleriniz evde nasıl ortaya çıkıyor."],
+        ["Arkadaşlar ve aile", "İlişkinin “biri karar verir, öteki uyar” düzenine dönüşmemesi için."]
+      ],
+      "madeTitle": "Rapor nasıl hazırlanır",
+      "made": "Rapor hazır parçalardan derlenmez, ikiliniz için yazılır. Metni, editör ekibinin kurallarına göre yapay zekâ yazar ve yalnızca anonim verilere dayanır: ikinizin profilleri ve puanları, adlarınız ve adresleriniz olmadan. Yazılım metni kontrol eder ve adlarınızın yer aldığı PDF’i oluşturur; rapor gönderilmeden önce bir insan onu baştan sona okur. Ayrıntılar {howMade} sayfasında.",
+      "limits": "Rapor duyguları ve yetenekleri değil, davranış stilini anlatır. Uyumunuzu değerlendirmez; işe alma, işten çıkarma ve ücretle ilgili kararlarda kullanılamaz.",
+      "inviteTitle": "İkinci kişiyi davet edin",
+      "inviteText": "Sonuçlarınızı karşılaştırmak istediğiniz kişiye bağlantıyı gönderin. Adınızı ve özet sonucunuzu görecek.",
+      "inviteNoTest": "Önce testi çözün: “Davet et” düğmesi sonuç ekranınızda görünecek.",
+      "inviteBtn": "Davet et",
+      "inviteMsg": "DISC testini çözelim: birlikte nasıl çalıştığımıza ve nasıl iletişim kurduğumuza bakalım. {name} davet ediyor:",
+      "faqTitle": "Sorular",
+      "faq": [
+        {
+          "q": "İkinci kişi testi çözmek istemezse ne olur?",
+          "a": "O zaman iki kişilik rapor hazırlanamaz: rapor yalnızca iki kişinin sonuçlarına dayanır ve sonucunu gösterip göstermeyeceğine ikinci kişi kendisi karar verir. Başka birini davet edebilirsiniz."
+        },
+        {
+          "q": "Sonucumu kim görecek?",
+          "a": "Daveti ya da karşılaştırma bağlantısını gönderdiğiniz kişi: adınızı ve özet sonucunuzu. E-posta adresiniz bağlantılarda yer almaz. Raporu, siparişi veren kişi ve — adresini belirttiyse — ikinci katılımcı alır."
+        },
+        {
+          "q": "Ücreti ne kadar, ne zaman gelir?",
+          "a": "{price} USD; bu e-posta adresiyle daha önce genişletilmiş rapor satın aldıysanız {owner} USD. Rapor, ödemeden sonra 24 saat içinde e-postanıza gelir: ikiliniz için yazılır ve gönderilmeden önce bir insan tarafından okunur."
+        },
+        {
+          "q": "İş arkadaşı değil de çiftsek bize uyar mı?",
+          "a": "Evet. Raporda hem iş hem özel hayat hakkında bölümler var; sipariş verirken aranızdaki ilişkiyi belirtebilirsiniz, rapor da buna ağırlık verir."
+        }
+      ],
+      "refundLink": "iptal ve iade koşulları",
+      "howMadeLink": "“Raporların hazırlanışı”",
+      "services": {
+        "name": "İki kişilik DISC",
+        "text": "DISC testi sonuçlarına göre iki kişi hakkında bir rapor: birbirinizi nasıl gördüğünüz, sürtüşmenin nerede çıkacağı ve iş yerinde de özel hayatta da nasıl anlaşabileceğiniz. 24 saat içinde gelir.",
+        "more": "İki kişilik rapor hakkında daha fazla bilgi",
+        "price": "{price} USD"
+      },
+      "invite": {
+        "eyebrow": "Davet",
+        "title": "{name} sizi DISC testine davet ediyor",
+        "text": "Test ücretsiz, yaklaşık 10 dakika sürer. Ardından kendi sonucunuzu, kabul ederseniz iki profilin karşılaştırmasını da görürsünüz: birlikte nasıl çalıştığınızı ve iletişim kurduğunuzu.",
+        "profile": "{name} — “{profile}” profili",
+        "start": "Teste başla",
+        "haveTitle": "Testi bu cihazda daha önce çözdünüz mü?",
+        "haveText": "Testi yeniden çözmeden o sonuçla karşılaştırabilirsiniz.",
+        "consent": "Sonucumun ve adımın beni davet eden kişiye ({name}) gösterilmesine ve sipariş edilirse “İki kişilik DISC” raporu için kullanılmasına izin veriyorum",
+        "compare": "Sonucumla karşılaştır",
+        "needConsent": "Karşılaştırmayı görmek için onay kutusunu işaretleyin.",
+        "bad": "Davet bağlantısı bozuk ya da eksik. Bağlantının yeniden gönderilmesini isteyin."
+      },
+      "result": {
+        "eyebrow": "İki kişilik DISC",
+        "title": "Testi ikinci bir kişiyle çözün: bir iş arkadaşınızla, partnerinizle ya da bir arkadaşınızla",
+        "text": "İkinci kişiyi teste davet edin ve birlikte nasıl daha verimli çalışıp iletişim kurabileceğinizi öğrenin:",
+        "points": [
+          "hangi işlerde birlikte daha güçlü olduğunuzu, hangilerini bölüşmenin daha iyi olacağını",
+          "sürtüşmenin nerede çıkacağını ve onu aşmaya neyin yardımcı olduğunu",
+          "her birinizin duyulması için birbirinizle nasıl konuşacağınızı: ikiniz için hazır cümleler",
+          "ortak kararları nasıl vereceğinizi ve bir tartışmayı büyümeden nasıl durduracağınızı",
+          "iş yerinde ve özel hayatta ikinizin nelere dikkat etmesi gerektiğini"
+        ],
+        "button": "İkinci kişiyi davet et",
+        "more": "Raporda neler var",
+        "dlgTitle": "Teste davet et",
+        "compareTitle": "Sonuçları karşılaştırın: siz ve {name}",
+        "compareText": "{name} sizi DISC testi sonuçlarınızı karşılaştırmaya davet ediyor.",
+        "compareBtn": "Karşılaştırmayı göster",
+        "dismiss": "Karşılaştırmak istemiyorum"
+      },
+      "compat": {
+        "eyebrow": "İki kişilik DISC",
+        "title": "Peki sizin ikilinizde durum ne?",
+        "text": "Bu açıklama, ana stilleri {a} ve {b} olan her iki kişi için geçerlidir.",
+        "textSame": "Bu açıklama, ana stili {a} olan her iki kişi için geçerlidir.",
+        "more": "Sizin ikilinizde işlerin nasıl yürüdüğünü — ikinizin tüm ölçeklerine göre, sürtüşme durumları, hazır cümleler, iş ve özel hayat bölümleriyle — “İki kişilik DISC” raporu ayrıntılı olarak anlatır.",
+        "note": "İkiniz de testi çözersiniz, ardından raporu sipariş edersiniz: yaklaşık 22 sayfalık PDF, 24 saat içinde, {price} USD.",
+        "button": "İkinci kişiyi davet et",
+        "link": "Rapor hakkında daha fazla bilgi"
+      },
+      "compare": {
+        "title": "{a} ve {b}",
+        "lead": "İki DISC profili yan yana. Bu karşılaştırma ücretsizdir; ikinizde işlerin nasıl yürüdüğünü “İki kişilik DISC” raporu ayrıntılı olarak anlatır.",
+        "legend": "Dolu çubuk {a}, çerçeveli çubuk {b}. Ölçeğin ortası (%50) bir çizgiyle işaretlidir.",
+        "profiles": "Profiller",
+        "pairTitle": "Kısaca ikiliniz",
+        "closeTitle": "Nerede yakınsınız",
+        "close": "Farkın 15 puandan az olduğu ölçekler: {list}. Burada birbirinizi anlamanız en kolay.",
+        "closeNone": "Belirgin biçimde yakın olduğunuz bir ölçek yok: bu yüzden kuralları önceden konuşmak daha da yararlı.",
+        "gapTitle": "En büyük fark nerede",
+        "gap": "{k} ölçeğinde: {a} %{pa}, {b} %{pb}. Bu farkın ikiniz için ne anlama geldiği raporda anlatılıyor.",
+        "gapSmall": "En belirgin fark {k} ölçeğinde ve küçük: {a} %{pa}, {b} %{pb}.",
+        "only": {
+          "title": "Ücretsiz karşılaştırmada olmayan, raporda olanlar",
+          "text": "Yukarıdaki ikili açıklaması, ana stilleri sizinkilerle aynı olan herkes için aynıdır. Rapor ise ikiniz için yazılır:",
+          "items": [
+            ["İkiniz için yazılır", "yalnızca ana stile göre değil, her birinizin dört ölçeğine ve ikincil stiline göre"],
+            ["Beş sürtüşme durumu", "her birinin iş yerinde ve evde nasıl göründüğü, her birinizin ne hissettiği ve neyin işe yaradığı"],
+            ["Her biriniz için hazır cümleler", "konuşma ve yazışma kuralları ve başlangıç için bir cümle, her biriniz için ayrı ayrı"],
+            ["Birlikte karar vermek ve tartışmayı durdurmak", "ortak bir karardan önce üç soru, tartışmanın sizde nasıl büyüdüğü ve nasıl durdurulacağı"],
+            ["İş ve özel hayat", "aranızdaki ilişkiye göre ayrı bölümler: iş arkadaşları, yönetici ve çalışan, çift, arkadaşlar ya da aile"],
+            ["Çalışma kâğıtları", "“Aramızdaki anlaşma”, ikiniz için 30 günlük plan ve tek sayfada işin özü"],
+            ["Yaklaşık 22 sayfalık PDF, 24 saat içinde", "rapor siparişiniz için yazılır ve gönderilmeden önce bir insan tarafından okunur"]
+          ]
+        },
+        "shareTitle": "Bu sayfayı ikinci kişiye gönderin",
+        "shareText": "Bağlantı aynı karşılaştırmayı açar. İçinde ikinizin adı ve özet sonuçları var, e-posta adresleri yok.",
+        "copy": "Bağlantıyı kopyala",
+        "copied": "Bağlantı kopyalandı",
+        "share": "Paylaş",
+        "bad": "Karşılaştırma bağlantısı bozuk ya da eksik. Bağlantının yeniden gönderilmesini isteyin.",
+        "same": "Bağlantıda iki aynı sonuç var: karşılaştırılacak bir şey yok.",
+        "aria": "{k}: %{a} ve %{b}",
+        "pct": "%{n}",
+        "profile": "{key} “{name}”",
+        "sep": ", ",
+        "and": " ve ",
+        "shareMsg": "{title} — DISC:"
+      },
+      "order": {
+        "title": "Raporu sipariş edin",
+        "emailLabel": "E-posta adresiniz",
+        "emailHint": "Rapor ve ödeme makbuzu bu adrese gelir.",
+        "copyLabel": "İkinci katılımcının e-posta adresi",
+        "copyOptional": "(isteğe bağlı)",
+        "copyHint": "Raporun bir kopyasını göndeririz. Yalnızca bu kişi e-posta almayı kabul ediyorsa yazın.",
+        "relTitle": "Aranızdaki ilişki",
+        "relHint": "Raporda hem iş hem özel hayat hakkında bölümler var; yanıtınız raporun neye ağırlık vereceğini belirler.",
+        "rels": [
+          ["colleagues", "Eşit konumda iş arkadaşları"],
+          ["boss", "Biri ötekinin yöneticisi"],
+          ["couple", "Çift"],
+          ["friends", "Arkadaş"],
+          ["family", "Akraba"],
+          ["", "Belirtmek istemiyorum"]
+        ],
+        "leadTitle": "Yönetici kim",
+        "priceNote": "Bu e-posta adresiyle daha önce genişletilmiş rapor satın aldıysanız ücret {owner} USD olur: “Satın al” düğmesine bastıktan sonra yeniden hesaplanır.",
+        "agree": "{offer} metnini kabul ediyorum",
+        "buy": "Satın al · {price} USD",
+        "wait": "Sipariş oluşturuluyor…",
+        "when": "Rapor, ödemeden sonra 24 saat içinde e-postanıza gelir.",
+        "badEmail": "E-posta adresinizi kontrol edin.",
+        "badCopy": "İkinci katılımcının adresini kontrol edin.",
+        "needAgree": "Satış koşullarını kabul ettiğinizi işaretleyin.",
+        "needLead": "Yöneticinin kim olduğunu belirtin.",
+        "priceChanged": "Bu e-posta adresiyle daha önce genişletilmiş rapor satın alındığı için ücret {price} USD. “Satın al” düğmesine yeniden basın.",
+        "error": "Sipariş oluşturulamadı. Yeniden deneyin ya da {email} adresine yazın."
+      },
+      "status": {
+        "wait": "Ödeme kontrol ediliyor…",
+        "ok": "Ödeme alındı. “İki kişilik DISC” raporu 24 saat içinde e-postanıza gelecek; sipariş bilgilerini içeren e-posta da gönderildi.",
+        "sent": "Rapor e-postanıza gönderildi.",
+        "fail": "Ödeme yapılamadı, kartınızdan para çekilmedi. Karşılaştırma sayfasında yeniden deneyebilirsiniz.",
+        "unknown": "Ödeme durumu öğrenilemedi. Para çekildiyse rapor 24 saat içinde gelir; sorularınız için: {email}."
+      },
+      "mail": {
+        "hello": "Merhaba,",
+        "paidSubject": "Ödeme alındı: “İki kişilik DISC” raporu 24 saat içinde geliyor",
+        "paidIntro": "“İki kişilik DISC” raporunu sipariş ettiğiniz için teşekkür ederiz. Katılımcılar: {a} ve {b}.",
+        "paidWhen": "Rapor, ödemeden sonra 24 saat içinde bu adrese gelecek.",
+        "paidCopy": "Bir kopyası, belirttiğiniz adrese, ikinci katılımcıya da gönderilecek.",
+        "paidMeanwhile": "Rapor ikiliniz için yazılıyor: ikinizin tüm ölçeklerine ve aranızdaki ilişkiye göre. Gönderilmeden önce bir insan tarafından okunur.",
+        "question": "Sorularınız için bu e-postayı yanıtlayabilir ya da {email} adresine yazabilirsiniz.",
+        "bye": "disc-test.org ekibi",
+        "order": "Sipariş {order} ·",
+        "subject": "“İki kişilik DISC” raporu: {a} ve {b}",
+        "intro": "“İki kişilik DISC” raporunuz hazır; ekte PDF olarak yer alıyor. Katılımcılar: {a} ve {b}.",
+        "copyIntro": "Bu, “İki kişilik DISC” raporunun bir kopyası; rapor ekte PDF olarak yer alıyor. Katılımcılar: {a} ve {b}. Rapor, DISC testi sonuçlarına göre disc-test.org sitesinde sipariş edildi: iki katılımcı da bu rapor için sonuçlarını göstermeyi kabul etti.",
+        "howTitle": "Nasıl okunur",
+        "how": [
+          "Önce her biriniz kendi başına, sonra birlikte.",
+          "1–8. bölümler her türlü işte ikinizi anlatır; 9. bölüm iş hayatı, 10. bölüm özel hayat hakkındadır.",
+          "11. bölümdeki “Aramızdaki anlaşma” ile başlayın: ikinizin yirmi dakikasını alır."
+        ],
+        "copySent": "Raporun bir kopyası ikinci katılımcıya gönderildi.",
+        "copyWhy": "Bu e-postayı, rapor sipariş edilirken adresiniz belirtildiği için aldınız. Burada bir abonelik yok: başka e-posta gelmeyecek.",
+        "noName": [
+          "1. katılımcı",
+          "2. katılımcı"
+        ]
       }
     },
     "gift": {
@@ -2481,6 +2721,12 @@
       }
     },
     "howMade": {
+      "pair": {
+        "h": "“İki kişilik DISC” raporu",
+        "p": [
+          "İki kişilik rapor önceden yazılmış parçalardan derlenmez: metni her sipariş için ayrıca yazılır. Metni, editör ekibinin kurallarına göre yapay zekâ yazar ve yalnızca anonim verilere dayanır: iki katılımcının profilleri ve puanları, adlar, adresler ve sonuç kodları olmadan. Yazılım metni kontrol eder (bölümlerin uzunluğu, cinsiyet varsaymayan bir dil, yasak ifadeler, sayılar) ve katılımcıların adlarıyla PDF’i oluşturur; rapor gönderilmeden önce bir insan onu baştan sona okur. Bu yüzden iki kişilik rapor ödemenin hemen ardından değil, 24 saat içinde gelir."
+        ]
+      },
       "title": "Yapay zekâ DISC raporunu nasıl hazırlar: otomatik, tarafsız",
       "description": "DISC raporları otomatik hazırlanır: metinleri editör ekibinin kurallarıyla yapay zekâ yazar, raporunuz yanıtlarınıza göre, insan eli değmeden derlenir.",
       "h1": "DISC raporları nasıl hazırlanır",
@@ -2834,6 +3080,7 @@
     "nav.howMade": "Raporların hazırlanışı",
     "nav.business": "Kurumlar için",
     "nav.gift": "Hediye sertifikaları",
+    "nav.pair": "İki kişilik DISC",
 
     "pages.styles.title": "DISC kişilik tipleri: D, I, S, C — özellikler ve güçlü yönler",
     "pages.styles.description": "DISC’e göre dört kişilik tipi: Baskınlık, Etkileyicilik, İstikrar ve Titizlik. Özellikler, güçlü yönler, gelişim alanları, motivasyon ve stres.",
@@ -2962,7 +3209,7 @@
     "pd.consentLink": "kişisel verilerin işlenmesine ilişkin onay",
     "pd.required": "Kişisel verilerin işlenmesine ilişkin onay kutusunu işaretleyin: bu onay olmadan verilerinizi kabul edemeyiz.",
     "pd.cookieAsk": "Site; ilerlemenizi, sonucunuzu ve seçtiğiniz dili tarayıcının yerel depolama alanında saklar. Onay verirseniz bir web analiz hizmeti, siteyi geliştirebilmemiz için anonimleştirilmiş ziyaret istatistiklerini ve sayfadaki hareketlerin kaydını toplar. Adınız, e-posta adresiniz ve sonucunuz analiz hizmetine aktarılmaz.",
-    "pd.cookieDetails": "Tarayıcıda saklananlar: belirttiyseniz adınız ve e-posta adresiniz; yanıtlarınız ve tamamlanmamış ilerlemeniz; son sonucunuz; testi ilk kez tamamladığınız zaman — genişletilmiş rapordaki özel fiyatın süresi için; siteyi bir sertifikadaki bağlantıyla açtıysanız hediye sertifikasının kodu; seçtiğiniz dil; bu bildirimi gördüğünüze dair işaret. Bu veriler cihazınızda kalır ve site verilerini temizlediğinizde silinir. Barındırma hizmeti, isteğe ilişkin standart teknik verileri alır. Siteyi gün içinde ilk kez açtığınızda sitenin sunucusuna anonim bir ziyaret kaydı gönderilir: yalnızca sitenin dil sürümü; sunucu bu kaydı ulaştığı saatle birlikte saklar, tarayıcınız da aynı gün yeniden gönderilmemesi için tarihi hatırlar. Bu kayıtlarla siteyi kaç kişinin ziyaret ettiğini sayarız. Teste başladığınızda sitenin sunucusuna anonim bir başlangıç kaydı gönderilir: yalnızca sitenin dil sürümü. Testi tamamladığınızda genel istatistik için sitenin sunucusuna anonim bir kayıt gönderilir: çıkan profiliniz ve sitenin dil sürümü. Adınız, e-posta adresiniz ve yanıtlarınız bu kayıtta yer almaz. “PDF olarak kaydet” düğmesine bastığınızda yanıtlarınız ve test tarihi, adınız ve e-posta adresiniz olmadan, sitenin sunucusuna iletilir; sunucu bunlardan özet rapor dosyasını oluşturup size geri gönderir ve hiçbir şey saklamaz. Sonucunuzu e-postanıza gönderdiğinizde adınız, e-posta adresiniz ve yanıtlarınız sitenin sunucusuna aktarılır: sunucu size sonucunuzu içeren bir e-posta gönderir ve adınızı, e-posta adresinizi, tarihi ve sonucu site sahibinin sonuç veri tabanına kaydeder. Ana sayfada bültene abone olduğunuzda e-posta adresiniz ve sitenin dil sürümü sitenin sunucusuna aktarılır: sunucu size onay bağlantısı içeren bir e-posta gönderir ve adresi aynı veri tabanına kaydeder; aboneliği onaylamazsanız adres 7 gün sonra silinir. “DISC testi PDF” sayfasında testin e-postanıza gönderilmesini istediğinizde e-posta adresiniz ve sitenin dil sürümü sitenin sunucusuna aktarılır: sunucu size PDF’i içeren bir e-posta gönderir ve onay kaydını adresinizle birlikte saklar; bülten onayı verdiyseniz adresiniz hemen abone listesine kaydedilir ve e-postada abonelikten çıkma bağlantısı bulunur. Hediye sertifikası siparişi verdiğinizde e-posta adresiniz, “Kimden” satırı ve — belirttiyseniz — alıcıların adları ve e-posta adresleri sitenin sunucusuna aktarılır: sunucu siparişi oluşturur ve ödemeden sonra sertifikaları gönderir; alıcıların adları ve adresleri gönderimden 30 gün sonra silinir. Web analiz hizmeti şunları alır: sayfa adresi (sonuç ekranında sonuç koduyla birlikte: yanıtlarınız, test tarihi ve belirttiyseniz adınız; e-posta adresiniz dahil değildir), ziyaretin geldiği kaynak, cihaz ve tarayıcı türü, sayfadaki hareketlerin kaydı (ad ve e-posta alanları kayda dahil edilmez); ayrıca kendi çerezlerini yerleştirir. Bu hizmeti tarayıcı ayarlarından ya da bir izleyici engelleyiciyle engelleyebilirsiniz. Reklam amaçlı izleyiciler kullanılmaz.",
+    "pd.cookieDetails": "Tarayıcıda saklananlar: belirttiyseniz adınız ve e-posta adresiniz; yanıtlarınız ve tamamlanmamış ilerlemeniz; son sonucunuz; testi ilk kez tamamladığınız zaman — genişletilmiş rapordaki özel fiyatın süresi için; siteyi bir sertifikadaki bağlantıyla açtıysanız hediye sertifikasının kodu; siteyi davet eden kişinin bağlantısıyla açtıysanız “İki kişilik DISC” daveti: davet edenin adı ve sonucu; seçtiğiniz dil; bu bildirimi gördüğünüze dair işaret. Bu veriler cihazınızda kalır ve site verilerini temizlediğinizde silinir. Barındırma hizmeti, isteğe ilişkin standart teknik verileri alır. Siteyi gün içinde ilk kez açtığınızda sitenin sunucusuna anonim bir ziyaret kaydı gönderilir: yalnızca sitenin dil sürümü; sunucu bu kaydı ulaştığı saatle birlikte saklar, tarayıcınız da aynı gün yeniden gönderilmemesi için tarihi hatırlar. Bu kayıtlarla siteyi kaç kişinin ziyaret ettiğini sayarız. Teste başladığınızda sitenin sunucusuna anonim bir başlangıç kaydı gönderilir: yalnızca sitenin dil sürümü. Testi tamamladığınızda genel istatistik için sitenin sunucusuna anonim bir kayıt gönderilir: çıkan profiliniz ve sitenin dil sürümü. Adınız, e-posta adresiniz ve yanıtlarınız bu kayıtta yer almaz. “PDF olarak kaydet” düğmesine bastığınızda yanıtlarınız ve test tarihi, adınız ve e-posta adresiniz olmadan, sitenin sunucusuna iletilir; sunucu bunlardan özet rapor dosyasını oluşturup size geri gönderir ve hiçbir şey saklamaz. Sonucunuzu e-postanıza gönderdiğinizde adınız, e-posta adresiniz ve yanıtlarınız sitenin sunucusuna aktarılır: sunucu size sonucunuzu içeren bir e-posta gönderir ve adınızı, e-posta adresinizi, tarihi ve sonucu site sahibinin sonuç veri tabanına kaydeder. Ana sayfada bültene abone olduğunuzda e-posta adresiniz ve sitenin dil sürümü sitenin sunucusuna aktarılır: sunucu size onay bağlantısı içeren bir e-posta gönderir ve adresi aynı veri tabanına kaydeder; aboneliği onaylamazsanız adres 7 gün sonra silinir. “DISC testi PDF” sayfasında testin e-postanıza gönderilmesini istediğinizde e-posta adresiniz ve sitenin dil sürümü sitenin sunucusuna aktarılır: sunucu size PDF’i içeren bir e-posta gönderir ve onay kaydını adresinizle birlikte saklar; bülten onayı verdiyseniz adresiniz hemen abone listesine kaydedilir ve e-postada abonelikten çıkma bağlantısı bulunur. Hediye sertifikası siparişi verdiğinizde e-posta adresiniz, “Kimden” satırı ve — belirttiyseniz — alıcıların adları ve e-posta adresleri sitenin sunucusuna aktarılır: sunucu siparişi oluşturur ve ödemeden sonra sertifikaları gönderir; alıcıların adları ve adresleri gönderimden 30 gün sonra silinir. Web analiz hizmeti şunları alır: sayfa adresi (sonuç ekranında sonuç koduyla birlikte: yanıtlarınız, test tarihi ve belirttiyseniz adınız; e-posta adresiniz dahil değildir), ziyaretin geldiği kaynak, cihaz ve tarayıcı türü, sayfadaki hareketlerin kaydı (ad ve e-posta alanları kayda dahil edilmez); ayrıca kendi çerezlerini yerleştirir. Bu hizmeti tarayıcı ayarlarından ya da bir izleyici engelleyiciyle engelleyebilirsiniz. Reklam amaçlı izleyiciler kullanılmaz.",
     "pd.cookieChange": "Çerez tercihini değiştir",
 
     "print.title": "DISC kişilik envanteri: yazdırılabilir test, cevap anahtarı, puanlama",
