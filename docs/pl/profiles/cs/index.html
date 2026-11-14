@@ -258,6 +258,17 @@ body.has-consent .xbar,body.has-xbar .btn.ctafloat.show{display:none}
 .xjump p{margin:0;font-weight:600;flex:1 1 220px}
 .xjump .btn{flex:none}
 .xoffer+.card{margin-top:16px}
+/* «DISC на двоих» на экране своего результата (с 2026-11-14): рамка и список с галочками, чтобы блок читался как предложение */
+.card.pairad{border:2px solid var(--ink)}
+.pairad .actions+div+p,.pairad > p.muted{margin-top:10px}
+.pairad h2{margin:2px 0 10px;font-size:22px}
+.pairad > p{margin:0 0 10px}
+.pairpts{list-style:none;padding:0;margin:0 0 14px}
+.pairpts li{position:relative;padding-inline-start:26px;margin-bottom:8px}
+.pairpts li::before{content:"✓";position:absolute;inset-inline-start:0;top:0;font-weight:700;color:var(--s)}
+.pairad .pairfree{color:var(--muted);margin:0 0 14px}
+.pairad .actions{flex-wrap:wrap;align-items:center;gap:10px 18px}
+.pairad .actions .btn{white-space:normal;text-align:center}
 /* блок расширенного отчёта выделен фоном в цвет ведущего стиля участника (--k), чтобы бросался в глаза (решение заказчика от 2026-10-21);
    без color-mix — прежний фон карточки и цветная полоса слева */
 .share.xoffer{border-inline-start:4px solid var(--k,var(--ink));background:color-mix(in srgb,var(--k,var(--ink)) 13%,var(--surface));border-color:color-mix(in srgb,var(--k,var(--ink)) 45%,var(--line));border-inline-start-color:var(--k,var(--ink))}

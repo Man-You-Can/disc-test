@@ -196,6 +196,17 @@ body.has-consent .xbar,body.has-xbar .btn.ctafloat.show{display:none}
 .xjump p{margin:0;font-weight:600;flex:1 1 220px}
 .xjump .btn{flex:none}
 .xoffer+.card{margin-top:16px}
+/* «DISC на двоих» на экране своего результата (с 2026-11-14): рамка и список с галочками, чтобы блок читался как предложение */
+.card.pairad{border:2px solid var(--ink)}
+.pairad .actions+div+p,.pairad > p.muted{margin-top:10px}
+.pairad h2{margin:2px 0 10px;font-size:22px}
+.pairad > p{margin:0 0 10px}
+.pairpts{list-style:none;padding:0;margin:0 0 14px}
+.pairpts li{position:relative;padding-inline-start:26px;margin-bottom:8px}
+.pairpts li::before{content:"✓";position:absolute;inset-inline-start:0;top:0;font-weight:700;color:var(--s)}
+.pairad .pairfree{color:var(--muted);margin:0 0 14px}
+.pairad .actions{flex-wrap:wrap;align-items:center;gap:10px 18px}
+.pairad .actions .btn{white-space:normal;text-align:center}
 /* блок расширенного отчёта выделен фоном в цвет ведущего стиля участника (--k), чтобы бросался в глаза (решение заказчика от 2026-10-21);
    без color-mix — прежний фон карточки и цветная полоса слева */
 .share.xoffer{border-inline-start:4px solid var(--k,var(--ink));background:color-mix(in srgb,var(--k,var(--ink)) 13%,var(--surface));border-color:color-mix(in srgb,var(--k,var(--ink)) 45%,var(--line));border-inline-start-color:var(--k,var(--ink))}
@@ -1342,6 +1353,9 @@ function renderReport(r, opts){
       '</div>'+
       '<p class="howto">'+t('report.howto')+'</p>'+
     '</div>'+
+    // «DISC на двоих»: «Пригласить» — перед «Ключевыми чертами» (с 2026-11-14, по просьбе заказчика; до того — после блока «Расширенный отчёт»);
+    // только на своём результате и только где есть L.content.pair. Пришедшему по приглашению вместо него — «Сравнить с …» ниже
+    (opts.own && !opts.fromAdmin ? pairBoxHTML(r, base, 'after') : '')+
     '<div class="card" id="traitsCard"><div class="sections">'+
       '<div class="sec full"><h3>'+t('report.traits')+'</h3><div class="traits">'+st.traits.map(function(x){ return '<span>'+esc(x)+'</span>'; }).join('')+'</div>'+
         (cls.s ? '<div class="substyle" style="--ks:'+colorVar(cls.s)+'"><b>'+t('report.secondary',{k:cls.s,name:esc(L.keys[cls.s])})+'</b> '+t('report.secondaryAddon',{addon:esc(L.addon[cls.s])})+'</div>' : '')+
@@ -1380,8 +1394,6 @@ function renderReport(r, opts){
     // блок «Расширенный отчёт» — сразу после описания профиля (карточки с «Ключевыми чертами», «Сильными сторонами» и т. д.):
     // с 2026-10-25 по решению заказчика; с 2026-10-22 до 2026-10-25 стоял сразу под графиком
     extOffer()+
-    // «DISC на двоих»: «Пригласить» (с 2026-11-14, только где есть L.content.pair)
-    (opts.own && !opts.fromAdmin ? pairBoxHTML(r, base, 'after') : '')+
     // анонс сервиса «Резюме под каждую вакансию» (content.cvPromo, с 2026-10-24) — после описания профиля; в панели администратора его нет
     (opts.fromAdmin ? '' : cvPromoHTML({P: L.content && L.content.cvPromo, esc: esc, href: base+'cv/', kind: 'result'}))+
     '<div class="print-only printcta"><b>'+t('cta.title')+'</b><p>'+esc(t('cta.text'))+' <b>'+esc(homeURL)+'</b></p></div>'+
@@ -1510,7 +1522,7 @@ function sendFormHTML(r, who, base, open){
 }
 /* «DISC на двоих» (с 2026-11-14, по просьбе заказчика; пока только русская версия — тексты в L.content.pair). На экране своего результата:
    пришедшему по приглашению (disc.pairInvite кладёт страница /pair/ по ссылке #i=…) — «Сравнить с …» с согласием показать свой результат
-   пригласившему (сразу под карточкой «Сохраните результат»); остальным — «Пригласить» после блока «Расширенный отчёт».
+   пригласившему (сразу под карточкой «Сохраните результат»); остальным — «Пригласить» перед «Ключевыми чертами» (с 2026-11-14, по просьбе заказчика).
    Ссылки — с кодами без e-mail; в разметку коды не пишутся, ссылка собирается при нажатии. */
 function pairInvited(r){
   var v = lsGet('disc.pairInvite'); if(!v || !v.c || Date.now() - (+v.at || 0) > 30*86400000) return null;
@@ -1528,8 +1540,13 @@ function pairBoxHTML(r, base, where){
       '<div class="actions"><button class="btn" type="button" id="pairCompare">'+esc(R.compareBtn)+'</button><button class="link" type="button" id="pairSkip">'+esc(R.dismiss)+'</button></div></div>';
   }
   if(inv) return '';
-  return '<div class="card pairbox no-print" id="pairInviteCard" style="margin-top:16px"><h2>'+esc(R.title)+'</h2><p>'+esc(R.text)+'</p>'+
-    '<div class="actions"><button class="btn secondary" type="button" id="pairInvite">'+esc(R.button)+'</button><a class="link" href="'+base+'pair/">'+esc(R.more)+' '+arrowR()+'</a></div>'+
+  // рекламный вид (с 2026-11-14, по просьбе заказчика): зачем отчёт — список того, что узнают двое (пункты обещают только то, что есть
+  // в сравнении и в отчёте — private/extended-report/pair/WRITE-PAIR.md), и строка «сравнение бесплатно, подробно — в отчёте»
+  return '<div class="card pairbox pairad no-print" id="pairInviteCard" style="margin-top:16px">'+(R.eyebrow ? '<div class="eyebrow">'+esc(R.eyebrow)+'</div>' : '')+
+    '<h2>'+esc(R.title)+'</h2><p>'+esc(R.text)+'</p>'+
+    (R.points ? '<ul class="pairpts">'+R.points.map(function(x){ return '<li>'+esc(x)+'</li>'; }).join('')+'</ul>' : '')+
+    (R.free ? '<p class="small pairfree">'+esc(R.free)+'</p>' : '')+
+    '<div class="actions"><button class="btn" type="button" id="pairInvite">'+esc(R.button)+'</button><a class="link" href="'+base+'pair/">'+esc(R.more)+' '+arrowR()+'</a></div>'+
     '<div id="pairShare"></div><p class="small muted">'+esc(R.note)+'</p></div>';
 }
 function pairShareBox(box, link, msg){
