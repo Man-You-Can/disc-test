@@ -232,11 +232,13 @@ const bizLower = (L, x) => L.lang === 'de' ? x : x.toLocaleLowerCase(L.dateLocal
 const hasBusiness = L => !!(L.content.business && L.ui['nav.business'] && hasProduct(L) && L.content.product.pay && packRetail(L) > 0 &&
   payCodeT(L, x => x) && feedbackEmail && cfg.sendEndpoint && businessPacks.length && packPrices(L).every(v => v > 0));
 // Подарочные сертификаты на расширенный отчёт (/gift/, с 2026-11-14, по просьбе заказчика): "giftBuy": true в site.config.json, payEndpoint, коды доступа
-// и content.gift. Пока только русская версия (решение заказчика): оплата сертификатов — Т-Банк (сервер — private/server/src/gift.js). Цена одного
-// сертификата — обычная цена отчёта (меняется в панели); от giftOffFrom штук — скидка giftOffPct %; за раз — не больше giftMax; срок кода — giftMonths месяцев.
+// и content.gift. С 2026-11-14 — все языки с покупкой (сначала русская, тем же днём остальные — решения заказчика): русская версия платит Т-Банку, остальные —
+// Prodamus (сервер — private/server/src/gift.js). Цена одного сертификата — обычная цена отчёта языка (меняется в панели); от giftOffFrom штук — скидка
+// giftOffPct %; за раз — не больше giftMax; срок кода — giftMonths месяцев.
 // Тот же ключ кладёт тексты сертификата и писем в ядро сервера (DATA.ru.gift): без него сервер заказы сертификатов не принимает.
 const GIFT = { offFrom: +cfg.giftOffFrom || 5, offPct: +cfg.giftOffPct || 0, max: +cfg.giftMax || 50, months: +cfg.giftMonths || 12 };
-const hasGift = L => !!(cfg.giftBuy === true && payEndpoint && L.lang === 'ru' && L.content.gift && L.ui['nav.gift'] && hasProduct(L) && L.content.product.pay && payCodeT(L, x => x) && servicePrices.RUB > 0);
+const hasGift = L => !!(cfg.giftBuy === true && payEndpoint && L.content.gift && L.ui['nav.gift'] && hasProduct(L) && L.content.product.pay && payCodeT(L, x => x) && langPair(L)[0] > 0);
+const giftCur = L => (L.content.services && L.content.services.currency) || 'RUB';
 // Оператор и дата редакции в политике и согласии: в языке с полным текстом политики (policy.legal — русская версия) — исполнитель из оферты
 // (ИП с ИНН), в остальных — строка реквизитов из подвала. От наличия оферты не зависит: иначе её появление в языке меняло бы текст согласия,
 // на который люди уже согласились (после правки текста согласия нужна новая pdVersion)
@@ -1264,7 +1266,7 @@ for (const L of locales) {
       const SAMPLE = 'K7MP3QXT9HWA', sampleUrl = home + 'gift/#g=' + SAMPLE, gqr = qrLib.qrSVG(sampleUrl, { dark: '#1B2027' });
       const until = new Intl.DateTimeFormat(L.dateLocale, { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }).format(new Date(Date.UTC(2027, 10, 14)));
       const certOf = new Function(giftJs + '; return giftCertHTML;')();
-      const sampleCert = certOf(CT, { name: GT.sampleName, from: GT.sampleFrom, code: SAMPLE.replace(/(.{4})(?=.)/g, '$1-'), url: sampleUrl, qr: gqr, until, sample: true, home, site: gsite, email: feedbackEmail });
+      const sampleCert = certOf(CT, { name: GT.sampleName, from: GT.sampleFrom, code: SAMPLE.replace(/(.{4})(?=.)/g, '$1-'), url: sampleUrl, qr: gqr, until, sample: true, home, site: gsite, email: feedbackEmail, lang: L.lang });
       const pdfs = ['named', 'plain'].filter(k => fs.existsSync(path.join(ASSETS, 'gift', `${L.lang}-${k}.pdf`)));
       const pair = (b, tx) => `<li><b>${escFull(b)}</b> ${escFull(gv(tx))}</li>`;
       const M = GT.mock, only = C.product.block && C.product.block.screen ? C.product.block.screen.only : [];
@@ -1319,7 +1321,7 @@ for (const L of locales) {
       const GTjs = { order: GO, recipient: GT.recipient, sampleName: GT.sampleName, sampleFrom: GT.sampleFrom };
       writeContentPage(L, 'gift/', { navKey: 'nav.services', langs: locales.filter(hasGift), title: gv(GT.title), description: gv(GT.description), crumbs: [{ name: t('nav.services'), href: '../services/', sub: 'services/' }, { name: GT.h1 }],
         css: giftCss, content, files: ['src/gift.js', 'src/gift.css'].concat(pdfs.map(k => `src/assets/gift/${L.lang}-${k}.pdf`)),
-        pageJs: giftJs + `\ninitGift({T: ${JSON.stringify(GTjs).replace(/</g, '\\u003c')}, C: ${JSON.stringify(CT).replace(/</g, '\\u003c')}, G: ${JSON.stringify(GIFT)}, base: ${servicePrices.RUB}, endpoint: ${jsStr(payEndpoint)}, ` +
+        pageJs: giftJs + `\ninitGift({T: ${JSON.stringify(GTjs).replace(/</g, '\\u003c')}, C: ${JSON.stringify(CT).replace(/</g, '\\u003c')}, G: ${JSON.stringify(GIFT)}, base: ${langPair(L)[0]}, cur: ${jsStr(giftCur(L))}, endpoint: ${jsStr(payEndpoint)}, ` +
           `L: L, esc: esc, $: $, lsGet: lsGet, lsSet: lsSet, email: ${jsStr(feedbackEmail)}, qr: ${jsStr(gqr)}, sampleCode: ${jsStr(SAMPLE.replace(/(.{4})(?=.)/g, '$1-'))}, sampleUrl: ${jsStr(sampleUrl)}, until: ${jsStr(until)}, home: ${jsStr(home)}, site: ${jsStr(gsite)}});` });
     }
     // /extended-report/ — страница расширенного отчёта: что внутри, листы образца картинками, сравнение с кратким отчётом, цена.
@@ -1591,7 +1593,7 @@ for (const L of locales) {
   // подарочные сертификаты (hasGift, с 2026-11-14): название для платёжной страницы и чека, порог и размер скидки, предел, срок кода, тексты сертификата
   // и писем (покупателю и получателю), адреса страницы сертификатов (на неё ведут код и QR-код сертификата) и главной версии
   if (hasGift(L)) { const home = urlOf(L.lang), GT = L.content.gift;
-    mailData[L.lang].gift = Object.assign({ name: GT.name, page: home + 'gift/', home, dateLocale: L.dateLocale, cert: GT.cert, mail: GT.mail, rmail: GT.rmail }, GIFT); }
+    mailData[L.lang].gift = Object.assign({ name: GT.name, page: home + 'gift/', home, dateLocale: L.dateLocale, dir: L.dir, cert: GT.cert, mail: GT.mail, rmail: GT.rmail, sampleName: GT.sampleName, sampleFrom: GT.sampleFrom }, GIFT); }
   // файл с кодами доступа для покупателя (панель, страница партии → «Скачать коды файлом», с 2026-11-12): заголовки столбцов на языке партии и адрес,
   // где вводить код, — главная этого языка
   if (hasBusiness(L) && Array.isArray(L.content.business.csv)) mailData[L.lang].codes = { csv: L.content.business.csv, home: urlOf(L.lang) };

@@ -722,7 +722,8 @@
           "Si compra el kit para facilitadores, tratamos su correo electrónico y los datos del pedido: fecha, importe, número y estado del pago. Necesitamos estos datos para enviarle el correo con los enlaces a los archivos del kit, responder a sus consultas y tramitar un reembolso; la base legal es el contrato conforme a las {offer}. Los datos del pedido del kit se conservan del mismo modo que los del pedido del perfil ampliado; no se envían recordatorios sobre un pago del kit sin completar."
         ]
       },
-      "purchaseCode": "Si recibe el perfil ampliado con un código de acceso que compró una organización u otra persona, tratamos los mismos datos, salvo la información sobre el pago, y registramos que el código se ha usado. A quien compró el código solo le informamos de si se ha usado y cuándo: su resultado, su informe y su correo electrónico no se le comunican. La base legal es el contrato que usted celebra al introducir el código conforme a las {offer}."
+      "purchaseCode": "Si recibe el perfil ampliado con un código de acceso que compró una organización u otra persona, tratamos los mismos datos, salvo la información sobre el pago, y registramos que el código se ha usado. A quien compró el código solo le informamos de si se ha usado y cuándo: su resultado, su informe y su correo electrónico no se le comunican. La base legal es el contrato que usted celebra al introducir el código conforme a las {offer}.",
+      "purchaseGift": "Si compra certificados de regalo, tratamos su correo electrónico, los datos del pedido (fecha, importe, número y estado del pago), la línea «De parte de» y, si los indicó, los nombres y las direcciones de correo electrónico de los destinatarios. Su correo y los datos del pedido nos sirven para enviarle los certificados y la confirmación del pago, responder a sus consultas y tramitar un reembolso, y se conservan del mismo modo que los datos del pedido del perfil ampliado. El nombre de cada destinatario se imprime en su certificado, y a su dirección se envía un único correo con ese certificado; los nombres y las direcciones de los destinatarios se eliminan 30 días después de enviar los certificados o, si el pedido no se paga, a los 7 días. Al indicar los datos de los destinatarios, usted confirma que ellos aceptan recibir el certificado. La base legal es el contrato conforme a las {offer}, del que los destinatarios de los certificados son beneficiarios. Quien introduce en el sitio el código de un certificado recibe el perfil ampliado igual que con un código de acceso: a quien regaló el certificado solo le informamos de si se ha usado y cuándo."
     },
     "consentDoc": {
       "title": "Consentimiento para el tratamiento de datos personales — test DISC",
@@ -835,7 +836,7 @@
         "Envíe la solicitud al final de esta página: cuántos informes necesita y para quién. Le responderemos en un día hábil.",
         "Le enviaremos un enlace para pagar con tarjeta. Tras el pago, le enviaremos los códigos en un archivo.",
         "Envíe a cada persona el enlace al test y un código. El test dura unos 10 minutos y no requiere registro.",
-        "En la pantalla del resultado, la persona pulsa «Tengo un código de empresa» e introduce el código y su correo electrónico. El informe le llega por correo en pocos minutos.",
+        "En la pantalla del resultado, la persona pulsa «Tengo un código» e introduce el código y su correo electrónico. El informe le llega por correo en pocos minutos.",
         "Cuando lo pida, le diremos cuántos códigos se han usado."
       ],
       "privacyTitle": "Los resultados son de cada persona",
@@ -1209,13 +1210,13 @@
         "wait": "Abriendo la página de pago…",
         "error": "No se ha podido abrir la página de pago. Inténtelo de nuevo en unos instantes o escriba a {email}.",
         "code": {
-          "link": "Tengo un código de empresa",
+          "link": "Tengo un código",
           "label": "Código de acceso",
           "placeholder": "XXXX-XXXX-XXXX",
           "button": "Recibir el informe",
           "back": "Comprar sin código",
           "wait": "Comprobando el código…",
-          "note": "Quien le dio el código ya ha pagado su informe: usted no tiene que pagar nada. No le facilitamos su resultado ni su correo electrónico. Al pulsar «Recibir el informe», acepta las {offer}.",
+          "note": "Quien le dio o le regaló el código ya ha pagado su informe: usted no tiene que pagar nada. No le facilitamos su resultado ni su correo electrónico. Al pulsar «Recibir el informe», acepta las {offer}.",
           "badEmail": "Revise la dirección de correo: a ella enviaremos el informe.",
           "empty": "Introduzca el código de acceso.",
           "done": "Código aceptado. El informe llegará a {to} en pocos minutos. Si no lo ve, revise la carpeta de correo no deseado.",
@@ -1583,6 +1584,293 @@
         "text": "El test muestra su color predominante y el secundario, su intensidad en porcentaje y qué hacer con ello. 24 bloques, unos 10 minutos, sin registro.",
         "button": "Descubrir mi color"
       }
+    },
+    "gift": {
+      "title": "Certificados de regalo para el informe DISC ampliado",
+      "description": "Regale el informe DISC ampliado a sus compañeros o a sus seres queridos: un certificado en PDF con código, válido durante {months} meses. A partir de {from} unidades, {pct} % de descuento.",
+      "eyebrow": "Para regalar",
+      "h1": "Certificados de regalo para el informe DISC ampliado",
+      "lead": "Un regalo personal para sus compañeros, su equipo o sus seres queridos: un informe sobre su forma de trabajar. Cada certificado es un PDF con un código: quien lo recibe hace el test, introduce el código y recibe el informe ampliado sin pagar nada.",
+      "facts": [
+        "PDF con código",
+        "Válido durante {months} meses",
+        "A partir de {from} unidades, {pct} % de descuento",
+        "{price} USD por certificado"
+      ],
+      "cta": "Elegir certificados",
+      "sampleLink": "Ver un ejemplo",
+      "whoTitle": "¿Para quién?",
+      "who": [
+        [
+          "Compañeros y equipos",
+          "por un cumpleaños, unas fiestas, el cierre de un proyecto o su primer año en la empresa"
+        ],
+        [
+          "Nuevas incorporaciones",
+          "para que desde las primeras semanas entiendan su propio estilo de trabajo y el de su responsable"
+        ],
+        [
+          "Participantes de una formación",
+          "como continuación de la sesión: cada uno recibe un informe sobre sí mismo"
+        ],
+        [
+          "Amigos y familia",
+          "para quien busca trabajo, cambia de puesto o quiere conocerse mejor"
+        ]
+      ],
+      "sampleTitle": "Así es el certificado",
+      "sampleText": "Cada certificado es un PDF independiente en tamaño A4: puede reenviarlo, imprimirlo o entregarlo en mano. Incluye el código, un código QR y unas breves instrucciones, así que quien lo recibe no tiene que buscar nada.",
+      "tabsLabel": "Tipo de certificado",
+      "tabs": [
+        "Nominativo",
+        "Sin nombre"
+      ],
+      "sampleName": "Lucía Fernández",
+      "sampleFrom": "El equipo de Ventas",
+      "samplePdf": "Ejemplos en PDF: {named} · {plain}",
+      "samplePdfNamed": "nominativo",
+      "samplePdfPlain": "sin nombre",
+      "ticks": [
+        [
+          "El código se copia fácilmente.",
+          "En el archivo es texto normal: selecciónelo y cópielo. Los guiones y los espacios no importan al introducirlo."
+        ],
+        [
+          "O ni siquiera hace falta copiarlo.",
+          "Basta con pulsar el código en el PDF o apuntar con la cámara del móvil al código QR: el sitio se abre con el código ya introducido."
+        ],
+        [
+          "Un código, un informe.",
+          "El código es válido durante {months} meses y funciona en cualquier idioma del sitio: el informe llega en el idioma en que se introdujo."
+        ]
+      ],
+      "howTitle": "Cómo se usa el certificado",
+      "howLead": "Puede reenviar estas instrucciones a quien reciba el regalo: también vienen impresas en el certificado.",
+      "how": [
+        [
+          "Haga el test",
+          "Entre en {site} y pulse «Empezar el test»: 24 bloques de cuatro afirmaciones, unos 10 minutos. No hace falta registrarse."
+        ],
+        [
+          "Pulse «Tengo un código»",
+          "En la pantalla del resultado, busque el bloque «Informe ampliado», justo después de la descripción del perfil. Debajo del botón «Comprar» está el enlace «Tengo un código»."
+        ],
+        [
+          "Introduzca el código y su correo",
+          "Pegue el código del certificado y la dirección a la que quiere recibir el informe, y pulse «Recibir el informe». Llegará en pocos minutos; si no lo ve, revise la carpeta de correo no deseado."
+        ]
+      ],
+      "mock": {
+        "head": "Test DISC",
+        "start": "Empezar el test",
+        "block": "Informe ampliado",
+        "email": "Correo electrónico",
+        "buy": "Comprar",
+        "code": "Tengo un código",
+        "codeLabel": "Código",
+        "get": "Recibir el informe",
+        "emailSample": "lucia@example.com"
+      },
+      "howNote": "Si se abre el sitio con el enlace o el código QR del certificado, el código se introduce automáticamente: solo queda hacer el test y escribir el correo. Si ya hizo el test, abra su resultado (el enlace está en el correo con el resultado) e introduzca allí el código.",
+      "getTitle": "Qué recibe la persona",
+      "getLead": "El informe DISC ampliado: más de 25 páginas sobre su perfil, con su nombre en cada página. Lo que no está en el informe gratuito, pero sí en el ampliado:",
+      "sheetAlt": "Página {n} del informe ampliado de ejemplo",
+      "more": "Más información sobre el informe ampliado",
+      "order": {
+        "title": "Encargar certificados",
+        "qtyTitle": "¿Cuántos certificados?",
+        "less": "Menos",
+        "moreBtn": "Más",
+        "qtyLabel": "Número de certificados",
+        "units": {
+          "one": "certificado",
+          "many": "certificados",
+          "other": "certificados"
+        },
+        "money": "{n} USD",
+        "line": "{n} {units} × {unit} = {total}",
+        "off": "{pct} % de descuento",
+        "addMore": "Añada {k} más y cada certificado le saldrá a {unit} ({pct} % de descuento)",
+        "big": "Si necesita más de {max} certificados, vea los {business}.",
+        "businessLink": "paquetes para empresas",
+        "namedTitle": "Nombre en el certificado",
+        "named": [
+          [
+            "Sin nombre",
+            "El certificado sirve para cualquier persona: puede sortearlo o regalarlo más adelante"
+          ],
+          [
+            "Nominativos",
+            "Ponemos el nombre de la persona en cada certificado"
+          ]
+        ],
+        "toTitle": "¿Adónde enviamos los certificados?",
+        "to": [
+          [
+            "Todos a mi correo",
+            "Le enviamos todos los archivos en un solo correo para que los reenvíe o los imprima usted"
+          ],
+          [
+            "A cada destinatario",
+            "Cada persona recibe un correo con su certificado, y usted, una copia de todos los archivos"
+          ]
+        ],
+        "recipBoth": "Nombres y correos de los destinatarios",
+        "recipNames": "Nombres de los destinatarios",
+        "recipEmails": "Correos de los destinatarios",
+        "paste": "Pegar una lista",
+        "pasteHint": "Un destinatario por línea: {fmt}. Puede copiar las columnas de una hoja de Excel.",
+        "fmtBoth": "nombre, correo",
+        "fmtName": "nombre",
+        "fmtEmail": "correo",
+        "pasteApply": "Rellenar",
+        "namePh": "Nombre y apellidos",
+        "emailPh": "Correo electrónico",
+        "nameAria": "Nombre del destinatario {n}",
+        "emailAria": "Correo del destinatario {n}",
+        "signTitle": "Firma y su correo",
+        "fromLabel": "De parte de",
+        "fromOptional": "(opcional)",
+        "fromPh": "Por ejemplo: el equipo de Ventas",
+        "fromHint": "La línea «De parte de» aparecerá en cada certificado",
+        "emailLabel": "Su correo electrónico",
+        "emailHint": "Aquí recibirá los certificados y la confirmación del pago",
+        "emailHintEach": "Aquí recibirá una copia de todos los certificados y la confirmación del pago",
+        "agreeNamed": "Los destinatarios saben que les regalo un certificado y están de acuerdo en que su nombre figure en él",
+        "agreeEach": "Los destinatarios saben que les envío un certificado y aceptan recibirlo en las direcciones indicadas",
+        "agreeBoth": "Los destinatarios saben que les regalo un certificado y están de acuerdo en que su nombre figure en él y en recibirlo en la dirección indicada",
+        "previewTitle": "Así quedará el certificado",
+        "previewName": "Nombre del destinatario",
+        "sumNamed": "nominativos",
+        "sumPlain": "sin nombre",
+        "sumEach": "a cada destinatario",
+        "sumMe": "a su correo",
+        "pay": "Pagar {total}",
+        "wait": "Abriendo la página de pago…",
+        "note": "Al pulsar «Pagar», acepta las {offer}. Los datos de la tarjeta se introducen en una página de pago segura. Los certificados le llegarán justo después del pago.",
+        "check": "Revise: {what}.",
+        "checkEmail": "su correo electrónico",
+        "checkNames": "los nombres de los destinatarios",
+        "checkEmails": "los correos de los destinatarios",
+        "checkAgree": "la casilla de consentimiento de los destinatarios",
+        "error": "No se ha podido abrir la página de pago. Inténtelo de nuevo dentro de un minuto o escríbanos a {email}.",
+        "priceChanged": "El precio acaba de cambiar: revise el importe y vuelva a pulsar «Pagar».",
+        "status": {
+          "wait": "Comprobando el pago…",
+          "paid": "Pago recibido. Estamos preparando los certificados: el correo llegará a {email} en pocos minutos.",
+          "sent": "Listo: los certificados se han enviado a {email}. Si no ve el correo, revise la carpeta de correo no deseado.",
+          "failed": "El pago no se ha completado. Puede intentarlo de nuevo.",
+          "thanks": "¡Gracias! Si el pago se ha completado, el correo con los certificados llegará en pocos minutos."
+        }
+      },
+      "recipient": {
+        "eyebrow": "Un regalo para usted",
+        "title": "Le han regalado el informe DISC ampliado",
+        "text": "El código del certificado {code} ya está guardado en este dispositivo. Haga el test: en la pantalla del resultado, el código aparecerá automáticamente en el bloque «Informe ampliado» y solo tendrá que escribir su correo.",
+        "start": "Hacer el test",
+        "result": "Abrir mi resultado",
+        "resultNote": "¿Ya hizo el test en este dispositivo? Abra su resultado: el código también aparecerá allí.",
+        "bad": "No hemos podido reconocer el enlace del certificado. Introduzca el código a mano: haga el test y, en la pantalla del resultado, pulse «Tengo un código»."
+      },
+      "faqTitle": "Preguntas frecuentes",
+      "faq": [
+        {
+          "q": "¿El test es de pago?",
+          "a": "No. El test y el resultado breve del sitio son gratuitos para todo el mundo. El certificado paga el informe ampliado: más de 25 páginas sobre el perfil de la persona."
+        },
+        {
+          "q": "¿Cuánto tiempo es válido el certificado?",
+          "a": "{months} meses desde la fecha de compra; la fecha de caducidad viene impresa en el certificado. Cada código da derecho a un informe."
+        },
+        {
+          "q": "¿Y si la persona ya hizo el test?",
+          "a": "No tiene que repetirlo: basta con abrir su resultado (el enlace está en el correo con el resultado o en el dispositivo donde hizo el test) e introducir el código en el bloque «Informe ampliado»."
+        },
+        {
+          "q": "¿Podré ver los resultados de los destinatarios?",
+          "a": "No. El resultado y el informe solo los ve la persona que recibe el regalo. A usted solo le informamos de qué certificados se han usado ya."
+        },
+        {
+          "q": "He perdido el certificado o no me ha llegado el correo",
+          "a": "Escríbanos a {email} desde la dirección con la que pagó e indique el número de pedido: le volveremos a enviar los certificados."
+        },
+        {
+          "q": "¿Puedo pedir un reembolso?",
+          "a": "Sí, de los certificados que no se hayan usado, mientras sigan vigentes: escríbanos a {email} e indique el número de pedido. Le devolvemos lo que pagó por cada certificado sin usar, y su código deja de funcionar. Si el código de un certificado ya se introdujo en el sitio, ese certificado no se reembolsa. Más información en la {refund}."
+        },
+        {
+          "q": "¿Compra para una empresa o un equipo grande?",
+          "a": "Si necesita más de 50 certificados o prefiere un paquete de códigos para su plantilla, eche un vistazo a los {business}."
+        }
+      ],
+      "refundLink": "política de reembolso",
+      "services": {
+        "name": "Certificados de regalo",
+        "text": "El informe ampliado como regalo para sus compañeros, su equipo o sus seres queridos: un certificado en PDF con código, válido durante {months} meses. Puede hacerlos nominativos y enviar cada uno directamente a su destinatario.",
+        "price": "{price} USD; a partir de {from} unidades, {pct} % de descuento",
+        "more": "Elegir certificados"
+      },
+      "cert": {
+        "brand": "Test DISC",
+        "eyebrow": "Certificado de regalo",
+        "title": "Informe DISC ampliado",
+        "to": "Para",
+        "from": "De parte de",
+        "desc": "Un informe personal sobre su estilo de comportamiento en el trabajo, de más de 25 páginas: cómo le ven los demás, conversaciones con su jefe, carrera, conflictos y un plan de 30 días.",
+        "codeLabel": "Su código",
+        "hint": "Pulse el código o apunte con la cámara del móvil al código QR: el sitio se abrirá con el código ya introducido",
+        "stepsTitle": "Cómo recibir el informe",
+        "steps": [
+          [
+            "Haga el test gratuito",
+            "en {site}: 24 bloques, unos 10 minutos"
+          ],
+          [
+            "En la pantalla del resultado",
+            "pulse «Tengo un código» en el bloque «Informe ampliado»"
+          ],
+          [
+            "Introduzca el código y su correo",
+            "El informe le llegará por correo en pocos minutos"
+          ]
+        ],
+        "until": "Válido hasta el {date}",
+        "questions": "Preguntas: {email}",
+        "sample": "Ejemplo",
+        "file": "Certificado de regalo DISC"
+      },
+      "mail": {
+        "subject": "Certificados de regalo DISC: pedido {order}",
+        "partOf": "(correo {part} de {parts})",
+        "hello": "Hola:",
+        "intro": "¡Gracias por su compra! Le adjuntamos {n} {units} para el informe DISC ampliado: cada certificado es un PDF independiente con su código. Los certificados son válidos hasta el {until}.",
+        "units": {
+          "one": "certificado de regalo",
+          "many": "certificados de regalo",
+          "other": "certificados de regalo"
+        },
+        "partNote": "Como son muchos certificados, se los enviamos en varios correos: este es el {part} de {parts}.",
+        "each": "Hemos enviado a cada destinatario un correo con su certificado:",
+        "forward": "Reenvíe el archivo a la persona o imprima el certificado y entrégueselo en mano.",
+        "howTitle": "Cómo usará el certificado quien lo reciba:",
+        "refund": "Puede pedir el reembolso de un certificado sin usar mientras siga vigente: escríbanos a {email} e indique el número de pedido.",
+        "bye": "¡Gracias por elegirnos!",
+        "order": "Pedido {order}."
+      },
+      "rmail": {
+        "subject": "Un regalo para usted: el informe DISC ampliado",
+        "hello": "Hola:",
+        "helloName": "Hola, {name}:",
+        "intro": "Le han regalado el informe DISC ampliado: un análisis personal de su forma de trabajar, de más de 25 páginas. Cómo le ven los demás, conversaciones con su jefe, carrera, conflictos y un plan de 30 días.",
+        "fromLine": "De parte de: {from}",
+        "button": "Recibir el informe",
+        "buttonNote": "El botón abre el sitio con el código ya introducido: solo tendrá que hacer el test y escribir su correo.",
+        "howTitle": "Cómo recibir el informe:",
+        "attach": "El certificado con el código va adjunto a este correo: puede guardarlo o imprimirlo.",
+        "bye": "¡Que disfrute de la lectura!",
+        "why": "Su dirección nos la facilitó la persona que le regaló el certificado. No recibirá más correos nuestros, salvo que usted mismo se suscriba."
+      },
+      "name": "Certificados de regalo para el informe DISC ampliado"
     },
     "kit": {
       "title": "Kit para facilitadores DISC: guion de la sesión, diapositivas y hoja del grupo",
@@ -2579,6 +2867,7 @@
     "nav.materials": "Materiales sobre DISC",
     "nav.howMade": "Cómo se hacen los informes",
     "nav.business": "Para empresas",
+    "nav.gift": "Certificados de regalo",
 
     "pages.styles.title": "Tipos de personalidad DISC: cuatro estilos D, I, S, C y sus rasgos",
     "pages.styles.description": "Los cuatro tipos de personalidad DISC: dominancia, influencia, estabilidad y cumplimiento. Rasgos, puntos fuertes, áreas de mejora y reacción al estrés.",
@@ -2707,7 +2996,7 @@
     "pd.consentLink": "consentimiento para el tratamiento de datos personales",
     "pd.required": "Marque la casilla de consentimiento para el tratamiento de datos personales: sin él no podemos aceptar sus datos.",
     "pd.cookieAsk": "Este sitio guarda su progreso, su resultado y el idioma elegido en el almacenamiento local del navegador. Con su consentimiento, un servicio de analítica web recopilará estadísticas de visitas anonimizadas y una grabación de las acciones en la página para ayudarnos a mejorar el sitio. Su nombre, su correo y su resultado no se envían al servicio de analítica.",
-    "pd.cookieDetails": "En el navegador se guardan: el nombre y el correo, si usted los indicó; sus respuestas y el progreso sin terminar; su último resultado; el momento en que terminó el test por primera vez, para el plazo del precio especial del informe; el idioma elegido; un indicador de que ha visto este aviso. Estos datos permanecen en su dispositivo y se eliminan al borrar los datos del sitio. El servicio de alojamiento recibe los datos técnicos habituales de la solicitud. La primera vez que abre el sitio en un día, se envía al servidor del sitio una marca anónima de visita: solo el idioma de la versión del sitio; el servidor la registra con la hora de llegada y su navegador guarda la fecha para no volver a enviarla ese mismo día. Con estas marcas contamos cuántas personas visitan el sitio. Al empezar el test, se envía al servidor del sitio una marca anónima de inicio: solo el idioma de la versión del sitio. Al terminar el test, se envía al servidor del sitio un registro anónimo para la estadística general: el perfil obtenido y el idioma de la versión del sitio, sin nombre, correo ni respuestas. Cuando pulsa «Guardar en PDF», sus respuestas y la fecha del test —sin nombre ni correo— se envían al servidor del sitio, que genera el archivo del informe breve, se lo devuelve y no guarda nada. Cuando envía el resultado por correo, el nombre, el correo y las respuestas se transmiten al servidor del sitio, que le envía el correo con el resultado y guarda el nombre, el correo, la fecha y el resultado en la base de resultados del propietario del sitio. Cuando se suscribe al boletín en la página de inicio, el correo y el idioma de la versión del sitio se transmiten al servidor del sitio, que le envía un mensaje con un enlace de confirmación y guarda la dirección en la misma base; si no confirma la suscripción, la dirección se elimina al cabo de 7 días. Cuando solicita el cuestionario del test por correo en la página «Test en PDF», el correo y el idioma de la versión del sitio se transmiten al servidor del sitio, que le envía un mensaje con el cuestionario y guarda el registro del consentimiento junto con la dirección; si marcó el consentimiento para el boletín, la dirección se guarda de inmediato en la lista de suscriptores y el mensaje incluye un enlace para darse de baja. El servicio de analítica web recibe la dirección de la página (en la pantalla del resultado, junto con el código del resultado: sus respuestas, la fecha del test y su nombre si lo indicó, pero no su correo), la procedencia, el tipo de dispositivo y navegador y una grabación de las acciones en la página (los campos de nombre y correo quedan excluidos), y establece sus propias cookies. Puede bloquearlo en la configuración del navegador o con un bloqueador de rastreadores. No se usan rastreadores publicitarios.",
+    "pd.cookieDetails": "En el navegador se guardan: el nombre y el correo, si usted los indicó; sus respuestas y el progreso sin terminar; su último resultado; el momento en que terminó el test por primera vez, para el plazo del precio especial del informe; el código del certificado de regalo, si abrió el sitio con el enlace de un certificado; el idioma elegido; un indicador de que ha visto este aviso. Estos datos permanecen en su dispositivo y se eliminan al borrar los datos del sitio. El servicio de alojamiento recibe los datos técnicos habituales de la solicitud. La primera vez que abre el sitio en un día, se envía al servidor del sitio una marca anónima de visita: solo el idioma de la versión del sitio; el servidor la registra con la hora de llegada y su navegador guarda la fecha para no volver a enviarla ese mismo día. Con estas marcas contamos cuántas personas visitan el sitio. Al empezar el test, se envía al servidor del sitio una marca anónima de inicio: solo el idioma de la versión del sitio. Al terminar el test, se envía al servidor del sitio un registro anónimo para la estadística general: el perfil obtenido y el idioma de la versión del sitio, sin nombre, correo ni respuestas. Cuando pulsa «Guardar en PDF», sus respuestas y la fecha del test —sin nombre ni correo— se envían al servidor del sitio, que genera el archivo del informe breve, se lo devuelve y no guarda nada. Cuando envía el resultado por correo, el nombre, el correo y las respuestas se transmiten al servidor del sitio, que le envía el correo con el resultado y guarda el nombre, el correo, la fecha y el resultado en la base de resultados del propietario del sitio. Cuando se suscribe al boletín en la página de inicio, el correo y el idioma de la versión del sitio se transmiten al servidor del sitio, que le envía un mensaje con un enlace de confirmación y guarda la dirección en la misma base; si no confirma la suscripción, la dirección se elimina al cabo de 7 días. Cuando solicita el cuestionario del test por correo en la página «Test en PDF», el correo y el idioma de la versión del sitio se transmiten al servidor del sitio, que le envía un mensaje con el cuestionario y guarda el registro del consentimiento junto con la dirección; si marcó el consentimiento para el boletín, la dirección se guarda de inmediato en la lista de suscriptores y el mensaje incluye un enlace para darse de baja. Cuando encarga certificados de regalo, su correo, la línea «De parte de» y —si los indicó— los nombres y los correos de los destinatarios se transmiten al servidor del sitio, que crea el pedido y, tras el pago, envía los certificados; los nombres y los correos de los destinatarios se eliminan 30 días después del envío. El servicio de analítica web recibe la dirección de la página (en la pantalla del resultado, junto con el código del resultado: sus respuestas, la fecha del test y su nombre si lo indicó, pero no su correo), la procedencia, el tipo de dispositivo y navegador y una grabación de las acciones en la página (los campos de nombre y correo quedan excluidos), y establece sus propias cookies. Puede bloquearlo en la configuración del navegador o con un bloqueador de rastreadores. No se usan rastreadores publicitarios.",
     "pd.cookieChange": "Cambiar la elección de cookies",
 
     "print.title": "Test DISC para imprimir: cuestionario con clave y puntuación",

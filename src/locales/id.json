@@ -720,7 +720,8 @@
           "Jika Anda membeli Paket Fasilitator, kami memproses alamat email Anda dan data pesanan: tanggal, jumlah, nomor, dan status pembayaran. Data ini diperlukan untuk mengirimkan email berisi tautan ke file paket, menjawab pertanyaan Anda, dan memproses pengembalian dana; dasarnya adalah perjanjian berdasarkan {offer}. Data pesanan paket disimpan dengan cara yang sama seperti data pesanan profil lengkap; email pengingat tentang pembayaran paket yang belum selesai tidak dikirim."
         ]
       },
-      "purchaseCode": "Jika Anda memperoleh profil lengkap dengan kode akses yang dibeli oleh organisasi atau orang lain, kami memproses data yang sama, kecuali data pembayaran, dan mencatat bahwa kode tersebut telah digunakan. Kepada pembeli kode, kami hanya memberitahukan apakah kode telah digunakan dan kapan: hasil, laporan, dan email Anda tidak diteruskan kepadanya. Dasarnya adalah perjanjian yang Anda adakan dengan memasukkan kode berdasarkan {offer}."
+      "purchaseCode": "Jika Anda memperoleh profil lengkap dengan kode akses yang dibeli oleh organisasi atau orang lain, kami memproses data yang sama, kecuali data pembayaran, dan mencatat bahwa kode tersebut telah digunakan. Kepada pembeli kode, kami hanya memberitahukan apakah kode telah digunakan dan kapan: hasil, laporan, dan email Anda tidak diteruskan kepadanya. Dasarnya adalah perjanjian yang Anda adakan dengan memasukkan kode berdasarkan {offer}.",
+      "purchaseGift": "Jika Anda membeli voucher hadiah, kami memproses alamat email Anda, data pesanan (tanggal, jumlah, nomor, dan status pembayaran), baris “Dari”, serta — jika Anda mencantumkannya — nama dan alamat email para penerima. Alamat email dan data pesanan Anda diperlukan untuk mengirimkan voucher dan bukti pembayaran kepada Anda, menjawab pertanyaan Anda, dan memproses pengembalian dana; data ini disimpan dengan cara yang sama seperti data pesanan profil lengkap. Nama penerima dicetak pada vouchernya, dan ke alamat email penerima hanya dikirim satu email berisi vouchernya; nama dan alamat email penerima kami hapus 30 hari setelah voucher dikirim (untuk pesanan yang tidak dibayar, setelah 7 hari). Dengan mencantumkan data penerima, Anda menegaskan bahwa mereka setuju menerima voucher. Dasar pemrosesannya adalah perjanjian berdasarkan {offer}, dan penerima voucher adalah pihak yang memperoleh manfaat dari perjanjian tersebut. Penerima yang memasukkan kode voucher di situs memperoleh profil lengkap dengan cara yang sama seperti dengan kode akses: kepada orang yang menghadiahkan voucher, kami hanya memberitahukan apakah voucher sudah digunakan dan kapan."
     },
     "consentDoc": {
       "title": "Persetujuan atas Pemrosesan Data Pribadi — Tes DISC",
@@ -833,7 +834,7 @@
         "Kirim permintaan lewat formulir di bagian bawah halaman: berapa laporan yang dibutuhkan dan untuk siapa. Kami membalas dalam satu hari kerja.",
         "Kami mengirim tautan untuk membayar dengan kartu. Setelah pembayaran, kami mengirim kode-kodenya dalam sebuah file.",
         "Kirim tautan tes dan satu kode kepada setiap orang. Tes memakan waktu sekitar 10 menit, tanpa registrasi.",
-        "Di layar hasil, orang tersebut menekan “Saya punya kode dari organisasi”, lalu memasukkan kode dan alamat emailnya. Laporan dikirim kepadanya lewat email dalam beberapa menit.",
+        "Di layar hasil, orang tersebut menekan “Saya punya kode”, lalu memasukkan kode dan alamat emailnya. Laporan dikirim kepadanya lewat email dalam beberapa menit.",
         "Jika Anda minta, kami memberi tahu berapa kode yang sudah dipakai."
       ],
       "privacyTitle": "Hasil tetap milik masing-masing orang",
@@ -1197,13 +1198,13 @@
         "wait": "Membuka halaman pembayaran …",
         "error": "Halaman pembayaran belum bisa dibuka. Coba lagi beberapa menit lagi atau tulis kepada kami di {email}.",
         "code": {
-          "link": "Saya punya kode dari organisasi",
+          "link": "Saya punya kode",
           "label": "Kode akses",
           "placeholder": "XXXX-XXXX-XXXX",
           "button": "Dapatkan laporan",
           "back": "Beli tanpa kode",
           "wait": "Memeriksa kode …",
-          "note": "Laporan dengan kode ini sudah dibayar oleh pihak yang memberi Anda kode: Anda tidak perlu membayar. Hasil dan email Anda tidak kami teruskan kepada mereka. Dengan menekan “Dapatkan laporan”, Anda menerima {offer} kami.",
+          "note": "Laporan dengan kode ini sudah dibayar oleh pihak yang memberikan atau menghadiahkan kode kepada Anda: Anda tidak perlu membayar. Hasil dan email Anda tidak kami teruskan kepada mereka. Dengan menekan “Dapatkan laporan”, Anda menerima {offer} kami.",
           "badEmail": "Periksa alamat email Anda: laporan dikirim ke alamat itu.",
           "empty": "Masukkan kode akses.",
           "done": "Kode diterima. Laporan akan dikirim ke {to} dalam beberapa menit. Jika email belum masuk, periksa folder spam.",
@@ -1561,6 +1562,289 @@
         "text": "Tes ini menunjukkan warna utama dan warna sekunder Anda, seberapa kuat masing-masing dalam persen, dan apa artinya bagi Anda. 24 soal, sekitar 10 menit, tanpa pendaftaran.",
         "button": "Ketahui warna Anda"
       }
+    },
+    "gift": {
+      "title": "Voucher Hadiah Laporan DISC Mendalam",
+      "description": "Hadiahkan laporan DISC mendalam untuk rekan kerja dan orang terdekat: voucher PDF berisi kode, berlaku {months} bulan, diskon {pct}% mulai {from} voucher.",
+      "eyebrow": "Hadiah",
+      "h1": "Voucher hadiah laporan DISC mendalam",
+      "lead": "Hadiahkan laporan pribadi tentang gaya kerja untuk rekan kerja, tim, atau orang-orang terdekat Anda. Setiap voucher berupa file PDF berisi kode: penerima mengikuti tes, memasukkan kode, lalu mendapatkan laporan mendalam tanpa membayar.",
+      "facts": [
+        "PDF berisi kode",
+        "Berlaku {months} bulan",
+        "Diskon {pct}% mulai {from} voucher",
+        "US${price} per voucher"
+      ],
+      "cta": "Pilih voucher",
+      "sampleLink": "Lihat contoh",
+      "whoTitle": "Cocok untuk siapa",
+      "who": [
+        [
+          "Rekan kerja dan tim",
+          "untuk ulang tahun, hari raya, akhir proyek, atau satu tahun pertama di perusahaan"
+        ],
+        [
+          "Karyawan baru",
+          "agar sejak minggu-minggu pertama memahami gaya kerjanya sendiri dan gaya atasannya"
+        ],
+        [
+          "Peserta pelatihan",
+          "sebagai kelanjutan sesi: setiap orang mendapat laporan tentang dirinya sendiri"
+        ],
+        [
+          "Teman dan keluarga",
+          "yang sedang mencari kerja, berganti peran, atau ingin lebih mengenal diri sendiri"
+        ]
+      ],
+      "sampleTitle": "Seperti apa vouchernya",
+      "sampleText": "Setiap voucher adalah file PDF terpisah berukuran A4: bisa diteruskan, dicetak, atau diserahkan langsung. Di dalamnya ada kode, kode QR, dan petunjuk singkat — penerima tidak perlu mencari apa-apa lagi.",
+      "tabsLabel": "Jenis voucher",
+      "tabs": [
+        "Atas nama",
+        "Tanpa nama"
+      ],
+      "sampleName": "Putri Rahmawati",
+      "sampleFrom": "Tim Penjualan",
+      "samplePdf": "Contoh dalam PDF: {named} · {plain}",
+      "samplePdfNamed": "atas nama",
+      "samplePdfPlain": "tanpa nama",
+      "ticks": [
+        [
+          "Kode mudah disalin.",
+          "Di dalam file, kode berupa teks biasa: blok lalu salin — tanda hubung dan spasi tidak jadi masalah saat kode dimasukkan."
+        ],
+        [
+          "Atau tidak perlu disalin sama sekali.",
+          "Klik kode di PDF atau arahkan kamera ponsel ke kode QR — situs akan terbuka dengan kode yang sudah terisi."
+        ],
+        [
+          "Satu kode, satu laporan.",
+          "Kode berlaku {months} bulan dan bisa dipakai di semua versi bahasa situs: laporan dikirim dalam bahasa tempat kode dimasukkan."
+        ]
+      ],
+      "howTitle": "Cara memakai voucher",
+      "howLead": "Petunjuk ini bisa Anda teruskan kepada penerima — isinya sama dengan yang tercetak di voucher.",
+      "how": [
+        [
+          "Ikuti tes",
+          "Buka {site} dan tekan “Mulai tes”: 24 soal, masing-masing berisi empat pernyataan, sekitar 10 menit. Tanpa pendaftaran."
+        ],
+        [
+          "Tekan “Saya punya kode”",
+          "Di layar hasil, cari bagian “Laporan mendalam” — letaknya tepat setelah uraian profil. Di bawah tombol “Beli” ada tautan “Saya punya kode”."
+        ],
+        [
+          "Masukkan kode dan email",
+          "Tempel kode dari voucher dan alamat email untuk menerima laporan, lalu tekan “Dapatkan laporan”. Laporan akan masuk dalam beberapa menit; jika belum ada, periksa folder spam."
+        ]
+      ],
+      "mock": {
+        "head": "Tes DISC",
+        "start": "Mulai tes",
+        "block": "Laporan mendalam",
+        "email": "Email",
+        "buy": "Beli",
+        "code": "Saya punya kode",
+        "codeLabel": "Kode akses",
+        "get": "Dapatkan laporan",
+        "emailSample": "putri@example.com"
+      },
+      "howNote": "Jika situs dibuka lewat tautan atau kode QR dari voucher, kode akan terisi sendiri — tinggal ikuti tes dan masukkan email. Jika sudah pernah mengikuti tes, buka hasil Anda (tautannya ada di email berisi hasil) dan masukkan kode di sana.",
+      "getTitle": "Apa yang didapat penerima",
+      "getLead": "Laporan DISC mendalam — lebih dari 25 halaman tentang profilnya sendiri, dengan nama penerima di setiap halaman. Yang tidak ada di laporan gratis, tetapi ada di laporan mendalam:",
+      "sheetAlt": "Halaman {n} contoh laporan mendalam",
+      "more": "Selengkapnya tentang laporan mendalam",
+      "order": {
+        "title": "Pesan voucher",
+        "qtyTitle": "Jumlah voucher",
+        "less": "Kurangi",
+        "moreBtn": "Tambah",
+        "qtyLabel": "Jumlah voucher",
+        "units": {
+          "other": "voucher"
+        },
+        "money": "US${n}",
+        "line": "{n} {units} × {unit} = {total}",
+        "off": "diskon {pct}%",
+        "addMore": "Tambah {k} lagi, dan harga setiap voucher menjadi {unit} (diskon {pct}%)",
+        "big": "Butuh lebih dari {max} voucher? Lihat {business}.",
+        "businessLink": "paket untuk organisasi",
+        "namedTitle": "Nama di voucher",
+        "named": [
+          [
+            "Tanpa nama",
+            "Voucher bisa diberikan kepada siapa saja — misalnya untuk undian atau diserahkan belakangan"
+          ],
+          [
+            "Atas nama",
+            "Kami cantumkan nama penerima di setiap voucher"
+          ]
+        ],
+        "toTitle": "Ke mana voucher dikirim",
+        "to": [
+          [
+            "Semua ke email saya",
+            "Semua file kami kirim dalam satu email — Anda sendiri yang meneruskan atau mencetaknya"
+          ],
+          [
+            "Langsung ke setiap penerima",
+            "Setiap penerima mendapat email berisi vouchernya, dan Anda menerima salinan semua file"
+          ]
+        ],
+        "recipBoth": "Nama dan email penerima",
+        "recipNames": "Nama penerima",
+        "recipEmails": "Email penerima",
+        "paste": "Tempel daftar",
+        "pasteHint": "Satu penerima per baris: {fmt}. Anda bisa menyalin kolom dari tabel Excel.",
+        "fmtBoth": "nama, email",
+        "fmtName": "nama",
+        "fmtEmail": "email",
+        "pasteApply": "Isi",
+        "namePh": "Nama lengkap",
+        "emailPh": "Email",
+        "nameAria": "Nama penerima {n}",
+        "emailAria": "Email penerima {n}",
+        "signTitle": "Pengirim dan email Anda",
+        "fromLabel": "Dari",
+        "fromOptional": "— opsional",
+        "fromPh": "Misalnya: Tim Penjualan",
+        "fromHint": "Baris “Dari” akan tercantum di setiap voucher",
+        "emailLabel": "Email Anda",
+        "emailHint": "Voucher dan bukti pembayaran akan dikirim ke sini",
+        "emailHintEach": "Salinan semua voucher dan bukti pembayaran akan dikirim ke sini",
+        "agreeNamed": "Para penerima tahu bahwa saya memberi mereka voucher dan setuju nama mereka dicantumkan di voucher",
+        "agreeEach": "Para penerima tahu bahwa saya mengirimkan voucher kepada mereka dan setuju menerimanya di alamat email yang saya cantumkan",
+        "agreeBoth": "Para penerima tahu bahwa saya memberi mereka voucher dan setuju nama mereka dicantumkan di voucher serta voucher dikirim ke alamat email yang saya cantumkan",
+        "previewTitle": "Seperti inilah voucher Anda nanti",
+        "previewName": "Nama penerima",
+        "sumNamed": "atas nama",
+        "sumPlain": "tanpa nama",
+        "sumEach": "ke setiap penerima",
+        "sumMe": "ke email Anda",
+        "pay": "Bayar {total}",
+        "wait": "Membuka halaman pembayaran …",
+        "note": "Dengan menekan “Bayar”, Anda menerima {offer} kami. Data kartu Anda masukkan di halaman pembayaran yang aman. Voucher dikirim segera setelah pembayaran.",
+        "check": "Periksa: {what}.",
+        "checkEmail": "email Anda",
+        "checkNames": "nama penerima",
+        "checkEmails": "email penerima",
+        "checkAgree": "centang persetujuan penerima",
+        "error": "Halaman pembayaran belum bisa dibuka. Coba lagi dalam satu menit atau tulis kepada kami di {email}.",
+        "priceChanged": "Harga baru saja berubah — periksa jumlahnya, lalu tekan “Bayar” sekali lagi.",
+        "status": {
+          "wait": "Memeriksa pembayaran …",
+          "paid": "Pembayaran berhasil. Kami sedang menyiapkan voucher — email akan masuk ke {email} dalam beberapa menit.",
+          "sent": "Selesai: voucher sudah dikirim ke {email}. Jika email belum masuk, periksa folder spam.",
+          "failed": "Pembayaran tidak berhasil. Silakan coba lagi.",
+          "thanks": "Terima kasih! Jika pembayaran berhasil, email berisi voucher akan masuk dalam beberapa menit."
+        }
+      },
+      "recipient": {
+        "eyebrow": "Hadiah untuk Anda",
+        "title": "Anda mendapat hadiah laporan DISC mendalam",
+        "text": "Kode voucher {code} sudah tersimpan di perangkat ini. Ikuti tes — di layar hasil, kode akan terisi sendiri di bagian “Laporan mendalam”, tinggal masukkan email.",
+        "start": "Ikuti tes",
+        "result": "Buka hasil saya",
+        "resultNote": "Sudah pernah mengikuti tes di perangkat ini? Buka hasil Anda — kode juga akan terisi di sana.",
+        "bad": "Tautan dari voucher tidak dikenali. Masukkan kode secara manual: ikuti tes, lalu di layar hasil tekan “Saya punya kode”."
+      },
+      "faqTitle": "Pertanyaan",
+      "faq": [
+        {
+          "q": "Apakah tesnya berbayar?",
+          "a": "Tidak. Tes dan hasil ringkas di situs gratis untuk semua orang. Voucher membayar laporan DISC mendalam — lebih dari 25 halaman tentang profil penerimanya."
+        },
+        {
+          "q": "Berapa lama voucher berlaku?",
+          "a": "{months} bulan sejak tanggal pembelian — tanggal berakhirnya tercantum di voucher. Satu kode untuk satu laporan."
+        },
+        {
+          "q": "Bagaimana jika penerima sudah pernah mengikuti tes?",
+          "a": "Tidak perlu mengulang: cukup buka hasilnya (tautannya ada di email berisi hasil, atau di perangkat tempat tes dikerjakan) dan masukkan kode di bagian “Laporan mendalam”."
+        },
+        {
+          "q": "Apakah saya bisa melihat hasil penerima?",
+          "a": "Tidak. Hasil dan laporan hanya bisa dilihat oleh penerima sendiri. Kami hanya memberi tahu Anda voucher mana yang sudah digunakan."
+        },
+        {
+          "q": "Voucher hilang atau email tidak sampai",
+          "a": "Tulis ke {email} dari alamat yang Anda pakai saat membayar dan sebutkan nomor pesanan — kami akan mengirim ulang vouchernya."
+        },
+        {
+          "q": "Apakah uang bisa dikembalikan?",
+          "a": "Bisa, untuk voucher yang belum digunakan dan masih berlaku: tulis ke {email} dan sebutkan nomor pesanan. Untuk setiap voucher yang belum digunakan, kami mengembalikan harga yang Anda bayar untuk voucher itu, dan kodenya tidak berlaku lagi. Voucher yang kodenya sudah dimasukkan di situs tidak dapat dikembalikan dananya. Selengkapnya di halaman {refund}."
+        },
+        {
+          "q": "Membeli untuk perusahaan atau tim?",
+          "a": "Jika Anda membutuhkan lebih dari 50 voucher atau paket kode akses untuk karyawan, klien, atau peserta pelatihan, lihat {business}."
+        }
+      ],
+      "refundLink": "“Kebijakan Pengembalian Dana”",
+      "services": {
+        "name": "Voucher hadiah",
+        "text": "Laporan DISC mendalam sebagai hadiah untuk rekan kerja, tim, atau orang terdekat: voucher PDF berisi kode, berlaku {months} bulan. Voucher bisa dibuat atas nama dan dikirim langsung ke setiap penerima.",
+        "price": "US${price}, diskon {pct}% mulai {from} voucher",
+        "more": "Pilih voucher"
+      },
+      "cert": {
+        "brand": "Tes DISC",
+        "eyebrow": "Voucher Hadiah",
+        "title": "Laporan DISC Mendalam",
+        "to": "Untuk",
+        "from": "Dari",
+        "desc": "Laporan pribadi tentang gaya perilaku Anda di tempat kerja — lebih dari 25 halaman: bagaimana orang lain melihat Anda, berbicara dengan atasan, karier, konflik, dan rencana 30 hari.",
+        "codeLabel": "Kode Anda",
+        "hint": "Klik kode atau arahkan kamera ponsel ke kode QR — situs akan terbuka dengan kode yang sudah terisi",
+        "stepsTitle": "Cara mendapatkan laporan",
+        "steps": [
+          [
+            "Ikuti tes gratis",
+            "di {site} — 24 soal, sekitar 10 menit"
+          ],
+          [
+            "Di layar hasil",
+            "pada bagian “Laporan mendalam”, tekan “Saya punya kode”"
+          ],
+          [
+            "Masukkan kode dan email Anda",
+            "Laporan akan masuk ke email dalam beberapa menit"
+          ]
+        ],
+        "until": "Berlaku sampai {date}",
+        "questions": "Pertanyaan: {email}",
+        "sample": "Contoh",
+        "file": "Voucher Hadiah DISC"
+      },
+      "mail": {
+        "subject": "Voucher hadiah DISC — pesanan {order}",
+        "partOf": "(email {part} dari {parts})",
+        "hello": "Halo,",
+        "intro": "Terima kasih atas pembelian Anda! Terlampir {n} {units} untuk laporan DISC mendalam: setiap voucher berupa file PDF terpisah berisi kode. Voucher berlaku sampai {until}.",
+        "units": {
+          "other": "voucher hadiah"
+        },
+        "partNote": "Karena jumlah vouchernya banyak, voucher dikirim dalam beberapa email: ini email {part} dari {parts}.",
+        "each": "Kami sudah mengirim email berisi voucher kepada setiap penerima:",
+        "forward": "Teruskan file ini kepada penerima, atau cetak vouchernya dan serahkan langsung.",
+        "howTitle": "Cara penerima memakai voucher:",
+        "refund": "Voucher yang belum digunakan bisa dikembalikan selama masih berlaku: tulis ke {email} dan sebutkan nomor pesanan.",
+        "bye": "Terima kasih telah memilih kami!",
+        "order": "Pesanan {order}."
+      },
+      "rmail": {
+        "subject": "Hadiah untuk Anda: laporan DISC mendalam",
+        "hello": "Halo,",
+        "helloName": "Halo, {name}!",
+        "intro": "Anda mendapat hadiah laporan DISC mendalam — uraian pribadi tentang gaya kerja Anda, lebih dari 25 halaman: bagaimana orang lain melihat Anda, berbicara dengan atasan, karier, konflik, dan rencana 30 hari.",
+        "fromLine": "Dari: {from}",
+        "button": "Dapatkan laporan",
+        "buttonNote": "Tombol ini membuka situs dengan kode yang sudah terisi: tinggal ikuti tes dan masukkan email Anda.",
+        "howTitle": "Cara mendapatkan laporan:",
+        "attach": "Voucher berisi kode terlampir dalam email ini: Anda bisa menyimpan atau mencetaknya.",
+        "bye": "Selamat membaca!",
+        "why": "Alamat email Anda dicantumkan oleh orang yang menghadiahkan voucher ini. Kami tidak akan mengirim email lain kecuali Anda sendiri berlangganan."
+      },
+      "name": "Voucher hadiah laporan DISC mendalam"
     },
     "kit": {
       "title": "Paket Fasilitator DISC: Panduan Sesi, Slide, dan Tabel Kelompok",
@@ -2560,6 +2844,7 @@
     "nav.materials": "Materi tentang DISC",
     "nav.howMade": "Cara laporan dibuat",
     "nav.business": "Untuk organisasi",
+    "nav.gift": "Voucher hadiah",
 
     "pages.styles.title": "Tipe Kepribadian DISC: 4 Gaya D, I, S, C — Ciri dan Kekuatan",
     "pages.styles.description": "Empat tipe kepribadian (gaya perilaku) DISC: Dominasi, Pengaruh, Kestabilan, Ketelitian. Ciri, kekuatan, area pengembangan, motivasi, dan perilaku saat stres.",
@@ -2688,7 +2973,7 @@
     "pd.consentLink": "persetujuan atas pemrosesan data pribadi",
     "pd.required": "Centang persetujuan atas pemrosesan data pribadi: tanpa persetujuan itu, kami tidak dapat menerima data Anda.",
     "pd.cookieAsk": "Situs ini menyimpan progres, hasil, dan bahasa pilihan Anda di penyimpanan lokal browser. Dengan persetujuan Anda, layanan analitik web akan mengumpulkan statistik kunjungan yang dianonimkan dan rekaman aktivitas di halaman agar kami dapat menyempurnakan situs. Nama, email, dan hasil Anda tidak dikirim ke layanan analitik.",
-    "pd.cookieDetails": "Yang disimpan di browser: nama dan email, jika Anda mengisinya; jawaban dan progres yang belum selesai; hasil terakhir; waktu Anda pertama kali menyelesaikan tes, untuk batas waktu harga khusus laporan; bahasa yang dipilih; penanda bahwa Anda sudah melihat pemberitahuan ini. Data ini tetap berada di perangkat Anda dan terhapus saat Anda menghapus data situs. Layanan hosting menerima data teknis standar dari setiap permintaan. Saat Anda membuka situs untuk pertama kalinya dalam sehari, satu penanda kunjungan anonim dikirim ke server situs: hanya bahasa versi situs; server mencatatnya beserta waktu diterimanya, dan browser Anda menyimpan tanggalnya agar penanda itu tidak dikirim lagi pada hari yang sama. Dengan penanda ini kami menghitung berapa banyak orang yang mengunjungi situs. Saat Anda memulai tes, satu penanda mulai anonim dikirim ke server situs: hanya bahasa versi situs. Saat tes selesai, satu catatan anonim untuk statistik umum dikirim ke server situs: profil yang Anda peroleh dan bahasa versi situs, tanpa nama, email, maupun jawaban. Saat Anda menekan “Simpan sebagai PDF”, jawaban dan tanggal tes — tanpa nama dan email — dikirim ke server situs, yang membuat file laporan ringkas, mengembalikannya kepada Anda, dan tidak menyimpan apa pun. Saat Anda mengirim hasil ke email, nama, email, dan jawaban diteruskan ke server situs: server mengirimkan email berisi hasil kepada Anda dan menyimpan nama, email, tanggal, dan hasil di basis data hasil milik pemilik situs. Saat Anda berlangganan buletin di halaman utama, email dan bahasa versi situs dikirim ke server situs: server mengirimkan email berisi tautan konfirmasi dan menyimpan alamat itu di basis data yang sama; jika langganan tidak dikonfirmasi, alamat itu dihapus setelah 7 hari. Saat Anda meminta lembar tes dikirim ke email di halaman “Tes DISC PDF”, email dan bahasa versi situs dikirim ke server situs: server mengirimkan email berisi lembar tes dan menyimpan penanda persetujuan beserta alamat itu; jika Anda mencentang persetujuan buletin, alamat itu langsung disimpan di daftar pelanggan, dan email tersebut memuat tautan untuk berhenti berlangganan. Layanan analitik web menerima alamat halaman (di layar hasil, bersama kode hasil: jawaban Anda, tanggal tes, dan nama Anda jika Anda mengisinya, tetapi tanpa email Anda), sumber kunjungan, jenis perangkat dan browser, serta rekaman aktivitas di halaman (kolom nama dan email dikecualikan dari rekaman); layanan ini juga memasang cookie miliknya sendiri. Anda dapat memblokirnya melalui pengaturan browser atau dengan pemblokir pelacak. Pelacak iklan tidak digunakan.",
+    "pd.cookieDetails": "Yang disimpan di browser: nama dan email, jika Anda mengisinya; jawaban dan progres yang belum selesai; hasil terakhir; waktu Anda pertama kali menyelesaikan tes, untuk batas waktu harga khusus laporan; kode voucher hadiah, jika Anda membuka situs melalui tautan dari voucher; bahasa yang dipilih; penanda bahwa Anda sudah melihat pemberitahuan ini. Data ini tetap berada di perangkat Anda dan terhapus saat Anda menghapus data situs. Layanan hosting menerima data teknis standar dari setiap permintaan. Saat Anda membuka situs untuk pertama kalinya dalam sehari, satu penanda kunjungan anonim dikirim ke server situs: hanya bahasa versi situs; server mencatatnya beserta waktu diterimanya, dan browser Anda menyimpan tanggalnya agar penanda itu tidak dikirim lagi pada hari yang sama. Dengan penanda ini kami menghitung berapa banyak orang yang mengunjungi situs. Saat Anda memulai tes, satu penanda mulai anonim dikirim ke server situs: hanya bahasa versi situs. Saat tes selesai, satu catatan anonim untuk statistik umum dikirim ke server situs: profil yang Anda peroleh dan bahasa versi situs, tanpa nama, email, maupun jawaban. Saat Anda menekan “Simpan sebagai PDF”, jawaban dan tanggal tes — tanpa nama dan email — dikirim ke server situs, yang membuat file laporan ringkas, mengembalikannya kepada Anda, dan tidak menyimpan apa pun. Saat Anda mengirim hasil ke email, nama, email, dan jawaban diteruskan ke server situs: server mengirimkan email berisi hasil kepada Anda dan menyimpan nama, email, tanggal, dan hasil di basis data hasil milik pemilik situs. Saat Anda berlangganan buletin di halaman utama, email dan bahasa versi situs dikirim ke server situs: server mengirimkan email berisi tautan konfirmasi dan menyimpan alamat itu di basis data yang sama; jika langganan tidak dikonfirmasi, alamat itu dihapus setelah 7 hari. Saat Anda meminta lembar tes dikirim ke email di halaman “Tes DISC PDF”, email dan bahasa versi situs dikirim ke server situs: server mengirimkan email berisi lembar tes dan menyimpan penanda persetujuan beserta alamat itu; jika Anda mencentang persetujuan buletin, alamat itu langsung disimpan di daftar pelanggan, dan email tersebut memuat tautan untuk berhenti berlangganan. Saat Anda memesan voucher hadiah, email Anda, baris “Dari”, serta — jika Anda mengisinya — nama dan alamat email penerima dikirim ke server situs: server membuat pesanan dan, setelah pembayaran, mengirimkan voucher; nama dan alamat email penerima dihapus 30 hari setelah voucher dikirim. Layanan analitik web menerima alamat halaman (di layar hasil, bersama kode hasil: jawaban Anda, tanggal tes, dan nama Anda jika Anda mengisinya, tetapi tanpa email Anda), sumber kunjungan, jenis perangkat dan browser, serta rekaman aktivitas di halaman (kolom nama dan email dikecualikan dari rekaman); layanan ini juga memasang cookie miliknya sendiri. Anda dapat memblokirnya melalui pengaturan browser atau dengan pemblokir pelacak. Pelacak iklan tidak digunakan.",
     "pd.cookieChange": "Ubah pilihan cookie",
 
     "print.title": "Tes DISC untuk Dicetak: Soal, Kunci Jawaban, dan Cara Menghitung Skor",

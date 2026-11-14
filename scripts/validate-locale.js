@@ -24,8 +24,7 @@ const OPTIONAL = ['.content.policy.legal', '.content.extendedMail', '.content.pr
   '.content.offer.codeTerms', '.content.policy.purchaseCode',
   // лендинг «CV и сопроводительное письмо под каждую вакансию» (/ru/cv/, с 2026-10-22, решение заказчика): только русская версия, ссылка только прямая
   '.content.cv',
-  // подарочные сертификаты на расширенный отчёт (/ru/gift/, с 2026-11-14, по просьбе заказчика): только русская версия — оплата сертификатов через Т-Банк;
-  // решение заказчика — пока только русская версия, вопреки правилу «что сделано для продажи — во все языки с покупкой»; ссылка в подвале — ui nav.gift
+  // подарочные сертификаты на расширенный отчёт (/<язык>/gift/, с 2026-11-14, по просьбе заказчика): там, где отчёт продаётся; обязательность — в проверке ниже
   '.content.gift', '.ui.nav.gift', '.content.policy.purchaseGift',
   // английская версия лендинга (с 2026-10-24): автор без ссылки на личный сайт — блок .cvsite не выводится
   '.content.cv.author.siteLabel', '.content.cv.author.site', '.content.cv.author.siteUrl',
@@ -58,6 +57,8 @@ function ph(s){ return (String(s).match(/\{[a-z]+\}|<\/?b>|<br>|%/g) || []).sort
 const PLAIN_KEYS = ['.content.mailing.sale.preheader', '.content.mailing.sale.until', '.content.mailing.sale.remindPreheader', '.content.mailing.sale.remindIntro', '.content.product.pay.sale.note'];
 let PLAIN = false;
 function walk(a, b, p, errs){
+  // формы слова по числу у подарочных сертификатов (с 2026-11-14): категории Intl.PluralRules своего языка ({one, other}, {other}, {zero, one, two, few, many, other}…), обязательна other
+  if (/^\.content\.gift\.(order|mail)\.units$/.test(p)) { if (!b || typeof b !== 'object' || typeof b.other !== 'string' || !b.other.trim()) errs.push(p + ': needs an object of plural forms with "other"'); return; }
   if (Array.isArray(a)) {
     if (!Array.isArray(b)) return errs.push(p + ': expected array');
     if (a.length !== b.length) return errs.push(p + ': array length ' + b.length + ', expected ' + a.length);
@@ -135,6 +136,10 @@ for (const f of files) {
   // с 2026-11-12: страница «Для организаций» и коды доступа — во всех языках, где отчёт продаётся (правило «что сделано для продажи — во все языки с покупкой»)
   if (P.pay && !(C.business && j.ui && j.ui['nav.business'] && P.pay.code)) errs.push('.content.business, .ui["nav.business"], .content.product.pay.code: missing — the report is on sale in this language, so the page for organizations and access codes go with it (CLAUDE.md)');
   if (P.pay && P.pay.code && !(C.offer && C.offer.codeTerms && C.policy && C.policy.purchaseCode)) errs.push('.content.product.pay.code: needs .content.offer.codeTerms and .content.policy.purchaseCode (the offer and the policy must describe codes)');
+  // с 2026-11-14: подарочные сертификаты — во всех языках, где отчёт продаётся (правило «что сделано для продажи — во все языки с покупкой»):
+  // страница /gift/ и пункт подвала, абзац политики о данных покупателя и получателей; ключ и тексты о данных меняются вместе
+  if (P.pay && !(C.gift && j.ui && j.ui['nav.gift'] && C.policy && C.policy.purchaseGift)) errs.push('.content.gift, .ui["nav.gift"], .content.policy.purchaseGift: missing — the report is on sale in this language, so gift certificates must be too');
+  if (!!C.gift !== !!(j.ui && j.ui['nav.gift'])) errs.push('.content.gift and .ui["nav.gift"] must come together');
   // В каждом блоке ровно 4 разных текста
   (j.blocks || []).forEach((b, i) => { const v = Object.values(b || {}); if (new Set(v).size !== v.length) errs.push('.blocks[' + i + ']: duplicate statements'); });
   // Буквы D I S C не переведены в csvHead

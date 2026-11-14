@@ -720,7 +720,8 @@
           "Si vous achetez le kit de l'animateur DISC, nous traitons votre adresse e-mail et les informations relatives à la commande : date, montant, numéro et statut du paiement. Ces données nous servent à vous envoyer l'e-mail contenant les liens vers les fichiers du kit, à répondre à vos demandes et à procéder à un éventuel remboursement ; le traitement a pour base légale le contrat conclu conformément à nos {offer}. Les informations relatives à la commande du kit sont conservées de la même manière que celles de la commande du profil détaillé ; aucun e-mail de rappel n'est envoyé si le paiement du kit n'a pas été finalisé."
         ]
       },
-      "purchaseCode": "Si vous recevez le profil détaillé grâce à un code d'accès acheté par une organisation ou par une autre personne, nous traitons les mêmes données, à l'exception des informations de paiement, et nous enregistrons l'utilisation du code. À la personne qui a acheté le code, nous indiquons seulement si le code a été utilisé et à quelle date : votre résultat, votre rapport et votre adresse e-mail ne lui sont pas transmis. Le traitement a pour base légale le contrat que vous concluez en saisissant le code conformément à nos {offer}."
+      "purchaseCode": "Si vous recevez le profil détaillé grâce à un code d'accès acheté par une organisation ou par une autre personne, nous traitons les mêmes données, à l'exception des informations de paiement, et nous enregistrons l'utilisation du code. À la personne qui a acheté le code, nous indiquons seulement si le code a été utilisé et à quelle date : votre résultat, votre rapport et votre adresse e-mail ne lui sont pas transmis. Le traitement a pour base légale le contrat que vous concluez en saisissant le code conformément à nos {offer}.",
+      "purchaseGift": "Si vous achetez des bons cadeaux, nous traitons votre adresse e-mail, les informations relatives à la commande (date, montant, numéro et statut du paiement), la mention « De la part de » et, si vous les avez indiqués, les noms et adresses e-mail des bénéficiaires. Votre adresse e-mail et les informations relatives à la commande nous servent à vous envoyer les bons, à répondre à vos demandes et à procéder à un éventuel remboursement ; elles sont conservées de la même manière que celles de la commande du profil détaillé. Le nom d'un bénéficiaire est imprimé sur son bon, et un seul e-mail, contenant son bon, est envoyé à son adresse ; nous supprimons les noms et adresses des bénéficiaires 30 jours après l'envoi des bons, ou au bout de 7 jours si la commande n'a pas été payée. En indiquant les données des bénéficiaires, vous confirmez qu'ils acceptent de recevoir un bon cadeau. Le traitement a pour base légale le contrat conclu conformément à nos {offer}, dont les bénéficiaires des bons sont les tiers bénéficiaires. Le bénéficiaire qui saisit le code de son bon sur le site reçoit le profil détaillé dans les mêmes conditions qu'avec un code d'accès : à la personne qui a offert le bon, nous indiquons seulement s'il a été utilisé et à quelle date."
     },
     "consentDoc": {
       "title": "Consentement au traitement des données personnelles — test DISC",
@@ -833,7 +834,7 @@
         "Faites une demande en bas de la page : combien de rapports et pour qui. Nous vous répondons sous un jour ouvré.",
         "Nous vous envoyons un lien de paiement par carte. Après le paiement, nous vous envoyons les codes dans un fichier.",
         "Envoyez à chaque personne le lien vers le test et un code. Le test prend environ 10 minutes, sans inscription.",
-        "Sur l'écran de son résultat, la personne clique sur « J'ai un code d'accès », puis saisit le code et son adresse e-mail. Le rapport lui arrive par e-mail en quelques minutes.",
+        "Sur l'écran de son résultat, la personne clique sur « J'ai un code », puis saisit le code et son adresse e-mail. Le rapport lui arrive par e-mail en quelques minutes.",
         "Sur simple demande, nous vous indiquons combien de codes ont déjà été utilisés."
       ],
       "privacyTitle": "Les résultats restent entre les mains des participants",
@@ -2155,13 +2156,13 @@
         "wait": "Ouverture de la page de paiement…",
         "error": "Impossible d'ouvrir la page de paiement. Réessayez dans quelques instants ou écrivez-nous à {email}.",
         "code": {
-          "link": "J'ai un code d'accès",
+          "link": "J'ai un code",
           "label": "Code d'accès",
           "placeholder": "XXXX-XXXX-XXXX",
           "button": "Recevoir le rapport",
           "back": "Acheter sans code",
           "wait": "Vérification du code…",
-          "note": "Le rapport a déjà été payé par la personne ou l'organisation qui vous a remis le code : vous n'avez rien à payer. Nous ne lui transmettons ni votre résultat ni votre adresse e-mail. En cliquant sur « Recevoir le rapport », vous acceptez nos {offer}.",
+          "note": "Le rapport a déjà été payé par la personne ou l'organisation qui vous a remis ou offert le code : vous n'avez rien à payer. Nous ne lui transmettons ni votre résultat ni votre adresse e-mail. En cliquant sur « Recevoir le rapport », vous acceptez nos {offer}.",
           "badEmail": "Vérifiez l'adresse e-mail : c'est à elle que nous enverrons le rapport.",
           "empty": "Saisissez le code d'accès.",
           "done": "Code accepté. Le rapport arrivera à {to} d'ici quelques minutes. S'il n'est pas dans votre boîte de réception, vérifiez le dossier de courrier indésirable (spam).",
@@ -2537,6 +2538,293 @@
         "text": "Le test révèle votre couleur dominante et votre couleur secondaire, leur intensité en pourcentage et ce que vous pouvez en faire. 24 blocs, environ 10 minutes, sans inscription.",
         "button": "Découvrir ma couleur"
       }
+    },
+    "gift": {
+      "title": "Bon cadeau DISC : offrez le rapport DISC détaillé",
+      "description": "Offrez le rapport DISC détaillé à vos collègues et à vos proches : un bon cadeau en PDF avec un code, valable {months} mois, et {pct} % de réduction dès {from} bons.",
+      "eyebrow": "Idée cadeau",
+      "h1": "Bons cadeaux pour le rapport DISC détaillé",
+      "lead": "Offrez à vos collègues, à votre équipe ou à vos proches un rapport personnalisé sur leur style de travail. Chaque bon cadeau est un fichier PDF contenant un code : la personne passe le test, saisit le code et reçoit le rapport détaillé sans rien payer.",
+      "facts": [
+        "PDF avec code",
+        "Valable {months} mois",
+        "{pct} % de réduction dès {from} bons",
+        "{price} € le bon cadeau"
+      ],
+      "cta": "Choisir mes bons cadeaux",
+      "sampleLink": "Voir un exemple",
+      "whoTitle": "À qui l'offrir",
+      "who": [
+        [
+          "À vos collègues et à votre équipe",
+          "pour un anniversaire, une fête, la fin d'un projet ou une première année dans l'entreprise"
+        ],
+        [
+          "Aux nouveaux arrivants",
+          "pour comprendre, dès les premières semaines, leur propre style de travail et celui de leur responsable"
+        ],
+        [
+          "Aux participants d'une formation",
+          "pour prolonger la séance : chacun reçoit un rapport sur lui-même"
+        ],
+        [
+          "À vos amis et à vos proches",
+          "à ceux qui cherchent un emploi, changent de poste ou veulent mieux se connaître"
+        ]
+      ],
+      "sampleTitle": "À quoi ressemble le bon cadeau",
+      "sampleText": "Chaque bon cadeau est un fichier PDF distinct au format A4 : vous pouvez le transférer, l'imprimer ou le remettre en main propre. Il comporte le code, un QR code et une courte notice : la personne n'a rien à chercher.",
+      "tabsLabel": "Type de bon cadeau",
+      "tabs": [
+        "Nominatif",
+        "Sans nom"
+      ],
+      "sampleName": "Camille Martin",
+      "sampleFrom": "L'équipe commerciale",
+      "samplePdf": "Exemples en PDF : {named} · {plain}",
+      "samplePdfNamed": "nominatif",
+      "samplePdfPlain": "sans nom",
+      "ticks": [
+        [
+          "Le code se copie facilement.",
+          "Dans le fichier, c'est du texte ordinaire : sélectionnez-le et copiez-le. Les tirets et les espaces ne gênent pas la saisie."
+        ],
+        [
+          "Ou même sans le copier.",
+          "Cliquez sur le code dans le PDF ou scannez le QR code avec votre téléphone : le site s'ouvre avec le code déjà saisi."
+        ],
+        [
+          "Un code, un rapport.",
+          "Le code est valable {months} mois et fonctionne dans toutes les langues du site : le rapport arrive dans la langue dans laquelle le code a été saisi."
+        ]
+      ],
+      "howTitle": "Comment utiliser le bon cadeau",
+      "howLead": "Vous pouvez transmettre ces instructions à la personne : elles figurent aussi sur le bon cadeau.",
+      "how": [
+        [
+          "Passez le test",
+          "Ouvrez {site} et cliquez sur « Commencer le test » : 24 blocs de quatre affirmations, environ 10 minutes. Sans inscription."
+        ],
+        [
+          "Cliquez sur « J'ai un code »",
+          "Sur l'écran du résultat, repérez le bloc « Rapport détaillé » : il se trouve juste après la description du profil. Sous le bouton « Acheter », cliquez sur le lien « J'ai un code »."
+        ],
+        [
+          "Saisissez le code et votre e-mail",
+          "Collez le code du bon cadeau et l'adresse à laquelle envoyer le rapport, puis cliquez sur « Recevoir le rapport ». Le rapport arrive en quelques minutes ; si vous ne le trouvez pas, vérifiez le dossier de courrier indésirable (spam)."
+        ]
+      ],
+      "mock": {
+        "head": "Test DISC",
+        "start": "Commencer le test",
+        "block": "Rapport détaillé",
+        "email": "E-mail",
+        "buy": "Acheter",
+        "code": "J'ai un code",
+        "codeLabel": "Code d'accès",
+        "get": "Recevoir le rapport",
+        "emailSample": "camille.martin@example.com"
+      },
+      "howNote": "Si vous ouvrez le site via le lien ou le QR code du bon cadeau, le code est saisi automatiquement : il ne reste plus qu'à passer le test et à indiquer votre e-mail. Si vous avez déjà passé le test, ouvrez votre résultat (le lien se trouve dans l'e-mail contenant votre résultat) et saisissez-y le code.",
+      "getTitle": "Ce que la personne recevra",
+      "getLead": "Le rapport DISC détaillé : plus de 25 pages sur son profil, avec son nom sur chaque page. Ce qui n'est pas dans le rapport gratuit, mais figure dans le rapport détaillé :",
+      "sheetAlt": "Page {n} de l'exemple de rapport détaillé",
+      "more": "En savoir plus sur le rapport détaillé",
+      "order": {
+        "title": "Commander des bons cadeaux",
+        "qtyTitle": "Nombre de bons cadeaux",
+        "less": "Moins",
+        "moreBtn": "Plus",
+        "qtyLabel": "Nombre de bons cadeaux",
+        "units": {
+          "one": "bon cadeau",
+          "many": "bons cadeaux",
+          "other": "bons cadeaux"
+        },
+        "money": "{n} €",
+        "line": "{n} {units} × {unit} = {total}",
+        "off": "{pct} % de réduction",
+        "addMore": "Ajoutez-en encore {k} : chaque bon cadeau vous reviendra à {unit} ({pct} % de réduction)",
+        "big": "Besoin de plus de {max} bons cadeaux ? Découvrez nos {business}.",
+        "businessLink": "packs pour les organisations",
+        "namedTitle": "Nom sur le bon cadeau",
+        "named": [
+          [
+            "Sans nom",
+            "Le bon cadeau peut être remis à n'importe qui : par exemple, mis en jeu lors d'un tirage au sort ou offert plus tard"
+          ],
+          [
+            "Nominatifs",
+            "Nous inscrivons le nom du bénéficiaire sur chaque bon cadeau"
+          ]
+        ],
+        "toTitle": "Où envoyer les bons cadeaux",
+        "to": [
+          [
+            "Tous à mon adresse e-mail",
+            "Vous recevez tous les fichiers dans un seul e-mail : à vous de les transférer ou de les imprimer"
+          ],
+          [
+            "Directement à chaque bénéficiaire",
+            "Chacun reçoit un e-mail avec son bon cadeau, et vous recevez une copie de tous les fichiers"
+          ]
+        ],
+        "recipBoth": "Noms et adresses e-mail des bénéficiaires",
+        "recipNames": "Noms des bénéficiaires",
+        "recipEmails": "Adresses e-mail des bénéficiaires",
+        "paste": "Coller une liste",
+        "pasteHint": "Un bénéficiaire par ligne : {fmt}. Vous pouvez copier des colonnes depuis un tableau Excel.",
+        "fmtBoth": "nom, e-mail",
+        "fmtName": "nom",
+        "fmtEmail": "e-mail",
+        "pasteApply": "Remplir",
+        "namePh": "Prénom et nom",
+        "emailPh": "E-mail",
+        "nameAria": "Nom du bénéficiaire {n}",
+        "emailAria": "E-mail du bénéficiaire {n}",
+        "signTitle": "Signature et votre e-mail",
+        "fromLabel": "De la part de",
+        "fromOptional": "— facultatif",
+        "fromPh": "Par exemple : l'équipe commerciale",
+        "fromHint": "La mention « De la part de » figurera sur chaque bon cadeau",
+        "emailLabel": "Votre e-mail",
+        "emailHint": "Vous y recevrez les bons cadeaux et la confirmation de paiement",
+        "emailHintEach": "Vous y recevrez une copie de tous les bons cadeaux et la confirmation de paiement",
+        "agreeNamed": "Les bénéficiaires savent que je leur offre un bon cadeau et acceptent que leur nom y figure",
+        "agreeEach": "Les bénéficiaires savent que je leur envoie un bon cadeau et acceptent de le recevoir aux adresses indiquées",
+        "agreeBoth": "Les bénéficiaires savent que je leur offre un bon cadeau et acceptent que leur nom y figure et que le bon leur soit envoyé à l'adresse indiquée",
+        "previewTitle": "Aperçu du bon cadeau",
+        "previewName": "Nom du bénéficiaire",
+        "sumNamed": "nominatifs",
+        "sumPlain": "sans nom",
+        "sumEach": "à chaque bénéficiaire",
+        "sumMe": "à votre adresse e-mail",
+        "pay": "Payer {total}",
+        "wait": "Ouverture de la page de paiement…",
+        "note": "En cliquant sur « Payer », vous acceptez nos {offer}. Vous saisissez les données de votre carte sur une page de paiement sécurisée. Les bons cadeaux vous sont envoyés juste après le paiement.",
+        "check": "Vérifiez : {what}.",
+        "checkEmail": "votre e-mail",
+        "checkNames": "les noms des bénéficiaires",
+        "checkEmails": "les adresses des bénéficiaires",
+        "checkAgree": "la case de consentement des bénéficiaires",
+        "error": "Impossible d'ouvrir la page de paiement. Réessayez dans une minute ou écrivez-nous à {email}.",
+        "priceChanged": "Le prix vient de changer : vérifiez le montant et cliquez de nouveau sur « Payer ».",
+        "status": {
+          "wait": "Vérification du paiement…",
+          "paid": "Paiement reçu. Nous préparons vos bons cadeaux : l'e-mail arrivera à {email} d'ici quelques minutes.",
+          "sent": "C'est fait : les bons cadeaux ont été envoyés à {email}. S'ils ne sont pas dans votre boîte de réception, vérifiez le dossier de courrier indésirable (spam).",
+          "failed": "Le paiement n'a pas abouti. Vous pouvez réessayer.",
+          "thanks": "Merci ! Si le paiement a abouti, l'e-mail contenant les bons cadeaux arrivera d'ici quelques minutes."
+        }
+      },
+      "recipient": {
+        "eyebrow": "Un cadeau pour vous",
+        "title": "On vous offre le rapport DISC détaillé",
+        "text": "Le code de votre bon cadeau, {code}, est enregistré sur cet appareil. Passez le test : sur l'écran du résultat, le code s'affichera automatiquement dans le bloc « Rapport détaillé », et il ne vous restera qu'à saisir votre e-mail.",
+        "start": "Passer le test",
+        "result": "Ouvrir mon résultat",
+        "resultNote": "Vous avez déjà passé le test sur cet appareil ? Ouvrez votre résultat : le code y sera aussi saisi automatiquement.",
+        "bad": "Le lien du bon cadeau n'a pas été reconnu. Saisissez le code à la main : passez le test, puis, sur l'écran du résultat, cliquez sur « J'ai un code »."
+      },
+      "faqTitle": "Questions fréquentes",
+      "faq": [
+        {
+          "q": "Le test est-il payant ?",
+          "a": "Non. Le test et le résultat de synthèse sur le site sont gratuits pour tout le monde. Le bon cadeau règle le rapport détaillé : plus de 25 pages sur le profil de la personne."
+        },
+        {
+          "q": "Combien de temps le bon cadeau est-il valable ?",
+          "a": "{months} mois à compter de la date d'achat ; la date d'expiration est imprimée sur le bon. Un code donne droit à un rapport."
+        },
+        {
+          "q": "Et si la personne a déjà passé le test ?",
+          "a": "Inutile de le repasser : il suffit d'ouvrir son résultat (via le lien de l'e-mail contenant le résultat, ou sur l'appareil où le test a été passé) et de saisir le code dans le bloc « Rapport détaillé »."
+        },
+        {
+          "q": "Verrai-je les résultats des bénéficiaires ?",
+          "a": "Non. Seul le bénéficiaire voit son résultat et son rapport. Nous vous indiquons uniquement quels bons cadeaux ont déjà été utilisés."
+        },
+        {
+          "q": "Un bon cadeau s'est perdu ou l'e-mail n'est pas arrivé",
+          "a": "Écrivez à {email} depuis l'adresse utilisée pour le paiement, en indiquant le numéro de commande : nous vous renverrons les bons cadeaux."
+        },
+        {
+          "q": "Puis-je être remboursé ?",
+          "a": "Oui, pour les bons cadeaux non utilisés, tant qu'ils sont valables : écrivez à {email} en indiquant le numéro de commande. Chaque bon non utilisé vous est remboursé au prix auquel vous l'avez payé, et son code cesse d'être valable. Un bon dont le code a déjà été saisi sur le site n'est pas remboursé. Pour en savoir plus, consultez notre {refund}."
+        },
+        {
+          "q": "Vous achetez pour une entreprise ou une équipe ?",
+          "a": "Pour plus de 50 bons cadeaux, ou pour un pack de codes d'accès, consultez nos {business}."
+        }
+      ],
+      "refundLink": "politique de remboursement",
+      "services": {
+        "name": "Bons cadeaux",
+        "text": "Le rapport détaillé à offrir à vos collègues, à votre équipe ou à vos proches : un bon cadeau en PDF avec un code, valable {months} mois. Les bons peuvent être nominatifs et envoyés directement à chaque bénéficiaire.",
+        "price": "{price} € le bon cadeau, {pct} % de réduction dès {from} bons",
+        "more": "Choisir mes bons cadeaux"
+      },
+      "cert": {
+        "brand": "Test DISC",
+        "eyebrow": "Bon cadeau",
+        "title": "Rapport DISC détaillé",
+        "to": "Pour",
+        "from": "De la part de",
+        "desc": "Un rapport personnalisé sur votre style de comportement au travail, en plus de 25 pages : comment les autres vous perçoivent, le dialogue avec votre responsable, la carrière, les conflits et un plan sur 30 jours.",
+        "codeLabel": "Votre code",
+        "hint": "Cliquez sur le code ou scannez le QR code avec votre téléphone : le site s'ouvre avec le code déjà saisi",
+        "stepsTitle": "Comment recevoir votre rapport",
+        "steps": [
+          [
+            "Passez le test gratuit",
+            "sur {site} : 24 blocs, environ 10 minutes"
+          ],
+          [
+            "Sur l'écran du résultat",
+            "dans le bloc « Rapport détaillé », cliquez sur « J'ai un code »"
+          ],
+          [
+            "Saisissez le code et votre e-mail",
+            "Le rapport arrive dans votre boîte mail en quelques minutes"
+          ]
+        ],
+        "until": "Valable jusqu'au {date}",
+        "questions": "Questions : {email}",
+        "sample": "Spécimen",
+        "file": "Bon cadeau DISC"
+      },
+      "mail": {
+        "subject": "Bons cadeaux DISC — commande {order}",
+        "partOf": "(e-mail {part} sur {parts})",
+        "hello": "Bonjour,",
+        "intro": "Merci pour votre achat ! Vous trouverez en pièce jointe {n} {units} pour le rapport DISC détaillé : chaque bon est un fichier PDF distinct contenant un code. Les bons sont valables jusqu'au {until}.",
+        "units": {
+          "one": "bon cadeau",
+          "many": "bons cadeaux",
+          "other": "bons cadeaux"
+        },
+        "partNote": "Les bons cadeaux étant nombreux, ils vous sont envoyés en plusieurs e-mails : voici l'e-mail {part} sur {parts}.",
+        "each": "Nous avons envoyé à chaque bénéficiaire un e-mail contenant son bon cadeau :",
+        "forward": "Transférez le fichier au bénéficiaire, ou imprimez le bon cadeau et remettez-le en main propre.",
+        "howTitle": "Comment le bénéficiaire utilise son bon cadeau :",
+        "refund": "Un bon cadeau non utilisé peut être remboursé tant qu'il est valable : écrivez à {email} en indiquant le numéro de commande.",
+        "bye": "Merci de votre confiance !",
+        "order": "Numéro de commande : {order}."
+      },
+      "rmail": {
+        "subject": "Un cadeau pour vous : le rapport DISC détaillé",
+        "hello": "Bonjour,",
+        "helloName": "Bonjour {name},",
+        "intro": "On vous offre le rapport DISC détaillé : une analyse personnalisée de votre style de travail, en plus de 25 pages — comment les autres vous perçoivent, le dialogue avec votre responsable, la carrière, les conflits et un plan sur 30 jours.",
+        "fromLine": "De la part de : {from}",
+        "button": "Recevoir mon rapport",
+        "buttonNote": "Le bouton ouvre le site avec le code déjà saisi : il ne vous reste qu'à passer le test et à indiquer votre e-mail.",
+        "howTitle": "Comment recevoir votre rapport :",
+        "attach": "Le bon cadeau avec votre code est joint à cet e-mail : vous pouvez l'enregistrer ou l'imprimer.",
+        "bye": "Bonne lecture !",
+        "why": "Votre adresse nous a été communiquée par la personne qui vous offre ce bon cadeau. Vous ne recevrez pas d'autres e-mails de notre part, sauf si vous vous y abonnez vous-même."
+      },
+      "name": "Bons cadeaux pour le rapport DISC détaillé"
     },
     "kit": {
       "title": "Kit de l'animateur DISC : déroulé d'atelier, diapositives et tableau de groupe",
@@ -3540,6 +3828,7 @@
     "nav.materials": "Ressources sur le DISC",
     "nav.howMade": "Préparation des rapports",
     "nav.business": "Pour les organisations",
+    "nav.gift": "Bons cadeaux",
 
     "pages.styles.title": "Types de personnalité DISC : les quatre styles D, I, S, C",
     "pages.styles.description": "Les quatre types de personnalité DISC : dominance, influence, stabilité, conformité. Traits, points forts, axes de progression, motivation, stress.",
@@ -3668,7 +3957,7 @@
     "pd.consentLink": "consentement au traitement des données personnelles",
     "pd.required": "Cochez la case de consentement au traitement des données personnelles : sans ce consentement, nous ne pouvons pas accepter vos données.",
     "pd.cookieAsk": "Ce site conserve votre progression, votre résultat et la langue choisie dans le stockage local du navigateur. Avec votre consentement, un service d'analyse d'audience collectera des statistiques de visite anonymisées et un enregistrement des actions sur la page pour nous aider à améliorer le site. Votre nom, votre e-mail et votre résultat ne sont pas transmis au service d'analyse.",
-    "pd.cookieDetails": "Conservés dans le navigateur : le nom et l'e-mail, si vous les avez indiqués ; vos réponses et la progression inachevée ; votre dernier résultat ; l'heure à laquelle vous avez terminé le test pour la première fois, pour le délai du prix spécial du rapport ; la langue choisie ; une marque indiquant que vous avez vu cet avis. Ces données restent sur votre appareil et sont supprimées lorsque vous effacez les données du site. L'hébergeur reçoit les données techniques habituelles de la requête. La première fois que vous ouvrez le site dans la journée, une marque de visite anonyme est envoyée au serveur du site : uniquement la langue de la version du site ; le serveur l'enregistre avec son heure d'arrivée, et votre navigateur garde la date pour ne pas la renvoyer le même jour. Ces marques nous servent à compter combien de personnes visitent le site. Lorsque vous commencez le test, une marque de début anonyme est envoyée au serveur du site : uniquement la langue de la version du site. Lorsque vous terminez le test, un enregistrement anonyme destiné aux statistiques générales est envoyé au serveur du site : le profil obtenu et la langue de la version du site, sans nom, e-mail ni réponses. Lorsque vous cliquez sur « Enregistrer en PDF », vos réponses et la date du test — sans nom ni e-mail — sont envoyées au serveur du site, qui génère le fichier du rapport de synthèse, vous le renvoie et ne conserve rien. Lorsque vous envoyez le résultat par e-mail, le nom, l'e-mail et les réponses sont transmis au serveur du site, qui vous envoie l'e-mail avec le résultat et enregistre le nom, l'e-mail, la date et le résultat dans la base de résultats du propriétaire du site. Lorsque vous vous abonnez à la newsletter sur la page d'accueil, l'e-mail et la langue de la version du site sont transmis au serveur du site, qui vous envoie un e-mail avec un lien de confirmation et enregistre l'adresse dans la même base ; si l'abonnement n'est pas confirmé, l'adresse est supprimée au bout de 7 jours. Lorsque vous demandez à recevoir le questionnaire par e-mail sur la page « Test en PDF », l'e-mail et la langue de la version du site sont transmis au serveur du site, qui vous envoie l'e-mail avec le questionnaire et conserve la trace de votre consentement avec l'adresse ; si vous avez coché la case de consentement à la newsletter, l'adresse est aussitôt enregistrée dans la liste des abonnés, et l'e-mail contient un lien de désabonnement. Le service d'analyse d'audience reçoit l'adresse de la page (sur l'écran du résultat, avec le code du résultat : vos réponses, la date du test et votre nom si vous l'avez indiqué, mais pas votre e-mail), la provenance, le type d'appareil et de navigateur, un enregistrement des actions sur la page (les champs nom et e-mail en sont exclus) et dépose ses propres cookies. Vous pouvez le bloquer dans les paramètres du navigateur ou avec un bloqueur de traceurs. Aucun traceur publicitaire n'est utilisé.",
+    "pd.cookieDetails": "Conservés dans le navigateur : le nom et l'e-mail, si vous les avez indiqués ; vos réponses et la progression inachevée ; votre dernier résultat ; l'heure à laquelle vous avez terminé le test pour la première fois, pour le délai du prix spécial du rapport ; le code d'un bon cadeau, si vous avez ouvert le site via le lien d'un bon ; la langue choisie ; une marque indiquant que vous avez vu cet avis. Ces données restent sur votre appareil et sont supprimées lorsque vous effacez les données du site. L'hébergeur reçoit les données techniques habituelles de la requête. La première fois que vous ouvrez le site dans la journée, une marque de visite anonyme est envoyée au serveur du site : uniquement la langue de la version du site ; le serveur l'enregistre avec son heure d'arrivée, et votre navigateur garde la date pour ne pas la renvoyer le même jour. Ces marques nous servent à compter combien de personnes visitent le site. Lorsque vous commencez le test, une marque de début anonyme est envoyée au serveur du site : uniquement la langue de la version du site. Lorsque vous terminez le test, un enregistrement anonyme destiné aux statistiques générales est envoyé au serveur du site : le profil obtenu et la langue de la version du site, sans nom, e-mail ni réponses. Lorsque vous cliquez sur « Enregistrer en PDF », vos réponses et la date du test — sans nom ni e-mail — sont envoyées au serveur du site, qui génère le fichier du rapport de synthèse, vous le renvoie et ne conserve rien. Lorsque vous envoyez le résultat par e-mail, le nom, l'e-mail et les réponses sont transmis au serveur du site, qui vous envoie l'e-mail avec le résultat et enregistre le nom, l'e-mail, la date et le résultat dans la base de résultats du propriétaire du site. Lorsque vous vous abonnez à la newsletter sur la page d'accueil, l'e-mail et la langue de la version du site sont transmis au serveur du site, qui vous envoie un e-mail avec un lien de confirmation et enregistre l'adresse dans la même base ; si l'abonnement n'est pas confirmé, l'adresse est supprimée au bout de 7 jours. Lorsque vous demandez à recevoir le questionnaire par e-mail sur la page « Test en PDF », l'e-mail et la langue de la version du site sont transmis au serveur du site, qui vous envoie l'e-mail avec le questionnaire et conserve la trace de votre consentement avec l'adresse ; si vous avez coché la case de consentement à la newsletter, l'adresse est aussitôt enregistrée dans la liste des abonnés, et l'e-mail contient un lien de désabonnement. Lorsque vous commandez des bons cadeaux, votre e-mail, la mention « De la part de » et, si vous les avez indiqués, les noms et adresses e-mail des bénéficiaires sont transmis au serveur du site, qui crée la commande et, après le paiement, envoie les bons ; les noms et adresses des bénéficiaires sont supprimés 30 jours après l'envoi. Le service d'analyse d'audience reçoit l'adresse de la page (sur l'écran du résultat, avec le code du résultat : vos réponses, la date du test et votre nom si vous l'avez indiqué, mais pas votre e-mail), la provenance, le type d'appareil et de navigateur, un enregistrement des actions sur la page (les champs nom et e-mail en sont exclus) et dépose ses propres cookies. Vous pouvez le bloquer dans les paramètres du navigateur ou avec un bloqueur de traceurs. Aucun traceur publicitaire n'est utilisé.",
     "pd.cookieChange": "Modifier le choix des cookies",
 
     "print.title": "Test DISC à imprimer : questionnaire, clé et calcul du score",

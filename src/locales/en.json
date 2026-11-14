@@ -718,7 +718,8 @@
           "If you buy the facilitator kit, we process your email address and order details: the date, amount, payment number and payment status. We need this data to send you the email with links to the kit files, to answer your enquiries and to process a refund; the basis is the contract under the {offer}. Kit order details are kept in the same way as order details for the in-depth profile; no reminder emails are sent about an unfinished kit payment."
         ]
       },
-      "purchaseCode": "If you receive the in-depth profile with an access code bought by an organization or another person, we process the same data, except payment information, and record that the code has been used. We tell the person who bought the code only whether and when it was used: your result, report and email address are not passed on to them. The basis is the contract you enter into when you enter the code under the {offer}."
+      "purchaseCode": "If you receive the in-depth profile with an access code bought by an organization or another person, we process the same data, except payment information, and record that the code has been used. We tell the person who bought the code only whether and when it was used: your result, report and email address are not passed on to them. The basis is the contract you enter into when you enter the code under the {offer}.",
+      "purchaseGift": "If you buy gift certificates, we process your email address, order details (the date, amount, payment number and payment status), the “From” line and, if you gave them, the recipients’ names and email addresses. We need your email address and order details to send you the certificates, to answer your enquiries and to process a refund; they are kept in the same way as order details for the in-depth profile. A recipient’s name is printed on their certificate, and one email with their certificate is sent to the recipient’s address. We delete recipients’ names and email addresses 30 days after the certificates are sent, or after 7 days if the order is not paid. By giving recipients’ details, you confirm that they agree to receive a certificate. The basis for processing is the contract under the {offer}, under which the recipients of the certificates are its beneficiaries. A recipient who enters a certificate code on the site receives the in-depth profile in the same way as with an access code: we tell the person who gave the certificate only whether and when it was used."
     },
     "consentDoc": {
       "title": "Consent to the Processing of Personal Data — DISC Test",
@@ -831,7 +832,7 @@
         "Use the form at the bottom of this page to tell us how many reports you need and who they’re for. We’ll reply within one business day.",
         "We’ll send you a link to pay by card. Once you’ve paid, we’ll send the codes as a file.",
         "Send each person the link to the test and one code. The test takes about 10 minutes, with no sign-up.",
-        "On the result screen, the person clicks “I have an organization code” and enters the code and their email address. The report arrives by email within a few minutes.",
+        "On the result screen, the person clicks “I have a code” and enters the code and their email address. The report arrives by email within a few minutes.",
         "Just ask, and we’ll tell you how many codes have been used."
       ],
       "privacyTitle": "Results stay with the people who took the test",
@@ -2137,13 +2138,13 @@
         "wait": "Taking you to payment…",
         "error": "We couldn’t open the payment page. Please try again in a minute or email us at {email}.",
         "code": {
-          "link": "I have an organization code",
+          "link": "I have a code",
           "label": "Access code",
           "placeholder": "XXXX-XXXX-XXXX",
           "button": "Get my report",
           "back": "Buy without a code",
           "wait": "Checking your code…",
-          "note": "Whoever gave you the code has already paid for your report, so there’s nothing to pay. We don’t share your result or email address with them. By clicking “Get my report,” you accept our {offer}.",
+          "note": "Whoever gave you this code, whether your organization or someone giving you a gift, has already paid for your report, so there’s nothing to pay. We don’t share your result or email address with them. By clicking “Get my report,” you accept our {offer}.",
           "badEmail": "Please check the address. Your report will be sent there.",
           "empty": "Please enter your access code.",
           "done": "Code accepted. Your report will arrive at {to} within a few minutes. If you can’t find the email, check your spam folder.",
@@ -2510,6 +2511,291 @@
         "text": "The test shows your primary and secondary colors, how strong each one is in percent and what to do about it. 24 blocks, about 10 minutes, no sign-up.",
         "button": "Find my color"
       }
+    },
+    "gift": {
+      "title": "In-Depth DISC Report Gift Certificates for Coworkers and Teams",
+      "description": "Give coworkers, friends and family an in-depth DISC report: a PDF gift certificate with a code, valid for {months} months. Buy {from} or more and save {pct}%.",
+      "eyebrow": "Gift",
+      "h1": "In-depth DISC report gift certificates",
+      "lead": "Give your coworkers, your team or someone close to you a personal report on how they work. Each gift certificate is a PDF with a code: the recipient takes the test, enters the code and gets the in-depth report at no cost.",
+      "facts": [
+        "PDF with a code",
+        "Valid for {months} months",
+        "{pct}% off {from} or more",
+        "US${price} per certificate"
+      ],
+      "cta": "Choose your certificates",
+      "sampleLink": "See a sample",
+      "whoTitle": "Who it’s for",
+      "who": [
+        [
+          "Coworkers and teams",
+          "for a birthday, the holidays, the end of a big project or a first work anniversary"
+        ],
+        [
+          "New hires",
+          "so from their first weeks they understand their own working style and their manager’s"
+        ],
+        [
+          "Training participants",
+          "as a follow-up to the session: everyone gets a report about themselves"
+        ],
+        [
+          "Friends and family",
+          "for anyone who’s job hunting, changing roles or wants to understand themselves better"
+        ]
+      ],
+      "sampleTitle": "What the certificate looks like",
+      "sampleText": "Each certificate is a separate A4 PDF, so you can forward it, print it or hand it over in person. It has the code, a QR code and short instructions — the recipient won’t have to look anything up.",
+      "tabsLabel": "Certificate type",
+      "tabs": [
+        "Personalized",
+        "No name"
+      ],
+      "sampleName": "Emily Carter",
+      "sampleFrom": "The Sales Team",
+      "samplePdf": "PDF samples: {named} · {plain}",
+      "samplePdfNamed": "personalized",
+      "samplePdfPlain": "no name",
+      "ticks": [
+        [
+          "The code is easy to copy.",
+          "In the file it’s plain text: just select it and copy it. Hyphens and spaces don’t matter when you enter it."
+        ],
+        [
+          "Or skip copying altogether.",
+          "Click the code in the PDF or point your phone’s camera at the QR code, and the site opens with the code already filled in."
+        ],
+        [
+          "One code, one report.",
+          "The code is valid for {months} months and works in every language version of the site. The report comes in the language the code was entered in."
+        ]
+      ],
+      "howTitle": "How to use the certificate",
+      "howLead": "You can forward these steps to the recipient. They’re also printed on the certificate.",
+      "how": [
+        [
+          "Take the test",
+          "Go to {site} and click “Start the test.” It’s 24 blocks of four statements and takes about 10 minutes. No sign-up needed."
+        ],
+        [
+          "Click “I have a code”",
+          "On the result screen, find the “In-depth report” section right after the profile description. Below the “Buy” button, there’s an “I have a code” link."
+        ],
+        [
+          "Enter the code and your email",
+          "Paste the code from the certificate and the email address where the report should go, then click “Get my report.” The report arrives within a few minutes. Don’t see it? Check your spam folder."
+        ]
+      ],
+      "mock": {
+        "head": "DISC Test",
+        "start": "Start the test",
+        "block": "In-depth report",
+        "email": "Email",
+        "buy": "Buy",
+        "code": "I have a code",
+        "codeLabel": "Access code",
+        "get": "Get my report",
+        "emailSample": "emily@example.com"
+      },
+      "howNote": "Open the site from the link or QR code on the certificate, and the code fills itself in — all that’s left is to take the test and enter an email address. Already taken the test? Open your result (the link is in your result email) and enter the code there.",
+      "getTitle": "What they’ll get",
+      "getLead": "The in-depth DISC report: more than 25 pages about their own profile, with their name on every page. Here’s what it covers that the free report doesn’t:",
+      "sheetAlt": "Sample in-depth report, page {n}",
+      "more": "More about the in-depth report",
+      "order": {
+        "title": "Order gift certificates",
+        "qtyTitle": "How many certificates?",
+        "less": "Fewer",
+        "moreBtn": "More",
+        "qtyLabel": "Number of certificates",
+        "units": {
+          "one": "certificate",
+          "other": "certificates"
+        },
+        "money": "US${n}",
+        "line": "{n} {units} × {unit} = {total}",
+        "off": "{pct}% off",
+        "addMore": "Add {k} more and each certificate will cost {unit} ({pct}% off)",
+        "big": "Need more than {max} certificates? See our {business}.",
+        "businessLink": "report packs for organizations",
+        "namedTitle": "Name on the certificate",
+        "named": [
+          [
+            "No name",
+            "Anyone can use it — handy for a raffle or for handing out later"
+          ],
+          [
+            "Personalized",
+            "We’ll print the recipient’s name on each certificate"
+          ]
+        ],
+        "toTitle": "Where to send the certificates",
+        "to": [
+          [
+            "All to my email",
+            "We’ll send all the files in one email, and you forward or print them yourself"
+          ],
+          [
+            "Straight to each recipient",
+            "Each person gets an email with their own certificate, and you get copies of all the files"
+          ]
+        ],
+        "recipBoth": "Recipients’ names and emails",
+        "recipNames": "Recipients’ names",
+        "recipEmails": "Recipients’ emails",
+        "paste": "Paste a list",
+        "pasteHint": "One recipient per line: {fmt}. You can also copy columns from an Excel spreadsheet.",
+        "fmtBoth": "name, email",
+        "fmtName": "name",
+        "fmtEmail": "email",
+        "pasteApply": "Fill in",
+        "namePh": "Full name",
+        "emailPh": "Email",
+        "nameAria": "Recipient {n} name",
+        "emailAria": "Recipient {n} email",
+        "signTitle": "Signature and your email",
+        "fromLabel": "From",
+        "fromOptional": "(optional)",
+        "fromPh": "e.g., The Sales Team",
+        "fromHint": "The “From” line appears on every certificate",
+        "emailLabel": "Your email",
+        "emailHint": "We’ll send your certificates and payment confirmation here",
+        "emailHintEach": "We’ll send copies of all the certificates and your payment confirmation here",
+        "agreeNamed": "My recipients know I’m giving them a certificate and agree to have their name printed on it",
+        "agreeEach": "My recipients know I’m sending them a certificate and agree to receive it at the addresses I’ve entered",
+        "agreeBoth": "My recipients know I’m giving them a certificate and agree to have their name printed on it and to receive it at the address I’ve entered",
+        "previewTitle": "Here’s how the certificate will look",
+        "previewName": "Recipient’s name",
+        "sumNamed": "personalized",
+        "sumPlain": "no name",
+        "sumEach": "to each recipient",
+        "sumMe": "to your email",
+        "pay": "Pay {total}",
+        "wait": "Taking you to payment…",
+        "note": "By clicking “Pay,” you accept our {offer}. You’ll enter your card details on a secure payment page. Your certificates arrive right after payment.",
+        "check": "Please check: {what}.",
+        "checkEmail": "your email",
+        "checkNames": "recipients’ names",
+        "checkEmails": "recipients’ emails",
+        "checkAgree": "the box confirming your recipients agree",
+        "error": "We couldn’t take you to payment. Please try again in a minute or email us at {email}.",
+        "priceChanged": "The price has just changed. Please check the total and click “Pay” again.",
+        "status": {
+          "wait": "Checking your payment…",
+          "paid": "Payment received. We’re preparing your certificates — the email will arrive at {email} within a few minutes.",
+          "sent": "All set! Your certificates have been sent to {email}. If you don’t see the email, check your spam folder.",
+          "failed": "The payment didn’t go through. You can try again.",
+          "thanks": "Thank you! If your payment went through, the email with your certificates will arrive within a few minutes."
+        }
+      },
+      "recipient": {
+        "eyebrow": "A gift for you",
+        "title": "You’ve been given an in-depth DISC report",
+        "text": "Your certificate code {code} is saved on this device. Take the test, and on the result screen the code will already be filled in under “In-depth report.” Just add your email.",
+        "start": "Take the test",
+        "result": "Open my result",
+        "resultNote": "Already took the test on this device? Open your result, and the code will be filled in there too.",
+        "bad": "We couldn’t read the certificate link. You can enter the code yourself: take the test, then click “I have a code” on the result screen."
+      },
+      "faqTitle": "Questions",
+      "faq": [
+        {
+          "q": "Does the test cost anything?",
+          "a": "No. The test and the summary result on the site are free for everyone. The certificate pays for the in-depth report: more than 25 pages about the recipient’s profile."
+        },
+        {
+          "q": "How long is the certificate valid?",
+          "a": "For {months} months from the date of purchase. The expiry date is printed on the certificate. One code gets one report."
+        },
+        {
+          "q": "What if the recipient has already taken the test?",
+          "a": "There’s no need to retake it. They just open their result (the link is in their result email, or on the device where they took the test) and enter the code in the “In-depth report” section."
+        },
+        {
+          "q": "Will I see my recipients’ results?",
+          "a": "No. Only the recipients see their own results and reports. We only tell you which certificates have been used."
+        },
+        {
+          "q": "A certificate got lost, or the email never arrived",
+          "a": "Email {email} from the address you paid with and include your order number. We’ll send the certificates again."
+        },
+        {
+          "q": "Can I get a refund?",
+          "a": "Yes, for unused certificates that are still valid. Email {email} and include your order number. We’ll refund the price you paid for each unused certificate, and its code will stop working. Certificates whose code has already been entered on the site can’t be refunded. For details, see our {refund}."
+        },
+        {
+          "q": "Buying for a whole company?",
+          "a": "If you need more certificates than this page allows, or access codes for your whole team, see our {business}."
+        }
+      ],
+      "refundLink": "refund policy",
+      "services": {
+        "name": "Gift certificates",
+        "text": "Give the in-depth report to coworkers, your team or friends and family: a PDF gift certificate with a code, valid for {months} months. Certificates can be personalized and sent straight to each recipient.",
+        "price": "US${price} each, {pct}% off {from} or more",
+        "more": "Choose certificates"
+      },
+      "cert": {
+        "brand": "DISC Test",
+        "eyebrow": "Gift Certificate",
+        "title": "In-Depth DISC Report",
+        "to": "To",
+        "from": "From",
+        "desc": "A personal report on your behavioral style at work, more than 25 pages long: how others see you, working with your manager, career, conflict and a 30-day plan.",
+        "codeLabel": "Your code",
+        "hint": "Click the code or scan the QR code with your phone’s camera to open the site with the code already filled in",
+        "stepsTitle": "How to get your report",
+        "steps": [
+          [
+            "Take the free test",
+            "at {site}: 24 blocks, about 10 minutes"
+          ],
+          [
+            "On the result screen",
+            "click “I have a code” in the “In-depth report” section"
+          ],
+          [
+            "Enter the code and your email",
+            "Your report arrives in your inbox within a few minutes"
+          ]
+        ],
+        "until": "Valid until {date}",
+        "questions": "Questions? {email}",
+        "sample": "Sample",
+        "file": "DISC Gift Certificate"
+      },
+      "mail": {
+        "subject": "Your DISC gift certificates — order {order}",
+        "partOf": "(email {part} of {parts})",
+        "hello": "Hello,",
+        "intro": "Thank you for your purchase! Attached are {n} {units} for the in-depth DISC report. Each certificate is a separate PDF with its own code. The certificates are valid until {until}.",
+        "units": {
+          "one": "gift certificate",
+          "other": "gift certificates"
+        },
+        "partNote": "Because there are so many certificates, we’ve split them across several emails. This is email {part} of {parts}.",
+        "each": "We’ve sent each recipient an email with their certificate:",
+        "forward": "Forward the file to the recipient, or print the certificate and hand it over in person.",
+        "howTitle": "How the recipient uses the certificate:",
+        "refund": "Unused certificates can be refunded while they’re still valid: email {email} and include your order number.",
+        "bye": "Thank you for choosing us!",
+        "order": "Order number: {order}."
+      },
+      "rmail": {
+        "subject": "A gift for you: an in-depth DISC report",
+        "hello": "Hello,",
+        "helloName": "Hello {name},",
+        "intro": "Someone has given you an in-depth DISC report: a personal breakdown of how you work, more than 25 pages long. It covers how others see you, working with your manager, your career, conflict and a 30-day plan.",
+        "fromLine": "From: {from}",
+        "button": "Get my report",
+        "buttonNote": "The button opens the site with your code already filled in. Just take the test and enter your email.",
+        "howTitle": "How to get your report:",
+        "attach": "Your certificate with the code is attached, so you can save or print it.",
+        "bye": "Happy reading!",
+        "why": "The person who gave you this certificate entered your email address. We won’t send you any other emails unless you sign up for them yourself."
+      },
+      "name": "In-depth DISC report gift certificates"
     },
     "kit": {
       "title": "DISC Facilitator Kit: Session Plan, Slides, Group Workbook",
@@ -3500,6 +3786,7 @@
     "nav.materials": "DISC resources",
     "nav.howMade": "How reports are made",
     "nav.business": "For organizations",
+    "nav.gift": "Gift certificates",
 
     "pages.styles.title": "DISC Personality Types: D, I, S, C Styles and Traits",
     "pages.styles.description": "The four DISC personality types: Dominance, Influence, Steadiness, Conscientiousness. Traits, strengths, growth areas, motivation and behavior under stress.",
@@ -3628,7 +3915,7 @@
     "pd.consentLink": "consent to the processing of personal data",
     "pd.required": "Please tick the consent to the processing of personal data: without it we cannot accept your data.",
     "pd.cookieAsk": "This site keeps your progress, result and chosen language in your browser’s local storage. With your consent, a web analytics system will collect anonymized visit statistics and a recording of on-page actions to help us improve the site. Your name, email and result are not sent to the analytics system.",
-    "pd.cookieDetails": "Stored in your browser: your name and email, if you entered them; your answers and unfinished progress; your latest result; the time you first finished the test, for the deadline of the special report price; your chosen language; a note that you have seen this notice. This data stays on your device and is removed when you clear the site’s data. The hosting provider receives standard technical request data. When you first open the site on a given day, an anonymous visit note goes to the site’s server: the site language only; the server records it with the time it arrived, and your browser remembers the date so the note is not sent again that day. We use these notes to count how many people visit the site. When you start the test, an anonymous start note goes to the site’s server: the site language only. When you finish the test, an anonymous record for overall statistics goes to the site’s server: your resulting profile and the site language — without your name, email or answers. When you click “Save as PDF”, your answers and the test date — without your name or email — are sent to the site’s server, which builds the summary report file, returns it to you and stores nothing. When you send your result by email, your name, email and answers are passed to the site’s server, which emails you your result and stores your name, email, date and result in the site owner’s results database. When you subscribe to the newsletter on the home page, your email and the site language are passed to the site’s server, which sends you an email with a confirmation link and stores the address in the same database; if you don’t confirm the subscription, the address is deleted after 7 days. When you ask for the test form to be emailed to you on the “PDF test” page, your email and the site language are passed to the site’s server, which sends you an email with the form and stores a record of your consent together with the address; if you ticked the newsletter consent box, the address is added to the subscriber list right away, and the email contains an unsubscribe link. The web analytics system receives the page address (on the result screen, together with the result code: your answers, the test date and your name if you entered it, but not your email), the referrer, device and browser type, a recording of on-page actions (the name and email fields are excluded), and sets its own cookies. You can block it in your browser settings or with a tracker blocker. No advertising trackers are used.",
+    "pd.cookieDetails": "Stored in your browser: your name and email, if you entered them; your answers and unfinished progress; your latest result; the time you first finished the test, for the deadline of the special report price; the gift certificate code, if you opened the site from a certificate link; your chosen language; a note that you have seen this notice. This data stays on your device and is removed when you clear the site’s data. The hosting provider receives standard technical request data. When you first open the site on a given day, an anonymous visit note goes to the site’s server: the site language only; the server records it with the time it arrived, and your browser remembers the date so the note is not sent again that day. We use these notes to count how many people visit the site. When you start the test, an anonymous start note goes to the site’s server: the site language only. When you finish the test, an anonymous record for overall statistics goes to the site’s server: your resulting profile and the site language — without your name, email or answers. When you click “Save as PDF”, your answers and the test date — without your name or email — are sent to the site’s server, which builds the summary report file, returns it to you and stores nothing. When you send your result by email, your name, email and answers are passed to the site’s server, which emails you your result and stores your name, email, date and result in the site owner’s results database. When you subscribe to the newsletter on the home page, your email and the site language are passed to the site’s server, which sends you an email with a confirmation link and stores the address in the same database; if you don’t confirm the subscription, the address is deleted after 7 days. When you ask for the test form to be emailed to you on the “PDF test” page, your email and the site language are passed to the site’s server, which sends you an email with the form and stores a record of your consent together with the address; if you ticked the newsletter consent box, the address is added to the subscriber list right away, and the email contains an unsubscribe link. When you order gift certificates, your email, the “From” line and, if you entered them, the recipients’ names and email addresses are passed to the site’s server, which creates the order and sends the certificates after payment; recipients’ names and email addresses are deleted 30 days after the certificates are sent. The web analytics system receives the page address (on the result screen, together with the result code: your answers, the test date and your name if you entered it, but not your email), the referrer, device and browser type, a recording of on-page actions (the name and email fields are excluded), and sets its own cookies. You can block it in your browser settings or with a tracker blocker. No advertising trackers are used.",
     "pd.cookieChange": "Change cookie choice",
 
     "print.title": "Printable DISC Test: Questionnaire, Answer Key and Scoring",

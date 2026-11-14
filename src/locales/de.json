@@ -722,7 +722,8 @@
           "Wenn Sie das DISG-Workshop-Paket kaufen, verarbeiten wir Ihre E-Mail-Adresse und die Bestelldaten: Datum, Betrag, Nummer und Status der Zahlung. Wir benötigen diese Daten, um Ihnen die E-Mail mit den Links zu den Dateien des Pakets zu senden, Ihre Anfragen zu beantworten und eine Rückerstattung abzuwickeln; Rechtsgrundlage ist der Vertrag auf Grundlage der {offer}. Die Bestelldaten zum Paket werden genauso aufbewahrt wie die Bestelldaten zum ausführlichen Profil; Erinnerungs-E-Mails zu einer nicht abgeschlossenen Zahlung für das Paket versenden wir nicht."
         ]
       },
-      "purchaseCode": "Wenn Sie das ausführliche Profil mit einem Zugangscode erhalten, den eine Organisation oder eine andere Person gekauft hat, verarbeiten wir dieselben Daten mit Ausnahme der Zahlungsdaten und vermerken, dass der Code verwendet wurde. Wer den Code gekauft hat, erfährt von uns nur, ob und wann er verwendet wurde: Ihr Ergebnis, Ihr Bericht und Ihre E-Mail-Adresse werden nicht weitergegeben. Rechtsgrundlage ist der Vertrag, den Sie mit der Eingabe des Codes auf Grundlage der {offer} schließen."
+      "purchaseCode": "Wenn Sie das ausführliche Profil mit einem Zugangscode erhalten, den eine Organisation oder eine andere Person gekauft hat, verarbeiten wir dieselben Daten mit Ausnahme der Zahlungsdaten und vermerken, dass der Code verwendet wurde. Wer den Code gekauft hat, erfährt von uns nur, ob und wann er verwendet wurde: Ihr Ergebnis, Ihr Bericht und Ihre E-Mail-Adresse werden nicht weitergegeben. Rechtsgrundlage ist der Vertrag, den Sie mit der Eingabe des Codes auf Grundlage der {offer} schließen.",
+      "purchaseGift": "Wenn Sie Geschenkgutscheine kaufen, verarbeiten wir Ihre E-Mail-Adresse, die Bestelldaten (Datum, Betrag, Nummer und Status der Zahlung), die Zeile „Von“ und – sofern Sie sie angegeben haben – Namen und E-Mail-Adressen der Beschenkten. Ihre E-Mail-Adresse und die Bestelldaten benötigen wir, um Ihnen die Gutscheine und die Zahlungsbestätigung zu senden, Ihre Anfragen zu beantworten und eine Rückerstattung abzuwickeln; sie werden genauso aufbewahrt wie die Bestelldaten zum ausführlichen Profil. Der Name einer beschenkten Person wird auf ihren Gutschein gedruckt, und an ihre E-Mail-Adresse geht eine einzige E-Mail mit ihrem Gutschein. Namen und E-Mail-Adressen der Beschenkten löschen wir 30 Tage nach dem Versand der Gutscheine, bei einer nicht bezahlten Bestellung nach 7 Tagen. Mit der Angabe der Daten der Beschenkten bestätigen Sie, dass diese mit dem Erhalt des Gutscheins einverstanden sind. Rechtsgrundlage ist der Vertrag auf Grundlage der {offer}, der zugunsten der Beschenkten geschlossen wird. Wer einen Gutscheincode auf der Website eingibt, erhält das ausführliche Profil wie mit einem Zugangscode: Wer den Gutschein verschenkt hat, erfährt von uns nur, ob und wann er eingelöst wurde."
     },
     "consentDoc": {
       "title": "Einwilligung in die Verarbeitung personenbezogener Daten – DISG-Test",
@@ -835,7 +836,7 @@
         "Senden Sie unten auf der Seite eine Anfrage: wie viele Berichte Sie brauchen und für wen. Wir antworten innerhalb eines Werktags.",
         "Wir senden Ihnen einen Link zur Zahlung per Karte. Nach der Zahlung erhalten Sie die Codes als Datei.",
         "Schicken Sie den Personen den Link zum Test und jeweils einen Code. Der Test dauert etwa 10 Minuten, eine Anmeldung ist nicht nötig.",
-        "Auf der Seite mit dem Ergebnis klickt die Person auf „Ich habe einen Zugangscode“ und gibt den Code und ihre E-Mail-Adresse ein. Der Bericht kommt nach wenigen Minuten per E-Mail.",
+        "Auf der Seite mit dem Ergebnis klickt die Person auf „Ich habe einen Code“ und gibt den Code und ihre E-Mail-Adresse ein. Der Bericht kommt nach wenigen Minuten per E-Mail.",
         "Auf Wunsch teilen wir Ihnen mit, wie viele Codes bereits verwendet wurden."
       ],
       "privacyTitle": "Die Ergebnisse bleiben bei den Teilnehmenden",
@@ -2153,13 +2154,13 @@
         "wait": "Die Zahlungsseite wird geöffnet …",
         "error": "Die Zahlungsseite lässt sich gerade nicht öffnen. Versuchen Sie es in ein paar Minuten noch einmal oder schreiben Sie uns an {email}.",
         "code": {
-          "link": "Ich habe einen Zugangscode",
+          "link": "Ich habe einen Code",
           "label": "Zugangscode",
           "placeholder": "XXXX-XXXX-XXXX",
           "button": "Bericht erhalten",
           "back": "Ohne Code kaufen",
           "wait": "Der Code wird geprüft …",
-          "note": "Den Bericht hat bereits die Person oder Organisation bezahlt, die Ihnen den Code gegeben hat: Sie zahlen nichts. Ihr Ergebnis und Ihre E-Mail-Adresse geben wir nicht an sie weiter. Mit einem Klick auf „Bericht erhalten“ akzeptieren Sie unsere {offer}.",
+          "note": "Den Bericht hat bereits die Person oder Organisation bezahlt, die Ihnen den Code gegeben oder geschenkt hat: Sie zahlen nichts. Ihr Ergebnis und Ihre E-Mail-Adresse geben wir nicht an sie weiter. Mit einem Klick auf „Bericht erhalten“ akzeptieren Sie unsere {offer}.",
           "badEmail": "Prüfen Sie die E-Mail-Adresse: An sie senden wir den Bericht.",
           "empty": "Geben Sie den Zugangscode ein.",
           "done": "Code angenommen. Der Bericht kommt in wenigen Minuten an {to}. Wenn keine E-Mail ankommt, sehen Sie im Spam-Ordner nach.",
@@ -2529,6 +2530,291 @@
         "text": "Der Test zeigt Ihre Haupt- und Nebenfarbe, ihre Ausprägung in Prozent und was Sie damit anfangen können. 24 Blöcke, etwa 10 Minuten, ohne Anmeldung.",
         "button": "Meine Farbe herausfinden"
       }
+    },
+    "gift": {
+      "title": "Geschenkgutscheine für den ausführlichen DISG-Bericht",
+      "description": "Verschenken Sie den ausführlichen DISG-Bericht an Kolleginnen, Kollegen, Freunde oder Familie: Gutschein als PDF mit Code, {months} Monate gültig, ab {from} Stück {pct} % Rabatt.",
+      "eyebrow": "Zum Verschenken",
+      "h1": "Geschenkgutscheine für den ausführlichen DISG-Bericht",
+      "lead": "Schenken Sie Kolleginnen und Kollegen, Ihrem Team, Freunden oder Familie einen persönlichen Bericht über den eigenen Arbeitsstil. Jeder Gutschein ist eine PDF-Datei mit Code: Die beschenkte Person macht den Test, gibt den Code ein und erhält den ausführlichen Bericht, ohne etwas zu bezahlen.",
+      "facts": [
+        "PDF mit Code",
+        "{months} Monate gültig",
+        "Ab {from} Stück {pct} % Rabatt",
+        "{price} € pro Gutschein"
+      ],
+      "cta": "Gutscheine bestellen",
+      "sampleLink": "Muster ansehen",
+      "whoTitle": "Wem Sie damit eine Freude machen",
+      "who": [
+        [
+          "Kolleginnen, Kollegen und Teams",
+          "zum Geburtstag, zu den Feiertagen, zum Projektabschluss oder zum ersten Jahr im Unternehmen"
+        ],
+        [
+          "Neuen Mitarbeitenden",
+          "damit sie von den ersten Wochen an ihren eigenen Arbeitsstil und den ihrer Führungskraft verstehen"
+        ],
+        [
+          "Teilnehmenden eines Trainings",
+          "als Fortsetzung des Workshops: Jede Person bekommt einen Bericht über sich selbst"
+        ],
+        [
+          "Freunden und Familie",
+          "wenn jemand eine neue Stelle sucht, die Rolle wechselt oder sich selbst besser verstehen möchte"
+        ]
+      ],
+      "sampleTitle": "So sieht der Gutschein aus",
+      "sampleText": "Jeder Gutschein ist eine eigene PDF-Datei im A4-Format: Sie können sie weiterleiten, ausdrucken oder persönlich überreichen. Darauf stehen der Code, ein QR-Code und eine kurze Anleitung – die beschenkte Person muss nichts suchen.",
+      "tabsLabel": "Art des Gutscheins",
+      "tabs": [
+        "Mit Namen",
+        "Ohne Namen"
+      ],
+      "sampleName": "Anna Becker",
+      "sampleFrom": "Ihr Vertriebsteam",
+      "samplePdf": "Muster als PDF: {named} · {plain}",
+      "samplePdfNamed": "mit Namen",
+      "samplePdfPlain": "ohne Namen",
+      "ticks": [
+        [
+          "Der Code lässt sich leicht kopieren.",
+          "In der Datei ist er normaler Text: markieren und kopieren – Bindestriche und Leerzeichen stören bei der Eingabe nicht."
+        ],
+        [
+          "Oder ganz ohne Kopieren.",
+          "Klicken Sie im PDF auf den Code oder scannen Sie den QR-Code mit der Handykamera – die Website öffnet sich mit bereits eingetragenem Code."
+        ],
+        [
+          "Ein Code – ein Bericht.",
+          "Der Code gilt {months} Monate und funktioniert in jeder Sprachversion der Website: Der Bericht kommt in der Sprache, in der der Code eingegeben wurde."
+        ]
+      ],
+      "howTitle": "So wird der Gutschein eingelöst",
+      "howLead": "Diese Anleitung können Sie an die beschenkte Person weiterleiten – sie steht auch auf dem Gutschein.",
+      "how": [
+        [
+          "Machen Sie den Test",
+          "Öffnen Sie {site} und klicken Sie auf „Test starten“: 24 Blöcke mit je vier Aussagen, etwa 10 Minuten. Eine Anmeldung ist nicht nötig."
+        ],
+        [
+          "Klicken Sie auf „Ich habe einen Code“",
+          "Auf der Ergebnisseite finden Sie den Block „Ausführlicher Bericht“ – direkt nach der Beschreibung des Profils. Unter der Schaltfläche „Kaufen“ steht der Link „Ich habe einen Code“."
+        ],
+        [
+          "Geben Sie Code und E-Mail-Adresse ein",
+          "Fügen Sie den Code vom Gutschein und die Adresse ein, an die der Bericht gehen soll, und klicken Sie auf „Bericht erhalten“. Der Bericht kommt nach wenigen Minuten; finden Sie die E-Mail nicht im Posteingang, sehen Sie im Spam-Ordner nach."
+        ]
+      ],
+      "mock": {
+        "head": "DISG-Test",
+        "start": "Test starten",
+        "block": "Ausführlicher Bericht",
+        "email": "E-Mail-Adresse",
+        "buy": "Kaufen",
+        "code": "Ich habe einen Code",
+        "codeLabel": "Zugangscode",
+        "get": "Bericht erhalten",
+        "emailSample": "anna.becker@example.com"
+      },
+      "howNote": "Wird die Website über den Link oder den QR-Code auf dem Gutschein geöffnet, ist der Code schon eingetragen – dann bleibt nur, den Test zu machen und die E-Mail-Adresse einzugeben. Wurde der Test bereits gemacht, öffnen Sie Ihr Ergebnis (der Link steht in der E-Mail mit dem Ergebnis) und geben Sie den Code dort ein.",
+      "getTitle": "Was die beschenkte Person erhält",
+      "getLead": "Den ausführlichen DISG-Bericht: über 25 Seiten zum eigenen Profil, mit ihrem Namen auf jeder Seite. Was nicht im kostenlosen Bericht steht, aber im ausführlichen:",
+      "sheetAlt": "Seite {n} des Musterberichts",
+      "more": "Mehr über den ausführlichen Bericht",
+      "order": {
+        "title": "Gutscheine bestellen",
+        "qtyTitle": "Wie viele Gutscheine?",
+        "less": "Weniger",
+        "moreBtn": "Mehr",
+        "qtyLabel": "Anzahl der Gutscheine",
+        "units": {
+          "one": "Gutschein",
+          "other": "Gutscheine"
+        },
+        "money": "{n} €",
+        "line": "{n} {units} × {unit} = {total}",
+        "off": "{pct} % Rabatt",
+        "addMore": "Bestellen Sie {k} mehr, dann kostet jeder Gutschein {unit} ({pct} % Rabatt)",
+        "big": "Sie brauchen mehr als {max} Gutscheine? Dafür gibt es unsere {business}.",
+        "businessLink": "Berichtspakete für Organisationen",
+        "namedTitle": "Name auf dem Gutschein",
+        "named": [
+          [
+            "Ohne Namen",
+            "Den Gutschein können Sie an jede beliebige Person weitergeben – etwa verlosen oder später überreichen"
+          ],
+          [
+            "Mit Namen",
+            "Wir drucken den Namen der beschenkten Person auf jeden Gutschein"
+          ]
+        ],
+        "toTitle": "Wohin sollen die Gutscheine gehen?",
+        "to": [
+          [
+            "Alle an meine E-Mail-Adresse",
+            "Sie erhalten alle Dateien in einer E-Mail – zum Weiterleiten oder Ausdrucken"
+          ],
+          [
+            "Direkt an die Beschenkten",
+            "Jede Person bekommt eine E-Mail mit ihrem Gutschein, Sie erhalten eine Kopie aller Dateien"
+          ]
+        ],
+        "recipBoth": "Namen und E-Mail-Adressen der Beschenkten",
+        "recipNames": "Namen der Beschenkten",
+        "recipEmails": "E-Mail-Adressen der Beschenkten",
+        "paste": "Als Liste einfügen",
+        "pasteHint": "Eine Person pro Zeile: {fmt}. Sie können auch Spalten aus einer Excel-Tabelle kopieren.",
+        "fmtBoth": "Name, E-Mail-Adresse",
+        "fmtName": "Name",
+        "fmtEmail": "E-Mail-Adresse",
+        "pasteApply": "Übernehmen",
+        "namePh": "Vor- und Nachname",
+        "emailPh": "E-Mail-Adresse",
+        "nameAria": "Name der beschenkten Person {n}",
+        "emailAria": "E-Mail-Adresse der beschenkten Person {n}",
+        "signTitle": "Absender und Ihre E-Mail-Adresse",
+        "fromLabel": "Von",
+        "fromOptional": "– optional",
+        "fromPh": "Zum Beispiel: Ihr Vertriebsteam",
+        "fromHint": "Die Zeile „Von“ steht auf jedem Gutschein",
+        "emailLabel": "Ihre E-Mail-Adresse",
+        "emailHint": "Hierhin senden wir die Gutscheine und die Zahlungsbestätigung",
+        "emailHintEach": "Hierhin senden wir Kopien aller Gutscheine und die Zahlungsbestätigung",
+        "agreeNamed": "Die Beschenkten wissen, dass ich ihnen einen Gutschein schenke, und sind einverstanden, dass ihr Name darauf steht",
+        "agreeEach": "Die Beschenkten wissen, dass ich ihnen einen Gutschein schicke, und sind einverstanden, ihn an die angegebene Adresse zu bekommen",
+        "agreeBoth": "Die Beschenkten wissen, dass ich ihnen einen Gutschein schenke, und sind einverstanden, dass ihr Name darauf steht und der Gutschein an die angegebene Adresse geht",
+        "previewTitle": "So wird der Gutschein aussehen",
+        "previewName": "Name der beschenkten Person",
+        "sumNamed": "mit Namen",
+        "sumPlain": "ohne Namen",
+        "sumEach": "an jede beschenkte Person",
+        "sumMe": "an Ihre E-Mail-Adresse",
+        "pay": "Jetzt bezahlen: {total}",
+        "wait": "Die Zahlungsseite wird geöffnet …",
+        "note": "Mit einem Klick auf „Jetzt bezahlen“ akzeptieren Sie unsere {offer}. Ihre Kartendaten geben Sie auf einer gesicherten Zahlungsseite ein. Die Gutscheine kommen direkt nach der Zahlung.",
+        "check": "Bitte prüfen Sie: {what}.",
+        "checkEmail": "Ihre E-Mail-Adresse",
+        "checkNames": "die Namen der Beschenkten",
+        "checkEmails": "die E-Mail-Adressen der Beschenkten",
+        "checkAgree": "das Häkchen zum Einverständnis der Beschenkten",
+        "error": "Die Zahlungsseite lässt sich gerade nicht öffnen. Versuchen Sie es in einer Minute noch einmal oder schreiben Sie uns an {email}.",
+        "priceChanged": "Der Preis hat sich gerade geändert. Prüfen Sie bitte den Betrag und klicken Sie noch einmal auf „Jetzt bezahlen“.",
+        "status": {
+          "wait": "Wir prüfen die Zahlung …",
+          "paid": "Die Zahlung ist eingegangen. Wir erstellen die Gutscheine – die E-Mail kommt in wenigen Minuten an {email}.",
+          "sent": "Fertig: Die Gutscheine wurden an {email} gesendet. Finden Sie die E-Mail nicht im Posteingang, sehen Sie im Spam-Ordner nach.",
+          "failed": "Die Zahlung ist nicht durchgegangen. Sie können es noch einmal versuchen.",
+          "thanks": "Vielen Dank! Wenn die Zahlung erfolgreich war, kommt die E-Mail mit den Gutscheinen in wenigen Minuten."
+        }
+      },
+      "recipient": {
+        "eyebrow": "Ein Geschenk für Sie",
+        "title": "Sie haben den ausführlichen DISG-Bericht geschenkt bekommen",
+        "text": "Der Gutscheincode {code} ist auf diesem Gerät gespeichert. Machen Sie den Test – auf der Ergebnisseite steht der Code dann schon im Block „Ausführlicher Bericht“, und Sie müssen nur noch Ihre E-Mail-Adresse eingeben.",
+        "start": "Test starten",
+        "result": "Mein Ergebnis öffnen",
+        "resultNote": "Sie haben den Test auf diesem Gerät schon gemacht? Öffnen Sie Ihr Ergebnis – der Code wird auch dort eingetragen.",
+        "bad": "Der Link vom Gutschein wurde nicht erkannt. Geben Sie den Code bitte von Hand ein: Machen Sie den Test und klicken Sie auf der Ergebnisseite auf „Ich habe einen Code“."
+      },
+      "faqTitle": "Fragen",
+      "faq": [
+        {
+          "q": "Kostet der Test etwas?",
+          "a": "Nein. Der Test und das Kurzergebnis auf der Website sind für alle kostenlos. Mit dem Gutschein ist der ausführliche Bericht bezahlt – über 25 Seiten zum Profil der beschenkten Person."
+        },
+        {
+          "q": "Wie lange ist der Gutschein gültig?",
+          "a": "{months} Monate ab dem Kaufdatum – das Ablaufdatum steht auf dem Gutschein. Ein Code gilt für einen Bericht."
+        },
+        {
+          "q": "Was, wenn die beschenkte Person den Test schon gemacht hat?",
+          "a": "Sie muss ihn nicht wiederholen: Es genügt, das eigene Ergebnis zu öffnen (über den Link in der E-Mail mit dem Ergebnis oder auf dem Gerät, auf dem der Test gemacht wurde) und den Code im Block „Ausführlicher Bericht“ einzugeben."
+        },
+        {
+          "q": "Erfahre ich die Ergebnisse der Beschenkten?",
+          "a": "Nein. Ergebnis und Bericht sieht nur die beschenkte Person selbst. Wir teilen Ihnen nur mit, welche Gutscheine bereits eingelöst wurden."
+        },
+        {
+          "q": "Der Gutschein ist verloren gegangen oder die E-Mail ist nicht angekommen",
+          "a": "Schreiben Sie an {email} von der Adresse, mit der Sie bezahlt haben, und geben Sie die Bestellnummer an – wir senden Ihnen die Gutscheine erneut."
+        },
+        {
+          "q": "Kann ich mein Geld zurückbekommen?",
+          "a": "Ja, für nicht eingelöste Gutscheine, solange sie gültig sind: Schreiben Sie an {email} und geben Sie die Bestellnummer an. Sie erhalten für jeden nicht eingelösten Gutschein den Preis zurück, den Sie dafür gezahlt haben, und sein Code verliert seine Gültigkeit. Für einen Gutschein, dessen Code bereits auf der Website eingegeben wurde, wird die Zahlung nicht erstattet. Mehr dazu in den {refund}."
+        },
+        {
+          "q": "Gibt es ein Angebot für Unternehmen und Teams?",
+          "a": "Ja. Wenn Sie mehr als 50 Gutscheine brauchen oder ein Paket mit Zugangscodes für Mitarbeitende oder Teilnehmende, sehen Sie sich unsere {business} an."
+        }
+      ],
+      "refundLink": "Rückerstattungsbedingungen",
+      "services": {
+        "name": "Geschenkgutscheine",
+        "text": "Der ausführliche Bericht als Geschenk für Kolleginnen und Kollegen, Ihr Team, Freunde oder Familie: Gutschein als PDF mit Code, {months} Monate gültig. Auf Wunsch mit Namen und direkt an jede beschenkte Person.",
+        "price": "{price} €, ab {from} Stück {pct} % Rabatt",
+        "more": "Gutscheine bestellen"
+      },
+      "cert": {
+        "brand": "DISG-Test",
+        "eyebrow": "Geschenkgutschein",
+        "title": "Ausführlicher DISG-Bericht",
+        "to": "Für",
+        "from": "Von",
+        "desc": "Ein persönlicher Bericht über Ihren Verhaltensstil im Beruf – über 25 Seiten: wie andere Sie sehen, Gespräche mit der Führungskraft, Karriere, Konflikte und ein 30-Tage-Plan.",
+        "codeLabel": "Ihr Code",
+        "hint": "Klicken Sie auf den Code oder scannen Sie den QR-Code mit der Handykamera – die Website öffnet sich mit bereits eingetragenem Code",
+        "stepsTitle": "So erhalten Sie Ihren Bericht",
+        "steps": [
+          [
+            "Machen Sie den kostenlosen Test",
+            "auf {site} – 24 Blöcke, etwa 10 Minuten"
+          ],
+          [
+            "Auf der Ergebnisseite",
+            "im Block „Ausführlicher Bericht“ auf „Ich habe einen Code“ klicken"
+          ],
+          [
+            "Code und E-Mail-Adresse eingeben",
+            "Der Bericht kommt nach wenigen Minuten per E-Mail"
+          ]
+        ],
+        "until": "Gültig bis {date}",
+        "questions": "Fragen: {email}",
+        "sample": "Muster",
+        "file": "DISG-Geschenkgutschein"
+      },
+      "mail": {
+        "subject": "DISG-Geschenkgutscheine – Bestellung {order}",
+        "partOf": "(E-Mail {part} von {parts})",
+        "hello": "Guten Tag,",
+        "intro": "vielen Dank für Ihren Kauf! Im Anhang finden Sie {n} {units} für den ausführlichen DISG-Bericht: Jeder Gutschein ist eine eigene PDF-Datei mit Code. Die Gutscheine sind bis zum {until} gültig.",
+        "units": {
+          "one": "Geschenkgutschein",
+          "other": "Geschenkgutscheine"
+        },
+        "partNote": "Da es viele Gutscheine sind, verteilen sie sich auf mehrere E-Mails: Dies ist E-Mail {part} von {parts}.",
+        "each": "Jede beschenkte Person hat von uns eine E-Mail mit ihrem Gutschein erhalten:",
+        "forward": "Leiten Sie die Datei an die beschenkte Person weiter oder drucken Sie den Gutschein aus und überreichen Sie ihn persönlich.",
+        "howTitle": "So löst die beschenkte Person den Gutschein ein:",
+        "refund": "Nicht eingelöste Gutscheine können Sie zurückgeben, solange sie gültig sind: Schreiben Sie an {email} und geben Sie die Bestellnummer an.",
+        "bye": "Vielen Dank, dass Sie sich für uns entschieden haben!",
+        "order": "Bestellnummer: {order}."
+      },
+      "rmail": {
+        "subject": "Ein Geschenk für Sie: der ausführliche DISG-Bericht",
+        "hello": "Guten Tag,",
+        "helloName": "Guten Tag {name},",
+        "intro": "Sie haben den ausführlichen DISG-Bericht geschenkt bekommen – eine persönliche Auswertung Ihres Arbeitsstils auf über 25 Seiten: wie andere Sie sehen, Gespräche mit der Führungskraft, Karriere, Konflikte und ein 30-Tage-Plan.",
+        "fromLine": "Von: {from}",
+        "button": "Bericht erhalten",
+        "buttonNote": "Die Schaltfläche öffnet die Website mit bereits eingetragenem Code: Sie müssen nur noch den Test machen und Ihre E-Mail-Adresse angeben.",
+        "howTitle": "So erhalten Sie den Bericht:",
+        "attach": "Den Gutschein mit dem Code finden Sie im Anhang – Sie können ihn speichern oder ausdrucken.",
+        "bye": "Viel Freude beim Lesen!",
+        "why": "Ihre Adresse hat die Person angegeben, die Ihnen den Gutschein geschenkt hat. Weitere E-Mails schicken wir Ihnen nur, wenn Sie sie selbst abonnieren."
+      },
+      "name": "Geschenkgutscheine für den ausführlichen DISG-Bericht"
     },
     "kit": {
       "title": "DISG-Workshop-Paket: Leitfaden, Folien und Gruppenauswertung in Excel",
@@ -3525,6 +3811,7 @@
     "nav.materials": "Mehr über DISG",
     "nav.howMade": "So entstehen die Berichte",
     "nav.business": "Für Organisationen",
+    "nav.gift": "Geschenkgutscheine",
 
     "pages.styles.title": "Die vier DISG-Typen D, I, S, C – Merkmale, Stärken, Motivation",
     "pages.styles.description": "Die vier DISG-Typen: Dominanz, Initiative, Stetigkeit, Gewissenhaftigkeit. Merkmale, Stärken, Entwicklungsfelder, Motivation, Verhalten unter Stress.",
@@ -3653,7 +3940,7 @@
     "pd.consentLink": "Einwilligung in die Verarbeitung personenbezogener Daten",
     "pd.required": "Bitte bestätigen Sie die Einwilligung in die Verarbeitung personenbezogener Daten: Ohne sie können wir Ihre Daten nicht annehmen.",
     "pd.cookieAsk": "Diese Website speichert Ihren Fortschritt, Ihr Ergebnis und die gewählte Sprache im lokalen Speicher des Browsers. Mit Ihrer Einwilligung erfasst ein Webanalysesystem anonymisierte Besuchsstatistiken und eine Aufzeichnung der Aktionen auf der Seite, damit wir die Website verbessern können. Ihr Name, Ihre E-Mail-Adresse und Ihr Ergebnis werden nicht an das Analysesystem übermittelt.",
-    "pd.cookieDetails": "Im Browser gespeichert werden: Name und E-Mail-Adresse, falls Sie sie angegeben haben; Ihre Antworten und der unvollendete Fortschritt; Ihr letztes Ergebnis; der Zeitpunkt, zu dem Sie den Test zum ersten Mal abgeschlossen haben, für die Frist des Sonderpreises des Berichts; die gewählte Sprache; ein Vermerk, dass Sie diesen Hinweis gesehen haben. Diese Daten bleiben auf Ihrem Gerät und werden beim Löschen der Website-Daten entfernt. Der Hosting-Anbieter erhält die üblichen technischen Anfragedaten. Wenn Sie die Website an einem Tag zum ersten Mal öffnen, geht ein anonymer Besuchsvermerk an den Server der Website: nur die Sprachversion der Website; der Server speichert ihn mit der Uhrzeit des Eingangs, und Ihr Browser merkt sich das Datum, damit der Vermerk am selben Tag nicht noch einmal gesendet wird. Damit zählen wir, wie viele Menschen die Website besuchen. Wenn Sie den Test beginnen, geht ein anonymer Startvermerk an den Server der Website: nur die Sprachversion der Website. Wenn Sie den Test abschließen, geht ein anonymer Eintrag für die Gesamtstatistik an den Server der Website: das ermittelte Profil und die Sprachversion der Website – ohne Namen, E-Mail-Adresse und Antworten. Wenn Sie auf „Als PDF speichern“ klicken, gehen Ihre Antworten und das Testdatum – ohne Namen und E-Mail-Adresse – an den Server der Website; er erstellt daraus die Datei mit dem Kurzbericht, gibt sie Ihnen zurück und speichert nichts. Wenn Sie das Ergebnis per E-Mail senden lassen, werden Name, E-Mail-Adresse und Antworten an den Server der Website übermittelt; er sendet Ihnen die E-Mail mit dem Ergebnis und speichert Name, E-Mail-Adresse, Datum und Ergebnis in der Ergebnisdatenbank des Seitenbetreibers. Wenn Sie den Newsletter auf der Startseite abonnieren, werden E-Mail-Adresse und Sprachversion der Website an den Server der Website übermittelt; er sendet Ihnen eine E-Mail mit einem Bestätigungslink und speichert die Adresse in derselben Datenbank; wird die Anmeldung nicht bestätigt, wird die Adresse nach 7 Tagen gelöscht. Wenn Sie sich auf der Seite „Test als PDF“ den Fragebogen per E-Mail schicken lassen, werden E-Mail-Adresse und Sprachversion der Website an den Server der Website übermittelt; er sendet Ihnen die E-Mail mit dem Fragebogen und speichert den Vermerk über Ihre Einwilligung zusammen mit der Adresse; haben Sie in den Newsletter eingewilligt, wird die Adresse sofort in der Abonnentenliste gespeichert, und die E-Mail enthält einen Abmeldelink. Das Webanalysesystem erhält die Seitenadresse (auf der Ergebnisseite zusammen mit dem Ergebniscode: Ihre Antworten, das Testdatum und Ihr Name, falls Sie ihn angegeben haben, aber nicht Ihre E-Mail-Adresse), die Herkunft des Besuchs, Geräte- und Browsertyp sowie eine Aufzeichnung der Aktionen auf der Seite (die Felder für Name und E-Mail sind ausgenommen) und setzt eigene Cookies. Sie können es in den Browsereinstellungen oder mit einem Tracker-Blocker blockieren. Werbe-Tracker werden nicht verwendet.",
+    "pd.cookieDetails": "Im Browser gespeichert werden: Name und E-Mail-Adresse, falls Sie sie angegeben haben; Ihre Antworten und der unvollendete Fortschritt; Ihr letztes Ergebnis; der Zeitpunkt, zu dem Sie den Test zum ersten Mal abgeschlossen haben, für die Frist des Sonderpreises des Berichts; der Code eines Geschenkgutscheins, wenn Sie die Website über den Link auf einem Gutschein geöffnet haben; die gewählte Sprache; ein Vermerk, dass Sie diesen Hinweis gesehen haben. Diese Daten bleiben auf Ihrem Gerät und werden beim Löschen der Website-Daten entfernt. Der Hosting-Anbieter erhält die üblichen technischen Anfragedaten. Wenn Sie die Website an einem Tag zum ersten Mal öffnen, geht ein anonymer Besuchsvermerk an den Server der Website: nur die Sprachversion der Website; der Server speichert ihn mit der Uhrzeit des Eingangs, und Ihr Browser merkt sich das Datum, damit der Vermerk am selben Tag nicht noch einmal gesendet wird. Damit zählen wir, wie viele Menschen die Website besuchen. Wenn Sie den Test beginnen, geht ein anonymer Startvermerk an den Server der Website: nur die Sprachversion der Website. Wenn Sie den Test abschließen, geht ein anonymer Eintrag für die Gesamtstatistik an den Server der Website: das ermittelte Profil und die Sprachversion der Website – ohne Namen, E-Mail-Adresse und Antworten. Wenn Sie auf „Als PDF speichern“ klicken, gehen Ihre Antworten und das Testdatum – ohne Namen und E-Mail-Adresse – an den Server der Website; er erstellt daraus die Datei mit dem Kurzbericht, gibt sie Ihnen zurück und speichert nichts. Wenn Sie das Ergebnis per E-Mail senden lassen, werden Name, E-Mail-Adresse und Antworten an den Server der Website übermittelt; er sendet Ihnen die E-Mail mit dem Ergebnis und speichert Name, E-Mail-Adresse, Datum und Ergebnis in der Ergebnisdatenbank des Seitenbetreibers. Wenn Sie den Newsletter auf der Startseite abonnieren, werden E-Mail-Adresse und Sprachversion der Website an den Server der Website übermittelt; er sendet Ihnen eine E-Mail mit einem Bestätigungslink und speichert die Adresse in derselben Datenbank; wird die Anmeldung nicht bestätigt, wird die Adresse nach 7 Tagen gelöscht. Wenn Sie sich auf der Seite „Test als PDF“ den Fragebogen per E-Mail schicken lassen, werden E-Mail-Adresse und Sprachversion der Website an den Server der Website übermittelt; er sendet Ihnen die E-Mail mit dem Fragebogen und speichert den Vermerk über Ihre Einwilligung zusammen mit der Adresse; haben Sie in den Newsletter eingewilligt, wird die Adresse sofort in der Abonnentenliste gespeichert, und die E-Mail enthält einen Abmeldelink. Wenn Sie Geschenkgutscheine bestellen, werden Ihre E-Mail-Adresse, die Zeile „Von“ und – sofern Sie sie angegeben haben – Namen und E-Mail-Adressen der Beschenkten an den Server der Website übermittelt; er legt die Bestellung an und sendet nach der Zahlung die Gutscheine. Namen und Adressen der Beschenkten werden 30 Tage nach dem Versand gelöscht. Das Webanalysesystem erhält die Seitenadresse (auf der Ergebnisseite zusammen mit dem Ergebniscode: Ihre Antworten, das Testdatum und Ihr Name, falls Sie ihn angegeben haben, aber nicht Ihre E-Mail-Adresse), die Herkunft des Besuchs, Geräte- und Browsertyp sowie eine Aufzeichnung der Aktionen auf der Seite (die Felder für Name und E-Mail sind ausgenommen) und setzt eigene Cookies. Sie können es in den Browsereinstellungen oder mit einem Tracker-Blocker blockieren. Werbe-Tracker werden nicht verwendet.",
     "pd.cookieChange": "Cookie-Auswahl ändern",
 
     "print.title": "DISG-Test zum Ausdrucken: Fragebogen mit Schlüssel und Auswertung",

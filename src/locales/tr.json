@@ -718,7 +718,8 @@
           "Atölye Kiti’ni satın alırsanız e-posta adresinizi ve sipariş bilgilerini (tarih, tutar, ödeme numarası ve ödeme durumu) işleriz. Bu veriler size kit dosyalarının bağlantılarını içeren e-postayı göndermek, başvurunuzu yanıtlamak ve iade işlemini yapmak için gereklidir; hukuki dayanak, {offer} uyarınca kurulan sözleşmedir. Kit siparişinin bilgileri, genişletilmiş profil siparişinin bilgileriyle aynı şekilde saklanır; tamamlanmamış kit ödemeleri için hatırlatma e-postası gönderilmez."
         ]
       },
-      "purchaseCode": "Genişletilmiş profili bir kurumun ya da başka bir kişinin satın aldığı bir erişim koduyla alıyorsanız ödeme bilgileri dışında aynı verileri işler ve kodun kullanıldığını kaydederiz. Kodu satın alan kişiye yalnızca kodun kullanılıp kullanılmadığını ve ne zaman kullanıldığını bildiririz: sonucunuz, raporunuz ve e-posta adresiniz ona iletilmez. Hukuki dayanak, kodu {offer} uyarınca girerek kurduğunuz sözleşmedir."
+      "purchaseCode": "Genişletilmiş profili bir kurumun ya da başka bir kişinin satın aldığı bir erişim koduyla alıyorsanız ödeme bilgileri dışında aynı verileri işler ve kodun kullanıldığını kaydederiz. Kodu satın alan kişiye yalnızca kodun kullanılıp kullanılmadığını ve ne zaman kullanıldığını bildiririz: sonucunuz, raporunuz ve e-posta adresiniz ona iletilmez. Hukuki dayanak, kodu {offer} uyarınca girerek kurduğunuz sözleşmedir.",
+      "purchaseGift": "Hediye sertifikası satın alırsanız e-posta adresinizi, sipariş bilgilerini (tarih, tutar, ödeme numarası ve ödeme durumu), “Kimden” satırını ve — belirttiyseniz — alıcıların adlarını ve e-posta adreslerini işleriz. E-posta adresiniz ve sipariş bilgileri, sertifikaları size göndermek, başvurunuzu yanıtlamak ve iade işlemini yapmak için gereklidir; bunlar genişletilmiş profil siparişinin bilgileriyle aynı şekilde saklanır. Alıcının adı kendi sertifikasına basılır, alıcının adresine ise yalnızca kendi sertifikasını içeren tek bir e-posta gönderilir; alıcıların adlarını ve adreslerini sertifikalar gönderildikten 30 gün sonra, ödenmemiş siparişlerde ise 7 gün sonra sileriz. Alıcıların bilgilerini belirterek onların sertifika almayı kabul ettiğini teyit edersiniz. Hukuki dayanak, {offer} uyarınca kurulan ve sertifika alıcılarının yararına olan sözleşmedir. Sertifika kodunu sitede giren alıcı, genişletilmiş profili erişim koduyla alınan profille aynı şekilde alır: sertifikayı hediye eden kişiye yalnızca sertifikanın kullanılıp kullanılmadığını ve ne zaman kullanıldığını bildiririz."
     },
     "consentDoc": {
       "title": "Kişisel verilerin işlenmesine ilişkin onay — DISC testi",
@@ -831,7 +832,7 @@
         "Sayfanın altındaki formdan talep bırakın: kaç rapora ve kimler için ihtiyacınız olduğunu yazın. Bir iş günü içinde yanıt veririz.",
         "Kartla ödeme için bir bağlantı göndeririz. Ödemeden sonra kodları dosya olarak iletiriz.",
         "Kişilere test bağlantısını ve her birine bir kod gönderin. Test yaklaşık 10 dakika sürer, kayıt gerekmez.",
-        "Kişi sonuç ekranında “Kurumsal kodum var” düğmesine basar, kodu ve e-posta adresini girer. Rapor birkaç dakika içinde e-postasına gelir.",
+        "Kişi sonuç ekranında “Kodum var” bağlantısına tıklar, kodu ve e-posta adresini girer. Rapor birkaç dakika içinde e-postasına gelir.",
         "İsterseniz kaç kodun kullanıldığını size bildiririz."
       ],
       "privacyTitle": "Sonuçlar kişilerin kendisinde kalır",
@@ -1189,13 +1190,13 @@
         "wait": "Ödeme sayfası açılıyor…",
         "error": "Ödeme sayfası şu anda açılamadı. Birkaç dakika sonra yeniden deneyin ya da {email} adresine yazın.",
         "code": {
-          "link": "Kurumsal kodum var",
+          "link": "Kodum var",
           "label": "Erişim kodu",
           "placeholder": "XXXX-XXXX-XXXX",
           "button": "Raporu al",
           "back": "Kodsuz satın al",
           "wait": "Kod kontrol ediliyor…",
-          "note": "Bu kodla alınan raporun ücretini, kodu size verenler zaten ödedi: sizin ödeme yapmanız gerekmez. Sonucunuzu ve e-posta adresinizi onlara iletmeyiz. “Raporu al” düğmesine bastığınızda {offer} kabul edilmiş olur.",
+          "note": "Bu kodla alınan raporun ücretini, kodu size veren ya da hediye eden kişi veya kurum zaten ödedi: sizin ödeme yapmanız gerekmez. Sonucunuzu ve e-posta adresinizi onlara iletmeyiz. “Raporu al” düğmesine bastığınızda {offer} kabul edilmiş olur.",
           "badEmail": "E-posta adresinizi kontrol edin: rapor bu adrese gönderilecek.",
           "empty": "Erişim kodunu girin.",
           "done": "Kod kabul edildi. Rapor birkaç dakika içinde {to} adresine gelecek. E-posta gelmezse istenmeyen e-posta (spam) klasörünü kontrol edin.",
@@ -1551,6 +1552,291 @@
         "text": "Test, ana ve ikincil renginizi, bunların yüzde kaç belirgin olduğunu ve bununla ne yapabileceğinizi gösterir. 24 soru, yaklaşık 10 dakika, kayıt yok.",
         "button": "Rengini öğren"
       }
+    },
+    "gift": {
+      "title": "Genişletilmiş DISC raporu için hediye sertifikaları",
+      "description": "İş arkadaşlarınıza ve sevdiklerinize genişletilmiş DISC raporu hediye edin: kodlu PDF sertifika, {months} ay geçerli, {from} adet ve üzeri alımlarda %{pct} indirim.",
+      "eyebrow": "Hediye",
+      "h1": "Genişletilmiş DISC raporu için hediye sertifikaları",
+      "lead": "İş arkadaşlarınıza, ekibinize ya da sevdiklerinize çalışma tarzlarını anlatan, kişiye özel bir rapor hediye edin. Her sertifika, kod içeren bir PDF dosyasıdır: alıcı testi çözer, kodu girer ve genişletilmiş raporu ücret ödemeden alır.",
+      "facts": [
+        "Kodlu PDF",
+        "{months} ay geçerli",
+        "{from} adetten itibaren %{pct} indirim",
+        "Sertifika başına {price} USD"
+      ],
+      "cta": "Sertifikaları seç",
+      "sampleLink": "Örneği gör",
+      "whoTitle": "Kimlere hediye edebilirsiniz",
+      "who": [
+        [
+          "İş arkadaşlarınıza ve ekibinize",
+          "doğum gününde, bayramda ya da özel bir günde, bir projenin sonunda veya şirketteki ilk yılın şerefine"
+        ],
+        [
+          "Yeni çalışanlara",
+          "ilk haftalardan itibaren hem kendi çalışma tarzlarını hem de yöneticilerinin tarzını anlamaları için"
+        ],
+        [
+          "Eğitim katılımcılarına",
+          "eğitimin devamı olarak: her katılımcı kendisi hakkında bir rapor alır"
+        ],
+        [
+          "Arkadaşlarınıza ve sevdiklerinize",
+          "iş arayanlara, rol değiştirenlere ya da kendini daha iyi tanımak isteyenlere"
+        ]
+      ],
+      "sampleTitle": "Sertifika nasıl görünüyor",
+      "sampleText": "Her sertifika A4 boyutunda ayrı bir PDF dosyasıdır: iletebilir, yazdırabilir ya da elden verebilirsiniz. Üzerinde kod, QR kod ve kısa bir kullanım talimatı bulunur; alıcının başka bir şey araması gerekmez.",
+      "tabsLabel": "Sertifika türü",
+      "tabs": [
+        "İsme özel",
+        "İsimsiz"
+      ],
+      "sampleName": "Elif Yılmaz",
+      "sampleFrom": "Satış ekibi",
+      "samplePdf": "PDF örnekleri: {named} · {plain}",
+      "samplePdfNamed": "isme özel",
+      "samplePdfPlain": "isimsiz",
+      "ticks": [
+        [
+          "Kod kolayca kopyalanır.",
+          "Dosyada kod düz metin olarak yer alır: seçip kopyalayın — girerken tireler ve boşluklar sorun çıkarmaz."
+        ],
+        [
+          "Hatta kopyalamanız bile gerekmez.",
+          "PDF’teki koda tıklayın ya da telefonunuzun kamerasını QR koda tutun — site, kod girilmiş hâlde açılır."
+        ],
+        [
+          "Bir kod, bir rapor.",
+          "Kod {months} ay geçerlidir ve sitenin tüm dil sürümlerinde çalışır: rapor, kodun girildiği dilde gelir."
+        ]
+      ],
+      "howTitle": "Sertifika nasıl kullanılır",
+      "howLead": "Bu talimatı alıcıya iletebilirsiniz — aynısı sertifikanın üzerinde de yazılı.",
+      "how": [
+        [
+          "Testi çözün",
+          "{site} adresini açın ve “Teste başla” düğmesine basın: her biri dört ifadeden oluşan 24 soru, yaklaşık 10 dakika. Kayıt gerekmez."
+        ],
+        [
+          "“Kodum var” bağlantısına tıklayın",
+          "Sonuç ekranında “Genişletilmiş rapor” bölümünü bulun — profil açıklamasının hemen ardından gelir. “Satın al” düğmesinin altında “Kodum var” bağlantısı bulunur."
+        ],
+        [
+          "Kodu ve e-posta adresinizi girin",
+          "Sertifikadaki kodu ve raporun gönderileceği adresi yazın, ardından “Raporu al” düğmesine basın. Rapor birkaç dakika içinde gelir; e-posta gelmezse istenmeyen e-posta (spam) klasörüne bakın."
+        ]
+      ],
+      "mock": {
+        "head": "DISC testi",
+        "start": "Teste başla",
+        "block": "Genişletilmiş rapor",
+        "email": "E-posta",
+        "buy": "Satın al",
+        "code": "Kodum var",
+        "codeLabel": "Kod",
+        "get": "Raporu al",
+        "emailSample": "elif@example.com"
+      },
+      "howNote": "Siteyi sertifikadaki bağlantıdan ya da QR koddan açarsanız kod kendiliğinden girilir — geriye testi çözmek ve e-posta adresinizi yazmak kalır. Testi daha önce çözdüyseniz sonucunuzu açın (bağlantısı sonuç e-postanızda bulunur) ve kodu orada girin.",
+      "getTitle": "Alıcı ne alacak",
+      "getLead": "Genişletilmiş DISC raporu: kendi profili hakkında 25 sayfayı aşan, her sayfasında alıcının adının yazdığı bir rapor. Ücretsiz raporda olmayan, genişletilmiş raporda olanlar:",
+      "sheetAlt": "Genişletilmiş rapor örneğinin {n}. sayfası",
+      "more": "Genişletilmiş rapor hakkında daha fazla bilgi",
+      "order": {
+        "title": "Sertifika siparişi",
+        "qtyTitle": "Kaç sertifika",
+        "less": "Azalt",
+        "moreBtn": "Artır",
+        "qtyLabel": "Sertifika sayısı",
+        "units": {
+          "one": "sertifika",
+          "other": "sertifika"
+        },
+        "money": "{n} USD",
+        "line": "{n} {units} × {unit} = {total}",
+        "off": "%{pct} indirim",
+        "addMore": "{k} sertifika daha eklerseniz her biri {unit} olur (%{pct} indirim)",
+        "big": "{max} adetten fazla sertifika gerekiyorsa {business} sayfasına göz atın.",
+        "businessLink": "kurumsal paketler",
+        "namedTitle": "Sertifikadaki ad",
+        "named": [
+          [
+            "İsimsiz",
+            "Sertifikayı dilediğiniz kişiye verebilirsiniz — örneğin bir çekilişte ya da daha sonra"
+          ],
+          [
+            "İsme özel",
+            "Her sertifikaya alıcının adını yazarız"
+          ]
+        ],
+        "toTitle": "Sertifikalar nereye gönderilsin",
+        "to": [
+          [
+            "Hepsi benim e-posta adresime",
+            "Tüm dosyaları tek bir e-postayla göndeririz — kendiniz iletir ya da yazdırırsınız"
+          ],
+          [
+            "Her alıcıya ayrı ayrı",
+            "Her alıcı kendi sertifikasını içeren bir e-posta alır, size de tüm dosyaların bir kopyası gelir"
+          ]
+        ],
+        "recipBoth": "Alıcıların adları ve e-posta adresleri",
+        "recipNames": "Alıcıların adları",
+        "recipEmails": "Alıcıların e-posta adresleri",
+        "paste": "Liste olarak yapıştır",
+        "pasteHint": "Her satıra bir alıcı: {fmt}. Sütunları bir Excel tablosundan da kopyalayabilirsiniz.",
+        "fmtBoth": "ad, e-posta",
+        "fmtName": "ad",
+        "fmtEmail": "e-posta",
+        "pasteApply": "Doldur",
+        "namePh": "Ad ve soyad",
+        "emailPh": "E-posta",
+        "nameAria": "{n}. alıcının adı",
+        "emailAria": "{n}. alıcının e-posta adresi",
+        "signTitle": "İmza ve e-posta adresiniz",
+        "fromLabel": "Kimden",
+        "fromOptional": "— isteğe bağlı",
+        "fromPh": "Örneğin: Satış ekibi",
+        "fromHint": "“Kimden” satırı her sertifikada yer alır",
+        "emailLabel": "E-posta adresiniz",
+        "emailHint": "Sertifikalar ve ödeme onayı bu adrese gelir",
+        "emailHintEach": "Tüm sertifikaların kopyaları ve ödeme onayı bu adrese gelir",
+        "agreeNamed": "Alıcılar onlara sertifika hediye ettiğimi biliyor ve adlarının sertifikada yer almasını kabul ediyor",
+        "agreeEach": "Alıcılar onlara sertifika gönderdiğimi biliyor ve sertifikayı belirtilen adreslere almayı kabul ediyor",
+        "agreeBoth": "Alıcılar onlara sertifika hediye ettiğimi biliyor; adlarının sertifikada yer almasını ve sertifikanın belirtilen adrese gönderilmesini kabul ediyor",
+        "previewTitle": "Sertifika böyle görünecek",
+        "previewName": "Alıcının adı",
+        "sumNamed": "isme özel",
+        "sumPlain": "isimsiz",
+        "sumEach": "her alıcıya ayrı",
+        "sumMe": "sizin e-posta adresinize",
+        "pay": "{total} öde",
+        "wait": "Ödeme sayfası açılıyor…",
+        "note": "“Öde” düğmesine bastığınızda {offer} kabul edilmiş olur. Kart bilgilerinizi güvenli bir ödeme sayfasında girersiniz. Sertifikalar ödemenin hemen ardından gelir.",
+        "check": "Kontrol edin: {what}.",
+        "checkEmail": "e-posta adresiniz",
+        "checkNames": "alıcıların adları",
+        "checkEmails": "alıcıların e-posta adresleri",
+        "checkAgree": "alıcıların onayı kutucuğu",
+        "error": "Ödeme sayfası açılamadı. Bir dakika sonra yeniden deneyin ya da bize yazın: {email}.",
+        "priceChanged": "Fiyat az önce değişti — tutarı kontrol edip “Öde” düğmesine yeniden basın.",
+        "status": {
+          "wait": "Ödeme kontrol ediliyor…",
+          "paid": "Ödeme alındı. Sertifikalar hazırlanıyor — e-posta birkaç dakika içinde {email} adresine gelecek.",
+          "sent": "Tamamlandı: sertifikalar {email} adresine gönderildi. E-postayı göremezseniz istenmeyen e-posta (spam) klasörüne bakın.",
+          "failed": "Ödeme yapılamadı. Yeniden deneyebilirsiniz.",
+          "thanks": "Teşekkürler! Ödeme tamamlandıysa sertifikaları içeren e-posta birkaç dakika içinde gelecek."
+        }
+      },
+      "recipient": {
+        "eyebrow": "Size bir hediye var",
+        "title": "Size genişletilmiş DISC raporu hediye edildi",
+        "text": "{code} sertifika kodu bu cihaza kaydedildi. Testi çözün — sonuç ekranında kod “Genişletilmiş rapor” bölümüne kendiliğinden girilir, geriye yalnızca e-posta adresinizi yazmak kalır.",
+        "start": "Teste başla",
+        "result": "Sonucumu aç",
+        "resultNote": "Testi bu cihazda zaten çözdünüz mü? Sonucunuzu açın — kod orada da kendiliğinden girilir.",
+        "bad": "Sertifikadaki bağlantı tanınmadı. Kodu elle girin: testi çözün ve sonuç ekranında “Kodum var” bağlantısına tıklayın."
+      },
+      "faqTitle": "Sorular",
+      "faq": [
+        {
+          "q": "Test ücretli mi?",
+          "a": "Hayır. Test ve sitedeki özet sonuç herkes için ücretsizdir. Sertifika, genişletilmiş raporun ücretini karşılar: kişinin profili hakkında 25 sayfayı aşan bir rapor."
+        },
+        {
+          "q": "Sertifika ne kadar süre geçerli?",
+          "a": "Satın alma tarihinden itibaren {months} ay — son geçerlilik tarihi sertifikanın üzerinde yazılıdır. Bir kodla bir rapor alınır."
+        },
+        {
+          "q": "Alıcı testi daha önce çözdüyse ne olacak?",
+          "a": "Testi yeniden çözmesi gerekmez: sonucunu açması (bağlantısı sonuç e-postasında ya da testi çözdüğü cihazda bulunur) ve kodu “Genişletilmiş rapor” bölümüne girmesi yeterlidir."
+        },
+        {
+          "q": "Alıcıların sonuçlarını görebilir miyim?",
+          "a": "Hayır. Sonucu ve raporu yalnızca alıcının kendisi görür. Size yalnızca hangi sertifikaların kullanıldığını bildiririz."
+        },
+        {
+          "q": "Sertifika kayboldu ya da e-posta gelmedi",
+          "a": "Ödeme yaptığınız e-posta adresinden {email} adresine yazın ve sipariş numarasını belirtin — sertifikaları yeniden göndeririz."
+        },
+        {
+          "q": "Para iadesi alabilir miyim?",
+          "a": "Evet, kullanılmamış sertifikalar için, geçerlilik süreleri dolmadan: {email} adresine yazın ve sipariş numarasını belirtin. Kullanılmamış her sertifika için satın aldığınız fiyat iade edilir ve o sertifikanın kodu geçersiz olur. Kodu sitede girilmiş sertifikanın ücreti iade edilmez. Ayrıntılar {refund} sayfasında."
+        },
+        {
+          "q": "Şirketim ya da ekibim için satın alabilir miyim?",
+          "a": "Evet, sertifikaları bu sayfadan kartla satın alabilirsiniz. 50’den fazla sertifikaya ya da çalışanlarınız için bir erişim kodu paketine ihtiyacınız varsa {business} sayfasına göz atın."
+        }
+      ],
+      "refundLink": "“İptal ve iade koşulları”",
+      "services": {
+        "name": "Hediye sertifikaları",
+        "text": "İş arkadaşlarınıza, ekibinize ya da sevdiklerinize hediye olarak genişletilmiş rapor: kodlu PDF sertifika, {months} ay geçerli. Sertifikaları isme özel yapabilir ve her alıcıya ayrı ayrı gönderebilirsiniz.",
+        "price": "{price} USD; {from} adetten itibaren %{pct} indirim",
+        "more": "Sertifikaları seç"
+      },
+      "cert": {
+        "brand": "DISC testi",
+        "eyebrow": "Hediye sertifikası",
+        "title": "Genişletilmiş DISC raporu",
+        "to": "Kime",
+        "from": "Kimden",
+        "desc": "İş hayatındaki davranış tarzınızı ele alan, kişiye özel, 25 sayfayı aşan bir rapor: başkaları sizi nasıl görüyor, yöneticinizle konuşmak, kariyer, çatışmalar ve 30 günlük plan.",
+        "codeLabel": "Kodunuz",
+        "hint": "Koda tıklayın ya da telefonunuzun kamerasını QR koda tutun — site, kod girilmiş hâlde açılır",
+        "stepsTitle": "Raporu nasıl alırsınız",
+        "steps": [
+          [
+            "Ücretsiz testi çözün",
+            "{site} adresinde — 24 soru, yaklaşık 10 dakika"
+          ],
+          [
+            "Sonuç ekranında",
+            "“Genişletilmiş rapor” bölümündeki “Kodum var” bağlantısına tıklayın"
+          ],
+          [
+            "Kodu ve e-posta adresinizi girin",
+            "Rapor birkaç dakika içinde e-postanıza gelir"
+          ]
+        ],
+        "until": "Son geçerlilik tarihi: {date}",
+        "questions": "Sorularınız için: {email}",
+        "sample": "Örnek",
+        "file": "DISC hediye sertifikası"
+      },
+      "mail": {
+        "subject": "DISC hediye sertifikaları — {order} numaralı sipariş",
+        "partOf": "(e-posta {part}/{parts})",
+        "hello": "Merhaba,",
+        "intro": "Satın aldığınız için teşekkür ederiz! Ekte genişletilmiş DISC raporu için {n} {units} bulunuyor: her sertifika, kod içeren ayrı bir PDF dosyasıdır. Sertifikalar {until} tarihine kadar geçerlidir.",
+        "units": {
+          "one": "hediye sertifikası",
+          "other": "hediye sertifikası"
+        },
+        "partNote": "Sertifika sayısı fazla olduğu için birkaç e-postaya bölündü: bu, {part}/{parts} numaralı e-posta.",
+        "each": "Her alıcıya kendi sertifikasını içeren bir e-posta gönderdik:",
+        "forward": "Dosyayı alıcıya iletin ya da sertifikayı yazdırıp elden verin.",
+        "howTitle": "Alıcı sertifikayı nasıl kullanacak:",
+        "refund": "Kullanılmamış bir sertifikayı geçerlilik süresi içinde iade edebilirsiniz: {email} adresine yazın ve sipariş numarasını belirtin.",
+        "bye": "Bizi tercih ettiğiniz için teşekkür ederiz!",
+        "order": "Sipariş numarası: {order}."
+      },
+      "rmail": {
+        "subject": "Size bir hediye var: genişletilmiş DISC raporu",
+        "hello": "Merhaba,",
+        "helloName": "Merhaba {name},",
+        "intro": "Size genişletilmiş DISC raporu hediye edildi: çalışma tarzınızı kişiye özel olarak ele alan, 25 sayfayı aşan bir rapor — başkaları sizi nasıl görüyor, yöneticinizle konuşmak, kariyer, çatışmalar ve 30 günlük plan.",
+        "fromLine": "Kimden: {from}",
+        "button": "Raporu al",
+        "buttonNote": "Düğme siteyi kod girilmiş hâlde açar: geriye testi çözmek ve e-posta adresinizi yazmak kalır.",
+        "howTitle": "Raporu nasıl alırsınız:",
+        "attach": "Kodlu sertifika ekte: kaydedebilir ya da yazdırabilirsiniz.",
+        "bye": "Keyifli okumalar!",
+        "why": "E-posta adresinizi, size sertifikayı hediye eden kişi belirtti. Kendiniz abone olmadıkça size başka e-posta göndermeyeceğiz."
+      },
+      "name": "Genişletilmiş DISC raporu için hediye sertifikaları"
     },
     "kit": {
       "title": "DISC Atölye Kiti: atölye rehberi, slaytlar ve grup tablosu",
@@ -2547,6 +2833,7 @@
     "nav.materials": "DISC kaynakları",
     "nav.howMade": "Raporların hazırlanışı",
     "nav.business": "Kurumlar için",
+    "nav.gift": "Hediye sertifikaları",
 
     "pages.styles.title": "DISC kişilik tipleri: D, I, S, C — özellikler ve güçlü yönler",
     "pages.styles.description": "DISC’e göre dört kişilik tipi: Baskınlık, Etkileyicilik, İstikrar ve Titizlik. Özellikler, güçlü yönler, gelişim alanları, motivasyon ve stres.",
@@ -2675,7 +2962,7 @@
     "pd.consentLink": "kişisel verilerin işlenmesine ilişkin onay",
     "pd.required": "Kişisel verilerin işlenmesine ilişkin onay kutusunu işaretleyin: bu onay olmadan verilerinizi kabul edemeyiz.",
     "pd.cookieAsk": "Site; ilerlemenizi, sonucunuzu ve seçtiğiniz dili tarayıcının yerel depolama alanında saklar. Onay verirseniz bir web analiz hizmeti, siteyi geliştirebilmemiz için anonimleştirilmiş ziyaret istatistiklerini ve sayfadaki hareketlerin kaydını toplar. Adınız, e-posta adresiniz ve sonucunuz analiz hizmetine aktarılmaz.",
-    "pd.cookieDetails": "Tarayıcıda saklananlar: belirttiyseniz adınız ve e-posta adresiniz; yanıtlarınız ve tamamlanmamış ilerlemeniz; son sonucunuz; seçtiğiniz dil; bu bildirimi gördüğünüze dair işaret. Bu veriler cihazınızda kalır ve site verilerini temizlediğinizde silinir. Barındırma hizmeti, isteğe ilişkin standart teknik verileri alır. Siteyi gün içinde ilk kez açtığınızda sitenin sunucusuna anonim bir ziyaret kaydı gönderilir: yalnızca sitenin dil sürümü; sunucu bu kaydı ulaştığı saatle birlikte saklar, tarayıcınız da aynı gün yeniden gönderilmemesi için tarihi hatırlar. Bu kayıtlarla siteyi kaç kişinin ziyaret ettiğini sayarız. Teste başladığınızda sitenin sunucusuna anonim bir başlangıç kaydı gönderilir: yalnızca sitenin dil sürümü. Testi tamamladığınızda genel istatistik için sitenin sunucusuna anonim bir kayıt gönderilir: çıkan profiliniz ve sitenin dil sürümü. Adınız, e-posta adresiniz ve yanıtlarınız bu kayıtta yer almaz. “PDF olarak kaydet” düğmesine bastığınızda yanıtlarınız ve test tarihi, adınız ve e-posta adresiniz olmadan, sitenin sunucusuna iletilir; sunucu bunlardan özet rapor dosyasını oluşturup size geri gönderir ve hiçbir şey saklamaz. Sonucunuzu e-postanıza gönderdiğinizde adınız, e-posta adresiniz ve yanıtlarınız sitenin sunucusuna aktarılır: sunucu size sonucunuzu içeren bir e-posta gönderir ve adınızı, e-posta adresinizi, tarihi ve sonucu site sahibinin sonuç veri tabanına kaydeder. Ana sayfada bültene abone olduğunuzda e-posta adresiniz ve sitenin dil sürümü sitenin sunucusuna aktarılır: sunucu size onay bağlantısı içeren bir e-posta gönderir ve adresi aynı veri tabanına kaydeder; aboneliği onaylamazsanız adres 7 gün sonra silinir. “DISC testi PDF” sayfasında testin e-postanıza gönderilmesini istediğinizde e-posta adresiniz ve sitenin dil sürümü sitenin sunucusuna aktarılır: sunucu size PDF’i içeren bir e-posta gönderir ve onay kaydını adresinizle birlikte saklar; bülten onayı verdiyseniz adresiniz hemen abone listesine kaydedilir ve e-postada abonelikten çıkma bağlantısı bulunur. Web analiz hizmeti şunları alır: sayfa adresi (sonuç ekranında sonuç koduyla birlikte: yanıtlarınız, test tarihi ve belirttiyseniz adınız; e-posta adresiniz dahil değildir), ziyaretin geldiği kaynak, cihaz ve tarayıcı türü, sayfadaki hareketlerin kaydı (ad ve e-posta alanları kayda dahil edilmez); ayrıca kendi çerezlerini yerleştirir. Bu hizmeti tarayıcı ayarlarından ya da bir izleyici engelleyiciyle engelleyebilirsiniz. Reklam amaçlı izleyiciler kullanılmaz.",
+    "pd.cookieDetails": "Tarayıcıda saklananlar: belirttiyseniz adınız ve e-posta adresiniz; yanıtlarınız ve tamamlanmamış ilerlemeniz; son sonucunuz; testi ilk kez tamamladığınız zaman — genişletilmiş rapordaki özel fiyatın süresi için; siteyi bir sertifikadaki bağlantıyla açtıysanız hediye sertifikasının kodu; seçtiğiniz dil; bu bildirimi gördüğünüze dair işaret. Bu veriler cihazınızda kalır ve site verilerini temizlediğinizde silinir. Barındırma hizmeti, isteğe ilişkin standart teknik verileri alır. Siteyi gün içinde ilk kez açtığınızda sitenin sunucusuna anonim bir ziyaret kaydı gönderilir: yalnızca sitenin dil sürümü; sunucu bu kaydı ulaştığı saatle birlikte saklar, tarayıcınız da aynı gün yeniden gönderilmemesi için tarihi hatırlar. Bu kayıtlarla siteyi kaç kişinin ziyaret ettiğini sayarız. Teste başladığınızda sitenin sunucusuna anonim bir başlangıç kaydı gönderilir: yalnızca sitenin dil sürümü. Testi tamamladığınızda genel istatistik için sitenin sunucusuna anonim bir kayıt gönderilir: çıkan profiliniz ve sitenin dil sürümü. Adınız, e-posta adresiniz ve yanıtlarınız bu kayıtta yer almaz. “PDF olarak kaydet” düğmesine bastığınızda yanıtlarınız ve test tarihi, adınız ve e-posta adresiniz olmadan, sitenin sunucusuna iletilir; sunucu bunlardan özet rapor dosyasını oluşturup size geri gönderir ve hiçbir şey saklamaz. Sonucunuzu e-postanıza gönderdiğinizde adınız, e-posta adresiniz ve yanıtlarınız sitenin sunucusuna aktarılır: sunucu size sonucunuzu içeren bir e-posta gönderir ve adınızı, e-posta adresinizi, tarihi ve sonucu site sahibinin sonuç veri tabanına kaydeder. Ana sayfada bültene abone olduğunuzda e-posta adresiniz ve sitenin dil sürümü sitenin sunucusuna aktarılır: sunucu size onay bağlantısı içeren bir e-posta gönderir ve adresi aynı veri tabanına kaydeder; aboneliği onaylamazsanız adres 7 gün sonra silinir. “DISC testi PDF” sayfasında testin e-postanıza gönderilmesini istediğinizde e-posta adresiniz ve sitenin dil sürümü sitenin sunucusuna aktarılır: sunucu size PDF’i içeren bir e-posta gönderir ve onay kaydını adresinizle birlikte saklar; bülten onayı verdiyseniz adresiniz hemen abone listesine kaydedilir ve e-postada abonelikten çıkma bağlantısı bulunur. Hediye sertifikası siparişi verdiğinizde e-posta adresiniz, “Kimden” satırı ve — belirttiyseniz — alıcıların adları ve e-posta adresleri sitenin sunucusuna aktarılır: sunucu siparişi oluşturur ve ödemeden sonra sertifikaları gönderir; alıcıların adları ve adresleri gönderimden 30 gün sonra silinir. Web analiz hizmeti şunları alır: sayfa adresi (sonuç ekranında sonuç koduyla birlikte: yanıtlarınız, test tarihi ve belirttiyseniz adınız; e-posta adresiniz dahil değildir), ziyaretin geldiği kaynak, cihaz ve tarayıcı türü, sayfadaki hareketlerin kaydı (ad ve e-posta alanları kayda dahil edilmez); ayrıca kendi çerezlerini yerleştirir. Bu hizmeti tarayıcı ayarlarından ya da bir izleyici engelleyiciyle engelleyebilirsiniz. Reklam amaçlı izleyiciler kullanılmaz.",
     "pd.cookieChange": "Çerez tercihini değiştir",
 
     "print.title": "DISC kişilik envanteri: yazdırılabilir test, cevap anahtarı, puanlama",

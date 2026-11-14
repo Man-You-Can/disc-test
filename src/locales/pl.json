@@ -718,7 +718,8 @@
           "Jeśli kupujesz zestaw prowadzącego DISC, przetwarzamy twój adres e-mail i dane zamówienia: datę, kwotę, numer i status płatności. Dane te są potrzebne, aby wysłać ci wiadomość z linkami do plików zestawu, odpowiedzieć na twoje zgłoszenie i dokonać zwrotu płatności; podstawą jest umowa zawarta na warunkach {offer}. Dane zamówienia zestawu przechowujemy tak samo jak dane zamówienia profilu rozszerzonego; przypomnień o niedokończonej płatności za zestaw nie wysyłamy."
         ]
       },
-      "purchaseCode": "Jeśli otrzymujesz profil rozszerzony dzięki kodowi dostępu, który kupiła organizacja lub inna osoba, przetwarzamy te same dane z wyjątkiem informacji o płatności i odnotowujemy wykorzystanie kodu. Osobie, która kupiła kod, przekazujemy wyłącznie informację, czy i kiedy kod został wykorzystany: twój wynik, raport i adres e-mail nie są jej przekazywane. Podstawą jest umowa, którą zawierasz, wpisując kod na warunkach {offer}."
+      "purchaseCode": "Jeśli otrzymujesz profil rozszerzony dzięki kodowi dostępu, który kupiła organizacja lub inna osoba, przetwarzamy te same dane z wyjątkiem informacji o płatności i odnotowujemy wykorzystanie kodu. Osobie, która kupiła kod, przekazujemy wyłącznie informację, czy i kiedy kod został wykorzystany: twój wynik, raport i adres e-mail nie są jej przekazywane. Podstawą jest umowa, którą zawierasz, wpisując kod na warunkach {offer}.",
+      "purchaseGift": "Jeśli kupujesz bony podarunkowe, przetwarzamy twój adres e-mail, dane zamówienia (datę, kwotę, numer i status płatności), podpis „Od kogo” oraz – jeśli je podasz – imiona i adresy e-mail odbiorców. Twój adres e-mail i dane zamówienia są potrzebne, aby wysłać ci bony, odpowiedzieć na twoje zgłoszenie i dokonać zwrotu płatności; przechowujemy je tak samo jak dane zamówienia profilu rozszerzonego. Imię odbiorcy jest drukowane na jego bonie, a na adres odbiorcy wysyłamy jedną wiadomość z jego bonem; imiona i adresy odbiorców usuwamy po 30 dniach od wysłania bonów, a w przypadku nieopłaconego zamówienia – po 7 dniach. Podając dane odbiorców, potwierdzasz, że zgadzają się na otrzymanie bonu. Podstawą przetwarzania jest umowa zawarta na warunkach {offer}, której beneficjentami są odbiorcy bonów. Odbiorca, który wpisze kod bonu w serwisie, otrzymuje profil rozszerzony tak samo jak przy kodzie dostępu: osobie, która podarowała bon, przekazujemy wyłącznie informację, czy i kiedy został wykorzystany."
     },
     "consentDoc": {
       "title": "Zgoda na przetwarzanie danych osobowych – test DISC",
@@ -831,7 +832,7 @@
         "Zostaw zgłoszenie na dole strony: ile raportów potrzebujesz i dla kogo. Odpowiemy w ciągu jednego dnia roboczego.",
         "Wyślemy ci link do płatności kartą. Po płatności prześlemy kody w pliku.",
         "Wyślij uczestnikom link do testu i każdemu jeden kod. Test trwa około 10 minut i nie wymaga rejestracji.",
-        "Na ekranie wyniku uczestnik klika „Mam kod dostępu”, wpisuje kod i swój adres e-mail. Raport przychodzi do niego e-mailem w ciągu kilku minut.",
+        "Na ekranie wyniku uczestnik klika „Mam kod”, wpisuje kod i swój adres e-mail. Raport przychodzi do niego e-mailem w ciągu kilku minut.",
         "Na twoją prośbę powiemy, ile kodów zostało już wykorzystanych."
       ],
       "privacyTitle": "Wyniki zostają u uczestników",
@@ -1190,13 +1191,13 @@
         "wait": "Otwieramy stronę płatności…",
         "error": "Nie udało się otworzyć strony płatności. Spróbuj ponownie za kilka minut albo napisz do nas na {email}.",
         "code": {
-          "link": "Mam kod dostępu",
+          "link": "Mam kod",
           "label": "Kod dostępu",
           "placeholder": "XXXX-XXXX-XXXX",
           "button": "Odbierz raport",
           "back": "Kup bez kodu",
           "wait": "Sprawdzamy kod…",
-          "note": "Za raport zapłaciła już osoba lub organizacja, która dała ci kod – ty nic nie płacisz. Nie przekazujemy jej twojego wyniku ani adresu e-mail. Klikając „Odbierz raport”, akceptujesz warunki {offer}.",
+          "note": "Za raport zapłacił już ten, kto dał ci kod lub podarował bon – ty nic nie płacisz. Nie przekazujemy mu twojego wyniku ani adresu e-mail. Klikając „Odbierz raport”, akceptujesz warunki {offer}.",
           "badEmail": "Sprawdź adres e-mail: na niego wyślemy raport.",
           "empty": "Wpisz kod dostępu.",
           "done": "Kod przyjęty. Raport przyjdzie na {to} w ciągu kilku minut. Jeśli nie widzisz wiadomości, sprawdź folder ze spamem.",
@@ -1553,6 +1554,295 @@
         "text": "Test pokaże twój kolor wiodący i uzupełniający, ich nasilenie w procentach i to, co z tym zrobić. 24 pytania, około 10 minut, bez rejestracji.",
         "button": "Poznaj swój kolor"
       }
+    },
+    "gift": {
+      "title": "Bony podarunkowe na rozszerzony raport DISC",
+      "description": "Podaruj współpracownikom i bliskim rozszerzony raport DISC: bon PDF z kodem, ważny {months} miesięcy, przy zamówieniu od {from} sztuk – rabat {pct}%.",
+      "eyebrow": "Prezent",
+      "h1": "Bony podarunkowe na rozszerzony raport DISC",
+      "lead": "Podaruj współpracownikom, zespołowi lub bliskim osobisty raport o stylu pracy. Każdy bon to plik PDF z kodem: obdarowany robi test, wpisuje kod i dostaje raport rozszerzony bez płacenia.",
+      "facts": [
+        "PDF z kodem",
+        "Ważny {months} miesięcy",
+        "Od {from} sztuk – rabat {pct}%",
+        "{price} USD za bon"
+      ],
+      "cta": "Wybierz bony",
+      "sampleLink": "Zobacz wzór",
+      "whoTitle": "Komu podarować",
+      "who": [
+        [
+          "Współpracownikom i zespołowi",
+          "na urodziny, na święta, na zakończenie projektu albo z okazji pierwszego roku w firmie"
+        ],
+        [
+          "Nowym pracownikom",
+          "żeby od pierwszych tygodni rozumieli swój styl pracy i styl swojego szefa"
+        ],
+        [
+          "Uczestnikom szkolenia",
+          "jako ciąg dalszy zajęć: każdy dostanie raport o sobie"
+        ],
+        [
+          "Przyjaciołom i bliskim",
+          "tym, którzy szukają pracy, zmieniają rolę albo chcą lepiej zrozumieć siebie"
+        ]
+      ],
+      "sampleTitle": "Jak wygląda bon",
+      "sampleText": "Każdy bon to osobny plik PDF w formacie A4: możesz go przesłać dalej, wydrukować albo wręczyć osobiście. Jest na nim kod, kod QR i krótka instrukcja – obdarowany nie musi niczego szukać.",
+      "tabsLabel": "Rodzaj bonu",
+      "tabs": [
+        "Imienny",
+        "Bez imienia"
+      ],
+      "sampleName": "Anna Kowalska",
+      "sampleFrom": "Zespół działu sprzedaży",
+      "samplePdf": "Wzory w PDF: {named} · {plain}",
+      "samplePdfNamed": "imienny",
+      "samplePdfPlain": "bez imienia",
+      "ticks": [
+        [
+          "Kod łatwo skopiować.",
+          "W pliku to zwykły tekst: zaznacz go i skopiuj – myślniki i spacje nie przeszkadzają przy wpisywaniu."
+        ],
+        [
+          "Albo nie kopiuj go wcale.",
+          "Kliknij kod w pliku PDF albo zeskanuj kod QR aparatem telefonu – serwis otworzy się z już wpisanym kodem."
+        ],
+        [
+          "Jeden kod – jeden raport.",
+          "Kod jest ważny {months} miesięcy i działa w każdej wersji językowej serwisu: raport przyjdzie w tym języku, w którym kod został wpisany."
+        ]
+      ],
+      "howTitle": "Jak skorzystać z bonu",
+      "howLead": "Tę instrukcję możesz przesłać obdarowanemu – jest też wydrukowana na bonie.",
+      "how": [
+        [
+          "Zrób test",
+          "Wejdź na {site} i kliknij „Rozpocznij test”: 24 pytania po cztery stwierdzenia, około 10 minut. Rejestracja nie jest potrzebna."
+        ],
+        [
+          "Kliknij „Mam kod”",
+          "Na ekranie wyniku znajdź sekcję „Raport rozszerzony” – jest zaraz pod opisem profilu. Pod przyciskiem „Kup” znajduje się link „Mam kod”."
+        ],
+        [
+          "Wpisz kod i e-mail",
+          "Wklej kod z bonu i adres, na który mamy wysłać raport, a potem kliknij „Odbierz raport”. Raport przyjdzie w ciągu kilku minut; jeśli nie widzisz wiadomości, zajrzyj do folderu ze spamem."
+        ]
+      ],
+      "mock": {
+        "head": "Test DISC",
+        "start": "Rozpocznij test",
+        "block": "Raport rozszerzony",
+        "email": "E-mail",
+        "buy": "Kup",
+        "code": "Mam kod",
+        "codeLabel": "Kod",
+        "get": "Odbierz raport",
+        "emailSample": "anna@example.com"
+      },
+      "howNote": "Jeśli otworzysz serwis z linku albo kodu QR na bonie, kod wpisze się sam – wystarczy zrobić test i podać e-mail. Jeśli test jest już zrobiony, otwórz swój wynik (link jest w wiadomości z wynikiem) i wpisz kod tam.",
+      "getTitle": "Co dostanie obdarowany",
+      "getLead": "Rozszerzony raport DISC – ponad 25 stron o własnym profilu, z imieniem odbiorcy na każdej stronie. Czego nie ma w bezpłatnym raporcie, a jest w rozszerzonym:",
+      "sheetAlt": "Strona {n} przykładowego raportu rozszerzonego",
+      "more": "Więcej o raporcie rozszerzonym",
+      "order": {
+        "title": "Zamów bony",
+        "qtyTitle": "Ile bonów",
+        "less": "Mniej",
+        "moreBtn": "Więcej",
+        "qtyLabel": "Liczba bonów",
+        "units": {
+          "one": "bon",
+          "few": "bony",
+          "many": "bonów",
+          "other": "bonu"
+        },
+        "money": "{n} USD",
+        "line": "{n} {units} × {unit} = {total}",
+        "off": "rabat {pct}%",
+        "addMore": "Dodaj jeszcze {k}, a każdy bon będzie kosztował {unit} (rabat {pct}%)",
+        "big": "Potrzebujesz więcej niż {max} bonów? Zobacz {business}.",
+        "businessLink": "pakiety dla organizacji",
+        "namedTitle": "Imię na bonie",
+        "named": [
+          [
+            "Bez imienia",
+            "Bon możesz przekazać komukolwiek – na przykład rozlosować albo wręczyć później"
+          ],
+          [
+            "Imienne",
+            "Wpiszemy imię i nazwisko odbiorcy na każdym bonie"
+          ]
+        ],
+        "toTitle": "Dokąd wysłać bony",
+        "to": [
+          [
+            "Wszystkie na mój e-mail",
+            "Wyślemy wszystkie pliki w jednej wiadomości – możesz je przesłać dalej albo wydrukować"
+          ],
+          [
+            "Do każdego odbiorcy",
+            "Każdy dostanie wiadomość ze swoim bonem, a ty – kopię wszystkich plików"
+          ]
+        ],
+        "recipBoth": "Imiona i adresy e-mail odbiorców",
+        "recipNames": "Imiona odbiorców",
+        "recipEmails": "Adresy e-mail odbiorców",
+        "paste": "Wklej listę",
+        "pasteHint": "Jeden odbiorca w wierszu: {fmt}. Możesz skopiować kolumny z arkusza Excel.",
+        "fmtBoth": "imię, e-mail",
+        "fmtName": "imię",
+        "fmtEmail": "e-mail",
+        "pasteApply": "Wypełnij",
+        "namePh": "Imię i nazwisko",
+        "emailPh": "E-mail",
+        "nameAria": "Imię odbiorcy {n}",
+        "emailAria": "E-mail odbiorcy {n}",
+        "signTitle": "Podpis i twój e-mail",
+        "fromLabel": "Od kogo",
+        "fromOptional": "– opcjonalnie",
+        "fromPh": "Na przykład: zespół działu sprzedaży",
+        "fromHint": "Ten podpis znajdzie się na każdym bonie",
+        "emailLabel": "Twój e-mail",
+        "emailHint": "Tu przyjdą bony i potwierdzenie płatności",
+        "emailHintEach": "Tu przyjdą kopie wszystkich bonów i potwierdzenie płatności",
+        "agreeNamed": "Odbiorcy wiedzą, że dostaną ode mnie bon, i zgadzają się, żeby ich imię i nazwisko znalazło się na bonie",
+        "agreeEach": "Odbiorcy wiedzą, że wysyłam im bon, i zgadzają się otrzymać go na podane adresy",
+        "agreeBoth": "Odbiorcy wiedzą, że dostaną ode mnie bon, i zgadzają się, żeby ich imię i nazwisko znalazło się na bonie, a sam bon przyszedł na podany adres",
+        "previewTitle": "Tak będzie wyglądał bon",
+        "previewName": "Imię odbiorcy",
+        "sumNamed": "imienne",
+        "sumPlain": "bez imienia",
+        "sumEach": "do każdego odbiorcy",
+        "sumMe": "na twój e-mail",
+        "pay": "Zapłać {total}",
+        "wait": "Przechodzimy do płatności…",
+        "note": "Klikając „Zapłać”, akceptujesz warunki {offer}. Dane karty podajesz na zabezpieczonej stronie płatności. Bony przyjdą od razu po płatności.",
+        "check": "Sprawdź: {what}.",
+        "checkEmail": "twój e-mail",
+        "checkNames": "imiona odbiorców",
+        "checkEmails": "adresy e-mail odbiorców",
+        "checkAgree": "potwierdzenie zgody odbiorców",
+        "error": "Nie udało się przejść do płatności. Spróbuj ponownie za minutę albo napisz do nas: {email}.",
+        "priceChanged": "Cena właśnie się zmieniła – sprawdź kwotę i kliknij „Zapłać” jeszcze raz.",
+        "status": {
+          "wait": "Sprawdzamy płatność…",
+          "paid": "Płatność otrzymana. Przygotowujemy bony – wiadomość przyjdzie na {email} w ciągu kilku minut.",
+          "sent": "Gotowe: bony zostały wysłane na {email}. Jeśli nie widzisz wiadomości, sprawdź folder ze spamem.",
+          "failed": "Płatność nie powiodła się. Możesz spróbować jeszcze raz.",
+          "thanks": "Dziękujemy! Jeśli płatność się powiodła, wiadomość z bonami przyjdzie w ciągu kilku minut."
+        }
+      },
+      "recipient": {
+        "eyebrow": "Prezent dla ciebie",
+        "title": "Dostajesz w prezencie rozszerzony raport DISC",
+        "text": "Kod bonu {code} jest zapisany na tym urządzeniu. Zrób test – na ekranie wyniku kod sam pojawi się w sekcji „Raport rozszerzony”, wystarczy podać e-mail.",
+        "start": "Zrób test",
+        "result": "Otwórz mój wynik",
+        "resultNote": "Test masz już za sobą na tym urządzeniu? Otwórz swój wynik – kod wpisze się także tam.",
+        "bad": "Nie udało się odczytać linku z bonu. Wpisz kod ręcznie: zrób test, a na ekranie wyniku kliknij „Mam kod”."
+      },
+      "faqTitle": "Pytania",
+      "faq": [
+        {
+          "q": "Czy test jest płatny?",
+          "a": "Nie. Test i krótki wynik w serwisie są bezpłatne dla wszystkich. Bon opłaca raport rozszerzony – ponad 25 stron o profilu danej osoby."
+        },
+        {
+          "q": "Jak długo bon jest ważny?",
+          "a": "{months} miesięcy od dnia zakupu – data ważności jest wydrukowana na bonie. Jeden kod to jeden raport."
+        },
+        {
+          "q": "Co, jeśli obdarowany ma już test za sobą?",
+          "a": "Nie musi go powtarzać: wystarczy otworzyć swój wynik (link jest w wiadomości z wynikiem albo na urządzeniu, na którym wypełniono test) i wpisać kod w sekcji „Raport rozszerzony”."
+        },
+        {
+          "q": "Czy poznam wyniki obdarowanych?",
+          "a": "Nie. Wynik i raport widzi tylko sam odbiorca. Tobie przekazujemy jedynie informację, które bony zostały już wykorzystane."
+        },
+        {
+          "q": "Bon się zgubił albo wiadomość nie dotarła",
+          "a": "Napisz na {email} z adresu podanego przy płatności i dodaj numer zamówienia – wyślemy bony jeszcze raz."
+        },
+        {
+          "q": "Czy mogę odzyskać pieniądze?",
+          "a": "Tak, za niewykorzystane bony, dopóki są ważne: napisz na {email} i podaj numer zamówienia. Zwrócimy cenę zapłaconą za każdy niewykorzystany bon, a jego kod przestanie działać. Za bon, którego kod został już wpisany w serwisie, płatność nie podlega zwrotowi. Szczegóły – na stronie {refund}."
+        },
+        {
+          "q": "Kupujesz dla firmy lub zespołu?",
+          "a": "Bony dla kilku osób najprościej kupić tutaj, płacąc kartą. Jeśli potrzebujesz większej liczby kodów dla pracowników, klientów lub uczestników szkoleń, zobacz {business}."
+        }
+      ],
+      "refundLink": "„Zasady zwrotu płatności”",
+      "services": {
+        "name": "Bony podarunkowe",
+        "text": "Raport rozszerzony w prezencie dla współpracowników, zespołu lub bliskich: bon PDF z kodem, ważny {months} miesięcy. Możesz zamówić bony imienne i wysłać je bezpośrednio do każdego odbiorcy.",
+        "price": "{price} USD, od {from} sztuk – rabat {pct}%",
+        "more": "Wybierz bony"
+      },
+      "cert": {
+        "brand": "Test DISC",
+        "eyebrow": "Bon podarunkowy",
+        "title": "Rozszerzony raport DISC",
+        "to": "Dla",
+        "from": "Od",
+        "desc": "Osobisty raport o stylu zachowania w pracy – ponad 25 stron: jak widzą cię inni, rozmowa z szefem, kariera, konflikty i plan na 30 dni.",
+        "codeLabel": "Twój kod",
+        "hint": "Kliknij kod albo zeskanuj kod QR aparatem telefonu – serwis otworzy się z już wpisanym kodem",
+        "stepsTitle": "Jak odebrać raport",
+        "steps": [
+          [
+            "Zrób bezpłatny test",
+            "na {site} – 24 pytania, około 10 minut"
+          ],
+          [
+            "Na ekranie wyniku",
+            "w sekcji „Raport rozszerzony” kliknij „Mam kod”"
+          ],
+          [
+            "Wpisz kod i swój e-mail",
+            "Raport przyjdzie na skrzynkę w ciągu kilku minut"
+          ]
+        ],
+        "until": "Ważny do {date}",
+        "questions": "Pytania: {email}",
+        "sample": "Wzór",
+        "file": "Bon podarunkowy DISC"
+      },
+      "mail": {
+        "subject": "Bony podarunkowe DISC – zamówienie {order}",
+        "partOf": "(wiadomość {part} z {parts})",
+        "hello": "Dzień dobry!",
+        "intro": "Dziękujemy za zakup! W załączniku znajdziesz {n} {units} na rozszerzony raport DISC – każdy bon to osobny plik PDF z kodem. Bony są ważne do {until}.",
+        "units": {
+          "one": "bon podarunkowy",
+          "few": "bony podarunkowe",
+          "many": "bonów podarunkowych",
+          "other": "bonu podarunkowego"
+        },
+        "partNote": "Bonów jest dużo, dlatego wysłaliśmy je w kilku wiadomościach: to jest wiadomość {part} z {parts}.",
+        "each": "Do każdego odbiorcy wysłaliśmy wiadomość z jego bonem:",
+        "forward": "Prześlij plik odbiorcy albo wydrukuj bon i wręcz go osobiście.",
+        "howTitle": "Jak odbiorca skorzysta z bonu:",
+        "refund": "Niewykorzystany bon możesz zwrócić, dopóki jest ważny: napisz na {email} i podaj numer zamówienia.",
+        "bye": "Dziękujemy za zaufanie!",
+        "order": "Zamówienie {order}."
+      },
+      "rmail": {
+        "subject": "Prezent dla ciebie: rozszerzony raport DISC",
+        "hello": "Dzień dobry!",
+        "helloName": "Dzień dobry, {name}!",
+        "intro": "Dostajesz w prezencie rozszerzony raport DISC – osobistą analizę twojego stylu pracy na ponad 25 stronach: jak widzą cię inni, rozmowa z szefem, kariera, konflikty i plan na 30 dni.",
+        "fromLine": "Od: {from}",
+        "button": "Odbierz raport",
+        "buttonNote": "Przycisk otworzy serwis z już wpisanym kodem: wystarczy zrobić test i podać e-mail.",
+        "howTitle": "Jak odebrać raport:",
+        "attach": "Bon z kodem jest w załączniku: możesz go zapisać albo wydrukować.",
+        "bye": "Miłej lektury!",
+        "why": "Twój adres podała nam osoba, która podarowała ci bon. Nie wyślemy ci innych wiadomości, chyba że samodzielnie zapiszesz się na nasz newsletter."
+      },
+      "name": "Bony podarunkowe na rozszerzony raport DISC"
     },
     "kit": {
       "title": "Zestaw prowadzącego DISC: scenariusz warsztatu, slajdy i tabela grupy",
@@ -2543,6 +2833,7 @@
     "nav.materials": "Materiały o DISC",
     "nav.howMade": "Jak powstają raporty",
     "nav.business": "Dla organizacji",
+    "nav.gift": "Bony podarunkowe",
 
     "pages.styles.title": "Typy osobowości DISC: D, I, S, C – cechy i mocne strony",
     "pages.styles.description": "Cztery typy osobowości (style zachowania) DISC: dominacja, wpływ, stałość, sumienność. Cechy, mocne strony, obszary rozwoju, motywacja i zachowanie w stresie.",
@@ -2671,7 +2962,7 @@
     "pd.consentLink": "zgodę na przetwarzanie danych osobowych",
     "pd.required": "Zaznacz zgodę na przetwarzanie danych osobowych: bez niej nie możemy przyjąć twoich danych.",
     "pd.cookieAsk": "Serwis przechowuje twoje postępy, wynik i wybrany język w pamięci lokalnej przeglądarki. Za twoją zgodą system analityki internetowej będzie zbierać zanonimizowane statystyki odwiedzin oraz zapis działań na stronie, abyśmy mogli ulepszać serwis. Imię, e-mail i wynik nie są przekazywane do systemu analitycznego.",
-    "pd.cookieDetails": "W przeglądarce przechowywane są: imię i e-mail, jeśli je podano; odpowiedzi i nieukończone postępy; ostatni wynik; czas pierwszego ukończenia testu, do liczenia terminu ceny specjalnej raportu; wybrany język; informacja, że ten komunikat został już wyświetlony. Te dane pozostają na twoim urządzeniu i są usuwane przy czyszczeniu danych witryny. Dostawca hostingu otrzymuje standardowe dane techniczne żądania. Gdy pierwszy raz danego dnia otwierasz serwis, na serwer serwisu trafia anonimowa informacja o wizycie: tylko wersja językowa serwisu; serwer zapisuje ją z godziną otrzymania, a przeglądarka zapamiętuje datę, żeby tego samego dnia nie wysyłać jej ponownie. Na tej podstawie liczymy, ile osób odwiedza serwis. Gdy zaczynasz test, na serwer serwisu trafia anonimowa informacja o rozpoczęciu: tylko wersja językowa serwisu. Po ukończeniu testu na serwer serwisu trafia anonimowy zapis do ogólnej statystyki: uzyskany profil i wersja językowa serwisu – bez imienia, adresu e-mail i odpowiedzi. Gdy klikniesz „Zapisz jako PDF”, odpowiedzi i data testu – bez imienia i e-maila – trafiają na serwer serwisu, który tworzy z nich plik raportu podstawowego, odsyła go i niczego nie zapisuje. Gdy wysyłasz wynik na e-mail, imię, e-mail i odpowiedzi są przekazywane na serwer serwisu: wysyła on do ciebie wiadomość z wynikiem i zapisuje imię, e-mail, datę oraz wynik w bazie wyników właściciela serwisu. Gdy zapisujesz się do newslettera na stronie głównej, e-mail i wersja językowa serwisu są przekazywane na serwer serwisu: wysyła on do ciebie wiadomość z linkiem potwierdzającym i zapisuje adres w tej samej bazie; jeśli subskrypcja nie zostanie potwierdzona, adres jest usuwany po 7 dniach. Gdy na stronie „Test w PDF” prosisz o przesłanie arkusza testu e-mailem, e-mail i wersja językowa serwisu są przekazywane na serwer serwisu: wysyła on do ciebie wiadomość z arkuszem i zapisuje informację o zgodzie razem z adresem; jeśli zaznaczysz zgodę na newsletter, adres od razu trafia na listę subskrybentów, a w wiadomości znajdzie się link do rezygnacji. System analityki internetowej otrzymuje adres strony (na ekranie wyniku – razem z kodem wyniku: odpowiedziami, datą testu i imieniem, jeśli je podano, ale bez adresu e-mail), źródło wejścia, typ urządzenia i przeglądarki, zapis działań na stronie (pola z imieniem i e-mailem są z zapisu wyłączone) i zapisuje własne pliki cookie. Możesz go zablokować w ustawieniach przeglądarki lub za pomocą programu blokującego skrypty śledzące. Reklamowe skrypty śledzące nie są używane.",
+    "pd.cookieDetails": "W przeglądarce przechowywane są: imię i e-mail, jeśli je podano; odpowiedzi i nieukończone postępy; ostatni wynik; czas pierwszego ukończenia testu, do liczenia terminu ceny specjalnej raportu; kod bonu podarunkowego, jeśli otworzysz serwis z linku na bonie; wybrany język; informacja, że ten komunikat został już wyświetlony. Te dane pozostają na twoim urządzeniu i są usuwane przy czyszczeniu danych witryny. Dostawca hostingu otrzymuje standardowe dane techniczne żądania. Gdy pierwszy raz danego dnia otwierasz serwis, na serwer serwisu trafia anonimowa informacja o wizycie: tylko wersja językowa serwisu; serwer zapisuje ją z godziną otrzymania, a przeglądarka zapamiętuje datę, żeby tego samego dnia nie wysyłać jej ponownie. Na tej podstawie liczymy, ile osób odwiedza serwis. Gdy zaczynasz test, na serwer serwisu trafia anonimowa informacja o rozpoczęciu: tylko wersja językowa serwisu. Po ukończeniu testu na serwer serwisu trafia anonimowy zapis do ogólnej statystyki: uzyskany profil i wersja językowa serwisu – bez imienia, adresu e-mail i odpowiedzi. Gdy klikniesz „Zapisz jako PDF”, odpowiedzi i data testu – bez imienia i e-maila – trafiają na serwer serwisu, który tworzy z nich plik raportu podstawowego, odsyła go i niczego nie zapisuje. Gdy wysyłasz wynik na e-mail, imię, e-mail i odpowiedzi są przekazywane na serwer serwisu: wysyła on do ciebie wiadomość z wynikiem i zapisuje imię, e-mail, datę oraz wynik w bazie wyników właściciela serwisu. Gdy zapisujesz się do newslettera na stronie głównej, e-mail i wersja językowa serwisu są przekazywane na serwer serwisu: wysyła on do ciebie wiadomość z linkiem potwierdzającym i zapisuje adres w tej samej bazie; jeśli subskrypcja nie zostanie potwierdzona, adres jest usuwany po 7 dniach. Gdy na stronie „Test w PDF” prosisz o przesłanie arkusza testu e-mailem, e-mail i wersja językowa serwisu są przekazywane na serwer serwisu: wysyła on do ciebie wiadomość z arkuszem i zapisuje informację o zgodzie razem z adresem; jeśli zaznaczysz zgodę na newsletter, adres od razu trafia na listę subskrybentów, a w wiadomości znajdzie się link do rezygnacji. Gdy zamawiasz bony podarunkowe, twój e-mail, podpis „Od kogo” oraz – jeśli je podasz – imiona i adresy e-mail odbiorców są przekazywane na serwer serwisu: tworzy on zamówienie, a po płatności wysyła bony; imiona i adresy odbiorców są usuwane po 30 dniach od wysłania. System analityki internetowej otrzymuje adres strony (na ekranie wyniku – razem z kodem wyniku: odpowiedziami, datą testu i imieniem, jeśli je podano, ale bez adresu e-mail), źródło wejścia, typ urządzenia i przeglądarki, zapis działań na stronie (pola z imieniem i e-mailem są z zapisu wyłączone) i zapisuje własne pliki cookie. Możesz go zablokować w ustawieniach przeglądarki lub za pomocą programu blokującego skrypty śledzące. Reklamowe skrypty śledzące nie są używane.",
     "pd.cookieChange": "Zmień wybór dotyczący plików cookie",
 
     "print.title": "Test DISC do druku: kwestionariusz z kluczem i interpretacją",

@@ -718,7 +718,8 @@
           "Se você comprar o kit do facilitador, tratamos seu e-mail e os dados do pedido: data, valor, número e status do pagamento. Precisamos desses dados para enviar a você o e-mail com os links para os arquivos do kit, responder às suas mensagens e processar reembolsos; a base legal é o contrato conforme os {offer}. Os dados do pedido do kit são guardados da mesma forma que os do pedido do perfil ampliado; não enviamos lembretes sobre um pagamento do kit não concluído."
         ]
       },
-      "purchaseCode": "Se você receber o perfil ampliado por um código de acesso comprado por uma empresa ou outra pessoa, tratamos os mesmos dados, exceto os dados de pagamento, e registramos que o código foi usado. A quem comprou o código, informamos apenas se ele foi usado e quando: seu resultado, seu relatório e seu e-mail não são repassados. A base legal é o contrato que você celebra ao digitar o código conforme os {offer}."
+      "purchaseCode": "Se você receber o perfil ampliado por um código de acesso comprado por uma empresa ou outra pessoa, tratamos os mesmos dados, exceto os dados de pagamento, e registramos que o código foi usado. A quem comprou o código, informamos apenas se ele foi usado e quando: seu resultado, seu relatório e seu e-mail não são repassados. A base legal é o contrato que você celebra ao digitar o código conforme os {offer}.",
+      "purchaseGift": "Se você comprar vales-presente, tratamos seu e-mail, os dados do pedido (data, valor, número e status do pagamento), a assinatura da linha “De” e, se informados, os nomes e os e-mails dos presenteados. Precisamos do seu e-mail e dos dados do pedido para enviar a você os vales-presente, responder às suas mensagens e processar reembolsos; eles são guardados da mesma forma que os dados do pedido do perfil ampliado. O nome do presenteado é impresso no vale-presente dele, e o e-mail do presenteado recebe uma única mensagem, com o vale-presente; excluímos os nomes e os e-mails dos presenteados 30 dias após o envio dos vales-presente ou, em pedido não pago, após 7 dias. Ao informar os dados dos presenteados, você confirma que eles concordam em receber o vale-presente. A base legal é o contrato conforme os {offer}, do qual os presenteados são beneficiários. Quem digita o código de um vale-presente no site recebe o perfil ampliado da mesma forma que com um código de acesso: a quem deu o vale-presente, informamos apenas se ele foi usado e quando."
     },
     "consentDoc": {
       "title": "Consentimento para o tratamento de dados pessoais — teste DISC",
@@ -831,7 +832,7 @@
         "Faça o pedido no fim desta página: quantos relatórios você precisa e para quem. Respondemos em até um dia útil.",
         "Enviamos o link para pagamento com cartão. Depois do pagamento, enviamos os códigos em um arquivo.",
         "Envie às pessoas o link do teste e um código para cada uma. O teste leva cerca de 10 minutos e não exige cadastro.",
-        "Na tela do resultado, a pessoa clica em “Tenho um código da empresa” e digita o código e o próprio e-mail. O relatório chega por e-mail em poucos minutos.",
+        "Na tela do resultado, a pessoa clica em “Tenho um código” e digita o código e o próprio e-mail. O relatório chega por e-mail em poucos minutos.",
         "Quando você pedir, informamos quantos códigos já foram usados."
       ],
       "privacyTitle": "Os resultados ficam com as pessoas",
@@ -1202,13 +1203,13 @@
         "wait": "Redirecionando para o pagamento…",
         "error": "Não foi possível abrir a página de pagamento. Tente de novo em instantes ou escreva para {email}.",
         "code": {
-          "link": "Tenho um código da empresa",
+          "link": "Tenho um código",
           "label": "Código de acesso",
           "placeholder": "XXXX-XXXX-XXXX",
           "button": "Receber o relatório",
           "back": "Comprar sem código",
           "wait": "Verificando o código…",
-          "note": "Quem passou o código a você já pagou pelo relatório: você não precisa pagar nada. Não repassamos a essa pessoa ou empresa o seu resultado nem o seu e-mail. Ao clicar em “Receber o relatório”, você aceita os {offer}.",
+          "note": "Quem passou o código a você — uma empresa ou alguém que quis presentear você — já pagou pelo relatório: você não precisa pagar nada. Não repassamos a essa pessoa ou empresa o seu resultado nem o seu e-mail. Ao clicar em “Receber o relatório”, você aceita os {offer}.",
           "badEmail": "Confira o endereço: o relatório será enviado para ele.",
           "empty": "Digite o código de acesso.",
           "done": "Código aceito. O relatório chegará em {to} em poucos minutos. Se o e-mail não aparecer, confira a pasta de spam.",
@@ -1577,6 +1578,293 @@
         "text": "O teste mostra sua cor predominante e a secundária, a intensidade de cada uma em porcentagem e o que fazer com isso. 24 blocos, cerca de 10 minutos, sem cadastro.",
         "button": "Descobrir minha cor"
       }
+    },
+    "gift": {
+      "title": "Vale-presente do relatório DISC ampliado",
+      "description": "Dê de presente o relatório DISC ampliado a colegas, amigos e familiares: vale-presente em PDF com código, válido por {months} meses. A partir de {from} unidades, {pct}% de desconto.",
+      "eyebrow": "Presente",
+      "h1": "Vale-presente do relatório DISC ampliado",
+      "lead": "Presenteie colegas, a equipe ou pessoas queridas com um relatório personalizado sobre o estilo de trabalho de cada um. Cada vale-presente é um PDF com um código: quem recebe faz o teste, digita o código e recebe o relatório ampliado sem pagar nada.",
+      "facts": [
+        "PDF com código",
+        "Válido por {months} meses",
+        "A partir de {from} unidades, {pct}% de desconto",
+        "US$ {price} por vale-presente"
+      ],
+      "cta": "Escolher vales-presente",
+      "sampleLink": "Ver um modelo",
+      "whoTitle": "Para quem dar",
+      "who": [
+        [
+          "Colegas e equipe",
+          "no aniversário, em uma data comemorativa, no fim de um projeto ou no primeiro ano de casa"
+        ],
+        [
+          "Novos colaboradores",
+          "para entenderem, desde as primeiras semanas, o próprio estilo de trabalho e o estilo do gestor"
+        ],
+        [
+          "Participantes de treinamentos",
+          "como continuação do encontro: cada um recebe um relatório sobre si"
+        ],
+        [
+          "Amigos e familiares",
+          "para quem está procurando emprego, mudando de função ou quer se conhecer melhor"
+        ]
+      ],
+      "sampleTitle": "Como é o vale-presente",
+      "sampleText": "Cada vale-presente é um arquivo PDF separado, em tamanho A4: dá para encaminhar, imprimir ou entregar em mãos. Nele vêm o código, um QR code e instruções curtas — quem recebe não precisa procurar nada.",
+      "tabsLabel": "Tipo de vale-presente",
+      "tabs": [
+        "Com nome",
+        "Sem nome"
+      ],
+      "sampleName": "Mariana Oliveira",
+      "sampleFrom": "Equipe Comercial",
+      "samplePdf": "Modelos em PDF: {named} · {plain}",
+      "samplePdfNamed": "com nome",
+      "samplePdfPlain": "sem nome",
+      "ticks": [
+        [
+          "É fácil copiar o código.",
+          "No arquivo, ele é texto comum: selecione e copie — hífens e espaços não atrapalham na hora de digitar."
+        ],
+        [
+          "Ou nem precisa copiar.",
+          "Clique no código no PDF ou aponte a câmera do celular para o QR code: o site abre com o código já preenchido."
+        ],
+        [
+          "Um código, um relatório.",
+          "O código vale por {months} meses e funciona em qualquer idioma do site: o relatório chega no idioma em que o código foi digitado."
+        ]
+      ],
+      "howTitle": "Como usar o vale-presente",
+      "howLead": "Você pode encaminhar estas instruções para quem vai ganhar o presente — elas também estão impressas no vale-presente.",
+      "how": [
+        [
+          "Faça o teste",
+          "Acesse {site} e clique em “Começar o teste”: 24 blocos de quatro afirmações, cerca de 10 minutos. Não precisa se cadastrar."
+        ],
+        [
+          "Clique em “Tenho um código”",
+          "Na tela do resultado, procure o bloco “Relatório ampliado”, logo depois da descrição do perfil. Abaixo do botão “Comprar” fica o link “Tenho um código”."
+        ],
+        [
+          "Digite o código e o e-mail",
+          "Cole o código do vale-presente e o endereço para onde enviar o relatório e clique em “Receber o relatório”. O relatório chega em poucos minutos; se o e-mail não aparecer, confira a pasta de spam."
+        ]
+      ],
+      "mock": {
+        "head": "Teste DISC",
+        "start": "Começar o teste",
+        "block": "Relatório ampliado",
+        "email": "E-mail",
+        "buy": "Comprar",
+        "code": "Tenho um código",
+        "codeLabel": "Código",
+        "get": "Receber o relatório",
+        "emailSample": "mariana@example.com"
+      },
+      "howNote": "Se você abrir o site pelo link ou pelo QR code do vale-presente, o código é preenchido automaticamente — só falta fazer o teste e informar o e-mail. Se você já fez o teste, abra o seu resultado (o link está no e-mail com o resultado) e digite o código lá.",
+      "getTitle": "O que a pessoa recebe",
+      "getLead": "O relatório DISC ampliado: mais de 25 páginas sobre o próprio perfil, com o nome de quem recebe em todas as páginas. O que não está no relatório gratuito, mas está no ampliado:",
+      "sheetAlt": "Página {n} do modelo do relatório ampliado",
+      "more": "Saiba mais sobre o relatório ampliado",
+      "order": {
+        "title": "Comprar vales-presente",
+        "qtyTitle": "Quantos vales-presente",
+        "less": "Menos",
+        "moreBtn": "Mais",
+        "qtyLabel": "Quantidade de vales-presente",
+        "units": {
+          "one": "vale-presente",
+          "many": "de vales-presente",
+          "other": "vales-presente"
+        },
+        "money": "US$ {n}",
+        "line": "{n} {units} × {unit} = {total}",
+        "off": "{pct}% de desconto",
+        "addMore": "Adicione mais {k} e cada vale-presente sai por {unit} ({pct}% de desconto)",
+        "big": "Precisa de mais de {max} vales-presente? Veja os {business}.",
+        "businessLink": "pacotes para empresas",
+        "namedTitle": "Nome no vale-presente",
+        "named": [
+          [
+            "Sem nome",
+            "Dá para entregar a qualquer pessoa — por exemplo, sortear ou dar mais tarde"
+          ],
+          [
+            "Com nome",
+            "Escrevemos o nome de quem vai ganhar em cada vale-presente"
+          ]
+        ],
+        "toTitle": "Para onde enviar os vales-presente",
+        "to": [
+          [
+            "Tudo no meu e-mail",
+            "Enviamos todos os arquivos em um só e-mail — você encaminha ou imprime"
+          ],
+          [
+            "Direto para cada pessoa",
+            "Cada pessoa recebe um e-mail com o próprio vale-presente, e você recebe uma cópia de todos os arquivos"
+          ]
+        ],
+        "recipBoth": "Nomes e e-mails dos presenteados",
+        "recipNames": "Nomes dos presenteados",
+        "recipEmails": "E-mails dos presenteados",
+        "paste": "Colar uma lista",
+        "pasteHint": "Uma pessoa por linha: {fmt}. Dá para copiar as colunas de uma planilha do Excel.",
+        "fmtBoth": "nome, e-mail",
+        "fmtName": "nome",
+        "fmtEmail": "e-mail",
+        "pasteApply": "Preencher",
+        "namePh": "Nome e sobrenome",
+        "emailPh": "E-mail",
+        "nameAria": "Nome do presenteado {n}",
+        "emailAria": "E-mail do presenteado {n}",
+        "signTitle": "Assinatura e seu e-mail",
+        "fromLabel": "De",
+        "fromOptional": "— opcional",
+        "fromPh": "Por exemplo: Equipe Comercial",
+        "fromHint": "A linha “De” aparece em cada vale-presente",
+        "emailLabel": "Seu e-mail",
+        "emailHint": "Você recebe aqui os vales-presente e a confirmação do pagamento",
+        "emailHintEach": "Você recebe aqui as cópias de todos os vales-presente e a confirmação do pagamento",
+        "agreeNamed": "Os presenteados sabem que vou dar o vale-presente a eles e concordam que o nome deles apareça no vale-presente",
+        "agreeEach": "Os presenteados sabem que vou enviar o vale-presente a eles e concordam em recebê-lo nos e-mails informados",
+        "agreeBoth": "Os presenteados sabem que vou dar o vale-presente a eles e concordam que o nome deles apareça no vale-presente e que ele seja enviado para o e-mail informado",
+        "previewTitle": "Assim vai ficar o vale-presente",
+        "previewName": "Nome do presenteado",
+        "sumNamed": "com nome",
+        "sumPlain": "sem nome",
+        "sumEach": "direto para cada pessoa",
+        "sumMe": "no seu e-mail",
+        "pay": "Pagar {total}",
+        "wait": "Indo para o pagamento…",
+        "note": "Ao clicar em “Pagar”, você aceita os {offer}. Você informa os dados do cartão em uma página de pagamento segura. Os vales-presente chegam logo após o pagamento.",
+        "check": "Confira: {what}.",
+        "checkEmail": "o seu e-mail",
+        "checkNames": "os nomes dos presenteados",
+        "checkEmails": "os e-mails dos presenteados",
+        "checkAgree": "a confirmação de que os presenteados concordam",
+        "error": "Não foi possível ir para o pagamento. Tente de novo em um minuto ou escreva para {email}.",
+        "priceChanged": "O preço acabou de mudar: confira o valor e clique em “Pagar” de novo.",
+        "status": {
+          "wait": "Verificando o pagamento…",
+          "paid": "Pagamento aprovado. Estamos preparando os vales-presente — o e-mail chega em {email} em poucos minutos.",
+          "sent": "Pronto: os vales-presente foram enviados para {email}. Se o e-mail não aparecer, confira a pasta de spam.",
+          "failed": "O pagamento não foi concluído. Você pode tentar de novo.",
+          "thanks": "Obrigado! Se o pagamento foi aprovado, o e-mail com os vales-presente chega em poucos minutos."
+        }
+      },
+      "recipient": {
+        "eyebrow": "Você ganhou um presente",
+        "title": "Você ganhou um relatório DISC ampliado",
+        "text": "O código do vale-presente {code} ficou salvo neste dispositivo. Faça o teste: na tela do resultado, o código já aparece preenchido no bloco “Relatório ampliado” — só falta informar o e-mail.",
+        "start": "Fazer o teste",
+        "result": "Abrir meu resultado",
+        "resultNote": "Já fez o teste neste dispositivo? Abra o seu resultado — o código também é preenchido lá.",
+        "bad": "Não reconhecemos o link do vale-presente. Digite o código manualmente: faça o teste e, na tela do resultado, clique em “Tenho um código”."
+      },
+      "faqTitle": "Perguntas frequentes",
+      "faq": [
+        {
+          "q": "O teste é pago?",
+          "a": "Não. O teste e o resultado resumido no site são gratuitos para todos. O vale-presente paga o relatório ampliado: mais de 25 páginas sobre o perfil da pessoa."
+        },
+        {
+          "q": "Qual é a validade do vale-presente?",
+          "a": "{months} meses a partir da data da compra — a data está impressa no vale-presente. Um código dá direito a um relatório."
+        },
+        {
+          "q": "E se a pessoa já tiver feito o teste?",
+          "a": "Não precisa fazer de novo: basta abrir o resultado (o link está no e-mail com o resultado ou no dispositivo em que o teste foi feito) e digitar o código no bloco “Relatório ampliado”."
+        },
+        {
+          "q": "Vou ficar sabendo dos resultados dos presenteados?",
+          "a": "Não. Só a própria pessoa vê o resultado e o relatório. Para você, informamos apenas quais vales-presente já foram usados."
+        },
+        {
+          "q": "O vale-presente se perdeu ou o e-mail não chegou",
+          "a": "Escreva para {email} a partir do endereço usado na compra e informe o número do pedido: enviamos os vales-presente de novo."
+        },
+        {
+          "q": "Posso pedir reembolso?",
+          "a": "Sim, dos vales-presente não usados, enquanto estiverem válidos: escreva para {email} e informe o número do pedido. Devolvemos o valor pago por cada vale-presente não usado, e o código dele deixa de funcionar. Não há reembolso de um vale-presente cujo código já foi digitado no site. Mais detalhes na página {refund}."
+        },
+        {
+          "q": "Quero comprar para a minha empresa ou equipe",
+          "a": "Se você precisa de mais de 50 vales-presente ou de um pacote de códigos de acesso para colaboradores, clientes ou alunos, veja os {business}."
+        }
+      ],
+      "refundLink": "“Política de reembolso”",
+      "services": {
+        "name": "Vales-presente",
+        "text": "O relatório ampliado de presente para colegas, a equipe ou pessoas queridas: vale-presente em PDF com código, válido por {months} meses. Dá para colocar o nome de cada pessoa e enviar direto para cada uma.",
+        "price": "US$ {price}; a partir de {from} unidades, {pct}% de desconto",
+        "more": "Escolher vales-presente"
+      },
+      "cert": {
+        "brand": "Teste DISC",
+        "eyebrow": "Vale-presente",
+        "title": "Relatório DISC ampliado",
+        "to": "Para",
+        "from": "De",
+        "desc": "Um relatório personalizado sobre o seu estilo de comportamento no trabalho, com mais de 25 páginas: como os outros veem você, conversa com o gestor, carreira, conflitos e um plano de 30 dias.",
+        "codeLabel": "Seu código",
+        "hint": "Clique no código ou aponte a câmera do celular para o QR code: o site abre com o código já preenchido",
+        "stepsTitle": "Como receber o relatório",
+        "steps": [
+          [
+            "Faça o teste gratuito",
+            "em {site}: 24 blocos, cerca de 10 minutos"
+          ],
+          [
+            "Na tela do resultado",
+            "procure o bloco “Relatório ampliado” e clique em “Tenho um código”"
+          ],
+          [
+            "Digite o código e o seu e-mail",
+            "O relatório chega por e-mail em poucos minutos"
+          ]
+        ],
+        "until": "Válido até {date}",
+        "questions": "Dúvidas: {email}",
+        "sample": "Modelo",
+        "file": "Vale-presente DISC"
+      },
+      "mail": {
+        "subject": "Vales-presente DISC — pedido {order}",
+        "partOf": "(e-mail {part} de {parts})",
+        "hello": "Olá!",
+        "intro": "Obrigado pela compra! Em anexo: {n} {units} do relatório DISC ampliado — cada vale-presente é um arquivo PDF separado, com um código. Validade: até {until}.",
+        "units": {
+          "one": "vale-presente",
+          "many": "de vales-presente",
+          "other": "vales-presente"
+        },
+        "partNote": "Como são muitos vales-presente, eles foram divididos em vários e-mails: este é o {part} de {parts}.",
+        "each": "Enviamos a cada pessoa um e-mail com o próprio vale-presente:",
+        "forward": "Encaminhe o arquivo para quem vai ganhar o presente ou imprima o vale-presente e entregue em mãos.",
+        "howTitle": "Como a pessoa usa o vale-presente:",
+        "refund": "Um vale-presente não usado pode ser reembolsado enquanto estiver válido: escreva para {email} e informe o número do pedido.",
+        "bye": "Obrigado pela preferência!",
+        "order": "Pedido {order}."
+      },
+      "rmail": {
+        "subject": "Você ganhou um presente: o relatório DISC ampliado",
+        "hello": "Olá!",
+        "helloName": "Olá, {name}!",
+        "intro": "Você ganhou de presente o relatório DISC ampliado: uma análise personalizada do seu estilo de trabalho, com mais de 25 páginas — como os outros veem você, conversa com o gestor, carreira, conflitos e um plano de 30 dias.",
+        "fromLine": "De: {from}",
+        "button": "Receber o relatório",
+        "buttonNote": "O botão abre o site com o código já preenchido: só falta fazer o teste e informar o e-mail.",
+        "howTitle": "Como receber o relatório:",
+        "attach": "O vale-presente com o código está em anexo: você pode salvá-lo ou imprimi-lo.",
+        "bye": "Boa leitura!",
+        "why": "Quem informou o seu endereço foi a pessoa que deu o vale-presente a você. Você não vai receber outros e-mails nossos, a menos que se inscreva para recebê-los."
+      },
+      "name": "Vales-presente do relatório DISC ampliado"
     },
     "kit": {
       "title": "Kit do facilitador DISC: roteiro do encontro, slides e planilha do grupo",
@@ -2567,6 +2855,7 @@
     "nav.materials": "Materiais sobre DISC",
     "nav.howMade": "Como é feito o relatório",
     "nav.business": "Para empresas",
+    "nav.gift": "Vales-presente",
 
     "pages.styles.title": "Os 4 estilos DISC (perfis comportamentais): D, I, S e C",
     "pages.styles.description": "Os quatro perfis comportamentais DISC: dominância, influência, estabilidade e conformidade. Traços, pontos fortes, motivação e comportamento sob pressão.",
@@ -2695,7 +2984,7 @@
     "pd.consentLink": "consentimento para o tratamento de dados pessoais",
     "pd.required": "Marque a caixa de consentimento para o tratamento de dados pessoais: sem ele, não podemos receber seus dados.",
     "pd.cookieAsk": "Este site guarda seu progresso, o resultado e o idioma escolhido no armazenamento local do navegador. Com o seu consentimento, um serviço de análise da web coletará estatísticas anônimas de visitas e uma gravação das ações na página para nos ajudar a melhorar o site. Seu nome, e-mail e resultado não são enviados ao serviço de análise.",
-    "pd.cookieDetails": "No navegador ficam guardados: o nome e o e-mail, se você os informou; suas respostas e o progresso de um teste não concluído; o último resultado; o momento em que você concluiu o teste pela primeira vez, para o prazo do preço especial do relatório; o idioma escolhido; um registro de que você já viu este aviso. Esses dados permanecem no seu dispositivo e são apagados quando você limpa os dados do site. O serviço de hospedagem recebe os dados técnicos habituais da requisição. Na primeira vez que você abre o site em um dia, uma marca anônima de visita é enviada ao servidor do site: apenas o idioma da versão do site; o servidor a registra com o horário de chegada, e o seu navegador guarda a data para não enviá-la de novo no mesmo dia. Com essas marcas contamos quantas pessoas visitam o site. Quando você começa o teste, uma marca anônima de início é enviada ao servidor do site: apenas o idioma da versão do site. Quando você conclui o teste, um registro anônimo para a estatística geral é enviado ao servidor do site: o perfil obtido e o idioma da versão do site, sem nome, e-mail nem respostas. Quando você clica em “Salvar em PDF”, suas respostas e a data do teste — sem nome nem e-mail — são enviadas ao servidor do site, que gera o arquivo do relatório resumido, o devolve para você e não guarda nada. Quando você envia o resultado por e-mail, o nome, o e-mail e as respostas são transmitidos ao servidor do site, que envia a você o e-mail com o resultado e guarda o nome, o e-mail, a data e o resultado na base de resultados do responsável pelo site. Quando você se inscreve na newsletter na página inicial, o e-mail e o idioma da versão do site são transmitidos ao servidor do site, que envia um e-mail com o link de confirmação e guarda o endereço na mesma base; se a inscrição não for confirmada, o endereço é apagado em 7 dias. Quando você pede o questionário do teste por e-mail na página “Teste em PDF”, o e-mail e o idioma da versão do site são transmitidos ao servidor do site, que envia um e-mail com o questionário e guarda o registro do consentimento junto com o endereço; se você marcou o consentimento para a newsletter, o endereço é salvo imediatamente na lista de assinantes, e o e-mail traz um link para cancelar a inscrição. O serviço de análise da web recebe o endereço da página (na tela do resultado, junto com o código do resultado: suas respostas, a data do teste e seu nome, se você o informou, mas não o seu e-mail), a origem da visita, o tipo de dispositivo e navegador e uma gravação das ações na página (os campos de nome e e-mail ficam excluídos), e define os próprios cookies. Você pode bloqueá-lo nas configurações do navegador ou com um bloqueador de rastreadores. Não são usados rastreadores publicitários.",
+    "pd.cookieDetails": "No navegador ficam guardados: o nome e o e-mail, se você os informou; suas respostas e o progresso de um teste não concluído; o último resultado; o momento em que você concluiu o teste pela primeira vez, para o prazo do preço especial do relatório; o código do vale-presente, se você abriu o site pelo link de um vale-presente; o idioma escolhido; um registro de que você já viu este aviso. Esses dados permanecem no seu dispositivo e são apagados quando você limpa os dados do site. O serviço de hospedagem recebe os dados técnicos habituais da requisição. Na primeira vez que você abre o site em um dia, uma marca anônima de visita é enviada ao servidor do site: apenas o idioma da versão do site; o servidor a registra com o horário de chegada, e o seu navegador guarda a data para não enviá-la de novo no mesmo dia. Com essas marcas contamos quantas pessoas visitam o site. Quando você começa o teste, uma marca anônima de início é enviada ao servidor do site: apenas o idioma da versão do site. Quando você conclui o teste, um registro anônimo para a estatística geral é enviado ao servidor do site: o perfil obtido e o idioma da versão do site, sem nome, e-mail nem respostas. Quando você clica em “Salvar em PDF”, suas respostas e a data do teste — sem nome nem e-mail — são enviadas ao servidor do site, que gera o arquivo do relatório resumido, o devolve para você e não guarda nada. Quando você envia o resultado por e-mail, o nome, o e-mail e as respostas são transmitidos ao servidor do site, que envia a você o e-mail com o resultado e guarda o nome, o e-mail, a data e o resultado na base de resultados do responsável pelo site. Quando você se inscreve na newsletter na página inicial, o e-mail e o idioma da versão do site são transmitidos ao servidor do site, que envia um e-mail com o link de confirmação e guarda o endereço na mesma base; se a inscrição não for confirmada, o endereço é apagado em 7 dias. Quando você pede o questionário do teste por e-mail na página “Teste em PDF”, o e-mail e o idioma da versão do site são transmitidos ao servidor do site, que envia um e-mail com o questionário e guarda o registro do consentimento junto com o endereço; se você marcou o consentimento para a newsletter, o endereço é salvo imediatamente na lista de assinantes, e o e-mail traz um link para cancelar a inscrição. Quando você faz o pedido de vales-presente, o seu e-mail, a linha “De” e, se informados, os nomes e os e-mails dos presenteados são transmitidos ao servidor do site, que cria o pedido e, após o pagamento, envia os vales-presente; os nomes e os e-mails dos presenteados são apagados 30 dias após o envio. O serviço de análise da web recebe o endereço da página (na tela do resultado, junto com o código do resultado: suas respostas, a data do teste e seu nome, se você o informou, mas não o seu e-mail), a origem da visita, o tipo de dispositivo e navegador e uma gravação das ações na página (os campos de nome e e-mail ficam excluídos), e define os próprios cookies. Você pode bloqueá-lo nas configurações do navegador ou com um bloqueador de rastreadores. Não são usados rastreadores publicitários.",
     "pd.cookieChange": "Alterar a escolha de cookies",
 
     "print.title": "Teste DISC para imprimir: questionário com gabarito e pontuação",

@@ -130,3 +130,10 @@
 .gift-for .gf-acts{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;margin:12px 0 0}
 .giftstatus{margin:0 0 18px}
 .go-total .ok,.go-price .ok{color:var(--s);font-weight:600}
+/* все языки (с 2026-11-14): справа налево (арабский) и свой шрифт сертификата (китайский, японский, арабский) — как certHtml на сервере */
+.cert .c-code{direction:ltr;unicode-bidi:isolate}
+[dir=rtl] .cert .c-sample{right:auto;left:64px}[dir=rtl] .cert .c-steps li{padding-inline-start:42px}[dir=rtl] .cert .c-steps li::before{left:auto;right:0}[dir=rtl] .cert .c-from .c-lbl{margin-inline-end:8px}
+.cert.own .c-title,.cert.own .c-name,.cert.own .c-brand{font-family:inherit;font-weight:600}.cert.own .c-eyebrow,.cert.own .c-lbl,.cert.own .c-sh,.cert.own .c-sample{letter-spacing:0}.cert.own .c-title{font-size:44px}.cert.own .c-name{font-weight:500}
+.cert.c-zh{font-family:'Noto Sans CJK SC','Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif}.cert.c-zh-hant{font-family:'Noto Sans CJK TC','Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif}
+.cert.c-ja{font-family:'Noto Sans CJK JP','Noto Sans JP','Hiragino Sans','Yu Gothic',sans-serif}.cert.c-ar{font-family:'IBM Plex Sans Arabic','Noto Sans Arabic','Golos Text',sans-serif}
+[dir=rtl] .gift-how .gh-t::before{left:auto;right:0}
