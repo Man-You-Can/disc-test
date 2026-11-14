@@ -1844,7 +1844,7 @@
           "text": "8.4. The Provider tells the person who bought an Access Code only whether and when the Access Code was used. The Provider does not pass on to them the Customer’s Test result, In-depth Profile or email address."
         }
       ],
-      "edition": "Version of November 12, 2026. English translation updated on November 12, 2026.",
+      "edition": "Version of November 14, 2026. English translation updated on November 14, 2026.",
       "note": "This is an English translation of the original offer published at {original}. If the two texts differ, the original prevails, except for the price and the way payment is made: for the English version of the Site they are set out in sections 1 and 3.",
       "seller": "individual entrepreneur Manukyan Armen, Taxpayer ID (INN) {inn}",
       "lead": "This document is an official proposal (a public offer) to enter into a contract for the paid service “In-depth DISC profile” and a contract for the supply of the DISC Facilitator Kit (section 10) on the terms set out below. The offer is made by {seller} (hereinafter, the Provider). Paying for the service or the Kit constitutes full and unconditional acceptance of these terms (acceptance of the offer).",
@@ -1952,7 +1952,19 @@
           ]
         },
         {
-          "h": "11. Provider’s details",
+          "h": "11. Gift Certificates",
+          "p": [
+            "11.1. On the terms of this offer, the Provider also sells gift certificates for the In-depth Profile (hereinafter, Certificates). A Certificate is a PDF file containing an Access Code (clause 4.6) that entitles its recipient to receive the Service without payment. The Test does not have to be taken to buy Certificates; for the purposes of this section, the Purchaser is the person who has paid for the Certificates, and the recipient of a Certificate uses it as a Customer who has an Access Code.",
+            "11.2. The price of one Certificate and the discount for buying several Certificates are shown on the Certificates page of the Site; the total amount is shown before payment and on the payment page. Certificates are paid for in full before they are supplied, as set out in clauses 3.2–3.5. The Purchaser may make the Certificates personalized (the recipient’s name is printed on the Certificate) and sign them with a “From” line.",
+            "11.3. After payment, the Provider sends the Certificates to the Purchaser’s email address and, if the Purchaser has given the recipients’ email addresses, also sends each recipient their Certificate. Certificates are usually sent right after payment and no later than 24 hours after payment. The Certificates are deemed supplied, and the service of selling them rendered, when the email with the Certificates is sent to the Purchaser. If the email does not arrive, the Certificates are sent again on request to {email}.",
+            "11.4. Each Certificate can be used once within 12 months of the payment date; the expiry date is shown on the Certificate. After that date, the Access Code of the Certificate is not accepted. The In-depth Profile under a Certificate is prepared and sent as set out in clause 4.6.",
+            "11.5. By giving the names and email addresses of recipients, the Purchaser confirms that the recipients agree to receive a Certificate and that the Purchaser is entitled to share their details with the Provider. The Provider uses a recipient’s name only for the Certificate and the email address only for the email with the Certificate, and deletes them 30 calendar days after the Certificates are sent (for an unpaid order, after 7 days). Section 8 applies to the Purchaser’s other data; the Provider tells the person who bought the Certificates only whether they have been used and when (clause 8.4).",
+            "11.6. The Purchaser may cancel unused Certificates while they are valid: the price paid for each unused Certificate is then refunded, and its Access Code stops working. Payment for a Certificate whose Access Code has already been accepted by the Site is not refunded. Refunds are made as set out in clauses 5.5–5.7; the request must state the order number.",
+            "11.7. Questions about Certificates can be sent to {email}."
+          ]
+        },
+        {
+          "h": "12. Provider’s details",
           "ul": ["Individual entrepreneur Manukyan Armen", "Taxpayer ID (INN) {inn}", "Email: {email}", "Website: {site}"]
         }
       ]
@@ -1994,6 +2006,12 @@
           "h": "Facilitator kit",
           "p": [
             "You get a full refund for the facilitator kit if you cancel the purchase before the email with links to the files has been sent to you, if the email is not sent within 24 hours of payment, or if the files do not open and we have not fixed this within three business days of your request. If the email was sent on time and the files open, the payment is not refunded. To request a refund, do the same as for the in-depth profile: write to {email} with the email address you gave at payment, the date and amount of the payment, and the reason."
+          ]
+        },
+        {
+          "h": "Gift certificates",
+          "p": [
+            "Payment for unused gift certificates is refunded at your request while the certificates are valid: for each unused certificate, at the price you paid for it; the codes of those certificates stop working. Payment for a certificate whose code has already been entered on the site is not refunded. Please give the order number in your request — it is in the email with the certificates."
           ]
         },
         {

@@ -897,7 +897,7 @@
           "text": "8.4. Osobie, która kupiła Kod Dostępu, Usługodawca przekazuje wyłącznie informację, czy i kiedy Kod Dostępu został wykorzystany. Wyniku Testu, Profilu Rozszerzonego ani adresu e-mail Klienta Usługodawca jej nie przekazuje."
         }
       ],
-      "edition": "Wersja z 12 listopada 2026 r. Tłumaczenie na język polski zaktualizowano 12 listopada 2026 r.",
+      "edition": "Wersja z 14 listopada 2026 r. Tłumaczenie na język polski zaktualizowano 14 listopada 2026 r.",
       "note": "Niniejszy tekst jest tłumaczeniem na język polski oryginalnej oferty opublikowanej pod adresem {original}. W razie rozbieżności między tekstami pierwszeństwo ma oryginał – z wyjątkiem ceny i sposobu płatności: w polskiej wersji Serwisu obowiązują rozdziały 1 i 3 niniejszego tłumaczenia.",
       "seller": "przedsiębiorca indywidualny Manukyan Armen, numer identyfikacji podatkowej (INN) {inn}",
       "lead": "Niniejszy regulamin (dalej: Regulamin) jest oficjalną propozycją (ofertą publiczną) zawarcia umowy o świadczenie płatnej usługi „Rozszerzony profil DISC”, a także umowy o dostarczenie Zestawu prowadzącego DISC (rozdział 10), na warunkach określonych poniżej. Ofertę składa {seller} (dalej: Usługodawca). Opłacenie usługi lub Zestawu oznacza pełną i bezwarunkową akceptację tych warunków (przyjęcie oferty).",
@@ -1005,7 +1005,19 @@
           ]
         },
         {
-          "h": "11. Dane Usługodawcy",
+          "h": "11. Bony podarunkowe",
+          "p": [
+            "11.1. Na warunkach Regulaminu Usługodawca sprzedaje także bony podarunkowe na Profil Rozszerzony (dalej: Bony). Bon to plik PDF z Kodem Dostępu (punkt 4.6), który uprawnia jego odbiorcę do otrzymania Usługi bez płatności. Zakup Bonów nie wymaga wypełnienia Testu; Kupującym w rozumieniu niniejszego rozdziału jest osoba, która opłaciła Bony, a odbiorca Bonu korzysta z niego jako Klient posiadający Kod Dostępu.",
+            "11.2. Cena jednego Bonu i rabat przy zakupie kilku Bonów są podane na stronie Bonów w Serwisie; łączna kwota jest wyświetlana przed płatnością i na stronie płatności. Kupujący opłaca Bony w całości przed ich dostarczeniem, w sposób określony w punktach 3.2–3.5. Kupujący może uczynić Bony imiennymi (imię i nazwisko odbiorcy jest drukowane na Bonie) i podpisać je wierszem „Od kogo”.",
+            "11.3. Po dokonaniu płatności Usługodawca wysyła Bony na adres e-mail Kupującego, a jeśli Kupujący podał adresy e-mail odbiorców – także każdemu odbiorcy jego Bon. Bony są wysyłane zwykle zaraz po płatności, nie później niż w ciągu 24 godzin od płatności. Bony uważa się za dostarczone, a usługę ich sprzedaży za wykonaną, w chwili wysłania Kupującemu wiadomości z Bonami. Jeśli wiadomość nie dotrze, Bony są wysyłane ponownie na prośbę przesłaną na {email}.",
+            "11.4. Każdy Bon można wykorzystać jeden raz w ciągu 12 miesięcy od dnia płatności; data ważności jest podana na Bonie. Po tym terminie Kod Dostępu Bonu nie jest przyjmowany. Profil Rozszerzony na podstawie Bonu jest przygotowywany i wysyłany w trybie punktu 4.6.",
+            "11.5. Podając imiona i adresy e-mail odbiorców, Kupujący potwierdza, że odbiorcy zgadzają się na otrzymanie Bonu i że ma prawo przekazać ich dane Usługodawcy. Usługodawca używa imienia odbiorcy wyłącznie na Bonie, a adresu e-mail wyłącznie do wysłania wiadomości z Bonem, i usuwa je po 30 dniach kalendarzowych od wysłania Bonów (w przypadku nieopłaconego zamówienia – po 7 dniach). Do pozostałych danych Kupującego stosuje się rozdział 8; osobie, która kupiła Bony, Usługodawca przekazuje jedynie informację, czy i kiedy zostały wykorzystane (punkt 8.4).",
+            "11.6. Kupujący może zrezygnować z niewykorzystanych Bonów, dopóki są ważne: wówczas zwracana jest cena zapłacona za każdy niewykorzystany Bon, a jego Kod Dostępu przestaje działać. Płatność za Bon, którego Kod Dostępu został już przyjęty przez Serwis, nie podlega zwrotowi. Zwrot następuje w trybie punktów 5.5–5.7; w zgłoszeniu należy podać numer zamówienia.",
+            "11.7. Pytania dotyczące Bonów można przesyłać na {email}."
+          ]
+        },
+        {
+          "h": "12. Dane Usługodawcy",
           "ul": [
             "Przedsiębiorca indywidualny Manukyan Armen",
             "Numer identyfikacji podatkowej (INN) {inn}",
@@ -1052,6 +1064,12 @@
           "h": "Zestaw prowadzącego",
           "p": [
             "Pieniądze za zestaw prowadzącego zwracamy w całości, jeśli zrezygnujesz z zakupu, zanim wyślemy ci wiadomość z linkami do plików, jeśli wiadomość nie zostanie wysłana w ciągu 24 godzin od płatności albo jeśli pliki się nie otwierają, a my nie naprawimy tego w ciągu trzech dni roboczych od twojego zgłoszenia. Jeśli wiadomość została wysłana w terminie, a pliki się otwierają, płatność nie podlega zwrotowi. Wniosek o zwrot składasz tak samo jak w przypadku profilu rozszerzonego: napisz na {email} i podaj adres e-mail, datę i kwotę płatności oraz powód zwrotu."
+          ]
+        },
+        {
+          "h": "Bony podarunkowe",
+          "p": [
+            "Pieniądze za niewykorzystane bony podarunkowe zwracamy na twoją prośbę, dopóki bony są ważne: za każdy niewykorzystany bon – cenę, którą za niego zapłaciłeś; kody tych bonów przestają działać. Płatność za bon, którego kod został już wpisany w serwisie, nie podlega zwrotowi. W zgłoszeniu podaj numer zamówienia – znajdziesz go w wiadomości z bonami."
           ]
         },
         {

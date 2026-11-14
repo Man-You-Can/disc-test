@@ -214,6 +214,7 @@ function payCodeInit(c, g, f, o){
         say('ok', esc(X.done.replace('{to}', email)));
         try{ var p = c.lsGet('disc.pay') || {}; if(!p.done) c.lsSet('disc.pay', {code:true, email:email, t:Date.now(), done:true}); }catch(e){}
         if(window.discXbar) window.discXbar.sync();   // отчёт получен — закреплённая кнопка отчёта больше не нужна
+        try{ var gg = c.lsGet && c.lsGet('disc.gift'); if(gg && String(gg.code).replace(/[^A-Za-z0-9]/g, '').toUpperCase() === voucher.replace(/[^A-Za-z0-9]/g, '').toUpperCase()){ c.lsSet('disc.gift', null); payTrack('gift-redeem'); } }catch(e){}
         payTrack('ext-code-done'); })
       .catch(function(err){ var m = err && err.message;
         if(!done){ btn.disabled = false; btn.textContent = X.button; }
@@ -224,6 +225,11 @@ function payCodeInit(c, g, f, o){
         else say('err', X.errorHtml); });
   };
   btn.addEventListener('click', f.redeem);
+  // код подарочного сертификата (с 2026-11-14): получатель открыл ссылку или QR-код с сертификата (/ru/gift/#g=<код>, src/gift.js) — код запомнен в браузере;
+  // форма сразу в режиме кода и с этим кодом, без фокуса (страница не прыгает к форме). После успешного ввода запись удаляется
+  var gc = null; try{ gc = c.lsGet && c.lsGet('disc.gift'); }catch(e){}
+  if(gc && gc.code && !f.coding){ inp.value = String(gc.code).replace(/(.{4})(?=.)/g, '$1-'); f.coding = true; form.classList.add('xcoding'); box.hidden = false;
+    link.textContent = X.back; link.setAttribute('aria-expanded', 'true'); }
 }
 
 /* Страница отчёта: у кого результат сохранён на этом устройстве (disc.last), тому блок покупки (.xbuy) превращается в форму

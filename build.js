@@ -71,6 +71,7 @@ const contactJs = fs.readFileSync(path.join(SRC, 'contact.js'), 'utf8').replace(
 const businessHTML = require(path.join(SRC, 'business.js'));
 const businessJs = fs.readFileSync(path.join(SRC, 'business.js'), 'utf8').replace(/\nif \(typeof module[^\n]*\n?$/, '\n');
 const kitBuyJs = fs.readFileSync(path.join(SRC, 'kit-buy.js'), 'utf8');
+const giftJs = fs.readFileSync(path.join(SRC, 'gift.js'), 'utf8'), giftCss = fs.readFileSync(path.join(SRC, 'gift.css'), 'utf8');
 // Лендинг «CV под каждую вакансию» (/ru/cv/): разметку формы cvFormHTML() кладёт сборка, логику initCvForm() — сама страница; стили страницы — src/cv.css
 const cvFormHTML = require(path.join(SRC, 'cv.js'));
 const cvJs = fs.readFileSync(path.join(SRC, 'cv.js'), 'utf8').replace(/\nif \(typeof module[^\n]*\n?$/, '\n');
@@ -199,7 +200,9 @@ const businessMonths = Number(cfg.businessCodeMonths) || 12;
 const offerSections = L => { const of = L.content.offer; if (!of.codeTerms || !payCodeT(L, x => x)) return of.sections;
   return of.sections.map((sec, i) => { const add = of.codeTerms.filter(x => x.section === i).map(x => x.text), k = sec.ul ? 'ul' : sec.ol ? 'ol' : 'p';
     return add.length ? Object.assign({}, sec, { [k]: sec[k].concat(add) }) : sec; }); };
-const policyPurchase = L => { const po = L.content.policy; return po.purchaseCode && payCodeT(L, x => x) ? Object.assign({}, po.purchase, { p: po.purchase.p.concat([po.purchaseCode]) }) : po.purchase; };
+// policy.purchaseGift — абзац о подарочных сертификатах (с 2026-11-14): только там, где они продаются (hasGift); ключ и текст меняются вместе
+const policyPurchase = L => { const po = L.content.policy, add = [].concat(po.purchaseCode && payCodeT(L, x => x) ? [po.purchaseCode] : [], po.purchaseGift && hasGift(L) ? [po.purchaseGift] : []);
+  return add.length ? Object.assign({}, po.purchase, { p: po.purchase.p.concat(add) }) : po.purchase; };
 // Набор ведущего (/kit/, с 2026-10-25; пока только русская версия): сценарий занятия, слайды, таблица группы, карта команды и карточки —
 // платные файлы в private/kit (вне репозитория), на странице — описание, картинки-образцы src/assets/kit/<язык>-*.jpg и заявка через форму
 // обратной связи (src/business.js, цель kit-request). Цена — kitPriceRub / kitPriceUsd / kitPriceEur в site.config.json, по валюте языка
@@ -228,6 +231,12 @@ const bizSep = L => L.lang === 'fr' ? '\u00a0: ' : /^(zh|ja)/.test(L.lang) ? '�
 const bizLower = (L, x) => L.lang === 'de' ? x : x.toLocaleLowerCase(L.dateLocale);
 const hasBusiness = L => !!(L.content.business && L.ui['nav.business'] && hasProduct(L) && L.content.product.pay && packRetail(L) > 0 &&
   payCodeT(L, x => x) && feedbackEmail && cfg.sendEndpoint && businessPacks.length && packPrices(L).every(v => v > 0));
+// Подарочные сертификаты на расширенный отчёт (/gift/, с 2026-11-14, по просьбе заказчика): "giftBuy": true в site.config.json, payEndpoint, коды доступа
+// и content.gift. Пока только русская версия (решение заказчика): оплата сертификатов — Т-Банк (сервер — private/server/src/gift.js). Цена одного
+// сертификата — обычная цена отчёта (меняется в панели); от giftOffFrom штук — скидка giftOffPct %; за раз — не больше giftMax; срок кода — giftMonths месяцев.
+// Тот же ключ кладёт тексты сертификата и писем в ядро сервера (DATA.ru.gift): без него сервер заказы сертификатов не принимает.
+const GIFT = { offFrom: +cfg.giftOffFrom || 5, offPct: +cfg.giftOffPct || 0, max: +cfg.giftMax || 50, months: +cfg.giftMonths || 12 };
+const hasGift = L => !!(cfg.giftBuy === true && payEndpoint && L.lang === 'ru' && L.content.gift && L.ui['nav.gift'] && hasProduct(L) && L.content.product.pay && payCodeT(L, x => x) && servicePrices.RUB > 0);
 // Оператор и дата редакции в политике и согласии: в языке с полным текстом политики (policy.legal — русская версия) — исполнитель из оферты
 // (ИП с ИНН), в остальных — строка реквизитов из подвала. От наличия оферты не зависит: иначе её появление в языке меняло бы текст согласия,
 // на который люди уже согласились (после правки текста согласия нужна новая pdVersion)
@@ -316,7 +325,7 @@ const ltr = str => `<span dir="ltr">${str}</span>`; // латиница внут
 const FOOT_ITEMS = [['nav.about', 'about/']].concat(feedbackEmail ? [['nav.contact', 'contact/']] : []).concat([['nav.privacy', 'privacy/']]);
 // Короткий подвал экрана результата (с 2026-10-21, решение заказчика): только оферта, конфиденциальность и обратная связь + строка ©
 const footShort = (L, base) => (hasOffer(L) ? [['nav.offer', 'offer/']] : []).concat([['nav.privacy', 'privacy/']], feedbackEmail ? [['nav.contact', 'contact/']] : []).map(([k, sub]) => `<a href="${base + sub}">${esc(L.ui[k])}</a>`).join(' · ');
-const footLinks = (L, base) => FOOT_ITEMS.slice(0, 1).concat(hasServices(L) ? [['nav.services', 'services/']] : [], hasBusiness(L) ? [['nav.business', 'business/']] : [], L.content.group && L.ui['nav.group'] ? [['nav.group', 'group/']] : [], hasOffer(L) ? [['nav.offer', 'offer/']] : [], FOOT_ITEMS.slice(1)).map(([k, sub]) => `<a href="${base + sub}">${esc(L.ui[k])}</a>`).join(' · ');
+const footLinks = (L, base) => FOOT_ITEMS.slice(0, 1).concat(hasServices(L) ? [['nav.services', 'services/']] : [], hasBusiness(L) ? [['nav.business', 'business/']] : [], hasGift(L) ? [['nav.gift', 'gift/']] : [], L.content.group && L.ui['nav.group'] ? [['nav.group', 'group/']] : [], hasOffer(L) ? [['nav.offer', 'offer/']] : [], FOOT_ITEMS.slice(1)).map(([k, sub]) => `<a href="${base + sub}">${esc(L.ui[k])}</a>`).join(' · ');
 const PROFILE_KEYS = ['D', 'DI', 'DC', 'DS', 'I', 'ID', 'IS', 'IC', 'S', 'SI', 'SC', 'SD', 'C', 'CD', 'CS', 'CI'];
 // Источники к странице «Что такое DISC». Библиографические описания одинаковы во всех языках
 // (названия работ приводятся на языке оригинала), поэтому живут здесь, а не в локалях;
@@ -1139,7 +1148,14 @@ for (const L of locales) {
     // карточка расширенного отчёта для физических лиц: название, описание, ссылка на страницу отчёта, цена
     function personCard() {
       return `<section class="service"><div><h2>${escFull(sv.name)}</h2><p>${escFull(sv.text)}</p>` + (hasProduct(L) ? `<p><a class="more" href="../extended-report/">${escFull(C.product.more)} ${arrow(L)}</a></p>` : '') +
-        `</div><p class="price"><small>${escFull(sv.priceLabel)}</small>${escFull(sv.price)}</p></section>`;
+        `</div><p class="price"><small>${escFull(sv.priceLabel)}</small>${escFull(sv.price)}</p></section>` + giftCard();
+    }
+    // подарочные сертификаты (hasGift, с 2026-11-14): карточка рядом с карточкой отчёта
+    function giftCard() {
+      if (!hasGift(L)) return '';
+      const GS = C.gift.services, gv = str => String(str).replace(/\{price\}/g, price).replace(/\{months\}/g, GIFT.months).replace(/\{from\}/g, GIFT.offFrom).replace(/\{pct\}/g, GIFT.offPct);
+      return `<section class="service"><div><h2>${escFull(GS.name)}</h2><p>${escFull(gv(GS.text))}</p><p><a class="more" href="../gift/">${escFull(GS.more)} ${arrow(L)}</a></p></div>` +
+        `<p class="price"><small>${escFull(sv.priceLabel)}</small>${escFull(gv(GS.price))}</p></section>`;
     }
     // сервис «Резюме под каждую вакансию» (с 2026-10-24, по просьбе заказчика; где есть content.cvPromo): раздел «Поиск работы» с карточкой —
     // название, анонс, тарифы и цены (из content.cv.plans лендинга, чтобы не расходились), кнопка на лендинг (цель Метрики cv-promo-services)
@@ -1238,6 +1254,74 @@ for (const L of locales) {
         pageJs: (KB && !inv ? '' : businessJs + `initBusiness({T: ${JSON.stringify(KF).replace(/</g, '\\u003c')}, L: L, esc: esc, $: $, endpoint: ${jsStr(cfg.sendEndpoint)}, token: ${jsStr(cfg.sendToken)}, email: ${jsStr(feedbackEmail)}, pdVersion: ${jsStr(pdOn ? pdVersion : '')}});`) +
           (KB ? kitBuyJs + `initKitBuy({T: ${JSON.stringify(kitBuyT(L, KB)).replace(/</g, '\\u003c')}, L: L, esc: esc, $: $, endpoint: ${jsStr(payEndpoint)}, price: ${kitPrice(L)}, currency: ${jsStr((C.services && C.services.currency) || 'USD')}, email: ${jsStr(feedbackEmail)}});` : '') });
     }
+    // /gift/ — подарочные сертификаты (hasGift, с 2026-11-14): что это, образец (вид сертификата — giftCertHTML из src/gift.js, PDF-образцы — src/assets/gift/),
+    // как воспользоваться, что получит человек, форма заказа (src/gift.js: число, именные, куда прислать, подпись, e-mail, оплата) и вопросы.
+    // Блок «Вам подарили…» показывается получателю, открывшему ссылку с сертификата (#g=<код>). Цены — метка обычной цены (markR) и пересчёт в скрипте.
+    if (hasGift(L)) {
+      const GT = C.gift, GO = GT.order, CT = GT.cert, gprice = markR(L), home = urlOf(L.lang), gsite = siteUrl;
+      const gv = str => String(str).replace(/\{price\}/g, gprice).replace(/\{months\}/g, GIFT.months).replace(/\{from\}/g, GIFT.offFrom).replace(/\{pct\}/g, GIFT.offPct).replace(/\{max\}/g, GIFT.max);
+      if (!qrLib) { qrLib = {}; vm.createContext(qrLib); vm.runInContext(fs.readFileSync(path.join(__dirname, 'src', 'qr.js'), 'utf8'), qrLib); }
+      const SAMPLE = 'K7MP3QXT9HWA', sampleUrl = home + 'gift/#g=' + SAMPLE, gqr = qrLib.qrSVG(sampleUrl, { dark: '#1B2027' });
+      const until = new Intl.DateTimeFormat(L.dateLocale, { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }).format(new Date(Date.UTC(2027, 10, 14)));
+      const certOf = new Function(giftJs + '; return giftCertHTML;')();
+      const sampleCert = certOf(CT, { name: GT.sampleName, from: GT.sampleFrom, code: SAMPLE.replace(/(.{4})(?=.)/g, '$1-'), url: sampleUrl, qr: gqr, until, sample: true, home, site: gsite, email: feedbackEmail });
+      const pdfs = ['named', 'plain'].filter(k => fs.existsSync(path.join(ASSETS, 'gift', `${L.lang}-${k}.pdf`)));
+      const pair = (b, tx) => `<li><b>${escFull(b)}</b> ${escFull(gv(tx))}</li>`;
+      const M = GT.mock, only = C.product.block && C.product.block.screen ? C.product.block.screen.only : [];
+      const pdfLink = k => `<a href="${relRoot(L, 'gift/')}gift/${L.lang}-${k}.pdf" target="_blank" rel="noopener">${escFull(k === 'named' ? GT.samplePdfNamed : GT.samplePdfPlain)}</a>`;
+      const opt = (name, value, x, checked) => `<label class="go-opt"><input type="radio" name="${name}" value="${value}"${checked ? ' checked' : ''}><span><b>${escFull(x[0])}</b><small>${escFull(x[1])}</small></span></label>`;
+      const email = `<a href="mailto:${escFull(feedbackEmail)}">${escFull(feedbackEmail)}</a>`;
+      const faqA = a => escFull(gv(a)).replace('{email}', email).replace('{business}', hasBusiness(L) ? `<a href="../business/">${escFull(GO.businessLink)}</a>` : escFull(GO.businessLink))
+        .replace('{refund}', `<a href="../refund/">${escFull(GT.refundLink)}</a>`);
+      const content = `<section class="gift-for" id="giftFor" hidden><div class="eyebrow">${escFull(GT.recipient.eyebrow)}</div><h2>${escFull(GT.recipient.title)}</h2>` +
+          `<p class="gf-text"></p><div class="gf-acts"><a class="btn" href="../#test">${escFull(GT.recipient.start)}</a><span class="gf-result" hidden><a href="../">${escFull(GT.recipient.result)}</a> — ${escFull(GT.recipient.resultNote)}</span></div></section>` +
+        `<div class="eyebrow">${escFull(GT.eyebrow)}</div><h1>${escFull(GT.h1)}</h1><p class="lead">${escFull(GT.lead)}</p>` +
+        `<ul class="xfacts">${GT.facts.map(x => `<li>${escFull(gv(x))}</li>`).join('')}</ul>` +
+        `<p class="small sendstatus giftstatus" id="giftStatus" aria-live="polite" hidden></p>` +
+        `<p class="gift-ctas"><a class="btn" href="#order" data-goal="gift-cta">${escFull(GT.cta)}</a><a class="gift-link" href="#sample">${escFull(GT.sampleLink)}</a></p>` +
+        `<h2>${escFull(GT.whoTitle)}</h2><div class="gift-who">${GT.who.map(x => `<div><b>${escFull(x[0])}</b><span>${escFull(x[1])}</span></div>`).join('')}</div>` +
+        `<h2 id="sample">${escFull(GT.sampleTitle)}</h2><p>${escFull(GT.sampleText)}</p>` +
+        `<div class="gift-tabs" role="tablist" aria-label="${escFull(GT.tabsLabel)}"><button type="button" role="tab" aria-selected="true" data-v="named">${escFull(GT.tabs[0])}</button><button type="button" role="tab" aria-selected="false" data-v="plain">${escFull(GT.tabs[1])}</button></div>` +
+        `<div class="certbox" id="giftSample">${sampleCert}</div>` +
+        (pdfs.length === 2 ? `<p class="gift-pdfs small">${escFull(GT.samplePdf).replace('{named}', pdfLink('named')).replace('{plain}', pdfLink('plain'))}</p>` : '') +
+        `<ul class="gift-ticks">${GT.ticks.map(x => pair(x[0], x[1])).join('')}</ul>` +
+        `<h2>${escFull(GT.howTitle)}</h2><p>${escFull(GT.howLead)}</p><ol class="gift-how">` +
+          GT.how.map((x, i) => `<li><div class="gh-t"><b>${escFull(x[0])}</b><span>${escFull(x[1]).replace('{site}', `<a href="../">${escFull(home.replace(/^https?:\/\//, '').replace(/\/$/, ''))}</a>`)}</span></div><div class="gh-pic" aria-hidden="true"><div class="ghm">` +
+            (i === 0 ? `<div class="ghm-h">${escFull(M.head)}</div><div class="ghm-l"></div><div class="ghm-l short"></div><span class="ghm-btn">${escFull(M.start)}</span>`
+              : i === 1 ? `<div class="ghm-h">${escFull(M.block)}</div><div class="ghm-row"><span class="ghm-in">${escFull(M.email)}</span><span class="ghm-btn">${escFull(M.buy)}</span></div><span class="ghm-a">${escFull(M.code)}</span>`
+              : `<div class="ghm-lb">${escFull(M.codeLabel)}</div><span class="ghm-in mono">${SAMPLE.replace(/(.{4})(?=.)/g, '$1-')}</span><div class="ghm-lb">${escFull(M.email)}</div><span class="ghm-in">${escFull(M.emailSample)}</span><span class="ghm-btn">${escFull(M.get)}</span>`) +
+            `</div></div></li>`).join('') + `</ol><p class="small muted">${escFull(GT.howNote)}</p>` +
+        `<h2>${escFull(GT.getTitle)}</h2><p>${escFull(GT.getLead)}</p><ul class="gift-only">${only.map(x => `<li><b>${escFull(x[0])}</b> — ${escFull(x[1])}</li>`).join('')}</ul>` +
+        (sampleCount(L) >= 4 ? `<div class="gift-sheets">${[1, 2, 3, 4].map(i => `<img src="${relRoot(L, 'gift/')}extended/${L.lang}-i-${i}-s.webp" alt="${escFull(GT.sheetAlt.replace('{n}', i))}" loading="lazy" decoding="async">`).join('')}</div>` : '') +
+        `<p class="small"><a href="../extended-report/">${escFull(GT.more)} ${arrow(L)}</a></p>` +
+        `<h2 id="order">${escFull(GO.title)}</h2><form class="gift-order" id="giftOrder" novalidate>` +
+          `<section class="go-step"><div class="go-n">1</div><div class="go-b"><h3>${escFull(GO.qtyTitle)}</h3><div class="go-qty">` +
+            `<button type="button" class="go-pm" data-d="-1" aria-label="${escFull(GO.less)}">−</button><input type="number" id="giftQty" min="1" max="${GIFT.max}" value="${GIFT.offFrom}" inputmode="numeric" aria-label="${escFull(GO.qtyLabel)}">` +
+            `<button type="button" class="go-pm" data-d="1" aria-label="${escFull(GO.moreBtn)}">+</button><span class="go-chips">${[1, 3, 5, 10, 20].filter(k => k <= GIFT.max).map(k => `<button type="button" class="go-chip" data-n="${k}">${k}</button>`).join('')}</span></div>` +
+            `<p class="go-price" id="giftPrice" aria-live="polite"></p><p class="small muted">${escFull(gv(GO.big)).replace('{business}', hasBusiness(L) ? `<a href="../business/">${escFull(GO.businessLink)}</a>` : escFull(GO.businessLink))}</p></div></section>` +
+          `<section class="go-step"><div class="go-n">2</div><div class="go-b"><h3>${escFull(GO.namedTitle)}</h3><div class="go-opts">${opt('gnamed', '0', GO.named[0], true)}${opt('gnamed', '1', GO.named[1])}</div></div></section>` +
+          `<section class="go-step"><div class="go-n">3</div><div class="go-b"><h3>${escFull(GO.toTitle)}</h3><div class="go-opts">${opt('gto', 'me', GO.to[0], true)}${opt('gto', 'each', GO.to[1])}</div>` +
+            `<div class="go-recip" id="giftRecip" hidden><div class="go-rhead"><b id="giftRecipTitle"></b><button type="button" class="gift-link" id="giftPasteBtn">${escFull(GO.paste)}</button></div>` +
+            `<div class="go-paste" id="giftPasteBox" hidden><label for="giftPasteTa" class="small">${escFull(GO.pasteHint).replace('{fmt}', '<span id="giftPasteFmt"></span>')}</label><textarea id="giftPasteTa" class="ym-disable-keys" rows="5"></textarea>` +
+            `<p><button type="button" class="btn go-sm" id="giftPasteApply">${escFull(GO.pasteApply)}</button></p></div><div class="go-rows" id="giftRows"></div></div></div></section>` +
+          `<section class="go-step"><div class="go-n">4</div><div class="go-b"><h3>${escFull(GO.signTitle)}</h3>` +
+            `<div class="field"><label for="giftFrom">${escFull(GO.fromLabel)} <span class="muted">${escFull(GO.fromOptional)}</span></label><input type="text" id="giftFrom" class="ym-disable-keys" maxlength="60" placeholder="${escFull(GO.fromPh)}"><div class="hint">${escFull(GO.fromHint)}</div></div>` +
+            `<div class="field"><label for="giftEmail">${escFull(GO.emailLabel)}<span class="req">*</span></label><input type="email" id="giftEmail" class="ym-disable-keys" autocomplete="email" inputmode="email" maxlength="64" required><div class="hint" id="giftEmailHint">${escFull(GO.emailHint)}</div></div>` +
+            `<label class="check go-agree" id="giftAgreeRow" hidden><input type="checkbox" id="giftAgree"><span id="giftAgreeText"></span></label></div></section>` +
+          `<section class="go-sum"><div class="go-prev"><div class="go-prevt small muted">${escFull(GO.previewTitle)}</div><div class="certbox" id="giftLive"></div></div>` +
+            `<div class="go-total"><div class="small muted" id="giftSumWhat"></div><div class="go-big" id="giftSumBig"></div><div class="small" id="giftSumOld"></div>` +
+            `<button class="btn go-pay" type="submit" id="giftPay">${escFull(GO.pay.replace('{total}', ''))}</button><p class="small sendstatus err" id="giftErr" aria-live="polite" hidden></p>` +
+            `<p class="xnote">${escFull(GO.note).replace('{offer}', `<a href="../offer/">${escFull(C.offer.linkText)}</a>`)}</p>${payMethodsHtml(L)}</div></section>` +
+        `</form>` +
+        `<h2>${escFull(GT.faqTitle)}</h2>` + GT.faq.map(it => `<h3 class="xq">${escFull(it.q)}</h3><p>${faqA(it.a)}</p>`).join('') +
+        `<p class="seealso"><a href="../extended-report/">${escFull(C.product.h1)} ${arrow(L)}</a>` + (hasBusiness(L) ? ` · <a href="../business/">${escFull(C.business.h1)} ${arrow(L)}</a>` : '') +
+          ` · <a href="../offer/">${escFull(C.offer.h1)} ${arrow(L)}</a> · <a href="../refund/">${escFull(C.refund.h1)} ${arrow(L)}</a></p>`;
+      const GTjs = { order: GO, recipient: GT.recipient, sampleName: GT.sampleName, sampleFrom: GT.sampleFrom };
+      writeContentPage(L, 'gift/', { navKey: 'nav.services', langs: locales.filter(hasGift), title: gv(GT.title), description: gv(GT.description), crumbs: [{ name: t('nav.services'), href: '../services/', sub: 'services/' }, { name: GT.h1 }],
+        css: giftCss, content, files: ['src/gift.js', 'src/gift.css'].concat(pdfs.map(k => `src/assets/gift/${L.lang}-${k}.pdf`)),
+        pageJs: giftJs + `\ninitGift({T: ${JSON.stringify(GTjs).replace(/</g, '\\u003c')}, C: ${JSON.stringify(CT).replace(/</g, '\\u003c')}, G: ${JSON.stringify(GIFT)}, base: ${servicePrices.RUB}, endpoint: ${jsStr(payEndpoint)}, ` +
+          `L: L, esc: esc, $: $, lsGet: lsGet, lsSet: lsSet, email: ${jsStr(feedbackEmail)}, qr: ${jsStr(gqr)}, sampleCode: ${jsStr(SAMPLE.replace(/(.{4})(?=.)/g, '$1-'))}, sampleUrl: ${jsStr(sampleUrl)}, until: ${jsStr(until)}, home: ${jsStr(home)}, site: ${jsStr(gsite)}});` });
+    }
     // /extended-report/ — страница расширенного отчёта: что внутри, листы образца картинками, сравнение с кратким отчётом, цена.
     // Блок покупки по умолчанию ведёт на тест. У кого результат сохранён на этом устройстве (disc.last), тому скрипт страницы меняет его:
     // при заданном payEndpoint — на форму с полем e-mail и кнопкой «Купить» (src/pay.js), без него — на заявку через форму обратной связи
@@ -1261,7 +1345,7 @@ for (const L of locales) {
           `<h2>${escFull(pr.compareTitle)}</h2>` + compare + `<p class="small muted">${escFull(pr.compareNote)}</p>` +
           `<h2>${escFull(pr.howTitle)}</h2>` + listHtml('ol', pay ? pay.how : pr.how) + buyBox() +
           `<h2>${escFull(pr.faqTitle)}</h2>` + pr.faq.map(it => `<h3 class="xq">${escFull(it.q)}</h3><p>${escFull(it.a)}</p>`).join('') + `<p class="small muted">${escFull(pr.docs)}</p>`) +
-          `<p class="seealso">${docLink('services/', sv)} · ${docLink('offer/', of)} · ${docLink('refund/', rf)}</p>`,
+          `<p class="seealso">${hasGift(L) ? `<a href="../gift/">${escFull(C.gift.h1)} ${arrow(L)}</a> · ` : ''}${docLink('services/', sv)} · ${docLink('offer/', of)} · ${docLink('refund/', rf)}</p>`,
         files: samples ? pr.sampleAlt.map((_, i) => `src/assets/extended/${L.lang}-i-${i + 1}.webp`) : [],
         pageJs: resultFromUrlJs + (pay ? payJs + `\ninitPayBuy({T: ${JSON.stringify(Object.assign({ noteHtml: fillHtml(escFull(pay.note)), errorHtml: fillHtml(escFull(pay.error)), methodsHtml: payMethodsHtml(L) },
           Object.fromEntries(['title', 'text', 'emailLabel', 'emailPlaceholder', 'button', 'badEmail', 'wait', 'guarantee', 'payPage', 'nameLabel', 'nameHint', 'nameRequired'].map(k => [k, pay[k]])), { offer: payOffer(L), sale: paySale(L), code: payCodeT(L, fillHtml) })).replace(/</g, '\\u003c')}, endpoint: ${jsStr(payEndpoint)}, L: L, esc: esc, lsGet: lsGet, lsSet: lsSet});` : `(function(){
@@ -1290,7 +1374,7 @@ for (const L of locales) {
           content: payMark('ok') + `<div class="eyebrow">${escFull(pr.h1)}</div><h1>${escFull(th.h1)}</h1><p class="lead" id="payLead">${escFull(th.lead)}</p>` +
             `<p class="notice payorder ym-hide-content" id="payOrder" hidden></p><p class="small sendstatus" id="payStatus" aria-live="polite" hidden></p>` +
             fill2(`<h2>${escFull(th.nextTitle)}</h2>` + listHtml('ul', th.next) + `<h2>${escFull(th.helpTitle)}</h2>` + th.help.map(x => `<p>${escFull(x)}</p>`).join('')) +
-            `<p class="seealso"><a href="../../">${escFull(th.back)} ${arrow(L)}</a> · <a href="../../refund/">${escFull(rf.h1)} ${arrow(L)}</a></p>`,
+            `<p class="seealso"><a href="../../">${escFull(th.back)} ${arrow(L)}</a>${hasGift(L) ? ` · <a href="../../gift/">${escFull(C.gift.h1)} ${arrow(L)}</a>` : ''} · <a href="../../refund/">${escFull(rf.h1)} ${arrow(L)}</a></p>`,
           pageJs: payJs + `\ninitPayThanks({T: ${pick(th, ['leadEmail', 'order', 'statusWait', 'statusPaid', 'statusSent'])}, endpoint: ${jsStr(payEndpoint)}, price: ${langPair(L)[0]}, currency: ${jsStr(sv.currency)}, lsGet: lsGet, lsSet: lsSet, $: $});` });
         writeContentPage(L, 'extended-report/failed/', { noindex: true, noDate: true, navKey: 'nav.services', langs: own2, title: fl.title, description: fl.description, crumbs: crumbs2(fl.h1),
           content: payMark('fail') + `<div class="eyebrow">${escFull(pr.h1)}</div><h1>${escFull(fl.h1)}</h1><p class="lead">${escFull(fl.lead)}</p>` +
@@ -1448,6 +1532,9 @@ for (const f of fs.existsSync(path.join(ASSETS, 'fonts')) ? fs.readdirSync(path.
 if (fs.existsSync(path.join(ASSETS, 'extended'))) { fs.mkdirSync(path.join(OUT, 'extended'), { recursive: true });
   // <язык>-mail.jpg — листы образца для письма подписчикам (content.mailing.promo): JPEG, а не WebP — WebP показывают не все почтовые программы
   for (const f of fs.readdirSync(path.join(ASSETS, 'extended'))) if (f.endsWith('.webp') || /^[a-z-]+-mail\.jpg$/.test(f)) fs.copyFileSync(path.join(ASSETS, 'extended', f), path.join(OUT, 'extended', f)); }
+// образцы подарочного сертификата (страница /gift/, с 2026-11-14): собирает private/server/test/gift-sample.js тем же кодом, что сервер
+if (fs.existsSync(path.join(ASSETS, 'gift'))) { fs.mkdirSync(path.join(OUT, 'gift'), { recursive: true });
+  for (const f of fs.readdirSync(path.join(ASSETS, 'gift'))) if (/^[a-z-]+-(named|plain)\.pdf$/.test(f)) fs.copyFileSync(path.join(ASSETS, 'gift', f), path.join(OUT, 'gift', f)); }
 // картинки-образцы набора ведущего (страница /kit/, с 2026-10-25): готовит private/kit/make-kit.js
 if (fs.existsSync(path.join(ASSETS, 'kit'))) { fs.mkdirSync(path.join(OUT, 'kit'), { recursive: true });
   for (const f of fs.readdirSync(path.join(ASSETS, 'kit'))) if (/^[a-z-]+-[a-z]+\.jpg$/.test(f)) fs.copyFileSync(path.join(ASSETS, 'kit', f), path.join(OUT, 'kit', f)); }
@@ -1501,6 +1588,10 @@ for (const L of locales) {
   if (hasKitBuy(L)) { const home = urlOf(L.lang);
     mailData[L.lang].kit = { name: L.content.kit.h1, price: kitPrice(L), currency: (L.content.services && L.content.services.currency) || 'USD', dateLocale: L.dateLocale, mail: L.content.kit.mail,
       page: home + 'kit/', online: home, pdf: pdfInfo(L.lang) ? home + 'pdf/' : '', group: L.content.group ? home + 'group/' : '' }; }
+  // подарочные сертификаты (hasGift, с 2026-11-14): название для платёжной страницы и чека, порог и размер скидки, предел, срок кода, тексты сертификата
+  // и писем (покупателю и получателю), адреса страницы сертификатов (на неё ведут код и QR-код сертификата) и главной версии
+  if (hasGift(L)) { const home = urlOf(L.lang), GT = L.content.gift;
+    mailData[L.lang].gift = Object.assign({ name: GT.name, page: home + 'gift/', home, dateLocale: L.dateLocale, cert: GT.cert, mail: GT.mail, rmail: GT.rmail }, GIFT); }
   // файл с кодами доступа для покупателя (панель, страница партии → «Скачать коды файлом», с 2026-11-12): заголовки столбцов на языке партии и адрес,
   // где вводить код, — главная этого языка
   if (hasBusiness(L) && Array.isArray(L.content.business.csv)) mailData[L.lang].codes = { csv: L.content.business.csv, home: urlOf(L.lang) };

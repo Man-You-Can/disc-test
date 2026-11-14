@@ -911,7 +911,7 @@
           "text": "8.4. A quien compró el Código de acceso, el Prestador solo le informa de si el Código de acceso se ha usado y cuándo. El Prestador no le comunica el resultado del Test, el Perfil ampliado ni la dirección de correo electrónico del Cliente."
         }
       ],
-      "edition": "Versión del 12 de noviembre de 2026. Traducción al español actualizada el 12 de noviembre de 2026.",
+      "edition": "Versión del 14 de noviembre de 2026. Traducción al español actualizada el 14 de noviembre de 2026.",
       "note": "Este texto es una traducción al español de la oferta original publicada en {original}. En caso de discrepancia entre ambos textos, prevalece el original, salvo en lo relativo al precio y a la forma de pago, que, en la versión en español del Sitio, se rigen por lo dispuesto en las secciones 1 y 3 de esta traducción.",
       "seller": "empresario individual Manukyan Armen, N.º de identificación fiscal (INN) {inn}",
       "lead": "Este documento es una propuesta formal (oferta pública) para celebrar un contrato de prestación del servicio de pago «Perfil DISC ampliado», así como un contrato de entrega del Kit para facilitadores DISC (sección 10), en las condiciones que se exponen a continuación. La oferta la formula el {seller} (en adelante, el Prestador). El pago del servicio o del Kit supone la aceptación plena e incondicional de estas condiciones (aceptación de la oferta).",
@@ -1019,7 +1019,19 @@
           ]
         },
         {
-          "h": "11. Datos del Prestador",
+          "h": "11. Certificados de regalo",
+          "p": [
+            "11.1. En las condiciones de esta oferta, el Prestador también vende certificados de regalo para el Perfil ampliado (en adelante, los Certificados). Un Certificado es un archivo PDF con un Código de acceso (cláusula 4.6) que da a su destinatario derecho a recibir el Servicio sin pagarlo. Para comprar Certificados no es necesario realizar el Test; a efectos de esta sección, el Comprador es la persona que ha pagado los Certificados, y el destinatario de un Certificado lo utiliza como Cliente que dispone de un Código de acceso.",
+            "11.2. El precio de un Certificado y el descuento por la compra de varios Certificados se indican en la página de Certificados del Sitio; el importe total se muestra antes del pago y en la página de pago. Los Certificados se pagan íntegramente antes de su entrega, en la forma indicada en las cláusulas 3.2 a 3.5. El Comprador puede hacer los Certificados nominativos (el nombre del destinatario se imprime en el Certificado) y firmarlos con una línea «De parte de».",
+            "11.3. Tras el pago, el Prestador envía los Certificados a la dirección de correo electrónico del Comprador y, si el Comprador ha indicado las direcciones de los destinatarios, envía también a cada destinatario su Certificado. Los Certificados se envían normalmente justo después del pago y, como máximo, 24 horas después del pago. Los Certificados se consideran entregados, y el servicio de su venta prestado, en el momento en que se envía al Comprador el mensaje con los Certificados. Si el mensaje no llega, los Certificados se reenvían a petición dirigida a {email}.",
+            "11.4. Cada Certificado puede utilizarse una vez dentro de los 12 meses siguientes a la fecha de pago; la fecha de caducidad figura en el Certificado. Transcurrido ese plazo, el Código de acceso del Certificado deja de aceptarse. El Perfil ampliado obtenido con un Certificado se elabora y envía conforme a la cláusula 4.6.",
+            "11.5. Al indicar los nombres y las direcciones de correo electrónico de los destinatarios, el Comprador confirma que los destinatarios aceptan recibir un Certificado y que tiene derecho a comunicar sus datos al Prestador. El Prestador utiliza el nombre de un destinatario solo para el Certificado y su dirección solo para el mensaje con el Certificado, y los elimina 30 días naturales después de enviar los Certificados (en un pedido no pagado, a los 7 días). A los demás datos del Comprador se aplica la sección 8; a quien ha comprado los Certificados, el Prestador solo le comunica si se han utilizado y cuándo (cláusula 8.4).",
+            "11.6. El Comprador puede desistir de los Certificados no utilizados mientras estén vigentes: en ese caso se le reembolsa el precio pagado por cada Certificado no utilizado, y su Código de acceso deja de funcionar. El pago por un Certificado cuyo Código de acceso ya ha sido aceptado por el Sitio no se reembolsa. El reembolso se tramita conforme a las cláusulas 5.5 a 5.7; en la solicitud debe indicarse el número de pedido.",
+            "11.7. Las preguntas sobre los Certificados pueden enviarse a {email}."
+          ]
+        },
+        {
+          "h": "12. Datos del Prestador",
           "ul": ["Empresario individual Manukyan Armen", "N.º de identificación fiscal (INN) {inn}", "Correo electrónico: {email}", "Sitio web: {site}"]
         }
       ]
@@ -1061,6 +1073,12 @@
           "h": "Kit para facilitadores",
           "p": [
             "Se le devuelve todo el dinero pagado por el kit para facilitadores si cancela la compra antes de que se le envíe el correo con los enlaces a los archivos, si el correo no se envía en las 24 horas siguientes al pago o si los archivos no se abren y no lo hemos solucionado en los tres días hábiles siguientes a su solicitud. Si el correo se envió a tiempo y los archivos se abren, el pago no se reembolsa. El reembolso se solicita igual que el del perfil ampliado: escriba a {email} e indique la dirección de correo que usó al pagar, la fecha y el importe del pago y el motivo."
+          ]
+        },
+        {
+          "h": "Certificados de regalo",
+          "p": [
+            "Se le devuelve el dinero de los certificados de regalo no utilizados si lo solicita mientras estén vigentes: por cada certificado no utilizado, el precio que pagó por él; los códigos de esos certificados dejan de funcionar. No se devuelve el pago de un certificado cuyo código ya se ha introducido en el sitio. Indique en su solicitud el número de pedido: aparece en el correo con los certificados."
           ]
         },
         {

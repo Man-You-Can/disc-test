@@ -7,7 +7,7 @@
   "indexNowKey": "b536ac5426ba428ee366bb7cf5aa56be",
   "analyticsMode": "always",
   "pdConsent": true,
-  "pdVersion": "2026-11-12",
+  "pdVersion": "2026-11-14",
   "languages": [
     "en",
     "es",
@@ -57,6 +57,11 @@
     { "from": 100, "priceRub": 390, "priceUsd": 4.99, "priceEur": 4.99, "lang": { "es": 3.99, "pl": 3.99, "pt": 2.49, "tr": 2.49, "zh": 2.49, "id": 1.99 } }
   ],
   "businessCodeMonths": 12,
+  "giftBuy": true,
+  "giftOffFrom": 5,
+  "giftOffPct": 15,
+  "giftMax": 50,
+  "giftMonths": 12,
   "kitPriceRub": 990,
   "kitPriceUsd": 12.99,
   "kitPriceEur": 12.99,

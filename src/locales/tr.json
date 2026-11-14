@@ -901,7 +901,7 @@
           "text": "8.4. Hizmet Sağlayıcı, Erişim Kodu’nu satın alan kişiye yalnızca kodun kullanılıp kullanılmadığını ve ne zaman kullanıldığını bildirir. Test sonucunu, Genişletilmiş Profil’i ve Müşteri’nin e-posta adresini bu kişiye iletmez."
         }
       ],
-      "edition": "12 Kasım 2026 tarihli sürüm. Türkçe çevirisi 12 Kasım 2026’da güncellenmiştir.",
+      "edition": "14 Kasım 2026 tarihli sürüm. Türkçe çevirisi 14 Kasım 2026’da güncellenmiştir.",
       "note": "Bu metin, teklifin {original} adresinde yayımlanan asıl metninin Türkçe çevirisidir. İki metin arasında fark olması hâlinde asıl metin esas alınır; bunun istisnası ücret ve ödeme yöntemidir: Site’nin Türkçe sürümü için bu çevirinin 1. ve 3. bölümleri geçerlidir.",
       "seller": "bireysel girişimci Manukyan Armen, vergi kimlik numarası (INN) {inn}",
       "lead": "Bu belge, ücretli “Genişletilmiş DISC profili” hizmetine ilişkin sözleşmenin ve DISC Atölye Kiti’nin teslimine ilişkin sözleşmenin (10. bölüm) aşağıdaki koşullarla kurulması için yapılmış resmî bir tekliftir (kamuya açık teklif). Teklifi yapan: {seller} (bundan böyle “Hizmet Sağlayıcı” olarak anılır). Hizmetin ya da Kit’in ücretinin ödenmesi, bu koşulların tamamen ve kayıtsız şartsız kabul edildiği anlamına gelir (teklifin kabulü).",
@@ -1009,7 +1009,19 @@
           ]
         },
         {
-          "h": "11. Hizmet Sağlayıcı’nın bilgileri",
+          "h": "11. Hediye Sertifikaları",
+          "p": [
+            "11.1. Hizmet Sağlayıcı, bu teklifin koşullarıyla Genişletilmiş Profil için hediye sertifikaları da (bundan böyle “Sertifika” olarak anılır) satar. Sertifika, alıcısına Hizmet’i ücret ödemeden alma hakkı veren bir Erişim Kodu (4.6. madde) içeren PDF dosyasıdır. Sertifika satın almak için Test’i çözmek gerekmez; bu bölümde Satın Alan, Sertifikaların ücretini ödeyen kişidir; Sertifika’nın alıcısı ise onu Erişim Kodu’na sahip bir Müşteri olarak kullanır.",
+            "11.2. Bir Sertifika’nın ücreti ve birden fazla Sertifika alındığında uygulanan indirim, Site’deki Sertifika sayfasında gösterilir; toplam tutar ödemeden önce ve ödeme sayfasında gösterilir. Sertifikaların ücretinin tamamı, teslimden önce, 3.2–3.5. maddelerde belirtilen şekilde ödenir. Satın Alan, Sertifikaları isme özel yapabilir (alıcının adı Sertifika’ya basılır) ve onlara “Kimden” satırı ekleyebilir.",
+            "11.3. Ödemeden sonra Hizmet Sağlayıcı, Sertifikaları Satın Alan’ın e-posta adresine gönderir; Satın Alan alıcıların e-posta adreslerini belirttiyse her alıcıya da kendi Sertifika’sını gönderir. Sertifikalar genellikle ödemenin hemen ardından, en geç ödemeden itibaren 24 saat içinde gönderilir. Sertifikalar, Sertifikaları içeren e-posta Satın Alan’a gönderildiği anda teslim edilmiş ve satış hizmeti ifa edilmiş sayılır. E-posta ulaşmazsa, {email} adresine yapılan başvuru üzerine Sertifikalar yeniden gönderilir.",
+            "11.4. Her Sertifika, ödeme gününden itibaren 12 ay içinde bir kez kullanılabilir; geçerlilik bitiş tarihi Sertifika’da yazılıdır. Bu süreden sonra Sertifika’nın Erişim Kodu kabul edilmez. Sertifika ile alınan Genişletilmiş Profil, 4.6. maddede belirtilen şekilde hazırlanır ve gönderilir.",
+            "11.5. Satın Alan, alıcıların adlarını ve e-posta adreslerini belirterek alıcıların Sertifika almayı kabul ettiğini ve onların bilgilerini Hizmet Sağlayıcı’ya iletmeye yetkili olduğunu teyit eder. Hizmet Sağlayıcı, alıcının adını yalnızca Sertifika için, e-posta adresini yalnızca Sertifika’yı içeren e-posta için kullanır ve bunları Sertifikalar gönderildikten 30 takvim günü sonra (ödenmemiş siparişte 7 gün sonra) siler. Satın Alan’ın diğer verilerine 8. bölüm uygulanır; Hizmet Sağlayıcı, Sertifikaları satın alan kişiye yalnızca bunların kullanılıp kullanılmadığını ve ne zaman kullanıldığını bildirir (8.4. madde).",
+            "11.6. Satın Alan, kullanılmamış Sertifikalardan geçerlilik süreleri içinde vazgeçebilir: Bu durumda kullanılmamış her Sertifika için ödenen ücret iade edilir ve o Sertifika’nın Erişim Kodu geçersiz olur. Erişim Kodu Site tarafından kabul edilmiş Sertifika’nın ücreti iade edilmez. İade, 5.5–5.7. maddelerde belirtilen şekilde yapılır; başvuruda sipariş numarası belirtilmelidir.",
+            "11.7. Sertifikalarla ilgili sorular {email} adresine gönderilebilir."
+          ]
+        },
+        {
+          "h": "12. Hizmet Sağlayıcı’nın bilgileri",
           "ul": ["Bireysel girişimci Manukyan Armen", "Vergi kimlik numarası (INN) {inn}", "E-posta: {email}", "İnternet sitesi: {site}"]
         }
       ]
@@ -1051,6 +1063,12 @@
           "h": "Atölye Kiti",
           "p": [
             "Atölye Kiti için ödediğiniz ücretin tamamı şu durumlarda iade edilir: dosya bağlantılarını içeren e-posta size gönderilmeden önce satın almaktan vazgeçtiyseniz, e-posta ödemeden sonraki 24 saat içinde gönderilmediyse ya da dosyalar açılmıyorsa ve başvurunuzdan sonraki üç iş günü içinde bunu gidermediysek. E-posta zamanında gönderildiyse ve dosyalar açılıyorsa ödenen ücret iade edilmez. İade talebi genişletilmiş profilde olduğu gibi yapılır: {email} adresine yazın; ödeme sırasında belirttiğiniz e-posta adresini, ödemenin tarihini ve tutarını, ayrıca iade nedenini belirtin."
+          ]
+        },
+        {
+          "h": "Hediye sertifikaları",
+          "p": [
+            "Kullanılmamış hediye sertifikalarının ücreti, sertifikalar geçerli olduğu sürece talebiniz üzerine iade edilir: kullanılmamış her sertifika için ödediğiniz ücret; bu sertifikaların kodları geçersiz olur. Kodu sitede girilmiş bir sertifikanın ücreti iade edilmez. Talebinizde sipariş numarasını belirtin — numara, sertifikaları içeren e-postada yer alır."
           ]
         },
         {

@@ -853,7 +853,7 @@ function langHref(code){ return ROOT_REL + (LANG_PATH[code]||'') + (PAGE_LANGS &
    запоминание выбранного языка, подсказка «Продолжить на …», уведомление о cookie и загрузка Яндекс.Метрики после согласия.
    Вставляется сборкой в каждую страницу; вызывается как initCommon({L, t, esc, lsGet, lsSet, langHref, $}). */
 /* Хэш адреса с личными данными: #r=… — код результата (в нём имя, e-mail и ответы участника), #u=… — ключ отписки от рассылки,
-   #c=… — ключ подтверждения подписки на рассылку (с 2026-10-22).
+   #c=… — ключ подтверждения подписки на рассылку (с 2026-10-22), #g=… — код подарочного сертификата (страница /ru/gift/, с 2026-11-14).
    Счётчик веб-аналитики читает адрес страницы сам: в первом запросе (он уходит и при defer), в карте кликов, при переходе
    по внешней ссылке, в записи посещения. Поэтому такой хэш убирается из адресной строки раньше, чем счётчик загружен, и
    остаётся в записи истории браузера (history.state): обновление страницы и «Назад» открывают тот же экран, а новый переход
@@ -864,7 +864,7 @@ function langHref(code){ return ROOT_REL + (LANG_PATH[code]||'') + (PAGE_LANGS &
    о ней говорят тексты о данных на 14 языках. При открытии страницы любой #r=… (в старых ссылках из писем — с e-mail) всё равно сначала
    убирается, до загрузки счётчика, и возвращается в строку уже без e-mail. */
 function dataHash(){
-  var re = /^#[ruc]=/, h = location.hash || '';
+  var re = /^#[rucg]=/, h = location.hash || '';
   try{
     var first = !dataHash.seen, s = history.state; dataHash.seen = 1;
     /* ссылка, которую страница сама показала в адресной строке (showHash), остаётся на месте; при открытии страницы (first) убирается и она */
@@ -1147,7 +1147,7 @@ initCommon({L:L, t:t, esc:esc, lsGet:lsGet, lsSet:lsSet, langHref:langHref, $:$,
         if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em)||em.length>120){ $('#pmEm').focus(); show('err', M.emailRequired); return; }
         if(!$('#pmPd').checked){ $('#pmPd').focus(); show('err', M.pdRequired); return; }
         btn.disabled=true; show('muted', M.sending);
-        fetch("https://api.disc-test.org/", {method:'POST', body:JSON.stringify({action:'paperMail', token:"kR7UiShTyG7Wws7t16NkgKN3", lang:L.lang, to:em, consent:true, consentV:"2026-11-12", subscribe:$('#pmNl').checked})})
+        fetch("https://api.disc-test.org/", {method:'POST', body:JSON.stringify({action:'paperMail', token:"kR7UiShTyG7Wws7t16NkgKN3", lang:L.lang, to:em, consent:true, consentV:"2026-11-14", subscribe:$('#pmNl').checked})})
           .then(function(r){ return r.json(); }).then(function(j){ if(!j||!j.ok) throw new Error((j&&j.error)||'bad response'); show('ok', M.sent.replace('{email}', em)); if(window.discTrack) window.discTrack('paper-mail'); })
           .catch(function(err){ var m=String((err&&err.message)||err); show('err', /too many|daily limit/.test(m) ? M.tooMany : M.failed.replace('{error}', m)); })
           .then(function(){ btn.disabled=false; }); }); })();

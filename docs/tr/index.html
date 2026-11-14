@@ -848,7 +848,7 @@ var CONTACT_EMAIL = ''; // contactEmail из site.config.json; кнопка «О
 var SEND_ENDPOINT = 'https://api.disc-test.org/'; // URL веб-приложения Google Apps Script (см. README); пустой — письма не отправляются
 var SEND_TOKEN = 'kR7UiShTyG7Wws7t16NkgKN3';
 var PAY_ENDPOINT = 'https://api.disc-test.org/pay'; // сервер оплаты (payEndpoint) — только в языках, где отчёт продаётся; пустой — кнопки отчёта ведут на его страницу
-var PD = '1' === '1', PD_VERSION = '2026-11-12'; // отдельная галочка согласия на обработку данных в форме отправки результата (pdConsent в site.config.json)
+var PD = '1' === '1', PD_VERSION = '2026-11-14'; // отдельная галочка согласия на обработку данных в форме отправки результата (pdConsent в site.config.json)
 var NEWSLETTER = '1' === '1'; // галочка согласия на рассылку в форме отправки результата (newsletter в site.config.json)
 var RESULT_EMAIL = '1' === '1'; // кнопка «Отправить на e-mail» и форма краткого отчёта в карточке «Сохраните результат» (resultEmail в site.config.json; с 2026-10-21 по 2026-10-22 выключена)
 var PDF_DL = '1' === '1'; // «Сохранить в PDF» скачивает краткий отчёт, собранный сервером (pdfDownload в site.config.json); иначе — печать браузера
@@ -1624,6 +1624,7 @@ function payCodeInit(c, g, f, o){
         say('ok', esc(X.done.replace('{to}', email)));
         try{ var p = c.lsGet('disc.pay') || {}; if(!p.done) c.lsSet('disc.pay', {code:true, email:email, t:Date.now(), done:true}); }catch(e){}
         if(window.discXbar) window.discXbar.sync();   // отчёт получен — закреплённая кнопка отчёта больше не нужна
+        try{ var gg = c.lsGet && c.lsGet('disc.gift'); if(gg && String(gg.code).replace(/[^A-Za-z0-9]/g, '').toUpperCase() === voucher.replace(/[^A-Za-z0-9]/g, '').toUpperCase()){ c.lsSet('disc.gift', null); payTrack('gift-redeem'); } }catch(e){}
         payTrack('ext-code-done'); })
       .catch(function(err){ var m = err && err.message;
         if(!done){ btn.disabled = false; btn.textContent = X.button; }
@@ -1634,6 +1635,11 @@ function payCodeInit(c, g, f, o){
         else say('err', X.errorHtml); });
   };
   btn.addEventListener('click', f.redeem);
+  // код подарочного сертификата (с 2026-11-14): получатель открыл ссылку или QR-код с сертификата (/ru/gift/#g=<код>, src/gift.js) — код запомнен в браузере;
+  // форма сразу в режиме кода и с этим кодом, без фокуса (страница не прыгает к форме). После успешного ввода запись удаляется
+  var gc = null; try{ gc = c.lsGet && c.lsGet('disc.gift'); }catch(e){}
+  if(gc && gc.code && !f.coding){ inp.value = String(gc.code).replace(/(.{4})(?=.)/g, '$1-'); f.coding = true; form.classList.add('xcoding'); box.hidden = false;
+    link.textContent = X.back; link.setAttribute('aria-expanded', 'true'); }
 }
 
 /* Страница отчёта: у кого результат сохранён на этом устройстве (disc.last), тому блок покупки (.xbuy) превращается в форму
@@ -2205,7 +2211,7 @@ function langHref(code){ return ROOT_REL + (LANG_PATH[code]||'') + location.hash
    запоминание выбранного языка, подсказка «Продолжить на …», уведомление о cookie и загрузка Яндекс.Метрики после согласия.
    Вставляется сборкой в каждую страницу; вызывается как initCommon({L, t, esc, lsGet, lsSet, langHref, $}). */
 /* Хэш адреса с личными данными: #r=… — код результата (в нём имя, e-mail и ответы участника), #u=… — ключ отписки от рассылки,
-   #c=… — ключ подтверждения подписки на рассылку (с 2026-10-22).
+   #c=… — ключ подтверждения подписки на рассылку (с 2026-10-22), #g=… — код подарочного сертификата (страница /ru/gift/, с 2026-11-14).
    Счётчик веб-аналитики читает адрес страницы сам: в первом запросе (он уходит и при defer), в карте кликов, при переходе
    по внешней ссылке, в записи посещения. Поэтому такой хэш убирается из адресной строки раньше, чем счётчик загружен, и
    остаётся в записи истории браузера (history.state): обновление страницы и «Назад» открывают тот же экран, а новый переход
@@ -2216,7 +2222,7 @@ function langHref(code){ return ROOT_REL + (LANG_PATH[code]||'') + location.hash
    о ней говорят тексты о данных на 14 языках. При открытии страницы любой #r=… (в старых ссылках из писем — с e-mail) всё равно сначала
    убирается, до загрузки счётчика, и возвращается в строку уже без e-mail. */
 function dataHash(){
-  var re = /^#[ruc]=/, h = location.hash || '';
+  var re = /^#[rucg]=/, h = location.hash || '';
   try{
     var first = !dataHash.seen, s = history.state; dataHash.seen = 1;
     /* ссылка, которую страница сама показала в адресной строке (showHash), остаётся на месте; при открытии страницы (first) убирается и она */
