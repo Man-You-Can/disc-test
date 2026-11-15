@@ -63,3 +63,15 @@ h3.bf-fq{font-size:17px;margin:18px 0 6px}
   .bf-srow .nm{grid-column:1 / -1}
   .bf-asps{grid-template-columns:1fr}
 }
+/* статьи о Большой пятёрке (/big-five/<статья>/, с 2026-11-15) */
+.bf-more{margin:14px 0 0;font-weight:600}
+.bf-more a{color:var(--ink)}
+#bfAbout .bf-arts,.bf-arts{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px;margin:8px 0 24px;padding:0;list-style:none}
+.bf-arts li{margin:0}
+.bf-arts a{display:block;height:100%;padding:12px 14px;border:1px solid var(--line-strong);border-radius:12px;color:var(--ink);text-decoration:none}
+.bf-arts a:hover{border-color:var(--ink)}
+.bf-arts small{display:block;color:var(--muted);margin-top:4px;font-size:14px}
+.bf-cta{border:2px solid var(--ink);border-radius:14px;padding:18px 20px;margin:26px 0}
+.bf-cta .bf-ctat{margin:0 0 6px;font-family:var(--font-head);font-weight:600;font-size:21px}
+.bf-cta p{margin:0 0 12px}
+.bf-src{font-size:14px;color:var(--muted)}

@@ -1433,17 +1433,36 @@ for (const L of locales) {
     // Тест и результат — в браузере (src/bigfive.js), на сервер ничего не уходит. Стартовый блок (#bfApp) отдаётся в HTML для поисковиков.
     if (L.content.bigfive) {
       const B = L.content.bigfive;
+      // статьи о Большой пятёрке (content.bigfive.articles, с 2026-11-15): /big-five/<slug>/, список — на странице теста, ссылки «Подробнее о черте» — в результате
+      const A = B.articles || [], AU = B.articlesUi || {}, artBySlug = Object.fromEntries(A.map(x => [x.slug, x]));
+      const bfArtList = (base, skip) => A.length ? `<h2>${escFull(AU.title)}</h2><ul class="bf-arts">` +
+        A.filter(x => x.slug !== skip).map(x => `<li><a href="${base}${x.slug}/"><strong>${escFull(x.h1)}</strong><small>${escFull(x.lead.length > 110 ? x.lead.slice(0, x.lead.lastIndexOf(' ', 108)) + '…' : x.lead)}</small></a></li>`).join('') + `</ul>` : '';
+      const TRAIT_ART = { O: 'openness', C: 'conscientiousness', E: 'extraversion', A: 'agreeableness', N: 'neuroticism' };
+      const more = Object.fromEntries(Object.entries(TRAIT_ART).filter(([, v]) => artBySlug[v]).map(([k, v]) => [k, v + '/']));
       const content = `<div class="eyebrow">${escFull(B.eyebrow)}</div><h1>${escFull(B.h1)}</h1>` +
         `<div id="bfApp" class="bf-app"><p class="lead">${escFull(B.lead)}</p><ul class="bf-facts">${B.facts.map(x => `<li>${escFull(x)}</li>`).join('')}</ul>` +
         `<div class="bf-start" id="bfStartBox"><a class="btn" href="#" onclick="return false">${escFull(B.start)}</a></div></div>` +
         `<div id="bfAbout">` + sectionsHtml(B.sections) +
-        `<h2>${escFull(B.faqTitle)}</h2>` + B.faq.map(it => `<h3 class="bf-fq">${escFull(it.q)}</h3><p>${escFull(it.a)}</p>`).join('') + `</div>`;
+        `<h2>${escFull(B.faqTitle)}</h2>` + B.faq.map(it => `<h3 class="bf-fq">${escFull(it.q)}</h3><p>${escFull(it.a)}</p>`).join('') + bfArtList('./') + `</div>`;
       const BT = { start: B.start, resume: B.resume, restart: B.restart, showLast: B.showLast, step: B.step, count: B.count, hint: B.hint, scale: B.scale,
         next: B.next, back: B.back, finish: B.finish, needAll: B.needAll, items: B.items, result: B.result, traits: B.traits, aspects: B.aspects };
       writeContentPage(L, 'big-five/', { langs: [L], ldType: 'WebApplication', title: B.title, description: B.description, crumbs: [{ name: B.h1 }],
         css: bigfiveCss, content, files: ['src/bigfive.js', 'src/bigfive.css'],
         ldExtra: [{ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: B.faq.map(it => ({ '@type': 'Question', name: it.q, acceptedAnswer: { '@type': 'Answer', text: it.a } })) }],
-        pageJs: bigfiveJs + `\ninitBigFive({T: ${JSON.stringify(BT).replace(/</g, '\\u003c')}, loc: ${jsStr(L.dateLocale)}, home: '../', esc: esc, $: $, lsGet: lsGet, lsSet: lsSet});` });
+        pageJs: bigfiveJs + `\ninitBigFive({T: ${JSON.stringify(BT).replace(/</g, '\\u003c')}, loc: ${jsStr(L.dateLocale)}, home: '../', more: ${JSON.stringify(more)}, moreText: ${jsStr(AU.traitMore || '')}, esc: esc, $: $, lsGet: lsGet, lsSet: lsSet});` });
+      // страницы статей: заголовок, вводный абзац, разделы, призыв к тесту после второго раздела и в конце, вопросы (FAQPage), источники, «Читайте также»
+      for (const x of A) {
+        const cta = g => `<aside class="bf-cta"><p class="bf-ctat">${escFull(AU.ctaTitle)}</p><p>${escFull(AU.ctaText)}</p><a class="btn" href="../" data-goal="${g}">${escFull(AU.ctaButton)}</a></aside>`;
+        const secs = x.sections.map((sec, i) => sectionsHtml([sec]) + (i === 1 && x.sections.length > 3 ? cta('bf-article') : '')).join('');
+        const rel = (x.related || []).filter(sl => artBySlug[sl] && sl !== x.slug);
+        const content = `<div class="eyebrow">${escFull(AU.eyebrow)}</div><h1>${escFull(x.h1)}</h1><p class="lead">${escFull(x.lead)}</p>` + secs + cta('bf-article-end') +
+          (x.faq && x.faq.length ? `<h2>${escFull(AU.faqTitle)}</h2>` + x.faq.map(it => `<h3 class="bf-fq">${escFull(it.q)}</h3><p>${escFull(it.a)}</p>`).join('') : '') +
+          (x.sources && x.sources.length ? `<h2>${escFull(AU.sourcesTitle)}</h2><ul class="bf-src">${x.sources.map(z => `<li>${escFull(z)}</li>`).join('')}</ul>` : '') +
+          `<h2>${escFull(AU.relatedTitle)}</h2><ul class="bf-arts">${rel.map(sl => `<li><a href="../${sl}/"><strong>${escFull(artBySlug[sl].h1)}</strong></a></li>`).join('')}<li><a href="../"><strong>${escFull(B.h1)}</strong></a></li></ul>`;
+        writeContentPage(L, `big-five/${x.slug}/`, { langs: [L], article: true, title: x.title, description: x.description, crumbs: [{ name: B.h1, href: '../', sub: 'big-five/' }, { name: x.h1 }],
+          css: bigfiveCss, content, files: ['src/bigfive.css'],
+          ldExtra: x.faq && x.faq.length ? [{ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: x.faq.map(it => ({ '@type': 'Question', name: it.q, acceptedAnswer: { '@type': 'Answer', text: it.a } })) }] : [] });
+      }
     }
     // /extended-report/ — страница расширенного отчёта: что внутри, листы образца картинками, сравнение с кратким отчётом, цена.
     // Блок покупки по умолчанию ведёт на тест. У кого результат сохранён на этом устройстве (disc.last), тому скрипт страницы меняет его:

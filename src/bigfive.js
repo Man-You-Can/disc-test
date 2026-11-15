@@ -145,7 +145,9 @@ function initBigFive(o){
         '<p class="muted small bf-what">' + esc(TR.what) + '</p><p>' + esc(TR[tier(p)]) + '</p><div class="bf-asps">' +
         t[1].map(function(a){ var q = sc.asp[a], A = T.aspects[a];
           return '<div class="bf-asp"><p class="bf-an"><strong>' + esc(A.name) + '</strong> <span class="muted small">' + esc(fmt(R.aboveShort, {n: q})) + '</span></p>' + bar(q) +
-            '<p class="small">' + esc(A[tier(q) === 'high' ? 'high' : tier(q) === 'low' ? 'low' : 'mid']) + '</p></div>'; }).join('') + '</div></section>';
+            '<p class="small">' + esc(A[tier(q) === 'high' ? 'high' : tier(q) === 'low' ? 'low' : 'mid']) + '</p></div>'; }).join('') + '</div>' +
+        // ссылка на статью о черте (с 2026-11-15; o.more — {O: 'openness/', …} и текст ссылки, где статьи есть)
+        (o.more && o.more[k] ? '<p class="bf-more"><a href="' + esc(o.more[k]) + '">' + esc(fmt(o.moreText, {name: TR.name})) + ' →</a></p>' : '') + '</section>';
     });
     h += '<aside class="card bf-disc"><h3>' + esc(R.disc.title) + '</h3><p>' + esc(R.disc.text) + '</p><p><a class="btn" href="' + esc(o.home) + '" data-goal="bf-disc">' + esc(R.disc.button) + '</a></p></aside>' +
       '<p class="bf-again"><button type="button" class="linkbtn" id="bfAgain">' + esc(R.again) + '</button></p></div>';
