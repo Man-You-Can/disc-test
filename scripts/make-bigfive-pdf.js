@@ -32,7 +32,7 @@ for (const code of langs) {
   const L = require(path.join(SRC, 'typo.js'))(JSON.parse(fs.readFileSync(path.join(SRC, 'locales', code + '.json'), 'utf8')));
   if (!(L.content.bigfive && L.content.bigfive.paper)) { if (process.argv.length > 2) console.warn(code + ': нет content.bigfive.paper'); continue; }
   const url = siteUrl + '/' + (code === def ? '' : code + '/');
-  const html = printHTML({ L, K, esc, url, testUrl: url + 'big-five/?ref=pdf', qr: qrSVG, fontsCss, fontFamily: "'Golos Text',Helvetica,Arial,sans-serif" });
+  const html = printHTML({ L, K, esc, url, testUrl: url + 'big-five/?ref=pdf', scoreUrl: url + 'big-five/?ref=pdf#paper', qr: qrSVG, fontsCss, fontFamily: "'Golos Text',Helvetica,Arial,sans-serif" });
   const htmlFile = path.join(tmp, code + '.html'); fs.writeFileSync(htmlFile, html);
   const out = path.join(OUTD, 'big-five-test-' + code + '.pdf');
   execFileSync(chrome, ['--headless=new', '--disable-gpu', '--no-sandbox', '--no-pdf-header-footer', '--virtual-time-budget=5000', '--print-to-pdf=' + out, 'file://' + encodeURI(htmlFile)], { stdio: 'ignore', timeout: 120000 });

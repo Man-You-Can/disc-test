@@ -935,6 +935,18 @@ h3.bf-fq{font-size:17px;margin:18px 0 6px}
 .bf-apair p:last-child{margin:0}
 .bf-amore{display:inline-block;margin-top:12px;font-weight:600;color:var(--ink)}
 @media (max-width:640px){ .bf-apair{grid-template-columns:1fr} .bf-acard{padding:14px} }
+/* ввод результата с бумажного бланка (/big-five/#paper, с 2026-11-16) */
+.bf-pform{margin-top:6px}
+.bf-phead{display:flex;justify-content:space-between;gap:12px;margin:0 0 4px;font-size:13px;font-weight:600;color:var(--muted)}
+.bf-phead span:last-child{text-align:end}
+.bf-pt{border-top:1px solid var(--line-strong);padding:12px 0 6px}
+.bf-pt:first-of-type{border-top:0}
+.bf-ptn{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:4px 12px;margin:0 0 6px}
+.bf-ptn b{color:var(--ink)}
+.bf-prow{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:4px 0}
+.bf-prow label{min-width:0}
+.bf-prow input{flex:none;width:84px;font-size:18px;padding:8px 10px;text-align:center}
+.bf-palt{margin-top:18px}
 </style>
 </head>
 <body>
@@ -1323,10 +1335,11 @@ function initBigFive(o){
   function cdf(z){ var t = 1 / (1 + .3275911 * Math.abs(z) / Math.SQRT2), y = 1 - (((((1.061405429 * t - 1.453152027) * t) + 1.421413741) * t - .284496736) * t + .254829592) * t * Math.exp(-z * z / 2);
     return z < 0 ? (1 - y) / 2 : (1 + y) / 2; }
   function pctl(key, raw){ var nm = NORM[key]; return Math.max(1, Math.min(99, Math.round(100 * cdf((raw - nm[0]) / nm[1])))); }
-  function score(a){
-    var asp = {}, raw = {};
-    Object.keys(POS).forEach(function(k){ raw[k] = 0; });
-    ORDER.forEach(function(id, i){ var k = id.slice(0, 2), n = +id.slice(2), v = +a.charAt(i); raw[k] += n <= POS[k] ? v : 6 - v; });
+  // r.a — 100 ответов онлайн-теста; r.s — суммы десяти аспектов (10–50) с бумажного бланка (#paper, с 2026-11-16)
+  function score(r){
+    var asp = {}, raw = {}, a = r.a;
+    Object.keys(POS).forEach(function(k){ raw[k] = r.s ? +r.s[k] : 0; });
+    if(!r.s) ORDER.forEach(function(id, i){ var k = id.slice(0, 2), n = +id.slice(2), v = +a.charAt(i); raw[k] += n <= POS[k] ? v : 6 - v; });
     Object.keys(raw).forEach(function(k){ raw[k] /= 10; asp[k] = pctl(k, raw[k]); });
     var tr = {};
     TRAITS.forEach(function(t){ tr[t[0]] = pctl(t[0], (raw[t[1][0]] + raw[t[1][1]]) / 2); });
@@ -1350,13 +1363,51 @@ function initBigFive(o){
     if(s && n > 0 && n < N) parts.push('<button type="button" class="btn" id="bfResume">' + esc(fmt(T.resume, {n: n, total: N})) + '</button>' +
       '<button type="button" class="linkbtn" id="bfRestart">' + esc(T.restart) + '</button>');
     else parts.push('<button type="button" class="btn" id="bfStart">' + esc(T.start) + '</button>');
-    if(last && typeof last.a === 'string' && last.a.length === N) parts.push('<p class="bf-last"><button type="button" class="linkbtn" id="bfShowLast">' + esc(T.showLast) + '</button></p>');
+    if(T.paper) parts.push('<p class="bf-last"><button type="button" class="linkbtn" id="bfPaper">' + esc(T.paper.introLink) + '</button></p>');
+    if(last && (typeof last.a === 'string' && last.a.length === N || validSums(last.s))) parts.push('<p class="bf-last"><button type="button" class="linkbtn" id="bfShowLast">' + esc(T.showLast) + '</button></p>');
     box.innerHTML = parts.join('');
     var b;
     if((b = $('bfStart'))) b.onclick = function(){ var x = blank(); lsSet('disc.bf', x); track('bf-start'); test(x); };
     if((b = $('bfResume'))) b.onclick = function(){ test(s); };
     if((b = $('bfRestart'))) b.onclick = function(){ var x = blank(); lsSet('disc.bf', x); track('bf-start'); test(x); };
     if((b = $('bfShowLast'))) b.onclick = function(){ result(last); };
+    if((b = $('bfPaper'))) b.onclick = function(){ try{ history.replaceState(history.state, '', location.pathname + location.search + '#paper'); }catch(e){} paper(); };
+  }
+
+  /* ---- ввод результата с бумажного бланка (#paper, с 2026-11-16; тексты T.paper = content.bigfive.paper.entry — пока русская версия) ----
+     QR-код у таблицы подсчёта в PDF ведёт сюда (?ref=pdf#paper). Человек вводит суммы десяти аспектов (10–50), сайт открывает обычный экран результата;
+     ничего не отправляется, результат сохраняется в браузере, как после онлайн-теста. */
+  function validSums(s){ return !!s && Object.keys(POS).every(function(k){ var v = s[k]; return typeof v === 'number' && v >= 10 && v <= 50 && v === Math.round(v); }); }
+  function paper(){
+    var P = T.paper; if(!P) return intro();
+    showAbout(false);
+    var h = '<div class="bf-paper"><div class="eyebrow">' + esc(P.eyebrow) + '</div><h2 class="bf-h">' + esc(P.title) + '</h2><p>' + esc(P.lead) + '</p>' +
+      // разметка без таблицы: общие стили таблиц сайта на телефоне не дают ей уместиться в карточку
+      '<form class="card bf-pform" id="bfPForm" novalidate><p class="bf-phead"><span>' + esc(P.colAspect) + '</span><span>' + esc(P.colSum) + '</span></p>' +
+      TRAITS.map(function(t){ return '<div class="bf-pt"><p class="bf-ptn"><strong>' + esc(T.traits[t[0]].name) + '</strong><span class="muted small">' + esc(P.traitSum) + ': <b data-tr="' + t[0] + '">—</b></span></p>' +
+        t[1].map(function(a){ return '<div class="bf-prow"><label for="bfP' + a + '">' + esc(T.aspects[a].name) + '</label><input type="number" inputmode="numeric" min="10" max="50" step="1" id="bfP' + a + '" data-a="' + a + '"></div>'; }).join('') + '</div>'; }).join('') +
+      '<p class="small muted">' + esc(P.note) + '</p><p class="bf-err" id="bfPErr" role="alert" hidden>' + esc(P.errEmpty) + '</p>' +
+      '<div class="bf-nav"><span></span><button class="btn" type="submit">' + esc(P.button) + '</button></div></form>' +
+      '<p class="small muted bf-palt">' + esc(P.alt) + ' <button type="button" class="linkbtn" id="bfPStart">' + esc(P.altButton) + '</button></p></div>';
+    app.innerHTML = h;
+    top();
+    var form = $('bfPForm'), err = $('bfPErr');
+    var val = function(a){ var v = $('bfP' + a).value.trim(); return /^\d{1,2}$/.test(v) ? +v : null; };
+    var ok = function(v){ return v !== null && v >= 10 && v <= 50; };
+    var upd = function(){ TRAITS.forEach(function(t){ var x = val(t[1][0]), y = val(t[1][1]); app.querySelector('[data-tr="' + t[0] + '"]').textContent = ok(x) && ok(y) ? x + y : '—'; }); };
+    form.addEventListener('input', function(){ err.hidden = true; upd(); });
+    form.addEventListener('submit', function(e){ e.preventDefault();
+      var s = {}, miss = null;
+      Object.keys(POS).forEach(function(k){ s[k] = val(k); });
+      TRAITS.forEach(function(t){ t[1].forEach(function(a){ if(!miss && !ok(s[a])) miss = a; }); });
+      if(miss){ err.hidden = false; try{ $('bfP' + miss).focus(); }catch(x){} return; }
+      var r = {s: s, d: Date.now()};
+      lsSet('disc.bfLast', r); track('bf-paper-result');
+      try{ history.replaceState(history.state, '', location.pathname + location.search); }catch(x){}
+      result(r);
+    });
+    $('bfPStart').onclick = function(){ try{ history.replaceState(history.state, '', location.pathname + location.search); }catch(x){} var x = blank(); lsSet('disc.bf', x); track('bf-start'); test(x); };
+    upd();
   }
 
   /* ---- тест: 10 страниц по 10 утверждений, ответ 1–5 ---- */
@@ -1415,7 +1466,7 @@ function initBigFive(o){
   function bar(p){ return '<span class="bf-bar" aria-hidden="true"><i style="width:' + p + '%"></i><b style="' + (RTL ? 'right:' : 'left:') + p + '%"></b></span>'; }
   function result(r){
     showAbout(false);
-    var sc = score(r.a), R = T.result, d = '';
+    var sc = score(r), R = T.result, d = '';
     try{ d = new Date(r.d).toLocaleDateString(o.loc || 'ru-RU', {day: 'numeric', month: 'long', year: 'numeric'}); }catch(e){}
     var h = '<div class="bf-res"><div class="eyebrow">' + esc(R.eyebrow) + '</div><h2 class="bf-h">' + esc(R.title) + '</h2>' +
       (d ? '<p class="muted small">' + esc(fmt(R.date, {date: d})) + '</p>' : '') + '<p>' + esc(R.lead) + '</p>' +
@@ -1443,7 +1494,7 @@ function initBigFive(o){
     $('bfAgain').onclick = function(){ var x = blank(); lsSet('disc.bf', x); track('bf-start'); test(x); };
   }
 
-  intro();
+  if(T.paper && location.hash === '#paper') paper(); else intro();
 }
 
 initBigFive({T: {"start":"Teste başla","resume":"Devam et ({n} / {total})","restart":"Baştan başla","showLast":"Önceki sonucumu göster","step":"Adım {n} / {total}","count":"Yanıtlanan: {n} / {total}","hint":"Her ifadenin sizi ne kadar anlattığını işaretleyin. Olmak istediğiniz gibi değil, genellikle olduğunuz gibi yanıtlayın. Doğru ya da yanlış yanıt yoktur.","scale":["Hiç bana uymuyor","Pek bana uymuyor","Yarı yarıya","Çoğunlukla bana uyuyor","Tam bana uyuyor"],"next":"İleri","back":"Geri","finish":"Sonucu göster","needAll":"Bu sayfadaki tüm ifadeleri yanıtlayın.","items":{"VO1":"Kolayca öfkelenirim.","VO2":"Kolayca üzülürüm.","VO3":"Ruh hâlim sık sık değişir.","VO4":"Ruh hâlim kolayca inişli çıkışlı olur.","VO5":"Çabuk gerilirim.","VO6":"Çabuk parlarım.","VO7":"Nadiren sinirlenirim.","VO8":"Duygularımı kontrol altında tutarım.","VO9":"Soğukkanlılığımı nadiren kaybederim.","VO10":"Kolay kolay kızmam.","WI1":"Pek çok konuda tereddüde düşerim.","WI2":"Kendimi kolayca tehdit altında hissederim.","WI3":"Pek çok şey için endişelenirim.","WI4":"Çabuk cesaretim kırılır.","WI5":"Olaylar karşısında kolayca bunalırım.","WI6":"Pek çok şeyden korkarım.","WI7":"Nadiren kendimi hüzünlü hissederim.","WI8":"Kendimle barışığım.","WI9":"Nadiren moralim yerlerde olur.","WI10":"Kolay kolay utanmam.","CO1":"Başkalarının duygularını hissederim.","CO2":"Başkalarının iyi olup olmadığını sorarım.","CO3":"Başkalarının dertlerine ortak olurum.","CO4":"Başka insanların hayatlarına içten ilgi duyarım.","CO5":"Başkaları için bir şeyler yapmayı severim.","CO6":"Başkalarının sorunları ilgimi çekmez.","CO7":"Başkalarının ihtiyaçlarını dert etmem.","CO8":"Başkalarının duygularına kayıtsızım.","CO9":"Başkalarına vakit ayırmam.","CO10":"Yumuşak bir yanım yoktur.","PO1":"Otoriteye saygı duyarım.","PO2":"Israrcı görünmekten nefret ederim.","PO3":"İsteklerimi başkalarına dayatmaktan kaçınırım.","PO4":"İnsanları nadiren baskı altına alırım.","PO5":"İnsanlara hakaret ederim.","PO6":"Başkalarından üstün olduğuma inanırım.","PO7":"Başkalarını kendi çıkarım için kullanırım.","PO8":"Çatışma ararım.","PO9":"Sıkı bir tartışmayı çok severim.","PO10":"Her şeyde kendi çıkarımı gözetirim.","IN1":"Planlarımı hayata geçiririm.","IN2":"Başladığım işi bitiririm.","IN3":"İşleri hızlı hallederim.","IN4":"Ne yaptığımı her zaman bilirim.","IN5":"Vaktimi boşa harcarım.","IN6":"İşe koyulmakta zorlanırım.","IN7":"İşleri yüzüme gözüme bulaştırırım.","IN8":"Elimdeki işe kafamı veremem.","IN9":"Kararları ertelerim.","IN10":"Dikkatim kolayca dağılır.","OR1":"Düzeni severim.","OR2":"Eşyalarımı derli toplu tutarım.","OR3":"Bir programa göre hareket ederim.","OR4":"Her şeyin dört dörtlük olmasını isterim.","OR5":"Kurallara herkesin uymasına dikkat ederim.","OR6":"Hiçbir ayrıntının atlanmamasını isterim.","OR7":"Eşyalarımı ortalıkta bırakırım.","OR8":"Dağınık insanlar beni rahatsız etmez.","OR9":"Düzensizlik beni rahatsız etmez.","OR10":"Rutinden hoşlanmam.","EN1":"Kolayca arkadaş edinirim.","EN2":"İnsanlara çabuk ısınırım.","EN3":"Mutlu olduğumda bunu belli ederim.","EN4":"Çok eğlenirim.","EN5":"Çok gülerim.","EN6":"Beni tanımak zordur.","EN7":"İnsanları belli bir mesafede tutarım.","EN8":"Kendimle ilgili pek az şey anlatırım.","EN9":"Ortamdaki heyecana nadiren kapılırım.","EN10":"Çok coşkulu biri değilim.","AS1":"Liderliği üstlenirim.","AS2":"Güçlü bir kişiliğim var.","AS3":"İnsanların ilgisini kendime çekmeyi bilirim.","AS4":"Kendimi iyi bir lider olarak görürüm.","AS5":"Başkalarını bir şey yapmaya ikna edebilirim.","AS6":"Harekete ilk geçen ben olurum.","AS7":"Sözümü geçiren biri değilim.","AS8":"İnsanları etkileme yeteneğim yoktur.","AS9":"Başkalarının öncülük etmesini beklerim.","AS10":"Görüşlerimi kendime saklarım.","IT1":"Konuları çabuk kavrarım.","IT2":"Çok fazla bilgiyle başa çıkabilirim.","IT3":"Karmaşık sorunları çözmeyi severim.","IT4":"Kelime dağarcığım zengindir.","IT5":"Hızlı düşünürüm.","IT6":"Fikirlerimi net biçimde ortaya koyarım.","IT7":"Soyut fikirleri anlamakta zorlanırım.","IT8":"Felsefi tartışmalardan kaçınırım.","IT9":"Okuması ağır kitap ve yazılardan kaçınırım.","IT10":"Yeni şeyleri yavaş öğrenirim.","OP1":"Doğanın güzelliğinden keyif alırım.","OP2":"Sanatın önemli olduğuna inanırım.","OP3":"Bir şeyler üzerine derin derin düşünmeyi çok severim.","OP4":"Kendimi müziğe derinden kaptırırım.","OP5":"Başkalarının fark etmeyebileceği şeylerde güzellik görürüm.","OP6":"Yaratıcılığımı ortaya koyabileceğim bir alana ihtiyaç duyarım.","OP7":"Şiirden hoşlanmam.","OP8":"Nadiren düşüncelere dalarım.","OP9":"Nadiren hayal kurarım.","OP10":"Resim ve fotoğrafların duygusal yanını nadiren fark ederim."},"result":{"eyebrow":"Büyük Beşli","title":"Profiliniz","date":"Test tarihi: {date}","lead":"Her özellik için 1 ile 99 arasında bir sayı görürsünüz: 100 kişiden kaçının sizden düşük puan aldığını gösterir. 50 tam ortadır. Yüksek puan düşükten, düşük puan da yüksekten daha iyi değildir: her iki ucun kendi güçlü yanları ve riskleri vardır.","summary":"Beş özellik","scaleCap":"Sayı, 100 kişiden kaçının sizden düşük puan aldığını gösterir.","above":"100 kişiden {n} kişinin üzerinde","aboveShort":"100 kişiden {n} kişinin üzerinde","levels":["düşük düzey","ortalamanın altında","orta düzey","ortalamanın üstünde","yüksek düzey"],"disc":{"title":"Şimdi de iş ve iletişim tarzınız","text":"Büyük Beşli kişiliği bütün olarak anlatır. DISC testi ise işte ve iletişimde nasıl davrandığınızı gösterir: ana stilinizi, güçlü yönlerinizi ve farklı stildeki insanlarla nasıl anlaşacağınızı. 10 dakika, ücretsiz.","button":"DISC testini çöz"},"again":"Testi yeniden çöz"},"traits":{"O":{"name":"Deneyime açıklık","en":"Openness","what":"Yeni fikirlere, izlenimlere, sanata ve zor sorulara ne kadar ilgi duyduğunuz.","high":"Yeni olan her şey ilginizi çeker: fikirler, kitaplar, yerler, alışılmadık bakış açıları. Bağlantıları kolayca fark eder, işlerin nasıl yürüdüğünü çözmeyi sever, güzelliğe değer verirsiniz. Rutin ve “hep böyle yapılır” sizi çabuk yorar; işte arayışa yer olması sizin için önemlidir.","mid":"Yeniliğe, bir anlamı olduğunda açıksınız; ama yenilik olsun diye yeniliğin peşinden koşmazsınız. Bir fikre ya da kitaba kendinizi kaptırabilir, gerektiğinde de denenmiş bir yöntemle rahatça çalışabilirsiniz.","low":"Pratik birisiniz: denenmiş, anlaşılır ve işe yarayan şeylere değer verirsiniz. Soyut tartışmalar ve deneyler, somut bir faydası olduğunda ilginizi çeker. Buna karşılık sağduyu ve istikrar gereken yerlerde size güvenilebilir."},"C":{"name":"Sorumluluk","en":"Conscientiousness","what":"Ne kadar derli toplu ve düzenli olduğunuz, işleri ne ölçüde sonuna kadar götürdüğünüz.","high":"Sözünüzü tutar, plan yapar ve başladığınız işi bitirirsiniz. İşlerde düzen size doğal gelir, insanlar size güvenir. Madalyonun öbür yüzü: gevşemek ve kontrolü bırakmak zor gelir, başkalarının özensizliği sizi epey sinirlendirebilir.","mid":"İş önemli olduğunda toparlanır, olmadığında kendinize esneklik tanırsınız. Planlarınız vardır ama demirden kurallar değildir; düzen gerektiği kadardır.","low":"Esnek ve o anki hâlinize göre hareket eder, planları kolayca değiştirir, katı çerçevelerden hoşlanmazsınız. Bu, doğaçlamayı kolaylaştırır; ama son tarihler, rutin ve ayrıntılar daha zor gelir. Dışarıdan hatırlatmalar ve kendinizle yaptığınız basit anlaşmalar işe yarar."},"E":{"name":"Dışadönüklük","en":"Extraversion","what":"İnsanlardan, sohbetten ve hareketten ne kadar enerji aldığınız.","high":"İnsanlardan ve olaylardan enerji alırsınız: kolayca tanışır, çok konuşur, inisiyatif alırsınız. Uzun süren sessizlik ve yalnızlık sizi çabuk sıkar. Daha sessiz konuşanlara da yer bırakmak iyi olur.","mid":"Hem kalabalıkta hem de kendi başınıza kendinizi iyi hissedersiniz. Duruma ve insanlara göre sohbeti yönetebilir ya da dinlemeyi seçebilirsiniz.","low":"Enerjinizi korursunuz: küçük bir çevreyi, derin sohbetleri ve kendinize ayırdığınız zamanı tercih edersiniz. İlgi odağı olmaya çalışmaz, söz almak için acele etmezsiniz; buna karşılık konuşmadan önce düşünürsünüz."},"A":{"name":"Uyumluluk","en":"Agreeableness","what":"Başka insanlara, iş birliğine ve ilişkilerde huzura ne kadar yöneldiğiniz.","high":"İnsanlar ve ilişkiler sizin için önemlidir: anlayış gösterir, yardım eder, uzlaşma arar ve sertlikten kaçınırsınız. Sizinle çalışmak kolaydır. Risk: kendi görüşünüzü savunmanız gereken yerde geri adım atmak.","mid":"İnsanlara karşı özenlisiniz ama gerektiğinde kendi bildiğinizi de savunabilirsiniz. Seve seve yardım edersiniz, ancak kendinizden ödün vermeden.","low":"Dolaysız ve bağımsızsınız: düşündüğünüzü söyler, tartışmaya rahatça girer ve işi başkalarının duygularının önüne koyarsınız. Bu, pazarlıklarda ve zor kararlarda işe yarar; ama ilişkilerde sertlik gibi algılanabilir."},"N":{"name":"Nevrotiklik","en":"Neuroticism","what":"Strese, başarısızlıklara ve tatsız olaylara ne kadar güçlü tepki verdiğiniz. Burada yüksek puan bir hastalık değil, duyarlılık anlamına gelir.","high":"Stresi yoğun hissedersiniz: endişelenir, kuşkuya düşer, tatsız olayların etkisinden geç kurtulursunuz. Bu duyarlılık riskleri önceden fark etmenize yardım eder ama enerjinizi tüketir. Sizi neyin toparladığını bilmek ve kaygıyla tek başınıza kalmamak önemlidir.","mid":"Strese çoğu insan gibi tepki verirsiniz: endişelenebilir, sinirlenebilirsiniz ama genellikle dengenizi çabuk yeniden bulursunuz.","low":"Duygusal olarak dengelisiniz: baskıya sakin dayanır, nadiren endişelenir ve çabuk toparlanırsınız. Madalyonun öbür yüzü: gerçek bir riski ya da başkalarının yaşadıklarını küçümseyebilirsiniz."}},"aspects":{"IT":{"name":"Entelektüellik","high":"Karmaşık görevleri sever, yeni konuları hızla kavrarsınız.","mid":"Değdiğinde zor sorular üzerine seve seve kafa yorarsınız.","low":"Gereksiz teori içermeyen, net görevleri tercih edersiniz."},"OP":{"name":"Estetik açıklık","high":"Sanatı, müziği ve doğayı derinden hisseder, çok düşünür ve hayal kurarsınız.","mid":"Sanat ve hayal gücü hayatınızda yer tutar ama baş köşede değildir.","low":"Hayallerden ve sanattan çok gerçek ve somut olan ilginizi çeker."},"IN":{"name":"Çalışkanlık","high":"İşe çabuk koyulur ve sonuna kadar götürürsünüz.","mid":"İstikrarlı çalışırsınız, ama hoş olmayan işleri bazen ertelersiniz.","low":"Başlamak ve dikkatinizi dağıtmamak bazen zor gelir."},"OR":{"name":"Düzenlilik","high":"Düzeni, programı ve her şeyin kurallara uygun olmasını seversiniz.","mid":"Düzeni korursunuz ama titizliğe kaçmadan.","low":"Dağınıklık ve kurallardan sapmalar sizi pek rahatsız etmez."},"EN":{"name":"Coşku","high":"İnsanlarla kolayca yakınlaşır, sevincinizi açıkça gösterirsiniz.","mid":"Arkadaş canlısısınız ama herkese hemen açılmazsınız.","low":"Mesafelisiniz; açılmanız zaman alır ve herkese açılmazsınız."},"AS":{"name":"Atılganlık","high":"Yönetimi üstlenir, insanları peşinizden sürüklemeyi bilirsiniz.","mid":"Gerektiğinde söz alıp yönlendirebilirsiniz.","low":"Yönetimi başkalarına bırakmayı ve fikirlerinizi kendinize saklamayı tercih edersiniz."},"CO":{"name":"Şefkat","high":"Başkalarını derinden hisseder, seve seve yardım edersiniz.","mid":"Anlayış gösterirsiniz ama başkalarının sorunlarında kaybolmazsınız.","low":"Başkalarının yaşadıkları sizi işin kendisinden daha az etkiler."},"PO":{"name":"Nezaket","high":"Baskıdan ve çatışmadan kaçınır, kurallara ve insanlara saygı duyarsınız.","mid":"Genellikle düşünceli davranırsınız ama baskı da kurabilirsiniz.","low":"Çatışmadan çekinmez, istediğinizi doğrudan elde etmeye çalışırsınız."},"VO":{"name":"Duygusal oynaklık","high":"Çabuk sinirlenirsiniz, ruh hâliniz kolayca değişir.","mid":"Bazen parlarsınız ama çabuk sakinleşirsiniz.","low":"Nadiren sinirlenir, duygularınızı kontrol altında tutarsınız."},"WI":{"name":"Kaygı eğilimi","high":"Sık sık endişelenir, kuşkuya düşer ve çabuk cesaretiniz kırılır.","mid":"Gerekçe olduğunda endişelenirsiniz, ama sürekli değil.","low":"Nadiren endişelenir, başarısızlıkları sakin karşılarsınız."}}}, loc: "tr-TR", home: '../', more: {}, moreText: "", esc: esc, $: $, lsGet: lsGet, lsSet: lsSet});

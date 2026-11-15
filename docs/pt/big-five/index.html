@@ -947,6 +947,18 @@ h3.bf-fq{font-size:17px;margin:18px 0 6px}
 .bf-apair p:last-child{margin:0}
 .bf-amore{display:inline-block;margin-top:12px;font-weight:600;color:var(--ink)}
 @media (max-width:640px){ .bf-apair{grid-template-columns:1fr} .bf-acard{padding:14px} }
+/* ввод результата с бумажного бланка (/big-five/#paper, с 2026-11-16) */
+.bf-pform{margin-top:6px}
+.bf-phead{display:flex;justify-content:space-between;gap:12px;margin:0 0 4px;font-size:13px;font-weight:600;color:var(--muted)}
+.bf-phead span:last-child{text-align:end}
+.bf-pt{border-top:1px solid var(--line-strong);padding:12px 0 6px}
+.bf-pt:first-of-type{border-top:0}
+.bf-ptn{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:4px 12px;margin:0 0 6px}
+.bf-ptn b{color:var(--ink)}
+.bf-prow{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:4px 0}
+.bf-prow label{min-width:0}
+.bf-prow input{flex:none;width:84px;font-size:18px;padding:8px 10px;text-align:center}
+.bf-palt{margin-top:18px}
 </style>
 </head>
 <body>
@@ -1335,10 +1347,11 @@ function initBigFive(o){
   function cdf(z){ var t = 1 / (1 + .3275911 * Math.abs(z) / Math.SQRT2), y = 1 - (((((1.061405429 * t - 1.453152027) * t) + 1.421413741) * t - .284496736) * t + .254829592) * t * Math.exp(-z * z / 2);
     return z < 0 ? (1 - y) / 2 : (1 + y) / 2; }
   function pctl(key, raw){ var nm = NORM[key]; return Math.max(1, Math.min(99, Math.round(100 * cdf((raw - nm[0]) / nm[1])))); }
-  function score(a){
-    var asp = {}, raw = {};
-    Object.keys(POS).forEach(function(k){ raw[k] = 0; });
-    ORDER.forEach(function(id, i){ var k = id.slice(0, 2), n = +id.slice(2), v = +a.charAt(i); raw[k] += n <= POS[k] ? v : 6 - v; });
+  // r.a — 100 ответов онлайн-теста; r.s — суммы десяти аспектов (10–50) с бумажного бланка (#paper, с 2026-11-16)
+  function score(r){
+    var asp = {}, raw = {}, a = r.a;
+    Object.keys(POS).forEach(function(k){ raw[k] = r.s ? +r.s[k] : 0; });
+    if(!r.s) ORDER.forEach(function(id, i){ var k = id.slice(0, 2), n = +id.slice(2), v = +a.charAt(i); raw[k] += n <= POS[k] ? v : 6 - v; });
     Object.keys(raw).forEach(function(k){ raw[k] /= 10; asp[k] = pctl(k, raw[k]); });
     var tr = {};
     TRAITS.forEach(function(t){ tr[t[0]] = pctl(t[0], (raw[t[1][0]] + raw[t[1][1]]) / 2); });
@@ -1362,13 +1375,51 @@ function initBigFive(o){
     if(s && n > 0 && n < N) parts.push('<button type="button" class="btn" id="bfResume">' + esc(fmt(T.resume, {n: n, total: N})) + '</button>' +
       '<button type="button" class="linkbtn" id="bfRestart">' + esc(T.restart) + '</button>');
     else parts.push('<button type="button" class="btn" id="bfStart">' + esc(T.start) + '</button>');
-    if(last && typeof last.a === 'string' && last.a.length === N) parts.push('<p class="bf-last"><button type="button" class="linkbtn" id="bfShowLast">' + esc(T.showLast) + '</button></p>');
+    if(T.paper) parts.push('<p class="bf-last"><button type="button" class="linkbtn" id="bfPaper">' + esc(T.paper.introLink) + '</button></p>');
+    if(last && (typeof last.a === 'string' && last.a.length === N || validSums(last.s))) parts.push('<p class="bf-last"><button type="button" class="linkbtn" id="bfShowLast">' + esc(T.showLast) + '</button></p>');
     box.innerHTML = parts.join('');
     var b;
     if((b = $('bfStart'))) b.onclick = function(){ var x = blank(); lsSet('disc.bf', x); track('bf-start'); test(x); };
     if((b = $('bfResume'))) b.onclick = function(){ test(s); };
     if((b = $('bfRestart'))) b.onclick = function(){ var x = blank(); lsSet('disc.bf', x); track('bf-start'); test(x); };
     if((b = $('bfShowLast'))) b.onclick = function(){ result(last); };
+    if((b = $('bfPaper'))) b.onclick = function(){ try{ history.replaceState(history.state, '', location.pathname + location.search + '#paper'); }catch(e){} paper(); };
+  }
+
+  /* ---- ввод результата с бумажного бланка (#paper, с 2026-11-16; тексты T.paper = content.bigfive.paper.entry — пока русская версия) ----
+     QR-код у таблицы подсчёта в PDF ведёт сюда (?ref=pdf#paper). Человек вводит суммы десяти аспектов (10–50), сайт открывает обычный экран результата;
+     ничего не отправляется, результат сохраняется в браузере, как после онлайн-теста. */
+  function validSums(s){ return !!s && Object.keys(POS).every(function(k){ var v = s[k]; return typeof v === 'number' && v >= 10 && v <= 50 && v === Math.round(v); }); }
+  function paper(){
+    var P = T.paper; if(!P) return intro();
+    showAbout(false);
+    var h = '<div class="bf-paper"><div class="eyebrow">' + esc(P.eyebrow) + '</div><h2 class="bf-h">' + esc(P.title) + '</h2><p>' + esc(P.lead) + '</p>' +
+      // разметка без таблицы: общие стили таблиц сайта на телефоне не дают ей уместиться в карточку
+      '<form class="card bf-pform" id="bfPForm" novalidate><p class="bf-phead"><span>' + esc(P.colAspect) + '</span><span>' + esc(P.colSum) + '</span></p>' +
+      TRAITS.map(function(t){ return '<div class="bf-pt"><p class="bf-ptn"><strong>' + esc(T.traits[t[0]].name) + '</strong><span class="muted small">' + esc(P.traitSum) + ': <b data-tr="' + t[0] + '">—</b></span></p>' +
+        t[1].map(function(a){ return '<div class="bf-prow"><label for="bfP' + a + '">' + esc(T.aspects[a].name) + '</label><input type="number" inputmode="numeric" min="10" max="50" step="1" id="bfP' + a + '" data-a="' + a + '"></div>'; }).join('') + '</div>'; }).join('') +
+      '<p class="small muted">' + esc(P.note) + '</p><p class="bf-err" id="bfPErr" role="alert" hidden>' + esc(P.errEmpty) + '</p>' +
+      '<div class="bf-nav"><span></span><button class="btn" type="submit">' + esc(P.button) + '</button></div></form>' +
+      '<p class="small muted bf-palt">' + esc(P.alt) + ' <button type="button" class="linkbtn" id="bfPStart">' + esc(P.altButton) + '</button></p></div>';
+    app.innerHTML = h;
+    top();
+    var form = $('bfPForm'), err = $('bfPErr');
+    var val = function(a){ var v = $('bfP' + a).value.trim(); return /^\d{1,2}$/.test(v) ? +v : null; };
+    var ok = function(v){ return v !== null && v >= 10 && v <= 50; };
+    var upd = function(){ TRAITS.forEach(function(t){ var x = val(t[1][0]), y = val(t[1][1]); app.querySelector('[data-tr="' + t[0] + '"]').textContent = ok(x) && ok(y) ? x + y : '—'; }); };
+    form.addEventListener('input', function(){ err.hidden = true; upd(); });
+    form.addEventListener('submit', function(e){ e.preventDefault();
+      var s = {}, miss = null;
+      Object.keys(POS).forEach(function(k){ s[k] = val(k); });
+      TRAITS.forEach(function(t){ t[1].forEach(function(a){ if(!miss && !ok(s[a])) miss = a; }); });
+      if(miss){ err.hidden = false; try{ $('bfP' + miss).focus(); }catch(x){} return; }
+      var r = {s: s, d: Date.now()};
+      lsSet('disc.bfLast', r); track('bf-paper-result');
+      try{ history.replaceState(history.state, '', location.pathname + location.search); }catch(x){}
+      result(r);
+    });
+    $('bfPStart').onclick = function(){ try{ history.replaceState(history.state, '', location.pathname + location.search); }catch(x){} var x = blank(); lsSet('disc.bf', x); track('bf-start'); test(x); };
+    upd();
   }
 
   /* ---- тест: 10 страниц по 10 утверждений, ответ 1–5 ---- */
@@ -1427,7 +1478,7 @@ function initBigFive(o){
   function bar(p){ return '<span class="bf-bar" aria-hidden="true"><i style="width:' + p + '%"></i><b style="' + (RTL ? 'right:' : 'left:') + p + '%"></b></span>'; }
   function result(r){
     showAbout(false);
-    var sc = score(r.a), R = T.result, d = '';
+    var sc = score(r), R = T.result, d = '';
     try{ d = new Date(r.d).toLocaleDateString(o.loc || 'ru-RU', {day: 'numeric', month: 'long', year: 'numeric'}); }catch(e){}
     var h = '<div class="bf-res"><div class="eyebrow">' + esc(R.eyebrow) + '</div><h2 class="bf-h">' + esc(R.title) + '</h2>' +
       (d ? '<p class="muted small">' + esc(fmt(R.date, {date: d})) + '</p>' : '') + '<p>' + esc(R.lead) + '</p>' +
@@ -1455,7 +1506,7 @@ function initBigFive(o){
     $('bfAgain').onclick = function(){ var x = blank(); lsSet('disc.bf', x); track('bf-start'); test(x); };
   }
 
-  intro();
+  if(T.paper && location.hash === '#paper') paper(); else intro();
 }
 
 initBigFive({T: {"start":"Começar o teste","resume":"Continuar ({n} de {total})","restart":"Recomeçar","showLast":"Ver meu resultado anterior","step":"Etapa {n} de {total}","count":"Respostas: {n} de {total}","hint":"Avalie o quanto cada afirmação tem a ver com você. Responda pensando em como você costuma ser, e não em como gostaria de ser. Não há respostas certas.","scale":["Nada a ver comigo","Pouco a ver comigo","Mais ou menos","Muito a ver comigo","Tem tudo a ver comigo"],"next":"Avançar","back":"Voltar","finish":"Ver o resultado","needAll":"Responda a todas as afirmações desta página.","items":{"VO1":"Fico com raiva facilmente.","VO2":"Me abalo com facilidade.","VO3":"Meu humor muda muito.","VO4":"Passo do bom ao mau humor com facilidade.","VO5":"Me altero com facilidade.","VO6":"Tenho pavio curto.","VO7":"Raramente me irrito.","VO8":"Mantenho minhas emoções sob controle.","VO9":"Raramente perco a calma.","VO10":"Não é fácil me tirar do sério.","WI1":"Muitas vezes as dúvidas tomam conta de mim.","WI2":"Me sinto sob ameaça com facilidade.","WI3":"Costumo me preocupar com as coisas.","WI4":"Desanimo com facilidade.","WI5":"Os acontecimentos do dia a dia me sobrecarregam.","WI6":"Tenho medo de muitas coisas.","WI7":"Raramente fico triste.","WI8":"Me sinto bem do jeito que sou.","WI9":"Raramente me sinto para baixo.","WI10":"Não sinto vergonha com facilidade.","CO1":"Sinto as emoções das outras pessoas.","CO2":"Pergunto aos outros como eles estão.","CO3":"Me solidarizo com o que os outros sentem.","CO4":"Me interesso pela vida das outras pessoas.","CO5":"Gosto de fazer coisas pelos outros.","CO6":"Os problemas dos outros não me interessam.","CO7":"Não tenho paciência para as necessidades dos outros.","CO8":"Sou indiferente aos sentimentos dos outros.","CO9":"Não reservo tempo para os outros.","CO10":"Não tenho um lado sensível.","PO1":"Respeito a autoridade.","PO2":"Detesto parecer insistente.","PO3":"Evito impor minha vontade aos outros.","PO4":"Raramente pressiono as pessoas.","PO5":"Ofendo as pessoas.","PO6":"Acho que sou melhor que os outros.","PO7":"Tiro vantagem dos outros.","PO8":"Procuro conflito.","PO9":"Adoro uma boa discussão acalorada.","PO10":"O que mais me importa é o meu próprio ganho.","IN1":"Coloco meus planos em prática.","IN2":"Termino o que começo.","IN3":"Resolvo minhas tarefas rapidamente.","IN4":"Sempre sei o que estou fazendo.","IN5":"Desperdiço meu tempo.","IN6":"Tenho dificuldade para pôr mãos à obra.","IN7":"Costumo fazer besteira.","IN8":"Não mantenho o foco na tarefa do momento.","IN9":"Adio decisões.","IN10":"Me distraio com facilidade.","OR1":"Gosto de ordem.","OR2":"Mantenho tudo arrumado.","OR3":"Sigo horários definidos.","OR4":"Quero que tudo fique exatamente como deve ser.","OR5":"Cuido para que as regras sejam cumpridas.","OR6":"Quero que nenhum detalhe fique de fora.","OR7":"Deixo minhas coisas espalhadas por aí.","OR8":"Pessoas bagunceiras não me incomodam.","OR9":"A desordem não me incomoda.","OR10":"Não gosto de rotina.","EN1":"Faço amigos com facilidade.","EN2":"Logo fico à vontade com pessoas novas.","EN3":"Quando estou feliz, demonstro isso.","EN4":"Me divirto muito.","EN5":"Dou muita risada.","EN6":"É difícil me conhecer de verdade.","EN7":"Mantenho as pessoas à distância.","EN8":"Falo pouco sobre mim.","EN9":"Raramente me deixo levar pela empolgação.","EN10":"Não sou uma pessoa muito entusiasmada.","AS1":"Assumo o comando.","AS2":"Tenho uma personalidade forte.","AS3":"Sei cativar as pessoas.","AS4":"Me vejo como alguém que lidera bem.","AS5":"Consigo convencer os outros a fazer coisas.","AS6":"Costumo agir antes dos outros.","AS7":"Não sou de me impor.","AS8":"Não tenho talento para influenciar as pessoas.","AS9":"Fico esperando que os outros tomem a frente.","AS10":"Guardo minhas opiniões para mim.","IT1":"Entendo as coisas rapidamente.","IT2":"Consigo lidar com muita informação.","IT3":"Gosto de resolver problemas complexos.","IT4":"Tenho um vocabulário rico.","IT5":"Tenho raciocínio rápido.","IT6":"Formulo ideias com clareza.","IT7":"Tenho dificuldade para entender ideias abstratas.","IT8":"Evito conversas filosóficas.","IT9":"Evito leituras difíceis.","IT10":"Aprendo as coisas devagar.","OP1":"Aprecio a beleza da natureza.","OP2":"Acredito na importância da arte.","OP3":"Adoro refletir sobre as coisas.","OP4":"Mergulho fundo na música.","OP5":"Vejo beleza em coisas que os outros talvez nem percebam.","OP6":"Preciso de uma forma de expressar minha criatividade.","OP7":"Não gosto de poesia.","OP8":"Raramente me perco em pensamentos.","OP9":"Raramente fico sonhando de olhos abertos.","OP10":"Raramente percebo as emoções que quadros e fotografias transmitem."},"result":{"eyebrow":"Big Five","title":"Seu perfil","date":"Teste feito em {date}","lead":"Cada traço recebe um número de 1 a 99: quantas pessoas em cada 100 têm pontuação menor que a sua. O 50 fica exatamente no meio. Pontuação alta não é melhor que baixa, nem o contrário: cada extremo tem seus pontos fortes e seus riscos.","summary":"Os cinco traços","scaleCap":"O número indica quantas pessoas em cada 100 têm pontuação menor que a sua.","above":"Acima de {n} em cada 100 pessoas","aboveShort":"acima de {n} em cada 100","levels":["nível baixo","abaixo da média","nível médio","acima da média","nível alto"],"disc":{"title":"Agora, o seu estilo no trabalho e na comunicação","text":"O Big Five descreve a personalidade como um todo. O teste DISC mostra como você age no trabalho e na comunicação: seu estilo predominante, seus pontos fortes e como se entender com pessoas de outros estilos. 10 minutos, grátis.","button":"Fazer o teste DISC"},"again":"Refazer o teste"},"traits":{"O":{"name":"Abertura à experiência","en":"Openness","what":"O quanto ideias novas, experiências, arte e questões complexas atraem você.","high":"O novo desperta seu interesse: ideias, livros, lugares, pontos de vista incomuns. Você percebe conexões com facilidade, gosta de entender como as coisas funcionam e valoriza a beleza. A rotina e o “sempre foi assim” cansam você rápido — no trabalho, você precisa de espaço para explorar.","mid":"Você se abre ao novo quando ele faz sentido, mas não busca novidade só pela novidade. Pode se envolver com uma ideia ou um livro, ou trabalhar com calma com um método já testado — depende da situação.","low":"Você é uma pessoa prática: valoriza o que é testado, claro e útil. Raciocínios abstratos e experimentos interessam a você quando trazem um resultado concreto. Em compensação, é possível contar com você quando o que se precisa é bom senso e estabilidade."},"C":{"name":"Conscienciosidade","en":"Conscientiousness","what":"O quanto você tem foco, organização e leva as tarefas até o fim.","high":"Você cumpre o que promete, planeja e termina o que começa. Ter as tarefas em ordem é natural para você, e as pessoas contam com isso. O outro lado: é difícil relaxar e abrir mão do controle, e o descuido dos outros pode irritar bastante.","mid":"Você se concentra quando a tarefa é importante e se permite flexibilidade quando não é. Tem planos, mas não inflexíveis; mantém a ordem quando é preciso.","low":"Você age com flexibilidade e conforme o momento, muda de planos com facilidade e não gosta de regras rígidas. Isso ajuda a improvisar, mas prazos, rotina e detalhes custam mais — lembretes externos e combinados simples ajudam."},"E":{"name":"Extroversão","en":"Extraversion","what":"Quanta energia você tira das pessoas, das conversas e da ação.","high":"Você ganha energia com pessoas e acontecimentos: conhece gente nova com facilidade, fala bastante, toma a iniciativa. Silêncio e solidão por muito tempo logo cansam você. Vale deixar espaço também para quem fala mais baixo.","mid":"Você se sente bem tanto em grupo quanto em momentos só seus. Pode conduzir a conversa ou ouvir — depende da situação e das pessoas.","low":"Você poupa energia: prefere um círculo pequeno, conversas profundas e tempo só seu. Não busca o centro das atenções nem tem pressa de tomar a palavra — em compensação, pensa antes de falar."},"A":{"name":"Amabilidade","en":"Agreeableness","what":"O quanto você se orienta pelas outras pessoas, pela cooperação e pela harmonia nas relações.","high":"Pessoas e relações importam para você: você se solidariza, ajuda, busca o acordo e evita a aspereza. É fácil trabalhar com você. O risco é ceder onde valeria a pena defender sua posição.","mid":"Você presta atenção nas pessoas, mas também sabe defender seu ponto de vista. Ajuda de boa vontade, mas não à custa de si.","low":"Você fala com franqueza e age com independência: diz o que pensa, entra numa discussão sem receio e coloca a tarefa acima dos sentimentos alheios. Isso ajuda em negociações e decisões difíceis, mas nas relações pode soar como aspereza."},"N":{"name":"Neuroticismo","en":"Neuroticism","what":"Com que intensidade você reage ao estresse, aos fracassos e aos contratempos. Aqui, uma pontuação alta indica sensibilidade, não doença.","high":"Você sente o estresse com intensidade: se preocupa, duvida e demora a se recuperar dos contratempos. Essa sensibilidade ajuda a perceber riscos com antecedência, mas consome energia — é importante saber o que recupera suas forças e não carregar a preocupação sem apoio.","mid":"Você reage ao estresse como a maioria das pessoas: pode se preocupar e sentir raiva, mas em geral recupera o equilíbrio rápido.","low":"Você tem estabilidade emocional: lida com a pressão com calma, raramente se preocupa e se recupera rápido. O outro lado: pode subestimar um risco real ou o que os outros estão sentindo."}},"aspects":{"IT":{"name":"Intelecto","high":"Gosta de problemas complexos e entende rápido o que é novo.","mid":"Pensa com gosto em questões complexas, quando vale a pena.","low":"Prefere tarefas claras, sem teoria demais."},"OP":{"name":"Sensibilidade estética","high":"Sente com intensidade a arte, a música e a natureza; reflete e imagina muito.","mid":"Arte e imaginação têm seu lugar na sua vida, mas não o principal.","low":"O real e o concreto interessam mais do que a fantasia e a arte."},"IN":{"name":"Diligência","high":"Começa as tarefas logo e as leva até o fim.","mid":"Trabalha com regularidade, embora às vezes adie o que é desagradável.","low":"Às vezes é difícil começar e não se distrair."},"OR":{"name":"Organização","high":"Gosta de ordem, de horários e de que tudo siga as regras.","mid":"Mantém a ordem, mas sem perfeccionismo.","low":"Bagunça e desvios das regras incomodam pouco."},"EN":{"name":"Entusiasmo","high":"Se aproxima das pessoas com facilidade e mostra a alegria abertamente.","mid":"Tem um jeito amistoso, mas não se abre com qualquer pessoa logo de cara.","low":"Tem um jeito reservado e se abre aos poucos, e não com qualquer pessoa."},"AS":{"name":"Assertividade","high":"Assume o comando e sabe conduzir os outros.","mid":"Consegue tomar a palavra e liderar quando é preciso.","low":"Prefere deixar a condução com os outros e guarda a opinião para si."},"CO":{"name":"Compaixão","high":"Percebe com sensibilidade o que os outros sentem e ajuda de boa vontade.","mid":"Se solidariza, mas não se deixa absorver pelos problemas alheios.","low":"O que os outros sentem mexe menos com você do que a tarefa."},"PO":{"name":"Polidez","high":"Evita pressão e conflitos, respeita as regras e as outras pessoas.","mid":"Em geral age com tato, mas também sabe pressionar.","low":"Não tem receio de conflito e vai atrás do que quer de forma direta."},"VO":{"name":"Volatilidade","high":"Se irrita rápido, e o humor muda com facilidade.","mid":"Às vezes perde a paciência, mas logo passa.","low":"Raramente se irrita e mantém as emoções sob controle."},"WI":{"name":"Ansiedade","high":"Costuma se preocupar, duvidar e desanimar com facilidade.","mid":"Se preocupa quando há motivo, mas não o tempo todo.","low":"Raramente se preocupa e lida com calma com os fracassos."}}}, loc: "pt-BR", home: '../', more: {}, moreText: "", esc: esc, $: $, lsGet: lsGet, lsSet: lsSet});

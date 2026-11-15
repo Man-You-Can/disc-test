@@ -1,7 +1,7 @@
 /* Бланк теста «Большая пятёрка» для печати (с 2026-11-16, по просьбе заказчика; пока русская версия): 100 утверждений в порядке онлайн-теста,
    таблица подсчёта (номера утверждений по аспектам, обратные — со звёздочкой), таблица уровней и описание черт и аспектов.
    Используется scripts/make-bigfive-pdf.js: HTML печатается headless Chrome в src/assets/pdf/big-five-test-<язык>.pdf, сборка кладёт файл в docs/pdf/.
-   Тексты — content.bigfive.paper.print, утверждения и описания — content.bigfive; порядок, ключи и нормы — из src/bigfive.js (c.K). */
+   QR у таблицы подсчёта (c.scoreUrl) — ввод сумм на сайте (#paper). Тексты — content.bigfive.paper.print, утверждения и описания — content.bigfive; порядок, ключи и нормы — из src/bigfive.js (c.K). */
 function bigfivePrintHTML(c){
   var L=c.L, B=L.content.bigfive, P=B.paper.print, K=c.K, esc=c.esc, url=c.url, testUrl=c.testUrl, qr=c.qr, fontsCss=c.fontsCss||'', fontFamily=c.fontFamily||'sans-serif';
   var fmt=function(s, v){ return String(s).replace(/\{(\w+)\}/g, function(m, k){ return v && k in v ? v[k] : m; }); };
@@ -42,7 +42,7 @@ function bigfivePrintHTML(c){
     '<div class="how"><h2>'+esc(P.howTitle)+'</h2><p>'+esc(P.howText)+'</p></div>'+
     items+
     '<div class="pb"></div><h2 class="first">'+esc(P.scoreTitle)+'</h2><p>'+esc(P.scoreText)+'</p>'+score+
-    '<div class="qrrow">'+qrBox(testUrl)+'<div><b>'+esc(P.qrTitle)+'</b><p>'+esc(P.qrText)+'</p></div></div>'+
+    '<div class="qrrow">'+qrBox(c.scoreUrl||testUrl)+'<div><b>'+esc(P.qrTitle)+'</b><p>'+esc(P.qrText)+'</p></div></div>'+
     '<div class="pb"></div><h2 class="first">'+esc(P.levelsTitle)+'</h2><p>'+esc(P.levelsText)+'</p>'+levels+
     '<h2>'+esc(P.meaningTitle)+'</h2>'+meaning+
     '<p class="note">'+esc(fmt(P.note, {site: site}))+'</p>'+

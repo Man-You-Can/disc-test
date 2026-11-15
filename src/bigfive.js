@@ -41,10 +41,11 @@ function initBigFive(o){
   function cdf(z){ var t = 1 / (1 + .3275911 * Math.abs(z) / Math.SQRT2), y = 1 - (((((1.061405429 * t - 1.453152027) * t) + 1.421413741) * t - .284496736) * t + .254829592) * t * Math.exp(-z * z / 2);
     return z < 0 ? (1 - y) / 2 : (1 + y) / 2; }
   function pctl(key, raw){ var nm = NORM[key]; return Math.max(1, Math.min(99, Math.round(100 * cdf((raw - nm[0]) / nm[1])))); }
-  function score(a){
-    var asp = {}, raw = {};
-    Object.keys(POS).forEach(function(k){ raw[k] = 0; });
-    ORDER.forEach(function(id, i){ var k = id.slice(0, 2), n = +id.slice(2), v = +a.charAt(i); raw[k] += n <= POS[k] ? v : 6 - v; });
+  // r.a — 100 ответов онлайн-теста; r.s — суммы десяти аспектов (10–50) с бумажного бланка (#paper, с 2026-11-16)
+  function score(r){
+    var asp = {}, raw = {}, a = r.a;
+    Object.keys(POS).forEach(function(k){ raw[k] = r.s ? +r.s[k] : 0; });
+    if(!r.s) ORDER.forEach(function(id, i){ var k = id.slice(0, 2), n = +id.slice(2), v = +a.charAt(i); raw[k] += n <= POS[k] ? v : 6 - v; });
     Object.keys(raw).forEach(function(k){ raw[k] /= 10; asp[k] = pctl(k, raw[k]); });
     var tr = {};
     TRAITS.forEach(function(t){ tr[t[0]] = pctl(t[0], (raw[t[1][0]] + raw[t[1][1]]) / 2); });
@@ -68,13 +69,51 @@ function initBigFive(o){
     if(s && n > 0 && n < N) parts.push('<button type="button" class="btn" id="bfResume">' + esc(fmt(T.resume, {n: n, total: N})) + '</button>' +
       '<button type="button" class="linkbtn" id="bfRestart">' + esc(T.restart) + '</button>');
     else parts.push('<button type="button" class="btn" id="bfStart">' + esc(T.start) + '</button>');
-    if(last && typeof last.a === 'string' && last.a.length === N) parts.push('<p class="bf-last"><button type="button" class="linkbtn" id="bfShowLast">' + esc(T.showLast) + '</button></p>');
+    if(T.paper) parts.push('<p class="bf-last"><button type="button" class="linkbtn" id="bfPaper">' + esc(T.paper.introLink) + '</button></p>');
+    if(last && (typeof last.a === 'string' && last.a.length === N || validSums(last.s))) parts.push('<p class="bf-last"><button type="button" class="linkbtn" id="bfShowLast">' + esc(T.showLast) + '</button></p>');
     box.innerHTML = parts.join('');
     var b;
     if((b = $('bfStart'))) b.onclick = function(){ var x = blank(); lsSet('disc.bf', x); track('bf-start'); test(x); };
     if((b = $('bfResume'))) b.onclick = function(){ test(s); };
     if((b = $('bfRestart'))) b.onclick = function(){ var x = blank(); lsSet('disc.bf', x); track('bf-start'); test(x); };
     if((b = $('bfShowLast'))) b.onclick = function(){ result(last); };
+    if((b = $('bfPaper'))) b.onclick = function(){ try{ history.replaceState(history.state, '', location.pathname + location.search + '#paper'); }catch(e){} paper(); };
+  }
+
+  /* ---- ввод результата с бумажного бланка (#paper, с 2026-11-16; тексты T.paper = content.bigfive.paper.entry — пока русская версия) ----
+     QR-код у таблицы подсчёта в PDF ведёт сюда (?ref=pdf#paper). Человек вводит суммы десяти аспектов (10–50), сайт открывает обычный экран результата;
+     ничего не отправляется, результат сохраняется в браузере, как после онлайн-теста. */
+  function validSums(s){ return !!s && Object.keys(POS).every(function(k){ var v = s[k]; return typeof v === 'number' && v >= 10 && v <= 50 && v === Math.round(v); }); }
+  function paper(){
+    var P = T.paper; if(!P) return intro();
+    showAbout(false);
+    var h = '<div class="bf-paper"><div class="eyebrow">' + esc(P.eyebrow) + '</div><h2 class="bf-h">' + esc(P.title) + '</h2><p>' + esc(P.lead) + '</p>' +
+      // разметка без таблицы: общие стили таблиц сайта на телефоне не дают ей уместиться в карточку
+      '<form class="card bf-pform" id="bfPForm" novalidate><p class="bf-phead"><span>' + esc(P.colAspect) + '</span><span>' + esc(P.colSum) + '</span></p>' +
+      TRAITS.map(function(t){ return '<div class="bf-pt"><p class="bf-ptn"><strong>' + esc(T.traits[t[0]].name) + '</strong><span class="muted small">' + esc(P.traitSum) + ': <b data-tr="' + t[0] + '">—</b></span></p>' +
+        t[1].map(function(a){ return '<div class="bf-prow"><label for="bfP' + a + '">' + esc(T.aspects[a].name) + '</label><input type="number" inputmode="numeric" min="10" max="50" step="1" id="bfP' + a + '" data-a="' + a + '"></div>'; }).join('') + '</div>'; }).join('') +
+      '<p class="small muted">' + esc(P.note) + '</p><p class="bf-err" id="bfPErr" role="alert" hidden>' + esc(P.errEmpty) + '</p>' +
+      '<div class="bf-nav"><span></span><button class="btn" type="submit">' + esc(P.button) + '</button></div></form>' +
+      '<p class="small muted bf-palt">' + esc(P.alt) + ' <button type="button" class="linkbtn" id="bfPStart">' + esc(P.altButton) + '</button></p></div>';
+    app.innerHTML = h;
+    top();
+    var form = $('bfPForm'), err = $('bfPErr');
+    var val = function(a){ var v = $('bfP' + a).value.trim(); return /^\d{1,2}$/.test(v) ? +v : null; };
+    var ok = function(v){ return v !== null && v >= 10 && v <= 50; };
+    var upd = function(){ TRAITS.forEach(function(t){ var x = val(t[1][0]), y = val(t[1][1]); app.querySelector('[data-tr="' + t[0] + '"]').textContent = ok(x) && ok(y) ? x + y : '—'; }); };
+    form.addEventListener('input', function(){ err.hidden = true; upd(); });
+    form.addEventListener('submit', function(e){ e.preventDefault();
+      var s = {}, miss = null;
+      Object.keys(POS).forEach(function(k){ s[k] = val(k); });
+      TRAITS.forEach(function(t){ t[1].forEach(function(a){ if(!miss && !ok(s[a])) miss = a; }); });
+      if(miss){ err.hidden = false; try{ $('bfP' + miss).focus(); }catch(x){} return; }
+      var r = {s: s, d: Date.now()};
+      lsSet('disc.bfLast', r); track('bf-paper-result');
+      try{ history.replaceState(history.state, '', location.pathname + location.search); }catch(x){}
+      result(r);
+    });
+    $('bfPStart').onclick = function(){ try{ history.replaceState(history.state, '', location.pathname + location.search); }catch(x){} var x = blank(); lsSet('disc.bf', x); track('bf-start'); test(x); };
+    upd();
   }
 
   /* ---- тест: 10 страниц по 10 утверждений, ответ 1–5 ---- */
@@ -133,7 +172,7 @@ function initBigFive(o){
   function bar(p){ return '<span class="bf-bar" aria-hidden="true"><i style="width:' + p + '%"></i><b style="' + (RTL ? 'right:' : 'left:') + p + '%"></b></span>'; }
   function result(r){
     showAbout(false);
-    var sc = score(r.a), R = T.result, d = '';
+    var sc = score(r), R = T.result, d = '';
     try{ d = new Date(r.d).toLocaleDateString(o.loc || 'ru-RU', {day: 'numeric', month: 'long', year: 'numeric'}); }catch(e){}
     var h = '<div class="bf-res"><div class="eyebrow">' + esc(R.eyebrow) + '</div><h2 class="bf-h">' + esc(R.title) + '</h2>' +
       (d ? '<p class="muted small">' + esc(fmt(R.date, {date: d})) + '</p>' : '') + '<p>' + esc(R.lead) + '</p>' +
@@ -161,5 +200,5 @@ function initBigFive(o){
     $('bfAgain').onclick = function(){ var x = blank(); lsSet('disc.bf', x); track('bf-start'); test(x); };
   }
 
-  intro();
+  if(T.paper && location.hash === '#paper') paper(); else intro();
 }

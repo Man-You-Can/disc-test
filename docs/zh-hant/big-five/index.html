@@ -918,6 +918,18 @@ h3.bf-fq{font-size:17px;margin:18px 0 6px}
 .bf-apair p:last-child{margin:0}
 .bf-amore{display:inline-block;margin-top:12px;font-weight:600;color:var(--ink)}
 @media (max-width:640px){ .bf-apair{grid-template-columns:1fr} .bf-acard{padding:14px} }
+/* ввод результата с бумажного бланка (/big-five/#paper, с 2026-11-16) */
+.bf-pform{margin-top:6px}
+.bf-phead{display:flex;justify-content:space-between;gap:12px;margin:0 0 4px;font-size:13px;font-weight:600;color:var(--muted)}
+.bf-phead span:last-child{text-align:end}
+.bf-pt{border-top:1px solid var(--line-strong);padding:12px 0 6px}
+.bf-pt:first-of-type{border-top:0}
+.bf-ptn{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:4px 12px;margin:0 0 6px}
+.bf-ptn b{color:var(--ink)}
+.bf-prow{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:4px 0}
+.bf-prow label{min-width:0}
+.bf-prow input{flex:none;width:84px;font-size:18px;padding:8px 10px;text-align:center}
+.bf-palt{margin-top:18px}
 </style>
 </head>
 <body>
@@ -1306,10 +1318,11 @@ function initBigFive(o){
   function cdf(z){ var t = 1 / (1 + .3275911 * Math.abs(z) / Math.SQRT2), y = 1 - (((((1.061405429 * t - 1.453152027) * t) + 1.421413741) * t - .284496736) * t + .254829592) * t * Math.exp(-z * z / 2);
     return z < 0 ? (1 - y) / 2 : (1 + y) / 2; }
   function pctl(key, raw){ var nm = NORM[key]; return Math.max(1, Math.min(99, Math.round(100 * cdf((raw - nm[0]) / nm[1])))); }
-  function score(a){
-    var asp = {}, raw = {};
-    Object.keys(POS).forEach(function(k){ raw[k] = 0; });
-    ORDER.forEach(function(id, i){ var k = id.slice(0, 2), n = +id.slice(2), v = +a.charAt(i); raw[k] += n <= POS[k] ? v : 6 - v; });
+  // r.a — 100 ответов онлайн-теста; r.s — суммы десяти аспектов (10–50) с бумажного бланка (#paper, с 2026-11-16)
+  function score(r){
+    var asp = {}, raw = {}, a = r.a;
+    Object.keys(POS).forEach(function(k){ raw[k] = r.s ? +r.s[k] : 0; });
+    if(!r.s) ORDER.forEach(function(id, i){ var k = id.slice(0, 2), n = +id.slice(2), v = +a.charAt(i); raw[k] += n <= POS[k] ? v : 6 - v; });
     Object.keys(raw).forEach(function(k){ raw[k] /= 10; asp[k] = pctl(k, raw[k]); });
     var tr = {};
     TRAITS.forEach(function(t){ tr[t[0]] = pctl(t[0], (raw[t[1][0]] + raw[t[1][1]]) / 2); });
@@ -1333,13 +1346,51 @@ function initBigFive(o){
     if(s && n > 0 && n < N) parts.push('<button type="button" class="btn" id="bfResume">' + esc(fmt(T.resume, {n: n, total: N})) + '</button>' +
       '<button type="button" class="linkbtn" id="bfRestart">' + esc(T.restart) + '</button>');
     else parts.push('<button type="button" class="btn" id="bfStart">' + esc(T.start) + '</button>');
-    if(last && typeof last.a === 'string' && last.a.length === N) parts.push('<p class="bf-last"><button type="button" class="linkbtn" id="bfShowLast">' + esc(T.showLast) + '</button></p>');
+    if(T.paper) parts.push('<p class="bf-last"><button type="button" class="linkbtn" id="bfPaper">' + esc(T.paper.introLink) + '</button></p>');
+    if(last && (typeof last.a === 'string' && last.a.length === N || validSums(last.s))) parts.push('<p class="bf-last"><button type="button" class="linkbtn" id="bfShowLast">' + esc(T.showLast) + '</button></p>');
     box.innerHTML = parts.join('');
     var b;
     if((b = $('bfStart'))) b.onclick = function(){ var x = blank(); lsSet('disc.bf', x); track('bf-start'); test(x); };
     if((b = $('bfResume'))) b.onclick = function(){ test(s); };
     if((b = $('bfRestart'))) b.onclick = function(){ var x = blank(); lsSet('disc.bf', x); track('bf-start'); test(x); };
     if((b = $('bfShowLast'))) b.onclick = function(){ result(last); };
+    if((b = $('bfPaper'))) b.onclick = function(){ try{ history.replaceState(history.state, '', location.pathname + location.search + '#paper'); }catch(e){} paper(); };
+  }
+
+  /* ---- ввод результата с бумажного бланка (#paper, с 2026-11-16; тексты T.paper = content.bigfive.paper.entry — пока русская версия) ----
+     QR-код у таблицы подсчёта в PDF ведёт сюда (?ref=pdf#paper). Человек вводит суммы десяти аспектов (10–50), сайт открывает обычный экран результата;
+     ничего не отправляется, результат сохраняется в браузере, как после онлайн-теста. */
+  function validSums(s){ return !!s && Object.keys(POS).every(function(k){ var v = s[k]; return typeof v === 'number' && v >= 10 && v <= 50 && v === Math.round(v); }); }
+  function paper(){
+    var P = T.paper; if(!P) return intro();
+    showAbout(false);
+    var h = '<div class="bf-paper"><div class="eyebrow">' + esc(P.eyebrow) + '</div><h2 class="bf-h">' + esc(P.title) + '</h2><p>' + esc(P.lead) + '</p>' +
+      // разметка без таблицы: общие стили таблиц сайта на телефоне не дают ей уместиться в карточку
+      '<form class="card bf-pform" id="bfPForm" novalidate><p class="bf-phead"><span>' + esc(P.colAspect) + '</span><span>' + esc(P.colSum) + '</span></p>' +
+      TRAITS.map(function(t){ return '<div class="bf-pt"><p class="bf-ptn"><strong>' + esc(T.traits[t[0]].name) + '</strong><span class="muted small">' + esc(P.traitSum) + ': <b data-tr="' + t[0] + '">—</b></span></p>' +
+        t[1].map(function(a){ return '<div class="bf-prow"><label for="bfP' + a + '">' + esc(T.aspects[a].name) + '</label><input type="number" inputmode="numeric" min="10" max="50" step="1" id="bfP' + a + '" data-a="' + a + '"></div>'; }).join('') + '</div>'; }).join('') +
+      '<p class="small muted">' + esc(P.note) + '</p><p class="bf-err" id="bfPErr" role="alert" hidden>' + esc(P.errEmpty) + '</p>' +
+      '<div class="bf-nav"><span></span><button class="btn" type="submit">' + esc(P.button) + '</button></div></form>' +
+      '<p class="small muted bf-palt">' + esc(P.alt) + ' <button type="button" class="linkbtn" id="bfPStart">' + esc(P.altButton) + '</button></p></div>';
+    app.innerHTML = h;
+    top();
+    var form = $('bfPForm'), err = $('bfPErr');
+    var val = function(a){ var v = $('bfP' + a).value.trim(); return /^\d{1,2}$/.test(v) ? +v : null; };
+    var ok = function(v){ return v !== null && v >= 10 && v <= 50; };
+    var upd = function(){ TRAITS.forEach(function(t){ var x = val(t[1][0]), y = val(t[1][1]); app.querySelector('[data-tr="' + t[0] + '"]').textContent = ok(x) && ok(y) ? x + y : '—'; }); };
+    form.addEventListener('input', function(){ err.hidden = true; upd(); });
+    form.addEventListener('submit', function(e){ e.preventDefault();
+      var s = {}, miss = null;
+      Object.keys(POS).forEach(function(k){ s[k] = val(k); });
+      TRAITS.forEach(function(t){ t[1].forEach(function(a){ if(!miss && !ok(s[a])) miss = a; }); });
+      if(miss){ err.hidden = false; try{ $('bfP' + miss).focus(); }catch(x){} return; }
+      var r = {s: s, d: Date.now()};
+      lsSet('disc.bfLast', r); track('bf-paper-result');
+      try{ history.replaceState(history.state, '', location.pathname + location.search); }catch(x){}
+      result(r);
+    });
+    $('bfPStart').onclick = function(){ try{ history.replaceState(history.state, '', location.pathname + location.search); }catch(x){} var x = blank(); lsSet('disc.bf', x); track('bf-start'); test(x); };
+    upd();
   }
 
   /* ---- тест: 10 страниц по 10 утверждений, ответ 1–5 ---- */
@@ -1398,7 +1449,7 @@ function initBigFive(o){
   function bar(p){ return '<span class="bf-bar" aria-hidden="true"><i style="width:' + p + '%"></i><b style="' + (RTL ? 'right:' : 'left:') + p + '%"></b></span>'; }
   function result(r){
     showAbout(false);
-    var sc = score(r.a), R = T.result, d = '';
+    var sc = score(r), R = T.result, d = '';
     try{ d = new Date(r.d).toLocaleDateString(o.loc || 'ru-RU', {day: 'numeric', month: 'long', year: 'numeric'}); }catch(e){}
     var h = '<div class="bf-res"><div class="eyebrow">' + esc(R.eyebrow) + '</div><h2 class="bf-h">' + esc(R.title) + '</h2>' +
       (d ? '<p class="muted small">' + esc(fmt(R.date, {date: d})) + '</p>' : '') + '<p>' + esc(R.lead) + '</p>' +
@@ -1426,7 +1477,7 @@ function initBigFive(o){
     $('bfAgain').onclick = function(){ var x = blank(); lsSet('disc.bf', x); track('bf-start'); test(x); };
   }
 
-  intro();
+  if(T.paper && location.hash === '#paper') paper(); else intro();
 }
 
 initBigFive({T: {"start":"開始測驗","resume":"繼續作答（{n} / {total}）","restart":"重新開始","showLast":"查看我上次的結果","step":"第 {n} 頁，共 {total} 頁","count":"已作答：{n} / {total}","hint":"請評估每項陳述有多像你。依照你平常的樣子作答，而不是你希望的樣子。答案沒有對錯之分。","scale":["完全不像我","不太像我","一半一半","比較像我","完全像我"],"next":"下一頁","back":"上一頁","finish":"查看結果","needAll":"請回答這一頁的所有陳述。","items":{"VO1":"我很容易生氣。","VO2":"我很容易因為小事而心情不好。","VO3":"我的心情常常變來變去。","VO4":"我的情緒容易忽高忽低。","VO5":"我很容易心浮氣躁。","VO6":"我的情緒很容易被挑起來。","VO7":"我很少感到煩躁。","VO8":"我能控制好自己的情緒。","VO9":"我很少失去冷靜。","VO10":"我不容易被惹惱。","WI1":"我常對事情充滿疑慮。","WI2":"我很容易感到受威脅。","WI3":"我常常為事情擔心。","WI4":"我很容易灰心。","WI5":"事情一多，我就容易招架不住。","WI6":"我害怕的事情很多。","WI7":"我很少悶悶不樂。","WI8":"我能自在地做自己。","WI9":"我很少感到消沉。","WI10":"我不容易感到難為情。","CO1":"我能感受到別人的情緒。","CO2":"我會問候別人過得好不好。","CO3":"我能體諒別人的心情。","CO4":"我對別人的生活感興趣。","CO5":"我喜歡為別人做些事。","CO6":"我對別人的問題不感興趣。","CO7":"別人需要什麼，我懶得理會。","CO8":"我不在乎別人的感受。","CO9":"我不會撥時間給別人。","CO10":"我沒有心軟的一面。","PO1":"我尊重權威。","PO2":"我很不喜歡顯得咄咄逼人。","PO3":"我避免把自己的意願強加給別人。","PO4":"我很少給別人施加壓力。","PO5":"我會出口傷人。","PO6":"我認為自己比別人優秀。","PO7":"我會佔別人便宜。","PO8":"我會主動挑起衝突。","PO9":"我很享受和人針鋒相對。","PO10":"我做事以個人利益為先。","IN1":"我會把計畫付諸實行。","IN2":"我做事有始有終。","IN3":"我能很快把事情做完。","IN4":"我總是清楚自己在做什麼。","IN5":"我會浪費自己的時間。","IN6":"我很難讓自己開始動手做事。","IN7":"我會把事情搞砸。","IN8":"做事時，我的心思常不在手邊的事情上。","IN9":"我會拖延做決定。","IN10":"我很容易分心。","OR1":"我喜歡井然有序。","OR2":"我會把東西收拾得整整齊齊。","OR3":"我會照著時間表做事。","OR4":"我希望每件事都恰到好處。","OR5":"我會確保規則確實被遵守。","OR6":"我希望每個細節都有顧到。","OR7":"我會把自己的東西隨手亂放。","OR8":"邋遢的人不會讓我覺得困擾。","OR9":"環境亂糟糟也不會讓我困擾。","OR10":"我不喜歡一成不變的例行公事。","EN1":"我很容易交到朋友。","EN2":"我跟別人很快就能熟起來。","EN3":"我開心的時候會表現出來。","EN4":"我常常玩得很開心。","EN5":"我很愛笑。","EN6":"別人很難真正了解我。","EN7":"我會和別人保持距離。","EN8":"我很少透露自己的事。","EN9":"大家興奮的時候，我很少被感染。","EN10":"我不是一個充滿熱忱的人。","AS1":"我會主動扛起主導的角色。","AS2":"我是個氣場很強的人。","AS3":"我很能抓住別人的注意力。","AS4":"我認為自己是個好的領導者。","AS5":"我能說服別人去做事。","AS6":"我是最先採取行動的那個人。","AS7":"我的個性不算強勢。","AS8":"我缺乏影響別人的天分。","AS9":"我會等別人帶頭。","AS10":"我會把意見放在心裡不說。","IT1":"我理解事情很快。","IT2":"我能處理大量資訊。","IT3":"我喜歡解決複雜的問題。","IT4":"我的詞彙量很豐富。","IT5":"我腦筋動得很快。","IT6":"我能清楚表達自己的想法。","IT7":"我很難理解抽象的概念。","IT8":"我會避開哲學性的討論。","IT9":"我會避開艱深難讀的書和文章。","IT10":"我學東西很慢。","OP1":"我很享受大自然的美。","OP2":"我認為藝術很重要。","OP3":"我很喜歡靜下來思考事情。","OP4":"我會深深沉浸在音樂裡。","OP5":"我能在別人可能忽略的事物中看見美。","OP6":"我需要一個發揮創意的出口。","OP7":"我不喜歡詩。","OP8":"我很少想事情想到出神。","OP9":"我很少做白日夢。","OP10":"我很少留意畫作和照片傳達的情感。"},"result":{"eyebrow":"五大人格特質","title":"你的人格輪廓","date":"測驗日期：{date}","lead":"每項特質都有一個 1 到 99 的數字：代表 100 個人裡有幾個人的分數比你低。50 就是正中間。分數高或低沒有好壞之分：兩端各有各的優勢，也各有各的風險。","summary":"五大特質","scaleCap":"數字代表 100 個人裡有幾個人的分數比你低。","above":"高於 100 人中的 {n} 人","aboveShort":"高於 100 人中的 {n} 人","levels":["低","中等偏低","中等","中等偏高","高"],"disc":{"title":"接下來，看看你在工作和溝通中的風格","text":"五大人格特質描述的是整體性格。DISC 測驗則呈現你在工作和溝通中的行為方式：你的主導風格、優勢，以及如何和不同風格的人達成共識。約 10 分鐘，免費。","button":"做 DISC 測驗"},"again":"重新測驗"},"traits":{"O":{"name":"經驗開放性","en":"Openness","what":"你有多受新想法、新體驗、藝術和複雜問題吸引。","high":"新事物讓你感興趣：想法、書、地方、與眾不同的觀點。你很容易看出事物之間的關聯，喜歡弄清楚事情是怎麼運作的，也懂得欣賞美。一成不變和「向來都這樣做」很快就會讓你覺得乏味，工作上你需要有探索的空間。","mid":"新事物有意義時，你願意接受，但不會為了新鮮而追求新鮮。你可能會迷上一個想法或一本書，也能安心照著行之有效的方法做事，看情況而定。","low":"你是務實派：重視經過驗證、清楚明白又有用的東西。抽象的討論和實驗，要能直接派上用場才會引起你的興趣。也因此，在需要常識和穩定的場合，大家都可以放心交給你。"},"C":{"name":"盡責性","en":"Conscientiousness","what":"你做事有多專注、多有條理，能不能把事情做到完。","high":"你說到做到，會事先規劃，開了頭就會做完。做事有條理對你來說很自然，大家都信得過你。另一面是：你很難放鬆、放手，別人的馬虎也可能讓你很火大。","mid":"事情重要時，你會打起精神；不重要時，也允許自己有彈性。你有計畫，但不是一成不變；條理則視需要而定。","low":"你做事靈活、看心情，很容易改變計畫，也不喜歡死板的規定。這讓你擅長隨機應變，但期限、例行公事和細節對你比較吃力。外部提醒和跟自己定下的簡單約定，會很有幫助。"},"E":{"name":"外向性","en":"Extraversion","what":"你能從人、交流和行動中得到多少能量。","high":"人和活動讓你充電：你很容易認識新朋友，話多，也會主動出擊。長時間的安靜和獨處很快就會讓你覺得悶。記得也給說話比較小聲的人留點空間。","mid":"有人陪你自在，獨處你也自在。你可以帶話題，也可以當聽眾，看情境和對象而定。","low":"你會珍惜自己的能量：比較喜歡小圈子、有深度的對話和獨處的時間。你不追求成為焦點，也不急著發言，但說話前會先想清楚。"},"A":{"name":"親和性","en":"Agreeableness","what":"你有多重視他人、合作和關係的和諧。","high":"人和關係對你很重要：你會同理別人、主動幫忙、尋求共識，也避免說話太衝。和你共事很輕鬆。風險在於，該堅持立場的時候你可能會讓步。","mid":"你在意別人，但也能堅持自己的立場。你樂於幫忙，但不會因此委屈自己。","low":"你直來直往、有主見：有話直說，不怕爭論，把事情擺在別人的感受前面。這在談判和需要做出艱難決定時很有用，但在人際關係中可能會讓人覺得太尖銳。"},"N":{"name":"神經質","en":"Neuroticism","what":"你對壓力、挫折和不順心的事反應有多強烈。這一項分數高代表敏感，不是生病。","high":"你對壓力的感受很強烈：容易擔心、懷疑自己，遇到不順的事需要比較久才能平復。這份敏感讓你能提早察覺風險，但也很耗心力。重要的是知道什麼能讓你恢復元氣，別一個人獨自承受焦慮。","mid":"你面對壓力的反應和多數人差不多：也會擔心、生氣，但通常很快就能恢復平衡。","low":"你的情緒很穩定：能沉著面對壓力，很少焦慮，也恢復得很快。另一面是：你可能會低估真正的風險，或忽略別人的擔憂。"}},"aspects":{"IT":{"name":"智識","high":"喜歡有難度的問題，學新東西很快。","mid":"問題值得的話，你很樂意動腦思考。","low":"比較喜歡清楚明確的任務，不需要太多理論。"},"OP":{"name":"感受力","high":"對藝術、音樂和大自然感受細膩，常常思考和想像。","mid":"藝術和想像在你的生活中有一席之地，但不是重心。","low":"比起想像和藝術，你更關注真實、具體的事物。"},"IN":{"name":"執行力","high":"很快就能著手做事，並且把事情做完。","mid":"做事穩定，但不喜歡的事有時會拖一下。","low":"有時很難開始做事，也容易分心。"},"OR":{"name":"條理","high":"喜歡秩序、時間表，凡事照規矩來。","mid":"會維持秩序，但不會吹毛求疵。","low":"環境凌亂或不照規矩，對你影響不大。"},"EN":{"name":"熱情","high":"很容易和人打成一片，開心時不吝表現出來。","mid":"待人友善，但不會一下子就對所有人敞開心房。","low":"比較內斂，熟了以後才會慢慢敞開心房，而且不是對每個人。"},"AS":{"name":"果斷","high":"會主動扛起主導角色，也懂得帶領別人。","mid":"需要的時候，你也能站出來發言、帶頭。","low":"比較願意讓別人帶頭，意見常放在心裡。"},"CO":{"name":"同理心","high":"能細膩地感受別人，也樂於幫忙。","mid":"你會同理別人，但不會被別人的問題淹沒。","low":"比起別人的情緒，事情本身更能牽動你。"},"PO":{"name":"謙和","high":"避免施壓和衝突，尊重規則，也尊重別人。","mid":"通常很得體，但必要時也會施壓。","low":"不怕衝突，會直接爭取自己要的。"},"VO":{"name":"情緒波動","high":"很快就會煩躁，心情容易起伏。","mid":"偶爾會發火，但很快就能平復。","low":"很少煩躁，能控制好自己的情緒。"},"WI":{"name":"焦慮","high":"常常擔心、懷疑，也容易灰心。","mid":"有事才會擔心，不會一直焦慮。","low":"很少焦慮，能平靜面對挫折。"}}}, loc: "zh-TW", home: '../', more: {}, moreText: "", esc: esc, $: $, lsGet: lsGet, lsSet: lsSet});

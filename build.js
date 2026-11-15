@@ -1476,7 +1476,8 @@ for (const L of locales) {
         `<div id="bfAbout">` + (L.dir === 'rtl' ? sectionsHtml(B.sections).replace(/<li>([^<]*)<\/li>/g, (m, x) => /^[A-Za-z]/.test(x) && !/[\u0600-\u06FF]/.test(x) ? `<li dir="ltr">${x}</li>` : m) : sectionsHtml(B.sections)) +
         `<h2>${escFull(B.faqTitle)}</h2>` + B.faq.map(it => `<h3 class="bf-fq">${escFull(it.q)}</h3><p>${escFull(it.a)}</p>`).join('') + bfArtList('./') + `</div>`;
       const BT = { start: B.start, resume: B.resume, restart: B.restart, showLast: B.showLast, step: B.step, count: B.count, hint: B.hint, scale: B.scale,
-        next: B.next, back: B.back, finish: B.finish, needAll: B.needAll, items: B.items, result: B.result, traits: B.traits, aspects: B.aspects };
+        next: B.next, back: B.back, finish: B.finish, needAll: B.needAll, items: B.items, result: B.result, traits: B.traits, aspects: B.aspects,
+        paper: B.paper && B.paper.entry && fs.existsSync(path.join(ASSETS, 'pdf', `big-five-test-${L.lang}.pdf`)) ? B.paper.entry : undefined };   // ввод сумм с бланка (#paper, с 2026-11-16)
       writeContentPage(L, 'big-five/', { navKey: bfNavKey(L, ''), langs: locales.filter(x => x.content.bigfive), ldType: 'WebApplication', title: B.title, description: B.description, crumbs: [{ name: B.h1 }],
         css: bigfiveCss, content, files: ['src/bigfive.js', 'src/bigfive.css'],
         ldExtra: [{ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: B.faq.map(it => ({ '@type': 'Question', name: it.q, acceptedAnswer: { '@type': 'Answer', text: it.a } })) }],
