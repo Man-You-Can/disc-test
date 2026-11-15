@@ -7,6 +7,8 @@
    Всё считается в браузере; на сервер ничего не уходит. Ответы и прогресс — в disc.bf, последний результат — в disc.bfLast
    (тексты о данных говорят о хранении ответов, прогресса и последнего результата в браузере). Цели: bf-start, bf-finish, bf-disc. */
 function initBigFive(o){
+  // rtl (арабский): полоса заполняется справа, маркер ставится от правого края, стрелки — влево
+  var RTL = document.documentElement.dir === 'rtl', ARR = RTL ? '←' : '→';
   var T = o.T, esc = o.esc, lsGet = o.lsGet, lsSet = o.lsSet, $ = function(id){ return document.getElementById(id); };
   var track = function(g){ if(window.discTrack) window.discTrack(g); };
   var fmt = function(s, v){ return String(s).replace(/\{(\w+)\}/g, function(m, k){ return v && k in v ? v[k] : m; }); };
@@ -128,7 +130,7 @@ function initBigFive(o){
   }
 
   /* ---- результат ---- */
-  function bar(p){ return '<span class="bf-bar" aria-hidden="true"><i style="width:' + p + '%"></i><b style="left:' + p + '%"></b></span>'; }
+  function bar(p){ return '<span class="bf-bar" aria-hidden="true"><i style="width:' + p + '%"></i><b style="' + (RTL ? 'right:' : 'left:') + p + '%"></b></span>'; }
   function result(r){
     showAbout(false);
     var sc = score(r.a), R = T.result, d = '';
@@ -140,14 +142,15 @@ function initBigFive(o){
         return '<div class="bf-srow"><span class="nm">' + esc(T.traits[k].name) + '</span>' + bar(p) + '<span class="v">' + p + '</span></div>'; }).join('') +
       '<p class="muted small bf-scalecap">' + esc(R.scaleCap) + '</p></div>';
     TRAITS.forEach(function(t){ var k = t[0], p = sc.tr[k], TR = T.traits[k];
-      h += '<section class="card bf-trait"><h3>' + esc(TR.name) + ' <span class="muted">· ' + esc(TR.en) + '</span></h3>' +
+      // английское название черты после своего — кроме английской версии, где оно уже есть в названии
+      h += '<section class="card bf-trait"><h3>' + esc(TR.name) + (TR.en && TR.name.indexOf(TR.en) < 0 ? ' <span class="muted">· ' + esc(TR.en) + '</span>' : '') + '</h3>' +
         '<p class="bf-pos"><strong>' + esc(fmt(R.above, {n: p})) + '</strong> · ' + esc(R.levels[level(p)]) + '</p>' + bar(p) +
         '<p class="muted small bf-what">' + esc(TR.what) + '</p><p>' + esc(TR[tier(p)]) + '</p><div class="bf-asps">' +
         t[1].map(function(a){ var q = sc.asp[a], A = T.aspects[a];
           return '<div class="bf-asp"><p class="bf-an"><strong>' + esc(A.name) + '</strong> <span class="muted small">' + esc(fmt(R.aboveShort, {n: q})) + '</span></p>' + bar(q) +
             '<p class="small">' + esc(A[tier(q) === 'high' ? 'high' : tier(q) === 'low' ? 'low' : 'mid']) + '</p></div>'; }).join('') + '</div>' +
         // ссылка на статью о черте (с 2026-11-15; o.more — {O: 'openness/', …} и текст ссылки, где статьи есть)
-        (o.more && o.more[k] ? '<p class="bf-more"><a href="' + esc(o.more[k]) + '">' + esc(fmt(o.moreText, {name: TR.name})) + ' →</a></p>' : '') + '</section>';
+        (o.more && o.more[k] ? '<p class="bf-more"><a href="' + esc(o.more[k]) + '">' + esc(fmt(o.moreText, {name: TR.name})) + ' ' + ARR + '</a></p>' : '') + '</section>';
     });
     h += '<aside class="card bf-disc"><h3>' + esc(R.disc.title) + '</h3><p>' + esc(R.disc.text) + '</p><p><a class="btn" href="' + esc(o.home) + '" data-goal="bf-disc">' + esc(R.disc.button) + '</a></p></aside>' +
       '<p class="bf-again"><button type="button" class="linkbtn" id="bfAgain">' + esc(R.again) + '</button></p></div>';

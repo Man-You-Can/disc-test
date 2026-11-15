@@ -1,4 +1,4 @@
-/* Тест «Большая пятёрка»: страница /ru/big-five/ (build.js, src/bigfive.js) — вводный блок, вопросы по шкале 1–5, результат. */
+/* Тест «Большая пятёрка»: страница /<язык>/big-five/ (build.js, src/bigfive.js) — вводный блок, вопросы по шкале 1–5, результат. */
 #bfApp .bf-facts{list-style:none;padding:0;margin:0 0 6px;display:flex;flex-wrap:wrap;gap:8px}
 .bf-facts li{background:var(--soft);border-radius:999px;padding:6px 12px;font-size:14px}
 .bf-start{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;margin:20px 0 34px}
@@ -38,6 +38,7 @@ h3.bf-fq{font-size:17px;margin:18px 0 6px}
 .bf-bar::after{content:"";position:absolute;left:50%;top:-3px;bottom:-3px;width:1px;background:var(--line-strong)}
 .bf-bar i{display:block;height:100%;border-radius:5px;background:var(--ink);opacity:.85}
 .bf-bar b{position:absolute;top:50%;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;background:var(--ink);border:2px solid var(--surface)}
+[dir=rtl] .bf-bar b{margin:-7px -7px 0 0}
 .bf-sum h3{margin-top:0}
 .bf-srow{display:grid;grid-template-columns:minmax(0,180px) minmax(0,1fr) 30px;gap:12px;align-items:center;margin:8px 0}
 .bf-srow .nm{font-weight:600;font-size:15px}
