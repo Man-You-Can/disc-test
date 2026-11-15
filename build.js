@@ -353,11 +353,18 @@ const hasTests = L => !!(L.content.tests && L.ui['nav.tests']);
 // Статьи о DISC и «Как готовятся отчёты» — в выпадающем списке «О DISC» (ui['nav.aboutDisc']): <details> с обычными ссылками в HTML, без скрипта,
 // чтобы прежние ссылки шапки остались в разметке каждой страницы (private/TESTS-PLAN.md, раздел 2.2). Закрытие по щелчку мимо и Esc — src/common.js.
 const NAV_CHEV = '<svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5l3.5 3.5 3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+// Выпадающий список «Большая пятёрка» (с 2026-11-16, по просьбе заказчика; пока русская версия): сразу после «О DISC», там, где в локали есть
+// content.bigfive.nav и ui['nav.bigfive'] (валидатор требует их вместе). Пункты — content.bigfive.nav: slug '' — страница теста, иначе статья big-five/<slug>/;
+// ключ текущей страницы — 'bf:<slug>'.
+const hasBfNav = L => !!(L.content.bigfive && L.content.bigfive.nav && L.ui['nav.bigfive']);
+const bfNavKey = (L, slug) => hasBfNav(L) ? 'bf:' + slug : 'nav.tests';
 const navHtmlFor = (L, base, cur) => {
-  const a = ([k, sub]) => `<a href="${base + sub}"${cur === k ? ' aria-current="page"' : ''}>${esc(L.ui[k])}</a>`;
+  const a = ([k, sub, label]) => `<a href="${base + sub}"${cur === k ? ' aria-current="page"' : ''}>${esc(label || L.ui[k])}</a>`;
+  const drop = (title, items) => `<details class="navmenu"><summary${items.some(([k]) => k === cur) ? ' class="cur"' : ''}>${esc(title)}${NAV_CHEV}</summary><div class="navdrop">${items.map(a).join('')}</div></details>`;
   const menu = NAV_ITEMS.slice(1).concat(hasHowMade(L) ? [['nav.howMade', HOWMADE_SUB]] : []);
+  const bfMenu = hasBfNav(L) ? L.content.bigfive.nav.map(x => ['bf:' + x.slug, 'big-five/' + (x.slug ? x.slug + '/' : ''), x.label]) : [];
   return NAV_ITEMS.slice(0, 1).concat(hasTests(L) ? [['nav.tests', 'tests/']] : []).map(a).join('') +
-    `<details class="navmenu"><summary${menu.some(([k]) => k === cur) ? ' class="cur"' : ''}>${esc(L.ui['nav.aboutDisc'])}${NAV_CHEV}</summary><div class="navdrop">${menu.map(a).join('')}</div></details>` +
+    drop(L.ui['nav.aboutDisc'], menu) + (bfMenu.length ? drop(L.ui['nav.bigfive'], bfMenu) : '') +
     [].concat(hasServices(L) ? [['nav.services', 'services/']] : [], feedbackEmail ? [['nav.contact', 'contact/']] : []).map(a).join('');
 };
 // раздел «Тесты» в подвале (с 2026-11-15, по просьбе заказчика; где hasTests): строка над «Материалами о DISC» — тест DISC, «Большая пятёрка» (где есть content.bigfive), «Все тесты»
@@ -1468,7 +1475,7 @@ for (const L of locales) {
         `<h2>${escFull(B.faqTitle)}</h2>` + B.faq.map(it => `<h3 class="bf-fq">${escFull(it.q)}</h3><p>${escFull(it.a)}</p>`).join('') + bfArtList('./') + `</div>`;
       const BT = { start: B.start, resume: B.resume, restart: B.restart, showLast: B.showLast, step: B.step, count: B.count, hint: B.hint, scale: B.scale,
         next: B.next, back: B.back, finish: B.finish, needAll: B.needAll, items: B.items, result: B.result, traits: B.traits, aspects: B.aspects };
-      writeContentPage(L, 'big-five/', { navKey: 'nav.tests', langs: locales.filter(x => x.content.bigfive), ldType: 'WebApplication', title: B.title, description: B.description, crumbs: [{ name: B.h1 }],
+      writeContentPage(L, 'big-five/', { navKey: bfNavKey(L, ''), langs: locales.filter(x => x.content.bigfive), ldType: 'WebApplication', title: B.title, description: B.description, crumbs: [{ name: B.h1 }],
         css: bigfiveCss, content, files: ['src/bigfive.js', 'src/bigfive.css'],
         ldExtra: [{ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: B.faq.map(it => ({ '@type': 'Question', name: it.q, acceptedAnswer: { '@type': 'Answer', text: it.a } })) }],
         pageJs: bigfiveJs + `\ninitBigFive({T: ${JSON.stringify(BT).replace(/</g, '\\u003c')}, loc: ${jsStr(L.dateLocale)}, home: '../', more: ${JSON.stringify(more)}, moreText: ${jsStr(AU.traitMore || '')}, esc: esc, $: $, lsGet: lsGet, lsSet: lsSet});` });
@@ -1477,11 +1484,13 @@ for (const L of locales) {
         const cta = g => `<aside class="bf-cta"><p class="bf-ctat">${escFull(AU.ctaTitle)}</p><p>${escFull(AU.ctaText)}</p><a class="btn" href="../" data-goal="${g}">${escFull(AU.ctaButton)}</a></aside>`;
         const secs = x.sections.map((sec, i) => sectionsHtml([sec]) + (i === 1 && x.sections.length > 3 ? cta('bf-article') : '')).join('');
         const rel = (x.related || []).filter(sl => artBySlug[sl] && sl !== x.slug);
-        const content = `<div class="eyebrow">${escFull(AU.eyebrow)}</div><h1>${escFull(x.h1)}</h1><p class="lead">${escFull(x.lead)}</p>` + secs + cta('bf-article-end') +
-          (x.faq && x.faq.length ? `<h2>${escFull(AU.faqTitle)}</h2>` + x.faq.map(it => `<h3 class="bf-fq">${escFull(it.q)}</h3><p>${escFull(it.a)}</p>`).join('') : '') +
+        // статья без разделов («Вопросы и ответы», с 2026-11-16): вопросы сразу после вводного абзаца, без заголовка «Вопросы», призыв к тесту — после них
+        const faqHtml = (x.faq && x.faq.length ? (x.sections.length ? `<h2>${escFull(AU.faqTitle)}</h2>` : '') + x.faq.map(it => `<h3 class="bf-fq">${escFull(it.q)}</h3><p>${escFull(it.a)}</p>`).join('') : '');
+        const content = `<div class="eyebrow">${escFull(AU.eyebrow)}</div><h1>${escFull(x.h1)}</h1><p class="lead">${escFull(x.lead)}</p>` +
+          (x.sections.length ? secs + cta('bf-article-end') + faqHtml : faqHtml + cta('bf-article-end')) +
           (x.sources && x.sources.length ? `<h2>${escFull(AU.sourcesTitle)}</h2><ul class="bf-src">${x.sources.map(z => `<li>${escFull(z)}</li>`).join('')}</ul>` : '') +
           `<h2>${escFull(AU.relatedTitle)}</h2><ul class="bf-arts">${rel.map(sl => `<li><a href="../${sl}/"><strong>${escFull(artBySlug[sl].h1)}</strong></a></li>`).join('')}<li><a href="../"><strong>${escFull(B.h1)}</strong></a></li></ul>`;
-        writeContentPage(L, `big-five/${x.slug}/`, { navKey: 'nav.tests', langs: [L], article: true, title: x.title, description: x.description, crumbs: [{ name: B.h1, href: '../', sub: 'big-five/' }, { name: x.h1 }],
+        writeContentPage(L, `big-five/${x.slug}/`, { navKey: bfNavKey(L, x.slug), langs: [L], article: true, title: x.title, description: x.description, crumbs: [{ name: B.h1, href: '../', sub: 'big-five/' }, { name: x.h1 }],
           css: bigfiveCss, content, files: ['src/bigfive.css'],
           ldExtra: x.faq && x.faq.length ? [{ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: x.faq.map(it => ({ '@type': 'Question', name: it.q, acceptedAnswer: { '@type': 'Answer', text: it.a } })) }] : [] });
       }
