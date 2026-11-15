@@ -507,6 +507,8 @@ const homeLocale = L => Object.assign({}, L, {
   profiles: Object.fromEntries(Object.entries(L.profiles).map(([k, p]) => [k, { name: p.name, summary: p.summary }])),
   // product — тексты блока «Расширенный отчёт» на экране результата (цена уже подставлена); страница отчёта в скрипт не идёт
   content: Object.assign({ home: L.content.home }, hasCvPromo(L) ? { cvPromo: L.content.cvPromo } : {},
+    // «Другие тесты» на главной (с 2026-11-15): только тексты карточки, без утверждений теста
+    L.content.bigfive && L.content.bigfive.home ? { bigfive: { home: L.content.bigfive.home } } : {},
     // подсказка пришедшему по QR-коду с бумажного бланка (?ref=pdf) и экран ввода чисел с бланка (#paper), с 2026-10-25: только они, без остального content.paper
     L.content.paper && L.content.paper.fromPdf ? { paper: { fromPdf: L.content.paper.fromPdf, score: L.content.paper.score } } : {},
     // строка на экране своего результата о странице «Провести тест в группе» (с 2026-10-26, content.group.resultLine)
@@ -548,7 +550,7 @@ for (const L of locales) {
   const footHtml = footLinks(L, rootRel + pathOf(L.lang)), footShortHtml = footShort(L, rootRel + pathOf(L.lang));
   const introBuilt = introHTML({ L, t: tFor(L), esc: escFull, KEYS, colorVar: k => 'var(--' + k.toLowerCase() + ')', progDone: 0, lastDate: '', graphSVG,
     links: { styles: rootRel + pathOf(L.lang) + 'styles/', profiles: rootRel + pathOf(L.lang) + 'profiles/', pdf: rootRel + pathOf(L.lang) + 'pdf/', results: rootRel + pathOf(L.lang) + 'results/', faq: rootRel + pathOf(L.lang) + 'faq/', profile: k => rootRel + pathOf(L.lang) + 'profiles/' + k.toLowerCase() + '/',
-      cv: hasCvPromo(L) ? rootRel + pathOf(L.lang) + 'cv/' : '' } });
+      cv: hasCvPromo(L) ? rootRel + pathOf(L.lang) + 'cv/' : '', bigfive: L.content.bigfive ? rootRel + pathOf(L.lang) + 'big-five/' : '' } });
   pages.push({ lang: L.lang, sub: '', date: contentDate(L.lang + ':', [L.title, L.description, introBuilt.split(rootRel + pathOf(L.lang)).join('~/')].join('\n'), [`src/locales/${L.lang}.json`, 'src/template.html', 'src/intro.js']) });
   const chevron = `<svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5l3.5 3.5 3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
   const switcher = `<div class="langsel" id="langSel">` +

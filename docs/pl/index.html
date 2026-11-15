@@ -423,6 +423,14 @@ html[lang|=zh] [lang]:not([lang|=zh]):not([lang|=ja]),html[lang=ja] [lang]:not([
 .langbar-x:hover{color:var(--ink);background:var(--soft)}
 .styles-intro{margin-top:34px}
 .home-more{margin-top:34px}
+/* «Другие тесты» на главной (с 2026-11-15, src/intro.js → testsHTML) */
+.othertests{margin-top:34px}
+.othertests h2{font-size:22px;margin:0 0 12px}
+.otest{display:grid;gap:6px;padding:16px 18px;border:1px solid var(--line-strong);border-radius:12px;color:var(--ink);text-decoration:none;max-width:560px}
+.otest:hover{border-color:var(--ink)}
+.otest strong{font-size:17px}
+.otest span{color:var(--muted)}
+.otest .more{color:var(--ink);font-weight:600}
 /* подсказка пришедшему по QR-коду с бумажного бланка (?ref=pdf): как перенести отметки */
 .frompdf{border:1px solid var(--line-strong);border-inline-start:4px solid var(--c);border-radius:12px;padding:12px 16px;margin:0 0 18px;background:var(--surface)}
 .frompdf b{display:block;margin-bottom:4px}.frompdf p{margin:0;font-size:15px;color:var(--muted)}.frompdf a{display:inline-block;margin-top:8px;color:var(--ink);font-size:15px}
@@ -1084,7 +1092,8 @@ function introHTML(c){
     '</div>'+(links.styles ? '<p class="all"><a href="'+esc(links.styles)+'">'+t('nav.styles')+' '+arr+'</a> · <a href="'+esc(links.profiles)+'">'+t('nav.profiles')+' '+arr+'</a></p>' : '')+'</section>'+
     // анонс сервиса резюме и подписка — после «Как считается результат» и коротких вопросов, перед списком 16 профилей (с 2026-10-25, по просьбе заказчика):
     // раньше стояли между кнопкой теста и доводами пройти его
-    homeHTML(c, cvPromoHTML({P: L.content && L.content.cvPromo, esc: esc, href: links.cv, kind: 'home'})+subHTML(c));
+    // «Другие тесты» (с 2026-11-15, решение заказчика): ссылка на новый тест — низко, перед подпиской; заголовки и первый экран главной не трогаются
+    homeHTML(c, testsHTML(c)+cvPromoHTML({P: L.content && L.content.cvPromo, esc: esc, href: links.cv, kind: 'home'})+subHTML(c));
 }
 /* Пример результата: профиль DI (те же числа, что в src/samples.js) — название, график и шкалы. «Что вы получите» на главной (homeGetHTML,
    график на телефоне скрыт) и колонка «Онлайн» на странице «Тест в PDF» (build.js, без графика). c.graphSVG — функция графика (src/graph.js):
@@ -1122,6 +1131,15 @@ function cvPromoHTML(o){
 }
 /* Подписка на рассылку (с 2026-10-22, по просьбе заказчика): поле e-mail, «Подписаться», галочки согласия на обработку данных (c.sub.pdHtml)
    и на рассылку. Собирает только сама страница (c.sub), в сборке формы нет. Подписка действует после подтверждения по ссылке из письма. */
+/* «Другие тесты» на главной (с 2026-11-15, решение заказчика; где в локали есть content.bigfive.home): карточка со ссылкой на тест
+   «Большая пятёрка» (/big-five/). Обычная ссылка в HTML сборки — её видят поисковики; цель home-bigfive. На экране результата DISC
+   нового теста нет (решение заказчика от 2026-11-15: не отвлекать от расширенного отчёта). */
+function testsHTML(c){
+  var L=c.L, esc=c.esc, links=c.links||{}, B=L.content && L.content.bigfive && L.content.bigfive.home, arr=L.dir==='rtl'?'←':'→';
+  if(!B || !links.bigfive) return '';
+  return '<section class="share othertests" id="otherTests"><h2>'+esc(B.title)+'</h2>'+
+    '<a class="otest" href="'+esc(links.bigfive)+'" data-goal="home-bigfive"><strong>'+esc(B.name)+'</strong><span>'+esc(B.text)+'</span><span class="more">'+esc(B.button)+' '+arr+'</span></a></section>';
+}
 function subHTML(c){
   var s=c.sub, t=c.t, esc=c.esc;
   if(!s) return '';
@@ -1178,7 +1196,7 @@ function renderIntro(){
   var PF = L.content && L.content.paper && L.content.paper.fromPdf, fromPdf = null;
   if(PF && !lastCard){ try{ if(/[?&]ref=pdf(&|$)/.test(location.search)) sessionStorage.setItem('disc.fromPdf', '1'); fromPdf = sessionStorage.getItem('disc.fromPdf') ? PF : null; }catch(e){ fromPdf = /[?&]ref=pdf(&|$)/.test(location.search) ? PF : null; } }
   view.innerHTML = introHTML({L:L, t:t, esc:esc, extListHTML:extListHTML, KEYS:KEYS, colorVar:colorVar, progDone:progDone, lastDate: last ? fmtDate(last.t) : '', lastCard:lastCard, fromPdf:fromPdf,
-    sub: nlOn ? {pdHtml: PD ? pdLabel(ROOT_REL+LANG_PATH[L.lang]) : '', email: (lsGet('disc.who')||{}).email || ''} : null, links:{styles: ROOT_REL+LANG_PATH[L.lang]+'styles/', profiles: ROOT_REL+LANG_PATH[L.lang]+'profiles/', pdf: ROOT_REL+LANG_PATH[L.lang]+'pdf/', results: ROOT_REL+LANG_PATH[L.lang]+'results/', faq: ROOT_REL+LANG_PATH[L.lang]+'faq/', cv: ROOT_REL+LANG_PATH[L.lang]+'cv/', profile: function(k){ return ROOT_REL+LANG_PATH[L.lang]+'profiles/'+k.toLowerCase()+'/'; }}});
+    sub: nlOn ? {pdHtml: PD ? pdLabel(ROOT_REL+LANG_PATH[L.lang]) : '', email: (lsGet('disc.who')||{}).email || ''} : null, links:{styles: ROOT_REL+LANG_PATH[L.lang]+'styles/', profiles: ROOT_REL+LANG_PATH[L.lang]+'profiles/', pdf: ROOT_REL+LANG_PATH[L.lang]+'pdf/', results: ROOT_REL+LANG_PATH[L.lang]+'results/', faq: ROOT_REL+LANG_PATH[L.lang]+'faq/', cv: ROOT_REL+LANG_PATH[L.lang]+'cv/', bigfive: L.content && L.content.bigfive ? ROOT_REL+LANG_PATH[L.lang]+'big-five/' : '', profile: function(k){ return ROOT_REL+LANG_PATH[L.lang]+'profiles/'+k.toLowerCase()+'/'; }}});
   // Тест начинается сразу, без регистрации: имя и e-mail участник по желанию вводит на экране результата
   function start(){ newTest(); renderTest(); window.scrollTo(0,0); }
   $('#start').addEventListener('click', start);

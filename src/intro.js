@@ -45,7 +45,8 @@ function introHTML(c){
     '</div>'+(links.styles ? '<p class="all"><a href="'+esc(links.styles)+'">'+t('nav.styles')+' '+arr+'</a> · <a href="'+esc(links.profiles)+'">'+t('nav.profiles')+' '+arr+'</a></p>' : '')+'</section>'+
     // анонс сервиса резюме и подписка — после «Как считается результат» и коротких вопросов, перед списком 16 профилей (с 2026-10-25, по просьбе заказчика):
     // раньше стояли между кнопкой теста и доводами пройти его
-    homeHTML(c, cvPromoHTML({P: L.content && L.content.cvPromo, esc: esc, href: links.cv, kind: 'home'})+subHTML(c));
+    // «Другие тесты» (с 2026-11-15, решение заказчика): ссылка на новый тест — низко, перед подпиской; заголовки и первый экран главной не трогаются
+    homeHTML(c, testsHTML(c)+cvPromoHTML({P: L.content && L.content.cvPromo, esc: esc, href: links.cv, kind: 'home'})+subHTML(c));
 }
 /* Пример результата: профиль DI (те же числа, что в src/samples.js) — название, график и шкалы. «Что вы получите» на главной (homeGetHTML,
    график на телефоне скрыт) и колонка «Онлайн» на странице «Тест в PDF» (build.js, без графика). c.graphSVG — функция графика (src/graph.js):
@@ -83,6 +84,15 @@ function cvPromoHTML(o){
 }
 /* Подписка на рассылку (с 2026-10-22, по просьбе заказчика): поле e-mail, «Подписаться», галочки согласия на обработку данных (c.sub.pdHtml)
    и на рассылку. Собирает только сама страница (c.sub), в сборке формы нет. Подписка действует после подтверждения по ссылке из письма. */
+/* «Другие тесты» на главной (с 2026-11-15, решение заказчика; где в локали есть content.bigfive.home): карточка со ссылкой на тест
+   «Большая пятёрка» (/big-five/). Обычная ссылка в HTML сборки — её видят поисковики; цель home-bigfive. На экране результата DISC
+   нового теста нет (решение заказчика от 2026-11-15: не отвлекать от расширенного отчёта). */
+function testsHTML(c){
+  var L=c.L, esc=c.esc, links=c.links||{}, B=L.content && L.content.bigfive && L.content.bigfive.home, arr=L.dir==='rtl'?'←':'→';
+  if(!B || !links.bigfive) return '';
+  return '<section class="share othertests" id="otherTests"><h2>'+esc(B.title)+'</h2>'+
+    '<a class="otest" href="'+esc(links.bigfive)+'" data-goal="home-bigfive"><strong>'+esc(B.name)+'</strong><span>'+esc(B.text)+'</span><span class="more">'+esc(B.button)+' '+arr+'</span></a></section>';
+}
 function subHTML(c){
   var s=c.sub, t=c.t, esc=c.esc;
   if(!s) return '';
