@@ -2037,6 +2037,9 @@
       "inviteNoTest": "Primeiro, faça o teste: o botão “Convidar” aparece na tela do seu resultado.",
       "inviteBtn": "Convidar",
       "inviteMsg": "Faça o teste DISC e vamos ver como trabalhamos e nos comunicamos. Convite de {name}:",
+      "yourName": "Seu nome",
+      "yourNameHint": "A outra pessoa vai ver o seu nome, e ele vai aparecer no relatório.",
+      "needYourName": "Digite o seu nome.",
       "faqTitle": "Perguntas frequentes",
       "faq": [
         {
@@ -2075,6 +2078,9 @@
         "consent": "Autorizo mostrar o meu resultado e o meu nome a quem me convidou ({name}) e usá-los no relatório “DISC para dois”, se ele for pedido",
         "compare": "Comparar com o meu resultado",
         "needConsent": "Marque a autorização para ver a comparação.",
+        "titleNoName": "Você recebeu um convite para fazer o teste DISC",
+        "profileNoName": "Perfil de quem convidou você: “{profile}”",
+        "consentNoName": "Autorizo mostrar o meu resultado e o meu nome a quem me convidou e usá-los no relatório “DISC para dois”, se ele for pedido",
         "bad": "O link do convite está danificado ou incompleto. Peça para a pessoa mandar de novo."
       },
       "result": {
@@ -2093,6 +2099,8 @@
         "dlgTitle": "Convidar para o teste",
         "compareTitle": "Comparar resultados: você e {name}",
         "compareText": "{name} convida você a comparar os resultados do teste DISC.",
+        "compareTitleNoName": "Comparar resultados com quem convidou você",
+        "compareTextNoName": "Você recebeu um convite para comparar os resultados do teste DISC.",
         "compareBtn": "Ver a comparação",
         "dismiss": "Não comparar"
       },
@@ -2172,6 +2180,10 @@
         "badCopy": "Confira o e-mail da outra pessoa.",
         "needAgree": "Marque que você aceita os termos de venda.",
         "needLead": "Informe quem lidera.",
+        "nameA": "Nome da pessoa da barra preenchida ({profile})",
+        "nameB": "Nome da pessoa da barra só com contorno ({profile})",
+        "nameHint": "É assim que a pessoa será chamada no relatório.",
+        "needName": "Digite o nome: o relatório usa o nome das duas pessoas.",
         "priceChanged": "Já existe um relatório ampliado comprado com este e-mail, por isso o preço é US$ {price}. Clique em “Comprar” de novo.",
         "error": "Não foi possível criar o pedido. Tente de novo ou escreva para {email}."
       },

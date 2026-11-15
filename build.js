@@ -514,7 +514,8 @@ const homeLocale = L => Object.assign({}, L, {
     // строка на экране своего результата о странице «Провести тест в группе» (с 2026-10-26, content.group.resultLine)
     L.content.group ? { group: { resultLine: L.content.group.resultLine } } : {},
     // «DISC на двоих» (с 2026-11-14): блок «Пригласить» и «Сравнить с …» на экране своего результата
-    hasPair(L) ? { pair: { result: L.content.pair.result, invite: { consent: L.content.pair.invite.consent, needConsent: L.content.pair.invite.needConsent }, inviteMsg: L.content.pair.inviteMsg,
+    hasPair(L) ? { pair: { result: L.content.pair.result, invite: { consent: L.content.pair.invite.consent, consentNoName: L.content.pair.invite.consentNoName, needConsent: L.content.pair.invite.needConsent }, inviteMsg: L.content.pair.inviteMsg,
+      inviteBtn: L.content.pair.inviteBtn, yourName: L.content.pair.yourName, yourNameHint: L.content.pair.yourNameHint, needYourName: L.content.pair.needYourName,   // имя для результата без имени — с 2026-11-15
       copy: L.content.pair.compare.copy, copied: L.content.pair.compare.copied, share: L.content.pair.compare.share } } : {},
     hasProduct(L) ? { product: Object.assign(withPrice(L, L.content.product.block), hasSamples(L) ? {} : { sample: '' },
       L.content.product.promo ? { promo: withPrice(L, L.content.product.promo) } : {}, homePay(L) ? { pay: homePay(L) } : {}) } : {})
@@ -1420,7 +1421,8 @@ for (const L of locales) {
           `<h2>${escFull(PT.faqTitle)}</h2>` + PT.faq.map(it => `<h3 class="xq">${escFull(it.q)}</h3><p>${faqA(it.a)}</p>`).join('') +
           `<p class="seealso"><a href="../extended-report/">${escFull(C.product.h1)} ${arrow(L)}</a> · <a href="../compatibility/">${escFull(t('nav.compat'))} ${arrow(L)}</a> · ` +
             `<a href="../offer/">${escFull(C.offer.h1)} ${arrow(L)}</a> · <a href="../refund/">${escFull(C.refund.h1)} ${arrow(L)}</a></p></div>`;
-      const PTjs = { invite: PT.invite, compare: PT.compare, order: PO, status: PT.status, inviteText: PT.inviteText, inviteNoTest: PT.inviteNoTest, inviteMsg: PT.inviteMsg, ctaTest: PT.ctaTest };
+      const PTjs = { invite: PT.invite, compare: PT.compare, order: PO, status: PT.status, inviteText: PT.inviteText, inviteNoTest: PT.inviteNoTest, inviteMsg: PT.inviteMsg, ctaTest: PT.ctaTest,
+        inviteBtn: PT.inviteBtn, yourName: PT.yourName, yourNameHint: PT.yourNameHint, needYourName: PT.needYourName, noName: PT.mail.noName };   // имя для результата без имени — с 2026-11-15
       const pairsJs = Object.fromEntries(Object.entries(C.compatibility.pairs).map(([k, v]) => [k, { summary: v.summary }]));
       const profJs = Object.fromEntries(Object.entries(L.profiles).map(([k, v]) => [k, { name: v.name }]));
       writeContentPage(L, 'pair/', { navKey: 'nav.services', langs: locales.filter(hasPair), title: pv(PT.title), description: pv(PT.description), crumbs: [{ name: t('nav.services'), href: '../services/', sub: 'services/' }, { name: PT.h1 }],

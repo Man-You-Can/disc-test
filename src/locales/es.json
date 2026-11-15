@@ -2043,6 +2043,9 @@
       "inviteNoTest": "Primero haga el test: el botón «Invitar» aparecerá en la pantalla de su resultado.",
       "inviteBtn": "Invitar",
       "inviteMsg": "Haz el test DISC y veamos cómo trabajamos y nos comunicamos. Te invita {name}:",
+      "yourName": "Su nombre",
+      "yourNameHint": "La otra persona lo verá, y aparecerá en el informe.",
+      "needYourName": "Escriba su nombre.",
       "faqTitle": "Preguntas frecuentes",
       "faq": [
         {
@@ -2081,6 +2084,9 @@
         "consent": "Permito que se muestren mi resultado y mi nombre a quien me invitó ({name}) y que se utilicen para el informe «DISC para dos», si se encarga",
         "compare": "Comparar con mi resultado",
         "needConsent": "Marque la casilla de permiso para ver la comparación.",
+        "titleNoName": "Le invitan a hacer el test DISC",
+        "profileNoName": "Perfil de quien le invita: «{profile}»",
+        "consentNoName": "Permito que se muestren mi resultado y mi nombre a quien me invitó y que se utilicen para el informe «DISC para dos», si se encarga",
         "bad": "El enlace de invitación está dañado o incompleto. Pida que se lo envíen de nuevo."
       },
       "result": {
@@ -2099,6 +2105,8 @@
         "dlgTitle": "Invitar a hacer el test",
         "compareTitle": "Comparar resultados: usted y {name}",
         "compareText": "{name} le invita a comparar sus resultados del test DISC.",
+        "compareTitleNoName": "Comparar resultados con quien le invitó",
+        "compareTextNoName": "Le han invitado a comparar los resultados del test DISC.",
         "compareBtn": "Ver la comparación",
         "dismiss": "No comparar"
       },
@@ -2178,6 +2186,10 @@
         "badCopy": "Revise la dirección de la otra persona.",
         "needAgree": "Marque la casilla para aceptar las condiciones.",
         "needLead": "Indique quién dirige.",
+        "nameA": "Nombre de la persona de la barra llena ({profile})",
+        "nameB": "Nombre de la persona de la barra de contorno ({profile})",
+        "nameHint": "Así aparecerá en el informe.",
+        "needName": "Escriba el nombre: el informe lleva el nombre de las dos personas.",
         "priceChanged": "Con este correo ya se compró el informe ampliado, así que el precio es de {price} USD. Pulse «Comprar» de nuevo.",
         "error": "No se ha podido crear el pedido. Inténtelo de nuevo o escriba a {email}."
       },

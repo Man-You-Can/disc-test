@@ -2989,6 +2989,9 @@
       "inviteNoTest": "Machen Sie zuerst den Test: Die Schaltfläche „Einladen“ erscheint dann auf Ihrer Ergebnisseite.",
       "inviteBtn": "Einladen",
       "inviteMsg": "Mach doch den DISG-Test – dann sehen wir, wie wir beide zusammenarbeiten und miteinander umgehen. Einladung von {name}:",
+      "yourName": "Ihr Name",
+      "yourNameHint": "Die andere Person sieht ihn, und er steht im Bericht.",
+      "needYourName": "Bitte geben Sie Ihren Namen ein.",
       "faqTitle": "Fragen",
       "faq": [
         {
@@ -3027,6 +3030,9 @@
         "consent": "Ich bin einverstanden, dass mein Ergebnis und mein Name der einladenden Person ({name}) angezeigt und für den Bericht „DISG zu zweit“ verwendet werden, falls er bestellt wird",
         "compare": "Mit meinem Ergebnis vergleichen",
         "needConsent": "Setzen Sie das Häkchen, um den Vergleich zu sehen.",
+        "titleNoName": "Eine Einladung zum DISG-Test",
+        "profileNoName": "Profil der einladenden Person: „{profile}“",
+        "consentNoName": "Ich bin einverstanden, dass mein Ergebnis und mein Name der einladenden Person angezeigt und für den Bericht „DISG zu zweit“ verwendet werden, falls er bestellt wird",
         "bad": "Der Einladungslink ist beschädigt oder unvollständig. Bitten Sie darum, ihn noch einmal zu schicken."
       },
       "result": {
@@ -3045,6 +3051,8 @@
         "dlgTitle": "Zum Test einladen",
         "compareTitle": "Ergebnisse vergleichen: Sie und {name}",
         "compareText": "{name} lädt Sie ein, Ihre DISG-Ergebnisse zu vergleichen.",
+        "compareTitleNoName": "Ergebnisse mit der einladenden Person vergleichen",
+        "compareTextNoName": "Sie wurden eingeladen, Ihre DISG-Ergebnisse zu vergleichen.",
         "compareBtn": "Vergleich anzeigen",
         "dismiss": "Nicht vergleichen"
       },
@@ -3124,6 +3132,10 @@
         "badCopy": "Prüfen Sie die Adresse der zweiten Person.",
         "needAgree": "Setzen Sie das Häkchen bei den Geschäftsbedingungen.",
         "needLead": "Geben Sie an, wer führt.",
+        "nameA": "Name der Person mit dem ausgefüllten Balken ({profile})",
+        "nameB": "Name der Person mit dem Umriss-Balken ({profile})",
+        "nameHint": "So wird die Person im Bericht genannt.",
+        "needName": "Bitte geben Sie den Namen ein: Der Bericht nennt beide Personen beim Namen.",
         "priceChanged": "Mit dieser E-Mail-Adresse wurde bereits der ausführliche Bericht gekauft, deshalb kostet der Bericht {price} €. Klicken Sie noch einmal auf „Kaufen“.",
         "error": "Die Bestellung konnte nicht angelegt werden. Versuchen Sie es noch einmal oder schreiben Sie an {email}."
       },

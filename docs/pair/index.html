@@ -888,6 +888,9 @@ body.has-consent{padding-bottom:160px}
 .pr-for span{color:var(--muted);font-size:15px;margin-top:4px}
 .pr-order .field{margin-bottom:14px}
 .pr-order .field input{width:100%;max-width:420px}
+/* поле имени для результата без имени (с 2026-11-15): приглашение, сравнение, форма заказа */
+.pr-name{margin:0 0 14px}
+.pr-name input{width:100%;max-width:420px}
 .po-rel{border:0;padding:0;margin:0 0 14px}
 .po-rel legend{font-weight:600;margin-bottom:6px;padding:0}
 .po-opts{display:flex;flex-wrap:wrap;gap:8px}
@@ -1309,6 +1312,25 @@ function initPair(o){
   }
   var inviteLink = function(r){ return pageUrl + '?ref=pair#i=' + encode(r); };
 
+  /* ---- имя для результата без имени (с 2026-11-15): экран «Результат готов» с 2026-11-01 имени не спрашивает, а сервер принимает заказ только
+     с именами обоих (отчёт именной) — имя спрашивается там, где оно нужно: при приглашении, при сравнении и в форме заказа; в код ссылки
+     оно попадает только отсюда (в браузере не сохраняется) ---- */
+  var nameField = function(id, label, hint, own){
+    return '<div class="field pr-name"><label for="' + id + '">' + esc(label) + '<span class="req">*</span></label><input type="text" id="' + id + '" class="ym-disable-keys" maxlength="80" autocomplete="' + (own ? 'name' : 'off') + '">' +
+      (hint ? '<div class="hint">' + esc(hint) + '</div>' : '') + '</div>';
+  };
+  var withName = function(r, v){ return {name: String(v || '').trim().slice(0, 80), pos: r.pos, t: r.t, m: r.m, l: r.l}; };
+  var noName = function(i){ var n = (T.noName || [])[i] || String(i + 1); return n; };
+  var cap = function(s){ s = String(s); return s.charAt(0).toUpperCase() + s.slice(1); };
+  // своё имя перед ссылкой-приглашением: поле, кнопка «Пригласить», затем отправка ссылки (go(r) — с именем)
+  function askOwnName(box, id, go){
+    box.innerHTML = nameField(id, T.yourName, T.yourNameHint, true) + '<p class="small sendstatus err" id="' + id + 'Err" hidden></p>' +
+      '<p><button class="btn" type="button" id="' + id + 'Go">' + esc(T.inviteBtn) + '</button></p>';
+    var f = $('#' + id), e = $('#' + id + 'Err'), b = $('#' + id + 'Go');
+    b.addEventListener('click', function(){ var v = f.value.trim(); if(!v){ e.textContent = T.needYourName; e.hidden = false; f.focus(); return; } go(v); });
+    f.addEventListener('keydown', function(ev){ if(ev.key === 'Enter'){ ev.preventDefault(); b.click(); } });
+  }
+
   /* ---- без хэша: «Пригласить» ---- */
   /* mail — результат из ссылки письма рассылки (#r=<код без e-mail>, с 2026-11-14): письмо часто открывают на другом устройстве, где своего
      результата нет, — приглашение строится по коду из письма; результат из письма важнее сохранённого на устройстве */
@@ -1317,7 +1339,9 @@ function initPair(o){
     var me = mail || myResult();
     if(!me){ box.innerHTML = '<p>' + esc(T.inviteNoTest) + '</p><p><a class="btn" href="' + o.home + '#test">' + esc(T.ctaTest) + '</a></p>'; return; }
     box.innerHTML = '<p>' + esc(T.inviteText) + '</p><div id="pairInviteShare"></div>';
-    shareBox($('#pairInviteShare'), inviteLink(me), fmt(T.inviteMsg, {name: me.name || ''}), 'pair-invite');
+    var share = function(r){ shareBox($('#pairInviteShare'), inviteLink(r), fmt(T.inviteMsg, {name: r.name}), 'pair-invite'); };
+    if(me.name) share(me);
+    else askOwnName($('#pairInviteShare'), 'pairOwnName', function(v){ share(withName(me, v)); });
   }
 
   /* ---- #i= приглашение ---- */
@@ -1327,27 +1351,33 @@ function initPair(o){
     if(!a){ sec.innerHTML = '<p class="err">' + esc(T.invite.bad) + '</p>'; return; }
     var sa = score(a), me = myResult();
     track('pair-open', {via: 'invite'});
-    $('#piTitle').textContent = fmt(T.invite.title, {name: a.name});
-    $('#piProfile').textContent = fmt(T.invite.profile, {name: a.name, profile: profileName(sa)});
+    // приглашение без имени (ссылки, разосланные до 2026-11-15) — строки без имени
+    $('#piTitle').textContent = a.name ? fmt(T.invite.title, {name: a.name}) : T.invite.titleNoName;
+    $('#piProfile').textContent = fmt(a.name ? T.invite.profile : T.invite.profileNoName, {name: a.name, profile: profileName(sa)});
     $('#piStart').addEventListener('click', function(){
       lsSet('disc.pairInvite', {c: encode(a), at: Date.now()});
       track('pair-start');
     });
     if(me && !same(me, a)){
       var have = $('#piHave'); have.hidden = false;
-      $('#piConsentText').textContent = fmt(T.invite.consent, {name: a.name});
+      $('#piConsentText').textContent = a.name ? fmt(T.invite.consent, {name: a.name}) : T.invite.consentNoName;
+      if(!me.name){ var lab = $('#piConsent').closest('label'); lab.insertAdjacentHTML('beforebegin', nameField('piName', T.yourName, T.yourNameHint, true)); }
       $('#piCompare').addEventListener('click', function(){
+        var nm = $('#piName') ? $('#piName').value.trim() : me.name;
+        if(!nm){ $('#piErr').textContent = T.needYourName; $('#piErr').hidden = false; $('#piName').focus(); return; }
         if(!$('#piConsent').checked){ $('#piErr').textContent = T.invite.needConsent; $('#piErr').hidden = false; return; }
         track('pair-compare', {via: 'page'});
         lsSet('disc.pairInvite', null);
-        compare(encode(a), encode(me), true);
+        compare(encode(a), encode(withName(me, nm)), true);
         window.scrollTo(0, 0);
       });
     }
     if(me && same(me, a)){   // своё же приглашение — отправить его другому
       $('#piHave').hidden = false;
       $('#piHave').innerHTML = '<p>' + esc(T.inviteText) + '</p><div id="piOwnShare"></div>';
-      shareBox($('#piOwnShare'), inviteLink(me), fmt(T.inviteMsg, {name: me.name || ''}), 'pair-invite');
+      var ownShare = function(r){ shareBox($('#piOwnShare'), inviteLink(r), fmt(T.inviteMsg, {name: r.name}), 'pair-invite'); };
+      if(me.name) ownShare(me);
+      else askOwnName($('#piOwnShare'), 'piOwnName', function(v){ ownShare(withName(me, v)); });
     }
   }
 
@@ -1370,23 +1400,35 @@ function initPair(o){
     if(!fresh) track('pair-open', {via: 'compare'});
     var pk = [sa.lead, sb.lead].sort(function(x, y){ return KEYS.indexOf(x) - KEYS.indexOf(y); }).join(''), P = o.pairs[pk] || {};
     var near = KEYS.filter(function(k){ return Math.abs(sa.pct[k] - sb.pct[k]) <= 15; });
-    $('#pcTitle').textContent = fmt(T.compare.title, {a: a.name, b: b.name});
     $('#pcChart').innerHTML = bars(sa, sb);
-    $('#pcLegend').textContent = fmt(T.compare.legend, {a: a.name, b: b.name});
-    $('#pcProfiles').innerHTML = [[a, sa], [b, sb]].map(function(x){ return '<li><b>' + esc(x[0].name) + '</b> — ' + esc(fmt(T.compare.profile, {key: x[1].key, name: profileName(x[1])})) + '</li>'; }).join('');
     $('#pcSummary').textContent = P.summary || '';   // только затравка: полное описание пары — на страницах совместимости
     $('#pcClose').textContent = near.length ? fmt(T.compare.close, {list: near.length > 1 ? near.slice(0, -1).join(T.compare.sep) + T.compare.and + near[near.length - 1] : near[0]}) : T.compare.closeNone;
     var diff = function(k){ return Math.abs(sa.pct[k] - sb.pct[k]); };   // самый большой разрыв по шкалам
     var gk = KEYS.slice().sort(function(x, y){ return diff(y) - diff(x); })[0], gd = diff(gk);
-    $('#pcGap').textContent = fmt(gd > 15 ? T.compare.gap : T.compare.gapSmall, {k: gk, a: a.name, b: b.name, pa: sa.pct[gk], pb: sb.pct[gk]});
-    var link = pageUrl + '#p=' + encode(a) + '~' + encode(b);
-    shareBox($('#pcShare'), link, fmt(T.compare.shareMsg, {title: fmt(T.compare.title, {a: a.name, b: b.name})}), 'pair-share');
-    orderForm(encode(a), encode(b), a, b);
+    // строки с именами; у результата без имени — имя из поля формы заказа, пока его не вписали — «участник 1/2» (content.pair.mail.noName)
+    var draw = function(a, b){
+      var na = a.name || noName(0), nb = b.name || noName(1);
+      $('#pcTitle').textContent = cap(fmt(T.compare.title, {a: na, b: nb}));
+      $('#pcLegend').textContent = fmt(T.compare.legend, {a: na, b: nb});
+      $('#pcProfiles').innerHTML = [[na, sa], [nb, sb]].map(function(x){ return '<li><b>' + esc(cap(x[0])) + '</b> — ' + esc(fmt(T.compare.profile, {key: x[1].key, name: profileName(x[1])})) + '</li>'; }).join('');
+      $('#pcGap').textContent = fmt(gd > 15 ? T.compare.gap : T.compare.gapSmall, {k: gk, a: na, b: nb, pa: sa.pct[gk], pb: sb.pct[gk]});
+      $('#poLeadA').nextElementSibling.textContent = cap(na); $('#poLeadB').nextElementSibling.textContent = cap(nb);
+      var link = pageUrl + '#p=' + encode(a) + '~' + encode(b);
+      shareBox($('#pcShare'), link, fmt(T.compare.shareMsg, {title: cap(fmt(T.compare.title, {a: na, b: nb}))}), 'pair-share');
+    };
+    draw(a, b);
+    orderForm(a, b, sa, sb, draw);
   }
-  function orderForm(ca, cb, a, b){
+  function orderForm(a, b, sa, sb, draw){
     var O = T.order, price = o.price, form = $('#pairOrder'), err = $('#poErr'), btn = $('#poPay');
     var who = lsGet('disc.who'); if(who && who.email && !$('#poEmail').value) $('#poEmail').value = who.email;
-    $('#poLeadA').nextElementSibling.textContent = a.name; $('#poLeadB').nextElementSibling.textContent = b.name;
+    // поля имён — только для результатов без имени; подпись называет полосу графика и профиль, чтобы было ясно, о ком речь
+    var need = [[a, sa, 'poNameA', O.nameA], [b, sb, 'poNameB', O.nameB]].filter(function(x){ return !x[0].name; });
+    if(need.length){
+      form.insertAdjacentHTML('afterbegin', need.map(function(x){ return nameField(x[2], fmt(x[3], {profile: fmt(T.compare.profile, {key: x[1].key, name: profileName(x[1])})}), O.nameHint, false); }).join(''));
+      var named = function(){ return [a.name ? a : withName(a, $('#poNameA').value), b.name ? b : withName(b, $('#poNameB').value)]; };
+      need.forEach(function(x){ $('#' + x[2]).addEventListener('change', function(){ var n = named(); draw(n[0], n[1]); }); });
+    }
     var setBtn = function(){ btn.textContent = fmt(O.buy, {price: num(price)}); $('#poPrice').textContent = money(price); };
     setBtn();
     form.querySelectorAll('input[name="porel"]').forEach(function(r){ r.addEventListener('change', function(){ $('#poLead').hidden = form.querySelector('input[name="porel"]:checked').value !== 'boss'; }); });
@@ -1395,6 +1437,9 @@ function initPair(o){
       ev.preventDefault(); say('');
       var email = $('#poEmail').value.trim(), copy = $('#poCopy').value.trim(), rel = (form.querySelector('input[name="porel"]:checked') || {}).value || '';
       var lead = rel === 'boss' ? ((form.querySelector('input[name="polead"]:checked') || {}).value || '') : '';
+      var n = need.length ? named() : [a, b], empty = need.filter(function(x){ return !$('#' + x[2]).value.trim(); })[0];
+      if(empty){ $('#' + empty[2]).focus(); return say(O.needName); }
+      var ca = encode(n[0]), cb = encode(n[1]);
       if(!EMAIL.test(email) || email.length > 64) return say(O.badEmail);
       if(copy && (!EMAIL.test(copy) || copy.length > 64)) return say(O.badCopy);
       if(rel === 'boss' && !lead) return say(O.needLead);
@@ -1452,7 +1497,7 @@ function initPair(o){
   else landing();
 }
 
-initPair({T: {"invite":{"eyebrow":"Invitation","title":"{name} invites you to take the DISC test","text":"The test is free and takes about 10 minutes. Afterward you’ll see your result and, if you agree, a comparison of your two profiles: how you work and communicate together.","profile":"{name}: the {profile} profile","start":"Take the test","haveTitle":"Already taken the test on this device?","haveText":"You can compare that result without retaking the test.","consent":"I allow my result and name to be shown to the person who invited me ({name}) and to be used for a DISC for Two report if one is ordered","compare":"Compare with my result","needConsent":"Tick the consent box to see the comparison.","bad":"This invitation link is damaged or incomplete. Ask for it to be sent again."},"compare":{"title":"{a} and {b}","lead":"Two DISC profiles side by side. This comparison is free; the DISC for Two report covers how things work for the two of you specifically.","legend":"The solid bar is {a}, the outlined bar is {b}. The midline, 50%, is marked with a line.","profiles":"Profiles","pairTitle":"The two of you in brief","closeTitle":"Where you’re close","close":"On {list}, the gap is under 15 points: this is where understanding each other comes easiest.","closeNone":"No scales are especially close, which makes it all the more useful to agree on some rules in advance.","gapTitle":"Where the gap is biggest","gap":"On {k}: {a} {pa}%, {b} {pb}%. The report covers what this gap means for the two of you.","gapSmall":"Your most noticeable difference is on {k}, and it’s small: {a} {pa}%, {b} {pb}%.","only":{"title":"Not in the free comparison, but in the report","text":"The line about your pair above is the same for everyone with these primary styles. The report is written for the two of you:","items":[["Written for the two of you","from all four scales of each of you and your secondary styles, not just your primary styles"],["Five friction points","what each one looks like at work and at home, how each of you experiences it and what helps"],["Ready-made phrases for each of you","rules for conversations and messages, and a line to start with, separately for each of you"],["How to decide together and stop an argument","three questions before a joint decision, how an argument escalates between the two of you and how to stop it"],["Work and personal life","separate sections, shaped by how you know each other: colleagues, manager and team member, couple, friends or family"],["Worksheets","your agreement, a 30-day plan for the two of you and the essentials on one page"],["About 22 PDF pages within 24 hours","the report is written for your order, and a person reads it before it’s sent"]]},"shareTitle":"Send this page to the other person","shareText":"The link opens this same comparison. It contains both your names and summary results, but no email addresses.","copy":"Copy link","copied":"Link copied","share":"Share","bad":"This comparison link is damaged or incomplete. Ask for it to be sent again.","same":"The link contains the same result twice, so there’s nothing to compare.","aria":"{k}: {a}% and {b}%","pct":"{n}%","profile":"{name} ({key})","sep":", ","and":" and ","shareMsg":"{title} — DISC:"},"order":{"title":"Order the report","emailLabel":"Your email","emailHint":"We’ll send your report and payment confirmation here.","copyLabel":"The other participant’s email","copyOptional":"(optional)","copyHint":"We’ll send them a copy of the report. Only enter it if they’re happy to receive the email.","relTitle":"How you know each other","relHint":"The report covers both work and personal life; your answer helps it focus on what matters to you.","rels":[["colleagues","Colleagues at the same level"],["boss","One of us manages the other"],["couple","Couple"],["friends","Friends"],["family","Family"],["","I’d rather not say"]],"leadTitle":"Who’s the manager","priceNote":"US${owner} if you’ve already bought the in-depth report with this email address: the price will update after you click “Buy.”","agree":"I accept the {offer}","buy":"Buy for US${price}","wait":"Creating your order…","when":"The report will arrive by email within 24 hours of payment.","badEmail":"Please check your email address.","badCopy":"Please check the other participant’s email address.","needAgree":"Please tick the box to accept the terms.","needLead":"Please choose who’s the manager.","priceChanged":"The in-depth report has already been bought with this email address, so the price is US${price}. Click “Buy” again.","error":"We couldn’t create your order. Please try again or email us at {email}."},"status":{"wait":"Checking your payment…","ok":"Payment received. Your DISC for Two report will arrive by email within 24 hours; an order confirmation is already in your inbox.","sent":"Your report has been sent to your email.","fail":"The payment didn’t go through, and you haven’t been charged. You can try again on the comparison page.","unknown":"We couldn’t check your payment status. If you were charged, the report will arrive within 24 hours; questions to {email}."},"inviteText":"Send the link to the person you want to compare results with. They’ll see your name and your summary result.","inviteNoTest":"Take the test first. The “Invite” button will appear on your result screen.","inviteMsg":"Take the DISC test, and let’s see how the two of us work and communicate. Invitation from {name}:","ctaTest":"Take the test"}, pairs: {"DD":{"summary":"Two people used to making the call and taking the lead. Together they move fast, but they compete for control and rarely back down."},"DI":{"summary":"The most energetic pair: D sets the goal and the pace, I gets people fired up. Together they launch projects, but they tend to underestimate details and caution."},"DS":{"summary":"Opposites on both axes: D is fast and results-driven, S is measured and protects relationships. The hardest pair and one of the most useful."},"DC":{"summary":"Both focus on the task and the result, but D wants it fast and C wants it right. A strong pair for complex projects once they agree on pace."},"II":{"summary":"Two people who love people, ideas and attention. They have fun together and things come easily, but someone has to watch the deadlines and details."},"IS":{"summary":"A warm, friendly pair: I inspires, S supports. Good for the atmosphere and for clients, less so for hard decisions."},"IC":{"summary":"Opposites: I thrives on people and impressions, C on facts and precision. A difficult pair that turns into a strong one once trust is there."},"SS":{"summary":"The calmest pair: reliability, patience and mutual support. The danger is getting stuck and avoiding difficult topics."},"SC":{"summary":"A measured, thorough pair: S looks after relationships, C looks after quality. Excellent for support work and processes, hard on change."},"CC":{"summary":"A pair of experts: precision, logic and high standards. Together they do flawless work, but slowly, and they tend to argue over small things."}}, profiles: {"D":{"name":"Achiever"},"I":{"name":"Enthusiast"},"S":{"name":"Anchor"},"C":{"name":"Analyst"},"DI":{"name":"Pioneer"},"DC":{"name":"Strategist"},"DS":{"name":"Doer"},"ID":{"name":"Motivator"},"IS":{"name":"Mentor"},"IC":{"name":"Presenter"},"SI":{"name":"Diplomat"},"SC":{"name":"Specialist"},"SD":{"name":"Implementer"},"CD":{"name":"Perfectionist"},"CS":{"name":"Expert"},"CI":{"name":"Consultant"}}, BK: ['IDCS','CSDI','SCID','DSIC','ICSD','SDCI','CIDS','DCSI','ISDC','CDIS','SICD','DISC','ICDS','CSID','SDCI','DCSI','ISDC','CISD','SCDI','DSIC','IDCS','CSID','SIDC','DCIS'], price: 12.99, cur: "USD", money: "US${price}", loc: "en-US", endpoint: "https://api.disc-test.org/pay", lang: "en", home: '../', email: "info@disc-test.org", esc: esc, $: $, lsGet: lsGet, lsSet: lsSet});
+initPair({T: {"invite":{"eyebrow":"Invitation","title":"{name} invites you to take the DISC test","text":"The test is free and takes about 10 minutes. Afterward you’ll see your result and, if you agree, a comparison of your two profiles: how you work and communicate together.","profile":"{name}: the {profile} profile","start":"Take the test","haveTitle":"Already taken the test on this device?","haveText":"You can compare that result without retaking the test.","consent":"I allow my result and name to be shown to the person who invited me ({name}) and to be used for a DISC for Two report if one is ordered","compare":"Compare with my result","needConsent":"Tick the consent box to see the comparison.","titleNoName":"You’re invited to take the DISC test","profileNoName":"The person who invited you has the {profile} profile","consentNoName":"I allow my result and name to be shown to the person who invited me and to be used for a DISC for Two report if one is ordered","bad":"This invitation link is damaged or incomplete. Ask for it to be sent again."},"compare":{"title":"{a} and {b}","lead":"Two DISC profiles side by side. This comparison is free; the DISC for Two report covers how things work for the two of you specifically.","legend":"The solid bar is {a}, the outlined bar is {b}. The midline, 50%, is marked with a line.","profiles":"Profiles","pairTitle":"The two of you in brief","closeTitle":"Where you’re close","close":"On {list}, the gap is under 15 points: this is where understanding each other comes easiest.","closeNone":"No scales are especially close, which makes it all the more useful to agree on some rules in advance.","gapTitle":"Where the gap is biggest","gap":"On {k}: {a} {pa}%, {b} {pb}%. The report covers what this gap means for the two of you.","gapSmall":"Your most noticeable difference is on {k}, and it’s small: {a} {pa}%, {b} {pb}%.","only":{"title":"Not in the free comparison, but in the report","text":"The line about your pair above is the same for everyone with these primary styles. The report is written for the two of you:","items":[["Written for the two of you","from all four scales of each of you and your secondary styles, not just your primary styles"],["Five friction points","what each one looks like at work and at home, how each of you experiences it and what helps"],["Ready-made phrases for each of you","rules for conversations and messages, and a line to start with, separately for each of you"],["How to decide together and stop an argument","three questions before a joint decision, how an argument escalates between the two of you and how to stop it"],["Work and personal life","separate sections, shaped by how you know each other: colleagues, manager and team member, couple, friends or family"],["Worksheets","your agreement, a 30-day plan for the two of you and the essentials on one page"],["About 22 PDF pages within 24 hours","the report is written for your order, and a person reads it before it’s sent"]]},"shareTitle":"Send this page to the other person","shareText":"The link opens this same comparison. It contains both your names and summary results, but no email addresses.","copy":"Copy link","copied":"Link copied","share":"Share","bad":"This comparison link is damaged or incomplete. Ask for it to be sent again.","same":"The link contains the same result twice, so there’s nothing to compare.","aria":"{k}: {a}% and {b}%","pct":"{n}%","profile":"{name} ({key})","sep":", ","and":" and ","shareMsg":"{title} — DISC:"},"order":{"title":"Order the report","emailLabel":"Your email","emailHint":"We’ll send your report and payment confirmation here.","copyLabel":"The other participant’s email","copyOptional":"(optional)","copyHint":"We’ll send them a copy of the report. Only enter it if they’re happy to receive the email.","relTitle":"How you know each other","relHint":"The report covers both work and personal life; your answer helps it focus on what matters to you.","rels":[["colleagues","Colleagues at the same level"],["boss","One of us manages the other"],["couple","Couple"],["friends","Friends"],["family","Family"],["","I’d rather not say"]],"leadTitle":"Who’s the manager","priceNote":"US${owner} if you’ve already bought the in-depth report with this email address: the price will update after you click “Buy.”","agree":"I accept the {offer}","buy":"Buy for US${price}","wait":"Creating your order…","when":"The report will arrive by email within 24 hours of payment.","badEmail":"Please check your email address.","badCopy":"Please check the other participant’s email address.","needAgree":"Please tick the box to accept the terms.","needLead":"Please choose who’s the manager.","nameA":"Name of the person with the solid bar: {profile}","nameB":"Name of the person with the outlined bar: {profile}","nameHint":"This is how they’ll be named in the report.","needName":"Please enter the name: the report uses both names.","priceChanged":"The in-depth report has already been bought with this email address, so the price is US${price}. Click “Buy” again.","error":"We couldn’t create your order. Please try again or email us at {email}."},"status":{"wait":"Checking your payment…","ok":"Payment received. Your DISC for Two report will arrive by email within 24 hours; an order confirmation is already in your inbox.","sent":"Your report has been sent to your email.","fail":"The payment didn’t go through, and you haven’t been charged. You can try again on the comparison page.","unknown":"We couldn’t check your payment status. If you were charged, the report will arrive within 24 hours; questions to {email}."},"inviteText":"Send the link to the person you want to compare results with. They’ll see your name and your summary result.","inviteNoTest":"Take the test first. The “Invite” button will appear on your result screen.","inviteMsg":"Take the DISC test, and let’s see how the two of us work and communicate. Invitation from {name}:","ctaTest":"Take the test","inviteBtn":"Invite","yourName":"Your name","yourNameHint":"The other person will see it, and it will appear in the report.","needYourName":"Please enter your name.","noName":["participant 1","participant 2"]}, pairs: {"DD":{"summary":"Two people used to making the call and taking the lead. Together they move fast, but they compete for control and rarely back down."},"DI":{"summary":"The most energetic pair: D sets the goal and the pace, I gets people fired up. Together they launch projects, but they tend to underestimate details and caution."},"DS":{"summary":"Opposites on both axes: D is fast and results-driven, S is measured and protects relationships. The hardest pair and one of the most useful."},"DC":{"summary":"Both focus on the task and the result, but D wants it fast and C wants it right. A strong pair for complex projects once they agree on pace."},"II":{"summary":"Two people who love people, ideas and attention. They have fun together and things come easily, but someone has to watch the deadlines and details."},"IS":{"summary":"A warm, friendly pair: I inspires, S supports. Good for the atmosphere and for clients, less so for hard decisions."},"IC":{"summary":"Opposites: I thrives on people and impressions, C on facts and precision. A difficult pair that turns into a strong one once trust is there."},"SS":{"summary":"The calmest pair: reliability, patience and mutual support. The danger is getting stuck and avoiding difficult topics."},"SC":{"summary":"A measured, thorough pair: S looks after relationships, C looks after quality. Excellent for support work and processes, hard on change."},"CC":{"summary":"A pair of experts: precision, logic and high standards. Together they do flawless work, but slowly, and they tend to argue over small things."}}, profiles: {"D":{"name":"Achiever"},"I":{"name":"Enthusiast"},"S":{"name":"Anchor"},"C":{"name":"Analyst"},"DI":{"name":"Pioneer"},"DC":{"name":"Strategist"},"DS":{"name":"Doer"},"ID":{"name":"Motivator"},"IS":{"name":"Mentor"},"IC":{"name":"Presenter"},"SI":{"name":"Diplomat"},"SC":{"name":"Specialist"},"SD":{"name":"Implementer"},"CD":{"name":"Perfectionist"},"CS":{"name":"Expert"},"CI":{"name":"Consultant"}}, BK: ['IDCS','CSDI','SCID','DSIC','ICSD','SDCI','CIDS','DCSI','ISDC','CDIS','SICD','DISC','ICDS','CSID','SDCI','DCSI','ISDC','CISD','SCDI','DSIC','IDCS','CSID','SIDC','DCIS'], price: 12.99, cur: "USD", money: "US${price}", loc: "en-US", endpoint: "https://api.disc-test.org/pay", lang: "en", home: '../', email: "info@disc-test.org", esc: esc, $: $, lsGet: lsGet, lsSet: lsSet});
 /* Первый блок теста в статье (#embedTest, с 2026-10-26; build.js → embedTest): выбор устроен как в тесте (по одному в каждой колонке).
    «Продолжить тест» кладёт ответ в disc.progress (как сам тест, только в браузере; на сервер ничего не уходит) с пометкой from — страница,
    откуда пришли, — и ведёт на главную с #test: там тест открывается на блоке 2, засчитываются старт и цели start / embed-start.

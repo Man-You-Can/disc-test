@@ -2021,6 +2021,9 @@
       "inviteNoTest": "Ikuti tes terlebih dahulu: tombol “Undang” akan muncul di layar hasil Anda.",
       "inviteBtn": "Undang",
       "inviteMsg": "Coba ikuti tes DISC ini — kita lihat bagaimana kita bekerja dan berkomunikasi bersama. Undangan dari {name}:",
+      "yourName": "Nama Anda",
+      "yourNameHint": "Nama ini akan dilihat orang kedua dan dicantumkan dalam laporan.",
+      "needYourName": "Tuliskan nama Anda.",
       "faqTitle": "Pertanyaan",
       "faq": [
         {
@@ -2059,6 +2062,9 @@
         "consent": "Saya mengizinkan hasil dan nama saya diperlihatkan kepada pengundang ({name}) dan digunakan untuk laporan “DISC Berdua” jika laporan itu dipesan",
         "compare": "Bandingkan dengan hasil saya",
         "needConsent": "Centang persetujuan untuk melihat perbandingan.",
+        "titleNoName": "Anda diundang mengikuti tes DISC",
+        "profileNoName": "Profil pengundang: “{profile}”",
+        "consentNoName": "Saya mengizinkan hasil dan nama saya diperlihatkan kepada pengundang dan digunakan untuk laporan “DISC Berdua” jika laporan itu dipesan",
         "bad": "Tautan undangan rusak atau tidak lengkap. Mintalah agar tautan itu dikirim sekali lagi."
       },
       "result": {
@@ -2077,6 +2083,8 @@
         "dlgTitle": "Undang untuk mengikuti tes",
         "compareTitle": "Bandingkan hasil: Anda dan {name}",
         "compareText": "{name} mengundang Anda membandingkan hasil tes DISC.",
+        "compareTitleNoName": "Bandingkan hasil dengan pengundang",
+        "compareTextNoName": "Anda diundang membandingkan hasil tes DISC.",
         "compareBtn": "Tampilkan perbandingan",
         "dismiss": "Jangan bandingkan"
       },
@@ -2156,6 +2164,10 @@
         "badCopy": "Periksa alamat email orang kedua.",
         "needAgree": "Centang persetujuan dengan syarat dan ketentuan.",
         "needLead": "Pilih siapa yang memimpin.",
+        "nameA": "Nama peserta dengan batang berisi ({profile})",
+        "nameB": "Nama peserta dengan batang bergaris tepi ({profile})",
+        "nameHint": "Nama inilah yang dipakai dalam laporan.",
+        "needName": "Tuliskan namanya: laporan menyebut nama kedua peserta.",
         "priceChanged": "Dengan email ini laporan mendalam sudah pernah dibeli, jadi harganya US${price}. Tekan “Beli” sekali lagi.",
         "error": "Pesanan belum bisa dibuat. Coba lagi atau tulis kepada kami di {email}."
       },

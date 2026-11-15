@@ -1550,13 +1550,26 @@ function pairInvited(r){
   return {code: v.c, r: a};
 }
 function pairCode(r){ return encodeResult({name: r.name, email: '', pos: r.pos, t: r.t, m: r.m, l: r.l}); }
+/* Имя для результата без имени (с 2026-11-15): экран «Результат готов» с 2026-11-01 имени не спрашивает, а отчёт на двоих именной (сервер без имён
+   заказ не принимает) — имя спрашивается перед приглашением и сравнением и попадает только в код ссылки (в браузере не сохраняется). */
+function pairNameHTML(id){
+  var P = L.content.pair;
+  return '<div class="field" style="margin:0 0 14px"><label for="'+id+'">'+esc(P.yourName)+'<span class="req" aria-hidden="true">*</span></label><input type="text" id="'+id+'" class="ym-disable-keys" autocomplete="name" maxlength="80" style="max-width:420px"><span class="hint">'+esc(P.yourNameHint)+'</span></div>';
+}
+function pairNamed(r, id){
+  if(r.name) return r;
+  var v = $('#'+id) ? $('#'+id).value.trim().slice(0, 80) : '';
+  return v ? {name: v, pos: r.pos, t: r.t, m: r.m, l: r.l} : null;
+}
 function pairBoxHTML(r, base, where){
   var P = L.content && L.content.pair; if(!P) return '';
   var R = P.result, inv = pairInvited(r);
   if(where === 'top'){
     if(!inv) return '';
-    return '<div class="card pairbox no-print" id="pairBox" style="margin-top:16px"><h2>'+esc(R.compareTitle.replace('{name}', inv.r.name))+'</h2><p>'+esc(R.compareText.replace('{name}', inv.r.name))+'</p>'+
-      '<label class="check"><input type="checkbox" id="pairConsent"><span>'+esc(P.invite.consent.replace('{name}', inv.r.name))+'</span></label><p class="small sendstatus err" id="pairErr" hidden></p>'+
+    var an = inv.r.name;   // приглашение без имени (ссылки, разосланные до 2026-11-15) — строки без имени
+    return '<div class="card pairbox no-print" id="pairBox" style="margin-top:16px"><h2>'+esc(an ? R.compareTitle.replace('{name}', an) : R.compareTitleNoName)+'</h2><p>'+esc(an ? R.compareText.replace('{name}', an) : R.compareTextNoName)+'</p>'+
+      (r.name ? '' : pairNameHTML('pairName'))+
+      '<label class="check"><input type="checkbox" id="pairConsent"><span>'+esc(an ? P.invite.consent.replace('{name}', an) : P.invite.consentNoName)+'</span></label><p class="small sendstatus err" id="pairErr" hidden></p>'+
       '<div class="actions"><button class="btn" type="button" id="pairCompare">'+esc(R.compareBtn)+'</button><button class="link" type="button" id="pairSkip">'+esc(R.dismiss)+'</button></div></div>';
   }
   if(inv) return '';
@@ -1584,17 +1597,30 @@ function pairShareBox(box, link, msg){
 }
 function pairBind(r, base){
   if($('#pairInvite')) $('#pairInvite').addEventListener('click', function(){
+    var P = L.content.pair, box = $('#pairShare');
+    var share = function(rr){ pairShareBox(box, new URL(base + 'pair/', location.href).href + '?ref=pair#i=' + pairCode(rr),   // base — относительный путь ('../ru/')
+      P.inviteMsg.replace('{name}', rr.name)); };
     this.hidden = true;
-    pairShareBox($('#pairShare'), new URL(base + 'pair/', location.href).href + '?ref=pair#i=' + pairCode(r),   // base — относительный путь ('../ru/')
-      L.content.pair.inviteMsg.replace('{name}', r.name || ''));
+    if(r.name) return share(r);
+    box.innerHTML = pairNameHTML('pairOwnName')+'<p class="small sendstatus err" id="pairOwnErr" hidden></p><div class="actions"><button class="btn" type="button" id="pairOwnGo">'+esc(P.inviteBtn)+'</button></div>';
+    var go = $('#pairOwnGo'), f = $('#pairOwnName');
+    go.addEventListener('click', function(){
+      var rr = pairNamed(r, 'pairOwnName');
+      if(!rr){ $('#pairOwnErr').textContent = P.needYourName; $('#pairOwnErr').hidden = false; f.focus(); return; }
+      share(rr);
+    });
+    f.addEventListener('keydown', function(ev){ if(ev.key === 'Enter'){ ev.preventDefault(); go.click(); } });
+    f.focus();
   });
   if($('#pairCompare')) $('#pairCompare').addEventListener('click', function(){
     var inv = pairInvited(r);
     if(!inv) return;
+    var me = pairNamed(r, 'pairName');
+    if(!me){ $('#pairErr').textContent = L.content.pair.needYourName; $('#pairErr').hidden = false; $('#pairName').focus(); return; }
     if(!$('#pairConsent').checked){ $('#pairErr').textContent = L.content.pair.invite.needConsent; $('#pairErr').hidden = false; return; }
     if(window.discTrack) window.discTrack('pair-compare', {via: 'result'});
     lsSet('disc.pairInvite', null);
-    location.href = base + 'pair/#p=' + inv.code + '~' + pairCode(r);
+    location.href = base + 'pair/#p=' + inv.code + '~' + pairCode(me);
   });
   if($('#pairSkip')) $('#pairSkip').addEventListener('click', function(){ lsSet('disc.pairInvite', null); $('#pairBox').hidden = true; });
 }

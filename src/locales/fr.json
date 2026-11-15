@@ -2997,6 +2997,9 @@
       "inviteNoTest": "Passez d'abord le test : le bouton « Inviter » apparaîtra sur l'écran de votre résultat.",
       "inviteBtn": "Inviter",
       "inviteMsg": "On compare nos profils DISC ? Il suffit de passer le test, et on verra comment on travaille et on communique ensemble. Invitation de {name} :",
+      "yourName": "Votre prénom",
+      "yourNameHint": "L'autre personne le verra, et il figurera dans le rapport.",
+      "needYourName": "Indiquez votre prénom.",
       "faqTitle": "Questions fréquentes",
       "faq": [
         {
@@ -3035,6 +3038,9 @@
         "consent": "J'accepte que mon résultat et mon nom soient montrés à la personne qui m'invite ({name}) et utilisés pour le rapport « DISC à deux » s'il est commandé",
         "compare": "Comparer avec mon résultat",
         "needConsent": "Cochez la case de consentement pour voir la comparaison.",
+        "titleNoName": "Une invitation à passer le test DISC",
+        "profileNoName": "Profil de la personne qui vous invite : « {profile} »",
+        "consentNoName": "J'accepte que mon résultat et mon nom soient montrés à la personne qui m'invite et utilisés pour le rapport « DISC à deux » s'il est commandé",
         "bad": "Le lien d'invitation est endommagé ou incomplet. Demandez qu'on vous le renvoie."
       },
       "result": {
@@ -3053,6 +3059,8 @@
         "dlgTitle": "Inviter à passer le test",
         "compareTitle": "Comparer vos résultats : vous et {name}",
         "compareText": "{name} vous invite à comparer vos résultats au test DISC.",
+        "compareTitleNoName": "Comparer vos résultats avec la personne qui vous invite",
+        "compareTextNoName": "Une invitation à comparer vos résultats au test DISC.",
         "compareBtn": "Voir la comparaison",
         "dismiss": "Ne pas comparer"
       },
@@ -3132,6 +3140,10 @@
         "badCopy": "Vérifiez l'adresse de la deuxième personne.",
         "needAgree": "Cochez la case d'acceptation des conditions.",
         "needLead": "Indiquez qui dirige.",
+        "nameA": "Prénom de la personne à la barre pleine ({profile})",
+        "nameB": "Prénom de la personne à la barre en contour ({profile})",
+        "nameHint": "C'est ainsi qu'elle sera nommée dans le rapport.",
+        "needName": "Indiquez le prénom : le rapport nomme les deux personnes.",
         "priceChanged": "Le rapport détaillé a déjà été acheté avec cet e-mail : le prix est donc de {price} €. Cliquez de nouveau sur « Acheter ».",
         "error": "Impossible de créer la commande. Réessayez ou écrivez-nous à {email}."
       },

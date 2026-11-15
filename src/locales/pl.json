@@ -2013,6 +2013,9 @@
       "inviteNoTest": "Najpierw zrób test: przycisk „Zaproś” pojawi się na ekranie twojego wyniku.",
       "inviteBtn": "Zaproś",
       "inviteMsg": "Zrób test DISC – zobaczmy, jak razem pracujemy i się dogadujemy. Zaprasza cię {name}:",
+      "yourName": "Twoje imię",
+      "yourNameHint": "Zobaczy je druga osoba i znajdzie się ono w raporcie.",
+      "needYourName": "Wpisz swoje imię.",
       "faqTitle": "Pytania",
       "faq": [
         {
@@ -2051,6 +2054,9 @@
         "consent": "Zgadzam się na pokazanie mojego wyniku i imienia osobie zapraszającej ({name}) i na wykorzystanie ich w raporcie „DISC w duecie”, jeśli zostanie zamówiony",
         "compare": "Porównaj z moim wynikiem",
         "needConsent": "Zaznacz zgodę, aby zobaczyć porównanie.",
+        "titleNoName": "Zaproszenie do testu DISC",
+        "profileNoName": "Profil osoby zapraszającej: „{profile}”",
+        "consentNoName": "Zgadzam się na pokazanie mojego wyniku i imienia osobie zapraszającej i na wykorzystanie ich w raporcie „DISC w duecie”, jeśli zostanie zamówiony",
         "bad": "Link z zaproszeniem jest uszkodzony lub niepełny. Poproś o ponowne przesłanie."
       },
       "result": {
@@ -2069,6 +2075,8 @@
         "dlgTitle": "Zaproś do testu",
         "compareTitle": "Porównaj wyniki: ty i {name}",
         "compareText": "{name} zaprasza cię do porównania wyników testu DISC.",
+        "compareTitleNoName": "Porównaj wyniki z osobą zapraszającą",
+        "compareTextNoName": "Zaproszono cię do porównania wyników testu DISC.",
         "compareBtn": "Pokaż porównanie",
         "dismiss": "Nie porównuj"
       },
@@ -2148,6 +2156,10 @@
         "badCopy": "Sprawdź adres drugiej osoby.",
         "needAgree": "Zaznacz akceptację warunków.",
         "needLead": "Wskaż, kto kieruje.",
+        "nameA": "Imię osoby z pełnym paskiem ({profile})",
+        "nameB": "Imię osoby z obrysowanym paskiem ({profile})",
+        "nameHint": "Tak ta osoba będzie nazwana w raporcie.",
+        "needName": "Wpisz imię: raport zwraca się do obu osób po imieniu.",
         "priceChanged": "Z tego adresu e-mail kupiono już raport rozszerzony, dlatego cena wynosi {price} USD. Kliknij „Kup” jeszcze raz.",
         "error": "Nie udało się utworzyć zamówienia. Spróbuj ponownie albo napisz na {email}."
       },

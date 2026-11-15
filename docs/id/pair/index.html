@@ -888,6 +888,9 @@ body.has-consent{padding-bottom:160px}
 .pr-for span{color:var(--muted);font-size:15px;margin-top:4px}
 .pr-order .field{margin-bottom:14px}
 .pr-order .field input{width:100%;max-width:420px}
+/* поле имени для результата без имени (с 2026-11-15): приглашение, сравнение, форма заказа */
+.pr-name{margin:0 0 14px}
+.pr-name input{width:100%;max-width:420px}
 .po-rel{border:0;padding:0;margin:0 0 14px}
 .po-rel legend{font-weight:600;margin-bottom:6px;padding:0}
 .po-opts{display:flex;flex-wrap:wrap;gap:8px}
@@ -1309,6 +1312,25 @@ function initPair(o){
   }
   var inviteLink = function(r){ return pageUrl + '?ref=pair#i=' + encode(r); };
 
+  /* ---- имя для результата без имени (с 2026-11-15): экран «Результат готов» с 2026-11-01 имени не спрашивает, а сервер принимает заказ только
+     с именами обоих (отчёт именной) — имя спрашивается там, где оно нужно: при приглашении, при сравнении и в форме заказа; в код ссылки
+     оно попадает только отсюда (в браузере не сохраняется) ---- */
+  var nameField = function(id, label, hint, own){
+    return '<div class="field pr-name"><label for="' + id + '">' + esc(label) + '<span class="req">*</span></label><input type="text" id="' + id + '" class="ym-disable-keys" maxlength="80" autocomplete="' + (own ? 'name' : 'off') + '">' +
+      (hint ? '<div class="hint">' + esc(hint) + '</div>' : '') + '</div>';
+  };
+  var withName = function(r, v){ return {name: String(v || '').trim().slice(0, 80), pos: r.pos, t: r.t, m: r.m, l: r.l}; };
+  var noName = function(i){ var n = (T.noName || [])[i] || String(i + 1); return n; };
+  var cap = function(s){ s = String(s); return s.charAt(0).toUpperCase() + s.slice(1); };
+  // своё имя перед ссылкой-приглашением: поле, кнопка «Пригласить», затем отправка ссылки (go(r) — с именем)
+  function askOwnName(box, id, go){
+    box.innerHTML = nameField(id, T.yourName, T.yourNameHint, true) + '<p class="small sendstatus err" id="' + id + 'Err" hidden></p>' +
+      '<p><button class="btn" type="button" id="' + id + 'Go">' + esc(T.inviteBtn) + '</button></p>';
+    var f = $('#' + id), e = $('#' + id + 'Err'), b = $('#' + id + 'Go');
+    b.addEventListener('click', function(){ var v = f.value.trim(); if(!v){ e.textContent = T.needYourName; e.hidden = false; f.focus(); return; } go(v); });
+    f.addEventListener('keydown', function(ev){ if(ev.key === 'Enter'){ ev.preventDefault(); b.click(); } });
+  }
+
   /* ---- без хэша: «Пригласить» ---- */
   /* mail — результат из ссылки письма рассылки (#r=<код без e-mail>, с 2026-11-14): письмо часто открывают на другом устройстве, где своего
      результата нет, — приглашение строится по коду из письма; результат из письма важнее сохранённого на устройстве */
@@ -1317,7 +1339,9 @@ function initPair(o){
     var me = mail || myResult();
     if(!me){ box.innerHTML = '<p>' + esc(T.inviteNoTest) + '</p><p><a class="btn" href="' + o.home + '#test">' + esc(T.ctaTest) + '</a></p>'; return; }
     box.innerHTML = '<p>' + esc(T.inviteText) + '</p><div id="pairInviteShare"></div>';
-    shareBox($('#pairInviteShare'), inviteLink(me), fmt(T.inviteMsg, {name: me.name || ''}), 'pair-invite');
+    var share = function(r){ shareBox($('#pairInviteShare'), inviteLink(r), fmt(T.inviteMsg, {name: r.name}), 'pair-invite'); };
+    if(me.name) share(me);
+    else askOwnName($('#pairInviteShare'), 'pairOwnName', function(v){ share(withName(me, v)); });
   }
 
   /* ---- #i= приглашение ---- */
@@ -1327,27 +1351,33 @@ function initPair(o){
     if(!a){ sec.innerHTML = '<p class="err">' + esc(T.invite.bad) + '</p>'; return; }
     var sa = score(a), me = myResult();
     track('pair-open', {via: 'invite'});
-    $('#piTitle').textContent = fmt(T.invite.title, {name: a.name});
-    $('#piProfile').textContent = fmt(T.invite.profile, {name: a.name, profile: profileName(sa)});
+    // приглашение без имени (ссылки, разосланные до 2026-11-15) — строки без имени
+    $('#piTitle').textContent = a.name ? fmt(T.invite.title, {name: a.name}) : T.invite.titleNoName;
+    $('#piProfile').textContent = fmt(a.name ? T.invite.profile : T.invite.profileNoName, {name: a.name, profile: profileName(sa)});
     $('#piStart').addEventListener('click', function(){
       lsSet('disc.pairInvite', {c: encode(a), at: Date.now()});
       track('pair-start');
     });
     if(me && !same(me, a)){
       var have = $('#piHave'); have.hidden = false;
-      $('#piConsentText').textContent = fmt(T.invite.consent, {name: a.name});
+      $('#piConsentText').textContent = a.name ? fmt(T.invite.consent, {name: a.name}) : T.invite.consentNoName;
+      if(!me.name){ var lab = $('#piConsent').closest('label'); lab.insertAdjacentHTML('beforebegin', nameField('piName', T.yourName, T.yourNameHint, true)); }
       $('#piCompare').addEventListener('click', function(){
+        var nm = $('#piName') ? $('#piName').value.trim() : me.name;
+        if(!nm){ $('#piErr').textContent = T.needYourName; $('#piErr').hidden = false; $('#piName').focus(); return; }
         if(!$('#piConsent').checked){ $('#piErr').textContent = T.invite.needConsent; $('#piErr').hidden = false; return; }
         track('pair-compare', {via: 'page'});
         lsSet('disc.pairInvite', null);
-        compare(encode(a), encode(me), true);
+        compare(encode(a), encode(withName(me, nm)), true);
         window.scrollTo(0, 0);
       });
     }
     if(me && same(me, a)){   // своё же приглашение — отправить его другому
       $('#piHave').hidden = false;
       $('#piHave').innerHTML = '<p>' + esc(T.inviteText) + '</p><div id="piOwnShare"></div>';
-      shareBox($('#piOwnShare'), inviteLink(me), fmt(T.inviteMsg, {name: me.name || ''}), 'pair-invite');
+      var ownShare = function(r){ shareBox($('#piOwnShare'), inviteLink(r), fmt(T.inviteMsg, {name: r.name}), 'pair-invite'); };
+      if(me.name) ownShare(me);
+      else askOwnName($('#piOwnShare'), 'piOwnName', function(v){ ownShare(withName(me, v)); });
     }
   }
 
@@ -1370,23 +1400,35 @@ function initPair(o){
     if(!fresh) track('pair-open', {via: 'compare'});
     var pk = [sa.lead, sb.lead].sort(function(x, y){ return KEYS.indexOf(x) - KEYS.indexOf(y); }).join(''), P = o.pairs[pk] || {};
     var near = KEYS.filter(function(k){ return Math.abs(sa.pct[k] - sb.pct[k]) <= 15; });
-    $('#pcTitle').textContent = fmt(T.compare.title, {a: a.name, b: b.name});
     $('#pcChart').innerHTML = bars(sa, sb);
-    $('#pcLegend').textContent = fmt(T.compare.legend, {a: a.name, b: b.name});
-    $('#pcProfiles').innerHTML = [[a, sa], [b, sb]].map(function(x){ return '<li><b>' + esc(x[0].name) + '</b> — ' + esc(fmt(T.compare.profile, {key: x[1].key, name: profileName(x[1])})) + '</li>'; }).join('');
     $('#pcSummary').textContent = P.summary || '';   // только затравка: полное описание пары — на страницах совместимости
     $('#pcClose').textContent = near.length ? fmt(T.compare.close, {list: near.length > 1 ? near.slice(0, -1).join(T.compare.sep) + T.compare.and + near[near.length - 1] : near[0]}) : T.compare.closeNone;
     var diff = function(k){ return Math.abs(sa.pct[k] - sb.pct[k]); };   // самый большой разрыв по шкалам
     var gk = KEYS.slice().sort(function(x, y){ return diff(y) - diff(x); })[0], gd = diff(gk);
-    $('#pcGap').textContent = fmt(gd > 15 ? T.compare.gap : T.compare.gapSmall, {k: gk, a: a.name, b: b.name, pa: sa.pct[gk], pb: sb.pct[gk]});
-    var link = pageUrl + '#p=' + encode(a) + '~' + encode(b);
-    shareBox($('#pcShare'), link, fmt(T.compare.shareMsg, {title: fmt(T.compare.title, {a: a.name, b: b.name})}), 'pair-share');
-    orderForm(encode(a), encode(b), a, b);
+    // строки с именами; у результата без имени — имя из поля формы заказа, пока его не вписали — «участник 1/2» (content.pair.mail.noName)
+    var draw = function(a, b){
+      var na = a.name || noName(0), nb = b.name || noName(1);
+      $('#pcTitle').textContent = cap(fmt(T.compare.title, {a: na, b: nb}));
+      $('#pcLegend').textContent = fmt(T.compare.legend, {a: na, b: nb});
+      $('#pcProfiles').innerHTML = [[na, sa], [nb, sb]].map(function(x){ return '<li><b>' + esc(cap(x[0])) + '</b> — ' + esc(fmt(T.compare.profile, {key: x[1].key, name: profileName(x[1])})) + '</li>'; }).join('');
+      $('#pcGap').textContent = fmt(gd > 15 ? T.compare.gap : T.compare.gapSmall, {k: gk, a: na, b: nb, pa: sa.pct[gk], pb: sb.pct[gk]});
+      $('#poLeadA').nextElementSibling.textContent = cap(na); $('#poLeadB').nextElementSibling.textContent = cap(nb);
+      var link = pageUrl + '#p=' + encode(a) + '~' + encode(b);
+      shareBox($('#pcShare'), link, fmt(T.compare.shareMsg, {title: cap(fmt(T.compare.title, {a: na, b: nb}))}), 'pair-share');
+    };
+    draw(a, b);
+    orderForm(a, b, sa, sb, draw);
   }
-  function orderForm(ca, cb, a, b){
+  function orderForm(a, b, sa, sb, draw){
     var O = T.order, price = o.price, form = $('#pairOrder'), err = $('#poErr'), btn = $('#poPay');
     var who = lsGet('disc.who'); if(who && who.email && !$('#poEmail').value) $('#poEmail').value = who.email;
-    $('#poLeadA').nextElementSibling.textContent = a.name; $('#poLeadB').nextElementSibling.textContent = b.name;
+    // поля имён — только для результатов без имени; подпись называет полосу графика и профиль, чтобы было ясно, о ком речь
+    var need = [[a, sa, 'poNameA', O.nameA], [b, sb, 'poNameB', O.nameB]].filter(function(x){ return !x[0].name; });
+    if(need.length){
+      form.insertAdjacentHTML('afterbegin', need.map(function(x){ return nameField(x[2], fmt(x[3], {profile: fmt(T.compare.profile, {key: x[1].key, name: profileName(x[1])})}), O.nameHint, false); }).join(''));
+      var named = function(){ return [a.name ? a : withName(a, $('#poNameA').value), b.name ? b : withName(b, $('#poNameB').value)]; };
+      need.forEach(function(x){ $('#' + x[2]).addEventListener('change', function(){ var n = named(); draw(n[0], n[1]); }); });
+    }
     var setBtn = function(){ btn.textContent = fmt(O.buy, {price: num(price)}); $('#poPrice').textContent = money(price); };
     setBtn();
     form.querySelectorAll('input[name="porel"]').forEach(function(r){ r.addEventListener('change', function(){ $('#poLead').hidden = form.querySelector('input[name="porel"]:checked').value !== 'boss'; }); });
@@ -1395,6 +1437,9 @@ function initPair(o){
       ev.preventDefault(); say('');
       var email = $('#poEmail').value.trim(), copy = $('#poCopy').value.trim(), rel = (form.querySelector('input[name="porel"]:checked') || {}).value || '';
       var lead = rel === 'boss' ? ((form.querySelector('input[name="polead"]:checked') || {}).value || '') : '';
+      var n = need.length ? named() : [a, b], empty = need.filter(function(x){ return !$('#' + x[2]).value.trim(); })[0];
+      if(empty){ $('#' + empty[2]).focus(); return say(O.needName); }
+      var ca = encode(n[0]), cb = encode(n[1]);
       if(!EMAIL.test(email) || email.length > 64) return say(O.badEmail);
       if(copy && (!EMAIL.test(copy) || copy.length > 64)) return say(O.badCopy);
       if(rel === 'boss' && !lead) return say(O.needLead);
@@ -1452,7 +1497,7 @@ function initPair(o){
   else landing();
 }
 
-initPair({T: {"invite":{"eyebrow":"Undangan","title":"{name} mengundang Anda mengikuti tes DISC","text":"Tesnya gratis, sekitar 10 menit. Setelah itu Anda akan melihat hasil Anda sendiri, dan jika Anda setuju, juga perbandingan kedua profil: bagaimana Anda berdua bekerja dan berkomunikasi bersama.","profile":"{name} — profil “{profile}”","start":"Ikuti tes","haveTitle":"Sudah pernah mengikuti tes di perangkat ini?","haveText":"Hasil itu bisa langsung dibandingkan, tanpa mengulang tes.","consent":"Saya mengizinkan hasil dan nama saya diperlihatkan kepada pengundang ({name}) dan digunakan untuk laporan “DISC Berdua” jika laporan itu dipesan","compare":"Bandingkan dengan hasil saya","needConsent":"Centang persetujuan untuk melihat perbandingan.","bad":"Tautan undangan rusak atau tidak lengkap. Mintalah agar tautan itu dikirim sekali lagi."},"compare":{"title":"{a} dan {b}","lead":"Dua profil DISC berdampingan. Perbandingan ini gratis; bagaimana semuanya berlaku khusus untuk Anda berdua diuraikan dalam laporan “DISC Berdua”.","legend":"Batang berisi — {a}, batang bergaris tepi — {b}. Titik tengah skala, 50%, ditandai dengan garis.","profiles":"Profil","pairTitle":"Anda berdua secara singkat","closeTitle":"Di mana Anda mirip","close":"Pada skala {list}, selisihnya kurang dari 15 poin: di sini Anda paling mudah saling memahami.","closeNone":"Tidak ada skala yang nilainya berdekatan — karena itu, makin berguna menyepakati aturan sejak awal.","gapTitle":"Di mana perbedaan terbesar","gap":"Pada skala {k}: {a} — {pa}%, {b} — {pb}%. Arti perbedaan ini bagi Anda berdua diuraikan dalam laporan.","gapSmall":"Perbedaan yang paling terlihat ada pada skala {k}, dan perbedaannya kecil: {a} — {pa}%, {b} — {pb}%.","only":{"title":"Yang tidak ada di perbandingan gratis, tetapi ada di laporan","text":"Kalimat tentang Anda berdua di atas sama untuk semua orang dengan gaya utama yang sama. Laporan ditulis khusus untuk Anda berdua:","items":[["Ditulis untuk Anda berdua","berdasarkan keempat skala masing-masing dan gaya sekunder, bukan hanya gaya utama"],["Lima situasi gesekan","seperti apa tiap situasi di tempat kerja dan di rumah, apa yang dirasakan masing-masing, dan apa yang membantu"],["Kalimat siap pakai untuk masing-masing","aturan berbicara dan berkirim pesan, serta kalimat untuk memulai — terpisah untuk Anda masing-masing"],["Cara memutuskan bersama dan menghentikan perdebatan","tiga pertanyaan sebelum keputusan bersama, bagaimana perdebatan memanas justru di antara Anda berdua, dan cara menghentikannya"],["Pekerjaan dan kehidupan pribadi","bagian tersendiri, disesuaikan dengan hubungan Anda: rekan kerja, atasan dan anggota tim, pasangan, teman, atau keluarga"],["Lembar kerja","“Kesepakatan berdua”, rencana 30 hari berdua, dan intisari dalam satu halaman"],["Sekitar 22 halaman PDF dalam 24 jam","laporan ditulis untuk pesanan Anda, dan seorang manusia membacanya sebelum dikirim"]]},"shareTitle":"Kirim halaman ini kepada orang kedua","shareText":"Tautan ini membuka perbandingan yang sama. Di dalamnya ada nama dan hasil ringkas Anda berdua, tanpa email.","copy":"Salin tautan","copied":"Tautan disalin","share":"Bagikan","bad":"Tautan perbandingan rusak atau tidak lengkap. Mintalah agar tautan itu dikirim sekali lagi.","same":"Tautan ini berisi dua hasil yang sama — tidak ada yang bisa dibandingkan.","aria":"{k}: {a}% dan {b}%","pct":"{n}%","profile":"{key} “{name}”","sep":", ","and":" dan ","shareMsg":"{title} — DISC:"},"order":{"title":"Pesan laporan","emailLabel":"Email Anda","emailHint":"Laporan dan bukti pembayaran akan dikirim ke sini.","copyLabel":"Email orang kedua","copyOptional":"(opsional)","copyHint":"Kami akan mengirim salinan laporan. Isi hanya jika orang itu setuju menerima email.","relTitle":"Hubungan Anda berdua","relHint":"Laporan memuat bagian tentang pekerjaan dan tentang kehidupan pribadi; jawaban ini membantu menentukan penekanannya.","rels":[["colleagues","Rekan kerja setara"],["boss","Atasan dan anggota tim"],["couple","Pasangan"],["friends","Teman"],["family","Keluarga"],["","Tidak ingin menyebutkan"]],"leadTitle":"Siapa yang memimpin","priceNote":"US${owner} jika dengan email ini Anda sudah pernah membeli laporan mendalam: harga akan dihitung ulang setelah Anda menekan “Beli”.","agree":"Saya menerima {offer}","buy":"Beli seharga US${price}","wait":"Membuat pesanan …","when":"Laporan dikirim ke email dalam 24 jam setelah pembayaran.","badEmail":"Periksa alamat email Anda.","badCopy":"Periksa alamat email orang kedua.","needAgree":"Centang persetujuan dengan syarat dan ketentuan.","needLead":"Pilih siapa yang memimpin.","priceChanged":"Dengan email ini laporan mendalam sudah pernah dibeli, jadi harganya US${price}. Tekan “Beli” sekali lagi.","error":"Pesanan belum bisa dibuat. Coba lagi atau tulis kepada kami di {email}."},"status":{"wait":"Memeriksa pembayaran …","ok":"Pembayaran berhasil. Laporan “DISC Berdua” akan dikirim ke email Anda dalam 24 jam; email tentang pesanan sudah dikirim.","sent":"Laporan sudah dikirim ke email Anda.","fail":"Pembayaran tidak berhasil, dan dana Anda tidak terpotong. Anda bisa mencoba lagi di halaman perbandingan.","unknown":"Status pembayaran belum bisa diketahui. Jika dana Anda sudah terpotong, laporan akan dikirim dalam 24 jam; pertanyaan bisa dikirim ke {email}."},"inviteText":"Kirim tautan kepada orang yang hasilnya ingin Anda bandingkan dengan hasil Anda. Ia akan melihat nama dan hasil ringkas Anda.","inviteNoTest":"Ikuti tes terlebih dahulu: tombol “Undang” akan muncul di layar hasil Anda.","inviteMsg":"Coba ikuti tes DISC ini — kita lihat bagaimana kita bekerja dan berkomunikasi bersama. Undangan dari {name}:","ctaTest":"Ikuti tes"}, pairs: {"DD":{"summary":"Dua orang yang terbiasa memutuskan dan memimpin. Bersama-sama mereka menggerakkan pekerjaan dengan cepat, tetapi berebut kendali dan jarang mau mengalah."},"DI":{"summary":"Pasangan paling energik: D menetapkan tujuan dan tempo, I menularkan semangat kepada orang-orang. Bersama-sama mereka meluncurkan proyek, tetapi cenderung meremehkan detail dan kehati-hatian."},"DS":{"summary":"Berlawanan pada kedua sumbu: D cepat dan berorientasi pada hasil, S bertempo tenang dan menjaga hubungan. Pasangan paling sulit sekaligus salah satu yang paling bermanfaat."},"DC":{"summary":"Keduanya berorientasi pada tugas dan hasil, tetapi D ingin cepat, sedangkan C ingin benar. Pasangan yang kuat untuk proyek kompleks, asalkan temponya disepakati."},"II":{"summary":"Dua orang yang menyukai orang lain, ide, dan perhatian. Bersama-sama, suasananya seru dan ringan, tetapi harus ada yang mengawal tenggat dan detail."},"IS":{"summary":"Pasangan yang hangat dan ramah: I menginspirasi, S mendukung. Bagus untuk suasana kerja dan hubungan dengan klien, kurang cocok untuk keputusan yang sulit."},"IC":{"summary":"Dua kutub yang berlawanan: I hidup dari orang-orang dan kesan, C dari fakta dan ketepatan. Pasangan sulit yang menjadi kuat bila ada kepercayaan."},"SS":{"summary":"Pasangan paling tenang: keandalan, kesabaran, dan saling mendukung. Bahayanya adalah kemandekan dan keengganan mengangkat topik yang sulit."},"SC":{"summary":"Pasangan yang tenang dan saksama: S menjaga hubungan, C menjaga kualitas. Sangat baik untuk pekerjaan pendampingan dan proses, tetapi berat saat menghadapi perubahan."},"CC":{"summary":"Pasangan para ahli: ketepatan, logika, dan standar tinggi. Bersama-sama mereka menghasilkan pekerjaan tanpa cela, tetapi lama, dan cenderung memperdebatkan hal-hal kecil."}}, profiles: {"D":{"name":"Pencapai"},"I":{"name":"Inspirator"},"S":{"name":"Penopang"},"C":{"name":"Analis"},"DI":{"name":"Perintis"},"DC":{"name":"Ahli Strategi"},"DS":{"name":"Penuntas"},"ID":{"name":"Motivator"},"IS":{"name":"Mentor"},"IC":{"name":"Komunikator"},"SI":{"name":"Diplomat"},"SC":{"name":"Spesialis"},"SD":{"name":"Pelaksana"},"CD":{"name":"Perfeksionis"},"CS":{"name":"Pakar"},"CI":{"name":"Konsultan"}}, BK: ['IDCS','CSDI','SCID','DSIC','ICSD','SDCI','CIDS','DCSI','ISDC','CDIS','SICD','DISC','ICDS','CSID','SDCI','DCSI','ISDC','CISD','SCDI','DSIC','IDCS','CSID','SIDC','DCIS'], price: 4.99, cur: "USD", money: "US${price}", loc: "id-ID", endpoint: "https://api.disc-test.org/pay", lang: "id", home: '../', email: "info@disc-test.org", esc: esc, $: $, lsGet: lsGet, lsSet: lsSet});
+initPair({T: {"invite":{"eyebrow":"Undangan","title":"{name} mengundang Anda mengikuti tes DISC","text":"Tesnya gratis, sekitar 10 menit. Setelah itu Anda akan melihat hasil Anda sendiri, dan jika Anda setuju, juga perbandingan kedua profil: bagaimana Anda berdua bekerja dan berkomunikasi bersama.","profile":"{name} — profil “{profile}”","start":"Ikuti tes","haveTitle":"Sudah pernah mengikuti tes di perangkat ini?","haveText":"Hasil itu bisa langsung dibandingkan, tanpa mengulang tes.","consent":"Saya mengizinkan hasil dan nama saya diperlihatkan kepada pengundang ({name}) dan digunakan untuk laporan “DISC Berdua” jika laporan itu dipesan","compare":"Bandingkan dengan hasil saya","needConsent":"Centang persetujuan untuk melihat perbandingan.","titleNoName":"Anda diundang mengikuti tes DISC","profileNoName":"Profil pengundang: “{profile}”","consentNoName":"Saya mengizinkan hasil dan nama saya diperlihatkan kepada pengundang dan digunakan untuk laporan “DISC Berdua” jika laporan itu dipesan","bad":"Tautan undangan rusak atau tidak lengkap. Mintalah agar tautan itu dikirim sekali lagi."},"compare":{"title":"{a} dan {b}","lead":"Dua profil DISC berdampingan. Perbandingan ini gratis; bagaimana semuanya berlaku khusus untuk Anda berdua diuraikan dalam laporan “DISC Berdua”.","legend":"Batang berisi — {a}, batang bergaris tepi — {b}. Titik tengah skala, 50%, ditandai dengan garis.","profiles":"Profil","pairTitle":"Anda berdua secara singkat","closeTitle":"Di mana Anda mirip","close":"Pada skala {list}, selisihnya kurang dari 15 poin: di sini Anda paling mudah saling memahami.","closeNone":"Tidak ada skala yang nilainya berdekatan — karena itu, makin berguna menyepakati aturan sejak awal.","gapTitle":"Di mana perbedaan terbesar","gap":"Pada skala {k}: {a} — {pa}%, {b} — {pb}%. Arti perbedaan ini bagi Anda berdua diuraikan dalam laporan.","gapSmall":"Perbedaan yang paling terlihat ada pada skala {k}, dan perbedaannya kecil: {a} — {pa}%, {b} — {pb}%.","only":{"title":"Yang tidak ada di perbandingan gratis, tetapi ada di laporan","text":"Kalimat tentang Anda berdua di atas sama untuk semua orang dengan gaya utama yang sama. Laporan ditulis khusus untuk Anda berdua:","items":[["Ditulis untuk Anda berdua","berdasarkan keempat skala masing-masing dan gaya sekunder, bukan hanya gaya utama"],["Lima situasi gesekan","seperti apa tiap situasi di tempat kerja dan di rumah, apa yang dirasakan masing-masing, dan apa yang membantu"],["Kalimat siap pakai untuk masing-masing","aturan berbicara dan berkirim pesan, serta kalimat untuk memulai — terpisah untuk Anda masing-masing"],["Cara memutuskan bersama dan menghentikan perdebatan","tiga pertanyaan sebelum keputusan bersama, bagaimana perdebatan memanas justru di antara Anda berdua, dan cara menghentikannya"],["Pekerjaan dan kehidupan pribadi","bagian tersendiri, disesuaikan dengan hubungan Anda: rekan kerja, atasan dan anggota tim, pasangan, teman, atau keluarga"],["Lembar kerja","“Kesepakatan berdua”, rencana 30 hari berdua, dan intisari dalam satu halaman"],["Sekitar 22 halaman PDF dalam 24 jam","laporan ditulis untuk pesanan Anda, dan seorang manusia membacanya sebelum dikirim"]]},"shareTitle":"Kirim halaman ini kepada orang kedua","shareText":"Tautan ini membuka perbandingan yang sama. Di dalamnya ada nama dan hasil ringkas Anda berdua, tanpa email.","copy":"Salin tautan","copied":"Tautan disalin","share":"Bagikan","bad":"Tautan perbandingan rusak atau tidak lengkap. Mintalah agar tautan itu dikirim sekali lagi.","same":"Tautan ini berisi dua hasil yang sama — tidak ada yang bisa dibandingkan.","aria":"{k}: {a}% dan {b}%","pct":"{n}%","profile":"{key} “{name}”","sep":", ","and":" dan ","shareMsg":"{title} — DISC:"},"order":{"title":"Pesan laporan","emailLabel":"Email Anda","emailHint":"Laporan dan bukti pembayaran akan dikirim ke sini.","copyLabel":"Email orang kedua","copyOptional":"(opsional)","copyHint":"Kami akan mengirim salinan laporan. Isi hanya jika orang itu setuju menerima email.","relTitle":"Hubungan Anda berdua","relHint":"Laporan memuat bagian tentang pekerjaan dan tentang kehidupan pribadi; jawaban ini membantu menentukan penekanannya.","rels":[["colleagues","Rekan kerja setara"],["boss","Atasan dan anggota tim"],["couple","Pasangan"],["friends","Teman"],["family","Keluarga"],["","Tidak ingin menyebutkan"]],"leadTitle":"Siapa yang memimpin","priceNote":"US${owner} jika dengan email ini Anda sudah pernah membeli laporan mendalam: harga akan dihitung ulang setelah Anda menekan “Beli”.","agree":"Saya menerima {offer}","buy":"Beli seharga US${price}","wait":"Membuat pesanan …","when":"Laporan dikirim ke email dalam 24 jam setelah pembayaran.","badEmail":"Periksa alamat email Anda.","badCopy":"Periksa alamat email orang kedua.","needAgree":"Centang persetujuan dengan syarat dan ketentuan.","needLead":"Pilih siapa yang memimpin.","nameA":"Nama peserta dengan batang berisi ({profile})","nameB":"Nama peserta dengan batang bergaris tepi ({profile})","nameHint":"Nama inilah yang dipakai dalam laporan.","needName":"Tuliskan namanya: laporan menyebut nama kedua peserta.","priceChanged":"Dengan email ini laporan mendalam sudah pernah dibeli, jadi harganya US${price}. Tekan “Beli” sekali lagi.","error":"Pesanan belum bisa dibuat. Coba lagi atau tulis kepada kami di {email}."},"status":{"wait":"Memeriksa pembayaran …","ok":"Pembayaran berhasil. Laporan “DISC Berdua” akan dikirim ke email Anda dalam 24 jam; email tentang pesanan sudah dikirim.","sent":"Laporan sudah dikirim ke email Anda.","fail":"Pembayaran tidak berhasil, dan dana Anda tidak terpotong. Anda bisa mencoba lagi di halaman perbandingan.","unknown":"Status pembayaran belum bisa diketahui. Jika dana Anda sudah terpotong, laporan akan dikirim dalam 24 jam; pertanyaan bisa dikirim ke {email}."},"inviteText":"Kirim tautan kepada orang yang hasilnya ingin Anda bandingkan dengan hasil Anda. Ia akan melihat nama dan hasil ringkas Anda.","inviteNoTest":"Ikuti tes terlebih dahulu: tombol “Undang” akan muncul di layar hasil Anda.","inviteMsg":"Coba ikuti tes DISC ini — kita lihat bagaimana kita bekerja dan berkomunikasi bersama. Undangan dari {name}:","ctaTest":"Ikuti tes","inviteBtn":"Undang","yourName":"Nama Anda","yourNameHint":"Nama ini akan dilihat orang kedua dan dicantumkan dalam laporan.","needYourName":"Tuliskan nama Anda.","noName":["peserta 1","peserta 2"]}, pairs: {"DD":{"summary":"Dua orang yang terbiasa memutuskan dan memimpin. Bersama-sama mereka menggerakkan pekerjaan dengan cepat, tetapi berebut kendali dan jarang mau mengalah."},"DI":{"summary":"Pasangan paling energik: D menetapkan tujuan dan tempo, I menularkan semangat kepada orang-orang. Bersama-sama mereka meluncurkan proyek, tetapi cenderung meremehkan detail dan kehati-hatian."},"DS":{"summary":"Berlawanan pada kedua sumbu: D cepat dan berorientasi pada hasil, S bertempo tenang dan menjaga hubungan. Pasangan paling sulit sekaligus salah satu yang paling bermanfaat."},"DC":{"summary":"Keduanya berorientasi pada tugas dan hasil, tetapi D ingin cepat, sedangkan C ingin benar. Pasangan yang kuat untuk proyek kompleks, asalkan temponya disepakati."},"II":{"summary":"Dua orang yang menyukai orang lain, ide, dan perhatian. Bersama-sama, suasananya seru dan ringan, tetapi harus ada yang mengawal tenggat dan detail."},"IS":{"summary":"Pasangan yang hangat dan ramah: I menginspirasi, S mendukung. Bagus untuk suasana kerja dan hubungan dengan klien, kurang cocok untuk keputusan yang sulit."},"IC":{"summary":"Dua kutub yang berlawanan: I hidup dari orang-orang dan kesan, C dari fakta dan ketepatan. Pasangan sulit yang menjadi kuat bila ada kepercayaan."},"SS":{"summary":"Pasangan paling tenang: keandalan, kesabaran, dan saling mendukung. Bahayanya adalah kemandekan dan keengganan mengangkat topik yang sulit."},"SC":{"summary":"Pasangan yang tenang dan saksama: S menjaga hubungan, C menjaga kualitas. Sangat baik untuk pekerjaan pendampingan dan proses, tetapi berat saat menghadapi perubahan."},"CC":{"summary":"Pasangan para ahli: ketepatan, logika, dan standar tinggi. Bersama-sama mereka menghasilkan pekerjaan tanpa cela, tetapi lama, dan cenderung memperdebatkan hal-hal kecil."}}, profiles: {"D":{"name":"Pencapai"},"I":{"name":"Inspirator"},"S":{"name":"Penopang"},"C":{"name":"Analis"},"DI":{"name":"Perintis"},"DC":{"name":"Ahli Strategi"},"DS":{"name":"Penuntas"},"ID":{"name":"Motivator"},"IS":{"name":"Mentor"},"IC":{"name":"Komunikator"},"SI":{"name":"Diplomat"},"SC":{"name":"Spesialis"},"SD":{"name":"Pelaksana"},"CD":{"name":"Perfeksionis"},"CS":{"name":"Pakar"},"CI":{"name":"Konsultan"}}, BK: ['IDCS','CSDI','SCID','DSIC','ICSD','SDCI','CIDS','DCSI','ISDC','CDIS','SICD','DISC','ICDS','CSID','SDCI','DCSI','ISDC','CISD','SCDI','DSIC','IDCS','CSID','SIDC','DCIS'], price: 4.99, cur: "USD", money: "US${price}", loc: "id-ID", endpoint: "https://api.disc-test.org/pay", lang: "id", home: '../', email: "info@disc-test.org", esc: esc, $: $, lsGet: lsGet, lsSet: lsSet});
 /* Первый блок теста в статье (#embedTest, с 2026-10-26; build.js → embedTest): выбор устроен как в тесте (по одному в каждой колонке).
    «Продолжить тест» кладёт ответ в disc.progress (как сам тест, только в браузере; на сервер ничего не уходит) с пометкой from — страница,
    откуда пришли, — и ведёт на главную с #test: там тест открывается на блоке 2, засчитываются старт и цели start / embed-start.

@@ -2970,6 +2970,9 @@
       "inviteNoTest": "Take the test first. The “Invite” button will appear on your result screen.",
       "inviteBtn": "Invite",
       "inviteMsg": "Take the DISC test, and let’s see how the two of us work and communicate. Invitation from {name}:",
+      "yourName": "Your name",
+      "yourNameHint": "The other person will see it, and it will appear in the report.",
+      "needYourName": "Please enter your name.",
       "faqTitle": "Questions",
       "faq": [
         {
@@ -3008,6 +3011,9 @@
         "consent": "I allow my result and name to be shown to the person who invited me ({name}) and to be used for a DISC for Two report if one is ordered",
         "compare": "Compare with my result",
         "needConsent": "Tick the consent box to see the comparison.",
+        "titleNoName": "You’re invited to take the DISC test",
+        "profileNoName": "The person who invited you has the {profile} profile",
+        "consentNoName": "I allow my result and name to be shown to the person who invited me and to be used for a DISC for Two report if one is ordered",
         "bad": "This invitation link is damaged or incomplete. Ask for it to be sent again."
       },
       "result": {
@@ -3026,6 +3032,8 @@
         "dlgTitle": "Invite to the test",
         "compareTitle": "Compare results: you and {name}",
         "compareText": "{name} invites you to compare your DISC test results.",
+        "compareTitleNoName": "Compare results with the person who invited you",
+        "compareTextNoName": "You’ve been invited to compare DISC test results.",
         "compareBtn": "Show the comparison",
         "dismiss": "Don’t compare"
       },
@@ -3105,6 +3113,10 @@
         "badCopy": "Please check the other participant’s email address.",
         "needAgree": "Please tick the box to accept the terms.",
         "needLead": "Please choose who’s the manager.",
+        "nameA": "Name of the person with the solid bar: {profile}",
+        "nameB": "Name of the person with the outlined bar: {profile}",
+        "nameHint": "This is how they’ll be named in the report.",
+        "needName": "Please enter the name: the report uses both names.",
         "priceChanged": "The in-depth report has already been bought with this email address, so the price is US${price}. Click “Buy” again.",
         "error": "We couldn’t create your order. Please try again or email us at {email}."
       },

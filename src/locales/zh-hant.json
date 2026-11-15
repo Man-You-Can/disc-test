@@ -1771,6 +1771,9 @@
       "inviteNoTest": "請先做測驗：「邀請」按鈕會出現在你的結果頁面上。",
       "inviteBtn": "邀請",
       "inviteMsg": "來做個 DISC 測驗吧，看看我們兩個在工作和溝通上是怎麼互動的。{name} 邀請你：",
+      "yourName": "你的姓名",
+      "yourNameHint": "對方會看到這個名字，報告中也會使用它。",
+      "needYourName": "請填寫你的姓名。",
       "faqTitle": "常見問題",
       "faq": [
         {
@@ -1809,6 +1812,9 @@
         "consent": "我同意將我的結果和姓名顯示給邀請人（{name}），並在對方訂購「DISC 雙人報告」時用於製作報告",
         "compare": "和我的結果比較",
         "needConsent": "請勾選同意，才能看到比較結果。",
+        "titleNoName": "有人邀請你做 DISC 測驗",
+        "profileNoName": "邀請人的類型：「{profile}」",
+        "consentNoName": "我同意將我的結果和姓名顯示給邀請人，並在對方訂購「DISC 雙人報告」時用於製作報告",
         "bad": "邀請連結已損壞或不完整。請對方再傳一次。"
       },
       "result": {
@@ -1827,6 +1833,8 @@
         "dlgTitle": "邀請做測驗",
         "compareTitle": "比較結果：你和{name}",
         "compareText": "{name} 邀請你比較兩人的 DISC 測驗結果。",
+        "compareTitleNoName": "與邀請人比較結果",
+        "compareTextNoName": "有人邀請你比較 DISC 測驗結果。",
         "compareBtn": "查看比較",
         "dismiss": "不要比較"
       },
@@ -1906,6 +1914,10 @@
         "badCopy": "請確認另一位參與者的電子郵件地址。",
         "needAgree": "請勾選同意條款。",
         "needLead": "請選擇誰是主管。",
+        "nameA": "實心長條參與者的姓名：{profile}",
+        "nameB": "空心長條參與者的姓名：{profile}",
+        "nameHint": "報告中會以這個名字稱呼對方。",
+        "needName": "請填寫姓名：報告中會寫出兩個人的名字。",
         "priceChanged": "這個電子郵件地址已購買過進階版報告，所以價格是 {price} 美元。請再點選一次「購買」。",
         "error": "暫時無法建立訂單。請再試一次，或來信至 {email}。"
       },

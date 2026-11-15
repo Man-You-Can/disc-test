@@ -2011,6 +2011,9 @@
       "inviteNoTest": "Önce testi çözün: “Davet et” düğmesi sonuç ekranınızda görünecek.",
       "inviteBtn": "Davet et",
       "inviteMsg": "DISC testini çözelim: birlikte nasıl çalıştığımıza ve nasıl iletişim kurduğumuza bakalım. {name} davet ediyor:",
+      "yourName": "Adınız",
+      "yourNameHint": "Diğer kişi bu adı görecek; ad raporda da yer alacak.",
+      "needYourName": "Lütfen adınızı yazın.",
       "faqTitle": "Sorular",
       "faq": [
         {
@@ -2049,6 +2052,9 @@
         "consent": "Sonucumun ve adımın beni davet eden kişiye ({name}) gösterilmesine ve sipariş edilirse “İki kişilik DISC” raporu için kullanılmasına izin veriyorum",
         "compare": "Sonucumla karşılaştır",
         "needConsent": "Karşılaştırmayı görmek için onay kutusunu işaretleyin.",
+        "titleNoName": "DISC testine davet edildiniz",
+        "profileNoName": "Davet eden kişinin profili: “{profile}”",
+        "consentNoName": "Sonucumun ve adımın beni davet eden kişiye gösterilmesine ve sipariş edilirse “İki kişilik DISC” raporu için kullanılmasına izin veriyorum",
         "bad": "Davet bağlantısı bozuk ya da eksik. Bağlantının yeniden gönderilmesini isteyin."
       },
       "result": {
@@ -2067,6 +2073,8 @@
         "dlgTitle": "Teste davet et",
         "compareTitle": "Sonuçları karşılaştırın: siz ve {name}",
         "compareText": "{name} sizi DISC testi sonuçlarınızı karşılaştırmaya davet ediyor.",
+        "compareTitleNoName": "Sonuçları davet eden kişiyle karşılaştırın",
+        "compareTextNoName": "DISC testi sonuçlarını karşılaştırmaya davet edildiniz.",
         "compareBtn": "Karşılaştırmayı göster",
         "dismiss": "Karşılaştırmak istemiyorum"
       },
@@ -2146,6 +2154,10 @@
         "badCopy": "İkinci katılımcının adresini kontrol edin.",
         "needAgree": "Satış koşullarını kabul ettiğinizi işaretleyin.",
         "needLead": "Yöneticinin kim olduğunu belirtin.",
+        "nameA": "Dolu çubuktaki kişinin adı ({profile})",
+        "nameB": "Çerçeveli çubuktaki kişinin adı ({profile})",
+        "nameHint": "Raporda bu kişiye bu adla hitap edilecek.",
+        "needName": "Lütfen adı yazın: raporda iki kişinin adı da geçiyor.",
         "priceChanged": "Bu e-posta adresiyle daha önce genişletilmiş rapor satın alındığı için ücret {price} USD. “Satın al” düğmesine yeniden basın.",
         "error": "Sipariş oluşturulamadı. Yeniden deneyin ya da {email} adresine yazın."
       },

@@ -2715,6 +2715,9 @@
       "inviteNoTest": "请先完成测试：“邀请”按钮会出现在你的结果页面上。",
       "inviteBtn": "邀请",
       "inviteMsg": "来做一下 DISC 测试吧，看看我们俩一起做事、相处是什么样子。邀请人：{name}。链接：",
+      "yourName": "你的姓名",
+      "yourNameHint": "对方会看到这个名字，报告中也会使用它。",
+      "needYourName": "请填写你的姓名。",
       "faqTitle": "常见问题",
       "faq": [
         {
@@ -2753,6 +2756,9 @@
         "consent": "我同意向邀请人（{name}）展示我的结果和姓名；如果有人订购 DISC 双人报告，也同意将它们用于这份报告",
         "compare": "用我的结果对照",
         "needConsent": "请勾选同意，才能查看对照。",
+        "titleNoName": "有人邀请你做 DISC 测试",
+        "profileNoName": "邀请人的类型：{profile}",
+        "consentNoName": "我同意向邀请人展示我的结果和姓名；如果有人订购 DISC 双人报告，也同意将它们用于这份报告",
         "bad": "邀请链接已损坏或不完整。请让对方重新发一次。"
       },
       "result": {
@@ -2771,6 +2777,8 @@
         "dlgTitle": "邀请对方做测试",
         "compareTitle": "对照结果：你和{name}",
         "compareText": "{name}邀请你对照两人的 DISC 测试结果。",
+        "compareTitleNoName": "与邀请人比较结果",
+        "compareTextNoName": "有人邀请你比较 DISC 测试结果。",
         "compareBtn": "查看对照",
         "dismiss": "不对照"
       },
@@ -2850,6 +2858,10 @@
         "badCopy": "请检查另一位测试者的邮箱地址。",
         "needAgree": "请勾选同意协议条款。",
         "needLead": "请选择谁是上级。",
+        "nameA": "实心条测试者的姓名：{profile}",
+        "nameB": "空心条测试者的姓名：{profile}",
+        "nameHint": "报告中将用这个名字称呼对方。",
+        "needName": "请填写姓名：报告中会写明两个人的名字。",
         "priceChanged": "这个邮箱已经购买过详细版报告，因此价格为 {price} 美元。请再点一次“购买”。",
         "error": "暂时无法创建订单。请再试一次，或写信至 {email}。"
       },
