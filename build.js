@@ -349,7 +349,11 @@ const HOWMADE_SUB = 'how-reports-are-made/', hasHowMade = L => !!(L.content.howM
 // там, где в локали есть content.tests и ui['nav.tests'] (валидатор требует их вместе). Прежние пункты шапки не убираются (private/TESTS-PLAN.md, раздел 2.2).
 const hasTests = L => !!(L.content.tests && L.ui['nav.tests']);
 const navItems = L => NAV_ITEMS.slice(0, 1).concat(hasTests(L) ? [['nav.tests', 'tests/']] : [], NAV_ITEMS.slice(1), hasHowMade(L) ? [['nav.howMade', HOWMADE_SUB]] : [], hasServices(L) ? [['nav.services', 'services/']] : [], feedbackEmail ? [['nav.contact', 'contact/']] : []);
-const materialsHtml = (L, base, cur) => `<nav class="materials" aria-label="${esc(L.ui['nav.materials'])}"><span class="mlabel">${esc(L.ui['nav.materials'])}</span>` + MATERIALS.map(([k, sub]) => sub === cur ? `<span aria-current="page">${esc(L.ui[k])}</span>` : `<a href="${base + sub}">${esc(L.ui[k])}</a>`).join('') + `</nav>`;
+// раздел «Тесты» в подвале (с 2026-11-15, по просьбе заказчика; где hasTests): строка над «Материалами о DISC» — тест DISC, «Большая пятёрка» (где есть content.bigfive), «Все тесты»
+const testsFootHtml = (L, base, cur) => { if (!hasTests(L) || !L.content.tests.foot) return ''; const F = L.content.tests.foot;
+  const items = [['', F.disc]].concat(L.content.bigfive && F.bigfive ? [['big-five/', F.bigfive]] : [], [['tests/', L.ui['nav.tests']]]);
+  return `<nav class="materials" aria-label="${esc(F.title)}"><span class="mlabel">${esc(F.title)}</span>` + items.map(([sub, name]) => sub === cur ? `<span aria-current="page">${esc(name)}</span>` : `<a href="${base + sub}">${esc(name)}</a>`).join('') + `</nav>`; };
+const materialsHtml = (L, base, cur) => testsFootHtml(L, base, cur) + `<nav class="materials" aria-label="${esc(L.ui['nav.materials'])}"><span class="mlabel">${esc(L.ui['nav.materials'])}</span>` + MATERIALS.map(([k, sub]) => sub === cur ? `<span aria-current="page">${esc(L.ui[k])}</span>` : `<a href="${base + sub}">${esc(L.ui[k])}</a>`).join('') + `</nav>`;
 const relRoot = (L, sub) => { const depth = (pathOf(L.lang) + sub).split('/').length - 1; return depth ? '../'.repeat(depth) : './'; };
 const PAIRS = ['DD', 'DI', 'DS', 'DC', 'II', 'IS', 'IC', 'SS', 'SC', 'CC'], pairSlug = k => (k[0] + '-' + k[1]).toLowerCase();
 const ltr = str => `<span dir="ltr">${str}</span>`; // латиница внутри арабского текста: без изоляции «D · I» читается как «I · D»
