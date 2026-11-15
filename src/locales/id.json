@@ -449,6 +449,30 @@
     }
   },
   "content": {
+    "tests": {
+      "title": "Semua tes: DISC dan Big Five, gratis tanpa pendaftaran",
+      "description": "Tes kepribadian gratis: DISC menunjukkan gaya perilaku Anda dalam sekitar 10 menit, Big Five mengukur lima sifat utama kepribadian dalam sekitar 15 menit. Tanpa pendaftaran, hasilnya langsung muncul.",
+      "eyebrow": "Tes",
+      "h1": "Semua tes",
+      "lead": "Di sini ada semua tes yang bisa Anda kerjakan di situs ini. Semuanya gratis, dikerjakan secara online tanpa pendaftaran, dan hasilnya langsung muncul di layar setelah pertanyaan terakhir.",
+      "items": [
+        { "test": "disc", "name": "Tes DISC", "text": "Cara Anda bertindak, berkomunikasi, dan mengambil keputusan. Anda akan melihat gaya utama Anda dari empat gaya (D, I, S, C), profil mana dari 16 profil yang paling cocok, serta kekuatan dan area pengembangan Anda.", "facts": ["96 pernyataan · sekitar 10 menit", "4 gaya dan 16 profil", "Gratis, tanpa pendaftaran"], "button": "Kerjakan tes DISC", "more": "Apa itu DISC" },
+        { "test": "bigfive", "name": "Tes kepribadian Big Five", "text": "Lima sifat utama kepribadian yang diteliti psikologi modern: keterbukaan terhadap pengalaman, kehati-hatian, ekstraversi, keramahan, dan neurotisisme.", "facts": ["100 pernyataan · sekitar 15 menit", "5 sifat dan 10 aspek", "Gratis, tanpa pendaftaran"], "button": "Kerjakan tes Big Five", "more": "Apa itu Big Five" }
+      ],
+      "chooseTitle": "Tes mana yang sebaiknya dipilih?",
+      "choose": [
+        "DISC membahas perilaku: cara Anda bersikap di tempat kerja, dalam tim, dan saat berkomunikasi. Tes ini berguna sebelum wawancara kerja, saat tim baru saling mengenal, atau ketika Anda ingin bekerja sama lebih baik dengan rekan kerja.",
+        "Big Five membahas kepribadian secara keseluruhan: sifat-sifat yang terlihat jauh di luar urusan pekerjaan dan tidak banyak berubah seiring waktu.",
+        "Kedua tes ini tidak saling mengulang, jadi ada baiknya mengerjakan keduanya: DISC untuk melihat cara Anda bekerja dengan orang lain, Big Five untuk gambaran kepribadian yang lebih luas."
+      ],
+      "formatsTitle": "Tes DISC dalam format lain",
+      "formats": {
+        "pdf": "Formulir untuk dicetak: kerjakan tes di atas kertas dan hitung hasilnya dengan tabel.",
+        "group": "Kirim tes ke sebuah kelompok lewat satu tautan dan kumpulkan semua hasil dalam satu tabel.",
+        "pair": "Laporan tentang dua orang berdasarkan hasil DISC mereka: di tempat kerja dan dalam kehidupan pribadi."
+      },
+      "foot": { "title": "Tes", "disc": "Tes DISC", "bigfive": "Big Five" }
+    },
     "bigfive": {
       "title": "Tes Kepribadian Big Five Online Gratis — 100 Pernyataan",
       "description": "Tes kepribadian Big Five (BFAS) gratis: 100 pernyataan, sekitar 15 menit, tanpa pendaftaran. Lima sifat dan sepuluh aspek kepribadian beserta penjelasannya.",
@@ -3487,6 +3511,7 @@
     "nav.colors": "Warna DISC",
     "nav.teams": "DISC untuk tim",
     "nav.group": "Tes untuk kelompok",
+    "nav.tests": "Semua tes",
     "nav.mbti": "DISC dan MBTI",
     "nav.pdf": "Tes DISC PDF",
     "nav.materials": "Materi tentang DISC",

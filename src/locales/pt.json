@@ -449,6 +449,30 @@
     }
   },
   "content": {
+    "tests": {
+      "title": "Todos os testes: DISC e Big Five, grátis e sem cadastro",
+      "description": "Testes de personalidade gratuitos: o DISC mostra seu estilo de comportamento em cerca de 10 minutos, e o Big Five mede cinco grandes traços em cerca de 15. Sem cadastro, resultado na hora.",
+      "eyebrow": "Testes",
+      "h1": "Todos os testes",
+      "lead": "Aqui estão todos os testes que você pode fazer no site. Eles são gratuitos, feitos on-line sem cadastro, e o resultado aparece na tela assim que você responde à última pergunta.",
+      "items": [
+        { "test": "disc", "name": "Teste DISC", "text": "Como você age, se comunica e toma decisões. Você vai ver seu estilo predominante entre os quatro (D, I, S, C), qual dos 16 perfis é o seu, seus pontos fortes e suas áreas de desenvolvimento.", "facts": ["96 afirmações · cerca de 10 minutos", "4 estilos e 16 perfis", "Grátis, sem cadastro"], "button": "Fazer o teste DISC", "more": "O que é DISC" },
+        { "test": "bigfive", "name": "Teste Big Five (Cinco Grandes Fatores)", "text": "Os cinco grandes traços de personalidade estudados pela psicologia atual: abertura à experiência, conscienciosidade, extroversão, amabilidade e neuroticismo.", "facts": ["100 afirmações · cerca de 15 minutos", "5 traços e 10 aspectos", "Grátis, sem cadastro"], "button": "Fazer o teste Big Five", "more": "O que é o Big Five" }
+      ],
+      "chooseTitle": "Qual teste escolher?",
+      "choose": [
+        "O DISC fala de comportamento: como você age no trabalho, em equipe e na comunicação. Ele ajuda antes de uma entrevista de emprego, quando uma equipe nova está se conhecendo ou quando você quer trabalhar melhor com os colegas.",
+        "O Big Five fala da personalidade como um todo: traços que aparecem muito além do trabalho e mudam pouco com os anos.",
+        "Os dois testes não se repetem, então vale a pena fazer os dois: o DISC para entender como você trabalha com os outros e o Big Five para ter uma visão mais ampla da sua personalidade."
+      ],
+      "formatsTitle": "O teste DISC em outros formatos",
+      "formats": {
+        "pdf": "Formulário para imprimir: faça o teste no papel e calcule o resultado com a tabela.",
+        "group": "Envie o teste para um grupo com um único link e reúna todos os resultados em uma tabela.",
+        "pair": "Um relatório sobre duas pessoas com base nos resultados DISC delas: no trabalho e na vida pessoal."
+      },
+      "foot": { "title": "Testes", "disc": "Teste DISC", "bigfive": "Big Five" }
+    },
     "bigfive": {
       "title": "Teste Big Five grátis online: Cinco Grandes Fatores, 100 itens",
       "description": "Teste Big Five grátis (Cinco Grandes Fatores, BFAS): 100 afirmações, cerca de 15 minutos, sem cadastro. Cinco traços e dez aspectos da personalidade.",
@@ -3498,6 +3522,7 @@
     "nav.colors": "DISC por cores",
     "nav.teams": "DISC para equipes",
     "nav.group": "Teste em grupo",
+    "nav.tests": "Todos os testes",
     "nav.mbti": "DISC e MBTI",
     "nav.pdf": "Teste em PDF",
     "nav.materials": "Materiais sobre DISC",

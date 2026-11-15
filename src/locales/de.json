@@ -449,6 +449,30 @@
     }
   },
   "content": {
+    "tests": {
+      "title": "Alle Tests: DISG und Big Five, kostenlos und ohne Anmeldung",
+      "description": "Kostenlose Persönlichkeitstests: Der DISG-Test zeigt Ihren Verhaltensstil in etwa 10 Minuten, der Big-Five-Test misst fünf zentrale Persönlichkeitsmerkmale in etwa 15 Minuten. Ohne Anmeldung, Ergebnis sofort.",
+      "eyebrow": "Tests",
+      "h1": "Alle Tests",
+      "lead": "Hier finden Sie alle Tests, die Sie auf dieser Website machen können. Sie sind kostenlos, laufen online ohne Anmeldung, und das Ergebnis erscheint direkt nach der letzten Frage auf dem Bildschirm.",
+      "items": [
+        { "test": "disc", "name": "DISG-Test", "text": "Wie Sie handeln, kommunizieren und entscheiden. Sie sehen Ihren Hauptstil unter den vier Stilen (D, I, S, C), welches der 16 Profile zu Ihnen passt, Ihre Stärken und Ihre Entwicklungsfelder.", "facts": ["96 Aussagen · etwa 10 Minuten", "4 Stile und 16 Profile", "Kostenlos, ohne Anmeldung"], "button": "DISG-Test starten", "more": "Was ist DISG?" },
+        { "test": "bigfive", "name": "Big-Five-Persönlichkeitstest", "text": "Die fünf großen Persönlichkeitsmerkmale, mit denen die moderne Psychologie arbeitet: Offenheit für Erfahrungen, Gewissenhaftigkeit, Extraversion, Verträglichkeit und Neurotizismus.", "facts": ["100 Aussagen · etwa 15 Minuten", "5 Merkmale und 10 Aspekte", "Kostenlos, ohne Anmeldung"], "button": "Big-Five-Test starten", "more": "Was sind die Big Five?" }
+      ],
+      "chooseTitle": "Welcher Test ist der richtige?",
+      "choose": [
+        "Beim DISG-Test geht es um Verhalten: wie Sie im Beruf, im Team und im Gespräch auftreten. Er hilft vor einem Vorstellungsgespräch, wenn sich ein neues Team kennenlernt, oder wenn Sie besser mit Kolleginnen und Kollegen zusammenarbeiten möchten.",
+        "Bei den Big Five geht es um die Persönlichkeit insgesamt: um Merkmale, die sich weit über den Beruf hinaus zeigen und sich über die Jahre kaum verändern.",
+        "Die beiden Tests überschneiden sich nicht, es lohnt sich also, beide zu machen: den DISG-Test für Ihre Art der Zusammenarbeit, die Big Five für das große Ganze."
+      ],
+      "formatsTitle": "Der DISG-Test in anderen Formaten",
+      "formats": {
+        "pdf": "Fragebogen zum Ausdrucken: den Test auf Papier machen und das Ergebnis mit der Tabelle auswerten.",
+        "group": "Den Test per Link an eine Gruppe schicken und alle Ergebnisse in einer Tabelle sammeln.",
+        "pair": "Ein Bericht über zwei Personen auf Basis ihrer DISG-Ergebnisse – im Beruf und in der Beziehung."
+      },
+      "foot": { "title": "Tests", "disc": "DISG-Test", "bigfive": "Big Five" }
+    },
     "bigfive": {
       "title": "Big-Five-Persönlichkeitstest kostenlos online – 100 Fragen",
       "description": "Kostenloser Big-Five-Test (BFAS): 100 Aussagen, etwa 15 Minuten, ohne Anmeldung. Fünf Merkmale und zehn Aspekte Ihrer Persönlichkeit mit Vergleich.",
@@ -4454,6 +4478,7 @@
     "nav.colors": "DISG-Farben",
     "nav.teams": "DISG für Teams",
     "nav.group": "Test für Gruppen",
+    "nav.tests": "Alle Tests",
     "nav.mbti": "DISG und MBTI",
     "nav.pdf": "Test als PDF",
     "nav.materials": "Mehr über DISG",

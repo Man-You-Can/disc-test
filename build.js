@@ -345,7 +345,7 @@ const NAV_ITEMS = [['nav.test', ''], ['nav.disc', 'disc/'], ['nav.styles', 'styl
 const MATERIALS = [['nav.disc', 'disc/'], ['nav.styles', 'styles/'], ['nav.profiles', 'profiles/'], ['nav.results', 'results/'], ['nav.compat', 'compatibility/'], ['nav.colors', 'colors/'], ['nav.teams', 'teams/'], ['nav.mbti', 'disc-vs-mbti/'], ['nav.pdf', 'pdf/'], ['nav.faq', 'faq/']];
 // «Как готовятся отчёты» (/how-reports-are-made/): страница и пункт в шапке есть в языках, где в локали есть content.howMade и ui['nav.howMade'] (с 2026-10-14 — во всех 14: валидатор требует оба ключа)
 const HOWMADE_SUB = 'how-reports-are-made/', hasHowMade = L => !!(L.content.howMade && L.ui['nav.howMade']);
-// «Все тесты» (/tests/, с 2026-11-15, по просьбе заказчика; пока русская версия): страница со всеми тестами сайта и пункт в шапке сразу после «Тест» —
+// «Все тесты» (/tests/, с 2026-11-15, по просьбе заказчика; русская версия, тем же днём — все 13 языков): страница со всеми тестами сайта и пункт в шапке сразу после «Тест» —
 // там, где в локали есть content.tests и ui['nav.tests'] (валидатор требует их вместе). Прежние пункты шапки не убираются (private/TESTS-PLAN.md, раздел 2.2).
 const hasTests = L => !!(L.content.tests && L.ui['nav.tests']);
 const navItems = L => NAV_ITEMS.slice(0, 1).concat(hasTests(L) ? [['nav.tests', 'tests/']] : [], NAV_ITEMS.slice(1), hasHowMade(L) ? [['nav.howMade', HOWMADE_SUB]] : [], hasServices(L) ? [['nav.services', 'services/']] : [], feedbackEmail ? [['nav.contact', 'contact/']] : []);
@@ -1484,7 +1484,10 @@ for (const L of locales) {
       const cards = T.items.filter(it => TEST_LINKS[it.test]).map(it => { const lk = TEST_LINKS[it.test];
         return `<section class="tcard"><div class="thead"><h2>${escFull(it.name)}</h2><p>${escFull(it.text)}</p></div><ul class="tfacts">${it.facts.map(x => `<li>${escFull(x)}</li>`).join('')}</ul>` +
           `<p class="tact"><a class="btn" href="${lk.href}" data-goal="tests-${it.test}">${escFull(it.button)}</a>` + (lk.more ? `<a class="tmore" href="${lk.more}">${escFull(it.more)} ${arrow(L)}</a>` : '') + `</p></section>`; }).join('');
-      const cmp = bfArt('disc'), choose = T.choose.map(x => `<p>${escFull(x).replace('{compare}', () => cmp ? `<a href="../big-five/disc/">«${escFull(cmp.h1)}»</a>` : '')}</p>`).join('');
+      const cmp = bfArt('disc');
+      // ссылка на статью «DISC и „Большая пятёрка“» (content.tests.compare) — в конце последнего абзаца, только там, где статья есть (пока русская версия)
+      const cmpHtml = cmp && T.compare ? ' ' + escFull(T.compare).replace('{compare}', () => `<a href="../big-five/disc/">«${escFull(cmp.h1)}»</a>`) : '';
+      const choose = T.choose.map((x, i) => `<p>${escFull(x)}${i === T.choose.length - 1 ? cmpHtml : ''}</p>`).join('');
       const fm = [['pdf', 'pdf/', C.pdf && C.pdf.h1], ['group', 'group/', C.group && L.ui['nav.group'] && C.group.h1], ['pair', 'pair/', hasPair(L) && C.pair.h1]].filter(([k, , h]) => h && T.formats[k]);
       const formats = fm.length ? `<h2>${escFull(T.formatsTitle)}</h2><ul class="tformats">` + fm.map(([k, sub2, h]) => `<li><a href="../${sub2}"><strong>${escFull(h)}</strong><small>${escFull(T.formats[k])}</small></a></li>`).join('') + `</ul>` : '';
       const tcss = `.tcards{display:grid;gap:14px;margin:22px 0 8px}.tcard{border:1px solid var(--line-strong);border-radius:14px;padding:18px 20px}.tcard h2{margin:0 0 8px;font-size:21px}.tcard p{margin:0 0 10px}` +

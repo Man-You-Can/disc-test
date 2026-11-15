@@ -449,6 +449,30 @@
     }
   },
   "content": {
+    "tests": {
+      "title": "Tüm testler: DISC ve Büyük Beşli, ücretsiz ve kayıtsız",
+      "description": "Ücretsiz kişilik testleri: DISC davranış stilinizi yaklaşık 10 dakikada, Büyük Beşli ise beş temel kişilik özelliğinizi yaklaşık 15 dakikada ölçer. Kayıt gerekmez, sonuç hemen ekranda.",
+      "eyebrow": "Testler",
+      "h1": "Tüm testler",
+      "lead": "Sitede çözebileceğiniz tüm testler burada. Hepsi ücretsiz, kayıt olmadan çevrimiçi çözülüyor ve son soruyu yanıtladığınız anda sonuç ekranda.",
+      "items": [
+        { "test": "disc", "name": "DISC testi", "text": "Nasıl davrandığınızı, iletişim kurduğunuzu ve karar verdiğinizi gösterir. Dört stil (D, I, S, C) arasından ana stilinizi, 16 profilden hangisinin size uyduğunu, güçlü yönlerinizi ve gelişim alanlarınızı görürsünüz.", "facts": ["96 ifade · yaklaşık 10 dakika", "4 stil ve 16 profil", "Ücretsiz, kayıt yok"], "button": "DISC testini çözün", "more": "DISC nedir?" },
+        { "test": "bigfive", "name": "Büyük Beşli (Big Five) kişilik testi", "text": "Günümüz psikolojisinin incelediği beş temel kişilik özelliği: deneyime açıklık, sorumluluk, dışadönüklük, uyumluluk ve nevrotiklik.", "facts": ["100 ifade · yaklaşık 15 dakika", "5 özellik ve 10 alt boyut", "Ücretsiz, kayıt yok"], "button": "Büyük Beşli testini çözün", "more": "Büyük Beşli nedir?" }
+      ],
+      "chooseTitle": "Hangi testi seçmeli?",
+      "choose": [
+        "DISC davranışla ilgilidir: işte, ekipte ve iletişimde nasıl davrandığınızı gösterir. İş görüşmesinden önce, yeni bir ekip birbirini tanırken ya da iş arkadaşlarınızla daha iyi çalışmak istediğinizde işe yarar.",
+        "Büyük Beşli ise kişiliğin bütünüyle ilgilidir: iş hayatının çok ötesinde kendini gösteren ve yıllar içinde pek az değişen özellikler.",
+        "İki test birbirini tekrar etmez, bu yüzden ikisini de çözmeye değer: DISC başkalarıyla nasıl çalıştığınızı, Büyük Beşli ise kişiliğinizin genel resmini gösterir."
+      ],
+      "formatsTitle": "DISC testinin diğer biçimleri",
+      "formats": {
+        "pdf": "Yazdırılabilir form: testi kâğıt üzerinde çözün, sonucu tabloyla hesaplayın.",
+        "group": "Testi tek bir bağlantıyla bir gruba gönderin, tüm sonuçları tek tabloda toplayın.",
+        "pair": "İki kişinin DISC sonuçlarına dayanan bir rapor: iş hayatında ve özel hayatta."
+      },
+      "foot": { "title": "Testler", "disc": "DISC testi", "bigfive": "Büyük Beşli" }
+    },
     "bigfive": {
       "title": "Büyük Beşli (Big Five) kişilik testi — ücretsiz, 100 soru",
       "description": "Ücretsiz Büyük Beşli (Big Five, BFAS) kişilik testi: 100 ifade, yaklaşık 15 dakika, kayıt yok. Beş özellik ve on alt boyut, açıklamalar ve karşılaştırmayla.",
@@ -3476,6 +3500,7 @@
     "nav.colors": "DISC renkleri",
     "nav.teams": "Ekipler için DISC",
     "nav.group": "Grup için test",
+    "nav.tests": "Tüm testler",
     "nav.mbti": "DISC ve MBTI",
     "nav.pdf": "DISC testi PDF",
     "nav.materials": "DISC kaynakları",

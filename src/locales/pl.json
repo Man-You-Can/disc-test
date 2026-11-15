@@ -449,6 +449,30 @@
     }
   },
   "content": {
+    "tests": {
+      "title": "Wszystkie testy: DISC i Wielka Piątka, za darmo i bez rejestracji",
+      "description": "Darmowe testy osobowości: DISC pokaże twój styl zachowania w około 10 minut, a test Wielkiej Piątki zmierzy pięć głównych cech osobowości w około 15 minut. Bez rejestracji, wynik od razu.",
+      "eyebrow": "Testy",
+      "h1": "Wszystkie testy",
+      "lead": "Tu znajdziesz wszystkie testy, które możesz zrobić na tej stronie. Są bezpłatne, rozwiązujesz je online bez rejestracji, a wynik pojawia się na ekranie zaraz po ostatnim pytaniu.",
+      "items": [
+        { "test": "disc", "name": "Test DISC", "text": "Jak działasz, komunikujesz się i podejmujesz decyzje. Zobaczysz swój styl wiodący spośród czterech (D, I, S, C), dowiesz się, który z 16 profili do ciebie pasuje, jakie masz mocne strony i obszary rozwoju.", "facts": ["96 stwierdzeń · około 10 minut", "4 style i 16 profili", "Za darmo, bez rejestracji"], "button": "Zrób test DISC", "more": "Czym jest DISC" },
+        { "test": "bigfive", "name": "Test Wielkiej Piątki (Big Five)", "text": "Pięć głównych cech osobowości, które bada współczesna psychologia: otwartość na doświadczenie, sumienność, ekstrawersja, ugodowość i neurotyczność.", "facts": ["100 stwierdzeń · około 15 minut", "5 cech i 10 aspektów", "Za darmo, bez rejestracji"], "button": "Zrób test Wielkiej Piątki", "more": "Czym jest Wielka Piątka" }
+      ],
+      "chooseTitle": "Który test wybrać?",
+      "choose": [
+        "DISC dotyczy zachowania: tego, jak działasz w pracy, w zespole i w rozmowach z ludźmi. Przydaje się przed rozmową kwalifikacyjną, gdy nowy zespół się poznaje, albo gdy chcesz lepiej współpracować z innymi.",
+        "Wielka Piątka dotyczy osobowości jako całości: cech, które widać nie tylko w pracy i które z wiekiem zmieniają się niewiele.",
+        "Testy się nie powtarzają, więc warto zrobić oba: DISC, żeby zobaczyć, jak współpracujesz z innymi, a Wielką Piątkę, żeby mieć szerszy obraz swojej osobowości."
+      ],
+      "formatsTitle": "Test DISC w innych formach",
+      "formats": {
+        "pdf": "Formularz do wydruku: rozwiąż test na papierze i policz wynik według tabeli.",
+        "group": "Wyślij test grupie jednym linkiem i zbierz wszystkie wyniki w jednej tabeli.",
+        "pair": "Raport o dwóch osobach na podstawie ich wyników DISC: w pracy i w życiu prywatnym."
+      },
+      "foot": { "title": "Testy", "disc": "Test DISC", "bigfive": "Wielka Piątka" }
+    },
     "bigfive": {
       "title": "Test osobowości Big Five (Wielka Piątka) za darmo – 100 pytań",
       "description": "Darmowy test Wielkiej Piątki (Big Five, BFAS): 100 stwierdzeń, około 15 minut, bez rejestracji. Pięć cech i dziesięć aspektów osobowości z opisem wyniku.",
@@ -3476,6 +3500,7 @@
     "nav.colors": "Kolory DISC",
     "nav.teams": "DISC dla zespołu",
     "nav.group": "Test dla grupy",
+    "nav.tests": "Wszystkie testy",
     "nav.mbti": "DISC a MBTI",
     "nav.pdf": "Test w PDF",
     "nav.materials": "Materiały o DISC",

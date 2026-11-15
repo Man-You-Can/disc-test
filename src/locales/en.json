@@ -449,6 +449,30 @@
     }
   },
   "content": {
+    "tests": {
+      "title": "All tests: DISC and the Big Five, free with no sign-up",
+      "description": "Free personality tests: DISC shows your behavioral style in about 10 minutes, the Big Five measures five core traits in about 15. No sign-up, results on screen right away.",
+      "eyebrow": "Tests",
+      "h1": "All tests",
+      "lead": "Every test you can take on this site, in one place. They are free, run online with no sign-up, and your result appears on screen as soon as you answer the last question.",
+      "items": [
+        { "test": "disc", "name": "DISC test", "text": "How you act, communicate and make decisions. You will see your primary style out of four (D, I, S, C), which of the 16 profiles fits you, and your strengths and growth areas.", "facts": ["96 statements · about 10 minutes", "4 styles, 16 profiles", "Free, no sign-up"], "button": "Take the DISC test", "more": "What is DISC?" },
+        { "test": "bigfive", "name": "Big Five personality test", "text": "The five core personality traits studied in modern psychology: openness to experience, conscientiousness, extraversion, agreeableness and neuroticism.", "facts": ["100 statements · about 15 minutes", "5 traits, 10 aspects", "Free, no sign-up"], "button": "Take the Big Five test", "more": "What is the Big Five?" }
+      ],
+      "chooseTitle": "Which test should I take?",
+      "choose": [
+        "DISC is about behavior: how you come across at work, on a team and in conversation. It is handy before a job interview, when a new team is getting to know each other, or when you want to work better with colleagues.",
+        "The Big Five is about personality as a whole: traits that show up well beyond work and stay fairly stable over the years.",
+        "The two tests do not overlap, so it is worth taking both: DISC for how you work with others, the Big Five for the bigger picture."
+      ],
+      "formatsTitle": "Other ways to take the DISC test",
+      "formats": {
+        "pdf": "A printable form: take the test on paper and score it with the table.",
+        "group": "Send the test to a group with one link and collect everyone’s results in one table.",
+        "pair": "A report on two people based on their DISC results, at work and in their personal life."
+      },
+      "foot": { "title": "Tests", "disc": "DISC test", "bigfive": "Big Five" }
+    },
     "bigfive": {
       "title": "Big Five Personality Test — Free, 100 Questions, No Sign-Up",
       "description": "Free Big Five personality test (BFAS): 100 statements, about 15 minutes, no sign-up. Your five traits and 10 aspects, explained and compared with others.",
@@ -4429,6 +4453,7 @@
     "nav.colors": "DISC colors",
     "nav.teams": "DISC for teams",
     "nav.group": "Group testing",
+    "nav.tests": "All tests",
     "nav.mbti": "DISC vs MBTI",
     "nav.pdf": "PDF test",
     "nav.materials": "DISC resources",
