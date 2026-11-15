@@ -38,6 +38,8 @@ const OPTIONAL = ['.content.policy.legal', '.content.extendedMail', '.content.pr
   '.content.bigfive.articles', '.content.bigfive.articlesUi', '.content.bigfive.home',
   // выпадающий список «Большая пятёрка» в шапке (с 2026-11-16, пока русская версия): только вместе с ui["nav.bigfive"] и со статьями, на которые он ссылается
   '.content.bigfive.nav', '.ui.nav.bigfive',
+  // бланк «Большой пятёрки» для печати (/big-five/pdf/, с 2026-11-16, пока русская версия); в меню раздела — пункт со slug 'pdf'
+  '.content.bigfive.paper',
   // страница «Все тесты» (/tests/) и её пункт в шапке (с 2026-11-15, по просьбе заказчика; все 13 языков); ключи — только вместе
   '.content.tests', '.ui.nav.tests', '.content.tests.compare',   // compare — ссылка на статью «DISC и „Большая пятёрка“», только где статья есть
   '.content.paper', '.content.kit', '.content.consentDoc.paperForm',   // бумажный бланк: QR, «Что дальше», блок для групп, бланк на e-mail; набор ведущего (с 2026-10-25, пока русская версия)
@@ -161,7 +163,7 @@ for (const f of files) {
   if (!!C.gift !== !!(j.ui && j.ui['nav.gift'])) errs.push('.content.gift and .ui["nav.gift"] must come together');
   if (!!C.tests !== !!(j.ui && j.ui['nav.tests'])) errs.push('.content.tests and .ui["nav.tests"] must come together');
   { const BN = C.bigfive && C.bigfive.nav; if (!!BN !== !!(j.ui && j.ui['nav.bigfive'])) errs.push('.content.bigfive.nav and .ui["nav.bigfive"] must come together');
-    if (BN) { const sl = new Set((C.bigfive.articles || []).map(x => x.slug)); for (const x of BN) if (x.slug && !sl.has(x.slug)) errs.push('.content.bigfive.nav: no article "' + x.slug + '"'); } }
+    if (BN) { const sl = new Set((C.bigfive.articles || []).map(x => x.slug)); for (const x of BN) if (x.slug && !sl.has(x.slug) && !(x.slug === 'pdf' && C.bigfive.paper)) errs.push('.content.bigfive.nav: no article "' + x.slug + '"'); } }
   // «DISC на двоих» (с 2026-11-14): правило «что сделано для продажи — во все языки с покупкой»; все ключи продукта — только вместе
   const PAIRK = [C.pair, j.ui && j.ui['nav.pair'], C.offer && C.offer.pairSection, C.refund && C.refund.pairSection, C.policy && C.policy.purchasePair, C.howMade && C.howMade.pair];
   if (P.pay && !PAIRK.every(Boolean)) errs.push('.content.pair, .ui["nav.pair"], .content.offer.pairSection, .content.refund.pairSection, .content.policy.purchasePair, .content.howMade.pair: missing — the report is on sale in this language, so "DISC for two" must be too');

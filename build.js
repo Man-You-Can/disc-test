@@ -1466,6 +1466,8 @@ for (const L of locales) {
       const bfArtList = (base, skip) => A.length ? `<h2>${escFull(AU.title)}</h2><ul class="bf-arts">` +
         A.filter(x => x.slug !== skip).map(x => `<li><a href="${base}${x.slug}/"><strong>${escFull(x.h1)}</strong><small>${escFull(x.lead.length > 110 ? x.lead.slice(0, x.lead.lastIndexOf(' ', 108)) + '…' : x.lead)}</small></a></li>`).join('') + `</ul>` : '';
       const TRAIT_ART = { O: 'openness', C: 'conscientiousness', E: 'extraversion', A: 'agreeableness', N: 'neuroticism' };
+      const BF_TRAITS = [['O', ['IT', 'OP']], ['C', ['IN', 'OR']], ['E', ['EN', 'AS']], ['A', ['CO', 'PO']], ['N', ['VO', 'WI']]];   // порядок OCEAN, как в src/bigfive.js
+      const fmtT = (str, v) => String(str).replace(/\{(\w+)\}/g, (m, k) => k in v ? v[k] : m);
       const more = Object.fromEntries(Object.entries(TRAIT_ART).filter(([, v]) => artBySlug[v]).map(([k, v]) => [k, v + '/']));
       const content = `<div class="eyebrow">${escFull(B.eyebrow)}</div><h1>${escFull(B.h1)}</h1>` +
         `<div id="bfApp" class="bf-app"><p class="lead">${escFull(B.lead)}</p><ul class="bf-facts">${B.facts.map(x => `<li>${escFull(x)}</li>`).join('')}</ul>` +
@@ -1482,7 +1484,14 @@ for (const L of locales) {
       // страницы статей: заголовок, вводный абзац, разделы, призыв к тесту после второго раздела и в конце, вопросы (FAQPage), источники, «Читайте также»
       for (const x of A) {
         const cta = g => `<aside class="bf-cta"><p class="bf-ctat">${escFull(AU.ctaTitle)}</p><p>${escFull(AU.ctaText)}</p><a class="btn" href="../" data-goal="${g}">${escFull(AU.ctaButton)}</a></aside>`;
-        const secs = x.sections.map((sec, i) => sectionsHtml([sec]) + (i === 1 && x.sections.length > 3 ? cta('bf-article') : '')).join('');
+        // «10 аспектов» (cards: 'aspects', с 2026-11-16): после первого раздела — карточки по чертам (описание черты, высокий и низкий уровень каждого аспекта,
+        // ссылка на статью о черте), как сетка «16 профилей» у DISC; тексты — content.bigfive.traits и aspects (те же, что в результате теста)
+        const LV = B.result.levels, capF = v => String(v).charAt(0).toUpperCase() + String(v).slice(1);
+        const aspCards = x.cards === 'aspects' ? `<h2>${escFull(x.cardsTitle)}</h2><div class="bf-acards">` + BF_TRAITS.map(([k, as]) => { const T = B.traits[k];
+          return `<section class="bf-acard"><h3>${escFull(T.name)} <span>(${escFull(T.en)})</span></h3><p class="bf-awhat">${escFull(T.what)}</p><div class="bf-apair">` +
+            as.map(a => { const A = B.aspects[a]; return `<div><strong>${escFull(A.name)}</strong><p><b>${escFull(capF(LV[4]))}:</b> ${escFull(A.high)}</p><p><b>${escFull(capF(LV[0]))}:</b> ${escFull(A.low)}</p></div>`; }).join('') +
+            `</div>` + (artBySlug[TRAIT_ART[k]] ? `<a class="bf-amore" href="../${TRAIT_ART[k]}/">${escFull(fmtT(AU.traitMore, { name: T.name }))} ${arrow(L)}</a>` : '') + `</section>`; }).join('') + `</div>` : '';
+        const secs = x.sections.map((sec, i) => sectionsHtml([sec]) + (i === 0 ? aspCards : '') + (i === 1 && x.sections.length > 3 ? cta('bf-article') : '')).join('');
         const rel = (x.related || []).filter(sl => artBySlug[sl] && sl !== x.slug);
         // статья без разделов («Вопросы и ответы», с 2026-11-16): вопросы сразу после вводного абзаца, без заголовка «Вопросы», призыв к тесту — после них
         const faqHtml = (x.faq && x.faq.length ? (x.sections.length ? `<h2>${escFull(AU.faqTitle)}</h2>` : '') + x.faq.map(it => `<h3 class="bf-fq">${escFull(it.q)}</h3><p>${escFull(it.a)}</p>`).join('') : '');
@@ -1493,6 +1502,22 @@ for (const L of locales) {
         writeContentPage(L, `big-five/${x.slug}/`, { navKey: bfNavKey(L, x.slug), langs: [L], article: true, title: x.title, description: x.description, crumbs: [{ name: B.h1, href: '../', sub: 'big-five/' }, { name: x.h1 }],
           css: bigfiveCss, content, files: ['src/bigfive.css'],
           ldExtra: x.faq && x.faq.length ? [{ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: x.faq.map(it => ({ '@type': 'Question', name: it.q, acceptedAnswer: { '@type': 'Answer', text: it.a } })) }] : [] });
+      }
+      // /big-five/pdf/ — бланк теста для печати (с 2026-11-16, по просьбе заказчика; где в локали есть content.bigfive.paper и готов файл
+      // src/assets/pdf/big-five-test-<язык>.pdf — node scripts/make-bigfive-pdf.js). Скачивание — цель bf-paper-pdf, тест онлайн — bf-paper-online.
+      const BP = B.paper, bpf = BP && path.join(ASSETS, 'pdf', `big-five-test-${L.lang}.pdf`);
+      if (BP && !fs.existsSync(bpf)) console.warn('WARNING: no Big Five PDF for ' + L.lang + ' (run node scripts/make-bigfive-pdf.js)');
+      if (BP && fs.existsSync(bpf)) {
+        const buf = fs.readFileSync(bpf), ls = buf.toString('latin1'), pm = ls.match(/\/Type\s*\/Pages[^>]*?\/Count\s+(\d+)/), file = `big-five-test-${L.lang}.pdf`;
+        const pages = pm ? +pm[1] : (ls.match(/\/Type\s*\/Page(?!s)/g) || []).length, root = relRoot(L, 'big-five/pdf/');
+        const dl = `<p class="download"><a class="btn" href="${root}pdf/${file}" download data-goal="bf-paper-pdf">${escFull(BP.download)}</a><span class="muted">${escFull(fmtT(BP.meta, { pages, size: fmtSize(buf.length) }))}</span></p>`;
+        const content = `<div class="eyebrow">${escFull(AU.eyebrow)}</div><h1>${escFull(BP.h1)}</h1><p class="lead">${escFull(BP.lead)}</p>` + dl + sectionsHtml(BP.sections) +
+          `<aside class="bf-cta"><p class="bf-ctat">${escFull(AU.ctaTitle)}</p><p>${escFull(BP.onlineNote)}</p><a class="btn" href="../" data-goal="bf-paper-online">${escFull(BP.online)}</a></aside>` +
+          `<h2>${escFull(AU.relatedTitle)}</h2><ul class="bf-arts">${['what', 'aspects', 'results'].filter(sl => artBySlug[sl]).map(sl => `<li><a href="../${sl}/"><strong>${escFull(artBySlug[sl].h1)}</strong></a></li>`).join('')}<li><a href="../"><strong>${escFull(B.h1)}</strong></a></li></ul>`;
+        writeContentPage(L, 'big-five/pdf/', { navKey: bfNavKey(L, 'pdf'), langs: [L], title: BP.title, description: BP.description, crumbs: [{ name: B.h1, href: '../', sub: 'big-five/' }, { name: BP.h1 }],
+          css: bigfiveCss, content, files: ['src/bigfive.css', 'src/bigfive-print.js'],
+          ldExtra: [{ '@context': 'https://schema.org', '@type': 'DigitalDocument', name: BP.title, url: `${siteUrl}/pdf/${file}`, encodingFormat: 'application/pdf', inLanguage: hl(L.lang), isAccessibleForFree: true }] });
+        extraUrls.push({ lang: L.lang, loc: `${siteUrl}/pdf/${file}`, date: contentDate(L.lang + ':bf-pdf-file', buf.toString('base64'), [`src/assets/pdf/${file}`]) });
       }
     }
     // /tests/ — «Все тесты» (с 2026-11-15, по просьбе заказчика; где hasTests): карточки тестов сайта (content.tests.items, test — disc или bigfive;
