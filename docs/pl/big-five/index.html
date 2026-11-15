@@ -1121,11 +1121,15 @@ function initCommon(c){
     document.addEventListener('click', function(e){ if(!box.contains(e.target)) close(false); });
   })();
 
-  /* выпадающий список «О DISC» в шапке (<details class="navmenu">): закрывается щелчком мимо и клавишей Esc */
+  /* выпадающие списки шапки («О DISC», «Большая пятёрка» — <details class="navmenu">): закрываются щелчком мимо и клавишей Esc;
+     открыт всегда только один — при открытии одного остальные закрываются */
   (function(){
-    var d=document.querySelector('.navmenu'); if(!d) return;
-    document.addEventListener('click', function(e){ if(d.open && !d.contains(e.target)) d.open=false; });
-    d.addEventListener('keydown', function(e){ if(e.key==='Escape' && d.open){ e.preventDefault(); d.open=false; d.querySelector('summary').focus(); } });
+    var ds=[].slice.call(document.querySelectorAll('.navmenu')); if(!ds.length) return;
+    document.addEventListener('click', function(e){ ds.forEach(function(d){ if(d.open && !d.contains(e.target)) d.open=false; }); });
+    ds.forEach(function(d){
+      d.addEventListener('toggle', function(){ if(d.open) ds.forEach(function(o){ if(o!==d && o.open) o.open=false; }); });
+      d.addEventListener('keydown', function(e){ if(e.key==='Escape' && d.open){ e.preventDefault(); d.open=false; d.querySelector('summary').focus(); } });
+    });
   })();
 
   /* подсказка «Продолжить на …», если язык браузера отличается и выбор ещё не делался */
