@@ -135,7 +135,7 @@ html[lang=ar] body,html[lang=hi] body{font-size:17px;line-height:1.65}
 .sitenav .navdrop a[aria-current]{background:var(--line);font-weight:600}
 /* телефон: пять пунктов переносятся на вторую строку; список «О DISC» — во всю ширину колонки под шапкой */
 @media (max-width:640px){
-  .sitenav{position:relative;gap:2px 14px}
+  .sitenav{position:relative;gap:2px 12px}  /* 12 px с «Главной» (2026-11-15): при 14 px арабская шапка на 375 px уходила на вторую строку */
   .navmenu{position:static}
   .navdrop{inset-inline:0;min-width:0}
   .sitenav .navdrop a{white-space:normal}

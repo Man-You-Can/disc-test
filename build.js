@@ -340,7 +340,8 @@ const pct = net => Math.round((net + 24) / 48 * 100);
 const pageTpl = fs.readFileSync(path.join(SRC, 'page.html'), 'utf8');
 const styleBlock = (tpl.match(/<style>[\s\S]*?<\/style>/) || [''])[0];
 // «Тест в PDF» — после «Четыре стиля» (с 2026-10-26, по просьбе заказчика)
-const NAV_ITEMS = [['nav.test', ''], ['nav.disc', 'disc/'], ['nav.styles', 'styles/'], ['nav.pdf', 'pdf/'], ['nav.profiles', 'profiles/'], ['nav.results', 'results/'], ['nav.compat', 'compatibility/'], ['nav.faq', 'faq/']];
+// Первый пункт — «Главная» (ui['nav.home'], с 2026-11-15, решение заказчика: главная станет страницей о компании и всех тестах; до того — «Тест», ui['nav.test'])
+const NAV_ITEMS = [['nav.home', ''], ['nav.disc', 'disc/'], ['nav.styles', 'styles/'], ['nav.pdf', 'pdf/'], ['nav.profiles', 'profiles/'], ['nav.results', 'results/'], ['nav.compat', 'compatibility/'], ['nav.faq', 'faq/']];
 // Подвал: ссылки на все материалы о DISC (сквозная перелинковка контентных страниц)
 const MATERIALS = [['nav.disc', 'disc/'], ['nav.styles', 'styles/'], ['nav.profiles', 'profiles/'], ['nav.results', 'results/'], ['nav.compat', 'compatibility/'], ['nav.colors', 'colors/'], ['nav.teams', 'teams/'], ['nav.mbti', 'disc-vs-mbti/'], ['nav.pdf', 'pdf/'], ['nav.faq', 'faq/']];
 // «Как готовятся отчёты» (/how-reports-are-made/): страница и пункт в шапке есть в языках, где в локали есть content.howMade и ui['nav.howMade'] (с 2026-10-14 — во всех 14: валидатор требует оба ключа)
@@ -348,7 +349,7 @@ const HOWMADE_SUB = 'how-reports-are-made/', hasHowMade = L => !!(L.content.howM
 // «Все тесты» (/tests/, с 2026-11-15, по просьбе заказчика; русская версия, тем же днём — все 13 языков): страница со всеми тестами сайта и пункт в шапке сразу после «Тест» —
 // там, где в локали есть content.tests и ui['nav.tests'] (валидатор требует их вместе). Прежние пункты шапки не убираются (private/TESTS-PLAN.md, раздел 2.2).
 const hasTests = L => !!(L.content.tests && L.ui['nav.tests']);
-// Шапка с 2026-11-15 (решение заказчика: в шапке было 12 пунктов в три строки): «Тест · Все тесты · О DISC ▾ · Услуги · Обратная связь».
+// Шапка с 2026-11-15 (решение заказчика: в шапке было 12 пунктов в три строки): «Главная · Все тесты · О DISC ▾ · Услуги · Обратная связь» (до вечера 2026-11-15 первый пункт — «Тест»).
 // Статьи о DISC и «Как готовятся отчёты» — в выпадающем списке «О DISC» (ui['nav.aboutDisc']): <details> с обычными ссылками в HTML, без скрипта,
 // чтобы прежние ссылки шапки остались в разметке каждой страницы (private/TESTS-PLAN.md, раздел 2.2). Закрытие по щелчку мимо и Esc — src/common.js.
 const NAV_CHEV = '<svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5l3.5 3.5 3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
@@ -564,7 +565,7 @@ for (const L of locales) {
   const f = FONTS[L.lang] || FONTS.default;
   const isRoot = L.lang === def.lang, rootRel = isRoot ? './' : '../';
   const href = x => rootRel + pathOf(x.lang);
-  const navHtml = navHtmlFor(L, rootRel + pathOf(L.lang), 'nav.test');
+  const navHtml = navHtmlFor(L, rootRel + pathOf(L.lang), 'nav.home');
   const footHtml = footLinks(L, rootRel + pathOf(L.lang)), footShortHtml = footShort(L, rootRel + pathOf(L.lang));
   const introBuilt = introHTML({ L, t: tFor(L), esc: escFull, KEYS, colorVar: k => 'var(--' + k.toLowerCase() + ')', progDone: 0, lastDate: '', graphSVG,
     links: { styles: rootRel + pathOf(L.lang) + 'styles/', profiles: rootRel + pathOf(L.lang) + 'profiles/', pdf: rootRel + pathOf(L.lang) + 'pdf/', results: rootRel + pathOf(L.lang) + 'results/', faq: rootRel + pathOf(L.lang) + 'faq/', profile: k => rootRel + pathOf(L.lang) + 'profiles/' + k.toLowerCase() + '/',
