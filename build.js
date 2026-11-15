@@ -345,7 +345,10 @@ const NAV_ITEMS = [['nav.test', ''], ['nav.disc', 'disc/'], ['nav.styles', 'styl
 const MATERIALS = [['nav.disc', 'disc/'], ['nav.styles', 'styles/'], ['nav.profiles', 'profiles/'], ['nav.results', 'results/'], ['nav.compat', 'compatibility/'], ['nav.colors', 'colors/'], ['nav.teams', 'teams/'], ['nav.mbti', 'disc-vs-mbti/'], ['nav.pdf', 'pdf/'], ['nav.faq', 'faq/']];
 // «Как готовятся отчёты» (/how-reports-are-made/): страница и пункт в шапке есть в языках, где в локали есть content.howMade и ui['nav.howMade'] (с 2026-10-14 — во всех 14: валидатор требует оба ключа)
 const HOWMADE_SUB = 'how-reports-are-made/', hasHowMade = L => !!(L.content.howMade && L.ui['nav.howMade']);
-const navItems = L => NAV_ITEMS.concat(hasHowMade(L) ? [['nav.howMade', HOWMADE_SUB]] : [], hasServices(L) ? [['nav.services', 'services/']] : [], feedbackEmail ? [['nav.contact', 'contact/']] : []);
+// «Все тесты» (/tests/, с 2026-11-15, по просьбе заказчика; пока русская версия): страница со всеми тестами сайта и пункт в шапке сразу после «Тест» —
+// там, где в локали есть content.tests и ui['nav.tests'] (валидатор требует их вместе). Прежние пункты шапки не убираются (private/TESTS-PLAN.md, раздел 2.2).
+const hasTests = L => !!(L.content.tests && L.ui['nav.tests']);
+const navItems = L => NAV_ITEMS.slice(0, 1).concat(hasTests(L) ? [['nav.tests', 'tests/']] : [], NAV_ITEMS.slice(1), hasHowMade(L) ? [['nav.howMade', HOWMADE_SUB]] : [], hasServices(L) ? [['nav.services', 'services/']] : [], feedbackEmail ? [['nav.contact', 'contact/']] : []);
 const materialsHtml = (L, base, cur) => `<nav class="materials" aria-label="${esc(L.ui['nav.materials'])}"><span class="mlabel">${esc(L.ui['nav.materials'])}</span>` + MATERIALS.map(([k, sub]) => sub === cur ? `<span aria-current="page">${esc(L.ui[k])}</span>` : `<a href="${base + sub}">${esc(L.ui[k])}</a>`).join('') + `</nav>`;
 const relRoot = (L, sub) => { const depth = (pathOf(L.lang) + sub).split('/').length - 1; return depth ? '../'.repeat(depth) : './'; };
 const PAIRS = ['DD', 'DI', 'DS', 'DC', 'II', 'IS', 'IC', 'SS', 'SC', 'CC'], pairSlug = k => (k[0] + '-' + k[1]).toLowerCase();
@@ -1450,7 +1453,7 @@ for (const L of locales) {
         `<h2>${escFull(B.faqTitle)}</h2>` + B.faq.map(it => `<h3 class="bf-fq">${escFull(it.q)}</h3><p>${escFull(it.a)}</p>`).join('') + bfArtList('./') + `</div>`;
       const BT = { start: B.start, resume: B.resume, restart: B.restart, showLast: B.showLast, step: B.step, count: B.count, hint: B.hint, scale: B.scale,
         next: B.next, back: B.back, finish: B.finish, needAll: B.needAll, items: B.items, result: B.result, traits: B.traits, aspects: B.aspects };
-      writeContentPage(L, 'big-five/', { langs: locales.filter(x => x.content.bigfive), ldType: 'WebApplication', title: B.title, description: B.description, crumbs: [{ name: B.h1 }],
+      writeContentPage(L, 'big-five/', { navKey: 'nav.tests', langs: locales.filter(x => x.content.bigfive), ldType: 'WebApplication', title: B.title, description: B.description, crumbs: [{ name: B.h1 }],
         css: bigfiveCss, content, files: ['src/bigfive.js', 'src/bigfive.css'],
         ldExtra: [{ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: B.faq.map(it => ({ '@type': 'Question', name: it.q, acceptedAnswer: { '@type': 'Answer', text: it.a } })) }],
         pageJs: bigfiveJs + `\ninitBigFive({T: ${JSON.stringify(BT).replace(/</g, '\\u003c')}, loc: ${jsStr(L.dateLocale)}, home: '../', more: ${JSON.stringify(more)}, moreText: ${jsStr(AU.traitMore || '')}, esc: esc, $: $, lsGet: lsGet, lsSet: lsSet});` });
@@ -1463,10 +1466,33 @@ for (const L of locales) {
           (x.faq && x.faq.length ? `<h2>${escFull(AU.faqTitle)}</h2>` + x.faq.map(it => `<h3 class="bf-fq">${escFull(it.q)}</h3><p>${escFull(it.a)}</p>`).join('') : '') +
           (x.sources && x.sources.length ? `<h2>${escFull(AU.sourcesTitle)}</h2><ul class="bf-src">${x.sources.map(z => `<li>${escFull(z)}</li>`).join('')}</ul>` : '') +
           `<h2>${escFull(AU.relatedTitle)}</h2><ul class="bf-arts">${rel.map(sl => `<li><a href="../${sl}/"><strong>${escFull(artBySlug[sl].h1)}</strong></a></li>`).join('')}<li><a href="../"><strong>${escFull(B.h1)}</strong></a></li></ul>`;
-        writeContentPage(L, `big-five/${x.slug}/`, { langs: [L], article: true, title: x.title, description: x.description, crumbs: [{ name: B.h1, href: '../', sub: 'big-five/' }, { name: x.h1 }],
+        writeContentPage(L, `big-five/${x.slug}/`, { navKey: 'nav.tests', langs: [L], article: true, title: x.title, description: x.description, crumbs: [{ name: B.h1, href: '../', sub: 'big-five/' }, { name: x.h1 }],
           css: bigfiveCss, content, files: ['src/bigfive.css'],
           ldExtra: x.faq && x.faq.length ? [{ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: x.faq.map(it => ({ '@type': 'Question', name: it.q, acceptedAnswer: { '@type': 'Answer', text: it.a } })) }] : [] });
       }
+    }
+    // /tests/ — «Все тесты» (с 2026-11-15, по просьбе заказчика; где hasTests): карточки тестов сайта (content.tests.items, test — disc или bigfive;
+    // «Большая пятёрка» — только там, где в локали есть content.bigfive), «Какой тест выбрать» и другие форматы DISC (бланк, группа, «DISC на двоих» — где есть).
+    // Все ссылки — обычные <a href> в HTML сборки. Цели tests-disc, tests-bigfive.
+    if (hasTests(L)) {
+      const T = C.tests, BF = C.bigfive, bfArt = sl => BF && (BF.articles || []).find(x => x.slug === sl);
+      const TEST_LINKS = { disc: { href: '../', more: '../disc/' }, bigfive: BF ? { href: '../big-five/', more: bfArt('what') ? '../big-five/what/' : '' } : null };
+      const cards = T.items.filter(it => TEST_LINKS[it.test]).map(it => { const lk = TEST_LINKS[it.test];
+        return `<section class="tcard"><h2>${escFull(it.name)}</h2><p>${escFull(it.text)}</p><ul class="tfacts">${it.facts.map(x => `<li>${escFull(x)}</li>`).join('')}</ul>` +
+          `<p class="tact"><a class="btn" href="${lk.href}" data-goal="tests-${it.test}">${escFull(it.button)}</a>` + (lk.more ? `<a class="tmore" href="${lk.more}">${escFull(it.more)} ${arrow(L)}</a>` : '') + `</p></section>`; }).join('');
+      const cmp = bfArt('disc'), choose = T.choose.map(x => `<p>${escFull(x).replace('{compare}', () => cmp ? `<a href="../big-five/disc/">«${escFull(cmp.h1)}»</a>` : '')}</p>`).join('');
+      const fm = [['pdf', 'pdf/', C.pdf && C.pdf.h1], ['group', 'group/', C.group && L.ui['nav.group'] && C.group.h1], ['pair', 'pair/', hasPair(L) && C.pair.h1]].filter(([k, , h]) => h && T.formats[k]);
+      const formats = fm.length ? `<h2>${escFull(T.formatsTitle)}</h2><ul class="tformats">` + fm.map(([k, sub2, h]) => `<li><a href="../${sub2}"><strong>${escFull(h)}</strong><small>${escFull(T.formats[k])}</small></a></li>`).join('') + `</ul>` : '';
+      const tcss = `.tcards{display:grid;gap:14px;margin:22px 0 8px}.tcard{border:1px solid var(--line-strong);border-radius:14px;padding:18px 20px}.tcard h2{margin:0 0 8px;font-size:21px}.tcard p{margin:0 0 10px}` +
+        `.tfacts{list-style:none;padding:0;margin:0 0 14px;display:flex;flex-wrap:wrap;gap:8px}.tfacts li{background:var(--soft);border-radius:999px;padding:5px 12px;font-size:14px}` +
+        `.tact{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;margin:0!important}.tmore{font-weight:600}` +
+        `.tformats{list-style:none;padding:0;margin:0;display:grid;gap:10px}.tformats a{display:block;padding:12px 14px;border:1px solid var(--line-strong);border-radius:12px;color:var(--ink);text-decoration:none}` +
+        `.tformats a:hover,.tcard:hover{border-color:var(--ink)}.tformats strong{display:block}.tformats small{display:block;color:var(--muted);font-size:14px;margin-top:3px}` +
+        `@media(min-width:720px){.tcards{grid-template-columns:1fr 1fr}.tcard{display:flex;flex-direction:column}.tcard .tact{margin-top:auto!important}}`;
+      writeContentPage(L, 'tests/', { navKey: 'nav.tests', langs: locales.filter(hasTests), title: T.title, description: T.description, crumbs: [{ name: t('nav.tests') }], css: tcss,
+        content: `<div class="eyebrow">${escFull(T.eyebrow)}</div><h1>${escFull(T.h1)}</h1><p class="lead">${escFull(T.lead)}</p><div class="tcards">${cards}</div>` +
+          `<h2>${escFull(T.chooseTitle)}</h2>${choose}${formats}`,
+        ldExtra: [{ '@context': 'https://schema.org', '@type': 'ItemList', itemListElement: T.items.filter(it => TEST_LINKS[it.test]).map((it, i) => ({ '@type': 'ListItem', position: i + 1, name: it.name, url: urlOf(L.lang) + (it.test === 'disc' ? '' : 'big-five/') })) }] });
     }
     // /extended-report/ — страница расширенного отчёта: что внутри, листы образца картинками, сравнение с кратким отчётом, цена.
     // Блок покупки по умолчанию ведёт на тест. У кого результат сохранён на этом устройстве (disc.last), тому скрипт страницы меняет его:

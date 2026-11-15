@@ -36,6 +36,8 @@ const OPTIONAL = ['.content.policy.legal', '.content.extendedMail', '.content.pr
   '.content.bigfive',   // тест «Большая пятёрка» (/big-five/, с 2026-11-14): русская версия, с 2026-11-15 — все 13 языков (тест и краткий результат)
   // статьи о Большой пятёрке и блок «Другие тесты» на главной — пока только русская версия (решение заказчика от 2026-11-15)
   '.content.bigfive.articles', '.content.bigfive.articlesUi', '.content.bigfive.home',
+  // страница «Все тесты» (/tests/) и её пункт в шапке (с 2026-11-15, по просьбе заказчика): пока только русская версия; ключи — только вместе
+  '.content.tests', '.ui.nav.tests',
   '.content.paper', '.content.kit', '.content.consentDoc.paperForm',   // бумажный бланк: QR, «Что дальше», блок для групп, бланк на e-mail; набор ведущего (с 2026-10-25, пока русская версия)
   // покупка набора ведущего (с 2026-11-06): оплата по счёту для организации — только в русской версии (вне России счетов нет)
   '.content.kit.buy.invoice',
@@ -155,6 +157,7 @@ for (const f of files) {
   // страница /gift/ и пункт подвала, абзац политики о данных покупателя и получателей; ключ и тексты о данных меняются вместе
   if (P.pay && !(C.gift && j.ui && j.ui['nav.gift'] && C.policy && C.policy.purchaseGift)) errs.push('.content.gift, .ui["nav.gift"], .content.policy.purchaseGift: missing — the report is on sale in this language, so gift certificates must be too');
   if (!!C.gift !== !!(j.ui && j.ui['nav.gift'])) errs.push('.content.gift and .ui["nav.gift"] must come together');
+  if (!!C.tests !== !!(j.ui && j.ui['nav.tests'])) errs.push('.content.tests and .ui["nav.tests"] must come together');
   // «DISC на двоих» (с 2026-11-14): правило «что сделано для продажи — во все языки с покупкой»; все ключи продукта — только вместе
   const PAIRK = [C.pair, j.ui && j.ui['nav.pair'], C.offer && C.offer.pairSection, C.refund && C.refund.pairSection, C.policy && C.policy.purchasePair, C.howMade && C.howMade.pair];
   if (P.pay && !PAIRK.every(Boolean)) errs.push('.content.pair, .ui["nav.pair"], .content.offer.pairSection, .content.refund.pairSection, .content.policy.purchasePair, .content.howMade.pair: missing — the report is on sale in this language, so "DISC for two" must be too');
