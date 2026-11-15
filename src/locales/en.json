@@ -449,6 +449,338 @@
     }
   },
   "content": {
+    "bigfive": {
+      "title": "Big Five Personality Test — Free, 100 Questions, No Sign-Up",
+      "description": "Free Big Five personality test (BFAS): 100 statements, about 15 minutes, no sign-up. Your five traits and 10 aspects, explained and compared with others.",
+      "eyebrow": "Personality test",
+      "h1": "Big Five personality test",
+      "lead": "The five core personality traits studied in modern psychology: openness to experience, conscientiousness, extraversion, agreeableness and neuroticism. The test has 100 statements and takes about 15 minutes, with no sign-up. Your result appears on screen right away.",
+      "facts": [
+        "100 statements · about 15 minutes",
+        "Five traits and 10 aspects",
+        "Free, no sign-up",
+        "Your answers stay in your browser"
+      ],
+      "start": "Start the test",
+      "resume": "Continue ({n} of {total})",
+      "restart": "Start over",
+      "showLast": "Show my last result",
+      "step": "Step {n} of {total}",
+      "count": "Answered: {n} of {total}",
+      "hint": "Rate how well each statement describes you. Answer the way you usually are, not the way you’d like to be. There are no right answers.",
+      "scale": [
+        "Not at all like me",
+        "Mostly not like me",
+        "In between",
+        "Mostly like me",
+        "Exactly like me"
+      ],
+      "next": "Next",
+      "back": "Back",
+      "finish": "Show my result",
+      "needAll": "Please answer every statement on this page.",
+      "items": {
+        "VO1": "I get angry easily.",
+        "VO2": "I get upset easily.",
+        "VO3": "My mood changes a lot.",
+        "VO4": "My moods go up and down easily.",
+        "VO5": "I get agitated easily.",
+        "VO6": "I can be stirred up easily.",
+        "VO7": "I rarely get irritated.",
+        "VO8": "I keep my emotions under control.",
+        "VO9": "I rarely lose my composure.",
+        "VO10": "I’m not easily annoyed.",
+        "WI1": "I’m filled with doubts about things.",
+        "WI2": "I feel threatened easily.",
+        "WI3": "I worry about things.",
+        "WI4": "I’m easily discouraged.",
+        "WI5": "I become overwhelmed by events.",
+        "WI6": "I’m afraid of many things.",
+        "WI7": "I seldom feel blue.",
+        "WI8": "I feel comfortable with myself.",
+        "WI9": "I rarely feel depressed.",
+        "WI10": "I’m not easily embarrassed.",
+        "CO1": "I feel others’ emotions.",
+        "CO2": "I ask about others’ well-being.",
+        "CO3": "I sympathize with others’ feelings.",
+        "CO4": "I take an interest in other people’s lives.",
+        "CO5": "I like to do things for others.",
+        "CO6": "I’m not interested in other people’s problems.",
+        "CO7": "I can’t be bothered with others’ needs.",
+        "CO8": "I’m indifferent to the feelings of others.",
+        "CO9": "I don’t make time for others.",
+        "CO10": "I don’t have a soft side.",
+        "PO1": "I respect authority.",
+        "PO2": "I hate to seem pushy.",
+        "PO3": "I avoid imposing my will on others.",
+        "PO4": "I rarely put people under pressure.",
+        "PO5": "I insult people.",
+        "PO6": "I believe I’m better than others.",
+        "PO7": "I take advantage of others.",
+        "PO8": "I seek conflict.",
+        "PO9": "I love a good fight.",
+        "PO10": "I’m out for my own personal gain.",
+        "IN1": "I carry out my plans.",
+        "IN2": "I finish what I start.",
+        "IN3": "I get things done quickly.",
+        "IN4": "I always know what I’m doing.",
+        "IN5": "I waste my time.",
+        "IN6": "I find it difficult to get down to work.",
+        "IN7": "I mess things up.",
+        "IN8": "I don’t put my mind on the task at hand.",
+        "IN9": "I postpone decisions.",
+        "IN10": "I’m easily distracted.",
+        "OR1": "I like order.",
+        "OR2": "I keep things tidy.",
+        "OR3": "I follow a schedule.",
+        "OR4": "I want everything to be just right.",
+        "OR5": "I make sure rules are followed.",
+        "OR6": "I want every detail taken care of.",
+        "OR7": "I leave my belongings around.",
+        "OR8": "I’m not bothered by messy people.",
+        "OR9": "I’m not bothered by disorder.",
+        "OR10": "I dislike routine.",
+        "EN1": "I make friends easily.",
+        "EN2": "I warm up quickly to others.",
+        "EN3": "I show my feelings when I’m happy.",
+        "EN4": "I have a lot of fun.",
+        "EN5": "I laugh a lot.",
+        "EN6": "I’m hard to get to know.",
+        "EN7": "I keep others at a distance.",
+        "EN8": "I reveal little about myself.",
+        "EN9": "I rarely get caught up in the excitement.",
+        "EN10": "I’m not a very enthusiastic person.",
+        "AS1": "I take charge.",
+        "AS2": "I have a strong personality.",
+        "AS3": "I know how to captivate people.",
+        "AS4": "I see myself as a good leader.",
+        "AS5": "I can talk others into doing things.",
+        "AS6": "I’m the first to act.",
+        "AS7": "I don’t have an assertive personality.",
+        "AS8": "I lack the talent for influencing people.",
+        "AS9": "I wait for others to lead the way.",
+        "AS10": "I hold back my opinions.",
+        "IT1": "I’m quick to understand things.",
+        "IT2": "I can handle a lot of information.",
+        "IT3": "I like to solve complex problems.",
+        "IT4": "I have a rich vocabulary.",
+        "IT5": "I think quickly.",
+        "IT6": "I formulate ideas clearly.",
+        "IT7": "I have difficulty understanding abstract ideas.",
+        "IT8": "I avoid philosophical discussions.",
+        "IT9": "I avoid difficult reading material.",
+        "IT10": "I learn things slowly.",
+        "OP1": "I enjoy the beauty of nature.",
+        "OP2": "I believe in the importance of art.",
+        "OP3": "I love to reflect on things.",
+        "OP4": "I get deeply immersed in music.",
+        "OP5": "I see beauty in things that others might not notice.",
+        "OP6": "I need a creative outlet.",
+        "OP7": "I don’t like poetry.",
+        "OP8": "I seldom get lost in thought.",
+        "OP9": "I seldom daydream.",
+        "OP10": "I seldom notice the emotional aspects of paintings and pictures."
+      },
+      "result": {
+        "eyebrow": "Big Five",
+        "title": "Your profile",
+        "date": "Test taken on {date}",
+        "lead": "Each trait gets a number from 1 to 99: how many people out of 100 score lower than you. 50 is exactly in the middle. A high score isn’t better than a low one. Each end of the scale has its own strengths and its own risks.",
+        "summary": "Five traits",
+        "scaleCap": "The number shows how many people out of 100 score lower than you.",
+        "above": "Higher than {n} out of 100",
+        "aboveShort": "higher than {n} out of 100",
+        "levels": [
+          "low",
+          "below average",
+          "average",
+          "above average",
+          "high"
+        ],
+        "disc": {
+          "title": "Next: your style at work and with people",
+          "text": "The Big Five describes your personality as a whole. The DISC test shows how you act at work and with people: your primary style, your strengths and how to work well with people of other styles. 10 minutes, free.",
+          "button": "Take the DISC test"
+        },
+        "again": "Take the test again"
+      },
+      "traits": {
+        "O": {
+          "name": "Openness to experience",
+          "en": "Openness",
+          "what": "How strongly you’re drawn to new ideas, experiences, art and complex questions.",
+          "high": "You’re curious about new things: ideas, books, places, unusual points of view. You easily spot connections, like to figure out how things work and value beauty. Routine and “that’s how it’s done” wear you out quickly, so at work you need room to explore.",
+          "mid": "You’re open to new things when they make sense, but you don’t chase novelty for its own sake. You might get absorbed in an idea or a book, or calmly stick with a proven approach, depending on the situation.",
+          "low": "You’re a practical person: you value what’s proven, clear and useful. Abstract reasoning and experiments interest you when they lead to something concrete. And people can count on you where common sense and stability matter."
+        },
+        "C": {
+          "name": "Conscientiousness",
+          "en": "Conscientiousness",
+          "what": "How focused and organized you are, and how reliably you see things through.",
+          "high": "You keep your word, plan ahead and finish what you start. Order comes naturally to you, and people rely on you. The flip side: it’s hard to relax and let go of control, and other people’s carelessness can really get to you.",
+          "mid": "You pull yourself together when something matters and allow yourself flexibility when it doesn’t. You make plans, but they’re not set in stone, and you keep things in order as needed.",
+          "low": "You work flexibly, go with your mood, change plans easily and dislike rigid rules. That helps you improvise, but deadlines, routine and details are harder. Reminders and simple agreements with yourself help."
+        },
+        "E": {
+          "name": "Extraversion",
+          "en": "Extraversion",
+          "what": "How much energy you get from people, conversation and action.",
+          "high": "People and events energize you: you meet people easily, talk a lot and take the initiative. Long stretches of quiet and solitude get old fast. It’s worth leaving room for people who speak more quietly.",
+          "mid": "You’re comfortable both in company and on your own. You can lead a conversation or listen, depending on the situation and the people.",
+          "low": "You conserve your energy: you prefer a small circle, deep conversations and time on your own. You don’t seek the spotlight or rush to speak up, but you think before you talk."
+        },
+        "A": {
+          "name": "Agreeableness",
+          "en": "Agreeableness",
+          "what": "How much you focus on other people, cooperation and keeping the peace.",
+          "high": "People and relationships matter to you: you empathize, help out, look for agreement and avoid harshness. You’re easy to work with. The risk is giving in where you should stand your ground.",
+          "mid": "You pay attention to people, but you can also hold your ground. You help willingly, though not at your own expense.",
+          "low": "You’re direct and independent: you say what you think, don’t shy away from an argument and put the task ahead of people’s feelings. That helps in negotiations and tough decisions, but in relationships it can come across as harsh."
+        },
+        "N": {
+          "name": "Neuroticism",
+          "en": "Neuroticism",
+          "what": "How strongly you react to stress, setbacks and trouble. A high score here means sensitivity, not illness.",
+          "high": "You feel stress keenly: you worry, doubt yourself and take a while to bounce back from setbacks. This sensitivity helps you spot risks early, but it drains your energy. It helps to know what restores you and not to face anxiety alone.",
+          "mid": "You react to stress like most people do: you can worry or get angry, but you usually regain your balance quickly.",
+          "low": "You’re emotionally steady: you handle pressure calmly, rarely worry and recover quickly. The flip side: you may underestimate a real risk or how others feel."
+        }
+      },
+      "aspects": {
+        "IT": {
+          "name": "Intellect",
+          "high": "You enjoy complex problems and pick up new things quickly.",
+          "mid": "You’re happy to think through hard questions when it’s worth it.",
+          "low": "You prefer clear tasks without unnecessary theory."
+        },
+        "OP": {
+          "name": "Openness",
+          "high": "You’re deeply moved by art, music and nature, and you reflect and daydream a lot.",
+          "mid": "Art and imagination have their place in your life, but not the main one.",
+          "low": "You’re more interested in the real and concrete than in fantasy and art."
+        },
+        "IN": {
+          "name": "Industriousness",
+          "high": "You get down to work quickly and see it through.",
+          "mid": "You work steadily, though you sometimes put off unpleasant tasks.",
+          "low": "Getting started and staying focused can be hard for you."
+        },
+        "OR": {
+          "name": "Orderliness",
+          "high": "You like order, schedules and things done by the rules.",
+          "mid": "You keep things in order, but without being a stickler.",
+          "low": "Mess and bent rules hardly bother you."
+        },
+        "EN": {
+          "name": "Enthusiasm",
+          "high": "You connect with people easily and show your joy openly.",
+          "mid": "You’re friendly, but you don’t open up to everyone right away.",
+          "low": "You’re reserved and open up slowly, and only to some people."
+        },
+        "AS": {
+          "name": "Assertiveness",
+          "high": "You take charge and know how to get people to follow you.",
+          "mid": "You can speak up and lead when needed.",
+          "low": "You’d rather let others lead, and you keep your opinions to yourself."
+        },
+        "CO": {
+          "name": "Compassion",
+          "high": "You’re attuned to others and glad to help.",
+          "mid": "You care, but you don’t get lost in other people’s problems.",
+          "low": "Other people’s feelings move you less than the task at hand."
+        },
+        "PO": {
+          "name": "Politeness",
+          "high": "You avoid pressure and conflict, and you respect rules and other people.",
+          "mid": "You’re usually tactful, but you can push when you need to.",
+          "low": "You’re not afraid of conflict and go straight for what you want."
+        },
+        "VO": {
+          "name": "Volatility",
+          "high": "You get irritated quickly, and your mood shifts easily.",
+          "mid": "You flare up now and then but cool down fast.",
+          "low": "You rarely get irritated and keep your emotions in check."
+        },
+        "WI": {
+          "name": "Withdrawal",
+          "high": "You often worry, doubt yourself and get discouraged easily.",
+          "mid": "You worry when there’s a reason, but not all the time.",
+          "low": "You rarely worry and take setbacks calmly."
+        }
+      },
+      "sections": [
+        {
+          "h": "What is the Big Five?",
+          "p": [
+            "The Big Five (also known as the OCEAN model) is the most thoroughly studied model of personality in modern psychology. It didn’t grow out of one person’s theory but out of data: for decades, researchers collected the words people use to describe character and looked at which ones go together. That’s how the five broad traits emerged.",
+            "In this model, traits aren’t types. Everyone has all five, just to different degrees. Your result shows where you are on each scale compared with other people."
+          ]
+        },
+        {
+          "h": "The five traits",
+          "ul": [
+            "Openness to experience — interest in new ideas, experiences and art.",
+            "Conscientiousness — focus, order and the ability to see things through.",
+            "Extraversion — the energy a person gets from people and action.",
+            "Agreeableness — compassion, tact and a desire for agreement.",
+            "Neuroticism — sensitivity to stress and setbacks."
+          ]
+        },
+        {
+          "h": "How this test works",
+          "p": [
+            "The test is based on the BFAS questionnaire (Big Five Aspect Scales), described by Colin DeYoung, Lena Quilty and Jordan Peterson in 2007. It splits each trait into two aspects, 10 in all, so the result is more detailed than five traits alone.",
+            "The questionnaire’s 100 statements come from the public-domain IPIP (International Personality Item Pool); we turned them into full sentences and lightly edited the wording. Your score on each aspect is the average of your answers on a scale of 1 to 5. We then compare it with published data from a study of about 2,600 people."
+          ]
+        },
+        {
+          "h": "How the Big Five differs from DISC",
+          "p": [
+            "The DISC test describes behavior at work and with people: how you act, make decisions and reach agreement with others. It places you in one of four styles. The Big Five is broader. It describes your personality as a whole and doesn’t sort people into types; instead, it shows where you are on each of five scales. The two tests complement each other."
+          ]
+        },
+        {
+          "h": "What this test doesn’t do",
+          "ul": [
+            "It doesn’t diagnose anything: high neuroticism means sensitivity, not illness.",
+            "It doesn’t rate anyone as good or bad: each end of every scale has its strengths.",
+            "It shouldn’t be the only basis for hiring decisions.",
+            "It’s only as accurate as your answers: the result describes how you see yourself right now."
+          ]
+        },
+        {
+          "h": "Sources",
+          "ul": [
+            "DeYoung, C. G., Quilty, L. C., & Peterson, J. B. (2007). Between facets and domains: 10 aspects of the Big Five. Journal of Personality and Social Psychology, 93(5), 880–896.",
+            "Weisberg, Y. J., DeYoung, C. G., & Hirsh, J. B. (2011). Gender differences in personality across the ten aspects of the Big Five. Frontiers in Psychology, 2, 178.",
+            "International Personality Item Pool (ipip.ori.org) — a public-domain collection of items for personality research."
+          ]
+        }
+      ],
+      "faqTitle": "Questions",
+      "faq": [
+        {
+          "q": "How long does the test take?",
+          "a": "About 15 minutes: 100 short statements on 10 pages. You can take a break. Your answers are saved in your browser, and the test picks up where you left off."
+        },
+        {
+          "q": "Do I need to sign up?",
+          "a": "No. The test is free, and your result appears on screen right after your last answer."
+        },
+        {
+          "q": "Where are my answers stored?",
+          "a": "Only in your browser on this device. The result is calculated right on the page, and your answers aren’t sent to a server. If you clear the site’s data, they’re deleted."
+        },
+        {
+          "q": "How accurate is the result?",
+          "a": "The BFAS is well studied. But the statements on this page are lightly edited from the originals, this version hasn’t been separately validated, and the comparison with other people uses data from one study of about 2,600 people. So treat your result as approximate."
+        },
+        {
+          "q": "Can I take the test again?",
+          "a": "Yes, anytime. Personality traits are fairly stable but do change over time, so it’s interesting to compare your result in six months or a year."
+        }
+      ]
+    },
     "disc": {
       "title": "What Is DISC? The Model and the Four Behavioral Styles",
       "description": "A plain-English guide to DISC: where the model came from, what it measures, the four styles (D, I, S, C), how scoring works and how to read your profile.",

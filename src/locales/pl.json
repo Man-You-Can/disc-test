@@ -449,6 +449,338 @@
     }
   },
   "content": {
+    "bigfive": {
+      "title": "Test osobowości Big Five (Wielka Piątka) za darmo – 100 pytań",
+      "description": "Darmowy test Wielkiej Piątki (Big Five, BFAS): 100 stwierdzeń, około 15 minut, bez rejestracji. Pięć cech i dziesięć aspektów osobowości z opisem wyniku.",
+      "eyebrow": "Test osobowości",
+      "h1": "Test Wielkiej Piątki (Big Five)",
+      "lead": "Pięć głównych cech osobowości, które bada współczesna psychologia: otwartość na doświadczenie, sumienność, ekstrawersja, ugodowość i neurotyczność. 100 stwierdzeń, około 15 minut, bez rejestracji – wynik od razu na ekranie.",
+      "facts": [
+        "100 stwierdzeń · około 15 minut",
+        "5 cech i 10 aspektów",
+        "Za darmo, bez rejestracji",
+        "Odpowiedzi zostają w twojej przeglądarce"
+      ],
+      "start": "Zacznij test",
+      "resume": "Kontynuuj ({n} z {total})",
+      "restart": "Zacznij od nowa",
+      "showLast": "Pokaż mój poprzedni wynik",
+      "step": "Krok {n} z {total}",
+      "count": "Odpowiedzi: {n} z {total}",
+      "hint": "Oceń, na ile każde stwierdzenie pasuje do ciebie. Odpowiadaj tak, jak zwykle bywa, a nie tak, jak by się chciało. Nie ma dobrych ani złych odpowiedzi.",
+      "scale": [
+        "Zupełnie nie o mnie",
+        "Raczej nie o mnie",
+        "Pół na pół",
+        "Raczej o mnie",
+        "Dokładnie o mnie"
+      ],
+      "next": "Dalej",
+      "back": "Wstecz",
+      "finish": "Pokaż wynik",
+      "needAll": "Odpowiedz na wszystkie stwierdzenia na tej stronie.",
+      "items": {
+        "VO1": "Łatwo wpadam w złość.",
+        "VO2": "Łatwo wytrącić mnie z równowagi.",
+        "VO3": "Mój nastrój często się zmienia.",
+        "VO4": "Mam skłonność do huśtawek nastroju.",
+        "VO5": "Łatwo mnie rozdrażnić.",
+        "VO6": "Łatwo się unoszę.",
+        "VO7": "Rzadko się irytuję.",
+        "VO8": "Panuję nad swoimi emocjami.",
+        "VO9": "Rzadko tracę spokój.",
+        "VO10": "Mało co mnie drażni.",
+        "WI1": "Często dręczą mnie wątpliwości.",
+        "WI2": "Łatwo odczuwam zagrożenie.",
+        "WI3": "Martwię się różnymi sprawami.",
+        "WI4": "Łatwo się zniechęcam.",
+        "WI5": "Wydarzenia łatwo mnie przytłaczają.",
+        "WI6": "Boję się wielu rzeczy.",
+        "WI7": "Rzadko bywa mi smutno.",
+        "WI8": "Czuję się dobrze we własnej skórze.",
+        "WI9": "Rzadko dopada mnie przygnębienie.",
+        "WI10": "Niełatwo mnie zawstydzić.",
+        "CO1": "Wyczuwam emocje innych ludzi.",
+        "CO2": "Pytam innych, jak się czują.",
+        "CO3": "Współczuję innym, gdy jest im ciężko.",
+        "CO4": "Obchodzi mnie, jak układa się życie innych ludzi.",
+        "CO5": "Lubię robić coś dla innych.",
+        "CO6": "Nie interesują mnie problemy innych ludzi.",
+        "CO7": "Nie zawracam sobie głowy potrzebami innych.",
+        "CO8": "Uczucia innych są mi obojętne.",
+        "CO9": "Nie znajduję czasu dla innych.",
+        "CO10": "Mało we mnie czułości.",
+        "PO1": "Szanuję tych, którzy mają nade mną władzę.",
+        "PO2": "Bardzo nie lubię wyglądać na osobę natarczywą.",
+        "PO3": "Unikam narzucania innym swojej woli.",
+        "PO4": "Rzadko wywieram presję na ludzi.",
+        "PO5": "Obrażam innych.",
+        "PO6": "Uważam, że przewyższam innych.",
+        "PO7": "Wykorzystuję innych.",
+        "PO8": "Szukam konfliktów.",
+        "PO9": "Uwielbiam ostre spory.",
+        "PO10": "Zależy mi przede wszystkim na własnej korzyści.",
+        "IN1": "Wprowadzam swoje plany w życie.",
+        "IN2": "Kończę to, co zaczynam.",
+        "IN3": "Szybko załatwiam sprawy.",
+        "IN4": "Zawsze wiem, co robię.",
+        "IN5": "Marnuję czas.",
+        "IN6": "Trudno mi zabrać się do pracy.",
+        "IN7": "Zawalam różne sprawy.",
+        "IN8": "Nie skupiam się na tym, co mam właśnie do zrobienia.",
+        "IN9": "Odkładam decyzje na później.",
+        "IN10": "Łatwo się rozpraszam.",
+        "OR1": "Lubię porządek.",
+        "OR2": "Utrzymuję porządek w swoich rzeczach.",
+        "OR3": "Trzymam się ustalonego planu dnia.",
+        "OR4": "Chcę, żeby wszystko było dopięte na ostatni guzik.",
+        "OR5": "Dbam o to, żeby zasady były przestrzegane.",
+        "OR6": "Chcę, żeby każdy szczegół był dopilnowany.",
+        "OR7": "Zostawiam swoje rzeczy byle gdzie.",
+        "OR8": "Bałaganiarze mi nie przeszkadzają.",
+        "OR9": "Bałagan mi nie przeszkadza.",
+        "OR10": "Nie lubię rutyny.",
+        "EN1": "Łatwo nawiązuję przyjaźnie.",
+        "EN2": "Szybko otwieram się na innych.",
+        "EN3": "Gdy się cieszę, widać to po mnie.",
+        "EN4": "Często dobrze się bawię.",
+        "EN5": "Dużo się śmieję.",
+        "EN6": "Trudno mnie bliżej poznać.",
+        "EN7": "Trzymam innych na dystans.",
+        "EN8": "Niewiele o sobie mówię.",
+        "EN9": "Rzadko udziela mi się ogólne podekscytowanie.",
+        "EN10": "Nie mam w sobie wiele entuzjazmu.",
+        "AS1": "Biorę sprawy w swoje ręce.",
+        "AS2": "Mam silną osobowość.",
+        "AS3": "Umiem oczarować ludzi.",
+        "AS4": "Widzę w sobie dobre cechy przywódcze.",
+        "AS5": "Umiem namówić innych, żeby coś zrobili.",
+        "AS6": "Zaczynam działać przed innymi.",
+        "AS7": "Przebojowość to nie moja cecha.",
+        "AS8": "Brakuje mi talentu do wpływania na ludzi.",
+        "AS9": "Czekam, aż inni przejmą inicjatywę.",
+        "AS10": "Zatrzymuję swoje zdanie dla siebie.",
+        "IT1": "Szybko łapię, o co chodzi.",
+        "IT2": "Radzę sobie z dużą ilością informacji.",
+        "IT3": "Lubię rozwiązywać złożone problemy.",
+        "IT4": "Mam bogate słownictwo.",
+        "IT5": "Szybko myślę.",
+        "IT6": "Jasno formułuję myśli.",
+        "IT7": "Trudno mi zrozumieć abstrakcyjne idee.",
+        "IT8": "Unikam rozmów filozoficznych.",
+        "IT9": "Unikam trudnych lektur.",
+        "IT10": "Powoli przyswajam nowe rzeczy.",
+        "OP1": "Cieszy mnie piękno przyrody.",
+        "OP2": "Uważam, że sztuka jest ważna.",
+        "OP3": "Uwielbiam rozmyślać nad różnymi sprawami.",
+        "OP4": "Muzyka potrafi mnie całkowicie pochłonąć.",
+        "OP5": "Dostrzegam piękno w rzeczach, których inni mogą nie zauważać.",
+        "OP6": "Potrzebuję tworzyć, żeby się wyrazić.",
+        "OP7": "Nie lubię poezji.",
+        "OP8": "Rzadko zatapiam się w myślach.",
+        "OP9": "Rzadko bujam w obłokach.",
+        "OP10": "Rzadko dostrzegam nastrój, jaki niosą obrazy i zdjęcia."
+      },
+      "result": {
+        "eyebrow": "Wielka Piątka",
+        "title": "Twój profil",
+        "date": "Data testu: {date}",
+        "lead": "Przy każdej cesze widzisz liczbę od 1 do 99: ile osób na 100 uzyskuje niższy wynik niż ty. 50 to dokładnie środek. Ani wysoki, ani niski wynik nie jest lepszy: każdy biegun ma swoje mocne strony i swoje ryzyka.",
+        "summary": "Pięć cech",
+        "scaleCap": "Liczba pokazuje, ile osób na 100 ma niższy wynik niż ty.",
+        "above": "Wyżej niż {n} na 100 osób",
+        "aboveShort": "wyżej niż {n} na 100 osób",
+        "levels": [
+          "niski poziom",
+          "poniżej średniej",
+          "przeciętny poziom",
+          "powyżej średniej",
+          "wysoki poziom"
+        ],
+        "disc": {
+          "title": "A teraz: twój styl w pracy i kontaktach z ludźmi",
+          "text": "Wielka Piątka opisuje charakter jako całość. Test DISC pokazuje, jak działasz w pracy i w kontaktach z ludźmi: twój styl wiodący, mocne strony i to, jak dogadywać się z osobami o innych stylach. 10 minut, za darmo.",
+          "button": "Zrób test DISC"
+        },
+        "again": "Zrób test jeszcze raz"
+      },
+      "traits": {
+        "O": {
+          "name": "Otwartość na doświadczenie",
+          "en": "Openness",
+          "what": "Na ile ciągnie cię do nowych idei, wrażeń, sztuki i trudnych pytań.",
+          "high": "Ciekawi cię to, co nowe: idee, książki, miejsca, nietypowe poglądy. Łatwo dostrzegasz powiązania, lubisz rozumieć, jak coś działa, i cenisz piękno. Rutyna i „tak się przyjęło” szybko cię męczą – w pracy potrzebujesz miejsca na poszukiwania.",
+          "mid": "Nowości przyciągają cię wtedy, gdy mają sens, ale nie gonisz za nowością dla samej nowości. Możesz wciągnąć się w ideę lub książkę, a możesz też spokojnie pracować sprawdzonym sposobem – zależnie od okoliczności.",
+          "low": "Stawiasz na praktykę: cenisz to, co sprawdzone, zrozumiałe i użyteczne. Abstrakcyjne rozważania i eksperymenty interesują cię wtedy, gdy wynika z nich konkretny pożytek. Za to można na tobie polegać tam, gdzie potrzeba zdrowego rozsądku i stabilności."
+        },
+        "C": {
+          "name": "Sumienność",
+          "en": "Conscientiousness",
+          "what": "Na ile działasz w sposób zorganizowany i doprowadzasz sprawy do końca.",
+          "high": "Dotrzymujesz słowa, planujesz i kończysz to, co zaczynasz. Porządek w sprawach przychodzi ci naturalnie, inni na tobie polegają. Druga strona medalu: trudno ci odpuścić i oddać kontrolę, a cudza niedbałość potrafi mocno irytować.",
+          "mid": "Mobilizujesz się, gdy sprawa jest ważna, a gdy nie jest – pozwalasz sobie na elastyczność. Masz plany, ale nie żelazne; porządek – w miarę potrzeby.",
+          "low": "Działasz elastycznie i według nastroju, łatwo zmieniasz plany i nie lubisz sztywnych ram. To pomaga improwizować, ale terminy, rutyna i drobiazgi przychodzą trudniej – pomagają przypomnienia i proste umowy ze sobą."
+        },
+        "E": {
+          "name": "Ekstrawersja",
+          "en": "Extraversion",
+          "what": "Ile energii czerpiesz z ludzi, rozmów i działania.",
+          "high": "Ładujesz się energią od ludzi i wydarzeń: łatwo nawiązujesz znajomości, dużo mówisz, przejmujesz inicjatywę. Długa cisza i samotność szybko cię nużą. Warto zostawiać miejsce także tym, którzy mówią ciszej.",
+          "mid": "Dobrze czujesz się i w towarzystwie, i we własnym. Możesz prowadzić rozmowę albo słuchać – zależnie od sytuacji i ludzi.",
+          "low": "Oszczędzasz energię: wolisz wąskie grono, głębokie rozmowy i czas dla siebie. Nie zabiegasz o miejsce w centrum uwagi i nie spieszysz się z zabieraniem głosu – za to przemyślisz sprawę, zanim coś powiesz."
+        },
+        "A": {
+          "name": "Ugodowość",
+          "en": "Agreeableness",
+          "what": "Na ile kierujesz się dobrem innych, współpracą i zgodą w relacjach.",
+          "high": "Ważni są dla ciebie ludzie i relacje: współczujesz, pomagasz, szukasz porozumienia i unikasz ostrych słów. Dobrze się z tobą współpracuje. Ryzyko – ustępowanie tam, gdzie warto by obstać przy swoim.",
+          "mid": "Zwracasz uwagę na ludzi, ale potrafisz też postawić na swoim. Pomagasz chętnie, choć nie kosztem siebie.",
+          "low": "Stawiasz sprawę jasno i cenisz niezależność: mówisz, co myślisz, spokojnie wchodzisz w spór i stawiasz cel wyżej niż cudze uczucia. To pomaga w negocjacjach i twardych decyzjach, ale w relacjach bywa odbierane jako szorstkość."
+        },
+        "N": {
+          "name": "Neurotyczność",
+          "en": "Neuroticism",
+          "what": "Jak silnie reagujesz na stres, porażki i przykrości. Wysoki wynik oznacza tu wrażliwość, a nie chorobę.",
+          "high": "Mocno odczuwasz stres: przejmujesz się, masz wątpliwości, długo dochodzisz do siebie po przykrościach. Taka wrażliwość pomaga wcześnie dostrzegać ryzyko, ale odbiera siły – dobrze wiedzieć, co cię regeneruje, i nie zostawać z niepokojem w pojedynkę.",
+          "mid": "Reagujesz na stres jak większość ludzi: zdarza ci się martwić i złościć, ale zwykle szybko wracasz do równowagi.",
+          "low": "Zachowujesz emocjonalną równowagę: spokojnie znosisz presję, rzadko się niepokoisz i szybko się regenerujesz. Odwrotna strona: łatwo przeoczyć realne ryzyko albo cudze przeżycia."
+        }
+      },
+      "aspects": {
+        "IT": {
+          "name": "Intelekt",
+          "high": "Lubisz trudne zadania i szybko rozumiesz nowe rzeczy.",
+          "mid": "Chętnie myślisz nad trudnymi sprawami, jeśli zadanie jest tego warte.",
+          "low": "Wolisz jasne zadania bez zbędnej teorii."
+        },
+        "OP": {
+          "name": "Wyobraźnia i estetyka",
+          "high": "Głęboko przeżywasz sztukę, muzykę i przyrodę, dużo rozmyślasz i marzysz.",
+          "mid": "Sztuka i wyobraźnia mają w twoim życiu swoje miejsce, ale nie najważniejsze.",
+          "low": "Bardziej zajmuje cię to, co realne i konkretne, niż fantazje i sztuka."
+        },
+        "IN": {
+          "name": "Pracowitość",
+          "high": "Szybko zabierasz się do pracy i kończysz to, co zaczynasz.",
+          "mid": "Pracujesz równo, choć nieprzyjemne sprawy czasem odkładasz.",
+          "low": "Bywa ci trudno zacząć i nie rozpraszać się."
+        },
+        "OR": {
+          "name": "Systematyczność",
+          "high": "Lubisz porządek, plan dnia i to, żeby wszystko szło zgodnie z zasadami.",
+          "mid": "Dbasz o porządek, ale bez pedanterii.",
+          "low": "Bałagan i odstępstwa od zasad mało cię obchodzą."
+        },
+        "EN": {
+          "name": "Entuzjazm",
+          "high": "Łatwo zbliżasz się do ludzi i otwarcie okazujesz radość.",
+          "mid": "Odnosisz się do ludzi życzliwie, ale nie przed każdym od razu się otwierasz.",
+          "low": "Zachowujesz rezerwę i otwierasz się powoli, nie przed każdym."
+        },
+        "AS": {
+          "name": "Asertywność",
+          "high": "Przejmujesz prowadzenie i potrafisz pociągnąć innych za sobą.",
+          "mid": "Potrafisz zabrać głos i poprowadzić, gdy trzeba.",
+          "low": "Chętniej oddajesz prowadzenie innym i zatrzymujesz zdanie dla siebie."
+        },
+        "CO": {
+          "name": "Współczucie",
+          "high": "Dobrze wyczuwasz innych i chętnie pomagasz.",
+          "mid": "Współczujesz, ale nie zatracasz się w cudzych problemach.",
+          "low": "Cudze przeżycia poruszają cię mniej niż sprawy do załatwienia."
+        },
+        "PO": {
+          "name": "Uprzejmość",
+          "high": "Unikasz nacisków i konfliktów, szanujesz zasady i innych ludzi.",
+          "mid": "Zwykle zachowujesz takt, ale potrafisz też naciskać.",
+          "low": "Nie boisz się konfliktu i otwarcie dążysz do swego."
+        },
+        "VO": {
+          "name": "Wybuchowość",
+          "high": "Szybko się irytujesz, a nastrój łatwo ci się zmienia.",
+          "mid": "Czasem się unosisz, ale szybko ci przechodzi.",
+          "low": "Rzadko się irytujesz i panujesz nad emocjami."
+        },
+        "WI": {
+          "name": "Lękliwość",
+          "high": "Często się niepokoisz, masz wątpliwości i łatwo tracisz zapał.",
+          "mid": "Martwisz się wtedy, gdy jest powód, ale nie bez przerwy.",
+          "low": "Rzadko się niepokoisz i spokojnie znosisz niepowodzenia."
+        }
+      },
+      "sections": [
+        {
+          "h": "Czym jest Wielka Piątka",
+          "p": [
+            "Wielka Piątka (Big Five, model OCEAN) to najlepiej zbadany model osobowości we współczesnej psychologii. Nie wyrosła z niczyjej teorii, lecz z danych: badacze przez dziesięciolecia zbierali słowa, którymi ludzie opisują charakter, i sprawdzali, które z nich występują razem. Tak wyłoniło się pięć szerokich cech.",
+            "Cechy w tym modelu to nie typy. Każdy człowiek ma wszystkie pięć, tylko w różnym natężeniu: wynik pokazuje, gdzie jesteś na każdej skali w porównaniu z innymi ludźmi."
+          ]
+        },
+        {
+          "h": "Pięć cech",
+          "ul": [
+            "Otwartość na doświadczenie – zainteresowanie nowymi ideami, wrażeniami i sztuką.",
+            "Sumienność – zorganizowanie, porządek i doprowadzanie spraw do końca.",
+            "Ekstrawersja – energia, którą człowiek czerpie z ludzi i działania.",
+            "Ugodowość – współczucie, takt i dążenie do porozumienia.",
+            "Neurotyczność – wrażliwość na stres i przykrości."
+          ]
+        },
+        {
+          "h": "Jak działa ten test",
+          "p": [
+            "Test opiera się na kwestionariuszu BFAS (Big Five Aspect Scales), który opisali Colin DeYoung, Lena Quilty i Jordan Peterson w 2007 roku. Każda cecha dzieli się w nim na dwa aspekty – razem jest ich dziesięć, więc wynik jest dokładniejszy niż przy samych pięciu cechach.",
+            "100 stwierdzeń kwestionariusza pochodzi z otwartego banku IPIP (International Personality Item Pool), a tłumaczenie na język polski jest nasze. Wynik w każdym aspekcie to średnia twoich odpowiedzi na skali od 1 do 5; następnie porównujemy go z opublikowanymi danymi z badania, w którym wzięło udział około 2600 osób."
+          ]
+        },
+        {
+          "h": "Czym Wielka Piątka różni się od DISC",
+          "p": [
+            "Test DISC opisuje zachowanie w pracy i w kontaktach z ludźmi: jak działasz, podejmujesz decyzje i dogadujesz się z innymi – i przypisuje cię do jednego z czterech stylów. Wielka Piątka jest szersza: opisuje charakter jako całość i nie dzieli ludzi na typy, tylko pokazuje miejsce na każdej z pięciu skal. Oba testy się uzupełniają."
+          ]
+        },
+        {
+          "h": "Czego test nie robi",
+          "ul": [
+            "Nie stawia diagnoz: wysoka neurotyczność to wrażliwość, a nie choroba.",
+            "Nie ocenia ludzi jako dobrych czy złych: każdy biegun skali ma swoje mocne strony.",
+            "Nie nadaje się na jedyną podstawę decyzji o zatrudnieniu.",
+            "Nie jest dokładniejszy niż twoje odpowiedzi: wynik opisuje, jak widzisz siebie teraz."
+          ]
+        },
+        {
+          "h": "Źródła",
+          "ul": [
+            "DeYoung C. G., Quilty L. C., Peterson J. B. (2007). Between facets and domains: 10 aspects of the Big Five. Journal of Personality and Social Psychology, 93(5), 880–896.",
+            "Weisberg Y. J., DeYoung C. G., Hirsh J. B. (2011). Gender differences in personality across the ten aspects of the Big Five. Frontiers in Psychology, 2, 178.",
+            "International Personality Item Pool (ipip.ori.org) – otwarty bank stwierdzeń do badań osobowości."
+          ]
+        }
+      ],
+      "faqTitle": "Pytania",
+      "faq": [
+        {
+          "q": "Ile trwa test?",
+          "a": "Około 15 minut: 100 krótkich stwierdzeń na 10 stronach. Możesz zrobić przerwę – odpowiedzi zostaną w przeglądarce, a test będzie można dokończyć od tego samego miejsca."
+        },
+        {
+          "q": "Czy trzeba się rejestrować?",
+          "a": "Nie. Test jest darmowy, a wynik pojawia się na ekranie od razu po ostatniej odpowiedzi."
+        },
+        {
+          "q": "Gdzie są przechowywane moje odpowiedzi?",
+          "a": "Tylko w twojej przeglądarce na tym urządzeniu: wynik jest liczony bezpośrednio na stronie, a odpowiedzi nie trafiają na serwer. Jeśli wyczyścisz dane strony, zostaną usunięte."
+        },
+        {
+          "q": "Na ile dokładny jest wynik?",
+          "a": "Kwestionariusz BFAS jest dobrze zbadany, ale wersja polska to nasze tłumaczenie, które nie przeszło jeszcze osobnej weryfikacji naukowej, a porównanie z innymi ludźmi opiera się na danych z anglojęzycznego badania (około 2600 osób). Dlatego wynik warto traktować jako przybliżony."
+        },
+        {
+          "q": "Czy można zrobić test jeszcze raz?",
+          "a": "Tak, w każdej chwili. Cechy osobowości są dość stabilne, ale z czasem się zmieniają – ciekawie jest porównać wynik po pół roku albo po roku."
+        }
+      ]
+    },
     "disc": {
       "title": "Co to jest DISC? Model, 4 style zachowania i jak czytać profil",
       "description": "Model DISC prostym językiem: skąd się wziął, co mierzy, cztery style D, I, S, C, jak liczy się wynik i jak czytać profil. Zrób darmowy test DISC online.",

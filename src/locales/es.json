@@ -449,6 +449,338 @@
     }
   },
   "content": {
+    "bigfive": {
+      "title": "Test Big Five gratis online: test de los cinco grandes",
+      "description": "Test Big Five gratis (BFAS): 100 afirmaciones, unos 15 minutos, sin registro. Cinco rasgos y diez aspectos de su personalidad, comparados con otras personas.",
+      "eyebrow": "Test de personalidad",
+      "h1": "Test de personalidad Big Five (los cinco grandes)",
+      "lead": "Los cinco grandes rasgos de personalidad que estudia la psicología actual: apertura a la experiencia, responsabilidad, extraversión, amabilidad y neuroticismo. 100 afirmaciones, unos 15 minutos, sin registro; el resultado aparece al instante en pantalla.",
+      "facts": [
+        "100 afirmaciones · unos 15 minutos",
+        "5 rasgos y 10 aspectos",
+        "Gratis, sin registro",
+        "Las respuestas se quedan en su navegador"
+      ],
+      "start": "Empezar el test",
+      "resume": "Continuar ({n} de {total})",
+      "restart": "Empezar de nuevo",
+      "showLast": "Ver mi resultado anterior",
+      "step": "Paso {n} de {total}",
+      "count": "Respuestas: {n} de {total}",
+      "hint": "Indique en qué medida le describe cada afirmación. Responda pensando en cómo suele ser, no en cómo le gustaría ser. No hay respuestas correctas.",
+      "scale": [
+        "No me describe nada",
+        "Más bien no",
+        "Ni sí ni no",
+        "Más bien sí",
+        "Me describe del todo"
+      ],
+      "next": "Siguiente",
+      "back": "Atrás",
+      "finish": "Ver el resultado",
+      "needAll": "Responda a todas las afirmaciones de esta página.",
+      "items": {
+        "VO1": "Me irrito con facilidad.",
+        "VO2": "Me disgusto con facilidad.",
+        "VO3": "Mi estado de ánimo cambia mucho.",
+        "VO4": "Mi humor sube y baja con facilidad.",
+        "VO5": "Me altero con facilidad.",
+        "VO6": "Me sulfuro enseguida.",
+        "VO7": "Rara vez algo me irrita.",
+        "VO8": "Mantengo mis emociones bajo control.",
+        "VO9": "Rara vez pierdo la compostura.",
+        "VO10": "Hace falta mucho para sacarme de quicio.",
+        "WI1": "Me asaltan muchas dudas.",
+        "WI2": "Me intimido con facilidad.",
+        "WI3": "Me preocupo a menudo por las cosas.",
+        "WI4": "Me desanimo con facilidad.",
+        "WI5": "Me agobio cuando se me juntan muchas cosas.",
+        "WI6": "Me dan miedo muchas cosas.",
+        "WI7": "Rara vez siento tristeza.",
+        "WI8": "Me siento a gusto en mi propia piel.",
+        "WI9": "Rara vez tengo el ánimo decaído.",
+        "WI10": "No me da vergüenza con facilidad.",
+        "CO1": "Capto las emociones de los demás.",
+        "CO2": "Pregunto a los demás cómo están.",
+        "CO3": "Me identifico con los sentimientos de los demás.",
+        "CO4": "Me intereso por lo que viven otras personas.",
+        "CO5": "Me gusta hacer cosas por los demás.",
+        "CO6": "Los problemas de los demás no me interesan.",
+        "CO7": "No me molesto en atender las necesidades de los demás.",
+        "CO8": "Los sentimientos de los demás me son indiferentes.",
+        "CO9": "No dedico tiempo a los demás.",
+        "CO10": "No tengo un lado tierno.",
+        "PO1": "Respeto la autoridad.",
+        "PO2": "Odio parecer una persona avasalladora.",
+        "PO3": "Evito imponer mi voluntad a los demás.",
+        "PO4": "Rara vez presiono a la gente.",
+        "PO5": "Ofendo a la gente con lo que digo.",
+        "PO6": "Creo que soy mejor que los demás.",
+        "PO7": "Me aprovecho de los demás.",
+        "PO8": "Busco el conflicto.",
+        "PO9": "Me encantan las discusiones acaloradas.",
+        "PO10": "Busco sobre todo mi propio beneficio.",
+        "IN1": "Cumplo mis planes.",
+        "IN2": "Termino lo que empiezo.",
+        "IN3": "Hago las cosas con rapidez.",
+        "IN4": "Siempre sé lo que estoy haciendo.",
+        "IN5": "Pierdo el tiempo.",
+        "IN6": "Me cuesta ponerme a trabajar.",
+        "IN7": "Echo a perder las cosas.",
+        "IN8": "No me concentro en lo que tengo entre manos.",
+        "IN9": "Aplazo las decisiones.",
+        "IN10": "Me distraigo con facilidad.",
+        "OR1": "Me gusta el orden.",
+        "OR2": "Mantengo las cosas ordenadas.",
+        "OR3": "Sigo un horario.",
+        "OR4": "Quiero que todo esté perfecto.",
+        "OR5": "Me aseguro de que se cumplan las normas.",
+        "OR6": "Quiero que no se escape ningún detalle.",
+        "OR7": "Dejo mis cosas en cualquier sitio.",
+        "OR8": "No me molestan las personas desordenadas.",
+        "OR9": "No me molesta el desorden.",
+        "OR10": "No me gusta la rutina.",
+        "EN1": "Hago amigos con facilidad.",
+        "EN2": "Enseguida entro en confianza con la gente.",
+        "EN3": "Cuando algo me alegra, lo demuestro.",
+        "EN4": "Me divierto mucho.",
+        "EN5": "Me río mucho.",
+        "EN6": "Es difícil llegar a conocerme.",
+        "EN7": "Mantengo a los demás a distancia.",
+        "EN8": "Hablo poco de mí.",
+        "EN9": "Rara vez me contagio del entusiasmo general.",
+        "EN10": "No soy una persona muy entusiasta.",
+        "AS1": "Tomo el mando.",
+        "AS2": "Tengo una personalidad fuerte.",
+        "AS3": "Sé cautivar a la gente.",
+        "AS4": "Creo que tengo dotes de liderazgo.",
+        "AS5": "Sé convencer a los demás para que hagan cosas.",
+        "AS6": "Suelo ser quien actúa primero.",
+        "AS7": "Me cuesta hacerme valer.",
+        "AS8": "Me falta talento para influir en la gente.",
+        "AS9": "Espero a que otros tomen la iniciativa.",
+        "AS10": "Me guardo mis opiniones.",
+        "IT1": "Entiendo las cosas con rapidez.",
+        "IT2": "Puedo manejar mucha información.",
+        "IT3": "Me gusta resolver problemas complejos.",
+        "IT4": "Tengo un vocabulario amplio.",
+        "IT5": "Pienso con rapidez.",
+        "IT6": "Expreso mis ideas con claridad.",
+        "IT7": "Me cuesta entender las ideas abstractas.",
+        "IT8": "Evito las conversaciones filosóficas.",
+        "IT9": "Evito las lecturas difíciles.",
+        "IT10": "Aprendo las cosas despacio.",
+        "OP1": "Disfruto de la belleza de la naturaleza.",
+        "OP2": "Creo que el arte es importante.",
+        "OP3": "Me encanta reflexionar sobre las cosas.",
+        "OP4": "La música me absorbe por completo.",
+        "OP5": "Veo belleza en cosas en las que otros quizá no se fijan.",
+        "OP6": "Necesito una salida para mi creatividad.",
+        "OP7": "No me gusta la poesía.",
+        "OP8": "Rara vez me pierdo en mis pensamientos.",
+        "OP9": "Rara vez dejo volar la imaginación.",
+        "OP10": "Rara vez me fijo en las emociones que transmiten los cuadros y las fotografías."
+      },
+      "result": {
+        "eyebrow": "Big Five",
+        "title": "Su perfil",
+        "date": "Test realizado el {date}",
+        "lead": "Cada rasgo recibe un número del 1 al 99: cuántas personas de cada 100 obtienen una puntuación más baja que usted. El 50 es justo la mitad. Ni una puntuación alta ni una baja es mejor: cada extremo tiene sus puntos fuertes y sus riesgos.",
+        "summary": "Cinco rasgos",
+        "scaleCap": "El número indica cuántas personas de cada 100 obtienen una puntuación más baja que usted.",
+        "above": "Por encima de {n} de cada 100",
+        "aboveShort": "por encima de {n} de cada 100",
+        "levels": [
+          "nivel bajo",
+          "por debajo de la media",
+          "nivel medio",
+          "por encima de la media",
+          "nivel alto"
+        ],
+        "disc": {
+          "title": "Ahora, su estilo en el trabajo y en el trato con los demás",
+          "text": "El modelo Big Five describe el carácter en general. El test DISC muestra cómo actúa en el trabajo y en el trato con los demás: su estilo predominante, sus puntos fuertes y cómo entenderse con personas de otros estilos. 10 minutos, gratis.",
+          "button": "Hacer el test DISC"
+        },
+        "again": "Repetir el test"
+      },
+      "traits": {
+        "O": {
+          "name": "Apertura a la experiencia",
+          "en": "Openness",
+          "what": "Cuánto le atraen las ideas nuevas, las experiencias, el arte y las preguntas complejas.",
+          "high": "Le interesa lo nuevo: ideas, libros, lugares, puntos de vista poco comunes. Ve con facilidad las conexiones entre las cosas, le gusta entender cómo funcionan y aprecia la belleza. La rutina y el «siempre se ha hecho así» le cansan pronto; en el trabajo necesita margen para explorar.",
+          "mid": "Se abre a lo nuevo cuando le ve sentido, pero no busca la novedad por la novedad. Puede entusiasmarse con una idea o un libro, o trabajar con calma con un método probado, según las circunstancias.",
+          "low": "Es una persona práctica: valora lo probado, lo claro y lo útil. Las ideas abstractas y los experimentos le interesan cuando tienen una utilidad directa. A cambio, se puede contar con usted cuando hacen falta sentido común y estabilidad."
+        },
+        "C": {
+          "name": "Responsabilidad",
+          "en": "Conscientiousness",
+          "what": "Hasta qué punto se organiza, mantiene el orden y termina lo que empieza.",
+          "high": "Cumple su palabra, planifica y termina lo que empieza. El orden en las tareas le sale de forma natural y los demás confían en usted. La otra cara: le cuesta relajarse y soltar el control, y el descuido ajeno puede irritarle mucho.",
+          "mid": "Se organiza cuando el asunto importa y se permite flexibilidad cuando no. Tiene planes, pero no rígidos; el orden, cuando hace falta.",
+          "low": "Actúa con flexibilidad y según el momento, cambia de planes con facilidad y no le gustan los marcos rígidos. Eso le ayuda a improvisar, pero los plazos, la rutina y los detalles le cuestan más; le ayudan los recordatorios externos y unas pocas reglas sencillas fijadas de antemano."
+        },
+        "E": {
+          "name": "Extraversión",
+          "en": "Extraversion",
+          "what": "Cuánta energía obtiene de la gente, de la conversación y de la acción.",
+          "high": "Se carga de energía con la gente y con lo que pasa a su alrededor: conoce gente con facilidad, habla mucho y toma la iniciativa. El silencio y la soledad prolongados le aburren pronto. Conviene dejar espacio también a quienes hablan menos.",
+          "mid": "Se encuentra a gusto tanto en compañía como a solas. Puede llevar la conversación o escuchar, según la situación y las personas.",
+          "low": "Cuida su energía: prefiere un círculo reducido, las conversaciones profundas y el tiempo a solas. No busca ser el centro de atención ni se apresura a tomar la palabra; a cambio, piensa antes de hablar."
+        },
+        "A": {
+          "name": "Amabilidad",
+          "en": "Agreeableness",
+          "what": "Hasta qué punto se orienta hacia los demás, la cooperación y la armonía en las relaciones.",
+          "high": "Le importan las personas y las relaciones: se pone en el lugar de los demás, ayuda, busca el acuerdo y evita la brusquedad. Es fácil trabajar con usted. El riesgo: ceder donde convendría defender lo suyo.",
+          "mid": "Presta atención a los demás, pero también sabe mantener su postura. Ayuda con gusto, aunque no a costa de sus propios intereses.",
+          "low": "Va de frente y piensa por su cuenta: dice lo que piensa, no rehúye la discusión y pone la tarea por delante de los sentimientos ajenos. Eso ayuda en las negociaciones y las decisiones difíciles, pero en las relaciones puede percibirse como brusquedad."
+        },
+        "N": {
+          "name": "Neuroticismo",
+          "en": "Neuroticism",
+          "what": "Con qué intensidad reacciona ante el estrés, los fracasos y los contratiempos. Una puntuación alta aquí indica sensibilidad, no una enfermedad.",
+          "high": "Vive el estrés con intensidad: se preocupa, duda y tarda en recuperarse de los contratiempos. Esa sensibilidad ayuda a ver los riesgos a tiempo, pero consume energía; conviene saber qué le ayuda a recuperarse y no quedarse a solas con la preocupación.",
+          "mid": "Reacciona al estrés como la mayoría de la gente: puede preocuparse o irritarse, pero normalmente recupera pronto el equilibrio.",
+          "low": "Tiene estabilidad emocional: lleva la presión con calma, rara vez se angustia y se recupera rápido. La otra cara: puede subestimar un riesgo real o lo que sienten los demás."
+        }
+      },
+      "aspects": {
+        "IT": {
+          "name": "Intelecto",
+          "high": "Le gustan los problemas complejos y entiende pronto lo nuevo.",
+          "mid": "Piensa con gusto en lo complejo si la tarea lo merece.",
+          "low": "Prefiere tareas claras, sin teoría de más."
+        },
+        "OP": {
+          "name": "Sensibilidad estética",
+          "high": "Vive con intensidad el arte, la música y la naturaleza; reflexiona y fantasea a menudo.",
+          "mid": "El arte y la imaginación tienen su lugar en su vida, aunque no el principal.",
+          "low": "Le atrae más lo real y concreto que la fantasía y el arte."
+        },
+        "IN": {
+          "name": "Laboriosidad",
+          "high": "Se pone enseguida manos a la obra y termina lo que empieza.",
+          "mid": "Trabaja con constancia, aunque a veces aplaza lo desagradable.",
+          "low": "A veces le cuesta empezar y no distraerse."
+        },
+        "OR": {
+          "name": "Orden",
+          "high": "Le gustan el orden, los horarios y que todo se haga según las normas.",
+          "mid": "Mantiene el orden, pero sin perfeccionismo.",
+          "low": "El desorden y saltarse las normas le preocupan poco."
+        },
+        "EN": {
+          "name": "Entusiasmo",
+          "high": "Conecta con la gente con facilidad y muestra su alegría abiertamente.",
+          "mid": "Trata a la gente con cordialidad, aunque tarda un poco en abrirse.",
+          "low": "Mantiene la reserva y se abre poco a poco, y no con cualquiera."
+        },
+        "AS": {
+          "name": "Asertividad",
+          "high": "Toma el mando y sabe guiar a los demás.",
+          "mid": "Puede tomar la palabra y dirigir cuando hace falta.",
+          "low": "Prefiere dejar que otros dirijan y se guarda su opinión."
+        },
+        "CO": {
+          "name": "Compasión",
+          "high": "Percibe bien lo que sienten los demás y ayuda con gusto.",
+          "mid": "Siente empatía, pero no se pierde en los problemas ajenos.",
+          "low": "Le mueve más la tarea que lo que sienten los demás."
+        },
+        "PO": {
+          "name": "Cortesía",
+          "high": "Evita presionar y entrar en conflicto; respeta las normas y a los demás.",
+          "mid": "Suele tener tacto, pero también puede presionar.",
+          "low": "No teme el conflicto y persigue lo suyo sin rodeos."
+        },
+        "VO": {
+          "name": "Volatilidad",
+          "high": "Se irrita pronto y su humor cambia con facilidad.",
+          "mid": "A veces se exalta, pero se le pasa enseguida.",
+          "low": "Rara vez se irrita y mantiene sus emociones bajo control."
+        },
+        "WI": {
+          "name": "Retraimiento",
+          "high": "Se preocupa a menudo, duda y se desanima con facilidad.",
+          "mid": "Se preocupa cuando hay motivo, pero no de forma constante.",
+          "low": "Rara vez se angustia y lleva los fracasos con calma."
+        }
+      },
+      "sections": [
+        {
+          "h": "Qué es el modelo Big Five",
+          "p": [
+            "El modelo Big Five (los cinco grandes, o modelo OCEAN) es el modelo de personalidad más estudiado de la psicología actual. No nació de una teoría concreta, sino de los datos: durante décadas, los investigadores reunieron las palabras con las que la gente describe el carácter y analizaron cuáles aparecen juntas. Así surgieron cinco rasgos amplios.",
+            "En este modelo los rasgos no son tipos. Todas las personas tienen los cinco, solo que en distinta medida: el resultado muestra dónde se sitúa usted en cada escala en comparación con otras personas."
+          ]
+        },
+        {
+          "h": "Los cinco rasgos",
+          "ul": [
+            "Apertura a la experiencia: interés por las ideas nuevas, las experiencias y el arte.",
+            "Responsabilidad: organización, orden y capacidad de terminar lo que se empieza.",
+            "Extraversión: la energía que una persona obtiene de la gente y de la acción.",
+            "Amabilidad: empatía, tacto y búsqueda del acuerdo.",
+            "Neuroticismo: sensibilidad al estrés y a los contratiempos."
+          ]
+        },
+        {
+          "h": "Cómo funciona este test",
+          "p": [
+            "El test se basa en el cuestionario BFAS (Big Five Aspect Scales), que describieron Colin DeYoung, Lena Quilty y Jordan Peterson en 2007. En él, cada rasgo se divide en dos aspectos, diez en total, así que el resultado es más detallado que con solo cinco rasgos.",
+            "Las 100 afirmaciones del cuestionario proceden del banco abierto IPIP (International Personality Item Pool); la traducción al español es nuestra. La puntuación de cada aspecto es la media de sus respuestas en una escala del 1 al 5; después la comparamos con los datos publicados de un estudio en el que participaron unas 2600 personas."
+          ]
+        },
+        {
+          "h": "En qué se diferencia el Big Five del test DISC",
+          "p": [
+            "El test DISC describe el comportamiento en el trabajo y en el trato con los demás (cómo actúa, decide y llega a acuerdos) y le asigna uno de cuatro estilos. El modelo Big Five es más amplio: describe el carácter en general y no clasifica a las personas en tipos, sino que muestra su posición en cada una de las cinco escalas. Los dos tests se complementan."
+          ]
+        },
+        {
+          "h": "Lo que el test no hace",
+          "ul": [
+            "No hace diagnósticos: un neuroticismo alto indica sensibilidad, no una enfermedad.",
+            "No juzga a nadie como bueno o malo: cada extremo de la escala tiene sus puntos fuertes.",
+            "No sirve como única base para decidir una contratación.",
+            "No es más preciso que sus respuestas: el resultado describe cómo se ve usted ahora."
+          ]
+        },
+        {
+          "h": "Fuentes",
+          "ul": [
+            "DeYoung C. G., Quilty L. C., Peterson J. B. (2007). Between facets and domains: 10 aspects of the Big Five. Journal of Personality and Social Psychology, 93(5), 880–896.",
+            "Weisberg Y. J., DeYoung C. G., Hirsh J. B. (2011). Gender differences in personality across the ten aspects of the Big Five. Frontiers in Psychology, 2, 178.",
+            "International Personality Item Pool (ipip.ori.org): banco abierto de afirmaciones para la investigación de la personalidad."
+          ]
+        }
+      ],
+      "faqTitle": "Preguntas frecuentes",
+      "faq": [
+        {
+          "q": "¿Cuánto dura el test?",
+          "a": "Unos 15 minutos: 100 afirmaciones breves repartidas en 10 páginas. Puede hacer una pausa: las respuestas se guardan en el navegador y el test continúa en el mismo punto."
+        },
+        {
+          "q": "¿Hace falta registrarse?",
+          "a": "No. El test es gratuito y el resultado aparece en pantalla justo después de la última respuesta."
+        },
+        {
+          "q": "¿Dónde se guardan mis respuestas?",
+          "a": "Solo en el navegador de este dispositivo: el resultado se calcula en la propia página y las respuestas no se envían a ningún servidor. Si borra los datos del sitio, se eliminarán."
+        },
+        {
+          "q": "¿Qué precisión tiene el resultado?",
+          "a": "El cuestionario BFAS está bien estudiado, pero la versión en español es una traducción nuestra que aún no ha pasado una validación científica propia, y la comparación con otras personas se basa en los datos de un estudio en inglés con unas 2600 personas. Por eso conviene tomar el resultado como aproximado."
+        },
+        {
+          "q": "¿Puedo repetir el test?",
+          "a": "Sí, cuando quiera. Los rasgos de personalidad son bastante estables, pero cambian con el tiempo: puede ser interesante comparar el resultado dentro de seis meses o un año."
+        }
+      ]
+    },
     "disc": {
       "title": "Qué es DISC: el modelo y los cuatro estilos de comportamiento",
       "description": "Explicación sencilla de la metodología DISC: de dónde viene, qué mide, los cuatro estilos D, I, S, C, cómo se calcula el resultado y cómo leer su perfil.",

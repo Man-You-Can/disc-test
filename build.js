@@ -1428,8 +1428,9 @@ for (const L of locales) {
         pageJs: pairJs + `\ninitPair({T: ${JSON.stringify(PTjs).replace(/</g, '\\u003c')}, pairs: ${JSON.stringify(pairsJs).replace(/</g, '\\u003c')}, profiles: ${JSON.stringify(profJs).replace(/</g, '\\u003c')}, ` +
           `BK: ${PAIR_BK}, price: ${PP.price}, cur: ${jsStr(PP.cur)}, money: ${jsStr(L.content.services.price)}, loc: ${jsStr(L.dateLocale)}, endpoint: ${jsStr(payEndpoint)}, lang: ${jsStr(L.lang)}, home: '../', email: ${jsStr(feedbackEmail)}, esc: esc, $: $, lsGet: lsGet, lsSet: lsSet});` });
     }
-    // /big-five/ — тест «Большая пятёрка» (с 2026-11-14, по решению заказчика; сначала только русская версия — content.bigfive в локали).
-    // Новый тест на своих адресах: главная и шапка не трогаются (правила поиска — private/TESTS-PLAN.md, раздел 2.2); hreflang нет, пока язык один.
+    // /big-five/ — тест «Большая пятёрка» (с 2026-11-14, по решению заказчика; русская версия, с 2026-11-15 — все 13 языков; content.bigfive в локали).
+    // Новый тест на своих адресах: главная и шапка не трогаются (правила поиска — private/TESTS-PLAN.md, раздел 2.2); hreflang — между языками,
+    // где есть content.bigfive (x-default — английская), язык без него страницы не получает. Статьи (articles) — только там, где они есть в локали, без hreflang.
     // Тест и результат — в браузере (src/bigfive.js), на сервер ничего не уходит. Стартовый блок (#bfApp) отдаётся в HTML для поисковиков.
     if (L.content.bigfive) {
       const B = L.content.bigfive;
@@ -1442,11 +1443,12 @@ for (const L of locales) {
       const content = `<div class="eyebrow">${escFull(B.eyebrow)}</div><h1>${escFull(B.h1)}</h1>` +
         `<div id="bfApp" class="bf-app"><p class="lead">${escFull(B.lead)}</p><ul class="bf-facts">${B.facts.map(x => `<li>${escFull(x)}</li>`).join('')}</ul>` +
         `<div class="bf-start" id="bfStartBox"><a class="btn" href="#" onclick="return false">${escFull(B.start)}</a></div></div>` +
-        `<div id="bfAbout">` + sectionsHtml(B.sections) +
+        // латинские ссылки на источники в арабской версии — слева направо, иначе съезжают знаки препинания
+        `<div id="bfAbout">` + (L.dir === 'rtl' ? sectionsHtml(B.sections).replace(/<li>([^<]*)<\/li>/g, (m, x) => /^[A-Za-z]/.test(x) && !/[\u0600-\u06FF]/.test(x) ? `<li dir="ltr">${x}</li>` : m) : sectionsHtml(B.sections)) +
         `<h2>${escFull(B.faqTitle)}</h2>` + B.faq.map(it => `<h3 class="bf-fq">${escFull(it.q)}</h3><p>${escFull(it.a)}</p>`).join('') + bfArtList('./') + `</div>`;
       const BT = { start: B.start, resume: B.resume, restart: B.restart, showLast: B.showLast, step: B.step, count: B.count, hint: B.hint, scale: B.scale,
         next: B.next, back: B.back, finish: B.finish, needAll: B.needAll, items: B.items, result: B.result, traits: B.traits, aspects: B.aspects };
-      writeContentPage(L, 'big-five/', { langs: [L], ldType: 'WebApplication', title: B.title, description: B.description, crumbs: [{ name: B.h1 }],
+      writeContentPage(L, 'big-five/', { langs: locales.filter(x => x.content.bigfive), ldType: 'WebApplication', title: B.title, description: B.description, crumbs: [{ name: B.h1 }],
         css: bigfiveCss, content, files: ['src/bigfive.js', 'src/bigfive.css'],
         ldExtra: [{ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: B.faq.map(it => ({ '@type': 'Question', name: it.q, acceptedAnswer: { '@type': 'Answer', text: it.a } })) }],
         pageJs: bigfiveJs + `\ninitBigFive({T: ${JSON.stringify(BT).replace(/</g, '\\u003c')}, loc: ${jsStr(L.dateLocale)}, home: '../', more: ${JSON.stringify(more)}, moreText: ${jsStr(AU.traitMore || '')}, esc: esc, $: $, lsGet: lsGet, lsSet: lsSet});` });

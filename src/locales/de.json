@@ -449,6 +449,338 @@
     }
   },
   "content": {
+    "bigfive": {
+      "title": "Big-Five-Persönlichkeitstest kostenlos online – 100 Fragen",
+      "description": "Kostenloser Big-Five-Test (BFAS): 100 Aussagen, etwa 15 Minuten, ohne Anmeldung. Fünf Merkmale und zehn Aspekte Ihrer Persönlichkeit mit Vergleich.",
+      "eyebrow": "Persönlichkeitstest",
+      "h1": "Big-Five-Persönlichkeitstest",
+      "lead": "Die fünf großen Persönlichkeitsmerkmale, mit denen die moderne Psychologie arbeitet: Offenheit für Erfahrungen, Gewissenhaftigkeit, Extraversion, Verträglichkeit und Neurotizismus. 100 Aussagen, etwa 15 Minuten, ohne Anmeldung – das Ergebnis erscheint sofort auf dem Bildschirm.",
+      "facts": [
+        "100 Aussagen · etwa 15 Minuten",
+        "5 Merkmale und 10 Aspekte",
+        "Kostenlos, ohne Anmeldung",
+        "Antworten bleiben in Ihrem Browser"
+      ],
+      "start": "Test starten",
+      "resume": "Fortsetzen ({n} von {total})",
+      "restart": "Neu beginnen",
+      "showLast": "Mein letztes Ergebnis anzeigen",
+      "step": "Schritt {n} von {total}",
+      "count": "Beantwortet: {n} von {total}",
+      "hint": "Wie sehr trifft jede Aussage auf Sie zu? Antworten Sie so, wie Sie meistens sind, nicht wie Sie gern wären. Richtige oder falsche Antworten gibt es nicht.",
+      "scale": [
+        "Trifft gar nicht zu",
+        "Trifft eher nicht zu",
+        "Teils, teils",
+        "Trifft eher zu",
+        "Trifft genau zu"
+      ],
+      "next": "Weiter",
+      "back": "Zurück",
+      "finish": "Ergebnis anzeigen",
+      "needAll": "Bitte beantworten Sie alle Aussagen auf dieser Seite.",
+      "items": {
+        "VO1": "Ich werde leicht wütend.",
+        "VO2": "Ich rege mich leicht auf.",
+        "VO3": "Meine Stimmung wechselt oft.",
+        "VO4": "Bei mir geht die Stimmung leicht auf und ab.",
+        "VO5": "Ich bin schnell gereizt.",
+        "VO6": "Ich lasse mich leicht aufwühlen.",
+        "VO7": "Ich ärgere mich selten.",
+        "VO8": "Ich habe meine Gefühle unter Kontrolle.",
+        "VO9": "Ich verliere selten die Fassung.",
+        "VO10": "Es braucht einiges, bis mich etwas nervt.",
+        "WI1": "Mich plagen oft Zweifel.",
+        "WI2": "Ich fühle mich schnell bedroht.",
+        "WI3": "Ich mache mir über vieles Sorgen.",
+        "WI4": "Ich lasse mich leicht entmutigen.",
+        "WI5": "Wenn viel passiert, wächst mir alles über den Kopf.",
+        "WI6": "Ich habe vor vielem Angst.",
+        "WI7": "Ich bin selten traurig.",
+        "WI8": "Ich fühle mich wohl in meiner Haut.",
+        "WI9": "Ich fühle mich selten niedergeschlagen.",
+        "WI10": "Mir ist so schnell nichts peinlich.",
+        "CO1": "Ich spüre, was andere fühlen.",
+        "CO2": "Ich erkundige mich nach dem Befinden anderer.",
+        "CO3": "Ich fühle mit anderen mit.",
+        "CO4": "Ich interessiere mich für das Leben anderer Menschen.",
+        "CO5": "Ich tue gern etwas für andere.",
+        "CO6": "Die Probleme anderer interessieren mich nicht.",
+        "CO7": "Mit den Bedürfnissen anderer mag ich mich nicht befassen.",
+        "CO8": "Die Gefühle anderer sind mir gleichgültig.",
+        "CO9": "Ich nehme mir keine Zeit für andere.",
+        "CO10": "Eine sanfte Seite habe ich nicht.",
+        "PO1": "Ich respektiere Autoritäten.",
+        "PO2": "Es ist mir unangenehm, aufdringlich zu wirken.",
+        "PO3": "Ich vermeide es, anderen meinen Willen aufzuzwingen.",
+        "PO4": "Ich setze andere selten unter Druck.",
+        "PO5": "Ich beleidige andere.",
+        "PO6": "Ich halte mich für besser als andere.",
+        "PO7": "Ich nutze andere aus.",
+        "PO8": "Ich suche Konflikte.",
+        "PO9": "Ein hitziger Schlagabtausch macht mir Spaß.",
+        "PO10": "Mir geht es vor allem um meinen eigenen Vorteil.",
+        "IN1": "Ich setze meine Pläne in die Tat um.",
+        "IN2": "Was ich anfange, bringe ich zu Ende.",
+        "IN3": "Ich erledige Dinge zügig.",
+        "IN4": "Ich weiß immer, was ich tue.",
+        "IN5": "Ich vertrödle meine Zeit.",
+        "IN6": "Es fällt mir schwer, mich an die Arbeit zu machen.",
+        "IN7": "Ich vermassele häufig etwas.",
+        "IN8": "Bei meinen Aufgaben bin ich mit den Gedanken woanders.",
+        "IN9": "Ich schiebe Entscheidungen auf.",
+        "IN10": "Ich lasse mich leicht ablenken.",
+        "OR1": "Ich mag Ordnung.",
+        "OR2": "Ich halte meine Sachen aufgeräumt.",
+        "OR3": "Ich halte mich an einen Zeitplan.",
+        "OR4": "Ich will, dass alles genau stimmt.",
+        "OR5": "Ich achte darauf, dass Regeln eingehalten werden.",
+        "OR6": "Mir ist wichtig, dass kein Detail untergeht.",
+        "OR7": "Ich lasse meine Sachen herumliegen.",
+        "OR8": "Unordentliche Menschen stören mich nicht.",
+        "OR9": "Unordnung stört mich nicht.",
+        "OR10": "Ich mag keine Routine.",
+        "EN1": "Ich schließe leicht Freundschaften.",
+        "EN2": "Mit anderen werde ich schnell warm.",
+        "EN3": "Wenn ich mich freue, zeige ich es.",
+        "EN4": "Ich habe viel Spaß.",
+        "EN5": "Ich lache viel.",
+        "EN6": "Man lernt mich nur schwer richtig kennen.",
+        "EN7": "Ich halte andere auf Abstand.",
+        "EN8": "Ich gebe wenig von mir preis.",
+        "EN9": "Wenn alle begeistert sind, lasse ich mich selten mitreißen.",
+        "EN10": "Ich begeistere mich selten für etwas.",
+        "AS1": "Ich übernehme die Führung.",
+        "AS2": "Ich habe eine starke Persönlichkeit.",
+        "AS3": "Ich kann Menschen in meinen Bann ziehen.",
+        "AS4": "Ich traue mir zu, andere gut zu führen.",
+        "AS5": "Ich kann andere dazu bringen, etwas zu tun.",
+        "AS6": "Ich ergreife die Initiative, bevor andere es tun.",
+        "AS7": "Durchsetzungsstark bin ich nicht.",
+        "AS8": "Mir fehlt das Talent, andere zu beeinflussen.",
+        "AS9": "Ich warte, bis andere vorangehen.",
+        "AS10": "Mit meiner Meinung halte ich mich zurück.",
+        "IT1": "Ich verstehe Dinge schnell.",
+        "IT2": "Ich kann viele Informationen verarbeiten.",
+        "IT3": "Ich löse gern komplexe Probleme.",
+        "IT4": "Ich habe einen großen Wortschatz.",
+        "IT5": "Ich denke schnell.",
+        "IT6": "Ich formuliere meine Gedanken klar.",
+        "IT7": "Abstrakte Ideen verstehe ich nur schwer.",
+        "IT8": "Ich meide philosophische Diskussionen.",
+        "IT9": "Um schwierige Texte mache ich einen Bogen.",
+        "IT10": "Neues lerne ich nur langsam.",
+        "OP1": "Ich genieße die Schönheit der Natur.",
+        "OP2": "Ich halte Kunst für wichtig.",
+        "OP3": "Ich denke gern über Dinge nach.",
+        "OP4": "In Musik kann ich ganz versinken.",
+        "OP5": "Ich sehe Schönheit, wo andere sie vielleicht übersehen.",
+        "OP6": "Ich brauche einen kreativen Ausgleich.",
+        "OP7": "Gedichte mag ich nicht.",
+        "OP8": "Ich bin selten in Gedanken versunken.",
+        "OP9": "Ich träume selten vor mich hin.",
+        "OP10": "Welche Stimmung ein Gemälde oder Foto ausdrückt, fällt mir selten auf."
+      },
+      "result": {
+        "eyebrow": "Big Five",
+        "title": "Ihr Profil",
+        "date": "Test gemacht am {date}",
+        "lead": "Für jedes Merkmal steht eine Zahl von 1 bis 99: wie viele von 100 Menschen einen niedrigeren Wert haben als Sie. 50 ist genau die Mitte. Weder ein hoher noch ein niedriger Wert ist besser: Jeder Pol hat seine Stärken und seine Risiken.",
+        "summary": "Fünf Merkmale",
+        "scaleCap": "Die Zahl zeigt, wie viele von 100 Menschen einen niedrigeren Wert haben.",
+        "above": "Höher als bei {n} von 100",
+        "aboveShort": "höher als bei {n} von 100",
+        "levels": [
+          "niedrig",
+          "unterdurchschnittlich",
+          "durchschnittlich",
+          "überdurchschnittlich",
+          "hoch"
+        ],
+        "disc": {
+          "title": "Jetzt: Ihr Stil im Beruf und im Umgang mit anderen",
+          "text": "Die Big Five beschreiben die Persönlichkeit als Ganzes. Der DISG-Test zeigt, wie Sie im Beruf und im Umgang mit anderen handeln: Ihren Hauptstil, Ihre Stärken und wie Sie sich mit Menschen anderer Stile verständigen. 10 Minuten, kostenlos.",
+          "button": "DISG-Test machen"
+        },
+        "again": "Test wiederholen"
+      },
+      "traits": {
+        "O": {
+          "name": "Offenheit für Erfahrungen",
+          "en": "Openness",
+          "what": "Wie stark es Sie zu neuen Ideen, Eindrücken, Kunst und schwierigen Fragen hinzieht.",
+          "high": "Neues reizt Sie: Ideen, Bücher, Orte, ungewöhnliche Sichtweisen. Sie erkennen leicht Zusammenhänge, wollen verstehen, wie etwas funktioniert, und haben einen Sinn für Schönheit. Routine und „Das macht man so“ ermüden Sie schnell – bei der Arbeit brauchen Sie Raum zum Ausprobieren.",
+          "mid": "Sie sind offen für Neues, wenn es einen Sinn hat, jagen aber nicht dem Neuen um seiner selbst willen nach. Sie können sich für eine Idee oder ein Buch begeistern oder ruhig nach bewährtem Muster arbeiten – je nach Situation.",
+          "low": "Sie sind praktisch veranlagt: Sie schätzen Bewährtes, Verständliches und Nützliches. Abstrakte Überlegungen und Experimente interessieren Sie, wenn sie einen direkten Nutzen haben. Dafür kann man sich auf Sie verlassen, wo gesunder Menschenverstand und Beständigkeit gefragt sind."
+        },
+        "C": {
+          "name": "Gewissenhaftigkeit",
+          "en": "Conscientiousness",
+          "what": "Wie organisiert und zielstrebig Sie sind und ob Sie Dinge zu Ende bringen.",
+          "high": "Sie halten Wort, planen und bringen Begonnenes zu Ende. Ordnung in Ihren Aufgaben ist für Sie selbstverständlich, andere verlassen sich auf Sie. Die Kehrseite: Abschalten und Kontrolle abgeben fallen schwer, und Nachlässigkeit anderer kann Sie stark ärgern.",
+          "mid": "Sie nehmen sich zusammen, wenn es darauf ankommt, und erlauben sich Spielraum, wenn nicht. Pläne haben Sie, aber keine eisernen; Ordnung halten Sie dort, wo sie nötig ist.",
+          "low": "Sie handeln flexibel und nach Gefühl, ändern Pläne leicht und mögen keine starren Vorgaben. Das hilft beim Improvisieren, aber Fristen, Routine und Details fallen schwerer – da helfen Erinnerungen von außen und einfache Abmachungen mit sich selbst."
+        },
+        "E": {
+          "name": "Extraversion",
+          "en": "Extraversion",
+          "what": "Wie viel Energie Sie aus Menschen, Gesprächen und Aktivität ziehen.",
+          "high": "Menschen und Ereignisse geben Ihnen Energie: Sie lernen leicht Leute kennen, reden viel und ergreifen die Initiative. Lange Stille und Alleinsein werden Ihnen schnell zu viel. Lassen Sie auch den Leiseren Raum.",
+          "mid": "Sie fühlen sich in Gesellschaft wohl und ebenso, wenn Sie allein sind. Sie können das Gespräch führen oder zuhören – je nach Situation und Menschen.",
+          "low": "Sie gehen sparsam mit Ihrer Energie um: Sie bevorzugen einen kleinen Kreis, tiefe Gespräche und Zeit für sich. Sie drängen nicht in den Mittelpunkt und haben es nicht eilig, das Wort zu ergreifen – dafür denken Sie nach, bevor Sie sprechen."
+        },
+        "A": {
+          "name": "Verträglichkeit",
+          "en": "Agreeableness",
+          "what": "Wie sehr Sie auf andere Menschen, Zusammenarbeit und Frieden in Beziehungen ausgerichtet sind.",
+          "high": "Menschen und Beziehungen sind Ihnen wichtig: Sie fühlen mit, helfen, suchen Einigung und vermeiden Schärfe. Mit Ihnen lässt es sich gut zusammenarbeiten. Das Risiko: nachzugeben, wo es besser wäre, für sich einzustehen.",
+          "mid": "Sie achten auf andere, können sich aber auch durchsetzen. Sie helfen gern, aber nicht auf eigene Kosten.",
+          "low": "Sie sind direkt und unabhängig: Sie sagen, was Sie denken, lassen sich gelassen auf eine Auseinandersetzung ein und stellen die Sache über die Gefühle anderer. Das hilft in Verhandlungen und bei harten Entscheidungen, kann in Beziehungen aber schroff wirken."
+        },
+        "N": {
+          "name": "Neurotizismus",
+          "en": "Neuroticism",
+          "what": "Wie stark Sie auf Stress, Misserfolge und Ärger reagieren. Ein hoher Wert bedeutet hier Empfindsamkeit, keine Krankheit.",
+          "high": "Sie spüren Stress deutlich: Sie machen sich Sorgen, zweifeln und brauchen lange, um Unangenehmes zu verarbeiten. Diese Empfindsamkeit hilft, Risiken früh zu bemerken, kostet aber Kraft – wichtig ist zu wissen, was Ihnen guttut, und mit Sorgen nicht allein zu bleiben.",
+          "mid": "Sie reagieren auf Stress wie die meisten Menschen: Sie können sich sorgen und ärgern, finden aber meist schnell ins Gleichgewicht zurück.",
+          "low": "Sie sind emotional stabil: Sie halten Druck gelassen aus, sorgen sich selten und erholen sich schnell. Die Kehrseite: Echte Risiken oder die Sorgen anderer lassen sich so leicht unterschätzen."
+        }
+      },
+      "aspects": {
+        "IT": {
+          "name": "Intellekt",
+          "high": "Sie mögen schwierige Aufgaben und finden sich schnell in Neues ein.",
+          "mid": "Sie denken gern über Schwieriges nach, wenn es sich lohnt.",
+          "low": "Sie bevorzugen klare Aufgaben ohne viel Theorie."
+        },
+        "OP": {
+          "name": "Ästhetische Offenheit",
+          "high": "Sie haben ein feines Gespür für Kunst, Musik und Natur, denken viel nach und lassen der Fantasie freien Lauf.",
+          "mid": "Kunst und Fantasie haben in Ihrem Leben ihren Platz, aber nicht den wichtigsten.",
+          "low": "Das Reale und Konkrete beschäftigt Sie mehr als Fantasie und Kunst."
+        },
+        "IN": {
+          "name": "Fleiß",
+          "high": "Sie gehen Aufgaben zügig an und bringen sie zu Ende.",
+          "mid": "Sie arbeiten beständig, schieben Unangenehmes aber manchmal auf.",
+          "low": "Anzufangen und bei der Sache zu bleiben, fällt Ihnen mitunter schwer."
+        },
+        "OR": {
+          "name": "Ordentlichkeit",
+          "high": "Sie mögen Ordnung, feste Abläufe und dass alles nach Regeln läuft.",
+          "mid": "Sie halten Ordnung, aber ohne Pedanterie.",
+          "low": "Unordnung und Abweichungen von Regeln stören Sie wenig."
+        },
+        "EN": {
+          "name": "Enthusiasmus",
+          "high": "Sie kommen leicht mit Menschen in Kontakt und zeigen Ihre Freude offen.",
+          "mid": "Sie sind freundlich, öffnen sich aber nicht jedem sofort.",
+          "low": "Sie sind zurückhaltend und öffnen sich erst nach und nach und nicht jedem."
+        },
+        "AS": {
+          "name": "Durchsetzungsvermögen",
+          "high": "Sie übernehmen die Führung und können andere mitreißen.",
+          "mid": "Sie können das Wort ergreifen und vorangehen, wenn es nötig ist.",
+          "low": "Sie lassen lieber andere führen und behalten Ihre Meinung für sich."
+        },
+        "CO": {
+          "name": "Mitgefühl",
+          "high": "Sie spüren genau, wie es anderen geht, und helfen gern.",
+          "mid": "Sie fühlen mit, gehen aber nicht in den Problemen anderer auf.",
+          "low": "Die Sorgen anderer berühren Sie weniger als die Sache."
+        },
+        "PO": {
+          "name": "Höflichkeit",
+          "high": "Sie meiden Druck und Konflikte und respektieren Regeln und andere.",
+          "mid": "Sie sind meist taktvoll, können aber auch Druck machen.",
+          "low": "Sie scheuen keinen Konflikt und setzen sich direkt durch."
+        },
+        "VO": {
+          "name": "Reizbarkeit",
+          "high": "Sie ärgern sich schnell, Ihre Stimmung wechselt leicht.",
+          "mid": "Manchmal brausen Sie auf, beruhigen sich aber schnell.",
+          "low": "Sie ärgern sich selten und haben Ihre Gefühle im Griff."
+        },
+        "WI": {
+          "name": "Ängstlichkeit",
+          "high": "Sie sorgen sich oft, zweifeln und lassen sich leicht entmutigen.",
+          "mid": "Sie sorgen sich, wenn es einen Grund gibt, aber nicht ständig.",
+          "low": "Sie sorgen sich selten und stecken Misserfolge gelassen weg."
+        }
+      },
+      "sections": [
+        {
+          "h": "Was sind die Big Five?",
+          "p": [
+            "Die Big Five (auch Fünf-Faktoren-Modell oder OCEAN-Modell) sind das am besten erforschte Persönlichkeitsmodell der modernen Psychologie. Es ist nicht aus einer einzelnen Theorie entstanden, sondern aus Daten: Fachleute haben jahrzehntelang Wörter gesammelt, mit denen Menschen Charakter beschreiben, und untersucht, welche davon zusammengehören. So ergaben sich fünf breite Merkmale.",
+            "Die Merkmale sind keine Typen. Jeder Mensch hat alle fünf, nur unterschiedlich stark: Das Ergebnis zeigt, wo Sie auf jeder Skala im Vergleich mit anderen Menschen stehen."
+          ]
+        },
+        {
+          "h": "Die fünf Merkmale",
+          "ul": [
+            "Offenheit für Erfahrungen – Interesse an neuen Ideen, Eindrücken und Kunst.",
+            "Gewissenhaftigkeit – Organisation, Ordnung und die Fähigkeit, Dinge zu Ende zu bringen.",
+            "Extraversion – die Energie, die ein Mensch aus Kontakten und Aktivität zieht.",
+            "Verträglichkeit – Mitgefühl, Takt und das Streben nach Einigung.",
+            "Neurotizismus – Empfindlichkeit gegenüber Stress und Ärger."
+          ]
+        },
+        {
+          "h": "Wie dieser Test aufgebaut ist",
+          "p": [
+            "Der Test beruht auf dem Fragebogen BFAS (Big Five Aspect Scales), den Colin DeYoung, Lena Quilty und Jordan Peterson 2007 beschrieben haben. Darin teilt sich jedes Merkmal in zwei Aspekte, insgesamt zehn – so wird das Ergebnis genauer als mit nur fünf Merkmalen.",
+            "Die 100 Aussagen des Fragebogens stammen aus der frei verfügbaren Sammlung IPIP (International Personality Item Pool), die deutsche Übersetzung auf dieser Seite stammt von uns. Der Wert für jeden Aspekt ist der Durchschnitt Ihrer Antworten auf einer Skala von 1 bis 5; diesen Wert vergleichen wir mit veröffentlichten Daten einer Studie mit rund 2.600 Personen."
+          ]
+        },
+        {
+          "h": "Was die Big Five vom DISG-Modell unterscheidet",
+          "p": [
+            "Der DISG-Test beschreibt Verhalten im Beruf und im Umgang mit anderen: wie Sie handeln, entscheiden und sich mit Menschen verständigen – und ordnet Sie einem von vier Stilen zu. Die Big Five sind breiter angelegt: Das Modell beschreibt die Persönlichkeit als Ganzes und teilt Menschen nicht in Typen ein, sondern zeigt die Position auf jeder der fünf Skalen. Beide Tests ergänzen sich."
+          ]
+        },
+        {
+          "h": "Was der Test nicht leistet",
+          "ul": [
+            "Er stellt keine Diagnosen: Hoher Neurotizismus bedeutet Empfindsamkeit, keine Krankheit.",
+            "Er bewertet niemanden als gut oder schlecht: Jeder Pol einer Skala hat seine Stärken.",
+            "Er eignet sich nicht als alleinige Grundlage für Personalentscheidungen.",
+            "Er ist nicht genauer als Ihre Antworten: Das Ergebnis beschreibt, wie Sie sich selbst zurzeit sehen."
+          ]
+        },
+        {
+          "h": "Quellen",
+          "ul": [
+            "DeYoung C. G., Quilty L. C., Peterson J. B. (2007). Between facets and domains: 10 aspects of the Big Five. Journal of Personality and Social Psychology, 93(5), 880–896.",
+            "Weisberg Y. J., DeYoung C. G., Hirsh J. B. (2011). Gender differences in personality across the ten aspects of the Big Five. Frontiers in Psychology, 2, 178.",
+            "International Personality Item Pool (ipip.ori.org) – frei verfügbare Sammlung von Aussagen für die Persönlichkeitsforschung."
+          ]
+        }
+      ],
+      "faqTitle": "Häufige Fragen",
+      "faq": [
+        {
+          "q": "Wie lange dauert der Test?",
+          "a": "Etwa 15 Minuten: 100 kurze Aussagen auf 10 Seiten. Sie können jederzeit unterbrechen – die Antworten bleiben im Browser gespeichert, und der Test geht an derselben Stelle weiter."
+        },
+        {
+          "q": "Muss ich mich anmelden?",
+          "a": "Nein. Der Test ist kostenlos, das Ergebnis erscheint direkt nach der letzten Antwort auf dem Bildschirm."
+        },
+        {
+          "q": "Wo werden meine Antworten gespeichert?",
+          "a": "Nur in Ihrem Browser auf diesem Gerät: Das Ergebnis wird direkt auf der Seite berechnet, die Antworten werden nicht an einen Server gesendet. Wenn Sie die Website-Daten löschen, sind sie gelöscht."
+        },
+        {
+          "q": "Wie genau ist das Ergebnis?",
+          "a": "Der Fragebogen BFAS ist gut erforscht. Die deutsche Fassung auf dieser Seite ist aber unsere eigene Übersetzung und wurde nicht gesondert wissenschaftlich geprüft, und der Vergleich mit anderen Menschen beruht auf Daten einer englischsprachigen Studie mit rund 2.600 Personen. Betrachten Sie das Ergebnis deshalb als Näherungswert."
+        },
+        {
+          "q": "Kann ich den Test wiederholen?",
+          "a": "Ja, jederzeit. Persönlichkeitsmerkmale sind recht stabil, verändern sich aber mit der Zeit – ein Vergleich nach einem halben Jahr oder einem Jahr ist aufschlussreich."
+        }
+      ]
+    },
     "disc": {
       "title": "Was ist DISG (DISC): das Modell und die vier Verhaltensstile",
       "description": "Verständlich erklärt: Woher das DISG-Modell (DISC) kommt, was es misst, die vier Stile D, I, S, C, wie das Ergebnis berechnet wird und wie Sie Ihr Profil lesen.",
