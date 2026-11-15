@@ -1482,7 +1482,7 @@ for (const L of locales) {
       const T = C.tests, BF = C.bigfive, bfArt = sl => BF && (BF.articles || []).find(x => x.slug === sl);
       const TEST_LINKS = { disc: { href: '../', more: '../disc/' }, bigfive: BF ? { href: '../big-five/', more: bfArt('what') ? '../big-five/what/' : '' } : null };
       const cards = T.items.filter(it => TEST_LINKS[it.test]).map(it => { const lk = TEST_LINKS[it.test];
-        return `<section class="tcard"><h2>${escFull(it.name)}</h2><p>${escFull(it.text)}</p><ul class="tfacts">${it.facts.map(x => `<li>${escFull(x)}</li>`).join('')}</ul>` +
+        return `<section class="tcard"><div class="thead"><h2>${escFull(it.name)}</h2><p>${escFull(it.text)}</p></div><ul class="tfacts">${it.facts.map(x => `<li>${escFull(x)}</li>`).join('')}</ul>` +
           `<p class="tact"><a class="btn" href="${lk.href}" data-goal="tests-${it.test}">${escFull(it.button)}</a>` + (lk.more ? `<a class="tmore" href="${lk.more}">${escFull(it.more)} ${arrow(L)}</a>` : '') + `</p></section>`; }).join('');
       const cmp = bfArt('disc'), choose = T.choose.map(x => `<p>${escFull(x).replace('{compare}', () => cmp ? `<a href="../big-five/disc/">«${escFull(cmp.h1)}»</a>` : '')}</p>`).join('');
       const fm = [['pdf', 'pdf/', C.pdf && C.pdf.h1], ['group', 'group/', C.group && L.ui['nav.group'] && C.group.h1], ['pair', 'pair/', hasPair(L) && C.pair.h1]].filter(([k, , h]) => h && T.formats[k]);
@@ -1492,7 +1492,9 @@ for (const L of locales) {
         `.tact{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;margin:0!important}.tmore{font-weight:600}` +
         `.tformats{list-style:none;padding:0;margin:0;display:grid;gap:10px}.tformats a{display:block;padding:12px 14px;border:1px solid var(--line-strong);border-radius:12px;color:var(--ink);text-decoration:none}` +
         `.tformats a:hover,.tcard:hover{border-color:var(--ink)}.tformats strong{display:block}.tformats small{display:block;color:var(--muted);font-size:14px;margin-top:3px}` +
-        `@media(min-width:720px){.tcards{grid-template-columns:1fr 1fr}.tcard{display:flex;flex-direction:column}.tcard .tact{margin-top:auto!important}}`;
+        `@media(min-width:720px){.tcards{grid-template-columns:1fr 1fr}.tcard{display:flex;flex-direction:column}.tcard .tact{margin-top:auto!important}}` +
+        // на компьютере плашки и кнопки обеих карточек — на одном уровне (по просьбе заказчика): строки карточек — общие строки сетки (subgrid)
+        `@supports(grid-template-rows:subgrid){@media(min-width:720px){.tcard{display:grid;grid-row:span 3;grid-template-rows:subgrid;row-gap:0}.tcard .tact{margin-top:0!important}}}`;
       writeContentPage(L, 'tests/', { navKey: 'nav.tests', langs: locales.filter(hasTests), title: T.title, description: T.description, crumbs: [{ name: t('nav.tests') }], css: tcss,
         content: `<div class="eyebrow">${escFull(T.eyebrow)}</div><h1>${escFull(T.h1)}</h1><p class="lead">${escFull(T.lead)}</p><div class="tcards">${cards}</div>` +
           `<h2>${escFull(T.chooseTitle)}</h2>${choose}${formats}`,
