@@ -350,7 +350,7 @@ const HOWMADE_SUB = 'how-reports-are-made/', hasHowMade = L => !!(L.content.howM
 // там, где в локали есть content.tests и ui['nav.tests'] (валидатор требует их вместе). Прежние пункты шапки не убираются (private/TESTS-PLAN.md, раздел 2.2).
 const hasTests = L => !!(L.content.tests && L.ui['nav.tests']);
 // Шапка с 2026-11-15 (решение заказчика: в шапке было 12 пунктов в три строки): «Главная · Все тесты · О DISC ▾ · Услуги · Обратная связь» (до вечера 2026-11-15 первый пункт — «Тест»).
-// Статьи о DISC и «Как готовятся отчёты» — в выпадающем списке «О DISC» (ui['nav.aboutDisc']): <details> с обычными ссылками в HTML, без скрипта,
+// Статьи о DISC и «Как готовятся отчёты» — в выпадающем списке «DISC» (ui['nav.aboutDisc']): <details> с обычными ссылками в HTML, без скрипта,
 // чтобы прежние ссылки шапки остались в разметке каждой страницы (private/TESTS-PLAN.md, раздел 2.2). Закрытие по щелчку мимо и Esc — src/common.js.
 const NAV_CHEV = '<svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5l3.5 3.5 3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 // Выпадающий список «Большая пятёрка» (с 2026-11-16, по просьбе заказчика; пока русская версия): сразу после «О DISC», там, где в локали есть
