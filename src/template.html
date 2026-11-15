@@ -120,12 +120,25 @@ html[lang=ar] body,html[lang=hi] body{font-size:17px;line-height:1.65}
 .sitenav a{color:var(--muted);text-decoration:none;padding:4px 0;border-bottom:2px solid transparent}
 .sitenav a:hover{color:var(--ink)}
 .sitenav a[aria-current]{color:var(--ink);font-weight:600;border-bottom-color:var(--ink)}
-/* телефон: меню разделов в одну строку с горизонтальной прокруткой, чтобы тест оставался на первом экране */
+/* выпадающий список «О DISC» в шапке (с 2026-11-15): <details>, ссылки — обычные <a> в разметке */
+.sitenav a{white-space:nowrap}
+.navmenu{position:relative}
+.navmenu summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:4px;color:var(--muted);padding:4px 0;border-bottom:2px solid transparent;white-space:nowrap;user-select:none}
+.navmenu summary::-webkit-details-marker{display:none}
+.navmenu summary:hover,.navmenu[open] summary{color:var(--ink)}
+.navmenu summary.cur{color:var(--ink);font-weight:600;border-bottom-color:var(--ink)}
+.navmenu .chev{width:12px;height:12px;flex:none}
+.navmenu[open] .chev{transform:rotate(180deg)}
+.navdrop{position:absolute;top:calc(100% + 6px);inset-inline-start:-10px;z-index:24;min-width:230px;padding:6px;background:var(--surface);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);display:flex;flex-direction:column}
+.sitenav .navdrop a{color:var(--ink);padding:8px 10px;border:0;border-radius:8px}
+.sitenav .navdrop a:hover,.sitenav .navdrop a:focus-visible{background:var(--soft)}
+.sitenav .navdrop a[aria-current]{background:var(--line);font-weight:600}
+/* телефон: пять пунктов переносятся на вторую строку; список «О DISC» — во всю ширину колонки под шапкой */
 @media (max-width:640px){
-  .sitenav{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;margin-inline:-20px;padding-inline:20px;mask-image:linear-gradient(to right,#000 85%,transparent);-webkit-mask-image:linear-gradient(to right,#000 85%,transparent)}
-  html[dir=rtl] .sitenav{mask-image:linear-gradient(to left,#000 85%,transparent);-webkit-mask-image:linear-gradient(to left,#000 85%,transparent)}
-  .sitenav::-webkit-scrollbar{display:none}
-  .sitenav a{white-space:nowrap;flex:none}
+  .sitenav{position:relative;gap:2px 14px}
+  .navmenu{position:static}
+  .navdrop{inset-inline:0;min-width:0}
+  .sitenav .navdrop a{white-space:normal}
 }
 .crumbs{font-size:13px;color:var(--muted);margin:0 0 16px;overflow-wrap:anywhere}
 .crumbs a{color:var(--muted);text-decoration:none}

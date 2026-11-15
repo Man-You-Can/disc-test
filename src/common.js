@@ -147,6 +147,13 @@ function initCommon(c){
     document.addEventListener('click', function(e){ if(!box.contains(e.target)) close(false); });
   })();
 
+  /* выпадающий список «О DISC» в шапке (<details class="navmenu">): закрывается щелчком мимо и клавишей Esc */
+  (function(){
+    var d=document.querySelector('.navmenu'); if(!d) return;
+    document.addEventListener('click', function(e){ if(d.open && !d.contains(e.target)) d.open=false; });
+    d.addEventListener('keydown', function(e){ if(e.key==='Escape' && d.open){ e.preventDefault(); d.open=false; d.querySelector('summary').focus(); } });
+  })();
+
   /* подсказка «Продолжить на …», если язык браузера отличается и выбор ещё не делался */
   (function(){
     if(lsGet('disc.lang')) return;

@@ -348,7 +348,17 @@ const HOWMADE_SUB = 'how-reports-are-made/', hasHowMade = L => !!(L.content.howM
 // «Все тесты» (/tests/, с 2026-11-15, по просьбе заказчика; русская версия, тем же днём — все 13 языков): страница со всеми тестами сайта и пункт в шапке сразу после «Тест» —
 // там, где в локали есть content.tests и ui['nav.tests'] (валидатор требует их вместе). Прежние пункты шапки не убираются (private/TESTS-PLAN.md, раздел 2.2).
 const hasTests = L => !!(L.content.tests && L.ui['nav.tests']);
-const navItems = L => NAV_ITEMS.slice(0, 1).concat(hasTests(L) ? [['nav.tests', 'tests/']] : [], NAV_ITEMS.slice(1), hasHowMade(L) ? [['nav.howMade', HOWMADE_SUB]] : [], hasServices(L) ? [['nav.services', 'services/']] : [], feedbackEmail ? [['nav.contact', 'contact/']] : []);
+// Шапка с 2026-11-15 (решение заказчика: в шапке было 12 пунктов в три строки): «Тест · Все тесты · О DISC ▾ · Услуги · Обратная связь».
+// Статьи о DISC и «Как готовятся отчёты» — в выпадающем списке «О DISC» (ui['nav.aboutDisc']): <details> с обычными ссылками в HTML, без скрипта,
+// чтобы прежние ссылки шапки остались в разметке каждой страницы (private/TESTS-PLAN.md, раздел 2.2). Закрытие по щелчку мимо и Esc — src/common.js.
+const NAV_CHEV = '<svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5l3.5 3.5 3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+const navHtmlFor = (L, base, cur) => {
+  const a = ([k, sub]) => `<a href="${base + sub}"${cur === k ? ' aria-current="page"' : ''}>${esc(L.ui[k])}</a>`;
+  const menu = NAV_ITEMS.slice(1).concat(hasHowMade(L) ? [['nav.howMade', HOWMADE_SUB]] : []);
+  return NAV_ITEMS.slice(0, 1).concat(hasTests(L) ? [['nav.tests', 'tests/']] : []).map(a).join('') +
+    `<details class="navmenu"><summary${menu.some(([k]) => k === cur) ? ' class="cur"' : ''}>${esc(L.ui['nav.aboutDisc'])}${NAV_CHEV}</summary><div class="navdrop">${menu.map(a).join('')}</div></details>` +
+    [].concat(hasServices(L) ? [['nav.services', 'services/']] : [], feedbackEmail ? [['nav.contact', 'contact/']] : []).map(a).join('');
+};
 // раздел «Тесты» в подвале (с 2026-11-15, по просьбе заказчика; где hasTests): строка над «Материалами о DISC» — тест DISC, «Большая пятёрка» (где есть content.bigfive), «Все тесты»
 const testsFootHtml = (L, base, cur) => { if (!hasTests(L) || !L.content.tests.foot) return ''; const F = L.content.tests.foot;
   const items = [['', F.disc]].concat(L.content.bigfive && F.bigfive ? [['big-five/', F.bigfive]] : [], [['tests/', L.ui['nav.tests']]]);
@@ -554,7 +564,7 @@ for (const L of locales) {
   const f = FONTS[L.lang] || FONTS.default;
   const isRoot = L.lang === def.lang, rootRel = isRoot ? './' : '../';
   const href = x => rootRel + pathOf(x.lang);
-  const navHtml = navItems(L).map(([k, sub]) => `<a href="${rootRel + pathOf(L.lang) + sub}"${sub === '' ? ' aria-current="page"' : ''}>${esc(L.ui[k])}</a>`).join('');
+  const navHtml = navHtmlFor(L, rootRel + pathOf(L.lang), 'nav.test');
   const footHtml = footLinks(L, rootRel + pathOf(L.lang)), footShortHtml = footShort(L, rootRel + pathOf(L.lang));
   const introBuilt = introHTML({ L, t: tFor(L), esc: escFull, KEYS, colorVar: k => 'var(--' + k.toLowerCase() + ')', progDone: 0, lastDate: '', graphSVG,
     links: { styles: rootRel + pathOf(L.lang) + 'styles/', profiles: rootRel + pathOf(L.lang) + 'profiles/', pdf: rootRel + pathOf(L.lang) + 'pdf/', results: rootRel + pathOf(L.lang) + 'results/', faq: rootRel + pathOf(L.lang) + 'faq/', profile: k => rootRel + pathOf(L.lang) + 'profiles/' + k.toLowerCase() + '/',
@@ -681,7 +691,7 @@ function writeContentPage(L, sub, opts) {
     `<ul class="langmenu" id="langMenu" role="listbox" aria-label="${esc(L.ui.langLabel)}" style="--lrows:${LANG_ROWS}" hidden>` +
     locales.map(x => `<li role="none"><a role="option" href="${rootRel + pathOf(x.lang) + subOf(x)}" hreflang="${hl(x.lang)}" lang="${hl(x.lang)}" data-lang="${x.lang}" aria-selected="${x.lang === L.lang}" tabindex="-1">${flag(x.lang)}<span>${esc(x.name)}</span></a></li>`).join('') + `</ul></div>`;
   const links = locales.map(x => `<a href="${rootRel + pathOf(x.lang) + subOf(x)}" hreflang="${hl(x.lang)}" lang="${hl(x.lang)}" data-lang="${x.lang}"${x.lang === L.lang ? ' aria-current="page"' : ''}>${flag(x.lang)}<span>${esc(x.name)}</span></a>`).join('');
-  const navHtml = navItems(L).map(([k, s2]) => `<a href="${base + s2}"${opts.navKey === k ? ' aria-current="page"' : ''}>${esc(L.ui[k])}</a>`).join('');
+  const navHtml = navHtmlFor(L, base, opts.navKey);
   const footHtml = footLinks(L, base);
   const pageFiles = [`src/locales/${L.lang}.json`, 'src/page.html', 'build.js'].concat(opts.files || []);
   const updated = contentDate(L.lang + ':' + sub, [opts.title, opts.description, opts.content].join('\n'), pageFiles), published = lmNew[L.lang + ':' + sub].p;
