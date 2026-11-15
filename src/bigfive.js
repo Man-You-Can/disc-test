@@ -3,7 +3,7 @@
    разрешено любое использование, в том числе коммерческое), 10 аспектов по 10 утверждений, ответ — по шкале 1–5. Перевод — свой
    (content.bigfive.items, ключи — код аспекта и номер утверждения в порядке страницы BFAS на сайте IPIP: сначала прямые, потом обратные).
    Место среди других («выше, чем у N из 100») — по средним и разбросу из Weisberg, DeYoung, Hirsh (2011), табл. 2, сырые баллы мужчин и
-   женщин поровну (около 2600 англоязычных участников): приблизительно, о чём говорит текст на экране (content.bigfive.result.note).
+   женщин поровну (около 2600 англоязычных участников): приблизительно (об этом — вопрос в FAQ страницы; оговорку под результатом заказчик убрал 2026-11-15).
    Всё считается в браузере; на сервер ничего не уходит. Ответы и прогресс — в disc.bf, последний результат — в disc.bfLast
    (тексты о данных говорят о хранении ответов, прогресса и последнего результата в браузере). Цели: bf-start, bf-finish, bf-disc. */
 function initBigFive(o){
@@ -147,8 +147,7 @@ function initBigFive(o){
           return '<div class="bf-asp"><p class="bf-an"><strong>' + esc(A.name) + '</strong> <span class="muted small">' + esc(fmt(R.aboveShort, {n: q})) + '</span></p>' + bar(q) +
             '<p class="small">' + esc(A[tier(q) === 'high' ? 'high' : tier(q) === 'low' ? 'low' : 'mid']) + '</p></div>'; }).join('') + '</div></section>';
     });
-    h += '<p class="muted small bf-note">' + esc(R.note) + '</p>' +
-      '<aside class="card bf-disc"><h3>' + esc(R.disc.title) + '</h3><p>' + esc(R.disc.text) + '</p><p><a class="btn" href="' + esc(o.home) + '" data-goal="bf-disc">' + esc(R.disc.button) + '</a></p></aside>' +
+    h += '<aside class="card bf-disc"><h3>' + esc(R.disc.title) + '</h3><p>' + esc(R.disc.text) + '</p><p><a class="btn" href="' + esc(o.home) + '" data-goal="bf-disc">' + esc(R.disc.button) + '</a></p></aside>' +
       '<p class="bf-again"><button type="button" class="linkbtn" id="bfAgain">' + esc(R.again) + '</button></p></div>';
     app.innerHTML = h;
     top();
