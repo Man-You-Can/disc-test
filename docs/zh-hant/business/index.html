@@ -332,6 +332,17 @@ p.xppage{flex:1 1 100%;margin:0;font-size:14px;color:var(--ink);padding-inline-s
 .xpay .xcodebox .field{flex:1 1 220px;min-width:0}
 .xpay .xcodebox .sendstatus,.xpay .xcodebox .xnote{flex:1 1 100%;margin:0}
 .xpay .xcodebox .sendstatus.err{color:var(--d)}
+/* код из партии с отчётом о команде (с 2026-11-16): вопрос о согласии поделиться результатом с руководителем — две кнопки, отчёт приходит в обоих случаях */
+.xpay .xteam{flex:1 1 100%;border:1.5px solid var(--ink);border-radius:14px;padding:16px 16px 14px;background:var(--surface)}
+.xpay .xteam p{margin:0 0 8px}
+.xpay .xteam-k{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.xpay .xteam-h{font-family:var(--font-head);font-size:19px;line-height:1.25;color:var(--ink)}
+.xpay .xteam ul{margin:0 0 8px;padding-inline-start:20px}
+.xpay .xteam-not{font-size:14px;color:var(--muted)}
+.xpay .xteam .btn{width:100%;margin:6px 0 10px;white-space:normal;height:auto;min-height:48px;line-height:1.3}
+.xpay .xcodebox.xteaming>.xnote{display:none}
+.xpay .xteam .xteam-skip{display:block;margin:0 auto 12px;font-size:15px}
+.xpay .xteam .xnote{margin:0;color:var(--muted)}
 .xpay .xcodein{text-transform:uppercase;letter-spacing:.06em}
 .xpay .xcodein::placeholder{text-transform:none;letter-spacing:normal}
 .xpay.xcoding>.xdeal,.xpay.xcoding>.xbuyact,.xpay.xcoding>.btn,.xpay.xcoding>.price,.xpay.xcoding>.xguar,.xpay.xcoding>.xnote,.xpay.xcoding>.sendstatus,.xpay.xcoding>.paym{display:none}
@@ -877,7 +888,7 @@ function langHref(code){ return ROOT_REL + (LANG_PATH[code]||'') + (PAGE_LANGS &
    о ней говорят тексты о данных на 14 языках. При открытии страницы любой #r=… (в старых ссылках из писем — с e-mail) всё равно сначала
    убирается, до загрузки счётчика, и возвращается в строку уже без e-mail. */
 function dataHash(){
-  var re = /^#[rucgip]=/, h = location.hash || '';   // i, p — приглашение и сравнение «DISC на двоих» (коды результатов с именами, с 2026-11-14)
+  var re = /^#[rucgipt]=/, h = location.hash || '';   // i, p — приглашение и сравнение «DISC на двоих» (коды результатов с именами, с 2026-11-14)
   try{
     var first = !dataHash.seen, s = history.state; dataHash.seen = 1;
     /* ссылка, которую страница сама показала в адресной строке (showHash), остаётся на месте; при открытии страницы (first) убирается и она */
@@ -1231,7 +1242,7 @@ function initBusiness(c){
       .then(function(){ btn.disabled=false; });
   });
 }
-initBusiness({T: {"name":"姓名","email":"用於回覆的電子郵件","size":"人數","sizes":["10 人以下","10–50 人","50–100 人","100 人以上"],"interest":"你想了解的是","interests":["進階版報告採購方案","團隊報告","其他"],"comment":"備註","commentPlaceholder":"例如：報告給哪些人使用、什麼時候需要、會計是否需要請款單","button":"送出申請","subject":"Заявка для организации: {name}","sent":"申請已送出。我們會在一個工作天內回覆到 {email}。","needInterest":"請選擇你想了解的項目。","requiredNote":"標有星號（*）的欄位為必填。","nameRequired":"請輸入你的姓名","emailRequired":"請輸入有效的電子郵件地址","pdRequired":"請勾選同意處理個人資料：否則我們無法接收你的資料。","sending":"正在傳送留言……","sendFailed":"留言傳送失敗（{error}）。請再試一次，或直接來信：{contact}。","tooMany":"這個電子郵件地址已送出多則留言。請稍後再試，或直接來信：{contact}。","privacyNote":"姓名、電子郵件和申請內容將以郵件寄至 {email}，僅用於回覆你。"}, L: L, esc: esc, $: $, endpoint: "https://api.disc-test.org/", token: "kR7UiShTyG7Wws7t16NkgKN3", email: "info@disc-test.org", pdVersion: "2026-11-14"});
+initBusiness({T: {"name":"姓名","email":"用於回覆的電子郵件","size":"人數","sizes":["10 人以下","10–50 人","50–100 人","100 人以上"],"interest":"你想了解的是","interests":["進階版報告採購方案","團隊報告","其他"],"comment":"備註","commentPlaceholder":"例如：報告給哪些人使用、什麼時候需要、會計是否需要請款單","button":"送出申請","subject":"Заявка для организации: {name}","sent":"申請已送出。我們會在一個工作天內回覆到 {email}。","needInterest":"請選擇你想了解的項目。","requiredNote":"標有星號（*）的欄位為必填。","nameRequired":"請輸入你的姓名","emailRequired":"請輸入有效的電子郵件地址","pdRequired":"請勾選同意處理個人資料：否則我們無法接收你的資料。","sending":"正在傳送留言……","sendFailed":"留言傳送失敗（{error}）。請再試一次，或直接來信：{contact}。","tooMany":"這個電子郵件地址已送出多則留言。請稍後再試，或直接來信：{contact}。","privacyNote":"姓名、電子郵件和申請內容將以郵件寄至 {email}，僅用於回覆你。"}, L: L, esc: esc, $: $, endpoint: "https://api.disc-test.org/", token: "kR7UiShTyG7Wws7t16NkgKN3", email: "info@disc-test.org", pdVersion: "2026-11-16"});
 /* Первый блок теста в статье (#embedTest, с 2026-10-26; build.js → embedTest): выбор устроен как в тесте (по одному в каждой колонке).
    «Продолжить тест» кладёт ответ в disc.progress (как сам тест, только в браузере; на сервер ничего не уходит) с пометкой from — страница,
    откуда пришли, — и ведёт на главную с #test: там тест открывается на блоке 2, засчитываются старт и цели start / embed-start.

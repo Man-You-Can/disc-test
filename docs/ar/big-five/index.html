@@ -369,6 +369,17 @@ p.xppage{flex:1 1 100%;margin:0;font-size:14px;color:var(--ink);padding-inline-s
 .xpay .xcodebox .field{flex:1 1 220px;min-width:0}
 .xpay .xcodebox .sendstatus,.xpay .xcodebox .xnote{flex:1 1 100%;margin:0}
 .xpay .xcodebox .sendstatus.err{color:var(--d)}
+/* код из партии с отчётом о команде (с 2026-11-16): вопрос о согласии поделиться результатом с руководителем — две кнопки, отчёт приходит в обоих случаях */
+.xpay .xteam{flex:1 1 100%;border:1.5px solid var(--ink);border-radius:14px;padding:16px 16px 14px;background:var(--surface)}
+.xpay .xteam p{margin:0 0 8px}
+.xpay .xteam-k{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.xpay .xteam-h{font-family:var(--font-head);font-size:19px;line-height:1.25;color:var(--ink)}
+.xpay .xteam ul{margin:0 0 8px;padding-inline-start:20px}
+.xpay .xteam-not{font-size:14px;color:var(--muted)}
+.xpay .xteam .btn{width:100%;margin:6px 0 10px;white-space:normal;height:auto;min-height:48px;line-height:1.3}
+.xpay .xcodebox.xteaming>.xnote{display:none}
+.xpay .xteam .xteam-skip{display:block;margin:0 auto 12px;font-size:15px}
+.xpay .xteam .xnote{margin:0;color:var(--muted)}
 .xpay .xcodein{text-transform:uppercase;letter-spacing:.06em}
 .xpay .xcodein::placeholder{text-transform:none;letter-spacing:normal}
 .xpay.xcoding>.xdeal,.xpay.xcoding>.xbuyact,.xpay.xcoding>.btn,.xpay.xcoding>.price,.xpay.xcoding>.xguar,.xpay.xcoding>.xnote,.xpay.xcoding>.sendstatus,.xpay.xcoding>.paym{display:none}
@@ -1018,7 +1029,7 @@ function langHref(code){ return ROOT_REL + (LANG_PATH[code]||'') + (PAGE_LANGS &
    о ней говорят тексты о данных на 14 языках. При открытии страницы любой #r=… (в старых ссылках из писем — с e-mail) всё равно сначала
    убирается, до загрузки счётчика, и возвращается в строку уже без e-mail. */
 function dataHash(){
-  var re = /^#[rucgip]=/, h = location.hash || '';   // i, p — приглашение и сравнение «DISC на двоих» (коды результатов с именами, с 2026-11-14)
+  var re = /^#[rucgipt]=/, h = location.hash || '';   // i, p — приглашение и сравнение «DISC на двоих» (коды результатов с именами, с 2026-11-14)
   try{
     var first = !dataHash.seen, s = history.state; dataHash.seen = 1;
     /* ссылка, которую страница сама показала в адресной строке (showHash), остаётся на месте; при открытии страницы (first) убирается и она */

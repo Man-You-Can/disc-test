@@ -361,6 +361,17 @@ p.xppage{flex:1 1 100%;margin:0;font-size:14px;color:var(--ink);padding-inline-s
 .xpay .xcodebox .field{flex:1 1 220px;min-width:0}
 .xpay .xcodebox .sendstatus,.xpay .xcodebox .xnote{flex:1 1 100%;margin:0}
 .xpay .xcodebox .sendstatus.err{color:var(--d)}
+/* код из партии с отчётом о команде (с 2026-11-16): вопрос о согласии поделиться результатом с руководителем — две кнопки, отчёт приходит в обоих случаях */
+.xpay .xteam{flex:1 1 100%;border:1.5px solid var(--ink);border-radius:14px;padding:16px 16px 14px;background:var(--surface)}
+.xpay .xteam p{margin:0 0 8px}
+.xpay .xteam-k{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.xpay .xteam-h{font-family:var(--font-head);font-size:19px;line-height:1.25;color:var(--ink)}
+.xpay .xteam ul{margin:0 0 8px;padding-inline-start:20px}
+.xpay .xteam-not{font-size:14px;color:var(--muted)}
+.xpay .xteam .btn{width:100%;margin:6px 0 10px;white-space:normal;height:auto;min-height:48px;line-height:1.3}
+.xpay .xcodebox.xteaming>.xnote{display:none}
+.xpay .xteam .xteam-skip{display:block;margin:0 auto 12px;font-size:15px}
+.xpay .xteam .xnote{margin:0;color:var(--muted)}
 .xpay .xcodein{text-transform:uppercase;letter-spacing:.06em}
 .xpay .xcodein::placeholder{text-transform:none;letter-spacing:normal}
 .xpay.xcoding>.xdeal,.xpay.xcoding>.xbuyact,.xpay.xcoding>.btn,.xpay.xcoding>.price,.xpay.xcoding>.xguar,.xpay.xcoding>.xnote,.xpay.xcoding>.sendstatus,.xpay.xcoding>.paym{display:none}
@@ -906,7 +917,7 @@ function langHref(code){ return ROOT_REL + (LANG_PATH[code]||'') + (PAGE_LANGS &
    о ней говорят тексты о данных на 14 языках. При открытии страницы любой #r=… (в старых ссылках из писем — с e-mail) всё равно сначала
    убирается, до загрузки счётчика, и возвращается в строку уже без e-mail. */
 function dataHash(){
-  var re = /^#[rucgip]=/, h = location.hash || '';   // i, p — приглашение и сравнение «DISC на двоих» (коды результатов с именами, с 2026-11-14)
+  var re = /^#[rucgipt]=/, h = location.hash || '';   // i, p — приглашение и сравнение «DISC на двоих» (коды результатов с именами, с 2026-11-14)
   try{
     var first = !dataHash.seen, s = history.state; dataHash.seen = 1;
     /* ссылка, которую страница сама показала в адресной строке (showHash), остаётся на месте; при открытии страницы (first) убирается и она */
@@ -1260,7 +1271,7 @@ function initBusiness(c){
       .then(function(){ btn.disabled=false; });
   });
 }
-initBusiness({T: {"name":"Name","email":"E-Mail-Adresse für die Antwort","size":"Wie viele Personen?","sizes":["bis 10","10–50","50–100","mehr als 100"],"interest":"Was interessiert Sie?","interests":["Berichtspaket","Teambericht","Etwas anderes"],"comment":"Kommentar","commentPlaceholder":"Zum Beispiel: für wen die Berichte sind, bis wann Sie sie brauchen und ob Ihre Buchhaltung eine Rechnung benötigt","button":"Anfrage senden","subject":"Заявка для организации: {name}","sent":"Ihre Anfrage wurde gesendet. Wir antworten innerhalb eines Werktags an {email}.","needInterest":"Bitte geben Sie an, was Sie interessiert.","requiredNote":"Mit Sternchen (*) markierte Felder sind Pflichtfelder.","nameRequired":"Bitte geben Sie Ihren Namen an","emailRequired":"Bitte geben Sie eine gültige E-Mail-Adresse ein","pdRequired":"Bitte bestätigen Sie die Einwilligung in die Verarbeitung personenbezogener Daten: Ohne sie können wir Ihre Daten nicht annehmen.","sending":"Ihre Nachricht wird gesendet …","sendFailed":"Die Nachricht konnte nicht gesendet werden ({error}). Versuchen Sie es erneut oder schreiben Sie uns direkt: {contact}.","tooMany":"Von dieser Adresse wurden bereits mehrere Nachrichten gesendet. Versuchen Sie es später erneut oder schreiben Sie uns direkt: {contact}.","privacyNote":"Name, E-Mail-Adresse und Text der Anfrage werden per E-Mail an {email} gesendet und nur verwendet, um Ihnen zu antworten."}, L: L, esc: esc, $: $, endpoint: "https://api.disc-test.org/", token: "kR7UiShTyG7Wws7t16NkgKN3", email: "info@disc-test.org", pdVersion: "2026-11-14"});
+initBusiness({T: {"name":"Name","email":"E-Mail-Adresse für die Antwort","size":"Wie viele Personen?","sizes":["bis 10","10–50","50–100","mehr als 100"],"interest":"Was interessiert Sie?","interests":["Berichtspaket","Teambericht","Etwas anderes"],"comment":"Kommentar","commentPlaceholder":"Zum Beispiel: für wen die Berichte sind, bis wann Sie sie brauchen und ob Ihre Buchhaltung eine Rechnung benötigt","button":"Anfrage senden","subject":"Заявка для организации: {name}","sent":"Ihre Anfrage wurde gesendet. Wir antworten innerhalb eines Werktags an {email}.","needInterest":"Bitte geben Sie an, was Sie interessiert.","requiredNote":"Mit Sternchen (*) markierte Felder sind Pflichtfelder.","nameRequired":"Bitte geben Sie Ihren Namen an","emailRequired":"Bitte geben Sie eine gültige E-Mail-Adresse ein","pdRequired":"Bitte bestätigen Sie die Einwilligung in die Verarbeitung personenbezogener Daten: Ohne sie können wir Ihre Daten nicht annehmen.","sending":"Ihre Nachricht wird gesendet …","sendFailed":"Die Nachricht konnte nicht gesendet werden ({error}). Versuchen Sie es erneut oder schreiben Sie uns direkt: {contact}.","tooMany":"Von dieser Adresse wurden bereits mehrere Nachrichten gesendet. Versuchen Sie es später erneut oder schreiben Sie uns direkt: {contact}.","privacyNote":"Name, E-Mail-Adresse und Text der Anfrage werden per E-Mail an {email} gesendet und nur verwendet, um Ihnen zu antworten."}, L: L, esc: esc, $: $, endpoint: "https://api.disc-test.org/", token: "kR7UiShTyG7Wws7t16NkgKN3", email: "info@disc-test.org", pdVersion: "2026-11-16"});
 /* Первый блок теста в статье (#embedTest, с 2026-10-26; build.js → embedTest): выбор устроен как в тесте (по одному в каждой колонке).
    «Продолжить тест» кладёт ответ в disc.progress (как сам тест, только в браузере; на сервер ничего не уходит) с пометкой from — страница,
    откуда пришли, — и ведёт на главную с #test: там тест открывается на блоке 2, засчитываются старт и цели start / embed-start.
