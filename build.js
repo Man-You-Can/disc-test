@@ -806,7 +806,8 @@ function writeContentPage(L, sub, opts) {
     .replace('__FLAG_SPRITE__', () => flagSprite(locales.map(x => x.lang)))
     .replace(/__BRAND__/g, esc(L.brand)).replace(/__HOME_HREF__/g, homeHref).replace(/__LANG_LABEL__/g, esc(L.ui.langLabel))
     .replace('__LANG_SWITCHER__', () => switcher).replace('__NAV__', () => navHtml).replace('__CRUMBS__', () => crumbsHtml).replace('__FOOT_LINKS__', () => footHtml).replace('__MATERIALS__', () => materialsHtml(L, base, sub))
-    .replace('__CONTENT__', () => opts.content + updatedHtml)
+    // **текст** в локали — жирный (с 2026-11-16: «отчёт о команде бесплатно» на «Для организаций» и «Услугах»); экранирование звёздочки не трогает
+    .replace('__CONTENT__', () => opts.content.replace(/\*\*([^*<>]+?)\*\*/g, '<b>$1</b>') + updatedHtml)
     .replace('__CTA_FLOAT__', () => opts.content.includes('class="cta cta-top') || opts.content.includes('id="embedTest"') ? `<a class="btn ctafloat no-print" id="ctaFloat" href="${homeHref}" data-goal="cta-float">${esc(t('cta.button'))}</a>` : '')
     .replace(/__FOOTER__/g, esc(L.ui.footer)).replace(/__PRIVACY__/g, esc(L.ui.privacy)).replace('__LEGAL__', () => payMethodsHtml(L) + (sub === 'contact/' ? legalHtml(L) : '') + rightsHtml(L)).replace('__LANG_LINKS__', () => links)
     .replace('__LOCALE_JSON__', () => JSON.stringify(miniL).replace(/</g, '\\u003c'))
