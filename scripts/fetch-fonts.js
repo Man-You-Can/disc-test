@@ -1,5 +1,6 @@
 // Скачивает шрифты с Google Fonts в src/assets/fonts/ (woff2 по подмножествам) и пишет fonts.css с @font-face.
 // Запуск: node scripts/fetch-fonts.js   (нужен интернет; повторять только при смене набора шрифтов)
+// После него — python3 scripts/slim-arabic-fonts.py: облегчает арабские файлы (иначе арабская версия грузит 124 КБ шрифта заголовков).
 const fs = require('fs'), path = require('path'), https = require('https');
 const OUT = path.join(__dirname, '..', 'src', 'assets', 'fonts');
 fs.mkdirSync(OUT, { recursive: true });
