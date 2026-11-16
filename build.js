@@ -292,12 +292,13 @@ const bizCss = `.bizbuy div{flex:none}.bizform{display:flex;flex-direction:colum
   `@media (max-width:480px){.go-chips{margin-inline-start:0;flex-basis:100%}}`;
 // инструкция «Как участнику ввести код» на «Для организаций» (с 2026-11-16, по просьбе заказчика): шаги со снимками экрана сайта
 // src/assets/business/<язык>-<снимок>.webp (кладутся в docs/business/); снимки сняты с самого сайта в ширине телефона, кнопка шага выделена рамкой
-const bizGuideHTML = (L, bv) => { const G = L.content.business.guide, rel = relRoot(L, 'business/') + 'business/';
-  return `<h2 id="code">${escFull(G.title)}</h2><p>${escFull(G.lead).replace('{link}', `<a href="#code">${escFull(urlOf(L.lang).replace(/^https?:\/\//, ''))}business/#code</a>`)}</p><ol class="bizguide">` +
+// G — тексты раздела (business.guide — участнику, business.guideTeam — покупателю о отчёте о команде), id — якорь раздела
+const bizGuideHTML = (L, bv, G, id) => { const rel = relRoot(L, 'business/') + 'business/';
+  return `<h2 id="${id}">${escFull(G.title)}</h2><p>${escFull(G.lead).replace('{link}', `<a href="#${id}">${escFull(urlOf(L.lang).replace(/^https?:\/\//, ''))}business/#${id}</a>`)}</p><ol class="bizguide">` +
     G.steps.map((x, i) => { const img = x.img && fs.existsSync(path.join(ASSETS, 'business', `${L.lang}-${x.img}.webp`));
       return `<li><div class="bg-t"><h3>${escFull(x.t)}</h3><p>${escFull(x.p)}</p></div>` +
         (img ? `<figure><img src="${rel}${L.lang}-${x.img}.webp" alt="${escFull(x.alt)}" loading="lazy" decoding="async"></figure>` : '') + `</li>`; }).join('') +
-    `</ol><p class="small muted">${escFull(G.note).replace('{report}', bv.report)}</p>`; };
+    `</ol>` + (G.note ? `<p class="small muted">${escFull(G.note).replace('{report}', bv.report)}</p>` : ''); };
 const guideCss = `.bizguide{list-style:none;counter-reset:bg;padding:0;margin:16px 0}.bizguide li{counter-increment:bg;display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:16px 24px;align-items:start;padding:18px 0;border-top:1px solid var(--line)}` +
   `.bizguide li:first-child{border-top:0}.bizguide h3{margin:0 0 6px;font-family:var(--font-body);font-size:18px;font-weight:600;text-transform:none;letter-spacing:0;color:var(--ink)}.bizguide h3::before{content:counter(bg) ". "}.bizguide p{margin:0}` +
   `.bizguide figure{margin:0}.bizguide img{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:12px;background:var(--surface)}.bizguide figcaption{font-size:12px;color:var(--muted);margin-top:4px;text-align:center}` +
@@ -1355,7 +1356,7 @@ for (const L of locales) {
           `<h2>${escFull(B.forTitle)}</h2>` + listHtml('ul', B.for) +
           `<h2>${escFull(B.packsTitle)}</h2><p>${escFull(B.packsText)}</p>` + packs + `<p class="small muted">${escFull(B.packsNote)}</p>` +
           (hasBizBuy(L) ? `<h2 id="buy" class="kitbuyh">${escFull(B.buy.title)}</h2><p>${escFull(B.buy.lead)}</p>` + bizBuyHTML(L) : '') +
-          `<h2>${escFull(B.howTitle)}</h2>` + listHtml('ol', B.how) + (hasBizBuy(L) && B.guide ? bizGuideHTML(L, bv) : '') +
+          `<h2>${escFull(B.howTitle)}</h2>` + listHtml('ol', B.how) + (hasBizBuy(L) && B.guide ? bizGuideHTML(L, bv, B.guide, 'code') : '') + (hasBizBuy(L) && B.guideTeam ? bizGuideHTML(L, bv, B.guideTeam, 'team-report') : '') +
           `<h2>${escFull(B.privacyTitle)}</h2>` + B.privacy.map(x => `<p>${escFull(x)}</p>`).join('') +
           `<h2>${escFull(B.boundsTitle)}</h2><p>${escFull(B.bounds)}</p>` +
           `<h2>${escFull(B.teamTitle)}</h2><p>${escFull(B.team)}</p>` +
@@ -1858,7 +1859,7 @@ if (fs.existsSync(path.join(ASSETS, 'bigfive'))) { fs.mkdirSync(path.join(OUT, '
   for (const f of fs.readdirSync(path.join(ASSETS, 'bigfive'))) if (/^[a-z-]+-\d(-s)?\.webp$/.test(f)) fs.copyFileSync(path.join(ASSETS, 'bigfive', f), path.join(OUT, 'bigfive', f)); }
 // снимки инструкции «Как участнику ввести код» (страница «Для организаций», с 2026-11-16)
 if (fs.existsSync(path.join(ASSETS, 'business'))) { fs.mkdirSync(path.join(OUT, 'business'), { recursive: true });
-  for (const f of fs.readdirSync(path.join(ASSETS, 'business'))) if (/^[a-z-]+-code-\d-[a-z]+\.webp$/.test(f)) fs.copyFileSync(path.join(ASSETS, 'business', f), path.join(OUT, 'business', f)); }
+  for (const f of fs.readdirSync(path.join(ASSETS, 'business'))) if (/^[a-z-]+-(code|team)-\d-[a-z]+\.webp$/.test(f)) fs.copyFileSync(path.join(ASSETS, 'business', f), path.join(OUT, 'business', f)); }
 if (fs.existsSync(path.join(ASSETS, 'pair'))) { fs.mkdirSync(path.join(OUT, 'pair'), { recursive: true });
   // <язык>-mail.jpg — листы образца для письма подписчикам о «DISC на двоих» (JPEG: WebP показывают не все почтовые программы;
   // образцы письма — private/mailing-preview/pair-mail.py)

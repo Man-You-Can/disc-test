@@ -1292,7 +1292,8 @@ function initBizBuy(c){
    c: {T (content.business.teamPage; notFoundHtml, errorHtml — готовая разметка), endpoint, L, esc, $} */
 function initTeamPage(c){
   var T = c.T, $ = c.$, esc = c.esc, box = $('#teamBox'), h = (typeof dataHash === 'function' ? dataHash() : '') || '', mm = /^#t=(\d{1,9}\.[A-Za-z0-9_-]{20,40})$/.exec(h);
-  function fill(s, v){ return String(s).replace(/\{(\w+)\}/g, function(m, k){ return k in v ? v[k] : m; }); }
+  // дата языка может кончаться точкой («16 ноября 2026 г.»): вторую точку после неё в тексте убираем
+  function fill(s, v){ return String(s).replace(/\{(\w+)\}/g, function(m, k){ return k in v ? v[k] : m; }).replace(/\.\./g, '.'); }
   function date(iso){ try{ return new Date(iso).toLocaleDateString(c.L.dateLocale, {day: 'numeric', month: 'long', year: 'numeric'}); }catch(e){ return ''; } }
   if(!box) return;
   if(!mm){ box.innerHTML = '<p class="small sendstatus err">' + T.notFoundHtml + '</p>'; return; }

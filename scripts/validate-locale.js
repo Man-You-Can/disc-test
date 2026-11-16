@@ -22,7 +22,7 @@ const OPTIONAL = ['.content.policy.legal', '.content.extendedMail', '.content.pr
   '.content.business', '.ui.nav.business', '.content.product.pay.code', '.content.extendedMail.codeIntro', '.content.extendedMail.codeFooter',
   // покупка пакета кодов на сайте и отчёт о команде (с 2026-11-16, пока русская версия): форма покупки, страница команды, письма с кодами и отчётом,
   // вопрос о согласии при вводе кода, пункты оферты 4.7, 4.8, 5.9 и абзац политики о покупателях кодов
-  '.content.business.buy', '.content.business.guide', '.content.business.teamPage', '.content.business.mail', '.content.business.teamMail', '.content.product.pay.code.team', '.content.offer.bizTerms', '.content.policy.purchaseBiz',
+  '.content.business.buy', '.content.business.guide', '.content.business.guideTeam', '.content.business.teamPage', '.content.business.mail', '.content.business.teamMail', '.content.product.pay.code.team', '.content.offer.bizTerms', '.content.policy.purchaseBiz',
   // пункты оферты и абзац политики о кодах — там, где коды есть (с 2026-11-12 — во всех языках с покупкой)
   '.content.offer.codeTerms', '.content.policy.purchaseCode',
   // лендинг «CV и сопроводительное письмо под каждую вакансию» (/ru/cv/, с 2026-10-22, решение заказчика): только русская версия, ссылка только прямая
