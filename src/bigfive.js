@@ -185,6 +185,8 @@ function initBigFive(o){
   function result(r){
     showAbout(false);
     var sc = score(r), R = T.result, d = '';
+    // для карточки на главной DISC (с 2026-11-16): числа черт и код для покупки отчёта — рядом с последним результатом в этом браузере
+    if(o.buy) try{ var lr = lsGet('disc.bfLast'); if(lr && lr.d === r.d && !(lr.tr && lr.code)){ lr.tr = sc.tr; lr.code = bfCode(r); lsSet('disc.bfLast', lr); } }catch(e){}
     try{ d = new Date(r.d).toLocaleDateString(o.loc || 'ru-RU', {day: 'numeric', month: 'long', year: 'numeric'}); }catch(e){}
     var h = '<div class="bf-res"><div class="eyebrow">' + esc(R.eyebrow) + '</div><h2 class="bf-h">' + esc(R.title) + '</h2>' +
       (d ? '<p class="muted small">' + esc(fmt(R.date, {date: d})) + '</p>' : '') + '<p>' + esc(R.lead) + '</p>' +
@@ -256,6 +258,9 @@ function initBigFive(o){
   }
 
   var ret = o.buy && /[?&]pay=(ok|fail)(?:&|$)/.exec(location.search), ordm = /[?&]order=([A-Za-z0-9_-]{4,50})(?:&|$)/.exec(location.search);
-  if(T.paper && location.hash === '#paper') paper(); else intro();
+  // #last — ссылка «Открыть результат» с карточки на главной DISC: сразу прошлый результат (с формой покупки отчёта)
+  var lastR = location.hash === '#last' ? lsGet('disc.bfLast') : null;
+  if(lastR && !(typeof lastR.a === 'string' && lastR.a.length === N || validSums(lastR.s))) lastR = null;
+  if(T.paper && location.hash === '#paper') paper(); else if(lastR){ intro(); result(lastR); } else intro();
   if(ret) payReturn(ret[1], ordm ? ordm[1] : '');
 }

@@ -546,6 +546,12 @@ const homeLocale = L => Object.assign({}, L, {
   content: Object.assign({ home: L.content.home }, hasCvPromo(L) ? { cvPromo: L.content.cvPromo } : {},
     // «Другие тесты» на главной (с 2026-11-15): только тексты карточки, без утверждений теста
     L.content.bigfive && L.content.bigfive.home ? { bigfive: { home: L.content.bigfive.home } } : {},
+    // карточка «Большой пятёрки» вернувшемуся посетителю (с 2026-11-16, по просьбе заказчика; hasBfBuy): под карточкой результата DISC — прошлый результат теста,
+    // самая заметная черта, тезисы и листы отчёта, форма покупки (те же тексты, что у отчёта DISC; {base} подставляет страница)
+    hasBfBuy(L) ? { bfHome: (() => { const B = L.content.bigfive, R = B.report, HP = homePay(L);
+      return { T: Object.assign({}, HP, { code: null, guarantee: '', payPage: '', nameHint: R.block.nameHint || HP.nameHint }), home: R.home, listTitle: R.block.listTitle, list: R.block.list,
+        sampleNote: R.block.sampleNote, price: withPrice(L, L.content.product.price), traits: Object.fromEntries(Object.keys(B.traits).map(k => [k, B.traits[k].name])),
+        thumbs: [1, 2, 3].filter(i => fs.existsSync(path.join(ASSETS, 'bigfive', `${L.lang}-${i}-s.webp`))).map(i => `bigfive/${L.lang}-${i}-s.webp`) }; })() } : {},
     // подсказка пришедшему по QR-коду с бумажного бланка (?ref=pdf) и экран ввода чисел с бланка (#paper), с 2026-10-25: только они, без остального content.paper
     L.content.paper && L.content.paper.fromPdf ? { paper: { fromPdf: L.content.paper.fromPdf, score: L.content.paper.score } } : {},
     // строка на экране своего результата о странице «Провести тест в группе» (с 2026-10-26, content.group.resultLine)

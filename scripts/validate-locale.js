@@ -172,8 +172,8 @@ for (const f of files) {
   // «Большая пятёрка»: блок покупки и документы о ней (оферта, условия возврата, политика, «Как готовятся отчёты») — только вместе
   { const BR = C.bigfive && C.bigfive.report, BFK = [BR && BR.block, C.offer && C.offer.bfSection, C.refund && C.refund.bfSection, C.policy && C.policy.purchaseBf, C.howMade && C.howMade.bigfive];
     if (BFK.some(Boolean) && !BFK.every(Boolean)) errs.push('Big Five report keys (.content.bigfive.report.block, offer/refund bfSection, policy.purchaseBf, howMade.bigfive) must come together');
-    if (BR && BR.block && !(BR.thanks && BR.fail && BR.mail && BR.name)) errs.push('.content.bigfive.report: block needs name, mail, thanks and fail');
-    if (BR && BR.block && /\u2014/.test(JSON.stringify([BR.block, BR.mail, BR.thanks, BR.fail]))) errs.push('.content.bigfive.report: no em dashes in Big Five report texts (client rule 2026-11-16)'); }
+    if (BR && BR.block && !(BR.thanks && BR.fail && BR.mail && BR.name && BR.home)) errs.push('.content.bigfive.report: block needs name, mail, thanks, fail and home');
+    if (BR && BR.block && /\u2014/.test(JSON.stringify([BR.block, BR.mail, BR.thanks, BR.fail, BR.home]))) errs.push('.content.bigfive.report: no em dashes in Big Five report texts (client rule 2026-11-16)'); }
   const PAIRK = [C.pair, j.ui && j.ui['nav.pair'], C.offer && C.offer.pairSection, C.refund && C.refund.pairSection, C.policy && C.policy.purchasePair, C.howMade && C.howMade.pair];
   if (P.pay && !PAIRK.every(Boolean)) errs.push('.content.pair, .ui["nav.pair"], .content.offer.pairSection, .content.refund.pairSection, .content.policy.purchasePair, .content.howMade.pair: missing — the report is on sale in this language, so "DISC for two" must be too');
   if (PAIRK.some(Boolean) && !PAIRK.every(Boolean)) errs.push('"DISC for two" keys (.content.pair, .ui["nav.pair"], offer/refund pairSection, policy.purchasePair, howMade.pair) must come together');

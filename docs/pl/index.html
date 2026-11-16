@@ -1229,9 +1229,41 @@ function renderIntro(){
     var hm = document.createElement('p'); hm.className = 'xmore'; hm.innerHTML = '<a href="'+lastCard.href+'" id="lastMore">'+esc(PP.more)+' '+arrowR()+'</a>'; hw.appendChild(hm);
     $('#lastOffer').appendChild(hw);
   }
+  bfHomeCard();
   if(nlOn) initHomeSub();
   showPasses();
   ['#lastExt', '#lastSample', '#lastMore'].forEach(function(id){ if($(id)) $(id).addEventListener('click', function(){ try{ sessionStorage.setItem('disc.src', 'home'); }catch(e){} if(id==='#lastExt' && window.discTrack) window.discTrack('ext-home'); }); });
+}
+
+/* Карточка «Большой пятёрки» вернувшемуся посетителю (с 2026-11-16, по просьбе заказчика; L.content.bfHome — build.js, где отчёт продаётся):
+   прошёл тест «Большая пятёрка» в этом браузере (disc.bfLast) и не купил отчёт (disc.bfpay.done) — под карточкой результата DISC (без неё — сразу под
+   заголовком) такая же карточка: дата результата и «Открыть результат» (/big-five/#last), самая заметная черта, тезисы и листы отчёта, форма покупки
+   (payForms: те же цены и скидки, что у отчёта DISC; заказ — /bigfive/order, источник home). Числа черт и код результата для заказа (tr, code) кладёт
+   в disc.bfLast страница теста при показе результата: без них — кнопка на страницу результата вместо формы. */
+var BF_COLORS = {O:'#7A4FC4', C:'#1D7E8F', E:'#E07A1F', A:'#3A9A5B', N:'#D0456A'};   // цвета черт — как в отчёте (private/extended-report/bigfive/report.css)
+function bfHomeCard(){
+  var X = L.content && L.content.bfHome; if(!X || !$('h1')) return;
+  var r = lsGet('disc.bfLast'), rec = lsGet('disc.bfpay'); if(!r || !r.d || (rec && rec.done)) return;
+  var H = X.home, base = ROOT_REL+LANG_PATH[L.lang], href = base+'big-five/#last', tr = r.tr && typeof r.tr === 'object' ? r.tr : null, top = null;
+  if(tr) Object.keys(BF_COLORS).forEach(function(k){ if(typeof tr[k] === 'number' && (!top || Math.abs(tr[k]-50) > Math.abs(tr[top]-50))) top = k; });
+  var hook = top ? H.hook.replace('{trait}', String(X.traits[top]||top).toLowerCase()).replace('{pos}', (tr[top] <= 35 ? H.below : H.above).replace('{n}', tr[top] <= 35 ? 100-tr[top] : tr[top])) : H.hookNone;
+  var pay = !!(r.code && /^BF1\.\d{20}\.\d{12}$/.test(r.code) && PAY_ENDPOINT && typeof payForms === 'function');
+  var html = '<section class="share xoffer lastcard bflast" id="bfLastOffer" style="--k:'+(top ? BF_COLORS[top] : 'var(--ink)')+'"><div class="lchead">'+esc(H.label.replace('{date}', fmtDate(new Date(r.d).toISOString())))+
+      '<span class="lastname"><b>'+esc(H.name)+'</b><a class="link" href="'+esc(href)+'" id="bfShowLast">'+esc(H.open)+'</a></span></div>'+
+    '<h2>'+esc(H.title)+'</h2><p class="xhook">'+esc(hook)+'</p>'+
+    '<div class="xgrid"><div><p class="xonly">'+esc(X.listTitle)+'</p><ul class="xonlyl">'+X.list.map(function(x){ return '<li>'+esc(x)+'</li>'; }).join('')+'</ul></div>'+
+      (X.thumbs.length ? '<div class="xside"><a class="xthumbs" href="'+esc(href)+'">'+X.thumbs.map(function(u){ return '<img src="'+esc(ROOT_REL+u)+'" width="440" height="623" alt="" loading="lazy" decoding="async">'; }).join('')+'</a><p>'+esc(X.sampleNote)+'</p></div>' : '')+'</div>'+
+    (pay ? '' : '<a class="btn big" href="'+esc(href)+'">'+esc(H.button)+'</a>')+'</section>';
+  var after = $('#lastOffer');
+  if(after) after.insertAdjacentHTML('afterend', html); else $('h1').insertAdjacentHTML('afterend', html);
+  if(!pay) return;
+  var who = lsGet('disc.who')||{};
+  var g = payForms({T: Object.assign({}, X.T, {noteHtml: X.T.noteHtml.replace(/\{base\}/g, base), errorHtml: X.T.errorHtml.replace(/\{base\}/g, base)}), endpoint: PAY_ENDPOINT, L: L, esc: esc, lsGet: lsGet, lsSet: lsSet,
+    orderPath: '/bigfive/order', payKey: 'disc.bfpay', ownOffer: true, goals: {buy: 'bf-ext-buy', start: 'bf-ext-start', error: 'bf-ext-error'},
+    body: function(name, email, x){ return {lang: L.lang, code: r.code, name: name, email: email, from: x.source}; }});
+  var f = g.add({id: 'bfPayHome', code: r.code, t: new Date(Math.min(+r.d, Date.now())).toISOString(), source: 'home', email: who.email || '', price: X.price, withName: function(n){ return n; }});
+  if(f.nameInput && who.name) f.nameInput.value = String(who.name).slice(0, 80);
+  var w = document.createElement('div'); w.className = 'xinline'; w.appendChild(f.form); $('#bfLastOffer').appendChild(w);
 }
 
 /* Подписка на рассылку со стартового экрана (с 2026-10-22): сервер записывает адрес в базу результатов строкой «подписка с главной»
