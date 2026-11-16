@@ -80,8 +80,10 @@ function walk(a, b, p, errs){
   if (/^\.content\.gift\.(order|mail)\.units$/.test(p)) { if (!b || typeof b !== 'object' || typeof b.other !== 'string' || !b.other.trim()) errs.push(p + ': needs an object of plural forms with "other"'); return; }
   if (Array.isArray(a)) {
     if (!Array.isArray(b)) return errs.push(p + ': expected array');
-    if (a.length !== b.length) return errs.push(p + ': array length ' + b.length + ', expected ' + a.length);
-    a.forEach((x, i) => walk(x, b[i], p + '[' + i + ']', errs));
+    // «Для организаций»: последняя строка об оплате (исполнитель с ИНН, {seller}) — только в русской версии (решение заказчика от 2026-11-16)
+    const short = p === '.content.business.pay' && b.length === a.length - 1 && /\{seller\}/.test(a[a.length - 1]);
+    if (a.length !== b.length && !short) return errs.push(p + ': array length ' + b.length + ', expected ' + a.length);
+    b.forEach((x, i) => walk(a[i], x, p + '[' + i + ']', errs));
   } else if (a && typeof a === 'object') {
     if (!b || typeof b !== 'object' || Array.isArray(b)) return errs.push(p + ': expected object');
     for (const k of Object.keys(a)) { if (!(k in b)) { if (!OPTIONAL.includes(p + '.' + k)) errs.push(p + '.' + k + ': missing'); } else walk(a[k], b[k], p + '.' + k, errs); }
@@ -108,6 +110,8 @@ for (const f of files) {
   // Расширенный отчёт: перевод оферты и условий возврата несёт оговорку со ссылкой на русский текст; где отчёт не продаётся (нет product.pay),
   // блок обязан говорить о заявке; листы образца — либо все ключи, либо ни одного; покупка и письмо покупателю появляются только вместе
   const C = j.content || {}, P = C.product || {}, B = P.block || {};
+  // Сведения об ИП (исполнитель, ИНН) на странице «Для организаций», странице команды и в письмах о кодах — только в русской версии (решение заказчика от 2026-11-16)
+  if (code !== 'ru' && C.business && /\{seller\}|\{inn\}/.test(JSON.stringify(C.business))) errs.push('.content.business: {seller}/{inn} only in the Russian version');
   for (const d of ['offer', 'refund']) if (C[d] && !/\{original\}/.test(String(C[d].note || ''))) errs.push('.content.' + d + '.note: missing or without {original}');
   if (C.product && !P.pay && !B.soon) errs.push('.content.product.block.soon: missing (no product.pay — the report is not on sale in this language)');
   if (P.pay && B.soon) errs.push('.content.product.block.soon: must be removed once product.pay is present');
