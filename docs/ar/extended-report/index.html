@@ -1277,9 +1277,12 @@ function payClock(ms){ var s = Math.max(0, Math.ceil(ms / 1000)), h = Math.floor
    Распродажа для подписчиков (с 2026-11-08; T.sale — тексты content.product.pay.sale, сервер — private/server/src/sale.js): форма, открытая по ссылке
    из письма распродажи (источник sale или sale2), показывает цену распродажи с отсчётом до конца её последнего дня — цены, срок и повод из ответа сервера
    (discOffer.data.sale[язык]; с 2026-11-12 распродажа бывает в несколько дней, повод — {occasion}, в языках ЕС — без зачёркнутой цены, T.sale.plain);
-   переключатель специальной цены на неё не влияет. Сервер принимает цену распродажи только в её сутки, позже — «offer expired», и форма переходит на обычную цену. */
+   переключатель специальной цены на неё не влияет. Сервер принимает цену распродажи только в её сутки, позже — «offer expired», и форма переходит на обычную цену.
+   Те же формы — у отчёта «Большая пятёрка» (с 2026-11-16, src/bigfive.js; цены и скидки те же): c.orderPath — адрес заказа ('/bigfive/order'),
+   c.body(code, email, o, price) — тело запроса, c.goals — цели {buy, start, error}, c.payKey — запись о заказе в браузере ('disc.bfpay': отметка покупки
+   отчёта DISC не ставится), c.ownOffer — срок специальной цены только от времени этого теста (без отметки первого теста DISC на устройстве). */
 function payForms(c){
-  var T = c.T, esc = c.esc, O = T.offer || null, g = {busy:false, forms:[], subs:[], tick:0};
+  var T = c.T, esc = c.esc, O = T.offer || null, g = {busy:false, forms:[], subs:[], tick:0}, G = c.goals || {buy:'ext-page-buy', start:'ext-pay-start', error:'ext-pay-error'};
   /* включена ли специальная цена в панели (discOffer в src/common.js): true — да, false — нет, null — ответа ещё нет (до ответа — обычная цена) */
   function flag(){ if(typeof discOffer !== 'function') return true; return discOffer.on === true ? true : discOffer.on === false ? false : null; }
   /* числа для заказа и отсчёта: из ответа сервера (цены и срок из панели), пока его нет — со сборки */
@@ -1297,7 +1300,7 @@ function payForms(c){
     var now = Date.now(), any = false, ask = false, fl = flag(), N = nums();
     g.forms.forEach(function(f){
       // пришли по ссылке из письма подписчикам (source nl): срок — от времени теста в письме, как у сервера оплаты; более раннее прохождение на этом устройстве его не сокращает
-      f.until = f.over ? 0 : payOfferUntil(O ? {ms: N.ms} : null, f.t, f.source === 'nl' ? null : c.lsGet);
+      f.until = f.over ? 0 : payOfferUntil(O ? {ms: N.ms} : null, f.t, f.source === 'nl' || c.ownOffer ? null : c.lsGet);
       var on = f.until > now && fl === true; any = any || on; ask = ask || (f.until > now && fl === null);
       f.price = O ? (on ? N.price : N.regular) : N.regular;
       // каждая цена не переносится внутри себя; две цены (xdual) на узком экране мельче и при нехватке места встают в две строки
@@ -1368,11 +1371,11 @@ function payForms(c){
       var email = input.value.trim(), code = f.code();
       if(code === null) return;
       if(email.length > PAY_EMAIL_MAX || !PAY_EMAIL_RE.test(email)){ st.textContent = T.badEmail; st.hidden = false; input.focus(); return; }
-      st.hidden = true; g.setBusy(true); payTrack('ext-page-buy');
+      st.hidden = true; g.setBusy(true); payTrack(G.buy);
       // Content-Type не задаём: «простой» запрос без предварительного OPTIONS
       g.paint(); var price = f.price;
-      var body = {code:code, email:email, source:o.source, lang:c.L.lang}; if(price) body.price = price;
-      fetch(c.endpoint + '/order', {method:'POST', body: JSON.stringify(body)})
+      var body = c.body ? c.body(code, email, o, price) : {code:code, email:email, source:o.source, lang:c.L.lang}; if(price) body.price = price;
+      fetch(c.endpoint + (c.orderPath || '/order'), {method:'POST', body: JSON.stringify(body)})
         .then(function(res){ return res.text(); })
         .then(function(txt){ var j = null; try{ j = JSON.parse(txt); }catch(e){}
           if(j && !j.ok && j.error === 'offer expired' && (O || saleOf(f))){ g.forms.forEach(function(x){ x.over = true; }); g.paint(); throw new Error(saleOf(f) ? 'sale over' : 'offer expired'); }
@@ -1383,15 +1386,15 @@ function payForms(c){
           if(!j || !j.ok || !j.url || !j.order) throw new Error((j && j.error) || 'bad response');
           var u = new URL(j.url, location.href);   // платёжная страница: только https (на локальной заглушке — тот же адрес, что у сайта)
           if(u.protocol !== 'https:' && u.origin !== location.origin) throw new Error('bad url');
-          c.lsSet('disc.pay', {order:String(j.order), key:String(j.key||''), email:email, t:Date.now(), price:price || 0});
-          payTrack('ext-pay-start'); location.href = u.href; })
+          c.lsSet(c.payKey || 'disc.pay', {order:String(j.order), key:String(j.key||''), email:email, t:Date.now(), price:price || 0});
+          payTrack(G.start); location.href = u.href; })
         .catch(function(err){ g.setBusy(false); st.hidden = false;
           if(err && err.message === 'bad email'){ st.textContent = T.badEmail; input.focus(); }
           else if(err && err.message === 'offer expired'){ st.textContent = O.expired; }
           else if(err && err.message === 'sale over'){ st.textContent = pstr(T.sale.expired); }
           else if(err && err.message === 'offer off'){ st.textContent = O.regularLabel + ': ' + pstr(O.regularText); }
           else if(err && err.message === 'price' && O && typeof discOfferRefresh === 'function'){ st.hidden = true; discOfferRefresh(c.endpoint + '/offer', function(){ g.paint(); st.textContent = g.on ? pstr(O.cta) : O.regularLabel + ': ' + pstr(O.regularText); st.hidden = false; }); }
-          else { st.innerHTML = T.errorHtml; payTrack('ext-pay-error'); } });
+          else { st.innerHTML = T.errorHtml; payTrack(G.error); } });
     });
     return f;
   };

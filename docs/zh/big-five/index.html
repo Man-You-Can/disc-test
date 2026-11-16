@@ -1282,7 +1282,11 @@ initCommon({L:L, t:t, esc:esc, lsGet:lsGet, lsSet:lsSet, langHref:langHref, $:$,
    Место среди других («выше, чем у N из 100») — по средним и разбросу из Weisberg, DeYoung, Hirsh (2011), табл. 2, сырые баллы мужчин и
    женщин поровну (около 2600 англоязычных участников): приблизительно (об этом — вопрос в FAQ страницы; оговорку под результатом заказчик убрал 2026-11-15).
    Всё считается в браузере; на сервер ничего не уходит. Ответы и прогресс — в disc.bf, последний результат — в disc.bfLast
-   (тексты о данных говорят о хранении ответов, прогресса и последнего результата в браузере). Цели: bf-start, bf-finish, bf-disc. */
+   (тексты о данных говорят о хранении ответов, прогресса и последнего результата в браузере). Цели: bf-start, bf-finish, bf-disc.
+   Расширенный отчёт (с 2026-11-16, o.buy — где он продаётся; пока русская версия): блок под результатом с формой покупки (payForms из src/pay.js —
+   те же цены, специальная цена и распродажа, что у отчёта DISC). На сервер оплаты уходят только при нажатии «Купить»: код BF1.<суммы десяти аспектов>.<дата и
+   время прохождения по Москве>, имя для отчёта и e-mail. После оплаты банк возвращает на эту страницу с ?order=…&pay=ok|fail — карточка с состоянием заказа.
+   Цели: bf-ext-buy, bf-ext-start, bf-ext-error (форма), bf-ext-done, bf-ext-fail (возврат с оплаты). Заказ в браузере — disc.bfpay. */
 function initBigFive(o){
   // rtl (арабский): полоса заполняется справа, маркер ставится от правого края, стрелки — влево
   var RTL = document.documentElement.dir === 'rtl', ARR = RTL ? '←' : '→';
@@ -1319,10 +1323,18 @@ function initBigFive(o){
     return z < 0 ? (1 - y) / 2 : (1 + y) / 2; }
   function pctl(key, raw){ var nm = NORM[key]; return Math.max(1, Math.min(99, Math.round(100 * cdf((raw - nm[0]) / nm[1])))); }
   // r.a — 100 ответов онлайн-теста; r.s — суммы десяти аспектов (10–50) с бумажного бланка (#paper, с 2026-11-16)
-  function score(r){
-    var asp = {}, raw = {}, a = r.a;
+  function sums(r){
+    var raw = {}, a = r.a;
     Object.keys(POS).forEach(function(k){ raw[k] = r.s ? +r.s[k] : 0; });
     if(!r.s) ORDER.forEach(function(id, i){ var k = id.slice(0, 2), n = +id.slice(2), v = +a.charAt(i); raw[k] += n <= POS[k] ? v : 6 - v; });
+    return raw;
+  }
+  // код результата для покупки отчёта: суммы аспектов в порядке сервера и время прохождения по Москве (ГГГГММДДЧЧММ)
+  var CODE_ORDER = ['IT','OP','IN','OR','EN','AS','CO','PO','VO','WI'];
+  function bfCode(r){ var x = sums(r), t = Math.min(+r.d || Date.now(), Date.now());
+    return 'BF1.' + CODE_ORDER.map(function(k){ return (x[k] < 10 ? '0' : '') + x[k]; }).join('') + '.' + new Date(t + 3 * 3600000).toISOString().slice(0, 16).replace(/[-T:]/g, ''); }
+  function score(r){
+    var asp = {}, raw = sums(r);
     Object.keys(raw).forEach(function(k){ raw[k] /= 10; asp[k] = pctl(k, raw[k]); });
     var tr = {};
     TRAITS.forEach(function(t){ tr[t[0]] = pctl(t[0], (raw[t[1][0]] + raw[t[1][1]]) / 2); });
@@ -1468,6 +1480,7 @@ function initBigFive(o){
         // ссылка на статью о черте (с 2026-11-15; o.more — {O: 'openness/', …} и текст ссылки, где статьи есть)
         (o.more && o.more[k] ? '<p class="bf-more"><a href="' + esc(o.more[k]) + '">' + esc(fmt(o.moreText, {name: TR.name})) + ' ' + ARR + '</a></p>' : '') + '</section>';
     });
+    if(o.buy) h += buyHTML();
     h += '<aside class="card bf-disc"><h3>' + esc(R.disc.title) + '</h3><p>' + esc(R.disc.text) + '</p><p><a class="btn" href="' + esc(o.home) + '" data-goal="bf-disc">' + esc(R.disc.button) + '</a></p></aside>' +
       '<p class="bf-again"><button type="button" class="linkbtn" id="bfAgain">' + esc(R.again) + '</button></p></div>';
     app.innerHTML = h;
@@ -1475,12 +1488,56 @@ function initBigFive(o){
     // цель ссылки на тест DISC: page.html вешает data-goal только на ссылки, которые есть при загрузке
     var dl = app.querySelector('a[data-goal="bf-disc"]'); if(dl) dl.addEventListener('click', function(){ track('bf-disc'); });
     $('bfAgain').onclick = function(){ var x = blank(); lsSet('disc.bf', x); track('bf-start'); test(x); };
+    if(o.buy) buyMount(r);
   }
 
+  /* ---- расширенный отчёт: блок под результатом ---- */
+  function buyHTML(){
+    var B = o.buy.block;
+    return '<section class="card pairad bf-buy" id="bfBuy"><div class="eyebrow">' + esc(B.eyebrow) + '</div><h2>' + esc(B.title) + '</h2><p>' + esc(B.lead) + '</p>' +
+      '<div class="xgrid"><div><p class="xonly">' + esc(B.listTitle) + '</p><ul class="pairpts">' + B.list.map(function(x){ return '<li>' + esc(x) + '</li>'; }).join('') + '</ul></div>' +
+      '<div class="xside"><div class="xthumbs">' + o.buy.sheets.map(function(x, i){ return '<a href="' + esc(x[0]) + '" target="_blank" rel="noopener"><img src="' + esc(x[1]) + '" width="96" height="136" alt="' + esc(B.sampleAlt[i] || '') + '" loading="lazy" decoding="async"></a>'; }).join('') +
+      '</div><p>' + esc(B.sampleNote) + '</p></div></div><div class="bf-paybox" id="bfPayBox"></div></section>';
+  }
+  function buyMount(r){
+    var box = $('bfPayBox'); if(!box || typeof payForms !== 'function') return;
+    var code = bfCode(r), who = lsGet('disc.who') || {}, m = /[?&]src=([a-z0-9-]{1,20})(?:&|$)/.exec(location.search);
+    var g = payForms({T: o.buy.T, endpoint: o.buy.endpoint, L: o.buy.L, esc: esc, lsGet: lsGet, lsSet: lsSet, orderPath: '/bigfive/order', payKey: 'disc.bfpay', ownOffer: true,
+      goals: {buy: 'bf-ext-buy', start: 'bf-ext-start', error: 'bf-ext-error'},
+      body: function(name, email, x){ return {lang: o.buy.L.lang, code: code, name: name, email: email, from: x.source}; }});
+    var f = g.add({id: 'bfPayEmail', code: code, t: new Date(Math.min(+r.d || Date.now(), Date.now())).toISOString(), source: m ? m[1] : 'result', email: who.email,
+      price: o.buy.price, withName: function(n){ return n; }});
+    if(f.nameInput && who.name) f.nameInput.value = String(who.name).slice(0, 80);
+    box.appendChild(f.form);
+  }
+  /* ---- возврат с оплаты (?order=…&pay=ok|fail): карточка над тестом ---- */
+  function payReturn(kind, order){
+    var X = kind === 'ok' ? o.buy.thanks : o.buy.fail, rec = lsGet('disc.bfpay'), mine = rec && rec.order && rec.order === order ? rec : null;
+    var el = document.createElement('div'); el.className = 'card bf-paynote ' + (kind === 'ok' ? 'ok' : 'fail'); el.setAttribute('role', 'status');
+    el.innerHTML = '<h2>' + esc(X.title) + '</h2><p>' + esc(kind === 'ok' ? (mine && mine.email ? fmt(X.text, {email: mine.email}) : X.textNoEmail) : X.text) + '</p>' +
+      (order ? '<p class="muted small">' + esc(fmt(X.order, {order: order})) + '</p>' : '') + '<p class="small sendstatus" hidden></p>' +
+      (kind !== 'ok' && lsGet('disc.bfLast') ? '<p><button type="button" class="btn" id="bfPayAgain">' + esc(X.button) + '</button></p>' : '');
+    app.parentNode.insertBefore(el, app);
+    var again = $('bfPayAgain'); if(again) again.onclick = function(){ el.parentNode.removeChild(el); result(lsGet('disc.bfLast')); var b = $('bfBuy'); if(b) try{ b.scrollIntoView({block: 'start'}); }catch(e){} };
+    if(!mine) return;
+    if(kind !== 'ok'){ if(!mine.fail){ mine.fail = true; lsSet('disc.bfpay', mine); track('bf-ext-fail'); } return; }
+    if(!mine.done){ mine.done = true; lsSet('disc.bfpay', mine); if(window.discTrack) window.discTrack('bf-ext-done', {order_price: mine.price || 0, currency: 'RUB'}); }
+    if(!mine.key || !o.buy.endpoint) return;
+    var st = el.querySelector('.sendstatus'), TEXT = {'new': X.statusWait, paid: X.statusPaid, sent: X.statusSent}, tries = 0;
+    (function ask(){
+      fetch(o.buy.endpoint + '/status?order=' + encodeURIComponent(order) + '&key=' + encodeURIComponent(mine.key)).then(function(res){ return res.json(); }).then(function(j){
+        var s = j && j.ok ? String(j.status) : '';
+        if(TEXT[s]){ st.textContent = TEXT[s]; st.className = 'small sendstatus' + (s === 'new' ? '' : ' ok'); st.hidden = false; } else st.hidden = true;
+        if((s === 'new' || s === 'paid') && ++tries < 45) setTimeout(ask, 4000); }).catch(function(){ if(++tries < 45) setTimeout(ask, 8000); });
+    })();
+  }
+
+  var ret = o.buy && /[?&]pay=(ok|fail)(?:&|$)/.exec(location.search), ordm = /[?&]order=([A-Za-z0-9_-]{4,50})(?:&|$)/.exec(location.search);
   if(T.paper && location.hash === '#paper') paper(); else intro();
+  if(ret) payReturn(ret[1], ordm ? ordm[1] : '');
 }
 
-initBigFive({T: {"start":"开始测试","resume":"继续答题（{n}/{total}）","restart":"重新开始","showLast":"查看我上次的结果","step":"第 {n} 页，共 {total} 页","count":"已作答：{n}/{total}","hint":"判断每条陈述在多大程度上符合你。按平时的真实情况作答，而不是你希望的样子。答案没有对错之分。","scale":["完全不像我","不太像我","一半一半","比较像我","完全像我"],"next":"下一页","back":"上一页","finish":"查看结果","needAll":"请先回答本页的所有陈述。","items":{"VO1":"我很容易生气。","VO2":"我很容易心烦。","VO3":"我的心情变化很频繁。","VO4":"我是个情绪容易起伏的人。","VO5":"我很容易焦躁起来。","VO6":"我的情绪很容易被挑起来。","VO7":"我很少感到烦躁。","VO8":"我能把情绪控制住。","VO9":"我很少失去冷静。","VO10":"我不容易被惹恼。","WI1":"我对很多事情都没有把握。","WI2":"我很容易感到受威胁。","WI3":"我常为各种事情担心。","WI4":"我很容易灰心。","WI5":"事情一多，我就容易手足无措。","WI6":"我害怕的东西很多。","WI7":"我很少感到闷闷不乐。","WI8":"我和自己相处得很自在。","WI9":"我很少感到意志消沉。","WI10":"我不容易感到难为情。","CO1":"我能感受到别人的情绪。","CO2":"我会主动问别人过得好不好。","CO3":"我能体谅别人的心情。","CO4":"我对别人的生活感兴趣。","CO5":"我喜欢为别人做些事情。","CO6":"我对别人的烦恼不感兴趣。","CO7":"别人的需要，我懒得去管。","CO8":"我对别人的感受漠不关心。","CO9":"我不愿为别人花时间。","CO10":"我没有心软的一面。","PO1":"我尊重权威。","PO2":"我很不愿意显得咄咄逼人。","PO3":"我避免把自己的意志强加给别人。","PO4":"我很少给别人施加压力。","PO5":"我会出口伤人。","PO6":"我认为自己比别人强。","PO7":"我会占别人的便宜。","PO8":"我会主动寻找冲突。","PO9":"我喜欢跟人争得面红耳赤。","PO10":"我一心只顾自己的利益。","IN1":"我会把自己的计划付诸实施。","IN2":"我做事有始有终。","IN3":"我办事很快。","IN4":"我总是清楚自己在做什么。","IN5":"我经常浪费时间。","IN6":"我很难着手开始工作。","IN7":"我常把事情搞砸。","IN8":"我常常没法把心思放在手头的事情上。","IN9":"我常把决定往后拖。","IN10":"我很容易分心。","OR1":"我喜欢井井有条。","OR2":"我把东西收拾得整整齐齐。","OR3":"我按日程安排做事。","OR4":"我希望每件事都恰到好处。","OR5":"我会确保规则得到遵守。","OR6":"我希望每个细节都处理到位。","OR7":"我的东西随手乱放。","OR8":"邋遢的人不会让我心烦。","OR9":"杂乱无章不会让我困扰。","OR10":"我不喜欢一成不变的例行事务。","EN1":"我很容易交到朋友。","EN2":"我和别人很快就能熟络起来。","EN3":"我开心时会表现出来。","EN4":"我常常玩得很开心。","EN5":"我经常笑。","EN6":"别人很难真正了解我。","EN7":"我和别人保持距离。","EN8":"我很少透露自己的事。","EN9":"我很少被热烈的气氛感染。","EN10":"我不是一个容易热情高涨的人。","AS1":"我会主动掌控局面。","AS2":"我是个很有气场的人。","AS3":"我懂得怎样吸引住别人。","AS4":"我认为自己是个好的领导者。","AS5":"我能说服别人去做事。","AS6":"我常常第一个采取行动。","AS7":"我不是一个强势的人。","AS8":"我缺乏影响别人的才能。","AS9":"我等别人来带头。","AS10":"我不轻易说出自己的看法。","IT1":"我理解事情很快。","IT2":"我能处理大量信息。","IT3":"我喜欢解决复杂的问题。","IT4":"我的词汇量很丰富。","IT5":"我思维敏捷。","IT6":"我能把想法表达得很清楚。","IT7":"我很难理解抽象的概念。","IT8":"我回避哲学性的讨论。","IT9":"我回避难读的书和文章。","IT10":"我学东西很慢。","OP1":"我喜欢欣赏大自然的美。","OP2":"我认为艺术很重要。","OP3":"我喜欢对事情深入思考。","OP4":"我会深深沉浸在音乐中。","OP5":"我能在别人可能注意不到的事物中看到美。","OP6":"我需要通过创作来表达自己。","OP7":"我不喜欢诗歌。","OP8":"我很少陷入沉思。","OP9":"我很少做白日梦。","OP10":"我很少留意绘画和照片传达的情感。"},"result":{"eyebrow":"大五人格","title":"你的人格画像","date":"测试日期：{date}","lead":"每种特质都有一个 1 到 99 之间的数字：100 个人中有多少人得分比你低。50 正好是中间。分数高或低没有好坏之分：每一端都有自己的优势和风险。","summary":"五种特质","scaleCap":"数字表示 100 个人中有多少人得分比你低。","above":"超过 100 人中的 {n} 人","aboveShort":"超过 100 人中的 {n} 人","levels":["低","中等偏低","中等","中等偏高","高"],"disc":{"title":"接下来，看看你在工作和沟通中的风格","text":"大五人格描述的是整体性格。DISC 测试则展示你在工作和沟通中的做法：你的主导风格、优势，以及如何与不同风格的人达成共识。约 10 分钟，免费。","button":"开始 DISC 测试"},"again":"重新测试"},"traits":{"O":{"name":"开放性","en":"Openness","what":"你在多大程度上被新想法、新体验、艺术和复杂问题吸引。","high":"你对新事物充满兴趣：新想法、新书、新地方、与众不同的观点。你善于发现事物之间的联系，喜欢弄清楚事情的来龙去脉，也懂得欣赏美。一成不变和“向来如此”很快会让你厌倦，在工作中你需要探索的空间。","mid":"新事物有意义时，你乐于接受，但不会为了新鲜而追求新鲜。你可以被一个想法或一本书吸引，也可以踏踏实实按成熟的办法做事，视情况而定。","low":"你重视实际：看重经过检验的、清楚明白的、有用的东西。抽象的讨论和各种尝试，只有在能带来直接用处时才吸引你。在需要常识和稳定的地方，大家可以放心依靠你。"},"C":{"name":"尽责性","en":"Conscientiousness","what":"你做事在多大程度上专注、有条理、有始有终。","high":"你说到做到，会提前计划，开了头就做完。做事有条理对你来说很自然，别人也信得过你。另一面是：你不容易放松、放手，别人的马虎可能让你很恼火。","mid":"事情重要时，你会认真投入；不那么重要时，你也允许自己灵活一些。你有计划，但不死板；秩序按需要来。","low":"你做事灵活，常凭心情，计划说改就改，不喜欢条条框框。这有助于随机应变，但截止日期、例行事务和细节会让你吃力一些。外部提醒和给自己定的简单约定会有帮助。"},"E":{"name":"外向性","en":"Extraversion","what":"你从人、交流和行动中获得多少能量。","high":"人和活动让你充满活力：你容易结识新朋友，话多，愿意主动。长时间的安静和独处很快会让你闷得慌。也要记得给说话轻声的人留些空间。","mid":"热闹的场合和独处的时光你都能享受。你可以主导谈话，也可以安静倾听，看场合和对象而定。","low":"你懂得节省精力：更喜欢小圈子、深入的交谈和独处的时间。你不追求成为焦点，也不急着发言，但开口之前会先想清楚。"},"A":{"name":"宜人性","en":"Agreeableness","what":"你在多大程度上关注他人、重视合作和关系和谐。","high":"你看重人和关系：富有同情心，乐于帮忙，寻求共识，避免言辞尖锐。和你共事很轻松。风险在于：在本该坚持立场的时候让步。","mid":"你在意别人，但也能坚持自己的主张。你乐于助人，但不会委屈自己。","low":"你直率而独立：有话直说，不怕争论，把事情放在别人的情绪之前。这在谈判和需要果断决策时很有用，但在人际关系中可能显得生硬。"},"N":{"name":"神经质","en":"Neuroticism","what":"你对压力、挫折和不顺心的事反应有多强烈。这里得分高代表敏感，而不是疾病。","high":"你对压力感受很深：容易担心、怀疑，遇到不顺心的事要很久才能缓过来。这种敏感能帮你提前发现风险，但也很耗精力。重要的是知道什么能让你恢复，不要独自扛着焦虑。","mid":"你对压力的反应和大多数人一样：会担心、会生气，但通常很快就能恢复平静。","low":"你情绪稳定：能从容承受压力，很少焦虑，恢复得也快。另一面是：可能会低估真实的风险，或低估别人的感受。"}},"aspects":{"IT":{"name":"智识","high":"喜欢复杂的问题，能很快弄懂新事物。","mid":"问题值得时，愿意动脑钻研复杂的东西。","low":"更喜欢清楚明确的任务，不爱多余的理论。"},"OP":{"name":"感受力","high":"对艺术、音乐和自然感受细腻，常常沉思和想象。","mid":"艺术和想象在你生活中有一席之地，但不是最重要的。","low":"比起想象和艺术，你更关注现实和具体的事物。"},"IN":{"name":"勤奋","high":"很快着手做事，并把它做完。","mid":"做事稳定，但不喜欢的事有时会往后拖。","low":"有时难以开始，也容易分心。"},"OR":{"name":"有序","high":"喜欢秩序、日程安排和按规矩办事。","mid":"会保持秩序，但不吹毛求疵。","low":"杂乱和不按规矩来，都不太会困扰你。"},"EN":{"name":"热情","high":"和人很快熟起来，开心时毫不掩饰。","mid":"待人友好，但不会一下子对所有人敞开心扉。","low":"比较内敛，慢慢才会向少数人敞开心扉。"},"AS":{"name":"果断","high":"会主动担起领导责任，能带动别人。","mid":"需要时，能站出来发言并带头。","low":"更愿意让别人带头，自己的看法常常不说出来。"},"CO":{"name":"同情心","high":"能细腻地体会别人的感受，乐于帮忙。","mid":"会同情别人，但不会陷在别人的烦恼里。","low":"比起别人的感受，你更关注事情本身。"},"PO":{"name":"礼貌","high":"避免施压和冲突，尊重规则，也尊重别人。","mid":"通常很得体，但必要时也会施加压力。","low":"不怕冲突，会直截了当地争取自己想要的。"},"VO":{"name":"情绪易变","high":"容易烦躁，心情变化快。","mid":"偶尔会发火，但很快就能平复。","low":"很少烦躁，能控制住自己的情绪。"},"WI":{"name":"退缩","high":"常常担心、怀疑，容易灰心。","mid":"有事时会担心，但不会一直焦虑。","low":"很少焦虑，能平静地面对挫折。"}}}, loc: "zh-CN", home: '../', more: {}, moreText: "", esc: esc, $: $, lsGet: lsGet, lsSet: lsSet});
+initBigFive({T: {"start":"开始测试","resume":"继续答题（{n}/{total}）","restart":"重新开始","showLast":"查看我上次的结果","step":"第 {n} 页，共 {total} 页","count":"已作答：{n}/{total}","hint":"判断每条陈述在多大程度上符合你。按平时的真实情况作答，而不是你希望的样子。答案没有对错之分。","scale":["完全不像我","不太像我","一半一半","比较像我","完全像我"],"next":"下一页","back":"上一页","finish":"查看结果","needAll":"请先回答本页的所有陈述。","items":{"VO1":"我很容易生气。","VO2":"我很容易心烦。","VO3":"我的心情变化很频繁。","VO4":"我是个情绪容易起伏的人。","VO5":"我很容易焦躁起来。","VO6":"我的情绪很容易被挑起来。","VO7":"我很少感到烦躁。","VO8":"我能把情绪控制住。","VO9":"我很少失去冷静。","VO10":"我不容易被惹恼。","WI1":"我对很多事情都没有把握。","WI2":"我很容易感到受威胁。","WI3":"我常为各种事情担心。","WI4":"我很容易灰心。","WI5":"事情一多，我就容易手足无措。","WI6":"我害怕的东西很多。","WI7":"我很少感到闷闷不乐。","WI8":"我和自己相处得很自在。","WI9":"我很少感到意志消沉。","WI10":"我不容易感到难为情。","CO1":"我能感受到别人的情绪。","CO2":"我会主动问别人过得好不好。","CO3":"我能体谅别人的心情。","CO4":"我对别人的生活感兴趣。","CO5":"我喜欢为别人做些事情。","CO6":"我对别人的烦恼不感兴趣。","CO7":"别人的需要，我懒得去管。","CO8":"我对别人的感受漠不关心。","CO9":"我不愿为别人花时间。","CO10":"我没有心软的一面。","PO1":"我尊重权威。","PO2":"我很不愿意显得咄咄逼人。","PO3":"我避免把自己的意志强加给别人。","PO4":"我很少给别人施加压力。","PO5":"我会出口伤人。","PO6":"我认为自己比别人强。","PO7":"我会占别人的便宜。","PO8":"我会主动寻找冲突。","PO9":"我喜欢跟人争得面红耳赤。","PO10":"我一心只顾自己的利益。","IN1":"我会把自己的计划付诸实施。","IN2":"我做事有始有终。","IN3":"我办事很快。","IN4":"我总是清楚自己在做什么。","IN5":"我经常浪费时间。","IN6":"我很难着手开始工作。","IN7":"我常把事情搞砸。","IN8":"我常常没法把心思放在手头的事情上。","IN9":"我常把决定往后拖。","IN10":"我很容易分心。","OR1":"我喜欢井井有条。","OR2":"我把东西收拾得整整齐齐。","OR3":"我按日程安排做事。","OR4":"我希望每件事都恰到好处。","OR5":"我会确保规则得到遵守。","OR6":"我希望每个细节都处理到位。","OR7":"我的东西随手乱放。","OR8":"邋遢的人不会让我心烦。","OR9":"杂乱无章不会让我困扰。","OR10":"我不喜欢一成不变的例行事务。","EN1":"我很容易交到朋友。","EN2":"我和别人很快就能熟络起来。","EN3":"我开心时会表现出来。","EN4":"我常常玩得很开心。","EN5":"我经常笑。","EN6":"别人很难真正了解我。","EN7":"我和别人保持距离。","EN8":"我很少透露自己的事。","EN9":"我很少被热烈的气氛感染。","EN10":"我不是一个容易热情高涨的人。","AS1":"我会主动掌控局面。","AS2":"我是个很有气场的人。","AS3":"我懂得怎样吸引住别人。","AS4":"我认为自己是个好的领导者。","AS5":"我能说服别人去做事。","AS6":"我常常第一个采取行动。","AS7":"我不是一个强势的人。","AS8":"我缺乏影响别人的才能。","AS9":"我等别人来带头。","AS10":"我不轻易说出自己的看法。","IT1":"我理解事情很快。","IT2":"我能处理大量信息。","IT3":"我喜欢解决复杂的问题。","IT4":"我的词汇量很丰富。","IT5":"我思维敏捷。","IT6":"我能把想法表达得很清楚。","IT7":"我很难理解抽象的概念。","IT8":"我回避哲学性的讨论。","IT9":"我回避难读的书和文章。","IT10":"我学东西很慢。","OP1":"我喜欢欣赏大自然的美。","OP2":"我认为艺术很重要。","OP3":"我喜欢对事情深入思考。","OP4":"我会深深沉浸在音乐中。","OP5":"我能在别人可能注意不到的事物中看到美。","OP6":"我需要通过创作来表达自己。","OP7":"我不喜欢诗歌。","OP8":"我很少陷入沉思。","OP9":"我很少做白日梦。","OP10":"我很少留意绘画和照片传达的情感。"},"result":{"eyebrow":"大五人格","title":"你的人格画像","date":"测试日期：{date}","lead":"每种特质都有一个 1 到 99 之间的数字：100 个人中有多少人得分比你低。50 正好是中间。分数高或低没有好坏之分：每一端都有自己的优势和风险。","summary":"五种特质","scaleCap":"数字表示 100 个人中有多少人得分比你低。","above":"超过 100 人中的 {n} 人","aboveShort":"超过 100 人中的 {n} 人","levels":["低","中等偏低","中等","中等偏高","高"],"disc":{"title":"接下来，看看你在工作和沟通中的风格","text":"大五人格描述的是整体性格。DISC 测试则展示你在工作和沟通中的做法：你的主导风格、优势，以及如何与不同风格的人达成共识。约 10 分钟，免费。","button":"开始 DISC 测试"},"again":"重新测试"},"traits":{"O":{"name":"开放性","en":"Openness","what":"你在多大程度上被新想法、新体验、艺术和复杂问题吸引。","high":"你对新事物充满兴趣：新想法、新书、新地方、与众不同的观点。你善于发现事物之间的联系，喜欢弄清楚事情的来龙去脉，也懂得欣赏美。一成不变和“向来如此”很快会让你厌倦，在工作中你需要探索的空间。","mid":"新事物有意义时，你乐于接受，但不会为了新鲜而追求新鲜。你可以被一个想法或一本书吸引，也可以踏踏实实按成熟的办法做事，视情况而定。","low":"你重视实际：看重经过检验的、清楚明白的、有用的东西。抽象的讨论和各种尝试，只有在能带来直接用处时才吸引你。在需要常识和稳定的地方，大家可以放心依靠你。"},"C":{"name":"尽责性","en":"Conscientiousness","what":"你做事在多大程度上专注、有条理、有始有终。","high":"你说到做到，会提前计划，开了头就做完。做事有条理对你来说很自然，别人也信得过你。另一面是：你不容易放松、放手，别人的马虎可能让你很恼火。","mid":"事情重要时，你会认真投入；不那么重要时，你也允许自己灵活一些。你有计划，但不死板；秩序按需要来。","low":"你做事灵活，常凭心情，计划说改就改，不喜欢条条框框。这有助于随机应变，但截止日期、例行事务和细节会让你吃力一些。外部提醒和给自己定的简单约定会有帮助。"},"E":{"name":"外向性","en":"Extraversion","what":"你从人、交流和行动中获得多少能量。","high":"人和活动让你充满活力：你容易结识新朋友，话多，愿意主动。长时间的安静和独处很快会让你闷得慌。也要记得给说话轻声的人留些空间。","mid":"热闹的场合和独处的时光你都能享受。你可以主导谈话，也可以安静倾听，看场合和对象而定。","low":"你懂得节省精力：更喜欢小圈子、深入的交谈和独处的时间。你不追求成为焦点，也不急着发言，但开口之前会先想清楚。"},"A":{"name":"宜人性","en":"Agreeableness","what":"你在多大程度上关注他人、重视合作和关系和谐。","high":"你看重人和关系：富有同情心，乐于帮忙，寻求共识，避免言辞尖锐。和你共事很轻松。风险在于：在本该坚持立场的时候让步。","mid":"你在意别人，但也能坚持自己的主张。你乐于助人，但不会委屈自己。","low":"你直率而独立：有话直说，不怕争论，把事情放在别人的情绪之前。这在谈判和需要果断决策时很有用，但在人际关系中可能显得生硬。"},"N":{"name":"神经质","en":"Neuroticism","what":"你对压力、挫折和不顺心的事反应有多强烈。这里得分高代表敏感，而不是疾病。","high":"你对压力感受很深：容易担心、怀疑，遇到不顺心的事要很久才能缓过来。这种敏感能帮你提前发现风险，但也很耗精力。重要的是知道什么能让你恢复，不要独自扛着焦虑。","mid":"你对压力的反应和大多数人一样：会担心、会生气，但通常很快就能恢复平静。","low":"你情绪稳定：能从容承受压力，很少焦虑，恢复得也快。另一面是：可能会低估真实的风险，或低估别人的感受。"}},"aspects":{"IT":{"name":"智识","high":"喜欢复杂的问题，能很快弄懂新事物。","mid":"问题值得时，愿意动脑钻研复杂的东西。","low":"更喜欢清楚明确的任务，不爱多余的理论。"},"OP":{"name":"感受力","high":"对艺术、音乐和自然感受细腻，常常沉思和想象。","mid":"艺术和想象在你生活中有一席之地，但不是最重要的。","low":"比起想象和艺术，你更关注现实和具体的事物。"},"IN":{"name":"勤奋","high":"很快着手做事，并把它做完。","mid":"做事稳定，但不喜欢的事有时会往后拖。","low":"有时难以开始，也容易分心。"},"OR":{"name":"有序","high":"喜欢秩序、日程安排和按规矩办事。","mid":"会保持秩序，但不吹毛求疵。","low":"杂乱和不按规矩来，都不太会困扰你。"},"EN":{"name":"热情","high":"和人很快熟起来，开心时毫不掩饰。","mid":"待人友好，但不会一下子对所有人敞开心扉。","low":"比较内敛，慢慢才会向少数人敞开心扉。"},"AS":{"name":"果断","high":"会主动担起领导责任，能带动别人。","mid":"需要时，能站出来发言并带头。","low":"更愿意让别人带头，自己的看法常常不说出来。"},"CO":{"name":"同情心","high":"能细腻地体会别人的感受，乐于帮忙。","mid":"会同情别人，但不会陷在别人的烦恼里。","low":"比起别人的感受，你更关注事情本身。"},"PO":{"name":"礼貌","high":"避免施压和冲突，尊重规则，也尊重别人。","mid":"通常很得体，但必要时也会施加压力。","low":"不怕冲突，会直截了当地争取自己想要的。"},"VO":{"name":"情绪易变","high":"容易烦躁，心情变化快。","mid":"偶尔会发火，但很快就能平复。","low":"很少烦躁，能控制住自己的情绪。"},"WI":{"name":"退缩","high":"常常担心、怀疑，容易灰心。","mid":"有事时会担心，但不会一直焦虑。","low":"很少焦虑，能平静地面对挫折。"}}}, loc: "zh-CN", home: '../', more: {}, moreText: "", buy: null, esc: esc, $: $, lsGet: lsGet, lsSet: lsSet});
 /* Первый блок теста в статье (#embedTest, с 2026-10-26; build.js → embedTest): выбор устроен как в тесте (по одному в каждой колонке).
    «Продолжить тест» кладёт ответ в disc.progress (как сам тест, только в браузере; на сервер ничего не уходит) с пометкой from — страница,
    откуда пришли, — и ведёт на главную с #test: там тест открывается на блоке 2, засчитываются старт и цели start / embed-start.

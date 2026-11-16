@@ -5,7 +5,11 @@
    Место среди других («выше, чем у N из 100») — по средним и разбросу из Weisberg, DeYoung, Hirsh (2011), табл. 2, сырые баллы мужчин и
    женщин поровну (около 2600 англоязычных участников): приблизительно (об этом — вопрос в FAQ страницы; оговорку под результатом заказчик убрал 2026-11-15).
    Всё считается в браузере; на сервер ничего не уходит. Ответы и прогресс — в disc.bf, последний результат — в disc.bfLast
-   (тексты о данных говорят о хранении ответов, прогресса и последнего результата в браузере). Цели: bf-start, bf-finish, bf-disc. */
+   (тексты о данных говорят о хранении ответов, прогресса и последнего результата в браузере). Цели: bf-start, bf-finish, bf-disc.
+   Расширенный отчёт (с 2026-11-16, o.buy — где он продаётся; пока русская версия): блок под результатом с формой покупки (payForms из src/pay.js —
+   те же цены, специальная цена и распродажа, что у отчёта DISC). На сервер оплаты уходят только при нажатии «Купить»: код BF1.<суммы десяти аспектов>.<дата и
+   время прохождения по Москве>, имя для отчёта и e-mail. После оплаты банк возвращает на эту страницу с ?order=…&pay=ok|fail — карточка с состоянием заказа.
+   Цели: bf-ext-buy, bf-ext-start, bf-ext-error (форма), bf-ext-done, bf-ext-fail (возврат с оплаты). Заказ в браузере — disc.bfpay. */
 function initBigFive(o){
   // rtl (арабский): полоса заполняется справа, маркер ставится от правого края, стрелки — влево
   var RTL = document.documentElement.dir === 'rtl', ARR = RTL ? '←' : '→';
@@ -42,10 +46,18 @@ function initBigFive(o){
     return z < 0 ? (1 - y) / 2 : (1 + y) / 2; }
   function pctl(key, raw){ var nm = NORM[key]; return Math.max(1, Math.min(99, Math.round(100 * cdf((raw - nm[0]) / nm[1])))); }
   // r.a — 100 ответов онлайн-теста; r.s — суммы десяти аспектов (10–50) с бумажного бланка (#paper, с 2026-11-16)
-  function score(r){
-    var asp = {}, raw = {}, a = r.a;
+  function sums(r){
+    var raw = {}, a = r.a;
     Object.keys(POS).forEach(function(k){ raw[k] = r.s ? +r.s[k] : 0; });
     if(!r.s) ORDER.forEach(function(id, i){ var k = id.slice(0, 2), n = +id.slice(2), v = +a.charAt(i); raw[k] += n <= POS[k] ? v : 6 - v; });
+    return raw;
+  }
+  // код результата для покупки отчёта: суммы аспектов в порядке сервера и время прохождения по Москве (ГГГГММДДЧЧММ)
+  var CODE_ORDER = ['IT','OP','IN','OR','EN','AS','CO','PO','VO','WI'];
+  function bfCode(r){ var x = sums(r), t = Math.min(+r.d || Date.now(), Date.now());
+    return 'BF1.' + CODE_ORDER.map(function(k){ return (x[k] < 10 ? '0' : '') + x[k]; }).join('') + '.' + new Date(t + 3 * 3600000).toISOString().slice(0, 16).replace(/[-T:]/g, ''); }
+  function score(r){
+    var asp = {}, raw = sums(r);
     Object.keys(raw).forEach(function(k){ raw[k] /= 10; asp[k] = pctl(k, raw[k]); });
     var tr = {};
     TRAITS.forEach(function(t){ tr[t[0]] = pctl(t[0], (raw[t[1][0]] + raw[t[1][1]]) / 2); });
@@ -191,6 +203,7 @@ function initBigFive(o){
         // ссылка на статью о черте (с 2026-11-15; o.more — {O: 'openness/', …} и текст ссылки, где статьи есть)
         (o.more && o.more[k] ? '<p class="bf-more"><a href="' + esc(o.more[k]) + '">' + esc(fmt(o.moreText, {name: TR.name})) + ' ' + ARR + '</a></p>' : '') + '</section>';
     });
+    if(o.buy) h += buyHTML();
     h += '<aside class="card bf-disc"><h3>' + esc(R.disc.title) + '</h3><p>' + esc(R.disc.text) + '</p><p><a class="btn" href="' + esc(o.home) + '" data-goal="bf-disc">' + esc(R.disc.button) + '</a></p></aside>' +
       '<p class="bf-again"><button type="button" class="linkbtn" id="bfAgain">' + esc(R.again) + '</button></p></div>';
     app.innerHTML = h;
@@ -198,7 +211,51 @@ function initBigFive(o){
     // цель ссылки на тест DISC: page.html вешает data-goal только на ссылки, которые есть при загрузке
     var dl = app.querySelector('a[data-goal="bf-disc"]'); if(dl) dl.addEventListener('click', function(){ track('bf-disc'); });
     $('bfAgain').onclick = function(){ var x = blank(); lsSet('disc.bf', x); track('bf-start'); test(x); };
+    if(o.buy) buyMount(r);
   }
 
+  /* ---- расширенный отчёт: блок под результатом ---- */
+  function buyHTML(){
+    var B = o.buy.block;
+    return '<section class="card pairad bf-buy" id="bfBuy"><div class="eyebrow">' + esc(B.eyebrow) + '</div><h2>' + esc(B.title) + '</h2><p>' + esc(B.lead) + '</p>' +
+      '<div class="xgrid"><div><p class="xonly">' + esc(B.listTitle) + '</p><ul class="pairpts">' + B.list.map(function(x){ return '<li>' + esc(x) + '</li>'; }).join('') + '</ul></div>' +
+      '<div class="xside"><div class="xthumbs">' + o.buy.sheets.map(function(x, i){ return '<a href="' + esc(x[0]) + '" target="_blank" rel="noopener"><img src="' + esc(x[1]) + '" width="96" height="136" alt="' + esc(B.sampleAlt[i] || '') + '" loading="lazy" decoding="async"></a>'; }).join('') +
+      '</div><p>' + esc(B.sampleNote) + '</p></div></div><div class="bf-paybox" id="bfPayBox"></div></section>';
+  }
+  function buyMount(r){
+    var box = $('bfPayBox'); if(!box || typeof payForms !== 'function') return;
+    var code = bfCode(r), who = lsGet('disc.who') || {}, m = /[?&]src=([a-z0-9-]{1,20})(?:&|$)/.exec(location.search);
+    var g = payForms({T: o.buy.T, endpoint: o.buy.endpoint, L: o.buy.L, esc: esc, lsGet: lsGet, lsSet: lsSet, orderPath: '/bigfive/order', payKey: 'disc.bfpay', ownOffer: true,
+      goals: {buy: 'bf-ext-buy', start: 'bf-ext-start', error: 'bf-ext-error'},
+      body: function(name, email, x){ return {lang: o.buy.L.lang, code: code, name: name, email: email, from: x.source}; }});
+    var f = g.add({id: 'bfPayEmail', code: code, t: new Date(Math.min(+r.d || Date.now(), Date.now())).toISOString(), source: m ? m[1] : 'result', email: who.email,
+      price: o.buy.price, withName: function(n){ return n; }});
+    if(f.nameInput && who.name) f.nameInput.value = String(who.name).slice(0, 80);
+    box.appendChild(f.form);
+  }
+  /* ---- возврат с оплаты (?order=…&pay=ok|fail): карточка над тестом ---- */
+  function payReturn(kind, order){
+    var X = kind === 'ok' ? o.buy.thanks : o.buy.fail, rec = lsGet('disc.bfpay'), mine = rec && rec.order && rec.order === order ? rec : null;
+    var el = document.createElement('div'); el.className = 'card bf-paynote ' + (kind === 'ok' ? 'ok' : 'fail'); el.setAttribute('role', 'status');
+    el.innerHTML = '<h2>' + esc(X.title) + '</h2><p>' + esc(kind === 'ok' ? (mine && mine.email ? fmt(X.text, {email: mine.email}) : X.textNoEmail) : X.text) + '</p>' +
+      (order ? '<p class="muted small">' + esc(fmt(X.order, {order: order})) + '</p>' : '') + '<p class="small sendstatus" hidden></p>' +
+      (kind !== 'ok' && lsGet('disc.bfLast') ? '<p><button type="button" class="btn" id="bfPayAgain">' + esc(X.button) + '</button></p>' : '');
+    app.parentNode.insertBefore(el, app);
+    var again = $('bfPayAgain'); if(again) again.onclick = function(){ el.parentNode.removeChild(el); result(lsGet('disc.bfLast')); var b = $('bfBuy'); if(b) try{ b.scrollIntoView({block: 'start'}); }catch(e){} };
+    if(!mine) return;
+    if(kind !== 'ok'){ if(!mine.fail){ mine.fail = true; lsSet('disc.bfpay', mine); track('bf-ext-fail'); } return; }
+    if(!mine.done){ mine.done = true; lsSet('disc.bfpay', mine); if(window.discTrack) window.discTrack('bf-ext-done', {order_price: mine.price || 0, currency: 'RUB'}); }
+    if(!mine.key || !o.buy.endpoint) return;
+    var st = el.querySelector('.sendstatus'), TEXT = {'new': X.statusWait, paid: X.statusPaid, sent: X.statusSent}, tries = 0;
+    (function ask(){
+      fetch(o.buy.endpoint + '/status?order=' + encodeURIComponent(order) + '&key=' + encodeURIComponent(mine.key)).then(function(res){ return res.json(); }).then(function(j){
+        var s = j && j.ok ? String(j.status) : '';
+        if(TEXT[s]){ st.textContent = TEXT[s]; st.className = 'small sendstatus' + (s === 'new' ? '' : ' ok'); st.hidden = false; } else st.hidden = true;
+        if((s === 'new' || s === 'paid') && ++tries < 45) setTimeout(ask, 4000); }).catch(function(){ if(++tries < 45) setTimeout(ask, 8000); });
+    })();
+  }
+
+  var ret = o.buy && /[?&]pay=(ok|fail)(?:&|$)/.exec(location.search), ordm = /[?&]order=([A-Za-z0-9_-]{4,50})(?:&|$)/.exec(location.search);
   if(T.paper && location.hash === '#paper') paper(); else intro();
+  if(ret) payReturn(ret[1], ordm ? ordm[1] : '');
 }

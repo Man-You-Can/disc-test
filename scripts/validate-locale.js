@@ -45,6 +45,8 @@ const OPTIONAL = ['.content.policy.legal', '.content.extendedMail', '.content.pr
   '.content.bigfive.paper',
   // расширенный отчёт «Большая пятёрка» (платный, с 2026-11-16, пока русская версия): название для банка и чека, письмо покупателю; позже — блок покупки на экране результата
   '.content.bigfive.report',
+  // покупка отчёта «Большая пятёрка» на сайте (с 2026-11-16, пока русская версия): документы о нём — только вместе с блоком покупки (content.bigfive.report.block)
+  '.content.offer.bfSection', '.content.refund.bfSection', '.content.policy.purchaseBf', '.content.howMade.bigfive',
   // страница «Все тесты» (/tests/) и её пункт в шапке (с 2026-11-15, по просьбе заказчика; все 13 языков); ключи — только вместе
   '.content.tests', '.ui.nav.tests', '.content.tests.compare',   // compare — ссылка на статью «DISC и „Большая пятёрка“», только где статья есть
   '.content.paper', '.content.kit', '.content.consentDoc.paperForm',   // бумажный бланк: QR, «Что дальше», блок для групп, бланк на e-mail; набор ведущего (с 2026-10-25, пока русская версия)
@@ -170,6 +172,11 @@ for (const f of files) {
   { const BN = C.bigfive && C.bigfive.nav; if (!!BN !== !!(j.ui && j.ui['nav.bigfive'])) errs.push('.content.bigfive.nav and .ui["nav.bigfive"] must come together');
     if (BN) { const sl = new Set((C.bigfive.articles || []).map(x => x.slug)); for (const x of BN) if (x.slug && !sl.has(x.slug) && !(x.slug === 'pdf' && C.bigfive.paper)) errs.push('.content.bigfive.nav: no article "' + x.slug + '"'); } }
   // «DISC на двоих» (с 2026-11-14): правило «что сделано для продажи — во все языки с покупкой»; все ключи продукта — только вместе
+  // «Большая пятёрка»: блок покупки и документы о ней (оферта, условия возврата, политика, «Как готовятся отчёты») — только вместе
+  { const BR = C.bigfive && C.bigfive.report, BFK = [BR && BR.block, C.offer && C.offer.bfSection, C.refund && C.refund.bfSection, C.policy && C.policy.purchaseBf, C.howMade && C.howMade.bigfive];
+    if (BFK.some(Boolean) && !BFK.every(Boolean)) errs.push('Big Five report keys (.content.bigfive.report.block, offer/refund bfSection, policy.purchaseBf, howMade.bigfive) must come together');
+    if (BR && BR.block && !(BR.thanks && BR.fail && BR.mail && BR.name)) errs.push('.content.bigfive.report: block needs name, mail, thanks and fail');
+    if (BR && BR.block && /\u2014/.test(JSON.stringify([BR.block, BR.mail, BR.thanks, BR.fail]))) errs.push('.content.bigfive.report: no em dashes in Big Five report texts (client rule 2026-11-16)'); }
   const PAIRK = [C.pair, j.ui && j.ui['nav.pair'], C.offer && C.offer.pairSection, C.refund && C.refund.pairSection, C.policy && C.policy.purchasePair, C.howMade && C.howMade.pair];
   if (P.pay && !PAIRK.every(Boolean)) errs.push('.content.pair, .ui["nav.pair"], .content.offer.pairSection, .content.refund.pairSection, .content.policy.purchasePair, .content.howMade.pair: missing — the report is on sale in this language, so "DISC for two" must be too');
   if (PAIRK.some(Boolean) && !PAIRK.every(Boolean)) errs.push('"DISC for two" keys (.content.pair, .ui["nav.pair"], offer/refund pairSection, policy.purchasePair, howMade.pair) must come together');
