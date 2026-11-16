@@ -279,7 +279,7 @@ const bizBuyHTML = L => { const BT = L.content.business.buy, min = businessPacks
     `<div class="actions"><button class="btn" type="submit" id="bizPay">${escFull(BT.submit.replace('{total}', ''))}</button></div>` +
     `<p class="xnote">${bizNoteHtml(L, BT.note)}</p>${payMethodsHtml(L)}` +
     `<p class="small">${escFull(BT.invoice).replace('{request}', `<a href="#request">${escFull(BT.invoiceLink)}</a>`)}</p></form></section>`; };
-const bizCss = `.bizform{display:flex;flex-direction:column;gap:14px;flex:1 1 100%}.bizform .field{margin:0}.bizform .hint{margin:6px 0 0;font-size:13px;color:var(--muted)}` +
+const bizCss = `.bizbuy div{flex:none}.bizform{display:flex;flex-direction:column;gap:14px;flex:1 1 100%;min-width:0}.bizform .field{margin:0}.bizform .hint{margin:6px 0 0;font-size:13px;color:var(--muted)}` +
   `.go-qty{display:flex;flex-wrap:wrap;align-items:center;gap:8px}` +
   `.go-pm{width:42px;height:42px;border:1px solid var(--line-strong);border-radius:10px;background:var(--surface);color:var(--ink);font-size:20px;cursor:pointer}` +
   `#bizQty{width:80px;height:42px;font:inherit;font-size:18px;text-align:center;border:1px solid var(--line-strong);border-radius:10px;background:var(--surface);color:var(--ink);-moz-appearance:textfield}` +
@@ -287,7 +287,7 @@ const bizCss = `.bizform{display:flex;flex-direction:column;gap:14px;flex:1 1 10
   `.go-chips{display:flex;gap:6px;margin-inline-start:8px}.go-chip{font:inherit;font-size:14px;border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:999px;padding:6px 12px;cursor:pointer}` +
   `.go-chip[aria-pressed=true]{background:var(--ink);color:var(--surface);border-color:var(--ink)}.go-price{margin:10px 0 0;font-size:16px}.go-price .ok{color:var(--s);font-weight:600}.go-bad{border-color:var(--d)!important}` +
   `.bizteam{display:flex;gap:10px;align-items:flex-start;border:1.5px solid var(--line);border-radius:12px;padding:12px 14px}.bizteam:has(input:checked){border-color:var(--ink)}` +
-  `.bizteam input{flex:none;width:18px;height:18px;margin:3px 0 0;accent-color:var(--ink)}.biztotal{display:flex;align-items:baseline;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding-top:12px}` +
+  `.bizteam input{flex:none;width:18px;height:18px;margin:3px 0 0;accent-color:var(--ink)}.biztotal{display:flex;align-items:baseline;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding-top:12px}.biztotal .xbig{font-family:var(--font-head);font-weight:500;font-size:28px;line-height:1.1;color:var(--ink)}` +
   `.bizform .actions .btn{width:100%}.bizform .paym{display:flex;flex-wrap:wrap;gap:6px;align-items:center}` +
   `@media (max-width:480px){.go-chips{margin-inline-start:0;flex-basis:100%}}`;
 const teamCss = `.teamstats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:0 0 14px}.teamstats div{border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:var(--surface)}` +

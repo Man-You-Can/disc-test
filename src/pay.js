@@ -210,7 +210,7 @@ function payCodeInit(c, g, f, o){
       '<p>'+esc(TT.text)+'</p><ul>'+TT.list.map(function(x){ return '<li>'+esc(x)+'</li>'; }).join('')+'</ul><p class="xteam-not">'+esc(TT.not)+'</p>'+
       '<button class="btn" type="button" data-share="1">'+esc(TT.share)+'</button><button class="link xteam-skip" type="button" data-share="0">'+esc(TT.skip)+'</button>'+
       '<p class="xnote">'+TT.noteHtml+'</p>';
-    btn.hidden = true; inp.disabled = true; f.input.disabled = true;
+    btn.hidden = true; inp.disabled = true; f.input.disabled = true; box.classList.add('xteaming');
     [].forEach.call(teamBox.querySelectorAll('[data-share]'), function(b){ b.addEventListener('click', function(){ f.redeem(b.getAttribute('data-share') === '1'); }); });
     try{ teamBox.scrollIntoView({block: 'nearest'}); }catch(e){}
     return true;
@@ -232,7 +232,7 @@ function payCodeInit(c, g, f, o){
         if(!j.ok && j.error === 'team' && teamCard(String(j.org || ''))){ btn.disabled = false; btn.textContent = X.button; return; }
         if(!j.ok){ var e = new Error(String(j.error || 'bad response')); throw e; }
         done = true; inp.disabled = true; f.input.disabled = true; btn.hidden = true; link.hidden = true;
-        if(teamBox){ teamBox.parentNode.removeChild(teamBox); teamBox = null; }
+        if(teamBox){ teamBox.parentNode.removeChild(teamBox); teamBox = null; box.classList.remove('xteaming'); }
         say('ok', esc(X.done.replace('{to}', email)) + (X.team && j.shared === true ? '<br>' + esc(X.team.doneShared) : X.team && j.shared === false ? '<br>' + X.team.doneSkipHtml : ''));
         if(j.shared !== undefined) payTrack(j.shared ? 'team-share' : 'team-skip');
         try{ var p = c.lsGet('disc.pay') || {}; if(!p.done) c.lsSet('disc.pay', {code:true, email:email, t:Date.now(), done:true}); }catch(e){}
