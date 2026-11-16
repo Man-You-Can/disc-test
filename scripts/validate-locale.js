@@ -40,6 +40,8 @@ const OPTIONAL = ['.content.policy.legal', '.content.extendedMail', '.content.pr
   '.content.bigfive.nav', '.ui.nav.bigfive',
   // бланк «Большой пятёрки» для печати (/big-five/pdf/, с 2026-11-16, пока русская версия); в меню раздела — пункт со slug 'pdf'
   '.content.bigfive.paper',
+  // расширенный отчёт «Большая пятёрка» (платный, с 2026-11-16, пока русская версия): название для банка и чека, письмо покупателю; позже — блок покупки на экране результата
+  '.content.bigfive.report',
   // страница «Все тесты» (/tests/) и её пункт в шапке (с 2026-11-15, по просьбе заказчика; все 13 языков); ключи — только вместе
   '.content.tests', '.ui.nav.tests', '.content.tests.compare',   // compare — ссылка на статью «DISC и „Большая пятёрка“», только где статья есть
   '.content.paper', '.content.kit', '.content.consentDoc.paperForm',   // бумажный бланк: QR, «Что дальше», блок для групп, бланк на e-mail; набор ведущего (с 2026-10-25, пока русская версия)

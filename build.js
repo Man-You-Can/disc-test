@@ -1830,6 +1830,11 @@ for (const L of locales) {
       // письмо подписчикам о «DISC на двоих» (content.mailing.pair, с 2026-11-14): тексты, запись цены языка, есть ли картинка листов (src/assets/pair/<язык>-mail.jpg → /pair/<язык>-mail.jpg)
       news: L.content.mailing && L.content.mailing.pair, priceTpl: L.content.services.price || '{price}', plain: !!(L.content.mailing && L.content.mailing.sale && L.content.mailing.sale.plain),
       image: fs.existsSync(path.join(ASSETS, 'pair', L.lang + '-mail.jpg')) }; }
+  // расширенный отчёт «Большая пятёрка» (с 2026-11-16, пока русская версия; Т-Банк): название для платёжной страницы и чека, цена по умолчанию (bfPriceRub;
+  // текущую задаёт заказчик в панели — src/prices.js сервера), адрес страницы теста (возврат с оплаты), письмо покупателю. sale — "bfBuy": true в site.config.json:
+  // без него сервер заказы не принимает (покупка на сайте и документы — отдельным шагом)
+  if (L.content.bigfive && L.content.bigfive.report && +cfg.bfPriceRub > 0 && L.lang === 'ru') {
+    mailData[L.lang].bigfive = { name: L.content.bigfive.report.name, price: +cfg.bfPriceRub, sale: cfg.bfBuy === true && !!payEndpoint, page: urlOf(L.lang) + 'big-five/', home: urlOf(L.lang), mail: L.content.bigfive.report.mail }; }
   // файл с кодами доступа для покупателя (панель, страница партии → «Скачать коды файлом», с 2026-11-12): заголовки столбцов на языке партии и адрес,
   // где вводить код, — главная этого языка
   if (hasBusiness(L) && Array.isArray(L.content.business.csv)) mailData[L.lang].codes = { csv: L.content.business.csv, home: urlOf(L.lang) };
