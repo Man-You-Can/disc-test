@@ -290,6 +290,18 @@ const bizCss = `.bizbuy div{flex:none}.bizform{display:flex;flex-direction:colum
   `.bizteam input{flex:none;width:18px;height:18px;margin:3px 0 0;accent-color:var(--ink)}.biztotal{display:flex;align-items:baseline;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding-top:12px}.biztotal .xbig{font-family:var(--font-head);font-weight:500;font-size:28px;line-height:1.1;color:var(--ink)}` +
   `.bizform .actions .btn{width:100%}.bizform .paym{display:flex;flex-wrap:wrap;gap:6px;align-items:center}` +
   `@media (max-width:480px){.go-chips{margin-inline-start:0;flex-basis:100%}}`;
+// инструкция «Как участнику ввести код» на «Для организаций» (с 2026-11-16, по просьбе заказчика): шаги со снимками экрана сайта
+// src/assets/business/<язык>-<снимок>.webp (кладутся в docs/business/); снимки сняты с самого сайта в ширине телефона, кнопка шага выделена рамкой
+const bizGuideHTML = (L, bv) => { const G = L.content.business.guide, rel = relRoot(L, 'business/') + 'business/';
+  return `<h2 id="code">${escFull(G.title)}</h2><p>${escFull(G.lead).replace('{link}', `<a href="#code">${escFull(urlOf(L.lang).replace(/^https?:\/\//, ''))}business/#code</a>`)}</p><ol class="bizguide">` +
+    G.steps.map((x, i) => { const img = x.img && fs.existsSync(path.join(ASSETS, 'business', `${L.lang}-${x.img}.webp`));
+      return `<li><div class="bg-t"><h3>${escFull(x.t)}</h3><p>${escFull(x.p)}</p></div>` +
+        (img ? `<figure><img src="${rel}${L.lang}-${x.img}.webp" alt="${escFull(x.alt)}" loading="lazy" decoding="async"></figure>` : '') + `</li>`; }).join('') +
+    `</ol><p class="small muted">${escFull(G.note).replace('{report}', bv.report)}</p>`; };
+const guideCss = `.bizguide{list-style:none;counter-reset:bg;padding:0;margin:16px 0}.bizguide li{counter-increment:bg;display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:16px 24px;align-items:start;padding:18px 0;border-top:1px solid var(--line)}` +
+  `.bizguide li:first-child{border-top:0}.bizguide h3{margin:0 0 6px;font-family:var(--font-body);font-size:18px;font-weight:600;text-transform:none;letter-spacing:0;color:var(--ink)}.bizguide h3::before{content:counter(bg) ". "}.bizguide p{margin:0}` +
+  `.bizguide figure{margin:0}.bizguide img{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:12px;background:var(--surface)}.bizguide figcaption{font-size:12px;color:var(--muted);margin-top:4px;text-align:center}` +
+  `.bizguide li:not(:has(figure)){grid-template-columns:minmax(0,1fr)}@media (max-width:640px){.bizguide li{grid-template-columns:minmax(0,1fr)}.bizguide figure{max-width:320px}}`;
 const teamCss = `.teamstats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:0 0 14px}.teamstats div{border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:var(--surface)}` +
   `.teamstats dt{font-size:13px;color:var(--muted)}.teamstats dd{margin:4px 0 0;font-size:22px;font-family:var(--font-head)}#teamBox .btn{min-width:260px}`;
 // Подарочные сертификаты на расширенный отчёт (/gift/, с 2026-11-14, по просьбе заказчика): "giftBuy": true в site.config.json, payEndpoint, коды доступа
@@ -1343,7 +1355,7 @@ for (const L of locales) {
           `<h2>${escFull(B.forTitle)}</h2>` + listHtml('ul', B.for) +
           `<h2>${escFull(B.packsTitle)}</h2><p>${escFull(B.packsText)}</p>` + packs + `<p class="small muted">${escFull(B.packsNote)}</p>` +
           (hasBizBuy(L) ? `<h2 id="buy" class="kitbuyh">${escFull(B.buy.title)}</h2><p>${escFull(B.buy.lead)}</p>` + bizBuyHTML(L) : '') +
-          `<h2>${escFull(B.howTitle)}</h2>` + listHtml('ol', B.how) +
+          `<h2>${escFull(B.howTitle)}</h2>` + listHtml('ol', B.how) + (hasBizBuy(L) && B.guide ? bizGuideHTML(L, bv) : '') +
           `<h2>${escFull(B.privacyTitle)}</h2>` + B.privacy.map(x => `<p>${escFull(x)}</p>`).join('') +
           `<h2>${escFull(B.boundsTitle)}</h2><p>${escFull(B.bounds)}</p>` +
           `<h2>${escFull(B.teamTitle)}</h2><p>${escFull(B.team)}</p>` +
@@ -1352,7 +1364,7 @@ for (const L of locales) {
           `<h2 id="request">${escFull(F.title)}</h2><p>${escFull(F.lead)}</p>`) +
           businessHTML({ T: BT, esc: escFull, email: feedbackEmail, pdLabel: pdOn ? pdLabelHtml(L, '../') : '' }) +
           `<p class="seealso">${docLink('extended-report/', C.product)} · ${docLink('services/', sv)} · ${docLink('offer/', of)}</p>`,
-        files: ['src/business.js'].concat(hasBizBuy(L) ? ['src/biz-buy.js'] : []), css: hasBizBuy(L) ? bizCss : undefined,
+        files: ['src/business.js'].concat(hasBizBuy(L) ? ['src/biz-buy.js'].concat(fs.existsSync(path.join(ASSETS, 'business')) ? fs.readdirSync(path.join(ASSETS, 'business')).filter(f => f.startsWith(L.lang + '-')).map(f => 'src/assets/business/' + f) : []) : []), css: hasBizBuy(L) ? bizCss + guideCss : undefined,
         pageJs: businessJs + `initBusiness({T: ${JSON.stringify(BT).replace(/</g, '\\u003c')}, L: L, esc: esc, $: $, endpoint: ${jsStr(cfg.sendEndpoint)}, token: ${jsStr(cfg.sendToken)}, email: ${jsStr(feedbackEmail)}, pdVersion: ${jsStr(pdOn ? pdVersion : '')}});` +
           (hasBizBuy(L) ? bizBuyJs + `initBizBuy({T: ${JSON.stringify(bizBuyT(L)).replace(/</g, '\\u003c')}, L: L, esc: esc, $: $, endpoint: ${jsStr(payEndpoint)}, packs: ${JSON.stringify(businessPacks.map(p => ({ from: p.from, price: packPrice(L, p) })))}, retail: ${packRetail(L)}, min: ${businessPacks[0].from}, max: 1000, email: ${jsStr(feedbackEmail)}});` : '') });
       // страница команды для покупателя кодов (/business/team/#t=…, ссылка из письма с кодами): только числа и кнопка «Получить отчёт о команде»; в поиск не попадает
@@ -1844,6 +1856,9 @@ if (fs.existsSync(path.join(ASSETS, 'extended'))) { fs.mkdirSync(path.join(OUT, 
 // листы образца расширенного отчёта «Большая пятёрка» (с 2026-11-16): src/assets/bigfive/<язык>-<n>.webp и уменьшенные -s.webp → /bigfive/
 if (fs.existsSync(path.join(ASSETS, 'bigfive'))) { fs.mkdirSync(path.join(OUT, 'bigfive'), { recursive: true });
   for (const f of fs.readdirSync(path.join(ASSETS, 'bigfive'))) if (/^[a-z-]+-\d(-s)?\.webp$/.test(f)) fs.copyFileSync(path.join(ASSETS, 'bigfive', f), path.join(OUT, 'bigfive', f)); }
+// снимки инструкции «Как участнику ввести код» (страница «Для организаций», с 2026-11-16)
+if (fs.existsSync(path.join(ASSETS, 'business'))) { fs.mkdirSync(path.join(OUT, 'business'), { recursive: true });
+  for (const f of fs.readdirSync(path.join(ASSETS, 'business'))) if (/^[a-z-]+-code-\d-[a-z]+\.webp$/.test(f)) fs.copyFileSync(path.join(ASSETS, 'business', f), path.join(OUT, 'business', f)); }
 if (fs.existsSync(path.join(ASSETS, 'pair'))) { fs.mkdirSync(path.join(OUT, 'pair'), { recursive: true });
   // <язык>-mail.jpg — листы образца для письма подписчикам о «DISC на двоих» (JPEG: WebP показывают не все почтовые программы;
   // образцы письма — private/mailing-preview/pair-mail.py)
