@@ -257,11 +257,12 @@ const bizLower = (L, x) => L.lang === 'de' ? x : x.toLocaleLowerCase(L.dateLocal
 const hasBusiness = L => !!(L.content.business && L.ui['nav.business'] && hasProduct(L) && L.content.product.pay && packRetail(L) > 0 &&
   payCodeT(L, x => x) && feedbackEmail && cfg.sendEndpoint && businessPacks.length && packPrices(L).every(v => v > 0));
 // Покупка пакета кодов на сайте и отчёт о команде (с 2026-11-16, по просьбе заказчика: «автоматизируй, чтоб я не был задействован в заказе и оплате»):
-// "bizBuy": true в site.config.json и payEndpoint — на странице «Для организаций» форма покупки (src/biz-buy.js; Т-Банк, рубли), страница команды
-// /<язык>/business/team/ для покупателя, вопрос о согласии при вводе кода (content.product.pay.code.team). Тексты — content.business.buy, teamPage, mail,
-// teamMail (пока только русская версия). Тот же ключ кладёт в ядро сервера DATA[язык].codes.buy и codes.team: без них сервер заказы пакета не принимает
-// и вопроса о согласии не задаёт (private/server/src/team.js). Сначала выкладка сервера, потом сайт.
-const hasBizBuy = L => { const B = L.content.business; return !!(cfg.bizBuy === true && payEndpoint && B && B.buy && B.teamPage && B.mail && B.teamMail && hasBusiness(L) && (L.content.services && L.content.services.currency) === 'RUB'); };
+// "bizBuy": true в site.config.json и payEndpoint — на странице «Для организаций» форма покупки (src/biz-buy.js; русская версия — Т-Банк в рублях,
+// остальные — Prodamus в валюте языка, content.services.currency), страница команды /<язык>/business/team/ для покупателя, вопрос о согласии при вводе
+// кода (content.product.pay.code.team). Тексты — content.business.buy, teamPage, mail, teamMail (русская версия с 2026-11-16, польская — с того же дня):
+// язык без них — как раньше, заявка и ссылка из панели. Тот же ключ кладёт в ядро сервера DATA[язык].codes.buy и codes.team: без них сервер заказы
+// пакета не принимает и вопроса о согласии не задаёт (private/server/src/team.js). Сначала выкладка сервера, потом сайт.
+const hasBizBuy = L => { const B = L.content.business; return !!(cfg.bizBuy === true && payEndpoint && B && B.buy && B.teamPage && B.mail && B.teamMail && hasBusiness(L) && ['RUB', 'USD', 'EUR'].includes(L.content.services && L.content.services.currency)); };
 const bizNoteHtml = (L, X) => escFull(X).replace('{offer}', `<a href="../offer/">${escFull(L.content.offer.linkText)}</a>`);
 const bizBuyT = L => { const BT = L.content.business.buy;
   return Object.assign({}, BT, { errorHtml: escFull(BT.error).replace('{email}', `<a href="mailto:${escFull(feedbackEmail)}">${escFull(feedbackEmail)}</a>`) }); };
@@ -1368,7 +1369,7 @@ for (const L of locales) {
           `<p class="seealso">${docLink('extended-report/', C.product)} · ${docLink('services/', sv)} · ${docLink('offer/', of)}</p>`,
         files: ['src/business.js'].concat(hasBizBuy(L) ? ['src/biz-buy.js'].concat(fs.existsSync(path.join(ASSETS, 'business')) ? fs.readdirSync(path.join(ASSETS, 'business')).filter(f => f.startsWith(L.lang + '-')).map(f => 'src/assets/business/' + f) : []) : []), css: hasBizBuy(L) ? bizCss + guideCss : undefined,
         pageJs: businessJs + `initBusiness({T: ${JSON.stringify(BT).replace(/</g, '\\u003c')}, L: L, esc: esc, $: $, endpoint: ${jsStr(cfg.sendEndpoint)}, token: ${jsStr(cfg.sendToken)}, email: ${jsStr(feedbackEmail)}, pdVersion: ${jsStr(pdOn ? pdVersion : '')}});` +
-          (hasBizBuy(L) ? bizBuyJs + `initBizBuy({T: ${JSON.stringify(bizBuyT(L)).replace(/</g, '\\u003c')}, L: L, esc: esc, $: $, endpoint: ${jsStr(payEndpoint)}, packs: ${JSON.stringify(businessPacks.map(p => ({ from: p.from, price: packPrice(L, p) })))}, retail: ${packRetail(L)}, min: ${businessPacks[0].from}, max: 1000, email: ${jsStr(feedbackEmail)}});` : '') });
+          (hasBizBuy(L) ? bizBuyJs + `initBizBuy({T: ${JSON.stringify(bizBuyT(L)).replace(/</g, '\\u003c')}, L: L, esc: esc, $: $, endpoint: ${jsStr(payEndpoint)}, packs: ${JSON.stringify(businessPacks.map(p => ({ from: p.from, price: packPrice(L, p) })))}, retail: ${packRetail(L)}, min: ${businessPacks[0].from}, max: 1000, cur: ${jsStr(L.content.services.currency)}, email: ${jsStr(feedbackEmail)}});` : '') });
       // страница команды для покупателя кодов (/business/team/#t=…, ссылка из письма с кодами): только числа и кнопка «Получить отчёт о команде»; в поиск не попадает
       if (hasBizBuy(L)) { const TP = B.teamPage, mailA = `<a href="mailto:${escFull(feedbackEmail)}">${escFull(feedbackEmail)}</a>`;
         const TT = Object.assign({}, TP, { notFoundHtml: escFull(TP.notFound).replace('{email}', mailA), errorHtml: escFull(TP.error).replace('{email}', mailA) });
@@ -1941,7 +1942,7 @@ for (const L of locales) {
   // покупка пакета кодов на сайте и отчёт о команде (hasBizBuy, с 2026-11-16): цены пакетов в валюте языка, пределы, адреса страниц, письма с кодами и с отчётом;
   // team — версия текста вопроса о согласии (сервер задаёт вопрос только там, где он есть)
   if (hasBizBuy(L)) { const home = urlOf(L.lang), B = L.content.business, X = L.content.product.pay.code;
-    mailData[L.lang].codes.buy = { brand: B.mail.brand, payName: B.buy.payName, packs: businessPacks.map(p => ({ from: p.from, price: packPrice(L, p) })), currency: 'RUB', min: businessPacks[0].from, max: 1000,
+    mailData[L.lang].codes.buy = { brand: B.mail.brand, payName: B.buy.payName, packs: businessPacks.map(p => ({ from: p.from, price: packPrice(L, p) })), currency: L.content.services.currency, min: businessPacks[0].from, max: 1000,
       page: home + 'business/', teamPage: home + 'business/team/', home, group: L.content.group ? home + 'group/' : home, mail: B.mail, teamMail: B.teamMail };
     if (X && X.team) mailData[L.lang].codes.team = { v: X.team.v }; }
   // письмо с расширенным отчётом (платная услуга): тексты есть только в языках, где отчёт написан

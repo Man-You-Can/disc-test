@@ -6,7 +6,8 @@
    После оплаты банк возвращает покупателя сюда же с ?order=<номер>&pay=ok или &pay=fail; номер, ключ и e-mail заказа — в sessionStorage (disc.bizpay).
    Цели системы веб-аналитики: biz-buy (нажата «Купить»), biz-pay-start, biz-pay-error, biz-pay-done (вернулся после оплаты, с суммой), biz-pay-fail.
    На сервер уходят только данные заказа — ничего о посетителе.
-   c: {T (тексты content.business.buy; noteHtml, errorHtml, invoiceHtml — готовая разметка), endpoint, L, esc, $, packs: [{from, price}], retail, min, max, email} */
+   Валюта — c.cur (русская версия — RUB и Т-Банк; другие языки — валюта языка и Prodamus, с 2026-11-16 польская): не в рублях суммы с двумя знаками после запятой.
+   c: {T (тексты content.business.buy; noteHtml, errorHtml, invoiceHtml — готовая разметка), endpoint, L, esc, $, packs: [{from, price}], retail, min, max, cur, email} */
 function initBizBuy(c){
   var T = c.T, $ = c.$, esc = c.esc, form = $('#bizBuy'), box = $('#bizStatus');
   var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/, EMAIL_MAX = 64;
@@ -15,7 +16,8 @@ function initBizBuy(c){
   function ssSet(v){ try{ sessionStorage.setItem('disc.bizpay', JSON.stringify(v)); }catch(e){} }
   function fill(s, v){ return String(s).replace(/\{(\w+)\}/g, function(m, k){ return k in v ? v[k] : m; }); }
   function plural(n, f){ var k = 'many'; try{ k = new Intl.PluralRules(c.L.dateLocale).select(n); }catch(e){} return f[k] || f.many || f.other || ''; }
-  function money(n){ return fill(T.money, {n: n.toLocaleString(c.L.dateLocale).replace(/ /g, ' ')}); }
+  var cur = c.cur || 'RUB', dig = cur === 'RUB' ? {} : {minimumFractionDigits: 2, maximumFractionDigits: 2};
+  function money(n){ return fill(T.money, {n: n.toLocaleString(c.L.dateLocale, dig).replace(/ /g, ' ')}); }
   function say(kind, html){ if(!box) return; box.className = 'small sendstatus kitstatus' + (kind ? ' ' + kind : ''); box.innerHTML = html; box.hidden = false; }
   var packs = (c.packs || []).slice().sort(function(a, b){ return a.from - b.from; });
   function unit(n){ var u = 0; packs.forEach(function(p){ if(n >= p.from) u = p.price; }); return u; }
@@ -29,7 +31,7 @@ function initBizBuy(c){
     var rec = ssGet();
     if(!rec || rec.order !== m[1] || !rec.key) say('ok', esc(T.status.thanks));
     else {
-      if(!rec.done){ rec.done = true; ssSet(rec); track('biz-pay-done', {order_price: rec.total || 0, currency: 'RUB'}); }
+      if(!rec.done){ rec.done = true; ssSet(rec); track('biz-pay-done', {order_price: rec.total || 0, currency: cur}); }
       var TEXT = {'new': ['', T.status.wait], paid: ['ok', T.status.paid], sent: ['ok', T.status.sent], failed: ['err', T.status.failed]}, tries = 0;
       say('', esc(T.status.wait));
       (function ask(){
