@@ -101,3 +101,6 @@ h3.bf-fq{font-size:17px;margin:18px 0 6px}
 .bf-prow label{min-width:0}
 .bf-prow input{flex:none;width:84px;font-size:18px;padding:8px 10px;text-align:center}
 .bf-palt{margin-top:18px}
+
+/* блок покупки: колонка листов образца — по ширине трёх листов, подпись под ними не растягивает её (с 2026-11-16) */
+@media (min-width:641px){.bf-buy .xside{width:304px}}

@@ -213,12 +213,14 @@ const offerSections = L => { const of = L.content.offer; let secs = offerSection
   return secs; };
 const refundSections = L => { const rf = L.content.refund, add = [].concat(rf.pairSection && hasPair(L) ? [rf.pairSection] : [], rf.bfSection && hasBfBuy(L) ? [rf.bfSection] : []);
   return add.length ? rf.sections.slice(0, -1).concat(add, rf.sections.slice(-1)) : rf.sections; };
-// Расширенный отчёт «Большая пятёрка» (с 2026-11-16, решение заказчика; пока русская версия, Т-Банк): "bfBuy": true в site.config.json и тексты в локали —
+// Расширенный отчёт «Большая пятёрка» (с 2026-11-16, решение заказчика; русская версия — Т-Банк, с вечера 2026-11-16 английская — Prodamus в долларах):
+// "bfBuy": true в site.config.json и тексты в локали —
 // блок покупки под результатом теста (src/bigfive.js, форма — payForms из src/pay.js: цены и скидки те же, что у отчёта DISC), листы образца src/assets/bigfive/,
 // раздел оферты (offer.bfSection), условий возврата (refund.bfSection), абзац политики (policy.purchaseBf) и «Как готовятся отчёты» (howMade.bigfive);
-// тот же ключ включает приём заказов на сервере (DATA.ru.bigfive.sale). Ключи меняются только вместе — валидатор локалей.
+// тот же ключ включает приём заказов на сервере (DATA.<язык>.bigfive.sale). Ключи меняются только вместе — валидатор локалей. Язык получает покупку, когда в локали
+// есть все эти тексты и сам отчёт на языке (private/extended-report/bigfive/blocks-<язык>.json на сервере).
 const hasBfBuy = L => { const B = L.content.bigfive, R = B && B.report;
-  return !!(cfg.bfBuy === true && payEndpoint && L.lang === 'ru' && R && R.block && R.thanks && R.fail && L.content.product && L.content.product.pay && L.content.offer.bfSection); };
+  return !!(cfg.bfBuy === true && payEndpoint && R && R.block && R.thanks && R.fail && L.content.product && L.content.product.pay && L.content.offer.bfSection); };
 // offer.bizTerms — пункты 4.7, 4.8, 5.9 о покупке пакета кодов на сайте и отчёте о команде (с 2026-11-16): только там, где покупка пакета включена (hasBizBuy)
 const offerSectionsCode = L => { const of = L.content.offer; if (!of.codeTerms || !payCodeT(L, x => x)) return of.sections;
   const terms = of.codeTerms.concat(of.bizTerms && hasBizBuy(L) ? of.bizTerms : []);
@@ -1571,6 +1573,7 @@ for (const L of locales) {
       const buy = hasBfBuy(L) ? (() => { const HP = homePay(L), base = '../../' + pathOf(L.lang);
         const T = Object.assign({}, HP, { code: null, guarantee: '', payPage: '', noteHtml: HP.noteHtml.replace(/\{base\}/g, base), errorHtml: HP.errorHtml.replace(/\{base\}/g, base), nameHint: BR.block.nameHint || HP.nameHint });
         return { T, block: BR.block, thanks: BR.thanks, fail: BR.fail, endpoint: payEndpoint, L: { lang: L.lang, dateLocale: L.dateLocale }, price: withPrice(L, L.content.product.price),
+          currency: L.lang === 'ru' ? 'RUB' : (L.content.services && L.content.services.currency) || 'USD',
           sheets: bfSheets.map(i => [`../../bigfive/${L.lang}-${i}.webp`, `../../bigfive/${L.lang}-${i}-s.webp`]) }; })() : null;
       writeContentPage(L, 'big-five/', { navKey: bfNavKey(L, ''), langs: locales.filter(x => x.content.bigfive), ldType: 'WebApplication', title: B.title, description: B.description, crumbs: [{ name: B.h1 }],
         css: bigfiveCss, content, files: ['src/bigfive.js', 'src/bigfive.css'].concat(buy ? ['src/pay.js'].concat(bfSheets.map(i => `src/assets/bigfive/${L.lang}-${i}.webp`)) : []),
@@ -1934,7 +1937,7 @@ for (const L of locales) {
   // расширенный отчёт «Большая пятёрка» (с 2026-11-16, пока русская версия; Т-Банк): название для платёжной страницы и чека, адрес страницы теста (возврат с оплаты),
   // письмо покупателю. Цены — те же, что у расширенного отчёта DISC (решение заказчика от 2026-11-16; src/prices.js и amountFor в src/pay.js сервера).
   // sale — "bfBuy": true в site.config.json: без него сервер заказы не принимает
-  if (L.content.bigfive && L.content.bigfive.report && L.lang === 'ru') {
+  if (L.content.bigfive && L.content.bigfive.report) {
     mailData[L.lang].bigfive = { name: L.content.bigfive.report.name, sale: hasBfBuy(L), page: urlOf(L.lang) + 'big-five/', home: urlOf(L.lang), mail: L.content.bigfive.report.mail }; }
   // файл с кодами доступа для покупателя (панель, страница партии → «Скачать коды файлом», с 2026-11-12): заголовки столбцов на языке партии и адрес,
   // где вводить код, — главная этого языка

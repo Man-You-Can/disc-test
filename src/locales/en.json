@@ -474,6 +474,74 @@
       "foot": { "title": "Tests", "disc": "DISC test", "bigfive": "Big Five" }
     },
     "bigfive": {
+      "report": {
+        "name": "In-depth Big Five report",
+        "mail": {
+          "subject": "Your in-depth Big Five report",
+          "hello": "Hi {name},",
+          "intro": "Thanks for your purchase. Your personalized in-depth Big Five report is attached as a PDF. It covers your five traits and ten aspects, how they combine, work, relationships and stress, and it ends with a 30-day plan.",
+          "howTitle": "How to read it",
+          "how": [
+            "Start with “Your profile.” It sums you up in three lines.",
+            "Read the trait chapters in any order. The traits furthest from the middle are a good place to start.",
+            "The 30-day plan and “The essentials on one page” are worth printing out and keeping where you’ll see them."
+          ],
+          "question": "Questions? Reply to this email or write to {email}.",
+          "bye": "The disc-test.org team",
+          "order": "Order {order} ·"
+        },
+        "home": {
+          "label": "Your Big Five result from {date}",
+          "name": "Big Five",
+          "open": "Open result",
+          "title": "Your summary gives you five numbers. The in-depth report tells you what to do with them",
+          "hook": "Your most pronounced trait is {trait}, {pos}. The report gives it a chapter of its own: how it shows up at work, in relationships and under strain.",
+          "hookNone": "The report covers all five traits and ten aspects of your profile: how they show up at work, in relationships and under strain.",
+          "above": "higher than {n} out of 100",
+          "below": "lower than {n} out of 100",
+          "button": "Open result and report"
+        },
+        "block": {
+          "eyebrow": "In-depth report",
+          "title": "Your in-depth Big Five report",
+          "lead": "Above is your summary. The personalized report is about 28 pages, all about you: what your numbers mean at work and in relationships, which trait combinations stand out in your profile, what helps under stress and where to start over the next month.",
+          "listTitle": "What the report adds to your summary",
+          "list": [
+            "What your level means for each of the five traits and each of the ten aspects",
+            "How your traits show up at work and in relationships: strengths and pitfalls",
+            "The trait combinations that stand out most in your profile",
+            "Work and career: the setting that suits you, the tasks that fit and what wears you out",
+            "How other people tend to see you and what’s worth telling them about yourself",
+            "Early signs of overload and what helps you recover",
+            "A 30-day plan and the essentials on one page"
+          ],
+          "samplesTitle": "What the report looks like",
+          "sampleAlt": [
+            "Cover of the in-depth Big Five report with a name and the five traits",
+            "“Your profile” page: five traits and ten aspects on one chart",
+            "A trait chapter page: the two aspects, work and relationships",
+            "“How your traits combine” page with a tip",
+            "“30-day plan” page"
+          ],
+          "sampleNote": "Sample pages for a made-up participant. Your report is built from your own scores.",
+          "nameHint": "Your name will appear on the cover and on every page of the report."
+        },
+        "thanks": {
+          "title": "Payment received",
+          "text": "Your Big Five report is being put together and will arrive at {email} within a few minutes. If you don’t see it, check your spam folder.",
+          "textNoEmail": "Your Big Five report is being put together and will arrive within a few minutes at the email address you gave at checkout. If you don’t see it, check your spam folder.",
+          "order": "Order number: {order}",
+          "statusWait": "Waiting for the payment service to confirm your payment.",
+          "statusPaid": "Payment confirmed. Your report is being put together.",
+          "statusSent": "Your report has been sent. Check your inbox."
+        },
+        "fail": {
+          "title": "Payment didn’t go through",
+          "text": "You haven’t been charged. You can try again: open your result, and the purchase form is right below it.",
+          "button": "Open result",
+          "order": "Order number: {order}"
+        }
+      },
       "title": "Big Five Personality Test — Free, 100 Questions, No Sign-Up",
       "description": "Free Big Five personality test (BFAS): 100 statements, about 15 minutes, no sign-up. Your five traits and 10 aspects, explained and compared with others.",
       "eyebrow": "Personality test",
@@ -793,7 +861,7 @@
         },
         {
           "q": "Where are my answers stored?",
-          "a": "Only in your browser on this device. The result is calculated right on the page, and your answers aren’t sent to a server. If you clear the site’s data, they’re deleted."
+          "a": "Only in your browser on this device. The result is calculated right on the page, and your answers aren’t sent to a server. If you clear the site’s data, they’re deleted. If you buy the in-depth report, only your point totals for the ten aspects, the date and time you took the test, your email and the name for the report are sent to the server."
         },
         {
           "q": "How accurate is the result?",
@@ -1076,6 +1144,7 @@
       },
       "purchaseCode": "If you receive the in-depth profile with an access code bought by an organization or another person, we process the same data, except payment information, and record that the code has been used. We tell the person who bought the code only whether and when it was used. If the code was issued for a team report and you click “Get my report and share my result” when entering it, we share your name, DISC profile and percentages on the four scales with the organization that bought the code, as part of the team report. The basis for this is your consent. It is voluntary: you get the in-depth profile even without it. You can withdraw it at any time by writing to the site’s email address; withdrawal does not affect the lawfulness of any sharing that took place before it, and your result will not be included in later team reports. Without this consent, your result, report and email address are not passed on to the person who bought the code. The basis for the rest of the processing is the contract you enter into when you enter the code under the {offer}.",
       "purchaseBiz": "If you buy access codes on the “For organizations” page, we process your email address, the name of your organization (if you ordered a team report) and order details: the date, amount, number of codes, payment number and payment status. We need this data to send you the codes, the payment receipt and the team report, to answer your enquiries and to process a refund; it is kept in the same way as order details for the in-depth profile. Payments are processed by the same payment service provider as for the in-depth profile. The basis for processing is the contract you enter into when you pay for the codes under the {offer}.",
+      "purchaseBf": "If you buy the in-depth Big Five report, we process your email address, order details, the name you gave for the report, the point totals of the ten aspects and the date and time you took the test. Your answers to individual statements aren’t sent to the server. We delete the result code and the name 30 days after the report is sent, or after 7 days if the order isn’t paid; order details are kept in the same way as order details for the in-depth profile. The basis is the contract under the {offer}.",
       "purchasePair": "If you order the DISC for Two report, we process your email address, order details, the names and test results of both participants from the comparison link, your answer to “How you know each other” and, if you gave it, the other participant’s address for a copy of the report. The other participant consents to showing their result and to its use for the report by ticking a box on the site; by giving their address, you confirm that they agree to receive a copy. The report text is prepared with the help of AI from anonymized data only: profiles and scores without names, email addresses or result codes. We delete result codes and the other participant’s address 30 days after the report is sent, or after 7 days if the order is not paid; order details are kept in the same way as order details for the in-depth profile. The basis is the contract under the {offer} and the other participant’s consent.",
       "purchaseGift": "If you buy gift certificates, we process your email address, order details (the date, amount, payment number and payment status), the “From” line and, if you gave them, the recipients’ names and email addresses. We need your email address and order details to send you the certificates, to answer your enquiries and to process a refund; they are kept in the same way as order details for the in-depth profile. A recipient’s name is printed on their certificate, and one email with their certificate is sent to the recipient’s address. We delete recipients’ names and email addresses 30 days after the certificates are sent, or after 7 days if the order is not paid. By giving recipients’ details, you confirm that they agree to receive a certificate. The basis for processing is the contract under the {offer}, under which the recipients of the certificates are its beneficiaries. A recipient who enters a certificate code on the site receives the in-depth profile in the same way as with an access code: we tell the person who gave the certificate only whether and when it was used."
     },
@@ -2353,6 +2422,18 @@
       }
     },
     "offer": {
+      "bfSection": {
+        "h": "13. In-depth Big Five report",
+        "p": [
+          "13.1. On the terms of this offer, the Provider also provides the In-depth Big Five Report service (hereinafter, the Big Five Report): it prepares, in electronic form, a personalized report in PDF format based on the result of the Big Five test on the Site and sends it to the Customer. The provisions of this offer on the Service apply to the Big Five Report unless this section provides otherwise.",
+          "13.2. The Big Five Report is prepared from the result of the Big Five test taken on the Site or entered on the Site from a paper form: from the point totals of the ten aspects, the date and time the test was taken and the name the Customer gave when ordering.",
+          "13.3. The price of the Big Five Report is shown on the Site and on the payment page; the Provider may offer a special price and stop such an offer. The Big Five Report is paid for in full as set out in clauses 3.2–3.5.",
+          "13.4. The Big Five Report is generated by a program from texts prepared in advance and is sent to the Customer’s email address after payment, no later than 24 hours after payment. The Big Five Report is deemed provided at the moment the email is sent to the Customer.",
+          "13.5. The texts of the Big Five Report were prepared in advance with the help of an artificial intelligence system under the Provider’s rules and read by the editors. The Big Five Report describes personality traits based on the Customer’s answers to a questionnaire and is not a psychological opinion, a medical diagnosis or a basis for decisions on hiring, dismissal or pay.",
+          "13.6. Sections 5 and 6 apply to the Big Five Report.",
+          "13.7. To prepare the Big Five Report, the Provider processes the Customer’s email address, the name for the report, the point totals of the ten aspects and the date and time the test was taken; the answers to individual test statements are not passed to the Provider. The result code and the name are deleted 30 calendar days after the Big Five Report is sent, or after 7 days for an unpaid order."
+        ]
+      },
       "pairSection": {
         "h": "12. DISC for Two report",
         "p": [
@@ -2528,6 +2609,12 @@
       ]
     },
     "refund": {
+      "bfSection": {
+        "h": "In-depth Big Five report",
+        "p": [
+          "The Big Five report arrives by email shortly after payment, and the same rules apply to it as above. If the report hasn’t arrived within 24 hours of payment, or it has a defect we haven’t fixed within three business days (the file doesn’t open, the report has someone else’s name, or its content doesn’t match the description on the site), the payment is refunded in full. Disagreeing with how your traits are described isn’t a defect. Please give the order number in your request: it’s in the email with the report."
+        ]
+      },
       "pairSection": {
         "h": "DISC for Two report",
         "p": [
@@ -4311,6 +4398,12 @@
       }
     },
     "howMade": {
+      "bigfive": {
+        "h": "The in-depth Big Five report",
+        "p": [
+          "The in-depth Big Five report works like the in-depth DISC report: it’s assembled from prewritten texts. AI wrote them in advance under our editorial rules, for every level of the five traits and ten aspects, for trait combinations and for the practical sections, and our editors read them. A program picks the texts that match your scores and builds the PDF with your name, which is why the report arrives right after payment."
+        ]
+      },
       "pair": {
         "h": "The DISC for Two report",
         "p": [

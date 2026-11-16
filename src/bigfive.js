@@ -246,7 +246,7 @@ function initBigFive(o){
     var again = $('bfPayAgain'); if(again) again.onclick = function(){ el.parentNode.removeChild(el); result(lsGet('disc.bfLast')); var b = $('bfBuy'); if(b) try{ b.scrollIntoView({block: 'start'}); }catch(e){} };
     if(!mine) return;
     if(kind !== 'ok'){ if(!mine.fail){ mine.fail = true; lsSet('disc.bfpay', mine); track('bf-ext-fail'); } return; }
-    if(!mine.done){ mine.done = true; lsSet('disc.bfpay', mine); if(window.discTrack) window.discTrack('bf-ext-done', {order_price: mine.price || 0, currency: 'RUB'}); }
+    if(!mine.done){ mine.done = true; lsSet('disc.bfpay', mine); if(window.discTrack) window.discTrack('bf-ext-done', {order_price: mine.price || 0, currency: o.buy.currency || 'RUB'}); }
     if(!mine.key || !o.buy.endpoint) return;
     var st = el.querySelector('.sendstatus'), TEXT = {'new': X.statusWait, paid: X.statusPaid, sent: X.statusSent}, tries = 0;
     (function ask(){
