@@ -198,33 +198,53 @@ function payCodeInit(c, g, f, o){
     link.textContent = f.coding ? X.back : X.link; link.setAttribute('aria-expanded', String(f.coding));
     if(f.coding) (f.input.value.trim() ? inp : f.input).focus();
   });
-  f.redeem = function(){
+  // партия с отчётом о команде (с 2026-11-16): сервер отвечает error 'team' — карточка с вопросом о согласии, код уходит ещё раз с share: true или false
+  var teamBox = null;
+  function teamCard(org){
+    var TT = X.team; if(!TT) return false;
+    if(!teamBox){ teamBox = document.createElement('div'); teamBox.className = 'xteam'; box.insertBefore(teamBox, st); }
+    teamBox.innerHTML = '<p class="xteam-k">'+esc(TT.kicker)+'</p><p class="xteam-h">'+esc(org ? TT.title.replace('{org}', org) : TT.titleNoOrg)+'</p>'+
+      '<p>'+esc(TT.text)+'</p><ul>'+TT.list.map(function(x){ return '<li>'+esc(x)+'</li>'; }).join('')+'</ul><p class="xteam-not">'+esc(TT.not)+'</p>'+
+      '<button class="btn" type="button" data-share="1">'+esc(TT.share)+'</button><button class="link xteam-skip" type="button" data-share="0">'+esc(TT.skip)+'</button>'+
+      '<p class="xnote">'+TT.noteHtml+'</p>';
+    btn.hidden = true; inp.disabled = true; f.input.disabled = true;
+    [].forEach.call(teamBox.querySelectorAll('[data-share]'), function(b){ b.addEventListener('click', function(){ f.redeem(b.getAttribute('data-share') === '1'); }); });
+    try{ teamBox.scrollIntoView({block: 'nearest'}); }catch(e){}
+    return true;
+  }
+  f.redeem = function(share){
+    if(share !== true && share !== false) share = undefined;
     if(done || g.busy) return;
     var email = f.input.value.trim(), voucher = inp.value.trim();
     if(email.length > PAY_EMAIL_MAX || !PAY_EMAIL_RE.test(email)){ say('err', esc(X.badEmail)); f.input.focus(); return; }
     if(voucher.replace(/[^A-Za-z0-9]/g, '').length < 4){ say('err', esc(X.empty)); inp.focus(); return; }
     var code = f.code(); if(code === null) return;
     btn.disabled = true; btn.textContent = X.wait; st.hidden = true;
-    fetch(c.endpoint + '/code', {method:'POST', body: JSON.stringify({voucher:voucher, code:code, email:email, lang:c.L.lang, source:o.source})})
+    if(teamBox) [].forEach.call(teamBox.querySelectorAll('button'), function(b){ b.disabled = true; });
+    var body = {voucher:voucher, code:code, email:email, lang:c.L.lang, source:o.source}; if(share !== undefined) body.share = share;
+    fetch(c.endpoint + '/code', {method:'POST', body: JSON.stringify(body)})
       .then(function(res){ return res.text(); })
       .then(function(txt){ var j = null; try{ j = JSON.parse(txt); }catch(e){}
         if(!j) throw new Error('bad response');
+        if(!j.ok && j.error === 'team' && teamCard(String(j.org || ''))){ btn.disabled = false; btn.textContent = X.button; return; }
         if(!j.ok){ var e = new Error(String(j.error || 'bad response')); throw e; }
         done = true; inp.disabled = true; f.input.disabled = true; btn.hidden = true; link.hidden = true;
-        say('ok', esc(X.done.replace('{to}', email)));
+        if(teamBox){ teamBox.parentNode.removeChild(teamBox); teamBox = null; }
+        say('ok', esc(X.done.replace('{to}', email)) + (X.team && j.shared === true ? '<br>' + esc(X.team.doneShared) : X.team && j.shared === false ? '<br>' + X.team.doneSkipHtml : ''));
+        if(j.shared !== undefined) payTrack(j.shared ? 'team-share' : 'team-skip');
         try{ var p = c.lsGet('disc.pay') || {}; if(!p.done) c.lsSet('disc.pay', {code:true, email:email, t:Date.now(), done:true}); }catch(e){}
         if(window.discXbar) window.discXbar.sync();   // отчёт получен — закреплённая кнопка отчёта больше не нужна
         try{ var gg = c.lsGet && c.lsGet('disc.gift'); if(gg && String(gg.code).replace(/[^A-Za-z0-9]/g, '').toUpperCase() === voucher.replace(/[^A-Za-z0-9]/g, '').toUpperCase()){ c.lsSet('disc.gift', null); payTrack('gift-redeem'); } }catch(e){}
         payTrack('ext-code-done'); })
       .catch(function(err){ var m = err && err.message;
-        if(!done){ btn.disabled = false; btn.textContent = X.button; }
+        if(!done){ btn.disabled = false; btn.textContent = X.button; if(teamBox) [].forEach.call(teamBox.querySelectorAll('button'), function(b){ b.disabled = false; }); }
         if(m === 'no code') say('err', esc(X.bad));
         else if(m === 'used') say('err', X.usedHtml);
         else if(m === 'expired') say('err', esc(X.expired));
         else if(m === 'bad email'){ say('err', esc(X.badEmail)); f.input.focus(); }
         else say('err', X.errorHtml); });
   };
-  btn.addEventListener('click', f.redeem);
+  btn.addEventListener('click', function(){ f.redeem(); });
   // код подарочного сертификата (с 2026-11-14): получатель открыл ссылку или QR-код с сертификата (/ru/gift/#g=<код>, src/gift.js) — код запомнен в браузере;
   // форма сразу в режиме кода и с этим кодом, без фокуса (страница не прыгает к форме). После успешного ввода запись удаляется
   var gc = null; try{ gc = c.lsGet && c.lsGet('disc.gift'); }catch(e){}

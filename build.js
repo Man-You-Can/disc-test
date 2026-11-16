@@ -71,6 +71,7 @@ const contactJs = fs.readFileSync(path.join(SRC, 'contact.js'), 'utf8').replace(
 const businessHTML = require(path.join(SRC, 'business.js'));
 const businessJs = fs.readFileSync(path.join(SRC, 'business.js'), 'utf8').replace(/\nif \(typeof module[^\n]*\n?$/, '\n');
 const kitBuyJs = fs.readFileSync(path.join(SRC, 'kit-buy.js'), 'utf8');
+const bizBuyJs = fs.readFileSync(path.join(SRC, 'biz-buy.js'), 'utf8');
 const giftJs = fs.readFileSync(path.join(SRC, 'gift.js'), 'utf8'), giftCss = fs.readFileSync(path.join(SRC, 'gift.css'), 'utf8');
 const pairJs = fs.readFileSync(path.join(SRC, 'pair.js'), 'utf8'), pairCss = fs.readFileSync(path.join(SRC, 'pair.css'), 'utf8');
 const bigfiveJs = fs.readFileSync(path.join(SRC, 'bigfive.js'), 'utf8'), bigfiveCss = fs.readFileSync(path.join(SRC, 'bigfive.css'), 'utf8');   // тест «Большая пятёрка» (/big-five/)
@@ -184,7 +185,10 @@ const xbarCfg = L => { const PM = withPrice(L, L.content.product.promo), O = pay
 const accessCodes = () => !!(cfg.accessCodes && payEndpoint);   // функция: payEndpoint объявлен ниже
 const payCodeT = (L, fill) => { const P = L.content.product && L.content.product.pay, X = P && P.code; if (!accessCodes() || !X) return null;
   return Object.assign(Object.fromEntries(['link', 'label', 'placeholder', 'button', 'back', 'wait', 'badEmail', 'empty', 'done', 'bad', 'expired'].map(k => [k, X[k]])),
-    { noteHtml: fill(escFull(X.note)), usedHtml: fill(escFull(X.used)), errorHtml: fill(escFull(X.error)) }); };
+    { noteHtml: fill(escFull(X.note)), usedHtml: fill(escFull(X.used)), errorHtml: fill(escFull(X.error)) },
+    // вопрос о согласии для кода из партии с отчётом о команде (с 2026-11-16, src/pay.js — payCodeInit): только там, где есть его тексты (пока русская версия)
+    X.team && cfg.bizBuy === true && L.content.business && L.content.business.buy ? { team: Object.assign(Object.fromEntries(['kicker', 'title', 'titleNoOrg', 'text', 'list', 'not', 'share', 'skip', 'doneShared'].map(k => [k, X.team[k]])),
+      { noteHtml: fill(escFull(X.team.note)), doneSkipHtml: fill(escFull(X.team.doneSkip)) }) } : {}); };
 // Страница «Для организаций» (/business/, пункт в подвале): пакеты кодов — businessPacks в site.config.json ([{from, priceRub, priceUsd, priceEur, lang}]:
 // от скольких кодов и цена одного в рублях, долларах и евро; lang — {язык: цена} для языков со своей ценой отчёта, langPrices; с 2026-11-12 — все 13 языков),
 // срок кода — businessCodeMonths; заявка — форма на странице (src/business.js), уходит через форму обратной связи сервера.
@@ -204,11 +208,13 @@ const offerSections = L => { const of = L.content.offer, secs = offerSectionsCod
   const last = secs[secs.length - 1];
   return secs.slice(0, -1).concat([of.pairSection, Object.assign({}, last, { h: last.h.replace(/^(\d+)\./, (m, n) => (+n + 1) + '.') })]); };
 const refundSections = L => { const rf = L.content.refund; return rf.pairSection && hasPair(L) ? rf.sections.slice(0, -1).concat([rf.pairSection], rf.sections.slice(-1)) : rf.sections; };
+// offer.bizTerms — пункты 4.7, 4.8, 5.9 о покупке пакета кодов на сайте и отчёте о команде (с 2026-11-16): только там, где покупка пакета включена (hasBizBuy)
 const offerSectionsCode = L => { const of = L.content.offer; if (!of.codeTerms || !payCodeT(L, x => x)) return of.sections;
-  return of.sections.map((sec, i) => { const add = of.codeTerms.filter(x => x.section === i).map(x => x.text), k = sec.ul ? 'ul' : sec.ol ? 'ol' : 'p';
+  const terms = of.codeTerms.concat(of.bizTerms && hasBizBuy(L) ? of.bizTerms : []);
+  return of.sections.map((sec, i) => { const add = terms.filter(x => x.section === i).map(x => x.text), k = sec.ul ? 'ul' : sec.ol ? 'ol' : 'p';
     return add.length ? Object.assign({}, sec, { [k]: sec[k].concat(add) }) : sec; }); };
 // policy.purchaseGift — абзац о подарочных сертификатах (с 2026-11-14): только там, где они продаются (hasGift); ключ и текст меняются вместе
-const policyPurchase = L => { const po = L.content.policy, add = [].concat(po.purchaseCode && payCodeT(L, x => x) ? [po.purchaseCode] : [], po.purchaseGift && hasGift(L) ? [po.purchaseGift] : [], po.purchasePair && hasPair(L) ? [po.purchasePair] : []);
+const policyPurchase = L => { const po = L.content.policy, add = [].concat(po.purchaseCode && payCodeT(L, x => x) ? [po.purchaseCode] : [], po.purchaseBiz && hasBizBuy(L) ? [po.purchaseBiz] : [], po.purchaseGift && hasGift(L) ? [po.purchaseGift] : [], po.purchasePair && hasPair(L) ? [po.purchasePair] : []);
   return add.length ? Object.assign({}, po.purchase, { p: po.purchase.p.concat(add) }) : po.purchase; };
 // Набор ведущего (/kit/, с 2026-10-25; пока только русская версия): сценарий занятия, слайды, таблица группы, карта команды и карточки —
 // платные файлы в private/kit (вне репозитория), на странице — описание, картинки-образцы src/assets/kit/<язык>-*.jpg и заявка через форму
@@ -238,6 +244,42 @@ const bizSep = L => L.lang === 'fr' ? '\u00a0: ' : /^(zh|ja)/.test(L.lang) ? '�
 const bizLower = (L, x) => L.lang === 'de' ? x : x.toLocaleLowerCase(L.dateLocale);
 const hasBusiness = L => !!(L.content.business && L.ui['nav.business'] && hasProduct(L) && L.content.product.pay && packRetail(L) > 0 &&
   payCodeT(L, x => x) && feedbackEmail && cfg.sendEndpoint && businessPacks.length && packPrices(L).every(v => v > 0));
+// Покупка пакета кодов на сайте и отчёт о команде (с 2026-11-16, по просьбе заказчика: «автоматизируй, чтоб я не был задействован в заказе и оплате»):
+// "bizBuy": true в site.config.json и payEndpoint — на странице «Для организаций» форма покупки (src/biz-buy.js; Т-Банк, рубли), страница команды
+// /<язык>/business/team/ для покупателя, вопрос о согласии при вводе кода (content.product.pay.code.team). Тексты — content.business.buy, teamPage, mail,
+// teamMail (пока только русская версия). Тот же ключ кладёт в ядро сервера DATA[язык].codes.buy и codes.team: без них сервер заказы пакета не принимает
+// и вопроса о согласии не задаёт (private/server/src/team.js). Сначала выкладка сервера, потом сайт.
+const hasBizBuy = L => { const B = L.content.business; return !!(cfg.bizBuy === true && payEndpoint && B && B.buy && B.teamPage && B.mail && B.teamMail && hasBusiness(L) && (L.content.services && L.content.services.currency) === 'RUB'); };
+const bizNoteHtml = (L, X) => escFull(X).replace('{offer}', `<a href="../offer/">${escFull(L.content.offer.linkText)}</a>`);
+const bizBuyT = L => { const BT = L.content.business.buy;
+  return Object.assign({}, BT, { errorHtml: escFull(BT.error).replace('{email}', `<a href="mailto:${escFull(feedbackEmail)}">${escFull(feedbackEmail)}</a>`) }); };
+const bizBuyHTML = L => { const BT = L.content.business.buy, min = businessPacks[0].from;
+  return `<section class="service xbuy bizbuy"><form id="bizBuy" class="bizform" novalidate>` +
+    `<div class="field"><label for="bizQty">${escFull(BT.qtyLabel)}</label><div class="go-qty"><button type="button" class="go-pm" data-d="-1" aria-label="−1">−</button>` +
+    `<input type="number" id="bizQty" min="${min}" max="1000" step="1" value="${min}" inputmode="numeric"><button type="button" class="go-pm" data-d="1" aria-label="+1">+</button>` +
+    `<span class="go-chips">${[min, 25, 50, 100].filter((x, i, a) => a.indexOf(x) === i).map(x => `<button type="button" class="go-chip" data-n="${x}" aria-pressed="false">${x}</button>`).join('')}</span></div>` +
+    `<p class="hint">${escFull(BT.qtyHint.replace('{min}', min))}</p><p class="go-price" id="bizPrice" aria-live="polite"></p></div>` +
+    `<label class="check bizteam"><input type="checkbox" id="bizTeam" checked><span><b>${escFull(BT.teamLabel)}</b><br><span class="hint">${escFull(BT.teamHint)}</span></span></label>` +
+    `<div class="field" id="bizOrgRow"><label for="bizOrg">${escFull(BT.orgLabel)}</label><input type="text" id="bizOrg" class="ym-disable-keys" maxlength="80" autocomplete="organization"><p class="hint">${escFull(BT.orgHint)}</p></div>` +
+    `<div class="field"><label for="bizEmail">${escFull(BT.emailLabel)}</label><input type="email" id="bizEmail" class="ym-disable-keys" autocomplete="email" inputmode="email" maxlength="64" required><p class="hint">${escFull(BT.emailHint)}</p></div>` +
+    `<div class="biztotal"><span class="muted">${escFull(BT.total)}</span><span class="xbig" id="bizTotal"></span></div>` +
+    `<p class="small sendstatus err" id="bizErr" aria-live="polite" hidden></p>` +
+    `<div class="actions"><button class="btn" type="submit" id="bizPay">${escFull(BT.submit.replace('{total}', ''))}</button></div>` +
+    `<p class="xnote">${bizNoteHtml(L, BT.note)}</p>${payMethodsHtml(L)}` +
+    `<p class="small">${escFull(BT.invoice).replace('{request}', `<a href="#request">${escFull(BT.invoiceLink)}</a>`)}</p></form></section>`; };
+const bizCss = `.bizform{display:flex;flex-direction:column;gap:14px;flex:1 1 100%}.bizform .field{margin:0}.bizform .hint{margin:6px 0 0;font-size:13px;color:var(--muted)}` +
+  `.go-qty{display:flex;flex-wrap:wrap;align-items:center;gap:8px}` +
+  `.go-pm{width:42px;height:42px;border:1px solid var(--line-strong);border-radius:10px;background:var(--surface);color:var(--ink);font-size:20px;cursor:pointer}` +
+  `#bizQty{width:80px;height:42px;font:inherit;font-size:18px;text-align:center;border:1px solid var(--line-strong);border-radius:10px;background:var(--surface);color:var(--ink);-moz-appearance:textfield}` +
+  `#bizQty::-webkit-inner-spin-button,#bizQty::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}` +
+  `.go-chips{display:flex;gap:6px;margin-inline-start:8px}.go-chip{font:inherit;font-size:14px;border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:999px;padding:6px 12px;cursor:pointer}` +
+  `.go-chip[aria-pressed=true]{background:var(--ink);color:var(--surface);border-color:var(--ink)}.go-price{margin:10px 0 0;font-size:16px}.go-price .ok{color:var(--s);font-weight:600}.go-bad{border-color:var(--d)!important}` +
+  `.bizteam{display:flex;gap:10px;align-items:flex-start;border:1.5px solid var(--line);border-radius:12px;padding:12px 14px}.bizteam:has(input:checked){border-color:var(--ink)}` +
+  `.bizteam input{flex:none;width:18px;height:18px;margin:3px 0 0;accent-color:var(--ink)}.biztotal{display:flex;align-items:baseline;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding-top:12px}` +
+  `.bizform .actions .btn{width:100%}.bizform .paym{display:flex;flex-wrap:wrap;gap:6px;align-items:center}` +
+  `@media (max-width:480px){.go-chips{margin-inline-start:0;flex-basis:100%}}`;
+const teamCss = `.teamstats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:0 0 14px}.teamstats div{border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:var(--surface)}` +
+  `.teamstats dt{font-size:13px;color:var(--muted)}.teamstats dd{margin:4px 0 0;font-size:22px;font-family:var(--font-head)}#teamBox .btn{min-width:260px}`;
 // Подарочные сертификаты на расширенный отчёт (/gift/, с 2026-11-14, по просьбе заказчика): "giftBuy": true в site.config.json, payEndpoint, коды доступа
 // и content.gift. С 2026-11-14 — все языки с покупкой (сначала русская, тем же днём остальные — решения заказчика): русская версия платит Т-Банку, остальные —
 // Prodamus (сервер — private/server/src/gift.js). Цена одного сертификата — обычная цена отчёта языка (меняется в панели); от giftOffFrom штук — скидка
@@ -1279,9 +1321,10 @@ for (const L of locales) {
       writeContentPage(L, 'business/', { navKey: 'nav.services', langs: locales.filter(hasBusiness), title: plainB(B.title), description: plainB(B.description), crumbs: [svcCrumb, { name: t('nav.business') }],
         content: fillB(`<div class="eyebrow">${escFull(t('nav.services'))}</div><h1>${escFull(B.h1)}</h1><p class="lead">${escFull(B.lead)}</p>` +
           `<ul class="xfacts">${B.facts.map(x => `<li>${escFull(x)}</li>`).join('')}</ul>` +
-          `<p><a class="btn" href="#request">${escFull(F.button)}</a></p>` +
+          (hasBizBuy(L) ? `<p class="small sendstatus kitstatus" id="bizStatus" aria-live="polite" hidden></p><p><a class="btn" href="#buy" data-goal="biz-cta">${escFull(B.buy.button)}</a></p>` : `<p><a class="btn" href="#request">${escFull(F.button)}</a></p>`) +
           `<h2>${escFull(B.forTitle)}</h2>` + listHtml('ul', B.for) +
           `<h2>${escFull(B.packsTitle)}</h2><p>${escFull(B.packsText)}</p>` + packs + `<p class="small muted">${escFull(B.packsNote)}</p>` +
+          (hasBizBuy(L) ? `<h2 id="buy" class="kitbuyh">${escFull(B.buy.title)}</h2><p>${escFull(B.buy.lead)}</p>` + bizBuyHTML(L) : '') +
           `<h2>${escFull(B.howTitle)}</h2>` + listHtml('ol', B.how) +
           `<h2>${escFull(B.privacyTitle)}</h2>` + B.privacy.map(x => `<p>${escFull(x)}</p>`).join('') +
           `<h2>${escFull(B.boundsTitle)}</h2><p>${escFull(B.bounds)}</p>` +
@@ -1291,8 +1334,20 @@ for (const L of locales) {
           `<h2 id="request">${escFull(F.title)}</h2><p>${escFull(F.lead)}</p>`) +
           businessHTML({ T: BT, esc: escFull, email: feedbackEmail, pdLabel: pdOn ? pdLabelHtml(L, '../') : '' }) +
           `<p class="seealso">${docLink('extended-report/', C.product)} · ${docLink('services/', sv)} · ${docLink('offer/', of)}</p>`,
-        files: ['src/business.js'],
-        pageJs: businessJs + `initBusiness({T: ${JSON.stringify(BT).replace(/</g, '\\u003c')}, L: L, esc: esc, $: $, endpoint: ${jsStr(cfg.sendEndpoint)}, token: ${jsStr(cfg.sendToken)}, email: ${jsStr(feedbackEmail)}, pdVersion: ${jsStr(pdOn ? pdVersion : '')}});` });
+        files: ['src/business.js'].concat(hasBizBuy(L) ? ['src/biz-buy.js'] : []), css: hasBizBuy(L) ? bizCss : undefined,
+        pageJs: businessJs + `initBusiness({T: ${JSON.stringify(BT).replace(/</g, '\\u003c')}, L: L, esc: esc, $: $, endpoint: ${jsStr(cfg.sendEndpoint)}, token: ${jsStr(cfg.sendToken)}, email: ${jsStr(feedbackEmail)}, pdVersion: ${jsStr(pdOn ? pdVersion : '')}});` +
+          (hasBizBuy(L) ? bizBuyJs + `initBizBuy({T: ${JSON.stringify(bizBuyT(L)).replace(/</g, '\\u003c')}, L: L, esc: esc, $: $, endpoint: ${jsStr(payEndpoint)}, packs: ${JSON.stringify(businessPacks.map(p => ({ from: p.from, price: packPrice(L, p) })))}, retail: ${packRetail(L)}, min: ${businessPacks[0].from}, max: 1000, email: ${jsStr(feedbackEmail)}});` : '') });
+      // страница команды для покупателя кодов (/business/team/#t=…, ссылка из письма с кодами): только числа и кнопка «Получить отчёт о команде»; в поиск не попадает
+      if (hasBizBuy(L)) { const TP = B.teamPage, mailA = `<a href="mailto:${escFull(feedbackEmail)}">${escFull(feedbackEmail)}</a>`;
+        const TT = Object.assign({}, TP, { notFoundHtml: escFull(TP.notFound).replace('{email}', mailA), errorHtml: escFull(TP.error).replace('{email}', mailA) });
+        writeContentPage(L, 'business/team/', { noindex: true, noDate: true, navKey: 'nav.services', langs: [L], title: TP.title, description: TP.description,
+          crumbs: [Object.assign({}, svcCrumb, { href: '../../services/' }), { name: t('nav.business'), href: '../', sub: 'business/' }, { name: TP.h1 }], css: teamCss,
+          content: `<div class="eyebrow">${escFull(t('nav.business'))}</div><h1>${escFull(TP.h1)}</h1><p class="lead">${escFull(TP.lead.replace('{days}', '3'))}</p>` +
+            `<div id="teamBox" aria-live="polite"></div>` + `<h2>${escFull(TP.howTitle)}</h2>` +
+            `<ol>${TP.how.map(x => `<li>${escFull(x).replace('{group}', C.group ? `<a href="../../group/">${escFull(TP.groupLink)}</a>` : escFull(TP.groupLink))}</li>`).join('')}</ol>` +
+            `<p class="seealso"><a href="../">${escFull(C.business.h1)} ${arrow(L)}</a></p>`,
+          files: ['src/biz-buy.js'],
+          pageJs: bizBuyJs + `initTeamPage({T: ${JSON.stringify(TT).replace(/</g, '\\u003c')}, L: L, esc: esc, $: $, endpoint: ${jsStr(payEndpoint)}});` }); }
     }
     // /kit/ — набор ведущего: что внутри (с картинками-образцами), кому подойдёт, план занятия, цена и заявка (src/business.js, цель kit-request)
     if (hasKit(L)) {
@@ -1838,6 +1893,12 @@ for (const L of locales) {
   // файл с кодами доступа для покупателя (панель, страница партии → «Скачать коды файлом», с 2026-11-12): заголовки столбцов на языке партии и адрес,
   // где вводить код, — главная этого языка
   if (hasBusiness(L) && Array.isArray(L.content.business.csv)) mailData[L.lang].codes = { csv: L.content.business.csv, home: urlOf(L.lang) };
+  // покупка пакета кодов на сайте и отчёт о команде (hasBizBuy, с 2026-11-16): цены пакетов в валюте языка, пределы, адреса страниц, письма с кодами и с отчётом;
+  // team — версия текста вопроса о согласии (сервер задаёт вопрос только там, где он есть)
+  if (hasBizBuy(L)) { const home = urlOf(L.lang), B = L.content.business, X = L.content.product.pay.code;
+    mailData[L.lang].codes.buy = { brand: B.mail.brand, payName: B.buy.payName, packs: businessPacks.map(p => ({ from: p.from, price: packPrice(L, p) })), currency: 'RUB', min: businessPacks[0].from, max: 1000,
+      page: home + 'business/', teamPage: home + 'business/team/', home, group: L.content.group ? home + 'group/' : home, mail: B.mail, teamMail: B.teamMail };
+    if (X && X.team) mailData[L.lang].codes.team = { v: X.team.v }; }
   // письмо с расширенным отчётом (платная услуга): тексты есть только в языках, где отчёт написан
   if (L.content.extendedMail) mailData[L.lang].extended = L.content.extendedMail;
   // оплата расширенного отчёта на своём сервере: название услуги для платёжной страницы и чека, письмо-напоминание о неоконченной оплате, валюта заказа (USD или EUR через Prodamus)
