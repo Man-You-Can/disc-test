@@ -199,16 +199,28 @@ const businessMonths = Number(cfg.businessCodeMonths) || 12;
 // Пункты оферты и абзац политики о кодах доступа (offer.codeTerms: [{section, text}] — пункт в конец раздела; policy.purchaseCode — абзац в конец
 // раздела о покупке): решение заказчика от 2026-10-22 — коды только в русской версии, поэтому эти тексты в отдельных ключах, а не в общих списках,
 // и появляются только там, где коды включены. Когда коды придут в другой язык, его перевод получает те же ключи.
-const offerSections = L => { const of = L.content.offer, secs = offerSectionsCode(L);
-  if (!(of.pairSection && hasPair(L))) return secs;
-  const last = secs[secs.length - 1];
-  return secs.slice(0, -1).concat([of.pairSection, Object.assign({}, last, { h: last.h.replace(/^(\d+)\./, (m, n) => (+n + 1) + '.') })]); };
-const refundSections = L => { const rf = L.content.refund; return rf.pairSection && hasPair(L) ? rf.sections.slice(0, -1).concat([rf.pairSection], rf.sections.slice(-1)) : rf.sections; };
+const offerSections = L => { const of = L.content.offer; let secs = offerSectionsCode(L);
+  // раздел перед реквизитами: номер раздела и его пунктов — по месту (реквизиты сдвигаются на один)
+  const before = (sec, secs) => { const last = secs[secs.length - 1], n = +(/^(\d+)\./.exec(last.h) || [])[1], num = t => String(t).replace(/^\d+\./, n + '.');
+    return secs.slice(0, -1).concat([Object.assign({}, sec, { h: num(sec.h) }, sec.p ? { p: sec.p.map(num) } : {}), Object.assign({}, last, { h: last.h.replace(/^(\d+)\./, (m, k) => (+k + 1) + '.') })]); };
+  if (of.pairSection && hasPair(L)) secs = before(of.pairSection, secs);
+  // расширенный отчёт «Большая пятёрка» (с 2026-11-16; offer.bfSection — только там, где он продаётся, hasBfBuy)
+  if (of.bfSection && hasBfBuy(L)) secs = before(of.bfSection, secs);
+  return secs; };
+const refundSections = L => { const rf = L.content.refund, add = [].concat(rf.pairSection && hasPair(L) ? [rf.pairSection] : [], rf.bfSection && hasBfBuy(L) ? [rf.bfSection] : []);
+  return add.length ? rf.sections.slice(0, -1).concat(add, rf.sections.slice(-1)) : rf.sections; };
+// Расширенный отчёт «Большая пятёрка» (с 2026-11-16, решение заказчика; пока русская версия, Т-Банк): "bfBuy": true в site.config.json и тексты в локали —
+// блок покупки под результатом теста (src/bigfive.js, форма — payForms из src/pay.js: цены и скидки те же, что у отчёта DISC), листы образца src/assets/bigfive/,
+// раздел оферты (offer.bfSection), условий возврата (refund.bfSection), абзац политики (policy.purchaseBf) и «Как готовятся отчёты» (howMade.bigfive);
+// тот же ключ включает приём заказов на сервере (DATA.ru.bigfive.sale). Ключи меняются только вместе — валидатор локалей.
+const hasBfBuy = L => { const B = L.content.bigfive, R = B && B.report;
+  return !!(cfg.bfBuy === true && payEndpoint && L.lang === 'ru' && R && R.block && R.thanks && R.fail && L.content.product && L.content.product.pay && L.content.offer.bfSection); };
 const offerSectionsCode = L => { const of = L.content.offer; if (!of.codeTerms || !payCodeT(L, x => x)) return of.sections;
   return of.sections.map((sec, i) => { const add = of.codeTerms.filter(x => x.section === i).map(x => x.text), k = sec.ul ? 'ul' : sec.ol ? 'ol' : 'p';
     return add.length ? Object.assign({}, sec, { [k]: sec[k].concat(add) }) : sec; }); };
 // policy.purchaseGift — абзац о подарочных сертификатах (с 2026-11-14): только там, где они продаются (hasGift); ключ и текст меняются вместе
-const policyPurchase = L => { const po = L.content.policy, add = [].concat(po.purchaseCode && payCodeT(L, x => x) ? [po.purchaseCode] : [], po.purchaseGift && hasGift(L) ? [po.purchaseGift] : [], po.purchasePair && hasPair(L) ? [po.purchasePair] : []);
+const policyPurchase = L => { const po = L.content.policy, add = [].concat(po.purchaseCode && payCodeT(L, x => x) ? [po.purchaseCode] : [], po.purchaseGift && hasGift(L) ? [po.purchaseGift] : [], po.purchasePair && hasPair(L) ? [po.purchasePair] : [],
+    po.purchaseBf && hasBfBuy(L) ? [po.purchaseBf] : []);
   return add.length ? Object.assign({}, po.purchase, { p: po.purchase.p.concat(add) }) : po.purchase; };
 // Набор ведущего (/kit/, с 2026-10-25; пока только русская версия): сценарий занятия, слайды, таблица группы, карта команды и карточки —
 // платные файлы в private/kit (вне репозитория), на странице — описание, картинки-образцы src/assets/kit/<язык>-*.jpg и заявка через форму
@@ -843,7 +855,7 @@ for (const L of locales) {
     writeContentPage(L, HOWMADE_SUB, { navKey: 'nav.howMade', langs: locales.filter(hasHowMade), title: hm.title, description: hm.description, crumbs: [{ name: t('nav.howMade') }],
       content: fillLinks(`<div class="eyebrow">DISC</div><h1>${escFull(hm.h1)}</h1><p class="lead">${escFull(hm.lead)}</p>` +
         `<ul class="xfacts">${hm.facts.map(x => `<li>${escFull(x)}</li>`).join('')}</ul>` +
-        `<h2>${escFull(hm.stepsTitle)}</h2><ol>${hm.steps.map(x => `<li>${rich(x)}</li>`).join('')}</ol>` + sectionsHtml(hm.sections) + (hm.pair && hasPair(L) ? sectionsHtml([hm.pair]) : '') +
+        `<h2>${escFull(hm.stepsTitle)}</h2><ol>${hm.steps.map(x => `<li>${rich(x)}</li>`).join('')}</ol>` + sectionsHtml(hm.sections) + (hm.pair && hasPair(L) ? sectionsHtml([hm.pair]) : '') + (hm.bigfive && hasBfBuy(L) ? sectionsHtml([hm.bigfive]) : '') +
         `<h2>${escFull(hm.benefitsTitle)}</h2><div class="hmgrid">${hm.benefits.map(b => `<div><h3>${escFull(b.h)}</h3><p>${escFull(b.p)}</p></div>`).join('')}</div>` +
         `<h2>${escFull(hm.limitsTitle)}</h2><ul>${hm.limits.map(x => `<li>${rich(x)}</li>`).join('')}</ul>` +
         `<h2>${escFull(hm.faqTitle)}</h2>` + hm.faq.map(it => `<h3 class="xq">${escFull(it.q)}</h3><p>${escFull(it.a)}</p>`).join('')) + ctaBlock(L, t, '../') +
@@ -1478,10 +1490,17 @@ for (const L of locales) {
       const BT = { start: B.start, resume: B.resume, restart: B.restart, showLast: B.showLast, step: B.step, count: B.count, hint: B.hint, scale: B.scale,
         next: B.next, back: B.back, finish: B.finish, needAll: B.needAll, items: B.items, result: B.result, traits: B.traits, aspects: B.aspects,
         paper: B.paper && B.paper.entry && fs.existsSync(path.join(ASSETS, 'pdf', `big-five-test-${L.lang}.pdf`)) ? B.paper.entry : undefined };   // ввод сумм с бланка (#paper, с 2026-11-16)
+      // покупка расширенного отчёта под результатом (hasBfBuy): тексты формы — те же, что у отчёта DISC (homePay), имя — своя подсказка; листы образца — /bigfive/
+      const BR = B.report, bfSheets = hasBfBuy(L) ? [1, 2, 3, 4, 5].filter(i => fs.existsSync(path.join(ASSETS, 'bigfive', `${L.lang}-${i}.webp`))) : [];
+      const buy = hasBfBuy(L) ? (() => { const HP = homePay(L), base = '../../' + pathOf(L.lang);
+        const T = Object.assign({}, HP, { code: null, guarantee: '', payPage: '', noteHtml: HP.noteHtml.replace(/\{base\}/g, base), errorHtml: HP.errorHtml.replace(/\{base\}/g, base), nameHint: BR.block.nameHint || HP.nameHint });
+        return { T, block: BR.block, thanks: BR.thanks, fail: BR.fail, endpoint: payEndpoint, L: { lang: L.lang, dateLocale: L.dateLocale }, price: withPrice(L, L.content.product.price),
+          sheets: bfSheets.map(i => [`../../bigfive/${L.lang}-${i}.webp`, `../../bigfive/${L.lang}-${i}-s.webp`]) }; })() : null;
       writeContentPage(L, 'big-five/', { navKey: bfNavKey(L, ''), langs: locales.filter(x => x.content.bigfive), ldType: 'WebApplication', title: B.title, description: B.description, crumbs: [{ name: B.h1 }],
-        css: bigfiveCss, content, files: ['src/bigfive.js', 'src/bigfive.css'],
+        css: bigfiveCss, content, files: ['src/bigfive.js', 'src/bigfive.css'].concat(buy ? ['src/pay.js'].concat(bfSheets.map(i => `src/assets/bigfive/${L.lang}-${i}.webp`)) : []),
         ldExtra: [{ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: B.faq.map(it => ({ '@type': 'Question', name: it.q, acceptedAnswer: { '@type': 'Answer', text: it.a } })) }],
-        pageJs: bigfiveJs + `\ninitBigFive({T: ${JSON.stringify(BT).replace(/</g, '\\u003c')}, loc: ${jsStr(L.dateLocale)}, home: '../', more: ${JSON.stringify(more)}, moreText: ${jsStr(AU.traitMore || '')}, esc: esc, $: $, lsGet: lsGet, lsSet: lsSet});` });
+        pageJs: (buy ? payJs + '\n' : '') + bigfiveJs + `\ninitBigFive({T: ${JSON.stringify(BT).replace(/</g, '\\u003c')}, loc: ${jsStr(L.dateLocale)}, home: '../', more: ${JSON.stringify(more)}, moreText: ${jsStr(AU.traitMore || '')}, ` +
+          `buy: ${buy ? JSON.stringify(buy).replace(/</g, '\\u003c') : 'null'}, esc: esc, $: $, lsGet: lsGet, lsSet: lsSet});` });
       // страницы статей: заголовок, вводный абзац, разделы, призыв к тесту после второго раздела и в конце, вопросы (FAQPage), источники, «Читайте также»
       for (const x of A) {
         const cta = g => `<aside class="bf-cta"><p class="bf-ctat">${escFull(AU.ctaTitle)}</p><p>${escFull(AU.ctaText)}</p><a class="btn" href="../" data-goal="${g}">${escFull(AU.ctaButton)}</a></aside>`;
@@ -1761,6 +1780,9 @@ if (fs.existsSync(path.join(ASSETS, 'extended'))) { fs.mkdirSync(path.join(OUT, 
   for (const f of fs.readdirSync(path.join(ASSETS, 'extended'))) if (f.endsWith('.webp') || /^[a-z-]+-mail\.jpg$/.test(f)) fs.copyFileSync(path.join(ASSETS, 'extended', f), path.join(OUT, 'extended', f)); }
 // образцы подарочного сертификата (страница /gift/, с 2026-11-14): собирает private/server/test/gift-sample.js тем же кодом, что сервер
 // листы образца отчёта «DISC на двоих» (страница /<язык>/pair/): общая папка /pair/ в корне сайта
+// листы образца расширенного отчёта «Большая пятёрка» (с 2026-11-16): src/assets/bigfive/<язык>-<n>.webp и уменьшенные -s.webp → /bigfive/
+if (fs.existsSync(path.join(ASSETS, 'bigfive'))) { fs.mkdirSync(path.join(OUT, 'bigfive'), { recursive: true });
+  for (const f of fs.readdirSync(path.join(ASSETS, 'bigfive'))) if (/^[a-z-]+-\d(-s)?\.webp$/.test(f)) fs.copyFileSync(path.join(ASSETS, 'bigfive', f), path.join(OUT, 'bigfive', f)); }
 if (fs.existsSync(path.join(ASSETS, 'pair'))) { fs.mkdirSync(path.join(OUT, 'pair'), { recursive: true });
   // <язык>-mail.jpg — листы образца для письма подписчикам о «DISC на двоих» (JPEG: WebP показывают не все почтовые программы;
   // образцы письма — private/mailing-preview/pair-mail.py)
@@ -1830,11 +1852,11 @@ for (const L of locales) {
       // письмо подписчикам о «DISC на двоих» (content.mailing.pair, с 2026-11-14): тексты, запись цены языка, есть ли картинка листов (src/assets/pair/<язык>-mail.jpg → /pair/<язык>-mail.jpg)
       news: L.content.mailing && L.content.mailing.pair, priceTpl: L.content.services.price || '{price}', plain: !!(L.content.mailing && L.content.mailing.sale && L.content.mailing.sale.plain),
       image: fs.existsSync(path.join(ASSETS, 'pair', L.lang + '-mail.jpg')) }; }
-  // расширенный отчёт «Большая пятёрка» (с 2026-11-16, пока русская версия; Т-Банк): название для платёжной страницы и чека, цена по умолчанию (bfPriceRub;
-  // текущую задаёт заказчик в панели — src/prices.js сервера), адрес страницы теста (возврат с оплаты), письмо покупателю. sale — "bfBuy": true в site.config.json:
-  // без него сервер заказы не принимает (покупка на сайте и документы — отдельным шагом)
-  if (L.content.bigfive && L.content.bigfive.report && +cfg.bfPriceRub > 0 && L.lang === 'ru') {
-    mailData[L.lang].bigfive = { name: L.content.bigfive.report.name, price: +cfg.bfPriceRub, sale: cfg.bfBuy === true && !!payEndpoint, page: urlOf(L.lang) + 'big-five/', home: urlOf(L.lang), mail: L.content.bigfive.report.mail }; }
+  // расширенный отчёт «Большая пятёрка» (с 2026-11-16, пока русская версия; Т-Банк): название для платёжной страницы и чека, адрес страницы теста (возврат с оплаты),
+  // письмо покупателю. Цены — те же, что у расширенного отчёта DISC (решение заказчика от 2026-11-16; src/prices.js и amountFor в src/pay.js сервера).
+  // sale — "bfBuy": true в site.config.json: без него сервер заказы не принимает
+  if (L.content.bigfive && L.content.bigfive.report && L.lang === 'ru') {
+    mailData[L.lang].bigfive = { name: L.content.bigfive.report.name, sale: hasBfBuy(L), page: urlOf(L.lang) + 'big-five/', home: urlOf(L.lang), mail: L.content.bigfive.report.mail }; }
   // файл с кодами доступа для покупателя (панель, страница партии → «Скачать коды файлом», с 2026-11-12): заголовки столбцов на языке партии и адрес,
   // где вводить код, — главная этого языка
   if (hasBusiness(L) && Array.isArray(L.content.business.csv)) mailData[L.lang].codes = { csv: L.content.business.csv, home: urlOf(L.lang) };
