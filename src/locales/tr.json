@@ -1074,7 +1074,8 @@
           "Atölye Kiti’ni satın alırsanız e-posta adresinizi ve sipariş bilgilerini (tarih, tutar, ödeme numarası ve ödeme durumu) işleriz. Bu veriler size kit dosyalarının bağlantılarını içeren e-postayı göndermek, başvurunuzu yanıtlamak ve iade işlemini yapmak için gereklidir; hukuki dayanak, {offer} uyarınca kurulan sözleşmedir. Kit siparişinin bilgileri, genişletilmiş profil siparişinin bilgileriyle aynı şekilde saklanır; tamamlanmamış kit ödemeleri için hatırlatma e-postası gönderilmez."
         ]
       },
-      "purchaseCode": "Genişletilmiş profili bir kurumun ya da başka bir kişinin satın aldığı bir erişim koduyla alıyorsanız ödeme bilgileri dışında aynı verileri işler ve kodun kullanıldığını kaydederiz. Kodu satın alan kişiye yalnızca kodun kullanılıp kullanılmadığını ve ne zaman kullanıldığını bildiririz: sonucunuz, raporunuz ve e-posta adresiniz ona iletilmez. Hukuki dayanak, kodu {offer} uyarınca girerek kurduğunuz sözleşmedir.",
+      "purchaseCode": "Genişletilmiş profili bir kurumun ya da başka bir kişinin satın aldığı bir erişim koduyla alıyorsanız ödeme bilgileri dışında aynı verileri işler ve kodun kullanıldığını kaydederiz. Kodu satın alan kişiye yalnızca kodun kullanılıp kullanılmadığını ve ne zaman kullanıldığını bildiririz. Kod ekip raporu için verildiyse ve kodu girerken “Raporu al ve sonucumu paylaş” düğmesine bastıysanız, kodu satın alan kuruma ekip raporunun bir parçası olarak adınızı, DISC profilinizi ve dört ölçekteki yüzdelerinizi iletiriz. Bu aktarımın hukuki dayanağı onayınızdır. Onay isteğe bağlıdır: genişletilmiş profili onay vermeden de alırsınız. Onayınızı dilediğiniz zaman sitenin e-posta adresine yazarak geri alabilirsiniz; geri almanız daha önce yapılmış aktarımın hukuka uygunluğunu etkilemez ve sonucunuz sonraki ekip raporlarına girmez. Böyle bir onay olmadan sonucunuz, raporunuz ve e-posta adresiniz kodu satın alan kişiye iletilmez. Diğer işlemlerin hukuki dayanağı, kodu {offer} uyarınca girerek kurduğunuz sözleşmedir.",
+      "purchaseBiz": "“Kurumlar için” sayfasında erişim kodu satın alırsanız e-posta adresinizi, kurumun adını (ekip raporu istediyseniz) ve sipariş bilgilerini işleriz: tarih, tutar, kod sayısı, ödeme numarası ve ödeme durumu. Bu veriler size kodları, ödeme onayını ve ekip raporunu göndermek, başvurunuzu yanıtlamak ve iade işlemini yapmak için gereklidir; genişletilmiş profil siparişinin bilgileriyle aynı şekilde saklanır. Ödeme, genişletilmiş profil satın alınırken olduğu gibi aynı ödeme aracısı üzerinden yapılır. Hukuki dayanak, kodların ücretini {offer} uyarınca ödeyerek kurduğunuz sözleşmedir.",
       "purchasePair": "“İki kişilik DISC” raporunu sipariş ederseniz e-posta adresinizi, sipariş bilgilerini, karşılaştırma bağlantısındaki iki katılımcının adlarını ve test sonuçlarını, aranızdaki ilişkiye dair seçiminizi ve — belirttiyseniz — rapor kopyası için ikinci katılımcının adresini işleriz. İkinci katılımcı, sonucunun gösterilmesine ve rapor için kullanılmasına sitedeki bir işaretle onay verir; onun adresini belirterek kopyayı almayı kabul ettiğini teyit edersiniz. Rapor metni yapay zekâ yardımıyla, yalnızca anonim verilere dayanarak hazırlanır: adlar, adresler ve sonuç kodları olmadan profiller ve puanlar. Sonuç kodlarını ve ikinci katılımcının adresini raporun gönderilmesinden 30 gün sonra, ödenmemiş siparişlerde ise 7 gün sonra sileriz; sipariş bilgileri, genişletilmiş profil siparişinin bilgileriyle aynı şekilde saklanır. Hukuki dayanak, {offer} uyarınca kurulan sözleşme ve ikinci katılımcının onayıdır.",
       "purchaseGift": "Hediye sertifikası satın alırsanız e-posta adresinizi, sipariş bilgilerini (tarih, tutar, ödeme numarası ve ödeme durumu), “Kimden” satırını ve — belirttiyseniz — alıcıların adlarını ve e-posta adreslerini işleriz. E-posta adresiniz ve sipariş bilgileri, sertifikaları size göndermek, başvurunuzu yanıtlamak ve iade işlemini yapmak için gereklidir; bunlar genişletilmiş profil siparişinin bilgileriyle aynı şekilde saklanır. Alıcının adı kendi sertifikasına basılır, alıcının adresine ise yalnızca kendi sertifikasını içeren tek bir e-posta gönderilir; alıcıların adlarını ve adreslerini sertifikalar gönderildikten 30 gün sonra, ödenmemiş siparişlerde ise 7 gün sonra sileriz. Alıcıların bilgilerini belirterek onların sertifika almayı kabul ettiğini teyit edersiniz. Hukuki dayanak, {offer} uyarınca kurulan ve sertifika alıcılarının yararına olan sözleşmedir. Sertifika kodunu sitede giren alıcı, genişletilmiş profili erişim koduyla alınan profille aynı şekilde alır: sertifikayı hediye eden kişiye yalnızca sertifikanın kullanılıp kullanılmadığını ve ne zaman kullanıldığını bildiririz."
     },
@@ -1154,10 +1155,10 @@
     },
     "business": {
       "title": "Kurumlar için DISC: genişletilmiş rapor paketleri",
-      "description": "Çalışanlar, danışanlar ve eğitim katılımcıları için paket hâlinde genişletilmiş DISC raporları, en fazla %{maxDiscount} indirimle. Erişim kodları, bağlantıyla kartla ödeme.",
+      "description": "Çalışanlar, danışanlar ve eğitim katılımcıları için paket hâlinde genişletilmiş DISC raporları, en fazla %{maxDiscount} indirimle. Erişim kodları ödemenin hemen ardından e-postanızda, ekip raporu ücretsiz.",
       "h1": "Kurumlar için DISC",
-      "lead": "Sitedeki DISC testi ücretsizdir ve kayıt gerektirmez. Testi çalışanlarınıza, danışanlarınıza ya da eğitim katılımcılarınıza uyguluyorsanız onlar için genişletilmiş raporları paket hâlinde alabilirsiniz: tek tek almaktan daha ucuzdur ve tek bir ödeme bağlantısıyla ödenir.",
-      "facts": ["en az {minPack} rapor", "en fazla %{maxDiscount} indirim", "bağlantıyla kartla ödeme", "rapor herkesin kendi e-postasına gelir"],
+      "lead": "Sitedeki DISC testi ücretsizdir ve kayıt gerektirmez. Testi çalışanlarınıza, danışanlarınıza ya da eğitim katılımcılarınıza uyguluyorsanız onlar için genişletilmiş raporları paket hâlinde alabilirsiniz: tek tek almaktan daha ucuzdur ve yanında **ücretsiz bir ekip raporu** da gelir. Ödemeyi sitede kartla yaparsınız, kodlar ödemenin hemen ardından e-postanıza gelir.",
+      "facts": ["en az {minPack} rapor", "en fazla %{maxDiscount} indirim", "kodlar ödemenin hemen ardından e-postanızda", "**ekip raporu ücretsiz**"],
       "forTitle": "Kimler için uygun",
       "for": [
         "İK uzmanları ve yöneticiler: ekibi tanımak, yeni çalışanların işe uyumu, iş arkadaşları arasındaki sürtüşmeleri konuşmak.",
@@ -1169,12 +1170,12 @@
         "person": "Bireyler için",
         "personPick": "Test sonucunuza göre genişletilmiş rapor",
         "org": "Kurumlar için",
-        "orgPick": "Çalışanlar, danışanlar ve katılımcılar için genişletilmiş raporlar — paket hâlinde, indirimli",
+        "orgPick": "Çalışanlar, danışanlar ve katılımcılar için paket hâlinde genişletilmiş raporlar, sitede kartla ödeme",
         "orgName": "Genişletilmiş rapor paketleri",
-        "orgText": "İK ekipleri, insan kaynakları danışmanlık firmaları, kurum içi akademiler, eğitmenler ve koçlar için. Erişim kodlarını satın alır ve kişilere dağıtırsınız: her kişi testi çözer ve kendi raporunu e-postayla alır. Bağlantıyla kartla ödeme, en fazla %{maxDiscount} indirim.",
+        "orgText": "İK ekipleri, insan kaynakları danışmanlık firmaları, kurum içi akademiler, eğitmenler ve koçlar için. Erişim kodlarını satın alır ve kişilere dağıtırsınız: her kişi testi çözer ve kendi raporunu e-postayla alır. Sitede kartla ödeme, en fazla %{maxDiscount} indirim. **Ekip raporu ücretsiz.**",
         "orgPriceLabel": "Fiyat",
         "orgPrice": "rapor başına {minPrice} USD’den başlayan fiyatlarla",
-        "orgButton": "Ayrıntılar ve talep"
+        "orgButton": "Ayrıntılar ve satın alma"
       },
       "packsTitle": "Genişletilmiş rapor paketleri",
       "packsText": "Erişim kodlarını satın alır ve her kişiye bir kod olacak şekilde dağıtırsınız. Her kişi testi çözer, sonuç ekranında kodu girer ve kendi adına hazırlanmış genişletilmiş raporu PDF olarak kendi e-posta adresine alır. Raporda neler olduğunu ve sayfalarının nasıl göründüğünü “{report}” sayfasında görebilirsiniz.",
@@ -1184,27 +1185,199 @@
       "packDiscount": "−%{pct}",
       "packsNote": "Raporun normal fiyatı {retail} USD. Kod, verildiği tarihten itibaren {months} ay geçerlidir. Bir kod, bir kişi için bir rapor demektir.",
       "csv": ["Erişim kodu", "Kullanıldı", "Son geçerlilik tarihi", "Nereye girilir"],
+      "buy": {
+        "title": "Kod satın al",
+        "lead": "Ödeme sitede kartla yapılır. Kodlar ödemenin hemen ardından e-postanıza gelir: e-postanın içinde liste olarak ve Excel’de açılabilen bir dosya olarak.",
+        "button": "Kod satın al",
+        "payName": "Genişletilmiş DISC raporu için erişim kodları, {n} adet",
+        "qtyLabel": "Kaç kod",
+        "qtyHint": "En az {min} kod. Kod sayısı arttıkça her birinin fiyatı düşer.",
+        "units": {
+          "one": "kod",
+          "other": "kod"
+        },
+        "line": "{n} {units} × {unit}",
+        "addMore": "{k} kod daha eklerseniz her biri {unit} olur",
+        "save": "tek tek almaya göre {sum} tasarruf",
+        "teamLabel": "Ekip raporu ekle (ücretsiz)",
+        "teamHint": "Ekip raporu ücretsizdir. Her katılımcı, kodu girerken adını, profilini ve dört ölçekteki sonuçlarını size gösterip göstermeyeceğine kendisi karar verir. Herkes testi çözdüğünde raporu ekip sayfasından istersiniz; rapor üç gün içinde e-postanıza gelir.",
+        "orgLabel": "Kurumun ya da ekibin adı",
+        "orgHint": "Katılımcılar bu adı onay sorusunda görür.",
+        "emailLabel": "Kodların gönderileceği e-posta adresi",
+        "emailHint": "Kodlar, ödeme onayı ve ekip raporu bu adrese gelir.",
+        "total": "Toplam",
+        "money": "{n} USD",
+        "submit": "Satın al: {total}",
+        "wait": "Ödeme sayfası açılıyor…",
+        "note": "“Satın al” düğmesine bastığınızda {offer} kabul edilmiş olur. Kart bilgilerinizi güvenli bir ödeme sayfasında girersiniz.",
+        "invoice": "Fatura ya da başka belgeler gerekiyorsa {request} yazın.",
+        "invoiceLink": "sayfanın altındaki formdan",
+        "checkEmail": "E-posta adresini kontrol edin: kodlar bu adrese gelecek.",
+        "checkOrg": "Kurumun adını yazın: katılımcılar bu adı görecek.",
+        "checkQty": "Kod sayısı: {min} ile {max} arasında.",
+        "priceChanged": "Kod fiyatı az önce değişti. Tutarı kontrol edip “Satın al” düğmesine yeniden basın.",
+        "error": "Ödeme sayfası açılamadı. Bir dakika sonra yeniden deneyin ya da {email} adresine yazın.",
+        "status": {
+          "wait": "Ödeme kontrol ediliyor…",
+          "paid": "Ödeme alındı. Kodları içeren e-posta birkaç dakika içinde {email} adresine gelecek.",
+          "sent": "Tamam: kodları içeren e-posta {email} adresine gönderildi. Göremiyorsanız istenmeyen e-posta (spam) klasörüne bakın.",
+          "failed": "Ödeme yapılamadı, kartınızdan para çekilmedi. Yeniden deneyebilirsiniz.",
+          "thanks": "Ödemeniz için teşekkür ederiz. Kodları içeren e-posta, satın alırken belirttiğiniz adrese gelecek."
+        }
+      },
       "howTitle": "Nasıl işler",
       "how": [
-        "Sayfanın altındaki formdan talep bırakın: kaç rapora ve kimler için ihtiyacınız olduğunu yazın. Bir iş günü içinde yanıt veririz.",
-        "Kartla ödeme için bir bağlantı göndeririz. Ödemeden sonra kodları dosya olarak iletiriz.",
+        "“Kod satın al” bölümünde kaç koda ihtiyacınız olduğunu seçin ve kartla ödeyin. Ekip raporunu da istiyorsanız işaretleyin: **ekip raporu ücretsizdir**.",
+        "Kodlar ödemenin hemen ardından e-postanıza gelir: e-postanın içinde liste olarak ve dosya olarak. Muhasebeniz için fatura ya da başka belgeler gerekiyorsa sayfanın altındaki formdan bize yazın.",
         "Kişilere test bağlantısını ve her birine bir kod gönderin. Test yaklaşık 10 dakika sürer, kayıt gerekmez.",
         "Kişi sonuç ekranında “Kodum var” bağlantısına tıklar, kodu ve e-posta adresini girer. Rapor birkaç dakika içinde e-postasına gelir.",
-        "İsterseniz kaç kodun kullanıldığını size bildiririz."
+        "Ekip raporu için: herkes testi çözdüğünde ekip sayfasında “Ekip raporunu iste” düğmesine basın. Sayfanın bağlantısı, kodları içeren e-postada gelir."
       ],
+      "guide": {
+        "title": "Katılımcı kodu nasıl girer",
+        "lead": "Bu talimatı kodlarla ve test bağlantısıyla birlikte katılımcılara iletin. Talimatın bağlantısı: {link}",
+        "steps": [
+          {
+            "t": "Testi çözün",
+            "p": "Test bağlantısını açın ve 24 soruyu yanıtlayın. Yaklaşık 10 dakika sürer, kayıt gerekmez. Sonuç hemen ekranda görünür."
+          },
+          {
+            "t": "“Kodum var” bağlantısına tıklayın",
+            "p": "Sonuç ekranında genişletilmiş rapor bölümüne kadar kaydırın. “Satın al” düğmesinin altında “Kodum var” bağlantısı var: ona tıklayın. Hiçbir ödeme yapmanız gerekmez.",
+            "img": "code-1-link",
+            "alt": "Sonuç ekranındaki genişletilmiş rapor bölümü: e-posta alanı, “Satın al” düğmesi ve altında işaretlenmiş “Kodum var” bağlantısı"
+          },
+          {
+            "t": "E-posta adresinizi ve kodu girin",
+            "p": "E-posta adresinizi (rapor bu adrese gelir) ve yöneticinizden gelen e-postadaki erişim kodunu yazın. “Raporu al” düğmesine basın.",
+            "img": "code-2-form",
+            "alt": "E-posta ve “Erişim kodu” alanları doldurulmuş form, işaretlenmiş “Raporu al” düğmesi"
+          },
+          {
+            "t": "Sonucunuzu paylaşıp paylaşmayacağınıza karar verin",
+            "p": "Kod ekip raporu için verildiyse bir soru çıkar. “Raporu al ve sonucumu paylaş” düğmesine basarsanız yönetici, ekip raporunda adınızı, DISC profilinizi ve dört ölçekteki yüzdelerinizi görür. “Paylaşmadan raporu al” bağlantısına basarsanız hiçbir şey görmez. Kendi genişletilmiş raporunuzu her iki durumda da alırsınız.",
+            "img": "code-3-consent",
+            "alt": "“Bu kod ekip raporu için verildi” kartı: işaretlenmiş “Raporu al ve sonucumu paylaş” düğmesi ve “Paylaşmadan raporu al” bağlantısı"
+          },
+          {
+            "t": "E-postanızı kontrol edin",
+            "p": "Birkaç dakika içinde genişletilmiş rapor PDF olarak e-postanıza gelir. E-posta gelmezse istenmeyen e-posta (spam) klasörüne bakın.",
+            "img": "code-4-done",
+            "alt": "“Kod kabul edildi. Rapor birkaç dakika içinde gelecek” mesajı"
+          }
+        ],
+        "note": "Testi bu cihazda daha önce çözdünüz mü? Yeniden çözmeniz gerekmez: kayıtlı sonucunuzu ya da “{report}” sayfasını açın ve kodu orada girin."
+      },
+      "guideTeam": {
+        "title": "Ekip raporu nasıl alınır",
+        "lead": "Bu talimat kodları satın alan kişi içindir: genellikle yönetici ya da İK. **Kod paketine eklenen ekip raporu ücretsizdir.**",
+        "steps": [
+          {
+            "t": "Satın alırken raporu işaretleyin",
+            "p": "“Kod satın al” bölümünde “Ekip raporu ekle (ücretsiz)” kutusunu işaretli bırakın ve kurumun ya da ekibin adını yazın: katılımcılar bu adı onay sorusunda görür.",
+            "img": "team-1-buy",
+            "alt": "Kod satın alma formu: işaretlenmiş “Ekip raporu ekle (ücretsiz)” kutusu ve “Kurumun ya da ekibin adı” alanı"
+          },
+          {
+            "t": "Kodları dağıtın",
+            "p": "Kodları içeren e-posta ödemenin hemen ardından gelir. Her katılımcıya kendi kodunu, test bağlantısını ve yukarıdaki talimatı gönderin. Sonucunu paylaşıp paylaşmayacağına herkes kendisi karar verir."
+          },
+          {
+            "t": "“Ekip raporunu iste” düğmesine basın",
+            "p": "Ekip sayfasının bağlantısı, kodları içeren e-postanın “Ekip raporu” bölümünde. Sayfada kaç kişinin testi çözdüğü ve kaç kişinin sonucunu paylaştığı görünür, ama kimlerin paylaştığı görünmez. Herkes bitirdiğinde düğmeye basın. Düğme, en az üç kişi sonucunu paylaştığında çalışır.",
+            "img": "team-2-page",
+            "alt": "Ekip sayfası: kurum, 24 kod, testi çözen 21 kişi, sonucunu paylaşan 18 kişi ve işaretlenmiş “Ekip raporunu iste” düğmesi"
+          },
+          {
+            "t": "E-postayı bekleyin",
+            "p": "Ekip raporu, kodların geldiği e-posta adresine üç gün içinde PDF olarak gelir. Rapora yalnızca sonucunu paylaşanlar girer. Ekibe daha sonra yeni kişiler katılırsa aynı sayfadan yeni bir rapor isteyebilirsiniz.",
+            "img": "team-3-requested",
+            "alt": "İstekten sonra ekip sayfası: “Rapor istendi. 3 gün içinde kodları satın alanın e-posta adresine gelecek” mesajı"
+          }
+        ]
+      },
       "privacyTitle": "Sonuçlar kişilerin kendisinde kalır",
       "privacy": [
-        "Rapor yalnızca testi çözüp kodu giren kişiye gönderilir. Kodların ücretini ödeyenlere ne sonuçları, ne raporları ne de katılımcıların e-posta adreslerini iletiriz: yalnızca kullanılan kodların sayısını bildiririz.",
-        "Ekip için bir özete ihtiyacınız varsa kişilerden sonuçlarını kendilerinin paylaşmasını isteyin: sonuç bağlantısını ya da özet rapordaki kodu göndersinler. Bunlardan ekip tablosunun nasıl oluşturulacağı “{teams}” sayfasında anlatılıyor."
+        "Rapor yalnızca testi çözüp kodu giren kişiye gönderilir. Katılımcının onayı olmadan, kodların ücretini ödeyenlere ne sonuçları, ne raporları ne de e-posta adreslerini iletiriz: kişisel verilerin korunmasına ilişkin kurallar bunu gerektirir. Onay olmadan yalnızca kaç kodun kullanıldığını öğrenirsiniz.",
+        "Ekip raporunda her katılımcı, kodu girerken adını, profilini ve dört ölçekteki sonuçlarını yöneticiyle paylaşıp paylaşmayacağına kendisi karar verir; kendi raporunu her durumda alır. Ekip raporuna yalnızca paylaşmayı kabul edenler girer. Ekip tablosunu kendiniz hazırlamayı tercih ederseniz bunun nasıl yapılacağı “{teams}” sayfasında anlatılıyor."
       ],
       "boundsTitle": "DISC neye uygun değildir",
       "bounds": "DISC davranış tarzını tanımlar; yetenekleri, bilgiyi ya da dürüstlüğü ölçmez. Aday seçmek ve işe alma, işten çıkarma ya da ücret kararları vermek için tasarlanmamıştır. Kişilerin kendilerini ve birbirlerini daha iyi anlamaları için kullanın: işe uyum sürecinde, ekip çalışmasında, yöneticilerin gelişiminde.",
-      "teamTitle": "Ekip raporu — hazırlanıyor",
-      "team": "Yöneticiler için ekibin bütününü ele alan bir rapor hazırlıyoruz: stil haritası, ekibin güçlü yönleri, sürtüşmelerin nerede çıktığı ve bunlarla ne yapılabileceği. Böyle bir rapora ihtiyacınız varsa bunu talepte belirtin: rapor hazır olduğunda size yazarız.",
+      "teamTitle": "Paketle birlikte ücretsiz ekip raporu",
+      "team": "**Kod paketine eklenen ekip raporu ücretsizdir.** Bu, yönetici için ekibin bütününü ele alan bir rapordur: stil haritası, ekibin portresi, sürtüşmelerin nerede çıkabileceği ve bunlarla ne yapılabileceği, kimin hangi işi doğal olarak üstlendiği ve her kişiyle nasıl çalışılacağı. Rapor, sonucunu göstermeyi kabul eden kişilere göre hazırlanır; en az üç kişi gerekir. Herkes testi çözdüğünde raporu ekip sayfasından isteyin: üç gün içinde e-postanıza gelir.",
+      "teamPage": {
+        "title": "Ekip raporu",
+        "description": "Ekip sayfası: kodlarla testi çözen ve sonucunu paylaşan kişi sayısı, ekip raporu isteği.",
+        "h1": "Ekip raporu",
+        "lead": "Burada kodlarınızla testi çözen ve sonucunu paylaşan kişilerin sayısı görünür. Herkes bitirdiğinde raporu isteyin: {days} gün içinde kodları satın alanın e-posta adresine gelir.",
+        "loading": "Yükleniyor…",
+        "notFound": "Bağlantı açılmıyor: kodları içeren e-postadan eksiksiz kopyalandığını kontrol edin. Sorun sürerse {email} adresine yazın.",
+        "org": "Kurum",
+        "codes": "Kod sayısı",
+        "used": "Kodla testi çözen",
+        "shared": "Sonucunu paylaşan",
+        "privacy": "Kimin sonucunu paylaştığı, kimin paylaşmadığı burada gösterilmez. Rapora yalnızca paylaşanlar girer: adları, profilleri ve dört ölçekteki sonuçlarıyla.",
+        "button": "Ekip raporunu iste",
+        "few": "Rapor için en az {min} kişinin sonucunu paylaşması gerekir. Şu ana kadar paylaşan: {n}.",
+        "requested": "Rapor {date} tarihinde istendi. {days} gün içinde kodları satın alanın e-posta adresine gelecek.",
+        "sent": "Rapor {date} tarihinde gönderildi. Ekip değiştiyse yeni bir rapor isteyebilirsiniz: o ana kadar sonucunu paylaşmış olanları kapsar.",
+        "again": "Yeni rapor iste",
+        "revoked": "Bu partideki kodlar iptal edildi.",
+        "error": "İşlem yapılamadı. Bir dakika sonra yeniden deneyin ya da {email} adresine yazın.",
+        "howTitle": "Nasıl işler",
+        "how": [
+          "Her katılımcıya kendi kodunu ve test bağlantısını verin. Hazır davet metni {group} sayfasında.",
+          "Katılımcı testi çözer, kodu girer ve sonucunu yöneticiyle paylaşıp paylaşmayacağını seçer. Kendi genişletilmiş raporunu her durumda alır.",
+          "Herkes bitirdiğinde “Ekip raporunu iste” düğmesine basın. Rapor, kodların geldiği e-posta adresine gelir."
+        ],
+        "groupLink": "“Grup için test”"
+      },
+      "mail": {
+        "brand": "DISC · erişim kodları",
+        "subject": "Genişletilmiş DISC raporu için erişim kodları: {n} adet",
+        "hello": "Merhaba,",
+        "intro": "Satın aldığınız için teşekkür ederiz. Aşağıda genişletilmiş DISC raporu için erişim kodları yer alıyor ({n} adet). Bir kod, bir kişi için bir rapor demektir; kodlar {until} tarihine kadar geçerlidir.",
+        "howTitle": "Kodlar nasıl dağıtılır",
+        "steps": [
+          "Her katılımcıya bir kod ve test bağlantısını gönderin: {test}. Hazır davet metni {group} sayfasında.",
+          "Katılımcı testi çözer (yaklaşık 10 dakika, kayıt gerekmez), sonuç ekranında “Kodum var” bağlantısına tıklar, kodu ve e-posta adresini girer. Katılımcılara iletebileceğiniz, ekran görüntüleriyle adım adım talimatı {guide} bulabilirsiniz.",
+          "Genişletilmiş rapor birkaç dakika içinde katılımcının e-postasına gelir. Size yalnızca hangi kodların kullanıldığını bildiririz: katılımcıların sonuçlarını ve adreslerini onların onayı olmadan iletmeyiz."
+        ],
+        "groupLink": "“Grup için test”",
+        "guideLink": "“Kurumlar için” sayfasında",
+        "teamTitle": "Ekip raporu: {org}",
+        "team": [
+          "Katılımcı kodu girerken adını, profilini ve dört ölçekteki sonuçlarını yöneticiyle paylaşmak isteyip istemediğine dair bir soru görür. Kendi raporunu her durumda alır.",
+          "Herkes testi çözdüğünde {team} açın ve “Ekip raporunu iste” düğmesine basın. Rapor {days} gün içinde bu adrese gelir. Rapor için en az {min} kişinin sonucunu paylaşması gerekir."
+        ],
+        "teamLink": "ekip sayfasını",
+        "codesTitle": "Kodlarınız ({n})",
+        "file": "Aynı kodlar ekteki dosyada da var: dosyayı Excel’de açıp hangi kodu kime verdiğinizi işaretleyebilirsiniz.",
+        "question": "Sorularınızı bu e-postayı yanıtlayarak ya da {email} adresine yazarak iletebilirsiniz.",
+        "bye": "disc-test.org ekibi",
+        "foot": "Sipariş {order}. Bu e-postayı, bu adres için {test} sitesinde kod satın alındığı için alıyorsunuz.",
+        "fileName": "disc-kodlar-{id}.csv"
+      },
+      "teamMail": {
+        "subject": "Ekip raporu: {org}",
+        "hello": "Merhaba,",
+        "intro": "Ekip raporu ektedir: {org}. Rapora, sonucunu size göstermeyi kabul eden katılımcılar girdi: {n}.",
+        "howTitle": "Rapor nasıl kullanılır",
+        "how": [
+          "Önce 2, 3 ve 4. bölümleri kendiniz okuyun: ekip haritası, portre ve olası sürtüşmeler.",
+          "3, 4 ve 6. bölümleri ekiple konuşun: bunlar ortak kurallar üzerinde anlaşmak için bir fırsattır, kişileri değerlendirmek için değil.",
+          "7. bölüm sizin için yazıldı: her kişiye görev nasıl verilir.",
+          "Rapora dayanarak personel kararları almayın ve raporu ekip dışına iletmeyin."
+        ],
+        "again": "Ekip değişirse {team} yeni bir rapor isteyin.",
+        "teamLink": "ekip sayfasından",
+        "question": "Soru ve görüşlerinizi bu e-postayı yanıtlayarak ya da {email} adresine yazarak iletebilirsiniz.",
+        "bye": "disc-test.org ekibi"
+      },
       "payTitle": "Ödeme ve belgeler",
       "pay": [
-        "Talebinizden sonra size güvenli bir ödeme sayfasının bağlantısını göndeririz. Ödemeyi, şirket kartı dâhil olmak üzere kartla ve bu sayfadaki fiyatlar gibi ABD doları cinsinden yaparsınız. Ödemeden sonra ödemeyi yapanın e-posta adresine elektronik ödeme onayı gönderilir.",
-        "Muhasebeniz için fatura ya da başka belgeler gerekiyorsa bunu talebinizde belirtin: hangi belgeleri sağlayabileceğimizi size bildiririz."
+        "Ödemeyi, şirket kartı dâhil olmak üzere kartla sitede yaparsınız: tutar kod sayısına göre hesaplanır ve ABD doları (USD) cinsindendir. Kart bilgilerinizi güvenli bir ödeme sayfasında girersiniz; elektronik ödeme onayı e-postanıza gelir.",
+        "Muhasebeniz için fatura ya da başka belgeler gerekiyorsa sayfanın altındaki formdan bize yazın: hangi belgeleri sağlayabileceğimizi bildiririz."
       ],
       "faqTitle": "Sorular",
       "faq": [
@@ -1221,7 +1394,7 @@
       ],
       "form": {
         "title": "Talep",
-        "lead": "Belirttiğiniz e-posta adresine bir iş günü içinde yanıt veririz.",
+        "lead": "Fatura gerekiyorsa ya da sorularınız varsa yazın: belirttiğiniz e-posta adresine bir iş günü içinde yanıt veririz.",
         "size": "Kaç kişi",
         "sizes": ["10’a kadar", "10–50", "50–100", "100’den fazla"],
         "interest": "Neyle ilgileniyorsunuz",
@@ -1256,7 +1429,7 @@
       "codeTerms": [
         {
           "section": 0,
-          "text": "Erişim Kodu: Müşteri’ye, ücret ödemeden Hizmet’i alma hakkı veren karakter dizisi. Erişim Kodu, Hizmet Sağlayıcı’dan ayrı bir sözleşmeyle üçüncü bir kişi (bir kurum, bir bireysel girişimci ya da başka bir kişi) tarafından satın alınır ve bu kişi tarafından Müşteri’ye verilir."
+          "text": "Erişim Kodu: Müşteri’ye, ücret ödemeden Hizmet’i alma hakkı veren karakter dizisi. Erişim Kodları, Hizmet Sağlayıcı’dan üçüncü bir kişi (bir kurum, bir bireysel girişimci ya da başka bir kişi; bundan böyle “Kodları Satın Alan” olarak anılır) tarafından Site’deki “Kurumlar için” sayfasında ya da ayrı bir sözleşmeyle satın alınır ve bu kişi tarafından Müşterilere verilir."
         },
         {
           "section": 3,
@@ -1268,10 +1441,24 @@
         },
         {
           "section": 7,
-          "text": "8.4. Hizmet Sağlayıcı, Erişim Kodu’nu satın alan kişiye yalnızca kodun kullanılıp kullanılmadığını ve ne zaman kullanıldığını bildirir. Test sonucunu, Genişletilmiş Profil’i ve Müşteri’nin e-posta adresini bu kişiye iletmez."
+          "text": "8.4. Hizmet Sağlayıcı, Erişim Kodu’nu satın alan kişiye yalnızca Erişim Kodu’nun kullanılıp kullanılmadığını ve ne zaman kullanıldığını bildirir. Erişim Kodu ekip raporu için verildiyse (madde 4.8) ve Müşteri, Erişim Kodu’nu girerken sonucunu paylaşmayı kendisi kabul ettiyse Hizmet Sağlayıcı, Müşteri’nin adını, DISC profilini ve dört ölçekteki yüzdelerini ekip raporuna ekler. Bu onay isteğe bağlıdır: Müşteri onay vermese de Genişletilmiş Profil’i alır. Müşteri onayını dilediği zaman Hizmet Sağlayıcı’ya yazarak geri alabilir; onayın geri alınması, daha önce yapılmış aktarımın hukuka uygunluğunu etkilemez ve Müşteri’nin sonucu sonraki ekip raporlarına girmez. Hizmet Sağlayıcı, Test sonucunun geri kalanını, Genişletilmiş Profil’i ve Müşteri’nin e-posta adresini Erişim Kodu’nu satın alan kişiye iletmez."
         }
       ],
-      "edition": "14 Kasım 2026 tarihli sürüm. Türkçe çevirisi 14 Kasım 2026’da güncellenmiştir.",
+      "bizTerms": [
+        {
+          "section": 3,
+          "text": "4.7. Kodları Satın Alan, Site’deki “Kurumlar için” sayfasında Erişim Kodu sayısını seçer ve e-posta adresini belirtir. Bir Erişim Kodu’nun ücreti kod sayısına bağlıdır ve bu sayfada gösterilir; toplam tutar ödemeden önce ve ödeme sayfasında gösterilir. Erişim Kodlarının ücretinin tamamı 3.2–3.5. maddelerde belirtilen şekilde ödenir. Ödemeden sonra Hizmet Sağlayıcı Erişim Kodlarını belirtilen adrese genellikle hemen, en geç ödeme anından itibaren 24 saat içinde gönderir; Erişim Kodlarının satış hizmeti, Erişim Kodlarını içeren e-postanın gönderildiği anda ifa edilmiş sayılır. Her Erişim Kodu ödeme gününden itibaren 12 ay geçerlidir."
+        },
+        {
+          "section": 3,
+          "text": "4.8. Kodları Satın Alan, Site’de Erişim Kodlarını satın alırken ekip raporunu seçtiyse Hizmet Sağlayıcı ek ücret almadan bir ekip raporu hazırlar: Erişim Kodu’nu girerken sonucunun gösterilmesini kendisi kabul eden Müşterilerin (en az üç kişi) Test sonuçlarına dayanan bir ekip değerlendirmesi. Kodları Satın Alan raporu, bağlantısı Erişim Kodlarını içeren e-postayla gönderilen ekip sayfasından ister; rapor, istekten itibaren 3 takvim günü içinde onun e-posta adresine gönderilir. Ekip raporu yönetici ve ekibin kendisi içindir; işe alma, işten çıkarma ya da ücretle ilgili kararlara dayanak olamaz."
+        },
+        {
+          "section": 4,
+          "text": "5.9. Kodları Satın Alan, Site’de satın aldığı ve kullanılmamış Erişim Kodlarından geçerlilik süreleri içinde vazgeçebilir: bu durumda kullanılmamış her Erişim Kodu için satın alındığı ücret iade edilir ve o Erişim Kodu geçersiz olur. Site tarafından kabul edilmiş bir Erişim Kodu’nun ücreti iade edilmez. İade 5.5–5.7. maddelerde belirtilen şekilde yapılır; başvuruda sipariş numarası belirtilmelidir."
+        }
+      ],
+      "edition": "16 Kasım 2026 tarihli sürüm. Türkçe çevirisi 16 Kasım 2026’da güncellenmiştir.",
       "note": "Bu metin, teklifin {original} adresinde yayımlanan asıl metninin Türkçe çevirisidir. İki metin arasında fark olması hâlinde asıl metin esas alınır; bunun istisnası ücret ve ödeme yöntemidir: Site’nin Türkçe sürümü için bu çevirinin 1. ve 3. bölümleri geçerlidir.",
       "seller": "bireysel girişimci Manukyan Armen, vergi kimlik numarası (INN) {inn}",
       "lead": "Bu belge, ücretli “Genişletilmiş DISC profili” hizmetine ilişkin sözleşmenin ve DISC Atölye Kiti’nin teslimine ilişkin sözleşmenin (10. bölüm) aşağıdaki koşullarla kurulması için yapılmış resmî bir tekliftir (kamuya açık teklif). Teklifi yapan: {seller} (bundan böyle “Hizmet Sağlayıcı” olarak anılır). Hizmetin ya da Kit’in ücretinin ödenmesi, bu koşulların tamamen ve kayıtsız şartsız kabul edildiği anlamına gelir (teklifin kabulü).",
@@ -1571,14 +1758,32 @@
           "button": "Raporu al",
           "back": "Kodsuz satın al",
           "wait": "Kod kontrol ediliyor…",
-          "note": "Bu kodla alınan raporun ücretini, kodu size veren ya da hediye eden kişi veya kurum zaten ödedi: sizin ödeme yapmanız gerekmez. Sonucunuzu ve e-posta adresinizi onlara iletmeyiz. “Raporu al” düğmesine bastığınızda {offer} kabul edilmiş olur.",
+          "note": "Bu kodla alınan raporun ücretini, kodu size veren ya da hediye eden kişi veya kurum zaten ödedi: sizin ödeme yapmanız gerekmez. Onayınız olmadan sonucunuzu ve e-posta adresinizi onlara iletmeyiz. “Raporu al” düğmesine bastığınızda {offer} kabul edilmiş olur.",
           "badEmail": "E-posta adresinizi kontrol edin: rapor bu adrese gönderilecek.",
           "empty": "Erişim kodunu girin.",
           "done": "Kod kabul edildi. Rapor birkaç dakika içinde {to} adresine gelecek. E-posta gelmezse istenmeyen e-posta (spam) klasörünü kontrol edin.",
           "bad": "Böyle bir kod yok. Kodu hatasız girdiğinizi kontrol edin.",
           "used": "Bu kod zaten kullanılmış. Kodu kendiniz girdiyseniz ve rapor gelmediyse {email} adresine yazın.",
           "expired": "Kodun geçerlilik süresi dolmuş. Kodu size verenlere başvurun.",
-          "error": "Kod kontrol edilemedi. Bir dakika sonra yeniden deneyin ya da {email} adresine yazın."
+          "error": "Kod kontrol edilemedi. Bir dakika sonra yeniden deneyin ya da {email} adresine yazın.",
+          "team": {
+            "v": "team-tr-2026-11-16",
+            "kicker": "Kurumdan gelen kod",
+            "title": "Bu kod ekip raporu için verildi: {org}",
+            "titleNoOrg": "Bu kod ekip raporu için verildi",
+            "text": "Kabul ederseniz ekip yöneticisi, şunların yer aldığı bir ekip raporu alır:",
+            "list": [
+              "adınız,",
+              "DISC profiliniz,",
+              "dört ölçekteki yüzdeleriniz."
+            ],
+            "not": "Genişletilmiş raporunuzu, testteki yanıtlarınızı ve e-posta adresinizi iletmeyiz.",
+            "share": "Raporu al ve sonucumu paylaş",
+            "skip": "Paylaşmadan raporu al",
+            "note": "Rapor her iki durumda da gelir. Onayınızı dilediğiniz zaman {email} adresine yazarak geri alabilirsiniz; yöneticiye önceden gönderilmiş bir rapor ise geri alınamaz. Düğmeye bastığınızda {offer} kabul edilmiş olur; “Raporu al ve sonucumu paylaş” düğmesiyle ayrıca bu bilgilerin kuruma iletilmesine onay vermiş olursunuz.",
+            "doneShared": "Sonucunuz ekip raporunda yer alacak.",
+            "doneSkip": "Sonucunuzu iletmiyoruz. Fikrinizi değiştirirseniz {email} adresine yazın."
+          }
         },
         "how": [
           "Ücretsiz testi çözün: 24 soru, yaklaşık 10 dakika. Testi daha önce çözdüyseniz yeniden çözmeniz gerekmez: rapor mevcut sonucunuza göre hazırlanır.",

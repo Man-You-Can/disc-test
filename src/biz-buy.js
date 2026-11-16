@@ -6,7 +6,7 @@
    После оплаты банк возвращает покупателя сюда же с ?order=<номер>&pay=ok или &pay=fail; номер, ключ и e-mail заказа — в sessionStorage (disc.bizpay).
    Цели системы веб-аналитики: biz-buy (нажата «Купить»), biz-pay-start, biz-pay-error, biz-pay-done (вернулся после оплаты, с суммой), biz-pay-fail.
    На сервер уходят только данные заказа — ничего о посетителе.
-   Валюта — c.cur (русская версия — RUB и Т-Банк; другие языки — валюта языка и Prodamus, с 2026-11-16 польская): не в рублях суммы с двумя знаками после запятой.
+   Валюта — c.cur (русская версия — RUB и Т-Банк; другие языки — валюта языка (USD или EUR), с 2026-11-16 все): не в рублях суммы с двумя знаками после запятой.
    c: {T (тексты content.business.buy; noteHtml, errorHtml, invoiceHtml — готовая разметка), endpoint, L, esc, $, packs: [{from, price}], retail, min, max, cur, email} */
 function initBizBuy(c){
   var T = c.T, $ = c.$, esc = c.esc, form = $('#bizBuy'), box = $('#bizStatus');

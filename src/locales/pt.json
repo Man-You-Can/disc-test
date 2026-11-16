@@ -1074,7 +1074,8 @@
           "Se você comprar o kit do facilitador, tratamos seu e-mail e os dados do pedido: data, valor, número e status do pagamento. Precisamos desses dados para enviar a você o e-mail com os links para os arquivos do kit, responder às suas mensagens e processar reembolsos; a base legal é o contrato conforme os {offer}. Os dados do pedido do kit são guardados da mesma forma que os do pedido do perfil ampliado; não enviamos lembretes sobre um pagamento do kit não concluído."
         ]
       },
-      "purchaseCode": "Se você receber o perfil ampliado por um código de acesso comprado por uma empresa ou outra pessoa, tratamos os mesmos dados, exceto os dados de pagamento, e registramos que o código foi usado. A quem comprou o código, informamos apenas se ele foi usado e quando: seu resultado, seu relatório e seu e-mail não são repassados. A base legal é o contrato que você celebra ao digitar o código conforme os {offer}.",
+      "purchaseCode": "Se você receber o perfil ampliado por um código de acesso comprado por uma empresa ou outra pessoa, tratamos os mesmos dados, exceto os dados de pagamento, e registramos que o código foi usado. A quem comprou o código, informamos apenas se ele foi usado e quando. Se o código foi emitido para o relatório da equipe e, ao digitar o código, você clicar em “Receber o relatório e compartilhar o resultado”, repassamos à empresa que comprou o código, dentro do relatório da equipe, o seu nome, o seu perfil DISC e as suas porcentagens nas quatro escalas. A base legal desse repasse é o seu consentimento. Ele é voluntário: você recebe o perfil ampliado mesmo sem ele. Você pode revogá-lo a qualquer momento, escrevendo para o endereço do site; a revogação não afeta a licitude do repasse feito antes, e o seu resultado não entra nos relatórios da equipe seguintes. Sem esse consentimento, o seu resultado, o seu relatório e o seu e-mail não são repassados a quem comprou o código. A base legal do restante do tratamento é o contrato que você celebra ao digitar o código conforme os {offer}.",
+      "purchaseBiz": "Se você comprar códigos de acesso na página “Para empresas”, tratamos o seu e-mail, o nome da empresa (se você pedir o relatório da equipe) e os dados do pedido: data, valor, número de códigos, número e status do pagamento. Precisamos desses dados para enviar a você os códigos, a confirmação do pagamento e o relatório da equipe, responder às suas mensagens e processar reembolsos; eles são guardados da mesma forma que os dados do pedido do perfil ampliado. O pagamento é processado pela mesma prestadora de serviços de pagamento que processa a compra do perfil ampliado. A base legal é o contrato que você celebra ao pagar pelos códigos conforme os {offer}.",
       "purchasePair": "Se você pedir o relatório “DISC para dois”, tratamos o seu e-mail, os dados do pedido, os nomes e os resultados do teste dos dois participantes que estão no link da comparação, a sua resposta sobre a relação entre vocês e — se você o informar — o endereço do segundo participante, para o envio da cópia do relatório. O segundo participante autoriza, por meio de uma marcação no site, que o resultado dele seja mostrado e usado no relatório; ao informar o endereço dele, você confirma que ele concorda em receber a cópia. O texto do relatório é preparado com o auxílio de IA somente com dados anonimizados — perfis e pontuações, sem nomes, endereços nem códigos de resultado. Excluímos os códigos de resultado e o endereço do segundo participante 30 dias após o envio do relatório e, em pedido não pago, após 7 dias; os dados do pedido são guardados da mesma forma que os do pedido do perfil ampliado. A base legal é o contrato conforme os {offer} e o consentimento do segundo participante.",
       "purchaseGift": "Se você comprar vales-presente, tratamos seu e-mail, os dados do pedido (data, valor, número e status do pagamento), a assinatura da linha “De” e, se informados, os nomes e os e-mails dos presenteados. Precisamos do seu e-mail e dos dados do pedido para enviar a você os vales-presente, responder às suas mensagens e processar reembolsos; eles são guardados da mesma forma que os dados do pedido do perfil ampliado. O nome do presenteado é impresso no vale-presente dele, e o e-mail do presenteado recebe uma única mensagem, com o vale-presente; excluímos os nomes e os e-mails dos presenteados 30 dias após o envio dos vales-presente ou, em pedido não pago, após 7 dias. Ao informar os dados dos presenteados, você confirma que eles concordam em receber o vale-presente. A base legal é o contrato conforme os {offer}, do qual os presenteados são beneficiários. Quem digita o código de um vale-presente no site recebe o perfil ampliado da mesma forma que com um código de acesso: a quem deu o vale-presente, informamos apenas se ele foi usado e quando."
     },
@@ -1148,16 +1149,16 @@
         },
         {
           "h": "Dúvidas sobre o serviço",
-          "p": ["Se tiver alguma dúvida sobre o perfil ampliado ou sobre o pagamento, escreva para nós pelo formulário “{contact}” — a resposta chegará ao e-mail informado. Os dados do responsável pelo site estão no rodapé de cada página."]
+          "p": ["Se tiver alguma dúvida sobre o perfil ampliado ou sobre o pagamento, escreva para nós pelo formulário “{contact}”: a resposta chegará ao e-mail informado. Os dados do responsável pelo site estão no rodapé de cada página."]
         }
       ]
     },
     "business": {
       "title": "DISC para empresas: pacotes de relatórios DISC ampliados",
-      "description": "Relatórios DISC ampliados para colaboradores, clientes e alunos em pacote, com até {maxDiscount}% de desconto. Códigos de acesso e pagamento com cartão por link seguro.",
+      "description": "Relatórios DISC ampliados para colaboradores, clientes e alunos em pacote, com até {maxDiscount}% de desconto. Códigos de acesso por e-mail logo após o pagamento e relatório da equipe grátis.",
       "h1": "DISC para empresas",
-      "lead": "O teste DISC no site é gratuito e não exige cadastro. Se você aplica o teste com colaboradores, clientes ou alunos, pode comprar os relatórios ampliados deles em pacote: sai mais barato do que comprar um a um, com um único pagamento no cartão.",
-      "facts": ["a partir de {minPack} relatórios", "até {maxDiscount}% de desconto", "pagamento com cartão por link seguro", "cada pessoa recebe o relatório por e-mail"],
+      "lead": "O teste DISC no site é gratuito e não exige cadastro. Se você aplica o teste com colaboradores, clientes ou alunos, pode comprar os relatórios ampliados deles em pacote: sai mais barato do que comprar um a um e inclui o relatório da equipe, **que é gratuito**. O pagamento é feito com cartão no próprio site, e os códigos chegam por e-mail logo após o pagamento.",
+      "facts": ["a partir de {minPack} relatórios", "até {maxDiscount}% de desconto", "códigos por e-mail logo após o pagamento", "**relatório da equipe grátis**"],
       "forTitle": "Para quem é",
       "for": [
         "RH e gestores: integração da equipe, onboarding de novos colaboradores, conversas sobre atritos entre colegas.",
@@ -1169,12 +1170,12 @@
         "person": "Para pessoas físicas",
         "personPick": "Relatório ampliado sobre o resultado do seu teste",
         "org": "Para empresas",
-        "orgPick": "Relatórios ampliados para colaboradores, clientes e alunos — em pacote, com desconto",
+        "orgPick": "Relatórios ampliados para colaboradores, clientes e alunos em pacote, com pagamento com cartão no site",
         "orgName": "Pacotes de relatórios ampliados",
-        "orgText": "Para RH, consultorias de recrutamento, universidades corporativas, facilitadores e coaches. Você compra códigos de acesso e distribui entre as pessoas: cada uma faz o teste e recebe o próprio relatório por e-mail. Pagamento com cartão por link seguro e até {maxDiscount}% de desconto.",
+        "orgText": "Para RH, consultorias de recrutamento, universidades corporativas, facilitadores e coaches. Você compra códigos de acesso e distribui entre as pessoas: cada uma faz o teste e recebe o próprio relatório por e-mail. Pagamento com cartão no site e até {maxDiscount}% de desconto. **Relatório da equipe grátis.**",
         "orgPriceLabel": "Preço",
         "orgPrice": "a partir de US$ {minPrice} por relatório",
-        "orgButton": "Saiba mais e faça o pedido"
+        "orgButton": "Saiba mais e compre"
       },
       "packsTitle": "Pacotes de relatórios ampliados",
       "packsText": "Você compra códigos de acesso e distribui um código por pessoa. Cada uma faz o teste, digita o código na tela do próprio resultado e recebe no seu e-mail o relatório ampliado em PDF, com o próprio nome. O que tem no relatório e como são as páginas, você vê na página “{report}”.",
@@ -1184,27 +1185,196 @@
       "packDiscount": "−{pct}%",
       "packsNote": "O preço normal do relatório é US$ {retail}. O código vale por {months} meses a partir da data de emissão. Um código dá direito a um relatório para uma pessoa.",
       "csv": ["Código de acesso", "Usado", "Válido até", "Onde digitar"],
+      "buy": {
+        "title": "Comprar códigos",
+        "lead": "Pagamento com cartão no site. Logo após o pagamento, os códigos chegam ao seu e-mail: em lista, no corpo da mensagem, e em um arquivo para Excel.",
+        "button": "Comprar códigos",
+        "payName": "Códigos de acesso ao relatório DISC ampliado: {n} un.",
+        "qtyLabel": "Quantos códigos",
+        "qtyHint": "A partir de {min} códigos. Quanto mais códigos, menor o preço de cada um.",
+        "units": { "one": "código", "many": "de códigos", "other": "códigos" },
+        "line": "{n} {units} a {unit} cada",
+        "addMore": "com {k} a mais, cada código sai por {unit}",
+        "save": "economia de {sum} em relação à compra avulsa",
+        "teamLabel": "Incluir o relatório da equipe (grátis)",
+        "teamHint": "O relatório da equipe é gratuito. Ao digitar o código, cada participante decide se mostra a você o nome, o perfil e as quatro escalas. Quando todos tiverem feito o teste, você pede o relatório na página da equipe, e ele chega ao seu e-mail em até três dias.",
+        "orgLabel": "Nome da empresa ou da equipe",
+        "orgHint": "Os participantes vão ver esse nome na pergunta sobre o consentimento.",
+        "emailLabel": "E-mail para receber os códigos",
+        "emailHint": "Neste endereço chegam os códigos, a confirmação do pagamento e o relatório da equipe.",
+        "total": "Total",
+        "money": "US$ {n}",
+        "submit": "Comprar por {total}",
+        "wait": "Redirecionando para o pagamento…",
+        "note": "Ao clicar em “Comprar”, você aceita os {offer}. Você informa os dados do cartão em uma página de pagamento segura.",
+        "invoice": "Precisa de fatura ou de outros documentos? Escreva pelo {request}.",
+        "invoiceLink": "formulário no fim da página",
+        "checkEmail": "Confira o e-mail: os códigos serão enviados para ele.",
+        "checkOrg": "Informe o nome da empresa: os participantes vão vê-lo.",
+        "checkQty": "Número de códigos: de {min} a {max}.",
+        "priceChanged": "O preço do código acabou de mudar. Confira o valor e clique em “Comprar” de novo.",
+        "error": "Não foi possível abrir a página de pagamento. Tente de novo em um minuto ou escreva para {email}.",
+        "status": {
+          "wait": "Verificando o pagamento…",
+          "paid": "Pagamento confirmado. O e-mail com os códigos chegará em {email} em poucos minutos.",
+          "sent": "Pronto: o e-mail com os códigos foi enviado para {email}. Se ele não aparecer, confira a pasta de spam.",
+          "failed": "O pagamento não foi concluído, e nenhum valor foi cobrado. Você pode tentar de novo.",
+          "thanks": "Obrigado pelo pagamento! O e-mail com os códigos chegará no endereço que você informou."
+        }
+      },
       "howTitle": "Como funciona",
       "how": [
-        "Faça o pedido no fim desta página: quantos relatórios você precisa e para quem. Respondemos em até um dia útil.",
-        "Enviamos o link para pagamento com cartão. Depois do pagamento, enviamos os códigos em um arquivo.",
+        "Na seção “Comprar códigos”, escolha quantos códigos você precisa e pague com cartão. Se quiser o relatório da equipe, marque a opção: **ele é gratuito**.",
+        "Logo após o pagamento, os códigos chegam ao seu e-mail: em lista, no corpo da mensagem, e em um arquivo. Se o financeiro precisar de fatura (invoice) ou de outros documentos, escreva para nós pelo formulário no fim da página.",
         "Envie às pessoas o link do teste e um código para cada uma. O teste leva cerca de 10 minutos e não exige cadastro.",
         "Na tela do resultado, a pessoa clica em “Tenho um código” e digita o código e o próprio e-mail. O relatório chega por e-mail em poucos minutos.",
-        "Quando você pedir, informamos quantos códigos já foram usados."
+        "Relatório da equipe: quando todos tiverem feito o teste, clique em “Pedir o relatório da equipe” na página da equipe. O link para essa página chega no e-mail com os códigos."
       ],
+      "guide": {
+        "title": "Como o participante digita o código",
+        "lead": "Envie estas instruções aos participantes junto com o código de cada um e o link do teste. Link para as instruções: {link}",
+        "steps": [
+          {
+            "t": "Faça o teste",
+            "p": "Abra o link do teste e responda aos 24 blocos de afirmações. Leva cerca de 10 minutos e não exige cadastro. O resultado aparece na tela assim que você termina."
+          },
+          {
+            "t": "Clique em “Tenho um código”",
+            "p": "Na tela do resultado, role até a parte do relatório ampliado. Abaixo do botão “Comprar”, há o link “Tenho um código”: clique nele. Você não paga nada.",
+            "img": "code-1-link",
+            "alt": "Parte do relatório ampliado na tela do resultado: campo de e-mail, botão “Comprar” e, destacado abaixo dele, o link “Tenho um código”"
+          },
+          {
+            "t": "Digite o e-mail e o código",
+            "p": "Informe o seu e-mail (o relatório será enviado para ele) e o código de acesso que veio na mensagem do gestor. Clique em “Receber o relatório”.",
+            "img": "code-2-form",
+            "alt": "Formulário com o campo de e-mail e o campo “Código de acesso” preenchidos e o botão “Receber o relatório” destacado"
+          },
+          {
+            "t": "Decida se compartilha o resultado",
+            "p": "Se o código foi emitido para o relatório da equipe, aparece uma pergunta. Se você clicar em “Receber o relatório e compartilhar o resultado”, o gestor verá no relatório da equipe o seu nome, o seu perfil DISC e as suas porcentagens nas quatro escalas. Se clicar em “Receber o relatório sem compartilhar”, o gestor não verá nada. O seu relatório ampliado chega nos dois casos.",
+            "img": "code-3-consent",
+            "alt": "Cartão “Este código foi emitido para o relatório da equipe” com o botão “Receber o relatório e compartilhar o resultado” destacado e o link “Receber o relatório sem compartilhar”"
+          },
+          {
+            "t": "Confira o e-mail",
+            "p": "Em poucos minutos, o relatório ampliado chega ao seu e-mail em PDF. Se a mensagem não aparecer, confira a pasta de spam.",
+            "img": "code-4-done",
+            "alt": "Mensagem “Código aceito. O relatório chegará em poucos minutos” com o e-mail para onde ele será enviado"
+          }
+        ],
+        "note": "Já fez o teste neste aparelho? Não precisa refazer: abra o seu resultado salvo ou a página “{report}” e digite o código lá."
+      },
+      "guideTeam": {
+        "title": "Como receber o relatório da equipe",
+        "lead": "Estas instruções são para quem compra os códigos: em geral, o gestor ou o RH. **O relatório da equipe é gratuito com o pacote de códigos.**",
+        "steps": [
+          {
+            "t": "Marque o relatório na compra",
+            "p": "Na seção “Comprar códigos”, deixe marcada a opção “Incluir o relatório da equipe (grátis)” e informe o nome da empresa ou da equipe: os participantes vão ver esse nome na pergunta sobre o consentimento.",
+            "img": "team-1-buy",
+            "alt": "Formulário de compra de códigos: opção “Incluir o relatório da equipe (grátis)” marcada e destacada e campo “Nome da empresa ou da equipe”"
+          },
+          {
+            "t": "Distribua os códigos",
+            "p": "O e-mail com os códigos chega logo após o pagamento. Envie a cada participante o código, o link do teste e as instruções acima. Cada pessoa decide se compartilha o resultado."
+          },
+          {
+            "t": "Clique em “Pedir o relatório da equipe”",
+            "p": "O link para a página da equipe está no e-mail com os códigos, na parte “Relatório da equipe”. Na página, você vê quantas pessoas fizeram o teste e quantas compartilharam o resultado, mas não quem. Quando todos terminarem, clique no botão. Ele funciona quando pelo menos três pessoas compartilharam o resultado.",
+            "img": "team-2-page",
+            "alt": "Página da equipe: empresa, 24 códigos, 21 pessoas fizeram o teste, 18 compartilharam o resultado, botão “Pedir o relatório da equipe” destacado"
+          },
+          {
+            "t": "Aguarde o e-mail",
+            "p": "O relatório da equipe chega em PDF, em até três dias, no mesmo e-mail que recebeu os códigos. Ele inclui apenas quem compartilhou o resultado. Se depois entrarem mais pessoas na equipe, você pode pedir um novo relatório na mesma página.",
+            "img": "team-3-requested",
+            "alt": "Página da equipe depois do pedido: “Relatório pedido. Ele chegará ao e-mail de quem comprou os códigos em até 3 dias”"
+          }
+        ]
+      },
       "privacyTitle": "Os resultados ficam com as pessoas",
       "privacy": [
-        "O relatório vai só para quem fez o teste e digitou o código. A quem pagou pelos códigos, não repassamos resultados, relatórios nem e-mails dos participantes: só o número de códigos usados.",
-        "Se você precisa de um resumo da equipe, peça que as próprias pessoas compartilhem o resultado: que enviem o link do resultado ou o código do relatório resumido. Como montar com isso a tabela da equipe está explicado na página “{teams}”."
+        "O relatório vai só para quem fez o teste e digitou o código. Sem o consentimento do participante, não repassamos a quem pagou pelos códigos resultados, relatórios nem e-mails: é o que exige a legislação de proteção de dados pessoais. Sem esse consentimento, você fica sabendo apenas quantos códigos foram usados.",
+        "No relatório da equipe, cada participante decide, ao digitar o código, se mostra ao gestor o nome, o perfil e as quatro escalas; o próprio relatório ampliado chega de qualquer forma. O relatório da equipe inclui apenas quem concordou. Se preferir montar a tabela da equipe por conta própria, explicamos como na página “{teams}”."
       ],
       "boundsTitle": "Para que o DISC não serve",
       "bounds": "O DISC descreve o estilo de comportamento, não habilidades, conhecimentos ou honestidade. Ele não foi feito para triagem de candidatos nem para decisões de contratação, demissão ou salário. Use-o para que as pessoas entendam melhor a si mesmas e umas às outras: no onboarding, no trabalho em equipe e no desenvolvimento de líderes.",
-      "teamTitle": "Relatório da equipe — em preparação",
-      "team": "Estamos preparando um relatório para o gestor sobre a equipe como um todo: mapa de estilos, pontos fortes da equipe, onde surgem atritos e o que fazer a respeito. Se tiver interesse, marque isso no pedido: avisaremos quando o relatório estiver pronto.",
+      "teamTitle": "Relatório da equipe grátis com o pacote",
+      "team": "**O relatório da equipe é gratuito com o pacote de códigos.** É um relatório para o gestor sobre a equipe como um todo: mapa de estilos, retrato da equipe, onde podem surgir atritos e o que fazer a respeito, quem assume naturalmente cada papel e como trabalhar com cada pessoa. Ele é feito com base em quem concordou em mostrar o resultado, e são necessárias pelo menos três pessoas. Peça o relatório na página da equipe quando todos tiverem feito o teste: ele chega ao seu e-mail em até três dias.",
+      "teamPage": {
+        "title": "Relatório da equipe",
+        "description": "Página da equipe: quantos participantes fizeram o teste com os códigos e compartilharam o resultado, e pedido do relatório da equipe.",
+        "h1": "Relatório da equipe",
+        "lead": "Aqui você vê quantas pessoas fizeram o teste com os seus códigos e compartilharam o resultado. Quando todos terminarem, peça o relatório: ele chega ao e-mail de quem comprou os códigos em até {days} dias.",
+        "loading": "Carregando…",
+        "notFound": "O link não abre: confira se ele foi copiado inteiro do e-mail com os códigos. Se não der certo, escreva para {email}.",
+        "org": "Empresa",
+        "codes": "Códigos",
+        "used": "Fizeram o teste com código",
+        "shared": "Compartilharam o resultado",
+        "privacy": "Aqui não aparece quem compartilhou o resultado e quem não compartilhou. O relatório inclui apenas quem compartilhou: com nome, perfil e as quatro escalas.",
+        "button": "Pedir o relatório da equipe",
+        "few": "Para o relatório, é preciso que pelo menos {min} pessoas compartilhem o resultado. Até agora: {n}.",
+        "requested": "Relatório pedido em {date}. Ele chegará ao e-mail de quem comprou os códigos em até {days} dias.",
+        "sent": "Relatório enviado em {date}. Se a equipe mudou, você pode pedir um novo, com quem tiver compartilhado o resultado até agora.",
+        "again": "Pedir um novo relatório",
+        "revoked": "Os códigos deste lote foram cancelados.",
+        "error": "Não deu certo. Tente de novo em um minuto ou escreva para {email}.",
+        "howTitle": "Como funciona",
+        "how": [
+          "Envie a cada participante o código e o link do teste. Há um convite pronto na página {group}.",
+          "O participante faz o teste, digita o código e escolhe se compartilha o resultado com o gestor. O próprio relatório ampliado chega de qualquer forma.",
+          "Quando todos terminarem, clique em “Pedir o relatório da equipe”. O relatório chega ao e-mail que recebeu os códigos."
+        ],
+        "groupLink": "“Aplicar o teste DISC em grupo”"
+      },
+      "mail": {
+        "brand": "DISC · códigos de acesso",
+        "subject": "Códigos de acesso ao relatório DISC ampliado: {n} un.",
+        "hello": "Olá!",
+        "intro": "Agradecemos a sua compra. Abaixo estão os códigos de acesso ao relatório DISC ampliado ({n} un.). Um código dá direito a um relatório para uma pessoa; os códigos valem até {until}.",
+        "howTitle": "Como distribuir os códigos",
+        "steps": [
+          "Envie a cada participante um código e o link do teste: {test}. Há um texto de convite pronto na página {group}.",
+          "O participante faz o teste (cerca de 10 minutos, sem cadastro), clica em “Tenho um código” na tela do resultado e digita o código e o próprio e-mail. Você encontra {guide} instruções passo a passo com capturas de tela, fáceis de encaminhar aos participantes.",
+          "O relatório ampliado chega ao e-mail do participante em poucos minutos. A você, informamos apenas quais códigos foram usados: sem o consentimento dos participantes, não repassamos resultados nem e-mails."
+        ],
+        "groupLink": "“Aplicar o teste DISC em grupo”",
+        "guideLink": "na página “Para empresas”",
+        "teamTitle": "Relatório da equipe: {org}",
+        "team": [
+          "Ao digitar o código, o participante verá uma pergunta: quer mostrar ao gestor o nome, o perfil e as quatro escalas? O próprio relatório chega de qualquer forma.",
+          "Quando todos tiverem feito o teste, abra a {team} e clique em “Pedir o relatório da equipe”. O relatório chegará neste endereço em até {days} dias. Para o relatório, é preciso que pelo menos {min} pessoas compartilhem o resultado."
+        ],
+        "teamLink": "página da equipe",
+        "codesTitle": "Seus códigos ({n})",
+        "file": "Os mesmos códigos estão no arquivo anexo: ele abre no Excel e facilita anotar quem recebeu cada código.",
+        "question": "Se tiver dúvidas, responda a este e-mail ou escreva para {email}.",
+        "bye": "Equipe disc-test.org",
+        "foot": "Pedido {order}. Você recebeu este e-mail porque códigos foram comprados com este endereço em {test}.",
+        "fileName": "disc-codigos-{id}.csv"
+      },
+      "teamMail": {
+        "subject": "Relatório da equipe: {org}",
+        "hello": "Olá!",
+        "intro": "Em anexo está o relatório da equipe: {org}. Ele inclui os participantes que concordaram em mostrar o resultado a você: {n}.",
+        "howTitle": "Como usar o relatório",
+        "how": [
+          "Primeiro, leia as seções 2, 3 e 4: mapa da equipe, retrato e possíveis atritos.",
+          "Converse sobre as seções 3, 4 e 6 com a equipe: elas servem para combinar regras, e não para avaliar pessoas.",
+          "A seção 7 foi escrita para você: como passar tarefas a cada pessoa.",
+          "Não tome decisões de pessoal com base no relatório e não o encaminhe para fora da equipe."
+        ],
+        "again": "Se a equipe mudar, peça um novo relatório na {team}.",
+        "teamLink": "página da equipe",
+        "question": "Dúvidas e comentários: responda a este e-mail ou escreva para {email}.",
+        "bye": "Equipe disc-test.org"
+      },
       "payTitle": "Pagamento e documentos",
       "pay": [
-        "O pagamento é feito com cartão — pode ser o cartão da empresa — por um link de pagamento seguro que enviamos depois do pedido, em dólares americanos. Após o pagamento, quem pagou recebe por e-mail a confirmação eletrônica do pagamento.",
-        "Se o financeiro precisar de uma fatura (invoice) ou de outros documentos, informe isso no pedido: diremos o que podemos fornecer."
+        "O pagamento é feito com cartão no próprio site, e pode ser o cartão da empresa: o valor depende do número de códigos e é cobrado em dólares americanos (USD). Você informa os dados do cartão em uma página de pagamento segura, e a confirmação eletrônica do pagamento chega por e-mail.",
+        "Se o financeiro precisar de fatura (invoice) ou de outros documentos, informe isso no pedido no fim da página: diremos o que podemos fornecer."
       ],
       "faqTitle": "Perguntas e respostas",
       "faq": [
@@ -1219,12 +1389,12 @@
         { "q": "E se a pessoa já tiver feito o teste?", "a": "Não precisa refazer: dá para digitar o código na tela do resultado salvo ou na página do relatório ampliado, no mesmo aparelho." },
         {
           "q": "Posso usar os relatórios em treinamentos?",
-          "a": "Sim: os participantes trabalham com os próprios relatórios nos encontros. Não é permitido copiar textos dos relatórios para os seus materiais e apostilas — os direitos sobre eles estão descritos na seção 6 dos {offer}."
+          "a": "Sim: os participantes trabalham com os próprios relatórios nos encontros. Não é permitido copiar textos dos relatórios para os seus materiais e apostilas: os direitos sobre eles estão descritos na seção 6 dos {offer}."
         }
       ],
       "form": {
         "title": "Pedido",
-        "lead": "Respondemos em até um dia útil no e-mail que você informar.",
+        "lead": "Se você precisa de fatura ou tem alguma dúvida, escreva: respondemos em até um dia útil no e-mail que você informar.",
         "size": "Quantas pessoas",
         "sizes": ["até 10", "10–50", "50–100", "mais de 100"],
         "interest": "O que interessa a você",
@@ -1259,7 +1429,7 @@
       "codeTerms": [
         {
           "section": 0,
-          "text": "Código de Acesso — conjunto de caracteres que dá direito a receber o Serviço sem pagamento pelo Cliente. Os Códigos de Acesso são comprados do Prestador, por contrato separado, por um terceiro — uma organização, um empresário individual ou outra pessoa — que os repassa aos Clientes."
+          "text": "Código de Acesso: conjunto de caracteres que dá direito a receber o Serviço sem pagamento pelo Cliente. Os Códigos de Acesso são comprados do Prestador por um terceiro (doravante, o Comprador de Códigos), que pode ser uma organização, um empresário individual ou outra pessoa, no Site, na página “Para empresas”, ou por contrato separado, e são repassados por ele aos Clientes."
         },
         {
           "section": 3,
@@ -1271,10 +1441,24 @@
         },
         {
           "section": 7,
-          "text": "8.4. A quem comprou o Código de Acesso, o Prestador informa apenas se o Código de Acesso foi usado e quando. O Prestador não lhe transmite o resultado do Teste, o Perfil Ampliado nem o endereço de e-mail do Cliente."
+          "text": "8.4. A quem comprou o Código de Acesso, o Prestador informa apenas se o Código de Acesso foi usado e quando. Se o Código de Acesso foi emitido para o relatório da equipe (cláusula 4.8) e o Cliente, ao digitar o Código de Acesso, concordou por iniciativa própria em compartilhar o seu resultado, o Prestador inclui no relatório da equipe o nome, o perfil DISC e as porcentagens das quatro escalas do Cliente. O consentimento é voluntário: o Cliente recebe o Perfil Ampliado mesmo que não o dê. O Cliente pode revogar o consentimento a qualquer momento, escrevendo ao Prestador; a revogação não afeta a licitude da transmissão feita anteriormente, e o resultado do Cliente não entra nos relatórios da equipe seguintes. O Prestador não transmite a quem comprou o Código de Acesso o restante do resultado do Teste, o Perfil Ampliado nem o endereço de e-mail do Cliente."
         }
       ],
-      "edition": "Versão de 14 de novembro de 2026. Tradução para o português atualizada em 14 de novembro de 2026.",
+      "bizTerms": [
+        {
+          "section": 3,
+          "text": "4.7. O Comprador de Códigos escolhe, na página “Para empresas”, o número de Códigos de Acesso e informa um endereço de e-mail. O preço de um Código de Acesso depende da quantidade e é informado nessa página; o valor total é exibido antes do pagamento e na página de pagamento. Os Códigos de Acesso são pagos integralmente, na forma prevista nas cláusulas 3.2 a 3.5. Após o pagamento, o Prestador envia os Códigos de Acesso para o endereço informado, em geral imediatamente e em até 24 horas a contar do pagamento; o serviço de venda dos Códigos de Acesso é considerado prestado no momento do envio da mensagem com os Códigos de Acesso. Cada Código de Acesso vale por 12 meses a contar da data do pagamento."
+        },
+        {
+          "section": 3,
+          "text": "4.8. Se, ao comprar os Códigos de Acesso no Site, o Comprador de Códigos tiver escolhido o relatório da equipe, o Prestador prepara, sem custo adicional, o relatório da equipe: uma descrição da equipe com base nos resultados do Teste dos Clientes que, ao digitar o Código de Acesso, concordaram por iniciativa própria em mostrá-los (no mínimo três pessoas). O Comprador de Códigos pede o relatório na página da equipe, cujo link chega na mensagem com os Códigos de Acesso; o relatório é enviado para o endereço de e-mail do Comprador de Códigos em até 3 dias corridos a contar do pedido. O relatório da equipe destina-se ao gestor e à própria equipe e não pode servir de fundamento para decisões de contratação, demissão ou remuneração."
+        },
+        {
+          "section": 4,
+          "text": "5.9. O Comprador de Códigos pode desistir dos Códigos de Acesso não usados que comprou no Site, dentro do prazo de validade deles: o valor de cada Código de Acesso não usado é devolvido pelo preço pelo qual foi comprado, e o próprio Código de Acesso deixa de valer. O valor pago por um Código de Acesso já aceito pelo Site não é devolvido. O reembolso é feito na forma das cláusulas 5.5 a 5.7; a solicitação deve informar o número do pedido."
+        }
+      ],
+      "edition": "Versão de 16 de novembro de 2026. Tradução para o português atualizada em 16 de novembro de 2026.",
       "note": "Este texto é a tradução para o português da oferta original publicada em {original}. Em caso de divergência entre os dois textos, prevalece o original, exceto quanto ao preço e à forma de pagamento: na versão em português do Site, eles estão definidos nas seções 1 e 3.",
       "seller": "empresário individual Manukyan Armen, N.º de identificação fiscal (INN) {inn}",
       "lead": "Este documento é uma proposta formal (oferta ao público) para celebrar um contrato de prestação do serviço pago “Perfil DISC ampliado” e também um contrato de fornecimento do Kit do facilitador DISC (seção 10), nas condições descritas abaixo. A oferta é feita por {seller} (doravante, o Prestador). O pagamento do serviço ou do Kit implica concordância integral e incondicional com estas condições (aceitação da oferta).",
@@ -1584,14 +1768,28 @@
           "button": "Receber o relatório",
           "back": "Comprar sem código",
           "wait": "Verificando o código…",
-          "note": "Quem passou o código a você — uma empresa ou alguém que quis presentear você — já pagou pelo relatório: você não precisa pagar nada. Não repassamos a essa pessoa ou empresa o seu resultado nem o seu e-mail. Ao clicar em “Receber o relatório”, você aceita os {offer}.",
+          "note": "Quem passou o código a você (uma empresa ou alguém que quis presentear você) já pagou pelo relatório: você não precisa pagar nada. Sem o seu consentimento, não repassamos a essa pessoa ou empresa o seu resultado nem o seu e-mail. Ao clicar em “Receber o relatório”, você aceita os {offer}.",
           "badEmail": "Confira o endereço: o relatório será enviado para ele.",
           "empty": "Digite o código de acesso.",
           "done": "Código aceito. O relatório chegará em {to} em poucos minutos. Se o e-mail não aparecer, confira a pasta de spam.",
           "bad": "Código não encontrado. Confira se ele foi digitado corretamente.",
           "used": "Este código já foi usado. Se foi você quem o digitou e o relatório não chegou, escreva para {email}.",
           "expired": "A validade deste código terminou. Fale com quem passou o código a você.",
-          "error": "Não foi possível verificar o código. Tente de novo em um minuto ou escreva para {email}."
+          "error": "Não foi possível verificar o código. Tente de novo em um minuto ou escreva para {email}.",
+          "team": {
+            "v": "team-pt-2026-11-16",
+            "kicker": "Código de uma empresa",
+            "title": "Este código foi emitido para o relatório da equipe: {org}",
+            "titleNoOrg": "Este código foi emitido para o relatório da equipe",
+            "text": "Se você concordar, o gestor da equipe vai receber um relatório da equipe com:",
+            "list": ["o seu nome,", "o seu perfil DISC,", "as suas porcentagens nas quatro escalas."],
+            "not": "O seu relatório ampliado, as respostas do teste e o seu e-mail não são repassados.",
+            "share": "Receber o relatório e compartilhar o resultado",
+            "skip": "Receber o relatório sem compartilhar",
+            "note": "O relatório chega nos dois casos. Você pode revogar o consentimento a qualquer momento escrevendo para {email}; um relatório que já foi enviado ao gestor não pode ser recolhido. Ao clicar em um dos botões, você aceita os {offer} e, ao clicar em “Receber o relatório e compartilhar o resultado”, concorda com o repasse desses dados à empresa.",
+            "doneShared": "O seu resultado vai entrar no relatório da equipe.",
+            "doneSkip": "Não repassamos o seu resultado. Se mudar de ideia, escreva para {email}."
+          }
         },
         "how": [
           "Faça o teste gratuito: 24 blocos, cerca de 10 minutos. Se você já fez, não precisa repetir: o relatório é montado a partir do resultado que você já tem.",

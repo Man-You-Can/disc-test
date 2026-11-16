@@ -1078,7 +1078,8 @@
           "Wenn Sie das DISG-Workshop-Paket kaufen, verarbeiten wir Ihre E-Mail-Adresse und die Bestelldaten: Datum, Betrag, Nummer und Status der Zahlung. Wir benötigen diese Daten, um Ihnen die E-Mail mit den Links zu den Dateien des Pakets zu senden, Ihre Anfragen zu beantworten und eine Rückerstattung abzuwickeln; Rechtsgrundlage ist der Vertrag auf Grundlage der {offer}. Die Bestelldaten zum Paket werden genauso aufbewahrt wie die Bestelldaten zum ausführlichen Profil; Erinnerungs-E-Mails zu einer nicht abgeschlossenen Zahlung für das Paket versenden wir nicht."
         ]
       },
-      "purchaseCode": "Wenn Sie das ausführliche Profil mit einem Zugangscode erhalten, den eine Organisation oder eine andere Person gekauft hat, verarbeiten wir dieselben Daten mit Ausnahme der Zahlungsdaten und vermerken, dass der Code verwendet wurde. Wer den Code gekauft hat, erfährt von uns nur, ob und wann er verwendet wurde: Ihr Ergebnis, Ihr Bericht und Ihre E-Mail-Adresse werden nicht weitergegeben. Rechtsgrundlage ist der Vertrag, den Sie mit der Eingabe des Codes auf Grundlage der {offer} schließen.",
+      "purchaseCode": "Wenn Sie das ausführliche Profil mit einem Zugangscode erhalten, den eine Organisation oder eine andere Person gekauft hat, verarbeiten wir dieselben Daten mit Ausnahme der Zahlungsdaten und vermerken, dass der Code verwendet wurde. Wer den Code gekauft hat, erfährt von uns nur, ob und wann er verwendet wurde. Wurde der Code für einen Teambericht ausgegeben und klicken Sie bei der Eingabe auf „Bericht erhalten und Ergebnis teilen“, geben wir Ihren Namen, Ihr DISG-Profil und Ihre Prozentwerte auf den vier Skalen als Teil des Teamberichts an die Organisation weiter, die den Code gekauft hat. Rechtsgrundlage dieser Weitergabe ist Ihre Einwilligung. Sie ist freiwillig: Das ausführliche Profil erhalten Sie auch ohne sie. Sie können die Einwilligung jederzeit mit einer Nachricht an die Adresse der Website widerrufen; der Widerruf berührt nicht die Rechtmäßigkeit der bis dahin erfolgten Weitergabe, und Ihr Ergebnis wird in spätere Teamberichte nicht mehr aufgenommen. Ohne diese Einwilligung werden Ihr Ergebnis, Ihr Bericht und Ihre E-Mail-Adresse nicht an die Person weitergegeben, die den Code gekauft hat. Rechtsgrundlage der übrigen Verarbeitung ist der Vertrag, den Sie mit der Eingabe des Codes auf Grundlage der {offer} schließen.",
+      "purchaseBiz": "Wenn Sie Zugangscodes auf der Seite „Für Organisationen“ kaufen, verarbeiten wir Ihre E-Mail-Adresse, den Namen der Organisation (wenn Sie einen Teambericht bestellen) und die Bestelldaten: Datum, Betrag, Anzahl der Codes, Nummer und Status der Zahlung. Diese Daten benötigen wir, um Ihnen die Codes, die Zahlungsbestätigung und den Teambericht zu senden, Ihre Anfragen zu beantworten und eine Rückerstattung abzuwickeln; sie werden genauso aufbewahrt wie die Bestelldaten zum ausführlichen Profil. Die Zahlung wickelt derselbe Zahlungsabwickler ab wie beim Kauf des ausführlichen Profils. Rechtsgrundlage ist der Vertrag, den Sie mit der Bezahlung der Codes auf Grundlage der {offer} schließen.",
       "purchasePair": "Wenn Sie den Bericht „DISG zu zweit“ bestellen, verarbeiten wir Ihre E-Mail-Adresse, die Bestelldaten, die Namen und Testergebnisse beider Personen aus dem Vergleichslink, Ihre Angabe, in welcher Beziehung Sie zueinander stehen, und – sofern Sie sie angegeben haben – die Adresse der zweiten Person für die Kopie des Berichts. Die zweite Person stimmt mit einem Häkchen auf der Website zu, ihr Ergebnis zu zeigen und für den Bericht verwenden zu lassen; mit der Angabe ihrer Adresse bestätigen Sie, dass sie mit dem Erhalt der Kopie einverstanden ist. Der Text des Berichts wird mithilfe einer KI ausschließlich auf Grundlage anonymisierter Daten erstellt – der Profile und Werte ohne Namen, Adressen und Ergebniscodes. Die Ergebniscodes und die Adresse der zweiten Person löschen wir 30 Tage nach dem Versand des Berichts, bei einer nicht bezahlten Bestellung nach 7 Tagen; die Bestelldaten werden genauso aufbewahrt wie die Bestelldaten zum ausführlichen Profil. Rechtsgrundlage sind der Vertrag auf Grundlage der {offer} und die Einwilligung der zweiten Person.",
       "purchaseGift": "Wenn Sie Geschenkgutscheine kaufen, verarbeiten wir Ihre E-Mail-Adresse, die Bestelldaten (Datum, Betrag, Nummer und Status der Zahlung), die Zeile „Von“ und – sofern Sie sie angegeben haben – Namen und E-Mail-Adressen der Beschenkten. Ihre E-Mail-Adresse und die Bestelldaten benötigen wir, um Ihnen die Gutscheine und die Zahlungsbestätigung zu senden, Ihre Anfragen zu beantworten und eine Rückerstattung abzuwickeln; sie werden genauso aufbewahrt wie die Bestelldaten zum ausführlichen Profil. Der Name einer beschenkten Person wird auf ihren Gutschein gedruckt, und an ihre E-Mail-Adresse geht eine einzige E-Mail mit ihrem Gutschein. Namen und E-Mail-Adressen der Beschenkten löschen wir 30 Tage nach dem Versand der Gutscheine, bei einer nicht bezahlten Bestellung nach 7 Tagen. Mit der Angabe der Daten der Beschenkten bestätigen Sie, dass diese mit dem Erhalt des Gutscheins einverstanden sind. Rechtsgrundlage ist der Vertrag auf Grundlage der {offer}, der zugunsten der Beschenkten geschlossen wird. Wer einen Gutscheincode auf der Website eingibt, erhält das ausführliche Profil wie mit einem Zugangscode: Wer den Gutschein verschenkt hat, erfährt von uns nur, ob und wann er eingelöst wurde."
     },
@@ -1152,16 +1153,16 @@
         },
         {
           "h": "Fragen zur Leistung",
-          "p": ["Wenn Sie eine Frage zum ausführlichen Profil oder zur Zahlung haben, schreiben Sie uns über das Formular „{contact}“ – die Antwort kommt an die angegebene E-Mail-Adresse. Die Angaben zum Inhaber der Website stehen am Ende jeder Seite."]
+          "p": ["Wenn Sie eine Frage zum ausführlichen Profil oder zur Zahlung haben, schreiben Sie uns über das Formular „{contact}“: Die Antwort kommt an die angegebene E-Mail-Adresse. Die Angaben zum Inhaber der Website stehen am Ende jeder Seite."]
         }
       ]
     },
     "business": {
       "title": "DISG für Organisationen: ausführliche Berichte im Paket",
-      "description": "Ausführliche DISG-Berichte für Mitarbeitende, Kundschaft und Teilnehmende im Paket, mit bis zu {maxDiscount} % Rabatt. Zugangscodes, Zahlung per Karte.",
+      "description": "Ausführliche DISG-Berichte für Mitarbeitende, Kundschaft und Teilnehmende im Paket, mit bis zu {maxDiscount} % Rabatt. Zugangscodes per E-Mail direkt nach der Zahlung, Teambericht kostenlos.",
       "h1": "DISG für Organisationen",
-      "lead": "Der DISG-Test auf dieser Website ist kostenlos und ohne Anmeldung. Wenn Sie ihn mit Mitarbeitenden, Kundinnen und Kunden oder Teilnehmenden durchführen, können Sie die ausführlichen Berichte für sie im Paket kaufen: günstiger als einzeln.",
-      "facts": ["ab {minPack} Berichten", "bis zu {maxDiscount} % Rabatt", "Zahlung per Karte über einen sicheren Link", "jede Person erhält ihren Bericht per E-Mail"],
+      "lead": "Der DISG-Test auf dieser Website ist kostenlos und ohne Anmeldung. Wenn Sie ihn mit Mitarbeitenden, Kundinnen und Kunden oder Teilnehmenden durchführen, können Sie die ausführlichen Berichte für sie im Paket kaufen: günstiger als einzeln und mit einem **kostenlosen Teambericht** dazu. Sie bezahlen per Karte direkt auf der Website, die Codes kommen gleich nach der Zahlung per E-Mail.",
+      "facts": ["ab {minPack} Berichten", "bis zu {maxDiscount} % Rabatt", "Codes per E-Mail direkt nach der Zahlung", "**Teambericht kostenlos**"],
       "forTitle": "Für wen das passt",
       "for": [
         "HR und Führungskräfte: Teams lernen sich kennen, neue Mitarbeitende kommen gut an, Reibungen unter Kolleginnen und Kollegen kommen auf den Tisch.",
@@ -1173,12 +1174,12 @@
         "person": "Für Privatpersonen",
         "personPick": "Ausführlicher Bericht zu Ihrem Testergebnis",
         "org": "Für Organisationen",
-        "orgPick": "Ausführliche Berichte für Mitarbeitende, Kundschaft und Teilnehmende – im Paket, Zahlung per Karte",
+        "orgPick": "Ausführliche Berichte für Mitarbeitende, Kundschaft und Teilnehmende im Paket, Zahlung per Karte",
         "orgName": "Berichtspakete",
-        "orgText": "Für HR, Personalvermittlungen, Corporate Academies, Trainerinnen, Trainer und Coaches. Sie kaufen Zugangscodes und geben sie an die Personen weiter: Jede Person macht den Test und erhält ihren eigenen Bericht per E-Mail. Zahlung per Karte über einen sicheren Link, bis zu {maxDiscount} % Rabatt.",
+        "orgText": "Für HR, Personalvermittlungen, Corporate Academies, Trainerinnen, Trainer und Coaches. Sie kaufen Zugangscodes und geben sie an die Personen weiter: Jede Person macht den Test und erhält ihren eigenen Bericht per E-Mail. Zahlung per Karte direkt auf der Website, bis zu {maxDiscount} % Rabatt. **Teambericht kostenlos.**",
         "orgPriceLabel": "Preis",
         "orgPrice": "ab {minPrice} € pro Bericht",
-        "orgButton": "Mehr erfahren und anfragen"
+        "orgButton": "Mehr erfahren und kaufen"
       },
       "packsTitle": "Berichtspakete",
       "packsText": "Sie kaufen Zugangscodes und geben sie weiter, einen Code pro Person. Jede Person macht den Test, gibt den Code auf der Seite mit ihrem Ergebnis ein und erhält einen ausführlichen Bericht mit ihrem Namen als PDF an ihre E-Mail-Adresse. Was im Bericht steht und wie seine Seiten aussehen, zeigt die Seite „{report}“.",
@@ -1186,29 +1187,201 @@
       "packRow": "ab {n} Codes",
       "packPrice": "{price} €",
       "packDiscount": "−{pct} %",
-      "packsNote": "Einzelpreis eines Berichts: {retail} €. Ein Code gilt {months} Monate ab Ausgabe. Ein Code – ein Bericht für eine Person.",
+      "packsNote": "Einzelpreis eines Berichts: {retail} €. Ein Code gilt {months} Monate ab Ausgabe. Jeder Code gilt für einen Bericht und eine Person.",
       "csv": ["Zugangscode", "Verwendet", "Gültig bis", "Wo eingeben"],
+      "buy": {
+        "title": "Codes kaufen",
+        "lead": "Zahlung per Karte direkt auf der Website. Gleich nach der Zahlung kommen die Codes an Ihre E-Mail-Adresse: als Liste in der E-Mail und als Datei für Excel.",
+        "button": "Codes kaufen",
+        "payName": "Zugangscodes für den ausführlichen DISG-Bericht: {n} Stück",
+        "qtyLabel": "Anzahl der Codes",
+        "qtyHint": "Ab {min} Codes. Je mehr Codes, desto günstiger jeder einzelne.",
+        "units": {
+          "one": "Code",
+          "other": "Codes"
+        },
+        "line": "{n} {units} zu je {unit}",
+        "addMore": "{k} Stück mehr, und der Preis pro Code sinkt auf {unit}",
+        "save": "Sie sparen {sum} gegenüber dem Einzelkauf",
+        "teamLabel": "Teambericht hinzufügen (kostenlos)",
+        "teamHint": "Der Teambericht ist kostenlos. Bei der Eingabe des Codes entscheidet jede Person selbst, ob sie Ihnen Namen, Profil und die vier Skalen zeigt. Wenn alle den Test gemacht haben, fordern Sie den Bericht auf der Teamseite an; er kommt innerhalb von drei Tagen an Ihre E-Mail-Adresse.",
+        "orgLabel": "Name der Organisation oder des Teams",
+        "orgHint": "Die Teilnehmenden sehen ihn in der Frage nach ihrer Einwilligung.",
+        "emailLabel": "E-Mail-Adresse für die Codes",
+        "emailHint": "Hierhin schicken wir die Codes, die Zahlungsbestätigung und den Teambericht.",
+        "total": "Gesamt",
+        "money": "{n} €",
+        "submit": "Für {total} kaufen",
+        "wait": "Die Zahlungsseite wird geöffnet …",
+        "note": "Mit dem Kauf akzeptieren Sie unsere {offer}. Ihre Kartendaten geben Sie auf einer gesicherten Zahlungsseite ein.",
+        "invoice": "Brauchen Sie eine Rechnung oder andere Unterlagen? Schreiben Sie uns über das {request}.",
+        "invoiceLink": "Formular unten auf der Seite",
+        "checkEmail": "Prüfen Sie die E-Mail-Adresse: An sie schicken wir die Codes.",
+        "checkOrg": "Geben Sie den Namen der Organisation ein: Die Teilnehmenden sehen ihn.",
+        "checkQty": "Anzahl der Codes: {min} bis {max}.",
+        "priceChanged": "Der Preis pro Code hat sich gerade geändert. Prüfen Sie den Betrag und starten Sie den Kauf noch einmal.",
+        "error": "Die Zahlungsseite lässt sich gerade nicht öffnen. Versuchen Sie es in einer Minute noch einmal oder schreiben Sie uns an {email}.",
+        "status": {
+          "wait": "Wir prüfen die Zahlung …",
+          "paid": "Die Zahlung ist eingegangen. Die E-Mail mit den Codes kommt in wenigen Minuten an {email}.",
+          "sent": "Erledigt: Die E-Mail mit den Codes ist an {email} gesendet. Wenn sie nicht im Posteingang ist, sehen Sie im Spam-Ordner nach.",
+          "failed": "Die Zahlung ist nicht durchgegangen, es wurde nichts abgebucht. Sie können es noch einmal versuchen.",
+          "thanks": "Vielen Dank für Ihre Zahlung! Die E-Mail mit den Codes kommt an die Adresse, die Sie angegeben haben."
+        }
+      },
       "howTitle": "So funktioniert es",
       "how": [
-        "Senden Sie unten auf der Seite eine Anfrage: wie viele Berichte Sie brauchen und für wen. Wir antworten innerhalb eines Werktags.",
-        "Wir senden Ihnen einen Link zur Zahlung per Karte. Nach der Zahlung erhalten Sie die Codes als Datei.",
+        "Wählen Sie im Abschnitt „Codes kaufen“, wie viele Codes Sie brauchen, und bezahlen Sie per Karte. Wenn Sie einen **kostenlosen Teambericht** möchten, setzen Sie das Häkchen dafür.",
+        "Direkt nach der Zahlung kommen die Codes an Ihre E-Mail-Adresse: als Liste in der E-Mail und als Datei. Braucht Ihre Buchhaltung eine Rechnung oder andere Unterlagen, schreiben Sie uns über das Formular unten auf der Seite.",
         "Schicken Sie den Personen den Link zum Test und jeweils einen Code. Der Test dauert etwa 10 Minuten, eine Anmeldung ist nicht nötig.",
         "Auf der Seite mit dem Ergebnis klickt die Person auf „Ich habe einen Code“ und gibt den Code und ihre E-Mail-Adresse ein. Der Bericht kommt nach wenigen Minuten per E-Mail.",
-        "Auf Wunsch teilen wir Ihnen mit, wie viele Codes bereits verwendet wurden."
+        "Für den Teambericht: Wenn alle den Test gemacht haben, klicken Sie auf der Teamseite auf „Teambericht anfordern“. Den Link zur Teamseite finden Sie in der E-Mail mit den Codes."
       ],
+      "guide": {
+        "title": "So geben Teilnehmende den Code ein",
+        "lead": "Leiten Sie diese Anleitung zusammen mit dem Code und dem Link zum Test an die Teilnehmenden weiter. Link zur Anleitung: {link}",
+        "steps": [
+          {
+            "t": "Test machen",
+            "p": "Öffnen Sie den Link zum Test und bearbeiten Sie die 24 Blöcke mit Aussagen. Das dauert etwa 10 Minuten, eine Anmeldung ist nicht nötig. Das Ergebnis erscheint sofort auf dem Bildschirm."
+          },
+          {
+            "t": "Auf „Ich habe einen Code“ klicken",
+            "p": "Scrollen Sie auf der Ergebnisseite zum Abschnitt mit dem ausführlichen Bericht. Unter der Schaltfläche „Kaufen“ steht der Link „Ich habe einen Code“: Klicken Sie darauf. Sie zahlen nichts.",
+            "img": "code-1-link",
+            "alt": "Abschnitt zum ausführlichen Bericht auf der Ergebnisseite: E-Mail-Feld, Schaltfläche „Kaufen“ und darunter hervorgehoben der Link „Ich habe einen Code“"
+          },
+          {
+            "t": "E-Mail-Adresse und Code eingeben",
+            "p": "Geben Sie Ihre E-Mail-Adresse ein (an sie geht der Bericht) und den Zugangscode aus der E-Mail Ihrer Führungskraft. Klicken Sie auf „Bericht erhalten“.",
+            "img": "code-2-form",
+            "alt": "Formular mit ausgefüllter E-Mail-Adresse und ausgefülltem Feld „Zugangscode“, hervorgehoben die Schaltfläche „Bericht erhalten“"
+          },
+          {
+            "t": "Entscheiden, ob Sie Ihr Ergebnis teilen",
+            "p": "Wurde der Code für einen Teambericht ausgegeben, erscheint eine Frage. Mit „Bericht erhalten und Ergebnis teilen“ sieht die Führungskraft im Teambericht Ihren Namen, Ihr DISG-Profil und Ihre Prozentwerte auf den vier Skalen. Mit „Bericht erhalten, ohne zu teilen“ sieht sie nichts davon. Ihren ausführlichen Bericht erhalten Sie in beiden Fällen.",
+            "img": "code-3-consent",
+            "alt": "Karte „Dieser Code wurde für einen Teambericht ausgegeben“, hervorgehoben die Schaltfläche „Bericht erhalten und Ergebnis teilen“, darunter der Link „Bericht erhalten, ohne zu teilen“"
+          },
+          {
+            "t": "Postfach prüfen",
+            "p": "Nach wenigen Minuten kommt der ausführliche Bericht als PDF an Ihre E-Mail-Adresse. Wenn keine E-Mail ankommt, sehen Sie im Spam-Ordner nach.",
+            "img": "code-4-done",
+            "alt": "Meldung „Code angenommen. Der Bericht kommt in wenigen Minuten“ mit der angegebenen E-Mail-Adresse"
+          }
+        ],
+        "note": "Haben Sie den Test auf diesem Gerät schon gemacht? Dann müssen Sie ihn nicht wiederholen: Öffnen Sie Ihr gespeichertes Ergebnis oder die Seite „{report}“ und geben Sie den Code dort ein."
+      },
+      "guideTeam": {
+        "title": "So erhalten Sie den Teambericht",
+        "lead": "Diese Anleitung ist für die Person, die die Codes kauft, meist die Führungskraft oder HR. **Der Teambericht zum Codepaket ist kostenlos.**",
+        "steps": [
+          {
+            "t": "Beim Kauf den Teambericht wählen",
+            "p": "Lassen Sie im Abschnitt „Codes kaufen“ das Häkchen bei „Teambericht hinzufügen (kostenlos)“ gesetzt und geben Sie den Namen der Organisation oder des Teams ein: Die Teilnehmenden sehen ihn in der Frage nach ihrer Einwilligung.",
+            "img": "team-1-buy",
+            "alt": "Formular zum Kauf der Codes: hervorgehoben das Häkchen „Teambericht hinzufügen (kostenlos)“ und das Feld „Name der Organisation oder des Teams“"
+          },
+          {
+            "t": "Codes verteilen",
+            "p": "Die E-Mail mit den Codes kommt direkt nach der Zahlung. Schicken Sie jeder Person ihren Code, den Link zum Test und die Anleitung oben. Jede Person entscheidet selbst, ob sie ihr Ergebnis teilt."
+          },
+          {
+            "t": "Auf „Teambericht anfordern“ klicken",
+            "p": "Der Link zur Teamseite steht in der E-Mail mit den Codes, im Abschnitt „Teambericht“. Auf der Seite sehen Sie, wie viele Personen den Test gemacht und wie viele ihr Ergebnis geteilt haben, aber nicht, wer. Wenn alle fertig sind, klicken Sie auf die Schaltfläche. Sie funktioniert, sobald mindestens drei Personen ihr Ergebnis geteilt haben.",
+            "img": "team-2-page",
+            "alt": "Teamseite: Organisation, 24 Codes, 21 haben den Test mit Code gemacht, 18 haben ihr Ergebnis geteilt, hervorgehoben die Schaltfläche „Teambericht anfordern“"
+          },
+          {
+            "t": "Auf die E-Mail warten",
+            "p": "Der Teambericht kommt innerhalb von drei Tagen als PDF an dieselbe E-Mail-Adresse wie die Codes. Er enthält nur die Personen, die ihr Ergebnis geteilt haben. Kommen später neue Personen ins Team, können Sie auf derselben Seite einen neuen Bericht anfordern.",
+            "img": "team-3-requested",
+            "alt": "Teamseite nach der Anforderung: „Bericht angefordert. Er kommt innerhalb von 3 Tagen an die E-Mail-Adresse, an die die Codes gingen“"
+          }
+        ]
+      },
       "privacyTitle": "Die Ergebnisse bleiben bei den Teilnehmenden",
       "privacy": [
-        "Den Bericht erhält nur, wer den Test gemacht und den Code eingegeben hat. Wer die Codes bezahlt hat, bekommt von uns weder Ergebnisse noch Berichte noch E-Mail-Adressen der Teilnehmenden – nur die Zahl der verwendeten Codes.",
-        "Wenn Sie einen Überblick über das Team brauchen, bitten Sie die Personen, ihr Ergebnis selbst zu teilen: den Link zum Ergebnis oder den Code aus dem Kurzbericht. Wie Sie daraus eine Teamtabelle erstellen, steht auf der Seite „{teams}“."
+        "Den Bericht erhält nur, wer den Test gemacht und den Code eingegeben hat. Wer die Codes bezahlt hat, bekommt von uns ohne Einwilligung der Teilnehmenden weder Ergebnisse noch Berichte noch E-Mail-Adressen: So verlangt es das Datenschutzrecht. Ohne diese Einwilligung erfahren Sie nur, wie viele Codes verwendet wurden.",
+        "Für den Teambericht entscheidet jede Person bei der Eingabe des Codes selbst, ob sie Namen, Profil und die vier Skalen mit der Führungskraft teilt; den eigenen Bericht erhält sie in jedem Fall. In den Teambericht kommen nur die Personen, die geteilt haben. Wenn Sie lieber selbst eine Teamtabelle erstellen, steht auf der Seite „{teams}“, wie das geht."
       ],
       "boundsTitle": "Wofür DISG nicht geeignet ist",
       "bounds": "DISG beschreibt den Verhaltensstil, nicht Fähigkeiten, Wissen oder Ehrlichkeit. Der Test ist nicht für die Personalauswahl gedacht und nicht für Entscheidungen über Einstellung, Kündigung oder Gehalt. Nutzen Sie ihn, damit Menschen sich selbst und einander besser verstehen: beim Onboarding, in der Teamarbeit und in der Führungskräfteentwicklung.",
-      "teamTitle": "Teambericht – in Vorbereitung",
-      "team": "Wir bereiten einen Bericht für Führungskräfte über das ganze Team vor: Stilkarte, Stärken des Teams, wo Reibungen entstehen und was dagegen hilft. Wenn Sie ihn brauchen, vermerken Sie das in Ihrer Anfrage: Wir melden uns, sobald er fertig ist.",
+      "teamTitle": "Kostenloser Teambericht zum Paket",
+      "team": "**Der Teambericht zum Codepaket ist kostenlos.** Er richtet sich an die Führungskraft und beschreibt das ganze Team: Stilkarte, Teamporträt, wo es reiben kann und was dagegen hilft, wer welche Aufgaben von sich aus übernimmt und wie Sie mit jeder Person arbeiten. Er beruht auf den Ergebnissen der Personen, die zugestimmt haben, sie zu zeigen. Dafür braucht es mindestens drei Personen. Fordern Sie ihn auf der Teamseite an, sobald alle den Test gemacht haben: Der Bericht kommt innerhalb von drei Tagen an Ihre E-Mail-Adresse.",
+      "teamPage": {
+        "title": "Teambericht",
+        "description": "Teamseite: wie viele Teilnehmende den Test mit einem Code gemacht und ihr Ergebnis geteilt haben, Anforderung des Teamberichts.",
+        "h1": "Teambericht",
+        "lead": "Hier sehen Sie, wie viele Personen den Test mit Ihren Codes gemacht und ihr Ergebnis geteilt haben. Wenn alle fertig sind, fordern Sie den Bericht an: Er kommt innerhalb von {days} Tagen an die E-Mail-Adresse, an die die Codes gingen.",
+        "loading": "Wird geladen …",
+        "notFound": "Der Link lässt sich nicht öffnen. Prüfen Sie, ob Sie ihn vollständig aus der E-Mail mit den Codes kopiert haben. Wenn es nicht klappt, schreiben Sie uns an {email}.",
+        "org": "Organisation",
+        "codes": "Codes",
+        "used": "Test mit Code gemacht",
+        "shared": "Ergebnis geteilt",
+        "privacy": "Wer geteilt hat und wer nicht, zeigen wir hier nicht. In den Bericht kommen nur die Personen, die ihr Ergebnis geteilt haben: mit Namen, Profil und den vier Skalen.",
+        "button": "Teambericht anfordern",
+        "few": "Für den Bericht müssen mindestens {min} Personen ihr Ergebnis teilen. Bisher geteilt: {n}.",
+        "requested": "Bericht angefordert am {date}. Er kommt innerhalb von {days} Tagen an die E-Mail-Adresse, an die die Codes gingen.",
+        "sent": "Bericht gesendet am {date}. Hat sich das Team verändert, können Sie einen neuen anfordern: Er umfasst alle, die ihr Ergebnis bis dahin geteilt haben.",
+        "again": "Neuen Bericht anfordern",
+        "revoked": "Die Codes dieses Pakets sind nicht mehr gültig.",
+        "error": "Das hat nicht geklappt. Versuchen Sie es in einer Minute noch einmal oder schreiben Sie uns an {email}.",
+        "howTitle": "So funktioniert es",
+        "how": [
+          "Geben Sie jeder Person ihren eigenen Code und den Link zum Test. Eine fertige Einladung finden Sie auf der Seite {group}.",
+          "Die Person macht den Test, gibt den Code ein und entscheidet, ob sie ihr Ergebnis mit der Führungskraft teilt. Den eigenen ausführlichen Bericht erhält sie in jedem Fall.",
+          "Wenn alle fertig sind, klicken Sie auf „Teambericht anfordern“. Der Bericht kommt an die E-Mail-Adresse, an die die Codes gingen."
+        ],
+        "groupLink": "„DISG-Test mit einer Gruppe durchführen“"
+      },
+      "mail": {
+        "brand": "DISG · Zugangscodes",
+        "subject": "Zugangscodes für den ausführlichen DISG-Bericht: {n} Stück",
+        "hello": "Guten Tag,",
+        "intro": "vielen Dank für Ihren Kauf. Unten finden Sie die Zugangscodes für den ausführlichen DISG-Bericht ({n} Stück). Jeder Code gilt für einen Bericht und eine Person; die Codes sind gültig bis {until}.",
+        "howTitle": "So verteilen Sie die Codes",
+        "steps": [
+          "Schicken Sie jeder Person einen Code und den Link zum Test: {test}. Einen fertigen Einladungstext finden Sie auf der Seite {group}.",
+          "Die Person macht den Test (etwa 10 Minuten, ohne Anmeldung), klickt auf der Ergebnisseite auf „Ich habe einen Code“ und gibt den Code und ihre E-Mail-Adresse ein. Eine Schritt-für-Schritt-Anleitung mit Bildschirmfotos, die Sie gleich an die Teilnehmenden weiterleiten können, finden Sie {guide}.",
+          "Der ausführliche Bericht kommt nach wenigen Minuten per E-Mail. Ihnen teilen wir nur mit, welche Codes verwendet wurden: Ergebnisse und Adressen der Teilnehmenden geben wir ohne deren Einwilligung nicht weiter."
+        ],
+        "groupLink": "„DISG-Test mit einer Gruppe durchführen“",
+        "guideLink": "auf der Seite „Für Organisationen“",
+        "teamTitle": "Teambericht: {org}",
+        "team": [
+          "Bei der Eingabe des Codes wird jede Person gefragt, ob sie Namen, Profil und die vier Skalen mit der Führungskraft teilt. Den eigenen Bericht erhält sie in jedem Fall.",
+          "Wenn alle den Test gemacht haben, öffnen Sie die {team} und klicken Sie auf „Teambericht anfordern“. Der Bericht kommt innerhalb von {days} Tagen an diese Adresse. Dafür müssen mindestens {min} Personen ihr Ergebnis teilen."
+        ],
+        "teamLink": "Teamseite",
+        "codesTitle": "Ihre Codes ({n})",
+        "file": "Dieselben Codes stehen auch in der angehängten Datei: Sie lässt sich in Excel öffnen, und Sie können dort vermerken, wer welchen Code bekommen hat.",
+        "question": "Bei Fragen antworten Sie einfach auf diese E-Mail oder schreiben Sie an {email}.",
+        "bye": "Ihr Team von disc-test.org",
+        "foot": "Bestellung {order}. Sie erhalten diese E-Mail, weil mit dieser Adresse Zugangscodes auf {test} gekauft wurden.",
+        "fileName": "disg-codes-{id}.csv"
+      },
+      "teamMail": {
+        "subject": "Teambericht: {org}",
+        "hello": "Guten Tag,",
+        "intro": "im Anhang finden Sie den Teambericht: {org}. Er umfasst die Personen, die zugestimmt haben, Ihnen ihr Ergebnis zu zeigen: {n}.",
+        "howTitle": "So nutzen Sie den Bericht",
+        "how": [
+          "Lesen Sie zuerst selbst die Kapitel 2 bis 4: Teamkarte, Teamporträt und mögliche Reibungen.",
+          "Besprechen Sie die Kapitel 3, 4 und 6 mit dem Team: Sie sind ein Anlass, gemeinsame Regeln zu vereinbaren, und keine Bewertung von Menschen.",
+          "Kapitel 7 ist für Sie geschrieben: wie Sie jeder Person Aufgaben übertragen.",
+          "Treffen Sie auf Grundlage des Berichts keine Personalentscheidungen und geben Sie ihn nicht über das Team hinaus weiter."
+        ],
+        "again": "Wenn sich das Team verändert, fordern Sie auf der {team} einen neuen Bericht an.",
+        "teamLink": "Teamseite",
+        "question": "Fragen und Anmerkungen schicken Sie gern als Antwort auf diese E-Mail oder an {email}.",
+        "bye": "Ihr Team von disc-test.org"
+      },
       "payTitle": "Zahlung und Unterlagen",
       "pay": [
-        "Sie bezahlen in Euro per Karte, gern auch mit einer Firmenkarte, über einen sicheren Zahlungslink, den wir Ihnen nach Ihrer Anfrage senden. Nach der Zahlung erhält die zahlende Person eine elektronische Zahlungsbestätigung per E-Mail.",
-        "Braucht Ihre Buchhaltung eine Rechnung oder andere Unterlagen, schreiben Sie das bitte in Ihre Anfrage: Wir sagen Ihnen, was wir bereitstellen können."
+        "Sie bezahlen per Karte, gern auch mit einer Firmenkarte, direkt auf der Website: Der Betrag richtet sich nach der Zahl der Codes und wird in Euro berechnet. Ihre Kartendaten geben Sie auf einer gesicherten Zahlungsseite ein, die elektronische Zahlungsbestätigung kommt per E-Mail.",
+        "Braucht Ihre Buchhaltung eine Rechnung oder andere Unterlagen, schreiben Sie uns über das Formular unten auf der Seite: Wir sagen Ihnen, was wir bereitstellen können."
       ],
       "faqTitle": "Fragen",
       "faq": [
@@ -1226,12 +1399,12 @@
         },
         {
           "q": "Dürfen wir die Berichte im Training verwenden?",
-          "a": "Ja: Die Teilnehmenden arbeiten im Training mit ihren eigenen Berichten. Texte aus den Berichten in eigene Unterlagen oder Handouts zu übernehmen, ist nicht erlaubt – die Rechte daran regelt Abschnitt 6 der {offer}."
+          "a": "Ja: Die Teilnehmenden arbeiten im Training mit ihren eigenen Berichten. Texte aus den Berichten in eigene Unterlagen oder Handouts zu übernehmen, ist nicht erlaubt: Die Rechte daran regelt Abschnitt 6 der {offer}."
         }
       ],
       "form": {
         "title": "Anfrage",
-        "lead": "Wir antworten innerhalb eines Werktags an die E-Mail-Adresse, die Sie angeben.",
+        "lead": "Wenn Sie eine Rechnung brauchen oder Fragen haben, schreiben Sie uns: Wir antworten innerhalb eines Werktags an die E-Mail-Adresse, die Sie angeben.",
         "size": "Wie viele Personen?",
         "sizes": ["bis 10", "10–50", "50–100", "mehr als 100"],
         "interest": "Was interessiert Sie?",
@@ -2210,7 +2383,7 @@
       "codeTerms": [
         {
           "section": 0,
-          "text": "Zugangscode – eine Zeichenfolge, die zum Erhalt der Leistung ohne Bezahlung durch den Kunden berechtigt. Zugangscodes erwirbt ein Dritter – eine Organisation, ein Einzelunternehmer oder eine andere Person – auf Grundlage eines gesonderten Vertrags vom Anbieter und gibt sie an Kunden weiter."
+          "text": "Zugangscode – eine Zeichenfolge, die zum Erhalt der Leistung ohne Bezahlung durch den Kunden berechtigt. Zugangscodes erwirbt ein Dritter (im Folgenden „Codekäufer“), also eine Organisation, ein Einzelunternehmer oder eine andere Person, beim Anbieter auf der Website auf der Seite „Für Organisationen“ oder auf Grundlage eines gesonderten Vertrags und gibt sie an Kunden weiter."
         },
         {
           "section": 3,
@@ -2222,10 +2395,24 @@
         },
         {
           "section": 7,
-          "text": "8.4. Demjenigen, der einen Zugangscode gekauft hat, teilt der Anbieter nur mit, ob und wann der Zugangscode verwendet wurde. Das Testergebnis, das Ausführliche Profil und die E-Mail-Adresse des Kunden gibt der Anbieter nicht an ihn weiter."
+          "text": "8.4. Dem Codekäufer teilt der Anbieter nur mit, ob und wann ein Zugangscode verwendet wurde. Wurde der Zugangscode für einen Teambericht ausgegeben (Ziffer 4.8) und hat der Kunde bei der Eingabe des Zugangscodes selbst eingewilligt, sein Ergebnis zu teilen, nimmt der Anbieter seinen Namen, sein DISG-Profil und seine Prozentwerte auf den vier Skalen in den Teambericht auf. Die Einwilligung ist freiwillig: Der Kunde erhält das Ausführliche Profil auch ohne sie. Der Kunde kann die Einwilligung jederzeit widerrufen, indem er dem Anbieter schreibt; der Widerruf berührt nicht die Rechtmäßigkeit der bis dahin erfolgten Weitergabe, und das Ergebnis des Kunden wird in spätere Teamberichte nicht mehr aufgenommen. Das übrige Testergebnis, das Ausführliche Profil und die E-Mail-Adresse des Kunden gibt der Anbieter nicht an den Codekäufer weiter."
         }
       ],
-      "edition": "Fassung vom 14. November 2026. Deutsche Übersetzung aktualisiert am 14. November 2026.",
+      "bizTerms": [
+        {
+          "section": 3,
+          "text": "4.7. Der Codekäufer wählt auf der Seite „Für Organisationen“ die Anzahl der Zugangscodes und gibt eine E-Mail-Adresse an. Der Preis eines Zugangscodes hängt von der Anzahl ab und ist auf dieser Seite angegeben; der Gesamtbetrag wird vor der Zahlung und auf der Zahlungsseite angezeigt. Die Zugangscodes sind vollständig im Voraus zu bezahlen, und zwar wie in den Ziffern 3.2 bis 3.5 beschrieben. Nach der Zahlung sendet der Anbieter die Zugangscodes an die angegebene Adresse, in der Regel sofort, spätestens 24 Stunden nach der Zahlung; der Verkauf der Zugangscodes gilt mit dem Versand der E-Mail mit den Zugangscodes als erbracht. Jeder Zugangscode gilt 12 Monate ab dem Tag der Zahlung."
+        },
+        {
+          "section": 3,
+          "text": "4.8. Hat der Codekäufer beim Kauf der Zugangscodes auf der Website den Teambericht gewählt, erstellt der Anbieter ohne zusätzliches Entgelt einen Teambericht: eine Beschreibung des Teams auf Grundlage der Testergebnisse derjenigen Kunden, die bei der Eingabe des Zugangscodes selbst eingewilligt haben, ihr Ergebnis zu zeigen (mindestens drei Personen). Der Codekäufer fordert den Teambericht auf der Teamseite an, deren Link in der E-Mail mit den Zugangscodes steht; der Teambericht wird innerhalb von drei Kalendertagen nach der Anforderung an seine E-Mail-Adresse gesendet. Der Teambericht ist für die Führungskraft und das Team selbst bestimmt und darf nicht als Grundlage für Entscheidungen über Einstellung, Kündigung oder Vergütung dienen."
+        },
+        {
+          "section": 4,
+          "text": "5.9. Der Codekäufer kann während der Gültigkeitsdauer auf nicht verwendete Zugangscodes verzichten, die er auf der Website gekauft hat: Für jeden nicht verwendeten Zugangscode wird der Preis erstattet, zu dem er gekauft wurde, und der Zugangscode wird ungültig. Die Zahlung für einen Zugangscode, den die Website bereits angenommen hat, wird nicht erstattet. Für die Erstattung gelten die Ziffern 5.5 bis 5.7; im Antrag ist die Bestellnummer anzugeben."
+        }
+      ],
+      "edition": "Fassung vom 16. November 2026. Deutsche Übersetzung aktualisiert am 16. November 2026.",
       "note": "Dies ist die deutsche Übersetzung dieser Geschäftsbedingungen; das Original ist unter {original} veröffentlicht. Weichen die beiden Texte voneinander ab, gilt das Original – mit Ausnahme des Preises und der Zahlungsbedingungen: Für die deutsche Version der Website gelten dafür die Ziffern 1 und 3 dieser Übersetzung.",
       "seller": "Einzelunternehmer Manukyan Armen, Steuernummer (INN) {inn}",
       "lead": "Dieses Dokument ist ein verbindliches Angebot (öffentliches Angebot) zum Abschluss eines Vertrags über die kostenpflichtige Leistung „Ausführliches DISG-Profil“ sowie eines Vertrags über die Überlassung des DISG-Workshop-Pakets (Abschnitt 10) zu den nachstehenden Bedingungen. Das Angebot unterbreitet {seller} (im Folgenden „Anbieter“). Wer die Leistung oder das Paket bezahlt, stimmt diesen Bedingungen vollständig und vorbehaltlos zu (Annahme des Angebots).",
@@ -2535,14 +2722,32 @@
           "button": "Bericht erhalten",
           "back": "Ohne Code kaufen",
           "wait": "Der Code wird geprüft …",
-          "note": "Den Bericht hat bereits die Person oder Organisation bezahlt, die Ihnen den Code gegeben oder geschenkt hat: Sie zahlen nichts. Ihr Ergebnis und Ihre E-Mail-Adresse geben wir nicht an sie weiter. Mit einem Klick auf „Bericht erhalten“ akzeptieren Sie unsere {offer}.",
+          "note": "Den Bericht hat bereits die Person oder Organisation bezahlt, die Ihnen den Code gegeben oder geschenkt hat: Sie zahlen nichts. Ohne Ihre Einwilligung geben wir Ihr Ergebnis und Ihre E-Mail-Adresse nicht an sie weiter. Mit einem Klick auf „Bericht erhalten“ akzeptieren Sie unsere {offer}.",
           "badEmail": "Prüfen Sie die E-Mail-Adresse: An sie senden wir den Bericht.",
           "empty": "Geben Sie den Zugangscode ein.",
           "done": "Code angenommen. Der Bericht kommt in wenigen Minuten an {to}. Wenn keine E-Mail ankommt, sehen Sie im Spam-Ordner nach.",
           "bad": "Diesen Code gibt es nicht. Prüfen Sie, ob er richtig eingegeben ist.",
           "used": "Dieser Code wurde bereits verwendet. Wenn Sie ihn selbst eingegeben haben und der Bericht nicht angekommen ist, schreiben Sie uns an {email}.",
           "expired": "Dieser Code ist abgelaufen. Wenden Sie sich an die Person oder Organisation, die ihn Ihnen gegeben hat.",
-          "error": "Der Code ließ sich nicht prüfen. Versuchen Sie es in einer Minute noch einmal oder schreiben Sie uns an {email}."
+          "error": "Der Code ließ sich nicht prüfen. Versuchen Sie es in einer Minute noch einmal oder schreiben Sie uns an {email}.",
+          "team": {
+            "v": "team-de-2026-11-16",
+            "kicker": "Code von einer Organisation",
+            "title": "Dieser Code wurde für einen Teambericht ausgegeben: {org}",
+            "titleNoOrg": "Dieser Code wurde für einen Teambericht ausgegeben",
+            "text": "Wenn Sie zustimmen, erhält die Führungskraft des Teams einen Teambericht, in dem Folgendes steht:",
+            "list": [
+              "Ihr Name,",
+              "Ihr DISG-Profil,",
+              "Ihre Prozentwerte auf den vier Skalen."
+            ],
+            "not": "Ihren ausführlichen Bericht, Ihre Antworten im Test und Ihre E-Mail-Adresse geben wir nicht weiter.",
+            "share": "Bericht erhalten und Ergebnis teilen",
+            "skip": "Bericht erhalten, ohne zu teilen",
+            "note": "Den Bericht erhalten Sie in beiden Fällen. Ihre Einwilligung können Sie jederzeit mit einer E-Mail an {email} widerrufen; einen Teambericht, der bereits an die Führungskraft gegangen ist, können wir nicht zurückholen. Mit einem Klick auf eine der Schaltflächen akzeptieren Sie unsere {offer}; mit „Bericht erhalten und Ergebnis teilen“ willigen Sie außerdem ein, dass diese Angaben an die Organisation weitergegeben werden.",
+            "doneShared": "Ihr Ergebnis fließt in den Teambericht ein.",
+            "doneSkip": "Ihr Ergebnis geben wir nicht weiter. Wenn Sie es sich anders überlegen, schreiben Sie an {email}."
+          }
         },
         "how": [
           "Machen Sie den kostenlosen Test: 24 Blöcke, etwa 10 Minuten. Haben Sie ihn schon gemacht, brauchen Sie ihn nicht zu wiederholen: Der Bericht entsteht aus dem vorhandenen Ergebnis.",

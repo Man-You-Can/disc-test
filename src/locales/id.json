@@ -1076,7 +1076,8 @@
           "Jika Anda membeli Paket Fasilitator, kami memproses alamat email Anda dan data pesanan: tanggal, jumlah, nomor, dan status pembayaran. Data ini diperlukan untuk mengirimkan email berisi tautan ke file paket, menjawab pertanyaan Anda, dan memproses pengembalian dana; dasarnya adalah perjanjian berdasarkan {offer}. Data pesanan paket disimpan dengan cara yang sama seperti data pesanan profil lengkap; email pengingat tentang pembayaran paket yang belum selesai tidak dikirim."
         ]
       },
-      "purchaseCode": "Jika Anda memperoleh profil lengkap dengan kode akses yang dibeli oleh organisasi atau orang lain, kami memproses data yang sama, kecuali data pembayaran, dan mencatat bahwa kode tersebut telah digunakan. Kepada pembeli kode, kami hanya memberitahukan apakah kode telah digunakan dan kapan: hasil, laporan, dan email Anda tidak diteruskan kepadanya. Dasarnya adalah perjanjian yang Anda adakan dengan memasukkan kode berdasarkan {offer}.",
+      "purchaseCode": "Jika Anda memperoleh profil lengkap dengan kode akses yang dibeli oleh organisasi atau orang lain, kami memproses data yang sama, kecuali data pembayaran, dan mencatat bahwa kode tersebut telah digunakan. Kepada pembeli kode, kami hanya memberitahukan apakah kode telah digunakan dan kapan. Jika kode diberikan untuk laporan tim dan saat memasukkan kode Anda menekan “Dapatkan laporan dan bagikan hasil”, kami meneruskan nama, profil DISC, dan persentase empat skala Anda kepada organisasi yang membeli kode, sebagai bagian dari laporan tim. Dasar penerusan ini adalah persetujuan Anda. Persetujuan ini bersifat sukarela: profil lengkap tetap Anda terima tanpa persetujuan itu. Anda dapat mencabutnya kapan saja dengan menulis ke alamat situs; pencabutan tidak memengaruhi keabsahan penerusan sebelumnya, dan hasil Anda tidak akan masuk ke laporan tim berikutnya. Tanpa persetujuan tersebut, hasil, laporan, dan email Anda tidak diteruskan kepada pembeli kode. Dasar pemrosesan lainnya adalah perjanjian yang Anda adakan dengan memasukkan kode berdasarkan {offer}.",
+      "purchaseBiz": "Jika Anda membeli kode akses di halaman “Untuk organisasi”, kami memproses alamat email Anda, nama organisasi (jika Anda memesan laporan tim), dan data pesanan: tanggal, jumlah, banyaknya kode, nomor, dan status pembayaran. Data ini diperlukan untuk mengirimkan kode, bukti pembayaran, dan laporan tim kepada Anda, menjawab pertanyaan Anda, dan memproses pengembalian dana; data ini disimpan dengan cara yang sama seperti data pesanan profil lengkap. Pembayaran diproses oleh pemroses pembayaran yang sama seperti pada pembelian profil lengkap. Dasar pemrosesannya adalah perjanjian yang Anda adakan dengan membayar kode berdasarkan {offer}.",
       "purchasePair": "Jika Anda memesan laporan “DISC Berdua”, kami memproses alamat email Anda, data pesanan, nama dan hasil tes kedua peserta dari tautan perbandingan, pilihan “Hubungan Anda berdua”, serta — jika Anda mencantumkannya — alamat email orang kedua untuk salinan laporan. Peserta kedua memberikan persetujuan untuk memperlihatkan hasilnya dan menggunakannya untuk laporan dengan mencentang kotak di situs; dengan mencantumkan alamat emailnya, Anda menegaskan bahwa ia setuju menerima salinan. Teks laporan disusun dengan bantuan AI hanya berdasarkan data anonim — profil dan skor tanpa nama, alamat email, dan kode hasil. Kode hasil dan alamat email peserta kedua kami hapus 30 hari setelah laporan dikirim, dan untuk pesanan yang tidak dibayar, setelah 7 hari; data pesanan disimpan dengan cara yang sama seperti data pesanan profil lengkap. Dasar pemrosesannya adalah perjanjian berdasarkan {offer} dan persetujuan peserta kedua.",
       "purchaseGift": "Jika Anda membeli voucher hadiah, kami memproses alamat email Anda, data pesanan (tanggal, jumlah, nomor, dan status pembayaran), baris “Dari”, serta — jika Anda mencantumkannya — nama dan alamat email para penerima. Alamat email dan data pesanan Anda diperlukan untuk mengirimkan voucher dan bukti pembayaran kepada Anda, menjawab pertanyaan Anda, dan memproses pengembalian dana; data ini disimpan dengan cara yang sama seperti data pesanan profil lengkap. Nama penerima dicetak pada vouchernya, dan ke alamat email penerima hanya dikirim satu email berisi vouchernya; nama dan alamat email penerima kami hapus 30 hari setelah voucher dikirim (untuk pesanan yang tidak dibayar, setelah 7 hari). Dengan mencantumkan data penerima, Anda menegaskan bahwa mereka setuju menerima voucher. Dasar pemrosesannya adalah perjanjian berdasarkan {offer}, dan penerima voucher adalah pihak yang memperoleh manfaat dari perjanjian tersebut. Penerima yang memasukkan kode voucher di situs memperoleh profil lengkap dengan cara yang sama seperti dengan kode akses: kepada orang yang menghadiahkan voucher, kami hanya memberitahukan apakah voucher sudah digunakan dan kapan."
     },
@@ -1150,16 +1151,16 @@
         },
         {
           "h": "Pertanyaan tentang layanan",
-          "p": ["Jika Anda punya pertanyaan tentang profil lengkap atau pembayaran, tulis kepada kami melalui formulir “{contact}” — balasan akan dikirim ke email yang Anda cantumkan. Data pemilik situs tercantum di bagian bawah setiap halaman."]
+          "p": ["Jika Anda punya pertanyaan tentang profil lengkap atau pembayaran, tulis kepada kami melalui formulir “{contact}”: balasan akan dikirim ke email yang Anda cantumkan. Data pemilik situs tercantum di bagian bawah setiap halaman."]
         }
       ]
     },
     "business": {
       "title": "DISC untuk Organisasi: Paket Laporan Mendalam",
-      "description": "Laporan DISC mendalam untuk karyawan, klien, dan peserta pelatihan dalam paket, dengan diskon hingga {maxDiscount}%. Kode akses, pembayaran dengan kartu lewat tautan.",
+      "description": "Laporan DISC mendalam untuk karyawan, klien, dan peserta pelatihan dalam paket, dengan diskon hingga {maxDiscount}%. Kode akses langsung dikirim ke email setelah pembayaran, laporan tim gratis.",
       "h1": "DISC untuk organisasi",
-      "lead": "Tes DISC di situs ini gratis dan tanpa registrasi. Jika Anda mengadakannya untuk karyawan, klien, atau peserta pelatihan, laporan mendalam untuk mereka bisa dibeli dalam paket: lebih murah daripada satu per satu, dan dibayar sekaligus lewat satu tautan pembayaran.",
-      "facts": ["mulai {minPack} laporan", "diskon hingga {maxDiscount}%", "bayar dengan kartu lewat tautan", "laporan dikirim ke email masing-masing"],
+      "lead": "Tes DISC di situs ini gratis dan tanpa registrasi. Jika Anda mengadakannya untuk karyawan, klien, atau peserta pelatihan, laporan mendalam untuk mereka bisa dibeli dalam paket: lebih murah daripada satu per satu, ditambah **laporan tim gratis**. Pembayaran dengan kartu langsung di situs ini, dan kode dikirim ke email Anda segera setelah pembayaran.",
+      "facts": ["mulai {minPack} laporan", "diskon hingga {maxDiscount}%", "kode langsung dikirim ke email setelah pembayaran", "**laporan tim gratis**"],
       "forTitle": "Untuk siapa",
       "for": [
         "HR dan manajer: mengenal tim, orientasi karyawan baru, membahas gesekan antarrekan kerja.",
@@ -1171,12 +1172,12 @@
         "person": "Untuk perorangan",
         "personPick": "Laporan mendalam dari hasil tes Anda",
         "org": "Untuk organisasi",
-        "orgPick": "Laporan mendalam untuk karyawan, klien, dan peserta pelatihan — dalam paket, dengan diskon",
+        "orgPick": "Laporan mendalam untuk karyawan, klien, dan peserta pelatihan dalam paket, dengan pembayaran kartu",
         "orgName": "Paket laporan mendalam",
-        "orgText": "Untuk HR, biro rekrutmen, corporate university, trainer, dan coach. Anda membeli kode akses lalu membagikannya: setiap orang mengikuti tes dan menerima laporannya sendiri lewat email. Pembayaran dengan kartu lewat tautan, diskon hingga {maxDiscount}%.",
+        "orgText": "Untuk HR, biro rekrutmen, corporate university, trainer, dan coach. Anda membeli kode akses lalu membagikannya: setiap orang mengikuti tes dan menerima laporannya sendiri lewat email. Pembayaran dengan kartu langsung di situs ini, diskon hingga {maxDiscount}%. **Laporan tim gratis.**",
         "orgPriceLabel": "Harga",
         "orgPrice": "mulai US${minPrice} per laporan",
-        "orgButton": "Selengkapnya dan permintaan"
+        "orgButton": "Selengkapnya dan pembelian"
       },
       "packsTitle": "Paket laporan mendalam",
       "packsText": "Anda membeli kode akses dan membagikannya, satu kode untuk satu orang. Setiap orang mengikuti tes, memasukkan kode di layar hasilnya, dan menerima laporan mendalam atas namanya sendiri dalam bentuk PDF di emailnya. Isi laporan dan contoh halamannya bisa dilihat di halaman “{report}”.",
@@ -1186,27 +1187,198 @@
       "packDiscount": "−{pct}%",
       "packsNote": "Harga normal satu laporan: US${retail}. Kode berlaku {months} bulan sejak tanggal diterbitkan. Satu kode untuk satu laporan bagi satu orang.",
       "csv": ["Kode akses", "Sudah dipakai", "Berlaku sampai", "Tempat memasukkan kode"],
+      "buy": {
+        "title": "Beli kode",
+        "lead": "Pembayaran dengan kartu langsung di situs ini. Segera setelah pembayaran, kode dikirim ke email Anda: berupa daftar di dalam email dan sebagai file untuk Excel.",
+        "button": "Beli kode",
+        "payName": "Kode akses laporan DISC mendalam, {n} kode",
+        "qtyLabel": "Jumlah kode",
+        "qtyHint": "Mulai {min} kode. Makin banyak kode, makin murah harga setiap kode.",
+        "units": {
+          "other": "kode"
+        },
+        "line": "{n} {units} × {unit}",
+        "addMore": "tambah {k} kode lagi, dan harga per kode menjadi {unit}",
+        "save": "hemat {sum} dibandingkan membeli satu per satu",
+        "teamLabel": "Tambahkan laporan tim (gratis)",
+        "teamHint": "Laporan tim gratis. Saat memasukkan kode, setiap peserta memutuskan sendiri apakah nama, profil, dan skor empat skalanya boleh Anda lihat. Setelah semua orang selesai mengikuti tes, Anda meminta laporan di halaman tim, dan laporan dikirim ke email Anda dalam tiga hari.",
+        "orgLabel": "Nama organisasi atau tim",
+        "orgHint": "Peserta akan melihat nama ini pada pertanyaan persetujuan.",
+        "emailLabel": "Email untuk menerima kode",
+        "emailHint": "Kode, bukti pembayaran, dan laporan tim dikirim ke alamat ini.",
+        "total": "Total",
+        "money": "US${n}",
+        "submit": "Beli seharga {total}",
+        "wait": "Membuka halaman pembayaran …",
+        "note": "Dengan menekan “Beli”, Anda menerima {offer} kami. Data kartu Anda masukkan di halaman pembayaran yang aman.",
+        "invoice": "Perlu invoice atau dokumen lain? Tulis lewat {request}.",
+        "invoiceLink": "formulir di bagian bawah halaman",
+        "checkEmail": "Periksa alamat email: kode akan dikirim ke alamat itu.",
+        "checkOrg": "Isi nama organisasi: peserta akan melihat nama ini.",
+        "checkQty": "Jumlah kode: dari {min} sampai {max}.",
+        "priceChanged": "Harga kode baru saja berubah. Periksa jumlahnya, lalu tekan “Beli” sekali lagi.",
+        "error": "Halaman pembayaran belum bisa dibuka. Coba lagi dalam satu menit atau tulis kepada kami di {email}.",
+        "status": {
+          "wait": "Memeriksa pembayaran …",
+          "paid": "Pembayaran berhasil. Email berisi kode akan masuk ke {email} dalam beberapa menit.",
+          "sent": "Selesai: email berisi kode sudah dikirim ke {email}. Jika belum masuk, periksa folder spam.",
+          "failed": "Pembayaran tidak berhasil, dan dana Anda tidak terpotong. Silakan coba lagi.",
+          "thanks": "Terima kasih atas pembayaran Anda! Email berisi kode akan masuk ke alamat yang Anda cantumkan."
+        }
+      },
       "howTitle": "Cara kerjanya",
       "how": [
-        "Kirim permintaan lewat formulir di bagian bawah halaman: berapa laporan yang dibutuhkan dan untuk siapa. Kami membalas dalam satu hari kerja.",
-        "Kami mengirim tautan untuk membayar dengan kartu. Setelah pembayaran, kami mengirim kode-kodenya dalam sebuah file.",
+        "Di bagian “Beli kode”, pilih jumlah kode yang Anda perlukan, lalu bayar dengan kartu. Jika Anda ingin laporan tim, centang pilihannya: **laporan tim gratis**.",
+        "Segera setelah pembayaran, kode dikirim ke email Anda: berupa daftar di dalam email dan sebagai file. Jika bagian keuangan memerlukan invoice atau dokumen lain, tulis kepada kami lewat formulir di bagian bawah halaman.",
         "Kirim tautan tes dan satu kode kepada setiap orang. Tes memakan waktu sekitar 10 menit, tanpa registrasi.",
         "Di layar hasil, orang tersebut menekan “Saya punya kode”, lalu memasukkan kode dan alamat emailnya. Laporan dikirim kepadanya lewat email dalam beberapa menit.",
-        "Jika Anda minta, kami memberi tahu berapa kode yang sudah dipakai."
+        "Laporan tim: setelah semua orang selesai mengikuti tes, tekan “Minta laporan tim” di halaman tim. Tautan ke halaman itu ada di email berisi kode."
       ],
+      "guide": {
+        "title": "Cara peserta memasukkan kode",
+        "lead": "Teruskan petunjuk ini kepada peserta bersama kode dan tautan tes mereka. Tautan ke petunjuk ini: {link}",
+        "steps": [
+          {
+            "t": "Ikuti tes",
+            "p": "Buka tautan tes dan jawab 24 soal. Sekitar 10 menit, tanpa registrasi. Hasilnya langsung tampil di layar."
+          },
+          {
+            "t": "Tekan “Saya punya kode”",
+            "p": "Di layar hasil, gulir ke bagian “Laporan mendalam”. Di bawah tombol “Beli” ada tautan “Saya punya kode”: tekan tautan itu. Anda tidak perlu membayar apa pun.",
+            "img": "code-1-link",
+            "alt": "Bagian “Laporan mendalam” di layar hasil: kolom email, tombol “Beli”, dan tautan “Saya punya kode” yang ditandai di bawahnya"
+          },
+          {
+            "t": "Masukkan email dan kode",
+            "p": "Tulis alamat email Anda (laporan dikirim ke alamat ini) dan kode akses yang Anda terima dari atasan atau HR. Tekan “Dapatkan laporan”.",
+            "img": "code-2-form",
+            "alt": "Formulir dengan kolom email dan “Kode akses” yang sudah terisi, serta tombol “Dapatkan laporan” yang ditandai"
+          },
+          {
+            "t": "Putuskan apakah hasil Anda dibagikan",
+            "p": "Jika kode diberikan untuk laporan tim, akan muncul pertanyaan. Jika Anda menekan “Dapatkan laporan dan bagikan hasil”, pemimpin tim akan melihat nama, profil DISC, dan persentase empat skala Anda dalam laporan tim. Jika Anda menekan “Dapatkan laporan tanpa membagikan hasil”, pemimpin tim tidak melihat apa pun. Laporan mendalam Anda tetap Anda terima dalam kedua pilihan.",
+            "img": "code-3-consent",
+            "alt": "Kartu “Kode ini diberikan untuk laporan tim” dengan tombol “Dapatkan laporan dan bagikan hasil” yang ditandai dan tautan “Dapatkan laporan tanpa membagikan hasil”"
+          },
+          {
+            "t": "Periksa email",
+            "p": "Dalam beberapa menit, laporan mendalam dalam format PDF masuk ke email Anda. Jika belum ada, periksa folder spam.",
+            "img": "code-4-done",
+            "alt": "Pesan “Kode diterima. Laporan akan dikirim dalam beberapa menit”"
+          }
+        ],
+        "note": "Sudah pernah mengikuti tes di perangkat ini? Tidak perlu mengulang: buka hasil Anda yang tersimpan atau halaman “{report}”, lalu masukkan kode di sana."
+      },
+      "guideTeam": {
+        "title": "Cara mendapatkan laporan tim",
+        "lead": "Petunjuk ini untuk pembeli kode, biasanya atasan atau HR. **Laporan tim untuk paket kode ini gratis.**",
+        "steps": [
+          {
+            "t": "Centang laporan saat membeli",
+            "p": "Di bagian “Beli kode”, biarkan kotak “Tambahkan laporan tim (gratis)” tetap tercentang dan isi nama organisasi atau tim: peserta akan melihatnya pada pertanyaan persetujuan.",
+            "img": "team-1-buy",
+            "alt": "Formulir pembelian kode: kotak “Tambahkan laporan tim (gratis)” yang ditandai dan kolom “Nama organisasi atau tim”"
+          },
+          {
+            "t": "Bagikan kode",
+            "p": "Email berisi kode dikirim segera setelah pembayaran. Kirimkan kepada setiap peserta kodenya, tautan tes, dan petunjuk di atas. Setiap orang memutuskan sendiri apakah hasilnya dibagikan."
+          },
+          {
+            "t": "Tekan “Minta laporan tim”",
+            "p": "Tautan ke halaman tim ada di email berisi kode, pada bagian “Laporan tim”. Di halaman itu terlihat berapa orang yang sudah mengikuti tes dan berapa yang membagikan hasilnya, tetapi tidak terlihat siapa saja. Setelah semua selesai, tekan tombolnya. Tombol ini berfungsi jika sedikitnya tiga orang membagikan hasilnya.",
+            "img": "team-2-page",
+            "alt": "Halaman tim: organisasi, 24 kode, 21 orang sudah mengikuti tes, 18 membagikan hasil, tombol “Minta laporan tim” yang ditandai"
+          },
+          {
+            "t": "Tunggu emailnya",
+            "p": "Laporan tim dalam format PDF dikirim dalam tiga hari ke email yang sama dengan email penerima kode. Laporan hanya mencakup orang yang membagikan hasilnya. Jika kemudian ada anggota baru di tim, Anda bisa meminta laporan baru di halaman yang sama.",
+            "img": "team-3-requested",
+            "alt": "Halaman tim setelah permintaan: “Laporan sudah diminta. Laporan akan dikirim ke email pembeli kode dalam 3 hari”"
+          }
+        ]
+      },
       "privacyTitle": "Hasil tetap milik masing-masing orang",
       "privacy": [
-        "Laporan hanya dikirim kepada orang yang mengikuti tes dan memasukkan kode. Kepada pihak yang membayar kode, kami tidak meneruskan hasil, laporan, maupun alamat email peserta: hanya jumlah kode yang sudah dipakai.",
-        "Jika Anda memerlukan ringkasan untuk tim, mintalah setiap orang membagikan hasilnya sendiri: mengirim tautan hasil atau kode dari laporan ringkas. Cara menyusun tabel tim dari hasil-hasil itu dijelaskan di halaman “{teams}”."
+        "Laporan hanya dikirim kepada orang yang mengikuti tes dan memasukkan kode. Tanpa persetujuan peserta, kami tidak meneruskan hasil, laporan, maupun alamat email kepada pihak yang membayar kode: hal ini diwajibkan oleh aturan perlindungan data pribadi. Tanpa persetujuan itu, Anda hanya mengetahui berapa kode yang sudah dipakai.",
+        "Untuk laporan tim, setiap peserta memutuskan sendiri saat memasukkan kode apakah nama, profil, dan skor empat skalanya boleh diperlihatkan kepada pemimpin tim; laporan mendalamnya sendiri tetap ia terima dalam hal apa pun. Laporan tim hanya mencakup peserta yang setuju. Jika Anda lebih suka menyusun tabel tim sendiri, caranya dijelaskan di halaman “{teams}”."
       ],
       "boundsTitle": "Untuk apa DISC tidak cocok",
       "bounds": "DISC menggambarkan gaya perilaku, bukan kemampuan, pengetahuan, atau kejujuran. DISC tidak dirancang untuk menyeleksi kandidat atau mengambil keputusan tentang perekrutan, pemberhentian, atau gaji. Gunakan DISC agar orang lebih memahami diri sendiri dan satu sama lain: saat orientasi karyawan baru, dalam kerja tim, dan dalam pengembangan pemimpin.",
-      "teamTitle": "Laporan tim — sedang disiapkan",
-      "team": "Kami sedang menyiapkan laporan untuk manajer tentang tim secara keseluruhan: peta gaya, kekuatan tim, titik-titik gesekan, dan cara menanganinya. Jika Anda membutuhkannya, tandai hal itu dalam permintaan: kami akan memberi tahu saat laporannya siap.",
+      "teamTitle": "Laporan tim gratis bersama paket kode",
+      "team": "**Laporan tim untuk paket kode ini gratis.** Ini laporan bagi pemimpin tentang tim secara keseluruhan: peta gaya, potret tim, di mana gesekan mungkin muncul dan cara menanganinya, siapa yang secara alami mengambil peran apa, dan cara bekerja dengan setiap orang. Laporan disusun dari hasil peserta yang setuju memperlihatkan hasilnya; diperlukan sedikitnya tiga orang. Mintalah laporan ini di halaman tim setelah semua orang selesai mengikuti tes: laporan dikirim ke email Anda dalam tiga hari.",
+      "teamPage": {
+        "title": "Laporan Tim",
+        "description": "Halaman tim: berapa peserta yang sudah mengikuti tes dengan kode dan membagikan hasilnya, serta permintaan laporan tim.",
+        "h1": "Laporan tim",
+        "lead": "Di sini terlihat berapa peserta yang sudah mengikuti tes dengan kode Anda dan membagikan hasilnya. Setelah semua selesai, mintalah laporannya: laporan dikirim ke email pembeli kode dalam {days} hari.",
+        "loading": "Memuat …",
+        "notFound": "Tautan tidak bisa dibuka: pastikan tautan disalin utuh dari email berisi kode. Jika tetap tidak berhasil, tulis kepada kami di {email}.",
+        "org": "Organisasi",
+        "codes": "Jumlah kode",
+        "used": "Sudah mengikuti tes dengan kode",
+        "shared": "Membagikan hasil",
+        "privacy": "Siapa yang membagikan hasilnya dan siapa yang tidak, tidak ditampilkan di sini. Laporan hanya mencakup orang yang membagikan hasilnya: dengan nama, profil, dan empat skala.",
+        "button": "Minta laporan tim",
+        "few": "Laporan bisa disusun jika sedikitnya {min} orang membagikan hasilnya. Saat ini: {n}.",
+        "requested": "Laporan sudah diminta pada {date}. Laporan akan dikirim ke email pembeli kode dalam {days} hari.",
+        "sent": "Laporan sudah dikirim pada {date}. Jika susunan tim berubah, Anda bisa meminta laporan baru: laporan itu mencakup orang yang sudah membagikan hasilnya sampai saat itu.",
+        "again": "Minta laporan baru",
+        "revoked": "Kode dalam paket ini sudah dibatalkan.",
+        "error": "Belum berhasil. Coba lagi dalam satu menit atau tulis kepada kami di {email}.",
+        "howTitle": "Cara kerjanya",
+        "how": [
+          "Berikan kepada setiap peserta kodenya sendiri dan tautan tes. Undangan siap pakai ada di halaman {group}.",
+          "Peserta mengikuti tes, memasukkan kode, dan memilih apakah hasilnya dibagikan kepada pemimpin tim. Laporan mendalamnya sendiri tetap ia terima dalam hal apa pun.",
+          "Setelah semua selesai, tekan “Minta laporan tim”. Laporan dikirim ke email yang menerima kode."
+        ],
+        "groupLink": "“Menjalankan Tes DISC untuk Kelompok”"
+      },
+      "mail": {
+        "brand": "DISC · kode akses",
+        "subject": "Kode akses laporan DISC mendalam: {n} kode",
+        "hello": "Halo,",
+        "intro": "Terima kasih atas pembelian Anda. Berikut kode akses laporan DISC mendalam ({n} kode). Satu kode untuk satu laporan bagi satu orang; kode berlaku sampai {until}.",
+        "howTitle": "Cara membagikan kode",
+        "steps": [
+          "Kirim satu kode dan tautan tes kepada setiap peserta: {test}. Teks undangan siap pakai ada di halaman {group}.",
+          "Peserta mengikuti tes (sekitar 10 menit, tanpa registrasi), menekan “Saya punya kode” di layar hasil, lalu memasukkan kode dan alamat emailnya. Petunjuk langkah demi langkah dengan tangkapan layar, yang mudah diteruskan kepada peserta, ada {guide}.",
+          "Laporan mendalam dikirim ke email peserta dalam beberapa menit. Kepada Anda, kami hanya memberitahukan kode mana yang sudah dipakai: hasil dan alamat email peserta tidak kami teruskan tanpa persetujuan mereka."
+        ],
+        "groupLink": "“Menjalankan Tes DISC untuk Kelompok”",
+        "guideLink": "di halaman “Untuk organisasi”",
+        "teamTitle": "Laporan tim: {org}",
+        "team": [
+          "Saat memasukkan kode, peserta akan melihat pertanyaan apakah nama, profil, dan skor empat skalanya boleh diperlihatkan kepada pemimpin tim. Laporan mendalamnya sendiri tetap ia terima dalam hal apa pun.",
+          "Setelah semua orang selesai mengikuti tes, buka {team} dan tekan “Minta laporan tim”. Laporan dikirim ke alamat ini dalam {days} hari. Laporan bisa disusun jika sedikitnya {min} orang membagikan hasilnya."
+        ],
+        "teamLink": "halaman tim",
+        "codesTitle": "Kode Anda ({n})",
+        "file": "Kode yang sama ada di file terlampir: mudah dibuka di Excel untuk mencatat siapa menerima kode yang mana.",
+        "question": "Kirim pertanyaan dengan membalas email ini atau ke {email}.",
+        "bye": "Tim disc-test.org",
+        "foot": "Pesanan {order}. Anda menerima email ini karena kode dibeli dengan alamat ini di {test}.",
+        "fileName": "disc-kode-{id}.csv"
+      },
+      "teamMail": {
+        "subject": "Laporan tim: {org}",
+        "hello": "Halo,",
+        "intro": "Terlampir laporan tim: {org}. Laporan ini mencakup peserta yang setuju memperlihatkan hasilnya kepada Anda, yaitu {n} orang.",
+        "howTitle": "Cara memakai laporan",
+        "how": [
+          "Baca dulu bagian 2, 3, dan 4: peta tim, potret tim, dan kemungkinan gesekan.",
+          "Bahas bagian 3, 4, dan 6 bersama tim: ini kesempatan untuk menyepakati aturan bersama, bukan penilaian terhadap orang.",
+          "Bagian 7 ditulis untuk Anda: cara memberi tugas kepada setiap orang.",
+          "Jangan mengambil keputusan kepegawaian berdasarkan laporan ini, dan jangan meneruskannya ke luar tim."
+        ],
+        "again": "Jika susunan tim berubah, minta laporan baru di {team}.",
+        "teamLink": "halaman tim",
+        "question": "Kirim pertanyaan dan masukan dengan membalas email ini atau ke {email}.",
+        "bye": "Tim disc-test.org"
+      },
       "payTitle": "Pembayaran dan dokumen",
       "pay": [
-        "Setelah menerima permintaan Anda, kami mengirim tautan ke halaman pembayaran yang aman. Pembayaran dilakukan dengan kartu, termasuk kartu perusahaan, dalam dolar AS seperti harga di halaman ini. Setelah pembayaran, bukti pembayaran elektronik dikirim ke email pembayar.",
-        "Jika bagian keuangan Anda memerlukan invoice atau dokumen lain, sebutkan hal itu dalam permintaan: kami akan memberi tahu dokumen apa yang dapat kami sediakan."
+        "Pembayaran dengan kartu, termasuk kartu perusahaan, langsung di situs ini: jumlahnya dihitung dari banyaknya kode, dalam dolar AS. Data kartu Anda masukkan di halaman pembayaran yang aman, dan bukti pembayaran elektronik dikirim ke email.",
+        "Jika bagian keuangan Anda memerlukan invoice atau dokumen lain, tulis hal itu lewat formulir permintaan di bagian bawah halaman: kami akan memberi tahu dokumen apa yang dapat kami sediakan."
       ],
       "faqTitle": "Pertanyaan",
       "faq": [
@@ -1224,12 +1396,12 @@
         },
         {
           "q": "Bolehkah laporan dipakai dalam pelatihan?",
-          "a": "Boleh: peserta mengerjakan laporannya masing-masing selama sesi. Teks laporan tidak boleh disalin ke materi atau handout Anda sendiri — hak atas teks tersebut diatur dalam bagian 6 {offer}."
+          "a": "Boleh: peserta mengerjakan laporannya masing-masing selama sesi. Teks laporan tidak boleh disalin ke materi atau handout Anda sendiri: hak atas teks tersebut diatur dalam bagian 6 {offer}."
         }
       ],
       "form": {
         "title": "Permintaan",
-        "lead": "Kami akan membalas dalam satu hari kerja ke email yang Anda cantumkan.",
+        "lead": "Jika Anda memerlukan invoice atau punya pertanyaan, tulis kepada kami: kami membalas dalam satu hari kerja ke email yang Anda cantumkan.",
         "size": "Berapa orang",
         "sizes": ["sampai 10", "10–50", "50–100", "lebih dari 100"],
         "interest": "Apa yang Anda minati",
@@ -1264,7 +1436,7 @@
       "codeTerms": [
         {
           "section": 0,
-          "text": "Kode Akses adalah rangkaian karakter yang memberikan hak untuk memperoleh Layanan tanpa pembayaran oleh Pelanggan. Kode Akses dibeli dari Penyedia berdasarkan perjanjian tersendiri oleh pihak ketiga — organisasi, pengusaha perorangan, atau orang lain — yang kemudian memberikannya kepada Pelanggan."
+          "text": "Kode Akses adalah rangkaian karakter yang memberikan hak untuk memperoleh Layanan tanpa pembayaran oleh Pelanggan. Kode Akses dibeli dari Penyedia oleh pihak ketiga (selanjutnya disebut “Pembeli Kode”), yaitu organisasi, pengusaha perorangan, atau orang lain, di Situs pada halaman “Untuk organisasi” atau berdasarkan perjanjian tersendiri, lalu diberikan kepada Pelanggan."
         },
         {
           "section": 3,
@@ -1276,10 +1448,24 @@
         },
         {
           "section": 7,
-          "text": "8.4. Kepada pihak yang membeli Kode Akses, Penyedia hanya memberitahukan apakah Kode Akses telah digunakan dan kapan. Hasil Tes, Profil Lengkap, dan alamat email Pelanggan tidak diteruskan Penyedia kepadanya."
+          "text": "8.4. Kepada pihak yang membeli Kode Akses, Penyedia hanya memberitahukan apakah Kode Akses telah digunakan dan kapan. Jika Kode Akses diberikan untuk laporan tim (butir 4.8) dan Pelanggan, saat memasukkan Kode Akses, atas kehendaknya sendiri setuju hasilnya dibagikan, Penyedia mencantumkan nama, profil DISC, dan persentase empat skala Pelanggan dalam laporan tim. Persetujuan ini bersifat sukarela: Pelanggan tetap menerima Profil Lengkap meskipun tidak memberikannya. Pelanggan dapat mencabut persetujuan kapan saja dengan menulis kepada Penyedia; pencabutan tidak memengaruhi keabsahan penerusan yang telah dilakukan sebelumnya, dan hasil Pelanggan tidak dimasukkan ke dalam laporan tim berikutnya. Bagian lain dari Hasil Tes, Profil Lengkap, dan alamat email Pelanggan tidak diteruskan Penyedia kepada pihak yang membeli Kode Akses."
         }
       ],
-      "edition": "Versi tanggal 14 November 2026. Terjemahan bahasa Indonesia diperbarui pada 14 November 2026.",
+      "bizTerms": [
+        {
+          "section": 3,
+          "text": "4.7. Pembeli Kode memilih jumlah Kode Akses di halaman “Untuk organisasi” dan mencantumkan alamat email. Harga satu Kode Akses bergantung pada jumlahnya dan dicantumkan di halaman tersebut; jumlah total ditampilkan sebelum pembayaran dan di halaman pembayaran. Kode Akses dibayar lunas dengan cara yang diatur dalam butir 3.2–3.5. Setelah pembayaran, Penyedia mengirim Kode Akses ke alamat yang dicantumkan, biasanya segera, paling lambat 24 jam sejak pembayaran; layanan penjualan Kode Akses dianggap telah diberikan pada saat email berisi Kode Akses dikirim. Setiap Kode Akses berlaku selama 12 bulan sejak tanggal pembayaran."
+        },
+        {
+          "section": 3,
+          "text": "4.8. Jika saat membeli Kode Akses di Situs Pembeli Kode memilih laporan tim, Penyedia tanpa biaya tambahan menyusun laporan tim, yaitu uraian tentang tim berdasarkan hasil Tes para Pelanggan yang, saat memasukkan Kode Akses, atas kehendaknya sendiri setuju memperlihatkan hasilnya (sedikitnya tiga orang). Pembeli Kode meminta laporan tersebut di halaman tim, yang tautannya dikirim dalam email berisi Kode Akses; laporan dikirim ke alamat email Pembeli Kode dalam 3 hari kalender sejak permintaan. Laporan tim ditujukan bagi pemimpin tim dan tim itu sendiri serta tidak dapat menjadi dasar keputusan tentang perekrutan, pemberhentian, atau pengupahan."
+        },
+        {
+          "section": 4,
+          "text": "5.9. Pembeli Kode berhak membatalkan Kode Akses yang dibeli di Situs dan belum digunakan selama Kode Akses tersebut masih berlaku: dalam hal itu, harga yang dibayar untuk setiap Kode Akses yang belum digunakan dikembalikan, dan Kode Akses tersebut tidak berlaku lagi. Pembayaran untuk Kode Akses yang sudah diterima oleh Situs tidak dikembalikan. Pengembalian dana diproses sesuai dengan butir 5.5–5.7; permohonan harus mencantumkan nomor pesanan."
+        }
+      ],
+      "edition": "Versi tanggal 16 November 2026. Terjemahan bahasa Indonesia diperbarui pada 16 November 2026.",
       "note": "Teks ini adalah terjemahan bahasa Indonesia dari syarat dan ketentuan asli yang diterbitkan di {original}. Jika kedua teks berbeda, yang berlaku adalah teks asli, kecuali mengenai harga dan cara pembayaran: untuk Situs versi bahasa Indonesia, yang berlaku adalah bagian 1 dan 3 terjemahan ini.",
       "seller": "pengusaha perorangan Manukyan Armen, Nomor identitas wajib pajak (INN) {inn}",
       "lead": "Dokumen ini adalah penawaran resmi yang terbuka bagi siapa pun (penawaran terbuka) untuk mengadakan perjanjian penyediaan layanan berbayar “Profil DISC lengkap”, serta perjanjian penyerahan Paket Fasilitator DISC (bagian 10), dengan syarat dan ketentuan di bawah ini. Penawaran ini diajukan oleh {seller} (selanjutnya disebut “Penyedia”). Membayar layanan atau Paket berarti menerima syarat dan ketentuan ini sepenuhnya dan tanpa syarat (penerimaan penawaran).",
@@ -1579,14 +1765,32 @@
           "button": "Dapatkan laporan",
           "back": "Beli tanpa kode",
           "wait": "Memeriksa kode …",
-          "note": "Laporan dengan kode ini sudah dibayar oleh pihak yang memberikan atau menghadiahkan kode kepada Anda: Anda tidak perlu membayar. Hasil dan email Anda tidak kami teruskan kepada mereka. Dengan menekan “Dapatkan laporan”, Anda menerima {offer} kami.",
+          "note": "Laporan dengan kode ini sudah dibayar oleh pihak yang memberikan atau menghadiahkan kode kepada Anda: Anda tidak perlu membayar. Tanpa persetujuan Anda, hasil dan email Anda tidak kami teruskan kepada mereka. Dengan menekan “Dapatkan laporan”, Anda menerima {offer} kami.",
           "badEmail": "Periksa alamat email Anda: laporan dikirim ke alamat itu.",
           "empty": "Masukkan kode akses.",
           "done": "Kode diterima. Laporan akan dikirim ke {to} dalam beberapa menit. Jika email belum masuk, periksa folder spam.",
           "bad": "Kode ini tidak ditemukan. Periksa apakah kode sudah diketik dengan benar.",
           "used": "Kode ini sudah dipakai. Jika Anda sendiri yang memasukkannya dan laporan belum diterima, tulis kepada kami di {email}.",
           "expired": "Masa berlaku kode sudah habis. Hubungi pihak yang memberikan kode tersebut.",
-          "error": "Kode belum bisa diperiksa. Coba lagi dalam satu menit atau tulis kepada kami di {email}."
+          "error": "Kode belum bisa diperiksa. Coba lagi dalam satu menit atau tulis kepada kami di {email}.",
+          "team": {
+            "v": "team-id-2026-11-16",
+            "kicker": "Kode dari organisasi",
+            "title": "Kode ini diberikan untuk laporan tim: {org}",
+            "titleNoOrg": "Kode ini diberikan untuk laporan tim",
+            "text": "Jika Anda setuju, pemimpin tim akan menerima laporan tim yang memuat:",
+            "list": [
+              "nama Anda,",
+              "profil DISC Anda,",
+              "persentase Anda pada empat skala."
+            ],
+            "not": "Laporan mendalam Anda, jawaban tes, dan email Anda tidak kami teruskan.",
+            "share": "Dapatkan laporan dan bagikan hasil",
+            "skip": "Dapatkan laporan tanpa membagikan hasil",
+            "note": "Laporan tetap dikirim dalam kedua pilihan. Persetujuan bisa Anda cabut kapan saja dengan menulis ke {email}; laporan yang sudah dikirim kepada pemimpin tim tidak bisa ditarik kembali. Dengan menekan tombol, Anda menerima {offer} kami, dan dengan menekan “Dapatkan laporan dan bagikan hasil”, Anda setuju data tersebut diteruskan kepada organisasi.",
+            "doneShared": "Hasil Anda akan masuk ke laporan tim.",
+            "doneSkip": "Hasil Anda tidak kami teruskan. Jika Anda berubah pikiran, tulis ke {email}."
+          }
         },
         "how": [
           "Ikuti tes gratis: 24 soal, sekitar 10 menit. Jika sudah pernah mengikutinya, Anda tidak perlu mengulang: laporan disusun dari hasil yang sudah ada.",

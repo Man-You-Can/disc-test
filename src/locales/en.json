@@ -1074,7 +1074,8 @@
           "If you buy the facilitator kit, we process your email address and order details: the date, amount, payment number and payment status. We need this data to send you the email with links to the kit files, to answer your enquiries and to process a refund; the basis is the contract under the {offer}. Kit order details are kept in the same way as order details for the in-depth profile; no reminder emails are sent about an unfinished kit payment."
         ]
       },
-      "purchaseCode": "If you receive the in-depth profile with an access code bought by an organization or another person, we process the same data, except payment information, and record that the code has been used. We tell the person who bought the code only whether and when it was used: your result, report and email address are not passed on to them. The basis is the contract you enter into when you enter the code under the {offer}.",
+      "purchaseCode": "If you receive the in-depth profile with an access code bought by an organization or another person, we process the same data, except payment information, and record that the code has been used. We tell the person who bought the code only whether and when it was used. If the code was issued for a team report and you click “Get my report and share my result” when entering it, we share your name, DISC profile and percentages on the four scales with the organization that bought the code, as part of the team report. The basis for this is your consent. It is voluntary: you get the in-depth profile even without it. You can withdraw it at any time by writing to the site’s email address; withdrawal does not affect the lawfulness of any sharing that took place before it, and your result will not be included in later team reports. Without this consent, your result, report and email address are not passed on to the person who bought the code. The basis for the rest of the processing is the contract you enter into when you enter the code under the {offer}.",
+      "purchaseBiz": "If you buy access codes on the “For organizations” page, we process your email address, the name of your organization (if you ordered a team report) and order details: the date, amount, number of codes, payment number and payment status. We need this data to send you the codes, the payment receipt and the team report, to answer your enquiries and to process a refund; it is kept in the same way as order details for the in-depth profile. Payments are processed by the same payment service provider as for the in-depth profile. The basis for processing is the contract you enter into when you pay for the codes under the {offer}.",
       "purchasePair": "If you order the DISC for Two report, we process your email address, order details, the names and test results of both participants from the comparison link, your answer to “How you know each other” and, if you gave it, the other participant’s address for a copy of the report. The other participant consents to showing their result and to its use for the report by ticking a box on the site; by giving their address, you confirm that they agree to receive a copy. The report text is prepared with the help of AI from anonymized data only: profiles and scores without names, email addresses or result codes. We delete result codes and the other participant’s address 30 days after the report is sent, or after 7 days if the order is not paid; order details are kept in the same way as order details for the in-depth profile. The basis is the contract under the {offer} and the other participant’s consent.",
       "purchaseGift": "If you buy gift certificates, we process your email address, order details (the date, amount, payment number and payment status), the “From” line and, if you gave them, the recipients’ names and email addresses. We need your email address and order details to send you the certificates, to answer your enquiries and to process a refund; they are kept in the same way as order details for the in-depth profile. A recipient’s name is printed on their certificate, and one email with their certificate is sent to the recipient’s address. We delete recipients’ names and email addresses 30 days after the certificates are sent, or after 7 days if the order is not paid. By giving recipients’ details, you confirm that they agree to receive a certificate. The basis for processing is the contract under the {offer}, under which the recipients of the certificates are its beneficiaries. A recipient who enters a certificate code on the site receives the in-depth profile in the same way as with an access code: we tell the person who gave the certificate only whether and when it was used."
     },
@@ -1154,10 +1155,10 @@
     },
     "business": {
       "title": "DISC for Organizations: In-Depth Report Packs for Teams",
-      "description": "Buy in-depth DISC reports in bulk for employees, clients and trainees, at up to {maxDiscount}% off. Access codes, card payment through a secure link.",
+      "description": "Buy in-depth DISC reports in bulk for employees, clients and trainees, at up to {maxDiscount}% off. Access codes by email right after payment, plus a free team report.",
       "h1": "DISC for organizations",
-      "lead": "The DISC test on this site is free, with no sign-up. If you use it with employees, clients or trainees, you can buy in-depth reports for them in bulk. It costs less than buying them one at a time, and you pay once by card.",
-      "facts": ["from {minPack} reports", "up to {maxDiscount}% off", "pay by card via a secure link", "each person gets their report by email"],
+      "lead": "The DISC test on this site is free, with no sign-up. If you use it with employees, clients or trainees, you can buy in-depth reports for them in bulk. It costs less than buying them one at a time, and a team report comes with your pack, **free of charge**. You pay by card right here on the site, and the codes arrive by email as soon as your payment goes through.",
+      "facts": ["from {minPack} reports", "up to {maxDiscount}% off", "codes by email right after payment", "**free team report**"],
       "forTitle": "Who it’s for",
       "for": [
         "HR teams and managers: getting to know a team, onboarding new hires and working through friction between colleagues.",
@@ -1169,12 +1170,12 @@
         "person": "For individuals",
         "personPick": "An in-depth report on your own test result",
         "org": "For organizations",
-        "orgPick": "In-depth reports for employees, clients and trainees — in bulk, at a discount",
+        "orgPick": "In-depth reports for employees, clients and trainees in bulk, paid by card",
         "orgName": "In-depth report packs",
-        "orgText": "For HR teams, recruitment agencies, corporate universities, trainers and coaches. You buy access codes and hand them out. Each person takes the test and gets their own report by email. Pay by card through a secure link and save up to {maxDiscount}%.",
+        "orgText": "For HR teams, recruitment agencies, corporate universities, trainers and coaches. You buy access codes and hand them out. Each person takes the test and gets their own report by email. Pay by card on the site and save up to {maxDiscount}%. **The team report is free.**",
         "orgPriceLabel": "Price",
         "orgPrice": "from US${minPrice} per report",
-        "orgButton": "Details and request"
+        "orgButton": "Details and buying"
       },
       "packsTitle": "In-depth report packs",
       "packsText": "You buy access codes and hand them out, one code per person. Each person takes the test, enters the code on their result screen and gets a personalized in-depth report as a PDF at their own email address. The “{report}” page shows what’s inside the report and what its pages look like.",
@@ -1184,25 +1185,197 @@
       "packDiscount": "−{pct}%",
       "packsNote": "The regular price for one report is US${retail}. Each code is valid for {months} months from the date it’s issued. One code, one report, one person.",
       "csv": ["Access code", "Used", "Valid until", "Where to enter it"],
+      "buy": {
+        "title": "Buy codes",
+        "lead": "Pay by card right here on the site. As soon as your payment goes through, the codes arrive at your email address: listed in the email and in a file you can open in Excel.",
+        "button": "Buy codes",
+        "payName": "Access codes for the in-depth DISC report: {n}",
+        "qtyLabel": "Number of codes",
+        "qtyHint": "At least {min} codes. The more codes you buy, the less each one costs.",
+        "units": {
+          "one": "code",
+          "other": "codes"
+        },
+        "line": "{n} {units} at {unit} each",
+        "addMore": "Add {k} more and each code drops to {unit}",
+        "save": "You save {sum} compared with buying one at a time",
+        "teamLabel": "Add a team report (free)",
+        "teamHint": "The team report is free. When entering their code, each participant decides whether to show you their name, profile and scores on the four scales. Once everyone has taken the test, you request the report on your team page, and it arrives at your email address within three days.",
+        "orgLabel": "Organization or team name",
+        "orgHint": "Participants will see it when they’re asked for consent.",
+        "emailLabel": "Email for your codes",
+        "emailHint": "Your codes, payment receipt and team report will be sent here.",
+        "total": "Total",
+        "money": "US${n}",
+        "submit": "Buy for {total}",
+        "wait": "Taking you to payment…",
+        "note": "By clicking “Buy,” you accept our {offer}. You enter your card details on a secure payment page.",
+        "invoice": "Need an invoice or other documents? Write to us using the {request}.",
+        "invoiceLink": "form at the bottom of the page",
+        "checkEmail": "Please check your email address: your codes will be sent there.",
+        "checkOrg": "Please enter the organization name: participants will see it.",
+        "checkQty": "Number of codes: {min} to {max}.",
+        "priceChanged": "The price per code has just changed. Please check the total and click “Buy” again.",
+        "error": "We couldn’t take you to payment. Please try again in a minute or email us at {email}.",
+        "status": {
+          "wait": "Checking your payment…",
+          "paid": "Payment received. The email with your codes will arrive at {email} within a few minutes.",
+          "sent": "Done: the email with your codes has been sent to {email}. If you can’t find it, check your spam folder.",
+          "failed": "The payment didn’t go through, and you haven’t been charged. You can try again.",
+          "thanks": "Thank you for your payment! The email with your codes will arrive at the address you gave."
+        }
+      },
       "howTitle": "How it works",
       "how": [
-        "Use the form at the bottom of this page to tell us how many reports you need and who they’re for. We’ll reply within one business day.",
-        "We’ll send you a link to pay by card. Once you’ve paid, we’ll send the codes as a file.",
+        "In the “Buy codes” section, choose how many codes you need and pay by card. If you’d like a team report, check the box: **it’s free**.",
+        "As soon as your payment goes through, the codes arrive at your email address, listed in the email and as a file. If your finance team needs an invoice or other documents, write to us using the form at the bottom of the page.",
         "Send each person the link to the test and one code. The test takes about 10 minutes, with no sign-up.",
         "On the result screen, the person clicks “I have a code” and enters the code and their email address. The report arrives by email within a few minutes.",
-        "Just ask, and we’ll tell you how many codes have been used."
+        "For the team report: once everyone has taken the test, click “Request the team report” on your team page. The link to that page comes in the email with your codes."
       ],
+      "guide": {
+        "title": "How participants enter their code",
+        "lead": "Send this guide to participants along with their code and the link to the test. Link to this guide: {link}",
+        "steps": [
+          {
+            "t": "Take the test",
+            "p": "Open the test link and work through all 24 blocks. It takes about 10 minutes, with no sign-up. Your result appears on screen right away."
+          },
+          {
+            "t": "Click “I have a code”",
+            "p": "On the result screen, scroll down to the in-depth report section. Below the “Buy” button, there’s an “I have a code” link: click it. There’s nothing to pay.",
+            "img": "code-1-link",
+            "alt": "The in-depth report section on the result screen: the email field, the “Buy” button and the highlighted “I have a code” link below it"
+          },
+          {
+            "t": "Enter your email and code",
+            "p": "Enter your email address (your report will be sent there) and the access code from your manager’s email. Click “Get my report.”",
+            "img": "code-2-form",
+            "alt": "A form with the email and “Access code” fields filled in and the “Get my report” button highlighted"
+          },
+          {
+            "t": "Decide whether to share your result",
+            "p": "If the code was issued for a team report, you’ll see a question. If you click “Get my report and share my result,” the manager will see your name, DISC profile and percentages on the four scales in the team report. If you click “Get my report without sharing,” they won’t see anything. You get your own in-depth report either way.",
+            "img": "code-3-consent",
+            "alt": "The card “This code was issued for a team report” with the “Get my report and share my result” button highlighted and the “Get my report without sharing” link"
+          },
+          {
+            "t": "Check your inbox",
+            "p": "Within a few minutes, your in-depth report arrives at your email address as a PDF. If you can’t find the email, check your spam folder.",
+            "img": "code-4-done",
+            "alt": "The message “Code accepted. Your report will arrive within a few minutes” with the address it will be sent to"
+          }
+        ],
+        "note": "Already taken the test on this device? No need to retake it: open your saved result or the “{report}” page and enter the code there."
+      },
+      "guideTeam": {
+        "title": "How to get the team report",
+        "lead": "This part is for whoever buys the codes, usually a manager or someone in HR. **The team report is free with a pack of codes.**",
+        "steps": [
+          {
+            "t": "Select the report when you buy",
+            "p": "In the “Buy codes” section, leave the “Add a team report (free)” box checked and enter the name of your organization or team: participants will see it when they’re asked for consent.",
+            "img": "team-1-buy",
+            "alt": "The code purchase form: the highlighted “Add a team report (free)” checkbox and the “Organization or team name” field"
+          },
+          {
+            "t": "Hand out the codes",
+            "p": "The email with your codes arrives right after payment. Send each participant their code, the test link and the guide above. Each person decides whether to share their result."
+          },
+          {
+            "t": "Click “Request the team report”",
+            "p": "The link to your team page is in the email with your codes, in the “Team report” section. The page shows how many people have taken the test and how many have shared their results, but not who. Once everyone is done, click the button. It works once at least three people have shared their results.",
+            "img": "team-2-page",
+            "alt": "The team page: organization, 24 codes, 21 took the test, 18 shared their result, and the highlighted “Request the team report” button"
+          },
+          {
+            "t": "Watch for the email",
+            "p": "Within three days, the team report arrives as a PDF at the same email address your codes went to. It includes only the people who shared their results. If more people join the team later, you can request a new report on the same page.",
+            "img": "team-3-requested",
+            "alt": "The team page after the request: “Report requested. It will arrive within 3 days at the email address the codes were sent to”"
+          }
+        ]
+      },
       "privacyTitle": "Results stay with the people who took the test",
       "privacy": [
-        "The report goes only to the person who took the test and entered the code. Whoever paid for the codes gets only the number of codes used. We don’t share results, reports or participants’ email addresses with them.",
-        "If you need an overview of your team, ask people to share their results themselves: they can send you the link to their result or the code from their summary report. The “{teams}” page explains how to turn these into a team table."
+        "The report goes only to the person who took the test and entered the code. Without a participant’s consent, we don’t share their result, report or email address with whoever paid for the codes: data protection rules require this. Without that consent, you only learn how many codes have been used.",
+        "For the team report, each participant decides when entering their code whether to show the manager their name, profile and scores on the four scales; they get their own report either way. The team report includes only those who agreed to share. If you’d rather put together a team table yourself, the “{teams}” page explains how."
       ],
       "boundsTitle": "What DISC is not for",
       "bounds": "DISC describes behavioral style, not ability, knowledge or honesty. It isn’t designed for screening candidates or for decisions about hiring, firing or pay. Use it to help people understand themselves and each other better: during onboarding, in teamwork and in leadership development.",
-      "teamTitle": "Team report — coming soon",
-      "team": "We’re working on a report for managers about the team as a whole: a map of styles, the team’s strengths, where friction comes up and what to do about it. If you’d like one, check that box in your request and we’ll let you know when it’s ready.",
+      "teamTitle": "Free team report with your pack",
+      "team": "**The team report is free with a pack of codes.** It’s a report for the manager about the team as a whole: a map of styles, a portrait of the team, where friction may come up and what to do about it, who naturally takes on which roles and how to work with each person. It’s based on the people who agreed to share their results, and you need at least three of them. Request it on your team page once everyone has taken the test: the report arrives at your email address within three days.",
+      "teamPage": {
+        "title": "Team Report",
+        "description": "Team page: how many participants have taken the test with your codes and shared their results, and a request for the team report.",
+        "h1": "Team report",
+        "lead": "This page shows how many participants have taken the test with your codes and shared their results. Once everyone is done, request the report: it will arrive within {days} days at the email address the codes were sent to.",
+        "loading": "Loading…",
+        "notFound": "This link doesn’t open. Please check that you copied the whole link from the email with your codes. If that doesn’t help, email us at {email}.",
+        "org": "Organization",
+        "codes": "Codes",
+        "used": "Took the test with a code",
+        "shared": "Shared their result",
+        "privacy": "This page doesn’t show who shared their result and who didn’t. The report includes only those who shared, with their name, profile and four scales.",
+        "button": "Request the team report",
+        "few": "The report needs at least {min} people to share their results. So far: {n}.",
+        "requested": "Report requested on {date}. It will arrive within {days} days at the email address the codes were sent to.",
+        "sent": "Report sent on {date}. If the team has changed, you can request a new one based on everyone who has shared their result by then.",
+        "again": "Request a new report",
+        "revoked": "The codes in this batch have been revoked.",
+        "error": "Something went wrong. Please try again in a minute or email us at {email}.",
+        "howTitle": "How it works",
+        "how": [
+          "Give each participant their own code and the link to the test. You’ll find a ready-made invitation on the {group} page.",
+          "Each participant takes the test, enters their code and chooses whether to share their result with the manager. They get their own in-depth report either way.",
+          "Once everyone is done, click “Request the team report.” The report will arrive at the email address the codes were sent to."
+        ],
+        "groupLink": "“Run the DISC test with a group”"
+      },
+      "mail": {
+        "brand": "DISC · access codes",
+        "subject": "Your access codes for the in-depth DISC report: {n}",
+        "hello": "Hello,",
+        "intro": "Thank you for your purchase. Below are your access codes for the in-depth DISC report ({n} in total). One code gives one person one report; the codes are valid until {until}.",
+        "howTitle": "How to hand out the codes",
+        "steps": [
+          "Send each participant one code and the link to the test: {test}. You’ll find a ready-made invitation on the {group} page.",
+          "The participant takes the test (about 10 minutes, no sign-up), clicks “I have a code” on the result screen and enters the code and their email address. You’ll find a step-by-step guide with screenshots, ready to forward to participants, {guide}.",
+          "The in-depth report arrives in the participant’s inbox within a few minutes. We only tell you which codes have been used: we don’t share participants’ results or email addresses without their consent."
+        ],
+        "groupLink": "“Run the DISC test with a group”",
+        "guideLink": "on the “For organizations” page",
+        "teamTitle": "Team report: {org}",
+        "team": [
+          "When entering their code, each participant will be asked whether to show the manager their name, profile and scores on the four scales. They get their own report either way.",
+          "Once everyone has taken the test, open {team} and click “Request the team report.” The report will arrive at this address within {days} days. It needs at least {min} people to share their results."
+        ],
+        "teamLink": "your team page",
+        "codesTitle": "Your codes ({n})",
+        "file": "The same codes are in the attached file: it’s easy to open in Excel and keep track of who got which code.",
+        "question": "If you have questions, just reply to this email or write to {email}.",
+        "bye": "The disc-test.org team",
+        "foot": "Order {order}. You’re receiving this email because codes were purchased on {test} using this address.",
+        "fileName": "disc-codes-{id}.csv"
+      },
+      "teamMail": {
+        "subject": "Team report: {org}",
+        "hello": "Hello,",
+        "intro": "Attached is your team report: {org}. It covers the participants who agreed to share their results with you. Participants included: {n}.",
+        "howTitle": "How to use the report",
+        "how": [
+          "Start by reading sections 2, 3 and 4 on your own: the team map, the portrait and possible friction.",
+          "Discuss sections 3, 4 and 6 with the team: they’re a chance to agree on how you work together, not an assessment of people.",
+          "Section 7 is for you: how to assign work to each person.",
+          "Don’t base personnel decisions on this report, and don’t share it outside the team."
+        ],
+        "again": "If the team changes, request a new report on {team}.",
+        "teamLink": "your team page",
+        "question": "Send questions and comments by replying to this email or writing to {email}.",
+        "bye": "The disc-test.org team"
+      },
       "payTitle": "Payment and documents",
-      "pay": ["You pay by card (a company card works too) through a secure payment link we send after your request. Payment is in US dollars. Once you’ve paid, the payer gets an electronic payment confirmation by email.", "If your finance team needs an invoice or other documents, mention it in your request and we’ll let you know what we can provide."],
+      "pay": ["You pay by card (a company card works too) right here on the site. The total depends on the number of codes and is charged in US dollars. You enter your card details on a secure payment page, and an electronic payment receipt is sent to your email.", "If your finance team needs an invoice or other documents, mention it in a request using the form at the bottom of the page, and we’ll let you know what we can provide."],
       "faqTitle": "Questions",
       "faq": [
         { "q": "Can I buy fewer than {minPack} reports?", "a": "Pack prices start at {minPack} codes. Anyone can buy one or a few reports for themselves at the regular price on the “{report}” page." },
@@ -1221,7 +1394,7 @@
       ],
       "form": {
         "title": "Send a request",
-        "lead": "We’ll reply within one business day to the email address you give.",
+        "lead": "If you need an invoice or have questions, write to us. We’ll reply within one business day to the email address you give.",
         "size": "Number of people",
         "sizes": ["up to 10", "10–50", "50–100", "more than 100"],
         "interest": "What you’re interested in",
@@ -2200,7 +2373,7 @@
       "codeTerms": [
         {
           "section": 0,
-          "text": "Access Code — a set of characters that entitles its holder to receive the Service without payment by the Customer. Access Codes are bought from the Provider under a separate agreement by a third party — an organization, a sole proprietor or another individual — who passes them on to Customers."
+          "text": "Access Code: a set of characters that entitles its holder to receive the Service without payment by the Customer. Access Codes are bought from the Provider by a third party (the “Code Purchaser”), such as an organization, a sole proprietor or another individual, either on the Site on the “For organizations” page or under a separate agreement, and the Code Purchaser passes them on to Customers."
         },
         {
           "section": 3,
@@ -2212,10 +2385,24 @@
         },
         {
           "section": 7,
-          "text": "8.4. The Provider tells the person who bought an Access Code only whether and when the Access Code was used. The Provider does not pass on to them the Customer’s Test result, In-depth Profile or email address."
+          "text": "8.4. The Provider tells the person who bought an Access Code only whether and when the Access Code was used. If the Access Code was issued for a team report (clause 4.8) and the Customer, when entering the Access Code, agreed to share their result, the Provider includes the Customer’s name, DISC profile and percentages on the four scales in the team report. Consent is voluntary: the Customer receives the In-depth Profile even without giving it. The Customer may withdraw consent at any time by writing to the Provider; withdrawal does not affect the lawfulness of any sharing that took place before it, and the Customer’s result will not be included in subsequent team reports. The Provider does not pass on to the person who bought the Access Code the rest of the Customer’s Test result, the In-depth Profile or the Customer’s email address."
         }
       ],
-      "edition": "Version of November 14, 2026. English translation updated on November 14, 2026.",
+      "bizTerms": [
+        {
+          "section": 3,
+          "text": "4.7. The Code Purchaser selects the number of Access Codes on the “For organizations” page and gives an email address. The price of one Access Code depends on how many are bought and is shown on that page; the total is shown before payment and on the payment page. The Code Purchaser pays for the Access Codes in full in accordance with clauses 3.2–3.5. After payment, the Provider sends the Access Codes to the email address given, usually right away and no later than 24 hours after payment; the service of selling the Access Codes is deemed provided at the moment the email with the Access Codes is sent. Each Access Code is valid for 12 months from the date of payment."
+        },
+        {
+          "section": 3,
+          "text": "4.8. If the Code Purchaser selected a team report when buying Access Codes on the Site, the Provider prepares a team report at no extra charge: a description of the team based on the Test results of those Customers who agreed to share them when entering an Access Code (at least three people). The Code Purchaser requests the report on the team page, a link to which is sent in the email with the Access Codes; the report is sent to the Code Purchaser’s email address within 3 calendar days of the request. The team report is intended for the manager and the team itself and may not be used as a basis for decisions on hiring, dismissal or pay."
+        },
+        {
+          "section": 4,
+          "text": "5.9. The Code Purchaser may cancel unused Access Codes bought on the Site while they are valid: the price paid for each unused Access Code is refunded at the price at which it was bought, and the Access Code ceases to be valid. Payment for an Access Code that the Site has already accepted is not refunded. Refunds are made in accordance with clauses 5.5–5.7; the request must state the order number."
+        }
+      ],
+      "edition": "Version of November 16, 2026. English translation updated on November 16, 2026.",
       "note": "This is an English translation of the original offer published at {original}. If the two texts differ, the original prevails, except for the price and the way payment is made: for the English version of the Site they are set out in sections 1 and 3.",
       "seller": "individual entrepreneur Manukyan Armen, Taxpayer ID (INN) {inn}",
       "lead": "This document is an official proposal (a public offer) to enter into a contract for the paid service “In-depth DISC profile” and a contract for the supply of the DISC Facilitator Kit (section 10) on the terms set out below. The offer is made by {seller} (hereinafter, the Provider). Paying for the service or the Kit constitutes full and unconditional acceptance of these terms (acceptance of the offer).",
@@ -2520,14 +2707,32 @@
           "button": "Get my report",
           "back": "Buy without a code",
           "wait": "Checking your code…",
-          "note": "Whoever gave you this code, whether your organization or someone giving you a gift, has already paid for your report, so there’s nothing to pay. We don’t share your result or email address with them. By clicking “Get my report,” you accept our {offer}.",
+          "note": "Whoever gave you this code, whether your organization or someone giving you a gift, has already paid for your report, so there’s nothing to pay. We don’t share your result or email address with them without your consent. By clicking “Get my report,” you accept our {offer}.",
           "badEmail": "Please check the address. Your report will be sent there.",
           "empty": "Please enter your access code.",
           "done": "Code accepted. Your report will arrive at {to} within a few minutes. If you can’t find the email, check your spam folder.",
           "bad": "We couldn’t find that code. Please check that you entered it correctly.",
           "used": "This code has already been used. If you entered it yourself and the report didn’t arrive, email us at {email}.",
           "expired": "This code has expired. Please contact whoever gave it to you.",
-          "error": "We couldn’t check the code. Please try again in a minute or email us at {email}."
+          "error": "We couldn’t check the code. Please try again in a minute or email us at {email}.",
+          "team": {
+            "v": "team-en-2026-11-16",
+            "kicker": "Code from your organization",
+            "title": "This code was issued for a team report: {org}",
+            "titleNoOrg": "This code was issued for a team report",
+            "text": "If you agree, the team’s manager will get a team report that includes:",
+            "list": [
+              "your name",
+              "your DISC profile",
+              "your percentages on the four scales"
+            ],
+            "not": "We don’t share your in-depth report, your test answers or your email address.",
+            "share": "Get my report and share my result",
+            "skip": "Get my report without sharing",
+            "note": "You’ll get your report either way. You can withdraw your consent at any time by writing to {email}; a team report that has already been sent to the manager can’t be recalled. By clicking either button, you accept our {offer}, and by clicking “Get my report and share my result,” you agree to these details being shared with the organization.",
+            "doneShared": "Your result will be included in the team report.",
+            "doneSkip": "We won’t share your result. If you change your mind, write to {email}."
+          }
         },
         "how": [
           "Take the free test: 24 blocks, about 10 minutes. Already taken it? No need to retake it. The report is built from the result you already have.",

@@ -76,8 +76,9 @@ function ph(s){ return (String(s).match(/\{[a-z]+\}|<\/?b>|<br>|%/g) || []).sort
 const PLAIN_KEYS = ['.content.mailing.sale.preheader', '.content.mailing.sale.until', '.content.mailing.sale.remindPreheader', '.content.mailing.sale.remindIntro', '.content.product.pay.sale.note'];
 let PLAIN = false;
 function walk(a, b, p, errs){
-  // формы слова по числу у подарочных сертификатов (с 2026-11-14): категории Intl.PluralRules своего языка ({one, other}, {other}, {zero, one, two, few, many, other}…), обязательна other
-  if (/^\.content\.gift\.(order|mail)\.units$/.test(p)) { if (!b || typeof b !== 'object' || typeof b.other !== 'string' || !b.other.trim()) errs.push(p + ': needs an object of plural forms with "other"'); return; }
+  // формы слова по числу у подарочных сертификатов (с 2026-11-14) и у кодов в покупке пакета (business.buy.units, с 2026-11-16): категории Intl.PluralRules своего языка ({one, other}, {other}, {zero, one, two, few, many, other}…), обязательна other
+  if (/^\.content\.(gift\.(order|mail)|business\.buy)\.units$/.test(p)) { const last = p.includes('business') && b && typeof b.many === 'string' && b.many.trim() ? 'many' : 'other';   // у кодов ru и pl — one/few/many (страница берёт many, если нет other)
+    if (!b || typeof b !== 'object' || typeof b[last] !== 'string' || !b[last].trim()) errs.push(p + ': needs an object of plural forms with "other"'); return; }
   if (Array.isArray(a)) {
     if (!Array.isArray(b)) return errs.push(p + ': expected array');
     // «Для организаций»: последняя строка об оплате (исполнитель с ИНН, {seller}) — только в русской версии (решение заказчика от 2026-11-16)

@@ -1076,7 +1076,8 @@
           "Si vous achetez le kit de l'animateur DISC, nous traitons votre adresse e-mail et les informations relatives à la commande : date, montant, numéro et statut du paiement. Ces données nous servent à vous envoyer l'e-mail contenant les liens vers les fichiers du kit, à répondre à vos demandes et à procéder à un éventuel remboursement ; le traitement a pour base légale le contrat conclu conformément à nos {offer}. Les informations relatives à la commande du kit sont conservées de la même manière que celles de la commande du profil détaillé ; aucun e-mail de rappel n'est envoyé si le paiement du kit n'a pas été finalisé."
         ]
       },
-      "purchaseCode": "Si vous recevez le profil détaillé grâce à un code d'accès acheté par une organisation ou par une autre personne, nous traitons les mêmes données, à l'exception des informations de paiement, et nous enregistrons l'utilisation du code. À la personne qui a acheté le code, nous indiquons seulement si le code a été utilisé et à quelle date : votre résultat, votre rapport et votre adresse e-mail ne lui sont pas transmis. Le traitement a pour base légale le contrat que vous concluez en saisissant le code conformément à nos {offer}.",
+      "purchaseCode": "Si vous recevez le profil détaillé grâce à un code d'accès acheté par une organisation ou par une autre personne, nous traitons les mêmes données, à l'exception des informations de paiement, et nous enregistrons l'utilisation du code. À la personne qui a acheté le code, nous indiquons seulement si le code a été utilisé et à quelle date. Si le code a été remis pour un rapport d'équipe et qu'en saisissant le code vous cliquez sur « Recevoir le rapport et partager mon résultat », nous transmettons à l'organisation qui a acheté le code, dans le rapport d'équipe, votre nom, votre profil DISC et vos pourcentages sur les quatre échelles. Cette transmission repose sur votre consentement. Il est facultatif : vous recevez le profil détaillé même sans l'avoir donné. Vous pouvez le retirer à tout moment en écrivant à l'adresse du site ; le retrait ne remet pas en cause la licéité de la transmission effectuée auparavant, et votre résultat ne figurera pas dans les rapports d'équipe suivants. Sans ce consentement, votre résultat, votre rapport et votre adresse e-mail ne sont pas transmis à la personne qui a acheté le code. Les autres traitements ont pour base légale le contrat que vous concluez en saisissant le code conformément à nos {offer}.",
+      "purchaseBiz": "Si vous achetez des codes d'accès sur la page « Pour les organisations », nous traitons votre adresse e-mail, le nom de l'organisation (si vous avez demandé le rapport d'équipe) et les informations relatives à la commande : date, montant, nombre de codes, numéro et statut du paiement. Ces données nous servent à vous envoyer les codes, la confirmation du paiement et le rapport d'équipe, à répondre à vos demandes et à procéder à un éventuel remboursement ; elles sont conservées de la même manière que celles de la commande du profil détaillé. Le paiement est traité par le même opérateur de paiement que pour l'achat du profil détaillé. Le traitement a pour base légale le contrat que vous concluez en payant les codes conformément à nos {offer}.",
       "purchasePair": "Si vous commandez le rapport « DISC à deux », nous traitons votre adresse e-mail, les informations relatives à la commande, les noms et les résultats au test des deux personnes figurant dans le lien de comparaison, votre réponse à la question sur votre relation et, si vous l'avez indiquée, l'adresse e-mail de la deuxième personne, à laquelle nous envoyons une copie du rapport. La deuxième personne accepte, en cochant une case sur le site, que son résultat vous soit montré et utilisé pour le rapport ; en indiquant son adresse, vous confirmez qu'elle accepte de recevoir une copie. Le texte du rapport est rédigé avec l'aide d'une IA, uniquement à partir de données anonymisées : les profils et les scores, sans noms, adresses ni codes de résultat. Nous supprimons les codes de résultat et l'adresse de la deuxième personne 30 jours après l'envoi du rapport, ou au bout de 7 jours si la commande n'a pas été payée ; les informations relatives à la commande sont conservées de la même manière que celles de la commande du profil détaillé. Le traitement a pour base légale le contrat conclu conformément à nos {offer} et le consentement de la deuxième personne.",
       "purchaseGift": "Si vous achetez des bons cadeaux, nous traitons votre adresse e-mail, les informations relatives à la commande (date, montant, numéro et statut du paiement), la mention « De la part de » et, si vous les avez indiqués, les noms et adresses e-mail des bénéficiaires. Votre adresse e-mail et les informations relatives à la commande nous servent à vous envoyer les bons, à répondre à vos demandes et à procéder à un éventuel remboursement ; elles sont conservées de la même manière que celles de la commande du profil détaillé. Le nom d'un bénéficiaire est imprimé sur son bon, et un seul e-mail, contenant son bon, est envoyé à son adresse ; nous supprimons les noms et adresses des bénéficiaires 30 jours après l'envoi des bons, ou au bout de 7 jours si la commande n'a pas été payée. En indiquant les données des bénéficiaires, vous confirmez qu'ils acceptent de recevoir un bon cadeau. Le traitement a pour base légale le contrat conclu conformément à nos {offer}, dont les bénéficiaires des bons sont les tiers bénéficiaires. Le bénéficiaire qui saisit le code de son bon sur le site reçoit le profil détaillé dans les mêmes conditions qu'avec un code d'accès : à la personne qui a offert le bon, nous indiquons seulement s'il a été utilisé et à quelle date."
     },
@@ -1156,10 +1157,10 @@
     },
     "business": {
       "title": "DISC pour les organisations : packs de rapports DISC détaillés",
-      "description": "Rapports DISC détaillés pour vos collaborateurs, clients ou stagiaires, par packs, avec jusqu'à {maxDiscount} % de réduction. Codes d'accès, paiement par carte.",
+      "description": "Rapports DISC détaillés pour vos collaborateurs, clients ou stagiaires, par packs, avec jusqu'à {maxDiscount} % de réduction. Codes d'accès par e-mail dès le paiement, rapport d'équipe gratuit.",
       "h1": "DISC pour les organisations",
-      "lead": "Le test DISC est gratuit sur ce site et ne demande aucune inscription. Si vous le faites passer à vos collaborateurs, à vos clients ou aux participants d'une formation, vous pouvez leur offrir le rapport détaillé en achetant un pack : c'est moins cher qu'à l'unité.",
-      "facts": ["dès {minPack} rapports", "jusqu'à {maxDiscount} % de réduction", "paiement par carte, sur lien sécurisé", "chacun reçoit son rapport par e-mail"],
+      "lead": "Le test DISC est gratuit sur ce site et ne demande aucune inscription. Si vous le faites passer à vos collaborateurs, à vos clients ou aux participants d'une formation, vous pouvez leur offrir le rapport détaillé en achetant un pack : c'est moins cher qu'à l'unité, et le pack inclut un **rapport d'équipe gratuit**. Vous payez par carte sur le site, et les codes arrivent par e-mail dès le paiement.",
+      "facts": ["dès {minPack} rapports", "jusqu'à {maxDiscount} % de réduction", "codes par e-mail dès le paiement", "**rapport d'équipe gratuit**"],
       "forTitle": "Pour qui",
       "for": [
         "RH et managers : faire connaissance avec l'équipe, intégrer les nouveaux arrivants, désamorcer les frictions entre collègues.",
@@ -1173,10 +1174,10 @@
         "org": "Pour les organisations",
         "orgPick": "Des rapports détaillés pour vos collaborateurs, clients et stagiaires, par packs, payés par carte",
         "orgName": "Packs de rapports détaillés",
-        "orgText": "Pour les RH, les cabinets de recrutement, les universités d'entreprise, les formateurs et les coachs. Vous achetez des codes d'accès et les remettez aux personnes concernées : chacune passe le test et reçoit son propre rapport par e-mail. Paiement par carte sur lien sécurisé, jusqu'à {maxDiscount} % de réduction.",
+        "orgText": "Pour les RH, les cabinets de recrutement, les universités d'entreprise, les formateurs et les coachs. Vous achetez des codes d'accès et les remettez aux personnes concernées : chacune passe le test et reçoit son propre rapport par e-mail. Paiement par carte sur le site, jusqu'à {maxDiscount} % de réduction. **Rapport d'équipe gratuit.**",
         "orgPriceLabel": "Prix",
         "orgPrice": "à partir de {minPrice} € par rapport",
-        "orgButton": "En savoir plus et faire une demande"
+        "orgButton": "En savoir plus et acheter"
       },
       "packsTitle": "Packs de rapports détaillés",
       "packsText": "Vous achetez des codes d'accès et les remettez aux personnes concernées, un code par personne. Chacune passe le test, saisit le code sur l'écran de son résultat et reçoit à son adresse e-mail un rapport détaillé nominatif au format PDF. Le contenu du rapport et l'aperçu de ses pages se trouvent sur la page « {report} ».",
@@ -1186,27 +1187,200 @@
       "packDiscount": "−{pct} %",
       "packsNote": "Prix du rapport à l'unité : {retail} €. Le code est valable {months} mois à compter de sa remise. Un code donne droit à un rapport pour une personne.",
       "csv": ["Code d'accès", "Utilisé", "Valable jusqu'au", "Où le saisir"],
+      "buy": {
+        "title": "Acheter des codes",
+        "lead": "Paiement par carte sur le site. Dès le paiement, les codes arrivent à votre adresse e-mail : en liste dans le message et dans un fichier pour Excel.",
+        "button": "Acheter des codes",
+        "payName": "Codes d'accès au rapport DISC détaillé ({n} codes)",
+        "qtyLabel": "Nombre de codes",
+        "qtyHint": "À partir de {min} codes. Plus vous en prenez, moins chaque code coûte cher.",
+        "units": {
+          "one": "code",
+          "many": "codes",
+          "other": "codes"
+        },
+        "line": "{n} {units} à {unit} l'unité",
+        "addMore": "ajoutez-en {k} et chaque code passera à {unit}",
+        "save": "soit {sum} d'économie par rapport à l'achat à l'unité",
+        "teamLabel": "Ajouter le rapport d'équipe (gratuit)",
+        "teamHint": "Le rapport d'équipe est gratuit. En saisissant son code, chaque participant décide de vous montrer ou non son nom, son profil et ses scores sur les quatre échelles. Quand tous auront passé le test, vous demanderez le rapport sur la page de l'équipe, et il arrivera à votre adresse e-mail sous trois jours.",
+        "orgLabel": "Nom de l'organisation ou de l'équipe",
+        "orgHint": "Les participants le verront au moment de donner ou non leur accord.",
+        "emailLabel": "E-mail pour recevoir les codes",
+        "emailHint": "Vous y recevrez les codes, la confirmation du paiement et le rapport d'équipe.",
+        "total": "Total",
+        "money": "{n} €",
+        "submit": "Acheter pour {total}",
+        "wait": "Ouverture de la page de paiement…",
+        "note": "En cliquant sur « Acheter », vous acceptez nos {offer}. Vous saisissez les données de votre carte sur une page de paiement sécurisée.",
+        "invoice": "Besoin d'une facture ou d'autres documents ? Écrivez-nous via le {request}.",
+        "invoiceLink": "formulaire en bas de la page",
+        "checkEmail": "Vérifiez l'adresse e-mail : c'est à elle que nous enverrons les codes.",
+        "checkOrg": "Indiquez le nom de l'organisation : les participants le verront.",
+        "checkQty": "Nombre de codes : de {min} à {max}.",
+        "priceChanged": "Le prix du code vient de changer. Vérifiez le montant et cliquez de nouveau sur « Acheter ».",
+        "error": "Impossible d'ouvrir la page de paiement. Réessayez dans une minute ou écrivez-nous à {email}.",
+        "status": {
+          "wait": "Vérification du paiement…",
+          "paid": "Paiement reçu. L'e-mail contenant les codes arrivera à {email} d'ici quelques minutes.",
+          "sent": "C'est fait : l'e-mail contenant les codes a été envoyé à {email}. S'il n'est pas dans votre boîte de réception, vérifiez le dossier de courrier indésirable (spam).",
+          "failed": "Le paiement n'a pas abouti et aucune somme n'a été débitée. Vous pouvez réessayer.",
+          "thanks": "Merci pour votre paiement. L'e-mail contenant les codes arrivera à l'adresse que vous avez indiquée."
+        }
+      },
       "howTitle": "Comment ça marche",
       "how": [
-        "Faites une demande en bas de la page : combien de rapports et pour qui. Nous vous répondons sous un jour ouvré.",
-        "Nous vous envoyons un lien de paiement par carte. Après le paiement, nous vous envoyons les codes dans un fichier.",
+        "Dans la rubrique « Acheter des codes », choisissez le nombre de codes et payez par carte. Si vous souhaitez le rapport d'équipe, cochez la case : **il est gratuit**.",
+        "Dès le paiement, les codes arrivent à votre adresse e-mail : en liste dans le message et dans un fichier. Si votre service comptable a besoin d'une facture ou d'autres documents, écrivez-nous via le formulaire en bas de la page.",
         "Envoyez à chaque personne le lien vers le test et un code. Le test prend environ 10 minutes, sans inscription.",
         "Sur l'écran de son résultat, la personne clique sur « J'ai un code », puis saisit le code et son adresse e-mail. Le rapport lui arrive par e-mail en quelques minutes.",
-        "Sur simple demande, nous vous indiquons combien de codes ont déjà été utilisés."
+        "Pour le rapport d'équipe : quand tous les participants ont passé le test, cliquez sur « Demander le rapport d'équipe » sur la page de l'équipe. Le lien vers cette page figure dans l'e-mail contenant les codes."
       ],
+      "guide": {
+        "title": "Comment le participant saisit son code",
+        "lead": "Transmettez ces instructions aux participants avec leur code et le lien vers le test. Lien vers ces instructions : {link}",
+        "steps": [
+          {
+            "t": "Passez le test",
+            "p": "Ouvrez le lien vers le test et répondez aux 24 blocs de quatre affirmations. Cela prend environ 10 minutes, sans inscription. Le résultat s'affiche aussitôt à l'écran."
+          },
+          {
+            "t": "Cliquez sur « J'ai un code »",
+            "p": "Sur l'écran du résultat, faites défiler jusqu'au bloc « Rapport détaillé ». Sous le bouton « Acheter », cliquez sur le lien « J'ai un code ». Vous n'avez rien à payer.",
+            "img": "code-1-link",
+            "alt": "Le bloc « Rapport détaillé » sur l'écran du résultat : le champ e-mail, le bouton « Acheter » et, juste en dessous, le lien « J'ai un code » mis en évidence"
+          },
+          {
+            "t": "Saisissez votre e-mail et le code",
+            "p": "Indiquez votre adresse e-mail (le rapport y sera envoyé) et le code d'accès qui vous a été remis. Cliquez sur « Recevoir le rapport ».",
+            "img": "code-2-form",
+            "alt": "Le formulaire avec les champs e-mail et « Code d'accès » remplis, et le bouton « Recevoir le rapport » mis en évidence"
+          },
+          {
+            "t": "Décidez de partager ou non votre résultat",
+            "p": "Si le code est associé à un rapport d'équipe, une question s'affiche. Si vous cliquez sur « Recevoir le rapport et partager mon résultat », le responsable verra dans le rapport d'équipe votre nom, votre profil DISC et vos pourcentages sur les quatre échelles. Si vous cliquez sur « Recevoir le rapport sans partager », il ne verra rien. Vous recevez votre rapport détaillé dans les deux cas.",
+            "img": "code-3-consent",
+            "alt": "La carte « Ce code est associé à un rapport d'équipe », avec le bouton « Recevoir le rapport et partager mon résultat » mis en évidence et le lien « Recevoir le rapport sans partager »"
+          },
+          {
+            "t": "Consultez votre messagerie",
+            "p": "Quelques minutes plus tard, le rapport détaillé arrive en PDF à votre adresse e-mail. S'il n'est pas dans votre boîte de réception, vérifiez le dossier de courrier indésirable (spam).",
+            "img": "code-4-done",
+            "alt": "Le message « Code accepté », qui annonce l'arrivée du rapport d'ici quelques minutes"
+          }
+        ],
+        "note": "Vous avez déjà passé le test sur cet appareil ? Inutile de le repasser : ouvrez votre résultat enregistré ou la page « {report} » et saisissez-y le code."
+      },
+      "guideTeam": {
+        "title": "Comment obtenir le rapport d'équipe",
+        "lead": "Ces instructions s'adressent à la personne qui achète les codes : en général le responsable de l'équipe ou les RH. **Le rapport d'équipe est gratuit avec le pack de codes.**",
+        "steps": [
+          {
+            "t": "Cochez le rapport à l'achat",
+            "p": "Dans la rubrique « Acheter des codes », laissez cochée la case « Ajouter le rapport d'équipe (gratuit) » et indiquez le nom de l'organisation ou de l'équipe : les participants le verront au moment de donner ou non leur accord.",
+            "img": "team-1-buy",
+            "alt": "Le formulaire d'achat de codes : la case « Ajouter le rapport d'équipe (gratuit) » et le champ « Nom de l'organisation ou de l'équipe » mis en évidence"
+          },
+          {
+            "t": "Remettez les codes",
+            "p": "L'e-mail contenant les codes arrive dès le paiement. Envoyez à chaque participant son code, le lien vers le test et les instructions ci-dessus. Chaque personne décide elle-même de partager ou non son résultat."
+          },
+          {
+            "t": "Cliquez sur « Demander le rapport d'équipe »",
+            "p": "Le lien vers la page de l'équipe figure dans l'e-mail contenant les codes, dans la partie « Rapport d'équipe ». Cette page indique combien de personnes ont passé le test et combien ont partagé leur résultat, mais pas lesquelles. Quand tous ont terminé, cliquez sur le bouton. Il fonctionne dès qu'au moins trois personnes ont partagé leur résultat.",
+            "img": "team-2-page",
+            "alt": "La page de l'équipe : l'organisation, 24 codes, 21 personnes ont passé le test, 18 ont partagé leur résultat, et le bouton « Demander le rapport d'équipe » mis en évidence"
+          },
+          {
+            "t": "Attendez l'e-mail",
+            "p": "Le rapport d'équipe arrive en PDF sous trois jours, à l'adresse e-mail qui a reçu les codes. Il ne comprend que les personnes qui ont partagé leur résultat. Si de nouvelles personnes rejoignent l'équipe plus tard, vous pouvez demander un nouveau rapport sur la même page.",
+            "img": "team-3-requested",
+            "alt": "La page de l'équipe après la demande : « Rapport demandé le … », avec l'envoi annoncé sous 3 jours à l'adresse e-mail qui a reçu les codes"
+          }
+        ]
+      },
       "privacyTitle": "Les résultats restent entre les mains des participants",
       "privacy": [
-        "Le rapport n'est envoyé qu'à la personne qui a passé le test et saisi le code. À ceux qui ont payé les codes, nous ne transmettons ni les résultats, ni les rapports, ni les adresses e-mail des participants : seulement le nombre de codes utilisés.",
-        "Si vous avez besoin d'une vue d'ensemble de l'équipe, demandez aux participants de partager eux-mêmes leur résultat : le lien vers leur résultat ou le code de leur rapport de synthèse. La page « {teams} » explique comment en faire un tableau d'équipe."
+        "Le rapport n'est envoyé qu'à la personne qui a passé le test et saisi le code. Sans l'accord du participant, nous ne transmettons à ceux qui ont payé les codes ni les résultats, ni les rapports, ni les adresses e-mail : la réglementation sur la protection des données personnelles l'exige. Sans cet accord, vous apprenez seulement combien de codes ont été utilisés.",
+        "Pour le rapport d'équipe, chaque participant choisit, en saisissant son code, de montrer ou non au responsable son nom, son profil et ses scores sur les quatre échelles ; son propre rapport lui est envoyé dans tous les cas. Le rapport d'équipe ne comprend que les personnes qui l'ont accepté. Si vous préférez réaliser vous-même un tableau d'équipe, la page « {teams} » explique comment faire."
       ],
       "boundsTitle": "Ce à quoi DISC ne sert pas",
       "bounds": "DISC décrit un style de comportement, pas des aptitudes, des connaissances ou l'honnêteté. Il n'est pas conçu pour sélectionner des candidats ni pour décider d'une embauche, d'un licenciement ou d'une rémunération. Utilisez-le pour aider chacun à mieux se comprendre et à mieux comprendre les autres : lors de l'intégration, dans le travail en équipe, dans le développement des managers.",
-      "teamTitle": "Rapport d'équipe : en préparation",
-      "team": "Nous préparons un rapport destiné au manager sur l'équipe dans son ensemble : carte des styles, points forts de l'équipe, sources de frictions et pistes pour y remédier. S'il vous intéresse, indiquez-le dans votre demande : nous vous écrirons quand il sera prêt.",
+      "teamTitle": "Rapport d'équipe gratuit avec le pack",
+      "team": "**Le rapport d'équipe est gratuit avec le pack de codes.** C'est un rapport destiné au responsable, sur l'équipe dans son ensemble : carte des styles, portrait de l'équipe, sources possibles de frictions et pistes pour y remédier, rôles que chaque personne prend naturellement et façon de travailler avec chacune. Il est établi à partir des résultats des personnes qui ont accepté de les montrer ; il en faut au moins trois. Demandez-le sur la page de l'équipe quand tous ont passé le test : il arrive à votre adresse e-mail sous trois jours.",
+      "teamPage": {
+        "title": "Rapport d'équipe",
+        "description": "Page de l'équipe : combien de participants ont passé le test avec les codes et partagé leur résultat, et demande du rapport d'équipe.",
+        "h1": "Rapport d'équipe",
+        "lead": "Cette page indique combien de participants ont passé le test avec vos codes et partagé leur résultat. Quand tous ont terminé, demandez le rapport : il arrivera sous {days} jours à l'adresse e-mail qui a reçu les codes.",
+        "loading": "Chargement…",
+        "notFound": "Ce lien ne s'ouvre pas : vérifiez qu'il a été copié en entier depuis l'e-mail contenant les codes. Si le problème persiste, écrivez-nous à {email}.",
+        "org": "Organisation",
+        "codes": "Codes",
+        "used": "Test passé avec un code",
+        "shared": "Résultat partagé",
+        "privacy": "Cette page n'indique pas qui a partagé son résultat et qui ne l'a pas fait. Le rapport ne comprendra que les personnes qui l'ont partagé, avec leur nom, leur profil et leurs quatre échelles.",
+        "button": "Demander le rapport d'équipe",
+        "few": "Pour établir le rapport, au moins {min} personnes doivent avoir partagé leur résultat. À ce jour : {n}.",
+        "requested": "Rapport demandé le {date}. Il arrivera sous {days} jours à l'adresse e-mail qui a reçu les codes.",
+        "sent": "Rapport envoyé le {date}. Si l'équipe a changé, vous pouvez en demander un nouveau : il comprendra les personnes qui auront partagé leur résultat d'ici là.",
+        "again": "Demander un nouveau rapport",
+        "revoked": "Les codes de ce lot ont été annulés.",
+        "error": "Une erreur s'est produite. Réessayez dans une minute ou écrivez-nous à {email}.",
+        "howTitle": "Comment ça marche",
+        "how": [
+          "Remettez à chaque participant son code et le lien vers le test. Une invitation prête à l'emploi se trouve sur la page {group}.",
+          "Le participant passe le test, saisit le code et choisit de partager ou non son résultat avec le responsable. Son propre rapport détaillé lui est envoyé dans tous les cas.",
+          "Quand tous ont terminé, cliquez sur « Demander le rapport d'équipe ». Le rapport arrive à l'adresse e-mail qui a reçu les codes."
+        ],
+        "groupLink": "« Faire passer le test DISC à un groupe »"
+      },
+      "mail": {
+        "brand": "DISC · codes d'accès",
+        "subject": "Vos codes d'accès au rapport DISC détaillé ({n} codes)",
+        "hello": "Bonjour,",
+        "intro": "Merci pour votre achat. Voici vos codes d'accès au rapport DISC détaillé ({n} codes). Un code donne droit à un rapport pour une personne ; les codes sont valables jusqu'au {until}.",
+        "howTitle": "Comment remettre les codes",
+        "steps": [
+          "Envoyez à chaque participant un code et le lien vers le test : {test}. Un texte d'invitation prêt à l'emploi se trouve sur la page {group}.",
+          "Le participant passe le test (environ 10 minutes, sans inscription), clique sur « J'ai un code » sur l'écran de son résultat, puis saisit le code et son adresse e-mail. Des instructions pas à pas avec captures d'écran, faciles à transmettre aux participants, se trouvent {guide}.",
+          "Le participant reçoit son rapport détaillé par e-mail en quelques minutes. De votre côté, nous vous indiquons seulement quels codes ont été utilisés : sans leur accord, nous ne vous transmettons ni les résultats ni les adresses des participants."
+        ],
+        "groupLink": "« Faire passer le test DISC à un groupe »",
+        "guideLink": "sur la page « Pour les organisations »",
+        "teamTitle": "Rapport d'équipe : {org}",
+        "team": [
+          "En saisissant son code, chaque participant choisira de montrer ou non au responsable son nom, son profil et ses scores sur les quatre échelles. Son propre rapport lui sera envoyé dans tous les cas.",
+          "Quand tous auront passé le test, ouvrez {team} et cliquez sur « Demander le rapport d'équipe ». Le rapport arrivera à cette adresse sous {days} jours. Il faut pour cela qu'au moins {min} personnes aient partagé leur résultat."
+        ],
+        "teamLink": "la page de l'équipe",
+        "codesTitle": "Vos codes ({n})",
+        "file": "Les mêmes codes figurent dans le fichier joint : vous pouvez l'ouvrir dans Excel pour noter à qui vous remettez chaque code.",
+        "question": "Pour toute question, répondez à cet e-mail ou écrivez à {email}.",
+        "bye": "L'équipe disc-test.org",
+        "foot": "Commande {order}. Vous recevez cet e-mail parce que des codes ont été commandés avec cette adresse sur {test}.",
+        "fileName": "disc-codes-{id}.csv"
+      },
+      "teamMail": {
+        "subject": "Rapport d'équipe : {org}",
+        "hello": "Bonjour,",
+        "intro": "Vous trouverez en pièce jointe le rapport d'équipe : {org}. Il comprend les participants qui ont accepté de vous montrer leur résultat : {n}.",
+        "howTitle": "Comment utiliser le rapport",
+        "how": [
+          "Lisez d'abord les sections 2 à 4 : la carte de l'équipe, le portrait et les frictions possibles.",
+          "Discutez des sections 3, 4 et 6 avec l'équipe : c'est l'occasion de convenir de règles communes, pas d'évaluer les personnes.",
+          "La section 7 est pour vous : comment confier les tâches à chaque personne.",
+          "Ne prenez aucune décision concernant le personnel sur la base de ce rapport et ne le diffusez pas en dehors de l'équipe."
+        ],
+        "again": "Si l'équipe change, demandez un nouveau rapport sur {team}.",
+        "teamLink": "la page de l'équipe",
+        "question": "Pour toute question ou remarque, répondez à cet e-mail ou écrivez à {email}.",
+        "bye": "L'équipe disc-test.org"
+      },
       "payTitle": "Paiement et documents",
       "pay": [
-        "Le paiement se fait en euros, par carte bancaire (une carte d'entreprise convient), via un lien de paiement sécurisé que nous vous envoyons après votre demande. Une confirmation électronique du paiement est ensuite envoyée par e-mail au payeur.",
-        "Si votre service comptable a besoin d'une facture ou d'autres documents, précisez-le dans votre demande : nous vous dirons ce que nous pouvons fournir."
+        "Vous payez par carte bancaire sur le site (une carte d'entreprise convient) : le montant dépend du nombre de codes et s'affiche en euros. Vous saisissez les données de votre carte sur une page de paiement sécurisée, et la confirmation du paiement vous est envoyée par e-mail.",
+        "Si votre service comptable a besoin d'une facture ou d'autres documents, précisez-le dans une demande en bas de la page : nous vous dirons ce que nous pouvons fournir."
       ],
       "faqTitle": "Questions fréquentes",
       "faq": [
@@ -1229,7 +1403,7 @@
       ],
       "form": {
         "title": "Demande",
-        "lead": "Nous vous répondons sous un jour ouvré, à l'adresse e-mail que vous indiquez.",
+        "lead": "Si vous avez besoin d'une facture ou si vous avez des questions, écrivez-nous : nous vous répondons sous un jour ouvré, à l'adresse e-mail que vous indiquez.",
         "size": "Nombre de personnes",
         "sizes": ["jusqu'à 10", "10 à 50", "50 à 100", "plus de 100"],
         "interest": "Ce qui vous intéresse",
@@ -2208,7 +2382,7 @@
       "codeTerms": [
         {
           "section": 0,
-          "text": "Code d'accès : une suite de caractères qui donne le droit de recevoir le Service sans paiement par le Client. Les Codes d'accès sont achetés auprès du Prestataire, en vertu d'un contrat distinct, par un tiers (une organisation, un entrepreneur individuel ou une autre personne), qui les remet aux Clients."
+          "text": "Code d'accès : une suite de caractères qui donne le droit de recevoir le Service sans paiement par le Client. Les Codes d'accès sont achetés auprès du Prestataire par un tiers (ci-après « l'Acheteur de codes »), qu'il s'agisse d'une organisation, d'un entrepreneur individuel ou d'une autre personne, sur le Site, à la page « Pour les organisations », ou en vertu d'un contrat distinct, et remis par lui aux Clients."
         },
         {
           "section": 3,
@@ -2220,10 +2394,24 @@
         },
         {
           "section": 7,
-          "text": "8.4. À la personne qui a acheté un Code d'accès, le Prestataire indique uniquement si ce Code d'accès a été utilisé et à quelle date. Le Prestataire ne lui transmet ni le résultat du Test, ni le Profil détaillé, ni l'adresse e-mail du Client."
+          "text": "8.4. À la personne qui a acheté un Code d'accès, le Prestataire indique uniquement si ce Code d'accès a été utilisé et à quelle date. Si le Code d'accès a été remis pour un rapport d'équipe (article 4.8) et que le Client, en saisissant le Code d'accès, a lui-même accepté de partager son résultat, le Prestataire fait figurer dans le rapport d'équipe son nom, son profil DISC et ses pourcentages sur les quatre échelles. Ce consentement est facultatif : le Client reçoit le Profil détaillé même s'il ne le donne pas. Le Client peut retirer son consentement à tout moment en écrivant au Prestataire ; le retrait ne remet pas en cause la licéité de la transmission effectuée auparavant, et le résultat du Client ne figure plus dans les rapports d'équipe suivants. Le Prestataire ne transmet à la personne qui a acheté le Code d'accès ni le reste du résultat du Test, ni le Profil détaillé, ni l'adresse e-mail du Client."
         }
       ],
-      "edition": "Version du 14 novembre 2026. Traduction française mise à jour le 14 novembre 2026.",
+      "bizTerms": [
+        {
+          "section": 3,
+          "text": "4.7. L'Acheteur de codes choisit le nombre de Codes d'accès sur la page « Pour les organisations » et indique une adresse e-mail. Le prix d'un Code d'accès dépend de leur nombre et figure sur cette page ; le montant total est affiché avant le paiement et sur la page de paiement. Les Codes d'accès sont payés intégralement, selon les modalités prévues aux articles 3.2 à 3.5. Après le paiement, le Prestataire envoie les Codes d'accès à l'adresse indiquée, en général immédiatement et au plus tard 24 heures après le paiement ; le service de vente des Codes d'accès est réputé exécuté au moment de l'envoi de l'e-mail contenant les Codes d'accès. Chaque Code d'accès est valable 12 mois à compter du jour du paiement."
+        },
+        {
+          "section": 3,
+          "text": "4.8. Si l'Acheteur de codes a choisi le rapport d'équipe lors de l'achat des Codes d'accès sur le Site, le Prestataire établit, sans supplément de prix, un rapport d'équipe, c'est-à-dire une description de l'équipe à partir des résultats du Test des Clients qui, en saisissant le Code d'accès, ont eux-mêmes accepté de le montrer (au moins trois personnes). L'Acheteur de codes demande le rapport sur la page de l'équipe, dont le lien figure dans l'e-mail contenant les Codes d'accès ; le rapport est envoyé à son adresse e-mail dans un délai de 3 jours calendaires à compter de la demande. Le rapport d'équipe est destiné au responsable et à l'équipe elle-même ; il ne peut servir de fondement à des décisions d'embauche, de licenciement ou de rémunération."
+        },
+        {
+          "section": 4,
+          "text": "5.9. L'Acheteur de codes peut renoncer aux Codes d'accès non utilisés achetés sur le Site tant qu'ils sont valables : le prix de chaque Code d'accès non utilisé lui est alors remboursé au prix auquel il a été acheté, et ce Code d'accès cesse d'être valable. La somme versée pour un Code d'accès déjà accepté par le Site n'est pas remboursée. Le remboursement est effectué conformément aux articles 5.5 à 5.7 ; la demande doit indiquer le numéro de commande."
+        }
+      ],
+      "edition": "Version du 16 novembre 2026. Traduction française mise à jour le 16 novembre 2026.",
       "note": "Ce texte est la traduction française des conditions originales publiées à l'adresse {original}. En cas de divergence entre les deux textes, l'original prévaut, sauf pour le prix et les modalités de paiement : pour la version française du Site, ceux-ci sont régis par les articles 1 et 3 de la présente traduction.",
       "seller": "Manukyan Armen, entrepreneur individuel, N° d’identification fiscale (INN) {inn}",
       "lead": "Le présent document constitue une offre officielle (offre au public) de conclure un contrat portant sur le service payant « Profil DISC détaillé », ainsi qu'un contrat de fourniture du Kit de l'animateur DISC (article 10), aux conditions énoncées ci-dessous. Cette offre émane de {seller} (ci-après « le Prestataire »). Le paiement du service ou du Kit vaut acceptation pleine, entière et sans réserve des présentes conditions (acceptation de l'offre).",
@@ -2537,14 +2725,32 @@
           "button": "Recevoir le rapport",
           "back": "Acheter sans code",
           "wait": "Vérification du code…",
-          "note": "Le rapport a déjà été payé par la personne ou l'organisation qui vous a remis ou offert le code : vous n'avez rien à payer. Nous ne lui transmettons ni votre résultat ni votre adresse e-mail. En cliquant sur « Recevoir le rapport », vous acceptez nos {offer}.",
+          "note": "Le rapport a déjà été payé par la personne ou l'organisation qui vous a remis ou offert le code : vous n'avez rien à payer. Sans votre accord, nous ne lui transmettons ni votre résultat ni votre adresse e-mail. En cliquant sur « Recevoir le rapport », vous acceptez nos {offer}.",
           "badEmail": "Vérifiez l'adresse e-mail : c'est à elle que nous enverrons le rapport.",
           "empty": "Saisissez le code d'accès.",
           "done": "Code accepté. Le rapport arrivera à {to} d'ici quelques minutes. S'il n'est pas dans votre boîte de réception, vérifiez le dossier de courrier indésirable (spam).",
           "bad": "Ce code n'existe pas. Vérifiez qu'il a été saisi sans erreur.",
           "used": "Ce code a déjà été utilisé. Si c'est vous qui l'avez saisi et que le rapport n'est pas arrivé, écrivez-nous à {email}.",
           "expired": "Ce code a expiré. Adressez-vous à la personne ou à l'organisation qui vous l'a remis.",
-          "error": "Impossible de vérifier le code. Réessayez dans une minute ou écrivez-nous à {email}."
+          "error": "Impossible de vérifier le code. Réessayez dans une minute ou écrivez-nous à {email}.",
+          "team": {
+            "v": "team-fr-2026-11-16",
+            "kicker": "Code remis par une organisation",
+            "title": "Ce code est associé à un rapport d'équipe : {org}",
+            "titleNoOrg": "Ce code est associé à un rapport d'équipe",
+            "text": "Si vous acceptez, le responsable de l'équipe recevra un rapport d'équipe qui contiendra :",
+            "list": [
+              "votre nom,",
+              "votre profil DISC,",
+              "vos pourcentages sur les quatre échelles."
+            ],
+            "not": "Nous ne transmettons ni votre rapport détaillé, ni vos réponses au test, ni votre adresse e-mail.",
+            "share": "Recevoir le rapport et partager mon résultat",
+            "skip": "Recevoir le rapport sans partager",
+            "note": "Vous recevez le rapport dans les deux cas. Vous pouvez retirer votre consentement à tout moment en écrivant à {email} ; un rapport déjà envoyé au responsable ne peut pas être retiré. En cliquant sur un bouton, vous acceptez nos {offer} ; en cliquant sur « Recevoir le rapport et partager mon résultat », vous acceptez que ces données soient transmises à l'organisation.",
+            "doneShared": "Votre résultat figurera dans le rapport d'équipe.",
+            "doneSkip": "Votre résultat ne sera pas transmis. Si vous changez d'avis, écrivez à {email}."
+          }
         },
         "how": [
           "Passez le test gratuit : 24 blocs, environ 10 minutes. Si vous l'avez déjà passé, inutile de recommencer : le rapport est établi à partir du résultat que vous avez déjà.",
