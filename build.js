@@ -272,7 +272,7 @@ const bizBuyHTML = L => { const BT = L.content.business.buy, min = businessPacks
   return `<section class="service xbuy bizbuy"><form id="bizBuy" class="bizform" novalidate>` +
     `<div class="field"><label for="bizQty">${escFull(BT.qtyLabel)}</label><div class="go-qty"><button type="button" class="go-pm" data-d="-1" aria-label="−1">−</button>` +
     `<input type="number" id="bizQty" min="${min}" max="1000" step="1" value="${min}" inputmode="numeric"><button type="button" class="go-pm" data-d="1" aria-label="+1">+</button>` +
-    `<span class="go-chips">${[min, 25, 50, 100].filter((x, i, a) => a.indexOf(x) === i).map(x => `<button type="button" class="go-chip" data-n="${x}" aria-pressed="false">${x}</button>`).join('')}</span></div>` +
+    `<span class="go-chips">${[min, 10, 25, 50, 100].filter((x, i, a) => a.indexOf(x) === i).map(x => `<button type="button" class="go-chip" data-n="${x}" aria-pressed="false">${x}</button>`).join('')}</span></div>` +
     `<p class="hint">${escFull(BT.qtyHint.replace('{min}', min))}</p><p class="go-price" id="bizPrice" aria-live="polite"></p></div>` +
     `<label class="check bizteam"><input type="checkbox" id="bizTeam" checked><span><b>${escFull(BT.teamLabel)}</b><br><span class="hint">${escFull(BT.teamHint)}</span></span></label>` +
     `<div class="field" id="bizOrgRow"><label for="bizOrg">${escFull(BT.orgLabel)}</label><input type="text" id="bizOrg" class="ym-disable-keys" maxlength="80" autocomplete="organization"><p class="hint">${escFull(BT.orgHint)}</p></div>` +
