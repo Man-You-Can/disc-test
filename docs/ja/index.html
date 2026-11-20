@@ -891,9 +891,11 @@ function subLabel(){ return SUB_V === 'b' && t('share.subscribeB') !== 'share.su
 /* A/B-тест карточки «Сильные стороны» … «Комфортная среда» на экране своего результата (descAB, descABFrom в site.config.json; с 2026-11-14,
    по просьбе заказчика). Группа — по миллисекундам времени прохождения (r.t): у одного результата она одна и та же при каждом открытии,
    в браузере ничего не хранится и на сервер не уходит. В тест входят только свои результаты, пройденные после descABFrom; чужой результат
-   по ссылке и панель администратора показывают карточку всегда. Цели: desc-show / desc-hide — при каждом показе своего результата из теста.
-   descHidden: null — результат не в тесте, true — карточки нет, false — есть. */
-var DESC_AB = +'0.5' || 0, DESC_AB_FROM = '2026-11-14T16:30:00.000Z';
+   по ссылке и панель администратора показывают карточку всегда. Первый тест (14–20.11.2026, цели desc-show / desc-hide) остановлен по решению
+   заказчика: описание оставалось в PDF на e-mail. С 2026-11-20 — второй тест «короткий результат»: у той же группы и PDF краткого отчёта
+   без этих разделов (descShort в src/apps-script.template.js — то же правило). Цели: desc2-show / desc2-hide — при каждом показе своего
+   результата из теста. descHidden: null — результат не в тесте, true — карточки нет, false — есть. */
+var DESC_AB = +'0.5' || 0, DESC_AB_FROM = '2026-11-20T10:00:00.000Z';
 function descHidden(r, opts){
   if(!(DESC_AB > 0) || !DESC_AB_FROM || !opts.own || opts.fromAdmin || !r || typeof r.t !== 'string' || r.t < DESC_AB_FROM) return null;
   var ms = new Date(r.t).getTime(); if(!isFinite(ms)) return null;
@@ -1846,7 +1848,7 @@ function extHooks(sc, cls, H){
 function renderReport(r, opts){
   opts = opts||{};
   var descOff = descHidden(r, opts);   // A/B-тест карточки описания профиля (см. DESC_AB)
-  if(descOff !== null && window.discTrack) window.discTrack(descOff ? 'desc-hide' : 'desc-show');
+  if(descOff !== null && window.discTrack) window.discTrack(descOff ? 'desc2-hide' : 'desc2-show');
   hideProgress(); setStep(opts.own ? t('report.own') : t('report.other'), true);
   // на экране результата — короткий подвал, чтобы ссылки не уводили от покупки расширенного отчёта (решение заказчика от 2026-10-21)
   if(footEl) footEl.classList.add('short');

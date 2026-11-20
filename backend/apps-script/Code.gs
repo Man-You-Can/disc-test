@@ -53,6 +53,8 @@ var EXTENDED_PRICE_EUR = 9.99;  // цена в евро (servicePriceEur) — д
 var EXTENDED_OFFER_EUR = 6.99;  // специальная цена в евро (offerPriceEur); 0 — её нет
 var EXTENDED_OFFER_MIN = 1440;  // срок специальной цены в минутах (offerMinutes)
 var EXTENDED_LANG_PRICES = {"es":[7.99,4.99],"pl":[7.99,4.99],"pt":[4.99,2.99],"tr":[4.99,2.99],"zh":[4.99,2.99],"id":[3.99,2.49]};  // цены по языкам (langPrices, с 2026-10-31): {язык: [обычная, специальная]} в валюте языка поверх общей цены валюты; русской версии не касается
+var DESC_AB = 0.5;            // A/B-тест «короткий результат» (descAB в site.config.json; с 2026-11-20): доля результатов без описания профиля — и на экране, и в PDF
+var DESC_AB_FROM = '2026-11-20T10:00:00.000Z'; // с какого времени прохождения (UTC, ISO) результат входит в тест (descABFrom); '' — теста нет
 var CONTACT_TO = 'info@disc-test.org';   // адрес формы обратной связи (feedbackEmail в site.config.json); '' — форма отключена
 var MAX_CONTACT_BYTES = 10485760;  // общий размер вложений одного сообщения (то же число проверяет браузер)
 var MAX_CONTACT_FILES = 20;
@@ -1108,6 +1110,14 @@ function reportAdHtml(L, r, lang, sc, start, end) {
     '</div></div>';
 }
 
+/** Группа A/B-теста «короткий результат» (с 2026-11-20, по просьбе заказчика): true — PDF краткого отчёта без разделов «Сильные стороны» …
+ *  «Комфортная среда», как экран результата этой группы. Правило то же, что у сайта (descHidden в src/template.html): прохождение не раньше
+ *  DESC_AB_FROM, миллисекунды времени прохождения меньше DESC_AB·1000. Менять вместе с сайтом и с paid в private/server/src/ab-stats.js. */
+function descShort(r) {
+  if (!(DESC_AB > 0) || !DESC_AB_FROM || !r || typeof r.t !== 'string' || r.t < DESC_AB_FROM) return false;
+  var ms = new Date(r.t).getTime(); if (!isFinite(ms)) return false;
+  return (ms % 1000) < DESC_AB * 1000;
+}
 function reportHtml(r, lang) {
   var L = DATA[lang], R = L.report, sc = score(r), c = classify(sc), prof = L.profiles[c.key], st = L.styles[c.p];
   var rtl = L.dir === 'rtl', start = rtl ? 'right' : 'left', end = rtl ? 'left' : 'right';
@@ -1147,9 +1157,10 @@ function reportHtml(r, lang) {
     h(R.statsTitle) + '<table width="100%" cellpadding="0" cellspacing="0" dir="' + (L.dir || 'ltr') + '">' + bars + '</table>' +
     h(R.traits) + '<p style="margin:0">' + st.traits.map(esc).join(' · ') + '</p>' +
     (c.s ? '<p style="margin:8px 0 0"><b>' + esc(fmt(R.secondary, { k: c.s, name: L.keys[c.s] })) + '</b> ' + esc(fmt(R.secondaryAddon, { addon: L.addon[c.s] })) + '</p>' : '') +
-    two(R.strengths, list(st.strengths), R.growth, list(st.growth)) +
-    two(R.motivation, list(st.motivation), R.communication, list(st.communication)) +
-    two(R.stress, para(st.stress), R.environment, para(st.environment)) +
+    (descShort(r) ? '' :
+      two(R.strengths, list(st.strengths), R.growth, list(st.growth)) +
+      two(R.motivation, list(st.motivation), R.communication, list(st.communication)) +
+      two(R.stress, para(st.stress), R.environment, para(st.environment))) +
     reportAdHtml(L, r, lang, sc, start, end) +
     '<table width="100%" cellpadding="0" cellspacing="0" dir="' + (L.dir || 'ltr') + '" style="margin-top:' + (L.reportAd ? 12 : 22) + 'px;border:1px solid #C9CED6"><tr><td style="padding:10px 12px">' +
       '<b>' + esc(L.cta.title) + '</b><br>' + esc(L.cta.text) + ' <a href="' + esc(home) + '" dir="ltr" style="color:#1B2027;font-weight:bold;text-decoration:none">' + esc(home) + '</a></td></tr></table>' +

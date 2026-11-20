@@ -1989,6 +1989,7 @@ const gsTpl = fs.readFileSync(path.join(SRC, 'apps-script.template.js'), 'utf8')
 const gs = gsTpl
   .replace('__SITE_URL__', siteUrl).replace('__SEND_TOKEN__', String(cfg.sendToken || '').replace(/['\\]/g, ''))
   .replace('__SENDER_EMAIL__', senderEmail).replace('__CONTACT_TO__', feedbackEmail).replace('__PRICE_RUB__', String(servicePrices.RUB || 0)).replace('__PRICE_USD__', String(servicePrices.USD || 0)).replace('__OFFER_RUB__', String(offerPrices.RUB || 0)).replace('__OFFER_USD__', String(offerPrices.USD || 0)).replace('__PRICE_EUR__', String(servicePrices.EUR || 0)).replace('__OFFER_EUR__', String(offerPrices.EUR || 0)).replace('__OFFER_MIN__', String(offerMinutes)).replace('__LANG_PRICES__', JSON.stringify(langPrices)).replace('__MAX_CONTACT_BYTES__', String(MAX_CONTACT_BYTES))
+  .replace('__DESC_AB__', String(descAB)).replace('__DESC_AB_FROM__', descABFrom)
   .replace('__BLOCK_KEYS__', BLOCK_KEYS).replace('__DATA__', () => JSON.stringify(mailData));
 fs.mkdirSync(path.join(ROOT, 'backend', 'apps-script'), { recursive: true });
 fs.writeFileSync(path.join(ROOT, 'backend', 'apps-script', 'Code.gs'), gs);

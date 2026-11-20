@@ -652,6 +652,15 @@ if (ctx.DATA.ar && ctx.DATA.ar.extended) {
   check('extended mail in Arabic: subject, invite link to /ar/ with campaign tags, right to left, nothing unfilled', /^تقرير DISC الموسّع:\s?DI · الرائد$/.test(mA.subject) &&
     mA.html.includes('href="https://disc-test.org/ar/?utm_source=report&amp;utm_medium=email&amp;utm_campaign=full-di&amp;utm_content=invite"') && mA.html.includes('dir="rtl"') && !/\{\w+\}|undefined/.test(mA.html + mA.text), mA.subject);
 }
+// A/B-тест «короткий результат» (с 2026-11-20): у группы без описания на экране и PDF без шести разделов; правило — как у сайта (descHidden)
+if (ctx.DESC_AB > 0 && ctx.DESC_AB_FROM) {
+  const at = ms => new Date(Date.parse(ctx.DESC_AB_FROM) + 60000 + ms).toISOString(), hS = t => ctx.reportHtml(ctx.decodeResult(mk('Тест', '', t)), 'ru'), head = ctx.DATA.ru.report.strengths;
+  const lowMs = 0, highMs = Math.ceil(ctx.DESC_AB * 1000);
+  check('short result A/B: group B (low ms after the start) gets the PDF without the six sections, in every language', ctx.descShort(ctx.decodeResult(mk('Т', '', at(lowMs)))) === true &&
+    Object.keys(ctx.DATA).every(lg => { const r = ctx.decodeResult(mk('Т', '', at(lowMs))), h = ctx.reportHtml(r, lg), R = ctx.DATA[lg].report; return ![R.strengths, R.growth, R.motivation, R.communication, R.stress, R.environment].some(x => h.includes(ctx.esc(x))) && h.includes(ctx.esc(R.traits)); }));
+  check('short result A/B: group A and results before the start keep the full PDF', !hS(at(highMs)).includes(ctx.esc(head)) === false && hS(new Date(Date.parse(ctx.DESC_AB_FROM) - 1000).toISOString()).includes(ctx.esc(head)) &&
+    ctx.descShort(ctx.decodeResult(mk('Т', '', at(highMs)))) === false && ctx.descShort(ctx.decodeResult(mk('Т', '', '2026-09-07T10:00:00.000Z'))) === false);
+}
 check('doGet reports that extended delivery is on', JSON.parse(ctx.doGet().text).extended === true);
 fs.writeFileSync(path.join(process.env.OUT || '/tmp', 'disc-extended-mail-preview.html'), mX.htmlBody);
 fs.writeFileSync(path.join(process.env.OUT || '/tmp', 'disc-mail-preview.html'), mail.htmlBody);
