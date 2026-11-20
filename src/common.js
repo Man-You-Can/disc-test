@@ -92,6 +92,35 @@ function showHash(h){ try{ history.replaceState({discHash:h, discShown:h}, '', l
 /* возврат к началу: адрес без хэша, запись истории без данных */
 function dropHash(){ try{ if(location.hash || history.state) history.replaceState(null, '', location.pathname + location.search); }catch(e){} }
 
+/* Всплывающая плашка «письмо отправлено» с зелёной галочкой (с 2026-11-20, по просьбе заказчика): вверху окна, исчезает сама через 5 с
+   или по нажатию. Строка о статусе в самой форме остаётся (её читают экранные дикторы — у плашки aria-hidden). Формы: «Отправить на e-mail»
+   на экране результата и «Результат готов», подписка с главной, «Прислать бланк на e-mail», обратная связь. */
+function discOkToast(msg){
+  try{
+    if(!document.getElementById('okToastCss')){
+      var css = document.createElement('style'); css.id = 'okToastCss';
+      css.textContent = '.oktoast{position:fixed;left:50%;top:calc(16px + env(safe-area-inset-top,0px));z-index:40;transform:translate(-50%,-16px);opacity:0;transition:transform .25s ease,opacity .25s ease;'+
+        'display:flex;align-items:center;gap:12px;width:max-content;max-width:min(440px,calc(100vw - 32px));padding:12px 16px;border-radius:12px;'+
+        'background:var(--surface,#fff);color:var(--ink,#1a1a1a);border:1px solid var(--line,rgba(0,0,0,.1));box-shadow:0 10px 30px -8px rgba(0,0,0,.35);font-size:14px;line-height:1.45;cursor:pointer;text-align:start}'+
+        '.oktoast.on{transform:translate(-50%,0);opacity:1}'+
+        '.oktoast i{flex:none;width:28px;height:28px;border-radius:50%;background:var(--s,#3A9A69);color:#fff;display:flex;align-items:center;justify-content:center}'+
+        '.oktoast svg{width:16px;height:16px}'+
+        '@media (prefers-reduced-motion:reduce){.oktoast{transition:none}}@media print{.oktoast{display:none!important}}';
+      document.head.appendChild(css);
+    }
+    var old = document.getElementById('okToast'); if(old) old.parentNode.removeChild(old);
+    clearTimeout(discOkToast.t);
+    var el = document.createElement('div'); el.id = 'okToast'; el.className = 'oktoast'; el.setAttribute('aria-hidden', 'true');
+    el.innerHTML = '<i><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg></i><span></span>';
+    el.lastChild.textContent = msg;
+    document.body.appendChild(el);
+    function hide(){ el.classList.remove('on'); setTimeout(function(){ if(el.parentNode) el.parentNode.removeChild(el); }, 300); }
+    el.addEventListener('click', hide);
+    requestAnimationFrame(function(){ requestAnimationFrame(function(){ el.classList.add('on'); }); });
+    discOkToast.t = setTimeout(hide, 5000);
+  }catch(e){}
+}
+window.discOkToast = discOkToast;
 function initCommon(c){
   var L=c.L, t=c.t, esc=c.esc, lsGet=c.lsGet, lsSet=c.lsSet, langHref=c.langHref, $=c.$;
 

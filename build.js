@@ -1266,7 +1266,7 @@ for (const L of locales) {
         if(!$('#pmPd').checked){ $('#pmPd').focus(); show('err', M.pdRequired); return; }
         btn.disabled=true; show('muted', M.sending);
         fetch(${jsStr(cfg.sendEndpoint)}, {method:'POST', body:JSON.stringify({action:'paperMail', token:${jsStr(cfg.sendToken)}, lang:L.lang, to:em, consent:true, consentV:${jsStr(pdVersion)}, subscribe:$('#pmNl').checked})})
-          .then(function(r){ return r.json(); }).then(function(j){ if(!j||!j.ok) throw new Error((j&&j.error)||'bad response'); show('ok', M.sent.replace('{email}', em)); if(window.discTrack) window.discTrack('paper-mail'); })
+          .then(function(r){ return r.json(); }).then(function(j){ if(!j||!j.ok) throw new Error((j&&j.error)||'bad response'); show('ok', M.sent.replace('{email}', em)); if(window.discOkToast) window.discOkToast(M.sent.replace('{email}', em)); if(window.discTrack) window.discTrack('paper-mail'); })
           .catch(function(err){ var m=String((err&&err.message)||err); show('err', /too many|daily limit/.test(m) ? M.tooMany : M.failed.replace('{error}', m)); })
           .then(function(){ btn.disabled=false; }); }); })();` : '',
     ldExtra: pi ? [{ '@context': 'https://schema.org', '@type': 'DigitalDocument', name: pd.title, url: `${siteUrl}/pdf/${pi.file}`, encodingFormat: 'application/pdf', inLanguage: hl(L.lang), isAccessibleForFree: true }] : [] });

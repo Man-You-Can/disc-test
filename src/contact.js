@@ -140,7 +140,7 @@ function initContact(c){
       if(pdBox){ data.consent=true; data.consentV=c.pdVersion||''; }
       return postJSON(endpoint, data);
     }).then(function(){
-      setStatus('ok', esc(t('contact.sent',{email:em})));
+      setStatus('ok', esc(t('contact.sent',{email:em}))); if(window.discOkToast) window.discOkToast(t('contact.sent',{email:em}));
       $('#cSubj').value=''; $('#cMsg').value=''; files=[]; topic=''; render();
       if(window.discTrack) window.discTrack('contact'); // цель Метрики: сообщение отправлено
     }, function(err){

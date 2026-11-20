@@ -1105,7 +1105,7 @@ function initHomeSub(){
     btn.disabled = true; st.hidden = false; st.className = 'small sendstatus muted'; st.textContent = t('nl.sending');
     postJSON(SEND_ENDPOINT, data).then(function(){
       f.querySelector('.nlfields').hidden = true;
-      st.className = 'small sendstatus ok'; st.textContent = t('nl.sent', {email: email});
+      st.className = 'small sendstatus ok'; st.textContent = t('nl.sent', {email: email}); discOkToast(t('nl.sent', {email: email}));
     }, function(){ btn.disabled = false; st.className = 'small sendstatus err'; st.textContent = t('nl.failed'); });
   });
 }
@@ -1802,7 +1802,7 @@ function sendResult(r, code){
     r.sent = new Date().toISOString();
     if(sub && j.subscribed) subscribed(r);
     var last = lsGet('disc.last'); if(last && last.t===r.t){ last.sent = r.sent; lsSet('disc.last', last); }
-    showSendStatus(r, code, 'sent');
+    showSendStatus(r, code, 'sent'); discOkToast(t('share.sent',{email:r.email}));
     if(sub) renderSub(r, !j.subscribed);
   }, function(err){
     // queued — сервер сохранил результат и сам отправит письмо, когда почтовый сервис заработает; отметка остаётся и после перезагрузки страницы
