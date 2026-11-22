@@ -474,6 +474,74 @@
       "foot": { "title": "Tests", "disc": "Test DISC", "bigfive": "Big Five" }
     },
     "bigfive": {
+      "report": {
+        "name": "Informe ampliado Big Five",
+        "mail": {
+          "subject": "Su informe ampliado Big Five",
+          "hello": "Hola, {name}:",
+          "intro": "Gracias por su compra. Adjuntamos su informe personal en PDF. Encontrará sus cinco rasgos y diez aspectos, las combinaciones que destacan en su perfil, ejemplos de trabajo y relaciones, y un plan para los próximos 30 días.",
+          "howTitle": "Por dónde empezar",
+          "how": [
+            "Abra «Su perfil» para ver sus puntuaciones y leer el resumen en tres líneas.",
+            "Puede leer los capítulos en cualquier orden. Los rasgos más alejados del centro son un buen punto de partida.",
+            "El plan de 30 días y «Lo esencial en una página» están pensados para que pueda imprimirlos y tenerlos a mano."
+          ],
+          "question": "Si tiene alguna pregunta, responda a este mensaje o escriba a {email}.",
+          "bye": "El equipo de disc-test.org",
+          "order": "Pedido {order} ·"
+        },
+        "home": {
+          "label": "Su resultado Big Five del {date}",
+          "name": "Big Five",
+          "open": "Ver resultado",
+          "title": "Qué significan sus cinco puntuaciones en la vida cotidiana",
+          "hook": "El rasgo que más se aleja del centro es {trait}, {pos}. Tiene un capítulo propio con ejemplos del trabajo, las relaciones y las situaciones de presión.",
+          "hookNone": "El informe explica sus cinco rasgos y diez aspectos con ejemplos del trabajo, las relaciones y las situaciones de presión.",
+          "above": "por encima de {n} de cada 100 personas",
+          "below": "por debajo de {n} de cada 100 personas",
+          "button": "Ver resultado e informe"
+        },
+        "block": {
+          "eyebrow": "Informe ampliado",
+          "title": "Su informe ampliado Big Five",
+          "lead": "El resumen muestra sus puntuaciones. El informe personal, de unas 24 páginas, explica cómo se combinan y qué puede significar ese perfil en el trabajo, en sus relaciones y en momentos de presión. Incluye un plan práctico para el próximo mes.",
+          "listTitle": "Qué encontrará en el informe",
+          "list": [
+            "Una interpretación de sus cinco rasgos y sus diez aspectos.",
+            "Puntos fuertes y posibles dificultades en el trabajo y en las relaciones.",
+            "Las combinaciones de rasgos que destacan en su perfil.",
+            "Entornos y tareas que le favorecen, y condiciones que pueden desgastarle.",
+            "Cómo suelen verle los demás y qué puede explicar sobre su manera de actuar.",
+            "Señales tempranas de sobrecarga y formas de recuperar fuerzas.",
+            "Un plan de 30 días y un resumen de una página."
+          ],
+          "samplesTitle": "Vea algunas páginas",
+          "sampleAlt": [
+            "Portada con el nombre y el gráfico de los cinco rasgos",
+            "Su perfil: cinco rasgos y diez aspectos en un gráfico",
+            "Una página del capítulo sobre responsabilidad",
+            "Una combinación de rasgos con una sugerencia práctica",
+            "Hoja de trabajo del plan de 30 días"
+          ],
+          "sampleNote": "Estas páginas corresponden a una participante ficticia. Su informe se prepara con sus propias puntuaciones.",
+          "nameHint": "Este nombre aparecerá en la portada y en cada página de su informe."
+        },
+        "thanks": {
+          "title": "Pago recibido",
+          "text": "Estamos preparando su informe Big Five. Lo recibirá en unos minutos en {email}. Si no lo encuentra, revise la carpeta de correo no deseado.",
+          "textNoEmail": "Estamos preparando su informe Big Five. Lo recibirá en unos minutos en el correo que indicó al pagar. Si no lo encuentra, revise la carpeta de correo no deseado.",
+          "order": "Número de pedido: {order}",
+          "statusWait": "Esperamos la confirmación del servicio de pagos.",
+          "statusPaid": "Pago confirmado. Estamos preparando su informe.",
+          "statusSent": "Ya enviamos su informe. Revise su correo."
+        },
+        "fail": {
+          "title": "No se completó el pago",
+          "text": "No se ha realizado ningún cargo. Puede volver a intentarlo desde el formulario de compra que aparece debajo de su resultado.",
+          "button": "Ver mi resultado",
+          "order": "Número de pedido: {order}"
+        }
+      },
       "title": "Test Big Five gratis online: test de los cinco grandes",
       "description": "Test Big Five gratis (BFAS): 100 afirmaciones, unos 15 minutos, sin registro. Cinco rasgos y diez aspectos de su personalidad, comparados con otras personas.",
       "eyebrow": "Test de personalidad",
@@ -1003,6 +1071,7 @@
       }
     },
     "policy": {
+      "purchaseBf": "Si compra el informe ampliado Big Five, tratamos su correo electrónico, los datos del pedido, el nombre indicado para el informe, las puntuaciones totales de los diez aspectos y la fecha y la hora del test. Las respuestas a los enunciados individuales no se envían al servidor. Eliminamos el código del resultado y el nombre 30 días después de enviar el informe, o a los 7 días si el pedido no se paga. Conservamos los datos del pedido en las mismas condiciones que los del informe ampliado DISC. La base legal es el contrato conforme a las {offer}.",
       "title": "Política de tratamiento de datos personales — test DISC",
       "description": "Quién trata los datos en disc-test.org y para qué, dónde se guardan, durante cuánto tiempo y cómo eliminarlos.",
       "h1": "Política de tratamiento de datos personales",
@@ -1416,6 +1485,18 @@
       }
     },
     "offer": {
+      "bfSection": {
+        "h": "13. Informe ampliado Big Five",
+        "p": [
+          "13.1. En las condiciones de esta oferta, el Prestador también presta el servicio de elaboración del informe ampliado Big Five (en adelante, el Informe Big Five). Prepara un informe personalizado en formato PDF a partir del resultado del test Big Five en el Sitio y lo envía al Cliente. Las disposiciones de esta oferta relativas al Servicio se aplican al Informe Big Five, salvo que esta sección disponga otra cosa.",
+          "13.2. El Informe Big Five se prepara a partir del resultado del test realizado en el Sitio o introducido en el Sitio desde un formulario en papel. Se utilizan las puntuaciones totales de los diez aspectos, la fecha y la hora del test y el nombre indicado por el Cliente al hacer el pedido.",
+          "13.3. El precio del Informe Big Five se indica en el Sitio y en la página de pago. El Prestador puede ofrecer un precio especial y retirar la oferta. El Informe Big Five se abona íntegramente conforme a los apartados 3.2 a 3.5.",
+          "13.4. Un programa genera el Informe Big Five a partir de textos preparados de antemano. El informe se envía al correo electrónico del Cliente tras el pago, en un plazo máximo de 24 horas desde el pago. El servicio se considera prestado en el momento del envío del mensaje al Cliente.",
+          "13.5. Los textos del Informe Big Five se prepararon de antemano con ayuda de un sistema de inteligencia artificial conforme a las reglas del Prestador y pasaron por una revisión editorial. El informe describe rasgos de personalidad a partir de las respuestas del Cliente al cuestionario. No constituye un dictamen psicológico, un diagnóstico médico ni una base para tomar decisiones de contratación, despido o remuneración.",
+          "13.6. Las secciones 5 y 6 se aplican al Informe Big Five.",
+          "13.7. Para preparar el informe, el Prestador trata el correo electrónico del Cliente, el nombre para el informe, las puntuaciones totales de los diez aspectos y la fecha y la hora del test. No recibe las respuestas a los enunciados individuales. El código del resultado y el nombre se eliminan a los 30 días naturales del envío del informe, o a los 7 días si el pedido no se paga."
+        ]
+      },
       "pairSection": {
         "h": "12. Informe «DISC para dos»",
         "p": [
@@ -1465,7 +1546,7 @@
           "text": "5.9. El Comprador de códigos puede desistir de los Códigos de acceso no utilizados que haya comprado en el Sitio mientras estén vigentes: en ese caso se le reembolsa el precio pagado por cada Código de acceso no utilizado, y ese Código de acceso deja de funcionar. El pago de un Código de acceso que el Sitio ya ha aceptado no se reembolsa. El reembolso se tramita en la forma indicada en las cláusulas 5.5 a 5.7; en la solicitud se indica el número de pedido."
         }
       ],
-      "edition": "Versión del 16 de noviembre de 2026. Traducción al español actualizada el 16 de noviembre de 2026.",
+      "edition": "Versión del 16 de noviembre de 2026. Traducción al español actualizada el 22 de noviembre de 2026.",
       "note": "Este texto es una traducción al español de la oferta original publicada en {original}. En caso de discrepancia entre ambos textos, prevalece el original, salvo en lo relativo al precio y a la forma de pago, que, en la versión en español del Sitio, se rigen por lo dispuesto en las secciones 1 y 3 de esta traducción.",
       "seller": "empresario individual Manukyan Armen, N.º de identificación fiscal (INN) {inn}",
       "lead": "Este documento es una propuesta formal (oferta pública) para celebrar un contrato de prestación del servicio de pago «Perfil DISC ampliado», así como un contrato de entrega del Kit para facilitadores DISC (sección 10), en las condiciones que se exponen a continuación. La oferta la formula el {seller} (en adelante, el Prestador). El pago del servicio o del Kit supone la aceptación plena e incondicional de estas condiciones (aceptación de la oferta).",
@@ -1591,6 +1672,12 @@
       ]
     },
     "refund": {
+      "bfSection": {
+        "h": "Informe ampliado Big Five",
+        "p": [
+          "El informe Big Five se envía por correo electrónico poco después del pago y está sujeto a las reglas anteriores. Se devuelve el importe íntegro si el informe no llega en las 24 horas siguientes al pago o si presenta un defecto que no subsanamos en tres días hábiles, por ejemplo si el archivo no se abre, lleva el nombre de otra persona o su contenido no corresponde a la descripción del sitio. El desacuerdo con la descripción de los rasgos no constituye un defecto. Indique en su solicitud el número de pedido que figura en el correo con el informe."
+        ]
+      },
       "pairSection": {
         "h": "Informe «DISC para dos»",
         "p": [
@@ -3378,6 +3465,12 @@
       }
     },
     "howMade": {
+      "bigfive": {
+        "h": "El informe ampliado Big Five",
+        "p": [
+          "Al igual que el informe ampliado DISC, el informe Big Five se compone de textos preparados previamente. Se redactaron con inteligencia artificial siguiendo nuestras reglas editoriales y pasaron por una revisión editorial. Cubren los niveles de los cinco rasgos y los diez aspectos, las combinaciones de rasgos y las secciones prácticas. Un programa selecciona los textos que corresponden a sus puntuaciones y genera el PDF con su nombre. Así podemos enviárselo poco después del pago."
+        ]
+      },
       "pair": {
         "h": "Informe «DISC para dos»",
         "p": [
