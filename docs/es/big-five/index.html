@@ -1347,6 +1347,319 @@ function initCommon(c){
 }
 
 initCommon({L:L, t:t, esc:esc, lsGet:lsGet, lsSet:lsSet, langHref:langHref, $:$, langMeta:LANG_META, langPath:LANG_PATH, privacyHref:ROOT_REL+(LANG_PATH[L.lang]||'')+'privacy/', reportHref:ROOT_REL+(LANG_PATH[L.lang]||'')+'extended-report/', noXbar:false});
+/* Покупка расширенного отчёта: блок «Купить» на странице отчёта и страницы «Спасибо» и «Оплата не прошла».
+   Сборка вставляет этот файл в три страницы, когда в site.config.json задан payEndpoint — адрес сервера оплаты:
+     POST <payEndpoint>/order   {code, email, source, lang, price} → {ok: true, order, key, url} или {ok: false, error}
+                                (price — цена в рублях, которую показала форма, только в языке со специальной ценой; error 'offer expired' — её срок вышел)
+     GET  <payEndpoint>/status?order=…&key=…               → {ok: true, status: 'new' | 'paid' | 'sent' | 'failed' | 'refunded'}
+   url — платёжная страница банка; после оплаты банк возвращает покупателя на …/extended-report/thanks/?order=<номер>,
+   после отказа — на …/extended-report/failed/?order=<номер>. key — ключ заказа: по нему страница «Спасибо» спрашивает статус.
+   Заказ, созданный в этом браузере, хранится в localStorage (disc.pay): номер, ключ, e-mail и отметки о сработавших целях.
+   Цели Метрики: ext-page-buy (нажата «Купить»), ext-pay-start (заказ создан, переход на оплату), ext-pay-error (сервер оплаты
+   не ответил или отказал), ext-pay-done (страница «Спасибо», с суммой), ext-pay-fail (страница «Оплата не прошла»). */
+var PAY_EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/, PAY_EMAIL_MAX = 64;   // 64 знака — предел поля e-mail в кассовом чеке
+function payTrack(goal, params){ if(window.discTrack) window.discTrack(goal, params); }
+function payOrderFromUrl(){ var m = /[?&]order=([A-Za-z0-9_-]{4,50})(?:&|$)/.exec(location.search); return m ? m[1] : ''; }
+
+/* Источник покупки для таблицы заказов: ?src=… в адресе (ссылки из письма, PDF, бота), иначе отметка экрана результата
+   (sessionStorage disc.src: result-top, result-block), иначе services (пришли со страницы «Услуги») или page. */
+function paySource(){
+  var m = /[?&]src=([a-z0-9-]{1,20})(?:&|$)/.exec(location.search), s = '';
+  try{ if(m) sessionStorage.setItem('disc.src', m[1]); s = sessionStorage.getItem('disc.src') || ''; }catch(e){ s = m ? m[1] : ''; }
+  return s || (/\/services\/(?:$|[?#])/.test(document.referrer) ? 'services' : 'page');
+}
+
+/* Код результата для заказа — тот же формат, что у encodeResult на странице теста */
+function payCode(r){
+  function b64e(s){ return btoa(unescape(encodeURIComponent(s))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,''); }
+  return 'DISC1.' + b64e(JSON.stringify({n:r.name||'', e:r.email||'', p:r.pos||'', t:r.t, m:r.m.join(''), l:r.l.join('')}));
+}
+
+/* Специальная цена на час после теста (T.offer — build.js, payOffer; сейчас только русская версия). Срок отсчитывается от более раннего
+   из двух моментов: прохождение этого результата (r.t) и первое прохождение теста на этом устройстве (localStorage disc.offer — его ставит
+   payOfferMark в конце теста, повторное прохождение срок не продлевает). Возвращает время окончания (мс) или 0. Сервер оплаты проверяет срок
+   по r.t сам и цену вне срока не примет. */
+function payOfferUntil(O, t, lsGet){
+  if(!O) return 0;
+  var a = Date.parse(t), s = lsGet ? lsGet('disc.offer') : null, b = s && Date.parse(s.t);
+  if(isNaN(a)) return 0;
+  return Math.min(a, b && !isNaN(b) ? b : a) + O.ms;
+}
+function payOfferMark(r, lsGet, lsSet){ if(!lsGet('disc.offer')) lsSet('disc.offer', {t: r.t}); }
+/* обратный отсчёт: до часа — «59:59», дольше — «23:59:59» (срок специальной цены в панели бывает до суток) */
+function payClock(ms){ var s = Math.max(0, Math.ceil(ms / 1000)), h = Math.floor(s / 3600), m = Math.floor(s % 3600 / 60), two = function(n){ return (n < 10 ? '0' : '') + n; }; s %= 60;
+  return h ? h + ':' + two(m) + ':' + two(s) : m + ':' + two(s); }
+
+/* Формы покупки одной страницы: поле e-mail, кнопка «Купить», строка гарантии (T.guarantee) и условие оферты. Формы на странице
+   работают вместе: e-mail набирается в одной — появляется в остальных, на время перехода к оплате все кнопки заняты.
+   Ими пользуются страница отчёта (initPayBuy) и экран результата на главной (src/template.html: покупка без перехода на страницу отчёта).
+   c: {T (тексты content.product.pay, noteHtml и errorHtml — готовая разметка; T.offer — специальная цена), endpoint, L, esc, lsGet, lsSet}.
+   add({id, code, t, source, email, price, priceEl}) → {form, input, btn, st}: форма ещё не вставлена в страницу; price — цена крупно над кнопкой,
+   priceEl — готовый элемент цены на странице (страница отчёта), t — время прохождения теста (для срока специальной цены).
+   Пока специальная цена действует, вместо цены — зачёркнутая обычная и специальная, под кнопкой — обратный отсчёт; по окончании срока
+   (или по ответу сервера «offer expired») формы показывают обычную цену. g.onOffer(fn) — fn(on) при смене цены (закреплённая кнопка).
+   Специальная цена показывается, только когда она включена в панели (discOffer в src/common.js; с 2026-10-25): пока ответа нет — обычная цена;
+   ответ сервера «offer off» (выключили, пока страница была открыта) — формы переходят на обычную цену. Цены и срок — из панели, когда ответ
+   сервера уже есть (discPriceNow), иначе — со сборки (T.offer); ответ «price» (цену только что сменили) — формы спрашивают цены заново.
+   Распродажа для подписчиков (с 2026-11-08; T.sale — тексты content.product.pay.sale, сервер — private/server/src/sale.js): форма, открытая по ссылке
+   из письма распродажи (источник sale или sale2), показывает цену распродажи с отсчётом до конца её последнего дня — цены, срок и повод из ответа сервера
+   (discOffer.data.sale[язык]; с 2026-11-12 распродажа бывает в несколько дней, повод — {occasion}, в языках ЕС — без зачёркнутой цены, T.sale.plain);
+   переключатель специальной цены на неё не влияет. Сервер принимает цену распродажи только в её сутки, позже — «offer expired», и форма переходит на обычную цену.
+   Те же формы — у отчёта «Большая пятёрка» (с 2026-11-16, src/bigfive.js; цены и скидки те же): c.orderPath — адрес заказа ('/bigfive/order'),
+   c.body(code, email, o, price) — тело запроса, c.goals — цели {buy, start, error}, c.payKey — запись о заказе в браузере ('disc.bfpay': отметка покупки
+   отчёта DISC не ставится), c.ownOffer — срок специальной цены только от времени этого теста (без отметки первого теста DISC на устройстве). */
+function payForms(c){
+  var T = c.T, esc = c.esc, O = T.offer || null, g = {busy:false, forms:[], subs:[], tick:0}, G = c.goals || {buy:'ext-page-buy', start:'ext-pay-start', error:'ext-pay-error'};
+  /* включена ли специальная цена в панели (discOffer в src/common.js): true — да, false — нет, null — ответа ещё нет (до ответа — обычная цена) */
+  function flag(){ if(typeof discOffer !== 'function') return true; return discOffer.on === true ? true : discOffer.on === false ? false : null; }
+  /* числа для заказа и отсчёта: из ответа сервера (цены и срок из панели), пока его нет — со сборки */
+  function nums(){ var n = typeof discPriceNow === 'function' ? discPriceNow() : null;
+    return {price: n && n.offer ? n.offer : O ? O.price : 0, regular: n ? n.regular : O ? O.regular : 0, ms: n && n.minutes ? n.minutes * 60000 : O ? O.ms : 0}; }
+  var pstr = function(x){ return typeof discPriceStr === 'function' ? discPriceStr(x) : x; };
+  var num = function(v){ return typeof discNum === 'function' ? discNum(v) : String(v); };
+  /* распродажа для формы f: {price, regular, start, end, day, to, occasion} из ответа сервера или null */
+  function saleOf(f){ if(!T.sale || !/^sale/.test(f.source || '') || typeof discOffer !== 'function') return null;
+    var d = discOffer.data, S = d && d.sale && d.sale[c.L.lang]; return S && +S.price > 0 ? S : null; }
+  function saleDay(S){ var d = new Date((S.to || S.day) + 'T12:00:00Z'); try{ return d.toLocaleDateString(c.L.dateLocale, {day:'numeric', month:'long', timeZone:'UTC'}).replace(/ /g, '\u00a0'); }catch(e){ return S.day; } }
+  if(typeof discOfferWatch === 'function') discOfferWatch(function(){ g.paint(); });
+  g.onOffer = function(fn){ g.subs.push(fn); fn(g.on === true); };
+  g.paint = function(){
+    var now = Date.now(), any = false, ask = false, fl = flag(), N = nums();
+    g.forms.forEach(function(f){
+      // пришли по ссылке из письма подписчикам (source nl): срок — от времени теста в письме, как у сервера оплаты; более раннее прохождение на этом устройстве его не сокращает
+      f.until = f.over ? 0 : payOfferUntil(O ? {ms: N.ms} : null, f.t, f.source === 'nl' || c.ownOffer ? null : c.lsGet);
+      var on = f.until > now && fl === true; any = any || on; ask = ask || (f.until > now && fl === null);
+      f.price = O ? (on ? N.price : N.regular) : N.regular;
+      // каждая цена не переносится внутри себя; две цены (xdual) на узком экране мельче и при нехватке места встают в две строки
+      var html = O ? (on ? '<s class="xold"><span class="vh">'+esc(O.regularLabel)+' </span>'+esc(pstr(O.regularText))+'</s> <span class="xnew">'+esc(pstr(O.priceText))+'</span>' : '<span class="xnew">'+esc(pstr(O.regularText))+'</span>') : null;
+      // распродажа (ссылка из письма распродажи): цена распродажи и отсчёт до конца её дня; ответа сервера ещё нет — спросить
+      var S = saleOf(f), sEnd = S ? Date.parse(S.end) : 0, sOn = !!S && !f.over && now < sEnd && now >= Date.parse(S.start) - 600000;
+      if(T.sale && /^sale/.test(f.source || '') && typeof discOffer === 'function' && !discOffer.data && discOffer.on !== false) ask = true;
+      if(sOn){ on = true; f.until = sEnd; f.price = +S.price;
+        var reg = T.sale.regularTpl.replace('\u0001', num(+S.regular)), sp = T.sale.regularTpl.replace('\u0001', num(+S.price));
+        html = T.sale.plain ? '<span class="xnew">'+esc(sp)+'</span>' : '<s class="xold"><span class="vh">'+esc(T.sale.regularLabel)+' </span>'+esc(reg)+'</s> <span class="xnew">'+esc(sp)+'</span>';
+        var occ = (T.sale.occasions || {})[S.occasion] || (T.sale.occasions || {}).sale || '';
+        if(f.dealB){ f.dealB.textContent = T.sale.cta.replace('{salePrice}', num(+S.price)).replace('{occasion}', occ); f.dealS.textContent = pstr(T.sale.note).replace('{day}', saleDay(S)); f.saleMode = true; } }
+      else if(f.saleMode){ f.saleMode = false; f.dealB.textContent = pstr(O.cta); f.dealS.textContent = pstr(O.note); }   // распродажа кончилась — плашка снова о специальной цене
+      if(f.big && html !== null && f.big.innerHTML !== html){ f.big.innerHTML = html; f.big.classList.toggle('xdual', on && !(sOn && T.sale.plain)); }
+      f.deal.hidden = !on; if(on){ f.clock.textContent = payClock(f.until - now); f.clock.classList.toggle('xlong', f.until - now >= 3600000); }
+    });
+    if(ask && !g.asked){ g.asked = true; discOffer(c.endpoint + '/offer', function(){ g.paint(); }); }
+    if(any !== g.on){ g.on = any; g.subs.forEach(function(fn){ fn(any); }); }
+    if(any && !g.tick) g.tick = setInterval(g.paint, 1000);
+    if(!any && g.tick){ clearInterval(g.tick); g.tick = 0; }
+  };
+  g.setBusy = function(on){ g.busy = on; g.forms.forEach(function(f){ f.btn.disabled = on; f.btn.textContent = on ? T.wait : T.button; }); };
+  // возврат со страницы банка кнопкой «Назад»: браузер показывает сохранённую страницу с нажатой кнопкой
+  window.addEventListener('pageshow', function(ev){ if(ev.persisted) g.setBusy(false); });
+  g.add = function(o){
+    var form = document.createElement('form'); form.className = 'xpay'; form.noValidate = true;
+    // плашка специальной цены над полем e-mail: призыв «Успейте купить за 490 ₽», пояснение о сроке и крупный обратный отсчёт
+    form.innerHTML = (O ? '<div class="xdeal" hidden><div class="xdeal-t"><b>'+esc(O.cta)+'</b><small>'+esc(O.note)+'</small></div>'+
+        '<div class="xclock"><small>'+esc(O.left)+'</small><span aria-live="off"></span></div></div>' : '<div class="xdeal" hidden><span></span></div>')+
+      // имя для отчёта (с 2026-11-01): только когда в результате имени нет — после экрана «Куда прислать результат?» человек оставляет один e-mail,
+      // а расширенный отчёт именной (обложка и страницы); o.withName(имя) → код результата с этим именем (T.nameLabel — content.product.pay.nameLabel)
+      (o.withName && T.nameLabel ? '<div class="field xname"><label for="'+o.id+'n">'+esc(T.nameLabel)+'</label><input type="text" id="'+o.id+'n" class="ym-disable-keys" autocomplete="name" maxlength="80" required>'+
+        (T.nameHint ? '<span class="hint">'+esc(T.nameHint)+'</span>' : '')+'</div>' : '')+
+      '<div class="field"><label for="'+o.id+'">'+esc(T.emailLabel)+'</label>'+
+      '<input type="email" id="'+o.id+'" class="ym-disable-keys" autocomplete="email" inputmode="email" maxlength="'+PAY_EMAIL_MAX+'"'+(T.emailPlaceholder ? ' placeholder="'+esc(T.emailPlaceholder)+'"' : '')+' required></div>'+
+      (o.price ? '<div class="xbuyact"><span class="xbig">'+esc(o.price)+'</span><button class="btn" type="submit">'+esc(T.button)+'</button></div>'
+        : '<button class="btn" type="submit">'+esc(T.button)+'</button>')+
+      // строка о странице оплаты Prodamus (на английском, в долларах или евро) — сразу под кнопкой, обычным шрифтом (content.product.pay.payPage, с 2026-10-26)
+      (T.payPage ? '<p class="xppage">'+esc(T.payPage)+'</p>' : '')+
+      (T.guarantee ? '<p class="xguar">'+esc(T.guarantee)+'</p>' : '')+
+      '<p class="small sendstatus err" aria-live="polite" hidden></p><p class="xnote">'+T.noteHtml+'</p>'+
+      // способы оплаты (с 2026-11-08): та же строка значков, что в подвале (payMethodsHtml в build.js)
+      (T.methodsHtml || '')+
+      (T.code ? payCodeHTML(T.code, o.id, esc) : '');
+    var f = {form:form, input:form.querySelector('input[type=email]'), nameInput:form.querySelector('.xname input'), btn:form.querySelector('button'), st:form.querySelector('.sendstatus'), deal:form.querySelector('.xdeal'), clock:form.querySelector('.xdeal span'),
+      big: o.priceEl || form.querySelector('.xbig'), t: o.t, source: o.source, until: 0, over: false, price: 0}, input = f.input, st = f.st;
+    f.dealB = O ? form.querySelector('.xdeal-t b') : null; f.dealS = O ? form.querySelector('.xdeal-t small') : null;
+    /* код результата для заказа: с полем имени — с введённым именем (оно же запоминается в браузере для следующих покупок и писем); null — имени нет */
+    f.code = function(){
+      if(!f.nameInput) return o.code;
+      var n = f.nameInput.value.trim().replace(/\s+/g, ' ');
+      if(n.length < 2){ f.st.textContent = T.nameRequired || T.nameLabel; f.st.hidden = false; f.nameInput.focus(); return null; }
+      var last = c.lsGet('disc.last'); if(last && last.t === o.t && !last.name){ last.name = n; c.lsSet('disc.last', last); }
+      var who = c.lsGet('disc.who'); if(who && !who.name){ who.name = n; c.lsSet('disc.who', who); }
+      return o.withName(n);
+    };
+    if(T.code) payCodeInit(c, g, f, o);
+    var other = g.forms.filter(function(x){ return x.input.value; })[0];
+    if(other) input.value = other.input.value;
+    else if(o.email && String(o.email).length <= PAY_EMAIL_MAX) input.value = o.email;
+    g.forms.push(f); g.paint();
+    input.addEventListener('input', function(){ st.hidden = true; g.forms.forEach(function(x){ if(x.input !== input) x.input.value = input.value; }); });
+    if(f.nameInput){ var on = g.forms.filter(function(x){ return x.nameInput && x.nameInput.value; })[0]; if(on) f.nameInput.value = on.nameInput.value;
+      f.nameInput.addEventListener('input', function(){ st.hidden = true; g.forms.forEach(function(x){ if(x.nameInput && x !== f) x.nameInput.value = f.nameInput.value; }); }); }
+    form.addEventListener('submit', function(ev){
+      ev.preventDefault(); if(g.busy) return;
+      if(f.coding){ f.redeem(); return; }   // форма в режиме кода доступа: Enter в поле — «Получить отчёт»
+      var email = input.value.trim(), code = f.code();
+      if(code === null) return;
+      if(email.length > PAY_EMAIL_MAX || !PAY_EMAIL_RE.test(email)){ st.textContent = T.badEmail; st.hidden = false; input.focus(); return; }
+      st.hidden = true; g.setBusy(true); payTrack(G.buy);
+      // Content-Type не задаём: «простой» запрос без предварительного OPTIONS
+      g.paint(); var price = f.price;
+      var body = c.body ? c.body(code, email, o, price) : {code:code, email:email, source:o.source, lang:c.L.lang}; if(price) body.price = price;
+      fetch(c.endpoint + (c.orderPath || '/order'), {method:'POST', body: JSON.stringify(body)})
+        .then(function(res){ return res.text(); })
+        .then(function(txt){ var j = null; try{ j = JSON.parse(txt); }catch(e){}
+          if(j && !j.ok && j.error === 'offer expired' && (O || saleOf(f))){ g.forms.forEach(function(x){ x.over = true; }); g.paint(); throw new Error(saleOf(f) ? 'sale over' : 'offer expired'); }
+          // цену только что сменили в панели: формы спрашивают текущие цены и показывают обычную, покупатель нажимает «Купить» снова
+          if(j && !j.ok && j.error === 'price'){ throw new Error('price'); }
+          // специальную цену только что выключили в панели: формы переходят на обычную цену, покупатель видит её и нажимает «Купить» снова
+          if(j && !j.ok && j.error === 'offer off' && O){ if(typeof discOfferSet === 'function') discOfferSet(false); g.paint(); throw new Error('offer off'); }
+          if(!j || !j.ok || !j.url || !j.order) throw new Error((j && j.error) || 'bad response');
+          var u = new URL(j.url, location.href);   // платёжная страница: только https (на локальной заглушке — тот же адрес, что у сайта)
+          if(u.protocol !== 'https:' && u.origin !== location.origin) throw new Error('bad url');
+          c.lsSet(c.payKey || 'disc.pay', {order:String(j.order), key:String(j.key||''), email:email, t:Date.now(), price:price || 0});
+          payTrack(G.start); location.href = u.href; })
+        .catch(function(err){ g.setBusy(false); st.hidden = false;
+          if(err && err.message === 'bad email'){ st.textContent = T.badEmail; input.focus(); }
+          else if(err && err.message === 'offer expired'){ st.textContent = O.expired; }
+          else if(err && err.message === 'sale over'){ st.textContent = pstr(T.sale.expired); }
+          else if(err && err.message === 'offer off'){ st.textContent = O.regularLabel + ': ' + pstr(O.regularText); }
+          else if(err && err.message === 'price' && O && typeof discOfferRefresh === 'function'){ st.hidden = true; discOfferRefresh(c.endpoint + '/offer', function(){ g.paint(); st.textContent = g.on ? pstr(O.cta) : O.regularLabel + ': ' + pstr(O.regularText); st.hidden = false; }); }
+          else { st.innerHTML = T.errorHtml; payTrack(G.error); } });
+    });
+    return f;
+  };
+  return g;
+}
+
+/* Код доступа (с 2026-10-22; T.code — тексты content.product.pay.code, есть, когда в site.config.json включены accessCodes): организация купила
+   отчёты пакетом и раздала людям коды. Ссылка под формой покупки переключает форму в режим кода: цена, «Купить» и условия покупки прячутся,
+   появляются поле кода и «Получить отчёт»; поле e-mail общее. Запрос:
+     POST <payEndpoint>/code  {voucher, code, email, lang, source} → {ok: true} или {ok: false, error: 'no code' | 'used' | 'expired' | 'bad email' | …}
+   Сервер проверяет код и ставит задание на отчёт; оплаты нет. После успеха устройство помнит, что отчёт получен (disc.pay.done — как после покупки:
+   продающие элементы больше не показываются). Цель Метрики ext-code-done. */
+function payCodeHTML(X, id, esc){
+  return '<div class="xcode"><button type="button" class="link xcodelink" aria-expanded="false">'+esc(X.link)+'</button>'+
+    '<div class="xcodebox" hidden><div class="field"><label for="'+id+'Code">'+esc(X.label)+'</label>'+
+    '<input type="text" id="'+id+'Code" class="xcodein" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="24" placeholder="'+esc(X.placeholder)+'"></div>'+
+    '<button class="btn" type="button">'+esc(X.button)+'</button>'+
+    '<p class="small sendstatus" aria-live="polite" hidden></p><p class="xnote">'+X.noteHtml+'</p></div></div>';
+}
+function payCodeInit(c, g, f, o){
+  var X = c.T.code, esc = c.esc, form = f.form, link = form.querySelector('.xcodelink'), box = form.querySelector('.xcodebox'),
+    inp = box.querySelector('input'), btn = box.querySelector('button'), st = box.querySelector('.sendstatus'), done = false;
+  function say(kind, html){ st.className = 'small sendstatus' + (kind ? ' ' + kind : ''); st.innerHTML = html; st.hidden = false; }
+  link.addEventListener('click', function(){
+    f.coding = !f.coding; form.classList.toggle('xcoding', f.coding); box.hidden = !f.coding; f.st.hidden = true;
+    link.textContent = f.coding ? X.back : X.link; link.setAttribute('aria-expanded', String(f.coding));
+    if(f.coding) (f.input.value.trim() ? inp : f.input).focus();
+  });
+  // партия с отчётом о команде (с 2026-11-16): сервер отвечает error 'team' — карточка с вопросом о согласии, код уходит ещё раз с share: true или false
+  var teamBox = null;
+  function teamCard(org){
+    var TT = X.team; if(!TT) return false;
+    if(!teamBox){ teamBox = document.createElement('div'); teamBox.className = 'xteam'; box.insertBefore(teamBox, st); }
+    teamBox.innerHTML = '<p class="xteam-k">'+esc(TT.kicker)+'</p><p class="xteam-h">'+esc(org ? TT.title.replace('{org}', org) : TT.titleNoOrg)+'</p>'+
+      '<p>'+esc(TT.text)+'</p><ul>'+TT.list.map(function(x){ return '<li>'+esc(x)+'</li>'; }).join('')+'</ul><p class="xteam-not">'+esc(TT.not)+'</p>'+
+      '<button class="btn" type="button" data-share="1">'+esc(TT.share)+'</button><button class="link xteam-skip" type="button" data-share="0">'+esc(TT.skip)+'</button>'+
+      '<p class="xnote">'+TT.noteHtml+'</p>';
+    btn.hidden = true; inp.disabled = true; f.input.disabled = true; box.classList.add('xteaming');
+    [].forEach.call(teamBox.querySelectorAll('[data-share]'), function(b){ b.addEventListener('click', function(){ f.redeem(b.getAttribute('data-share') === '1'); }); });
+    try{ teamBox.scrollIntoView({block: 'nearest'}); }catch(e){}
+    return true;
+  }
+  f.redeem = function(share){
+    if(share !== true && share !== false) share = undefined;
+    if(done || g.busy) return;
+    var email = f.input.value.trim(), voucher = inp.value.trim();
+    if(email.length > PAY_EMAIL_MAX || !PAY_EMAIL_RE.test(email)){ say('err', esc(X.badEmail)); f.input.focus(); return; }
+    if(voucher.replace(/[^A-Za-z0-9]/g, '').length < 4){ say('err', esc(X.empty)); inp.focus(); return; }
+    var code = f.code(); if(code === null) return;
+    btn.disabled = true; btn.textContent = X.wait; st.hidden = true;
+    if(teamBox) [].forEach.call(teamBox.querySelectorAll('button'), function(b){ b.disabled = true; });
+    var body = {voucher:voucher, code:code, email:email, lang:c.L.lang, source:o.source}; if(share !== undefined) body.share = share;
+    fetch(c.endpoint + '/code', {method:'POST', body: JSON.stringify(body)})
+      .then(function(res){ return res.text(); })
+      .then(function(txt){ var j = null; try{ j = JSON.parse(txt); }catch(e){}
+        if(!j) throw new Error('bad response');
+        if(!j.ok && j.error === 'team' && teamCard(String(j.org || ''))){ btn.disabled = false; btn.textContent = X.button; return; }
+        if(!j.ok){ var e = new Error(String(j.error || 'bad response')); throw e; }
+        done = true; inp.disabled = true; f.input.disabled = true; btn.hidden = true; link.hidden = true;
+        if(teamBox){ teamBox.parentNode.removeChild(teamBox); teamBox = null; box.classList.remove('xteaming'); }
+        say('ok', esc(X.done.replace('{to}', email)) + (X.team && j.shared === true ? '<br>' + esc(X.team.doneShared) : X.team && j.shared === false ? '<br>' + X.team.doneSkipHtml : ''));
+        if(j.shared !== undefined) payTrack(j.shared ? 'team-share' : 'team-skip');
+        try{ var p = c.lsGet('disc.pay') || {}; if(!p.done) c.lsSet('disc.pay', {code:true, email:email, t:Date.now(), done:true}); }catch(e){}
+        if(window.discXbar) window.discXbar.sync();   // отчёт получен — закреплённая кнопка отчёта больше не нужна
+        try{ var gg = c.lsGet && c.lsGet('disc.gift'); if(gg && String(gg.code).replace(/[^A-Za-z0-9]/g, '').toUpperCase() === voucher.replace(/[^A-Za-z0-9]/g, '').toUpperCase()){ c.lsSet('disc.gift', null); payTrack('gift-redeem'); } }catch(e){}
+        payTrack('ext-code-done'); })
+      .catch(function(err){ var m = err && err.message;
+        if(!done){ btn.disabled = false; btn.textContent = X.button; if(teamBox) [].forEach.call(teamBox.querySelectorAll('button'), function(b){ b.disabled = false; }); }
+        if(m === 'no code') say('err', esc(X.bad));
+        else if(m === 'used') say('err', X.usedHtml);
+        else if(m === 'expired') say('err', esc(X.expired));
+        else if(m === 'bad email'){ say('err', esc(X.badEmail)); f.input.focus(); }
+        else say('err', X.errorHtml); });
+  };
+  btn.addEventListener('click', function(){ f.redeem(); });
+  // код подарочного сертификата (с 2026-11-14): получатель открыл ссылку или QR-код с сертификата (/ru/gift/#g=<код>, src/gift.js) — код запомнен в браузере;
+  // форма сразу в режиме кода и с этим кодом, без фокуса (страница не прыгает к форме). После успешного ввода запись удаляется
+  var gc = null; try{ gc = c.lsGet && c.lsGet('disc.gift'); }catch(e){}
+  if(gc && gc.code && !f.coding){ inp.value = String(gc.code).replace(/(.{4})(?=.)/g, '$1-'); f.coding = true; form.classList.add('xcoding'); box.hidden = false;
+    link.textContent = X.back; link.setAttribute('aria-expanded', 'true'); }
+}
+
+/* Страница отчёта: у кого результат сохранён на этом устройстве (disc.last), тому блок покупки (.xbuy) превращается в форму
+   с полем e-mail и кнопкой «Купить». c: {T (тексты content.product.pay, noteHtml и errorHtml — готовая разметка), endpoint, L, esc, lsGet, lsSet} */
+function initPayBuy(c){
+  // результат — из адреса страницы (ссылка из PDF краткого отчёта или письма: #r=DISC1.…, функция resultFromUrl вставляется сборкой), иначе сохранённый на устройстве
+  var T = c.T, r = (typeof resultFromUrl === 'function' && resultFromUrl()) || c.lsGet('disc.last'); if(!r || !r.t || !r.m || !r.l || !r.m.join) return;
+  var d = new Date(r.t), date = isNaN(d) ? '' : d.toLocaleDateString(c.L.dateLocale, {day:'numeric', month:'long', year:'numeric'});
+  var code = payCode(r), source = paySource(), g = payForms(c);
+  [].forEach.call(document.querySelectorAll('.xbuy'), function(box, i){
+    var old = box.querySelector('a.btn'), price = box.querySelector('.price'), guar = box.querySelector('.xguar'), pv = null;
+    box.querySelector('h2').textContent = T.title.replace('{date}', date);
+    box.querySelector('div p').textContent = T.text;
+    // цена «Стоимость 790 ₽»: сама сумма — в своём элементе, им управляет форма (зачёркнутая обычная цена и специальная, пока та действует)
+    if(price && T.offer){ var sm = price.querySelector('small'); pv = document.createElement('span'); pv.textContent = T.offer.regularText;
+      price.textContent = ''; if(sm) price.appendChild(sm); price.appendChild(pv); }
+    var f = g.add({id:'payEmail' + i, code:code, t:r.t, source:source, email:r.email, priceEl:pv,
+      withName: String(r.name||'').trim() ? null : function(n){ return payCode(Object.assign({}, r, {name: n})); }});
+    if(price) f.form.insertBefore(price, f.btn);
+    if(old) old.parentNode.removeChild(old);
+    if(guar) guar.parentNode.removeChild(guar);   // строка гарантии без формы (сборка) — в форме она своя
+    box.appendChild(f.form);
+  });
+}
+
+/* Заказ для страниц «Спасибо» и «Оплата не прошла»: номер из адреса; mine — заказ создан в этом браузере (тогда известны e-mail и ключ) */
+function payOrder(c){
+  var rec = c.lsGet('disc.pay'), order = payOrderFromUrl() || (rec && rec.order) || '';
+  return {order: order, rec: rec && rec.order && rec.order === order ? rec : null};
+}
+
+/* «Спасибо»: e-mail покупателя в первом абзаце, номер заказа, статус (оплата получена → отчёт отправлен), цель ext-pay-done один раз на заказ.
+   c: {T (content.product.pay.thanks), endpoint, price, currency (RUB, USD или EUR — валюта языка), lsGet, lsSet, $} */
+function initPayThanks(c){
+  var T = c.T, $ = c.$, o = payOrder(c), rec = o.rec, lead = $('#payLead'), ord = $('#payOrder'), st = $('#payStatus');
+  if(rec && rec.email){ lead.textContent = T.leadEmail.replace('{email}', rec.email); lead.classList.add('ym-hide-content'); }
+  if(o.order){ ord.textContent = T.order.replace('{order}', o.order); ord.hidden = false; }
+  if(!rec) return;
+  if(!rec.done){ rec.done = true; c.lsSet('disc.pay', rec); if(window.discXbar) window.discXbar.sync(); payTrack('ext-pay-done', {order_price: rec.price || c.price, currency: c.currency || 'RUB'}); }
+  if(!rec.key || !c.endpoint) return;
+  var TEXT = {'new': T.statusWait, paid: T.statusPaid, sent: T.statusSent}, tries = 0;
+  (function ask(){
+    fetch(c.endpoint + '/status?order=' + encodeURIComponent(rec.order) + '&key=' + encodeURIComponent(rec.key))
+      .then(function(res){ return res.json(); })
+      .then(function(j){ var s = j && j.ok ? String(j.status) : '';
+        if(TEXT[s]){ st.textContent = TEXT[s]; st.className = 'small sendstatus' + (s === 'new' ? '' : ' ok'); st.hidden = false; } else st.hidden = true;
+        if((s === 'new' || s === 'paid') && ++tries < 30) setTimeout(ask, 4000); })
+      .catch(function(){ if(++tries < 30) setTimeout(ask, 8000); });
+  })();
+}
+
+/* «Оплата не прошла»: номер заказа и цель ext-pay-fail один раз на заказ. c: {T (content.product.pay.fail), lsGet, lsSet, $} */
+function initPayFail(c){
+  var o = payOrder(c), rec = o.rec, ord = c.$('#payOrder');
+  if(o.order){ ord.textContent = c.T.order.replace('{order}', o.order); ord.hidden = false; }
+  if(rec && !rec.fail){ rec.fail = true; c.lsSet('disc.pay', rec); payTrack('ext-pay-fail'); }
+}
+
 /* Тест «Большая пятёрка» (/<язык>/big-five/, с 2026-11-14, по решению заказчика; сначала только русская версия — content.bigfive в локали).
    Вопросник — BFAS (Big Five Aspect Scales; DeYoung, Quilty, Peterson, 2007): 100 утверждений из открытого банка IPIP (ipip.ori.org —
    разрешено любое использование, в том числе коммерческое), 10 аспектов по 10 утверждений, ответ — по шкале 1–5. Перевод — свой
@@ -1614,7 +1927,7 @@ function initBigFive(o){
   if(ret) payReturn(ret[1], ordm ? ordm[1] : '');
 }
 
-initBigFive({T: {"start":"Empezar el test","resume":"Continuar ({n} de {total})","restart":"Empezar de nuevo","showLast":"Ver mi resultado anterior","step":"Paso {n} de {total}","count":"Respuestas: {n} de {total}","hint":"Indique en qué medida le describe cada afirmación. Responda pensando en cómo suele ser, no en cómo le gustaría ser. No hay respuestas correctas.","scale":["No me describe nada","Más bien no","Ni sí ni no","Más bien sí","Me describe del todo"],"next":"Siguiente","back":"Atrás","finish":"Ver el resultado","needAll":"Responda a todas las afirmaciones de esta página.","items":{"VO1":"Me irrito con facilidad.","VO2":"Me disgusto con facilidad.","VO3":"Mi estado de ánimo cambia mucho.","VO4":"Mi humor sube y baja con facilidad.","VO5":"Me altero con facilidad.","VO6":"Me sulfuro enseguida.","VO7":"Rara vez algo me irrita.","VO8":"Mantengo mis emociones bajo control.","VO9":"Rara vez pierdo la compostura.","VO10":"Hace falta mucho para sacarme de quicio.","WI1":"Me asaltan muchas dudas.","WI2":"Me intimido con facilidad.","WI3":"Me preocupo a menudo por las cosas.","WI4":"Me desanimo con facilidad.","WI5":"Me agobio cuando se me juntan muchas cosas.","WI6":"Me dan miedo muchas cosas.","WI7":"Rara vez siento tristeza.","WI8":"Me siento a gusto en mi propia piel.","WI9":"Rara vez tengo el ánimo decaído.","WI10":"No me da vergüenza con facilidad.","CO1":"Capto las emociones de los demás.","CO2":"Pregunto a los demás cómo están.","CO3":"Me identifico con los sentimientos de los demás.","CO4":"Me intereso por lo que viven otras personas.","CO5":"Me gusta hacer cosas por los demás.","CO6":"Los problemas de los demás no me interesan.","CO7":"No me molesto en atender las necesidades de los demás.","CO8":"Los sentimientos de los demás me son indiferentes.","CO9":"No dedico tiempo a los demás.","CO10":"No tengo un lado tierno.","PO1":"Respeto la autoridad.","PO2":"Odio parecer una persona avasalladora.","PO3":"Evito imponer mi voluntad a los demás.","PO4":"Rara vez presiono a la gente.","PO5":"Ofendo a la gente con lo que digo.","PO6":"Creo que soy mejor que los demás.","PO7":"Me aprovecho de los demás.","PO8":"Busco el conflicto.","PO9":"Me encantan las discusiones acaloradas.","PO10":"Busco sobre todo mi propio beneficio.","IN1":"Cumplo mis planes.","IN2":"Termino lo que empiezo.","IN3":"Hago las cosas con rapidez.","IN4":"Siempre sé lo que estoy haciendo.","IN5":"Pierdo el tiempo.","IN6":"Me cuesta ponerme a trabajar.","IN7":"Echo a perder las cosas.","IN8":"No me concentro en lo que tengo entre manos.","IN9":"Aplazo las decisiones.","IN10":"Me distraigo con facilidad.","OR1":"Me gusta el orden.","OR2":"Mantengo las cosas ordenadas.","OR3":"Sigo un horario.","OR4":"Quiero que todo esté perfecto.","OR5":"Me aseguro de que se cumplan las normas.","OR6":"Quiero que no se escape ningún detalle.","OR7":"Dejo mis cosas en cualquier sitio.","OR8":"No me molestan las personas desordenadas.","OR9":"No me molesta el desorden.","OR10":"No me gusta la rutina.","EN1":"Hago amigos con facilidad.","EN2":"Enseguida entro en confianza con la gente.","EN3":"Cuando algo me alegra, lo demuestro.","EN4":"Me divierto mucho.","EN5":"Me río mucho.","EN6":"Es difícil llegar a conocerme.","EN7":"Mantengo a los demás a distancia.","EN8":"Hablo poco de mí.","EN9":"Rara vez me contagio del entusiasmo general.","EN10":"No soy una persona muy entusiasta.","AS1":"Tomo el mando.","AS2":"Tengo una personalidad fuerte.","AS3":"Sé cautivar a la gente.","AS4":"Creo que tengo dotes de liderazgo.","AS5":"Sé convencer a los demás para que hagan cosas.","AS6":"Suelo ser quien actúa primero.","AS7":"Me cuesta hacerme valer.","AS8":"Me falta talento para influir en la gente.","AS9":"Espero a que otros tomen la iniciativa.","AS10":"Me guardo mis opiniones.","IT1":"Entiendo las cosas con rapidez.","IT2":"Puedo manejar mucha información.","IT3":"Me gusta resolver problemas complejos.","IT4":"Tengo un vocabulario amplio.","IT5":"Pienso con rapidez.","IT6":"Expreso mis ideas con claridad.","IT7":"Me cuesta entender las ideas abstractas.","IT8":"Evito las conversaciones filosóficas.","IT9":"Evito las lecturas difíciles.","IT10":"Aprendo las cosas despacio.","OP1":"Disfruto de la belleza de la naturaleza.","OP2":"Creo que el arte es importante.","OP3":"Me encanta reflexionar sobre las cosas.","OP4":"La música me absorbe por completo.","OP5":"Veo belleza en cosas en las que otros quizá no se fijan.","OP6":"Necesito una salida para mi creatividad.","OP7":"No me gusta la poesía.","OP8":"Rara vez me pierdo en mis pensamientos.","OP9":"Rara vez dejo volar la imaginación.","OP10":"Rara vez me fijo en las emociones que transmiten los cuadros y las fotografías."},"result":{"eyebrow":"Big Five","title":"Su perfil","date":"Test realizado el {date}","lead":"Cada rasgo recibe un número del 1 al 99: cuántas personas de cada 100 obtienen una puntuación más baja que usted. El 50 es justo la mitad. Ni una puntuación alta ni una baja es mejor: cada extremo tiene sus puntos fuertes y sus riesgos.","summary":"Cinco rasgos","scaleCap":"El número indica cuántas personas de cada 100 obtienen una puntuación más baja que usted.","above":"Por encima de {n} de cada 100","aboveShort":"por encima de {n} de cada 100","levels":["nivel bajo","por debajo de la media","nivel medio","por encima de la media","nivel alto"],"disc":{"title":"Ahora, su estilo en el trabajo y en el trato con los demás","text":"El modelo Big Five describe el carácter en general. El test DISC muestra cómo actúa en el trabajo y en el trato con los demás: su estilo predominante, sus puntos fuertes y cómo entenderse con personas de otros estilos. 10 minutos, gratis.","button":"Hacer el test DISC"},"again":"Repetir el test"},"traits":{"O":{"name":"Apertura a la experiencia","en":"Openness","what":"Cuánto le atraen las ideas nuevas, las experiencias, el arte y las preguntas complejas.","high":"Le interesa lo nuevo: ideas, libros, lugares, puntos de vista poco comunes. Ve con facilidad las conexiones entre las cosas, le gusta entender cómo funcionan y aprecia la belleza. La rutina y el «siempre se ha hecho así» le cansan pronto; en el trabajo necesita margen para explorar.","mid":"Se abre a lo nuevo cuando le ve sentido, pero no busca la novedad por la novedad. Puede entusiasmarse con una idea o un libro, o trabajar con calma con un método probado, según las circunstancias.","low":"Es una persona práctica: valora lo probado, lo claro y lo útil. Las ideas abstractas y los experimentos le interesan cuando tienen una utilidad directa. A cambio, se puede contar con usted cuando hacen falta sentido común y estabilidad."},"C":{"name":"Responsabilidad","en":"Conscientiousness","what":"Hasta qué punto se organiza, mantiene el orden y termina lo que empieza.","high":"Cumple su palabra, planifica y termina lo que empieza. El orden en las tareas le sale de forma natural y los demás confían en usted. La otra cara: le cuesta relajarse y soltar el control, y el descuido ajeno puede irritarle mucho.","mid":"Se organiza cuando el asunto importa y se permite flexibilidad cuando no. Tiene planes, pero no rígidos; el orden, cuando hace falta.","low":"Actúa con flexibilidad y según el momento, cambia de planes con facilidad y no le gustan los marcos rígidos. Eso le ayuda a improvisar, pero los plazos, la rutina y los detalles le cuestan más; le ayudan los recordatorios externos y unas pocas reglas sencillas fijadas de antemano."},"E":{"name":"Extraversión","en":"Extraversion","what":"Cuánta energía obtiene de la gente, de la conversación y de la acción.","high":"Se carga de energía con la gente y con lo que pasa a su alrededor: conoce gente con facilidad, habla mucho y toma la iniciativa. El silencio y la soledad prolongados le aburren pronto. Conviene dejar espacio también a quienes hablan menos.","mid":"Se encuentra a gusto tanto en compañía como a solas. Puede llevar la conversación o escuchar, según la situación y las personas.","low":"Cuida su energía: prefiere un círculo reducido, las conversaciones profundas y el tiempo a solas. No busca ser el centro de atención ni se apresura a tomar la palabra; a cambio, piensa antes de hablar."},"A":{"name":"Amabilidad","en":"Agreeableness","what":"Hasta qué punto se orienta hacia los demás, la cooperación y la armonía en las relaciones.","high":"Le importan las personas y las relaciones: se pone en el lugar de los demás, ayuda, busca el acuerdo y evita la brusquedad. Es fácil trabajar con usted. El riesgo: ceder donde convendría defender lo suyo.","mid":"Presta atención a los demás, pero también sabe mantener su postura. Ayuda con gusto, aunque no a costa de sus propios intereses.","low":"Va de frente y piensa por su cuenta: dice lo que piensa, no rehúye la discusión y pone la tarea por delante de los sentimientos ajenos. Eso ayuda en las negociaciones y las decisiones difíciles, pero en las relaciones puede percibirse como brusquedad."},"N":{"name":"Neuroticismo","en":"Neuroticism","what":"Con qué intensidad reacciona ante el estrés, los fracasos y los contratiempos. Una puntuación alta aquí indica sensibilidad, no una enfermedad.","high":"Vive el estrés con intensidad: se preocupa, duda y tarda en recuperarse de los contratiempos. Esa sensibilidad ayuda a ver los riesgos a tiempo, pero consume energía; conviene saber qué le ayuda a recuperarse y no quedarse a solas con la preocupación.","mid":"Reacciona al estrés como la mayoría de la gente: puede preocuparse o irritarse, pero normalmente recupera pronto el equilibrio.","low":"Tiene estabilidad emocional: lleva la presión con calma, rara vez se angustia y se recupera rápido. La otra cara: puede subestimar un riesgo real o lo que sienten los demás."}},"aspects":{"IT":{"name":"Intelecto","high":"Le gustan los problemas complejos y entiende pronto lo nuevo.","mid":"Piensa con gusto en lo complejo si la tarea lo merece.","low":"Prefiere tareas claras, sin teoría de más."},"OP":{"name":"Sensibilidad estética","high":"Vive con intensidad el arte, la música y la naturaleza; reflexiona y fantasea a menudo.","mid":"El arte y la imaginación tienen su lugar en su vida, aunque no el principal.","low":"Le atrae más lo real y concreto que la fantasía y el arte."},"IN":{"name":"Laboriosidad","high":"Se pone enseguida manos a la obra y termina lo que empieza.","mid":"Trabaja con constancia, aunque a veces aplaza lo desagradable.","low":"A veces le cuesta empezar y no distraerse."},"OR":{"name":"Orden","high":"Le gustan el orden, los horarios y que todo se haga según las normas.","mid":"Mantiene el orden, pero sin perfeccionismo.","low":"El desorden y saltarse las normas le preocupan poco."},"EN":{"name":"Entusiasmo","high":"Conecta con la gente con facilidad y muestra su alegría abiertamente.","mid":"Trata a la gente con cordialidad, aunque tarda un poco en abrirse.","low":"Mantiene la reserva y se abre poco a poco, y no con cualquiera."},"AS":{"name":"Asertividad","high":"Toma el mando y sabe guiar a los demás.","mid":"Puede tomar la palabra y dirigir cuando hace falta.","low":"Prefiere dejar que otros dirijan y se guarda su opinión."},"CO":{"name":"Compasión","high":"Percibe bien lo que sienten los demás y ayuda con gusto.","mid":"Siente empatía, pero no se pierde en los problemas ajenos.","low":"Le mueve más la tarea que lo que sienten los demás."},"PO":{"name":"Cortesía","high":"Evita presionar y entrar en conflicto; respeta las normas y a los demás.","mid":"Suele tener tacto, pero también puede presionar.","low":"No teme el conflicto y persigue lo suyo sin rodeos."},"VO":{"name":"Volatilidad","high":"Se irrita pronto y su humor cambia con facilidad.","mid":"A veces se exalta, pero se le pasa enseguida.","low":"Rara vez se irrita y mantiene sus emociones bajo control."},"WI":{"name":"Retraimiento","high":"Se preocupa a menudo, duda y se desanima con facilidad.","mid":"Se preocupa cuando hay motivo, pero no de forma constante.","low":"Rara vez se angustia y lleva los fracasos con calma."}}}, loc: "es-ES", home: '../', more: {}, moreText: "", buy: null, esc: esc, $: $, lsGet: lsGet, lsSet: lsSet});
+initBigFive({T: {"start":"Empezar el test","resume":"Continuar ({n} de {total})","restart":"Empezar de nuevo","showLast":"Ver mi resultado anterior","step":"Paso {n} de {total}","count":"Respuestas: {n} de {total}","hint":"Indique en qué medida le describe cada afirmación. Responda pensando en cómo suele ser, no en cómo le gustaría ser. No hay respuestas correctas.","scale":["No me describe nada","Más bien no","Ni sí ni no","Más bien sí","Me describe del todo"],"next":"Siguiente","back":"Atrás","finish":"Ver el resultado","needAll":"Responda a todas las afirmaciones de esta página.","items":{"VO1":"Me irrito con facilidad.","VO2":"Me disgusto con facilidad.","VO3":"Mi estado de ánimo cambia mucho.","VO4":"Mi humor sube y baja con facilidad.","VO5":"Me altero con facilidad.","VO6":"Me sulfuro enseguida.","VO7":"Rara vez algo me irrita.","VO8":"Mantengo mis emociones bajo control.","VO9":"Rara vez pierdo la compostura.","VO10":"Hace falta mucho para sacarme de quicio.","WI1":"Me asaltan muchas dudas.","WI2":"Me intimido con facilidad.","WI3":"Me preocupo a menudo por las cosas.","WI4":"Me desanimo con facilidad.","WI5":"Me agobio cuando se me juntan muchas cosas.","WI6":"Me dan miedo muchas cosas.","WI7":"Rara vez siento tristeza.","WI8":"Me siento a gusto en mi propia piel.","WI9":"Rara vez tengo el ánimo decaído.","WI10":"No me da vergüenza con facilidad.","CO1":"Capto las emociones de los demás.","CO2":"Pregunto a los demás cómo están.","CO3":"Me identifico con los sentimientos de los demás.","CO4":"Me intereso por lo que viven otras personas.","CO5":"Me gusta hacer cosas por los demás.","CO6":"Los problemas de los demás no me interesan.","CO7":"No me molesto en atender las necesidades de los demás.","CO8":"Los sentimientos de los demás me son indiferentes.","CO9":"No dedico tiempo a los demás.","CO10":"No tengo un lado tierno.","PO1":"Respeto la autoridad.","PO2":"Odio parecer una persona avasalladora.","PO3":"Evito imponer mi voluntad a los demás.","PO4":"Rara vez presiono a la gente.","PO5":"Ofendo a la gente con lo que digo.","PO6":"Creo que soy mejor que los demás.","PO7":"Me aprovecho de los demás.","PO8":"Busco el conflicto.","PO9":"Me encantan las discusiones acaloradas.","PO10":"Busco sobre todo mi propio beneficio.","IN1":"Cumplo mis planes.","IN2":"Termino lo que empiezo.","IN3":"Hago las cosas con rapidez.","IN4":"Siempre sé lo que estoy haciendo.","IN5":"Pierdo el tiempo.","IN6":"Me cuesta ponerme a trabajar.","IN7":"Echo a perder las cosas.","IN8":"No me concentro en lo que tengo entre manos.","IN9":"Aplazo las decisiones.","IN10":"Me distraigo con facilidad.","OR1":"Me gusta el orden.","OR2":"Mantengo las cosas ordenadas.","OR3":"Sigo un horario.","OR4":"Quiero que todo esté perfecto.","OR5":"Me aseguro de que se cumplan las normas.","OR6":"Quiero que no se escape ningún detalle.","OR7":"Dejo mis cosas en cualquier sitio.","OR8":"No me molestan las personas desordenadas.","OR9":"No me molesta el desorden.","OR10":"No me gusta la rutina.","EN1":"Hago amigos con facilidad.","EN2":"Enseguida entro en confianza con la gente.","EN3":"Cuando algo me alegra, lo demuestro.","EN4":"Me divierto mucho.","EN5":"Me río mucho.","EN6":"Es difícil llegar a conocerme.","EN7":"Mantengo a los demás a distancia.","EN8":"Hablo poco de mí.","EN9":"Rara vez me contagio del entusiasmo general.","EN10":"No soy una persona muy entusiasta.","AS1":"Tomo el mando.","AS2":"Tengo una personalidad fuerte.","AS3":"Sé cautivar a la gente.","AS4":"Creo que tengo dotes de liderazgo.","AS5":"Sé convencer a los demás para que hagan cosas.","AS6":"Suelo ser quien actúa primero.","AS7":"Me cuesta hacerme valer.","AS8":"Me falta talento para influir en la gente.","AS9":"Espero a que otros tomen la iniciativa.","AS10":"Me guardo mis opiniones.","IT1":"Entiendo las cosas con rapidez.","IT2":"Puedo manejar mucha información.","IT3":"Me gusta resolver problemas complejos.","IT4":"Tengo un vocabulario amplio.","IT5":"Pienso con rapidez.","IT6":"Expreso mis ideas con claridad.","IT7":"Me cuesta entender las ideas abstractas.","IT8":"Evito las conversaciones filosóficas.","IT9":"Evito las lecturas difíciles.","IT10":"Aprendo las cosas despacio.","OP1":"Disfruto de la belleza de la naturaleza.","OP2":"Creo que el arte es importante.","OP3":"Me encanta reflexionar sobre las cosas.","OP4":"La música me absorbe por completo.","OP5":"Veo belleza en cosas en las que otros quizá no se fijan.","OP6":"Necesito una salida para mi creatividad.","OP7":"No me gusta la poesía.","OP8":"Rara vez me pierdo en mis pensamientos.","OP9":"Rara vez dejo volar la imaginación.","OP10":"Rara vez me fijo en las emociones que transmiten los cuadros y las fotografías."},"result":{"eyebrow":"Big Five","title":"Su perfil","date":"Test realizado el {date}","lead":"Cada rasgo recibe un número del 1 al 99: cuántas personas de cada 100 obtienen una puntuación más baja que usted. El 50 es justo la mitad. Ni una puntuación alta ni una baja es mejor: cada extremo tiene sus puntos fuertes y sus riesgos.","summary":"Cinco rasgos","scaleCap":"El número indica cuántas personas de cada 100 obtienen una puntuación más baja que usted.","above":"Por encima de {n} de cada 100","aboveShort":"por encima de {n} de cada 100","levels":["nivel bajo","por debajo de la media","nivel medio","por encima de la media","nivel alto"],"disc":{"title":"Ahora, su estilo en el trabajo y en el trato con los demás","text":"El modelo Big Five describe el carácter en general. El test DISC muestra cómo actúa en el trabajo y en el trato con los demás: su estilo predominante, sus puntos fuertes y cómo entenderse con personas de otros estilos. 10 minutos, gratis.","button":"Hacer el test DISC"},"again":"Repetir el test"},"traits":{"O":{"name":"Apertura a la experiencia","en":"Openness","what":"Cuánto le atraen las ideas nuevas, las experiencias, el arte y las preguntas complejas.","high":"Le interesa lo nuevo: ideas, libros, lugares, puntos de vista poco comunes. Ve con facilidad las conexiones entre las cosas, le gusta entender cómo funcionan y aprecia la belleza. La rutina y el «siempre se ha hecho así» le cansan pronto; en el trabajo necesita margen para explorar.","mid":"Se abre a lo nuevo cuando le ve sentido, pero no busca la novedad por la novedad. Puede entusiasmarse con una idea o un libro, o trabajar con calma con un método probado, según las circunstancias.","low":"Es una persona práctica: valora lo probado, lo claro y lo útil. Las ideas abstractas y los experimentos le interesan cuando tienen una utilidad directa. A cambio, se puede contar con usted cuando hacen falta sentido común y estabilidad."},"C":{"name":"Responsabilidad","en":"Conscientiousness","what":"Hasta qué punto se organiza, mantiene el orden y termina lo que empieza.","high":"Cumple su palabra, planifica y termina lo que empieza. El orden en las tareas le sale de forma natural y los demás confían en usted. La otra cara: le cuesta relajarse y soltar el control, y el descuido ajeno puede irritarle mucho.","mid":"Se organiza cuando el asunto importa y se permite flexibilidad cuando no. Tiene planes, pero no rígidos; el orden, cuando hace falta.","low":"Actúa con flexibilidad y según el momento, cambia de planes con facilidad y no le gustan los marcos rígidos. Eso le ayuda a improvisar, pero los plazos, la rutina y los detalles le cuestan más; le ayudan los recordatorios externos y unas pocas reglas sencillas fijadas de antemano."},"E":{"name":"Extraversión","en":"Extraversion","what":"Cuánta energía obtiene de la gente, de la conversación y de la acción.","high":"Se carga de energía con la gente y con lo que pasa a su alrededor: conoce gente con facilidad, habla mucho y toma la iniciativa. El silencio y la soledad prolongados le aburren pronto. Conviene dejar espacio también a quienes hablan menos.","mid":"Se encuentra a gusto tanto en compañía como a solas. Puede llevar la conversación o escuchar, según la situación y las personas.","low":"Cuida su energía: prefiere un círculo reducido, las conversaciones profundas y el tiempo a solas. No busca ser el centro de atención ni se apresura a tomar la palabra; a cambio, piensa antes de hablar."},"A":{"name":"Amabilidad","en":"Agreeableness","what":"Hasta qué punto se orienta hacia los demás, la cooperación y la armonía en las relaciones.","high":"Le importan las personas y las relaciones: se pone en el lugar de los demás, ayuda, busca el acuerdo y evita la brusquedad. Es fácil trabajar con usted. El riesgo: ceder donde convendría defender lo suyo.","mid":"Presta atención a los demás, pero también sabe mantener su postura. Ayuda con gusto, aunque no a costa de sus propios intereses.","low":"Va de frente y piensa por su cuenta: dice lo que piensa, no rehúye la discusión y pone la tarea por delante de los sentimientos ajenos. Eso ayuda en las negociaciones y las decisiones difíciles, pero en las relaciones puede percibirse como brusquedad."},"N":{"name":"Neuroticismo","en":"Neuroticism","what":"Con qué intensidad reacciona ante el estrés, los fracasos y los contratiempos. Una puntuación alta aquí indica sensibilidad, no una enfermedad.","high":"Vive el estrés con intensidad: se preocupa, duda y tarda en recuperarse de los contratiempos. Esa sensibilidad ayuda a ver los riesgos a tiempo, pero consume energía; conviene saber qué le ayuda a recuperarse y no quedarse a solas con la preocupación.","mid":"Reacciona al estrés como la mayoría de la gente: puede preocuparse o irritarse, pero normalmente recupera pronto el equilibrio.","low":"Tiene estabilidad emocional: lleva la presión con calma, rara vez se angustia y se recupera rápido. La otra cara: puede subestimar un riesgo real o lo que sienten los demás."}},"aspects":{"IT":{"name":"Intelecto","high":"Le gustan los problemas complejos y entiende pronto lo nuevo.","mid":"Piensa con gusto en lo complejo si la tarea lo merece.","low":"Prefiere tareas claras, sin teoría de más."},"OP":{"name":"Sensibilidad estética","high":"Vive con intensidad el arte, la música y la naturaleza; reflexiona y fantasea a menudo.","mid":"El arte y la imaginación tienen su lugar en su vida, aunque no el principal.","low":"Le atrae más lo real y concreto que la fantasía y el arte."},"IN":{"name":"Laboriosidad","high":"Se pone enseguida manos a la obra y termina lo que empieza.","mid":"Trabaja con constancia, aunque a veces aplaza lo desagradable.","low":"A veces le cuesta empezar y no distraerse."},"OR":{"name":"Orden","high":"Le gustan el orden, los horarios y que todo se haga según las normas.","mid":"Mantiene el orden, pero sin perfeccionismo.","low":"El desorden y saltarse las normas le preocupan poco."},"EN":{"name":"Entusiasmo","high":"Conecta con la gente con facilidad y muestra su alegría abiertamente.","mid":"Trata a la gente con cordialidad, aunque tarda un poco en abrirse.","low":"Mantiene la reserva y se abre poco a poco, y no con cualquiera."},"AS":{"name":"Asertividad","high":"Toma el mando y sabe guiar a los demás.","mid":"Puede tomar la palabra y dirigir cuando hace falta.","low":"Prefiere dejar que otros dirijan y se guarda su opinión."},"CO":{"name":"Compasión","high":"Percibe bien lo que sienten los demás y ayuda con gusto.","mid":"Siente empatía, pero no se pierde en los problemas ajenos.","low":"Le mueve más la tarea que lo que sienten los demás."},"PO":{"name":"Cortesía","high":"Evita presionar y entrar en conflicto; respeta las normas y a los demás.","mid":"Suele tener tacto, pero también puede presionar.","low":"No teme el conflicto y persigue lo suyo sin rodeos."},"VO":{"name":"Volatilidad","high":"Se irrita pronto y su humor cambia con facilidad.","mid":"A veces se exalta, pero se le pasa enseguida.","low":"Rara vez se irrita y mantiene sus emociones bajo control."},"WI":{"name":"Retraimiento","high":"Se preocupa a menudo, duda y se desanima con facilidad.","mid":"Se preocupa cuando hay motivo, pero no de forma constante.","low":"Rara vez se angustia y lleva los fracasos con calma."}}}, loc: "es-ES", home: '../', more: {}, moreText: "", buy: {"T":{"noteHtml":"Al pulsar «Comprar», acepta las \u003ca href=\"../../es/offer/\">condiciones de venta\u003c/a>. Los datos de la tarjeta se introducen en una página de pago segura.","errorHtml":"No se ha podido abrir la página de pago. Inténtelo de nuevo en unos instantes o escriba a \u003ca href=\"mailto:info@disc-test.org\">info@disc-test.org\u003c/a>.","methodsHtml":"\u003cdiv class=\"paym\">\u003cspan class=\"pml\">Aceptamos:\u003c/span>\u003cspan class=\"pm pm-visa\">VISA\u003c/span>\u003cspan class=\"pm pm-mc\">\u003csvg viewBox=\"0 0 24 15\" aria-hidden=\"true\">\u003ccircle cx=\"7.5\" cy=\"7.5\" r=\"7.5\" fill=\"#EB001B\"/>\u003ccircle cx=\"16.5\" cy=\"7.5\" r=\"7.5\" fill=\"#F79E1B\"/>\u003cpath d=\"M12 1.5A7.5 7.5 0 0 1 12 13.5A7.5 7.5 0 0 1 12 1.5Z\" fill=\"#FF5F00\"/>\u003c/svg>\u003cspan class=\"vh\">Mastercard\u003c/span>\u003c/span>\u003c/div>","more":"Qué incluye el informe ampliado","offer":{"price":4.99,"regular":7.99,"ms":86400000,"priceText":"⁢4,99⁢ USD","regularText":"⁣7,99⁣ USD","regularLabel":"Precio habitual","cta":"Consígalo ya por ⁢4,99⁢ USD","note":"Precio especial durante ⁡24 horas⁡ después del test; luego, ⁣7,99⁣ USD","left":"Quedan","expired":"El precio especial ya terminó: el informe cuesta ahora ⁣7,99⁣ USD. Pulse «Comprar» de nuevo.","button":"Compre su informe ampliado personalizado por ⁢4,99⁢ USD"},"sale":{"cta":"{occasion}: el informe por {salePrice} USD","note":"Precio válido hasta el {day} inclusive","expired":"La oferta ya terminó: el informe cuesta ahora ⁣7,99⁣ USD. Pulse «Comprar» de nuevo.","regularLabel":"Precio habitual","regularTpl":"\u0001 USD","occasions":{"bf":"Black Friday","sale":"Oferta"},"plain":true},"code":null,"text":"El informe le llegará por correo electrónico justo después del pago, como PDF adjunto. El comprobante de pago se envía a la misma dirección.","emailLabel":"Correo para recibir el informe en PDF","emailPlaceholder":"Escriba su correo electrónico","button":"Comprar","badEmail":"Revise la dirección de correo: a ella enviaremos el informe y el comprobante.","wait":"Abriendo la página de pago…","guarantee":"","payPage":"","nameLabel":"Nombre para el informe","nameHint":"Este nombre aparecerá en la portada y en cada página de su informe.","nameRequired":"Indique su nombre: aparecerá en el informe."},"block":{"eyebrow":"Informe ampliado","title":"Su informe ampliado Big Five","lead":"El resumen muestra sus puntuaciones. El informe personal, de unas 24 páginas, explica cómo se combinan y qué puede significar ese perfil en el trabajo, en sus relaciones y en momentos de presión. Incluye un plan práctico para el próximo mes.","listTitle":"Qué encontrará en el informe","list":["Una interpretación de sus cinco rasgos y sus diez aspectos.","Puntos fuertes y posibles dificultades en el trabajo y en las relaciones.","Las combinaciones de rasgos que destacan en su perfil.","Entornos y tareas que le favorecen, y condiciones que pueden desgastarle.","Cómo suelen verle los demás y qué puede explicar sobre su manera de actuar.","Señales tempranas de sobrecarga y formas de recuperar fuerzas.","Un plan de 30 días y un resumen de una página."],"samplesTitle":"Vea algunas páginas","sampleAlt":["Portada con el nombre y el gráfico de los cinco rasgos","Su perfil: cinco rasgos y diez aspectos en un gráfico","Una página del capítulo sobre responsabilidad","Una combinación de rasgos con una sugerencia práctica","Hoja de trabajo del plan de 30 días"],"sampleNote":"Estas páginas corresponden a una participante ficticia. Su informe se prepara con sus propias puntuaciones.","nameHint":"Este nombre aparecerá en la portada y en cada página de su informe."},"thanks":{"title":"Pago recibido","text":"Estamos preparando su informe Big Five. Lo recibirá en unos minutos en {email}. Si no lo encuentra, revise la carpeta de correo no deseado.","textNoEmail":"Estamos preparando su informe Big Five. Lo recibirá en unos minutos en el correo que indicó al pagar. Si no lo encuentra, revise la carpeta de correo no deseado.","order":"Número de pedido: {order}","statusWait":"Esperamos la confirmación del servicio de pagos.","statusPaid":"Pago confirmado. Estamos preparando su informe.","statusSent":"Ya enviamos su informe. Revise su correo."},"fail":{"title":"No se completó el pago","text":"No se ha realizado ningún cargo. Puede volver a intentarlo desde el formulario de compra que aparece debajo de su resultado.","button":"Ver mi resultado","order":"Número de pedido: {order}"},"endpoint":"https://api.disc-test.org/pay","L":{"lang":"es","dateLocale":"es-ES"},"price":"⁣7,99⁣ USD","currency":"USD","sheets":[["../../bigfive/es-1.webp","../../bigfive/es-1-s.webp"],["../../bigfive/es-2.webp","../../bigfive/es-2-s.webp"],["../../bigfive/es-3.webp","../../bigfive/es-3-s.webp"],["../../bigfive/es-4.webp","../../bigfive/es-4-s.webp"],["../../bigfive/es-5.webp","../../bigfive/es-5-s.webp"]]}, esc: esc, $: $, lsGet: lsGet, lsSet: lsSet});
 /* Первый блок теста в статье (#embedTest, с 2026-10-26; build.js → embedTest): выбор устроен как в тесте (по одному в каждой колонке).
    «Продолжить тест» кладёт ответ в disc.progress (как сам тест, только в браузере; на сервер ничего не уходит) с пометкой from — страница,
    откуда пришли, — и ведёт на главную с #test: там тест открывается на блоке 2, засчитываются старт и цели start / embed-start.
