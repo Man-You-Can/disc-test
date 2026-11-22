@@ -474,6 +474,74 @@
       "foot": { "title": "Tests", "disc": "Test DISC", "bigfive": "Big Five" }
     },
     "bigfive": {
+      "report": {
+      "name": "Rapport Big Five détaillé",
+      "mail": {
+        "subject": "Votre rapport Big Five détaillé",
+        "hello": "Bonjour {name},",
+        "intro": "Merci pour votre achat. Votre rapport nominatif est joint à cet e-mail au format PDF. Il explique vos cinq traits, leurs dix aspects et les combinaisons qui ressortent de vos réponses. Vous y trouverez des exemples liés au travail et aux relations, ainsi qu’un plan sur 30 jours.",
+        "howTitle": "Par où commencer",
+        "how": [
+          "Ouvrez « Votre profil » pour voir vos scores et les lire en trois points.",
+          "Vous pouvez lire les chapitres dans l’ordre qui vous convient. Pour commencer, choisissez un trait dont le score s’éloigne du milieu de l’échelle.",
+          "Vous pouvez imprimer le plan sur 30 jours et la page « L’essentiel en une page » pour les garder sous la main."
+        ],
+        "question": "Une question ? Répondez à cet e-mail ou écrivez-nous à {email}.",
+        "bye": "L’équipe de disc-test.org",
+        "order": "Commande {order} ·"
+      },
+      "home": {
+        "label": "Votre résultat Big Five du {date}",
+        "name": "Big Five",
+        "open": "Voir le résultat",
+        "title": "Ce que vos cinq scores peuvent éclairer au quotidien",
+        "hook": "Le score pour « {trait} » s’éloigne le plus du milieu de l’échelle. Il se situe {pos}. Un chapitre vous montre comment ce trait peut se manifester au travail, dans vos relations et sous pression.",
+        "hookNone": "Le rapport explique vos cinq traits et leurs dix aspects avec des exemples liés au travail, aux relations et aux situations de pression.",
+        "above": "au-dessus de {n} personnes sur 100",
+        "below": "en dessous de {n} personnes sur 100",
+        "button": "Voir mon résultat et le rapport"
+      },
+      "block": {
+        "eyebrow": "Rapport détaillé",
+        "title": "Votre rapport Big Five détaillé",
+        "lead": "Votre résultat gratuit présente vos scores. Le rapport nominatif, d’environ 25 pages, explique comment vos traits peuvent se combiner au travail, dans vos relations et sous pression. Il propose des exercices à essayer au cours du mois qui vient.",
+        "listTitle": "Dans votre rapport",
+        "list": [
+          "Une interprétation de vos cinq traits et de leurs dix aspects.",
+          "Les points forts et les difficultés possibles au travail et dans vos relations.",
+          "Les combinaisons qui ressortent de votre profil.",
+          "Les conditions et les tâches qui peuvent vous convenir, et celles qui peuvent vous fatiguer.",
+          "La façon dont les autres peuvent vous percevoir et ce que vous pouvez leur dire de vous.",
+          "Les premiers signes de surcharge et des façons de retrouver de l’énergie.",
+          "Un plan sur 30 jours et l’essentiel à garder sous la main."
+        ],
+        "samplesTitle": "Feuilleter le rapport",
+        "sampleAlt": [
+          "Couverture nominative avec le graphique des cinq traits",
+          "Graphique de profil avec les cinq traits et leurs dix aspects",
+          "Une page du chapitre sur la conscienciosité",
+          "Une combinaison de traits avec un conseil",
+          "Feuille de travail du plan sur 30 jours"
+        ],
+        "sampleNote": "Cet exemple est établi au nom d’une personne fictive. Votre rapport sera préparé à partir de vos propres scores.",
+        "nameHint": "Ce nom figurera sur la couverture et sur chaque page du rapport."
+      },
+      "thanks": {
+        "title": "Paiement reçu",
+        "text": "Nous préparons votre rapport Big Five. Il arrivera dans quelques minutes à l’adresse {email}. Si besoin, vérifiez le dossier de courrier indésirable.",
+        "textNoEmail": "Une fois le paiement confirmé, le rapport arrivera dans quelques minutes à l’adresse indiquée lors du paiement. Si besoin, vérifiez le dossier de courrier indésirable.",
+        "order": "Numéro de commande : {order}",
+        "statusWait": "En attente de la confirmation du paiement par Prodamus.",
+        "statusPaid": "Paiement confirmé. Nous préparons votre rapport.",
+        "statusSent": "Le rapport a été envoyé. Consultez votre boîte de réception."
+      },
+      "fail": {
+        "title": "Le paiement n’a pas abouti",
+        "text": "Le rapport n’a pas encore été envoyé. Vous pouvez réessayer depuis le formulaire d’achat sous votre résultat. Si votre compte a été débité, contactez-nous en indiquant votre numéro de commande.",
+        "button": "Voir mon résultat",
+        "order": "Numéro de commande : {order}"
+      }
+    },
       "title": "Test de personnalité Big Five gratuit en ligne (100 questions)",
       "description": "Test Big Five gratuit (BFAS) : 100 affirmations, 15 minutes, sans inscription. Cinq traits et dix aspects de personnalité, comparés à d'autres personnes.",
       "eyebrow": "Test de personnalité",
@@ -793,7 +861,7 @@
         },
         {
           "q": "Où sont conservées mes réponses ?",
-          "a": "Uniquement dans votre navigateur, sur cet appareil : le résultat est calculé directement dans la page, et vos réponses ne sont envoyées à aucun serveur. Si vous effacez les données du site, elles disparaissent."
+          "a": "Uniquement dans votre navigateur, sur cet appareil : le résultat est calculé directement dans la page, et vos réponses ne sont envoyées à aucun serveur. Si vous effacez les données du site, elles disparaissent. Si vous achetez le rapport détaillé, le serveur reçoit les scores totaux des dix aspects ainsi que la date et l’heure du test pour préparer votre PDF."
         },
         {
           "q": "Quelle est la précision du résultat ?",
@@ -1001,6 +1069,7 @@
       }
     },
     "policy": {
+      "purchaseBf": "Si vous achetez le rapport Big Five détaillé, nous traitons votre adresse e-mail, les données de la commande, le nom indiqué pour le rapport, les scores totaux des dix aspects et la date et l’heure du test. Les réponses aux affirmations prises séparément ne sont pas envoyées au serveur. Nous supprimons le code du résultat et le nom 30 jours après l’envoi du rapport ou, si la commande reste impayée, au bout de 7 jours. Les données de la commande sont conservées dans les mêmes conditions que pour le rapport DISC détaillé. Le traitement repose sur le contrat conclu conformément aux {offer}.",
       "title": "Politique de traitement des données personnelles — test DISC",
       "description": "Qui traite les données sur disc-test.org et pourquoi, où elles sont conservées, combien de temps et comment les faire supprimer.",
       "h1": "Politique de traitement des données personnelles",
@@ -2362,6 +2431,18 @@
       }
     },
     "offer": {
+      "bfSection": {
+      "h": "13. Rapport Big Five détaillé",
+      "p": [
+        "13.1. Dans les conditions prévues par la présente offre, le Prestataire fournit également un service d’élaboration du rapport Big Five détaillé (ci-après le Rapport Big Five). Il prépare un rapport personnalisé au format PDF à partir du résultat du test Big Five sur le Site et l’envoie au Client. Les dispositions de la présente offre relatives au Service s’appliquent au Rapport Big Five, sauf disposition contraire dans la présente section.",
+        "13.2. Le Rapport Big Five est établi à partir du résultat du test passé sur le Site ou saisi sur le Site à partir d’un questionnaire papier. Il repose sur les scores totaux des dix aspects, la date et l’heure du test et le nom indiqué par le Client au moment de la commande.",
+        "13.3. Le prix du Rapport Big Five est indiqué sur le Site et sur la page de paiement. Le Prestataire peut proposer un prix spécial et mettre fin à cette offre. Le Rapport Big Five est payé intégralement selon les modalités prévues aux articles 3.2 à 3.5.",
+        "13.4. Un logiciel compose le Rapport Big Five à partir de textes préparés à l’avance. Le rapport est envoyé à l’adresse e-mail du Client après le paiement, dans un délai maximal de 24 heures. Le Service est réputé fourni au moment de l’envoi de l’e-mail au Client.",
+        "13.5. Les textes du Rapport Big Five ont été préparés avec l’aide d’un système d’intelligence artificielle selon les règles du Prestataire, puis relus. Le rapport décrit des traits de personnalité à partir des réponses du Client. Il ne constitue ni un avis psychologique, ni un diagnostic médical, ni un fondement pour une décision de recrutement, de licenciement ou de rémunération.",
+        "13.6. Les sections 5 et 6 s’appliquent au Rapport Big Five.",
+        "13.7. Pour élaborer le rapport, le Prestataire traite l’adresse e-mail du Client, le nom indiqué pour le rapport, les scores totaux des dix aspects ainsi que la date et l’heure du test. Il ne reçoit pas les réponses aux affirmations prises séparément. Le code du résultat et le nom sont supprimés 30 jours calendaires après l’envoi du rapport ou, si la commande reste impayée, au bout de 7 jours."
+      ]
+    },
       "pairSection": {
         "h": "12. Rapport « DISC à deux »",
         "p": [
@@ -2537,6 +2618,12 @@
       ]
     },
     "refund": {
+      "bfSection": {
+      "h": "Rapport Big Five détaillé",
+      "p": [
+        "Le rapport Big Five est envoyé par e-mail peu après le paiement et relève des règles ci-dessus. Le montant est intégralement remboursé si le rapport n’arrive pas dans les 24 heures suivant le paiement ou s’il présente un défaut que nous ne corrigeons pas sous trois jours ouvrés. Par exemple, le fichier ne s’ouvre pas, porte le nom d’une autre personne ou ne correspond pas à la description figurant sur le Site. Un désaccord avec la description des traits ne constitue pas un défaut. Indiquez dans votre demande le numéro de commande qui figure dans l’e-mail d’envoi du rapport."
+      ]
+    },
       "pairSection": {
         "h": "Rapport « DISC à deux »",
         "p": [
@@ -4347,6 +4434,12 @@
       }
     },
     "howMade": {
+      "bigfive": {
+      "h": "Le rapport Big Five détaillé",
+      "p": [
+        "Comme le rapport DISC détaillé, le rapport Big Five est composé de textes préparés à l’avance avec l’aide de l’intelligence artificielle, selon nos règles de rédaction, puis relus. Ils couvrent les niveaux des cinq traits et des dix aspects, les combinaisons de traits et les exercices. Un logiciel choisit les textes qui correspondent à vos scores et crée le PDF à votre nom. Vous pouvez ainsi le recevoir peu après le paiement."
+      ]
+    },
       "pair": {
         "h": "Rapport « DISC à deux »",
         "p": [
