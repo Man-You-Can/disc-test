@@ -474,6 +474,74 @@
       "foot": { "title": "Testy", "disc": "Test DISC", "bigfive": "Wielka Piątka" }
     },
     "bigfive": {
+      "report": {
+        "name": "Rozszerzony raport Big Five",
+        "mail": {
+          "subject": "Twój rozszerzony raport Big Five",
+          "hello": "Dzień dobry, {name}!",
+          "intro": "Dziękujemy za zakup. W załączniku znajdziesz swój imienny raport PDF. Zobaczysz w nim opis pięciu cech i dziesięciu aspektów, a także przykłady tego, jak poszczególne wyniki mogą łączyć się w codziennym życiu.",
+          "howTitle": "Od czego zacząć",
+          "how": [
+            "Otwórz rozdział „Twój profil”, żeby zobaczyć wykres i trzy najważniejsze punkty.",
+            "Rozdziały możesz czytać w dowolnej kolejności. Możesz zacząć od cechy, której wynik najbardziej odbiega od środka skali.",
+            "Jeśli wolisz robić notatki na papierze, wydrukuj „Twój plan na 30 dni” i „Najważniejsze na jednej stronie”."
+          ],
+          "question": "Masz pytanie? Odpowiedz na tę wiadomość albo napisz na {email}.",
+          "bye": "Zespół disc-test.org",
+          "order": "Zamówienie {order} ·"
+        },
+        "home": {
+          "label": "Twój wynik Big Five z dnia {date}",
+          "name": "Wielka Piątka",
+          "open": "Zobacz wynik",
+          "title": "Jak twoje cechy mogą przejawiać się na co dzień",
+          "hook": "Najdalej od środka skali jest wynik cechy {trait}, {pos}. W raporcie znajdziesz przykłady, jak ten wynik może się przejawiać w pracy, relacjach i pod presją.",
+          "hookNone": "Zobacz, co pięć cech i dziesięć aspektów może mówić o twojej pracy, relacjach i reakcjach na stres.",
+          "above": "wyżej niż u {n} osób na 100",
+          "below": "niżej niż u {n} osób na 100",
+          "button": "Zobacz wynik i raport"
+        },
+        "block": {
+          "eyebrow": "Rozszerzony raport",
+          "title": "Twój rozszerzony raport Big Five",
+          "lead": "Imienny PDF pokazuje, jak twój profil może się przejawiać w pracy, w relacjach i w trudniejszych sytuacjach. Raport ma 13 rozdziałów, z przykładami, ćwiczeniami i miejscem na notatki.",
+          "listTitle": "Co znajdziesz w raporcie",
+          "list": [
+            "Omówienie twoich wyników w pięciu cechach i dziesięciu aspektach.",
+            "Mocne strony i sytuacje, w których warto na coś uważać.",
+            "Przykłady tego, jak łączą się cechy w twoim profilu.",
+            "Zadania i warunki pracy, które mogą ci odpowiadać lub męczyć.",
+            "Jak inni mogą cię odbierać i jak mówić o swoich potrzebach.",
+            "Sygnały przeciążenia i sposoby na odpoczynek.",
+            "Plan na 30 dni oraz podsumowanie na jednej stronie."
+          ],
+          "samplesTitle": "Zobacz przykładowe strony",
+          "sampleAlt": [
+            "Okładka z imieniem i wykresem pięciu cech",
+            "Wykres profilu z pięcioma cechami i dziesięcioma aspektami",
+            "Strona rozdziału o Sumienności",
+            "Przykładowe połączenie cech ze wskazówką",
+            "Arkusz z planem na 30 dni"
+          ],
+          "sampleNote": "Przykład dotyczy fikcyjnej osoby. Twój raport powstanie na podstawie twoich wyników.",
+          "nameHint": "Podane imię pojawi się na okładce i stronach raportu."
+        },
+        "thanks": {
+          "title": "Mamy twoje zamówienie",
+          "text": "Po potwierdzeniu płatności przygotujemy raport i wyślemy go na {email}. Jeśli wiadomość nie pojawi się w ciągu kilku minut, sprawdź też folder ze spamem.",
+          "textNoEmail": "Po potwierdzeniu płatności wyślemy raport na adres e-mail podany przy zakupie. Jeśli wiadomość nie pojawi się w ciągu kilku minut, sprawdź też folder ze spamem.",
+          "order": "Numer zamówienia: {order}",
+          "statusWait": "Czekamy na potwierdzenie płatności od Prodamus.",
+          "statusPaid": "Płatność potwierdzona. Przygotowujemy twój raport.",
+          "statusSent": "Raport został wysłany. Sprawdź skrzynkę odbiorczą."
+        },
+        "fail": {
+          "title": "Płatność nie została zakończona",
+          "text": "Możesz ponowić próbę w formularzu pod swoim wynikiem. Jeśli środki zostały pobrane, skontaktuj się z nami i podaj numer zamówienia.",
+          "button": "Wróć do wyniku",
+          "order": "Numer zamówienia: {order}"
+        }
+      },
       "title": "Test osobowości Big Five (Wielka Piątka) za darmo – 100 pytań",
       "description": "Darmowy test Wielkiej Piątki (Big Five, BFAS): 100 stwierdzeń, około 15 minut, bez rejestracji. Pięć cech i dziesięć aspektów osobowości z opisem wyniku.",
       "eyebrow": "Test osobowości",
@@ -793,7 +861,7 @@
         },
         {
           "q": "Gdzie są przechowywane moje odpowiedzi?",
-          "a": "Tylko w twojej przeglądarce na tym urządzeniu: wynik jest liczony bezpośrednio na stronie, a odpowiedzi nie trafiają na serwer. Jeśli wyczyścisz dane strony, zostaną usunięte."
+          "a": "Odpowiedzi zostają w przeglądarce na tym urządzeniu, a wynik jest obliczany na stronie. Wyczyszczenie danych strony usuwa odpowiedzi. Przy zakupie raportu wysyłamy na serwer sumy punktów z dziesięciu aspektów oraz datę i godzinę testu, żeby przygotować PDF. Odpowiedzi na poszczególne stwierdzenia pozostają w przeglądarce."
         },
         {
           "q": "Na ile dokładny jest wynik?",
@@ -999,6 +1067,7 @@
       }
     },
     "policy": {
+      "purchaseBf": "Przy zakupie Rozszerzonego raportu Big Five przetwarzamy adres e-mail, dane zamówienia, imię do umieszczenia w PDF, sumy punktów z dziesięciu aspektów oraz datę i godzinę testu. Odpowiedzi na poszczególne stwierdzenia pozostają w przeglądarce. Kod wyniku i imię usuwamy po 30 dniach od wysłania raportu, a przy nieopłaconym zamówieniu po 7 dniach od jego złożenia. Do danych zamówienia stosujemy okresy przechowywania podane wyżej dla rozszerzonego raportu DISC. Podstawą przetwarzania jest wykonanie umowy zawartej na warunkach {offer}.",
       "title": "Polityka przetwarzania danych osobowych – test DISC",
       "description": "Kto i po co przetwarza dane w serwisie disc-test.org, gdzie i jak długo są przechowywane oraz jak je usunąć.",
       "h1": "Polityka przetwarzania danych osobowych",
@@ -1439,6 +1508,18 @@
       }
     },
     "offer": {
+      "bfSection": {
+        "h": "13. Rozszerzony raport Big Five",
+        "p": [
+          "13.1. Usługodawca oferuje przygotowanie i przesłanie Klientowi imiennego Rozszerzonego raportu Big Five w formacie PDF (dalej: Raport Big Five). Postanowienia Oferty dotyczące Usługi stosuje się również do Raportu Big Five, z uwzględnieniem niniejszego rozdziału.",
+          "13.2. Raport Big Five powstaje na podstawie wyniku uzyskanego w Serwisie lub wyniku kwestionariusza papierowego wprowadzonego do Serwisu. Do przygotowania pliku służą sumy punktów z dziesięciu aspektów, data i godzina testu oraz imię podane przy zamówieniu.",
+          "13.3. Cena jest podana w USD w Serwisie i na stronie płatności Prodamus. Usługodawca może udostępnić cenę specjalną i określić okres jej obowiązywania. Do płatności stosuje się punkty 3.2–3.5.",
+          "13.4. Program składa Raport Big Five z wcześniej przygotowanych tekstów. Usługodawca wysyła PDF e-mailem w ciągu 24 godzin od potwierdzenia płatności. Usługa zostaje wykonana z chwilą wysłania wiadomości do Klienta.",
+          "13.5. Teksty opracowano przy wsparciu sztucznej inteligencji i zredagowano zgodnie z zasadami Usługodawcy. Raport Big Five opisuje tendencje widoczne w odpowiedziach na test. Ma charakter informacyjny. Nie stanowi diagnozy medycznej ani opinii psychologicznej i nie służy do podejmowania decyzji o zatrudnieniu, zwolnieniu lub wynagrodzeniu.",
+          "13.6. Do Raportu Big Five stosuje się rozdziały 5 i 6 z poszanowaniem bezwzględnie obowiązujących praw konsumenta.",
+          "13.7. Do przygotowania i wysłania raportu Usługodawca przetwarza adres e-mail Klienta, imię, sumy punktów z dziesięciu aspektów oraz datę i godzinę testu. Odpowiedzi na poszczególne stwierdzenia pozostają w przeglądarce. Kod wyniku i imię są usuwane po 30 dniach od wysłania Raportu Big Five, a przy nieopłaconym zamówieniu po 7 dniach od jego złożenia."
+        ]
+      },
       "pairSection": {
         "h": "12. Raport „DISC w duecie”",
         "p": [
@@ -1619,6 +1700,12 @@
       ]
     },
     "refund": {
+      "bfSection": {
+        "h": "Rozszerzony raport Big Five",
+        "p": [
+          "Zwracamy całą kwotę, jeśli zrezygnujesz przed wysłaniem PDF lub raport nie zostanie wysłany w ciągu 24 godzin od potwierdzenia płatności. Pełny zwrot przysługuje też, gdy nie usuniemy wady w ciągu trzech dni roboczych od zgłoszenia. Przykłady wad to uszkodzony plik, wynik innej osoby lub treść, która nie odpowiada opisowi raportu. Sama różnica między interpretacją wyniku a twoją oceną własnego profilu nie stanowi wady raportu. Przy zgłoszeniu podaj numer zamówienia. Znajdziesz go na stronie po płatności i w wiadomości z raportem. Te warunki pozostawiają w mocy prawa przysługujące ci z przepisów o ochronie konsumentów."
+        ]
+      },
       "pairSection": {
         "h": "Raport „DISC w duecie”",
         "p": [
@@ -3391,6 +3478,12 @@
       }
     },
     "howMade": {
+      "bigfive": {
+        "h": "Jak powstaje rozszerzony raport Big Five",
+        "p": [
+          "Teksty o pięciu cechach, ich aspektach i połączeniach przygotowujemy z pomocą sztucznej inteligencji, a następnie redagujemy i sprawdzamy. Program dobiera fragmenty odpowiadające twoim wynikom, układa plan na 30 dni i tworzy PDF z podanym imieniem. Gotowy plik wysyłamy na e-mail po potwierdzeniu płatności."
+        ]
+      },
       "pair": {
         "h": "Raport „DISC w duecie”",
         "p": [
