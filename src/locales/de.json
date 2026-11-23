@@ -474,6 +474,74 @@
       "foot": { "title": "Tests", "disc": "DISG-Test", "bigfive": "Big Five" }
     },
     "bigfive": {
+      "report": {
+        "name": "Ausführlicher Big-Five-Bericht",
+        "mail": {
+          "subject": "Ihr ausführlicher Big-Five-Bericht",
+          "hello": "Guten Tag, {name}!",
+          "intro": "Vielen Dank für Ihren Kauf. Im Anhang finden Sie Ihren persönlichen Bericht als PDF. Er erklärt Ihre Werte für die fünf Merkmale und ihre zehn Aspekte und zeigt, welche Kombinationen in Ihrem Profil auffallen. Dazu kommen Beispiele für Arbeit und Beziehungen sowie ein Plan für die nächsten 30 Tage.",
+          "howTitle": "So können Sie anfangen",
+          "how": [
+            "Unter „Ihr Profil“ finden Sie Ihre Werte in einer Grafik und die wichtigsten Punkte auf einen Blick.",
+            "Die Kapitel lassen sich einzeln lesen. Beginnen Sie zum Beispiel bei dem Merkmal, dessen Wert am weitesten von der Mitte entfernt ist.",
+            "Den Plan für 30 Tage und „Das Wichtigste auf einer Seite“ können Sie ausdrucken und griffbereit ablegen."
+          ],
+          "question": "Haben Sie Fragen? Antworten Sie auf diese E-Mail oder schreiben Sie uns an {email}.",
+          "bye": "Das Team von disc-test.org",
+          "order": "Bestellung {order} ·"
+        },
+        "home": {
+          "label": "Ihr Big-Five-Ergebnis vom {date}",
+          "name": "Big Five",
+          "open": "Ergebnis ansehen",
+          "title": "Was Ihre Werte für den Alltag bedeuten können",
+          "hook": "Bei „{trait}“ weicht Ihr Wert am stärksten von der Mitte ab. Er liegt {pos}. Das passende Kapitel zeigt, wie sich dieses Merkmal bei der Arbeit, in Beziehungen und unter Druck bemerkbar machen kann.",
+          "hookNone": "Der Bericht erklärt Ihre fünf Merkmale und ihre zehn Aspekte anhand von Beispielen aus dem Beruf, aus Beziehungen und aus Situationen, in denen Sie unter Druck stehen.",
+          "above": "höher als bei {n} von 100 Personen",
+          "below": "niedriger als bei {n} von 100 Personen",
+          "button": "Ergebnis und Bericht ansehen"
+        },
+        "block": {
+          "eyebrow": "Ausführlicher Bericht",
+          "title": "Ihr ausführlicher Big-Five-Bericht",
+          "lead": "Im kostenlosen Ergebnis sehen Sie Ihre Werte. Der persönliche Bericht erklärt auf rund 25 Seiten, wie Ihre Merkmale bei der Arbeit, in Beziehungen und unter Druck zusammenspielen können. Für den kommenden Monat finden Sie Übungen, die Sie im Alltag ausprobieren können.",
+          "listTitle": "Das steht in Ihrem Bericht",
+          "list": [
+            "Was Ihre Werte für die fünf Merkmale und ihre zehn Aspekte bedeuten.",
+            "Welche Stärken sich bei der Arbeit und in Beziehungen zeigen können und wo es schwierig werden kann.",
+            "Welche Kombinationen von Merkmalen in Ihrem Profil auffallen.",
+            "Welche Aufgaben und Arbeitsbedingungen Ihnen liegen können und was Sie Kraft kostet.",
+            "Wie andere Sie erleben können und wie Sie erklären, was Ihnen wichtig ist.",
+            "Woran Sie Überlastung früh erkennen können und was Ihnen bei der Erholung hilft.",
+            "Ein Plan für 30 Tage und eine Seite mit dem Wichtigsten zum Nachschlagen."
+          ],
+          "samplesTitle": "Im Beispielbericht blättern",
+          "sampleAlt": [
+            "Persönliches Deckblatt mit den fünf Merkmalen als Balkendiagramm",
+            "Profilübersicht mit den fünf Merkmalen und ihren zehn Aspekten",
+            "Eine Seite aus dem Kapitel zur Gewissenhaftigkeit",
+            "Beispiel für das Zusammenspiel zweier Merkmale mit einem Tipp",
+            "Arbeitsblatt mit dem Plan für 30 Tage"
+          ],
+          "sampleNote": "Der Beispielbericht ist für eine fiktive Person erstellt. Ihr persönlicher Bericht beruht auf Ihren eigenen Werten.",
+          "nameHint": "Dieser Name steht auf dem Deckblatt und auf jeder Seite des Berichts."
+        },
+        "thanks": {
+          "title": "Vielen Dank für Ihren Kauf",
+          "text": "Wir erstellen gerade Ihren Big-Five-Bericht. Er kommt in wenigen Minuten an {email}. Falls die E-Mail ausbleibt, sehen Sie bitte auch im Spam-Ordner nach.",
+          "textNoEmail": "Sobald die Zahlung bestätigt ist, kommt der Bericht in wenigen Minuten an die beim Kauf angegebene E-Mail-Adresse. Falls die E-Mail ausbleibt, sehen Sie bitte auch im Spam-Ordner nach.",
+          "order": "Bestellnummer: {order}",
+          "statusWait": "Wir warten auf die Zahlungsbestätigung von Prodamus.",
+          "statusPaid": "Ihre Zahlung ist eingegangen. Wir erstellen Ihren Bericht.",
+          "statusSent": "Ihr Bericht wurde verschickt. Sehen Sie in Ihrem Posteingang nach."
+        },
+        "fail": {
+          "title": "Zahlung nicht abgeschlossen",
+          "text": "Ihr Bericht wurde noch nicht verschickt. Sie können es über das Kaufformular unter Ihrem Ergebnis erneut versuchen. Falls Ihr Konto belastet wurde, schreiben Sie uns bitte unter Angabe Ihrer Bestellnummer.",
+          "button": "Ergebnis ansehen",
+          "order": "Bestellnummer: {order}"
+        }
+      },
       "title": "Big-Five-Persönlichkeitstest kostenlos online – 100 Fragen",
       "description": "Kostenloser Big-Five-Test (BFAS): 100 Aussagen, etwa 15 Minuten, ohne Anmeldung. Fünf Merkmale und zehn Aspekte Ihrer Persönlichkeit mit Vergleich.",
       "eyebrow": "Persönlichkeitstest",
@@ -793,7 +861,7 @@
         },
         {
           "q": "Wo werden meine Antworten gespeichert?",
-          "a": "Nur in Ihrem Browser auf diesem Gerät: Das Ergebnis wird direkt auf der Seite berechnet, die Antworten werden nicht an einen Server gesendet. Wenn Sie die Website-Daten löschen, sind sie gelöscht."
+          "a": "Ihre Antworten bleiben im Browser auf diesem Gerät. Das Ergebnis wird direkt auf der Seite berechnet. Wenn Sie die Website-Daten löschen, verschwinden auch die Antworten. Kaufen Sie den ausführlichen Bericht, erhält der Server für die Erstellung des PDFs nur die Summenwerte der zehn Aspekte sowie Datum und Uhrzeit des Tests, keine einzelnen Antworten."
         },
         {
           "q": "Wie genau ist das Ergebnis?",
@@ -1003,6 +1071,7 @@
       }
     },
     "policy": {
+      "purchaseBf": "Wenn Sie den ausführlichen Big-Five-Bericht kaufen, verarbeiten wir Ihre E-Mail-Adresse, Ihre Bestelldaten, den Namen für den Bericht, die Summenwerte der zehn Aspekte sowie Datum und Uhrzeit des Tests. Ihre Antworten auf die einzelnen Aussagen werden nicht an den Server gesendet. Den Ergebniscode und den Namen löschen wir 30 Tage nach Versand des Berichts oder, bei einer unbezahlten Bestellung, nach 7 Tagen. Für die Bestelldaten gelten dieselben Aufbewahrungsfristen wie beim ausführlichen DISG-Profil. Rechtsgrundlage ist der Vertrag, den Sie auf Grundlage der {offer} schließen.",
       "title": "Richtlinie zur Verarbeitung personenbezogener Daten – DISG-Test",
       "description": "Wer auf disc-test.org Daten verarbeitet und wozu, wo und wie lange sie gespeichert werden und wie Sie sie löschen lassen.",
       "h1": "Richtlinie zur Verarbeitung personenbezogener Daten",
@@ -2363,6 +2432,18 @@
       }
     },
     "offer": {
+      "bfSection": {
+        "h": "13. Ausführlicher Big-Five-Bericht",
+        "p": [
+          "13.1. Der Anbieter erstellt nach diesen AGB auch ausführliche Big-Five-Berichte (im Folgenden „Big-Five-Bericht“). Er erstellt anhand des Testergebnisses einen persönlichen Bericht im PDF-Format und sendet ihn an den Kunden. Soweit in diesem Abschnitt nichts Abweichendes geregelt ist, gelten die Bestimmungen zur Leistung entsprechend.",
+          "13.2. Grundlage für den Big-Five-Bericht ist das Ergebnis des auf der Website durchgeführten Tests oder eines Papierfragebogens, dessen Ergebnis auf der Website eingegeben wurde. Zur Erstellung werden die Summenwerte der zehn Aspekte, Datum und Uhrzeit des Tests sowie der bei der Bestellung angegebene Name verwendet.",
+          "13.3. Der Preis für den Big-Five-Bericht wird auf der Website und auf der Zahlungsseite angezeigt. Der Anbieter kann einen Sonderpreis anbieten und das Angebot beenden. Für die vollständige Zahlung gelten die Ziffern 3.2 bis 3.5.",
+          "13.4. Ein Programm stellt den Big-Five-Bericht aus vorbereiteten Texten zusammen. Nach der Zahlung erhält der Kunde den Bericht per E-Mail, spätestens innerhalb von 24 Stunden. Mit dem Versand der E-Mail an den Kunden ist die Leistung erbracht.",
+          "13.5. Die Texte des Big-Five-Berichts wurden mit Unterstützung künstlicher Intelligenz nach den redaktionellen Vorgaben des Anbieters erstellt und anschließend geprüft. Der Bericht beschreibt anhand der Antworten persönliche Merkmale. Er ist weder eine psychologische Beratung noch eine medizinische Diagnose und eignet sich nicht als Grundlage für Entscheidungen über Einstellung, Kündigung oder Vergütung.",
+          "13.6. Die Abschnitte 5 und 6 gelten auch für den Big-Five-Bericht.",
+          "13.7. Zur Erstellung des Berichts verarbeitet der Anbieter die E-Mail-Adresse des Kunden, den Namen für den Bericht, die Summenwerte der zehn Aspekte sowie Datum und Uhrzeit des Tests. Die Antworten auf einzelne Aussagen erhält der Anbieter nicht. Der Ergebniscode und der Name werden 30 Kalendertage nach Versand des Berichts gelöscht oder, bei einer unbezahlten Bestellung, nach 7 Tagen."
+        ]
+      },
       "pairSection": {
         "h": "12. Bericht „DISG zu zweit“",
         "p": [
@@ -2538,6 +2619,12 @@
       ]
     },
     "refund": {
+      "bfSection": {
+        "h": "Ausführlicher Big-Five-Bericht",
+        "p": [
+          "Für den Big-Five-Bericht gelten die oben genannten Bedingungen. Er wird kurz nach der Zahlung per E-Mail versandt. Wir erstatten den vollen Kaufpreis, wenn der Bericht innerhalb von 24 Stunden nach der Zahlung nicht ankommt oder wenn wir einen Mangel nicht innerhalb von drei Werktagen beheben. Ein Mangel liegt beispielsweise vor, wenn sich die Datei nicht öffnen lässt, der Bericht auf einen anderen Namen ausgestellt ist oder von der Beschreibung auf der Website abweicht. Eine abweichende Einschätzung der beschriebenen Merkmale gilt nicht als Mangel. Geben Sie bei Ihrer Anfrage die Bestellnummer an. Sie finden sie in der E-Mail mit dem Bericht."
+        ]
+      },
       "pairSection": {
         "h": "Bericht „DISG zu zweit“",
         "p": [
@@ -4329,6 +4416,12 @@
       }
     },
     "howMade": {
+      "bigfive": {
+        "h": "Der ausführliche Big-Five-Bericht",
+        "p": [
+          "Wie beim ausführlichen DISG-Profil verwenden wir vorbereitete Texte. Sie wurden mit Unterstützung künstlicher Intelligenz nach unseren redaktionellen Vorgaben erstellt und anschließend geprüft. Darin geht es um die fünf Merkmale mit ihren zehn Aspekten, das Zusammenspiel der Merkmale und Übungen für den Alltag. Ein Programm wählt die zu Ihren Werten passenden Texte aus und erstellt das PDF mit Ihrem Namen. Deshalb können Sie den Bericht schon kurz nach der Zahlung erhalten."
+        ]
+      },
       "pair": {
         "h": "Bericht „DISG zu zweit“",
         "p": [
