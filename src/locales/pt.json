@@ -474,6 +474,74 @@
       "foot": { "title": "Testes", "disc": "Teste DISC", "bigfive": "Big Five" }
     },
     "bigfive": {
+      "report": {
+        "name": "Relatório ampliado Big Five",
+        "mail": {
+          "subject": "Seu relatório ampliado Big Five",
+          "hello": "Olá, {name}!",
+          "intro": "Agradecemos a compra. Seu relatório está no PDF em anexo. Você vai encontrar a leitura das cinco pontuações e dos dez aspectos, as combinações que chamam atenção no seu perfil e exemplos de como elas podem aparecer na sua rotina.",
+          "howTitle": "Por onde começar",
+          "how": [
+            "Abra “Seu perfil” para ver o gráfico e os três pontos que mais se destacam.",
+            "Você pode ler os capítulos em qualquer ordem. Uma opção é começar pelo traço com a pontuação mais distante de 50.",
+            "Se quiser acompanhar as práticas no papel, imprima “Seu plano de 30 dias” e “O essencial em uma página”."
+          ],
+          "question": "Ficou com alguma dúvida? Responda a este e-mail ou escreva para {email}.",
+          "bye": "Equipe disc-test.org",
+          "order": "Pedido {order} ·"
+        },
+        "home": {
+          "label": "Seu resultado Big Five de {date}",
+          "name": "Big Five",
+          "open": "Ver resultado",
+          "title": "O que suas pontuações podem dizer sobre o seu dia a dia",
+          "hook": "Sua pontuação mais distante do centro da escala foi em {trait}, {pos}. O capítulo sobre esse traço mostra como ele pode aparecer no trabalho, nas relações e sob pressão.",
+          "hookNone": "Veja o que os cinco traços e seus dez aspectos podem dizer sobre o seu jeito de trabalhar, conviver e reagir à pressão.",
+          "above": "acima de {n} em cada 100 pessoas",
+          "below": "abaixo de {n} em cada 100 pessoas",
+          "button": "Ver resultado e relatório"
+        },
+        "block": {
+          "eyebrow": "Relatório ampliado",
+          "title": "Seu relatório ampliado Big Five",
+          "lead": "O resultado gratuito mostra em que ponto da escala você ficou. No PDF individual, você encontra cerca de 25 páginas para entender como os traços podem aparecer juntos na sua rotina e o que vale experimentar no próximo mês.",
+          "listTitle": "O que você encontra no PDF",
+          "list": [
+            "Uma leitura das suas pontuações nos cinco traços e nos dez aspectos.",
+            "Pontos fortes e situações que podem pedir cuidado no trabalho e nas relações.",
+            "As combinações de traços que mais chamam atenção no seu perfil.",
+            "Tarefas e condições de trabalho que podem combinar com você e o que pode cansar.",
+            "Como as pessoas podem perceber você e como falar do que você precisa.",
+            "Sinais de sobrecarga e sugestões para recuperar o fôlego.",
+            "Um plano de 30 dias e um resumo de uma página para guardar."
+          ],
+          "samplesTitle": "Veja algumas páginas do relatório",
+          "sampleAlt": [
+            "Capa com nome e gráfico dos cinco traços",
+            "Visão geral do perfil com cinco traços e dez aspectos",
+            "Página do capítulo sobre Conscienciosidade",
+            "Exemplo de combinação de dois traços com uma dica",
+            "Página para acompanhar o plano de 30 dias"
+          ],
+          "sampleNote": "O exemplo é de uma pessoa fictícia. Seu relatório é preparado com base nas suas respostas.",
+          "nameHint": "Este nome aparece na capa e nas páginas do relatório."
+        },
+        "thanks": {
+          "title": "Recebemos seu pedido",
+          "text": "Assim que o pagamento for confirmado, vamos preparar seu relatório e enviá-lo para {email}. Se a mensagem não aparecer nos próximos minutos, confira também a pasta de spam.",
+          "textNoEmail": "Após a confirmação do pagamento, o relatório será enviado para o e-mail informado na compra. Se a mensagem não aparecer nos próximos minutos, confira também a pasta de spam.",
+          "order": "Número do pedido: {order}",
+          "statusWait": "Aguardando a confirmação do pagamento pela Prodamus.",
+          "statusPaid": "Pagamento confirmado. Estamos preparando seu relatório.",
+          "statusSent": "Relatório enviado. Confira sua caixa de entrada."
+        },
+        "fail": {
+          "title": "Pagamento não concluído",
+          "text": "Você pode tentar de novo no formulário abaixo do seu resultado. Se houve cobrança, escreva para a gente com o número do pedido.",
+          "button": "Voltar ao resultado",
+          "order": "Número do pedido: {order}"
+        }
+      },
       "title": "Teste Big Five grátis online: Cinco Grandes Fatores, 100 itens",
       "description": "Teste Big Five grátis (Cinco Grandes Fatores, BFAS): 100 afirmações, cerca de 15 minutos, sem cadastro. Cinco traços e dez aspectos da personalidade.",
       "eyebrow": "Teste de personalidade",
@@ -793,7 +861,7 @@
         },
         {
           "q": "Onde ficam minhas respostas?",
-          "a": "Só no seu navegador, neste dispositivo: o resultado é calculado na própria página, e as respostas não são enviadas a nenhum servidor. Se você apagar os dados do site, elas serão excluídas."
+          "a": "Suas respostas ficam no navegador deste dispositivo e o resultado é calculado na própria página. Se você apagar os dados do site, as respostas são excluídas. Ao comprar o relatório ampliado, você envia os totais dos dez aspectos e a data e a hora do teste para que o PDF possa ser preparado. As respostas a cada afirmação continuam no navegador."
         },
         {
           "q": "Qual é a precisão do resultado?",
@@ -999,6 +1067,7 @@
       }
     },
     "policy": {
+      "purchaseBf": "Quando você compra o Relatório ampliado Big Five, tratamos seu e-mail, os dados do pedido, o nome indicado para o PDF, os totais dos dez aspectos e a data e a hora do teste. As respostas individuais ficam no seu navegador. Excluímos o código do resultado e o nome 30 dias após o envio do relatório ou, se o pedido não for pago, após 7 dias. Os dados do pedido seguem os mesmos prazos de retenção do Perfil Ampliado DISC. A base para esse tratamento é o contrato celebrado nos termos da {offer}.",
       "title": "Política de tratamento de dados pessoais — teste DISC",
       "description": "Quem trata os dados no disc-test.org e para quê, onde ficam armazenados, por quanto tempo e como excluí-los.",
       "h1": "Política de tratamento de dados pessoais",
@@ -1409,6 +1478,18 @@
       }
     },
     "offer": {
+      "bfSection": {
+        "h": "13. Relatório ampliado Big Five",
+        "p": [
+          "13.1. O Prestador também oferece, nas condições desta oferta, o Relatório ampliado Big Five (doravante, o Relatório Big Five). O serviço consiste em preparar um PDF individual com base no resultado do teste e enviá-lo ao Cliente. As disposições desta oferta sobre o Serviço se aplicam ao Relatório Big Five, salvo disposição em contrário nesta seção.",
+          "13.2. O Relatório Big Five é preparado com base no resultado do teste feito no Site ou no resultado do questionário em papel, quando inserido no Site. Para preparar o PDF, são usados os totais dos dez aspectos, a data e a hora do teste e o nome indicado no pedido.",
+          "13.3. O preço é informado no Site e na página de pagamento. O Prestador pode oferecer um preço promocional e encerrar a oferta. O pagamento integral segue as cláusulas 3.2 a 3.5.",
+          "13.4. Um programa monta o Relatório Big Five com textos preparados com antecedência. Após o pagamento, o PDF é enviado por e-mail em até 24 horas. O serviço é considerado prestado no momento do envio da mensagem ao Cliente.",
+          "13.5. Os textos foram preparados com auxílio de inteligência artificial, segundo os critérios do Prestador, e revisados. O Relatório Big Five descreve tendências com base nas respostas ao teste. Não constitui avaliação psicológica nem diagnóstico médico e não deve servir de base para decisões de contratação, demissão ou remuneração.",
+          "13.6. As seções 5 e 6 se aplicam ao Relatório Big Five.",
+          "13.7. Para preparar e enviar o relatório, o Prestador trata o e-mail do Cliente, o nome indicado no pedido, os totais dos dez aspectos e a data e a hora do teste. O Prestador não recebe as respostas a cada afirmação. O código do resultado e o nome são excluídos 30 dias corridos após o envio do relatório ou, em caso de pedido não pago, após 7 dias."
+        ]
+      },
       "pairSection": {
         "h": "12. Relatório “DISC para dois”",
         "p": [
@@ -1584,6 +1665,12 @@
       ]
     },
     "refund": {
+      "bfSection": {
+        "h": "Relatório ampliado Big Five",
+        "p": [
+          "As condições acima também se aplicam ao Relatório Big Five. Enviamos o PDF por e-mail após o pagamento. Você pode pedir o reembolso integral antes do envio ou se o relatório não for enviado em até 24 horas após o pagamento. Também devolvemos o valor integral se um defeito não for corrigido em até três dias úteis após o seu contato. São exemplos de defeito um arquivo que não abre, um relatório com o resultado de outra pessoa ou um conteúdo diferente do que descrevemos no site. Discordar da interpretação do perfil não constitui defeito. Inclua o número do pedido na solicitação. Ele aparece no e-mail do relatório."
+        ]
+      },
       "pairSection": {
         "h": "Relatório “DISC para dois”",
         "p": [
@@ -3372,6 +3459,12 @@
       }
     },
     "howMade": {
+      "bigfive": {
+        "h": "Como montamos o Relatório ampliado Big Five",
+        "p": [
+          "O PDF é montado com textos preparados com antecedência, escritos com auxílio de inteligência artificial e revisados segundo nossos critérios editoriais. Os textos tratam dos cinco traços, dos dez aspectos, das combinações entre traços e de práticas para o cotidiano. Um programa seleciona os trechos que correspondem às suas pontuações e gera o PDF com o seu nome. Por isso o relatório pode ser enviado logo após o pagamento."
+        ]
+      },
       "pair": {
         "h": "Relatório “DISC para dois”",
         "p": [
