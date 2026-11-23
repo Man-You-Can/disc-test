@@ -474,6 +474,74 @@
       "foot": { "title": "Tes", "disc": "Tes DISC", "bigfive": "Big Five" }
     },
     "bigfive": {
+      "report": {
+        "name": "Laporan Big Five mendalam",
+        "mail": {
+          "subject": "Laporan Big Five mendalam Anda",
+          "hello": "Halo, {name}!",
+          "intro": "Terima kasih telah membeli laporan. PDF atas nama Anda terlampir. Isinya membahas lima sifat, sepuluh aspek, dan bagaimana perpaduannya bisa terlihat dalam pekerjaan dan kehidupan sehari-hari.",
+          "howTitle": "Mulai dari bagian ini",
+          "how": [
+            "Buka “Profil Anda” untuk melihat bagan skor dan tiga poin utama.",
+            "Pilih satu sifat yang skornya jauh dari tengah skala. Ingat satu kejadian baru-baru ini yang berkaitan dengan sifat itu.",
+            "Jika ingin mencatat sambil mencoba latihan, cetak “Rencana 30 hari” dan “Ringkasan satu halaman”."
+          ],
+          "question": "Jika ada pertanyaan, balas email ini atau tulis ke {email}.",
+          "bye": "Tim disc-test.org",
+          "order": "Nomor pesanan {order} ·"
+        },
+        "home": {
+          "label": "Hasil tes Big Five Anda ({date})",
+          "name": "Big Five",
+          "open": "Lihat hasil",
+          "title": "Kenali cara sifat Anda muncul sehari-hari",
+          "hook": "Skor {trait} Anda paling jauh dari tengah skala ({pos}). Laporan mendalam membahas bagaimana kecenderungan ini bisa muncul saat bekerja, berhubungan dengan orang, atau menghadapi tekanan.",
+          "hookNone": "Laporan mendalam membahas bagaimana lima sifat dan sepuluh aspek Anda bisa muncul di tempat kerja, dalam hubungan, dan saat menghadapi tekanan.",
+          "above": "lebih tinggi daripada {n} dari 100 orang",
+          "below": "lebih rendah daripada {n} dari 100 orang",
+          "button": "Lihat hasil dan laporan"
+        },
+        "block": {
+          "eyebrow": "Laporan mendalam",
+          "title": "Laporan Big Five mendalam Anda",
+          "lead": "PDF atas nama Anda disusun dari hasil tes. Tiga belas bagian menjelaskan bagaimana skor Anda bisa terlihat dalam pekerjaan, hubungan, dan keseharian.",
+          "listTitle": "Isi laporan",
+          "list": [
+            "Pembahasan lima sifat dan sepuluh aspek",
+            "Kekuatan yang bisa Anda gunakan dan hal yang perlu diperhatikan",
+            "Perpaduan sifat yang menonjol dalam profil Anda",
+            "Lingkungan kerja yang mendukung dan keadaan yang menguras tenaga",
+            "Kesan orang lain dan cara menyampaikan kebutuhan Anda",
+            "Tanda awal kewalahan dan cara memulihkan tenaga",
+            "Rencana 30 hari dan ringkasan satu halaman"
+          ],
+          "samplesTitle": "Contoh laporan",
+          "sampleAlt": [
+            "Sampul dengan nama peserta dan skor lima sifat",
+            "Bagan profil dengan lima sifat dan sepuluh aspek",
+            "Cuplikan bagian Kehati-hatian",
+            "Perpaduan sifat dan saran latihan",
+            "Rencana 30 hari"
+          ],
+          "sampleNote": "Contoh memakai nama fiktif. Laporan yang Anda beli disusun dari hasil tes Anda.",
+          "nameHint": "Nama ini akan tercantum di sampul dan pada setiap halaman laporan."
+        },
+        "thanks": {
+          "title": "Pesanan Anda sudah diterima",
+          "text": "Setelah pembayaran dikonfirmasi, kami akan menyusun dan mengirim PDF ke {email}. Jika belum masuk setelah beberapa menit, periksa folder spam.",
+          "textNoEmail": "Setelah pembayaran dikonfirmasi, kami akan mengirim PDF ke alamat email yang Anda isi saat memesan. Jika belum masuk setelah beberapa menit, periksa folder spam.",
+          "order": "Nomor pesanan {order}",
+          "statusWait": "Kami menunggu konfirmasi pembayaran dari Prodamus.",
+          "statusPaid": "Pembayaran sudah dikonfirmasi. Laporan Anda sedang disusun.",
+          "statusSent": "Laporan sudah dikirim. Periksa kotak masuk Anda."
+        },
+        "fail": {
+          "title": "Pembayaran belum selesai",
+          "text": "Anda bisa kembali ke hasil tes dan mencoba lagi lewat formulir pembelian. Jika dana sudah terpotong, hubungi kami dan sertakan nomor pesanan.",
+          "button": "Kembali ke hasil tes",
+          "order": "Nomor pesanan {order}"
+        }
+      },
       "title": "Tes Kepribadian Big Five Online Gratis — 100 Pernyataan",
       "description": "Tes kepribadian Big Five (BFAS) gratis: 100 pernyataan, sekitar 15 menit, tanpa pendaftaran. Lima sifat dan sepuluh aspek kepribadian beserta penjelasannya.",
       "eyebrow": "Tes kepribadian",
@@ -793,7 +861,7 @@
         },
         {
           "q": "Di mana jawaban saya disimpan?",
-          "a": "Hanya di browser Anda pada perangkat ini: hasil dihitung langsung di halaman, dan jawaban tidak dikirim ke server. Jika Anda menghapus data situs, jawaban itu ikut terhapus."
+          "a": "Jawaban untuk tiap pernyataan tersimpan di browser pada perangkat ini. Hasil dihitung langsung di halaman. Jika data situs dihapus, jawaban ikut terhapus. Jika Anda membeli laporan mendalam, program mengirim sepuluh jumlah skor mentah aspek serta tanggal dan waktu tes ke server untuk membuat PDF."
         },
         {
           "q": "Seberapa akurat hasilnya?",
@@ -1001,6 +1069,7 @@
       }
     },
     "policy": {
+      "purchaseBf": "Saat Anda membeli Laporan Big Five mendalam, kami memproses email, nama untuk laporan, sepuluh jumlah skor mentah aspek, tanggal dan waktu tes, serta data pesanan. Jawaban untuk tiap pernyataan tetap tersimpan di browser. Kode hasil dan nama dihapus 30 hari setelah laporan dikirim, atau 7 hari setelah pemesanan jika belum dibayar. Data pesanan disimpan seperti data pesanan laporan DISC mendalam yang dijelaskan di atas. Data diproses untuk memenuhi perjanjian berdasarkan {offer}.",
       "title": "Kebijakan Pemrosesan Data Pribadi — Tes DISC",
       "description": "Siapa yang memproses data di disc-test.org dan untuk apa, di mana dan berapa lama data disimpan, serta cara menghapusnya.",
       "h1": "Kebijakan pemrosesan data pribadi",
@@ -1416,6 +1485,18 @@
       }
     },
     "offer": {
+      "bfSection": {
+        "h": "13. Laporan Big Five mendalam",
+        "p": [
+          "13.1. Penyedia menyusun Laporan Big Five mendalam dalam format PDF atas nama Pengguna berdasarkan hasil tes kepribadian Big Five dan mengirimkannya lewat email. Ketentuan lain dalam perjanjian ini tetap berlaku sepanjang bagian ini tidak mengatur lain.",
+          "13.2. Laporan memakai hasil tes di situs atau hasil tes kertas dari situs yang dimasukkan oleh Pengguna. Program menggunakan sepuluh jumlah skor mentah aspek, tanggal dan waktu tes, serta nama yang dimasukkan saat memesan.",
+          "13.3. Harga di situs dan halaman pembayaran Prodamus dinyatakan dalam dolar AS (USD). Penyedia dapat menawarkan harga khusus dengan masa berlaku yang dicantumkan. Pembayaran mengikuti ketentuan 3.2 sampai 3.5.",
+          "13.4. Program memilih bagian laporan yang telah disiapkan sesuai skor Pengguna. Penyedia mengirim PDF ke email Pengguna dalam 24 jam setelah pembayaran dikonfirmasi. Penyerahan dianggap selesai saat email dikirim.",
+          "13.5. Teks disusun dengan bantuan kecerdasan buatan dan ditelaah menurut pedoman penyuntingan Penyedia. Laporan membantu Pengguna memahami kecenderungan yang tercermin dalam jawaban. Penggunaannya terbatas pada refleksi pribadi. Laporan tidak digunakan untuk diagnosis medis, asesmen psikologis, keputusan penerimaan atau pemberhentian pegawai, maupun penetapan gaji.",
+          "13.6. Pengembalian dana dan penggunaan laporan mengikuti bagian 5 dan 6. Hak Pengguna sebagai konsumen menurut peraturan yang berlaku tetap berlaku.",
+          "13.7. Untuk menyusun dan mengirim laporan, Penyedia memproses email, nama, sepuluh jumlah skor mentah aspek, serta tanggal dan waktu tes. Jawaban per pernyataan tetap di browser. Kode hasil dan nama dihapus 30 hari setelah pengiriman, atau 7 hari setelah pemesanan jika belum dibayar."
+        ]
+      },
       "pairSection": {
         "h": "12. Laporan “DISC Berdua”",
         "p": [
@@ -1591,6 +1672,12 @@
       ]
     },
     "refund": {
+      "bfSection": {
+        "h": "Laporan Big Five mendalam",
+        "p": [
+          "Anda dapat meminta pengembalian dana penuh jika membatalkan sebelum PDF dikirim atau jika laporan belum dikirim dalam 24 jam setelah pembayaran dikonfirmasi. Jika berkas tidak bisa dibuka, hasilnya milik orang lain, atau isinya tidak sesuai deskripsi, kami akan menangani masalah itu dalam tiga hari kerja. Jika belum dapat diperbaiki dalam batas waktu tersebut, dana akan dikembalikan penuh. Perbedaan pendapat atas penafsiran skor saja tidak mengubah status penyerahan. Sertakan nomor pesanan dari layar setelah pembayaran atau email laporan saat mengajukan permintaan. Hak Anda sebagai konsumen menurut peraturan yang berlaku tetap berlaku."
+        ]
+      },
       "pairSection": {
         "h": "Laporan “DISC Berdua”",
         "p": [
@@ -3367,6 +3454,12 @@
       }
     },
     "howMade": {
+      "bigfive": {
+        "h": "Bagaimana Laporan Big Five mendalam disusun?",
+        "p": [
+          "Kami menyiapkan penjelasan lima sifat, sepuluh aspek, dan perpaduan sifat dengan bantuan kecerdasan buatan, lalu menelaahnya sesuai pedoman penyuntingan. Program memilih bagian yang cocok dengan skor Anda, menyusun rencana 30 hari, dan membuat PDF dengan nama yang Anda masukkan. Setelah pembayaran dikonfirmasi, PDF dikirim lewat email."
+        ]
+      },
       "pair": {
         "h": "Laporan “DISC Berdua”",
         "p": [
