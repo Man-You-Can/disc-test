@@ -474,6 +474,74 @@
       "foot": { "title": "Testler", "disc": "DISC testi", "bigfive": "Büyük Beşli" }
     },
     "bigfive": {
+      "report": {
+        "name": "Genişletilmiş Büyük Beşli raporu",
+        "mail": {
+          "subject": "Genişletilmiş Büyük Beşli raporunuz",
+          "hello": "Merhaba {name},",
+          "intro": "Satın aldığınız için teşekkür ederiz. İsminize hazırladığımız PDF ekte. Raporda beş özellik ve on alt boyuttaki puanlarınızı, öne çıkan özellik eşleşmelerini ve bunların günlük yaşamda nasıl görülebileceğini bulabilirsiniz.",
+          "howTitle": "Nereden başlayabilirsiniz?",
+          "how": [
+            "Puan grafiğini ve üç kısa notu görmek için “Profiliniz” bölümünü açın.",
+            "İsterseniz ölçeğin ortasından en uzakta duran puanın bölümünden başlayın.",
+            "Üzerine not almak isterseniz “30 günlük planınız” ve “Tek sayfada özet” sayfalarını yazdırabilirsiniz."
+          ],
+          "question": "Sorunuz varsa bu e-postayı yanıtlayın veya {email} adresine yazın.",
+          "bye": "disc-test.org ekibi",
+          "order": "Sipariş {order} ·"
+        },
+        "home": {
+          "label": "{date} tarihli Büyük Beşli sonucunuz",
+          "name": "Büyük Beşli",
+          "open": "Sonucu gör",
+          "title": "Puanlarınız günlük hayatta nasıl görünebilir?",
+          "hook": "Ölçeğin ortasından en çok uzaklaşan puan {trait} özelliğine ait. Bu puan {pos}. Bu özelliğin işte, ilişkilerde ve baskı altında nasıl ortaya çıkabileceğini raporda örneklerle görebilirsiniz.",
+          "hookNone": "Rapor, beş özellik ve on alt boyuttaki puanlarınızı işten, ilişkilerden ve stresli durumlardan örneklerle açıklar.",
+          "above": "100 kişiden {n} kişinin üzerinde",
+          "below": "100 kişiden {n} kişinin altında",
+          "button": "Sonucumu ve raporu gör"
+        },
+        "block": {
+          "eyebrow": "Genişletilmiş rapor",
+          "title": "Genişletilmiş Büyük Beşli raporunuz",
+          "lead": "İsminize hazırlanan PDF, puanlarınızın işte, ilişkilerde ve stresli anlarda nasıl görünebileceğini açıklar. 13 bölümde günlük hayattan örnekler, uygulanabilir egzersizler ve 30 günlük bir plan bulabilirsiniz.",
+          "listTitle": "Raporun içeriği",
+          "list": [
+            "Beş özellik ve on alt boyuttaki puanlarınızın yorumu.",
+            "Güçlü yanlarınız ve dikkat etmek isteyebileceğiniz durumlar.",
+            "Profilinizde öne çıkan özellik eşleşmeleri.",
+            "Size uygun gelebilecek ve sizi yorabilecek iş koşulları.",
+            "Başkalarının sizi nasıl görebileceği ve ihtiyaçlarınızı söylemek için örnek cümleler.",
+            "Yükün arttığını gösteren ilk işaretler ve dinlenme yolları.",
+            "30 günlük plan ve tek sayfalık özet."
+          ],
+          "samplesTitle": "Örnek sayfalara bakın",
+          "sampleAlt": [
+            "İsim ve beş özellik grafiği bulunan kapak",
+            "Beş özellik ve on alt boyutun profil grafiği",
+            "Sorumluluk bölümünden bir sayfa",
+            "Bir özellik eşleşmesi ve egzersiz önerisi",
+            "30 günlük plan sayfası"
+          ],
+          "sampleNote": "Örnekte kurgusal bir isim kullanılmıştır. Raporunuz kendi puanlarınıza göre hazırlanır.",
+          "nameHint": "Girdiğiniz isim raporun kapağında ve sayfalarında yer alır."
+        },
+        "thanks": {
+          "title": "Siparişinizi aldık",
+          "text": "Ödemeniz onaylanınca raporunuzu hazırlayıp {email} adresine göndereceğiz. Birkaç dakika içinde ulaşmazsa istenmeyen e-posta klasörünü de kontrol edin.",
+          "textNoEmail": "Ödemeniz onaylanınca raporunuzu siparişte belirttiğiniz adrese göndereceğiz. Birkaç dakika içinde ulaşmazsa istenmeyen e-posta klasörünü de kontrol edin.",
+          "order": "Sipariş numarası: {order}",
+          "statusWait": "Prodamus’tan ödeme onayını bekliyoruz.",
+          "statusPaid": "Ödeme onaylandı. Raporunuz hazırlanıyor.",
+          "statusSent": "Rapor gönderildi. Gelen kutunuzu kontrol edin."
+        },
+        "fail": {
+          "title": "Ödeme tamamlanmadı",
+          "text": "Sonucunuzun altındaki formdan yeniden deneyebilirsiniz. Tutar hesabınızdan çekildiyse sipariş numarasını belirterek bize yazın.",
+          "button": "Sonuca dön",
+          "order": "Sipariş numarası: {order}"
+        }
+      },
       "title": "Büyük Beşli (Big Five) kişilik testi — ücretsiz, 100 soru",
       "description": "Ücretsiz Büyük Beşli (Big Five, BFAS) kişilik testi: 100 ifade, yaklaşık 15 dakika, kayıt yok. Beş özellik ve on alt boyut, açıklamalar ve karşılaştırmayla.",
       "eyebrow": "Kişilik testi",
@@ -793,7 +861,7 @@
         },
         {
           "q": "Yanıtlarım nerede saklanıyor?",
-          "a": "Yalnızca bu cihazdaki tarayıcınızda: sonuç doğrudan sayfada hesaplanır, yanıtlar sunucuya gönderilmez. Site verilerini temizlerseniz yanıtlar da silinir."
+          "a": "Yanıtlar bu cihazdaki tarayıcınızda kalır ve sonuç sayfada hesaplanır. Site verilerini temizlerseniz yanıtlar silinir. Raporu satın alırsanız PDF’yi hazırlamak için on alt boyutun puan toplamlarını, testin tarihini ve saatini sunucuya göndeririz."
         },
         {
           "q": "Sonuç ne kadar doğru?",
@@ -999,6 +1067,7 @@
       }
     },
     "policy": {
+      "purchaseBf": "Genişletilmiş Büyük Beşli raporunu satın aldığınızda e-posta adresinizi, sipariş bilgilerini, PDF’ye yazılacak adı, on alt boyutun puan toplamlarını ve testin tarihini ve saatini işleriz. Tek tek ifadelere verdiğiniz yanıtlar tarayıcınızda kalır. Sonuç kodunu ve adı, raporu gönderdikten 30 gün sonra veya sipariş ödenmemişse sipariş tarihinden 7 gün sonra sileriz. Sipariş bilgileri, genişletilmiş DISC raporu için yukarıda belirtilen süreler boyunca saklanır. İşlemenin dayanağı, {offer} uyarınca kurulan sözleşmenin yerine getirilmesidir.",
       "title": "Kişisel verilerin işlenmesi politikası — DISC testi",
       "description": "disc-test.org’da verileri kimin, hangi amaçla işlediğini, verilerin nerede ve ne kadar süre saklandığını ve nasıl silineceğini açıklıyoruz.",
       "h1": "Kişisel verilerin işlenmesi politikası",
@@ -1409,6 +1478,18 @@
       }
     },
     "offer": {
+      "bfSection": {
+        "h": "13. Genişletilmiş Büyük Beşli raporu",
+        "p": [
+          "13.1. Hizmet Sağlayıcı, Müşteri’nin adına Genişletilmiş Büyük Beşli raporunu PDF biçiminde hazırlar ve Müşteri’ye gönderir. Hizmete ilişkin sözleşme hükümleri, bu bölümdeki koşullar gözetilerek Büyük Beşli raporuna da uygulanır.",
+          "13.2. Rapor, Site’de alınan test sonucuna veya kâğıt formdan Site’ye girilen sonuca göre hazırlanır. On alt boyutun puan toplamları, testin tarihi ve saati ile sipariş sırasında belirtilen ad kullanılır.",
+          "13.3. Fiyat Site’de ve Prodamus ödeme sayfasında ABD doları (USD) olarak gösterilir. Hizmet Sağlayıcı, geçerlilik süresi belirtilen özel fiyat sunabilir. Ödemeye 3.2–3.5 numaralı maddeler uygulanır.",
+          "13.4. Yazılım, raporu önceden hazırlanmış metinlerden oluşturur. Hizmet Sağlayıcı, ödeme onayından sonraki 24 saat içinde PDF’yi e-postayla gönderir. Hizmet, e-postanın Müşteri’ye gönderilmesiyle tamamlanır.",
+          "13.5. Metinler yapay zekâ desteğiyle hazırlanmış ve Hizmet Sağlayıcı’nın yazım kurallarına göre gözden geçirilmiştir. Rapor, test yanıtlarında görülen eğilimleri bilgi amacıyla açıklar. Tıbbi tanı, psikolojik görüş veya işe alım, işten çıkarma ya da ücret kararları için dayanak olarak kullanılmaz.",
+          "13.6. Yürürlükteki emredici tüketici hakları saklı kalmak üzere, rapora 5. ve 6. bölümler uygulanır.",
+          "13.7. Hizmet Sağlayıcı, raporu hazırlamak ve göndermek için e-posta adresini, adı, on alt boyutun puan toplamlarını ve testin tarihini ve saatini işler. Tek tek ifadelere verilen yanıtlar tarayıcıda kalır. Sonuç kodu ve ad, rapor gönderildikten 30 gün sonra veya sipariş ödenmemişse sipariş tarihinden 7 gün sonra silinir."
+        ]
+      },
       "pairSection": {
         "h": "12. “İki kişilik DISC” raporu",
         "p": [
@@ -1584,6 +1665,12 @@
       ]
     },
     "refund": {
+      "bfSection": {
+        "h": "Genişletilmiş Büyük Beşli raporu",
+        "p": [
+          "PDF gönderilmeden vazgeçerseniz veya ödeme onayından sonra 24 saat içinde raporu göndermezsek ücretin tamamını iade ederiz. Bildirdiğiniz bir kusuru üç iş günü içinde gideremezsek de tam iade yaparız. Açılamayan dosya, başka kişiye ait sonuç veya açıklamaya uymayan içerik buna örnektir. Yorumun kendi değerlendirmenizden farklı olması tek başına rapor kusuru sayılmaz. Bize yazarken ödeme dönüş ekranında ve rapor e-postasında yer alan sipariş numarasını belirtin. Mevzuattan doğan tüketici haklarınız saklıdır."
+        ]
+      },
       "pairSection": {
         "h": "“İki kişilik DISC” raporu",
         "p": [
@@ -3351,6 +3438,12 @@
       }
     },
     "howMade": {
+      "bigfive": {
+        "h": "Genişletilmiş Büyük Beşli raporu nasıl hazırlanır?",
+        "p": [
+          "Beş özellik, bunların alt boyutları ve eşleşmeleri için metinleri yapay zekâ desteğiyle hazırlayıp gözden geçiriyoruz. Yazılım, puanlarınıza uyan bölümleri seçiyor, 30 günlük planı oluşturuyor ve belirttiğiniz isimle PDF hazırlıyor. Ödeme onaylanınca dosyayı e-posta adresinize gönderiyoruz."
+        ]
+      },
       "pair": {
         "h": "“İki kişilik DISC” raporu",
         "p": [
